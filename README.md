@@ -56,11 +56,17 @@ Key design documents:
 
 ## Status
 
-The first testing-ready product slice is in place. It runs on PostgreSQL with a synthetic fixture cohort. Live source collection is intentionally not part of this slice.
+The first testing-ready product slice runs on PostgreSQL with a synthetic fixture cohort. The data-collection side has a separate versioned seed, identity graph, and collectors. That seed is not loaded by `npm run db:seed`.
+
+- [Cohort methodology](./docs/COHORT_METHODOLOGY.md) — cohort `2026.09.0` is a purposive seed, not all AI researchers.
+- [Data pipeline](./docs/DATA_PIPELINE.md) — collector envelope, seed files, and the gap to the application import.
+- [Ingestion contract](./docs/INGESTION_CONTRACT.md) — canonical document the product imports. The current schema requires `synthetic: true` and is the fixture loader, not the live seed.
+- Seed files: `data/seed/cohort/v2026-09/`.
+- Quality report: `data/reports/cohort-v2026-09-quality.md`.
 
 ## Local development
 
-Requirements: Node.js 22, PostgreSQL 16.
+Requirements: Node.js 22, PostgreSQL 16. Python 3.11+ with `pytest` and `defusedxml` for the collector suite.
 
 ```bash
 cp .env.example .env
@@ -84,7 +90,8 @@ The app listens on `http://localhost:3000`.
 | `npm run db:seed` | Idempotently load `data/fixtures/synthetic/dataset.json` |
 | `npm run db:reset` | Truncate product tables and seed again |
 | `npm run build` | Production build |
+| `PYTHONPATH=pipeline python -m pytest` | Collector, identity, and seed tests. No network. |
 
 Database tests refuse to run unless the database name contains `test`. Point `DATABASE_URL` at `pdoom_live_test` before `npm test`, or export it in the shell. Do not point the test runner at the development database.
 
-The fixture people, organizations, and quotations are fictional. See [the ingestion contract](./docs/INGESTION_CONTRACT.md) for the document the data-collection pipeline should emit.
+The fixture people, organizations, and quotations are fictional. The researcher seed under `data/seed/` is a real public-identity registry and is not a synthetic fixture.

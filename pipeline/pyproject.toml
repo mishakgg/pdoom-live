@@ -1,0 +1,10 @@
+[project]
+name = "pdoom-pipeline"
+version = "0.1.0"
+description = "Researcher identity graph, source registry, and ingestion pipeline for pdoom.live"
+requires-python = ">=3.11"
+dependencies = ["defusedxml>=0.7.1"]
+
+[tool.pytest.ini_options]
+testpaths = ["../tests"]
+pythonpath = ["."]
