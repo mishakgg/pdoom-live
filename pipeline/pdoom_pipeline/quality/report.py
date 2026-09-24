@@ -33,6 +33,8 @@ def build_report(seed_dir: Path | None = None, collector_runs: list[dict] | None
     confidence_counts = Counter(identity["confidence"] for identity in identities)
     with_academic = 0
     with_profile = 0
+    with_verified_profile = 0
+    claimed_unconfirmed = 0
     with_collectible = 0
     source_by_person: dict[str, list[dict]] = {}
     for source in sources:
@@ -46,7 +48,11 @@ def build_report(seed_dir: Path | None = None, collector_runs: list[dict] | None
             with_academic += 1
         else:
             missing_academic.append(person["id"])
-        if namespaces & PROFILE_NAMESPACES or person.get("claimed_urls"):
+        if namespaces & PROFILE_NAMESPACES:
+            with_verified_profile += 1
+            with_profile += 1
+        elif person.get("claimed_urls"):
+            claimed_unconfirmed += 1
             with_profile += 1
         if any(source.get("enabled") and source.get("continuously_collectible") for source in source_by_person.get(person["id"], [])):
             with_collectible += 1
@@ -74,6 +80,9 @@ def build_report(seed_dir: Path | None = None, collector_runs: list[dict] | None
         "identity_confidence": dict(confidence_counts),
         "percent_with_academic_identifier": round(100 * with_academic / n, 1),
         "percent_with_profile_or_claimed_site": round(100 * with_profile / n, 1),
+        "percent_with_verified_profile": round(100 * with_verified_profile / n, 1),
+        "claimed_unconfirmed_profile_count": claimed_unconfirmed,
+        "external_identities_by_namespace": dict(Counter(row["namespace"] for row in identities)),
         "percent_with_continuously_collectible_source": round(100 * with_collectible / n, 1),
         "sources_by_type": dict(Counter(source["source_type"] for source in sources)),
         "missing_academic_identifier_count": len(missing_academic),
@@ -109,7 +118,9 @@ def render_markdown(report: dict) -> str:
         f"- Ambiguous matches: {report['ambiguous_match_count']}",
         f"- Duplicate external-id candidates: {report['duplicate_candidate_count']}",
         f"- Academic identifier coverage: {report['percent_with_academic_identifier']}%",
-        f"- Profile or claimed personal site: {report['percent_with_profile_or_claimed_site']}%",
+        f"- Verified institution or personal profile: {report['percent_with_verified_profile']}%",
+        f"- Profile or claimed personal site, including unverified claims: {report['percent_with_profile_or_claimed_site']}%",
+        f"- Claimed sites not confirmed on the page: {report['claimed_unconfirmed_profile_count']}",
         f"- At least one continuously collectible source: {report['percent_with_continuously_collectible_source']}%",
         f"- People missing an academic identifier: {report['missing_academic_identifier_count']}",
         f"- Collector runs recorded: {report['collector_runs']} (success {report['collector_success']}, failure {report['collector_failure']})",

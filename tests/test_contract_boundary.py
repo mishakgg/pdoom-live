@@ -50,9 +50,17 @@ def test_seed_vocabulary_differs_from_application_enums_in_known_places():
     used_orgs = {row["organization_type"] for row in _jsonl("organizations.jsonl")}
     assert used_orgs - org_types == {"research_lab", "infrastructure", "safety_org", "independent"}
     used_sources = {row["source_type"] for row in _jsonl("sources.jsonl")}
-    assert used_sources - source_types == {"openalex_works"}
+    assert used_sources - source_types == {
+        "openalex_works",
+        "personal_website",
+        "lab_page",
+        "rss",
+        "github",
+        "x",
+    }
+    assert used_sources & source_types == {"newsletter", "podcast"}
     used_methods = {row["collection_method"] for row in _jsonl("sources.jsonl")}
-    assert used_methods <= {"openalex_api"}
+    assert used_methods == {"openalex_api", "rss_feed", "github_api", "reference_only"}
     assert used_methods.isdisjoint(methods)
     used_verification = {row["verification_method"] for row in _jsonl("external_identities.jsonl")}
     assert used_verification.isdisjoint(verification)

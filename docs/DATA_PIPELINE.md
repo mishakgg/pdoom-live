@@ -5,6 +5,7 @@ The data-collection side of pdoom.live lives in `pipeline/`. It does not render 
 ## Layout
 
 - `pipeline/pdoom_pipeline/seed/` — reviewed cohort `2026.09.0` and JSONL export.
+- `pipeline/pdoom_pipeline/enrich/` — name-confirmed pages, ORCID researcher URLs, and rel=me profiles.
 - `pipeline/pdoom_pipeline/identity/` — name keys and OpenAlex acceptance rules.
 - `pipeline/pdoom_pipeline/collectors/` — RSS/Atom, arXiv, GitHub, and OpenAlex works.
 - `pipeline/pdoom_pipeline/ingest/` — idempotent observation store and author-versus-mentioned roles.
@@ -22,9 +23,10 @@ From the repository root, with the virtualenv that has `pytest` and `defusedxml`
 ```bash
 PYTHONPATH=pipeline python -m pytest
 PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.resolve_seed
+PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.enrich_sources --live
 ```
 
-`pytest` does not call the network. Live OpenAlex resolution is the job module. Set `PDOOM_LIVE_TESTS=1` only for an optional live smoke test.
+`pytest` does not call the network. `resolve_seed --resolve` queries OpenAlex. `enrich_sources --live` reads ORCID records that are already linked and fetches claimed or ORCID URLs. It does not add people and it does not search social accounts by name. Set `PDOOM_LIVE_TESTS=1` only for an optional live smoke test.
 
 ## Collector contract
 
@@ -69,17 +71,20 @@ Seed JSONL is the reviewed registry:
 | `people.jsonl` | person registry |
 | `affiliations.jsonl` | affiliation registry |
 | `external_identities.jsonl` | OpenAlex and ORCID claims with resolver provenance |
-| `sources.jsonl` | collectible OpenAlex works feeds |
+| `sources.jsonl` | OpenAlex works feeds plus verified pages, feeds, and reference-only channels |
 | `ambiguities.jsonl` | unresolved identity decisions, not public identities |
+| `enrichment.json` | page decisions and collector runs for the latest enrichment |
 | `cohort.json` | cohort version metadata |
+
+`data/collections/cohort-v2026-09/source_observations.jsonl` holds `SourceObservation` rows from the RSS and GitHub collectors. `candidate_statements.jsonl` holds unreviewed extractor output. Those files are not a canonical import document.
 
 `packages/contracts/enums.json` records the collector vocabulary used when this pipeline was first written. Application enums live in `packages/contracts/src/enums.ts`. Where they differ, the TypeScript enums win for anything that enters PostgreSQL.
 
 Known gaps, left for a later import rather than forced through the fixture schema:
 
 - Organization types `research_lab`, `infrastructure`, `safety_org`, and `independent` are not in the application enum (`research_institute`, `company`, and the other listed types).
-- Source type `openalex_works` is not an application source type. Closest later mapping is `paper` plus `collection_method: api`.
-- Collection methods `openalex_api`, `arxiv_api`, `github_api`, and `rss_feed` are finer than `api` and `rss`.
+- Source type `openalex_works` is not an application source type. Closest later mapping is `paper` plus `collection_method: api`. Pipeline source types `personal_website`, `lab_page`, `rss`, `github`, and `x` also stay outside the application enum (`personal_site`, `lab_post`, `video`, `repository`, `social_post`). `newsletter` and `podcast` already use the application names but are still not imported.
+- Collection methods `openalex_api`, `arxiv_api`, `github_api`, `rss_feed`, and `reference_only` are finer than `api` and `rss`.
 - Verification methods such as `openalex_exact_name_and_institution` and `curator_reviewed` are not in the application enum. Provenance for those strings has to be kept beside a mapped method such as `cross_link` or `manual_review`.
 - Attribution methods on observations (`arxiv_author_metadata`, `feed_author_field`, and others) are not the application attribution enum.
 - Confidence on identities is `high` / `medium` / `low`. The application field is a number from 0 to 1.
@@ -89,7 +94,7 @@ Known gaps, left for a later import rather than forced through the fixture schem
 
 Identity rows from OpenAlex are `machine_validated` at high confidence and `needs_review` at medium confidence in the seed files. The application trend rules treat those review states differently. Cohort membership on the roster is curator-reviewed. Do not present medium-confidence roles or ids as settled facts.
 
-X, Bluesky, Mastodon, YouTube, Hugging Face, and podcast records were not collected in this version. Do not backfill them by name search.
+Enrichment adds a personal or lab profile only when the fetched page contains the person's full display name. `rel=me` links on that page can add GitHub, Hugging Face, Bluesky, Mastodon, X, or YouTube. An X URL listed on the linked ORCID record is kept only when that page also contains the full name. LinkedIn, Wikipedia, and sitewide feeds such as recent-changes or oEmbed are not registered. Name search is not used. Profiles that fail the name check stay unconfirmed. GitHub metadata and RSS/Atom, including a YouTube channel Atom feed when a channel id is linked, are the collectors used for these new sources. Bluesky, Mastodon, and X rows are identities with collection disabled.
 
 ## Failure classes
 

@@ -7,8 +7,8 @@
   "organizations": 87,
   "organizations_with_a_current_member": 76,
   "affiliations": 408,
-  "external_identities": 394,
-  "sources": 246,
+  "external_identities": 413,
+  "sources": 270,
   "ambiguities": 71,
   "inclusion_reasons": {
     "frontier_lab_researcher": 79,
@@ -120,21 +120,42 @@
   },
   "identity_confidence": {
     "medium": 203,
-    "high": 191
+    "high": 210
   },
   "percent_with_academic_identifier": 76.2,
-  "percent_with_profile_or_claimed_site": 1.9,
+  "percent_with_profile_or_claimed_site": 4.0,
+  "percent_with_verified_profile": 3.4,
+  "claimed_unconfirmed_profile_count": 2,
+  "external_identities_by_namespace": {
+    "openalex": 246,
+    "orcid": 148,
+    "personal_website": 4,
+    "x": 5,
+    "github": 1,
+    "lab_profile": 9
+  },
   "percent_with_continuously_collectible_source": 76.2,
   "sources_by_type": {
-    "openalex_works": 246
+    "openalex_works": 246,
+    "personal_website": 4,
+    "x": 5,
+    "github": 1,
+    "rss": 2,
+    "podcast": 1,
+    "lab_page": 9,
+    "newsletter": 2
   },
   "missing_academic_identifier_count": 77,
   "ambiguous_match_count": 71,
   "duplicate_candidate_count": 0,
-  "collector_runs": 4,
-  "collector_success": 4,
-  "collector_failure": 0,
-  "collector_failure_classes": {},
+  "collector_runs": 176,
+  "collector_success": 170,
+  "collector_failure": 6,
+  "collector_failure_classes": {
+    "temporarily_unavailable": 2,
+    "unauthorized": 3,
+    "not_found": 1
+  },
   "biases": [
     "English-language public profiles and English-indexed academic graphs are over-represented.",
     "Organization headquarters country is not nationality and is not a place of birth.",
