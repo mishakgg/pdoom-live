@@ -56,4 +56,9 @@ Key design documents:
 
 ## Status
 
-Project foundation only. Application implementation and production datasets have not yet been built.
+The product application is still a separate workstream. The data-collection side has a versioned cohort methodology, a reviewed seed registry, and four collectors (RSS/Atom, arXiv, GitHub, OpenAlex works).
+
+- [Cohort methodology](./docs/COHORT_METHODOLOGY.md) — cohort `2026.09.0` is a purposive seed, not all AI researchers.
+- [Data pipeline](./docs/DATA_PIPELINE.md) — how identities, sources, and observations are produced.
+- Seed files: `data/seed/cohort/v2026-09/`.
+- Quality report: `data/reports/cohort-v2026-09-quality.md`.

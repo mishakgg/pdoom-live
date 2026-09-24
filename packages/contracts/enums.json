@@ -1,0 +1,34 @@
+{
+  "statement_type": ["explicit_numeric", "explicit_qualitative", "model_inferred_signal"],
+  "review_state": ["unreviewed", "machine_validated", "human_verified", "rejected", "needs_review"],
+  "participant_role": ["author", "speaker", "guest", "interviewer", "publisher", "mentioned"],
+  "person_status": ["active", "historical", "review"],
+  "inclusion_reason": [
+    "frontier_lab_researcher",
+    "frontier_model_author",
+    "frontier_safety_eval",
+    "academic_forecasting",
+    "former_frontier_researcher"
+  ],
+  "confidence": ["high", "medium", "low", "unknown"],
+  "source_type": [
+    "personal_website",
+    "rss",
+    "lab_page",
+    "research_paper",
+    "preprint",
+    "podcast",
+    "youtube",
+    "github",
+    "huggingface",
+    "bluesky",
+    "mastodon",
+    "x",
+    "conference_talk",
+    "testimony",
+    "press",
+    "newsletter",
+    "openalex_works",
+    "other"
+  ]
+}

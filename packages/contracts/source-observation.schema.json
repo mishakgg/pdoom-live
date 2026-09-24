@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pdoom.live/contracts/source-observation.schema.json",
+  "title": "SourceObservation",
+  "type": "object",
+  "required": [
+    "source_identity",
+    "platform",
+    "canonical_url",
+    "observed_at",
+    "author_candidates",
+    "segments",
+    "content_hash",
+    "collector",
+    "collector_version"
+  ],
+  "properties": {
+    "source_identity": {"type": "string"},
+    "platform": {"type": "string"},
+    "upstream_id": {"type": ["string", "null"]},
+    "canonical_url": {"type": "string"},
+    "observed_at": {"type": "string"},
+    "published_at": {"type": ["string", "null"]},
+    "title": {"type": ["string", "null"]},
+    "content_hash": {"type": "string"},
+    "collection_method": {"type": "string"},
+    "collector": {"type": "string"},
+    "collector_version": {"type": "string"},
+    "author_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "role", "attribution_method", "confidence"],
+        "properties": {
+          "name": {"type": "string"},
+          "role": {"enum": ["author", "speaker", "guest", "interviewer", "publisher", "mentioned"]},
+          "attribution_method": {"type": "string"},
+          "confidence": {"enum": ["high", "medium", "low", "unknown"]},
+          "person_id": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "segments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["segment_kind", "sequence", "text"],
+        "properties": {
+          "segment_kind": {"type": "string"},
+          "sequence": {"type": "integer"},
+          "text": {"type": "string"},
+          "start_char": {"type": ["integer", "null"]},
+          "end_char": {"type": ["integer", "null"]}
+        }
+      }
+    },
+    "metadata": {"type": "object"}
+  },
+  "description": "Normalized collector envelope from docs/ARCHITECTURE.md. Source text is untrusted data."
+}
