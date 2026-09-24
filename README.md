@@ -56,9 +56,42 @@ Key design documents:
 
 ## Status
 
-The product application is still a separate workstream. The data-collection side has a versioned cohort methodology, a reviewed seed registry, and four collectors (RSS/Atom, arXiv, GitHub, OpenAlex works).
+The first testing-ready product slice runs on PostgreSQL with a synthetic fixture cohort. The data-collection side has a separate versioned seed, identity graph, and collectors. That seed is not loaded by `npm run db:seed`.
 
 - [Cohort methodology](./docs/COHORT_METHODOLOGY.md) — cohort `2026.09.0` is a purposive seed, not all AI researchers.
-- [Data pipeline](./docs/DATA_PIPELINE.md) — how identities, sources, and observations are produced.
+- [Data pipeline](./docs/DATA_PIPELINE.md) — collector envelope, seed files, and the gap to the application import.
+- [Ingestion contract](./docs/INGESTION_CONTRACT.md) — canonical document the product imports. The current schema requires `synthetic: true` and is the fixture loader, not the live seed.
 - Seed files: `data/seed/cohort/v2026-09/`.
 - Quality report: `data/reports/cohort-v2026-09-quality.md`.
+
+## Local development
+
+Requirements: Node.js 22, PostgreSQL 16. Python 3.11+ with `pytest` and `defusedxml` for the collector suite.
+
+```bash
+cp .env.example .env
+createdb pdoom_live
+createdb pdoom_live_test
+npm install
+npm run db:migrate
+npm run db:seed
+npm run dev
+```
+
+The app listens on `http://localhost:3000`.
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Next.js development server |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | TypeScript |
+| `npm test` | Vitest, including database tests against `DATABASE_URL` |
+| `npm run db:migrate` | Apply SQL migrations |
+| `npm run db:seed` | Idempotently load `data/fixtures/synthetic/dataset.json` |
+| `npm run db:reset` | Truncate product tables and seed again |
+| `npm run build` | Production build |
+| `PYTHONPATH=pipeline python -m pytest` | Collector, identity, and seed tests. No network. |
+
+Database tests refuse to run unless the database name contains `test`. Point `DATABASE_URL` at `pdoom_live_test` before `npm test`, or export it in the shell. Do not point the test runner at the development database.
+
+The fixture people, organizations, and quotations are fictional. The researcher seed under `data/seed/` is a real public-identity registry and is not a synthetic fixture.

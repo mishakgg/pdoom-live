@@ -12,7 +12,8 @@ The data-collection side of pdoom.live lives in `pipeline/`. It does not render 
 - `pipeline/pdoom_pipeline/fetch.py` — scheme, DNS, and address checks; redirect, size, timeout, and decompression limits.
 - `data/seed/cohort/v2026-09/` — generated organizations, people, affiliations, identities, sources, and ambiguities.
 - `data/fixtures/` — offline collector fixtures, including hostile source text.
-- `packages/contracts/` — JSON enums and the source-observation schema for the product agent.
+- `packages/contracts/src/` — application enums and the canonical import schema. That schema is the product contract.
+- `packages/contracts/source-observation.schema.json` — collector envelope only. It is not the database import document.
 
 ## Commands
 
@@ -54,23 +55,39 @@ Source text is stored and parsed as data. A fixture containing "ignore your inst
 
 `model_inferred_signal` is a separate keyword tagger. It has no numeric value.
 
-## Coding-agent handoff
+## Application contract
 
-No product schema had been published in this repository when this pipeline was written. Import the JSONL files in `data/seed/cohort/v2026-09/` into the tables in `docs/DATA_MODEL.md`:
+The product imports one JSON document described in `docs/INGESTION_CONTRACT.md` and `packages/contracts/schema/canonical-import.schema.json`. Cross-references are slugs. The importer assigns UUIDs. `dataset.synthetic` is fixed to `true` for the fixture loader. The live seed is not that document and must not be marked synthetic to pass the fixture schema.
 
-| File | Entity |
+`SourceObservation` remains the collector output. It is normalized content before a canonical source item exists. A later mapper can turn observations into source items. This repository does not do that mapping yet.
+
+Seed JSONL is the reviewed registry:
+
+| File | Role |
 | --- | --- |
-| `organizations.jsonl` | Organization |
-| `people.jsonl` | Person |
-| `affiliations.jsonl` | Affiliation |
-| `external_identities.jsonl` | ExternalIdentity |
-| `sources.jsonl` | Source |
-| `ambiguities.jsonl` | review queue, not a public identity |
+| `organizations.jsonl` | organization registry, not yet a canonical import row |
+| `people.jsonl` | person registry |
+| `affiliations.jsonl` | affiliation registry |
+| `external_identities.jsonl` | OpenAlex and ORCID claims with resolver provenance |
+| `sources.jsonl` | collectible OpenAlex works feeds |
+| `ambiguities.jsonl` | unresolved identity decisions, not public identities |
 | `cohort.json` | cohort version metadata |
 
-Enum values are in `packages/contracts/enums.json`. Observations from collectors validate against `packages/contracts/source-observation.schema.json`.
+`packages/contracts/enums.json` records the collector vocabulary used when this pipeline was first written. Application enums live in `packages/contracts/src/enums.ts`. Where they differ, the TypeScript enums win for anything that enters PostgreSQL.
 
-Identity rows produced by OpenAlex are `machine_validated` when confidence is high and `needs_review` when confidence is medium. Cohort membership itself is `human_verified` because a person was placed on the reviewed roster. Do not present medium-confidence roles or medium-confidence ids as settled facts.
+Known gaps, left for a later import rather than forced through the fixture schema:
+
+- Organization types `research_lab`, `infrastructure`, `safety_org`, and `independent` are not in the application enum (`research_institute`, `company`, and the other listed types).
+- Source type `openalex_works` is not an application source type. Closest later mapping is `paper` plus `collection_method: api`.
+- Collection methods `openalex_api`, `arxiv_api`, `github_api`, and `rss_feed` are finer than `api` and `rss`.
+- Verification methods such as `openalex_exact_name_and_institution` and `curator_reviewed` are not in the application enum. Provenance for those strings has to be kept beside a mapped method such as `cross_link` or `manual_review`.
+- Attribution methods on observations (`arxiv_author_metadata`, `feed_author_field`, and others) are not the application attribution enum.
+- Confidence on identities is `high` / `medium` / `low`. The application field is a number from 0 to 1.
+- Seed ids look like `person:{slug}`. The application uses the slug alone.
+- Application `externalIdentity.verified_at` is an offset timestamp. Resolver times use a `Z` suffix.
+- Participant roles, statement classes, and the current inclusion notes fit the application names and the 600-character bio cap. That does not make the surrounding rows importable.
+
+Identity rows from OpenAlex are `machine_validated` at high confidence and `needs_review` at medium confidence in the seed files. The application trend rules treat those review states differently. Cohort membership on the roster is curator-reviewed. Do not present medium-confidence roles or ids as settled facts.
 
 X, Bluesky, Mastodon, YouTube, Hugging Face, and podcast records were not collected in this version. Do not backfill them by name search.
 
