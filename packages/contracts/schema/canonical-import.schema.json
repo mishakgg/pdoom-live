@@ -2,19 +2,54 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0.0"
+    },
     "dataset_id": {
       "type": "string",
       "minLength": 1,
       "maxLength": 80
     },
-    "synthetic": {
-      "type": "boolean",
-      "const": true
+    "dataset_kind": {
+      "type": "string",
+      "enum": [
+        "synthetic",
+        "live"
+      ]
     },
+    "generated_at": {},
     "notice": {
       "type": "string",
       "minLength": 1,
-      "maxLength": 600
+      "maxLength": 1200
+    },
+    "producer": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 80
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 40
+            }
+          },
+          "required": [
+            "name",
+            "version"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "organizations": {
       "minItems": 1,
@@ -37,11 +72,15 @@
             "enum": [
               "frontier_lab",
               "research_institute",
+              "research_lab",
               "university",
               "company",
               "publisher",
               "government",
-              "nonprofit"
+              "nonprofit",
+              "infrastructure",
+              "safety_org",
+              "independent"
             ]
           },
           "canonical_url": {
@@ -207,10 +246,36 @@
               }
             ]
           },
-          "confidence": {
-            "type": "number",
-            "minimum": 0,
-            "maximum": 1
+          "confidence_level": {
+            "type": "string",
+            "enum": [
+              "high",
+              "medium",
+              "low",
+              "unknown"
+            ]
+          },
+          "verification_detail": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "review_state": {
+            "type": "string",
+            "enum": [
+              "unreviewed",
+              "machine_validated",
+              "human_verified",
+              "rejected",
+              "needs_review"
+            ]
           },
           "is_current": {
             "type": "boolean"
@@ -223,7 +288,9 @@
           "start_date",
           "end_date",
           "source_slug",
-          "confidence",
+          "confidence_level",
+          "verification_detail",
+          "review_state",
           "is_current"
         ],
         "additionalProperties": false
@@ -292,21 +359,44 @@
               "cross_link",
               "platform_verification",
               "manual_review",
+              "structured_academic_source",
               "synthetic_fixture"
             ]
           },
-          "confidence": {
-            "type": "number",
-            "minimum": 0,
-            "maximum": 1
-          },
-          "verified_at": {
+          "verification_detail": {
             "anyOf": [
               {
                 "type": "string",
-                "format": "date-time",
-                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+                "minLength": 1,
+                "maxLength": 160
               },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "confidence_level": {
+            "type": "string",
+            "enum": [
+              "high",
+              "medium",
+              "low",
+              "unknown"
+            ]
+          },
+          "review_state": {
+            "type": "string",
+            "enum": [
+              "unreviewed",
+              "machine_validated",
+              "human_verified",
+              "rejected",
+              "needs_review"
+            ]
+          },
+          "verified_at": {
+            "anyOf": [
+              {},
               {
                 "type": "null"
               }
@@ -332,7 +422,9 @@
           "canonical_url",
           "handle",
           "verification_method",
-          "confidence",
+          "verification_detail",
+          "confidence_level",
+          "review_state",
           "verified_at",
           "source_slug"
         ],
@@ -358,6 +450,8 @@
               "podcast",
               "video",
               "paper",
+              "preprint",
+              "academic_works",
               "lab_post",
               "conference_talk",
               "testimony",
@@ -423,6 +517,18 @@
               "sitemap"
             ]
           },
+          "collection_adapter": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 80
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "rights_notes": {
             "anyOf": [
               {
@@ -437,13 +543,19 @@
           "enabled": {
             "type": "boolean"
           },
+          "review_state": {
+            "type": "string",
+            "enum": [
+              "unreviewed",
+              "machine_validated",
+              "human_verified",
+              "rejected",
+              "needs_review"
+            ]
+          },
           "last_checked_at": {
             "anyOf": [
-              {
-                "type": "string",
-                "format": "date-time",
-                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
-              },
+              {},
               {
                 "type": "null"
               }
@@ -451,11 +563,7 @@
           },
           "last_success_at": {
             "anyOf": [
-              {
-                "type": "string",
-                "format": "date-time",
-                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
-              },
+              {},
               {
                 "type": "null"
               }
@@ -471,8 +579,10 @@
           "owner_person_slug",
           "owner_organization_slug",
           "collection_method",
+          "collection_adapter",
           "rights_notes",
           "enabled",
+          "review_state",
           "last_checked_at",
           "last_success_at"
         ],
@@ -529,11 +639,7 @@
           },
           "published_at": {
             "anyOf": [
-              {
-                "type": "string",
-                "format": "date-time",
-                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
-              },
+              {},
               {
                 "type": "null"
               }
@@ -551,18 +657,10 @@
               }
             ]
           },
-          "observed_at": {
-            "type": "string",
-            "format": "date-time",
-            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
-          },
+          "observed_at": {},
           "updated_at_source": {
             "anyOf": [
-              {
-                "type": "string",
-                "format": "date-time",
-                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
-              },
+              {},
               {
                 "type": "null"
               }
@@ -580,10 +678,28 @@
               }
             ]
           },
+          "content_hash": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
           "content_hash_input": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 200000
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200000
+              },
+              {
+                "type": "null"
+              }
+            ]
           },
           "content_version": {
             "type": "integer",
@@ -654,6 +770,7 @@
           "observed_at",
           "updated_at_source",
           "language",
+          "content_hash",
           "content_hash_input",
           "content_version",
           "content_reference",
@@ -721,10 +838,26 @@
               "synthetic_fixture"
             ]
           },
-          "confidence": {
-            "type": "number",
-            "minimum": 0,
-            "maximum": 1
+          "attribution_detail": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 160
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "confidence_level": {
+            "type": "string",
+            "enum": [
+              "high",
+              "medium",
+              "low",
+              "unknown"
+            ]
           }
         },
         "required": [
@@ -733,7 +866,8 @@
           "organization_slug",
           "role",
           "attribution_method",
-          "confidence"
+          "attribution_detail",
+          "confidence_level"
         ],
         "additionalProperties": false
       }
@@ -931,11 +1065,7 @@
           },
           "event_time": {
             "anyOf": [
-              {
-                "type": "string",
-                "format": "date-time",
-                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
-              },
+              {},
               {
                 "type": "null"
               }
@@ -1344,18 +1474,10 @@
               }
             ]
           },
-          "started_at": {
-            "type": "string",
-            "format": "date-time",
-            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
-          },
+          "started_at": {},
           "completed_at": {
             "anyOf": [
-              {
-                "type": "string",
-                "format": "date-time",
-                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
-              },
+              {},
               {
                 "type": "null"
               }
@@ -1487,18 +1609,10 @@
             "minLength": 1,
             "maxLength": 40
           },
-          "started_at": {
-            "type": "string",
-            "format": "date-time",
-            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
-          },
+          "started_at": {},
           "completed_at": {
             "anyOf": [
-              {
-                "type": "string",
-                "format": "date-time",
-                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
-              },
+              {},
               {
                 "type": "null"
               }
@@ -1734,9 +1848,12 @@
     }
   },
   "required": [
+    "schema_version",
     "dataset_id",
-    "synthetic",
+    "dataset_kind",
+    "generated_at",
     "notice",
+    "producer",
     "organizations",
     "people",
     "affiliations",

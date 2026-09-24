@@ -6,7 +6,19 @@ Schema: `packages/contracts/schema/canonical-import.schema.json`
 TypeScript source: `packages/contracts/src/schemas.ts`  
 Fixture example: `data/fixtures/synthetic/dataset.json`
 
-`dataset.synthetic` must be `true` for the fixture loader. A future live import can extend the schema version; do not invent probabilities for qualitative text.
+Schema version `1.0.0` requires `schema_version`, `dataset_id`, `dataset_kind` (`synthetic` or `live`), `generated_at`, and `notice`. `producer` is optional. A live dataset must not set a synthetic flag and must not use `synthetic_fixture` or `collection_method: fixture`.
+
+Identity and affiliation confidence is `high`, `medium`, `low`, or `unknown`. Those words are not probabilities. Numeric `confidence` remains only on statements, forecasts, topics, and relationships, where it is an extraction score.
+
+`content_hash` may be a precomputed SHA-256. `content_hash_input` is optional and is hashed then discarded. A live item does not need its full body.
+
+Operator commands, with `DATABASE_URL` set for the write commands:
+
+- `npm run db:validate -- data/fixtures/synthetic/dataset.json` parses and checks the file. It does not write.
+- `npm run db:import -- <file>` validates, applies pending migrations, then upserts in one transaction. Rows absent from the file are kept.
+- `npm run db:status` prints the current dataset, cohort, counts, and coverage.
+
+Canonical values are product semantics. Collector strings such as `openalex_api` map to `api`, and the original string is stored as `collection_adapter` or `verification_detail`. The map is `packages/contracts/vocabulary-map.json`. Unmapped strings fail. `SourceObservation` is still the collector envelope and is not this document.
 
 ## Identity
 

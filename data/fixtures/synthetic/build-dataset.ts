@@ -12,10 +12,13 @@ const largeBody = `${"synthetic unpublished body ".repeat(80)}${marker}`;
 const hash = (text: string) => sha256(text);
 
 const dataset = {
+  schema_version: "1.0.0",
   dataset_id: "synthetic-frontier-v1",
-  synthetic: true,
+  dataset_kind: "synthetic",
+  generated_at: "2025-08-01T00:00:00Z",
   notice:
     "All people, organizations, quotations, and sources in this dataset are fictional. They are not depictions of real individuals.",
+  producer: { name: "synthetic-fixture", version: "1" },
   organizations: [
     ["northwind-alignment-lab", "Northwind Alignment Lab", "frontier_lab"],
     ["harbor-compute", "Harbor Compute", "frontier_lab"],
@@ -65,7 +68,9 @@ const dataset = {
     start_date,
     end_date,
     source_slug: null,
-    confidence: 1,
+    confidence_level: "high",
+    verification_detail: null,
+    review_state: "human_verified",
     is_current,
   })),
   external_identities: [
@@ -82,7 +87,9 @@ const dataset = {
     canonical_url: `https://synthetic.pdoom.example/id/${namespace}/${external_id}`,
     handle,
     verification_method: "synthetic_fixture",
-    confidence: 1,
+    verification_detail: null,
+    confidence_level: "high",
+    review_state: "human_verified",
     verified_at: "2025-01-01T00:00:00Z",
     source_slug: null,
   })),
@@ -112,7 +119,9 @@ const dataset = {
     owner_person_slug,
     owner_organization_slug,
     collection_method: "fixture",
+    collection_adapter: null,
     rights_notes: "Synthetic fixture. Short excerpts only.",
+    review_state: "human_verified",
     enabled: slug !== "jonah-podcast",
     last_checked_at: "2025-08-01T00:00:00Z",
     last_success_at: slug === "jonah-podcast" ? null : "2025-08-01T00:00:00Z",
@@ -279,6 +288,7 @@ for (const item of items) {
     observed_at: item.observed_at,
     updated_at_source: null,
     language: "en",
+    content_hash: null,
     content_hash_input: body,
     content_version: 1,
     content_reference: `fixture://source-items/${item.slug}`,
@@ -294,7 +304,8 @@ for (const item of items) {
     organization_slug: null,
     role: item.kind === "transcript" || item.kind === "caption" ? "speaker" : "author",
     attribution_method: "synthetic_fixture",
-    confidence: 1,
+    attribution_detail: null,
+    confidence_level: "high",
   });
   if (item.mentioned) {
     dataset.participants.push({
@@ -303,7 +314,8 @@ for (const item of items) {
       organization_slug: null,
       role: "mentioned",
       attribution_method: "synthetic_fixture",
-      confidence: 0.9,
+      attribution_detail: null,
+      confidence_level: "high",
     });
   }
   dataset.evidence_segments.push({

@@ -35,7 +35,7 @@ export function SiteFooter() {
     <footer className="site">
       <p>
         pdoom.live records sourced statements. Explicit estimates, qualitative views, and model-inferred signals stay separate.
-        This deployment is loaded with a synthetic fixture cohort.
+        A synthetic fixture is marked synthetic. A live dataset describes its cohort and is not a census.
       </p>
     </footer>
   );

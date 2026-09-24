@@ -57,9 +57,9 @@ Source text is stored and parsed as data. A fixture containing "ignore your inst
 
 ## Application contract
 
-The product imports one JSON document described in `docs/INGESTION_CONTRACT.md` and `packages/contracts/schema/canonical-import.schema.json`. Cross-references are slugs. The importer assigns UUIDs. `dataset.synthetic` is fixed to `true` for the fixture loader. The live seed is not that document and must not be marked synthetic to pass the fixture schema.
+The product imports one JSON document described in `docs/INGESTION_CONTRACT.md` and `packages/contracts/schema/canonical-import.schema.json`. Cross-references are slugs. The importer assigns UUIDs. `dataset_kind` is `synthetic` or `live`. A live export must not claim to be synthetic.
 
-`SourceObservation` remains the collector output. It is normalized content before a canonical source item exists. A later mapper can turn observations into source items. This repository does not do that mapping yet.
+Flow: collector `SourceObservation` → normalized seed registry → `pdoom_pipeline.export.canonical.export_seed` → application `validateDocument` / `importCanonical`. The web app does not read OpenAlex field names. Adapter names survive as `collection_adapter`, `verification_detail`, or `attribution_detail`.
 
 Seed JSONL is the reviewed registry:
 
@@ -75,17 +75,16 @@ Seed JSONL is the reviewed registry:
 
 `packages/contracts/enums.json` records the collector vocabulary used when this pipeline was first written. Application enums live in `packages/contracts/src/enums.ts`. Where they differ, the TypeScript enums win for anything that enters PostgreSQL.
 
-Known gaps, left for a later import rather than forced through the fixture schema:
+The exporter in `pipeline/pdoom_pipeline/export/canonical.py` applies `packages/contracts/vocabulary-map.json`:
 
-- Organization types `research_lab`, `infrastructure`, `safety_org`, and `independent` are not in the application enum (`research_institute`, `company`, and the other listed types).
-- Source type `openalex_works` is not an application source type. Closest later mapping is `paper` plus `collection_method: api`.
-- Collection methods `openalex_api`, `arxiv_api`, `github_api`, and `rss_feed` are finer than `api` and `rss`.
-- Verification methods such as `openalex_exact_name_and_institution` and `curator_reviewed` are not in the application enum. Provenance for those strings has to be kept beside a mapped method such as `cross_link` or `manual_review`.
-- Attribution methods on observations (`arxiv_author_metadata`, `feed_author_field`, and others) are not the application attribution enum.
-- Confidence on identities is `high` / `medium` / `low`. The application field is a number from 0 to 1.
-- Seed ids look like `person:{slug}`. The application uses the slug alone.
-- Application `externalIdentity.verified_at` is an offset timestamp. Resolver times use a `Z` suffix.
-- Participant roles, statement classes, and the current inclusion notes fit the application names and the 600-character bio cap. That does not make the surrounding rows importable.
+- Organization types `research_lab`, `infrastructure`, `safety_org`, and `independent` are canonical. They are not collapsed.
+- `openalex_works` becomes `academic_works`. `personal_website` becomes `personal_site`, `research_paper` becomes `paper`, `youtube` becomes `video`, `github` becomes `repository`, `lab_page` becomes `lab_post`. `huggingface`, collector `rss`, and `other` are unmapped and fail.
+- `openalex_api`, `arxiv_api`, and `github_api` become `api`. `rss_feed` becomes `rss`. The original method is `collection_adapter`.
+- `curator_reviewed` becomes `manual_review`. `openalex_exact_name_and_institution`, `openalex_dominant_profile`, and `openalex_unique_exact_name` become `structured_academic_source`. `openalex_orcid_crosswalk` becomes `cross_link`. The original strategy is `verification_detail`.
+- `arxiv_author_metadata`, `feed_author_field`, `github_repo_owner`, `openalex_authorship`, and `name_occurrence_in_body` become `metadata`. `source_author_field` becomes `byline`. The original string is `attribution_detail`.
+- Identity and affiliation confidence stays `high` / `medium` / `low`. It is not converted to 0.9 / 0.6 / 0.3. Statement confidence stays numeric.
+- `person:{slug}` and `org:{slug}` become the slug only when that prefix is present and matches the slug field. `src:person:{slug}:openalex` becomes `{slug}-openalex`. `cohort_YYYY_MM` becomes `cohort-YYYY-MM`. Other shapes are rejected.
+- `Z` and explicit UTC offsets normalize to the same instant before storage.
 
 Identity rows from OpenAlex are `machine_validated` at high confidence and `needs_review` at medium confidence in the seed files. The application trend rules treat those review states differently. Cohort membership on the roster is curator-reviewed. Do not present medium-confidence roles or ids as settled facts.
 

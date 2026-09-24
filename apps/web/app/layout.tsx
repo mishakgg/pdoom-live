@@ -9,7 +9,7 @@ const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variabl
 
 export const metadata: Metadata = {
   title: { default: "pdoom.live", template: "%s · pdoom.live" },
-  description: "A provenance-first observatory of public AI forecasts. This deployment uses a synthetic fixture cohort.",
+  description: "A provenance-first observatory of public AI forecasts. Synthetic fixtures are marked synthetic. A live dataset is not a census.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

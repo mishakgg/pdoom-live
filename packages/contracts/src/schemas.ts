@@ -4,6 +4,8 @@ import {
   AVAILABILITY_STATUSES,
   COLLECTION_METHODS,
   COLLECTION_STATUSES,
+  CONFIDENCE_LEVELS,
+  DATASET_KINDS,
   FORECAST_KINDS,
   IDENTITY_NAMESPACES,
   ORGANIZATION_TYPES,
@@ -11,12 +13,14 @@ import {
   PERSON_STATUSES,
   RELATIONSHIP_TYPES,
   REVIEW_STATES,
+  SCHEMA_VERSION,
   SEGMENT_KINDS,
   SOURCE_TYPES,
   STATEMENT_TYPES,
   VALUE_TYPES,
   VERIFICATION_METHODS,
 } from "./enums";
+import { normalizeTimestamp } from "./normalize";
 import { assessFetchUrl } from "./urls";
 
 const slug = z
@@ -29,7 +33,17 @@ const publicUrl = z.string().max(2000).refine((value) => assessFetchUrl(value).o
 });
 
 const confidence = z.number().min(0).max(1);
-const timestamp = z.iso.datetime({ offset: true });
+const confidenceLevel = z.enum(CONFIDENCE_LEVELS);
+const timestamp = z.string().transform((value, ctx) => {
+  try {
+    return normalizeTimestamp(value);
+  } catch {
+    ctx.addIssue({ code: "custom", message: "timestamp must be ISO-8601 with Z or an explicit offset" });
+    return z.NEVER;
+  }
+});
+const sha256 = z.string().regex(/^[a-f0-9]{64}$/);
+const detail = z.string().min(1).max(160).nullable();
 const dateOnly = z.string().regex(/^\d{4}-\d{2}-\d{2}$/);
 
 export const organizationSchema = z.object({
@@ -57,7 +71,9 @@ export const affiliationSchema = z.object({
   start_date: dateOnly.nullable(),
   end_date: dateOnly.nullable(),
   source_slug: slug.nullable(),
-  confidence,
+  confidence_level: confidenceLevel,
+  verification_detail: detail,
+  review_state: z.enum(REVIEW_STATES),
   is_current: z.boolean(),
 }).strict();
 
@@ -68,7 +84,9 @@ export const externalIdentitySchema = z.object({
   canonical_url: publicUrl.nullable(),
   handle: z.string().min(1).max(120).nullable(),
   verification_method: z.enum(VERIFICATION_METHODS),
-  confidence,
+  verification_detail: detail,
+  confidence_level: confidenceLevel,
+  review_state: z.enum(REVIEW_STATES),
   verified_at: timestamp.nullable(),
   source_slug: slug.nullable(),
 }).strict();
@@ -82,8 +100,10 @@ export const sourceSchema = z.object({
   owner_person_slug: slug.nullable(),
   owner_organization_slug: slug.nullable(),
   collection_method: z.enum(COLLECTION_METHODS),
+  collection_adapter: z.string().min(1).max(80).nullable(),
   rights_notes: z.string().max(600).nullable(),
   enabled: z.boolean(),
+  review_state: z.enum(REVIEW_STATES),
   last_checked_at: timestamp.nullable(),
   last_success_at: timestamp.nullable(),
 }).strict();
@@ -100,7 +120,8 @@ export const sourceItemSchema = z.object({
   observed_at: timestamp,
   updated_at_source: timestamp.nullable(),
   language: z.string().min(2).max(16).nullable(),
-  content_hash_input: z.string().min(1).max(200_000),
+  content_hash: sha256.nullable(),
+  content_hash_input: z.string().min(1).max(200_000).nullable(),
   content_version: z.number().int().positive(),
   content_reference: z.string().min(1).max(300),
   metadata: z.record(z.string(), z.unknown()),
@@ -108,7 +129,9 @@ export const sourceItemSchema = z.object({
   availability: z.enum(AVAILABILITY_STATUSES),
   is_current: z.boolean(),
   ingestion_run_slug: slug.nullable(),
-}).strict();
+}).strict().refine((value) => value.content_hash !== null || value.content_hash_input !== null, {
+  message: "source item requires content_hash or content_hash_input",
+});
 
 export const participantSchema = z.object({
   source_item_slug: slug,
@@ -116,7 +139,8 @@ export const participantSchema = z.object({
   organization_slug: slug.nullable(),
   role: z.enum(PARTICIPANT_ROLES),
   attribution_method: z.enum(ATTRIBUTION_METHODS),
-  confidence,
+  attribution_detail: detail,
+  confidence_level: confidenceLevel,
 }).strict().refine((value) => value.person_slug || value.organization_slug, {
   message: "participant requires a person or organization",
 });
@@ -299,9 +323,15 @@ export const trendDefinitionSchema = z.object({
 }).strict();
 
 export const canonicalImportSchema = z.object({
+  schema_version: z.literal(SCHEMA_VERSION),
   dataset_id: z.string().min(1).max(80),
-  synthetic: z.literal(true),
-  notice: z.string().min(1).max(600),
+  dataset_kind: z.enum(DATASET_KINDS),
+  generated_at: timestamp,
+  notice: z.string().min(1).max(1200),
+  producer: z.object({
+    name: z.string().min(1).max(80),
+    version: z.string().min(1).max(40),
+  }).strict().nullable(),
   organizations: z.array(organizationSchema).min(1),
   people: z.array(personSchema).min(1),
   affiliations: z.array(affiliationSchema),
