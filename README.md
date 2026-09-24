@@ -56,4 +56,35 @@ Key design documents:
 
 ## Status
 
-Project foundation only. Application implementation and production datasets have not yet been built.
+The first testing-ready product slice is in place. It runs on PostgreSQL with a synthetic fixture cohort. Live source collection is intentionally not part of this slice.
+
+## Local development
+
+Requirements: Node.js 22, PostgreSQL 16.
+
+```bash
+cp .env.example .env
+createdb pdoom_live
+createdb pdoom_live_test
+npm install
+npm run db:migrate
+npm run db:seed
+npm run dev
+```
+
+The app listens on `http://localhost:3000`.
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Next.js development server |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | TypeScript |
+| `npm test` | Vitest, including database tests against `DATABASE_URL` |
+| `npm run db:migrate` | Apply SQL migrations |
+| `npm run db:seed` | Idempotently load `data/fixtures/synthetic/dataset.json` |
+| `npm run db:reset` | Truncate product tables and seed again |
+| `npm run build` | Production build |
+
+Database tests refuse to run unless the database name contains `test`. Point `DATABASE_URL` at `pdoom_live_test` before `npm test`, or export it in the shell. Do not point the test runner at the development database.
+
+The fixture people, organizations, and quotations are fictional. See [the ingestion contract](./docs/INGESTION_CONTRACT.md) for the document the data-collection pipeline should emit.

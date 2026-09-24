@@ -312,3 +312,15 @@ Prefer:
 - clear correction timestamps.
 
 Never silently rewrite historical evidence.
+
+## Implementation additions
+
+The first product slice adds these fields without collapsing the entities above:
+
+- Slugs on people, organizations, sources, source items, evidence, statements, topics, cohorts, and runs, used as natural keys in the import document.
+- `source_items.logical_key`, `content_hash`, `content_version`, and `is_current`. The unpublished body is not a column.
+- `forecasts.question_key`, the comparability key a trend must match.
+- `cohorts` and `cohort_memberships`, so a trend can name a cohort version.
+- `trend_definitions.method_version` plus the aggregation JSON. Observations are computed from canonical rows.
+
+The import document is specified in `docs/INGESTION_CONTRACT.md`.
