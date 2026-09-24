@@ -1,0 +1,16 @@
+{
+  "name": "@pdoom/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema/canonical-import.schema.json": "./schema/canonical-import.schema.json"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "zod": "^4.1.11"
+  }
+}

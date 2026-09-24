@@ -1,0 +1,28 @@
+import type { Metadata } from "next";
+import { IBM_Plex_Mono, Newsreader, Public_Sans } from "next/font/google";
+import { SiteFooter, SiteHeader } from "@/components/chrome";
+import "./globals.css";
+
+const sans = Public_Sans({ subsets: ["latin"], variable: "--font-sans" });
+const serif = Newsreader({ subsets: ["latin"], variable: "--font-serif" });
+const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono" });
+
+export const metadata: Metadata = {
+  title: { default: "pdoom.live", template: "%s · pdoom.live" },
+  description: "A provenance-first observatory of public AI forecasts. This deployment uses a synthetic fixture cohort.",
+};
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
+      <body>
+        <a className="skip" href="#content">Skip to content</a>
+        <div className="shell">
+          <SiteHeader />
+          <main id="content">{children}</main>
+          <SiteFooter />
+        </div>
+      </body>
+    </html>
+  );
+}
