@@ -48,13 +48,18 @@ def assert_prefixed_slug(value: str, prefix: str, slug: str) -> None:
 
 def source_slug(source_id: str) -> str:
     parts = source_id.split(":")
-    if len(parts) != 4 or parts[0] != "src" or parts[1] != "person" or not parts[3]:
+    if parts[0] != "src" or parts[1] != "person" or len(parts) not in (4, 5) or not parts[3]:
         raise ValueError(f"malformed source id: {source_id}")
     person = normalize_prefixed_id(f"person:{parts[2]}", "person")
-    adapter = parts[3]
+    adapter = parts[3].replace("_", "-")
     if not SLUG.fullmatch(adapter):
         raise ValueError(f"malformed source id: {source_id}")
     slug = f"{person}-{adapter}"
+    if len(parts) == 5:
+        suffix = parts[4].replace("_", "-")
+        if not SLUG.fullmatch(suffix):
+            raise ValueError(f"malformed source id: {source_id}")
+        slug = f"{slug}-{suffix}"
     if not SLUG.fullmatch(slug) or len(slug) > 80:
         raise ValueError(f"source id {source_id} does not normalize to a slug")
     return slug

@@ -85,9 +85,23 @@ def test_export_maps_seed_without_claiming_synthetic():
     assert document["source_items"] == []
     org_types = {row["organization_type"] for row in document["organizations"]}
     assert {"research_lab", "infrastructure", "safety_org", "independent"} <= org_types
-    assert {row["source_type"] for row in document["sources"]} == {"academic_works"}
-    assert {row["collection_method"] for row in document["sources"]} == {"api"}
-    assert {row["collection_adapter"] for row in document["sources"]} == {"openalex_api"}
+    source_types = {row["source_type"] for row in document["sources"]}
+    assert "academic_works" in source_types
+    assert source_types <= {
+        "academic_works",
+        "personal_site",
+        "lab_post",
+        "repository",
+        "social_post",
+        "blog",
+        "newsletter",
+        "podcast",
+    }
+    methods = {row["collection_method"] for row in document["sources"]}
+    assert {"api", "rss", "manual"} <= methods
+    adapters = {row["collection_adapter"] for row in document["sources"]}
+    assert "openalex_api" in adapters
+    assert "reference_only" in adapters
     details = {row["verification_detail"] for row in document["external_identities"]}
     assert "openalex_exact_name_and_institution" in details
     assert "openalex_orcid_crosswalk" in details
@@ -103,6 +117,7 @@ def test_export_maps_seed_without_claiming_synthetic():
 def test_prefixed_ids_reject_malformed_and_mismatched_slugs():
     assert normalize_prefixed_id("person:ada-quill", "person") == "ada-quill"
     assert source_slug("src:person:ada-quill:openalex") == "ada-quill-openalex"
+    assert source_slug("src:person:ada-quill:lab_page:abc123") == "ada-quill-lab-page-abc123"
     try:
         normalize_prefixed_id("ada-quill", "person")
     except ValueError as exc:

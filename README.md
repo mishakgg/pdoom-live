@@ -97,6 +97,7 @@ The app listens on `http://localhost:3000`.
 | `npm run db:reset` | Truncate product tables and seed again |
 | `npm run build` | Production build |
 | `PYTHONPATH=pipeline python -m pytest` | Collector, identity, and seed tests. No network. |
+| `PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.enrich_sources --live` | Confirm pages and ORCID URLs for the existing cohort. Does not add people. |
 
 Database tests refuse to run unless the database name contains `test`. Point `DATABASE_URL` at `pdoom_live_test` before `npm test`, or export it in the shell. Do not point the test runner at the development database.
 

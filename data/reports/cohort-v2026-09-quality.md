@@ -6,15 +6,17 @@ This seed is a reviewed frontier-AI cohort. It is not all AI researchers, not a 
 - Organizations in registry: 87
 - Organizations with a current member: 76
 - Affiliations: 408
-- External identities: 394
-- Registered sources: 246
+- External identities: 413
+- Registered sources: 270
 - Ambiguous matches: 71
 - Duplicate external-id candidates: 0
 - Academic identifier coverage: 76.2%
-- Profile or claimed personal site: 1.9%
+- Verified institution or personal profile: 3.4%
+- Profile or claimed personal site, including unverified claims: 4.0%
+- Claimed sites not confirmed on the page: 2
 - At least one continuously collectible source: 76.2%
 - People missing an academic identifier: 77
-- Collector runs recorded: 4 (success 4, failure 0)
+- Collector runs recorded: 176 (success 170, failure 6)
 
 ## Inclusion reasons
 
@@ -42,7 +44,14 @@ This seed is a reviewed frontier-AI cohort. It is not all AI researchers, not a 
 
 ## Sources by type
 
+- github: 1
+- lab_page: 9
+- newsletter: 2
 - openalex_works: 246
+- personal_website: 4
+- podcast: 1
+- rss: 2
+- x: 5
 
 ## Known biases
 

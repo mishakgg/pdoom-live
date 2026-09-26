@@ -30,6 +30,8 @@
     "interview": "interview",
     "repository": "repository",
     "github": "repository",
+    "x": "social_post",
+    "rss": "blog",
     "model_card": "model_card",
     "social_post": "social_post",
     "press": "press",
@@ -44,6 +46,7 @@
     "openalex_api": "api",
     "arxiv_api": "api",
     "github_api": "api",
+    "reference_only": "manual",
     "manual": "manual",
     "sitemap": "sitemap"
   },
@@ -59,7 +62,10 @@
     "openalex_exact_name_and_institution": "structured_academic_source",
     "openalex_dominant_profile": "structured_academic_source",
     "openalex_unique_exact_name": "structured_academic_source",
-    "openalex_orcid_crosswalk": "cross_link"
+    "openalex_orcid_crosswalk": "cross_link",
+    "orcid_researcher_url": "cross_link",
+    "claimed_url_page_name": "cross_link",
+    "rel_me": "cross_link"
   },
   "attribution_method": {
     "byline": "byline",
