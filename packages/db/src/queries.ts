@@ -1,8 +1,12 @@
 import {
+  classifyFreshness,
   distributionAggregationSchema,
+  isPublicReviewState,
   peopleListQuerySchema,
+  REVIEW_STATES,
   statementListQuerySchema,
   volumeAggregationSchema,
+  type Freshness,
   type PeopleListQuery,
   type StatementListQuery,
 } from "@pdoom/contracts";
@@ -48,6 +52,13 @@ function decodeCursor(cursor: string): CursorPayload {
   } catch {
     throw new InvalidCursorError();
   }
+}
+
+function day(value: Date | string | null): string | null {
+  if (!value) return null;
+  if (value instanceof Date) return value.toISOString().slice(0, 10);
+  const text = String(value);
+  return /^\d{4}-\d{2}-\d{2}/.test(text) ? text.slice(0, 10) : text;
 }
 
 function iso(value: Date | string | null): string | null {
@@ -156,9 +167,14 @@ function statementFilters(query: StatementListQuery, values: unknown[]): string 
     values.push(query.statement_type);
     clauses.push(`s.statement_type = $${values.length}`);
   }
-  if (query.review_state) {
+  if (query.review_state && !isPublicReviewState(query.review_state)) {
+    clauses.push("FALSE");
+  } else if (query.review_state) {
     values.push(query.review_state);
     clauses.push(`s.review_state = $${values.length}`);
+  } else {
+    values.push(REVIEW_STATES.filter(isPublicReviewState));
+    clauses.push(`s.review_state = ANY($${values.length}::text[])`);
   }
   if (query.from) {
     values.push(`${query.from}T00:00:00.000Z`);
@@ -261,7 +277,7 @@ export async function getStatement(slug: string, pool = getPool()) {
     [slug],
   );
   const row = result.rows[0];
-  if (!row) return null;
+  if (!row || !isPublicReviewState(String(row.review_state))) return null;
   const base = mapStatement(row);
   const relations = await pool.query(
     `SELECT r.relationship_type, r.method, r.confidence, r.review_state,
@@ -351,7 +367,7 @@ export async function listPeople(input: PeopleListQuery, pool = getPool()) {
       SELECT jsonb_object_agg(statement_type, count) AS counts
       FROM (
         SELECT statement_type, count(*)::int AS count
-        FROM statements s WHERE s.person_id = p.id
+        FROM statements s WHERE s.person_id = p.id AND s.review_state <> 'rejected'
         GROUP BY statement_type
       ) grouped
     ) counts ON true
@@ -421,18 +437,26 @@ export async function getPerson(slug: string, pool = getPool()) {
   if (!person) return null;
   void people;
   const affiliations = await pool.query(
-    `SELECT a.role, a.start_date, a.end_date, a.confidence, o.slug, o.name
+    `SELECT a.role, a.start_date, a.end_date, a.confidence_level, a.verification_detail, a.review_state, o.slug, o.name
      FROM affiliations a JOIN organizations o ON o.id = a.organization_id
      WHERE a.person_id = $1
      ORDER BY a.start_date NULLS LAST`,
     [person.id],
   );
   const identities = await pool.query(
-    `SELECT namespace, external_id, canonical_url, handle, verification_method, confidence, verified_at
+    `SELECT namespace, external_id, canonical_url, handle, verification_method, verification_detail,
+            confidence_level, review_state, verified_at
      FROM external_identities WHERE person_id = $1 ORDER BY namespace`,
     [person.id],
   );
   const statements = await listStatements({ person: slug, limit: 50, sort: "event_time_desc" }, pool);
+  const sources = await pool.query(
+    `SELECT slug, name, source_type, canonical_url, collection_method, collection_adapter, review_state,
+            last_checked_at, last_success_at, enabled
+     FROM sources WHERE owner_person_id = $1 ORDER BY name`,
+    [person.id],
+  );
+  const asOf = new Date().toISOString();
   return {
     slug: String(person.slug),
     display_name: String(person.display_name),
@@ -445,9 +469,12 @@ export async function getPerson(slug: string, pool = getPool()) {
     updated_at: iso(person.updated_at),
     affiliations: affiliations.rows.map((row) => ({
       role: row.role ? String(row.role) : null,
-      start_date: row.start_date ? String(row.start_date).slice(0, 10) : null,
-      end_date: row.end_date ? String(row.end_date).slice(0, 10) : null,
-      confidence: num(row.confidence),
+      start_date: day(row.start_date),
+      end_date: day(row.end_date),
+      confidence_level: String(row.confidence_level),
+      verification_detail: row.verification_detail ? String(row.verification_detail) : null,
+      review_state: String(row.review_state),
+      settled: isPublicReviewState(String(row.review_state)) && String(row.review_state) === "human_verified",
       organization: { slug: String(row.slug), name: String(row.name) },
     })),
     identities: identities.rows.map((row) => ({
@@ -456,8 +483,25 @@ export async function getPerson(slug: string, pool = getPool()) {
       canonical_url: row.canonical_url ? String(row.canonical_url) : null,
       handle: row.handle ? String(row.handle) : null,
       verification_method: String(row.verification_method),
-      confidence: num(row.confidence),
+      verification_detail: row.verification_detail ? String(row.verification_detail) : null,
+      confidence_level: String(row.confidence_level),
+      review_state: String(row.review_state),
+      settled: String(row.review_state) === "human_verified",
       verified_at: iso(row.verified_at),
+    })),
+    sources: sources.rows.map((row) => ({
+      slug: String(row.slug),
+      name: String(row.name),
+      source_type: String(row.source_type),
+      canonical_url: String(row.canonical_url),
+      collection_method: String(row.collection_method),
+      collection_adapter: row.collection_adapter ? String(row.collection_adapter) : null,
+      review_state: String(row.review_state),
+      settled: String(row.review_state) === "human_verified",
+      enabled: Boolean(row.enabled),
+      last_checked_at: iso(row.last_checked_at),
+      last_success_at: iso(row.last_success_at),
+      freshness: classifyFreshness(iso(row.last_success_at), asOf),
     })),
     statements: statements.data,
   };
@@ -476,7 +520,7 @@ export async function listTopics(pool = getPool()) {
         SELECT s.statement_type, count(*)::int AS count
         FROM statement_topics st
         JOIN statements s ON s.id = st.statement_id
-        WHERE st.topic_id = t.id
+        WHERE st.topic_id = t.id AND s.review_state <> 'rejected'
         GROUP BY s.statement_type
       ) grouped
     ) counts ON true
@@ -504,7 +548,8 @@ export async function getTopic(slug: string, pool = getPool()) {
 export async function listSources(pool = getPool()) {
   const result = await pool.query(`
     SELECT src.slug, src.name, src.source_type, src.canonical_url, src.platform, src.enabled,
-           src.last_checked_at, src.last_success_at, src.collection_method, src.rights_notes,
+           src.last_checked_at, src.last_success_at, src.collection_method, src.collection_adapter,
+           src.review_state, src.rights_notes,
            p.display_name AS owner_name, p.slug AS owner_slug,
            o.name AS organization_name,
            (SELECT count(*)::int FROM source_items si WHERE si.source_id = src.id) AS item_count
@@ -523,6 +568,9 @@ export async function listSources(pool = getPool()) {
     last_checked_at: iso(row.last_checked_at),
     last_success_at: iso(row.last_success_at),
     collection_method: String(row.collection_method),
+    collection_adapter: row.collection_adapter ? String(row.collection_adapter) : null,
+    review_state: String(row.review_state),
+    freshness: classifyFreshness(iso(row.last_success_at), new Date().toISOString()),
     rights_notes: row.rights_notes ? String(row.rights_notes) : null,
     owner_name: row.owner_name ? String(row.owner_name) : null,
     owner_slug: row.owner_slug ? String(row.owner_slug) : null,
@@ -574,7 +622,7 @@ export async function getSourceItem(slug: string, pool = getPool()) {
   const row = result.rows[0];
   if (!row) return null;
   const participants = await pool.query(
-    `SELECT sp.role, sp.attribution_method, sp.confidence, p.slug AS person_slug, p.display_name,
+    `SELECT sp.role, sp.attribution_method, sp.attribution_detail, sp.confidence_level, p.slug AS person_slug, p.display_name,
             o.slug AS organization_slug, o.name AS organization_name
      FROM source_participants sp
      JOIN source_items si ON si.id = sp.source_item_id
@@ -611,7 +659,8 @@ export async function getSourceItem(slug: string, pool = getPool()) {
     participants: participants.rows.map((participant) => ({
       role: String(participant.role),
       attribution_method: String(participant.attribution_method),
-      confidence: num(participant.confidence),
+      attribution_detail: participant.attribution_detail ? String(participant.attribution_detail) : null,
+      confidence_level: String(participant.confidence_level),
       person_slug: participant.person_slug ? String(participant.person_slug) : null,
       display_name: participant.display_name ? String(participant.display_name) : null,
       organization_slug: participant.organization_slug ? String(participant.organization_slug) : null,
@@ -752,18 +801,172 @@ export async function getTrend(slug: string, pool = getPool()) {
   return { ...header, kind: "volume" as const, volume };
 }
 
+export async function getDatasetRecord(pool = getPool()) {
+  const result = await pool.query(
+    `SELECT schema_version, dataset_id, dataset_kind, generated_at, imported_at, notice,
+            producer_name, producer_version, cohort_slug, cohort_version
+     FROM dataset_imports WHERE is_current
+     ORDER BY imported_at DESC LIMIT 1`,
+  );
+  const row = result.rows[0];
+  if (!row) return null;
+  return {
+    schema_version: String(row.schema_version),
+    dataset_id: String(row.dataset_id),
+    dataset_kind: String(row.dataset_kind),
+    generated_at: iso(row.generated_at),
+    imported_at: iso(row.imported_at),
+    notice: String(row.notice),
+    producer_name: row.producer_name ? String(row.producer_name) : null,
+    producer_version: row.producer_version ? String(row.producer_version) : null,
+    cohort_slug: row.cohort_slug ? String(row.cohort_slug) : null,
+    cohort_version: row.cohort_version ? String(row.cohort_version) : null,
+  };
+}
+
+const ACADEMIC_SOURCE_TYPES = ["academic_works", "paper", "preprint"];
+const FIRST_PARTY_SOURCE_TYPES = ["personal_site", "blog", "newsletter", "repository", "social_post"];
+const FAILING_COLLECTION_STATUSES = [
+  "unavailable",
+  "not_found",
+  "rate_limited",
+  "unauthorized",
+  "blocked_by_policy",
+  "parser_unsupported",
+  "content_too_large",
+  "invalid_content",
+  "collector_bug",
+];
+
+export async function getCoverage(asOf = new Date().toISOString(), pool = getPool()) {
+  const dataset = await getDatasetRecord(pool);
+  const cohort = dataset?.cohort_slug
+    ? await pool.query(
+        `SELECT slug, version, name, definition FROM cohorts WHERE slug = $1 AND version = $2`,
+        [dataset.cohort_slug, dataset.cohort_version],
+      )
+    : { rows: [] as Array<Record<string, unknown>> };
+  const cohortRow = cohort.rows[0];
+  const params = cohortRow ? [cohortRow.slug, cohortRow.version] : [];
+  const academicParam = params.length + 1;
+  const firstPartyParam = params.length + 2;
+  const failingParam = params.length + 1;
+  const memberJoin = cohortRow
+    ? `JOIN cohort_memberships cm ON cm.person_id = p.id
+       JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2`
+    : "";
+  const sourceScope = cohortRow
+    ? `WHERE src.owner_person_id IN (
+         SELECT cm.person_id FROM cohort_memberships cm
+         JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2
+       ) OR src.owner_person_id IS NULL`
+    : "";
+  const [people, typed, latest, failing, statements] = await Promise.all([
+    pool.query(
+      `SELECT count(DISTINCT p.id)::int AS cohort_size,
+              count(DISTINCT p.id) FILTER (WHERE src.id IS NOT NULL)::int AS people_with_sources,
+              count(DISTINCT p.id) FILTER (
+                WHERE src.source_type IS NOT NULL AND NOT (src.source_type = ANY($${academicParam}::text[]))
+              )::int AS people_with_non_academic_sources,
+              count(DISTINCT p.id) FILTER (
+                WHERE src.source_type = ANY($${firstPartyParam}::text[])
+              )::int AS people_with_first_party_sources,
+              count(DISTINCT p.id) FILTER (WHERE st.person_id IS NOT NULL)::int AS statement_bearing_people
+       FROM people p
+       ${memberJoin}
+       LEFT JOIN sources src ON src.owner_person_id = p.id
+       LEFT JOIN (
+         SELECT DISTINCT person_id FROM statements WHERE review_state <> 'rejected'
+       ) st ON st.person_id = p.id`,
+      [...params, ACADEMIC_SOURCE_TYPES, FIRST_PARTY_SOURCE_TYPES],
+    ),
+    pool.query(
+      `SELECT src.source_type, src.last_success_at
+       FROM sources src
+       ${sourceScope}`,
+      params,
+    ),
+    pool.query(
+      `SELECT max(src.last_success_at) AS last_success_at, max(si.observed_at) AS observed_at
+       FROM sources src
+       LEFT JOIN source_items si ON si.source_id = src.id
+       ${sourceScope}`,
+      params,
+    ),
+    pool.query(
+      `SELECT count(DISTINCT src.id)::int AS failing
+       FROM sources src
+       LEFT JOIN source_items si ON si.source_id = src.id AND si.collection_status = ANY($${failingParam}::text[])
+       ${sourceScope ? sourceScope.replace("WHERE", "WHERE (") + ") AND" : "WHERE"} (
+         (src.last_checked_at IS NOT NULL AND src.last_success_at IS NULL) OR si.id IS NOT NULL
+       )`,
+      [...params, FAILING_COLLECTION_STATUSES],
+    ),
+    pool.query(
+      `SELECT count(*)::int AS count FROM statements WHERE review_state <> 'rejected'`,
+    ),
+  ]);
+  const freshness: Record<Freshness, number> = { current: 0, aging: 0, stale: 0, never_checked: 0 };
+  const sourcesByType: Record<string, number> = {};
+  let recent = 0;
+  let stale = 0;
+  for (const row of typed.rows) {
+    const type = String(row.source_type);
+    sourcesByType[type] = (sourcesByType[type] ?? 0) + 1;
+    const state = classifyFreshness(iso(row.last_success_at), asOf);
+    freshness[state] += 1;
+    if (state === "current") recent += 1;
+    if (state === "stale") stale += 1;
+  }
+  const cohortSize = Number(people.rows[0]?.cohort_size ?? 0);
+  return {
+    as_of: asOf,
+    cohort_slug: cohortRow ? String(cohortRow.slug) : null,
+    cohort_version: cohortRow ? String(cohortRow.version) : null,
+    cohort_size: cohortSize,
+    people_with_sources: Number(people.rows[0]?.people_with_sources ?? 0),
+    people_with_non_academic_sources: Number(people.rows[0]?.people_with_non_academic_sources ?? 0),
+    people_with_first_party_sources: Number(people.rows[0]?.people_with_first_party_sources ?? 0),
+    statement_bearing_people: Number(people.rows[0]?.statement_bearing_people ?? 0),
+    public_statement_count: Number(statements.rows[0]?.count ?? 0),
+    recent_successfully_checked_sources: recent,
+    sources_by_type: sourcesByType,
+    source_count: typed.rows.length,
+    latest_successful_observation: iso(latest.rows[0]?.last_success_at),
+    latest_item_observed_at: iso(latest.rows[0]?.observed_at),
+    stale_sources: stale,
+    unavailable_or_failing_sources: Number(failing.rows[0]?.failing ?? 0),
+    freshness,
+  };
+}
+
 export async function getOverview(pool = getPool()) {
-  const [people, statements, items, observed, cohort] = await Promise.all([
+  const dataset = await getDatasetRecord(pool);
+  const coverage = await getCoverage(new Date().toISOString(), pool);
+  const [people, statements, items, observed] = await Promise.all([
     pool.query("SELECT count(*)::int AS count FROM people"),
-    pool.query("SELECT count(*)::int AS count FROM statements"),
+    pool.query("SELECT count(*)::int AS count FROM statements WHERE review_state <> 'rejected'"),
     pool.query("SELECT count(*)::int AS count FROM source_items"),
     pool.query("SELECT max(observed_at) AS observed_at, max(published_at) AS published_at FROM source_items"),
-    pool.query("SELECT slug, version, name, definition FROM cohorts ORDER BY created_at LIMIT 1"),
   ]);
-  const trends = await listTrends(pool);
+  const cohort = dataset?.cohort_slug
+    ? await pool.query(`SELECT slug, version, name, definition FROM cohorts WHERE slug = $1 AND version = $2`, [
+        dataset.cohort_slug,
+        dataset.cohort_version,
+      ])
+    : { rows: [] as Array<Record<string, unknown>> };
+  const trends = (await listTrends(pool)).filter(
+    (trend) => !dataset?.cohort_slug || (trend.cohort_slug === dataset.cohort_slug && trend.cohort_version === dataset.cohort_version),
+  );
+  const verified = await pool.query(
+    `SELECT count(*)::int AS count FROM statements WHERE review_state = 'human_verified'`,
+  );
+  const showTrends = dataset?.dataset_kind !== "live" || Number(verified.rows[0].count) > 0;
   const computed = [];
-  for (const trend of trends) {
-    computed.push(await getTrend(trend.slug, pool));
+  if (showTrends) {
+    for (const trend of trends) {
+      computed.push(await getTrend(trend.slug, pool));
+    }
   }
   const recent = await listStatements({ limit: 8, sort: "event_time_desc" }, pool);
   const revisions = await pool.query(
@@ -773,14 +976,21 @@ export async function getOverview(pool = getPool()) {
      JOIN statements fs ON fs.id = r.from_statement_id
      JOIN statements ts ON ts.id = r.to_statement_id
      JOIN people p ON p.id = ts.person_id
-     WHERE r.review_state IN ('human_verified', 'machine_validated')
+     WHERE r.review_state <> 'rejected' AND fs.review_state <> 'rejected' AND ts.review_state <> 'rejected'
      ORDER BY ts.event_time DESC NULLS LAST
      LIMIT 5`,
   );
   return {
     dataset: {
-      synthetic: true,
-      notice: "Synthetic fixture cohort. These people, organizations, and quotations are fictional.",
+      synthetic: dataset?.dataset_kind === "synthetic",
+      dataset_id: dataset?.dataset_id ?? null,
+      dataset_kind: dataset?.dataset_kind ?? null,
+      schema_version: dataset?.schema_version ?? null,
+      generated_at: dataset?.generated_at ?? null,
+      imported_at: dataset?.imported_at ?? null,
+      producer_name: dataset?.producer_name ?? null,
+      producer_version: dataset?.producer_version ?? null,
+      notice: dataset?.notice ?? "No dataset is loaded.",
       cohort: cohort.rows[0]
         ? {
             slug: String(cohort.rows[0].slug),
@@ -789,6 +999,7 @@ export async function getOverview(pool = getPool()) {
             definition: String(cohort.rows[0].definition),
           }
         : null,
+      coverage,
       person_count: people.rows[0].count as number,
       statement_count: statements.rows[0].count as number,
       source_item_count: items.rows[0].count as number,

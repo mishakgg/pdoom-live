@@ -20,11 +20,15 @@ export type PersonStatus = (typeof PERSON_STATUSES)[number];
 export const ORGANIZATION_TYPES = [
   "frontier_lab",
   "research_institute",
+  "research_lab",
   "university",
   "company",
   "publisher",
   "government",
   "nonprofit",
+  "infrastructure",
+  "safety_org",
+  "independent",
 ] as const;
 export type OrganizationType = (typeof ORGANIZATION_TYPES)[number];
 
@@ -35,6 +39,8 @@ export const SOURCE_TYPES = [
   "podcast",
   "video",
   "paper",
+  "preprint",
+  "academic_works",
   "lab_post",
   "conference_talk",
   "testimony",
@@ -92,6 +98,7 @@ export const VERIFICATION_METHODS = [
   "cross_link",
   "platform_verification",
   "manual_review",
+  "structured_academic_source",
   "synthetic_fixture",
 ] as const;
 export type VerificationMethod = (typeof VERIFICATION_METHODS)[number];
@@ -141,5 +148,13 @@ export const STATEMENT_TYPE_LABELS: Record<StatementType, string> = {
   explicit_qualitative: "Explicit qualitative view",
   model_inferred_signal: "Model-inferred signal",
 };
+
+export const CONFIDENCE_LEVELS = ["high", "medium", "low", "unknown"] as const;
+export type ConfidenceLevel = (typeof CONFIDENCE_LEVELS)[number];
+
+export const DATASET_KINDS = ["synthetic", "live"] as const;
+export type DatasetKind = (typeof DATASET_KINDS)[number];
+
+export const SCHEMA_VERSION = "1.0.0";
 
 export const PUBLIC_REVIEW_STATES: ReviewState[] = ["human_verified", "machine_validated"];

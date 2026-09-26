@@ -1,0 +1,33 @@
+{
+  "statement_type": ["explicit_numeric", "explicit_qualitative", "model_inferred_signal"],
+  "review_state": ["unreviewed", "machine_validated", "human_verified", "rejected", "needs_review"],
+  "participant_role": ["author", "speaker", "guest", "interviewer", "publisher", "mentioned"],
+  "identity_namespace": [
+    "orcid",
+    "openalex",
+    "openreview",
+    "semantic_scholar",
+    "github",
+    "huggingface",
+    "x",
+    "bluesky",
+    "mastodon",
+    "personal_website",
+    "lab_profile",
+    "youtube"
+  ],
+  "relationship_type": ["updates", "clarifies", "retracts", "contradicts", "repeats"],
+  "source_type_shared": ["conference_talk", "newsletter", "podcast", "preprint", "press", "testimony"],
+  "collection_status_shared": [
+    "not_found",
+    "rate_limited",
+    "unauthorized",
+    "blocked_by_policy",
+    "parser_unsupported",
+    "content_too_large",
+    "invalid_content",
+    "collector_bug"
+  ],
+  "confidence_level": ["high", "medium", "low", "unknown"],
+  "person_status": ["active", "historical", "review"]
+}

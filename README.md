@@ -42,6 +42,12 @@ The first useful version should:
 
 Start with a smaller, high-confidence cohort rather than claiming comprehensive coverage prematurely.
 
+## License
+
+The website software is licensed under the [PolyForm Shield License 1.0.0](./LICENSE). You may use, change, and share the code. You may not use it to provide a product that competes with pdoom.live, including a copy of this website. That limit applies even if the copy is free.
+
+The dataset, fixtures, and reports in [`data/`](./data/) are dedicated to the public domain under [CC0 1.0](./data/LICENSE). Reusing that data is allowed. Reusing the data does not include permission to copy the website software and run a competing site.
+
 ## Repository guidance
 
 Read [AGENTS.md](./AGENTS.md) before making changes.

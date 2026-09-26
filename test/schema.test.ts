@@ -31,8 +31,8 @@ describe("schema constraints", () => {
       await expect(
         client.query(
           `INSERT INTO external_identities (
-             id, person_id, namespace, external_id, verification_method, confidence
-           ) VALUES (gen_random_uuid(), $1, 'orcid', '0000-0002-0001-0001', 'manual_review', 1)`,
+             id, person_id, namespace, external_id, verification_method, confidence_level, review_state
+           ) VALUES (gen_random_uuid(), $1, 'orcid', '0000-0002-0001-0001', 'manual_review', 'high', 'human_verified')`,
           [stableId("person:samira-okonkwo")],
         ),
       ).rejects.toThrow(/duplicate key/i);

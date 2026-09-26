@@ -32,15 +32,30 @@ export default async function PersonPage({ params }: { params: Promise<{ slug: s
             {person.affiliations.map((affiliation) => (
               <li key={`${affiliation.organization.slug}-${affiliation.start_date}`}>
                 {affiliation.role} · {affiliation.organization.name} · {affiliation.start_date ?? "unknown"}–{affiliation.end_date ?? "present"}
+                <span className="meta"> · {affiliation.confidence_level} confidence · {affiliation.review_state}{affiliation.settled ? "" : " · not a settled fact"}</span>
               </li>
             ))}
           </ul>
-          <h2>Public identities</h2>
+          <h2>Identities</h2>
           <ul>
             {person.identities.map((identity) => (
               <li key={`${identity.namespace}-${identity.external_id}`}>
                 {identity.namespace}: <ExternalLink href={identity.canonical_url}>{identity.handle ?? identity.external_id}</ExternalLink>
-                <span className="meta"> · {identity.verification_method}</span>
+                <span className="meta">
+                  {" "}· {identity.verification_method}
+                  {identity.verification_detail ? ` (${identity.verification_detail})` : ""}
+                  {" "}· {identity.confidence_level}
+                  {" "}· {identity.settled ? "human verified" : `${identity.review_state}, unresolved`}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <h2>Sources</h2>
+          <ul>
+            {person.sources.map((source) => (
+              <li key={source.slug}>
+                {source.name} · {source.source_type} · {source.freshness}
+                <span className="meta">{source.settled ? "" : ` · ${source.review_state}, not settled`}</span>
               </li>
             ))}
           </ul>

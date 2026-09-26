@@ -1,6 +1,7 @@
 {
   "name": "pdoom-live",
   "private": true,
+  "license": "PolyForm-Shield-1.0.0",
   "type": "module",
   "workspaces": [
     "apps/web",
@@ -17,6 +18,9 @@
     "db:migrate": "tsx packages/db/src/cli.ts migrate",
     "db:seed": "tsx packages/db/src/cli.ts seed",
     "db:reset": "tsx packages/db/src/cli.ts reset",
+    "db:validate": "tsx packages/db/src/cli.ts validate",
+    "db:import": "tsx packages/db/src/cli.ts import",
+    "db:status": "tsx packages/db/src/cli.ts status",
     "contracts:schema": "tsx packages/contracts/src/emit-schema.ts"
   },
   "devDependencies": {
