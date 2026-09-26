@@ -43,7 +43,9 @@ Affiliation history should be modeled separately when dates matter.
 - `start_date?`
 - `end_date?`
 - `source_id?`
-- `confidence`
+- `confidence_level` — `high` / `medium` / `low` / `unknown`. Not a probability.
+- `verification_detail?`
+- `review_state`
 
 ## External identity
 
@@ -72,7 +74,9 @@ Fields:
 - `canonical_url?`
 - `handle?`
 - `verification_method`
-- `confidence`
+- `verification_detail?` — pipeline strategy, such as `openalex_exact_name_and_institution`
+- `confidence_level` — categorical, not a probability
+- `review_state`
 - `verified_at?`
 - `source_id?`
 
@@ -92,6 +96,8 @@ Examples: a personal blog, YouTube channel, podcast, lab news page, GitHub accou
 - `owner_person_id?`
 - `owner_organization_id?`
 - `collection_method`
+- `collection_adapter?` — collector method such as `openalex_api` when the canonical method is `api`
+- `review_state`
 - `rights_notes?`
 - `enabled`
 - `last_checked_at?`
@@ -129,7 +135,8 @@ Links a source item to people or organizations.
 - `organization_id?`
 - `role` — author / speaker / guest / interviewer / publisher / mentioned
 - `attribution_method`
-- `confidence`
+- `attribution_detail?`
+- `confidence_level`
 
 “Mentioned” must never be confused with “speaker.”
 
@@ -322,5 +329,8 @@ The first product slice adds these fields without collapsing the entities above:
 - `forecasts.question_key`, the comparability key a trend must match.
 - `cohorts` and `cohort_memberships`, so a trend can name a cohort version.
 - `trend_definitions.method_version` plus the aggregation JSON. Observations are computed from canonical rows.
+- `dataset_imports` stores `schema_version`, `dataset_id`, `dataset_kind` (`synthetic` or `live`), `generated_at`, `imported_at`, `notice`, producer, and the current cohort. One row is current.
+- Identity, affiliation, and participant confidence is categorical. Statement, forecast, topic, and relationship confidence stays numeric.
+- Freshness of a source is `current` within 14 days of `last_success_at`, `aging` within 90 days, `stale` after that, and `never_checked` when `last_success_at` is null. That is collection state.
 
-The import document is specified in `docs/INGESTION_CONTRACT.md`.
+The import document is specified in `docs/INGESTION_CONTRACT.md`. Public review rules live in `packages/contracts/src/review.ts`: `rejected` is never public, `needs_review` is not verified, `human_verified` may support verified trends, and `machine_validated` stays labeled as machine output.

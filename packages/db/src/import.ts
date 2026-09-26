@@ -10,6 +10,11 @@ import { fixturePath } from "./paths";
 
 export type ImportResult = {
   dataset_id: string;
+  dataset_kind: string;
+  schema_version: string;
+  cohort_slug: string | null;
+  cohort_version: string | null;
+  imported: Record<string, number>;
   counts: Record<string, number>;
 };
 
@@ -22,10 +27,16 @@ function num(value: number | null): string | null {
   return value === null ? null : value.toString();
 }
 
-export async function importCanonical(pool: pg.Pool, document?: CanonicalImport): Promise<ImportResult> {
-  const doc = document ?? (await loadFixture());
-  const parsed = canonicalImportSchema.parse(doc);
+export function validateDocument(raw: unknown): CanonicalImport {
+  const parsed = canonicalImportSchema.parse(raw);
   validateForecastBoundaries(parsed);
+  validateDatasetKind(parsed);
+  return parsed;
+}
+
+export async function importCanonical(pool: pg.Pool, document?: CanonicalImport | unknown): Promise<ImportResult> {
+  const doc = document ?? (await loadFixture());
+  const parsed = validateDocument(doc);
 
   const client = await pool.connect();
   try {
@@ -40,7 +51,41 @@ export async function importCanonical(pool: pg.Pool, document?: CanonicalImport)
   }
 
   const counts = await countTables(pool);
-  return { dataset_id: parsed.dataset_id, counts };
+  const cohort = parsed.cohorts[0] ?? null;
+  return {
+    dataset_id: parsed.dataset_id,
+    dataset_kind: parsed.dataset_kind,
+    schema_version: parsed.schema_version,
+    cohort_slug: cohort?.slug ?? null,
+    cohort_version: cohort?.version ?? null,
+    imported: documentCounts(parsed),
+    counts,
+  };
+}
+
+function documentCounts(doc: CanonicalImport): Record<string, number> {
+  return {
+    organizations: doc.organizations.length,
+    people: doc.people.length,
+    affiliations: doc.affiliations.length,
+    external_identities: doc.external_identities.length,
+    sources: doc.sources.length,
+    source_items: doc.source_items.length,
+    statements: doc.statements.length,
+    cohorts: doc.cohorts.length,
+  };
+}
+
+function validateDatasetKind(doc: CanonicalImport): void {
+  if (doc.dataset_kind !== "live") return;
+  const syntheticMarkers = [
+    ...doc.external_identities.filter((row) => row.verification_method === "synthetic_fixture").map((row) => row.external_id),
+    ...doc.participants.filter((row) => row.attribution_method === "synthetic_fixture").map((row) => row.source_item_slug),
+    ...doc.sources.filter((row) => row.collection_method === "fixture").map((row) => row.slug),
+  ];
+  if (syntheticMarkers.length) {
+    throw new Error("live dataset cannot use synthetic_fixture or fixture collection markers");
+  }
 }
 
 function validateForecastBoundaries(doc: CanonicalImport): void {
@@ -114,8 +159,8 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
     await client.query(
       `INSERT INTO sources (
          id, slug, source_type, name, canonical_url, platform, owner_person_id, owner_organization_id,
-         collection_method, rights_notes, enabled, last_checked_at, last_success_at
-       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)
+         collection_method, collection_adapter, rights_notes, enabled, review_state, last_checked_at, last_success_at
+       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)
        ON CONFLICT (slug) DO UPDATE SET
          source_type = EXCLUDED.source_type,
          name = EXCLUDED.name,
@@ -124,8 +169,10 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
          owner_person_id = EXCLUDED.owner_person_id,
          owner_organization_id = EXCLUDED.owner_organization_id,
          collection_method = EXCLUDED.collection_method,
+         collection_adapter = EXCLUDED.collection_adapter,
          rights_notes = EXCLUDED.rights_notes,
          enabled = EXCLUDED.enabled,
+         review_state = EXCLUDED.review_state,
          last_checked_at = EXCLUDED.last_checked_at,
          last_success_at = EXCLUDED.last_success_at,
          updated_at = now()`,
@@ -139,8 +186,10 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
         source.owner_person_slug ? stableId(`person:${source.owner_person_slug}`) : null,
         source.owner_organization_slug ? stableId(`organization:${source.owner_organization_slug}`) : null,
         source.collection_method,
+        source.collection_adapter,
         source.rights_notes,
         source.enabled,
+        source.review_state,
         source.last_checked_at,
         source.last_success_at,
       ],
@@ -153,12 +202,14 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
     );
     await client.query(
       `INSERT INTO affiliations (
-         id, person_id, organization_id, role, start_date, end_date, source_id, confidence
-       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
+         id, person_id, organization_id, role, start_date, end_date, source_id, confidence_level, verification_detail, review_state
+       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
        ON CONFLICT (person_id, organization_id, role, start_date) DO UPDATE SET
          end_date = EXCLUDED.end_date,
          source_id = EXCLUDED.source_id,
-         confidence = EXCLUDED.confidence`,
+         confidence_level = EXCLUDED.confidence_level,
+         verification_detail = EXCLUDED.verification_detail,
+         review_state = EXCLUDED.review_state`,
       [
         id,
         stableId(`person:${affiliation.person_slug}`),
@@ -167,7 +218,9 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
         affiliation.start_date,
         affiliation.end_date,
         affiliation.source_slug ? stableId(`source:${affiliation.source_slug}`) : null,
-        affiliation.confidence,
+        affiliation.confidence_level,
+        affiliation.verification_detail,
+        affiliation.review_state,
       ],
     );
     if (affiliation.is_current) {
@@ -181,14 +234,17 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
   for (const identity of doc.external_identities) {
     await client.query(
       `INSERT INTO external_identities (
-         id, person_id, namespace, external_id, canonical_url, handle, verification_method, confidence, verified_at, source_id
-       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)
+         id, person_id, namespace, external_id, canonical_url, handle, verification_method, verification_detail,
+         confidence_level, review_state, verified_at, source_id
+       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
        ON CONFLICT (namespace, external_id) DO UPDATE SET
          person_id = EXCLUDED.person_id,
          canonical_url = EXCLUDED.canonical_url,
          handle = EXCLUDED.handle,
          verification_method = EXCLUDED.verification_method,
-         confidence = EXCLUDED.confidence,
+         verification_detail = EXCLUDED.verification_detail,
+         confidence_level = EXCLUDED.confidence_level,
+         review_state = EXCLUDED.review_state,
          verified_at = EXCLUDED.verified_at,
          source_id = EXCLUDED.source_id`,
       [
@@ -199,7 +255,9 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
         identity.canonical_url,
         identity.handle,
         identity.verification_method,
-        identity.confidence,
+        identity.verification_detail,
+        identity.confidence_level,
+        identity.review_state,
         identity.verified_at,
         identity.source_slug ? stableId(`source:${identity.source_slug}`) : null,
       ],
@@ -243,7 +301,7 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
   }
 
   for (const item of doc.source_items) {
-    const contentHash = sha256(item.content_hash_input);
+    const contentHash = resolveContentHash(item);
     await client.query(
       `INSERT INTO source_items (
          id, slug, source_id, upstream_id, logical_key, canonical_url, title, published_at, published_timezone,
@@ -297,11 +355,12 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
   for (const participant of doc.participants) {
     await client.query(
       `INSERT INTO source_participants (
-         id, source_item_id, person_id, organization_id, role, attribution_method, confidence
-       ) VALUES ($1,$2,$3,$4,$5,$6,$7)
+         id, source_item_id, person_id, organization_id, role, attribution_method, attribution_detail, confidence_level
+       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
        ON CONFLICT (source_item_id, person_id, organization_id, role) DO UPDATE SET
          attribution_method = EXCLUDED.attribution_method,
-         confidence = EXCLUDED.confidence`,
+         attribution_detail = EXCLUDED.attribution_detail,
+         confidence_level = EXCLUDED.confidence_level`,
       [
         stableId(
           `participant:${participant.source_item_slug}:${participant.person_slug ?? ""}:${participant.organization_slug ?? ""}:${participant.role}`,
@@ -311,7 +370,8 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
         participant.organization_slug ? stableId(`organization:${participant.organization_slug}`) : null,
         participant.role,
         participant.attribution_method,
-        participant.confidence,
+        participant.attribution_detail,
+        participant.confidence_level,
       ],
     );
   }
@@ -577,6 +637,38 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
       ],
     );
   }
+
+  const cohort = doc.cohorts[0] ?? null;
+  await client.query("UPDATE dataset_imports SET is_current = false WHERE is_current");
+  await client.query(
+    `INSERT INTO dataset_imports (
+       schema_version, dataset_id, dataset_kind, generated_at, notice, producer_name, producer_version,
+       cohort_slug, cohort_version, is_current
+     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,true)`,
+    [
+      doc.schema_version,
+      doc.dataset_id,
+      doc.dataset_kind,
+      doc.generated_at,
+      doc.notice,
+      doc.producer?.name ?? null,
+      doc.producer?.version ?? null,
+      cohort?.slug ?? null,
+      cohort?.version ?? null,
+    ],
+  );
+}
+
+function resolveContentHash(item: CanonicalImport["source_items"][number]): string {
+  if (item.content_hash_input) {
+    const computed = sha256(item.content_hash_input);
+    if (item.content_hash && item.content_hash !== computed) {
+      throw new Error(`content_hash does not match content_hash_input for ${item.slug}`);
+    }
+    return computed;
+  }
+  if (!item.content_hash) throw new Error(`source item ${item.slug} is missing a content hash`);
+  return item.content_hash;
 }
 
 async function countTables(pool: pg.Pool): Promise<Record<string, number>> {
@@ -629,7 +721,8 @@ export async function resetDatabase(pool: pg.Pool): Promise<ImportResult> {
       sources,
       affiliations,
       people,
-      organizations
+      organizations,
+      dataset_imports
     RESTART IDENTITY CASCADE
   `);
   return importCanonical(pool);

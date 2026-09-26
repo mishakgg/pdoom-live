@@ -5,7 +5,7 @@ export default function MethodologyPage() {
     <>
       <h1>Methodology</h1>
       <p className="lede">
-        pdoom.live is a source-first observatory. The current deployment demonstrates the product with a synthetic fixture cohort. It does not describe real researchers and it is not a consensus.
+        pdoom.live is a source-first observatory. A synthetic fixture is labeled synthetic and does not describe real researchers. A live dataset names its cohort and version. It is not a consensus.
       </p>
       <section className="panel">
         <h2>Three statement classes</h2>
@@ -25,8 +25,10 @@ export default function MethodologyPage() {
         <p>Identity links require an external namespace and identifier. Samir Okonkwo and Samira Okonkwo remain different people.</p>
       </section>
       <section>
-        <h2>Coverage</h2>
-        <p>The fixture cohort is versioned. People outside it, including the hostile-content persona, do not enter cohort trends. Missing estimates are counted as missing. Absence is not zero.</p>
+        <h2>Coverage and freshness</h2>
+        <p>Coverage counts the loaded cohort: people with sources, people with a non-academic source, people with a first-party channel, and people with a public statement. An academic-works feed is not complete coverage.</p>
+        <p>Freshness describes collection, not whether a person has spoken. A source is current when its last successful check is within 14 days, aging within 90 days, stale after that, and never checked when no success time is stored.</p>
+        <p>People outside the loaded cohort do not enter that cohort&apos;s trends. Missing estimates are counted as missing. Absence is not zero.</p>
       </section>
     </>
   );
