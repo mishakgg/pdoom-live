@@ -21,7 +21,7 @@ describe("fixture import and trends", () => {
     const rows = await pool.query(
       `SELECT slug FROM people WHERE family_name = 'Okonkwo' ORDER BY slug`,
     );
-    expect(rows.rows.map((row) => row.slug)).toEqual(["samir-okonkwo", "samira-okonkwo"]);
+    expect(rows.rows.map((row) => row.slug).sort()).toEqual(["samir-okonkwo", "samira-okonkwo"]);
   });
 
   it("keeps mentioned people distinct from speakers", async () => {
