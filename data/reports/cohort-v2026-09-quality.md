@@ -5,7 +5,7 @@ This seed is a reviewed frontier-AI cohort. It is not all AI researchers, not a 
 - People: 323
 - Organizations in registry: 87
 - Organizations with a current member: 76
-- Affiliations: 408
+- Affiliations: 407
 - External identities: 413
 - Registered sources: 312
 - Ambiguous matches: 71
@@ -54,7 +54,7 @@ Collection priority is a fetch budget. It is not a ranking of researchers.
 ## Current organization headquarters country
 
 - US: 191
-- GB: 65
+- GB: 64
 - CA: 22
 - CN: 14
 - unknown: 13

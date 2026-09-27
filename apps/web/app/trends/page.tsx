@@ -12,8 +12,9 @@ export default async function TrendsPage() {
     <>
       <h1>Trends</h1>
       <p className="lede">Each trend names its method version, cohort, and the records it refuses to combine.</p>
+      <div className="trend-list">
       {computed.map((trend) => trend ? (
-        <div key={trend.slug} className="stack" style={{ marginBottom: "1rem" }}>
+        <div key={trend.slug} className="stack">
           <p><Link href={`/trends/${trend.slug}`}>{trend.name}</Link></p>
           {trend.kind === "distribution" ? (
             <DistributionPanel
@@ -39,6 +40,7 @@ export default async function TrendsPage() {
           )}
         </div>
       ) : null)}
+      </div>
     </>
   );
 }

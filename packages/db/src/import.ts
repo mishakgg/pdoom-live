@@ -734,10 +734,7 @@ async function countTables(pool: pg.Pool): Promise<Record<string, number>> {
   return counts;
 }
 
-export async function resetDatabase(pool: pg.Pool): Promise<ImportResult> {
-  if (deploymentMode() === "production") {
-    throw new Error("refusing to reset data in production");
-  }
+export async function clearProductTables(pool: pg.Pool): Promise<void> {
   await pool.query(`
     TRUNCATE
       trend_observations,
@@ -762,5 +759,12 @@ export async function resetDatabase(pool: pg.Pool): Promise<ImportResult> {
       dataset_imports
     RESTART IDENTITY CASCADE
   `);
+}
+
+export async function resetDatabase(pool: pg.Pool): Promise<ImportResult> {
+  if (deploymentMode() === "production") {
+    throw new Error("refusing to reset data in production");
+  }
+  await clearProductTables(pool);
   return importCanonical(pool);
 }

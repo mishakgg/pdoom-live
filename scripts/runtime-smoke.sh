@@ -8,10 +8,12 @@ IMAGE="${1:-pdoom-live:ci}"
 NET="pdoom-smoke-$$"
 PG="pdoom-pg-$$"
 WEB="pdoom-web-$$"
+work="$(mktemp -d)"
 
 cleanup() {
   docker rm -f "$WEB" "$PG" >/dev/null 2>&1 || true
   docker network rm "$NET" >/dev/null 2>&1 || true
+  rm -rf "$work"
 }
 trap cleanup EXIT
 
@@ -138,19 +140,21 @@ fi
 ready_ms="$(date +%s%3N)"
 echo "cold_start_ms=$((ready_ms - start_ms))"
 
-curl -fsS "http://127.0.0.1:3000/api/ready" | grep -q '"status":"ready"'
-curl -fsS "http://127.0.0.1:3000/api/health" | grep -q '"migrations":"current"'
-headers="$(curl -fsS -D - -o /tmp/pdoom-home.html "http://127.0.0.1:3000/")"
-printf '%s\n' "$headers" | grep -qi "^content-security-policy:"
-printf '%s\n' "$headers" | grep -qi "^x-content-type-options: nosniff"
-printf '%s\n' "$headers" | grep -qi "^x-frame-options: DENY"
-printf '%s\n' "$headers" | grep -qi "^referrer-policy:"
-printf '%s\n' "$headers" | grep -qi "^permissions-policy:"
-if printf '%s\n' "$headers" | grep -qi "^strict-transport-security:"; then
+ready_body="$(curl -fsS "http://127.0.0.1:3000/api/ready")"
+[[ "$ready_body" == *'"status":"ready"'* ]]
+health_body="$(curl -fsS "http://127.0.0.1:3000/api/health")"
+[[ "$health_body" == *'"migrations":"current"'* ]]
+curl -fsS -D "$work/headers" -o "$work/home.html" "http://127.0.0.1:3000/" >/dev/null
+grep -qi "^content-security-policy:" "$work/headers"
+grep -qi "^x-content-type-options: nosniff" "$work/headers"
+grep -qi "^x-frame-options: DENY" "$work/headers"
+grep -qi "^referrer-policy:" "$work/headers"
+grep -qi "^permissions-policy:" "$work/headers"
+if grep -qi "^strict-transport-security:" "$work/headers"; then
   echo "HSTS was set for an http origin" >&2
   exit 1
 fi
-if grep -q "postgresql://" /tmp/pdoom-home.html; then
+if grep -q "postgresql://" "$work/home.html"; then
   echo "homepage included a database URL" >&2
   exit 1
 fi
@@ -163,7 +167,8 @@ for _ in $(seq 1 40); do
   fi
   sleep 1
 done
-curl -fsS "http://127.0.0.1:3000/api/ready" | grep -q '"status":"ready"'
+ready_body="$(curl -fsS "http://127.0.0.1:3000/api/ready")"
+[[ "$ready_body" == *'"status":"ready"'* ]]
 
 docker stats --no-stream --format 'memory={{.MemUsage}} cpu={{.CPUPerc}}' "$WEB"
 echo "runtime_smoke_ok"
