@@ -8,3 +8,4 @@ export * from "./freshness";
 export * from "./vocabulary";
 export * from "./schemas";
 export * from "./request-order";
+export * from "./search";

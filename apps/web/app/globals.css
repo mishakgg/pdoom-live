@@ -170,9 +170,31 @@ footer.site {
   margin: 0;
   padding: 0.3rem 0;
   list-style: none;
-  width: 100%;
+  width: max(100%, 22rem);
+  max-height: 20rem;
+  overflow: auto;
 }
-.search li a { display: block; padding: 0.3rem 0.6rem; text-decoration: none; }
+.search li a, .search [role="option"] { display: flex; gap: 0.45rem; align-items: baseline; padding: 0.35rem 0.6rem; text-decoration: none; }
+.search [aria-selected="true"] { background: #efe8dc; }
+.search [role="option"] span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 28rem;
+}
+.search-kind .card p { overflow-wrap: anywhere; }
+.search-kind { margin-top: 1.35rem; }
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
 .volume { display: grid; gap: 0.25rem; }
 .volume div { display: grid; grid-template-columns: 5.5rem 1fr auto; gap: 0.4rem; align-items: center; font-size: 0.82rem; }
 .pager { display: flex; gap: 0.5rem; margin-top: 1rem; }

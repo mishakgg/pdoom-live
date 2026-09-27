@@ -1,6 +1,7 @@
 import { createPool } from "../packages/db/src/pool";
 import { stableId } from "../packages/db/src/ids";
-import { getOverview, getPerson, getTrend, listPeople, listStatements, listTopics, searchAll } from "../packages/db/src/queries";
+import { getOverview, getPerson, getTrend, listPeople, listStatements, listTopics } from "../packages/db/src/queries";
+import { searchPublic } from "../packages/db/src/search";
 import { afterAll, describe, expect, it } from "vitest";
 
 const pool = createPool(process.env.DATABASE_URL ?? "postgresql://postgres:postgres@localhost:5432/pdoom_live_test");
@@ -130,7 +131,35 @@ describe("scaled query behavior", () => {
     const statements = await timed("statements", () => listStatements({ limit: 20, q: "Scale statement 12" }, pool));
     expect(statements.data.length).toBeGreaterThan(0);
     expect(JSON.stringify(statements.data)).not.toContain("content_hash_input");
-    await timed("search", () => searchAll("Scale Person 3", pool));
+    const samples: Array<[string, () => Promise<unknown>]> = [
+      ["search-person", () => searchPublic({ q: "Scale Person 3", limit: 5 }, pool)],
+      ["search-statement", () => searchPublic({ q: "Scale statement 12", type: "statement", limit: 5 }, pool)],
+      ["search-title", () => searchPublic({ q: "Scale item 12", type: "source_item", limit: 5 }, pool)],
+      ["search-broad", () => searchPublic({ q: "Scale", limit: 8 }, pool)],
+    ];
+    const timings: Array<{ label: string; ms: number }> = [];
+    for (const [label, fn] of samples) {
+      const started = Date.now();
+      const value = await fn();
+      const elapsed = Date.now() - started;
+      timings.push({ label, ms: elapsed });
+      expect(elapsed, label).toBeLessThan(500);
+      if (label === "search-person") {
+        const person = value as Awaited<ReturnType<typeof searchPublic>>;
+        expect(person.groups.person.data[0]?.slug).toBe("scale-person-3");
+        expect(person.groups.person.data[0]?.match).toBe("exact_name");
+      }
+      if (label === "search-statement") {
+        const statement = value as Awaited<ReturnType<typeof searchPublic>>;
+        expect(statement.groups.statement.data[0]?.slug).toBe("scale-statement-12");
+        expect(statement.groups.statement.data[0]?.match).toBe("exact_text");
+      }
+      if (label === "search-title") {
+        const title = value as Awaited<ReturnType<typeof searchPublic>>;
+        expect(title.groups.source_item.data[0]?.slug).toBe("scale-item-12");
+      }
+    }
+    console.info(`search-scale-ms ${JSON.stringify(timings)}`);
     await timed("topics", () => listTopics(pool));
     await timed("trend", () => getTrend("extinction-by-2070-distribution", pool));
   });
