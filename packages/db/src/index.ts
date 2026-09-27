@@ -5,3 +5,6 @@ export * from "./import";
 export * from "./queries";
 export * from "./trends";
 export * from "./ids";
+export * from "./readiness";
+export * from "./shutdown";
+export { migrationsDirectory } from "./paths";

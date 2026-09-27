@@ -1,0 +1,23 @@
+name: runtime
+
+on:
+  push:
+  pull_request:
+
+# Fork pull requests run this file. Build and smoke-test the image only.
+# Do not attach deployment credentials, write tokens, or a production database.
+permissions:
+  contents: read
+
+jobs:
+  image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          persist-credentials: false
+      - name: Build production image
+        run: docker build -t pdoom-live:ci .
+      - name: Smoke-test the image
+        run: bash scripts/runtime-smoke.sh pdoom-live:ci
