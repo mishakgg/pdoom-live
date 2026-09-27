@@ -67,6 +67,7 @@ The first testing-ready product slice runs on PostgreSQL with a synthetic fixtur
 - [Cohort methodology](./docs/COHORT_METHODOLOGY.md) — cohort `2026.09.0` is a purposive seed, not all AI researchers.
 - [Data pipeline](./docs/DATA_PIPELINE.md) — collector envelope, seed files, and the gap to the application import.
 - [Ingestion contract](./docs/INGESTION_CONTRACT.md) — canonical document the product imports. The current schema requires `synthetic: true` and is the fixture loader, not the live seed.
+- [Trend methodology](./docs/TREND_METHODOLOGY.md) — question keys, forecast families, coverage, and exclusion reasons.
 - Seed files: `data/seed/cohort/v2026-09/`.
 - Quality report: `data/reports/cohort-v2026-09-quality.md`.
 

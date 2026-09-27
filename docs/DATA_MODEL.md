@@ -326,9 +326,10 @@ The first product slice adds these fields without collapsing the entities above:
 
 - Slugs on people, organizations, sources, source items, evidence, statements, topics, cohorts, and runs, used as natural keys in the import document.
 - `source_items.logical_key`, `content_hash`, `content_version`, and `is_current`. The unpublished body is not a column.
-- `forecasts.question_key`, the comparability key a trend must match.
+- `forecasts.question_key`, the comparability key a trend must match. See [Trend methodology](./TREND_METHODOLOGY.md).
 - `cohorts` and `cohort_memberships`, so a trend can name a cohort version.
-- `trend_definitions.method_version` plus the aggregation JSON. Observations are computed from canonical rows.
+- `trend_definitions.method_version` plus the aggregation JSON. Observations are computed from canonical rows. The JSON union adds `timeline_forecast`, `quantity_forecast`, and `historical_revision` beside the original distribution and volume tags. `conditionality` on a distribution is optional. No new table or migration is required.
+- Prepared methods in `packages/db/src/trend-catalog.ts` and discovered question keys are computed at read time. They are not extra canonical tables.
 - `dataset_imports` stores `schema_version`, `dataset_id`, `dataset_kind` (`synthetic` or `live`), `generated_at`, `imported_at`, `notice`, producer, and the current cohort. One row is current.
 - Identity, affiliation, and participant confidence is categorical. Statement, forecast, topic, and relationship confidence stays numeric.
 - Freshness of a source is `current` within 14 days of `last_success_at`, `aging` within 90 days, `stale` after that, and `never_checked` when `last_success_at` is null. That is collection state.

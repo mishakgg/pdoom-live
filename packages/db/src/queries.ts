@@ -1,23 +1,19 @@
 import {
   classifyFreshness,
-  distributionAggregationSchema,
   isPublicReviewState,
   peopleListQuerySchema,
   REVIEW_STATES,
   statementListQuerySchema,
-  volumeAggregationSchema,
   type Freshness,
   type PeopleListQuery,
   type StatementListQuery,
 } from "@pdoom/contracts";
 import type pg from "pg";
 import { getPool } from "./pool";
-import {
-  computeExplicitNumericDistribution,
-  computeStatementVolume,
-  type DistributionAggregation,
-  type TrendCandidate,
-} from "./trends";
+import { listComputedTrends } from "./trend-query";
+
+export { getTrend, listTrends, listComputedTrends } from "./trend-query";
+export type { PublicTrend } from "./trend-query";
 
 export class InvalidCursorError extends Error {
   constructor() {
@@ -681,126 +677,6 @@ export async function getSourceItem(slug: string, pool = getPool()) {
   };
 }
 
-async function loadDistributionCandidates(pool: pg.Pool, cohortSlug: string, cohortVersion: string): Promise<{ size: number; candidates: TrendCandidate[] }> {
-  const size = await pool.query(
-    `SELECT count(*)::int AS count
-     FROM cohort_memberships cm JOIN cohorts c ON c.id = cm.cohort_id
-     WHERE c.slug = $1 AND c.version = $2`,
-    [cohortSlug, cohortVersion],
-  );
-  const result = await pool.query(
-    `SELECT s.slug AS statement_slug, p.slug AS person_slug, p.display_name, s.statement_type, s.review_state,
-            s.event_time, f.question_key, f.value_type, f.value_numeric, f.unit, f.horizon_text,
-            COALESCE(array_agg(DISTINCT t.slug) FILTER (WHERE t.slug IS NOT NULL), '{}') AS topic_slugs
-     FROM statements s
-     JOIN people p ON p.id = s.person_id
-     JOIN cohort_memberships cm ON cm.person_id = p.id
-     JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2
-     LEFT JOIN forecasts f ON f.statement_id = s.id
-     LEFT JOIN statement_topics st ON st.statement_id = s.id
-     LEFT JOIN topics t ON t.id = st.topic_id
-     GROUP BY s.id, p.slug, p.display_name, f.question_key, f.value_type, f.value_numeric, f.unit, f.horizon_text`,
-    [cohortSlug, cohortVersion],
-  );
-  return {
-    size: size.rows[0].count as number,
-    candidates: result.rows.map((row) => ({
-      statement_slug: String(row.statement_slug),
-      person_slug: String(row.person_slug),
-      display_name: String(row.display_name),
-      statement_type: String(row.statement_type),
-      review_state: String(row.review_state),
-      topic_slugs: row.topic_slugs as string[],
-      question_key: row.question_key ? String(row.question_key) : null,
-      value_type: row.value_type ? String(row.value_type) : null,
-      value_numeric: num(row.value_numeric),
-      unit: row.unit ? String(row.unit) : null,
-      horizon_text: row.horizon_text ? String(row.horizon_text) : null,
-      event_time: iso(row.event_time),
-    })),
-  };
-}
-
-export async function listTrends(pool = getPool()) {
-  const result = await pool.query(
-    `SELECT td.slug, td.name, td.method_version, td.published, c.slug AS cohort_slug, c.version AS cohort_version,
-            t.slug AS topic_slug
-     FROM trend_definitions td
-     JOIN cohorts c ON c.id = td.cohort_id
-     LEFT JOIN topics t ON t.id = td.topic_id
-     WHERE td.published
-     ORDER BY td.name`,
-  );
-  return result.rows.map((row) => ({
-    slug: String(row.slug),
-    name: String(row.name),
-    method_version: String(row.method_version),
-    cohort_slug: String(row.cohort_slug),
-    cohort_version: String(row.cohort_version),
-    topic_slug: row.topic_slug ? String(row.topic_slug) : null,
-  }));
-}
-
-export async function getTrend(slug: string, pool = getPool()) {
-  const result = await pool.query(
-    `SELECT td.slug, td.name, td.method_version, td.cohort_definition_json, td.aggregation_definition_json,
-            c.slug AS cohort_slug, c.version AS cohort_version, c.definition AS cohort_definition
-     FROM trend_definitions td
-     JOIN cohorts c ON c.id = td.cohort_id
-     WHERE td.slug = $1 AND td.published`,
-    [slug],
-  );
-  const row = result.rows[0];
-  if (!row) return null;
-  const aggregation = row.aggregation_definition_json;
-  const header = {
-    slug: String(row.slug),
-    name: String(row.name),
-    method_version: String(row.method_version),
-    cohort_slug: String(row.cohort_slug),
-    cohort_version: String(row.cohort_version),
-    cohort_definition: String(row.cohort_definition),
-    calculated_at: new Date().toISOString(),
-  };
-  if (aggregation.type === "explicit_numeric_distribution") {
-    const parsed = distributionAggregationSchema.parse(aggregation) as DistributionAggregation;
-    const loaded = await loadDistributionCandidates(pool, header.cohort_slug, header.cohort_version);
-    const distribution = computeExplicitNumericDistribution({
-      method_version: header.method_version,
-      cohort_slug: header.cohort_slug,
-      cohort_version: header.cohort_version,
-      cohort_definition: header.cohort_definition,
-      cohort_size: loaded.size,
-      aggregation: parsed,
-      candidates: loaded.candidates,
-    });
-    return { ...header, kind: "distribution" as const, distribution };
-  }
-  const parsed = volumeAggregationSchema.parse(aggregation);
-  const volumeRows = await pool.query(
-    `SELECT s.slug AS statement_slug, p.slug AS person_slug, s.statement_type, s.review_state, s.event_time, t.slug AS topic_slug
-     FROM statements s
-     JOIN people p ON p.id = s.person_id
-     JOIN cohort_memberships cm ON cm.person_id = p.id
-     JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2
-     JOIN statement_topics st ON st.statement_id = s.id
-     JOIN topics t ON t.id = st.topic_id`,
-    [header.cohort_slug, header.cohort_version],
-  );
-  const volume = computeStatementVolume({
-    review_states: parsed.review_states,
-    rows: volumeRows.rows.map((item) => ({
-      statement_slug: String(item.statement_slug),
-      person_slug: String(item.person_slug),
-      statement_type: String(item.statement_type),
-      review_state: String(item.review_state),
-      topic_slug: String(item.topic_slug),
-      event_time: iso(item.event_time),
-    })),
-  });
-  return { ...header, kind: "volume" as const, volume };
-}
-
 export async function getDatasetRecord(pool = getPool()) {
   const result = await pool.query(
     `SELECT schema_version, dataset_id, dataset_kind, generated_at, imported_at, notice,
@@ -955,19 +831,14 @@ export async function getOverview(pool = getPool()) {
         dataset.cohort_version,
       ])
     : { rows: [] as Array<Record<string, unknown>> };
-  const trends = (await listTrends(pool)).filter(
-    (trend) => !dataset?.cohort_slug || (trend.cohort_slug === dataset.cohort_slug && trend.cohort_version === dataset.cohort_version),
-  );
   const verified = await pool.query(
     `SELECT count(*)::int AS count FROM statements WHERE review_state = 'human_verified'`,
   );
   const showTrends = dataset?.dataset_kind !== "live" || Number(verified.rows[0].count) > 0;
-  const computed = [];
-  if (showTrends) {
-    for (const trend of trends) {
-      computed.push(await getTrend(trend.slug, pool));
-    }
-  }
+  const computed = showTrends ? await listComputedTrends(pool) : [];
+  const overviewTrends = dataset?.dataset_kind === "live"
+    ? computed.filter((trend) => trend.contributing_statement_count > 0)
+    : computed;
   const recent = await listStatements({ limit: 8, sort: "event_time_desc" }, pool);
   const revisions = await pool.query(
     `SELECT r.relationship_type, fs.slug AS from_slug, ts.slug AS to_slug, p.display_name, p.slug AS person_slug,
@@ -1006,7 +877,7 @@ export async function getOverview(pool = getPool()) {
       latest_observed_at: iso(observed.rows[0].observed_at),
       latest_published_at: iso(observed.rows[0].published_at),
     },
-    trends: computed.filter((trend) => trend !== null),
+    trends: overviewTrends,
     recent_statements: recent.data,
     revisions: revisions.rows.map((row) => ({
       relationship_type: String(row.relationship_type),
