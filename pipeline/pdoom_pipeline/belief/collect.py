@@ -8,13 +8,13 @@ from collections import Counter
 
 from urllib.parse import urlparse
 
-from pdoom_pipeline.belief.appearances import guest_from_title, speaker_turns, turns_for_person
+from pdoom_pipeline.belief.appearances import guest_from_title, speaker_blocks, speaker_turns
 from pdoom_pipeline.belief.changes import view_change_candidates
 from pdoom_pipeline.belief.pages import article_text, host_of, page_title, published_time, robots_allows
 from pdoom_pipeline.collectors.rss import RssCollector
 from pdoom_pipeline.enrich.html_page import strip_markup
 from pdoom_pipeline.errors import CollectorFailure
-from pdoom_pipeline.extract.statements import EXTRACTOR_VERSION, extract_statements
+from pdoom_pipeline.extract.statements import EXTRACTOR_VERSION, SPEAKER_GAP, extract_statements
 from pdoom_pipeline.hashing import content_hash
 from pdoom_pipeline.identity.names import name_key, same_person_name
 from pdoom_pipeline.ingest.participants import mentioned
@@ -30,13 +30,17 @@ def collect_beliefs(*, people: list[dict], leads: list[dict], fetch_bytes, obser
     observations = []
     statements = []
     runs = []
+    source_leads = []
     seen_items = set()
     robots_cache: dict[str, str | None] = {}
-    ordered = sorted(leads, key=lambda row: {"essay": 0, "owned_feed": 1, "author_feed": 2, "show_feed": 3}.get(row["kind"], 9))
+    ordered = sorted(leads, key=lambda row: {"essay": 0, "talk": 1, "owned_feed": 2, "author_feed": 3, "show_feed": 4, "lead": 5}.get(row["kind"], 9))
     for lead in ordered:
         kind = lead["kind"]
-        if kind == "essay":
-            _collect_essay(lead, by_slug, fetch_bytes, observed_at, observations, statements, runs, seen_items, robots_cache)
+        if kind == "lead":
+            source_leads.append(_lead_row(lead, lead.get("reason_not_admitted") or "not_yet_collected", bool(lead.get("retryable", True))))
+            continue
+        if kind in {"essay", "talk"}:
+            _collect_page(lead, by_slug, fetch_bytes, observed_at, observations, statements, runs, seen_items, robots_cache, source_leads)
             continue
         if kind == "owned_feed" and lead["person_slug"] not in priority_slugs:
             continue
@@ -47,6 +51,9 @@ def collect_beliefs(*, people: list[dict], leads: list[dict], fetch_bytes, obser
                 payload = fetch_bytes(url)
             except CollectorFailure as exc:
                 runs.append({"status": "failure", "kind": kind, "url": url, "error_class": exc.error_class})
+                failed = dict(lead)
+                failed["url"] = url
+                source_leads.append(_lead_row(failed, exc.error_class, exc.retryable))
                 break
             try:
                 parsed = RssCollector().parse(
@@ -59,6 +66,9 @@ def collect_beliefs(*, people: list[dict], leads: list[dict], fetch_bytes, obser
                 )
             except CollectorFailure as exc:
                 runs.append({"status": "failure", "kind": kind, "url": url, "error_class": exc.error_class})
+                failed = dict(lead)
+                failed["url"] = url
+                source_leads.append(_lead_row(failed, exc.error_class, exc.retryable))
                 break
             if not parsed:
                 break
@@ -71,89 +81,109 @@ def collect_beliefs(*, people: list[dict], leads: list[dict], fetch_bytes, obser
                 key = item["canonical_url"]
                 if key in seen_items:
                     continue
+                text, start_ms = _evidence_text(
+                    item,
+                    fetch_bytes,
+                    runs,
+                    use_body=bool(lead.get("use_body")),
+                    robots_cache=robots_cache,
+                )
+                found = _statements_for_item(item, text, start_ms)
+                if lead.get("require_statement") and not found:
+                    continue
                 seen_items.add(key)
                 new_on_page += 1
-                text, start_ms = _evidence_text(item, fetch_bytes, runs, use_body=bool(lead.get("use_body")))
                 item["evidence_body"] = text
                 observations.append(item)
-                statements.extend(_statements_for_item(item, text, start_ms))
+                statements.extend(found)
             if page > 1 and new_on_page == 0:
                 break
     _assign_local_ids(statements)
     relationships = view_change_candidates(statements)
+    _mark_duplicates(statements)
     return {
         "observations": observations,
         "statements": statements,
         "relationships": relationships,
         "runs": runs,
+        "source_leads": source_leads,
         "extractor_version": EXTRACTOR_VERSION,
     }
 
 
-def _collect_essay(lead, by_slug, fetch_bytes, observed_at, observations, statements, runs, seen_items, robots_cache) -> None:
+def _collect_page(lead, by_slug, fetch_bytes, observed_at, observations, statements, runs, seen_items, robots_cache, source_leads) -> None:
+    kind = lead.get("kind") or "essay"
     person = by_slug.get(lead.get("person_slug"))
     if person is None:
-        runs.append({"status": "failure", "kind": "essay", "url": lead.get("url"), "error_class": "attribution_unresolved"})
+        runs.append({"status": "failure", "kind": kind, "url": lead.get("url"), "error_class": "attribution_unresolved"})
+        source_leads.append(_lead_row(lead, "attribution_unresolved", False))
         return
     fetch_url = lead.get("fetch_url") or lead["url"]
     robots = _robots_text(fetch_bytes, fetch_url, robots_cache, runs)
     if robots is None:
+        source_leads.append(_lead_row(lead, "robots_unavailable", True))
         return
     path = urlparse(fetch_url).path or "/"
     if not robots_allows(robots, path):
-        runs.append({"status": "failure", "kind": "essay", "url": fetch_url, "error_class": "blocked_by_policy"})
+        runs.append({"status": "failure", "kind": kind, "url": fetch_url, "error_class": "blocked_by_policy"})
+        source_leads.append(_lead_row(lead, "blocked_by_policy", False))
         return
     try:
         payload = fetch_bytes(fetch_url)
     except CollectorFailure as exc:
-        runs.append({"status": "failure", "kind": "essay", "url": fetch_url, "error_class": exc.error_class})
+        runs.append({"status": "failure", "kind": kind, "url": fetch_url, "error_class": exc.error_class})
+        source_leads.append(_lead_row(lead, exc.error_class, exc.retryable))
         return
     raw = payload.decode("utf-8", errors="replace")
-    text = article_text(raw, max_chars=ESSAY_TEXT_CHARS)
+    text = article_text(raw, max_chars=200_000 if kind == "talk" else ESSAY_TEXT_CHARS)
     marker = lead.get("cut_before")
     if marker and marker in text:
         text = text[: text.index(marker)]
     title_for_byline = page_title(raw) or ""
     if not _essay_attributed(lead, person, text + "\n" + title_for_byline):
-        runs.append({"status": "failure", "kind": "essay", "url": lead["url"], "error_class": "attribution_unresolved"})
+        runs.append({"status": "failure", "kind": kind, "url": lead["url"], "error_class": "attribution_unresolved"})
+        source_leads.append(_lead_row(lead, "attribution_unresolved", False))
         return
     try:
         canonical = canonicalize_url(lead["url"])
     except ValueError:
-        runs.append({"status": "failure", "kind": "essay", "url": lead["url"], "error_class": "invalid_content"})
+        runs.append({"status": "failure", "kind": kind, "url": lead["url"], "error_class": "invalid_content"})
+        source_leads.append(_lead_row(lead, "invalid_content", False))
         return
     if canonical in seen_items:
         return
     seen_items.add(canonical)
     title = page_title(raw) if "<html" in raw[:2000].lower() else None
+    talk = kind == "talk"
+    evidence, attribution, start_ms = _page_evidence(lead, person, text)
     item = {
         "person_id": f"person:{person['slug']}",
         "person_slug": person["slug"],
         "display_name": person["display_name"],
-        "role": "author",
-        "ownership": "owned",
-        "show_slug": None,
+        "role": "speaker" if talk else "author",
+        "ownership": "appearance" if talk else "owned",
+        "show_slug": lead.get("show_slug"),
         "show_name": lead.get("name"),
-        "source_type": lead.get("source_type") or "blog",
+        "source_type": lead.get("source_type") or ("video" if talk else "blog"),
         "feed_url": canonical,
         "canonical_url": canonical,
         "title": (title or lead.get("name") or "")[:300] or None,
         "published_at": published_time(raw),
         "observed_at": observed_at,
         "upstream_id": canonical[:300],
-        "platform": "blog",
+        "platform": lead.get("platform") or ("video" if talk else "blog"),
         "collector": "html-page",
         "collector_version": "html-page-0.1.0",
         "collection_method": "html_page",
         "content_hash": content_hash({"url": canonical, "text": text}),
         "summary": text[:500],
-        "transcript_url": None,
-        "attribution_method": "byline",
+        "transcript_url": lead.get("transcript_url"),
+        "attribution_method": attribution,
     }
-    item["evidence_body"] = text
+    item["evidence_body"] = evidence
     observations.append(item)
-    statements.extend(_statements_for_item(item, text, None))
-    runs.append({"status": "success", "kind": "essay", "url": canonical, "person_id": item["person_id"]})
+    statements.extend(_statements_for_item(item, evidence, start_ms))
+    runs.append({"status": "success", "kind": kind, "url": canonical, "person_id": item["person_id"]})
 
 
 def _robots_text(fetch_bytes, url: str, cache: dict, runs: list[dict]) -> str | None:
@@ -180,6 +210,12 @@ def _robots_text(fetch_bytes, url: str, cache: dict, runs: list[dict]) -> str | 
 def _essay_attributed(lead: dict, person: dict, text: str) -> bool:
     if mentioned(text, person["display_name"]):
         return True
+    alias = lead.get("byline_alias") or ""
+    if alias and person.get("name_distinctiveness") == "high" and mentioned(text, alias):
+        family = name_key(person["display_name"])[-1] if name_key(person["display_name"]) else ""
+        alias_tokens = name_key(alias)
+        if len(alias_tokens) >= 2 and len(family) > 3 and family in alias_tokens:
+            return True
     handle = lead.get("byline_handle") or ""
     if handle and person.get("name_distinctiveness") == "high" and handle.lower() in text.lower():
         compact = "".join(char for char in handle.lower() if char.isalnum())
@@ -275,12 +311,20 @@ def _person_by_author(author: str, people: list[dict]) -> dict | None:
     return hits[0]
 
 
-def _evidence_text(item: dict, fetch_bytes, runs: list[dict], use_body: bool = False) -> tuple[str, int | None]:
+def _evidence_text(item: dict, fetch_bytes, runs: list[dict], use_body: bool = False, robots_cache: dict | None = None) -> tuple[str, int | None]:
     if item["ownership"] == "owned":
         if use_body and item.get("article_text"):
             return article_text(item["article_text"], max_chars=ESSAY_TEXT_CHARS), None
         return strip_markup(item.get("summary") or ""), None
     url = item.get("transcript_url")
+    if not url and item.get("canonical_url") and item.get("role") == "guest":
+        url = item["canonical_url"]
+        if robots_cache is not None:
+            robots = _robots_text(fetch_bytes, url, robots_cache, runs)
+            path = urlparse(url).path or "/"
+            if robots is None or not robots_allows(robots, path):
+                runs.append({"status": "failure", "kind": "transcript", "url": url, "error_class": "blocked_by_policy", "person_id": item["person_id"]})
+                return "", None
     if not url:
         return "", None
     try:
@@ -291,14 +335,44 @@ def _evidence_text(item: dict, fetch_bytes, runs: list[dict], use_body: bool = F
     if len(payload) > MAX_TRANSCRIPT_BYTES:
         runs.append({"status": "failure", "kind": "transcript", "url": url, "error_class": "content_too_large", "person_id": item["person_id"]})
         return "", None
-    text = payload.decode("utf-8", errors="replace")
-    turns = turns_for_person(speaker_turns(text), item["display_name"])
-    if not turns:
+    text = article_text(payload.decode("utf-8", errors="replace"), max_chars=200_000)
+    body, start_ms = _labeled_speaker_text(text, item["display_name"])
+    if not body:
+        runs.append({"status": "failure", "kind": "transcript", "url": url, "error_class": "speaker_labels_absent", "person_id": item["person_id"]})
         return "", None
-    runs.append({"status": "success", "kind": "transcript", "url": url, "person_id": item["person_id"], "turns": len(turns)})
-    body = "\n".join(turn["text"] for turn in turns)
-    start_ms = next((turn["start_ms"] for turn in turns if turn.get("start_ms") is not None), None)
+    runs.append({"status": "success", "kind": "transcript", "url": url, "person_id": item["person_id"]})
     return body[:200_000], start_ms
+
+
+def _labeled_speaker_text(text: str, display_name: str) -> tuple[str, int | None]:
+    blocks = speaker_blocks(speaker_turns(text), display_name)
+    if not blocks:
+        return "", None
+    body = f"\n{SPEAKER_GAP}\n".join(block["text"] for block in blocks)
+    start_ms = next((block["start_ms"] for block in blocks if block.get("start_ms") is not None), None)
+    return body, start_ms
+
+
+def _page_evidence(lead: dict, person: dict, text: str) -> tuple[str, str, int | None]:
+    if lead.get("kind") != "talk":
+        return text, "byline", None
+    labeled, start_ms = _labeled_speaker_text(text, person["display_name"])
+    if labeled:
+        return labeled, "transcript_label", start_ms
+    if lead.get("single_speaker") and not speaker_turns(text):
+        return text, "byline", None
+    return "", "byline", None
+
+
+def _lead_row(lead: dict, reason: str, retryable: bool) -> dict:
+    return {
+        "person_slug": lead.get("person_slug"),
+        "candidate_url": lead.get("url"),
+        "candidate_source_type": lead.get("candidate_source_type") or lead.get("source_type") or lead.get("kind"),
+        "discovery_provenance": lead.get("discovery_provenance") or lead.get("basis") or "collection_attempt",
+        "reason_not_admitted": reason,
+        "retryable": bool(retryable),
+    }
 
 
 def _statements_for_item(item: dict, text: str, start_ms: int | None) -> list[dict]:
@@ -306,7 +380,8 @@ def _statements_for_item(item: dict, text: str, start_ms: int | None) -> list[di
         return []
     found = extract_statements(text, person_id=item["person_id"])
     kept = []
-    seen = set()
+    digests = set()
+    kept_by_signature: dict[tuple, dict] = {}
     for statement in _prefer(found):
         if not _passes_gate(statement):
             continue
@@ -321,11 +396,21 @@ def _statements_for_item(item: dict, text: str, start_ms: int | None) -> list[di
         digest = hashlib.sha256(
             f"{item['person_id']}|{signature}|{statement['evidence_text'][:180]}".encode("utf-8")
         ).hexdigest()
-        if digest in seen or (statement.get("statement_type") == "explicit_numeric" and signature in seen):
+        if digest in digests or (statement.get("statement_type") == "explicit_numeric" and signature in kept_by_signature):
+            if statement.get("statement_type") == "explicit_numeric" and signature in kept_by_signature:
+                flags = set(kept_by_signature[signature].get("review_flags") or [])
+                flags.add("possible_duplicate")
+                kept_by_signature[signature]["review_flags"] = sorted(flags)
             continue
-        seen.add(digest)
+        digests.add(digest)
         if statement.get("statement_type") == "explicit_numeric":
-            seen.add(signature)
+            kept_by_signature[signature] = statement
+        flags = list(statement.get("review_flags") or [])
+        if item.get("role") == "guest" and item.get("attribution_method") not in {None, "transcript_label"}:
+            flags.append("speaker_attribution_weak")
+        if item.get("ownership") == "appearance" and item.get("source_type") == "press":
+            flags.append("secondary_source_only")
+        statement["review_flags"] = sorted(set(flags))
         statement.update(
             {
                 "person_slug": item["person_slug"],
@@ -336,7 +421,7 @@ def _statements_for_item(item: dict, text: str, start_ms: int | None) -> list[di
                 "ownership": item["ownership"],
                 "start_ms": start_ms if statement.get("start_ms") is None else statement.get("start_ms"),
                 "attribution_method": "transcript_label" if item["role"] == "guest" else item.get("attribution_method") or "metadata",
-                "attribution_detail": "speaker_label" if item["role"] == "guest" else ("page_byline" if item.get("attribution_method") == "byline" else "feed_author_field"),
+                "attribution_detail": "speaker_label" if item["role"] == "guest" or item.get("attribution_method") == "transcript_label" else ("page_byline" if item.get("attribution_method") == "byline" else "feed_author_field"),
                 "verified": False,
             }
         )
@@ -361,15 +446,50 @@ def _passes_gate(statement: dict) -> bool:
                 return False
             if statement.get("value_numeric") is None and (statement.get("value_min") is None or statement.get("value_max") is None):
                 return False
-        if statement.get("unit") == "year":
+        if statement.get("unit") == "year" and statement.get("value_numeric") is not None:
             year = str(int(statement["value_numeric"]))
             if year not in evidence:
                 return False
+        if statement.get("unit") == "year" and statement.get("value_type") == "range":
+            if str(int(statement["value_min"])) not in evidence or str(int(statement["value_max"])) not in evidence:
+                return False
+        if statement.get("unit") in {"years_ahead", "decade"} and statement.get("horizon_text") and statement["horizon_text"] not in evidence:
+            return False
         if statement.get("value_text") and statement["value_text"] not in evidence and statement.get("unit") != "year":
             return False
     if statement.get("statement_type") == "explicit_qualitative" and statement.get("value_numeric") is not None:
         return False
     return True
+
+
+def _repeated_people(statements: list[dict]) -> int:
+    counts: Counter = Counter()
+    for row in statements:
+        if row.get("statement_type") != "explicit_numeric" or not row.get("question_key"):
+            continue
+        counts[(row.get("person_slug"), row.get("question_key"))] += 1
+    return len({person for (person, _key), count in counts.items() if count >= 2})
+
+
+def _mark_duplicates(statements: list[dict]) -> None:
+    seen: dict[tuple, dict] = {}
+    for statement in statements:
+        signature = (
+            statement.get("person_id"),
+            statement.get("question_key"),
+            statement.get("value_numeric"),
+            statement.get("value_min"),
+            statement.get("value_max"),
+            statement.get("horizon_text"),
+            statement.get("evidence_text"),
+        )
+        earlier = seen.get(signature)
+        if earlier is not None:
+            flags = set(earlier.get("review_flags") or [])
+            flags.add("possible_duplicate")
+            earlier["review_flags"] = sorted(flags)
+            continue
+        seen[signature] = statement
 
 
 def _assign_local_ids(statements: list[dict]) -> None:
@@ -401,6 +521,10 @@ def summarize(result: dict) -> dict:
         "missing_definition": sum(1 for row in statements if row["statement_type"] == "explicit_numeric" and not row.get("definition_text")),
         "podcast_people": len({row["person_slug"] for row in observations if row.get("platform") == "podcast" or row.get("role") == "guest"}),
         "owned_people": len({row["person_slug"] for row in observations if row.get("ownership") == "owned"}),
+        "multi_sentence": sum(1 for row in statements if "multi_sentence_evidence" in (row.get("review_flags") or [])),
+        "video_items": sum(1 for row in observations if row.get("platform") == "video" or row.get("source_type") in {"video", "conference_talk", "testimony"}),
+        "source_leads": len(result.get("source_leads") or []),
+        "people_with_repeated_forecasts": _repeated_people(statements),
         "relationships": len(result["relationships"]),
         "runs": len(result["runs"]),
         "failures": dict(Counter(row.get("error_class") for row in result["runs"] if row.get("status") != "success")),

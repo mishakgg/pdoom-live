@@ -111,7 +111,7 @@ def export_corpus(result: dict, *, seed_dir: Path | None = None, generated_at: s
                 "topic_confidence": 0.55 if statement["statement_type"] == "explicit_numeric" else 0.35,
             }
         )
-        if statement.get("forecast_kind"):
+        if statement.get("forecast_kind") and statement.get("question_key"):
             forecasts.append(_forecast(statement, statement_slug))
     for item_slug, evidence_slugs in by_item_evidence.items():
         blob = "|".join(evidence_slugs).encode("utf-8")
@@ -188,7 +188,7 @@ def _ensure_source(document: dict, seen: set[str], observation: dict) -> str:
     by_url = {row["canonical_url"]: row["slug"] for row in document["sources"]}
     if observation["feed_url"] in by_url:
         return by_url[observation["feed_url"]]
-    if observation["ownership"] == "appearance":
+    if observation["ownership"] == "appearance" and observation.get("platform") == "podcast":
         slug = observation["show_slug"]
         if slug not in seen:
             document["sources"].append(
@@ -214,7 +214,7 @@ def _ensure_source(document: dict, seen: set[str], observation: dict) -> str:
     slug = _slug("src", observation["person_slug"] + observation["feed_url"])
     if slug not in seen:
         source_type = observation["source_type"]
-        if source_type not in {"blog", "newsletter", "podcast", "personal_site", "lab_post"}:
+        if source_type not in {"blog", "newsletter", "podcast", "personal_site", "lab_post", "video", "conference_talk", "testimony", "interview"}:
             source_type = "blog"
         document["sources"].append(
             {
@@ -245,7 +245,7 @@ def _forecast(statement: dict, statement_slug: str) -> dict:
     return {
         "statement_slug": statement_slug,
         "forecast_kind": statement["forecast_kind"],
-        "question_key": statement.get("question_key") or "unspecified",
+        "question_key": statement["question_key"],
         "question_text": (statement.get("question_text") or statement["normalized_text"])[:600],
         "definition_text": statement.get("definition_text"),
         "condition_text": statement.get("condition_text"),

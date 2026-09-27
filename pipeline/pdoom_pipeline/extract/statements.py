@@ -12,7 +12,8 @@ import re
 from pdoom_pipeline.belief.taxonomy import KEY_TOPIC, QUESTION_KEYS
 from pdoom_pipeline.contracts import REVIEW_STATES
 
-EXTRACTOR_VERSION = "rule-extract-0.3.0"
+EXTRACTOR_VERSION = "rule-extract-0.4.0"
+SPEAKER_GAP = "<<<SPEAKER_GAP>>>"
 
 PROBABILITY_CUE = re.compile(
     r"\b(chance|probability|prob\.?|odds|credence|p\s*\(\s*doom\s*\)|likelihood)\b",
@@ -25,21 +26,60 @@ PERCENT = re.compile(
 ONE_IN = re.compile(r"\b(?P<num>\d{1,4})\s+in\s+(?P<den>\d{1,6})\b", re.I)
 FRACTION_CHANCE = re.compile(r"~?\s*(?P<num>\d{1,2})\s*/\s*(?P<den>\d{1,2})\s+chance\b", re.I)
 _YEAR = r"(?:20|21)\d{2}"
-HORIZON_YEAR = re.compile(rf"\b(?:by|before)\s+(?P<year>{_YEAR})\b", re.I)
+_NUMWORD = r"(?:\d{1,3}|one|two|three|four|five|six|seven|eight|nine|ten|fifteen|twenty|thirty|forty|fifty)"
+WORD_VALUE = {
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "five": 5,
+    "six": 6,
+    "seven": 7,
+    "eight": 8,
+    "nine": 9,
+    "ten": 10,
+    "fifteen": 15,
+    "twenty": 20,
+    "thirty": 30,
+    "forty": 40,
+    "fifty": 50,
+}
+HORIZON_YEAR = re.compile(rf"\b(?P<prep>by|before)\s+(?P<year>{_YEAR})\b", re.I)
 HORIZON_IN_YEAR = re.compile(rf"\b(?:around|in)\s+(?P<year>{_YEAR})\b", re.I)
-HORIZON_WITHIN = re.compile(r"\bwithin\s+(?P<years>\d{1,3})\s+years\b", re.I)
+HORIZON_WITHIN = re.compile(rf"\bwithin\s+(?P<years>{_NUMWORD})\s+years\b", re.I)
 YEARS_AHEAD = re.compile(
-    r"(?:as little as\s+)?(?P<min>\d{1,2})\s*(?:[–\-]|to)\s*(?P<max>\d{1,2})\s+years\s+away\b"
-    r"|\bwithin\s+(?P<min2>\d{1,2})\s*(?:[–\-]|to)\s*(?P<max2>\d{1,2})\s+years\b"
-    r"|\bwithin\s+(?P<single>\d{1,3})\s+years\b",
+    rf"(?:as little as\s+)?(?P<min>{_NUMWORD})\s*(?:[–\-]|to)\s*(?P<max>{_NUMWORD})\s+years\s+away\b"
+    rf"|\bwithin\s+(?P<min2>{_NUMWORD})\s*(?:[–\-]|to)\s*(?P<max2>{_NUMWORD})\s+years\b"
+    rf"|\bwithin\s+(?P<single>{_NUMWORD})\s+years\b"
+    rf"|\b(?P<min3>{_NUMWORD})\s*(?:[–\-]|to)\s*(?P<max3>{_NUMWORD})\s+years\b",
     re.I,
 )
+YEAR_SPAN = re.compile(rf"\b(?:between\s+)?(?P<start>{_YEAR})\s*(?:[–\-]|to|and)\s*(?P<end>{_YEAR})\b", re.I)
+DECADE = re.compile(rf"\b(?:(?P<part>early|mid|late)\s+)?(?P<decade>(?:20|21)\d0)s\b", re.I)
+THIS_DECADE = re.compile(r"\bthis decade\b", re.I)
+NEXT_DECADE = re.compile(r"\b(?:(?:over|in|within)\s+)?the next decade\b", re.I)
+LIST_CONTINUATION = re.compile(
+    r"^(?:[*\-]\s*)?(?:roughly\s+)?~?(?P<num>\d{1,3}(?:\.\d+)?)%\s+probability\s+by\s+(?P<year>(?:20|21)\d{2})\b",
+    re.I,
+)
+PRIOR_PROBABILITY = re.compile(
+    r"\bprobability of\s+(?P<what>transformative ai|human extinction|extinction|superintelligence|agi|asi)\b",
+    re.I,
+)
+MEDIAN_YEARS = re.compile(
+    r"\bmy own median timelines of\s+~?\s*(?P<years>\d{1,3})\s+years\s+until\b"
+    r"|\b(?P<years2>\d{1,3})\s+years as a median estimate\b",
+    re.I,
+)
+ANAPHORA = re.compile(r"^(?:by that i mean|that means|i mean|which means|in other words|that is,)\b", re.I)
+SPEAKER_LABEL = re.compile(r"^[A-Z][A-Za-z .'\-]{0,60}:\s")
 CONDITION = re.compile(
     r"\b(?:if|unless|given|assuming|conditional on)\b[^.]{0,180}",
     re.I,
 )
 REVISION = re.compile(
-    r"\b(i used to|i previously|i now think|i now believe|updated my|revised my|my current (?:view|credence|estimate))\b",
+    r"\b(i used to|i previously|previously, my|i now think|i now believe|i now expect|updated my|revised my|"
+    r"my current (?:view|credence|estimate)|my (?:personal )?timelines have)\b",
     re.I,
 )
 STANCE = re.compile(
@@ -51,7 +91,10 @@ NOT_SPEAKER = re.compile(
     r"they think|ceos have said|have suggested|have all suggested|according to|out of \d+ people|"
     r"labs themselves|various ceos|i might say|would have sounded|think back to|voluntary human extinction|"
     r"dream scenario|goal to aim for|black solid line|models surpass|highly confident|sympathy for someone|"
-    r"the source of|very likely to be influential|if i think i want to measure|paint companies)\b|^q\d+\b",
+    r"the source of|very likely to be influential|if i think i want to measure|paint companies|"
+    r"some people interpreted|even before ai|nuclear war|offhandedly mentioned|the precipice gives|"
+    r"don't want to set it|in our scenario|we could live in a world|expert survey|if you say what's the chance|"
+    r"holden wrote|holden felt|none of them really had|deploying ai systems only when)\b|^q\d+\b",
     re.I,
 )
 QUALITATIVE = (
@@ -82,11 +125,35 @@ TOPIC_NEAR = re.compile(
 def extract_statements(text: str, *, person_id: str | None = None) -> list[dict]:
     """Return candidate statements. Source text is not interpreted as an instruction."""
     raw = (text or "").replace("\u2019", "'").replace("\u2018", "'").replace("\u201c", '"').replace("\u201d", '"')
-    sentences = _sentences_with_spans(raw)
     statements: list[dict] = []
+    cursor = 0
+    for part in raw.split(SPEAKER_GAP):
+        statements.extend(_extract_part(part, person_id, cursor))
+        cursor += len(part) + len(SPEAKER_GAP)
+    for statement in statements:
+        statement["review_flags"] = _review_flags(statement)
+    return statements
+
+
+def _extract_part(text: str, person_id: str | None, offset: int) -> list[dict]:
+    sentences = _sentences_with_spans(text)
+    if offset:
+        sentences = [(sentence, start + offset, end + offset) for sentence, start, end in sentences]
+    statements: list[dict] = []
+    covered: set[int] = set()
     for index, (sentence, start, end) in enumerate(sentences):
         context = _context(sentences, index)
-        statements.extend(_explicit(sentence, person_id, start=start, end=end, context=context))
+        found = _explicit(sentence, person_id, start=start, end=end, context=context)
+        if not found:
+            continue
+        covered.add(index)
+        for row in found:
+            row["sentence_index"] = index
+        statements.extend(found)
+    _attach_neighbor_horizon(sentences, statements)
+    statements.extend(_anaphora_windows(sentences, covered, person_id))
+    statements.extend(_list_continuations(sentences, covered, person_id))
+    statements.extend(_for_that_answers(sentences, covered, person_id))
     return statements
 
 
@@ -134,7 +201,7 @@ def revision_language(text: str) -> bool:
 
 
 def _explicit(sentence: str, person_id: str | None, *, start: int, end: int, context: str) -> list[dict]:
-    if _not_speaker(sentence):
+    if _not_speaker(sentence) or _attributes_to_someone_else(sentence):
         return []
     if sentence.rstrip().endswith("?") and not re.search(r"\b(i estimate|i think there is|my credence|my p)\b", sentence, re.I):
         return []
@@ -308,9 +375,20 @@ def _risk_percent(sentence: str) -> bool:
 def _timeline(sentence: str, person_id: str | None, start: int, end: int, context: str) -> dict | None:
     if PERCENT.search(sentence) or ONE_IN.search(sentence) or FRACTION_CHANCE.search(sentence):
         return None
-    years = YEARS_AHEAD.search(sentence)
+    decade = _decade(sentence, person_id, start, end, context)
+    if decade:
+        return decade
+    span = _year_span(sentence, person_id, start, end, context)
+    if span:
+        return span
+    median = _median_years(sentence, person_id, start, end, context)
+    if median:
+        return median
+    years = _forward_years(sentence)
     horizon = _horizon(sentence)
     if years and not HORIZON_YEAR.search(sentence):
+        if _past_time(sentence) and not years.group("single") and not years.group("min"):
+            return None
         return _years_ahead(sentence, years, person_id, start, end, context)
     if not horizon or not re.search(_YEAR, horizon):
         return None
@@ -350,22 +428,24 @@ def _timeline(sentence: str, person_id: str | None, start: int, end: int, contex
 
 
 def _years_ahead(sentence, match, person_id, start, end, context) -> dict | None:
+    if _past_time(sentence):
+        return None
     question_key = _timeline_key(sentence) or ("capability_milestone" if re.search(r"\b(powerful ai|interpretability)\b", sentence, re.I) else None)
     if question_key is None:
         return None
-    low = match.group("min") or match.group("min2")
-    high = match.group("max") or match.group("max2")
+    low = match.group("min") or match.group("min2") or match.group("min3")
+    high = match.group("max") or match.group("max2") or match.group("max3")
     if low and high:
-        value_min = float(low)
-        value_max = float(high)
+        value_min = float(_num_value(low))
+        value_max = float(_num_value(high))
         value = None
         value_type = "range"
-        horizon = f"{low}-{high} years ahead"
+        horizon = match.group(0).strip()
     else:
-        value = float(match.group("single"))
+        value = float(_num_value(match.group("single")))
         value_min = value_max = None
         value_type = "point"
-        horizon = f"within {match.group('single')} years"
+        horizon = match.group(0).strip()
     definition = _timeline_definition(sentence, question_key) or ("powerful AI" if "powerful ai" in sentence.lower() else "interpretability" if "interpretability" in sentence.lower() else None)
     return _base(
         sentence,
@@ -398,7 +478,7 @@ def _quantity(sentence: str, person_id: str | None, start: int, end: int, contex
         return None
     if re.search(r"\b(so far|has so far|we've been seeing|we have been seeing|is below|unemployment is|puzzle|puzzles)\b", sentence, re.I):
         return None
-    if not re.search(rf"\b(expect|forecast|will|would|could|i think|we'll|going to|by {_YEAR}|within \d+ years|automat\w*|displace\w*|unemployment)\b", sentence, re.I):
+    if not re.search(rf"\b(expect|forecast|will|would|could|i think|we'll|going to|by {_YEAR}|within \d+ years|automat\w*|displace\w*|affect\w*|unemployment)\b", sentence, re.I):
         return None
     value = _percent(match.group("single"))
     if value is None:
@@ -407,6 +487,8 @@ def _quantity(sentence: str, person_id: str | None, start: int, end: int, contex
     if not question_key:
         return None
     horizon = _horizon(sentence)
+    approximate = _approximate(sentence, match.start())
+    review_state = "needs_review" if approximate or not horizon or not _first_person(sentence) else "machine_validated"
     return _base(
         sentence,
         person_id,
@@ -425,8 +507,8 @@ def _quantity(sentence: str, person_id: str | None, start: int, end: int, contex
         value_min=None,
         value_max=None,
         unit=unit,
-        review_state="machine_validated" if horizon and _first_person(sentence) else "needs_review",
-        confidence="medium" if horizon else "low",
+        review_state=review_state,
+        confidence="medium" if review_state == "machine_validated" else "low",
     )
 
 
@@ -438,7 +520,7 @@ def _qualitative_statement(sentence: str, person_id: str | None, start: int, end
         return None
     if not _stance_near_topic(sentence):
         return None
-    if _not_speaker(sentence):
+    if _not_speaker(sentence) or _attributes_to_someone_else(sentence):
         return None
     question_key, definition = _risk_question(sentence)
     if question_key is None:
@@ -496,8 +578,12 @@ def _risk_question(sentence: str) -> tuple[str | None, str | None]:
     if re.search(r"\bextinction\b", lowered):
         key = "extinction_conditional_agi" if conditional else "extinction_unconditional"
         return key, "extinction"
-    if re.search(r"\b(disempowerment|loss of control)\b", lowered):
-        return "disempowerment", "disempowerment" if "disempowerment" in lowered else "loss of control"
+    if re.search(r"\bdisempowered\b", lowered):
+        return "disempowerment", "disempowered"
+    if re.search(r"\bdisempowerment\b", lowered):
+        return "disempowerment", "disempowerment"
+    if re.search(r"\bloss of control\b", lowered):
+        return "disempowerment", "loss of control"
     if re.search(r"\b(most humans die|humans die|kill everyone)\b", lowered):
         return "mass_human_death", "most humans die"
     if re.search(r"\btakeover\b", lowered):
@@ -553,6 +639,10 @@ def _timeline_key(sentence: str) -> str | None:
         return "agi_timeline"
     if re.search(r"\b(cod(?:e|ing)|software engineering)\b", lowered) and re.search(r"\bautomat", lowered):
         return "coding_automation"
+    if re.search(r"\bfull automation of remote work\b", lowered) or (
+        re.search(r"\bremote work\b", lowered) and re.search(r"\bautomat", lowered)
+    ):
+        return "remote_work_automation"
     if re.search(r"\b(powerful ai|interpretability)\b", lowered):
         return "capability_milestone"
     return None
@@ -572,6 +662,10 @@ def _timeline_definition(sentence: str, question_key: str | None) -> str | None:
         return "agi"
     if question_key == "coding_automation":
         return "coding"
+    if question_key == "remote_work_automation":
+        if "full automation of remote work" in lowered:
+            return "full automation of remote work"
+        return "remote work automation"
     if question_key == "capability_milestone":
         if "powerful ai" in lowered:
             return "powerful AI"
@@ -582,11 +676,33 @@ def _timeline_definition(sentence: str, question_key: str | None) -> str | None:
 
 def _quantity_question(sentence: str) -> tuple[str | None, str | None, str | None]:
     lowered = sentence.lower()
+    geography = _geography_phrase(sentence)
     if re.search(r"\b(productivity|economic growth|gdp growth)\b", lowered):
-        return "productivity_growth", "growth_rate", "productivity"
-    if re.search(r"\b(job|jobs|employment|unemployment|workforce)\b", lowered) and re.search(r"\b(automat\w*|displace\w*|out of a job|unemploy\w*)\b", lowered):
-        geo = "stated-geography" if re.search(r"\b(united states|u\.s\.|america|china|europe)\b", lowered) else "global"
-        return "job_displacement", f"share_of_jobs_{geo}", "jobs"
+        definition = "productivity" if "productivity" in lowered or "economic growth" in lowered else "gdp growth"
+        if geography:
+            definition = f"{definition} in {geography}"
+        return "productivity_growth", "growth_rate", definition
+    if re.search(r"\bwages?\b", lowered) and re.search(r"\b(grow\w*|fall|rise|risen|decline|increase|decrease|stagnat\w*)\b", lowered):
+        definition = f"wages in {geography}" if geography else "wages"
+        return "wage_effect", "wage_change_rate", definition
+    activities = bool(re.search(r"\bwhat humans do\b", lowered))
+    if (re.search(r"\btasks?\b", lowered) or activities) and re.search(r"\b(automat\w*|affect\w*|replac\w*)\b", lowered) and not re.search(r"\b(unemployment|jobs?|employment|workforce)\b", lowered):
+        geo = "stated-geography" if geography else "global"
+        if activities and not re.search(r"\btasks?\b", lowered):
+            definition = f"what humans do in {geography}" if geography else "what humans do"
+        else:
+            definition = f"tasks in {geography}" if geography else "tasks"
+        return "task_automation", f"share_of_tasks_{geo}", definition
+    if re.search(r"\b(job|jobs|employment|unemployment|workforce|workers)\b", lowered) and re.search(r"\b(automat\w*|displace\w*|replac\w*|out of a job|unemploy\w*)\b", lowered):
+        geo = "stated-geography" if geography else "global"
+        if "unemployment" in lowered:
+            kind = "unemployment"
+        elif re.search(r"\bworkers\b", lowered) and not re.search(r"\bjobs?\b", lowered):
+            kind = "workers"
+        else:
+            kind = "jobs"
+        definition = f"{kind} in {geography}" if geography else kind
+        return "job_displacement", f"share_of_jobs_{geo}", definition
     if re.search(r"\b(lines of code|coding|software engineering)\b", lowered) and re.search(r"\bautomat", lowered):
         return "coding_automation", "share_of_coding", "coding"
     if re.search(r"\b(compute|flops|gpus?)\b", lowered) and re.search(rf"\b(expect|will need|constraint|by {_YEAR})\b", lowered) and not re.search(r"\b(salary|salaries|grant money|more efficient)\b", lowered):
@@ -594,8 +710,431 @@ def _quantity_question(sentence: str) -> tuple[str | None, str | None, str | Non
     return None, None, None
 
 
+def _forward_years(sentence: str):
+    """A relative horizon. '50-100 years of progress' is a duration, not a forecast date."""
+    for match in YEARS_AHEAD.finditer(sentence or ""):
+        if re.match(r"\s+of\b", sentence[match.end() :], re.I):
+            continue
+        return match
+    return None
+
+
+def _median_years(sentence, person_id, start, end, context) -> dict | None:
+    """A first-person median stated in years. Another person's number is not used."""
+    if _past_time(sentence):
+        return None
+    match = MEDIAN_YEARS.search(sentence)
+    if not match:
+        return None
+    if not re.search(r"\bremote work\b", sentence, re.I) or not re.search(r"\bautomat", sentence, re.I):
+        return None
+    years = match.group("years") or match.group("years2")
+    if "full automation of remote work" in sentence.lower():
+        definition = "full automation of remote work"
+    else:
+        definition = "remote work automation"
+    return _base(
+        sentence,
+        person_id,
+        start=start,
+        end=end,
+        context=context,
+        statement_type="explicit_numeric",
+        forecast_kind="timeline",
+        question_key="remote_work_automation",
+        definition_text=definition,
+        condition_text=_condition(sentence),
+        horizon_text=" ".join(match.group(0).split()),
+        value_type="point",
+        value_text=None,
+        value_numeric=float(years),
+        value_min=None,
+        value_max=None,
+        unit="years_ahead",
+        review_state="needs_review",
+        confidence="low",
+    )
+
+
+def _decade(sentence, person_id, start, end, context) -> dict | None:
+    if _past_time(sentence):
+        return None
+    question_key = _timeline_key(sentence)
+    if not question_key:
+        return None
+    if THIS_DECADE.search(sentence) and not DECADE.search(sentence):
+        return _base(
+            sentence,
+            person_id,
+            start=start,
+            end=end,
+            context=context,
+            statement_type="explicit_qualitative",
+            forecast_kind="timeline",
+            question_key=question_key,
+            definition_text=_timeline_definition(sentence, question_key),
+            condition_text=_condition(sentence),
+            horizon_text="this decade",
+            value_type="none",
+            value_text=None,
+            value_numeric=None,
+            value_min=None,
+            value_max=None,
+            unit=None,
+            review_state="needs_review",
+            confidence="low",
+        )
+    match = DECADE.search(sentence)
+    if not match or int(match.group("decade")) < 2020:
+        return None
+    return _base(
+        sentence,
+        person_id,
+        start=start,
+        end=end,
+        context=context,
+        statement_type="explicit_numeric",
+        forecast_kind="timeline",
+        question_key=question_key,
+        definition_text=_timeline_definition(sentence, question_key),
+        condition_text=_condition(sentence),
+        horizon_text=" ".join(match.group(0).split()),
+        value_type="point",
+        value_text=None,
+        value_numeric=float(match.group("decade")),
+        value_min=None,
+        value_max=None,
+        unit="decade",
+        review_state="needs_review",
+        confidence="low",
+    )
+
+
+def _year_span(sentence, person_id, start, end, context) -> dict | None:
+    match = YEAR_SPAN.search(sentence)
+    if not match or _past_time(sentence):
+        return None
+    start_year = int(match.group("start"))
+    end_year = int(match.group("end"))
+    if end_year <= start_year or end_year < 2024:
+        return None
+    if not re.search(r"\b(between|expect|forecast|will|i think|timeline|arrive|arrival)\b", sentence, re.I):
+        return None
+    question_key = _timeline_key(sentence)
+    if not question_key:
+        return None
+    return _base(
+        sentence,
+        person_id,
+        start=start,
+        end=end,
+        context=context,
+        statement_type="explicit_numeric",
+        forecast_kind="timeline",
+        question_key=question_key,
+        definition_text=_timeline_definition(sentence, question_key),
+        condition_text=_condition(sentence),
+        horizon_text=" ".join(match.group(0).split()),
+        value_type="range",
+        value_text=None,
+        value_numeric=None,
+        value_min=float(start_year),
+        value_max=float(end_year),
+        unit="year",
+        review_state="needs_review",
+        confidence="low",
+    )
+
+
+def _past_time(sentence: str) -> bool:
+    return bool(re.search(r"\b(ago|last year|last decade|in the past|in the last|years ago)\b", sentence, re.I))
+
+
+def _num_value(token: str) -> int:
+    if token.isdigit():
+        return int(token)
+    return WORD_VALUE[token.lower()]
+
+
+def _geography_phrase(lowered: str) -> str | None:
+    match = re.search(r"\b(united states|the us|u\.s\.|america|china|europe)\b", lowered, re.I)
+    if not match:
+        return None
+    return match.group(0)
+
+
+def _speaker_label(sentence: str) -> bool:
+    return SPEAKER_LABEL.match(sentence or "") is not None
+
+
+def _competing_percent(left: str, right: str) -> bool:
+    def values(text: str) -> set[float]:
+        found = set()
+        for match in PERCENT.finditer(text):
+            if match.group("single"):
+                value = _percent(match.group("single"))
+                if value is not None:
+                    found.add(round(value, 4))
+        return found
+
+    left_values = values(left)
+    right_values = values(right)
+    return bool(left_values and right_values and left_values != right_values)
+
+
+def _has_bare_probability(sentence: str) -> bool:
+    if _not_speaker(sentence) or _speaker_label(sentence):
+        return False
+    if not (PROBABILITY_CUE.search(sentence) or _risk_percent(sentence)):
+        return False
+    if not PERCENT.search(sentence) and not ONE_IN.search(sentence) and not FRACTION_CHANCE.search(sentence):
+        return False
+    if _risk_question(sentence)[0] or _arrival_key(sentence):
+        return False
+    return True
+
+
+def _attach_neighbor_horizon(sentences: list[tuple[str, int, int]], statements: list[dict]) -> None:
+    for statement in statements:
+        if statement.get("horizon_text") or statement.get("forecast_kind") not in {"probability", "timeline", "quantity"}:
+            continue
+        index = statement.get("sentence_index")
+        if index is None or index < 1:
+            continue
+        previous, start, _end = sentences[index - 1]
+        if _not_speaker(previous) or _speaker_label(previous) or previous.rstrip().endswith("?"):
+            continue
+        if _competing_percent(statement.get("evidence_text") or "", previous):
+            continue
+        horizon = _horizon(previous)
+        if not horizon:
+            continue
+        if not re.match(r"^(within|if|by|before|assuming|given|unless)\b", previous, re.I):
+            continue
+        other_key = _risk_question(previous)[0]
+        if other_key and other_key != statement.get("question_key"):
+            continue
+        combined = f"{previous} {statement['evidence_text']}"
+        statement["evidence_text"] = combined
+        statement["normalized_text"] = " ".join(combined.split())[:600]
+        statement["question_text"] = combined[:600]
+        statement["start_char"] = start
+        statement["horizon_text"] = horizon
+        if not statement.get("condition_text"):
+            statement["condition_text"] = _condition(previous)
+        statement["review_state"] = "needs_review"
+        statement["confidence"] = "low"
+        statement.setdefault("review_flags", []).append("multi_sentence_evidence")
+
+
+def _anaphora_windows(sentences: list[tuple[str, int, int]], covered: set[int], person_id: str | None) -> list[dict]:
+    found = []
+    for index, (sentence, start, end) in enumerate(sentences):
+        if index in covered or index + 1 >= len(sentences) or not _has_bare_probability(sentence):
+            continue
+        nxt, _nstart, nend = sentences[index + 1]
+        if _not_speaker(nxt) or _speaker_label(nxt) or nxt.rstrip().endswith("?") or not ANAPHORA.match(nxt):
+            continue
+        if _competing_percent(sentence, nxt):
+            continue
+        if not (_risk_question(nxt)[0] or _arrival_key(nxt) or _timeline_key(nxt)):
+            continue
+        combined = f"{sentence} {nxt}"
+        rows = _probabilities(combined, person_id, start, nend, combined)
+        for row in rows:
+            definition = (row.get("definition_text") or "").lower()
+            if definition and definition not in nxt.lower():
+                continue
+            if row.get("value_text") and row["value_text"] not in sentence:
+                continue
+            row["evidence_text"] = combined
+            row["normalized_text"] = " ".join(combined.split())[:600]
+            row["question_text"] = combined[:600]
+            row["start_char"] = start
+            row["end_char"] = nend
+            row["context_text"] = combined[:800]
+            row["review_state"] = "needs_review"
+            row["confidence"] = "low"
+            row["sentence_index"] = index
+            row.setdefault("review_flags", []).append("multi_sentence_evidence")
+            found.append(row)
+            break
+    return found
+
+
+def _for_that_answers(sentences: list[tuple[str, int, int]], covered: set[int], person_id: str | None) -> list[dict]:
+    """An answer of the form 'I'll give a probability of N% for that' uses the previous sentence's outcome."""
+    found = []
+    for index, (sentence, start, end) in enumerate(sentences):
+        if index in covered or index < 1:
+            continue
+        if not re.search(r"\bi'll give a probability of\b", sentence, re.I) or not re.search(r"\bfor that\b", sentence, re.I):
+            continue
+        if _attributes_to_someone_else(sentence) or _not_speaker(sentence):
+            continue
+        match = PERCENT.search(sentence)
+        if not match or not match.group("single"):
+            continue
+        previous, prev_start, _prev_end = sentences[index - 1]
+        question_key, definition = _risk_question(previous)
+        if not question_key or not definition or definition.lower() not in previous.lower():
+            continue
+        if _risk_question(sentence)[0] and _risk_question(sentence)[0] != question_key:
+            continue
+        value = _percent(match.group("single"))
+        if value is None:
+            continue
+        value_text = f"{_trim_number(match.group('single'))}%"
+        if value_text not in sentence:
+            continue
+        combined = f"{previous} {sentence}"
+        row = _base(
+            sentence,
+            person_id,
+            start=prev_start,
+            end=end,
+            context=combined,
+            statement_type="explicit_numeric",
+            forecast_kind="probability",
+            question_key=question_key,
+            definition_text=definition,
+            condition_text=_condition(previous),
+            horizon_text=_horizon(sentence) or _horizon(previous),
+            value_type="point",
+            value_text=value_text,
+            value_numeric=value,
+            value_min=None,
+            value_max=None,
+            unit="probability",
+            review_state="needs_review",
+            confidence="low",
+        )
+        row["evidence_text"] = combined
+        row["normalized_text"] = " ".join(combined.split())[:600]
+        row["question_text"] = combined[:600]
+        row["context_text"] = combined[:800]
+        row["sentence_index"] = index
+        row["review_flags"] = ["multi_sentence_evidence"]
+        found.append(row)
+        break
+    return found
+
+
+def _list_continuations(sentences: list[tuple[str, int, int]], covered: set[int], person_id: str | None) -> list[dict]:
+    """A bullet may omit the outcome when the previous sentence just stated it.
+
+    The window is the two adjacent sentences. The number comes only from the
+    continuation. A previous sentence that does not itself say "probability of"
+    an outcome does not lend its topic.
+    """
+    found = []
+    for index, (sentence, start, end) in enumerate(sentences):
+        if index in covered or index < 1:
+            continue
+        match = LIST_CONTINUATION.match(sentence)
+        if not match or _risk_question(sentence)[0] or _arrival_key(sentence) or _attributes_to_someone_else(sentence):
+            continue
+        previous, prev_start, _prev_end = sentences[index - 1]
+        prior = PRIOR_PROBABILITY.search(previous)
+        if not prior:
+            continue
+        what = prior.group("what").lower()
+        if what in {"transformative ai"}:
+            question_key = "transformative_ai_by_year_probability"
+            definition = "transformative"
+        elif what in {"extinction", "human extinction"}:
+            question_key = "extinction_unconditional"
+            definition = "extinction"
+        elif what == "superintelligence":
+            question_key = "asi_by_year_probability"
+            definition = "superintelligence"
+        elif what == "asi":
+            question_key = "asi_by_year_probability"
+            definition = "asi"
+        elif what == "agi":
+            question_key = "agi_by_year_probability"
+            definition = "agi"
+        else:
+            continue
+        if definition not in previous.lower() and what not in previous.lower():
+            continue
+        value = _percent(match.group("num"))
+        if value is None:
+            continue
+        value_text = f"{_trim_number(match.group('num'))}%"
+        if value_text not in sentence:
+            continue
+        combined = f"{previous} {sentence}"
+        row = _base(
+            sentence,
+            person_id,
+            start=prev_start,
+            end=end,
+            context=combined,
+            statement_type="explicit_numeric",
+            forecast_kind="probability",
+            question_key=question_key,
+            definition_text=definition if definition in previous.lower() else what,
+            condition_text=_condition(sentence) or _condition(previous),
+            horizon_text=f"by {match.group('year')}",
+            value_type="point",
+            value_text=value_text,
+            value_numeric=value,
+            value_min=None,
+            value_max=None,
+            unit="probability",
+            review_state="needs_review",
+            confidence="low",
+        )
+        row["evidence_text"] = combined
+        row["normalized_text"] = " ".join(combined.split())[:600]
+        row["question_text"] = combined[:600]
+        row["start_char"] = prev_start
+        row["context_text"] = combined[:800]
+        row["sentence_index"] = index
+        row["review_flags"] = ["multi_sentence_evidence"]
+        found.append(row)
+    return found
+
+
+def _review_flags(statement: dict) -> list[str]:
+    flags = list(statement.get("review_flags") or [])
+    if statement.get("statement_type") == "explicit_numeric" and not statement.get("horizon_text"):
+        flags.append("missing_horizon")
+    if statement.get("question_key") == "ambiguous_doom" or (
+        statement.get("statement_type") == "explicit_numeric" and not statement.get("definition_text")
+    ):
+        flags.append("ambiguous_definition")
+    if statement.get("value_type") == "range":
+        flags.append("range_value")
+    if not statement.get("question_key"):
+        flags.append("question_key_uncertain")
+    evidence = statement.get("evidence_text") or ""
+    if (
+        statement.get("statement_type") == "explicit_numeric"
+        and re.search(r"\b(might|maybe|perhaps)\b", evidence, re.I)
+        and not statement.get("condition_text")
+    ):
+        flags.append("conditionality_unclear")
+    if revision_language(evidence):
+        flags.append("possible_revision")
+    return sorted(set(flags))
+
+
 def _not_speaker(sentence: str) -> bool:
     return NOT_SPEAKER.search(sentence or "") is not None
+
+
+def _attributes_to_someone_else(sentence: str) -> bool:
+    """A named person's forecast in the sentence is not the tracked speaker's number."""
+    if re.search(r"\bobservers estimating\b", sentence or "", re.I):
+        return True
+    return bool(
+        re.search(
+            r"\b[A-Z][a-z]+(?:\s+[A-Z][a-z.'-]+)+\s+(?:still\s+|also\s+)?(?:thinks|believes?|estimates|says|argues)\b",
+            sentence or "",
+        )
+    )
 
 
 def _first_person(sentence: str) -> bool:
@@ -604,7 +1143,7 @@ def _first_person(sentence: str) -> bool:
 
 def _approximate(sentence: str, index: int) -> bool:
     window = sentence[max(0, index - 24) : index]
-    return bool(re.search(r"~|more than|at least|greater than", window, re.I))
+    return bool(re.search(r"~|more than|at least|greater than|around|roughly|about", window, re.I))
 
 
 def _condition(sentence: str) -> str | None:
@@ -630,16 +1169,28 @@ def _trim_number(raw: str) -> str:
     return raw
 
 
-def _horizon(sentence: str) -> str | None:
+def _horizon(sentence: str, *, relative: bool = True) -> str | None:
     match = HORIZON_YEAR.search(sentence)
     if match:
-        return f"by {match.group('year')}"
+        return f"{match.group('prep').lower()} {match.group('year')}"
     within = HORIZON_WITHIN.search(sentence)
     if within:
         return f"within {within.group('years')} years"
+    if relative:
+        ahead = re.search(rf"\bin\s+(?P<years>{_NUMWORD})\s+years\b", sentence, re.I)
+        if ahead and not _past_time(sentence):
+            return f"in {ahead.group('years')} years"
     inn = HORIZON_IN_YEAR.search(sentence)
     if inn and not (int(inn.group("year")) < 2024 and re.search(rf"\bin\s+{_YEAR}\b", sentence, re.I)):
         return f"in {inn.group('year')}"
+    decade = DECADE.search(sentence)
+    if decade:
+        return " ".join(decade.group(0).split())
+    nxt = NEXT_DECADE.search(sentence)
+    if nxt:
+        return " ".join(nxt.group(0).split()).lower()
+    if THIS_DECADE.search(sentence):
+        return "this decade"
     return None
 
 
@@ -647,7 +1198,7 @@ def _horizon_near(sentence: str, index: int) -> str | None:
     window = sentence[index : index + 110]
     match = HORIZON_YEAR.search(window)
     if match:
-        return f"by {match.group('year')}"
+        return f"{match.group('prep').lower()} {match.group('year')}"
     within = HORIZON_WITHIN.search(window)
     if within:
         return f"within {within.group('years')} years"
@@ -667,7 +1218,7 @@ def _stance_near_topic(sentence: str) -> bool:
         if start < 0:
             continue
         window = sentence[max(0, start - 140) : start + len(phrase) + 140]
-        if TOPIC_NEAR.search(window) or _horizon(window) or _loose_horizon(sentence):
+        if TOPIC_NEAR.search(window) or _horizon(window, relative=False) or _loose_horizon(sentence):
             return True
     return False
 

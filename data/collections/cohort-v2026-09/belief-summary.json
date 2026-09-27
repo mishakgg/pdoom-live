@@ -1,61 +1,322 @@
 {
-  "source_items": 213,
-  "statements": 27,
+  "source_items": 234,
+  "statements": 40,
   "by_type": {
-    "explicit_numeric": 19,
-    "explicit_qualitative": 8
+    "explicit_numeric": 28,
+    "explicit_qualitative": 12
   },
   "by_kind": {
-    "timeline": 4,
-    "qualitative": 8,
-    "probability": 14,
-    "quantity": 1
+    "timeline": 8,
+    "qualitative": 12,
+    "probability": 17,
+    "quantity": 3
   },
   "by_question": {
-    "capability_milestone": 3,
+    "capability_milestone": 5,
     "asi_timeline": 3,
     "ai_takeover": 3,
     "mass_human_death": 2,
     "ambiguous_doom": 1,
     "extinction_unconditional": 1,
-    "disempowerment": 1,
-    "transformative_ai_by_year_probability": 6,
+    "disempowerment": 2,
+    "transformative_ai_by_year_probability": 8,
     "agi_timeline": 1,
-    "catastrophe_broad": 4,
-    "job_displacement": 1
+    "remote_work_automation": 3,
+    "task_automation": 1,
+    "job_displacement": 2,
+    "transformative_ai_timeline": 2,
+    "catastrophe_broad": 3
   },
   "by_topic": {
-    "capability": 3,
+    "capability": 5,
     "asi-timeline": 3,
     "ai-takeover": 3,
     "mass-human-death": 2,
-    "ai-catastrophe": 5,
+    "ai-catastrophe": 4,
     "ai-extinction": 1,
-    "ai-disempowerment": 1,
-    "transformative-ai": 6,
+    "ai-disempowerment": 2,
+    "transformative-ai": 10,
     "agi-timeline": 1,
-    "ai-risk-qualitative": 1,
-    "labor": 1
+    "remote-work-automation": 3,
+    "ai-risk-qualitative": 3,
+    "task-automation": 1,
+    "labor": 2
   },
-  "people_with_items": 52,
-  "people_with_statements": 10,
-  "explicit_numeric": 19,
-  "explicit_qualitative": 8,
+  "people_with_items": 59,
+  "people_with_statements": 15,
+  "explicit_numeric": 28,
+  "explicit_qualitative": 12,
   "model_inferred": 0,
-  "missing_horizon": 7,
+  "missing_horizon": 8,
   "missing_definition": 0,
-  "podcast_people": 44,
-  "owned_people": 14,
-  "relationships": 0,
-  "runs": 57,
+  "podcast_people": 45,
+  "owned_people": 23,
+  "multi_sentence": 0,
+  "video_items": 0,
+  "source_leads": 19,
+  "people_with_repeated_forecasts": 4,
+  "relationships": 3,
+  "runs": 129,
   "failures": {
-    "rate_limited": 1
+    "rate_limited": 2,
+    "invalid_content": 1,
+    "speaker_labels_absent": 48
   },
   "failure_urls": [
     {
       "error_class": "rate_limited",
+      "kind": "essay",
+      "url": "https://scottaaronson.blog/?p=7064"
+    },
+    {
+      "error_class": "rate_limited",
+      "kind": "essay",
+      "url": "https://scottaaronson.blog/?p=7672"
+    },
+    {
+      "error_class": "invalid_content",
       "kind": "owned_feed",
-      "url": "https://jack-clark.net/feed/?paged=4"
+      "url": "https://sethlazar.substack.com/feed"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/ea0a7c0b"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/caa25b05"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/7c8f6ecb"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/f86eb885"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/2422f8af"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/51e6f8f7"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/61299128"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/849fe819"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/34bf675c"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/e55e0ba9"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/c91ef88c"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/a77690b9"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/dcd05e58"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/94397217"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/166665be"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/7d600878"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/ad44f2df"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/4ec8b579"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/5e1d3f96"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/175ef076"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://share.transistor.fm/s/a045212e"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/demis-hassabis-2"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/dario-amodei"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/elon-musk-and-neuralink-team"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/roman-yampolskiy"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/mark-cuban"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/yann-lecun-3"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/elon-musk-4"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/max-tegmark-3"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/eliezer-yudkowsky"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/sam-altman"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/noam-brown"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/andrej-karpathy"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/oriol-vinyals-2"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/demis-hassabis"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/tim-urban"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/yann-lecun-2"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/elon-musk-3"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/wojciech-zaremba"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/max-tegmark-2"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/erik-brynjolfsson"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/scott-aaronson-2"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/francois-chollet-2"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/jitendra-malik"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://lexfridman.com/sergey-levine"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://www.dwarkesh.com/p/noam-brown"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://www.dwarkesh.com/p/ajeya-cotra"
+    },
+    {
+      "error_class": "speaker_labels_absent",
+      "kind": "transcript",
+      "url": "https://www.dwarkesh.com/p/ryan-greenblatt"
     }
   ],
   "priority_people": 120,
