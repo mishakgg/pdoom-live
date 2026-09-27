@@ -32,6 +32,15 @@ function countNoun(count: number, singular: string, plural: string): string {
   return `${count} ${count === 1 ? singular : plural}`;
 }
 
+function ScaleBar({ percent, range = false }: { percent: number; range?: boolean }) {
+  const width = Math.max(0, Math.min(100, percent));
+  return (
+    <svg className={range ? "bar range" : "bar"} viewBox="0 0 100 1" preserveAspectRatio="none" aria-hidden="true">
+      <rect x="0" y="0" height="1" width={width} strokeWidth={range ? 2 : undefined} vectorEffect={range ? "non-scaling-stroke" : undefined} />
+    </svg>
+  );
+}
+
 function densityLabel(density: string): string {
   if (density === "empty") return "No comparable estimates";
   if (density === "sparse") return "Individual estimates only";
@@ -336,7 +345,7 @@ export function NumericPanel({
                   <td>{formatDay(item.event_time)}</td>
                   <td>{item.horizon_text ?? "Horizon missing"}</td>
                   {semantics !== "year" ? (
-                    <td>{item.value_type === "range" ? <div className="bar range" style={{ width: `${width}%` }} /> : <div className="bar" style={{ width: `${width}%` }} />}</td>
+                    <td><ScaleBar percent={width} range={item.value_type === "range"} /></td>
                   ) : null}
                 </tr>
               );
@@ -398,7 +407,7 @@ export function VolumePanel({
         {[...totals.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([type, count]) => (
           <div key={type}>
             <span>{type.replaceAll("_", " ")}</span>
-            <div className="bar" style={{ width: `${(count / max) * 100}%` }} />
+            <ScaleBar percent={(count / max) * 100} />
             <span>{count}</span>
           </div>
         ))}

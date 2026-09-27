@@ -48,6 +48,8 @@ def assert_prefixed_slug(value: str, prefix: str, slug: str) -> None:
 
 def source_slug(source_id: str) -> str:
     parts = source_id.split(":")
+    if parts[:2] == ["src", "show"] and len(parts) == 3 and SLUG.fullmatch(parts[2]) and len(parts[2]) <= 80:
+        return parts[2]
     if parts[0] != "src" or parts[1] != "person" or len(parts) not in (4, 5) or not parts[3]:
         raise ValueError(f"malformed source id: {source_id}")
     person = normalize_prefixed_id(f"person:{parts[2]}", "person")
@@ -118,7 +120,7 @@ def export_seed(directory: Path | None = None) -> dict[str, Any]:
             raise ValueError(f"source slug collision: {slug}")
         seen_sources.add(slug)
         owner = row.get("owner_person_id")
-        if owner not in person_slugs:
+        if owner is not None and owner not in person_slugs:
             raise ValueError(f"source {row['id']} has unknown owner {owner}")
         source_type, _ = map_vocabulary("source_type", row["source_type"], vocabulary)
         method, adapter = map_vocabulary("collection_method", row["collection_method"], vocabulary)
@@ -129,7 +131,7 @@ def export_seed(directory: Path | None = None) -> dict[str, Any]:
                 "name": row["name"][:200],
                 "canonical_url": row["canonical_url"],
                 "platform": row.get("platform"),
-                "owner_person_slug": person_slugs[owner],
+                "owner_person_slug": person_slugs[owner] if owner else None,
                 "owner_organization_slug": None,
                 "collection_method": method,
                 "collection_adapter": adapter,

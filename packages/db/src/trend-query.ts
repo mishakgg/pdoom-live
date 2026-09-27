@@ -25,6 +25,7 @@ import {
   type TrendScope,
   type VolumeRow,
 } from "./trend-engine";
+import { effectiveReviewStateSql } from "./coverage";
 import { getPool } from "./pool";
 
 export type TrendSource = "published_definition" | "prepared_method" | "discovered_question";
@@ -153,7 +154,7 @@ async function loadInputs(pool: pg.Pool, cohort: CohortRef): Promise<CohortInput
     [cohort.slug, cohort.version],
   );
   const forecasts = await pool.query(
-    `SELECT s.slug AS statement_slug, p.slug AS person_slug, p.display_name, s.statement_type, s.review_state,
+    `SELECT s.slug AS statement_slug, p.slug AS person_slug, p.display_name, s.statement_type, ${effectiveReviewStateSql("s")} AS review_state,
             s.event_time, f.question_key, f.question_text, f.definition_text, f.condition_text, f.forecast_kind,
             f.value_type, f.value_numeric, f.value_min, f.value_max, f.unit, f.horizon_text,
             f.review_state AS forecast_review_state,
@@ -453,7 +454,7 @@ async function computeVolume(method: MethodSpec, inputs: CohortInputs, pool: pg.
     cohort_scoped: true,
   });
   const volumeRows = await pool.query(
-    `SELECT s.slug AS statement_slug, p.slug AS person_slug, p.display_name, s.statement_type, s.review_state, s.event_time, t.slug AS topic_slug
+    `SELECT s.slug AS statement_slug, p.slug AS person_slug, p.display_name, s.statement_type, ${effectiveReviewStateSql("s")} AS review_state, s.event_time, t.slug AS topic_slug
      FROM statements s
      JOIN people p ON p.id = s.person_id
      JOIN cohort_memberships cm ON cm.person_id = p.id
