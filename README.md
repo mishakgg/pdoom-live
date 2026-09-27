@@ -96,10 +96,25 @@ The app listens on `http://localhost:3000`.
 | `npm run db:seed` | Idempotently load `data/fixtures/synthetic/dataset.json` |
 | `npm run db:reset` | Truncate product tables and seed again |
 | `npm run build` | Production build |
+| `npm run test:e2e` | Playwright browser suite against the E2E databases. Separate from `npm test`. |
 | `PYTHONPATH=pipeline python -m pytest` | Collector, identity, and seed tests. No network. |
 | `PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.enrich_sources --live` | Confirm pages and ORCID URLs for the existing cohort. Does not add people. |
 
 Database tests refuse to run unless the database name contains `test`. Point `DATABASE_URL` at `pdoom_live_test` before `npm test`, or export it in the shell. Do not point the test runner at the development database.
+
+## Browser end-to-end tests
+
+Playwright drives Chromium against a production `next start` server. Global setup migrates a dedicated Postgres database, loads `data/fixtures/synthetic/dataset.json`, then applies a browser-only overlay: rejected and unreviewed statements, hostile evidence, a long evidence excerpt, and one source whose last success is in 2000. A second database holds a tiny empty live dataset with no statements. A third server points at a closed port so outage behavior can be checked. The suite does not call live collection APIs and does not load the researcher seed.
+
+```bash
+npm run build
+npx playwright install chromium
+npm run test:e2e
+```
+
+The harness creates `pdoom_e2e_test` and `pdoom_e2e_empty_test` when `E2E_ADMIN_DATABASE_URL` can connect. The default admin URL is `postgresql://postgres:postgres@127.0.0.1:5432/postgres`. Override `E2E_DATABASE_URL` and `E2E_EMPTY_DATABASE_URL` if needed. Both names must contain `test`.
+
+Desktop checks use a 1280×800 viewport. Mobile checks use 390×844. Performance smoke budgets live in `e2e/support/budgets.ts`. Rebuild the Next.js app before `npm run test:e2e` after UI changes; the servers run `next start`, not the dev server.
 
 The fixture people, organizations, and quotations are fictional. The researcher seed under `data/seed/` is a real public-identity registry and is not a synthetic fixture.
 

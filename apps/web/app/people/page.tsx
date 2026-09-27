@@ -1,5 +1,6 @@
 import { listPeople } from "@pdoom/db";
 import { peopleListQuerySchema } from "@pdoom/contracts";
+import { isInvalidCursor } from "@/lib/http";
 import Link from "next/link";
 import { typeLabel } from "@/lib/format";
 
@@ -7,16 +8,32 @@ export const dynamic = "force-dynamic";
 
 export const metadata = { title: "People" };
 
+function InvalidPeopleFilters() {
+  return (
+    <>
+      <h1>Tracked people</h1>
+      <p className="warning">Those filters are not valid. Adjust the query and try again.</p>
+    </>
+  );
+}
+
 export default async function PeoplePage({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const params = await searchParams;
-  const query = peopleListQuerySchema.parse({
+  const parsed = peopleListQuerySchema.safeParse({
     q: params.q || undefined,
     organization: params.organization || undefined,
     status: params.status || undefined,
     cursor: params.cursor || undefined,
     limit: params.limit ?? 20,
   });
-  const page = await listPeople(query);
+  if (!parsed.success) return <InvalidPeopleFilters />;
+  let page;
+  try {
+    page = await listPeople(parsed.data);
+  } catch (error) {
+    if (isInvalidCursor(error)) return <InvalidPeopleFilters />;
+    throw error;
+  }
   return (
     <>
       <h1>Tracked people</h1>

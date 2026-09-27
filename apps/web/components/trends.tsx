@@ -46,6 +46,7 @@ export function DistributionPanel({
       <p className="median">
         Median of included point estimates: {formatProbability(median)}. Range {formatProbability(minimum)}–{formatProbability(maximum)}. This is not a field consensus.
       </p>
+      <div className="dist-scroll">
       <table className="dist">
         <caption className="kicker">Included point estimates only</caption>
         <thead>
@@ -71,6 +72,7 @@ export function DistributionPanel({
           ))}
         </tbody>
       </table>
+      </div>
       <details>
         <summary>{exclusions.length} excluded records</summary>
         <ul>

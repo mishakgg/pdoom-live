@@ -54,4 +54,4 @@ Canonical URLs must be `http` or `https`, without embedded credentials, and must
 
 ## Review
 
-Published numeric distributions in this slice accept `human_verified` only. Volume counts accept `human_verified` and `machine_validated`. `needs_review` remains visible on the statement, not in those trends.
+Published numeric distributions in this slice accept `human_verified` only. Volume counts accept `human_verified` and `machine_validated`. `needs_review` remains visible on the statement, not in those trends. `unreviewed` candidates and `rejected` statements are not public pages.
