@@ -29,7 +29,7 @@ export async function proxy(request: NextRequest) {
     const wantsHtml = request.headers.get("accept")?.includes("text/html") && !path.startsWith("/api/");
     if (wantsHtml) {
       headers.set("Content-Type", "text/html; charset=utf-8");
-      return new NextResponse("<!doctype html><title>pdoom.live</title><p>pdoom.live is not ready.</p>", {
+      return new NextResponse('<!doctype html><html lang="en"><title>pdoom.live</title><p>pdoom.live is not ready.</p></html>', {
         status: 503,
         headers,
       });

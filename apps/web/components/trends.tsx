@@ -1,5 +1,14 @@
-import Link from "next/link";
 import { formatProbability } from "@/lib/format";
+import Link from "next/link";
+
+function ScaleBar({ percent }: { percent: number }) {
+  const width = Math.max(0, Math.min(100, percent));
+  return (
+    <svg className="bar" viewBox="0 0 100 1" preserveAspectRatio="none" aria-hidden="true">
+      <rect x="0" y="0" height="1" width={width} />
+    </svg>
+  );
+}
 
 type Included = {
   statement_slug: string;
@@ -66,7 +75,7 @@ export function DistributionPanel({
                 <Link href={`/statements/${item.statement_slug}`}>{formatProbability(item.value_numeric)}</Link>
               </td>
               <td>
-                <div className="bar" style={{ width: `${(item.value_numeric / max) * 100}%` }} />
+                <ScaleBar percent={(item.value_numeric / max) * 100} />
               </td>
             </tr>
           ))}
@@ -115,7 +124,7 @@ export function VolumePanel({
         {[...totals.entries()].map(([type, count]) => (
           <div key={type}>
             <span>{type.replaceAll("_", " ")}</span>
-            <div className="bar" style={{ width: `${Math.min(100, count * 8)}%` }} />
+            <ScaleBar percent={Math.min(100, count * 8)} />
             <span>{count}</span>
           </div>
         ))}

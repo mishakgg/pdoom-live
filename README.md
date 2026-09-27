@@ -116,9 +116,7 @@ The harness creates `pdoom_e2e_test` and `pdoom_e2e_empty_test` when `E2E_ADMIN_
 
 Desktop checks use a 1280×800 viewport. Mobile checks use 390×844. Performance smoke budgets live in `e2e/support/budgets.ts`. Rebuild the Next.js app before `npm run test:e2e` after UI changes; the servers run `next start`, not the dev server.
 
-The database-down project allows HTTP 500 and 503, plus React production error #441. That message is the redacted server-render failure handled by the error boundary. Other console errors, hydration failures, and repeated application requests fail the suite.
-
-Server readiness uses `/methodology`, which does not query Postgres. Playwright starts the servers before global setup creates the test databases, and `/api/health` stays 503 until that seed exists.
+The E2E servers boot with `PDOOM_ENV=production` and an `APP_BASE_URL`, the same fail-closed requirements as production. Playwright starts them before global setup creates the databases, so process readiness is `/api/live`. Pages stay closed with “pdoom.live is not ready.” until migrations are current. A refused database keeps `/api/live` at 200 and `/api/health` at 503. Other console errors, hydration failures, and repeated application requests fail the suite.
 
 The fixture people, organizations, and quotations are fictional. The researcher seed under `data/seed/` is a real public-identity registry and is not a synthetic fixture.
 

@@ -34,5 +34,10 @@ export function serverEnv(databaseUrl: string, port: number): Record<string, str
   }
   env.DATABASE_URL = databaseUrl;
   env.PORT = String(port);
+  // next start sets NODE_ENV=production. The runtime then requires an explicit
+  // production mode and an origin before it will boot.
+  env.NODE_ENV = "production";
+  env.PDOOM_ENV = "production";
+  env.APP_BASE_URL = `http://127.0.0.1:${port}`;
   return env;
 }

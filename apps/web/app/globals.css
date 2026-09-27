@@ -115,7 +115,9 @@ h2 { font-size: 1.45rem; margin: 0 0 0.6rem; }
 .dist-scroll { max-width: 100%; overflow-x: auto; }
 .dist { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
 .dist th, .dist td { text-align: left; padding: 0.35rem 0.3rem; border-bottom: 1px solid var(--line); vertical-align: middle; }
-.bar { height: 0.55rem; background: var(--numeric); }
+.trend-list { display: grid; gap: 1rem; }
+.bar { display: block; width: 100%; height: 0.55rem; }
+.bar rect { fill: var(--numeric); }
 .median { font-variant-numeric: tabular-nums; font-family: var(--font-mono), ui-monospace, monospace; }
 
 .filters { display: flex; flex-wrap: wrap; gap: 0.55rem; align-items: end; margin: 0.8rem 0; }

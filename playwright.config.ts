@@ -54,11 +54,12 @@ export default defineConfig({
     },
   ],
   // Plugin setup starts these servers before globalSetup creates the databases.
-  // /api/health is 503 until that seed exists, so readiness uses the static methodology page.
+  // The proxy returns 503 for pages until migrations are current. /api/live only
+  // proves the process is up, so the seed can run after the servers are listening.
   webServer: [
     {
       command: `npm run start -w @pdoom/web -- -H 127.0.0.1 -p ${fixturePort}`,
-      url: `${fixtureBaseURL}/methodology`,
+      url: `${fixtureBaseURL}/api/live`,
       reuseExistingServer: !process.env.CI,
       timeout: 180_000,
       stdout: "pipe",
@@ -66,7 +67,7 @@ export default defineConfig({
     },
     {
       command: `npm run start -w @pdoom/web -- -H 127.0.0.1 -p ${emptyPort}`,
-      url: `${emptyBaseURL}/methodology`,
+      url: `${emptyBaseURL}/api/live`,
       reuseExistingServer: !process.env.CI,
       timeout: 180_000,
       stdout: "pipe",
@@ -74,7 +75,7 @@ export default defineConfig({
     },
     {
       command: `npm run start -w @pdoom/web -- -H 127.0.0.1 -p ${downPort}`,
-      url: `${downBaseURL}/methodology`,
+      url: `${downBaseURL}/api/live`,
       reuseExistingServer: !process.env.CI,
       timeout: 180_000,
       stdout: "pipe",
