@@ -10,7 +10,7 @@ Checks report failures. They do not rewrite rows, merge people, or invent replac
 | --- | --- |
 | Can the app read the database? | `GET /api/health` returns `{ "ok": true }` only when `SELECT 1` succeeds. |
 | Is the served dataset fresh? | `GET /api/status` returns `app` and `dataset` separately. `app: operational` with `dataset: stale` means the process is up and the data is not current. |
-| Did integrity or collection actually fail? | `npm run quality:check` prints a summary and a JSON report. Exit code 1 means at least one hard error. |
+| Did integrity or collection actually fail? | `npm --silent run quality:check` prints a summary and a JSON report. Exit code 1 means at least one hard error. |
 | What should a scraper graph? | `GET /api/metrics`, disabled unless you turn it on. Prometheus text, bounded labels. |
 
 A stale source does not mean the researcher is inactive. A collector failure is not evidence that the person said nothing.
@@ -20,16 +20,16 @@ Synthetic and fixture datasets are not on a live collection clock. Freshness pro
 ## Commands
 
 ```bash
-npm run quality:check
-npm run quality:check -- --file data/fixtures/synthetic/dataset.json
-npm run quality:check -- --baseline ops/baseline.json --guardrails ops/guardrails.json --as-of 2026-09-27T00:00:00Z
-npm run quality:check -- --strict
+npm --silent run quality:check
+npm --silent run quality:check -- --file data/fixtures/synthetic/dataset.json
+npm --silent run quality:check -- --baseline ops/baseline.json --guardrails ops/guardrails.json --as-of 2026-09-27T00:00:00Z
+npm --silent run quality:check -- --strict
 PYTHONPATH=pipeline python -m pdoom_pipeline.observability check --snapshot snapshot.json
 ```
 
-`--file` checks a canonical import document and does not need a database. Without `--file`, the command reads the current PostgreSQL dataset. `--strict` turns warnings into a non-zero exit. Growth does not fail the check.
+`--silent` keeps npm's script banner off stdout so the command prints one JSON object. `--file` checks a canonical import document and does not need a database. Without `--file`, the command reads the current PostgreSQL dataset. `--strict` turns warnings into a non-zero exit. Growth does not fail the check.
 
-Stdout is one JSON object. Stderr is the human summary. The JSON `findings` use `error`, `warning`, and `info`.
+Stderr is the human summary, then one structured log line. The JSON `findings` use `error`, `warning`, and `info`.
 
 Pipeline collection records can be reduced to the same snapshot shape and checked with the Python command. The cohort quality report in `data/reports/` is a separate coverage write-up, not this check.
 
@@ -49,7 +49,7 @@ Labels are a fixed set: source type, adapter, failure class, review state, state
 | `pdoom_db_query_duration_seconds` | Query latency. Successes are counted, not logged. |
 | `pdoom_readiness` | `1` when the database check is passing. |
 
-Page navigations are not in the HTTP counters. Edge middleware only assigns a correlation id; it does not share memory with the Node metrics registry. API latency is the measured HTTP path.
+Page navigations are not in the HTTP counters. The request proxy only assigns a correlation id and does not share counters with route handlers. API latency is the measured HTTP path.
 
 ### Collection
 
@@ -156,7 +156,7 @@ Suggested wiring:
 - Uptime monitor on `GET /api/health` for process and database reachability.
 - A second check on `GET /api/status` that fails when `dataset` is `stale` or `app` is `unavailable` for a live deployment. HTTP 200 on status only means the app could read the database.
 - Prometheus scrape of `/api/metrics` from a private network, with alert rules on `pdoom_alert_firing == 1` and on `pdoom_readiness == 0`.
-- `npm run quality:check -- --baseline ops/baseline.json` after each import. Store the baseline from a known-good import. Do not freeze today's absolute counts in CI; use the ratios.
+- `npm --silent run quality:check -- --baseline ops/baseline.json` after each import. Store the baseline from a known-good import. Do not freeze today's absolute counts in CI; use the ratios.
 - Optional `PDOOM_QUALITY_BASELINE` so `/api/status` and `/api/metrics` apply the same relative guardrails. The file is counts only.
 
 ## Status and metrics endpoints
@@ -196,7 +196,7 @@ Recording one HTTP observation is an in-memory counter increment. The test suite
 
 1. `GET /api/health`. If this is 503, the database is the problem. The quality report should show `database_unavailable` and should not also claim the cohort disappeared.
 2. `GET /api/status`. If `app` is operational and `dataset` is stale, the site is up and the data is old. Read `latest_successful_observation` and `dataset_generated_at`.
-3. `npm run quality:check`. Hard errors are integrity, an empty cohort, stopped live collection, or repeated import failure. Warnings are ratios and objectives.
+3. `npm --silent run quality:check`. Hard errors are integrity, an empty cohort, stopped live collection, or repeated import failure. Warnings are ratios and objectives.
 4. If metrics are enabled, look at `pdoom_collection_succeeded`, `pdoom_sources_freshness`, `pdoom_sources_due`, `pdoom_collection_rate_limits`, and `pdoom_alert_firing`.
 5. A high `never_checked` count means the source was registered and never collected. That is a pipeline gap, not a statement that the person is silent.
 6. Rate limiting and other failure classes are operational. They are not quotes and they are not beliefs.

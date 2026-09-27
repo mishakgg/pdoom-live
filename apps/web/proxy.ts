@@ -8,7 +8,7 @@ function requestId(incoming: string | null): string {
   return crypto.randomUUID().replace(/-/g, "");
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const id = requestId(request.headers.get("x-request-id"));
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-request-id", id);

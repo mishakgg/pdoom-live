@@ -40,14 +40,19 @@ export async function closePool(): Promise<void> {
 function wrapQueryable(target: { query: pg.Pool["query"] }): void {
   const marked = target as { query: pg.Pool["query"]; [WRAPPED]?: boolean };
   if (marked[WRAPPED]) return;
-  const original = marked.query.bind(target) as (...args: unknown[]) => Promise<unknown>;
+  const original = marked.query.bind(target) as (...args: unknown[]) => unknown;
   marked.query = ((...args: unknown[]) => {
+    // The driver checks out connections with a callback. That path must keep
+    // the original return value; calling `.then` on it releases the client twice.
+    if (typeof args[args.length - 1] === "function") return original(...args);
     const started = performance.now();
     const operation = classifySql(sqlText(args[0]));
-    return original(...args).then(
-      (result) => {
+    const result = original(...args);
+    if (!result || typeof result !== "object" || !("then" in result) || typeof result.then !== "function") return result;
+    return result.then(
+      (value: unknown) => {
         recordDbQuery(operation, "ok", performance.now() - started);
-        return result;
+        return value;
       },
       (error: unknown) => {
         const errorClass = dbErrorClass(error);
