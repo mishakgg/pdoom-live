@@ -317,6 +317,72 @@ def test_seed_roster_is_unique_and_large(tmp_path: Path):
     assert "duplicate_external_id" in ambiguities
 
 
+def test_seed_affiliations_keep_one_row_per_natural_key():
+    """The published cohort used to list Jeff Clune twice at Google DeepMind.
+
+    Both input rows were the same fact: person jeff-clune, organization
+    google-deepmind, role Researcher, basis current, confidence medium,
+    start_date null, end_date null, is_current true, review_state
+    human_verified. The roster recorded that current affiliation in the
+    primary arguments and repeated it in extra=. The importer keeps one row
+    because the natural key is (person, organization, role, start_date) and
+    null start dates are not distinct. The canonical dataset contains the
+    single current affiliation.
+    """
+    validate_roster()
+    keys = [
+        (person["slug"], affiliation["organization_slug"], affiliation["role"])
+        for person in all_people()
+        for affiliation in person["affiliations"]
+    ]
+    assert len(keys) == len(set(keys))
+    clune = next(person for person in all_people() if person["slug"] == "jeff-clune")
+    assert clune["affiliations"] == [
+        {
+            "organization_slug": "google-deepmind",
+            "role": "Researcher",
+            "basis": "current",
+            "confidence": "medium",
+        }
+    ]
+
+    root = Path(__file__).resolve().parents[1]
+    seed_rows = [
+        json.loads(line)
+        for line in (root / "data/seed/cohort/v2026-09/affiliations.jsonl").read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    seed_keys = [(row["person_id"], row["organization_id"], row["role"]) for row in seed_rows]
+    assert len(seed_keys) == len(set(seed_keys))
+    assert sum(1 for row in seed_rows if row["id"] == "aff:jeff-clune:google-deepmind:current") == 1
+
+    document = json.loads((root / "data/collections/cohort-v2026-09/canonical-live.json").read_text(encoding="utf-8"))
+    published = [
+        row
+        for row in document["affiliations"]
+        if row["person_slug"] == "jeff-clune" and row["organization_slug"] == "google-deepmind" and row["role"] == "Researcher"
+    ]
+    assert published == [
+        {
+            "person_slug": "jeff-clune",
+            "organization_slug": "google-deepmind",
+            "role": "Researcher",
+            "start_date": None,
+            "end_date": None,
+            "source_slug": None,
+            "confidence_level": "medium",
+            "verification_detail": "curator_reviewed",
+            "review_state": "human_verified",
+            "is_current": True,
+        }
+    ]
+    canonical_keys = [
+        (row["person_slug"], row["organization_slug"], row["role"], row["start_date"])
+        for row in document["affiliations"]
+    ]
+    assert len(canonical_keys) == len(set(canonical_keys)) == 407
+
+
 def test_provenance_fields_round_trip():
     payload = (FIXTURES / "arxiv" / "sample.xml").read_bytes()
     observation = ArxivCollector().parse(payload, source_identity="src:arxiv:attention", observed_at=OBSERVED)[0]
