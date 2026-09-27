@@ -1,11 +1,21 @@
 import { statementListQuerySchema } from "@pdoom/contracts";
 import { listStatements } from "@pdoom/db";
 import { StatementCard } from "@/components/statement-bits";
+import { isInvalidCursor } from "@/lib/http";
 import Link from "next/link";
 import { STATEMENT_TYPES, REVIEW_STATES } from "@pdoom/contracts";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Statements" };
+
+function InvalidStatementFilters() {
+  return (
+    <>
+      <h1>Statements</h1>
+      <p className="warning">Those filters are not valid. Adjust the query and try again.</p>
+    </>
+  );
+}
 
 export default async function StatementsPage({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const params = await searchParams;
@@ -15,14 +25,15 @@ export default async function StatementsPage({ searchParams }: { searchParams: P
     limit: params.limit ?? 10,
   });
   if (!parsed.success) {
-    return (
-      <>
-        <h1>Statements</h1>
-        <p className="warning">Those filters are not valid. Adjust the query and try again.</p>
-      </>
-    );
+    return <InvalidStatementFilters />;
   }
-  const page = await listStatements(parsed.data);
+  let page;
+  try {
+    page = await listStatements(parsed.data);
+  } catch (error) {
+    if (isInvalidCursor(error)) return <InvalidStatementFilters />;
+    throw error;
+  }
   const preserve = new URLSearchParams();
   for (const [key, value] of Object.entries(params)) {
     if (value && key !== "cursor") preserve.set(key, value);

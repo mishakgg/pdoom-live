@@ -1,5 +1,8 @@
 export const metadata = { title: "Methodology" };
 
+// A prerendered document cannot carry the per-request CSP nonce.
+export const dynamic = "force-dynamic";
+
 export default function MethodologyPage() {
   return (
     <>

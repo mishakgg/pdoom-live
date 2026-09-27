@@ -26,6 +26,17 @@ export class InvalidCursorError extends Error {
   }
 }
 
+const publicReviewStates = REVIEW_STATES.filter((state) => isPublicReviewState(state));
+if (publicReviewStates.some((state) => !/^[a-z_]+$/.test(state))) {
+  throw new Error("public review states must be SQL-safe tokens");
+}
+const publicReviewSqlList = publicReviewStates.map((state) => `'${state}'`).join(", ");
+
+/** Public pages include needs_review, machine_validated, and human_verified only. */
+function isPublicReviewSql(column: string): string {
+  return `${column} IN (${publicReviewSqlList})`;
+}
+
 export type Page<T> = {
   data: T[];
   page: {
@@ -367,7 +378,7 @@ export async function listPeople(input: PeopleListQuery, pool = getPool()) {
       SELECT jsonb_object_agg(statement_type, count) AS counts
       FROM (
         SELECT statement_type, count(*)::int AS count
-        FROM statements s WHERE s.person_id = p.id AND s.review_state <> 'rejected'
+        FROM statements s WHERE s.person_id = p.id AND ${isPublicReviewSql("s.review_state")}
         GROUP BY statement_type
       ) grouped
     ) counts ON true
@@ -520,7 +531,7 @@ export async function listTopics(pool = getPool()) {
         SELECT s.statement_type, count(*)::int AS count
         FROM statement_topics st
         JOIN statements s ON s.id = st.statement_id
-        WHERE st.topic_id = t.id AND s.review_state <> 'rejected'
+        WHERE st.topic_id = t.id AND ${isPublicReviewSql("s.review_state")}
         GROUP BY s.statement_type
       ) grouped
     ) counts ON true
@@ -876,7 +887,7 @@ export async function getCoverage(asOf = new Date().toISOString(), pool = getPoo
        ${memberJoin}
        LEFT JOIN sources src ON src.owner_person_id = p.id
        LEFT JOIN (
-         SELECT DISTINCT person_id FROM statements WHERE review_state <> 'rejected'
+         SELECT DISTINCT person_id FROM statements WHERE ${isPublicReviewSql("review_state")}
        ) st ON st.person_id = p.id`,
       [...params, ACADEMIC_SOURCE_TYPES, FIRST_PARTY_SOURCE_TYPES],
     ),
@@ -903,7 +914,7 @@ export async function getCoverage(asOf = new Date().toISOString(), pool = getPoo
       [...params, FAILING_COLLECTION_STATUSES],
     ),
     pool.query(
-      `SELECT count(*)::int AS count FROM statements WHERE review_state <> 'rejected'`,
+      `SELECT count(*)::int AS count FROM statements WHERE ${isPublicReviewSql("review_state")}`,
     ),
   ]);
   const freshness: Record<Freshness, number> = { current: 0, aging: 0, stale: 0, never_checked: 0 };
@@ -945,7 +956,7 @@ export async function getOverview(pool = getPool()) {
   const coverage = await getCoverage(new Date().toISOString(), pool);
   const [people, statements, items, observed] = await Promise.all([
     pool.query("SELECT count(*)::int AS count FROM people"),
-    pool.query("SELECT count(*)::int AS count FROM statements WHERE review_state <> 'rejected'"),
+    pool.query(`SELECT count(*)::int AS count FROM statements WHERE ${isPublicReviewSql("review_state")}`),
     pool.query("SELECT count(*)::int AS count FROM source_items"),
     pool.query("SELECT max(observed_at) AS observed_at, max(published_at) AS published_at FROM source_items"),
   ]);
@@ -976,7 +987,7 @@ export async function getOverview(pool = getPool()) {
      JOIN statements fs ON fs.id = r.from_statement_id
      JOIN statements ts ON ts.id = r.to_statement_id
      JOIN people p ON p.id = ts.person_id
-     WHERE r.review_state <> 'rejected' AND fs.review_state <> 'rejected' AND ts.review_state <> 'rejected'
+     WHERE ${isPublicReviewSql("r.review_state")} AND ${isPublicReviewSql("fs.review_state")} AND ${isPublicReviewSql("ts.review_state")}
      ORDER BY ts.event_time DESC NULLS LAST
      LIMIT 5`,
   );

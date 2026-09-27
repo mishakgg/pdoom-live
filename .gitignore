@@ -37,3 +37,8 @@ Thumbs.db
 # logs
 *.log
 logs/
+
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/
