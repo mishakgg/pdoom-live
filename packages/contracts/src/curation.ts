@@ -98,6 +98,11 @@ export function isKnownQuestionKey(value: string): boolean {
   return QUESTION_KEYS.has(value);
 }
 
+function canonicalClaimNumber(value: number | null | undefined): string {
+  if (value === null || value === undefined || Number.isNaN(value)) return "";
+  return String(value);
+}
+
 export function candidateIdentityMaterial(input: {
   person_slug: string;
   source_content_hash: string;
@@ -105,6 +110,13 @@ export function candidateIdentityMaterial(input: {
   extractor_name: string;
   extractor_version: string;
   statement_type: string;
+  question_key?: string | null;
+  horizon_text?: string | null;
+  unit?: string | null;
+  value_type?: string | null;
+  value_numeric?: number | null;
+  value_min?: number | null;
+  value_max?: number | null;
 }): string {
   return [
     input.person_slug,
@@ -113,6 +125,13 @@ export function candidateIdentityMaterial(input: {
     input.extractor_name,
     input.extractor_version,
     input.statement_type,
+    input.question_key ?? "",
+    input.horizon_text ?? "",
+    input.unit ?? "",
+    input.value_type ?? "",
+    canonicalClaimNumber(input.value_numeric),
+    canonicalClaimNumber(input.value_min),
+    canonicalClaimNumber(input.value_max),
   ].join("\n");
 }
 
@@ -123,6 +142,13 @@ export function candidateKey(input: {
   extractor_name: string;
   extractor_version: string;
   statement_type: string;
+  question_key?: string | null;
+  horizon_text?: string | null;
+  unit?: string | null;
+  value_type?: string | null;
+  value_numeric?: number | null;
+  value_min?: number | null;
+  value_max?: number | null;
 }): string {
   return createHash("sha256").update(candidateIdentityMaterial(input), "utf8").digest("hex");
 }

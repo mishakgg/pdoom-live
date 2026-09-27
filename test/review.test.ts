@@ -47,6 +47,26 @@ describe("review identity and policy", () => {
     expect(candidateKey(base)).toBe(candidateKey(base));
     expect(candidateKey({ ...base, evidence_hash: "c".repeat(64) })).not.toBe(candidateKey(base));
     expect(candidateKey({ ...base, statement_type: "model_inferred_signal" })).not.toBe(candidateKey(base));
+    const by2036 = candidateKey({
+      ...base,
+      statement_type: "explicit_numeric",
+      question_key: "transformative_ai_by_year_probability",
+      horizon_text: "by 2036",
+      unit: "probability",
+      value_type: "point",
+      value_numeric: 0.1,
+    });
+    const by2060 = candidateKey({
+      ...base,
+      statement_type: "explicit_numeric",
+      question_key: "transformative_ai_by_year_probability",
+      horizon_text: "by 2060",
+      unit: "probability",
+      value_type: "point",
+      value_numeric: 0.5,
+    });
+    expect(by2036).not.toBe(by2060);
+    expect(candidateKey(base)).toBe(candidateKey({ ...base, question_key: null, horizon_text: null, value_numeric: null }));
     expect(suggestQuestionKeys({ normalized_text: "conditional extinction if AGI", topics: [] })).toEqual(["ai_extinction_conditional_on_agi"]);
     expect(suggestQuestionKeys({ normalized_text: "unconditional extinction by 2070", topics: [] })).toContain("ai_extinction_unconditional_by_2070");
     expect(suggestQuestionKeys({ normalized_text: "unconditional extinction by 2070", topics: [] })).not.toContain("ai_extinction_conditional_on_agi");
@@ -185,7 +205,19 @@ describe("review decisions", () => {
 
   it("stages a candidate without promoting it, and refuses a missing person", async () => {
     const real = readFileSync("data/collections/cohort-v2026-09/candidate_statements.jsonl", "utf8").split("\n").filter(Boolean).map((line) => JSON.parse(line));
-    await expect(stageCandidates(pool, real)).rejects.toThrow(/not in dataset/);
+    const beforeReal = await pool.query(`SELECT count(*)::int AS count FROM statements`);
+    await expect(stageCandidates(pool, real)).rejects.toThrow(/not in dataset|content hash/);
+    expect((await pool.query(`SELECT count(*)::int AS count FROM statements`)).rows[0].count).toBe(beforeReal.rows[0].count);
+    await expect(stageCandidates(pool, [{
+      person_id: "person:not-in-this-dataset",
+      source_url: "https://example.com/missing-person",
+      content_hash: `sha256:${"a".repeat(64)}`,
+      evidence_text: "A missing person is not staged.",
+      extractor_name: "rule-extract",
+      extractor_version: "rule-extract-0.1.0",
+      normalized_text: "A missing person is not staged.",
+      statement_type: "explicit_qualitative",
+    }])).rejects.toThrow(/not in dataset/);
     const before = await pool.query(`SELECT count(*)::int AS count FROM statements`);
     const staged = await stageCandidates(pool, [{
       person_id: "person:ada-quill",

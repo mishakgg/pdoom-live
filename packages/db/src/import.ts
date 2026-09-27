@@ -538,16 +538,7 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
         stableId(`evidence:${statement.evidence_slug}`),
         statement.extractor_version.split("/")[0] || statement.extractor_version,
         statement.extractor_version,
-        candidateKey({
-          person_slug: statement.person_slug,
-          source_content_hash: doc.source_items.find((item) => item.slug === statement.source_item_slug)
-            ? resolveContentHash(doc.source_items.find((item) => item.slug === statement.source_item_slug)!)
-            : "",
-          evidence_hash: sha256(doc.evidence_segments.find((segment) => segment.slug === statement.evidence_slug)?.text ?? ""),
-          extractor_name: statement.extractor_version.split("/")[0] || statement.extractor_version,
-          extractor_version: statement.extractor_version,
-          statement_type: statement.statement_type,
-        }),
+        statementCandidateKey(doc, statement),
         statement.confidence,
         statement.review_state,
         statement.extraction_run_slug ? stableId(`extraction:${statement.extraction_run_slug}`) : null,
@@ -711,6 +702,27 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
       cohort?.version ?? null,
     ],
   );
+}
+
+function statementCandidateKey(doc: CanonicalImport, statement: CanonicalImport["statements"][number]): string {
+  const item = doc.source_items.find((row) => row.slug === statement.source_item_slug);
+  const forecast = doc.forecasts.find((row) => row.statement_slug === statement.slug);
+  const extractorName = statement.extractor_version.split("/")[0] || statement.extractor_version;
+  return candidateKey({
+    person_slug: statement.person_slug,
+    source_content_hash: item ? resolveContentHash(item) : "",
+    evidence_hash: sha256(doc.evidence_segments.find((segment) => segment.slug === statement.evidence_slug)?.text ?? ""),
+    extractor_name: extractorName,
+    extractor_version: statement.extractor_version,
+    statement_type: statement.statement_type,
+    question_key: forecast?.question_key ?? null,
+    horizon_text: forecast?.horizon_text ?? null,
+    unit: forecast?.unit ?? null,
+    value_type: forecast?.value_type ?? null,
+    value_numeric: forecast?.value_numeric ?? null,
+    value_min: forecast?.value_min ?? null,
+    value_max: forecast?.value_max ?? null,
+  });
 }
 
 function resolveContentHash(item: CanonicalImport["source_items"][number]): string {

@@ -10,7 +10,7 @@ Local curation is off unless `PDOOM_CURATION_MODE=local`. `/curation` and `POST 
 
 `statement_extractions` keeps the machine output. Later corrections update the live statement and do not replace that snapshot.
 
-Candidate identity is the SHA-256 of person slug, source content hash, evidence hash, extractor name, extractor version, and statement type. It does not include normalized text. A direct statement and a model signal from the same span are different candidates. The stored key is not rewritten when a reviewer changes the type.
+Candidate identity is the SHA-256 of person slug, source content hash, evidence hash, extractor name, extractor version, statement type, and the forecast claim: question key, horizon, unit, value type, and numeric values. It does not include normalized text. A direct statement and a model signal from the same span are different candidates. Two numeric claims in one passage stay different candidates when the horizon or value differs. The stored key is not rewritten when a reviewer changes the type.
 
 A changed source hash, evidence hash, or content version does not match an old approval. Public pages and trends then treat that statement as `needs_review` until a new decision covers the current material. Restoring the reviewed bytes makes the old approval apply again. A new decision that cites the changed hash is a new review.
 

@@ -14,7 +14,14 @@ WHERE extractor_name IS NULL;
 
 UPDATE statements AS s
 SET candidate_key = encode(digest(
-  p.slug || E'\n' || si.content_hash || E'\n' || e.segment_hash || E'\n' || s.extractor_name || E'\n' || s.extractor_version || E'\n' || s.statement_type,
+  p.slug || E'\n' || si.content_hash || E'\n' || e.segment_hash || E'\n' || s.extractor_name || E'\n' || s.extractor_version || E'\n' || s.statement_type
+    || E'\n' || coalesce((SELECT f.question_key FROM forecasts f WHERE f.statement_id = s.id), '')
+    || E'\n' || coalesce((SELECT f.horizon_text FROM forecasts f WHERE f.statement_id = s.id), '')
+    || E'\n' || coalesce((SELECT f.unit FROM forecasts f WHERE f.statement_id = s.id), '')
+    || E'\n' || coalesce((SELECT f.value_type FROM forecasts f WHERE f.statement_id = s.id), '')
+    || E'\n' || coalesce((SELECT f.value_numeric::text FROM forecasts f WHERE f.statement_id = s.id), '')
+    || E'\n' || coalesce((SELECT f.value_min::text FROM forecasts f WHERE f.statement_id = s.id), '')
+    || E'\n' || coalesce((SELECT f.value_max::text FROM forecasts f WHERE f.statement_id = s.id), ''),
   'sha256'), 'hex')
 FROM people AS p, source_items AS si, evidence_segments AS e
 WHERE p.id = s.person_id
