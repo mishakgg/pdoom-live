@@ -149,6 +149,10 @@ def render_markdown(report: dict) -> str:
                 f"- People on a podcast item: {corpus.get('podcast_people')}",
                 f"- People with owned writing: {corpus.get('owned_people')}",
                 f"- View-change candidates: {corpus.get('relationships')}",
+                f"- Multi-sentence candidates: {corpus.get('multi_sentence')}",
+                f"- Video or talk items: {corpus.get('video_items')}",
+                f"- Candidate source leads: {corpus.get('source_leads')}",
+                f"- People with a repeated comparable forecast: {corpus.get('people_with_repeated_forecasts')}",
                 f"- Collector failures: {corpus.get('failures')}",
                 "",
             ]

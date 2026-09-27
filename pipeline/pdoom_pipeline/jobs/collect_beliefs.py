@@ -60,6 +60,7 @@ def run(seed_dir: Path | None = None) -> dict:
     (COLLECTION / "source_observations.jsonl").write_text(_observations(result), encoding="utf-8")
     (COLLECTION / "candidate_statements.jsonl").write_text(dumps_jsonl(result["statements"]), encoding="utf-8")
     (COLLECTION / "view_changes.jsonl").write_text(dumps_jsonl(result["relationships"]), encoding="utf-8")
+    (COLLECTION / "source_leads.jsonl").write_text(dumps_jsonl(result.get("source_leads") or []), encoding="utf-8")
     (directory / "collection_priority.jsonl").write_text(dumps_jsonl(priority), encoding="utf-8")
     document = export_corpus(result, seed_dir=directory, generated_at=observed_at)
     (COLLECTION / "canonical-live.json").write_text(json.dumps(document), encoding="utf-8")
@@ -72,20 +73,55 @@ def run(seed_dir: Path | None = None) -> dict:
 
 
 def _register_sources(directory: Path, leads: list[dict], result: dict) -> None:
-    existing = load_jsonl(directory / "sources.jsonl")
-    urls = {row["canonical_url"] for row in existing}
+    existing = _unique_sources(load_jsonl(directory / "sources.jsonl"))
+    urls = {canonicalize_url(row["canonical_url"]) for row in existing}
+    ids = {row["id"] for row in existing}
     additions = []
+
+    def add(row: dict) -> None:
+        url = canonicalize_url(row["canonical_url"])
+        if row["id"] in ids or url in urls:
+            return
+        ids.add(row["id"])
+        urls.add(url)
+        additions.append(row)
+
     for lead in leads:
-        if lead["url"] in urls:
+        if canonicalize_url(lead["url"]) in urls:
             continue
-        if lead["kind"] == "essay":
-            additions.append(
+        if lead["kind"] == "lead":
+            continue
+        if lead["kind"] == "talk" and not lead.get("owned"):
+            show = lead.get("show_slug")
+            if not show:
+                continue
+            add(
+                {
+                    "id": f"src:show:{show}",
+                    "source_type": lead["source_type"] if lead["source_type"] in {"video", "conference_talk", "testimony", "interview", "podcast"} else "video",
+                    "name": lead["name"],
+                    "canonical_url": canonicalize_url(lead["url"]),
+                    "platform": lead.get("platform") or "video",
+                    "owner_person_id": None,
+                    "owner_organization_id": None,
+                    "collection_method": "html_page",
+                    "rights_notes": lead["basis"],
+                    "enabled": True,
+                    "continuously_collectible": False,
+                    "review_state": "machine_validated",
+                    "verification_method": "official_event_page",
+                }
+            )
+            continue
+        if lead["kind"] in {"essay", "talk"}:
+            allowed = {"blog", "newsletter", "personal_website", "video", "youtube", "conference_talk", "testimony", "interview", "lab_page"}
+            add(
                 source_record(
                     person_id=f"person:{lead['person_slug']}",
-                    source_type=lead["source_type"] if lead["source_type"] in {"blog", "newsletter", "personal_website"} else "blog",
+                    source_type=lead["source_type"] if lead["source_type"] in allowed else "blog",
                     name=lead["name"],
                     canonical_url=canonicalize_url(lead["url"]),
-                    platform=lead.get("source_type") or "blog",
+                    platform=lead.get("platform") or lead.get("source_type") or "blog",
                     collection_method="html_page",
                     enabled=True,
                     verification_method="owned_page_byline",
@@ -94,7 +130,7 @@ def _register_sources(directory: Path, leads: list[dict], result: dict) -> None:
             )
             continue
         if lead["kind"] == "show_feed":
-            additions.append(
+            add(
                 {
                     "id": f"src:show:{lead['show_slug']}",
                     "source_type": "podcast",
@@ -117,7 +153,7 @@ def _register_sources(directory: Path, leads: list[dict], result: dict) -> None:
             owners = sorted({row["person_slug"] for row in result["observations"] if row["feed_url"] == lead["url"]})
             if len(owners) != 1:
                 slug = lead.get("show_slug") or "feed-" + lead["name"].lower().replace(" ", "-")
-                additions.append(
+                add(
                     {
                         "id": f"src:show:{slug}",
                         "source_type": lead["source_type"] if lead["source_type"] in {"blog", "newsletter", "podcast"} else "blog",
@@ -136,12 +172,12 @@ def _register_sources(directory: Path, leads: list[dict], result: dict) -> None:
                 )
                 continue
             owner = owners[0]
-        additions.append(
+        add(
             source_record(
                 person_id=f"person:{owner}",
                 source_type=lead["source_type"],
                 name=lead["name"],
-                canonical_url=lead["url"],
+                canonical_url=canonicalize_url(lead["url"]),
                 platform=lead["source_type"],
                 collection_method="rss_feed",
                 enabled=True,
@@ -149,8 +185,22 @@ def _register_sources(directory: Path, leads: list[dict], result: dict) -> None:
                 rights_notes=lead["basis"],
             )
         )
-    if additions:
+    if additions or len(existing) != len(load_jsonl(directory / "sources.jsonl")):
         _write_jsonl(directory / "sources.jsonl", existing + additions)
+
+
+def _unique_sources(rows: list[dict]) -> list[dict]:
+    kept = []
+    ids: set[str] = set()
+    urls: set[str] = set()
+    for row in rows:
+        url = canonicalize_url(row["canonical_url"])
+        if row["id"] in ids or url in urls:
+            continue
+        ids.add(row["id"])
+        urls.add(url)
+        kept.append(row)
+    return kept
 
 
 def _observations(result: dict) -> str:

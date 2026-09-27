@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import re
+
 from pdoom_pipeline.extract.statements import revision_language
 
 
@@ -25,14 +27,25 @@ def view_change_candidates(statements: list[dict]) -> list[dict]:
                 continue
             if earlier.get("horizon_text") != later.get("horizon_text"):
                 continue
-            if (earlier.get("published_at") or "") >= (later.get("published_at") or ""):
+            earlier_time = earlier.get("published_at") or ""
+            later_time = later.get("published_at") or ""
+            if earlier_time > later_time:
                 continue
-            if not revision_language(later.get("evidence_text") or ""):
+            if earlier_time == later_time and (earlier.get("local_id") or "") >= (later.get("local_id") or ""):
                 continue
-            if _value_signature(earlier) == _value_signature(later):
+            later_text = later.get("evidence_text") or ""
+            same_value = _value_signature(earlier) == _value_signature(later)
+            if _retracts(later_text):
+                kind = "retracts"
+            elif _clarifies(later_text) and same_value:
+                kind = "clarifies"
+            elif revision_language(later_text) and same_value:
                 kind = "repeats"
-            elif _changed_number(earlier, later):
+            elif revision_language(later_text) and _changed_number(earlier, later):
                 kind = "updates"
+            elif same_value and earlier_time < later_time:
+                # The same forecast restated later is a repeat, not a changed belief.
+                kind = "repeats"
             else:
                 continue
             relationships.append(
@@ -54,6 +67,14 @@ def view_change_candidates(statements: list[dict]) -> list[dict]:
 
 def _value_signature(statement: dict) -> tuple:
     return (statement.get("value_numeric"), statement.get("value_min"), statement.get("value_max"), statement.get("horizon_text"))
+
+
+def _retracts(text: str) -> bool:
+    return bool(re.search(r"\b(i retract|i no longer think|i take that back|i was wrong)\b", text or "", re.I))
+
+
+def _clarifies(text: str) -> bool:
+    return bool(re.search(r"\b(to clarify|let me clarify|i mean that)\b", text or "", re.I))
 
 
 def _changed_number(earlier: dict, later: dict) -> bool:
