@@ -254,7 +254,9 @@ export async function getStatement(slug: string, pool = getPool()) {
        p.slug AS person_slug, p.display_name,
        src.slug AS source_slug, src.name AS source_name, src.source_type,
        si.slug AS source_item_slug, si.title AS source_item_title, si.canonical_url, si.published_at, si.observed_at,
-       f.question_key, f.question_text, f.value_type, f.value_numeric, f.value_min, f.value_max, f.unit, f.horizon_text,
+       f.question_key, f.question_text, f.forecast_kind, f.definition_text, f.condition_text,
+       f.target_date_start, f.target_date_end, f.resolution_criteria,
+       f.value_type, f.value_numeric, f.value_min, f.value_max, f.unit, f.horizon_text,
        COALESCE(topics.topics, '[]'::jsonb) AS topics,
        e.slug AS evidence_slug, e.segment_kind, e.sequence, e.start_char, e.end_char, e.start_ms, e.end_ms,
        e.text AS evidence_text, e.context_text, e.segment_hash,
@@ -290,6 +292,17 @@ export async function getStatement(slug: string, pool = getPool()) {
   );
   return {
     ...base,
+    forecast: base.forecast
+      ? {
+          ...base.forecast,
+          forecast_kind: row.forecast_kind ? String(row.forecast_kind) : null,
+          definition_text: row.definition_text ? String(row.definition_text) : null,
+          condition_text: row.condition_text ? String(row.condition_text) : null,
+          target_date_start: day(row.target_date_start as Date | string | null),
+          target_date_end: day(row.target_date_end as Date | string | null),
+          resolution_criteria: row.resolution_criteria ? String(row.resolution_criteria) : null,
+        }
+      : null,
     evidence: {
       slug: String(row.evidence_slug),
       segment_kind: String(row.segment_kind),
@@ -358,7 +371,7 @@ export async function listPeople(input: PeopleListQuery, pool = getPool()) {
   values.push(query.limit + 1);
   const sql = `
     SELECT p.id, p.slug, p.display_name, p.bio_short, p.status, p.inclusion_reason, p.cohort_tags,
-           o.slug AS organization_slug, o.name AS organization_name, a.role,
+           o.slug AS organization_slug, o.name AS organization_name, a.role, a.review_state AS affiliation_review_state,
            counts.counts
     FROM people p
     LEFT JOIN affiliations a ON a.id = p.current_affiliation_id
@@ -408,7 +421,12 @@ export async function listPeople(input: PeopleListQuery, pool = getPool()) {
     inclusion_reason: String(row.inclusion_reason),
     cohort_tags: row.cohort_tags as string[],
     organization: row.organization_slug
-      ? { slug: String(row.organization_slug), name: String(row.organization_name), role: row.role ? String(row.role) : null }
+      ? {
+          slug: String(row.organization_slug),
+          name: String(row.organization_name),
+          role: row.role ? String(row.role) : null,
+          review_state: row.affiliation_review_state ? String(row.affiliation_review_state) : null,
+        }
       : null,
     statement_counts: (row.counts ?? {}) as Record<string, number>,
   }));
@@ -489,6 +507,7 @@ export async function getPerson(slug: string, pool = getPool()) {
       settled: String(row.review_state) === "human_verified",
       verified_at: iso(row.verified_at),
     })),
+    statement_total: statements.page.total,
     sources: sources.rows.map((row) => ({
       slug: String(row.slug),
       name: String(row.name),
@@ -1002,6 +1021,7 @@ export async function getOverview(pool = getPool()) {
       coverage,
       person_count: people.rows[0].count as number,
       statement_count: statements.rows[0].count as number,
+      human_verified_statement_count: Number(verified.rows[0].count),
       source_item_count: items.rows[0].count as number,
       latest_observed_at: iso(observed.rows[0].observed_at),
       latest_published_at: iso(observed.rows[0].published_at),

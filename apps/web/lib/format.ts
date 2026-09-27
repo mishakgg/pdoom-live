@@ -1,8 +1,33 @@
 import { STATEMENT_TYPE_LABELS, type StatementType } from "@pdoom/contracts";
 
+const REVIEW_LABELS: Record<string, string> = {
+  human_verified: "Human verified",
+  machine_validated: "Machine validated",
+  needs_review: "Needs review",
+  unreviewed: "Unreviewed",
+  rejected: "Rejected",
+};
+
+export function phraseLabel(value: string): string {
+  const text = value.replaceAll("_", " ");
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 export function typeLabel(type: string): string {
   if (type in STATEMENT_TYPE_LABELS) return STATEMENT_TYPE_LABELS[type as StatementType];
-  return type;
+  return phraseLabel(type);
+}
+
+export function reviewLabel(state: string): string {
+  return REVIEW_LABELS[state] ?? phraseLabel(state);
+}
+
+export function isHumanVerified(state: string | null | undefined): boolean {
+  return state === "human_verified";
+}
+
+export function countLabel(count: number, singular: string, plural = `${singular}s`): string {
+  return `${count} ${count === 1 ? singular : plural}`;
 }
 
 export function formatWhen(value: string | null | undefined): string {
@@ -47,8 +72,4 @@ export function formatValue(input: {
   }
   if (input.value_type === "range") return `${input.value_min}–${input.value_max} ${input.unit ?? ""}`.trim();
   return `${input.value_numeric} ${input.unit ?? ""}`.trim();
-}
-
-export function reviewLabel(state: string): string {
-  return state.replaceAll("_", " ");
 }

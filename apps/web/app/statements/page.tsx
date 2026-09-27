@@ -1,11 +1,16 @@
 import { statementListQuerySchema } from "@pdoom/contracts";
-import { listStatements } from "@pdoom/db";
+import { InvalidCursorError, listStatements } from "@pdoom/db";
 import { StatementCard } from "@/components/statement-bits";
-import Link from "next/link";
-import { STATEMENT_TYPES, REVIEW_STATES } from "@pdoom/contracts";
+import { InvalidFilters, Pager, StatementFilters } from "@/components/filters";
+import { EmptyState, NoResults } from "@/components/states";
+import { withCursor } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Statements" };
+
+function filtered(params: Record<string, string | undefined>): boolean {
+  return Object.entries(params).some(([key, value]) => key !== "cursor" && key !== "limit" && Boolean(value));
+}
 
 export default async function StatementsPage({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const params = await searchParams;
@@ -14,53 +19,52 @@ export default async function StatementsPage({ searchParams }: { searchParams: P
     ...cleaned,
     limit: params.limit ?? 10,
   });
-  if (!parsed.success) {
-    return (
-      <>
-        <h1>Statements</h1>
-        <p className="warning">Those filters are not valid. Adjust the query and try again.</p>
-      </>
-    );
-  }
-  const page = await listStatements(parsed.data);
-  const preserve = new URLSearchParams();
-  for (const [key, value] of Object.entries(params)) {
-    if (value && key !== "cursor") preserve.set(key, value);
-  }
   return (
     <>
       <h1>Statements</h1>
-      <p className="lede">List rows carry the claim, source label, and class. Evidence text is on the statement page.</p>
-      <form className="filters" method="get">
-        <label>Text<input name="q" defaultValue={params.q ?? ""} /></label>
-        <label>Person<input name="person" defaultValue={params.person ?? ""} /></label>
-        <label>Organization<input name="organization" defaultValue={params.organization ?? ""} /></label>
-        <label>Source<input name="source" defaultValue={params.source ?? ""} /></label>
-        <label>Topic<input name="topic" defaultValue={params.topic ?? ""} /></label>
-        <label>
-          Type
-          <select name="statement_type" defaultValue={params.statement_type ?? ""}>
-            <option value="">Any</option>
-            {STATEMENT_TYPES.map((type) => <option key={type} value={type}>{type}</option>)}
-          </select>
-        </label>
-        <label>
-          Review
-          <select name="review_state" defaultValue={params.review_state ?? ""}>
-            <option value="">Any</option>
-            {REVIEW_STATES.map((state) => <option key={state} value={state}>{state}</option>)}
-          </select>
-        </label>
-        <label>From<input type="date" name="from" defaultValue={params.from ?? ""} /></label>
-        <label>To<input type="date" name="to" defaultValue={params.to ?? ""} /></label>
-        <button type="submit">Apply</button>
-      </form>
-      {page.data.map((statement) => <StatementCard key={statement.slug} statement={statement} />)}
+      <p className="lede">Each row names the claim, the person, the source, and whether the record is explicit or inferred. Open it for the original evidence.</p>
+      <StatementFilters params={params} />
+      {!parsed.success ? <InvalidFilters /> : <StatementResults params={params} query={parsed.data} filtered={filtered(params)} />}
+    </>
+  );
+}
+
+async function StatementResults({
+  params,
+  query,
+  filtered,
+}: {
+  params: Record<string, string | undefined>;
+  query: ReturnType<typeof statementListQuerySchema.parse>;
+  filtered: boolean;
+}) {
+  let page;
+  try {
+    page = await listStatements(query);
+  } catch (error) {
+    if (error instanceof InvalidCursorError) return <InvalidFilters />;
+    throw error;
+  }
+  return (
+    <>
+      <section aria-labelledby="statement-results">
+        <h2 id="statement-results" className="sr-only">Matching statements</h2>
+        {page.data.length ? page.data.map((statement) => (
+          <StatementCard key={statement.slug} statement={statement} headingLevel="h3" />
+        )) : filtered ? (
+          <NoResults what="statements" />
+        ) : (
+          <EmptyState title="No statement has been collected" heading="h3">
+            <p>The statement list is empty. A dataset can be loaded before any sourced statement is stored. Emptiness here is not evidence that tracked people have never spoken.</p>
+          </EmptyState>
+        )}
+      </section>
       <p className="meta">{page.page.total} matching statements</p>
-      <div className="pager">
-        {page.page.prev_cursor ? <Link className="button secondary" href={`/statements?${preserve.toString()}&cursor=${page.page.prev_cursor}`}>Previous</Link> : null}
-        {page.page.next_cursor ? <Link className="button" href={`/statements?${preserve.toString()}&cursor=${page.page.next_cursor}`}>Next</Link> : null}
-      </div>
+      <Pager
+        label="statements"
+        previousHref={page.page.prev_cursor ? withCursor("/statements", params, page.page.prev_cursor) : null}
+        nextHref={page.page.next_cursor ? withCursor("/statements", params, page.page.next_cursor) : null}
+      />
     </>
   );
 }
