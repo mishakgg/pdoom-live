@@ -122,4 +122,4 @@ The fixture people, organizations, and quotations are fictional. The researcher 
 
 ## Production
 
-The production runtime is the Next.js server and PostgreSQL. Migrations, dataset import, and web startup are separate commands. The container does not load synthetic fixtures. See the [production runbook](./docs/PRODUCTION.md).
+The production runtime is the Next.js server and PostgreSQL. Migrations, dataset import, and web startup are separate commands. The container does not load synthetic fixtures. See the [production runbook](./docs/PRODUCTION.md). After a deploy, `bash scripts/deploy-smoke.sh http://127.0.0.1:3000` checks the running site without changing the database.

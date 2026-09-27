@@ -4,6 +4,69 @@ pdoom.live in production is a Next.js server and PostgreSQL. Migrations, dataset
 
 The image does not include Redis, a queue, a crawler, or a vector database. Local `npm run dev` does not need Docker.
 
+## Host prerequisites
+
+The production image carries Node.js and the web runtime. The PostgreSQL image carries the database. A blank host does not need Node, npm, or a host PostgreSQL install.
+
+Install on Ubuntu 24.04 LTS, as a user who can `sudo`:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl git
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+. /etc/os-release
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu ${UBUNTU_CODENAME:-$VERSION_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/docker.list >/dev/null
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo systemctl enable --now docker
+sudo usermod -aG docker "$USER"
+```
+
+Log in again so the `docker` group applies. Confirm with `docker compose version`. The Docker packages enable the engine on boot.
+
+Clone the repository as that user, not as root:
+
+```bash
+git clone https://github.com/mishakgg/pdoom-live.git
+cd pdoom-live
+```
+
+A cold image build needs a few gigabytes of free disk for the image and BuildKit cache. A guest with 2 vCPU and 3840 MB of RAM completed a cold build without swap. The running web and database processes use much less than the build.
+
+## Production user and environment file
+
+Run Compose as the non-root user in the `docker` group. The web container itself runs as user `pdoom` (uid 1001). Do not switch the image to root to fix a permission error.
+
+Keep the environment file outside the git checkout, readable only by the deploy user:
+
+```bash
+sudo install -d -o "$USER" -g "$USER" -m 0750 /etc/pdoom
+sudo install -d -o "$USER" -g "$USER" -m 0750 /var/backups/pdoom
+umask 077
+cat > /etc/pdoom/production.env <<'EOF'
+NODE_ENV=production
+PDOOM_ENV=production
+POSTGRES_USER=pdoom
+POSTGRES_PASSWORD=replace-with-a-long-random-password
+POSTGRES_DB=pdoom_live
+APP_BASE_URL=http://127.0.0.1:3000
+DATABASE_URL=postgresql://pdoom:replace-with-a-long-random-password@postgres:5432/pdoom_live
+EOF
+chmod 600 /etc/pdoom/production.env
+```
+
+`POSTGRES_PASSWORD` and the password inside `DATABASE_URL` must be the same string. The database hostname in `DATABASE_URL` is the Compose service name `postgres`, not `127.0.0.1`. `APP_BASE_URL` is the origin clients use. `http://127.0.0.1:3000` matches this Compose file, which publishes the site only on the host loopback. Use the public `https` origin when a TLS proxy is actually in front of the process.
+
+Pass the file on every Compose command:
+
+```bash
+docker compose --env-file /etc/pdoom/production.env ...
+```
+
+`docker compose run` and `docker compose exec` read the caller's standard input. From a script, redirect stdin with `</dev/null`, or the next lines of the script are consumed by the container.
+
 ## Required configuration
 
 Set these for every production process, including one-off migrate and import commands:
@@ -49,18 +112,27 @@ Import upserts rows and keeps rows that are absent from the file. It does not tr
 Docker Compose, from the repository root:
 
 ```bash
-docker compose build
-docker compose up -d postgres
-docker compose run --rm web node /app/pdoom-cli.mjs migrate
-docker compose run --rm -v "$PWD/canonical.json:/dataset.json:ro" web \
-  node /app/pdoom-cli.mjs import /dataset.json
-docker compose up -d web
-docker compose ps
-curl -fsS http://127.0.0.1:3000/api/ready
-docker compose stop
+docker compose --env-file /etc/pdoom/production.env build
+docker compose --env-file /etc/pdoom/production.env up -d postgres
+docker compose --env-file /etc/pdoom/production.env run --rm web \
+  node /app/pdoom-cli.mjs migrate </dev/null
+docker compose --env-file /etc/pdoom/production.env run --rm \
+  -v "$PWD/data/collections/cohort-v2026-09/canonical-live.json:/dataset.json:ro" \
+  web node /app/pdoom-cli.mjs validate /dataset.json </dev/null
+docker compose --env-file /etc/pdoom/production.env run --rm \
+  -v "$PWD/data/collections/cohort-v2026-09/canonical-live.json:/dataset.json:ro" \
+  web node /app/pdoom-cli.mjs import /dataset.json </dev/null
+docker compose --env-file /etc/pdoom/production.env up -d web
+docker compose --env-file /etc/pdoom/production.env ps
+bash scripts/deploy-smoke.sh http://127.0.0.1:3000
+docker compose --env-file /etc/pdoom/production.env stop
 ```
 
-`docker compose stop` and `docker compose down` keep the `pgdata` volume. `docker compose down -v` deletes that volume.
+The merged canonical file on `main` is `data/collections/cohort-v2026-09/canonical-live.json`. `validate` checks the document before anything is written. Run `migrate` a second time to confirm it reports `migrations up to date`. Run the same import a second time to confirm the upsert is idempotent. Production refuses `dataset_kind: synthetic`.
+
+`docker compose stop` and `docker compose down` keep the `pgdata` volume. **`docker compose down -v` deletes that volume and the live database with it.** Do not add `-v` to a restart or a redeploy.
+
+The canonical JSON is not copied into the image. The import command mounts the file from the checkout.
 
 Without Compose, on a host that already has Node 22 and PostgreSQL:
 
@@ -95,7 +167,7 @@ Ready body:
 
 `migrations` is `pending` when this build has a migration the database lacks, and `diverged` when the database has a migration this build does not. Either one, or a database outage, is `not_ready`. Responses do not include SQL text, connection strings, filesystem paths, stack traces, or environment dumps.
 
-The image health check calls `/api/ready`. Docker does not restart a container merely because that check fails. `restart: unless-stopped` brings the process back after a crash or a host reboot.
+The image health check calls `/api/ready`. Docker does not restart a container merely because that check fails. `restart: unless-stopped` brings the process back after the Node process crashes and after a host reboot, as long as the container was not stopped by hand. `docker stop` and `docker kill` leave the container exited. Start it again with `docker compose --env-file /etc/pdoom/production.env start web`. A crash of the Next.js process inside the container is what the restart policy brings back. Neither event reruns migrations or import.
 
 Other routes return 503 until the app is ready, so a half-migrated schema is not served. `/api/live`, `/api/ready`, and `/api/health` stay available.
 
@@ -130,20 +202,25 @@ Static files under `/_next/static` receive the non-CSP headers from `next.config
 
 PostgreSQL is the only stateful component. The canonical JSON file is the import source; the database is what the site serves. Back up before migrate or import.
 
+The Docker host does not have `pg_dump` unless you install a PostgreSQL client. Use the client in the database container. It connects through the local socket, so the password is not placed on the command line:
+
 ```bash
-pg_dump -Fc -h 127.0.0.1 -U pdoom -d pdoom_live -f pdoom.dump
+docker compose --env-file /etc/pdoom/production.env exec -T postgres \
+  pg_dump -Fc -U pdoom -d pdoom_live </dev/null > /var/backups/pdoom/pdoom.dump
+chmod 600 /var/backups/pdoom/pdoom.dump
 ```
 
-Restore with the web process stopped:
+Restore with the web process stopped. `--clean` drops objects before recreating them. Use it only against the database you intend to replace:
 
 ```bash
-docker compose stop web
-pg_restore --clean --if-exists -h 127.0.0.1 -U pdoom -d pdoom_live pdoom.dump
-docker compose start web
+docker compose --env-file /etc/pdoom/production.env stop web
+docker compose --env-file /etc/pdoom/production.env exec -T postgres \
+  pg_restore --clean --if-exists -U pdoom -d pdoom_live </dev/null < /var/backups/pdoom/pdoom.dump
+docker compose --env-file /etc/pdoom/production.env start web
 curl -fsS http://127.0.0.1:3000/api/ready
 ```
 
-`--clean` drops objects before recreating them. Use it only against the database you intend to replace.
+To rehearse a restore without touching the serving database, create a second database in the same cluster, restore into that name, compare counts, and drop it.
 
 Deploy on a small VM:
 
@@ -159,7 +236,27 @@ Prefer a private network or `sslmode=verify-full` for a database that is not on 
 
 ## Checks
 
+`bash scripts/deploy-smoke.sh http://127.0.0.1:3000` is the post-deploy check. It requests liveness, readiness, the major public routes, a live-dataset home page, a database-backed people index, and the production security headers. It does not change the database. Plain `http` does not require `Strict-Transport-Security`.
+
 `bash scripts/runtime-smoke.sh pdoom-live:ci` builds the image when it is missing, migrates a throwaway database, proves production seed and synthetic import are refused, and curls liveness, readiness, and security headers. GitHub Actions runs that script on `ubuntu-latest` with a read-only checkout token. Fork pull requests do not receive deployment credentials, write tokens, or a production database. Workflows do not use `pull_request_target` or self-hosted runners.
+
+## Network and firewall
+
+`compose.yaml` publishes the web process on `127.0.0.1:3000` and PostgreSQL on `127.0.0.1:5432`. Those ports are not reachable from another machine. Confirm with `ss -lnt`: only SSH should listen on a public address. This file does not include a reverse proxy. Do not republish PostgreSQL on `0.0.0.0` to reach the site from outside the host.
+
+On Ubuntu, a host firewall that matches that shape is:
+
+```bash
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+sudo ufw allow OpenSSH
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+sudo ufw deny 5432/tcp
+sudo ufw enable
+```
+
+HTTP and HTTPS are allowed for a future proxy on the host. Nothing in this Compose file listens on 80 or 443, so those ports stay closed until a proxy is added. PostgreSQL stays denied even though Docker also binds it to loopback.
 
 Image size, idle memory, and cold start depend on the host. Inspect a local image with:
 
