@@ -94,7 +94,7 @@ The web process exits immediately when required configuration is missing or inva
 
 `https` origins send `Strict-Transport-Security: max-age=15552000` and CSP `upgrade-insecure-requests`. Plain `http` origins do not. Set `PDOOM_HSTS=on` only when clients actually reach the site over TLS, including TLS terminated in front of the container. Set `PDOOM_HSTS=off` to suppress both headers.
 
-The compose file's database password is for a local project. Change it before the database port is reachable beyond the host.
+`compose.yaml` is the local production-like stack. Its database password is for that project, and Postgres is published only on `127.0.0.1`. The public VM uses `compose.production.yaml`, Caddy, and `/etc/pdoom/production.env` (mode `600`, outside the checkout). See [Single-VM production](#single-vm-production) and [Disaster recovery](./DISASTER_RECOVERY.md).
 
 ## Initialization order
 
@@ -198,7 +198,7 @@ Production CSP allows same-origin resources, a per-request script and style nonc
 
 Static files under `/_next/static` receive the non-CSP headers from `next.config.ts`.
 
-## Backup, deploy, and rollback
+## Backup and restore
 
 PostgreSQL is the only stateful component. The canonical JSON file is the import source; the database is what the site serves. Back up before migrate or import.
 
@@ -222,17 +222,69 @@ curl -fsS http://127.0.0.1:3000/api/ready
 
 To rehearse a restore without touching the serving database, create a second database in the same cluster, restore into that name, compare counts, and drop it.
 
-Deploy on a small VM:
+Deploy on a small VM that is still using `compose.yaml` directly:
 
 1. Build or pull the new image.
-2. Dump the database.
+2. Dump the database with the container `pg_dump` command above.
 3. Start the new image's migrate command against that database. The previous web process can stay up; migrate takes an advisory lock and the old process does not migrate.
 4. If migrate succeeds, restart the web container so it serves the new build.
-5. Check `/api/ready`, then `/api/live`.
+5. Check `/api/ready`, then `/api/live`, then `bash scripts/deploy-smoke.sh http://127.0.0.1:3000`.
 
 Migrations are forward-only. There is no down migration. If the new build applied a migration the previous image does not contain, the previous image reports `migrations: diverged` and will not serve traffic. Restore the pre-migrate dump, then start the previous image. If the migration was compatible and only the web code is bad, restart the previous image without restoring.
 
 Prefer a private network or `sslmode=verify-full` for a database that is not on localhost. The local compose network is not TLS.
+
+## Single-VM production
+
+Public traffic reaches Caddy on ports 80 and 443. Caddy terminates TLS for `https://pdoom.live`, redirects `www.pdoom.live` and HTTP to that origin, and proxies to the web container. PostgreSQL has no host port. Certificate state is the `pdoom-caddy-data` volume, not a file in Git.
+
+Install the public environment file outside the checkout. The directory is mode `0750` and the file is mode `600`, both owned by the deploy user. `POSTGRES_PASSWORD` and the password inside `DATABASE_URL` are the same string. The database hostname is the Compose service name `postgres`.
+
+```bash
+sudo install -d -o "$USER" -g "$USER" -m 0750 /etc/pdoom
+sudo install -d -o "$USER" -g "$USER" -m 0750 /var/lib/pdoom/backups
+umask 077
+cp .env.production.example /etc/pdoom/production.env
+chmod 600 /etc/pdoom/production.env
+```
+
+Replace every `CHANGE_ME`, set `ACME_EMAIL`, then:
+
+```bash
+export PDOOM_ENV_FILE=/etc/pdoom/production.env
+bash scripts/deploy/check-env.sh "$PDOOM_ENV_FILE"
+bash scripts/deploy/release.sh --ack-breaking
+bash scripts/deploy/publish-dataset.sh --file data/collections/cohort-v2026-09/canonical-live.json
+bash scripts/deploy-smoke.sh https://pdoom.live
+```
+
+The release, backup, and restore scripts read `PDOOM_ENV_FILE`. When it is unset they use `/etc/pdoom/production.env`. They do not read a copy inside the git checkout. The loopback `compose.yaml` file earlier in this runbook can use `APP_BASE_URL=http://127.0.0.1:3000`. `check-env.sh` is for the public file and requires `https://pdoom.live`.
+
+The first release applies `001_init.sql`, which is classified as breaking, so `--ack-breaking` is required. The script backs up the database before it applies migrations. Later releases skip that backup when no migration is pending.
+
+`scripts/deploy/release.sh` builds `pdoom-live:<git sha>`, migrates, starts a candidate, and only then reloads Caddy. It does not import a dataset. `scripts/deploy/publish-dataset.sh` backs up, imports one live canonical file, and leaves the web process running.
+
+`scripts/deploy/rollback.sh` switches to the previous image when `deploy/migration-class.tsv` recorded that release as `compatible` or `none`. A `breaking` release refuses that switch until `--restore-backup` is passed. Migrations are not reversed.
+
+Release identity is baked into the image as `GIT_COMMIT`, `BUILD_TIME`, and the label `org.opencontainers.image.revision`. The boot log prints `commit` and `built_at` when those values are a git SHA and a UTC timestamp. Compose does not override them from the env file. This is not a status API.
+
+`scripts/backup/backup.sh` runs `pg_dump` inside the Postgres container over the local socket as `POSTGRES_USER`. The password is not placed on the command line. `scripts/restore/restore.sh` uses the same container client.
+
+```bash
+export PDOOM_ENV_FILE=/etc/pdoom/production.env
+bash scripts/backup/backup.sh
+bash scripts/backup/retain.sh --dry-run
+bash scripts/backup/retain.sh
+bash scripts/restore/restore.sh --backup /var/lib/pdoom/backups/NAME.dump --target-db pdoom_restore_check
+```
+
+Replacing the live database also requires `--confirm-replace --confirm-production`. A backup that exists only on this VM is not disaster recovery. Set `PDOOM_BACKUP_HOOK` to an executable that copies the backup directory off the host, or run `rsync` yourself after every successful backup. The hook is a path, not a shell command.
+
+**`docker compose --env-file /etc/pdoom/production.env -f compose.production.yaml down -v` deletes the `pdoom-pgdata` volume and the live database with it.** It also deletes the Caddy certificate volume. Do not add `-v` to a restart or a redeploy.
+
+Container logs use the json-file driver with a 10 MiB size and 5 files per container. `scripts/deploy/disk.sh` prints volume, backup, and image usage and exits if the backup filesystem is below `PDOOM_MIN_FREE_MB`.
+
+Host expectations, failure behavior, and the VM-loss procedure are in [Disaster recovery](./DISASTER_RECOVERY.md).
 
 ## Checks
 
@@ -256,7 +308,7 @@ sudo ufw deny 5432/tcp
 sudo ufw enable
 ```
 
-HTTP and HTTPS are allowed for a future proxy on the host. Nothing in this Compose file listens on 80 or 443, so those ports stay closed until a proxy is added. PostgreSQL stays denied even though Docker also binds it to loopback.
+HTTP and HTTPS are allowed so the public stack can listen there. `compose.yaml` itself does not listen on 80 or 443. `compose.production.yaml` publishes those ports on Caddy only. PostgreSQL stays denied even though the local Compose file also binds it to loopback.
 
 Image size, idle memory, and cold start depend on the host. Inspect a local image with:
 
