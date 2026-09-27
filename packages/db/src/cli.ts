@@ -1,8 +1,10 @@
 import { readFile } from "node:fs/promises";
+import { createCorrelationId, logEvent, recordImportResult, runWithCorrelation } from "@pdoom/observability";
 import { closePool, createPool } from "./pool";
 import { readDatabaseUrl } from "./env";
 import { importCanonical, resetDatabase, validateDocument } from "./import";
 import { migrate } from "./migrate";
+import { executeQualityCheck } from "./quality-command";
 import { getCoverage, getDatasetRecord } from "./queries";
 
 const command = process.argv[2];
@@ -31,6 +33,10 @@ async function main() {
     );
     return;
   }
+  if (command === "quality") {
+    const code = await executeQualityCheck(process.argv.slice(3));
+    process.exit(code);
+  }
 
   const pool = createPool(readDatabaseUrl("DATABASE_URL"));
   try {
@@ -41,7 +47,7 @@ async function main() {
     }
     if (command === "seed") {
       await migrate(pool);
-      const result = await importCanonical(pool);
+      const result = await importDataset(() => importCanonical(pool));
       console.log(JSON.stringify(result.counts));
       return;
     }
@@ -56,7 +62,7 @@ async function main() {
       const raw = await readJson(file);
       validateDocument(raw);
       await migrate(pool);
-      const result = await importCanonical(pool, raw);
+      const result = await importDataset(() => importCanonical(pool, raw));
       console.log(JSON.stringify({ imported: result.imported, counts: result.counts, dataset_id: result.dataset_id }));
       return;
     }
@@ -82,11 +88,41 @@ async function main() {
       );
       return;
     }
-    throw new Error("usage: cli.ts migrate|seed|reset|validate <file>|import <file>|status");
+    throw new Error("usage: cli.ts migrate|seed|reset|validate <file>|import <file>|status|quality check");
   } finally {
     if (command !== "validate") await pool.end();
     await closePool();
   }
+}
+
+async function importDataset<T>(load: () => Promise<T>): Promise<T> {
+  const runId = createCorrelationId();
+  const started = performance.now();
+  return runWithCorrelation({ runId }, async () => {
+    try {
+      const result = await load();
+      recordImportResult("succeeded");
+      logEvent({
+        level: "info",
+        operation: "import",
+        outcome: "succeeded",
+        duration_ms: performance.now() - started,
+        run_id: runId,
+      });
+      return result;
+    } catch {
+      recordImportResult("failed");
+      logEvent({
+        level: "error",
+        operation: "import",
+        outcome: "failed",
+        duration_ms: performance.now() - started,
+        run_id: runId,
+        error_class: "unknown",
+      });
+      throw new Error("import failed");
+    }
+  });
 }
 
 main().catch((error: unknown) => {

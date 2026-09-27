@@ -59,6 +59,7 @@ Key design documents:
 - [Data model](./docs/DATA_MODEL.md)
 - [Source and provenance policy](./docs/SOURCE_AND_PROVENANCE_POLICY.md)
 - [Initial roadmap](./docs/ROADMAP.md)
+- [Operator observability](./docs/OBSERVABILITY.md)
 
 ## Status
 
@@ -95,8 +96,10 @@ The app listens on `http://localhost:3000`.
 | `npm run db:migrate` | Apply SQL migrations |
 | `npm run db:seed` | Idempotently load `data/fixtures/synthetic/dataset.json` |
 | `npm run db:reset` | Truncate product tables and seed again |
+| `npm run quality:check` | Report dataset integrity, freshness, and collection health. Exit 1 on hard errors. |
 | `npm run build` | Production build |
 | `PYTHONPATH=pipeline python -m pytest` | Collector, identity, and seed tests. No network. |
+| `PYTHONPATH=pipeline python -m pdoom_pipeline.observability check --snapshot <file>` | Check a pipeline snapshot with the same quality rules. |
 | `PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.enrich_sources --live` | Confirm pages and ORCID URLs for the existing cohort. Does not add people. |
 
 Database tests refuse to run unless the database name contains `test`. Point `DATABASE_URL` at `pdoom_live_test` before `npm test`, or export it in the shell. Do not point the test runner at the development database.

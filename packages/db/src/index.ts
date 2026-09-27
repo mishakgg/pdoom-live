@@ -5,3 +5,5 @@ export * from "./import";
 export * from "./queries";
 export * from "./trends";
 export * from "./ids";
+export * from "./operational-snapshot";
+export * from "./quality-command";
