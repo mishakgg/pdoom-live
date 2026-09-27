@@ -252,13 +252,8 @@ Metrics should help identify silent dataset staleness.
 
 ## Deployment
 
-Keep local development one-command where practical.
+Local development stays a Node process plus PostgreSQL. It does not require Docker.
 
-The initial deployment should be reproducible with:
+The production runtime is the Next.js web process and PostgreSQL. Migrations and canonical dataset import are separate operator commands. The web process does not migrate, import, seed, or reset on startup. There is no Redis, queue, crawler scheduler, or vector database in the runtime image.
 
-- environment-variable configuration;
-- PostgreSQL;
-- web process;
-- worker/ingestion process.
-
-Use containers only where they simplify reproducibility; do not make local development depend on unnecessary infrastructure.
+Run the production image from [`docs/PRODUCTION.md`](./PRODUCTION.md). Ingestion remains an operator job outside the web container.

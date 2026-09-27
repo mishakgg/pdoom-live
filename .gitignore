@@ -19,6 +19,9 @@ coverage/
 .env
 .env.*
 !.env.example
+!.env.production.example
+deploy/state/
+backups/
 *.pem
 *.key
 
@@ -37,3 +40,8 @@ Thumbs.db
 # logs
 *.log
 logs/
+
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/

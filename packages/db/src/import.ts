@@ -6,8 +6,11 @@ import {
   type CanonicalImport,
 } from "@pdoom/contracts";
 import type pg from "pg";
+import { deploymentMode } from "./env";
 import { sha256, stableId } from "./ids";
-import { fixturePath } from "./paths";
+import { migrationState } from "./migrate";
+import { fixtureFile } from "./paths";
+import { commitOrAbort, setActiveClient } from "./shutdown";
 
 export type ImportResult = {
   dataset_id: string;
@@ -19,8 +22,21 @@ export type ImportResult = {
   counts: Record<string, number>;
 };
 
+export function assertFixtureLoadAllowed(): void {
+  if (deploymentMode() === "production") {
+    throw new Error("refusing to load synthetic fixtures in production");
+  }
+}
+
+export function assertDatasetAllowed(doc: { dataset_kind: string }): void {
+  if (deploymentMode() === "production" && doc.dataset_kind === "synthetic") {
+    throw new Error("refusing to import a synthetic dataset in production");
+  }
+}
+
 async function loadFixture(): Promise<CanonicalImport> {
-  const raw = await readFile(fixturePath, "utf8");
+  assertFixtureLoadAllowed();
+  const raw = await readFile(fixtureFile(), "utf8");
   return canonicalImportSchema.parse(JSON.parse(raw));
 }
 
@@ -36,19 +52,37 @@ export function validateDocument(raw: unknown): CanonicalImport {
 }
 
 export async function importCanonical(pool: pg.Pool, document?: CanonicalImport | unknown): Promise<ImportResult> {
+  if (document === undefined) assertFixtureLoadAllowed();
   const doc = document ?? (await loadFixture());
   const parsed = validateDocument(doc);
+  assertDatasetAllowed(parsed);
+  const state = await migrationState(pool);
+  if (state !== "current") {
+    throw new Error(`refusing to import because migrations are ${state}`);
+  }
 
   const client = await pool.connect();
+  const pid = await client.query<{ pid: number }>("SELECT pg_backend_pid() AS pid");
+  const backendPid = pid.rows[0]?.pid;
+  if (backendPid === undefined) {
+    client.release();
+    throw new Error("database connection did not return a backend pid");
+  }
+  setActiveClient(client, backendPid);
   try {
     await client.query("BEGIN");
     await upsertAll(client, parsed);
-    await client.query("COMMIT");
+    await commitOrAbort(client);
   } catch (error) {
-    await client.query("ROLLBACK");
+    await client.query("ROLLBACK").catch(() => undefined);
     throw error;
   } finally {
-    client.release();
+    setActiveClient(null, null);
+    try {
+      client.release();
+    } catch {
+      // Shutdown may already have released the client.
+    }
   }
 
   const counts = await countTables(pool);
@@ -720,7 +754,7 @@ async function countTables(pool: pg.Pool): Promise<Record<string, number>> {
   return counts;
 }
 
-export async function resetDatabase(pool: pg.Pool): Promise<ImportResult> {
+export async function clearProductTables(pool: pg.Pool): Promise<void> {
   await pool.query(`
     TRUNCATE
       trend_observations,
@@ -747,5 +781,12 @@ export async function resetDatabase(pool: pg.Pool): Promise<ImportResult> {
       dataset_imports
     RESTART IDENTITY CASCADE
   `);
+}
+
+export async function resetDatabase(pool: pg.Pool): Promise<ImportResult> {
+  if (deploymentMode() === "production") {
+    throw new Error("refusing to reset data in production");
+  }
+  await clearProductTables(pool);
   return importCanonical(pool);
 }

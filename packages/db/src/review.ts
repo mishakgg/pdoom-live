@@ -732,23 +732,24 @@ export async function stageCandidates(pool: pg.Pool, rows: CandidateRow[]): Prom
       throw new Error("staging cannot mark a candidate human_verified");
     }
     const personSlug = normalizePrefixedId(row.person_id, "person");
-    const hash = row.content_hash.replace(/^sha256:/, "");
-    if (!/^[a-f0-9]{64}$/.test(hash)) throw new Error("candidate content hash must be SHA-256");
-    const evidenceText = row.evidence_text.slice(0, 2000);
-    const evidenceHash = sha256(evidenceText);
-    const key = candidateKey({
-      person_slug: personSlug,
-      source_content_hash: hash,
-      evidence_hash: evidenceHash,
-      extractor_name: row.extractor_name,
-      extractor_version: row.extractor_version,
-      statement_type: row.statement_type,
-    });
     const client = await pool.connect();
     try {
       await client.query("BEGIN");
       const person = await client.query(`SELECT id FROM people WHERE slug = $1`, [personSlug]);
       if (!person.rowCount) throw new Error(`candidate person not in dataset: ${personSlug}`);
+      if (typeof row.content_hash !== "string") throw new Error("candidate content hash must be SHA-256");
+      const hash = row.content_hash.replace(/^sha256:/, "");
+      if (!/^[a-f0-9]{64}$/.test(hash)) throw new Error("candidate content hash must be SHA-256");
+      const evidenceText = row.evidence_text.slice(0, 2000);
+      const evidenceHash = sha256(evidenceText);
+      const key = candidateKey({
+        person_slug: personSlug,
+        source_content_hash: hash,
+        evidence_hash: evidenceHash,
+        extractor_name: row.extractor_name,
+        extractor_version: row.extractor_version,
+        statement_type: row.statement_type,
+      });
       const existing = await client.query(`SELECT 1 FROM statements WHERE candidate_key = $1`, [key]);
       if (existing.rowCount) {
         await client.query("COMMIT");

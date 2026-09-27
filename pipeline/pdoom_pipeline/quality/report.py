@@ -12,7 +12,7 @@ ACADEMIC_NAMESPACES = {"orcid", "openalex", "openreview", "semantic_scholar"}
 PROFILE_NAMESPACES = {"personal_website", "lab_profile"}
 
 
-def build_report(seed_dir: Path | None = None, collector_runs: list[dict] | None = None) -> dict:
+def build_report(seed_dir: Path | None = None, collector_runs: list[dict] | None = None, corpus: dict | None = None) -> dict:
     directory = seed_dir or SEED_DIR
     people = load_jsonl(directory / "people.jsonl")
     orgs = load_jsonl(directory / "organizations.jsonl")
@@ -92,6 +92,7 @@ def build_report(seed_dir: Path | None = None, collector_runs: list[dict] | None
         "collector_success": success,
         "collector_failure": failure,
         "collector_failure_classes": dict(failure_classes),
+        "belief_corpus": corpus or {},
         "biases": [
             "English-language public profiles and English-indexed academic graphs are over-represented.",
             "Organization headquarters country is not nationality and is not a place of birth.",
@@ -125,9 +126,38 @@ def render_markdown(report: dict) -> str:
         f"- People missing an academic identifier: {report['missing_academic_identifier_count']}",
         f"- Collector runs recorded: {report['collector_runs']} (success {report['collector_success']}, failure {report['collector_failure']})",
         "",
-        "## Inclusion reasons",
-        "",
     ]
+    corpus = report.get("belief_corpus") or {}
+    if corpus:
+        lines.extend(
+            [
+                "## Belief corpus",
+                "",
+                "Collection priority is a fetch budget. It is not a ranking of researchers.",
+                "",
+                f"- Priority people considered: {corpus.get('priority_people')}",
+                f"- People with a collected non-academic item: {corpus.get('people_with_items')}",
+                f"- People with a statement candidate: {corpus.get('people_with_statements')}",
+                f"- Source items: {corpus.get('source_items')}",
+                f"- Statement candidates: {corpus.get('statements')}",
+                f"- By statement type: {corpus.get('by_type')}",
+                f"- By forecast kind: {corpus.get('by_kind')}",
+                f"- By question key: {corpus.get('by_question')}",
+                f"- Explicit numeric / qualitative / model-inferred: {corpus.get('explicit_numeric')} / {corpus.get('explicit_qualitative')} / {corpus.get('model_inferred')}",
+                f"- Numeric candidates missing a horizon: {corpus.get('missing_horizon')}",
+                f"- Numeric candidates missing a definition: {corpus.get('missing_definition')}",
+                f"- People on a podcast item: {corpus.get('podcast_people')}",
+                f"- People with owned writing: {corpus.get('owned_people')}",
+                f"- View-change candidates: {corpus.get('relationships')}",
+                f"- Multi-sentence candidates: {corpus.get('multi_sentence')}",
+                f"- Video or talk items: {corpus.get('video_items')}",
+                f"- Candidate source leads: {corpus.get('source_leads')}",
+                f"- People with a repeated comparable forecast: {corpus.get('people_with_repeated_forecasts')}",
+                f"- Collector failures: {corpus.get('failures')}",
+                "",
+            ]
+        )
+    lines.extend(["", "## Inclusion reasons", ""])
     for key, value in sorted(report["inclusion_reasons"].items()):
         lines.append(f"- {key}: {value}")
     lines.extend(["", "## Current organization headquarters country", ""])
@@ -146,11 +176,11 @@ def render_markdown(report: dict) -> str:
     return "\n".join(lines)
 
 
-def write_report(seed_dir: Path | None = None, collector_runs: list[dict] | None = None) -> dict:
+def write_report(seed_dir: Path | None = None, collector_runs: list[dict] | None = None, corpus: dict | None = None) -> dict:
     directory = seed_dir or SEED_DIR
     report_dir = directory.parents[2] / "reports"
     report_dir.mkdir(parents=True, exist_ok=True)
-    report = build_report(directory, collector_runs)
+    report = build_report(directory, collector_runs, corpus)
     (report_dir / "cohort-v2026-09-quality.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     (report_dir / "cohort-v2026-09-quality.md").write_text(render_markdown(report), encoding="utf-8")
     return report

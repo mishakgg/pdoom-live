@@ -1,10 +1,11 @@
 import { readFile } from "node:fs/promises";
-import { closePool, createPool } from "./pool";
-import { readDatabaseUrl } from "./env";
+import { assertDevelopmentMutation, publicCommandError, readDatabaseUrl, readRuntimeConfig } from "./env";
 import { importCanonical, resetDatabase, validateDocument } from "./import";
-import { migrate } from "./migrate";
+import { migrate, migrationState } from "./migrate";
+import { createPool, closePool, endPool } from "./pool";
 import { getCoverage, getDatasetRecord } from "./queries";
 import { exportReviewManifest, importReviewManifest, reviewStatus, stageCandidates, validateReviewManifest, validateReviewManifestInDatabase } from "./review";
+import { importWasAborted, installCliShutdown } from "./shutdown";
 
 const command = process.argv[2];
 const file = process.argv[3];
@@ -15,6 +16,11 @@ async function readJson(path: string): Promise<unknown> {
 }
 
 async function main() {
+  if (command === "seed" || command === "reset") {
+    assertDevelopmentMutation(command);
+  }
+  readRuntimeConfig();
+
   if (command === "validate") {
     if (!file) throw new Error("usage: cli.ts validate <file>");
     const parsed = validateDocument(await readJson(file));
@@ -33,7 +39,11 @@ async function main() {
     return;
   }
 
-  const pool = createPool(readDatabaseUrl("DATABASE_URL"));
+  const pool = createPool(readDatabaseUrl("DATABASE_URL"), {
+    statementTimeoutMs: 120_000,
+    applicationName: "pdoom-cli",
+  });
+  installCliShutdown(pool);
   try {
     if (command === "migrate") {
       const applied = await migrate(pool);
@@ -55,14 +65,16 @@ async function main() {
     if (command === "import") {
       if (!file) throw new Error("usage: cli.ts import <file>");
       const raw = await readJson(file);
-      validateDocument(raw);
-      await migrate(pool);
       const result = await importCanonical(pool, raw);
       console.log(JSON.stringify({ imported: result.imported, counts: result.counts, dataset_id: result.dataset_id }));
       return;
     }
     if (command === "status") {
-      await migrate(pool);
+      const state = await migrationState(pool);
+      if (state !== "current") {
+        console.log(JSON.stringify({ migrations: state }));
+        return;
+      }
       const dataset = await getDatasetRecord(pool);
       const coverage = await getCoverage(new Date().toISOString(), pool);
       const counts = await pool.query(`
@@ -75,6 +87,7 @@ async function main() {
       const latest = await pool.query("SELECT max(observed_at) AS observed_at FROM source_items");
       console.log(
         JSON.stringify({
+          migrations: state,
           dataset,
           counts: counts.rows[0],
           latest_observation: latest.rows[0].observed_at,
@@ -126,12 +139,12 @@ async function main() {
     }
     throw new Error("usage: cli.ts migrate|seed|reset|validate <file>|import <file>|status|review:status|review:export <file>|review:import <file>|review:validate <file>|review:stage <jsonl>");
   } finally {
-    if (command !== "validate") await pool.end();
+    await endPool(pool);
     await closePool();
   }
 }
 
 main().catch((error: unknown) => {
-  console.error(error instanceof Error ? error.message : "command failed");
-  process.exit(1);
+  console.error(publicCommandError(error));
+  process.exit(importWasAborted() ? 143 : 1);
 });

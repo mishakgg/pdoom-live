@@ -1,12 +1,7 @@
-import { getPool } from "@pdoom/db";
+import { readinessResponse } from "@/lib/readiness-response";
 
 export const dynamic = "force-dynamic";
 
-export async function GET() {
-  try {
-    await getPool().query("SELECT 1");
-    return Response.json({ ok: true });
-  } catch {
-    return Response.json({ ok: false }, { status: 503 });
-  }
+export function GET() {
+  return readinessResponse();
 }
