@@ -15,8 +15,10 @@ Identity and affiliation confidence is `high`, `medium`, `low`, or `unknown`. Th
 Operator commands, with `DATABASE_URL` set for the write commands:
 
 - `npm run db:validate -- data/fixtures/synthetic/dataset.json` parses and checks the file. It does not write.
-- `npm run db:import -- <file>` validates, applies pending migrations, then upserts in one transaction. Rows absent from the file are kept.
-- `npm run db:status` prints the current dataset, cohort, counts, and coverage.
+- `npm run db:migrate` applies pending SQL migrations. It does not import a dataset.
+- `npm run db:import -- <file>` validates, requires migrations to already be current, then upserts in one transaction. It does not apply migrations. Rows absent from the file are kept.
+- `npm run db:status` prints migration state, the current dataset, cohort, counts, and coverage. It does not migrate or import.
+- `npm run db:seed` and `npm run db:reset` load the synthetic fixture. Production mode refuses both, and it refuses a synthetic `db:import`.
 
 Canonical values are product semantics. Collector strings such as `openalex_api` map to `api`, and the original string is stored as `collection_adapter` or `verification_detail`. The map is `packages/contracts/vocabulary-map.json`. Unmapped strings fail. `SourceObservation` is still the collector envelope and is not this document.
 

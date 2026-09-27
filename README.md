@@ -102,3 +102,7 @@ The app listens on `http://localhost:3000`.
 Database tests refuse to run unless the database name contains `test`. Point `DATABASE_URL` at `pdoom_live_test` before `npm test`, or export it in the shell. Do not point the test runner at the development database.
 
 The fixture people, organizations, and quotations are fictional. The researcher seed under `data/seed/` is a real public-identity registry and is not a synthetic fixture.
+
+## Production
+
+The production runtime is the Next.js server and PostgreSQL. Migrations, dataset import, and web startup are separate commands. The container does not load synthetic fixtures. See the [production runbook](./docs/PRODUCTION.md).
