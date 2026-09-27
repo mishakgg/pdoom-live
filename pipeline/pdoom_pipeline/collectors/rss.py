@@ -77,16 +77,27 @@ class RssCollector:
             raise CollectorFailure("collector_bug", str(exc)) from exc
         return self.parse(result.body, source_identity=source_identity, feed_url=feed_url, observed_at=observed_at)
 
-    def parse(self, payload: bytes, *, source_identity: str, feed_url: str, observed_at: str) -> list[SourceObservation]:
-        if len(payload) > 1_000_000:
+    def parse(
+        self,
+        payload: bytes,
+        *,
+        source_identity: str,
+        feed_url: str,
+        observed_at: str,
+        max_bytes: int = 1_000_000,
+        max_items: int = MAX_ITEMS,
+    ) -> list[SourceObservation]:
+        if len(payload) > max_bytes:
             raise CollectorFailure("content_too_large", "feed exceeds parser cap")
+        if max_items < 1 or max_items > 500:
+            raise CollectorFailure("invalid_content", "max_items out of range")
         try:
             root = ET.fromstring(payload)
         except ET.ParseError as exc:
             raise CollectorFailure("invalid_content", f"malformed feed: {exc}") from exc
         items = _entries(root)
         observations: list[SourceObservation] = []
-        for index, entry in enumerate(items[:MAX_ITEMS]):
+        for index, entry in enumerate(items[:max_items]):
             observations.append(_entry_to_observation(entry, source_identity=source_identity, feed_url=feed_url, observed_at=observed_at, index=index))
         return observations
 
@@ -117,6 +128,11 @@ def _entry_to_observation(entry, *, source_identity: str, feed_url: str, observe
     published = _parse_time(_text(_child(entry, ["pubDate", "published", "atom:published", "updated", "atom:updated", "dc:date"])))
     author_name = _text(_child(entry, ["author", "dc:creator"]))
     if not author_name:
+        for child in list(entry):
+            if child.tag.split("}")[-1] in {"creator", "author"} and (child.text or "").strip():
+                author_name = _text(child)
+                break
+    if not author_name:
         atom_author = entry.find("atom:author/atom:name", ATOM_NS)
         if atom_author is None:
             atom_author = entry.find("author/name")
@@ -146,12 +162,27 @@ def _entry_to_observation(entry, *, source_identity: str, feed_url: str, observe
         author_candidates=candidates,
         title=title or None,
         segments=[Segment(segment_kind="text", sequence=0, text=text, start_char=0, end_char=len(text))],
-        metadata={"feed_url": feed_url, "truncated": truncated, "upstream_version": full_for_hash},
+        metadata={
+            "feed_url": feed_url,
+            "truncated": truncated,
+            "upstream_version": full_for_hash,
+            "transcript_url": _transcript_url(entry),
+        },
         collection_method="rss_feed",
         collector="rss",
         collector_version=COLLECTOR_VERSION,
     )
     return observation.finalize_hash()
+
+
+def _transcript_url(entry) -> str | None:
+    for child in list(entry):
+        if child.tag.split("}")[-1] != "transcript":
+            continue
+        href = child.attrib.get("url") or (child.text or "").strip()
+        if href.startswith("http"):
+            return href
+    return None
 
 
 def _link(entry) -> str:

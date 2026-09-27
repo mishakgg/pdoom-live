@@ -1,0 +1,63 @@
+{
+  "source_items": 213,
+  "statements": 27,
+  "by_type": {
+    "explicit_numeric": 19,
+    "explicit_qualitative": 8
+  },
+  "by_kind": {
+    "timeline": 4,
+    "qualitative": 8,
+    "probability": 14,
+    "quantity": 1
+  },
+  "by_question": {
+    "capability_milestone": 3,
+    "asi_timeline": 3,
+    "ai_takeover": 3,
+    "mass_human_death": 2,
+    "ambiguous_doom": 1,
+    "extinction_unconditional": 1,
+    "disempowerment": 1,
+    "transformative_ai_by_year_probability": 6,
+    "agi_timeline": 1,
+    "catastrophe_broad": 4,
+    "job_displacement": 1
+  },
+  "by_topic": {
+    "capability": 3,
+    "asi-timeline": 3,
+    "ai-takeover": 3,
+    "mass-human-death": 2,
+    "ai-catastrophe": 5,
+    "ai-extinction": 1,
+    "ai-disempowerment": 1,
+    "transformative-ai": 6,
+    "agi-timeline": 1,
+    "ai-risk-qualitative": 1,
+    "labor": 1
+  },
+  "people_with_items": 52,
+  "people_with_statements": 10,
+  "explicit_numeric": 19,
+  "explicit_qualitative": 8,
+  "model_inferred": 0,
+  "missing_horizon": 7,
+  "missing_definition": 0,
+  "podcast_people": 44,
+  "owned_people": 14,
+  "relationships": 0,
+  "runs": 57,
+  "failures": {
+    "rate_limited": 1
+  },
+  "failure_urls": [
+    {
+      "error_class": "rate_limited",
+      "kind": "owned_feed",
+      "url": "https://jack-clark.net/feed/?paged=4"
+    }
+  ],
+  "priority_people": 120,
+  "people": 323
+}
