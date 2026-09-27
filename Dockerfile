@@ -25,8 +25,8 @@ ENV NODE_ENV=production \
 RUN apt-get update \
     && apt-get install -y --no-install-recommends tini \
     && rm -rf /var/lib/apt/lists/* \
-    && groupadd --system --gid 1001 pdoom \
-    && useradd --system --uid 1001 --gid pdoom --home-dir /app --shell /usr/sbin/nologin pdoom
+    && groupadd --gid 1001 pdoom \
+    && useradd --uid 1001 --gid pdoom --home-dir /app --no-create-home --shell /usr/sbin/nologin pdoom
 COPY --from=build --chown=pdoom:pdoom /app/apps/web/.next/standalone ./
 COPY --from=build --chown=pdoom:pdoom /app/apps/web/.next/static ./apps/web/.next/static
 COPY --from=build --chown=pdoom:pdoom /app/packages/db/migrations ./migrations

@@ -6,7 +6,7 @@ import { NextRequest } from "next/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { GET as live } from "../apps/web/app/api/live/route";
 import { GET as ready } from "../apps/web/app/api/ready/route";
-import { bootServer } from "../apps/web/lib/boot";
+import { bootServer, detachBootSignals } from "../apps/web/lib/boot";
 import { clearReadinessCache } from "../apps/web/lib/ready-cache";
 import { contentSecurityPolicy } from "../apps/web/lib/security-headers";
 import { proxy } from "../apps/web/proxy";
@@ -163,6 +163,7 @@ describe("production configuration", () => {
       expect(logs.join("\n")).not.toContain("postgresql://");
     } finally {
       spy.mockRestore();
+      detachBootSignals();
       await closePool();
     }
   });
@@ -213,6 +214,7 @@ describe("production fixture isolation", () => {
     await writeFile(file, JSON.stringify(fixture));
     const child = spawn("node_modules/.bin/tsx", ["packages/db/src/cli.ts", "import", file], {
       env: { ...process.env, PDOOM_ENV: "test", NODE_ENV: "test", PDOOM_IMPORT_HOLD: "1" },
+      detached: true,
       stdio: ["ignore", "pipe", "pipe"],
     });
     let output = "";
@@ -240,7 +242,13 @@ describe("production fixture isolation", () => {
       const after = await pool.query("SELECT display_name FROM people WHERE slug = 'ada-quill'");
       expect(String(after.rows[0].display_name)).toBe(original);
     } finally {
-      if (child.exitCode === null) child.kill("SIGKILL");
+      if (child.exitCode === null && child.pid) {
+        try {
+          process.kill(-child.pid, "SIGKILL");
+        } catch {
+          child.kill("SIGKILL");
+        }
+      }
       await rm(directory, { recursive: true, force: true });
       const after = await pool.query("SELECT display_name FROM people WHERE slug = 'ada-quill'");
       if (String(after.rows[0].display_name) !== original) {
@@ -351,11 +359,17 @@ describe("migrations and readiness", () => {
   it("does not migrate from the web boot path", async () => {
     const boot = await readFile("apps/web/lib/boot.ts", "utf8");
     const instrumentation = await readFile("apps/web/instrumentation.ts", "utf8");
+    const registerNode = await readFile("apps/web/lib/register-node.ts", "utf8");
     expect(boot).not.toMatch(/\bmigrate\s*\(/);
     expect(boot).not.toContain("importCanonical");
     expect(boot).not.toContain("resetDatabase");
     expect(instrumentation).not.toContain("importCanonical");
     expect(instrumentation).not.toContain("resetDatabase");
+    expect(instrumentation).not.toContain("process.exit");
+    expect(registerNode).toContain("publicCommandError");
+    expect(registerNode).toContain("process.exit(1)");
+    expect(registerNode).not.toContain("importCanonical");
+    expect(registerNode).not.toContain("resetDatabase");
   });
 });
 
@@ -375,8 +389,7 @@ describe("security headers", () => {
     expect(csp).not.toContain("http:");
     expect(csp).not.toMatch(/script-src[^;]*unsafe-inline/);
     expect(csp).not.toContain("unsafe-eval");
-    expect(csp).not.toContain("unsafe-inline'; script");
-    expect(csp).toContain("style-src-attr 'unsafe-inline'");
+    expect(csp).not.toContain("unsafe-inline");
     expect(csp).not.toContain("upgrade-insecure-requests");
     expect(first.headers.get("x-content-type-options")).toBe("nosniff");
     expect(first.headers.get("referrer-policy")).toBe("strict-origin-when-cross-origin");
@@ -431,6 +444,10 @@ describe("deployment files", () => {
     expect(docker).toContain("/usr/bin/tini");
     expect(runtime).not.toContain("npm ci");
     expect(runtime).not.toMatch(/npm install/);
+    expect(runtime).toContain("pdoom-cli.mjs");
+    const rootPackage = JSON.parse(await readFile("package.json", "utf8")) as { scripts: { "build:cli": string } };
+    expect(rootPackage.scripts["build:cli"]).toContain("createRequire");
+    expect(rootPackage.scripts["build:cli"]).toContain("dist/pdoom-cli.mjs");
     const compose = await readFile("compose.yaml", "utf8");
     expect(compose).toContain("postgres:");
     expect(compose).toContain("web:");

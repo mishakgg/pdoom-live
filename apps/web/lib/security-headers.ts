@@ -20,7 +20,6 @@ export function contentSecurityPolicy(options: SecurityHeaderOptions): string {
     "default-src 'self'",
     script.join(" "),
     style,
-    "style-src-attr 'unsafe-inline'",
     "img-src 'self'",
     "font-src 'self'",
     "connect-src 'self'",

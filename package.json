@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "npm run dev -w @pdoom/web",
     "build": "npm run build -w @pdoom/web",
-    "build:cli": "esbuild packages/db/src/cli.ts --bundle --platform=node --target=node22 --format=esm --outfile=dist/pdoom-cli.mjs --external:pg-native",
+    "build:cli": "esbuild packages/db/src/cli.ts --bundle --platform=node --target=node22 --format=esm --outfile=dist/pdoom-cli.mjs --external:pg-native --banner:js='import { createRequire } from \"node:module\"; const require = createRequire(import.meta.url);'",
     "start": "npm run start -w @pdoom/web",
     "lint": "eslint .",
     "typecheck": "npm run typecheck --workspaces --if-present",

@@ -9,14 +9,14 @@ export const fixturePath = resolve(repoRoot, "data/fixtures/synthetic/dataset.js
 
 function isDirectory(path: string): boolean {
   try {
-    return statSync(path).isDirectory();
+    return statSync(/*turbopackIgnore: true*/ path).isDirectory();
   } catch {
     return false;
   }
 }
 
 function hasMigrationMarker(path: string): boolean {
-  return existsSync(join(path, "001_init.sql"));
+  return existsSync(/*turbopackIgnore: true*/ join(path, "001_init.sql"));
 }
 
 export function migrationsDirectory(): string {
@@ -25,31 +25,31 @@ export function migrationsDirectory(): string {
     if (!override.trim() || /[\0\r\n]/.test(override) || !isDirectory(override)) {
       throw new ConfigError("PDOOM_MIGRATIONS_DIR is not a directory");
     }
-    return resolve(override);
+    return resolve(/*turbopackIgnore: true*/ override);
   }
   const candidates = [
     migrationsDir,
-    resolve(process.cwd(), "packages/db/migrations"),
-    resolve(process.cwd(), "../../packages/db/migrations"),
-    resolve(process.cwd(), "../../../packages/db/migrations"),
-    resolve(process.cwd(), "migrations"),
+    resolve(/*turbopackIgnore: true*/ process.cwd(), "packages/db/migrations"),
+    resolve(/*turbopackIgnore: true*/ process.cwd(), "../../packages/db/migrations"),
+    resolve(/*turbopackIgnore: true*/ process.cwd(), "../../../packages/db/migrations"),
+    resolve(/*turbopackIgnore: true*/ process.cwd(), "migrations"),
     "/app/migrations",
   ];
   for (const candidate of candidates) {
-    if (hasMigrationMarker(candidate)) return resolve(candidate);
+    if (hasMigrationMarker(candidate)) return resolve(/*turbopackIgnore: true*/ candidate);
   }
   throw new ConfigError("migrations directory is not available");
 }
 
 export function fixtureFile(): string {
-  if (process.env.PDOOM_FIXTURE_PATH) return resolve(process.env.PDOOM_FIXTURE_PATH);
+  if (process.env.PDOOM_FIXTURE_PATH) return resolve(/*turbopackIgnore: true*/ process.env.PDOOM_FIXTURE_PATH);
   const candidates = [
     fixturePath,
-    resolve(process.cwd(), "data/fixtures/synthetic/dataset.json"),
-    resolve(process.cwd(), "../../data/fixtures/synthetic/dataset.json"),
+    resolve(/*turbopackIgnore: true*/ process.cwd(), "data/fixtures/synthetic/dataset.json"),
+    resolve(/*turbopackIgnore: true*/ process.cwd(), "../../data/fixtures/synthetic/dataset.json"),
   ];
   for (const candidate of candidates) {
-    if (existsSync(candidate)) return candidate;
+    if (existsSync(/*turbopackIgnore: true*/ candidate)) return candidate;
   }
   return fixturePath;
 }

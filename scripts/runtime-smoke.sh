@@ -105,6 +105,11 @@ if [[ "$missing_logs" != *"DATABASE_URL is required"* && "$missing_logs" != *"PD
   echo "$missing_logs" >&2
   exit 1
 fi
+if [[ "$missing_logs" == *".next/"* || "$missing_logs" == *"postgresql://"* || "$missing_logs" == *"postgres://"* ]]; then
+  echo "$missing_logs" >&2
+  echo "startup error included a path or database URL" >&2
+  exit 1
+fi
 
 start_ms="$(date +%s%3N)"
 docker run -d --name "$WEB" --network "$NET" -p 127.0.0.1:3000:3000 \
@@ -152,7 +157,7 @@ fi
 
 docker restart "$PG" >/dev/null
 for _ in $(seq 1 40); do
-  if curl -fsS "http://127.0.0.1:3000/api/ready" | grep -q '"status":"ready"'; then
+  if curl -sS "http://127.0.0.1:3000/api/ready" | grep -q '"status":"ready"'; then
     echo "postgres_restart=reconnected"
     break
   fi

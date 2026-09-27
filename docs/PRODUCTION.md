@@ -27,6 +27,8 @@ Optional:
 
 Unknown `PDOOM_*` variables are rejected. Empty optional values are rejected. Production refuses `PDOOM_IMPORT_HOLD` and `PDOOM_FIXTURE_PATH`.
 
+The web process exits immediately when required configuration is missing or invalid. The log line names the problem and does not print secret values, database URLs, or stack traces.
+
 `https` origins send `Strict-Transport-Security: max-age=15552000` and CSP `upgrade-insecure-requests`. Plain `http` origins do not. Set `PDOOM_HSTS=on` only when clients actually reach the site over TLS, including TLS terminated in front of the container. Set `PDOOM_HSTS=off` to suppress both headers.
 
 The compose file's database password is for a local project. Change it before the database port is reachable beyond the host.
@@ -120,7 +122,7 @@ Responses from the Node proxy include:
 - `Permissions-Policy` disabling camera, microphone, geolocation, payment, and USB
 - `Strict-Transport-Security` only when HSTS is enabled, as described above
 
-Production CSP allows same-origin resources, a per-request script and style nonce, and `strict-dynamic` for scripts Next.js loads from that nonce. `frame-ancestors 'none'` and `frame-src 'none'` block framing. `script-src-attr 'none'` blocks inline event handlers. Style attributes are allowed because Next.js font variables are applied that way; style elements still require the nonce. Development adds `'unsafe-eval'` for React debugging and allows inline style elements. Production does not.
+Production CSP allows same-origin resources, a per-request script and style nonce, and `strict-dynamic` for scripts Next.js loads from that nonce. `frame-ancestors 'none'` and `frame-src 'none'` block framing. `script-src-attr 'none'` blocks inline event handlers. This build applies font variables through stylesheets, so production does not allow `'unsafe-inline'` for styles or style attributes. Development adds `'unsafe-eval'` for React debugging and allows inline style elements.
 
 Static files under `/_next/static` receive the non-CSP headers from `next.config.ts`.
 
