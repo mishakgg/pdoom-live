@@ -10,7 +10,7 @@ test.beforeAll(async ({ request }) => {
   }
 });
 
-test("critical routes stay inside the response and script budgets", async ({ page }) => {
+test("critical routes stay inside the response and script budgets", async ({ page }, testInfo) => {
   for (const route of performanceRoutes) {
     const scriptCounts = new Map<string, number>();
     const pending: Promise<void>[] = [];
@@ -35,6 +35,10 @@ test("critical routes stay inside the response and script budgets", async ({ pag
       budgets.documentResponseMs,
     );
     expect(scriptBytes, `${route.path} shipped ${scriptBytes} bytes of JavaScript`).toBeLessThan(budgets.maxJavaScriptBytes);
+    testInfo.annotations.push({
+      type: "perf",
+      description: `${route.path} responseEnd=${Math.round(timing?.responseEnd ?? -1)}ms scriptBytes=${scriptBytes}`,
+    });
     expect(scriptBytes, `${route.path} shipped no JavaScript`).toBeGreaterThan(10_000);
     for (const [script, count] of scriptCounts) {
       expect(count, `duplicate script ${script} on ${route.path}`).toBeLessThanOrEqual(budgets.maxIdenticalScriptRequests);

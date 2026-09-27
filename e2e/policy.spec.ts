@@ -56,12 +56,13 @@ test("needs review stays visible and is not labeled verified", async ({ page }) 
   const included = page.locator("table.dist");
   await expect(included.getByRole("link", { name: "30%" })).toHaveCount(0);
   await expect(included.getByRole("link", { name: "12%" })).toBeVisible();
-  await expect(page.getByText("jonah-extinction-review-2024")).toBeVisible();
+  await page.locator("summary", { hasText: "excluded records" }).click();
+  await expect(page.getByRole("link", { name: "jonah-extinction-review-2024" })).toBeVisible();
 });
 
 test("machine-validated output is labeled and human-verified estimates stay explicit", async ({ page }) => {
   await page.goto("/statements/ada-inferred-2024");
-  await expect(page.getByText("Model-inferred signal")).toBeVisible();
+  await expect(page.getByText("Model-inferred signal", { exact: true })).toBeVisible();
   await expect(page.getByText("machine validated", { exact: true })).toBeVisible();
   await expect(page.getByText("This is a model-inferred signal. It is not a quotation and it is not this person’s probability.")).toBeVisible();
   await expect(page.getByText("human verified")).toHaveCount(0);

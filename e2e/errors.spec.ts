@@ -30,7 +30,8 @@ test("malformed cursors and excessive limits stay on the page", async ({ page, r
 
 test("missing dates, a missing horizon, stale checks, and long evidence stay readable", async ({ page }) => {
   await page.goto("/statements/mateo-undated");
-  await expect(page.getByText("Time unknown")).toBeVisible();
+  await expect(page.locator("dt", { hasText: "Event time" }).locator("xpath=following-sibling::dd[1]")).toHaveText("Time unknown");
+  await expect(page.locator("dt", { hasText: "Published" }).locator("xpath=following-sibling::dd[1]")).toHaveText("Time unknown");
   await expect(page.locator("dt", { hasText: "Horizon" }).locator("xpath=following-sibling::dd[1]")).toHaveText("Not stated");
   await expect(page.locator("dt", { hasText: "Value" }).locator("xpath=following-sibling::dd[1]")).toHaveText("—");
 

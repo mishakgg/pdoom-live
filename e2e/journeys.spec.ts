@@ -3,7 +3,7 @@ import { expect, test } from "./support/test";
 test("home shows the fixture cohort and a sourced trend", async ({ page }, testInfo) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1, name: "Who said what, under which definition." })).toBeVisible();
-  await expect(page.getByText("Synthetic fixture")).toBeVisible();
+  await expect(page.locator("main").getByText("Synthetic fixture", { exact: true })).toBeVisible();
   await expect(page.getByText("synthetic-frontier-v1")).toBeVisible();
   await expect(page.getByText("Synthetic frontier cohort v1")).toBeVisible();
   await expect(page.getByText("8 tracked people")).toBeVisible();
@@ -34,7 +34,7 @@ test("primary navigation reaches the people list", async ({ page }) => {
 test("person detail shows inclusion, affiliation, and a numeric statement", async ({ page }) => {
   await page.goto("/people/ada-quill");
   await expect(page.getByRole("heading", { level: 1, name: "Ada Quill" })).toBeVisible();
-  await expect(page.getByText("Fictional research lead used to show an explicit numeric revision.")).toBeVisible();
+  await expect(page.locator("p.lede")).toHaveText("Fictional research lead used to show an explicit numeric revision.");
   await expect(page.getByText("Northwind Alignment Lab")).toBeVisible();
   await expect(page.getByRole("link", { name: /updated her unconditional extinction probability by the end of 2070 to 12%/ })).toBeVisible();
 });
@@ -42,7 +42,7 @@ test("person detail shows inclusion, affiliation, and a numeric statement", asyn
 test("topic detail keeps the extinction definition and links the distribution", async ({ page }) => {
   await page.goto("/topics/ai-extinction");
   await expect(page.getByRole("heading", { level: 1, name: "Human extinction from AI" })).toBeVisible();
-  await expect(page.getByText(/Literal human extinction/)).toBeVisible();
+  await expect(page.locator("p.lede")).toContainText(/literal human extinction/i);
   await expect(page.getByRole("link", { name: "Open the 2070 extinction distribution" })).toBeVisible();
   await expect(page.getByRole("link", { name: /Priya Sen stated an 18%/ })).toBeVisible();
 });
@@ -67,7 +67,7 @@ test("source and source item show publication separate from observation", async 
   await expect(page.getByRole("heading", { level: 1, name: "A fictional note on extinction risk" })).toBeVisible();
   await expect(page.getByText("Published")).toBeVisible();
   await expect(page.getByText("Observed")).toBeVisible();
-  await expect(page.getByRole("link", { name: "Ada Quill" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Ada Quill", exact: true })).toBeVisible();
   await expect(page.locator("blockquote.evidence")).toContainText("8 percent");
 });
 
@@ -101,7 +101,7 @@ test("header search opens a person and the statement filter finds a claim", asyn
   await search.getByRole("link", { name: "Samira Okonkwo", exact: true }).click();
   await expect(page).toHaveURL(/\/people\/samira-okonkwo$/);
   await expect(page.getByRole("heading", { level: 1, name: "Samira Okonkwo" })).toBeVisible();
-  await expect(page.getByText(/labor economist/i)).toBeVisible();
+  await expect(page.locator("p.lede")).toContainText(/labor economist/i);
 
   await page.goto("/statements");
   await page.getByRole("textbox", { name: "Text" }).fill("disempowerment");

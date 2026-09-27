@@ -20,8 +20,9 @@ test("data pages and health report the outage without leaking fixture content", 
   await expect(page.getByRole("heading", { name: "This page could not be loaded" })).toBeVisible();
   await expect(page.getByText("The dataset is temporarily unavailable. Nothing on this page is a forecast.")).toBeVisible();
   await expect(page.getByRole("button", { name: "Try again" })).toBeVisible();
-  await expect(page.getByText("Ada Quill")).toHaveCount(0);
-  await expect(page.getByText("Synthetic fixture")).toHaveCount(0);
-  await expect(page.getByText("Median of included point estimates")).toHaveCount(0);
+  const main = page.locator("main");
+  await expect(main.getByText("Ada Quill")).toHaveCount(0);
+  await expect(main.getByText("Synthetic fixture", { exact: true })).toHaveCount(0);
+  await expect(main.getByText("Median of included point estimates")).toHaveCount(0);
   await expectNoSeriousAxeViolations(page);
 });

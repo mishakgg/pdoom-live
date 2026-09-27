@@ -3,9 +3,14 @@ import { expect, type Page } from "@playwright/test";
 import { budgets } from "./budgets";
 
 /**
- * Documented network exceptions:
+ * Documented exceptions:
  * - net::ERR_ABORTED: Chromium cancels a prefetch when the next navigation starts.
  * - Statuses passed to allowStatus(): intentional 404s and the database-down 500/503.
+ * - When 500 is allowed, React production builds log minified error #441
+ *   ("An error occurred in the Server Components render. The specific message is
+ *   omitted in production builds to avoid leaking sensitive details.").
+ *   That is the error boundary for a failed server render, not a hydration bug.
+ *   https://react.dev/errors/441
  * Everything else on a journey, including external hosts, fails the test.
  */
 export class PageGuard {
@@ -20,7 +25,8 @@ export class PageGuard {
   }
 
   assertClean(): void {
-    expect(this.pageErrors, `uncaught browser exceptions:\n${this.pageErrors.join("\n")}`).toEqual([]);
+    const pageErrors = this.pageErrors.filter((message) => !this.serverRenderErrorAllowed(message));
+    expect(pageErrors, `uncaught browser exceptions:\n${pageErrors.join("\n")}`).toEqual([]);
     const consoleErrors = this.consoleErrors.filter((message) => !this.consoleErrorAllowed(message));
     expect(consoleErrors, `console errors:\n${consoleErrors.join("\n")}`).toEqual([]);
     const networkProblems = this.networkProblems.filter((problem) => !this.networkProblemAllowed(problem));
@@ -31,8 +37,13 @@ export class PageGuard {
   }
 
   private consoleErrorAllowed(message: string): boolean {
+    if (this.serverRenderErrorAllowed(message)) return true;
     if (!/failed to load resource/i.test(message)) return false;
     return [...this.allowedStatuses].some((status) => message.includes(String(status)));
+  }
+
+  private serverRenderErrorAllowed(message: string): boolean {
+    return this.allowedStatuses.has(500) && message.includes("Minified React error #441");
   }
 
   private networkProblemAllowed(problem: string): boolean {
