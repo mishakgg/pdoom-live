@@ -3,9 +3,14 @@ import { listStatements } from "@pdoom/db";
 import { StatementCard } from "@/components/statement-bits";
 import Link from "next/link";
 import { STATEMENT_TYPES, REVIEW_STATES } from "@pdoom/contracts";
+import { canonicalOrigin, hasDiscoveryFilter, listPageFields, pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Statements" };
+
+export async function generateMetadata({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
+  const params = await searchParams;
+  return pageMetadata(canonicalOrigin(), listPageFields("statements", hasDiscoveryFilter(params)));
+}
 
 export default async function StatementsPage({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const params = await searchParams;

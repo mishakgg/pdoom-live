@@ -2,10 +2,14 @@ import { listPeople } from "@pdoom/db";
 import { peopleListQuerySchema } from "@pdoom/contracts";
 import Link from "next/link";
 import { typeLabel } from "@/lib/format";
+import { canonicalOrigin, hasDiscoveryFilter, listPageFields, pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = { title: "People" };
+export async function generateMetadata({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
+  const params = await searchParams;
+  return pageMetadata(canonicalOrigin(), listPageFields("people", hasDiscoveryFilter(params)));
+}
 
 export default async function PeoplePage({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const params = await searchParams;

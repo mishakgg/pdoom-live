@@ -1,9 +1,13 @@
 import { listTrends, getTrend } from "@pdoom/db";
 import { DistributionPanel, VolumePanel } from "@/components/trends";
 import Link from "next/link";
+import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Trends" };
+
+export async function generateMetadata() {
+  return pageMetadata(canonicalOrigin(), listPageFields("trends"));
+}
 
 export default async function TrendsPage() {
   const trends = await listTrends();

@@ -1,8 +1,15 @@
-export const metadata = { title: "Methodology" };
+import { JsonLd } from "@/components/json-ld";
+import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
+import { methodologyStructuredData } from "@/lib/structured-data";
+
+export async function generateMetadata() {
+  return pageMetadata(canonicalOrigin(), listPageFields("methodology"));
+}
 
 export default function MethodologyPage() {
   return (
     <>
+      <JsonLd data={methodologyStructuredData(canonicalOrigin(), null)} />
       <h1>Methodology</h1>
       <p className="lede">
         pdoom.live is a source-first observatory. A synthetic fixture is labeled synthetic and does not describe real researchers. A live dataset names its cohort and version. It is not a consensus.

@@ -2,9 +2,13 @@ import { listSources } from "@pdoom/db";
 import { ExternalLink } from "@/components/statement-bits";
 import { formatWhen } from "@/lib/format";
 import Link from "next/link";
+import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Sources" };
+
+export async function generateMetadata() {
+  return pageMetadata(canonicalOrigin(), listPageFields("sources"));
+}
 
 export default async function SourcesPage() {
   const sources = await listSources();

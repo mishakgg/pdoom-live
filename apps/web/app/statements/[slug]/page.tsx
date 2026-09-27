@@ -1,17 +1,29 @@
-import { getStatement } from "@pdoom/db";
 import { EvidenceBlock, ExternalLink, ReviewBadge, TypeBadge } from "@/components/statement-bits";
+import { JsonLd } from "@/components/json-ld";
 import { formatValue, formatWhen } from "@/lib/format";
+import { loadStatement, loadStatementDiscovery } from "@/lib/loaders";
+import { canonicalOrigin, notFoundMetadata, pageMetadata, statementFields } from "@/lib/seo";
+import { statementStructuredData } from "@/lib/structured-data";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const record = await loadStatementDiscovery(slug);
+  if (!record) return notFoundMetadata();
+  return pageMetadata(canonicalOrigin(), statementFields(record));
+}
+
 export default async function StatementPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const statement = await getStatement(slug);
-  if (!statement) notFound();
+  const [statement, discovery] = await Promise.all([loadStatement(slug), loadStatementDiscovery(slug)]);
+  if (!statement || !discovery) notFound();
+  const structured = statementStructuredData({ origin: canonicalOrigin(), ...discovery });
   return (
     <>
+      {structured ? <JsonLd data={structured} /> : null}
       <p className="kicker">Audit record</p>
       <h1>{statement.person.display_name}</h1>
       <p>

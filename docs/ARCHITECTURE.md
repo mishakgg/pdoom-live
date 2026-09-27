@@ -179,6 +179,19 @@ The query API should support cursor-based pagination and stable filters for:
 
 Do not expose raw internal extraction prompts, secrets, or unreviewed data by accident.
 
+## Public discovery
+
+Search and syndication use a stricter gate than page visibility.
+
+- Canonical URLs come from `APP_BASE_URL`. When `NODE_ENV` is `production`, a missing, localhost, loopback, private, or metadata host is replaced with `https://pdoom.live`.
+- `/sitemap.xml` lists the public index. It stays one urlset until the URL count fills a 10,000-URL chunk, then becomes a sitemap index of `/sitemaps/{id}.xml`.
+- The Atom feed at `/feed.xml` and `index` metadata include `human_verified` and `machine_validated` statements whose person status is `active` or `historical`.
+- `rejected`, `needs_review`, `unreviewed`, person status `review`, unpublished trends, non-current source versions, and sources that are not in an indexable review state stay out of those surfaces.
+- `robots.txt` allows public pages and disallows `/api/`, admin, curation, curator, ambiguity, and internal paths, plus query-string URLs. Robots rules are not access control.
+- A removed source keeps an audit page. Its metadata says the original is no longer available and does not present that URL as currently accessible.
+- Dataset structured data describes a purposive cohort. It is not a census and not a consensus sample. Person structured data omits affiliations, profile links, and other identity fields unless they are stored and human-verified on a live dataset. Synthetic fixtures do not emit those fields.
+- Open Graph images are rendered from stored text with a local font. They do not fetch remote assets.
+
 ## Trend computation
 
 No trend should exist without a versioned methodology.

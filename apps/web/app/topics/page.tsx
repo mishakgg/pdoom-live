@@ -1,9 +1,13 @@
 import { listTopics } from "@pdoom/db";
 import Link from "next/link";
 import { typeLabel } from "@/lib/format";
+import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Topics" };
+
+export async function generateMetadata() {
+  return pageMetadata(canonicalOrigin(), listPageFields("topics"));
+}
 
 export default async function TopicsPage() {
   const topics = await listTopics();

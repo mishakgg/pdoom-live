@@ -1,16 +1,15 @@
-import type { Metadata } from "next";
 import { IBM_Plex_Mono, Newsreader, Public_Sans } from "next/font/google";
 import { SiteFooter, SiteHeader } from "@/components/chrome";
+import { canonicalOrigin, siteMetadata } from "@/lib/seo";
 import "./globals.css";
 
 const sans = Public_Sans({ subsets: ["latin"], variable: "--font-sans" });
 const serif = Newsreader({ subsets: ["latin"], variable: "--font-serif" });
 const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono" });
 
-export const metadata: Metadata = {
-  title: { default: "pdoom.live", template: "%s · pdoom.live" },
-  description: "A provenance-first observatory of public AI forecasts. Synthetic fixtures are marked synthetic. A live dataset is not a census.",
-};
+export async function generateMetadata() {
+  return siteMetadata(canonicalOrigin());
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

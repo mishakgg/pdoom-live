@@ -1,17 +1,38 @@
-import { getSourceItem } from "@pdoom/db";
 import { EvidenceBlock, ExternalLink } from "@/components/statement-bits";
+import { JsonLd } from "@/components/json-ld";
 import { formatWhen } from "@/lib/format";
+import { loadSourceItem, loadSourceItemDiscovery } from "@/lib/loaders";
+import { canonicalOrigin, notFoundMetadata, pageMetadata, sourceItemFields } from "@/lib/seo";
+import { sourceItemStructuredData } from "@/lib/structured-data";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const item = await loadSourceItemDiscovery(slug);
+  if (!item) return notFoundMetadata();
+  return pageMetadata(canonicalOrigin(), sourceItemFields(item));
+}
+
 export default async function SourceItemPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const item = await getSourceItem(slug);
-  if (!item) notFound();
+  const [item, discovery] = await Promise.all([loadSourceItem(slug), loadSourceItemDiscovery(slug)]);
+  if (!item || !discovery) notFound();
+  const structured = sourceItemStructuredData({
+    origin: canonicalOrigin(),
+    slug: discovery.slug,
+    title: discovery.indexable ? discovery.title : null,
+    source_name: discovery.source_name,
+    canonical_url: discovery.canonical_url,
+    availability: discovery.availability,
+    collection_status: discovery.collection_status,
+    indexable: discovery.indexable,
+  });
   return (
     <>
+      {structured ? <JsonLd data={structured} /> : null}
       <p className="kicker"><Link href={`/sources/${item.source.slug}`}>{item.source.name}</Link> · {item.source.source_type}</p>
       <h1>{item.title}</h1>
       <dl className="audit">

@@ -1,17 +1,34 @@
 import { getOverview } from "@pdoom/db";
 import Link from "next/link";
+import { JsonLd } from "@/components/json-ld";
 import { StatementCard } from "@/components/statement-bits";
 import { DistributionPanel, VolumePanel } from "@/components/trends";
 import { formatWhen } from "@/lib/format";
+import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
+import { datasetStructuredData, websiteStructuredData } from "@/lib/structured-data";
 
 export const dynamic = "force-dynamic";
 
+export async function generateMetadata() {
+  return pageMetadata(canonicalOrigin(), listPageFields("home"));
+}
+
 export default async function HomePage() {
   const overview = await getOverview();
+  const origin = canonicalOrigin();
   const distribution = overview.trends.find((trend) => trend?.kind === "distribution");
   const volume = overview.trends.find((trend) => trend?.kind === "volume");
   return (
     <>
+      <JsonLd data={websiteStructuredData(origin)} />
+      <JsonLd
+        data={datasetStructuredData({
+          origin,
+          datasetKind: overview.dataset.dataset_kind,
+          notice: overview.dataset.notice,
+          cohortName: overview.dataset.cohort?.name ?? null,
+        })}
+      />
       <p className="fresh">
         {overview.dataset.dataset_kind === "synthetic" ? (
           <span><strong>Synthetic fixture</strong> · {overview.dataset.dataset_id}</span>

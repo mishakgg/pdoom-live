@@ -157,4 +157,5 @@ export type DatasetKind = (typeof DATASET_KINDS)[number];
 
 export const SCHEMA_VERSION = "1.0.0";
 
+/** Review states eligible for indexing and syndication. Viewable pages also include needs_review and unreviewed. */
 export const PUBLIC_REVIEW_STATES: ReviewState[] = ["human_verified", "machine_validated"];

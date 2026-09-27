@@ -1,16 +1,28 @@
-import { getTopic } from "@pdoom/db";
+import { JsonLd } from "@/components/json-ld";
 import { StatementCard } from "@/components/statement-bits";
+import { loadTopic } from "@/lib/loaders";
+import { canonicalOrigin, notFoundMetadata, pageMetadata, topicFields } from "@/lib/seo";
+import { topicStructuredData } from "@/lib/structured-data";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const topic = await loadTopic(slug);
+  if (!topic) return notFoundMetadata();
+  return pageMetadata(canonicalOrigin(), topicFields(topic));
+}
+
 export default async function TopicPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const topic = await getTopic(slug);
+  const topic = await loadTopic(slug);
   if (!topic) notFound();
+  const origin = canonicalOrigin();
   return (
     <>
+      <JsonLd data={topicStructuredData({ origin, slug: topic.slug, name: topic.name, definition: topic.definition })} />
       <p className="kicker">Topic version {topic.version}</p>
       <h1>{topic.name}</h1>
       <p className="lede">{topic.definition}</p>
