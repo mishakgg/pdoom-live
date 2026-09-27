@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export const metadata = { title: "Methodology" };
 
 export default function MethodologyPage() {
@@ -29,6 +31,7 @@ export default function MethodologyPage() {
         <p>Coverage counts the loaded cohort: people with sources, people with a non-academic source, people with a first-party channel, and people with a public statement. An academic-works feed is not complete coverage.</p>
         <p>Freshness describes collection, not whether a person has spoken. A source is current when its last successful check is within 14 days, aging within 90 days, stale after that, and never checked when no success time is stored.</p>
         <p>People outside the loaded cohort do not enter that cohort&apos;s trends. Missing estimates are counted as missing. Absence is not zero.</p>
+        <p>The public research export and <Link href="/data">/data</Link> API omit rejected, unreviewed, and needs-review records. Machine-validated rows stay labeled as machine output.</p>
       </section>
     </>
   );

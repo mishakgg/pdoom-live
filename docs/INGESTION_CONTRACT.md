@@ -2,6 +2,8 @@
 
 The product imports one canonical JSON document. The data-collection pipeline should emit this document rather than writing SQL itself.
 
+This document is an internal ingestion contract. It is not the public research API. Public reads and bulk snapshots use a separate export, documented in `docs/PUBLIC_API.md`, which drops operational extraction fields and non-public review states.
+
 Schema: `packages/contracts/schema/canonical-import.schema.json`  
 TypeScript source: `packages/contracts/src/schemas.ts`  
 Fixture example: `data/fixtures/synthetic/dataset.json`

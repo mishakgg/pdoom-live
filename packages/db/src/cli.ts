@@ -3,6 +3,7 @@ import { closePool, createPool } from "./pool";
 import { readDatabaseUrl } from "./env";
 import { importCanonical, resetDatabase, validateDocument } from "./import";
 import { migrate } from "./migrate";
+import { exportPublicSnapshot, resolveExportOptions } from "./public-snapshot";
 import { getCoverage, getDatasetRecord } from "./queries";
 
 const command = process.argv[2];
@@ -60,6 +61,12 @@ async function main() {
       console.log(JSON.stringify({ imported: result.imported, counts: result.counts, dataset_id: result.dataset_id }));
       return;
     }
+    if (command === "export") {
+      const options = resolveExportOptions(process.argv.slice(3));
+      const result = await exportPublicSnapshot(options, pool);
+      console.log(JSON.stringify({ out: result.outDir, snapshot_id: result.snapshot_id, counts: result.manifest.counts }));
+      return;
+    }
     if (command === "status") {
       await migrate(pool);
       const dataset = await getDatasetRecord(pool);
@@ -82,7 +89,7 @@ async function main() {
       );
       return;
     }
-    throw new Error("usage: cli.ts migrate|seed|reset|validate <file>|import <file>|status");
+    throw new Error("usage: cli.ts migrate|seed|reset|validate <file>|import <file>|status|export [--out <dir>] [--generated-at <iso>]");
   } finally {
     if (command !== "validate") await pool.end();
     await closePool();

@@ -134,7 +134,7 @@ Potential capabilities:
 - compare people over time;
 - “what changed this week?”;
 - saved queries/feeds;
-- data export/API;
+- data export/API — a read-only `/api/v1` surface and snapshot command are documented in `docs/PUBLIC_API.md`;
 - forecast resolution tracking;
 - source-coverage diagnostics.
 

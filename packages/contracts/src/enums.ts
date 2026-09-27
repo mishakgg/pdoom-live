@@ -157,4 +157,5 @@ export type DatasetKind = (typeof DATASET_KINDS)[number];
 
 export const SCHEMA_VERSION = "1.0.0";
 
-export const PUBLIC_REVIEW_STATES: ReviewState[] = ["human_verified", "machine_validated"];
+export const PUBLIC_REVIEW_STATES = ["human_verified", "machine_validated"] as const satisfies readonly ReviewState[];
+export type PublicReviewState = (typeof PUBLIC_REVIEW_STATES)[number];

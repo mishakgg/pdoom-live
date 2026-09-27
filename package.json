@@ -21,6 +21,7 @@
     "db:validate": "tsx packages/db/src/cli.ts validate",
     "db:import": "tsx packages/db/src/cli.ts import",
     "db:status": "tsx packages/db/src/cli.ts status",
+    "data:export": "tsx packages/db/src/cli.ts export",
     "contracts:schema": "tsx packages/contracts/src/emit-schema.ts"
   },
   "devDependencies": {

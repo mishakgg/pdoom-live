@@ -66,7 +66,8 @@ The first testing-ready product slice runs on PostgreSQL with a synthetic fixtur
 
 - [Cohort methodology](./docs/COHORT_METHODOLOGY.md) — cohort `2026.09.0` is a purposive seed, not all AI researchers.
 - [Data pipeline](./docs/DATA_PIPELINE.md) — collector envelope, seed files, and the gap to the application import.
-- [Ingestion contract](./docs/INGESTION_CONTRACT.md) — canonical document the product imports. The current schema requires `synthetic: true` and is the fixture loader, not the live seed.
+- [Ingestion contract](./docs/INGESTION_CONTRACT.md) — internal canonical document the product imports. Not the public API.
+- [Public API and export](./docs/PUBLIC_API.md) — versioned read API, JSON/CSV snapshot, and publication rules.
 - Seed files: `data/seed/cohort/v2026-09/`.
 - Quality report: `data/reports/cohort-v2026-09-quality.md`.
 
@@ -95,6 +96,7 @@ The app listens on `http://localhost:3000`.
 | `npm run db:migrate` | Apply SQL migrations |
 | `npm run db:seed` | Idempotently load `data/fixtures/synthetic/dataset.json` |
 | `npm run db:reset` | Truncate product tables and seed again |
+| `npm run data:export -- --out data/exports/public` | Write a public JSON/CSV snapshot without modifying source data |
 | `npm run build` | Production build |
 | `PYTHONPATH=pipeline python -m pytest` | Collector, identity, and seed tests. No network. |
 | `PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.enrich_sources --live` | Confirm pages and ORCID URLs for the existing cohort. Does not add people. |
