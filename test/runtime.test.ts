@@ -151,6 +151,8 @@ describe("production configuration", () => {
       PDOOM_ENV: "production",
       DATABASE_URL: `postgresql://pdoom:${secret}@127.0.0.1:5432/pdoom_live_test`,
       APP_BASE_URL: "https://pdoom.example",
+      GIT_COMMIT: `not-${secret}`,
+      BUILD_TIME: "yesterday",
     });
     const logs: string[] = [];
     const spy = vi.spyOn(console, "log").mockImplementation((message?: unknown) => {
@@ -159,6 +161,8 @@ describe("production configuration", () => {
     try {
       bootServer();
       expect(logs.join("\n")).toContain("server_boot");
+      expect(logs.join("\n")).toContain('"commit":null');
+      expect(logs.join("\n")).toContain('"built_at":null');
       expect(logs.join("\n")).not.toContain(secret);
       expect(logs.join("\n")).not.toContain("postgresql://");
     } finally {

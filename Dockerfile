@@ -16,12 +16,20 @@ COPY . .
 RUN npm run build && npm run build:cli
 
 FROM node:22-bookworm-slim AS runtime
+ARG GIT_COMMIT=unknown
+ARG BUILD_TIME=unknown
 WORKDIR /app
 ENV NODE_ENV=production \
     NEXT_TELEMETRY_DISABLED=1 \
     PORT=3000 \
     HOSTNAME=0.0.0.0 \
-    PDOOM_MIGRATIONS_DIR=/app/migrations
+    PDOOM_MIGRATIONS_DIR=/app/migrations \
+    GIT_COMMIT=${GIT_COMMIT} \
+    BUILD_TIME=${BUILD_TIME}
+LABEL org.opencontainers.image.title="pdoom-live" \
+      org.opencontainers.image.source="https://github.com/mishakgg/pdoom-live" \
+      org.opencontainers.image.revision="${GIT_COMMIT}" \
+      org.opencontainers.image.created="${BUILD_TIME}"
 RUN apt-get update \
     && apt-get install -y --no-install-recommends tini \
     && rm -rf /var/lib/apt/lists/* \
