@@ -53,26 +53,31 @@ export default defineConfig({
       testMatch: /database-down\.spec\.ts/,
     },
   ],
+  // Plugin setup starts these servers before globalSetup creates the databases.
+  // /api/health is 503 until that seed exists, so readiness uses the static methodology page.
   webServer: [
     {
       command: `npm run start -w @pdoom/web -- -H 127.0.0.1 -p ${fixturePort}`,
-      url: `${fixtureBaseURL}/api/health`,
+      url: `${fixtureBaseURL}/methodology`,
       reuseExistingServer: !process.env.CI,
-      timeout: 120_000,
+      timeout: 180_000,
+      stdout: "pipe",
       env: serverEnv(fixtureDatabaseUrl, fixturePort),
     },
     {
       command: `npm run start -w @pdoom/web -- -H 127.0.0.1 -p ${emptyPort}`,
-      url: `${emptyBaseURL}/api/health`,
+      url: `${emptyBaseURL}/methodology`,
       reuseExistingServer: !process.env.CI,
-      timeout: 120_000,
+      timeout: 180_000,
+      stdout: "pipe",
       env: serverEnv(emptyDatabaseUrl, emptyPort),
     },
     {
       command: `npm run start -w @pdoom/web -- -H 127.0.0.1 -p ${downPort}`,
       url: `${downBaseURL}/methodology`,
       reuseExistingServer: !process.env.CI,
-      timeout: 120_000,
+      timeout: 180_000,
+      stdout: "pipe",
       env: serverEnv(downDatabaseUrl, downPort),
     },
   ],

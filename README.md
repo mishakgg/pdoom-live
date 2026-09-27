@@ -118,6 +118,8 @@ Desktop checks use a 1280×800 viewport. Mobile checks use 390×844. Performance
 
 The database-down project allows HTTP 500 and 503, plus React production error #441. That message is the redacted server-render failure handled by the error boundary. Other console errors, hydration failures, and repeated application requests fail the suite.
 
+Server readiness uses `/methodology`, which does not query Postgres. Playwright starts the servers before global setup creates the test databases, and `/api/health` stays 503 until that seed exists.
+
 The fixture people, organizations, and quotations are fictional. The researcher seed under `data/seed/` is a real public-identity registry and is not a synthetic fixture.
 
 ## Production
