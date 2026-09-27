@@ -41,7 +41,7 @@ if ! docker run --rm --network pdoom-prod \
   echo "import failed; the import transaction rolls back. Backup: $backup_path" >&2
   exit 1
 fi
-dataset_id="$(docker exec -u postgres pdoom-prod-postgres psql -d "$POSTGRES_DB" -tAc "SELECT dataset_id FROM dataset_imports WHERE is_current")"
+dataset_id="$(docker exec -u postgres pdoom-prod-postgres psql --username "$POSTGRES_USER" -d "$POSTGRES_DB" -tAc "SELECT dataset_id FROM dataset_imports WHERE is_current")"
 python3 - "$STATE_DIR/last-import.json" "$backup_path" "$dataset_id" <<'PY'
 import json, sys
 path, backup, dataset_id = sys.argv[1:]

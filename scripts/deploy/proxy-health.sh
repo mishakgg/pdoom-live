@@ -23,7 +23,7 @@ docker run --rm \
   -e ACME_EMAIL=ops@pdoom.live \
   -v "$ROOT/deploy/caddy:/etc/caddy:ro" \
   caddy:2.10-alpine \
-  validate --config /etc/caddy/Caddyfile --adapter caddyfile
+  caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
 
 cat >"$WORK/Caddyfile" <<'EOF'
 {

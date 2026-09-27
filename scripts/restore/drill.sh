@@ -43,7 +43,7 @@ run_cli() {
 
 snapshot() {
   local database="$1"
-  docker exec -u postgres "$PG" psql -d "$database" -tAc "
+  docker exec -u postgres "$PG" psql --username pdoom -d "$database" -tAc "
     SELECT json_build_object(
       'organizations', (SELECT count(*) FROM organizations),
       'people', (SELECT count(*) FROM people),
@@ -97,7 +97,7 @@ docker run --rm --network "$NET" \
   -e PDOOM_MIGRATIONS_DIR=/app/migrations \
   -v "$WORK/mutated.json:/dataset.json:ro" \
   "$IMAGE" node /app/pdoom-cli.mjs import /dataset.json >/dev/null
-changed_name="$(docker exec -u postgres "$PG" psql -d pdoom_ops_drill -tAc "SELECT display_name FROM people WHERE slug = '$slug'")"
+changed_name="$(docker exec -u postgres "$PG" psql --username pdoom -d pdoom_ops_drill -tAc "SELECT display_name FROM people WHERE slug = '$slug'")"
 changed_name="$(echo "$changed_name" | tr -d '[:space:]')"
 [[ "$changed_name" == "OpsDrillMutated" || "$changed_name" == "Ops Drill Mutated" ]] || {
   echo "mutated import left name [$changed_name]" >&2
@@ -122,7 +122,7 @@ import json, sys
 if json.loads(sys.argv[1]) != json.loads(sys.argv[2]):
     sys.exit("replaced database does not match the backup snapshot")
 PY
-restored_name="$(docker exec -u postgres "$PG" psql -d pdoom_ops_drill -tAc "SELECT display_name FROM people WHERE slug = '$slug'")"
+restored_name="$(docker exec -u postgres "$PG" psql --username pdoom -d pdoom_ops_drill -tAc "SELECT display_name FROM people WHERE slug = '$slug'")"
 python3 - "$original_name" "$restored_name" <<'PY'
 import sys
 if sys.argv[1].strip() != sys.argv[2].strip():
@@ -160,7 +160,7 @@ bad_migration="$(docker run --rm --network "$NET" \
 bad_code=$?
 set -e
 [[ "$bad_code" -ne 0 ]] || { echo "bad migration succeeded" >&2; exit 1; }
-recorded="$(docker exec -u postgres "$PG" psql -d pdoom_ops_drill -tAc "SELECT count(*) FROM schema_migrations WHERE version = '999_ops_bad.sql'")"
+recorded="$(docker exec -u postgres "$PG" psql --username pdoom -d pdoom_ops_drill -tAc "SELECT count(*) FROM schema_migrations WHERE version = '999_ops_bad.sql'")"
 [[ "$(echo "$recorded" | tr -d '[:space:]')" == "0" ]] || { echo "failed migration was recorded" >&2; exit 1; }
 after_migration="$(snapshot pdoom_ops_drill)"
 python3 - "$good" "$after_migration" <<'PY'

@@ -56,7 +56,7 @@ The import runs in one transaction. A failed import leaves the previous rows. An
 
 ## Backup and retention
 
-`scripts/backup/backup.sh` runs `pg_dump --format=custom` inside the Postgres container. The dump is written to a hidden partial name. After `pg_restore --list` succeeds and the file is non-empty, the script checksums it and renames it into place. The manifest records the database name, UTC time, SHA-256, byte size, migration versions, dataset id, and application commit when those are known. It does not record the database URL or password.
+`scripts/backup/backup.sh` runs `pg_dump --format=custom` inside the Postgres container, over the local socket, as `POSTGRES_USER`. The official image trusts that socket, so the password is not placed on the command line. The dump is written to a hidden partial name. After `pg_restore --list` succeeds and the file is non-empty, the script checksums it and renames it into place. The manifest records the database name, UTC time, SHA-256, byte size, migration versions, dataset id, and application commit when those are known. It does not record the database URL or password.
 
 `scripts/backup/retain.sh` keeps the newest verified backup for each of the last `PDOOM_BACKUP_KEEP_DAILY` days (at least one day) and, beyond that window, one backup per week for `PDOOM_BACKUP_KEEP_WEEKLY` weeks. `--dry-run` prints deletions and does not remove files. A partial file, a missing manifest, or a checksum mismatch is never deleted.
 

@@ -44,7 +44,7 @@ docker exec pdoom-prod-postgres pg_isready -U "$POSTGRES_USER" -d "$POSTGRES_DB"
 applied="$(mktemp)"
 migration_dir="$(mktemp -d)"
 trap 'rm -rf "$applied" "$migration_dir"' EXIT
-docker exec -u postgres pdoom-prod-postgres psql -d "$POSTGRES_DB" -tAc "SELECT version FROM schema_migrations ORDER BY version" >"$applied" 2>/dev/null || true
+docker exec -u postgres pdoom-prod-postgres psql --username "$POSTGRES_USER" -d "$POSTGRES_DB" -tAc "SELECT version FROM schema_migrations ORDER BY version" >"$applied" 2>/dev/null || true
 docker run --rm --entrypoint sh "pdoom-live:$sha" -c 'ls -1 /app/migrations' >"$migration_dir/names"
 mkdir -p "$migration_dir/sql"
 while IFS= read -r name; do

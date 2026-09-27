@@ -1,7 +1,5 @@
 reverse_proxy web:3000 {
-	header_up Host {host}
-	header_up X-Forwarded-Host {host}
-	header_up X-Forwarded-Proto {scheme}
+	# Caddy's default already sends Host, X-Forwarded-Host, and X-Forwarded-Proto.
 	transport http {
 		dial_timeout 3s
 		read_timeout 30s

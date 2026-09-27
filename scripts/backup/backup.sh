@@ -9,6 +9,7 @@ require_cmd docker python3 sha256sum
 
 container="${PDOOM_PG_CONTAINER:-pdoom-prod-postgres}"
 database="${POSTGRES_DB:-pdoom_live}"
+db_user="${POSTGRES_USER:-pdoom}"
 output_dir="${PDOOM_BACKUP_DIR:-/var/lib/pdoom/backups}"
 commit="${PDOOM_APP_COMMIT:-}"
 hook="${PDOOM_BACKUP_HOOK:-}"
@@ -17,6 +18,7 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --container) container="$2"; shift 2 ;;
     --database) database="$2"; shift 2 ;;
+    --username) db_user="$2"; shift 2 ;;
     --output-dir) output_dir="$2"; shift 2 ;;
     --commit) commit="$2"; shift 2 ;;
     --hook) hook="$2"; shift 2 ;;
@@ -25,6 +27,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 valid_db_name "$database" || die "database name is invalid"
+valid_db_name "$db_user" || die "database user is invalid"
 [[ "$container" =~ ^[A-Za-z0-9][A-Za-z0-9_.-]+$ ]] || die "container name is invalid"
 mkdir -p "$output_dir"
 stamp="$(date -u +%Y%m%dT%H%M%SZ)"
@@ -38,7 +41,7 @@ cleanup() {
 }
 trap cleanup EXIT
 
-if ! docker exec -u postgres "$container" pg_dump --format=custom --no-owner --no-acl --dbname "$database" >"$partial"; then
+if ! docker exec -u postgres "$container" pg_dump --username "$db_user" --format=custom --no-owner --no-acl --dbname "$database" >"$partial"; then
   die "pg_dump failed"
 fi
 if ! docker exec -i -u postgres "$container" pg_restore --list <"$partial" >/dev/null; then
@@ -50,8 +53,8 @@ bytes="$(stat -c %s "$partial")"
 sha="$(sha256sum "$partial" | awk '{print $1}')"
 printf '%s  %s\n' "$sha" "${base}.dump" >"$partial.sha256"
 
-migrations="$(docker exec -u postgres "$container" psql -d "$database" -tAc "SELECT version FROM schema_migrations ORDER BY version" 2>/dev/null || true)"
-dataset_id="$(docker exec -u postgres "$container" psql -d "$database" -tAc "SELECT dataset_id FROM dataset_imports WHERE is_current LIMIT 1" 2>/dev/null || true)"
+migrations="$(docker exec -u postgres "$container" psql --username "$db_user" -d "$database" -tAc "SELECT version FROM schema_migrations ORDER BY version" 2>/dev/null || true)"
+dataset_id="$(docker exec -u postgres "$container" psql --username "$db_user" -d "$database" -tAc "SELECT dataset_id FROM dataset_imports WHERE is_current LIMIT 1" 2>/dev/null || true)"
 if [[ -z "$commit" && -f "$STATE_DIR/current.json" ]]; then
   commit="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1])).get("commit") or "")' "$STATE_DIR/current.json")"
 fi
