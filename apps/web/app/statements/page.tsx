@@ -1,8 +1,7 @@
-import { statementListQuerySchema } from "@pdoom/contracts";
+import { isPublicReviewState, REVIEW_STATES, statementListQuerySchema, STATEMENT_TYPES } from "@pdoom/contracts";
 import { listStatements } from "@pdoom/db";
 import { StatementCard } from "@/components/statement-bits";
 import Link from "next/link";
-import { STATEMENT_TYPES, REVIEW_STATES } from "@pdoom/contracts";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Statements" };
@@ -48,7 +47,7 @@ export default async function StatementsPage({ searchParams }: { searchParams: P
           Review
           <select name="review_state" defaultValue={params.review_state ?? ""}>
             <option value="">Any</option>
-            {REVIEW_STATES.map((state) => <option key={state} value={state}>{state}</option>)}
+            {REVIEW_STATES.filter(isPublicReviewState).map((state) => <option key={state} value={state}>{state}</option>)}
           </select>
         </label>
         <label>From<input type="date" name="from" defaultValue={params.from ?? ""} /></label>

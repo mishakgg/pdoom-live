@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import {
+  candidateKey,
   canonicalImportSchema,
   parseExplicitProbability,
   type CanonicalImport,
@@ -85,6 +86,12 @@ function validateDatasetKind(doc: CanonicalImport): void {
   ];
   if (syntheticMarkers.length) {
     throw new Error("live dataset cannot use synthetic_fixture or fixture collection markers");
+  }
+  if (doc.statements.some((statement) => statement.review_state === "human_verified")) {
+    throw new Error("live import cannot mark statements human_verified; record a review decision");
+  }
+  if (doc.forecasts.some((forecast) => forecast.review_state === "human_verified")) {
+    throw new Error("live import cannot mark forecasts human_verified; record a review decision");
   }
 }
 
@@ -471,8 +478,8 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
     await client.query(
       `INSERT INTO statements (
          id, slug, person_id, source_item_id, statement_type, normalized_text, event_time,
-         evidence_segment_id, extractor_version, confidence, review_state, extraction_run_id
-       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
+         evidence_segment_id, extractor_name, extractor_version, candidate_key, confidence, review_state, extraction_run_id
+       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
        ON CONFLICT (slug) DO UPDATE SET
          person_id = EXCLUDED.person_id,
          source_item_id = EXCLUDED.source_item_id,
@@ -480,7 +487,9 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
          normalized_text = EXCLUDED.normalized_text,
          event_time = EXCLUDED.event_time,
          evidence_segment_id = EXCLUDED.evidence_segment_id,
+         extractor_name = EXCLUDED.extractor_name,
          extractor_version = EXCLUDED.extractor_version,
+         candidate_key = EXCLUDED.candidate_key,
          confidence = EXCLUDED.confidence,
          review_state = EXCLUDED.review_state,
          extraction_run_id = EXCLUDED.extraction_run_id`,
@@ -493,7 +502,18 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
         statement.normalized_text,
         statement.event_time,
         stableId(`evidence:${statement.evidence_slug}`),
+        statement.extractor_version.split("/")[0] || statement.extractor_version,
         statement.extractor_version,
+        candidateKey({
+          person_slug: statement.person_slug,
+          source_content_hash: doc.source_items.find((item) => item.slug === statement.source_item_slug)
+            ? resolveContentHash(doc.source_items.find((item) => item.slug === statement.source_item_slug)!)
+            : "",
+          evidence_hash: sha256(doc.evidence_segments.find((segment) => segment.slug === statement.evidence_slug)?.text ?? ""),
+          extractor_name: statement.extractor_version.split("/")[0] || statement.extractor_version,
+          extractor_version: statement.extractor_version,
+          statement_type: statement.statement_type,
+        }),
         statement.confidence,
         statement.review_state,
         statement.extraction_run_slug ? stableId(`extraction:${statement.extraction_run_slug}`) : null,
@@ -707,6 +727,8 @@ export async function resetDatabase(pool: pg.Pool): Promise<ImportResult> {
       trend_definitions,
       cohort_memberships,
       cohorts,
+      review_decisions,
+      statement_extractions,
       statement_relationships,
       statement_topics,
       forecasts,
