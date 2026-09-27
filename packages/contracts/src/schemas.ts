@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { TREND_CONDITIONALITY } from "./trends";
 import {
   ATTRIBUTION_METHODS,
   AVAILABILITY_STATUSES,
@@ -301,6 +302,48 @@ export const distributionAggregationSchema = z.object({
   require_horizon: z.boolean(),
   require_unit: z.string().min(1),
   value_type: z.literal("point"),
+  conditionality: z.enum(TREND_CONDITIONALITY).optional(),
+}).strict();
+
+export const timelineAggregationSchema = z.object({
+  type: z.literal("timeline_forecast"),
+  question_key: z.string().min(1).max(120),
+  topic_slug: slug,
+  sibling_topic_slugs: z.array(slug),
+  statement_types: z.array(z.enum(STATEMENT_TYPES)).min(1),
+  review_states: z.array(z.enum(REVIEW_STATES)).min(1),
+  person_reducer: z.literal("latest_event_time"),
+  require_horizon: z.boolean(),
+  require_unit: z.literal("year"),
+  accept_ranges: z.boolean(),
+  conditionality: z.enum(TREND_CONDITIONALITY),
+}).strict();
+
+export const quantityAggregationSchema = z.object({
+  type: z.literal("quantity_forecast"),
+  question_key: z.string().min(1).max(120),
+  topic_slug: slug,
+  sibling_topic_slugs: z.array(slug),
+  statement_types: z.array(z.enum(STATEMENT_TYPES)).min(1),
+  review_states: z.array(z.enum(REVIEW_STATES)).min(1),
+  person_reducer: z.literal("latest_event_time"),
+  require_horizon: z.boolean(),
+  require_unit: z.string().min(1).max(40),
+  accept_ranges: z.boolean(),
+  conditionality: z.enum(TREND_CONDITIONALITY),
+}).strict();
+
+export const revisionAggregationSchema = z.object({
+  type: z.literal("historical_revision"),
+  question_key: z.string().min(1).max(120),
+  topic_slug: slug,
+  sibling_topic_slugs: z.array(slug),
+  statement_types: z.array(z.enum(STATEMENT_TYPES)).min(1),
+  review_states: z.array(z.enum(REVIEW_STATES)).min(1),
+  relationship_types: z.array(z.enum(["updates", "retracts"])).min(1),
+  require_horizon: z.boolean(),
+  require_unit: z.string().min(1).max(40),
+  conditionality: z.enum(TREND_CONDITIONALITY),
 }).strict();
 
 export const volumeAggregationSchema = z.object({
@@ -310,6 +353,14 @@ export const volumeAggregationSchema = z.object({
   cohort_scoped: z.literal(true),
 }).strict();
 
+export const aggregationSchema = z.union([
+  distributionAggregationSchema,
+  volumeAggregationSchema,
+  timelineAggregationSchema,
+  quantityAggregationSchema,
+  revisionAggregationSchema,
+]);
+
 export const trendDefinitionSchema = z.object({
   slug,
   name: z.string().min(1).max(200),
@@ -318,7 +369,7 @@ export const trendDefinitionSchema = z.object({
   cohort_slug: slug,
   cohort_version: z.string().min(1).max(40),
   cohort_definition: z.string().min(1).max(1200),
-  aggregation: z.union([distributionAggregationSchema, volumeAggregationSchema]),
+  aggregation: aggregationSchema,
   published: z.boolean(),
 }).strict();
 

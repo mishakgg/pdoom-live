@@ -57,7 +57,9 @@ test("needs review stays visible and is not labeled verified", async ({ page }) 
   await expect(included.getByRole("link", { name: "30%" })).toHaveCount(0);
   await expect(included.getByRole("link", { name: "12%" })).toBeVisible();
   await page.locator("summary", { hasText: "excluded records" }).click();
-  await expect(page.getByRole("link", { name: "jonah-extinction-review-2024" })).toBeVisible();
+  const excluded = page.locator("li", { has: page.locator("a[href='/statements/jonah-extinction-review-2024']") });
+  await expect(excluded).toBeVisible();
+  await expect(excluded).toContainText("review state is outside this method");
 });
 
 test("machine-validated output is labeled and human-verified estimates stay explicit", async ({ page }) => {

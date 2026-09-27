@@ -144,14 +144,13 @@ export async function expectEvidenceReadable(page: Page): Promise<void> {
 }
 
 export async function expectTrendUsable(page: Page): Promise<void> {
-  const table = page.locator("table.dist").first();
-  await expect(table).toBeVisible();
-  const box = await table.boundingBox();
+  const surface = page.locator("table.dist, .trend-index").first();
+  await expect(surface).toBeVisible();
+  const box = await surface.boundingBox();
   expect(box).not.toBeNull();
   if (!box) return;
   expect(box.height).toBeGreaterThan(40);
   expect(box.width).toBeGreaterThan(80);
-  await expect(page.locator(".volume, table.dist").first()).toBeVisible();
 }
 
 export async function expectNoSeriousAxeViolations(page: Page): Promise<void> {

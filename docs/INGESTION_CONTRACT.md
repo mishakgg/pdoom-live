@@ -44,7 +44,9 @@ Re-importing the same document does not create duplicate statements. A changed `
 
 Numeric fields are allowed only on `explicit_numeric` forecasts. `value_text` such as `12%` must match `value_numeric` on the 0–1 scale. Qualitative words do not parse.
 
-`question_key` is the comparability key. Trends include a forecast only when that key, unit, horizon, value type, review state, and topic all match the method. Extinction, catastrophic harm, disempowerment, and AGI arrival must use different keys.
+`question_key` is the comparability key. A numeric trend includes a forecast when that key, unit, conditionality, value shape, and review state match the method. A horizon is required when the method says so. A matching key is included even if the topic slug differs. Topic slugs explain nearby exclusions. They are not a second comparability key.
+
+Keep separate keys for unconditional extinction, conditional extinction, catastrophic harm, disempowerment, AGI probabilities, AGI years, ASI years, coding automation, unemployment, productivity, and GDP. The rules and the prepared keys are in [Trend methodology](./TREND_METHODOLOGY.md).
 
 ## Source text
 
@@ -54,4 +56,6 @@ Canonical URLs must be `http` or `https`, without embedded credentials, and must
 
 ## Review
 
-Published numeric distributions accept `human_verified` only. Volume counts accept `human_verified` and `machine_validated`. A live import cannot set `human_verified`; that state comes from a review decision. See `docs/CURATION.md`. `needs_review` remains visible on the statement and is not verified, and it is not included in those trends. `unreviewed` candidates and `rejected` statements are not public pages.
+Published numeric trends accept `human_verified` only. That covers probability distributions, timeline years, quantities, and historical revisions. Volume counts accept `human_verified` and `machine_validated`. A live import cannot set `human_verified`; that state comes from a review decision. See `docs/CURATION.md`. `needs_review` remains visible on the statement and is not verified, and it is not included in those trends. `unreviewed` candidates and `rejected` statements are not public pages. An approval whose source or evidence no longer matches is treated as `needs_review` and stays out of numeric trends.
+
+`trend_definitions.aggregation` is a tagged object. Besides `explicit_numeric_distribution` and `count_by_topic_and_statement_type`, a document may declare `timeline_forecast`, `quantity_forecast`, or `historical_revision`. Older distribution documents stay valid: `conditionality` is optional on that tag. The product also ships a prepared catalog of those families, so an import with `trend_definitions: []` still has methodology pages. A human-verified explicit numeric question that the catalog does not already own is discovered on its own key, unit, and conditionality.

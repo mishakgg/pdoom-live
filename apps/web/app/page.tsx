@@ -1,15 +1,18 @@
 import { getOverview } from "@pdoom/db";
+import { trendKindLabel } from "@pdoom/contracts";
 import Link from "next/link";
 import { StatementCard } from "@/components/statement-bits";
-import { DistributionPanel, VolumePanel } from "@/components/trends";
+import { TrendView } from "@/components/trend-view";
+import { DensityMark } from "@/components/trends";
 import { formatWhen } from "@/lib/format";
 
 export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
   const overview = await getOverview();
-  const distribution = overview.trends.find((trend) => trend?.kind === "distribution");
-  const volume = overview.trends.find((trend) => trend?.kind === "volume");
+  const distribution = overview.trends.find((trend) => trend.slug === "extinction-by-2070-distribution");
+  const volume = overview.trends.find((trend) => trend.slug === "statement-volume-by-topic-type");
+  const others = overview.trends.filter((trend) => trend.slug !== distribution?.slug && trend.slug !== volume?.slug);
   return (
     <>
       <p className="fresh">
@@ -52,28 +55,24 @@ export default async function HomePage() {
           </ul>
         </section>
         <div className="stack">
-          {distribution && distribution.kind === "distribution" ? (
-            <DistributionPanel
-              name={distribution.name}
-              methodVersion={distribution.method_version}
-              cohortDefinition={distribution.cohort_definition}
-              included={distribution.distribution.included}
-              median={distribution.distribution.median}
-              minimum={distribution.distribution.minimum}
-              maximum={distribution.distribution.maximum}
-              contributingPersonCount={distribution.distribution.contributing_person_count}
-              contributingStatementCount={distribution.distribution.contributing_statement_count}
-              coverage={distribution.distribution.coverage}
-              exclusions={distribution.distribution.exclusions}
-            />
-          ) : null}
-          {volume && volume.kind === "volume" ? (
-            <VolumePanel
-              rows={volume.volume.rows}
-              methodVersion={volume.method_version}
-              contributingPersonCount={volume.volume.contributing_person_count}
-              contributingStatementCount={volume.volume.contributing_statement_count}
-            />
+          {distribution ? <TrendView trend={distribution} /> : null}
+          {volume ? <TrendView trend={volume} /> : null}
+          {others.length > 0 ? (
+            <section className="panel">
+              <h2>Other questions</h2>
+              <p>Each link is a separate question. Counts are cohort members with a comparable record.</p>
+              <ul className="trend-index">
+                {others.map((trend) => (
+                  <li key={trend.slug}>
+                    <Link href={`/trends/${trend.slug}`}>{trend.name}</Link>
+                    <span className="meta">
+                      {" "}
+                      {trendKindLabel(trend.kind)} · <DensityMark density={trend.density} /> · {trend.contributing_person_count} of {trend.cohort_size}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </section>
           ) : null}
           {overview.trends.length === 0 ? (
             <section className="panel">

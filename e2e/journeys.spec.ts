@@ -4,13 +4,14 @@ test("home shows the fixture cohort and a sourced trend", async ({ page }, testI
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1, name: "Who said what, under which definition." })).toBeVisible();
   await expect(page.locator("main").getByText("Synthetic fixture", { exact: true })).toBeVisible();
-  await expect(page.getByText("synthetic-frontier-v1")).toBeVisible();
+  await expect(page.locator("p.fresh").getByText("synthetic-frontier-v1")).toBeVisible();
   await expect(page.getByText("Synthetic frontier cohort v1")).toBeVisible();
   await expect(page.getByText("8 tracked people")).toBeVisible();
   await expect(page.getByRole("link", { name: /Ada Quill updated her unconditional extinction probability/ })).toBeVisible();
-  await expect(page.getByText("10.5%")).toBeVisible();
-  await expect(page.getByText("not a field consensus")).toBeVisible();
-  await expect(page.getByText("4 people, 4 statements")).toBeVisible();
+  const extinction = page.locator("section.panel", { has: page.getByRole("heading", { level: 2, name: "Unconditional human-extinction probability by 2070" }) });
+  await expect(extinction.getByText("10.5%")).toBeVisible();
+  await expect(extinction.getByText("not a field consensus")).toBeVisible();
+  await expect(extinction.getByText("4 people, 4 statements")).toBeVisible();
   if (testInfo.project.name === "desktop") {
     await testInfo.attach("home-desktop", {
       body: await page.screenshot({ fullPage: false }),
@@ -74,15 +75,20 @@ test("source and source item show publication separate from observation", async 
 test("trends name the method, sample, and median", async ({ page }) => {
   await page.goto("/trends");
   await expect(page.getByRole("heading", { level: 1, name: "Trends" })).toBeVisible();
-  await expect(page.getByText("explicit-numeric-distribution/1.0.0")).toBeVisible();
-  await expect(page.getByText("count-by-topic-type/1.0.0")).toBeVisible();
-  await expect(page.getByText("4 people, 4 statements")).toBeVisible();
-  await expect(page.getByText("10.5%")).toBeVisible();
-  await expect(page.getByText("not a field consensus")).toBeVisible();
+  await expect(page.locator(".trend-index")).toBeVisible();
+  await expect(page.getByRole("link", { name: "Statement volume by topic and type" })).toBeVisible();
   await page.getByRole("link", { name: "Unconditional human-extinction probability by 2070" }).click();
   await expect(page).toHaveURL(/\/trends\/extinction-by-2070-distribution$/);
   await expect(page.getByRole("heading", { level: 1, name: "Unconditional human-extinction probability by 2070" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "12%" })).toBeVisible();
+  const panel = page.locator("section.panel", { has: page.getByRole("heading", { level: 2, name: "Unconditional human-extinction probability by 2070" }) });
+  await expect(panel.getByText("explicit-numeric-distribution/1.1.0")).toBeVisible();
+  await expect(panel.getByText("4 people, 4 statements")).toBeVisible();
+  await expect(panel.getByText("10.5%")).toBeVisible();
+  await expect(panel.getByText("not a field consensus")).toBeVisible();
+  await expect(panel.getByRole("link", { name: "12%" })).toBeVisible();
+  await page.goto("/trends/statement-volume-by-topic-type");
+  await expect(page.getByRole("heading", { level: 1, name: "Statement volume by topic and type" })).toBeVisible();
+  await expect(page.getByText("count-by-topic-type/1.0.0").first()).toBeVisible();
 });
 
 test("methodology states the class boundaries", async ({ page }) => {

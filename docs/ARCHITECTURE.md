@@ -181,19 +181,23 @@ Do not expose raw internal extraction prompts, secrets, or unreviewed data by ac
 
 ## Trend computation
 
-No trend should exist without a versioned methodology.
+No trend should exist without a versioned methodology. The public families and exclusion rules are in [Trend methodology](./TREND_METHODOLOGY.md).
 
-A trend record or response should identify:
+A trend response identifies:
 
 - metric/method version;
-- cohort definition/version;
-- topic/question definition;
-- start/end window;
-- contributing record count;
-- exclusions;
-- calculation timestamp.
+- source: published definition, prepared method, or discovered question;
+- cohort definition and size;
+- question key, question text, and definition;
+- contributing people and statements;
+- missing cohort members;
+- density (`empty`, `sparse`, `comparable`, `individual`, or `unlinked`);
+- exclusions, each with a human-readable reason;
+- calculation inputs that a reader can recompute from canonical rows.
 
-Prefer computing simple aggregates directly from canonical records at first. Materialize expensive aggregates only when needed.
+`question_key` is the comparability boundary. Probability distributions, predicted years, quantities, and one-person revisions are separate methods. There is no master score.
+
+Prefer computing these aggregates directly from canonical records. Materialize expensive aggregates only when needed.
 
 ## Search
 

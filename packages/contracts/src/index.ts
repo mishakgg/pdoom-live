@@ -8,4 +8,5 @@ export * from "./curation";
 export * from "./freshness";
 export * from "./vocabulary";
 export * from "./schemas";
+export * from "./trends";
 export * from "./request-order";
