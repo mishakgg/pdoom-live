@@ -53,10 +53,10 @@ async function applyOverlay(databaseUrl: string): Promise<void> {
       const inserted = await pool.query(
         `INSERT INTO statements (
            slug, person_id, source_item_id, statement_type, normalized_text, event_time,
-           evidence_segment_id, extractor_version, confidence, review_state, extraction_run_id
+           evidence_segment_id, extractor_name, extractor_version, confidence, review_state, extraction_run_id
          )
          SELECT $1, s.person_id, s.source_item_id, 'explicit_qualitative', $2, s.event_time,
-                s.evidence_segment_id, s.extractor_version, s.confidence, $3, s.extraction_run_id
+                s.evidence_segment_id, s.extractor_name, s.extractor_version, s.confidence, $3, s.extraction_run_id
          FROM statements s
          WHERE s.slug = 'riley-hostile-2025'
          RETURNING slug`,

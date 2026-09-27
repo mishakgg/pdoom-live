@@ -11,6 +11,7 @@ import {
   type StatementListQuery,
 } from "@pdoom/contracts";
 import type pg from "pg";
+import { effectiveReviewStateSql } from "./coverage";
 import { getPool } from "./pool";
 import {
   computeExplicitNumericDistribution,
@@ -87,7 +88,7 @@ function num(value: string | number | null): number | null {
 
 const statementSelect = `
   SELECT
-    s.id, s.slug, s.statement_type, s.normalized_text, s.event_time, s.review_state, s.confidence,
+    s.id, s.slug, s.statement_type, s.normalized_text, s.event_time, ${effectiveReviewStateSql("s")} AS review_state, s.confidence,
     s.extractor_version,
     p.slug AS person_slug, p.display_name,
     src.slug AS source_slug, src.name AS source_name, src.source_type,
@@ -182,10 +183,10 @@ function statementFilters(query: StatementListQuery, values: unknown[]): string 
     clauses.push("FALSE");
   } else if (query.review_state) {
     values.push(query.review_state);
-    clauses.push(`s.review_state = $${values.length}`);
+    clauses.push(`${effectiveReviewStateSql("s")} = $${values.length}`);
   } else {
     values.push(REVIEW_STATES.filter(isPublicReviewState));
-    clauses.push(`s.review_state = ANY($${values.length}::text[])`);
+    clauses.push(`${effectiveReviewStateSql("s")} = ANY($${values.length}::text[])`);
   }
   if (query.from) {
     values.push(`${query.from}T00:00:00.000Z`);
@@ -260,7 +261,7 @@ export async function listStatements(input: StatementListQuery, pool = getPool()
 export async function getStatement(slug: string, pool = getPool()) {
   const result = await pool.query(
     `SELECT
-       s.id, s.slug, s.statement_type, s.normalized_text, s.event_time, s.review_state, s.confidence,
+       s.id, s.slug, s.statement_type, s.normalized_text, s.event_time, ${effectiveReviewStateSql("s")} AS review_state, s.confidence,
        s.extractor_version,
        p.slug AS person_slug, p.display_name,
        src.slug AS source_slug, src.name AS source_name, src.source_type,
@@ -700,7 +701,7 @@ async function loadDistributionCandidates(pool: pg.Pool, cohortSlug: string, coh
     [cohortSlug, cohortVersion],
   );
   const result = await pool.query(
-    `SELECT s.slug AS statement_slug, p.slug AS person_slug, p.display_name, s.statement_type, s.review_state,
+    `SELECT s.slug AS statement_slug, p.slug AS person_slug, p.display_name, s.statement_type, ${effectiveReviewStateSql("s")} AS review_state,
             s.event_time, f.question_key, f.value_type, f.value_numeric, f.unit, f.horizon_text,
             COALESCE(array_agg(DISTINCT t.slug) FILTER (WHERE t.slug IS NOT NULL), '{}') AS topic_slugs
      FROM statements s
@@ -789,7 +790,7 @@ export async function getTrend(slug: string, pool = getPool()) {
   }
   const parsed = volumeAggregationSchema.parse(aggregation);
   const volumeRows = await pool.query(
-    `SELECT s.slug AS statement_slug, p.slug AS person_slug, s.statement_type, s.review_state, s.event_time, t.slug AS topic_slug
+    `SELECT s.slug AS statement_slug, p.slug AS person_slug, s.statement_type, ${effectiveReviewStateSql("s")} AS review_state, s.event_time, t.slug AS topic_slug
      FROM statements s
      JOIN people p ON p.id = s.person_id
      JOIN cohort_memberships cm ON cm.person_id = p.id
@@ -914,7 +915,8 @@ export async function getCoverage(asOf = new Date().toISOString(), pool = getPoo
       [...params, FAILING_COLLECTION_STATUSES],
     ),
     pool.query(
-      `SELECT count(*)::int AS count FROM statements WHERE ${isPublicReviewSql("review_state")}`,
+      `SELECT count(*)::int AS count FROM statements s WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[])`,
+      [REVIEW_STATES.filter(isPublicReviewState)],
     ),
   ]);
   const freshness: Record<Freshness, number> = { current: 0, aging: 0, stale: 0, never_checked: 0 };
@@ -970,7 +972,7 @@ export async function getOverview(pool = getPool()) {
     (trend) => !dataset?.cohort_slug || (trend.cohort_slug === dataset.cohort_slug && trend.cohort_version === dataset.cohort_version),
   );
   const verified = await pool.query(
-    `SELECT count(*)::int AS count FROM statements WHERE review_state = 'human_verified'`,
+    `SELECT count(*)::int AS count FROM statements s WHERE ${effectiveReviewStateSql("s")} = 'human_verified'`,
   );
   const showTrends = dataset?.dataset_kind !== "live" || Number(verified.rows[0].count) > 0;
   const computed = [];

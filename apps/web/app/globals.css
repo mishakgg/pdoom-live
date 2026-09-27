@@ -153,6 +153,14 @@ button, .button {
   font-family: var(--font-mono), ui-monospace, monospace;
   font-size: 0.86rem;
 }
+.curation-evidence { margin: 1rem 0 1.4rem; }
+.curation-evidence .evidence {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  border-style: solid;
+  border-color: var(--ink);
+  padding: 1rem 1.1rem;
+}
 dl.audit { display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); gap: 0.35rem 0.8rem; margin: 0; max-width: 100%; }
 dl.audit dt { color: var(--muted); }
 dl.audit dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }

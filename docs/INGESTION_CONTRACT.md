@@ -54,4 +54,4 @@ Canonical URLs must be `http` or `https`, without embedded credentials, and must
 
 ## Review
 
-Published numeric distributions in this slice accept `human_verified` only. Volume counts accept `human_verified` and `machine_validated`. `needs_review` remains visible on the statement, not in those trends. `unreviewed` candidates and `rejected` statements are not public pages.
+Published numeric distributions accept `human_verified` only. Volume counts accept `human_verified` and `machine_validated`. A live import cannot set `human_verified`; that state comes from a review decision. See `docs/CURATION.md`. `needs_review` remains visible on the statement and is not verified, and it is not included in those trends. `unreviewed` candidates and `rejected` statements are not public pages.

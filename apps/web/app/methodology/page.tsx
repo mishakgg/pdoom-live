@@ -25,6 +25,7 @@ export default function MethodologyPage() {
       <section>
         <h2>Provenance</h2>
         <p>Each statement points at a person, a source item, and an evidence segment. Publication time and observation time are separate. Content is addressed by hash and a reference. List responses do not include unpublished source bodies. Source text is rendered as text.</p>
+        <p><code>human_verified</code> means a person reviewed the evidence. An extractor can leave a record <code>unreviewed</code>, <code>needs_review</code>, or <code>machine_validated</code>. It cannot promote a record to <code>human_verified</code>. Unreviewed and rejected records stay off the public pages. Needs-review records are not shown as verified.</p>
         <p>Identity links require an external namespace and identifier. Samir Okonkwo and Samira Okonkwo remain different people.</p>
       </section>
       <section>

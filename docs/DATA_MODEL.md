@@ -305,7 +305,7 @@ Suggested shared states:
 - `rejected`
 - `needs_review`
 
-The public product may expose different states differently. High-impact statements should not quietly bypass review/quality gates.
+The public product may expose different states differently. High-impact statements should not quietly bypass review/quality gates. `human_verified` is written only by an operator review decision. The machine extraction stays in `statement_extractions`. `review_decisions` appends each approve, reject, or needs-changes action. See `docs/CURATION.md`.
 
 ## Deletion and correction
 
@@ -333,4 +333,4 @@ The first product slice adds these fields without collapsing the entities above:
 - Identity, affiliation, and participant confidence is categorical. Statement, forecast, topic, and relationship confidence stays numeric.
 - Freshness of a source is `current` within 14 days of `last_success_at`, `aging` within 90 days, `stale` after that, and `never_checked` when `last_success_at` is null. That is collection state.
 
-The import document is specified in `docs/INGESTION_CONTRACT.md`. Public review rules live in `packages/contracts/src/review.ts`: `rejected` and `unreviewed` are never public, `needs_review` is visible but not verified, `human_verified` may support verified trends, and `machine_validated` stays labeled as machine output.
+The import document is specified in `docs/INGESTION_CONTRACT.md`. Public review rules live in `packages/contracts/src/review.ts`: `rejected` and `unreviewed` are never public, `needs_review` is visible but not verified, `human_verified` may support verified trends, and `machine_validated` stays labeled as machine output. An approval whose source or evidence hash no longer matches the current item is treated as `needs_review` until a new decision covers that material.

@@ -111,6 +111,32 @@ describe("canonical dataset contract", () => {
     expect(current.rows[0].dataset_id).not.toBe("broken");
   });
 
+  it("imports the published live corpus without collapsing distinct horizons", async () => {
+    const live = validateDocument(JSON.parse(readFileSync("data/collections/cohort-v2026-09/canonical-live.json", "utf8")));
+    expect(live.dataset_kind).toBe("live");
+    try {
+      await importCanonical(pool, live);
+      const stored = await pool.query(
+        `SELECT s.slug, s.candidate_key
+         FROM statements s
+         WHERE s.slug = ANY($1::text[])`,
+        [live.statements.map((statement) => statement.slug)],
+      );
+      expect(stored.rowCount).toBe(live.statements.length);
+      expect(new Set(stored.rows.map((row) => row.candidate_key)).size).toBe(stored.rowCount);
+      const horizons = await pool.query(
+        `SELECT f.horizon_text
+         FROM forecasts f
+         JOIN statements s ON s.id = f.statement_id
+         JOIN people p ON p.id = s.person_id
+         WHERE p.slug = 'holden-karnofsky' AND f.horizon_text IN ('by 2036', 'by 2060', 'by 2100')`,
+      );
+      expect(horizons.rowCount).toBe(6);
+    } finally {
+      await resetDatabase(pool);
+    }
+  });
+
   it("hides rejected statements and classifies freshness", async () => {
     await pool.query(
       `UPDATE statements SET review_state = 'rejected' WHERE slug = 'riley-hostile-2025'`,

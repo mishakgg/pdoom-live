@@ -4,6 +4,7 @@ import { importCanonical, resetDatabase, validateDocument } from "./import";
 import { migrate, migrationState } from "./migrate";
 import { createPool, closePool, endPool } from "./pool";
 import { getCoverage, getDatasetRecord } from "./queries";
+import { exportReviewManifest, importReviewManifest, reviewStatus, stageCandidates, validateReviewManifest, validateReviewManifestInDatabase } from "./review";
 import { importWasAborted, installCliShutdown } from "./shutdown";
 
 const command = process.argv[2];
@@ -95,7 +96,48 @@ async function main() {
       );
       return;
     }
-    throw new Error("usage: cli.ts migrate|seed|reset|validate <file>|import <file>|status");
+    if (command === "review:status") {
+      await migrate(pool);
+      console.log(JSON.stringify(await reviewStatus(pool)));
+      return;
+    }
+    if (command === "review:export") {
+      if (!file) throw new Error("usage: cli.ts review:export <file>");
+      await migrate(pool);
+      const manifest = await exportReviewManifest(pool);
+      const { writeFile } = await import("node:fs/promises");
+      await writeFile(file, `${JSON.stringify(manifest, null, 2)}\n`);
+      console.log(JSON.stringify({ decisions: manifest.decisions.length, file }));
+      return;
+    }
+    if (command === "review:import") {
+      if (!file) throw new Error("usage: cli.ts review:import <file>");
+      const raw = await readJson(file);
+      validateReviewManifest(raw);
+      await migrate(pool);
+      const errors = await validateReviewManifestInDatabase(pool, raw);
+      if (errors.length) throw new Error(errors.join("; "));
+      console.log(JSON.stringify(await importReviewManifest(pool, raw)));
+      return;
+    }
+    if (command === "review:validate") {
+      if (!file) throw new Error("usage: cli.ts review:validate <file>");
+      const raw = await readJson(file);
+      validateReviewManifest(raw);
+      const errors = await validateReviewManifestInDatabase(pool, raw);
+      if (errors.length) throw new Error(errors.join("; "));
+      console.log(JSON.stringify({ ok: true, decisions: (raw as { decisions: unknown[] }).decisions.length }));
+      return;
+    }
+    if (command === "review:stage") {
+      if (!file) throw new Error("usage: cli.ts review:stage <jsonl>");
+      const text = await readFile(file, "utf8");
+      const rows = text.split("\n").filter((line) => line.trim()).map((line) => JSON.parse(line));
+      await migrate(pool);
+      console.log(JSON.stringify(await stageCandidates(pool, rows)));
+      return;
+    }
+    throw new Error("usage: cli.ts migrate|seed|reset|validate <file>|import <file>|status|review:status|review:export <file>|review:import <file>|review:validate <file>|review:stage <jsonl>");
   } finally {
     await endPool(pool);
     await closePool();

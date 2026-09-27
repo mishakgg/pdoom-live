@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import {
+  candidateKey,
   canonicalImportSchema,
   parseExplicitProbability,
   type CanonicalImport,
@@ -119,6 +120,12 @@ function validateDatasetKind(doc: CanonicalImport): void {
   ];
   if (syntheticMarkers.length) {
     throw new Error("live dataset cannot use synthetic_fixture or fixture collection markers");
+  }
+  if (doc.statements.some((statement) => statement.review_state === "human_verified")) {
+    throw new Error("live import cannot mark statements human_verified; record a review decision");
+  }
+  if (doc.forecasts.some((forecast) => forecast.review_state === "human_verified")) {
+    throw new Error("live import cannot mark forecasts human_verified; record a review decision");
   }
 }
 
@@ -505,8 +512,8 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
     await client.query(
       `INSERT INTO statements (
          id, slug, person_id, source_item_id, statement_type, normalized_text, event_time,
-         evidence_segment_id, extractor_version, confidence, review_state, extraction_run_id
-       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
+         evidence_segment_id, extractor_name, extractor_version, candidate_key, confidence, review_state, extraction_run_id
+       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
        ON CONFLICT (slug) DO UPDATE SET
          person_id = EXCLUDED.person_id,
          source_item_id = EXCLUDED.source_item_id,
@@ -514,7 +521,9 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
          normalized_text = EXCLUDED.normalized_text,
          event_time = EXCLUDED.event_time,
          evidence_segment_id = EXCLUDED.evidence_segment_id,
+         extractor_name = EXCLUDED.extractor_name,
          extractor_version = EXCLUDED.extractor_version,
+         candidate_key = EXCLUDED.candidate_key,
          confidence = EXCLUDED.confidence,
          review_state = EXCLUDED.review_state,
          extraction_run_id = EXCLUDED.extraction_run_id`,
@@ -527,7 +536,9 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
         statement.normalized_text,
         statement.event_time,
         stableId(`evidence:${statement.evidence_slug}`),
+        statement.extractor_version.split("/")[0] || statement.extractor_version,
         statement.extractor_version,
+        statementCandidateKey(doc, statement),
         statement.confidence,
         statement.review_state,
         statement.extraction_run_slug ? stableId(`extraction:${statement.extraction_run_slug}`) : null,
@@ -693,6 +704,27 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
   );
 }
 
+function statementCandidateKey(doc: CanonicalImport, statement: CanonicalImport["statements"][number]): string {
+  const item = doc.source_items.find((row) => row.slug === statement.source_item_slug);
+  const forecast = doc.forecasts.find((row) => row.statement_slug === statement.slug);
+  const extractorName = statement.extractor_version.split("/")[0] || statement.extractor_version;
+  return candidateKey({
+    person_slug: statement.person_slug,
+    source_content_hash: item ? resolveContentHash(item) : "",
+    evidence_hash: sha256(doc.evidence_segments.find((segment) => segment.slug === statement.evidence_slug)?.text ?? ""),
+    extractor_name: extractorName,
+    extractor_version: statement.extractor_version,
+    statement_type: statement.statement_type,
+    question_key: forecast?.question_key ?? null,
+    horizon_text: forecast?.horizon_text ?? null,
+    unit: forecast?.unit ?? null,
+    value_type: forecast?.value_type ?? null,
+    value_numeric: forecast?.value_numeric ?? null,
+    value_min: forecast?.value_min ?? null,
+    value_max: forecast?.value_max ?? null,
+  });
+}
+
 function resolveContentHash(item: CanonicalImport["source_items"][number]): string {
   if (item.content_hash_input) {
     const computed = sha256(item.content_hash_input);
@@ -741,6 +773,8 @@ export async function clearProductTables(pool: pg.Pool): Promise<void> {
       trend_definitions,
       cohort_memberships,
       cohorts,
+      review_decisions,
+      statement_extractions,
       statement_relationships,
       statement_topics,
       forecasts,

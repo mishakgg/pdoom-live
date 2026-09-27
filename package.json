@@ -23,6 +23,11 @@
     "db:validate": "tsx packages/db/src/cli.ts validate",
     "db:import": "tsx packages/db/src/cli.ts import",
     "db:status": "tsx packages/db/src/cli.ts status",
+    "review:status": "tsx packages/db/src/cli.ts review:status",
+    "review:export": "tsx packages/db/src/cli.ts review:export",
+    "review:import": "tsx packages/db/src/cli.ts review:import",
+    "review:validate": "tsx packages/db/src/cli.ts review:validate",
+    "review:stage": "tsx packages/db/src/cli.ts review:stage",
     "contracts:schema": "tsx packages/contracts/src/emit-schema.ts"
   },
   "devDependencies": {
