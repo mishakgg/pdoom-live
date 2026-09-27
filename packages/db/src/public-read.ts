@@ -1327,8 +1327,8 @@ export async function getPublicCatalog(asOf: string | null, pool: Db = getPool()
     : { rows: [] as Array<Record<string, unknown>> };
   const cohortRow = cohort.rows[0];
   const stampTime = asOf ?? (datasetRow ? iso(datasetRow.imported_at) : null);
-  const [counts, observed, methods, topics] = await Promise.all([
-    pool.query(
+  // Sequential: snapshot export runs these on one transaction client.
+  const counts = await pool.query(
       `SELECT
          (SELECT count(*)::int FROM people p WHERE ${publicPersonPredicate("p", "$1")}) AS people,
          (SELECT count(*)::int FROM external_identities e JOIN people p ON p.id = e.person_id
@@ -1351,17 +1351,18 @@ export async function getPublicCatalog(asOf: string | null, pool: Db = getPool()
               AND ts.review_state = ANY($1::text[])) AS relationships,
          (SELECT count(*)::int FROM trend_definitions WHERE published) AS trends`,
       [PUBLIC_STATES],
-    ),
-    pool.query(
+    );
+  const observed = await pool.query(
       `SELECT max(si.observed_at) AS observed_at, max(si.published_at) AS published_at
        FROM source_items si
        JOIN statements s ON s.source_item_id = si.id
        WHERE s.review_state = ANY($1::text[])`,
       [PUBLIC_STATES],
-    ),
-    pool.query(`SELECT DISTINCT method_version FROM trend_definitions WHERE published ORDER BY method_version`),
-    pool.query(`SELECT slug, version FROM topics ORDER BY slug`),
-  ]);
+    );
+  const methods = await pool.query(
+    `SELECT DISTINCT method_version FROM trend_definitions WHERE published ORDER BY method_version`,
+  );
+  const topics = await pool.query(`SELECT slug, version FROM topics ORDER BY slug`);
   const organizations = await listPublicOrganizations(pool);
   const countRow = counts.rows[0] ?? {};
   return {

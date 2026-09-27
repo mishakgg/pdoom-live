@@ -111,7 +111,7 @@ Successful `/api/v1` responses send:
 - `ETag` — SHA-256 of the response body
 - `Last-Modified` — the current dataset import time, when a dataset is loaded
 
-`If-None-Match` is the authoritative validator. `If-Modified-Since` is honored only when `If-None-Match` is absent. These headers describe public dataset reads. They are not used for curator queues, and the website's server rendering does not go through this HTTP layer.
+`If-None-Match` is the authoritative validator. `If-Modified-Since` is honored only when `If-None-Match` is absent, and both dates are compared at HTTP-date's one-second resolution. These headers describe public dataset reads. They are not used for curator queues, and the website's server rendering does not go through this HTTP layer.
 
 `/api/v1/dataset` and trend observations use the import time as `as_of` / `calculated_at`, so repeated reads of an unchanged import keep the same ETag.
 

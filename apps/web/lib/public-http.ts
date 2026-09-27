@@ -47,7 +47,9 @@ export function publicJson(
   const modifiedSince = request.headers.get("if-modified-since");
   if (!noneMatch && modifiedSince && modified) {
     const since = new Date(modifiedSince);
-    if (!Number.isNaN(since.getTime()) && since.getTime() >= modified.getTime()) {
+    // HTTP-date has one-second resolution. Compare truncated instants so a
+    // client echoing Last-Modified is not treated as stale by leftover milliseconds.
+    if (!Number.isNaN(since.getTime()) && Math.floor(since.getTime() / 1000) >= Math.floor(modified.getTime() / 1000)) {
       return new Response(null, { status: 304, headers });
     }
   }
