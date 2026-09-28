@@ -97,9 +97,9 @@ describe("search publication boundary", () => {
 
   it("follows the statement list for unreviewed canonical rows and ignores pipeline candidates", async () => {
     const found = await searchPublic({ q: "UNREVIEWED_CANONICAL_PHRASE", limit: 5 }, pool);
-    expect(slugs(found.groups.statement.data)).toEqual(["searchfix-unreviewed"]);
+    expect(found.groups.statement.page.total).toBe(0);
     const listed = await listStatements({ q: "UNREVIEWED_CANONICAL_PHRASE", limit: 5 }, pool);
-    expect(listed.data.map((row) => row.slug)).toContain("searchfix-unreviewed");
+    expect(listed.data.map((row) => row.slug)).not.toContain("searchfix-unreviewed");
     const candidate = await searchPublic({ q: "exploits flaws or ambiguities in the reward function", limit: 5 }, pool);
     const body = JSON.stringify(candidate);
     expect(candidate.groups.statement.page.total).toBe(0);

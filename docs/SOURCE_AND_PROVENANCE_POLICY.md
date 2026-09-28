@@ -189,7 +189,7 @@ A statement should contribute to an aggregate only if:
 
 - its source/provenance passes validation;
 - its identity attribution passes validation;
-- it matches the trend's declared question/topic definition;
+- it matches the trend's declared question key, unit, and conditionality;
 - its statement class is permitted by that metric;
 - duplicates have been resolved;
 - required units/horizon are available.

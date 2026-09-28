@@ -5,8 +5,12 @@ export function errorResponse(status: number, code: string, message: string) {
   return Response.json({ error: { code, message } }, { status });
 }
 
+export function isInvalidCursor(error: unknown): boolean {
+  return error instanceof InvalidCursorError || (error instanceof Error && error.name === "InvalidCursorError");
+}
+
 export function queryError(error: unknown) {
-  if (error instanceof InvalidCursorError) return errorResponse(400, "invalid_cursor", "Cursor is invalid.");
+  if (isInvalidCursor(error)) return errorResponse(400, "invalid_cursor", "Cursor is invalid.");
   if (error instanceof SearchTimeoutError) {
     return errorResponse(400, "query_too_expensive", "That search is too expensive. Use a shorter or more specific query.");
   }

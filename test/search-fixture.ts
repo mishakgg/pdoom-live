@@ -15,7 +15,7 @@ const statements = [
   ["searchfix-agi-qual", "explicit_qualitative", "Fixture AGI 2030 was called plausible without a number.", "2023-06-01T12:00:00Z", "human_verified"],
   ["searchfix-agi-old", "explicit_numeric", "Fixture AGI 2030 point estimate from the older note.", "2020-06-01T12:00:00Z", "human_verified"],
   ["searchfix-rejected", "explicit_numeric", "REJECTED_SECRET_PHRASE AGI 2030 must stay hidden.", "2024-01-01T12:00:00Z", "rejected"],
-  ["searchfix-unreviewed", "explicit_qualitative", "UNREVIEWED_CANONICAL_PHRASE stays visible like other public statements.", "2024-02-01T12:00:00Z", "unreviewed"],
+  ["searchfix-unreviewed", "explicit_qualitative", "UNREVIEWED_CANONICAL_PHRASE stays off public search.", "2024-02-01T12:00:00Z", "unreviewed"],
 ] as const;
 
 export async function seedSearchFixture(pool: pg.Pool): Promise<void> {
@@ -75,8 +75,8 @@ export async function seedSearchFixture(pool: pg.Pool): Promise<void> {
       await client.query(
         `INSERT INTO statements (
            id, slug, person_id, source_item_id, statement_type, normalized_text, event_time,
-           evidence_segment_id, extractor_version, confidence, review_state
-         ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, 'search-fixture', 0.5, $9)`,
+           evidence_segment_id, extractor_name, extractor_version, confidence, review_state
+         ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, 'search-fixture', 'search-fixture', 0.5, $9)`,
         [statement, slug, speaker, item, statementType, text, eventTime, evidence, review],
       );
       if (slug.startsWith("searchfix-agi-") && review !== "rejected") {

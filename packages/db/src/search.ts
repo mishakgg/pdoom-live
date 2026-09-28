@@ -21,6 +21,7 @@ import {
   type SearchTopicHit,
 } from "@pdoom/contracts";
 import type pg from "pg";
+import { effectiveReviewStateSql } from "./coverage";
 import { getPool } from "./pool";
 import { InvalidCursorError } from "./queries";
 
@@ -154,8 +155,8 @@ function cursorPredicate(sort: SortMode, rank: string, tie: string, id: string):
     return `(
       ${rank}::int IS NULL
       OR hit_rank < ${rank}::int
-      OR (hit_rank = ${rank}::int AND tie > ${tie})
-      OR (hit_rank = ${rank}::int AND tie = ${tie} AND id > ${id}::uuid)
+      OR (hit_rank = ${rank}::int AND tie COLLATE "C" > ${tie} COLLATE "C")
+      OR (hit_rank = ${rank}::int AND tie COLLATE "C" = ${tie} COLLATE "C" AND id > ${id}::uuid)
     )`;
   }
   return `(
@@ -164,7 +165,7 @@ function cursorPredicate(sort: SortMode, rank: string, tie: string, id: string):
     OR (
       hit_rank = ${rank}::int AND (
         (${tie} <> '' AND (
-          (tie <> '' AND (tie < ${tie} OR (tie = ${tie} AND id > ${id}::uuid)))
+          (tie <> '' AND (tie COLLATE "C" < ${tie} COLLATE "C" OR (tie COLLATE "C" = ${tie} COLLATE "C" AND id > ${id}::uuid)))
           OR tie = ''
         ))
         OR (${tie} = '' AND tie = '' AND id > ${id}::uuid)
@@ -354,7 +355,7 @@ function peopleSql(prepared: ReturnType<typeof prepareSearchText>, parsed: Searc
       ? "SELECT count(*)::int AS total_count FROM matched"
       : `SELECT * FROM matched
          WHERE ${cursorPredicate("name", page!.rank, page!.tie, page!.id)}
-         ORDER BY hit_rank DESC, tie ASC, id ASC
+         ORDER BY hit_rank DESC, tie COLLATE "C" ASC, id ASC
          LIMIT ${page!.limit}`}
   `;
   return { text, values: params.values };
@@ -399,7 +400,7 @@ function organizationsSql(_prepared: ReturnType<typeof prepareSearchText>, _pars
       ? "SELECT count(*)::int AS total_count FROM matched"
       : `SELECT * FROM matched
          WHERE ${cursorPredicate("name", page!.rank, page!.tie, page!.id)}
-         ORDER BY hit_rank DESC, tie ASC, id ASC
+         ORDER BY hit_rank DESC, tie COLLATE "C" ASC, id ASC
          LIMIT ${page!.limit}`}
   `;
   return { text, values: params.values };
@@ -432,7 +433,7 @@ function topicsSql(prepared: ReturnType<typeof prepareSearchText>, parsed: Searc
       ? "SELECT count(*)::int AS total_count FROM matched"
       : `SELECT * FROM matched
          WHERE ${cursorPredicate("name", page!.rank, page!.tie, page!.id)}
-         ORDER BY hit_rank DESC, tie ASC, id ASC
+         ORDER BY hit_rank DESC, tie COLLATE "C" ASC, id ASC
          LIMIT ${page!.limit}`}
   `;
   return { text, values: params.values };
@@ -459,7 +460,8 @@ function sourcesSql(prepared: ReturnType<typeof prepareSearchText>, parsed: Sear
       FROM sources src
       CROSS JOIN q
       LEFT JOIN people p ON p.id = src.owner_person_id
-      WHERE (${person}::text IS NULL OR p.slug = ${person})
+      WHERE src.review_state = ANY(q.public_states)
+        AND (${person}::text IS NULL OR p.slug = ${person})
     ),
     matched AS (
       SELECT scored.*, ${matchFromRank("scored.hit_rank")} AS hit_match
@@ -470,7 +472,7 @@ function sourcesSql(prepared: ReturnType<typeof prepareSearchText>, parsed: Sear
       ? "SELECT count(*)::int AS total_count FROM matched"
       : `SELECT * FROM matched
          WHERE ${cursorPredicate("name", page!.rank, page!.tie, page!.id)}
-         ORDER BY hit_rank DESC, tie ASC, id ASC
+         ORDER BY hit_rank DESC, tie COLLATE "C" ASC, id ASC
          LIMIT ${page!.limit}`}
   `;
   return { text, values: params.values };
@@ -496,7 +498,7 @@ function statementsSql(prepared: ReturnType<typeof prepareSearchText>, parsed: S
         s.statement_type,
         s.normalized_text,
         s.event_time,
-        s.review_state,
+        ${effectiveReviewStateSql("s")} AS review_state,
         p.slug AS person_slug,
         p.display_name,
         src.slug AS source_slug,
@@ -526,7 +528,7 @@ function statementsSql(prepared: ReturnType<typeof prepareSearchText>, parsed: S
         JOIN topics t ON t.id = st.topic_id
         WHERE st.statement_id = s.id
       ) topics ON true
-      WHERE s.review_state = ANY(q.public_states)
+      WHERE ${effectiveReviewStateSql("s")} = ANY(q.public_states)
         AND s.search_vector @@ q.tsq
         AND (${filters.person}::text IS NULL OR p.slug = ${filters.person})
         AND (${filters.statementType}::text IS NULL OR s.statement_type = ${filters.statementType})
@@ -546,7 +548,7 @@ function statementsSql(prepared: ReturnType<typeof prepareSearchText>, parsed: S
       ? "SELECT count(*)::int AS total_count FROM matched"
       : `SELECT * FROM matched
          WHERE ${cursorPredicate("time", page!.rank, page!.tie, page!.id)}
-         ORDER BY hit_rank DESC, (tie = '') ASC, tie DESC, id ASC
+         ORDER BY hit_rank DESC, (tie = '') ASC, tie COLLATE "C" DESC, id ASC
          LIMIT ${page!.limit}`}
   `;
   return { text, values: params.values };
@@ -596,7 +598,7 @@ function sourceItemsSql(prepared: ReturnType<typeof prepareSearchText>, parsed: 
       ? "SELECT count(*)::int AS total_count FROM matched"
       : `SELECT * FROM matched
          WHERE ${cursorPredicate("time", page!.rank, page!.tie, page!.id)}
-         ORDER BY hit_rank DESC, (tie = '') ASC, tie DESC, id ASC
+         ORDER BY hit_rank DESC, (tie = '') ASC, tie COLLATE "C" DESC, id ASC
          LIMIT ${page!.limit}`}
   `;
   return { text, values: params.values };

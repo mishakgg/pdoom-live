@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "e2e-empty-live",
+  "dataset_kind": "live",
+  "generated_at": "2026-01-15T00:00:00.000Z",
+  "notice": "E2E empty live dataset. No statements are loaded. This is not a census and it is not a probability.",
+  "producer": { "name": "e2e-harness", "version": "1" },
+  "organizations": [
+    {
+      "slug": "e2e-empty-institute",
+      "name": "E2E Empty Institute",
+      "organization_type": "research_institute",
+      "canonical_url": "https://synthetic.pdoom.example/orgs/e2e-empty-institute"
+    }
+  ],
+  "people": [
+    {
+      "slug": "e2e-empty-member",
+      "display_name": "E2E Empty Member",
+      "given_name": "Empty",
+      "family_name": "Member",
+      "bio_short": "Placeholder cohort member for the empty live browser test.",
+      "inclusion_reason": "Included only so an empty live dataset still has a named cohort. This record has no statements.",
+      "cohort_tags": ["e2e"],
+      "status": "active"
+    }
+  ],
+  "affiliations": [
+    {
+      "person_slug": "e2e-empty-member",
+      "organization_slug": "e2e-empty-institute",
+      "role": "Placeholder",
+      "start_date": "2026-01-01",
+      "end_date": null,
+      "source_slug": null,
+      "confidence_level": "low",
+      "verification_detail": null,
+      "review_state": "needs_review",
+      "is_current": true
+    }
+  ],
+  "external_identities": [],
+  "sources": [],
+  "source_items": [],
+  "participants": [],
+  "evidence_segments": [],
+  "topics": [
+    {
+      "slug": "e2e-empty-topic",
+      "name": "E2E empty topic",
+      "definition": "A topic with no statements. It must not become a probability.",
+      "parent_slug": null,
+      "version": "1"
+    }
+  ],
+  "statements": [],
+  "forecasts": [],
+  "relationships": [],
+  "cohorts": [
+    {
+      "slug": "e2e-empty-live",
+      "version": "1",
+      "name": "E2E empty cohort",
+      "definition": "One placeholder member and no statements. Not a sample of researchers.",
+      "member_slugs": ["e2e-empty-member"]
+    }
+  ],
+  "ingestion_runs": [],
+  "extraction_runs": [],
+  "trend_definitions": []
+}

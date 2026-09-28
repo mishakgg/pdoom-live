@@ -9,6 +9,7 @@ const links: Array<[string, string]> = [
   ["/sources", "Sources"],
   ["/search", "Search"],
   ["/trends", "Trends"],
+  ["/data", "Data"],
   ["/methodology", "Method"],
 ];
 

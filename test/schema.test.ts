@@ -49,8 +49,8 @@ describe("schema constraints", () => {
       await expect(
         client.query(
           `INSERT INTO statements (
-             id, slug, person_id, source_item_id, statement_type, normalized_text, evidence_segment_id, extractor_version, confidence, review_state
-           ) VALUES (gen_random_uuid(), 'bad-type', $1, $2, 'sentiment', 'no', $3, 'x', 1, 'human_verified')`,
+             id, slug, person_id, source_item_id, statement_type, normalized_text, evidence_segment_id, extractor_name, extractor_version, confidence, review_state
+           ) VALUES (gen_random_uuid(), 'bad-type', $1, $2, 'sentiment', 'no', $3, 'x', 'x', 1, 'human_verified')`,
           [
             stableId("person:ada-quill"),
             stableId("source-item:ada-essay-2023"),

@@ -1,0 +1,300 @@
+{
+  "metrics": [
+    {
+      "name": "pdoom_http_requests_total",
+      "type": "counter",
+      "help": "HTTP requests observed by instrumented API handlers.",
+      "labels": ["route", "status_class"]
+    },
+    {
+      "name": "pdoom_http_errors_total",
+      "type": "counter",
+      "help": "Instrumented HTTP responses with status 500 or higher.",
+      "labels": ["route", "status_class"]
+    },
+    {
+      "name": "pdoom_http_request_duration_seconds",
+      "type": "histogram",
+      "help": "Handler latency for instrumented HTTP requests.",
+      "labels": ["route", "status_class"]
+    },
+    {
+      "name": "pdoom_db_queries_total",
+      "type": "counter",
+      "help": "Database queries issued through the application pool.",
+      "labels": ["operation", "outcome"]
+    },
+    {
+      "name": "pdoom_db_query_failures_total",
+      "type": "counter",
+      "help": "Failed database queries by operation and error class.",
+      "labels": ["operation", "error_class"]
+    },
+    {
+      "name": "pdoom_db_query_duration_seconds",
+      "type": "histogram",
+      "help": "Database query latency. Successful queries are counted and not logged.",
+      "labels": ["operation"]
+    },
+    {
+      "name": "pdoom_readiness",
+      "type": "gauge",
+      "help": "1 when the named readiness check is passing.",
+      "labels": ["check"]
+    },
+    {
+      "name": "pdoom_sources_due",
+      "type": "gauge",
+      "help": "Enabled cohort sources past their collection cadence.",
+      "labels": []
+    },
+    {
+      "name": "pdoom_collection_attempted",
+      "type": "gauge",
+      "help": "Collection runs started inside the configured window.",
+      "labels": []
+    },
+    {
+      "name": "pdoom_collection_succeeded",
+      "type": "gauge",
+      "help": "Collection runs that succeeded inside the configured window.",
+      "labels": []
+    },
+    {
+      "name": "pdoom_collection_failed",
+      "type": "gauge",
+      "help": "Collection runs that failed inside the configured window.",
+      "labels": []
+    },
+    {
+      "name": "pdoom_collection_unchanged",
+      "type": "gauge",
+      "help": "Observed items left unchanged inside the configured window.",
+      "labels": []
+    },
+    {
+      "name": "pdoom_collection_changed",
+      "type": "gauge",
+      "help": "Observed items that changed inside the configured window.",
+      "labels": []
+    },
+    {
+      "name": "pdoom_collection_new",
+      "type": "gauge",
+      "help": "New items observed inside the configured window.",
+      "labels": []
+    },
+    {
+      "name": "pdoom_collection_runs",
+      "type": "gauge",
+      "help": "Collection runs in the window by adapter and outcome.",
+      "labels": ["adapter", "outcome"]
+    },
+    {
+      "name": "pdoom_collection_failures",
+      "type": "gauge",
+      "help": "Collection failures by adapter and failure class.",
+      "labels": ["adapter", "failure_class"]
+    },
+    {
+      "name": "pdoom_collection_rate_limits",
+      "type": "gauge",
+      "help": "Rate-limit failures in the current collection picture.",
+      "labels": ["adapter"]
+    },
+    {
+      "name": "pdoom_sources_stale",
+      "type": "gauge",
+      "help": "Enabled cohort sources whose last success is stale, by source type.",
+      "labels": ["source_type"]
+    },
+    {
+      "name": "pdoom_sources_never_successful",
+      "type": "gauge",
+      "help": "Enabled cohort sources that have never succeeded, by source type.",
+      "labels": ["source_type"]
+    },
+    {
+      "name": "pdoom_extraction_items_processed",
+      "type": "gauge",
+      "help": "Extraction runs started inside the configured window.",
+      "labels": []
+    },
+    {
+      "name": "pdoom_extraction_failures",
+      "type": "gauge",
+      "help": "Extraction runs that failed inside the configured window.",
+      "labels": []
+    },
+    {
+      "name": "pdoom_extraction_candidates",
+      "type": "gauge",
+      "help": "Non-rejected statements by statement class.",
+      "labels": ["statement_type"]
+    },
+    {
+      "name": "pdoom_extraction_missing_horizon_ratio",
+      "type": "gauge",
+      "help": "Share of non-rejected explicit numeric statements missing a horizon.",
+      "labels": []
+    },
+    {
+      "name": "pdoom_extraction_missing_definition_ratio",
+      "type": "gauge",
+      "help": "Share of non-rejected explicit numeric statements missing a definition.",
+      "labels": []
+    },
+    {
+      "name": "pdoom_cohort_size",
+      "type": "gauge",
+      "help": "People in the current dataset cohort.",
+      "labels": []
+    },
+    {
+      "name": "pdoom_people_with_non_academic_source",
+      "type": "gauge",
+      "help": "Cohort members with a source other than a paper, preprint, or academic-works feed.",
+      "labels": []
+    },
+    {
+      "name": "pdoom_statement_bearing_people",
+      "type": "gauge",
+      "help": "Cohort members with at least one non-rejected statement.",
+      "labels": []
+    },
+    {
+      "name": "pdoom_statements",
+      "type": "gauge",
+      "help": "Stored statements by review state.",
+      "labels": ["review_state"]
+    },
+    {
+      "name": "pdoom_sources_freshness",
+      "type": "gauge",
+      "help": "Cohort-scoped sources by freshness. Stale does not mean the person is inactive.",
+      "labels": ["state"]
+    },
+    {
+      "name": "pdoom_integrity_violations",
+      "type": "gauge",
+      "help": "Integrity violations. Checks report failures and do not repair them.",
+      "labels": ["check"]
+    },
+    {
+      "name": "pdoom_alert_firing",
+      "type": "gauge",
+      "help": "1 when the named alert condition is firing.",
+      "labels": ["alert"]
+    }
+  ],
+  "labels": {
+    "route": ["health", "status", "metrics", "api", "page", "other"],
+    "status_class": ["2xx", "3xx", "4xx", "5xx", "unobserved"],
+    "adapter": ["rss", "arxiv", "github", "openalex", "fixture", "manual", "sitemap", "api", "other"],
+    "outcome": ["succeeded", "failed", "unchanged", "changed", "new"],
+    "db_operation": ["read", "write", "other"],
+    "db_outcome": ["ok", "error"],
+    "error_class": ["connection", "timeout", "constraint", "unknown"],
+    "failure_class": [
+      "not_found",
+      "temporarily_unavailable",
+      "unavailable",
+      "rate_limited",
+      "unauthorized",
+      "blocked_by_policy",
+      "parser_unsupported",
+      "content_too_large",
+      "invalid_content",
+      "collector_bug",
+      "unsafe_url",
+      "unclassified"
+    ],
+    "statement_type": ["explicit_numeric", "explicit_qualitative", "model_inferred_signal", "other"],
+    "review_state": ["unreviewed", "machine_validated", "human_verified", "rejected", "needs_review", "other"],
+    "state": ["current", "aging", "stale", "never_checked"],
+    "source_type": [
+      "personal_site",
+      "blog",
+      "newsletter",
+      "podcast",
+      "video",
+      "paper",
+      "preprint",
+      "academic_works",
+      "lab_post",
+      "conference_talk",
+      "testimony",
+      "interview",
+      "repository",
+      "model_card",
+      "social_post",
+      "press",
+      "other"
+    ],
+    "check": [
+      "duplicate_identity_ids",
+      "multiple_current_versions",
+      "human_verified_missing_evidence",
+      "numeric_without_numeric_evidence",
+      "impossible_probability",
+      "public_statement_unavailable_source"
+    ],
+    "alert": [
+      "collection_stopped",
+      "database_unavailable",
+      "imports_repeatedly_fail",
+      "stale_source_percentage_spike",
+      "extractor_failure_rate_spike",
+      "canonical_validation_failed",
+      "public_verified_dataset_empty"
+    ],
+    "readiness_check": ["database"]
+  },
+  "guardrails": {
+    "cohort_drop_ratio": 0.1,
+    "source_drop_ratio": 0.15,
+    "statement_drop_ratio": 0.2,
+    "human_verified_drop_ratio": 0,
+    "stale_source_ratio": 0.5,
+    "stale_ratio_increase": 0.2,
+    "collection_success_window_hours": 168,
+    "extractor_failure_ratio": 0.25,
+    "extractor_failure_min_processed": 5,
+    "missing_horizon_ratio": 0.5,
+    "missing_definition_ratio": 0.5,
+    "import_failure_streak": 3
+  },
+  "freshness_days": {
+    "current": 14,
+    "aging": 90
+  },
+  "cadence_days": {
+    "social_post": 7,
+    "blog": 7,
+    "newsletter": 7,
+    "repository": 7,
+    "academic_works": 30,
+    "paper": 30,
+    "preprint": 30,
+    "podcast": 30,
+    "video": 30,
+    "default": 14
+  },
+  "cadence_methods": ["rss", "api", "sitemap", "openalex_api", "github_api", "arxiv_api", "rss_feed"],
+  "academic_source_types": ["academic_works", "paper", "preprint"],
+  "slos": {
+    "enabled_sources_within_cadence": {
+      "target": 0.95,
+      "comparison": "at_least"
+    },
+    "latest_successful_collection_age_hours": {
+      "target": 168,
+      "comparison": "at_most"
+    },
+    "statement_bearing_sources_fresh": {
+      "target": 0.9,
+      "comparison": "at_least"
+    }
+  },
+  "histogram_buckets_seconds": [0.005, 0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1, 2.5, 5]
+}

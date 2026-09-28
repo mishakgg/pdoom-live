@@ -59,6 +59,7 @@ Key design documents:
 - [Data model](./docs/DATA_MODEL.md)
 - [Source and provenance policy](./docs/SOURCE_AND_PROVENANCE_POLICY.md)
 - [Initial roadmap](./docs/ROADMAP.md)
+- [Operator observability](./docs/OBSERVABILITY.md)
 
 ## Status
 
@@ -66,7 +67,9 @@ The first testing-ready product slice runs on PostgreSQL with a synthetic fixtur
 
 - [Cohort methodology](./docs/COHORT_METHODOLOGY.md) — cohort `2026.09.0` is a purposive seed, not all AI researchers.
 - [Data pipeline](./docs/DATA_PIPELINE.md) — collector envelope, seed files, and the gap to the application import.
-- [Ingestion contract](./docs/INGESTION_CONTRACT.md) — canonical document the product imports. The current schema requires `synthetic: true` and is the fixture loader, not the live seed.
+- [Ingestion contract](./docs/INGESTION_CONTRACT.md) — internal canonical document the product imports. Not the public API.
+- [Public API and export](./docs/PUBLIC_API.md) — versioned read API, JSON/CSV snapshot, and publication rules.
+- [Trend methodology](./docs/TREND_METHODOLOGY.md) — question keys, forecast families, coverage, and exclusion reasons.
 - Seed files: `data/seed/cohort/v2026-09/`.
 - Quality report: `data/reports/cohort-v2026-09-quality.md`.
 
@@ -95,10 +98,34 @@ The app listens on `http://localhost:3000`.
 | `npm run db:migrate` | Apply SQL migrations |
 | `npm run db:seed` | Idempotently load `data/fixtures/synthetic/dataset.json` |
 | `npm run db:reset` | Truncate product tables and seed again |
+| `npm run data:export -- --out data/exports/public` | Write a public JSON/CSV snapshot without modifying source data |
+| `npm --silent run quality:check` | Report dataset integrity, freshness, and collection health. Exit 1 on hard errors. Stdout is JSON. |
 | `npm run build` | Production build |
+| `npm run test:e2e` | Playwright browser suite against the E2E databases. Separate from `npm test`. |
 | `PYTHONPATH=pipeline python -m pytest` | Collector, identity, and seed tests. No network. |
+| `PYTHONPATH=pipeline python -m pdoom_pipeline.observability check --snapshot <file>` | Check a pipeline snapshot with the same quality rules. |
 | `PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.enrich_sources --live` | Confirm pages and ORCID URLs for the existing cohort. Does not add people. |
 
 Database tests refuse to run unless the database name contains `test`. Point `DATABASE_URL` at `pdoom_live_test` before `npm test`, or export it in the shell. Do not point the test runner at the development database.
 
+## Browser end-to-end tests
+
+Playwright drives Chromium against a production `next start` server. Global setup migrates a dedicated Postgres database, loads `data/fixtures/synthetic/dataset.json`, then applies a browser-only overlay: rejected and unreviewed statements, hostile evidence, a long evidence excerpt, and one source whose last success is in 2000. A second database holds a tiny empty live dataset with no statements. A third server points at a closed port so outage behavior can be checked. The suite does not call live collection APIs and does not load the researcher seed.
+
+```bash
+npm run build
+npx playwright install chromium
+npm run test:e2e
+```
+
+The harness creates `pdoom_e2e_test` and `pdoom_e2e_empty_test` when `E2E_ADMIN_DATABASE_URL` can connect. The default admin URL is `postgresql://postgres:postgres@127.0.0.1:5432/postgres`. Override `E2E_DATABASE_URL` and `E2E_EMPTY_DATABASE_URL` if needed. Both names must contain `test`.
+
+Desktop checks use a 1280×800 viewport. Mobile checks use 390×844. Performance smoke budgets live in `e2e/support/budgets.ts`. Rebuild the Next.js app before `npm run test:e2e` after UI changes; the servers run `next start`, not the dev server.
+
+The E2E servers boot with `PDOOM_ENV=production` and an `APP_BASE_URL`, the same fail-closed requirements as production. Playwright starts them before global setup creates the databases, so process readiness is `/api/live`. Pages stay closed with “pdoom.live is not ready.” until migrations are current. A refused database keeps `/api/live` at 200 and `/api/health` at 503. Other console errors, hydration failures, and repeated application requests fail the suite.
+
 The fixture people, organizations, and quotations are fictional. The researcher seed under `data/seed/` is a real public-identity registry and is not a synthetic fixture.
+
+## Production
+
+The production runtime is the Next.js server and PostgreSQL. The public VM puts Caddy in front of that server. Migrations, dataset import, and web startup are separate commands. The container does not load synthetic fixtures. See the [production runbook](./docs/PRODUCTION.md) and [disaster recovery](./docs/DISASTER_RECOVERY.md). After a deploy, `bash scripts/deploy-smoke.sh http://127.0.0.1:3000` checks the running site without changing the database.

@@ -52,7 +52,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
       <h1>Search</h1>
       <p className="lede">
         Search public people, organizations, statements, topics, sources, and source-item titles.
-        Rejected statements, review notes, and unpublished source bodies are not included. Match labels describe the rule that ranked the row.
+        Rejected and unreviewed statements, review notes, and unpublished source bodies are not included. Needs-review statements stay visible and are not labeled verified. Match labels describe the rule that ranked the row.
       </p>
       <Filters params={params} />
       <Results params={params} />

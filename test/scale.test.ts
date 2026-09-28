@@ -85,7 +85,7 @@ async function seedScale() {
     await client.query(
       `INSERT INTO statements (
          id, slug, person_id, source_item_id, statement_type, normalized_text, evidence_segment_id,
-         extractor_version, confidence, review_state
+         extractor_name, extractor_version, confidence, review_state
        )
        SELECT
          ('40000000-0000-5000-8000-' || lpad(to_hex(n), 12, '0'))::uuid,
@@ -95,6 +95,7 @@ async function seedScale() {
          'explicit_qualitative',
          'Scale statement ' || n,
          (SELECT id FROM evidence_segments WHERE slug = 'scale-evidence-' || n),
+         'scale',
          'scale',
          0.5,
          'human_verified'
