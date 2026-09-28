@@ -1191,7 +1191,7 @@ export async function getPublicTrend(slug: string, asOf: string, pool: Db = getP
   return presentTrend(trend, await researchStatementSlugs(pool), asOf);
 }
 
-export async function searchPublic(q: string, pool: Db = getPool()) {
+export async function searchResearch(q: string, pool: Db = getPool()) {
   const [people, statements, topics] = await Promise.all([
     listPublicPeople({ q, limit: PUBLIC_API_LIMITS.searchPeople }, pool),
     listPublicStatements({ q, limit: PUBLIC_API_LIMITS.searchStatements, sort: "event_time_desc" }, pool),

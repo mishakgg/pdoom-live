@@ -103,8 +103,8 @@ test("methodology states the class boundaries", async ({ page }) => {
 test("header search opens a person and the statement filter finds a claim", async ({ page }) => {
   await page.goto("/topics");
   const search = page.getByRole("search");
-  await search.getByRole("textbox", { name: "Search statements" }).fill("Samira");
-  await search.getByRole("link", { name: "Samira Okonkwo", exact: true }).click();
+  await search.getByRole("combobox", { name: "Search people, statements, topics, and sources" }).fill("Samira");
+  await search.getByRole("option", { name: /Samira Okonkwo/ }).first().click();
   await expect(page).toHaveURL(/\/people\/samira-okonkwo$/);
   await expect(page.getByRole("heading", { level: 1, name: "Samira Okonkwo" })).toBeVisible();
   await expect(page.locator("p.lede")).toContainText(/labor economist/i);

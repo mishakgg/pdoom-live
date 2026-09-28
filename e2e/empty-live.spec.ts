@@ -26,7 +26,7 @@ test("the empty cohort still lists its member and an empty topic", async ({ page
   await expect(page.getByText("A topic with no statements. It must not become a probability.")).toBeVisible();
   const search = await request.get("/api/search?q=Ada");
   expect(search.status()).toBe(200);
-  const body = (await search.json()) as { people: unknown[]; statements: unknown[] };
-  expect(body.people).toEqual([]);
-  expect(body.statements).toEqual([]);
+  const body = (await search.json()) as { groups: { person: { data: unknown[] }; statement: { data: unknown[] } } };
+  expect(body.groups.person.data).toEqual([]);
+  expect(body.groups.statement.data).toEqual([]);
 });

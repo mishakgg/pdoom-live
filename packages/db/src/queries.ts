@@ -903,16 +903,3 @@ export async function getOverview(pool = getPool()) {
   };
 }
 
-export async function searchAll(q: string, pool = getPool()) {
-  const people = await listPeople({ q, limit: 5 }, pool);
-  const statements = await listStatements({ q, limit: 8, sort: "event_time_desc" }, pool);
-  const topics = await pool.query(
-    `SELECT slug, name FROM topics WHERE name ILIKE '%' || $1 || '%' OR definition ILIKE '%' || $1 || '%' ORDER BY name LIMIT 5`,
-    [q],
-  );
-  return {
-    people: people.data,
-    statements: statements.data,
-    topics: topics.rows.map((row) => ({ slug: String(row.slug), name: String(row.name) })),
-  };
-}

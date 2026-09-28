@@ -22,13 +22,15 @@ test("private markers stay out of home, search, and the person timeline", async 
   await expect(page.getByText(rejectedMarker)).toHaveCount(0);
 
   const searchResponse = page.waitForResponse((response) => response.url().includes("/api/search?q=zeta"));
-  await page.getByRole("textbox", { name: "Search statements" }).fill("zeta");
+  await page.getByRole("combobox", { name: "Search people, statements, topics, and sources" }).fill("zeta");
   expect((await searchResponse).status()).toBe(200);
   await expect(page.getByText(unreviewedMarker)).toHaveCount(0);
   await expect(page.getByText(rejectedMarker)).toHaveCount(0);
   const search = await request.get("/api/search?q=zeta");
-  const body = (await search.json()) as { statements: unknown[]; people: unknown[] };
-  expect(body.statements).toEqual([]);
+  const body = (await search.json()) as { groups: { statement: { data: unknown[] } } };
+  expect(body.groups.statement.data).toEqual([]);
+  expect(JSON.stringify(body)).not.toContain(unreviewedMarker);
+  expect(JSON.stringify(body)).not.toContain(rejectedMarker);
 
   await page.goto("/people/riley-moss");
   await expect(page.getByRole("heading", { level: 1, name: "Riley Moss" })).toBeVisible();

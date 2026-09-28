@@ -10,6 +10,7 @@ export * from "./vocabulary";
 export * from "./schemas";
 export * from "./trends";
 export * from "./request-order";
+export * from "./search";
 export * from "./public";
 export * from "./csv";
 export * from "./openapi-check";

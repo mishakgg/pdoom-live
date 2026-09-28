@@ -11,6 +11,7 @@ export const publicRoutes: PublicRoute[] = [
   { path: "/topics", heading: "Topics" },
   { path: "/topics/ai-extinction", heading: "Human extinction from AI" },
   { path: "/statements", heading: "Statements" },
+  { path: "/search", heading: "Search" },
   { path: "/statements/ada-extinction-2025", heading: "Ada Quill" },
   { path: "/statements/ada-misuse-2024", heading: "Ada Quill" },
   { path: "/statements/ada-inferred-2024", heading: "Ada Quill" },

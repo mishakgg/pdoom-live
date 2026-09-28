@@ -33,12 +33,12 @@ test("skip link, focus ring, labels, and keyboard search", async ({ page }) => {
   await expect(page.getByRole("combobox", { name: "Review" })).toBeVisible();
   await expect(page.getByRole("button", { name: "Apply" })).toBeVisible();
 
-  const search = page.getByRole("textbox", { name: "Search statements" });
+  const search = page.getByRole("combobox", { name: "Search people, statements, topics, and sources" });
   await search.focus();
   const searchOutline = await search.evaluate((element) => getComputedStyle(element).outlineStyle);
   expect(searchOutline).not.toBe("none");
   await page.keyboard.type("Ada");
-  const result = page.getByRole("search").getByRole("link", { name: "Ada Quill", exact: true });
+  const result = page.getByRole("search").getByRole("option", { name: /Ada Quill/ }).first();
   await expect(result).toBeVisible();
   await page.keyboard.press("Tab");
   await expect(result).toBeFocused();

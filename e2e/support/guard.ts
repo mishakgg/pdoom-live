@@ -118,7 +118,7 @@ export async function expectNavUsable(page: Page): Promise<void> {
     expect(box.x).toBeGreaterThanOrEqual(-1);
     expect(box.x + box.width).toBeLessThanOrEqual(viewport.width + 1);
   }
-  const search = page.getByRole("textbox", { name: "Search statements" });
+  const search = page.getByRole("combobox", { name: "Search people, statements, topics, and sources" });
   await expect(search).toBeVisible();
   const searchBox = await search.boundingBox();
   expect(searchBox).not.toBeNull();

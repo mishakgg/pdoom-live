@@ -203,11 +203,17 @@ Prefer computing these aggregates directly from canonical records. Materialize e
 
 ## Search
 
-MVP:
+Public discovery stays in PostgreSQL. There is no external search service, vector index, or embedding score.
 
-- exact/person/org/topic filtering;
-- PostgreSQL full-text search where useful;
-- date and source filtering.
+`/search` and `/api/search` query people, organizations (including public affiliation roles), statements, topics, sources, and source-item titles. They do not read unpublished source bodies, evidence text, metadata JSON, rights notes, verification details, pipeline candidate files, or ambiguity queues.
+
+Statement hits use the same public review rule as statement lists (`isPublicReviewState` in `packages/contracts/src/review.ts`): `rejected` and `unreviewed` are omitted; `needs_review` stays visible and is not verified; `machine_validated` stays labeled. A `human_verified` approval whose source or evidence no longer matches is searched as `needs_review`. Name ties use byte order so similar surnames stay in a stable display-name order. Ranking is a fixed tier, then recency or name:
+
+- exact statement text, then a contiguous phrase, then every query word in the statement;
+- exact name, surname, name prefix, word prefix, then every word in the name or short bio;
+- affiliation role is a lower tier and never a judgment of the person.
+
+Recency breaks ties. It does not outrank a stronger match. People are not ordered by statement count, employer, or cohort. Token lists are capped, SQL is parameterized, and each search runs under a statement timeout. Expected orders for the synthetic fixture live in `data/fixtures/search/expected-ranking.json`.
 
 Later, semantic retrieval can be added for exploratory question answering, but it must return evidence-backed records rather than free-floating generated claims.
 

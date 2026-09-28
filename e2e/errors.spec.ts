@@ -25,7 +25,12 @@ test("malformed cursors and excessive limits stay on the page", async ({ page, r
   expect((await request.get("/api/people?cursor=%%%")).status()).toBe(400);
   expect((await request.get("/api/people?limit=500")).status()).toBe(400);
   expect((await request.get("/api/statements?q=ada&q=quill")).status()).toBe(400);
-  expect((await request.get("/api/search?q=a")).status()).toBe(400);
+  const short = await request.get("/api/search?q=a");
+  expect(short.status()).toBe(200);
+  const shortBody = await short.json();
+  expect(shortBody.query.reason).toBe("no_tokens");
+  expect(shortBody.groups.person.page.total).toBe(0);
+  expect(shortBody.groups.statement.page.total).toBe(0);
 });
 
 test("missing dates, a missing horizon, stale checks, and long evidence stay readable", async ({ page }) => {

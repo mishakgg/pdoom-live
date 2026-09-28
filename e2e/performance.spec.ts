@@ -55,10 +55,10 @@ test("search stays within a small request budget", async ({ page }) => {
   });
   const pending = page.waitForResponse((response) => response.url().includes("/api/search?q=Ada"));
   const started = Date.now();
-  await page.getByRole("textbox", { name: "Search statements" }).fill("Ada");
+  await page.getByRole("combobox", { name: "Search people, statements, topics, and sources" }).fill("Ada");
   const response = await pending;
   expect(response.status()).toBe(200);
   expect(Date.now() - started, "search round trip").toBeLessThan(budgets.searchResponseMs);
-  await expect(page.getByRole("search").getByRole("link", { name: "Ada Quill", exact: true })).toBeVisible();
+  await expect(page.getByRole("search").getByRole("option", { name: /Ada Quill/ }).first()).toBeVisible();
   expect(searchRequests).toBeLessThanOrEqual(budgets.maxSearchRequests);
 });

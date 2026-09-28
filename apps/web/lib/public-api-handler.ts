@@ -22,7 +22,7 @@ import {
   listPublicStatements,
   listPublicTopics,
   listPublicTrends,
-  searchPublic,
+  searchResearch,
 } from "@pdoom/db";
 import openApiDocument from "@pdoom/contracts/openapi/public-v1.openapi.json";
 import { publicApiLimiter, publicClientKey } from "./rate-limit";
@@ -162,7 +162,7 @@ export async function handlePublicApi(request: Request): Promise<Response> {
     }
     if (route === "search") {
       const query = publicSearchQuerySchema.parse(parseSearchParams(url.searchParams));
-      return publicJson(request, apiEnvelope(await searchPublic(query.q)), stamp.imported_at, headers);
+      return publicJson(request, apiEnvelope(await searchResearch(query.q)), stamp.imported_at, headers);
     }
     return publicError(404, "not_found", "Not found.");
   } catch (error) {

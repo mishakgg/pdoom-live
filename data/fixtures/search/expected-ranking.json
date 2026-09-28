@@ -1,0 +1,127 @@
+{
+  "corpus": "Synthetic fixture loaded by npm run db:seed, plus the searchfix rows inserted by test/search-fixture.ts during search tests.",
+  "tiers": {
+    "exact_text": "Normalized statement text equals the query.",
+    "exact_name": "Person, organization, topic, source, or source-item title equals the query.",
+    "family_name": "Single-token query equals a person's family name. Similar surnames stay separate and then sort by display name.",
+    "name_prefix": "The name starts with the query followed by a space.",
+    "token_prefix": "Every query word is a prefix of a distinct word in the name or title.",
+    "phrase": "The query appears as a contiguous phrase in the statement.",
+    "all_tokens": "Every query word appears in the searched field.",
+    "affiliation_role": "A non-rejected affiliation role contains every query word. This does not rank the person."
+  },
+  "order": "Higher tier first. Statements and source items with the same tier use publication time, newest first, then id. Other entities use display name, then id. Recency never outranks a stronger tier.",
+  "cases": [
+    {
+      "id": "exact-researcher",
+      "q": "Ada Quill",
+      "person": ["ada-quill"],
+      "person_match": ["exact_name"],
+      "statement": ["ada-extinction-2025", "ada-inferred-2024", "ada-misuse-2024", "ada-extinction-2023"],
+      "statement_match": ["phrase", "phrase", "phrase", "phrase"],
+      "source": ["ada-blog"]
+    },
+    {
+      "id": "ambiguous-surname",
+      "q": "Okonkwo",
+      "person": ["samir-okonkwo", "samira-okonkwo"],
+      "person_match": ["family_name", "family_name"],
+      "statement": ["samir-inferred-2025", "samira-unemployment-2025", "samira-labor-2024", "samir-extinction-2024"]
+    },
+    {
+      "id": "agi",
+      "q": "AGI",
+      "person": ["mateo-voss"],
+      "person_match": ["all_tokens"],
+      "topic": ["searchfix-agi-2030", "agi-arrival"],
+      "source": ["searchfix-source"],
+      "source_item": ["searchfix-item"],
+      "statement_prefix": ["mateo-agi-2025", "elena-disempowerment-2024", "searchfix-agi-new", "jonah-conditional-2024"]
+    },
+    {
+      "id": "extinction",
+      "q": "extinction",
+      "topic": ["ai-extinction", "ai-catastrophic-harm", "labor-displacement"],
+      "topic_match": ["token_prefix", "all_tokens", "all_tokens"],
+      "statement": [
+        "jonah-extinction-no-horizon-2025",
+        "noah-extinction-range-2025",
+        "ada-extinction-2025",
+        "mateo-extinction-2024",
+        "samir-extinction-2024",
+        "jonah-extinction-review-2024",
+        "priya-extinction-2024",
+        "jonah-conditional-2024",
+        "ada-extinction-2023",
+        "jonah-catastrophe-2022"
+      ],
+      "source_item": ["ada-essay-2023"]
+    },
+    {
+      "id": "coding-automation",
+      "q": "coding automation",
+      "topic": ["coding-automation"],
+      "topic_match": ["exact_name"],
+      "statement": [],
+      "gap": "No stemming: 'automation' does not match 'automated', so priya-coding-2025 is absent."
+    },
+    {
+      "id": "labor",
+      "q": "labor",
+      "person": ["priya-sen", "samira-okonkwo"],
+      "person_match": ["all_tokens", "all_tokens"],
+      "organization": ["lumen-institute"],
+      "organization_match": ["affiliation_role"],
+      "statement": ["samira-labor-2024"],
+      "topic": ["labor-displacement"],
+      "topic_match": ["name_prefix"],
+      "source_item": ["lumen-paper-2025", "samira-letter-2024"]
+    },
+    {
+      "id": "source-title",
+      "q": "Fictional labor paper",
+      "source_item": ["lumen-paper-2025"],
+      "source_item_match": ["exact_name"]
+    },
+    {
+      "id": "source-name",
+      "q": "Harbor Compute notes",
+      "source": ["harbor-blog"],
+      "source_match": ["exact_name"]
+    },
+    {
+      "id": "no-result",
+      "q": "zzzznoterm9f3a",
+      "person": [],
+      "statement": [],
+      "topic": [],
+      "source": [],
+      "source_item": [],
+      "organization": []
+    },
+    {
+      "id": "agi-2030",
+      "q": "AGI 2030",
+      "requires_fixture": true,
+      "person": [],
+      "organization": ["searchfix-org"],
+      "organization_match": ["name_prefix"],
+      "statement": ["searchfix-agi-new", "searchfix-agi-qual", "searchfix-agi-old"],
+      "statement_type": ["explicit_numeric", "explicit_qualitative", "explicit_numeric"],
+      "topic": ["searchfix-agi-2030"],
+      "topic_match": ["exact_name"],
+      "source": ["searchfix-source"],
+      "source_match": ["name_prefix"],
+      "source_item": ["searchfix-item"],
+      "source_item_match": ["name_prefix"]
+    },
+    {
+      "id": "name-not-importance",
+      "q": "Search Fixture",
+      "requires_fixture": true,
+      "person": ["searchfix-other", "searchfix-speaker"],
+      "person_match": ["name_prefix", "name_prefix"],
+      "note": "Search Fixture Other has no statements and sorts ahead of Search Fixture Speaker."
+    }
+  ]
+}
