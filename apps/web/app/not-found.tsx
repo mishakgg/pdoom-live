@@ -10,7 +10,7 @@ export default function NotFound() {
         The link may be wrong, or the record may never have been collected.
       </p>
       <nav className="pager" aria-label="Suggested pages">
-        <Link className="button" href="/">Activity</Link>
+        <Link className="button" href="/">Back to activity</Link>
         <Link className="button secondary" href="/people">People</Link>
         <Link className="button secondary" href="/statements">Statements</Link>
         <Link className="button secondary" href="/methodology">Method</Link>

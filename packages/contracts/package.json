@@ -5,7 +5,8 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./schema/canonical-import.schema.json": "./schema/canonical-import.schema.json"
+    "./schema/canonical-import.schema.json": "./schema/canonical-import.schema.json",
+    "./openapi/public-v1.openapi.json": "./openapi/public-v1.openapi.json"
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json"

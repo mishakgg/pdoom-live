@@ -1,8 +1,9 @@
 import { statementListQuerySchema } from "@pdoom/contracts";
-import { InvalidCursorError, listStatements } from "@pdoom/db";
+import { listStatements } from "@pdoom/db";
 import { StatementCard } from "@/components/statement-bits";
 import { InvalidFilters, Pager, StatementFilters } from "@/components/filters";
 import { EmptyState, NoResults } from "@/components/states";
+import { isInvalidCursor } from "@/lib/http";
 import { withCursor } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
@@ -42,7 +43,7 @@ async function StatementResults({
   try {
     page = await listStatements(query);
   } catch (error) {
-    if (error instanceof InvalidCursorError) return <InvalidFilters />;
+    if (isInvalidCursor(error)) return <InvalidFilters />;
     throw error;
   }
   return (

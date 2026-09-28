@@ -1,9 +1,11 @@
 import { getOverview } from "@pdoom/db";
+import { trendKindLabel } from "@pdoom/contracts";
 import Link from "next/link";
 import { StatementCard } from "@/components/statement-bits";
-import { DistributionPanel, VolumePanel } from "@/components/trends";
+import { TrendView } from "@/components/trend-view";
+import { DensityMark } from "@/components/trends";
 import { formatWhen } from "@/lib/format";
-import { coverageCopy, coverageTone } from "@/lib/presentation";
+import { coverageCopy } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
 
@@ -16,15 +18,15 @@ export default async function HomePage() {
     publicStatementCount: overview.dataset.statement_count,
     humanVerifiedStatementCount: overview.dataset.human_verified_statement_count,
   };
-  const tone = coverageTone(coverageInput);
   const coverage = coverageCopy(coverageInput);
-  const distribution = overview.trends.find((trend) => trend?.kind === "distribution");
-  const volume = overview.trends.find((trend) => trend?.kind === "volume");
   const kindLabel = overview.dataset.dataset_kind === "synthetic"
     ? "Synthetic fixture"
     : overview.dataset.dataset_kind === "live"
       ? "Live dataset"
       : "Dataset";
+  const distribution = overview.trends.find((trend) => trend.slug === "extinction-by-2070-distribution");
+  const volume = overview.trends.find((trend) => trend.slug === "statement-volume-by-topic-type");
+  const others = overview.trends.filter((trend) => trend.slug !== distribution?.slug && trend.slug !== volume?.slug);
   return (
     <>
       <p className="kicker">{overview.dataset.dataset_id ? kindLabel : "Observatory"}</p>
@@ -119,32 +121,26 @@ export default async function HomePage() {
           )}
         </section>
         <div className="stack">
-          {distribution && distribution.kind === "distribution" ? (
-            <DistributionPanel
-              name={distribution.name}
-              titleId="home-distribution"
-              methodVersion={distribution.method_version}
-              cohortDefinition={distribution.cohort_definition}
-              included={distribution.distribution.included}
-              median={distribution.distribution.median}
-              minimum={distribution.distribution.minimum}
-              maximum={distribution.distribution.maximum}
-              contributingPersonCount={distribution.distribution.contributing_person_count}
-              contributingStatementCount={distribution.distribution.contributing_statement_count}
-              coverage={distribution.distribution.coverage}
-              exclusions={distribution.distribution.exclusions}
-            />
+          {distribution ? <TrendView trend={distribution} /> : null}
+          {volume ? <TrendView trend={volume} /> : null}
+          {others.length > 0 ? (
+            <section className="panel">
+              <h2>Other questions</h2>
+              <p>Each link is a separate question. Counts are cohort members with a comparable record.</p>
+              <ul className="trend-index">
+                {others.map((trend) => (
+                  <li key={trend.slug}>
+                    <Link href={`/trends/${trend.slug}`}>{trend.name}</Link>
+                    <span className="meta">
+                      {" "}
+                      {trendKindLabel(trend.kind)} · <DensityMark density={trend.density} /> · {trend.contributing_person_count} of {trend.cohort_size}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </section>
           ) : null}
-          {volume && volume.kind === "volume" ? (
-            <VolumePanel
-              titleId="home-volume"
-              rows={volume.volume.rows}
-              methodVersion={volume.method_version}
-              contributingPersonCount={volume.volume.contributing_person_count}
-              contributingStatementCount={volume.volume.contributing_statement_count}
-            />
-          ) : null}
-          {overview.trends.length === 0 && (tone === "reported" || tone === "thin") ? (
+          {overview.trends.length === 0 && overview.dataset.dataset_id ? (
             <section className="panel state">
               <h2>No verified trend</h2>
               <p>This dataset has no human-verified statements that meet a published trend method. Empty coverage is not a probability.</p>

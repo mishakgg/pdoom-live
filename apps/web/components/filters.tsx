@@ -1,4 +1,4 @@
-import { PERSON_STATUSES, REVIEW_STATES, STATEMENT_TYPES } from "@pdoom/contracts";
+import { isPublicReviewState, PERSON_STATUSES, REVIEW_STATES, STATEMENT_TYPES } from "@pdoom/contracts";
 import Link from "next/link";
 import { reviewLabel, typeLabel } from "@/lib/format";
 import { personStatusLabel } from "@/lib/presentation";
@@ -66,7 +66,7 @@ export function StatementFilters({ params }: { params: Record<string, string | u
         Review
         <select name="review_state" defaultValue={params.review_state ?? ""}>
           <option value="">Any</option>
-          {REVIEW_STATES.map((state) => (
+          {REVIEW_STATES.filter(isPublicReviewState).map((state) => (
             <option key={state} value={state}>{reviewLabel(state)}</option>
           ))}
         </select>
@@ -103,5 +103,5 @@ export function Pager({
 }
 
 export function InvalidFilters() {
-  return <p className="warning" role="alert">Those filters are not valid. Adjust them and try again.</p>;
+  return <p className="warning" role="alert">Those filters are not valid. Adjust the query and try again.</p>;
 }

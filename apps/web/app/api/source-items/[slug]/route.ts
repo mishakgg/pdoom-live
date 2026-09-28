@@ -1,9 +1,10 @@
 import { getSourceItem } from "@pdoom/db";
 import { errorResponse } from "@/lib/http";
+import { observe } from "@/lib/observe";
 
 export const dynamic = "force-dynamic";
 
-export async function GET(_request: Request, context: { params: Promise<{ slug: string }> }) {
+export const GET = observe("api", async function GET(_request: Request, context: { params: Promise<{ slug: string }> }) {
   const { slug } = await context.params;
   const item = await getSourceItem(slug);
   if (!item) return errorResponse(404, "not_found", "Source item not found.");
@@ -12,4 +13,4 @@ export async function GET(_request: Request, context: { params: Promise<{ slug: 
     return errorResponse(500, "payload_too_large", "List and detail payloads must not include unpublished bodies.");
   }
   return Response.json(item);
-}
+});

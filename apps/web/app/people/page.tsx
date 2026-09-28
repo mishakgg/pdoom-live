@@ -1,8 +1,9 @@
-import { InvalidCursorError, listPeople } from "@pdoom/db";
+import { listPeople } from "@pdoom/db";
 import { peopleListQuerySchema } from "@pdoom/contracts";
 import Link from "next/link";
 import { InvalidFilters, Pager, PeopleFilters } from "@/components/filters";
 import { EmptyState, NoResults } from "@/components/states";
+import { isInvalidCursor } from "@/lib/http";
 import { typeLabel } from "@/lib/format";
 import { NO_STATEMENT_COLLECTED, NO_STATEMENT_COLLECTED_NOTE, affiliationFact, personStatusLabel, withCursor } from "@/lib/presentation";
 
@@ -46,7 +47,7 @@ async function PeopleResults({
   try {
     page = await listPeople(query);
   } catch (error) {
-    if (error instanceof InvalidCursorError) return <InvalidFilters />;
+    if (isInvalidCursor(error)) return <InvalidFilters />;
     throw error;
   }
   return (

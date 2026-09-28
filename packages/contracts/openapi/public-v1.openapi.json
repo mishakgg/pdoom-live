@@ -1,0 +1,492 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "pdoom.live public API",
+    "version": "1.0.0",
+    "description": "Read-only public research API. Version v1. Export schema 1.0.0. This is not the internal canonical import document. Examples use the fictional name Example Researcher and are not statements by real people. machine_validated records have verified=false and machine_labeled=true."
+  },
+  "servers": [{ "url": "/" }],
+  "paths": {
+    "/api/v1/dataset": {
+      "get": {
+        "operationId": "getDataset",
+        "summary": "Public dataset description",
+        "description": "Cohort, methodology versions, record counts, license note, and publication rules for the loaded dataset.",
+        "responses": {
+          "200": {
+            "description": "Dataset description",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/DatasetEnvelope" }
+              }
+            }
+          },
+          "429": { "$ref": "#/components/responses/RateLimited" },
+          "500": { "$ref": "#/components/responses/QueryFailed" }
+        }
+      }
+    },
+    "/api/v1/people": {
+      "get": {
+        "operationId": "listPeople",
+        "summary": "List public people",
+        "parameters": [
+          { "$ref": "#/components/parameters/Cursor" },
+          { "$ref": "#/components/parameters/Limit" },
+          { "$ref": "#/components/parameters/Query" },
+          {
+            "name": "organization",
+            "in": "query",
+            "schema": { "type": "string" },
+            "description": "Organization slug. Matches public-review affiliations only."
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["active", "historical"] },
+            "description": "Settled person status. review is not a public filter."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "People page",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/PersonPage" } } }
+          },
+          "400": { "$ref": "#/components/responses/InvalidQuery" },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    },
+    "/api/v1/people/{slug}": {
+      "get": {
+        "operationId": "getPerson",
+        "summary": "Get one public person",
+        "parameters": [{ "$ref": "#/components/parameters/Slug" }],
+        "responses": {
+          "200": {
+            "description": "Person, public affiliations, and public identities",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/PersonEnvelope" } } }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" },
+          "400": { "$ref": "#/components/responses/InvalidQuery" }
+        }
+      }
+    },
+    "/api/v1/statements": {
+      "get": {
+        "operationId": "listStatements",
+        "summary": "List public statements",
+        "description": "List rows include an evidence reference and, when present, the forecast with its question, definition, condition, horizon, and unit. Evidence text is on the detail route. Review states are human_verified or machine_validated only.",
+        "parameters": [
+          { "$ref": "#/components/parameters/Cursor" },
+          { "$ref": "#/components/parameters/Limit" },
+          { "$ref": "#/components/parameters/Query" },
+          { "name": "person", "in": "query", "schema": { "type": "string" } },
+          { "name": "organization", "in": "query", "schema": { "type": "string" } },
+          { "name": "source", "in": "query", "schema": { "type": "string" } },
+          { "name": "topic", "in": "query", "schema": { "type": "string" } },
+          {
+            "name": "statement_type",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["explicit_numeric", "explicit_qualitative", "model_inferred_signal"] }
+          },
+          {
+            "name": "review_state",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["human_verified", "machine_validated"] },
+            "description": "Public review state. rejected, unreviewed, and needs_review are not accepted."
+          },
+          { "name": "from", "in": "query", "schema": { "type": "string", "format": "date" }, "description": "Inclusive event_time date, UTC." },
+          { "name": "to", "in": "query", "schema": { "type": "string", "format": "date" }, "description": "Inclusive event_time date, UTC." },
+          {
+            "name": "sort",
+            "in": "query",
+            "schema": { "type": "string", "enum": ["event_time_desc", "event_time_asc"], "default": "event_time_desc" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Statement page",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/StatementPage" },
+                "example": {
+                  "api_version": "v1",
+                  "export_schema_version": "1.0.0",
+                  "data": [
+                    {
+                      "slug": "example-extinction-2025",
+                      "statement_type": "explicit_numeric",
+                      "normalized_text": "Example Researcher stated a 12% unconditional probability of human extinction from advanced AI by the end of 2070.",
+                      "event_time": "2025-02-03T18:30:00.000Z",
+                      "review_state": "human_verified",
+                      "verified": true,
+                      "machine_labeled": false,
+                      "person": { "slug": "example-researcher", "display_name": "Example Researcher" },
+                      "source": { "slug": "example-podcast", "name": "Example podcast", "source_type": "podcast" },
+                      "source_item": {
+                        "slug": "example-episode-2025",
+                        "title": "Example episode",
+                        "canonical_url": "https://example.invalid/episodes/2025",
+                        "published_at": "2025-02-03T18:00:00.000Z",
+                        "observed_at": "2025-02-04T00:00:00.000Z"
+                      },
+                      "evidence_ref": {
+                        "slug": "example-episode-2025-evidence",
+                        "segment_kind": "transcript",
+                        "sequence": 1,
+                        "start_char": null,
+                        "end_char": null,
+                        "start_ms": 120000,
+                        "end_ms": 135000,
+                        "segment_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                      },
+                      "forecast": {
+                        "statement_slug": "example-extinction-2025",
+                        "forecast_kind": "probability",
+                        "question_key": "ai_extinction_unconditional_by_2070",
+                        "question_text": "Unconditional probability of literal human extinction caused by advanced AI by the end of 2070.",
+                        "definition_text": "Literal human extinction. Not catastrophic harm, disempowerment, or a conditional probability.",
+                        "condition_text": null,
+                        "horizon_text": "by end of 2070",
+                        "target_date_start": null,
+                        "target_date_end": "2070-12-31",
+                        "value_type": "point",
+                        "value_numeric": 0.12,
+                        "value_min": null,
+                        "value_max": null,
+                        "unit": "probability",
+                        "distribution": null,
+                        "resolution_criteria": null,
+                        "review_state": "human_verified",
+                        "verified": true,
+                        "machine_labeled": false
+                      },
+                      "topics": [{ "slug": "ai-extinction", "name": "AI extinction" }]
+                    }
+                  ],
+                  "page": { "limit": 20, "total": 1, "next_cursor": null, "prev_cursor": null }
+                }
+              }
+            }
+          },
+          "400": { "$ref": "#/components/responses/InvalidQuery" },
+          "429": { "$ref": "#/components/responses/RateLimited" }
+        }
+      }
+    },
+    "/api/v1/statements/{slug}": {
+      "get": {
+        "operationId": "getStatement",
+        "summary": "Get one public statement",
+        "description": "Includes the short evidence excerpt, source-item hash, and public relationships. Excerpts are capped. Full source works are not included.",
+        "parameters": [{ "$ref": "#/components/parameters/Slug" }],
+        "responses": {
+          "200": {
+            "description": "Statement",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/StatementEnvelope" } } }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/api/v1/topics": {
+      "get": {
+        "operationId": "listTopics",
+        "summary": "List topics",
+        "description": "Complete topic list, capped at 500. Counts include research-public statements only.",
+        "responses": {
+          "200": {
+            "description": "Topics",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/TopicList" } } }
+          }
+        }
+      }
+    },
+    "/api/v1/topics/{slug}": {
+      "get": {
+        "operationId": "getTopic",
+        "summary": "Get one topic",
+        "parameters": [{ "$ref": "#/components/parameters/Slug" }],
+        "responses": {
+          "200": {
+            "description": "Topic",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/TopicEnvelope" } } }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/api/v1/sources": {
+      "get": {
+        "operationId": "listSources",
+        "summary": "List public sources",
+        "parameters": [
+          { "$ref": "#/components/parameters/Cursor" },
+          { "$ref": "#/components/parameters/Limit" }
+        ],
+        "responses": {
+          "200": {
+            "description": "Source page",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SourcePage" } } }
+          },
+          "400": { "$ref": "#/components/responses/InvalidQuery" }
+        }
+      }
+    },
+    "/api/v1/sources/{slug}": {
+      "get": {
+        "operationId": "getSource",
+        "summary": "Get one public source",
+        "description": "Item list is capped. Items without a research-public statement are omitted.",
+        "parameters": [{ "$ref": "#/components/parameters/Slug" }],
+        "responses": {
+          "200": {
+            "description": "Source",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SourceEnvelope" } } }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/api/v1/source-items/{slug}": {
+      "get": {
+        "operationId": "getSourceItem",
+        "summary": "Get one public source item",
+        "description": "Returned only when the item backs a research-public statement and the source review state is public.",
+        "parameters": [{ "$ref": "#/components/parameters/Slug" }],
+        "responses": {
+          "200": {
+            "description": "Source item",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SourceItemEnvelope" } } }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/api/v1/trends": {
+      "get": {
+        "operationId": "listTrends",
+        "summary": "List published trends",
+        "responses": {
+          "200": {
+            "description": "Published trend definitions",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/TrendList" } } }
+          }
+        }
+      }
+    },
+    "/api/v1/trends/{slug}": {
+      "get": {
+        "operationId": "getTrend",
+        "summary": "Get one published trend observation",
+        "description": "Observations are recomputed from stored public rows. calculated_at is the dataset import time. Unpublished review states are counted, not listed.",
+        "parameters": [{ "$ref": "#/components/parameters/Slug" }],
+        "responses": {
+          "200": {
+            "description": "Trend",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/TrendEnvelope" } } }
+          },
+          "404": { "$ref": "#/components/responses/NotFound" }
+        }
+      }
+    },
+    "/api/v1/search": {
+      "get": {
+        "operationId": "search",
+        "summary": "Search people, statements, and topics",
+        "parameters": [{ "$ref": "#/components/parameters/QueryRequired" }],
+        "responses": {
+          "200": {
+            "description": "Search results",
+            "content": { "application/json": { "schema": { "$ref": "#/components/schemas/SearchEnvelope" } } }
+          },
+          "400": { "$ref": "#/components/responses/InvalidQuery" }
+        }
+      }
+    },
+    "/api/v1/openapi.json": {
+      "get": {
+        "operationId": "getOpenApi",
+        "summary": "OpenAPI document",
+        "responses": {
+          "200": {
+            "description": "This document",
+            "content": { "application/json": { "schema": { "type": "object" } } }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "Cursor": {
+        "name": "cursor",
+        "in": "query",
+        "description": "Opaque cursor from page.next_cursor or page.prev_cursor.",
+        "schema": { "type": "string", "maxLength": 400 }
+      },
+      "Limit": {
+        "name": "limit",
+        "in": "query",
+        "description": "Page size from 1 to 50. Default 20.",
+        "schema": { "type": "integer", "minimum": 1, "maximum": 50, "default": 20 }
+      },
+      "Query": {
+        "name": "q",
+        "in": "query",
+        "description": "Search text, 2–120 characters, at most 8 terms, with a letter or number. Wildcard characters are rejected.",
+        "schema": { "type": "string", "minLength": 2, "maxLength": 120 }
+      },
+      "QueryRequired": {
+        "name": "q",
+        "in": "query",
+        "required": true,
+        "description": "Search text, 2–120 characters, at most 8 terms, with a letter or number.",
+        "schema": { "type": "string", "minLength": 2, "maxLength": 120 }
+      },
+      "Slug": {
+        "name": "slug",
+        "in": "path",
+        "required": true,
+        "schema": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" }
+      }
+    },
+    "responses": {
+      "InvalidQuery": {
+        "description": "The query is invalid, too long, or asks for a non-public review state.",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorEnvelope" },
+            "example": { "error": { "code": "invalid_query", "message": "Query parameters are invalid." } }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "No public record has that slug.",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorEnvelope" },
+            "example": { "error": { "code": "not_found", "message": "Record not found." } }
+          }
+        }
+      },
+      "RateLimited": {
+        "description": "The single-process request limit was exceeded.",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorEnvelope" },
+            "example": { "error": { "code": "rate_limited", "message": "Too many requests." } }
+          }
+        }
+      },
+      "QueryFailed": {
+        "description": "The query could not be completed.",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorEnvelope" },
+            "example": { "error": { "code": "query_failed", "message": "The query could not be completed." } }
+          }
+        }
+      }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "required": ["code", "message"],
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": ["invalid_query", "invalid_cursor", "not_found", "rate_limited", "method_not_allowed", "query_failed"]
+          },
+          "message": { "type": "string" }
+        }
+      },
+      "ErrorEnvelope": {
+        "type": "object",
+        "required": ["error"],
+        "properties": { "error": { "$ref": "#/components/schemas/Error" } }
+      },
+      "Page": {
+        "type": "object",
+        "required": ["limit", "total", "next_cursor", "prev_cursor"],
+        "properties": {
+          "limit": { "type": "integer" },
+          "total": { "type": "integer" },
+          "next_cursor": { "type": "string", "nullable": true },
+          "prev_cursor": { "type": "string", "nullable": true }
+        }
+      },
+      "Review": {
+        "type": "object",
+        "required": ["review_state", "verified", "machine_labeled"],
+        "properties": {
+          "review_state": { "type": "string", "enum": ["human_verified", "machine_validated"] },
+          "verified": { "type": "boolean", "description": "True only for human_verified." },
+          "machine_labeled": { "type": "boolean", "description": "True for machine_validated. Never implies human verification." }
+        },
+        "example": { "review_state": "machine_validated", "verified": false, "machine_labeled": true }
+      },
+      "Forecast": {
+        "allOf": [
+          { "$ref": "#/components/schemas/Review" },
+          {
+            "type": "object",
+            "required": ["statement_slug", "question_key", "question_text", "value_type"],
+            "properties": {
+              "statement_slug": { "type": "string" },
+              "forecast_kind": { "type": "string" },
+              "question_key": { "type": "string" },
+              "question_text": { "type": "string" },
+              "definition_text": { "type": "string", "nullable": true },
+              "condition_text": { "type": "string", "nullable": true },
+              "horizon_text": { "type": "string", "nullable": true },
+              "target_date_start": { "type": "string", "nullable": true },
+              "target_date_end": { "type": "string", "nullable": true },
+              "value_type": { "type": "string", "enum": ["point", "range", "distribution", "none"] },
+              "value_numeric": { "type": "number", "nullable": true },
+              "value_min": { "type": "number", "nullable": true },
+              "value_max": { "type": "number", "nullable": true },
+              "unit": { "type": "string", "nullable": true },
+              "distribution": { "type": "object", "nullable": true, "additionalProperties": true },
+              "resolution_criteria": { "type": "string", "nullable": true }
+            }
+          }
+        ]
+      },
+      "StatementSummary": {
+        "type": "object",
+        "description": "Public statement list row. Numeric values are present only together with the forecast question, definition, condition, horizon, and unit fields."
+      },
+      "StatementPage": {
+        "type": "object",
+        "required": ["api_version", "export_schema_version", "data", "page"],
+        "properties": {
+          "api_version": { "type": "string", "enum": ["v1"] },
+          "export_schema_version": { "type": "string", "example": "1.0.0" },
+          "data": { "type": "array", "items": { "$ref": "#/components/schemas/StatementSummary" } },
+          "page": { "$ref": "#/components/schemas/Page" }
+        }
+      },
+      "StatementEnvelope": { "type": "object" },
+      "PersonPage": { "type": "object" },
+      "PersonEnvelope": { "type": "object" },
+      "TopicList": { "type": "object" },
+      "TopicEnvelope": { "type": "object" },
+      "SourcePage": { "type": "object" },
+      "SourceEnvelope": { "type": "object" },
+      "SourceItemEnvelope": { "type": "object" },
+      "TrendList": { "type": "object" },
+      "TrendEnvelope": { "type": "object" },
+      "SearchEnvelope": { "type": "object" },
+      "DatasetEnvelope": {
+        "type": "object",
+        "properties": {
+          "api_version": { "type": "string" },
+          "export_schema_version": { "type": "string" },
+          "data": { "type": "object" }
+        }
+      }
+    }
+  }
+}

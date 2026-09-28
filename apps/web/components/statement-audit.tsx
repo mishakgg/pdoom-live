@@ -134,7 +134,9 @@ export function StatementAudit({ statement }: { statement: StatementAuditData })
           <dt>Published</dt>
           <dd>
             {formatWhen(statement.source_item.published_at)}
-            {statement.provenance.published_timezone ? ` (${statement.provenance.published_timezone})` : ""}
+            {statement.source_item.published_at && statement.provenance.published_timezone
+              ? ` (${statement.provenance.published_timezone})`
+              : ""}
           </dd>
           <dt>Observed</dt>
           <dd>{formatWhen(statement.source_item.observed_at)}</dd>
@@ -145,7 +147,7 @@ export function StatementAudit({ statement }: { statement: StatementAuditData })
         <h2 id="normalized-interpretation">Normalized interpretation</h2>
         <p className="kicker">Record reading, not a quotation</p>
         {statement.statement_type === "model_inferred_signal" ? (
-          <p className="warning">This is a model-inferred signal. It is not a quotation and it is not this person&apos;s probability.</p>
+          <p className="warning">This is a model-inferred signal. It is not a quotation and it is not this person’s probability.</p>
         ) : null}
         {statement.statement_type === "explicit_qualitative" ? (
           <p className="warning">Explicit qualitative view. No probability has been inferred from the wording.</p>
@@ -194,7 +196,15 @@ export function StatementAudit({ statement }: { statement: StatementAuditData })
             ) : null}
           </dl>
         ) : (
-          <p>No structured forecast is attached. No probability was inferred to fill that gap.</p>
+          <>
+            <p>No structured forecast is attached. No probability was inferred to fill that gap.</p>
+            <dl className="audit">
+              <dt>Horizon</dt>
+              <dd>Not stated</dd>
+              <dt>Value</dt>
+              <dd>—</dd>
+            </dl>
+          </>
         )}
       </section>
 

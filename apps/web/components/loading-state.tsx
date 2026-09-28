@@ -1,4 +1,4 @@
-export default function Loading() {
+export function LoadingState() {
   return (
     <div className="loading" role="status" aria-live="polite">
       <p className="kicker">Loading</p>

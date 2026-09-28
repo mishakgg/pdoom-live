@@ -1,12 +1,16 @@
 import { readFile } from "node:fs/promises";
 import {
+  candidateKey,
   canonicalImportSchema,
   parseExplicitProbability,
   type CanonicalImport,
 } from "@pdoom/contracts";
 import type pg from "pg";
+import { deploymentMode } from "./env";
 import { sha256, stableId } from "./ids";
-import { fixturePath } from "./paths";
+import { migrationState } from "./migrate";
+import { fixtureFile } from "./paths";
+import { commitOrAbort, setActiveClient } from "./shutdown";
 
 export type ImportResult = {
   dataset_id: string;
@@ -18,8 +22,21 @@ export type ImportResult = {
   counts: Record<string, number>;
 };
 
+export function assertFixtureLoadAllowed(): void {
+  if (deploymentMode() === "production") {
+    throw new Error("refusing to load synthetic fixtures in production");
+  }
+}
+
+export function assertDatasetAllowed(doc: { dataset_kind: string }): void {
+  if (deploymentMode() === "production" && doc.dataset_kind === "synthetic") {
+    throw new Error("refusing to import a synthetic dataset in production");
+  }
+}
+
 async function loadFixture(): Promise<CanonicalImport> {
-  const raw = await readFile(fixturePath, "utf8");
+  assertFixtureLoadAllowed();
+  const raw = await readFile(fixtureFile(), "utf8");
   return canonicalImportSchema.parse(JSON.parse(raw));
 }
 
@@ -35,19 +52,37 @@ export function validateDocument(raw: unknown): CanonicalImport {
 }
 
 export async function importCanonical(pool: pg.Pool, document?: CanonicalImport | unknown): Promise<ImportResult> {
+  if (document === undefined) assertFixtureLoadAllowed();
   const doc = document ?? (await loadFixture());
   const parsed = validateDocument(doc);
+  assertDatasetAllowed(parsed);
+  const state = await migrationState(pool);
+  if (state !== "current") {
+    throw new Error(`refusing to import because migrations are ${state}`);
+  }
 
   const client = await pool.connect();
+  const pid = await client.query<{ pid: number }>("SELECT pg_backend_pid() AS pid");
+  const backendPid = pid.rows[0]?.pid;
+  if (backendPid === undefined) {
+    client.release();
+    throw new Error("database connection did not return a backend pid");
+  }
+  setActiveClient(client, backendPid);
   try {
     await client.query("BEGIN");
     await upsertAll(client, parsed);
-    await client.query("COMMIT");
+    await commitOrAbort(client);
   } catch (error) {
-    await client.query("ROLLBACK");
+    await client.query("ROLLBACK").catch(() => undefined);
     throw error;
   } finally {
-    client.release();
+    setActiveClient(null, null);
+    try {
+      client.release();
+    } catch {
+      // Shutdown may already have released the client.
+    }
   }
 
   const counts = await countTables(pool);
@@ -85,6 +120,12 @@ function validateDatasetKind(doc: CanonicalImport): void {
   ];
   if (syntheticMarkers.length) {
     throw new Error("live dataset cannot use synthetic_fixture or fixture collection markers");
+  }
+  if (doc.statements.some((statement) => statement.review_state === "human_verified")) {
+    throw new Error("live import cannot mark statements human_verified; record a review decision");
+  }
+  if (doc.forecasts.some((forecast) => forecast.review_state === "human_verified")) {
+    throw new Error("live import cannot mark forecasts human_verified; record a review decision");
   }
 }
 
@@ -471,8 +512,8 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
     await client.query(
       `INSERT INTO statements (
          id, slug, person_id, source_item_id, statement_type, normalized_text, event_time,
-         evidence_segment_id, extractor_version, confidence, review_state, extraction_run_id
-       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)
+         evidence_segment_id, extractor_name, extractor_version, candidate_key, confidence, review_state, extraction_run_id
+       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
        ON CONFLICT (slug) DO UPDATE SET
          person_id = EXCLUDED.person_id,
          source_item_id = EXCLUDED.source_item_id,
@@ -480,7 +521,9 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
          normalized_text = EXCLUDED.normalized_text,
          event_time = EXCLUDED.event_time,
          evidence_segment_id = EXCLUDED.evidence_segment_id,
+         extractor_name = EXCLUDED.extractor_name,
          extractor_version = EXCLUDED.extractor_version,
+         candidate_key = EXCLUDED.candidate_key,
          confidence = EXCLUDED.confidence,
          review_state = EXCLUDED.review_state,
          extraction_run_id = EXCLUDED.extraction_run_id`,
@@ -493,7 +536,9 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
         statement.normalized_text,
         statement.event_time,
         stableId(`evidence:${statement.evidence_slug}`),
+        statement.extractor_version.split("/")[0] || statement.extractor_version,
         statement.extractor_version,
+        statementCandidateKey(doc, statement),
         statement.confidence,
         statement.review_state,
         statement.extraction_run_slug ? stableId(`extraction:${statement.extraction_run_slug}`) : null,
@@ -659,6 +704,27 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
   );
 }
 
+function statementCandidateKey(doc: CanonicalImport, statement: CanonicalImport["statements"][number]): string {
+  const item = doc.source_items.find((row) => row.slug === statement.source_item_slug);
+  const forecast = doc.forecasts.find((row) => row.statement_slug === statement.slug);
+  const extractorName = statement.extractor_version.split("/")[0] || statement.extractor_version;
+  return candidateKey({
+    person_slug: statement.person_slug,
+    source_content_hash: item ? resolveContentHash(item) : "",
+    evidence_hash: sha256(doc.evidence_segments.find((segment) => segment.slug === statement.evidence_slug)?.text ?? ""),
+    extractor_name: extractorName,
+    extractor_version: statement.extractor_version,
+    statement_type: statement.statement_type,
+    question_key: forecast?.question_key ?? null,
+    horizon_text: forecast?.horizon_text ?? null,
+    unit: forecast?.unit ?? null,
+    value_type: forecast?.value_type ?? null,
+    value_numeric: forecast?.value_numeric ?? null,
+    value_min: forecast?.value_min ?? null,
+    value_max: forecast?.value_max ?? null,
+  });
+}
+
 function resolveContentHash(item: CanonicalImport["source_items"][number]): string {
   if (item.content_hash_input) {
     const computed = sha256(item.content_hash_input);
@@ -700,13 +766,15 @@ async function countTables(pool: pg.Pool): Promise<Record<string, number>> {
   return counts;
 }
 
-export async function resetDatabase(pool: pg.Pool): Promise<ImportResult> {
+export async function clearProductTables(pool: pg.Pool): Promise<void> {
   await pool.query(`
     TRUNCATE
       trend_observations,
       trend_definitions,
       cohort_memberships,
       cohorts,
+      review_decisions,
+      statement_extractions,
       statement_relationships,
       statement_topics,
       forecasts,
@@ -725,5 +793,12 @@ export async function resetDatabase(pool: pg.Pool): Promise<ImportResult> {
       dataset_imports
     RESTART IDENTITY CASCADE
   `);
+}
+
+export async function resetDatabase(pool: pg.Pool): Promise<ImportResult> {
+  if (deploymentMode() === "production") {
+    throw new Error("refusing to reset data in production");
+  }
+  await clearProductTables(pool);
   return importCanonical(pool);
 }
