@@ -165,6 +165,8 @@ A database-backed job table or similarly simple queue is acceptable for MVP. Do 
 
 ## Application API
 
+The versioned public read API is `/api/v1`, documented in `docs/PUBLIC_API.md`. It is a separate representation from the canonical import. Unversioned `/api/*` routes are application queries and are not a stability promise.
+
 The query API should support cursor-based pagination and stable filters for:
 
 - people;

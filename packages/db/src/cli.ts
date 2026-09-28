@@ -4,6 +4,7 @@ import { assertDevelopmentMutation, publicCommandError, readDatabaseUrl, readRun
 import { importCanonical, resetDatabase, validateDocument } from "./import";
 import { migrate, migrationState } from "./migrate";
 import { closePool, createPool, endPool } from "./pool";
+import { exportPublicSnapshot, resolveExportOptions } from "./public-snapshot";
 import { executeQualityCheck } from "./quality-command";
 import { getCoverage, getDatasetRecord } from "./queries";
 import { exportReviewManifest, importReviewManifest, reviewStatus, stageCandidates, validateReviewManifest, validateReviewManifestInDatabase } from "./review";
@@ -75,6 +76,12 @@ async function main() {
       console.log(JSON.stringify({ imported: result.imported, counts: result.counts, dataset_id: result.dataset_id }));
       return;
     }
+    if (command === "export") {
+      const options = resolveExportOptions(process.argv.slice(3));
+      const result = await exportPublicSnapshot(options, pool);
+      console.log(JSON.stringify({ out: result.outDir, snapshot_id: result.snapshot_id, counts: result.manifest.counts }));
+      return;
+    }
     if (command === "status") {
       const state = await migrationState(pool);
       if (state !== "current") {
@@ -143,7 +150,7 @@ async function main() {
       console.log(JSON.stringify(await stageCandidates(pool, rows)));
       return;
     }
-    throw new Error("usage: cli.ts migrate|seed|reset|validate <file>|import <file>|status|quality check|review:status|review:export <file>|review:import <file>|review:validate <file>|review:stage <jsonl>");
+    throw new Error("usage: cli.ts migrate|seed|reset|validate <file>|import <file>|status|export [--out <dir>] [--generated-at <iso>]|quality check|review:status|review:export <file>|review:import <file>|review:validate <file>|review:stage <jsonl>");
   } finally {
     await endPool(pool);
     await closePool();

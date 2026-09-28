@@ -335,3 +335,5 @@ The first product slice adds these fields without collapsing the entities above:
 - Freshness of a source is `current` within 14 days of `last_success_at`, `aging` within 90 days, `stale` after that, and `never_checked` when `last_success_at` is null. That is collection state.
 
 The import document is specified in `docs/INGESTION_CONTRACT.md`. Public review rules live in `packages/contracts/src/review.ts`: `rejected` and `unreviewed` are never public, `needs_review` is visible but not verified, `human_verified` may support verified trends, and `machine_validated` stays labeled as machine output. An approval whose source or evidence hash no longer matches the current item is treated as `needs_review` until a new decision covers that material.
+
+The research export and `/api/v1` include `human_verified` and `machine_validated` only. They omit `needs_review`, `unreviewed`, and `rejected`, and they keep `machine_labeled` distinct from `verified`. A stale `human_verified` approval is omitted because its effective state is `needs_review`. The export shape is `docs/PUBLIC_API.md`, not this import model.

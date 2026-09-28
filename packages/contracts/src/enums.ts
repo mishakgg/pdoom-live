@@ -158,4 +158,9 @@ export type DatasetKind = (typeof DATASET_KINDS)[number];
 export const SCHEMA_VERSION = "1.0.0";
 
 /** States that can appear on a public page. Verified and machine-labeled are separate flags. */
-export const PUBLIC_REVIEW_STATES: ReviewState[] = ["needs_review", "machine_validated", "human_verified"];
+export const PUBLIC_REVIEW_STATES = ["needs_review", "machine_validated", "human_verified"] as const satisfies readonly ReviewState[];
+export type PublicReviewState = (typeof PUBLIC_REVIEW_STATES)[number];
+
+/** States included in /api/v1 and the research snapshot. needs_review stays on the website and out of this set. */
+export const RESEARCH_REVIEW_STATES = ["human_verified", "machine_validated"] as const satisfies readonly ReviewState[];
+export type ResearchReviewState = (typeof RESEARCH_REVIEW_STATES)[number];

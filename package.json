@@ -24,6 +24,7 @@
     "db:validate": "tsx packages/db/src/cli.ts validate",
     "db:import": "tsx packages/db/src/cli.ts import",
     "db:status": "tsx packages/db/src/cli.ts status",
+    "data:export": "tsx packages/db/src/cli.ts export",
     "quality:check": "tsx packages/db/src/cli.ts quality check",
     "review:status": "tsx packages/db/src/cli.ts review:status",
     "review:export": "tsx packages/db/src/cli.ts review:export",

@@ -22,6 +22,7 @@ export const publicRoutes: PublicRoute[] = [
   { path: "/source-items/harbor-large-note", heading: "Large fixture body reference" },
   { path: "/trends", heading: "Trends" },
   { path: "/trends/extinction-by-2070-distribution", heading: "Unconditional human-extinction probability by 2070" },
+  { path: "/data", heading: "Public data" },
   { path: "/methodology", heading: "Methodology" },
 ];
 
