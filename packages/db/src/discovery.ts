@@ -1,10 +1,11 @@
 import {
   INDEXABLE_PERSON_STATUSES,
-  PUBLIC_REVIEW_STATES,
+  INDEXABLE_REVIEW_STATES,
   isIndexablePersonStatus,
   isIndexableReviewState,
   isPublicReviewState,
 } from "@pdoom/contracts";
+import { effectiveReviewStateSql } from "./coverage";
 import { getPool } from "./pool";
 
 type Queryable = {
@@ -19,7 +20,8 @@ function iso(value: Date | string | null | undefined): string | null {
 }
 
 const personStatuses = [...INDEXABLE_PERSON_STATUSES];
-const reviewStates = [...PUBLIC_REVIEW_STATES];
+const reviewStates = [...INDEXABLE_REVIEW_STATES];
+const statementReviewSql = effectiveReviewStateSql("s");
 
 const sitemapCte = `
 WITH entries AS (
@@ -48,14 +50,14 @@ WITH entries AS (
       FROM statements s
       JOIN people p ON p.id = s.person_id
       WHERE s.source_item_id = si.id
-        AND s.review_state = ANY($2::text[])
+        AND ${statementReviewSql} = ANY($2::text[])
         AND p.status = ANY($1::text[])
     )
   UNION ALL
   SELECT '/statements/' || s.slug, COALESCE(s.event_time, s.created_at)
   FROM statements s
   JOIN people p ON p.id = s.person_id
-  WHERE s.review_state = ANY($2::text[])
+  WHERE ${statementReviewSql} = ANY($2::text[])
     AND p.status = ANY($1::text[])
     AND s.slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'
   UNION ALL
@@ -124,7 +126,7 @@ export async function listFeedEntries(pool: Queryable, limit: number): Promise<F
      JOIN people p ON p.id = s.person_id
      JOIN source_items si ON si.id = s.source_item_id
      JOIN sources src ON src.id = si.source_id
-     WHERE s.review_state = ANY($1::text[])
+     WHERE ${statementReviewSql} = ANY($1::text[])
        AND p.status = ANY($2::text[])
        AND s.slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'
      ORDER BY s.event_time DESC NULLS LAST, s.created_at DESC, s.id DESC
@@ -171,7 +173,7 @@ export type StatementDiscovery = {
 
 export async function getStatementDiscovery(slug: string, pool: Queryable = getPool()): Promise<StatementDiscovery | null> {
   const result = await pool.query(
-    `SELECT s.slug, s.statement_type, s.normalized_text, s.review_state, s.event_time,
+    `SELECT s.slug, s.statement_type, s.normalized_text, ${statementReviewSql} AS review_state, s.event_time,
             p.slug AS person_slug, p.display_name, p.status AS person_status,
             src.name AS source_name, src.source_type,
             si.slug AS source_item_slug, si.title AS source_item_title, si.canonical_url AS source_canonical_url,
@@ -237,7 +239,7 @@ export async function getSourceItemDiscovery(slug: string, pool: Queryable = get
               FROM statements s
               JOIN people p ON p.id = s.person_id
               WHERE s.source_item_id = si.id
-                AND s.review_state = ANY($2::text[])
+                AND ${statementReviewSql} = ANY($2::text[])
                 AND p.status = ANY($3::text[])
             ) AS has_indexable_statement,
             EXISTS (
@@ -246,7 +248,7 @@ export async function getSourceItemDiscovery(slug: string, pool: Queryable = get
               JOIN people p ON p.id = s.person_id
               WHERE current.id IS NOT NULL
                 AND s.source_item_id = current.id
-                AND s.review_state = ANY($2::text[])
+                AND ${statementReviewSql} = ANY($2::text[])
                 AND p.status = ANY($3::text[])
             ) AS current_has_indexable_statement
      FROM source_items si

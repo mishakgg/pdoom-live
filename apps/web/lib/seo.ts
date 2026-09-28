@@ -201,6 +201,16 @@ const LIST_COPY: Record<string, { title: string; path: string; description: stri
     path: "/trends",
     description: "Published trend summaries. Each one names its method, cohort, and the records it leaves out. A summary is not a consensus.",
   },
+  search: {
+    title: "Search",
+    path: "/search",
+    description: "Search people, statements, topics, and sources in the public dataset. Query results are not indexed separately.",
+  },
+  data: {
+    title: "Data",
+    path: "/data",
+    description: "Public dataset exports and the versioned read API. The export omits rejected, unreviewed, and needs-review records.",
+  },
   methodology: {
     title: "Methodology",
     path: "/methodology",
@@ -446,7 +456,9 @@ export const STATIC_SITEMAP_PATHS = [
   "/topics",
   "/statements",
   "/sources",
+  "/search",
   "/trends",
+  "/data",
   "/methodology",
 ] as const;
 
@@ -479,8 +491,10 @@ const INDEXABLE_PATH = [
   /^\/sources$/,
   /^\/sources\/[a-z0-9]+(?:-[a-z0-9]+)*$/,
   /^\/source-items\/[a-z0-9]+(?:-[a-z0-9]+)*$/,
+  /^\/search$/,
   /^\/trends$/,
   /^\/trends\/[a-z0-9]+(?:-[a-z0-9]+)*$/,
+  /^\/data$/,
   /^\/methodology$/,
 ];
 

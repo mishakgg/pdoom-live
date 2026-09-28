@@ -12,7 +12,7 @@ export type ReviewPresentation = {
 const POLICY: Record<ReviewState, ReviewPresentation> = {
   rejected: { public: false, verified: false, machine_labeled: false, indexable: false },
   needs_review: { public: true, verified: false, machine_labeled: false, indexable: false },
-  unreviewed: { public: true, verified: false, machine_labeled: false, indexable: false },
+  unreviewed: { public: false, verified: false, machine_labeled: false, indexable: false },
   machine_validated: { public: true, verified: false, machine_labeled: true, indexable: true },
   human_verified: { public: true, verified: true, machine_labeled: false, indexable: true },
 };

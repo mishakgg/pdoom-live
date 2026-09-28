@@ -1,10 +1,14 @@
 import { isIndexableReviewState } from "@pdoom/contracts";
+import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
-import { formatWhen } from "@/lib/format";
+import { ExternalLink } from "@/components/statement-bits";
+import { PartialCollectionNote } from "@/components/states";
+import { formatWhen, isHumanVerified, phraseLabel, reviewLabel } from "@/lib/format";
 import { loadSource } from "@/lib/loaders";
+import { freshnessLabel, sourceMaterialState } from "@/lib/presentation";
+import { requestNonce } from "@/lib/request-nonce";
 import { canonicalOrigin, notFoundMetadata, pageMetadata, sourceFields } from "@/lib/seo";
 import { sourceStructuredData } from "@/lib/structured-data";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
@@ -29,10 +33,12 @@ export default async function SourcePage({ params }: { params: Promise<{ slug: s
   const source = await loadSource(slug);
   if (!source) notFound();
   const indexable = isIndexableReviewState(source.review_state);
+  const nonce = await requestNonce();
   return (
     <>
       {indexable ? (
         <JsonLd
+          nonce={nonce}
           data={sourceStructuredData({
             origin: canonicalOrigin(),
             slug: source.slug,
@@ -41,15 +47,50 @@ export default async function SourcePage({ params }: { params: Promise<{ slug: s
           })}
         />
       ) : null}
-      <p className="kicker">{source.source_type} · {source.collection_method}</p>
+      <p className="kicker">{phraseLabel(source.source_type)} · {phraseLabel(source.collection_method)} · {freshnessLabel(source.freshness)}</p>
       <h1>{source.name}</h1>
-      <p className="lede">{source.rights_notes}</p>
-      {source.items.map((item) => (
-        <article className="card" key={item.slug}>
-          <h2><Link href={`/source-items/${item.slug}`}>{item.title}</Link></h2>
-          <p className="meta">Published {formatWhen(item.published_at)} · observed {formatWhen(item.observed_at)} · {item.collection_status} · {item.availability}</p>
-        </article>
-      ))}
+      {source.rights_notes ? <p className="lede">{source.rights_notes}</p> : <p className="lede">No rights note is recorded for this source.</p>}
+      <dl className="audit">
+        <dt>Canonical URL</dt>
+        <dd><ExternalLink href={source.canonical_url}>{source.canonical_url}</ExternalLink></dd>
+        <dt>Review</dt>
+        <dd>
+          {reviewLabel(source.review_state)}
+          {isHumanVerified(source.review_state) ? "" : " · not a settled source record"}
+        </dd>
+        <dt>Last success</dt>
+        <dd>{formatWhen(source.last_success_at)}</dd>
+        <dt>Last check</dt>
+        <dd>{formatWhen(source.last_checked_at)}</dd>
+        <dt>Collection</dt>
+        <dd>{source.enabled ? "Enabled" : "Disabled"}{source.collection_adapter ? ` · ${source.collection_adapter}` : ""}</dd>
+        {source.owner_slug && source.owner_name ? (
+          <>
+            <dt>Owner</dt>
+            <dd><Link href={`/people/${source.owner_slug}`}>{source.owner_name}</Link></dd>
+          </>
+        ) : null}
+      </dl>
+      {!source.enabled ? <p className="warning">This source is disabled. Items already stored remain listed.</p> : null}
+      <section aria-labelledby="source-items">
+        <h2 id="source-items">Items</h2>
+        {source.items.length ? source.items.map((item) => {
+          const material = sourceMaterialState(item.collection_status, item.availability);
+          return (
+            <article className="card" key={item.slug}>
+              <h3><Link href={`/source-items/${item.slug}`}>{item.title ?? "Untitled source item"}</Link></h3>
+              <p className="meta">
+                Published {formatWhen(item.published_at)} · observed {formatWhen(item.observed_at)} · {phraseLabel(item.collection_status)} · {phraseLabel(item.availability)}
+              </p>
+              <p><ExternalLink href={item.canonical_url}>{item.canonical_url}</ExternalLink></p>
+              {material === "unavailable" ? <p>Original material is not available. The catalog row is kept so the gap stays visible.</p> : null}
+              {material === "partial" ? <PartialCollectionNote /> : null}
+            </article>
+          );
+        }) : (
+          <p>No item has been collected for this source. An empty item list is a collection gap, not proof the channel never published.</p>
+        )}
+      </section>
     </>
   );
 }

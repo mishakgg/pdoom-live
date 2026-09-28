@@ -58,7 +58,7 @@ describe("fixture import and trends", () => {
     const trend = await getTrend("extinction-by-2070-distribution", pool);
     expect(trend?.kind).toBe("distribution");
     if (trend?.kind !== "distribution") return;
-    expect(trend.method_version).toBe("explicit-numeric-distribution/1.0.0");
+    expect(trend.method_version).toBe("explicit-numeric-distribution/1.1.0");
     expect(trend.distribution.included.map((item) => item.value_numeric)).toEqual([0.05, 0.09, 0.12, 0.18]);
     expect(trend.distribution.contributing_person_count).toBe(4);
     expect(trend.distribution.contributing_statement_count).toBe(4);
@@ -73,9 +73,65 @@ describe("fixture import and trends", () => {
     expect(reasons["noah-extinction-range-2025"]).toBe("value_type_not_point");
     expect(reasons["ada-misuse-2024"]).toBe("statement_type");
     expect(reasons["ada-inferred-2024"]).toBe("statement_type");
-    expect(reasons["ada-extinction-2023"]).toBe("not_latest");
+    expect(reasons["ada-extinction-2023"]).toBe("superseded");
     expect(trend.distribution.included.map((item) => item.value_numeric)).not.toContain(0.25);
     expect(trend.distribution.included.map((item) => item.value_numeric)).not.toContain(0.55);
+  });
+
+  it("keeps each forecast family on its own question key", async () => {
+    const coding = await getTrend("coding-automation-share-by-2028", pool);
+    expect(coding?.kind).toBe("quantity");
+    if (coding?.kind !== "quantity") return;
+    expect(coding.quantity.density).toBe("sparse");
+    expect(coding.quantity.median).toBeNull();
+    expect(coding.quantity.unit).toBe("share");
+    expect(coding.quantity.included.map((item) => item.value_numeric)).toEqual([0.4]);
+    expect(coding.quantity.coverage.cohort_size).toBe(8);
+    expect(coding.quantity.coverage.contributing_person_count).toBe(1);
+    expect(coding.quantity.coverage.cohort_members_without_included_estimate).toBe(7);
+
+    const unemployment = await getTrend("unemployment-change-by-2030", pool);
+    expect(unemployment?.kind).toBe("quantity");
+    if (unemployment?.kind !== "quantity") return;
+    expect(unemployment.quantity.unit).toBe("percentage_points");
+    expect(unemployment.quantity.included.map((item) => item.value_numeric)).toEqual([2]);
+
+    const years = await getTrend("agi-arrival-year", pool);
+    expect(years?.kind).toBe("timeline");
+    if (years?.kind !== "timeline") return;
+    expect(years.timeline.density).toBe("empty");
+    expect(years.timeline.value_semantics).toBe("year");
+    expect(years.timeline.median).toBeNull();
+    expect(Object.fromEntries(years.timeline.exclusions.map((item) => [item.statement_slug, item.reason]))["mateo-agi-2025"]).toBe("question_key_mismatch");
+
+    const probability = await getTrend("agi-probability-by-2032", pool);
+    expect(probability?.kind).toBe("distribution");
+    if (probability?.kind !== "distribution") return;
+    expect(probability.distribution.value_semantics).toBe("probability");
+    expect(probability.distribution.included.map((item) => item.value_numeric)).toEqual([0.4]);
+    expect(probability.distribution.density).toBe("sparse");
+
+    const conditional = await getTrend("conditional-extinction-given-agi", pool);
+    expect(conditional?.kind).toBe("distribution");
+    if (conditional?.kind !== "distribution") return;
+    expect(conditional.distribution.included.map((item) => item.value_numeric)).toEqual([0.55]);
+
+    const revision = await getTrend("extinction-by-2070-revisions", pool);
+    expect(revision?.kind).toBe("revision");
+    if (revision?.kind !== "revision") return;
+    expect(revision.revision.chains.map((chain) => chain.person_slug)).toEqual(["ada-quill"]);
+    expect(revision.revision.chains[0]?.points.map((point) => point.value_numeric)).toEqual([0.08, 0.12]);
+    expect(revision.revision.density).toBe("individual");
+
+    const gdp = await getTrend("gdp-growth-by-2035", pool);
+    expect(gdp?.kind).toBe("quantity");
+    if (gdp?.kind !== "quantity") return;
+    expect(gdp.quantity.density).toBe("empty");
+    expect(gdp.quantity.question_key).not.toBe(unemployment.quantity.question_key);
+
+    const payload = JSON.stringify({ coding, years, revision, gdp });
+    expect(payload).not.toMatch(/\bSELECT\b|\bJOIN\b|statement_relationships/);
+    expect(years.timeline.exclusions.every((item) => item.reason_label.length > 0)).toBe(true);
   });
 
   it("counts statement volume without blending classes", async () => {

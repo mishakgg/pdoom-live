@@ -1,6 +1,10 @@
+import { trendKindLabel } from "@pdoom/contracts";
+import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
-import { DistributionPanel, VolumePanel } from "@/components/trends";
+import { TrendView } from "@/components/trend-view";
+import { formatWhen } from "@/lib/format";
 import { loadTrend } from "@/lib/loaders";
+import { requestNonce } from "@/lib/request-nonce";
 import { canonicalOrigin, notFoundMetadata, pageMetadata, trendFields } from "@/lib/seo";
 import { trendStructuredData } from "@/lib/structured-data";
 import { notFound } from "next/navigation";
@@ -26,9 +30,11 @@ export default async function TrendPage({ params }: { params: Promise<{ slug: st
   const { slug } = await params;
   const trend = await loadTrend(slug);
   if (!trend) notFound();
+  const nonce = await requestNonce();
   return (
     <>
       <JsonLd
+        nonce={nonce}
         data={trendStructuredData({
           origin: canonicalOrigin(),
           slug: trend.slug,
@@ -37,32 +43,22 @@ export default async function TrendPage({ params }: { params: Promise<{ slug: st
           cohort_definition: trend.cohort_definition,
         })}
       />
-      <p className="kicker">Calculated {trend.calculated_at}</p>
+      <p className="kicker">
+        <Link href="/trends">Trends</Link>
+        {" · "}
+        {trendKindLabel(trend.kind)}
+        {" · "}
+        Calculated {formatWhen(trend.calculated_at)}
+      </p>
       <h1>{trend.name}</h1>
       <p className="lede">{trend.cohort_definition}</p>
-      <p className="meta">Cohort {trend.cohort_slug} version {trend.cohort_version}. Method {trend.method_version}.</p>
-      {trend.kind === "distribution" ? (
-        <DistributionPanel
-          name={trend.name}
-          methodVersion={trend.method_version}
-          cohortDefinition={trend.cohort_definition}
-          included={trend.distribution.included}
-          median={trend.distribution.median}
-          minimum={trend.distribution.minimum}
-          maximum={trend.distribution.maximum}
-          contributingPersonCount={trend.distribution.contributing_person_count}
-          contributingStatementCount={trend.distribution.contributing_statement_count}
-          coverage={trend.distribution.coverage}
-          exclusions={trend.distribution.exclusions}
-        />
-      ) : (
-        <VolumePanel
-          rows={trend.volume.rows}
-          methodVersion={trend.method_version}
-          contributingPersonCount={trend.volume.contributing_person_count}
-          contributingStatementCount={trend.volume.contributing_statement_count}
-        />
-      )}
+      <p className="meta">
+        Cohort {trend.cohort_slug} version {trend.cohort_version}. Method {trend.method_version}.
+        {trend.source === "prepared_method" ? " Prepared method for this question key." : ""}
+        {trend.source === "discovered_question" ? " Opened from a stored question key that has a human-verified numeric forecast." : ""}
+        {trend.source === "published_definition" ? " Published with the loaded dataset." : ""}
+      </p>
+      <TrendView trend={trend} />
     </>
   );
 }

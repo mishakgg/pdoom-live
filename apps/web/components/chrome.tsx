@@ -1,30 +1,15 @@
 import Link from "next/link";
 import { LiveSearch } from "./live-search";
+import { SiteNav } from "./site-nav";
 
-const links: Array<[string, string]> = [
-  ["/", "Activity"],
-  ["/people", "People"],
-  ["/topics", "Topics"],
-  ["/statements", "Statements"],
-  ["/sources", "Sources"],
-  ["/trends", "Trends"],
-  ["/methodology", "Method"],
-];
-
-export function SiteHeader({ pathname = "" }: { pathname?: string }) {
+export function SiteHeader() {
   return (
     <header className="mast">
       <Link className="brand" href="/">
         <em>pdoom</em>
         <span>.live</span>
       </Link>
-      <nav className="nav" aria-label="Primary">
-        {links.map(([href, label]) => (
-          <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined}>
-            {label}
-          </Link>
-        ))}
-      </nav>
+      <SiteNav />
       <LiveSearch />
     </header>
   );
@@ -36,6 +21,9 @@ export function SiteFooter() {
       <p>
         pdoom.live records sourced statements. Explicit estimates, qualitative views, and model-inferred signals stay separate.
         A synthetic fixture is marked synthetic. A live dataset describes its cohort and is not a census.
+      </p>
+      <p>
+        <Link href="/methodology">Read the methodology</Link>
       </p>
     </footer>
   );

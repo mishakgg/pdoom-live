@@ -8,7 +8,9 @@ import {
 import {
   isIndexableReviewState,
   isPublicReviewState,
+  INDEXABLE_REVIEW_STATES,
   PUBLIC_REVIEW_STATES,
+  RESEARCH_REVIEW_STATES,
   REVIEW_STATES,
 } from "@pdoom/contracts";
 import { describe, expect, it } from "vitest";
@@ -23,6 +25,7 @@ import {
   resolveCanonicalOrigin,
   robotsDocument,
   ROBOTS_DISALLOW,
+  STATIC_SITEMAP_PATHS,
   sitemapChunkBounds,
   sitemapChunkPlan,
   renderSitemapIndex,
@@ -214,17 +217,30 @@ describe("robots and sitemap shape", () => {
     expect(robots.host).toBe(origin);
     expect(robots.rules.allow).toBe("/");
     expect(robots.rules.disallow).toEqual(expect.arrayContaining(["/api/", "/admin", "/curation", "/curator", "/ambiguity"]));
-    for (const path of ["/people", "/statements", "/topics", "/sources", "/trends", "/methodology"]) {
+    for (const path of ["/people", "/statements", "/topics", "/sources", "/search", "/trends", "/data", "/methodology"]) {
       expect(ROBOTS_DISALLOW.some((rule) => path.startsWith(rule.replace("/*", "")))).toBe(false);
     }
+    expect(ROBOTS_DISALLOW).toEqual(expect.arrayContaining(["/curation", "/curation/"]));
+    expect(STATIC_SITEMAP_PATHS).toEqual([
+      "/",
+      "/people",
+      "/topics",
+      "/statements",
+      "/sources",
+      "/search",
+      "/trends",
+      "/data",
+      "/methodology",
+    ]);
+    expect(STATIC_SITEMAP_PATHS).not.toContain("/curation");
   });
 
   it("splits sitemap chunks only after the first page fills", () => {
     expect(sitemapChunkPlan(0)).toEqual([0]);
-    expect(sitemapChunkPlan(9993)).toEqual([0]);
-    expect(sitemapChunkPlan(9994)).toEqual([0, 1]);
-    expect(sitemapChunkBounds(0)).toEqual({ offset: 0, limit: 9993 });
-    expect(sitemapChunkBounds(1).offset).toBe(9993);
+    expect(sitemapChunkPlan(9991)).toEqual([0]);
+    expect(sitemapChunkPlan(9992)).toEqual([0, 1]);
+    expect(sitemapChunkBounds(0)).toEqual({ offset: 0, limit: 9991 });
+    expect(sitemapChunkBounds(1).offset).toBe(9991);
     const links = toSitemapLinks(
       origin,
       [
@@ -235,8 +251,11 @@ describe("robots and sitemap shape", () => {
       true,
     );
     expect(links.map((link) => link.url)).toContain("https://pdoom.live/");
+    expect(links.map((link) => link.url)).toContain("https://pdoom.live/search");
+    expect(links.map((link) => link.url)).toContain("https://pdoom.live/data");
     expect(links.map((link) => link.url)).toContain("https://pdoom.live/statements/ada-extinction-2023");
     expect(links.map((link) => link.url).join(" ")).not.toContain("/api/");
+    expect(links.map((link) => link.url).join(" ")).not.toContain("/curation");
     expect(links.every((link) => link.url.startsWith(origin))).toBe(true);
     const index = renderSitemapIndex(origin, [0, 1]);
     expect(index).toContain("https://pdoom.live/sitemaps/0.xml");
@@ -410,8 +429,12 @@ describe("social cards", () => {
 
 describe("public feed and sitemap filtering", () => {
   it("locks indexable review states to verified and machine-validated records", () => {
-    expect(REVIEW_STATES.filter(isIndexableReviewState).sort()).toEqual([...PUBLIC_REVIEW_STATES].sort());
+    expect(REVIEW_STATES.filter(isIndexableReviewState).sort()).toEqual([...INDEXABLE_REVIEW_STATES].sort());
+    expect([...INDEXABLE_REVIEW_STATES].sort()).toEqual([...RESEARCH_REVIEW_STATES].sort());
+    expect([...PUBLIC_REVIEW_STATES].sort()).toEqual(["human_verified", "machine_validated", "needs_review"]);
     expect(isPublicReviewState("needs_review")).toBe(true);
+    expect(isPublicReviewState("unreviewed")).toBe(false);
+    expect(isPublicReviewState("rejected")).toBe(false);
     expect(isIndexableReviewState("needs_review")).toBe(false);
     expect(isIndexableReviewState("unreviewed")).toBe(false);
     expect(isIndexableReviewState("rejected")).toBe(false);
@@ -495,6 +518,28 @@ describe("public feed and sitemap filtering", () => {
       expect(xml).not.toContain("needs_review");
       expect(xml).not.toContain("https://synthetic.pdoom.example/items/ada-essay-2023");
       expect(xml).toContain("no longer available");
+
+      await client.query(
+        `INSERT INTO review_decisions (
+           id, decision_key, statement_id, candidate_key, decision, previous_review_state,
+           resulting_review_state, reviewed_at, reviewer, source_item_id, evidence_segment_id,
+           source_content_hash, evidence_hash, content_version, corrections_json, original_extraction_json
+         )
+         SELECT gen_random_uuid(), 'stale-discovery-test', s.id, s.candidate_key, 'approve', 'needs_review',
+                'human_verified', '2026-09-27T00:00:00Z', 'test', s.source_item_id, s.evidence_segment_id,
+                repeat('a', 64), repeat('b', 64), si.content_version, '{}'::jsonb, '{}'::jsonb
+         FROM statements s
+         JOIN source_items si ON si.id = s.source_item_id
+         WHERE s.slug = 'noah-extinction-range-2025'`,
+      );
+      const afterStale = await listSitemapRecords(client, { offset: 0, limit: 5000 });
+      expect(paths).toContain("/statements/noah-extinction-range-2025");
+      expect(afterStale.map((record) => record.path)).not.toContain("/statements/noah-extinction-range-2025");
+      const stale = await getStatementDiscovery("noah-extinction-range-2025", client);
+      expect(stale?.review_state).toBe("needs_review");
+      expect(stale?.indexable).toBe(false);
+      expect(stale?.normalized_text).toBe("");
+      expect((await listFeedEntries(client, 100)).map((entry) => entry.slug)).not.toContain("noah-extinction-range-2025");
       expect(countSitemapRecords).toEqual(expect.any(Function));
     } finally {
       await client.query("ROLLBACK");

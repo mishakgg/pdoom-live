@@ -305,7 +305,7 @@ Suggested shared states:
 - `rejected`
 - `needs_review`
 
-The public product may expose different states differently. High-impact statements should not quietly bypass review/quality gates.
+The public product may expose different states differently. High-impact statements should not quietly bypass review/quality gates. `human_verified` is written only by an operator review decision. The machine extraction stays in `statement_extractions`. `review_decisions` appends each approve, reject, or needs-changes action. See `docs/CURATION.md`.
 
 ## Deletion and correction
 
@@ -326,11 +326,14 @@ The first product slice adds these fields without collapsing the entities above:
 
 - Slugs on people, organizations, sources, source items, evidence, statements, topics, cohorts, and runs, used as natural keys in the import document.
 - `source_items.logical_key`, `content_hash`, `content_version`, and `is_current`. The unpublished body is not a column.
-- `forecasts.question_key`, the comparability key a trend must match.
+- `forecasts.question_key`, the comparability key a trend must match. See [Trend methodology](./TREND_METHODOLOGY.md).
 - `cohorts` and `cohort_memberships`, so a trend can name a cohort version.
-- `trend_definitions.method_version` plus the aggregation JSON. Observations are computed from canonical rows.
+- `trend_definitions.method_version` plus the aggregation JSON. Observations are computed from canonical rows. The JSON union adds `timeline_forecast`, `quantity_forecast`, and `historical_revision` beside the original distribution and volume tags. `conditionality` on a distribution is optional. No new table or migration is required.
+- Prepared methods in `packages/db/src/trend-catalog.ts` and discovered question keys are computed at read time. They are not extra canonical tables.
 - `dataset_imports` stores `schema_version`, `dataset_id`, `dataset_kind` (`synthetic` or `live`), `generated_at`, `imported_at`, `notice`, producer, and the current cohort. One row is current.
 - Identity, affiliation, and participant confidence is categorical. Statement, forecast, topic, and relationship confidence stays numeric.
 - Freshness of a source is `current` within 14 days of `last_success_at`, `aging` within 90 days, `stale` after that, and `never_checked` when `last_success_at` is null. That is collection state.
 
-The import document is specified in `docs/INGESTION_CONTRACT.md`. Public review rules live in `packages/contracts/src/review.ts`. `rejected` is never public. `needs_review` and `unreviewed` may appear on a public page and are not verified; they are excluded from sitemaps, the Atom feed, and search-engine indexing. `human_verified` may support verified trends. `machine_validated` stays labeled as machine output and may be indexed with that label. People with status `review` stay out of the public index.
+The import document is specified in `docs/INGESTION_CONTRACT.md`. Public review rules live in `packages/contracts/src/review.ts`. `rejected` and `unreviewed` are never public. `needs_review` may appear on a public page and is not verified. Sitemaps, the Atom feed, and search-engine indexing include `human_verified` and `machine_validated` only. `machine_validated` stays labeled as machine output. People with status `review` stay out of the public index. An approval whose source or evidence hash no longer matches the current item is treated as `needs_review` until a new decision covers that material, so it stays on the website and drops out of indexing.
+
+The research export and `/api/v1` include `human_verified` and `machine_validated` only. They omit `needs_review`, `unreviewed`, and `rejected`, and they keep `machine_labeled` distinct from `verified`. A stale `human_verified` approval is omitted because its effective state is `needs_review`. The export shape is `docs/PUBLIC_API.md`, not this import model.

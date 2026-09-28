@@ -1,3 +1,4 @@
+import { cache } from "react";
 import {
   getDatasetRecord,
   getPerson,
@@ -9,7 +10,6 @@ import {
   getTopic,
   getTrend,
 } from "@pdoom/db";
-import { cache } from "react";
 
 export const loadDataset = cache(() => getDatasetRecord());
 export const loadPerson = cache((slug: string) => getPerson(slug));
