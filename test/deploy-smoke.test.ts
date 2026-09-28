@@ -16,6 +16,12 @@ describe("deployment smoke script", () => {
     expect(source).toContain("x-frame-options");
     expect(source).toContain("permissions-policy");
     expect(source).toContain("Live dataset");
+    expect(source).toContain("Tracked people</dt><dd>[1-9][0-9]*</dd>");
+    expect(source).toContain("/search");
+    expect(source).toContain("/data");
+    expect(source).toContain("Disallow: /curation");
+    expect(source).toContain("/sitemap.xml");
+    expect(source).toContain("/feed.xml");
     expect(source).not.toMatch(/\b(migrate|import|seed|reset|pg_dump|pg_restore)\b/);
     expect(source).not.toContain("docker compose");
     expect(source).not.toMatch(/\b(POST|PUT|PATCH|DELETE)\b/);

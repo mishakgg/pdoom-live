@@ -291,7 +291,7 @@ Host expectations, failure behavior, and the VM-loss procedure are in [Disaster 
 
 ## Checks
 
-`bash scripts/deploy-smoke.sh http://127.0.0.1:3000` is the post-deploy check. It requests liveness, readiness, the major public routes, a live-dataset home page, a database-backed people index, and the production security headers. It does not change the database. Plain `http` does not require `Strict-Transport-Security`.
+`bash scripts/deploy-smoke.sh http://127.0.0.1:3000` is the post-deploy check. It requests liveness, readiness, the major public routes, a live-dataset home page whose status bar names a positive tracked-people count, a database-backed people index, the sitemap, robots rules, the Atom feed, and the production security headers. `/curation` must stay a 404, and it must not appear in the sitemap. It does not change the database. Plain `http` does not require `Strict-Transport-Security`.
 
 `bash scripts/runtime-smoke.sh pdoom-live:ci` builds the image when it is missing, migrates a throwaway database, proves production seed and synthetic import are refused, and curls liveness, readiness, and security headers. GitHub Actions runs that script on `ubuntu-latest` with a read-only checkout token. Fork pull requests do not receive deployment credentials, write tokens, or a production database. Workflows do not use `pull_request_target` or self-hosted runners.
 
