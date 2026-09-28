@@ -157,4 +157,5 @@ export type DatasetKind = (typeof DATASET_KINDS)[number];
 
 export const SCHEMA_VERSION = "1.0.0";
 
-export const PUBLIC_REVIEW_STATES: ReviewState[] = ["human_verified", "machine_validated"];
+/** States that can appear on a public page. Verified and machine-labeled are separate flags. */
+export const PUBLIC_REVIEW_STATES: ReviewState[] = ["needs_review", "machine_validated", "human_verified"];

@@ -1,16 +1,16 @@
-import { getPool } from "@pdoom/db";
 import { setDatabaseReady } from "@pdoom/observability";
 import { observe } from "@/lib/observe";
+import { readinessResponse } from "@/lib/readiness-response";
 
 export const dynamic = "force-dynamic";
 
 export const GET = observe("health", async function GET() {
+  const response = await readinessResponse();
   try {
-    await getPool().query("SELECT 1");
-    setDatabaseReady(true);
-    return Response.json({ ok: true });
+    const report = (await response.clone().json()) as { checks?: { database?: string } };
+    setDatabaseReady(report.checks?.database === "ok");
   } catch {
     setDatabaseReady(false);
-    return Response.json({ ok: false }, { status: 503 });
   }
+  return response;
 });

@@ -2854,10 +2854,10 @@
       "slug": "extinction-by-2070-distribution",
       "name": "Unconditional human-extinction probability by 2070",
       "topic_slug": "ai-extinction",
-      "method_version": "explicit-numeric-distribution/1.0.0",
+      "method_version": "explicit-numeric-distribution/1.1.0",
       "cohort_slug": "synthetic-frontier-v1",
       "cohort_version": "1",
-      "cohort_definition": "Latest human-verified point estimate per cohort member for question ai_extinction_unconditional_by_2070 only.",
+      "cohort_definition": "Latest human-verified point estimate per cohort member for question ai_extinction_unconditional_by_2070 only. A median is withheld below three included point estimates. An earlier estimate is superseded only when a human-verified update or retraction links it to a later estimate on this question.",
       "published": true,
       "aggregation": {
         "type": "explicit_numeric_distribution",
@@ -2877,7 +2877,8 @@
         "person_reducer": "latest_event_time",
         "require_horizon": true,
         "require_unit": "probability",
-        "value_type": "point"
+        "value_type": "point",
+        "conditionality": "unconditional"
       }
     },
     {

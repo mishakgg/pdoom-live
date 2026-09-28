@@ -115,7 +115,7 @@ Use precise language.
 - **Explicit numeric forecast**: a forecast where the person supplies a number/range/distribution.
 - **Explicit qualitative view**: a sourced view without an explicit numerical probability/value.
 - **Model-inferred signal**: machine-generated classification or synthesis derived from evidence, clearly labeled as such.
-- **Trend**: an aggregate computed over a declared cohort, topic definition, method, and time window.
+- **Trend**: an aggregate computed over a declared cohort, one question key, a versioned method, and the records that method keeps. Probability distributions, predicted years, quantities, and one-person revisions stay separate. The rules are in [Trend methodology](./TREND_METHODOLOGY.md).
 - **Coverage**: how much of the intended cohort/sources have been observed recently.
 
 ## Product principles

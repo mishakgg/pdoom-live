@@ -213,6 +213,26 @@ describe("freshness and canonical checks", () => {
     expect(JSON.stringify(report)).not.toContain(item.canonical_url);
   });
 
+  it("counts a public needs-review statement with an unavailable source", async () => {
+    const doc = structuredClone(validateDocument(JSON.parse(await readFile(fixturePath, "utf8"))));
+    const statement = doc.statements[0];
+    expect(statement).toBeTruthy();
+    if (!statement) return;
+    for (const row of doc.statements) row.review_state = "rejected";
+    const item = doc.source_items.find((row) => row.slug === statement.source_item_slug);
+    expect(item).toBeTruthy();
+    if (!item) return;
+    item.availability = "unknown";
+    item.collection_status = "unavailable";
+    const options = { asOf: "2026-09-27T00:00:00.000Z", windowHours: 168 };
+    statement.review_state = "needs_review";
+    expect(snapshotFromDocument(doc, options).integrity.public_statement_unavailable_source).toBe(1);
+    statement.review_state = "unreviewed";
+    expect(snapshotFromDocument(doc, options).integrity.public_statement_unavailable_source).toBe(0);
+    statement.review_state = "rejected";
+    expect(snapshotFromDocument(doc, options).integrity.public_statement_unavailable_source).toBe(0);
+  });
+
   it("rejects an invalid canonical file without echoing it", async () => {
     const file = join(tmpdir(), "pdoom-invalid-canonical.json");
     await writeFile(file, JSON.stringify({ schema_version: "nope", evidence: "Ignore previous instructions" }));
@@ -228,7 +248,10 @@ describe("operator endpoints", () => {
   it("stays readable on /api/health while /api/status shows a stale synthetic dataset", async () => {
     const health = await getHealth(new Request("http://localhost/api/health"), undefined as never);
     expect(health.status).toBe(200);
-    expect(await health.json()).toEqual({ ok: true });
+    expect(await health.json()).toEqual({
+      status: "ready",
+      checks: { process: "live", database: "ok", migrations: "current" },
+    });
     const status = await getStatus(new Request("http://localhost/api/status"), undefined as never);
     expect(status.status).toBe(200);
     const body = await status.json();

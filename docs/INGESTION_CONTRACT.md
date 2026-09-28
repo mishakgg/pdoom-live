@@ -15,8 +15,10 @@ Identity and affiliation confidence is `high`, `medium`, `low`, or `unknown`. Th
 Operator commands, with `DATABASE_URL` set for the write commands:
 
 - `npm run db:validate -- data/fixtures/synthetic/dataset.json` parses and checks the file. It does not write.
-- `npm run db:import -- <file>` validates, applies pending migrations, then upserts in one transaction. Rows absent from the file are kept.
-- `npm run db:status` prints the current dataset, cohort, counts, and coverage.
+- `npm run db:migrate` applies pending SQL migrations. It does not import a dataset.
+- `npm run db:import -- <file>` validates, requires migrations to already be current, then upserts in one transaction. It does not apply migrations. Rows absent from the file are kept.
+- `npm run db:status` prints migration state, the current dataset, cohort, counts, and coverage. It does not migrate or import.
+- `npm run db:seed` and `npm run db:reset` load the synthetic fixture. Production mode refuses both, and it refuses a synthetic `db:import`.
 
 Canonical values are product semantics. Collector strings such as `openalex_api` map to `api`, and the original string is stored as `collection_adapter` or `verification_detail`. The map is `packages/contracts/vocabulary-map.json`. Unmapped strings fail. `SourceObservation` is still the collector envelope and is not this document.
 
@@ -42,7 +44,9 @@ Re-importing the same document does not create duplicate statements. A changed `
 
 Numeric fields are allowed only on `explicit_numeric` forecasts. `value_text` such as `12%` must match `value_numeric` on the 0–1 scale. Qualitative words do not parse.
 
-`question_key` is the comparability key. Trends include a forecast only when that key, unit, horizon, value type, review state, and topic all match the method. Extinction, catastrophic harm, disempowerment, and AGI arrival must use different keys.
+`question_key` is the comparability key. A numeric trend includes a forecast when that key, unit, conditionality, value shape, and review state match the method. A horizon is required when the method says so. A matching key is included even if the topic slug differs. Topic slugs explain nearby exclusions. They are not a second comparability key.
+
+Keep separate keys for unconditional extinction, conditional extinction, catastrophic harm, disempowerment, AGI probabilities, AGI years, ASI years, coding automation, unemployment, productivity, and GDP. The rules and the prepared keys are in [Trend methodology](./TREND_METHODOLOGY.md).
 
 ## Source text
 
@@ -52,4 +56,6 @@ Canonical URLs must be `http` or `https`, without embedded credentials, and must
 
 ## Review
 
-Published numeric distributions in this slice accept `human_verified` only. Volume counts accept `human_verified` and `machine_validated`. `needs_review` remains visible on the statement, not in those trends.
+Published numeric trends accept `human_verified` only. That covers probability distributions, timeline years, quantities, and historical revisions. Volume counts accept `human_verified` and `machine_validated`. A live import cannot set `human_verified`; that state comes from a review decision. See `docs/CURATION.md`. `needs_review` remains visible on the statement and is not verified, and it is not included in those trends. `unreviewed` candidates and `rejected` statements are not public pages. An approval whose source or evidence no longer matches is treated as `needs_review` and stays out of numeric trends.
+
+`trend_definitions.aggregation` is a tagged object. Besides `explicit_numeric_distribution` and `count_by_topic_and_statement_type`, a document may declare `timeline_forecast`, `quantity_forecast`, or `historical_revision`. Older distribution documents stay valid: `conditionality` is optional on that tag. The product also ships a prepared catalog of those families, so an import with `trend_definitions: []` still has methodology pages. A human-verified explicit numeric question that the catalog does not already own is discovered on its own key, unit, and conditionality.

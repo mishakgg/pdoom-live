@@ -1,4 +1,4 @@
-import type { CanonicalImport } from "@pdoom/contracts";
+import { isPublicReviewState, REVIEW_STATES, type CanonicalImport } from "@pdoom/contracts";
 import {
   cadenceDays,
   catalog,
@@ -30,7 +30,8 @@ const FAILING_COLLECTION = [
   "invalid_content",
   "collector_bug",
 ];
-const PUBLIC_REVIEW = new Set(["human_verified", "machine_validated"]);
+const PUBLIC_REVIEW_STATES = REVIEW_STATES.filter(isPublicReviewState);
+const PUBLIC_REVIEW = new Set<string>(PUBLIC_REVIEW_STATES);
 const HEALTHY_COLLECTION = new Set(["collected", "partial"]);
 
 type SourceSignal = {
@@ -334,10 +335,10 @@ async function readSnapshot(
         `SELECT count(*)::int AS count
          FROM statements s
          JOIN source_items si ON si.id = s.source_item_id
-         WHERE s.review_state IN ('human_verified', 'machine_validated')
+         WHERE s.review_state = ANY($2::text[])
            AND si.availability = 'unknown'
            AND NOT (si.collection_status = ANY($1::text[]))`,
-        [["collected", "partial"]],
+        [["collected", "partial"], PUBLIC_REVIEW_STATES],
       ),
       pool.query(
         `SELECT collector, status, observed_count, new_count, changed_count, error_summary

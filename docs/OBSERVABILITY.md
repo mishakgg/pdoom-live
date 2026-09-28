@@ -8,7 +8,7 @@ Checks report failures. They do not rewrite rows, merge people, or invent replac
 
 | Question | Where |
 | --- | --- |
-| Can the app read the database? | `GET /api/health` returns `{ "ok": true }` only when `SELECT 1` succeeds. |
+| Can the process serve data? | `GET /api/health` is the readiness report, the same check as `GET /api/ready`. It returns 200 only when the database answers and migrations are current. |
 | Is the served dataset fresh? | `GET /api/status` returns `app` and `dataset` separately. `app: operational` with `dataset: stale` means the process is up and the data is not current. |
 | Did integrity or collection actually fail? | `npm --silent run quality:check` prints a summary and a JSON report. Exit code 1 means at least one hard error. |
 | What should a scraper graph? | `GET /api/metrics`, disabled unless you turn it on. Prometheus text, bounded labels. |
@@ -194,7 +194,7 @@ Recording one HTTP observation is an in-memory counter increment. The test suite
 
 ## Diagnosing stale data
 
-1. `GET /api/health`. If this is 503, the database is the problem. The quality report should show `database_unavailable` and should not also claim the cohort disappeared.
+1. `GET /api/health`. A 503 with `database: unavailable` means the database is the problem. A 503 with migrations pending means the schema is not current. The quality report should show `database_unavailable` when the database cannot be read, and should not also claim the cohort disappeared.
 2. `GET /api/status`. If `app` is operational and `dataset` is stale, the site is up and the data is old. Read `latest_successful_observation` and `dataset_generated_at`.
 3. `npm --silent run quality:check`. Hard errors are integrity, an empty cohort, stopped live collection, or repeated import failure. Warnings are ratios and objectives.
 4. If metrics are enabled, look at `pdoom_collection_succeeded`, `pdoom_sources_freshness`, `pdoom_sources_due`, `pdoom_collection_rate_limits`, and `pdoom_alert_firing`.
