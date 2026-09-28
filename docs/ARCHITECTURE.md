@@ -183,19 +183,23 @@ Do not expose raw internal extraction prompts, secrets, or unreviewed data by ac
 
 ## Trend computation
 
-No trend should exist without a versioned methodology.
+No trend should exist without a versioned methodology. The public families and exclusion rules are in [Trend methodology](./TREND_METHODOLOGY.md).
 
-A trend record or response should identify:
+A trend response identifies:
 
 - metric/method version;
-- cohort definition/version;
-- topic/question definition;
-- start/end window;
-- contributing record count;
-- exclusions;
-- calculation timestamp.
+- source: published definition, prepared method, or discovered question;
+- cohort definition and size;
+- question key, question text, and definition;
+- contributing people and statements;
+- missing cohort members;
+- density (`empty`, `sparse`, `comparable`, `individual`, or `unlinked`);
+- exclusions, each with a human-readable reason;
+- calculation inputs that a reader can recompute from canonical rows.
 
-Prefer computing simple aggregates directly from canonical records at first. Materialize expensive aggregates only when needed.
+`question_key` is the comparability boundary. Probability distributions, predicted years, quantities, and one-person revisions are separate methods. There is no master score.
+
+Prefer computing these aggregates directly from canonical records. Materialize expensive aggregates only when needed.
 
 ## Search
 
@@ -238,29 +242,18 @@ UI requirements:
 
 ## Observability
 
-At minimum capture:
+A healthy HTTP response is not evidence that the dataset is still being refreshed. The operator guide is [docs/OBSERVABILITY.md](./OBSERVABILITY.md).
 
-- collector/source success/failure counts;
-- fetch latency;
-- duplicate rate;
-- new/changed content counts;
-- extraction success/failure;
-- validation rejection reasons;
-- queue/job latency;
-- API latency/error rate;
-- freshness by source/cohort.
+`packages/observability` holds the shared metric names, label allowlists, guardrails, and freshness objectives. The web process records bounded API and database counters, writes structured logs for important failures, and assigns request correlation ids. `GET /api/health` is the readiness report, the same check as `GET /api/ready`: the process is live, the database answers, and migrations are current. `GET /api/status` says whether the served dataset is current, aging, or stale. `GET /api/metrics` stays disabled unless a deployment explicitly enables it, and it is not a public debugging feed.
 
-Metrics should help identify silent dataset staleness.
+`npm run quality:check` reads the current database, or a canonical file, and reports integrity, collection, extraction, and relative size problems. It does not repair them. The same rules run in `pipeline/pdoom_pipeline/observability` for pipeline snapshots. Synthetic fixtures are not treated as a live collection outage.
+
+There is no tracing vendor and no metric series per person, URL, source item, or statement.
 
 ## Deployment
 
-Keep local development one-command where practical.
+Local development stays a Node process plus PostgreSQL. It does not require Docker.
 
-The initial deployment should be reproducible with:
+The production runtime is the Next.js web process and PostgreSQL. Migrations and canonical dataset import are separate operator commands. The web process does not migrate, import, seed, or reset on startup. There is no Redis, queue, crawler scheduler, or vector database in the runtime image.
 
-- environment-variable configuration;
-- PostgreSQL;
-- web process;
-- worker/ingestion process.
-
-Use containers only where they simplify reproducibility; do not make local development depend on unnecessary infrastructure.
+Run the production image from [`docs/PRODUCTION.md`](./PRODUCTION.md). Ingestion remains an operator job outside the web container.

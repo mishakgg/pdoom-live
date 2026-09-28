@@ -47,9 +47,19 @@ def validate_roster() -> None:
                 raise ValueError(person["slug"])
         if not person["inclusion_notes"] or not person["affiliations"]:
             raise ValueError(person["slug"])
+        seen_affiliations: set[tuple[str, str, str]] = set()
         for affiliation in person["affiliations"]:
             if affiliation["organization_slug"] not in orgs:
                 raise ValueError(f"{person['slug']} missing org {affiliation['organization_slug']}")
+            # Canonical export leaves start_date null, and PostgreSQL treats those
+            # nulls as equal in affiliations_natural_key. A repeated person,
+            # organization, and role therefore collapses to one database row.
+            key = (person["slug"], affiliation["organization_slug"], affiliation["role"])
+            if key in seen_affiliations:
+                raise ValueError(
+                    f"duplicate affiliation natural key {person['slug']} / {affiliation['organization_slug']} / {affiliation['role']}"
+                )
+            seen_affiliations.add(key)
 
 
 def people_records() -> list[dict]:

@@ -3,13 +3,11 @@ import {
   PUBLIC_EXPORT_SCHEMA_VERSION,
   PUBLIC_API_VERSION,
   PUBLIC_METHODOLOGY,
-  PUBLIC_REVIEW_STATES,
   RESEARCH_EXCLUDED_REVIEW_STATES,
-  distributionAggregationSchema,
+  RESEARCH_REVIEW_STATES,
   isResearchPublicReviewState,
   publicLicense,
   publicReviewFields,
-  volumeAggregationSchema,
   type PublicPageQuery,
   type PublicPeopleQuery,
   type PublicReviewFields,
@@ -18,18 +16,15 @@ import {
   type Freshness,
 } from "@pdoom/contracts";
 import type pg from "pg";
+import { effectiveReviewStateSql } from "./coverage";
 import { getPool } from "./pool";
 import { InvalidCursorError } from "./queries";
-import {
-  computeExplicitNumericDistribution,
-  computeStatementVolume,
-  type DistributionAggregation,
-  type TrendCandidate,
-} from "./trends";
+import type { Exclusion, RevisionResult } from "./trend-engine";
+import { getTrend, listComputedTrends, type PublicTrend } from "./trend-query";
 
 type Db = Pick<pg.Pool, "query">;
 
-const PUBLIC_STATES = [...PUBLIC_REVIEW_STATES];
+const PUBLIC_STATES = [...RESEARCH_REVIEW_STATES];
 
 export type PublicPage<T> = {
   data: T[];
@@ -322,7 +317,7 @@ function publicPersonPredicate(alias: string, publicParam: string): string {
     ${alias}.status IN ('active', 'historical')
     OR EXISTS (
       SELECT 1 FROM statements s
-      WHERE s.person_id = ${alias}.id AND s.review_state = ANY(${publicParam}::text[])
+      WHERE s.person_id = ${alias}.id AND ${effectiveReviewStateSql("s")} = ANY(${publicParam}::text[])
     )
   )`;
 }
@@ -355,7 +350,7 @@ function pageResult<T>(input: {
 
 const statementSelect = `
   SELECT
-    s.slug, s.statement_type, s.normalized_text, s.event_time, s.review_state,
+    s.slug, s.statement_type, s.normalized_text, s.event_time, ${effectiveReviewStateSql("s")} AS review_state,
     p.slug AS person_slug, p.display_name,
     src.slug AS source_slug, src.name AS source_name, src.source_type,
     si.slug AS source_item_slug, si.title AS source_item_title, si.canonical_url,
@@ -386,9 +381,13 @@ function mapForecast(row: Record<string, unknown>, statementType: string, statem
   if (!row.question_key || !row.forecast_review_state || !isResearchPublicReviewState(String(row.forecast_review_state))) {
     return null;
   }
+  const statementState = String(row.review_state);
+  const forecastState = String(row.forecast_review_state);
+  const reviewState = forecastState === "human_verified" && statementState !== "human_verified" ? statementState : forecastState;
+  if (!isResearchPublicReviewState(reviewState)) return null;
   const numeric = statementType === "explicit_numeric";
   return {
-    ...publicReviewFields(String(row.forecast_review_state)),
+    ...publicReviewFields(reviewState),
     statement_slug: statementSlug,
     forecast_kind: String(row.forecast_kind),
     question_key: String(row.question_key),
@@ -496,8 +495,8 @@ function statementWhere(query: PublicStatementQuery, values: unknown[]): { where
   const publicParam = bind(values, PUBLIC_STATES);
   const clauses = [
     query.review_state
-      ? `s.review_state = ${bind(values, query.review_state)}`
-      : `s.review_state = ANY(${publicParam}::text[])`,
+      ? `${effectiveReviewStateSql("s")} = ${bind(values, query.review_state)}`
+      : `${effectiveReviewStateSql("s")} = ANY(${publicParam}::text[])`,
   ];
   if (query.person) clauses.push(`p.slug = ${bind(values, query.person)}`);
   if (query.organization) {
@@ -628,8 +627,8 @@ async function fetchRelationships(pool: Db, statementSlug?: string): Promise<Pub
      JOIN statements fs ON fs.id = r.from_statement_id
      JOIN statements ts ON ts.id = r.to_statement_id
      WHERE r.review_state = ANY($1::text[])
-       AND fs.review_state = ANY($1::text[])
-       AND ts.review_state = ANY($1::text[])
+       AND ${effectiveReviewStateSql("fs")} = ANY($1::text[])
+       AND ${effectiveReviewStateSql("ts")} = ANY($1::text[])
        ${slugClause}
      ORDER BY fs.slug, ts.slug, r.relationship_type`,
     values,
@@ -671,7 +670,7 @@ export async function listPublicStatements(query: PublicStatementQuery, pool: Db
 export async function getPublicStatement(slug: string, pool: Db = getPool()): Promise<PublicStatement | null> {
   const values: unknown[] = [PUBLIC_STATES, slug];
   const result = await pool.query(
-    `${statementSelect} WHERE s.review_state = ANY($1::text[]) AND s.slug = $2`,
+    `${statementSelect} WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[]) AND s.slug = $2`,
     values,
   );
   const row = result.rows[0];
@@ -721,7 +720,7 @@ const personSelect = (publicParam: string) => `
     FROM (
       SELECT statement_type, count(*)::int AS count
       FROM statements s
-      WHERE s.person_id = p.id AND s.review_state = ANY(${publicParam}::text[])
+      WHERE s.person_id = p.id AND ${effectiveReviewStateSql("s")} = ANY(${publicParam}::text[])
       GROUP BY statement_type
     ) grouped
   ) counts ON true
@@ -877,7 +876,7 @@ export async function listPublicTopics(pool: Db = getPool()): Promise<{ data: Pu
          SELECT s.statement_type, count(*)::int AS count
          FROM statement_topics st
          JOIN statements s ON s.id = st.statement_id
-         WHERE st.topic_id = t.id AND s.review_state = ANY($1::text[])
+         WHERE st.topic_id = t.id AND ${effectiveReviewStateSql("s")} = ANY($1::text[])
          GROUP BY s.statement_type
        ) grouped
      ) counts ON true
@@ -927,7 +926,7 @@ const sourceSelect = `
            SELECT count(DISTINCT si.id)::int
            FROM source_items si
            JOIN statements s ON s.source_item_id = si.id
-           WHERE si.source_id = src.id AND s.review_state = ANY($1::text[])
+           WHERE si.source_id = src.id AND ${effectiveReviewStateSql("s")} = ANY($1::text[])
          ) AS public_item_count
   FROM sources src
   LEFT JOIN people p ON p.id = src.owner_person_id
@@ -976,7 +975,7 @@ export async function getPublicSource(slug: string, asOf: string, pool: Db = get
      WHERE src.slug = $2
        AND EXISTS (
          SELECT 1 FROM statements s
-         WHERE s.source_item_id = si.id AND s.review_state = ANY($1::text[])
+         WHERE s.source_item_id = si.id AND ${effectiveReviewStateSql("s")} = ANY($1::text[])
        )
      ORDER BY si.published_at DESC NULLS LAST, si.slug
      LIMIT $3`,
@@ -1011,7 +1010,7 @@ async function loadParticipants(pool: Db, sourceItemSlug?: string) {
      LEFT JOIN organizations o ON o.id = sp.organization_id
      WHERE EXISTS (
        SELECT 1 FROM statements s
-       WHERE s.source_item_id = si.id AND s.review_state = ANY($1::text[])
+       WHERE s.source_item_id = si.id AND ${effectiveReviewStateSql("s")} = ANY($1::text[])
      )
      ${clause}
      ORDER BY si.slug, sp.role, p.slug NULLS LAST, o.slug NULLS LAST`,
@@ -1064,7 +1063,7 @@ const sourceItemSelect = `
   WHERE src.review_state = ANY($1::text[])
     AND EXISTS (
       SELECT 1 FROM statements s
-      WHERE s.source_item_id = si.id AND s.review_state = ANY($1::text[])
+      WHERE s.source_item_id = si.id AND ${effectiveReviewStateSql("s")} = ANY($1::text[])
     )
 `;
 
@@ -1094,7 +1093,7 @@ export async function listPublicOrganizations(pool: Db = getPool()): Promise<Pub
        FROM source_participants sp
        JOIN source_items si ON si.id = sp.source_item_id
        JOIN statements s ON s.source_item_id = si.id
-       WHERE s.review_state = ANY($1::text[]) AND sp.organization_id IS NOT NULL
+       WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[]) AND sp.organization_id IS NOT NULL
      )
      ORDER BY o.slug`,
     [PUBLIC_STATES],
@@ -1107,145 +1106,79 @@ export async function listPublicOrganizations(pool: Db = getPool()): Promise<Pub
   }));
 }
 
-async function loadTrendRows(slug: string | null, pool: Db) {
+async function researchStatementSlugs(pool: Db): Promise<Set<string>> {
   const result = await pool.query(
-    `SELECT td.slug, td.name, td.method_version, td.cohort_definition_json, td.aggregation_definition_json,
-            c.slug AS cohort_slug, c.version AS cohort_version, c.definition AS cohort_definition,
-            t.slug AS topic_slug
-     FROM trend_definitions td
-     JOIN cohorts c ON c.id = td.cohort_id
-     LEFT JOIN topics t ON t.id = td.topic_id
-     WHERE td.published AND ($1::text IS NULL OR td.slug = $1)
-     ORDER BY td.slug`,
-    [slug],
+    `SELECT s.slug FROM statements s WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[])`,
+    [PUBLIC_STATES],
   );
-  return result.rows;
+  return new Set(result.rows.map((row) => String(row.slug)));
 }
 
-function publicAggregation(value: Record<string, unknown>): Record<string, unknown> {
-  const copy: Record<string, unknown> = { ...value };
-  if (Array.isArray(copy.review_states)) {
-    copy.review_states = copy.review_states.filter((state): state is string => typeof state === "string" && isResearchPublicReviewState(state));
-  }
-  return copy;
+function partitionExclusions(exclusions: Exclusion[], allowed: Set<string>): { exclusions: Exclusion[]; omitted_non_research_count: number } {
+  const visible = exclusions.filter((item) => allowed.has(item.statement_slug));
+  return { exclusions: visible, omitted_non_research_count: exclusions.length - visible.length };
 }
 
-async function buildObservation(row: Record<string, unknown>, asOf: string, pool: Db) {
-  const aggregation = asObject(row.aggregation_definition_json) ?? {};
-  const applied = publicAggregation(aggregation);
-  const cohortSlug = String(row.cohort_slug);
-  const cohortVersion = String(row.cohort_version);
-  if (aggregation.type === "explicit_numeric_distribution") {
-    const parsed = distributionAggregationSchema.parse({
-      ...aggregation,
-      review_states: applied.review_states,
-    }) as DistributionAggregation;
-    const size = await pool.query(
-      `SELECT count(*)::int AS count
-       FROM cohort_memberships cm JOIN cohorts c ON c.id = cm.cohort_id
-       WHERE c.slug = $1 AND c.version = $2`,
-      [cohortSlug, cohortVersion],
-    );
-    const candidates = await pool.query(
-      `SELECT s.slug AS statement_slug, p.slug AS person_slug, p.display_name, s.statement_type, s.review_state,
-              s.event_time, f.question_key, f.value_type, f.value_numeric, f.unit, f.horizon_text,
-              COALESCE(array_agg(DISTINCT t.slug) FILTER (WHERE t.slug IS NOT NULL), '{}') AS topic_slugs
-       FROM statements s
-       JOIN people p ON p.id = s.person_id
-       JOIN cohort_memberships cm ON cm.person_id = p.id
-       JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2
-       LEFT JOIN forecasts f ON f.statement_id = s.id
-       LEFT JOIN statement_topics st ON st.statement_id = s.id
-       LEFT JOIN topics t ON t.id = st.topic_id
-       GROUP BY s.id, p.slug, p.display_name, f.question_key, f.value_type, f.value_numeric, f.unit, f.horizon_text
-       ORDER BY s.slug`,
-      [cohortSlug, cohortVersion],
-    );
-    let excludedUnpublished = 0;
-    const visible: TrendCandidate[] = [];
-    for (const item of candidates.rows) {
-      if (!isResearchPublicReviewState(String(item.review_state))) {
-        excludedUnpublished += 1;
-        continue;
-      }
-      visible.push({
-        statement_slug: String(item.statement_slug),
-        person_slug: String(item.person_slug),
-        display_name: String(item.display_name),
-        statement_type: String(item.statement_type),
-        review_state: String(item.review_state),
-        topic_slugs: item.topic_slugs as string[],
-        question_key: item.question_key ? String(item.question_key) : null,
-        value_type: item.value_type ? String(item.value_type) : null,
-        value_numeric: num(item.value_numeric),
-        unit: item.unit ? String(item.unit) : null,
-        horizon_text: item.horizon_text ? String(item.horizon_text) : null,
-        event_time: iso(item.event_time),
-      });
-    }
-    const distribution = computeExplicitNumericDistribution({
-      method_version: String(row.method_version),
-      cohort_slug: cohortSlug,
-      cohort_version: cohortVersion,
-      cohort_definition: String(row.cohort_definition),
-      cohort_size: Number(size.rows[0]?.count ?? 0),
-      aggregation: parsed,
-      candidates: visible,
-    });
-    return {
-      kind: "distribution" as const,
-      calculated_at: asOf,
-      excluded_unpublished_count: excludedUnpublished,
-      distribution,
-    };
-  }
-  const parsed = volumeAggregationSchema.parse({ ...aggregation, review_states: applied.review_states });
-  const volumeRows = await pool.query(
-    `SELECT s.slug AS statement_slug, p.slug AS person_slug, s.statement_type, s.review_state, s.event_time, t.slug AS topic_slug
-     FROM statements s
-     JOIN people p ON p.id = s.person_id
-     JOIN cohort_memberships cm ON cm.person_id = p.id
-     JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2
-     JOIN statement_topics st ON st.statement_id = s.id
-     JOIN topics t ON t.id = st.topic_id
-     ORDER BY s.slug, t.slug`,
-    [cohortSlug, cohortVersion],
+function presentRevision(revision: RevisionResult, allowed: Set<string>): { revision: RevisionResult; omitted_non_research_count: number } {
+  const separated = partitionExclusions(revision.exclusions, allowed);
+  const chains = revision.chains.filter((chain) =>
+    chain.points.every((point) => allowed.has(point.statement_slug))
+    && chain.links.every((link) => allowed.has(link.from_statement_slug) && allowed.has(link.to_statement_slug)),
   );
-  const dropped = new Set<string>();
-  const kept = [];
-  for (const item of volumeRows.rows) {
-    if (!isResearchPublicReviewState(String(item.review_state))) {
-      dropped.add(String(item.statement_slug));
-      continue;
-    }
-    kept.push({
-      statement_slug: String(item.statement_slug),
-      person_slug: String(item.person_slug),
-      statement_type: String(item.statement_type),
-      review_state: String(item.review_state),
-      topic_slug: String(item.topic_slug),
-      event_time: iso(item.event_time),
-    });
-  }
-  const volume = computeStatementVolume({ review_states: parsed.review_states, rows: kept });
+  const repeats = revision.repeats.filter((repeat) => allowed.has(repeat.from_statement_slug) && allowed.has(repeat.to_statement_slug));
+  const omitted = separated.omitted_non_research_count + (revision.chains.length - chains.length) + (revision.repeats.length - repeats.length);
   return {
-    kind: "volume" as const,
-    calculated_at: asOf,
-    excluded_unpublished_count: dropped.size,
-    volume,
+    revision: { ...revision, exclusions: separated.exclusions, chains, repeats },
+    omitted_non_research_count: omitted,
   };
 }
 
+function presentTrend(trend: PublicTrend, allowed: Set<string>, asOf: string) {
+  const stamped = { ...trend, calculated_at: asOf };
+  if (trend.kind === "volume") {
+    const separated = partitionExclusions(trend.volume.exclusions, allowed);
+    return { ...stamped, volume: { ...trend.volume, exclusions: separated.exclusions }, omitted_non_research_count: separated.omitted_non_research_count };
+  }
+  if (trend.kind === "distribution") {
+    const separated = partitionExclusions(trend.distribution.exclusions, allowed);
+    return { ...stamped, distribution: { ...trend.distribution, exclusions: separated.exclusions }, omitted_non_research_count: separated.omitted_non_research_count };
+  }
+  if (trend.kind === "timeline") {
+    const separated = partitionExclusions(trend.timeline.exclusions, allowed);
+    return { ...stamped, timeline: { ...trend.timeline, exclusions: separated.exclusions }, omitted_non_research_count: separated.omitted_non_research_count };
+  }
+  if (trend.kind === "quantity") {
+    const separated = partitionExclusions(trend.quantity.exclusions, allowed);
+    return { ...stamped, quantity: { ...trend.quantity, exclusions: separated.exclusions }, omitted_non_research_count: separated.omitted_non_research_count };
+  }
+  const revision = presentRevision(trend.revision, allowed);
+  return { ...stamped, revision: revision.revision, omitted_non_research_count: revision.omitted_non_research_count };
+}
+
+async function loadResearchTrends(asOf: string, pool: Db) {
+  const [trends, allowed] = await Promise.all([
+    listComputedTrends(pool as pg.Pool),
+    researchStatementSlugs(pool),
+  ]);
+  return trends.map((trend) => presentTrend(trend, allowed, asOf)).sort((left, right) => left.slug.localeCompare(right.slug));
+}
+
 export async function listPublicTrends(pool: Db = getPool()) {
-  const rows = await loadTrendRows(null, pool);
+  const trends = await loadResearchTrends("1970-01-01T00:00:00.000Z", pool);
   return {
-    data: rows.map((row) => ({
-      slug: String(row.slug),
-      name: String(row.name),
-      method_version: String(row.method_version),
-      cohort_slug: String(row.cohort_slug),
-      cohort_version: String(row.cohort_version),
-      topic_slug: row.topic_slug ? String(row.topic_slug) : null,
+    data: trends.map((trend) => ({
+      slug: trend.slug,
+      name: trend.name,
+      method_version: trend.method_version,
+      source: trend.source,
+      kind: trend.kind,
+      cohort_slug: trend.cohort_slug,
+      cohort_version: trend.cohort_version,
+      question_key: trend.question_key,
+      density: trend.density,
+      contributing_person_count: trend.contributing_person_count,
+      contributing_statement_count: trend.contributing_statement_count,
+      cohort_size: trend.cohort_size,
       published: true,
     })),
     truncated: false,
@@ -1253,23 +1186,9 @@ export async function listPublicTrends(pool: Db = getPool()) {
 }
 
 export async function getPublicTrend(slug: string, asOf: string, pool: Db = getPool()) {
-  const rows = await loadTrendRows(slug, pool);
-  const row = rows[0];
-  if (!row) return null;
-  const aggregation = publicAggregation(asObject(row.aggregation_definition_json) ?? {});
-  const observation = await buildObservation(row, asOf, pool);
-  return {
-    slug: String(row.slug),
-    name: String(row.name),
-    method_version: String(row.method_version),
-    published: true,
-    cohort_slug: String(row.cohort_slug),
-    cohort_version: String(row.cohort_version),
-    cohort_definition: String(row.cohort_definition),
-    topic_slug: row.topic_slug ? String(row.topic_slug) : null,
-    aggregation,
-    observation,
-  };
+  const trend = await getTrend(slug, pool as pg.Pool);
+  if (!trend) return null;
+  return presentTrend(trend, await researchStatementSlugs(pool), asOf);
 }
 
 export async function searchPublic(q: string, pool: Db = getPool()) {
@@ -1337,18 +1256,18 @@ export async function getPublicCatalog(asOf: string | null, pool: Db = getPool()
          (SELECT count(DISTINCT si.id)::int FROM source_items si
             JOIN sources src ON src.id = si.source_id
             WHERE src.review_state = ANY($1::text[])
-              AND EXISTS (SELECT 1 FROM statements s WHERE s.source_item_id = si.id AND s.review_state = ANY($1::text[]))) AS source_items,
-         (SELECT count(*)::int FROM statements s WHERE s.review_state = ANY($1::text[])) AS statements,
+              AND EXISTS (SELECT 1 FROM statements s WHERE s.source_item_id = si.id AND ${effectiveReviewStateSql("s")} = ANY($1::text[]))) AS source_items,
+         (SELECT count(*)::int FROM statements s WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[])) AS statements,
          (SELECT count(*)::int FROM forecasts f
             JOIN statements s ON s.id = f.statement_id
-            WHERE s.review_state = ANY($1::text[]) AND f.review_state = ANY($1::text[])) AS forecasts,
+            WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[]) AND f.review_state = ANY($1::text[])) AS forecasts,
          (SELECT count(*)::int FROM topics) AS topics,
          (SELECT count(*)::int FROM statement_relationships r
             JOIN statements fs ON fs.id = r.from_statement_id
             JOIN statements ts ON ts.id = r.to_statement_id
             WHERE r.review_state = ANY($1::text[])
-              AND fs.review_state = ANY($1::text[])
-              AND ts.review_state = ANY($1::text[])) AS relationships,
+              AND ${effectiveReviewStateSql("fs")} = ANY($1::text[])
+              AND ${effectiveReviewStateSql("ts")} = ANY($1::text[])) AS relationships,
          (SELECT count(*)::int FROM trend_definitions WHERE published) AS trends`,
       [PUBLIC_STATES],
     );
@@ -1356,12 +1275,11 @@ export async function getPublicCatalog(asOf: string | null, pool: Db = getPool()
       `SELECT max(si.observed_at) AS observed_at, max(si.published_at) AS published_at
        FROM source_items si
        JOIN statements s ON s.source_item_id = si.id
-       WHERE s.review_state = ANY($1::text[])`,
+       WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[])`,
       [PUBLIC_STATES],
     );
-  const methods = await pool.query(
-    `SELECT DISTINCT method_version FROM trend_definitions WHERE published ORDER BY method_version`,
-  );
+  const researchTrends = await loadResearchTrends(stampTime ?? "1970-01-01T00:00:00.000Z", pool);
+  const methods = [...new Set(researchTrends.map((trend) => trend.method_version))].sort();
   const topics = await pool.query(`SELECT slug, version FROM topics ORDER BY slug`);
   const organizations = await listPublicOrganizations(pool);
   const countRow = counts.rows[0] ?? {};
@@ -1396,16 +1314,16 @@ export async function getPublicCatalog(asOf: string | null, pool: Db = getPool()
         "cohort_methodology_version is the written methodology document. cohort.slug and cohort.version identify the cohort loaded in this dataset, which may be a synthetic fixture cohort.",
       provenance_policy_ref: PUBLIC_METHODOLOGY.provenancePolicyRef,
       public_api_ref: PUBLIC_METHODOLOGY.publicApiRef,
-      trend_method_versions: methods.rows.map((row) => String(row.method_version)),
+      trend_method_versions: methods,
       topic_versions: topics.rows.map((row) => ({ slug: String(row.slug), version: String(row.version) })),
     },
     publication: {
-      included_review_states: PUBLIC_REVIEW_STATES,
+      included_review_states: RESEARCH_REVIEW_STATES,
       excluded_review_states: RESEARCH_EXCLUDED_REVIEW_STATES,
       machine_validated:
         "machine_validated records are included and labeled machine_labeled=true, verified=false. They are not human-verified.",
       site_difference:
-        "The website can show needs_review and unreviewed statements as unsettled. This research export and /api/v1 omit rejected, unreviewed, and needs_review records.",
+        "The website can show needs_review statements as unsettled. It does not show unreviewed or rejected records. This research export and /api/v1 omit rejected, unreviewed, and needs_review records, including a human_verified approval whose source or evidence no longer matches.",
     },
     license: publicLicense(datasetRow ? String(datasetRow.dataset_kind) : null),
     counts: {
@@ -1418,7 +1336,7 @@ export async function getPublicCatalog(asOf: string | null, pool: Db = getPool()
       forecasts: Number(countRow.forecasts ?? 0),
       topics: Number(countRow.topics ?? 0),
       relationships: Number(countRow.relationships ?? 0),
-      trends: Number(countRow.trends ?? 0),
+      trends: researchTrends.length,
     },
     latest_observed_at: iso(observed.rows[0]?.observed_at ?? null),
     latest_published_at: iso(observed.rows[0]?.published_at ?? null),
@@ -1464,13 +1382,7 @@ export async function loadPublicExport(generatedAt: string, pool: Db = getPool()
     ),
   );
   const forecasts = statements.flatMap((statement) => (statement.forecast ? [statement.forecast] : []));
-  const trendRows = await loadTrendRows(null, pool);
-  const trends = [];
-  for (const row of trendRows) {
-    const trend = await getPublicTrend(String(row.slug), generatedAt, pool);
-    if (trend) trends.push(trend);
-  }
-  trends.sort((left, right) => left.slug.localeCompare(right.slug));
+  const trends = await loadResearchTrends(generatedAt, pool);
   return {
     catalog,
     people,

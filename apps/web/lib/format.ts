@@ -31,6 +31,40 @@ export function formatProbability(value: number | null | undefined): string {
   return Number.isInteger(pct) ? `${pct.toFixed(0)}%` : `${pct.toFixed(1)}%`;
 }
 
+export function formatYear(value: number | null | undefined): string {
+  if (value === null || value === undefined || !Number.isFinite(value)) return "—";
+  if (Number.isInteger(value)) return String(value);
+  const rounded = Math.round(value * 10) / 10;
+  return Number.isInteger(rounded) ? String(rounded) : rounded.toFixed(1);
+}
+
+export function formatQuantity(value: number | null | undefined, unit: string | null | undefined): string {
+  if (value === null || value === undefined || !Number.isFinite(value)) return "—";
+  if (unit === "probability") return formatProbability(value);
+  if (unit === "share") return `${formatProbability(value)} share`;
+  if (unit === "year") return formatYear(value);
+  if (unit === "percentage_points") {
+    const rounded = Math.round(value * 10) / 10;
+    const text = Number.isInteger(rounded) ? rounded.toFixed(0) : rounded.toFixed(1);
+    return `${text} percentage points`;
+  }
+  const rounded = Math.round(value * 1000) / 1000;
+  return `${rounded} ${unit ?? ""}`.trim();
+}
+
+export function formatEstimate(input: {
+  value_type?: string | null;
+  value_numeric?: number | null;
+  value_min?: number | null;
+  value_max?: number | null;
+  unit?: string | null;
+}): string {
+  if (input.value_type === "range") {
+    return `${formatQuantity(input.value_min, input.unit)}–${formatQuantity(input.value_max, input.unit)}`;
+  }
+  return formatQuantity(input.value_numeric, input.unit);
+}
+
 export function formatValue(input: {
   value_type?: string | null;
   value_numeric?: number | null;

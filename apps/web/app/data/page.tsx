@@ -55,14 +55,15 @@ export default async function DataPage() {
       <section>
         <h2>API</h2>
         <p>
-          Stable reads are under <Link href="/api/v1/dataset"><code>/api/v1</code></Link>. The machine-readable description is <Link href="/api/v1/openapi.json">OpenAPI</Link>. Unversioned <code>/api/*</code> routes are the application query API and are not a stability promise.
+          {/* Anchors, not client links: a Next prefetch adds a query string the public API rejects. */}
+          Stable reads are under <a href="/api/v1/dataset"><code>/api/v1</code></a>. The machine-readable description is <a href="/api/v1/openapi.json">OpenAPI</a>. Unversioned <code>/api/*</code> routes are the application query API and are not a stability promise.
         </p>
         <ul>
-          <li><Link href="/api/v1/people">/api/v1/people</Link> and <code>/api/v1/people/{"{slug}"}</code></li>
-          <li><Link href="/api/v1/statements">/api/v1/statements</Link> and <code>/api/v1/statements/{"{slug}"}</code></li>
-          <li><Link href="/api/v1/topics">/api/v1/topics</Link></li>
-          <li><Link href="/api/v1/sources">/api/v1/sources</Link></li>
-          <li><Link href="/api/v1/trends">/api/v1/trends</Link></li>
+          <li><a href="/api/v1/people">/api/v1/people</a> and <code>/api/v1/people/{"{slug}"}</code></li>
+          <li><a href="/api/v1/statements">/api/v1/statements</a> and <code>/api/v1/statements/{"{slug}"}</code></li>
+          <li><a href="/api/v1/topics">/api/v1/topics</a></li>
+          <li><a href="/api/v1/sources">/api/v1/sources</a></li>
+          <li><a href="/api/v1/trends">/api/v1/trends</a></li>
           <li><code>/api/v1/search?q=</code></li>
         </ul>
         <p>Pages use opaque cursors. <code>limit</code> is 1–50. Search text is 2–120 characters. Responses send <code>ETag</code>, <code>Cache-Control</code>, and <code>Last-Modified</code> from the dataset import time.</p>

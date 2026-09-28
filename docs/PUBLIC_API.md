@@ -8,7 +8,7 @@ The public research surface is separate from the canonical import document in `d
 
 Responses are JSON. There is no content negotiation. A breaking change to a response field gets a new path prefix (`/api/v2`) or a new export schema version.
 
-Unversioned routes such as `/api/statements`, `/api/overview`, and `/api/health` remain the application query API. They are not a stability promise. They can include `needs_review` and `unreviewed` statements that the website shows as unsettled. New consumers should call `/api/v1`.
+Unversioned routes such as `/api/statements`, `/api/overview`, and `/api/health` remain the application query API. They are not a stability promise. They can include `needs_review` statements that the website shows as unsettled. They do not include `unreviewed` or `rejected` records. New consumers should call `/api/v1`.
 
 The API is read-only. There is no authentication, account, or write endpoint.
 
@@ -19,7 +19,7 @@ The API is read-only. There is no authentication, account, or write endpoint.
 | `human_verified` | included | `verified: true`, `machine_labeled: false` |
 | `machine_validated` | included | `verified: false`, `machine_labeled: true` |
 | `needs_review` | omitted | website may still show it as unsettled |
-| `unreviewed` | omitted | website may still show it as unsettled |
+| `unreviewed` | omitted | hidden on the website as well |
 | `rejected` | omitted | hidden on the website as well |
 
 `machine_validated` is not human verification. Asking `/api/v1` for `rejected`, `unreviewed`, or `needs_review` is an invalid query.
@@ -67,6 +67,8 @@ List routes return:
 People are ordered by display name, then slug. Sources are ordered by name, then slug. Statements default to `event_time_desc` with slug as a tie-break. Null event times sort last in that order.
 
 Topic and trend collections are returned in full, with topics capped at 500.
+
+Trend observations use the same methods as the public trend pages. Numeric trends include effective `human_verified` estimates only. Volume counts include `human_verified` and `machine_validated`. A `needs_review`, `unreviewed`, `rejected`, or stale `human_verified` record is omitted from the observation. Comparability exclusions for records that remain in this export are listed by statement. Exclusions for records outside this export are counted and not named.
 
 ### Statement classes
 

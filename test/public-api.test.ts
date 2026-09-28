@@ -1,4 +1,5 @@
 import { beforeEach, describe, expect, it } from "vitest";
+import { getPool, stableId } from "@pdoom/db";
 import { GET as listSiteStatements } from "../apps/web/app/api/statements/route";
 import { handlePublicApi } from "../apps/web/lib/public-api-handler";
 import { publicApiLimiter } from "../apps/web/lib/rate-limit";
@@ -50,6 +51,14 @@ describe("public API v1", () => {
     const site = await listSiteStatements(new Request("http://localhost/api/statements?person=jonah-hale&limit=50"));
     const siteBody = await site.json();
     expect(siteBody.data.some((row: { slug: string }) => row.slug === "jonah-extinction-review-2024")).toBe(true);
+
+    const trends = await get("/api/v1/trends");
+    const trendList = await trends.json();
+    expect(trendList.data.some((row: { slug: string }) => row.slug === "extinction-by-2070-distribution")).toBe(true);
+    const trend = await get("/api/v1/trends/extinction-by-2070-distribution");
+    const trendText = JSON.stringify(await trend.json());
+    expect(trendText).not.toContain("jonah-extinction-review-2024");
+    expect(trendText).toContain("ada-extinction-2025");
   });
 
   it("pages with cursors and rejects abusive queries", async () => {
@@ -118,6 +127,60 @@ describe("public API v1", () => {
     expect(body.data.license.status).toBe("cc0-1.0");
     expect(body.data.publication.excluded_review_states).toContain("needs_review");
     expect(body.data.counts.statements).toBeGreaterThan(0);
+  });
+
+  it("omits a stale human_verified approval from the research export", async () => {
+    const pool = getPool();
+    const slug = "ada-extinction-2025";
+    expect((await get(`/api/v1/statements/${slug}`)).status).toBe(200);
+    const row = await pool.query(
+      `SELECT s.id, s.candidate_key, si.id AS source_item_id, e.id AS evidence_id, si.content_version
+       FROM statements s
+       JOIN source_items si ON si.id = s.source_item_id
+       JOIN evidence_segments e ON e.id = s.evidence_segment_id
+       WHERE s.slug = $1`,
+      [slug],
+    );
+    const found = row.rows[0];
+    const key = "stale-research-export-test";
+    await pool.query(
+      `INSERT INTO review_decisions (
+         id, decision_key, statement_id, candidate_key, decision, previous_review_state,
+         resulting_review_state, reviewed_at, reviewer, source_item_id, evidence_segment_id,
+         source_content_hash, evidence_hash, content_version, corrections_json, original_extraction_json
+       ) VALUES ($1,$2,$3,$4,'approve','needs_review','human_verified',$5,'test',$6,$7,$8,$9,$10,'{}'::jsonb,'{}'::jsonb)`,
+      [
+        stableId(`review:${key}`),
+        key,
+        found.id,
+        found.candidate_key,
+        "2026-09-27T00:00:00.000Z",
+        found.source_item_id,
+        found.evidence_id,
+        "a".repeat(64),
+        "b".repeat(64),
+        found.content_version,
+      ],
+    );
+    try {
+      expect((await get(`/api/v1/statements/${slug}`)).status).toBe(404);
+      const listed = await get("/api/v1/statements?limit=50&person=ada-quill");
+      const body = await listed.json();
+      expect(body.data.map((item: { slug: string }) => item.slug)).not.toContain(slug);
+      const trend = await get("/api/v1/trends/extinction-by-2070-distribution");
+      expect(trend.status).toBe(200);
+      const trendBody = await trend.json();
+      expect(JSON.stringify(trendBody)).not.toContain(slug);
+      expect(trendBody.data.method_version).toBe("explicit-numeric-distribution/1.1.0");
+      expect(trendBody.data.omitted_non_research_count).toBeGreaterThan(0);
+      const site = await listSiteStatements(new Request("http://localhost/api/statements?person=ada-quill&limit=50"));
+      const siteBody = await site.json();
+      const visible = siteBody.data.find((item: { slug: string; review_state: string }) => item.slug === slug);
+      expect(visible?.review_state).toBe("needs_review");
+    } finally {
+      await pool.query(`DELETE FROM review_decisions WHERE decision_key = $1`, [key]);
+    }
+    expect((await get(`/api/v1/statements/${slug}`)).status).toBe(200);
   });
 
   it("rate-limits the public route without changing the response shape of a normal call", async () => {

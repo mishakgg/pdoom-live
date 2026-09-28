@@ -1772,6 +1772,14 @@
                   "value_type": {
                     "type": "string",
                     "const": "point"
+                  },
+                  "conditionality": {
+                    "type": "string",
+                    "enum": [
+                      "unconditional",
+                      "conditional",
+                      "unspecified"
+                    ]
                   }
                 },
                 "required": [
@@ -1823,6 +1831,278 @@
                   "bucket",
                   "review_states",
                   "cohort_scoped"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "timeline_forecast"
+                  },
+                  "question_key": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "topic_slug": {
+                    "type": "string",
+                    "maxLength": 80,
+                    "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                  },
+                  "sibling_topic_slugs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 80,
+                      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                    }
+                  },
+                  "statement_types": {
+                    "minItems": 1,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "explicit_numeric",
+                        "explicit_qualitative",
+                        "model_inferred_signal"
+                      ]
+                    }
+                  },
+                  "review_states": {
+                    "minItems": 1,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "unreviewed",
+                        "machine_validated",
+                        "human_verified",
+                        "rejected",
+                        "needs_review"
+                      ]
+                    }
+                  },
+                  "person_reducer": {
+                    "type": "string",
+                    "const": "latest_event_time"
+                  },
+                  "require_horizon": {
+                    "type": "boolean"
+                  },
+                  "require_unit": {
+                    "type": "string",
+                    "const": "year"
+                  },
+                  "accept_ranges": {
+                    "type": "boolean"
+                  },
+                  "conditionality": {
+                    "type": "string",
+                    "enum": [
+                      "unconditional",
+                      "conditional",
+                      "unspecified"
+                    ]
+                  }
+                },
+                "required": [
+                  "type",
+                  "question_key",
+                  "topic_slug",
+                  "sibling_topic_slugs",
+                  "statement_types",
+                  "review_states",
+                  "person_reducer",
+                  "require_horizon",
+                  "require_unit",
+                  "accept_ranges",
+                  "conditionality"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "quantity_forecast"
+                  },
+                  "question_key": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "topic_slug": {
+                    "type": "string",
+                    "maxLength": 80,
+                    "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                  },
+                  "sibling_topic_slugs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 80,
+                      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                    }
+                  },
+                  "statement_types": {
+                    "minItems": 1,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "explicit_numeric",
+                        "explicit_qualitative",
+                        "model_inferred_signal"
+                      ]
+                    }
+                  },
+                  "review_states": {
+                    "minItems": 1,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "unreviewed",
+                        "machine_validated",
+                        "human_verified",
+                        "rejected",
+                        "needs_review"
+                      ]
+                    }
+                  },
+                  "person_reducer": {
+                    "type": "string",
+                    "const": "latest_event_time"
+                  },
+                  "require_horizon": {
+                    "type": "boolean"
+                  },
+                  "require_unit": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40
+                  },
+                  "accept_ranges": {
+                    "type": "boolean"
+                  },
+                  "conditionality": {
+                    "type": "string",
+                    "enum": [
+                      "unconditional",
+                      "conditional",
+                      "unspecified"
+                    ]
+                  }
+                },
+                "required": [
+                  "type",
+                  "question_key",
+                  "topic_slug",
+                  "sibling_topic_slugs",
+                  "statement_types",
+                  "review_states",
+                  "person_reducer",
+                  "require_horizon",
+                  "require_unit",
+                  "accept_ranges",
+                  "conditionality"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string",
+                    "const": "historical_revision"
+                  },
+                  "question_key": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 120
+                  },
+                  "topic_slug": {
+                    "type": "string",
+                    "maxLength": 80,
+                    "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                  },
+                  "sibling_topic_slugs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "maxLength": 80,
+                      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                    }
+                  },
+                  "statement_types": {
+                    "minItems": 1,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "explicit_numeric",
+                        "explicit_qualitative",
+                        "model_inferred_signal"
+                      ]
+                    }
+                  },
+                  "review_states": {
+                    "minItems": 1,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "unreviewed",
+                        "machine_validated",
+                        "human_verified",
+                        "rejected",
+                        "needs_review"
+                      ]
+                    }
+                  },
+                  "relationship_types": {
+                    "minItems": 1,
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "enum": [
+                        "updates",
+                        "retracts"
+                      ]
+                    }
+                  },
+                  "require_horizon": {
+                    "type": "boolean"
+                  },
+                  "require_unit": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 40
+                  },
+                  "conditionality": {
+                    "type": "string",
+                    "enum": [
+                      "unconditional",
+                      "conditional",
+                      "unspecified"
+                    ]
+                  }
+                },
+                "required": [
+                  "type",
+                  "question_key",
+                  "topic_slug",
+                  "sibling_topic_slugs",
+                  "statement_types",
+                  "review_states",
+                  "relationship_types",
+                  "require_horizon",
+                  "require_unit",
+                  "conditionality"
                 ],
                 "additionalProperties": false
               }

@@ -1,0 +1,253 @@
+{
+  "scenarios": [
+    {
+      "id": "collector_outage",
+      "snapshot": {
+        "as_of": "2026-09-27T00:00:00.000Z",
+        "dataset_present": true,
+        "dataset_kind": "live",
+        "cohort_size": 10,
+        "source_count": 4,
+        "enabled_source_count": 4,
+        "enabled_freshness": { "current": 4, "aging": 0, "stale": 0, "never_checked": 0 },
+        "freshness": { "current": 4, "aging": 0, "stale": 0, "never_checked": 0 },
+        "sources_stale": 0,
+        "collection": { "attempted": 4, "succeeded": 0, "failed": 4 },
+        "slo": { "cadence_eligible": 4, "cadence_met": 0, "statement_bearing_sources": 2, "statement_bearing_sources_fresh": 2 },
+        "latest_successful_observation": "2026-09-17T00:00:00.000Z",
+        "statements_by_review": { "human_verified": 2, "machine_validated": 1, "unreviewed": 0, "needs_review": 0, "rejected": 0 }
+      },
+      "expect_ok": false,
+      "expect_error_ids": ["collection_stopped"],
+      "expect_warning_ids": ["enabled_sources_within_cadence", "latest_successful_collection_age_hours"],
+      "expect_alert_ids": ["collection_stopped"]
+    },
+    {
+      "id": "database_unavailable",
+      "snapshot": {
+        "readiness": { "database": false },
+        "dataset_present": false,
+        "dataset_kind": "unknown"
+      },
+      "expect_ok": false,
+      "expect_error_ids": ["database_unavailable"],
+      "expect_warning_ids": [],
+      "expect_alert_ids": ["database_unavailable"]
+    },
+    {
+      "id": "rate_limited",
+      "snapshot": {
+        "as_of": "2026-09-27T01:00:00.000Z",
+        "dataset_present": true,
+        "dataset_kind": "live",
+        "cohort_size": 4,
+        "enabled_source_count": 2,
+        "enabled_freshness": { "current": 2, "aging": 0, "stale": 0, "never_checked": 0 },
+        "freshness": { "current": 2, "aging": 0, "stale": 0, "never_checked": 0 },
+        "collection": { "attempted": 5, "succeeded": 2, "failed": 3, "rate_limited": 3 },
+        "slo": { "cadence_eligible": 2, "cadence_met": 2, "statement_bearing_sources": 1, "statement_bearing_sources_fresh": 1 },
+        "latest_successful_observation": "2026-09-27T00:00:00.000Z",
+        "statements_by_review": { "human_verified": 1, "machine_validated": 0, "unreviewed": 0, "needs_review": 0, "rejected": 0 }
+      },
+      "expect_ok": true,
+      "expect_error_ids": [],
+      "expect_warning_ids": ["collection_rate_limited"],
+      "expect_alert_ids": []
+    },
+    {
+      "id": "all_sources_stale",
+      "snapshot": {
+        "as_of": "2026-09-27T00:00:00.000Z",
+        "dataset_present": true,
+        "dataset_kind": "live",
+        "cohort_size": 6,
+        "source_count": 5,
+        "enabled_source_count": 5,
+        "sources_stale": 5,
+        "enabled_freshness": { "current": 0, "aging": 0, "stale": 5, "never_checked": 0 },
+        "freshness": { "current": 0, "aging": 0, "stale": 5, "never_checked": 0 },
+        "collection": { "attempted": 5, "succeeded": 0, "failed": 5 },
+        "slo": { "cadence_eligible": 5, "cadence_met": 0, "statement_bearing_sources": 3, "statement_bearing_sources_fresh": 0 },
+        "latest_successful_observation": "2025-01-01T00:00:00.000Z"
+      },
+      "expect_ok": false,
+      "expect_error_ids": ["all_sources_stale", "collection_stopped"],
+      "expect_warning_ids": ["enabled_sources_within_cadence", "latest_successful_collection_age_hours", "statement_bearing_sources_fresh"],
+      "expect_alert_ids": ["collection_stopped", "stale_source_percentage_spike"]
+    },
+    {
+      "id": "invalid_canonical",
+      "snapshot": {
+        "as_of": "2026-09-27T00:00:00.000Z",
+        "canonical_valid": false,
+        "dataset_present": true,
+        "dataset_kind": "live",
+        "cohort_size": 3,
+        "enabled_source_count": 1,
+        "enabled_freshness": { "current": 1, "aging": 0, "stale": 0, "never_checked": 0 },
+        "collection": { "attempted": 1, "succeeded": 1 },
+        "slo": { "cadence_eligible": 1, "cadence_met": 1, "statement_bearing_sources": 1, "statement_bearing_sources_fresh": 1 },
+        "latest_successful_observation": "2026-09-27T00:00:00.000Z"
+      },
+      "expect_ok": false,
+      "expect_error_ids": ["canonical_validation_failed"],
+      "expect_warning_ids": [],
+      "expect_alert_ids": ["canonical_validation_failed"]
+    },
+    {
+      "id": "extraction_failure",
+      "snapshot": {
+        "as_of": "2026-09-27T00:00:00.000Z",
+        "dataset_present": true,
+        "dataset_kind": "live",
+        "cohort_size": 4,
+        "enabled_source_count": 2,
+        "enabled_freshness": { "current": 2, "aging": 0, "stale": 0, "never_checked": 0 },
+        "collection": { "attempted": 2, "succeeded": 2 },
+        "slo": { "cadence_eligible": 2, "cadence_met": 2, "statement_bearing_sources": 1, "statement_bearing_sources_fresh": 1 },
+        "latest_successful_observation": "2026-09-27T00:00:00.000Z",
+        "extraction": { "items_processed": 20, "failures": 10, "explicit_numeric": 4, "missing_horizon": 0, "missing_definition": 0 }
+      },
+      "expect_ok": true,
+      "expect_error_ids": [],
+      "expect_warning_ids": ["extractor_failure_rate"],
+      "expect_alert_ids": ["extractor_failure_rate_spike"]
+    },
+    {
+      "id": "disappearing_records",
+      "baseline": {
+        "cohort_size": 20,
+        "source_count": 30,
+        "statement_count": 40,
+        "human_verified_statements": 8,
+        "machine_validated_statements": 2
+      },
+      "snapshot": {
+        "as_of": "2026-09-27T00:00:00.000Z",
+        "dataset_present": true,
+        "dataset_kind": "live",
+        "cohort_size": 10,
+        "source_count": 10,
+        "enabled_source_count": 4,
+        "sources_stale": 0,
+        "enabled_freshness": { "current": 4, "aging": 0, "stale": 0, "never_checked": 0 },
+        "freshness": { "current": 4, "aging": 0, "stale": 0, "never_checked": 0 },
+        "collection": { "attempted": 2, "succeeded": 2 },
+        "slo": { "cadence_eligible": 4, "cadence_met": 4, "statement_bearing_sources": 1, "statement_bearing_sources_fresh": 1 },
+        "latest_successful_observation": "2026-09-27T00:00:00.000Z",
+        "statements_by_review": { "human_verified": 0, "machine_validated": 0, "unreviewed": 0, "needs_review": 0, "rejected": 0 }
+      },
+      "expect_ok": false,
+      "expect_error_ids": ["public_verified_dataset_empty"],
+      "expect_warning_ids": ["cohort_drop", "source_count_drop", "statement_count_drop", "human_verified_drop"],
+      "expect_alert_ids": ["public_verified_dataset_empty"]
+    },
+    {
+      "id": "harmless_growth",
+      "baseline": {
+        "cohort_size": 2,
+        "source_count": 2,
+        "statement_count": 1,
+        "human_verified_statements": 1,
+        "machine_validated_statements": 0
+      },
+      "snapshot": {
+        "as_of": "2026-09-27T00:00:00.000Z",
+        "dataset_present": true,
+        "dataset_kind": "live",
+        "cohort_size": 8,
+        "source_count": 10,
+        "enabled_source_count": 2,
+        "enabled_freshness": { "current": 2, "aging": 0, "stale": 0, "never_checked": 0 },
+        "collection": { "attempted": 1, "succeeded": 1 },
+        "slo": { "cadence_eligible": 2, "cadence_met": 2, "statement_bearing_sources": 1, "statement_bearing_sources_fresh": 1 },
+        "latest_successful_observation": "2026-09-27T00:00:00.000Z",
+        "statements_by_review": { "human_verified": 4, "machine_validated": 1, "unreviewed": 0, "needs_review": 0, "rejected": 0 }
+      },
+      "expect_ok": true,
+      "expect_error_ids": [],
+      "expect_warning_ids": [],
+      "expect_alert_ids": [],
+      "expect_info_ids": ["dataset_growth"]
+    },
+    {
+      "id": "integrity_failures",
+      "snapshot": {
+        "dataset_present": true,
+        "dataset_kind": "synthetic",
+        "cohort_size": 4,
+        "integrity": {
+          "duplicate_identity_ids": 1,
+          "multiple_current_versions": 2,
+          "human_verified_missing_evidence": 1,
+          "numeric_without_numeric_evidence": 1,
+          "impossible_probability": 1,
+          "public_statement_unavailable_source": 1
+        }
+      },
+      "expect_ok": false,
+      "expect_error_ids": [
+        "duplicate_identity_ids",
+        "multiple_current_versions",
+        "human_verified_missing_evidence",
+        "numeric_without_numeric_evidence",
+        "impossible_probability",
+        "public_statement_unavailable_source"
+      ],
+      "expect_warning_ids": [],
+      "expect_alert_ids": []
+    },
+    {
+      "id": "synthetic_stale_not_an_incident",
+      "snapshot": {
+        "as_of": "2026-09-27T00:00:00.000Z",
+        "dataset_present": true,
+        "dataset_kind": "synthetic",
+        "cohort_size": 8,
+        "enabled_source_count": 5,
+        "sources_stale": 5,
+        "enabled_freshness": { "current": 0, "aging": 0, "stale": 5, "never_checked": 0 },
+        "freshness": { "current": 0, "aging": 0, "stale": 5, "never_checked": 0 },
+        "latest_successful_observation": "2025-08-01T00:00:00.000Z",
+        "slo": { "cadence_eligible": 0, "cadence_met": 0, "statement_bearing_sources": 0, "statement_bearing_sources_fresh": 0 }
+      },
+      "expect_ok": true,
+      "expect_error_ids": [],
+      "expect_warning_ids": [],
+      "expect_alert_ids": [],
+      "expect_info_ids": ["all_sources_stale"]
+    },
+    {
+      "id": "cohort_empty",
+      "snapshot": {
+        "dataset_present": true,
+        "dataset_kind": "live",
+        "cohort_size": 0,
+        "enabled_source_count": 0
+      },
+      "expect_ok": false,
+      "expect_error_ids": ["cohort_empty"],
+      "expect_warning_ids": [],
+      "expect_alert_ids": []
+    },
+    {
+      "id": "imports_repeatedly_fail",
+      "snapshot": {
+        "as_of": "2026-09-27T00:00:00.000Z",
+        "dataset_present": true,
+        "dataset_kind": "live",
+        "cohort_size": 5,
+        "enabled_source_count": 1,
+        "enabled_freshness": { "current": 1, "aging": 0, "stale": 0, "never_checked": 0 },
+        "collection": { "attempted": 1, "succeeded": 1 },
+        "slo": { "cadence_eligible": 1, "cadence_met": 1, "statement_bearing_sources": 1, "statement_bearing_sources_fresh": 1 },
+        "latest_successful_observation": "2026-09-27T00:00:00.000Z",
+        "import_failure_streak": 3
+      },
+      "expect_ok": false,
+      "expect_error_ids": ["imports_repeatedly_fail"],
+      "expect_warning_ids": [],
+      "expect_alert_ids": ["imports_repeatedly_fail"]
+    }
+  ]
+}

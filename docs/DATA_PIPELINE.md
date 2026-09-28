@@ -9,7 +9,9 @@ The data-collection side of pdoom.live lives in `pipeline/`. It does not render 
 - `pipeline/pdoom_pipeline/identity/` — name keys and OpenAlex acceptance rules.
 - `pipeline/pdoom_pipeline/collectors/` — RSS/Atom, arXiv, GitHub, and OpenAlex works.
 - `pipeline/pdoom_pipeline/ingest/` — idempotent observation store and author-versus-mentioned roles.
+- `pipeline/pdoom_pipeline/belief/` — collection priority, question keys, owned essays, podcast guest rules, and view-change candidates.
 - `pipeline/pdoom_pipeline/extract/` — deterministic statement boundary. It does not invent probabilities.
+- `pipeline/pdoom_pipeline/export/` — seed registry and belief-corpus canonical documents.
 - `pipeline/pdoom_pipeline/fetch.py` — scheme, DNS, and address checks; redirect, size, timeout, and decompression limits.
 - `data/seed/cohort/v2026-09/` — generated organizations, people, affiliations, identities, sources, and ambiguities.
 - `data/fixtures/` — offline collector fixtures, including hostile source text.
@@ -24,6 +26,7 @@ From the repository root, with the virtualenv that has `pytest` and `defusedxml`
 PYTHONPATH=pipeline python -m pytest
 PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.resolve_seed
 PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.enrich_sources --live
+PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.collect_beliefs --live
 ```
 
 `pytest` does not call the network. `resolve_seed --resolve` queries OpenAlex. `enrich_sources --live` reads ORCID records that are already linked and fetches claimed or ORCID URLs. It does not add people and it does not search social accounts by name. Set `PDOOM_LIVE_TESTS=1` only for an optional live smoke test.
@@ -100,3 +103,13 @@ Enrichment adds a personal or lab profile only when the fetched page contains th
 `not_found`, `temporarily_unavailable`, `rate_limited`, `unauthorized`, `blocked_by_policy`, `parser_unsupported`, `content_too_large`, `invalid_content`, `collector_bug`, `unsafe_url`.
 
 A collector failure is not evidence that the person has made no public statement.
+
+## Operational checks
+
+The cohort quality report under `data/reports/` describes coverage. It is not the freshness check. [Operator observability](./OBSERVABILITY.md) defines collection and extraction signals, service objectives, and alert conditions. Pipeline snapshots can be checked with:
+
+```bash
+PYTHONPATH=pipeline python -m pdoom_pipeline.observability check --snapshot snapshot.json
+```
+
+That command reports failures. It does not rewrite the observation store.

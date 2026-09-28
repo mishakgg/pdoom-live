@@ -1,0 +1,43 @@
+# Local production-like runtime. The database password is for this compose
+# project only. Replace it before exposing the host.
+name: pdoom-live
+
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-pdoom}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-pdoom}
+      POSTGRES_DB: ${POSTGRES_DB:-pdoom_live}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-pdoom} -d ${POSTGRES_DB:-pdoom_live}"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5432:5432"
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      NODE_ENV: production
+      PDOOM_ENV: production
+      APP_BASE_URL: ${APP_BASE_URL:-http://127.0.0.1:3000}
+      DATABASE_URL: ${DATABASE_URL:-postgresql://pdoom:pdoom@postgres:5432/pdoom_live}
+      PORT: "3000"
+      HOSTNAME: 0.0.0.0
+      PDOOM_MIGRATIONS_DIR: /app/migrations
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  pgdata:

@@ -1,10 +1,11 @@
 import { parseSearchParams, statementListQuerySchema } from "@pdoom/contracts";
 import { listStatements } from "@pdoom/db";
 import { queryError } from "@/lib/http";
+import { observe } from "@/lib/observe";
 
 export const dynamic = "force-dynamic";
 
-export async function GET(request: Request) {
+export const GET = observe("api", async function GET(request: Request) {
   try {
     const query = statementListQuerySchema.parse(parseSearchParams(new URL(request.url).searchParams));
     const page = await listStatements(query);
@@ -12,4 +13,4 @@ export async function GET(request: Request) {
   } catch (error) {
     return queryError(error);
   }
-}
+});

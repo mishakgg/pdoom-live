@@ -1,5 +1,8 @@
 import { getTrend } from "@pdoom/db";
-import { DistributionPanel, VolumePanel } from "@/components/trends";
+import { trendKindLabel } from "@pdoom/contracts";
+import { TrendView } from "@/components/trend-view";
+import { formatWhen } from "@/lib/format";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
@@ -10,32 +13,22 @@ export default async function TrendPage({ params }: { params: Promise<{ slug: st
   if (!trend) notFound();
   return (
     <>
-      <p className="kicker">Calculated {trend.calculated_at}</p>
+      <p className="kicker">
+        <Link href="/trends">Trends</Link>
+        {" · "}
+        {trendKindLabel(trend.kind)}
+        {" · "}
+        Calculated {formatWhen(trend.calculated_at)}
+      </p>
       <h1>{trend.name}</h1>
       <p className="lede">{trend.cohort_definition}</p>
-      <p className="meta">Cohort {trend.cohort_slug} version {trend.cohort_version}. Method {trend.method_version}.</p>
-      {trend.kind === "distribution" ? (
-        <DistributionPanel
-          name={trend.name}
-          methodVersion={trend.method_version}
-          cohortDefinition={trend.cohort_definition}
-          included={trend.distribution.included}
-          median={trend.distribution.median}
-          minimum={trend.distribution.minimum}
-          maximum={trend.distribution.maximum}
-          contributingPersonCount={trend.distribution.contributing_person_count}
-          contributingStatementCount={trend.distribution.contributing_statement_count}
-          coverage={trend.distribution.coverage}
-          exclusions={trend.distribution.exclusions}
-        />
-      ) : (
-        <VolumePanel
-          rows={trend.volume.rows}
-          methodVersion={trend.method_version}
-          contributingPersonCount={trend.volume.contributing_person_count}
-          contributingStatementCount={trend.volume.contributing_statement_count}
-        />
-      )}
+      <p className="meta">
+        Cohort {trend.cohort_slug} version {trend.cohort_version}. Method {trend.method_version}.
+        {trend.source === "prepared_method" ? " Prepared method for this question key." : ""}
+        {trend.source === "discovered_question" ? " Opened from a stored question key that has a human-verified numeric forecast." : ""}
+        {trend.source === "published_definition" ? " Published with the loaded dataset." : ""}
+      </p>
+      <TrendView trend={trend} />
     </>
   );
 }

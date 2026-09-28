@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { PUBLIC_REVIEW_STATES, STATEMENT_TYPES, type PublicReviewState, type ReviewState } from "./enums";
+import { RESEARCH_REVIEW_STATES, STATEMENT_TYPES, type ResearchReviewState, type ReviewState } from "./enums";
 import { reviewPresentation } from "./review";
 
 /** Public export document version. Independent of the canonical import schema version. */
@@ -86,7 +86,7 @@ export const publicStatementQuerySchema = z
     source: slug.optional(),
     topic: slug.optional(),
     statement_type: z.enum(STATEMENT_TYPES).optional(),
-    review_state: z.enum(PUBLIC_REVIEW_STATES).optional(),
+    review_state: z.enum(RESEARCH_REVIEW_STATES).optional(),
     from: queryDate.optional(),
     to: queryDate.optional(),
     q: publicSearchTextSchema.optional(),
@@ -117,13 +117,13 @@ export type PublicStatementQuery = z.infer<typeof publicStatementQuerySchema>;
 export type PublicPageQuery = z.infer<typeof publicPageQuerySchema>;
 
 export type PublicReviewFields = {
-  review_state: PublicReviewState;
+  review_state: ResearchReviewState;
   verified: boolean;
   machine_labeled: boolean;
 };
 
-export function isResearchPublicReviewState(state: string): state is PublicReviewState {
-  return (PUBLIC_REVIEW_STATES as readonly string[]).includes(state);
+export function isResearchPublicReviewState(state: string): state is ResearchReviewState {
+  return (RESEARCH_REVIEW_STATES as readonly string[]).includes(state);
 }
 
 /** Machine-validated stays unverified. Human-verified is the only verified public state. */
