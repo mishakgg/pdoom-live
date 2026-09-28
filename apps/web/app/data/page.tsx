@@ -1,13 +1,13 @@
 import { getPublicCatalog } from "@pdoom/db";
 import Link from "next/link";
 import { formatWhen } from "@/lib/format";
+import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = {
-  title: "Data",
-  description: "Public dataset exports, cohort, methodology, and the versioned read API for pdoom.live.",
-};
+export async function generateMetadata() {
+  return pageMetadata(canonicalOrigin(), listPageFields("data"));
+}
 
 const files = [
   ["manifest.json", "Dataset version, cohort, methodology, counts, license, and file hashes"],

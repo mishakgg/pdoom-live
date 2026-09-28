@@ -44,8 +44,9 @@ describe("public review policy", () => {
     expect(isPublicReviewState("needs_review")).toBe(true);
     expect(isVerifiedReviewState("needs_review")).toBe(false);
     expect(isVerifiedReviewState("machine_validated")).toBe(false);
-    expect(reviewPresentation("machine_validated")).toEqual({ public: true, verified: false, machine_labeled: true });
-    expect(reviewPresentation("human_verified")).toEqual({ public: true, verified: true, machine_labeled: false });
+    expect(reviewPresentation("machine_validated")).toEqual({ public: true, verified: false, machine_labeled: true, indexable: true });
+    expect(reviewPresentation("human_verified")).toEqual({ public: true, verified: true, machine_labeled: false, indexable: true });
+    expect(reviewPresentation("needs_review").indexable).toBe(false);
     expect([...RESEARCH_REVIEW_STATES].sort()).toEqual(["human_verified", "machine_validated"].sort());
     expect(isResearchPublicReviewState("needs_review")).toBe(false);
     expect(isResearchPublicReviewState("unreviewed")).toBe(false);

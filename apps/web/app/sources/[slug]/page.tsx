@@ -1,9 +1,14 @@
+import { isIndexableReviewState } from "@pdoom/contracts";
 import Link from "next/link";
+import { JsonLd } from "@/components/json-ld";
 import { ExternalLink } from "@/components/statement-bits";
 import { PartialCollectionNote } from "@/components/states";
 import { formatWhen, isHumanVerified, phraseLabel, reviewLabel } from "@/lib/format";
 import { loadSource } from "@/lib/loaders";
 import { freshnessLabel, sourceMaterialState } from "@/lib/presentation";
+import { requestNonce } from "@/lib/request-nonce";
+import { canonicalOrigin, notFoundMetadata, pageMetadata, sourceFields } from "@/lib/seo";
+import { sourceStructuredData } from "@/lib/structured-data";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
@@ -11,15 +16,37 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const source = await loadSource(slug);
-  return { title: source?.name ?? "Source" };
+  if (!source) return notFoundMetadata();
+  return pageMetadata(
+    canonicalOrigin(),
+    sourceFields({
+      slug: source.slug,
+      name: source.name,
+      source_type: source.source_type,
+      indexable: isIndexableReviewState(source.review_state),
+    }),
+  );
 }
 
 export default async function SourcePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const source = await loadSource(slug);
   if (!source) notFound();
+  const indexable = isIndexableReviewState(source.review_state);
+  const nonce = await requestNonce();
   return (
     <>
+      {indexable ? (
+        <JsonLd
+          nonce={nonce}
+          data={sourceStructuredData({
+            origin: canonicalOrigin(),
+            slug: source.slug,
+            name: source.name,
+            source_type: source.source_type,
+          })}
+        />
+      ) : null}
       <p className="kicker">{phraseLabel(source.source_type)} · {phraseLabel(source.collection_method)} · {freshnessLabel(source.freshness)}</p>
       <h1>{source.name}</h1>
       {source.rights_notes ? <p className="lede">{source.rights_notes}</p> : <p className="lede">No rights note is recorded for this source.</p>}

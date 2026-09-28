@@ -1,4 +1,11 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Not in the dataset",
+  description: "That record is not in the current public dataset.",
+  robots: { index: false, follow: false },
+};
 
 export default function NotFound() {
   return (

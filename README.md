@@ -89,6 +89,8 @@ npm run dev
 
 The app listens on `http://localhost:3000`.
 
+`APP_BASE_URL` sets the canonical origin for page metadata, the sitemap, `robots.txt`, and `/feed.xml`. A production process does not emit canonical URLs on localhost. Set `APP_BASE_URL=https://pdoom.live` for the public site.
+
 | Command | Purpose |
 | --- | --- |
 | `npm run dev` | Next.js development server |

@@ -35,6 +35,7 @@ export async function proxy(request: NextRequest) {
     applySecurityHeaders(headers, options);
     headers.set("Cache-Control", "no-store");
     headers.set("x-request-id", id);
+    if (path.startsWith("/api/")) headers.set("X-Robots-Tag", "noindex, nofollow");
     const wantsHtml = request.headers.get("accept")?.includes("text/html") && !path.startsWith("/api/");
     if (wantsHtml) {
       headers.set("Content-Type", "text/html; charset=utf-8");
@@ -53,6 +54,7 @@ export async function proxy(request: NextRequest) {
   const response = NextResponse.next({ request: { headers: requestHeaders } });
   applySecurityHeaders(response.headers, options);
   response.headers.set("x-request-id", id);
+  if (path.startsWith("/api/")) response.headers.set("X-Robots-Tag", "noindex, nofollow");
   if (PROBES.has(path)) response.headers.set("Cache-Control", "no-store");
   return response;
 }

@@ -4,10 +4,15 @@ import { StatementCard } from "@/components/statement-bits";
 import { InvalidFilters, Pager, StatementFilters } from "@/components/filters";
 import { EmptyState, NoResults } from "@/components/states";
 import { isInvalidCursor } from "@/lib/http";
+import { canonicalOrigin, hasDiscoveryFilter, listPageFields, pageMetadata } from "@/lib/seo";
 import { withCursor } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Statements" };
+
+export async function generateMetadata({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
+  const params = await searchParams;
+  return pageMetadata(canonicalOrigin(), listPageFields("statements", hasDiscoveryFilter(params)));
+}
 
 function filtered(params: Record<string, string | undefined>): boolean {
   return Object.entries(params).some(([key, value]) => key !== "cursor" && key !== "limit" && Boolean(value));

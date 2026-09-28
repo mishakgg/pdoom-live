@@ -3,9 +3,13 @@ import { trendKindLabel } from "@pdoom/contracts";
 import { DensityMark } from "@/components/trends";
 import { EmptyState } from "@/components/states";
 import Link from "next/link";
+import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Trends" };
+
+export async function generateMetadata() {
+  return pageMetadata(canonicalOrigin(), listPageFields("trends"));
+}
 
 const GROUPS = ["distribution", "timeline", "quantity", "revision", "volume"] as const;
 

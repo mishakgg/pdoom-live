@@ -1,16 +1,26 @@
 import { getOverview } from "@pdoom/db";
 import { trendKindLabel } from "@pdoom/contracts";
 import Link from "next/link";
+import { JsonLd } from "@/components/json-ld";
 import { StatementCard } from "@/components/statement-bits";
 import { TrendView } from "@/components/trend-view";
 import { DensityMark } from "@/components/trends";
 import { formatWhen } from "@/lib/format";
 import { coverageCopy } from "@/lib/presentation";
+import { requestNonce } from "@/lib/request-nonce";
+import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
+import { datasetStructuredData, websiteStructuredData } from "@/lib/structured-data";
 
 export const dynamic = "force-dynamic";
 
+export async function generateMetadata() {
+  return pageMetadata(canonicalOrigin(), listPageFields("home"));
+}
+
 export default async function HomePage() {
   const overview = await getOverview();
+  const origin = canonicalOrigin();
+  const nonce = await requestNonce();
   const coverageInput = {
     datasetKind: overview.dataset.dataset_kind,
     cohortSize: overview.dataset.coverage.cohort_size,
@@ -29,6 +39,16 @@ export default async function HomePage() {
   const others = overview.trends.filter((trend) => trend.slug !== distribution?.slug && trend.slug !== volume?.slug);
   return (
     <>
+      <JsonLd nonce={nonce} data={websiteStructuredData(origin)} />
+      <JsonLd
+        nonce={nonce}
+        data={datasetStructuredData({
+          origin,
+          datasetKind: overview.dataset.dataset_kind,
+          notice: overview.dataset.notice,
+          cohortName: overview.dataset.cohort?.name ?? null,
+        })}
+      />
       <p className="kicker">{overview.dataset.dataset_id ? kindLabel : "Observatory"}</p>
       <h1>Who said what, under which definition.</h1>
       <p className="lede">

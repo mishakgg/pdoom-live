@@ -164,3 +164,10 @@ export type PublicReviewState = (typeof PUBLIC_REVIEW_STATES)[number];
 /** States included in /api/v1 and the research snapshot. needs_review stays on the website and out of this set. */
 export const RESEARCH_REVIEW_STATES = ["human_verified", "machine_validated"] as const satisfies readonly ReviewState[];
 export type ResearchReviewState = (typeof RESEARCH_REVIEW_STATES)[number];
+
+/**
+ * States eligible for sitemaps, feeds, and search-engine indexing.
+ * Currently the same members as the research export. Page visibility is wider.
+ */
+export const INDEXABLE_REVIEW_STATES = ["human_verified", "machine_validated"] as const satisfies readonly ReviewState[];
+export type IndexableReviewState = (typeof INDEXABLE_REVIEW_STATES)[number];

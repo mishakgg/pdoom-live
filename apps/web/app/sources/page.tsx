@@ -4,9 +4,13 @@ import { ExternalLink } from "@/components/statement-bits";
 import { EmptyState } from "@/components/states";
 import { formatWhen, isHumanVerified, phraseLabel, reviewLabel } from "@/lib/format";
 import { freshnessLabel } from "@/lib/presentation";
+import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Sources" };
+
+export async function generateMetadata() {
+  return pageMetadata(canonicalOrigin(), listPageFields("sources"));
+}
 
 export default async function SourcesPage() {
   const sources = await listSources();

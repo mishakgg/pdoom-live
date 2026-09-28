@@ -1,8 +1,12 @@
 import { trendKindLabel } from "@pdoom/contracts";
+import Link from "next/link";
+import { JsonLd } from "@/components/json-ld";
 import { TrendView } from "@/components/trend-view";
 import { formatWhen } from "@/lib/format";
 import { loadTrend } from "@/lib/loaders";
-import Link from "next/link";
+import { requestNonce } from "@/lib/request-nonce";
+import { canonicalOrigin, notFoundMetadata, pageMetadata, trendFields } from "@/lib/seo";
+import { trendStructuredData } from "@/lib/structured-data";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
@@ -10,15 +14,35 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const trend = await loadTrend(slug);
-  return { title: trend?.name ?? "Trend" };
+  if (!trend) return notFoundMetadata();
+  return pageMetadata(
+    canonicalOrigin(),
+    trendFields({
+      slug: trend.slug,
+      name: trend.name,
+      method_version: trend.method_version,
+      cohort_version: trend.cohort_version,
+    }),
+  );
 }
 
 export default async function TrendPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const trend = await loadTrend(slug);
   if (!trend) notFound();
+  const nonce = await requestNonce();
   return (
     <>
+      <JsonLd
+        nonce={nonce}
+        data={trendStructuredData({
+          origin: canonicalOrigin(),
+          slug: trend.slug,
+          name: trend.name,
+          method_version: trend.method_version,
+          cohort_definition: trend.cohort_definition,
+        })}
+      />
       <p className="kicker">
         <Link href="/trends">Trends</Link>
         {" · "}

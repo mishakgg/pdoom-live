@@ -1,11 +1,26 @@
 import Link from "next/link";
+import { JsonLd } from "@/components/json-ld";
+import { requestNonce } from "@/lib/request-nonce";
+import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
+import { methodologyStructuredData } from "@/lib/structured-data";
 
-export const metadata = { title: "Methodology" };
+export async function generateMetadata() {
+  return pageMetadata(canonicalOrigin(), listPageFields("methodology"));
+}
 
-// A prerendered document cannot carry the per-request CSP nonce.
 export const dynamic = "force-dynamic";
 
-export default function MethodologyPage() {
+export default async function MethodologyPage() {
+  const nonce = await requestNonce();
+  return (
+    <>
+      <JsonLd nonce={nonce} data={methodologyStructuredData(canonicalOrigin(), null)} />
+      <MethodologyDocument />
+    </>
+  );
+}
+
+export function MethodologyDocument() {
   return (
     <>
       <h1>Methodology</h1>

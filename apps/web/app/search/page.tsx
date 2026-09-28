@@ -1,9 +1,14 @@
 import { STATEMENT_TYPES, STATEMENT_TYPE_LABELS, parseSearchParams, searchQuerySchema, SEARCH_ENTITY_TYPES } from "@pdoom/contracts";
 import { searchPublic } from "@pdoom/db";
 import { SearchResults } from "@/components/search-results";
+import { canonicalOrigin, hasDiscoveryFilter, listPageFields, pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Search" };
+
+export async function generateMetadata({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
+  const params = await searchParams;
+  return pageMetadata(canonicalOrigin(), listPageFields("search", hasDiscoveryFilter(params)));
+}
 
 const TYPE_LABEL: Record<(typeof SEARCH_ENTITY_TYPES)[number], string> = {
   person: "People",

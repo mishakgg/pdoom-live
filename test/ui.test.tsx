@@ -3,7 +3,7 @@ import { cleanup, render, screen, within } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import ErrorPage from "../apps/web/app/error";
 import { LoadingState } from "../apps/web/components/loading-state";
-import MethodologyPage from "../apps/web/app/methodology/page";
+import { MethodologyDocument } from "../apps/web/app/methodology/page";
 import NotFound from "../apps/web/app/not-found";
 import { CurationEvidence } from "../apps/web/components/curation-evidence";
 import { PeopleFilters, StatementFilters } from "../apps/web/components/filters";
@@ -277,7 +277,7 @@ describe("public rendering", () => {
   });
 
   it("explains class boundaries on the methodology page", () => {
-    render(<MethodologyPage />);
+    render(<MethodologyDocument />);
     expect(screen.getAllByText(/Explicit numerical estimate/).length).toBeGreaterThan(0);
     expect(screen.getByText(/not a consensus/)).toBeTruthy();
     expect(screen.getByText(/never spoken/)).toBeTruthy();

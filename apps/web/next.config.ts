@@ -7,8 +7,18 @@ const appDir = path.dirname(fileURLToPath(import.meta.url));
 const nextConfig: NextConfig = {
   output: "standalone",
   outputFileTracingRoot: path.join(appDir, "../.."),
+  outputFileTracingIncludes: {
+    "/opengraph-image": ["./assets/fonts/SourceSans3-Regular.ttf"],
+    "/people/[slug]/opengraph-image": ["./assets/fonts/SourceSans3-Regular.ttf"],
+    "/topics/[slug]/opengraph-image": ["./assets/fonts/SourceSans3-Regular.ttf"],
+    "/statements/[slug]/opengraph-image": ["./assets/fonts/SourceSans3-Regular.ttf"],
+    "/sources/[slug]/opengraph-image": ["./assets/fonts/SourceSans3-Regular.ttf"],
+    "/source-items/[slug]/opengraph-image": ["./assets/fonts/SourceSans3-Regular.ttf"],
+    "/trends/[slug]/opengraph-image": ["./assets/fonts/SourceSans3-Regular.ttf"],
+  },
   transpilePackages: ["@pdoom/contracts", "@pdoom/db", "@pdoom/observability"],
   poweredByHeader: false,
+  trailingSlash: false,
   async headers() {
     return [
       {
@@ -22,6 +32,10 @@ const nextConfig: NextConfig = {
             value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
           },
         ],
+      },
+      {
+        source: "/api/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
       },
     ];
   },

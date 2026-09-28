@@ -5,11 +5,15 @@ import { InvalidFilters, Pager, PeopleFilters } from "@/components/filters";
 import { EmptyState, NoResults } from "@/components/states";
 import { isInvalidCursor } from "@/lib/http";
 import { typeLabel } from "@/lib/format";
+import { canonicalOrigin, hasDiscoveryFilter, listPageFields, pageMetadata } from "@/lib/seo";
 import { NO_STATEMENT_COLLECTED, NO_STATEMENT_COLLECTED_NOTE, affiliationFact, personStatusLabel, withCursor } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = { title: "People" };
+export async function generateMetadata({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
+  const params = await searchParams;
+  return pageMetadata(canonicalOrigin(), listPageFields("people", hasDiscoveryFilter(params)));
+}
 
 function filtered(params: Record<string, string | undefined>): boolean {
   return Boolean(params.q || params.organization || params.status);
