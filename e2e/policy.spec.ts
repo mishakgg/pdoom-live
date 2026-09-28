@@ -9,7 +9,7 @@ test("rejected and unreviewed statements cannot be opened", async ({ page, reque
   ] as const) {
     const response = await page.goto(`/statements/${slug}`);
     expect(response?.status()).toBe(404);
-    await expect(page.getByRole("heading", { name: "Not in the dataset" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Not in this dataset" })).toBeVisible();
     await expect(page.getByText(marker)).toHaveCount(0);
     const api = await request.get(`/api/statements/${slug}`);
     expect(api.status()).toBe(404);
@@ -51,7 +51,7 @@ test("review filters do not publish rejected or unreviewed rows", async ({ page 
 test("needs review stays visible and is not labeled verified", async ({ page }) => {
   await page.goto("/statements/jonah-extinction-review-2024");
   await expect(page.getByRole("heading", { level: 1, name: "Jonah Hale" })).toBeVisible();
-  await expect(page.getByText("needs review", { exact: true })).toBeVisible();
+  await expect(page.getByText("Needs review", { exact: true }).first()).toBeVisible();
   await expect(page.getByText("human verified")).toHaveCount(0);
   await expect(page.getByText("30%", { exact: true })).toBeVisible();
   await page.goto("/trends/extinction-by-2070-distribution");
@@ -67,7 +67,7 @@ test("needs review stays visible and is not labeled verified", async ({ page }) 
 test("machine-validated output is labeled and human-verified estimates stay explicit", async ({ page }) => {
   await page.goto("/statements/ada-inferred-2024");
   await expect(page.getByText("Model-inferred signal", { exact: true })).toBeVisible();
-  await expect(page.getByText("machine validated", { exact: true })).toBeVisible();
+  await expect(page.getByText("Machine validated", { exact: true }).first()).toBeVisible();
   await expect(page.getByText("This is a model-inferred signal. It is not a quotation and it is not this person’s probability.")).toBeVisible();
   await expect(page.getByText("human verified")).toHaveCount(0);
   const inferredValue = page.locator("dt", { hasText: "Value" }).locator("xpath=following-sibling::dd[1]");
@@ -75,7 +75,7 @@ test("machine-validated output is labeled and human-verified estimates stay expl
 
   await page.goto("/statements/ada-extinction-2025");
   await expect(page.getByText("Explicit numerical estimate")).toBeVisible();
-  await expect(page.getByText("human verified", { exact: true })).toBeVisible();
+  await expect(page.getByText("Human verified", { exact: true }).first()).toBeVisible();
   await expect(page.locator("dt", { hasText: "Value" }).locator("xpath=following-sibling::dd[1]")).toHaveText("12%");
 });
 

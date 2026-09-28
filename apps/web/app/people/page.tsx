@@ -1,20 +1,18 @@
 import { listPeople } from "@pdoom/db";
 import { peopleListQuerySchema } from "@pdoom/contracts";
-import { isInvalidCursor } from "@/lib/http";
 import Link from "next/link";
+import { InvalidFilters, Pager, PeopleFilters } from "@/components/filters";
+import { EmptyState, NoResults } from "@/components/states";
+import { isInvalidCursor } from "@/lib/http";
 import { typeLabel } from "@/lib/format";
+import { NO_STATEMENT_COLLECTED, NO_STATEMENT_COLLECTED_NOTE, affiliationFact, personStatusLabel, withCursor } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = { title: "People" };
 
-function InvalidPeopleFilters() {
-  return (
-    <>
-      <h1>Tracked people</h1>
-      <p className="warning">Those filters are not valid. Adjust the query and try again.</p>
-    </>
-  );
+function filtered(params: Record<string, string | undefined>): boolean {
+  return Boolean(params.q || params.organization || params.status);
 }
 
 export default async function PeoplePage({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
@@ -26,56 +24,74 @@ export default async function PeoplePage({ searchParams }: { searchParams: Promi
     cursor: params.cursor || undefined,
     limit: params.limit ?? 20,
   });
-  if (!parsed.success) return <InvalidPeopleFilters />;
+  return (
+    <>
+      <h1>Tracked people</h1>
+      <p className="lede">Every person has an inclusion reason. Similar names are not merged. A missing statement means nothing has been collected, not that the person has never spoken.</p>
+      <PeopleFilters params={params} />
+      {!parsed.success ? <InvalidFilters /> : <PeopleResults params={params} query={parsed.data} filtered={filtered(params)} />}
+    </>
+  );
+}
+
+async function PeopleResults({
+  params,
+  query,
+  filtered,
+}: {
+  params: Record<string, string | undefined>;
+  query: ReturnType<typeof peopleListQuerySchema.parse>;
+  filtered: boolean;
+}) {
   let page;
   try {
-    page = await listPeople(parsed.data);
+    page = await listPeople(query);
   } catch (error) {
-    if (isInvalidCursor(error)) return <InvalidPeopleFilters />;
+    if (isInvalidCursor(error)) return <InvalidFilters />;
     throw error;
   }
   return (
     <>
-      <h1>Tracked people</h1>
-      <p className="lede">Every person has an inclusion reason. Similar names are not merged.</p>
-      <form className="filters" method="get">
-        <label>Name<input name="q" defaultValue={params.q ?? ""} /></label>
-        <label>Organization slug<input name="organization" defaultValue={params.organization ?? ""} /></label>
-        <label>
-          Status
-          <select name="status" defaultValue={params.status ?? ""}>
-            <option value="">Any</option>
-            <option value="active">active</option>
-            <option value="historical">historical</option>
-            <option value="review">review</option>
-          </select>
-        </label>
-        <button type="submit">Filter</button>
-      </form>
-      <div className="person-list">
-        {page.data.map((person) => (
-          <article className="card" key={person.slug}>
-            <div className="row">
-              <h2>
-                <Link href={`/people/${person.slug}`}>{person.display_name}</Link>
-              </h2>
-              <span className="meta">{person.status}</span>
-            </div>
-            <p>{person.inclusion_reason}</p>
-            <p className="meta">
-              {person.organization ? `${person.organization.role ?? "Affiliate"} · ${person.organization.name}` : "No current affiliation"}
-              {" · "}
-              {Object.entries(person.statement_counts)
-                .map(([type, count]) => `${count} ${typeLabel(type)}`)
-                .join(" · ") || "No statements"}
-            </p>
-          </article>
-        ))}
-      </div>
+      {page.data.length ? (
+        <div className="person-list">
+          {page.data.map((person) => {
+            const affiliation = affiliationFact(person.organization);
+            const counts = Object.entries(person.statement_counts);
+            return (
+              <article className="card" key={person.slug}>
+                <p className="meta">{personStatusLabel(person.status)}</p>
+                <h2>
+                  <Link href={`/people/${person.slug}`}>{person.display_name}</Link>
+                </h2>
+                <p>{person.inclusion_reason}</p>
+                <p>{affiliation.text}</p>
+                {counts.length ? (
+                  <p className="meta">
+                    Collected statements: {counts.map(([type, count]) => `${count} ${typeLabel(type)}`).join(" · ")}
+                  </p>
+                ) : (
+                  <>
+                    <p>{NO_STATEMENT_COLLECTED}</p>
+                    <p className="meta">{NO_STATEMENT_COLLECTED_NOTE}</p>
+                  </>
+                )}
+              </article>
+            );
+          })}
+        </div>
+      ) : filtered ? (
+        <NoResults what="people" />
+      ) : (
+        <EmptyState title="No people are loaded">
+          <p>The person registry is empty. That is a dataset state, not a claim about who works on frontier AI.</p>
+        </EmptyState>
+      )}
       <p className="meta">{page.page.total} people</p>
-      <div className="pager">
-        {page.page.next_cursor ? <Link className="button" href={`/people?cursor=${page.page.next_cursor}`}>Next</Link> : null}
-      </div>
+      <Pager
+        label="people"
+        previousHref={page.page.prev_cursor ? withCursor("/people", params, page.page.prev_cursor) : null}
+        nextHref={page.page.next_cursor ? withCursor("/people", params, page.page.next_cursor) : null}
+      />
     </>
   );
 }

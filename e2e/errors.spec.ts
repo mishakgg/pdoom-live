@@ -8,7 +8,7 @@ test("unknown slugs render the dataset not-found page", async ({ page, guard }) 
   for (const path of missing) {
     const response = await page.goto(path);
     expect(response?.status(), path).toBe(404);
-    await expect(page.getByRole("heading", { name: "Not in the dataset" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Not in this dataset" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Back to activity" })).toBeVisible();
   }
 });
@@ -35,7 +35,7 @@ test("malformed cursors and excessive limits stay on the page", async ({ page, r
 
 test("missing dates, a missing horizon, stale checks, and long evidence stay readable", async ({ page }) => {
   await page.goto("/statements/mateo-undated");
-  await expect(page.locator("dt", { hasText: "Event time" }).locator("xpath=following-sibling::dd[1]")).toHaveText("Time unknown");
+  await expect(page.locator("dt", { hasText: "When" }).locator("xpath=following-sibling::dd[1]")).toHaveText("Time unknown");
   await expect(page.locator("dt", { hasText: "Published" }).locator("xpath=following-sibling::dd[1]")).toHaveText("Time unknown");
   await expect(page.locator("dt", { hasText: "Horizon" }).locator("xpath=following-sibling::dd[1]")).toHaveText("Not stated");
   await expect(page.locator("dt", { hasText: "Value" }).locator("xpath=following-sibling::dd[1]")).toHaveText("—");
@@ -49,11 +49,11 @@ test("missing dates, a missing horizon, stale checks, and long evidence stay rea
   await expect(page.locator("dt", { hasText: "Value" }).locator("xpath=following-sibling::dd[1]")).toHaveText("22%");
 
   await page.goto("/people/jonah-hale");
-  await expect(page.getByText("never_checked")).toBeVisible();
-  await expect(page.getByText(/\bstale\b/)).toBeVisible();
+  await expect(page.getByText("Never successfully checked")).toBeVisible();
+  await expect(page.getByText("Stale, last success older than 90 days")).toBeVisible();
 
   await page.goto("/sources");
-  await expect(page.getByText("no successful check")).toBeVisible();
+  await expect(page.getByText("No successful check is recorded.")).toBeVisible();
 
   await page.goto("/source-items/harbor-large-note");
   await expect(page.locator("blockquote.evidence")).toContainText("Long evidence sentence for wrap checking.");

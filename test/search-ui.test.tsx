@@ -159,7 +159,7 @@ describe("search result presentation", () => {
     expect(screen.queryByRole("heading", { name: "People" })).toBeNull();
     expect(screen.getByRole("heading", { name: "Explicit numerical estimates" })).toBeTruthy();
     expect(screen.getByRole("heading", { name: "Model-inferred signals" })).toBeTruthy();
-    expect(screen.getByText(/machine validated/)).toBeTruthy();
+    expect(screen.getByText("Machine validated")).toBeTruthy();
     expect(screen.getAllByText("Explicit numerical estimate").length).toBeGreaterThan(0);
     expect(view.container.querySelector("script")).toBeNull();
     expect(view.container.innerHTML).toContain("&lt;script&gt;");

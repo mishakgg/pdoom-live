@@ -4,9 +4,9 @@ test("home shows the fixture cohort and a sourced trend", async ({ page }, testI
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1, name: "Who said what, under which definition." })).toBeVisible();
   await expect(page.locator("main").getByText("Synthetic fixture", { exact: true })).toBeVisible();
-  await expect(page.locator("p.fresh").getByText("synthetic-frontier-v1")).toBeVisible();
+  await expect(page.getByText("synthetic-frontier-v1").first()).toBeVisible();
   await expect(page.getByText("Synthetic frontier cohort v1")).toBeVisible();
-  await expect(page.getByText("8 tracked people")).toBeVisible();
+  await expect(page.locator("dt", { hasText: "Tracked people" }).locator("xpath=following-sibling::dd[1]")).toHaveText("8");
   await expect(page.getByRole("link", { name: /Ada Quill updated her unconditional extinction probability/ })).toBeVisible();
   const extinction = page.locator("section.panel", { has: page.getByRole("heading", { level: 2, name: "Unconditional human-extinction probability by 2070" }) });
   await expect(extinction.getByText("10.5%")).toBeVisible();
@@ -52,11 +52,11 @@ test("statement detail shows the audit record and evidence", async ({ page }) =>
   await page.goto("/statements/ada-extinction-2025");
   await expect(page.getByRole("heading", { level: 1, name: "Ada Quill" })).toBeVisible();
   await expect(page.getByText("Explicit numerical estimate")).toBeVisible();
-  await expect(page.getByText("human verified")).toBeVisible();
+  await expect(page.getByText("Human verified").first()).toBeVisible();
   await expect(page.getByText("12%", { exact: true })).toBeVisible();
   await expect(page.getByText("by end of 2070")).toBeVisible();
   await expect(page.locator("blockquote.evidence")).toContainText("12 percent");
-  await expect(page.getByRole("link", { name: "https://synthetic.pdoom.example/items/ada-podcast-2025" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "https://synthetic.pdoom.example/items/ada-podcast-2025" }).first()).toBeVisible();
   await expect(page.getByText(/^[a-f0-9]{64}$/).first()).toBeVisible();
 });
 

@@ -1,15 +1,21 @@
-import { getTrend } from "@pdoom/db";
 import { trendKindLabel } from "@pdoom/contracts";
 import { TrendView } from "@/components/trend-view";
 import { formatWhen } from "@/lib/format";
+import { loadTrend } from "@/lib/loaders";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const trend = await loadTrend(slug);
+  return { title: trend?.name ?? "Trend" };
+}
+
 export default async function TrendPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const trend = await getTrend(slug);
+  const trend = await loadTrend(slug);
   if (!trend) notFound();
   return (
     <>
