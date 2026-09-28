@@ -2,7 +2,7 @@
 
 Human review is a separate record from extraction. An extractor may set `unreviewed`, `needs_review`, or `machine_validated`. Only an operator decision with action `approve` sets `human_verified`.
 
-Local curation is off unless `PDOOM_CURATION_MODE=local`. `/curation` and `POST /api/curation/decisions` then return 404. The public statement list does not change when the flag is on. Unreviewed and rejected statements stay off public routes. `needs_review` can appear, and it is not labeled verified.
+Local curation is available only when `PDOOM_CURATION_MODE=local`. Otherwise `/curation` and `POST /api/curation/decisions` return 404. Production configuration rejects `PDOOM_CURATION_MODE`. The public statement list does not change when the flag is on. Unreviewed and rejected statements stay off public routes. `needs_review` can appear, and it is not labeled verified.
 
 ## Decisions
 

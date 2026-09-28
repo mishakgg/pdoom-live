@@ -7,7 +7,7 @@ const appDir = path.dirname(fileURLToPath(import.meta.url));
 const nextConfig: NextConfig = {
   output: "standalone",
   outputFileTracingRoot: path.join(appDir, "../.."),
-  transpilePackages: ["@pdoom/contracts", "@pdoom/db"],
+  transpilePackages: ["@pdoom/contracts", "@pdoom/db", "@pdoom/observability"],
   poweredByHeader: false,
   async headers() {
     return [

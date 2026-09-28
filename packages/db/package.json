@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@pdoom/contracts": "*",
+    "@pdoom/observability": "*",
     "pg": "^8.16.3",
     "zod": "^4.1.11"
   }

@@ -1,8 +1,10 @@
 import { readFile } from "node:fs/promises";
+import { createCorrelationId, logEvent, recordImportResult, runWithCorrelation } from "@pdoom/observability";
 import { assertDevelopmentMutation, publicCommandError, readDatabaseUrl, readRuntimeConfig } from "./env";
 import { importCanonical, resetDatabase, validateDocument } from "./import";
 import { migrate, migrationState } from "./migrate";
-import { createPool, closePool, endPool } from "./pool";
+import { closePool, createPool, endPool } from "./pool";
+import { executeQualityCheck } from "./quality-command";
 import { getCoverage, getDatasetRecord } from "./queries";
 import { exportReviewManifest, importReviewManifest, reviewStatus, stageCandidates, validateReviewManifest, validateReviewManifestInDatabase } from "./review";
 import { importWasAborted, installCliShutdown } from "./shutdown";
@@ -38,6 +40,10 @@ async function main() {
     );
     return;
   }
+  if (command === "quality") {
+    const code = await executeQualityCheck(process.argv.slice(3));
+    process.exit(code);
+  }
 
   const pool = createPool(readDatabaseUrl("DATABASE_URL"), {
     statementTimeoutMs: 120_000,
@@ -52,7 +58,7 @@ async function main() {
     }
     if (command === "seed") {
       await migrate(pool);
-      const result = await importCanonical(pool);
+      const result = await importDataset(() => importCanonical(pool));
       console.log(JSON.stringify(result.counts));
       return;
     }
@@ -65,7 +71,7 @@ async function main() {
     if (command === "import") {
       if (!file) throw new Error("usage: cli.ts import <file>");
       const raw = await readJson(file);
-      const result = await importCanonical(pool, raw);
+      const result = await importDataset(() => importCanonical(pool, raw));
       console.log(JSON.stringify({ imported: result.imported, counts: result.counts, dataset_id: result.dataset_id }));
       return;
     }
@@ -137,11 +143,41 @@ async function main() {
       console.log(JSON.stringify(await stageCandidates(pool, rows)));
       return;
     }
-    throw new Error("usage: cli.ts migrate|seed|reset|validate <file>|import <file>|status|review:status|review:export <file>|review:import <file>|review:validate <file>|review:stage <jsonl>");
+    throw new Error("usage: cli.ts migrate|seed|reset|validate <file>|import <file>|status|quality check|review:status|review:export <file>|review:import <file>|review:validate <file>|review:stage <jsonl>");
   } finally {
     await endPool(pool);
     await closePool();
   }
+}
+
+async function importDataset<T>(load: () => Promise<T>): Promise<T> {
+  const runId = createCorrelationId();
+  const started = performance.now();
+  return runWithCorrelation({ runId }, async () => {
+    try {
+      const result = await load();
+      recordImportResult("succeeded");
+      logEvent({
+        level: "info",
+        operation: "import",
+        outcome: "succeeded",
+        duration_ms: performance.now() - started,
+        run_id: runId,
+      });
+      return result;
+    } catch (error) {
+      recordImportResult("failed");
+      logEvent({
+        level: "error",
+        operation: "import",
+        outcome: "failed",
+        duration_ms: performance.now() - started,
+        run_id: runId,
+        error_class: "unknown",
+      });
+      throw error;
+    }
+  });
 }
 
 main().catch((error: unknown) => {

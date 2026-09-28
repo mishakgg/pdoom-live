@@ -21,6 +21,10 @@ const KNOWN_PDOOM_KEYS = new Set([
   "PDOOM_IMPORT_HOLD",
   "PDOOM_FIXTURE_PATH",
   "PDOOM_DOCKER_TEST",
+  "PDOOM_CURATION_MODE",
+  "PDOOM_METRICS_ENABLED",
+  "PDOOM_METRICS_TOKEN",
+  "PDOOM_QUALITY_BASELINE",
 ]);
 
 export function deploymentMode(env: NodeJS.ProcessEnv = process.env): RuntimeMode {
@@ -146,6 +150,25 @@ function validateOptional(env: NodeJS.ProcessEnv, mode: RuntimeMode): void {
   }
   if (mode === "production" && env.PDOOM_DOCKER_TEST) {
     throw new ConfigError("PDOOM_DOCKER_TEST is not allowed in production");
+  }
+  const metrics = optionalPresent(env, "PDOOM_METRICS_ENABLED");
+  if (metrics !== undefined && metrics !== "1" && metrics !== "true") {
+    throw new ConfigError("PDOOM_METRICS_ENABLED must be 1 or true");
+  }
+  const metricsToken = optionalPresent(env, "PDOOM_METRICS_TOKEN");
+  if (metricsToken !== undefined && /[\0\r\n]/.test(metricsToken)) {
+    throw new ConfigError("PDOOM_METRICS_TOKEN is invalid");
+  }
+  const baseline = optionalPresent(env, "PDOOM_QUALITY_BASELINE");
+  if (baseline !== undefined && /[\0\r\n]/.test(baseline)) {
+    throw new ConfigError("PDOOM_QUALITY_BASELINE is invalid");
+  }
+  const curation = optionalPresent(env, "PDOOM_CURATION_MODE");
+  if (curation !== undefined && curation !== "local") {
+    throw new ConfigError("PDOOM_CURATION_MODE must be local");
+  }
+  if (mode === "production" && curation) {
+    throw new ConfigError("PDOOM_CURATION_MODE is not allowed in production");
   }
 }
 

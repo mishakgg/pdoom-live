@@ -240,19 +240,13 @@ UI requirements:
 
 ## Observability
 
-At minimum capture:
+A healthy HTTP response is not evidence that the dataset is still being refreshed. The operator guide is [docs/OBSERVABILITY.md](./OBSERVABILITY.md).
 
-- collector/source success/failure counts;
-- fetch latency;
-- duplicate rate;
-- new/changed content counts;
-- extraction success/failure;
-- validation rejection reasons;
-- queue/job latency;
-- API latency/error rate;
-- freshness by source/cohort.
+`packages/observability` holds the shared metric names, label allowlists, guardrails, and freshness objectives. The web process records bounded API and database counters, writes structured logs for important failures, and assigns request correlation ids. `GET /api/health` is the readiness report, the same check as `GET /api/ready`: the process is live, the database answers, and migrations are current. `GET /api/status` says whether the served dataset is current, aging, or stale. `GET /api/metrics` stays disabled unless a deployment explicitly enables it, and it is not a public debugging feed.
 
-Metrics should help identify silent dataset staleness.
+`npm run quality:check` reads the current database, or a canonical file, and reports integrity, collection, extraction, and relative size problems. It does not repair them. The same rules run in `pipeline/pdoom_pipeline/observability` for pipeline snapshots. Synthetic fixtures are not treated as a live collection outage.
+
+There is no tracing vendor and no metric series per person, URL, source item, or statement.
 
 ## Deployment
 

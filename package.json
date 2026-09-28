@@ -6,7 +6,8 @@
   "workspaces": [
     "apps/web",
     "packages/contracts",
-    "packages/db"
+    "packages/db",
+    "packages/observability"
   ],
   "scripts": {
     "dev": "npm run dev -w @pdoom/web",
@@ -23,6 +24,7 @@
     "db:validate": "tsx packages/db/src/cli.ts validate",
     "db:import": "tsx packages/db/src/cli.ts import",
     "db:status": "tsx packages/db/src/cli.ts status",
+    "quality:check": "tsx packages/db/src/cli.ts quality check",
     "review:status": "tsx packages/db/src/cli.ts review:status",
     "review:export": "tsx packages/db/src/cli.ts review:export",
     "review:import": "tsx packages/db/src/cli.ts review:import",

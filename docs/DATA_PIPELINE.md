@@ -103,3 +103,13 @@ Enrichment adds a personal or lab profile only when the fetched page contains th
 `not_found`, `temporarily_unavailable`, `rate_limited`, `unauthorized`, `blocked_by_policy`, `parser_unsupported`, `content_too_large`, `invalid_content`, `collector_bug`, `unsafe_url`.
 
 A collector failure is not evidence that the person has made no public statement.
+
+## Operational checks
+
+The cohort quality report under `data/reports/` describes coverage. It is not the freshness check. [Operator observability](./OBSERVABILITY.md) defines collection and extraction signals, service objectives, and alert conditions. Pipeline snapshots can be checked with:
+
+```bash
+PYTHONPATH=pipeline python -m pdoom_pipeline.observability check --snapshot snapshot.json
+```
+
+That command reports failures. It does not rewrite the observation store.

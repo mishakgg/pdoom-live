@@ -132,6 +132,31 @@ describe("production configuration", () => {
     ).toThrow(/unknown configuration PDOOM_FUTURE_FLAG/);
     expect(() =>
       readRuntimeConfig({
+        NODE_ENV: "production",
+        PDOOM_ENV: "production",
+        DATABASE_URL: "postgresql://pdoom:super-secret@127.0.0.1:5432/pdoom_live",
+        APP_BASE_URL: "https://pdoom.example",
+        PDOOM_CURATION_MODE: "local",
+      }),
+    ).toThrow(/PDOOM_CURATION_MODE is not allowed in production/);
+    expect(() =>
+      readRuntimeConfig({
+        NODE_ENV: "development",
+        PDOOM_METRICS_ENABLED: "yes",
+      }),
+    ).toThrow(/PDOOM_METRICS_ENABLED must be 1 or true/);
+    const metrics = readRuntimeConfig({
+      NODE_ENV: "production",
+      PDOOM_ENV: "production",
+      DATABASE_URL: "postgresql://pdoom:super-secret@127.0.0.1:5432/pdoom_live",
+      APP_BASE_URL: "https://pdoom.example",
+      PDOOM_METRICS_ENABLED: "1",
+      PDOOM_METRICS_TOKEN: "metrics-token-value",
+    });
+    expect(metrics.mode).toBe("production");
+    expect(JSON.stringify(metrics)).not.toContain("metrics-token-value");
+    expect(() =>
+      readRuntimeConfig({
         NODE_ENV: "development",
         OPENAI_API_KEY: "",
       }),

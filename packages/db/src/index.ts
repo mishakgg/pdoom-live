@@ -6,6 +6,8 @@ export * from "./review";
 export * from "./queries";
 export * from "./trends";
 export * from "./ids";
+export * from "./operational-snapshot";
+export * from "./quality-command";
 export * from "./readiness";
 export * from "./shutdown";
 export { migrationsDirectory } from "./paths";

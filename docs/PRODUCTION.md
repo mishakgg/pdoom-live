@@ -86,9 +86,12 @@ Optional:
 | `HOSTNAME` | Bind address inside the container. The image sets `0.0.0.0`. |
 | `PDOOM_MIGRATIONS_DIR` | Directory of SQL migrations. The image sets `/app/migrations`. |
 | `PDOOM_HSTS` | `on` or `off`. When unset, HSTS is sent only if `APP_BASE_URL` is `https`. |
+| `PDOOM_METRICS_ENABLED` | `1` or `true`. Unset leaves `GET /api/metrics` disabled. Leave it off on the public hostname. |
+| `PDOOM_METRICS_TOKEN` | When set, metrics require `Authorization: Bearer` with this value. The value is not logged. |
+| `PDOOM_QUALITY_BASELINE` | Optional counts file for relative guardrails on `/api/status` and `/api/metrics`. |
 | `OPENAI_API_KEY` | Unused by the web process. If set, it must be non-empty and is not logged. |
 
-Unknown `PDOOM_*` variables are rejected. Empty optional values are rejected. Production refuses `PDOOM_IMPORT_HOLD` and `PDOOM_FIXTURE_PATH`.
+Unknown `PDOOM_*` variables are rejected. Empty optional values are rejected. Production refuses `PDOOM_IMPORT_HOLD`, `PDOOM_FIXTURE_PATH`, `PDOOM_DOCKER_TEST`, and `PDOOM_CURATION_MODE`. Local curation is a development process and is not part of the public runtime.
 
 The web process exits immediately when required configuration is missing or invalid. The log line names the problem and does not print secret values, database URLs, or stack traces.
 
