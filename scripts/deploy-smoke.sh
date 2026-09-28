@@ -92,7 +92,7 @@ grep -q '"status":"ready"' "$WORKDIR/body" || {
 }
 reject_secrets
 
-for path in / /people /statements /topics /trends /sources /methodology; do
+for path in / /people /statements /topics /trends /sources /search /data /methodology; do
   require_status "$path" 200
   require_security_headers
   reject_secrets
@@ -108,10 +108,48 @@ if grep -q '<strong>Synthetic fixture</strong>' "$WORKDIR/body"; then
   echo "smoke_fail: synthetic fixture is being served" >&2
   exit 1
 fi
-grep -Eq '[1-9][0-9]*(<!-- -->)? tracked people' "$WORKDIR/body" || {
+grep -Eq 'Tracked people</dt><dd>[1-9][0-9]*</dd>' "$WORKDIR/body" || {
   echo "smoke_fail: home page has no tracked people" >&2
   exit 1
 }
+
+path=/sitemap.xml
+require_status /sitemap.xml 200
+if grep -q '/curation' "$WORKDIR/body"; then
+  echo "smoke_fail: sitemap lists curation" >&2
+  exit 1
+fi
+grep -q '/search' "$WORKDIR/body" || {
+  echo "smoke_fail: sitemap omits search" >&2
+  exit 1
+}
+grep -q 'https://pdoom.live/' "$WORKDIR/body" || {
+  echo "smoke_fail: sitemap is not on the public origin" >&2
+  exit 1
+}
+
+path=/robots.txt
+require_status /robots.txt 200
+grep -q 'Disallow: /curation' "$WORKDIR/body" || {
+  echo "smoke_fail: robots does not disallow curation" >&2
+  exit 1
+}
+
+path=/feed.xml
+require_status /feed.xml 200
+grep -q '<feed xmlns="http://www.w3.org/2005/Atom"' "$WORKDIR/body" || {
+  echo "smoke_fail: feed is not Atom" >&2
+  exit 1
+}
+require_header 'x-robots-tag' 'noindex'
+
+path=/curation
+require_status /curation 404
+
+path=/api/v1/dataset
+require_status /api/v1/dataset 200
+require_header 'x-robots-tag' 'noindex, nofollow'
+reject_secrets
 
 path=/people
 require_status /people 200
