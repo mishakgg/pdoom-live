@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-04T20:35:14Z",
+  "reviewed_at": "2026-10-04T20:48:03Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -165,6 +165,37 @@
       },
       "requested_resolution": "Agent 2 defines how a verified withdrawal with no replacement number leaves the distribution, and implements that in the trend engine. Agent 7 will not change forecast semantics on the integration branch.",
       "scenario_5_on_same_fixture": "A different question key was excluded as question_key_mismatch. That separation already holds on main."
+    },
+    {
+      "id": "reimport-clobbers-review-and-replay-is-noop",
+      "severity": "blocker-for-scenario-3",
+      "owner": "agent-3",
+      "consumers": ["agent-5"],
+      "status": "measured-on-main",
+      "summary": "Approving jonah-extinction-review-2024, whose fixture review_state is needs_review, then reimporting the same synthetic document sets the column back to needs_review and removes the research read. Replaying the exported review manifest applies 0 decisions and counts 2 idempotent keys, and the statement stays hidden.",
+      "reproducible_example": {
+        "command": "npx tsx coordination/reproductions/cross-workstream-gate.ts",
+        "database": "pdoom_coord_integration_test",
+        "result": "coordination/reproductions/results-2026-10-04T204803Z.json",
+        "scenario": "3-review-survives-reimport"
+      },
+      "requested_resolution": "Agent 3's import must keep the effective review decision for an unchanged extraction, or replaying an existing decision key must restore the live column. Agent 7 will not change review policy during integration."
+    },
+    {
+      "id": "review-does-not-move-public-last-modified",
+      "severity": "blocker-for-scenario-7",
+      "owner": "agent-6",
+      "consumers": ["agent-1"],
+      "status": "measured-on-main",
+      "summary": "A review-only change updates the public statement payload and its ETag, but dataset_imports.imported_at stays the same. publicJson then returns 304 to a client that echoes the previous Last-Modified, so the cached body is not refreshed.",
+      "reproducible_example": {
+        "command": "npx tsx coordination/reproductions/cross-workstream-gate.ts",
+        "database": "pdoom_coord_integration_test",
+        "result": "coordination/reproductions/results-2026-10-04T204803Z.json",
+        "scenario": "7-cache-after-review",
+        "conditional_status": 304
+      },
+      "requested_resolution": "Agent 6 must invalidate public validators on review-only changes. Agent 7 will not redesign the cache while integrating."
     }
   ],
   "ownership_overlaps_observed": [],

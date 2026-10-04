@@ -1,0 +1,278 @@
+{
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "database": "pdoom_coord_integration_test",
+  "cohort_database": "pdoom_coord_cohort_test",
+  "stale_marker": "4b1b51de-bc26-596e-b216-7baa6c7cb8cf",
+  "scenarios": [
+    {
+      "id": "1-collect-twice",
+      "pass": true,
+      "expected": "A second import of the same document keeps statement ids and does not duplicate public slugs.",
+      "actual": {
+        "statements": [
+          23,
+          23
+        ],
+        "ids_stable": true,
+        "public_slugs": 22,
+        "public_unique": 22
+      },
+      "owner": null
+    },
+    {
+      "id": "4-fields-through-public-read",
+      "pass": true,
+      "expected": "A public explicit numeric statement carries person, source URL, evidence hash, event time, and forecast question, unit, and value.",
+      "actual": {
+        "slug": "jonah-extinction-no-horizon-2025",
+        "person": "jonah-hale",
+        "canonical_url": "https://synthetic.pdoom.example/items/jonah-no-horizon-2025",
+        "content_hash": "d87844db682a6998205e9a4dc1ec0dde173b8fccdb0995ff77ad25b0a7790fd1",
+        "evidence": {
+          "slug": "jonah-no-horizon-2025-evidence",
+          "start_char": 0,
+          "end_char": 98,
+          "start_ms": null,
+          "segment_hash": "d87844db682a6998205e9a4dc1ec0dde173b8fccdb0995ff77ad25b0a7790fd1"
+        },
+        "event_time": "2025-06-01T13:00:00.000Z",
+        "forecast": {
+          "review_state": "human_verified",
+          "verified": true,
+          "machine_labeled": false,
+          "statement_slug": "jonah-extinction-no-horizon-2025",
+          "forecast_kind": "probability",
+          "question_key": "ai_extinction_unconditional_by_2070",
+          "question_text": "Unconditional probability of literal human extinction caused by advanced AI by the end of 2070.",
+          "definition_text": "Literal human extinction. Not catastrophic harm, disempowerment, or a conditional probability.",
+          "condition_text": null,
+          "horizon_text": null,
+          "target_date_start": null,
+          "target_date_end": null,
+          "value_type": "point",
+          "value_numeric": 0.22,
+          "value_min": null,
+          "value_max": null,
+          "unit": "probability",
+          "distribution": null,
+          "resolution_criteria": null
+        }
+      },
+      "owner": null
+    },
+    {
+      "id": "5-incompatible-questions-stay-separate",
+      "pass": true,
+      "expected": "The unconditional extinction distribution and the conditional extinction distribution do not share included statements.",
+      "actual": {
+        "extinction_key": "ai_extinction_unconditional_by_2070",
+        "conditional_key": "ai_extinction_conditional_on_agi",
+        "extinction_slugs": [
+          "mateo-extinction-2024",
+          "samir-extinction-2024",
+          "ada-extinction-2025",
+          "priya-extinction-2024"
+        ],
+        "conditional_slugs": [
+          "jonah-conditional-2024"
+        ]
+      },
+      "owner": null
+    },
+    {
+      "id": "10-person-history-pagination",
+      "pass": true,
+      "expected": "Paging a person's statements with limit 1 returns each slug once and no other person's slug.",
+      "actual": {
+        "full": [
+          "jonah-extinction-no-horizon-2025",
+          "jonah-extinction-review-2024",
+          "jonah-conditional-2024",
+          "jonah-catastrophe-2022"
+        ],
+        "walked": [
+          "jonah-extinction-no-horizon-2025",
+          "jonah-extinction-review-2024",
+          "jonah-conditional-2024",
+          "jonah-catastrophe-2022"
+        ]
+      },
+      "owner": null
+    },
+    {
+      "id": "7-cache-after-review",
+      "pass": false,
+      "expected": "A review-only wording change changes the public payload, and a client echoing the previous Last-Modified does not receive 304 for the new payload.",
+      "actual": {
+        "decision_key": "6264be061a20b650316366d4f60f206d98506a00ee29866a910058b1493b85d1",
+        "etag_changed": true,
+        "imported_at_before": "2026-10-04T20:47:48.069Z",
+        "imported_at_after": "2026-10-04T20:47:48.069Z",
+        "conditional_status": 304
+      },
+      "owner": "agent-6"
+    },
+    {
+      "id": "3-review-survives-reimport",
+      "pass": false,
+      "expected": "Reimporting the unchanged extraction keeps the approved statement human_verified and publicly readable without a second review import.",
+      "actual": {
+        "slug": "jonah-extinction-review-2024",
+        "fixture_review_state": "needs_review",
+        "decision_key": "08014c06878a2852c6e548f1c260d869e08e3f7eb4b08e063658160869b16989",
+        "review_state_after_reimport": "needs_review",
+        "public_after_reimport": false,
+        "replay_applied": 0,
+        "replay_idempotent": 2,
+        "public_after_replay": false
+      },
+      "owner": "agent-3"
+    },
+    {
+      "id": "2-source-version-history",
+      "pass": false,
+      "expected": "A changed source hash keeps the previous version row and adds the new hash.",
+      "actual": {
+        "previous_hash": "0217d3f3edbd46c9cfff168bc0f8c434b04b44b30c7dd9b1242eaf5e8da80307",
+        "versions": [
+          {
+            "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "content_version": 2,
+            "is_current": true
+          }
+        ],
+        "stored_review_state": "human_verified",
+        "effective_review_state": "needs_review",
+        "research_visible": false
+      },
+      "owner": "agent-3"
+    },
+    {
+      "id": "2-stale-approval-hidden",
+      "pass": true,
+      "expected": "A reimport that marks the new hash human_verified is still hidden, because the stored approval names the previous hash.",
+      "actual": {
+        "previous_hash": "0217d3f3edbd46c9cfff168bc0f8c434b04b44b30c7dd9b1242eaf5e8da80307",
+        "versions": [
+          {
+            "content_hash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "content_version": 2,
+            "is_current": true
+          }
+        ],
+        "stored_review_state": "human_verified",
+        "effective_review_state": "needs_review",
+        "research_visible": false
+      },
+      "owner": null
+    },
+    {
+      "id": "6-withdrawal-without-replacement",
+      "pass": false,
+      "expected": "A human-verified retraction to a qualitative withdrawal with no replacement number drops the old probability from the distribution.",
+      "actual": {
+        "included": [
+          "coord-withdrawn-estimate"
+        ],
+        "exclusions": [
+          {
+            "slug": "coord-withdrawal",
+            "reason": "statement_type"
+          }
+        ]
+      },
+      "owner": "agent-2"
+    },
+    {
+      "id": "8-partial-failure-keeps-prior-data",
+      "pass": true,
+      "expected": "A failed import rolls back. A later partial import keeps omitted statements and reports a year-2000 success as stale.",
+      "actual": {
+        "broken_threw": true,
+        "count_before": "23",
+        "count_after_broken": "23",
+        "omitted_slug": "ada-extinction-2023",
+        "omitted_still_present": true,
+        "freshness": "stale",
+        "stored_freshness": "stale"
+      },
+      "owner": null
+    },
+    {
+      "id": "9-eligibility",
+      "pass": true,
+      "expected": "Site pages and search show needs_review. Research, feed, and numeric trends do not. Unreviewed and rejected stay off every public surface. machine_validated is public and indexed, and is not a numeric-trend point.",
+      "actual": {
+        "verified_trend_reason": null,
+        "seen": {
+          "human_verified": {
+            "site": true,
+            "research": true,
+            "feed": true,
+            "search": true,
+            "trend": true,
+            "site_state": "human_verified"
+          },
+          "machine_validated": {
+            "site": true,
+            "research": true,
+            "feed": true,
+            "search": true,
+            "trend": false,
+            "site_state": "machine_validated"
+          },
+          "needs_review": {
+            "site": true,
+            "research": false,
+            "feed": false,
+            "search": true,
+            "trend": false,
+            "site_state": "needs_review"
+          },
+          "unreviewed": {
+            "site": false,
+            "research": false,
+            "feed": false,
+            "search": false,
+            "trend": false,
+            "site_state": null
+          },
+          "rejected": {
+            "site": false,
+            "research": false,
+            "feed": false,
+            "search": false,
+            "trend": false,
+            "site_state": null
+          }
+        }
+      },
+      "owner": null
+    },
+    {
+      "id": "11-populated-cohort-performance",
+      "pass": true,
+      "expected": "Import the published live cohort and answer statement, person, trend, and search reads.",
+      "actual": {
+        "people": 323,
+        "statements": 40,
+        "public_statements": 2,
+        "person": "aaron-courville",
+        "person_statements": 0,
+        "trend_slug": "extinction-by-2070-distribution",
+        "search_statements": 1,
+        "elapsed_ms": 38
+      },
+      "owner": null
+    }
+  ],
+  "failed": [
+    "7-cache-after-review",
+    "3-review-survives-reimport",
+    "2-source-version-history",
+    "6-withdrawal-without-replacement"
+  ],
+  "reviewed_at": "2026-10-04T20:48:03Z",
+  "command": "npx tsx coordination/reproductions/cross-workstream-gate.ts",
+  "exit_code": 1
+}

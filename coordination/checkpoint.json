@@ -2,10 +2,10 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-04T203514Z",
-  "reviewed_at": "2026-10-04T20:35:14Z",
-  "status_path": "coordination/status/status-2026-10-04T203514Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-04T203514Z.json",
+  "review_id": "2026-10-04T204803Z",
+  "reviewed_at": "2026-10-04T20:48:03Z",
+  "status_path": "coordination/status/status-2026-10-04T204803Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-04T204803Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "origin_main_subject": "Match deploy smoke to the public status bar and discovery routes (#19)",
@@ -84,9 +84,11 @@
   "blockers": [
     "question-key-registries-diverge-on-main",
     "canonical-export-collapses-source-versions",
-    "verified-withdrawal-stays-in-distribution"
+    "reimport-clobbers-review-and-replay-is-noop",
+    "verified-withdrawal-stays-in-distribution",
+    "review-does-not-move-public-last-modified"
   ],
-  "measurements": "coordination/reproductions/results-2026-10-04T203514Z.json",
+  "measurements": "coordination/reproductions/results-2026-10-04T204803Z.json",
   "scheduler": {
     "hourly_review": "active",
     "subscription_id": "sub_a7f92930-5085-4d07-a8dd-d455f4acf8d6",
