@@ -258,11 +258,10 @@ export function historyPreview(shown: number, total: number): HistoryPreview {
     return { tone: "empty", summary: "No public statement is collected for this view." };
   }
   if (shown >= total) {
-    const noun = total === 1 ? "statement" : "statements";
-    return {
-      tone: "complete",
-      summary: `All ${total} public ${noun} collected for this view are listed here.`,
-    };
+    const summary = total === 1
+      ? "All 1 public statement collected for this view is listed here."
+      : `All ${total} public statements collected for this view are listed here.`;
+    return { tone: "complete", summary };
   }
   const hidden = total - shown;
   const hiddenNoun = hidden === 1 ? "statement is" : "statements are";

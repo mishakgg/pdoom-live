@@ -1,6 +1,7 @@
 import { STATEMENT_TYPES, STATEMENT_TYPE_LABELS, parseSearchParams, searchQuerySchema, SEARCH_ENTITY_TYPES } from "@pdoom/contracts";
 import { searchPublic } from "@pdoom/db";
 import { EntitySelect } from "@/components/entity-select";
+import { FilterForm } from "@/components/filter-form";
 import { ActiveFilters } from "@/components/filters";
 import { SearchResults } from "@/components/search-results";
 import { resolveFilterLabels, type FilterLabels } from "@/lib/entity-labels";
@@ -25,7 +26,7 @@ const TYPE_LABEL: Record<(typeof SEARCH_ENTITY_TYPES)[number], string> = {
 
 function Filters({ params, labels }: { params: Record<string, string | undefined>; labels: FilterLabels }) {
   return (
-    <form key={filterStateKey(params)} className="filters" method="get" action="/search">
+    <FilterForm key={filterStateKey(params)} className="filters" method="get" action="/search">
       <p className="meta">Choose a person or topic by name. The address keeps the stable identifier. Text is still required to search.</p>
       <label>Text<input name="q" defaultValue={params.q ?? ""} required maxLength={200} /></label>
       <label>
@@ -62,7 +63,7 @@ function Filters({ params, labels }: { params: Record<string, string | undefined
       <label>To<input type="date" name="to" defaultValue={params.to ?? ""} /></label>
       <button type="submit">Search</button>
       <ActiveFilters path="/search" params={params} labels={labels} />
-    </form>
+    </FilterForm>
   );
 }
 

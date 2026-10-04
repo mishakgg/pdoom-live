@@ -161,11 +161,9 @@ export function LiveSearch() {
           onChange={(event) => {
             const next = event.target.value;
             setQ(next);
+            setResponse(null);
+            setOpen(false);
             setActive(-1);
-            if (next.trim().length < SEARCH_SUGGEST_MIN) {
-              setResponse(null);
-              setOpen(false);
-            }
           }}
           onKeyDown={onKeyDown}
         />

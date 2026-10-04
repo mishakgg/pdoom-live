@@ -139,12 +139,10 @@ export function EntitySelect({
         onChange={(event) => {
           const next = event.target.value;
           setQuery(next);
+          setOptions([]);
+          setOpen(false);
           setActive(-1);
-          if (next.trim().length < SEARCH_SUGGEST_MIN) {
-            setOptions([]);
-            setOpen(false);
-            setStatus("");
-          }
+          setStatus(next.trim().length < SEARCH_SUGGEST_MIN ? "" : "Searching");
         }}
         onKeyDown={onKeyDown}
       />

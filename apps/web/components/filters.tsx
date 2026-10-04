@@ -1,6 +1,7 @@
 import { isPublicReviewState, PERSON_STATUSES, REVIEW_STATES, STATEMENT_TYPES } from "@pdoom/contracts";
 import Link from "next/link";
 import { EntitySelect, type EntitySelection } from "@/components/entity-select";
+import { FilterForm } from "@/components/filter-form";
 import type { FilterLabels } from "@/lib/entity-labels";
 import { reviewLabel, typeLabel } from "@/lib/format";
 import {
@@ -114,7 +115,7 @@ export function PeopleFilters({
   labels?: FilterLabels;
 }) {
   return (
-    <form key={filterStateKey(params)} className="filters" method="get" aria-describedby="people-filter-note">
+    <FilterForm key={filterStateKey(params)} className="filters" method="get" aria-describedby="people-filter-note">
       <p id="people-filter-note" className="meta">
         Choose an organization by name. The address keeps its stable identifier. Apply writes this address. Remove and Clear all change the address immediately.
       </p>
@@ -134,7 +135,7 @@ export function PeopleFilters({
       </label>
       <button type="submit">Apply filters</button>
       <ActiveFilters path="/people" params={params} labels={labels} />
-    </form>
+    </FilterForm>
   );
 }
 
@@ -146,7 +147,7 @@ export function StatementFilters({
   labels?: FilterLabels;
 }) {
   return (
-    <form key={filterStateKey(params)} className="filters" method="get" aria-describedby="statement-filter-note">
+    <FilterForm key={filterStateKey(params)} className="filters" method="get" aria-describedby="statement-filter-note">
       <p id="statement-filter-note" className="meta">
         Choose a person, organization, source, or topic by name. The address keeps the stable identifier. Dates filter event time in UTC. Apply writes this address.
       </p>
@@ -186,7 +187,7 @@ export function StatementFilters({
       </label>
       <button type="submit">Apply filters</button>
       <ActiveFilters path="/statements" params={params} labels={labels} />
-    </form>
+    </FilterForm>
   );
 }
 

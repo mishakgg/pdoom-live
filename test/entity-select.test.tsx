@@ -3,6 +3,7 @@ import { act, cleanup, fireEvent, render, screen } from "@testing-library/react"
 import { SEARCH_DEBOUNCE_MS, type SearchResponse } from "@pdoom/contracts";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { EntitySelect } from "../apps/web/components/entity-select";
+import { FilterForm } from "../apps/web/components/filter-form";
 
 function response(people: Array<{ slug: string; display_name: string; organization: string }>): SearchResponse {
   const empty = { data: [], page: { limit: 8, total: 0, next_cursor: null } };
@@ -115,6 +116,37 @@ describe("entity selection", () => {
     expect(document.querySelector<HTMLInputElement>("input[name='person']")?.value).toBe("samir-okonkwo");
     fireEvent.click(screen.getByRole("button", { name: "Remove Person" }));
     expect(document.querySelector<HTMLInputElement>("input[name='person']")).toBeNull();
+    expect(submitted).toHaveBeenCalled();
+  });
+
+  it("hides the previous suggestions as soon as the name changes", async () => {
+    vi.useFakeTimers();
+    const fetchMock = vi.fn(async () => jsonResponse(response([
+      { slug: "samir-okonkwo", display_name: "Samir Okonkwo", organization: "Northwind Alignment Lab" },
+    ])));
+    vi.stubGlobal("fetch", fetchMock);
+    render(<EntitySelect kind="person" label="Person" name="person" selected={null} />);
+    const input = screen.getByRole("combobox", { name: "Person" });
+    fireEvent.change(input, { target: { value: "ok" } });
+    await vi.advanceTimersByTimeAsync(SEARCH_DEBOUNCE_MS);
+    await vi.waitFor(() => expect(screen.getByRole("option", { name: /Samir Okonkwo/ })).toBeTruthy());
+    fireEvent.change(input, { target: { value: "sa" } });
+    expect(screen.queryByRole("listbox")).toBeNull();
+    expect(screen.queryByRole("option", { name: /Samir Okonkwo/ })).toBeNull();
+  });
+
+  it("leaves blank fields out of the submitted form", () => {
+    const submitted = vi.fn((event: Event) => event.preventDefault());
+    render(
+      <FilterForm onSubmit={submitted}>
+        <input name="q" defaultValue="" />
+        <input name="person" defaultValue="ada-quill" />
+        <button type="submit">Apply filters</button>
+      </FilterForm>,
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Apply filters" }));
+    expect(document.querySelector<HTMLInputElement>("input[name='q']")?.disabled).toBe(true);
+    expect(document.querySelector<HTMLInputElement>("input[name='person']")?.disabled).toBe(false);
     expect(submitted).toHaveBeenCalled();
   });
 });
