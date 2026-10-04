@@ -23,8 +23,8 @@
   "coordination_branch": "cursor/integration-coordination-a32e",
   "coordination_pr": "https://github.com/mishakgg/pdoom-live/pull/20",
   "run_lock": {
-    "holder": null,
-    "acquired_at": null,
+    "holder": "agent-7",
+    "acquired_at": "2026-10-04T22:06:00Z",
     "expires_after_seconds": 7200,
     "protocol": "Set holder and acquired_at before mutating an integration branch. Clear both in the checkpoint commit that finishes the review. Do not start a second integration while a lock is younger than expires_after_seconds. The hourly timer is the primary overlap control because it fires only when this agent is idle."
   },
@@ -99,7 +99,7 @@
     "expires_at": "2026-10-11T20:27:47Z",
     "delivery_count": 1
   },
-  "next_action": "Wait for the Agent 5 and Agent 3 follow-up pushes. Do not merge PR 31 to main. Include a new Agent 5 head only after the three backfill tests pass. Re-review Agent 3 if their pipeline.yml head moves.",
+  "next_action": "Lock held while merging Agent 3 head 85ec81 onto the integration branch. The workflow matches 5adde6c. Do not start a second integration.",
   "assigned_tasks": [
     {
       "owner": "agent-5",
