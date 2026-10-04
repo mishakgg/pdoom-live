@@ -1,4 +1,4 @@
-import { getPublicCatalog } from "@pdoom/db";
+import { getCoverage, getPublicCatalog } from "@pdoom/db";
 import Link from "next/link";
 import { formatWhen } from "@/lib/format";
 import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
@@ -24,7 +24,7 @@ const files = [
 ];
 
 export default async function DataPage() {
-  const catalog = await getPublicCatalog(null);
+  const [catalog, coverage] = await Promise.all([getPublicCatalog(null), getCoverage()]);
   const dataset = catalog.dataset;
   const citation = dataset
     ? `pdoom.live public dataset ${dataset.dataset_id}, cohort ${catalog.cohort?.slug ?? "unknown"} ${catalog.cohort?.version ?? ""}, API v1, export schema ${catalog.export_schema_version}. ${dataset.imported_at ?? "import time unknown"}. https://pdoom.live/data`
@@ -38,10 +38,41 @@ export default async function DataPage() {
       <p className="fresh">
         <span><strong>{dataset?.dataset_kind === "synthetic" ? "Synthetic fixture" : "Live dataset"}</strong> {dataset?.dataset_id ?? "No dataset loaded"}</span>
         <span>Cohort {catalog.cohort?.name ?? "none"} {catalog.cohort?.version ?? ""}</span>
-        <span>Imported {formatWhen(dataset?.imported_at)}</span>
-        <span>Latest observation {formatWhen(catalog.latest_observed_at)}</span>
         <span>{catalog.counts.statements} public statements</span>
       </p>
+      <section className="panel" aria-labelledby="data-freshness">
+        <h2 id="data-freshness">Freshness</h2>
+        <p>These clocks are different. Opening or reloading this page reads the stored dataset. It does not collect sources.</p>
+        <dl className="facts">
+          <div>
+            <dt>Dataset updated</dt>
+            <dd>{formatWhen(dataset?.imported_at)}</dd>
+          </div>
+          <div>
+            <dt>Dataset generated</dt>
+            <dd>{formatWhen(dataset?.source_generated_at)}</dd>
+          </div>
+          <div>
+            <dt>Latest publication</dt>
+            <dd>{formatWhen(catalog.latest_published_at)}</dd>
+          </div>
+          <div>
+            <dt>Latest observation</dt>
+            <dd>{formatWhen(catalog.latest_observed_at)}</dd>
+          </div>
+          <div>
+            <dt>Last successful collection</dt>
+            <dd>{formatWhen(coverage.latest_successful_observation)}</dd>
+          </div>
+          <div>
+            <dt>Collection states</dt>
+            <dd>
+              {coverage.freshness.current} current · {coverage.freshness.aging} aging · {coverage.freshness.stale} stale · {coverage.freshness.never_checked} never checked · {coverage.unavailable_or_failing_sources} failing or unavailable
+            </dd>
+          </div>
+        </dl>
+        <p className="meta">Partial collection is marked on the source item. An unknown time stays unknown. A failed check does not become a successful collection.</p>
+      </section>
       <section className="panel">
         <h2>What is in the export</h2>
         <p>{dataset?.notice ?? "No dataset is loaded."}</p>

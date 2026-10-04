@@ -5,7 +5,7 @@ import { ExternalLink } from "@/components/statement-bits";
 import { PartialCollectionNote } from "@/components/states";
 import { formatWhen, isHumanVerified, phraseLabel, reviewLabel } from "@/lib/format";
 import { loadSource } from "@/lib/loaders";
-import { freshnessLabel, sourceMaterialState } from "@/lib/presentation";
+import { collectionReading, freshnessLabel, sourceMaterialState } from "@/lib/presentation";
 import { requestNonce } from "@/lib/request-nonce";
 import { canonicalOrigin, notFoundMetadata, pageMetadata, sourceFields } from "@/lib/seo";
 import { sourceStructuredData } from "@/lib/structured-data";
@@ -58,10 +58,12 @@ export default async function SourcePage({ params }: { params: Promise<{ slug: s
           {reviewLabel(source.review_state)}
           {isHumanVerified(source.review_state) ? "" : " · not a settled source record"}
         </dd>
-        <dt>Last success</dt>
+        <dt>Last successful collection</dt>
         <dd>{formatWhen(source.last_success_at)}</dd>
         <dt>Last check</dt>
         <dd>{formatWhen(source.last_checked_at)}</dd>
+        <dt>Collection reading</dt>
+        <dd>{collectionReading(source).label}. {collectionReading(source).detail}</dd>
         <dt>Collection</dt>
         <dd>{source.enabled ? "Enabled" : "Disabled"}{source.collection_adapter ? ` · ${source.collection_adapter}` : ""}</dd>
         {source.owner_slug && source.owner_name ? (

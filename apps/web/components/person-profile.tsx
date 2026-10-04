@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { HistoryPreview } from "@/components/history-preview";
 import { ExternalLink, ReviewBadge, StatementCard, type StatementCardData } from "@/components/statement-bits";
-import { countLabel, formatWhen, isHumanVerified, phraseLabel, reviewLabel } from "@/lib/format";
+import { countLabel, formatWhen, isHumanVerified, phraseLabel, reviewLabel, typeLabel } from "@/lib/format";
 import {
   NO_STATEMENT_COLLECTED,
   NO_STATEMENT_COLLECTED_NOTE,
@@ -8,6 +9,9 @@ import {
   freshnessLabel,
   identityGroup,
   personStatusLabel,
+  statementsHref,
+  topicResearchHref,
+  type ResearchFilters,
 } from "@/lib/presentation";
 
 type Affiliation = {
@@ -119,7 +123,15 @@ function IdentityItems({ identities, established }: { identities: Identity[]; es
   );
 }
 
-export function PersonProfile({ person }: { person: PersonProfileData }) {
+const STATEMENT_CLASSES = ["explicit_numeric", "explicit_qualitative", "model_inferred_signal"] as const;
+
+export function PersonProfile({
+  person,
+  navigation,
+}: {
+  person: PersonProfileData;
+  navigation?: { filters: ResearchFilters; narrowed: boolean; unfilteredTotal: number };
+}) {
   const verifiedCurrent = person.affiliations.filter((item) => item.settled && !item.end_date);
   const verifiedHistory = person.affiliations.filter((item) => item.settled && item.end_date);
   const unestablishedAffiliations = person.affiliations.filter((item) => !item.settled);
@@ -145,15 +157,103 @@ export function PersonProfile({ person }: { person: PersonProfileData }) {
   }
   const topicList = [...topics.values()].sort((a, b) => a.name.localeCompare(b.name));
   const shown = person.statements.length;
+  const filters = navigation?.filters ?? { person: person.slug };
+  const narrowed = navigation?.narrowed ?? false;
+  const unfilteredTotal = navigation?.unfilteredTotal ?? person.statement_total;
+  const statementHref = statementsHref(filters);
+  const filteredOut = person.statement_total === 0 && unfilteredTotal > 0;
 
   return (
     <>
-      <p className="kicker">Record status: {personStatusLabel(person.status)} · updated {formatWhen(person.updated_at)}</p>
+      <p className="kicker">Record status: {personStatusLabel(person.status)} · record updated {formatWhen(person.updated_at)}</p>
       {person.status === "review" ? (
         <p className="warning">This person record is in review. Inclusion is not fully settled.</p>
       ) : null}
       <h1>{person.display_name}</h1>
       <p className="lede">{person.bio_short}</p>
+      <nav className="page-nav" aria-label="On this page">
+        <a href="#statements">Statements</a>
+        <a href="#forecasts">Forecasts</a>
+        <a href="#changes">Changes</a>
+        <a href="#why-included">Inclusion</a>
+        <a href="#affiliation">Affiliation</a>
+        <a href="#identities">Identities</a>
+        <a href="#source-coverage">Collection</a>
+      </nav>
+
+      <section aria-labelledby="person-statements" id="statements">
+        <h2 id="person-statements">Statements over time</h2>
+        {filteredOut ? (
+          <div className="warning" role="status">
+            <p>No statement in this view matches the selected filters.</p>
+            <p>
+              {unfilteredTotal} public {unfilteredTotal === 1 ? "statement is" : "statements are"} collected for this person before these filters.
+            </p>
+            <p>
+              <Link href={statementHref}>Open the paged statement list</Link>
+            </p>
+          </div>
+        ) : (
+          <HistoryPreview
+            shown={shown}
+            total={person.statement_total}
+            href={statementHref}
+            note={narrowed
+              ? `${unfilteredTotal} public ${unfilteredTotal === 1 ? "statement is" : "statements are"} collected for this person before these filters.`
+              : "Event time orders this list. Publication time and observation time are on each statement."}
+          />
+        )}
+        {person.statement_total === 0 && !filteredOut ? (
+          <>
+            <p>{NO_STATEMENT_COLLECTED}</p>
+            <p>{NO_STATEMENT_COLLECTED_NOTE}</p>
+          </>
+        ) : person.statement_total > 0 ? (
+          <div className="timeline">
+            {person.statements.map((statement) => (
+              <StatementCard key={statement.slug} statement={statement} headingLevel="h3" filters={filters} />
+            ))}
+          </div>
+        ) : null}
+        <h3>Topics in this view</h3>
+        <p className="meta">Topics attached to the statements shown above. A topic beyond this preview is reached from the paged list.</p>
+        {topicList.length ? (
+          <ul className="chips" aria-label="Topics on collected statements">
+            {topicList.map((topic) => (
+              <li key={topic.slug}>
+                <Link href={topicResearchHref(topic.slug, filters)}>
+                  {topic.name}
+                  <span className="sr-only">, {countLabel(topic.count, "statement")} in this view</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No topic is attached to a collected statement in this view.</p>
+        )}
+      </section>
+
+      <section aria-labelledby="forecasts">
+        <h2 id="forecasts">Forecasts</h2>
+        <p className="meta">Counts below are the statements shown on this page. They are not a personal probability, and qualitative or inferred rows are not converted into one.</p>
+        <ul className="relation-list">
+          {STATEMENT_CLASSES.map((type) => {
+            const count = person.statements.filter((statement) => statement.statement_type === type).length;
+            return (
+              <li key={type}>
+                {countLabel(count, typeLabel(type))} in this view.{" "}
+                <Link href={statementsHref(filters, { statement_type: type })}>All {typeLabel(type).toLowerCase()} records</Link>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+
+      <section aria-labelledby="changes">
+        <h2 id="changes">Changes</h2>
+        <p>A supported revision is a recorded link between two statements. Open a statement to see whether a later one updates, retracts, clarifies, contradicts, or repeats an earlier one. This profile does not turn those links into an overall belief.</p>
+        <p><Link href={statementHref}>Review this person&apos;s statements</Link></p>
+      </section>
 
       <section className="panel" aria-labelledby="why-included">
         <h2 id="why-included">Why this record exists</h2>
@@ -315,45 +415,6 @@ export function PersonProfile({ person }: { person: PersonProfileData }) {
           <p>Needs-review and unreviewed identities are candidates. They are not confirmed facts about this person.</p>
           <IdentityItems identities={unestablishedIdentities} established={false} />
         </div>
-      </section>
-
-      <section aria-labelledby="person-statements">
-        <h2 id="person-statements">Statements over time</h2>
-        <p className="meta">
-          Showing {shown} of {person.statement_total} collected statements, newest first.
-          {shown < person.statement_total ? " Older statements are not on this page." : ""}
-        </p>
-        {person.statement_total === 0 ? (
-          <>
-            <p>{NO_STATEMENT_COLLECTED}</p>
-            <p>{NO_STATEMENT_COLLECTED_NOTE}</p>
-          </>
-        ) : (
-          <div className="timeline">
-            {person.statements.map((statement) => (
-              <StatementCard key={statement.slug} statement={statement} headingLevel="h3" />
-            ))}
-          </div>
-        )}
-      </section>
-
-      <section aria-labelledby="person-topics">
-        <h2 id="person-topics">Topics</h2>
-        <p className="meta">Topics attached to the statements shown above. Statements beyond this page are not included.</p>
-        {topicList.length ? (
-          <ul className="chips" aria-label="Topics on collected statements">
-            {topicList.map((topic) => (
-              <li key={topic.slug}>
-                <Link href={`/topics/${topic.slug}`}>
-                  {topic.name}
-                  <span className="sr-only">, {countLabel(topic.count, "statement")}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No topic is attached to a collected statement.</p>
-        )}
       </section>
     </>
   );
