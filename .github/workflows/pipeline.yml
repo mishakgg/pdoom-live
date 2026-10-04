@@ -8,6 +8,7 @@ on:
       - "data/fixtures/**"
       - "packages/contracts/**"
       - "pytest.ini"
+      - ".github/workflows/pipeline.yml"
   pull_request:
     paths:
       - "pipeline/**"
@@ -15,6 +16,7 @@ on:
       - "data/fixtures/**"
       - "packages/contracts/**"
       - "pytest.ini"
+      - ".github/workflows/pipeline.yml"
 
 # Fork pull requests run this file. Keep the token read-only.
 permissions:
@@ -30,5 +32,10 @@ jobs:
       - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
         with:
           python-version: "3.12"
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
       - run: pip install defusedxml pytest
       - run: PYTHONPATH=pipeline python -m pytest
