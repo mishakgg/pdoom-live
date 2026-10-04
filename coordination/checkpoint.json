@@ -2,10 +2,10 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-04T211140Z",
-  "reviewed_at": "2026-10-04T21:11:40Z",
-  "status_path": "coordination/status/status-2026-10-04T211140Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-04T211140Z.json",
+  "review_id": "2026-10-04T211729Z",
+  "reviewed_at": "2026-10-04T21:17:29Z",
+  "status_path": "coordination/status/status-2026-10-04T211729Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-04T211729Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "origin_main_subject": "Match deploy smoke to the public status bar and discovery routes (#19)",
@@ -18,40 +18,51 @@
     "commit": "2af9e50095a9e44db4cc4c820bc815502351f05d",
     "status": "superseded_by_129036a"
   },
+  "candidate_in_progress": {
+    "branch": "cursor/partial-integration-forecast-a32e",
+    "base_commit": "129036a837cee885871f565c86d0afb5fe326796",
+    "adding_head": "b959a47f88f2c3d6c948072e038a082847aa666f",
+    "resulting_commit": null
+  },
   "coordination_branch": "cursor/integration-coordination-a32e",
   "coordination_pr": "https://github.com/mishakgg/pdoom-live/pull/20",
   "run_lock": {
-    "holder": null,
-    "acquired_at": null,
+    "holder": "agent-7",
+    "acquired_at": "2026-10-04T21:17:29Z",
     "expires_after_seconds": 7200,
+    "purpose": "Merge exact Agent 2 head b959a47 onto recorded candidate 129036a. Do not start a second integration.",
     "protocol": "Set holder and acquired_at before mutating an integration branch. Clear both in the checkpoint commit that finishes the review. Do not start a second integration while a lock is younger than expires_after_seconds. The hourly timer is the primary overlap control because it fires only when this agent is idle."
   },
   "last_reviewed_shas": {
     "origin/main": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
     "agent-1": "af6ec9b4783a4fd37dbc3b9f5c263cc9cbd96ac3",
+    "agent-2": "b959a47f88f2c3d6c948072e038a082847aa666f",
     "agent-4": "6c23609f05bb958a58f235ba34c0180b3579c109",
+    "agent-6": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e",
     "integration": "129036a837cee885871f565c86d0afb5fe326796"
   },
   "workstreams": {
     "agent-1": {
       "bc_id": "bc-1abc3d8c-9db1-4269-90ce-42275cdf34f4",
       "cloud_name": "Public information navigation",
-      "status": "RUNNING",
+      "status": "IDLE",
       "branch": "cursor/research-navigation-34f4",
       "pr": "https://github.com/mishakgg/pdoom-live/pull/21",
       "head_sha": "af6ec9b4783a4fd37dbc3b9f5c263cc9cbd96ac3",
       "publication": "draft_pull_request",
       "readiness": "included_in_partial_candidate",
-      "readiness_reason": "Merged as 129036a with Agent 4. Combined Playwright run passed 135 tests."
+      "readiness_reason": "Included in 129036a. Head unchanged this review."
     },
     "agent-2": {
       "bc_id": "bc-07e563e7-b873-4812-bbaf-026a51641787",
       "cloud_name": "Forecast comparability policy",
-      "status": "RUNNING",
-      "branch": null,
-      "pr": null,
-      "head_sha": null,
-      "publication": "unpublished"
+      "status": "IDLE",
+      "branch": "cursor/forecast-comparability-1787",
+      "pr": "https://github.com/mishakgg/pdoom-live/pull/26",
+      "head_sha": "b959a47f88f2c3d6c948072e038a082847aa666f",
+      "publication": "draft_pull_request",
+      "readiness": "ready_to_attempt_integration",
+      "readiness_reason": "One commit. GitHub test, browser, pipeline, and runtime checks on this exact head completed successfully. Agent is idle. merge-tree onto 129036a is clean. Combined verification has not run."
     },
     "agent-3": {
       "bc_id": "bc-e813e836-d988-41a1-98ff-d1a5d48c088b",
@@ -71,7 +82,7 @@
       "head_sha": "6c23609f05bb958a58f235ba34c0180b3579c109",
       "publication": "draft_pull_request",
       "readiness": "included_in_partial_candidate",
-      "readiness_reason": "Merged as 2af9e50 on cursor/partial-integration-20261004-a32e. Collectors stay off the recurring runner."
+      "readiness_reason": "Included in 129036a. Head unchanged this review. Collectors stay off the recurring runner."
     },
     "agent-5": {
       "bc_id": "bc-e2447cce-49cc-47aa-815b-49c869e8ec4e",
@@ -86,10 +97,12 @@
       "bc_id": "bc-11bd48ab-cbe0-4b1c-b5cd-1cac228d66d1",
       "cloud_name": "Public API performance and consistency",
       "status": "RUNNING",
-      "branch": null,
-      "pr": null,
-      "head_sha": null,
-      "publication": "unpublished"
+      "branch": "cursor/public-read-consistency-66d1",
+      "pr": "https://github.com/mishakgg/pdoom-live/pull/25",
+      "head_sha": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e",
+      "publication": "draft_pull_request",
+      "readiness": "not_ready",
+      "readiness_reason": "Head moved from 01e63cee to 8c36cc1 after the catalog assertion failed. Checks on 8c36cc1 are still pending. The agent is still running. Not included."
     }
   },
   "open_pull_requests": [
@@ -120,17 +133,35 @@
       "head_sha": "129036a837cee885871f565c86d0afb5fe326796",
       "branch": "cursor/partial-integration-ui-coverage-a32e",
       "draft": true,
-      "workstream": "agent-7-partial-candidate"
+      "workstream": "agent-7-partial-candidate",
+      "status": "current_until_forecast_candidate_is_recorded"
+    },
+    {
+      "number": 25,
+      "head_sha": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e",
+      "branch": "cursor/public-read-consistency-66d1",
+      "draft": true,
+      "workstream": "agent-6",
+      "status": "not_ready"
+    },
+    {
+      "number": 26,
+      "head_sha": "b959a47f88f2c3d6c948072e038a082847aa666f",
+      "branch": "cursor/forecast-comparability-1787",
+      "draft": true,
+      "workstream": "agent-2",
+      "status": "ready_to_attempt_integration"
     }
   ],
-  "readiness": "partial_candidate_agents_1_and_4",
-  "integration_attempt": "partial_candidate_recorded",
+  "readiness": "merging_agent_2_onto_agents_1_and_4",
+  "integration_attempt": "in_progress",
   "blockers": [
-    "question-key-registries-diverge-on-main",
+    "question-key-policy-published-awaiting-combined-gate",
     "canonical-export-collapses-source-versions",
     "reimport-clobbers-review-and-replay-is-noop",
-    "verified-withdrawal-stays-in-distribution",
-    "review-does-not-move-public-last-modified"
+    "withdrawal-policy-published-awaiting-combined-gate",
+    "agent-6-public-read-head-not-ready",
+    "queries-ts-conflict-agent-2-and-agent-6"
   ],
   "measurements": "coordination/reproductions/results-2026-10-04T211140Z.json",
   "scheduler": {
@@ -153,9 +184,21 @@
         "subscription_id": "sub_40952baa-0c8a-4e56-9166-a8156577cf7c",
         "expires_at": "2026-10-07T21:03:28Z",
         "scope": "github.com/mishakgg/pdoom-live#22"
+      },
+      {
+        "pr": 26,
+        "subscription_id": "sub_bd948acd-732c-47b9-88c3-685e9bf16858",
+        "expires_at": "2026-10-07T21:13:43.899Z",
+        "scope": "github.com/mishakgg/pdoom-live#26"
+      },
+      {
+        "pr": 25,
+        "subscription_id": "sub_6b7aa002-487c-4e67-a6d3-380c9264f0dd",
+        "expires_at": "2026-10-07T21:13:43.956Z",
+        "scope": "github.com/mishakgg/pdoom-live#25"
       }
     ],
-    "pr_subscription_limitation": "Pull requests 21 and 22 are subscribed. Agents 2, 3, 5, and 6 have no pull request yet."
+    "pr_subscription_limitation": "Pull requests 21, 22, 25, and 26 are subscribed. Agents 3 and 5 have no pull request yet."
   },
-  "next_action": "On the next review, read this checkpoint, fetch origin/main and open pull requests, and compare heads with last_reviewed_shas. Pull request 24 at 129036a is the current partial candidate. If pull request 21 or 22 moves, that commit is evidence only for the recorded heads and a new candidate is required. Agents 2, 3, 5, and 6 are unpublished. Do not merge pull request 24 to main. Do not retarget question keys, source versions, review replay, or withdrawal semantics."
+  "next_action": "Finish merging b959a47 onto 129036a on cursor/partial-integration-forecast-a32e, push that exact commit, open the draft candidate pull request, then run the combined gates. Do not include Agent 6 head 8c36cc1. Do not merge to main."
 }

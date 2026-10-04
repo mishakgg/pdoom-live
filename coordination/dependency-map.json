@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-04T21:11:40Z",
+  "reviewed_at": "2026-10-04T21:17:29Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -66,7 +66,7 @@
         "apps/web/lib/public-http.ts"
       ],
       "consumer_must_not_fork": true,
-      "note": "No published Agent 6 cache implementation yet. Invalidation must follow import and review writes rather than a second freshness clock."
+      "note": "Agent 6 published cursor/public-read-consistency-66d1 at 8c36cc1. That head is not ready and is not the authority yet. Invalidation must follow import and review writes rather than a second freshness clock."
     },
     {
       "id": "public-data-to-navigation",
@@ -111,8 +111,8 @@
       "severity": "blocker-for-combined-forecast-scenarios",
       "owner": "agent-2",
       "consumers": ["agent-5", "agent-3", "agent-1"],
-      "status": "pre-existing-on-main",
-      "summary": "Main already contains two question-key registries with disjoint keys. Pipeline extraction emits taxonomy.py keys. Curation approval and the trend catalog require a different key set. Canonical export copies the pipeline key through unchanged.",
+      "status": "policy-published-on-b959a47-awaiting-combined-gate",
+      "summary": "Main already contains two question-key registries with disjoint keys. Agent 2 head b959a47 publishes comparability/1.0.0. Pipeline keys stay families and are not mapped onto 2070. Catalog keys stay exact questions. A family joins an exact question only when outcome, condition, deadline, unit, and probability semantics agree. Combined verification has not run. Agent 7 will not add a third mapping.",
       "reproducible_example": {
         "pipeline_key": "extinction_unconditional",
         "pipeline_source": "pipeline/pdoom_pipeline/belief/taxonomy.py",
@@ -153,8 +153,8 @@
       "severity": "blocker-for-scenario-6",
       "owner": "agent-2",
       "consumers": ["agent-1", "agent-5"],
-      "status": "pre-existing-on-main",
-      "summary": "A human-verified retract from an explicit numeric estimate to a later qualitative withdrawal, with no replacement number, leaves the withdrawn probability inside the public distribution. The withdrawal is excluded as statement_type. Supersession only counts when the retract target is itself an eligible numeric estimate.",
+      "status": "policy-published-on-b959a47-awaiting-combined-gate",
+      "summary": "On main, a human-verified retract from an explicit numeric estimate to a later qualitative withdrawal, with no replacement number, leaves the withdrawn probability inside the public distribution. Agent 2 head b959a47 says a human-verified retracts link whose target is not an eligible replacement number is a withdrawal: to_value null, and the estimate leaves the latest cross-section. The relationship enum is unchanged. Combined verification has not run.",
       "reproducible_example": {
         "command": "npx tsx coordination/reproductions/withdrawal-without-replacement.ts",
         "exit_code": 1,
@@ -186,8 +186,8 @@
       "severity": "blocker-for-scenario-7",
       "owner": "agent-6",
       "consumers": ["agent-1"],
-      "status": "measured-on-main",
-      "summary": "A review-only change updates the public statement payload and its ETag, but dataset_imports.imported_at stays the same. publicJson then returns 304 to a client that echoes the previous Last-Modified, so the cached body is not refreshed.",
+      "status": "agent-6-published-head-not-ready",
+      "summary": "On main and on candidate 129036a, a review-only change updates the public statement payload and its ETag, but dataset_imports.imported_at stays the same. publicJson then returns 304 to a client that echoes the previous Last-Modified. Agent 6 head 01e63cee attempted a body-etag validator and failed CI because the dataset catalog was required to contain a statement slug. Head 8c36cc1 narrows that assertion. Its checks were pending. Not included.",
       "reproducible_example": {
         "command": "npx tsx coordination/reproductions/cross-workstream-gate.ts",
         "database": "pdoom_coord_integration_test",
@@ -219,7 +219,33 @@
       ]
     }
   ],
-  "ownership_overlaps_observed": [],
+  "ownership_overlaps_observed": [
+    {
+      "id": "belief-corpus-doc-agent-2-and-agent-4",
+      "paths": ["docs/BELIEF_CORPUS.md"],
+      "owners": ["agent-2", "agent-4"],
+      "status": "auto-merges-onto-129036a",
+      "summary": "Agent 4 edits the cohort introduction. Agent 2 edits the question-key section. merge-tree of b959a47 onto 129036a is clean."
+    },
+    {
+      "id": "queries-ts-conflict-agent-2-and-agent-6",
+      "paths": ["packages/db/src/queries.ts"],
+      "owners": ["agent-2", "agent-6"],
+      "status": "content-conflict",
+      "summary": "Agent 2 expands the trend-query re-export. Agent 6 adds read-snapshot imports in the same hunk and rewrites query functions. public-read.ts auto-merges. Do not include both heads until this mechanical resolution is applied on an integration branch.",
+      "mechanical_resolution_when_both_ready": "Keep Agent 6's read-snapshot import and Sql type, and keep Agent 2's export of FORECAST_INPUT_SQL, loadTrendInputs, mapForecastRow, resolveTrendMethods, and trendMethodKey."
+    },
+    {
+      "id": "agent-6-handoff-requests",
+      "paths": [
+        "docs/requests/agent-1-validator-copy.md",
+        "docs/requests/agent-2-single-trend-lookup.md"
+      ],
+      "owners": ["agent-6"],
+      "status": "returned-to-owners",
+      "summary": "Agent 6 asks Agent 1 to stop saying Last-Modified comes from import time, and asks Agent 2 for a single-method getTrend. Agent 2's published head still computes every method. Agent 7 does not implement either request."
+    }
+  ],
   "migration_reservation": {
     "next_number": "004",
     "rule": "The first workstream that adds a migration in an included commit claims the next integer. A later workstream rebases onto the next free number on the integration branch. Two files numbered 004 are a mechanical conflict Agent 7 may renumber, recording the original number, the new number, and the owner."
