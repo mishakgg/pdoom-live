@@ -23,8 +23,8 @@
   "coordination_branch": "cursor/integration-coordination-a32e",
   "coordination_pr": "https://github.com/mishakgg/pdoom-live/pull/20",
   "run_lock": {
-    "holder": null,
-    "acquired_at": null,
+    "holder": "agent-7",
+    "acquired_at": "2026-10-04T21:49:53Z",
     "expires_after_seconds": 7200,
     "protocol": "Set holder and acquired_at before mutating an integration branch. Clear both in the checkpoint commit that finishes the review. Do not start a second integration while a lock is younger than expires_after_seconds. The hourly timer is the primary overlap control because it fires only when this agent is idle."
   },
@@ -97,5 +97,5 @@
     "expires_at": "2026-10-11T20:27:47Z",
     "delivery_count": 1
   },
-  "next_action": "Pull request 31 at 0f02676 is the current partial candidate. The cross-workstream gate passes on that commit. Do not merge it to main. Include Agent 5 only after a new head fixes tests/test_backfill.py. Do not label the five-agent candidate a completed six-agent integration."
+  "next_action": "Lock held while adding npm ci to the pipeline workflow on cursor/partial-integration-refresh-a32e. The product merge remains 0f02676. Do not start a second integration."
 }
