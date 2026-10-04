@@ -1,0 +1,554 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_id": "cohort-2026-09",
+  "dataset_kind": "live",
+  "generated_at": "2026-10-01T12:05:00Z",
+  "notice": "Offline fixture for refresh continuity. This is one fictional person and it is not a census. Belief excerpts are unreviewed candidates, not a census or a consensus.",
+  "producer": {
+    "name": "pdoom-pipeline",
+    "version": "0.1.0"
+  },
+  "organizations": [
+    {
+      "slug": "refresh-lab",
+      "name": "Refresh Lab",
+      "organization_type": "research_lab",
+      "canonical_url": "https://refresh.example"
+    }
+  ],
+  "people": [
+    {
+      "slug": "refresh-ada",
+      "display_name": "Refresh Ada",
+      "given_name": "Refresh",
+      "family_name": "Ada",
+      "bio_short": "Fixture researcher used only to test refresh continuity.",
+      "inclusion_reason": "Fixture person for the offline refresh path.",
+      "cohort_tags": [
+        "fixture_refresh"
+      ],
+      "status": "active"
+    }
+  ],
+  "affiliations": [
+    {
+      "person_slug": "refresh-ada",
+      "organization_slug": "refresh-lab",
+      "role": "Researcher",
+      "start_date": null,
+      "end_date": null,
+      "source_slug": null,
+      "confidence_level": "high",
+      "verification_detail": "curator_reviewed",
+      "review_state": "machine_validated",
+      "is_current": true
+    }
+  ],
+  "external_identities": [
+    {
+      "person_slug": "refresh-ada",
+      "namespace": "personal_website",
+      "external_id": "refresh-ada.example",
+      "canonical_url": "https://refresh.example",
+      "handle": null,
+      "verification_method": "manual_review",
+      "verification_detail": "curator_reviewed",
+      "confidence_level": "high",
+      "review_state": "machine_validated",
+      "verified_at": "2026-09-01T00:00:00Z",
+      "source_slug": null
+    }
+  ],
+  "sources": [
+    {
+      "slug": "refresh-ada-html-page",
+      "source_type": "blog",
+      "name": "https://refresh.example/notes",
+      "canonical_url": "https://refresh.example/notes",
+      "platform": "blog",
+      "owner_person_slug": "refresh-ada",
+      "owner_organization_slug": null,
+      "collection_method": "manual",
+      "collection_adapter": "html_page",
+      "rights_notes": "Fixture page. Store the excerpt and the link.",
+      "enabled": true,
+      "review_state": "machine_validated",
+      "last_checked_at": "2026-10-01T12:00:00Z",
+      "last_success_at": "2026-10-01T12:00:00Z"
+    },
+    {
+      "slug": "refresh-ada-rss",
+      "source_type": "blog",
+      "name": "https://refresh.example/feed.xml",
+      "canonical_url": "https://refresh.example/feed.xml",
+      "platform": "blog",
+      "owner_person_slug": "refresh-ada",
+      "owner_organization_slug": null,
+      "collection_method": "rss",
+      "collection_adapter": "rss_feed",
+      "rights_notes": "Fixture page. Store the excerpt and the link.",
+      "enabled": true,
+      "review_state": "machine_validated",
+      "last_checked_at": "2026-10-01T12:00:00Z",
+      "last_success_at": "2026-10-01T12:00:00Z"
+    },
+    {
+      "slug": "src-704a010da3b8240f0db8",
+      "source_type": "blog",
+      "name": "Refresh Ada blog",
+      "canonical_url": "https://refresh.example/older",
+      "platform": "blog",
+      "owner_person_slug": "refresh-ada",
+      "owner_organization_slug": null,
+      "collection_method": "rss",
+      "collection_adapter": "rss_feed",
+      "rights_notes": "Owned public feed. Excerpts only.",
+      "enabled": true,
+      "review_state": "machine_validated",
+      "last_checked_at": "2026-10-01T12:00:00Z",
+      "last_success_at": "2026-10-01T12:00:00Z"
+    }
+  ],
+  "source_items": [
+    {
+      "slug": "item-3ff9353f42f9ffba6172",
+      "source_slug": "refresh-ada-html-page",
+      "upstream_id": "https://refresh.example/notes",
+      "logical_key": "https://refresh.example/notes",
+      "canonical_url": "https://refresh.example/notes",
+      "title": "Refresh Ada notes",
+      "published_at": "2024-06-01T00:00:00Z",
+      "published_timezone": null,
+      "observed_at": "2026-10-01T12:00:00Z",
+      "updated_at_source": null,
+      "language": "en",
+      "content_hash": "140e121bf6246a2ae01634622c56d5bbcc9568660a7117ae582e902fe1cec74f",
+      "content_hash_input": null,
+      "content_version": 1,
+      "content_reference": "https://refresh.example/notes",
+      "metadata": {
+        "ownership": "owned",
+        "feed_url": "https://refresh.example/notes",
+        "role": "author"
+      },
+      "collection_status": "collected",
+      "availability": "available",
+      "is_current": false,
+      "ingestion_run_slug": "belief-corpus-2026-09"
+    },
+    {
+      "slug": "item-11461634da3dad46d18d",
+      "source_slug": "refresh-ada-html-page",
+      "upstream_id": "https://refresh.example/notes",
+      "logical_key": "https://refresh.example/notes",
+      "canonical_url": "https://refresh.example/notes",
+      "title": "Refresh Ada notes",
+      "published_at": "2024-06-01T00:00:00Z",
+      "published_timezone": null,
+      "observed_at": "2026-10-01T12:00:00Z",
+      "updated_at_source": null,
+      "language": "en",
+      "content_hash": "2bd63285e3327979e3256c32ad0e1ad42dc2b3dcac7712b975d386dab11f589d",
+      "content_hash_input": null,
+      "content_version": 2,
+      "content_reference": "https://refresh.example/notes",
+      "metadata": {
+        "ownership": "owned",
+        "feed_url": "https://refresh.example/notes",
+        "role": "author"
+      },
+      "collection_status": "collected",
+      "availability": "available",
+      "is_current": true,
+      "ingestion_run_slug": "belief-corpus-2026-09"
+    },
+    {
+      "slug": "item-b3c1812845f0a47d23e3",
+      "source_slug": "src-704a010da3b8240f0db8",
+      "upstream_id": "https://refresh.example/older",
+      "logical_key": "https://refresh.example/older",
+      "canonical_url": "https://refresh.example/older",
+      "title": "Refresh Ada earlier note",
+      "published_at": "2020-01-01T00:00:00Z",
+      "published_timezone": null,
+      "observed_at": "2026-10-01T12:00:00Z",
+      "updated_at_source": null,
+      "language": "en",
+      "content_hash": "892db8185e76a14bd8bb6092dbf9f8ede2ff0d89eb75f54118a6b46b14b48fea",
+      "content_hash_input": null,
+      "content_version": 1,
+      "content_reference": "https://refresh.example/older",
+      "metadata": {
+        "ownership": "owned",
+        "feed_url": "https://refresh.example/older",
+        "role": "author"
+      },
+      "collection_status": "collected",
+      "availability": "available",
+      "is_current": true,
+      "ingestion_run_slug": "belief-corpus-2026-09"
+    },
+    {
+      "slug": "item-c635aace09a6fccdd49c",
+      "source_slug": "refresh-ada-rss",
+      "upstream_id": "https://refresh.example/feed/note",
+      "logical_key": "https://refresh.example/feed/note",
+      "canonical_url": "https://refresh.example/feed/note",
+      "title": "Feed note",
+      "published_at": "2025-06-02T00:00:00Z",
+      "published_timezone": null,
+      "observed_at": "2026-10-01T12:00:00Z",
+      "updated_at_source": null,
+      "language": null,
+      "content_hash": "bfb4c14bdf80fc79e509834ced27bad90fc0f3dc693743ebd9d437ba3c63b670",
+      "content_hash_input": null,
+      "content_version": 1,
+      "content_reference": "https://refresh.example/feed/note",
+      "metadata": {
+        "collector": "rss",
+        "collector_version": "rss-0.1.0",
+        "feed_url": "https://refresh.example/feed.xml"
+      },
+      "collection_status": "collected",
+      "availability": "available",
+      "is_current": true,
+      "ingestion_run_slug": "belief-corpus-2026-09"
+    },
+    {
+      "slug": "item-61f37f88d07560ef8d03",
+      "source_slug": "refresh-ada-rss",
+      "upstream_id": "https://refresh.example/feed/earlier",
+      "logical_key": "https://refresh.example/feed/earlier",
+      "canonical_url": "https://refresh.example/feed/earlier",
+      "title": "Earlier feed note",
+      "published_at": "2024-01-02T00:00:00Z",
+      "published_timezone": null,
+      "observed_at": "2026-10-01T12:00:00Z",
+      "updated_at_source": null,
+      "language": null,
+      "content_hash": "50eaf81cdb45c2e73f9ae8c40d92159db746cea626b1207b2876e6226d0874e2",
+      "content_hash_input": null,
+      "content_version": 1,
+      "content_reference": "https://refresh.example/feed/earlier",
+      "metadata": {
+        "collector": "rss",
+        "collector_version": "rss-0.1.0",
+        "feed_url": "https://refresh.example/feed.xml"
+      },
+      "collection_status": "collected",
+      "availability": "available",
+      "is_current": true,
+      "ingestion_run_slug": "belief-corpus-2026-09"
+    }
+  ],
+  "participants": [
+    {
+      "source_item_slug": "item-11461634da3dad46d18d",
+      "person_slug": "refresh-ada",
+      "organization_slug": null,
+      "role": "author",
+      "attribution_method": "byline",
+      "attribution_detail": "page_byline",
+      "confidence_level": "high"
+    },
+    {
+      "source_item_slug": "item-b3c1812845f0a47d23e3",
+      "person_slug": "refresh-ada",
+      "organization_slug": null,
+      "role": "author",
+      "attribution_method": "byline",
+      "attribution_detail": "page_byline",
+      "confidence_level": "high"
+    },
+    {
+      "source_item_slug": "item-c635aace09a6fccdd49c",
+      "person_slug": "refresh-ada",
+      "organization_slug": null,
+      "role": "author",
+      "attribution_method": "metadata",
+      "attribution_detail": "feed_author_field",
+      "confidence_level": "medium"
+    },
+    {
+      "source_item_slug": "item-61f37f88d07560ef8d03",
+      "person_slug": "refresh-ada",
+      "organization_slug": null,
+      "role": "author",
+      "attribution_method": "metadata",
+      "attribution_detail": "feed_author_field",
+      "confidence_level": "medium"
+    }
+  ],
+  "evidence_segments": [
+    {
+      "slug": "ev-37a89e58cd8a3fd887ca",
+      "source_item_slug": "item-11461634da3dad46d18d",
+      "segment_kind": "text",
+      "sequence": 1,
+      "start_char": 28,
+      "end_char": 106,
+      "start_ms": null,
+      "end_ms": null,
+      "text": "Refresh Ada writes that the chance of human extinction from ML is 15% by 2070.",
+      "context_text": "June 2024 Refresh Ada writes that the chance of human extinction from ML is 15% by 2070. A serious risk of disempowerment is plausible."
+    },
+    {
+      "slug": "ev-584c99bf864c61cc5931",
+      "source_item_slug": "item-11461634da3dad46d18d",
+      "segment_kind": "text",
+      "sequence": 2,
+      "start_char": 107,
+      "end_char": 153,
+      "start_ms": null,
+      "end_ms": null,
+      "text": "A serious risk of disempowerment is plausible.",
+      "context_text": "Refresh Ada writes that the chance of human extinction from ML is 15% by 2070. A serious risk of disempowerment is plausible."
+    },
+    {
+      "slug": "ev-3de765cd9ed62f50d0ef",
+      "source_item_slug": "item-b3c1812845f0a47d23e3",
+      "segment_kind": "text",
+      "sequence": 1,
+      "start_char": 38,
+      "end_char": 113,
+      "start_ms": null,
+      "end_ms": null,
+      "text": "Refresh Ada writes that serious risk of extinction is unlikely before 2030.",
+      "context_text": "January 2020 Refresh Ada writes that serious risk of extinction is unlikely before 2030."
+    },
+    {
+      "slug": "ev-e5fd6f35359300d73eb0",
+      "source_item_slug": "item-c635aace09a6fccdd49c",
+      "segment_kind": "text",
+      "sequence": 1,
+      "start_char": 0,
+      "end_char": 51,
+      "start_ms": null,
+      "end_ms": null,
+      "text": "Refresh Ada published a short excerpt on this feed.",
+      "context_text": null
+    },
+    {
+      "slug": "ev-63effa889d471a38cf88",
+      "source_item_slug": "item-61f37f88d07560ef8d03",
+      "segment_kind": "text",
+      "sequence": 1,
+      "start_char": 0,
+      "end_char": 58,
+      "start_ms": null,
+      "end_ms": null,
+      "text": "An older excerpt inserted ahead of the existing feed note.",
+      "context_text": null
+    }
+  ],
+  "topics": [
+    {
+      "slug": "ai-disempowerment",
+      "name": "ai-disempowerment",
+      "definition": "Statements about permanent disempowerment or loss of control.",
+      "parent_slug": null,
+      "version": "2026.09.0"
+    },
+    {
+      "slug": "ai-extinction",
+      "name": "ai-extinction",
+      "definition": "Statements about AI-caused human extinction.",
+      "parent_slug": null,
+      "version": "2026.09.0"
+    }
+  ],
+  "statements": [
+    {
+      "slug": "st-46e2edb727732cf9891e",
+      "person_slug": "refresh-ada",
+      "source_item_slug": "item-11461634da3dad46d18d",
+      "statement_type": "explicit_numeric",
+      "normalized_text": "Refresh Ada writes that the chance of human extinction from ML is 15% by 2070.",
+      "event_time": "2024-06-01T00:00:00Z",
+      "evidence_slug": "ev-37a89e58cd8a3fd887ca",
+      "extractor_version": "rule-extract-0.4.0",
+      "confidence": 0.62,
+      "review_state": "machine_validated",
+      "extraction_run_slug": "run-8436f150dbae0ae96a8b",
+      "topic_slugs": [
+        "ai-extinction"
+      ],
+      "topic_method": "question-key-map-2026-09",
+      "topic_confidence": 0.55
+    },
+    {
+      "slug": "st-effa2ad0b66c877e1335",
+      "person_slug": "refresh-ada",
+      "source_item_slug": "item-11461634da3dad46d18d",
+      "statement_type": "explicit_qualitative",
+      "normalized_text": "A serious risk of disempowerment is plausible.",
+      "event_time": "2024-06-01T00:00:00Z",
+      "evidence_slug": "ev-584c99bf864c61cc5931",
+      "extractor_version": "rule-extract-0.4.0",
+      "confidence": 0.35,
+      "review_state": "unreviewed",
+      "extraction_run_slug": "run-8436f150dbae0ae96a8b",
+      "topic_slugs": [
+        "ai-disempowerment"
+      ],
+      "topic_method": "question-key-map-2026-09",
+      "topic_confidence": 0.35
+    },
+    {
+      "slug": "st-d12a99244b9fd3cd31b3",
+      "person_slug": "refresh-ada",
+      "source_item_slug": "item-b3c1812845f0a47d23e3",
+      "statement_type": "explicit_qualitative",
+      "normalized_text": "Refresh Ada writes that serious risk of extinction is unlikely before 2030.",
+      "event_time": "2020-01-01T00:00:00Z",
+      "evidence_slug": "ev-3de765cd9ed62f50d0ef",
+      "extractor_version": "rule-extract-0.4.0",
+      "confidence": 0.35,
+      "review_state": "unreviewed",
+      "extraction_run_slug": "run-60c4a68f1aeeff27321a",
+      "topic_slugs": [
+        "ai-extinction"
+      ],
+      "topic_method": "question-key-map-2026-09",
+      "topic_confidence": 0.35
+    }
+  ],
+  "forecasts": [
+    {
+      "statement_slug": "st-46e2edb727732cf9891e",
+      "forecast_kind": "probability",
+      "question_key": "extinction_unconditional",
+      "question_text": "Refresh Ada writes that the chance of human extinction from ML is 15% by 2070.",
+      "definition_text": "extinction",
+      "condition_text": null,
+      "target_date_start": null,
+      "target_date_end": null,
+      "horizon_text": "by 2070",
+      "value_type": "point",
+      "value_text": "15%",
+      "value_numeric": 0.15,
+      "value_min": null,
+      "value_max": null,
+      "unit": "probability",
+      "distribution": null,
+      "resolution_criteria": null,
+      "review_state": "machine_validated"
+    },
+    {
+      "statement_slug": "st-effa2ad0b66c877e1335",
+      "forecast_kind": "qualitative",
+      "question_key": "disempowerment",
+      "question_text": "A serious risk of disempowerment is plausible.",
+      "definition_text": "disempowerment",
+      "condition_text": null,
+      "target_date_start": null,
+      "target_date_end": null,
+      "horizon_text": null,
+      "value_type": "none",
+      "value_text": null,
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": null,
+      "unit": null,
+      "distribution": null,
+      "resolution_criteria": null,
+      "review_state": "unreviewed"
+    },
+    {
+      "statement_slug": "st-d12a99244b9fd3cd31b3",
+      "forecast_kind": "qualitative",
+      "question_key": "extinction_unconditional",
+      "question_text": "Refresh Ada writes that serious risk of extinction is unlikely before 2030.",
+      "definition_text": "extinction",
+      "condition_text": null,
+      "target_date_start": null,
+      "target_date_end": null,
+      "horizon_text": "before 2030",
+      "value_type": "none",
+      "value_text": null,
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": null,
+      "unit": null,
+      "distribution": null,
+      "resolution_criteria": null,
+      "review_state": "unreviewed"
+    }
+  ],
+  "relationships": [],
+  "cohorts": [
+    {
+      "slug": "cohort-2026-09",
+      "version": "2026.09.0",
+      "name": "Frontier seed cohort",
+      "definition": "Offline fixture for refresh continuity. This is one fictional person and it is not a census.",
+      "member_slugs": [
+        "refresh-ada"
+      ]
+    }
+  ],
+  "ingestion_runs": [
+    {
+      "slug": "canonical-export-cohort-2026-09",
+      "collector": "canonical-export",
+      "source_slug": null,
+      "started_at": "2026-09-01T00:00:00Z",
+      "completed_at": "2026-09-01T00:00:00Z",
+      "status": "succeeded",
+      "cursor_before": null,
+      "cursor_after": null,
+      "observed_count": 2,
+      "new_count": 2,
+      "changed_count": 0,
+      "error_summary": null
+    },
+    {
+      "slug": "belief-corpus-2026-09",
+      "collector": "belief-corpus",
+      "source_slug": null,
+      "started_at": "2026-10-01T12:00:00Z",
+      "completed_at": "2026-10-01T12:05:00Z",
+      "status": "succeeded",
+      "cursor_before": "src:person:refresh-ada:rss",
+      "cursor_after": "src:person:refresh-ada:rss",
+      "observed_count": 4,
+      "new_count": 0,
+      "changed_count": 1,
+      "unchanged_count": 3,
+      "skipped_count": 0,
+      "failed_count": 0,
+      "error_summary": null
+    }
+  ],
+  "extraction_runs": [
+    {
+      "slug": "run-8436f150dbae0ae96a8b",
+      "source_item_slug": "item-11461634da3dad46d18d",
+      "extractor_name": "rule-extract",
+      "extractor_version": "rule-extract-0.4.0",
+      "model_provider": null,
+      "model_name": null,
+      "prompt_contract_version": "none",
+      "started_at": "2026-10-01T12:05:00Z",
+      "completed_at": "2026-10-01T12:05:00Z",
+      "status": "succeeded",
+      "input_hash": "7fac49d6b182af49fa4a2eeb798a1f5b4878ef870b6b47e5a8df494dead80ff4",
+      "output_hash": "9fdf145b2e29913ff784b61c878ab44a3959c09fcc6ffd1780ec4eaf63239733"
+    },
+    {
+      "slug": "run-60c4a68f1aeeff27321a",
+      "source_item_slug": "item-b3c1812845f0a47d23e3",
+      "extractor_name": "rule-extract",
+      "extractor_version": "rule-extract-0.4.0",
+      "model_provider": null,
+      "model_name": null,
+      "prompt_contract_version": "none",
+      "started_at": "2026-10-01T12:05:00Z",
+      "completed_at": "2026-10-01T12:05:00Z",
+      "status": "succeeded",
+      "input_hash": "1b944c76908941f78e052ed2bdccd89edf9e488df1c224155f182dafffaf179e",
+      "output_hash": "a262d6cddd3852a06e683e59e3456a678ffc2c0981f9c4be5a0452318d6419bc"
+    }
+  ],
+  "trend_definitions": []
+}

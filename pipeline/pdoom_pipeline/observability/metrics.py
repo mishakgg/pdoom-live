@@ -72,15 +72,20 @@ def observe_collection_run(run: dict) -> None:
     adapter = normalize_adapter(str(run.get("adapter") or run.get("collector") or ""))
     status = str(run.get("status") or "")
     record_counter("pdoom_collection_attempted", 1)
+    unchanged = _unchanged(run)
     if status == "succeeded":
         record_counter("pdoom_collection_succeeded", 1)
         record_counter("pdoom_collection_runs", 1, {"adapter": adapter, "outcome": "succeeded"})
-        record_counter("pdoom_collection_unchanged", max(0, _num(run.get("observed_count")) - _num(run.get("new_count")) - _num(run.get("changed_count"))))
+        record_counter("pdoom_collection_unchanged", unchanged)
         record_counter("pdoom_collection_changed", _num(run.get("changed_count")))
         record_counter("pdoom_collection_new", _num(run.get("new_count")))
-    elif status == "failed":
+    elif status in {"failed", "partial"}:
         record_counter("pdoom_collection_failed", 1)
         record_counter("pdoom_collection_runs", 1, {"adapter": adapter, "outcome": "failed"})
+        if status == "partial":
+            record_counter("pdoom_collection_unchanged", unchanged)
+            record_counter("pdoom_collection_changed", _num(run.get("changed_count")))
+            record_counter("pdoom_collection_new", _num(run.get("new_count")))
         failure = allowed("failure_class", str(run.get("error_class") or ""), "unclassified")
         record_counter("pdoom_collection_failures", 1, {"adapter": adapter, "failure_class": failure})
         if failure == "rate_limited":
@@ -93,6 +98,12 @@ def observe_extraction(statement_type: str | None, *, failed: bool) -> None:
         record_counter("pdoom_extraction_failures", 1)
     if statement_type:
         record_counter("pdoom_extraction_candidates", 1, {"statement_type": statement_type})
+
+
+def _unchanged(run: dict) -> float:
+    if run.get("unchanged_count") is not None:
+        return _num(run.get("unchanged_count"))
+    return max(0, _num(run.get("observed_count")) - _num(run.get("new_count")) - _num(run.get("changed_count")))
 
 
 def _num(value: object) -> float:

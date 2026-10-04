@@ -88,6 +88,8 @@ Detail rows also include `content_hash`, `content_reference`, availability, and 
 
 Timestamps are UTC ISO-8601. `event_time` is when the statement applies. `published_at` is the source item's publication time. `observed_at` is when the item was observed. `from` and `to` filter `event_time` as inclusive UTC dates.
 
+Source objects include `last_checked_at` and `last_success_at`. Freshness uses `last_success_at`. The dataset object keeps `source_generated_at` (when the canonical file was assembled) separate from `imported_at` (when this database imported it). The catalog also reports `latest_source_checked_at` and `latest_source_success_at`. A failed check does not erase `last_success_at`.
+
 ### Errors
 
 ```json

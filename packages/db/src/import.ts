@@ -214,8 +214,8 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
          rights_notes = EXCLUDED.rights_notes,
          enabled = EXCLUDED.enabled,
          review_state = EXCLUDED.review_state,
-         last_checked_at = EXCLUDED.last_checked_at,
-         last_success_at = EXCLUDED.last_success_at,
+         last_checked_at = COALESCE(EXCLUDED.last_checked_at, sources.last_checked_at),
+         last_success_at = COALESCE(EXCLUDED.last_success_at, sources.last_success_at),
          updated_at = now()`,
       [
         stableId(`source:${source.slug}`),
@@ -309,8 +309,8 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
     await client.query(
       `INSERT INTO ingestion_runs (
          id, slug, collector, source_id, started_at, completed_at, status, cursor_before, cursor_after,
-         observed_count, new_count, changed_count, error_summary
-       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)
+         observed_count, new_count, changed_count, unchanged_count, skipped_count, failed_count, error_summary
+       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16)
        ON CONFLICT (slug) DO UPDATE SET
          collector = EXCLUDED.collector,
          source_id = EXCLUDED.source_id,
@@ -322,6 +322,9 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
          observed_count = EXCLUDED.observed_count,
          new_count = EXCLUDED.new_count,
          changed_count = EXCLUDED.changed_count,
+         unchanged_count = EXCLUDED.unchanged_count,
+         skipped_count = EXCLUDED.skipped_count,
+         failed_count = EXCLUDED.failed_count,
          error_summary = EXCLUDED.error_summary`,
       [
         stableId(`ingestion:${run.slug}`),
@@ -336,12 +339,26 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
         run.observed_count,
         run.new_count,
         run.changed_count,
+        run.unchanged_count ?? 0,
+        run.skipped_count ?? 0,
+        run.failed_count ?? 0,
         run.error_summary,
       ],
     );
   }
 
-  for (const item of doc.source_items) {
+  const preserved = await loadReviewPreservation(client, doc.statements.map((statement) => statement.slug));
+  const incomingKeys = new Map(doc.statements.map((statement) => [statement.slug, statementCandidateKey(doc, statement)]));
+
+  const sourceItems = [...doc.source_items].sort((left, right) => Number(left.is_current) - Number(right.is_current));
+  for (const item of sourceItems) {
+    if (item.is_current) {
+      await client.query(
+        `UPDATE source_items SET is_current = false
+         WHERE source_id = $1 AND logical_key = $2 AND slug <> $3 AND is_current`,
+        [stableId(`source:${item.source_slug}`), item.logical_key, item.slug],
+      );
+    }
     const contentHash = resolveContentHash(item);
     await client.query(
       `INSERT INTO source_items (
@@ -417,7 +434,15 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
     );
   }
 
+  const evidenceItemIds = [...new Set(doc.evidence_segments.map((segment) => stableId(`source-item:${segment.source_item_slug}`)))];
+  if (evidenceItemIds.length) {
+    await client.query(
+      `UPDATE evidence_segments SET sequence = sequence + 1000000 WHERE source_item_id = ANY($1::uuid[])`,
+      [evidenceItemIds],
+    );
+  }
   for (const segment of doc.evidence_segments) {
+    const keepCorrected = keepCorrectedEvidence(doc, segment.slug, preserved, incomingKeys);
     await client.query(
       `INSERT INTO evidence_segments (
          id, slug, source_item_id, segment_kind, sequence, start_char, end_char, start_ms, end_ms, text, context_text, segment_hash
@@ -426,13 +451,13 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
          source_item_id = EXCLUDED.source_item_id,
          segment_kind = EXCLUDED.segment_kind,
          sequence = EXCLUDED.sequence,
-         start_char = EXCLUDED.start_char,
-         end_char = EXCLUDED.end_char,
+         start_char = CASE WHEN $13::boolean THEN evidence_segments.start_char ELSE EXCLUDED.start_char END,
+         end_char = CASE WHEN $13::boolean THEN evidence_segments.end_char ELSE EXCLUDED.end_char END,
          start_ms = EXCLUDED.start_ms,
          end_ms = EXCLUDED.end_ms,
-         text = EXCLUDED.text,
-         context_text = EXCLUDED.context_text,
-         segment_hash = EXCLUDED.segment_hash`,
+         text = CASE WHEN $13::boolean THEN evidence_segments.text ELSE EXCLUDED.text END,
+         context_text = CASE WHEN $13::boolean THEN evidence_segments.context_text ELSE EXCLUDED.context_text END,
+         segment_hash = CASE WHEN $13::boolean THEN evidence_segments.segment_hash ELSE EXCLUDED.segment_hash END`,
       [
         stableId(`evidence:${segment.slug}`),
         segment.slug,
@@ -446,6 +471,7 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
         segment.text,
         segment.context_text,
         sha256(segment.text),
+        keepCorrected,
       ],
     );
   }
@@ -509,6 +535,12 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
   }
 
   for (const statement of doc.statements) {
+    const incomingKey = incomingKeys.get(statement.slug) ?? statementCandidateKey(doc, statement);
+    const prior = preserved.get(statement.slug);
+    const matchesReviewed = Boolean(prior && prior.reviewed_candidate_key === incomingKey);
+    const statementType = correctedString(prior, "statement_type", statement.statement_type, matchesReviewed) ?? statement.statement_type;
+    const normalizedText = correctedString(prior, "normalized_text", statement.normalized_text, matchesReviewed) ?? statement.normalized_text;
+    const reviewState = prior ? prior.review_state : statement.review_state;
     await client.query(
       `INSERT INTO statements (
          id, slug, person_id, source_item_id, statement_type, normalized_text, event_time,
@@ -532,36 +564,43 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
         statement.slug,
         stableId(`person:${statement.person_slug}`),
         stableId(`source-item:${statement.source_item_slug}`),
-        statement.statement_type,
-        statement.normalized_text,
+        statementType,
+        normalizedText,
         statement.event_time,
         stableId(`evidence:${statement.evidence_slug}`),
         statement.extractor_version.split("/")[0] || statement.extractor_version,
         statement.extractor_version,
-        statementCandidateKey(doc, statement),
+        incomingKey,
         statement.confidence,
-        statement.review_state,
+        reviewState,
         statement.extraction_run_slug ? stableId(`extraction:${statement.extraction_run_slug}`) : null,
       ],
     );
-    for (const topicSlug of statement.topic_slugs) {
-      await client.query(
-        `INSERT INTO statement_topics (statement_id, topic_id, confidence, method)
-         VALUES ($1,$2,$3,$4)
-         ON CONFLICT (statement_id, topic_id) DO UPDATE SET
-           confidence = EXCLUDED.confidence,
-           method = EXCLUDED.method`,
-        [
-          stableId(`statement:${statement.slug}`),
-          stableId(`topic:${topicSlug}`),
-          statement.topic_confidence,
-          statement.topic_method,
-        ],
-      );
+    const skipTopics = matchesReviewed && Array.isArray(prior?.corrections.topic_slugs);
+    if (!skipTopics) {
+      for (const topicSlug of statement.topic_slugs) {
+        await client.query(
+          `INSERT INTO statement_topics (statement_id, topic_id, confidence, method)
+           VALUES ($1,$2,$3,$4)
+           ON CONFLICT (statement_id, topic_id) DO UPDATE SET
+             confidence = EXCLUDED.confidence,
+             method = EXCLUDED.method`,
+          [
+            stableId(`statement:${statement.slug}`),
+            stableId(`topic:${topicSlug}`),
+            statement.topic_confidence,
+            statement.topic_method,
+          ],
+        );
+      }
     }
   }
 
   for (const forecast of doc.forecasts) {
+    const prior = preserved.get(forecast.statement_slug);
+    const incomingKey = incomingKeys.get(forecast.statement_slug);
+    const matchesReviewed = Boolean(prior && prior.reviewed_candidate_key === incomingKey);
+    const reviewState = prior ? (prior.forecast_review_state ?? prior.review_state) : forecast.review_state;
     await client.query(
       `INSERT INTO forecasts (
          id, statement_id, forecast_kind, question_key, question_text, definition_text, condition_text,
@@ -589,21 +628,21 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
         stableId(`forecast:${forecast.statement_slug}`),
         stableId(`statement:${forecast.statement_slug}`),
         forecast.forecast_kind,
-        forecast.question_key,
-        forecast.question_text,
-        forecast.definition_text,
-        forecast.condition_text,
+        correctedString(prior, "question_key", forecast.question_key, matchesReviewed),
+        correctedString(prior, "question_text", forecast.question_text, matchesReviewed),
+        correctedString(prior, "definition_text", forecast.definition_text, matchesReviewed),
+        correctedString(prior, "condition_text", forecast.condition_text, matchesReviewed),
         forecast.target_date_start,
         forecast.target_date_end,
-        forecast.horizon_text,
-        forecast.value_type,
-        num(forecast.value_numeric),
-        num(forecast.value_min),
-        num(forecast.value_max),
-        forecast.unit,
+        correctedString(prior, "horizon_text", forecast.horizon_text, matchesReviewed),
+        correctedString(prior, "value_type", forecast.value_type, matchesReviewed) ?? forecast.value_type,
+        correctedNumber(prior, "value_numeric", forecast.value_numeric, matchesReviewed),
+        correctedNumber(prior, "value_min", forecast.value_min, matchesReviewed),
+        correctedNumber(prior, "value_max", forecast.value_max, matchesReviewed),
+        correctedString(prior, "unit", forecast.unit, matchesReviewed),
         forecast.distribution ? JSON.stringify(forecast.distribution) : null,
         forecast.resolution_criteria,
-        forecast.review_state,
+        reviewState,
       ],
     );
   }
@@ -702,6 +741,87 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
       cohort?.version ?? null,
     ],
   );
+}
+
+type ReviewPreservation = {
+  review_state: string;
+  reviewed_candidate_key: string;
+  corrections: Record<string, unknown>;
+  forecast_review_state: string | null;
+};
+
+async function loadReviewPreservation(client: pg.PoolClient, slugs: string[]): Promise<Map<string, ReviewPreservation>> {
+  const preserved = new Map<string, ReviewPreservation>();
+  if (!slugs.length) return preserved;
+  const result = await client.query(
+    `SELECT s.slug, s.review_state, d.candidate_key AS reviewed_candidate_key, d.corrections_json,
+            f.review_state AS forecast_review_state
+     FROM statements s
+     JOIN LATERAL (
+       SELECT candidate_key, corrections_json
+       FROM review_decisions
+       WHERE statement_id = s.id
+       ORDER BY reviewed_at DESC, decision_key DESC
+       LIMIT 1
+     ) d ON true
+     LEFT JOIN forecasts f ON f.statement_id = s.id
+     WHERE s.slug = ANY($1::text[])`,
+    [slugs],
+  );
+  for (const row of result.rows) {
+    const corrections = row.corrections_json && typeof row.corrections_json === "object" ? row.corrections_json : {};
+    preserved.set(String(row.slug), {
+      review_state: String(row.review_state),
+      reviewed_candidate_key: String(row.reviewed_candidate_key),
+      corrections: corrections as Record<string, unknown>,
+      forecast_review_state: row.forecast_review_state ? String(row.forecast_review_state) : null,
+    });
+  }
+  return preserved;
+}
+
+function keepCorrectedEvidence(
+  doc: CanonicalImport,
+  segmentSlug: string,
+  preserved: Map<string, ReviewPreservation>,
+  incomingKeys: Map<string, string>,
+): boolean {
+  return doc.statements.some((statement) => {
+    if (statement.evidence_slug !== segmentSlug) return false;
+    const prior = preserved.get(statement.slug);
+    if (!prior || prior.reviewed_candidate_key !== incomingKeys.get(statement.slug)) return false;
+    return ["evidence_text", "start_char", "end_char"].some((key) => Object.prototype.hasOwnProperty.call(prior.corrections, key));
+  });
+}
+
+function correctedString(
+  prior: ReviewPreservation | undefined,
+  key: string,
+  incoming: string | null,
+  matchesReviewed: boolean,
+): string | null {
+  if (matchesReviewed && prior && Object.prototype.hasOwnProperty.call(prior.corrections, key)) {
+    const value = prior.corrections[key];
+    if (value === null || value === undefined) return null;
+    return String(value);
+  }
+  return incoming;
+}
+
+function correctedNumber(
+  prior: ReviewPreservation | undefined,
+  key: string,
+  incoming: number | null,
+  matchesReviewed: boolean,
+): string | null {
+  if (matchesReviewed && prior && Object.prototype.hasOwnProperty.call(prior.corrections, key)) {
+    const value = prior.corrections[key];
+    if (value === null || value === undefined) return null;
+    if (typeof value === "number") return num(value);
+    if (typeof value === "string" && value !== "") return value;
+    return null;
+  }
+  return num(incoming);
 }
 
 function statementCandidateKey(doc: CanonicalImport, statement: CanonicalImport["statements"][number]): string {

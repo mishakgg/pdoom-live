@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily pdoom.live refresh skeleton (not enabled)
+
+[Timer]
+OnCalendar=*-*-* 06:00:00 UTC
+Persistent=true
+RandomizedDelaySec=15min
+Unit=pdoom-refresh.service
+
+[Install]
+WantedBy=timers.target

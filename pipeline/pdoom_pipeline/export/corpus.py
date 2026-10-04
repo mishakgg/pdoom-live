@@ -7,6 +7,7 @@ from pathlib import Path
 
 from pdoom_pipeline.belief.taxonomy import QUESTION_KEYS, TOPICS
 from pdoom_pipeline.export.canonical import export_seed
+from pdoom_pipeline.export.identity import evidence_material, evidence_slug, source_item_slug, statement_material, statement_slug
 
 CONFIDENCE = {"high": 0.8, "medium": 0.62, "low": 0.35}
 
@@ -23,42 +24,66 @@ def export_corpus(result: dict, *, seed_dir: Path | None = None, generated_at: s
     statements = []
     forecasts = []
     extraction_runs = []
+    seen_items: set[str] = set()
     for observation in result["observations"]:
         source_slug = _ensure_source(document, source_slugs, observation)
-        item_slug = _slug("item", observation["canonical_url"])
-        item_slugs[observation["canonical_url"]] = item_slug
-        content_hash = _hex_hash(observation.get("content_hash"), observation["canonical_url"])
-        items.append(
+        current_hash = _hex_hash(observation.get("content_hash"), observation["canonical_url"])
+        versions = observation.get("retained_versions") or [
             {
-                "slug": item_slug,
-                "source_slug": source_slug,
-                "upstream_id": (observation.get("upstream_id") or observation["canonical_url"])[:300],
-                "logical_key": observation["canonical_url"][:300],
-                "canonical_url": observation["canonical_url"],
-                "title": observation.get("title"),
+                "content_hash": current_hash,
+                "content_version": observation.get("content_version") or 1,
+                "observed_at": observation.get("observed_at"),
                 "published_at": observation.get("published_at"),
-                "published_timezone": None,
-                "observed_at": observation["observed_at"],
-                "updated_at_source": None,
-                "language": "en",
-                "content_hash": content_hash,
-                "content_hash_input": None,
-                "content_version": 1,
-                "content_reference": observation["canonical_url"][:300],
-                "metadata": {
-                    "ownership": observation["ownership"],
-                    "feed_url": observation["feed_url"],
-                    "role": observation["role"],
-                },
-                "collection_status": "collected",
-                "availability": "available",
-                "is_current": True,
-                "ingestion_run_slug": "belief-corpus-2026-09",
+                "title": observation.get("title"),
             }
-        )
+        ]
+        current_slug = None
+        for version in versions:
+            version_hash = _hex_hash(version.get("content_hash"), observation["canonical_url"])
+            version_number = int(version.get("content_version") or 1)
+            item_slug = source_item_slug(observation["canonical_url"], version_hash, version_number)
+            if item_slug in seen_items:
+                if version_hash == current_hash:
+                    current_slug = item_slug
+                continue
+            seen_items.add(item_slug)
+            is_current = version_hash == current_hash
+            if is_current:
+                current_slug = item_slug
+            items.append(
+                {
+                    "slug": item_slug,
+                    "source_slug": source_slug,
+                    "upstream_id": (observation.get("upstream_id") or observation["canonical_url"])[:300],
+                    "logical_key": observation["canonical_url"][:300],
+                    "canonical_url": observation["canonical_url"],
+                    "title": version.get("title") if version.get("title") is not None else observation.get("title"),
+                    "published_at": version.get("published_at") if "published_at" in version else observation.get("published_at"),
+                    "published_timezone": None,
+                    "observed_at": version.get("observed_at") or observation["observed_at"],
+                    "updated_at_source": None,
+                    "language": "en",
+                    "content_hash": version_hash,
+                    "content_hash_input": None,
+                    "content_version": version_number,
+                    "content_reference": observation["canonical_url"][:300],
+                    "metadata": {
+                        "ownership": observation["ownership"],
+                        "feed_url": observation["feed_url"],
+                        "role": observation["role"],
+                    },
+                    "collection_status": "collected",
+                    "availability": "available",
+                    "is_current": is_current,
+                    "ingestion_run_slug": "belief-corpus-2026-09",
+                }
+            )
+        if current_slug is None:
+            current_slug = source_item_slug(observation["canonical_url"], current_hash, int(observation.get("content_version") or 1))
+        item_slugs[observation["canonical_url"]] = current_slug
         participants.append(
             {
-                "source_item_slug": item_slug,
+                "source_item_slug": current_slug,
                 "person_slug": observation["person_slug"],
                 "organization_slug": None,
                 "role": observation["role"],
@@ -68,40 +93,46 @@ def export_corpus(result: dict, *, seed_dir: Path | None = None, generated_at: s
             }
         )
     by_item_evidence: dict[str, list[str]] = {}
+    sequence_for = _stable_sequences(result["statements"])
+    slug_for = _stable_statement_slugs(result["statements"])
+    seen_evidence: set[str] = set()
     for statement in result["statements"]:
         if statement.get("review_state") == "human_verified":
             raise ValueError("machine export cannot mark human_verified")
         item_slug = item_slugs.get(statement["source_url"])
         if not item_slug:
             continue
-        evidence_slug = _slug("ev", statement["local_id"] + statement["evidence_text"])
-        statement_slug = _slug("st", statement["local_id"] + statement["source_url"])
-        statement_slugs[statement["local_id"]] = statement_slug
-        evidence.append(
-            {
-                "slug": evidence_slug,
-                "source_item_slug": item_slug,
-                "segment_kind": "transcript" if statement.get("role") == "guest" else "text",
-                "sequence": len(by_item_evidence.get(item_slug, [])) + 1,
-                "start_char": statement.get("start_char"),
-                "end_char": statement.get("end_char"),
-                "start_ms": statement.get("start_ms"),
-                "end_ms": None,
-                "text": statement["evidence_text"][:2000],
-                "context_text": (statement.get("context_text") or "")[:800] or None,
-            }
-        )
-        by_item_evidence.setdefault(item_slug, []).append(evidence_slug)
+        evidence_id = evidence_slug(statement)
+        statement_id = slug_for[id(statement)]
+        statement_slugs[statement["local_id"]] = statement_id
+        if evidence_id not in seen_evidence:
+            seen_evidence.add(evidence_id)
+            evidence.append(
+                {
+                    "slug": evidence_id,
+                    "source_item_slug": item_slug,
+                    "segment_kind": "transcript" if statement.get("role") == "guest" else "text",
+                    "sequence": sequence_for[id(statement)],
+                    "start_char": statement.get("start_char"),
+                    "end_char": statement.get("end_char"),
+                    "start_ms": statement.get("start_ms"),
+                    "end_ms": None,
+                    "text": statement["evidence_text"][:2000],
+                    "context_text": (statement.get("context_text") or "")[:800] or None,
+                }
+            )
+        if evidence_id not in by_item_evidence.get(item_slug, []):
+            by_item_evidence.setdefault(item_slug, []).append(evidence_id)
         topic = statement.get("topic_slug") or "ai-risk-qualitative"
         statements.append(
             {
-                "slug": statement_slug,
+                "slug": statement_id,
                 "person_slug": statement["person_slug"],
                 "source_item_slug": item_slug,
                 "statement_type": statement["statement_type"],
                 "normalized_text": statement["normalized_text"][:600],
                 "event_time": statement.get("published_at"),
-                "evidence_slug": evidence_slug,
+                "evidence_slug": evidence_id,
                 "extractor_version": statement["extractor_version"],
                 "confidence": CONFIDENCE.get(statement.get("confidence"), 0.35),
                 "review_state": statement["review_state"],
@@ -112,7 +143,7 @@ def export_corpus(result: dict, *, seed_dir: Path | None = None, generated_at: s
             }
         )
         if statement.get("forecast_kind") and statement.get("question_key"):
-            forecasts.append(_forecast(statement, statement_slug))
+            forecasts.append(_forecast(statement, statement_id))
     for item_slug, evidence_slugs in by_item_evidence.items():
         blob = "|".join(evidence_slugs).encode("utf-8")
         extraction_runs.append(
@@ -124,8 +155,8 @@ def export_corpus(result: dict, *, seed_dir: Path | None = None, generated_at: s
                 "model_provider": None,
                 "model_name": None,
                 "prompt_contract_version": "none",
-                "started_at": generated_at,
-                "completed_at": generated_at,
+                "started_at": (result.get("refresh") or {}).get("extracted_at") or generated_at,
+                "completed_at": (result.get("refresh") or {}).get("extracted_at") or generated_at,
                 "status": "succeeded",
                 "input_hash": hashlib.sha256(blob).hexdigest(),
                 "output_hash": hashlib.sha256(("out|" + blob.decode()).encode("utf-8")).hexdigest(),
@@ -162,22 +193,28 @@ def export_corpus(result: dict, *, seed_dir: Path | None = None, generated_at: s
     document["forecasts"] = forecasts
     document["relationships"] = relationships
     document["extraction_runs"] = extraction_runs
+    refresh = result.get("refresh") or {}
+    counts = _run_counts(result["observations"], refresh)
     document["ingestion_runs"].append(
         {
             "slug": "belief-corpus-2026-09",
             "collector": "belief-corpus",
             "source_slug": None,
-            "started_at": generated_at,
-            "completed_at": generated_at,
-            "status": "succeeded",
-            "cursor_before": None,
-            "cursor_after": None,
-            "observed_count": len(items),
-            "new_count": len(items),
-            "changed_count": 0,
-            "error_summary": None,
+            "started_at": refresh.get("started_at") or generated_at,
+            "completed_at": refresh.get("completed_at") or generated_at,
+            "status": counts["status"],
+            "cursor_before": refresh.get("cursor_before"),
+            "cursor_after": refresh.get("cursor_after"),
+            "observed_count": counts["observed_count"],
+            "new_count": counts["new_count"],
+            "changed_count": counts["changed_count"],
+            "unchanged_count": counts["unchanged_count"],
+            "skipped_count": counts["skipped_count"],
+            "failed_count": counts["failed_count"],
+            "error_summary": counts["error_summary"],
         }
     )
+    _apply_source_checks(document, refresh.get("checks") or {})
     extra = " Belief excerpts are unreviewed candidates, not a census or a consensus."
     document["notice"] = (document["notice"] + extra)[:1200]
     _ = QUESTION_KEYS
@@ -262,6 +299,96 @@ def _forecast(statement: dict, statement_slug: str) -> dict:
         "resolution_criteria": None,
         "review_state": statement["review_state"],
     }
+
+
+def _stable_statement_slugs(statements: list[dict]) -> dict[int, str]:
+    bases = [(statement, statement_slug(statement)) for statement in statements]
+    counts: dict[str, int] = {}
+    for _, base in bases:
+        counts[base] = counts.get(base, 0) + 1
+    slugs: dict[int, str] = {}
+    for statement, base in bases:
+        if counts[base] == 1:
+            slugs[id(statement)] = base
+        else:
+            slugs[id(statement)] = _slug("st", statement_material(statement) + "\n" + evidence_material(statement))
+    return slugs
+
+
+def _stable_sequences(statements: list[dict]) -> dict[int, int]:
+    grouped: dict[str, list[dict]] = {}
+    for statement in statements:
+        grouped.setdefault(statement.get("source_url") or "", []).append(statement)
+    sequences: dict[int, int] = {}
+    for group in grouped.values():
+        ordered = sorted(group, key=lambda row: (_sort_offset(row), evidence_slug(row), statement_slug(row)))
+        seen: dict[str, int] = {}
+        next_sequence = 1
+        for statement in ordered:
+            slug = evidence_slug(statement)
+            if slug not in seen:
+                seen[slug] = next_sequence
+                next_sequence += 1
+            sequences[id(statement)] = seen[slug]
+    return sequences
+
+
+def _sort_offset(statement: dict) -> int:
+    if statement.get("start_char") is not None:
+        return int(statement["start_char"])
+    if statement.get("start_ms") is not None:
+        return int(statement["start_ms"])
+    return 0
+
+
+def _run_counts(observations: list[dict], refresh: dict) -> dict:
+    statuses = [row.get("ingest_status") for row in observations]
+    if refresh.get("new_count") is not None:
+        new_count = int(refresh["new_count"])
+        changed_count = int(refresh.get("changed_count") or 0)
+        unchanged_count = int(refresh.get("unchanged_count") or 0)
+    elif any(statuses):
+        new_count = sum(1 for status in statuses if status == "new")
+        changed_count = sum(1 for status in statuses if status in {"changed", "version_changed"})
+        unchanged_count = sum(1 for status in statuses if status == "unchanged")
+    else:
+        new_count = len(observations)
+        changed_count = 0
+        unchanged_count = 0
+    failed_count = int(refresh.get("failed_count") or 0)
+    skipped_count = int(refresh.get("skipped_count") or 0)
+    status = refresh.get("status")
+    if status not in {"succeeded", "partial", "failed"}:
+        if failed_count and (new_count or changed_count or unchanged_count):
+            status = "partial"
+        elif failed_count:
+            status = "failed"
+        else:
+            status = "succeeded"
+    error_summary = refresh.get("error_summary")
+    if error_summary is not None:
+        error_summary = str(error_summary)[:400] or None
+    return {
+        "status": status,
+        "observed_count": new_count + changed_count + unchanged_count,
+        "new_count": new_count,
+        "changed_count": changed_count,
+        "unchanged_count": unchanged_count,
+        "skipped_count": skipped_count,
+        "failed_count": failed_count,
+        "error_summary": error_summary,
+    }
+
+
+def _apply_source_checks(document: dict, checks: dict) -> None:
+    for source in document["sources"]:
+        row = checks.get(source["canonical_url"])
+        if not row:
+            continue
+        if row.get("last_checked_at"):
+            source["last_checked_at"] = row["last_checked_at"]
+        if row.get("last_success_at"):
+            source["last_success_at"] = row["last_success_at"]
 
 
 def _slug(prefix: str, raw: str) -> str:

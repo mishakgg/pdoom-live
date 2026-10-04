@@ -5,3 +5,4 @@
 001_init.sql	breaking
 002_dataset_contract.sql	compatible
 003_review_decisions.sql	breaking
+004_refresh_runs.sql	compatible
