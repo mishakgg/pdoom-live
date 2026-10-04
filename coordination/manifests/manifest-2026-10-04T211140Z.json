@@ -1,0 +1,98 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-04T211140Z",
+  "candidate_state": "partial_candidate",
+  "reason": "Agent 1 head af6ec9b and Agent 4 head 6c23609 meet the readiness gate and share no paths. Agents 2, 3, 5, and 6 have no published commit. This is not a six-agent integration.",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "integration_branch": "cursor/partial-integration-ui-coverage-a32e",
+  "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/24",
+  "resulting_integration_commit": "129036a837cee885871f565c86d0afb5fe326796",
+  "resulting_tree": "1a6ce91a10d056cce74c660ba79c84aa54c54503",
+  "supersedes": {
+    "pr": 23,
+    "commit": "2af9e50095a9e44db4cc4c820bc815502351f05d",
+    "reason": "Agent 4 only. Evidence only for that commit."
+  },
+  "included": [
+    {
+      "agent": "agent-4",
+      "pr": 22,
+      "branch": "cursor/coverage-channels-2026-10-6ae1",
+      "head_sha": "6c23609f05bb958a58f235ba34c0180b3579c109",
+      "order": 1,
+      "reason": "Unchanged since the previous candidate. Collectors stay off the recurring runner. No migration."
+    },
+    {
+      "agent": "agent-1",
+      "pr": 21,
+      "branch": "cursor/research-navigation-34f4",
+      "head_sha": "af6ec9b4783a4fd37dbc3b9f5c263cc9cbd96ac3",
+      "order": 2,
+      "reason": "Navigation behavior is implemented. GitHub test, browser, and runtime checks on this head succeeded. The previous locator failures are fixed in this commit."
+    }
+  ],
+  "excluded": [
+    {
+      "agent": "agent-2",
+      "pr": null,
+      "branch": null,
+      "head_sha": null,
+      "reason": "unpublished"
+    },
+    {
+      "agent": "agent-3",
+      "pr": null,
+      "branch": null,
+      "head_sha": null,
+      "reason": "unpublished"
+    },
+    {
+      "agent": "agent-5",
+      "pr": null,
+      "branch": null,
+      "head_sha": null,
+      "reason": "unpublished"
+    },
+    {
+      "agent": "agent-6",
+      "pr": null,
+      "branch": null,
+      "head_sha": null,
+      "reason": "unpublished"
+    }
+  ],
+  "dependencies_and_order": [
+    "Agent 4 registry and unwired collectors merged first.",
+    "Agent 1 public navigation merged second. No shared paths with Agent 4."
+  ],
+  "migration_ordering": [
+    "packages/db/migrations/001_init.sql",
+    "packages/db/migrations/002_dataset_contract.sql",
+    "packages/db/migrations/003_review_decisions.sql"
+  ],
+  "contract_versions": {
+    "canonical_import_schema_version": "1.0.0",
+    "public_export_schema_version": "1.0.0",
+    "review_decision_schema_version": "review-decisions/1.0.0"
+  },
+  "checks": {
+    "lint": "0 errors, 6 warnings",
+    "typecheck": "passed",
+    "vitest": "179 passed on pdoom_coord_combined_test",
+    "pytest": "passed, skipped tests/test_live_api.py",
+    "playwright": "CI=1 npx playwright test: 135 passed, 2 skipped, exit 0",
+    "cross_workstream_gate": {
+      "command": "npx tsx coordination/reproductions/cross-workstream-gate.ts",
+      "exit_code": 1,
+      "result": "coordination/reproductions/results-2026-10-04T211140Z.json",
+      "failed": [
+        "7-cache-after-review",
+        "3-review-survives-reimport",
+        "2-source-version-history",
+        "6-withdrawal-without-replacement"
+      ]
+    }
+  },
+  "delivery_note": "Evidence for commit 129036a only. Do not merge pull requests 24, 23, 22, and 21 as separate copies. A later candidate that already contains af6ec9b and 6c23609 supersedes this draft."
+}

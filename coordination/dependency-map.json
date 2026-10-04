@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-04T21:07:27Z",
+  "reviewed_at": "2026-10-04T21:11:40Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -202,8 +202,8 @@
       "severity": "blocks-agent-1-readiness",
       "owner": "agent-1",
       "consumers": ["agent-7"],
-      "status": "fixed-on-99f3b30-locators-still-fail",
-      "summary": "On 33c9c9a2 the statement name picker could commit the first option of the previous suggestion list. Head 99f3b30 clears suggestions when the query changes, and the name-selection journey passes. Two browser journeys on that head still fail on ambiguous locators, so the head is not in the partial candidate.",
+      "status": "fixed-on-af6ec9b-and-included-in-129036a",
+      "summary": "On 33c9c9a2 the statement name picker could commit the first option of the previous suggestion list. Head 99f3b30 clears suggestions when the query changes. Head af6ec9b makes the source-item time sentence and the profile journey locators unambiguous. Combined Playwright on 129036a passed.",
       "reproducible_example": {
         "command": "CI=1 npx playwright test e2e/research-journeys.spec.ts:4 --reporter=list",
         "head_sha": "33c9c9a2f259c5a00f8ec532b7ecc6f5f848c90e",
