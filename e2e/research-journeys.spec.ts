@@ -63,9 +63,10 @@ test("clear all and shared filters survive the paged statement list", async ({ p
 test("profile and topic navigation keep both constraints and disclose the preview", async ({ page }) => {
   await page.goto("/people/ada-quill");
   await expect(page.getByText(/All \d+ public statements collected for this view are listed here/)).toBeVisible();
-  await expect(page.getByRole("link", { name: "Statements" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Forecasts" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Changes" })).toBeVisible();
+  const onPage = page.getByRole("navigation", { name: "On this page" });
+  await expect(onPage.getByRole("link", { name: "Statements", exact: true })).toBeVisible();
+  await expect(onPage.getByRole("link", { name: "Forecasts", exact: true })).toBeVisible();
+  await expect(onPage.getByRole("link", { name: "Changes", exact: true })).toBeVisible();
   const paged = page.getByRole("link", { name: "Open the paged statement list" });
   await expect(paged).toHaveAttribute("href", "/statements?person=ada-quill");
   await page.getByRole("navigation", { name: "On this page" }).getByRole("link", { name: "Statements" }).click();

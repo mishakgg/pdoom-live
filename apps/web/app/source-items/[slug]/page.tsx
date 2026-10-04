@@ -48,7 +48,7 @@ export default async function SourceItemPage({ params }: { params: Promise<{ slu
         <UnavailableState collectionStatus={item.collection_status} availability={item.availability} />
       ) : null}
       {material === "partial" ? <PartialCollectionNote /> : null}
-      <p className="meta">Published is when the material is dated. Observed is when this observatory stored it. Reloading this page does not collect the source again.</p>
+      <p className="meta">The first time is the material&apos;s date. The second time is when this observatory stored it. Reloading this page does not collect the source again.</p>
       <dl className="audit">
         <dt>Published</dt>
         <dd>{formatWhen(item.published_at)}{item.published_timezone ? ` (${item.published_timezone})` : ""}</dd>
