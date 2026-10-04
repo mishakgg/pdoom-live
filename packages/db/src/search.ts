@@ -24,6 +24,7 @@ import type pg from "pg";
 import { effectiveReviewStateSql } from "./coverage";
 import { getPool } from "./pool";
 import { InvalidCursorError } from "./queries";
+import { isPool, isStatementTimeout, withConsistentRead } from "./read-snapshot";
 
 export class SearchTimeoutError extends Error {
   constructor() {
@@ -198,31 +199,6 @@ function emptyResponse(parsed: SearchQuery, prepared: ReturnType<typeof prepareS
       source_item: emptyGroup(limit),
     },
   };
-}
-
-function isTimeout(error: unknown): boolean {
-  return typeof error === "object" && error !== null && "code" in error && (error as { code?: string }).code === "57014";
-}
-
-async function withTimeout<T>(pool: pg.Pool, fn: (client: pg.PoolClient) => Promise<T>): Promise<T> {
-  const client = await pool.connect();
-  try {
-    await client.query("BEGIN");
-    await client.query("SET LOCAL statement_timeout = '2s'");
-    const value = await fn(client);
-    await client.query("COMMIT");
-    return value;
-  } catch (error) {
-    try {
-      await client.query("ROLLBACK");
-    } catch {
-      /* connection may already be aborted */
-    }
-    if (isTimeout(error)) throw new SearchTimeoutError();
-    throw error;
-  } finally {
-    client.release();
-  }
 }
 
 function num(value: unknown): number | null {
@@ -737,7 +713,7 @@ const MAPPERS = {
 } as const;
 
 async function searchKind(
-  pool: pg.Pool,
+  client: pg.Pool | pg.PoolClient,
   kind: SearchEntityType,
   prepared: ReturnType<typeof prepareSearchText>,
   parsed: SearchQuery,
@@ -748,17 +724,33 @@ async function searchKind(
   const sort = sortFor(kind);
   const build = BUILDERS[kind];
   const map = MAPPERS[kind] as (row: ScoredRow) => SearchHit;
-  return withTimeout(pool, async (client) => {
-    const countQuery = build(prepared, parsed, cursor, limit, "count");
-    const count = await client.query(countQuery.text, countQuery.values);
-    const page = build(prepared, parsed, cursor, limit, "page");
-    const rows = await client.query(page.text, page.values);
-    const total = Number(count.rows[0]?.total_count ?? 0);
-    return pageOf(rows.rows as ScoredRow[], limit, total, map, { fp, sort });
-  });
+  const countQuery = build(prepared, parsed, cursor, limit, "count");
+  const count = await client.query(countQuery.text, countQuery.values);
+  const page = build(prepared, parsed, cursor, limit, "page");
+  const rows = await client.query(page.text, page.values);
+  const total = Number(count.rows[0]?.total_count ?? 0);
+  return pageOf(rows.rows as ScoredRow[], limit, total, map, { fp, sort });
 }
 
-export async function searchPublic(input: SearchQuery, pool = getPool()): Promise<SearchResponse> {
+async function searchGroups(
+  client: pg.Pool | pg.PoolClient,
+  parsed: SearchQuery,
+  prepared: ReturnType<typeof prepareSearchText>,
+  types: SearchEntityType[],
+  fp: string,
+  cursor: CursorPayload | null,
+  response: SearchResponse,
+): Promise<SearchResponse> {
+  for (const kind of types) {
+    const limit = parsed.mode === "suggest" ? SEARCH_SUGGEST_LIMITS[kind] : (parsed.limit ?? SEARCH_PAGE_LIMIT_DEFAULT);
+    const kindCursor = parsed.type === kind ? cursor : null;
+    const group = await searchKind(client, kind, prepared, parsed, kindCursor, limit, fp);
+    (response.groups as Record<SearchEntityType, SearchGroup<SearchHit>>)[kind] = group;
+  }
+  return response;
+}
+
+export async function searchPublic(input: SearchQuery, pool: pg.Pool | pg.PoolClient = getPool()): Promise<SearchResponse> {
   const parsed = searchQuerySchema.parse(input);
   const prepared = prepareSearchText(parsed.q);
   const types = searchTypesForFilters(parsed);
@@ -766,13 +758,14 @@ export async function searchPublic(input: SearchQuery, pool = getPool()): Promis
   const cursor = parsed.cursor && parsed.type ? decodeCursor(parsed.cursor, fp, sortFor(parsed.type)) : null;
   const response = emptyResponse(parsed, prepared, types);
   if (prepared.reason !== "ok") return response;
-  await Promise.all(
-    types.map(async (kind) => {
-      const limit = parsed.mode === "suggest" ? SEARCH_SUGGEST_LIMITS[kind] : (parsed.limit ?? SEARCH_PAGE_LIMIT_DEFAULT);
-      const kindCursor = parsed.type === kind ? cursor : null;
-      const group = await searchKind(pool, kind, prepared, parsed, kindCursor, limit, fp);
-      (response.groups as Record<SearchEntityType, SearchGroup<SearchHit>>)[kind] = group;
-    }),
-  );
-  return response;
+  try {
+    if (!isPool(pool)) return await searchGroups(pool, parsed, prepared, types, fp, cursor, response);
+    return await withConsistentRead(pool, async (client) => {
+      await client.query("SET LOCAL statement_timeout = '2s'");
+      return searchGroups(client, parsed, prepared, types, fp, cursor, response);
+    });
+  } catch (error) {
+    if (isStatementTimeout(error)) throw new SearchTimeoutError();
+    throw error;
+  }
 }

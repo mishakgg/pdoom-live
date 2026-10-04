@@ -89,6 +89,10 @@ Optional:
 | `PDOOM_METRICS_ENABLED` | `1` or `true`. Unset leaves `GET /api/metrics` disabled. Leave it off on the public hostname. |
 | `PDOOM_METRICS_TOKEN` | When set, metrics require `Authorization: Bearer` with this value. The value is not logged. |
 | `PDOOM_QUALITY_BASELINE` | Optional counts file for relative guardrails on `/api/status` and `/api/metrics`. |
+| `PDOOM_PUBLIC_RATE_LIMIT` | Optional per-key public API limit for the fixed window. Default 600. |
+| `PDOOM_PUBLIC_RATE_WINDOW_MS` | Optional window length in milliseconds. Default 60000. |
+| `PDOOM_PUBLIC_PROCESS_RATE_LIMIT` | Optional whole-process public API limit for the same window. Default 3000. |
+| `PDOOM_TRUSTED_PROXY_HOPS` | Optional count of reverse proxies that append to `X-Forwarded-For`. Unset or `0` ignores that header. |
 | `OPENAI_API_KEY` | Unused by the web process. If set, it must be non-empty and is not logged. |
 
 Unknown `PDOOM_*` variables are rejected. Empty optional values are rejected. Production refuses `PDOOM_IMPORT_HOLD`, `PDOOM_FIXTURE_PATH`, `PDOOM_DOCKER_TEST`, and `PDOOM_CURATION_MODE`. Local curation is a development process and is not part of the public runtime.

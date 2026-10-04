@@ -11,7 +11,10 @@ import {
 import type pg from "pg";
 import { effectiveReviewStateSql } from "./coverage";
 import { getPool } from "./pool";
+import { isPool, queryOnClient, withConsistentRead } from "./read-snapshot";
 import { listComputedTrends } from "./trend-query";
+
+type Sql = pg.Pool | pg.PoolClient;
 
 export { FORECAST_INPUT_SQL, getTrend, listComputedTrends, listTrends, loadTrendInputs, mapForecastRow, resolveTrendMethods, trendMethodKey } from "./trend-query";
 export type { PublicTrend } from "./trend-query";
@@ -199,7 +202,8 @@ function statementFilters(query: StatementListQuery, values: unknown[]): string 
   return clauses.length ? `WHERE ${clauses.join(" AND ")}` : "";
 }
 
-export async function listStatements(input: StatementListQuery, pool = getPool()): Promise<Page<StatementSummary>> {
+export async function listStatements(input: StatementListQuery, pool: Sql = getPool()): Promise<Page<StatementSummary>> {
+  if (isPool(pool)) return withConsistentRead(pool, (db) => listStatements(input, db));
   const query = statementListQuerySchema.parse(input);
   const values: unknown[] = [];
   const where = statementFilters(query, values);
@@ -254,7 +258,8 @@ export async function listStatements(input: StatementListQuery, pool = getPool()
   };
 }
 
-export async function getStatement(slug: string, pool = getPool()) {
+export function getStatement(slug: string, pool: Sql = getPool()) {
+  return queryOnClient(pool, async (pool) => {
   const result = await pool.query(
     `SELECT
        s.id, s.slug, s.statement_type, s.normalized_text, s.event_time, ${effectiveReviewStateSql("s")} AS review_state, s.confidence,
@@ -344,9 +349,11 @@ export async function getStatement(slug: string, pool = getPool()) {
       to_slug: String(relation.to_slug),
     })),
   };
+  });
 }
 
-export async function listPeople(input: PeopleListQuery, pool = getPool()) {
+export function listPeople(input: PeopleListQuery, pool: Sql = getPool()) {
+  return queryOnClient(pool, async (pool) => {
   const query = peopleListQuerySchema.parse(input);
   const values: unknown[] = [];
   const clauses: string[] = [];
@@ -449,10 +456,11 @@ export async function listPeople(input: PeopleListQuery, pool = getPool()) {
       prev_cursor: first && cursor ? encodeCursor({ v: 1, t: first.display_name, id: first.id, dir: "prev" }) : null,
     },
   };
+  });
 }
 
-export async function getPerson(slug: string, pool = getPool()) {
-  const people = await listPeople({ limit: 1, q: undefined, status: undefined, organization: undefined }, pool);
+export function getPerson(slug: string, pool: Sql = getPool()) {
+  return queryOnClient(pool, async (pool) => {
   const result = await pool.query(
     `SELECT p.id, p.slug, p.display_name, p.given_name, p.family_name, p.bio_short, p.status,
             p.inclusion_reason, p.cohort_tags, p.updated_at
@@ -461,7 +469,6 @@ export async function getPerson(slug: string, pool = getPool()) {
   );
   const person = result.rows[0];
   if (!person) return null;
-  void people;
   const affiliations = await pool.query(
     `SELECT a.role, a.start_date, a.end_date, a.confidence_level, a.verification_detail, a.review_state, o.slug, o.name
      FROM affiliations a JOIN organizations o ON o.id = a.organization_id
@@ -532,6 +539,7 @@ export async function getPerson(slug: string, pool = getPool()) {
     })),
     statements: statements.data,
   };
+  });
 }
 
 export async function listTopics(pool = getPool()) {
@@ -564,12 +572,41 @@ export async function listTopics(pool = getPool()) {
   }));
 }
 
-export async function getTopic(slug: string, pool = getPool()) {
-  const topics = await listTopics(pool);
-  const topic = topics.find((item) => item.slug === slug);
-  if (!topic) return null;
+export function getTopic(slug: string, pool: Sql = getPool()) {
+  return queryOnClient(pool, async (pool) => {
+  const result = await pool.query(
+    `SELECT t.slug, t.name, t.definition, t.version, parent.slug AS parent_slug,
+            counts.counts, counts.total
+     FROM topics t
+     LEFT JOIN topics parent ON parent.id = t.parent_topic_id
+     LEFT JOIN LATERAL (
+       SELECT COALESCE(jsonb_object_agg(statement_type, count), '{}'::jsonb) AS counts,
+              COALESCE(sum(count), 0)::int AS total
+       FROM (
+         SELECT s.statement_type, count(*)::int AS count
+         FROM statement_topics st
+         JOIN statements s ON s.id = st.statement_id
+         WHERE st.topic_id = t.id AND ${isPublicReviewSql("s.review_state")}
+         GROUP BY s.statement_type
+       ) grouped
+     ) counts ON true
+     WHERE t.slug = $1`,
+    [slug],
+  );
+  const row = result.rows[0];
+  if (!row) return null;
+  const topic = {
+    slug: String(row.slug),
+    name: String(row.name),
+    definition: String(row.definition),
+    version: String(row.version),
+    parent_slug: row.parent_slug ? String(row.parent_slug) : null,
+    statement_counts: (row.counts ?? {}) as Record<string, number>,
+    statement_total: Number(row.total),
+  };
   const statements = await listStatements({ topic: slug, limit: 50, sort: "event_time_desc" }, pool);
   return { ...topic, statements: statements.data };
+  });
 }
 
 export async function listSources(pool = getPool()) {
@@ -606,10 +643,43 @@ export async function listSources(pool = getPool()) {
   }));
 }
 
-export async function getSource(slug: string, pool = getPool()) {
-  const sources = await listSources(pool);
-  const source = sources.find((item) => item.slug === slug);
-  if (!source) return null;
+export function getSource(slug: string, pool: Sql = getPool()) {
+  return queryOnClient(pool, async (pool) => {
+  const sources = await pool.query(
+    `SELECT src.slug, src.name, src.source_type, src.canonical_url, src.platform, src.enabled,
+            src.last_checked_at, src.last_success_at, src.collection_method, src.collection_adapter,
+            src.review_state, src.rights_notes,
+            p.display_name AS owner_name, p.slug AS owner_slug,
+            o.name AS organization_name,
+            (SELECT count(*)::int FROM source_items si WHERE si.source_id = src.id) AS item_count
+     FROM sources src
+     LEFT JOIN people p ON p.id = src.owner_person_id
+     LEFT JOIN organizations o ON o.id = src.owner_organization_id
+     WHERE src.slug = $1`,
+    [slug],
+  );
+  const row = sources.rows[0];
+  if (!row) return null;
+  const asOf = new Date().toISOString();
+  const source = {
+    slug: String(row.slug),
+    name: String(row.name),
+    source_type: String(row.source_type),
+    canonical_url: String(row.canonical_url),
+    platform: row.platform ? String(row.platform) : null,
+    enabled: Boolean(row.enabled),
+    last_checked_at: iso(row.last_checked_at),
+    last_success_at: iso(row.last_success_at),
+    collection_method: String(row.collection_method),
+    collection_adapter: row.collection_adapter ? String(row.collection_adapter) : null,
+    review_state: String(row.review_state),
+    freshness: classifyFreshness(iso(row.last_success_at), asOf),
+    rights_notes: row.rights_notes ? String(row.rights_notes) : null,
+    owner_name: row.owner_name ? String(row.owner_name) : null,
+    owner_slug: row.owner_slug ? String(row.owner_slug) : null,
+    organization_name: row.organization_name ? String(row.organization_name) : null,
+    item_count: Number(row.item_count),
+  };
   const items = await pool.query(
     `SELECT si.slug, si.title, si.canonical_url, si.published_at, si.observed_at, si.collection_status,
             si.availability, si.content_reference, si.language
@@ -633,9 +703,11 @@ export async function getSource(slug: string, pool = getPool()) {
       language: row.language ? String(row.language) : null,
     })),
   };
+  });
 }
 
-export async function getSourceItem(slug: string, pool = getPool()) {
+export function getSourceItem(slug: string, pool: Sql = getPool()) {
+  return queryOnClient(pool, async (pool) => {
   const result = await pool.query(
     `SELECT si.slug, si.title, si.canonical_url, si.published_at, si.published_timezone, si.observed_at,
             si.language, si.content_hash, si.content_version, si.content_reference, si.metadata_json,
@@ -706,9 +778,10 @@ export async function getSourceItem(slug: string, pool = getPool()) {
       segment_hash: String(segment.segment_hash),
     })),
   };
+  });
 }
 
-export async function getDatasetRecord(pool = getPool()) {
+export async function getDatasetRecord(pool: Sql = getPool()) {
   const result = await pool.query(
     `SELECT schema_version, dataset_id, dataset_kind, generated_at, imported_at, notice,
             producer_name, producer_version, cohort_slug, cohort_version
@@ -745,7 +818,8 @@ const FAILING_COLLECTION_STATUSES = [
   "collector_bug",
 ];
 
-export async function getCoverage(asOf = new Date().toISOString(), pool = getPool()) {
+export function getCoverage(asOf = new Date().toISOString(), pool: Sql = getPool()) {
+  return queryOnClient(pool, async (pool) => {
   const dataset = await getDatasetRecord(pool);
   const cohort = dataset?.cohort_slug
     ? await pool.query(
@@ -768,52 +842,50 @@ export async function getCoverage(asOf = new Date().toISOString(), pool = getPoo
          JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2
        ) OR src.owner_person_id IS NULL`
     : "";
-  const [people, typed, latest, failing, statements] = await Promise.all([
-    pool.query(
-      `SELECT count(DISTINCT p.id)::int AS cohort_size,
-              count(DISTINCT p.id) FILTER (WHERE src.id IS NOT NULL)::int AS people_with_sources,
-              count(DISTINCT p.id) FILTER (
-                WHERE src.source_type IS NOT NULL AND NOT (src.source_type = ANY($${academicParam}::text[]))
-              )::int AS people_with_non_academic_sources,
-              count(DISTINCT p.id) FILTER (
-                WHERE src.source_type = ANY($${firstPartyParam}::text[])
-              )::int AS people_with_first_party_sources,
-              count(DISTINCT p.id) FILTER (WHERE st.person_id IS NOT NULL)::int AS statement_bearing_people
-       FROM people p
-       ${memberJoin}
-       LEFT JOIN sources src ON src.owner_person_id = p.id
-       LEFT JOIN (
-         SELECT DISTINCT person_id FROM statements WHERE ${isPublicReviewSql("review_state")}
-       ) st ON st.person_id = p.id`,
-      [...params, ACADEMIC_SOURCE_TYPES, FIRST_PARTY_SOURCE_TYPES],
-    ),
-    pool.query(
-      `SELECT src.source_type, src.last_success_at
-       FROM sources src
-       ${sourceScope}`,
-      params,
-    ),
-    pool.query(
-      `SELECT max(src.last_success_at) AS last_success_at, max(si.observed_at) AS observed_at
-       FROM sources src
-       LEFT JOIN source_items si ON si.source_id = src.id
-       ${sourceScope}`,
-      params,
-    ),
-    pool.query(
-      `SELECT count(DISTINCT src.id)::int AS failing
-       FROM sources src
-       LEFT JOIN source_items si ON si.source_id = src.id AND si.collection_status = ANY($${failingParam}::text[])
-       ${sourceScope ? sourceScope.replace("WHERE", "WHERE (") + ") AND" : "WHERE"} (
-         (src.last_checked_at IS NOT NULL AND src.last_success_at IS NULL) OR si.id IS NOT NULL
-       )`,
-      [...params, FAILING_COLLECTION_STATUSES],
-    ),
-    pool.query(
-      `SELECT count(*)::int AS count FROM statements s WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[])`,
-      [REVIEW_STATES.filter(isPublicReviewState)],
-    ),
-  ]);
+  const people = await pool.query(
+    `SELECT count(DISTINCT p.id)::int AS cohort_size,
+            count(DISTINCT p.id) FILTER (WHERE src.id IS NOT NULL)::int AS people_with_sources,
+            count(DISTINCT p.id) FILTER (
+              WHERE src.source_type IS NOT NULL AND NOT (src.source_type = ANY($${academicParam}::text[]))
+            )::int AS people_with_non_academic_sources,
+            count(DISTINCT p.id) FILTER (
+              WHERE src.source_type = ANY($${firstPartyParam}::text[])
+            )::int AS people_with_first_party_sources,
+            count(DISTINCT p.id) FILTER (WHERE st.person_id IS NOT NULL)::int AS statement_bearing_people
+     FROM people p
+     ${memberJoin}
+     LEFT JOIN sources src ON src.owner_person_id = p.id
+     LEFT JOIN (
+       SELECT DISTINCT person_id FROM statements WHERE ${isPublicReviewSql("review_state")}
+     ) st ON st.person_id = p.id`,
+    [...params, ACADEMIC_SOURCE_TYPES, FIRST_PARTY_SOURCE_TYPES],
+  );
+  const typed = await pool.query(
+    `SELECT src.source_type, src.last_success_at
+     FROM sources src
+     ${sourceScope}`,
+    params,
+  );
+  const latest = await pool.query(
+    `SELECT max(src.last_success_at) AS last_success_at, max(si.observed_at) AS observed_at
+     FROM sources src
+     LEFT JOIN source_items si ON si.source_id = src.id
+     ${sourceScope}`,
+    params,
+  );
+  const failing = await pool.query(
+    `SELECT count(DISTINCT src.id)::int AS failing
+     FROM sources src
+     LEFT JOIN source_items si ON si.source_id = src.id AND si.collection_status = ANY($${failingParam}::text[])
+     ${sourceScope ? sourceScope.replace("WHERE", "WHERE (") + ") AND" : "WHERE"} (
+       (src.last_checked_at IS NOT NULL AND src.last_success_at IS NULL) OR si.id IS NOT NULL
+     )`,
+    [...params, FAILING_COLLECTION_STATUSES],
+  );
+  const statements = await pool.query(
+    `SELECT count(*)::int AS count FROM statements s WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[])`,
+    [REVIEW_STATES.filter(isPublicReviewState)],
+  );
   const freshness: Record<Freshness, number> = { current: 0, aging: 0, stale: 0, never_checked: 0 };
   const sourcesByType: Record<string, number> = {};
   let recent = 0;
@@ -846,17 +918,17 @@ export async function getCoverage(asOf = new Date().toISOString(), pool = getPoo
     unavailable_or_failing_sources: Number(failing.rows[0]?.failing ?? 0),
     freshness,
   };
+  });
 }
 
-export async function getOverview(pool = getPool()) {
+export function getOverview(pool: Sql = getPool()) {
+  return queryOnClient(pool, async (pool) => {
   const dataset = await getDatasetRecord(pool);
   const coverage = await getCoverage(new Date().toISOString(), pool);
-  const [people, statements, items, observed] = await Promise.all([
-    pool.query("SELECT count(*)::int AS count FROM people"),
-    pool.query(`SELECT count(*)::int AS count FROM statements WHERE ${isPublicReviewSql("review_state")}`),
-    pool.query("SELECT count(*)::int AS count FROM source_items"),
-    pool.query("SELECT max(observed_at) AS observed_at, max(published_at) AS published_at FROM source_items"),
-  ]);
+  const people = await pool.query("SELECT count(*)::int AS count FROM people");
+  const statements = await pool.query(`SELECT count(*)::int AS count FROM statements WHERE ${isPublicReviewSql("review_state")}`);
+  const items = await pool.query("SELECT count(*)::int AS count FROM source_items");
+  const observed = await pool.query("SELECT max(observed_at) AS observed_at, max(published_at) AS published_at FROM source_items");
   const cohort = dataset?.cohort_slug
     ? await pool.query(`SELECT slug, version, name, definition FROM cohorts WHERE slug = $1 AND version = $2`, [
         dataset.cohort_slug,
@@ -867,7 +939,7 @@ export async function getOverview(pool = getPool()) {
     `SELECT count(*)::int AS count FROM statements s WHERE ${effectiveReviewStateSql("s")} = 'human_verified'`,
   );
   const showTrends = dataset?.dataset_kind !== "live" || Number(verified.rows[0].count) > 0;
-  const computed = showTrends ? await listComputedTrends(pool) : [];
+  const computed = showTrends ? await listComputedTrends(pool as unknown as pg.Pool) : [];
   const overviewTrends = dataset?.dataset_kind === "live"
     ? computed.filter((trend) => trend.contributing_statement_count > 0)
     : computed;
@@ -921,5 +993,6 @@ export async function getOverview(pool = getPool()) {
       event_time: iso(row.event_time),
     })),
   };
+  });
 }
 
