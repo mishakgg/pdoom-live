@@ -19,7 +19,7 @@ from pdoom_pipeline.fetch import FetchResult, SafeFetcher
 from pdoom_pipeline.identity.confirm import confirm_linked_profile, drop_duplicate_external_ids
 from pdoom_pipeline.identity.names import same_person_name
 from pdoom_pipeline.ingest.store import ObservationStore
-from pdoom_pipeline.jobs.collect_channels import collect_configured, press_observations, write_collection
+from pdoom_pipeline.jobs.collect_channels import _candidates, collect_configured, press_observations, write_collection
 from pdoom_pipeline.quality.coverage import build_coverage
 from pdoom_pipeline.seed.additions_2026_10 import BASE_SHA, CHANNEL_EVALUATION, NEW_PEOPLE
 from pdoom_pipeline.seed.build import SEED_DIR
@@ -331,6 +331,31 @@ def test_press_quotes_are_needs_review_and_not_canonical_output(tmp_path):
     assert result["live"] is False
     assert result["request_estimate"] == 0
     assert all(row["review_state"] != "human_verified" for row in result["candidates"])
+    queued = _candidates(
+        [
+            {
+                "sole_author": True,
+                "person_id": "person:fixture-author",
+                "person_slug": "fixture-author",
+                "text": "I think there is a 10% chance of human extinction by 2040.",
+                "canonical_url": "https://www.lesswrong.com/posts/postSole/a-public-forecast",
+                "language": "en",
+                "translation": None,
+            },
+            {
+                "sole_author": True,
+                "person_id": "person:fixture-author",
+                "person_slug": "fixture-author",
+                "text": "I now believe there is a meaningful risk that rapid acceleration in AI capabilities leads to catastrophic and irreversible loss of control.",
+                "canonical_url": "https://www.lesswrong.com/posts/postNext/a-later-forecast",
+                "language": "en",
+                "translation": None,
+            },
+        ]
+    )
+    assert queued
+    assert all(row["review_state"] in {"needs_review", "machine_validated"} for row in queued)
+    assert "needs_review" in {row["review_state"] for row in queued}
     canonical = tmp_path / "canonical-live.json"
     canonical.write_text("{}", encoding="utf-8")
     try:

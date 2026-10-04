@@ -14,15 +14,23 @@ The episode can be an observed item. Without a speaker-labeled turn, the text is
 
 ## RSS and feeds
 
-- `https://sethlazar.substack.com/feed` returns an HTML profile. The failure class is `invalid_content`. The collector does not follow a second archive API and does not bypass the redirect.
-- `https://lilianweng.github.io/index.xml` is an owned feed. Item bodies contain HTML in `content:encoded`, and the author field can be empty. The staging job strips tags and attributes an empty author as `owned_feed_empty_author`. A mismatched author stays `attribution_unresolved`.
-- `https://vkrakovna.wordpress.com/feed` is an owned feed whose author field is the person's name.
+- `https://sethlazar.substack.com/feed` returns an HTML profile. The historical belief run recorded `invalid_content`. The 2026-10-04 staging fetch recorded `parser_unsupported` because the content type was `text/html`. The collector does not follow a second archive API and does not bypass the response.
+- Live staging on 2026-10-04 kept 8 items from `https://lilianweng.github.io/index.xml`. Item bodies contain HTML in `content:encoded`, and the author field was empty. The job strips tags and attributes that empty author as `owned_feed_empty_author`. A mismatched author stays `attribution_unresolved`.
+- The same run kept 8 items from `https://vkrakovna.wordpress.com/feed`. The author field is Victoria Krakovna.
 
 ## Identity, not extraction
 
 - LessWrong `joe-carlsmith` displays Joe Carlsmith. The cohort person is Joseph Carlsmith. The names do not match, so the account is not attached.
 - LessWrong `so8res` displays Nate Soares. The slug is not the name, and no page already linked to Nate Soares points at the account.
 - Bluesky `mila-quebec.bsky.social` (`did:plc:3bwecryzndblwdqgknuwjzh4`) displays "Mila - Institut québécois d'IA". Yoshua Bengio's site links it beside his personal account. It is an organization account.
+
+## Live staging examples, 2026-10-04
+
+These URLs were fetched in `data/collections/cohort-v2026-10/`. That directory is not `canonical-live.json`.
+
+- Coauthored LessWrong post, stored with no `person_id`: `https://www.lesswrong.com/posts/BFrRJYgpBvziuuJLs/if-anyone-builds-it-everyone-dies-one-year-closer`.
+- French Bluesky post, language `fr`, translation null: `https://bsky.app/profile/yoshuabengio.bsky.social/post/3mwsyr3mjhc2j`. The excerpt begins "J’étais récemment de passage au nouveau balado Hors des ondes".
+- Paul Christiano's own LessWrong post produced one `needs_review` qualitative candidate: `https://www.lesswrong.com/posts/82z6FvbYRdjYjqigK/personal-statement-on-joining-the-openai-nonprofit-board`. Other stored excerpts did not produce a forecast candidate.
 
 ## Coauthors, linkposts, and language
 

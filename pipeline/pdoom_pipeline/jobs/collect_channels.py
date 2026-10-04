@@ -264,7 +264,7 @@ def _candidates(observations: list[dict]) -> list[dict]:
             continue
         text = observation.get("text") or ""
         for statement in extract_statements(text, person_id=observation["person_id"]):
-            if statement.get("review_state") == "human_verified":
+            if statement.get("review_state") in {"human_verified", "unreviewed"}:
                 statement["review_state"] = "needs_review"
             statement["source_url"] = observation.get("canonical_url")
             statement["evidence_text"] = statement.get("evidence_text") or statement.get("normalized_text") or text
