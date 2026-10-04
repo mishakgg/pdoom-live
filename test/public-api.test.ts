@@ -277,6 +277,13 @@ describe("public API v1", () => {
       );
     }
     try {
+      const datasetPath = "/api/v1/dataset";
+      const listPath = "/api/v1/statements?limit=50";
+      const trendPath = "/api/v1/trends/extinction-by-2070-distribution";
+      const trendsPath = "/api/v1/trends";
+      const topicsPath = "/api/v1/topics";
+      const changedPaths = [datasetPath, listPath, trendPath, trendsPath, topicsPath];
+      const beforeCount = JSON.parse(before.get(datasetPath)?.text ?? "{}").data.counts.statements as number;
       await insertDecision(keys[0], firstInstant, "c".repeat(64), "d".repeat(64));
       const hidden = await get(`/api/v1/statements/${slug}`, {
         "if-none-match": before.get(`/api/v1/statements/${slug}`)?.etag ?? "",
@@ -284,7 +291,6 @@ describe("public API v1", () => {
       });
       expect(hidden.status).toBe(404);
       expect(hidden.headers.get("last-modified")).toBeNull();
-      const changedPaths = ["/api/v1/dataset", "/api/v1/statements?limit=50", "/api/v1/trends/extinction-by-2070-distribution"];
       const mid = new Map<string, string>();
       for (const path of changedPaths) {
         const response = await get(path, {
@@ -298,7 +304,8 @@ describe("public API v1", () => {
         expect(etag).not.toBe(before.get(path)?.etag);
         mid.set(path, etag ?? "");
         const text = await response.text();
-        expect(text).not.toContain(slug);
+        if (path === datasetPath) expect(JSON.parse(text).data.counts.statements).toBe(beforeCount - 1);
+        if (path === listPath || path === trendPath) expect(text).not.toContain(slug);
       }
       await insertDecision(keys[1], secondInstant, String(found.content_hash), String(found.segment_hash));
       const sameSecond = new Date(firstInstant).toUTCString();
@@ -312,7 +319,8 @@ describe("public API v1", () => {
         expect(etag).toBeTruthy();
         expect(etag).not.toBe(mid.get(path));
         const text = await response.text();
-        expect(text).toContain(slug);
+        if (path === datasetPath) expect(JSON.parse(text).data.counts.statements).toBe(beforeCount);
+        if (path === listPath || path === trendPath) expect(text).toContain(slug);
         const cached = await get(path, { "if-none-match": etag ?? "", "if-modified-since": importHttpDate });
         expect(cached.status, path).toBe(304);
         expect(cached.headers.get("etag")).toBe(etag);
