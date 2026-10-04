@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-04T21:31:40Z",
+  "reviewed_at": "2026-10-04T21:38:00Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -85,13 +85,14 @@
     "canonical_import_schema_version": "1.0.0",
     "public_export_schema_version": "1.0.0",
     "review_decision_schema_version": "review-decisions/1.0.0",
-    "next_sql_migration_number": "004",
-    "agent_3_proposed_migration_not_included": "packages/db/migrations/004_refresh_runs.sql on ce07836",
+    "next_sql_migration_number": "005",
+    "included_migration_on_0f02676": "packages/db/migrations/004_refresh_runs.sql",
     "agent_5_proposed_migration_not_included": "packages/db/migrations/005_participant_host_role.sql on f59cb9c",
-    "applied_migrations": [
+    "applied_migrations_on_candidate_0f02676": [
       "packages/db/migrations/001_init.sql",
       "packages/db/migrations/002_dataset_contract.sql",
-      "packages/db/migrations/003_review_decisions.sql"
+      "packages/db/migrations/003_review_decisions.sql",
+      "packages/db/migrations/004_refresh_runs.sql"
     ],
     "statement_types": [
       "explicit_numeric",
@@ -137,8 +138,8 @@
       "severity": "blocker-for-scenario-2-version-history",
       "owner": "agent-3",
       "consumers": ["agent-5", "agent-6", "agent-1"],
-      "status": "pre-existing-on-main",
-      "summary": "The in-memory observation store keeps a new hash as a new version. export_corpus emits one slug per canonical URL, always content_version 1, and changed_count 0. Two observations of the same URL in one export produce two source items with the same slug. The importer upserts source items by slug, so a later import replaces the hash instead of retaining the previous version row.",
+      "status": "still-failing-on-0f02676",
+      "summary": "On candidate 0f02676, scenario 2 still stores only the new hash. The row is content_version 2 and is_current true. The previous hash is not a stored version. Stale approval is hidden. Agent 3's refresh fixture covers a different import path that passed in test/refresh-import.test.ts.",
       "reproducible_example": {
         "command": "PYTHONPATH=pipeline python3 coordination/reproductions/export-version-and-question-keys.py",
         "result": "coordination/reproductions/results-2026-10-04T203514Z.json",
@@ -173,8 +174,8 @@
       "severity": "blocker-for-scenario-3",
       "owner": "agent-3",
       "consumers": ["agent-5"],
-      "status": "measured-on-main",
-      "summary": "Approving jonah-extinction-review-2024, whose fixture review_state is needs_review, then reimporting the same synthetic document sets the column back to needs_review and removes the research read. Replaying the exported review manifest applies 0 decisions and counts 2 idempotent keys, and the statement stays hidden.",
+      "status": "measured-pass-on-0f02676",
+      "summary": "On candidate 0f02676, approving jonah-extinction-review-2024 and reimporting the same synthetic document leaves review_state human_verified and the statement publicly readable. Scenario 3 passed.",
       "reproducible_example": {
         "command": "npx tsx coordination/reproductions/cross-workstream-gate.ts",
         "database": "pdoom_coord_integration_test",
@@ -227,8 +228,8 @@
     "pr": 27,
     "workflow_run": 37235514824,
     "owner": "agent-3",
-    "status": "not_ready",
-    "summary": "Pipeline CI failed tests/test_refresh.py::test_candidate_key_matches_typescript_contract and test_refresh_converges_and_publishes_truthful_outcomes. npx tsx could not resolve @pdoom/contracts from packages/db/src/import.ts. The pipeline workflow does not install the npm workspaces. The Node test job on the same head passed. Not included in 926e6d4.",
+    "status": "included-on-0f02676-with-ci-limitation",
+    "summary": "Pipeline CI run 37235514824 failed because that job does not install npm packages and the refresh tests call npx tsx. Node CI passed. Local PYTHONPATH=pipeline python3 -m pytest tests/test_refresh.py passed 8 tests. Head ce07836 is included in 0f02676. The pipeline workflow failure remains a CI limitation, not a local test failure.",
     "expected": "The refresh tests complete in the repository pipeline workflow.",
     "actual": "Error: Cannot find module '@pdoom/contracts'. Exit status 1 from npx tsx."
   },

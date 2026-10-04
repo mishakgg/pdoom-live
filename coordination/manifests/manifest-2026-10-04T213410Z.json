@@ -2,24 +2,81 @@
   "record_kind": "pdoom-live-coordination-manifest",
   "record_version": 1,
   "review_id": "2026-10-04T213410Z",
-  "candidate_state": "merge_in_progress",
-  "reason": "Agent 3 head ce07836 is idle. Node CI passed. Local refresh tests passed. Pipeline CI failed because the pipeline job does not install npm packages. Agent 5 stays out.",
+  "candidate_state": "partial_candidate",
+  "reason": "Agents 1, 2, 3, 4, and 6 are included at exact heads. Agent 5 is excluded because tests/test_backfill.py failed. This is not a six-agent integration.",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "parent_candidate_commit": "234cc67b890aab833c2efc8867778ee9fd11d467",
   "integration_branch": "cursor/partial-integration-refresh-a32e",
-  "adding_head": "ce07836b27a090da063617708df7b7174745881c",
-  "resulting_integration_commit": null,
-  "local_test": {
-    "command": "PYTHONPATH=pipeline python3 -m pytest tests/test_refresh.py -q",
-    "worktree": "ce07836",
-    "result": "8 passed"
+  "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/31",
+  "resulting_integration_commit": "0f02676728f0ab6864f9bea0643d2dc4c90321e5",
+  "resulting_tree": "e4835ad002262dd0bb088f600c54ca26c22d353a",
+  "supersedes": {
+    "pr": 30,
+    "commit": "234cc67b890aab833c2efc8867778ee9fd11d467",
+    "reason": "Agents 1, 2, 4, and 6 only. Evidence only for that commit."
   },
+  "included": [
+    {"agent": "agent-4", "pr": 22, "head_sha": "6c23609f05bb958a58f235ba34c0180b3579c109", "order": 1},
+    {"agent": "agent-1", "pr": 21, "head_sha": "af6ec9b4783a4fd37dbc3b9f5c263cc9cbd96ac3", "order": 2},
+    {"agent": "agent-2", "pr": 26, "head_sha": "b959a47f88f2c3d6c948072e038a082847aa666f", "order": 3},
+    {"agent": "agent-6", "pr": 25, "head_sha": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e", "order": 4},
+    {
+      "agent": "agent-3",
+      "pr": 27,
+      "branch": "cursor/recurring-refresh-088b",
+      "head_sha": "ce07836b27a090da063617708df7b7174745881c",
+      "order": 5,
+      "reason": "Node CI passed. Local test_refresh.py passed 8 tests. Pipeline CI failed only because that job does not npm ci."
+    }
+  ],
   "excluded": [
     {
       "agent": "agent-5",
       "pr": 29,
+      "branch": "cursor/source-statement-review-ec4e",
       "head_sha": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
-      "reason": "Pipeline tests/test_backfill.py failed on this head. Not an install-only failure."
+      "reason": "Pipeline run 37235827320 failed tests/test_backfill.py. Node run 37235827312 failed on missing defusedxml."
     }
-  ]
+  ],
+  "mechanical_resolution": [
+    {
+      "path": "apps/web/app/sources/page.tsx",
+      "resolution": "Kept Agent 1 wording: Last successful collection, then Last check. Both sides displayed the same two timestamps."
+    },
+    {
+      "path": "packages/db/src/queries.ts",
+      "resolution": "Kept Agent 6 sequential coverage queries on the snapshot client and added Agent 3's max(src.last_checked_at) column."
+    }
+  ],
+  "migration_ordering": [
+    "packages/db/migrations/001_init.sql",
+    "packages/db/migrations/002_dataset_contract.sql",
+    "packages/db/migrations/003_review_decisions.sql",
+    "packages/db/migrations/004_refresh_runs.sql"
+  ],
+  "proposed_migrations_not_included": [
+    "005_participant_host_role.sql from agent-5 f59cb9c"
+  ],
+  "contract_versions": {
+    "canonical_import_schema_version": "1.0.0",
+    "public_export_schema_version": "1.0.0",
+    "review_decision_schema_version": "review-decisions/1.0.0",
+    "comparability_policy_version": "comparability/1.0.0",
+    "note": "Import schema adds partial run status and unchanged, skipped, and failed counts without a version bump."
+  },
+  "checks": {
+    "lint": "0 errors, 6 warnings",
+    "typecheck": "passed",
+    "vitest": "212 passed on pdoom_coord_refresh_test",
+    "pytest": "74 passed, 1 skipped",
+    "playwright": "135 passed, 2 skipped",
+    "cross_workstream_gate": {
+      "command": "npx tsx coordination/reproductions/cross-workstream-gate.ts",
+      "exit_code": 1,
+      "result": "coordination/reproductions/results-2026-10-04T213410Z.json",
+      "failed": ["2-source-version-history"],
+      "newly_passing": ["3-review-survives-reimport"]
+    }
+  },
+  "delivery_note": "Evidence for commit 0f02676 only. Do not merge pull requests 31, 30, 27, 26, 25, 22, and 21 as separate copies."
 }
