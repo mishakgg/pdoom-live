@@ -174,7 +174,9 @@ It does not include adapter errors, SQL, hostnames, evidence, or review notes. D
 
 `GET /api/metrics` is off unless `PDOOM_METRICS_ENABLED=1` (or `true`). Leave it off on the public hostname. Scrape it from an internal interface or an ingress allowlist. If `PDOOM_METRICS_TOKEN` is set, the request must send `Authorization: Bearer <token>`. That comparison is a deployment control, not an account system. Do not log the header. A wrong token is 403; a disabled endpoint is 404.
 
-The metrics response is cached with the status snapshot for 15 seconds so a scrape does not rerun the aggregate queries on every poll. Successful reads on the public API do not build this snapshot.
+The metrics response is cached with the status snapshot for 15 seconds so a scrape does not rerun the aggregate queries on every poll. Concurrent misses share one in-flight load. If that load rejects, the failure is not cached and the next call starts again. Successful reads on the public API do not build this snapshot.
+
+The cached `as_of` is the clock time when the entry was built. Freshness counts do not tick during the 15 seconds. An import, a review, or a source-version change becomes visible on the next miss after the entry expires; the cache is not invalidated in-process by another connection's commit. Readiness uses a separate 2-second cache (400 ms when not ready) with the same single-flight rule, and it does not wait behind public-read admission.
 
 ## Logs and correlation
 

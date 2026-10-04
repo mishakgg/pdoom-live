@@ -98,10 +98,12 @@ Timestamps are UTC ISO-8601. `event_time` is when the statement applies. `publis
 | --- | --- | --- |
 | 400 | `invalid_query` | Bad parameters, unknown parameters, duplicate parameters, inverted dates, query string over 2,048 characters, search text outside 2–120 characters or over 8 terms |
 | 400 | `invalid_cursor` | Cursor cannot be read |
+| 400 | `query_too_expensive` | Search exceeded its statement timeout |
 | 404 | `not_found` | No public record for that slug |
 | 405 | `method_not_allowed` | Any method other than GET |
-| 429 | `rate_limited` | Process limit exceeded. `Retry-After` is set |
+| 429 | `rate_limited` | Process limit, or too many snapshot reads. `Retry-After` is set |
 | 500 | `query_failed` | The query could not be completed |
+| 503 | `query_failed` | A statement timeout on a non-search read |
 
 Error responses use `Cache-Control: no-store`.
 
@@ -110,18 +112,29 @@ Error responses use `Cache-Control: no-store`.
 Successful `/api/v1` responses send:
 
 - `Cache-Control: public, max-age=60, stale-while-revalidate=300`
-- `ETag` — SHA-256 of the response body
-- `Last-Modified` — the current dataset import time, when a dataset is loaded
+- `ETag` — strong SHA-256 of the response body
 
-`If-None-Match` is the authoritative validator. `If-Modified-Since` is honored only when `If-None-Match` is absent, and both dates are compared at HTTP-date's one-second resolution. These headers describe public dataset reads. They are not used for curator queues, and the website's server rendering does not go through this HTTP layer.
+`Last-Modified` is not sent. Dataset import time does not change when a curator correction, review decision, or source-version mismatch changes a public payload, and HTTP-date cannot distinguish two changes in the same second. `If-Modified-Since` is ignored. A request that sends both `If-None-Match` and `If-Modified-Since` is decided only by the ETag: a match is 304, and a mismatch is 200.
 
-`/api/v1/dataset` and trend observations use the import time as `as_of` / `calculated_at`, so repeated reads of an unchanged import keep the same ETag.
+`If-None-Match: *` matches when a representation exists. Weak validators (`W/"..."`) are compared as their opaque value.
+
+These headers describe public dataset reads. They are not used for curator queues, and the website's server rendering does not go through this HTTP layer.
+
+`/api/v1/dataset` and trend observations use the import time as `as_of` / `calculated_at`. That field is not a validator. A repeated read is a 304 only when the body bytes are unchanged.
+
+The process keeps a bounded in-memory copy of recent representations, keyed by path and query. A conditional repeat is served from that copy when a content revision still matches, so the heavy read is skipped. The revision is one query over dataset import, review decisions, statement and forecast rows, source content hashes and versions, evidence hashes, people, cohort membership, and published trend definitions. It changes when any of those change, including two reviews that share a timestamp second, because the decision count and key are part of the fingerprint. Large tables contribute a count and a 64-bit xor, so a hash collision can hide a change until the 60-second entry lifetime. The copy is also dropped after 60 seconds, after 48 entries, or after about 2 MB.
+
+Public source freshness is computed from the dataset import time, not the wall clock, so a public payload does not change merely because time passed. `/api/status` is different: its snapshot is cached for 15 seconds and classifies freshness at the `as_of` captured when that entry was built.
+
+One response reads its dataset stamp, rows, counts, and trends in a single `REPEATABLE READ` `READ ONLY` transaction, so a commit that lands mid-request cannot mix two snapshots. The transaction is capped by a 15-second statement timeout, a 2-second lock timeout, and a 15-second idle timeout. Building a representation takes one of three snapshot slots so probes can still get a connection. A request that cannot enter returns 429 with `Retry-After`. A cache hit does not take a slot; it reads the shared revision and returns the stored body. Concurrent misses for the same URL share one load, and a rejected load is not stored. Search runs inside that snapshot with a 2-second statement timeout and returns `query_too_expensive` if the database cancels it. `/api/live`, `/api/ready`, and `/api/health` do not take a snapshot slot.
 
 ## Rate limits
 
-The process keeps a fixed window in memory. The default is 600 requests per minute per client key and 3,000 per minute for the whole process. The client key is the first `X-Forwarded-For` hop when it looks like an IP, otherwise one shared `direct` bucket. That header can be spoofed, so the process ceiling is the backstop.
+The process keeps a fixed window in memory. The default is 600 requests per minute per client key and 3,000 per minute for the whole process. The client key is `direct` unless `PDOOM_TRUSTED_PROXY_HOPS` is a positive integer. That number is how many reverse proxies append the peer they observed to `X-Forwarded-For`. The client address is that many places from the right. A leftmost value supplied by the caller is not treated as identity. If the header is missing, shorter than the hop count, or not a list of IP addresses, the request stays in the shared `direct` bucket. Client keys are capped at 1,024; further keys share an `overflow` bucket. The process ceiling remains the backstop.
 
-Configure `PDOOM_PUBLIC_RATE_LIMIT`, `PDOOM_PUBLIC_RATE_WINDOW_MS`, and `PDOOM_PUBLIC_PROCESS_RATE_LIMIT`. Do not add Redis for this.
+Configure `PDOOM_PUBLIC_RATE_LIMIT`, `PDOOM_PUBLIC_RATE_WINDOW_MS`, `PDOOM_PUBLIC_PROCESS_RATE_LIMIT`, and `PDOOM_TRUSTED_PROXY_HOPS`. Do not add Redis for this.
+
+Expensive public reads also fail fast when three are already running. That 429 uses the same `Retry-After` error shape. `/api/live`, `/api/ready`, and `/api/health` do not take a public-read slot.
 
 Put the real per-visitor limit on the reverse proxy or CDN. This in-process limiter does not run for server-rendered pages, which call the database helpers directly.
 

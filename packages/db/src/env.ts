@@ -25,6 +25,10 @@ const KNOWN_PDOOM_KEYS = new Set([
   "PDOOM_METRICS_ENABLED",
   "PDOOM_METRICS_TOKEN",
   "PDOOM_QUALITY_BASELINE",
+  "PDOOM_PUBLIC_RATE_LIMIT",
+  "PDOOM_PUBLIC_RATE_WINDOW_MS",
+  "PDOOM_PUBLIC_PROCESS_RATE_LIMIT",
+  "PDOOM_TRUSTED_PROXY_HOPS",
 ]);
 
 export function deploymentMode(env: NodeJS.ProcessEnv = process.env): RuntimeMode {
@@ -170,6 +174,18 @@ function validateOptional(env: NodeJS.ProcessEnv, mode: RuntimeMode): void {
   if (mode === "production" && curation) {
     throw new ConfigError("PDOOM_CURATION_MODE is not allowed in production");
   }
+  optionalBoundedInt(env, "PDOOM_PUBLIC_RATE_LIMIT", 1, 1_000_000);
+  optionalBoundedInt(env, "PDOOM_PUBLIC_RATE_WINDOW_MS", 1_000, 3_600_000);
+  optionalBoundedInt(env, "PDOOM_PUBLIC_PROCESS_RATE_LIMIT", 1, 1_000_000);
+  optionalBoundedInt(env, "PDOOM_TRUSTED_PROXY_HOPS", 0, 8);
+}
+
+function optionalBoundedInt(env: NodeJS.ProcessEnv, name: string, min: number, max: number): void {
+  const raw = optionalPresent(env, name);
+  if (raw === undefined) return;
+  if (!/^[0-9]+$/.test(raw)) throw new ConfigError(`${name} must be an integer`);
+  const parsed = Number(raw);
+  if (parsed < min || parsed > max) throw new ConfigError(`${name} must be an integer from ${min} to ${max}`);
 }
 
 export function readRuntimeConfig(env: NodeJS.ProcessEnv = process.env): RuntimeConfig {

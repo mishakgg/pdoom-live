@@ -19,10 +19,12 @@ import type pg from "pg";
 import { effectiveReviewStateSql } from "./coverage";
 import { getPool } from "./pool";
 import { InvalidCursorError } from "./queries";
+import { isPool, isStatementTimeout, queryOnClient, withConsistentRead } from "./read-snapshot";
+import { SearchTimeoutError } from "./search";
 import type { Exclusion, RevisionResult } from "./trend-engine";
 import { getTrend, listComputedTrends, type PublicTrend } from "./trend-query";
 
-type Db = Pick<pg.Pool, "query">;
+type Db = pg.Pool | pg.PoolClient;
 
 const PUBLIC_STATES = [...RESEARCH_REVIEW_STATES];
 
@@ -660,6 +662,7 @@ function attachRelationships(statements: PublicStatement[], relationships: Publi
 }
 
 export async function listPublicStatements(query: PublicStatementQuery, pool: Db = getPool()): Promise<PublicPage<PublicStatementSummary>> {
+  if (isPool(pool)) return withConsistentRead(pool, (db) => listPublicStatements(query, db));
   const fetched = await fetchStatements(query, pool, "page");
   return {
     data: fetched.rows.map(summarizeStatement),
@@ -668,6 +671,7 @@ export async function listPublicStatements(query: PublicStatementQuery, pool: Db
 }
 
 export async function getPublicStatement(slug: string, pool: Db = getPool()): Promise<PublicStatement | null> {
+  if (isPool(pool)) return withConsistentRead(pool, (db) => getPublicStatement(slug, db));
   const values: unknown[] = [PUBLIC_STATES, slug];
   const result = await pool.query(
     `${statementSelect} WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[]) AND s.slug = $2`,
@@ -743,6 +747,7 @@ function peopleWhere(query: PublicPeopleQuery, values: unknown[]): { where: stri
 }
 
 export async function listPublicPeople(query: PublicPeopleQuery, pool: Db = getPool()): Promise<PublicPage<PublicPersonSummary>> {
+  if (isPool(pool)) return withConsistentRead(pool, (db) => listPublicPeople(query, db));
   const values: unknown[] = [];
   const { where, publicParam } = peopleWhere(query, values);
   const cursor = query.cursor ? decodeCursor(query.cursor) : null;
@@ -846,6 +851,7 @@ async function loadIdentities(pool: Db, personSlug?: string): Promise<Map<string
 }
 
 export async function getPublicPerson(slug: string, pool: Db = getPool()): Promise<PublicPerson | null> {
+  if (isPool(pool)) return withConsistentRead(pool, (db) => getPublicPerson(slug, db));
   const values: unknown[] = [PUBLIC_STATES, slug];
   const result = await pool.query(
     `${personSelect("$1")} WHERE ${publicPersonPredicate("p", "$1")} AND p.slug = $2`,
@@ -896,8 +902,35 @@ export async function listPublicTopics(pool: Db = getPool()): Promise<{ data: Pu
 }
 
 export async function getPublicTopic(slug: string, pool: Db = getPool()): Promise<PublicTopic | null> {
-  const topics = await listPublicTopics(pool);
-  return topics.data.find((topic) => topic.slug === slug) ?? null;
+  const result = await pool.query(
+    `SELECT t.slug, t.name, t.definition, t.version, parent.slug AS parent_slug, counts.counts, counts.total
+     FROM topics t
+     LEFT JOIN topics parent ON parent.id = t.parent_topic_id
+     LEFT JOIN LATERAL (
+       SELECT COALESCE(jsonb_object_agg(statement_type, count), '{}'::jsonb) AS counts,
+              COALESCE(sum(count), 0)::int AS total
+       FROM (
+         SELECT s.statement_type, count(*)::int AS count
+         FROM statement_topics st
+         JOIN statements s ON s.id = st.statement_id
+         WHERE st.topic_id = t.id AND ${effectiveReviewStateSql("s")} = ANY($1::text[])
+         GROUP BY s.statement_type
+       ) grouped
+     ) counts ON true
+     WHERE t.slug = $2`,
+    [PUBLIC_STATES, slug],
+  );
+  const row = result.rows[0];
+  if (!row) return null;
+  return {
+    slug: String(row.slug),
+    name: String(row.name),
+    definition: String(row.definition),
+    version: String(row.version),
+    parent_slug: row.parent_slug ? String(row.parent_slug) : null,
+    public_statement_counts: asCounts(row.counts),
+    public_statement_total: Number(row.total ?? 0),
+  };
 }
 
 function mapSource(row: Record<string, unknown>, asOf: string): PublicSource {
@@ -934,6 +967,7 @@ const sourceSelect = `
 `;
 
 export async function listPublicSources(query: PublicPageQuery, asOf: string, pool: Db = getPool()): Promise<PublicPage<PublicSource>> {
+  if (isPool(pool)) return withConsistentRead(pool, (db) => listPublicSources(query, asOf, db));
   const values: unknown[] = [PUBLIC_STATES];
   const where = "WHERE src.review_state = ANY($1::text[])";
   const cursor = query.cursor ? decodeCursor(query.cursor) : null;
@@ -961,7 +995,8 @@ export async function listPublicSources(query: PublicPageQuery, asOf: string, po
   });
 }
 
-export async function getPublicSource(slug: string, asOf: string, pool: Db = getPool()) {
+export function getPublicSource(slug: string, asOf: string, pool: Db = getPool()) {
+  return queryOnClient(pool, async (pool) => {
   const result = await pool.query(`${sourceSelect} WHERE src.review_state = ANY($1::text[]) AND src.slug = $2`, [
     PUBLIC_STATES,
     slug,
@@ -993,6 +1028,7 @@ export async function getPublicSource(slug: string, asOf: string, pool: Db = get
     })),
     items_truncated: truncated,
   };
+  });
 }
 
 async function loadParticipants(pool: Db, sourceItemSlug?: string) {
@@ -1068,6 +1104,7 @@ const sourceItemSelect = `
 `;
 
 export async function getPublicSourceItem(slug: string, pool: Db = getPool()): Promise<PublicSourceItem | null> {
+  if (isPool(pool)) return withConsistentRead(pool, (db) => getPublicSourceItem(slug, db));
   const result = await pool.query(`${sourceItemSelect} AND si.slug = $2`, [PUBLIC_STATES, slug]);
   const row = result.rows[0];
   if (!row) return null;
@@ -1156,14 +1193,13 @@ function presentTrend(trend: PublicTrend, allowed: Set<string>, asOf: string) {
 }
 
 async function loadResearchTrends(asOf: string, pool: Db) {
-  const [trends, allowed] = await Promise.all([
-    listComputedTrends(pool as pg.Pool),
-    researchStatementSlugs(pool),
-  ]);
+  const trends = await listComputedTrends(pool as unknown as pg.Pool);
+  const allowed = await researchStatementSlugs(pool);
   return trends.map((trend) => presentTrend(trend, allowed, asOf)).sort((left, right) => left.slug.localeCompare(right.slug));
 }
 
-export async function listPublicTrends(pool: Db = getPool()) {
+export function listPublicTrends(pool: Db = getPool()) {
+  return queryOnClient(pool, async (pool) => {
   const trends = await loadResearchTrends("1970-01-01T00:00:00.000Z", pool);
   return {
     data: trends.map((trend) => ({
@@ -1183,27 +1219,40 @@ export async function listPublicTrends(pool: Db = getPool()) {
     })),
     truncated: false,
   };
+  });
 }
 
-export async function getPublicTrend(slug: string, asOf: string, pool: Db = getPool()) {
-  const trend = await getTrend(slug, pool as pg.Pool);
+export function getPublicTrend(slug: string, asOf: string, pool: Db = getPool()) {
+  return queryOnClient(pool, async (pool) => {
+  const trend = await getTrend(slug, pool as unknown as pg.Pool);
   if (!trend) return null;
   return presentTrend(trend, await researchStatementSlugs(pool), asOf);
+  });
 }
 
-export async function searchResearch(q: string, pool: Db = getPool()) {
-  const [people, statements, topics] = await Promise.all([
-    listPublicPeople({ q, limit: PUBLIC_API_LIMITS.searchPeople }, pool),
-    listPublicStatements({ q, limit: PUBLIC_API_LIMITS.searchStatements, sort: "event_time_desc" }, pool),
-    pool.query(
-      `SELECT slug, name
-       FROM topics
-       WHERE name ILIKE $1 ESCAPE '\\' OR definition ILIKE $1 ESCAPE '\\' OR slug = $2
-       ORDER BY name, slug
-       LIMIT $3`,
-      [likeContains(q), q, PUBLIC_API_LIMITS.searchTopics],
-    ),
-  ]);
+export function searchResearch(q: string, pool: Db = getPool()) {
+  return queryOnClient(pool, async (client) => {
+    await client.query("SET LOCAL statement_timeout = '2s'");
+    try {
+      return await searchResearchBody(q, client);
+    } catch (error) {
+      if (isStatementTimeout(error)) throw new SearchTimeoutError();
+      throw error;
+    }
+  });
+}
+
+async function searchResearchBody(q: string, pool: Db) {
+  const people = await listPublicPeople({ q, limit: PUBLIC_API_LIMITS.searchPeople }, pool);
+  const statements = await listPublicStatements({ q, limit: PUBLIC_API_LIMITS.searchStatements, sort: "event_time_desc" }, pool);
+  const topics = await pool.query(
+    `SELECT slug, name
+     FROM topics
+     WHERE name ILIKE $1 ESCAPE '\\' OR definition ILIKE $1 ESCAPE '\\' OR slug = $2
+     ORDER BY name, slug
+     LIMIT $3`,
+    [likeContains(q), q, PUBLIC_API_LIMITS.searchTopics],
+  );
   return {
     people: people.data,
     statements: statements.data,
@@ -1230,7 +1279,8 @@ export async function getDatasetStamp(pool: Db = getPool()): Promise<PublicDatas
   };
 }
 
-export async function getPublicCatalog(asOf: string | null, pool: Db = getPool()) {
+export function getPublicCatalog(asOf: string | null, pool: Db = getPool()) {
+  return queryOnClient(pool, async (pool) => {
   const datasetResult = await pool.query(
     `SELECT schema_version, dataset_id, dataset_kind, generated_at, imported_at, notice,
             producer_name, producer_version, cohort_slug, cohort_version
@@ -1341,6 +1391,7 @@ export async function getPublicCatalog(asOf: string | null, pool: Db = getPool()
     latest_observed_at: iso(observed.rows[0]?.observed_at ?? null),
     latest_published_at: iso(observed.rows[0]?.published_at ?? null),
   };
+  });
 }
 
 export type PublicCatalog = Awaited<ReturnType<typeof getPublicCatalog>>;

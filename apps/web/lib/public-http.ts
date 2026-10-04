@@ -12,48 +12,58 @@ export function publicError(status: number, code: string, message: string, extra
   return new Response(JSON.stringify({ error: { code, message } }), { status, headers });
 }
 
+export type PublicRepresentation = {
+  body: string;
+  etag: string;
+  headers: [string, string][];
+};
+
 function etagMatches(header: string, etag: string): boolean {
-  return header.split(",").some((part) => part.trim().replace(/^W\//, "") === etag);
+  return header.split(",").some((part) => {
+    const token = part.trim();
+    if (token === "*") return true;
+    return token.replace(/^W\//, "") === etag;
+  });
 }
 
-/** Cache validators for public GETs. Last-Modified is the dataset import time when provided. */
-export function publicJson(
-  request: Request,
-  body: unknown,
-  lastModified: string | null,
-  extraHeaders?: Record<string, string>,
-): Response {
-  const payload = JSON.stringify(body);
-  const etag = `"${createHash("sha256").update(payload).digest("hex")}"`;
+function baseHeaders(extraHeaders?: Record<string, string>): Headers {
   const headers = new Headers({
     "content-type": "application/json; charset=utf-8",
     "cache-control": "public, max-age=60, stale-while-revalidate=300",
-    etag,
     "x-api-version": PUBLIC_API_VERSION,
     "x-export-schema-version": PUBLIC_EXPORT_SCHEMA_VERSION,
     "access-control-allow-origin": "*",
   });
   for (const [key, value] of Object.entries(extraHeaders ?? {})) headers.set(key, value);
-  let modified: Date | null = null;
-  if (lastModified) {
-    const date = new Date(lastModified);
-    if (!Number.isNaN(date.getTime())) {
-      modified = date;
-      headers.set("last-modified", date.toUTCString());
-    }
-  }
+  return headers;
+}
+
+/**
+ * Strong ETag of the response bytes. Last-Modified is omitted: dataset import
+ * time does not change on curator corrections, and HTTP-date cannot tell two
+ * changes in the same second apart.
+ */
+export function representPublicJson(body: unknown, extraHeaders?: Record<string, string>): PublicRepresentation {
+  const payload = JSON.stringify(body);
+  const etag = `"${createHash("sha256").update(payload).digest("hex")}"`;
+  const headers = baseHeaders(extraHeaders);
+  headers.set("etag", etag);
+  return { body: payload, etag, headers: [...headers.entries()] };
+}
+
+export function applyPublicValidators(request: Request, representation: PublicRepresentation): Response {
+  const headers = new Headers(representation.headers);
   const noneMatch = request.headers.get("if-none-match");
-  if (noneMatch && etagMatches(noneMatch, etag)) return new Response(null, { status: 304, headers });
-  const modifiedSince = request.headers.get("if-modified-since");
-  if (!noneMatch && modifiedSince && modified) {
-    const since = new Date(modifiedSince);
-    // HTTP-date has one-second resolution. Compare truncated instants so a
-    // client echoing Last-Modified is not treated as stale by leftover milliseconds.
-    if (!Number.isNaN(since.getTime()) && Math.floor(since.getTime() / 1000) >= Math.floor(modified.getTime() / 1000)) {
-      return new Response(null, { status: 304, headers });
-    }
+  // If-None-Match is the only supported validator. A present If-None-Match
+  // wins over If-Modified-Since, including when the ETag does not match.
+  if (noneMatch !== null && etagMatches(noneMatch, representation.etag)) {
+    return new Response(null, { status: 304, headers });
   }
-  return new Response(payload, { status: 200, headers });
+  return new Response(representation.body, { status: 200, headers });
+}
+
+export function publicJson(request: Request, body: unknown, extraHeaders?: Record<string, string>): Response {
+  return applyPublicValidators(request, representPublicJson(body, extraHeaders));
 }
 
 export function apiEnvelope(data: unknown, page?: unknown, extra?: Record<string, unknown>) {

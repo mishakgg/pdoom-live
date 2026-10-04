@@ -6,10 +6,17 @@ import {
   publicPeopleQuerySchema,
   publicSearchQuerySchema,
   publicStatementQuerySchema,
+  type PublicPageQuery,
+  type PublicPeopleQuery,
+  type PublicStatementQuery,
 } from "@pdoom/contracts";
 import {
+  AdmissionError,
   InvalidCursorError,
+  SearchTimeoutError,
+  isStatementTimeout,
   getDatasetStamp,
+  getPool,
   getPublicCatalog,
   getPublicPerson,
   getPublicSource,
@@ -24,13 +31,45 @@ import {
   listPublicTrends,
   searchResearch,
 } from "@pdoom/db";
+import type pg from "pg";
 import openApiDocument from "@pdoom/contracts/openapi/public-v1.openapi.json";
+import { FlightLimitError } from "./single-flight";
 import { publicApiLimiter, publicClientKey } from "./rate-limit";
-import { apiEnvelope, publicError, publicJson } from "./public-http";
+import { apiEnvelope, applyPublicValidators, publicError, publicJson, representPublicJson } from "./public-http";
+import { loadPublicRepresentation, representationKey } from "./representation-cache";
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
+type Route =
+  | { kind: "openapi" }
+  | { kind: "dataset" }
+  | { kind: "people"; query: PublicPeopleQuery }
+  | { kind: "person"; slug: string }
+  | { kind: "statements"; query: PublicStatementQuery }
+  | { kind: "statement"; slug: string }
+  | { kind: "topics" }
+  | { kind: "topic"; slug: string }
+  | { kind: "sources"; query: PublicPageQuery }
+  | { kind: "source"; slug: string }
+  | { kind: "source-item"; slug: string }
+  | { kind: "trends" }
+  | { kind: "trend"; slug: string }
+  | { kind: "search"; q: string }
+  | { kind: "missing" };
+
 function fail(error: unknown): Response {
+  if (error instanceof AdmissionError || error instanceof FlightLimitError) {
+    const retryAfter = error instanceof AdmissionError ? error.retryAfter : 1;
+    return publicError(429, "rate_limited", "Too many requests. Retry later, or generate a bulk snapshot.", {
+      "retry-after": String(retryAfter),
+    });
+  }
+  if (error instanceof SearchTimeoutError) {
+    return publicError(400, "query_too_expensive", "That search is too expensive. Use a shorter or more specific query.");
+  }
+  if (isStatementTimeout(error)) {
+    return publicError(503, "query_failed", "The query timed out. Retry later.");
+  }
   if (error instanceof InvalidCursorError) return publicError(400, "invalid_cursor", "Cursor is invalid.");
   if (error instanceof ZodError) return publicError(400, "invalid_query", "Query parameters are invalid.");
   if (error instanceof Error && error.message.startsWith("duplicate query")) {
@@ -64,6 +103,126 @@ function stampHeaders(stamp: { dataset_id: string | null; dataset_kind: string |
   return headers;
 }
 
+function resolveRoute(url: URL): Route {
+  const segments = url.pathname.replace(/\/+$/, "").split("/").filter(Boolean);
+  if (segments[0] !== "api" || segments[1] !== "v1") return { kind: "missing" };
+  const rest = segments.slice(2);
+  if (rest.length === 1 && rest[0] === "openapi.json") {
+    noQuery(url);
+    return { kind: "openapi" };
+  }
+  const route = rest.join("/");
+  if (route === "dataset") {
+    noQuery(url);
+    return { kind: "dataset" };
+  }
+  if (route === "people") return { kind: "people", query: publicPeopleQuerySchema.parse(parseSearchParams(url.searchParams)) };
+  if (rest[0] === "people" && rest.length === 2) {
+    noQuery(url);
+    return { kind: "person", slug: requireSlug(rest[1]) };
+  }
+  if (route === "statements") {
+    return { kind: "statements", query: publicStatementQuerySchema.parse(parseSearchParams(url.searchParams)) };
+  }
+  if (rest[0] === "statements" && rest.length === 2) {
+    noQuery(url);
+    return { kind: "statement", slug: requireSlug(rest[1]) };
+  }
+  if (route === "topics") {
+    noQuery(url);
+    return { kind: "topics" };
+  }
+  if (rest[0] === "topics" && rest.length === 2) {
+    noQuery(url);
+    return { kind: "topic", slug: requireSlug(rest[1]) };
+  }
+  if (route === "sources") return { kind: "sources", query: publicPageQuerySchema.parse(parseSearchParams(url.searchParams)) };
+  if (rest[0] === "sources" && rest.length === 2) {
+    noQuery(url);
+    return { kind: "source", slug: requireSlug(rest[1]) };
+  }
+  if (rest[0] === "source-items" && rest.length === 2) {
+    noQuery(url);
+    return { kind: "source-item", slug: requireSlug(rest[1]) };
+  }
+  if (route === "trends") {
+    noQuery(url);
+    return { kind: "trends" };
+  }
+  if (rest[0] === "trends" && rest.length === 2) {
+    noQuery(url);
+    return { kind: "trend", slug: requireSlug(rest[1]) };
+  }
+  if (route === "search") {
+    const query = publicSearchQuerySchema.parse(parseSearchParams(url.searchParams));
+    return { kind: "search", q: query.q };
+  }
+  return { kind: "missing" };
+}
+
+async function produce(route: Route, db: pg.PoolClient) {
+  const stamp = await getDatasetStamp(db);
+  const headers = stampHeaders(stamp);
+  const asOf = stamp.imported_at ?? "1970-01-01T00:00:00.000Z";
+  if (route.kind === "dataset") {
+    return representPublicJson(apiEnvelope(await getPublicCatalog(stamp.imported_at, db)), headers);
+  }
+  if (route.kind === "people") {
+    const page = await listPublicPeople(route.query, db);
+    return representPublicJson(apiEnvelope(page.data, page.page), headers);
+  }
+  if (route.kind === "person") {
+    const person = await getPublicPerson(route.slug, db);
+    if (!person) return null;
+    return representPublicJson(apiEnvelope(person), headers);
+  }
+  if (route.kind === "statements") {
+    const page = await listPublicStatements(route.query, db);
+    return representPublicJson(apiEnvelope(page.data, page.page), headers);
+  }
+  if (route.kind === "statement") {
+    const statement = await getPublicStatement(route.slug, db);
+    if (!statement) return null;
+    return representPublicJson(apiEnvelope(statement), headers);
+  }
+  if (route.kind === "topics") {
+    const topics = await listPublicTopics(db);
+    return representPublicJson(apiEnvelope(topics.data, undefined, topics.truncated ? { truncated: true } : {}), headers);
+  }
+  if (route.kind === "topic") {
+    const topic = await getPublicTopic(route.slug, db);
+    if (!topic) return null;
+    return representPublicJson(apiEnvelope(topic), headers);
+  }
+  if (route.kind === "sources") {
+    const page = await listPublicSources(route.query, asOf, db);
+    return representPublicJson(apiEnvelope(page.data, page.page), headers);
+  }
+  if (route.kind === "source") {
+    const source = await getPublicSource(route.slug, asOf, db);
+    if (!source) return null;
+    return representPublicJson(apiEnvelope(source), headers);
+  }
+  if (route.kind === "source-item") {
+    const item = await getPublicSourceItem(route.slug, db);
+    if (!item) return null;
+    return representPublicJson(apiEnvelope(item), headers);
+  }
+  if (route.kind === "trends") {
+    const trends = await listPublicTrends(db);
+    return representPublicJson(apiEnvelope(trends.data), headers);
+  }
+  if (route.kind === "trend") {
+    const trend = await getPublicTrend(route.slug, asOf, db);
+    if (!trend) return null;
+    return representPublicJson(apiEnvelope(trend), headers);
+  }
+  if (route.kind === "search") {
+    return representPublicJson(apiEnvelope(await searchResearch(route.q, db)), headers);
+  }
+  return null;
+}
+
 export async function handlePublicApi(request: Request): Promise<Response> {
   if (request.method !== "GET") return publicError(405, "method_not_allowed", "The public API is read-only.");
   const decision = publicApiLimiter.consume(publicClientKey(request));
@@ -76,95 +235,29 @@ export async function handlePublicApi(request: Request): Promise<Response> {
   if (url.search.length > PUBLIC_API_LIMITS.maxQueryStringLength) {
     return publicError(400, "invalid_query", "Query string exceeds the length limit.");
   }
-  const segments = url.pathname.replace(/\/+$/, "").split("/").filter(Boolean);
-  if (segments[0] !== "api" || segments[1] !== "v1") return publicError(404, "not_found", "Not found.");
-  const rest = segments.slice(2);
-  if (rest.length === 1 && rest[0] === "openapi.json") {
-    try {
-      noQuery(url);
-    } catch (error) {
-      return fail(error);
-    }
-    return publicJson(request, openApiDocument, null);
-  }
   try {
-    const stamp = await getDatasetStamp();
-    const headers = stampHeaders(stamp);
-    const asOf = stamp.imported_at ?? "1970-01-01T00:00:00.000Z";
-    const route = rest.join("/");
-
-    if (route === "dataset") {
-      noQuery(url);
-      return publicJson(request, apiEnvelope(await getPublicCatalog(stamp.imported_at)), stamp.imported_at, headers);
+    const route = resolveRoute(url);
+    if (route.kind === "missing") return publicError(404, "not_found", "Not found.");
+    if (route.kind === "openapi") return publicJson(request, openApiDocument);
+    const representation = await loadPublicRepresentation(representationKey(url), getPool(), (db) => produce(route, db));
+    if (!representation) {
+      const label =
+        route.kind === "person"
+          ? "Person"
+          : route.kind === "statement"
+            ? "Statement"
+            : route.kind === "topic"
+              ? "Topic"
+              : route.kind === "source"
+                ? "Source"
+                : route.kind === "source-item"
+                  ? "Source item"
+                  : route.kind === "trend"
+                    ? "Trend"
+                    : "Record";
+      return publicError(404, "not_found", `${label} not found.`);
     }
-    if (route === "people") {
-      const page = await listPublicPeople(publicPeopleQuerySchema.parse(parseSearchParams(url.searchParams)));
-      return publicJson(request, apiEnvelope(page.data, page.page), stamp.imported_at, headers);
-    }
-    if (rest[0] === "people" && rest.length === 2) {
-      noQuery(url);
-      const person = await getPublicPerson(requireSlug(rest[1]));
-      if (!person) return publicError(404, "not_found", "Person not found.");
-      return publicJson(request, apiEnvelope(person), stamp.imported_at, headers);
-    }
-    if (route === "statements") {
-      const page = await listPublicStatements(publicStatementQuerySchema.parse(parseSearchParams(url.searchParams)));
-      return publicJson(request, apiEnvelope(page.data, page.page), stamp.imported_at, headers);
-    }
-    if (rest[0] === "statements" && rest.length === 2) {
-      noQuery(url);
-      const statement = await getPublicStatement(requireSlug(rest[1]));
-      if (!statement) return publicError(404, "not_found", "Statement not found.");
-      return publicJson(request, apiEnvelope(statement), stamp.imported_at, headers);
-    }
-    if (route === "topics") {
-      noQuery(url);
-      const topics = await listPublicTopics();
-      return publicJson(
-        request,
-        apiEnvelope(topics.data, undefined, topics.truncated ? { truncated: true } : {}),
-        stamp.imported_at,
-        headers,
-      );
-    }
-    if (rest[0] === "topics" && rest.length === 2) {
-      noQuery(url);
-      const topic = await getPublicTopic(requireSlug(rest[1]));
-      if (!topic) return publicError(404, "not_found", "Topic not found.");
-      return publicJson(request, apiEnvelope(topic), stamp.imported_at, headers);
-    }
-    if (route === "sources") {
-      const page = await listPublicSources(publicPageQuerySchema.parse(parseSearchParams(url.searchParams)), asOf);
-      return publicJson(request, apiEnvelope(page.data, page.page), stamp.imported_at, headers);
-    }
-    if (rest[0] === "sources" && rest.length === 2) {
-      noQuery(url);
-      const source = await getPublicSource(requireSlug(rest[1]), asOf);
-      if (!source) return publicError(404, "not_found", "Source not found.");
-      return publicJson(request, apiEnvelope(source), stamp.imported_at, headers);
-    }
-    if (rest[0] === "source-items" && rest.length === 2) {
-      noQuery(url);
-      const item = await getPublicSourceItem(requireSlug(rest[1]));
-      if (!item) return publicError(404, "not_found", "Source item not found.");
-      return publicJson(request, apiEnvelope(item), stamp.imported_at, headers);
-    }
-    if (route === "trends") {
-      noQuery(url);
-      const trends = await listPublicTrends();
-      return publicJson(request, apiEnvelope(trends.data), stamp.imported_at, headers);
-    }
-    if (rest[0] === "trends" && rest.length === 2) {
-      noQuery(url);
-      const trend = await getPublicTrend(requireSlug(rest[1]), asOf);
-      if (!trend) return publicError(404, "not_found", "Trend not found.");
-      return publicJson(request, apiEnvelope(trend), stamp.imported_at, headers);
-    }
-    if (route === "search") {
-      const query = publicSearchQuerySchema.parse(parseSearchParams(url.searchParams));
-      return publicJson(request, apiEnvelope(await searchResearch(query.q)), stamp.imported_at, headers);
-    }
-    return publicError(404, "not_found", "Not found.");
+    return applyPublicValidators(request, representation);
   } catch (error) {
     return fail(error);
   }
