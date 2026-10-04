@@ -10,7 +10,9 @@ Owned feeds are public RSS or Atom feeds tied to one person by the feed's author
 
 Show feeds are official podcast RSS feeds. The show source has no person owner. A guest is recorded only when exactly one high-distinctiveness cohort display name appears in the episode title. A low-distinctiveness name in a title is not enough. Two cohort names in one title are left unresolved. Statements are taken only from transcript turns labeled with that person's name. Show notes and unlabeled transcripts are not the guest's words.
 
-X, Bluesky, and Mastodon are not searched by name. This pass does not collect them.
+X, Bluesky, and Mastodon are not searched by name. The `2026.09.0` corpus pass does not collect them.
+
+Cohort `2026.10.0` stages a Bluesky author feed and a LessWrong user-post feed for accounts that were already linked to a tracked person. Those adapters are not part of `collect_beliefs`, and they do not write `canonical-live.json`. See [channel integration](./CHANNEL_INTEGRATION_2026_10.md).
 
 ## Question keys
 
