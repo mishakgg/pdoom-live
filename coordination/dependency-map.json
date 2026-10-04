@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-04T22:27:55Z",
+  "reviewed_at": "2026-10-04T23:31:01Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -364,6 +364,20 @@
       ],
       "status": "resolved-on-b4cf230",
       "summary": "Agent 5 rejects a body mention as authorship. Agent 3's refresh essays named Refresh Ada only in the body, so test_refresh_converges_and_publishes_truthful_outcomes found zero numeric statements. The integration commit adds meta author Refresh Ada. The generated JSON fixtures did not change."
+    },
+    {
+      "id": "frontend-ledger-on-candidate",
+      "paths": [
+        "apps/web/app/globals.css",
+        "apps/web/app/curation/page.tsx",
+        "apps/web/components/trends.tsx",
+        "docs/FRONTEND_HANDOFF.md"
+      ],
+      "owners": [
+        "pr-32"
+      ],
+      "status": "descendant-of-b4cf230-not-included",
+      "summary": "Pull request 32 head 760fb1e is a fast-forward of b4cf230. merge-tree is clean. The change is the public and curator interface. It stays a separate draft until its tip is verified."
     }
   ],
   "migration_reservation": {

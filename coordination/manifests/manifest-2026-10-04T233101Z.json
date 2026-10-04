@@ -1,0 +1,26 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-04T233101Z",
+  "candidate_state": "six_agent_candidate_verified",
+  "reason": "Hourly review. The six heads are unchanged. Pull request 32 is a later interface draft on the candidate and is not included.",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "integration_branch": "cursor/partial-integration-refresh-a32e",
+  "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/31",
+  "resulting_integration_commit": "b4cf2307cb6e40240d5824131996ace942051f83",
+  "resulting_tree": "c717a0ddde5228fe87bfd9b6e8d7c9526162b28a",
+  "head_delta": [],
+  "new_pull_requests": [
+    {
+      "pr": 32,
+      "branch": "cursor/frontend-observatory-redesign-6a22",
+      "head_sha": "760fb1e83809306aef483101dafe9f92ef9edb6e",
+      "tested_sha": "b8509ddb6d6efc831e21c249a8b38b5d2c8b4875",
+      "base_sha": "b4cf2307cb6e40240d5824131996ace942051f83",
+      "merge_tree": "clean",
+      "included": false,
+      "subscription_id": "sub_da67c528-82da-4c23-8a08-8782a9f18ff4"
+    }
+  ],
+  "delivery_note": "The six-workstream evidence still belongs to commit b4cf230. Pull request 32 is separate."
+}
