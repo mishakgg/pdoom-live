@@ -1,0 +1,25 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-04T215536Z",
+  "candidate_state": "partial_candidate_unchanged",
+  "reason": "No head moved. Agent 5 remains excluded because three backfill tests that pass on main fail on f59cb9c. This is not a new integration commit.",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "integration_branch": "cursor/partial-integration-refresh-a32e",
+  "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/31",
+  "resulting_integration_commit": "5adde6ced3842617e57bfcaf2bdf330ed465a233",
+  "resulting_tree": "cf1f517d5cc6ad008d7abcdd95317d9ddd728c90",
+  "included_heads_unchanged": true,
+  "agent_5_regression": {
+    "pr": 29,
+    "head_sha": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
+    "passes_on": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+    "function": "pipeline/pdoom_pipeline/belief/collect.py _essay_attributed",
+    "cases": [
+      "Title Ada Lovelace is not a title byline, so the duplicate extinction sentence produces no statement.",
+      "By Joe Carlsmith is in the body, and byline_alias is checked only against the title and lead name.",
+      "single_speaker talks still go through _essay_attributed, so https://events.example/talk is dropped."
+    ]
+  },
+  "delivery_note": "Evidence for commit 5adde6c. Do not merge pull requests 31, 30, 27, 26, 25, 22, and 21 as separate copies."
+}

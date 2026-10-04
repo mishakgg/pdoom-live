@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-04T215309Z",
-  "reviewed_at": "2026-10-04T21:53:09Z",
-  "previous_review_id": "2026-10-04T214535Z",
-  "status_path": "coordination/status/status-2026-10-04T215309Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-04T215309Z.json",
+  "review_id": "2026-10-04T215536Z",
+  "reviewed_at": "2026-10-04T21:55:36Z",
+  "previous_review_id": "2026-10-04T215309Z",
+  "status_path": "coordination/status/status-2026-10-04T215536Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-04T215536Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "origin_main_subject": "Match deploy smoke to the public status bar and discovery routes (#19)",
@@ -74,7 +74,7 @@
       "pr": 29,
       "head_sha": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
       "readiness": "not_ready",
-      "readiness_reason": "Local rerun of the three failing tests/test_backfill.py cases on f59cb9c failed the same way: statements length 0, empty Joe Carlsmith observations, and missing https://events.example/talk. Node CI also lacks defusedxml. Not included."
+      "readiness_reason": "Regression versus main d13c8ab. _essay_attributed rejects a title that is the display name, a body byline even when byline_alias matches, and a single_speaker talk. Three tests/test_backfill.py cases fail. Not included."
     },
     "agent-6": {
       "bc_id": "bc-11bd48ab-cbe0-4b1c-b5cd-1cac228d66d1",
@@ -97,5 +97,5 @@
     "expires_at": "2026-10-11T20:27:47Z",
     "delivery_count": 1
   },
-  "next_action": "Pull request 31 at 5adde6c is the current partial candidate. Local gates and GitHub pipeline, CI, and runtime succeeded. Do not merge it to main. Include Agent 5 only after a new head fixes tests/test_backfill.py. Do not label this a completed six-agent integration."
+  "next_action": "Pull request 31 at 5adde6c remains the partial candidate. Do not merge it to main. Include Agent 5 only after a new head makes the three tests/test_backfill.py cases that pass on main pass again. Do not change their attribution rule on the integration branch."
 }

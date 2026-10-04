@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-04T21:53:09Z",
+  "reviewed_at": "2026-10-04T21:55:36Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -242,9 +242,9 @@
     "status": "not_ready",
     "node_run": 37235827312,
     "pipeline_run": 37235827320,
-    "summary": "Node CI failed test/staging-review.test.ts because python3 data/fixtures/review/roundtrip.py imports the collector stack and the Node job has no defusedxml. The same three backfill tests fail locally on f59cb9c. Not included. Migration 005_participant_host_role.sql is proposed and not applied.",
-    "expected": "Existing backfill tests still pass, and the staging roundtrip runs in the Node CI job.",
-    "actual": "Local PYTHONPATH=pipeline python3 -m pytest on those three tests: line 175 len(statements) is 0 where 1 is required; line 256 observations is empty for the Joe Carlsmith byline; line 315 observations is empty where https://events.example/talk is required. Node job also raises ModuleNotFoundError: No module named 'defusedxml'.",
+    "summary": "f59cb9c regresses three tests/test_backfill.py cases that pass on main d13c8ab. _collect_page drops the page when _essay_attributed returns false. That helper reads only meta author tags, a title of the form 'Name — rest', an alias in the title or lead name, or an owner host. It ignores a body byline and does not treat single_speaker as admission. Not included. Migration 005_participant_host_role.sql is proposed and not applied.",
+    "expected": "The three backfill tests that pass on main d13c8ab still pass, and the staging roundtrip runs in the Node CI job.",
+    "actual": "On f59cb9c, title 'Ada Lovelace' with the estimate only in the body yields no statement; body text 'By Joe Carlsmith' with byline_alias 'Joe Carlsmith' yields no observation; a single_speaker talk titled 'Ada Lovelace keynote' yields no observation. Node job also raises ModuleNotFoundError: No module named 'defusedxml'.",
     "local_command": "PYTHONPATH=pipeline python3 -m pytest tests/test_backfill.py::test_duplicate_numeric_candidate_is_suppressed_and_view_changes_stay_conservative tests/test_backfill.py::test_same_document_revision_and_curated_byline_alias tests/test_backfill.py::test_candidate_leads_stay_out_of_observations_and_unspecified_is_not_a_forecast -q --tb=line",
     "local_head": "f59cb9c0326df7393a0c90ae67364fe4ef88e424"
   },
