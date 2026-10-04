@@ -33,6 +33,7 @@ TYPES = (
 )
 
 ESSAY = """<!DOCTYPE html><html><head><title>Refresh Ada notes</title>
+<meta name="author" content="Refresh Ada">
 <time datetime="2024-06-01T00:00:00Z">June 2024</time></head><body>
 <p>Refresh Ada writes that the chance of human extinction from AI is 15% by 2070.</p>
 <p>A serious risk of disempowerment is plausible.</p>
@@ -40,6 +41,7 @@ ESSAY = """<!DOCTYPE html><html><head><title>Refresh Ada notes</title>
 """
 ESSAY_CHANGED = ESSAY.replace("from AI", "from ML")
 OLDER = """<!DOCTYPE html><html><head><title>Refresh Ada earlier note</title>
+<meta name="author" content="Refresh Ada">
 <time datetime="2020-01-01T00:00:00Z">January 2020</time></head><body>
 <p>Refresh Ada writes that serious risk of extinction is unlikely before 2030.</p>
 </body></html>
@@ -509,7 +511,7 @@ def _leads(*, include_older: bool) -> list[dict]:
             "person_slug": "refresh-ada",
             "source_type": "blog",
             "name": "Refresh Ada notes",
-            "basis": "Fixture page whose title names Refresh Ada.",
+            "basis": "Fixture page whose author metadata names Refresh Ada.",
         }
     ]
     if include_older:
@@ -520,7 +522,7 @@ def _leads(*, include_older: bool) -> list[dict]:
                 "person_slug": "refresh-ada",
                 "source_type": "blog",
                 "name": "Refresh Ada earlier note",
-                "basis": "Fixture page whose title names Refresh Ada.",
+                "basis": "Fixture page whose author metadata names Refresh Ada.",
             }
         )
     return rows
