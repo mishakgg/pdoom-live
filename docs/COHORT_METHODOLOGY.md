@@ -50,7 +50,9 @@ Organization headquarters country is a property of the organization. It is not t
 
 ## Versioning
 
-Cohort version `2026.09.0` is the reviewed roster in `pipeline/pdoom_pipeline/seed/`. Historical trends that use this cohort must cite that version. Adding or removing a person requires a new cohort version rather than a silent edit.
+Cohort version `2026.09.0` is the reviewed roster in `pipeline/pdoom_pipeline/seed/` and `data/seed/cohort/v2026-09/`. Historical trends that use this cohort must cite that version. Adding or removing a person requires a new cohort version rather than a silent edit.
+
+Cohort `2026.10.0` is that next version. It copies this membership and records additions in `data/seed/cohort/v2026-10/membership_diff.json`. The rules for the additions are in [cohort 2026.10.0](./COHORT_2026_10.md). Files in `v2026-09/` stay the historical roster.
 
 ## What this seed is for
 

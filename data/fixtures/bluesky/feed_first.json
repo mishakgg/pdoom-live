@@ -1,0 +1,59 @@
+{
+  "cursor": "cursor-2",
+  "feed": [
+    {
+      "post": {
+        "uri": "at://did:plc:fixture/app.bsky.feed.post/french1",
+        "author": {"did": "did:plc:fixture", "handle": "fixture.bsky.social", "displayName": "Fixture Author"},
+        "record": {
+          "$type": "app.bsky.feed.post",
+          "text": "Je pense qu'il y a un risque sérieux, mais je ne donne pas de pourcentage.",
+          "langs": ["fr"],
+          "createdAt": "2026-02-02T10:00:00.000Z"
+        }
+      }
+    },
+    {
+      "post": {
+        "uri": "at://did:plc:other/app.bsky.feed.post/reposted",
+        "author": {"did": "did:plc:other", "handle": "other.bsky.social", "displayName": "Other Person"},
+        "record": {"text": "Reposted words that are not the author's.", "langs": ["en"], "createdAt": "2026-02-01T10:00:00Z"}
+      },
+      "reason": {"$type": "app.bsky.feed.defs#reasonRepost", "by": {"did": "did:plc:fixture"}}
+    },
+    {
+      "post": {
+        "uri": "at://did:plc:fixture/app.bsky.feed.post/quote1",
+        "author": {"did": "did:plc:fixture", "handle": "fixture.bsky.social", "displayName": "Fixture Author"},
+        "record": {
+          "text": "See this post.",
+          "langs": ["en"],
+          "createdAt": "2026-03-03T10:00:00Z",
+          "embed": {
+            "$type": "app.bsky.embed.record",
+            "record": {"uri": "at://did:plc:other/app.bsky.feed.post/quoted", "text": "QUOTED SECRET TEXT SHOULD NOT BE COPIED"}
+          }
+        }
+      }
+    },
+    {
+      "post": {
+        "uri": "at://did:plc:fixture/app.bsky.feed.post/reply1",
+        "author": {"did": "did:plc:fixture", "handle": "fixture.bsky.social", "displayName": "Fixture Author"},
+        "record": {
+          "text": "I think there is a 10% chance of human extinction by 2040.",
+          "langs": ["en"],
+          "createdAt": "2026-04-04T10:00:00Z",
+          "reply": {"parent": {"uri": "at://did:plc:other/app.bsky.feed.post/parent"}}
+        }
+      }
+    },
+    {
+      "post": {
+        "uri": "at://did:plc:stranger/app.bsky.feed.post/nope",
+        "author": {"did": "did:plc:stranger", "handle": "stranger.bsky.social", "displayName": "Stranger"},
+        "record": {"text": "Not this account.", "langs": ["en"], "createdAt": "2026-04-05T10:00:00Z"}
+      }
+    }
+  ]
+}

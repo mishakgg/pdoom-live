@@ -4,16 +4,17 @@ The data-collection side of pdoom.live lives in `pipeline/`. It does not render 
 
 ## Layout
 
-- `pipeline/pdoom_pipeline/seed/` — reviewed cohort `2026.09.0` and JSONL export.
+- `pipeline/pdoom_pipeline/seed/` — reviewed cohort `2026.09.0`, the `2026.10.0` copy-forward, and JSONL export.
 - `pipeline/pdoom_pipeline/enrich/` — name-confirmed pages, ORCID researcher URLs, and rel=me profiles.
 - `pipeline/pdoom_pipeline/identity/` — name keys and OpenAlex acceptance rules.
-- `pipeline/pdoom_pipeline/collectors/` — RSS/Atom, arXiv, GitHub, and OpenAlex works.
+- `pipeline/pdoom_pipeline/collectors/` — RSS/Atom, arXiv, GitHub, OpenAlex works, plus callable ForumMagnum and Bluesky adapters that are not on the recurring runner.
 - `pipeline/pdoom_pipeline/ingest/` — idempotent observation store and author-versus-mentioned roles.
 - `pipeline/pdoom_pipeline/belief/` — collection priority, question keys, owned essays, podcast guest rules, and view-change candidates.
 - `pipeline/pdoom_pipeline/extract/` — deterministic statement boundary. It does not invent probabilities.
 - `pipeline/pdoom_pipeline/export/` — seed registry and belief-corpus canonical documents.
 - `pipeline/pdoom_pipeline/fetch.py` — scheme, DNS, and address checks; redirect, size, timeout, and decompression limits.
-- `data/seed/cohort/v2026-09/` — generated organizations, people, affiliations, identities, sources, and ambiguities.
+- `data/seed/cohort/v2026-09/` — generated organizations, people, affiliations, identities, sources, and ambiguities for cohort `2026.09.0`.
+- `data/seed/cohort/v2026-10/` — cohort `2026.10.0`. It does not replace the historical directory.
 - `data/fixtures/` — offline collector fixtures, including hostile source text.
 - `packages/contracts/src/` — application enums and the canonical import schema. That schema is the product contract.
 - `packages/contracts/source-observation.schema.json` — collector envelope only. It is not the database import document.
@@ -96,7 +97,9 @@ The exporter in `pipeline/pdoom_pipeline/export/canonical.py` applies `packages/
 
 Identity rows from OpenAlex are `machine_validated` at high confidence and `needs_review` at medium confidence in the seed files. The application trend rules treat those review states differently. Cohort membership on the roster is curator-reviewed. Do not present medium-confidence roles or ids as settled facts.
 
-Enrichment adds a personal or lab profile only when the fetched page contains the person's full display name. `rel=me` links on that page can add GitHub, Hugging Face, Bluesky, Mastodon, X, or YouTube. An X URL listed on the linked ORCID record is kept only when that page also contains the full name. LinkedIn, Wikipedia, and sitewide feeds such as recent-changes or oEmbed are not registered. Name search is not used. Profiles that fail the name check stay unconfirmed. GitHub metadata and RSS/Atom, including a YouTube channel Atom feed when a channel id is linked, are the collectors used for these new sources. Bluesky, Mastodon, and X rows are identities with collection disabled.
+Enrichment adds a personal or lab profile only when the fetched page contains the person's full display name. `rel=me` links on that page can add GitHub, Hugging Face, Bluesky, Mastodon, X, or YouTube. An X URL listed on the linked ORCID record is kept only when that page also contains the full name. LinkedIn, Wikipedia, and sitewide feeds such as recent-changes or oEmbed are not registered. Name search is not used. Profiles that fail the name check stay unconfirmed. GitHub metadata and RSS/Atom, including a YouTube channel Atom feed when a channel id is linked, are the collectors used for these new sources. Bluesky, Mastodon, and X rows created by enrichment stay identities with collection disabled.
+
+Cohort `2026.10.0` adds a separate, unwired Bluesky author-feed collector and a ForumMagnum collector. They run only for accounts confirmed from a page or post already linked to the person. The recurring belief job does not call them. Integration steps are in [channel integration](./CHANNEL_INTEGRATION_2026_10.md). `bluesky` maps to canonical source type `social_post`. `forum_magnum_api` and `bluesky_api` map to collection method `api`.
 
 ## Failure classes
 

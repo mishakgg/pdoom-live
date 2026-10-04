@@ -1,0 +1,32 @@
+[
+  {
+    "channel": "forum_magnum",
+    "decision": "implement",
+    "reason": "LessWrong, the Alignment Forum, and the EA Forum expose a public GraphQL API. robots.txt disallows /graphiql, not /graphql. Posts are first-person essays with a structured author slug, canonical URL, and pagination by offset. This is the densest missing source of attributable forecasts. Offset is capped at 2000 by the API."
+  },
+  {
+    "channel": "bluesky",
+    "decision": "implement",
+    "reason": "public.api.bsky.app allows public reads, needs no key, paginates with a cursor, and returns post text plus a language code. Handles are admitted only from a page already linked to the person. The Mila organization account is kept separate."
+  },
+  {
+    "channel": "youtube_atom",
+    "decision": "reject",
+    "reason": "youtube.com/robots.txt disallows /feeds/videos.xml. The Data API needs a key this repository does not have. No adapter was written."
+  },
+  {
+    "channel": "substack_archive_api",
+    "decision": "defer",
+    "reason": "Public RSS already collects Substack feeds. One registered feed, sethlazar.substack.com/feed, redirects to an HTML profile and stays invalid_content. A second archive API would mostly duplicate RSS."
+  },
+  {
+    "channel": "podcast_transcripts",
+    "decision": "handoff",
+    "reason": "The existing corpus already records speaker_labels_absent on show pages. Transcript attribution belongs with the extraction workstream."
+  },
+  {
+    "channel": "conference_talk_archives",
+    "decision": "defer",
+    "reason": "No stable official API with a clear rights path was verified in this pass. YouTube captions are disallowed by robots.txt."
+  }
+]
