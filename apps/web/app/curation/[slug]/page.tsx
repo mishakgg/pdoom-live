@@ -114,21 +114,20 @@ export default async function CurationItemPage({ params }: { params: Promise<{ s
             <p><strong>{typeLabel(item.statement_type)}.</strong> {item.normalized_text}</p>
             <p className="meta">Topics: {[...item.topic_slugs, ...item.proposed_topics].join(", ") || "none"}</p>
             {item.forecast ? (
-              <p className="meta">
-                {item.forecast.horizon_text ?? "Horizon unknown"} · {item.forecast.definition_text ?? "Definition unknown"} · {item.forecast.condition_text ?? "Condition unknown"} · {phraseLabel(item.forecast.value_type ?? "unknown")} {String(item.forecast.value_numeric ?? item.forecast.value_min ?? "")}
-              </p>
-            ) : <p className="meta">No forecast fields. Do not invent a probability for this statement.</p>}
+              <dl className="audit">
+                <dt>Horizon</dt><dd>{item.forecast.horizon_text ?? "Horizon unknown"}</dd>
+                <dt>Definition</dt><dd>{item.forecast.definition_text ?? "Definition unknown"}</dd>
+                <dt>Condition</dt><dd>{item.forecast.condition_text ?? "Condition unknown"}</dd>
+                <dt>Value</dt>
+                <dd>
+                  {phraseLabel(item.forecast.value_type ?? "unknown")}
+                  {item.forecast.unit ? ` · ${item.forecast.unit}` : " · unit not recorded"}
+                  {" · point "}{item.forecast.value_numeric ?? "none"}
+                  {" · range "}{item.forecast.value_min ?? "none"}–{item.forecast.value_max ?? "none"}
+                </dd>
+              </dl>
+            ) : <p>No forecast fields. Do not invent a probability for this statement.</p>}
           </div>
-          <section>
-            <h3>Numeric reading</h3>
-            {item.forecast ? (
-              <p className="meta">
-                {phraseLabel(item.forecast.value_type ?? "unknown")} · {item.forecast.unit ?? "unit not recorded"} · point {item.forecast.value_numeric ?? "none"} · range {item.forecast.value_min ?? "none"}–{item.forecast.value_max ?? "none"}
-                {item.forecast.condition_text ? ` · condition ${item.forecast.condition_text}` : " · no condition recorded"}
-                {item.forecast.horizon_text ? ` · horizon ${item.forecast.horizon_text}` : " · horizon missing"}
-              </p>
-            ) : <p className="meta">No forecast fields. Do not invent a probability for this statement.</p>}
-          </section>
           <section>
             <h3>Question comparability</h3>
             <p className="meta">Extracted key: {questionKey ?? "none"}. {questionNote(questionKey)}</p>

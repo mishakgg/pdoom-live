@@ -171,6 +171,7 @@ main { padding-top: 0.35rem; }
   padding: 0.35rem 0.5rem;
   box-shadow: none;
 }
+.status-bar .span-row { grid-column: 1 / -1; }
 .facts > div {
   background: var(--paper-2);
   border: 1px solid var(--line);
@@ -368,13 +369,13 @@ h2.duplicate-title {
   flex-wrap: wrap;
   gap: 0.7rem 0.75rem;
   align-items: end;
-  margin: 0.85rem 0 1rem;
-  padding: 0.85rem;
+  margin: 0.45rem 0 0.65rem;
+  padding: 0.7rem;
   background: var(--paper-2);
   border: 1px solid var(--line);
   border-radius: 8px;
 }
-.filters > p { flex: 1 1 100%; margin: 0; }
+.filters > p { flex: 1 1 100%; grid-column: 1 / -1; margin: 0; }
 .filters label, .choice, .review-form label, .stack > label {
   display: grid;
   gap: 0.28rem;
@@ -714,6 +715,7 @@ footer.site p { max-width: 68ch; }
   gap: 1.25rem;
   align-items: start;
 }
+.review-workspace + .grid-2 { margin-top: 1.15rem; }
 .review-form-head { display: grid; gap: 0.25rem; }
 .unsaved { margin: 0; color: var(--mark); font-weight: 650; }
 .queue-table { width: 100%; border-collapse: collapse; }
@@ -756,8 +758,8 @@ footer.site p { max-width: 68ch; }
 }
 @media (max-width: 640px) {
   .shell { padding: 0 0.85rem 2.5rem; }
-  .filters { display: grid; grid-template-columns: minmax(0, 1fr); }
-  .filters button, .filters .button { width: 100%; }
+  .filters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .filters button, .filters .button { width: 100%; grid-column: 1 / -1; }
   .dist, .catalog-table, .queue-table { font-size: 0.95rem; min-width: 0; }
   .catalog-table thead, .dist thead, .queue-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
   .catalog-table, .catalog-table tbody, .catalog-table tr, .catalog-table td,

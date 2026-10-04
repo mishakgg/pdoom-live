@@ -20,8 +20,8 @@ Teal marks links, the current destination, and numeric estimates. Amber marks qu
 - Primary navigation is one compact row: Activity, People, Topics, Statements, Trends, then Sources, Search, Data, and Method. Search in the header is a field, separate from those links.
 - Prose stays near a 66-character measure. Charts and tables use the full column.
 - A trend page leads with the question, the exact scope, the sample, and one chart. The panel repeats the question as a heading for the section, collapsed to a one-pixel accessible heading when the page title already states it. Method strings, stored keys, and cohort definitions sit in a disclosure after the evidence.
-- Dataset status and the curator count strip are compact ledgers, not a stack of cards. The curator queue is an operator table. Record review places the source excerpt beside the interpretation on wide screens.
+- Dataset status and the curator count strip are compact ledgers, not a stack of cards. The curator queue is an operator table. Record review places the source excerpt beside the interpretation on wide screens, with attribution, duplicates, and the decision form in later sections. On a narrow screen, filter fields sit in two columns and any explanatory note spans the full width.
 
 ## Trust language
 
-Synthetic fixtures say “Synthetic demo data” at the top of every page that renders the dataset. A corpus-read time is labeled as a read of stored records. It is not described as live collection.
+Synthetic fixtures say “Synthetic demo data” at the top of every page that renders the dataset. A corpus-read time is labeled as a read of stored records. It is not described as live collection. Stored review state, a machine recommendation, and the effective state stay labeled separately. A recommendation is not human verification. Cohort versions are written as “version”, so a slug that already contains a version token is not followed by a bare number.

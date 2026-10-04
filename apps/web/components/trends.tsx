@@ -109,7 +109,7 @@ export function CoverageBlock({
       <p className="meta">
         Method {methodVersion}
         {cohortSlug ? ` · Cohort ${cohortSlug}` : ""}
-        {cohortVersion ? ` ${cohortVersion}` : ""}
+        {cohortVersion ? ` · version ${cohortVersion}` : ""}
         {unit ? ` · Unit ${unit}` : ""}
         {conditionality && conditionality !== "unspecified" ? ` · ${conditionality}` : ""}
       </p>
@@ -462,7 +462,7 @@ export function NumericPanel({
       <p className="meta">
         Method {methodVersion}
         {cohortSlug ? ` · Cohort ${cohortSlug}` : ""}
-        {cohortVersion ? ` ${cohortVersion}` : ""}
+        {cohortVersion ? ` · version ${cohortVersion}` : ""}
         {` · Unit ${unit ?? (semantics === "probability" ? "probability" : "not stated")}`}
         {conditionality && conditionality !== "unspecified" ? ` · ${conditionality}` : ""}
       </p>

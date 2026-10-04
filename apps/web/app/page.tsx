@@ -116,7 +116,7 @@ export default async function HomePage() {
               <dt>Dataset updated</dt>
               <dd>{formatWhen(overview.dataset.imported_at)}</dd>
             </div>
-            <div>
+            <div className="span-row">
               <dt>Collection states</dt>
               <dd>
                 {freshness.current} current · {freshness.aging} aging · {freshness.stale} stale · {freshness.never_checked} never checked · {overview.dataset.coverage.unavailable_or_failing_sources} failing or unavailable

@@ -37,7 +37,7 @@ export default async function DataPage() {
       </p>
       <p className="fresh">
         <span><strong>{dataset?.dataset_kind === "synthetic" ? "Synthetic fixture" : "Live dataset"}</strong> {dataset?.dataset_id ?? "No dataset loaded"}</span>
-        <span>Cohort {catalog.cohort?.name ?? "none"} {catalog.cohort?.version ?? ""}</span>
+        <span>Cohort {catalog.cohort?.name ?? "none"}{catalog.cohort?.version ? ` · version ${catalog.cohort.version}` : ""}</span>
         <span>{catalog.counts.statements} public statements</span>
       </p>
       <section className="panel" aria-labelledby="data-freshness">
