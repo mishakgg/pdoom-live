@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-04T215730Z",
-  "reviewed_at": "2026-10-04T21:57:30Z",
-  "previous_review_id": "2026-10-04T215536Z",
-  "status_path": "coordination/status/status-2026-10-04T215730Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-04T215730Z.json",
+  "review_id": "2026-10-04T220426Z",
+  "reviewed_at": "2026-10-04T22:04:26Z",
+  "previous_review_id": "2026-10-04T215730Z",
+  "status_path": "coordination/status/status-2026-10-04T220426Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-04T220426Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "origin_main_subject": "Match deploy smoke to the public status bar and discovery routes (#19)",
@@ -55,11 +55,12 @@
     },
     "agent-3": {
       "bc_id": "bc-e813e836-d988-41a1-98ff-d1a5d48c088b",
-      "status": "IDLE",
+      "status": "TASKED",
       "pr": 27,
       "head_sha": "ce07836b27a090da063617708df7b7174745881c",
       "readiness": "included_in_partial_candidate",
-      "readiness_reason": "Included as ce07836 inside 5adde6c. GitHub pipeline run 37237677768 succeeded after the coordinator added npm ci. Scenario 2 passes with the published version slug."
+      "readiness_reason": "Included as ce07836 inside 5adde6c. Follow-up tasked to add npm ci on their own pipeline workflow so PR 27 matches that install. Do not merge their new head until it is reviewed.",
+      "follow_up_run": "bc-c69a04a7-f34a-5789-b3c1-dda1e9d1b959"
     },
     "agent-4": {
       "bc_id": "bc-eb130341-dc99-4dca-9bed-7a9141046ae1",
@@ -70,11 +71,12 @@
     },
     "agent-5": {
       "bc_id": "bc-e2447cce-49cc-47aa-815b-49c869e8ec4e",
-      "status": "IDLE",
+      "status": "TASKED",
       "pr": 29,
       "head_sha": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
       "readiness": "not_ready",
-      "readiness_reason": "Regression versus main d13c8ab. _essay_attributed rejects a title that is the display name, a body byline even when byline_alias matches, and a single_speaker talk. Three tests/test_backfill.py cases fail. Not included."
+      "readiness_reason": "Follow-up tasked to fix the three backfill regressions and the Node staging import. Head is still f59cb9c until that run pushes.",
+      "follow_up_run": "bc-86c5daf9-6bcd-5c3f-b602-4d09210fa586"
     },
     "agent-6": {
       "bc_id": "bc-11bd48ab-cbe0-4b1c-b5cd-1cac228d66d1",
@@ -97,5 +99,23 @@
     "expires_at": "2026-10-11T20:27:47Z",
     "delivery_count": 1
   },
-  "next_action": "Pull request 31 at 5adde6c remains the partial candidate. Do not merge it to main. Include Agent 5 only after a new head fixes the three backfill regressions. On that merge, keep the BELIEF_CORPUS channel link and do not stack loadReviewPreservation with restoreCoveredDecisions."
+  "next_action": "Wait for the Agent 5 and Agent 3 follow-up pushes. Do not merge PR 31 to main. Include a new Agent 5 head only after the three backfill tests pass. Re-review Agent 3 if their pipeline.yml head moves.",
+  "assigned_tasks": [
+    {
+      "owner": "agent-5",
+      "original_run": "bc-e2447cce-49cc-47aa-815b-49c869e8ec4e",
+      "follow_up_run": "bc-86c5daf9-6bcd-5c3f-b602-4d09210fa586",
+      "pr": 29,
+      "branch": "cursor/source-statement-review-ec4e",
+      "task": "Make the three tests/test_backfill.py cases that pass on main pass again, and make the staging roundtrip runnable in Node CI. Do not delete loadReviewPreservation."
+    },
+    {
+      "owner": "agent-3",
+      "original_run": "bc-e813e836-d988-41a1-98ff-d1a5d48c088b",
+      "follow_up_run": "bc-c69a04a7-f34a-5789-b3c1-dda1e9d1b959",
+      "pr": 27,
+      "branch": "cursor/recurring-refresh-088b",
+      "task": "Add the pipeline workflow npm ci install already present on integration commit 5adde6c."
+    }
+  ]
 }

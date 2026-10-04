@@ -1,0 +1,24 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-04T220426Z",
+  "candidate_state": "partial_candidate_unchanged",
+  "reason": "No head moved. Follow-up tasks were assigned for the Agent 5 test regression and the Agent 3 pipeline install gap.",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "integration_commit": "5adde6ced3842617e57bfcaf2bdf330ed465a233",
+  "assigned_tasks": [
+    {
+      "owner": "agent-5",
+      "follow_up_run": "bc-86c5daf9-6bcd-5c3f-b602-4d09210fa586",
+      "pr": 29,
+      "head_sha_at_assignment": "f59cb9c0326df7393a0c90ae67364fe4ef88e424"
+    },
+    {
+      "owner": "agent-3",
+      "follow_up_run": "bc-c69a04a7-f34a-5789-b3c1-dda1e9d1b959",
+      "pr": 27,
+      "head_sha_at_assignment": "ce07836b27a090da063617708df7b7174745881c"
+    }
+  ],
+  "delivery_note": "Evidence for commit 5adde6c until a new head is reviewed. Do not merge pull requests 31, 30, 27, 26, 25, 22, and 21 as separate copies."
+}
