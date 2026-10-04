@@ -242,9 +242,11 @@
     "status": "not_ready",
     "node_run": 37235827312,
     "pipeline_run": 37235827320,
-    "summary": "Node CI failed test/staging-review.test.ts because python3 data/fixtures/review/roundtrip.py imports the collector stack and the Node job has no defusedxml. Pipeline CI failed tests/test_backfill.py: duplicate numeric suppression expected 1 and got 0, and candidate lead URLs were empty. Not included in 234cc67. Migration 005_participant_host_role.sql is proposed and not applied.",
+    "summary": "Node CI failed test/staging-review.test.ts because python3 data/fixtures/review/roundtrip.py imports the collector stack and the Node job has no defusedxml. The same three backfill tests fail locally on f59cb9c. Not included. Migration 005_participant_host_role.sql is proposed and not applied.",
     "expected": "Existing backfill tests still pass, and the staging roundtrip runs in the Node CI job.",
-    "actual": "ModuleNotFoundError: No module named 'defusedxml' in the Node job. Pipeline assertions assert 0 == 1 and assert [] == ['https://eve...example/talk']."
+    "actual": "Local PYTHONPATH=pipeline python3 -m pytest on those three tests: line 175 len(statements) is 0 where 1 is required; line 256 observations is empty for the Joe Carlsmith byline; line 315 observations is empty where https://events.example/talk is required. Node job also raises ModuleNotFoundError: No module named 'defusedxml'.",
+    "local_command": "PYTHONPATH=pipeline python3 -m pytest tests/test_backfill.py::test_duplicate_numeric_candidate_is_suppressed_and_view_changes_stay_conservative tests/test_backfill.py::test_same_document_revision_and_curated_byline_alias tests/test_backfill.py::test_candidate_leads_stay_out_of_observations_and_unspecified_is_not_a_forecast -q --tb=line",
+    "local_head": "f59cb9c0326df7393a0c90ae67364fe4ef88e424"
   },
   "ownership_overlaps_observed": [
     {

@@ -74,7 +74,7 @@
       "pr": 29,
       "head_sha": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
       "readiness": "not_ready",
-      "readiness_reason": "Pipeline tests/test_backfill.py failed. Node staging roundtrip failed for missing defusedxml. Not included."
+      "readiness_reason": "Local rerun of the three failing tests/test_backfill.py cases on f59cb9c failed the same way: statements length 0, empty Joe Carlsmith observations, and missing https://events.example/talk. Node CI also lacks defusedxml. Not included."
     },
     "agent-6": {
       "bc_id": "bc-11bd48ab-cbe0-4b1c-b5cd-1cac228d66d1",
