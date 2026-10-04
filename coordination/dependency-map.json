@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-04T22:06:05Z",
+  "reviewed_at": "2026-10-04T22:27:55Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -113,7 +113,11 @@
       "id": "question-key-registries-diverge-on-main",
       "severity": "blocker-for-combined-forecast-scenarios",
       "owner": "agent-2",
-      "consumers": ["agent-5", "agent-3", "agent-1"],
+      "consumers": [
+        "agent-5",
+        "agent-3",
+        "agent-1"
+      ],
       "status": "included-in-926e6d4",
       "summary": "Agent 2 head b959a47 is inside candidate 926e6d4. comparability/1.0.0 keeps pipeline keys as families and does not map them onto 2070. Catalog keys stay exact questions. A family joins an exact question only when outcome, condition, deadline, unit, and probability semantics agree. Scenario 5 passed on 926e6d4. Agent 5 must consume this registry. Agent 7 will not add a third mapping.",
       "reproducible_example": {
@@ -137,7 +141,11 @@
       "id": "canonical-export-collapses-source-versions",
       "severity": "resolved-for-published-slug",
       "owner": "agent-3",
-      "consumers": ["agent-5", "agent-6", "agent-1"],
+      "consumers": [
+        "agent-5",
+        "agent-6",
+        "agent-1"
+      ],
       "status": "measured-pass-on-0f02676",
       "summary": "On candidate 0f02676, scenario 2 passes when the changed document keeps the previous source row and adds a new slug from source_item_slug for content_version > 1, and the statement points at that current item. The earlier failure kept the version-1 fixture slug, so ON CONFLICT (slug) replaced the only row. Agent 7 did not change product identity code.",
       "reproducible_example": {
@@ -156,7 +164,10 @@
       "id": "verified-withdrawal-stays-in-distribution",
       "severity": "blocker-for-scenario-6",
       "owner": "agent-2",
-      "consumers": ["agent-1", "agent-5"],
+      "consumers": [
+        "agent-1",
+        "agent-5"
+      ],
       "status": "measured-pass-on-926e6d4",
       "summary": "On candidate 926e6d4, a human-verified retract whose target is not an eligible replacement number leaves the withdrawn estimate out of the distribution with reason withdrawn. Scenario 6 passed. The relationship enum is unchanged.",
       "reproducible_example": {
@@ -164,7 +175,9 @@
         "exit_code": 1,
         "result": "coordination/reproductions/results-2026-10-04T203514Z.json",
         "expected": "coord-withdrawn-estimate is absent from included",
-        "actual_included": ["coord-withdrawn-estimate"],
+        "actual_included": [
+          "coord-withdrawn-estimate"
+        ],
         "actual_withdrawal_exclusion": "statement_type"
       },
       "requested_resolution": "Agent 2 defines how a verified withdrawal with no replacement number leaves the distribution, and implements that in the trend engine. Agent 7 will not change forecast semantics on the integration branch.",
@@ -174,7 +187,9 @@
       "id": "reimport-clobbers-review-and-replay-is-noop",
       "severity": "blocker-for-scenario-3",
       "owner": "agent-3",
-      "consumers": ["agent-5"],
+      "consumers": [
+        "agent-5"
+      ],
       "status": "measured-pass-on-0f02676",
       "summary": "On candidate 0f02676, approving jonah-extinction-review-2024 and reimporting the same synthetic document leaves review_state human_verified and the statement publicly readable. Scenario 3 passed.",
       "reproducible_example": {
@@ -189,7 +204,9 @@
       "id": "review-does-not-move-public-last-modified",
       "severity": "blocker-for-scenario-7",
       "owner": "agent-6",
-      "consumers": ["agent-1"],
+      "consumers": [
+        "agent-1"
+      ],
       "status": "measured-pass-on-234cc67",
       "summary": "On candidate 234cc67, a review-only change keeps dataset_imports.imported_at the same, changes the ETag, and a client echoing the previous Last-Modified receives 200 rather than 304. Scenario 7 passed. The queries.ts resolution kept Agent 6's read-snapshot import and Agent 2's trend-query exports.",
       "reproducible_example": {
@@ -205,7 +222,9 @@
       "id": "agent-1-name-picker-commits-previous-suggestion",
       "severity": "blocks-agent-1-readiness",
       "owner": "agent-1",
-      "consumers": ["agent-7"],
+      "consumers": [
+        "agent-7"
+      ],
       "status": "fixed-on-af6ec9b-and-included-in-129036a",
       "summary": "On 33c9c9a2 the statement name picker could commit the first option of the previous suggestion list. Head 99f3b30 clears suggestions when the query changes. Head af6ec9b makes the source-item time sentence and the profile journey locators unambiguous. Combined Playwright on 129036a passed.",
       "reproducible_example": {
@@ -236,30 +255,39 @@
   },
   "agent_5_test_failures": {
     "id": "agent-5-staging-review-ci-failed",
-    "head_sha": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
+    "head_sha": "bfe99a8b533ae041f36127b537c4ef43df883109",
     "pr": 29,
     "owner": "agent-5",
-    "status": "not_ready",
-    "node_run": 37235827312,
-    "pipeline_run": 37235827320,
-    "summary": "f59cb9c regresses three tests/test_backfill.py cases that pass on main d13c8ab. _collect_page drops the page when _essay_attributed returns false. That helper reads only meta author tags, a title of the form 'Name — rest', an alias in the title or lead name, or an owner host. It ignores a body byline and does not treat single_speaker as admission. Not included. Migration 005_participant_host_role.sql is proposed and not applied.",
+    "status": "fixed-on-bfe99a8-and-included-in-b4cf230",
+    "prior_head": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
+    "summary": "bfe99a8 admits an exact title, a curated two-part alias on a leading By First Last line, and a single-speaker talk. A body-only name and a family-name-only alias stay unresolved. The staging roundtrip parses feeds without importing defusedxml. Included in b4cf230.",
     "expected": "The three backfill tests that pass on main d13c8ab still pass, and the staging roundtrip runs in the Node CI job.",
-    "actual": "On f59cb9c, title 'Ada Lovelace' with the estimate only in the body yields no statement; body text 'By Joe Carlsmith' with byline_alias 'Joe Carlsmith' yields no observation; a single_speaker talk titled 'Ada Lovelace keynote' yields no observation. Node job also raises ModuleNotFoundError: No module named 'defusedxml'.",
+    "actual": "Those three tests passed on bfe99a8. GitHub CI run 37239907090 on b4cf230 succeeded. The refresh fixture needed author metadata because a body mention is no longer authorship.",
     "local_command": "PYTHONPATH=pipeline python3 -m pytest tests/test_backfill.py::test_duplicate_numeric_candidate_is_suppressed_and_view_changes_stay_conservative tests/test_backfill.py::test_same_document_revision_and_curated_byline_alias tests/test_backfill.py::test_candidate_leads_stay_out_of_observations_and_unspecified_is_not_a_forecast -q --tb=line",
-    "local_head": "f59cb9c0326df7393a0c90ae67364fe4ef88e424"
+    "local_head": "bfe99a8b533ae041f36127b537c4ef43df883109"
   },
   "ownership_overlaps_observed": [
     {
       "id": "belief-corpus-doc-agent-2-and-agent-4",
-      "paths": ["docs/BELIEF_CORPUS.md"],
-      "owners": ["agent-2", "agent-4"],
+      "paths": [
+        "docs/BELIEF_CORPUS.md"
+      ],
+      "owners": [
+        "agent-2",
+        "agent-4"
+      ],
       "status": "auto-merges-onto-129036a",
       "summary": "Agent 4 edits the cohort introduction. Agent 2 edits the question-key section. merge-tree of b959a47 onto 129036a is clean."
     },
     {
       "id": "queries-ts-conflict-agent-2-and-agent-6",
-      "paths": ["packages/db/src/queries.ts"],
-      "owners": ["agent-2", "agent-6"],
+      "paths": [
+        "packages/db/src/queries.ts"
+      ],
+      "owners": [
+        "agent-2",
+        "agent-6"
+      ],
       "status": "resolved-on-234cc67",
       "summary": "Candidate 234cc67 keeps Agent 6's read-snapshot import and Sql type and Agent 2's export of FORECAST_INPUT_SQL, loadTrendInputs, mapForecastRow, resolveTrendMethods, and trendMethodKey. public-read.ts auto-merged.",
       "mechanical_resolution_when_both_ready": "Keep Agent 6's read-snapshot import and Sql type, and keep Agent 2's export of FORECAST_INPUT_SQL, loadTrendInputs, mapForecastRow, resolveTrendMethods, and trendMethodKey."
@@ -270,42 +298,77 @@
         "docs/requests/agent-1-validator-copy.md",
         "docs/requests/agent-2-single-trend-lookup.md"
       ],
-      "owners": ["agent-6"],
+      "owners": [
+        "agent-6"
+      ],
       "status": "returned-to-owners",
       "summary": "Agent 6 asks Agent 1 to stop saying Last-Modified comes from import time, and asks Agent 2 for a single-method getTrend. Agent 2's published head still computes every method. Agent 7 does not implement either request."
     },
     {
       "id": "belief-corpus-doc-agent-5",
-      "paths": ["docs/BELIEF_CORPUS.md"],
-      "owners": ["agent-5", "agent-2", "agent-4"],
-      "status": "mechanical-conflict-against-5adde6c",
-      "summary": "merge-tree of f59cb9c onto 5adde6c conflicts in one sentence of docs/BELIEF_CORPUS.md. Agent 4 adds a link to CHANNEL_INTEGRATION_2026_10.md. Agent 5 has the same sentence without that link. When Agent 5 is included, keep the linked sentence. Agent 5 is not included because tests/test_backfill.py fails."
+      "paths": [
+        "docs/BELIEF_CORPUS.md"
+      ],
+      "owners": [
+        "agent-5",
+        "agent-2",
+        "agent-4"
+      ],
+      "status": "resolved-on-b4cf230",
+      "summary": "b4cf230 keeps Agent 4's link to CHANNEL_INTEGRATION_2026_10.md and Agent 5's extraction and attribution sentences. Agent 2's question-key section stayed in place."
     },
     {
       "id": "import-ts-agent-3-and-agent-5",
-      "paths": ["packages/db/src/import.ts"],
-      "owners": ["agent-3", "agent-5"],
-      "status": "domain-overlap-not-included",
-      "summary": "merge-tree of f59cb9c onto 5adde6c conflicts in packages/db/src/import.ts. Agent 3 keeps loadReviewPreservation during upsert. Agent 5 adds restoreCoveredDecisions after upsert and exports candidateKeyForCanonicalStatement. The export can sit beside statementCandidateKey. The two review-replay paths are both owners' policy and must not be stacked without them. docs/DATA_MODEL.md auto-merges the host role note. Migration 005_participant_host_role.sql does not collide with 004."
+      "paths": [
+        "packages/db/src/import.ts"
+      ],
+      "owners": [
+        "agent-3",
+        "agent-5"
+      ],
+      "status": "resolved-on-b4cf230",
+      "summary": "b4cf230 keeps loadReviewPreservation during upsert, the evidence sequence offset, restoreCoveredDecisions with skipSlugs, and candidateKeyForCanonicalStatement. Migration 005_participant_host_role.sql follows 004."
     },
     {
       "id": "sources-page-agent-1-and-agent-3",
-      "paths": ["apps/web/app/sources/page.tsx"],
-      "owners": ["agent-1", "agent-3"],
+      "paths": [
+        "apps/web/app/sources/page.tsx"
+      ],
+      "owners": [
+        "agent-1",
+        "agent-3"
+      ],
       "status": "resolved-on-0f02676",
       "summary": "Candidate 0f02676 keeps Agent 1's wording: Last successful collection, then Last check. Both sides showed the same two timestamps."
     },
     {
       "id": "queries-ts-agent-3-and-agent-6",
-      "paths": ["packages/db/src/queries.ts"],
-      "owners": ["agent-3", "agent-6"],
+      "paths": [
+        "packages/db/src/queries.ts"
+      ],
+      "owners": [
+        "agent-3",
+        "agent-6"
+      ],
       "status": "resolved-on-0f02676",
       "summary": "Candidate 0f02676 keeps Agent 6's sequential coverage queries on the snapshot client and adds Agent 3's max(src.last_checked_at)."
+    },
+    {
+      "id": "refresh-fixture-attribution",
+      "paths": [
+        "tests/test_refresh.py"
+      ],
+      "owners": [
+        "agent-3",
+        "agent-5"
+      ],
+      "status": "resolved-on-b4cf230",
+      "summary": "Agent 5 rejects a body mention as authorship. Agent 3's refresh essays named Refresh Ada only in the body, so test_refresh_converges_and_publishes_truthful_outcomes found zero numeric statements. The integration commit adds meta author Refresh Ada. The generated JSON fixtures did not change."
     }
   ],
   "migration_reservation": {
-    "next_number": "005",
-    "claimed": "004_refresh_runs.sql is included on 0f02676 from Agent 3. Agent 5 head f59cb9c proposes 005_participant_host_role.sql and is not included.",
+    "next_number": "006",
+    "claimed": "004_refresh_runs.sql and 005_participant_host_role.sql are both included on b4cf230. The next free number is 006.",
     "rule": "The first workstream that adds a migration in an included commit claims the next integer. A later workstream rebases onto the next free number on the integration branch. Two files with the same number are a mechanical conflict Agent 7 may renumber, recording the original number, the new number, and the owner."
   }
 }

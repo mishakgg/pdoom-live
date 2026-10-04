@@ -2,29 +2,29 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-04T220605Z",
-  "reviewed_at": "2026-10-04T22:06:05Z",
-  "previous_review_id": "2026-10-04T220426Z",
-  "status_path": "coordination/status/status-2026-10-04T220605Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-04T220605Z.json",
+  "review_id": "2026-10-04T222755Z",
+  "reviewed_at": "2026-10-04T22:27:55Z",
+  "previous_review_id": "2026-10-04T220605Z",
+  "status_path": "coordination/status/status-2026-10-04T222755Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-04T222755Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "origin_main_subject": "Match deploy smoke to the public status bar and discovery routes (#19)",
   "integration_branch": "cursor/partial-integration-refresh-a32e",
   "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/31",
-  "integration_commit": "b7bce82cb3975fe9b572ec0f8430aaeef60f7343",
-  "integration_tree": "cf1f517d5cc6ad008d7abcdd95317d9ddd728c90",
+  "integration_commit": "b4cf2307cb6e40240d5824131996ace942051f83",
+  "integration_tree": "c717a0ddde5228fe87bfd9b6e8d7c9526162b28a",
   "previous_integration": {
     "branch": "cursor/partial-integration-refresh-a32e",
     "pr": "https://github.com/mishakgg/pdoom-live/pull/31",
-    "commit": "5adde6ced3842617e57bfcaf2bdf330ed465a233",
-    "status": "same_tree_as_b7bce82"
+    "commit": "b7bce82cb3975fe9b572ec0f8430aaeef60f7343",
+    "status": "superseded_by_b4cf230"
   },
   "coordination_branch": "cursor/integration-coordination-a32e",
   "coordination_pr": "https://github.com/mishakgg/pdoom-live/pull/20",
   "run_lock": {
-    "holder": "agent-7",
-    "acquired_at": "2026-10-04T22:19:40Z",
+    "holder": null,
+    "acquired_at": null,
     "expires_after_seconds": 7200,
     "protocol": "Set holder and acquired_at before mutating an integration branch. Clear both in the checkpoint commit that finishes the review. Do not start a second integration while a lock is younger than expires_after_seconds. The hourly timer is the primary overlap control because it fires only when this agent is idle."
   },
@@ -34,9 +34,9 @@
     "agent-2": "b959a47f88f2c3d6c948072e038a082847aa666f",
     "agent-3": "85ec81dad4d2de7c49e4600af5e0c413b792818e",
     "agent-4": "6c23609f05bb958a58f235ba34c0180b3579c109",
-    "agent-5": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
+    "agent-5": "bfe99a8b533ae041f36127b537c4ef43df883109",
     "agent-6": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e",
-    "integration": "b7bce82cb3975fe9b572ec0f8430aaeef60f7343"
+    "integration": "b4cf2307cb6e40240d5824131996ace942051f83"
   },
   "workstreams": {
     "agent-1": {
@@ -71,11 +71,11 @@
     },
     "agent-5": {
       "bc_id": "bc-e2447cce-49cc-47aa-815b-49c869e8ec4e",
-      "status": "TASKED",
+      "status": "IDLE",
       "pr": 29,
-      "head_sha": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
-      "readiness": "not_ready",
-      "readiness_reason": "Follow-up tasked to fix the three backfill regressions and the Node staging import. Head is still f59cb9c until that run pushes.",
+      "head_sha": "bfe99a8b533ae041f36127b537c4ef43df883109",
+      "readiness": "included_in_six_agent_candidate",
+      "readiness_reason": "Follow-up bfe99a8 passed the three backfill tests. Merged as 9fac8e5. Integration commit b4cf230 adds author metadata to the refresh fixture so those essays stay admitted.",
       "follow_up_run": "bc-86c5daf9-6bcd-5c3f-b602-4d09210fa586"
     },
     "agent-6": {
@@ -86,12 +86,10 @@
       "readiness": "included_in_partial_candidate"
     }
   },
-  "readiness": "partial_candidate_agents_1_2_3_4_and_6",
-  "integration_attempt": "partial_candidate_recorded",
-  "blockers": [
-    "agent-5-backfill-and-staging-ci-failed"
-  ],
-  "measurements": "coordination/reproductions/results-2026-10-04T215309Z.json",
+  "readiness": "six_agent_candidate_verified",
+  "integration_attempt": "six_agent_candidate_verified",
+  "blockers": [],
+  "measurements": "coordination/reproductions/results-2026-10-04T222755Z.json",
   "scheduler": {
     "hourly_review": "active",
     "subscription_id": "sub_a7f92930-5085-4d07-a8dd-d455f4acf8d6",
@@ -99,7 +97,7 @@
     "expires_at": "2026-10-11T20:27:47Z",
     "delivery_count": 1
   },
-  "next_action": "Lock held while merging Agent 5 head bfe99a8 onto the integration branch. The three backfill tests passed on that head. Do not start a second integration.",
+  "next_action": "Pull request 31 at b4cf230 is the six-workstream candidate. Do not merge it to main. Do not merge it together with #21, #22, #25, #26, #27, #29, or #30.",
   "assigned_tasks": [
     {
       "owner": "agent-5",
