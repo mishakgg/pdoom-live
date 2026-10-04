@@ -1,0 +1,43 @@
+{
+  "reviewed_at": "2026-10-04T20:35:14Z",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "export_and_question_keys": {
+    "command": "PYTHONPATH=pipeline python3 coordination/reproductions/export-version-and-question-keys.py",
+    "exit_code": 0,
+    "question_keys": {
+      "exported_key_in_product_taxonomy": false,
+      "exported_question_key": "extinction_unconditional",
+      "overlap": [],
+      "pipeline_key_count": 23,
+      "product_key_count": 13
+    },
+    "same_export_two_observations": {
+      "duplicate_slugs": true,
+      "item_count": 2,
+      "slugs": ["item-4722f4dd3d6d6ca967cc", "item-4722f4dd3d6d6ca967cc"]
+    },
+    "same_url_separate_exports": {
+      "changed_count": 0,
+      "content_version_v1": 1,
+      "content_version_v2": 1,
+      "hash_v1": "832864603d3905eb60f8fe19557fe7fb467e3bc9fb486dae28d838a209288106",
+      "hash_v2": "d11b889d5330a443e0de9a36d42f83a316e4e9ac2a60c8a115bc944a21ab66ef",
+      "hashes_differ": true,
+      "is_current_v2": true,
+      "same_slug": true,
+      "slug_v1": "item-4722f4dd3d6d6ca967cc",
+      "slug_v2": "item-4722f4dd3d6d6ca967cc"
+    }
+  },
+  "withdrawal": {
+    "command": "npx tsx coordination/reproductions/withdrawal-without-replacement.ts",
+    "exit_code": 1,
+    "scenario_5_other_question_excluded": true,
+    "scenario_6_withdrawn_estimate_excluded": false,
+    "included": ["coord-withdrawn-estimate"],
+    "exclusion_reasons": {
+      "coord-other-question": "question_key_mismatch",
+      "coord-withdrawal": "statement_type"
+    }
+  }
+}

@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-04T20:26:48Z",
+  "reviewed_at": "2026-10-04T20:35:14Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -127,7 +127,44 @@
         "approval_rule": "docs/CURATION.md requires the question key to be one of QUESTION_TAXONOMY"
       },
       "requested_resolution": "Agent 2 publishes one registry and an explicit mapping or replacement for pipeline keys. Agent 5 and Agent 3 consume that registry. Agent 7 will not invent a third taxonomy or silently retarget keys during integration.",
-      "integration_rule": "Do not merge extraction output into the product trend path until this mapping is explicit in the included commits."
+      "integration_rule": "Do not merge extraction output into the product trend path until this mapping is explicit in the included commits.",
+      "measurement": "coordination/reproductions/results-2026-10-04T203514Z.json question_keys. overlap is empty. exported_key_in_product_taxonomy is false."
+    },
+    {
+      "id": "canonical-export-collapses-source-versions",
+      "severity": "blocker-for-scenario-2-version-history",
+      "owner": "agent-3",
+      "consumers": ["agent-5", "agent-6", "agent-1"],
+      "status": "pre-existing-on-main",
+      "summary": "The in-memory observation store keeps a new hash as a new version. export_corpus emits one slug per canonical URL, always content_version 1, and changed_count 0. Two observations of the same URL in one export produce two source items with the same slug. The importer upserts source items by slug, so a later import replaces the hash instead of retaining the previous version row.",
+      "reproducible_example": {
+        "command": "PYTHONPATH=pipeline python3 coordination/reproductions/export-version-and-question-keys.py",
+        "result": "coordination/reproductions/results-2026-10-04T203514Z.json",
+        "same_slug": true,
+        "content_version": 1,
+        "duplicate_slugs_in_one_document": true,
+        "importer": "packages/db/src/import.ts ON CONFLICT (slug) DO UPDATE content_hash"
+      },
+      "requested_resolution": "Agent 3's canonical export should emit distinct version identity for a changed hash and keep the previous version addressable. Agent 7 will not invent a second slug scheme during integration.",
+      "note": "Stale-approval detection in packages/db/src/coverage.ts can still demote human_verified when the stored decision hash differs from the current row. That does not preserve the previous source version."
+    },
+    {
+      "id": "verified-withdrawal-stays-in-distribution",
+      "severity": "blocker-for-scenario-6",
+      "owner": "agent-2",
+      "consumers": ["agent-1", "agent-5"],
+      "status": "pre-existing-on-main",
+      "summary": "A human-verified retract from an explicit numeric estimate to a later qualitative withdrawal, with no replacement number, leaves the withdrawn probability inside the public distribution. The withdrawal is excluded as statement_type. Supersession only counts when the retract target is itself an eligible numeric estimate.",
+      "reproducible_example": {
+        "command": "npx tsx coordination/reproductions/withdrawal-without-replacement.ts",
+        "exit_code": 1,
+        "result": "coordination/reproductions/results-2026-10-04T203514Z.json",
+        "expected": "coord-withdrawn-estimate is absent from included",
+        "actual_included": ["coord-withdrawn-estimate"],
+        "actual_withdrawal_exclusion": "statement_type"
+      },
+      "requested_resolution": "Agent 2 defines how a verified withdrawal with no replacement number leaves the distribution, and implements that in the trend engine. Agent 7 will not change forecast semantics on the integration branch.",
+      "scenario_5_on_same_fixture": "A different question key was excluded as question_key_mismatch. That separation already holds on main."
     }
   ],
   "ownership_overlaps_observed": [],
