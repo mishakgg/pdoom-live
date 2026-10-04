@@ -23,8 +23,8 @@
   "coordination_branch": "cursor/integration-coordination-a32e",
   "coordination_pr": "https://github.com/mishakgg/pdoom-live/pull/20",
   "run_lock": {
-    "holder": null,
-    "acquired_at": null,
+    "holder": "agent-7",
+    "acquired_at": "2026-10-04T22:19:40Z",
     "expires_after_seconds": 7200,
     "protocol": "Set holder and acquired_at before mutating an integration branch. Clear both in the checkpoint commit that finishes the review. Do not start a second integration while a lock is younger than expires_after_seconds. The hourly timer is the primary overlap control because it fires only when this agent is idle."
   },
@@ -99,7 +99,7 @@
     "expires_at": "2026-10-11T20:27:47Z",
     "delivery_count": 1
   },
-  "next_action": "Pull request 31 at b7bce82 is the current partial candidate. Its tree matches 5adde6c. Do not merge it to main. Include Agent 5 only after the follow-up run pushes a head that passes the three backfill tests.",
+  "next_action": "Lock held while merging Agent 5 head bfe99a8 onto the integration branch. The three backfill tests passed on that head. Do not start a second integration.",
   "assigned_tasks": [
     {
       "owner": "agent-5",
