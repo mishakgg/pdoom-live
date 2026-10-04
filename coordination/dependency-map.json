@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-04T21:55:36Z",
+  "reviewed_at": "2026-10-04T21:57:30Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -278,8 +278,15 @@
       "id": "belief-corpus-doc-agent-5",
       "paths": ["docs/BELIEF_CORPUS.md"],
       "owners": ["agent-5", "agent-2", "agent-4"],
-      "status": "content-conflict-not-included",
-      "summary": "Agent 5 head f59cb9c conflicts with candidate 234cc67 in docs/BELIEF_CORPUS.md. Agent 5 is not included because its CI tests failed."
+      "status": "mechanical-conflict-against-5adde6c",
+      "summary": "merge-tree of f59cb9c onto 5adde6c conflicts in one sentence of docs/BELIEF_CORPUS.md. Agent 4 adds a link to CHANNEL_INTEGRATION_2026_10.md. Agent 5 has the same sentence without that link. When Agent 5 is included, keep the linked sentence. Agent 5 is not included because tests/test_backfill.py fails."
+    },
+    {
+      "id": "import-ts-agent-3-and-agent-5",
+      "paths": ["packages/db/src/import.ts"],
+      "owners": ["agent-3", "agent-5"],
+      "status": "domain-overlap-not-included",
+      "summary": "merge-tree of f59cb9c onto 5adde6c conflicts in packages/db/src/import.ts. Agent 3 keeps loadReviewPreservation during upsert. Agent 5 adds restoreCoveredDecisions after upsert and exports candidateKeyForCanonicalStatement. The export can sit beside statementCandidateKey. The two review-replay paths are both owners' policy and must not be stacked without them. docs/DATA_MODEL.md auto-merges the host role note. Migration 005_participant_host_role.sql does not collide with 004."
     },
     {
       "id": "sources-page-agent-1-and-agent-3",

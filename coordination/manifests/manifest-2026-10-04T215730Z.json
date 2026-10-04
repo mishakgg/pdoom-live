@@ -1,0 +1,22 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-04T215730Z",
+  "candidate_state": "partial_candidate_unchanged",
+  "reason": "No head moved. merge-tree of Agent 5 f59cb9c onto 5adde6c was recorded and not applied.",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "integration_commit": "5adde6ced3842617e57bfcaf2bdf330ed465a233",
+  "agent_5_head": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
+  "merge_tree_conflicts": [
+    {
+      "path": "docs/BELIEF_CORPUS.md",
+      "resolution_when_included": "Keep the sentence that links CHANNEL_INTEGRATION_2026_10.md."
+    },
+    {
+      "path": "packages/db/src/import.ts",
+      "resolution_when_included": "Do not stack loadReviewPreservation and restoreCoveredDecisions. Owners must choose the review replay. candidateKeyForCanonicalStatement can sit beside statementCandidateKey."
+    }
+  ],
+  "auto_merged": ["docs/DATA_MODEL.md"],
+  "delivery_note": "Evidence for commit 5adde6c. Do not merge pull requests 31, 30, 27, 26, 25, 22, and 21 as separate copies."
+}

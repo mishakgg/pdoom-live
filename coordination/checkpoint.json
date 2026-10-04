@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-04T215536Z",
-  "reviewed_at": "2026-10-04T21:55:36Z",
-  "previous_review_id": "2026-10-04T215309Z",
-  "status_path": "coordination/status/status-2026-10-04T215536Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-04T215536Z.json",
+  "review_id": "2026-10-04T215730Z",
+  "reviewed_at": "2026-10-04T21:57:30Z",
+  "previous_review_id": "2026-10-04T215536Z",
+  "status_path": "coordination/status/status-2026-10-04T215730Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-04T215730Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "origin_main_subject": "Match deploy smoke to the public status bar and discovery routes (#19)",
@@ -97,5 +97,5 @@
     "expires_at": "2026-10-11T20:27:47Z",
     "delivery_count": 1
   },
-  "next_action": "Pull request 31 at 5adde6c remains the partial candidate. Do not merge it to main. Include Agent 5 only after a new head makes the three tests/test_backfill.py cases that pass on main pass again. Do not change their attribution rule on the integration branch."
+  "next_action": "Pull request 31 at 5adde6c remains the partial candidate. Do not merge it to main. Include Agent 5 only after a new head fixes the three backfill regressions. On that merge, keep the BELIEF_CORPUS channel link and do not stack loadReviewPreservation with restoreCoveredDecisions."
 }
