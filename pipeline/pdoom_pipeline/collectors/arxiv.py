@@ -4,9 +4,8 @@ from __future__ import annotations
 
 from urllib.parse import urlencode
 
-import defusedxml.ElementTree as ET
-
 from pdoom_pipeline.contracts import AuthorCandidate, Segment, SourceObservation, excerpt
+from pdoom_pipeline.safe_xml import XmlParseError, fromstring
 from pdoom_pipeline.errors import CollectorFailure
 from pdoom_pipeline.fetch import SafeFetcher
 from pdoom_pipeline.urls import arxiv_id_from_url, canonicalize_url
@@ -36,8 +35,8 @@ class ArxivCollector:
 
     def parse(self, payload: bytes, *, source_identity: str, observed_at: str) -> list[SourceObservation]:
         try:
-            root = ET.fromstring(payload)
-        except ET.ParseError as exc:
+            root = fromstring(payload)
+        except XmlParseError as exc:
             raise CollectorFailure("invalid_content", f"malformed arxiv feed: {exc}") from exc
         observations: list[SourceObservation] = []
         for entry in list(root):

@@ -6,11 +6,11 @@ from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 from xml.etree import ElementTree as UnsafeElementTree
 
-import defusedxml.ElementTree as ET
-
 from pdoom_pipeline.contracts import AuthorCandidate, Segment, SourceObservation, excerpt
 from pdoom_pipeline.errors import CollectorFailure
 from pdoom_pipeline.fetch import FetchResult, SafeFetcher
+from pdoom_pipeline.safe_xml import XmlParseError as _XmlParseError
+from pdoom_pipeline.safe_xml import fromstring as _fromstring
 from pdoom_pipeline.urls import canonicalize_url
 
 COLLECTOR_VERSION = "rss-0.1.0"
@@ -92,8 +92,8 @@ class RssCollector:
         if max_items < 1 or max_items > 500:
             raise CollectorFailure("invalid_content", "max_items out of range")
         try:
-            root = ET.fromstring(payload)
-        except ET.ParseError as exc:
+            root = _fromstring(payload)
+        except _XmlParseError as exc:
             raise CollectorFailure("invalid_content", f"malformed feed: {exc}") from exc
         items = _entries(root)
         observations: list[SourceObservation] = []
@@ -203,8 +203,8 @@ def discover_feed_urls(html: str) -> list[str]:
     if "alternate" not in lowered:
         return urls
     try:
-        root = ET.fromstring(html.encode("utf-8"))
-    except ET.ParseError:
+        root = _fromstring(html.encode("utf-8"))
+    except _XmlParseError:
         return urls
     for element in root.iter():
         rel = (element.attrib.get("rel") or "").lower().split()

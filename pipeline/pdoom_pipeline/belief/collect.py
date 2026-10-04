@@ -13,6 +13,7 @@ from pdoom_pipeline.belief.changes import view_change_candidates
 from pdoom_pipeline.belief.pages import (
     article_text,
     host_of,
+    opening_byline,
     page_authors,
     page_language,
     page_title,
@@ -145,7 +146,7 @@ def _collect_page(lead, by_slug, fetch_bytes, observed_at, observations, stateme
     marker = lead.get("cut_before")
     if marker and marker in text:
         text = text[: text.index(marker)]
-    if not _essay_attributed(lead, person, raw):
+    if not _page_attributed(lead, person, raw):
         runs.append({"status": "failure", "kind": kind, "url": lead["url"], "error_class": "attribution_unresolved"})
         source_leads.append(_lead_row(lead, "attribution_unresolved", False))
         return
@@ -218,17 +219,29 @@ def _robots_text(fetch_bytes, url: str, cache: dict, runs: list[dict]) -> str | 
     return text
 
 
+def _page_attributed(lead: dict, person: dict, raw: str) -> bool:
+    """Essays need authorship. A curated single-speaker talk is that person's appearance."""
+    if lead.get("kind") == "talk" and lead.get("single_speaker"):
+        return True
+    return _essay_attributed(lead, person, raw)
+
+
 def _essay_attributed(lead: dict, person: dict, raw: str) -> bool:
-    """Author metadata or a title byline. A name in the article body is not authorship."""
+    """Author metadata, a title byline, or an exact title. A name only in the body is not authorship."""
     authors = page_authors(raw)
     title = page_title(raw) if "<html" in (raw or "")[:2000].lower() else None
     if authors:
         return any(_author_matches(lead, person, author) for author in authors)
+    if title and same_person_name(title, person["display_name"]):
+        return True
     byline = title_byline(title)
     if byline and _author_matches(lead, person, byline):
         return True
     chrome = " ".join(part for part in [title or "", lead.get("name") or ""] if part)
     if _alias_or_handle(lead, person, chrome):
+        return True
+    body_byline = opening_byline(raw)
+    if body_byline and _alias_or_handle(lead, person, body_byline):
         return True
     return _host_names_person(lead, person)
 

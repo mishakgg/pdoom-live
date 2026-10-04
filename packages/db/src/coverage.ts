@@ -80,8 +80,14 @@ const coveredDecisionsSql = `
  * evidence is either the accepted span or the original machine span. Changed
  * evidence does not inherit an old approval. Machine-suggested relationships
  * are left untouched unless the operator decision names that same pair and type.
+ * Slugs already rewritten by loadReviewPreservation are skipped here so the same
+ * statement, forecast, and evidence columns are not corrected twice.
  */
-export async function restoreCoveredDecisions(client: pg.PoolClient): Promise<void> {
+export async function restoreCoveredDecisions(
+  client: pg.PoolClient,
+  options?: { skipSlugs?: readonly string[] },
+): Promise<void> {
+  const skipSlugs = options?.skipSlugs ?? [];
   await client.query(`
     ${coveredDecisionsSql}
     UPDATE statements s
@@ -96,7 +102,8 @@ export async function restoreCoveredDecisions(client: pg.PoolClient): Promise<vo
         END
     FROM covered c
     WHERE s.id = c.statement_id
-  `);
+      AND NOT (s.slug = ANY($1::text[]))
+  `, [skipSlugs]);
   await client.query(`
     ${coveredDecisionsSql}
     UPDATE evidence_segments e
@@ -122,12 +129,13 @@ export async function restoreCoveredDecisions(client: pg.PoolClient): Promise<vo
     FROM covered c
     JOIN statements s ON s.id = c.statement_id
     WHERE e.id = s.evidence_segment_id
+      AND NOT (s.slug = ANY($1::text[]))
       AND (
         c.corrections_json ? 'evidence_text'
         OR c.corrections_json ? 'start_char'
         OR c.corrections_json ? 'end_char'
       )
-  `);
+  `, [skipSlugs]);
   await client.query(`
     ${coveredDecisionsSql}
     UPDATE forecasts f
@@ -162,7 +170,8 @@ export async function restoreCoveredDecisions(client: pg.PoolClient): Promise<vo
         unit = CASE WHEN c.corrections_json ? 'unit' THEN c.corrections_json->>'unit' ELSE f.unit END
     FROM covered c
     WHERE f.statement_id = c.statement_id
-  `);
+      AND c.statement_id NOT IN (SELECT id FROM statements WHERE slug = ANY($1::text[]))
+  `, [skipSlugs]);
   await client.query(`
     ${coveredDecisionsSql}
     INSERT INTO statement_relationships (

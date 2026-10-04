@@ -176,6 +176,16 @@ def title_byline(title: str | None) -> str | None:
     return " ".join(match.group(1).split())
 
 
+def opening_byline(raw: str) -> str | None:
+    """A leading 'By First Last' line. A name later in the article is not a byline."""
+    text = article_text(raw or "", max_chars=4_000)
+    for line in text.splitlines():
+        match = re.match(r"^By\s+([A-Z][\w.''’-]+(?:\s+[A-Z][\w.''’-]+){1,4})\b", line.strip())
+        if match:
+            return " ".join(match.group(1).split())
+    return None
+
+
 def page_language(raw: str) -> str | None:
     match = re.search(r"<html[^>]*\blang=[\"']([A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?)", raw or "", flags=re.I)
     if not match:
