@@ -93,6 +93,16 @@ describe("public presentation helpers", () => {
     })).toBe("Span not recorded · Text");
   });
 
+  it("reads a media span as a clock position", () => {
+    expect(evidenceSpan({
+      start_ms: 1_860_000,
+      end_ms: null,
+      start_char: null,
+      end_char: null,
+      segment_kind: "transcript",
+    })).toBe("31:00–unknown · Transcript");
+  });
+
   it("keeps long tokens inside the viewport rules", () => {
     const css = readFileSync("apps/web/app/globals.css", "utf8");
     expect(css).toContain("overflow-wrap: anywhere");

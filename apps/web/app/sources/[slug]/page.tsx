@@ -1,4 +1,5 @@
 import { isIndexableReviewState } from "@pdoom/contracts";
+import { Breadcrumb } from "@/components/breadcrumb";
 import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { ExternalLink } from "@/components/statement-bits";
@@ -47,6 +48,7 @@ export default async function SourcePage({ params }: { params: Promise<{ slug: s
           })}
         />
       ) : null}
+      <Breadcrumb items={[{ href: "/sources", label: "Sources" }, { label: source.name }]} />
       <p className="kicker">{phraseLabel(source.source_type)} · {phraseLabel(source.collection_method)} · {freshnessLabel(source.freshness)}</p>
       <h1>{source.name}</h1>
       {source.rights_notes ? <p className="lede">{source.rights_notes}</p> : <p className="lede">No rights note is recorded for this source.</p>}

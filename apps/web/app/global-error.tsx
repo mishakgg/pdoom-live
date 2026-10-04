@@ -12,9 +12,9 @@ export default function GlobalError({
 }) {
   return (
     <html lang="en">
-      <body style={{ margin: 0, background: "#f3efe6", color: "#1c1915", fontFamily: "Georgia, serif" }}>
+      <body style={{ margin: 0, background: "#f3f6f4", color: "#17211e", fontFamily: "\"Public Sans\", \"Segoe UI\", sans-serif", lineHeight: 1.55 }}>
         <main style={{ maxWidth: "40rem", margin: "0 auto", padding: "2rem 1.25rem" }}>
-          <p style={{ fontFamily: "ui-monospace, monospace", letterSpacing: "0.08em", textTransform: "uppercase", fontSize: "0.75rem" }}>
+          <p style={{ letterSpacing: "0.06em", textTransform: "uppercase", fontSize: "0.78rem", fontWeight: 700, color: "#3e4c48" }}>
             Application error
           </p>
           <h1>{APPLICATION_ERROR_TITLE}</h1>

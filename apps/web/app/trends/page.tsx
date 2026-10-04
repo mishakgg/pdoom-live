@@ -2,6 +2,7 @@ import { listComputedTrends } from "@pdoom/db";
 import { trendKindLabel } from "@pdoom/contracts";
 import { DensityMark } from "@/components/trends";
 import { EmptyState } from "@/components/states";
+import { formatWhen } from "@/lib/format";
 import Link from "next/link";
 import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
 
@@ -11,46 +12,99 @@ export async function generateMetadata() {
   return pageMetadata(canonicalOrigin(), listPageFields("trends"));
 }
 
-const GROUPS = ["distribution", "timeline", "quantity", "qualitative", "revision", "inspection", "volume"] as const;
+const FILTERS = [
+  ["all", "All questions"],
+  ["summary", "Supported summary"],
+  ["individual", "Individual estimates"],
+  ["missing", "No comparable estimates"],
+] as const;
 
-export default async function TrendsPage() {
+type EvidenceFilter = (typeof FILTERS)[number][0];
+
+function evidenceFilter(value: string | undefined): EvidenceFilter {
+  if (value === "summary" || value === "individual" || value === "missing") return value;
+  return "all";
+}
+
+function matches(density: string, filter: EvidenceFilter): boolean {
+  if (filter === "all") return true;
+  if (filter === "summary") return density === "comparable";
+  if (filter === "missing") return density === "empty";
+  return density === "sparse" || density === "individual" || density === "unlinked";
+}
+
+export default async function TrendsPage({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
+  const params = await searchParams;
+  const filter = evidenceFilter(params.evidence);
   const trends = await listComputedTrends();
+  const visible = trends.filter((trend) => matches(trend.density, filter));
   return (
     <>
       <h1>Trends</h1>
       <p className="lede">
-        Each link is one exact question: one outcome, one deadline or predicted value, one unit, and one condition. A broad family key is not itself a comparison. Open a question to see who is included, which records were left out, and the evidence. A small number of estimates stays inspectable, and an empty section stays empty. Qualitative statements stay in their own section. A cross-person median summarizes included statements. It is not automatically the probability of an event.
+        Each row is one exact question. A supported summary is a median of included estimates, with its sample count. It is not the probability of the event. Questions with no comparable estimates stay listed.
       </p>
       {trends.length === 0 ? (
         <EmptyState title="No published trend">
           <p>No published trend method has a result in this dataset. An empty trend list is not a probability, and it is not a consensus.</p>
         </EmptyState>
       ) : (
-        <nav aria-label="Trend sections">
-          <ul className="trend-index">
-            {GROUPS.map((kind) => {
-              const group = trends.filter((trend) => trend.kind === kind);
-              if (group.length === 0) return null;
+        <>
+          <nav className="segmented" aria-label="Evidence availability">
+            {FILTERS.map(([value, label]) => {
+              const count = trends.filter((trend) => matches(trend.density, value)).length;
+              const href = value === "all" ? "/trends" : `/trends?evidence=${value}`;
               return (
-                <li key={kind}>
-                  <p className="kicker">{trendKindLabel(kind)}</p>
-                  <ul>
-                    {group.map((trend) => (
-                      <li key={trend.slug}>
-                        <Link href={`/trends/${trend.slug}`}>{trend.name}</Link>
-                        {" · "}
-                        <DensityMark density={trend.density} />
-                        {" · "}
-                        {trend.contributing_person_count} of {trend.cohort_size} cohort members
-                        {trend.question_key ? ` · ${trend.question_key}` : ""}
-                      </li>
-                    ))}
-                  </ul>
-                </li>
+                <Link key={value} href={href} aria-current={filter === value ? "page" : undefined}>
+                  {label} ({count})
+                </Link>
               );
             })}
-          </ul>
-        </nav>
+          </nav>
+          {visible.length === 0 ? (
+            <EmptyState title="No question in this filter">
+              <p>This filter hides the other questions. They are still in the dataset.</p>
+              <p><Link href="/trends">Show all questions</Link></p>
+            </EmptyState>
+          ) : (
+            <div className="chart-scroll trend-index">
+              <table className="catalog-table">
+                <caption className="sr-only">Questions available for comparison</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Question</th>
+                    <th scope="col">Family</th>
+                    <th scope="col">Evidence</th>
+                    <th scope="col">Contributing</th>
+                    <th scope="col">Corpus read</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {visible.map((trend) => (
+                    <tr key={trend.slug}>
+                      <td data-label="Question"><Link href={`/trends/${trend.slug}`}>{trend.name}</Link></td>
+                      <td data-label="Family">{trendKindLabel(trend.kind)}</td>
+                      <td data-label="Evidence"><DensityMark density={trend.density} /></td>
+                      <td data-label="Contributing">{trend.contributing_person_count} of {trend.cohort_size}</td>
+                      <td data-label="Corpus read">{formatWhen(trend.calculated_at)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+          <details className="technical">
+            <summary>Question identifiers</summary>
+            <ul className="reference-list">
+              {visible.map((trend) => (
+                <li key={`${trend.slug}-key`}>
+                  <Link href={`/trends/${trend.slug}`}>{trend.name}</Link>
+                  <code>{trend.question_key ?? trend.exact_question_id ?? "no stored key"}</code>
+                </li>
+              ))}
+            </ul>
+          </details>
+        </>
       )}
     </>
   );

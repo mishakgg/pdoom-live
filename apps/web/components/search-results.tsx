@@ -6,8 +6,8 @@ import {
   type SearchStatementHit,
 } from "@pdoom/contracts";
 import Link from "next/link";
-import { formatWhen } from "@/lib/format";
-import type { ResearchFilters } from "@/lib/presentation";
+import { formatWhen, phraseLabel } from "@/lib/format";
+import { personStatusLabel, type ResearchFilters } from "@/lib/presentation";
 import { ReviewBadge, StatementCard } from "./statement-bits";
 
 const MATCH_LABEL: Record<SearchMatch, string> = {
@@ -70,7 +70,7 @@ export function SearchResults({
             <article className="card" key={person.slug}>
               <div className="row">
                 <h3><Link href={`/people/${person.slug}`}>{person.display_name}</Link></h3>
-                <span className="meta">{person.status}</span>
+                <span className="meta">{personStatusLabel(person.status)}</span>
               </div>
               <p className="meta">
                 {person.organization ? `${person.organization.role ?? "Affiliate"} · ${person.organization.name}` : "No current affiliation"}
@@ -135,7 +135,7 @@ export function SearchResults({
           <article className="card" key={source.slug}>
             <div className="row">
               <h3><Link href={`/sources/${source.slug}`}>{source.name}</Link></h3>
-              <span className="meta">{source.source_type}</span>
+              <span className="meta">{phraseLabel(source.source_type)}</span>
             </div>
             <p className="meta">
               {source.owner ? source.owner.display_name : "No owner"}

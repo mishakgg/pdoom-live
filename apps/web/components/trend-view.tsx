@@ -21,10 +21,11 @@ function numericFacts(result: {
   };
 }
 
-export function TrendView({ trend }: { trend: PublicTrend }) {
+export function TrendView({ trend, duplicateTitle = false }: { trend: PublicTrend; duplicateTitle?: boolean }) {
   if (trend.kind === "distribution") {
     return (
       <DistributionPanel
+        duplicateTitle={duplicateTitle}
         name={trend.name}
         methodVersion={trend.method_version}
         cohortSlug={trend.cohort_slug}
@@ -75,6 +76,7 @@ export function TrendView({ trend }: { trend: PublicTrend }) {
         contributingStatementCount={trend.timeline.contributing_statement_count}
         coverage={trend.timeline.coverage}
         exclusions={trend.timeline.exclusions}
+        duplicateTitle={duplicateTitle}
         {...numericFacts(trend.timeline)}
       />
     );
@@ -104,6 +106,7 @@ export function TrendView({ trend }: { trend: PublicTrend }) {
         contributingStatementCount={trend.quantity.contributing_statement_count}
         coverage={trend.quantity.coverage}
         exclusions={trend.quantity.exclusions}
+        duplicateTitle={duplicateTitle}
         {...numericFacts(trend.quantity)}
       />
     );
@@ -122,6 +125,7 @@ export function TrendView({ trend }: { trend: PublicTrend }) {
         rows={trend.qualitative.rows}
         cohortSize={trend.cohort_size}
         historyNote={trend.history.note}
+        duplicateTitle={duplicateTitle}
       />
     );
   }
@@ -135,6 +139,7 @@ export function TrendView({ trend }: { trend: PublicTrend }) {
         rows={trend.inspection.rows}
         cohortSize={trend.cohort_size}
         historyNote={trend.history.note}
+        duplicateTitle={duplicateTitle}
       />
     );
   }
@@ -165,6 +170,7 @@ export function TrendView({ trend }: { trend: PublicTrend }) {
         conditionLabel={trend.revision.condition_label}
         exactQuestionId={trend.revision.exact_question_id}
         historyNote={trend.revision.history.note}
+        duplicateTitle={duplicateTitle}
       />
     );
   }

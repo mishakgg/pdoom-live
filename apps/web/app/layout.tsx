@@ -1,5 +1,6 @@
 import { IBM_Plex_Mono, Newsreader, Public_Sans } from "next/font/google";
 import { SiteFooter, SiteHeader } from "@/components/chrome";
+import { DatasetNotice } from "@/components/dataset-notice";
 import { canonicalOrigin, siteMetadata } from "@/lib/seo";
 import "./globals.css";
 
@@ -18,7 +19,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a className="skip" href="#content">Skip to content</a>
         <div className="shell">
           <SiteHeader />
-          <main id="content" tabIndex={-1}>{children}</main>
+          <main id="content" tabIndex={-1}>
+            <DatasetNotice />
+            {children}
+          </main>
           <SiteFooter />
         </div>
       </body>

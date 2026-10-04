@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Breadcrumb } from "@/components/breadcrumb";
 import { EvidenceBlock, ExternalLink, ReviewBadge, TypeBadge } from "@/components/statement-bits";
 import { PartialCollectionNote, UnavailableState } from "@/components/states";
 import { formatValue, formatWhen, phraseLabel, reviewLabel } from "@/lib/format";
@@ -79,6 +80,7 @@ export function StatementAudit({ statement }: { statement: StatementAuditData })
   return (
     <article className="audit-record">
       <header className="audit-header">
+        <Breadcrumb items={[{ href: "/statements", label: "Statements" }, { label: statement.person.display_name }]} />
         <p className="kicker">Statement audit</p>
         <h1>Statement by {statement.person.display_name}</h1>
         <nav className="page-nav" aria-label="On this statement">
@@ -136,7 +138,10 @@ export function StatementAudit({ statement }: { statement: StatementAuditData })
             </Link>
           </dd>
           <dt>Canonical URL</dt>
-          <dd><ExternalLink href={statement.source_item.canonical_url}>{statement.source_item.canonical_url}</ExternalLink></dd>
+          <dd>
+            <ExternalLink href={statement.source_item.canonical_url}>{statement.source_item.canonical_url}</ExternalLink>
+            <p className="actions"><ExternalLink href={statement.source_item.canonical_url}>Open source</ExternalLink></p>
+          </dd>
           <dt>Evidence span</dt>
           <dd>{evidenceSpan(statement.evidence)}</dd>
           <dt>Published</dt>

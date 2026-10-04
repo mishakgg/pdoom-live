@@ -1,3 +1,4 @@
+import { Breadcrumb } from "@/components/breadcrumb";
 import Link from "next/link";
 import { EvidenceBlock, ExternalLink } from "@/components/statement-bits";
 import { JsonLd } from "@/components/json-ld";
@@ -38,11 +39,12 @@ export default async function SourceItemPage({ params }: { params: Promise<{ slu
   return (
     <>
       {structured ? <JsonLd nonce={nonce} data={structured} /> : null}
-      <p className="kicker">
-        <Link href={`/sources/${item.source.slug}`}>{item.source.name}</Link>
-        {" · "}
-        {phraseLabel(item.source.source_type)}
-      </p>
+      <Breadcrumb items={[
+        { href: "/sources", label: "Sources" },
+        { href: `/sources/${item.source.slug}`, label: item.source.name },
+        { label: item.title ?? "Untitled source item" },
+      ]} />
+      <p className="kicker">{phraseLabel(item.source.source_type)}</p>
       <h1>{item.title ?? "Untitled source item"}</h1>
       {material === "unavailable" ? (
         <UnavailableState collectionStatus={item.collection_status} availability={item.availability} />

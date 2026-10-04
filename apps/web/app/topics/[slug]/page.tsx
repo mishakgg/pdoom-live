@@ -9,6 +9,7 @@ import { hasNarrowingFilters, researchFilters, statementsHref } from "@/lib/pres
 import { requestNonce } from "@/lib/request-nonce";
 import { canonicalOrigin, notFoundMetadata, pageMetadata, topicFields } from "@/lib/seo";
 import { topicStructuredData } from "@/lib/structured-data";
+import { Breadcrumb } from "@/components/breadcrumb";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -51,6 +52,7 @@ export default async function TopicPage({
   return (
     <>
       <JsonLd nonce={nonce} data={topicStructuredData({ origin, slug: topic.slug, name: topic.name, definition: topic.definition })} />
+      <Breadcrumb items={[{ href: "/topics", label: "Topics" }, { label: topic.name }]} />
       <p className="kicker">Topic version {topic.version}</p>
       <h1>{topic.name}</h1>
       <p className="lede">{topic.definition}</p>

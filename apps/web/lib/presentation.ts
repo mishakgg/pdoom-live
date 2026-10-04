@@ -1,4 +1,4 @@
-import { countLabel, isHumanVerified, phraseLabel } from "@/lib/format";
+import { countLabel, formatMediaClock, isHumanVerified, phraseLabel } from "@/lib/format";
 
 export const APPLICATION_ERROR_TITLE = "The record could not be loaded";
 export const APPLICATION_ERROR_BODY =
@@ -143,7 +143,7 @@ export function evidenceSpan(evidence: {
 }): string {
   const kind = phraseLabel(evidence.segment_kind);
   if (evidence.start_ms !== null || evidence.end_ms !== null) {
-    return `${evidence.start_ms ?? "unknown"}–${evidence.end_ms ?? "unknown"} ms · ${kind}`;
+    return `${formatMediaClock(evidence.start_ms)}–${formatMediaClock(evidence.end_ms)} · ${kind}`;
   }
   if (evidence.start_char !== null || evidence.end_char !== null) {
     return `characters ${evidence.start_char ?? "unknown"}–${evidence.end_char ?? "unknown"} · ${kind}`;

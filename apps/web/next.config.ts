@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 const appDir = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
+  devIndicators: false,
   output: "standalone",
   outputFileTracingRoot: path.join(appDir, "../.."),
   outputFileTracingIncludes: {

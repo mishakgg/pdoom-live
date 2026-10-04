@@ -45,6 +45,18 @@ export function formatWhen(value: string | null | undefined): string {
   }).format(date) + " UTC";
 }
 
+/** A media timestamp, such as 31:00, or "unknown" when the endpoint was not stored. */
+export function formatMediaClock(ms: number | null | undefined): string {
+  if (ms === null || ms === undefined || !Number.isFinite(ms) || ms < 0) return "unknown";
+  const total = Math.floor(ms / 1000);
+  const hours = Math.floor(total / 3600);
+  const minutes = Math.floor((total % 3600) / 60);
+  const seconds = total % 60;
+  const pad = (value: number) => String(value).padStart(2, "0");
+  if (hours > 0) return `${hours}:${pad(minutes)}:${pad(seconds)}`;
+  return `${minutes}:${pad(seconds)}`;
+}
+
 export function formatDay(value: string | null | undefined): string {
   if (!value) return "Date unknown";
   return formatWhen(value).replace(/,?\s+\d{2}:\d{2} UTC$/, " UTC").replace(" UTC", "");

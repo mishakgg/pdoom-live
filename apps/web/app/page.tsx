@@ -74,7 +74,7 @@ export default async function HomePage() {
             </div>
             <div>
               <dt>Cohort</dt>
-              <dd>{overview.dataset.cohort ? `${overview.dataset.cohort.name} ${overview.dataset.cohort.version}` : "Not recorded"}</dd>
+              <dd>{overview.dataset.cohort ? `${overview.dataset.cohort.name} · version ${overview.dataset.cohort.version}` : "Not recorded"}</dd>
             </div>
             <div>
               <dt>Tracked people</dt>
@@ -183,6 +183,30 @@ export default async function HomePage() {
           )}
         </section>
         <div className="stack">
+          {featured ? (
+            <>
+              <p className="meta">
+                The question below has the widest comparable coverage: cohort members with a record, then statement count.
+                Volume is listed with the other questions because it counts records. It is not a belief.
+              </p>
+              <TrendView trend={featured} />
+            </>
+          ) : null}
+          {others.length > 0 ? (
+            <section className="panel">
+              <h2>Other questions</h2>
+              <p>Each link is a separate question. Counts are cohort members with a comparable record.</p>
+              <ul className="trend-index">
+                {others.map((trend) => (
+                  <li className="trend-row" key={trend.slug}>
+                    <Link href={`/trends/${trend.slug}`}>{trend.name}</Link>
+                    <span>{trendKindLabel(trend.kind)}</span>
+                    <span><DensityMark density={trend.density} /> · {trend.contributing_person_count} of {trend.cohort_size}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
           <section className="panel" aria-labelledby="covered-questions">
             <h2 id="covered-questions">Covered questions</h2>
             <p>Ordered by how many public statements use the definition, then by name. This is coverage in the loaded dataset. It is not importance and not a probability.</p>
@@ -201,32 +225,6 @@ export default async function HomePage() {
               <p>No question has a collected statement.</p>
             )}
           </section>
-          {featured ? (
-            <>
-              <p className="meta">
-                The question below has the widest comparable coverage: cohort members with a record, then statement count.
-                Volume is listed with the other questions because it counts records. It is not a belief.
-              </p>
-              <TrendView trend={featured} />
-            </>
-          ) : null}
-          {others.length > 0 ? (
-            <section className="panel">
-              <h2>Other questions</h2>
-              <p>Each link is a separate question. Counts are cohort members with a comparable record.</p>
-              <ul className="trend-index">
-                {others.map((trend) => (
-                  <li key={trend.slug}>
-                    <Link href={`/trends/${trend.slug}`}>{trend.name}</Link>
-                    <span className="meta">
-                      {" "}
-                      {trendKindLabel(trend.kind)} · <DensityMark density={trend.density} /> · {trend.contributing_person_count} of {trend.cohort_size}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ) : null}
           {overview.trends.length === 0 && overview.dataset.dataset_id ? (
             <section className="panel state">
               <h2>No verified trend</h2>

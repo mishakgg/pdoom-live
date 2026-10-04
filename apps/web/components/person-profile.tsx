@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Breadcrumb } from "@/components/breadcrumb";
 import { HistoryPreview } from "@/components/history-preview";
 import { ExternalLink, ReviewBadge, StatementCard, type StatementCardData } from "@/components/statement-bits";
 import { countLabel, formatWhen, isHumanVerified, phraseLabel, reviewLabel, typeLabel } from "@/lib/format";
@@ -165,6 +166,7 @@ export function PersonProfile({
 
   return (
     <>
+      <Breadcrumb items={[{ href: "/people", label: "People" }, { label: person.display_name }]} />
       <p className="kicker">Record status: {personStatusLabel(person.status)} · record updated {formatWhen(person.updated_at)}</p>
       {person.status === "review" ? (
         <p className="warning">This person record is in review. Inclusion is not fully settled.</p>
