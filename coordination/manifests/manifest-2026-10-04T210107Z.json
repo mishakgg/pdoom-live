@@ -1,0 +1,83 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-04T210107Z",
+  "candidate_state": "not_created",
+  "reason": "Agent 1 published head 33c9c9a2. Its browser journeys fail, so it does not meet the readiness gate. Agents 2-6 have no published commit.",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "included": [],
+  "excluded": [
+    {
+      "agent": "agent-1",
+      "pr": 21,
+      "branch": "cursor/research-navigation-34f4",
+      "head_sha": "33c9c9a2f259c5a00f8ec532b7ecc6f5f848c90e",
+      "reason": "Browser journeys on this exact head fail. Name selection lands on samir-okonkwo after typing Samira. Two other journeys fail on ambiguous locators."
+    },
+    {
+      "agent": "agent-2",
+      "pr": null,
+      "branch": null,
+      "head_sha": null,
+      "reason": "unpublished"
+    },
+    {
+      "agent": "agent-3",
+      "pr": null,
+      "branch": null,
+      "head_sha": null,
+      "reason": "unpublished"
+    },
+    {
+      "agent": "agent-4",
+      "pr": null,
+      "branch": null,
+      "head_sha": null,
+      "reason": "unpublished"
+    },
+    {
+      "agent": "agent-5",
+      "pr": null,
+      "branch": null,
+      "head_sha": null,
+      "reason": "unpublished"
+    },
+    {
+      "agent": "agent-6",
+      "pr": null,
+      "branch": null,
+      "head_sha": null,
+      "reason": "unpublished"
+    }
+  ],
+  "dependencies_and_order": [],
+  "migration_ordering": [
+    "packages/db/migrations/001_init.sql",
+    "packages/db/migrations/002_dataset_contract.sql",
+    "packages/db/migrations/003_review_decisions.sql"
+  ],
+  "contract_versions": {
+    "canonical_import_schema_version": "1.0.0",
+    "public_export_schema_version": "1.0.0",
+    "review_decision_schema_version": "review-decisions/1.0.0"
+  },
+  "resulting_integration_commit": null,
+  "checks": {
+    "agent1_focused_vitest": {
+      "command": "DATABASE_URL=postgresql://postgres:postgres@127.0.0.1:5432/pdoom_coord_nav_test npx vitest run test/research-navigation.test.ts test/entity-select.test.tsx test/dataset-watch.test.tsx test/research-profile.test.tsx",
+      "head_sha": "33c9c9a2f259c5a00f8ec532b7ecc6f5f848c90e",
+      "passed": 15,
+      "failed": 0
+    },
+    "agent1_playwright": {
+      "command": "CI=1 npx playwright test --reporter=list",
+      "head_sha": "33c9c9a2f259c5a00f8ec532b7ecc6f5f848c90e",
+      "passed": 129,
+      "failed": 6,
+      "skipped": 2,
+      "exit_code": 1,
+      "result": "coordination/reproductions/results-2026-10-04T210107Z.json"
+    }
+  },
+  "delivery_note": "Evidence only for review 2026-10-04T210107Z and head 33c9c9a2. A later push to pull request 21 needs a new review."
+}

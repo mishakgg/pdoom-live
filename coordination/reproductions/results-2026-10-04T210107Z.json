@@ -1,0 +1,65 @@
+{
+  "review_id": "2026-10-04T210107Z",
+  "head_sha": "33c9c9a2f259c5a00f8ec532b7ecc6f5f848c90e",
+  "pr": 21,
+  "branch": "cursor/research-navigation-34f4",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "focused_vitest": {
+    "database": "pdoom_coord_nav_test",
+    "files": [
+      "test/research-navigation.test.ts",
+      "test/entity-select.test.tsx",
+      "test/dataset-watch.test.tsx",
+      "test/research-profile.test.tsx"
+    ],
+    "passed": 15,
+    "failed": 0
+  },
+  "build": {
+    "command": "npm run build",
+    "exit_code": 0
+  },
+  "playwright": {
+    "command": "CI=1 npx playwright test --reporter=list",
+    "databases": ["pdoom_e2e_test", "pdoom_e2e_empty_test"],
+    "passed": 129,
+    "failed": 6,
+    "skipped": 2,
+    "exit_code": 1,
+    "elapsed": "1.3m"
+  },
+  "search_order_on_e2e_database": {
+    "Okonkwo": ["samir-okonkwo", "samira-okonkwo"],
+    "Samira": ["samira-okonkwo", "samir-okonkwo"]
+  },
+  "failures": [
+    {
+      "id": "name-selection-commits-previous-suggestion",
+      "owner": "agent-1",
+      "projects": ["desktop", "mobile"],
+      "spec": "e2e/research-journeys.spec.ts:4",
+      "expected": "After typing Samira and choosing with the keyboard, the address contains person=samira-okonkwo",
+      "actual": "http://127.0.0.1:3100/statements?q=&person=samir-okonkwo&statement_type=&review_state=&from=&to=",
+      "page_shows": "Samir Okonkwo selected, Evaluation researcher, Northwind Alignment Lab",
+      "note": "The Okonkwo suggestion list ranks Samir first and still contains Samira. The journey asserts the Samira option before the debounced Samira query replaces that list. ArrowDown activates the first option."
+    },
+    {
+      "id": "profile-statements-link-locator-ambiguous",
+      "owner": "agent-1",
+      "projects": ["desktop", "mobile"],
+      "spec": "e2e/research-journeys.spec.ts:63",
+      "expected": "One Statements link",
+      "actual": "strict mode violation, four links named Statements, including Primary nav and On this page",
+      "note": "The preview sentence All N public statements collected for this view are listed here was visible before the locator failed."
+    },
+    {
+      "id": "source-item-published-text-ambiguous",
+      "owner": "agent-1",
+      "projects": ["desktop", "mobile"],
+      "spec": "e2e/journeys.spec.ts:63",
+      "expected": "getByText Published matches the publication clock",
+      "actual": "strict mode violation: the new sentence Published is when the material is dated and the dt Published",
+      "note": "The definition list still has Published and Observed. The pre-existing journey was not narrowed when the explanatory sentence was added."
+    }
+  ]
+}

@@ -2,10 +2,10 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-04T204803Z",
-  "reviewed_at": "2026-10-04T20:48:03Z",
-  "status_path": "coordination/status/status-2026-10-04T204803Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-04T204803Z.json",
+  "review_id": "2026-10-04T210107Z",
+  "reviewed_at": "2026-10-04T21:01:07Z",
+  "status_path": "coordination/status/status-2026-10-04T210107Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-04T210107Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "origin_main_subject": "Match deploy smoke to the public status bar and discovery routes (#19)",
@@ -20,17 +20,20 @@
     "protocol": "Set holder and acquired_at before mutating an integration branch. Clear both in the checkpoint commit that finishes the review. Do not start a second integration while a lock is younger than expires_after_seconds. The hourly timer is the primary overlap control because it fires only when this agent is idle."
   },
   "last_reviewed_shas": {
-    "origin/main": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7"
+    "origin/main": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+    "agent-1": "33c9c9a2f259c5a00f8ec532b7ecc6f5f848c90e"
   },
   "workstreams": {
     "agent-1": {
       "bc_id": "bc-1abc3d8c-9db1-4269-90ce-42275cdf34f4",
       "cloud_name": "Public information navigation",
       "status": "RUNNING",
-      "branch": null,
-      "pr": null,
-      "head_sha": null,
-      "publication": "unpublished"
+      "branch": "cursor/research-navigation-34f4",
+      "pr": "https://github.com/mishakgg/pdoom-live/pull/21",
+      "head_sha": "33c9c9a2f259c5a00f8ec532b7ecc6f5f848c90e",
+      "publication": "draft_pull_request",
+      "readiness": "not_ready",
+      "readiness_reason": "Browser journeys fail on this head. Typing Samira then using the keyboard commits person=samir-okonkwo."
     },
     "agent-2": {
       "bc_id": "bc-07e563e7-b873-4812-bbaf-026a51641787",
@@ -78,17 +81,26 @@
       "publication": "unpublished"
     }
   },
-  "open_pull_requests": [],
-  "readiness": "no_published_workstream_commits",
+  "open_pull_requests": [
+    {
+      "number": 21,
+      "head_sha": "33c9c9a2f259c5a00f8ec532b7ecc6f5f848c90e",
+      "branch": "cursor/research-navigation-34f4",
+      "draft": true,
+      "workstream": "agent-1"
+    }
+  ],
+  "readiness": "agent-1-published-not-ready",
   "integration_attempt": "not_started",
   "blockers": [
     "question-key-registries-diverge-on-main",
     "canonical-export-collapses-source-versions",
     "reimport-clobbers-review-and-replay-is-noop",
     "verified-withdrawal-stays-in-distribution",
-    "review-does-not-move-public-last-modified"
+    "review-does-not-move-public-last-modified",
+    "agent-1-name-picker-commits-previous-suggestion"
   ],
-  "measurements": "coordination/reproductions/results-2026-10-04T204803Z.json",
+  "measurements": "coordination/reproductions/results-2026-10-04T210107Z.json",
   "scheduler": {
     "hourly_review": "active",
     "subscription_id": "sub_a7f92930-5085-4d07-a8dd-d455f4acf8d6",
@@ -97,8 +109,15 @@
     "confirmed_at": "2026-10-04T20:27:47Z",
     "expires_at": "2026-10-11T20:27:47Z",
     "delivery_count": 0,
-    "pr_event_subscriptions": [],
-    "pr_subscription_limitation": "Pull-request events can be subscribed only after a workstream pull request exists. None exist yet. The hourly review discovers new pull requests."
+    "pr_event_subscriptions": [
+      {
+        "pr": 21,
+        "subscription_id": "sub_d63cfed6-eb00-48ec-9720-2572f78d585d",
+        "expires_at": "2026-10-07T21:01:09Z",
+        "scope": "github.com/mishakgg/pdoom-live#21"
+      }
+    ],
+    "pr_subscription_limitation": "Pull-request events can be subscribed only after a workstream pull request exists. Pull request 21 is subscribed. Agents 2-6 have no pull request yet."
   },
-  "next_action": "On the next review, fetch origin/main and open pull requests. If a workstream has published a branch or pull request, record its head SHA, changed paths, and readiness, and subscribe to that pull request. Do not open an integration branch until at least one workstream meets the readiness gate. Do not retarget question keys, source-version slugs, or withdrawal semantics while integrating."
+  "next_action": "On the next review, read this checkpoint, fetch origin/main and open pull requests, and compare heads with last_reviewed_shas. If pull request 21 has a new head, re-run the failed browser journeys and reassess readiness. Do not integrate 33c9c9a2. Do not open an integration branch until a published head meets the readiness gate. Do not retarget question keys, source-version slugs, withdrawal semantics, or the name picker while integrating."
 }

@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-04T20:48:03Z",
+  "reviewed_at": "2026-10-04T21:01:07Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -196,6 +196,27 @@
         "conditional_status": 304
       },
       "requested_resolution": "Agent 6 must invalidate public validators on review-only changes. Agent 7 will not redesign the cache while integrating."
+    },
+    {
+      "id": "agent-1-name-picker-commits-previous-suggestion",
+      "severity": "blocks-agent-1-readiness",
+      "owner": "agent-1",
+      "consumers": ["agent-7"],
+      "status": "measured-on-pr-21-head-33c9c9a2",
+      "summary": "The statement name picker can commit the first option of the previous suggestion list. Typing Okonkwo lists Samir then Samira. Typing Samira and pressing ArrowDown then Enter commits samir-okonkwo while a Samira option is still visible from that earlier list. Search for Samira alone ranks samira-okonkwo first.",
+      "reproducible_example": {
+        "command": "CI=1 npx playwright test e2e/research-journeys.spec.ts:4 --reporter=list",
+        "head_sha": "33c9c9a2f259c5a00f8ec532b7ecc6f5f848c90e",
+        "database": "pdoom_e2e_test",
+        "expected": "person=samira-okonkwo",
+        "actual": "person=samir-okonkwo",
+        "result": "coordination/reproductions/results-2026-10-04T210107Z.json"
+      },
+      "requested_resolution": "Agent 1 should commit a keyboard choice only from the suggestion list for the current query, and the research journey should wait until that list has replaced the previous one. Agent 7 will not redesign the picker on an integration branch.",
+      "also_on_same_head": [
+        "e2e/research-journeys.spec.ts:63 matches four Statements links after the preview sentence is already visible",
+        "e2e/journeys.spec.ts:63 getByText Published matches the new explanatory sentence and the existing dt"
+      ]
     }
   ],
   "ownership_overlaps_observed": [],
