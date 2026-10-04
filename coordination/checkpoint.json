@@ -2,29 +2,29 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-04T220426Z",
-  "reviewed_at": "2026-10-04T22:04:26Z",
-  "previous_review_id": "2026-10-04T215730Z",
-  "status_path": "coordination/status/status-2026-10-04T220426Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-04T220426Z.json",
+  "review_id": "2026-10-04T220605Z",
+  "reviewed_at": "2026-10-04T22:06:05Z",
+  "previous_review_id": "2026-10-04T220426Z",
+  "status_path": "coordination/status/status-2026-10-04T220605Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-04T220605Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "origin_main_subject": "Match deploy smoke to the public status bar and discovery routes (#19)",
   "integration_branch": "cursor/partial-integration-refresh-a32e",
   "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/31",
-  "integration_commit": "5adde6ced3842617e57bfcaf2bdf330ed465a233",
+  "integration_commit": "b7bce82cb3975fe9b572ec0f8430aaeef60f7343",
   "integration_tree": "cf1f517d5cc6ad008d7abcdd95317d9ddd728c90",
   "previous_integration": {
     "branch": "cursor/partial-integration-refresh-a32e",
     "pr": "https://github.com/mishakgg/pdoom-live/pull/31",
-    "commit": "0f02676728f0ab6864f9bea0643d2dc4c90321e5",
-    "status": "parent_of_5adde6c_workflow_install"
+    "commit": "5adde6ced3842617e57bfcaf2bdf330ed465a233",
+    "status": "same_tree_as_b7bce82"
   },
   "coordination_branch": "cursor/integration-coordination-a32e",
   "coordination_pr": "https://github.com/mishakgg/pdoom-live/pull/20",
   "run_lock": {
-    "holder": "agent-7",
-    "acquired_at": "2026-10-04T22:06:00Z",
+    "holder": null,
+    "acquired_at": null,
     "expires_after_seconds": 7200,
     "protocol": "Set holder and acquired_at before mutating an integration branch. Clear both in the checkpoint commit that finishes the review. Do not start a second integration while a lock is younger than expires_after_seconds. The hourly timer is the primary overlap control because it fires only when this agent is idle."
   },
@@ -32,11 +32,11 @@
     "origin/main": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
     "agent-1": "af6ec9b4783a4fd37dbc3b9f5c263cc9cbd96ac3",
     "agent-2": "b959a47f88f2c3d6c948072e038a082847aa666f",
-    "agent-3": "ce07836b27a090da063617708df7b7174745881c",
+    "agent-3": "85ec81dad4d2de7c49e4600af5e0c413b792818e",
     "agent-4": "6c23609f05bb958a58f235ba34c0180b3579c109",
     "agent-5": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
     "agent-6": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e",
-    "integration": "5adde6ced3842617e57bfcaf2bdf330ed465a233"
+    "integration": "b7bce82cb3975fe9b572ec0f8430aaeef60f7343"
   },
   "workstreams": {
     "agent-1": {
@@ -55,11 +55,11 @@
     },
     "agent-3": {
       "bc_id": "bc-e813e836-d988-41a1-98ff-d1a5d48c088b",
-      "status": "TASKED",
+      "status": "IDLE",
       "pr": 27,
-      "head_sha": "ce07836b27a090da063617708df7b7174745881c",
+      "head_sha": "85ec81dad4d2de7c49e4600af5e0c413b792818e",
       "readiness": "included_in_partial_candidate",
-      "readiness_reason": "Included as ce07836 inside 5adde6c. Follow-up tasked to add npm ci on their own pipeline workflow so PR 27 matches that install. Do not merge their new head until it is reviewed.",
+      "readiness_reason": "Follow-up 85ec81 adds the pipeline npm ci install. Merged as b7bce82. Tree matches 5adde6c, so the checks on that tree still apply.",
       "follow_up_run": "bc-c69a04a7-f34a-5789-b3c1-dda1e9d1b959"
     },
     "agent-4": {
@@ -99,7 +99,7 @@
     "expires_at": "2026-10-11T20:27:47Z",
     "delivery_count": 1
   },
-  "next_action": "Lock held while merging Agent 3 head 85ec81 onto the integration branch. The workflow matches 5adde6c. Do not start a second integration.",
+  "next_action": "Pull request 31 at b7bce82 is the current partial candidate. Its tree matches 5adde6c. Do not merge it to main. Include Agent 5 only after the follow-up run pushes a head that passes the three backfill tests.",
   "assigned_tasks": [
     {
       "owner": "agent-5",

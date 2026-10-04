@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-04T22:04:26Z",
+  "reviewed_at": "2026-10-04T22:06:05Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -225,12 +225,12 @@
   ],
   "agent_3_pipeline_failure": {
     "id": "agent-3-refresh-pytest-missing-contracts-module",
-    "head_sha": "ce07836b27a090da063617708df7b7174745881c",
+    "head_sha": "85ec81dad4d2de7c49e4600af5e0c413b792818e",
     "pr": 27,
     "workflow_run": 37235514824,
     "owner": "agent-3",
-    "status": "fixed-on-5adde6c",
-    "summary": "Pipeline CI run 37236697023 on merge 0f02676 failed because that job did not install npm packages and the refresh tests call npx tsx. Commit 5adde6c adds npm ci to .github/workflows/pipeline.yml. GitHub pipeline run 37237677768 on 5adde6c succeeded. Local pytest on 5adde6c passed 74 tests and skipped 1.",
+    "status": "fixed-on-85ec81-and-b7bce82",
+    "summary": "Agent 3 head 85ec81 adds npm ci to the pipeline workflow. Merging it onto 5adde6c produced b7bce82 with the same tree. GitHub pipeline run 37237677768 succeeded on that tree.",
     "expected": "The refresh tests complete in the repository pipeline workflow.",
     "actual": "Run 37237677768 completed with conclusion success after npm ci. The earlier failure was Cannot find module '@pdoom/contracts'."
   },
