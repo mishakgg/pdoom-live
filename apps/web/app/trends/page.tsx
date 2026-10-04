@@ -44,6 +44,9 @@ export default async function TrendsPage({ searchParams }: { searchParams: Promi
       <p className="lede">
         Each row is one exact question. A supported summary is a median of included estimates, with its sample count. It is not the probability of the event. Questions with no comparable estimates stay listed.
       </p>
+      <p className="meta">
+        Contributing is people with an included record, out of the tracked cohort. Dataset read is when this table was read from storage. It is not a new collection.
+      </p>
       {trends.length === 0 ? (
         <EmptyState title="No published trend">
           <p>No published trend method has a result in this dataset. An empty trend list is not a probability, and it is not a consensus.</p>
@@ -76,7 +79,7 @@ export default async function TrendsPage({ searchParams }: { searchParams: Promi
                     <th scope="col">Family</th>
                     <th scope="col">Evidence</th>
                     <th scope="col">Contributing</th>
-                    <th scope="col">Corpus read</th>
+                    <th scope="col">Dataset read</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -86,7 +89,7 @@ export default async function TrendsPage({ searchParams }: { searchParams: Promi
                       <td data-label="Family">{trendKindLabel(trend.kind)}</td>
                       <td data-label="Evidence"><DensityMark density={trend.density} /></td>
                       <td data-label="Contributing">{trend.contributing_person_count} of {trend.cohort_size}</td>
-                      <td data-label="Corpus read">{formatWhen(trend.calculated_at)}</td>
+                      <td data-label="Dataset read">{formatWhen(trend.calculated_at)}</td>
                     </tr>
                   ))}
                 </tbody>
