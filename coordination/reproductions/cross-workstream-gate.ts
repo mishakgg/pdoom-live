@@ -60,6 +60,13 @@ function loadFixture(): Record<string, unknown> {
   return JSON.parse(readFileSync("data/fixtures/synthetic/dataset.json", "utf8")) as Record<string, unknown>;
 }
 
+/** Matches pipeline/pdoom_pipeline/export/identity.py source_item_slug on candidate 0f02676. */
+function versionedSourceItemSlug(canonicalUrl: string, contentHash: string, contentVersion: number): string {
+  const hex = contentHash.startsWith("sha256:") ? contentHash.slice("sha256:".length) : contentHash;
+  const material = contentVersion <= 1 ? canonicalUrl : `${canonicalUrl}\n${hex}\n${contentVersion}`;
+  return `item-${createHash("sha256").update(material).digest("hex").slice(0, 20)}`;
+}
+
 async function idsOf(pool: pg.Pool) {
   const result = await pool.query<{ slug: string; id: string }>(
     `SELECT slug, id::text FROM statements ORDER BY slug`,
@@ -333,25 +340,45 @@ async function main() {
     );
 
     const changed = structuredClone(fixture) as {
-      source_items: Array<{ slug: string; content_hash: string; content_hash_input?: string | null; content_version: number; logical_key: string }>;
-      statements: Array<{ slug: string; review_state: string }>;
+      source_items: Array<{
+        slug: string;
+        canonical_url: string;
+        content_hash: string;
+        content_hash_input?: string | null;
+        content_version: number;
+        logical_key: string;
+        is_current: boolean;
+      }>;
+      statements: Array<{ slug: string; review_state: string; source_item_slug: string }>;
       forecasts: Array<{ statement_slug: string; review_state: string }>;
     };
     const item = changed.source_items.find((row) => row.logical_key === candidate.logical_key);
     const nextHash = "c".repeat(64);
+    const nextVersion = candidate.content_version + 1;
+    let nextSlug: string | null = null;
     if (item) {
+      const previous = structuredClone(item);
+      previous.is_current = false;
       item.content_hash = nextHash;
       item.content_hash_input = null;
-      item.content_version = candidate.content_version + 1;
+      item.content_version = nextVersion;
+      item.is_current = true;
+      nextSlug = versionedSourceItemSlug(item.canonical_url, nextHash, nextVersion);
+      item.slug = nextSlug;
+      const index = changed.source_items.indexOf(item);
+      changed.source_items.splice(index, 0, previous);
     }
     const changedStatement = changed.statements.find((row) => row.slug === candidate.slug);
-    if (changedStatement) changedStatement.review_state = "human_verified";
+    if (changedStatement) {
+      changedStatement.review_state = "human_verified";
+      if (nextSlug) changedStatement.source_item_slug = nextSlug;
+    }
     for (const forecast of changed.forecasts) {
       if (forecast.statement_slug === candidate.slug) forecast.review_state = "human_verified";
     }
     await importCanonical(pool, changed);
-    const versions = await pool.query<{ content_hash: string; content_version: number; is_current: boolean }>(
-      `SELECT si.content_hash, si.content_version, si.is_current
+    const versions = await pool.query<{ slug: string; content_hash: string; content_version: number; is_current: boolean }>(
+      `SELECT si.slug, si.content_hash, si.content_version, si.is_current
        FROM source_items si
        JOIN sources src ON src.id = si.source_id
        WHERE src.slug = $1 AND si.logical_key = $2
@@ -364,6 +391,7 @@ async function main() {
     const hashes = versions.rows.map((row) => row.content_hash);
     const versionActual = {
       previous_hash: candidate.content_hash,
+      next_slug: nextSlug,
       versions: versions.rows,
       stored_review_state: raw.rows[0]?.review_state ?? null,
       effective_review_state: effective?.review_state ?? null,
@@ -372,7 +400,7 @@ async function main() {
     record(
       "2-source-version-history",
       hashes.includes(candidate.content_hash) && hashes.includes(nextHash) && versions.rows.length >= 2,
-      "A changed source hash keeps the previous version row and adds the new hash.",
+      "A changed source hash keeps the previous version row and adds the new hash under the published content_version > 1 slug.",
       versionActual,
       "agent-3",
     );
