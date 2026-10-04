@@ -1,0 +1,22 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-04T213140Z",
+  "candidate_state": "unchanged",
+  "reason": "Hourly review. Every last_reviewed_sha still matches origin. No integration attempt.",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "integration_branch": "cursor/partial-integration-reads-a32e",
+  "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/30",
+  "resulting_integration_commit": "234cc67b890aab833c2efc8867778ee9fd11d467",
+  "previous_review_id": "2026-10-04T212501Z",
+  "heads_unchanged": {
+    "agent-1": "af6ec9b4783a4fd37dbc3b9f5c263cc9cbd96ac3",
+    "agent-2": "b959a47f88f2c3d6c948072e038a082847aa666f",
+    "agent-3": "ce07836b27a090da063617708df7b7174745881c",
+    "agent-4": "6c23609f05bb958a58f235ba34c0180b3579c109",
+    "agent-5": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
+    "agent-6": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e"
+  },
+  "checks": null,
+  "delivery_note": "234cc67 remains the recorded partial candidate. Do not merge it to main."
+}

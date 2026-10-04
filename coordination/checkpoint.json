@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-04T212501Z",
-  "reviewed_at": "2026-10-04T21:28:43Z",
-  "previous_review_id": "2026-10-04T211729Z",
-  "status_path": "coordination/status/status-2026-10-04T212501Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-04T212501Z.json",
+  "review_id": "2026-10-04T213140Z",
+  "reviewed_at": "2026-10-04T21:31:40Z",
+  "previous_review_id": "2026-10-04T212501Z",
+  "status_path": "coordination/status/status-2026-10-04T213140Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-04T213140Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "origin_main_subject": "Match deploy smoke to the public status bar and discovery routes (#19)",
@@ -131,7 +131,7 @@
     "cron": "17 * * * *",
     "confirmed_at": "2026-10-04T20:27:47Z",
     "expires_at": "2026-10-11T20:27:47Z",
-    "delivery_count": 0,
+    "delivery_count": 1,
     "pr_event_subscriptions": [
       {"pr": 21, "subscription_id": "sub_d63cfed6-eb00-48ec-9720-2572f78d585d", "expires_at": "2026-10-07T21:01:09Z"},
       {"pr": 22, "subscription_id": "sub_40952baa-0c8a-4e56-9166-a8156577cf7c", "expires_at": "2026-10-07T21:03:28Z"},
@@ -141,5 +141,5 @@
       {"pr": 29, "subscription_id": "sub_4162a1c2-99d3-4ebd-8f75-4194359ec1eb", "expires_at": "2026-10-07T21:28:43.305Z"}
     ]
   },
-  "next_action": "On the next review, read this checkpoint and compare heads with last_reviewed_shas. Pull request 30 at 234cc67 is the current partial candidate for Agents 1, 2, 4, and 6. Do not merge it to main. Include Agent 3 or Agent 5 only after their recorded test failures are fixed on a new head. If either head moves, re-check the merge against 234cc67. Agents 3 and 5 are subscribed. The hourly timer remains active."
+  "next_action": "Pull request 30 at 234cc67 remains the partial candidate. The 2026-10-04T213140Z review found no new heads. Include Agent 3 or Agent 5 only after a new head fixes the recorded CI failures. Do not merge pull request 30 to main."
 }
