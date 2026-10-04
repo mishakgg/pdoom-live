@@ -183,6 +183,12 @@ def test_malformed_feed_and_participant_roles():
     with pytest.raises(CollectorFailure) as caught:
         RssCollector().parse(b"<rss><channel><item></rss>", source_identity="src", feed_url="https://example.com/a", observed_at=OBSERVED)
     assert caught.value.error_class == "invalid_content"
+    from pdoom_pipeline.safe_xml import XmlParseError, fromstring_without_defusedxml
+
+    plain = fromstring_without_defusedxml(b"<rss><channel><item><title>Ada</title></item></channel></rss>")
+    assert plain.find("channel/item/title").text == "Ada"
+    with pytest.raises(XmlParseError):
+        fromstring_without_defusedxml(b"<!DOCTYPE rss [<!ENTITY xxe SYSTEM 'file:///etc/passwd'>]><rss/>")
     people = [
         {"id": "person:ada", "display_name": "Ada Lovelace", "name_variants": []},
         {"id": "person:grace", "display_name": "Grace Hopper", "name_variants": []},

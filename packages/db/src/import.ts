@@ -6,6 +6,7 @@ import {
   type CanonicalImport,
 } from "@pdoom/contracts";
 import type pg from "pg";
+import { restoreCoveredDecisions } from "./coverage";
 import { deploymentMode } from "./env";
 import { sha256, stableId } from "./ids";
 import { migrationState } from "./migrate";
@@ -722,6 +723,8 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
     );
   }
 
+  await restoreCoveredDecisions(client, { skipSlugs: [...preserved.keys()] });
+
   const cohort = doc.cohorts[0] ?? null;
   await client.query("UPDATE dataset_imports SET is_current = false WHERE is_current");
   await client.query(
@@ -822,6 +825,17 @@ function correctedNumber(
     return null;
   }
   return num(incoming);
+}
+
+export function candidateKeyForCanonicalStatement(
+  doc: {
+    source_items: CanonicalImport["source_items"];
+    evidence_segments: CanonicalImport["evidence_segments"];
+    forecasts: CanonicalImport["forecasts"];
+  },
+  statement: CanonicalImport["statements"][number],
+): string {
+  return statementCandidateKey(doc as CanonicalImport, statement);
 }
 
 function statementCandidateKey(doc: CanonicalImport, statement: CanonicalImport["statements"][number]): string {

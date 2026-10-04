@@ -11,6 +11,8 @@ import { createPool } from "../packages/db/src/pool";
 import { getStatement, listStatements } from "../packages/db/src/queries";
 import { POST } from "../apps/web/app/api/curation/decisions/route";
 import CurationLayout from "../apps/web/app/curation/layout";
+import CurationQueuePage from "../apps/web/app/curation/page";
+import CurationItemPage from "../apps/web/app/curation/[slug]/page";
 import { afterAll, describe, expect, it } from "vitest";
 
 const pool = createPool(process.env.DATABASE_URL ?? "postgresql://postgres:postgres@localhost:5432/pdoom_live_test");
@@ -81,6 +83,8 @@ describe("review identity and policy", () => {
   it("hides curation routes unless local mode is on", async () => {
     delete process.env.PDOOM_CURATION_MODE;
     expect(() => CurationLayout({ children: "hidden" })).toThrow(/404|NEXT_HTTP_ERROR_FALLBACK/);
+    await expect(CurationQueuePage({ searchParams: Promise.resolve({}) })).rejects.toThrow(/404|NEXT_HTTP_ERROR_FALLBACK/);
+    await expect(CurationItemPage({ params: Promise.resolve({ slug: "candidate-b2b3f47caf63803a" }) })).rejects.toThrow(/404|NEXT_HTTP_ERROR_FALLBACK/);
     const blocked = await POST(new Request("http://127.0.0.1/api/curation/decisions", { method: "POST", body: "{}" }));
     expect(blocked.status).toBe(404);
     process.env.PDOOM_CURATION_MODE = "local";
@@ -247,10 +251,17 @@ describe("review decisions", () => {
       published_at: "2024-01-01T00:00:00Z",
     }]);
     expect(second.skipped).toBe(1);
-    const row = await pool.query(`SELECT review_state, extraction_confidence_level FROM statements WHERE slug LIKE 'candidate-%'`);
+    const row = await pool.query(
+      `SELECT s.slug, s.review_state, s.extraction_confidence_level, si.language
+       FROM statements s
+       JOIN source_items si ON si.id = s.source_item_id
+       WHERE si.canonical_url = 'https://synthetic.pdoom.example/items/ada-review-note'`,
+    );
+    expect(row.rows).toHaveLength(1);
     expect(row.rows[0].review_state).toBe("unreviewed");
     expect(row.rows[0].extraction_confidence_level).toBe("low");
-    expect(await getStatement(String((await pool.query(`SELECT slug FROM statements WHERE slug LIKE 'candidate-%'`)).rows[0].slug), pool)).toBeNull();
+    expect(row.rows[0].language).toBeNull();
+    expect(await getStatement(String(row.rows[0].slug), pool)).toBeNull();
     expect(before.rows[0].count).toBeLessThan((await pool.query(`SELECT count(*)::int AS count FROM statements`)).rows[0].count);
   });
 });

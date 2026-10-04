@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 
 from pdoom_pipeline.identity.names import same_person_name
-from pdoom_pipeline.ingest.participants import mentioned
+from pdoom_pipeline.ingest.participants import mentioned, role_from_label
 
 SPEAKER_LINE = re.compile(r"^([A-Z][^:\n]{1,80}):\s*(.*)$")
 TIMESTAMPED_SPEAKER = re.compile(
@@ -79,6 +79,66 @@ def speaker_blocks(turns: list[dict], display_name: str) -> list[dict]:
     if current is not None:
         blocks.append(current)
     return blocks
+
+
+def evidence_for_person(transcript: str, display_name: str, gap: str) -> dict:
+    """Keep one locator per turn. A later turn does not inherit an earlier timestamp."""
+    turns = speaker_turns(transcript)
+    parts: list[str] = []
+    locators: list[dict] = []
+    participants: list[dict] = []
+    seen: set[tuple[str, str]] = set()
+    cursor = 0
+    last_person = False
+    pending: dict | None = None
+    for index, turn in enumerate(turns):
+        label = turn.get("speaker") or ""
+        label_role = role_from_label(label)
+        if label_role in {"host", "interviewer", "publisher"}:
+            key = (label_role, label)
+            if key not in seen:
+                seen.add(key)
+                participants.append(
+                    {
+                        "name": label,
+                        "role": label_role,
+                        "attribution_method": "transcript_label",
+                        "attribution_detail": "speaker_label",
+                    }
+                )
+        if not same_person_name(label, display_name):
+            pending = {
+                "role": label_role,
+                "speaker": label,
+                "text": turn.get("text") or "",
+                "start_ms": turn.get("start_ms"),
+            }
+            last_person = False
+            continue
+        if parts and not last_person:
+            separator = f"\n{gap}\n"
+            parts.append(separator)
+            cursor += len(separator)
+        elif parts:
+            parts.append("\n")
+            cursor += 1
+        text = turn.get("text") or ""
+        preceding = pending if pending and pending["role"] in {"host", "interviewer"} else None
+        locators.append(
+            {
+                "start_char": cursor,
+                "end_char": cursor + len(text),
+                "start_ms": turn.get("start_ms"),
+                "speaker": label,
+                "turn_index": index,
+                "preceding": preceding,
+            }
+        )
+        parts.append(text)
+        cursor += len(text)
+        last_person = True
+        pending = None
+    return {"text": "".join(parts), "locators": locators, "participants": participants}
 
 
 def _timestamp_ms(line: str) -> int | None:

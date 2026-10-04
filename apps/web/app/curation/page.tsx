@@ -1,9 +1,13 @@
+import { curationEnabled } from "@pdoom/contracts";
 import { reviewStatus, listReviewQueue } from "@pdoom/db";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import styles from "./curation.module.css";
 
 export const dynamic = "force-dynamic";
 
 export default async function CurationQueuePage({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
+  if (!curationEnabled()) notFound();
   const params = await searchParams;
   const [status, queue] = await Promise.all([
     reviewStatus(),
@@ -54,7 +58,12 @@ export default async function CurationQueuePage({ searchParams }: { searchParams
             <span className="meta">{item.statement_type} · {item.review_state} · priority {item.priority}</span>
           </div>
           <p>{item.normalized_text}</p>
-          <p className="meta">{item.source_type} · {item.why}</p>
+          <p className={styles.queueMeta}>
+            <span className="meta">{item.source_type}{item.participant_role ? ` · ${item.participant_role}` : ""}{item.value_label ? ` · ${item.value_label}` : ""}</span>
+            {item.recommended_review_state ? <span className="meta">Machine recommendation: {item.recommended_review_state}. Not a human verification.</span> : null}
+            {item.stored_review_state !== item.review_state ? <span className="meta">Stored {item.stored_review_state}; effective {item.review_state}.</span> : null}
+          </p>
+          <p className="meta">{item.why}</p>
         </article>
       ))}
       {queue.length === 0 ? <p>No records match this queue.</p> : null}

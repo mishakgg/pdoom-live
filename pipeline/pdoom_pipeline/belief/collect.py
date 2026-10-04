@@ -8,17 +8,28 @@ from collections import Counter
 
 from urllib.parse import urlparse
 
-from pdoom_pipeline.belief.appearances import guest_from_title, speaker_blocks, speaker_turns
+from pdoom_pipeline.belief.appearances import evidence_for_person, guest_from_title, speaker_turns
 from pdoom_pipeline.belief.changes import view_change_candidates
-from pdoom_pipeline.belief.pages import article_text, host_of, page_title, published_time, robots_allows
+from pdoom_pipeline.belief.pages import (
+    article_text,
+    host_of,
+    opening_byline,
+    page_authors,
+    page_language,
+    page_title,
+    parse_published,
+    robots_allows,
+    title_byline,
+)
 from pdoom_pipeline.collectors.rss import RssCollector
 from pdoom_pipeline.enrich.html_page import strip_markup
 from pdoom_pipeline.errors import CollectorFailure
 from pdoom_pipeline.extract.statements import EXTRACTOR_VERSION, SPEAKER_GAP, extract_statements
+from pdoom_pipeline.fetch import USER_AGENT
 from pdoom_pipeline.hashing import content_hash
 from pdoom_pipeline.identity.names import name_key, same_person_name
 from pdoom_pipeline.ingest.participants import mentioned
-from pdoom_pipeline.urls import canonicalize_url
+from pdoom_pipeline.urls import canonicalize_url, hostname_is_blocked
 
 MAX_STATEMENTS = 12
 MAX_TRANSCRIPT_BYTES = 800_000
@@ -81,14 +92,17 @@ def collect_beliefs(*, people: list[dict], leads: list[dict], fetch_bytes, obser
                 key = item["canonical_url"]
                 if key in seen_items:
                     continue
-                text, start_ms = _evidence_text(
+                evidence = _evidence_text(
                     item,
                     fetch_bytes,
                     runs,
                     use_body=bool(lead.get("use_body")),
                     robots_cache=robots_cache,
                 )
-                found = _statements_for_item(item, text, start_ms)
+                text = evidence["text"]
+                item["locators"] = evidence["locators"]
+                item["participants"] = _with_primary(_feed_participants(item), evidence["participants"])
+                found = _statements_for_item(item, text)
                 if lead.get("require_statement") and not found:
                     continue
                 seen_items.add(key)
@@ -119,28 +133,20 @@ def _collect_page(lead, by_slug, fetch_bytes, observed_at, observations, stateme
         source_leads.append(_lead_row(lead, "attribution_unresolved", False))
         return
     fetch_url = lead.get("fetch_url") or lead["url"]
-    robots = _robots_text(fetch_bytes, fetch_url, robots_cache, runs)
-    if robots is None:
-        source_leads.append(_lead_row(lead, "robots_unavailable", True))
-        return
-    path = urlparse(fetch_url).path or "/"
-    if not robots_allows(robots, path):
-        runs.append({"status": "failure", "kind": kind, "url": fetch_url, "error_class": "blocked_by_policy"})
-        source_leads.append(_lead_row(lead, "blocked_by_policy", False))
-        return
-    try:
-        payload = fetch_bytes(fetch_url)
-    except CollectorFailure as exc:
-        runs.append({"status": "failure", "kind": kind, "url": fetch_url, "error_class": exc.error_class})
-        source_leads.append(_lead_row(lead, exc.error_class, exc.retryable))
+    payload = _fetch_if_allowed(fetch_bytes, fetch_url, robots_cache, runs, kind)
+    if payload is None:
+        if not any(row.get("url") == fetch_url and row.get("status") == "failure" for row in runs):
+            source_leads.append(_lead_row(lead, "robots_unavailable", True))
+        else:
+            failure = next(row for row in reversed(runs) if row.get("url") == fetch_url and row.get("status") == "failure")
+            source_leads.append(_lead_row(lead, failure.get("error_class") or "blocked_by_policy", failure.get("error_class") == "robots_unavailable"))
         return
     raw = payload.decode("utf-8", errors="replace")
     text = article_text(raw, max_chars=200_000 if kind == "talk" else ESSAY_TEXT_CHARS)
     marker = lead.get("cut_before")
     if marker and marker in text:
         text = text[: text.index(marker)]
-    title_for_byline = page_title(raw) or ""
-    if not _essay_attributed(lead, person, text + "\n" + title_for_byline):
+    if not _page_attributed(lead, person, raw):
         runs.append({"status": "failure", "kind": kind, "url": lead["url"], "error_class": "attribution_unresolved"})
         source_leads.append(_lead_row(lead, "attribution_unresolved", False))
         return
@@ -155,7 +161,8 @@ def _collect_page(lead, by_slug, fetch_bytes, observed_at, observations, stateme
     seen_items.add(canonical)
     title = page_title(raw) if "<html" in raw[:2000].lower() else None
     talk = kind == "talk"
-    evidence, attribution, start_ms = _page_evidence(lead, person, text)
+    evidence = _page_evidence(lead, person, text)
+    published = parse_published(raw)
     item = {
         "person_id": f"person:{person['slug']}",
         "person_slug": person["slug"],
@@ -168,7 +175,10 @@ def _collect_page(lead, by_slug, fetch_bytes, observed_at, observations, stateme
         "feed_url": canonical,
         "canonical_url": canonical,
         "title": (title or lead.get("name") or "")[:300] or None,
-        "published_at": published_time(raw),
+        "published_at": published["utc"],
+        "published_timezone": published["timezone"],
+        "published_unzoned": published["unzoned"],
+        "language": page_language(raw),
         "observed_at": observed_at,
         "upstream_id": canonical[:300],
         "platform": lead.get("platform") or ("video" if talk else "blog"),
@@ -178,11 +188,13 @@ def _collect_page(lead, by_slug, fetch_bytes, observed_at, observations, stateme
         "content_hash": content_hash({"url": canonical, "text": text}),
         "summary": text[:500],
         "transcript_url": lead.get("transcript_url"),
-        "attribution_method": attribution,
+        "attribution_method": evidence["attribution"],
+        "locators": evidence["locators"],
+        "participants": evidence["participants"],
     }
-    item["evidence_body"] = evidence
+    item["evidence_body"] = evidence["text"]
     observations.append(item)
-    statements.extend(_statements_for_item(item, evidence, start_ms))
+    statements.extend(_statements_for_item(item, evidence["text"]))
     runs.append({"status": "success", "kind": kind, "url": canonical, "person_id": item["person_id"]})
 
 
@@ -207,22 +219,55 @@ def _robots_text(fetch_bytes, url: str, cache: dict, runs: list[dict]) -> str | 
     return text
 
 
-def _essay_attributed(lead: dict, person: dict, text: str) -> bool:
-    if mentioned(text, person["display_name"]):
+def _page_attributed(lead: dict, person: dict, raw: str) -> bool:
+    """Essays need authorship. A curated single-speaker talk is that person's appearance."""
+    if lead.get("kind") == "talk" and lead.get("single_speaker"):
         return True
+    return _essay_attributed(lead, person, raw)
+
+
+def _essay_attributed(lead: dict, person: dict, raw: str) -> bool:
+    """Author metadata, a title byline, or an exact title. A name only in the body is not authorship."""
+    authors = page_authors(raw)
+    title = page_title(raw) if "<html" in (raw or "")[:2000].lower() else None
+    if authors:
+        return any(_author_matches(lead, person, author) for author in authors)
+    if title and same_person_name(title, person["display_name"]):
+        return True
+    byline = title_byline(title)
+    if byline and _author_matches(lead, person, byline):
+        return True
+    chrome = " ".join(part for part in [title or "", lead.get("name") or ""] if part)
+    if _alias_or_handle(lead, person, chrome):
+        return True
+    body_byline = opening_byline(raw)
+    if body_byline and _alias_or_handle(lead, person, body_byline):
+        return True
+    return _host_names_person(lead, person)
+
+
+def _author_matches(lead: dict, person: dict, name: str) -> bool:
+    if same_person_name(name, person["display_name"]):
+        return True
+    return _alias_or_handle(lead, person, name)
+
+
+def _alias_or_handle(lead: dict, person: dict, text: str) -> bool:
+    if person.get("name_distinctiveness") != "high" or not text:
+        return False
     alias = lead.get("byline_alias") or ""
-    if alias and person.get("name_distinctiveness") == "high" and mentioned(text, alias):
+    if alias and mentioned(text, alias):
         family = name_key(person["display_name"])[-1] if name_key(person["display_name"]) else ""
         alias_tokens = name_key(alias)
         if len(alias_tokens) >= 2 and len(family) > 3 and family in alias_tokens:
             return True
     handle = lead.get("byline_handle") or ""
-    if handle and person.get("name_distinctiveness") == "high" and handle.lower() in text.lower():
+    if handle and handle.lower() in text.lower():
         compact = "".join(char for char in handle.lower() if char.isalnum())
         tokens = [token for token in name_key(person["display_name"]) if len(token) > 2]
         if tokens and all(token in compact for token in tokens):
             return True
-    return _host_names_person(lead, person)
+    return False
 
 
 def _host_names_person(lead: dict, person: dict) -> bool:
@@ -294,8 +339,8 @@ def _item_from_feed(lead: dict, observation, by_slug: dict, people: list[dict]) 
 
 
 def _feed_names_person(observation, display_name: str) -> bool:
-    blob = " ".join([observation.title or "", *[segment.text for segment in observation.segments]])
-    return mentioned(strip_markup(blob), display_name)
+    """An owned feed item with no author field must name the person in the title, not the body."""
+    return mentioned(strip_markup(observation.title or ""), display_name)
 
 
 def _person_by_author(author: str, people: list[dict]) -> dict | None:
@@ -311,57 +356,131 @@ def _person_by_author(author: str, people: list[dict]) -> dict | None:
     return hits[0]
 
 
-def _evidence_text(item: dict, fetch_bytes, runs: list[dict], use_body: bool = False, robots_cache: dict | None = None) -> tuple[str, int | None]:
+def _empty_evidence() -> dict:
+    return {"text": "", "locators": [], "participants": [], "attribution": None}
+
+
+def _fetch_if_allowed(fetch_bytes, url: str, robots_cache: dict, runs: list[dict], kind: str) -> bytes | None:
+    """Same robots and blocked-host checks for a page and for an explicit transcript URL."""
+    host = host_of(url)
+    if host and hostname_is_blocked(host):
+        runs.append({"status": "failure", "kind": kind, "url": url, "error_class": "blocked_by_policy"})
+        return None
+    robots = _robots_text(fetch_bytes, url, robots_cache, runs)
+    if robots is None:
+        return None
+    path = urlparse(url).path or "/"
+    if not robots_allows(robots, path, user_agent=USER_AGENT):
+        runs.append({"status": "failure", "kind": kind, "url": url, "error_class": "blocked_by_policy"})
+        return None
+    try:
+        return fetch_bytes(url)
+    except CollectorFailure as exc:
+        runs.append({"status": "failure", "kind": kind, "url": url, "error_class": exc.error_class})
+        return None
+
+
+def _evidence_text(item: dict, fetch_bytes, runs: list[dict], use_body: bool = False, robots_cache: dict | None = None) -> dict:
     if item["ownership"] == "owned":
         if use_body and item.get("article_text"):
-            return article_text(item["article_text"], max_chars=ESSAY_TEXT_CHARS), None
-        return strip_markup(item.get("summary") or ""), None
+            return {"text": article_text(item["article_text"], max_chars=ESSAY_TEXT_CHARS), "locators": [], "participants": [], "attribution": "metadata"}
+        return {"text": strip_markup(item.get("summary") or ""), "locators": [], "participants": [], "attribution": "metadata"}
     url = item.get("transcript_url")
     if not url and item.get("canonical_url") and item.get("role") == "guest":
         url = item["canonical_url"]
-        if robots_cache is not None:
-            robots = _robots_text(fetch_bytes, url, robots_cache, runs)
-            path = urlparse(url).path or "/"
-            if robots is None or not robots_allows(robots, path):
-                runs.append({"status": "failure", "kind": "transcript", "url": url, "error_class": "blocked_by_policy", "person_id": item["person_id"]})
-                return "", None
     if not url:
-        return "", None
-    try:
-        payload = fetch_bytes(url)
-    except CollectorFailure as exc:
-        runs.append({"status": "failure", "kind": "transcript", "url": url, "error_class": exc.error_class, "person_id": item["person_id"]})
-        return "", None
+        return _empty_evidence()
+    cache = robots_cache if robots_cache is not None else {}
+    payload = _fetch_if_allowed(fetch_bytes, url, cache, runs, "transcript")
+    if payload is None:
+        for row in reversed(runs):
+            if row.get("url") == url and row.get("status") == "failure":
+                row["person_id"] = item["person_id"]
+                break
+        return _empty_evidence()
     if len(payload) > MAX_TRANSCRIPT_BYTES:
         runs.append({"status": "failure", "kind": "transcript", "url": url, "error_class": "content_too_large", "person_id": item["person_id"]})
-        return "", None
+        return _empty_evidence()
     text = article_text(payload.decode("utf-8", errors="replace"), max_chars=200_000)
-    body, start_ms = _labeled_speaker_text(text, item["display_name"])
-    if not body:
+    evidence = evidence_for_person(text, item["display_name"], SPEAKER_GAP)
+    if not evidence["text"]:
         runs.append({"status": "failure", "kind": "transcript", "url": url, "error_class": "speaker_labels_absent", "person_id": item["person_id"]})
-        return "", None
+        return _empty_evidence()
     runs.append({"status": "success", "kind": "transcript", "url": url, "person_id": item["person_id"]})
-    return body[:200_000], start_ms
+    evidence["text"] = evidence["text"][:200_000]
+    evidence["attribution"] = "transcript_label"
+    return evidence
 
 
-def _labeled_speaker_text(text: str, display_name: str) -> tuple[str, int | None]:
-    blocks = speaker_blocks(speaker_turns(text), display_name)
-    if not blocks:
-        return "", None
-    body = f"\n{SPEAKER_GAP}\n".join(block["text"] for block in blocks)
-    start_ms = next((block["start_ms"] for block in blocks if block.get("start_ms") is not None), None)
-    return body, start_ms
-
-
-def _page_evidence(lead: dict, person: dict, text: str) -> tuple[str, str, int | None]:
+def _page_evidence(lead: dict, person: dict, text: str) -> dict:
     if lead.get("kind") != "talk":
-        return text, "byline", None
-    labeled, start_ms = _labeled_speaker_text(text, person["display_name"])
-    if labeled:
-        return labeled, "transcript_label", start_ms
+        return {
+            "text": text,
+            "attribution": "byline",
+            "locators": [],
+            "participants": [
+                {
+                    "name": person["display_name"],
+                    "role": "author",
+                    "attribution_method": "byline",
+                    "attribution_detail": "page_byline",
+                }
+            ],
+        }
+    evidence = evidence_for_person(text, person["display_name"], SPEAKER_GAP)
+    if evidence["text"]:
+        primary = {
+            "name": person["display_name"],
+            "role": "speaker",
+            "attribution_method": "transcript_label",
+            "attribution_detail": "speaker_label",
+        }
+        return {
+            "text": evidence["text"],
+            "attribution": "transcript_label",
+            "locators": evidence["locators"],
+            "participants": _with_primary([primary], evidence["participants"]),
+        }
     if lead.get("single_speaker") and not speaker_turns(text):
-        return text, "byline", None
-    return "", "byline", None
+        return {
+            "text": text,
+            "attribution": "byline",
+            "locators": [],
+            "participants": [
+                {
+                    "name": person["display_name"],
+                    "role": "speaker",
+                    "attribution_method": "byline",
+                    "attribution_detail": "single_speaker_page",
+                }
+            ],
+        }
+    return {"text": "", "attribution": "byline", "locators": [], "participants": []}
+
+
+def _feed_participants(item: dict) -> list[dict]:
+    role = item.get("role") or "speaker"
+    guest = role == "guest"
+    return [
+        {
+            "name": item["display_name"],
+            "role": role,
+            "attribution_method": "transcript_label" if guest else "metadata",
+            "attribution_detail": "episode_title" if guest else "feed_author_field",
+        }
+    ]
+
+
+def _with_primary(primary: list[dict], extra: list[dict] | None) -> list[dict]:
+    rows = list(primary)
+    seen = {(row.get("role"), row.get("name")) for row in rows}
+    for row in extra or []:
+        key = (row.get("role"), row.get("name"))
+        if key in seen:
+            continue
+        seen.add(key)
+        rows.append(row)
+    return rows
 
 
 def _lead_row(lead: dict, reason: str, retryable: bool) -> dict:
@@ -375,13 +494,14 @@ def _lead_row(lead: dict, reason: str, retryable: bool) -> dict:
     }
 
 
-def _statements_for_item(item: dict, text: str, start_ms: int | None) -> list[dict]:
+def _statements_for_item(item: dict, text: str) -> list[dict]:
     if not text:
         return []
     found = extract_statements(text, person_id=item["person_id"])
     kept = []
     digests = set()
     kept_by_signature: dict[tuple, dict] = {}
+    locators = item.get("locators") or []
     for statement in _prefer(found):
         if not _passes_gate(statement):
             continue
@@ -411,24 +531,74 @@ def _statements_for_item(item: dict, text: str, start_ms: int | None) -> list[di
         if item.get("ownership") == "appearance" and item.get("source_type") == "press":
             flags.append("secondary_source_only")
         statement["review_flags"] = sorted(set(flags))
-        statement.update(
-            {
-                "person_slug": item["person_slug"],
-                "source_url": item["canonical_url"],
-                "published_at": item["published_at"],
-                "observed_at": item["observed_at"],
-                "role": item["role"],
-                "ownership": item["ownership"],
-                "start_ms": start_ms if statement.get("start_ms") is None else statement.get("start_ms"),
-                "attribution_method": "transcript_label" if item["role"] == "guest" else item.get("attribution_method") or "metadata",
-                "attribution_detail": "speaker_label" if item["role"] == "guest" or item.get("attribution_method") == "transcript_label" else ("page_byline" if item.get("attribution_method") == "byline" else "feed_author_field"),
-                "verified": False,
-            }
+        _apply_locator(statement, locators)
+        recommended = statement.get("review_state")
+        if recommended == "human_verified":
+            continue
+        attribution = "transcript_label" if item.get("role") == "guest" else item.get("attribution_method") or "metadata"
+        detail = (
+            "speaker_label"
+            if item.get("role") == "guest" or item.get("attribution_method") == "transcript_label"
+            else ("page_byline" if item.get("attribution_method") == "byline" else "feed_author_field")
         )
+        update = {
+            "person_slug": item["person_slug"],
+            "source_url": item["canonical_url"],
+            "published_at": item.get("published_at"),
+            "published_timezone": item.get("published_timezone"),
+            "observed_at": item.get("observed_at"),
+            "role": item.get("role"),
+            "ownership": item.get("ownership"),
+            "attribution_method": attribution,
+            "attribution_detail": detail,
+            "verified": False,
+            "source_type": item.get("source_type"),
+            "platform": item.get("platform"),
+            "language": item.get("language"),
+            "participants": item.get("participants") or [],
+            "recommended_review_state": recommended if recommended in {"unreviewed", "needs_review", "machine_validated"} else "unreviewed",
+        }
+        if item.get("content_hash"):
+            update["content_hash"] = item["content_hash"]
+            update["content_version"] = item.get("content_version") or 1
+        statement.update(update)
         kept.append(statement)
         if len(kept) >= MAX_STATEMENTS:
             break
     return kept
+
+
+def _apply_locator(statement: dict, locators: list[dict]) -> None:
+    """Use the turn that contains the span. A missing alignment stays unknown."""
+    start = statement.get("start_char")
+    locator = None
+    if isinstance(start, int):
+        for item in locators:
+            begin = item.get("start_char")
+            end = item.get("end_char")
+            if isinstance(begin, int) and isinstance(end, int) and begin <= start < end:
+                locator = item
+                break
+    if locator is None:
+        statement["start_ms"] = None
+        statement["evidence_locator"] = None
+        return
+    statement["start_ms"] = locator.get("start_ms")
+    statement["evidence_locator"] = {
+        "start_char": locator.get("start_char"),
+        "end_char": locator.get("end_char"),
+        "start_ms": locator.get("start_ms"),
+        "speaker": locator.get("speaker"),
+        "turn_index": locator.get("turn_index"),
+    }
+    preceding = locator.get("preceding") or {}
+    prefix = (preceding.get("text") or "").strip()
+    if prefix and preceding.get("role") in {"host", "interviewer"}:
+        context = statement.get("context_text") or ""
+        statement["context_text"] = f"{prefix} {context}".strip()[:800]
+        flags = set(statement.get("review_flags") or [])
+        flags.add("host_question_in_context")
+        statement["review_flags"] = sorted(flags)
 
 
 def _prefer(statements: list[dict]) -> list[dict]:
