@@ -4,17 +4,10 @@ from __future__ import annotations
 
 import argparse
 import json
-import time
-from datetime import datetime, timezone
 from pathlib import Path
 
-from pdoom_pipeline.belief.collect import collect_beliefs, dumps_jsonl, summarize
-from pdoom_pipeline.belief.priority import priority_rows
+from pdoom_pipeline.belief.collect import dumps_jsonl
 from pdoom_pipeline.enrich.merge import source_record
-from pdoom_pipeline.errors import CollectorFailure
-from pdoom_pipeline.export.corpus import export_corpus
-from pdoom_pipeline.fetch import SafeFetcher
-from pdoom_pipeline.quality.report import write_report
 from pdoom_pipeline.seed.build import SEED_DIR, _write_jsonl, load_jsonl
 from pdoom_pipeline.urls import canonicalize_url
 
@@ -23,52 +16,51 @@ LEADS = SEED_DIR / "belief_sources.jsonl"
 COLLECTION = ROOT / "data" / "collections" / "cohort-v2026-09"
 
 
-def run(seed_dir: Path | None = None) -> dict:
+def run(
+    seed_dir: Path | None = None,
+    *,
+    max_sources: int = 40,
+    max_seconds: float = 900,
+    cancelled=None,
+) -> dict:
+    """Refresh a bounded slice of the cohort and assemble canonical output.
+
+    Source rows already in the seed registry stay there. Belief output is
+    written under the collection staging directory, not the enrichment directory.
+    """
+    from pdoom_pipeline.refresh.runner import run_refresh
+
     directory = seed_dir or SEED_DIR
     people = load_jsonl(directory / "people.jsonl")
-    if len(people) != 323:
+    if seed_dir is None and len(people) != 323:
         raise RuntimeError(f"cohort size changed: {len(people)}")
     leads = load_jsonl(directory / "belief_sources.jsonl") if seed_dir else load_jsonl(LEADS)
-    lead_slugs = {row["person_slug"] for row in leads if row.get("person_slug")}
+    if not leads and (directory / "belief_sources.jsonl").exists():
+        leads = load_jsonl(directory / "belief_sources.jsonl")
     sources = load_jsonl(directory / "sources.jsonl")
-    covered = set()
-    for source in sources:
-        if source.get("source_type") != "openalex_works" and source.get("owner_person_id"):
-            covered.add(source["owner_person_id"].split(":", 1)[1])
-    priority = priority_rows(people, lead_slugs=lead_slugs, covered_slugs=covered)
-    priority_slugs = {row["person_slug"] for row in priority}
-    observed_at = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-    fetcher = SafeFetcher(
-        allowed_content_types=("application/rss+xml", "application/atom+xml", "application/xml", "text/xml", "text/plain", "text/html", "application/xhtml+xml", "application/octet-stream"),
-        max_bytes=6_000_000,
-        timeout=20,
-    )
-
-    def fetch_bytes(url: str) -> bytes:
-        time.sleep(0.12)
-        return fetcher.get(url).body
-
-    result = collect_beliefs(
+    collection = COLLECTION if seed_dir is None else seed_dir.parent / "collection"
+    if seed_dir is not None:
+        collection = Path(seed_dir).parent / "refresh-collection"
+    refreshed = run_refresh(
+        seed_dir=directory,
+        collection_dir=collection if seed_dir is None else collection,
         people=people,
         leads=leads,
-        fetch_bytes=fetch_bytes,
-        observed_at=observed_at,
-        priority_slugs=priority_slugs,
+        registry_sources=sources,
+        max_sources=max_sources,
+        max_seconds=max_seconds,
+        cancelled=cancelled,
     )
-    _register_sources(directory, leads, result)
-    COLLECTION.mkdir(parents=True, exist_ok=True)
-    (COLLECTION / "source_observations.jsonl").write_text(_observations(result), encoding="utf-8")
-    (COLLECTION / "candidate_statements.jsonl").write_text(dumps_jsonl(result["statements"]), encoding="utf-8")
-    (COLLECTION / "view_changes.jsonl").write_text(dumps_jsonl(result["relationships"]), encoding="utf-8")
-    (COLLECTION / "source_leads.jsonl").write_text(dumps_jsonl(result.get("source_leads") or []), encoding="utf-8")
-    (directory / "collection_priority.jsonl").write_text(dumps_jsonl(priority), encoding="utf-8")
-    document = export_corpus(result, seed_dir=directory, generated_at=observed_at)
-    (COLLECTION / "canonical-live.json").write_text(json.dumps(document), encoding="utf-8")
-    summary = summarize(result)
-    summary["priority_people"] = len(priority)
-    summary["people"] = len(people)
-    (COLLECTION / "belief-summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
-    write_report(directory, result["runs"], corpus=summary)
+    if seed_dir is None:
+        COLLECTION.mkdir(parents=True, exist_ok=True)
+        document = refreshed["document"]
+        (COLLECTION / "canonical-live.json").write_text(json.dumps(document), encoding="utf-8")
+    summary = {
+        "status": refreshed["status"],
+        "counts": refreshed["counts"],
+        "cursor": refreshed["cursor"],
+        "people": len(people),
+    }
     return summary
 
 

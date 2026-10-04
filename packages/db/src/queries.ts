@@ -794,7 +794,7 @@ export async function getCoverage(asOf = new Date().toISOString(), pool = getPoo
       params,
     ),
     pool.query(
-      `SELECT max(src.last_success_at) AS last_success_at, max(si.observed_at) AS observed_at
+      `SELECT max(src.last_success_at) AS last_success_at, max(src.last_checked_at) AS last_checked_at, max(si.observed_at) AS observed_at
        FROM sources src
        LEFT JOIN source_items si ON si.source_id = src.id
        ${sourceScope}`,
@@ -841,6 +841,7 @@ export async function getCoverage(asOf = new Date().toISOString(), pool = getPoo
     sources_by_type: sourcesByType,
     source_count: typed.rows.length,
     latest_successful_observation: iso(latest.rows[0]?.last_success_at),
+    latest_source_checked_at: iso(latest.rows[0]?.last_checked_at),
     latest_item_observed_at: iso(latest.rows[0]?.observed_at),
     stale_sources: stale,
     unavailable_or_failing_sources: Number(failing.rows[0]?.failing ?? 0),

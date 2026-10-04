@@ -25,6 +25,8 @@ export default async function SourcesPage() {
           <p className="meta">
             {source.item_count} {source.item_count === 1 ? "item" : "items"}
             {" · "}
+            Last check {formatWhen(source.last_checked_at)}
+            {" · "}
             Last success {formatWhen(source.last_success_at)}
             {" · "}
             {source.enabled ? "Enabled" : "Disabled"}

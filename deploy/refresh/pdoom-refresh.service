@@ -1,0 +1,11 @@
+[Unit]
+Description=pdoom.live bounded source refresh (does not publish)
+Documentation=file:///opt/pdoom/docs/REFRESH.md
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/pdoom
+Environment=PYTHONPATH=/opt/pdoom/pipeline
+ExecStart=/opt/pdoom/scripts/refresh/run-once.sh --max-sources 40 --max-seconds 900
+Nice=10
+# The unit is prepared for a single host. Do not enable it from release.sh.

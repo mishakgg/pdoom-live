@@ -265,7 +265,7 @@ The release, backup, and restore scripts read `PDOOM_ENV_FILE`. When it is unset
 
 The first release applies `001_init.sql`, which is classified as breaking, so `--ack-breaking` is required. The script backs up the database before it applies migrations. Later releases skip that backup when no migration is pending.
 
-`scripts/deploy/release.sh` builds `pdoom-live:<git sha>`, migrates, starts a candidate, and only then reloads Caddy. It does not import a dataset. `scripts/deploy/publish-dataset.sh` backs up, imports one live canonical file, and leaves the web process running.
+`scripts/deploy/release.sh` builds `pdoom-live:<git sha>`, migrates, starts a candidate, and only then reloads Caddy. It does not import a dataset and it does not enable `deploy/refresh/`. `scripts/deploy/publish-dataset.sh` backs up, then imports one live canonical file only when the latest belief or refresh run is not `failed`. A partial run is imported and recorded as `publish_partial`. It is not reported as a full success. The web process keeps running. The refresh command itself is `scripts/refresh/run-once.sh` and is described in `docs/REFRESH.md`.
 
 `scripts/deploy/rollback.sh` switches to the previous image when `deploy/migration-class.tsv` recorded that release as `compatible` or `none`. A `breaking` release refuses that switch until `--restore-backup` is passed. Migrations are not reversed.
 

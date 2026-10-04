@@ -186,6 +186,7 @@ export type PublicSource = PublicReviewFields & {
   owner_person_slug: string | null;
   owner_organization_slug: string | null;
   collection_method: string;
+  last_checked_at: string | null;
   last_success_at: string | null;
   freshness: Freshness;
   public_item_count: number;
@@ -912,6 +913,7 @@ function mapSource(row: Record<string, unknown>, asOf: string): PublicSource {
     owner_person_slug: row.owner_person_slug ? String(row.owner_person_slug) : null,
     owner_organization_slug: row.owner_organization_slug ? String(row.owner_organization_slug) : null,
     collection_method: String(row.collection_method),
+    last_checked_at: iso(row.last_checked_at as Date | null),
     last_success_at: lastSuccess,
     freshness: classifyFreshness(lastSuccess, asOf),
     public_item_count: Number(row.public_item_count ?? 0),
@@ -920,7 +922,7 @@ function mapSource(row: Record<string, unknown>, asOf: string): PublicSource {
 
 const sourceSelect = `
   SELECT src.slug, src.name, src.source_type, src.canonical_url, src.platform, src.collection_method,
-         src.review_state, src.last_success_at,
+         src.review_state, src.last_checked_at, src.last_success_at,
          p.slug AS owner_person_slug, o.slug AS owner_organization_slug,
          (
            SELECT count(DISTINCT si.id)::int
@@ -1277,7 +1279,13 @@ export async function getPublicCatalog(asOf: string | null, pool: Db = getPool()
        JOIN statements s ON s.source_item_id = si.id
        WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[])`,
       [PUBLIC_STATES],
-    );
+  );
+  const sourceTimes = await pool.query(
+    `SELECT max(last_checked_at) AS checked_at, max(last_success_at) AS success_at
+     FROM sources
+     WHERE review_state = ANY($1::text[])`,
+    [PUBLIC_STATES],
+  );
   const researchTrends = await loadResearchTrends(stampTime ?? "1970-01-01T00:00:00.000Z", pool);
   const methods = [...new Set(researchTrends.map((trend) => trend.method_version))].sort();
   const topics = await pool.query(`SELECT slug, version FROM topics ORDER BY slug`);
@@ -1340,6 +1348,8 @@ export async function getPublicCatalog(asOf: string | null, pool: Db = getPool()
     },
     latest_observed_at: iso(observed.rows[0]?.observed_at ?? null),
     latest_published_at: iso(observed.rows[0]?.published_at ?? null),
+    latest_source_checked_at: iso(sourceTimes.rows[0]?.checked_at ?? null),
+    latest_source_success_at: iso(sourceTimes.rows[0]?.success_at ?? null),
   };
 }
 

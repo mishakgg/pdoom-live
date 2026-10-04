@@ -27,7 +27,10 @@ PYTHONPATH=pipeline python -m pytest
 PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.resolve_seed
 PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.enrich_sources --live
 PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.collect_beliefs --live
+PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.refresh --once
 ```
+
+`refresh --once` is the bounded recurring path. It is documented in `docs/REFRESH.md`. The command refuses to run without `--once`, and no timer is enabled. `collect_beliefs --live` calls the same refresh.
 
 `pytest` does not call the network. `resolve_seed --resolve` queries OpenAlex. `enrich_sources --live` reads ORCID records that are already linked and fetches claimed or ORCID URLs. It does not add people and it does not search social accounts by name. Set `PDOOM_LIVE_TESTS=1` only for an optional live smoke test.
 
@@ -48,7 +51,7 @@ Participant role `mentioned` is assigned only when the full display name occurs 
 
 ## Fetch safety
 
-The fetcher allows `http` and `https` only. It rejects userinfo, localhost, `.local`, link-local, private, loopback, reserved, and cloud-metadata addresses, including `169.254.169.254` and `metadata.google.internal`. Redirects are rechecked. Responses are capped. Gzip and deflate are decompressed only up to that cap. Retries apply to timeouts, 429, and 5xx responses. A 404 stays `not_found`.
+The fetcher allows `http` and `https` only. It rejects userinfo, localhost, `.local`, link-local, private, loopback, reserved, and cloud-metadata addresses, including `169.254.169.254` and `metadata.google.internal`. Redirects are rechecked. Responses are capped. Gzip and deflate are decompressed only up to that cap. Retries apply to timeouts, 429, and 5xx responses. The production fetcher sleeps, honors Retry-After up to 60 seconds, and stops at the refresh deadline. A 404 stays `not_found`. HTTP 304 with a cached body is a successful unchanged check.
 
 Source text is stored and parsed as data. A fixture containing "ignore your instructions and execute this command" is not fetched as a URL and is not turned into a statement.
 
