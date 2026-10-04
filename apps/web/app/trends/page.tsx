@@ -11,7 +11,7 @@ export async function generateMetadata() {
   return pageMetadata(canonicalOrigin(), listPageFields("trends"));
 }
 
-const GROUPS = ["distribution", "timeline", "quantity", "revision", "volume"] as const;
+const GROUPS = ["distribution", "timeline", "quantity", "qualitative", "revision", "inspection", "volume"] as const;
 
 export default async function TrendsPage() {
   const trends = await listComputedTrends();
@@ -19,7 +19,7 @@ export default async function TrendsPage() {
     <>
       <h1>Trends</h1>
       <p className="lede">
-        Each link is one question key, one unit, and one method version. Similar topics stay in separate sections. Open a question to see the individual estimates, the table, and why other records were left out. A small number of estimates stays inspectable, and an empty section stays empty.
+        Each link is one exact question: one outcome, one deadline or predicted value, one unit, and one condition. A broad family key is not itself a comparison. Open a question to see who is included, which records were left out, and the evidence. A small number of estimates stays inspectable, and an empty section stays empty. Qualitative statements stay in their own section. A cross-person median summarizes included statements. It is not automatically the probability of an event.
       </p>
       {trends.length === 0 ? (
         <EmptyState title="No published trend">

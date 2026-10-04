@@ -1,10 +1,13 @@
 import {
+  COMPARABILITY_POLICY_VERSION,
+  CURRENT_CORPUS_HISTORY,
   aggregationSchema,
   distributionAggregationSchema,
   quantityAggregationSchema,
   revisionAggregationSchema,
   timelineAggregationSchema,
   volumeAggregationSchema,
+  type HistoryClaim,
   type TrendConditionality,
   type TrendDensity,
 } from "@pdoom/contracts";
@@ -16,13 +19,17 @@ import {
   computeQuantityForecast,
   computeStatementVolume,
   computeTimelineForecast,
+  discoverQualitativeGroups,
   discoverQuestionTrends,
+  listUnpooledForecasts,
   type DiscoveredTrend,
   type NumericTrendResult,
+  type QualitativeGroup,
   type RevisionEdge,
   type RevisionResult,
   type TrendCandidate,
   type TrendScope,
+  type UnpooledForecast,
   type VolumeRow,
 } from "./trend-engine";
 import { effectiveReviewStateSql } from "./coverage";
@@ -48,6 +55,9 @@ type TrendHeader = {
   calculated_at: string;
   density: TrendDensity;
   question_key: string | null;
+  exact_question_id: string | null;
+  comparability_policy_version: typeof COMPARABILITY_POLICY_VERSION;
+  history: HistoryClaim;
   contributing_person_count: number;
   contributing_statement_count: number;
   cohort_size: number;
@@ -70,11 +80,31 @@ export type VolumeTrend = TrendHeader & {
   };
 };
 
+export type QualitativeTrend = TrendHeader & {
+  kind: "qualitative";
+  qualitative: {
+    question_key: string;
+    definition_text: string;
+    note: string;
+    rows: QualitativeGroup["rows"];
+  };
+};
+
+export type InspectionTrend = TrendHeader & {
+  kind: "inspection";
+  inspection: {
+    note: string;
+    rows: UnpooledForecast[];
+  };
+};
+
 export type PublicTrend =
   | (TrendHeader & { kind: "distribution"; distribution: NumericTrendResult })
   | (TrendHeader & { kind: "timeline"; timeline: NumericTrendResult })
   | (TrendHeader & { kind: "quantity"; quantity: NumericTrendResult })
   | (TrendHeader & { kind: "revision"; revision: RevisionResult })
+  | QualitativeTrend
+  | InspectionTrend
   | VolumeTrend;
 
 type MethodSpec = {
@@ -82,7 +112,7 @@ type MethodSpec = {
   name: string;
   method_version: string;
   source: TrendSource;
-  kind: "distribution" | "timeline" | "quantity" | "revision" | "volume";
+  kind: "distribution" | "timeline" | "quantity" | "revision" | "volume" | "qualitative" | "inspection";
   question_key: string | null;
   question_text: string;
   definition_text: string;
@@ -146,6 +176,90 @@ async function currentCohort(pool: pg.Pool): Promise<CohortRef | null> {
   };
 }
 
+export const FORECAST_INPUT_SQL = `SELECT s.slug AS statement_slug, p.slug AS person_slug, p.display_name, s.statement_type, ${effectiveReviewStateSql("s")} AS review_state,
+            s.event_time, f.question_key, f.question_text, f.definition_text, f.condition_text, f.forecast_kind,
+            f.value_type, f.value_numeric, f.value_min, f.value_max, f.unit, f.horizon_text,
+            f.target_date_start, f.target_date_end, f.distribution_json, f.resolution_criteria,
+            f.review_state AS forecast_review_state,
+            si.observed_at AS known_at,
+            (
+              SELECT max(rd.reviewed_at)
+              FROM review_decisions rd
+              WHERE rd.statement_id = s.id AND rd.resulting_review_state = 'human_verified'
+            ) AS reviewed_at,
+            COALESCE(array_agg(DISTINCT t.slug) FILTER (WHERE t.slug IS NOT NULL), '{}') AS topic_slugs
+     FROM statements s
+     JOIN people p ON p.id = s.person_id
+     JOIN cohort_memberships cm ON cm.person_id = p.id
+     JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2
+     LEFT JOIN forecasts f ON f.statement_id = s.id
+     LEFT JOIN source_items si ON si.id = s.source_item_id
+     LEFT JOIN statement_topics st ON st.statement_id = s.id
+     LEFT JOIN topics t ON t.id = st.topic_id
+     GROUP BY s.id, p.slug, p.display_name, f.question_key, f.question_text, f.definition_text, f.condition_text,
+              f.forecast_kind, f.value_type, f.value_numeric, f.value_min, f.value_max, f.unit, f.horizon_text, f.review_state,
+              f.target_date_start, f.target_date_end, f.distribution_json, f.resolution_criteria, si.observed_at`;
+
+function dateOnly(value: unknown): string | null {
+  if (!value) return null;
+  if (typeof value === "string") {
+    const match = /^(\d{4}-\d{2}-\d{2})/.exec(value.trim());
+    return match?.[1] ?? null;
+  }
+  if (value instanceof Date && !Number.isNaN(value.getTime())) {
+    const month = String(value.getMonth() + 1).padStart(2, "0");
+    const day = String(value.getDate()).padStart(2, "0");
+    return `${value.getFullYear()}-${month}-${day}`;
+  }
+  return null;
+}
+
+function asRecord(value: unknown): Record<string, unknown> | null {
+  if (!value) return null;
+  if (typeof value === "string") {
+    try {
+      const parsed = JSON.parse(value) as unknown;
+      return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed as Record<string, unknown> : null;
+    } catch {
+      return null;
+    }
+  }
+  return typeof value === "object" && !Array.isArray(value) ? value as Record<string, unknown> : null;
+}
+
+export function mapForecastRow(row: Record<string, unknown>): TrendCandidate {
+  const distribution = asRecord(row.distribution_json);
+  const nestedSemantics = distribution && typeof distribution.probability_semantics === "string" ? distribution.probability_semantics : null;
+  return {
+    statement_slug: String(row.statement_slug),
+    person_slug: String(row.person_slug),
+    display_name: String(row.display_name),
+    statement_type: String(row.statement_type),
+    review_state: String(row.review_state),
+    forecast_review_state: row.forecast_review_state ? String(row.forecast_review_state) : null,
+    topic_slugs: Array.isArray(row.topic_slugs) ? row.topic_slugs.map((topic) => String(topic)) : [],
+    question_key: row.question_key ? String(row.question_key) : null,
+    question_text: row.question_text ? String(row.question_text) : null,
+    definition_text: row.definition_text ? String(row.definition_text) : null,
+    condition_text: row.condition_text ? String(row.condition_text) : null,
+    forecast_kind: row.forecast_kind ? String(row.forecast_kind) : null,
+    value_type: row.value_type ? String(row.value_type) : null,
+    value_numeric: num(row.value_numeric as string | number | null),
+    value_min: num(row.value_min as string | number | null),
+    value_max: num(row.value_max as string | number | null),
+    unit: row.unit ? String(row.unit) : null,
+    horizon_text: row.horizon_text ? String(row.horizon_text) : null,
+    target_date_start: dateOnly(row.target_date_start),
+    target_date_end: dateOnly(row.target_date_end),
+    distribution,
+    probability_semantics: nestedSemantics,
+    resolution_criteria: row.resolution_criteria ? String(row.resolution_criteria) : null,
+    known_at: iso(row.known_at as Date | string | null),
+    reviewed_at: iso(row.reviewed_at as Date | string | null),
+    event_time: iso(row.event_time as Date | string | null),
+  };
+}
+
 async function loadInputs(pool: pg.Pool, cohort: CohortRef): Promise<CohortInputs> {
   const size = await pool.query(
     `SELECT count(*)::int AS count
@@ -153,23 +267,7 @@ async function loadInputs(pool: pg.Pool, cohort: CohortRef): Promise<CohortInput
      WHERE c.slug = $1 AND c.version = $2`,
     [cohort.slug, cohort.version],
   );
-  const forecasts = await pool.query(
-    `SELECT s.slug AS statement_slug, p.slug AS person_slug, p.display_name, s.statement_type, ${effectiveReviewStateSql("s")} AS review_state,
-            s.event_time, f.question_key, f.question_text, f.definition_text, f.condition_text, f.forecast_kind,
-            f.value_type, f.value_numeric, f.value_min, f.value_max, f.unit, f.horizon_text,
-            f.review_state AS forecast_review_state,
-            COALESCE(array_agg(DISTINCT t.slug) FILTER (WHERE t.slug IS NOT NULL), '{}') AS topic_slugs
-     FROM statements s
-     JOIN people p ON p.id = s.person_id
-     JOIN cohort_memberships cm ON cm.person_id = p.id
-     JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2
-     LEFT JOIN forecasts f ON f.statement_id = s.id
-     LEFT JOIN statement_topics st ON st.statement_id = s.id
-     LEFT JOIN topics t ON t.id = st.topic_id
-     GROUP BY s.id, p.slug, p.display_name, f.question_key, f.question_text, f.definition_text, f.condition_text,
-              f.forecast_kind, f.value_type, f.value_numeric, f.value_min, f.value_max, f.unit, f.horizon_text, f.review_state`,
-    [cohort.slug, cohort.version],
-  );
+  const forecasts = await pool.query(FORECAST_INPUT_SQL, [cohort.slug, cohort.version]);
   const edges = await pool.query(
     `SELECT fs.slug AS from_statement_slug, ts.slug AS to_statement_slug, r.relationship_type, r.review_state, r.method
      FROM statement_relationships r
@@ -183,27 +281,7 @@ async function loadInputs(pool: pg.Pool, cohort: CohortRef): Promise<CohortInput
   return {
     cohort,
     size: Number(size.rows[0]?.count ?? 0),
-    candidates: forecasts.rows.map((row) => ({
-      statement_slug: String(row.statement_slug),
-      person_slug: String(row.person_slug),
-      display_name: String(row.display_name),
-      statement_type: String(row.statement_type),
-      review_state: String(row.review_state),
-      forecast_review_state: row.forecast_review_state ? String(row.forecast_review_state) : null,
-      topic_slugs: (row.topic_slugs as string[]) ?? [],
-      question_key: row.question_key ? String(row.question_key) : null,
-      question_text: row.question_text ? String(row.question_text) : null,
-      definition_text: row.definition_text ? String(row.definition_text) : null,
-      condition_text: row.condition_text ? String(row.condition_text) : null,
-      forecast_kind: row.forecast_kind ? String(row.forecast_kind) : null,
-      value_type: row.value_type ? String(row.value_type) : null,
-      value_numeric: num(row.value_numeric),
-      value_min: num(row.value_min),
-      value_max: num(row.value_max),
-      unit: row.unit ? String(row.unit) : null,
-      horizon_text: row.horizon_text ? String(row.horizon_text) : null,
-      event_time: iso(row.event_time),
-    })),
+    candidates: forecasts.rows.map((row) => mapForecastRow(row as Record<string, unknown>)),
     edges: edges.rows.map((row) => ({
       from_statement_slug: String(row.from_statement_slug),
       to_statement_slug: String(row.to_statement_slug),
@@ -382,11 +460,14 @@ function discoveredToMethod(trend: DiscoveredTrend): MethodSpec {
   };
 }
 
-function methodKey(method: MethodSpec): string {
-  return `${method.kind}\0${method.question_key ?? ""}\0${method.scope?.require_unit ?? ""}`;
+export function trendMethodKey(method: Pick<MethodSpec, "kind" | "question_key" | "scope">): string {
+  const exact = method.scope?.exact_question_id ?? method.question_key ?? "";
+  const unit = method.scope?.require_unit ?? "";
+  const conditionality = method.scope?.conditionality ?? "";
+  return `${method.kind}\0${exact}\0${unit}\0${conditionality}`;
 }
 
-function resolveMethods(published: MethodSpec[], candidates: TrendCandidate[]): MethodSpec[] {
+export function resolveTrendMethods(published: MethodSpec[], candidates: TrendCandidate[]): MethodSpec[] {
   const takenKeys = crossSectionQuestionKeys(
     published.filter((method) => method.question_key).map((method) => ({ kind: method.kind, question_key: method.question_key ?? "" })),
   );
@@ -405,13 +486,13 @@ function resolveMethods(published: MethodSpec[], candidates: TrendCandidate[]): 
   const seen = new Set<string>();
   const unique: MethodSpec[] = [];
   for (const method of merged) {
-    const key = method.kind === "volume" ? `volume\0${method.slug}` : methodKey(method);
+    const key = method.kind === "volume" ? `volume\0${method.slug}` : trendMethodKey(method);
     if (seen.has(key) || seen.has(method.slug)) continue;
     seen.add(key);
     seen.add(method.slug);
     unique.push(method);
   }
-  const order = ["distribution", "timeline", "quantity", "revision", "volume"];
+  const order = ["distribution", "timeline", "quantity", "qualitative", "revision", "inspection", "volume"];
   return unique.sort((a, b) => order.indexOf(a.kind) - order.indexOf(b.kind) || a.name.localeCompare(b.name) || a.slug.localeCompare(b.slug));
 }
 
@@ -439,6 +520,9 @@ function headerFor(method: MethodSpec, inputs: CohortInputs, density: TrendDensi
     calculated_at: new Date().toISOString(),
     density,
     question_key: method.question_key,
+    exact_question_id: method.scope?.exact_question_id ?? method.question_key,
+    comparability_policy_version: COMPARABILITY_POLICY_VERSION,
+    history: CURRENT_CORPUS_HISTORY,
     contributing_person_count: people,
     contributing_statement_count: statements,
     cohort_size: inputs.size,
@@ -520,11 +604,78 @@ function computeMethod(method: MethodSpec, inputs: CohortInputs): Exclude<Public
   return { ...headerFor(method, inputs, revision.density, revision.contributing_person_count, revision.contributing_statement_count), kind: "revision", revision };
 }
 
+const QUALITATIVE_NOTE = "These are qualitative statements. No probability is inferred from this wording.";
+const INSPECTION_NOTE = "These records stay individually inspectable. They are not pooled, because the stored outcome, condition, deadline, unit, or definition does not agree closely enough with one exact question.";
+
+function peopleFrom(rows: Array<{ person_slug: string; display_name: string }>): number {
+  return new Set(rows.map((row) => row.person_slug)).size;
+}
+
+function qualitativeTrends(inputs: CohortInputs): QualitativeTrend[] {
+  return discoverQualitativeGroups(inputs.candidates).map((group) => ({
+    slug: group.slug,
+    name: group.name,
+    method_version: "qualitative-statements/1.0.0",
+    source: "discovered_question",
+    cohort_slug: inputs.cohort.slug,
+    cohort_version: inputs.cohort.version,
+    cohort_definition: inputs.cohort.definition,
+    calculated_at: new Date().toISOString(),
+    density: group.rows.length > 0 ? "individual" : "empty",
+    question_key: group.question_key,
+    exact_question_id: group.question_key,
+    comparability_policy_version: COMPARABILITY_POLICY_VERSION,
+    history: CURRENT_CORPUS_HISTORY,
+    contributing_person_count: peopleFrom(group.rows),
+    contributing_statement_count: group.rows.length,
+    cohort_size: inputs.size,
+    kind: "qualitative",
+    qualitative: {
+      question_key: group.question_key,
+      definition_text: group.definition_text,
+      note: QUALITATIVE_NOTE,
+      rows: group.rows,
+    },
+  }));
+}
+
+function inspectionTrend(inputs: CohortInputs, takenQuestionKeys: Set<string>): InspectionTrend | null {
+  const rows = listUnpooledForecasts(inputs.candidates, takenQuestionKeys);
+  if (rows.length === 0) return null;
+  return {
+    slug: "unpooled-forecasts",
+    name: "Forecasts that are not pooled",
+    method_version: "unpooled-inspection/1.0.0",
+    source: "discovered_question",
+    cohort_slug: inputs.cohort.slug,
+    cohort_version: inputs.cohort.version,
+    cohort_definition: inputs.cohort.definition,
+    calculated_at: new Date().toISOString(),
+    density: "individual",
+    question_key: null,
+    exact_question_id: null,
+    comparability_policy_version: COMPARABILITY_POLICY_VERSION,
+    history: CURRENT_CORPUS_HISTORY,
+    contributing_person_count: peopleFrom(rows),
+    contributing_statement_count: rows.length,
+    cohort_size: inputs.size,
+    kind: "inspection",
+    inspection: { note: INSPECTION_NOTE, rows },
+  };
+}
+
+export async function loadTrendInputs(pool = getPool()): Promise<CohortInputs | null> {
+  const cohort = await currentCohort(pool);
+  if (!cohort) return null;
+  return loadInputs(pool, cohort);
+}
+
 export async function listComputedTrends(pool = getPool()): Promise<PublicTrend[]> {
   const cohort = await currentCohort(pool);
   if (!cohort) return [];
   const inputs = await loadInputs(pool, cohort);
-  const methods = resolveMethods(await publishedMethods(pool, cohort), inputs.candidates);
+  const published = await publishedMethods(pool, cohort);
+  const methods = resolveTrendMethods(published, inputs.candidates);
   const trends: PublicTrend[] = [];
   for (const method of methods) {
     if (method.kind === "volume") {
@@ -534,12 +685,29 @@ export async function listComputedTrends(pool = getPool()): Promise<PublicTrend[
     const computed = computeMethod(method, inputs);
     if (computed) trends.push(computed);
   }
+  trends.push(...qualitativeTrends(inputs));
+  const taken = crossSectionQuestionKeys(
+    methods.filter((method) => method.question_key && method.kind !== "revision" && method.kind !== "volume").map((method) => ({
+      kind: method.kind,
+      question_key: method.question_key ?? "",
+    })),
+  );
+  const inspection = inspectionTrend(inputs, taken);
+  if (inspection) trends.push(inspection);
   return trends;
 }
 
 export async function getTrend(slug: string, pool = getPool()): Promise<PublicTrend | null> {
   const trends = await listComputedTrends(pool);
   return trends.find((trend) => trend.slug === slug) ?? null;
+}
+
+function topicSlugOf(trend: PublicTrend): string | null {
+  if (trend.kind === "distribution") return trend.distribution.topic_slug;
+  if (trend.kind === "timeline") return trend.timeline.topic_slug;
+  if (trend.kind === "quantity") return trend.quantity.topic_slug;
+  if (trend.kind === "revision") return trend.revision.topic_slug;
+  return null;
 }
 
 export async function listTrends(pool = getPool()) {
@@ -552,8 +720,11 @@ export async function listTrends(pool = getPool()) {
     kind: trend.kind,
     cohort_slug: trend.cohort_slug,
     cohort_version: trend.cohort_version,
-    topic_slug: trend.kind === "volume" ? null : trend.kind === "distribution" ? trend.distribution.topic_slug : trend.kind === "timeline" ? trend.timeline.topic_slug : trend.kind === "quantity" ? trend.quantity.topic_slug : trend.revision.topic_slug,
+    topic_slug: topicSlugOf(trend),
     question_key: trend.question_key,
+    exact_question_id: trend.exact_question_id,
+    comparability_policy_version: trend.comparability_policy_version,
+    presented_as_reconstruction: trend.history.presented_as_reconstruction,
     density: trend.density,
     contributing_person_count: trend.contributing_person_count,
     contributing_statement_count: trend.contributing_statement_count,

@@ -16,7 +16,7 @@ Cohort `2026.10.0` stages a Bluesky author feed and a LessWrong user-post feed f
 
 ## Question keys
 
-Records share a `question_key` only when they could sit in one comparison. The definitions live in `pipeline/pdoom_pipeline/belief/taxonomy.py`.
+Pipeline `question_key` values are families. A family is not itself a comparison. Records share an exact question only when the outcome, condition, deadline, and unit agree. Family labels live in `pipeline/pdoom_pipeline/belief/taxonomy.py`. The authoritative registry is `packages/contracts/src/comparability-registry.json`, described in `docs/FORECAST_COMPARABILITY.md`.
 
 - `extinction_unconditional` — AI-caused human extinction, not conditioned on AGI or ASI.
 - `extinction_conditional_agi` — extinction conditional on AGI or ASI.
@@ -35,7 +35,7 @@ Records share a `question_key` only when they could sit in one comparison. The d
 - `job_displacement` — jobs, workers, or unemployment. Not a task share. The unit records whether the speaker stated a geography.
 - `task_automation` — tasks automated or affected. Not an unemployment or job share.
 - `wage_effect` — a direct wage forecast.
-- `productivity_growth` — productivity, GDP, or growth. Not a job share.
+- `productivity_growth` — a family that can name productivity or GDP. Those quantities are not pooled with each other until the outcome, unit, and deadline identify one exact question.
 - `capability_milestone` — a capability threshold that is not one of the timeline keys.
 - `compute_scaling` — compute, scaling, or energy.
 ## Extraction

@@ -1151,6 +1151,22 @@ function presentTrend(trend: PublicTrend, allowed: Set<string>, asOf: string) {
     const separated = partitionExclusions(trend.quantity.exclusions, allowed);
     return { ...stamped, quantity: { ...trend.quantity, exclusions: separated.exclusions }, omitted_non_research_count: separated.omitted_non_research_count };
   }
+  if (trend.kind === "qualitative") {
+    const rows = trend.qualitative.rows.filter((row) => allowed.has(row.statement_slug));
+    return {
+      ...stamped,
+      qualitative: { ...trend.qualitative, rows },
+      omitted_non_research_count: trend.qualitative.rows.length - rows.length,
+    };
+  }
+  if (trend.kind === "inspection") {
+    const rows = trend.inspection.rows.filter((row) => allowed.has(row.statement_slug));
+    return {
+      ...stamped,
+      inspection: { ...trend.inspection, rows },
+      omitted_non_research_count: trend.inspection.rows.length - rows.length,
+    };
+  }
   const revision = presentRevision(trend.revision, allowed);
   return { ...stamped, revision: revision.revision, omitted_non_research_count: revision.omitted_non_research_count };
 }

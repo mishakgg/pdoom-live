@@ -13,7 +13,7 @@ import { effectiveReviewStateSql } from "./coverage";
 import { getPool } from "./pool";
 import { listComputedTrends } from "./trend-query";
 
-export { getTrend, listTrends, listComputedTrends } from "./trend-query";
+export { FORECAST_INPUT_SQL, getTrend, listComputedTrends, listTrends, loadTrendInputs, mapForecastRow, resolveTrendMethods, trendMethodKey } from "./trend-query";
 export type { PublicTrend } from "./trend-query";
 
 export class InvalidCursorError extends Error {
