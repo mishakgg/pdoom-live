@@ -1,0 +1,72 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-04T215309Z",
+  "candidate_state": "partial_candidate",
+  "reason": "Agents 1, 2, 3, 4, and 6 are integrated at exact heads. Commit 5adde6c adds only the pipeline npm install required for those tests to run in GitHub. Agent 5 is excluded. This is not a six-agent integration.",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "integration_branch": "cursor/partial-integration-refresh-a32e",
+  "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/31",
+  "resulting_integration_commit": "5adde6ced3842617e57bfcaf2bdf330ed465a233",
+  "resulting_tree": "cf1f517d5cc6ad008d7abcdd95317d9ddd728c90",
+  "parent_merge_commit": "0f02676728f0ab6864f9bea0643d2dc4c90321e5",
+  "coordinator_fix": {
+    "commit": "5adde6ced3842617e57bfcaf2bdf330ed465a233",
+    "path": ".github/workflows/pipeline.yml",
+    "reason": "Pipeline run 37236697023 failed because npx tsx could not resolve @pdoom/contracts. The job now runs npm ci before pytest."
+  },
+  "included": [
+    {"agent": "agent-4", "pr": 22, "head_sha": "6c23609f05bb958a58f235ba34c0180b3579c109", "order": 1},
+    {"agent": "agent-1", "pr": 21, "head_sha": "af6ec9b4783a4fd37dbc3b9f5c263cc9cbd96ac3", "order": 2},
+    {"agent": "agent-2", "pr": 26, "head_sha": "b959a47f88f2c3d6c948072e038a082847aa666f", "order": 3},
+    {"agent": "agent-6", "pr": 25, "head_sha": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e", "order": 4},
+    {
+      "agent": "agent-3",
+      "pr": 27,
+      "branch": "cursor/recurring-refresh-088b",
+      "head_sha": "ce07836b27a090da063617708df7b7174745881c",
+      "order": 5
+    }
+  ],
+  "excluded": [
+    {
+      "agent": "agent-5",
+      "pr": 29,
+      "branch": "cursor/source-statement-review-ec4e",
+      "head_sha": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
+      "reason": "tests/test_backfill.py fails locally and in pipeline run 37235827320. Node run 37235827312 lacks defusedxml."
+    }
+  ],
+  "migration_ordering": [
+    "packages/db/migrations/001_init.sql",
+    "packages/db/migrations/002_dataset_contract.sql",
+    "packages/db/migrations/003_review_decisions.sql",
+    "packages/db/migrations/004_refresh_runs.sql"
+  ],
+  "contract_versions": {
+    "canonical_import_schema_version": "1.0.0",
+    "public_export_schema_version": "1.0.0",
+    "review_decision_schema_version": "review-decisions/1.0.0",
+    "comparability_policy_version": "comparability/1.0.0"
+  },
+  "checks": {
+    "lint": "0 errors, 6 warnings",
+    "typecheck": "passed",
+    "vitest": "212 passed on pdoom_coord_pipeline_test",
+    "pytest": "74 passed, 1 skipped",
+    "playwright": "135 passed, 2 skipped",
+    "cross_workstream_gate": {
+      "command": "npx tsx coordination/reproductions/cross-workstream-gate.ts",
+      "exit_code": 0,
+      "result": "coordination/reproductions/results-2026-10-04T215309Z.json",
+      "failed": []
+    },
+    "github_pipeline": {
+      "run": 37237677768,
+      "conclusion": "success",
+      "head_sha": "5adde6ced3842617e57bfcaf2bdf330ed465a233"
+    },
+    "github_e2e": "in_progress at review time; local Playwright already passed"
+  },
+  "delivery_note": "Evidence for commit 5adde6c. Do not merge pull requests 31, 30, 27, 26, 25, 22, and 21 as separate copies. 0f02676 is evidence only for the merge before the workflow install."
+}
