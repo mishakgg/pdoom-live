@@ -5,7 +5,9 @@ export {
   computeQuantityForecast,
   computeStatementVolume,
   computeTimelineForecast,
+  discoverQualitativeGroups,
   discoverQuestionTrends,
+  listUnpooledForecasts,
   median,
 } from "./trend-engine";
 
@@ -14,6 +16,7 @@ export type {
   Exclusion,
   IncludedEstimate,
   NumericTrendResult,
+  QualitativeGroup,
   RepeatRecord,
   RevisionChain,
   RevisionEdge,
@@ -23,5 +26,6 @@ export type {
   TrendCandidate,
   TrendCoverage,
   TrendScope,
+  UnpooledForecast,
   VolumeRow,
 } from "./trend-engine";

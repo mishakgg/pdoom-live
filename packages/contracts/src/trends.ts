@@ -13,11 +13,18 @@ export const EXCLUSION_REASONS = [
   "missing_forecast",
   "question_key_mismatch",
   "conditionality_mismatch",
+  "condition_mismatch",
   "unit_mismatch",
   "missing_horizon",
+  "ambiguous_horizon",
+  "deadline_mismatch",
+  "definition_mismatch",
+  "insufficient_agreement",
   "value_type_not_point",
   "not_latest",
+  "duplicate_statement",
   "superseded",
+  "withdrawn",
   "no_verified_revision",
   "relationship_not_a_revision",
   "different_person",
@@ -31,12 +38,19 @@ export const EXCLUSION_LABELS: Record<ExclusionReason, string> = {
   missing_forecast: "No structured forecast is stored for this statement.",
   question_key_mismatch: "Different question key. This forecast answers a different question.",
   conditionality_mismatch: "Conditionality does not match. Conditional and unconditional estimates stay separate.",
+  condition_mismatch: "The stated condition does not match this comparison. A different condition is a different question.",
   unit_mismatch: "Incompatible unit. This method keeps one declared unit and does not convert.",
   missing_horizon: "The horizon is missing.",
-  value_type_not_point: "A range or distribution was supplied where this method requires a point. It is not converted into a midpoint.",
+  ambiguous_horizon: "The horizon is missing or ambiguous, so this record is not pooled. It stays individually inspectable.",
+  deadline_mismatch: "The deadline does not match this comparison. A probability's deadline is part of the question.",
+  definition_mismatch: "The outcome definition does not match this comparison.",
+  insufficient_agreement: "The stored fields do not agree closely enough to pool this record. It stays individually inspectable.",
+  value_type_not_point: "A range, bound, quantile, or distribution was supplied where this summary needs a point. It is preserved and not converted into a midpoint.",
   not_latest: "A later explicit estimate from the same person is kept in this cross-section. Dropping the earlier number is not, by itself, a revision.",
+  duplicate_statement: "This statement repeats the same value at the same time as the kept statement. It is not a second contribution.",
   superseded: "Superseded estimate. A human-verified update or retraction links it to a later estimate on the same question.",
-  no_verified_revision: "No human-verified update or retraction connects this estimate to another on the same question.",
+  withdrawn: "A human-verified withdrawal or retraction removes this estimate. No replacement number is required, and the historical statement stays on the record.",
+  no_verified_revision: "No human-verified update, retraction, or withdrawal connects this estimate to another on the same question.",
   relationship_not_a_revision: "This relationship is a repeat, clarification, or contradiction. It is not drawn as a change of forecast.",
   different_person: "This relationship joins two different people, so it is not one person's revision.",
 };
@@ -50,7 +64,9 @@ export const TREND_KIND_LABELS = {
   distribution: "Probability distribution",
   timeline: "Timeline forecast",
   quantity: "Quantity forecast",
+  qualitative: "Qualitative statements",
   revision: "Historical revision",
+  inspection: "Not pooled",
   volume: "Statement volume",
 } as const;
 
@@ -80,5 +96,56 @@ export function coverageSentence(input: {
   if (input.density === "individual") {
     return `${people} have a human-verified change on this question. ${missing} members have no verified change here. Each person is shown separately.`;
   }
-  return `${people} have a comparable record. ${missing} members are absent. The median and the range summarize the included point estimates only.`;
+  return `${people} have a comparable record. ${missing} members are absent. The median summarizes the included point estimates only. It is not automatically the probability of an event.`;
 }
+
+export {
+  COMPARABILITY_POLICY_VERSION,
+  COMPARABILITY_REGISTRY,
+  MEDIAN_INTERPRETATION,
+  classifyForecast,
+  classifyQuestionKey,
+  isBoundPhrase,
+  comparabilityIdentityMaterial,
+  comparabilityRegistryDocument,
+  comparisonDecision,
+  describePreservedValue,
+  parseDeadline,
+  prePolicyMethodKey,
+  readProbabilitySemantics,
+  registryQuestions,
+} from "./comparability";
+export type {
+  ComparabilityExclusion,
+  ComparabilitySource,
+  DateRole,
+  ForecastClassification,
+  ForecastFacts,
+  OutcomeSplit,
+  ParsedDeadline,
+  ProbabilitySemantics,
+  RegistryDeadline,
+  RegistryQuestion,
+} from "./comparability";
+export {
+  CURRENT_CORPUS_HISTORY,
+  HISTORY_POLICY_VERSION,
+  classifyHistory,
+  historyClaimFor,
+  selectKnownByCutoff,
+} from "./history";
+export type { HistoryClaim, HistoryMode, HistoryRecord, HistoryStatus } from "./history";
+export {
+  FORECAST_RESOLUTION_FIXTURES,
+  FORECAST_RESOLUTION_POLICY_VERSION,
+  assertResolutionFixtures,
+  assessResolutionEligibility,
+  scoreResolvedForecast,
+} from "./forecast-resolution";
+export type {
+  AdmissibleForecastSnapshot,
+  OutcomeEvidence,
+  PublicScore,
+  ResolutionAssessment,
+  ResolutionCase,
+} from "./forecast-resolution";

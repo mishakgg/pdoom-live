@@ -48,15 +48,18 @@ export default async function TrendPage({ params }: { params: Promise<{ slug: st
         {" · "}
         {trendKindLabel(trend.kind)}
         {" · "}
-        Calculated {formatWhen(trend.calculated_at)}
+        Read from the current corpus at {formatWhen(trend.calculated_at)}. This time is not a historical reconstruction.
       </p>
       <h1>{trend.name}</h1>
       <p className="lede">{trend.cohort_definition}</p>
       <p className="meta">
-        Cohort {trend.cohort_slug} version {trend.cohort_version}. Method {trend.method_version}.
-        {trend.source === "prepared_method" ? " Prepared method for this question key." : ""}
-        {trend.source === "discovered_question" ? " Opened from a stored question key that has a human-verified numeric forecast." : ""}
-        {trend.source === "published_definition" ? " Published with the loaded dataset." : ""}
+        Cohort {trend.cohort_slug} version {trend.cohort_version}. Method {trend.method_version}. Pooling rules {trend.comparability_policy_version}.
+        {trend.history.presented_as_reconstruction ? " Inputs were filtered by statement date, observation time, and review time." : " Statement dates alone were not treated as a reconstruction."}
+        {trend.source === "prepared_method" ? " Prepared method for this exact question." : ""}
+        {trend.source === "discovered_question" && trend.kind !== "qualitative" && trend.kind !== "inspection" ? " Opened from stored forecasts that agree on one exact question." : ""}
+        {trend.kind === "qualitative" ? " Qualitative statements. No probability is inferred from the wording." : ""}
+        {trend.kind === "inspection" ? " These records were not pooled." : ""}
+        {trend.source === "published_definition" ? " The published definition keeps its stored method version." : ""}
       </p>
       <TrendView trend={trend} />
     </>

@@ -187,6 +187,42 @@ describe("public rendering", () => {
     expect(screen.getByText(/not a field consensus/)).toBeTruthy();
     expect(screen.queryByText(/Median of included point estimates/)).toBeNull();
     expect(screen.getByText(/A median is withheld below 3/)).toBeTruthy();
+    expect(screen.getByText(/not automatically the probability of the event/)).toBeTruthy();
+  });
+
+  it("shows a cross-person median as a summary of included statements", () => {
+    render(
+      <DistributionPanel
+        name="Unconditional human-extinction probability by 2070"
+        methodVersion="explicit-numeric-distribution/1.2.0"
+        questionKey="ai_extinction_unconditional_by_2070"
+        exactQuestionId="ai_extinction_unconditional_by_2070"
+        outcomeLabel="Unconditional human extinction from AI by the end of 2070"
+        deadlineLabel="by the end of 2070"
+        included={[
+          { statement_slug: "a", person_slug: "ada-quill", display_name: "Ada Quill", value_numeric: 0.05, event_time: "2024-01-01T00:00:00.000Z", horizon_text: "by end of 2070" },
+          { statement_slug: "b", person_slug: "mateo-voss", display_name: "Mateo Voss", value_numeric: 0.12, event_time: "2024-02-01T00:00:00.000Z", horizon_text: "by end of 2070" },
+          { statement_slug: "c", person_slug: "jonah-hale", display_name: "Jonah Hale", value_numeric: 0.18, event_time: "2024-03-01T00:00:00.000Z", horizon_text: "by end of 2070" },
+        ]}
+        median={0.12}
+        minimum={0.05}
+        maximum={0.18}
+        density="comparable"
+        contributingPersonCount={3}
+        contributingStatementCount={3}
+        coverage={{ cohort_size: 8, cohort_members_without_included_estimate: 5, missingness_note: "3 of 8 cohort members have a comparable record." }}
+        exclusions={[{ statement_slug: "range", reason: "value_type_not_point", reason_label: "A range stays out of the median.", preserved_value: "0.1–0.2" }]}
+        historyNote="This view uses the current reviewed corpus."
+      />,
+    );
+    expect(screen.getByText(/Median of included point estimates: 12%/)).toBeTruthy();
+    expect(screen.getAllByText(/not automatically the probability of the event/).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/by the end of 2070/).length).toBeGreaterThan(0);
+    expect(screen.getByText(/preserved value 0.1–0.2/)).toBeTruthy();
+    expect(screen.getByText(/current reviewed corpus/)).toBeTruthy();
+    const people = screen.getAllByRole("link", { name: "Ada Quill" });
+    expect(people.every((link) => link.getAttribute("href") === "/people/ada-quill")).toBe(true);
+    expect(screen.getByRole("link", { name: "5%" }).getAttribute("href")).toBe("/statements/a");
   });
 
   it("renders a year forecast as a date and a quantity in its own unit", () => {
@@ -210,7 +246,7 @@ describe("public rendering", () => {
       />,
     );
     expect(screen.getByText("2032")).toBeTruthy();
-    expect(screen.getByText(/It is a date|A year is a date|Predicted years/)).toBeTruthy();
+    expect(screen.getAllByText(/It is a date|A year is a date|Predicted years/).length).toBeGreaterThan(0);
     expect(screen.queryByText(/%/)).toBeNull();
     expect(screen.getByText(/Incompatible unit/)).toBeTruthy();
     expect(screen.getByRole("table")).toBeTruthy();

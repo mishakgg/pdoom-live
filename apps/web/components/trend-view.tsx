@@ -1,5 +1,25 @@
 import type { PublicTrend } from "@pdoom/db";
-import { DistributionPanel, NumericPanel, RevisionPanel, VolumePanel } from "@/components/trends";
+import { DistributionPanel, InspectionPanel, NumericPanel, QualitativePanel, RevisionPanel, VolumePanel } from "@/components/trends";
+
+function numericFacts(result: {
+  outcome_label: string;
+  deadline_label: string | null;
+  condition_label: string | null;
+  exact_question_id: string;
+  question_key: string;
+  median_interpretation: string;
+  history: { note: string };
+}) {
+  return {
+    outcomeLabel: result.outcome_label,
+    deadlineLabel: result.deadline_label,
+    conditionLabel: result.condition_label,
+    exactQuestionId: result.exact_question_id,
+    storedQuestionKey: result.question_key,
+    historyNote: result.history.note,
+    medianInterpretation: result.median_interpretation,
+  };
+}
 
 export function TrendView({ trend }: { trend: PublicTrend }) {
   if (trend.kind === "distribution") {
@@ -26,6 +46,7 @@ export function TrendView({ trend }: { trend: PublicTrend }) {
         contributingStatementCount={trend.distribution.contributing_statement_count}
         coverage={trend.distribution.coverage}
         exclusions={trend.distribution.exclusions}
+        {...numericFacts(trend.distribution)}
       />
     );
   }
@@ -54,6 +75,7 @@ export function TrendView({ trend }: { trend: PublicTrend }) {
         contributingStatementCount={trend.timeline.contributing_statement_count}
         coverage={trend.timeline.coverage}
         exclusions={trend.timeline.exclusions}
+        {...numericFacts(trend.timeline)}
       />
     );
   }
@@ -82,6 +104,37 @@ export function TrendView({ trend }: { trend: PublicTrend }) {
         contributingStatementCount={trend.quantity.contributing_statement_count}
         coverage={trend.quantity.coverage}
         exclusions={trend.quantity.exclusions}
+        {...numericFacts(trend.quantity)}
+      />
+    );
+  }
+  if (trend.kind === "qualitative") {
+    return (
+      <QualitativePanel
+        name={trend.name}
+        methodVersion={trend.method_version}
+        cohortSlug={trend.cohort_slug}
+        cohortVersion={trend.cohort_version}
+        cohortDefinition={trend.cohort_definition}
+        questionKey={trend.qualitative.question_key}
+        definitionText={trend.qualitative.definition_text}
+        note={trend.qualitative.note}
+        rows={trend.qualitative.rows}
+        cohortSize={trend.cohort_size}
+        historyNote={trend.history.note}
+      />
+    );
+  }
+  if (trend.kind === "inspection") {
+    return (
+      <InspectionPanel
+        name={trend.name}
+        methodVersion={trend.method_version}
+        cohortDefinition={trend.cohort_definition}
+        note={trend.inspection.note}
+        rows={trend.inspection.rows}
+        cohortSize={trend.cohort_size}
+        historyNote={trend.history.note}
       />
     );
   }
@@ -107,6 +160,11 @@ export function TrendView({ trend }: { trend: PublicTrend }) {
         contributingStatementCount={trend.revision.contributing_statement_count}
         coverage={trend.revision.coverage}
         exclusions={trend.revision.exclusions}
+        outcomeLabel={trend.revision.outcome_label}
+        deadlineLabel={trend.revision.deadline_label}
+        conditionLabel={trend.revision.condition_label}
+        exactQuestionId={trend.revision.exact_question_id}
+        historyNote={trend.revision.history.note}
       />
     );
   }
