@@ -66,7 +66,11 @@
       "conclusion": "success",
       "head_sha": "5adde6ced3842617e57bfcaf2bdf330ed465a233"
     },
-    "github_e2e": "in_progress at review time; local Playwright already passed"
+    "github_e2e": {
+      "run": 37237677808,
+      "conclusion": "success",
+      "head_sha": "5adde6ced3842617e57bfcaf2bdf330ed465a233"
+    }
   },
   "delivery_note": "Evidence for commit 5adde6c. Do not merge pull requests 31, 30, 27, 26, 25, 22, and 21 as separate copies. 0f02676 is evidence only for the merge before the workflow install."
 }
