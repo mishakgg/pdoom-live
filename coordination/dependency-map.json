@@ -1,0 +1,138 @@
+{
+  "record_kind": "pdoom-live-dependency-map",
+  "record_version": 1,
+  "reviewed_at": "2026-10-04T20:26:48Z",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "edges": [
+    {
+      "id": "question-registry-to-extraction",
+      "from": "agent-2",
+      "to": "agent-5",
+      "contract": "question_key comparability registry",
+      "authoritative_implementations_on_main": [
+        "packages/db/src/trend-catalog.ts",
+        "packages/contracts/src/curation.ts QUESTION_TAXONOMY",
+        "docs/TREND_METHODOLOGY.md"
+      ],
+      "consumer_must_not_fork": true,
+      "note": "Agent 5 extraction and curation must consume Agent 2's registry. A second taxonomy is already present; see conflicts."
+    },
+    {
+      "id": "extraction-to-canonical-export",
+      "from": "agent-5",
+      "to": "agent-3",
+      "contract": "canonical import document schema_version 1.0.0",
+      "authoritative_implementations_on_main": [
+        "packages/contracts/src/schemas.ts",
+        "packages/contracts/schema/canonical-import.schema.json",
+        "pipeline/pdoom_pipeline/export/canonical.py",
+        "docs/INGESTION_CONTRACT.md"
+      ],
+      "consumer_must_not_fork": true
+    },
+    {
+      "id": "candidate-identity-to-reimport",
+      "from": "agent-5",
+      "to": "agent-3",
+      "contract": "candidate key and review decision identity",
+      "authoritative_implementations_on_main": [
+        "packages/contracts/src/curation.ts candidateKey",
+        "docs/CURATION.md",
+        "review schema review-decisions/1.0.0"
+      ],
+      "consumer_must_not_fork": true,
+      "note": "candidateKey is SHA-256 of person slug, source content hash, evidence hash, extractor name, extractor version, statement type, and forecast claim fields. It does not include normalized text. Review reimport must preserve this key."
+    },
+    {
+      "id": "source-adapters-to-recurring-collection",
+      "from": "agent-4",
+      "to": "agent-3",
+      "contract": "source adapter configuration and collector envelope",
+      "authoritative_implementations_on_main": [
+        "pipeline/pdoom_pipeline/",
+        "docs/DATA_PIPELINE.md",
+        "data/seed/cohort/v2026-09/"
+      ],
+      "consumer_must_not_fork": true
+    },
+    {
+      "id": "import-review-to-cache",
+      "from": "agent-3",
+      "to": "agent-6",
+      "also_from": "agent-5",
+      "contract": "public read cache invalidation after import and review-only changes",
+      "authoritative_implementations_on_main": [
+        "packages/db/src/public-read.ts",
+        "apps/web/lib/public-http.ts"
+      ],
+      "consumer_must_not_fork": true,
+      "note": "No published Agent 6 cache implementation yet. Invalidation must follow import and review writes rather than a second freshness clock."
+    },
+    {
+      "id": "public-data-to-navigation",
+      "from": "integrated-public-data",
+      "to": "agent-1",
+      "contract": "public statement, person, topic, search, feed, and freshness reads",
+      "authoritative_implementations_on_main": [
+        "docs/PUBLIC_API.md",
+        "packages/contracts/src/public.ts export_schema_version 1.0.0",
+        "apps/web/"
+      ],
+      "consumer_must_not_fork": true
+    }
+  ],
+  "single_authorities": {
+    "canonical_import_schema_version": "1.0.0",
+    "public_export_schema_version": "1.0.0",
+    "review_decision_schema_version": "review-decisions/1.0.0",
+    "next_sql_migration_number": "004",
+    "applied_migrations": [
+      "packages/db/migrations/001_init.sql",
+      "packages/db/migrations/002_dataset_contract.sql",
+      "packages/db/migrations/003_review_decisions.sql"
+    ],
+    "statement_types": [
+      "explicit_numeric",
+      "explicit_qualitative",
+      "model_inferred_signal"
+    ],
+    "trend_method_versions": [
+      "explicit-numeric-distribution/1.1.0",
+      "timeline-forecast/1.0.0",
+      "quantity-forecast/1.0.0",
+      "historical-revision/1.0.0",
+      "count-by-topic-type/1.0.0",
+      "discovered-question/1.0.0"
+    ]
+  },
+  "conflicts": [
+    {
+      "id": "question-key-registries-diverge-on-main",
+      "severity": "blocker-for-combined-forecast-scenarios",
+      "owner": "agent-2",
+      "consumers": ["agent-5", "agent-3", "agent-1"],
+      "status": "pre-existing-on-main",
+      "summary": "Main already contains two question-key registries with disjoint keys. Pipeline extraction emits taxonomy.py keys. Curation approval and the trend catalog require a different key set. Canonical export copies the pipeline key through unchanged.",
+      "reproducible_example": {
+        "pipeline_key": "extinction_unconditional",
+        "pipeline_source": "pipeline/pdoom_pipeline/belief/taxonomy.py",
+        "pipeline_test": "tests/test_belief.py expects question_key extinction_unconditional",
+        "product_key": "ai_extinction_unconditional_by_2070",
+        "product_sources": [
+          "packages/contracts/src/curation.ts QUESTION_TAXONOMY",
+          "packages/db/src/trend-catalog.ts",
+          "docs/TREND_METHODOLOGY.md"
+        ],
+        "export_path": "pipeline/pdoom_pipeline/export/corpus.py copies statement question_key with no translation",
+        "approval_rule": "docs/CURATION.md requires the question key to be one of QUESTION_TAXONOMY"
+      },
+      "requested_resolution": "Agent 2 publishes one registry and an explicit mapping or replacement for pipeline keys. Agent 5 and Agent 3 consume that registry. Agent 7 will not invent a third taxonomy or silently retarget keys during integration.",
+      "integration_rule": "Do not merge extraction output into the product trend path until this mapping is explicit in the included commits."
+    }
+  ],
+  "ownership_overlaps_observed": [],
+  "migration_reservation": {
+    "next_number": "004",
+    "rule": "The first workstream that adds a migration in an included commit claims the next integer. A later workstream rebases onto the next free number on the integration branch. Two files numbered 004 are a mechanical conflict Agent 7 may renumber, recording the original number, the new number, and the owner."
+  }
+}

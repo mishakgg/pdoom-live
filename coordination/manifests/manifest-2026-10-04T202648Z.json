@@ -1,0 +1,57 @@
+{
+  "record_kind": "pdoom-live-integration-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-04T202648Z",
+  "created_at": "2026-10-04T20:26:48Z",
+  "candidate_state": "not_created",
+  "reason": "No workstream has published a commit. An integration branch was not opened.",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "integration_branch": null,
+  "integration_commit_sha": null,
+  "included": [],
+  "excluded": [
+    {
+      "workstream": "agent-1",
+      "bc_id": "bc-1abc3d8c-9db1-4269-90ce-42275cdf34f4",
+      "reason": "unpublished"
+    },
+    {
+      "workstream": "agent-2",
+      "bc_id": "bc-07e563e7-b873-4812-bbaf-026a51641787",
+      "reason": "unpublished"
+    },
+    {
+      "workstream": "agent-3",
+      "bc_id": "bc-e813e836-d988-41a1-98ff-d1a5d48c088b",
+      "reason": "unpublished"
+    },
+    {
+      "workstream": "agent-4",
+      "bc_id": "bc-eb130341-dc99-4dca-9bed-7a9141046ae1",
+      "reason": "unpublished"
+    },
+    {
+      "workstream": "agent-5",
+      "bc_id": "bc-e2447cce-49cc-47aa-815b-49c869e8ec4e",
+      "reason": "unpublished"
+    },
+    {
+      "workstream": "agent-6",
+      "bc_id": "bc-11bd48ab-cbe0-4b1c-b5cd-1cac228d66d1",
+      "reason": "unpublished"
+    }
+  ],
+  "dependencies_and_order": [],
+  "migration_ordering": [
+    "001_init.sql",
+    "002_dataset_contract.sql",
+    "003_review_decisions.sql"
+  ],
+  "contract_versions": {
+    "canonical_import_schema_version": "1.0.0",
+    "public_export_schema_version": "1.0.0",
+    "review_decision_schema_version": "review-decisions/1.0.0"
+  },
+  "subset": null,
+  "delivery_note": "This manifest is evidence only for review 2026-10-04T202648Z. It does not contain implementation commits, so there is nothing that could later be merged twice."
+}
