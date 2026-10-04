@@ -2,53 +2,81 @@
   "record_kind": "pdoom-live-coordination-manifest",
   "record_version": 1,
   "review_id": "2026-10-04T212501Z",
-  "candidate_state": "merge_in_progress",
-  "reason": "Agent 6 head 8c36cc1 is idle and its checks passed. It will be merged onto 926e6d4 with a mechanical queries.ts resolution. Agent 3 and Agent 5 stay out.",
+  "candidate_state": "partial_candidate",
+  "reason": "Agents 1, 2, 4, and 6 are included at exact heads. Agent 3 and Agent 5 are published but their CI tests failed. This is not a six-agent integration.",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "parent_candidate_commit": "926e6d4a36ec4730a2cc44b7e52e3f0e0f354827",
   "integration_branch": "cursor/partial-integration-reads-a32e",
-  "integration_pr": null,
-  "resulting_integration_commit": null,
-  "resulting_tree": null,
+  "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/30",
+  "resulting_integration_commit": "234cc67b890aab833c2efc8867778ee9fd11d467",
+  "resulting_tree": "d7aad053f749b43a9b2afd522e4ffd2047a2af08",
+  "supersedes": {
+    "pr": 28,
+    "commit": "926e6d4a36ec4730a2cc44b7e52e3f0e0f354827",
+    "reason": "Agents 1, 2, and 4 only. Evidence only for that commit."
+  },
   "included": [
-    {
-      "agent": "agent-4",
-      "pr": 22,
-      "head_sha": "6c23609f05bb958a58f235ba34c0180b3579c109",
-      "order": 1
-    },
-    {
-      "agent": "agent-1",
-      "pr": 21,
-      "head_sha": "af6ec9b4783a4fd37dbc3b9f5c263cc9cbd96ac3",
-      "order": 2
-    },
-    {
-      "agent": "agent-2",
-      "pr": 26,
-      "head_sha": "b959a47f88f2c3d6c948072e038a082847aa666f",
-      "order": 3
-    },
+    {"agent": "agent-4", "pr": 22, "branch": "cursor/coverage-channels-2026-10-6ae1", "head_sha": "6c23609f05bb958a58f235ba34c0180b3579c109", "order": 1},
+    {"agent": "agent-1", "pr": 21, "branch": "cursor/research-navigation-34f4", "head_sha": "af6ec9b4783a4fd37dbc3b9f5c263cc9cbd96ac3", "order": 2},
+    {"agent": "agent-2", "pr": 26, "branch": "cursor/forecast-comparability-1787", "head_sha": "b959a47f88f2c3d6c948072e038a082847aa666f", "order": 3},
     {
       "agent": "agent-6",
       "pr": 25,
       "branch": "cursor/public-read-consistency-66d1",
       "head_sha": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e",
       "order": 4,
-      "reason": "Idle. GitHub checks passed. Mechanical queries.ts resolution only."
+      "reason": "Idle. GitHub checks passed. Mechanical queries.ts resolution recorded in the merge commit."
     }
   ],
   "excluded": [
     {
       "agent": "agent-3",
       "pr": 27,
+      "branch": "cursor/recurring-refresh-088b",
       "head_sha": "ce07836b27a090da063617708df7b7174745881c",
-      "reason": "pipeline CI failed"
+      "reason": "Pipeline run 37235514824 failed. Cannot find module @pdoom/contracts from npx tsx."
     },
     {
       "agent": "agent-5",
-      "reason": "unpublished"
+      "pr": 29,
+      "branch": "cursor/source-statement-review-ec4e",
+      "head_sha": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
+      "reason": "Node run 37235827312 failed on missing defusedxml. Pipeline run 37235827320 failed tests/test_backfill.py. Doc conflict in docs/BELIEF_CORPUS.md."
     }
   ],
-  "checks": null
+  "mechanical_resolution": {
+    "path": "packages/db/src/queries.ts",
+    "kept_from_agent_6": ["import of isPool, queryOnClient, withConsistentRead", "type Sql"],
+    "kept_from_agent_2": ["FORECAST_INPUT_SQL", "loadTrendInputs", "mapForecastRow", "resolveTrendMethods", "trendMethodKey"]
+  },
+  "migration_ordering": [
+    "packages/db/migrations/001_init.sql",
+    "packages/db/migrations/002_dataset_contract.sql",
+    "packages/db/migrations/003_review_decisions.sql"
+  ],
+  "proposed_migrations_not_included": [
+    "004_refresh_runs.sql from agent-3 ce07836",
+    "005_participant_host_role.sql from agent-5 f59cb9c"
+  ],
+  "contract_versions": {
+    "canonical_import_schema_version": "1.0.0",
+    "public_export_schema_version": "1.0.0",
+    "review_decision_schema_version": "review-decisions/1.0.0",
+    "comparability_policy_version": "comparability/1.0.0"
+  },
+  "checks": {
+    "lint": "0 errors, 6 warnings",
+    "typecheck": "passed",
+    "vitest": "211 passed on pdoom_coord_reads_test",
+    "pytest": "66 passed, 1 skipped",
+    "playwright": "135 passed, 2 skipped",
+    "cross_workstream_gate": {
+      "command": "npx tsx coordination/reproductions/cross-workstream-gate.ts",
+      "exit_code": 1,
+      "result": "coordination/reproductions/results-2026-10-04T212501Z.json",
+      "failed": ["3-review-survives-reimport", "2-source-version-history"],
+      "newly_passing": ["7-cache-after-review"]
+    }
+  },
+  "delivery_note": "Evidence for commit 234cc67 only. Do not merge pull requests 30, 28, 26, 25, 22, and 21 as separate copies."
 }

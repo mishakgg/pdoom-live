@@ -3,36 +3,29 @@
   "record_version": 1,
   "coordinator": "agent-7",
   "review_id": "2026-10-04T212501Z",
-  "reviewed_at": "2026-10-04T21:25:01Z",
+  "reviewed_at": "2026-10-04T21:28:43Z",
   "previous_review_id": "2026-10-04T211729Z",
   "status_path": "coordination/status/status-2026-10-04T212501Z.md",
   "manifest_path": "coordination/manifests/manifest-2026-10-04T212501Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "origin_main_subject": "Match deploy smoke to the public status bar and discovery routes (#19)",
-  "integration_branch": "cursor/partial-integration-forecast-a32e",
-  "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/28",
-  "integration_commit": "926e6d4a36ec4730a2cc44b7e52e3f0e0f354827",
-  "integration_tree": "1f3cd5db64edd57595feb167f83926f2b9675b86",
+  "integration_branch": "cursor/partial-integration-reads-a32e",
+  "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/30",
+  "integration_commit": "234cc67b890aab833c2efc8867778ee9fd11d467",
+  "integration_tree": "d7aad053f749b43a9b2afd522e4ffd2047a2af08",
   "previous_integration": {
-    "branch": "cursor/partial-integration-ui-coverage-a32e",
-    "pr": "https://github.com/mishakgg/pdoom-live/pull/24",
-    "commit": "129036a837cee885871f565c86d0afb5fe326796",
-    "status": "superseded_by_926e6d4"
+    "branch": "cursor/partial-integration-forecast-a32e",
+    "pr": "https://github.com/mishakgg/pdoom-live/pull/28",
+    "commit": "926e6d4a36ec4730a2cc44b7e52e3f0e0f354827",
+    "status": "superseded_by_234cc67"
   },
   "coordination_branch": "cursor/integration-coordination-a32e",
   "coordination_pr": "https://github.com/mishakgg/pdoom-live/pull/20",
-  "candidate_in_progress": {
-    "branch": "cursor/partial-integration-reads-a32e",
-    "base_commit": "926e6d4a36ec4730a2cc44b7e52e3f0e0f354827",
-    "adding_head": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e",
-    "resulting_commit": null
-  },
   "run_lock": {
-    "holder": "agent-7",
-    "acquired_at": "2026-10-04T21:25:01Z",
+    "holder": null,
+    "acquired_at": null,
     "expires_after_seconds": 7200,
-    "purpose": "Merge exact Agent 6 head 8c36cc1 onto recorded candidate 926e6d4 and resolve the queries.ts re-export mechanically.",
     "protocol": "Set holder and acquired_at before mutating an integration branch. Clear both in the checkpoint commit that finishes the review. Do not start a second integration while a lock is younger than expires_after_seconds. The hourly timer is the primary overlap control because it fires only when this agent is idle."
   },
   "last_reviewed_shas": {
@@ -41,8 +34,9 @@
     "agent-2": "b959a47f88f2c3d6c948072e038a082847aa666f",
     "agent-3": "ce07836b27a090da063617708df7b7174745881c",
     "agent-4": "6c23609f05bb958a58f235ba34c0180b3579c109",
+    "agent-5": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
     "agent-6": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e",
-    "integration": "926e6d4a36ec4730a2cc44b7e52e3f0e0f354827"
+    "integration": "234cc67b890aab833c2efc8867778ee9fd11d467"
   },
   "workstreams": {
     "agent-1": {
@@ -53,8 +47,7 @@
       "pr": "https://github.com/mishakgg/pdoom-live/pull/21",
       "head_sha": "af6ec9b4783a4fd37dbc3b9f5c263cc9cbd96ac3",
       "publication": "draft_pull_request",
-      "readiness": "included_in_partial_candidate",
-      "readiness_reason": "Included in 926e6d4 via 129036a. Head unchanged."
+      "readiness": "included_in_partial_candidate"
     },
     "agent-2": {
       "bc_id": "bc-07e563e7-b873-4812-bbaf-026a51641787",
@@ -64,8 +57,7 @@
       "pr": "https://github.com/mishakgg/pdoom-live/pull/26",
       "head_sha": "b959a47f88f2c3d6c948072e038a082847aa666f",
       "publication": "draft_pull_request",
-      "readiness": "included_in_partial_candidate",
-      "readiness_reason": "Merged as 926e6d4. Scenario 6 withdrawal passed on that commit. Scenario 5 still passes."
+      "readiness": "included_in_partial_candidate"
     },
     "agent-3": {
       "bc_id": "bc-e813e836-d988-41a1-98ff-d1a5d48c088b",
@@ -76,7 +68,7 @@
       "head_sha": "ce07836b27a090da063617708df7b7174745881c",
       "publication": "draft_pull_request",
       "readiness": "not_ready",
-      "readiness_reason": "Pipeline CI failed because npx tsx could not resolve @pdoom/contracts. Node test, browser, and runtime passed. Not included. Reserves migration 004_refresh_runs.sql."
+      "readiness_reason": "Pipeline CI run 37235514824 failed: npx tsx could not resolve @pdoom/contracts. Proposes migration 004."
     },
     "agent-4": {
       "bc_id": "bc-eb130341-dc99-4dca-9bed-7a9141046ae1",
@@ -86,17 +78,18 @@
       "pr": "https://github.com/mishakgg/pdoom-live/pull/22",
       "head_sha": "6c23609f05bb958a58f235ba34c0180b3579c109",
       "publication": "draft_pull_request",
-      "readiness": "included_in_partial_candidate",
-      "readiness_reason": "Included in 926e6d4 via 129036a. Head unchanged. Collectors stay off the recurring runner."
+      "readiness": "included_in_partial_candidate"
     },
     "agent-5": {
       "bc_id": "bc-e2447cce-49cc-47aa-815b-49c869e8ec4e",
       "cloud_name": "Source statement review path",
-      "status": "RUNNING",
-      "branch": null,
-      "pr": null,
-      "head_sha": null,
-      "publication": "unpublished"
+      "status": "IDLE",
+      "branch": "cursor/source-statement-review-ec4e",
+      "pr": "https://github.com/mishakgg/pdoom-live/pull/29",
+      "head_sha": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
+      "publication": "draft_pull_request",
+      "readiness": "not_ready",
+      "readiness_reason": "Node CI failed the staging roundtrip because defusedxml is missing in that job. Pipeline CI failed tests/test_backfill.py. Conflicts with 234cc67 in docs/BELIEF_CORPUS.md. Proposes migration 005."
     },
     "agent-6": {
       "bc_id": "bc-11bd48ab-cbe0-4b1c-b5cd-1cac228d66d1",
@@ -106,83 +99,31 @@
       "pr": "https://github.com/mishakgg/pdoom-live/pull/25",
       "head_sha": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e",
       "publication": "draft_pull_request",
-      "readiness": "ready_to_attempt_integration",
-      "readiness_reason": "Idle. GitHub test, browser, and runtime passed on 8c36cc1 after the catalog assertion was narrowed. Excluded from 926e6d4 because those checks were still pending when that commit was frozen. Conflicts with 926e6d4 in packages/db/src/queries.ts."
+      "readiness": "included_in_partial_candidate",
+      "readiness_reason": "Merged as 234cc67. Scenario 7 now returns 200 after a review-only change."
     }
   },
   "open_pull_requests": [
-    {
-      "number": 21,
-      "head_sha": "af6ec9b4783a4fd37dbc3b9f5c263cc9cbd96ac3",
-      "branch": "cursor/research-navigation-34f4",
-      "draft": true,
-      "workstream": "agent-1"
-    },
-    {
-      "number": 22,
-      "head_sha": "6c23609f05bb958a58f235ba34c0180b3579c109",
-      "branch": "cursor/coverage-channels-2026-10-6ae1",
-      "draft": true,
-      "workstream": "agent-4"
-    },
-    {
-      "number": 23,
-      "head_sha": "2af9e50095a9e44db4cc4c820bc815502351f05d",
-      "branch": "cursor/partial-integration-20261004-a32e",
-      "draft": true,
-      "workstream": "agent-7-partial-candidate",
-      "status": "superseded_by_24"
-    },
-    {
-      "number": 24,
-      "head_sha": "129036a837cee885871f565c86d0afb5fe326796",
-      "branch": "cursor/partial-integration-ui-coverage-a32e",
-      "draft": true,
-      "workstream": "agent-7-partial-candidate",
-      "status": "superseded_by_28"
-    },
-    {
-      "number": 25,
-      "head_sha": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e",
-      "branch": "cursor/public-read-consistency-66d1",
-      "draft": true,
-      "workstream": "agent-6",
-      "status": "ready_to_attempt_integration"
-    },
-    {
-      "number": 26,
-      "head_sha": "b959a47f88f2c3d6c948072e038a082847aa666f",
-      "branch": "cursor/forecast-comparability-1787",
-      "draft": true,
-      "workstream": "agent-2"
-    },
-    {
-      "number": 27,
-      "head_sha": "ce07836b27a090da063617708df7b7174745881c",
-      "branch": "cursor/recurring-refresh-088b",
-      "draft": true,
-      "workstream": "agent-3",
-      "status": "not_ready"
-    },
-    {
-      "number": 28,
-      "head_sha": "926e6d4a36ec4730a2cc44b7e52e3f0e0f354827",
-      "branch": "cursor/partial-integration-forecast-a32e",
-      "draft": true,
-      "workstream": "agent-7-partial-candidate"
-    }
+    {"number": 21, "head_sha": "af6ec9b4783a4fd37dbc3b9f5c263cc9cbd96ac3", "branch": "cursor/research-navigation-34f4", "draft": true, "workstream": "agent-1"},
+    {"number": 22, "head_sha": "6c23609f05bb958a58f235ba34c0180b3579c109", "branch": "cursor/coverage-channels-2026-10-6ae1", "draft": true, "workstream": "agent-4"},
+    {"number": 23, "head_sha": "2af9e50095a9e44db4cc4c820bc815502351f05d", "branch": "cursor/partial-integration-20261004-a32e", "draft": true, "workstream": "agent-7-partial-candidate", "status": "superseded_by_24"},
+    {"number": 24, "head_sha": "129036a837cee885871f565c86d0afb5fe326796", "branch": "cursor/partial-integration-ui-coverage-a32e", "draft": true, "workstream": "agent-7-partial-candidate", "status": "superseded_by_28"},
+    {"number": 25, "head_sha": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e", "branch": "cursor/public-read-consistency-66d1", "draft": true, "workstream": "agent-6"},
+    {"number": 26, "head_sha": "b959a47f88f2c3d6c948072e038a082847aa666f", "branch": "cursor/forecast-comparability-1787", "draft": true, "workstream": "agent-2"},
+    {"number": 27, "head_sha": "ce07836b27a090da063617708df7b7174745881c", "branch": "cursor/recurring-refresh-088b", "draft": true, "workstream": "agent-3", "status": "not_ready"},
+    {"number": 28, "head_sha": "926e6d4a36ec4730a2cc44b7e52e3f0e0f354827", "branch": "cursor/partial-integration-forecast-a32e", "draft": true, "workstream": "agent-7-partial-candidate", "status": "superseded_by_30"},
+    {"number": 29, "head_sha": "f59cb9c0326df7393a0c90ae67364fe4ef88e424", "branch": "cursor/source-statement-review-ec4e", "draft": true, "workstream": "agent-5", "status": "not_ready"},
+    {"number": 30, "head_sha": "234cc67b890aab833c2efc8867778ee9fd11d467", "branch": "cursor/partial-integration-reads-a32e", "draft": true, "workstream": "agent-7-partial-candidate"}
   ],
-  "readiness": "partial_candidate_agents_1_2_and_4",
+  "readiness": "partial_candidate_agents_1_2_4_and_6",
   "integration_attempt": "partial_candidate_recorded",
   "blockers": [
     "canonical-export-collapses-source-versions",
     "reimport-clobbers-review-and-replay-is-noop",
     "agent-3-refresh-pytest-missing-contracts-module",
-    "review-cache-fix-not-in-926e6d4",
-    "queries-ts-conflict-agent-2-and-agent-6",
-    "agent-5-unpublished"
+    "agent-5-staging-review-ci-failed"
   ],
-  "measurements": "coordination/reproductions/results-2026-10-04T211729Z.json",
+  "measurements": "coordination/reproductions/results-2026-10-04T212501Z.json",
   "scheduler": {
     "hourly_review": "active",
     "subscription_id": "sub_a7f92930-5085-4d07-a8dd-d455f4acf8d6",
@@ -192,32 +133,13 @@
     "expires_at": "2026-10-11T20:27:47Z",
     "delivery_count": 0,
     "pr_event_subscriptions": [
-      {
-        "pr": 21,
-        "subscription_id": "sub_d63cfed6-eb00-48ec-9720-2572f78d585d",
-        "expires_at": "2026-10-07T21:01:09Z",
-        "scope": "github.com/mishakgg/pdoom-live#21"
-      },
-      {
-        "pr": 22,
-        "subscription_id": "sub_40952baa-0c8a-4e56-9166-a8156577cf7c",
-        "expires_at": "2026-10-07T21:03:28Z",
-        "scope": "github.com/mishakgg/pdoom-live#22"
-      },
-      {
-        "pr": 26,
-        "subscription_id": "sub_bd948acd-732c-47b9-88c3-685e9bf16858",
-        "expires_at": "2026-10-07T21:13:43.899Z",
-        "scope": "github.com/mishakgg/pdoom-live#26"
-      },
-      {
-        "pr": 25,
-        "subscription_id": "sub_6b7aa002-487c-4e67-a6d3-380c9264f0dd",
-        "expires_at": "2026-10-07T21:13:43.956Z",
-        "scope": "github.com/mishakgg/pdoom-live#25"
-      }
-    ],
-    "pr_subscription_limitation": "Pull requests 21, 22, 25, and 26 are subscribed. Pull request 27 still needs a subscription. Agent 5 has no pull request."
+      {"pr": 21, "subscription_id": "sub_d63cfed6-eb00-48ec-9720-2572f78d585d", "expires_at": "2026-10-07T21:01:09Z"},
+      {"pr": 22, "subscription_id": "sub_40952baa-0c8a-4e56-9166-a8156577cf7c", "expires_at": "2026-10-07T21:03:28Z"},
+      {"pr": 26, "subscription_id": "sub_bd948acd-732c-47b9-88c3-685e9bf16858", "expires_at": "2026-10-07T21:13:43.899Z"},
+      {"pr": 25, "subscription_id": "sub_6b7aa002-487c-4e67-a6d3-380c9264f0dd", "expires_at": "2026-10-07T21:13:43.956Z"},
+      {"pr": 27, "subscription_id": "sub_3916a1ae-d9ba-45d7-8d02-c27b07778bd8", "expires_at": "2026-10-07T21:28:43.323Z"},
+      {"pr": 29, "subscription_id": "sub_4162a1c2-99d3-4ebd-8f75-4194359ec1eb", "expires_at": "2026-10-07T21:28:43.305Z"}
+    ]
   },
-  "next_action": "Finish merging 8c36cc1 onto 926e6d4. Keep the read-snapshot import and Agent 2's expanded exports. Do not include Agent 3. Do not merge to main."
+  "next_action": "On the next review, read this checkpoint and compare heads with last_reviewed_shas. Pull request 30 at 234cc67 is the current partial candidate for Agents 1, 2, 4, and 6. Do not merge it to main. Include Agent 3 or Agent 5 only after their recorded test failures are fixed on a new head. If either head moves, re-check the merge against 234cc67. Agents 3 and 5 are subscribed. The hourly timer remains active."
 }

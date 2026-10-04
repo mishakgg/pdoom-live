@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-04T21:22:30Z",
+  "reviewed_at": "2026-10-04T21:28:43Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -87,6 +87,7 @@
     "review_decision_schema_version": "review-decisions/1.0.0",
     "next_sql_migration_number": "004",
     "agent_3_proposed_migration_not_included": "packages/db/migrations/004_refresh_runs.sql on ce07836",
+    "agent_5_proposed_migration_not_included": "packages/db/migrations/005_participant_host_role.sql on f59cb9c",
     "applied_migrations": [
       "packages/db/migrations/001_init.sql",
       "packages/db/migrations/002_dataset_contract.sql",
@@ -187,8 +188,8 @@
       "severity": "blocker-for-scenario-7",
       "owner": "agent-6",
       "consumers": ["agent-1"],
-      "status": "ready-head-excluded-from-926e6d4",
-      "summary": "On 926e6d4, scenario 7 still returns 304 after a review-only change because that candidate does not include Agent 6. Head 8c36cc1 is now idle and its GitHub checks passed, including the narrowed dataset-count assertion. It conflicts with 926e6d4 in packages/db/src/queries.ts. The next candidate can include it with the mechanical re-export resolution. It is not part of 926e6d4.",
+      "status": "measured-pass-on-234cc67",
+      "summary": "On candidate 234cc67, a review-only change keeps dataset_imports.imported_at the same, changes the ETag, and a client echoing the previous Last-Modified receives 200 rather than 304. Scenario 7 passed. The queries.ts resolution kept Agent 6's read-snapshot import and Agent 2's trend-query exports.",
       "reproducible_example": {
         "command": "npx tsx coordination/reproductions/cross-workstream-gate.ts",
         "database": "pdoom_coord_integration_test",
@@ -231,6 +232,18 @@
     "expected": "The refresh tests complete in the repository pipeline workflow.",
     "actual": "Error: Cannot find module '@pdoom/contracts'. Exit status 1 from npx tsx."
   },
+  "agent_5_test_failures": {
+    "id": "agent-5-staging-review-ci-failed",
+    "head_sha": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
+    "pr": 29,
+    "owner": "agent-5",
+    "status": "not_ready",
+    "node_run": 37235827312,
+    "pipeline_run": 37235827320,
+    "summary": "Node CI failed test/staging-review.test.ts because python3 data/fixtures/review/roundtrip.py imports the collector stack and the Node job has no defusedxml. Pipeline CI failed tests/test_backfill.py: duplicate numeric suppression expected 1 and got 0, and candidate lead URLs were empty. Not included in 234cc67. Migration 005_participant_host_role.sql is proposed and not applied.",
+    "expected": "Existing backfill tests still pass, and the staging roundtrip runs in the Node CI job.",
+    "actual": "ModuleNotFoundError: No module named 'defusedxml' in the Node job. Pipeline assertions assert 0 == 1 and assert [] == ['https://eve...example/talk']."
+  },
   "ownership_overlaps_observed": [
     {
       "id": "belief-corpus-doc-agent-2-and-agent-4",
@@ -243,8 +256,8 @@
       "id": "queries-ts-conflict-agent-2-and-agent-6",
       "paths": ["packages/db/src/queries.ts"],
       "owners": ["agent-2", "agent-6"],
-      "status": "content-conflict-with-926e6d4",
-      "summary": "Agent 2's expanded trend-query re-export is inside 926e6d4. Agent 6 head 8c36cc1 still conflicts there. public-read.ts auto-merges onto 926e6d4. A later candidate keeps Agent 6's read-snapshot import and Agent 2's extra exports.",
+      "status": "resolved-on-234cc67",
+      "summary": "Candidate 234cc67 keeps Agent 6's read-snapshot import and Sql type and Agent 2's export of FORECAST_INPUT_SQL, loadTrendInputs, mapForecastRow, resolveTrendMethods, and trendMethodKey. public-read.ts auto-merged.",
       "mechanical_resolution_when_both_ready": "Keep Agent 6's read-snapshot import and Sql type, and keep Agent 2's export of FORECAST_INPUT_SQL, loadTrendInputs, mapForecastRow, resolveTrendMethods, and trendMethodKey."
     },
     {
@@ -256,6 +269,13 @@
       "owners": ["agent-6"],
       "status": "returned-to-owners",
       "summary": "Agent 6 asks Agent 1 to stop saying Last-Modified comes from import time, and asks Agent 2 for a single-method getTrend. Agent 2's published head still computes every method. Agent 7 does not implement either request."
+    },
+    {
+      "id": "belief-corpus-doc-agent-5",
+      "paths": ["docs/BELIEF_CORPUS.md"],
+      "owners": ["agent-5", "agent-2", "agent-4"],
+      "status": "content-conflict-not-included",
+      "summary": "Agent 5 head f59cb9c conflicts with candidate 234cc67 in docs/BELIEF_CORPUS.md. Agent 5 is not included because its CI tests failed."
     },
     {
       "id": "sources-page-agent-1-and-agent-3",
