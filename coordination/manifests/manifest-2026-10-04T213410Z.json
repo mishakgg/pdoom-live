@@ -1,0 +1,25 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-04T213410Z",
+  "candidate_state": "merge_in_progress",
+  "reason": "Agent 3 head ce07836 is idle. Node CI passed. Local refresh tests passed. Pipeline CI failed because the pipeline job does not install npm packages. Agent 5 stays out.",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "parent_candidate_commit": "234cc67b890aab833c2efc8867778ee9fd11d467",
+  "integration_branch": "cursor/partial-integration-refresh-a32e",
+  "adding_head": "ce07836b27a090da063617708df7b7174745881c",
+  "resulting_integration_commit": null,
+  "local_test": {
+    "command": "PYTHONPATH=pipeline python3 -m pytest tests/test_refresh.py -q",
+    "worktree": "ce07836",
+    "result": "8 passed"
+  },
+  "excluded": [
+    {
+      "agent": "agent-5",
+      "pr": 29,
+      "head_sha": "f59cb9c0326df7393a0c90ae67364fe4ef88e424",
+      "reason": "Pipeline tests/test_backfill.py failed on this head. Not an install-only failure."
+    }
+  ]
+}

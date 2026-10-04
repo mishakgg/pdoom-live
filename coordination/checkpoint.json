@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-04T213140Z",
-  "reviewed_at": "2026-10-04T21:31:40Z",
-  "previous_review_id": "2026-10-04T212501Z",
-  "status_path": "coordination/status/status-2026-10-04T213140Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-04T213140Z.json",
+  "review_id": "2026-10-04T213410Z",
+  "reviewed_at": "2026-10-04T21:34:10Z",
+  "previous_review_id": "2026-10-04T213140Z",
+  "status_path": "coordination/status/status-2026-10-04T213410Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-04T213410Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "origin_main_subject": "Match deploy smoke to the public status bar and discovery routes (#19)",
@@ -22,9 +22,16 @@
   },
   "coordination_branch": "cursor/integration-coordination-a32e",
   "coordination_pr": "https://github.com/mishakgg/pdoom-live/pull/20",
+  "candidate_in_progress": {
+    "branch": "cursor/partial-integration-refresh-a32e",
+    "base_commit": "234cc67b890aab833c2efc8867778ee9fd11d467",
+    "adding_head": "ce07836b27a090da063617708df7b7174745881c",
+    "resulting_commit": null
+  },
   "run_lock": {
-    "holder": null,
-    "acquired_at": null,
+    "holder": "agent-7",
+    "acquired_at": "2026-10-04T21:34:10Z",
+    "purpose": "Merge exact Agent 3 head ce07836 onto 234cc67. Local test_refresh.py passed. Pipeline CI failed only because that job has no npm install.",
     "expires_after_seconds": 7200,
     "protocol": "Set holder and acquired_at before mutating an integration branch. Clear both in the checkpoint commit that finishes the review. Do not start a second integration while a lock is younger than expires_after_seconds. The hourly timer is the primary overlap control because it fires only when this agent is idle."
   },
@@ -141,5 +148,5 @@
       {"pr": 29, "subscription_id": "sub_4162a1c2-99d3-4ebd-8f75-4194359ec1eb", "expires_at": "2026-10-07T21:28:43.305Z"}
     ]
   },
-  "next_action": "Pull request 30 at 234cc67 remains the partial candidate. The 2026-10-04T213140Z review found no new heads. Include Agent 3 or Agent 5 only after a new head fixes the recorded CI failures. Do not merge pull request 30 to main."
+  "next_action": "Finish merging ce07836 onto 234cc67. Keep Agent 1's source-page wording and Agent 6's sequential coverage queries, and add Agent 3's last_checked_at aggregate. Do not include Agent 5. Do not merge to main."
 }
