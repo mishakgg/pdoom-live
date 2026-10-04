@@ -1,0 +1,19 @@
+{
+  "data": {
+    "posts": {
+      "results": [
+        {
+          "_id": "postLast",
+          "title": "Short page",
+          "slug": "short-page",
+          "pageUrl": "https://forum.effectivealtruism.org/posts/postLast/short-page",
+          "postedAt": "2023-11-02T00:00:00Z",
+          "draft": false,
+          "user": {"slug": "fixture-author", "fullName": "Fixture Author"},
+          "coauthors": [],
+          "contents": {"plaintextDescription": "This page is shorter than the requested page size."}
+        }
+      ]
+    }
+  }
+}

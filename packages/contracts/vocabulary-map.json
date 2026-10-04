@@ -31,6 +31,7 @@
     "repository": "repository",
     "github": "repository",
     "x": "social_post",
+    "bluesky": "social_post",
     "rss": "blog",
     "model_card": "model_card",
     "social_post": "social_post",
@@ -46,6 +47,8 @@
     "openalex_api": "api",
     "arxiv_api": "api",
     "github_api": "api",
+    "forum_magnum_api": "api",
+    "bluesky_api": "api",
     "reference_only": "manual",
     "manual": "manual",
     "sitemap": "sitemap",
@@ -66,7 +69,10 @@
     "openalex_orcid_crosswalk": "cross_link",
     "orcid_researcher_url": "cross_link",
     "claimed_url_page_name": "cross_link",
-    "rel_me": "cross_link"
+    "rel_me": "cross_link",
+    "forum_author_on_linked_post": "cross_link",
+    "personal_site_profile_link": "cross_link",
+    "bluesky_profile_name_and_site_link": "cross_link"
   },
   "attribution_method": {
     "byline": "byline",
@@ -79,6 +85,10 @@
     "github_repo_owner": "metadata",
     "openalex_authorship": "metadata",
     "source_author_field": "byline",
-    "name_occurrence_in_body": "metadata"
+    "name_occurrence_in_body": "metadata",
+    "forum_author_field": "metadata",
+    "bluesky_repo_author": "metadata",
+    "owned_feed_empty_author": "metadata",
+    "press_release_quote": "byline"
   }
 }
