@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-04T21:38:00Z",
+  "reviewed_at": "2026-10-04T21:45:35Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -135,21 +135,22 @@
     },
     {
       "id": "canonical-export-collapses-source-versions",
-      "severity": "blocker-for-scenario-2-version-history",
+      "severity": "resolved-for-published-slug",
       "owner": "agent-3",
       "consumers": ["agent-5", "agent-6", "agent-1"],
-      "status": "still-failing-on-0f02676",
-      "summary": "On candidate 0f02676, scenario 2 still stores only the new hash. The row is content_version 2 and is_current true. The previous hash is not a stored version. Stale approval is hidden. Agent 3's refresh fixture covers a different import path that passed in test/refresh-import.test.ts.",
+      "status": "measured-pass-on-0f02676",
+      "summary": "On candidate 0f02676, scenario 2 passes when the changed document keeps the previous source row and adds a new slug from source_item_slug for content_version > 1, and the statement points at that current item. The earlier failure kept the version-1 fixture slug, so ON CONFLICT (slug) replaced the only row. Agent 7 did not change product identity code.",
       "reproducible_example": {
-        "command": "PYTHONPATH=pipeline python3 coordination/reproductions/export-version-and-question-keys.py",
-        "result": "coordination/reproductions/results-2026-10-04T203514Z.json",
-        "same_slug": true,
-        "content_version": 1,
-        "duplicate_slugs_in_one_document": true,
-        "importer": "packages/db/src/import.ts ON CONFLICT (slug) DO UPDATE content_hash"
+        "command": "npx tsx coordination/reproductions/cross-workstream-gate.ts",
+        "candidate": "0f02676728f0ab6864f9bea0643d2dc4c90321e5",
+        "gate_commit": "745321a",
+        "result": "coordination/reproductions/results-2026-10-04T214535Z.json",
+        "previous_slug": "jonah-review-2024",
+        "next_slug": "item-eb1a23c14c57c021c949",
+        "versions_retained": 2
       },
-      "requested_resolution": "Agent 3's canonical export should emit distinct version identity for a changed hash and keep the previous version addressable. Agent 7 will not invent a second slug scheme during integration.",
-      "note": "Stale-approval detection in packages/db/src/coverage.ts can still demote human_verified when the stored decision hash differs from the current row. That does not preserve the previous source version."
+      "requested_resolution": "Agent 3's canonical export emits distinct version identity for a changed hash and keeps the previous version addressable. Agent 7 does not invent a second slug scheme.",
+      "note": "The 2026-10-04T203514Z export script still describes an older same-slug document. That script is historical evidence, not the current gate."
     },
     {
       "id": "verified-withdrawal-stays-in-distribution",
@@ -282,19 +283,20 @@
       "id": "sources-page-agent-1-and-agent-3",
       "paths": ["apps/web/app/sources/page.tsx"],
       "owners": ["agent-1", "agent-3"],
-      "status": "content-conflict-not-included",
-      "summary": "Candidate 926e6d4 already shows Last successful collection and Last check, from Agent 1. Agent 3 head ce07836 inserts Last check into main's Last success sentence. merge-tree onto 926e6d4 conflicts in that paragraph. Agent 3 is not included. When it is, keep Agent 1's sentence if the only page change is that line, and keep Agent 3's query and migration changes."
+      "status": "resolved-on-0f02676",
+      "summary": "Candidate 0f02676 keeps Agent 1's wording: Last successful collection, then Last check. Both sides showed the same two timestamps."
     },
     {
       "id": "queries-ts-agent-3-and-agent-6",
       "paths": ["packages/db/src/queries.ts"],
       "owners": ["agent-3", "agent-6"],
-      "status": "content-conflict-between-excluded-heads",
-      "summary": "Agent 3 adds last_checked_at to the coverage query. Agent 6 rewrites query function signatures. Those two heads conflict. Agent 3's query edit auto-merges onto 926e6d4, which does not contain Agent 6."
+      "status": "resolved-on-0f02676",
+      "summary": "Candidate 0f02676 keeps Agent 6's sequential coverage queries on the snapshot client and adds Agent 3's max(src.last_checked_at)."
     }
   ],
   "migration_reservation": {
-    "next_number": "004",
-    "rule": "The first workstream that adds a migration in an included commit claims the next integer. A later workstream rebases onto the next free number on the integration branch. Two files numbered 004 are a mechanical conflict Agent 7 may renumber, recording the original number, the new number, and the owner."
+    "next_number": "005",
+    "claimed": "004_refresh_runs.sql is included on 0f02676 from Agent 3. Agent 5 head f59cb9c proposes 005_participant_host_role.sql and is not included.",
+    "rule": "The first workstream that adds a migration in an included commit claims the next integer. A later workstream rebases onto the next free number on the integration branch. Two files with the same number are a mechanical conflict Agent 7 may renumber, recording the original number, the new number, and the owner."
   }
 }
