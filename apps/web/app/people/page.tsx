@@ -5,6 +5,7 @@ import { InvalidFilters, Pager, PeopleFilters } from "@/components/filters";
 import { EmptyState, NoResults } from "@/components/states";
 import { isInvalidCursor } from "@/lib/http";
 import { typeLabel } from "@/lib/format";
+import { resolveFilterLabels } from "@/lib/entity-labels";
 import { canonicalOrigin, hasDiscoveryFilter, listPageFields, pageMetadata } from "@/lib/seo";
 import { NO_STATEMENT_COLLECTED, NO_STATEMENT_COLLECTED_NOTE, affiliationFact, personStatusLabel, withCursor } from "@/lib/presentation";
 
@@ -21,6 +22,7 @@ function filtered(params: Record<string, string | undefined>): boolean {
 
 export default async function PeoplePage({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const params = await searchParams;
+  const labels = await resolveFilterLabels({ organization: params.organization });
   const parsed = peopleListQuerySchema.safeParse({
     q: params.q || undefined,
     organization: params.organization || undefined,
@@ -32,7 +34,7 @@ export default async function PeoplePage({ searchParams }: { searchParams: Promi
     <>
       <h1>Tracked people</h1>
       <p className="lede">Every person has an inclusion reason. Similar names are not merged. A missing statement means nothing has been collected, not that the person has never spoken.</p>
-      <PeopleFilters params={params} />
+      <PeopleFilters params={params} labels={labels} />
       {!parsed.success ? <InvalidFilters /> : <PeopleResults params={params} query={parsed.data} filtered={filtered(params)} />}
     </>
   );

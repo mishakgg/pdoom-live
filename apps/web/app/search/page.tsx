@@ -1,6 +1,11 @@
 import { STATEMENT_TYPES, STATEMENT_TYPE_LABELS, parseSearchParams, searchQuerySchema, SEARCH_ENTITY_TYPES } from "@pdoom/contracts";
 import { searchPublic } from "@pdoom/db";
+import { EntitySelect } from "@/components/entity-select";
+import { FilterForm } from "@/components/filter-form";
+import { ActiveFilters } from "@/components/filters";
 import { SearchResults } from "@/components/search-results";
+import { resolveFilterLabels, type FilterLabels } from "@/lib/entity-labels";
+import { filterStateKey, researchFilters } from "@/lib/presentation";
 import { canonicalOrigin, hasDiscoveryFilter, listPageFields, pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
@@ -19,9 +24,10 @@ const TYPE_LABEL: Record<(typeof SEARCH_ENTITY_TYPES)[number], string> = {
   source_item: "Source item titles",
 };
 
-function Filters({ params }: { params: Record<string, string | undefined> }) {
+function Filters({ params, labels }: { params: Record<string, string | undefined>; labels: FilterLabels }) {
   return (
-    <form className="filters" method="get" action="/search">
+    <FilterForm key={filterStateKey(params)} className="filters" method="get" action="/search">
+      <p className="meta">Choose a person or topic by name. The address keeps the stable identifier. Text is still required to search.</p>
       <label>Text<input name="q" defaultValue={params.q ?? ""} required maxLength={200} /></label>
       <label>
         Entity
@@ -32,8 +38,18 @@ function Filters({ params }: { params: Record<string, string | undefined> }) {
           ))}
         </select>
       </label>
-      <label>Topic slug<input name="topic" defaultValue={params.topic ?? ""} /></label>
-      <label>Person slug<input name="person" defaultValue={params.person ?? ""} /></label>
+      <EntitySelect
+        kind="topic"
+        label="Topic"
+        name="topic"
+        selected={labels.topic ? { slug: labels.topic.slug, name: labels.topic.name, detail: labels.topic.detail } : null}
+      />
+      <EntitySelect
+        kind="person"
+        label="Person"
+        name="person"
+        selected={labels.person ? { slug: labels.person.slug, name: labels.person.name, detail: labels.person.detail } : null}
+      />
       <label>
         Statement class
         <select name="statement_type" defaultValue={params.statement_type ?? ""}>
@@ -46,12 +62,14 @@ function Filters({ params }: { params: Record<string, string | undefined> }) {
       <label>From<input type="date" name="from" defaultValue={params.from ?? ""} /></label>
       <label>To<input type="date" name="to" defaultValue={params.to ?? ""} /></label>
       <button type="submit">Search</button>
-    </form>
+      <ActiveFilters path="/search" params={params} labels={labels} />
+    </FilterForm>
   );
 }
 
 export default async function SearchPage({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const params = await searchParams;
+  const labels = await resolveFilterLabels({ person: params.person, topic: params.topic });
   return (
     <>
       <h1>Search</h1>
@@ -59,7 +77,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
         Search public people, organizations, statements, topics, sources, and source-item titles.
         Rejected and unreviewed statements, review notes, and unpublished source bodies are not included. Needs-review statements stay visible and are not labeled verified. Match labels describe the rule that ranked the row.
       </p>
-      <Filters params={params} />
+      <Filters params={params} labels={labels} />
       <Results params={params} />
     </>
   );
@@ -85,5 +103,5 @@ async function Results({ params }: { params: Record<string, string | undefined> 
   const queryString = new URLSearchParams(
     Object.entries(params).filter((entry): entry is [string, string] => Boolean(entry[1]) && entry[0] !== "cursor"),
   ).toString();
-  return <SearchResults result={result} queryString={queryString} />;
+  return <SearchResults result={result} queryString={queryString} filters={researchFilters(params)} />;
 }

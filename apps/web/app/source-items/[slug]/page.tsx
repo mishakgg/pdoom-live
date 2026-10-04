@@ -48,6 +48,7 @@ export default async function SourceItemPage({ params }: { params: Promise<{ slu
         <UnavailableState collectionStatus={item.collection_status} availability={item.availability} />
       ) : null}
       {material === "partial" ? <PartialCollectionNote /> : null}
+      <p className="meta">The first time is the material&apos;s date. The second time is when this observatory stored it. Reloading this page does not collect the source again.</p>
       <dl className="audit">
         <dt>Published</dt>
         <dd>{formatWhen(item.published_at)}{item.published_timezone ? ` (${item.published_timezone})` : ""}</dd>
@@ -55,10 +56,6 @@ export default async function SourceItemPage({ params }: { params: Promise<{ slu
         <dd>{formatWhen(item.observed_at)}</dd>
         <dt>URL</dt>
         <dd><ExternalLink href={item.canonical_url}>{item.canonical_url}</ExternalLink></dd>
-        <dt>Content hash</dt>
-        <dd className="hash">{item.content_hash}</dd>
-        <dt>Reference</dt>
-        <dd className="url">{item.content_reference ?? "Not recorded"}</dd>
         <dt>Status</dt>
         <dd>{phraseLabel(item.collection_status)} · {phraseLabel(item.availability)}</dd>
         <dt>Language</dt>
@@ -87,10 +84,17 @@ export default async function SourceItemPage({ params }: { params: Promise<{ slu
           <p>No evidence excerpt is stored for this item.</p>
         )}
       </section>
-      <section aria-labelledby="item-metadata">
+      <details className="technical">
+        <summary>Technical record</summary>
+        <dl className="audit">
+          <dt>Content hash</dt>
+          <dd className="hash">{item.content_hash}</dd>
+          <dt>Reference</dt>
+          <dd className="url">{item.content_reference ?? "Not recorded"}</dd>
+        </dl>
         <h2 id="item-metadata">Metadata</h2>
         <pre className="evidence">{JSON.stringify(item.metadata, null, 2)}</pre>
-      </section>
+      </details>
     </>
   );
 }

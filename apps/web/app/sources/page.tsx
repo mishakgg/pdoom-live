@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ExternalLink } from "@/components/statement-bits";
 import { EmptyState } from "@/components/states";
 import { formatWhen, isHumanVerified, phraseLabel, reviewLabel } from "@/lib/format";
-import { freshnessLabel } from "@/lib/presentation";
+import { collectionReading, freshnessLabel } from "@/lib/presentation";
 import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
@@ -25,13 +25,16 @@ export default async function SourcesPage() {
           <p className="meta">
             {source.item_count} {source.item_count === 1 ? "item" : "items"}
             {" · "}
-            Last success {formatWhen(source.last_success_at)}
+            Last successful collection {formatWhen(source.last_success_at)}
+            {" · "}
+            Last check {formatWhen(source.last_checked_at)}
             {" · "}
             {source.enabled ? "Enabled" : "Disabled"}
             {" · "}
             {reviewLabel(source.review_state)}
             {isHumanVerified(source.review_state) ? "" : " · not a settled source record"}
           </p>
+          <p>{collectionReading(source).detail}</p>
           {source.owner_slug && source.owner_name ? (
             <p>Owner <Link href={`/people/${source.owner_slug}`}>{source.owner_name}</Link></p>
           ) : null}

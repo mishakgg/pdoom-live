@@ -9,7 +9,7 @@ import {
 import Link from "next/link";
 import { useEffect, useId, useMemo, useState, type KeyboardEvent } from "react";
 
-type Suggestion = { id: string; href: string; label: string; kind: string };
+type Suggestion = { id: string; href: string; label: string; detail?: string; kind: string };
 
 function clipLabel(text: string): string {
   const flat = text.replace(/\s+/g, " ").trim();
@@ -17,11 +17,29 @@ function clipLabel(text: string): string {
   return `${flat.slice(0, 139).trimEnd()}…`;
 }
 
+function personDetail(person: SearchResponse["groups"]["person"]["data"][number], duplicate: boolean): string {
+  const affiliation = person.organization
+    ? `${person.organization.role ?? "Role not recorded"}, ${person.organization.name}`
+    : "No current affiliation recorded";
+  return duplicate ? `${affiliation}. Record ${person.slug}` : affiliation;
+}
+
 function suggestionsFrom(response: SearchResponse | null): Suggestion[] {
   if (!response || response.query.reason !== "ok") return [];
   const items: Suggestion[] = [];
+  const personNames = new Map<string, number>();
   for (const person of response.groups.person.data) {
-    items.push({ id: `suggest-person-${person.slug}`, href: `/people/${person.slug}`, label: person.display_name, kind: "Person" });
+    personNames.set(person.display_name, (personNames.get(person.display_name) ?? 0) + 1);
+  }
+  for (const person of response.groups.person.data) {
+    const duplicate = (personNames.get(person.display_name) ?? 0) > 1;
+    items.push({
+      id: `suggest-person-${person.slug}`,
+      href: `/people/${person.slug}`,
+      label: person.display_name,
+      detail: personDetail(person, duplicate),
+      kind: "Person",
+    });
   }
   for (const topic of response.groups.topic.data) {
     items.push({ id: `suggest-topic-${topic.slug}`, href: `/topics/${topic.slug}`, label: topic.name, kind: "Topic" });
@@ -143,11 +161,9 @@ export function LiveSearch() {
           onChange={(event) => {
             const next = event.target.value;
             setQ(next);
+            setResponse(null);
+            setOpen(false);
             setActive(-1);
-            if (next.trim().length < SEARCH_SUGGEST_MIN) {
-              setResponse(null);
-              setOpen(false);
-            }
           }}
           onKeyDown={onKeyDown}
         />
@@ -162,6 +178,7 @@ export function LiveSearch() {
               <Link id={item.id} role="option" aria-selected={index === active} href={item.href}>
                 <span className="kicker">{item.kind}</span>
                 <span>{item.label}</span>
+                {item.detail ? <span className="meta">{item.detail}</span> : null}
               </Link>
             </li>
           ))}

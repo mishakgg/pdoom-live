@@ -3,9 +3,10 @@ import { listStatements } from "@pdoom/db";
 import { StatementCard } from "@/components/statement-bits";
 import { InvalidFilters, Pager, StatementFilters } from "@/components/filters";
 import { EmptyState, NoResults } from "@/components/states";
+import { resolveFilterLabels } from "@/lib/entity-labels";
 import { isInvalidCursor } from "@/lib/http";
 import { canonicalOrigin, hasDiscoveryFilter, listPageFields, pageMetadata } from "@/lib/seo";
-import { withCursor } from "@/lib/presentation";
+import { researchFilters, withCursor } from "@/lib/presentation";
 
 export const dynamic = "force-dynamic";
 
@@ -25,11 +26,17 @@ export default async function StatementsPage({ searchParams }: { searchParams: P
     ...cleaned,
     limit: params.limit ?? 10,
   });
+  const labels = await resolveFilterLabels({
+    person: params.person,
+    organization: params.organization,
+    source: params.source,
+    topic: params.topic,
+  });
   return (
     <>
       <h1>Statements</h1>
-      <p className="lede">Each row names the claim, the person, the source, and whether the record is explicit or inferred. Open it for the original evidence.</p>
-      <StatementFilters params={params} />
+      <p className="lede">Each row names the claim, the person, the source, and whether the record is explicit or inferred. Open it for the original evidence. This list is paged. The count is every match, including rows on other pages.</p>
+      <StatementFilters params={params} labels={labels} />
       {!parsed.success ? <InvalidFilters /> : <StatementResults params={params} query={parsed.data} filtered={filtered(params)} />}
     </>
   );
@@ -56,7 +63,7 @@ async function StatementResults({
       <section aria-labelledby="statement-results">
         <h2 id="statement-results" className="sr-only">Matching statements</h2>
         {page.data.length ? page.data.map((statement) => (
-          <StatementCard key={statement.slug} statement={statement} headingLevel="h3" />
+          <StatementCard key={statement.slug} statement={statement} headingLevel="h3" filters={researchFilters(params)} />
         )) : filtered ? (
           <NoResults what="statements" />
         ) : (
