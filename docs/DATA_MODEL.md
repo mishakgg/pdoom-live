@@ -133,7 +133,7 @@ Links a source item to people or organizations.
 - `source_item_id`
 - `person_id?`
 - `organization_id?`
-- `role` — author / speaker / guest / interviewer / publisher / mentioned
+- `role` — author / speaker / guest / host / interviewer / publisher / mentioned. `host` is a transcript label stored by staging. Canonical import schema 1.0.0 does not include `host` in its participant enum.
 - `attribution_method`
 - `attribution_detail?`
 - `confidence_level`

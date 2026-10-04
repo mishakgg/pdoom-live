@@ -1,16 +1,21 @@
 import {
+  ATTRIBUTION_METHODS,
+  CANDIDATE_IDENTITY_VERSION,
+  SOURCE_TYPES,
   assertReviewTransition,
   candidateKey,
   decisionKey,
   evidenceSupportsNumbers,
   isKnownQuestionKey,
   normalizePrefixedId,
+  parseCandidateEnvelope,
   resultingReviewState,
   reviewCommandSchema,
   reviewManifestSchema,
   reviewPriority,
   reviewWarnings,
   suggestQuestionKeys,
+  type CandidateEnvelope,
   type ReviewCommand,
   type ReviewManifest,
   type ReviewState,
@@ -442,10 +447,13 @@ export async function listReviewQueue(
     clauses.push(`COALESCE(s.event_time, si.published_at) <= $${values.length}::timestamptz`);
   }
   const result = await pool.query(
-    `SELECT s.slug, s.statement_type, s.normalized_text, ${effectiveReviewStateSql("s")} AS review_state, s.confidence, s.extraction_confidence_level,
+    `SELECT s.slug, s.statement_type, s.normalized_text, ${effectiveReviewStateSql("s")} AS review_state, s.review_state AS stored_review_state,
+            s.confidence, s.extraction_confidence_level,
             s.extractor_name, s.extractor_version, s.event_time, p.slug AS person_slug, p.display_name,
-            src.source_type, src.name AS source_name, si.canonical_url, si.published_at, src.last_success_at,
-            f.question_key, f.horizon_text, f.definition_text, e.text AS evidence_text,
+            src.source_type, src.name AS source_name, si.canonical_url, si.published_at, si.published_timezone, src.last_success_at,
+            si.metadata_json->>'role' AS participant_role,
+            si.metadata_json->>'recommended_review_state' AS recommended_review_state,
+            f.question_key, f.horizon_text, f.definition_text, f.value_numeric, f.value_min, f.value_max, f.unit, e.text AS evidence_text,
             COALESCE(array_agg(DISTINCT t.slug) FILTER (WHERE t.slug IS NOT NULL), '{}') AS topic_slugs
      FROM statements s
      JOIN people p ON p.id = s.person_id
@@ -456,8 +464,9 @@ export async function listReviewQueue(
      LEFT JOIN statement_topics st ON st.statement_id = s.id
      LEFT JOIN topics t ON t.id = st.topic_id
      WHERE ${clauses.join(" AND ")}
-     GROUP BY s.id, p.slug, p.display_name, src.source_type, src.name, si.canonical_url, si.published_at, src.last_success_at,
-              f.question_key, f.horizon_text, f.definition_text, e.text
+     GROUP BY s.id, p.slug, p.display_name, src.source_type, src.name, si.canonical_url, si.published_at, si.published_timezone,
+              si.metadata_json, src.last_success_at,
+              f.question_key, f.horizon_text, f.definition_text, f.value_numeric, f.value_min, f.value_max, f.unit, e.text
      LIMIT 200`,
     values,
   );
@@ -483,9 +492,14 @@ export async function listReviewQueue(
       source_name: String(row.source_name),
       canonical_url: String(row.canonical_url),
       published_at: row.published_at ? new Date(row.published_at).toISOString() : null,
+      published_timezone: row.published_timezone ? String(row.published_timezone) : null,
       event_time: row.event_time ? new Date(row.event_time).toISOString() : null,
       question_key: row.question_key ? String(row.question_key) : null,
       horizon_text: row.horizon_text ? String(row.horizon_text) : null,
+      participant_role: row.participant_role ? String(row.participant_role) : null,
+      stored_review_state: String(row.stored_review_state),
+      recommended_review_state: row.recommended_review_state ? String(row.recommended_review_state) : null,
+      value_label: numericLabel(row),
       extractor_name: String(row.extractor_name),
       priority: reviewPriority({
         statement_type: row.statement_type,
@@ -500,13 +514,26 @@ export async function listReviewQueue(
   return items;
 }
 
+function shownNumber(value: unknown): string {
+  const text = String(value);
+  if (!/^-?\d+\.\d+$/.test(text)) return text;
+  return text.replace(/(\.\d*?)0+$/, "$1").replace(/\.$/, "");
+}
+
+function numericLabel(row: { value_numeric?: unknown; value_min?: unknown; value_max?: unknown; unit?: unknown }): string | null {
+  const unit = row.unit ? String(row.unit) : "";
+  if (row.value_min != null && row.value_max != null) return `${shownNumber(row.value_min)}–${shownNumber(row.value_max)}${unit ? ` ${unit}` : ""}`;
+  if (row.value_numeric != null) return `${shownNumber(row.value_numeric)}${unit ? ` ${unit}` : ""}`;
+  return null;
+}
+
 function whyReview(state: string, horizon: string | null, definition: string | null): string {
   const parts = [
     state === "unreviewed" ? "No human review is recorded." : "",
     state === "needs_review" ? "Marked for another look. This is not a verified claim." : "",
     state === "machine_validated" ? "Machine validation is not a human review." : "",
-    horizon ? "" : "Horizon is missing.",
-    definition ? "" : "Definition is missing.",
+    horizon ? "" : "Horizon is missing. Record it or reject the claim.",
+    definition ? "" : "Definition is missing. Record the outcome or reject the claim.",
   ].filter(Boolean);
   return parts.join(" ");
 }
@@ -541,19 +568,94 @@ export async function getReviewItem(pool: pg.Pool, slug: string) {
       [row.id],
     );
     const covered = latest.rows[0];
-    const stale = Boolean(
+    const effectiveResult = await client.query(
+      `SELECT ${effectiveReviewStateSql("s")} AS review_state FROM statements s WHERE s.id = $1`,
+      [row.id],
+    );
+    const effectiveState = String(effectiveResult.rows[0]?.review_state ?? row.review_state);
+    const hashMismatch = Boolean(
       covered &&
-      row.review_state === "human_verified" &&
       (covered.resulting_review_state !== "human_verified" ||
         covered.source_content_hash !== row.content_hash ||
         covered.evidence_hash !== row.segment_hash ||
         covered.content_version !== row.content_version),
     );
+    const stale = row.review_state === "human_verified" && hashMismatch;
+    const itemMeta = await client.query(
+      `SELECT si.published_timezone, si.language, si.metadata_json
+       FROM source_items si WHERE si.id = $1`,
+      [row.source_item_id],
+    );
+    const metadata = (itemMeta.rows[0]?.metadata_json ?? {}) as {
+      role?: string | null;
+      ownership?: string | null;
+      attribution_method?: string | null;
+      attribution_detail?: string | null;
+      participants?: Array<Record<string, unknown>>;
+      review_flags?: string[];
+      recommended_review_state?: string | null;
+      evidence_locator?: Record<string, unknown> | null;
+      forecast?: Record<string, unknown> | null;
+      candidate_identity_version?: string | null;
+    };
+    const participantRows = await client.query(
+      `SELECT sp.role, sp.attribution_method, sp.attribution_detail, sp.confidence_level, p.slug AS person_slug, p.display_name
+       FROM source_participants sp
+       LEFT JOIN people p ON p.id = sp.person_id
+       WHERE sp.source_item_id = $1
+       ORDER BY sp.role, p.display_name`,
+      [row.source_item_id],
+    );
+    const relationships = await client.query(
+      `SELECT r.relationship_type, r.method, r.review_state, r.confidence, other.slug AS other_slug, other.normalized_text
+       FROM statement_relationships r
+       JOIN statements other ON other.id = r.to_statement_id
+       WHERE r.from_statement_id = $1
+       ORDER BY r.method, other.slug`,
+      [row.id],
+    );
+    const duplicates = await client.query(
+      `SELECT s.slug, s.review_state, s.normalized_text
+       FROM statements s
+       JOIN evidence_segments e ON e.id = s.evidence_segment_id
+       WHERE e.segment_hash = $1 AND s.id <> $2
+       ORDER BY s.slug
+       LIMIT 20`,
+      [row.segment_hash, row.id],
+    );
+    const machineExtraction = await client.query(
+      `SELECT statement_type, normalized_text, evidence_text, evidence_hash, extractor_name, extractor_version, forecast_json, topic_slugs
+       FROM statement_extractions WHERE statement_id = $1`,
+      [row.id],
+    );
+    const participantList = participantRows.rows.map((item) => ({
+      role: String(item.role),
+      attribution_method: String(item.attribution_method),
+      attribution_detail: item.attribution_detail ? String(item.attribution_detail) : null,
+      confidence_level: item.confidence_level ? String(item.confidence_level) : null,
+      person_slug: item.person_slug ? String(item.person_slug) : null,
+      display_name: item.display_name ? String(item.display_name) : null,
+    }));
+    const recorded = new Set(participantList.map((item) => `${item.role}:${item.display_name ?? ""}`));
+    for (const participant of metadata.participants ?? []) {
+      const role = typeof participant.role === "string" ? participant.role : "";
+      const name = typeof participant.name === "string" ? participant.name : "";
+      if (!role || recorded.has(`${role}:${name}`)) continue;
+      participantList.push({
+        role,
+        attribution_method: typeof participant.attribution_method === "string" ? participant.attribution_method : "metadata",
+        attribution_detail: typeof participant.attribution_detail === "string" ? participant.attribution_detail : null,
+        confidence_level: null,
+        person_slug: typeof participant.person_slug === "string" ? participant.person_slug : null,
+        display_name: name || null,
+      });
+    }
     return {
       ...extraction,
       slug: row.slug,
-      review_state: row.review_state,
-      why: whyReview(row.review_state, row.horizon_text, row.definition_text),
+      review_state: effectiveState,
+      stored_review_state: row.review_state,
+      why: whyReview(effectiveState, row.horizon_text, row.definition_text),
       display_name: row.display_name,
       person_slug: row.person_slug,
       source_name: row.source_name,
@@ -571,11 +673,28 @@ export async function getReviewItem(pool: pg.Pool, slug: string) {
       content_version: row.content_version,
       evidence_hash: row.segment_hash,
       candidate_key: row.candidate_key,
+      candidate_identity_version: metadata.candidate_identity_version ?? CANDIDATE_IDENTITY_VERSION,
+      published_timezone: itemMeta.rows[0]?.published_timezone ? String(itemMeta.rows[0].published_timezone) : null,
+      language: itemMeta.rows[0]?.language ? String(itemMeta.rows[0].language) : null,
+      participant_role: metadata.role ?? null,
+      ownership: metadata.ownership ?? null,
+      attribution_method: metadata.attribution_method ?? null,
+      attribution_detail: metadata.attribution_detail ?? null,
+      participants: participantList,
+      review_flags: metadata.review_flags ?? [],
+      recommended_review_state: metadata.recommended_review_state ?? null,
+      evidence_locator: metadata.evidence_locator ?? null,
+      staged_forecast: metadata.forecast ?? null,
+      machine_extraction: machineExtraction.rows[0] ?? null,
+      machine_relationships: relationships.rows.filter((item) => item.method !== "curator_review"),
+      verified_relationships: relationships.rows.filter((item) => item.method === "curator_review"),
+      duplicates: duplicates.rows,
       suggestions: suggestQuestionKeys({ normalized_text: row.normalized_text, topics: [...row.topic_slugs, ...row.proposed_topics] }),
       warnings: [
         ...(stale ? [{
           code: "stale_review",
           message: "The source or evidence changed after the last approval. It needs review again.",
+          action: "Compare the stored evidence with the original extraction. Approve again only for this source version, or reject the stale reading.",
         }] : []),
         ...reviewWarnings({
           statement_type: row.statement_type as StatementType,
@@ -707,40 +826,39 @@ export async function exportReviewManifest(pool: pg.Pool): Promise<ReviewManifes
   return { schema_version: "review-decisions/1.0.0", decisions };
 }
 
-type CandidateRow = {
-  person_id: string;
-  source_url: string;
-  content_hash: string;
-  evidence_text: string;
-  extractor_name: string;
-  extractor_version: string;
-  normalized_text: string;
-  statement_type: string;
-  review_state?: string;
-  published_at?: string | null;
-  observed_at?: string | null;
-  topics?: string[];
-  confidence?: string | number | null;
-  value_numeric?: number | null;
-};
+const SOURCE_TYPE_SET = new Set<string>(SOURCE_TYPES);
+const ATTRIBUTION_SET = new Set<string>(ATTRIBUTION_METHODS);
 
-export async function stageCandidates(pool: pg.Pool, rows: CandidateRow[]): Promise<{ staged: number; skipped: number }> {
+function stagedAttribution(value: string | null | undefined): string {
+  if (value && ATTRIBUTION_SET.has(value)) return value;
+  if (value === "source_author_field" || value === "name_occurrence_in_body") return "metadata";
+  return "metadata";
+}
+
+function stagedConfidence(value: string | number | null | undefined): string | null {
+  if (value === "high" || value === "medium" || value === "low" || value === "unknown") return value;
+  return null;
+}
+
+function recommendedState(row: CandidateEnvelope): "unreviewed" | "needs_review" | "machine_validated" {
+  const candidate = row.recommended_review_state ?? row.review_state;
+  if (candidate === "needs_review" || candidate === "machine_validated" || candidate === "unreviewed") return candidate;
+  return "unreviewed";
+}
+
+export async function stageCandidates(pool: pg.Pool, rows: unknown[]): Promise<{ staged: number; skipped: number }> {
   let staged = 0;
   let skipped = 0;
-  for (const row of rows) {
-    if (row.review_state === "human_verified" || row.statement_type === "human_verified") {
-      throw new Error("staging cannot mark a candidate human_verified");
-    }
+  for (const raw of rows) {
+    const row = parseCandidateEnvelope(raw);
     const personSlug = normalizePrefixedId(row.person_id, "person");
     const client = await pool.connect();
     try {
       await client.query("BEGIN");
-      const person = await client.query(`SELECT id FROM people WHERE slug = $1`, [personSlug]);
+      const person = await client.query(`SELECT id, display_name FROM people WHERE slug = $1`, [personSlug]);
       if (!person.rowCount) throw new Error(`candidate person not in dataset: ${personSlug}`);
-      if (typeof row.content_hash !== "string") throw new Error("candidate content hash must be SHA-256");
       const hash = row.content_hash.replace(/^sha256:/, "");
-      if (!/^[a-f0-9]{64}$/.test(hash)) throw new Error("candidate content hash must be SHA-256");
-      const evidenceText = row.evidence_text.slice(0, 2000);
+      const evidenceText = row.evidence_text;
       const evidenceHash = sha256(evidenceText);
       const key = candidateKey({
         person_slug: personSlug,
@@ -749,6 +867,13 @@ export async function stageCandidates(pool: pg.Pool, rows: CandidateRow[]): Prom
         extractor_name: row.extractor_name,
         extractor_version: row.extractor_version,
         statement_type: row.statement_type,
+        question_key: row.question_key,
+        horizon_text: row.horizon_text,
+        unit: row.unit,
+        value_type: row.value_type,
+        value_numeric: row.value_numeric,
+        value_min: row.value_min,
+        value_max: row.value_max,
       });
       const existing = await client.query(`SELECT 1 FROM statements WHERE candidate_key = $1`, [key]);
       if (existing.rowCount) {
@@ -756,21 +881,67 @@ export async function stageCandidates(pool: pg.Pool, rows: CandidateRow[]): Prom
         skipped += 1;
         continue;
       }
-      const sourceSlug = `staged-${personSlug}-pages`.slice(0, 80);
+      const sourceType = row.source_type && SOURCE_TYPE_SET.has(row.source_type) ? row.source_type : "blog";
+      const sourceSlug = `staged-${personSlug}-${sourceType}`.slice(0, 80);
+      const owns = row.ownership === "owned" && (row.role === "author" || row.role === "speaker");
       await client.query(
         `INSERT INTO sources (
            id, slug, source_type, name, canonical_url, platform, owner_person_id, collection_method,
            collection_adapter, rights_notes, enabled, review_state
-         ) VALUES ($1,$2,'blog',$3,$4,'blog',$5,'manual','candidate_stage','Staged excerpt for review. Not a human verification.',true,'needs_review')
-         ON CONFLICT (slug) DO NOTHING`,
-        [stableId(`source:${sourceSlug}`), sourceSlug, `Staged pages for ${personSlug}`, row.source_url, person.rows[0].id],
+         ) VALUES ($1,$2,$3,$4,$5,$6,$7,'manual','candidate_stage','Staged excerpt for review. Not a human verification.',true,'unreviewed')
+         ON CONFLICT (slug) DO UPDATE SET
+           owner_person_id = COALESCE(sources.owner_person_id, EXCLUDED.owner_person_id)`,
+        [
+          stableId(`source:${sourceSlug}`),
+          sourceSlug,
+          sourceType,
+          `Staged ${sourceType} for ${personSlug}`,
+          row.source_url,
+          row.platform ?? sourceType,
+          owns ? person.rows[0].id : null,
+        ],
       );
       const itemSlug = `staged-item-${key.slice(0, 16)}`;
+      const flags = new Set(row.review_flags ?? []);
+      if (row.review_state === "rejected") flags.add("machine_rejection_not_applied");
+      const recommendation = recommendedState(row);
+      const envelope = {
+        candidate_identity_version: CANDIDATE_IDENTITY_VERSION,
+        role: row.role ?? null,
+        ownership: row.ownership ?? null,
+        attribution_method: stagedAttribution(row.attribution_method),
+        attribution_detail: row.attribution_detail ?? null,
+        participants: row.participants ?? [],
+        review_flags: [...flags].sort(),
+        recommended_review_state: recommendation,
+        evidence_locator: row.evidence_locator ?? null,
+        language: row.language || null,
+        published_timezone: row.published_timezone || null,
+        extractor_name: row.extractor_name,
+        extractor_version: row.extractor_version,
+        forecast: {
+          forecast_kind: row.forecast_kind ?? null,
+          question_key: row.question_key ?? null,
+          question_text: row.question_text ?? null,
+          definition_text: row.definition_text ?? null,
+          condition_text: row.condition_text ?? null,
+          horizon_text: row.horizon_text ?? null,
+          target_date_start: row.target_date_start ?? null,
+          target_date_end: row.target_date_end ?? null,
+          value_type: row.value_type ?? null,
+          value_numeric: row.value_numeric ?? null,
+          value_min: row.value_min ?? null,
+          value_max: row.value_max ?? null,
+          value_text: row.value_text ?? null,
+          unit: row.unit ?? null,
+          resolution_criteria: row.resolution_criteria ?? null,
+        },
+      };
       await client.query(
         `INSERT INTO source_items (
-           id, slug, source_id, logical_key, canonical_url, title, published_at, observed_at, language,
+           id, slug, source_id, logical_key, canonical_url, title, published_at, published_timezone, observed_at, language,
            content_hash, content_version, content_reference, metadata_json, collection_status, availability, is_current
-         ) VALUES ($1,$2,(SELECT id FROM sources WHERE slug = $3),$4,$5,$6,$7,$8,'en',$9,1,$10,'{}'::jsonb,'collected','available',true)
+         ) VALUES ($1,$2,(SELECT id FROM sources WHERE slug = $3),$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14::jsonb,'collected','available',true)
          ON CONFLICT (slug) DO NOTHING`,
         [
           stableId(`source-item:${itemSlug}`),
@@ -780,19 +951,37 @@ export async function stageCandidates(pool: pg.Pool, rows: CandidateRow[]): Prom
           row.source_url,
           row.source_url,
           row.published_at ?? null,
+          row.published_timezone || null,
           row.observed_at ?? new Date().toISOString(),
+          row.language || null,
           hash,
+          row.content_version ?? 1,
           `candidate://${key}`,
+          JSON.stringify(envelope),
         ],
       );
       const evidenceSlug = `staged-evidence-${key.slice(0, 16)}`;
+      const segmentKind = row.role === "guest" || row.start_ms != null ? "transcript" : "text";
       await client.query(
-        `INSERT INTO evidence_segments (id, slug, source_item_id, segment_kind, sequence, text, segment_hash)
-         VALUES ($1,$2,(SELECT id FROM source_items WHERE slug = $3),'text',1,$4,$5)
+        `INSERT INTO evidence_segments (
+           id, slug, source_item_id, segment_kind, sequence, start_char, end_char, start_ms, end_ms, text, context_text, segment_hash
+         ) VALUES ($1,$2,(SELECT id FROM source_items WHERE slug = $3),$4,1,$5,$6,$7,$8,$9,$10,$11)
          ON CONFLICT (slug) DO NOTHING`,
-        [stableId(`evidence:${evidenceSlug}`), evidenceSlug, itemSlug, evidenceText, evidenceHash],
+        [
+          stableId(`evidence:${evidenceSlug}`),
+          evidenceSlug,
+          itemSlug,
+          segmentKind,
+          row.start_char ?? row.evidence_locator?.start_char ?? null,
+          row.end_char ?? row.evidence_locator?.end_char ?? null,
+          row.start_ms ?? row.evidence_locator?.start_ms ?? null,
+          row.end_ms ?? row.evidence_locator?.end_ms ?? null,
+          evidenceText,
+          row.context_text ?? null,
+          evidenceHash,
+        ],
       );
-      const level = typeof row.confidence === "string" ? row.confidence : null;
+      const level = stagedConfidence(row.confidence);
       await client.query(
         `INSERT INTO statements (
            id, slug, person_id, source_item_id, statement_type, normalized_text, event_time, evidence_segment_id,
@@ -807,16 +996,48 @@ export async function stageCandidates(pool: pg.Pool, rows: CandidateRow[]): Prom
           person.rows[0].id,
           itemSlug,
           row.statement_type,
-          row.normalized_text.slice(0, 600),
+          row.normalized_text,
           row.published_at ?? null,
           evidenceSlug,
           row.extractor_name,
           row.extractor_version,
           key,
           level,
-          row.topics ?? [],
+          row.topics ?? (row.topic_slug ? [row.topic_slug] : []),
         ],
       );
+      if (row.question_key) {
+        const valueType = row.value_type ?? (row.value_min != null || row.value_max != null ? "range" : row.value_numeric != null ? "point" : "none");
+        const kind = row.forecast_kind ?? (row.statement_type === "explicit_qualitative" ? "qualitative" : row.statement_type === "model_inferred_signal" ? "classification" : "probability");
+        await client.query(
+          `INSERT INTO forecasts (
+             id, statement_id, forecast_kind, question_key, question_text, definition_text, condition_text,
+             target_date_start, target_date_end, horizon_text, value_type, value_numeric, value_min, value_max,
+             unit, resolution_criteria, review_state
+           ) VALUES (
+             $1,(SELECT id FROM statements WHERE slug = $2),$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,'unreviewed'
+           )`,
+          [
+            stableId(`forecast:candidate-${key.slice(0, 16)}`),
+            `candidate-${key.slice(0, 16)}`,
+            kind,
+            row.question_key,
+            (row.question_text || row.normalized_text || row.question_key).slice(0, 600),
+            row.definition_text ?? null,
+            row.condition_text ?? null,
+            row.target_date_start ?? null,
+            row.target_date_end ?? null,
+            row.horizon_text ?? null,
+            valueType,
+            row.value_numeric ?? null,
+            row.value_min ?? null,
+            row.value_max ?? null,
+            row.unit ?? null,
+            row.resolution_criteria ?? null,
+          ],
+        );
+      }
+      await insertStagedParticipants(client, itemSlug, person.rows[0].id as string, person.rows[0].display_name as string, row, level);
       await client.query("COMMIT");
       staged += 1;
     } catch (error) {
@@ -827,6 +1048,55 @@ export async function stageCandidates(pool: pg.Pool, rows: CandidateRow[]): Prom
     }
   }
   return { staged, skipped };
+}
+
+async function insertStagedParticipants(
+  client: pg.PoolClient,
+  itemSlug: string,
+  personId: string,
+  displayName: string,
+  row: CandidateEnvelope,
+  level: string | null,
+): Promise<void> {
+  const confidence = level ?? "unknown";
+  const rows: Array<{ personId: string; role: string; method: string; detail: string | null }> = [];
+  if (row.role && row.role !== "mentioned") {
+    rows.push({
+      personId,
+      role: row.role,
+      method: stagedAttribution(row.attribution_method),
+      detail: row.attribution_detail ?? null,
+    });
+  }
+  for (const participant of row.participants ?? []) {
+    let resolved: string | null = null;
+    if (participant.person_slug) {
+      const found = await client.query(`SELECT id FROM people WHERE slug = $1`, [participant.person_slug]);
+      resolved = found.rows[0]?.id ?? null;
+    } else if (participant.name === displayName && row.role === participant.role) {
+      resolved = personId;
+    }
+    if (!resolved) continue;
+    if (rows.some((item) => item.personId === resolved && item.role === participant.role)) continue;
+    rows.push({
+      personId: resolved,
+      role: participant.role,
+      method: stagedAttribution(participant.attribution_method),
+      detail: participant.attribution_detail ?? null,
+    });
+  }
+  for (const participant of rows) {
+    await client.query(
+      `INSERT INTO source_participants (
+         source_item_id, person_id, role, attribution_method, attribution_detail, confidence_level
+       ) VALUES ((SELECT id FROM source_items WHERE slug = $1),$2,$3,$4,$5,$6)
+       ON CONFLICT (source_item_id, person_id, organization_id, role) DO UPDATE SET
+         attribution_method = EXCLUDED.attribution_method,
+         attribution_detail = EXCLUDED.attribution_detail,
+         confidence_level = EXCLUDED.confidence_level`,
+      [itemSlug, participant.personId, participant.role, participant.method, participant.detail, confidence],
+    );
+  }
 }
 
 export function emptyConfirmations(on: boolean) {

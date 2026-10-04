@@ -29,6 +29,8 @@ class _VisibleParser(HTMLParser):
             self._skip -= 1
         if tag == "title":
             self._in_title = False
+            if not self._skip:
+                self.text_parts.append("\n")
         if tag in {"p", "li", "h1", "h2", "h3", "h4", "br", "tr", "blockquote"} and not self._skip:
             self.text_parts.append("\n")
 
@@ -64,7 +66,38 @@ def page_title(html: str) -> str | None:
     return title[:300] or None
 
 
+_STAMP = re.compile(
+    r"(?P<date>20\d{2}-\d{2}-\d{2})[T ](?P<time>\d{2}:\d{2}:\d{2})(?P<fraction>\.\d+)?(?P<zone>Z|[+-]\d{2}:\d{2})?"
+)
+COLLECTOR_PRODUCT = "pdoom.live-collector"
+
+
+def parse_published(raw: str) -> dict[str, str | None]:
+    """Return a UTC instant only when the source states a zone.
+
+    A clock time with no offset stays unzoned. It is not labeled Z.
+    """
+    found = _find_timestamp(raw)
+    if found is None:
+        return {"utc": None, "timezone": None, "unzoned": None}
+    date, clock, zone = found
+    if not zone:
+        return {"utc": None, "timezone": None, "unzoned": f"{date}T{clock}"}
+    utc = _to_utc(date, clock, zone)
+    if utc is None:
+        return {"utc": None, "timezone": None, "unzoned": f"{date}T{clock}"}
+    return {"utc": utc, "timezone": zone, "unzoned": None}
+
+
 def published_time(raw: str) -> str | None:
+    return parse_published(raw)["utc"]
+
+
+def published_timezone(raw: str) -> str | None:
+    return parse_published(raw)["timezone"]
+
+
+def _find_timestamp(raw: str) -> tuple[str, str, str | None] | None:
     patterns = [
         r'article:published_time"\s+content="([^"]+)"',
         r'content="([^"]+)"\s+property="article:published_time"',
@@ -74,50 +107,108 @@ def published_time(raw: str) -> str | None:
     for pattern in patterns:
         match = re.search(pattern, raw or "", flags=re.I)
         if match:
-            return _iso(match.group(1))
+            return _split_stamp(match.group(1))
     head = (raw or "")[:2500]
-    match = re.search(r"(20\d{2}-\d{2}-\d{2})[ T](\d{2}:\d{2}:\d{2})Z", head)
-    if match:
-        return f"{match.group(1)}T{match.group(2)}Z"
+    match = _STAMP.search(head)
+    if match and match.group("zone"):
+        return match.group("date"), match.group("time"), match.group("zone")
     return None
 
 
-def _iso(value: str) -> str | None:
-    text = value.strip().replace("Z", "+00:00")
-    match = re.match(r"(20\d{2}-\d{2}-\d{2})[T ](\d{2}:\d{2}:\d{2})", text)
+def _split_stamp(value: str) -> tuple[str, str, str | None] | None:
+    match = _STAMP.search(value.strip())
     if not match:
         return None
-    return f"{match.group(1)}T{match.group(2)}Z"
+    return match.group("date"), match.group("time"), match.group("zone")
 
 
-def robots_allows(body: str, path: str) -> bool:
-    """True when the * group, or a missing robots file, allows path."""
+def _to_utc(date: str, clock: str, zone: str) -> str | None:
+    from datetime import datetime, timedelta
+
+    try:
+        local = datetime.strptime(f"{date}T{clock}", "%Y-%m-%dT%H:%M:%S")
+    except ValueError:
+        return None
+    if zone == "Z":
+        return local.strftime("%Y-%m-%dT%H:%M:%SZ")
+    offset = re.match(r"(?P<sign>[+-])(?P<hours>\d{2}):(?P<minutes>\d{2})$", zone)
+    if not offset:
+        return None
+    minutes = int(offset.group("hours")) * 60 + int(offset.group("minutes"))
+    if offset.group("sign") == "-":
+        minutes = -minutes
+    utc = local - timedelta(minutes=minutes)
+    return utc.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def page_authors(raw: str) -> list[str]:
+    """Author signals from metadata. A name in the article body is not an author."""
+    names: list[str] = []
+    patterns = [
+        r'<meta[^>]+name=["\']author["\'][^>]+content=["\']([^"\']+)',
+        r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+name=["\']author["\']',
+        r'<meta[^>]+property=["\']article:author["\'][^>]+content=["\']([^"\']+)',
+        r'<meta[^>]+content=["\']([^"\']+)["\'][^>]+property=["\']article:author["\']',
+        r'<a[^>]+rel=["\']author["\'][^>]*>([^<]+)</a>',
+    ]
+    for pattern in patterns:
+        names.extend(re.findall(pattern, raw or "", flags=re.I))
+    for match in re.finditer(r'"author"\s*:\s*(\{(?:[^{}]|\{[^{}]*\})*\}|"[^"]+")', raw or "", flags=re.I):
+        blob = match.group(1)
+        if blob.startswith('"'):
+            names.append(blob.strip('"'))
+            continue
+        name = re.search(r'"name"\s*:\s*"([^"]+)"', blob)
+        if name:
+            names.append(name.group(1))
+    cleaned: list[str] = []
+    for name in names:
+        text = " ".join(name.split())
+        if text and text not in cleaned:
+            cleaned.append(text[:200])
+    return cleaned
+
+
+def title_byline(title: str | None) -> str | None:
+    match = re.match(r"^(.{2,80}?)\s+[—–\-|:]\s+\S", title or "")
+    if not match:
+        return None
+    return " ".join(match.group(1).split())
+
+
+def page_language(raw: str) -> str | None:
+    match = re.search(r"<html[^>]*\blang=[\"']([A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})?)", raw or "", flags=re.I)
+    if not match:
+        return None
+    return match.group(1)
+
+
+def robots_allows(body: str, path: str, user_agent: str = COLLECTOR_PRODUCT) -> bool:
+    """Apply the collector product group, then the * group, per robots group rules."""
     text = body or ""
     if "<html" in text[:500].lower():
         return True
     groups = _robots_groups(text)
     if not groups:
         return True
-    rules = groups.get("*")
+    rules = _matching_rules(groups, user_agent)
     if rules is None:
         return True
-    request = path or "/"
-    allowed = 0
-    disallowed = 0
-    for kind, prefix in rules:
-        if not prefix:
-            continue
-        if request.startswith(prefix):
-            if kind == "allow":
-                allowed = max(allowed, len(prefix))
-            else:
-                disallowed = max(disallowed, len(prefix))
-    return allowed >= disallowed
+    return _path_allowed(rules, path or "/")
 
 
-def _robots_groups(text: str) -> dict[str, list[tuple[str, str]]]:
-    groups: dict[str, list[tuple[str, str]]] = {}
-    current: list[str] = []
+def _robots_groups(text: str) -> list[tuple[list[str], list[tuple[str, str]]]]:
+    groups: list[tuple[list[str], list[tuple[str, str]]]] = []
+    agents: list[str] = []
+    rules: list[tuple[str, str]] = []
+
+    def flush() -> None:
+        nonlocal agents, rules
+        if agents:
+            groups.append((agents, rules))
+        agents = []
+        rules = []
+
     for raw_line in text.splitlines():
         line = raw_line.split("#", 1)[0].strip()
         if not line or ":" not in line:
@@ -126,14 +217,45 @@ def _robots_groups(text: str) -> dict[str, list[tuple[str, str]]]:
         key = key.strip().lower()
         value = value.strip()
         if key == "user-agent":
-            current = [value.lower()]
-            groups.setdefault(value.lower(), [])
+            if rules:
+                flush()
+            agents.append(value.lower())
             continue
-        if key not in {"allow", "disallow"} or not current:
-            continue
-        for agent in current:
-            groups.setdefault(agent, []).append((key, value))
+        if key in {"allow", "disallow"} and agents:
+            rules.append((key, value))
+    flush()
     return groups
+
+
+def _matching_rules(groups: list[tuple[list[str], list[tuple[str, str]]]], user_agent: str) -> list[tuple[str, str]] | None:
+    product = (user_agent or "").split("/", 1)[0].strip().lower()
+    haystack = (user_agent or "").strip().lower()
+    specific: list[tuple[int, list[tuple[str, str]]]] = []
+    wildcard: list[tuple[str, str]] | None = None
+    for agents, rules in groups:
+        for agent in agents:
+            if agent == "*":
+                wildcard = rules
+                continue
+            if product.startswith(agent) or (haystack.startswith(agent) and agent):
+                specific.append((len(agent), rules))
+    if specific:
+        return max(specific, key=lambda item: item[0])[1]
+    return wildcard
+
+
+def _path_allowed(rules: list[tuple[str, str]], path: str) -> bool:
+    allowed = 0
+    disallowed = 0
+    for kind, prefix in rules:
+        if not prefix:
+            continue
+        if path.startswith(prefix):
+            if kind == "allow":
+                allowed = max(allowed, len(prefix))
+            else:
+                disallowed = max(disallowed, len(prefix))
+    return allowed >= disallowed
 
 
 def host_of(url: str) -> str:

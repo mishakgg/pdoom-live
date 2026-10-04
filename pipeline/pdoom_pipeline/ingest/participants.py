@@ -57,3 +57,15 @@ def unique_person_id(name: str, people: list[dict]) -> str | None:
 def mentioned(body_text: str, display_name: str) -> bool:
     pattern = r"(?<!\w)" + re.escape(display_name) + r"(?!\w)"
     return re.search(pattern, body_text or "", flags=re.IGNORECASE) is not None
+
+
+def role_from_label(label: str) -> str:
+    """Map a transcript label to a participant role. An ordinary name stays a speaker."""
+    key = " ".join((label or "").strip().lower().split())
+    if key in {"host", "hosts"}:
+        return "host"
+    if key in {"interviewer", "moderator"}:
+        return "interviewer"
+    if key == "publisher":
+        return "publisher"
+    return "speaker"

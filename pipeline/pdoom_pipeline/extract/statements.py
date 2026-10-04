@@ -94,7 +94,9 @@ NOT_SPEAKER = re.compile(
     r"the source of|very likely to be influential|if i think i want to measure|paint companies|"
     r"some people interpreted|even before ai|nuclear war|offhandedly mentioned|the precipice gives|"
     r"don't want to set it|in our scenario|we could live in a world|expert survey|if you say what's the chance|"
-    r"holden wrote|holden felt|none of them really had|deploying ai systems only when)\b|^q\d+\b",
+    r"holden wrote|holden felt|none of them really had|deploying ai systems only when|"
+    r"hypothetically|in a hypothetical|imagine that|what if|"
+    r"ignore (?:your|previous|all|these) instructions|disregard (?:your|previous|all) instructions)\b|^q\d+\b",
     re.I,
 )
 QUALITATIVE = (
@@ -201,7 +203,7 @@ def revision_language(text: str) -> bool:
 
 
 def _explicit(sentence: str, person_id: str | None, *, start: int, end: int, context: str) -> list[dict]:
-    if _not_speaker(sentence) or _attributes_to_someone_else(sentence):
+    if _not_speaker(sentence) or _attributes_to_someone_else(sentence) or _negated_claim(sentence) or _quoted_third_party(sentence):
         return []
     if sentence.rstrip().endswith("?") and not re.search(r"\b(i estimate|i think there is|my credence|my p)\b", sentence, re.I):
         return []
@@ -554,6 +556,7 @@ def _base(sentence: str, person_id: str | None, *, start: int, end: int, context
     if fields["review_state"] not in REVIEW_STATES or fields["review_state"] == "human_verified":
         raise ValueError(fields["review_state"])
     question_key = fields.get("question_key")
+    target_start, target_end = _target_dates(fields.get("horizon_text"))
     return {
         "person_id": person_id,
         "normalized_text": " ".join(sentence.split())[:600],
@@ -566,6 +569,9 @@ def _base(sentence: str, person_id: str | None, *, start: int, end: int, context
         "extractor_name": "rule-extract",
         "question_text": sentence[:600],
         "topic_slug": KEY_TOPIC.get(question_key or "", "ai-risk-qualitative"),
+        "target_date_start": target_start,
+        "target_date_end": target_end,
+        "resolution_criteria": None,
         **fields,
     }
 
@@ -1131,10 +1137,50 @@ def _attributes_to_someone_else(sentence: str) -> bool:
         return True
     return bool(
         re.search(
-            r"\b[A-Z][a-z]+(?:\s+[A-Z][a-z.'-]+)+\s+(?:still\s+|also\s+)?(?:thinks|believes?|estimates|says|argues)\b",
+            r"\b[A-Z][a-z]+(?:\s+[A-Z][a-z.'-]+)+\s+(?:still\s+|also\s+)?(?:thinks|believes?|estimates|says|said|argues|asked|claims|claimed)\b",
             sentence or "",
         )
     )
+
+
+def _quoted_third_party(sentence: str) -> bool:
+    """A quotation attributed to someone else is not this speaker's forecast."""
+    if not re.search(r'["“”]', sentence or ""):
+        return False
+    if re.search(r"\b(i|i'm|i've|i’d)\s+(said|wrote|say|write)\b", sentence or "", re.I):
+        return False
+    return bool(re.search(r"\b(said|says|wrote|writes|asked|according to|told)\b", sentence or "", re.I))
+
+
+def _negated_claim(sentence: str) -> bool:
+    """A denied probability is not the speaker's estimate."""
+    return bool(
+        re.search(
+            r"\b(do not|don't|does not|doesn't|did not|didn't|never|no longer)\b.{0,80}\b(think|believe|expect|estimate|assign|give|put)\b",
+            sentence or "",
+            re.I,
+        )
+    )
+
+
+def _target_dates(horizon: str | None) -> tuple[str | None, str | None]:
+    """Calendar bounds only when the horizon itself names a year. Relative wording stays open."""
+    if not horizon:
+        return None, None
+    by_year = re.fullmatch(r"by (\d{4})", horizon.strip(), flags=re.I)
+    if by_year:
+        return None, f"{by_year.group(1)}-12-31"
+    in_year = re.fullmatch(r"in (\d{4})", horizon.strip(), flags=re.I)
+    if in_year:
+        year = in_year.group(1)
+        return f"{year}-01-01", f"{year}-12-31"
+    before = re.fullmatch(r"before (\d{4})", horizon.strip(), flags=re.I)
+    if before:
+        year = int(before.group(1)) - 1
+        if year < 2000:
+            return None, None
+        return None, f"{year}-12-31"
+    return None, None
 
 
 def _first_person(sentence: str) -> bool:
