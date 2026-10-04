@@ -4,8 +4,8 @@
 
 - Branch: `cursor/frontend-observatory-redesign-6a22`
 - Pull request: https://github.com/mishakgg/pdoom-live/pull/32
-- Published head: `090160289758ee0b00036732292f8d8f0aa2aa37`
-- Suite head: `b8509ddb6d6efc831e21c249a8b38b5d2c8b4875` (production build, Vitest, and Playwright). The published commit adds this handoff and the trend-library column note. `/trends` was rendered after that commit and shows the new labels.
+- Suite head: `b8509ddb6d6efc831e21c249a8b38b5d2c8b4875` (production build, Vitest, and Playwright).
+- Published head: the pull request head. Commits after the suite only add this handoff and the trend-library column note. `/trends` was rendered after that note and shows “Dataset read” and the contributing definition.
 - Base: `cursor/partial-integration-refresh-a32e` at `b4cf2307cb6e40240d5824131996ace942051f83` (pull request #31)
 - `origin/main`: `d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7`
 
