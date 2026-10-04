@@ -2,16 +2,16 @@
   "record_kind": "pdoom-live-coordination-manifest",
   "record_version": 1,
   "review_id": "2026-10-04T211729Z",
-  "candidate_state": "merge_in_progress",
-  "reason": "Agent 2 head b959a47 meets the readiness gate. It will be merged onto recorded candidate 129036a. Agent 6 head 8c36cc1 is excluded because its checks are unfinished and the agent is still running. Agents 3 and 5 are unpublished. This is not a six-agent integration. The resulting commit SHA is filled in after the merge.",
+  "candidate_state": "partial_candidate",
+  "reason": "Agents 1, 2, and 4 meet the readiness gate. Agent 6 became ready only after this commit was frozen and conflicts in queries.ts. Agent 3 published during the merge and failed pipeline CI. Agent 5 is unpublished. This is not a six-agent integration.",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "parent_candidate_commit": "129036a837cee885871f565c86d0afb5fe326796",
   "integration_branch": "cursor/partial-integration-forecast-a32e",
-  "integration_pr": null,
-  "resulting_integration_commit": null,
-  "resulting_tree": null,
+  "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/28",
+  "resulting_integration_commit": "926e6d4a36ec4730a2cc44b7e52e3f0e0f354827",
+  "resulting_tree": "1f3cd5db64edd57595feb167f83926f2b9675b86",
   "merge_tree_dry_run": "1f3cd5db64edd57595feb167f83926f2b9675b86",
-  "supersedes_when_recorded": {
+  "supersedes": {
     "pr": 24,
     "commit": "129036a837cee885871f565c86d0afb5fe326796",
     "reason": "Agents 1 and 4 only. Evidence only for that commit."
@@ -23,7 +23,7 @@
       "branch": "cursor/coverage-channels-2026-10-6ae1",
       "head_sha": "6c23609f05bb958a58f235ba34c0180b3579c109",
       "order": 1,
-      "reason": "Already inside 129036a. Head unchanged."
+      "reason": "Already inside parent 129036a."
     },
     {
       "agent": "agent-1",
@@ -31,7 +31,7 @@
       "branch": "cursor/research-navigation-34f4",
       "head_sha": "af6ec9b4783a4fd37dbc3b9f5c263cc9cbd96ac3",
       "order": 2,
-      "reason": "Already inside 129036a. Head unchanged."
+      "reason": "Already inside parent 129036a."
     },
     {
       "agent": "agent-2",
@@ -39,16 +39,16 @@
       "branch": "cursor/forecast-comparability-1787",
       "head_sha": "b959a47f88f2c3d6c948072e038a082847aa666f",
       "order": 3,
-      "reason": "Comparability registry and withdrawal rule are implemented. GitHub checks on this head passed. No migration. Schema version stays 1.0.0. Stored keys are not rewritten."
+      "reason": "Idle. GitHub checks passed. Merge onto 129036a was clean. No migration. Schema versions stay 1.0.0."
     }
   ],
   "excluded": [
     {
       "agent": "agent-3",
-      "pr": null,
-      "branch": null,
-      "head_sha": null,
-      "reason": "unpublished"
+      "pr": 27,
+      "branch": "cursor/recurring-refresh-088b",
+      "head_sha": "ce07836b27a090da063617708df7b7174745881c",
+      "reason": "not_ready. Pipeline run 37235514824 failed tests/test_refresh.py because npx tsx could not resolve @pdoom/contracts. Also conflicts with 926e6d4 in apps/web/app/sources/page.tsx. Proposes migration 004_refresh_runs.sql."
     },
     {
       "agent": "agent-5",
@@ -63,13 +63,13 @@
       "branch": "cursor/public-read-consistency-66d1",
       "head_sha": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e",
       "previous_head_sha": "01e63cee12cdcfc34591d3f45633353341a4ce26",
-      "reason": "not_ready. CI test on 01e63cee failed run 37234978043 because /api/v1/dataset was required to contain ada-extinction-2025. Head 8c36cc1 narrows that assertion. Checks on 8c36cc1 were pending and the agent was still running. Also conflicts with Agent 2 in packages/db/src/queries.ts."
+      "reason": "ready after this commit was frozen. Checks on 8c36cc1 passed. merge-tree onto 926e6d4 conflicts in packages/db/src/queries.ts. Not included here. A later candidate must record a new SHA."
     }
   ],
   "dependencies_and_order": [
     "129036a already contains Agent 4 then Agent 1.",
-    "Agent 2 is merged third. merge-tree onto 129036a is clean, including docs/BELIEF_CORPUS.md.",
-    "Agent 6 stays out until its head is stable and its checks are recorded. A later candidate that includes both Agent 2 and Agent 6 must keep Agent 6's repeatable-read imports and Agent 2's expanded trend-query re-exports in packages/db/src/queries.ts."
+    "Agent 2 merged third onto that commit. docs/BELIEF_CORPUS.md auto-merged.",
+    "Agent 6 stays out of this commit. The mechanical queries.ts resolution for a later candidate is: keep the read-snapshot import and Sql type from 8c36cc1, and keep the export of FORECAST_INPUT_SQL, loadTrendInputs, mapForecastRow, resolveTrendMethods, and trendMethodKey from b959a47."
   ],
   "migration_ordering": [
     "packages/db/migrations/001_init.sql",
@@ -80,9 +80,26 @@
     "canonical_import_schema_version": "1.0.0",
     "public_export_schema_version": "1.0.0",
     "review_decision_schema_version": "review-decisions/1.0.0",
-    "comparability_policy_version_claimed_by_agent_2": "comparability/1.0.0",
-    "note": "Agent 2 does not bump the canonical or public schema versions and does not add a migration. Method versions it claims are recorded in pull request 26 and are verified only after the combined gates."
+    "comparability_policy_version": "comparability/1.0.0",
+    "note": "No migration was added. Stored question keys were not rewritten."
   },
-  "checks": null,
-  "delivery_note": "Do not merge this in-progress manifest. The recorded candidate remains pull request 24 at 129036a until the forecast candidate commit exists."
+  "checks": {
+    "lint": "0 errors, 6 warnings",
+    "typecheck": "passed",
+    "vitest": "197 passed on pdoom_coord_forecast_test",
+    "pytest": "66 passed, 1 skipped (tests/test_live_api.py)",
+    "playwright": "CI=1 npx playwright test: 135 passed, 2 skipped, exit 0",
+    "cross_workstream_gate": {
+      "command": "npx tsx coordination/reproductions/cross-workstream-gate.ts",
+      "exit_code": 1,
+      "result": "coordination/reproductions/results-2026-10-04T211729Z.json",
+      "failed": [
+        "7-cache-after-review",
+        "3-review-survives-reimport",
+        "2-source-version-history"
+      ],
+      "newly_passing": ["6-withdrawal-without-replacement"]
+    }
+  },
+  "delivery_note": "Evidence for commit 926e6d4 only. Do not merge pull requests 28, 26, 24, 22, and 21 as separate copies. A later candidate that already contains these three heads supersedes this draft."
 }

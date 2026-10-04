@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-04T21:17:29Z",
+  "reviewed_at": "2026-10-04T21:22:30Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -86,6 +86,7 @@
     "public_export_schema_version": "1.0.0",
     "review_decision_schema_version": "review-decisions/1.0.0",
     "next_sql_migration_number": "004",
+    "agent_3_proposed_migration_not_included": "packages/db/migrations/004_refresh_runs.sql on ce07836",
     "applied_migrations": [
       "packages/db/migrations/001_init.sql",
       "packages/db/migrations/002_dataset_contract.sql",
@@ -111,8 +112,8 @@
       "severity": "blocker-for-combined-forecast-scenarios",
       "owner": "agent-2",
       "consumers": ["agent-5", "agent-3", "agent-1"],
-      "status": "policy-published-on-b959a47-awaiting-combined-gate",
-      "summary": "Main already contains two question-key registries with disjoint keys. Agent 2 head b959a47 publishes comparability/1.0.0. Pipeline keys stay families and are not mapped onto 2070. Catalog keys stay exact questions. A family joins an exact question only when outcome, condition, deadline, unit, and probability semantics agree. Combined verification has not run. Agent 7 will not add a third mapping.",
+      "status": "included-in-926e6d4",
+      "summary": "Agent 2 head b959a47 is inside candidate 926e6d4. comparability/1.0.0 keeps pipeline keys as families and does not map them onto 2070. Catalog keys stay exact questions. A family joins an exact question only when outcome, condition, deadline, unit, and probability semantics agree. Scenario 5 passed on 926e6d4. Agent 5 must consume this registry. Agent 7 will not add a third mapping.",
       "reproducible_example": {
         "pipeline_key": "extinction_unconditional",
         "pipeline_source": "pipeline/pdoom_pipeline/belief/taxonomy.py",
@@ -153,8 +154,8 @@
       "severity": "blocker-for-scenario-6",
       "owner": "agent-2",
       "consumers": ["agent-1", "agent-5"],
-      "status": "policy-published-on-b959a47-awaiting-combined-gate",
-      "summary": "On main, a human-verified retract from an explicit numeric estimate to a later qualitative withdrawal, with no replacement number, leaves the withdrawn probability inside the public distribution. Agent 2 head b959a47 says a human-verified retracts link whose target is not an eligible replacement number is a withdrawal: to_value null, and the estimate leaves the latest cross-section. The relationship enum is unchanged. Combined verification has not run.",
+      "status": "measured-pass-on-926e6d4",
+      "summary": "On candidate 926e6d4, a human-verified retract whose target is not an eligible replacement number leaves the withdrawn estimate out of the distribution with reason withdrawn. Scenario 6 passed. The relationship enum is unchanged.",
       "reproducible_example": {
         "command": "npx tsx coordination/reproductions/withdrawal-without-replacement.ts",
         "exit_code": 1,
@@ -186,8 +187,8 @@
       "severity": "blocker-for-scenario-7",
       "owner": "agent-6",
       "consumers": ["agent-1"],
-      "status": "agent-6-published-head-not-ready",
-      "summary": "On main and on candidate 129036a, a review-only change updates the public statement payload and its ETag, but dataset_imports.imported_at stays the same. publicJson then returns 304 to a client that echoes the previous Last-Modified. Agent 6 head 01e63cee attempted a body-etag validator and failed CI because the dataset catalog was required to contain a statement slug. Head 8c36cc1 narrows that assertion. Its checks were pending. Not included.",
+      "status": "ready-head-excluded-from-926e6d4",
+      "summary": "On 926e6d4, scenario 7 still returns 304 after a review-only change because that candidate does not include Agent 6. Head 8c36cc1 is now idle and its GitHub checks passed, including the narrowed dataset-count assertion. It conflicts with 926e6d4 in packages/db/src/queries.ts. The next candidate can include it with the mechanical re-export resolution. It is not part of 926e6d4.",
       "reproducible_example": {
         "command": "npx tsx coordination/reproductions/cross-workstream-gate.ts",
         "database": "pdoom_coord_integration_test",
@@ -219,6 +220,17 @@
       ]
     }
   ],
+  "agent_3_pipeline_failure": {
+    "id": "agent-3-refresh-pytest-missing-contracts-module",
+    "head_sha": "ce07836b27a090da063617708df7b7174745881c",
+    "pr": 27,
+    "workflow_run": 37235514824,
+    "owner": "agent-3",
+    "status": "not_ready",
+    "summary": "Pipeline CI failed tests/test_refresh.py::test_candidate_key_matches_typescript_contract and test_refresh_converges_and_publishes_truthful_outcomes. npx tsx could not resolve @pdoom/contracts from packages/db/src/import.ts. The pipeline workflow does not install the npm workspaces. The Node test job on the same head passed. Not included in 926e6d4.",
+    "expected": "The refresh tests complete in the repository pipeline workflow.",
+    "actual": "Error: Cannot find module '@pdoom/contracts'. Exit status 1 from npx tsx."
+  },
   "ownership_overlaps_observed": [
     {
       "id": "belief-corpus-doc-agent-2-and-agent-4",
@@ -231,8 +243,8 @@
       "id": "queries-ts-conflict-agent-2-and-agent-6",
       "paths": ["packages/db/src/queries.ts"],
       "owners": ["agent-2", "agent-6"],
-      "status": "content-conflict",
-      "summary": "Agent 2 expands the trend-query re-export. Agent 6 adds read-snapshot imports in the same hunk and rewrites query functions. public-read.ts auto-merges. Do not include both heads until this mechanical resolution is applied on an integration branch.",
+      "status": "content-conflict-with-926e6d4",
+      "summary": "Agent 2's expanded trend-query re-export is inside 926e6d4. Agent 6 head 8c36cc1 still conflicts there. public-read.ts auto-merges onto 926e6d4. A later candidate keeps Agent 6's read-snapshot import and Agent 2's extra exports.",
       "mechanical_resolution_when_both_ready": "Keep Agent 6's read-snapshot import and Sql type, and keep Agent 2's export of FORECAST_INPUT_SQL, loadTrendInputs, mapForecastRow, resolveTrendMethods, and trendMethodKey."
     },
     {
@@ -244,6 +256,20 @@
       "owners": ["agent-6"],
       "status": "returned-to-owners",
       "summary": "Agent 6 asks Agent 1 to stop saying Last-Modified comes from import time, and asks Agent 2 for a single-method getTrend. Agent 2's published head still computes every method. Agent 7 does not implement either request."
+    },
+    {
+      "id": "sources-page-agent-1-and-agent-3",
+      "paths": ["apps/web/app/sources/page.tsx"],
+      "owners": ["agent-1", "agent-3"],
+      "status": "content-conflict-not-included",
+      "summary": "Candidate 926e6d4 already shows Last successful collection and Last check, from Agent 1. Agent 3 head ce07836 inserts Last check into main's Last success sentence. merge-tree onto 926e6d4 conflicts in that paragraph. Agent 3 is not included. When it is, keep Agent 1's sentence if the only page change is that line, and keep Agent 3's query and migration changes."
+    },
+    {
+      "id": "queries-ts-agent-3-and-agent-6",
+      "paths": ["packages/db/src/queries.ts"],
+      "owners": ["agent-3", "agent-6"],
+      "status": "content-conflict-between-excluded-heads",
+      "summary": "Agent 3 adds last_checked_at to the coverage query. Agent 6 rewrites query function signatures. Those two heads conflict. Agent 3's query edit auto-merges onto 926e6d4, which does not contain Agent 6."
     }
   ],
   "migration_reservation": {
