@@ -2,10 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-04T211729Z",
-  "reviewed_at": "2026-10-04T21:22:30Z",
-  "status_path": "coordination/status/status-2026-10-04T211729Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-04T211729Z.json",
+  "review_id": "2026-10-04T212501Z",
+  "reviewed_at": "2026-10-04T21:25:01Z",
+  "previous_review_id": "2026-10-04T211729Z",
+  "status_path": "coordination/status/status-2026-10-04T212501Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-04T212501Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "origin_main_subject": "Match deploy smoke to the public status bar and discovery routes (#19)",
@@ -21,10 +22,17 @@
   },
   "coordination_branch": "cursor/integration-coordination-a32e",
   "coordination_pr": "https://github.com/mishakgg/pdoom-live/pull/20",
+  "candidate_in_progress": {
+    "branch": "cursor/partial-integration-reads-a32e",
+    "base_commit": "926e6d4a36ec4730a2cc44b7e52e3f0e0f354827",
+    "adding_head": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e",
+    "resulting_commit": null
+  },
   "run_lock": {
-    "holder": null,
-    "acquired_at": null,
+    "holder": "agent-7",
+    "acquired_at": "2026-10-04T21:25:01Z",
     "expires_after_seconds": 7200,
+    "purpose": "Merge exact Agent 6 head 8c36cc1 onto recorded candidate 926e6d4 and resolve the queries.ts re-export mechanically.",
     "protocol": "Set holder and acquired_at before mutating an integration branch. Clear both in the checkpoint commit that finishes the review. Do not start a second integration while a lock is younger than expires_after_seconds. The hourly timer is the primary overlap control because it fires only when this agent is idle."
   },
   "last_reviewed_shas": {
@@ -211,5 +219,5 @@
     ],
     "pr_subscription_limitation": "Pull requests 21, 22, 25, and 26 are subscribed. Pull request 27 still needs a subscription. Agent 5 has no pull request."
   },
-  "next_action": "Create a new candidate from 926e6d4 that merges Agent 6 head 8c36cc1 only, resolving packages/db/src/queries.ts by keeping the read-snapshot import and Agent 2's expanded trend-query exports. Do not include Agent 3 head ce07836 until its pipeline tests pass. Do not merge pull request 28 to main. If Agent 6's head moves, 8c36cc1 is evidence only for that commit."
+  "next_action": "Finish merging 8c36cc1 onto 926e6d4. Keep the read-snapshot import and Agent 2's expanded exports. Do not include Agent 3. Do not merge to main."
 }
