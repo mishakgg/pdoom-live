@@ -1,0 +1,96 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-04T210727Z",
+  "candidate_state": "partial_candidate",
+  "reason": "Agent 4 meets the readiness gate. Agent 1 browser journeys still fail. Agents 2, 3, 5, and 6 have no published commit. This is not a six-agent integration.",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "integration_branch": "cursor/partial-integration-20261004-a32e",
+  "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/23",
+  "resulting_integration_commit": "2af9e50095a9e44db4cc4c820bc815502351f05d",
+  "resulting_tree": "82e7a1bfdbc1986092e0618ae4968bfa23296f12",
+  "included": [
+    {
+      "agent": "agent-4",
+      "pr": 22,
+      "branch": "cursor/coverage-channels-2026-10-6ae1",
+      "head_sha": "6c23609f05bb958a58f235ba34c0180b3579c109",
+      "commits": [
+        "634f8f9af61d008fd86ca44ab3849404fd375d6b",
+        "6c23609f05bb958a58f235ba34c0180b3579c109"
+      ],
+      "reason": "Coverage copy-forward, unwired ForumMagnum and Bluesky collectors, and the coverage report are implemented. Tests and CI on this head passed. The belief runner does not call the new collectors. Vocabulary additions target existing canonical enums. No migration."
+    }
+  ],
+  "excluded": [
+    {
+      "agent": "agent-1",
+      "pr": 21,
+      "branch": "cursor/research-navigation-34f4",
+      "head_sha": "99f3b30ebef39b6b5fc3a7fa533dfb2aa907652a",
+      "reason": "Name selection passes on 99f3b30. E2E run 37234270279 still fails because Published matches two elements and Statements matches four links."
+    },
+    {
+      "agent": "agent-2",
+      "pr": null,
+      "branch": null,
+      "head_sha": null,
+      "reason": "unpublished"
+    },
+    {
+      "agent": "agent-3",
+      "pr": null,
+      "branch": null,
+      "head_sha": null,
+      "reason": "unpublished"
+    },
+    {
+      "agent": "agent-5",
+      "pr": null,
+      "branch": null,
+      "head_sha": null,
+      "reason": "unpublished"
+    },
+    {
+      "agent": "agent-6",
+      "pr": null,
+      "branch": null,
+      "head_sha": null,
+      "reason": "unpublished"
+    }
+  ],
+  "dependencies_and_order": [
+    "Agent 4 registry and unwired collectors before Agent 3 recurring execution. Not included yet, so collect_beliefs was left unchanged."
+  ],
+  "migration_ordering": [
+    "packages/db/migrations/001_init.sql",
+    "packages/db/migrations/002_dataset_contract.sql",
+    "packages/db/migrations/003_review_decisions.sql"
+  ],
+  "contract_versions": {
+    "canonical_import_schema_version": "1.0.0",
+    "public_export_schema_version": "1.0.0",
+    "review_decision_schema_version": "review-decisions/1.0.0",
+    "vocabulary_map": "packages/contracts/vocabulary-map.json on 6c23609 adds bluesky, forum_magnum_api, bluesky_api, and four attribution or verification methods mapped onto existing canonical values"
+  },
+  "checks": {
+    "lint": "0 errors, 6 pre-existing warnings",
+    "typecheck": "passed",
+    "vitest_isolated_database": "pdoom_coord_npm_test",
+    "vitest_with_python_on_path": "162 tests accounted for: 160 passed in the first run, 2 canonical-import failures were spawnSync python ENOENT, and those 7 canonical-import tests passed on rerun with python pointing at python3",
+    "pytest": "PYTHONPATH=pipeline python3 -m pytest passed, skipped tests/test_live_api.py",
+    "cross_workstream_gate": {
+      "command": "npx tsx coordination/reproductions/cross-workstream-gate.ts",
+      "exit_code": 1,
+      "result": "coordination/reproductions/results-2026-10-04T210727Z.json",
+      "failed": [
+        "7-cache-after-review",
+        "3-review-survives-reimport",
+        "2-source-version-history",
+        "6-withdrawal-without-replacement"
+      ]
+    },
+    "browser_and_runtime": "GitHub CI on identical tree 6c23609 succeeded. Not re-run locally on the merge commit."
+  },
+  "delivery_note": "Evidence for commit 2af9e50 only. Do not merge pull request 23 and pull request 22 both. A later candidate that already contains 6c23609 supersedes this draft."
+}
