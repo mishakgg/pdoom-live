@@ -1,0 +1,18 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-04T223049Z",
+  "candidate_state": "six_agent_candidate_verified",
+  "reason": "Hourly review after the six-workstream record. Heads match last_reviewed_shas. The second GitHub E2E run on b4cf230 succeeded.",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "integration_branch": "cursor/partial-integration-refresh-a32e",
+  "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/31",
+  "resulting_integration_commit": "b4cf2307cb6e40240d5824131996ace942051f83",
+  "resulting_tree": "c717a0ddde5228fe87bfd9b6e8d7c9526162b28a",
+  "head_delta": [],
+  "checks": {
+    "rerun": false,
+    "github_e2e_followup": "37239907037 success"
+  },
+  "delivery_note": "Evidence still belongs to commit b4cf230. Do not merge pull request 31 to main."
+}
