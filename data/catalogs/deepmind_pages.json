@@ -1,0 +1,1868 @@
+{
+  "catalog_id": "deepmind_pages",
+  "description": "Metadata for the confirmed public Google DeepMind publications index and individual publication pages on deepmind.google. Each URL was confirmed with one bounded GET. Rows store a title, publisher, canonical URL, date, and rights label. Abstracts, page bodies, and PDFs are not stored. Rights is creative_commons only when that page states CC0, CC BY, or CC BY-SA; CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay unknown. A missing publication date stays unknown. This catalog is not a belief collector.",
+  "entries": [
+    {
+      "title": "Co-Writing Screenplays and Theatre Scripts with Language Models: An Evaluation by Industry Professionals",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/13609/",
+      "date": "2023-08-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Line Search for Convex Minimization",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/37648/",
+      "date": "2023-08-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Advances in ML-based sampling for Lattice-QCD",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/8258/",
+      "date": "2023-08-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Levin Tree Search with Context Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/21589/",
+      "date": "2023-08-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Nevis’22: A Stream of 100 Tasks Sampled from 30 Years of Computer Vision Research",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/32195/",
+      "date": "2023-08-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "RoboTAP: Tracking Arbitrary Points for Few-Shot Visual Imitation",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/38759/",
+      "date": "2023-08-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Natural Quantum Monte Carlo Computation of Excited States",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/41485/",
+      "date": "2023-08-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Estimating Gibbs free energies via isobaric-isothermal flows",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/16942/",
+      "date": "2023-09-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Massively Scalable Inverse Reinforcement Learning for Route Optimization",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/34011/",
+      "date": "2023-09-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Revisiting Energy Based Models as Policies: Ranking Noise Contrastive Estimation and Interpolating Energy Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/82491/",
+      "date": "2023-09-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Accurate proteome-wide missense variant effect prediction with AlphaMissense",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/21083/",
+      "date": "2023-09-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Tracr: Compiled Transformers as a Laboratory for Interpretability",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/22295/",
+      "date": "2023-09-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Self-Predictive Universal AI",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/34416/",
+      "date": "2023-09-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Theoretical and Practical Perspectives on what Influence Functions Do",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/56635/",
+      "date": "2023-09-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "3D Neural Embedding Likelihood: Probabilistic Inverse Graphics for Robust 6D Pose Estimation",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/14720/",
+      "date": "2023-10-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "TAPIR: Tracking Any Point with per-frame Initialization and temporal Refinement",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/26336/",
+      "date": "2023-10-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Large Language Models Cannot Self-Correct Reasoning Yet",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/48252/",
+      "date": "2023-10-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Large Language Models as Analogical Reasoners",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/51283/",
+      "date": "2023-10-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "An Impossibility Theorem in Game Dynamics",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/29062/",
+      "date": "2023-10-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Assessing LLMs on Climate Information",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/43202/",
+      "date": "2023-10-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Repelling Random Walks",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/48455/",
+      "date": "2023-10-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Universal Graph Random Features",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/48555/",
+      "date": "2023-10-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learning Interactive Real-World Simulator",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/47545/",
+      "date": "2023-10-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "DyST: Towards Dynamic Neural Scene Representations on Real-World Videos",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/48657/",
+      "date": "2023-10-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Step-Back Prompting Enables Reasoning via Abstraction in Large Language Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/50274/",
+      "date": "2023-10-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sociotechnical Safety Evaluation of generative AI systems",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/45425/",
+      "date": "2023-10-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scalable Diffusion for Materials Generation",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/51282/",
+      "date": "2023-10-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scalable Neural Network Kernels",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/50474/",
+      "date": "2023-10-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generative replay for compositional visual understanding in the prefrontal-hippocampal circuit",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/5630/",
+      "date": "2023-10-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Population-based Evaluation in Repeated Rock-Paper-Scissors as a Benchmark for Multiagent Reinforcement Learning",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/22497/",
+      "date": "2023-10-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "RoboVQA: Multimodal Long-Horizon Reasoning for Robotics",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/63605/",
+      "date": "2023-11-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Optimistic Natural Policy Gradient: a Simple Efficient Policy Optimization Framework for Online RL",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/24720/",
+      "date": "2023-11-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Optimistic Meta-Gradients",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/5642/",
+      "date": "2023-11-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "RT-Trajectory: Robotic Task Generalization via Hindsight Trajectory Sketches",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/48757/",
+      "date": "2023-11-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grammar Prompting for Domain-Specific Language Generation with Large Language Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/83400/",
+      "date": "2023-11-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Finding Increasingly Large Extremal Graphs with AlphaZero and Tabu Search",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/44214/",
+      "date": "2023-11-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Role Play with Large Language Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/35223/",
+      "date": "2023-11-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Emotions and courtship help bonded pairs cooperate, but emotional agents are vulnerable to deceit",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/35526/",
+      "date": "2023-11-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "GraphCast: Learned Global Weather Forecasting",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/22598/",
+      "date": "2023-11-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "DiLoCo: Distributed Low-Communication Training of Language Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/57039/",
+      "date": "2023-11-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Report of the 1st Workshop on Generative AI and Law",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/58352/",
+      "date": "2023-11-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "No agent is an island: A social path to human-like artificial intelligence",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/25830/",
+      "date": "2023-11-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scalable AI Safety via Doubly-Efficient Debate",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/34920/",
+      "date": "2023-11-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Replay Across Experiments",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/50575/",
+      "date": "2023-11-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "SODA: Bottleneck Diffusion Models for Representation Learning",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/44213/",
+      "date": "2023-11-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Universal Self-Consistency with Large Language Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/50879/",
+      "date": "2023-11-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Accelerating Neural Field Training via Langevin Monte-Carlo Sampling",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/61180/",
+      "date": "2023-11-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Unsupervised Keypoints with Stable Diffusion",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/61281/",
+      "date": "2023-11-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "RLHF and IIA: Perverse Incentives",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/63806/",
+      "date": "2023-12-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Small batch deep reinforcement learning",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/82494/",
+      "date": "2023-12-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "RoboCat: A Self-Improving Foundation Agent for Robotic Manipulation",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/35829/",
+      "date": "2023-12-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Gaussian Process Probes (GPP) for Uncertainty-Aware Probing",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/83506/",
+      "date": "2023-12-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generative agent-based modeling with actions grounded in physical, social, or digital space using Concordia",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/64717/",
+      "date": "2023-12-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "MingOfficial: A Ming Official Career Dataset and a Historical Context-Aware Representation Learning Framework",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/81988/",
+      "date": "2023-12-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Benchmark for Reasoning with Spatial Prepositions",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/82087/",
+      "date": "2023-12-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "SEAHORSE: A Multilingual, Multifaceted Dataset for Summarization Evaluation",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/82492/",
+      "date": "2023-12-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Revisiting Dynamic Evaluation:Online Adaptation for LLMs",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/49871/",
+      "date": "2023-12-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "POMRL: No-Regret Learning-to-Plan with IncreasingHorizons",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/53605/",
+      "date": "2023-12-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Distributional Bellman Operators over Mean-embeddings",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/42395/",
+      "date": "2023-12-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Benchmarking Robustness to Adversarial Image Obfuscations",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/18457/",
+      "date": "2023-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Feature Likelihood Divergence: Evaluating the Generalization of Generative Models Using Samples",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/31486/",
+      "date": "2023-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Towards In-context Scene Understanding",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/32698/",
+      "date": "2023-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Improving neural network representations using human similarity judgments",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/33708/",
+      "date": "2023-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Passive learning of active causal strategies in agents and language models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/33709/",
+      "date": "2023-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Optimal Preconditioning and Fisher Adaptive Langevin Sampling",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/34617/",
+      "date": "2023-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Probabilistic Inference in Reinforcement Learning Done Right",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/34719/",
+      "date": "2023-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Optimization and Evaluation of Fine-grained Jaccard Indexes for Semantic Segmentation",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/37041/",
+      "date": "2023-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "LambdaBeam: Neural Program Search with Higher-Order Functions and Lambdas",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/82693/",
+      "date": "2023-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Definition of Continual Reinforcement Learning",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/33910/",
+      "date": "2023-12-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Online RL in Linearly $q^\\pi$-Realizable MDPs Is as Easy as in Linear MDPs If You Learn What to Ignore",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/34921/",
+      "date": "2023-12-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Schema-learning and rebinding as mechanisms of in-context learning and emergence",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/35122/",
+      "date": "2023-12-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Simple Recipe for Contrastively Pre-training Video-First Encoders Beyond 16 Frames",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/60675/",
+      "date": "2023-12-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Rethinking the Role of Token Retrieval in Multi-Vector Retrieval",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/84309/",
+      "date": "2023-12-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Meta-in-context learning in large language models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/33809/",
+      "date": "2023-12-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learning Silicon Dopant Transitions in Graphene using Scanning Transmission Electron Microscopy",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/48254/",
+      "date": "2023-12-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Challenges with unsupervised LLM knowledge discovery",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/66937/",
+      "date": "2023-12-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Equivariant MuZero",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/26234/",
+      "date": "2023-12-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Zero-Shot Metric Depth with a Field-of-View Conditioned Diffusion Model",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/63604/",
+      "date": "2023-12-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "GenCast: learning skillful ensemble forecasting of medium-range weather",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/68149/",
+      "date": "2023-12-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "AutoRT: Embodied Foundation Models for Large Scale Orchestration of Robotic Agents",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/48151/",
+      "date": "2024-01-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Distributional reinforcement learning in prefrontal cortex",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/2504/",
+      "date": "2024-01-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learning Planning-compatible Cognitive Maps with Transformers in PartiallyObserved Environments",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/63907/",
+      "date": "2024-01-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generative Adversarial Equilibrium Solvers",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/24821/",
+      "date": "2024-01-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Approximating Nash Equilibria in Normal-Form Games via Stochastic Optimization",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/34213/",
+      "date": "2024-01-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "NfgTransformer: Equivariant Representation Learning for Normal-form Games",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/40173/",
+      "date": "2024-01-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "On-Policy Distillation of Language Models: Learning from Self-Generated Mistakes",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/48050/",
+      "date": "2024-01-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Directly Fine-Tuning Diffusion Models on Differentiable Rewards",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/51081/",
+      "date": "2024-01-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "GATS: Gather-Attend-Scatter",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/67846/",
+      "date": "2024-01-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Asynchronous Local-SGD Training forLanguage Modeling",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/66535/",
+      "date": "2024-01-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "E3x: E(3)-Equivariant Deep Learning Made Easy",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/68048/",
+      "date": "2024-01-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Neural Population Learning beyond Symmetric Zero-Sum Games",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/24820/",
+      "date": "2024-01-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learning Universal Predictors",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/42394/",
+      "date": "2024-01-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Robust agents learn causal world models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/49666/",
+      "date": "2024-02-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Exploration at Scale using Epistemic Neural Networks",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/73001/",
+      "date": "2024-02-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Transfer Learning for Bayesian Optimization on Heterogeneous Search Spaces",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/45020/",
+      "date": "2024-02-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Fractal Patterns May Unravel the Intelligence in Next-Token Prediction",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/48253/",
+      "date": "2024-02-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Large Language Models Self-Discover Reasoning Structures",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/64816/",
+      "date": "2024-02-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "States as Strings as Strategies: Steering Language Models with Game-Theoretic Solvers",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/67342/",
+      "date": "2024-02-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Prior-Dependent Allocations for Bayesian Fixed-Budget Best-Arm Identification in Structured Bandits",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/52797/",
+      "date": "2024-02-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Memory Consolidation Enables Long-Context Video Understanding",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/79057/",
+      "date": "2024-02-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Chain-of-Table: Evolves Tables in the LLM Reasoning Chain for Table Understanding",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/47444/",
+      "date": "2024-02-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Near-Minimax-Optimal Distributional RL with a Generative Model",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/70372/",
+      "date": "2024-02-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "PIVOT: Iterative Visual Prompting Elicits Actionable Knowledge for VLMs",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/72495/",
+      "date": "2024-02-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Distributional Analogue to the Successor Representation",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/44717/",
+      "date": "2024-02-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Premise Order Matters in Reasoning with Large Language Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/75421/",
+      "date": "2024-02-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Experts Don't Cheat: Learning What You Don't Know by Predicting Pairs",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/73709/",
+      "date": "2024-02-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Human-Inspired Reading Agent with Gist Memory of Very Long Contexts",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/74917/",
+      "date": "2024-02-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learning to Learn Faster from Human Feedback with Language Model Predictive Control",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/74007/",
+      "date": "2024-02-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Simulacra as Conscious Exotica",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/79663/",
+      "date": "2024-02-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Next 700 ML-Enabled Compiler Optimizations",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/57746/",
+      "date": "2024-02-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "When Scaling Meets LLM Finetuning: The Effect of Data, Model and Finetuning Method",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/49667/",
+      "date": "2024-02-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "OmniPred: Language Models as Universal Regressors",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/78451/",
+      "date": "2024-02-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Genie: Generative Interactive Environments",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/60474/",
+      "date": "2024-02-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "AlphaTensor for Optimizing Quantum Computations",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/77240/",
+      "date": "2024-02-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "On Limitations of the Transformer Architecture",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/77946/",
+      "date": "2024-02-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learning a Fourier Transform for Linear Relative Positional Encodings in Transformers",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/49969/",
+      "date": "2024-02-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Intriguing Properties of Generative Classifers",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/45424/",
+      "date": "2024-02-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Frozen Feature Augmentation",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/63200/",
+      "date": "2024-02-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "A density estimation perspective on learning from pairwise human preferences",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/64513/",
+      "date": "2024-02-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Set Learning for Accurate and Calibrated Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/46131/",
+      "date": "2024-02-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Self-supervised video pretraining yields strong image representations",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/15533/",
+      "date": "2024-02-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bad Students Make Great Teachers: Active Learning Accelerates Large Scale Visual Understanding",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/62998/",
+      "date": "2024-02-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Towards Practical Reinforcement Learning for Tokamak Magnetic Control",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/30578/",
+      "date": "2024-03-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Approximating the Core of Cooperative Games",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/52090/",
+      "date": "2024-03-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "How aligned are different alignment metrics?",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/75635/",
+      "date": "2024-03-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "AtP*: Efficient and scalable methods for localizing LLM behaviour to components",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/68553/",
+      "date": "2024-03-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Robust Exploration via Clustering-based Density Estimation",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/15530/",
+      "date": "2024-03-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Model-free Posterior Sampling via Learning Rate Randomization",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/32193/",
+      "date": "2024-03-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Demonstration-Regularized RL",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/41182/",
+      "date": "2024-03-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Understanding Learning from Human Preferences",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/54918/",
+      "date": "2024-03-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Prosody for Intuitive Robotic Interface Design: It's Not What You Said, It's How You Said It",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/74310/",
+      "date": "2024-03-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "DiPaCo: Distributed Path Composition",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/84915/",
+      "date": "2024-03-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Evaluating Frontier Models for Dangerous Capabilities",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/78150/",
+      "date": "2024-03-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Few-Shot Recalibration of Language Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/47848/",
+      "date": "2024-03-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Long-form factuality in large language models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/85420/",
+      "date": "2024-03-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learning from One Continuous Video Stream",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/59160/",
+      "date": "2024-03-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Gecko: Versatile Text Embeddings Distilled from Large Language Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/85521/",
+      "date": "2024-03-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Biomolecular dynamics with machine-learned quantum-mechanical force fields trained on diverse chemical fragments",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/88551/",
+      "date": "2024-04-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learning Agile Soccer Skills for a Bipedal Robot with Deep Reinforcement Learning",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/31284/",
+      "date": "2024-04-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Many-Shot In-Context Learning",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/88349/",
+      "date": "2024-04-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Holistic Safety and Responsibility Evaluations of Advanced AI Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/78149/",
+      "date": "2024-04-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Improving Dictionary Learning with Gated Sparse Autoencoders",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/88147/",
+      "date": "2024-04-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Pose Priors from Language Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/164806/",
+      "date": "2024-05-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "ExeDec: Execution Decomposition for Compositional Generalization in Neural Program Synthesis",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/49061/",
+      "date": "2024-05-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Position: Leverage Foundational Models for Black-Box Optimization",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/77643/",
+      "date": "2024-05-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Advancing Biomedical Understanding with Multimodal Gemini",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/87645/",
+      "date": "2024-05-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "π2vec: Policy Representations with SuccessorFeatures",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/25628/",
+      "date": "2024-05-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Kalman Filter for Online Classification of Non-Stationary Data",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/33405/",
+      "date": "2024-05-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Deep SE(3)-Equivariant Geometric Reasoning for Precise Placement Tasks",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/36940/",
+      "date": "2024-05-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Language Modeling Is Compression",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/39768/",
+      "date": "2024-05-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Privacy Amplification by Sampling for the Matrix Mechanism.",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/42798/",
+      "date": "2024-05-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Teach LLMs to Phish: Stealing Private Information from Language Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/43000/",
+      "date": "2024-05-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "From Sparse to Soft Mixture of Experts",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/49566/",
+      "date": "2024-05-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "CORRELATED NOISE PROVABLY BEATS INDEPENDENT NOISE FOR DIFFERENTIALLY PRIVATE LEARNING",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/50273/",
+      "date": "2024-05-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learning 3D Particle-based Simulators from RGB-D Videos",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/50878/",
+      "date": "2024-05-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Adaptive Hashing: Faster Hash Functions Perhaps with Fewer Collisions",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/81077/",
+      "date": "2024-05-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Super-Exponential Regret for UCT, AlphaGo and Variants",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/90066/",
+      "date": "2024-05-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "An Introduction to Universal Artificial Intelligence",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/33304/",
+      "date": "2024-05-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Robot Walks into a Bar: Can Language Models Serve as Creativity Support Tools for Comedy? An Evaluation of LLMs' Humour Alignment with Comedians",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/70876/",
+      "date": "2024-06-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Don't trust your eyes: on the (un)reliability of feature visualizations",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/49869/",
+      "date": "2024-06-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Tx-LLM: A Large Language Model for Therapeutics",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/88248/",
+      "date": "2024-06-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mirasol3B: A Multimodal Autoregressive Model for Time-Aligned and Contextual Modalities",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/50070/",
+      "date": "2024-06-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bayes' Rays: uncertainty quantification for neural radiance fields",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/60877/",
+      "date": "2024-06-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Neural Fields as Distributions: Signal Processing Beyond Euclidean Space",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/61382/",
+      "date": "2024-06-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Neural Climate Data Compression",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/105317/",
+      "date": "2024-07-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Language models, like humans, show content effects on reasoning tasks",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/9266/",
+      "date": "2024-07-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Levels of AGI for Operationalizing Progress on the Path to AGI",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/66938/",
+      "date": "2024-07-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mixture of Nested Experts: Adaptive Processing of Visual Tokens",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/108549/",
+      "date": "2024-07-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Pre-trained Gaussian processes for Bayesian optimization",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/70169/",
+      "date": "2024-07-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Achieving Human Level Competitive Robot Table Tennis",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/107741/",
+      "date": "2024-08-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Probabilities Also Matter: A More Faithful Metric for Faithfulness of Free-Text Explanations in Large Language Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/78755/",
+      "date": "2024-08-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Swim till you sink: Computing the limit of a game",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/107338/",
+      "date": "2024-08-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Vizier Gaussian Process Bandit Algorithm",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/108347/",
+      "date": "2024-08-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Modeling the Arrows of Time with Causal Multibaker Maps",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/98247/",
+      "date": "2024-09-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Michelangelo: Long Context Evaluations Beyond Haystacks via Latent Structure Queries",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/117639/",
+      "date": "2024-09-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learned feature representations are biased by complexity, learning order, position, and more",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/90369/",
+      "date": "2024-09-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Geometric-Averaged Preference Optimization for Soft Preference Labels",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/92798/",
+      "date": "2024-09-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Diffusion model predictive control",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/93097/",
+      "date": "2024-10-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Predicting from Strings: Language Model Embeddings for Bayesian Optimization",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/122292/",
+      "date": "2024-10-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Prompting Considered Harmful",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/90773/",
+      "date": "2024-10-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI can help humans find common ground in democratic deliberation",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/65220/",
+      "date": "2024-10-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Understanding LLM Embeddings for Regression",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/135718/",
+      "date": "2024-11-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "How Well Do Large Language Models Perform Latent Multi-Hop Reasoning without Exploiting Shortcuts?",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/133302/",
+      "date": "2024-11-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mastering Board Games by External and Internal Planning with Language Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/139455/",
+      "date": "2024-12-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Exponential Speedups by Rerooting Levin Tree Search",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/120972/",
+      "date": "2024-12-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Machine Unlearning Doesn’t Do What You Think: Lessons for Generative AI Policy, Research, and Practice",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/101479/",
+      "date": "2024-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "What type of inference is planning?",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/92499/",
+      "date": "2024-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Deliberation in Latent Space via Differentiable Cache Augmentation",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/141788/",
+      "date": "2024-12-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "A theory of appropriateness with applications to generative artificial intelligence",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/126226/",
+      "date": "2024-12-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Exposing Limitations of Language Model Agents in Sequential-Task Compositions on the Web",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/46840/",
+      "date": "2024-12-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Foundations of Algorithmic Thermodynamics",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/82794/",
+      "date": "2025-01-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Evolving Deeper LLM Thinking",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/122391/",
+      "date": "2025-01-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "MONA: Myopic Optimization with Non-myopic Approval Can Mitigate Multi-step Reward Hacking",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/148850/",
+      "date": "2025-01-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Are vision-language models shape or texture biased and can we steer them?",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/83299/",
+      "date": "2025-01-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Decoding-based Regression",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/141785/",
+      "date": "2025-02-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Automated Discovery of Interpretable Cognitive Programs underlying Reward-guided behavior",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/130468/",
+      "date": "2025-02-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scaling Pre-training to One Hundred Billion Data for Vision Language Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/132991/",
+      "date": "2025-02-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Poly-Autoregressive Prediction for Interaction Modeling",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/122892/",
+      "date": "2025-02-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Delta Variances",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/112791/",
+      "date": "2025-02-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Partition Tree Weighting for Non-Stationary Stochastic Bandits",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/134306/",
+      "date": "2025-02-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "HCI for AGI",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/106025/",
+      "date": "2025-02-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "KiVA: Kid-Inspired Visual Analogies for Testing Large Multimodal Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/166018/",
+      "date": "2025-03-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "TIPS: Text-Image Pretraining with Spatial awareness",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/121982/",
+      "date": "2025-03-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Gemini Embedding: Generalizable Embeddings from Gemini",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/157741/",
+      "date": "2025-03-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Gensors: Authoring Personalized Visual Sensors with Multimodal Foundation Models and Reasoning",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/124002/",
+      "date": "2025-03-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "QuestBench: Can LLMs ask the right question to acquire information in reasoning tasks?",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/121987/",
+      "date": "2025-03-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Effective Kernel Fuzzing with Learned White-box Test Mutators",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/127036/",
+      "date": "2025-04-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "TxGemma: Efficient and Agentic LLMs for Therapeutics",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/153799/",
+      "date": "2025-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Societal and technological progress as sewing an ever-growing, ever-changing, patchy, and polychrome quilt",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/155313/",
+      "date": "2025-04-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "MELODI: Exploring Memory Compression for Long Contexts",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/121073/",
+      "date": "2025-04-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Toward Understanding In-context vs. In-weight Learning",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/122088/",
+      "date": "2025-04-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Relaxed Recursive Transformers: Effective Parameter Sharing with Layer-wise LoRA",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/122290/",
+      "date": "2025-04-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generative Ghosts: Anticipating Benefits and Risks of AI Afterlives",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/65827/",
+      "date": "2025-04-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Flow-Lenia: Emergent evolutionary dynamics in mass conservative continuous cellular automata",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/106327/",
+      "date": "2025-04-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Prompting with Phonemes: Enhancing LLM Multilinguality for non-Latin Scripts",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/114003/",
+      "date": "2025-04-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Proactive Agents for Multi-Turn Text-to-Image Generation Under Uncertainty",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/121578/",
+      "date": "2025-05-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bridging Algorithmic Information Theory and Machine Learning, Part II: Clustering, Density Estimation, Kolmogorov Complexity-Based Kernels, and Kernel Learning in Unsupervised Learning",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/148243/",
+      "date": "2025-06-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "AuPair: Golden Example Pairs for Code Repair",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/122089/",
+      "date": "2025-06-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "LIA: Cost-efficient LLM Inference Acceleration with Intel Advanced Matrix Extensions and CXL",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/81986/",
+      "date": "2025-06-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Performance Prediction for Large Systems via Text-to-Text Regression",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/187733/",
+      "date": "2025-06-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Rethinking Example Selection in the Era of Million-Token Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/102792/",
+      "date": "2025-07-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Long-Form Speech Generation with Spoken Language Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/126936/",
+      "date": "2025-07-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Large Language Models as Rankers, Judges, and Assistants: A Perspective on the Potential Over-Reliance on LLMs in IR",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/147939/",
+      "date": "2025-07-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "SLIM: ONE-SHOT QUANTIZED SPARSE PLUS LOW-RANK APPROXIMATION OF LLMS",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/148040/",
+      "date": "2025-07-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Dialogues Between Technologists and the Art Worlds",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/181976/",
+      "date": "2025-07-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "\"Just a Strange Pic\": Rethinking 'Safety' in GenAI Image Safety Annotation Tasks from Diverse Annotators’ Perspectives",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/139779/",
+      "date": "2025-07-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Visual Intention Grounding for Egocentric Assistants",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/192581/",
+      "date": "2025-08-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Properties of Algorithmic Information Distance",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/148245/",
+      "date": "2025-08-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "RoboBallet: Planning for Multi-Robot Reaching with Graph Neural Networks and Reinforcement Learning",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/111579/",
+      "date": "2025-09-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Improving cosmological reach of LIGO usingDeep Loop Shaping",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/145314/",
+      "date": "2025-09-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Whose View of Safety? A Deep DIVE Dataset for Pluralistic Alignment of Text-to-Image Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/118251/",
+      "date": "2025-09-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "EmbeddingGemma: Powerful and Lightweight Text Representations",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/194199/",
+      "date": "2025-09-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Video models are zero-shot learners and reasoners",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/203190/",
+      "date": "2025-09-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI-Generated Video Detection via Perceptual Straightening",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/160567/",
+      "date": "2025-09-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Pragmatic View of AI Personhood",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/210560/",
+      "date": "2025-10-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "To Mask or to Mirror: Human-AI Alignment in Collective Reasoning",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/180362/",
+      "date": "2025-11-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Imitation Learning is Probably Existentially Safe",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/42697/",
+      "date": "2025-11-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Capturing Human Preferences with Reward Features",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/141313/",
+      "date": "2025-12-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "TRecViT: A Recurrent Video Transformer",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/122591/",
+      "date": "2026-01-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Hybrid neural–cognitive models reveal how memory shapes human reward learning",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/94006/",
+      "date": "2026-02-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Decoding Safety Feedback from Diverse Raters: A Data-driven Lens on Responsiveness to Severity",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/137741/",
+      "date": "2026-02-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Simplicity and Complexity in Combinatorial Optimization",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/225507/",
+      "date": "2026-02-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Abstraction Fallacy: Why AI Can Simulate But Not Instantiate Consciousness",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/231971/",
+      "date": "2026-03-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Strategic Tradeoffs Between Humans and AI in Multi-Agent Bargaining",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/146950/",
+      "date": "2026-03-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Image Generators are Generalist Vision Learners",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/240658/",
+      "date": "2026-04-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Dynamic Reflections: Probing Video Representations with Text Alignment",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/193694/",
+      "date": "2026-04-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "ProEval: Proactive Failure Discovery and Efficient Performance Estimation for Generative AI Evaluation",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/238239/",
+      "date": "2026-04-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Did US Worker Retraining Reduce Participant Automation Exposure?",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/239849/",
+      "date": "2026-05-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Gram: Assessing sabotage propensities via automated alignment auditing",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/252981/",
+      "date": "2026-05-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Realistic honeypot evaluations for scheming propensity",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/253391/",
+      "date": "2026-05-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Solipsistic superintelligence is unlikely to be cooperative",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/231466/",
+      "date": "2026-06-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "From AGI to ASI",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/239142/",
+      "date": "2026-06-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Artificial Minds, Human Disagreement: The Politics of AI Consciousness",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/248131/",
+      "date": "2026-06-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Going PLACES: Participatory Localized Red Teaming forText-to-Image Safety in the Global South",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/224397/",
+      "date": "2026-06-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bridging the Scale Gap: Augmenting Human Red-Teaming to Uncover Latent Risks in T2I Models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/149262/",
+      "date": "2026-06-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Real-Time Group Dynamics with LLM Facilitation: Evidence from a Charity Allocation Task",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/224297/",
+      "date": "2026-06-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Towards Structural Understanding of LLM Overthinking",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/203490/",
+      "date": "2026-07-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Case for Globally Beneficial Technology",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/260960/",
+      "date": "2026-07-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Quantifying the Salience of Geo-Cultural Values for Pluralistic Safety Alignment",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/225819/",
+      "date": "2026-07-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Evaluating frontier models for stealth and situational awareness",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/157938/",
+      "date": "2026-07-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Visual prompt engineering for video models",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/264392/",
+      "date": "2026-07-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "A moral Turing test: How belief and source shape detection of and agreement with LLM judgments",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/118955/",
+      "date": "2026-08-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Visual General Intelligence: A White Paper",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/270149/",
+      "date": "2026-08-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Designing Proactive Thought Partners for Writing",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/265605/",
+      "date": "2026-09-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Economic Policy for AGI",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/260459/",
+      "date": "2026-09-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Publications",
+      "publisher": "Google DeepMind",
+      "canonical_url": "https://deepmind.google/research/publications/",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
