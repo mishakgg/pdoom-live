@@ -143,8 +143,8 @@ def test_retrieve_requests_one_metadata_url(monkeypatch):
     assert len(calls) == 1
     url, headers = calls[0]
     assert url == "https://huggingface.co/api/models/sshleifer/tiny-gpt2"
-    assert headers["Accept"] == "application/json"
-    assert "authorization" not in {key.lower() for key in headers}
+    assert headers["accept"] == "application/json"
+    assert "authorization" not in headers
     assert "/resolve/" not in url
     assert "blobs=" not in url
     assert not url.endswith((".bin", ".safetensors", ".png", ".parquet"))
