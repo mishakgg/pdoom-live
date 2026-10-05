@@ -113,7 +113,7 @@
       "reason": "5585848 only updates docs/FRONTEND_HANDOFF.md. GitHub CI 37274485308, E2E 37274485285, and runtime 37274485294 succeeded on that head. The handoff still records two local spawnSync python ENOENT failures. Not folded into the six-workstream candidate."
     }
   ],
-  "next_action": "Pull requests 33 through 73, 75 through 89, 90 through 94, 96 through 98, and 100 through 109 are merged. main is d9fd142dccf2ad467889c1629c09909d49b14ff1. Drafts 110 through 118 stay open while checks finish. Draft 119 is Epoch, 120 is CSET, 121 is METR, 122 is New Zealand, 123 is Turing with no stored rows, and 124 is UNESCO. Japan and Partnership on AI are back with their workers. Pull request 95 is at fe491c55fca647e2c5a37f18dc3159a89a08f2c9 and stays a draft until the new checks pass. Pull request 103 was rebased to b76622fe39969c16a2fa3110e7eb4f7e5864fb22 after the image smoke test failed. Pull requests 32 and 23 stay open. Do not merge pull request 32.",
+  "next_action": "Pull requests 33 through 73, 75 through 89, 90 through 94, 96 through 98, and 100 through 109 are merged. main is d9fd142dccf2ad467889c1629c09909d49b14ff1. Drafts 110 through 118 stay open while checks finish. Draft 119 is Epoch, 120 is CSET, 121 is METR, 122 is New Zealand, 123 is Turing with no stored rows, and 124 is UNESCO. Japan and Partnership on AI are back with their workers. Pull request 95 is at fe491c55fca647e2c5a37f18dc3159a89a08f2c9 and stays a draft until the new checks pass. Pull request 103 was rebased to b76622fe39969c16a2fa3110e7eb4f7e5864fb22 after the image smoke test failed. Pull requests 32 and 23 stay open. Do not merge pull request 32. Fourteen catalog workers are running for Future of Life, MIRI, RAND, the EU AI Office, Allen Institute, CHAI, Forecasting Research Institute, AI Impacts, OpenAI, Anthropic, DeepMind, EleutherAI, OSTP, and Convergence Analysis.",
   "concurrent_workers_launched_at": "2026-10-05T18:46:00Z",
   "concurrent_workers_model": "grok-4.7-xhigh",
   "concurrent_workers": [
@@ -210,7 +210,21 @@
     {"task": "Catalog Stanford HAI pages", "run": "bc-39c8f284-a724-5618-8111-fe3b6fe7ac84", "branch": "cursor/stanford-hai-pages-a32e", "head": "c8cad61d1208750e6830b50cea54f258f1a9d73c", "pr": 118, "state": "draft"},
     {"task": "Catalog METR pages", "run": "bc-057b2a69-f44f-5bd8-9d52-6f091c43cc18", "branch": "cursor/metr-pages-a32e", "head": "f6783869a324d54b6649aeb373760fc8d72da861", "state": "draft", "pr": 121, "note": "Eighteen rows stay unknown. creative_commons is only CC0, CC BY, or CC BY-SA. mit and apache-2.0 stay their own tokens."},
     {"task": "Catalog CAIS pages", "run": "bc-1ae077c0-87d5-5310-87cd-d37448ac02bf", "branch": "cursor/cais-pages-a32e", "head": "1c8f072902d66c6774b22606d93e9d3eb6e88d22", "pr": 116, "state": "draft"},
-    {"task": "Catalog Alan Turing Institute pages", "run": "bc-014b9eef-bfb8-52ef-9805-f6b09a3f1424", "branch": "cursor/turing-ai-pages-a32e", "head": "fc827b00e7717c7897397b5a93088a21ae70baa1", "state": "draft", "pr": 123, "note": "No rows. A challenge response is not stored. uk_ogl only when the HTML states the Open Government Licence."}
+    {"task": "Catalog Alan Turing Institute pages", "run": "bc-014b9eef-bfb8-52ef-9805-f6b09a3f1424", "branch": "cursor/turing-ai-pages-a32e", "head": "fc827b00e7717c7897397b5a93088a21ae70baa1", "state": "draft", "pr": 123, "note": "No rows. A challenge response is not stored. uk_ogl only when the HTML states the Open Government Licence."},
+    {"task": "Catalog Future of Life pages", "run": "bc-d9be6c1f-b2e0-5989-bbce-6399fdbf550f", "branch": "cursor/fli-pages-a32e"},
+    {"task": "Catalog MIRI pages", "run": "bc-24de62b2-3b6e-593a-a1e2-98cae629fcbc", "branch": "cursor/miri-pages-a32e"},
+    {"task": "Catalog RAND AI pages", "run": "bc-bf5d0f79-0056-5874-8e0c-0ef6f9a86f6d", "branch": "cursor/rand-ai-pages-a32e"},
+    {"task": "Catalog EU AI Office pages", "run": "bc-ddb1c5f4-5592-57d3-ba4c-ef8ea3044048", "branch": "cursor/eu-ai-office-pages-a32e"},
+    {"task": "Catalog Allen Institute pages", "run": "bc-7d74605d-8ccb-5b06-a0a3-7ec8dbe95331", "branch": "cursor/ai2-pages-a32e"},
+    {"task": "Catalog CHAI pages", "run": "bc-84f38b7a-a813-5d8c-83fe-ea21b6828f4e", "branch": "cursor/chai-pages-a32e"},
+    {"task": "Catalog forecasting institute pages", "run": "bc-7c1da7a8-9aa6-51d0-af4a-e566c8a4fc37", "branch": "cursor/fri-pages-a32e"},
+    {"task": "Catalog AI Impacts pages", "run": "bc-72a3bae8-f235-559c-a3eb-dabcaee23062", "branch": "cursor/ai-impacts-pages-a32e"},
+    {"task": "Catalog OpenAI research pages", "run": "bc-e135bd9d-8654-5933-8a6b-97da10a19fac", "branch": "cursor/openai-research-pages-a32e"},
+    {"task": "Catalog Anthropic research pages", "run": "bc-011baf57-f566-5ac2-a9b5-3fd62bc1edde", "branch": "cursor/anthropic-research-pages-a32e"},
+    {"task": "Catalog DeepMind publication pages", "run": "bc-8cbdefef-e947-5271-8bbd-20576be01573", "branch": "cursor/deepmind-pages-a32e"},
+    {"task": "Catalog EleutherAI pages", "run": "bc-410ff18f-9458-500a-a8d5-a06561b7357e", "branch": "cursor/eleuther-pages-a32e"},
+    {"task": "Catalog OSTP AI pages", "run": "bc-78802903-df20-53f7-8963-8fe5faceaabc", "branch": "cursor/ostp-ai-pages-a32e"},
+    {"task": "Catalog Convergence Analysis pages", "run": "bc-2150f762-7626-586d-abfc-023d2b85d6ee", "branch": "cursor/convergence-pages-a32e"}
   ],
   "merge_continue_dispatched_at": "2026-10-05T18:31:30Z",
   "merge_continue_targets_pr": 31,
