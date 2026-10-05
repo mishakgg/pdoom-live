@@ -27,7 +27,7 @@ describe("public data page validator copy", () => {
       "If-Modified-Since",
       "If-None-Match",
     ]);
-    const page = readFileSync(new URL("../apps/web/app/data/page.tsx", import.meta.url), "utf8");
+    const page = readFileSync("apps/web/app/data/page.tsx", "utf8");
     expect(page).toContain("<PublicApiValidatorCopy />");
     expect(page).not.toContain("from the dataset import time");
   });
