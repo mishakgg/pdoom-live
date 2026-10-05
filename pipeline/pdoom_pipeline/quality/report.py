@@ -1,4 +1,8 @@
-"""Dataset quality report for the versioned seed cohort."""
+"""Dataset quality report for the versioned seed cohort.
+
+Source missingness counts gaps in one supplied fixture document. Unknown
+values stay unknown. The counts describe that document only.
+"""
 
 from __future__ import annotations
 
@@ -12,7 +16,13 @@ ACADEMIC_NAMESPACES = {"orcid", "openalex", "openreview", "semantic_scholar"}
 PROFILE_NAMESPACES = {"personal_website", "lab_profile"}
 
 
-def build_report(seed_dir: Path | None = None, collector_runs: list[dict] | None = None, corpus: dict | None = None) -> dict:
+def build_report(
+    seed_dir: Path | None = None,
+    collector_runs: list[dict] | None = None,
+    corpus: dict | None = None,
+    *,
+    document: dict | None = None,
+) -> dict:
     directory = seed_dir or SEED_DIR
     people = load_jsonl(directory / "people.jsonl")
     orgs = load_jsonl(directory / "organizations.jsonl")
@@ -61,7 +71,7 @@ def build_report(seed_dir: Path | None = None, collector_runs: list[dict] | None
     success = sum(1 for run in runs if run.get("status") == "success")
     failure = sum(1 for run in runs if run.get("status") != "success")
     failure_classes = Counter(run.get("error_class") or "none" for run in runs if run.get("status") != "success")
-    return {
+    report = {
         "cohort_id": cohort["cohort_id"],
         "cohort_version": cohort["version"],
         "not_a_census": True,
@@ -102,6 +112,9 @@ def build_report(seed_dir: Path | None = None, collector_runs: list[dict] | None
             "The cohort is a purposive seed, so organization counts must not be read as the distribution of the field.",
         ],
     }
+    if document is not None:
+        report["source_missingness"] = source_missingness(document)
+    return report
 
 
 def render_markdown(report: dict) -> str:
@@ -157,6 +170,9 @@ def render_markdown(report: dict) -> str:
                 "",
             ]
         )
+    missingness = report.get("source_missingness")
+    if missingness:
+        lines.extend(["", "## Source missingness", "", render_source_missingness(missingness), ""])
     lines.extend(["", "## Inclusion reasons", ""])
     for key, value in sorted(report["inclusion_reasons"].items()):
         lines.append(f"- {key}: {value}")
@@ -184,3 +200,112 @@ def write_report(seed_dir: Path | None = None, collector_runs: list[dict] | None
     (report_dir / "cohort-v2026-09-quality.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     (report_dir / "cohort-v2026-09-quality.md").write_text(render_markdown(report), encoding="utf-8")
     return report
+
+
+_URL_KEYS = ("canonical_url",)
+_PUBLICATION_KEYS = ("published_at", "publication_time")
+_RIGHTS_KEYS = ("license", "license_note", "license_notes", "rights_notes", "rights_note")
+_URL_STATUS_KEYS = ("canonical_url_status",)
+_PUBLICATION_STATUS_KEYS = ("published_at_status", "publication_time_status")
+_RIGHTS_STATUS_KEYS = ("license_status", "rights_status", "rights_notes_status")
+_MISSINGNESS_WORDING = (
+    "These counts describe the supplied fixture document only. "
+    "It is not all AI researchers, not a random sample, and not a measure of consensus."
+)
+
+
+def source_missingness(document: dict) -> dict:
+    """Count provenance gaps in one in-memory fixture document.
+
+    Blank or absent canonical URLs, publication times, and license or rights
+    notes are missing. The value ``unknown`` stays unknown. This function
+    does not invent a URL, a time, or a rights note, and it does not read
+    stand-ins such as ``observed_at``, ``url``, or ``feed_url``.
+    """
+    if not isinstance(document, dict):
+        raise TypeError("fixture document must be a dict")
+    sources = _records(document, "sources")
+    items = (
+        _records(document, "source_items")
+        + _records(document, "observations")
+        + _records(document, "source_observations")
+    )
+    counts: Counter[str] = Counter()
+    for row in sources:
+        _tally(counts, "canonical_url", _field_state(row, _URL_KEYS, _URL_STATUS_KEYS))
+        if not items or _carries(row, _PUBLICATION_KEYS + _PUBLICATION_STATUS_KEYS):
+            _tally(counts, "publication_time", _field_state(row, _PUBLICATION_KEYS, _PUBLICATION_STATUS_KEYS))
+        _tally(counts, "license_or_rights_note", _field_state(row, _RIGHTS_KEYS, _RIGHTS_STATUS_KEYS))
+    for row in items:
+        _tally(counts, "canonical_url", _field_state(row, _URL_KEYS, _URL_STATUS_KEYS))
+        _tally(counts, "publication_time", _field_state(row, _PUBLICATION_KEYS, _PUBLICATION_STATUS_KEYS))
+        if _carries(row, _RIGHTS_KEYS + _RIGHTS_STATUS_KEYS):
+            _tally(counts, "license_or_rights_note", _field_state(row, _RIGHTS_KEYS, _RIGHTS_STATUS_KEYS))
+    return {
+        "not_a_census": True,
+        "wording": _MISSINGNESS_WORDING,
+        "sources_missing_canonical_url": counts["canonical_url_missing"],
+        "sources_unknown_canonical_url": counts["canonical_url_unknown"],
+        "sources_missing_publication_time": counts["publication_time_missing"],
+        "sources_unknown_publication_time": counts["publication_time_unknown"],
+        "sources_missing_license_or_rights_note": counts["license_or_rights_note_missing"],
+        "sources_unknown_license_or_rights_note": counts["license_or_rights_note_unknown"],
+    }
+
+
+def render_source_missingness(missingness: dict) -> str:
+    return "\n".join(
+        [
+            missingness["wording"],
+            "",
+            f"- Sources missing a canonical URL: {missingness['sources_missing_canonical_url']}",
+            f"- Sources with canonical URL left unknown: {missingness['sources_unknown_canonical_url']}",
+            f"- Sources missing a publication time: {missingness['sources_missing_publication_time']}",
+            f"- Sources with publication time left unknown: {missingness['sources_unknown_publication_time']}",
+            f"- Sources missing a license or rights note: {missingness['sources_missing_license_or_rights_note']}",
+            f"- Sources with license or rights note left unknown: {missingness['sources_unknown_license_or_rights_note']}",
+        ]
+    )
+
+
+def _records(document: dict, key: str) -> list[dict]:
+    rows = document.get(key) or []
+    if not isinstance(rows, list):
+        return []
+    return [row for row in rows if isinstance(row, dict)]
+
+
+def _carries(record: dict, keys: tuple[str, ...]) -> bool:
+    return any(key in record for key in keys)
+
+
+def _field_state(record: dict, value_keys: tuple[str, ...], status_keys: tuple[str, ...]) -> str:
+    values = [record[key] for key in value_keys if key in record]
+    statuses = [record[key] for key in status_keys if key in record]
+    if not values and not statuses:
+        return "missing"
+    states = [_scalar_state(value) for value in values]
+    status_states = [_scalar_state(value) for value in statuses]
+    if "present" in states:
+        return "present"
+    if "unknown" in states or "unknown" in status_states:
+        return "unknown"
+    return "missing"
+
+
+def _scalar_state(value: object) -> str:
+    if value is None:
+        return "missing"
+    if isinstance(value, str):
+        text = value.strip()
+        if not text:
+            return "missing"
+        if text.casefold() == "unknown":
+            return "unknown"
+        return "present"
+    return "present"
+
+
+def _tally(counts: Counter[str], name: str, state: str) -> None:
+    if state in {"missing", "unknown"}:
+        counts[f"{name}_{state}"] += 1

@@ -12,6 +12,7 @@ import {
   comparabilityIdentityMaterial,
   comparabilityRegistryDocument,
   comparisonDecision,
+  parseDeadline,
   describePreservedValue,
   historyClaimFor,
   prePolicyMethodKey,
@@ -26,6 +27,7 @@ import {
   computeTimelineForecast,
   discoverQualitativeGroups,
   discoverQuestionTrends,
+  listUnpooledForecasts,
   type TrendCandidate,
 } from "../packages/db/src/trend-engine";
 import { FORECAST_INPUT_SQL, mapForecastRow, resolveTrendMethods, trendMethodKey } from "../packages/db/src/trend-query";
@@ -249,6 +251,121 @@ describe("exact questions", () => {
     expect(result.included.map((item) => item.statement_slug)).toEqual(["family-2070"]);
     expect(result.included[0]?.stored_question_key).toBe("extinction_unconditional");
     expect(result.exclusions.find((item) => item.statement_slug === "family-2030")?.reason).toBe("deadline_mismatch");
+  });
+
+  it("leaves a horizon that names two years ambiguous and unpooled", () => {
+    const horizon = "between 2030 and 2050";
+    expect(parseDeadline({ horizon_text: horizon })).toEqual({
+      status: "ambiguous",
+      start: null,
+      end: null,
+      label: null,
+    });
+
+    const span = classifyForecast({
+      question_key: "extinction_unconditional",
+      question_text: "Probability of human extinction from AI",
+      definition_text: "Literal human extinction",
+      unit: "probability",
+      value_type: "point",
+      value_numeric: 0.2,
+      horizon_text: horizon,
+    });
+    expect(span.poolable).toBe(false);
+    expect(span.reason).toBe("ambiguous_horizon");
+    expect(span.stored_question_key).toBe("extinction_unconditional");
+    expect(span.stored_key_is_exact).toBe(false);
+    expect(span.deadline_end).toBeNull();
+    expect(span.exact_question_id).not.toBe("ai_extinction_unconditional_by_2070");
+    expect(comparisonDecision({
+      question_key: "extinction_unconditional",
+      definition_text: "Literal human extinction",
+      unit: "probability",
+      value_type: "point",
+      value_numeric: 0.2,
+      horizon_text: horizon,
+    }, "ai_extinction_unconditional_by_2070").reason).toBe("ambiguous_horizon");
+
+    const dated = row({
+      statement_slug: "single-2070",
+      question_key: "ai_extinction_unconditional_by_2070",
+      horizon_text: "by the stated horizon",
+      value_numeric: 0.11,
+    });
+    const spanned = row({
+      statement_slug: "two-year-span",
+      question_key: "extinction_unconditional",
+      definition_text: "Literal human extinction",
+      horizon_text: horizon,
+      value_numeric: 0.2,
+    });
+    const distribution = computeProbabilityDistribution({
+      ...context,
+      question_text: "Unconditional extinction by 2070",
+      definition_text: "Literal human extinction by 2070",
+      scope: extinctionScope,
+      candidates: [spanned, dated],
+      edges: [],
+    });
+    expect(distribution.included.map((item) => item.statement_slug)).toEqual(["single-2070"]);
+    expect(distribution.included.map((item) => item.value_numeric)).toEqual([0.11]);
+    expect(distribution.exclusions.find((item) => item.statement_slug === "two-year-span")?.reason).toBe("ambiguous_horizon");
+    expect(distribution.median).toBeNull();
+
+    const productivity = classifyForecast({
+      question_key: "productivity_growth",
+      question_text: "labor productivity growth",
+      definition_text: "annual labor productivity growth",
+      unit: "percentage_points",
+      value_type: "point",
+      value_numeric: 2.5,
+      horizon_text: horizon,
+    });
+    const gdp = classifyForecast({
+      question_key: "economic_growth",
+      question_text: "GDP growth",
+      definition_text: "annual GDP growth",
+      unit: "percentage_points",
+      value_type: "point",
+      value_numeric: 1.5,
+      horizon_text: horizon,
+    });
+    expect(productivity.reason).toBe("ambiguous_horizon");
+    expect(gdp.reason).toBe("ambiguous_horizon");
+    expect(productivity.poolable).toBe(false);
+    expect(gdp.poolable).toBe(false);
+    expect(productivity.stored_question_key).toBe("productivity_growth");
+    expect(gdp.stored_question_key).toBe("economic_growth");
+    expect(productivity.exact_question_id).not.toBe("labor_productivity_growth_pp_by_2035");
+    expect(gdp.exact_question_id).not.toBe("gdp_growth_pp_by_2035");
+    const growthRows = [
+      row({
+        statement_slug: "labor-span",
+        question_key: "productivity_growth",
+        question_text: "labor productivity growth",
+        definition_text: "annual labor productivity growth",
+        topic_slugs: ["productivity"],
+        unit: "percentage_points",
+        value_numeric: 2.5,
+        horizon_text: horizon,
+      }),
+      row({
+        statement_slug: "gdp-span",
+        question_key: "economic_growth",
+        question_text: "GDP growth",
+        definition_text: "annual GDP growth",
+        topic_slugs: ["productivity"],
+        unit: "percentage_points",
+        value_numeric: 1.5,
+        horizon_text: horizon,
+      }),
+    ];
+    expect(discoverQuestionTrends(growthRows, new Set(), new Set())).toEqual([]);
+    const unpooled = listUnpooledForecasts(growthRows, new Set());
+    expect(unpooled.map((item) => [item.statement_slug, item.question_key, item.reason])).toEqual([
+      ["gdp-span", "economic_growth", "ambiguous_horizon"],
+      ["labor-span", "productivity_growth", "ambiguous_horizon"],
+    ]);
   });
 
   it("treats a predicted year as the value and a probability deadline as part of the question", () => {

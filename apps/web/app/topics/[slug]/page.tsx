@@ -9,6 +9,7 @@ import { hasNarrowingFilters, researchFilters, statementsHref } from "@/lib/pres
 import { requestNonce } from "@/lib/request-nonce";
 import { canonicalOrigin, notFoundMetadata, pageMetadata, topicFields } from "@/lib/seo";
 import { topicStructuredData } from "@/lib/structured-data";
+import { QuestionHorizonList, StatementQuestionLine, distinctQuestions, statementFacts } from "../question-horizons";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -54,9 +55,13 @@ export default async function TopicPage({
       <p className="kicker">Topic version {topic.version}</p>
       <h1>{topic.name}</h1>
       <p className="lede">{topic.definition}</p>
-      {slug === "frontier-ai-risk" ? (
-        <p className="warning">Statements under this family use different questions. They are not aggregated into one p(doom).</p>
-      ) : null}
+      <QuestionHorizonList
+        topicDefinition={topic.definition}
+        questions={distinctQuestions(statements.map((statement) => statementFacts(statement)))}
+        includeTopicDefinition={false}
+        emptyAsUnknown={statements.length === 0 && topic.statement_total === 0}
+        partial={total > statements.length ? { shown: statements.length, total } : null}
+      />
       {slug === "ai-extinction" ? (
         <p>
           A comparable distribution, when one exists, is limited to a single question key.{" "}
@@ -75,7 +80,10 @@ export default async function TopicPage({
             : null}
         />
         {statements.length ? statements.map((statement) => (
-          <StatementCard key={statement.slug} statement={statement} headingLevel="h3" filters={filters} />
+          <div key={statement.slug}>
+            <StatementCard statement={statement} headingLevel="h3" filters={filters} />
+            <StatementQuestionLine statement={statement} />
+          </div>
         )) : narrowed || topic.statement_total > 0 ? (
           <p>No statement in this view matches the selected filters. {topic.statement_total} public {topic.statement_total === 1 ? "statement uses" : "statements use"} this definition before those filters.</p>
         ) : (

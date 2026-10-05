@@ -196,6 +196,51 @@ def _link(entry) -> str:
     return ""
 
 
+def podcast_episode_metadata(payload: bytes) -> list[dict[str, str]]:
+    """Return episode title, publication time, canonical URL, and enclosure URL.
+
+    The enclosure value is the remote audio URL. Audio bytes are not fetched.
+    A missing title or publication time is recorded as ``unknown``.
+    """
+    if not isinstance(payload, (bytes, bytearray)):
+        raise CollectorFailure("invalid_content", "podcast feed must be bytes")
+    if len(payload) > 1_000_000:
+        raise CollectorFailure("content_too_large", "feed exceeds parser cap")
+    try:
+        root = _fromstring(payload)
+    except _XmlParseError as exc:
+        raise CollectorFailure("invalid_content", f"malformed feed: {exc}") from exc
+    return [_podcast_episode_record(entry) for entry in _entries(root)[:MAX_ITEMS]]
+
+
+def _podcast_episode_record(entry: UnsafeElementTree.Element) -> dict[str, str]:
+    title = _text(_child(entry, ["title", "atom:title"]))
+    published = _parse_time(
+        _text(_child(entry, ["pubDate", "published", "atom:published", "updated", "atom:updated", "dc:date"]))
+    )
+    return {
+        "title": title or "unknown",
+        "published_at": published or "unknown",
+        "canonical_url": _http_url(_link(entry)),
+        "enclosure_url": _http_url(_enclosure_url(entry)),
+    }
+
+
+def _http_url(value: str) -> str:
+    try:
+        return canonicalize_url(value)
+    except ValueError:
+        return "unknown"
+
+
+def _enclosure_url(entry: UnsafeElementTree.Element) -> str:
+    for child in list(entry):
+        if child.tag.split("}")[-1] != "enclosure":
+            continue
+        return (child.attrib.get("url") or "").strip()
+    return ""
+
+
 def discover_feed_urls(html: str) -> list[str]:
     """Read rel=alternate feed links. Page text is not executed."""
     urls: list[str] = []

@@ -58,6 +58,21 @@ class Params {
   }
 }
 
+/**
+ * Letters that appear in the published cohort, mapped to ASCII.
+ * Both cases are listed because lower() does not fold Ł in every locale.
+ * The lengths are equal so translate() stays one character to one character.
+ */
+const ACCENT_FROM = "éáèüąŁłöäçÉÁÈÜĄÖÄÇ";
+const ACCENT_TO = "eaeualloaceaeuaoac";
+if (ACCENT_FROM.length !== ACCENT_TO.length) {
+  throw new Error("accent fold map is uneven");
+}
+
+function foldSearchText(expr: string): string {
+  return `translate(lower(${expr}), '${ACCENT_FROM}', '${ACCENT_TO}')`;
+}
+
 const QUERY_CTE = `
   q AS (
     SELECT
@@ -65,6 +80,12 @@ const QUERY_CTE = `
       $2::text AS like_norm,
       $3::text[] AS tokens,
       $4::text[] AS public_states,
+      ${foldSearchText("$1::text")} AS fold_norm,
+      ${foldSearchText("$2::text")} AS fold_like,
+      (
+        SELECT coalesce(array_agg(${foldSearchText("token")} ORDER BY ord), ARRAY[]::text[])
+        FROM unnest($3::text[]) WITH ORDINALITY AS src(token, ord)
+      ) AS fold_tokens,
       (
         SELECT string_agg((plainto_tsquery('simple', token)::text || ':*'), ' & ')::tsquery
         FROM unnest($3::text[]) AS token
@@ -73,26 +94,53 @@ const QUERY_CTE = `
 `;
 
 function collapse(expr: string): string {
-  return `lower(regexp_replace(btrim(${expr}), '[[:space:]]+', ' ', 'g'))`;
+  return `regexp_replace(btrim(${foldSearchText(expr)}), '[[:space:]]+', ' ', 'g')`;
+}
+
+function germanFold(expr: string): string {
+  const expanded = `replace(replace(replace(replace(replace(replace(lower(${expr}), 'ü', 'ue'), 'ö', 'oe'), 'ä', 'ae'), 'Ü', 'ue'), 'Ö', 'oe'), 'Ä', 'ae')`;
+  return `translate(${expanded}, '${ACCENT_FROM}', '${ACCENT_TO}')`;
+}
+
+function wordsOf(foldedSql: string): string {
+  return `
+    SELECT unnest(string_to_array(regexp_replace(${foldedSql}, '[[:space:][:punct:]]+', ' ', 'g'), ' ')) AS word
+    UNION
+    SELECT unnest(string_to_array(regexp_replace(replace(${foldedSql}, '-', ''), '[[:space:][:punct:]]+', ' ', 'g'), ' ')) AS word
+  `;
+}
+
+function nameWords(expr: string): string {
+  return `
+    SELECT word FROM (
+      ${wordsOf(foldSearchText(expr))}
+      UNION
+      ${wordsOf(germanFold(expr))}
+    ) name_words
+    WHERE word <> ''
+  `;
 }
 
 function tokenPrefix(expr: string): string {
-  return `cardinality(q.tokens) > 0 AND NOT EXISTS (
-    SELECT 1 FROM unnest(q.tokens) AS token
+  return `cardinality(q.fold_tokens) > 0 AND NOT EXISTS (
+    SELECT 1 FROM unnest(q.fold_tokens) AS token
     WHERE NOT EXISTS (
       SELECT 1
-      FROM unnest(string_to_array(regexp_replace(lower(${expr}), '[[:space:][:punct:]]+', ' ', 'g'), ' ')) AS word
-      WHERE word <> '' AND word LIKE token || '%'
+      FROM (${nameWords(expr)}) AS words
+      WHERE words.word LIKE token || '%'
     )
   )`;
 }
 
 function nameRank(expr: string, family: string | null, vectorSql: string, roleSql: string | null): string {
   const collapsed = collapse(expr);
+  const familyMatch = family
+    ? `WHEN cardinality(q.fold_tokens) = 1 AND ${foldSearchText(`btrim(${family})`)} = q.fold_tokens[1] THEN ${SEARCH_RANK.family_name}`
+    : "";
   return `CASE
-    WHEN ${collapsed} = q.norm THEN ${SEARCH_RANK.exact_name}
-    ${family ? `WHEN cardinality(q.tokens) = 1 AND lower(btrim(${family})) = q.tokens[1] THEN ${SEARCH_RANK.family_name}` : ""}
-    WHEN ${collapsed} LIKE q.like_norm || ' %' ESCAPE '!' THEN ${SEARCH_RANK.name_prefix}
+    WHEN ${collapsed} = q.fold_norm THEN ${SEARCH_RANK.exact_name}
+    ${familyMatch}
+    WHEN ${collapsed} LIKE q.fold_like || ' %' ESCAPE '!' THEN ${SEARCH_RANK.name_prefix}
     WHEN ${tokenPrefix(expr)} THEN ${SEARCH_RANK.token_prefix}
     WHEN ${vectorSql} THEN ${SEARCH_RANK.all_tokens}
     ${roleSql ? `WHEN ${roleSql} THEN ${SEARCH_RANK.affiliation_role}` : ""}

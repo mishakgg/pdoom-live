@@ -241,6 +241,9 @@ def test_refresh_converges_and_publishes_truthful_outcomes(tmp_path: Path):
     assert first["status"] == "succeeded"
     assert first["counts"]["failed"] == 0
     assert first["counts"]["new"] > 0
+    assert 'name="author" content="Refresh Ada"' in ESSAY
+    assert 'name="author" content="Refresh Ada"' in OLDER
+    _assert_author_metadata(first["document"], "https://refresh.example/notes", "page_byline")
     slugs = _statement_slugs(first["document"])
     numeric = _typed(first["document"], "explicit_numeric")
     qualitative = _typed(first["document"], "explicit_qualitative")
@@ -308,7 +311,14 @@ def test_refresh_converges_and_publishes_truthful_outcomes(tmp_path: Path):
     assert full["status"] == "partial"
     assert full["counts"]["failed"] >= 1
     assert full["counts"]["new"] + full["counts"]["changed"] + full["counts"]["unchanged"] > 0
-    assert _belief_run(full["document"])["status"] == "partial"
+    partial_run = _belief_run(full["document"])
+    assert partial_run["status"] == "partial"
+    assert partial_run["unchanged_count"] == full["counts"]["unchanged"]
+    assert partial_run["skipped_count"] == full["counts"]["skipped"]
+    assert partial_run["failed_count"] == full["counts"]["failed"]
+    assert partial_run["failed_count"] >= 1
+    assert partial_run["new_count"] + partial_run["changed_count"] + partial_run["unchanged_count"] > 0
+    _assert_author_metadata(full["document"], "https://refresh.example/notes", "page_byline")
     assert publication_decision(full["document"]) == "publish_partial"
     refused = json.loads(json.dumps(full["document"]))
     refused["ingestion_runs"][-1]["status"] = "failed"
@@ -594,6 +604,14 @@ def _typed(document: dict, statement_type: str) -> list[dict]:
 
 def _belief_run(document: dict) -> dict:
     return next(row for row in document["ingestion_runs"] if row["collector"] == "belief-corpus")
+
+
+def _assert_author_metadata(document: dict, url: str, attribution_detail: str) -> None:
+    item = next(row for row in document["source_items"] if row["canonical_url"] == url)
+    authors = [row for row in document["participants"] if row["source_item_slug"] == item["slug"] and row["role"] == "author"]
+    assert len(authors) == 1
+    assert authors[0]["person_slug"] == "refresh-ada"
+    assert authors[0]["attribution_detail"] == attribution_detail
 
 
 def _raw_statement(result: dict, slug: str) -> dict:
