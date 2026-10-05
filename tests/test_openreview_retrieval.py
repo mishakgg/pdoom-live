@@ -118,7 +118,7 @@ def test_search_reads_the_fixture_once_and_does_not_fetch_the_pdf():
 
     def transport(url: str, headers: dict) -> FetchResult:
         seen.append(url)
-        assert headers["Accept"] == "application/json"
+        assert headers["accept"] == "application/json"
         return FetchResult(url=url, status=200, headers={}, body=payload)
 
     collector = OpenReviewCollector(fetcher=SafeFetcher(transport=transport, max_attempts=1, allowed_content_types=("application/json", "")))
