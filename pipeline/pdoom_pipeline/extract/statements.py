@@ -19,9 +19,20 @@ PROBABILITY_CUE = re.compile(
     r"\b(chance|probability|prob\.?|odds|credence|p\s*\(\s*doom\s*\)|likelihood)\b",
     re.I,
 )
+_PERCENT_NUMBER = r"\d{1,3}(?:\.\d+)?"
+_PERCENT_UNIT = r"(?:%|percent\b)"
+# The unit may be "%" or the word "percent". "10 and 20 percent" is one range.
+# A bare 10 is not a probability, and the word does not mean the integer 10.
 PERCENT = re.compile(
-    r"(?P<min>\d{1,3}(?:\.\d+)?)\s*%?\s*(?:–|-|to)\s*(?P<max>\d{1,3}(?:\.\d+)?)\s*(?:%|percent\b)|(?P<single>\d{1,3}(?:\.\d+)?)\s*(?:%|percent\b)",
+    rf"(?P<min>{_PERCENT_NUMBER})\s*(?:{_PERCENT_UNIT})?\s*(?:–|-|to|and)\s*(?P<max>{_PERCENT_NUMBER})\s*{_PERCENT_UNIT}"
+    rf"|(?P<single>{_PERCENT_NUMBER})\s*{_PERCENT_UNIT}",
     re.I,
+)
+# A leading-dot or zero-point decimal is already on the 0–1 scale. "0.10" is not 10%.
+_DECIMAL_NUMBER = r"0?\.\d+"
+DECIMAL_PROBABILITY = re.compile(
+    rf"(?<![\d.])(?P<min>{_DECIMAL_NUMBER})(?!\d)\s*(?:–|-|to|and)\s*(?<![\d.])(?P<max>{_DECIMAL_NUMBER})(?![\d%])"
+    rf"|(?<![\d.])(?P<single>{_DECIMAL_NUMBER})(?![\d%])"
 )
 ONE_IN = re.compile(r"\b(?P<num>\d{1,4})\s+in\s+(?P<den>\d{1,6})\b", re.I)
 FRACTION_CHANCE = re.compile(r"~?\s*(?P<num>\d{1,2})\s*/\s*(?P<den>\d{1,2})\s+chance\b", re.I)
@@ -226,8 +237,19 @@ def _probabilities(sentence: str, person_id: str | None, start: int, end: int, c
     if not PROBABILITY_CUE.search(sentence) and "p(doom)" not in sentence.lower() and not _risk_percent(sentence):
         return []
     found = []
+    occupied: list[tuple[int, int]] = []
     for match in PERCENT.finditer(sentence):
+        occupied.append((match.start(), match.end()))
         built = _percent_statement(sentence, match, person_id, start, end, context)
+        if built:
+            found.append(built)
+        if len(found) >= 6:
+            return found
+    for match in DECIMAL_PROBABILITY.finditer(sentence):
+        if _span_overlaps(match.start(), match.end(), occupied):
+            continue
+        occupied.append((match.start(), match.end()))
+        built = _decimal_statement(sentence, match, person_id, start, end, context)
         if built:
             found.append(built)
         if len(found) >= 6:
@@ -259,7 +281,45 @@ def _percent_statement(sentence, match, person_id, start, end, context) -> dict 
         if value is None:
             return None
         value_min = value_max = None
-        value_text = f"{_trim_number(match.group('single'))}%"
+        value_text = match.group(0).strip()
+        value_type = "point"
+        span = value_text
+    else:
+        return None
+    return _probability_record(
+        sentence,
+        person_id,
+        start=start,
+        end=end,
+        context=context,
+        match_at=match.start(),
+        span=span,
+        value=value,
+        value_min=value_min,
+        value_max=value_max,
+        value_text=value_text,
+        value_type=value_type,
+        approximate=_approximate(sentence, match.start()),
+    )
+
+
+def _decimal_statement(sentence, match, person_id, start, end, context) -> dict | None:
+    """A decimal already on the 0–1 scale. The source spelling stays in value_text."""
+    if match.group("min") and match.group("max"):
+        value_min = _unit_interval(match.group("min"))
+        value_max = _unit_interval(match.group("max"))
+        if value_min is None or value_max is None or value_min > value_max:
+            return None
+        value = None
+        value_text = None
+        value_type = "range"
+        span = match.group(0)
+    elif match.group("single"):
+        value = _unit_interval(match.group("single"))
+        if value is None:
+            return None
+        value_min = value_max = None
+        value_text = match.group("single")
         value_type = "point"
         span = value_text
     else:
@@ -1203,10 +1263,22 @@ def _condition(sentence: str) -> str | None:
 
 
 def _percent(raw: str) -> float | None:
+    """'10' in '10%' or '10 percent' is 0.10, not the integer 10."""
     number = float(raw)
     if number < 0 or number > 100:
         return None
     return number / 100.0
+
+
+def _unit_interval(raw: str) -> float | None:
+    number = float(raw)
+    if number < 0 or number > 1:
+        return None
+    return number
+
+
+def _span_overlaps(start: int, end: int, spans: list[tuple[int, int]]) -> bool:
+    return any(start < stop and end > begin for begin, stop in spans)
 
 
 def _trim_number(raw: str) -> str:
@@ -1270,8 +1342,9 @@ def _stance_near_topic(sentence: str) -> bool:
 
 
 def _sentences_with_spans(text: str) -> list[tuple[str, int, int]]:
+    # A dot between digits is a decimal, not a sentence boundary. "0.10" stays one token.
     spans = []
-    for match in re.finditer(r"[^.!?\n]+(?:[.!?]+|(?=\n)|$)", text):
+    for match in re.finditer(r"(?:\d+\.\d+|[^.!?\n])+(?:[.!?]+|(?=\n)|$)", text):
         sentence = " ".join(match.group(0).split())
         if sentence:
             spans.append((sentence, match.start(), match.end()))
