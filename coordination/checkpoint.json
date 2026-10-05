@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-05T184015Z",
-  "reviewed_at": "2026-10-05T18:40:15Z",
-  "previous_review_id": "2026-10-05T183702Z",
-  "status_path": "coordination/status/status-2026-10-05T184015Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-05T184015Z.json",
+  "review_id": "2026-10-05T184200Z",
+  "reviewed_at": "2026-10-05T18:42:00Z",
+  "previous_review_id": "2026-10-05T184015Z",
+  "status_path": "coordination/status/status-2026-10-05T184200Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-05T184200Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d85e991927a16bdca16e4a9f442801baf55d4c6d",
   "origin_main_subject": "Merge pull request #31 from mishakgg/cursor/partial-integration-refresh-a32e",
@@ -113,7 +113,7 @@
       "reason": "5585848 only updates docs/FRONTEND_HANDOFF.md. GitHub CI 37274485308, E2E 37274485285, and runtime 37274485294 succeeded on that head. The handoff still records two local spawnSync python ENOENT failures. Not folded into the six-workstream candidate."
     }
   ],
-  "next_action": "Main d85e991 contains the tested six-workstream tree. Draft pull request 33 keeps a body-only name unresolved. Draft pull request 34 documents partial refresh counts. The other four follow-ups are still running. Do not merge pull request 32. Pull request 23 remains open and is superseded.",
+  "next_action": "Main d85e991 contains the tested six-workstream tree. Draft pull requests 33, 34, and 35 are open and unmerged. Navigation, forecast, and public-read follow-ups are still running. Do not merge pull request 32. Pull request 23 remains open and is superseded.",
   "merge_continue_dispatched_at": "2026-10-05T18:31:30Z",
   "merge_continue_targets_pr": 31,
   "merge_continue_agents": [
@@ -142,7 +142,10 @@
       "owner": "agent-4",
       "pr": 22,
       "follow_up_run": "bc-24f276fb-0921-5efc-bbd9-11bddaa0cf74",
-      "task": "Merge pull request 31 if main is still d13c8ab and its head is still b4cf230, then document the remaining runner_wired steps without wiring collectors."
+      "follow_up_pr": 35,
+      "follow_up_branch": "cursor/channel-runner-wired-steps-cf74",
+      "follow_up_sha": "b5191665be2d00453f9f2d703dbd690665dbc6d3",
+      "task": "Document the runner_wired gate. Draft pull request 35 is open. Collectors stay unwired."
     },
     {
       "owner": "agent-5",

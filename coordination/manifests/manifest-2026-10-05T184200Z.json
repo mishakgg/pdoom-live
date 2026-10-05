@@ -1,0 +1,17 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T184200Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened the coverage follow-up draft that the owner could not create.",
+  "base_sha": "d85e991927a16bdca16e4a9f442801baf55d4c6d",
+  "follow_up_pr": {
+    "pr": 35,
+    "owner": "agent-4",
+    "run": "bc-24f276fb-0921-5efc-bbd9-11bddaa0cf74",
+    "branch": "cursor/channel-runner-wired-steps-cf74",
+    "sha": "b5191665be2d00453f9f2d703dbd690665dbc6d3",
+    "subscription_id": "sub_4f9582f1-63c3-4b36-802e-7d4f98973713"
+  },
+  "delivery_note": "Draft only. Collectors stay unwired. Do not merge 35 until its checks finish."
+}
