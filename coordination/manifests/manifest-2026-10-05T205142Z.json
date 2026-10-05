@@ -1,0 +1,11 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T205142Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Hourly review 24. Main and the six workstream heads are unchanged. Opened drafts 93 and 94.",
+  "follow_up_prs": [
+    {"pr": 93, "sha": "317177470427134732f9fe271d53edc0fa3080f5", "run": "bc-030cb7c8-9f2a-5577-96f3-b003d573fa53"},
+    {"pr": 94, "sha": "79e687ed43340b2b07275a481930e91de91bf18b", "run": "bc-58543328-9cf8-5ad6-b86c-c07adee8f870"}
+  ]
+}
