@@ -146,7 +146,7 @@ export function LiveSearch() {
   return (
     <form className="search" action="/search" method="get" role="search">
       <label>
-        <span className="kicker">Search</span>
+        <span className="sr-only">Search</span>
         <input
           name="q"
           role="combobox"

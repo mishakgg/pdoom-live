@@ -5,12 +5,14 @@ import { SiteNav } from "./site-nav";
 export function SiteHeader() {
   return (
     <header className="mast">
-      <Link className="brand" href="/">
-        <em>pdoom</em>
-        <span>.live</span>
-      </Link>
-      <SiteNav />
-      <LiveSearch />
+      <div className="mast-bar">
+        <Link className="brand" href="/">
+          <em>pdoom</em>
+          <span>.live</span>
+        </Link>
+        <SiteNav />
+        <LiveSearch />
+      </div>
     </header>
   );
 }

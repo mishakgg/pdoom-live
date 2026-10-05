@@ -21,11 +21,14 @@ function numericFacts(result: {
   };
 }
 
-export function TrendView({ trend, duplicateTitle = false }: { trend: PublicTrend; duplicateTitle?: boolean }) {
+export function TrendView({ trend, duplicateTitle = false, preview = false }: { trend: PublicTrend; duplicateTitle?: boolean; preview?: boolean }) {
+  const previewHref = preview ? `/trends/${trend.slug}` : undefined;
   if (trend.kind === "distribution") {
     return (
       <DistributionPanel
         duplicateTitle={duplicateTitle}
+        preview={preview}
+        previewHref={previewHref}
         name={trend.name}
         methodVersion={trend.method_version}
         cohortSlug={trend.cohort_slug}
@@ -77,6 +80,8 @@ export function TrendView({ trend, duplicateTitle = false }: { trend: PublicTren
         coverage={trend.timeline.coverage}
         exclusions={trend.timeline.exclusions}
         duplicateTitle={duplicateTitle}
+        preview={preview}
+        previewHref={previewHref}
         {...numericFacts(trend.timeline)}
       />
     );
@@ -107,6 +112,8 @@ export function TrendView({ trend, duplicateTitle = false }: { trend: PublicTren
         coverage={trend.quantity.coverage}
         exclusions={trend.quantity.exclusions}
         duplicateTitle={duplicateTitle}
+        preview={preview}
+        previewHref={previewHref}
         {...numericFacts(trend.quantity)}
       />
     );

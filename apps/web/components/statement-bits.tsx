@@ -74,6 +74,11 @@ export function StatementCard({
   filters?: ResearchFilters;
 }) {
   const Heading = headingLevel;
+  const typeClass = statement.statement_type === "explicit_numeric"
+    || statement.statement_type === "explicit_qualitative"
+    || statement.statement_type === "model_inferred_signal"
+    ? ` type-${statement.statement_type}`
+    : "";
   const topics = Array.isArray(statement.topics) ? statement.topics : [];
   const research = filters ?? {};
   const sourceItem = statement.source_item;
@@ -86,7 +91,7 @@ export function StatementCard({
       })
     : null;
   return (
-    <article className="card">
+    <article className={`card statement-card${typeClass}`}>
       <Heading className="claim">
         <Link href={`/statements/${statement.slug}`}>{statement.normalized_text}</Link>
       </Heading>

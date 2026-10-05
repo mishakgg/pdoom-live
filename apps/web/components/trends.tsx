@@ -220,11 +220,12 @@ function ProbabilityChart({ rows }: { rows: EstimateRow[] }) {
   if (points.length === 0) return null;
   const used = new Map<number, number>();
   return (
-    <div className="chart-scroll">
+    <div className="chart-scroll plot">
       <svg className="trend-chart" role="group" aria-labelledby={titleId} viewBox={`0 0 ${width} ${height}`}>
         <title id={titleId}>Dot plot of included probabilities from 0% to 100%. Filled circles are point estimates. The table states the same values and links.</title>
         <text x="28" y="16">Probability</text>
-        <line x1="28" x2={width - 16} y1="78" y2="78" stroke="currentColor" strokeWidth="1" />
+        <rect x="28" y="28" width={width - 44} height="50" rx="8" fill="#e5f3f0" />
+        <line x1="28" x2={width - 16} y1="78" y2="78" stroke="currentColor" strokeWidth="1.5" />
         {[0, 0.25, 0.5, 0.75, 1].map((tick) => {
           const x = 28 + tick * (width - 44);
           return (
@@ -243,7 +244,7 @@ function ProbabilityChart({ rows }: { rows: EstimateRow[] }) {
           const detail = `${row.display_name}: ${formatProbability(row.value_numeric)}.`;
           return (
             <a key={row.statement_slug} href={`/statements/${row.statement_slug}`} aria-label={`${row.display_name}. View statement.`}>
-              <circle cx={x} cy={y} r="6" fill="currentColor">
+              <circle cx={x} cy={y} r="7.5" fill="currentColor" stroke="#ffffff" strokeWidth="2">
                 <title>{detail}</title>
               </circle>
             </a>
@@ -270,10 +271,11 @@ function TimelineChart({ rows }: { rows: EstimateRow[] }) {
   const height = 78 + rows.length * rowHeight;
   const xOf = (year: number) => 132 + ((year - min) / span) * (width - 148);
   return (
-    <div className="chart-scroll">
+    <div className="chart-scroll plot">
       <svg className="trend-chart" role="group" aria-labelledby={titleId} viewBox={`0 0 ${width} ${height}`}>
         <title id={titleId}>Timeline of predicted years. Each row is one person. The table states the same years.</title>
         <text x="132" y="14">Predicted year</text>
+        <rect x="128" y="22" width={width - 140} height={Math.max(24, height - 46)} rx="8" fill="#e5f3f0" />
         <line x1="132" x2={width - 12} y1={height - 18} y2={height - 18} stroke="currentColor" />
         <text x="132" y={height - 4}>{formatYear(min)}</text>
         <text x={width - 12} y={height - 4} textAnchor="end">{formatYear(max)}</text>
@@ -336,6 +338,8 @@ export function NumericPanel({
   historyNote,
   medianInterpretation,
   duplicateTitle,
+  preview = false,
+  previewHref,
 }: {
   semantics: NumericSemantics;
   name: string;
@@ -360,6 +364,8 @@ export function NumericPanel({
   coverage: { cohort_size: number; cohort_members_without_included_estimate: number; missingness_note?: string | null };
   exclusions: ExclusionRow[];
   duplicateTitle?: boolean;
+  preview?: boolean;
+  previewHref?: string;
 } & ComparabilityCopy) {
   const headingId = useId();
   const interpretation = medianInterpretation ?? (semantics === "year" ? MEDIAN_INTERPRETATION.year : semantics === "quantity" ? MEDIAN_INTERPRETATION.quantity : MEDIAN_INTERPRETATION.probability);
@@ -368,16 +374,18 @@ export function NumericPanel({
   const kicker = semantics === "year" ? "Predicted years" : semantics === "quantity" ? "Quantity forecasts" : "Comparable explicit estimates";
   const valueLabel = semantics === "year" ? "Predicted year" : semantics === "quantity" ? "Quantity" : "Estimate";
   return (
-    <section className="panel" aria-labelledby={headingId}>
+    <section className={preview ? "panel preview-panel" : "panel"} aria-labelledby={headingId}>
       <p className="kicker">{kicker}</p>
       <PanelTitle id={headingId} duplicate={duplicateTitle}>{name}</PanelTitle>
       <DensityMark density={resolvedDensity} />
-      <ComparabilityFacts
-        outcomeLabel={outcomeLabel}
-        deadlineLabel={deadlineLabel}
-        conditionLabel={conditionLabel}
-        medianInterpretation={interpretation}
-      />
+      {preview ? null : (
+        <ComparabilityFacts
+          outcomeLabel={outcomeLabel}
+          deadlineLabel={deadlineLabel}
+          conditionLabel={conditionLabel}
+          medianInterpretation={interpretation}
+        />
+      )}
       <p>
         {countNoun(contributingPersonCount, "person", "people")}, {countNoun(contributingStatementCount, "statement", "statements")}. Cohort size {coverage.cohort_size}. {coverage.cohort_members_without_included_estimate} members have no included record in this view. These figures are not a field consensus.
       </p>
@@ -399,6 +407,10 @@ export function NumericPanel({
       {semantics === "probability" ? <ProbabilityChart rows={included} /> : null}
       {semantics === "year" ? <TimelineChart rows={included} /> : null}
       {semantics === "quantity" ? <p className="meta">Each bar below is a quantity in the stated unit. It is not a probability.</p> : null}
+      {preview ? (
+        previewHref ? <p className="actions"><Link href={previewHref}>Open this comparison</Link></p> : null
+      ) : (
+      <>
       <div className="chart-scroll">
         <table className="dist">
           <caption>Text equivalent of this {trendKindLabel(semantics === "probability" ? "distribution" : semantics === "year" ? "timeline" : "quantity").toLowerCase()}</caption>
@@ -476,6 +488,8 @@ export function NumericPanel({
         {historyNote ? <p className="meta">{historyNote}</p> : null}
       </details>
       <ExclusionList exclusions={exclusions} />
+      </>
+      )}
     </section>
   );
 }
@@ -742,9 +756,10 @@ function RevisionChart({
   const yOf = (value: number) => 20 + (1 - (value - min) / valueSpan) * 80;
   const pointBySlug = new Map(chain.points.map((point) => [point.statement_slug, point]));
   return (
-    <div className="chart-scroll">
+    <div className="chart-scroll plot">
       <svg className="trend-chart" role="group" aria-labelledby={titleId} viewBox={`0 0 ${width} ${height}`}>
         <title id={titleId}>{`${chain.display_name}: verified forecast values over time. The table states the same values.`}</title>
+        <rect x="36" y="12" width={width - 48} height="108" rx="8" fill="#e5f3f0" />
         {chain.links.map((link) => {
           const from = pointBySlug.get(link.from_statement_slug);
           const to = pointBySlug.get(link.to_statement_slug);

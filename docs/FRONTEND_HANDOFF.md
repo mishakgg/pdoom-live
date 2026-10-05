@@ -15,7 +15,7 @@ Coordination notes on `cursor/integration-coordination-a32e` are a different own
 
 ## Design
 
-Research ledger, recorded in `docs/DESIGN.md`. Public Sans at 16px, cool gray canvas, white surfaces, teal for links and numeric estimates, amber for qualitative views and the synthetic banner, slate for model-inferred signals. Newsreader remains the wordmark only. Monospace is limited to hashes and stored keys.
+Research ledger, recorded in `docs/DESIGN.md`. The mast is a full-bleed ink bar. Public Sans is the body and interior headings. Newsreader is the wordmark and the homepage title. The homepage puts that title beside a preview of the widest comparison so the chart is in the first desktop screen; the full table stays on the question page. Statement cards use a left border in the estimate’s class color. Dataset clocks remain on the homepage under the statements. Monospace is limited to hashes and stored keys.
 
 ## Owned files
 

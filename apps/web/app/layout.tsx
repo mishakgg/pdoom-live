@@ -17,8 +17,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
       <body>
         <a className="skip" href="#content">Skip to content</a>
+        <SiteHeader />
         <div className="shell">
-          <SiteHeader />
           <main id="content" tabIndex={-1}>
             <DatasetNotice />
             {children}

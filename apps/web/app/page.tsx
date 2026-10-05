@@ -59,14 +59,138 @@ export default async function HomePage() {
           cohortName: overview.dataset.cohort?.name ?? null,
         })}
       />
-      <p className="kicker">{overview.dataset.dataset_id ? kindLabel : "Observatory"}</p>
-      <h1>Who said what, under which definition.</h1>
-      <p className="lede">
-        {overview.dataset.notice} Estimates are shown only when a person supplied a number. Qualitative views and model signals are never converted into a probability.
-      </p>
+      {coverage ? (
+        <section className="panel state">
+          <p className="kicker">Coverage</p>
+          <h2>{coverage.title}</h2>
+          <p>{coverage.body}</p>
+        </section>
+      ) : null}
+      <div className="home-hero">
+        <div>
+          <p className="kicker">{overview.dataset.dataset_id ? kindLabel : "Observatory"}</p>
+          <h1 className="display">Who said what, under which definition.</h1>
+          <p className="lede">
+            {overview.dataset.notice} Estimates are shown only when a person supplied a number. Qualitative views and model signals are never converted into a probability.
+          </p>
+          <nav className="home-path" aria-label="Where to start">
+            <a href="#recent-statements">
+              <strong>Statements</strong>
+              <span>What was said, with event time kept apart from publication and collection.</span>
+            </a>
+            {featured ? (
+              <Link href={`/trends/${featured.slug}`}>
+                <strong>Widest comparison</strong>
+                <span>{featured.name}</span>
+              </Link>
+            ) : (
+              <a href="#featured-question">
+                <strong>Widest comparison</strong>
+                <span>No comparable question is in this dataset yet.</span>
+              </a>
+            )}
+            {overview.dataset.dataset_id ? (
+              <a href="#dataset-status">
+                <strong>Freshness</strong>
+                <span>When this page read the stored dataset. Not a new collection.</span>
+              </a>
+            ) : null}
+          </nav>
+        </div>
+        <div id="featured-question">
+          {featured ? <TrendView trend={featured} preview /> : null}
+          {!featured && overview.trends.length === 0 && overview.dataset.dataset_id ? (
+            <section className="panel state">
+              <h2>No verified trend</h2>
+              <p>This dataset has no human-verified statements that meet a published trend method. Empty coverage is not a probability.</p>
+            </section>
+          ) : null}
+        </div>
+      </div>
+      <div className="grid-2 home-work">
+        <section aria-labelledby="recent-statements">
+          <div className="card-flags section-head">
+            <h2 id="recent-statements">Newest statements by event time</h2>
+            <Link href="/statements">All statements</Link>
+          </div>
+          <p className="meta">Ordered by event time, not by when a source was collected and not by publication time. Each row keeps those clocks separate.</p>
+          {overview.recent_statements.length ? overview.recent_statements.map((statement) => (
+            <StatementCard key={statement.slug} statement={statement} headingLevel="h3" />
+          )) : (
+            <p>No public statement is available to list.</p>
+          )}
+          <h2>Recorded changes</h2>
+          <p className="meta">A recorded link is not a new collection and not newly published material. It is a relationship between two stored statements.</p>
+          {overview.revisions.length ? (
+            <ul className="relation-list">
+              {overview.revisions.map((revision) => {
+                const reading = revisionReading(revision.relationship_type);
+                return (
+                  <li key={revision.to_slug}>
+                    <p>
+                      <strong>{reading.title}.</strong> {reading.note}
+                    </p>
+                    <p>
+                      <Link href={`/people/${revision.person_slug}`}>{revision.display_name}</Link>
+                      {" · "}
+                      <Link href={`/statements/${revision.from_slug}`}>
+                        Earlier statement
+                        <span className="sr-only"> by {revision.display_name}</span>
+                      </Link>
+                      {" → "}
+                      <Link href={`/statements/${revision.to_slug}`}>
+                        Later statement
+                        <span className="sr-only"> by {revision.display_name}</span>
+                      </Link>
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <p>No revision between collected statements is recorded.</p>
+          )}
+        </section>
+        <div className="stack">
+          {others.length > 0 ? (
+            <section className="panel">
+              <h2>Other questions</h2>
+              <p>Each link is a separate question. Counts are cohort members with a comparable record. Volume counts records. It is not a belief.</p>
+              <ul className="trend-index">
+                {others.map((trend) => (
+                  <li className="trend-row" key={trend.slug}>
+                    <Link href={`/trends/${trend.slug}`}>{trend.name}</Link>
+                    <span>{trendKindLabel(trend.kind)}</span>
+                    <span><DensityMark density={trend.density} /> · {trend.contributing_person_count} of {trend.cohort_size}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
+          <section className="panel" aria-labelledby="covered-questions">
+            <h2 id="covered-questions">Covered questions</h2>
+            <p>Ordered by how many public statements use the definition, then by name. This is coverage in the loaded dataset. It is not importance and not a probability.</p>
+            {coveredTopics.length ? (
+              <ul className="trend-index">
+                {coveredTopics.map((topic) => (
+                  <li key={topic.slug}>
+                    <Link href={`/topics/${topic.slug}`}>{topic.name}</Link>
+                    <span className="meta"> {countLabel(topic.statement_total, "statement")}</span>
+                    <p>{topic.definition}</p>
+                    <p><Link href={`/statements?topic=${topic.slug}`}>All statements on this question</Link></p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No question has a collected statement.</p>
+            )}
+          </section>
+        </div>
+      </div>
       {overview.dataset.dataset_id ? (
-        <section className="status-bar" aria-labelledby="dataset-status">
-          <h2 id="dataset-status" className="sr-only">Dataset status</h2>
+        <section className="status-bar home-status" aria-labelledby="dataset-status">
+          <h2 id="dataset-status">How current this dataset is</h2>
+          <p className="meta">These counts and clocks describe the stored reading. They do not change what anyone said.</p>
           <dl>
             <div>
               <dt>Dataset</dt>
@@ -131,108 +255,6 @@ export default async function HomePage() {
         </section>
       ) : null}
       <DatasetWatch fingerprint={fingerprint} />
-      {coverage ? (
-        <section className="panel state">
-          <p className="kicker">Coverage</p>
-          <h2>{coverage.title}</h2>
-          <p>{coverage.body}</p>
-        </section>
-      ) : null}
-      <div className="grid-2">
-        <section aria-labelledby="recent-statements">
-          <div className="card-flags">
-            <h2 id="recent-statements">Newest statements by event time</h2>
-            <Link href="/statements">All statements</Link>
-          </div>
-          <p className="meta">Ordered by event time, not by when a source was collected and not by publication time. Each row keeps those clocks separate.</p>
-          {overview.recent_statements.length ? overview.recent_statements.map((statement) => (
-            <StatementCard key={statement.slug} statement={statement} headingLevel="h3" />
-          )) : (
-            <p>No public statement is available to list.</p>
-          )}
-          <h2>Recorded changes</h2>
-          <p className="meta">A recorded link is not a new collection and not newly published material. It is a relationship between two stored statements.</p>
-          {overview.revisions.length ? (
-            <ul className="relation-list">
-              {overview.revisions.map((revision) => {
-                const reading = revisionReading(revision.relationship_type);
-                return (
-                  <li key={revision.to_slug}>
-                    <p>
-                      <strong>{reading.title}.</strong> {reading.note}
-                    </p>
-                    <p>
-                      <Link href={`/people/${revision.person_slug}`}>{revision.display_name}</Link>
-                      {" · "}
-                      <Link href={`/statements/${revision.from_slug}`}>
-                        Earlier statement
-                        <span className="sr-only"> by {revision.display_name}</span>
-                      </Link>
-                      {" → "}
-                      <Link href={`/statements/${revision.to_slug}`}>
-                        Later statement
-                        <span className="sr-only"> by {revision.display_name}</span>
-                      </Link>
-                    </p>
-                  </li>
-                );
-              })}
-            </ul>
-          ) : (
-            <p>No revision between collected statements is recorded.</p>
-          )}
-        </section>
-        <div className="stack">
-          {featured ? (
-            <>
-              <p className="meta">
-                The question below has the widest comparable coverage: cohort members with a record, then statement count.
-                Volume is listed with the other questions because it counts records. It is not a belief.
-              </p>
-              <TrendView trend={featured} />
-            </>
-          ) : null}
-          {others.length > 0 ? (
-            <section className="panel">
-              <h2>Other questions</h2>
-              <p>Each link is a separate question. Counts are cohort members with a comparable record.</p>
-              <ul className="trend-index">
-                {others.map((trend) => (
-                  <li className="trend-row" key={trend.slug}>
-                    <Link href={`/trends/${trend.slug}`}>{trend.name}</Link>
-                    <span>{trendKindLabel(trend.kind)}</span>
-                    <span><DensityMark density={trend.density} /> · {trend.contributing_person_count} of {trend.cohort_size}</span>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ) : null}
-          <section className="panel" aria-labelledby="covered-questions">
-            <h2 id="covered-questions">Covered questions</h2>
-            <p>Ordered by how many public statements use the definition, then by name. This is coverage in the loaded dataset. It is not importance and not a probability.</p>
-            {coveredTopics.length ? (
-              <ul className="trend-index">
-                {coveredTopics.map((topic) => (
-                  <li key={topic.slug}>
-                    <Link href={`/topics/${topic.slug}`}>{topic.name}</Link>
-                    <span className="meta"> {countLabel(topic.statement_total, "statement")}</span>
-                    <p>{topic.definition}</p>
-                    <p><Link href={`/statements?topic=${topic.slug}`}>All statements on this question</Link></p>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No question has a collected statement.</p>
-            )}
-          </section>
-          {overview.trends.length === 0 && overview.dataset.dataset_id ? (
-            <section className="panel state">
-              <h2>No verified trend</h2>
-              <p>This dataset has no human-verified statements that meet a published trend method. Empty coverage is not a probability.</p>
-            </section>
-          ) : null}
-        </div>
-      </div>
     </>
   );
 }
