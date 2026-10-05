@@ -1,9 +1,11 @@
 """Europe PMC article metadata.
 
-Confirms one public search for a catastrophic-AI-risk query. The request is
-a single JSON page from the Europe PMC search API. Abstracts, full-text
-links, and the next-page URL in that payload are not stored or followed.
-PDFs and full text are not downloaded.
+Confirms one public title search for artificial intelligence and existential
+risk. The first hit is Europe PMC PPR1171279, "Artificial Intelligence,
+Existential Risk, and Why We Should Pay Attention to the Warnings from
+Silicon Valley". The committed fixture keeps that record's bibliographic
+metadata and omits the abstract, full-text links, and PDF flags. Those
+fields are not stored or followed. PDFs and full text are not downloaded.
 
 A missing license, copyright flag, publication date, or year stays unknown.
 This module is not imported by belief collection or any job. RssCollector
@@ -25,7 +27,7 @@ from pdoom_pipeline.urls import canonicalize_url
 COLLECTOR_VERSION = "europepmc-metadata-0.1.0"
 API_ORIGIN = "https://www.ebi.ac.uk"
 SEARCH_PATH = "/europepmc/webservices/rest/search"
-CONFIRMED_QUERY = '"catastrophic risk" AND "artificial intelligence"'
+CONFIRMED_QUERY = 'TITLE:"artificial intelligence" AND TITLE:"existential risk"'
 PAGE_SIZE = 1
 MAX_RESPONSE_BYTES = 200_000
 MAX_TITLE_CHARS = 2_000
