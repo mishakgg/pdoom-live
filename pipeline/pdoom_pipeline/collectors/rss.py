@@ -2,7 +2,8 @@
 
 from __future__ import annotations
 
-from datetime import datetime, timezone
+import re
+from datetime import datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
 from xml.etree import ElementTree as UnsafeElementTree
 
@@ -18,6 +19,35 @@ MAX_ITEMS = 100
 ATOM_NS = {"atom": "http://www.w3.org/2005/Atom"}
 CONTENT_NS = {"content": "http://purl.org/rss/1.0/modules/content/"}
 DC_NS = {"dc": "http://purl.org/dc/elements/1.1/"}
+# RFC 822 zone names parsed by email.utils, in hours and minutes.
+_NAMED_OFFSET_MINUTES = {
+    "UT": 0,
+    "UTC": 0,
+    "GMT": 0,
+    "AST": -4 * 60,
+    "ADT": -3 * 60,
+    "EST": -5 * 60,
+    "EDT": -4 * 60,
+    "CST": -6 * 60,
+    "CDT": -5 * 60,
+    "MST": -7 * 60,
+    "MDT": -6 * 60,
+    "PST": -8 * 60,
+    "PDT": -7 * 60,
+}
+# A trailing zone. Two-digit offsets must follow a clock (`:SS+05`), so a
+# calendar day such as 2026-03-03 is not read as an offset of -03.
+_EXPLICIT_ZONE = re.compile(
+    r"(?P<token>"
+    r"[+-]\d{2}:\d{2}(?::\d{2})?"
+    r"|[+-]\d{4}"
+    r"|(?<=:\d{2})[+-]\d{2}"
+    r"|(?<![A-Za-z])(?:UTC|UT|GMT|AST|ADT|EDT|EST|CDT|CST|MDT|MST|PDT|PST)"
+    r"|(?<![A-Za-z])[Zz]"
+    r")\s*$",
+    re.IGNORECASE,
+)
+_DATE_PRIORITY = ("pubdate", "published", "updated", "date")
 
 ALLOWED_TYPES = (
     "application/rss+xml",
@@ -36,21 +66,134 @@ def _text(element: UnsafeElementTree.Element | None) -> str:
 
 
 def _parse_time(value: str | None) -> str | None:
-    if not value:
-        return None
+    utc, _source_timezone = _parse_timestamp(value)
+    return utc
+
+
+def _parse_timestamp(value: str | None) -> tuple[str | None, str | None]:
+    """Return a UTC instant and the original source offset.
+
+    An explicit offset keeps that UTC instant. The offset text is returned
+    unchanged. A missing or unreadable date is ``(None, None)`` and is not
+    replaced with an observation time.
+    """
+    if not value or not value.strip():
+        return None, None
     raw = value.strip()
-    try:
-        parsed = parsedate_to_datetime(raw)
-    except (TypeError, ValueError, IndexError):
-        parsed = None
+    token = _explicit_zone(raw)
+    if token is not None:
+        delta = _zone_delta(token)
+        civil = _parse_unaware(raw[: raw.rfind(token)].strip()) if delta is not None else None
+        if civil is not None and delta is not None:
+            return _format_utc(civil - delta), token
+    return _parse_legacy_timestamp(raw)
+
+
+def _explicit_zone(raw: str) -> str | None:
+    match = _EXPLICIT_ZONE.search(raw)
+    if match is None:
+        return None
+    return match.group("token")
+
+
+def _zone_delta(token: str) -> timedelta | None:
+    upper = token.upper()
+    if upper == "Z" or upper in _NAMED_OFFSET_MINUTES:
+        minutes = 0 if upper == "Z" else _NAMED_OFFSET_MINUTES[upper]
+        return timedelta(minutes=minutes)
+    match = re.fullmatch(r"([+-])(\d{2})(?::?(\d{2}))?(?::(\d{2}))?", token)
+    if match is None:
+        return None
+    hours = int(match.group(2))
+    minutes = int(match.group(3) or 0)
+    seconds = int(match.group(4) or 0)
+    if hours > 23 or minutes > 59 or seconds > 59:
+        return None
+    delta = timedelta(hours=hours, minutes=minutes, seconds=seconds)
+    if match.group(1) == "-":
+        return -delta
+    return delta
+
+
+def _parse_unaware(text: str) -> datetime | None:
+    if not text:
+        return None
+    parsed = _parse_datetime(text)
+    if parsed is None or parsed.tzinfo is not None:
+        return None
+    return parsed
+
+
+def _parse_legacy_timestamp(raw: str) -> tuple[str | None, str | None]:
+    parsed = _parse_datetime(raw)
     if parsed is None:
-        try:
-            parsed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
-        except ValueError:
-            return None
-    if parsed.tzinfo is None:
-        parsed = parsed.replace(tzinfo=timezone.utc)
-    return parsed.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        return None, None
+    offset = parsed.utcoffset() if parsed.tzinfo is not None else None
+    if offset is None:
+        return _format_utc(parsed.replace(tzinfo=None)), None
+    return _format_utc(parsed), _format_offset(offset)
+
+
+def _parse_datetime(text: str) -> datetime | None:
+    try:
+        return parsedate_to_datetime(text)
+    except (TypeError, ValueError, IndexError, OverflowError):
+        parsed = None
+    iso = text[:-1] + "+00:00" if text.endswith(("Z", "z")) else text
+    try:
+        return datetime.fromisoformat(iso)
+    except ValueError:
+        return parsed
+
+
+def _format_utc(value: datetime) -> str:
+    """Format a naive UTC clock or an aware instant as ``YYYY-MM-DDTHH:MM:SSZ``."""
+    if value.tzinfo is not None:
+        value = value.astimezone(timezone.utc).replace(tzinfo=None)
+    return value.strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _format_offset(delta: timedelta | None) -> str | None:
+    if delta is None:
+        return None
+    total = int(delta.total_seconds())
+    sign = "+" if total >= 0 else "-"
+    total = abs(total)
+    hours, remainder = divmod(total, 3600)
+    minutes, seconds = divmod(remainder, 60)
+    if seconds:
+        return f"{sign}{hours:02d}:{minutes:02d}:{seconds:02d}"
+    return f"{sign}{hours:02d}:{minutes:02d}"
+
+
+def _date_text(entry: UnsafeElementTree.Element) -> str:
+    found: dict[str, str] = {}
+    for child in list(entry):
+        key = _date_key(child.tag)
+        if key is None or key in found:
+            continue
+        text = _text(child)
+        if text:
+            found[key] = text
+    for key in _DATE_PRIORITY:
+        if key in found:
+            return found[key]
+    return ""
+
+
+def _date_key(tag: str) -> str | None:
+    if tag.lower() == "dc:date":
+        return "date"
+    namespace = ""
+    local = tag
+    if tag.startswith("{") and "}" in tag:
+        namespace, local = tag[1:].split("}", 1)
+    lowered = local.lower()
+    if lowered in {"pubdate", "published", "updated"}:
+        return lowered
+    if lowered == "date" and namespace == DC_NS["dc"]:
+        return "date"
+    return None
 
 
 def _child(parent: UnsafeElementTree.Element, names: list[str]) -> UnsafeElementTree.Element | None:
@@ -125,7 +268,7 @@ def _entry_to_observation(entry, *, source_identity: str, feed_url: str, observe
         canonical = canonicalize_url(link) if link else canonicalize_url(feed_url)
     except ValueError:
         canonical = canonicalize_url(feed_url)
-    published = _parse_time(_text(_child(entry, ["pubDate", "published", "atom:published", "updated", "atom:updated", "dc:date"])))
+    published, source_timezone = _parse_timestamp(_date_text(entry))
     author_name = _text(_child(entry, ["author", "dc:creator"]))
     if not author_name:
         for child in list(entry):
@@ -167,6 +310,7 @@ def _entry_to_observation(entry, *, source_identity: str, feed_url: str, observe
             "truncated": truncated,
             "upstream_version": full_for_hash,
             "transcript_url": _transcript_url(entry),
+            "source_timezone": source_timezone,
         },
         collection_method="rss_feed",
         collector="rss",
@@ -215,9 +359,7 @@ def podcast_episode_metadata(payload: bytes) -> list[dict[str, str]]:
 
 def _podcast_episode_record(entry: UnsafeElementTree.Element) -> dict[str, str]:
     title = _text(_child(entry, ["title", "atom:title"]))
-    published = _parse_time(
-        _text(_child(entry, ["pubDate", "published", "atom:published", "updated", "atom:updated", "dc:date"]))
-    )
+    published = _parse_time(_date_text(entry))
     return {
         "title": title or "unknown",
         "published_at": published or "unknown",
