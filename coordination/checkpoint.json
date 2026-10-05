@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-05T210541Z",
-  "reviewed_at": "2026-10-05T21:05:41Z",
-  "previous_review_id": "2026-10-05T210417Z",
-  "status_path": "coordination/status/status-2026-10-05T210541Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-05T210541Z.json",
+  "review_id": "2026-10-05T212750Z",
+  "reviewed_at": "2026-10-05T21:27:50Z",
+  "previous_review_id": "2026-10-05T210541Z",
+  "status_path": "coordination/status/status-2026-10-05T212750Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-05T212750Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "65e460a23318cb9812c5310ecb72d89cf20b37d1",
   "origin_main_subject": "Merge pull request #62 from mishakgg/cursor/public-api-cursor-order-a32e",
@@ -96,7 +96,7 @@
     "subscription_id": "sub_a7f92930-5085-4d07-a8dd-d455f4acf8d6",
     "cron": "17 * * * *",
     "expires_at": "2026-10-11T20:27:47Z",
-    "delivery_count": 24,
+    "delivery_count": 25,
     "pr_32_subscription_id": "sub_da67c528-82da-4c23-8a08-8782a9f18ff4",
     "pr_32_subscription_expires_at": "2026-10-07T23:31:01Z"
   },
@@ -113,7 +113,7 @@
       "reason": "5585848 only updates docs/FRONTEND_HANDOFF.md. GitHub CI 37274485308, E2E 37274485285, and runtime 37274485294 succeeded on that head. The handoff still records two local spawnSync python ENOENT failures. Not folded into the six-workstream candidate."
     }
   ],
-  "next_action": "Pull requests 33 through 62 are merged. Drafts 63 through 109 are open and unmerged. Checks are still running. Pull requests 32 and 23 stay open. Do not merge pull request 32.",
+  "next_action": "Pull requests 33 through 62 are merged. Drafts 63 through 109 are open. Their checks are still pending, with no failures. The six workstream heads are unchanged. Pull requests 32 and 23 stay open. Do not merge pull request 32.",
   "concurrent_workers_launched_at": "2026-10-05T18:46:00Z",
   "concurrent_workers_model": "grok-4.7-xhigh",
   "concurrent_workers": [
