@@ -12,8 +12,9 @@ export async function generateMetadata() {
   return pageMetadata(canonicalOrigin(), listPageFields("sources"));
 }
 
-export default async function SourcesPage() {
-  const sources = await listSources();
+export type ListedSource = Awaited<ReturnType<typeof listSources>>[number];
+
+export function SourcesCatalog({ sources }: { sources: ListedSource[] }) {
   return (
     <>
       <h1>Sources</h1>
@@ -22,12 +23,18 @@ export default async function SourcesPage() {
         <article className="card" key={source.slug}>
           <p className="kicker">{phraseLabel(source.source_type)} · {freshnessLabel(source.freshness)}</p>
           <h2><Link href={`/sources/${source.slug}`}>{source.name}</Link></h2>
+          <dl className="audit">
+            <dt>Source type</dt>
+            <dd>{phraseLabel(source.source_type)}</dd>
+            <dt>Canonical URL</dt>
+            <dd><ExternalLink href={source.canonical_url}>{source.canonical_url}</ExternalLink></dd>
+            <dt>Last successful collection</dt>
+            <dd>{formatWhen(source.last_success_at)}</dd>
+            <dt>Last check</dt>
+            <dd>{formatWhen(source.last_checked_at)}</dd>
+          </dl>
           <p className="meta">
             {source.item_count} {source.item_count === 1 ? "item" : "items"}
-            {" · "}
-            Last successful collection {formatWhen(source.last_success_at)}
-            {" · "}
-            Last check {formatWhen(source.last_checked_at)}
             {" · "}
             {source.enabled ? "Enabled" : "Disabled"}
             {" · "}
@@ -39,7 +46,6 @@ export default async function SourcesPage() {
             <p>Owner <Link href={`/people/${source.owner_slug}`}>{source.owner_name}</Link></p>
           ) : null}
           {source.organization_name ? <p className="meta">Organization {source.organization_name}</p> : null}
-          <p><ExternalLink href={source.canonical_url}>{source.canonical_url}</ExternalLink></p>
           {source.freshness === "never_checked" ? (
             <p>No successful check is recorded. That is a collection gap, not evidence the channel is empty of speech.</p>
           ) : null}
@@ -51,4 +57,9 @@ export default async function SourcesPage() {
       )}
     </>
   );
+}
+
+export default async function SourcesPage() {
+  const sources = await listSources();
+  return <SourcesCatalog sources={sources} />;
 }

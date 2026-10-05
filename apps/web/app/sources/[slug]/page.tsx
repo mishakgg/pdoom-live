@@ -28,6 +28,69 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   );
 }
 
+export type LoadedSource = NonNullable<Awaited<ReturnType<typeof loadSource>>>;
+
+export function SourceRecord({ source }: { source: LoadedSource }) {
+  const reading = collectionReading(source);
+  return (
+    <>
+      <p className="kicker">{phraseLabel(source.source_type)} · {phraseLabel(source.collection_method)} · {freshnessLabel(source.freshness)}</p>
+      <h1>{source.name}</h1>
+      {source.rights_notes ? <p className="lede">{source.rights_notes}</p> : <p className="lede">No rights note is recorded for this source.</p>}
+      <dl className="audit">
+        <dt>Source type</dt>
+        <dd>{phraseLabel(source.source_type)}</dd>
+        <dt>Canonical URL</dt>
+        <dd><ExternalLink href={source.canonical_url}>{source.canonical_url}</ExternalLink></dd>
+        <dt>Review</dt>
+        <dd>
+          {reviewLabel(source.review_state)}
+          {isHumanVerified(source.review_state) ? "" : " · not a settled source record"}
+        </dd>
+        <dt>Last successful collection</dt>
+        <dd>{formatWhen(source.last_success_at)}</dd>
+        <dt>Last check</dt>
+        <dd>{formatWhen(source.last_checked_at)}</dd>
+        <dt>Collection reading</dt>
+        <dd>{reading.label}. {reading.detail}</dd>
+        <dt>Collection</dt>
+        <dd>{source.enabled ? "Enabled" : "Disabled"}{source.collection_adapter ? ` · ${source.collection_adapter}` : ""}</dd>
+        {source.owner_slug && source.owner_name ? (
+          <>
+            <dt>Owner</dt>
+            <dd><Link href={`/people/${source.owner_slug}`}>{source.owner_name}</Link></dd>
+          </>
+        ) : null}
+      </dl>
+      {!source.enabled ? <p className="warning">This source is disabled. Items already stored remain listed.</p> : null}
+      <section aria-labelledby="source-items">
+        <h2 id="source-items">Items</h2>
+        {source.items.length ? source.items.map((item) => {
+          const material = sourceMaterialState(item.collection_status, item.availability);
+          return (
+            <article className="card" key={item.slug}>
+              <h3><Link href={`/source-items/${item.slug}`}>{item.title ?? "Untitled source item"}</Link></h3>
+              <dl className="audit">
+                <dt>Published</dt>
+                <dd>{formatWhen(item.published_at)}</dd>
+                <dt>Observed</dt>
+                <dd>{formatWhen(item.observed_at)}</dd>
+                <dt>Canonical URL</dt>
+                <dd><ExternalLink href={item.canonical_url}>{item.canonical_url}</ExternalLink></dd>
+              </dl>
+              <p className="meta">{phraseLabel(item.collection_status)} · {phraseLabel(item.availability)}</p>
+              {material === "unavailable" ? <p>Original material is not available. The catalog row is kept so the gap stays visible.</p> : null}
+              {material === "partial" ? <PartialCollectionNote /> : null}
+            </article>
+          );
+        }) : (
+          <p>No item has been collected for this source. An empty item list is a collection gap, not proof the channel never published.</p>
+        )}
+      </section>
+    </>
+  );
+}
+
 export default async function SourcePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const source = await loadSource(slug);
@@ -47,52 +110,7 @@ export default async function SourcePage({ params }: { params: Promise<{ slug: s
           })}
         />
       ) : null}
-      <p className="kicker">{phraseLabel(source.source_type)} · {phraseLabel(source.collection_method)} · {freshnessLabel(source.freshness)}</p>
-      <h1>{source.name}</h1>
-      {source.rights_notes ? <p className="lede">{source.rights_notes}</p> : <p className="lede">No rights note is recorded for this source.</p>}
-      <dl className="audit">
-        <dt>Canonical URL</dt>
-        <dd><ExternalLink href={source.canonical_url}>{source.canonical_url}</ExternalLink></dd>
-        <dt>Review</dt>
-        <dd>
-          {reviewLabel(source.review_state)}
-          {isHumanVerified(source.review_state) ? "" : " · not a settled source record"}
-        </dd>
-        <dt>Last successful collection</dt>
-        <dd>{formatWhen(source.last_success_at)}</dd>
-        <dt>Last check</dt>
-        <dd>{formatWhen(source.last_checked_at)}</dd>
-        <dt>Collection reading</dt>
-        <dd>{collectionReading(source).label}. {collectionReading(source).detail}</dd>
-        <dt>Collection</dt>
-        <dd>{source.enabled ? "Enabled" : "Disabled"}{source.collection_adapter ? ` · ${source.collection_adapter}` : ""}</dd>
-        {source.owner_slug && source.owner_name ? (
-          <>
-            <dt>Owner</dt>
-            <dd><Link href={`/people/${source.owner_slug}`}>{source.owner_name}</Link></dd>
-          </>
-        ) : null}
-      </dl>
-      {!source.enabled ? <p className="warning">This source is disabled. Items already stored remain listed.</p> : null}
-      <section aria-labelledby="source-items">
-        <h2 id="source-items">Items</h2>
-        {source.items.length ? source.items.map((item) => {
-          const material = sourceMaterialState(item.collection_status, item.availability);
-          return (
-            <article className="card" key={item.slug}>
-              <h3><Link href={`/source-items/${item.slug}`}>{item.title ?? "Untitled source item"}</Link></h3>
-              <p className="meta">
-                Published {formatWhen(item.published_at)} · observed {formatWhen(item.observed_at)} · {phraseLabel(item.collection_status)} · {phraseLabel(item.availability)}
-              </p>
-              <p><ExternalLink href={item.canonical_url}>{item.canonical_url}</ExternalLink></p>
-              {material === "unavailable" ? <p>Original material is not available. The catalog row is kept so the gap stays visible.</p> : null}
-              {material === "partial" ? <PartialCollectionNote /> : null}
-            </article>
-          );
-        }) : (
-          <p>No item has been collected for this source. An empty item list is a collection gap, not proof the channel never published.</p>
-        )}
-      </section>
+      <SourceRecord source={source} />
     </>
   );
 }
