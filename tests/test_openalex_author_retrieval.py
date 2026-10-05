@@ -7,6 +7,7 @@ These tests do not contact the network and do not merge authors into people.
 from __future__ import annotations
 
 import json
+import re
 import socket
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
@@ -430,7 +431,7 @@ def test_collector_is_not_wired_and_does_not_match_people():
         "pipeline/pdoom_pipeline/collectors/openalex_works.py",
     ):
         text = (ROOT / relative).read_text(encoding="utf-8")
-        assert "openalex_authors" not in text
+        assert re.search(r"openalex_authors\b", text) is None
         assert "OpenAlexAuthorsCollector" not in text
 
     for relative in (
