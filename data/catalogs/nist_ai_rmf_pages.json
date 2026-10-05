@@ -1,0 +1,244 @@
+{
+  "catalog_id": "nist_ai_rmf_pages",
+  "description": "Metadata for public NIST AI Risk Management Framework HTML pages on www.nist.gov and airc.nist.gov. Each official URL was confirmed with one bounded GET. Each row stores the title, publisher, canonical URL, date, and us_government_work rights. Full pages are not stored. A page that does not state a publication date keeps date unknown. These HTML pages are separate from the NIST PDF rows in us_federal_ai_publications.json.",
+  "entries": [
+    {
+      "title": "AI Risk Management Framework",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://www.nist.gov/itl/ai-risk-management-framework",
+      "date": "2021-07-12",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "AI RMF Development",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://www.nist.gov/itl/ai-risk-management-framework/ai-rmf-development",
+      "date": "2021-07-28",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "NIST AI RMF Playbook",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook",
+      "date": "2022-07-08",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "NIST AI RMF Playbook FAQs",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://www.nist.gov/itl/ai-risk-management-framework/nist-ai-rmf-playbook-faqs",
+      "date": "2022-07-08",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Roadmap for the NIST Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://www.nist.gov/itl/ai-risk-management-framework/roadmap-nist-artificial-intelligence-risk-management-framework-ai",
+      "date": "2023-01-24",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Crosswalks to the NIST Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://www.nist.gov/itl/ai-risk-management-framework/crosswalks-nist-artificial-intelligence-risk-management-framework",
+      "date": "2023-01-25",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Perspectives about the NIST Artificial Intelligence Risk Management Framework",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://www.nist.gov/itl/ai-risk-management-framework/perspectives-about-nist-artificial-intelligence-risk-management",
+      "date": "2023-01-23",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "AI Risk Management Framework FAQs",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://www.nist.gov/itl/ai-risk-management-framework/ai-risk-management-framework-faqs",
+      "date": "2021-07-13",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "AI Risk Management Framework - Resources",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://www.nist.gov/itl/ai-risk-management-framework/ai-risk-management-framework-resources",
+      "date": "2021-07-13",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "AI Risk Management Framework - Engage",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://www.nist.gov/itl/ai-risk-management-framework/ai-risk-management-framework-engage",
+      "date": "2021-07-13",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Concept Note: AI RMF Profile on Trustworthy AI in Critical Infrastructure",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://www.nist.gov/programs-projects/concept-note-ai-rmf-profile-trustworthy-ai-critical-infrastructure",
+      "date": "2026-04-07",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "AI RMF Resources",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "AI RMF",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/airmf/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Executive Summary",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/airmf/0-ai-rmf-1-0/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Framing Risk",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/airmf/1-sec-risk/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Audience",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/airmf/2-sec-audience/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "AI Risks and Trustworthiness",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/airmf/3-sec-characteristics/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Effectiveness of the AI RMF",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/airmf/4-effectiveness/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "AI RMF Core",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "AI RMF Profiles",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/airmf/6-sec-profile/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "App. A: Descriptions of AI Actor Tasks",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/airmf/appendices/app-a-descriptions-of-ai-actor-tasks/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "App. B: How AI Risks Differ from Traditional Software Risks",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/airmf/appendices/app-b-how-ai-risks-differ-from-traditional-software-risks/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "App. C: AI Risk Management and Human-AI Interaction",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/airmf/appendices/app-c-ai-risk-management-and-human-ai-interaction/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "App. D: Attributes of the AI RMF",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/airmf/appendices/app-d-attributes-of-the-ai-rmf/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Playbook",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/playbook/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Govern",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/playbook/govern/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Map",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/playbook/map/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Measure",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/playbook/measure/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Manage",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/playbook/manage/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Audit Log",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/playbook/audit-log/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "FAQ",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/playbook/faq/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Roadmap",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/roadmap/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Example of Use Cases",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/usecases/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    },
+    {
+      "title": "Crosswalk Documents",
+      "publisher": "National Institute of Standards and Technology",
+      "canonical_url": "https://airc.nist.gov/airmf-resources/crosswalks/",
+      "date": "unknown",
+      "rights": "us_government_work"
+    }
+  ]
+}
