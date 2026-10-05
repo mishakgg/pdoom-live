@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-05T184900Z",
-  "reviewed_at": "2026-10-05T18:49:00Z",
-  "previous_review_id": "2026-10-05T184800Z",
-  "status_path": "coordination/status/status-2026-10-05T184900Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-05T184900Z.json",
+  "review_id": "2026-10-05T185000Z",
+  "reviewed_at": "2026-10-05T18:50:00Z",
+  "previous_review_id": "2026-10-05T184900Z",
+  "status_path": "coordination/status/status-2026-10-05T185000Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-05T185000Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d85e991927a16bdca16e4a9f442801baf55d4c6d",
   "origin_main_subject": "Merge pull request #31 from mishakgg/cursor/partial-integration-refresh-a32e",
@@ -113,7 +113,7 @@
       "reason": "5585848 only updates docs/FRONTEND_HANDOFF.md. GitHub CI 37274485308, E2E 37274485285, and runtime 37274485294 succeeded on that head. The handoff still records two local spawnSync python ENOENT failures. Not folded into the six-workstream candidate."
     }
   ],
-  "next_action": "Nineteen Grok 4.7 extra-high workers were requested in two waves. Three more started. Five more were refused because the concurrent cloud VM limit is 20. Draft pull requests 33 through 37 are open and unmerged. Do not merge pull request 32. Launch the refused five when a running worker finishes.",
+  "next_action": "Draft pull requests 33 through 38 are open and unmerged. OpenReview metadata started in the freed VM slot. Four workers remain queued: Hugging Face metadata, name-only profile discovery, sitemap and robots coverage, and stale public API cursors. Do not merge pull request 32.",
   "concurrent_workers_launched_at": "2026-10-05T18:46:00Z",
   "concurrent_workers_model": "grok-4.7-xhigh",
   "concurrent_workers": [
@@ -135,7 +135,8 @@
     {"task": "Label statement classes", "run": "bc-55c07075-9858-574a-a6d9-a2726b4e6e5a", "branch": "cursor/statements-class-labels-a32e"},
     {"task": "Confirm GitHub retrieval", "run": "bc-1c470596-ed63-5c57-be70-e09393a1bc0b", "branch": "cursor/github-retrieval-confirm-a32e"},
     {"task": "Confirm Semantic Scholar metadata", "run": "bc-0c0e5fac-0d6a-580e-b4ea-eca25aa91d84", "branch": "cursor/semantic-scholar-metadata-a32e"},
-    {"task": "Report source missingness", "run": "bc-76b5182e-1bd3-5ef5-8e20-c24a59af891a", "branch": "cursor/quality-missingness-a32e"}
+    {"task": "Report source missingness", "run": "bc-76b5182e-1bd3-5ef5-8e20-c24a59af891a", "branch": "cursor/quality-missingness-a32e"},
+    {"task": "Confirm OpenReview metadata", "run": "bc-05d3f393-6e9a-550d-9eda-303de24cf162", "branch": "cursor/openreview-metadata-a32e"}
   ],
   "merge_continue_dispatched_at": "2026-10-05T18:31:30Z",
   "merge_continue_targets_pr": 31,
@@ -144,7 +145,10 @@
       "owner": "agent-1",
       "pr": 21,
       "follow_up_run": "bc-6a57018b-54da-5717-b233-508ab658c379",
-      "task": "Merge pull request 31 if main is still d13c8ab and its head is still b4cf230, then continue research navigation from the updated main."
+      "follow_up_pr": 38,
+      "follow_up_branch": "cursor/research-navigation-followup-c379",
+      "follow_up_sha": "122488de96017c8507c41cb5d1c766b4d201f7ff",
+      "task": "Name selection folds accents and hyphens. Draft pull request 38 is open."
     },
     {
       "owner": "agent-2",

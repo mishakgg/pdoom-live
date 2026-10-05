@@ -1,0 +1,20 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T185000Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened the navigation follow-up draft and started OpenReview metadata in the freed VM slot.",
+  "follow_up_pr": {
+    "pr": 38,
+    "branch": "cursor/research-navigation-followup-c379",
+    "sha": "122488de96017c8507c41cb5d1c766b4d201f7ff",
+    "run": "bc-6a57018b-54da-5717-b233-508ab658c379"
+  },
+  "started": "bc-05d3f393-6e9a-550d-9eda-303de24cf162",
+  "still_queued": [
+    "huggingface-metadata",
+    "discover-name-only-social",
+    "sitemap-robots-coverage",
+    "public-api-cursor-order"
+  ]
+}
