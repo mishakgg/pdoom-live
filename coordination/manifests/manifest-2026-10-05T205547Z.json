@@ -1,0 +1,10 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T205547Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened draft 99 for public ORCID metadata without biography or works.",
+  "follow_up_prs": [
+    {"pr": 99, "sha": "35b94fca7b1acb495e100ec50af8ad3ee809d87a", "run": "bc-24dcd3b7-9e1f-5e03-9386-0f43d6d83944"}
+  ]
+}
