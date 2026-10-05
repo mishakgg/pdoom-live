@@ -4,8 +4,8 @@
 
 - Branch: `cursor/frontend-observatory-redesign-6a22`
 - Pull request: https://github.com/mishakgg/pdoom-live/pull/32
-- Suite head: `b8509ddb6d6efc831e21c249a8b38b5d2c8b4875` (production build, Vitest, and Playwright).
-- Published head: the pull request head. Commits after the suite only add this handoff and the trend-library column note. `/trends` was rendered after that note and shows “Dataset read” and the contributing definition.
+- Suite head: `d8bac784edef83518326f8f12a82660dde8858aa` (production build, Vitest, and Playwright).
+- Published head: the pull request head.
 - Base: `cursor/partial-integration-refresh-a32e` at `b4cf2307cb6e40240d5824131996ace942051f83` (pull request #31)
 - `origin/main`: `d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7`
 
@@ -64,6 +64,7 @@ The pages now show stored state versus effective state, the machine recommendati
 2. Second rendered pass. Chart links no longer repeat the estimate’s accessible name. Each exclusion row carries its reason. Mobile data tables no longer force the last column onto one line. Chart groups use `role="group"` so links inside them are not nested interactive controls.
 3. After the rebase onto `b4cf230`. Review fields from #29 were placed in the ledger layout. A later inspection found the narrow filter grid splitting its note beside the first field, a repeated numeric reading, and a cohort version printed as a bare number after a slug that already contained one. Those three were corrected. Collection states use a full-width ledger row.
 4. An independent screenshot critique. The data-page cohort line it flagged had already been changed to “version”. The trend library’s “Contributing” and time columns were undefined, so the library now says that contributing counts people with an included record and that the time is a read of stored data. A raw `needs_review` token inside Jonah Hale’s stored sentence is fixture text, not the review label. The question reference is a closed disclosure. The people-page Apply control continues below the first mobile screen.
+5. A later look at the live desktop rejected the first screen as a status spreadsheet. The mast is now a full-bleed ink bar. The homepage title sits beside a preview of the widest comparison, and the dataset clocks stay below the statements. The question page still carries the table, method line, and exclusions.
 
 ## Verification
 
@@ -77,7 +78,7 @@ npx playwright test
 
 Fixture for the dev server and the visual pass: `data/fixtures/synthetic/dataset.json` in `pdoom_live`, with `PDOOM_CURATION_MODE=local`. Playwright uses `pdoom_e2e_test` and `pdoom_e2e_empty_test`.
 
-Results on `b8509dd`:
+Results on `d8bac78`:
 
 - Production build succeeded.
 - Vitest: 214 passed, 2 failed. Both failures are `spawnSync python ENOENT` in `test/canonical-import.test.ts`. Python is not installed in this environment. The other 27 files passed, including UI, presentation, review, staging review, and runtime.
