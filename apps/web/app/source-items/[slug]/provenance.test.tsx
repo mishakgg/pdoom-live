@@ -196,6 +196,8 @@ describe("public source-item provenance", () => {
     expect(screen.queryByText(MODEL_PROSE)).toBeNull();
     expect(screen.queryByText(MODEL_PROSE, { selector: "blockquote, h1, h2, h3, p" })).toBeNull();
     expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("Stored title");
-    expect(screen.getByText("Surrounding fixture context.").closest("blockquote")).toBeNull();
+    const context = screen.getByText(/Surrounding fixture context\./);
+    expect(context.tagName).toBe("P");
+    expect(context.closest("blockquote")).toBeNull();
   });
 });
