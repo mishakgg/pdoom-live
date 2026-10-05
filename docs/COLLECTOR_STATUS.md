@@ -21,4 +21,6 @@ These collector modules exist under `pipeline/pdoom_pipeline/collectors/` and ar
 
 ForumMagnum and Bluesky stay unwired.
 
-The tracked set is a defined cohort, not all AI researchers. Counts and freshness for that cohort are what the dataset can support. This note does not treat the cohort as a stand-in for the field.
+The tracked set is a defined cohort, not all AI researchers.
+
+Counts and freshness for that cohort are what the dataset can support. This note does not treat the cohort as a stand-in for the field.
