@@ -1,0 +1,16 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T204538Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened drafts 84 through 90. The NSF fixture no longer contains email addresses.",
+  "follow_up_prs": [
+    {"pr": 84, "sha": "96cac6c2c209c1b7cd73414c9a6366312af6a42d", "run": "bc-e40f49ec-663e-56e7-b42e-774eccd4c700"},
+    {"pr": 85, "sha": "69fa84366fd44ad45da57eefc02ef20bc02feab8", "run": "bc-71d72983-0694-59f7-9fce-328ea2df2661"},
+    {"pr": 86, "sha": "5c06a5fe8e501e0b1ab9a6543e1acf3f9294ac40", "run": "bc-7d000b02-02db-5b43-8516-2dc12f69d4ff"},
+    {"pr": 87, "sha": "dfd02e39cb844f2e4fe2d25f472be33d5b215871", "run": "bc-59c1e057-6f63-5fa5-a3c4-4c7e1bf951ab"},
+    {"pr": 88, "sha": "f8012404f5a55f75cd8bc24e867d0756430f4f4d", "run": "bc-79736086-44e0-5add-b367-91a2693259ea"},
+    {"pr": 89, "sha": "53db118ffd7597639d2c2629bded68ce8fbb588c", "run": "bc-55518517-fb41-5400-913a-e2d2aa724962"},
+    {"pr": 90, "sha": "cf23fa6a93660bdd48e5327b44fe0d9c68ae0a2c", "run": "bc-afdc78a8-22a3-593e-b3c9-023cc3b4aec0"}
+  ]
+}
