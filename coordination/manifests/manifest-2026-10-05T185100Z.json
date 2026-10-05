@@ -1,0 +1,15 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T185100Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened the hostile-source draft and started Hugging Face metadata in the freed VM slot.",
+  "follow_up_pr": 39,
+  "follow_up_sha": "e66add77e54f97f68dbd1b2f422fd2bc866ad01e",
+  "started": "bc-61e5f839-01b4-5373-aab9-5ce095aec32a",
+  "still_queued": [
+    "discover-name-only-social",
+    "sitemap-robots-coverage",
+    "public-api-cursor-order"
+  ]
+}
