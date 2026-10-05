@@ -1,0 +1,12 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T205934Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened drafts 103, 104, and 105. OSF stays CC BY-NC, PubMed has no abstract, and Unpaywall stores cc-by-nc without the article.",
+  "follow_up_prs": [
+    {"pr": 103, "sha": "55d4b9d582e1596c167625f4d9566a4532344b27", "run": "bc-82e54332-d7f0-5deb-bdb2-642a02accdcb"},
+    {"pr": 104, "sha": "26b35dd4ce0ef19755bd5cc3c9ca2a9277b0cc5b", "run": "bc-959a6cd4-fea9-5ff0-b06c-96f2b7a61f40"},
+    {"pr": 105, "sha": "08530a1abaef9ab8b85d6b86a90bbff90086ca29", "run": "bc-e8808edc-21c4-5009-85f5-620e65acc486"}
+  ]
+}
