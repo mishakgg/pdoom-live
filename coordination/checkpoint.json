@@ -2,14 +2,14 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-05T183130Z",
-  "reviewed_at": "2026-10-05T18:31:30Z",
-  "previous_review_id": "2026-10-05T172839Z",
-  "status_path": "coordination/status/status-2026-10-05T183130Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-05T183130Z.json",
+  "review_id": "2026-10-05T183702Z",
+  "reviewed_at": "2026-10-05T18:37:02Z",
+  "previous_review_id": "2026-10-05T183130Z",
+  "status_path": "coordination/status/status-2026-10-05T183702Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-05T183702Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
-  "origin_main_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
-  "origin_main_subject": "Match deploy smoke to the public status bar and discovery routes (#19)",
+  "origin_main_sha": "d85e991927a16bdca16e4a9f442801baf55d4c6d",
+  "origin_main_subject": "Merge pull request #31 from mishakgg/cursor/partial-integration-refresh-a32e",
   "integration_branch": "cursor/partial-integration-refresh-a32e",
   "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/31",
   "integration_commit": "b4cf2307cb6e40240d5824131996ace942051f83",
@@ -23,13 +23,13 @@
   "coordination_branch": "cursor/integration-coordination-a32e",
   "coordination_pr": "https://github.com/mishakgg/pdoom-live/pull/20",
   "run_lock": {
-    "holder": "agent-7",
-    "acquired_at": "2026-10-05T18:31:30Z",
+    "holder": null,
+    "acquired_at": null,
     "expires_after_seconds": 7200,
     "protocol": "Set holder and acquired_at before mutating an integration branch. Clear both in the checkpoint commit that finishes the review. Do not start a second integration while a lock is younger than expires_after_seconds. The hourly timer is the primary overlap control because it fires only when this agent is idle."
   },
   "last_reviewed_shas": {
-    "origin/main": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+    "origin/main": "d85e991927a16bdca16e4a9f442801baf55d4c6d",
     "agent-1": "af6ec9b4783a4fd37dbc3b9f5c263cc9cbd96ac3",
     "agent-2": "b959a47f88f2c3d6c948072e038a082847aa666f",
     "agent-3": "85ec81dad4d2de7c49e4600af5e0c413b792818e",
@@ -87,7 +87,7 @@
       "readiness": "included_in_partial_candidate"
     }
   },
-  "readiness": "six_agent_candidate_verified",
+  "readiness": "merged_to_main",
   "integration_attempt": "six_agent_candidate_verified",
   "blockers": [],
   "measurements": "coordination/reproductions/results-2026-10-04T222755Z.json",
@@ -113,7 +113,7 @@
       "reason": "5585848 only updates docs/FRONTEND_HANDOFF.md. GitHub CI 37274485308, E2E 37274485285, and runtime 37274485294 succeeded on that head. The handoff still records two local spawnSync python ENOENT failures. Not folded into the six-workstream candidate."
     }
   ],
-  "next_action": "The user told the six owners to merge and continue. They were sent to merge pull request 31 at b4cf230 with a merge commit, because merging 21, 22, 25, 26, 27, and 29 separately drops the tested conflict resolutions. The run lock stays held while those follow-ups run. Do not start another integration until the lock expires or this review clears it. Do not also merge 32.",
+  "next_action": "Main d85e991 is the merge of pull request 31 and its tree matches b4cf230. The six source heads are ancestors of main, so GitHub closed their pull requests. Follow-up agents are still continuing their own slices. Do not merge pull request 32. Pull request 23 remains open and is superseded.",
   "merge_continue_dispatched_at": "2026-10-05T18:31:30Z",
   "merge_continue_targets_pr": 31,
   "merge_continue_agents": [
