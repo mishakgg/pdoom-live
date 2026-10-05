@@ -1,0 +1,14 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T203131Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened drafts 68 through 72. Europe PMC fixture keeps metadata only.",
+  "follow_up_prs": [
+    {"pr": 68, "sha": "ed90a16bd44b5e4a261b1bba8a5c0dd20135ac10", "run": "bc-be752873-c711-5177-9a3b-6d7be72d1a40"},
+    {"pr": 69, "sha": "48c5904ef86e9e4787506e0f6955940399eb9455", "run": "bc-3d31ee71-b423-5e1f-9c62-ba02bfb9ab28"},
+    {"pr": 70, "sha": "5e0efe15aa05c6118ce374b67aff6911091adcbe", "run": "bc-22472010-4b1b-55e2-8f7b-056e726f12cf"},
+    {"pr": 71, "sha": "8f8f8dc8ac429d437d9f567593e60517e1ae4734", "run": "bc-2f4fb0fc-7b4d-565d-9a6c-9bd5597ba44b"},
+    {"pr": 72, "sha": "f0700e0c689dadd258d16776a2d041f1a7b6f667", "run": "bc-e617fed3-a458-5ec0-9f80-a0fbb9d87499"}
+  ]
+}
