@@ -1,0 +1,11 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T205422Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened drafts 97 and 98 for Wikidata and Internet Archive metadata.",
+  "follow_up_prs": [
+    {"pr": 97, "sha": "d05ed20b515ef5bcc01a77283e3eeef6b5f64b93", "run": "bc-10adaf0b-7fe3-5ad9-ad45-3c5164858176"},
+    {"pr": 98, "sha": "02164671101a689458b53ad687bdbe55f595b4aa", "run": "bc-f1460aea-59e9-5446-b829-4994820ce8e4"}
+  ]
+}
