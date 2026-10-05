@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/Je/V+OX5lxVV1GPoAvm1kbj42Ng</id>
+  <title>arXiv Query: search_query=all:"existential risk" AND all:"artificial intelligence"&amp;id_list=&amp;start=0&amp;max_results=5</title>
+  <updated>2026-10-05T18:50:34Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=all:%22existential+risk%22+AND+all:%22artificial+intelligence%22&amp;start=0&amp;max_results=5&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>5</opensearch:itemsPerPage>
+  <opensearch:totalResults>57</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2209.10604v1</id>
+    <title>Current and Near-Term AI as a Potential Existential Risk Factor</title>
+    <updated>2022-09-21T18:56:14Z</updated>
+    <link href="https://arxiv.org/abs/2209.10604v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2209.10604v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>There is a substantial and ever-growing corpus of evidence and literature exploring the impacts of Artificial intelligence (AI) technologies on society, politics, and humanity as a whole. A separate, parallel body of work has explored existential risks to humanity, including but not limited to that stemming from unaligned Artificial General Intelligence (AGI). In this paper, we problematise the notion that current and near-term artificial intelligence technologies have the potential to contribute to existential risk by acting as intermediate risk factors, and that this potential is not limited to the unaligned AGI scenario. We propose the hypothesis that certain already-documented effects of AI can act as existential risk factors, magnifying the likelihood of previously identified sources of existential risk. Moreover, future developments in the coming decade hold the potential to significantly exacerbate these risk factors, even in the absence of artificial general intelligence. Our main contribution is a (non-exhaustive) exposition of potential AI risk factors and the causal relationships between them, focusing on how AI can affect power dynamics and information security. This exposition demonstrates that there exist causal pathways from AI systems to existential risks that do not presuppose hypothetical future AI capabilities.</summary>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2022-09-21T18:56:14Z</published>
+    <arxiv:primary_category term="cs.CY"/>
+    <arxiv:journal_ref>AIES '22: Proceedings of the 2022 AAAI/ACM Conference on AI, Ethics, and Society</arxiv:journal_ref>
+    <author>
+      <name>Benjamin S. Bucknall</name>
+    </author>
+    <author>
+      <name>Shiri Dori-Hacohen</name>
+    </author>
+    <arxiv:doi>10.1145/3514094.3534146</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3514094.3534146" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2310.18244v1</id>
+    <title>A Review of the Evidence for Existential Risk from AI via Misaligned Power-Seeking</title>
+    <updated>2023-10-27T16:29:45Z</updated>
+    <link href="https://arxiv.org/abs/2310.18244v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2310.18244v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Rapid advancements in artificial intelligence (AI) have sparked growing concerns among experts, policymakers, and world leaders regarding the potential for increasingly advanced AI systems to pose existential risks. This paper reviews the evidence for existential risks from AI via misalignment, where AI systems develop goals misaligned with human values, and power-seeking, where misaligned AIs actively seek power. The review examines empirical findings, conceptual arguments and expert opinion relating to specification gaming, goal misgeneralization, and power-seeking. The current state of the evidence is found to be concerning but inconclusive regarding the existence of extreme forms of misaligned power-seeking. Strong empirical evidence of specification gaming combined with strong conceptual evidence for power-seeking make it difficult to dismiss the possibility of existential risk from misaligned power-seeking. On the other hand, to date there are no public empirical examples of misaligned power-seeking in AI systems, and so arguments that future systems will pose an existential risk remain somewhat speculative. Given the current state of the evidence, it is hard to be extremely confident either that misaligned power-seeking poses a large existential risk, or that it poses no existential risk. The fact that we cannot confidently rule out existential risk from AI via misaligned power-seeking is cause for serious concern.</summary>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-10-27T16:29:45Z</published>
+    <arxiv:primary_category term="cs.CY"/>
+    <author>
+      <name>Rose Hadshar</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2011.03044v1</id>
+    <title>Artificial Intelligence and its impact on the Fourth Industrial Revolution: A Review</title>
+    <updated>2020-11-05T15:57:34Z</updated>
+    <link href="https://arxiv.org/abs/2011.03044v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2011.03044v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Artificial Intelligence may revolutionize everything during the so-called fourth industrial revolution, which carries several emerging technologies and could progress without precedents in human history due to its speed and scope. Government, academia, industry, and civil society show interest in understanding the multidimensional impact of the emerging industrial revolution; however, its development is hard to predict. Experts consider emerging technologies could bring tremendous benefits to humanity; at the same time, they could pose an existential risk. This paper reviews the development and trends in AI, as well as the benefits, risks, and strategies in the field. During the course of the emerging industrial revolution, the common good may be achieved in a collaborative environment of shared interests and the hardest work will be the implementation and monitoring of projects at a global scale.</summary>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2020-11-05T15:57:34Z</published>
+    <arxiv:primary_category term="cs.CY"/>
+    <arxiv:journal_ref>International Journal of Artificial Intelligence &amp; Applications (IJAIA) Vol.10, No.6, November 2019</arxiv:journal_ref>
+    <author>
+      <name>Gissel Velarde</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2311.08698v1</id>
+    <title>Artificial General Intelligence, Existential Risk, and Human Risk Perception</title>
+    <updated>2023-11-15T04:57:16Z</updated>
+    <link href="https://arxiv.org/abs/2311.08698v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2311.08698v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Artificial general intelligence (AGI) does not yet exist, but given the pace of technological development in artificial intelligence, it is projected to reach human-level intelligence within roughly the next two decades. After that, many experts expect it to far surpass human intelligence and to do so rapidly. The prospect of superintelligent AGI poses an existential risk to humans because there is no reliable method for ensuring that AGI goals stay aligned with human goals. Drawing on publicly available forecaster and opinion data, the author examines how experts and non-experts perceive risk from AGI. The findings indicate that the perceived risk of a world catastrophe or extinction from AGI is greater than for other existential risks. The increase in perceived risk over the last year is also steeper for AGI than for other existential threats (e.g., nuclear war or human-caused climate change). That AGI is a pressing existential risk is something on which experts and non-experts agree, but the basis for such agreement currently remains obscure.</summary>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2023-11-15T04:57:16Z</published>
+    <arxiv:primary_category term="cs.CY"/>
+    <author>
+      <name>David R. Mandel</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2511.19115v2</id>
+    <title>AI Consciousness and Existential Risk</title>
+    <updated>2026-05-14T19:57:37Z</updated>
+    <link href="https://arxiv.org/abs/2511.19115v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2511.19115v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In AI, the existential risk denotes the hypothetical threat posed by an artificial system that would possess both the capability and the objective, either directly or indirectly, to eradicate humanity. This issue is gaining prominence in scientific debate due to recent technical advancements and increased media coverage. In parallel, AI progress has sparked speculation and studies about the potential emergence of artificial consciousness. The two questions, AI consciousness and existential risk, are sometimes conflated, as if the former entailed the latter. Here, I explain that this view stems from a common confusion between consciousness and intelligence. Yet these two properties are empirically and theoretically distinct. Arguably, while intelligence is a direct predictor of an AI system's existential threat, consciousness is not. There are, however, certain incidental scenarios in which consciousness could influence existential risk, in either direction. Consciousness could be viewed as a means towards AI alignment, thereby lowering existential risk; or, it could be a precondition for reaching certain capabilities or levels of intelligence, and thus positively related to existential risk. Recognizing these distinctions can help AI safety researchers and public policymakers focus on the most pressing issues.</summary>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CY" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2025-11-24T13:48:02Z</published>
+    <arxiv:comment>Updated for clarity and completeness following peer-review</arxiv:comment>
+    <arxiv:primary_category term="cs.AI"/>
+    <author>
+      <name>Rufin VanRullen</name>
+    </author>
+  </entry>
+</feed>
