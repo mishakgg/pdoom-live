@@ -242,6 +242,36 @@ def test_stated_reuse_licence_is_labeled_and_page_text_is_not_returned():
     assert rights_from_page(creative_commons) == RIGHTS_CREATIVE_COMMONS
     link = "<p>クリエイティブ・コモンズ 表示 4.0 https://creativecommons.org/licenses/by/4.0/</p>"
     assert rights_from_page(link) == RIGHTS_CREATIVE_COMMONS
+    by_sa = "<p>https://creativecommons.org/licenses/by-sa/4.0/</p>"
+    assert rights_from_page(by_sa) == RIGHTS_CREATIVE_COMMONS
+    cc0 = "<p>https://creativecommons.org/publicdomain/zero/1.0/</p>"
+    assert rights_from_page(cc0) == RIGHTS_CREATIVE_COMMONS
+
+
+def test_noncommercial_or_noderivatives_creative_commons_stays_unknown():
+    by_nc = "<p>https://creativecommons.org/licenses/by-nc/4.0/</p>"
+    assert rights_from_page(by_nc) == RIGHTS_UNKNOWN
+    by_nd = "<p>https://creativecommons.org/licenses/by-nd/4.0/</p>"
+    assert rights_from_page(by_nd) == RIGHTS_UNKNOWN
+    by_nc_sa = "<p>https://creativecommons.org/licenses/by-nc-sa/4.0/</p>"
+    assert rights_from_page(by_nc_sa) == RIGHTS_UNKNOWN
+    by_nc_nd = "<p>https://creativecommons.org/licenses/by-nc-nd/4.0/</p>"
+    assert rights_from_page(by_nc_nd) == RIGHTS_UNKNOWN
+    phrase = "<p>This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International license.</p>"
+    assert rights_from_page(phrase) == RIGHTS_UNKNOWN
+    noderivatives = "<p>licensed under the Creative Commons Attribution-NoDerivatives 4.0 license.</p>"
+    assert rights_from_page(noderivatives) == RIGHTS_UNKNOWN
+    generic = "<p>This work is licensed under a Creative Commons license. https://creativecommons.org/licenses/</p>"
+    assert rights_from_page(generic) == RIGHTS_UNKNOWN
+    japanese_nc = "<p>クリエイティブ・コモンズ 表示-非営利 4.0</p>"
+    assert rights_from_page(japanese_nc) == RIGHTS_UNKNOWN
+    japanese_nd = "<p>クリエイティブ・コモンズ 表示-改変禁止 4.0</p>"
+    assert rights_from_page(japanese_nd) == RIGHTS_UNKNOWN
+    mixed = (
+        "<p>https://creativecommons.org/licenses/by/4.0/ "
+        "https://creativecommons.org/licenses/by-nc/4.0/</p>"
+    )
+    assert rights_from_page(mixed) == RIGHTS_UNKNOWN
 
 
 def test_missing_dates_stay_unknown_and_labeled_dates_win():

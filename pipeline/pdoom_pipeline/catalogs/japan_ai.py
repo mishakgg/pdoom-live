@@ -143,13 +143,28 @@ _PUBLIC_DATA_GRANT = re.compile(
     r"公共データ利用規約.{0,160}(?:自由に利用|複製)|"
     r"(?:自由に利用|複製).{0,160}公共データ利用規約"
 )
-_CREATIVE_COMMONS = re.compile(
-    r"creativecommons\.org/licenses/|"
-    r"creativecommons\.org/publicdomain/|"
-    r"licen[cs]ed under (?:a |the )?creative commons|"
-    r"クリエイティブ・コモンズ・ライセンスの下|"
-    r"クリエイティブ・コモンズ\s*表示\s*4\.0|"
-    r"クリエイティブ・コモンズ・ライセンス[（(]表示"
+# creative_commons is only CC0, CC BY, or CC BY-SA. NonCommercial and
+# NoDerivatives deeds, and a generic "Creative Commons" mention, stay unknown.
+_CC_RESTRICTED = re.compile(
+    r"creativecommons\.org/licenses/by-nc(?:-sa|-nd)?\b|"
+    r"creativecommons\.org/licenses/by-nd\b|"
+    r"attribution\s*[-–—]\s*non\s*[-–—]?\s*commercial|"
+    r"attribution\s*[-–—]\s*no\s*[-–—]?\s*deriv|"
+    r"\bnon\s*[-–—]?\s*commercial\b|"
+    r"\bno\s*[-–—]?\s*derivatives\b|"
+    r"非営利|"
+    r"改変禁止"
+)
+_CC_PERMISSIVE = re.compile(
+    r"creativecommons\.org/licenses/by-sa\b|"
+    r"creativecommons\.org/licenses/by/(?=\d)|"
+    r"creativecommons\.org/publicdomain/zero\b|"
+    r"licen[cs]ed under (?:a |the )?creative commons attribution(?!\s*[-–—]\s*(?:non|no))|"
+    r"licen[cs]ed under (?:a |the )?creative commons (?:cc0|zero)\b|"
+    r"\bcc0\b|"
+    r"クリエイティブ・コモンズ(?:・ライセンス)?\s*表示\s*[-－ー]\s*継承|"
+    r"クリエイティブ・コモンズ(?:・ライセンスの|\s+)表示\s*4\.0(?!\s*国際と互換)|"
+    r"クリエイティブ・コモンズ・ライセンス[（(]\s*表示\s*[）)]"
 )
 
 
@@ -179,7 +194,13 @@ def official_japan_host(hostname: str) -> bool:
 
 
 def rights_from_page(page_text: str) -> str:
-    """Return a rights label. Public availability alone stays unknown."""
+    """Return a rights label. Public availability alone stays unknown.
+
+    ``creative_commons`` is only CC0, CC BY, or CC BY-SA, including the
+    Japanese name クリエイティブ・コモンズ 表示 4.0. A NonCommercial or
+    NoDerivatives phrase stays unknown. A copyright line or a site-policy
+    link stays unknown.
+    """
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     plain = _fold(_plain(page_text))
@@ -187,7 +208,9 @@ def rights_from_page(page_text: str) -> str:
         return RIGHTS_STANDARD_TERMS
     if _PUBLIC_DATA_VERSION.search(plain) or _PUBLIC_DATA_GRANT.search(plain):
         return RIGHTS_PUBLIC_DATA
-    if _CREATIVE_COMMONS.search(plain):
+    if _CC_RESTRICTED.search(plain):
+        return RIGHTS_UNKNOWN
+    if _CC_PERMISSIVE.search(plain):
         return RIGHTS_CREATIVE_COMMONS
     return RIGHTS_UNKNOWN
 
