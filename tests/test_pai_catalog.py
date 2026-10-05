@@ -480,7 +480,7 @@ def test_validator_rejects_bad_rights_order_and_stored_body(tmp_path: Path):
 
     document = copy.deepcopy(load_catalog())
     document["entries"][0]["body"] = BODY
-    with pytest.raises(CatalogError, match="entry fields"):
+    with pytest.raises(CatalogError, match="must not store page text"):
         validate_catalog(document)
 
     document = copy.deepcopy(load_catalog())
