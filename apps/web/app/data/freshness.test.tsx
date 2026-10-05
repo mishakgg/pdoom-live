@@ -26,7 +26,7 @@ function catalog(input: { dataset: PublicCatalog["dataset"]; cohort: PublicCatal
     cohort: input.cohort,
     methodology: {
       cohort_methodology_ref: "docs/COHORT_METHODOLOGY.md",
-      cohort_methodology_version: "1.0.0",
+      cohort_methodology_version: "2026.09.0",
       cohort_methodology_note: "Written methodology.",
       provenance_policy_ref: "docs/SOURCE_AND_PROVENANCE_POLICY.md",
       public_api_ref: "docs/PUBLIC_API.md",
@@ -35,7 +35,7 @@ function catalog(input: { dataset: PublicCatalog["dataset"]; cohort: PublicCatal
     },
     publication: {
       included_review_states: ["human_verified", "machine_validated"],
-      excluded_review_states: ["needs_review", "unreviewed", "rejected"],
+      excluded_review_states: ["rejected", "unreviewed", "needs_review"],
       machine_validated: "machine",
       site_difference: "The website can show needs_review statements as unsettled.",
     },
