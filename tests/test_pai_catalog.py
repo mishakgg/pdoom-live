@@ -346,12 +346,30 @@ def test_a_stated_reuse_licence_sets_the_rights_label():
     assert rights_from_page(creative) == RIGHTS_CREATIVE_COMMONS
     linked = '<p>Reuse is <a href="https://creativecommons.org/licenses/by/4.0/">permitted</a>.</p>'
     assert rights_from_page(linked) == RIGHTS_CREATIVE_COMMONS
+    sharealike = '<p>Available under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>'
+    assert rights_from_page(sharealike) == RIGHTS_CREATIVE_COMMONS
+    zero = '<p>Licensed under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>.</p>'
+    assert rights_from_page(zero) == RIGHTS_CREATIVE_COMMONS
     structured = (
         '<script type="application/ld+json">'
         '{"license": "https://creativecommons.org/licenses/by-nc/4.0/"}'
         "</script><p>All Rights Reserved</p>"
     )
-    assert rights_from_page(structured) == RIGHTS_CREATIVE_COMMONS
+    assert rights_from_page(structured) == RIGHTS_UNKNOWN
+    for deed in (
+        "https://creativecommons.org/licenses/by-nd/4.0/",
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+    ):
+        assert rights_from_page(f'<a href="{deed}">deed</a>') == RIGHTS_UNKNOWN
+    noncommercial = "<p>Licensed under the Creative Commons Attribution-NonCommercial 4.0 licence.</p>"
+    assert rights_from_page(noncommercial) == RIGHTS_UNKNOWN
+    noderivatives = "<p>Licensed under the Creative Commons Attribution-NoDerivatives 4.0 licence.</p>"
+    assert rights_from_page(noderivatives) == RIGHTS_UNKNOWN
+    nc_sa = "<p>Available under CC BY-NC-SA 4.0.</p>"
+    assert rights_from_page(nc_sa) == RIGHTS_UNKNOWN
+    generic = "<p>Licensed under the Creative Commons.</p>"
+    assert rights_from_page(generic) == RIGHTS_UNKNOWN
     government = "<p>Available under the Open Government Licence v3.0.</p>"
     assert rights_from_page(government) == RIGHTS_OPEN_GOVERNMENT_LICENCE
     split = "<p>Licensed under the <span>Creative Commons</span> Attribution 4.0 licence.</p>"

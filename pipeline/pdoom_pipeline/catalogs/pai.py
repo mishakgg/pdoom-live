@@ -3,10 +3,12 @@
 Each stored URL was confirmed with one bounded GET. A row keeps the title,
 publisher, canonical URL, date, and rights label. Page text is not stored.
 Rights stay unknown unless that page states a reuse licence that allows
-copying. A public page, a copyright notice, and an all-rights-reserved line
-are not licences. A missing publication date stays unknown. Updated and
-modified times, and a copyright year, are not publication dates. This module
-does not fetch and it is not a belief collector. runner_wired stays false.
+copying. creative_commons means only CC0, CC BY, or CC BY-SA. CC BY-NC,
+CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay unknown. A public page, a
+copyright notice, and an all-rights-reserved line are not licences. A missing
+publication date stays unknown. Updated and modified times, and a copyright
+year, are not publication dates. This module does not fetch and it is not a
+belief collector. runner_wired stays false.
 """
 
 from __future__ import annotations
@@ -88,15 +90,26 @@ _TITLE = re.compile(r"(?is)<title\b[^>]*>(.*?)</title>")
 _ATTR = re.compile(r"""([:\w.-]+)\s*=\s*(['"])(.*?)\2""")
 _SITE_SUFFIX = re.compile(r"(?i)\s+[-|–—]\s+partnership on ai\s*$")
 _SKIP_JSON_KEYS = frozenset({"articleBody", "description", "text", "comment"})
+# A following NC/ND suffix is not a licence that allows copying.
+_NOT_NC_ND = r"(?![\s-]*(?:nc|nd|non[-\s]?commercial|no[-\s]?deriv))"
 _STATED_CC = re.compile(
-    r"(?ix)"
-    r"(?:licen[cs]ed|made\s+available|available)\s+under\s+"
+    r"(?i)(?:licen[cs]ed|made\s+available|available)\s+under\s+"
     r"(?:the\s+|a\s+)?(?:terms\s+of\s+(?:the\s+)?)?"
-    r"(?:creative\s+commons\b|cc[\s-]?by\b|cc0\b|cc[\s-]?zero\b)"
-    r"|creative\s+commons\s+(?:attribution|zero|public\s+domain)\b"
+    r"(?:"
+    r"cc0(?![\w-])|cc[\s-]?zero(?![\w-])"
+    r"|creative\s+commons\s+(?:zero|cc0)(?![\w-])"
+    r"|cc[\s-]?by(?:[\s-]+sa)?" + _NOT_NC_ND +
+    r"|creative\s+commons\s+attribution(?:[-\s]+share[-\s]?alike)?" + _NOT_NC_ND +
+    r")"
+    r"|creative\s+commons\s+(?:zero|cc0)(?![\w-])"
+    r"|cc0(?![\w-])"
+    r"|cc[\s-]?zero(?![\w-])"
+    r"|creative\s+commons\s+attribution(?:[-\s]+share[-\s]?alike)?" + _NOT_NC_ND
 )
 _CC_URL = re.compile(
-    r"(?i)https?://(?:www\.)?creativecommons\.org/(?:licenses|publicdomain)/"
+    r"(?i)https?://(?:www\.)?creativecommons\.org/"
+    r"(?:licenses/by-sa(?![\w-])|licenses/by(?![\w-])"
+    r"|licenses/(?:cc0|zero)(?![\w-])|publicdomain/zero(?![\w-]))"
 )
 _STATED_OGL = re.compile(
     r"(?ix)"
@@ -129,10 +142,11 @@ def official_pai_host(hostname: str) -> bool:
 def rights_from_page(page_text: str) -> str:
     """Return a rights label. Public availability alone stays unknown.
 
-    A Creative Commons or Open Government Licence statement in visible page
-    content, or a JSON-LD licence value, can set a label. Script, style, and
-    comment text do not count. "All rights reserved", a copyright year, and
-    the word licence by itself do not allow copying.
+    creative_commons is only CC0, CC BY, or CC BY-SA. A following -nc, -nd,
+    NonCommercial, or NoDerivatives suffix stays unknown. Open Government
+    Licence is a separate label. Script, style, and comment text do not count.
+    "All rights reserved", a copyright year, and the word licence by itself
+    do not allow copying.
     """
 
     if not isinstance(page_text, str):
