@@ -1,0 +1,10 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T235746Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Hourly delivery 27 found the six workstream heads unchanged. Pull requests 135, 137, 152, 153, 154, 156, and 157 are merged.",
+  "follow_up_prs": [133, 155, 158, 159, 160],
+  "merged_prs": [135, 137, 152, 153, 154, 156, 157],
+  "origin_main_sha": "ae07e1ccb7a33ceaf195468dd1fec3954594d0e2"
+}
