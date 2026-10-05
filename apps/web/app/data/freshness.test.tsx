@@ -131,6 +131,7 @@ function expectValidatorCopy() {
   const paragraph = Array.from(section?.querySelectorAll("p") ?? []).find((node) => node.textContent?.includes("Responses send"));
   expect(paragraph?.textContent).toContain(VALIDATOR);
   expect(Array.from(paragraph?.querySelectorAll("code") ?? [], (node) => node.textContent)).toEqual([
+    "limit",
     "ETag",
     "Cache-Control",
     "Last-Modified",
