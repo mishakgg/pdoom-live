@@ -1,8 +1,44 @@
-import { getCoverage, getPublicCatalog } from "@pdoom/db";
+import { getCoverage, getPublicCatalog, type PublicCatalog } from "@pdoom/db";
 import Link from "next/link";
 import { PublicApiValidatorCopy } from "@/components/public-api-validator-copy";
 import { formatWhen } from "@/lib/format";
 import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
+
+type Coverage = Awaited<ReturnType<typeof getCoverage>>;
+
+export type DatasetFreshnessInput = {
+  datasetId: string | null;
+  datasetVersion: string | null;
+  cohortSlug: string | null;
+  cohortVersion: string | null;
+  cohortSize: number | null;
+  importedAt: string | null;
+};
+
+function storedText(value: string | null | undefined): string | null {
+  const text = value?.trim();
+  return text ? text : null;
+}
+
+export function datasetFreshnessCopy(input: DatasetFreshnessInput): string {
+  const datasetId = storedText(input.datasetId);
+  const datasetVersion = storedText(input.datasetVersion);
+  const cohortSlug = storedText(input.cohortSlug);
+  const cohortVersion = storedText(input.cohortVersion);
+  const loaded: string[] = [];
+  if (datasetId) {
+    loaded.push(datasetVersion ? `dataset ${datasetId}, version ${datasetVersion}` : `dataset ${datasetId}`);
+  }
+  if (cohortSlug || cohortVersion) {
+    loaded.push(`cohort ${[cohortSlug, cohortVersion].filter(Boolean).join(" ")}`);
+  }
+  const identity = loaded.length ? `Loaded ${loaded.join(", ")}.` : "No dataset is loaded.";
+  const imported = formatWhen(input.importedAt) === "Time unknown"
+    ? "Import time unknown."
+    : `Imported ${formatWhen(input.importedAt)}.`;
+  const membership = input.cohortSize === null ? "" : ` Cohort membership is ${input.cohortSize}.`;
+  return `${identity} ${imported}${membership} The count is the loaded cohort, not all AI researchers.`;
+}
 
 export const dynamic = "force-dynamic";
 
@@ -26,7 +62,14 @@ const files = [
 
 export default async function DataPage() {
   const [catalog, coverage] = await Promise.all([getPublicCatalog(null), getCoverage()]);
+  return <DataDocument catalog={catalog} coverage={coverage} />;
+}
+
+export function DataDocument({ catalog, coverage }: { catalog: PublicCatalog; coverage: Coverage }) {
   const dataset = catalog.dataset;
+  const cohortSlug = storedText(catalog.cohort?.slug) ?? storedText(coverage.cohort_slug);
+  const cohortVersion = storedText(catalog.cohort?.version) ?? storedText(coverage.cohort_version);
+  const cohortKnown = Boolean(cohortSlug || cohortVersion);
   const citation = dataset
     ? `pdoom.live public dataset ${dataset.dataset_id}, cohort ${catalog.cohort?.slug ?? "unknown"} ${catalog.cohort?.version ?? ""}, API v1, export schema ${catalog.export_schema_version}. ${dataset.imported_at ?? "import time unknown"}. https://pdoom.live/data`
     : "pdoom.live public dataset, API v1. https://pdoom.live/data";
@@ -37,12 +80,22 @@ export default async function DataPage() {
         The read API and bulk snapshot are a research export of records already eligible for the public dataset. They are not the internal canonical import, and they do not include rejected, unreviewed, or needs-review material.
       </p>
       <p className="fresh">
-        <span><strong>{dataset?.dataset_kind === "synthetic" ? "Synthetic fixture" : "Live dataset"}</strong> {dataset?.dataset_id ?? "No dataset loaded"}</span>
+        <span><strong>{dataset ? (dataset.dataset_kind === "synthetic" ? "Synthetic fixture" : "Live dataset") : "No dataset loaded"}</strong>{dataset ? ` ${dataset.dataset_id}` : ""}</span>
         <span>Cohort {catalog.cohort?.name ?? "none"} {catalog.cohort?.version ?? ""}</span>
         <span>{catalog.counts.statements} public statements</span>
       </p>
       <section className="panel" aria-labelledby="data-freshness">
         <h2 id="data-freshness">Freshness</h2>
+        <p>
+          {datasetFreshnessCopy({
+            datasetId: dataset?.dataset_id ?? null,
+            datasetVersion: dataset?.import_schema_version ?? null,
+            cohortSlug,
+            cohortVersion,
+            cohortSize: cohortKnown ? coverage.cohort_size : null,
+            importedAt: dataset?.imported_at ?? null,
+          })}
+        </p>
         <p>These clocks are different. Opening or reloading this page reads the stored dataset. It does not collect sources.</p>
         <dl className="facts">
           <div>

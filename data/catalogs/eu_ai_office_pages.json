@@ -1,0 +1,90 @@
+{
+  "catalog_id": "eu_ai_office_pages",
+  "description": "Metadata for confirmed public European AI Office pages on the European Commission host. Each URL was confirmed with one bounded GET. Rows store a title, publisher, canonical URL, date, and rights label. Page text, regulation text, and PDFs are not stored. Rights stay unknown unless the page states a reuse licence. creative_commons means only CC0, CC BY, or CC BY-SA. CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay unknown. A public page, a copyright notice, or a terms link is not a licence. An EU reuse decision or Decision 2011/833/EU is eu_reuse_decision when the page states it. A missing publication date stays unknown. Updated, modified, and copyright years are not publication dates. This catalog is not a belief collector.",
+  "entries": [
+    {
+      "title": "European AI Office",
+      "publisher": "European Commission",
+      "canonical_url": "https://digital-strategy.ec.europa.eu/en/policies/ai-office",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Board",
+      "publisher": "European Commission",
+      "canonical_url": "https://digital-strategy.ec.europa.eu/en/policies/ai-board",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Act Scientific Panel",
+      "publisher": "European Commission",
+      "canonical_url": "https://digital-strategy.ec.europa.eu/en/policies/ai-scientific-panel",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Act Advisory Forum",
+      "publisher": "European Commission",
+      "canonical_url": "https://digital-strategy.ec.europa.eu/en/policies/ai-advisory-forum",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Drawing-up a General-Purpose AI Code of Practice",
+      "publisher": "European Commission",
+      "canonical_url": "https://digital-strategy.ec.europa.eu/en/policies/ai-code-practice",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "The General-Purpose AI Code of Practice",
+      "publisher": "European Commission",
+      "canonical_url": "https://digital-strategy.ec.europa.eu/en/policies/contents-code-gpai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Guidelines for providers of general-purpose AI models",
+      "publisher": "European Commission",
+      "canonical_url": "https://digital-strategy.ec.europa.eu/en/policies/guidelines-gpai-providers",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Pact",
+      "publisher": "European Commission",
+      "canonical_url": "https://digital-strategy.ec.europa.eu/en/policies/ai-pact",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Pact Events",
+      "publisher": "European Commission",
+      "canonical_url": "https://digital-strategy.ec.europa.eu/en/policies/ai-pact-events",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Commission Decision Establishing the European AI Office",
+      "publisher": "European Commission",
+      "canonical_url": "https://digital-strategy.ec.europa.eu/en/library/commission-decision-establishing-european-ai-office",
+      "date": "2024-01-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Commission establishes AI Office to strengthen EU leadership in safe and trustworthy Artificial Intelligence",
+      "publisher": "European Commission",
+      "canonical_url": "https://digital-strategy.ec.europa.eu/en/news/commission-establishes-ai-office-strengthen-eu-leadership-safe-and-trustworthy-artificial",
+      "date": "2024-05-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Office publishes frontier AI expert findings on EU competitiveness, sovereignty and security",
+      "publisher": "European Commission",
+      "canonical_url": "https://digital-strategy.ec.europa.eu/en/library/ai-office-publishes-frontier-ai-expert-findings-eu-competitiveness-sovereignty-and-security",
+      "date": "2026-07-15",
+      "rights": "unknown"
+    }
+  ]
+}

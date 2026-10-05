@@ -1,0 +1,266 @@
+{
+  "catalog_id": "pai_pages",
+  "description": "Metadata for public Partnership on AI pages about AI safety or governance. Each canonical URL on partnershiponai.org was confirmed with one bounded GET. Each row stores the title, publisher, canonical URL, date, and rights. Page text is not stored. A missing publication date stays unknown. Rights stay unknown unless that page states a reuse licence that allows copying. A public page is not a licence. runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Report on Algorithmic Risk Assessment Tools in the U.S. Criminal Justice System",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/paper/report-on-machine-learning-in-risk-assessment-tools-in-the-u-s-criminal-justice-system/",
+      "date": "2019-04-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bringing Facial Recognition Systems To Light",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/paper/facial-recognition-systems/",
+      "date": "2020-02-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Managing the Risks of AI Research: Six Recommendations for Responsible Publication",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/paper/responsible-publication-recommendations/",
+      "date": "2021-05-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Publication Norms for Responsible AI",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/workstream/publication-norms-for-responsible-ai/",
+      "date": "2021-06-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Synthetic and Manipulated Content",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/workstream/synthetic-and-manipulated-content/",
+      "date": "2021-06-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Incident Database",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/workstream/ai-incidents-database/",
+      "date": "2021-06-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Fairness, Transparency, and Accountability",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/program/fairness-transparency-and-accountability-about-ml/",
+      "date": "2021-07-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Transparency and Governance",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/transparency-governance/",
+      "date": "2021-07-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Algorithmic Fairness & the Law",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/workstream/algorithmic-fairness-the-law/",
+      "date": "2021-07-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Safety Critical AI",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/program/safety-critical-ai/",
+      "date": "2022-07-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "PAI’s Responsible Practices for Synthetic Media: A Framework for Collective Action",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/pais-responsible-practices-for-synthetic-media-a-framework-for-collective-action/",
+      "date": "2023-02-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Public Policy",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/program/policy/",
+      "date": "2023-03-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "PAI’s Response to NTIA—AI Accountability Policy Request for Comment",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/pais-response-to-ntia-ai-accountability-policy-request-for-comment/",
+      "date": "2023-06-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "PAI Responds to the NTIA Request for Comment on AI Accountability Policy",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/pai-responds-to-the-ntia-request-for-comment-on-ai-accountability-policy/",
+      "date": "2023-06-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "PAI’s Guidance for Safe Foundation Model Deployment",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/modeldeployment/",
+      "date": "2023-10-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "PAI’s comments on NIST AI 100-4, Reducing Risks Posed by Synthetic Content",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/pais-comments-on-nist-ai-100-4-reducing-risks-posed-by-synthetic-content/",
+      "date": "2024-06-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Risk Mitigation Strategies for the Open Foundation Model Value Chain",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/risk-mitigation-strategies-for-the-open-foundation-model-value-chain/",
+      "date": "2024-07-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Policy Alignment on AI Transparency",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/policy-alignment-on-ai-transparency/",
+      "date": "2024-10-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Towards Responsible AI Content",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/policy-recommendations-from-5-cases-implementing-pais-synthetic-media-framework/",
+      "date": "2024-11-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Documenting the Impacts of Foundation Models",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/paper/documenting-the-impacts-of-foundation-models/",
+      "date": "2025-02-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Building a Robust AI Assurance Ecosystem: PAI’s Recommendations for the G7 2025 Summit",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/pais-recommendations-for-the-g7-2025-summit/",
+      "date": "2025-06-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Safeguarding Trust and Dignity in the Age of AI-Generated Media",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/safeguarding-trust-and-dignity-in-the-age-of-ai-generated-media/",
+      "date": "2025-06-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Decoding AI Governance: A Toolkit for Navigating Evolving Norms, Standards, and Rules",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/decoding-ai-governance/",
+      "date": "2025-07-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Prioritizing Real-Time Failure Detection in AI Agents",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/prioritizing-real-time-failure-detection-in-ai-agents/",
+      "date": "2025-09-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Agents & Global Governance: Analyzing Foundational Legal, Policy, and Accountability Tools",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/ai-agents-global-governance-analyzing-foundational-legal-policy-and-accountability-tools/",
+      "date": "2025-09-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Preparing for AI Agent Governance",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/preparing-for-ai-agent-governance/",
+      "date": "2025-09-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Disclosure of AI-related impacts, risks, and opportunities",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/disclosure-of-ai-related-impacts-risks-and-opportunities/",
+      "date": "2025-11-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Partnership on AI’s Enterprise AI Governance Forum",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/enterprise-ai-governance-forum/",
+      "date": "2026-01-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Six AI Governance Priorities for 2026",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/six-ai-governance-priorities/",
+      "date": "2026-02-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Strengthening the AI Assurance Ecosystem",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/workstream/strengthening-the-ai-assurance-ecosystem/",
+      "date": "2026-02-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Closing the AI Assurance Divide: Policy Strategies for Developing Economies",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/closing-the-ai-assurance-divide/",
+      "date": "2026-02-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Strengthening the AI Assurance Ecosystem",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/strengthening-the-ai-assurance-ecosystem/",
+      "date": "2026-02-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Building Justified Trust in AI Assurers",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/building-justified-trust-in-ai-assurers/",
+      "date": "2026-03-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Demand and Incentives for External AI Assurance",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/demand-and-incentives-for-external-ai-assurance/",
+      "date": "2026-03-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "2026 Transparency Report on Foundation Model Impacts",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/2026-transparency-report-on-foundation-model-impacts/",
+      "date": "2026-04-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Corporate AI Risk Assessment Framework",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/corporate-ai-risk-assessment-framework/",
+      "date": "2026-05-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Pathways for Operationalising AI Assurance",
+      "publisher": "Partnership on AI",
+      "canonical_url": "https://partnershiponai.org/resource/pathways-for-operationalising-ai-assurance-2/",
+      "date": "2026-05-14",
+      "rights": "unknown"
+    }
+  ]
+}
