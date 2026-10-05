@@ -80,32 +80,12 @@ _ISSUED_META = frozenset(
     {
         "article:published_time",
         "citation_publication_date",
+        "datepublished",
         "dcterms.issued",
         "dcterms:issued",
     }
 )
-_MODIFIED_META = frozenset(
-    {
-        "article:modified_time",
-        "dcterms.modified",
-        "dcterms:modified",
-    }
-)
 _ERA_BASE = {"令和": 2018, "平成": 1988, "昭和": 1925}
-_MONTHS = {
-    "jan": 1,
-    "feb": 2,
-    "mar": 3,
-    "apr": 4,
-    "may": 5,
-    "jun": 6,
-    "jul": 7,
-    "aug": 8,
-    "sep": 9,
-    "oct": 10,
-    "nov": 11,
-    "dec": 12,
-}
 _HOST_LABEL = re.compile(r"[a-z0-9-]+")
 _DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 _COMMENT = re.compile(r"(?is)<!--.*?-->")
@@ -121,12 +101,9 @@ _JP_DATE = (
     r"(?P<iso>\d{4}-\d{2}-\d{2}))"
 )
 _LABELED_PUBLISHED = re.compile(rf"(?:公開日|掲載日)\s*:\s*{_JP_DATE}")
-_LABELED_MODIFIED = re.compile(rf"最終更新日\s*:\s*{_JP_DATE}")
-_PUBLISHED_ISO = re.compile(r"(?:date published|published)\s*:\s*(\d{4}-\d{2}-\d{2})\b")
-_LAST_UPDATED = re.compile(
-    r"last updated\s*:\s*(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\s+(\d{1,2}),\s*(\d{4})\b"
+_PUBLISHED_ISO = re.compile(
+    r"(?:date\s*published|(?<![a-z])published)\s*:\s*(\d{4}-\d{2}-\d{2})\b"
 )
-_MODIFIED_ISO = re.compile(r"date modified\s*:\s*(\d{4}-\d{2}-\d{2})\b")
 _DECISION = re.compile(rf"{_JP_DATE}\s*(?:閣議決定|本部決定)")
 _LEADING = re.compile(rf"^{_JP_DATE}")
 _STANDARD_VERSION = re.compile(
@@ -216,10 +193,13 @@ def rights_from_page(page_text: str) -> str:
 
 
 def date_from_page(page_text: str) -> str:
-    """Use a stated publication date, then a stated modified or decision date.
+    """Return an issued or published date, or unknown.
 
-    A date that appears only inside a sentence, a law number, or a script stays
-    unknown. Updated text that is not labeled as the page date stays unknown.
+    公開日, 掲載日, date published, article:published_time, datePublished,
+    and dcterms.issued count. Updated, modified, dateModified,
+    dcterms.modified, 最終更新日, and last-updated times stay unknown. A
+    copyright year is not a publication date. A date that appears only inside
+    a sentence, a law number, or a script stays unknown.
     """
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
@@ -231,15 +211,6 @@ def date_from_page(page_text: str) -> str:
     published = _match_japanese(_LABELED_PUBLISHED, folded) or _iso_or_none(_PUBLISHED_ISO, folded)
     if published:
         return published
-    modified = _first_iso_date(_meta_values(visible, _MODIFIED_META))
-    if modified:
-        return modified
-    labeled_modified = _match_japanese(_LABELED_MODIFIED, folded) or _english_updated(folded)
-    if labeled_modified:
-        return labeled_modified
-    modified_iso = _iso_or_none(_MODIFIED_ISO, folded)
-    if modified_iso:
-        return modified_iso
     decision = _match_japanese(_DECISION, folded)
     if decision:
         return decision
@@ -392,7 +363,7 @@ def _meta_values(html: str, names: frozenset[str]) -> list[str]:
     found: list[str] = []
     for tag in _META.findall(html):
         attrs = _attrs(tag)
-        key = attrs.get("name") or attrs.get("property") or ""
+        key = attrs.get("name") or attrs.get("property") or attrs.get("itemprop") or ""
         if key.casefold() in names:
             found.append(attrs.get("content", ""))
     return found
@@ -411,13 +382,6 @@ def _iso_or_none(pattern: re.Pattern[str], folded: str) -> str | None:
     if match and _iso_date(match.group(1)):
         return match.group(1)
     return None
-
-
-def _english_updated(folded: str) -> str | None:
-    match = _LAST_UPDATED.search(folded)
-    if not match:
-        return None
-    return _iso(int(match.group(3)), _MONTHS[match.group(1)], int(match.group(2)))
 
 
 def _match_japanese(pattern: re.Pattern[str], folded: str) -> str | None:

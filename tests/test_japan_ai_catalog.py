@@ -66,14 +66,14 @@ EXPECTED = [
         "Government AI “GENAI”",
         "Digital Agency",
         "https://www.digital.go.jp/en/policies/genai",
-        "2026-07-29",
+        UNKNOWN_DATE,
         RIGHTS_UNKNOWN,
     ),
     (
         "ガバメントAI「源内」",
         "デジタル庁",
         "https://www.digital.go.jp/policies/genai",
-        "2026-09-30",
+        UNKNOWN_DATE,
         RIGHTS_UNKNOWN,
     ),
     (
@@ -293,13 +293,28 @@ def test_missing_dates_stay_unknown_and_labeled_dates_win():
         '<meta name="dcterms.issued" content="">'
         '<meta name="dcterms.modified" content="2026-07-30">'
     )
-    assert date_from_page(empty_issued) == "2026-07-30"
+    assert date_from_page(empty_issued) == UNKNOWN_DATE
     published = "<p>公開日: 2026年6月12日</p><p>最終更新日: 2026年9月30日</p>"
     assert date_from_page(published) == "2026-06-12"
     modified = "<h1>ガバメントAI「源内」</h1><p>最終更新日: 2026年9月30日</p>"
-    assert date_from_page(modified) == "2026-09-30"
+    assert date_from_page(modified) == UNKNOWN_DATE
     english = "<h1>Government AI “GENAI”</h1><p>Last Updated: Jul 29, 2026</p>"
-    assert date_from_page(english) == "2026-07-29"
+    assert date_from_page(english) == UNKNOWN_DATE
+    listed = "<p>掲載日: 2025-03-04</p><p>最終更新日: 2026年9月30日</p>"
+    assert date_from_page(listed) == "2025-03-04"
+    date_published = "<p>Date published: 2024-04-19</p><p>Last updated: 2026-07-29</p>"
+    assert date_from_page(date_published) == "2024-04-19"
+    article = '<meta property="article:published_time" content="2026-06-12T01:02:03Z">'
+    assert date_from_page(article) == "2026-06-12"
+    schema = '<meta itemprop="datePublished" content="2025-10-03">'
+    assert date_from_page(schema) == "2025-10-03"
+    date_modified = (
+        '<meta name="dateModified" content="2026-09-30">'
+        '<meta property="article:modified_time" content="2026-08-01T00:00:00Z">'
+        "<p>© 2024 Digital Agency, Government of Japan</p>"
+        "<p>Copyright 2009</p>"
+    )
+    assert date_from_page(date_modified) == UNKNOWN_DATE
     decision = (
         "<h1>人工知能基本計画</h1><p>令和８年７月14日 閣議決定</p>"
         "<p>過去の計画 令和7年12月23日 閣議決定</p>"

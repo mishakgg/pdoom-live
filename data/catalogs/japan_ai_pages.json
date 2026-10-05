@@ -1,6 +1,6 @@
 {
   "catalog_id": "japan_ai_pages",
-  "description": "Metadata for public Japanese government pages about artificial intelligence. Allowed hosts are go.jp domains, including digital.go.jp and meti.go.jp. Each canonical URL was confirmed with one bounded GET. The catalog stores the title, publisher, canonical URL, date, and rights. Page bodies are not stored. A missing date is unknown. Rights stay unknown unless that page states a reuse licence that allows copying. A public page is not a licence. runner_wired is false.",
+  "description": "Metadata for public Japanese government pages about artificial intelligence. Allowed hosts are go.jp domains, including digital.go.jp and meti.go.jp. Each canonical URL was confirmed with one bounded GET. The catalog stores the title, publisher, canonical URL, date, and rights. Page bodies are not stored. A missing date is unknown. An updated or modified time is not a publication date. Rights stay unknown unless that page states a reuse licence that allows copying. A public page is not a licence. runner_wired is false.",
   "runner_wired": false,
   "entries": [
     {
@@ -42,14 +42,14 @@
       "title": "Government AI “GENAI”",
       "publisher": "Digital Agency",
       "canonical_url": "https://www.digital.go.jp/en/policies/genai",
-      "date": "2026-07-29",
+      "date": "unknown",
       "rights": "unknown"
     },
     {
       "title": "ガバメントAI「源内」",
       "publisher": "デジタル庁",
       "canonical_url": "https://www.digital.go.jp/policies/genai",
-      "date": "2026-09-30",
+      "date": "unknown",
       "rights": "unknown"
     },
     {
