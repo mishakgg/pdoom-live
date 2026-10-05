@@ -283,7 +283,7 @@ def test_default_fetcher_is_one_bounded_json_lookup_and_the_collector_is_unwired
     assert collector.fetcher.allowed_content_types == ("application/json",)
     import pdoom_pipeline.collectors as collectors
 
-    assert "DataCiteCollector" not in collectors.__all__
+    assert not hasattr(collectors, "__all__")
     assert not hasattr(collectors, "DataCiteCollector")
     assert "datacite" not in Path(collectors.__file__).read_text(encoding="utf-8")
     assert datacite_module.COLLECTOR_VERSION == "datacite-0.1.0"
