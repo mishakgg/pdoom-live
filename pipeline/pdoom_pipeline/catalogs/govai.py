@@ -2,9 +2,10 @@
 
 Rows keep a title, publisher, canonical URL, date, and rights label for official
 HTML pages on www.governance.ai. Page text is not stored. A date the page does
-not state stays unknown. Rights stay unknown unless the page states a reuse
-licence that allows copying. A public page, a copyright notice, or a link to
-terms is not a licence.
+not state stays unknown. Rights stay unknown unless the page states CC0, CC BY,
+or CC BY-SA. CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay unknown. A
+public page, a copyright notice, a terms link, or a bare Creative Commons
+mention is not a licence.
 
 Research papers, analysis posts, update posts, and staff profiles are not
 listed. This catalog is not a collector and runner_wired stays false.
@@ -90,14 +91,20 @@ _ATTR = re.compile(
     r"""(?is)([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+))"""
 )
 _DATE_PUBLISHED = re.compile(r"\b(?:date published|published)\s*:\s*(\d{4}-\d{2}-\d{2})\b", re.I)
-_CC_GRANT = re.compile(
-    r"(?:licen[cs]ed|released) under (?:the |a )?(?:terms of (?:the |a )?)?"
-    r"(?:creative commons|cc0\b|cc[-\s]by\b)"
-    r"|available under (?:the |a )?(?:terms of (?:the |a )?)?"
-    r"(?:creative commons|cc0\b|cc[-\s]by\b)"
+# creative_commons is only a licence that allows copying: CC0, CC BY, or CC BY-SA.
+# NonCommercial and NoDerivatives are not labeled, so they cannot be read as permission to copy.
+_CC0_PHRASE = re.compile(r"\bcc[\s-]*0\b|creative commons(?:\s+public\s+domain)?[\s-]+zero\b")
+_CC_BY_SA_PHRASE = re.compile(
+    r"\bcc[\s-]*by[\s-]*sa\b"
+    r"|creative commons\s+attribution[\s-]*(?:share[\s-]*alike|sa)\b"
 )
-_CC_URL = re.compile(
-    r"creativecommons\.org/(?:licenses/by(?:-(?:nc-sa|nc-nd|nc|sa|nd))?/|publicdomain/zero/)"
+_CC_BY_PHRASE = re.compile(
+    r"\bcc[\s-]*by\b(?![\s-]*(?:nc|nd|sa)\b)"
+    r"|creative commons\s+attribution\b"
+    r"(?![\s-]*(?:share[\s-]*alike|non[\s-]*commercial|no[\s-]*deriv(?:ative)?s?|sa|nc|nd)\b)"
+)
+_CC_COPYING_URL = re.compile(
+    r"creativecommons\.org/(?:licenses/by(?:-sa)?/|publicdomain/zero/)"
 )
 _SITE_SUFFIXES = (" | GovAI", " - GovAI")
 _SITE_PREFIX = "GovAI | "
@@ -124,7 +131,13 @@ def official_govai_host(hostname: str) -> bool:
 
 
 def rights_from_page(page_text: str) -> str:
-    """Return a rights label. Public availability alone stays unknown."""
+    """Return a rights label.
+
+    ``creative_commons`` means the page states CC0, CC BY, or CC BY-SA.
+    CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay unknown. Public
+    availability, a copyright notice, a terms link, and a bare Creative Commons
+    mention stay unknown.
+    """
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     html = _without_hidden(page_text)
@@ -322,7 +335,8 @@ def _sort_date(value: str) -> str:
 
 
 def _states_creative_commons(plain: str) -> bool:
-    return _CC_GRANT.search(plain) is not None or _CC_URL.search(plain) is not None
+    text = plain.casefold().replace("\u2011", "-").replace("\u2013", "-").replace("\u2014", "-").replace("\u2212", "-")
+    return any(pattern.search(text) for pattern in (_CC0_PHRASE, _CC_BY_SA_PHRASE, _CC_BY_PHRASE, _CC_COPYING_URL))
 
 
 def _without_hidden(page_text: str) -> str:

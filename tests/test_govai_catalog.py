@@ -157,6 +157,8 @@ def test_public_page_without_a_reuse_licence_stays_unknown():
     assert rights_from_page(reserved) == RIGHTS_UNKNOWN
     discussed = "<p>The paper discusses Creative Commons licences as one policy option.</p>"
     assert rights_from_page(discussed) == RIGHTS_UNKNOWN
+    bare = "<p>This work is licensed under Creative Commons.</p>"
+    assert rights_from_page(bare) == RIGHTS_UNKNOWN
     link_only = '<p><a href="https://creativecommons.org/licenses/by/4.0/">licence information</a></p>'
     assert rights_from_page(link_only) == RIGHTS_UNKNOWN
     hidden = "<script>This work is licensed under the Creative Commons Attribution 4.0 licence.</script><p>No public licence.</p>"
@@ -173,10 +175,32 @@ def test_stated_reuse_licence_is_labeled_and_page_text_is_not_returned():
     assert "page body" not in rights_from_page(granted)
     available = "<p>The report is available under the terms of the Creative Commons Attribution-ShareAlike 4.0 license.</p>"
     assert rights_from_page(available) == RIGHTS_CREATIVE_COMMONS
-    url = "<p>Reuse is allowed: https://creativecommons.org/licenses/by-nc-nd/4.0/.</p>"
-    assert rights_from_page(url) == RIGHTS_CREATIVE_COMMONS
+    by_name = "<p>This work is licensed under CC BY 4.0.</p>"
+    assert rights_from_page(by_name) == RIGHTS_CREATIVE_COMMONS
+    by_sa_name = "<p>This work is licensed under CC BY-SA 4.0.</p>"
+    assert rights_from_page(by_sa_name) == RIGHTS_CREATIVE_COMMONS
+    by_url = "<p>https://creativecommons.org/licenses/by/4.0/</p>"
+    assert rights_from_page(by_url) == RIGHTS_CREATIVE_COMMONS
+    by_sa_url = "<p>https://creativecommons.org/licenses/by-sa/4.0/</p>"
+    assert rights_from_page(by_sa_url) == RIGHTS_CREATIVE_COMMONS
+    zero_name = "<p>This work is licensed under CC0.</p>"
+    assert rights_from_page(zero_name) == RIGHTS_CREATIVE_COMMONS
     zero = '<meta name="dc.rights" content="https://creativecommons.org/publicdomain/zero/1.0/">'
     assert rights_from_page(zero) == RIGHTS_CREATIVE_COMMONS
+    nc_nd_url = "<p>Reuse is allowed: https://creativecommons.org/licenses/by-nc-nd/4.0/.</p>"
+    assert rights_from_page(nc_nd_url) == RIGHTS_UNKNOWN
+    noncommercial = (
+        "<p>This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International licence.</p>"
+    )
+    assert rights_from_page(noncommercial) == RIGHTS_UNKNOWN
+    noderivatives = (
+        "<p>This work is licensed under the Creative Commons Attribution-NoDerivatives 4.0 International licence.</p>"
+    )
+    assert rights_from_page(noderivatives) == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>Licensed under CC BY-NC 4.0.</p>") == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>Licensed under CC BY-ND 4.0.</p>") == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>Licensed under CC BY-NC-SA 4.0.</p>") == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>Licensed under CC BY-NC-ND 4.0.</p>") == RIGHTS_UNKNOWN
     assert rights_from_page("<p>Excerpts may be reproduced with attribution.</p>") == RIGHTS_UNKNOWN
 
 
