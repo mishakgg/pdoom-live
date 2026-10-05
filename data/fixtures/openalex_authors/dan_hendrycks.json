@@ -1,0 +1,39 @@
+{
+  "source": "https://api.openalex.org/authors/A5020400986?select=id,display_name,orcid,ids,last_known_institutions,works_count,cited_by_count,topics&mailto=collector@pdoom.live",
+  "data_license": "CC0",
+  "retrieved_at": "2026-10-05T20:48:15Z",
+  "confirmed_via_work": "https://openalex.org/W4381713708",
+  "id": "https://openalex.org/A5020400986",
+  "display_name": "Dan Hendrycks",
+  "orcid": null,
+  "ids": {
+    "openalex": "https://openalex.org/A5020400986",
+    "orcid": null,
+    "observed_orcids": []
+  },
+  "last_known_institutions": [],
+  "works_count": 95,
+  "cited_by_count": 14342,
+  "topics": [
+    {
+      "display_name": "Adversarial Robustness in Machine Learning",
+      "count": 38
+    },
+    {
+      "display_name": "Anomaly Detection Techniques and Applications",
+      "count": 28
+    },
+    {
+      "display_name": "Topic Modeling",
+      "count": 14
+    },
+    {
+      "display_name": "Ethics and Social Impacts of AI",
+      "count": 13
+    },
+    {
+      "display_name": "Explainable Artificial Intelligence (XAI)",
+      "count": 11
+    }
+  ]
+}

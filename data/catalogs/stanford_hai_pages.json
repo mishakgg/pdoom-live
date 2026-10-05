@@ -1,0 +1,160 @@
+{
+  "catalog_id": "stanford_hai_pages",
+  "description": "Metadata for confirmed public Stanford Institute for Human-Centered AI pages about AI policy, the AI Index, and AI safety. Allowed hosts are hai.stanford.edu and www.hai.stanford.edu. Each URL was confirmed with one bounded GET and stored as confirmed. Rows keep a title, publisher, canonical URL, date, and rights label. Page text is not stored. Rights stays unknown unless that page states a reuse licence. A missing publication date stays unknown. This catalog is not a belief collector.",
+  "entries": [
+    {
+      "title": "Policy",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/policy",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Index",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/ai-index",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Regulation, Policy, Governance",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/topics/regulation-policy-governance",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Privacy, Safety, Security",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/topics/privacy-safety-security",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Which countries are leading in AI?",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/ai-index/global-vibrancy-tool",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "The 2024 AI Index Report",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/ai-index/2024-ai-index-report",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Policy and Governance | The 2024 AI Index Report",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/ai-index/2024-ai-index-report/policy-and-governance",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "The 2025 AI Index Report",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/ai-index/2025-ai-index-report",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Policy and Governance | The 2025 AI Index Report",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/ai-index/2025-ai-index-report/policy-and-governance",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Responsible AI | The 2025 AI Index Report",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/ai-index/2025-ai-index-report/responsible-ai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "The 2026 AI Index Report",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Policy and Governance | The 2026 AI Index Report",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/policy-and-governance",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Responsible AI | The 2026 AI Index Report",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/ai-index/2026-ai-index-report/responsible-ai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stanford HAI Artificial Intelligence Bill of Rights",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/policy/white-paper-stanford-hai-artificial-intelligence-bill-rights",
+      "date": "2022-01-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Considerations for Governing Open Foundation Models",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/policy/issue-brief-considerations-governing-open-foundation-models",
+      "date": "2023-12-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Safety Risks from Customizing Foundation Models via Fine-Tuning",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/policy/policy-brief-safety-risks-customizing-foundation-models-fine-tuning",
+      "date": "2024-01-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Escalation Risks from LLMs in Military and Diplomatic Contexts",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/policy/policy-brief-escalation-risks-llms-military-and-diplomatic-contexts",
+      "date": "2024-05-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Response to U.S. AI Safety Institute’s Request for Comment on Managing Misuse Risk For Dual-Use Foundation Models",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/policy/response-to-us-ai-safety-institutes-request-for-comment-on-managing-misuse-risk-for-dual-use-foundation-models",
+      "date": "2024-09-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Safeguarding Third-Party AI Research",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/policy/safeguarding-third-party-ai-research",
+      "date": "2025-02-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Response to OSTP’s Request for Information on the Development of an AI Action Plan",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/policy/response-to-ostps-request-for-information-on-the-development-of-an-ai-action-plan",
+      "date": "2025-03-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "The World Model and Spatial Intelligence Era: Governing AI Beyond Language",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/policy/the-world-model-and-spatial-intelligence-era-governing-ai-beyond-language",
+      "date": "2026-07-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Implementing the Transparency in Frontier AI Act Report for the California Department of Technology Multistakeholder Workshops",
+      "publisher": "Stanford HAI",
+      "canonical_url": "https://hai.stanford.edu/policy/implementing-the-transparency-in-frontier-ai-act-report-for-the-california-department-of-technology-multistakeholder-workshops",
+      "date": "2026-09-25",
+      "rights": "unknown"
+    }
+  ]
+}

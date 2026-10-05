@@ -1,0 +1,32 @@
+{
+  "hitCount": 4,
+  "request": {
+    "queryString": "TITLE:\"artificial intelligence\" AND TITLE:\"existential risk\"",
+    "resultType": "core",
+    "cursorMark": "*",
+    "pageSize": 1,
+    "sort": "",
+    "synonym": false
+  },
+  "resultList": {
+    "result": [
+      {
+        "id": "PPR1171279",
+        "source": "PPR",
+        "doi": "10.31234/osf.io/sbyn6_v2",
+        "title": "Artificial Intelligence, Existential Risk, and Why We Should Pay Attention to the Warnings from Silicon Valley",
+        "authorString": "Richards G.",
+        "authorList": {
+          "author": [
+            {
+              "fullName": "Richards G"
+            }
+          ]
+        },
+        "pubYear": "2026",
+        "firstPublicationDate": "2026-03-28",
+        "license": "cc by"
+      }
+    ]
+  }
+}

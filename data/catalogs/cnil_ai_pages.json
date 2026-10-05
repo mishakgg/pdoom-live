@@ -1,0 +1,252 @@
+{
+  "catalog_id": "cnil_ai_pages",
+  "description": "Metadata for public CNIL pages about artificial intelligence on www.cnil.fr. Each canonical URL was confirmed with one bounded GET. Rows store a title, publisher, canonical URL, date, and rights label. Page bodies are not stored. A date the page does not state stays unknown. Rights stay unknown unless that page states a reuse licence that allows copying. A public page is not a licence. This catalog is not a collector and runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Intelligence artificielle, de quoi parle-t-on ?",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/intelligence-artificielle/intelligence-artificielle-de-quoi-parle-t-on",
+      "date": "2022-03-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Collecter et qualifier les données d'entraînement",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/intelligence-artificielle/guide/collecter-et-qualifier-les-donnees-dentrainement",
+      "date": "2022-03-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Conformité des systèmes d’IA : les autres guides, outils et bonnes pratiques",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/intelligence-artificielle/guide/conformite-des-systemes-dia-les-autres-guides-outils-et-bonnes-pratiques",
+      "date": "2022-03-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Développer et entraîner un algorithme",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/intelligence-artificielle/guide/developper-et-entrainer-un-algorithme",
+      "date": "2022-03-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introduction au guide d'auto-évaluation pour les systèmes d'IA",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/intelligence-artificielle/guide/introduction",
+      "date": "2022-03-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Permettre le bon exercice de leurs droits par les personnes",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/intelligence-artificielle/guide/permettre-le-bon-exercice-de-leurs-droits-par-les-personnes",
+      "date": "2022-03-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Se mettre en conformité",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/intelligence-artificielle/guide/se-mettre-en-conformite",
+      "date": "2022-03-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sécuriser le traitement",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/intelligence-artificielle/guide/securiser-le-traitement",
+      "date": "2022-03-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Utiliser un système d'IA en production",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/intelligence-artificielle/guide/utiliser-un-systeme-dia-en-production",
+      "date": "2022-03-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Intelligence artificielle : la CNIL publie un ensemble de ressources pour le grand public et les professionnels",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/intelligence-artificielle/la-cnil-publie-ressources-grand-public-professionnels",
+      "date": "2022-03-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Se poser les bonnes questions avant d’utiliser un système d'intelligence artificielle",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/intelligence-artificielle/guide/se-poser-les-bonnes-questions-avant-dutiliser-un-systeme-dintelligence-artificielle",
+      "date": "2022-04-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA : comment être en conformité avec le RGPD ?",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/intelligence-artificielle/ia-comment-etre-en-conformite-avec-le-rgpd",
+      "date": "2022-04-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA : Assurer que le traitement est licite - Définir une base légale",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/assurer-que-le-traitement-est-licite",
+      "date": "2024-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA : Assurer que le traitement est licite - En cas de réutilisation des données, effectuer les tests et vérifications nécessaires",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/assurer-que-le-traitement-est-licite-reutilisation-des-donnees",
+      "date": "2024-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA : Définir une finalité",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/definir-une-finalite-0",
+      "date": "2024-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Déterminer la qualification juridique des acteurs",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/determiner-la-qualification-juridique-des-fournisseurs-de-systemes-dia",
+      "date": "2024-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA : Déterminer le régime juridique applicable",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/determiner-le-regime-juridique-applicable",
+      "date": "2024-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Quel est le périmètre des fiches pratiques sur l’IA ?",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/quel-est-le-perimetre-des-fiches-pratiques-sur-lia",
+      "date": "2024-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA : Réaliser une analyse d’impact si nécessaire",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/realiser-une-analyse-dimpact-si-necessaire",
+      "date": "2024-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA : Tenir compte de la protection des données dans la collecte et la gestion des données",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/tenir-compte-de-la-protection-des-donnees-dans-la-collecte-et-la-gestion-des-donnees",
+      "date": "2024-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA : Tenir compte de la protection des données dans la conception du système",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/tenir-compte-de-la-protection-des-donnees-dans-la-conception-du-systeme",
+      "date": "2024-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Les questions-réponses de la CNIL sur l’utilisation d’un système d’IA générative",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/les-questions-reponses-de-la-cnil-sur-lutilisation-dun-systeme-dia-generative",
+      "date": "2024-07-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA : Informer les personnes concernées",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/ia-informer-les-personnes-concernees",
+      "date": "2025-02-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA : Respecter et faciliter l’exercice des droits des personnes concernées",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/ia-respecter-lexercice-des-droits-des-personnes",
+      "date": "2025-02-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA : Mobiliser la base légale de l’intérêt légitime pour développer un système d’IA",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/base-legale-interet-legitime-developpement-systeme",
+      "date": "2025-06-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "La base légale de l’intérêt légitime : fiche focus sur les mesures à prendre en cas de collecte des données par moissonnage (web scraping)",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/focus-interet-legitime-collecte-par-moissonnage",
+      "date": "2025-06-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Développement des systèmes d’IA : les recommandations de la CNIL pour respecter le RGPD",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/developpement-des-systemes-dia-les-recommandations-de-la-cnil-pour-respecter-le-rgpd",
+      "date": "2025-07-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA : Analyser le statut d’un modèle d’IA au regard du RGPD",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/ia-analyser-le-statut-dun-modele-dia-au-regard-du-rgpd",
+      "date": "2025-07-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA : Annoter les données",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/ia-annoter-les-donnees",
+      "date": "2025-07-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA : Garantir la sécurité du développement d’un système d’IA",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/ia-garantir-la-securite-du-developpement",
+      "date": "2025-07-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA et santé : développer et évaluer des systèmes d’IA en conformité avec la réglementation",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/ia-et-sante-developper-et-evaluer-des-systemes-ia-conformes",
+      "date": "2026-03-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "IA - Comment se mettre en conformité ?",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/ia-comment-se-mettre-en-conformite",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Guide d'auto-évaluation pour les systèmes d'intelligence artificielle (IA)",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/intelligence-artificielle/guide",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Les fiches pratiques IA",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/les-fiches-pratiques-ia",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Intelligence artificielle (IA)",
+      "publisher": "Commission nationale de l'informatique et des libertés",
+      "canonical_url": "https://www.cnil.fr/fr/particulier-intelligence-artificielle-ia",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
