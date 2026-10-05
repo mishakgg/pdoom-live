@@ -167,6 +167,13 @@ describe("production operations files", () => {
     }
   });
 
+  it("waits until postgres init finishes before trusting pg_isready", () => {
+    const result = run("bash", ["scripts/restore/postgres-ready.test.sh"]);
+    expect(result.status, `${result.stdout}\n${result.stderr}`).toBe(0);
+    expect(result.stdout).toContain("postgres_ready_test_ok");
+    expect(result.stderr).not.toContain("drill-password-value");
+  });
+
   it("refuses an application-only rollback after a breaking migration", async () => {
     const dir = await mkdtemp(join(tmpdir(), "pdoom-state-"));
     try {
