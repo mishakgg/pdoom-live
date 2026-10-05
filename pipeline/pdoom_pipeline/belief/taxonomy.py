@@ -1,7 +1,13 @@
-"""Stable question keys for forecasts that can be compared with each other.
+"""Stable question-family labels for extraction.
 
-Two records share a key only when a later statistical comparison would be meaningful.
-AGI, human-level AI, and transformative AI are different keys.
+These dictionaries stay the import surface for pipeline keys. A key here is a
+family, not an exact comparison. The authoritative question and comparability
+registry is ``packages/contracts/src/comparability-registry.json``, loaded by
+``pdoom_pipeline.belief.comparability``. A family record joins an exact catalog
+question only when the structured outcome, condition, deadline, and unit agree.
+This module does not rewrite a stored key onto a horizon.
+
+AGI, human-level AI, and transformative AI stay different keys.
 """
 
 from __future__ import annotations

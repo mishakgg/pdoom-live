@@ -1,0 +1,862 @@
+{
+  "policy_version": "comparability/1.0.0",
+  "questions": [
+    {
+      "key": "extinction_unconditional",
+      "family_id": "human_extinction_unconditional",
+      "label": "Unconditional AI-caused human extinction",
+      "definition": "Probability of AI-caused human extinction, not conditioned on AGI or ASI. The horizon is not fixed by this key.",
+      "topic_slug": "ai-extinction",
+      "value_semantics": "probability",
+      "date_role": "deadline_in_question",
+      "unit": "probability",
+      "conditionality": "unconditional",
+      "condition_text": null,
+      "outcome_id": "human_extinction",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "ai_extinction_unconditional",
+      "family_id": "human_extinction_unconditional",
+      "label": "Unconditional AI-caused human extinction",
+      "definition": "Literal human extinction. This curation key does not fix a year.",
+      "topic_slug": "ai-extinction",
+      "value_semantics": "probability",
+      "date_role": "deadline_in_question",
+      "unit": "probability",
+      "conditionality": "unconditional",
+      "condition_text": null,
+      "outcome_id": "human_extinction",
+      "sources": [
+        "curation"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "ai_extinction_unconditional_by_2070",
+      "family_id": "human_extinction_unconditional",
+      "label": "Unconditional human extinction from AI by the end of 2070",
+      "definition": "Literal human extinction by the end of 2070. Catastrophe, disempowerment, and other deadlines stay outside this comparison.",
+      "topic_slug": "ai-extinction",
+      "value_semantics": "probability",
+      "date_role": "deadline_in_question",
+      "deadline": {
+        "start": null,
+        "end": "2070-12-31",
+        "label": "by the end of 2070"
+      },
+      "unit": "probability",
+      "conditionality": "unconditional",
+      "condition_text": null,
+      "outcome_id": "human_extinction",
+      "sources": [
+        "curation",
+        "catalog"
+      ],
+      "role": "exact",
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "extinction_conditional_agi",
+      "family_id": "human_extinction_conditional_agi",
+      "label": "Extinction conditional on AGI or ASI",
+      "definition": "Probability of human extinction conditional on building AGI or ASI. A calendar deadline is not fixed by this key.",
+      "topic_slug": "ai-extinction",
+      "value_semantics": "probability",
+      "date_role": "conditioning_only",
+      "unit": "probability",
+      "conditionality": "conditional",
+      "condition_text": null,
+      "outcome_id": "human_extinction",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "ai_extinction_conditional_on_agi",
+      "family_id": "human_extinction_conditional_agi",
+      "label": "Extinction conditional on AGI",
+      "definition": "Probability of human extinction from AI, conditional on AGI being built. A calendar deadline is a different question.",
+      "topic_slug": "ai-extinction",
+      "value_semantics": "probability",
+      "date_role": "conditioning_only",
+      "deadline": null,
+      "unit": "probability",
+      "conditionality": "conditional",
+      "condition_text": "conditional on AGI being built",
+      "outcome_id": "human_extinction",
+      "sources": [
+        "curation",
+        "catalog"
+      ],
+      "role": "exact",
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "catastrophe_broad",
+      "family_id": "ai_catastrophe",
+      "label": "Catastrophic AI outcome short of a named extinction forecast",
+      "definition": "A broader catastrophic outcome. Not extinction, disempowerment, or a fixed year.",
+      "topic_slug": "ai-catastrophe",
+      "value_semantics": "probability",
+      "date_role": "deadline_in_question",
+      "unit": "probability",
+      "conditionality": "unconditional",
+      "condition_text": null,
+      "outcome_id": "catastrophe",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "ai_catastrophe_not_extinction_by_2070",
+      "family_id": "ai_catastrophe",
+      "label": "Catastrophic harm short of extinction by the end of 2070",
+      "definition": "Catastrophic harm that is not literal human extinction, by the end of 2070.",
+      "topic_slug": "ai-catastrophic-harm",
+      "value_semantics": "probability",
+      "date_role": "deadline_in_question",
+      "deadline": {
+        "start": null,
+        "end": "2070-12-31",
+        "label": "by the end of 2070"
+      },
+      "unit": "probability",
+      "conditionality": "unconditional",
+      "condition_text": null,
+      "outcome_id": "catastrophe",
+      "sources": [
+        "curation",
+        "catalog"
+      ],
+      "role": "exact",
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "disempowerment",
+      "family_id": "permanent_disempowerment",
+      "label": "Permanent disempowerment or loss of control",
+      "definition": "Permanent human disempowerment or loss of control. Not pooled with extinction.",
+      "topic_slug": "ai-disempowerment",
+      "value_semantics": "probability",
+      "date_role": "conditioning_only",
+      "unit": "probability",
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "disempowerment",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "permanent_disempowerment_conditional_on_agi",
+      "family_id": "permanent_disempowerment",
+      "label": "Permanent disempowerment conditional on AGI",
+      "definition": "Permanent disempowerment conditional on AGI. Extinction and catastrophe stay outside this comparison.",
+      "topic_slug": "permanent-disempowerment",
+      "value_semantics": "probability",
+      "date_role": "conditioning_only",
+      "deadline": null,
+      "unit": "probability",
+      "conditionality": "conditional",
+      "condition_text": "conditional on AGI",
+      "outcome_id": "disempowerment",
+      "sources": [
+        "curation",
+        "catalog"
+      ],
+      "role": "exact",
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "ai_takeover",
+      "family_id": "ai_takeover",
+      "label": "AI takeover as the speaker worded it",
+      "definition": "The speaker's takeover wording. Not pooled with extinction or generic disempowerment.",
+      "topic_slug": "ai-takeover",
+      "value_semantics": "probability",
+      "date_role": "deadline_in_question",
+      "unit": "probability",
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "takeover",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "mass_human_death",
+      "family_id": "mass_human_death",
+      "label": "Most humans die",
+      "definition": "Most humans die. Not pooled with extinction unless the speaker says extinction.",
+      "topic_slug": "mass-human-death",
+      "value_semantics": "probability",
+      "date_role": "deadline_in_question",
+      "unit": "probability",
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "mass_death",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "ambiguous_doom",
+      "family_id": "ambiguous_doom",
+      "label": "Ambiguous doom or existential-risk figure",
+      "definition": "A numeric doom figure whose outcome was not one of the more specific keys. These records are not pooled.",
+      "topic_slug": "ai-catastrophe",
+      "value_semantics": "probability",
+      "date_role": "deadline_in_question",
+      "unit": "probability",
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "ambiguous_doom",
+      "requires_specific_outcome": true,
+      "outcome_splits": [],
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null
+    },
+    {
+      "key": "agi_timeline",
+      "family_id": "agi_arrival_year",
+      "label": "When the speaker expects AGI",
+      "definition": "A predicted AGI year under the speaker's wording. The year is the forecast value. This key does not name one calendar deadline.",
+      "topic_slug": "agi-timeline",
+      "value_semantics": "year",
+      "date_role": "predicted_value",
+      "unit": "year",
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "agi",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "agi_arrival_calendar_year",
+      "family_id": "agi_arrival_year",
+      "label": "AGI arrival year",
+      "definition": "Calendar year in which the speaker expects AGI. Different predicted years stay in one comparison. The year is not a probability.",
+      "topic_slug": "agi-arrival",
+      "value_semantics": "year",
+      "date_role": "predicted_value",
+      "deadline": null,
+      "unit": "year",
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "agi",
+      "sources": [
+        "catalog"
+      ],
+      "role": "exact",
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "asi_timeline",
+      "family_id": "asi_arrival_year",
+      "label": "When the speaker expects ASI",
+      "definition": "A predicted ASI or superintelligence year. Not an AGI year.",
+      "topic_slug": "asi-timeline",
+      "value_semantics": "year",
+      "date_role": "predicted_value",
+      "unit": "year",
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "asi",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "asi_arrival",
+      "family_id": "asi_arrival_year",
+      "label": "ASI arrival",
+      "definition": "Curation key for ASI arrival. It does not fix a year. A probability and a predicted year stay different comparisons.",
+      "topic_slug": "asi-timeline",
+      "value_semantics": "mixed",
+      "date_role": "predicted_value",
+      "unit": null,
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "asi",
+      "sources": [
+        "curation"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "asi_arrival_calendar_year",
+      "family_id": "asi_arrival_year",
+      "label": "ASI arrival year",
+      "definition": "Calendar year in which the speaker expects ASI. AGI years stay outside this comparison.",
+      "topic_slug": "agi-arrival",
+      "value_semantics": "year",
+      "date_role": "predicted_value",
+      "deadline": null,
+      "unit": "year",
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "asi",
+      "sources": [
+        "catalog"
+      ],
+      "role": "exact",
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "transformative_ai_timeline",
+      "family_id": "transformative_ai_year",
+      "label": "When the speaker expects transformative AI",
+      "definition": "A predicted transformative-AI year. Not an AGI date.",
+      "topic_slug": "transformative-ai",
+      "value_semantics": "year",
+      "date_role": "predicted_value",
+      "unit": "year",
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "transformative",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "human_level_ai_timeline",
+      "family_id": "human_level_ai_year",
+      "label": "When the speaker expects human-level AI",
+      "definition": "A predicted human-level AI year. Not automatically an AGI year.",
+      "topic_slug": "human-level-ai",
+      "value_semantics": "year",
+      "date_role": "predicted_value",
+      "unit": "year",
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "human_level",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "agi_by_year_probability",
+      "family_id": "agi_arrival_probability",
+      "label": "Probability of AGI by a stated horizon",
+      "definition": "A probability that AGI arrives by a horizon the speaker states. This key does not choose the horizon.",
+      "topic_slug": "agi-timeline",
+      "value_semantics": "probability",
+      "date_role": "deadline_in_question",
+      "unit": "probability",
+      "conditionality": "unconditional",
+      "condition_text": null,
+      "outcome_id": "agi",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "agi_arrival_by_2032",
+      "family_id": "agi_arrival_probability",
+      "label": "Probability of AGI by the end of 2032",
+      "definition": "Probability that AGI arrives by the end of 2032. The value is a probability, not a year. Other deadlines stay outside this comparison.",
+      "topic_slug": "agi-arrival",
+      "value_semantics": "probability",
+      "date_role": "deadline_in_question",
+      "deadline": {
+        "start": null,
+        "end": "2032-12-31",
+        "label": "by the end of 2032"
+      },
+      "unit": "probability",
+      "conditionality": "unconditional",
+      "condition_text": null,
+      "outcome_id": "agi",
+      "sources": [
+        "curation",
+        "catalog"
+      ],
+      "role": "exact",
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "asi_by_year_probability",
+      "family_id": "asi_arrival_probability",
+      "label": "Probability of ASI by a stated horizon",
+      "definition": "A probability of ASI or superintelligence by a stated horizon. The horizon is not fixed by this key.",
+      "topic_slug": "asi-timeline",
+      "value_semantics": "probability",
+      "date_role": "deadline_in_question",
+      "unit": "probability",
+      "conditionality": "unconditional",
+      "condition_text": null,
+      "outcome_id": "asi",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "transformative_ai_by_year_probability",
+      "family_id": "transformative_ai_probability",
+      "label": "Probability of transformative AI by a stated horizon",
+      "definition": "Not an AGI probability. The horizon is not fixed by this key.",
+      "topic_slug": "transformative-ai",
+      "value_semantics": "probability",
+      "date_role": "deadline_in_question",
+      "unit": "probability",
+      "conditionality": "unconditional",
+      "condition_text": null,
+      "outcome_id": "transformative",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "human_level_ai_by_year_probability",
+      "family_id": "human_level_ai_probability",
+      "label": "Probability of human-level AI by a stated horizon",
+      "definition": "Not an AGI probability. The horizon is not fixed by this key.",
+      "topic_slug": "human-level-ai",
+      "value_semantics": "probability",
+      "date_role": "deadline_in_question",
+      "unit": "probability",
+      "conditionality": "unconditional",
+      "condition_text": null,
+      "outcome_id": "human_level",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "remote_work_automation",
+      "family_id": "remote_work_automation",
+      "label": "Full automation of remote work",
+      "definition": "When the speaker expects full automation of remote work. Not an AGI date or a job-displacement share.",
+      "topic_slug": "remote-work-automation",
+      "value_semantics": "mixed",
+      "date_role": "deadline_in_question",
+      "unit": null,
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "remote_work",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "coding_automation",
+      "family_id": "coding_automation",
+      "label": "Coding or software-engineering automation",
+      "definition": "When or to what degree coding work is automated. A year and a share are different comparisons.",
+      "topic_slug": "coding-automation",
+      "value_semantics": "mixed",
+      "date_role": "deadline_in_question",
+      "unit": null,
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "coding",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "coding_task_automation_share_by_2028",
+      "family_id": "coding_automation",
+      "label": "Coding task automation share by the end of 2028",
+      "definition": "Share of coding tasks automated by the end of 2028. Job counts and other deadlines stay outside this comparison.",
+      "topic_slug": "coding-automation",
+      "value_semantics": "quantity",
+      "date_role": "deadline_in_question",
+      "deadline": {
+        "start": null,
+        "end": "2028-12-31",
+        "label": "by the end of 2028"
+      },
+      "unit": "share",
+      "conditionality": "unconditional",
+      "condition_text": null,
+      "outcome_id": "coding",
+      "sources": [
+        "curation",
+        "catalog"
+      ],
+      "role": "exact",
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "job_displacement",
+      "family_id": "job_displacement",
+      "label": "Jobs displaced",
+      "definition": "Share or timing of jobs displaced. Not a task share and not a wage forecast.",
+      "topic_slug": "labor",
+      "value_semantics": "mixed",
+      "date_role": "deadline_in_question",
+      "unit": null,
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "jobs",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "labor_displacement_plausible",
+      "family_id": "labor_displacement_qualitative",
+      "label": "Labor displacement, qualitative",
+      "definition": "A qualitative employment view. Not a probability.",
+      "topic_slug": "labor",
+      "value_semantics": "qualitative",
+      "date_role": "conditioning_only",
+      "unit": null,
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "jobs",
+      "sources": [
+        "curation"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "task_automation",
+      "family_id": "task_automation",
+      "label": "Share of tasks automated",
+      "definition": "Tasks automated or affected. Not a job or unemployment share.",
+      "topic_slug": "task-automation",
+      "value_semantics": "quantity",
+      "date_role": "deadline_in_question",
+      "unit": null,
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "tasks",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "wage_effect",
+      "family_id": "wage_effect",
+      "label": "Wage forecast",
+      "definition": "A direct forecast about wages. Not a job-displacement share.",
+      "topic_slug": "wages",
+      "value_semantics": "quantity",
+      "date_role": "deadline_in_question",
+      "unit": null,
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "wages",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "productivity_growth",
+      "family_id": "economic_output",
+      "label": "Productivity, GDP, or economic growth",
+      "definition": "The pipeline family covers more than one quantity. Productivity and GDP are not pooled with each other.",
+      "topic_slug": "productivity",
+      "value_semantics": "quantity",
+      "date_role": "deadline_in_question",
+      "unit": null,
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "economic_output",
+      "requires_specific_outcome": true,
+      "outcome_splits": [
+        {
+          "outcome_id": "labor_productivity",
+          "label": "Labor productivity growth",
+          "pattern": "labor productivity|productivity growth"
+        },
+        {
+          "outcome_id": "gdp",
+          "label": "GDP growth",
+          "pattern": "\\bgdp\\b|gross domestic product"
+        }
+      ],
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null
+    },
+    {
+      "key": "economic_growth",
+      "family_id": "economic_output",
+      "label": "Economic growth or productivity",
+      "definition": "Curation family for growth or productivity. It is not one comparison until the quantity is specific.",
+      "topic_slug": "productivity",
+      "value_semantics": "quantity",
+      "date_role": "deadline_in_question",
+      "unit": null,
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "economic_output",
+      "requires_specific_outcome": true,
+      "outcome_splits": [
+        {
+          "outcome_id": "labor_productivity",
+          "label": "Labor productivity growth",
+          "pattern": "labor productivity|productivity growth"
+        },
+        {
+          "outcome_id": "gdp",
+          "label": "GDP growth",
+          "pattern": "\\bgdp\\b|gross domestic product"
+        }
+      ],
+      "sources": [
+        "curation"
+      ],
+      "role": "family",
+      "deadline": null
+    },
+    {
+      "key": "labor_productivity_growth_pp_by_2035",
+      "family_id": "economic_output",
+      "label": "Labor productivity growth by 2035",
+      "definition": "Annual labor-productivity growth by 2035, in percentage points. GDP growth is a different question.",
+      "topic_slug": "labor-displacement",
+      "value_semantics": "quantity",
+      "date_role": "deadline_in_question",
+      "deadline": {
+        "start": null,
+        "end": "2035-12-31",
+        "label": "by the end of 2035"
+      },
+      "unit": "percentage_points",
+      "conditionality": "unconditional",
+      "condition_text": null,
+      "outcome_id": "labor_productivity",
+      "sources": [
+        "catalog"
+      ],
+      "role": "exact",
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "gdp_growth_pp_by_2035",
+      "family_id": "economic_output",
+      "label": "GDP growth by 2035",
+      "definition": "Annual GDP growth by 2035, in percentage points. Productivity growth is a different question.",
+      "topic_slug": "labor-displacement",
+      "value_semantics": "quantity",
+      "date_role": "deadline_in_question",
+      "deadline": {
+        "start": null,
+        "end": "2035-12-31",
+        "label": "by the end of 2035"
+      },
+      "unit": "percentage_points",
+      "conditionality": "unconditional",
+      "condition_text": null,
+      "outcome_id": "gdp",
+      "sources": [
+        "catalog"
+      ],
+      "role": "exact",
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "unemployment_plus_2pp_by_2030",
+      "family_id": "unemployment_change",
+      "label": "Unemployment change by 2030",
+      "definition": "Change in the unemployment rate by 2030, in percentage points.",
+      "topic_slug": "labor-displacement",
+      "value_semantics": "quantity",
+      "date_role": "deadline_in_question",
+      "deadline": {
+        "start": null,
+        "end": "2030-12-31",
+        "label": "by the end of 2030"
+      },
+      "unit": "percentage_points",
+      "conditionality": "unconditional",
+      "condition_text": null,
+      "outcome_id": "unemployment",
+      "sources": [
+        "curation",
+        "catalog"
+      ],
+      "role": "exact",
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "capability_milestone",
+      "family_id": "capability_milestone",
+      "label": "Capability threshold",
+      "definition": "A stated capability threshold that is not an AGI, ASI, or coding-automation forecast.",
+      "topic_slug": "capability",
+      "value_semantics": "mixed",
+      "date_role": "deadline_in_question",
+      "unit": null,
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "capability",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "compute_scaling",
+      "family_id": "compute_scaling",
+      "label": "Compute, scaling, or energy",
+      "definition": "A compute, scaling, or energy constraint. Not an arrival date by itself.",
+      "topic_slug": "compute",
+      "value_semantics": "mixed",
+      "date_role": "deadline_in_question",
+      "unit": null,
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "compute",
+      "sources": [
+        "pipeline"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "misuse_concern_direction",
+      "family_id": "misuse_concern",
+      "label": "Direction of concern about misuse",
+      "definition": "Qualitative direction only. Not a probability.",
+      "topic_slug": "ai-risk-qualitative",
+      "value_semantics": "qualitative",
+      "date_role": "conditioning_only",
+      "unit": null,
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "misuse",
+      "sources": [
+        "curation"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    },
+    {
+      "key": "scaling_continues",
+      "family_id": "scaling_capability",
+      "label": "Whether scaling continues",
+      "definition": "A qualitative capability claim. Not an arrival date or an extinction probability.",
+      "topic_slug": "capability",
+      "value_semantics": "qualitative",
+      "date_role": "conditioning_only",
+      "unit": null,
+      "conditionality": "unspecified",
+      "condition_text": null,
+      "outcome_id": "compute",
+      "sources": [
+        "curation"
+      ],
+      "role": "family",
+      "deadline": null,
+      "requires_specific_outcome": false,
+      "outcome_splits": []
+    }
+  ]
+}

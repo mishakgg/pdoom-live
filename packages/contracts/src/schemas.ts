@@ -267,12 +267,15 @@ export const ingestionRunSchema = z.object({
   source_slug: slug.nullable(),
   started_at: timestamp,
   completed_at: timestamp.nullable(),
-  status: z.enum(["running", "succeeded", "failed"]),
+  status: z.enum(["running", "succeeded", "partial", "failed"]),
   cursor_before: z.string().max(200).nullable(),
   cursor_after: z.string().max(200).nullable(),
   observed_count: z.number().int().nonnegative(),
   new_count: z.number().int().nonnegative(),
   changed_count: z.number().int().nonnegative(),
+  unchanged_count: z.number().int().nonnegative().optional(),
+  skipped_count: z.number().int().nonnegative().optional(),
+  failed_count: z.number().int().nonnegative().optional(),
   error_summary: z.string().max(400).nullable(),
 }).strict();
 

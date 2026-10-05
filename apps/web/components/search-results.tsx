@@ -7,6 +7,7 @@ import {
 } from "@pdoom/contracts";
 import Link from "next/link";
 import { formatWhen } from "@/lib/format";
+import type { ResearchFilters } from "@/lib/presentation";
 import { ReviewBadge, StatementCard } from "./statement-bits";
 
 const MATCH_LABEL: Record<SearchMatch, string> = {
@@ -41,7 +42,15 @@ function clip(text: string, max = 280): string {
   return `${flat.slice(0, max - 1).trimEnd()}…`;
 }
 
-export function SearchResults({ result, queryString }: { result: SearchResponse; queryString: string }) {
+export function SearchResults({
+  result,
+  queryString,
+  filters,
+}: {
+  result: SearchResponse;
+  queryString: string;
+  filters?: ResearchFilters;
+}) {
   const { groups } = result;
   const shown = new Set<SearchEntityType>(result.query.types);
   const total = result.query.types.reduce((sum, type) => sum + groups[type].page.total, 0);
@@ -55,19 +64,23 @@ export function SearchResults({ result, queryString }: { result: SearchResponse;
       {shown.has("person") ? <section className="search-kind" aria-labelledby="search-people">
         <h2 id="search-people">People</h2>
         {groups.person.page.total === 0 ? <p className="meta">No people matched.</p> : null}
-        {groups.person.data.map((person) => (
-          <article className="card" key={person.slug}>
-            <div className="row">
-              <h3><Link href={`/people/${person.slug}`}>{person.display_name}</Link></h3>
-              <span className="meta">{person.status}</span>
-            </div>
-            <p className="meta">
-              {person.organization ? `${person.organization.role ?? "Affiliate"} · ${person.organization.name}` : "No current affiliation"}
-              {" · "}
-              {MATCH_LABEL[person.match]}
-            </p>
-          </article>
-        ))}
+        {groups.person.data.map((person) => {
+          const sameName = groups.person.data.filter((other) => other.display_name === person.display_name).length > 1;
+          return (
+            <article className="card" key={person.slug}>
+              <div className="row">
+                <h3><Link href={`/people/${person.slug}`}>{person.display_name}</Link></h3>
+                <span className="meta">{person.status}</span>
+              </div>
+              <p className="meta">
+                {person.organization ? `${person.organization.role ?? "Affiliate"} · ${person.organization.name}` : "No current affiliation"}
+                {sameName ? ` · Record ${person.slug}` : ""}
+                {" · "}
+                {MATCH_LABEL[person.match]}
+              </p>
+            </article>
+          );
+        })}
         <More href={moreHref(queryString, "person", groups.person.page.next_cursor)} />
       </section> : null}
       {shown.has("organization") ? <section className="search-kind" aria-labelledby="search-organizations">
@@ -96,7 +109,7 @@ export function SearchResults({ result, queryString }: { result: SearchResponse;
             <div key={type}>
               <h3>{CLASS_LABEL[type]}</h3>
               {rows.map((statement) => (
-                <SearchStatement key={statement.slug} statement={statement} />
+                <SearchStatement key={statement.slug} statement={statement} filters={filters} />
               ))}
             </div>
           );
@@ -156,10 +169,10 @@ export function SearchResults({ result, queryString }: { result: SearchResponse;
   );
 }
 
-function SearchStatement({ statement }: { statement: SearchStatementHit }) {
+function SearchStatement({ statement, filters }: { statement: SearchStatementHit; filters?: ResearchFilters }) {
   return (
     <div>
-      <StatementCard statement={{ ...statement, normalized_text: clip(statement.normalized_text) }} />
+      <StatementCard statement={{ ...statement, normalized_text: clip(statement.normalized_text) }} filters={filters} />
       <p className="meta">{MATCH_LABEL[statement.match]}</p>
     </div>
   );

@@ -1,6 +1,6 @@
 import { importCanonical } from "../packages/db/src/import";
 import { createPool } from "../packages/db/src/pool";
-import { getStatement, getTrend, listStatements } from "../packages/db/src/queries";
+import { getStatement, getTrend, listStatements, loadTrendInputs } from "../packages/db/src/queries";
 import { describe, expect, it } from "vitest";
 
 const pool = createPool(process.env.DATABASE_URL ?? "postgresql://postgres:postgres@localhost:5432/pdoom_live_test");
@@ -109,7 +109,13 @@ describe("fixture import and trends", () => {
     if (probability?.kind !== "distribution") return;
     expect(probability.distribution.value_semantics).toBe("probability");
     expect(probability.distribution.included.map((item) => item.value_numeric)).toEqual([0.4]);
+    expect(probability.distribution.included[0]?.target_date_end).toBe("2032-12-31");
     expect(probability.distribution.density).toBe("sparse");
+    expect(probability.distribution.history.presented_as_reconstruction).toBe(false);
+    expect(probability.comparability_policy_version).toBe("comparability/1.0.0");
+    expect(probability.method_version).toBe("explicit-numeric-distribution/1.2.0");
+    const inputs = await loadTrendInputs(pool);
+    expect(inputs?.candidates.find((row) => row.statement_slug === "mateo-agi-2025")?.target_date_end).toBe("2032-12-31");
 
     const conditional = await getTrend("conditional-extinction-given-agi", pool);
     expect(conditional?.kind).toBe("distribution");

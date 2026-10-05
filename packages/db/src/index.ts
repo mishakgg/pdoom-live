@@ -13,5 +13,7 @@ export * from "./public-snapshot";
 export * from "./operational-snapshot";
 export * from "./quality-command";
 export * from "./readiness";
+export * from "./read-snapshot";
+export * from "./public-revision";
 export * from "./shutdown";
 export { migrationsDirectory } from "./paths";

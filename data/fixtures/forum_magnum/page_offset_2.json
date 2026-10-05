@@ -1,0 +1,30 @@
+{
+  "data": {
+    "posts": {
+      "results": [
+        {
+          "_id": "postSole",
+          "title": "A public forecast",
+          "slug": "a-public-forecast",
+          "pageUrl": "https://www.lesswrong.com/posts/postSole/a-public-forecast",
+          "postedAt": "2024-05-01T12:00:00Z",
+          "draft": false,
+          "user": {"slug": "fixture-author", "fullName": "Fixture Author"},
+          "coauthors": [],
+          "contents": {"plaintextDescription": "I think there is a 10% chance of human extinction by 2040."}
+        },
+        {
+          "_id": "postNext",
+          "title": "A later forecast",
+          "slug": "a-later-forecast",
+          "pageUrl": "https://www.alignmentforum.org/posts/postNext/a-later-forecast",
+          "postedAt": "2025-01-15T08:30:00Z",
+          "draft": false,
+          "user": {"slug": "fixture-author", "fullName": "Fixture Author"},
+          "coauthors": [],
+          "contents": {"plaintextDescription": "My credence in permanent disempowerment by 2045 is about 15 percent."}
+        }
+      ]
+    }
+  }
+}

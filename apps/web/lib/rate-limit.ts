@@ -1,5 +1,7 @@
 import { PUBLIC_API_LIMITS } from "@pdoom/contracts";
 
+const MAX_CLIENT_KEYS = 1024;
+
 type Bucket = { count: number; resetAt: number };
 
 export type RateDecision =
@@ -42,14 +44,15 @@ export function createRateLimiter() {
       const processLimit = envInt("PDOOM_PUBLIC_PROCESS_RATE_LIMIT", PUBLIC_API_LIMITS.processRateLimitPerMinute);
       const processDecision = take(processBucket, processLimit, windowMs, now);
       if (processDecision.limited) return { ok: false, retryAfter: processDecision.retryAfter, limit: processLimit };
-      const safeKey = key.slice(0, 80) || "direct";
-      const bucket = buckets.get(safeKey) ?? { count: 0, resetAt: 0 };
-      buckets.set(safeKey, bucket);
-      if (buckets.size > 5000) {
+      let safeKey = key.slice(0, 80) || "direct";
+      if (!buckets.has(safeKey) && buckets.size >= MAX_CLIENT_KEYS) {
         for (const [entry, value] of buckets) {
           if (now >= value.resetAt) buckets.delete(entry);
         }
       }
+      if (!buckets.has(safeKey) && buckets.size >= MAX_CLIENT_KEYS) safeKey = "overflow";
+      const bucket = buckets.get(safeKey) ?? { count: 0, resetAt: 0 };
+      buckets.set(safeKey, bucket);
       const decision = take(bucket, limit, windowMs, now);
       if (decision.limited) return { ok: false, retryAfter: decision.retryAfter, limit };
       return { ok: true, remaining: decision.remaining, limit };
@@ -61,13 +64,42 @@ export function createRateLimiter() {
   };
 }
 
-export const publicApiLimiter = createRateLimiter();
-
-export function publicClientKey(request: Request): string {
-  const forwarded = request.headers.get("x-forwarded-for");
-  if (forwarded) {
-    const first = forwarded.split(",")[0]?.trim() ?? "";
-    if (first.length > 0 && first.length <= 80 && /^[A-Za-z0-9.:]+$/.test(first)) return `xff:${first}`;
-  }
-  return "direct";
+function isIPv4(value: string): boolean {
+  const parts = value.split(".");
+  if (parts.length !== 4) return false;
+  return parts.every((part) => /^\d{1,3}$/.test(part) && Number(part) <= 255);
 }
+
+function isIPv6(value: string): boolean {
+  return value.length >= 2 && value.length <= 45 && value.includes(":") && /^[0-9A-Fa-f:]+$/.test(value);
+}
+
+function trustedProxyHops(): number {
+  const raw = process.env.PDOOM_TRUSTED_PROXY_HOPS;
+  if (!raw) return 0;
+  const parsed = Number(raw);
+  if (!Number.isInteger(parsed) || parsed < 0 || parsed > 8) return 0;
+  return parsed;
+}
+
+/**
+ * X-Forwarded-For is a client-supplied header unless the operator says how
+ * many reverse proxies append a peer address. Unset means every request
+ * shares the `direct` bucket. With N hops, the client is N places from the
+ * right: the address the nearest trusted proxy observed, not the leftmost
+ * value a caller can spoof.
+ */
+export function publicClientKey(request: Request): string {
+  const hops = trustedProxyHops();
+  if (hops <= 0) return "direct";
+  const forwarded = request.headers.get("x-forwarded-for");
+  if (!forwarded) return "direct";
+  const parts = forwarded.split(",").map((part) => part.trim()).filter((part) => part.length > 0);
+  if (parts.length < hops) return "direct";
+  if (!parts.every((part) => isIPv4(part) || isIPv6(part))) return "direct";
+  const client = parts[parts.length - hops];
+  if (!client) return "direct";
+  return `xff:${client}`;
+}
+
+export const publicApiLimiter = createRateLimiter();

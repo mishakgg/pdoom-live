@@ -66,12 +66,15 @@ Key design documents:
 The first testing-ready product slice runs on PostgreSQL with a synthetic fixture cohort. The data-collection side has a separate versioned seed, identity graph, and collectors. That seed is not loaded by `npm run db:seed`.
 
 - [Cohort methodology](./docs/COHORT_METHODOLOGY.md) — cohort `2026.09.0` is a purposive seed, not all AI researchers.
+- [Cohort 2026.10.0](./docs/COHORT_2026_10.md) — membership diff on top of `2026.09.0`, with the same inclusion rules.
 - [Data pipeline](./docs/DATA_PIPELINE.md) — collector envelope, seed files, and the gap to the application import.
+- [Channel integration 2026.10](./docs/CHANNEL_INTEGRATION_2026_10.md) — ForumMagnum and Bluesky adapters. They are callable and not on the recurring runner.
 - [Ingestion contract](./docs/INGESTION_CONTRACT.md) — internal canonical document the product imports. Not the public API.
 - [Public API and export](./docs/PUBLIC_API.md) — versioned read API, JSON/CSV snapshot, and publication rules.
 - [Trend methodology](./docs/TREND_METHODOLOGY.md) — question keys, forecast families, coverage, and exclusion reasons.
-- Seed files: `data/seed/cohort/v2026-09/`.
+- Seed files: `data/seed/cohort/v2026-09/` and `data/seed/cohort/v2026-10/`.
 - Quality report: `data/reports/cohort-v2026-09-quality.md`.
+- Coverage funnels: `data/reports/coverage-v2026-09.md` and `data/reports/coverage-v2026-10.md`.
 
 ## Local development
 

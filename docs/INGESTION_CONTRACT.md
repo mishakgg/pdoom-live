@@ -34,7 +34,11 @@ Cross-references use slugs, not database UUIDs. The importer assigns stable UUID
 - forecast: one row per statement
 - cohort: `slug` + `version`
 
-Re-importing the same document does not create duplicate statements. A changed `content_hash_input` is a new source-item version; the unpublished body is hashed and discarded.
+Re-importing the same document does not create duplicate statements. A changed content hash is a new source-item version. The previous version keeps its slug. Version 1 slugs remain `item-` plus the SHA-256 prefix of the canonical URL. Later versions use a different slug. Rows absent from a later file are kept.
+
+An ingestion run status may be `running`, `succeeded`, `partial`, or `failed`. `unchanged_count`, `skipped_count`, and `failed_count` are optional on older documents and default to zero in the database. A `partial` or `failed` run is not a full success. `publish-dataset.sh` refuses a document whose latest belief or refresh run is `failed`.
+
+Import keeps an existing review decision. Unchanged extraction does not replace stored approval, rejection, corrected text, or corrected forecast fields, and it does not rewrite `review_decisions` or `statement_extractions`. A changed source hash, evidence hash, or content version leaves `human_verified` stored and public reads report `needs_review` until the reviewed bytes are imported again. A rejection stays rejected.
 
 ## Statement classes
 

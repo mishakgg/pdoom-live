@@ -1,9 +1,49 @@
 import { createHash } from "node:crypto";
 import { z } from "zod";
-import { RELATIONSHIP_TYPES, STATEMENT_TYPES, VALUE_TYPES, type ReviewState, type StatementType } from "./enums";
+import {
+  FORECAST_KINDS,
+  RELATIONSHIP_TYPES,
+  REVIEW_STATES,
+  SOURCE_TYPES,
+  STATEMENT_TYPES,
+  VALUE_TYPES,
+  type ReviewState,
+  type StatementType,
+} from "./enums";
 import { normalizeTimestamp } from "./normalize";
 
 export const REVIEW_DECISION_SCHEMA = "review-decisions/1.0.0";
+
+/**
+ * Identity version 1 is the existing SHA-256 material in `candidateKey`.
+ * The digest is not prefixed. Forecast fields are part of that material when
+ * present; empty fields do not change the key. Staging must pass those fields
+ * so two claims in one passage stay distinct.
+ */
+export const CANDIDATE_IDENTITY_VERSION = "1";
+
+export const CANDIDATE_PARTICIPANT_ROLES = [
+  "author",
+  "speaker",
+  "guest",
+  "host",
+  "interviewer",
+  "publisher",
+  "mentioned",
+] as const;
+
+export const REJECTION_REASON_ACTIONS: Record<RejectionReason, string> = {
+  wrong_speaker: "Reject it. The named person did not say this. Keep the author, guest, host, or mentioned role on the source.",
+  wrong_source_attribution: "Reject it. The source type or publisher is wrong, so the claim cannot be read as that person's statement.",
+  not_a_forecast: "Reject it. The span is a question, a quotation, a negation, a hypothetical, or an instruction, not this person's forecast.",
+  extraction_error: "Reject it or send it back. The span was parsed into the wrong number, range, or sentence.",
+  duplicate: "Reject the copy or record a repeats relationship. Do not treat a second copy as a new belief.",
+  insufficient_evidence: "Reject it or send it back until the evidence span, locator, and source URL are enough to check the claim.",
+  definition_ambiguous: "Send it back until the outcome definition is explicit. Do not map it onto a nearby registry question.",
+  numerical_interpretation_incorrect: "Correct the value, range, or unit only to a number the evidence contains, or reject the reading.",
+  source_unavailable: "Reject it when the source URL can no longer be checked. Do not replace it with a paraphrase.",
+  other: "Reject it and write a note that says what failed. A blank other reason is not accepted.",
+};
 
 export const REVIEW_ACTIONS = ["approve", "reject", "needs_changes"] as const;
 export type ReviewAction = (typeof REVIEW_ACTIONS)[number];
@@ -223,7 +263,7 @@ export function evidenceSupportsNumbers(
   return needed.every((value) => found.some((item) => close(item, value) || (input.unit === "probability" && close(item, value * 100))));
 }
 
-export type ReviewWarning = { code: string; message: string };
+export type ReviewWarning = { code: string; message: string; action: string };
 
 export function reviewWarnings(input: {
   statement_type: StatementType;
@@ -240,16 +280,47 @@ export function reviewWarnings(input: {
   evidence_text: string;
 }): ReviewWarning[] {
   const warnings: ReviewWarning[] = [];
-  if (!input.horizon_text) warnings.push({ code: "missing_horizon", message: "No horizon is recorded." });
-  if (!input.definition_text) warnings.push({ code: "missing_definition", message: "No forecast definition is recorded." });
+  if (!input.horizon_text) {
+    warnings.push({
+      code: "missing_horizon",
+      message: "No horizon is recorded.",
+      action: "Record the speaker's horizon, or reject the claim for insufficient evidence. Do not invent a year.",
+    });
+  }
+  if (!input.definition_text) {
+    warnings.push({
+      code: "missing_definition",
+      message: "No forecast definition is recorded.",
+      action: "Record the outcome the speaker named, or reject the claim as definition ambiguous.",
+    });
+  }
   if (input.statement_type === "explicit_numeric" && !input.condition_text && !/unconditional|conditional/i.test(`${input.question_key ?? ""} ${input.definition_text ?? ""}`)) {
-    warnings.push({ code: "unclear_condition", message: "Conditionality is not explicit." });
+    warnings.push({
+      code: "unclear_condition",
+      message: "Conditionality is not explicit.",
+      action: "Mark the claim conditional or unconditional from the evidence before comparing it with other questions.",
+    });
+  }
+  if (input.question_key && !isKnownQuestionKey(input.question_key)) {
+    warnings.push({
+      code: "question_key_not_in_registry",
+      message: `Extracted question key ${input.question_key} is not in the product registry.`,
+      action: "Choose a QUESTION_TAXONOMY key only when it is the same outcome and horizon. Leave the extracted key unchanged until then. Do not invent a registry entry.",
+    });
   }
   if (input.source_type === "press") {
-    warnings.push({ code: "secondary_source", message: "This source type is secondary reporting." });
+    warnings.push({
+      code: "secondary_source",
+      message: "This source type is secondary reporting.",
+      action: "Treat it as secondary. Do not approve it as the speaker's own statement unless the evidence is their words.",
+    });
   }
   if (input.value_type === "range") {
-    warnings.push({ code: "range_value", message: "The value is a range, not a point estimate." });
+    warnings.push({
+      code: "range_value",
+      message: "The value is a range, not a point estimate.",
+      action: "Confirm both endpoints against the evidence. Do not collapse the range to a midpoint.",
+    });
   }
   if (
     input.statement_type === "explicit_numeric" &&
@@ -261,7 +332,11 @@ export function reviewWarnings(input: {
       value_max: input.value_max,
     })
   ) {
-    warnings.push({ code: "value_disagrees", message: "The evidence text does not contain this numeric value." });
+    warnings.push({
+      code: "value_disagrees",
+      message: "The evidence text does not contain this numeric value.",
+      action: "Correct the value to a number in the evidence, or reject the reading as numerically incorrect.",
+    });
   }
   return warnings;
 }
@@ -378,3 +453,98 @@ export const reviewManifestSchema = z.object({
 }).strict();
 
 export type ReviewManifest = z.infer<typeof reviewManifestSchema>;
+
+const candidateHash = z.string().regex(/^(sha256:)?[a-f0-9]{64}$/, "candidate content hash must be SHA-256");
+
+export const candidateParticipantSchema = z.object({
+  name: z.string().min(1).max(200),
+  role: z.enum(CANDIDATE_PARTICIPANT_ROLES),
+  attribution_method: z.string().max(80).nullable().optional(),
+  attribution_detail: z.string().max(200).nullable().optional(),
+  person_slug: z.string().max(80).nullable().optional(),
+}).passthrough();
+
+export const candidateLocatorSchema = z.object({
+  start_char: z.number().int().nonnegative().nullable().optional(),
+  end_char: z.number().int().nonnegative().nullable().optional(),
+  start_ms: z.number().int().nonnegative().nullable().optional(),
+  end_ms: z.number().int().nonnegative().nullable().optional(),
+  speaker: z.string().max(200).nullable().optional(),
+  turn_index: z.number().int().nonnegative().nullable().optional(),
+}).passthrough();
+
+export const candidateEnvelopeSchema = z.object({
+  person_id: z.string().min(1),
+  person_slug: z.string().max(80).optional(),
+  source_url: z.string().min(1),
+  content_hash: candidateHash,
+  content_version: z.number().int().positive().optional(),
+  evidence_text: z.string().min(1).max(2000),
+  context_text: z.string().max(800).nullable().optional(),
+  extractor_name: z.string().min(1).max(120),
+  extractor_version: z.string().min(1).max(120),
+  normalized_text: z.string().min(1).max(600),
+  statement_type: z.enum(STATEMENT_TYPES),
+  review_state: z.enum(REVIEW_STATES).optional(),
+  recommended_review_state: z.enum(["unreviewed", "needs_review", "machine_validated"]).optional(),
+  published_at: z.string().nullable().optional(),
+  published_timezone: z.string().max(40).nullable().optional(),
+  observed_at: z.string().nullable().optional(),
+  language: z.string().max(16).nullable().optional(),
+  topics: z.array(z.string()).optional(),
+  topic_slug: z.string().max(80).nullable().optional(),
+  confidence: z.union([z.string(), z.number()]).nullable().optional(),
+  source_type: z.enum(SOURCE_TYPES).optional(),
+  platform: z.string().max(80).nullable().optional(),
+  role: z.enum(CANDIDATE_PARTICIPANT_ROLES).optional(),
+  ownership: z.enum(["owned", "appearance"]).optional(),
+  attribution_method: z.string().max(80).nullable().optional(),
+  attribution_detail: z.string().max(200).nullable().optional(),
+  participants: z.array(candidateParticipantSchema).max(24).optional(),
+  review_flags: z.array(z.string().max(80)).max(24).optional(),
+  evidence_locator: candidateLocatorSchema.nullable().optional(),
+  start_char: z.number().int().nonnegative().nullable().optional(),
+  end_char: z.number().int().nonnegative().nullable().optional(),
+  start_ms: z.number().int().nonnegative().nullable().optional(),
+  end_ms: z.number().int().nonnegative().nullable().optional(),
+  question_key: z.string().max(120).nullable().optional(),
+  question_text: z.string().max(600).nullable().optional(),
+  definition_text: z.string().max(800).nullable().optional(),
+  condition_text: z.string().max(400).nullable().optional(),
+  horizon_text: z.string().max(160).nullable().optional(),
+  target_date_start: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
+  target_date_end: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).nullable().optional(),
+  value_type: z.enum(VALUE_TYPES).nullable().optional(),
+  value_numeric: z.number().nullable().optional(),
+  value_min: z.number().nullable().optional(),
+  value_max: z.number().nullable().optional(),
+  value_text: z.string().max(80).nullable().optional(),
+  unit: z.string().max(80).nullable().optional(),
+  resolution_criteria: z.string().max(800).nullable().optional(),
+  forecast_kind: z.enum(FORECAST_KINDS).nullable().optional(),
+}).passthrough();
+
+export type CandidateEnvelope = z.infer<typeof candidateEnvelopeSchema>;
+
+export function parseCandidateEnvelope(raw: unknown): CandidateEnvelope {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
+    throw new Error("candidate content hash must be SHA-256");
+  }
+  const record = raw as Record<string, unknown>;
+  if (typeof record.content_hash !== "string" || !/^(sha256:)?[a-f0-9]{64}$/.test(record.content_hash)) {
+    throw new Error("candidate content hash must be SHA-256");
+  }
+  if (record.review_state === "human_verified" || record.statement_type === "human_verified") {
+    throw new Error("staging cannot mark a candidate human_verified");
+  }
+  if (record.role === "mentioned") {
+    throw new Error("a mentioned person is not the statement speaker");
+  }
+  const normalized = {
+    ...record,
+    evidence_text: typeof record.evidence_text === "string" ? record.evidence_text.slice(0, 2000) : record.evidence_text,
+    normalized_text: typeof record.normalized_text === "string" ? record.normalized_text.slice(0, 600) : record.normalized_text,
+    context_text: typeof record.context_text === "string" ? record.context_text.slice(0, 800) : record.context_text ?? null,
+  };
+  return candidateEnvelopeSchema.parse(normalized);
+}

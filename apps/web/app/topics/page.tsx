@@ -28,6 +28,7 @@ export default async function TopicsPage() {
                 {" · "}
                 {Object.entries(topic.statement_counts).map(([type, count]) => `${count} ${typeLabel(type)}`).join(" · ") || "No statement collected"}
               </p>
+              <p><Link href={`/statements?topic=${topic.slug}`}>All statements on this question</Link></p>
             </article>
           ))}
         </div>

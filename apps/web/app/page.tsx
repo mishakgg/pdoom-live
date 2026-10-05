@@ -1,12 +1,13 @@
-import { getOverview } from "@pdoom/db";
 import { trendKindLabel } from "@pdoom/contracts";
+import { getOverview, listTopics } from "@pdoom/db";
 import Link from "next/link";
+import { DatasetWatch } from "@/components/dataset-watch";
 import { JsonLd } from "@/components/json-ld";
 import { StatementCard } from "@/components/statement-bits";
 import { TrendView } from "@/components/trend-view";
 import { DensityMark } from "@/components/trends";
-import { formatWhen } from "@/lib/format";
-import { coverageCopy } from "@/lib/presentation";
+import { countLabel, formatWhen } from "@/lib/format";
+import { coverageCopy, datasetFingerprint, revisionReading, selectCoveredTopics, selectFeaturedQuestion } from "@/lib/presentation";
 import { requestNonce } from "@/lib/request-nonce";
 import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
 import { datasetStructuredData, websiteStructuredData } from "@/lib/structured-data";
@@ -18,7 +19,7 @@ export async function generateMetadata() {
 }
 
 export default async function HomePage() {
-  const overview = await getOverview();
+  const [overview, topics] = await Promise.all([getOverview(), listTopics()]);
   const origin = canonicalOrigin();
   const nonce = await requestNonce();
   const coverageInput = {
@@ -34,9 +35,18 @@ export default async function HomePage() {
     : overview.dataset.dataset_kind === "live"
       ? "Live dataset"
       : "Dataset";
-  const distribution = overview.trends.find((trend) => trend.slug === "extinction-by-2070-distribution");
-  const volume = overview.trends.find((trend) => trend.slug === "statement-volume-by-topic-type");
-  const others = overview.trends.filter((trend) => trend.slug !== distribution?.slug && trend.slug !== volume?.slug);
+  const { featured, others } = selectFeaturedQuestion(overview.trends);
+  const coveredTopics = selectCoveredTopics(topics);
+  const fingerprint = datasetFingerprint({
+    imported_at: overview.dataset.imported_at,
+    statement_count: overview.dataset.statement_count,
+    latest_observed_at: overview.dataset.latest_observed_at,
+    latest_published_at: overview.dataset.latest_published_at,
+    latest_successful_observation: overview.dataset.coverage.latest_successful_observation,
+    stale_sources: overview.dataset.coverage.stale_sources,
+    failing_sources: overview.dataset.coverage.unavailable_or_failing_sources,
+  });
+  const freshness = overview.dataset.coverage.freshness;
   return (
     <>
       <JsonLd nonce={nonce} data={websiteStructuredData(origin)} />
@@ -91,12 +101,36 @@ export default async function HomePage() {
               <dd>{overview.dataset.coverage.stale_sources}</dd>
             </div>
             <div>
+              <dt>Latest publication</dt>
+              <dd>{formatWhen(overview.dataset.latest_published_at)}</dd>
+            </div>
+            <div>
               <dt>Latest observation</dt>
               <dd>{formatWhen(overview.dataset.coverage.latest_item_observed_at ?? overview.dataset.latest_observed_at)}</dd>
             </div>
+            <div>
+              <dt>Last successful collection</dt>
+              <dd>{formatWhen(overview.dataset.coverage.latest_successful_observation)}</dd>
+            </div>
+            <div>
+              <dt>Dataset updated</dt>
+              <dd>{formatWhen(overview.dataset.imported_at)}</dd>
+            </div>
+            <div>
+              <dt>Collection states</dt>
+              <dd>
+                {freshness.current} current · {freshness.aging} aging · {freshness.stale} stale · {freshness.never_checked} never checked · {overview.dataset.coverage.unavailable_or_failing_sources} failing or unavailable
+              </dd>
+            </div>
           </dl>
+          <p className="meta">
+            Publication time, observation time, last successful collection, and dataset update are different clocks.
+            A stale, unknown, partial, or failed source stays labeled on its own page.
+            Reloading this page reads the stored dataset. It does not collect sources again.
+          </p>
         </section>
       ) : null}
+      <DatasetWatch fingerprint={fingerprint} />
       {coverage ? (
         <section className="panel state">
           <p className="kicker">Coverage</p>
@@ -107,42 +141,75 @@ export default async function HomePage() {
       <div className="grid-2">
         <section aria-labelledby="recent-statements">
           <div className="card-flags">
-            <h2 id="recent-statements">Recent statements</h2>
+            <h2 id="recent-statements">Newest statements by event time</h2>
             <Link href="/statements">All statements</Link>
           </div>
+          <p className="meta">Ordered by event time, not by when a source was collected and not by publication time. Each row keeps those clocks separate.</p>
           {overview.recent_statements.length ? overview.recent_statements.map((statement) => (
             <StatementCard key={statement.slug} statement={statement} headingLevel="h3" />
           )) : (
             <p>No public statement is available to list.</p>
           )}
           <h2>Recorded changes</h2>
+          <p className="meta">A recorded link is not a new collection and not newly published material. It is a relationship between two stored statements.</p>
           {overview.revisions.length ? (
             <ul className="relation-list">
-              {overview.revisions.map((revision) => (
-                <li key={revision.to_slug}>
-                  <Link href={`/people/${revision.person_slug}`}>{revision.display_name}</Link>
-                  {" "}
-                  {revision.relationship_type.replaceAll("_", " ")} a statement.
-                  {" "}
-                  <Link href={`/statements/${revision.from_slug}`}>
-                    Earlier statement
-                    <span className="sr-only"> by {revision.display_name}</span>
-                  </Link>
-                  {" → "}
-                  <Link href={`/statements/${revision.to_slug}`}>
-                    Later statement
-                    <span className="sr-only"> by {revision.display_name}</span>
-                  </Link>
-                </li>
-              ))}
+              {overview.revisions.map((revision) => {
+                const reading = revisionReading(revision.relationship_type);
+                return (
+                  <li key={revision.to_slug}>
+                    <p>
+                      <strong>{reading.title}.</strong> {reading.note}
+                    </p>
+                    <p>
+                      <Link href={`/people/${revision.person_slug}`}>{revision.display_name}</Link>
+                      {" · "}
+                      <Link href={`/statements/${revision.from_slug}`}>
+                        Earlier statement
+                        <span className="sr-only"> by {revision.display_name}</span>
+                      </Link>
+                      {" → "}
+                      <Link href={`/statements/${revision.to_slug}`}>
+                        Later statement
+                        <span className="sr-only"> by {revision.display_name}</span>
+                      </Link>
+                    </p>
+                  </li>
+                );
+              })}
             </ul>
           ) : (
             <p>No revision between collected statements is recorded.</p>
           )}
         </section>
         <div className="stack">
-          {distribution ? <TrendView trend={distribution} /> : null}
-          {volume ? <TrendView trend={volume} /> : null}
+          <section className="panel" aria-labelledby="covered-questions">
+            <h2 id="covered-questions">Covered questions</h2>
+            <p>Ordered by how many public statements use the definition, then by name. This is coverage in the loaded dataset. It is not importance and not a probability.</p>
+            {coveredTopics.length ? (
+              <ul className="trend-index">
+                {coveredTopics.map((topic) => (
+                  <li key={topic.slug}>
+                    <Link href={`/topics/${topic.slug}`}>{topic.name}</Link>
+                    <span className="meta"> {countLabel(topic.statement_total, "statement")}</span>
+                    <p>{topic.definition}</p>
+                    <p><Link href={`/statements?topic=${topic.slug}`}>All statements on this question</Link></p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No question has a collected statement.</p>
+            )}
+          </section>
+          {featured ? (
+            <>
+              <p className="meta">
+                The question below has the widest comparable coverage: cohort members with a record, then statement count.
+                Volume is listed with the other questions because it counts records. It is not a belief.
+              </p>
+              <TrendView trend={featured} />
+            </>
+          ) : null}
           {others.length > 0 ? (
             <section className="panel">
               <h2>Other questions</h2>

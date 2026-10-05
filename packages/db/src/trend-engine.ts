@@ -1,8 +1,19 @@
 import {
+  COMPARABILITY_POLICY_VERSION,
+  CURRENT_CORPUS_HISTORY,
+  MEDIAN_INTERPRETATION,
   SUMMARY_MIN_POINTS,
+  classifyForecast,
+  classifyQuestionKey,
+  comparisonDecision,
   coverageSentence,
+  describePreservedValue,
   exclusionLabel,
+  isBoundPhrase,
+  readProbabilitySemantics,
   type ExclusionReason,
+  type ForecastClassification,
+  type HistoryClaim,
   type TrendConditionality,
   type TrendDensity,
 } from "@pdoom/contracts";
@@ -27,6 +38,14 @@ export type TrendCandidate = {
   value_max: number | null;
   unit: string | null;
   horizon_text: string | null;
+  target_date_start?: string | null;
+  target_date_end?: string | null;
+  value_text?: string | null;
+  distribution?: Record<string, unknown> | null;
+  probability_semantics?: string | null;
+  resolution_criteria?: string | null;
+  known_at?: string | null;
+  reviewed_at?: string | null;
   event_time: string | null;
 };
 
@@ -47,6 +66,7 @@ export type TrendScope = {
   require_horizon: boolean;
   require_unit: string;
   conditionality: TrendConditionality;
+  exact_question_id?: string;
 };
 
 export type Exclusion = {
@@ -55,6 +75,7 @@ export type Exclusion = {
   display_name: string;
   reason: ExclusionReason;
   reason_label: string;
+  preserved_value: string | null;
 };
 
 export type IncludedEstimate = {
@@ -69,6 +90,10 @@ export type IncludedEstimate = {
   event_time: string | null;
   horizon_text: string | null;
   condition_text: string | null;
+  target_date_start: string | null;
+  target_date_end: string | null;
+  stored_question_key: string | null;
+  probability_semantics: "event_probability" | "unspecified";
   in_summary: boolean;
 };
 
@@ -117,6 +142,14 @@ export type NumericTrendResult = {
   median: number | null;
   summary_note: string;
   coverage: TrendCoverage;
+  comparability_policy_version: typeof COMPARABILITY_POLICY_VERSION;
+  exact_question_id: string;
+  outcome_label: string;
+  deadline_label: string | null;
+  condition_label: string | null;
+  probability_semantics: "event_probability" | "unspecified";
+  median_interpretation: string;
+  history: HistoryClaim;
 };
 
 export type RevisionPoint = {
@@ -135,9 +168,10 @@ export type RevisionLink = {
   relationship_type: string;
   method: string;
   from_value: number;
-  to_value: number;
+  to_value: number | null;
   from_event_time: string | null;
   to_event_time: string | null;
+  withdrawal: boolean;
 };
 
 export type RevisionChain = {
@@ -178,6 +212,13 @@ export type RevisionResult = {
   contributing_person_count: number;
   summary_note: string;
   coverage: TrendCoverage;
+  comparability_policy_version: typeof COMPARABILITY_POLICY_VERSION;
+  exact_question_id: string;
+  outcome_label: string;
+  deadline_label: string | null;
+  condition_label: string | null;
+  history: HistoryClaim;
+  withdrawals: RevisionLink[];
 };
 
 type CohortContext = {
@@ -192,6 +233,7 @@ type CohortContext = {
 
 const CHANGE_RELATIONSHIPS = new Set(["updates", "retracts"]);
 const NON_CHANGE_RELATIONSHIPS = new Set(["repeats", "clarifies", "contradicts"]);
+const WITHDRAWAL_RELATIONSHIPS = new Set(["retracts", "withdraws"]);
 
 function hasText(value: string | null | undefined): boolean {
   return Boolean(value && value.trim());
@@ -199,8 +241,23 @@ function hasText(value: string | null | undefined): boolean {
 
 function inScope(candidate: TrendCandidate, scope: TrendScope): boolean {
   if (candidate.question_key && candidate.question_key === scope.question_key) return true;
+  const exactId = scope.exact_question_id ?? scope.question_key;
+  if (candidate.question_key && comparisonDecision(candidate, exactId).match) return true;
   if (scope.topic_slug && candidate.topic_slugs.includes(scope.topic_slug)) return true;
   return scope.sibling_topic_slugs.some((topic) => candidate.topic_slugs.includes(topic));
+}
+
+function horizonKnown(candidate: TrendCandidate): boolean {
+  return hasText(candidate.horizon_text) || hasText(candidate.target_date_start) || hasText(candidate.target_date_end);
+}
+
+function sameQuestionFilters(candidate: TrendCandidate, scope: TrendScope): ExclusionReason | null {
+  if (scope.conditionality === "unconditional" && hasText(candidate.condition_text)) return "conditionality_mismatch";
+  if (scope.conditionality === "conditional" && !hasText(candidate.condition_text)) return "conditionality_mismatch";
+  if (scope.conditionality === "unspecified" && hasText(candidate.condition_text)) return "conditionality_mismatch";
+  if (candidate.unit !== scope.require_unit) return "unit_mismatch";
+  if (scope.require_horizon && !horizonKnown(candidate)) return "missing_horizon";
+  return null;
 }
 
 function exclusionReason(
@@ -209,16 +266,27 @@ function exclusionReason(
   valueMode: "point" | "point_or_range",
 ): ExclusionReason | null {
   const keyMatches = candidate.question_key === scope.question_key && candidate.question_key !== null;
-  if (!keyMatches && scope.topic_slug && !candidate.topic_slugs.includes(scope.topic_slug)) return "topic_not_target";
+  const exactId = scope.exact_question_id ?? scope.question_key;
+  const decision = candidate.question_key ? comparisonDecision(candidate, exactId) : null;
+  if (!keyMatches && !decision?.match && scope.topic_slug && !candidate.topic_slugs.includes(scope.topic_slug)) return "topic_not_target";
   if (!scope.statement_types.includes(candidate.statement_type)) return "statement_type";
   if (!scope.review_states.includes(candidate.review_state)) return "review_state";
   if (candidate.forecast_review_state && !scope.review_states.includes(candidate.forecast_review_state)) return "review_state";
   if (!candidate.question_key) return "missing_forecast";
-  if (!keyMatches) return "question_key_mismatch";
-  if (scope.conditionality === "unconditional" && hasText(candidate.condition_text)) return "conditionality_mismatch";
-  if (scope.conditionality === "conditional" && !hasText(candidate.condition_text)) return "conditionality_mismatch";
-  if (candidate.unit !== scope.require_unit) return "unit_mismatch";
-  if (scope.require_horizon && !hasText(candidate.horizon_text)) return "missing_horizon";
+  if (keyMatches) {
+    const filters = sameQuestionFilters(candidate, scope);
+    if (filters) return filters;
+  }
+  if (!decision) return "missing_forecast";
+  if (!decision.match) {
+    if (decision.reason === "different_question") return "question_key_mismatch";
+    return decision.reason ?? "insufficient_agreement";
+  }
+  if (!keyMatches) {
+    const filters = sameQuestionFilters(candidate, scope);
+    if (filters) return filters;
+  }
+  if (isBoundPhrase(candidate)) return "value_type_not_point";
   if (valueMode === "point") {
     if (candidate.value_type !== "point" || candidate.value_numeric === null) return "value_type_not_point";
     return null;
@@ -235,6 +303,7 @@ function exclusion(candidate: TrendCandidate, reason: ExclusionReason): Exclusio
     display_name: candidate.display_name,
     reason,
     reason_label: exclusionLabel(reason),
+    preserved_value: describePreservedValue(candidate),
   };
 }
 
@@ -245,6 +314,7 @@ function edgeExclusion(edge: RevisionEdge, person: TrendCandidate, reason: Exclu
     display_name: person.display_name,
     reason,
     reason_label: exclusionLabel(reason),
+    preserved_value: null,
   };
 }
 
@@ -315,12 +385,45 @@ function isSuperseded(
   });
 }
 
+function isBareWithdrawal(
+  candidate: TrendCandidate,
+  eligibleSlugs: Set<string>,
+  bySlug: Map<string, TrendCandidate>,
+  allBySlug: Map<string, TrendCandidate>,
+  edges: RevisionEdge[],
+  reviewStates: string[],
+): boolean {
+  return edges.some((edge) => {
+    if (edge.from_statement_slug !== candidate.statement_slug) return false;
+    if (!WITHDRAWAL_RELATIONSHIPS.has(edge.relationship_type)) return false;
+    if (!reviewStates.includes(edge.review_state)) return false;
+    const target = allBySlug.get(edge.to_statement_slug) ?? bySlug.get(edge.to_statement_slug);
+    if (!target || target.person_slug !== candidate.person_slug) return false;
+    if (edge.relationship_type === "retracts" && eligibleSlugs.has(edge.to_statement_slug) && pointValue(target) !== null) return false;
+    return true;
+  });
+}
+
+function sameContribution(left: TrendCandidate, right: TrendCandidate): boolean {
+  if ((left.event_time ?? "") !== (right.event_time ?? "")) return false;
+  if (left.value_type === "point" && right.value_type === "point") return left.value_numeric === right.value_numeric;
+  if (left.value_type === "range" && right.value_type === "range") return left.value_min === right.value_min && left.value_max === right.value_max;
+  return false;
+}
+
 function reduceLatest(
   eligible: TrendCandidate[],
   edges: RevisionEdge[],
   reviewStates: string[],
+  allCandidates: TrendCandidate[],
 ): { kept: TrendCandidate[]; exclusions: Exclusion[] } {
-  const ranked = [...eligible].sort((a, b) => {
+  const eligibleSlugs = new Set(eligible.map((item) => item.statement_slug));
+  const bySlug = new Map(eligible.map((item) => [item.statement_slug, item]));
+  const allBySlug = new Map(allCandidates.map((item) => [item.statement_slug, item]));
+  const withdrawn = eligible.filter((candidate) => isBareWithdrawal(candidate, eligibleSlugs, bySlug, allBySlug, edges, reviewStates));
+  const withdrawnSlugs = new Set(withdrawn.map((candidate) => candidate.statement_slug));
+  const active = eligible.filter((candidate) => !withdrawnSlugs.has(candidate.statement_slug));
+  const ranked = [...active].sort((a, b) => {
     const time = (b.event_time ?? "").localeCompare(a.event_time ?? "");
     if (time !== 0) return time;
     return a.statement_slug.localeCompare(b.statement_slug);
@@ -331,16 +434,19 @@ function reduceLatest(
     if (!latest.has(candidate.person_slug)) latest.set(candidate.person_slug, candidate);
     else dropped.push(candidate);
   }
-  const eligibleSlugs = new Set(eligible.map((item) => item.statement_slug));
-  const bySlug = new Map(eligible.map((item) => [item.statement_slug, item]));
   return {
     kept: [...latest.values()],
-    exclusions: dropped.map((candidate) =>
-      exclusion(
-        candidate,
-        isSuperseded(candidate, eligibleSlugs, bySlug, edges, reviewStates) ? "superseded" : "not_latest",
-      ),
-    ),
+    exclusions: [
+      ...withdrawn.map((candidate) => exclusion(candidate, "withdrawn")),
+      ...dropped.map((candidate) => {
+        const kept = latest.get(candidate.person_slug);
+        if (kept && sameContribution(candidate, kept)) return exclusion(candidate, "duplicate_statement");
+        return exclusion(
+          candidate,
+          isSuperseded(candidate, eligibleSlugs, bySlug, edges, reviewStates) ? "superseded" : "not_latest",
+        );
+      }),
+    ],
   };
 }
 
@@ -358,7 +464,11 @@ function toIncluded(candidate: TrendCandidate): IncludedEstimate {
     event_time: candidate.event_time,
     horizon_text: candidate.horizon_text,
     condition_text: candidate.condition_text,
-    in_summary: !range && candidate.value_numeric !== null,
+    target_date_start: candidate.target_date_start ?? null,
+    target_date_end: candidate.target_date_end ?? null,
+    stored_question_key: candidate.question_key,
+    probability_semantics: readProbabilitySemantics(candidate),
+    in_summary: !range && candidate.value_numeric !== null && !isBoundPhrase(candidate),
   };
 }
 
@@ -377,16 +487,16 @@ function summaryNote(semantics: NumericTrendResult["value_semantics"], density: 
   if (semantics === "year") {
     if (density === "empty") return "No comparable year forecasts are in this cohort for this question. A predicted year is a date.";
     if (density === "sparse") return "Each row is one person's predicted year or year range. A median year is withheld below 3 point years. A year is a date.";
-    return `Median of ${pointCount} included point years. Ranges stay listed as intervals. A year is a date.`;
+    return `Median of ${pointCount} included point years. Ranges stay listed as intervals. ${MEDIAN_INTERPRETATION.year}`;
   }
   if (semantics === "quantity") {
     if (density === "empty") return "No comparable quantity forecasts with this unit are in this cohort for this question.";
     if (density === "sparse") return "Each row keeps its unit. A median is withheld below 3 point estimates. Units are not converted.";
-    return `Median of ${pointCount} included point estimates in this unit. Ranges stay listed as intervals. Units are not converted.`;
+    return `Median of ${pointCount} included point estimates in this unit. Ranges stay listed as intervals. ${MEDIAN_INTERPRETATION.quantity}`;
   }
   if (density === "empty") return "No comparable point estimates are in this cohort for this question.";
   if (density === "sparse") return "Each row is one person's point estimate. A median is withheld below 3 comparable point estimates.";
-  return `Median of ${pointCount} included point estimates. The median summarizes those records.`;
+  return `Median of ${pointCount} included point estimates. ${MEDIAN_INTERPRETATION.probability}`;
 }
 
 function buildCoverage(input: CohortContext & {
@@ -433,7 +543,7 @@ function computeNumeric(input: CohortContext & {
   value_semantics: NumericTrendResult["value_semantics"];
 }): NumericTrendResult {
   const partitioned = partition(input.candidates, input.scope, input.valueMode);
-  const reduced = reduceLatest(partitioned.eligible, input.edges, input.scope.review_states);
+  const reduced = reduceLatest(partitioned.eligible, input.edges, input.scope.review_states, input.candidates);
   const included = sortIncluded(reduced.kept.map(toIncluded));
   const pointValues = included.filter((item) => item.in_summary && item.value_numeric !== null).map((item) => item.value_numeric ?? 0);
   const density: TrendDensity = included.length === 0 ? "empty" : pointValues.length >= SUMMARY_MIN_POINTS ? "comparable" : "sparse";
@@ -469,6 +579,22 @@ function computeNumeric(input: CohortContext & {
     median: density === "comparable" ? median(pointValues) : null,
     summary_note: summaryNote(input.value_semantics, density, pointValues.length),
     coverage,
+    ...comparisonMeta(input.scope, input.value_semantics, included[0]?.probability_semantics ?? "unspecified"),
+  };
+}
+
+function comparisonMeta(scope: TrendScope, semantics: NumericTrendResult["value_semantics"], probability: "event_probability" | "unspecified"): Pick<NumericTrendResult, "comparability_policy_version" | "exact_question_id" | "outcome_label" | "deadline_label" | "condition_label" | "probability_semantics" | "median_interpretation" | "history"> {
+  const exactId = scope.exact_question_id ?? scope.question_key;
+  const entry = classifyQuestionKey(exactId);
+  return {
+    comparability_policy_version: COMPARABILITY_POLICY_VERSION,
+    exact_question_id: exactId,
+    outcome_label: entry?.label ?? exactId,
+    deadline_label: entry?.deadline?.label ?? null,
+    condition_label: entry?.condition_text ?? null,
+    probability_semantics: probability,
+    median_interpretation: semantics === "year" ? MEDIAN_INTERPRETATION.year : semantics === "quantity" ? MEDIAN_INTERPRETATION.quantity : MEDIAN_INTERPRETATION.probability,
+    history: CURRENT_CORPUS_HISTORY,
   };
 }
 
@@ -546,6 +672,32 @@ export function computeHistoricalRevision(input: CohortContext & {
       }
       continue;
     }
+    const withdrawalAllowed = allowedChanges.has("retracts") || allowedChanges.has("withdraws");
+    if (withdrawalAllowed && (edge.relationship_type === "withdraws" || edge.relationship_type === "retracts")) {
+      const fromEligible = eligibleBySlug.get(from.statement_slug);
+      const toEligible = eligibleBySlug.get(to.statement_slug);
+      const replacement = edge.relationship_type === "retracts"
+        && Boolean(fromEligible && toEligible && fromEligible.person_slug === toEligible.person_slug && pointValue(fromEligible) !== null && pointValue(toEligible) !== null);
+      if (!replacement && fromEligible && from.person_slug === to.person_slug && pointValue(fromEligible) !== null && (edge.relationship_type === "withdraws" || !toEligible || pointValue(to) === null)) {
+        links.push({
+          from_statement_slug: fromEligible.statement_slug,
+          to_statement_slug: to.statement_slug,
+          relationship_type: edge.relationship_type,
+          method: edge.method,
+          from_value: pointValue(fromEligible) ?? 0,
+          to_value: null,
+          from_event_time: fromEligible.event_time,
+          to_event_time: to.event_time,
+          withdrawal: true,
+        });
+        linked.add(fromEligible.statement_slug);
+        continue;
+      }
+      if (!replacement && fromEligible && to.person_slug !== from.person_slug) {
+        edgeExclusions.push(edgeExclusion(edge, fromEligible, "different_person"));
+        continue;
+      }
+    }
     if (edge.relationship_type === "repeats") {
       const fromEligible = eligibleBySlug.get(from.statement_slug);
       const toEligible = eligibleBySlug.get(to.statement_slug);
@@ -588,6 +740,7 @@ export function computeHistoricalRevision(input: CohortContext & {
       to_value: toValue,
       from_event_time: fromEligible.event_time,
       to_event_time: toEligible.event_time,
+      withdrawal: false,
     });
     linked.add(fromEligible.statement_slug);
     linked.add(toEligible.statement_slug);
@@ -636,6 +789,13 @@ export function computeHistoricalRevision(input: CohortContext & {
     contributing_person_count: chainPeople.length,
     summary_note,
     coverage,
+    comparability_policy_version: COMPARABILITY_POLICY_VERSION,
+    exact_question_id: input.scope.exact_question_id ?? input.scope.question_key,
+    outcome_label: classifyQuestionKey(input.scope.exact_question_id ?? input.scope.question_key)?.label ?? input.question_text,
+    deadline_label: classifyQuestionKey(input.scope.exact_question_id ?? input.scope.question_key)?.deadline?.label ?? null,
+    condition_label: classifyQuestionKey(input.scope.exact_question_id ?? input.scope.question_key)?.condition_text ?? null,
+    history: CURRENT_CORPUS_HISTORY,
+    withdrawals: links.filter((link) => link.withdrawal),
   };
 }
 
@@ -701,14 +861,52 @@ function buildChains(links: RevisionLink[], eligibleBySlug: Map<string, TrendCan
 export type DiscoveredTrend = {
   slug: string;
   name: string;
-  method_version: "discovered-question/1.0.0";
+  method_version: "discovered-question/1.1.0";
   source: "discovered_question";
   kind: "distribution" | "timeline" | "quantity";
   question_key: string;
+  exact_question_id: string;
   question_text: string;
   definition_text: string;
   scope: TrendScope;
   accept_ranges: boolean;
+};
+
+export type UnpooledForecast = {
+  statement_slug: string;
+  person_slug: string;
+  display_name: string;
+  question_key: string;
+  family_id: string;
+  reason: ExclusionReason;
+  reason_label: string;
+  question_text: string | null;
+  definition_text: string | null;
+  condition_text: string | null;
+  horizon_text: string | null;
+  target_date_start: string | null;
+  target_date_end: string | null;
+  unit: string | null;
+  value_type: string | null;
+  value_numeric: number | null;
+  value_min: number | null;
+  value_max: number | null;
+  preserved_value: string | null;
+  event_time: string | null;
+};
+
+export type QualitativeGroup = {
+  slug: string;
+  question_key: string;
+  name: string;
+  definition_text: string;
+  rows: Array<{
+    statement_slug: string;
+    person_slug: string;
+    display_name: string;
+    question_text: string | null;
+    event_time: string | null;
+  }>;
 };
 
 function discoveredSlug(questionKey: string, unit: string, conditionality: string): string {
@@ -718,62 +916,137 @@ function discoveredSlug(questionKey: string, unit: string, conditionality: strin
   return `${trimmed}-${sha256(kebab).slice(0, 8)}`;
 }
 
+function verifiedNumeric(candidate: TrendCandidate): boolean {
+  if (candidate.statement_type !== "explicit_numeric") return false;
+  if (candidate.review_state !== "human_verified") return false;
+  if (candidate.forecast_review_state && candidate.forecast_review_state !== "human_verified") return false;
+  if (!candidate.question_key || !candidate.unit) return false;
+  if (candidate.value_type !== "point" && candidate.value_type !== "range" && candidate.value_type !== "distribution") return false;
+  if (candidate.value_type === "point" && candidate.value_numeric === null) return false;
+  if (candidate.value_type === "range" && (candidate.value_min === null || candidate.value_max === null)) return false;
+  return true;
+}
+
 export function discoverQuestionTrends(
   candidates: TrendCandidate[],
   takenQuestionKeys: Set<string>,
   takenSlugs: Set<string>,
 ): DiscoveredTrend[] {
-  const buckets = new Map<string, TrendCandidate[]>();
+  const buckets = new Map<string, { classified: ForecastClassification; rows: TrendCandidate[] }>();
   for (const candidate of candidates) {
-    if (candidate.statement_type !== "explicit_numeric") continue;
-    if (candidate.review_state !== "human_verified") continue;
-    if (candidate.forecast_review_state && candidate.forecast_review_state !== "human_verified") continue;
-    if (!candidate.question_key || !candidate.unit) continue;
-    if (takenQuestionKeys.has(candidate.question_key)) continue;
-    if (candidate.value_type !== "point" && candidate.value_type !== "range") continue;
-    if (candidate.value_type === "point" && candidate.value_numeric === null) continue;
-    if (candidate.value_type === "range" && (candidate.value_min === null || candidate.value_max === null)) continue;
-    const conditionality: TrendConditionality = hasText(candidate.condition_text) ? "conditional" : "unconditional";
-    const id = `${candidate.question_key}\0${candidate.unit}\0${conditionality}`;
-    const list = buckets.get(id) ?? [];
-    list.push(candidate);
-    buckets.set(id, list);
+    if (!verifiedNumeric(candidate)) continue;
+    if (takenQuestionKeys.has(candidate.question_key ?? "")) continue;
+    const classified = classifyForecast(candidate);
+    if (!classified.poolable) continue;
+    if (takenQuestionKeys.has(classified.exact_question_id)) continue;
+    const bucket = buckets.get(classified.exact_question_id) ?? { classified, rows: [] };
+    bucket.rows.push(candidate);
+    buckets.set(classified.exact_question_id, bucket);
   }
   return [...buckets.entries()]
     .sort(([left], [right]) => left.localeCompare(right))
-    .map(([, rows]) => {
-      const sample = [...rows].sort((a, b) => a.statement_slug.localeCompare(b.statement_slug))[0]!;
-      const conditionality: TrendConditionality = hasText(sample.condition_text) ? "conditional" : "unconditional";
+    .map(([, bucket]) => {
+      const sample = [...bucket.rows].sort((a, b) => a.statement_slug.localeCompare(b.statement_slug))[0]!;
+      const classified = bucket.classified;
       const unit = sample.unit ?? "";
-      const kind: DiscoveredTrend["kind"] = unit === "probability" ? "distribution" : unit === "year" ? "timeline" : "quantity";
-      let slug = discoveredSlug(sample.question_key ?? "", unit, conditionality);
-      if (takenSlugs.has(slug)) slug = discoveredSlug(`${sample.question_key}-extra`, unit, conditionality);
-      const questionText = (sample.question_text ?? sample.question_key ?? "Stored question").replace(/\s+/g, " ").trim();
+      const kind: DiscoveredTrend["kind"] = classified.value_semantics === "probability" ? "distribution" : classified.value_semantics === "year" ? "timeline" : "quantity";
+      const conditionality = classified.conditionality === "unspecified" && !hasText(sample.condition_text) ? "unconditional" : classified.conditionality;
+      let slug = discoveredSlug(classified.exact_question_id, unit, conditionality);
+      if (takenSlugs.has(slug)) slug = discoveredSlug(`${classified.exact_question_id}-extra`, unit, conditionality);
+      const questionText = (classified.deadline_label ? `${sample.question_text ?? sample.question_key} (${classified.deadline_label})` : (sample.question_text ?? sample.question_key ?? "Stored question")).replace(/\s+/g, " ").trim();
       return {
         slug,
         name: questionText.length <= 140 ? questionText : `${questionText.slice(0, 137)}...`,
-        method_version: "discovered-question/1.0.0" as const,
+        method_version: "discovered-question/1.1.0" as const,
         source: "discovered_question" as const,
         kind,
         question_key: sample.question_key ?? "",
+        exact_question_id: classified.exact_question_id,
         question_text: questionText,
-        definition_text: hasText(sample.definition_text)
-          ? sample.definition_text!.trim()
-          : "Found on stored forecasts. This trend keeps this question key, unit, and conditionality separate from every other question.",
+        definition_text: classified.definition,
         scope: {
           topic_slug: null,
           sibling_topic_slugs: [],
           question_key: sample.question_key ?? "",
+          exact_question_id: classified.exact_question_id,
           statement_types: ["explicit_numeric"],
           review_states: ["human_verified"],
-          require_horizon: true,
+          require_horizon: classified.date_role !== "predicted_value",
           require_unit: unit,
           conditionality,
         },
         accept_ranges: kind !== "distribution",
       };
     })
-    .sort((a, b) => a.slug.localeCompare(b.slug) || a.question_key.localeCompare(b.question_key));
+    .sort((a, b) => a.slug.localeCompare(b.slug) || a.exact_question_id.localeCompare(b.exact_question_id));
+}
+
+export function listUnpooledForecasts(candidates: TrendCandidate[], takenQuestionKeys: Set<string>): UnpooledForecast[] {
+  const rows: UnpooledForecast[] = [];
+  for (const candidate of candidates) {
+    if (!verifiedNumeric(candidate)) continue;
+    if (takenQuestionKeys.has(candidate.question_key ?? "")) continue;
+    const classified = classifyForecast(candidate);
+    if (classified.poolable || takenQuestionKeys.has(classified.exact_question_id)) continue;
+    const reason = classified.reason ?? "insufficient_agreement";
+    rows.push({
+      statement_slug: candidate.statement_slug,
+      person_slug: candidate.person_slug,
+      display_name: candidate.display_name,
+      question_key: candidate.question_key ?? "",
+      family_id: classified.family_id,
+      reason,
+      reason_label: exclusionLabel(reason),
+      question_text: candidate.question_text,
+      definition_text: candidate.definition_text,
+      condition_text: candidate.condition_text,
+      horizon_text: candidate.horizon_text,
+      target_date_start: candidate.target_date_start ?? null,
+      target_date_end: candidate.target_date_end ?? null,
+      unit: candidate.unit,
+      value_type: candidate.value_type,
+      value_numeric: candidate.value_numeric,
+      value_min: candidate.value_min,
+      value_max: candidate.value_max,
+      preserved_value: classified.preserved_value,
+      event_time: candidate.event_time,
+    });
+  }
+  return rows.sort((a, b) => `${a.family_id}\0${a.statement_slug}`.localeCompare(`${b.family_id}\0${b.statement_slug}`));
+}
+
+export function discoverQualitativeGroups(candidates: TrendCandidate[]): QualitativeGroup[] {
+  const buckets = new Map<string, TrendCandidate[]>();
+  for (const candidate of candidates) {
+    if (candidate.statement_type !== "explicit_qualitative") continue;
+    if (candidate.review_state !== "human_verified") continue;
+    if (!candidate.question_key) continue;
+    const list = buckets.get(candidate.question_key) ?? [];
+    list.push(candidate);
+    buckets.set(candidate.question_key, list);
+  }
+  return [...buckets.entries()]
+    .sort(([left], [right]) => left.localeCompare(right))
+    .map(([questionKey, rows]) => {
+      const sample = [...rows].sort((a, b) => a.statement_slug.localeCompare(b.statement_slug))[0]!;
+      const entry = classifyQuestionKey(questionKey);
+      const slug = discoveredSlug(questionKey, "qualitative", "statements");
+      return {
+        slug,
+        question_key: questionKey,
+        name: entry?.label ?? (sample.question_text ?? questionKey),
+        definition_text: entry?.definition ?? "Qualitative statements. No probability is inferred from this wording.",
+        rows: [...rows]
+          .sort((a, b) => (a.event_time ?? "").localeCompare(b.event_time ?? "") || a.statement_slug.localeCompare(b.statement_slug))
+          .map((row) => ({
+            statement_slug: row.statement_slug,
+            person_slug: row.person_slug,
+            display_name: row.display_name,
+            question_text: row.question_text,
+            event_time: row.event_time,
+          })),
+      };
+    });
 }
 
 export type VolumeRow = {
@@ -821,6 +1094,7 @@ export function computeStatementVolume(input: {
           display_name: row.display_name ?? row.person_slug,
           reason: "review_state",
           reason_label: exclusionLabel("review_state"),
+          preserved_value: null,
         });
         seen.add(row.statement_slug);
       }

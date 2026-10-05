@@ -23,10 +23,18 @@ RETRYABLE = {
 
 
 class CollectorFailure(Exception):
-    def __init__(self, error_class: str, message: str, *, retryable: bool | None = None):
+    def __init__(
+        self,
+        error_class: str,
+        message: str,
+        *,
+        retryable: bool | None = None,
+        retry_after: float | None = None,
+    ):
         super().__init__(message)
         self.error_class = error_class
         self.retryable = error_class in RETRYABLE if retryable is None else retryable
+        self.retry_after = retry_after
 
 
 def classify_http_status(status: int) -> str:

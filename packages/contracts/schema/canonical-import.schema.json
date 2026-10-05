@@ -1488,6 +1488,7 @@
             "enum": [
               "running",
               "succeeded",
+              "partial",
               "failed"
             ]
           },
@@ -1524,6 +1525,21 @@
             "maximum": 9007199254740991
           },
           "changed_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "unchanged_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "skipped_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "failed_count": {
             "type": "integer",
             "minimum": 0,
             "maximum": 9007199254740991

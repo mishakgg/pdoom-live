@@ -115,17 +115,25 @@ def snapshot_from_runs(
             continue
         collection["attempted"] += 1
         status = str(run.get("status") or "")
+        observed = int(run.get("observed_count") or 0)
+        created = int(run.get("new_count") or 0)
+        changed = int(run.get("changed_count") or 0)
+        if run.get("unchanged_count") is None:
+            unchanged = max(0, observed - created - changed)
+        else:
+            unchanged = int(run.get("unchanged_count") or 0)
         if status == "succeeded":
             collection["succeeded"] += 1
-            observed = int(run.get("observed_count") or 0)
-            created = int(run.get("new_count") or 0)
-            changed = int(run.get("changed_count") or 0)
-            collection["unchanged"] += max(0, observed - created - changed)
+            collection["unchanged"] += unchanged
             collection["changed"] += changed
             collection["new"] += created
-        elif status == "failed":
+        elif status in {"failed", "partial"}:
             collection["failed"] += 1
-            klass = str(run.get("error_class") or "")
+            if status == "partial":
+                collection["unchanged"] += unchanged
+                collection["changed"] += changed
+                collection["new"] += created
+            klass = str(run.get("error_class") or run.get("error_summary") or "")
             if klass not in catalog["labels"]["failure_class"]:
                 klass = "unclassified"
             collection["failures_by_class"][klass] = collection["failures_by_class"].get(klass, 0) + 1

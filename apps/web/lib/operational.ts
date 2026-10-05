@@ -10,6 +10,7 @@ import {
   resolveGuardrails,
   type QualityReport,
 } from "@pdoom/observability";
+import { singleFlight } from "./single-flight";
 
 const TTL_MS = 15_000;
 
@@ -19,9 +20,7 @@ export function resetOperationalCache(): void {
   cache = null;
 }
 
-export async function operationalReport(): Promise<QualityReport> {
-  const now = Date.now();
-  if (cache && now - cache.at < TTL_MS) return cache.report;
+async function loadReport(): Promise<QualityReport> {
   const asOf = new Date().toISOString();
   const snapshot = overlayProcessSignals(
     await loadOperationalSnapshot(getPool(), {
@@ -30,8 +29,22 @@ export async function operationalReport(): Promise<QualityReport> {
     }),
   );
   const report = evaluate(snapshot, { baseline: await baselineFromEnv(), scope: "database", now: new Date(asOf) });
-  cache = { at: now, report, metrics: renderPrometheus(snapshot, report.alerts) };
+  cache = { at: Date.now(), report, metrics: renderPrometheus(snapshot, report.alerts) };
   return report;
+}
+
+export async function operationalReport(load: () => Promise<QualityReport> = loadReport): Promise<QualityReport> {
+  const now = Date.now();
+  if (cache && now - cache.at < TTL_MS) return cache.report;
+  return singleFlight("operational", async () => {
+    const current = Date.now();
+    if (cache && current - cache.at < TTL_MS) return cache.report;
+    const report = await load();
+    if (!cache || Date.now() - cache.at >= TTL_MS) {
+      cache = { at: Date.now(), report, metrics: "" };
+    }
+    return cache.report;
+  });
 }
 
 export async function operationalMetrics(): Promise<string> {

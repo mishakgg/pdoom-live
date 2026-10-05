@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { useId } from "react";
-import { exclusionLabel, trendKindLabel } from "@pdoom/contracts";
+import { MEDIAN_INTERPRETATION, exclusionLabel, trendKindLabel } from "@pdoom/contracts";
 import { formatDay, formatEstimate, formatProbability, formatYear } from "@/lib/format";
+import styles from "./trends.module.css";
 
 type PersonRef = { person_slug: string; display_name: string };
 
@@ -24,6 +25,17 @@ type ExclusionRow = {
   reason_label?: string;
   person_slug?: string;
   display_name?: string;
+  preserved_value?: string | null;
+};
+
+type ComparabilityCopy = {
+  outcomeLabel?: string | null;
+  deadlineLabel?: string | null;
+  conditionLabel?: string | null;
+  exactQuestionId?: string | null;
+  storedQuestionKey?: string | null;
+  historyNote?: string | null;
+  medianInterpretation?: string | null;
 };
 
 export type NumericSemantics = "probability" | "year" | "quantity";
@@ -121,6 +133,29 @@ export function CoverageBlock({
   );
 }
 
+export function ComparabilityFacts({
+  outcomeLabel,
+  deadlineLabel,
+  conditionLabel,
+  exactQuestionId,
+  storedQuestionKey,
+  historyNote,
+  medianInterpretation,
+}: ComparabilityCopy) {
+  if (!outcomeLabel && !deadlineLabel && !conditionLabel && !exactQuestionId && !historyNote && !medianInterpretation) return null;
+  return (
+    <div className={styles.facts}>
+      {outcomeLabel ? <p>Outcome: {outcomeLabel}</p> : null}
+      {deadlineLabel ? <p>Deadline or condition window: {deadlineLabel}</p> : null}
+      {conditionLabel ? <p>Condition: {conditionLabel}</p> : null}
+      {exactQuestionId ? <p className="meta">Exact question {exactQuestionId}</p> : null}
+      {storedQuestionKey && storedQuestionKey !== exactQuestionId ? <p className="meta">Stored key {storedQuestionKey}. The stored key is not rewritten.</p> : null}
+      {medianInterpretation ? <p>{medianInterpretation}</p> : null}
+      {historyNote ? <p className="meta">{historyNote}</p> : null}
+    </div>
+  );
+}
+
 export function ExclusionList({ exclusions }: { exclusions: ExclusionRow[] }) {
   if (exclusions.length === 0) return <p className="meta">No excluded records in scope.</p>;
   return (
@@ -132,6 +167,7 @@ export function ExclusionList({ exclusions }: { exclusions: ExclusionRow[] }) {
             <Link href={`/statements/${item.statement_slug}`}>{item.display_name ?? item.statement_slug}</Link>
             {" · "}
             {item.reason_label ?? exclusionLabel(item.reason)}
+            {item.preserved_value ? <span className={styles.preserved}> · preserved value {item.preserved_value}</span> : null}
           </li>
         ))}
       </ul>
@@ -238,6 +274,12 @@ export function NumericPanel({
   contributingStatementCount,
   coverage,
   exclusions,
+  outcomeLabel,
+  deadlineLabel,
+  conditionLabel,
+  exactQuestionId,
+  historyNote,
+  medianInterpretation,
 }: {
   semantics: NumericSemantics;
   name: string;
@@ -261,8 +303,9 @@ export function NumericPanel({
   contributingStatementCount: number;
   coverage: { cohort_size: number; cohort_members_without_included_estimate: number; missingness_note?: string | null };
   exclusions: ExclusionRow[];
-}) {
+} & ComparabilityCopy) {
   const headingId = useId();
+  const interpretation = medianInterpretation ?? (semantics === "year" ? MEDIAN_INTERPRETATION.year : semantics === "quantity" ? MEDIAN_INTERPRETATION.quantity : MEDIAN_INTERPRETATION.probability);
   const resolvedDensity = density ?? (included.length === 0 ? "empty" : included.length < 3 ? "sparse" : "comparable");
   const showSummary = resolvedDensity === "comparable" && median !== null;
   const kicker = semantics === "year" ? "Predicted years" : semantics === "quantity" ? "Quantity forecasts" : "Comparable explicit estimates";
@@ -289,6 +332,14 @@ export function NumericPanel({
         missingCount={coverage.cohort_members_without_included_estimate}
         missingnessNote={coverage.missingness_note}
       />
+      <ComparabilityFacts
+        outcomeLabel={outcomeLabel}
+        deadlineLabel={deadlineLabel}
+        conditionLabel={conditionLabel}
+        exactQuestionId={exactQuestionId}
+        historyNote={historyNote}
+        medianInterpretation={interpretation}
+      />
       <p>These figures are not a field consensus.</p>
       {resolvedDensity === "empty" ? (
         <p className="empty-state">{summaryNote ?? "No comparable estimates are in this cohort for this question."}</p>
@@ -302,7 +353,7 @@ export function NumericPanel({
             ? `Median of included point years: ${formatYear(median)}. Lowest ${formatYear(minimum)}. Highest ${formatYear(maximum)}. The median year is a summary of those records. It is a date.`
             : semantics === "quantity"
               ? `Median of included point estimates: ${formatEstimate({ value_numeric: median, unit })}. Lowest ${formatEstimate({ value_numeric: minimum, unit })}. Highest ${formatEstimate({ value_numeric: maximum, unit })}.`
-              : `Median of included point estimates: ${formatProbability(median)}. Range ${formatProbability(minimum)}–${formatProbability(maximum)}. This is a summary of those records.`}
+              : `Median of included point estimates: ${formatProbability(median)}. Range ${formatProbability(minimum)}–${formatProbability(maximum)}. ${interpretation}`}
         </p>
       ) : null}
       {semantics === "probability" ? <ProbabilityChart rows={included} /> : null}
@@ -464,6 +515,11 @@ export function RevisionPanel({
   contributingStatementCount,
   coverage,
   exclusions,
+  outcomeLabel,
+  deadlineLabel,
+  conditionLabel,
+  exactQuestionId,
+  historyNote,
 }: {
   name: string;
   methodVersion: string;
@@ -480,7 +536,7 @@ export function RevisionPanel({
     person_slug: string;
     display_name: string;
     points: Array<{ statement_slug: string; event_time: string | null; value_numeric: number; horizon_text?: string | null }>;
-    links: Array<{ from_statement_slug: string; to_statement_slug: string; relationship_type: string; method: string; from_value: number; to_value: number; from_event_time: string | null; to_event_time: string | null }>;
+    links: Array<{ from_statement_slug: string; to_statement_slug: string; relationship_type: string; method: string; from_value: number; to_value: number | null; from_event_time: string | null; to_event_time: string | null; withdrawal?: boolean }>;
   }>;
   repeats: Array<{ from_statement_slug: string; to_statement_slug: string; display_name: string; person_slug: string; from_value: number | null; to_value: number | null; note: string }>;
   eligibleEstimateCount: number;
@@ -489,7 +545,7 @@ export function RevisionPanel({
   contributingStatementCount: number;
   coverage: { cohort_size: number; cohort_members_without_included_estimate: number; missingness_note?: string | null };
   exclusions: ExclusionRow[];
-}) {
+} & ComparabilityCopy) {
   return (
     <section className="panel">
       <p className="kicker">Historical revision</p>
@@ -511,7 +567,14 @@ export function RevisionPanel({
         missingCount={coverage.cohort_members_without_included_estimate}
         missingnessNote={coverage.missingness_note}
       />
-      <p>These figures are not a field consensus. {eligibleEstimateCount} comparable point estimates are in scope. A change appears only along a human-verified update or retraction.</p>
+      <ComparabilityFacts
+        outcomeLabel={outcomeLabel}
+        deadlineLabel={deadlineLabel}
+        conditionLabel={conditionLabel}
+        exactQuestionId={exactQuestionId}
+        historyNote={historyNote}
+      />
+      <p>These figures are not a field consensus. {eligibleEstimateCount} comparable point estimates are in scope. A change appears only along a human-verified update, retraction, or withdrawal. A later statement without that link is not a change of mind.</p>
       {summaryNote ? <p>{summaryNote}</p> : null}
       {chains.length === 0 ? <p className="empty-state">No verified change is drawn for this question.</p> : null}
       {chains.map((chain) => (
@@ -537,7 +600,11 @@ export function RevisionPanel({
                       {" · "}{formatDay(link.from_event_time)}
                     </td>
                     <td>
-                      <Link href={`/statements/${link.to_statement_slug}`}>{formatEstimate({ value_numeric: link.to_value, unit })}</Link>
+                      {link.withdrawal || link.to_value === null ? (
+                        <span className={styles.withdrawal}>Withdrawn, no replacement value</span>
+                      ) : (
+                        <Link href={`/statements/${link.to_statement_slug}`}>{formatEstimate({ value_numeric: link.to_value, unit })}</Link>
+                      )}
                       {" · "}{formatDay(link.to_event_time)}
                     </td>
                     <td>{link.relationship_type}</td>
@@ -579,7 +646,7 @@ function RevisionChart({
   chain: {
     display_name: string;
     points: Array<{ statement_slug: string; event_time: string | null; value_numeric: number }>;
-    links: Array<{ from_statement_slug: string; to_statement_slug: string; from_value: number; to_value: number; from_event_time: string | null; to_event_time: string | null }>;
+    links: Array<{ from_statement_slug: string; to_statement_slug: string; from_value: number; to_value: number | null; from_event_time: string | null; to_event_time: string | null }>;
   };
   unit: string | null;
 }) {
@@ -631,5 +698,138 @@ function RevisionChart({
         ))}
       </svg>
     </div>
+  );
+}
+
+export function QualitativePanel({
+  name,
+  methodVersion,
+  cohortSlug,
+  cohortVersion,
+  cohortDefinition,
+  questionKey,
+  definitionText,
+  note,
+  rows,
+  cohortSize,
+  historyNote,
+}: {
+  name: string;
+  methodVersion: string;
+  cohortSlug?: string | null;
+  cohortVersion?: string | null;
+  cohortDefinition?: string | null;
+  questionKey: string;
+  definitionText: string;
+  note: string;
+  rows: Array<{ statement_slug: string; person_slug: string; display_name: string; question_text: string | null; event_time: string | null }>;
+  cohortSize: number;
+  historyNote?: string | null;
+}) {
+  const people = [...new Map(rows.map((row) => [row.person_slug, row.display_name])).entries()].map(([person_slug, display_name]) => ({ person_slug, display_name }));
+  return (
+    <section className="panel">
+      <p className="kicker">Qualitative statements</p>
+      <h2>{name}</h2>
+      <CoverageBlock
+        methodVersion={methodVersion}
+        cohortSlug={cohortSlug}
+        cohortVersion={cohortVersion}
+        cohortDefinition={cohortDefinition}
+        cohortSize={cohortSize}
+        questionKey={questionKey}
+        definitionText={definitionText}
+        people={people}
+        personCount={people.length}
+        statementCount={rows.length}
+        missingCount={Math.max(0, cohortSize - people.length)}
+      />
+      <ComparabilityFacts historyNote={historyNote} medianInterpretation={note} />
+      <p>No number on this page is a probability inferred from the wording.</p>
+      <ul>
+        {rows.map((row) => (
+          <li key={row.statement_slug}>
+            <Link href={`/people/${row.person_slug}`}>{row.display_name}</Link>
+            {" · "}
+            <Link href={`/statements/${row.statement_slug}`}>{row.question_text ?? row.statement_slug}</Link>
+            {" · "}
+            {formatDay(row.event_time)}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+export function InspectionPanel({
+  name,
+  methodVersion,
+  cohortDefinition,
+  note,
+  rows,
+  cohortSize,
+  historyNote,
+}: {
+  name: string;
+  methodVersion: string;
+  cohortDefinition?: string | null;
+  note: string;
+  rows: Array<{
+    statement_slug: string;
+    person_slug: string;
+    display_name: string;
+    question_key: string;
+    reason_label: string;
+    preserved_value: string | null;
+    horizon_text: string | null;
+    target_date_end: string | null;
+    unit: string | null;
+  }>;
+  cohortSize: number;
+  historyNote?: string | null;
+}) {
+  const people = [...new Map(rows.map((row) => [row.person_slug, row.display_name])).entries()].map(([person_slug, display_name]) => ({ person_slug, display_name }));
+  return (
+    <section className="panel">
+      <p className="kicker">Not pooled</p>
+      <h2>{name}</h2>
+      <CoverageBlock
+        methodVersion={methodVersion}
+        cohortDefinition={cohortDefinition}
+        cohortSize={cohortSize}
+        questionText="Records that do not meet one exact comparison."
+        definitionText={note}
+        people={people}
+        personCount={people.length}
+        statementCount={rows.length}
+        missingCount={Math.max(0, cohortSize - people.length)}
+      />
+      <ComparabilityFacts historyNote={historyNote} />
+      <div className="chart-scroll">
+        <table className="dist">
+          <caption className="kicker">Records left out of pooled comparisons</caption>
+          <thead>
+            <tr>
+              <th scope="col">Person</th>
+              <th scope="col">Stored key</th>
+              <th scope="col">Why it is not pooled</th>
+              <th scope="col">Preserved value</th>
+              <th scope="col">Evidence</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.statement_slug}>
+                <td><Link href={`/people/${row.person_slug}`}>{row.display_name}</Link></td>
+                <td>{row.question_key}</td>
+                <td>{row.reason_label}</td>
+                <td>{row.preserved_value ?? row.horizon_text ?? row.target_date_end ?? row.unit ?? "Stored without a pooled value"}</td>
+                <td><Link href={`/statements/${row.statement_slug}`}>Statement</Link></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
   );
 }

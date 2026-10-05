@@ -81,6 +81,14 @@ export function StatementAudit({ statement }: { statement: StatementAuditData })
       <header className="audit-header">
         <p className="kicker">Statement audit</p>
         <h1>Statement by {statement.person.display_name}</h1>
+        <nav className="page-nav" aria-label="On this statement">
+          <a href="#original-evidence">Evidence</a>
+          <a href="#normalized-interpretation">Interpretation</a>
+          <a href="#forecast-structure">Forecast</a>
+          <a href="#relations">Changes</a>
+          <a href="#provenance">Technical record</a>
+        </nav>
+        <p className="meta">When is the event time. Published and Observed below are source-item times. Reloading this page reads the stored record and does not collect the source again.</p>
         <p className="card-flags">
           <TypeBadge type={statement.statement_type} />
           <ReviewBadge state={statement.review_state} />
@@ -208,8 +216,35 @@ export function StatementAudit({ statement }: { statement: StatementAuditData })
         )}
       </section>
 
+      <section aria-labelledby="relations">
+        <h2 id="relations">Revisions and relations</h2>
+        {statement.relationships.length ? (
+          <ul className="relation-list">
+            {statement.relationships.map((relation) => (
+              <li key={`${relation.from_slug}-${relation.to_slug}-${relation.relationship_type}`}>
+                {relationshipLabel(relation.relationship_type)}
+                {relation.review_state === "human_verified" ? "" : ` · ${reviewLabel(relation.review_state)}`}
+                {": "}
+                <Link href={`/statements/${relation.from_slug}`}>
+                  From statement
+                  <span className="sr-only"> {relation.from_slug}</span>
+                </Link>
+                {" → "}
+                <Link href={`/statements/${relation.to_slug}`}>
+                  To statement
+                  <span className="sr-only"> {relation.to_slug}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>No linked revision is recorded.</p>
+        )}
+      </section>
+
       <section aria-labelledby="provenance">
-        <h2 id="provenance">Provenance</h2>
+        <h2 id="provenance">Technical record</h2>
+        <p className="meta">Hashes, extractor fields, and collection status support an audit. They are not the statement.</p>
         <dl className="audit">
           <dt>Source</dt>
           <dd>
@@ -244,31 +279,6 @@ export function StatementAudit({ statement }: { statement: StatementAuditData })
         </dl>
       </section>
 
-      <section aria-labelledby="relations">
-        <h2 id="relations">Revisions and relations</h2>
-        {statement.relationships.length ? (
-          <ul className="relation-list">
-            {statement.relationships.map((relation) => (
-              <li key={`${relation.from_slug}-${relation.to_slug}-${relation.relationship_type}`}>
-                {relationshipLabel(relation.relationship_type)}
-                {relation.review_state === "human_verified" ? "" : ` · ${reviewLabel(relation.review_state)}`}
-                {": "}
-                <Link href={`/statements/${relation.from_slug}`}>
-                  From statement
-                  <span className="sr-only"> {relation.from_slug}</span>
-                </Link>
-                {" → "}
-                <Link href={`/statements/${relation.to_slug}`}>
-                  To statement
-                  <span className="sr-only"> {relation.to_slug}</span>
-                </Link>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No linked revision is recorded.</p>
-        )}
-      </section>
     </article>
   );
 }

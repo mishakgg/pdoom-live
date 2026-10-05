@@ -169,6 +169,35 @@ describe("production configuration", () => {
     ).toThrow(/PORT must be an integer/);
   });
 
+  it("accepts bounded public rate-limit settings", () => {
+    const config = readRuntimeConfig({
+      NODE_ENV: "development",
+      PDOOM_PUBLIC_RATE_LIMIT: "10",
+      PDOOM_PUBLIC_RATE_WINDOW_MS: "1000",
+      PDOOM_PUBLIC_PROCESS_RATE_LIMIT: "20",
+      PDOOM_TRUSTED_PROXY_HOPS: "1",
+    });
+    expect(config.mode).toBe("development");
+    expect(() =>
+      readRuntimeConfig({
+        NODE_ENV: "development",
+        PDOOM_TRUSTED_PROXY_HOPS: "9",
+      }),
+    ).toThrow(/PDOOM_TRUSTED_PROXY_HOPS must be an integer from 0 to 8/);
+    expect(() =>
+      readRuntimeConfig({
+        NODE_ENV: "development",
+        PDOOM_PUBLIC_RATE_LIMIT: "0",
+      }),
+    ).toThrow(/PDOOM_PUBLIC_RATE_LIMIT must be an integer from 1 to 1000000/);
+    expect(() =>
+      readRuntimeConfig({
+        NODE_ENV: "development",
+        PDOOM_PUBLIC_RATE_WINDOW_MS: "999",
+      }),
+    ).toThrow(/PDOOM_PUBLIC_RATE_WINDOW_MS/);
+  });
+
   it("does not log the database URL while booting", async () => {
     const secret = "super-secret-db-password";
     setEnv({

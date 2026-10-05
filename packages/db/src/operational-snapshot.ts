@@ -159,7 +159,8 @@ export function snapshotFromDocument(
       observed: run.observed_count,
       created: run.new_count,
       changed: run.changed_count,
-      errorClass: run.status === "failed" ? failureClass(run.error_summary) : null,
+      unchanged: run.unchanged_count,
+      errorClass: run.status === "failed" || run.status === "partial" ? failureClass(run.error_summary) : null,
     });
   }
   for (const item of doc.source_items) {
@@ -341,7 +342,7 @@ async function readSnapshot(
         [["collected", "partial"], PUBLIC_REVIEW_STATES],
       ),
       pool.query(
-        `SELECT collector, status, observed_count, new_count, changed_count, error_summary
+        `SELECT collector, status, observed_count, new_count, changed_count, unchanged_count, error_summary
          FROM ingestion_runs
          WHERE started_at >= $1::timestamptz AND started_at <= $2::timestamptz`,
         [windowStart, options.asOf],
@@ -393,7 +394,8 @@ async function readSnapshot(
       observed: number(row.observed_count),
       created: number(row.new_count),
       changed: number(row.changed_count),
-      errorClass: row.status === "failed" ? failureClass(row.error_summary ? String(row.error_summary) : null) : null,
+      unchanged: row.unchanged_count === null || row.unchanged_count === undefined ? undefined : number(row.unchanged_count),
+      errorClass: row.status === "failed" || row.status === "partial" ? failureClass(row.error_summary ? String(row.error_summary) : null) : null,
     });
   }
   for (const row of items.rows) {
@@ -550,20 +552,34 @@ function finishSnapshot(input: {
 
 function absorbRun(
   collection: CollectionCounts,
-  run: { adapter: string; status: string; observed: number; created: number; changed: number; errorClass: string | null },
+  run: {
+    adapter: string;
+    status: string;
+    observed: number;
+    created: number;
+    changed: number;
+    unchanged?: number;
+    errorClass: string | null;
+  },
 ): void {
   const adapter = normalizeAdapter(run.adapter);
   collection.attempted += 1;
   const slot = collection.runs_by_adapter[adapter] ?? { succeeded: 0, failed: 0 };
+  const unchanged = run.unchanged ?? Math.max(0, run.observed - run.created - run.changed);
   if (run.status === "succeeded") {
     collection.succeeded += 1;
-    collection.unchanged += Math.max(0, run.observed - run.created - run.changed);
+    collection.unchanged += unchanged;
     collection.changed += run.changed;
     collection.new += run.created;
     slot.succeeded += 1;
-  } else if (run.status === "failed") {
+  } else if (run.status === "partial" || run.status === "failed") {
     collection.failed += 1;
     slot.failed += 1;
+    if (run.status === "partial") {
+      collection.unchanged += unchanged;
+      collection.changed += run.changed;
+      collection.new += run.created;
+    }
     absorbFailure(collection, adapter, run.errorClass ?? "unclassified");
   }
   collection.runs_by_adapter[adapter] = slot;

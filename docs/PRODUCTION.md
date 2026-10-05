@@ -89,6 +89,10 @@ Optional:
 | `PDOOM_METRICS_ENABLED` | `1` or `true`. Unset leaves `GET /api/metrics` disabled. Leave it off on the public hostname. |
 | `PDOOM_METRICS_TOKEN` | When set, metrics require `Authorization: Bearer` with this value. The value is not logged. |
 | `PDOOM_QUALITY_BASELINE` | Optional counts file for relative guardrails on `/api/status` and `/api/metrics`. |
+| `PDOOM_PUBLIC_RATE_LIMIT` | Optional per-key public API limit for the fixed window. Default 600. |
+| `PDOOM_PUBLIC_RATE_WINDOW_MS` | Optional window length in milliseconds. Default 60000. |
+| `PDOOM_PUBLIC_PROCESS_RATE_LIMIT` | Optional whole-process public API limit for the same window. Default 3000. |
+| `PDOOM_TRUSTED_PROXY_HOPS` | Optional count of reverse proxies that append to `X-Forwarded-For`. Unset or `0` ignores that header. |
 | `OPENAI_API_KEY` | Unused by the web process. If set, it must be non-empty and is not logged. |
 
 Unknown `PDOOM_*` variables are rejected. Empty optional values are rejected. Production refuses `PDOOM_IMPORT_HOLD`, `PDOOM_FIXTURE_PATH`, `PDOOM_DOCKER_TEST`, and `PDOOM_CURATION_MODE`. Local curation is a development process and is not part of the public runtime.
@@ -265,7 +269,7 @@ The release, backup, and restore scripts read `PDOOM_ENV_FILE`. When it is unset
 
 The first release applies `001_init.sql`, which is classified as breaking, so `--ack-breaking` is required. The script backs up the database before it applies migrations. Later releases skip that backup when no migration is pending.
 
-`scripts/deploy/release.sh` builds `pdoom-live:<git sha>`, migrates, starts a candidate, and only then reloads Caddy. It does not import a dataset. `scripts/deploy/publish-dataset.sh` backs up, imports one live canonical file, and leaves the web process running.
+`scripts/deploy/release.sh` builds `pdoom-live:<git sha>`, migrates, starts a candidate, and only then reloads Caddy. It does not import a dataset and it does not enable `deploy/refresh/`. `scripts/deploy/publish-dataset.sh` backs up, then imports one live canonical file only when the latest belief or refresh run is not `failed`. A partial run is imported and recorded as `publish_partial`. It is not reported as a full success. The web process keeps running. The refresh command itself is `scripts/refresh/run-once.sh` and is described in `docs/REFRESH.md`.
 
 `scripts/deploy/rollback.sh` switches to the previous image when `deploy/migration-class.tsv` recorded that release as `compatible` or `none`. A `breaking` release refuses that switch until `--restore-backup` is passed. Migrations are not reversed.
 

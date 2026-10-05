@@ -44,7 +44,7 @@ export const PREPARED_TRENDS: PreparedTrend[] = [
   {
     slug: "extinction-by-2070-distribution",
     name: "Unconditional human-extinction probability by 2070",
-    method_version: "explicit-numeric-distribution/1.1.0",
+    method_version: "explicit-numeric-distribution/1.2.0",
     source: "prepared_method",
     kind: "distribution",
     question_key: "ai_extinction_unconditional_by_2070",
@@ -64,7 +64,7 @@ export const PREPARED_TRENDS: PreparedTrend[] = [
   {
     slug: "conditional-extinction-given-agi",
     name: "Extinction probability conditional on AGI",
-    method_version: "explicit-numeric-distribution/1.1.0",
+    method_version: "explicit-numeric-distribution/1.2.0",
     source: "prepared_method",
     kind: "distribution",
     question_key: "ai_extinction_conditional_on_agi",
@@ -84,7 +84,7 @@ export const PREPARED_TRENDS: PreparedTrend[] = [
   {
     slug: "catastrophe-not-extinction-by-2070",
     name: "Catastrophic harm short of extinction by 2070",
-    method_version: "explicit-numeric-distribution/1.1.0",
+    method_version: "explicit-numeric-distribution/1.2.0",
     source: "prepared_method",
     kind: "distribution",
     question_key: "ai_catastrophe_not_extinction_by_2070",
@@ -104,7 +104,7 @@ export const PREPARED_TRENDS: PreparedTrend[] = [
   {
     slug: "disempowerment-conditional-on-agi",
     name: "Permanent disempowerment conditional on AGI",
-    method_version: "explicit-numeric-distribution/1.1.0",
+    method_version: "explicit-numeric-distribution/1.2.0",
     source: "prepared_method",
     kind: "distribution",
     question_key: "permanent_disempowerment_conditional_on_agi",
@@ -124,7 +124,7 @@ export const PREPARED_TRENDS: PreparedTrend[] = [
   {
     slug: "agi-probability-by-2032",
     name: "Probability of AGI by the end of 2032",
-    method_version: "explicit-numeric-distribution/1.1.0",
+    method_version: "explicit-numeric-distribution/1.2.0",
     source: "prepared_method",
     kind: "distribution",
     question_key: "agi_arrival_by_2032",
@@ -144,7 +144,7 @@ export const PREPARED_TRENDS: PreparedTrend[] = [
   {
     slug: "agi-arrival-year",
     name: "AGI arrival year",
-    method_version: "timeline-forecast/1.0.0",
+    method_version: "timeline-forecast/1.1.0",
     source: "prepared_method",
     kind: "timeline",
     question_key: "agi_arrival_calendar_year",
@@ -164,7 +164,7 @@ export const PREPARED_TRENDS: PreparedTrend[] = [
   {
     slug: "asi-arrival-year",
     name: "ASI arrival year",
-    method_version: "timeline-forecast/1.0.0",
+    method_version: "timeline-forecast/1.1.0",
     source: "prepared_method",
     kind: "timeline",
     question_key: "asi_arrival_calendar_year",
@@ -184,7 +184,7 @@ export const PREPARED_TRENDS: PreparedTrend[] = [
   {
     slug: "coding-automation-share-by-2028",
     name: "Coding task automation share by 2028",
-    method_version: "quantity-forecast/1.0.0",
+    method_version: "quantity-forecast/1.1.0",
     source: "prepared_method",
     kind: "quantity",
     question_key: "coding_task_automation_share_by_2028",
@@ -204,7 +204,7 @@ export const PREPARED_TRENDS: PreparedTrend[] = [
   {
     slug: "unemployment-change-by-2030",
     name: "Unemployment change by 2030",
-    method_version: "quantity-forecast/1.0.0",
+    method_version: "quantity-forecast/1.1.0",
     source: "prepared_method",
     kind: "quantity",
     question_key: "unemployment_plus_2pp_by_2030",
@@ -224,7 +224,7 @@ export const PREPARED_TRENDS: PreparedTrend[] = [
   {
     slug: "labor-productivity-growth-by-2035",
     name: "Labor productivity growth by 2035",
-    method_version: "quantity-forecast/1.0.0",
+    method_version: "quantity-forecast/1.1.0",
     source: "prepared_method",
     kind: "quantity",
     question_key: "labor_productivity_growth_pp_by_2035",
@@ -244,7 +244,7 @@ export const PREPARED_TRENDS: PreparedTrend[] = [
   {
     slug: "gdp-growth-by-2035",
     name: "GDP growth by 2035",
-    method_version: "quantity-forecast/1.0.0",
+    method_version: "quantity-forecast/1.1.0",
     source: "prepared_method",
     kind: "quantity",
     question_key: "gdp_growth_pp_by_2035",
@@ -264,7 +264,7 @@ export const PREPARED_TRENDS: PreparedTrend[] = [
   {
     slug: "extinction-by-2070-revisions",
     name: "Revisions of unconditional extinction by 2070",
-    method_version: "historical-revision/1.0.0",
+    method_version: "historical-revision/1.1.0",
     source: "prepared_method",
     kind: "revision",
     question_key: "ai_extinction_unconditional_by_2070",
@@ -284,7 +284,7 @@ export const PREPARED_TRENDS: PreparedTrend[] = [
   {
     slug: "agi-arrival-year-revisions",
     name: "Revisions of AGI arrival year",
-    method_version: "historical-revision/1.0.0",
+    method_version: "historical-revision/1.1.0",
     source: "prepared_method",
     kind: "revision",
     question_key: "agi_arrival_calendar_year",
