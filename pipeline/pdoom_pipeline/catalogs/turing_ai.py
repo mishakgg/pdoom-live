@@ -1,20 +1,21 @@
 """Metadata catalog of public Alan Turing Institute pages on AI safety, governance, and policy.
 
-Each stored URL was confirmed as a public HTML page. A row keeps the title,
-publisher, canonical URL, date, and rights label. Page text is not stored.
-The publisher is The Alan Turing Institute. People are not merged into the
-publisher. Rights is ``uk_ogl`` only when the page states the Open Government
-Licence. Otherwise rights is ``unknown``. The institute is not a UK government
-publisher. A page that does not state a publication date keeps the date
-unknown. Updated and modified times are not publication dates. The live URL
-is stored as confirmed; a different rel=canonical does not replace it. This
-module does not fetch and it is not a belief collector.
+A row is stored only when a response is the page HTML and the title is taken
+from that response. A challenge page or a non-HTML response is not stored.
+Page text is not stored. The publisher is The Alan Turing Institute. People
+are not merged into the publisher. Rights is ``uk_ogl`` only when that HTML
+states the Open Government Licence. Otherwise rights is ``unknown``. The
+institute is not a UK government publisher. A page that does not state a
+publication date keeps the date unknown. Updated and modified times are not
+publication dates. The response URL is stored; a different rel=canonical does
+not replace it. This module does not fetch and it is not a belief collector.
 """
 
 from __future__ import annotations
 
 import json
 import re
+from collections.abc import Mapping
 from datetime import date, datetime
 from html import unescape
 from pathlib import Path
@@ -54,6 +55,15 @@ _SITE_SUFFIXES = (
     " | The Alan Turing Institute",
     " - The Alan Turing Institute",
     " \u2013 The Alan Turing Institute",
+)
+_HTML_TYPES = frozenset({"text/html", "application/xhtml+xml"})
+_CHALLENGE_MARKERS = (
+    "just a moment",
+    "performing security verification",
+    "enable javascript and cookies",
+    "challenge-platform",
+    "cf-mitigated",
+    "checking your browser",
 )
 _DOWNLOAD_SUFFIXES = (
     ".pdf",
@@ -101,8 +111,8 @@ def validate_catalog(document: dict) -> None:
     description = document.get("description")
     _require_text(description, "description", MAX_DESCRIPTION_CHARS)
     entries = document.get("entries")
-    if not isinstance(entries, list) or not 12 <= len(entries) <= 20:
-        raise CatalogError("entries must contain 12 to 20 pages")
+    if not isinstance(entries, list):
+        raise CatalogError("entries must be a list")
     seen: set[str] = set()
     for entry in entries:
         validate_entry(entry)
@@ -167,6 +177,68 @@ def validate_canonical_url(url: object) -> str:
 def is_turing_host(hostname: str) -> bool:
     host = (hostname or "").strip().lower().rstrip(".")
     return host in ALLOWED_HOSTS and not hostname_is_blocked(host)
+
+
+def is_html_content_type(content_type: object) -> bool:
+    if not isinstance(content_type, str) or not content_type.strip():
+        return False
+    base = content_type.split(";", 1)[0].strip().casefold()
+    return base in _HTML_TYPES
+
+
+def is_challenge_page(page_html: str) -> bool:
+    """True when the response is an interstitial challenge rather than the page."""
+
+    if not isinstance(page_html, str) or not page_html.strip():
+        return False
+    lowered = page_html.casefold()
+    plain = _plain_text(page_html).casefold()
+    return any(marker in lowered or marker in plain for marker in _CHALLENGE_MARKERS)
+
+
+def response_stores_a_page(
+    *,
+    status: object,
+    content_type: object,
+    page_html: object,
+    headers: Mapping[str, str] | None = None,
+) -> bool:
+    """A page is stored only from an HTML response that is not a challenge."""
+
+    if status != 200 or not isinstance(page_html, str) or not is_html_content_type(content_type):
+        return False
+    if is_challenge_page(page_html):
+        return False
+    if headers:
+        for key, value in headers.items():
+            if str(key).casefold() == "cf-mitigated" and "challenge" in str(value).casefold():
+                return False
+    return True
+
+
+def record_from_response(
+    *,
+    status: object,
+    content_type: object,
+    page_html: object,
+    page_url: str,
+    headers: Mapping[str, str] | None = None,
+) -> dict | None:
+    """Return metadata when the response is the page HTML.
+
+    The title comes from that HTML. A challenge page, an error status, or a
+    non-HTML response is not stored.
+    """
+
+    if not response_stores_a_page(
+        status=status,
+        content_type=content_type,
+        page_html=page_html,
+        headers=headers,
+    ):
+        return None
+    assert isinstance(page_html, str)
+    return page_record(page_html, page_url=page_url)
 
 
 def rights_from_page(page_text: str) -> str:
@@ -250,10 +322,13 @@ def publisher_from_page(page_html: str) -> str:
 def page_record(page_html: str, *, page_url: str) -> dict:
     """Return metadata for one confirmed page.
 
-    The record does not include the document text. ``page_url`` is the live
-    URL that was confirmed. A rel=canonical pointing somewhere else is not used.
+    The record does not include the document text. ``page_url`` is the response
+    URL. A rel=canonical pointing somewhere else is not used. A challenge page
+    is not stored.
     """
 
+    if is_challenge_page(page_html):
+        raise CatalogError("a challenge page is not stored")
     record = {
         "title": title_from_page(page_html),
         "publisher": publisher_from_page(page_html),
