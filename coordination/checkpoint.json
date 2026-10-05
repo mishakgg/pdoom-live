@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-05T185300Z",
-  "reviewed_at": "2026-10-05T18:53:00Z",
-  "previous_review_id": "2026-10-05T185200Z",
-  "status_path": "coordination/status/status-2026-10-05T185300Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-05T185300Z.json",
+  "review_id": "2026-10-05T185400Z",
+  "reviewed_at": "2026-10-05T18:54:00Z",
+  "previous_review_id": "2026-10-05T185300Z",
+  "status_path": "coordination/status/status-2026-10-05T185400Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-05T185400Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d85e991927a16bdca16e4a9f442801baf55d4c6d",
   "origin_main_subject": "Merge pull request #31 from mishakgg/cursor/partial-integration-refresh-a32e",
@@ -113,7 +113,7 @@
       "reason": "5585848 only updates docs/FRONTEND_HANDOFF.md. GitHub CI 37274485308, E2E 37274485285, and runtime 37274485294 succeeded on that head. The handoff still records two local spawnSync python ENOENT failures. Not folded into the six-workstream candidate."
     }
   ],
-  "next_action": "Draft pull requests 33 through 41 are open and unmerged. Sitemap and robots coverage started in the freed VM slot. One worker remains queued: stale public API cursors. Do not merge pull request 32.",
+  "next_action": "Draft pull requests 33 through 42 are open and unmerged. Stale public API cursors started in the freed VM slot. No workers remain queued. Do not merge pull request 32.",
   "concurrent_workers_launched_at": "2026-10-05T18:46:00Z",
   "concurrent_workers_model": "grok-4.7-xhigh",
   "concurrent_workers": [
@@ -142,7 +142,9 @@
     {"task": "Confirm podcast RSS metadata", "run": "bc-03a987c9-3afc-510d-ba45-d8f374ce305e", "branch": "cursor/podcast-rss-metadata-a32e", "sha": "ea2c56dee1def6c7e3c961c91b9359c0041a70b2", "pr": 40},
     {"task": "Keep name-only profiles unlinked", "run": "bc-fe0409dd-7253-5e00-9a55-7424eab3c37d", "branch": "cursor/discover-name-only-social-a32e"},
     {"task": "Catalog congressional AI hearings", "run": "bc-115e0676-dd02-58be-a207-ea647622db57", "branch": "cursor/congress-hearings-catalog-a32e", "sha": "9e56abbd83c409766b9154c3dbe277a590d67c71", "pr": 41},
-    {"task": "Check sitemap and robots coverage", "run": "bc-066e78bc-d2c0-5016-a9aa-fdf1762917f4", "branch": "cursor/sitemap-robots-coverage-a32e"}
+    {"task": "Check sitemap and robots coverage", "run": "bc-066e78bc-d2c0-5016-a9aa-fdf1762917f4", "branch": "cursor/sitemap-robots-coverage-a32e"},
+    {"task": "State methodology coverage limits", "run": "bc-e3141bc4-b9c8-579c-9635-b429c5bc2e09", "branch": "cursor/methodology-coverage-a32e", "sha": "9be1e729d097f282fbc63289801cf1051a12eeb3", "pr": 42},
+    {"task": "Test stale public API cursors", "run": "bc-c0d3d4d0-3928-5071-93c9-64a150affb63", "branch": "cursor/public-api-cursor-order-a32e"}
   ],
   "merge_continue_dispatched_at": "2026-10-05T18:31:30Z",
   "merge_continue_targets_pr": 31,
