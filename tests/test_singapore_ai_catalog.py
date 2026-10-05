@@ -257,6 +257,38 @@ def test_stated_reuse_licence_is_labeled_and_page_text_is_not_returned():
     assert rights_from_page("<p>See creativecommons.org/licenses/by/4.0/.</p>") == RIGHTS_CREATIVE_COMMONS
 
 
+def test_creative_commons_label_is_only_cc0_cc_by_and_cc_by_sa():
+    copying = [
+        "<p>This work is licensed under CC0 1.0.</p>",
+        "<p>Dedicated to the public domain under Creative Commons Zero.</p>",
+        "<a href='https://creativecommons.org/publicdomain/zero/1.0/'>CC0</a>",
+        "<p>Licensed under CC BY 4.0.</p>",
+        "<p>Creative Commons Attribution-ShareAlike 4.0 International.</p>",
+        "<p>Licensed under CC BY-SA 4.0.</p>",
+        "<a href='https://creativecommons.org/licenses/by-sa/4.0/'>CC BY-SA</a>",
+    ]
+    for page in copying:
+        assert rights_from_page(page) == RIGHTS_CREATIVE_COMMONS
+    restricted = [
+        "https://creativecommons.org/licenses/by-nc/4.0/",
+        "<a href='https://creativecommons.org/licenses/by-nc/4.0/'>CC BY-NC</a>",
+        "<p>Licensed under CC BY-NC 4.0.</p>",
+        "<p>Creative Commons Attribution-NonCommercial 4.0.</p>",
+        "https://creativecommons.org/licenses/by-nd/4.0/",
+        "<a href='https://creativecommons.org/licenses/by-nd/4.0/'>CC BY-ND</a>",
+        "<p>Licensed under CC BY-ND 4.0.</p>",
+        "<p>Creative Commons Attribution-NoDerivatives 4.0.</p>",
+        "<p>Licensed under CC BY-NC-SA 4.0.</p>",
+        "<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/'>CC BY-NC-SA</a>",
+        "<p>Licensed under CC BY-NC-ND 4.0.</p>",
+        "<a href='https://creativecommons.org/licenses/by-nc-nd/4.0/'>CC BY-NC-ND</a>",
+        "<p>Licensed under a Creative Commons licence.</p>",
+        "<a href='https://creativecommons.org/publicdomain/mark/1.0/'>Public Domain Mark</a>",
+    ]
+    for page in restricted:
+        assert rights_from_page(page) == RIGHTS_UNKNOWN
+
+
 def test_missing_dates_stay_unknown_and_published_dates_win():
     assert date_from_page("<p>No date on this page.</p>") == UNKNOWN_DATE
     assert date_from_page("<p>© 2026 Government of Singapore, last updated on 5 October 2026</p>") == UNKNOWN_DATE

@@ -5,10 +5,11 @@ Each stored URL was confirmed with one bounded GET. A row keeps the title,
 publisher, canonical URL, date, and rights label. Page bodies are not stored.
 A date the page does not state stays unknown. Last-updated times are not
 publication dates. Rights stay unknown unless the page states a reuse licence
-that allows copying. A public page, a copyright notice, a terms-of-use link,
-a regulatory licence, and the site credit "Open Government Products" are not
-reuse licences. This module does not fetch and it is not a belief collector.
-runner_wired stays false.
+that allows copying. ``creative_commons`` is only CC0, CC BY, or CC BY-SA.
+CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay unknown. A public page,
+a copyright notice, a terms-of-use link, a regulatory licence, and the site
+credit "Open Government Products" are not reuse licences. This module does
+not fetch and it is not a belief collector. runner_wired stays false.
 """
 
 from __future__ import annotations
@@ -79,10 +80,20 @@ _SODL = re.compile(
     r"|licen[cs]ed under (?:the )?singapore open data licen[cs]e"
     r"|available under (?:the )?(?:terms of the )?singapore open data licen[cs]e)"
 )
-_CREATIVE_COMMONS = re.compile(
-    r"licen[cs]ed under (?:a |the )?creative commons|"
-    r"creativecommons\.org/licenses/|"
-    r"creativecommons\.org/publicdomain/"
+# Copying is allowed for CC0, CC BY, and CC BY-SA only. The pattern runs on
+# casefolded text. CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND do not match.
+_CC_COPYING = re.compile(
+    r"(?:"
+    r"creativecommons\.org/publicdomain/zero(?:/|\b)"
+    r"|creativecommons\.org/licenses/by-sa(?:/|\b)"
+    r"|creativecommons\.org/licenses/by(?:/|\b)(?!-)"
+    r"|\bcc0\b"
+    r"|creative commons (?:cc0|zero)\b"
+    r"|creative commons attribution[-\s]*share[-\s]*alike\b"
+    r"|creative commons attribution\b(?![-\s]*(?:non[-\s]*commercial|no[-\s]*deriv))"
+    r"|cc[-\s]*by[-\s]*sa\b"
+    r"|cc[-\s]*by\b(?![-\s]*(?:nc|nd|non[-\s]*commercial|no[-\s]*deriv))"
+    r")"
 )
 _DOWNLOAD_SUFFIXES = (
     ".pdf",
@@ -164,13 +175,17 @@ def official_singapore_host(hostname: str) -> bool:
 
 
 def rights_from_page(page_text: str) -> str:
-    """Return a rights label. Public availability alone stays unknown."""
+    """Return a rights label. Public availability alone stays unknown.
+
+    ``creative_commons`` means the page states CC0, CC BY, or CC BY-SA.
+    CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay unknown.
+    """
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     plain = _plain(page_text).casefold()
     if _SODL.search(plain):
         return RIGHTS_SINGAPORE_OPEN_DATA
-    if _CREATIVE_COMMONS.search(plain):
+    if _CC_COPYING.search(plain):
         return RIGHTS_CREATIVE_COMMONS
     return RIGHTS_UNKNOWN
 
