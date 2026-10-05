@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-05T184800Z",
-  "reviewed_at": "2026-10-05T18:48:00Z",
-  "previous_review_id": "2026-10-05T184600Z",
-  "status_path": "coordination/status/status-2026-10-05T184800Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-05T184800Z.json",
+  "review_id": "2026-10-05T184900Z",
+  "reviewed_at": "2026-10-05T18:49:00Z",
+  "previous_review_id": "2026-10-05T184800Z",
+  "status_path": "coordination/status/status-2026-10-05T184900Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-05T184900Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d85e991927a16bdca16e4a9f442801baf55d4c6d",
   "origin_main_subject": "Merge pull request #31 from mishakgg/cursor/partial-integration-refresh-a32e",
@@ -113,7 +113,7 @@
       "reason": "5585848 only updates docs/FRONTEND_HANDOFF.md. GitHub CI 37274485308, E2E 37274485285, and runtime 37274485294 succeeded on that head. The handoff still records two local spawnSync python ENOENT failures. Not folded into the six-workstream candidate."
     }
   ],
-  "next_action": "Sixteen Grok 4.7 extra-high workers are running from main on separate branches. Draft pull requests 33 through 37 are open and unmerged. The navigation follow-up is still running. Do not merge pull request 32.",
+  "next_action": "Nineteen Grok 4.7 extra-high workers were requested in two waves. Three more started. Five more were refused because the concurrent cloud VM limit is 20. Draft pull requests 33 through 37 are open and unmerged. Do not merge pull request 32. Launch the refused five when a running worker finishes.",
   "concurrent_workers_launched_at": "2026-10-05T18:46:00Z",
   "concurrent_workers_model": "grok-4.7-xhigh",
   "concurrent_workers": [
@@ -132,7 +132,10 @@
     {"task": "Show source provenance on sources", "run": "bc-fe5830ce-28a6-55ba-ae84-da7559b1d097", "branch": "cursor/sources-page-provenance-a32e"},
     {"task": "Label topic horizons", "run": "bc-4fd24c43-9d7d-51d5-bf1d-996243de5ad5", "branch": "cursor/topics-horizon-labels-a32e"},
     {"task": "State methodology coverage limits", "run": "bc-e3141bc4-b9c8-579c-9635-b429c5bc2e09", "branch": "cursor/methodology-coverage-a32e"},
-    {"task": "Label statement classes", "run": "bc-55c07075-9858-574a-a6d9-a2726b4e6e5a", "branch": "cursor/statements-class-labels-a32e"}
+    {"task": "Label statement classes", "run": "bc-55c07075-9858-574a-a6d9-a2726b4e6e5a", "branch": "cursor/statements-class-labels-a32e"},
+    {"task": "Confirm GitHub retrieval", "run": "bc-1c470596-ed63-5c57-be70-e09393a1bc0b", "branch": "cursor/github-retrieval-confirm-a32e"},
+    {"task": "Confirm Semantic Scholar metadata", "run": "bc-0c0e5fac-0d6a-580e-b4ea-eca25aa91d84", "branch": "cursor/semantic-scholar-metadata-a32e"},
+    {"task": "Report source missingness", "run": "bc-76b5182e-1bd3-5ef5-8e20-c24a59af891a", "branch": "cursor/quality-missingness-a32e"}
   ],
   "merge_continue_dispatched_at": "2026-10-05T18:31:30Z",
   "merge_continue_targets_pr": 31,

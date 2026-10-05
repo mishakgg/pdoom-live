@@ -1,0 +1,19 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T184900Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Started three more workers. Five were refused at the 20 VM limit.",
+  "started": [
+    "bc-1c470596-ed63-5c57-be70-e09393a1bc0b",
+    "bc-0c0e5fac-0d6a-580e-b4ea-eca25aa91d84",
+    "bc-76b5182e-1bd3-5ef5-8e20-c24a59af891a"
+  ],
+  "refused_at_vm_limit": [
+    "openreview-metadata",
+    "huggingface-metadata",
+    "discover-name-only-social",
+    "sitemap-robots-coverage",
+    "public-api-cursor-order"
+  ]
+}
