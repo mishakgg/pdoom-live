@@ -1,0 +1,98 @@
+{
+  "catalog_id": "bair_pages",
+  "description": "Metadata for confirmed public HTML pages on bair.berkeley.edu. Each stored URL was confirmed with one bounded GET that returned HTML. A challenge page, an HTTP 202 response, a non-HTML file, a directory index, or a redirect off that host is not stored. Rows keep a title, publisher, canonical URL, date, and rights. Page text, abstracts, and PDFs are not stored. A missing date is unknown. Updated, modified, and copyright years are not publication dates. Rights stay unknown unless the page states CC0, CC BY, or CC BY-SA. Those three may be labeled creative_commons. CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay unknown. This catalog is not a belief collector. runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "BAIR",
+      "publisher": "Berkeley AI Research Lab",
+      "canonical_url": "https://bair.berkeley.edu/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Berkeley Artificial Intelligence Research Blog",
+      "publisher": "Berkeley AI Research Lab",
+      "canonical_url": "https://bair.berkeley.edu/blog/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "The BAIR Blog",
+      "publisher": "Berkeley AI Research Lab",
+      "canonical_url": "https://bair.berkeley.edu/blog/about/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Archive",
+      "publisher": "Berkeley AI Research Lab",
+      "canonical_url": "https://bair.berkeley.edu/blog/archive/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Subscribe",
+      "publisher": "Berkeley AI Research Lab",
+      "canonical_url": "https://bair.berkeley.edu/blog/subscribe/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "REU",
+      "publisher": "Berkeley AI Research Lab",
+      "canonical_url": "https://bair.berkeley.edu/initiatives/bair-reu.html",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "BAIR Commons Humanoid Intelligence Center (HIC)",
+      "publisher": "Berkeley AI Research Lab",
+      "canonical_url": "https://bair.berkeley.edu/initiatives/hic.html",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Responsible AI",
+      "publisher": "Berkeley AI Research Lab",
+      "canonical_url": "https://bair.berkeley.edu/initiatives/responsible-ai.html",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Admissions",
+      "publisher": "Berkeley AI Research Lab",
+      "canonical_url": "https://bair.berkeley.edu/resources/admissions.html",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Courses",
+      "publisher": "Berkeley AI Research Lab",
+      "canonical_url": "https://bair.berkeley.edu/resources/courses.html",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Seminar",
+      "publisher": "Berkeley AI Research Lab",
+      "canonical_url": "https://bair.berkeley.edu/resources/seminar.html",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Software",
+      "publisher": "Berkeley AI Research Lab",
+      "canonical_url": "https://bair.berkeley.edu/resources/software.html",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Textbooks",
+      "publisher": "Berkeley AI Research Lab",
+      "canonical_url": "https://bair.berkeley.edu/resources/textbooks.html",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
