@@ -13,15 +13,43 @@ COLLECTOR_MODULES = (
     "arxiv",
     "base",
     "bluesky",
+    "cordis",
     "crossref",
+    "dblp",
     "forum_magnum",
     "github",
     "huggingface",
+    "internet_archive",
+    "medrxiv",
+    "nsf_awards",
+    "oecd_ai",
     "openalex_works",
     "openreview",
     "rss",
     "semantic_scholar",
     "youtube_metadata",
+    "zenodo",
+)
+
+COLLECTOR_CLASSES = (
+    "ArxivCollector",
+    "BlueskyCollector",
+    "CordisCollector",
+    "CrossrefCollector",
+    "DblpCollector",
+    "ForumMagnumCollector",
+    "GitHubCollector",
+    "HuggingFaceCollector",
+    "InternetArchiveCollector",
+    "MedrxivCollector",
+    "NsfAwardsCollector",
+    "OecdAiCollector",
+    "OpenAlexWorksCollector",
+    "OpenReviewCollector",
+    "RssCollector",
+    "SemanticScholarCollector",
+    "YouTubeMetadataCollector",
+    "ZenodoCollector",
 )
 
 
@@ -54,6 +82,21 @@ def test_collectors_init_is_a_package_marker_without_collector_imports():
     for name in COLLECTOR_MODULES:
         assert name not in imported
         assert name not in source
+
+
+def test_importing_collectors_does_not_reexport_classes():
+    found = {path.stem for path in INIT.parent.glob("*.py") if path.name != "__init__.py"}
+    assert found == set(COLLECTOR_MODULES)
+    collectors = importlib.import_module("pdoom_pipeline.collectors")
+    assert not hasattr(collectors, "__all__")
+    bound_collectors = sorted(
+        name
+        for name, value in vars(collectors).items()
+        if isinstance(value, type) and name.endswith("Collector")
+    )
+    assert bound_collectors == []
+    for name in COLLECTOR_CLASSES:
+        assert not hasattr(collectors, name)
 
 
 def test_rss_collector_imports_directly():
