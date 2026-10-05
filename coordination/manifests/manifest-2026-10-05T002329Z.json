@@ -1,0 +1,15 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T002329Z",
+  "candidate_state": "six_agent_candidate_verified",
+  "reason": "Hourly review. No head moved after 2026-10-04T233101Z.",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "integration_branch": "cursor/partial-integration-refresh-a32e",
+  "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/31",
+  "resulting_integration_commit": "b4cf2307cb6e40240d5824131996ace942051f83",
+  "resulting_tree": "c717a0ddde5228fe87bfd9b6e8d7c9526162b28a",
+  "head_delta": [],
+  "pr_32_head": "760fb1e83809306aef483101dafe9f92ef9edb6e",
+  "delivery_note": "The six-workstream evidence still belongs to commit b4cf230. Pull request 32 is separate."
+}
