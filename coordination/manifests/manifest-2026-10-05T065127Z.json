@@ -1,0 +1,21 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T065127Z",
+  "candidate_state": "six_agent_candidate_verified",
+  "reason": "Pull request 32 advanced to 5585848, a handoff note. The reported suite on d8bac78 still has two python ENOENT Vitest failures. The six-workstream candidate stays b4cf230.",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "integration_branch": "cursor/partial-integration-refresh-a32e",
+  "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/31",
+  "resulting_integration_commit": "b4cf2307cb6e40240d5824131996ace942051f83",
+  "resulting_tree": "c717a0ddde5228fe87bfd9b6e8d7c9526162b28a",
+  "head_delta": [
+    {
+      "pr": 32,
+      "from": "d8bac784edef83518326f8f12a82660dde8858aa",
+      "to": "5585848df48156e1040f63590b1900e975d410fb",
+      "included": false
+    }
+  ],
+  "delivery_note": "The six-workstream evidence still belongs to commit b4cf230. Pull request 32 remains separate."
+}

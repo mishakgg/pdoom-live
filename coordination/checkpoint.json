@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-05T064749Z",
-  "reviewed_at": "2026-10-05T06:47:49Z",
-  "previous_review_id": "2026-10-05T062454Z",
-  "status_path": "coordination/status/status-2026-10-05T064749Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-05T064749Z.json",
+  "review_id": "2026-10-05T065127Z",
+  "reviewed_at": "2026-10-05T06:51:27Z",
+  "previous_review_id": "2026-10-05T064749Z",
+  "status_path": "coordination/status/status-2026-10-05T065127Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-05T065127Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "origin_main_subject": "Match deploy smoke to the public status bar and discovery routes (#19)",
@@ -37,7 +37,7 @@
     "agent-5": "bfe99a8b533ae041f36127b537c4ef43df883109",
     "agent-6": "8c36cc11c80d817789c76f94cf65d8bc3e3bf96e",
     "integration": "b4cf2307cb6e40240d5824131996ace942051f83",
-    "pr-32": "d8bac784edef83518326f8f12a82660dde8858aa"
+    "pr-32": "5585848df48156e1040f63590b1900e975d410fb"
   },
   "workstreams": {
     "agent-1": {
@@ -104,16 +104,16 @@
     {
       "pr": 32,
       "branch": "cursor/frontend-observatory-redesign-6a22",
-      "head_sha": "d8bac784edef83518326f8f12a82660dde8858aa",
-      "prior_head": "760fb1e83809306aef483101dafe9f92ef9edb6e",
+      "head_sha": "5585848df48156e1040f63590b1900e975d410fb",
+      "prior_head": "d8bac784edef83518326f8f12a82660dde8858aa",
       "base_sha": "b4cf2307cb6e40240d5824131996ace942051f83",
       "bc_id": "bc-761b75df-9dc7-49c6-b2b9-926c12fc6a22",
-      "tested_sha": "b8509ddb6d6efc831e21c249a8b38b5d2c8b4875",
+      "tested_sha": "d8bac784edef83518326f8f12a82660dde8858aa",
       "readiness": "not_included",
-      "reason": "d8bac78 is still a descendant of b4cf230. It puts a comparison preview on the homepage and darkens the mast. GitHub checks were pending at review time. Not folded into the six-workstream candidate."
+      "reason": "5585848 only updates docs/FRONTEND_HANDOFF.md. It says the production build, Vitest, and Playwright were rerun on d8bac78. That report still has two spawnSync python ENOENT failures in test/canonical-import.test.ts. Not folded into the six-workstream candidate."
     }
   ],
-  "next_action": "Pull request 31 at b4cf230 remains the six-workstream candidate. Pull request 32 moved to d8bac78 and is not included while its GitHub checks are pending. Do not merge either to main.",
+  "next_action": "Pull request 31 at b4cf230 remains the six-workstream candidate. Pull request 32 is at 5585848, a handoff note on d8bac78, and is not included. Do not merge either to main.",
   "assigned_tasks": [
     {
       "owner": "agent-5",
