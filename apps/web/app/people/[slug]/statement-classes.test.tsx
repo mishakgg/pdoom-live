@@ -105,7 +105,7 @@ describe("person statement classes", () => {
         forecast: forecast({ value_numeric: 0.07, value_type: "point" }),
       }),
     ];
-    vi.mocked(loadPerson).mockResolvedValue(person(statements) as NonNullable<Awaited<ReturnType<typeof loadPerson>>>);
+    vi.mocked(loadPerson).mockResolvedValue(person(statements) as unknown as NonNullable<Awaited<ReturnType<typeof loadPerson>>>);
     vi.mocked(loadDataset).mockResolvedValue(null);
 
     render(await PersonPage({
