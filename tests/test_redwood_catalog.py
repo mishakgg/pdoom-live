@@ -1325,7 +1325,7 @@ def test_official_redwood_urls_are_accepted(url: str):
 
 def test_validator_rejects_long_text_bad_rights_and_stored_body(tmp_path: Path):
     document = copy.deepcopy(load_catalog())
-    document["entries"][0]["date"] = "unknown"
+    document["entries"][-1]["date"] = "unknown"
     validate_catalog(document)
 
     document = copy.deepcopy(load_catalog())
