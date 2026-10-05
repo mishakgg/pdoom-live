@@ -1,0 +1,23 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T183130Z",
+  "candidate_state": "six_agent_candidate_verified",
+  "reason": "Hourly review found no head movement. The user directed the six owners to merge pull request 31 and continue their own slices.",
+  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
+  "integration_branch": "cursor/partial-integration-refresh-a32e",
+  "integration_pr": "https://github.com/mishakgg/pdoom-live/pull/31",
+  "resulting_integration_commit": "b4cf2307cb6e40240d5824131996ace942051f83",
+  "resulting_tree": "c717a0ddde5228fe87bfd9b6e8d7c9526162b28a",
+  "head_delta": [],
+  "pr_32_head": "5585848df48156e1040f63590b1900e975d410fb",
+  "merge_continue_agents": [
+    "bc-6a57018b-54da-5717-b233-508ab658c379",
+    "bc-ebbcf91a-d392-564c-87fc-6fa0d8d631c6",
+    "bc-d963a680-a64f-563e-9912-3f21c7862b06",
+    "bc-24f276fb-0921-5efc-bbd9-11bddaa0cf74",
+    "bc-6d49eba2-add1-5930-a01c-a8fbaa6f1d31",
+    "bc-950491b9-153f-555e-8042-0fe9db2911f2"
+  ],
+  "delivery_note": "The six source heads remain inside commit b4cf230. Owners were told to merge that pull request with a merge commit and not to merge the source pull requests separately."
+}
