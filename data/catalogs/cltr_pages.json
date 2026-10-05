@@ -1,0 +1,6 @@
+{
+  "catalog_id": "cltr_pages",
+  "description": "Metadata for public Centre for Long-Term Resilience pages on www.longtermresilience.org. A row is stored only when one bounded GET returns page HTML. A Cloudflare check, robot block, or other challenge is omitted. Rows store the title, publisher, canonical URL, date, and rights. Page bodies are not stored. A missing date is unknown. Updated, modified, and copyright years are not publication dates. creative_commons means CC0, CC BY, or CC BY-SA with no restricted deed. uk_ogl means the page text states the Open Government Licence. The Centre is not a UK government publisher. A public page is not a licence. runner_wired is false.",
+  "runner_wired": false,
+  "entries": []
+}
