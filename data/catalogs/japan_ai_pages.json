@@ -1,0 +1,91 @@
+{
+  "catalog_id": "japan_ai_pages",
+  "description": "Metadata for public Japanese government pages about artificial intelligence. Allowed hosts are go.jp domains, including digital.go.jp and meti.go.jp. Each canonical URL was confirmed with one bounded GET. The catalog stores the title, publisher, canonical URL, date, and rights. Page bodies are not stored. A missing date is unknown. Rights stay unknown unless that page states a reuse licence that allows copying. A public page is not a licence. runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "「AI事業者ガイドライン案」に関する意見募集の結果及びガイドラインの公表",
+      "publisher": "総務省及び経済産業省",
+      "canonical_url": "https://www.soumu.go.jp/menu_news/s-news/01ryutsu20_02000001_00010.html",
+      "date": "2024-04-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "ＡＩ法 全面施行 －次なるフェーズへ－",
+      "publisher": "内閣府",
+      "canonical_url": "https://www.cao.go.jp/press/new_wave/20251003",
+      "date": "2025-10-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "人工知能関連技術の研究開発及び活用の適正性確保に関する指針",
+      "publisher": "内閣府",
+      "canonical_url": "https://www8.cao.go.jp/cstp/ai/ai_guideline/ai_guideline.html",
+      "date": "2025-12-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "「行政の進化と革新のための生成AIの調達·利活用に係るガイドライン（第2.0版）」を策定しました",
+      "publisher": "デジタル庁",
+      "canonical_url": "https://www.digital.go.jp/news/decb64eb-f26e-41cb-8d37-f3dd173108b8",
+      "date": "2026-06-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "人工知能基本計画",
+      "publisher": "内閣府",
+      "canonical_url": "https://www8.cao.go.jp/cstp/ai/ai_plan/ai_plan.html",
+      "date": "2026-07-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Government AI “GENAI”",
+      "publisher": "Digital Agency",
+      "canonical_url": "https://www.digital.go.jp/en/policies/genai",
+      "date": "2026-07-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "ガバメントAI「源内」",
+      "publisher": "デジタル庁",
+      "canonical_url": "https://www.digital.go.jp/policies/genai",
+      "date": "2026-09-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "「AI事業者ガイドライン」掲載ページ",
+      "publisher": "総務省",
+      "canonical_url": "https://www.soumu.go.jp/main_sosiki/kenkyu/ai_network/02ryutsu20_04000019.html",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "人工知能関連技術の研究開発及び活用の推進に関する法律（ＡＩ法）",
+      "publisher": "内閣府",
+      "canonical_url": "https://www8.cao.go.jp/cstp/ai/ai_act/ai_act.html",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "人工知能戦略本部",
+      "publisher": "内閣府",
+      "canonical_url": "https://www8.cao.go.jp/cstp/ai/ai_hq/ai_hq.html",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "設置根拠：AI法",
+      "publisher": "内閣府",
+      "canonical_url": "https://www8.cao.go.jp/cstp/ai/ai_hq/konkyo.html",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI戦略",
+      "publisher": "内閣府",
+      "canonical_url": "https://www8.cao.go.jp/cstp/ai/index.html",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
