@@ -362,7 +362,7 @@ def test_public_page_without_a_reuse_licence_stays_unknown():
     mention = "<p>The essay discusses Creative Commons licensing debates.</p>"
     bare = '<a href="https://creativecommons.org/licenses/">Creative Commons</a>'
     mark = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">Public Domain Mark</a>'
-    mark_text = "<p>Public Domain Mark 1.0. This is not CC0.</p>"
+    mark_text = "<p>Public Domain Mark 1.0</p>"
     hidden = (
         "<script>var license = 'https://creativecommons.org/licenses/by/4.0/';</script>"
         "<p>All rights reserved.</p>"
