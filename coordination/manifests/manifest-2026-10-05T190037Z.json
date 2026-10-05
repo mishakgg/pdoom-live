@@ -1,0 +1,20 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T190037Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened eleven drafts for finished retrieval, catalog, identity, quality, and public-page workers.",
+  "follow_up_prs": [
+    {"pr": 46, "sha": "e7f9721cc42f5008bfe0494d4fde2bebebee2287", "run": "bc-1c470596-ed63-5c57-be70-e09393a1bc0b"},
+    {"pr": 47, "sha": "6e0523c966926183b639e74c7f804cee760ed750", "run": "bc-55c07075-9858-574a-a6d9-a2726b4e6e5a"},
+    {"pr": 48, "sha": "21248a363d06cb4fda0bc35b413f82f5bd84be10", "run": "bc-fe5830ce-28a6-55ba-ae84-da7559b1d097"},
+    {"pr": 49, "sha": "df6d401720c06464ac7806258771b35765da78a3", "run": "bc-7b8da2ed-3bcc-575e-80fa-bc59d0cac34a"},
+    {"pr": 50, "sha": "7d9fe27bb16572f61dc26802d7931741c858df3b", "run": "bc-a00045c7-0fee-529e-8cab-cca65eed275b"},
+    {"pr": 51, "sha": "45e8386d8c3ccd2f0ee8ae85f50b3504773f9afa", "run": "bc-76b5182e-1bd3-5ef5-8e20-c24a59af891a"},
+    {"pr": 52, "sha": "d4ca874c397c26b05a953ba26877641d7174f291", "run": "bc-0c0e5fac-0d6a-580e-b4ea-eca25aa91d84"},
+    {"pr": 53, "sha": "237f2851662fc4319d9f056e1f04dc3f823dd605", "run": "bc-b3e077bb-eea2-5875-8cac-c25c6c5e58b5"},
+    {"pr": 54, "sha": "4fd102a83365434f0f27de2a5459cba97984160f", "run": "bc-b1b80367-b80b-5869-b67e-eb9c5face463"},
+    {"pr": 55, "sha": "3d80323f862c1bdb5cf5964cf962ad70726a01c6", "run": "bc-e7cb1fbc-2a82-522d-a76d-b1d21ff14b45"},
+    {"pr": 56, "sha": "5b1b801a8842dd5d21aa39ea238acd1c6c32e4e3", "run": "bc-2868869c-a8e2-5ce3-8262-f13d52d4e4e6"}
+  ]
+}
