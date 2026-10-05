@@ -3,8 +3,9 @@
 Rows keep a title, publisher, canonical URL, date, and rights label. Page bodies
 are not stored. A date the page does not state stays unknown. An updated or
 modified time is not a publication date. Rights stay unknown unless the page
-states a reuse licence that allows copying. A public page, a copyright notice,
-or a link to terms is not a licence.
+states CC0, CC BY, CC BY-SA, or a Datenlizenz Deutschland reuse licence.
+CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay unknown. A public page,
+a copyright notice, or a link to terms is not a licence.
 
 The only allowed host is www.bsi.bund.de. This catalog is not a collector and
 runner_wired stays false.
@@ -121,15 +122,20 @@ _DL_ZERO = re.compile(
     r"|dl-de/(?:zero-2-0|zero/2-0)"
     r"|govdata\.de/dl-de/zero-2-0"
 )
+# creative_commons is only CC0, CC BY, or CC BY-SA. Noncommercial and
+# no-derivatives deeds stay unknown.
+_CC_RESTRICTED_NAME = r"(?:non[\s-]?commercial|no[\s-]?deriv)"
 _CC_GRANT = re.compile(
-    r"(?:lizenziert|licensed|veröffentlicht|veroeffentlicht|published|available|verfügbar|verfuegbar)"
-    r"\s+unter\s+(?:der |einer |dem |a |the )?(?:creative commons|cc[\s-]*by)"
-    r"|creative commons attribution(?:[\s-](?:noncommercial|noderivatives|sharealike|share-alike))*"
-    r"|creative commons zero"
-    r"|cc0 1\.0"
+    r"creative commons zero"
+    r"|\bcc0\b"
+    r"|creative commons attribution(?![\s-]*"
+    + _CC_RESTRICTED_NAME
+    + r")(?:[\s-]share[\s-]?alike)?"
+    r"|\bcc[\s-]*by(?![\s-]*(?:nc|nd)\b)(?:[\s-]*sa\b)?(?![\s-]*(?:nc|nd)\b)"
 )
 _CC_URL = re.compile(
-    r"creativecommons\.org/licenses/(?:by-nc-nd|by-nc-sa|by-nc|by-nd|by-sa|by)(?:/|\b)"
+    r"creativecommons\.org/licenses/by-sa(?:/|[^\w-]|$)"
+    r"|creativecommons\.org/licenses/by(?:/|[^\w-]|$)"
     r"|creativecommons\.org/publicdomain/zero/"
 )
 
@@ -160,7 +166,11 @@ def official_bsi_host(hostname: str) -> bool:
 
 
 def rights_from_page(page_text: str) -> str:
-    """Return a rights label. Public availability alone stays unknown."""
+    """Return a rights label. Public availability alone stays unknown.
+
+    ``creative_commons`` is only CC0, CC BY, or CC BY-SA. CC BY-NC, CC BY-ND,
+    CC BY-NC-SA, and CC BY-NC-ND stay unknown.
+    """
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     visible = _visible(page_text)

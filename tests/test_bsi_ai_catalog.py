@@ -593,8 +593,26 @@ def test_stated_reuse_licence_is_labeled_and_page_text_is_not_returned():
     assert rights_from_page(creative) == RIGHTS_CREATIVE_COMMONS
     cc_url = '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
     assert rights_from_page(cc_url) == RIGHTS_CREATIVE_COMMONS
+    by_sa = "<p>Licensed under the Creative Commons Attribution-ShareAlike 4.0 licence.</p>"
+    assert rights_from_page(by_sa) == RIGHTS_CREATIVE_COMMONS
+    by_sa_url = '<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>'
+    assert rights_from_page(by_sa_url) == RIGHTS_CREATIVE_COMMONS
+    cc0 = '<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>'
+    assert rights_from_page(cc0) == RIGHTS_CREATIVE_COMMONS
     hidden_url = '<script><a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a></script><p>No public licence.</p>'
     assert rights_from_page(hidden_url) == RIGHTS_UNKNOWN
+
+
+def test_restricted_creative_commons_deeds_stay_unknown():
+    for slug in ("by-nc", "by-nd", "by-nc-sa", "by-nc-nd"):
+        page = f'<a href="https://creativecommons.org/licenses/{slug}/4.0/">deed</a>'
+        assert rights_from_page(page) == RIGHTS_UNKNOWN
+    noncommercial = "<p>Licensed under the Creative Commons Attribution-NonCommercial 4.0 licence.</p>"
+    assert rights_from_page(noncommercial) == RIGHTS_UNKNOWN
+    noderivatives = "<p>Licensed under the Creative Commons Attribution-NoDerivatives 4.0 licence.</p>"
+    assert rights_from_page(noderivatives) == RIGHTS_UNKNOWN
+    nc_sa = "<p>Licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 licence.</p>"
+    assert rights_from_page(nc_sa) == RIGHTS_UNKNOWN
 
 
 def test_missing_dates_stay_unknown_and_labeled_dates_win():
