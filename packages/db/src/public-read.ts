@@ -250,7 +250,7 @@ function decodeCursor(cursor: string): CursorPayload {
   try {
     const parsed = JSON.parse(Buffer.from(cursor, "base64url").toString("utf8")) as CursorPayload;
     if (parsed.v !== 1 || (parsed.dir !== "next" && parsed.dir !== "prev")) throw new Error("bad");
-    if (parsed.t !== null && (typeof parsed.t !== "string" || parsed.t.length > 300)) throw new Error("bad");
+    if (parsed.t !== null && (typeof parsed.t !== "string" || parsed.t.length === 0 || parsed.t.length > 300)) throw new Error("bad");
     if (typeof parsed.id !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(parsed.id) || parsed.id.length > 80) {
       throw new Error("bad");
     }
@@ -259,6 +259,14 @@ function decodeCursor(cursor: string): CursorPayload {
     if (error instanceof InvalidCursorError) throw error;
     throw new InvalidCursorError();
   }
+}
+
+/** Statement cursors store event_time from Date.toISOString(), or null when the source time is unknown. */
+function isStatementCursorTime(value: string | null): boolean {
+  if (value === null) return true;
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value)) return false;
+  const parsed = Date.parse(value);
+  return Number.isFinite(parsed) && new Date(parsed).toISOString() === value;
 }
 
 function iso(value: Date | string | null): string | null {
@@ -589,6 +597,7 @@ async function fetchStatements(
     return { rows: result.rows.map((row) => mapStatement(row)), page: null };
   }
   const cursor = query.cursor ? decodeCursor(query.cursor) : null;
+  if (cursor && !isStatementCursorTime(cursor.t)) throw new InvalidCursorError();
   const order = statementOrder(query.sort, cursor, values);
   const limitParam = bind(values, query.limit + 1);
   const result = await pool.query(
