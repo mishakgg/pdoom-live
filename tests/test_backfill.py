@@ -274,6 +274,40 @@ def test_same_document_revision_and_curated_byline_alias():
     assert rejected["source_leads"][0]["reason_not_admitted"] == "attribution_unresolved"
 
 
+def test_body_only_name_stays_unresolved():
+    people = [{"slug": "ada-lovelace", "display_name": "Ada Lovelace", "name_distinctiveness": "high"}]
+    html = (
+        "<html><title>Notes on machines</title><body>"
+        "<p>Ada Lovelace writes that there is a 10% chance of human extinction by 2040.</p>"
+        "</body></html>"
+    )
+
+    def fetch(url: str) -> bytes:
+        if url.endswith("/robots.txt"):
+            return b"User-agent: *\nDisallow:\n"
+        return html.encode()
+
+    result = collect_beliefs(
+        people=people,
+        leads=[{
+            "kind": "essay",
+            "person_slug": "ada-lovelace",
+            "name": "Mention",
+            "url": "https://notes.example/mention",
+            "source_type": "blog",
+            "basis": "The display name appears only in the article body.",
+        }],
+        fetch_bytes=fetch,
+        observed_at="2026-09-27T00:00:00Z",
+        priority_slugs={"ada-lovelace"},
+    )
+    assert result["observations"] == []
+    assert result["statements"] == []
+    assert result["source_leads"][0]["candidate_url"] == "https://notes.example/mention"
+    assert result["source_leads"][0]["reason_not_admitted"] == "attribution_unresolved"
+    assert result["source_leads"][0]["retryable"] is False
+
+
 def test_candidate_leads_stay_out_of_observations_and_unspecified_is_not_a_forecast():
     people = [{"slug": "ada-lovelace", "display_name": "Ada Lovelace", "name_distinctiveness": "high"}]
 
