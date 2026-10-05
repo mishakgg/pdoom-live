@@ -1226,7 +1226,6 @@ REJECTED_URLS = [
     "https://www.anthropic.com/research/",
     "https://www.anthropic.com/news/claude",
     "https://www.anthropic.com/engineering/building-effective-agents",
-    "https://www.anthropic.com/research/team",
     "https://www.anthropic.com/research/team/alignment/extra",
     "https://academy.claude.com/tutorials/the-ai-fluency-index",
     "https://alignment.anthropic.com/research",
