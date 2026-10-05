@@ -51,6 +51,7 @@ def test_fixture_is_one_real_award_and_parser_does_not_touch_the_network(monkeyp
     assert len(raw) < MAX_RESPONSE_BYTES
     assert b"%PDF" not in raw
     assert b".pdf" not in raw.lower()
+    assert b"@" not in raw
     payload = _load()
     assert payload["response"]["metadata"]["totalCount"] == 1
     source = _award(payload)
@@ -59,8 +60,19 @@ def test_fixture_is_one_real_award_and_parser_does_not_touch_the_network(monkeyp
     assert source["startDate"] == "07/15/2025"
     assert source["date"] == "07/11/2025"
     assert "AI safety threats" in source["abstractText"]
-    assert isinstance(source["pi"], list) and len(source["pi"]) == 1
-    assert isinstance(source["coPDPI"], list) and len(source["coPDPI"]) == 1
+    assert source["pi"] == ["Lu Lin"]
+    assert source["coPDPI"] == ["Jinghui Chen"]
+    for contact_field in (
+        "piEmail",
+        "poEmail",
+        "awardeePhone",
+        "poPhone",
+        "awardeeAddress",
+        "perfAddress",
+        "awardeeZipCode",
+        "perfZipCode",
+    ):
+        assert contact_field not in source
 
     award = parse_award(raw)
     record = award.as_record()
@@ -94,15 +106,12 @@ def test_fixture_is_one_real_award_and_parser_does_not_touch_the_network(monkeyp
 
 def test_parsed_record_drops_contacts_publications_and_attachments(monkeypatch):
     _forbid_network(monkeypatch)
+    raw_text = FIXTURE.read_text(encoding="utf-8")
+    assert "@" not in raw_text
     source = _award()
     record = parse_award(FIXTURE.read_bytes()).as_record()
     dumped = json.dumps(record)
     assert "@" not in dumped
-    assert source["piEmail"] not in dumped
-    assert source["poEmail"] not in dumped
-    assert source["awardeePhone"] not in dumped
-    assert source["poPhone"] not in dumped
-    assert source["awardeeAddress"] not in dumped
     assert source["orgUrl"] not in dumped
     assert source["poName"] not in dumped
     assert "projectOutComesReport" not in dumped
@@ -114,6 +123,28 @@ def test_parsed_record_drops_contacts_publications_and_attachments(monkeypatch):
         {"name": "Lu Lin", "role": "pi"},
         {"name": "Jinghui Chen", "role": "co_pi"},
     ]
+
+    injected = _load()
+    row = _award(injected)
+    row["pi"] = ["Lu Lin pi@example.edu"]
+    row["coPDPI"] = ["Jinghui Chen co@example.edu"]
+    row["piEmail"] = "pi@example.edu"
+    row["poEmail"] = "po@example.edu"
+    row["awardeePhone"] = "5550100000"
+    row["poPhone"] = "5550100001"
+    row["awardeeAddress"] = "1 Example Street"
+    row["perfAddress"] = "1 Example Street"
+    row["awardeeZipCode"] = "00000"
+    row["perfZipCode"] = "000000000"
+    cleaned = json.dumps(_parse(injected).as_record())
+    assert "@" not in cleaned
+    assert "5550100000" not in cleaned
+    assert "5550100001" not in cleaned
+    assert "1 Example Street" not in cleaned
+    assert "00000" not in cleaned
+    assert "000000000" not in cleaned
+    assert cleaned.count("Lu Lin") == 1
+    assert cleaned.count("Jinghui Chen") == 1
 
 
 def test_investigators_stay_separate_people_and_are_not_taken_from_the_merged_label():
