@@ -69,6 +69,7 @@ Prepared method versions are `explicit-numeric-distribution/1.2.0`, `timeline-fo
 - `productivity_growth` plus “labor productivity” and percentage points by `2035-12-31` joins `labor_productivity_growth_pp_by_2035`. The same family plus “GDP” joins `gdp_growth_pp_by_2035`. Vague growth text is `insufficient_agreement`.
 - `agi_timeline` years 2032 and 2040 join `agi_arrival_calendar_year`. `agi_by_year_probability` by `2032-12-31` joins `agi_arrival_by_2032`. A 2050 deadline does not.
 - A stored exact key with horizon text and no target date still uses that key’s declared deadline. A family key does not.
+- A horizon that names two years, such as `between 2030 and 2050`, stays `ambiguous_horizon`. Neither year, a midpoint, nor 2070 is assigned. `productivity_growth` and `economic_growth` with that horizon stay unpooled.
 - A human-verified `retracts` link to a qualitative note withdraws the number. The historical value remains on the revision chain with `to_value: null`.
 - Same timestamp and same value: the smaller statement slug is kept and the other is `duplicate_statement`. Same timestamp and different values: the smaller slug is kept and the other is `not_latest`.
 - `scoreResolvedForecast` on an unresolved extinction question returns a null score.
