@@ -43,7 +43,7 @@ export function representationKey(url: URL): string {
     if (left[0] === right[0]) return left[1] < right[1] ? -1 : left[1] > right[1] ? 1 : 0;
     return left[0] < right[0] ? -1 : 1;
   });
-  return `${path}?${params.map(([key, value]) => `${key}=${value}`).join("&")}`;
+  return `${path}?${params.map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`).join("&")}`;
 }
 
 function remember(key: string, revision: string, representation: PublicRepresentation): void {
