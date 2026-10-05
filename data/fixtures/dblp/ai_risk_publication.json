@@ -1,0 +1,31 @@
+{
+"result":{
+"query":":filter:title:catastrophic* :filter:title:risk*",
+"status":{
+"@code":"200",
+"text":"OK"
+},
+"time":{
+"@unit":"msecs",
+"text":"5.10"
+},
+"completions":{
+"@total":"2",
+"@computed":"2",
+"@sent":"0"
+},
+"hits":{
+"@total":"54",
+"@computed":"54",
+"@sent":"1",
+"@first":"0",
+"hit":[{
+"@score":"3",
+"@id":"2566719",
+"info":{"authors":{"author":[{"@pid":"64/9007","text":"Anthony M. Barrett"},{"@pid":"182/2504","text":"Dan Hendrycks"},{"@pid":"322/9127","text":"Jessica Newman"},{"@pid":"159/3692","text":"Brandie Nonnecke"}]},"title":"Actionable Guidance for High-Consequence AI Risk Management: Towards Standards Addressing AI Catastrophic Risks.","venue":"CoRR","volume":"abs/2206.08966","year":"2022","type":"Informal and Other Publications","access":"open","key":"journals/corr/abs-2206-08966","doi":"10.48550/ARXIV.2206.08966","ee":"https://doi.org/10.48550/arXiv.2206.08966","url":"https://dblp.org/rec/journals/corr/abs-2206-08966"},
+"url":"URL#2566719"
+}
+]
+}
+}
+}
