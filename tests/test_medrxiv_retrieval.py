@@ -252,6 +252,13 @@ def test_default_fetcher_is_one_bounded_json_lookup():
     import pdoom_pipeline.belief.collect as belief_collect
     import pdoom_pipeline.collectors as collectors
 
-    assert "MedrxivCollector" not in collectors.__all__
+    assert not hasattr(collectors, "__all__")
+    bound_collectors = sorted(
+        name
+        for name, value in vars(collectors).items()
+        if isinstance(value, type) and name.endswith("Collector")
+    )
+    assert bound_collectors == []
     assert not hasattr(collectors, "MedrxivCollector")
+    assert not hasattr(collectors, "RssCollector")
     assert not hasattr(belief_collect, "MedrxivCollector")
