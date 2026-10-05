@@ -280,6 +280,35 @@ def test_a_stated_reuse_licence_is_a_short_token():
     assert len(record["rights"]) < 40
 
 
+def test_creative_commons_token_is_only_cc0_by_or_by_sa():
+    by_nc_url = '<link rel="license" href="https://creativecommons.org/licenses/by-nc/4.0/">'
+    assert rights_from_page(by_nc_url) == RIGHTS_UNKNOWN
+    by_nc_text = "<p>https://creativecommons.org/licenses/by-nc/4.0/</p>"
+    assert rights_from_page(by_nc_text) == RIGHTS_UNKNOWN
+    by_nd = "<p>This page is licensed under CC BY-ND 4.0.</p>"
+    assert rights_from_page(by_nd) == RIGHTS_UNKNOWN
+    by_nd_name = (
+        "<p>This page is licensed under the Creative Commons "
+        "Attribution-NoDerivatives 4.0 International License.</p>"
+    )
+    assert rights_from_page(by_nd_name) == RIGHTS_UNKNOWN
+    by_nc_sa = '<link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">'
+    assert rights_from_page(by_nc_sa) == RIGHTS_UNKNOWN
+    by_nc_nd = "<p>Licensed under CC BY-NC-ND.</p>"
+    assert rights_from_page(by_nc_nd) == RIGHTS_UNKNOWN
+    generic = "<p>Licensed under a Creative Commons licence.</p>"
+    assert rights_from_page(generic) == RIGHTS_UNKNOWN
+    by_notice = (
+        "<p>This page is licensed under the Creative Commons "
+        "Attribution 4.0 International License.</p>"
+    )
+    assert rights_from_page(by_notice) == RIGHTS_CREATIVE_COMMONS
+    by_sa = "<p>This page is licensed under CC BY-SA 4.0.</p>"
+    assert rights_from_page(by_sa) == RIGHTS_CREATIVE_COMMONS
+    cc0 = '<link rel="license" href="https://creativecommons.org/publicdomain/zero/1.0/">'
+    assert rights_from_page(cc0) == RIGHTS_CREATIVE_COMMONS
+
+
 def test_publication_dates_ignore_modification_times_and_url_slugs():
     dated = (
         '<meta name="citation_date" content="2024/03/15">'

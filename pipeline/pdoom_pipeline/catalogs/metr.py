@@ -4,8 +4,10 @@ Each stored URL was confirmed with one bounded GET. A row keeps the title,
 publisher, canonical URL, date, and rights label. Page text is not stored.
 Publisher is METR. Staff biographies are not included and people are not merged.
 Rights is unknown unless the page states a reuse licence, which is kept only
-as a short token. A public page, a copyright notice, or a terms link is not a
-licence. A page that does not state a publication date keeps the date unknown.
+as a short token. creative_commons means CC0, CC BY, or CC BY-SA. CC BY-NC,
+CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay unknown. A public page, a copyright
+notice, or a terms link is not a licence. A page that does not state a
+publication date keeps the date unknown.
 Updated and modified times are not publication dates. The live URL is stored
 as confirmed; a different rel=canonical does not replace it. This module does
 not fetch and it is not a belief collector.
@@ -80,12 +82,24 @@ _DOWNLOAD_SUFFIXES = (
     ".tif",
     ".tiff",
 )
-_CREATIVE_COMMONS = re.compile(
-    r"licen[cs]ed under (?:a |the )?creative commons|"
-    r"available under (?:a |the )?creative commons|"
-    r"creativecommons\.org/licenses/[a-z0-9./_-]+|"
-    r"creativecommons\.org/publicdomain/[a-z0-9./_-]+"
+# Longer codes are listed first so by-nc is not read as by.
+_CC_URL = re.compile(
+    r"creativecommons\.org/"
+    r"(?:licenses/(?P<license>by-nc-nd|by-nc-sa|by-nc|by-nd|by-sa|by)"
+    r"|publicdomain/(?P<pd>zero|mark))"
+    r"(?=/|\b|[?#]|$)"
 )
+_CC_TEXT_CODES = (
+    ("by-nc-nd", re.compile(r"\b(?:cc[-\s]?)?by-nc-nd\b")),
+    ("by-nc-sa", re.compile(r"\b(?:cc[-\s]?)?by-nc-sa\b")),
+    ("by-nc", re.compile(r"\b(?:cc[-\s]?)?by-nc\b")),
+    ("by-nd", re.compile(r"\b(?:cc[-\s]?)?by-nd\b")),
+    ("by-sa", re.compile(r"\b(?:cc[-\s]?)?by-sa\b")),
+    ("zero", re.compile(r"\bcc0\b|\bcreative commons zero\b|\bcc zero\b")),
+    ("by", re.compile(r"\bcc[-\s]by\b")),
+)
+_PERMISSIVE_CC = frozenset({"by", "by-sa", "zero"})
+_RESTRICTED_CC = frozenset({"by-nc", "by-nd", "by-nc-sa", "by-nc-nd", "mark"})
 _MIT = re.compile(r"licen[cs]ed under (?:the )?mit licen[cs]e\b")
 _APACHE = re.compile(r"licen[cs]ed under (?:the )?apache licen[cs]e(?:\s*2\.0)?\b")
 
@@ -186,23 +200,32 @@ def is_official_host(hostname: str) -> bool:
 def rights_from_page(page_text: str) -> str:
     """Return a short rights token, or unknown when the page states no reuse licence.
 
-    Script, style, and comment text does not count. A copyright notice, a public
-    page, or a link to terms is not a licence. The licence sentence itself is
-    not returned.
+    creative_commons means only CC0, CC BY, or CC BY-SA. CC BY-NC, CC BY-ND,
+    CC BY-NC-SA, and CC BY-NC-ND stay unknown. Script, style, and comment text
+    does not count. A copyright notice, a public page, or a link to terms is
+    not a licence. The licence sentence itself is not returned.
     """
 
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     visible = _strip_hidden(page_text)
+    plain = _plain_text(visible).casefold()
+    codes = _cc_codes_in_text(plain)
     for tag in _LINK.findall(visible):
         attrs = _attrs(tag)
         rel = attrs.get("rel", "").casefold().split()
         if "license" not in rel and "licence" not in rel:
             continue
-        token = _token_for_licence_url(attrs.get("href", ""))
-        if token:
-            return token
-    return _token_for_licence_text(_plain_text(visible))
+        codes.update(_cc_codes_in_text(attrs.get("href", "")))
+    if codes & _RESTRICTED_CC:
+        return RIGHTS_UNKNOWN
+    if codes & _PERMISSIVE_CC:
+        return RIGHTS_CREATIVE_COMMONS
+    if _MIT.search(plain):
+        return RIGHTS_MIT
+    if _APACHE.search(plain):
+        return RIGHTS_APACHE
+    return RIGHTS_UNKNOWN
 
 
 def publication_date_from_page(page_html: str) -> str:
@@ -326,22 +349,36 @@ def _is_download(path: str) -> bool:
     return lowered.endswith(_DOWNLOAD_SUFFIXES)
 
 
-def _token_for_licence_url(href: str) -> str | None:
-    folded = href.casefold()
-    if "creativecommons.org/licenses/" in folded or "creativecommons.org/publicdomain/" in folded:
-        return RIGHTS_CREATIVE_COMMONS
-    return None
+def _cc_codes_in_text(plain: str) -> set[str]:
+    """Return CC licence codes stated in text. Restricted codes are not permissive."""
 
-
-def _token_for_licence_text(plain: str) -> str:
-    folded = plain.casefold()
-    if _CREATIVE_COMMONS.search(folded):
-        return RIGHTS_CREATIVE_COMMONS
-    if _MIT.search(folded):
-        return RIGHTS_MIT
-    if _APACHE.search(folded):
-        return RIGHTS_APACHE
-    return RIGHTS_UNKNOWN
+    folded = plain.casefold().replace("–", "-").replace("—", "-")
+    codes: set[str] = set()
+    for match in _CC_URL.finditer(folded):
+        code = match.group("license") or match.group("pd")
+        if code:
+            codes.add(code)
+    for code, pattern in _CC_TEXT_CODES:
+        if pattern.search(folded):
+            codes.add(code)
+    if "creative commons" not in folded:
+        return codes
+    noncommercial = re.search(r"non-?commercial", folded) is not None
+    noderiv = re.search(r"no-?deriv", folded) is not None
+    sharealike = re.search(r"share-?alike", folded) is not None
+    if noncommercial and noderiv:
+        codes.add("by-nc-nd")
+    elif noncommercial and sharealike:
+        codes.add("by-nc-sa")
+    elif noncommercial:
+        codes.add("by-nc")
+    elif noderiv:
+        codes.add("by-nd")
+    elif sharealike:
+        codes.add("by-sa")
+    elif re.search(r"\battribution\b", folded):
+        codes.add("by")
+    return codes
 
 
 def _require_text(value: object, field: str, max_length: int) -> None:
