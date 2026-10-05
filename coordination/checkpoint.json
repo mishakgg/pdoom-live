@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-05T184600Z",
-  "reviewed_at": "2026-10-05T18:46:00Z",
-  "previous_review_id": "2026-10-05T184200Z",
-  "status_path": "coordination/status/status-2026-10-05T184600Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-05T184600Z.json",
+  "review_id": "2026-10-05T184800Z",
+  "reviewed_at": "2026-10-05T18:48:00Z",
+  "previous_review_id": "2026-10-05T184600Z",
+  "status_path": "coordination/status/status-2026-10-05T184800Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-05T184800Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d85e991927a16bdca16e4a9f442801baf55d4c6d",
   "origin_main_subject": "Merge pull request #31 from mishakgg/cursor/partial-integration-refresh-a32e",
@@ -113,7 +113,7 @@
       "reason": "5585848 only updates docs/FRONTEND_HANDOFF.md. GitHub CI 37274485308, E2E 37274485285, and runtime 37274485294 succeeded on that head. The handoff still records two local spawnSync python ENOENT failures. Not folded into the six-workstream candidate."
     }
   ],
-  "next_action": "Sixteen Grok 4.7 extra-high workers are running from main on separate branches. Draft pull requests 33, 34, and 35 stay open. Do not merge pull request 32. Open a draft for each worker branch if GitHub refused the worker's own pull request.",
+  "next_action": "Sixteen Grok 4.7 extra-high workers are running from main on separate branches. Draft pull requests 33 through 37 are open and unmerged. The navigation follow-up is still running. Do not merge pull request 32.",
   "concurrent_workers_launched_at": "2026-10-05T18:46:00Z",
   "concurrent_workers_model": "grok-4.7-xhigh",
   "concurrent_workers": [
@@ -147,7 +147,10 @@
       "owner": "agent-2",
       "pr": 26,
       "follow_up_run": "bc-ebbcf91a-d392-564c-87fc-6fa0d8d631c6",
-      "task": "Merge pull request 31 if main is still d13c8ab and its head is still b4cf230, then add one ambiguous-horizon test without pooling families."
+      "follow_up_pr": 36,
+      "follow_up_branch": "cursor/ambiguous-horizon-case-31c6",
+      "follow_up_sha": "748448b2622bb49b738f0a3d35fd12b132c119ac",
+      "task": "A two-year horizon stays ambiguous and unpooled. Draft pull request 36 is open."
     },
     {
       "owner": "agent-3",
@@ -180,7 +183,10 @@
       "owner": "agent-6",
       "pr": 25,
       "follow_up_run": "bc-950491b9-153f-555e-8042-0fe9db2911f2",
-      "task": "Merge pull request 31 if main is still d13c8ab and its head is still b4cf230, then correct the data-page Last-Modified wording."
+      "follow_up_pr": 37,
+      "follow_up_branch": "cursor/data-page-validator-copy-11f2",
+      "follow_up_sha": "ca755632face573468ce77a8dcb02735b64423c2",
+      "task": "The data page describes ETag validators and no longer says Last-Modified comes from import time. Draft pull request 37 is open."
     }
   ],
   "assigned_tasks": [

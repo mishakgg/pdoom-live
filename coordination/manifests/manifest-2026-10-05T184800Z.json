@@ -1,0 +1,25 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T184800Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened the forecast and public-read follow-up drafts that the owners could not create.",
+  "base_sha": "d85e991927a16bdca16e4a9f442801baf55d4c6d",
+  "follow_up_prs": [
+    {
+      "pr": 36,
+      "owner": "agent-2",
+      "run": "bc-ebbcf91a-d392-564c-87fc-6fa0d8d631c6",
+      "branch": "cursor/ambiguous-horizon-case-31c6",
+      "sha": "748448b2622bb49b738f0a3d35fd12b132c119ac"
+    },
+    {
+      "pr": 37,
+      "owner": "agent-6",
+      "run": "bc-950491b9-153f-555e-8042-0fe9db2911f2",
+      "branch": "cursor/data-page-validator-copy-11f2",
+      "sha": "ca755632face573468ce77a8dcb02735b64423c2"
+    }
+  ],
+  "delivery_note": "Drafts only. Do not merge 36 or 37 until their checks finish."
+}
