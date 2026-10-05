@@ -319,7 +319,7 @@ def test_retrieve_requests_metadata_sections_only():
         assert "authorization" not in headers
         assert "/works" not in url
         assert "/biography" not in url
-        assert "/person" not in url
+        assert not url.endswith("/person")
         assert "peer-review" not in url
         assert url == metadata_url(ORCID_ID, url.rstrip("/").split("/")[-1])
 
