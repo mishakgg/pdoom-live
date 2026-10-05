@@ -1,0 +1,81 @@
+{
+  "header": {
+    "numFound": 717,
+    "maxScore": 13.571979,
+    "page": 1,
+    "pageSize": 1
+  },
+  "results": [
+    {
+      "id": "doi_dedup___::97664ba3d2d15c599f6d76efb82df613",
+      "type": "publication",
+      "mainTitle": "Actionable Guidance for High-Consequence AI Risk Management: Towards Standards Addressing AI Catastrophic Risks",
+      "publicationDate": "2022-01-01",
+      "authors": [
+        {
+          "id": null,
+          "fullName": "Anthony M. Barrett",
+          "name": "Anthony M.",
+          "surname": "Barrett",
+          "rank": 1,
+          "pid": null
+        },
+        {
+          "id": null,
+          "fullName": "Dan Hendrycks",
+          "name": null,
+          "surname": null,
+          "rank": 2,
+          "pid": null
+        },
+        {
+          "id": null,
+          "fullName": "Jessica Newman",
+          "name": null,
+          "surname": null,
+          "rank": 3,
+          "pid": null
+        },
+        {
+          "id": null,
+          "fullName": "Brandie Nonnecke",
+          "name": null,
+          "surname": null,
+          "rank": 4,
+          "pid": null
+        }
+      ],
+      "pids": [
+        {
+          "scheme": "doi",
+          "value": "10.48550/arxiv.2206.08966"
+        },
+        {
+          "scheme": "arXiv",
+          "value": "2206.08966"
+        }
+      ],
+      "bestAccessRight": {
+        "code": "c_abf2",
+        "label": "OPEN",
+        "scheme": "http://vocabularies.coar-repositories.org/documentation/access_rights/"
+      },
+      "instances": [
+        {
+          "license": "arXiv Non-Exclusive Distribution",
+          "publicationDate": "2022-01-01",
+          "type": "Article"
+        },
+        {
+          "license": null,
+          "publicationDate": "2022-06-17",
+          "type": "Preprint"
+        },
+        {
+          "publicationDate": "2022-01-01",
+          "type": "Preprint"
+        }
+      ]
+    }
+  ]
+}

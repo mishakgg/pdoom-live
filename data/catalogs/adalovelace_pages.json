@@ -1,0 +1,315 @@
+{
+  "catalog_id": "adalovelace_pages",
+  "description": "Metadata for public Ada Lovelace Institute pages about AI safety or governance on www.adalovelaceinstitute.org. Each canonical URL was confirmed with one bounded GET. Rows store a title, publisher, canonical URL, date, and rights label. Page text is not stored. A missing publication date stays unknown. Rights stay unknown unless that page states a reuse licence that allows copying. A public page is not a licence. Rights is cc_by_nc_4_0 when the page states that its contents are shared under CC BY-NC 4.0, and cc_by_4_0 when it states CC BY 4.0 without that non-commercial limit. runner_wired is false. This catalog is not a belief collector.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Examining the Black Box",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/examining-the-black-box-tools-for-assessing-algorithmic-systems/",
+      "date": "2020-04-29",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Algorithmic accountability for the public sector",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/algorithmic-accountability-public-sector/",
+      "date": "2021-08-24",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Regulate to innovate",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/regulate-innovate/",
+      "date": "2021-11-29",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Technical methods for regulatory inspection of algorithmic systems",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/technical-methods-regulatory-inspection/",
+      "date": "2021-12-09",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "People, risk and the unique requirements of AI",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/policy-briefing/eu-ai-act/",
+      "date": "2022-03-31",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Expert opinion: Regulating AI in Europe",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/regulating-ai-in-europe/",
+      "date": "2022-03-31",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Expert explainer: The EU AI Act proposal",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/resource/eu-ai-act-explainer/",
+      "date": "2022-04-08",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "AI liability in Europe",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/resource/ai-liability-in-europe/",
+      "date": "2022-09-22",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Inclusive AI governance",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/inclusive-ai-governance/",
+      "date": "2023-03-30",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "What is a foundation model?",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/resource/explainer-foundation-models/",
+      "date": "2023-07-17",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Regulating AI in the UK",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/policy-briefing/regulating-ai-in-the-uk/",
+      "date": "2023-07-18",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Keeping an eye on AI",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/keeping-an-eye-on-ai/",
+      "date": "2023-07-18",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Regulating AI in the UK",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/regulating-ai-in-the-uk/",
+      "date": "2023-07-18",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "AI assurance?",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/risks-ai-systems/",
+      "date": "2023-07-18",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "An EU AI Act that works for people and society",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/policy-briefing/eu-ai-act-trilogues/",
+      "date": "2023-09-06",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Foundation models in the public sector",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/policy-briefing/foundation-models-public-sector/",
+      "date": "2023-10-02",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Mission critical",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/policy-briefing/ai-safety/",
+      "date": "2023-10-31",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Safe before sale",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/safe-before-sale/",
+      "date": "2023-12-14",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Code & conduct",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/code-conduct-ai/",
+      "date": "2024-06-05",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Buying AI",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/buying-ai-procurement/",
+      "date": "2024-10-01",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "New rules?",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/new-rules-ai-regulation/",
+      "date": "2024-10-31",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Mapping global approaches to public compute",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/policy-briefing/global-public-compute/",
+      "date": "2024-11-04",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Delegation Nation",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/policy-briefing/ai-assistants/",
+      "date": "2025-02-04",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Computing Commons",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/computing-commons/",
+      "date": "2025-02-07",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Learn fast and build things",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/policy-briefing/public-sector-ai/",
+      "date": "2025-03-14",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Making good",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/ai-public-good/",
+      "date": "2025-03-26",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "An eye on the future",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/policy-briefing/an-eye-on-the-future/",
+      "date": "2025-05-29",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Licence to build",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/policy-briefing/licence-to-build/",
+      "date": "2025-06-24",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "The dilemmas of delegation",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/dilemmas-of-delegation/",
+      "date": "2025-11-11",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "The regulation of delegation",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/policy-briefing/the-regulation-of-delegation/",
+      "date": "2025-12-01",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Great (public) expectations",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/policy-briefing/great-expectations/",
+      "date": "2025-12-04",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Risky business",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/report/risky-business/",
+      "date": "2025-12-08",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Measuring up",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/policy-briefing/measuring-up/",
+      "date": "2026-05-11",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Ada Lovelace Institute",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/",
+      "date": "unknown",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "About",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/about/",
+      "date": "unknown",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Our strategy",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/about/our-strategy/",
+      "date": "unknown",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Our work",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/our-work/",
+      "date": "unknown",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Law & Policy",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/our-work/how-we-work/ai-law-policy/",
+      "date": "unknown",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Ethical and effective adoption and governance of AI use at NICE",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/project/ai-use-governance-at-nice/",
+      "date": "unknown",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Algorithmic accountability for the public sector",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/project/algorithmic-accountability-public-sector/",
+      "date": "unknown",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Emerging processes for frontier AI safety",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/project/emerging-processes-for-frontier-ai-safety/",
+      "date": "unknown",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Evaluation of foundation models",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/project/evaluation-foundation-models/",
+      "date": "unknown",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Foundation models in the public sector",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/project/foundation-models-gpai/",
+      "date": "unknown",
+      "rights": "cc_by_nc_4_0"
+    },
+    {
+      "title": "Public voices in AI",
+      "publisher": "Ada Lovelace Institute",
+      "canonical_url": "https://www.adalovelaceinstitute.org/project/public-voice-in-ai/",
+      "date": "unknown",
+      "rights": "cc_by_nc_4_0"
+    }
+  ]
+}

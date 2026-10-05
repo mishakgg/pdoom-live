@@ -2,13 +2,20 @@
 
 A record is accepted only for an exact name match plus institution corroboration,
 or for one exact match of a distinctive name. Similar names are never merged.
-A different ORCID stays on its own name. A missing ORCID does not match the
-nearest similar name. ORCID is copied only from the accepted OpenAlex record.
+A different ORCID stays on its own name. Two people who share a display name
+and carry different OpenReview profile ids stay separate. A missing ORCID or
+OpenReview profile id does not match the nearest similar name. ORCID and
+OpenReview ids are copied only from the accepted OpenAlex record.
 """
 
 from __future__ import annotations
 
+import re
+from urllib.parse import parse_qs, unquote, urlparse
+
 from pdoom_pipeline.identity.names import name_key
+
+_OPENREVIEW_PROFILE = re.compile(r"^~[A-Za-z0-9_-]{1,128}$")
 
 AI_TOPIC_HINTS = ("machine learning", "artificial intelligence", "computer science", "neural", "language model")
 
@@ -122,6 +129,9 @@ def choose_openalex_author(person: dict, results: list[dict]) -> dict:
         distinct_orcids = {value for value in (_orcid(record) for record in corroborated) if value}
         if len(distinct_orcids) > 1:
             return _ambiguous("distinct_orcids", exact)
+        distinct_profiles = {value for value in (_openreview_id(record) for record in corroborated) if value}
+        if len(distinct_profiles) > 1:
+            return _ambiguous("distinct_openreview_profiles", exact)
         dominant = _dominant_profile(person, corroborated)
         if dominant is not None:
             return _accept(dominant, "medium", "openalex_dominant_profile", exact)
@@ -165,6 +175,7 @@ def _accept(record: dict, confidence: str, method: str, exact: list[dict]) -> di
         "verification_method": method,
         "openalex_id": openalex_id,
         "orcid": orcid,
+        "openreview_id": _openreview_id(record),
         "matched_name": record.get("display_name"),
         "matched_institutions": _institution_names(record),
         "works_count": record.get("works_count"),
@@ -186,6 +197,7 @@ def _candidate_summary(record: dict) -> dict:
     return {
         "openalex_id": str(record.get("id") or "").rstrip("/").split("/")[-1],
         "display_name": record.get("display_name"),
+        "openreview_id": _openreview_id(record),
         "institutions": _institution_names(record),
         "works_count": record.get("works_count"),
     }
@@ -197,6 +209,28 @@ def _orcid(record: dict) -> str | None:
         return None
     text = str(raw).rstrip("/").split("/")[-1]
     if not text or text.lower() == "none":
+        return None
+    return text
+
+
+def _openreview_id(record: dict) -> str | None:
+    """Profile ids look like ``~First_Last1``. A URL is reduced to that id."""
+    raw = record.get("openreview_id") or record.get("openreview")
+    if not raw:
+        ids = record.get("ids")
+        if isinstance(ids, dict):
+            raw = ids.get("openreview")
+    if not raw:
+        return None
+    text = str(raw).strip()
+    if not text or text.lower() in {"none", "null"}:
+        return None
+    if "://" in text or text.lower().startswith("openreview.net"):
+        parsed = urlparse(text if "://" in text else f"https://{text}")
+        query_id = parse_qs(parsed.query).get("id")
+        text = query_id[0] if query_id else parsed.path.rstrip("/").split("/")[-1]
+    text = unquote(text).strip()
+    if not _OPENREVIEW_PROFILE.fullmatch(text):
         return None
     return text
 
