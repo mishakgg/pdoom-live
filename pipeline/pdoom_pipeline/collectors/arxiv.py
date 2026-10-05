@@ -1,8 +1,15 @@
-"""arXiv API metadata collector. Stores titles, authors, and abstract excerpts."""
+"""arXiv API metadata collector.
+
+Stores titles, authors, and abstract excerpts from the export API.
+Descriptive metadata is CC0. PDF and source files are not fetched.
+An item is redistributable only when its license is a Creative Commons
+license that allows copying. The default arXiv non-exclusive license is not.
+"""
 
 from __future__ import annotations
 
-from urllib.parse import urlencode
+import re
+from urllib.parse import urlencode, urlparse
 
 from pdoom_pipeline.contracts import AuthorCandidate, Segment, SourceObservation, excerpt
 from pdoom_pipeline.safe_xml import XmlParseError, fromstring
@@ -10,10 +17,16 @@ from pdoom_pipeline.errors import CollectorFailure
 from pdoom_pipeline.fetch import SafeFetcher
 from pdoom_pipeline.urls import arxiv_id_from_url, canonicalize_url
 
-COLLECTOR_VERSION = "arxiv-0.1.0"
+COLLECTOR_VERSION = "arxiv-0.1.1"
 ATOM = "{http://www.w3.org/2005/Atom}"
 ARXIV_NS = "{http://arxiv.org/schemas/atom}"
 API = "https://export.arxiv.org/api/query"
+# arXiv applies CC0 to the metadata record. It does not apply to the PDF.
+METADATA_LICENSE_URL = "https://creativecommons.org/publicdomain/zero/1.0/"
+# by, by-sa, by-nc, by-nd, by-nc-sa, by-nc-nd, CC0, and the public-domain mark.
+_CC_COPYING_PATH = re.compile(
+    r"(?i)^/(?:licenses/(?:by(?:-nc)?(?:-sa|-nd)?|publicdomain)|publicdomain/(?:zero|mark))(?:/|$)"
+)
 
 
 class ArxivCollector:
@@ -70,6 +83,7 @@ def _entry(entry, *, source_identity: str, observed_at: str) -> SourceObservatio
             )
     text, truncated = excerpt(summary, 1500)
     canonical = canonicalize_url(f"https://arxiv.org/abs/{bare}")
+    license_url = _license_url(entry)
     observation = SourceObservation(
         source_identity=source_identity,
         platform="arxiv",
@@ -85,6 +99,9 @@ def _entry(entry, *, source_identity: str, observed_at: str) -> SourceObservatio
             "updated_at_source": updated,
             "truncated": truncated,
             "arxiv_id": bare,
+            "license_url": license_url,
+            "redistributable": _work_redistributable(license_url),
+            "metadata_license_url": METADATA_LICENSE_URL,
         },
         collection_method="arxiv_api",
         collector="arxiv",
@@ -115,3 +132,54 @@ def _normalize_time(value: str) -> str | None:
     if "+" in value[10:] or value.endswith("Z"):
         return value.replace("+00:00", "Z")
     return value
+
+
+def _license_url(entry) -> str | None:
+    """Read arxiv:license, then dc:rights, then an Atom link rel=license."""
+    found: list[tuple[int, int, str]] = []
+    for child in list(entry):
+        local = child.tag.split("}")[-1].lower()
+        if local == "license":
+            rank = 0
+        elif local == "rights":
+            rank = 1
+        else:
+            continue
+        text = " ".join("".join(child.itertext()).split())
+        if text:
+            found.append((rank, len(found), text))
+    found.sort()
+    for _rank, _index, text in found:
+        url = _http_url(text)
+        if url:
+            return url
+    for child in list(entry):
+        if child.tag.split("}")[-1].lower() != "link":
+            continue
+        if (child.attrib.get("rel") or "").lower() != "license":
+            continue
+        return _http_url(child.attrib.get("href") or "")
+    return None
+
+
+def _http_url(value: str) -> str | None:
+    cleaned = " ".join(value.split())
+    parsed = urlparse(cleaned)
+    if parsed.scheme.lower() not in {"http", "https"} or parsed.username or parsed.password:
+        return None
+    if not parsed.hostname:
+        return None
+    return cleaned
+
+
+def _work_redistributable(license_url: str | None) -> bool:
+    """True only for a Creative Commons license that allows copying the work."""
+    if not license_url:
+        return False
+    parsed = urlparse(license_url)
+    host = (parsed.hostname or "").lower().rstrip(".")
+    if host.startswith("www."):
+        host = host[4:]
+    if host != "creativecommons.org":
+        return False
+    return _CC_COPYING_PATH.match(parsed.path) is not None
