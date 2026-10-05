@@ -1,0 +1,12 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T190207Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened drafts for Hugging Face metadata, sitemap coverage, and topic horizons.",
+  "follow_up_prs": [
+    {"pr": 57, "sha": "15df885b560c43e14002d71cb8c06dfed95a3ee5", "run": "bc-61e5f839-01b4-5373-aab9-5ce095aec32a"},
+    {"pr": 58, "sha": "331498cbf5d91b73fa7c023561a3e6136264c374", "run": "bc-066e78bc-d2c0-5016-a9aa-fdf1762917f4"},
+    {"pr": 59, "sha": "a7c2cdf8e4f9f59e0d3a3b1108a32d856fb231ff", "run": "bc-4fd24c43-9d7d-51d5-bf1d-996243de5ad5"}
+  ]
+}
