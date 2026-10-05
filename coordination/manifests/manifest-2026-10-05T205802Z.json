@@ -1,0 +1,11 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T205802Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened drafts 101 and 102 for one OpenAlex author and one arXiv DOI canonical URL.",
+  "follow_up_prs": [
+    {"pr": 101, "sha": "9dc3f1f237c3e0fa3987a1cf8bfb56ddc5b0b75a", "run": "bc-5ddbb990-011e-5760-87e2-2f97b6026900"},
+    {"pr": 102, "sha": "40b8420fd9bc1a9e5fb31cb28d2ec45e8c132205", "run": "bc-ec621e49-c69e-5266-8742-e1ad741408b8"}
+  ]
+}
