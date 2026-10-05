@@ -283,9 +283,9 @@ def test_stated_creative_commons_attribution_is_labeled_and_page_text_is_not_ret
     assert "page body" not in rights_from_page(notice)
     spelled = "<p>Licensed under the Creative Commons Attribution 4.0 International licence.</p>"
     assert rights_from_page(spelled) == RIGHTS_CC_BY
-    deed = '<a href="https://creativecommons.org/licenses/by/4.0/">licence</a>'
+    deed = "<p>https://creativecommons.org/licenses/by/4.0/</p>"
     assert rights_from_page(deed) == RIGHTS_CC_BY
-    restricted = '<a href="https://creativecommons.org/licenses/by-nc/4.0/">licence</a>'
+    restricted = "<p>https://creativecommons.org/licenses/by-nc/4.0/</p>"
     assert rights_from_page(restricted) == RIGHTS_UNKNOWN
 
 
