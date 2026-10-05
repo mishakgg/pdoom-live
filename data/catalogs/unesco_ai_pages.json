@@ -1,6 +1,6 @@
 {
   "catalog_id": "unesco_ai_pages",
-  "description": "Metadata for public UNESCO pages about the Recommendation on the Ethics of Artificial Intelligence. Allowed hosts are unesco.org and its subdomains. Each canonical URL was confirmed with one bounded GET. The catalog stores the title, publisher, canonical URL, date, and rights. Page bodies and the recommendation articles are not stored. A missing date is unknown. Rights stay unknown unless the page states a reuse licence that allows copying. A public page is not a licence. runner_wired is false.",
+  "description": "Metadata for public UNESCO pages about the Recommendation on the Ethics of Artificial Intelligence. Allowed hosts are unesco.org and its subdomains. Each canonical URL was confirmed with one bounded GET. The catalog stores the title, publisher, canonical URL, date, and rights. Page bodies and the recommendation articles are not stored. A missing date is unknown. Rights stay unknown unless the page states CC0, CC BY, CC BY-SA, CC BY 4.0, CC BY-SA 3.0 IGO, or CC BY-NC-SA 3.0 IGO. creative_commons means only CC0, CC BY, or CC BY-SA. cc_by_nc_sa_3_0_igo is not permission to copy. CC BY-NC, CC BY-ND, and CC BY-NC-ND stay unknown. A public page is not a licence. runner_wired is false.",
   "runner_wired": false,
   "entries": [
     {

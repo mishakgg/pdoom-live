@@ -2,9 +2,11 @@
 
 Rows keep a title, publisher, canonical URL, date, and rights label. Page bodies
 and the recommendation articles are not stored. A date the page does not state
-stays unknown. A displayed last-update time is not a publication date. Rights
-stay unknown unless the page states a reuse licence that allows copying. A
-public page, a copyright notice, or a link to terms of use is not a licence.
+stays unknown. A displayed last-update time is not a publication date. Rights stay unknown unless the page states a recorded licence.
+creative_commons means only CC0, CC BY, or CC BY-SA. cc_by_nc_sa_3_0_igo names
+CC BY-NC-SA 3.0 IGO and is not permission to copy. CC BY-NC, CC BY-ND, and CC
+BY-NC-ND stay unknown. A public page, a copyright notice, or a link to terms
+of use is not a licence.
 
 Allowed hosts are unesco.org and its subdomains. This catalog is not a
 collector and runner_wired stays false.
@@ -102,25 +104,33 @@ _MONTHS = {
     "december": 12,
 }
 _CC_BY_NC_SA_30_IGO = re.compile(
-    r"cc[-\s]?by[-\s]?nc[-\s]?sa[-\s]?3\.0(?:[-\s]?igo)?|"
-    r"attribution[-\s]?noncommercial[-\s]?sharealike\s*3\.0\s*igo|"
-    r"creativecommons\.org/licenses/by-nc-sa/3\.0(?:/igo)?"
+    r"cc[-\s]?by[-\s]?nc[-\s]?sa[-\s]?3\.0[-\s]?igo|"
+    r"attribution[-\s]?non-?commercial[-\s]?share-?alike\s*3\.0\s*igo|"
+    r"creativecommons\.org/licenses/by-nc-sa/3\.0/igo"
 )
 _CC_BY_SA_30_IGO = re.compile(
-    r"cc[-\s]?by[-\s]?sa[-\s]?3\.0(?:[-\s]?igo)?|"
-    r"attribution[-\s]?sharealike\s*3\.0\s*igo|"
-    r"creativecommons\.org/licenses/by-sa/3\.0(?:/igo)?"
+    r"cc[-\s]?by[-\s]?sa[-\s]?3\.0[-\s]?igo|"
+    r"attribution[-\s]?share-?alike\s*3\.0\s*igo|"
+    r"creativecommons\.org/licenses/by-sa/3\.0/igo"
 )
 _CC_BY_40 = re.compile(
     r"creative commons attribution 4\.0(?: international)?|"
-    r"cc[-\s]?by[-\s]?4\.0|"
+    r"(?<![a-z0-9-])cc[-\s]?by[-\s]?4\.0(?![a-z0-9-])|"
     r"creativecommons\.org/licenses/by/4\.0"
 )
-_CC_STATEMENT = re.compile(
-    r"licen[cs]ed under (?:a |the )?creative commons|"
-    r"licen[cs]e type:\s*cc[-\s]?by|"
-    r"creativecommons\.org/licenses/|"
-    r"creativecommons\.org/publicdomain/"
+# CC0, CC BY, and CC BY-SA only. NC, ND, and NC-ND are not this label.
+_NOT_COPYING_DEED = r"non-?commercial|no-?deriv(?:atives)?|nc(?![a-z])|nd(?![a-z])|sa(?![a-z])"
+_CC_COPYING = re.compile(
+    rf"(?<![a-z0-9])cc0(?![a-z0-9])|"
+    rf"(?<![a-z0-9])cc-0(?![a-z0-9])|"
+    rf"creative commons (?:cc0|zero)|"
+    rf"creativecommons\.org/publicdomain/zero|"
+    rf"creativecommons\.org/licenses/by-sa/|"
+    rf"(?<![a-z0-9-])cc[-\s]?by[-\s]?sa(?![-\s]?nc)|"
+    rf"creative commons attribution[-\s]share-?alike|"
+    rf"creativecommons\.org/licenses/by/(?!nc|nd|sa)|"
+    rf"(?<![a-z0-9-])cc[-\s]?by(?![-\s]?(?:nc|nd|sa)(?![a-z]))|"
+    rf"creative commons attribution(?![-\s]?(?:{_NOT_COPYING_DEED}))"
 )
 
 
@@ -150,7 +160,12 @@ def official_unesco_host(hostname: str) -> bool:
 
 
 def rights_from_page(page_text: str) -> str:
-    """Return a rights label. Public availability alone stays unknown."""
+    """Return a rights label. Public availability alone stays unknown.
+
+    creative_commons means CC0, CC BY, or CC BY-SA. CC BY-NC, CC BY-ND, and
+    CC BY-NC-ND stay unknown. CC BY-NC-SA 3.0 IGO keeps its own label and is
+    not permission to copy.
+    """
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     visible = _plain(_without_hidden(page_text))
@@ -268,7 +283,7 @@ def _rights_label(text: str) -> str:
         return RIGHTS_CC_BY_SA_3_0_IGO
     if _CC_BY_40.search(folded):
         return RIGHTS_CC_BY_4_0
-    if _CC_STATEMENT.search(folded):
+    if _CC_COPYING.search(folded):
         return RIGHTS_CREATIVE_COMMONS
     return RIGHTS_UNKNOWN
 

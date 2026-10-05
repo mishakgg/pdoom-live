@@ -187,10 +187,20 @@ def test_stated_reuse_licence_is_labeled_and_page_text_is_not_returned():
     assert rights_from_page(share_alike) == RIGHTS_CC_BY_SA_3_0_IGO
     attribution = "<p>This work is licensed under the Creative Commons Attribution 4.0 International licence.</p>"
     assert rights_from_page(attribution) == RIGHTS_CC_BY_4_0
-    other = "<p>Licensed under a Creative Commons Attribution-NonCommercial 4.0 licence.</p>"
-    assert rights_from_page(other) == RIGHTS_CREATIVE_COMMONS
+    noncommercial = "<p>Licensed under a Creative Commons Attribution-NonCommercial 4.0 licence.</p>"
+    assert rights_from_page(noncommercial) == RIGHTS_UNKNOWN
     linked = '<a href="https://creativecommons.org/licenses/by-nc/4.0/">reuse</a>'
-    assert rights_from_page(linked) == RIGHTS_CREATIVE_COMMONS
+    assert rights_from_page(linked) == RIGHTS_UNKNOWN
+    no_derivatives = "<p>CC BY-ND 4.0</p>"
+    assert rights_from_page(no_derivatives) == RIGHTS_UNKNOWN
+    nc_nd = '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">text</a>'
+    assert rights_from_page(nc_nd) == RIGHTS_UNKNOWN
+    other_nc_sa = "<p>CC BY-NC-SA 4.0</p>"
+    assert rights_from_page(other_nc_sa) == RIGHTS_UNKNOWN
+    copying = "<p>CC0. Also licensed under CC BY-SA 4.0 and CC BY 3.0.</p>"
+    assert rights_from_page(copying) == RIGHTS_CREATIVE_COMMONS
+    zero = '<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>'
+    assert rights_from_page(zero) == RIGHTS_CREATIVE_COMMONS
     structured = (
         '<script type="application/ld+json">'
         '{"@type":"Article","license":"https://creativecommons.org/licenses/by-sa/3.0/igo/"}'
