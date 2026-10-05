@@ -1,0 +1,10 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T220210Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Merged pull requests 96 and 98. main is 569f19cdbdfab364d4ba762517bd73477cdcc860. Pull request 95 was rebased onto that main. Four more catalog workers are running.",
+  "merged_prs": [96, 98],
+  "rebased_prs": [95],
+  "follow_up_prs": []
+}
