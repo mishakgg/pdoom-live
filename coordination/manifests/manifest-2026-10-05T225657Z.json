@@ -1,0 +1,8 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T225657Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Pull request 95 now discovers collector modules instead of freezing their names. It stays a draft until the new checks pass.",
+  "follow_up_prs": [95]
+}
