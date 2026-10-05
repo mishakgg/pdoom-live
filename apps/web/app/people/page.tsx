@@ -30,12 +30,16 @@ export default async function PeoplePage({ searchParams }: { searchParams: Promi
     cursor: params.cursor || undefined,
     limit: params.limit ?? 20,
   });
+  const results = parsed.success
+    ? await PeopleResults({ params, query: parsed.data, filtered: filtered(params) })
+    : <InvalidFilters />;
   return (
     <>
       <h1>Tracked people</h1>
       <p className="lede">Every person has an inclusion reason. Similar names are not merged. A missing statement means nothing has been collected, not that the person has never spoken.</p>
+      <p>The tracked set is a defined cohort and not all AI researchers. The count is the cohort membership shown on this page.</p>
       <PeopleFilters params={params} labels={labels} />
-      {!parsed.success ? <InvalidFilters /> : <PeopleResults params={params} query={parsed.data} filtered={filtered(params)} />}
+      {results}
     </>
   );
 }
