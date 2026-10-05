@@ -1,0 +1,14 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T185200Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened the podcast metadata draft and started name-only profile discovery in the freed VM slot.",
+  "follow_up_pr": 40,
+  "follow_up_sha": "ea2c56dee1def6c7e3c961c91b9359c0041a70b2",
+  "started": "bc-fe0409dd-7253-5e00-9a55-7424eab3c37d",
+  "still_queued": [
+    "sitemap-robots-coverage",
+    "public-api-cursor-order"
+  ]
+}

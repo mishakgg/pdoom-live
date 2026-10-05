@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-05T185100Z",
-  "reviewed_at": "2026-10-05T18:51:00Z",
-  "previous_review_id": "2026-10-05T185000Z",
-  "status_path": "coordination/status/status-2026-10-05T185100Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-05T185100Z.json",
+  "review_id": "2026-10-05T185200Z",
+  "reviewed_at": "2026-10-05T18:52:00Z",
+  "previous_review_id": "2026-10-05T185100Z",
+  "status_path": "coordination/status/status-2026-10-05T185200Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-05T185200Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d85e991927a16bdca16e4a9f442801baf55d4c6d",
   "origin_main_subject": "Merge pull request #31 from mishakgg/cursor/partial-integration-refresh-a32e",
@@ -113,7 +113,7 @@
       "reason": "5585848 only updates docs/FRONTEND_HANDOFF.md. GitHub CI 37274485308, E2E 37274485285, and runtime 37274485294 succeeded on that head. The handoff still records two local spawnSync python ENOENT failures. Not folded into the six-workstream candidate."
     }
   ],
-  "next_action": "Draft pull requests 33 through 39 are open and unmerged. Hugging Face metadata started in the freed VM slot. Three workers remain queued: name-only profile discovery, sitemap and robots coverage, and stale public API cursors. Do not merge pull request 32.",
+  "next_action": "Draft pull requests 33 through 40 are open and unmerged. Name-only profile discovery started in the freed VM slot. Two workers remain queued: sitemap and robots coverage, and stale public API cursors. Do not merge pull request 32.",
   "concurrent_workers_launched_at": "2026-10-05T18:46:00Z",
   "concurrent_workers_model": "grok-4.7-xhigh",
   "concurrent_workers": [
@@ -138,7 +138,9 @@
     {"task": "Report source missingness", "run": "bc-76b5182e-1bd3-5ef5-8e20-c24a59af891a", "branch": "cursor/quality-missingness-a32e"},
     {"task": "Confirm OpenReview metadata", "run": "bc-05d3f393-6e9a-550d-9eda-303de24cf162", "branch": "cursor/openreview-metadata-a32e"},
     {"task": "Add hostile source fixture", "run": "bc-5f46edf0-4da4-5172-a8c6-a55f15ed5dc3", "branch": "cursor/hostile-source-fixture-a32e", "sha": "e66add77e54f97f68dbd1b2f422fd2bc866ad01e", "pr": 39},
-    {"task": "Confirm Hugging Face metadata", "run": "bc-61e5f839-01b4-5373-aab9-5ce095aec32a", "branch": "cursor/huggingface-metadata-a32e"}
+    {"task": "Confirm Hugging Face metadata", "run": "bc-61e5f839-01b4-5373-aab9-5ce095aec32a", "branch": "cursor/huggingface-metadata-a32e"},
+    {"task": "Confirm podcast RSS metadata", "run": "bc-03a987c9-3afc-510d-ba45-d8f374ce305e", "branch": "cursor/podcast-rss-metadata-a32e", "sha": "ea2c56dee1def6c7e3c961c91b9359c0041a70b2", "pr": 40},
+    {"task": "Keep name-only profiles unlinked", "run": "bc-fe0409dd-7253-5e00-9a55-7424eab3c37d", "branch": "cursor/discover-name-only-social-a32e"}
   ],
   "merge_continue_dispatched_at": "2026-10-05T18:31:30Z",
   "merge_continue_targets_pr": 31,
