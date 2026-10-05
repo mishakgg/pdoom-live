@@ -1,0 +1,25 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T184015Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened the two follow-up draft pull requests that the owners could not create.",
+  "base_sha": "d85e991927a16bdca16e4a9f442801baf55d4c6d",
+  "follow_up_prs": [
+    {
+      "pr": 33,
+      "owner": "agent-5",
+      "run": "bc-6d49eba2-add1-5930-a01c-a8fbaa6f1d31",
+      "branch": "cursor/body-only-name-unresolved-1d31",
+      "sha": "2186b791a06104226b2c3e5913b5bf670b30c0ec"
+    },
+    {
+      "pr": 34,
+      "owner": "agent-3",
+      "run": "bc-d963a680-a64f-563e-9912-3f21c7862b06",
+      "branch": "cursor/recurring-refresh-pipeline-note-2b06",
+      "sha": "9018d70c830ac480eeaf993f1d91ef7111ab2918"
+    }
+  ],
+  "delivery_note": "Drafts only. Do not merge 33 or 34 until their checks finish. Do not merge 32."
+}

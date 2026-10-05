@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-05T183702Z",
-  "reviewed_at": "2026-10-05T18:37:02Z",
-  "previous_review_id": "2026-10-05T183130Z",
-  "status_path": "coordination/status/status-2026-10-05T183702Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-05T183702Z.json",
+  "review_id": "2026-10-05T184015Z",
+  "reviewed_at": "2026-10-05T18:40:15Z",
+  "previous_review_id": "2026-10-05T183702Z",
+  "status_path": "coordination/status/status-2026-10-05T184015Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-05T184015Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "d85e991927a16bdca16e4a9f442801baf55d4c6d",
   "origin_main_subject": "Merge pull request #31 from mishakgg/cursor/partial-integration-refresh-a32e",
@@ -113,7 +113,7 @@
       "reason": "5585848 only updates docs/FRONTEND_HANDOFF.md. GitHub CI 37274485308, E2E 37274485285, and runtime 37274485294 succeeded on that head. The handoff still records two local spawnSync python ENOENT failures. Not folded into the six-workstream candidate."
     }
   ],
-  "next_action": "Main d85e991 is the merge of pull request 31 and its tree matches b4cf230. The six source heads are ancestors of main, so GitHub closed their pull requests. Follow-up agents are still continuing their own slices. Do not merge pull request 32. Pull request 23 remains open and is superseded.",
+  "next_action": "Main d85e991 contains the tested six-workstream tree. Draft pull request 33 keeps a body-only name unresolved. Draft pull request 34 documents partial refresh counts. The other four follow-ups are still running. Do not merge pull request 32. Pull request 23 remains open and is superseded.",
   "merge_continue_dispatched_at": "2026-10-05T18:31:30Z",
   "merge_continue_targets_pr": 31,
   "merge_continue_agents": [
@@ -133,7 +133,10 @@
       "owner": "agent-3",
       "pr": 27,
       "follow_up_run": "bc-d963a680-a64f-563e-9912-3f21c7862b06",
-      "task": "Merge pull request 31 if main is still d13c8ab and its head is still b4cf230, then keep RssCollector unwired to the new channels and confirm the refresh fixture."
+      "follow_up_pr": 34,
+      "follow_up_branch": "cursor/recurring-refresh-pipeline-note-2b06",
+      "follow_up_sha": "9018d70c830ac480eeaf993f1d91ef7111ab2918",
+      "task": "Document partial refresh counts in the pipeline note. Draft pull request 34 is open. RssCollector stays the only wired collector."
     },
     {
       "owner": "agent-4",
@@ -145,7 +148,10 @@
       "owner": "agent-5",
       "pr": 29,
       "follow_up_run": "bc-6d49eba2-add1-5930-a01c-a8fbaa6f1d31",
-      "task": "Merge pull request 31 if main is still d13c8ab and its head is still b4cf230, then re-run the backfill and refresh tests and cover a body-only name."
+      "follow_up_pr": 33,
+      "follow_up_branch": "cursor/body-only-name-unresolved-1d31",
+      "follow_up_sha": "2186b791a06104226b2c3e5913b5bf670b30c0ec",
+      "task": "Keep a body-only name unresolved. Draft pull request 33 is open."
     },
     {
       "owner": "agent-6",
