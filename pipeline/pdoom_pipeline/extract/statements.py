@@ -14,6 +14,9 @@ from pdoom_pipeline.contracts import REVIEW_STATES
 
 EXTRACTOR_VERSION = "rule-extract-0.4.0"
 SPEAKER_GAP = "<<<SPEAKER_GAP>>>"
+# Statement evidence is an excerpt. A longer source page is not stored whole.
+# infer_topic_signal keeps its own 1500-character cap.
+EVIDENCE_EXCERPT_LIMIT = 1200
 
 PROBABILITY_CUE = re.compile(
     r"\b(chance|probability|prob\.?|odds|credence|p\s*\(\s*doom\s*\)|likelihood)\b",
@@ -145,7 +148,14 @@ def extract_statements(text: str, *, person_id: str | None = None) -> list[dict]
         cursor += len(part) + len(SPEAKER_GAP)
     for statement in statements:
         statement["review_flags"] = _review_flags(statement)
+        _cap_evidence_text(statement)
     return statements
+
+
+def _cap_evidence_text(statement: dict) -> None:
+    evidence = statement.get("evidence_text") or ""
+    if len(evidence) > EVIDENCE_EXCERPT_LIMIT:
+        statement["evidence_text"] = evidence[:EVIDENCE_EXCERPT_LIMIT]
 
 
 def _extract_part(text: str, person_id: str | None, offset: int) -> list[dict]:
