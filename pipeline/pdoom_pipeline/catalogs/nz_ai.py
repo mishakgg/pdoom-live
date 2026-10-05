@@ -1,9 +1,10 @@
 """Metadata catalog of public New Zealand government pages about artificial intelligence.
 
 Rows keep a title, publisher, canonical URL, date, and rights label. Page bodies
-are not stored. A date the page does not state stays unknown. Rights stay
-unknown unless the page states a reuse licence that allows copying. A public
-page, a copyright notice, or a link to terms is not a licence.
+are not stored. Only an issued or published date counts. An updated or modified
+time is not a publication date, and a page that states neither is unknown.
+Rights stay unknown unless the page states a reuse licence that allows copying.
+A public page, a copyright notice, or a link to terms is not a licence.
 
 Allowed hosts are govt.nz and its subdomains. This catalog is not a collector
 and runner_wired stays false.
@@ -49,7 +50,6 @@ _FORBIDDEN_KEYS = frozenset(
     }
 )
 _ISSUED_META = frozenset({"dcterms.issued", "dcterms:issued", "dc.date.issued"})
-_MODIFIED_META = frozenset({"dcterms.modified", "dcterms:modified", "dc.date.modified"})
 _HOST_LABEL = re.compile(r"[a-z0-9-]+")
 _DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 _COMMENT = re.compile(r"(?is)<!--.*?-->")
@@ -72,7 +72,7 @@ _MONTHS = {
     "december": 12,
 }
 _LABELED_DATE = re.compile(
-    r"\b(?:date published|last updated|date modified)\s*:?\s*"
+    r"\b(?:date issued|date published)\s*:?\s*"
     r"(?:(\d{4}-\d{2}-\d{2})|(\d{1,2})\s+([A-Za-z]+)\s+(\d{4}))\b",
     re.I,
 )
@@ -116,7 +116,7 @@ def rights_from_page(page_text: str) -> str:
 
 
 def date_from_page(page_text: str) -> str:
-    """Use an issued or published date, then a stated updated date, else unknown."""
+    """Use an issued or published date. Updated and modified times stay unknown."""
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     html = _without_hidden(page_text)
@@ -124,18 +124,12 @@ def date_from_page(page_text: str) -> str:
     if issued:
         return issued
     plain = _plain(page_text)
+    labeled_issued = _labeled_date(plain, "date issued")
+    if labeled_issued:
+        return labeled_issued
     published = _labeled_date(plain, "date published")
     if published:
         return published
-    updated = _labeled_date(plain, "last updated")
-    if updated:
-        return updated
-    modified = _first_iso_date(_meta_values(html, _MODIFIED_META))
-    if modified:
-        return modified
-    labeled_modified = _labeled_date(plain, "date modified")
-    if labeled_modified:
-        return labeled_modified
     return UNKNOWN_DATE
 
 

@@ -30,129 +30,10 @@ DOC = "https://standards.digital.govt.nz/docref/public-service-gen-ai-guidance-"
 
 EXPECTED = [
     (
-        "2024 Cross-agency AI Survey: Highlights",
-        GDDA,
-        DOC + "2024-cross-agency-ai-survey-highlights/2024/en/",
-        "2024-09-19",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Public Service AI Framework",
-        GDDA,
-        DOC + "ai-framework/2025/en/",
-        "2025-01-29",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Accessibility and GenAI",
-        GDDA,
-        DOC + "accessibility/2025/en/",
-        "2025-02-03",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Accountability, Responsibility and GenAI",
-        GDDA,
-        DOC + "accountability-and-responsibility/2025/en/",
-        "2025-02-03",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Bias, Discrimination, Fairness, Equity and GenAI",
-        GDDA,
-        DOC + "bias-discrimination-fairness-and-equity/2025/en/",
-        "2025-02-03",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Glossary of AI Terms",
-        GDDA,
-        DOC + "glossary/2025/en/",
-        "2025-02-03",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Governance and GenAI in the Public Service",
-        GDDA,
-        DOC + "governance/2025/en/",
-        "2025-02-03",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Māori, Pacific Peoples, Ethnic Communities and GenAI",
-        GDDA,
-        DOC + "maori-pacific-peoples-and-ethnic-communities/2025/en/",
-        "2025-02-03",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Misinformation, Hallucinations and GenAI",
-        GDDA,
-        DOC + "misinformation-and-hallucinations/2025/en/",
-        "2025-02-03",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Next Steps for Safe, Responsible AI in Government",
-        GDDA,
-        DOC + "next-steps-for-safe-responsible-ai/2025/en/",
-        "2025-02-03",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Overview",
-        GDDA,
-        DOC + "overview/2025/en/",
-        "2025-02-03",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Privacy and GenAI",
-        GDDA,
-        DOC + "privacy/2025/en/",
-        "2025-02-03",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Procurement and GenAI",
-        GDDA,
-        DOC + "procurement/2025/en/",
-        "2025-02-03",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Security and GenAI",
-        GDDA,
-        DOC + "security/2025/en/",
-        "2025-02-03",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Skills, Capabilities and GenAI",
-        GDDA,
-        DOC + "skills-and-capabilities/2025/en/",
-        "2025-02-03",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Transparency and GenAI",
-        GDDA,
-        DOC + "transparency/2025/en/",
-        "2025-02-03",
-        RIGHTS_CC_BY,
-    ),
-    (
-        "Government Chief Digital Officer’s Role in Artificial Intelligence (AI)",
-        GDDA,
-        DOC + "government-chief-digital-officers-role/2025/en/",
-        "2025-02-05",
-        RIGHTS_CC_BY,
-    ),
-    (
         "Generative AI",
         MOE,
         "https://www.education.govt.nz/education-professionals/schools-year-0-13/digital-technology/generative-ai",
-        "2026-05-22",
+        "2024-11-25",
         RIGHTS_UNKNOWN,
     ),
     (
@@ -163,9 +44,44 @@ EXPECTED = [
         RIGHTS_UNKNOWN,
     ),
     (
+        "2024 Cross-agency AI Survey: Highlights",
+        GDDA,
+        DOC + "2024-cross-agency-ai-survey-highlights/2024/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
+        "Accessibility and GenAI",
+        GDDA,
+        DOC + "accessibility/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
+        "Accountability, Responsibility and GenAI",
+        GDDA,
+        DOC + "accountability-and-responsibility/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
+        "Public Service AI Framework",
+        GDDA,
+        DOC + "ai-framework/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
         "Artificial Intelligence (AI)",
         GDDA,
         DOC + "artificial-intelligence/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
+        "Bias, Discrimination, Fairness, Equity and GenAI",
+        GDDA,
+        DOC + "bias-discrimination-fairness-and-equity/2025/en/",
         UNKNOWN_DATE,
         RIGHTS_CC_BY,
     ),
@@ -177,9 +93,93 @@ EXPECTED = [
         RIGHTS_CC_BY,
     ),
     (
+        "Glossary of AI Terms",
+        GDDA,
+        DOC + "glossary/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
+        "Governance and GenAI in the Public Service",
+        GDDA,
+        DOC + "governance/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
+        "Government Chief Digital Officer’s Role in Artificial Intelligence (AI)",
+        GDDA,
+        DOC + "government-chief-digital-officers-role/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
+        "Māori, Pacific Peoples, Ethnic Communities and GenAI",
+        GDDA,
+        DOC + "maori-pacific-peoples-and-ethnic-communities/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
+        "Misinformation, Hallucinations and GenAI",
+        GDDA,
+        DOC + "misinformation-and-hallucinations/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
+        "Next Steps for Safe, Responsible AI in Government",
+        GDDA,
+        DOC + "next-steps-for-safe-responsible-ai/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
+        "Overview",
+        GDDA,
+        DOC + "overview/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
+        "Privacy and GenAI",
+        GDDA,
+        DOC + "privacy/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
+        "Procurement and GenAI",
+        GDDA,
+        DOC + "procurement/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
         "Responsible AI Guidance for the Public Service: GENAI",
         GDDA,
         DOC + "responsible-ai/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
+        "Security and GenAI",
+        GDDA,
+        DOC + "security/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
+        "Skills, Capabilities and GenAI",
+        GDDA,
+        DOC + "skills-and-capabilities/2025/en/",
+        UNKNOWN_DATE,
+        RIGHTS_CC_BY,
+    ),
+    (
+        "Transparency and GenAI",
+        GDDA,
+        DOC + "transparency/2025/en/",
         UNKNOWN_DATE,
         RIGHTS_CC_BY,
     ),
@@ -226,7 +226,7 @@ def test_catalog_rows_are_confirmed_nz_government_pages():
     assert publishers == {GDDA, MOE}
     assert labels.count(RIGHTS_UNKNOWN) == 2
     assert labels.count(RIGHTS_CC_BY) == 20
-    assert [entry["date"] for entry in entries].count(UNKNOWN_DATE) == 4
+    assert [entry["date"] for entry in entries].count(UNKNOWN_DATE) == 21
 
 
 def test_load_catalog_does_not_use_the_network(monkeypatch):
@@ -297,11 +297,11 @@ def test_missing_dates_stay_unknown_and_issued_dates_win():
     assert date_from_page("<time>2024-09-19</time>") == UNKNOWN_DATE
     assert date_from_page("<p>May 22, 2026</p>") == UNKNOWN_DATE
     assert date_from_page("<p>Updated 22 May 2026</p>") == UNKNOWN_DATE
-    assert date_from_page("<p>Last updated 19 September 2024</p>") == "2024-09-19"
-    assert date_from_page("<p>Last updated 29 January 2025</p>") == "2025-01-29"
-    assert date_from_page("<p>Last updated 03 February 2025</p>") == "2025-02-03"
-    assert date_from_page("<p>Last updated 05 February 2025</p>") == "2025-02-05"
-    assert date_from_page("<p>Last updated : 22 May 2026</p>") == "2026-05-22"
+    assert date_from_page("<p>Last updated 19 September 2024</p>") == UNKNOWN_DATE
+    assert date_from_page("<p>Last updated 03 February 2025</p>") == UNKNOWN_DATE
+    assert date_from_page("<p>Last updated : 22 May 2026</p>") == UNKNOWN_DATE
+    assert date_from_page("<p>Date modified: 2026-05-22</p>") == UNKNOWN_DATE
+    assert date_from_page('<meta name="dcterms.modified" content="2026-05-22">') == UNKNOWN_DATE
     issued = (
         '<meta name="dcterms.issued" content="2025-01-29">'
         "<p>Last updated 03 February 2025</p>"
@@ -311,10 +311,14 @@ def test_missing_dates_stay_unknown_and_issued_dates_win():
         '<meta name="dcterms.issued" content="">'
         '<meta name="dcterms.modified" content="2026-05-22">'
     )
-    assert date_from_page(empty_issued) == "2026-05-22"
+    assert date_from_page(empty_issued) == UNKNOWN_DATE
     published = "<p>Date published: 2024-09-19</p><p>Last updated 03 February 2025</p>"
     assert date_from_page(published) == "2024-09-19"
-    hidden = "<script>Last updated 03 February 2025</script><p>No visible date.</p>"
+    written = "<p>Date published: 25 November 2024</p><p>Last updated : 22 May 2026</p>"
+    assert date_from_page(written) == "2024-11-25"
+    labeled_issued = "<p>Date issued: 19 September 2024</p><p>Date modified: 2026-05-22</p>"
+    assert date_from_page(labeled_issued) == "2024-09-19"
+    hidden = "<script>Date published: 2024-09-19</script><p>No visible date.</p>"
     assert date_from_page(hidden) == UNKNOWN_DATE
     assert validate_date(UNKNOWN_DATE) == UNKNOWN_DATE
     with pytest.raises(CatalogError):
