@@ -1,11 +1,13 @@
 """Turn a confirmed page or ORCID URL list into identities and sources.
 
 Social accounts are accepted only from rel=me on a name-confirmed page.
-Name search is not performed here.
+Name search is not performed here. A similar name, including a hyphenated
+longer name, does not confirm the page.
 """
 
 from __future__ import annotations
 
+import re
 from urllib.parse import urlparse
 
 from pdoom_pipeline.enrich.html_page import (
@@ -20,6 +22,7 @@ from pdoom_pipeline.enrich.html_page import (
     youtube_feed_url,
 )
 from pdoom_pipeline.enrich.merge import identity_record, source_record
+from pdoom_pipeline.identity.names import name_key
 from pdoom_pipeline.urls import canonicalize_url
 
 SOCIAL_SOURCE_TYPES = {"github", "huggingface", "bluesky", "mastodon", "x"}
@@ -38,7 +41,7 @@ def discover_from_page(
 ) -> dict:
     """Return identities, sources, and a decision. Unconfirmed pages add nothing."""
     text = parsed.get("text") or ""
-    confirmed = page_confirms_person(text, display_name, variants)
+    confirmed = _exact_name_on_page(text, display_name, variants)
     decision = {
         "person_id": person_id,
         "page_url": page_url,
@@ -46,7 +49,9 @@ def discover_from_page(
         "verification_method": verification_method,
     }
     if not confirmed:
-        decision["reason"] = "name_not_on_page"
+        decision["reason"] = (
+            "name_similar_not_equal" if page_confirms_person(text, display_name, variants) else "name_not_on_page"
+        )
         return {"identities": [], "sources": [], "feeds": [], "decision": decision}
     try:
         canonical = canonicalize_url(page_url)
@@ -259,3 +264,18 @@ def _directory_page(url: str) -> bool:
 def _host_in(url: str, hosts: set[str]) -> bool:
     host = (urlparse(url).hostname or "").lower()
     return any(host == item or host.endswith("." + item) for item in hosts)
+
+
+def _exact_name_on_page(text: str, display_name: str, variants: list[str] | None) -> bool:
+    """True when an accepted name appears as itself, not as part of a longer hyphenated name."""
+    for name in [display_name, *(variants or [])]:
+        if _bounded_name(text, name):
+            return True
+    return False
+
+
+def _bounded_name(text: str, name: str) -> bool:
+    if not name_key(name):
+        return False
+    pattern = rf"(?<![\w-]){re.escape(name)}(?![\w-])"
+    return re.search(pattern, text or "", flags=re.IGNORECASE) is not None
