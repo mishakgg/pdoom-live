@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-05T06:51:27Z",
+  "reviewed_at": "2026-10-05T07:32:36Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -377,7 +377,7 @@
         "pr-32"
       ],
       "status": "descendant-of-b4cf230-not-included",
-      "summary": "Pull request 32 head 5585848 is a descendant of b4cf230. The tip only updates the frontend handoff and points its suite at d8bac78. That report still has two python ENOENT Vitest failures. It stays a separate draft."
+      "summary": "Pull request 32 head 5585848 is a descendant of b4cf230. GitHub CI, E2E, and runtime succeeded on that head. The handoff still records two local python ENOENT Vitest failures. It stays a separate draft."
     }
   ],
   "migration_reservation": {
