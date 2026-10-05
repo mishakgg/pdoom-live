@@ -1,0 +1,84 @@
+{
+  "catalog_id": "unesco_ai_pages",
+  "description": "Metadata for public UNESCO pages about the Recommendation on the Ethics of Artificial Intelligence. Allowed hosts are unesco.org and its subdomains. Each canonical URL was confirmed with one bounded GET. The catalog stores the title, publisher, canonical URL, date, and rights. Page bodies and the recommendation articles are not stored. A missing date is unknown. Rights stay unknown unless the page states CC0, CC BY, CC BY-SA, CC BY 4.0, CC BY-SA 3.0 IGO, or CC BY-NC-SA 3.0 IGO. creative_commons means only CC0, CC BY, or CC BY-SA. cc_by_nc_sa_3_0_igo is not permission to copy. CC BY-NC, CC BY-ND, and CC BY-NC-ND stay unknown. A public page is not a licence. runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Recommendation on the Ethics of Artificial Intelligence",
+      "publisher": "UNESCO",
+      "canonical_url": "https://www.unesco.org/en/legal-affairs/recommendation-ethics-artificial-intelligence",
+      "date": "2021-11-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "UNESCO member states adopt the first ever global agreement on the Ethics of Artificial Intelligence",
+      "publisher": "UNESCO",
+      "canonical_url": "https://www.unesco.org/en/articles/unesco-member-states-adopt-first-ever-global-agreement-ethics-artificial-intelligence",
+      "date": "2021-11-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "UNESCO adopts first global standard on the ethics of artificial intelligence",
+      "publisher": "UNESCO",
+      "canonical_url": "https://www.unesco.org/en/articles/unesco-adopts-first-global-standard-ethics-artificial-intelligence",
+      "date": "2022-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Certified copy of the Recommendation on the Ethics of Artificial Intelligence adopted by acclamation by the 41st session of the General Conference in November 2021",
+      "publisher": "UNESCO",
+      "canonical_url": "https://www.unesco.org/en/articles/certified-copy-recommendation-ethics-artificial-intelligence-adopted-acclamation-41st-session",
+      "date": "2022-06-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Recommendation on the Ethics of Artificial Intelligence",
+      "publisher": "UNESCO",
+      "canonical_url": "https://www.unesco.org/en/articles/recommendation-ethics-artificial-intelligence",
+      "date": "2023-05-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Ethical Impact Assessment: A Tool of the Recommendation on the Ethics of Artificial Intelligence",
+      "publisher": "UNESCO",
+      "canonical_url": "https://www.unesco.org/en/articles/ethical-impact-assessment-tool-recommendation-ethics-artificial-intelligence",
+      "date": "2023-08-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Readiness assessment methodology: a tool of the Recommendation on the Ethics of Artificial Intelligence",
+      "publisher": "UNESCO",
+      "canonical_url": "https://www.unesco.org/en/articles/readiness-assessment-methodology-tool-recommendation-ethics-artificial-intelligence",
+      "date": "2023-08-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Recommendation on the Ethics of Artificial Intelligence",
+      "publisher": "UNESCO",
+      "canonical_url": "https://www.unesco.org/en/artificial-intelligence/recommendation-ethics",
+      "date": "2026-06-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Ethical Impact Assessment",
+      "publisher": "UNESCO",
+      "canonical_url": "https://www.unesco.org/ethics-ai/en/eia",
+      "date": "2026-09-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Readiness Assessment Methodology",
+      "publisher": "UNESCO",
+      "canonical_url": "https://www.unesco.org/ethics-ai/en/ram",
+      "date": "2026-09-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Global AI Ethics and Governance Observatory",
+      "publisher": "UNESCO",
+      "canonical_url": "https://www.unesco.org/ethics-ai/en",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
