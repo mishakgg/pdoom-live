@@ -2,7 +2,8 @@
 
 A record is accepted only for an exact name match plus institution corroboration,
 or for one exact match of a distinctive name. Similar names are never merged.
-ORCID is copied only from the accepted OpenAlex record.
+A different ORCID stays on its own name. A missing ORCID does not match the
+nearest similar name. ORCID is copied only from the accepted OpenAlex record.
 """
 
 from __future__ import annotations
@@ -73,12 +74,38 @@ def name_key_tokens(name: str) -> list[str]:
     return normalize_name(name).split()
 
 
+def _normalized_name_match(person: dict, display_name: str) -> bool:
+    from pdoom_pipeline.identity.names import normalize_name
+
+    target = normalize_name(display_name)
+    if not target:
+        return False
+    candidates = [person.get("display_name") or "", *(person.get("name_variants") or [])]
+    return any(normalize_name(candidate) == target for candidate in candidates if candidate)
+
+
 def _exact_records(person: dict, results: list[dict]) -> list[dict]:
-    exact = []
+    """Exact names stay eligible. A similar name joins them only with the same ORCID.
+
+    A missing ORCID never promotes the nearest similar name into a match.
+    """
+    strict: list[dict] = []
+    similar: list[dict] = []
     for record in results:
-        if _compatible_name(person, str(record.get("display_name") or "")):
-            exact.append(record)
-    return exact
+        display_name = str(record.get("display_name") or "")
+        if not _compatible_name(person, display_name):
+            continue
+        if _normalized_name_match(person, display_name):
+            strict.append(record)
+        elif _orcid(record):
+            similar.append(record)
+    if not strict:
+        return similar
+    orcids = {value for value in (_orcid(record) for record in strict) if value}
+    if len(orcids) != 1 or any(_orcid(record) is None for record in strict):
+        return strict
+    only = next(iter(orcids))
+    return strict + [record for record in similar if _orcid(record) == only]
 
 
 def choose_openalex_author(person: dict, results: list[dict]) -> dict:
@@ -92,6 +119,9 @@ def choose_openalex_author(person: dict, results: list[dict]) -> dict:
     if len(corroborated) == 1:
         return _accept(corroborated[0], _confidence_for(person, corroborated[0], "high"), "openalex_exact_name_and_institution", exact)
     if len(corroborated) > 1:
+        distinct_orcids = {value for value in (_orcid(record) for record in corroborated) if value}
+        if len(distinct_orcids) > 1:
+            return _ambiguous("distinct_orcids", exact)
         dominant = _dominant_profile(person, corroborated)
         if dominant is not None:
             return _accept(dominant, "medium", "openalex_dominant_profile", exact)
