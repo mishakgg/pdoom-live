@@ -134,7 +134,7 @@ def test_page_that_does_not_state_the_open_government_licence_is_rejected():
     assert not states_open_government_licence(reserved)
     with pytest.raises(CatalogError, match="does not state the Open Government Licence"):
         attribution_from_page(reserved)
-    incidental = "The minister mentioned the Open Government Licence " + ("without the publication notice. " * 40)
+    incidental = "The minister mentioned the Open Government Licence " + ("without a publication notice " * 80)
     with pytest.raises(CatalogError, match="bounded Open Government Licence attribution"):
         attribution_from_page(incidental)
 
