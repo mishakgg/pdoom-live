@@ -1,0 +1,1099 @@
+{
+  "catalog_id": "mila_pages",
+  "description": "Metadata for confirmed public English Mila pages about artificial intelligence on mila.quebec. Each canonical URL was confirmed with one bounded GET that returned HTML. The catalog stores the title, publisher, canonical URL, date, and rights. Page bodies are not stored. A missing date is unknown. Updated, modified, and copyright years are not publication dates. Rights stay unknown unless the page states CC0, CC BY, or CC BY-SA and does not also state a restricted deed. A public page is not a licence. runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Improved Deep Learning Workflows Through Hyperparameter Optimization with Oríon",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/improved-deep-learning-workflows-through-hyperparameter-optimization-with-orion",
+      "date": "2020-03-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learning Better Representations by Interpolating Hidden States",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/learning-better-representations-by-interpolating-hidden-states",
+      "date": "2020-07-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "A collaboration with Stony Brook Medicine to Build a COVID-19 Severity Prediction Tool",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/a-collaboration-with-stony-brook-medicine-to-build-a-covid-19-severity-prediction-tool",
+      "date": "2020-07-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Towards Precision Medicine: Understanding Inference and Prediction Divergence in Biomedicine",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/towards-precision-medicine-understanding-inference-and-prediction-divergence-in-biomedicine",
+      "date": "2020-09-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "La-MAML: Look-ahead Meta-Learning for Continual Learning",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/la-maml-look-ahead-meta-learning-for-continual-learning",
+      "date": "2020-11-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing SpeechBrain: A General-Purpose PyTorch Speech Processing Toolkit",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/introducing-speechbrain-a-general-purpose-pytorch-speech-processing-toolkit",
+      "date": "2021-04-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Flight-SEIR: Incorporating Flight Data to Improve Epidemiological Modelling and Disease Outbreak Prevention",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/flight-seir-incorporating-flight-data-to-improve-epidemiological-modelling-and-disease",
+      "date": "2021-08-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "This Climate Does Not Exist: Picturing impacts of the climate crisis with AI, one address at a time",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/this-climate-does-not-exist-picturing-impacts-of-the-climate-crisis-with-ai-one-address-at",
+      "date": "2021-10-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Consciousness-Inspired Planning Agent for Model-Based Reinforcement Learning",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/a-consciousness-inspired-planning-agent-for-model-based-reinforcement-learning",
+      "date": "2021-11-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Fully Autonomous Real-World Reinforcement Learning with Applications to Mobile Manipulation",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/fully-autonomous-real-world-reinforcement-learning-with-applications-to-mobile-manipulation",
+      "date": "2022-02-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generative Flow Networks",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/generative-flow-networks",
+      "date": "2022-03-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Researchers carry out the largest-ever psychedelics study using natural language processing tools",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/researchers-carry-out-the-largest-ever-psychedelics-study-using-natural-language-processing",
+      "date": "2022-03-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "A collaboration between Mila and Relation Therapeutics to discover novel synergistic combinations of drugs in vitro",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/a-collaboration-between-mila-and-relation-therapeutics-to-discover-novel-synergistic",
+      "date": "2022-03-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sample Efficient Deep Reinforcement Learning Via Uncertainty Estimation",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/sample-efficient-deep-reinforcement-learning-via-uncertainty-estimation",
+      "date": "2022-05-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "RLiable: Towards Reliable Evaluation & Reporting in Reinforcement Learning",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/rliable-towards-reliable-evaluation-reporting-in-reinforcement-learning",
+      "date": "2022-05-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Compositional Attention: Disentangling Search and Retrieval",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/compositional-attention-disentangling-search-and-retrieval",
+      "date": "2022-06-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Primacy Bias in Deep Reinforcement Learning",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/the-primacy-bias-in-deep-reinforcement-learning",
+      "date": "2022-07-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "AnyMorph: Learning Transferable Policies By Inferring Agent Morphology",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/anymorph-learning-transferable-policies-by-inferring-agent-morphology",
+      "date": "2022-08-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Direct Behavior Specification via Constrained Reinforcement Learning",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/direct-behavior-specification-via-constrained-reinforcement-learning",
+      "date": "2022-08-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Beyond Tabula Rasa: Reincarnating Reinforcement Learning",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/beyond-tabula-rasa-reincarnating-reinforcement-learning",
+      "date": "2022-11-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Adversarial Deep Reinforcement Learning: Adversarial Attacks Transfers Across MDPs",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/adversarial-deep-reinforcement-learning-adversarial-attacks-transfers-across-mdps",
+      "date": "2023-03-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scaling in the Service of Reasoning & Model-Based ML",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/scaling-in-the-service-of-reasoning-model-based-ml",
+      "date": "2023-04-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generalized Data Weighting via Class-level Gradient Manipulation",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/generalized-data-weighting-via-class-level-gradient-manipulation",
+      "date": "2023-04-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generalization Properties of Biologically-Plausible Temporal Credit Assignment Rules",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/generalization-properties-of-biologically-plausible-temporal-credit-assignment-rules",
+      "date": "2023-06-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "α-ReQ: Assessing Representation Quality in SSL",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/a-req-assessing-representation-quality-in-ssl",
+      "date": "2023-08-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "FairCal: Fairness Calibration for Face Verification",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/faircal-fairness-calibration-for-face-verification",
+      "date": "2023-09-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bidirectional Learning for Offline Model-based Optimization",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/bidirectional-learning-for-offline-model-based-optimization",
+      "date": "2023-09-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Motif: Intrinsic Motivation from Artificial Intelligence Feedback",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/motif-intrinsic-motivation-from-artificial-intelligence-feedback",
+      "date": "2023-10-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "What do GFlowNets and Variational Inference Have in Common?",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/what-do-gflownets-and-variational-inference-have-in-common",
+      "date": "2023-11-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "When Do Transformers Shine in RL? Decoupling Memory from Credit Assignment",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/when-do-transformers-shine-in-rl-decoupling-memory-from-credit-assignment",
+      "date": "2024-01-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "How to Make your Foundation Model Equivariant?",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/how-to-make-your-foundation-model-equivariant",
+      "date": "2024-01-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Skipper: Combining Spatial and Temporal Abstraction for Better Generalization",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/skipper-combining-spatial-and-temporal-abstraction-for-better-generalization",
+      "date": "2024-02-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Additive Decoders for Latent Variables Identification and Cartesian-Product Extrapolation",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/additive-decoders-for-latent-variables-identification-and-cartesian-product-extrapolation",
+      "date": "2024-03-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Research Driven by Real-World Problems",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/insight/ai-research-driven-by-real-world-problems",
+      "date": "2024-05-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "How to Protect Human Rights in the Age of Artificial Intelligence?",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/insight/how-to-protect-human-rights-in-the-age-of-artificial-intelligence",
+      "date": "2024-05-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "How to Effectively and Efficiently Represent Non-Watertight Meshes for Your T-Shirts",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/how-to-effectively-and-efficiently-represent-non-watertight-meshes-for-your-t-shirts",
+      "date": "2024-05-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "SpeechBrain 1.0: Making Conversational AI Accessible to Everyone",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/speechbrain-10-making-conversational-ai-accessible-to-everyone",
+      "date": "2024-06-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "What Do Synaptic Weight Distributions Tell Us About Learning in the Brain ?",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/what-do-synaptic-weight-distributions-tell-us-about-learning-in-the-brain",
+      "date": "2024-06-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Importance-Aware Co-Teaching for Offline Model-Based Optimization",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/importance-aware-co-teaching-for-offline-model-based-optimization",
+      "date": "2024-07-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Predicting the Grade of Acute Pediatric Appendicitis with ML",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/predicting-the-grade-of-acute-pediatric-appendicitis-with-ml",
+      "date": "2024-07-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "5 Strategies to Spur an Inclusive Global AI Governance",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/insight/5-strategies-to-spur-an-inclusive-global-ai-governance",
+      "date": "2024-07-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Neural Differential Equations for Temperature Control in Buildings Under Demand Response Programs",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/neural-differential-equations-for-temperature-control-in-buildings-under-demand-response",
+      "date": "2024-07-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Is Bigger Always Better? Democratizing AI Protein Discovery",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/insight/is-bigger-always-better-democratizing-ai-protein-discovery",
+      "date": "2024-09-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "How Do We Explain AI and Ensure the Explanation Is True? Faithfulness Measurable Models Tell You How",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/how-do-we-explain-ai-and-ensure-the-explanation-is-true-faithfulness-measurable-models-tell",
+      "date": "2024-10-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Revolutionizing Materials Science with NLP: Introducing MatSci-NLP and HoneyBee",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/revolutionizing-materials-science-with-nlp-introducing-matsci-nlp-and-honeybee",
+      "date": "2024-10-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Milabench: better GPU selection for optimized AI research",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/insight/introducing-milabench-better-gpu-selection-for-optimized-ai-research",
+      "date": "2024-11-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI for Everyone? A Roadmap to Substantive Equality in AI Ecosystems",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/insight/ai-for-everyone-a-roadmap-to-substantive-equality-in-ai-ecosystems",
+      "date": "2024-12-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Differentiable Visual Computing: Bridging 2D and 3D in Machine Learning Applications",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/differentiable-visual-computing-bridging-2d-and-3d-in-machine-learning-applications",
+      "date": "2025-01-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Exploring the COVID-19 Interferon Paradox with Dimensionality Reduction and Clustering",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/exploring-the-covid-19-interferon-paradox-with-dimensionality-reduction-and-clustering",
+      "date": "2025-02-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "NeoBERT: A New Frontier for Open-Source Encoder Language Models",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/neobert-a-new-frontier-for-open-source-encoder-language-models",
+      "date": "2025-03-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Using LLMs to better understand autism diagnosis",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/using-llms-to-better-understand-autism-diagnosis",
+      "date": "2025-03-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Machine Learning for the Segmentation of Different Nerve Fibre Activations from Brain-to-body Neural Signals",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/machine-learning-for-the-segmentation-of-different-nerve-fibre-activations-from-brain-to",
+      "date": "2025-05-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Real-time Reinforcement Learning",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/real-time-reinforcement-learning",
+      "date": "2025-06-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "PRISM: An Explainable Generative AI Model for Medical Imaging",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/prism-an-explainable-generative-ai-model-for-medical-imaging",
+      "date": "2025-07-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Rethinking AI Literacy: From technical skills to critical engagement",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/insight/rethinking-ai-literacy-from-technical-skills-to-critical-engagement",
+      "date": "2025-07-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Improving AI with Human Language",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/improving-ai-with-human-language",
+      "date": "2025-10-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Why AI Models Hallucinate and How to Fix Them",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/why-ai-models-hallucinate-and-how-to-fix-them",
+      "date": "2025-10-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Democratizing Access to Satellite Data with AI",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/democratizing-access-to-satellite-data-with-ai",
+      "date": "2025-10-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Unmasking deepfakes with AI",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/unmasking-deepfakes-with-ai",
+      "date": "2025-12-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Improving CAD Design With LLMs",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/improving-cad-design-with-llms",
+      "date": "2025-12-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Protecting Humans in the Age of Deepfakes",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/insight/protecting-humans-in-the-age-of-deepfakes",
+      "date": "2026-01-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "FocalCodec: Giving LLMs Ears and a Voice at Ultra-Low Bitrates",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/focalcodec-giving-llms-ears-and-a-voice-at-ultra-low-bitrates",
+      "date": "2026-01-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Refrigerants are warming up the planet. AI can help.",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/refrigerants-are-warming-up-the-planet-ai-can-help",
+      "date": "2026-02-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila’s AI drives world’s largest study on psychedelics",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/milas-ai-drives-worlds-largest-study-on-psychedelics",
+      "date": "2026-04-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "DISCO: Inventing Enzymes Nature Never Explored",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/disco-inventing-enzymes-nature-never-explored",
+      "date": "2026-05-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI in Finance: Why Trust Still Matters",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/insight/ai-in-finance-why-trust-still-matters",
+      "date": "2026-06-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Why Vision-Language Models Are Shortsighted",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/why-vision-language-models-are-shortsighted",
+      "date": "2026-07-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Milo, The First Fully Autonomous Robot Guide Dog",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/milo-the-first-fully-autonomous-robot-guide-dog",
+      "date": "2026-07-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Facilitating Audits of Language Models",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/article/facilitating-audits-of-language-models",
+      "date": "2026-08-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila - Quebec Artificial Intelligence Institute",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "About Mila",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/about/about-mila",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Impact Reports",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/about/impact-reports",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "2021-2022 Summary of AI Adoption Activities",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/about/impact-reports/2021-2022-summary-of-ai-adoption-activities",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Impact Report 2020-21",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/about/impact-reports/impact-report-2020-21",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Impact Report 2021-22",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/about/impact-reports/impact-report-2021-22",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Impact Report 2022-23",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/about/impact-reports/impact-report-2022-23",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Impact Report 2023-2024",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/about/impact-reports/impact-report-2023-2024",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Impact Report 2024-2025",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/about/impact-reports/impact-report-2024-2025",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI in Motion : D-Box Case Study",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai-in-motion-d-box-case-study",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Governance, Policy and Inclusion",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/ai-governance-policy-and-inclusion",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Insights for Policymakers",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/ai-governance-policy-and-inclusion/ai-insights-for-policymakers",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Policy Fellowship Publications",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/ai-governance-policy-and-inclusion/ai-policy-fellowship-publications",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI4Good Lab",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/ai-governance-policy-and-inclusion/ai4good-lab",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Indigenous Pathfinders in AI",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/ai-governance-policy-and-inclusion/indigenous-pathfinders-in-ai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Applied Projects",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/applied-projects",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI against Modern Slavery (AIMS)",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/applied-projects/ai-against-modern-slavery-aims",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Recap",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/applied-projects/ai-recap",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Allia: Facilitating access to financial aid for families of autistic children",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/applied-projects/allia-facilitating-access-to-financial-aid-for-families-of-autistic",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Antenna",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/applied-projects/antenna",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Artificial Intelligence Alignment for Inclusion (AIAI)",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/applied-projects/artificial-intelligence-alignment-for-inclusion-aiai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Biasly",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/applied-projects/biasly",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Data-driven Insights for Sustainable Agriculture (DISA)",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/applied-projects/data-driven-insights-for-sustainable-agriculture-disa",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "First Languages AI Reality",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/applied-projects/first-languages-ai-reality",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Infrared",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/applied-projects/infrared",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "SAIGE",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/ai4humanity/applied-projects/saige",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Causal Cell Dynamics Lab – A Mila-Helmholtz International Project",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/causal-cell-dynamics-lab-a-mila-helmholtz-international-project",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "ConceptGraphs",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/conceptgraphs",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Advantage: Productivity in Public Service",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/continuing-education/ai-advantage-productivity-in-public-service",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Policy Compass",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/continuing-education/ai-policy-compass",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Custom AI Learning Programs",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/continuing-education/custom-ai-learning-programs",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila on Udemy: Foundations in Responsible AI Series",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/continuing-education/mila-on-udemy-foundations-in-responsible-ai-series",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Our Programs",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/continuing-education/our-programs",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Summer School in Responsible AI and Human Rights",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/continuing-education/summer-school-in-responsible-ai-and-human-rights",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "TRAIL: Responsible AI for Professionals and Leaders",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/continuing-education/trail-responsible-ai-for-professionals-and-leaders",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "DROID: A Large-Scale In-the-Wild Robot Manipulation Dataset",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/droid-a-large-scale-in-the-wild-robot-manipulation-dataset",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Enhancing Super-Resolution Microscopy with AI",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/enhancing-super-resolution-microscopy-with-ai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Algorithms Warming the Planet: The Impact of AI",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/algorithms-warming-the-planet-the-impact-of-ai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Conference | Championing AI for good: Building safer AI for youth mental health",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/conference-championing-ai-for-good-building-safer-ai-for-youth-mental-health",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Digital Trust Convention 2025",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/digital-trust-convention-2025",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Disinformation 2.0: When AI Blurs the Lines",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/disinformation-20-when-ai-blurs-the-lines",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Hack The High Seas : Ecohull Vessel Challenge",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/hack-the-high-seas-ecohull-vessel-challenge",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Launch of the New GPAI Report & Policy Guide: Towards Substantive Equality in AI",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/launch-of-the-new-gpai-report-policy-guide-towards-substantive-equality-in-ai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mental Health & AI Chatbots: From Silos to Safeguards",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/mental-health-ai-chatbots-from-silos-to-safeguards",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila Techaide 2025",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/mila-techaide-2025",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila Techaide 2026",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/mila-techaide-2026",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila’s Community of Practice: Agentic AI",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/milas-community-of-practice-agentic-ai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila's Community of Practice: AI Explainability",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/milas-community-of-practice-ai-explainability",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila’s Community of Practice: AI Governance",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/milas-community-of-practice-ai-governance",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila's Community of Practice: AI Safety",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/milas-community-of-practice-ai-safety",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila's Community of Practice: Digital Health",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/milas-community-of-practice-digital-health",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Mila AI Policy Conference",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/the-mila-ai-policy-conference",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Workshop: NLP in the era of generative AI, cognitive sciences, and societal transformation",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/event/workshop-nlp-in-the-era-of-generative-ai-cognitive-sciences-and-societal-transformation",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Events",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/events",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Human Rights in AI Conference",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/human-rights-in-ai-conference",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Improving medical image analysis with AI",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/improving-medical-image-analysis-with-ai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Indigenous AI Gathering 2026: Meet the Speakers",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/indigenous-ai-gathering-2026-meet-the-speakers",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Applied Research Projects for Industry",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/industry/applied-research-projects-for-industry",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Consulting Services",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/industry/applied-research-projects-for-industry/consulting-services",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Industry Services",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/industry/industry-services",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Companies We Have Helped",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/industry/industry-services/companies-we-have-helped",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila Ventures",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/industry/mila-ventures",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila Ventures Founder in Residence",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/industry/mila-ventures/mila-ventures-founder-in-residence",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila Ventures Launchpad",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/industry/mila-ventures/mila-ventures-launchpad",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila Ventures Signature Events",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/industry/mila-ventures/mila-ventures-signature-events",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila Ventures Studio",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/industry/mila-ventures/mila-ventures-studio",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Venture Scientist Bootcamp",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/industry/mila-ventures/venture-scientist-bootcamp",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Venture Sprint",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/industry/mila-ventures/venture-sprint",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Partnerships",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/industry/partnerships",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Industrial Partners",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/industry/partnerships/industrial-partners",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila Community of Practice",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/industry/partnerships/mila-community-of-practice",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Insights",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/insights",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mila Tea Talks",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/mila-tea-talks",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "TRAIL: Responsible AI for Researchers",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/prospective-students/student-life-and-resources/trail-responsible-ai-for-researchers",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Blog",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/research/blog",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Core Expertise",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/research/core-expertise",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Open Source Software",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/research/open-source-software",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Publications",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/research/publications",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Speed Science Contest",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/research/speed-science-contest",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Strategic Priorities",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/research/strategic-priorities",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI and Health",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/research/strategic-priorities/ai-and-health",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI4Science",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/research/strategic-priorities/ai4science",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Environment and Energy",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/research/strategic-priorities/environment-and-energy",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Language and Image",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/research/strategic-priorities/language-and-image",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Responsible AI",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/research/strategic-priorities/responsible-ai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Robotics",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/research/strategic-priorities/robotics",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Ubisoft-Mila Industrial Research Chair",
+      "publisher": "Mila",
+      "canonical_url": "https://mila.quebec/en/research/ubisoft-mila-industrial-research-chair",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
