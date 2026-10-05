@@ -1,1 +1,1 @@
-# Catalog modules are imported directly.
+"""Package marker."""

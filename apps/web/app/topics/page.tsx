@@ -1,8 +1,9 @@
-import { listTopics } from "@pdoom/db";
+import { listStatements, listTopics } from "@pdoom/db";
 import Link from "next/link";
 import { EmptyState } from "@/components/states";
 import { typeLabel } from "@/lib/format";
 import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
+import { QuestionHorizonList, SEPARATE_QUESTIONS, distinctQuestions, statementFacts } from "./question-horizons";
 
 export const dynamic = "force-dynamic";
 
@@ -12,16 +13,32 @@ export async function generateMetadata() {
 
 export default async function TopicsPage() {
   const topics = await listTopics();
+  const loaded = await Promise.all(topics.map(async (topic) => {
+    const page = await listStatements({ topic: topic.slug, limit: 50, sort: "event_time_desc" });
+    return {
+      topic,
+      questions: distinctQuestions(page.data.map((statement) => statementFacts(statement))),
+      shown: page.data.length,
+      total: page.page.total,
+    };
+  }));
   return (
     <>
       <h1>Topics</h1>
-      <p className="lede">Definitions are part of the topic. Child questions under frontier AI risk are not rolled into one probability.</p>
-      {topics.length ? (
+      <p className="lede">{SEPARATE_QUESTIONS} Each topic keeps the question definition and the time horizon stored with its statements.</p>
+      {loaded.length ? (
         <div className="topic-list">
-          {topics.map((topic) => (
+          {loaded.map(({ topic, questions, shown, total }) => (
             <article className="card" key={topic.slug}>
               <h2><Link href={`/topics/${topic.slug}`}>{topic.name}</Link></h2>
-              <p>{topic.definition}</p>
+              <QuestionHorizonList
+                topicDefinition={topic.definition}
+                questions={questions}
+                headingLevel="h3"
+                headingId={`question-horizons-${topic.slug}`}
+                notice={false}
+                partial={total > shown ? { shown, total } : null}
+              />
               <p className="meta">
                 Version {topic.version}
                 {topic.parent_slug ? ` · parent ${topic.parent_slug}` : ""}

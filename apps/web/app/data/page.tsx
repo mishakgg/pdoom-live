@@ -1,5 +1,6 @@
 import { getCoverage, getPublicCatalog } from "@pdoom/db";
 import Link from "next/link";
+import { PublicApiValidatorCopy } from "@/components/public-api-validator-copy";
 import { formatWhen } from "@/lib/format";
 import { canonicalOrigin, listPageFields, pageMetadata } from "@/lib/seo";
 
@@ -97,7 +98,7 @@ export default async function DataPage() {
           <li><a href="/api/v1/trends">/api/v1/trends</a></li>
           <li><code>/api/v1/search?q=</code></li>
         </ul>
-        <p>Pages use opaque cursors. <code>limit</code> is 1–50. Search text is 2–120 characters. Responses send <code>ETag</code>, <code>Cache-Control</code>, and <code>Last-Modified</code> from the dataset import time.</p>
+        <p>Pages use opaque cursors. <code>limit</code> is 1–50. Search text is 2–120 characters. <PublicApiValidatorCopy /></p>
       </section>
       <section>
         <h2>Bulk snapshot</h2>

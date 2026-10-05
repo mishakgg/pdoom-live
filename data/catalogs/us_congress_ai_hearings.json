@@ -1,0 +1,80 @@
+{
+  "catalog_id": "us_congress_ai_hearings",
+  "description": "Public US congressional hearing pages about artificial intelligence risk. Each row is metadata and a canonical URL. US federal government works are in the public domain. Hearing text is not copied into this catalog.",
+  "rights": "us_government_work",
+  "rights_basis": "US federal government works are public domain.",
+  "hearings": [
+    {
+      "id": "s-hsgac-2023-03-08-ai-risks-opportunities",
+      "title": "Artificial Intelligence: Risks and Opportunities",
+      "committee": "Senate Committee on Homeland Security and Governmental Affairs",
+      "date": "2023-03-08",
+      "canonical_url": "https://www.hsgac.senate.gov/hearings/artificial-intelligence-risks-and-opportunities/",
+      "rights": "us_government_work"
+    },
+    {
+      "id": "s-judiciary-2023-05-16-oversight-ai-rules",
+      "title": "Oversight of A.I.: Rules for Artificial Intelligence",
+      "committee": "Senate Committee on the Judiciary, Subcommittee on Privacy, Technology, and the Law",
+      "date": "2023-05-16",
+      "canonical_url": "https://www.judiciary.senate.gov/committee-activity/hearings/oversight-of-ai-rules-for-artificial-intelligence",
+      "rights": "us_government_work"
+    },
+    {
+      "id": "s-judiciary-2023-07-25-oversight-ai-principles",
+      "title": "Oversight of A.I.: Principles for Regulation",
+      "committee": "Senate Committee on the Judiciary, Subcommittee on Privacy, Technology, and the Law",
+      "date": "2023-07-25",
+      "canonical_url": "https://www.judiciary.senate.gov/committee-activity/hearings/oversight-of-ai-principles-for-regulation",
+      "rights": "us_government_work"
+    },
+    {
+      "id": "s-judiciary-2023-09-12-oversight-ai-legislating",
+      "title": "Oversight of A.I.: Legislating on Artificial Intelligence",
+      "committee": "Senate Committee on the Judiciary, Subcommittee on Privacy, Technology, and the Law",
+      "date": "2023-09-12",
+      "canonical_url": "https://www.judiciary.senate.gov/committee-activity/hearings/oversight-of-ai-legislating-on-artificial-intelligence",
+      "rights": "us_government_work"
+    },
+    {
+      "id": "s-intelligence-2023-09-19-national-security-ai",
+      "title": "Open Hearing: Advancing Intelligence in the Era of Artificial Intelligence: Addressing the National Security Implications of AI",
+      "committee": "Senate Select Committee on Intelligence",
+      "date": "2023-09-19",
+      "canonical_url": "https://www.intelligence.senate.gov/2023/09/27/hearings-open-hearing-advancing-intelligence-era-artificial-intelligence-addressing-national/",
+      "rights": "us_government_work"
+    },
+    {
+      "id": "h-science-2023-10-18-ai-risk-management",
+      "title": "Balancing Knowledge and Governance: Foundations for Effective Risk Management of Artificial Intelligence",
+      "committee": "House Committee on Science, Space, and Technology, Subcommittee on Investigations and Oversight and Subcommittee on Research and Technology",
+      "date": "2023-10-18",
+      "canonical_url": "https://science.house.gov/2023/10/joint-oversight-investigations-and-research-technology-subcommittee-hearing-balancing-knowledge-and-governance-foundations-for-effective-risk-management-of-artificial-intelligence",
+      "rights": "us_government_work"
+    },
+    {
+      "id": "s-judiciary-2024-09-17-oversight-ai-insiders",
+      "title": "Oversight of AI: Insiders' Perspectives",
+      "committee": "Senate Committee on the Judiciary, Subcommittee on Privacy, Technology, and the Law",
+      "date": "2024-09-17",
+      "canonical_url": "https://www.judiciary.senate.gov/committee-activity/hearings/oversight-of-ai-insiders-perspectives",
+      "rights": "us_government_work"
+    },
+    {
+      "id": "s-commerce-2024-11-19-ai-fraud-scams",
+      "title": "Protecting Consumers from Artificial Intelligence Enabled Fraud and Scams",
+      "committee": "Senate Committee on Commerce, Science, and Transportation, Subcommittee on Consumer Protection, Product Safety and Data Security",
+      "date": "2024-11-19",
+      "canonical_url": "https://www.commerce.senate.gov/meetings/protecting-consumers-from-artificial-intelligence-enabled-fraud-and-scams/",
+      "rights": "us_government_work"
+    },
+    {
+      "id": "h-energy-commerce-2025-11-18-ai-chatbot-risks",
+      "title": "Innovation with Integrity: Examining the Risks and Benefits of AI Chatbots",
+      "committee": "House Committee on Energy and Commerce, Subcommittee on Oversight and Investigations",
+      "date": "2025-11-18",
+      "canonical_url": "https://energycommerce.house.gov/events/o-and-i-subcommittee-nnovation-with-integrity-examining-the-risks-and-benefits-of-ai-chatbots",
+      "rights": "us_government_work"
+    }
+  ]
+}

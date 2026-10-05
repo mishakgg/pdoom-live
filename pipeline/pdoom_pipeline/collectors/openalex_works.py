@@ -1,8 +1,13 @@
-"""OpenAlex works collector keyed by a resolved author id."""
+"""OpenAlex works collector keyed by a resolved author id.
+
+Also confirms one fixed works search. OpenAlex metadata is CC0.
+That search stores work metadata only and does not download PDFs.
+"""
 
 from __future__ import annotations
 
 import json
+from dataclasses import dataclass
 from urllib.parse import urlencode
 
 from pdoom_pipeline.contracts import AuthorCandidate, Segment, SourceObservation, excerpt
@@ -13,6 +18,34 @@ from pdoom_pipeline.urls import arxiv_id_from_url, canonicalize_url
 COLLECTOR_VERSION = "openalex-works-0.1.0"
 API = "https://api.openalex.org/works"
 MAX_ABSTRACT_POSITIONS = 4000
+
+# One public query used to confirm works retrieval. Do not widen this search.
+CATASTROPHIC_RISK_QUERY = "catastrophic risk from advanced AI"
+CONFIRMED_PER_PAGE = 5
+CONFIRMED_MAX_BYTES = 200_000
+CONFIRMED_SELECT = "id,display_name,publication_year,authorships,primary_location,best_oa_location"
+
+# OpenAlex license vocabulary: https://help.openalex.org/data/licenses/
+# `cc0` is retained as an alias of `public-domain`. A missing license is not in this set.
+OPEN_ACCESS_LICENSES = frozenset(
+    {
+        "cc-by",
+        "cc-by-sa",
+        "cc-by-nd",
+        "cc-by-nc",
+        "cc-by-nc-sa",
+        "cc-by-nc-nd",
+        "public-domain",
+        "cc0",
+        "mit",
+        "apache-2-0",
+        "gpl-v2",
+        "gpl-v3",
+        "isc",
+        "other-oa",
+        "publisher-specific-oa",
+    }
+)
 
 
 class OpenAlexWorksCollector:
@@ -39,6 +72,16 @@ class OpenAlexWorksCollector:
         )
         result = self.fetcher.get(f"{API}?{query}")
         return self.parse(result.body, source_identity=source_identity, observed_at=observed_at)
+
+    def retrieve_confirmed_query(self) -> list[OpenAlexWorkMetadata]:
+        """Fetch metadata for the fixed catastrophic-risk query.
+
+        The request is one bounded works search. PDF URLs in the payload are ignored.
+        """
+        result = self.fetcher.get(confirmed_search_url())
+        if len(result.body) > CONFIRMED_MAX_BYTES:
+            raise CollectorFailure("content_too_large", "openalex search response exceeds 200KB")
+        return parse_work_metadata(result.body)
 
     def parse(self, payload: bytes, *, source_identity: str, observed_at: str) -> list[SourceObservation]:
         try:
@@ -133,3 +176,177 @@ def reconstruct_abstract(inverted: object) -> str:
         raise CollectorFailure("content_too_large", "abstract index exceeds token limit")
     positions.sort()
     return " ".join(token for _, token in positions)
+
+
+@dataclass(frozen=True)
+class OpenAlexWorkMetadata:
+    """Work metadata retained from OpenAlex. OpenAlex records are CC0."""
+
+    title: str
+    year: int | None
+    authorship: tuple[str, ...]
+    open_access_license: str
+    work_url: str
+    license_code: str | None = None
+
+    def __post_init__(self) -> None:
+        if self.open_access_license not in {"open", "unknown"}:
+            raise ValueError(f"invalid open-access license flag: {self.open_access_license}")
+
+
+def confirmed_search_url() -> str:
+    """URL for the single confirmed works search. It does not address a PDF."""
+    query = urlencode(
+        {
+            "search": CATASTROPHIC_RISK_QUERY,
+            "per-page": CONFIRMED_PER_PAGE,
+            "select": CONFIRMED_SELECT,
+            "mailto": "collector@pdoom.live",
+        }
+    )
+    return f"{API}?{query}"
+
+
+def parse_work_metadata(payload: bytes) -> list[OpenAlexWorkMetadata]:
+    """Read title, year, authorship, license flag, and work URL from a works payload."""
+    data = _json_object(payload)
+    works = data.get("results")
+    if not isinstance(works, list):
+        raise CollectorFailure("invalid_content", "openalex response missing results")
+    records: list[OpenAlexWorkMetadata] = []
+    for work in works[:CONFIRMED_PER_PAGE]:
+        if not isinstance(work, dict):
+            continue
+        record = _work_metadata(work)
+        if record is not None:
+            records.append(record)
+    return records
+
+
+def slim_confirmed_payload(payload: bytes, *, retrieved_at: str) -> dict:
+    """Reduce a live works response to the retained metadata fields.
+
+    PDF URLs, abstracts, and affiliation graphs are dropped. A null license is kept
+    so a later parse can leave the open-access flag unknown.
+    """
+    data = _json_object(payload)
+    works = data.get("results")
+    if not isinstance(works, list):
+        raise CollectorFailure("invalid_content", "openalex response missing results")
+    results = []
+    for work in works[:CONFIRMED_PER_PAGE]:
+        if not isinstance(work, dict):
+            continue
+        record = _work_metadata(work)
+        if record is None:
+            continue
+        results.append(
+            {
+                "id": record.work_url,
+                "display_name": record.title,
+                "publication_year": record.year,
+                "authorships": [{"author": {"display_name": name}} for name in record.authorship],
+                "primary_location": _license_location(work.get("primary_location")),
+                "best_oa_location": _license_location(work.get("best_oa_location")),
+            }
+        )
+    return {
+        "query": CATASTROPHIC_RISK_QUERY,
+        "source": API,
+        "data_license": "CC0",
+        "retrieved_at": retrieved_at,
+        "pdfs_downloaded": False,
+        "results": results,
+    }
+
+
+def open_access_license_flag(work: dict) -> tuple[str, str | None]:
+    """Return ``open`` only when a recognized license code is present.
+
+    ``open_access.is_oa`` is not a license. A missing license stays ``unknown``.
+    """
+    for key in ("best_oa_location", "primary_location"):
+        code = _license_code(work.get(key))
+        if code in OPEN_ACCESS_LICENSES:
+            return "open", code
+    return "unknown", None
+
+
+def _json_object(payload: bytes) -> dict:
+    try:
+        data = json.loads(payload.decode("utf-8"))
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise CollectorFailure("invalid_content", f"malformed openalex payload: {exc}") from exc
+    if not isinstance(data, dict):
+        raise CollectorFailure("invalid_content", "openalex response missing results")
+    return data
+
+
+def _work_metadata(work: dict) -> OpenAlexWorkMetadata | None:
+    work_url = _work_url(work.get("id"))
+    title = work.get("display_name")
+    if not work_url or not isinstance(title, str) or not title.strip():
+        return None
+    year = work.get("publication_year")
+    if isinstance(year, bool) or not isinstance(year, int) or year < 1000 or year > 3000:
+        year = None
+    flag, code = open_access_license_flag(work)
+    return OpenAlexWorkMetadata(
+        title=title.strip(),
+        year=year,
+        authorship=tuple(_author_names(work.get("authorships"))),
+        open_access_license=flag,
+        work_url=work_url,
+        license_code=code,
+    )
+
+
+def _work_url(value: object) -> str | None:
+    if not isinstance(value, str) or not value.strip():
+        return None
+    try:
+        canonical = canonicalize_url(value.strip())
+    except ValueError:
+        return None
+    work_id = canonical.rstrip("/").split("/")[-1]
+    if not (work_id.startswith("W") and work_id[1:].isdigit()):
+        return None
+    return canonical
+
+
+def _author_names(authorships: object) -> list[str]:
+    if not isinstance(authorships, list):
+        return []
+    names: list[str] = []
+    for authorship in authorships:
+        if not isinstance(authorship, dict):
+            continue
+        author = authorship.get("author")
+        if not isinstance(author, dict):
+            continue
+        name = author.get("display_name")
+        if isinstance(name, str) and name.strip():
+            names.append(name.strip())
+    return names
+
+
+def _license_location(location: object) -> dict[str, str | None] | None:
+    if not isinstance(location, dict):
+        return None
+    raw = location.get("license")
+    code = raw.strip() if isinstance(raw, str) and raw.strip() else None
+    return {"license": code}
+
+
+def _license_code(location: object) -> str | None:
+    if not isinstance(location, dict):
+        return None
+    raw = location.get("license")
+    if isinstance(raw, str) and raw.strip():
+        return raw.strip().lower()
+    license_id = location.get("license_id")
+    if isinstance(license_id, str) and "/licenses/" in license_id.lower():
+        code = license_id.rstrip("/").split("/")[-1].strip().lower()
+        if code:
+            return code
+    return None

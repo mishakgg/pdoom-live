@@ -30,7 +30,7 @@ export function MethodologyDocument() {
       <section className="panel">
         <h2>Three statement classes</h2>
         <p><strong>Explicit numerical estimate.</strong> The person supplied a number, range, or distribution. The question, unit, horizon, and condition are stored with it.</p>
-        <p><strong>Explicit qualitative view.</strong> The person expressed a view without a number. The product does not invent a probability for that wording.</p>
+        <p><strong>Explicit qualitative view.</strong> The person expressed a view without a number. A qualitative statement is not a numeric probability. The product does not invent a probability for that wording.</p>
         <p><strong>Model-inferred signal.</strong> A machine classification or synthesis. It is labeled as a model output and is not shown as the person’s probability.</p>
       </section>
       <section>
@@ -54,6 +54,9 @@ export function MethodologyDocument() {
       </section>
       <section>
         <h2>Coverage and freshness</h2>
+        <p>
+          The tracked set is a defined cohort and not all AI researchers. The count is the cohort membership shown on the <Link href="/people">people page</Link>.
+        </p>
         <p>Coverage counts the loaded cohort: people with sources, people with a non-academic source, people with a first-party channel, and people with a public statement. An academic-works feed is not complete coverage.</p>
         <p>Freshness describes collection, not whether a person has spoken. A source is current when its last successful check is within 14 days, aging within 90 days, stale after that, and never checked when no success time is stored.</p>
         <p>People outside the loaded cohort do not enter that cohort&apos;s trends. Missing estimates are counted as missing. Absence is not zero.</p>
