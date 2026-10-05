@@ -2,8 +2,10 @@
 
 Rows keep a title, publisher, canonical URL, date, and rights label. Page bodies
 are not stored. A date the page does not state as published stays unknown.
-Rights stay unknown unless the page states a reuse licence that allows copying.
-A public page, a copyright notice, or a link to terms is not a licence.
+Rights stay unknown unless the page states CC0, CC BY, or CC BY-SA.
+CC BY-NC, CC BY-ND, CC BY-NC-SA, CC BY-NC-ND, and the Public Domain Mark stay
+unknown. A public page, a copyright notice, Crown copyright, or a link to terms
+is not a licence.
 
 Allowed hosts are gov.au and its subdomains. This catalog is not a collector
 and runner_wired stays false.
@@ -83,13 +85,23 @@ _LONG_DATE = re.compile(rf"(\d{{1,2}})\s+({_MONTH_PATTERN})\s+(\d{{4}})", re.I)
 _DATE_PUBLISHED = re.compile(rf"\bdate published\s*:\s*{_LONG_DATE.pattern}", re.I)
 _PUBLISHED_COLON = re.compile(rf"(?<![A-Za-z])published\s*:\s*{_LONG_DATE.pattern}", re.I)
 _PUBLISHED_WORD = re.compile(rf"(?<![A-Za-z])published\s+{_LONG_DATE.pattern}", re.I)
-_CC_REUSE = re.compile(
-    r"licensed under (?:a |the )?(?:creative commons|cc\s*by\b)|"
-    r"available under (?:a |the )?(?:creative commons|cc\s*by\b)|"
-    r"creative commons attribution|"
-    r"creativecommons\.org/licenses/|"
-    r"creativecommons\.org/publicdomain/|"
-    r"\bcc\s*by\s*[- ]?\d"
+# Restricted deeds are checked first. A hyphen is a word boundary, so "CC BY"
+# must not match the "BY" inside "CC BY-NC" or "CC BY-ND".
+_RESTRICTED_DEED = re.compile(
+    r"non[-\s]?commercial|"
+    r"no[-\s]?derivatives|"
+    r"licenses/by-(?:nc-sa|nc-nd|nc|nd)(?:/|\b)|"
+    r"\bcc[\s-]*by[\s-]*(?:nc[\s-]*sa|nc[\s-]*nd|nc|nd)\b|"
+    r"publicdomain/mark(?:/|\b)"
+)
+_PERMITTED_DEED = re.compile(
+    r"creativecommons\.org/publicdomain/zero(?:/|\b)|"
+    r"creativecommons\.org/licenses/by-sa(?:/|\b)|"
+    r"creativecommons\.org/licenses/by/(?:\d|\b)|"
+    r"\bcc0\b|"
+    r"\bcreative commons zero\b|"
+    r"creative commons attribution(?:[-\s]+share[-\s]?alike\b)?|"
+    r"\bcc[\s-]*by(?![\s-]*(?:nc|nd)\b)(?:[\s-]*sa\b)?"
 )
 
 
@@ -119,17 +131,23 @@ def official_australia_host(hostname: str) -> bool:
 
 
 def rights_from_page(page_text: str) -> str:
-    """Return a rights label. Public availability alone stays unknown."""
+    """Return creative_commons only for CC0, CC BY, or CC BY-SA.
+
+    CC BY-NC, CC BY-ND, CC BY-NC-SA, CC BY-NC-ND, and the Public Domain Mark
+    stay unknown. A copyright notice or a public page is not a licence.
+    """
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     html = _without_hidden(page_text)
     licence_links = []
-    for tag in re.findall(r"(?is)<a\b[^>]*>", html):
+    for tag in re.findall(r"(?is)<(?:a|link)\b[^>]*>", html):
         href = _attrs(tag).get("href", "")
         if "creativecommons.org/" in href.casefold():
             licence_links.append(href)
     plain = (_plain(html) + " " + " ".join(licence_links)).casefold()
-    if _CC_REUSE.search(plain):
+    if _RESTRICTED_DEED.search(plain):
+        return RIGHTS_UNKNOWN
+    if _PERMITTED_DEED.search(plain):
         return RIGHTS_CREATIVE_COMMONS
     return RIGHTS_UNKNOWN
 

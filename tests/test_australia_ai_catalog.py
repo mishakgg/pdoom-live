@@ -126,34 +126,6 @@ EXPECTED = [
         'unknown',
     ),
     (
-        'Policy for the responsible use of AI in government - Version 2.0',
-        'Digital Transformation Agency',
-        'https://www.digital.gov.au/ai/ai-in-government-policy',
-        'unknown',
-        'creative_commons',
-    ),
-    (
-        'Artificial intelligence in government',
-        'Digital Transformation Agency',
-        'https://www.digital.gov.au/policy/ai',
-        'unknown',
-        'creative_commons',
-    ),
-    (
-        'AI Plan for the Australian Public Service 2025',
-        'Digital Transformation Agency',
-        'https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025',
-        'unknown',
-        'creative_commons',
-    ),
-    (
-        'AI Policy Update: Strengthening responsible use across government',
-        'Digital Transformation Agency',
-        'https://www.dta.gov.au/articles/ai-policy-update-strengthening-responsible-use-across-government',
-        'unknown',
-        'creative_commons',
-    ),
-    (
         'Generative AI – position statement',
         'eSafety Commissioner',
         'https://www.esafety.gov.au/industry/tech-trends-and-challenges/generative-ai',
@@ -221,7 +193,7 @@ def test_catalog_rows_are_confirmed_australia_pages():
     assert catalog["runner_wired"] is False
     assert RUNNER_WIRED is False
     entries = catalog["entries"]
-    assert len(entries) == len(EXPECTED) == 24
+    assert len(entries) == len(EXPECTED) == 20
     publishers = set()
     labels = []
     for entry, expected_row in zip(entries, EXPECTED, strict=True):
@@ -241,13 +213,12 @@ def test_catalog_rows_are_confirmed_australia_pages():
         "Department of Industry Science and Resources",
         "National Artificial Intelligence Centre",
         "National AI Centre",
-        "Digital Transformation Agency",
         "Department of Finance",
         "Office of the Australian Information Commissioner",
         "eSafety Commissioner",
     }
     assert labels.count(RIGHTS_UNKNOWN) == 20
-    assert labels.count(RIGHTS_CREATIVE_COMMONS) == 4
+    assert labels.count(RIGHTS_CREATIVE_COMMONS) == 0
     assert RIGHTS_UNKNOWN == "unknown"
     assert RIGHTS_CREATIVE_COMMONS == "creative_commons"
 
@@ -311,7 +282,46 @@ def test_stated_creative_commons_licence_is_labeled_and_page_text_is_not_returne
     assert rights_from_page(attribution) == RIGHTS_CREATIVE_COMMONS
     link = '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
     assert rights_from_page(link) == RIGHTS_CREATIVE_COMMONS
+    share_alike = "<p>licensed under the CC BY-SA 4.0 license.</p>"
+    assert rights_from_page(share_alike) == RIGHTS_CREATIVE_COMMONS
+    share_alike_name = "<p>Creative Commons Attribution-ShareAlike 4.0 International.</p>"
+    assert rights_from_page(share_alike_name) == RIGHTS_CREATIVE_COMMONS
+    share_alike_url = '<a href="https://creativecommons.org/licenses/by-sa/4.0/">Licence</a>'
+    assert rights_from_page(share_alike_url) == RIGHTS_CREATIVE_COMMONS
+    cc0 = "<p>This work is licensed under CC0.</p>"
+    assert rights_from_page(cc0) == RIGHTS_CREATIVE_COMMONS
+    cc0_url = '<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>'
+    assert rights_from_page(cc0_url) == RIGHTS_CREATIVE_COMMONS
     assert rights_from_page("<p>Excerpts may be reproduced with attribution.</p>") == RIGHTS_UNKNOWN
+
+
+def test_restricted_creative_commons_deeds_stay_unknown():
+    phrases = [
+        "https://creativecommons.org/licenses/by-nc/4.0/",
+        "https://creativecommons.org/licenses/by-nd/4.0/",
+        "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+        "Creative Commons Attribution-NonCommercial",
+        "Creative Commons Attribution-NoDerivatives",
+        "licensed under the CC BY-NC 4.0",
+        "licensed under the CC BY-ND 4.0",
+        "licensed under the CC BY-NC-SA 4.0",
+        "licensed under the CC BY-NC-ND 4.0",
+        "https://creativecommons.org/publicdomain/mark/1.0/",
+        "Public Domain Mark 1.0",
+        "© Crown copyright",
+        "Crown copyright 2024. All rights reserved.",
+    ]
+    for phrase in phrases:
+        assert rights_from_page(f"<p>{phrase}</p>") == RIGHTS_UNKNOWN
+    for deed in ("by-nc/4.0", "by-nd/4.0", "by-nc-sa/4.0", "by-nc-nd/4.0"):
+        page = f'<a href="https://creativecommons.org/licenses/{deed}/">Licence</a>'
+        assert rights_from_page(page) == RIGHTS_UNKNOWN
+    mixed = (
+        "<p>Except where otherwise noted, this work is licensed under the CC BY 4.0 license. "
+        "Third-party material is Creative Commons Attribution-NonCommercial.</p>"
+    )
+    assert rights_from_page(mixed) == RIGHTS_UNKNOWN
 
 
 def test_missing_dates_stay_unknown_and_published_dates_win():

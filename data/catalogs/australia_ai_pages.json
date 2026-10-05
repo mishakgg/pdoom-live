@@ -1,6 +1,6 @@
 {
   "catalog_id": "australia_ai_pages",
-  "description": "Metadata for public Australian Government pages about artificial intelligence. Allowed hosts are gov.au and its subdomains. Each canonical URL was confirmed with one bounded GET. The catalog stores the title, publisher, canonical URL, date, and rights. Page bodies are not stored. A missing publication date is unknown. Rights stay unknown unless the page states a reuse licence that allows copying. A public page is not a licence. runner_wired is false.",
+  "description": "Metadata for public Australian Government pages about artificial intelligence. Allowed hosts are gov.au and its subdomains. Each canonical URL was confirmed with one bounded GET. The catalog stores the title, publisher, canonical URL, date, and rights. Page bodies are not stored. A missing publication date is unknown. Rights stay unknown unless the page states CC0, CC BY, or CC BY-SA. CC BY-NC, CC BY-ND, and the Public Domain Mark stay unknown. A public page is not a licence. runner_wired is false.",
   "runner_wired": false,
   "entries": [
     {
@@ -100,34 +100,6 @@
       "canonical_url": "https://www.ai.gov.au/staying-safe-and-responsible/essential-ai-practices",
       "date": "unknown",
       "rights": "unknown"
-    },
-    {
-      "title": "Policy for the responsible use of AI in government - Version 2.0",
-      "publisher": "Digital Transformation Agency",
-      "canonical_url": "https://www.digital.gov.au/ai/ai-in-government-policy",
-      "date": "unknown",
-      "rights": "creative_commons"
-    },
-    {
-      "title": "Artificial intelligence in government",
-      "publisher": "Digital Transformation Agency",
-      "canonical_url": "https://www.digital.gov.au/policy/ai",
-      "date": "unknown",
-      "rights": "creative_commons"
-    },
-    {
-      "title": "AI Plan for the Australian Public Service 2025",
-      "publisher": "Digital Transformation Agency",
-      "canonical_url": "https://www.digital.gov.au/policy/ai/australian-public-service-ai-plan-2025",
-      "date": "unknown",
-      "rights": "creative_commons"
-    },
-    {
-      "title": "AI Policy Update: Strengthening responsible use across government",
-      "publisher": "Digital Transformation Agency",
-      "canonical_url": "https://www.dta.gov.au/articles/ai-policy-update-strengthening-responsible-use-across-government",
-      "date": "unknown",
-      "rights": "creative_commons"
     },
     {
       "title": "Generative AI – position statement",
