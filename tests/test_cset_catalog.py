@@ -400,8 +400,12 @@ def test_stated_reuse_licence_is_labeled_and_page_text_is_not_returned():
     creative_commons += "<p>" + ("Full report text. " * 40) + "</p>"
     assert rights_from_page(creative_commons) == RIGHTS_CREATIVE_COMMONS
     assert "Full report text" not in rights_from_page(creative_commons)
+    by_link = '<link rel="license" href="https://creativecommons.org/licenses/by/4.0/" />'
+    assert rights_from_page(by_link) == RIGHTS_CREATIVE_COMMONS
+    by_nc = "<p>This report is licensed under CC BY-NC 4.0.</p>"
+    assert rights_from_page(by_nc) == RIGHTS_UNKNOWN
     linked = '<link rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" />'
-    assert rights_from_page(linked) == RIGHTS_CREATIVE_COMMONS
+    assert rights_from_page(linked) == RIGHTS_UNKNOWN
     zero = '<meta name="dcterms.license" content="https://creativecommons.org/publicdomain/zero/1.0/" />'
     assert rights_from_page(zero) == RIGHTS_CREATIVE_COMMONS
     structured = (

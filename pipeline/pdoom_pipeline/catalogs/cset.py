@@ -3,9 +3,11 @@
 Rows keep a title, publisher, canonical URL, date, and rights label. Page bodies
 and PDFs are not stored. A date the page does not state stays unknown.
 Modification times are not publication dates. Rights stay unknown unless the
-page states a reuse licence that allows copying. A public page, a copyright
-notice, or a link to site policies is not a licence. This catalog is not a
-collector and runner_wired stays false.
+page states a reuse licence that allows copying. ``creative_commons`` means
+CC0, CC BY, or CC BY-SA. CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay
+unknown. The Open Government Licence keeps its own label when the page states
+it. A public page, a copyright notice, or a link to site policies is not a
+licence. This catalog is not a collector and runner_wired stays false.
 """
 
 from __future__ import annotations
@@ -79,10 +81,14 @@ _ATTR = re.compile(
 )
 _CC_STATEMENT = re.compile(
     r"(?i)(?:licen[cs]ed|available|released|published) under (?:the )?(?:terms of )?(?:a |the )?"
-    r"(?:creative commons\b|cc[-\s]?(?:by(?:-[a-z]{2}){0,2}|0)\b)"
+    r"(?:"
+    r"cc[-\s]?(?:by-sa|by(?![\s-](?:nc|nd))|0)\b"
+    r"|creative commons (?:cc0|zero|attribution[-\s]share-?alike|attribution(?![\s-](?:non|no[\s-]?deriv)))\b"
+    r")"
 )
+# CC0, CC BY, and CC BY-SA only. by-nc, by-nd, by-nc-sa, and by-nc-nd do not match.
 _CC_URL = re.compile(
-    r"(?i)creativecommons\.org/(?:licenses/(?:by(?:-[a-z]{2}){0,2}|zero)|publicdomain/(?:zero|mark))(?:/|$)"
+    r"(?i)creativecommons\.org/(?:licenses/(?:by-sa|by|zero)|publicdomain/zero)(?:/|$)"
 )
 _OGL_STATEMENT = re.compile(
     r"(?i)(?:licen[cs]ed|available|released|published) under (?:the )?(?:terms of )?(?:a |the )?"
@@ -114,7 +120,11 @@ def official_cset_host(hostname: str) -> bool:
 
 
 def rights_from_page(page_text: str) -> str:
-    """Return a rights label. Public availability alone stays unknown."""
+    """Return a rights label. Public availability alone stays unknown.
+
+    ``creative_commons`` is only CC0, CC BY, or CC BY-SA. Noncommercial and
+    no-derivatives Creative Commons deeds stay unknown.
+    """
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     for blob in _LDJSON.findall(page_text):
