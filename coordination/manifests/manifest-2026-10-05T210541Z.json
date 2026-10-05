@@ -1,0 +1,10 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T210541Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened draft 109 for UK AISI page metadata. Page text is not stored.",
+  "follow_up_prs": [
+    {"pr": 109, "sha": "dae4144b7f70a71907f993f791b5d294f6899671", "run": "bc-5c2f55cc-bdce-5a2d-aabb-a04f6ed66843"}
+  ]
+}
