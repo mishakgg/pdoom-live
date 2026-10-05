@@ -23,11 +23,9 @@ docker run -d --name "$PG" --network "$NET" \
   -e POSTGRES_PASSWORD="$PASSWORD" \
   -e POSTGRES_DB=pdoom_ops_drill \
   postgres:16 >/dev/null
-for _ in $(seq 1 40); do
-  docker exec "$PG" pg_isready -U pdoom -d pdoom_ops_drill >/dev/null 2>&1 && break
-  sleep 1
-done
-docker exec "$PG" pg_isready -U pdoom -d pdoom_ops_drill >/dev/null
+# The official image answers local pg_isready on a temporary init server, then
+# rejects connections while that server shuts down. Wait until init has finished.
+"$ROOT/scripts/restore/postgres-ready.sh" "$PG" pdoom pdoom_ops_drill
 
 db_url="postgresql://pdoom:${PASSWORD}@${PG}:5432/pdoom_ops_drill"
 run_cli() {

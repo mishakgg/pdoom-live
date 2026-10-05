@@ -1,0 +1,43 @@
+{
+  "total": 64,
+  "page": 1,
+  "pageSize": 1,
+  "query": "title:\"AI safety\" OR title:\"AI risk\" OR title:\"catastrophic risk\"",
+  "results": [
+    {
+      "id": "02a21dd062014f8d84e2a82498658eb0",
+      "bibjson": {
+        "title": "AI Safety Is a Narrative Problem",
+        "year": "2024",
+        "month": "6",
+        "author": [
+          {
+            "name": "Rachel Coldicutt"
+          }
+        ],
+        "identifier": [
+          {
+            "id": "2644-2353",
+            "type": "eissn"
+          },
+          {
+            "id": "10.1162/99608f92.562ff0f5",
+            "type": "doi"
+          }
+        ],
+        "journal": {
+          "number": "Special Issue 5",
+          "country": "US",
+          "issns": [
+            "2644-2353"
+          ],
+          "publisher": "The MIT Press",
+          "language": [
+            "EN"
+          ],
+          "title": "Harvard Data Science Review"
+        }
+      }
+    }
+  ]
+}
