@@ -1,4 +1,8 @@
-"""HAL notice metadata from a saved public page. These tests do not use the network."""
+"""HAL bibliographic metadata. These tests do not use the network.
+
+The fixture keeps the title, publication date, author, canonical URL, and
+license URL. It does not include the abstract or the rest of the notice.
+"""
 
 from __future__ import annotations
 
@@ -72,13 +76,18 @@ def test_fixture_notice_metadata_without_network(monkeypatch):
     monkeypatch.setattr(socket, "create_connection", blocked)
     monkeypatch.setattr(socket, "getaddrinfo", blocked)
     raw = FIXTURE.read_bytes()
+    assert len(raw) < 800
     assert len(raw) < MAX_RESPONSE_BYTES
     assert not raw.lstrip().startswith(b"%PDF")
     text = raw.decode("utf-8")
-    assert 'name="citation_pdf_url" content="https://hal.science/hal-04963307/document"' in text
-    assert PDF_URL in text
-    assert "citation_online_date" in text
-    assert "2025/02/24" in text
+    assert "citation_abstract" not in text
+    assert "citation_pdf_url" not in text
+    assert "citation_online_date" not in text
+    assert PDF_URL not in text
+    assert ".pdf" not in text.lower()
+    assert "/document" not in text
+    assert "/file/" not in text
+    assert "<p" not in text.lower()
 
     record = parse_notice(raw)
     assert record.as_dict() == {
@@ -98,8 +107,7 @@ def test_fixture_notice_metadata_without_network(monkeypatch):
     assert "/preview/" not in rendered
     assert "paper.pdf" not in rendered
     assert "javascript:" not in rendered
-    assert "This position paper argues" not in rendered
-    assert "Pas d" not in record.license
+    assert record.license == CONFIRMED_LICENSE
 
 
 def test_missing_license_or_publication_date_stays_unknown():
@@ -109,7 +117,6 @@ def test_missing_license_or_publication_date_stays_unknown():
     html = re.sub(r'<div class="licence-view">.*?</div>', "", html, flags=re.S)
     assert "2025/02/07" not in html
     assert "creativecommons.org" not in html
-    assert "2025/02/24" in html
     record = parse_notice(html.encode("utf-8"))
     assert record.date == UNKNOWN
     assert record.license == UNKNOWN
