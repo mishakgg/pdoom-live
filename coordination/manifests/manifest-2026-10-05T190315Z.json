@@ -1,0 +1,11 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T190315Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened drafts for name-only profile discovery and OpenReview metadata.",
+  "follow_up_prs": [
+    {"pr": 60, "sha": "26ed2bf484a8f167cea580e267a0acd8482a0a24", "run": "bc-fe0409dd-7253-5e00-9a55-7424eab3c37d"},
+    {"pr": 61, "sha": "13b6cba9dfb06a10e1804b6ad9ea0999bc8ab0f0", "run": "bc-05d3f393-6e9a-550d-9eda-303de24cf162"}
+  ]
+}
