@@ -1,0 +1,14 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T202307Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened drafts 64, 65, 66, and 67 and started five more workers.",
+  "follow_up_prs": [
+    {"pr": 63, "sha": "8aba639a0edf87b7192497ae6935f39de122457b", "run": "bc-05f5a359-5566-5f10-9d4c-f20147e25b39"},
+    {"pr": 64, "sha": "3b5b83fc2b27677e9d15f3e61383e56b16f876f0", "run": "bc-d00ccb72-a605-5f8b-bf85-df1e1de4332e"},
+    {"pr": 65, "sha": "2cf56d466325fa771502b7607bec1adfdd9269c3", "run": "bc-f613da77-e78d-5d2a-9cf0-fa9447813cd2"},
+    {"pr": 66, "sha": "935d6fed5fac1f38261c343a1ea3b5fa0ae9556c", "run": "bc-45ca1b49-f870-5283-ad0f-fb46f4746228"},
+    {"pr": 67, "sha": "32c6382b5832b9697aefd7c8e1cc50ec513ea3ba", "run": "bc-20d7aca3-5065-5a5c-a229-c5265433f037"}
+  ]
+}
