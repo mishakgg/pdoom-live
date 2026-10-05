@@ -1,0 +1,32 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T201435Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Merged pull requests 33 through 62. Started twenty workers from main 65e460a.",
+  "origin_main_sha": "65e460a23318cb9812c5310ecb72d89cf20b37d1",
+  "merged_prs": [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62],
+  "left_open": [20, 23, 32],
+  "workers": [
+    {"run": "bc-e617fed3-a458-5ec0-9f80-a0fbb9d87499", "branch": "cursor/europepmc-metadata-a32e"},
+    {"run": "bc-eabedbfb-5d90-506f-8e13-28c076690be5", "branch": "cursor/mastodon-metadata-a32e"},
+    {"run": "bc-7d487918-f94f-56d8-83bc-c10e1c48e499", "branch": "cursor/source-item-provenance-a32e"},
+    {"run": "bc-be752873-c711-5177-9a3b-6d7be72d1a40", "branch": "cursor/people-page-coverage-a32e"},
+    {"run": "bc-532944c1-2b01-56cb-bb2f-2f7637079aff", "branch": "cursor/person-statement-classes-a32e"},
+    {"run": "bc-f613da77-e78d-5d2a-9cf0-fa9447813cd2", "branch": "cursor/belief-runner-wiring-a32e"},
+    {"run": "bc-d00ccb72-a605-5f8b-bf85-df1e1de4332e", "branch": "cursor/doi-url-canonical-a32e"},
+    {"run": "bc-2f4fb0fc-7b4d-565d-9a6c-9bd5597ba44b", "branch": "cursor/copying-license-class-a32e"},
+    {"run": "bc-54a54233-6160-527e-a503-c4ead3675644", "branch": "cursor/eu-ai-act-catalog-a32e"},
+    {"run": "bc-05f5a359-5566-5f10-9d4c-f20147e25b39", "branch": "cursor/collector-status-note-a32e"},
+    {"run": "bc-20d7aca3-5065-5a5c-a229-c5265433f037", "branch": "cursor/bare-number-not-probability-a32e"},
+    {"run": "bc-1ae27fb8-8a35-5c9f-94a4-7e9c4161cc6b", "branch": "cursor/rss-source-timezone-a32e"},
+    {"run": "bc-3d31ee71-b423-5e1f-9c62-ba02bfb9ab28", "branch": "cursor/openreview-author-non-merge-a32e"},
+    {"run": "bc-22472010-4b1b-55e2-8f7b-056e726f12cf", "branch": "cursor/trend-class-gate-a32e"},
+    {"run": "bc-7d000b02-02db-5b43-8516-2dc12f69d4ff", "branch": "cursor/backup-drill-failure-a32e"},
+    {"run": "bc-f8ff2175-fa11-5c3b-abef-650f24ac515f", "branch": "cursor/data-page-freshness-a32e"},
+    {"run": "bc-c53018bd-e5e4-57d9-8f70-bac34de48b4c", "branch": "cursor/nist-rmf-pages-a32e"},
+    {"run": "bc-92abe133-0f40-5f37-bb53-a060035f05d1", "branch": "cursor/public-api-limit-bound-a32e"},
+    {"run": "bc-45ca1b49-f870-5283-ad0f-fb46f4746228", "branch": "cursor/catalog-package-marker-a32e"},
+    {"run": "bc-f0b72bc1-2052-581b-b54d-b8118cc36901", "branch": "cursor/hal-metadata-a32e"}
+  ]
+}
