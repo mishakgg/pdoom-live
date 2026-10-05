@@ -390,6 +390,52 @@ def test_stated_reuse_licence_is_labeled_and_page_text_is_not_returned():
         "is given under the Creative Commons Attribution licence.</p>"
     )
     assert rights_from_page(british) == RIGHTS_CC_BY
+    plain_cc_by = (
+        "<p>Epoch AI's work is free to use, distribute, and reproduce provided the source "
+        "and authors are credited under the CC-BY license.</p>"
+    )
+    assert rights_from_page(plain_cc_by) == RIGHTS_CC_BY
+    spaced = "<p>This dataset is free to use, distribute, and reproduce under a CC BY license.</p>"
+    assert rights_from_page(spaced) == RIGHTS_CC_BY
+
+
+@pytest.mark.parametrize(
+    "name",
+    [
+        "Creative Commons Attribution-NonCommercial license",
+        "Creative Commons Attribution-NoDerivatives license",
+        "Creative Commons Attribution-ShareAlike license",
+        "Creative Commons Attribution-NonCommercial-ShareAlike license",
+        "Creative Commons Attribution–NonCommercial licence",
+        "CC BY-NC license",
+        "CC-BY-NC license",
+        "CC BY-ND license",
+        "CC-BY-ND license",
+        "CC BY-SA license",
+        "CC-BY-SA license",
+        "CC-BY-NC-SA license",
+        "Creative Commons BY-NC license",
+        "Creative Commons BY-ND licence",
+        "Creative Commons BY-SA license",
+    ],
+)
+def test_cc_by_nc_nd_and_sa_notices_stay_unknown(name):
+    page = (
+        "<p>Epoch AI's work is free to use, distribute, and reproduce provided the source "
+        f"and authors are credited under the {name}.</p>"
+        "<article>" + ("page body " * 30) + "</article>"
+    )
+    assert rights_from_page(page) == RIGHTS_UNKNOWN
+    assert "page body" not in rights_from_page(page)
+
+
+def test_unrelated_noncommercial_words_do_not_cancel_a_cc_by_notice():
+    page = (
+        "<td>Open weights (non-commercial)</td>"
+        "<p>Epoch's work is free to use, distribute, and reproduce provided the source "
+        "and authors are credited under the Creative Commons BY license.</p>"
+    )
+    assert rights_from_page(page) == RIGHTS_CC_BY
 
 
 def test_missing_dates_stay_unknown_and_update_dates_are_not_publication_dates():

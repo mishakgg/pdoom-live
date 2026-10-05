@@ -2,9 +2,11 @@
 
 Each stored URL was confirmed with one bounded GET. A row keeps the title,
 publisher, canonical URL, date, and rights label. Page text, chart series, and
-datasets are not stored. Rights stay unknown unless that page states a reuse
-licence that allows copying. A public page, a copyright notice, or a link to a
-licence is not itself a licence. Updated and modified times are not
+datasets are not stored. Rights stay unknown unless the page states a CC-BY
+notice that grants copying. Attribution-NonCommercial, Attribution-NoDerivatives,
+Attribution-ShareAlike, CC BY-NC, CC BY-ND, and CC BY-SA stay unknown. A public
+page, a copyright notice, or a link to a licence is not itself a licence.
+Updated and modified times are not
 publication dates; a page that does not state a publication date keeps the
 date unknown. This module does not fetch and it is not a belief collector.
 runner_wired stays false.
@@ -119,13 +121,31 @@ _PUBLICATION_META = (
     "dc.date.issued",
 )
 _GRANT = "free to use, distribute, and reproduce"
-_LICENCE_NAMES = (
-    "creative commons attribution",
-    "creative commons by license",
-    "creative commons by licence",
-    "cc-by license",
-    "cc-by licence",
+_DASHES = str.maketrans(
+    {
+        "\u2010": "-",
+        "\u2011": "-",
+        "\u2012": "-",
+        "\u2013": "-",
+        "\u2014": "-",
+        "\u2212": "-",
+    }
 )
+# Plain CC-BY phrases. A following NonCommercial, NoDerivatives, or ShareAlike
+# suffix, including CC BY-NC, CC BY-ND, and CC BY-SA, is a different notice.
+_CC_BY_NOTICE = re.compile(
+    r"creative commons attribution|creative commons by|(?<![a-z0-9])cc[\s-]by"
+)
+_RESTRICTIVE_SUFFIX = re.compile(
+    r"^[\s\-.(]*("
+    r"non[\s-]*commercial|"
+    r"no[\s-]*derivatives|"
+    r"no[\s-]*derivs|"
+    r"share[\s-]*alike|"
+    r"nc|nd|sa"
+    r")\b"
+)
+_LICENCE_WORD = re.compile(r"^licen[cs]e\b")
 _SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 _DATE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 _ISO_PREFIX = re.compile(r"^(\d{4}-\d{2}-\d{2})(?:$|[Tt\s])")
@@ -163,23 +183,40 @@ def official_epoch_host(hostname: str) -> bool:
 def rights_from_page(page_text: str) -> str:
     """Return a rights label. Public availability alone stays unknown.
 
-    The page must state a reuse licence and a grant to copy, distribute, or
-    reproduce. Those two statements have to sit in the same notice. A copyright
-    line, a terms link, or the licence name by itself stays unknown.
+    ``creative_commons_attribution`` means a CC-BY notice only: Creative Commons
+    Attribution, Creative Commons BY, or CC-BY, in the same notice as a grant to
+    copy, distribute, or reproduce. The notice must not state NonCommercial,
+    NoDerivatives, or ShareAlike. CC BY-NC, CC BY-ND, and CC BY-SA stay unknown.
+    A copyright line, a terms link, or the licence name without the grant stays
+    unknown.
     """
 
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
-    plain = _plain(page_text).casefold()
+    plain = _plain(page_text).casefold().translate(_DASHES)
     start = 0
     while True:
         at = plain.find(_GRANT, start)
         if at < 0:
             return RIGHTS_UNKNOWN
         window = plain[max(0, at - 80) : at + len(_GRANT) + 320]
-        if any(name in window for name in _LICENCE_NAMES):
+        if _window_states_cc_by(window):
             return RIGHTS_CC_BY
         start = at + len(_GRANT)
+
+
+def _window_states_cc_by(window: str) -> bool:
+    """True when the notice names plain CC-BY and not NC, ND, or SA."""
+
+    for match in _CC_BY_NOTICE.finditer(window):
+        rest = window[match.end() :]
+        if _RESTRICTIVE_SUFFIX.match(rest):
+            continue
+        if match.group(0) == "creative commons attribution":
+            return True
+        if _LICENCE_WORD.match(rest.lstrip(" ")):
+            return True
+    return False
 
 
 def date_from_page(page_text: str) -> str:
