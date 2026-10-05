@@ -8,49 +8,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 INIT = ROOT / "pipeline" / "pdoom_pipeline" / "collectors" / "__init__.py"
+PACKAGE_MARKER = '"""Package marker."""\n'
 
-COLLECTOR_MODULES = (
-    "arxiv",
-    "base",
-    "bluesky",
-    "cordis",
-    "crossref",
-    "dblp",
-    "forum_magnum",
-    "github",
-    "huggingface",
-    "internet_archive",
-    "medrxiv",
-    "nsf_awards",
-    "oecd_ai",
-    "openalex_works",
-    "openreview",
-    "rss",
-    "semantic_scholar",
-    "youtube_metadata",
-    "zenodo",
-)
 
-COLLECTOR_CLASSES = (
-    "ArxivCollector",
-    "BlueskyCollector",
-    "CordisCollector",
-    "CrossrefCollector",
-    "DblpCollector",
-    "ForumMagnumCollector",
-    "GitHubCollector",
-    "HuggingFaceCollector",
-    "InternetArchiveCollector",
-    "MedrxivCollector",
-    "NsfAwardsCollector",
-    "OecdAiCollector",
-    "OpenAlexWorksCollector",
-    "OpenReviewCollector",
-    "RssCollector",
-    "SemanticScholarCollector",
-    "YouTubeMetadataCollector",
-    "ZenodoCollector",
-)
+def _sibling_modules() -> set[str]:
+    return {path.stem for path in INIT.parent.glob("*.py") if path.name != "__init__.py"}
 
 
 def _imported_names(tree: ast.AST) -> set[str]:
@@ -75,18 +37,19 @@ def _imported_names(tree: ast.AST) -> set[str]:
 def test_collectors_init_is_a_package_marker_without_collector_imports():
     source = INIT.read_text(encoding="utf-8")
     tree = ast.parse(source)
+    assert source == PACKAGE_MARKER
     assert ast.get_docstring(tree) == "Package marker."
     assert len(tree.body) == 1
+    siblings = _sibling_modules()
+    assert "rss" in siblings
     imported = _imported_names(tree)
     assert not any(isinstance(node, (ast.Import, ast.ImportFrom)) for node in ast.walk(tree))
-    for name in COLLECTOR_MODULES:
+    for name in siblings:
         assert name not in imported
         assert name not in source
 
 
 def test_importing_collectors_does_not_reexport_classes():
-    found = {path.stem for path in INIT.parent.glob("*.py") if path.name != "__init__.py"}
-    assert found == set(COLLECTOR_MODULES)
     collectors = importlib.import_module("pdoom_pipeline.collectors")
     assert not hasattr(collectors, "__all__")
     bound_collectors = sorted(
@@ -95,8 +58,6 @@ def test_importing_collectors_does_not_reexport_classes():
         if isinstance(value, type) and name.endswith("Collector")
     )
     assert bound_collectors == []
-    for name in COLLECTOR_CLASSES:
-        assert not hasattr(collectors, name)
 
 
 def test_rss_collector_imports_directly():
