@@ -33,6 +33,8 @@ PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.refresh --once
 
 `refresh --once` is the bounded recurring path. It is documented in `docs/REFRESH.md`. The command refuses to run without `--once`, and no timer is enabled. `collect_beliefs --live` calls the same refresh.
 
+Each selected source in that run ends as new, changed, unchanged, skipped, or failed. The belief ingestion run records `unchanged_count`, `skipped_count`, and `failed_count` beside the new and changed counts. A run that retains progress and also records a failure has status `partial`. A run whose selected sources all fail, with nothing retained, has status `failed`. A partial run and a failed run stay out of the full-success count. The same rule is in `docs/REFRESH.md` and `docs/INGESTION_CONTRACT.md`.
+
 `pytest` does not call the network. `resolve_seed --resolve` queries OpenAlex. `enrich_sources --live` reads ORCID records that are already linked and fetches claimed or ORCID URLs. It does not add people and it does not search social accounts by name. Set `PDOOM_LIVE_TESTS=1` only for an optional live smoke test.
 
 ## Collector contract
