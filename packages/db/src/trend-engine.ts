@@ -260,6 +260,12 @@ function sameQuestionFilters(candidate: TrendCandidate, scope: TrendScope): Excl
   return null;
 }
 
+function pointValue(candidate: TrendCandidate): number | null {
+  if (candidate.value_type !== "point") return null;
+  const value = candidate.value_numeric;
+  return typeof value === "number" && Number.isFinite(value) ? value : null;
+}
+
 function exclusionReason(
   candidate: TrendCandidate,
   scope: TrendScope,
@@ -269,9 +275,9 @@ function exclusionReason(
   const exactId = scope.exact_question_id ?? scope.question_key;
   const decision = candidate.question_key ? comparisonDecision(candidate, exactId) : null;
   if (!keyMatches && !decision?.match && scope.topic_slug && !candidate.topic_slugs.includes(scope.topic_slug)) return "topic_not_target";
-  if (!scope.statement_types.includes(candidate.statement_type)) return "statement_type";
-  if (!scope.review_states.includes(candidate.review_state)) return "review_state";
-  if (candidate.forecast_review_state && !scope.review_states.includes(candidate.forecast_review_state)) return "review_state";
+  if (candidate.statement_type !== "explicit_numeric" || !scope.statement_types.includes(candidate.statement_type)) return "statement_type";
+  if (candidate.review_state !== "human_verified" || !scope.review_states.includes(candidate.review_state)) return "review_state";
+  if (candidate.forecast_review_state && (candidate.forecast_review_state !== "human_verified" || !scope.review_states.includes(candidate.forecast_review_state))) return "review_state";
   if (!candidate.question_key) return "missing_forecast";
   if (keyMatches) {
     const filters = sameQuestionFilters(candidate, scope);
@@ -288,10 +294,10 @@ function exclusionReason(
   }
   if (isBoundPhrase(candidate)) return "value_type_not_point";
   if (valueMode === "point") {
-    if (candidate.value_type !== "point" || candidate.value_numeric === null) return "value_type_not_point";
+    if (pointValue(candidate) === null) return "value_type_not_point";
     return null;
   }
-  if (candidate.value_type === "point" && candidate.value_numeric !== null) return null;
+  if (pointValue(candidate) !== null) return null;
   if (candidate.value_type === "range" && candidate.value_min !== null && candidate.value_max !== null) return null;
   return "value_type_not_point";
 }
@@ -468,7 +474,7 @@ function toIncluded(candidate: TrendCandidate): IncludedEstimate {
     target_date_end: candidate.target_date_end ?? null,
     stored_question_key: candidate.question_key,
     probability_semantics: readProbabilitySemantics(candidate),
-    in_summary: !range && candidate.value_numeric !== null && !isBoundPhrase(candidate),
+    in_summary: !range && pointValue(candidate) !== null && !isBoundPhrase(candidate),
   };
 }
 
@@ -545,7 +551,10 @@ function computeNumeric(input: CohortContext & {
   const partitioned = partition(input.candidates, input.scope, input.valueMode);
   const reduced = reduceLatest(partitioned.eligible, input.edges, input.scope.review_states, input.candidates);
   const included = sortIncluded(reduced.kept.map(toIncluded));
-  const pointValues = included.filter((item) => item.in_summary && item.value_numeric !== null).map((item) => item.value_numeric ?? 0);
+  const pointValues = included.flatMap((item) => {
+    if (!item.in_summary || item.value_numeric === null || !Number.isFinite(item.value_numeric)) return [];
+    return [item.value_numeric];
+  });
   const density: TrendDensity = included.length === 0 ? "empty" : pointValues.length >= SUMMARY_MIN_POINTS ? "comparable" : "sparse";
   const coverage = buildCoverage({
     ...input,
@@ -634,10 +643,6 @@ export function computeQuantityForecast(input: CohortContext & {
   });
 }
 
-function pointValue(candidate: TrendCandidate): number | null {
-  return candidate.value_type === "point" ? candidate.value_numeric : null;
-}
-
 export function computeHistoricalRevision(input: CohortContext & {
   scope: TrendScope;
   candidates: TrendCandidate[];
@@ -678,13 +683,14 @@ export function computeHistoricalRevision(input: CohortContext & {
       const toEligible = eligibleBySlug.get(to.statement_slug);
       const replacement = edge.relationship_type === "retracts"
         && Boolean(fromEligible && toEligible && fromEligible.person_slug === toEligible.person_slug && pointValue(fromEligible) !== null && pointValue(toEligible) !== null);
-      if (!replacement && fromEligible && from.person_slug === to.person_slug && pointValue(fromEligible) !== null && (edge.relationship_type === "withdraws" || !toEligible || pointValue(to) === null)) {
+      const withdrawnValue = fromEligible ? pointValue(fromEligible) : null;
+      if (!replacement && fromEligible && withdrawnValue !== null && from.person_slug === to.person_slug && (edge.relationship_type === "withdraws" || !toEligible || pointValue(to) === null)) {
         links.push({
           from_statement_slug: fromEligible.statement_slug,
           to_statement_slug: to.statement_slug,
           relationship_type: edge.relationship_type,
           method: edge.method,
-          from_value: pointValue(fromEligible) ?? 0,
+          from_value: withdrawnValue,
           to_value: null,
           from_event_time: fromEligible.event_time,
           to_event_time: to.event_time,
@@ -833,19 +839,20 @@ function buildChains(links: RevisionLink[], eligibleBySlug: Map<string, TrendCan
       ),
     );
     const slugs = [...new Set(orderedLinks.flatMap((link) => [link.from_statement_slug, link.to_statement_slug]))];
-    const points = slugs
-      .map((slug) => eligibleBySlug.get(slug))
-      .filter((candidate): candidate is TrendCandidate => Boolean(candidate))
-      .map((candidate) => ({
+    const points = slugs.flatMap((slug) => {
+      const candidate = eligibleBySlug.get(slug);
+      const value = candidate ? pointValue(candidate) : null;
+      if (!candidate || value === null) return [];
+      return [{
         statement_slug: candidate.statement_slug,
         person_slug: candidate.person_slug,
         display_name: candidate.display_name,
         event_time: candidate.event_time,
-        value_numeric: candidate.value_numeric ?? 0,
+        value_numeric: value,
         unit: candidate.unit,
         horizon_text: candidate.horizon_text,
-      }))
-      .sort((a, b) => (a.event_time ?? "").localeCompare(b.event_time ?? "") || a.statement_slug.localeCompare(b.statement_slug));
+      }];
+    }).sort((a, b) => (a.event_time ?? "").localeCompare(b.event_time ?? "") || a.statement_slug.localeCompare(b.statement_slug));
     const person = points[0];
     if (!person) continue;
     chains.push({
@@ -922,7 +929,7 @@ function verifiedNumeric(candidate: TrendCandidate): boolean {
   if (candidate.forecast_review_state && candidate.forecast_review_state !== "human_verified") return false;
   if (!candidate.question_key || !candidate.unit) return false;
   if (candidate.value_type !== "point" && candidate.value_type !== "range" && candidate.value_type !== "distribution") return false;
-  if (candidate.value_type === "point" && candidate.value_numeric === null) return false;
+  if (candidate.value_type === "point" && pointValue(candidate) === null) return false;
   if (candidate.value_type === "range" && (candidate.value_min === null || candidate.value_max === null)) return false;
   return true;
 }
