@@ -291,6 +291,7 @@ def test_publication_dates_ignore_modification_times_and_url_slugs():
     )
     assert publication_date_from_page(dated) == "2024-03-15"
     modified = (
+        '<meta property="og:title" content="Early work on monitorability evaluations">'
         '<meta name="citation_date" content="">'
         '<meta property="article:modified_time" content="2026-08-01T00:00:00Z">'
         '<meta property="og:updated_time" content="2026-09-01">'
