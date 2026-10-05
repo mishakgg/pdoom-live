@@ -1,0 +1,11 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T185500Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Opened the OpenAlex retrieval draft and the canonical URL idempotence draft.",
+  "follow_up_prs": [
+    {"pr": 43, "sha": "49401dd7a085b90693560d1745606a64f23a46b5", "run": "bc-0230545e-23aa-5a01-81c1-e7cb9089bc87"},
+    {"pr": 44, "sha": "a7e8d8c4bac245e03a1d1ea96f45cadff1581b1d", "run": "bc-cf018d23-b510-5ebe-beca-400017846f9b"}
+  ]
+}
