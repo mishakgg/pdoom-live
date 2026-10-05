@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import re
 import socket
 from pathlib import Path
 
@@ -51,7 +52,7 @@ def test_catalog_rows_are_official_public_domain_hearings():
         assert hearing.title
         assert hearing.committee
         lowered = hearing.title.lower()
-        assert "artificial intelligence" in lowered or " ai" in f" {lowered}"
+        assert "artificial intelligence" in lowered or "a.i." in lowered or re.search(r"\bai\b", lowered)
         host = hearing.canonical_url.split("/")[2]
         assert host.endswith("house.gov") or host.endswith("senate.gov") or host.endswith("congress.gov")
 
