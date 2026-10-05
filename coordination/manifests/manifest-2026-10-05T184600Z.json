@@ -1,0 +1,11 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-05T184600Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Launched sixteen concurrent Grok 4.7 extra-high workers from main.",
+  "base_sha": "d85e991927a16bdca16e4a9f442801baf55d4c6d",
+  "worker_count": 16,
+  "model": "grok-4.7-xhigh",
+  "delivery_note": "Workers push their own branches and open draft pull requests. The coordinator opens a draft if GitHub refuses the worker."
+}
