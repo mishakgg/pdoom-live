@@ -350,7 +350,11 @@ def _is_metadata_url(url: str) -> bool:
 
 def _looks_like_file(value: str) -> bool:
     lowered = value.lower().split("?", 1)[0].split("#", 1)[0]
-    return lowered.endswith(_FILE_SUFFIXES) or "/download" in lowered or lowered.startswith("%pdf")
+    if lowered.startswith("%pdf") or "/download" in lowered or lowered.endswith(_FILE_SUFFIXES):
+        return True
+    path = urlparse(lowered).path or lowered
+    parts = [part for part in path.split("/") if part]
+    return any(part == "pdf" or part.endswith(_FILE_SUFFIXES) for part in parts)
 
 
 def _body_is_file(payload: bytes) -> bool:
