@@ -1,7 +1,7 @@
 {
   "record_kind": "pdoom-live-dependency-map",
   "record_version": 1,
-  "reviewed_at": "2026-10-04T23:31:01Z",
+  "reviewed_at": "2026-10-05T06:47:49Z",
   "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
   "edges": [
     {
@@ -377,7 +377,7 @@
         "pr-32"
       ],
       "status": "descendant-of-b4cf230-not-included",
-      "summary": "Pull request 32 head 760fb1e is a fast-forward of b4cf230. merge-tree is clean. The change is the public and curator interface. It stays a separate draft until its tip is verified."
+      "summary": "Pull request 32 head d8bac78 is a descendant of b4cf230. The new commit puts a comparison preview on the homepage and darkens the mast. It stays a separate draft. GitHub checks were pending at 2026-10-05T06:47:49Z."
     }
   ],
   "migration_reservation": {
