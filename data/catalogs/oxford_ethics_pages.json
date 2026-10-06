@@ -1,0 +1,623 @@
+{
+  "catalog_id": "oxford_ethics_pages",
+  "description": "Metadata for public research, publication, and news pages of the Oxford Institute for Ethics in AI. Each stored URL was confirmed with one bounded GET of HTML that stayed on www.oxford-aiethics.ox.ac.uk. The apex host redirects to www and is omitted, with other ox.ac.uk hosts, PDFs, and downloads. A challenge, HTTP error, non-HTML body, robots disallow, or off-host redirect is omitted. Rows keep title, publisher, canonical URL, date, and rights. Page text is not stored. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix. Sole restricted deeds keep their own tokens. A missing date is unknown. Updated, modified, and copyright years are not publication dates. uk_ogl requires Open Government Licence. runner_wired stays false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Inaugural director and academic team appointed to the new Institute for Ethics in AI",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/inaugural-director-and-academic-team-appointed-new-institute-ethics-ai",
+      "date": "2020-09-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "A ticking time bomb",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/ticking-time-bomb",
+      "date": "2020-10-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Launch of Institute for Ethics in AI marked with public event",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/launch-institute-ethics-ai-marked-public-event",
+      "date": "2021-02-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Prestigious award for philosopher’s research on ending data inequality",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/prestigious-award-philosophers-research-ending-data-inequality",
+      "date": "2021-06-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Institute for Ethics in AI announces its Advisory Council",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/institute-ethics-ai-announces-its-advisory-council",
+      "date": "2021-10-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing our Research Associates nominated in 2021",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/introducing-our-research-associates-nominated-2021",
+      "date": "2021-12-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Royal Society cautions against online censorship of scientific misinformation",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/royal-society-cautions-against-online-censorship-scientific-misinformation",
+      "date": "2022-01-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Associate Professor of AI & Society appointed",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/associate-professor-ai-society-appointed",
+      "date": "2022-02-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Institute becomes a founding member of the Philosophy, AI and Society Consortium",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/institute-becomes-founding-member-philosophy-ai-and-society-consortium",
+      "date": "2022-04-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Watch now: DeepMind Founder’s Tanner Lecture at Oxford’s Institute for Ethics in AI",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/watch-now-deepmind-founders-tanner-lecture-oxfords-institute-ethics-ai",
+      "date": "2022-08-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Oxford philosopher receives award for project to explore the ethics of AI",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/oxford-philosopher-receives-award-project-explore-ethics-ai",
+      "date": "2023-02-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "40% of time spent on mundane chores could be automated within 10 years – AI experts",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/40-time-spent-mundane-chores-could-be-automated-within-10-years-ai-experts",
+      "date": "2023-02-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Celebrating Intellectual Excellence: Inaugural Bernard Williams Essay Prize",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/celebrating-intellectual-excellence-inaugural-bernard-williams-essay-prize",
+      "date": "2023-11-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "The EU’s AI Act at a Crossroads for Rights",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/eus-ai-act-crossroads-rights",
+      "date": "2023-12-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "From digital rights to international human rights: The emerging right to a human decision maker",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/digital-rights-international-human-rights-emerging-right-human-decision-maker",
+      "date": "2023-12-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Major Research Fellowship awarded to Carissa Véliz",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/major-research-fellowship-awarded-carissa-veliz",
+      "date": "2023-12-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "The 2023 Frank Chapman Sharp Memorial Prize awarded to Linda Eggert",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/2023-frank-chapman-sharp-memorial-prize-awarded-linda-eggert",
+      "date": "2024-01-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "New book: The Ethics of Privacy and Surveillance",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/new-book-ethics-privacy-and-surveillance",
+      "date": "2024-01-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generative AI in Adult Social Care: Defining what ‘responsible use’ looks like",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/generative-ai-adult-social-care-defining-what-responsible-use-looks",
+      "date": "2024-02-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "How ChatGPT has been prompted to respect safety, fairness, and copyright",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/how-chatgpt-has-been-prompted-respect-safety-fairness-and-copyright",
+      "date": "2024-02-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI and the Future of Work",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/ai-and-future-work",
+      "date": "2024-03-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Red Herring, Meaningful Human Control and the Autonomous Weapons Systems Debate",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/red-herring-meaningful-human-control-and-autonomous-weapons-systems-debate",
+      "date": "2024-03-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Why AI Needs Aristotle: The Lyceum Project",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/why-ai-needs-aristotle-lyceum-project",
+      "date": "2024-05-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Work, Play, Reality",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/work-play-reality",
+      "date": "2024-06-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Ethics Conference in Athens Inspired by Aristotle’s Philosophy",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/ai-ethics-conference-athens-inspired-aristotles-philosophy",
+      "date": "2024-06-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "When Robots Take the Field: Will AI Ruin Sports?",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/when-robots-take-field-will-ai-ruin-sports",
+      "date": "2024-06-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "What do Large Language Models tell us about ourselves?",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/what-do-large-language-models-tell-us-about-ourselves",
+      "date": "2024-07-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "How to Hold Mixed Human-AI Groups Responsible",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/how-hold-mixed-human-ai-groups-responsible",
+      "date": "2024-07-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "BBC Ideas with Dr Ekaterina Hertog: The Rise of 'Digital Parenting'",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/bbc-ideas-dr-ekaterina-hertog-rise-digital-parenting",
+      "date": "2024-07-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "New Associate Professor in Law and Regulation of AI",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/new-associate-professor-law-and-regulation-ai",
+      "date": "2024-08-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Professor Sir Nigel Shadbolt receives UKRI award to lead new interdisciplinary research project",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/professor-sir-nigel-shadbolt-receives-ukri-award-lead-new-interdisciplinary-research-project",
+      "date": "2024-09-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Launch of new Human-Centered AI Lab",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/launch-new-human-centered-ai-lab",
+      "date": "2024-09-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Associate Professor Ekaterina Hertog featured as part of British Academy's Digital Society Programme",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/associate-professor-ekaterina-hertog-featured-part-british-academys-digital-society-programme",
+      "date": "2024-09-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Beyond Regulation: Building AI in the Image of the Human",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/beyond-regulation-building-ai-image-human",
+      "date": "2024-10-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Right to a Human-to-Human Interaction",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/right-human-human-interaction",
+      "date": "2024-11-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Current AI Challenges to the Future(s) of Work",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/current-ai-challenges-futures-work",
+      "date": "2024-11-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI in a Democratic Society: A Critical Conversation at Davos",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/ai-democratic-society-critical-conversation-davos",
+      "date": "2025-01-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Ethical and Safe AI Development: Corporate Governance is the Missing Piece",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/Ethical-and-Safe-AI-Development-Corporate-Governance-is-the-Missing-Piece",
+      "date": "2025-02-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "UN talk: Can moral and ethical boundaries be applied to AI?",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/un-talk-can-moral-and-ethical-boundaries-be-applied-ai",
+      "date": "2025-02-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Paris AI Summit: A Missed Opportunity for Global AI Governance",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/paris-ai-summit-missed-opportunity-global-ai-governance",
+      "date": "2025-02-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Revolutionising AI Ethics: Oxford Launches the Accelerator Fellowship Programme",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/revolutionising-ai-ethics-oxford-launches-accelerator-fellowship-programme",
+      "date": "2025-03-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Government must not pit creative industries against big tech, says Oxford Consultation on Copyright and AI",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/government-must-not-pit-creative-industries-against-big-tech-says-oxford-consultation",
+      "date": "2025-03-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI in Social Care Summit: Charting a Course for Responsible Use of AI in Social Care",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/ai-social-care-summit-charting-course-responsible-use-ai-social-care",
+      "date": "2025-04-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Overstated Cost of AI Fairness in Criminal Justice",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/overstated-cost-ai-fairness-criminal-justice",
+      "date": "2025-05-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Why AI Harm Escapes Accountability in the New Information Economy",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/why-ai-harm-escapes-accountability-new-information-economy",
+      "date": "2025-05-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Autonomous weapons and the significance of choosing not to use force",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/autonomous-weapons-and-significance-choosing-not-use-force",
+      "date": "2025-06-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Institute for Ethics in AI joins Aspen Institute Technology Leaders Initiative",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/institute-ethics-ai-joins-aspen-institute-technology-leaders-initiative",
+      "date": "2025-07-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Launch of the Accelerating AI Ethics Podcast",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/launch-accelerating-ai-ethics-podcast",
+      "date": "2025-08-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Accelerator Fellow, Ambassador Tang honoured with Right Livelihood Award",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/accelerator-fellow-ambassador-tang-honoured-right-livelihood-award",
+      "date": "2025-10-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Institute for Ethics in AI moves to the Stephen A. Schwarzman Centre for the Humanities",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/institute-ethics-ai-moves-stephen-schwarzman-centre-humanities",
+      "date": "2025-10-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "What Should We Do About Chatbots?",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/what-should-we-do-about-chatbots",
+      "date": "2025-11-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Professor Edward Harcourt MBE appointed Director of the Institute for Ethics in AI (Interim)",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/professor-edward-harcourt-mbe-appointed-director-institute-ethics-ai-interim",
+      "date": "2025-11-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Professor Carissa Veliz named one of the world’s most influential thinkers on technology by El País",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/professor-carissa-veliz-named-one-worlds-most-influential-thinkers-technology-el-pais",
+      "date": "2025-12-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Associate Professor Raphaël Millière awarded APA AI2050 Prize for Early Career Researchers",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/associate-professor-raphael-milliere-awarded-apa-ai2050-prize-early-career-researchers",
+      "date": "2026-01-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Institute for Ethics in AI and Accelerator Fellowship Programme at DLD 2026",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/institute-ethics-ai-and-accelerator-fellowship-programme-dld-2026",
+      "date": "2026-01-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Professor Ignacio Cofone publishes new research reframing the “privacy paradox”",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/professor-ignacio-cofone-publishes-new-research-reframing-privacy-paradox",
+      "date": "2026-01-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Professor Philipp Koralus delivers a keynote lecture on autonomy and agency in AI at Vice-Chancellor’s Colloquium",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/professor-philipp-koralus-delivers-keynote-lecture-autonomy-and-agency-ai-vice-chancellors",
+      "date": "2026-02-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing a new collaboration with the BBC: Truth and Trust – AI and Young People",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/announcing-new-collaboration-bbc-truth-and-trust-ai-and-young-people",
+      "date": "2026-02-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Dr Ekaterina Hertog awarded funding for new research on the digital lives of care-experienced children",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/dr-ekaterina-hertog-awarded-funding-new-research-digital-lives-care-experienced-children",
+      "date": "2026-02-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Professor Ignacio Cofone Proposes New Framework to Regulate “Dark Patterns”",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/professor-ignacio-cofone-proposes-new-framework-regulate-dark-patterns",
+      "date": "2026-02-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Claude's new Constitution: two evaluative continua",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/claudes-new-constitution-two-evaluative-continua",
+      "date": "2026-03-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Digital care technologies: balancing innovation with ethics in unpaid care",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/digital-care-technologies-balancing-innovation-ethics-unpaid-care",
+      "date": "2026-03-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "New book by Dr Carissa Véliz explores the power of prediction from ancient oracles to AI",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/new-book-dr-carissa-veliz-explores-power-prediction-ancient-oracles-ai",
+      "date": "2026-03-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "New book by Professor Ignacio Cofone: Canadian Privacy Law Cases and Comparative Materials",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/new-book-professor-ignacio-cofone-canadian-privacy-law-cases-and-comparative-materials",
+      "date": "2026-04-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Institute for Ethics in AI and FamTech.org announce new collaboration on responsible AI in caregiving",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/institute-ethics-ai-and-famtechorg-announce-new-collaboration-responsible-ai-caregiving",
+      "date": "2026-04-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI, the potter’s wheel and the human capacity for invention",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/ai-potters-wheel-and-human-capacity-invention",
+      "date": "2026-04-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Dr Carissa Véliz: Beware the power of prediction, a new TED Talk and the launch of 'Prophecy'",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/dr-carissa-veliz-beware-power-prediction-new-ted-talk-and-launch-prophecy",
+      "date": "2026-04-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Insights on the ethics of AI from Dr Caroline Green’s trip to Dharamsala, India",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/insights-ethics-ai-dr-caroline-greens-trip-dharamsala-india",
+      "date": "2026-05-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "2026 Cosmos HAI Lab Lecture with Jack Clark, Co-founder of Anthropic",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/2026-cosmos-hai-lab-lecture-jack-clark-co-founder-anthropic",
+      "date": "2026-05-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Black Box is Usually a Choice",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/black-box-is-usually-a-choice",
+      "date": "2026-06-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Three cheers for Magnifica Humanitas - but the uniqueness of the human doesn’t need a theological foundation",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/three-cheers-magnifica-humanitas-uniqueness-human-doesnt-need-theological-foundation",
+      "date": "2026-06-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Institute for Ethics in AI is now an IASEAI Affiliate",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/institute-ethics-ai-now-iaseai-affiliate",
+      "date": "2026-06-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI companies are adopting ‘care language’: Three reasons why we should be concerned",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/ai-companies-are-adopting-care-language-three-reasons-why-we-should-be-concerned",
+      "date": "2026-07-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Institute welcomes inaugural Technology Leaders Initiative cohort",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/institute-welcomes-inaugural-technology-leaders-initiative-cohort",
+      "date": "2026-07-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Institute launches new Oxford Executive Programme in Ethical AI Leadership",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news/institute-launches-new-oxford-executive-programme-ethical-ai-leadership",
+      "date": "2026-08-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Step in the Right Direction: The Joint Committee on Human Rights Calls for Human Rights-Friendly AI Regulation in the UK",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/blog/step-right-direction-joint-committee-human-rights-calls-human-rights-friendly-ai-regulation-uk",
+      "date": "2026-09-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI and creativity",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/ai-and-creativity",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Philosophical foundations: AI and humanity",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/ai-and-humanity",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Ethics at Oxford Blog",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/ai-ethics-oxford-blog",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI, health and care",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/ai-health-and-care",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI policy, law and regulation",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/ai-policy-law-and-regulation",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI, society and the family",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/ai-society-and-family",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Lyceum Project - AI Ethics with Aristotle White Paper",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/lyceum-project-ai-ethics-aristotle-white-paper",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Latest news",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/news",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Philosophy to code",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/philosophy-code",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Publications",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/publications",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research priorities",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/research-priorities",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "White Papers",
+      "publisher": "Oxford Institute for Ethics in AI",
+      "canonical_url": "https://www.oxford-aiethics.ox.ac.uk/white-papers",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
