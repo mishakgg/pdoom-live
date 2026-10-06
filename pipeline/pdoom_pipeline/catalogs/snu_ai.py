@@ -48,8 +48,8 @@ still counts.
 
 Updated, modified, and copyright years are not publication dates. A
 year-only date stays unknown. Script, style, and comment text does not
-count. A missing publication date stays unknown. This module does not fetch
-and does not import requests. It is not a belief collector.
+count. A missing publication date stays unknown. This module does not fetch.
+The requests package is not imported. It is not a belief collector.
 ``runner_wired`` stays false. RssCollector stays the only belief collector.
 """
 
@@ -1120,16 +1120,25 @@ def _without_hidden(page_html: str) -> str:
 
 
 def _without_credit(page_html: str) -> str:
-    """Drop photo, image, and caption credits, including a Photo: credit line."""
+    """Drop photo, image, and caption credits that name someone else's licence.
+
+    A reuse licence stated outside that credit still counts, including when
+    it shares an element with the credit sentence.
+    """
 
     def replace_block(match: re.Match[str]) -> str:
         attrs = match.group(2)
         body = match.group(3)
         if len(body) > 800:
             return match.group(0)
-        if _CREDIT_CLASS.search(attrs) or _CREDIT_PHRASE.search(body) or _CREDIT_PHRASE.search(attrs):
+        if _CREDIT_CLASS.search(attrs) or _CREDIT_PHRASE.search(attrs):
             return " "
-        return match.group(0)
+        if not _CREDIT_PHRASE.search(body):
+            return match.group(0)
+        cleaned = _CREDIT_SENTENCE.sub(" ", body)
+        if _CREDIT_PHRASE.search(cleaned):
+            return " "
+        return f"<{match.group(1)}{attrs}>{cleaned}</{match.group(1)}>"
 
     stripped = _CREDIT_BLOCK.sub(replace_block, page_html)
 
