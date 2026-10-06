@@ -1,0 +1,1092 @@
+{
+  "catalog_id": "stability_ai_pages",
+  "description": "Metadata for confirmed public Stability AI research and news pages on stability.ai. https://stabilityai.com and https://www.stability.ai redirect there. Each row was stored after one bounded GET of that page. Product apps, login pages, API docs, Cloudflare challenges, captchas, robots disallows, and off-host redirects are not stored. Rows keep a title, publisher, canonical URL, date, and rights. Page bodies are not stored. Rights stay unknown unless the page states a reuse licence. creative_commons means CC0 or CC BY-SA. creative_commons_attribution means CC BY without NC, ND, or SA. A missing date is unknown. Updated, modified, and copyright years are not publication dates. This catalog is not a belief collector and runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Stable Diffusion Launch Announcement",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-diffusion-announcement",
+      "date": "2022-08-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Diffusion Public Release",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-diffusion-public-release",
+      "date": "2022-08-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/dreambooth-fine-tuning-text-to-image-diffusion-models-for-subject-driven-generation",
+      "date": "2022-08-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Announces $101 Million in Funding for Open-Source Artificial Intelligence",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-announces-101-million-in-funding-for-open-source-artificial-intelligence",
+      "date": "2022-10-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability’s API Platform",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/api-platform-for-stability-ai",
+      "date": "2022-11-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Diffusion 2.0 Release",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-diffusion-v2-release",
+      "date": "2022-11-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "DreamStudio beta Updates 1-Dec 22",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/dreamstudio-update-1-dec-2022",
+      "date": "2022-12-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "AWS re:invent 2022",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/aws-reinvent-2022",
+      "date": "2022-12-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Diffusion v2.1 and DreamStudio Updates 7-Dec 22",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stablediffusion2-1-release7-dec-2022",
+      "date": "2022-12-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI partners with Krikey AI to launch AI animation tools",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-partners-with-krikey-ai-to-launch-ai-animation-tools-b42m9",
+      "date": "2023-02-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Announces Stability For Blender; Text To Image Creation in 3D",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-announces-stability-for-blender-text-to-image-creation-in-3d",
+      "date": "2023-03-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Acquires Init ML, Makers of Clipdrop Application",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-acquires-init-ml-makers-of-clipdrop-application",
+      "date": "2023-03-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Diffusion Reimagine",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-diffusion-reimagine",
+      "date": "2023-03-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Animation Technology Makes Its Debut With Revel.xyz’s Animai Application",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-animation-technology-makes-its-debut-with-revelxyzs-animai-application",
+      "date": "2023-03-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Diffusion XL Beta Available for API Customers and DreamStudio Users",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-diffusion-xl-beta-available-for-api-customers-and-dreamstudio-users",
+      "date": "2023-04-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI makes its Stable Diffusion models available on Amazon’s new Bedrock service",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-makes-its-stable-diffusion-models-available-on-amazons-new-bedrock-service",
+      "date": "2023-04-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Partners with Iconic Artist Peter Gabriel to Launch Series of AI Animation Challenges titled #DiffuseTogether",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-partners-with-iconic-artist-peter-gabriel-to-launch-series-of-ai-animation-challenges-titled-diffusetogether",
+      "date": "2023-04-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Launches the First of its Stable LM Suite of Language Models",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-launches-the-first-of-its-stablelm-suite-of-language-models",
+      "date": "2023-04-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI releases its Image Upscaling API",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-releases-image-upscaling-api",
+      "date": "2023-04-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI releases DeepFloyd IF, a powerful text-to-image model that can smartly integrate text into images",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/deepfloyd-if-text-to-image-model",
+      "date": "2023-04-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI releases StableVicuna, the AI World’s First Open Source RLHF LLM Chatbot",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stablevicuna-open-source-rlhf-chatbot",
+      "date": "2023-04-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI releases Stable Animation SDK, a powerful text-to-animation tool for developers.",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-animation-sdk",
+      "date": "2023-05-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Advocating for Open Models in AI Oversight: Stability AI's Letter to the United States Senate",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-letter-us-senate-ai-oversight",
+      "date": "2023-05-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Releases StableStudio, the Open Source Future of DreamStudio",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stablestudio-open-source-community-driven-future-dreamstudio-release",
+      "date": "2023-05-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Clipdrop launches Reimagine XL",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-clipdrop-launches-reimagine-xl",
+      "date": "2023-05-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Pick-a-Pic: An Open Dataset of User Preferences for Text-to-Image Generation",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/pick-a-pic",
+      "date": "2023-05-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Clipdrop Launches Uncrop: The Ultimate Aspect Ratio Editor",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/clipdrop-launches-uncrop-the-ultimate-aspect-ratio-editor",
+      "date": "2023-06-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Peter Gabriel and Stability AI Announce #DiffuseTogether AI Animation Challenge Winners",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/peter-gabriel-and-stability-ai-announce-diffusetogether-ai-animation-challenge-winners",
+      "date": "2023-06-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI launches SDXL 0.9: A Leap Forward in AI Image Generation",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/sdxl-09-stable-diffusion",
+      "date": "2023-06-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "OpenFlamingo v2: New Models and Enhanced Training Setup",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/openflamingo-v2-new-models-and-enhanced-training-setup",
+      "date": "2023-06-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Reconstructing the Mind’s Eye: fMRI-to-Image with Contrastive Learning and Diffusion Priors",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/minds-eye",
+      "date": "2023-07-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Objaverse-XL: A Universe of 10M+ 3D objects",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/objaverse-xl-a-colossal-universe-of-3d-objects",
+      "date": "2023-07-11",
+      "rights": "creative_commons"
+    },
+    {
+      "title": "Clipdrop Launches Stable Doodle",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/clipdrop-launches-stable-doodle",
+      "date": "2023-07-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "New Stability AI Developer Platform: Simplifying API Discovery and Accelerating Integration",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-developer-platform-reboot-annoucement",
+      "date": "2023-07-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Meet Stable Beluga 1 and Stable Beluga 2, Our Large and Mighty Instruction Fine-Tuned Language Models",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-beluga-large-instruction-fine-tuned-models",
+      "date": "2023-07-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing SDXL 1.0",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-diffusion-sdxl-1-announcement",
+      "date": "2023-07-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/sdxl-improving-latent-diffusion-models-for-high-resolution-image-synthesis",
+      "date": "2023-07-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Humans in 4D: Reconstructing and Tracking Humans with Transformers",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/humans-in-4d-reconstructing-and-tracking-humans-with-transformers",
+      "date": "2023-08-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing Stable Code Alpha",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stablecode-llm-generative-ai-coding",
+      "date": "2023-08-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Japanese StableLM, Marking Entry into International Language Model Market",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-new-jplm-japanese-language-model-stablelm",
+      "date": "2023-08-10",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "Stable Chat, research preview and participation in DEF CON AI Village",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-chat-research-defcon-ai-village",
+      "date": "2023-08-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "SDXL Gets Boost from NVIDIA TensorRT",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-sdxl-gets-boost-from-nvidia-tensor-rt",
+      "date": "2023-08-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing Japanese InstructBLIP Alpha",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/announcing-japanese-instructblip-alpha",
+      "date": "2023-09-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing Stable Audio, a product for music & sound generation",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-audio-using-ai-to-generate-music",
+      "date": "2023-09-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Audio: Fast Timing-Conditioned Latent Audio Diffusion",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/stable-audio-efficient-timing-latent-diffusion",
+      "date": "2023-09-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable LM 3B: Bringing Sustainable, High-Performance Language Models to Smart Devices",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-lm-3b-sustainable-high-performance-language-models-smart-devices",
+      "date": "2023-10-02",
+      "rights": "creative_commons"
+    },
+    {
+      "title": "Celebrating one year(ish) of Stable Diffusion … and what a year it’s been!",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/celebrating-one-year-of-stable-diffusion",
+      "date": "2023-10-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Audio Named One of TIME’s Best Inventions of 2023",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-audio-times-best-inventions-of-2023",
+      "date": "2023-10-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Participating in the UK Government's AI Safety Summit",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-uk-government-ai-safety-summit",
+      "date": "2023-10-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Previews Enhanced Image Offerings: APIs for Business & New Product Features",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-enhanced-image-apis-for-business-features",
+      "date": "2023-11-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Clipdrop Launches Real Estate Tools",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/clipdrop-launches-real-estate-tools",
+      "date": "2023-11-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable Video Diffusion",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-video-diffusion-open-ai-video-model",
+      "date": "2023-11-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Video Diffusion: Scaling Latent Video Diffusion Models to Large Datasets",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/stable-video-diffusion-scaling-latent-video-diffusion-models-to-large-datasets",
+      "date": "2023-11-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing SDXL Turbo: A Real-Time Text-to-Image Generation Model",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-sdxl-turbo",
+      "date": "2023-11-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Adversarial Diffusion Distillation",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/adversarial-diffusion-distillation",
+      "date": "2023-11-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Statement to the U.S. Senate AI Insight Forum on Transparency, Explainability, and Copyright",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/copyright-us-senate-open-ai-transparency",
+      "date": "2023-11-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Japanese Stable LM Beta",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/japanese-stable-lm-beta-language-models",
+      "date": "2023-11-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Behind the Compute: Building the New AI Supercomputer",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/building-new-ai-supercomputer",
+      "date": "2023-12-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable LM Zephyr 3B: A New Addition to Stable LM, Bringing Powerful LLM Assistants to Edge Devices",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stablelm-zephyr-3b-stability-llm",
+      "date": "2023-12-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable Zero123: Quality 3D Object Generation from Single Images",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-zero123-3d-generation",
+      "date": "2023-12-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing the Stability AI Membership",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/introducing-stability-ai-membership",
+      "date": "2023-12-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Video Diffusion Now Available on Stability AI Developer Platform API",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/introducing-stable-video-diffusion-api",
+      "date": "2023-12-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Our New SVP of Integrity, Ella Irwin",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/introducing-ella-irwin-svp-of-integrity",
+      "date": "2024-01-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Code 3B: Coding on the Edge",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-code-2024-llm-code-completion-release",
+      "date": "2024-01-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable LM 2 1.6B",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/introducing-stable-lm-2",
+      "date": "2024-01-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scalable High-Resolution Pixel-Space Image Synthesis with Hourglass Diffusion Transformers",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/hourglass-diffusion-transformer-high-resolution-image-synthesis",
+      "date": "2024-01-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Fast Timing-Conditioned Latent Audio Diffusion",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/fast-timing-conditioned-latent-audio-diffusion",
+      "date": "2024-02-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Joins U.S. Artificial Intelligence Safety Institute Consortium",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-joins-us-artificial-intelligence-safety-institute-consortium",
+      "date": "2024-02-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable Cascade",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/introducing-stable-cascade",
+      "date": "2024-02-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Partners with Jasper in Divestment of Init ML",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/init-ml-divestment",
+      "date": "2024-02-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Diffusion 3",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-diffusion-3",
+      "date": "2024-02-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Behind the Compute: Using the New AI Supercomputer",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/using-the-new-ai-supercomputer",
+      "date": "2024-02-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "TripoSR: Fast 3D Object Reconstruction from a Single Image",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/triposr-fast-3d-object-reconstruction-from-a-single-image",
+      "date": "2024-03-04",
+      "rights": "mit"
+    },
+    {
+      "title": "Stable Diffusion 3: Research Paper",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-diffusion-3-research-paper",
+      "date": "2024-03-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing TripoSR: Fast 3D Object Generation from Single Images",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/triposr-3d-generation",
+      "date": "2024-03-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scaling Rectified Flow Transformers for High-Resolution Image Synthesis",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/scaling-rectified-flow-transformers-for-high-resolution-image-synthesis",
+      "date": "2024-03-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Behind the Compute: Benchmarking Compute Solutions",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/putting-the-ai-supercomputer-to-work",
+      "date": "2024-03-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Celebrating One Year of MedARC",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/celebrating-one-year-of-medarc",
+      "date": "2024-03-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable Video 3D: Quality Novel View Synthesis and 3D Generation from Single Images",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/introducing-stable-video-3d",
+      "date": "2024-03-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "SV3D: Novel Multi-view Synthesis and 3D Generation from a Single Image using Latent Video Diffusion",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/sv3d-novel-multi-view-synthesis-and-3d-generation-from-a-single-image-using-latent-video-diffusion",
+      "date": "2024-03-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Image Services on Stability AI Developer Platform",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/image-services-on-stability-ai-developer-platform",
+      "date": "2024-03-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Announcement",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stabilityai-announcement",
+      "date": "2024-03-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable Code Instruct 3B",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/introducing-stable-code-instruct-3b",
+      "date": "2024-03-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable Audio 2.0",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-audio-2-0",
+      "date": "2024-04-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable LM 2 12B",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/introducing-stable-lm-2-12b",
+      "date": "2024-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "MindEye2: Shared-Subject Models Enable fMRI-To-Image With 1 Hour of Data",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/mindeye2-fmri-to-image-with-1-hour-of-data",
+      "date": "2024-04-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Shaping Realities: Enhancing 3D Generative AI with Fabrication Constraints",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/shaping-realities-enhancing-3d-generative-ai-with-fabrication-constraints",
+      "date": "2024-04-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Diffusion 3 API Now Available",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-diffusion-3-api",
+      "date": "2024-04-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Joins Thorn and All Tech Is Human to Enact Child Safety Commitments for Generative AI",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/safetybydesign",
+      "date": "2024-04-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Artisan: Media Generation and Editing on Discord",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-artisan",
+      "date": "2024-05-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable Audio Open - An Open Source Model for Audio Samples and Sound Design",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/introducing-stable-audio-open",
+      "date": "2024-06-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Reflecting on Computex Taipei and the Exciting Journey Ahead",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/reflecting-on-computex-taipei-and-the-exciting-journey-ahead",
+      "date": "2024-06-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing the Open Release of Stable Diffusion 3 Medium, Our Most Sophisticated Image Generation Model to Date",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-diffusion-3-medium",
+      "date": "2024-06-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Secures Significant New Investment from World-Class Investor Group and Appoints Prem Akkaraju as CEO",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-secures-significant-new-investment",
+      "date": "2024-06-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "License Update",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/license-update",
+      "date": "2024-07-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Joins IWF’s Mission to Make Internet a Safer Space for Children",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-joins-iwfs-mission",
+      "date": "2024-07-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Releases Stable Assistant Features",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-releases-stable-assistant-features",
+      "date": "2024-07-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Audio Open",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/stable-audio-open",
+      "date": "2024-07-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Audio Open: Research Paper",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-audio-open-research-paper",
+      "date": "2024-07-22",
+      "rights": "creative_commons"
+    },
+    {
+      "title": "Introducing Stable Video 4D, Our Latest AI Model for Dynamic Multi-Angle Video Generation",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-video-4d",
+      "date": "2024-07-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "SV4D: Dynamic 3D Content Generation with Multi-Frame and Multi-View Consistency",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/sv4d-dynamic-3d-content-generation-with-multi-frame-and-multi-view-consistency",
+      "date": "2024-07-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable Fast 3D: Rapid 3D Asset Generation From Single Images",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/introducing-stable-fast-3d",
+      "date": "2024-08-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "SF3D: Stable Fast 3D Mesh Reconstruction with UV-unwrapping and Illumination Disentanglement",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/sf3d-stable-fast-3d-mesh-reconstruction-with-uv-unwrapping-and-illumination-disentanglement",
+      "date": "2024-08-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI names Hanno Basse as new Chief Technology Officer",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-names-hanno-basse-as-new-chief-technology-officer",
+      "date": "2024-08-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI’s Top 3 Text-to-Image Models Now Available in Amazon Bedrock",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ais-top-3-text-to-image-models-now-available-in-amazon-bedrock",
+      "date": "2024-09-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Lenovo Features Stability AI Text-To-Image Model in Its New Lenovo Creator Zone",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/lenovo-features-stability-ai-text-to-image-model-in-its-new-lenovo-creator-zone",
+      "date": "2024-09-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "James Cameron, Academy Award-Winning Filmmaker, Joins Stability AI Board of Directors",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/james-cameron-joins-stability-ai-board-of-directors",
+      "date": "2024-09-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable Diffusion 3.5",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/introducing-stable-diffusion-3-5",
+      "date": "2024-10-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Expanding Our Collaboration with Amazon: Stable Diffusion 3.5 Large is Now Available in Amazon SageMaker JumpStart",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-diffusion-3-5-large-is-now-available-in-amazon-sagemaker-jumpstart",
+      "date": "2024-11-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "ControlNets for Stable Diffusion 3.5 Large",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/sd3-5-large-controlnets",
+      "date": "2024-11-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Diffusion 3.5 Large is Now Available on Amazon Bedrock",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-diffusion-35-large-is-now-available-on-amazon-bedrock",
+      "date": "2024-12-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable Point Aware 3D: Real-Time Editing and Complete Object Structure Generation",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-point-aware-3d",
+      "date": "2025-01-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "SPAR3D: Stable Point-Aware Reconstruction of 3D Objects from Single Images",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/spar3d-stable-point-aware-reconstruction-of-3d-objects-from-single-images",
+      "date": "2025-01-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Diffusion 3.5 Large is Now Available on Microsoft Azure AI Foundry",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-diffusion-35-large-is-now-available-on-microsoft-ai-foundry",
+      "date": "2025-02-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI and Arm Bring On-Device Generative Audio to Smartphones",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-and-arm-bring-on-device-generative-audio-to-smartphones",
+      "date": "2025-03-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Announces Investment from WPP and New Partnership to Shape the Future of Media and Entertainment Production",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-announces-investment-from-wpp-and-new-partnership-to-shape-the-future-of-media-and-entertainment-production",
+      "date": "2025-03-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Our New SVP, Head of Product, Ryan Ellis",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/introducing-our-new-svp-head-of-product-ryan-ellis",
+      "date": "2025-03-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable Virtual Camera: Multi-View Video Generation with 3D Camera Control",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/introducing-stable-virtual-camera-multi-view-video-generation-with-3d-camera-control",
+      "date": "2025-03-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Fast High-Resolution Image Synthesis with Latent Adversarial Diffusion Distillation",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/fast-high-resolution-image-synthesis-with-latent-adversarial-diffusion-distillation",
+      "date": "2025-03-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Virtual Camera: Multi-View Video Generation with 3D Camera Control",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/hlqetmrinc7kmmovullj0fn7am8zsu",
+      "date": "2025-03-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Our New Chief Pipeline Architect, Robert Legato",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/introducing-our-new-chief-pipeline-architect-rob-legato",
+      "date": "2025-03-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "SV4D 2.0: Enhancing Spatio-Temporal Consistency in Multi-View Video Diffusion for High-Quality 4D Generation",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/sv4d-20-enhancing-spatio-temporal-consistency-in-multi-view-video-diffusion-for-high-quality-4d-generation",
+      "date": "2025-03-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Diffusion Now Optimized for AMD Radeon™ GPUs and Ryzen™ AI APUs",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-diffusion-now-optimized-for-amd-radeon-gpus",
+      "date": "2025-04-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "FaceCraft4D: Animated 3D Facial Avatar Generation from a Single Image",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/facecraft4d-animated-3d-facial-avatar-generation-from-a-single-image",
+      "date": "2025-04-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Fast Text-to-Audio Generation with Adversarial Post-Training",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/fast-text-to-audio-generation-with-adversarial-post-training",
+      "date": "2025-05-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI and Arm Collaborate to Release Stable Audio Open Small, Enabling Real-World Deployment for On-Device Audio Generation",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-and-arm-release-stable-audio-open-small-enabling-real-world-deployment-for-on-device-audio-control",
+      "date": "2025-05-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Video 4D 2.0: New Upgrades for High-Fidelity Novel-Views and 4D Generation from a Single Video",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-video-4d-20-new-upgrades-for-high-fidelity-novel-views-and-4d-generation-from-a-single-video",
+      "date": "2025-05-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "MARBLE: Material Recomposition and Blending in CLIP-Space",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/marble-material-recomposition-and-blending-in-clip-space",
+      "date": "2025-06-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Diffusion 3.5 Models Optimized with TensorRT Deliver 2X Faster Performance and 40% Less Memory on NVIDIA RTX GPUs",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stable-diffusion-35-models-optimized-with-tensorrt-deliver-2x-faster-performance-and-40-less-memory-on-nvidia-rtx-gpus",
+      "date": "2025-06-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Achieves SOC 2 Type II and SOC 3 Compliance, Reaching New Industry Standard for Enterprise-Grade Security",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-achieves-soc-2-type-ii-and-soc-3-compliance",
+      "date": "2025-08-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stability AI Solutions: Generative AI Solutions to Accelerate Enterprise Creative Production",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/introducing-stability-ai-solutions",
+      "date": "2025-08-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI and NVIDIA Bring Faster Performance and Simplified Enterprise Deployment with the Stable Diffusion 3.5 NIM",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-and-nvidia-bring-faster-performance-and-simplified-enterprise-deployment-with-the-stable-diffusion-35-nim",
+      "date": "2025-08-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Introduces Stable Audio 2.5, the First Audio Model Built for Enterprise Sound Production at Scale",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-introduces-stable-audio-25-the-first-audio-model-built-for-enterprise-sound-production-at-scale",
+      "date": "2025-09-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI’s Annual Integrity Transparency Report",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ais-annual-integrity-transparency-report",
+      "date": "2025-09-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Part Diffusion 4D: Multi-View RGB and Kinematic Parts Video Generation",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/stable-part-diffusion-4d-multi-view-rgb-and-kinematic-parts-video-generation",
+      "date": "2025-09-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Brings Image Services to Amazon Bedrock, Delivering End-to-End Creative Control with Enterprise-Grade Infrastructure",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-brings-image-services-to-amazon-bedrock-delivering-professional-creative-control-with-enterprise-grade-infrastructure",
+      "date": "2025-09-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "SD3.5-Flash: Distribution-Guided Distillation of Generative Flows",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/sd35-flash-distribution-guided-distillation-of-generative-flows",
+      "date": "2025-09-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Music and Artificial Intelligence: Artistic Trends",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/music-and-artificial-intelligence-artistic-trends",
+      "date": "2025-09-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable Cinemetrics: Structured Taxonomy and Evaluation for Professional Video Generation",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/stable-cinemetrics-structured-taxonomy-and-evaluation-for-professional-video-generation",
+      "date": "2025-10-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "ReSWD: ReSTIR'd, not shaken. Combining Reservoir Sampling and Sliced Wasserstein Distance for Variance Reduction",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/reswd-restird-not-shaken-combining-reservoir-sampling-and-sliced-wasserstein-distance-for-variance-reduction",
+      "date": "2025-10-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "SViM3D: Stable Video Material Diffusion for Single Image 3D Generation",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/svim3d-stable-video-material-diffusion-for-single-image-3d-generation",
+      "date": "2025-10-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI and EA Partner to Empower Artists, Designers, and Developers to Reimagine Game Development",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-and-ea-partner-to-reimagine-game-development",
+      "date": "2025-10-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Foley Control: Aligning a Frozen Latent Text-to-Audio Model to Video",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/foley-control-aligning-a-frozen-latent-text-to-audio-model-to-video",
+      "date": "2025-10-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Universal Music Group and Stability AI Announce Strategic Alliance to Co-Develop Professional AI Music Creation Tools",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/universal-music-group-and-stability-ai-announce-strategic-alliance",
+      "date": "2025-10-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Warner Music Group and Stability AI Join Forces To Build The Next Generation Of Responsible AI Tools For Music Creation",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/warner-music-group-and-stability-ai-join-forces-to-build-next-gen-tools",
+      "date": "2025-11-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stability AI Joins the Tech Coalition",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-joins-the-tech-coalition",
+      "date": "2026-02-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Brand Studio: The creative production platform powered by your brand",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/brand-studio-by-stability-ai-creative-production-platform-for-brands",
+      "date": "2026-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Meet Stable Audio 3.0, the model family built for artistic experimentation with open-weight models",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/meet-stable-audio-3-the-model-family-built-for-artistic-experimentation-with-open-weight-models",
+      "date": "2026-05-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Stable Audio 3 & SAME (Semantically-Aligned Music Autoencoder)",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/stable-audio-3",
+      "date": "2026-05-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "OCTOPUS: Optimized KV Cache for Transformers via Octahedral Parametrization Under Optimal Squared Error Quantization",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/octopus-optimized-kv-cache-for-transformers-via-octahedral-parametrization-under-optimal-squared-error-quantization",
+      "date": "2026-06-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stable-Layers: Fine-Tuning Image Layer Decomposition Models with VLM-Scored Reinforcement Learning",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research/stable-layers-fine-tuning-image-layer-decomposition-models-with-vlm-scored-reinforcement-learning",
+      "date": "2026-06-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sharing a new way to work with Stable Audio",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/sharing-a-new-way-to-work-with-stable-audio",
+      "date": "2026-08-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Entertainment Industry’s Biggest Names Back Stability AI in Latest Funding Round",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates/stability-ai-latest-funding-backed-by-entertainment-industry-biggest-names",
+      "date": "2026-08-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "News & Updates",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/news-updates",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research Blog",
+      "publisher": "Stability AI",
+      "canonical_url": "https://stability.ai/research",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
