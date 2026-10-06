@@ -1,0 +1,6 @@
+{
+  "catalog_id": "controlai_pages",
+  "description": "Metadata for public statement, research, news, and program HTML pages on controlai.com and www.controlai.com. Publisher is ControlAI. A row keeps a title, canonical URL, date, and rights. Page text, abstracts, PDFs, quotes, transcripts, and chart data are not stored. Bounded GETs of /, /robots.txt, /sitemap.xml, /news, /research, /statements, and /programs on both hosts returned HTTP 301 to controlai.org. That host is not catalogued, so those paths are empty and the redirect is not followed. A Cloudflare challenge, captcha, authentication wall, or robots disallow records an empty catalog for that path. No such challenge was returned. Missing dates stay unknown. Updated, modified, and copyright years are not publication dates. Not a belief collector and runner_wired stays false.",
+  "runner_wired": false,
+  "entries": []
+}
