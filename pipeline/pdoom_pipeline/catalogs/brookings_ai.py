@@ -17,8 +17,9 @@ CC0 anchor on a publicdomain/mark URL stays unknown. The Public Domain Mark,
 all rights reserved, terms, and the host name stay unknown. MIT, Apache-2.0,
 and MPL-2.0 stay their own tokens. Mixed software licences stay unknown.
 uk_ogl requires the British phrase Open Government Licence. A generic
-creativecommons.org/licenses/ URL stays unknown. A hyphen continues a deed
-token, so CC BY does not match CC BY-NC.
+creativecommons.org/licenses/ URL stays unknown, and the visible text of an
+anchor that points there does not count. A hyphen continues a deed token, so
+CC BY does not match CC BY-NC.
 
 Updated, modified, and copyright years are not publication dates. A missing
 publication date stays unknown. This module does not fetch and it is not a
@@ -125,6 +126,7 @@ _LDJSON = re.compile(
 _TAG = re.compile(r"(?is)<[^>]+>")
 _META = re.compile(r"(?is)<meta\b[^>]*>")
 _LINK = re.compile(r"(?is)<(?:link|a)\b[^>]*>")
+_ANCHOR_BLOCK = re.compile(r"(?is)<a\b([^>]*)>(.*?)</a>")
 _H1 = re.compile(r"(?is)<h1\b[^>]*>(.*?)</h1>")
 _TITLE = re.compile(r"(?is)<title\b[^>]*>(.*?)</title>")
 _ATTR = re.compile(
@@ -418,20 +420,27 @@ def rights_from_page(page_text: str) -> str:
 
     A hyphen is a word boundary, so CC BY-NC is not CC BY and licenses/by
     does not match licenses/by-nc. Anchor text does not override the licence
-    URL it points at. Mixed restricted and permissive text stays unknown.
-    MIT plus CC BY stays unknown. Mixed software licences stay unknown.
-    Public Domain Mark is not CC0. A generic creativecommons.org/licenses/
-    URL, a copyright notice, All rights reserved, a terms link, and the host
-    name are not licences. uk_ogl requires the British phrase Open Government
-    Licence. Script, style, and comment text does not count.
+    URL it points at. A generic creativecommons.org/licenses/ URL, with or
+    without a trailing slash, is not a licence: http, a www host, and a query
+    string on that path stay unknown, and the visible text of that anchor
+    does not count. Text elsewhere on the page still counts. A specific deed
+    URL such as licenses/by/4.0/ still counts. Mixed restricted and permissive
+    text stays unknown. A software licence beside any Creative Commons deed
+    stays unknown. Two software licences stay unknown. Two restricted deeds
+    stay unknown. Public Domain Mark is not CC0. A copyright notice, All
+    rights reserved, a terms link, and the host name are not licences.
+    Apache License, Version 2.0 is apache-2.0. uk_ogl requires the British
+    phrase Open Government Licence. Script, style, and comment text does not
+    count.
     """
 
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     ld_values = _jsonld_values(page_text, "license") + _jsonld_values(page_text, "licence")
     visible = _without_hidden(page_text)
-    plain = _plain(visible).casefold().translate(_DASHES)
-    blobs = [plain, *(_meta_values(visible, _LICENSE_META)), *ld_values, *_hrefs(visible)]
+    plain = _plain(_without_generic_licence_anchors(visible)).casefold().translate(_DASHES)
+    hrefs = [href for href in _hrefs(visible) if not _generic_cc_licences_url(href)]
+    blobs = [plain, *(_meta_values(visible, _LICENSE_META)), *ld_values, *hrefs]
     codes: set[str] = set()
     mit = False
     apache = False
@@ -804,6 +813,38 @@ def _hrefs(page_html: str) -> list[str]:
         if href:
             found.append(href)
     return found
+
+
+def _without_generic_licence_anchors(page_html: str) -> str:
+    """Drop anchors whose href is only the generic Creative Commons licences path.
+
+    The anchor's visible text is not a licence statement. Surrounding text stays.
+    """
+
+    def replace(match: re.Match[str]) -> str:
+        href = _attrs(f"<a{match.group(1)}>").get("href", "")
+        if _generic_cc_licences_url(href):
+            return " "
+        return match.group(0)
+
+    return _ANCHOR_BLOCK.sub(replace, page_html)
+
+
+def _generic_cc_licences_url(href: str) -> bool:
+    """True for creativecommons.org/licenses with no deed, slash, or query optional."""
+
+    if not isinstance(href, str) or not href.strip():
+        return False
+    parsed = urlparse(unescape(href).strip())
+    host = (parsed.hostname or "").lower().rstrip(".")
+    path = (parsed.path or "").lower()
+    if path != "/" and path.endswith("/"):
+        path = path[:-1]
+    return (
+        parsed.scheme.lower() in {"http", "https"}
+        and host in {"creativecommons.org", "www.creativecommons.org"}
+        and path == "/licenses"
+    )
 
 
 def _attrs(tag: str) -> dict[str, str]:

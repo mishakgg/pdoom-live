@@ -286,6 +286,32 @@ def test_deceptive_anchors_and_generic_licence_urls_stay_unknown():
     assert rights_from_page(hidden) == RIGHTS_UNKNOWN
 
 
+def test_generic_creativecommons_licences_url_ignores_anchor_text():
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/">CC BY</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/">CC BY 4.0</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/">CC BY-SA</a>') == RIGHTS_UNKNOWN
+    for href in (
+        "https://creativecommons.org/licenses",
+        "http://creativecommons.org/licenses/",
+        "https://www.creativecommons.org/licenses/",
+        "http://www.creativecommons.org/licenses",
+        "https://creativecommons.org/licenses/?ref=chooser",
+        "http://www.creativecommons.org/licenses/?lang=en",
+    ):
+        assert rights_from_page(f'<a href="{href}">CC BY</a>') == RIGHTS_UNKNOWN
+        assert rights_from_page(f'<a href="{href}">CC BY 4.0</a>') == RIGHTS_UNKNOWN
+        assert rights_from_page(f'<a href="{href}">CC BY-SA</a>') == RIGHTS_UNKNOWN
+    elsewhere = (
+        '<a href="https://creativecommons.org/licenses/">CC BY</a>'
+        "<p>Licensed under CC BY 4.0.</p>"
+    )
+    assert rights_from_page(elsewhere) == RIGHTS_CC_ATTRIBUTION
+    specific = '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
+    assert rights_from_page(specific) == RIGHTS_CC_ATTRIBUTION
+    sharealike = '<a href="https://creativecommons.org/licenses/by-sa/4.0/">licence</a>'
+    assert rights_from_page(sharealike) == RIGHTS_CREATIVE_COMMONS
+
+
 def test_mixed_restricted_permissive_and_software_stay_unknown():
     assert rights_from_page("<p>Licensed under CC BY 4.0 and CC BY-NC 4.0.</p>") == RIGHTS_UNKNOWN
     assert rights_from_page("<p>CC0 and CC BY-NC-ND.</p>") == RIGHTS_UNKNOWN
@@ -307,6 +333,7 @@ def test_public_domain_mark_terms_and_host_name_stay_unknown():
 def test_software_tokens_and_uk_ogl_need_their_own_phrases():
     assert rights_from_page("<p>Licensed under the MIT License.</p>") == RIGHTS_MIT
     assert rights_from_page("<p>Licensed under the Apache License 2.0.</p>") == RIGHTS_APACHE
+    assert rights_from_page("<p>Apache License, Version 2.0.</p>") == RIGHTS_APACHE
     assert rights_from_page("<p>Licensed under the Mozilla Public License 2.0.</p>") == RIGHTS_MPL
     assert rights_from_page("<p>Open Government Licence v3.0.</p>") == RIGHTS_UK_OGL
     assert rights_from_page("<p>Licensed under the Open Government License v3.0.</p>") == RIGHTS_UNKNOWN
