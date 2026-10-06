@@ -461,6 +461,37 @@ def test_a_bare_creativecommons_licenses_url_stays_unknown():
     assert rights_from_page("<p>released under Creative Commons licenses.</p>") == RIGHTS_UNKNOWN
 
 
+def test_generic_creativecommons_licenses_anchor_text_stays_unknown():
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/">CC BY</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/">CC BY 4.0</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/">CC BY-SA</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://creativecommons.org/licenses">CC BY</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="http://creativecommons.org/licenses/">CC BY 4.0</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://www.creativecommons.org/licenses/">CC BY-SA</a>') == RIGHTS_UNKNOWN
+    assert (
+        rights_from_page('<a href="http://www.creativecommons.org/licenses?ref=chooser">CC BY</a>')
+        == RIGHTS_UNKNOWN
+    )
+    assert (
+        rights_from_page('<a href="https://creativecommons.org/licenses/?lang=en">CC BY-SA</a>')
+        == RIGHTS_UNKNOWN
+    )
+    elsewhere = (
+        '<a href="https://creativecommons.org/licenses/">CC BY</a>'
+        "<p>Licensed under CC BY 4.0.</p>"
+    )
+    assert rights_from_page(elsewhere) == RIGHTS_CC_ATTRIBUTION
+    elsewhere_sa = (
+        '<a href="https://creativecommons.org/licenses/">CC BY-SA</a>'
+        "<p>Also available under CC0.</p>"
+    )
+    assert rights_from_page(elsewhere_sa) == RIGHTS_CREATIVE_COMMONS
+    deed = '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
+    assert rights_from_page(deed) == RIGHTS_CC_ATTRIBUTION
+    deed_sa = '<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>'
+    assert rights_from_page(deed_sa) == RIGHTS_CREATIVE_COMMONS
+
+
 def test_public_domain_mark_and_host_names_stay_unknown():
     mark = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">Public Domain Mark</a>'
     assert rights_from_page(mark) == RIGHTS_UNKNOWN

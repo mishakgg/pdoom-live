@@ -21,7 +21,11 @@ CC BY does not match CC BY-NC, and licenses/by does not match licenses/by-nc.
 A version hyphen such as CC BY-SA-4.0 is still that deed. Mixed restricted
 and permissive text stays unknown. Public Domain Mark is not CC0. A copyright
 notice, All rights reserved, a terms link, and the host name are not
-licences. ``uk_ogl`` requires the British phrase Open Government Licence.
+licences. A generic creativecommons.org/licenses/ URL is not a deed. Anchor
+text on that URL does not count, with or without a trailing slash, over
+http, on a www host, or with a query string. Text elsewhere on the page
+still counts. A specific deed URL such as licenses/by/4.0/ still counts.
+``uk_ogl`` requires the British phrase Open Government Licence.
 ``us_government_work`` requires a rights field that says the item is a US
 government work. mit, apache-2.0, and mpl-2.0 stay their own tokens. Mixed
 software licences stay unknown. MIT together with CC BY stays unknown.
@@ -140,6 +144,7 @@ _LDJSON = re.compile(
 _TAG = re.compile(r"(?is)<[^>]+>")
 _META = re.compile(r"(?is)<meta\b[^>]*>")
 _LINK = re.compile(r"(?is)<(?:link|a)\b[^>]*>")
+_ANCHOR_PAIR = re.compile(r"(?is)(<a\b[^>]*>)(.*?)(</a>)")
 _H1 = re.compile(r"(?is)<h1\b[^>]*>(.*?)</h1>")
 _TITLE = re.compile(r"(?is)<title\b[^>]*>(.*?)</title>")
 _ATTR = re.compile(
@@ -394,17 +399,20 @@ def rights_from_page(page_text: str) -> str:
     deed, so CC BY-NC is not CC BY and licenses/by does not match
     licenses/by-nc. Mixed restricted and permissive text stays unknown. Mixed
     mit, apache, or mpl plus a permissive CC deed stays unknown. Public Domain
-    Mark is not CC0. A generic creativecommons.org/licenses/ URL, a copyright
-    notice, All rights reserved, a terms link, and the host name are not
-    licences.
+    Mark is not CC0. A generic creativecommons.org/licenses/ URL is not a deed.
+    Anchor text on that URL does not count, including http, a www host, no
+    trailing slash, and a query string. Text elsewhere on the page still
+    counts. A specific deed URL still counts. A copyright notice, All rights
+    reserved, a terms link, and the host name are not licences.
     """
 
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     ld_values = _jsonld_rights_and_licenses(page_text)
-    visible = _without_hidden(page_text)
+    visible = _drop_generic_cc_anchor_text(_without_hidden(page_text))
     plain = _plain(visible).casefold().translate(_DASHES)
-    blobs = [plain, *(_meta_values(visible, _LICENSE_META)), *ld_values, *_hrefs(visible)]
+    hrefs = [href for href in _hrefs(visible) if not _is_generic_cc_licenses_url(href)]
+    blobs = [plain, *(_meta_values(visible, _LICENSE_META)), *ld_values, *hrefs]
     codes: set[str] = set()
     mit = False
     apache = False
@@ -717,6 +725,44 @@ def _same_page(left: str, right: str) -> bool:
         return text.casefold()
 
     return norm(left) == norm(right)
+
+
+def _is_generic_cc_licenses_url(href: str) -> bool:
+    """True for creativecommons.org/licenses with no deed in the path.
+
+    http, a www host, a missing trailing slash, and a query string are still
+    the generic licence index. licenses/by/4.0/ and the other deed paths are
+    not generic.
+    """
+
+    if not isinstance(href, str) or not href.strip():
+        return False
+    parsed = urlparse(href.strip())
+    scheme = (parsed.scheme or "").casefold()
+    host = (parsed.hostname or "").casefold().rstrip(".")
+    path = (parsed.path or "").casefold()
+    if scheme not in {"http", "https"}:
+        return False
+    if host not in {"creativecommons.org", "www.creativecommons.org"}:
+        return False
+    return path in {"/licenses", "/licenses/"}
+
+
+def _drop_generic_cc_anchor_text(visible_html: str) -> str:
+    """Remove visible text of anchors that point at the generic licence index.
+
+    That anchor text is not a licence statement. The opening tag stays so a
+    specific deed on another anchor is unchanged. Text outside the anchor
+    stays.
+    """
+
+    def replace(match: re.Match[str]) -> str:
+        href = _attrs(match.group(1)).get("href", "")
+        if _is_generic_cc_licenses_url(href):
+            return match.group(1) + match.group(3)
+        return match.group(0)
+
+    return _ANCHOR_PAIR.sub(replace, visible_html)
 
 
 def _cc_codes(folded: str) -> set[str]:
