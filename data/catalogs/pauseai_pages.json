@@ -1,0 +1,700 @@
+{
+  "catalog_id": "pauseai_pages",
+  "description": "Metadata for public PauseAI statement, research, news, and program pages on pauseai.info and www.pauseai.info. www.pauseai.info redirects to the apex. Each row was stored after one bounded GET that robots.txt allowed. /write/ is disallowed and stores no row. A Cloudflare challenge, a captcha, a login page, and an off-host redirect are not stored. Rows keep a title, publisher, canonical URL, date, and rights. Page text is not stored. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix of those. A sole CC BY-NC, CC BY-ND, CC BY-NC-SA, or CC BY-NC-ND keeps its token. A missing publication date stays unknown. Updated, modified, and copyright years are not publication dates. This catalog is not a belief collector and runner_wired stays false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Why We Might Have Superintelligence Sooner Than Most Think",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/urgency",
+      "date": "2023-05-04",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "AI Outcomes",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/outcomes",
+      "date": "2023-08-24",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Find your PauseAI Community",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/communities",
+      "date": "2023-12-15",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "List of p(doom) values",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/pdoom",
+      "date": "2023-12-18",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Quotes",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/quotes",
+      "date": "2024-01-26",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Theory of Change",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/theory-of-change",
+      "date": "2024-02-26",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Press Coverage & Materials",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/press",
+      "date": "2024-05-15",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI NYC Action Items",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/nyc-action",
+      "date": "2024-08-20",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Pittsburgh Flyer",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/pghflyer",
+      "date": "2024-08-20",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI UN Demonstration",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/unprotest",
+      "date": "2024-09-18",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Statement",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/statement",
+      "date": "2025-05-19",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Presents: The Google DeepMind Protest",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/deepmind-protest-2025",
+      "date": "2025-06-30",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Google DeepMind's Broken Promises",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/google-deepmind-broken-promises",
+      "date": "2025-06-30",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Letter to Sir Demis Hassabis",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/dear-sir-demis-2025",
+      "date": "2025-08-22",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "India AI Impact Summit 2026 - Make Your Voice Heard",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/india-summit-2026",
+      "date": "2026-02-11",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Demonstration at the European Parliament - February 23rd, Brussels",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/brussels-ep-protest-2026",
+      "date": "2026-02-23",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI holds largest ever AI safety protest in London",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/protest-london-feb-2026",
+      "date": "2026-02-28",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Joined the march to stop the AI race",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/stop-the-ai-race-march",
+      "date": "2026-03-21",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Statement on the attack on Sam Altman's residence",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/statement-sam-altman-attack-2026",
+      "date": "2026-04-12",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "UK Technology Secretary overlooks risks posed by AI",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/uk-technology-secretary",
+      "date": "2026-04-30",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "AI is not just coming for your job",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/ai-not-just-coming-for-your-job",
+      "date": "2026-05-11",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "AI is not just coming for your job",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/ai-is-not-just-coming-for-your-job",
+      "date": "2026-06-25",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseCon London ‘26",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/pauseconlondon26",
+      "date": "2026-07-06",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "We need to Pause AI",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Protest @ The Hague, Netherlands - August 11th",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/2023-august-nl",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Protest @ FCDO, London, July 13th",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/2023-july-london-13th",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Protest @ FCDO, London, July 18th",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/2023-july-london-18th",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "(Cancelled) PauseAI Protest @ United Nations, NYC, July 18th",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/2023-july-nyc",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Protest @ Parliament Square - June 8th",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/2023-june-london",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Protest @ Office for AI - June 29th",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/2023-june-london-office-for-ai",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Protest @ Melbourne - June 16th",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/2023-june-melbourne",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Protest @ Google DeepMind - May 19th - 22nd",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/2023-may-deepmind-london",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Protest @ Bletchley Park - November 1st",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/2023-november-uk",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "International PauseAI Protest 21st October 2023",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/2023-oct",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI / No AGI Protest @ OpenAI San Francisco - February 12th, 2024",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/2024-february",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "International PauseAI Protest May 13th 2024",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/2024-may",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "International PauseAI Protest November 2024",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/2024-november",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Next International Protest: Paris AI Summit - February 7-11",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/2025-february",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "4 Levels of AI Safety Regulation",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/4-levels-of-ai-regulation",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Take Action",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/action",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "We want to hear from you: What are your concerns about AI development?",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/ai-concerns",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Why an AI Takeover Could Be Very Likely",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/ai-takeover",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Rebutting Skeptical Arguments About AI Existential Risks",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/ai-x-risk-skepticism",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Amsterdam Protest, December 2025",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/amsterdam-protest-2025-december",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "The Dutch Pause Button: How the Netherlands Can Use ASML to Enforce an AI Treaty",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/asml-pause-button",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Australia",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/australia",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Australia's role in pausing",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/australia-detail",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Australia Progress",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/australia-progress",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Australia Story",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/australia-story",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Protest @ Microsoft Brussels - May 23rd, 2023",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/brussels-microsoft-protest",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Building the Pause Button",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/building-the-pause-button",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Building the Pause Button (2025 archive)",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/building-the-pause-button-2025",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Communication Strategy",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/communication-strategy",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Counterarguments",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/counterarguments",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Cybersecurity Risks from Frontier AI Models",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/cybersecurity-risks",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Regulating Dangerous Capabilities in AI",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/dangerous-capabilities",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "AI Models Are Unpredictable Digital Brains",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/digital-brains",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Environmental Impact of AI",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/environmental",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "How AI Safety Evaluations & Benchmarks Can Aid in AI Governance",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/evaluations",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "FAQ",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/faq",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "The Feasibility of a Pause",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/feasibility",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Flyering Guide",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/flyering",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "If Anyone Builds It, Everyone Dies",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/if-anyone-builds-it-campaign",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Incidents of Dangerous AI Behavior",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/incidents",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Join PauseAI",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/join",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Join the Operations Team",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/join-operations",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Learn Why AI Safety Matters",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/learn",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI's Little Helpers",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/littlehelpers",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Tips for Effective Lobbying",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/lobby-tips",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Running a Local PauseAI Community: A Guide to Local Organizing",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/local-organizing",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI MicroGrants",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/microgrants",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Pausing AI Development Might Go Wrong. How to Mitigate the Risks?",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/mitigating-pause-failures",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI National Groups",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/national-groups",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Candlelit Vigil @ UN HQ NYC, 3rd of June",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/nyc-un-vigil",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Offense / Defense Balance in AI Safety",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/offense-defense",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "San Francisco's 3-Day Picket: Demanding Pause on Advanced AI Development Near OpenAI",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/openai-protest",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Organizing a PauseAI Protest",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/organizing-a-protest",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Polls & Surveys",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/polls-and-surveys",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Proposal",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/proposal",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Protests",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/protests",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "The Difficult Psychology of Existential Risk",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/psychology-of-x-risk",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Risks of Artificial Intelligence",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/risks",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Roadmap and Funding Scenarios",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/roadmap",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Stop Superintelligence",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/sayno",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Concrete Scenarios for Catastrophic AI Risks",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/scenarios",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "State-of-the-art AI Capabilities vs Humans",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/sota",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Why We Need AI Safety Summits",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/summit",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Tabling for PauseAI",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/tabling",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Talk to your family and friends",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/talk-about-ai-risk",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Timelines to AGI",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/timelines",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "The US-China Pause Button: Why Neither Superpower Can Pause Alone, and What Would Let Them",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/us-china-pause-button",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "US Lobbying Guide",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/us-lobby-guide",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "You can help, wherever you are in the US",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/us-take-action",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Values",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/values",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "PauseAI Volunteer Stipends",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/volunteer-stipends",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Welcome to the PauseAI Community!",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/welcome",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "How to Write a Letter or Email to Someone in Power",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/writing-a-letter",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "Writing Press Releases for Protests",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/writing-press-releases",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    },
+    {
+      "title": "The Extinction Risk of Superintelligent AI",
+      "publisher": "PauseAI",
+      "canonical_url": "https://pauseai.info/xrisk",
+      "date": "unknown",
+      "rights": "creative_commons_attribution"
+    }
+  ]
+}
