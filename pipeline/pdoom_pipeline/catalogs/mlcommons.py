@@ -204,12 +204,9 @@ _RESTRICTED_TOKENS = {
     "by-nc-nd": RIGHTS_CC_BY_NC_ND,
 }
 _PERMISSIVE = frozenset({"by", "by-sa", "zero"})
-_MIT_GRANT = re.compile(
-    r"(?<!not )(?:licensed|released|available) under (?:the )?mit licen[cs]e(?![a-z0-9])"
-)
-_APACHE_GRANT = re.compile(
-    r"(?<!not )(?:licensed|released|available) under (?:the )?apache licen[cs]e(?:\s*,?\s*version)?\s*2\.0(?![a-z0-9])"
-)
+_GRANT_VERB = re.compile(r"(?<!not )(?:licensed|released|available) under\b")
+_MIT_NAME = re.compile(r"\bmit licen[cs]e\b")
+_APACHE_NAME = re.compile(r"\bapache licen[cs]e(?:\s*,?\s*version)?\s*2\.0\b")
 _MIT_URL = re.compile(r"(?:opensource\.org/licenses/mit|spdx\.org/licenses/mit)(?![a-z0-9])")
 _APACHE_URL = re.compile(
     r"(?:apache\.org/licenses/license-2\.0|www\.apache\.org/licenses/license-2\.0|spdx\.org/licenses/apache-2\.0)(?![a-z0-9])"
@@ -652,14 +649,18 @@ def _states_mit(value: str) -> bool:
     folded = _fold(value).strip()
     if folded in _EXACT_MIT:
         return True
-    return _MIT_GRANT.search(folded) is not None or _MIT_URL.search(folded) is not None
+    if _MIT_URL.search(folded):
+        return True
+    return _GRANT_VERB.search(folded) is not None and _MIT_NAME.search(folded) is not None
 
 
 def _states_apache(value: str) -> bool:
     folded = _fold(value).strip()
     if folded in _EXACT_APACHE:
         return True
-    return _APACHE_GRANT.search(folded) is not None or _APACHE_URL.search(folded) is not None
+    if _APACHE_URL.search(folded):
+        return True
+    return _GRANT_VERB.search(folded) is not None and _APACHE_NAME.search(folded) is not None
 
 
 def _fold(value: str) -> str:
@@ -704,7 +705,9 @@ def _require_text(entry: dict, field: str) -> None:
     value = entry.get(field)
     if not isinstance(value, str) or not value.strip() or value != value.strip():
         raise CatalogError(f"{field} is required")
-    if len(value) > MAX_FIELD_CHARS or "<" in value or ">" in value:
+    if len(value) > MAX_FIELD_CHARS:
+        raise CatalogError(f"{field} is too long")
+    if "<" in value or ">" in value:
         raise CatalogError(f"{field} must be a short plain-text field")
 
 
