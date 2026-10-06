@@ -10,8 +10,8 @@ list is valid.
 Rights stay unknown unless the page states a reuse licence.
 ``creative_commons`` means only a stated CC0, CC BY, or CC BY-SA deed.
 CC BY-NC, CC BY-ND, CC BY-NC-ND, and CC BY-NC-SA are their own tokens and are
-never folded into ``creative_commons``. A restricted deed wins when a
-permissive deed is also stated. A hyphen is a word boundary, so CC BY does not
+never folded into ``creative_commons``. A page that states both a restricted
+deed and a permissive deed stays unknown. A hyphen is a word boundary, so CC BY does not
 match CC BY-NC, and licenses/by does not match licenses/by-nc. A generic
 creativecommons.org/licenses/ URL is not a permissive deed. The Public Domain
 Mark is not CC0. mit and apache-2.0 are their own tokens. A copyright notice,
@@ -213,6 +213,8 @@ _NAME_CODES = (
     ),
 )
 _PERMISSIVE = frozenset({"by", "by-sa", "zero"})
+_RESTRICTED_CODES = frozenset({"by-nc", "by-nd", "by-nc-sa", "by-nc-nd"})
+_ANCHOR = re.compile(r"(?is)<a\b([^>]*)>(.*?)</a>")
 _RESTRICTED_ORDER = (
     ("by-nc-nd", RIGHTS_CC_BY_NC_ND),
     ("by-nc-sa", RIGHTS_CC_BY_NC_SA),
@@ -454,18 +456,22 @@ def record_from_response(
 def rights_from_page(page_text: str) -> str:
     """Return a rights label from a reuse licence the page itself states.
 
-    ``creative_commons`` means CC0, CC BY, or CC BY-SA only. CC BY-NC,
-    CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay their own tokens. When a
-    restricted deed and a permissive deed both appear, the restricted token
-    wins. A hyphen does not let CC BY match CC BY-NC, and licenses/by does
-    not match licenses/by-nc. The Public Domain Mark is not CC0. mit and
-    apache-2.0 are not folded into ``creative_commons``. Script and style
-    text does not count.
+    ``creative_commons`` means CC0, CC BY, or CC BY-SA only. A sole CC BY-NC,
+    CC BY-ND, CC BY-NC-SA, or CC BY-NC-ND deed stays its own token. When a
+    restricted deed and a permissive deed both appear, the label stays
+    unknown. An anchor whose text says CC BY, CC BY-SA, or CC0 while the
+    href is a restricted deed or the Public Domain Mark stays unknown. A
+    hyphen does not let CC BY match CC BY-NC, and licenses/by does not match
+    licenses/by-nc. The Public Domain Mark is not CC0. mit and apache-2.0
+    are not folded into ``creative_commons``. Script and style text does not
+    count.
     """
 
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     visible = _HIDDEN.sub(" ", page_text)
+    if _deceptive_permissive_anchor(visible):
+        return RIGHTS_UNKNOWN
     plain = _fold(_plain_text(visible))
     hrefs = _fold(" ".join(_hrefs(visible)))
     metas = _fold(" ".join(_license_meta_values(visible)))
@@ -474,10 +480,12 @@ def rights_from_page(page_text: str) -> str:
     codes = _cc_codes(blob, prose=plain)
     mit = bool(_MIT.search(blob))
     apache = bool(_APACHE.search(blob))
-    for code, token in _RESTRICTED_ORDER:
-        if code in codes:
-            return token
+    restricted = [token for code, token in _RESTRICTED_ORDER if code in codes]
     permissive = bool(codes & _PERMISSIVE)
+    if restricted and permissive:
+        return RIGHTS_UNKNOWN
+    if restricted:
+        return restricted[0]
     if permissive and (mit or apache):
         return RIGHTS_UNKNOWN
     if mit and apache:
@@ -615,12 +623,35 @@ def _public_path(path: str) -> bool:
     return not lowered.startswith(_BLOCKED_PREFIXES)
 
 
-def _cc_codes(blob: str, *, prose: str) -> set[str]:
+def _deceptive_permissive_anchor(visible_html: str) -> bool:
+    """True when anchor text claims CC BY, CC BY-SA, or CC0 but the href does not.
+
+    A by-nc, by-nd, by-nc-sa, by-nc-nd, or public-domain mark URL is not the
+    deed named by that visible text. The Public Domain Mark is not CC0.
+    """
+
+    for attrs_blob, inner in _ANCHOR.findall(visible_html):
+        href = _attrs(f"<a {attrs_blob}>").get("href", "")
+        href_codes = _url_codes(_fold(href))
+        if not (href_codes & _RESTRICTED_CODES or "mark" in href_codes):
+            continue
+        text_codes = _prose_codes(_fold(_plain_text(inner)))
+        if text_codes & _PERMISSIVE:
+            return True
+    return False
+
+
+def _url_codes(blob: str) -> set[str]:
     codes: set[str] = set()
     for match in _CC_URL.finditer(blob):
         code = match.group("license") or match.group("pd")
         if code:
             codes.add(code.casefold())
+    return codes
+
+
+def _prose_codes(prose: str) -> set[str]:
+    codes: set[str] = set()
     for code, pattern in _TEXT_CODES:
         if pattern.search(prose):
             codes.add(code)
@@ -628,6 +659,10 @@ def _cc_codes(blob: str, *, prose: str) -> set[str]:
         if pattern.search(prose):
             codes.add(code)
     return codes
+
+
+def _cc_codes(blob: str, *, prose: str) -> set[str]:
+    return _url_codes(blob) | _prose_codes(prose)
 
 
 def _sort_date(value: str) -> str:
