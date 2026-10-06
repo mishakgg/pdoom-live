@@ -117,1538 +117,197 @@
   "concurrent_workers_launched_at": "2026-10-05T18:46:00Z",
   "concurrent_workers_model": "grok-4.7-xhigh",
   "concurrent_workers": [
-    {
-      "task": "Confirm arXiv retrieval",
-      "run": "bc-b3e077bb-eea2-5875-8cac-c25c6c5e58b5",
-      "branch": "cursor/arxiv-retrieval-confirm-a32e",
-      "sha": "237f2851662fc4319d9f056e1f04dc3f823dd605",
-      "pr": 53
-    },
-    {
-      "task": "Confirm OpenAlex retrieval",
-      "run": "bc-0230545e-23aa-5a01-81c1-e7cb9089bc87",
-      "branch": "cursor/openalex-retrieval-confirm-a32e",
-      "sha": "49401dd7a085b90693560d1745606a64f23a46b5",
-      "pr": 43
-    },
-    {
-      "task": "Catalog US federal AI docs",
-      "run": "bc-2868869c-a8e2-5ce3-8262-f13d52d4e4e6",
-      "branch": "cursor/us-federal-catalog-a32e",
-      "sha": "5b1b801a8842dd5d21aa39ea238acd1c6c32e4e3",
-      "pr": 56
-    },
-    {
-      "task": "Catalog UK OGL AI docs",
-      "run": "bc-7b8da2ed-3bcc-575e-80fa-bc59d0cac34a",
-      "branch": "cursor/uk-ogl-catalog-a32e",
-      "sha": "df6d401720c06464ac7806258771b35765da78a3",
-      "pr": 49
-    },
-    {
-      "task": "Catalog congressional AI hearings",
-      "run": "bc-115e0676-dd02-58be-a207-ea647622db57",
-      "branch": "cursor/congress-hearings-catalog-a32e"
-    },
-    {
-      "task": "Confirm podcast RSS metadata",
-      "run": "bc-03a987c9-3afc-510d-ba45-d8f374ce305e",
-      "branch": "cursor/podcast-rss-metadata-a32e"
-    },
-    {
-      "task": "Confirm YouTube metadata only",
-      "run": "bc-e7cb1fbc-2a82-522d-a76d-b1d21ff14b45",
-      "branch": "cursor/youtube-metadata-only-a32e",
-      "sha": "3d80323f862c1bdb5cf5964cf962ad70726a01c6",
-      "pr": 55
-    },
-    {
-      "task": "Confirm Crossref metadata",
-      "run": "bc-a00045c7-0fee-529e-8cab-cca65eed275b",
-      "branch": "cursor/crossref-metadata-a32e",
-      "sha": "7d9fe27bb16572f61dc26802d7931741c858df3b",
-      "pr": 50
-    },
-    {
-      "task": "Add ORCID non-merge test",
-      "run": "bc-b1b80367-b80b-5869-b67e-eb9c5face463",
-      "branch": "cursor/orcid-non-merge-a32e",
-      "sha": "4fd102a83365434f0f27de2a5459cba97984160f",
-      "pr": 54
-    },
-    {
-      "task": "Add hostile source fixture",
-      "run": "bc-5f46edf0-4da4-5172-a8c6-a55f15ed5dc3",
-      "branch": "cursor/hostile-source-fixture-a32e"
-    },
-    {
-      "task": "Parse percent and probability units",
-      "run": "bc-8eca23db-5153-5b69-91ff-a16861eb0da7",
-      "branch": "cursor/percent-unit-parsing-a32e",
-      "sha": "3d32129226599d47100e90a54d5818b54b91ae34",
-      "pr": 45
-    },
-    {
-      "task": "Test canonical URL idempotence",
-      "run": "bc-cf018d23-b510-5ebe-beca-400017846f9b",
-      "branch": "cursor/canonical-url-idempotence-a32e",
-      "sha": "a7e8d8c4bac245e03a1d1ea96f45cadff1581b1d",
-      "pr": 44
-    },
-    {
-      "task": "Show source provenance on sources",
-      "run": "bc-fe5830ce-28a6-55ba-ae84-da7559b1d097",
-      "branch": "cursor/sources-page-provenance-a32e",
-      "sha": "21248a363d06cb4fda0bc35b413f82f5bd84be10",
-      "pr": 48
-    },
-    {
-      "task": "Label topic horizons",
-      "run": "bc-4fd24c43-9d7d-51d5-bf1d-996243de5ad5",
-      "branch": "cursor/topics-horizon-labels-a32e",
-      "sha": "a7c2cdf8e4f9f59e0d3a3b1108a32d856fb231ff",
-      "pr": 59
-    },
-    {
-      "task": "State methodology coverage limits",
-      "run": "bc-e3141bc4-b9c8-579c-9635-b429c5bc2e09",
-      "branch": "cursor/methodology-coverage-a32e"
-    },
-    {
-      "task": "Label statement classes",
-      "run": "bc-55c07075-9858-574a-a6d9-a2726b4e6e5a",
-      "branch": "cursor/statements-class-labels-a32e",
-      "sha": "6e0523c966926183b639e74c7f804cee760ed750",
-      "pr": 47
-    },
-    {
-      "task": "Confirm GitHub retrieval",
-      "run": "bc-1c470596-ed63-5c57-be70-e09393a1bc0b",
-      "branch": "cursor/github-retrieval-confirm-a32e",
-      "sha": "e7f9721cc42f5008bfe0494d4fde2bebebee2287",
-      "pr": 46
-    },
-    {
-      "task": "Confirm Semantic Scholar metadata",
-      "run": "bc-0c0e5fac-0d6a-580e-b4ea-eca25aa91d84",
-      "branch": "cursor/semantic-scholar-metadata-a32e",
-      "sha": "d4ca874c397c26b05a953ba26877641d7174f291",
-      "pr": 52
-    },
-    {
-      "task": "Report source missingness",
-      "run": "bc-76b5182e-1bd3-5ef5-8e20-c24a59af891a",
-      "branch": "cursor/quality-missingness-a32e",
-      "sha": "45e8386d8c3ccd2f0ee8ae85f50b3504773f9afa",
-      "pr": 51
-    },
-    {
-      "task": "Confirm OpenReview metadata",
-      "run": "bc-05d3f393-6e9a-550d-9eda-303de24cf162",
-      "branch": "cursor/openreview-metadata-a32e",
-      "sha": "13b6cba9dfb06a10e1804b6ad9ea0999bc8ab0f0",
-      "pr": 61
-    },
-    {
-      "task": "Add hostile source fixture",
-      "run": "bc-5f46edf0-4da4-5172-a8c6-a55f15ed5dc3",
-      "branch": "cursor/hostile-source-fixture-a32e",
-      "sha": "e66add77e54f97f68dbd1b2f422fd2bc866ad01e",
-      "pr": 39
-    },
-    {
-      "task": "Confirm Hugging Face metadata",
-      "run": "bc-61e5f839-01b4-5373-aab9-5ce095aec32a",
-      "branch": "cursor/huggingface-metadata-a32e",
-      "sha": "15df885b560c43e14002d71cb8c06dfed95a3ee5",
-      "pr": 57
-    },
-    {
-      "task": "Confirm podcast RSS metadata",
-      "run": "bc-03a987c9-3afc-510d-ba45-d8f374ce305e",
-      "branch": "cursor/podcast-rss-metadata-a32e",
-      "sha": "ea2c56dee1def6c7e3c961c91b9359c0041a70b2",
-      "pr": 40
-    },
-    {
-      "task": "Keep name-only profiles unlinked",
-      "run": "bc-fe0409dd-7253-5e00-9a55-7424eab3c37d",
-      "branch": "cursor/discover-name-only-social-a32e",
-      "sha": "26ed2bf484a8f167cea580e267a0acd8482a0a24",
-      "pr": 60
-    },
-    {
-      "task": "Catalog congressional AI hearings",
-      "run": "bc-115e0676-dd02-58be-a207-ea647622db57",
-      "branch": "cursor/congress-hearings-catalog-a32e",
-      "sha": "9e56abbd83c409766b9154c3dbe277a590d67c71",
-      "pr": 41
-    },
-    {
-      "task": "Check sitemap and robots coverage",
-      "run": "bc-066e78bc-d2c0-5016-a9aa-fdf1762917f4",
-      "branch": "cursor/sitemap-robots-coverage-a32e",
-      "sha": "331498cbf5d91b73fa7c023561a3e6136264c374",
-      "pr": 58
-    },
-    {
-      "task": "State methodology coverage limits",
-      "run": "bc-e3141bc4-b9c8-579c-9635-b429c5bc2e09",
-      "branch": "cursor/methodology-coverage-a32e",
-      "sha": "9be1e729d097f282fbc63289801cf1051a12eeb3",
-      "pr": 42
-    },
-    {
-      "task": "Test stale public API cursors",
-      "run": "bc-c0d3d4d0-3928-5071-93c9-64a150affb63",
-      "branch": "cursor/public-api-cursor-order-a32e",
-      "sha": "0e2eb4fa93dd1087c34f2c69f1fd4c0de5b7dfdf",
-      "pr": 62
-    },
-    {
-      "task": "Confirm Europe PMC retrieval",
-      "run": "bc-e617fed3-a458-5ec0-9f80-a0fbb9d87499",
-      "branch": "cursor/europepmc-metadata-a32e",
-      "sha": "f0700e0c689dadd258d16776a2d041f1a7b6f667",
-      "pr": 72,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm Mastodon metadata only",
-      "run": "bc-eabedbfb-5d90-506f-8e13-28c076690be5",
-      "branch": "cursor/mastodon-metadata-a32e",
-      "sha": "0a9c6fbf65298a612cec33c22e33bb60e9a28486",
-      "pr": 80,
-      "state": "merged"
-    },
-    {
-      "task": "Show source-item provenance",
-      "run": "bc-7d487918-f94f-56d8-83bc-c10e1c48e499",
-      "branch": "cursor/source-item-provenance-a32e",
-      "sha": "e2aaf4a1e12b4de3bc3f3e0803d4c6cbbbfc5b1a",
-      "pr": 79,
-      "state": "merged"
-    },
-    {
-      "task": "State people-page coverage",
-      "run": "bc-be752873-c711-5177-9a3b-6d7be72d1a40",
-      "branch": "cursor/people-page-coverage-a32e",
-      "sha": "ed90a16bd44b5e4a261b1bba8a5c0dd20135ac10",
-      "pr": 68,
-      "state": "merged"
-    },
-    {
-      "task": "Label classes on a person",
-      "run": "bc-532944c1-2b01-56cb-bb2f-2f7637079aff",
-      "branch": "cursor/person-statement-classes-a32e",
-      "sha": "806cb04e91998ecd07236fc45238c0ceaa91adef",
-      "pr": 75,
-      "state": "merged"
-    },
-    {
-      "task": "Guard the belief runner wiring",
-      "run": "bc-f613da77-e78d-5d2a-9cf0-fa9447813cd2",
-      "branch": "cursor/belief-runner-wiring-a32e",
-      "sha": "2cf56d466325fa771502b7607bec1adfdd9269c3",
-      "pr": 65,
-      "state": "merged"
-    },
-    {
-      "task": "Keep DOI URLs canonical",
-      "run": "bc-d00ccb72-a605-5f8b-bf85-df1e1de4332e",
-      "branch": "cursor/doi-url-canonical-a32e",
-      "sha": "3b5b83fc2b27677e9d15f3e61383e56b16f876f0",
-      "pr": 64,
-      "state": "merged"
-    },
-    {
-      "task": "Classify copying licenses",
-      "run": "bc-2f4fb0fc-7b4d-565d-9a6c-9bd5597ba44b",
-      "branch": "cursor/copying-license-class-a32e",
-      "sha": "8f8f8dc8ac429d437d9f567593e60517e1ae4734",
-      "pr": 71,
-      "state": "merged"
-    },
-    {
-      "task": "Catalog EU AI Act pages",
-      "run": "bc-54a54233-6160-527e-a503-c4ead3675644",
-      "branch": "cursor/eu-ai-act-catalog-a32e",
-      "sha": "acb241f1c9974cae132acb78e681303058b5ce9c",
-      "pr": 76,
-      "state": "merged"
-    },
-    {
-      "task": "Write collector status",
-      "run": "bc-05f5a359-5566-5f10-9d4c-f20147e25b39",
-      "branch": "cursor/collector-status-note-a32e",
-      "sha": "8aba639a0edf87b7192497ae6935f39de122457b",
-      "pr": 63,
-      "state": "merged"
-    },
-    {
-      "task": "Reject a bare number",
-      "run": "bc-20d7aca3-5065-5a5c-a229-c5265433f037",
-      "branch": "cursor/bare-number-not-probability-a32e",
-      "sha": "32c6382b5832b9697aefd7c8e1cc50ec513ea3ba",
-      "pr": 67,
-      "state": "merged"
-    },
-    {
-      "task": "Preserve RSS source timezone",
-      "run": "bc-1ae27fb8-8a35-5c9f-94a4-7e9c4161cc6b",
-      "branch": "cursor/rss-source-timezone-a32e",
-      "sha": "f423eafd416e7953e954a0835f1a2f8cbc5de405",
-      "pr": 78,
-      "state": "merged"
-    },
-    {
-      "task": "Keep OpenReview authors apart",
-      "run": "bc-3d31ee71-b423-5e1f-9c62-ba02bfb9ab28",
-      "branch": "cursor/openreview-author-non-merge-a32e",
-      "sha": "48c5904ef86e9e4787506e0f6955940399eb9455",
-      "pr": 69,
-      "state": "merged"
-    },
-    {
-      "task": "Block inferred trend values",
-      "run": "bc-22472010-4b1b-55e2-8f7b-056e726f12cf",
-      "branch": "cursor/trend-class-gate-a32e",
-      "sha": "5e0efe15aa05c6118ce374b67aff6911091adcbe",
-      "pr": 70,
-      "state": "merged"
-    },
-    {
-      "task": "Fix the backup drill failure",
-      "run": "bc-7d000b02-02db-5b43-8516-2dc12f69d4ff",
-      "branch": "cursor/backup-drill-failure-a32e",
-      "sha": "5c06a5fe8e501e0b1ab9a6543e1acf3f9294ac40",
-      "pr": 86,
-      "state": "merged",
-      "merge": "65e28a6123ca2fb910844f42a95478dc3010a5df"
-    },
-    {
-      "task": "Show dataset freshness on data",
-      "run": "bc-f8ff2175-fa11-5c3b-abef-650f24ac515f",
-      "branch": "cursor/data-page-freshness-a32e",
-      "sha": "99cfdd90a2331af3a22403a2cb5ef265b61d31f7",
-      "pr": 74,
-      "state": "merged"
-    },
-    {
-      "task": "Catalog NIST AI RMF pages",
-      "run": "bc-c53018bd-e5e4-57d9-8f70-bac34de48b4c",
-      "branch": "cursor/nist-rmf-pages-a32e",
-      "sha": "0b125b81d081c13f5e8b95e63827c3e72f1f7705",
-      "pr": 83,
-      "state": "merged"
-    },
-    {
-      "task": "Bound public API page size",
-      "run": "bc-92abe133-0f40-5f37-bb53-a060035f05d1",
-      "branch": "cursor/public-api-limit-bound-a32e",
-      "sha": "1dcf31408710606b8a29a41f919d70196b6774e6",
-      "pr": 73,
-      "state": "merged"
-    },
-    {
-      "task": "Keep the catalog package marker",
-      "run": "bc-45ca1b49-f870-5283-ad0f-fb46f4746228",
-      "branch": "cursor/catalog-package-marker-a32e",
-      "sha": "935d6fed5fac1f38261c343a1ea3b5fa0ae9556c",
-      "pr": 66,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm HAL metadata",
-      "run": "bc-f0b72bc1-2052-581b-b54d-b8118cc36901",
-      "branch": "cursor/hal-metadata-a32e",
-      "sha": "ebb680ab26b417f9ed3c4eaef079c28b97454473",
-      "pr": 82,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm DBLP metadata",
-      "run": "bc-69b4c422-56da-51b1-b1a8-2aa8d03caf79",
-      "branch": "cursor/dblp-metadata-a32e",
-      "head": "5c676170dac89645598f79bd3d7f085e7592a391",
-      "pr": 91,
-      "state": "merged",
-      "merge": "aba38006ca05654d7b963df5c5946e1109056843"
-    },
-    {
-      "task": "Confirm Zenodo metadata",
-      "run": "bc-e40f49ec-663e-56e7-b42e-774eccd4c700",
-      "branch": "cursor/zenodo-metadata-a32e",
-      "sha": "96cac6c2c209c1b7cd73414c9a6366312af6a42d",
-      "pr": 84,
-      "state": "merged",
-      "merge": "60968cc953ab89014d4b5e550d4085d70b403cbf"
-    },
-    {
-      "task": "Confirm ACL Anthology metadata",
-      "run": "bc-55518517-fb41-5400-913a-e2d2aa724962",
-      "branch": "cursor/acl-anthology-metadata-a32e",
-      "sha": "53db118ffd7597639d2c2629bded68ce8fbb588c",
-      "pr": 89,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm NSF award metadata",
-      "run": "bc-afdc78a8-22a3-593e-b3c9-023cc3b4aec0",
-      "branch": "cursor/nsf-awards-metadata-a32e",
-      "sha": "cf23fa6a93660bdd48e5327b44fe0d9c68ae0a2c",
-      "pr": 90,
-      "state": "merged",
-      "merge": "71194be64ee9e4a27e9a85c6cbb1c5b33108fb63"
-    },
-    {
-      "task": "Bound evidence excerpts",
-      "run": "bc-68fb21cf-7c46-5a20-a879-f2dbe0080fbf",
-      "branch": "cursor/evidence-excerpt-bound-a32e",
-      "sha": "20bf986d3b6590613c73c445deea83f5969f4b35",
-      "pr": 81,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm OpenAIRE metadata",
-      "run": "bc-71d72983-0694-59f7-9fce-328ea2df2661",
-      "branch": "cursor/openaire-metadata-a32e",
-      "sha": "69fa84366fd44ad45da57eefc02ef20bc02feab8",
-      "pr": 85,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm bioRxiv metadata",
-      "run": "bc-79736086-44e0-5add-b367-91a2693259ea",
-      "branch": "cursor/biorxiv-metadata-a32e",
-      "sha": "f8012404f5a55f75cd8bc24e867d0756430f4f4d",
-      "pr": 88,
-      "state": "merged"
-    },
-    {
-      "task": "Lock fetcher SSRF blocks",
-      "run": "bc-a2ebdb83-6c7c-5e05-9be6-046e4c33e0db",
-      "branch": "cursor/fetcher-ssrf-block-a32e",
-      "sha": "540f72cee8f1b54b5b14bd4c021f1d0168d47716",
-      "pr": 77,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm DataCite metadata",
-      "run": "bc-59c1e057-6f63-5fa5-a3c4-4c7e1bf951ab",
-      "branch": "cursor/datacite-metadata-a32e",
-      "sha": "dfd02e39cb844f2e4fe2d25f472be33d5b215871",
-      "pr": 87,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm CORDIS metadata",
-      "run": "bc-33b4a49b-b9cd-55d0-a051-a8542eec29e5",
-      "branch": "cursor/cordis-metadata-a32e",
-      "head": "1eb5ef221e844407caeb6f93888ac5dd95e0a9a5",
-      "pr": 96,
-      "state": "merged",
-      "merge": "6653582d3eb3bf8d705e47f3dec08a1eb1d670e6"
-    },
-    {
-      "task": "Confirm DOAJ metadata",
-      "run": "bc-58543328-9cf8-5ad6-b86c-c07adee8f870",
-      "branch": "cursor/doaj-metadata-a32e",
-      "head": "79e687ed43340b2b07275a481930e91de91bf18b",
-      "pr": 94,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm ORCID public metadata",
-      "run": "bc-24dcd3b7-9e1f-5e03-9386-0f43d6d83944",
-      "branch": "cursor/orcid-public-metadata-a32e",
-      "head": "35b94fca7b1acb495e100ec50af8ad3ee809d87a",
-      "pr": 99,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm medRxiv metadata",
-      "run": "bc-de094d86-b6ca-5602-ac4b-c4a1e5956e1c",
-      "branch": "cursor/medrxiv-metadata-a32e",
-      "head": "998247df44cc91ffb95670e601ea471e8b57637e",
-      "pr": 92,
-      "state": "merged",
-      "merge": "b529e4776c8dbd163eb254d2b2a44163f238eca0"
-    },
-    {
-      "task": "Confirm Internet Archive metadata",
-      "run": "bc-f1460aea-59e9-5446-b829-4994820ce8e4",
-      "branch": "cursor/internet-archive-metadata-a32e",
-      "head": "02164671101a689458b53ad687bdbe55f595b4aa",
-      "pr": 98,
-      "state": "merged",
-      "merge": "569f19cdbdfab364d4ba762517bd73477cdcc860"
-    },
-    {
-      "task": "Confirm OSF metadata",
-      "run": "bc-82e54332-d7f0-5deb-bdb2-642a02accdcb",
-      "branch": "cursor/osf-metadata-a32e",
-      "head": "b76622fe39969c16a2fa3110e7eb4f7e5864fb22",
-      "pr": 103,
-      "state": "merged",
-      "merge": "80877c051dacc392476cf2b43b5a4e2f200d28a7"
-    },
-    {
-      "task": "Confirm OECD AI metadata",
-      "run": "bc-030cb7c8-9f2a-5577-96f3-b003d573fa53",
-      "branch": "cursor/oecd-ai-metadata-a32e",
-      "head": "317177470427134732f9fe271d53edc0fa3080f5",
-      "pr": 93,
-      "state": "merged",
-      "merge": "ba6608268ee6195d24159029ba3e1846e46abca8"
-    },
-    {
-      "task": "Confirm Wikidata metadata",
-      "run": "bc-10adaf0b-7fe3-5ad9-ad45-3c5164858176",
-      "branch": "cursor/wikidata-metadata-a32e",
-      "head": "d05ed20b515ef5bcc01a77283e3eeef6b5f64b93",
-      "pr": 97,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm Unpaywall license",
-      "run": "bc-e8808edc-21c4-5009-85f5-620e65acc486",
-      "branch": "cursor/unpaywall-license-a32e",
-      "head": "08530a1abaef9ab8b85d6b86a90bbff90086ca29",
-      "pr": 105,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm Papers with Code metadata",
-      "run": "bc-b06c868c-c6e0-590f-bdea-191f7ceedbfd",
-      "branch": "cursor/paperswithcode-metadata-a32e",
-      "head": "7f70f0867c552ad870d4715d51aa6578e80f50dd",
-      "pr": 100,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm Library of Congress metadata",
-      "run": "bc-3c91d367-12fc-5735-a007-5728d94f4752",
-      "branch": "cursor/loc-metadata-a32e",
-      "head": "25db636c980f25c09c1675392f1400ee91cf9b86",
-      "pr": 107,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm PubMed metadata",
-      "run": "bc-959a6cd4-fea9-5ff0-b06c-96f2b7a61f40",
-      "branch": "cursor/pubmed-metadata-a32e",
-      "head": "26b35dd4ce0ef19755bd5cc3c9ca2a9277b0cc5b",
-      "pr": 104,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm Figshare metadata",
-      "run": "bc-9469f312-b1c3-5e08-9731-7f4d9f550551",
-      "branch": "cursor/figshare-metadata-a32e",
-      "head": "960dbd137537ef03a68b9f776e5c21dbbd2be58c",
-      "pr": 106,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm OpenAlex author metadata",
-      "run": "bc-5ddbb990-011e-5760-87e2-2f97b6026900",
-      "branch": "cursor/openalex-author-metadata-a32e",
-      "head": "9dc3f1f237c3e0fa3987a1cf8bfb56ddc5b0b75a",
-      "pr": 101,
-      "state": "merged"
-    },
-    {
-      "task": "Catalog UK AISI pages",
-      "run": "bc-5c2f55cc-bdce-5a2d-aabb-a04f6ed66843",
-      "branch": "cursor/uk-aisi-pages-a32e",
-      "head": "dae4144b7f70a71907f993f791b5d294f6899671",
-      "pr": 109,
-      "state": "merged"
-    },
-    {
-      "task": "Catalog Canada AI pages",
-      "run": "bc-f4153b8c-6de4-5458-ad87-2093190e99c0",
-      "branch": "cursor/canada-ai-pages-a32e",
-      "head": "205987cb7545dd85e2b310fdf08545966c602344",
-      "pr": 108,
-      "state": "merged"
-    },
-    {
-      "task": "Keep collector package marker",
-      "run": "bc-17b5cc89-fe6f-5436-b26e-f4aac1debe40",
-      "branch": "cursor/collector-package-marker-a32e",
-      "head": "fb22d222ea7514f3861013aa8a7a956cc4ff8aff",
-      "pr": 95,
-      "state": "merged",
-      "merge": "c4302820107b7d33465ee4099c356e41263d1562"
-    },
-    {
-      "task": "Keep arXiv DOI canonical",
-      "run": "bc-ec621e49-c69e-5266-8742-e1ad741408b8",
-      "branch": "cursor/arxiv-doi-canonical-a32e",
-      "head": "40b8420fd9bc1a9e5fb31cb28d2ec45e8c132205",
-      "pr": 102,
-      "state": "merged"
-    },
-    {
-      "task": "Catalog Singapore AI pages",
-      "run": "bc-080d34ee-c496-5efb-8b9c-3a5e7b755321",
-      "branch": "cursor/singapore-ai-pages-a32e",
-      "head": "4ae1968d042dc2a56d0e86a2e6155f4943cfc702",
-      "pr": 117,
-      "state": "merged",
-      "merge": "a7f31d978e4589fd68cbe3b51ab4f402d46a4a7b"
-    },
-    {
-      "task": "Catalog Australia AI pages",
-      "run": "bc-51622221-df4a-55de-b496-ceae167dacc2",
-      "branch": "cursor/australia-ai-pages-a32e",
-      "head": "a39a5a4f680528bb1083d241c36b9129fc9dc195",
-      "pr": 130,
-      "state": "merged",
-      "merge": "704ff4b36b09ec537d3477e8cbcb910997fe0a73"
-    },
-    {
-      "task": "Catalog Partnership on AI pages",
-      "run": "bc-e60b97a9-f982-5ad6-87d0-97319a44e44a",
-      "branch": "cursor/pai-pages-a32e",
-      "head": "0946516df46635f8d34c451771aaefbe2cf1cbb3",
-      "state": "merged",
-      "pr": 125,
-      "merge": "c32769e73f40ae681154e39668d4a1bbe1237902"
-    },
-    {
-      "task": "Catalog UNESCO AI pages",
-      "run": "bc-3163e4cf-bace-5f85-b3ed-dbeab2b0ed08",
-      "branch": "cursor/unesco-ai-pages-a32e",
-      "head": "d3757d0f1753780e057ffd3130a47197ed0afc92",
-      "pr": 124,
-      "state": "merged",
-      "merge": "d7d106eac044d47cdc0c4844557d90bd9b284006"
-    },
-    {
-      "task": "Catalog CNIL AI pages",
-      "run": "bc-c88612e3-a310-5919-8756-de55b2789031",
-      "branch": "cursor/cnil-ai-pages-a32e",
-      "head": "a63ad2f9c35951b95eec2589f62323f342282dd8",
-      "pr": 115,
-      "state": "merged"
-    },
-    {
-      "task": "Catalog BSI AI pages",
-      "run": "bc-5c7fb6b2-5898-5a31-8214-5cac79ecb398",
-      "branch": "cursor/bsi-ai-pages-a32e",
-      "head": "230c31192b099910003c7678bd801e75f7a91085",
-      "pr": 127,
-      "state": "merged",
-      "merge": "4a67af3eb38f4c684a41589f258e81c6777b4efc"
-    },
-    {
-      "task": "Catalog Japan AI pages",
-      "run": "bc-0cf3f471-6dd1-5531-9bd2-6529da0cd97e",
-      "branch": "cursor/japan-ai-pages-a32e",
-      "head": "b6ad615f7cfddaf1f80055b41b668f0d1486c447",
-      "state": "merged",
-      "pr": 126,
-      "merge": "71e81b706e04b6fc0cdeef3b14cc464e3f3479e5"
-    },
-    {
-      "task": "Catalog New Zealand AI pages",
-      "run": "bc-cb5bb730-d814-5cb7-9630-5ebf8ddadfbc",
-      "branch": "cursor/nz-ai-pages-a32e",
-      "head": "7c17ef398126a295e8017708153d31b8cf4dcbec",
-      "state": "merged",
-      "pr": 122,
-      "merge": "9f52a029d80e745a9c58e673157d7dae6e43265d"
-    },
-    {
-      "task": "Catalog CSET publication pages",
-      "run": "bc-033a49c7-a5b8-5203-a349-3f070db7761d",
-      "branch": "cursor/cset-pages-a32e",
-      "head": "5bf24f49f93b72fd1ff08d369bfcf8977836d8ae",
-      "pr": 120,
-      "state": "merged",
-      "merge": "323c72fbbb93e1a8991eece57b13189676ed716f"
-    },
-    {
-      "task": "Confirm AI Incident metadata",
-      "run": "bc-c65fdb86-a357-53cf-a44e-9d3db40bec00",
-      "branch": "cursor/aiid-metadata-a32e",
-      "head": "85915f732d533028368a5fa67196120231ca808a",
-      "pr": 111,
-      "state": "merged"
-    },
-    {
-      "task": "Confirm World Bank AI metadata",
-      "run": "bc-d4bd6afd-b2ff-5338-a943-d7ad88209424",
-      "branch": "cursor/worldbank-metadata-a32e",
-      "head": "75fcec09eb103ec075667cb4c4117d46227d443f",
-      "pr": 112,
-      "state": "merged"
-    },
-    {
-      "task": "Catalog Ada Lovelace pages",
-      "run": "bc-6374137a-d3b4-5879-ae4a-ccadf6745781",
-      "branch": "cursor/adalovelace-pages-a32e",
-      "head": "ef129f896e6a27946849ec2a2b1cbb8bbd8ab56d",
-      "pr": 113,
-      "state": "merged"
-    },
-    {
-      "task": "Catalog GovAI pages",
-      "run": "bc-837c38f3-f729-5a19-994a-33ea12423e6e",
-      "branch": "cursor/govai-pages-a32e",
-      "head": "39652ace2de0997d48c104a90c120a1d4a7e428a",
-      "pr": 114,
-      "state": "merged",
-      "merge": "82456a01953749f9c74e770ae389d27f045974ab"
-    },
-    {
-      "task": "Catalog Epoch AI pages",
-      "run": "bc-964457b1-778b-50e8-a026-7d2b3ee7b5d6",
-      "branch": "cursor/epoch-pages-a32e",
-      "head": "63e045a0cb85c61b414d278db3fd1a5a366d7fec",
-      "pr": 119,
-      "state": "merged",
-      "merge": "33eea5bb48937fb221e0be592d0929c9f48ecda0"
-    },
-    {
-      "task": "Lock RSS-only belief imports",
-      "run": "bc-513a6527-6cf1-51c5-806f-f4ed405aeb77",
-      "branch": "cursor/rss-only-inventory-a32e",
-      "head": "69b312ffa0b8476cb6f255c79c74c696d3166884",
-      "pr": 110,
-      "state": "merged"
-    },
-    {
-      "task": "Catalog Stanford HAI pages",
-      "run": "bc-39c8f284-a724-5618-8111-fe3b6fe7ac84",
-      "branch": "cursor/stanford-hai-pages-a32e",
-      "head": "c8cad61d1208750e6830b50cea54f258f1a9d73c",
-      "pr": 118,
-      "state": "merged",
-      "merge": "951879fb840bc5513981ef48c69df0c3909302fc"
-    },
-    {
-      "task": "Catalog METR pages",
-      "run": "bc-057b2a69-f44f-5bd8-9d52-6f091c43cc18",
-      "branch": "cursor/metr-pages-a32e",
-      "head": "f6783869a324d54b6649aeb373760fc8d72da861",
-      "state": "merged",
-      "pr": 121,
-      "merge": "6f1e6abfe2fdaa8315308bc9e7ba22b205a80596"
-    },
-    {
-      "task": "Catalog CAIS pages",
-      "run": "bc-1ae077c0-87d5-5310-87cd-d37448ac02bf",
-      "branch": "cursor/cais-pages-a32e",
-      "head": "1c8f072902d66c6774b22606d93e9d3eb6e88d22",
-      "pr": 116,
-      "state": "merged",
-      "merge": "8c9e3771b8051da8bf233d917c64da24f67cc264"
-    },
-    {
-      "task": "Catalog Alan Turing Institute pages",
-      "run": "bc-014b9eef-bfb8-52ef-9805-f6b09a3f1424",
-      "branch": "cursor/turing-ai-pages-a32e",
-      "head": "fc827b00e7717c7897397b5a93088a21ae70baa1",
-      "pr": 123,
-      "state": "merged",
-      "merge": "31e4f301ac0a77a59209135e073f611971e81515"
-    },
-    {
-      "task": "Catalog Future of Life pages",
-      "run": "bc-d9be6c1f-b2e0-5989-bbce-6399fdbf550f",
-      "branch": "cursor/fli-pages-a32e",
-      "head": "92bfd6dc249dc7d47ff5be4b133289dca533c92d",
-      "pr": 140,
-      "state": "merged",
-      "merge": "a75b9d64629ed9e95ebb5544f3a8061e7087b4b5"
-    },
-    {
-      "task": "Catalog MIRI pages",
-      "run": "bc-24de62b2-3b6e-593a-a1e2-98cae629fcbc",
-      "branch": "cursor/miri-pages-a32e",
-      "head": "b53a18b5b7457d250a4d13f9958f4c5c9903223c",
-      "pr": 135,
-      "state": "merged",
-      "merge": "556065eef5b300b7b71135ffc9363cb2f90db4c2",
-      "note": "Thirty rows stay unknown."
-    },
-    {
-      "task": "Catalog RAND AI pages",
-      "run": "bc-bf5d0f79-0056-5874-8e0c-0ef6f9a86f6d",
-      "branch": "cursor/rand-ai-pages-a32e",
-      "head": "bcea2106bbe470e59f9b98cd10dad2057f1a2f6f",
-      "pr": 134,
-      "state": "merged",
-      "merge": "f311cdcfadcb33ccbd89f76308799ae11a6904b4"
-    },
-    {
-      "task": "Catalog EU AI Office pages",
-      "run": "bc-ddb1c5f4-5592-57d3-ba4c-ef8ea3044048",
-      "branch": "cursor/eu-ai-office-pages-a32e",
-      "head": "49becfaee16c808e50e3bc5e495f9e6365bcc0be",
-      "pr": 131,
-      "state": "merged",
-      "merge": "da4dc32527943fb767226575578ca62559b4e79b"
-    },
-    {
-      "task": "Catalog Allen Institute pages",
-      "run": "bc-7d74605d-8ccb-5b06-a0a3-7ec8dbe95331",
-      "branch": "cursor/ai2-pages-a32e",
-      "head": "d7e3041421452d573e45df25f350fb69afb49c4f",
-      "pr": 142,
-      "state": "merged",
-      "merge": "78c72e4c17f43b1165468366868eb8f23d0e76a8"
-    },
-    {
-      "task": "Catalog CHAI pages",
-      "run": "bc-84f38b7a-a813-5d8c-83fe-ea21b6828f4e",
-      "branch": "cursor/chai-pages-a32e",
-      "head": "57063c243616d492665248a32c6d9426df82d442",
-      "pr": 132,
-      "state": "merged",
-      "merge": "bf9617b0fbb700e4c003ae69e3d811683ac43539"
-    },
-    {
-      "task": "Catalog forecasting institute pages",
-      "run": "bc-7c1da7a8-9aa6-51d0-af4a-e566c8a4fc37",
-      "branch": "cursor/fri-pages-a32e",
-      "head": "40191a9c155fe7220946a64a6c74ad40d44b360f",
-      "pr": 133,
-      "state": "merged",
-      "merge": "52a74935e20792c9ab58f96bc55c7f27e0d6962c",
-      "note": "Seventeen institute pages stay unknown. Seventeen panel pages are creative_commons because each page states CC BY."
-    },
-    {
-      "task": "Catalog AI Impacts pages",
-      "run": "bc-72a3bae8-f235-559c-a3eb-dabcaee23062",
-      "branch": "cursor/ai-impacts-pages-a32e",
-      "head": "ef1f0b0cc0f56c6b90a4caab45c01ff1832eb735",
-      "pr": 141,
-      "state": "merged",
-      "merge": "f86b4b3cf04fd89b9a7f8d8fc4badd91e2555271"
-    },
-    {
-      "task": "Catalog OpenAI research pages",
-      "run": "bc-e135bd9d-8654-5933-8a6b-97da10a19fac",
-      "branch": "cursor/openai-research-pages-a32e",
-      "head": "f8d372dd5fb31cc5561d20b0c3f9de022a8d69c4",
-      "pr": 137,
-      "state": "merged",
-      "merge": "71bf85eeaf3e3e2d0bacbd86e5d1dcb27894061b",
-      "note": "No rows. The confirming GET was blocked."
-    },
-    {
-      "task": "Catalog Anthropic research pages",
-      "run": "bc-011baf57-f566-5ac2-a9b5-3fd62bc1edde",
-      "branch": "cursor/anthropic-research-pages-a32e",
-      "head": "6a9ca0e5ac3203dc11634efcac3416675f6e167e",
-      "pr": 136,
-      "state": "merged",
-      "merge": "6d95b581003983ee4d625336e8006e9aa3cab996"
-    },
-    {
-      "task": "Catalog DeepMind publication pages",
-      "run": "bc-8cbdefef-e947-5271-8bbd-20576be01573",
-      "branch": "cursor/deepmind-pages-a32e",
-      "head": "0db57259ce6d8418bee82031308cd6e06beedd6a",
-      "pr": 129,
-      "state": "merged",
-      "merge": "170c40e456e46fdf5a0d9852ff48cb7bc97a6031"
-    },
-    {
-      "task": "Catalog EleutherAI pages",
-      "run": "bc-410ff18f-9458-500a-a8d5-a06561b7357e",
-      "branch": "cursor/eleuther-pages-a32e",
-      "head": "a6848b3bb4b55e3e6d2737cafe14b70612377c15",
-      "pr": 128,
-      "state": "merged",
-      "merge": "6818fe0fa0be98a6ab96a777da6d9462122818b2"
-    },
-    {
-      "task": "Catalog OSTP AI pages",
-      "run": "bc-78802903-df20-53f7-8963-8fe5faceaabc",
-      "branch": "cursor/ostp-ai-pages-a32e",
-      "head": "972da71ab7b37f6d686d9893b725300e3c911b7c",
-      "pr": 138,
-      "state": "merged",
-      "merge": "866072bbae7feca78141644a2c369a9bd79d83c4"
-    },
-    {
-      "task": "Catalog Convergence Analysis pages",
-      "run": "bc-2150f762-7626-586d-abfc-023d2b85d6ee",
-      "branch": "cursor/convergence-pages-a32e",
-      "head": "1bc632cc30e12060ccabca652a5e39ed13c4c8b4",
-      "pr": 139,
-      "state": "merged",
-      "merge": "660568cebd0b5d4c52a05b96d58bd26d16ca5634"
-    },
-    {
-      "task": "Catalog CSER pages",
-      "run": "bc-4f8f1e04-1e54-5bcc-9fd0-3fbf52f28736",
-      "branch": "cursor/cser-pages-a32e",
-      "head": "7f3c6aace0f7b9b38843f560de8f62734aa58781",
-      "pr": 143,
-      "state": "merged",
-      "merge": "bdbe3435d51742fb41eec250ae1a2388b275566d"
-    },
-    {
-      "task": "Catalog LCFI pages",
-      "run": "bc-6041db82-19e0-566c-b622-bd61be01b204",
-      "branch": "cursor/lcfi-pages-a32e",
-      "head": "691d7646cd37befc930fce1fb81fe42df89a538e",
-      "pr": 146,
-      "state": "merged",
-      "merge": "69dba4d2caa68664907336d515fffaa8273d81e4"
-    },
-    {
-      "task": "Catalog Redwood Research pages",
-      "run": "bc-6b3b67f3-20ae-59b5-87f8-47c44eda8bb4",
-      "branch": "cursor/redwood-pages-a32e",
-      "head": "238f30badc4db21f0d5fdcb14ca5875c4591b3fb",
-      "pr": 144,
-      "state": "merged",
-      "merge": "00c1e0718cc76c7303021b7d8370f56e610df572"
-    },
-    {
-      "task": "Catalog Apollo Research pages",
-      "run": "bc-3b70fb2b-a59a-5d1e-b5b1-2becb1c0e409",
-      "branch": "cursor/apollo-pages-a32e",
-      "head": "bfa6ebc1234b2c0245e671fb75cfac5e43de84dd",
-      "pr": 145,
-      "state": "merged",
-      "merge": "ef7f2c9929c170358bbb69ab92a4ffb5072b3850"
-    },
-    {
-      "task": "Catalog AI Now pages",
-      "run": "bc-d9093c16-9e86-5b9b-9716-f6759f032ffa",
-      "branch": "cursor/ainow-pages-a32e",
-      "head": "71916438cd11740cc28fe1ae2268c665ce4e491f",
-      "pr": 159,
-      "state": "merged",
-      "merge": "69890772739ac8613834620f9e6523c8948f8b49",
-      "note": "Two hundred seventy-two rows stay unknown. One publication is creative_commons because it states CC BY-SA. Twenty-three dates stay unknown."
-    },
-    {
-      "task": "Catalog Berkman Klein pages",
-      "run": "bc-5e7c9b26-bc22-5edb-b250-097b442e906c",
-      "branch": "cursor/berkman-ai-pages-a32e",
-      "head": "c29ddd80409e9a8452dc883fd7efacb07023d0b6",
-      "pr": 158,
-      "state": "merged",
-      "merge": "c3099562b5a88d08dc29193f62ece633c5e7f5de",
-      "note": "Thirty-four rows are creative_commons. Nineteen dates stay unknown. The AI Initiative page returned HTTP 403 and is omitted."
-    },
-    {
-      "task": "Catalog CLTR pages",
-      "run": "bc-36d91f2b-927d-5668-aa81-756fd38f1ac1",
-      "branch": "cursor/cltr-pages-a32e",
-      "head": "1a89a6241c43d54d8a262b7751dccfc8e5515e9a",
-      "pr": 149,
-      "state": "merged",
-      "merge": "6d500c9624f623c853a547f09daeea7c64bce920"
-    },
-    {
-      "task": "Catalog Conjecture pages",
-      "run": "bc-97c7a10d-9d49-5954-84d5-d3213a83c6e9",
-      "branch": "cursor/conjecture-pages-a32e",
-      "head": "fd1d578f68698acc5e11a1ad52366ba33c47ad45",
-      "pr": 156,
-      "state": "merged",
-      "merge": "15f0cc798055da79bce31143c4ed7c57140fc886",
-      "note": "Fifty-five rows stay unknown. Eleven dates stay unknown. mit and apache-2.0 are not folded into creative_commons."
-    },
-    {
-      "task": "Catalog FAR AI pages",
-      "run": "bc-af826cce-21d1-5617-9426-b7d13233ecf0",
-      "branch": "cursor/far-ai-pages-a32e",
-      "head": "9b60c09b649981c4dd636477026a871c43269e91",
-      "pr": 157,
-      "state": "merged",
-      "merge": "ae07e1ccb7a33ceaf195468dd1fec3954594d0e2",
-      "note": "One hundred fifty-five rows stay unknown. One post is creative_commons. Forty-three dates stay unknown. The module is not a belief collector."
-    },
-    {
-      "task": "Catalog BlueDot Impact pages",
-      "run": "bc-f1daca0a-c498-5088-ac68-3fbb5e789708",
-      "branch": "cursor/bluedot-pages-a32e",
-      "head": "e99b77fa27ad9b10abb7e228f8c2b1a20c1cfc40",
-      "pr": 151,
-      "state": "merged",
-      "merge": "0777ccf790b48c6ed5159472675a260b75d378f6"
-    },
-    {
-      "task": "Catalog Open Philanthropy pages",
-      "run": "bc-3685d80f-6a29-59ca-8abe-a88231aeb80c",
-      "branch": "cursor/openphil-ai-pages-a32e",
-      "head": "37329a6070cf8c7ef4d4c361cc843ff02a620764",
-      "pr": 150,
-      "state": "merged",
-      "merge": "dba0673b8a859d1d8b9d5c45e702bc75829cf0bf"
-    },
-    {
-      "task": "Catalog Stanford CRFM pages",
-      "run": "bc-3d5d24cc-6d76-5859-8305-cc50fd12ade9",
-      "branch": "cursor/crfm-pages-a32e",
-      "head": "072387166a3e64c78ff5847690e5a127c3309408",
-      "pr": 155,
-      "state": "merged",
-      "merge": "390e6b48785cb7901f54b203e550b101e176f004",
-      "note": "Sixty rows stay unknown. One page is creative_commons. All sixty-one dates stay unknown. Stanford HAI pages are not included."
-    },
-    {
-      "task": "Catalog GPI pages",
-      "run": "bc-bcb56659-2d11-5237-8fda-ad526b196dd4",
-      "branch": "cursor/gpi-pages-a32e",
-      "head": "0fe1394f1958b996e195b7b1954a4914de4a2817",
-      "pr": 147,
-      "state": "merged",
-      "merge": "949ea4bbeeb0aef5a7f3ef5892a0d8dda0dbd2c6"
-    },
-    {
-      "task": "Catalog Future Society pages",
-      "run": "bc-ac9e8a2a-0c91-59b0-9dc7-4d6b0d2b36a7",
-      "branch": "cursor/future-society-pages-a32e",
-      "head": "6ca1e7432aa8cbda3f5b5be7e0fcd841523795ee",
-      "pr": 148,
-      "state": "merged",
-      "merge": "98db4d79e124ee2ca29599574e739bc9f9dcb9a1"
-    },
-    {
-      "task": "Catalog Vector Institute pages",
-      "run": "bc-531ca8a8-55d2-52ff-9cbd-c950f3097132",
-      "branch": "cursor/vector-pages-a32e",
-      "head": "04ae405a5d5a93d58d427e04bed1d3e6b867db09",
-      "pr": 154,
-      "state": "merged",
-      "merge": "fcb1a0ab00073a04ac3fad9e69231763027732ad",
-      "note": "Thirty-nine rows stay unknown. One date stays unknown. A restricted deed wins when it appears with a permissive one."
-    },
-    {
-      "task": "Catalog Mila pages",
-      "run": "bc-e25e74c1-fa9f-59e7-a5f8-a3eba4acb236",
-      "branch": "cursor/mila-pages-a32e",
-      "head": "17f65a9a4278bab4aff61bc5e0c132112deb9ec1",
-      "pr": 153,
-      "state": "merged",
-      "merge": "5c91e14d747217a3b6faa97b9d0a59ae8e9f0972",
-      "note": "One hundred fifty-six rows stay unknown. Eighty-seven dates stay unknown. A public-domain mark stays unknown."
-    },
-    {
-      "task": "Catalog ICO AI pages",
-      "run": "bc-3695beb5-28a2-545a-9c54-10b5671c2fb6",
-      "branch": "cursor/ico-ai-pages-a32e",
-      "head": "13b8daec9e849f3fbb2216fcba3f88563dd8b5b5",
-      "pr": 160,
-      "state": "merged",
-      "merge": "606c3397ae093681cf7f41f5d4fc6b72ef5c82ad",
-      "note": "One hundred thirty-three rows are uk_ogl because each page states open government licence. One hundred nine dates stay unknown."
-    },
-    {
-      "task": "Catalog FTC AI pages",
-      "run": "bc-661f7766-8b30-5bb3-948a-45164e73c5b3",
-      "branch": "cursor/ftc-ai-pages-a32e",
-      "head": "9a76c278691cfb36817e8e74627b4ef84a68fb3a",
-      "pr": 152,
-      "state": "merged",
-      "merge": "dbf764cf58eb8c9a102fa8275450587932d7456f",
-      "note": "No rows. ftc.gov returned an Akamai robot block. A .gov host alone stays unknown."
-    },
-    {
-      "task": "Catalog Rethink Priorities pages",
-      "run": "bc-046afa7b-4fd3-52cc-b294-f40ff46d0370",
-      "branch": "cursor/rethink-pages-a32e",
-      "head": "7fd7ffdc2b1178cb8e49bdc9fb6104002d85993b",
-      "pr": 164,
-      "state": "merged",
-      "merge": "6fd5485a1d701350062f8d22d1e8e800600d21cf",
-      "note": "Thirty-three rows stay unknown. A CC-BY citation footnote is not a page licence."
-    },
-    {
-      "task": "Catalog Forethought pages",
-      "run": "bc-728837b0-de0e-57d8-ab4f-133d928f899e",
-      "branch": "cursor/forethought-pages-a32e",
-      "head": "e9f9872543ce113c3704f5c7be5db55fb51eead4",
-      "pr": 171,
-      "state": "merged",
-      "merge": "fa80e2dc5e5104d2d045536a261ce93b55747de2",
-      "note": "One hundred thirty-six rows stay unknown. Fifty-eight dates stay unknown. The support URL redirected to careers and is not a separate row."
-    },
-    {
-      "task": "Catalog IAPS pages",
-      "run": "bc-177e190c-8589-568e-af8c-924ac664da63",
-      "branch": "cursor/iaps-pages-a32e",
-      "head": "552df5b5c535ff8036af71657cc428f215ece96e",
-      "pr": 166,
-      "state": "merged",
-      "merge": "7306b65447ae3bebc56138f969c5194398891af6",
-      "note": "One hundred eighty rows stay unknown. Seventy-three dates stay unknown."
-    },
-    {
-      "task": "Catalog BAIR pages",
-      "run": "bc-5fe82191-1f4c-5c4d-a205-a25386f0b5b1",
-      "branch": "cursor/bair-pages-a32e",
-      "head": "1a3b0971bd5af2200c21e0a479ec557069a76310",
-      "pr": 168,
-      "state": "draft",
-      "note": "Thirteen rows stay unknown. Individual blog posts are not listed."
-    },
-    {
-      "task": "Catalog Amii pages",
-      "run": "bc-9cb32774-5e00-560f-9fbd-36c02ff3e693",
-      "branch": "cursor/amii-pages-a32e",
-      "head": "de94db9ee4617f37b7e0ddef8065de2e0a0ce4c4",
-      "pr": 162,
-      "state": "merged",
-      "merge": "19bfbe1e92305e74ab017f1931d03357297c8f50",
-      "note": "Twenty-eight rows stay unknown. Every date stays unknown."
-    },
-    {
-      "task": "Catalog Schwartz Reisman pages",
-      "run": "bc-b3cbfc74-6b64-52dd-a145-5d8921877d36",
-      "branch": "cursor/sri-pages-a32e",
-      "head": "849640c5d8970e2fd4f7cad6dc10238af1563cd7",
-      "pr": 165,
-      "state": "merged",
-      "merge": "4db6b661e0ef7e348462ac387738c892b0de159e",
-      "note": "Thirty-four rows stay unknown. Every date stays unknown."
-    },
-    {
-      "task": "Catalog Data and Society pages",
-      "run": "bc-6a4beaa6-847f-5f6f-96bd-cef104613014",
-      "branch": "cursor/datasociety-pages-a32e"
-    },
-    {
-      "task": "Catalog Mozilla AI pages",
-      "run": "bc-044c0f65-0d89-5cac-98ef-c019a3a0ed6a",
-      "branch": "cursor/mozilla-ai-pages-a32e",
-      "head": "36c103ec639c76d8942d8ad6a91c082964f105d6",
-      "pr": 167,
-      "state": "merged",
-      "merge": "a87ac56917129f54510fdfa0159f343dec497076",
-      "note": "Four rows stay unknown. MPL 2.0 is its own token. blog.mozilla.org returned HTTP 403."
-    },
-    {
-      "task": "Catalog Ought pages",
-      "run": "bc-f272c423-6444-50aa-bc9a-76129bd2d702",
-      "branch": "cursor/ought-pages-a32e",
-      "head": "8b0a9808c479c4e9f808bcdf6481f00ae8e0275d",
-      "pr": 161,
-      "state": "merged",
-      "merge": "b5ef0c1ee026a7d047e800807b080236ee98361f",
-      "note": "Thirty-two rows stay unknown. Eighteen dates stay unknown."
-    },
-    {
-      "task": "Catalog Cooperative AI pages",
-      "run": "bc-0f5fe1c5-4731-5c7e-98c5-7b50a32dac29",
-      "branch": "cursor/caf-pages-a32e",
-      "head": "4d0b41481a236e0471377a2b704158e381e13093",
-      "pr": 170,
-      "state": "merged",
-      "merge": "b5aa6e35d97f56dea46aa76ba260f5f89ed5e899",
-      "note": "One hundred eight rows stay unknown. One page is creative_commons. Eighty-five dates stay unknown."
-    },
-    {
-      "task": "Catalog Distill pages",
-      "run": "bc-ca09a5d9-58da-5212-bb96-fadd8156159d",
-      "branch": "cursor/distill-pages-a32e",
-      "head": "185bd8eab453b9661f0c0ba686f4f20c12c7b680",
-      "pr": 169,
-      "state": "merged",
-      "merge": "4cb1496890dc421397d15954e6faa3d08bf15f23",
-      "note": "Forty-five rows are creative_commons because each article states CC BY. A bare licences URL stays unknown."
-    },
-    {
-      "task": "Catalog CDT AI pages",
-      "run": "bc-b66dee87-0006-5a47-8d35-4a47bc38c2e8",
-      "branch": "cursor/cdt-ai-pages-a32e",
-      "head": "35a3bfcc8aa8237539b94581b9ae2a2575601dc7",
-      "pr": 163,
-      "state": "merged",
-      "merge": "e53cb1c9318a3d7686fd1423140b6032617f45a4",
-      "note": "No rows. cdt.org returned a Cloudflare challenge."
-    },
-    {
-      "task": "Catalog SaferAI pages",
-      "run": "bc-44881ccc-b0bf-5b7e-b347-cdaa63288c82",
-      "branch": "cursor/saferai-pages-a32e",
-      "head": "4e9fecd24bd69a6a0ffd0327a2846e81226cfdf3",
-      "pr": 172,
-      "state": "merged",
-      "merge": "ff690d05d2660e9e9e799d6e65cac770d6d7f7ce",
-      "note": "Ninety-four rows stay unknown. Forty-seven dates stay unknown. www.saferai.org failed TLS and was not stored."
-    },
-    {
-      "task": "Catalog Palisade Research pages",
-      "run": "bc-f3d6f770-2a0d-55a3-aa6d-3a059d21aefb",
-      "branch": "cursor/palisade-pages-a32e",
-      "head": "22feb081a480e6500a2f174707dd292c5f4a60cc",
-      "pr": 176,
-      "state": "draft",
-      "note": "Forty rows stay unknown. Fifteen dates stay unknown. www.palisaderesearch.org returned HTTP 522."
-    },
-    {
-      "task": "Catalog MATS program pages",
-      "run": "bc-9799731d-29a6-5655-9bd9-cb302fdb4b0a",
-      "branch": "cursor/mats-pages-a32e",
-      "head": "eae36438b080d30d181bca83e3f417689f10096a",
-      "pr": 177,
-      "state": "draft",
-      "note": "Thirty-nine rows stay unknown. Every date stays unknown. Person profiles are not rows."
-    },
-    {
-      "task": "Catalog Alignment Research Center pages",
-      "run": "bc-1239ad6a-6a66-5ae6-aadb-0bdd04d65b5b",
-      "branch": "cursor/alignment-org-pages-a32e",
-      "head": "844aa4887145674d2e9d591abb85f33c3261cecb",
-      "pr": 173,
-      "state": "merged",
-      "merge": "20f85dd947abdca8a05b11c62dd723c3d87a1ca2",
-      "note": "Thirty-six www.alignment.org rows stay unknown. One date stays unknown. metr.org is not included."
-    },
-    {
-      "task": "Catalog PIBBSS pages",
-      "run": "bc-2f0c07ba-a0a3-54e8-8a0e-7d058fa572fe",
-      "branch": "cursor/pibbss-pages-a32e",
-      "head": "2328e8f7b01fe607f74712eb04888361b7f03b21",
-      "pr": 174,
-      "state": "merged",
-      "merge": "83b8c7a6be85a47528d254f14360b24044eebfb3",
-      "note": "Ten rows stay unknown. Every date stays unknown. princint.ai redirects were not stored."
-    },
-    {
-      "task": "Catalog OECD.AI pages",
-      "run": "bc-6d783638-6315-585e-a899-2c3c3215875a",
-      "branch": "cursor/oecd-ai-pages-a32e",
-      "head": "edf64c22d704baac2ac0fd7e93efe7b354234bf8",
-      "pr": 178,
-      "state": "draft",
-      "note": "Seventy-nine rows stay unknown. Every date stays unknown. An OECD copyright notice is not a reuse licence."
-    },
-    {
-      "task": "Catalog Meta FAIR pages",
-      "run": "bc-9b4a8689-4e1a-5624-8cba-2f23b0833b6c",
-      "branch": "cursor/meta-fair-pages-a32e"
-    },
-    {
-      "task": "Catalog Apart Research pages",
-      "run": "bc-c3a744c8-5144-5674-bc58-3b295ad6b040",
-      "branch": "cursor/apart-pages-a32e",
-      "head": "0f5a829d9ae412526c7f163f984ce751436e9011",
-      "state": "returned",
-      "note": "Mixed restricted and permissive text was locked to the restricted token. The worker is changing that case to unknown."
-    },
-    {
-      "task": "Catalog Center for AI Policy pages",
-      "run": "bc-62d10381-ffc8-5ef9-ba7a-d4dff25a4032",
-      "branch": "cursor/caip-pages-a32e"
-    },
-    {
-      "task": "Catalog CIP pages",
-      "run": "bc-0b37d81c-78d9-5dc6-899c-151cee9b2606",
-      "branch": "cursor/cip-pages-a32e"
-    },
-    {
-      "task": "Catalog MLCommons pages",
-      "run": "bc-338c0faa-3ee5-5580-a066-36b4654226ba",
-      "branch": "cursor/mlcommons-pages-a32e"
-    },
-    {
-      "task": "Catalog Cohere For AI pages",
-      "run": "bc-9c69bb47-8f7c-5de2-90ee-f75cf69c1dcf",
-      "branch": "cursor/cohere-ai-pages-a32e"
-    },
-    {
-      "task": "Catalog Timaeus pages",
-      "run": "bc-441d677f-f8bf-5704-8910-36ac42d243fb",
-      "branch": "cursor/timaeus-pages-a32e"
-    },
-    {
-      "task": "Catalog GPAI pages",
-      "run": "bc-70d7b273-bf8c-56ca-b717-ee2416309e49",
-      "branch": "cursor/gpai-pages-a32e"
-    },
-    {
-      "task": "Catalog LMSYS pages",
-      "run": "bc-1160dfee-145a-5132-9a2a-b343856afb45",
-      "branch": "cursor/lmsys-pages-a32e"
-    },
-    {
-      "task": "Catalog Our World in Data AI pages",
-      "run": "bc-b72ce770-7e87-5117-abaa-ec877bb0afe1",
-      "branch": "cursor/owid-ai-pages-a32e",
-      "head": "e5125fa2276a6e8f4799b4e8788f0e7d5386e31b",
-      "pr": 175,
-      "state": "draft",
-      "note": "Thirteen artificial-intelligence pages are creative_commons because each states CC BY. Grapher URLs and CSV downloads are not stored."
-    },
-    {
-      "task": "Catalog Gray Swan pages",
-      "run": "bc-2ea696e5-75a3-55d4-a7bf-8be3e4771f40",
-      "branch": "cursor/grayswan-pages-a32e"
-    },
-    {
-      "task": "Catalog Goodfire pages",
-      "run": "bc-16d836f2-cca7-5780-82f1-9054369fbdcf",
-      "branch": "cursor/goodfire-pages-a32e"
-    },
-    {
-      "task": "Catalog Transluce pages",
-      "run": "bc-8fc60731-ffc9-5ad8-871f-dd0d9df5e93d",
-      "branch": "cursor/transluce-pages-a32e"
-    },
-    {
-      "task": "Catalog LawZero pages",
-      "run": "bc-7b05afa4-e522-55d4-874c-0b7e6dda7f30",
-      "branch": "cursor/lawzero-pages-a32e"
-    },
-    {
-      "task": "Catalog Haize Labs pages",
-      "run": "bc-44ecf10a-4d94-51f2-9dab-f37605f6573d",
-      "branch": "cursor/haize-pages-a32e",
-      "head": "66c11bfa0f47f847d3a597ea0232fb8a8ce4df07",
-      "pr": 192,
-      "state": "merged",
-      "merge": "5b4aca5c3bb60447567e73440d3908d1a9b526ca",
-      "note": "No rows. haizelabs.com returned a Cloudflare challenge."
-    },
-    {
-      "task": "Catalog Sakana AI pages",
-      "run": "bc-761241dd-a9b6-56c6-92f4-d8a219f910c5",
-      "branch": "cursor/sakana-pages-a32e",
-      "head": "51a187d97d5a1e5a0018878c1172ccfdd50a7cc3",
-      "pr": 193,
-      "state": "merged",
-      "merge": "13b5e62d770cebbd32130a00e6763b3fc235e11e",
-      "note": "One hundred twenty-seven pages. Four research pages are apache-2.0. Four dates stay unknown."
-    },
-    {
-      "task": "Catalog Adept pages",
-      "run": "bc-6c6c12c2-50f5-5a0d-989a-a5963ae4867b",
-      "branch": "cursor/adept-pages-a32e",
-      "head": "084e090c5a62253189de239ad3ea0abed79cbb2e",
-      "pr": 194,
-      "state": "merged",
-      "merge": "f338f5defdedbd68b64616510097096029b19ec3",
-      "note": "No rows. adept.ai returned a Cloudflare challenge. A generic Creative Commons licences URL stays unknown."
-    },
-    {
-      "task": "Catalog Stanford SERI pages",
-      "run": "bc-773bee44-2853-5e2b-9316-4264800babb8",
-      "branch": "cursor/seri-pages-a32e",
-      "head": "c36567af27235409fa5c46c0cc2f798e59f5b226",
-      "pr": 195,
-      "state": "merged",
-      "merge": "d46adfd3261404553b280539202b7670f51cc8dd",
-      "note": "Seventy-one rows stay unknown. Sixty-six dates stay unknown. A sole restricted deed keeps its own token."
-    },
-    {
-      "task": "Catalog Mistral research pages",
-      "run": "bc-6bdf3acb-d9b1-5bc8-ad3f-6ef5b1d243dd",
-      "branch": "cursor/mistral-ai-pages-a32e",
-      "head": "aad6aed1af9af49ea55bde578f0f8f00c20810e7",
-      "pr": 196,
-      "state": "merged",
-      "merge": "22faa844d180a10eec47ece69cab66ed35851333",
-      "note": "Two hundred seventy pages. Sixty-five are apache-2.0. Three Voxtral pages are cc_by_nc. A generic Creative Commons licences URL stays unknown."
-    },
-    {
-      "task": "Catalog CAIDP pages",
-      "run": "bc-f6a06045-6ab3-5512-b440-7c5ee90e5bb1",
-      "branch": "cursor/caidp-pages-a32e",
-      "head": "90c5f71b5cc31ef995dba58c8ddbbbd666b511df",
-      "pr": 197,
-      "state": "merged",
-      "note": "Fifty-nine rows stay unknown. Every date stays unknown. A generic Creative Commons licences URL stays unknown. Apache License, Version 2.0 is apache-2.0.",
-      "merge": "aca33176340266d17717f885626da3b3690cae2e"
-    },
-    {
-      "task": "Catalog LawAI pages",
-      "run": "bc-4c5d3722-fb26-5ecd-8b43-789a9cab1a7e",
-      "branch": "cursor/law-ai-pages-a32e",
-      "head": "c19d1e1185cbea1b178ed46c616783ba1d6c209d",
-      "pr": 198,
-      "state": "merged",
-      "note": "One hundred fourteen rows stay unknown. The Law-Following AI workshop is creative_commons_attribution because it states CC BY 2.0. Six dates stay unknown.",
-      "merge": "2040a6eb1af8b3de215583eb3cfd276734e046e7"
-    },
-    {
-      "task": "Catalog Montreal ethics pages",
-      "run": "bc-2c2f8fa6-dfe8-5625-8265-010bdb5f0ca2",
-      "branch": "cursor/maiei-pages-a32e",
-      "head": "1f8bc3b9853dc7bd839c2fe3bb1518a3710b8fc2",
-      "pr": 199,
-      "state": "merged",
-      "note": "Nine hundred thirteen rows are creative_commons_attribution because the footer states CC BY 4.0. One page stays unknown because it also states the MIT License. Twenty dates stay unknown.",
-      "merge": "84a783d3a8239792d582dc51123c6e43fac33444"
-    },
-    {
-      "task": "Catalog Stability AI pages",
-      "run": "bc-1a29251d-ceba-551f-b045-08a9664131da",
-      "branch": "cursor/stability-ai-pages-a32e",
-      "head": "40afa82e65ce8246495963b96ab6f3b4d4bdb5ac",
-      "pr": 200,
-      "state": "merged",
-      "note": "One hundred fifty rows stay unknown. Three are creative_commons, one is apache-2.0, and one is mit. Two dates stay unknown.",
-      "merge": "513e1bfd308a7f8fd2f1bb0f04388d03a575e1d6"
-    },
-    {
-      "task": "Catalog Carnegie AI pages",
-      "run": "bc-7aa6a239-d145-5f46-a4b7-493c0cc4e7ea",
-      "branch": "cursor/carnegie-ai-pages-a32e",
-      "head": "50013648acf1922439ad4d1ddeea72500ecc99ca",
-      "pr": 201,
-      "state": "merged",
-      "note": "One hundred seventy-seven rows stay unknown. Twenty dates stay unknown.",
-      "merge": "78c5d65d74335673ba03b12e797aa4bffcf61394"
-    },
-    {
-      "task": "Catalog Inflection pages",
-      "run": "bc-8dc05813-1404-5e85-b843-e9bf89827ae6",
-      "branch": "cursor/inflection-pages-a32e",
-      "head": "81081db698554b48bcfbb0042ce63e57891fe25a",
-      "pr": 202,
-      "state": "merged",
-      "note": "Twenty-two rows stay unknown. Three dates stay unknown.",
-      "merge": "0e31af40c10d10d9ddd6c9b41a71eb22a6780bab"
-    },
-    {
-      "task": "Catalog Holistic AI pages",
-      "run": "bc-dbe2c807-bec3-596a-8e2e-a3c56fbf54b8",
-      "branch": "cursor/holistic-ai-pages-a32e",
-      "head": "ec6eb0618f6c6a184bba6bfdfe3a7631ee494929",
-      "state": "draft",
-      "note": "Two hundred seventy-nine rows stay unknown. Seven dates stay unknown. A generic Creative Commons licences URL stays unknown.",
-      "pr": 203
-    },
-    {
-      "task": "Catalog Simon Institute pages",
-      "run": "bc-c5a8ecbd-2d32-5c0e-bf46-0b6577816a9c",
-      "branch": "cursor/silg-pages-a32e",
-      "head": "1f481813ae388ac3df61a48d8a980102e01fd3e4",
-      "state": "draft",
-      "note": "Ninety-three rows stay unknown. One date stays unknown. The disaster-risk row stays unknown because the only deed is a UNDRR photo credit.",
-      "pr": 206
-    },
-    {
-      "task": "Catalog AI Objectives pages",
-      "run": "bc-b989899b-12b6-54c2-ba87-c40abd2f7aa1",
-      "branch": "cursor/aio-pages-a32e",
-      "head": "cac3c1fdcb64ae4b2a021e1affcbe20e0c480daa",
-      "state": "draft",
-      "note": "Forty-four rows stay unknown. Fifteen dates stay unknown. A generic Creative Commons licences URL stays unknown.",
-      "pr": 205
-    },
-    {
-      "task": "Catalog Brookings AI pages",
-      "run": "bc-6c62b79b-3648-5645-a67d-9ec76fcce668",
-      "branch": "cursor/brookings-ai-pages-a32e",
-      "head": "4159584d5ad7ee32e376d9cdb7cb98d24506df19",
-      "state": "draft",
-      "note": "Nine hundred thirty-seven pages. Eight hundred ninety-four stay unknown. Forty-two are creative_commons_attribution. The US-China article is mit. A generic Creative Commons licences URL stays unknown.",
-      "pr": 204
-    },
-    {
-      "task": "Catalog FHI pages",
-      "run": "bc-08724534-1c80-5439-934d-655ac70aada1",
-      "branch": "cursor/fhi-pages-a32e"
-    },
-    {
-      "task": "Catalog DAIR pages",
-      "run": "bc-217b94cf-1ed9-5331-a0ef-8e4c53ee330d",
-      "branch": "cursor/dair-pages-a32e"
-    },
-    {
-      "task": "Catalog AI21 pages",
-      "run": "bc-fc0ed278-7872-5ccc-9bac-e5e928c243c2",
-      "branch": "cursor/ai21-pages-a32e"
-    },
-    {
-      "task": "Catalog xAI pages",
-      "run": "bc-79c85031-be1f-54d4-b112-7a4b1167d3f7",
-      "branch": "cursor/xai-pages-a32e"
-    },
-    {
-      "task": "Catalog SSI pages",
-      "run": "bc-d03005fd-419a-5775-884e-84147ff67f2d",
-      "branch": "cursor/ssi-pages-a32e"
-    },
-    {
-      "task": "Catalog Imbue pages",
-      "run": "bc-f37d2851-6e25-54b7-b0a5-75cb82e6e60f",
-      "branch": "cursor/imbue-pages-a32e"
-    },
-    {
-      "task": "Catalog MIT FutureTech pages",
-      "run": "bc-4a54e078-d6d6-5ca1-95a2-b1a8a082e30d",
-      "branch": "cursor/futuretech-pages-a32e"
-    },
-    {
-      "task": "Catalog Oxford ethics pages",
-      "run": "bc-8a042557-9d50-553f-91d9-7f0b436c4a0c",
-      "branch": "cursor/oxford-ethics-pages-a32e"
-    },
-    {
-      "task": "Catalog AJL pages",
-      "run": "bc-9c10af67-b231-54dd-bbb7-6736fd694205",
-      "branch": "cursor/ajl-pages-a32e"
-    },
-    {
-      "task": "Catalog ELLIS pages",
-      "run": "bc-42188ca2-4bdb-5b8d-ac1b-afc27d4fb931",
-      "branch": "cursor/ellis-pages-a32e"
-    },
-    {
-      "task": "Catalog SCSP pages",
-      "run": "bc-2d46ce51-9573-5c48-9683-7cf6a53bc991",
-      "branch": "cursor/scsp-pages-a32e"
-    },
-    {
-      "task": "Catalog Responsible AI pages",
-      "run": "bc-141237ce-dac3-5372-aa8f-f9579cc689e8",
-      "branch": "cursor/rai-pages-a32e"
-    },
-    {
-      "task": "Catalog IFP pages",
-      "run": "bc-0d8a964c-5207-5af1-b7a1-56e2b2c56e98",
-      "branch": "cursor/ifp-pages-a32e"
-    },
-    {
-      "task": "Catalog Data & Society pages",
-      "run": "bc-6a4beaa6-847f-5f6f-96bd-cef104613014",
-      "branch": "cursor/datasociety-pages-a32e",
-      "head": "33f86f73d424cdba054bc964a699764c4d85bda2",
-      "state": "returned",
-      "note": "Tests lock CC BY as creative_commons and a sole CC BY-NC-SA as unknown. The 192 pages state CC BY-NC-SA, so those rows should become cc_by_nc_sa."
-    },
-    {
-      "task": "Catalog Inria pages",
-      "run": "bc-af7de0d2-def6-5852-992c-26021b12c4f2",
-      "branch": "cursor/inria-pages-a32e"
-    },
-    {
-      "task": "Catalog DFKI pages",
-      "run": "bc-f3a55aec-4128-5f35-9cbe-2d783eae40a9",
-      "branch": "cursor/dfki-pages-a32e"
-    },
-    {
-      "task": "Catalog Atlantic Council AI pages",
-      "run": "bc-109cc63f-5cce-5168-b744-3bb67a2d190e",
-      "branch": "cursor/atlantic-ai-pages-a32e"
-    },
-    {
-      "task": "Catalog Belfer Center AI pages",
-      "run": "bc-d36a6201-7792-52d5-9c07-608a956b505c",
-      "branch": "cursor/belfer-pages-a32e"
-    },
-    {
-      "task": "Catalog EFF AI pages",
-      "run": "bc-2754b328-868f-522f-a25e-d7079be33b95",
-      "branch": "cursor/eff-ai-pages-a32e"
-    }
+    {"task": "Confirm arXiv retrieval", "run": "bc-b3e077bb-eea2-5875-8cac-c25c6c5e58b5", "branch": "cursor/arxiv-retrieval-confirm-a32e", "sha": "237f2851662fc4319d9f056e1f04dc3f823dd605", "pr": 53},
+    {"task": "Confirm OpenAlex retrieval", "run": "bc-0230545e-23aa-5a01-81c1-e7cb9089bc87", "branch": "cursor/openalex-retrieval-confirm-a32e", "sha": "49401dd7a085b90693560d1745606a64f23a46b5", "pr": 43},
+    {"task": "Catalog US federal AI docs", "run": "bc-2868869c-a8e2-5ce3-8262-f13d52d4e4e6", "branch": "cursor/us-federal-catalog-a32e", "sha": "5b1b801a8842dd5d21aa39ea238acd1c6c32e4e3", "pr": 56},
+    {"task": "Catalog UK OGL AI docs", "run": "bc-7b8da2ed-3bcc-575e-80fa-bc59d0cac34a", "branch": "cursor/uk-ogl-catalog-a32e", "sha": "df6d401720c06464ac7806258771b35765da78a3", "pr": 49},
+    {"task": "Catalog congressional AI hearings", "run": "bc-115e0676-dd02-58be-a207-ea647622db57", "branch": "cursor/congress-hearings-catalog-a32e"},
+    {"task": "Confirm podcast RSS metadata", "run": "bc-03a987c9-3afc-510d-ba45-d8f374ce305e", "branch": "cursor/podcast-rss-metadata-a32e"},
+    {"task": "Confirm YouTube metadata only", "run": "bc-e7cb1fbc-2a82-522d-a76d-b1d21ff14b45", "branch": "cursor/youtube-metadata-only-a32e", "sha": "3d80323f862c1bdb5cf5964cf962ad70726a01c6", "pr": 55},
+    {"task": "Confirm Crossref metadata", "run": "bc-a00045c7-0fee-529e-8cab-cca65eed275b", "branch": "cursor/crossref-metadata-a32e", "sha": "7d9fe27bb16572f61dc26802d7931741c858df3b", "pr": 50},
+    {"task": "Add ORCID non-merge test", "run": "bc-b1b80367-b80b-5869-b67e-eb9c5face463", "branch": "cursor/orcid-non-merge-a32e", "sha": "4fd102a83365434f0f27de2a5459cba97984160f", "pr": 54},
+    {"task": "Add hostile source fixture", "run": "bc-5f46edf0-4da4-5172-a8c6-a55f15ed5dc3", "branch": "cursor/hostile-source-fixture-a32e"},
+    {"task": "Parse percent and probability units", "run": "bc-8eca23db-5153-5b69-91ff-a16861eb0da7", "branch": "cursor/percent-unit-parsing-a32e", "sha": "3d32129226599d47100e90a54d5818b54b91ae34", "pr": 45},
+    {"task": "Test canonical URL idempotence", "run": "bc-cf018d23-b510-5ebe-beca-400017846f9b", "branch": "cursor/canonical-url-idempotence-a32e", "sha": "a7e8d8c4bac245e03a1d1ea96f45cadff1581b1d", "pr": 44},
+    {"task": "Show source provenance on sources", "run": "bc-fe5830ce-28a6-55ba-ae84-da7559b1d097", "branch": "cursor/sources-page-provenance-a32e", "sha": "21248a363d06cb4fda0bc35b413f82f5bd84be10", "pr": 48},
+    {"task": "Label topic horizons", "run": "bc-4fd24c43-9d7d-51d5-bf1d-996243de5ad5", "branch": "cursor/topics-horizon-labels-a32e", "sha": "a7c2cdf8e4f9f59e0d3a3b1108a32d856fb231ff", "pr": 59},
+    {"task": "State methodology coverage limits", "run": "bc-e3141bc4-b9c8-579c-9635-b429c5bc2e09", "branch": "cursor/methodology-coverage-a32e"},
+    {"task": "Label statement classes", "run": "bc-55c07075-9858-574a-a6d9-a2726b4e6e5a", "branch": "cursor/statements-class-labels-a32e", "sha": "6e0523c966926183b639e74c7f804cee760ed750", "pr": 47},
+    {"task": "Confirm GitHub retrieval", "run": "bc-1c470596-ed63-5c57-be70-e09393a1bc0b", "branch": "cursor/github-retrieval-confirm-a32e", "sha": "e7f9721cc42f5008bfe0494d4fde2bebebee2287", "pr": 46},
+    {"task": "Confirm Semantic Scholar metadata", "run": "bc-0c0e5fac-0d6a-580e-b4ea-eca25aa91d84", "branch": "cursor/semantic-scholar-metadata-a32e", "sha": "d4ca874c397c26b05a953ba26877641d7174f291", "pr": 52},
+    {"task": "Report source missingness", "run": "bc-76b5182e-1bd3-5ef5-8e20-c24a59af891a", "branch": "cursor/quality-missingness-a32e", "sha": "45e8386d8c3ccd2f0ee8ae85f50b3504773f9afa", "pr": 51},
+    {"task": "Confirm OpenReview metadata", "run": "bc-05d3f393-6e9a-550d-9eda-303de24cf162", "branch": "cursor/openreview-metadata-a32e", "sha": "13b6cba9dfb06a10e1804b6ad9ea0999bc8ab0f0", "pr": 61},
+    {"task": "Add hostile source fixture", "run": "bc-5f46edf0-4da4-5172-a8c6-a55f15ed5dc3", "branch": "cursor/hostile-source-fixture-a32e", "sha": "e66add77e54f97f68dbd1b2f422fd2bc866ad01e", "pr": 39},
+    {"task": "Confirm Hugging Face metadata", "run": "bc-61e5f839-01b4-5373-aab9-5ce095aec32a", "branch": "cursor/huggingface-metadata-a32e", "sha": "15df885b560c43e14002d71cb8c06dfed95a3ee5", "pr": 57},
+    {"task": "Confirm podcast RSS metadata", "run": "bc-03a987c9-3afc-510d-ba45-d8f374ce305e", "branch": "cursor/podcast-rss-metadata-a32e", "sha": "ea2c56dee1def6c7e3c961c91b9359c0041a70b2", "pr": 40},
+    {"task": "Keep name-only profiles unlinked", "run": "bc-fe0409dd-7253-5e00-9a55-7424eab3c37d", "branch": "cursor/discover-name-only-social-a32e", "sha": "26ed2bf484a8f167cea580e267a0acd8482a0a24", "pr": 60},
+    {"task": "Catalog congressional AI hearings", "run": "bc-115e0676-dd02-58be-a207-ea647622db57", "branch": "cursor/congress-hearings-catalog-a32e", "sha": "9e56abbd83c409766b9154c3dbe277a590d67c71", "pr": 41},
+    {"task": "Check sitemap and robots coverage", "run": "bc-066e78bc-d2c0-5016-a9aa-fdf1762917f4", "branch": "cursor/sitemap-robots-coverage-a32e", "sha": "331498cbf5d91b73fa7c023561a3e6136264c374", "pr": 58},
+    {"task": "State methodology coverage limits", "run": "bc-e3141bc4-b9c8-579c-9635-b429c5bc2e09", "branch": "cursor/methodology-coverage-a32e", "sha": "9be1e729d097f282fbc63289801cf1051a12eeb3", "pr": 42},
+    {"task": "Test stale public API cursors", "run": "bc-c0d3d4d0-3928-5071-93c9-64a150affb63", "branch": "cursor/public-api-cursor-order-a32e", "sha": "0e2eb4fa93dd1087c34f2c69f1fd4c0de5b7dfdf", "pr": 62},
+    {"task": "Confirm Europe PMC retrieval", "run": "bc-e617fed3-a458-5ec0-9f80-a0fbb9d87499", "branch": "cursor/europepmc-metadata-a32e", "sha": "f0700e0c689dadd258d16776a2d041f1a7b6f667", "pr": 72, "state": "merged"},
+    {"task": "Confirm Mastodon metadata only", "run": "bc-eabedbfb-5d90-506f-8e13-28c076690be5", "branch": "cursor/mastodon-metadata-a32e", "sha": "0a9c6fbf65298a612cec33c22e33bb60e9a28486", "pr": 80, "state": "merged"},
+    {"task": "Show source-item provenance", "run": "bc-7d487918-f94f-56d8-83bc-c10e1c48e499", "branch": "cursor/source-item-provenance-a32e", "sha": "e2aaf4a1e12b4de3bc3f3e0803d4c6cbbbfc5b1a", "pr": 79, "state": "merged"},
+    {"task": "State people-page coverage", "run": "bc-be752873-c711-5177-9a3b-6d7be72d1a40", "branch": "cursor/people-page-coverage-a32e", "sha": "ed90a16bd44b5e4a261b1bba8a5c0dd20135ac10", "pr": 68, "state": "merged"},
+    {"task": "Label classes on a person", "run": "bc-532944c1-2b01-56cb-bb2f-2f7637079aff", "branch": "cursor/person-statement-classes-a32e", "sha": "806cb04e91998ecd07236fc45238c0ceaa91adef", "pr": 75, "state": "merged"},
+    {"task": "Guard the belief runner wiring", "run": "bc-f613da77-e78d-5d2a-9cf0-fa9447813cd2", "branch": "cursor/belief-runner-wiring-a32e", "sha": "2cf56d466325fa771502b7607bec1adfdd9269c3", "pr": 65, "state": "merged"},
+    {"task": "Keep DOI URLs canonical", "run": "bc-d00ccb72-a605-5f8b-bf85-df1e1de4332e", "branch": "cursor/doi-url-canonical-a32e", "sha": "3b5b83fc2b27677e9d15f3e61383e56b16f876f0", "pr": 64, "state": "merged"},
+    {"task": "Classify copying licenses", "run": "bc-2f4fb0fc-7b4d-565d-9a6c-9bd5597ba44b", "branch": "cursor/copying-license-class-a32e", "sha": "8f8f8dc8ac429d437d9f567593e60517e1ae4734", "pr": 71, "state": "merged"},
+    {"task": "Catalog EU AI Act pages", "run": "bc-54a54233-6160-527e-a503-c4ead3675644", "branch": "cursor/eu-ai-act-catalog-a32e", "sha": "acb241f1c9974cae132acb78e681303058b5ce9c", "pr": 76, "state": "merged"},
+    {"task": "Write collector status", "run": "bc-05f5a359-5566-5f10-9d4c-f20147e25b39", "branch": "cursor/collector-status-note-a32e", "sha": "8aba639a0edf87b7192497ae6935f39de122457b", "pr": 63, "state": "merged"},
+    {"task": "Reject a bare number", "run": "bc-20d7aca3-5065-5a5c-a229-c5265433f037", "branch": "cursor/bare-number-not-probability-a32e", "sha": "32c6382b5832b9697aefd7c8e1cc50ec513ea3ba", "pr": 67, "state": "merged"},
+    {"task": "Preserve RSS source timezone", "run": "bc-1ae27fb8-8a35-5c9f-94a4-7e9c4161cc6b", "branch": "cursor/rss-source-timezone-a32e", "sha": "f423eafd416e7953e954a0835f1a2f8cbc5de405", "pr": 78, "state": "merged"},
+    {"task": "Keep OpenReview authors apart", "run": "bc-3d31ee71-b423-5e1f-9c62-ba02bfb9ab28", "branch": "cursor/openreview-author-non-merge-a32e", "sha": "48c5904ef86e9e4787506e0f6955940399eb9455", "pr": 69, "state": "merged"},
+    {"task": "Block inferred trend values", "run": "bc-22472010-4b1b-55e2-8f7b-056e726f12cf", "branch": "cursor/trend-class-gate-a32e", "sha": "5e0efe15aa05c6118ce374b67aff6911091adcbe", "pr": 70, "state": "merged"},
+    {"task": "Fix the backup drill failure", "run": "bc-7d000b02-02db-5b43-8516-2dc12f69d4ff", "branch": "cursor/backup-drill-failure-a32e", "sha": "5c06a5fe8e501e0b1ab9a6543e1acf3f9294ac40", "pr": 86, "state": "merged", "merge": "65e28a6123ca2fb910844f42a95478dc3010a5df"},
+    {"task": "Show dataset freshness on data", "run": "bc-f8ff2175-fa11-5c3b-abef-650f24ac515f", "branch": "cursor/data-page-freshness-a32e", "sha": "99cfdd90a2331af3a22403a2cb5ef265b61d31f7", "pr": 74, "state": "merged"},
+    {"task": "Catalog NIST AI RMF pages", "run": "bc-c53018bd-e5e4-57d9-8f70-bac34de48b4c", "branch": "cursor/nist-rmf-pages-a32e", "sha": "0b125b81d081c13f5e8b95e63827c3e72f1f7705", "pr": 83, "state": "merged"},
+    {"task": "Bound public API page size", "run": "bc-92abe133-0f40-5f37-bb53-a060035f05d1", "branch": "cursor/public-api-limit-bound-a32e", "sha": "1dcf31408710606b8a29a41f919d70196b6774e6", "pr": 73, "state": "merged"},
+    {"task": "Keep the catalog package marker", "run": "bc-45ca1b49-f870-5283-ad0f-fb46f4746228", "branch": "cursor/catalog-package-marker-a32e", "sha": "935d6fed5fac1f38261c343a1ea3b5fa0ae9556c", "pr": 66, "state": "merged"},
+    {"task": "Confirm HAL metadata", "run": "bc-f0b72bc1-2052-581b-b54d-b8118cc36901", "branch": "cursor/hal-metadata-a32e", "sha": "ebb680ab26b417f9ed3c4eaef079c28b97454473", "pr": 82, "state": "merged"},
+    {"task": "Confirm DBLP metadata", "run": "bc-69b4c422-56da-51b1-b1a8-2aa8d03caf79", "branch": "cursor/dblp-metadata-a32e", "head": "5c676170dac89645598f79bd3d7f085e7592a391", "pr": 91, "state": "merged", "merge": "aba38006ca05654d7b963df5c5946e1109056843"},
+    {"task": "Confirm Zenodo metadata", "run": "bc-e40f49ec-663e-56e7-b42e-774eccd4c700", "branch": "cursor/zenodo-metadata-a32e", "sha": "96cac6c2c209c1b7cd73414c9a6366312af6a42d", "pr": 84, "state": "merged", "merge": "60968cc953ab89014d4b5e550d4085d70b403cbf"},
+    {"task": "Confirm ACL Anthology metadata", "run": "bc-55518517-fb41-5400-913a-e2d2aa724962", "branch": "cursor/acl-anthology-metadata-a32e", "sha": "53db118ffd7597639d2c2629bded68ce8fbb588c", "pr": 89, "state": "merged"},
+    {"task": "Confirm NSF award metadata", "run": "bc-afdc78a8-22a3-593e-b3c9-023cc3b4aec0", "branch": "cursor/nsf-awards-metadata-a32e", "sha": "cf23fa6a93660bdd48e5327b44fe0d9c68ae0a2c", "pr": 90, "state": "merged", "merge": "71194be64ee9e4a27e9a85c6cbb1c5b33108fb63"},
+    {"task": "Bound evidence excerpts", "run": "bc-68fb21cf-7c46-5a20-a879-f2dbe0080fbf", "branch": "cursor/evidence-excerpt-bound-a32e", "sha": "20bf986d3b6590613c73c445deea83f5969f4b35", "pr": 81, "state": "merged"},
+    {"task": "Confirm OpenAIRE metadata", "run": "bc-71d72983-0694-59f7-9fce-328ea2df2661", "branch": "cursor/openaire-metadata-a32e", "sha": "69fa84366fd44ad45da57eefc02ef20bc02feab8", "pr": 85, "state": "merged"},
+    {"task": "Confirm bioRxiv metadata", "run": "bc-79736086-44e0-5add-b367-91a2693259ea", "branch": "cursor/biorxiv-metadata-a32e", "sha": "f8012404f5a55f75cd8bc24e867d0756430f4f4d", "pr": 88, "state": "merged"},
+    {"task": "Lock fetcher SSRF blocks", "run": "bc-a2ebdb83-6c7c-5e05-9be6-046e4c33e0db", "branch": "cursor/fetcher-ssrf-block-a32e", "sha": "540f72cee8f1b54b5b14bd4c021f1d0168d47716", "pr": 77, "state": "merged"},
+    {"task": "Confirm DataCite metadata", "run": "bc-59c1e057-6f63-5fa5-a3c4-4c7e1bf951ab", "branch": "cursor/datacite-metadata-a32e", "sha": "dfd02e39cb844f2e4fe2d25f472be33d5b215871", "pr": 87, "state": "merged"},
+    {"task": "Confirm CORDIS metadata", "run": "bc-33b4a49b-b9cd-55d0-a051-a8542eec29e5", "branch": "cursor/cordis-metadata-a32e", "head": "1eb5ef221e844407caeb6f93888ac5dd95e0a9a5", "pr": 96, "state": "merged", "merge": "6653582d3eb3bf8d705e47f3dec08a1eb1d670e6"},
+    {"task": "Confirm DOAJ metadata", "run": "bc-58543328-9cf8-5ad6-b86c-c07adee8f870", "branch": "cursor/doaj-metadata-a32e", "head": "79e687ed43340b2b07275a481930e91de91bf18b", "pr": 94, "state": "merged"},
+    {"task": "Confirm ORCID public metadata", "run": "bc-24dcd3b7-9e1f-5e03-9386-0f43d6d83944", "branch": "cursor/orcid-public-metadata-a32e", "head": "35b94fca7b1acb495e100ec50af8ad3ee809d87a", "pr": 99, "state": "merged"},
+    {"task": "Confirm medRxiv metadata", "run": "bc-de094d86-b6ca-5602-ac4b-c4a1e5956e1c", "branch": "cursor/medrxiv-metadata-a32e", "head": "998247df44cc91ffb95670e601ea471e8b57637e", "pr": 92, "state": "merged", "merge": "b529e4776c8dbd163eb254d2b2a44163f238eca0"},
+    {"task": "Confirm Internet Archive metadata", "run": "bc-f1460aea-59e9-5446-b829-4994820ce8e4", "branch": "cursor/internet-archive-metadata-a32e", "head": "02164671101a689458b53ad687bdbe55f595b4aa", "pr": 98, "state": "merged", "merge": "569f19cdbdfab364d4ba762517bd73477cdcc860"},
+    {"task": "Confirm OSF metadata", "run": "bc-82e54332-d7f0-5deb-bdb2-642a02accdcb", "branch": "cursor/osf-metadata-a32e", "head": "b76622fe39969c16a2fa3110e7eb4f7e5864fb22", "pr": 103, "state": "merged", "merge": "80877c051dacc392476cf2b43b5a4e2f200d28a7"},
+    {"task": "Confirm OECD AI metadata", "run": "bc-030cb7c8-9f2a-5577-96f3-b003d573fa53", "branch": "cursor/oecd-ai-metadata-a32e", "head": "317177470427134732f9fe271d53edc0fa3080f5", "pr": 93, "state": "merged", "merge": "ba6608268ee6195d24159029ba3e1846e46abca8"},
+    {"task": "Confirm Wikidata metadata", "run": "bc-10adaf0b-7fe3-5ad9-ad45-3c5164858176", "branch": "cursor/wikidata-metadata-a32e", "head": "d05ed20b515ef5bcc01a77283e3eeef6b5f64b93", "pr": 97, "state": "merged"},
+    {"task": "Confirm Unpaywall license", "run": "bc-e8808edc-21c4-5009-85f5-620e65acc486", "branch": "cursor/unpaywall-license-a32e", "head": "08530a1abaef9ab8b85d6b86a90bbff90086ca29", "pr": 105, "state": "merged"},
+    {"task": "Confirm Papers with Code metadata", "run": "bc-b06c868c-c6e0-590f-bdea-191f7ceedbfd", "branch": "cursor/paperswithcode-metadata-a32e", "head": "7f70f0867c552ad870d4715d51aa6578e80f50dd", "pr": 100, "state": "merged"},
+    {"task": "Confirm Library of Congress metadata", "run": "bc-3c91d367-12fc-5735-a007-5728d94f4752", "branch": "cursor/loc-metadata-a32e", "head": "25db636c980f25c09c1675392f1400ee91cf9b86", "pr": 107, "state": "merged"},
+    {"task": "Confirm PubMed metadata", "run": "bc-959a6cd4-fea9-5ff0-b06c-96f2b7a61f40", "branch": "cursor/pubmed-metadata-a32e", "head": "26b35dd4ce0ef19755bd5cc3c9ca2a9277b0cc5b", "pr": 104, "state": "merged"},
+    {"task": "Confirm Figshare metadata", "run": "bc-9469f312-b1c3-5e08-9731-7f4d9f550551", "branch": "cursor/figshare-metadata-a32e", "head": "960dbd137537ef03a68b9f776e5c21dbbd2be58c", "pr": 106, "state": "merged"},
+    {"task": "Confirm OpenAlex author metadata", "run": "bc-5ddbb990-011e-5760-87e2-2f97b6026900", "branch": "cursor/openalex-author-metadata-a32e", "head": "9dc3f1f237c3e0fa3987a1cf8bfb56ddc5b0b75a", "pr": 101, "state": "merged"},
+    {"task": "Catalog UK AISI pages", "run": "bc-5c2f55cc-bdce-5a2d-aabb-a04f6ed66843", "branch": "cursor/uk-aisi-pages-a32e", "head": "dae4144b7f70a71907f993f791b5d294f6899671", "pr": 109, "state": "merged"},
+    {"task": "Catalog Canada AI pages", "run": "bc-f4153b8c-6de4-5458-ad87-2093190e99c0", "branch": "cursor/canada-ai-pages-a32e", "head": "205987cb7545dd85e2b310fdf08545966c602344", "pr": 108, "state": "merged"},
+    {"task": "Keep collector package marker", "run": "bc-17b5cc89-fe6f-5436-b26e-f4aac1debe40", "branch": "cursor/collector-package-marker-a32e", "head": "fb22d222ea7514f3861013aa8a7a956cc4ff8aff", "pr": 95, "state": "merged", "merge": "c4302820107b7d33465ee4099c356e41263d1562"},
+    {"task": "Keep arXiv DOI canonical", "run": "bc-ec621e49-c69e-5266-8742-e1ad741408b8", "branch": "cursor/arxiv-doi-canonical-a32e", "head": "40b8420fd9bc1a9e5fb31cb28d2ec45e8c132205", "pr": 102, "state": "merged"},
+    {"task": "Catalog Singapore AI pages", "run": "bc-080d34ee-c496-5efb-8b9c-3a5e7b755321", "branch": "cursor/singapore-ai-pages-a32e", "head": "4ae1968d042dc2a56d0e86a2e6155f4943cfc702", "pr": 117, "state": "merged", "merge": "a7f31d978e4589fd68cbe3b51ab4f402d46a4a7b"},
+    {"task": "Catalog Australia AI pages", "run": "bc-51622221-df4a-55de-b496-ceae167dacc2", "branch": "cursor/australia-ai-pages-a32e", "head": "a39a5a4f680528bb1083d241c36b9129fc9dc195", "pr": 130, "state": "merged", "merge": "704ff4b36b09ec537d3477e8cbcb910997fe0a73"},
+    {"task": "Catalog Partnership on AI pages", "run": "bc-e60b97a9-f982-5ad6-87d0-97319a44e44a", "branch": "cursor/pai-pages-a32e", "head": "0946516df46635f8d34c451771aaefbe2cf1cbb3", "state": "merged", "pr": 125, "merge": "c32769e73f40ae681154e39668d4a1bbe1237902"},
+    {"task": "Catalog UNESCO AI pages", "run": "bc-3163e4cf-bace-5f85-b3ed-dbeab2b0ed08", "branch": "cursor/unesco-ai-pages-a32e", "head": "d3757d0f1753780e057ffd3130a47197ed0afc92", "pr": 124, "state": "merged", "merge": "d7d106eac044d47cdc0c4844557d90bd9b284006"},
+    {"task": "Catalog CNIL AI pages", "run": "bc-c88612e3-a310-5919-8756-de55b2789031", "branch": "cursor/cnil-ai-pages-a32e", "head": "a63ad2f9c35951b95eec2589f62323f342282dd8", "pr": 115, "state": "merged"},
+    {"task": "Catalog BSI AI pages", "run": "bc-5c7fb6b2-5898-5a31-8214-5cac79ecb398", "branch": "cursor/bsi-ai-pages-a32e", "head": "230c31192b099910003c7678bd801e75f7a91085", "pr": 127, "state": "merged", "merge": "4a67af3eb38f4c684a41589f258e81c6777b4efc"},
+    {"task": "Catalog Japan AI pages", "run": "bc-0cf3f471-6dd1-5531-9bd2-6529da0cd97e", "branch": "cursor/japan-ai-pages-a32e", "head": "b6ad615f7cfddaf1f80055b41b668f0d1486c447", "state": "merged", "pr": 126, "merge": "71e81b706e04b6fc0cdeef3b14cc464e3f3479e5"},
+    {"task": "Catalog New Zealand AI pages", "run": "bc-cb5bb730-d814-5cb7-9630-5ebf8ddadfbc", "branch": "cursor/nz-ai-pages-a32e", "head": "7c17ef398126a295e8017708153d31b8cf4dcbec", "state": "merged", "pr": 122, "merge": "9f52a029d80e745a9c58e673157d7dae6e43265d"},
+    {"task": "Catalog CSET publication pages", "run": "bc-033a49c7-a5b8-5203-a349-3f070db7761d", "branch": "cursor/cset-pages-a32e", "head": "5bf24f49f93b72fd1ff08d369bfcf8977836d8ae", "pr": 120, "state": "merged", "merge": "323c72fbbb93e1a8991eece57b13189676ed716f"},
+    {"task": "Confirm AI Incident metadata", "run": "bc-c65fdb86-a357-53cf-a44e-9d3db40bec00", "branch": "cursor/aiid-metadata-a32e", "head": "85915f732d533028368a5fa67196120231ca808a", "pr": 111, "state": "merged"},
+    {"task": "Confirm World Bank AI metadata", "run": "bc-d4bd6afd-b2ff-5338-a943-d7ad88209424", "branch": "cursor/worldbank-metadata-a32e", "head": "75fcec09eb103ec075667cb4c4117d46227d443f", "pr": 112, "state": "merged"},
+    {"task": "Catalog Ada Lovelace pages", "run": "bc-6374137a-d3b4-5879-ae4a-ccadf6745781", "branch": "cursor/adalovelace-pages-a32e", "head": "ef129f896e6a27946849ec2a2b1cbb8bbd8ab56d", "pr": 113, "state": "merged"},
+    {"task": "Catalog GovAI pages", "run": "bc-837c38f3-f729-5a19-994a-33ea12423e6e", "branch": "cursor/govai-pages-a32e", "head": "39652ace2de0997d48c104a90c120a1d4a7e428a", "pr": 114, "state": "merged", "merge": "82456a01953749f9c74e770ae389d27f045974ab"},
+    {"task": "Catalog Epoch AI pages", "run": "bc-964457b1-778b-50e8-a026-7d2b3ee7b5d6", "branch": "cursor/epoch-pages-a32e", "head": "63e045a0cb85c61b414d278db3fd1a5a366d7fec", "pr": 119, "state": "merged", "merge": "33eea5bb48937fb221e0be592d0929c9f48ecda0"},
+    {"task": "Lock RSS-only belief imports", "run": "bc-513a6527-6cf1-51c5-806f-f4ed405aeb77", "branch": "cursor/rss-only-inventory-a32e", "head": "69b312ffa0b8476cb6f255c79c74c696d3166884", "pr": 110, "state": "merged"},
+    {"task": "Catalog Stanford HAI pages", "run": "bc-39c8f284-a724-5618-8111-fe3b6fe7ac84", "branch": "cursor/stanford-hai-pages-a32e", "head": "c8cad61d1208750e6830b50cea54f258f1a9d73c", "pr": 118, "state": "merged", "merge": "951879fb840bc5513981ef48c69df0c3909302fc"},
+    {"task": "Catalog METR pages", "run": "bc-057b2a69-f44f-5bd8-9d52-6f091c43cc18", "branch": "cursor/metr-pages-a32e", "head": "f6783869a324d54b6649aeb373760fc8d72da861", "state": "merged", "pr": 121, "merge": "6f1e6abfe2fdaa8315308bc9e7ba22b205a80596"},
+    {"task": "Catalog CAIS pages", "run": "bc-1ae077c0-87d5-5310-87cd-d37448ac02bf", "branch": "cursor/cais-pages-a32e", "head": "1c8f072902d66c6774b22606d93e9d3eb6e88d22", "pr": 116, "state": "merged", "merge": "8c9e3771b8051da8bf233d917c64da24f67cc264"},
+    {"task": "Catalog Alan Turing Institute pages", "run": "bc-014b9eef-bfb8-52ef-9805-f6b09a3f1424", "branch": "cursor/turing-ai-pages-a32e", "head": "fc827b00e7717c7897397b5a93088a21ae70baa1", "pr": 123, "state": "merged", "merge": "31e4f301ac0a77a59209135e073f611971e81515"},
+    {"task": "Catalog Future of Life pages", "run": "bc-d9be6c1f-b2e0-5989-bbce-6399fdbf550f", "branch": "cursor/fli-pages-a32e", "head": "92bfd6dc249dc7d47ff5be4b133289dca533c92d", "pr": 140, "state": "merged", "merge": "a75b9d64629ed9e95ebb5544f3a8061e7087b4b5"},
+    {"task": "Catalog MIRI pages", "run": "bc-24de62b2-3b6e-593a-a1e2-98cae629fcbc", "branch": "cursor/miri-pages-a32e", "head": "b53a18b5b7457d250a4d13f9958f4c5c9903223c", "pr": 135, "state": "merged", "merge": "556065eef5b300b7b71135ffc9363cb2f90db4c2", "note": "Thirty rows stay unknown."},
+    {"task": "Catalog RAND AI pages", "run": "bc-bf5d0f79-0056-5874-8e0c-0ef6f9a86f6d", "branch": "cursor/rand-ai-pages-a32e", "head": "bcea2106bbe470e59f9b98cd10dad2057f1a2f6f", "pr": 134, "state": "merged", "merge": "f311cdcfadcb33ccbd89f76308799ae11a6904b4"},
+    {"task": "Catalog EU AI Office pages", "run": "bc-ddb1c5f4-5592-57d3-ba4c-ef8ea3044048", "branch": "cursor/eu-ai-office-pages-a32e", "head": "49becfaee16c808e50e3bc5e495f9e6365bcc0be", "pr": 131, "state": "merged", "merge": "da4dc32527943fb767226575578ca62559b4e79b"},
+    {"task": "Catalog Allen Institute pages", "run": "bc-7d74605d-8ccb-5b06-a0a3-7ec8dbe95331", "branch": "cursor/ai2-pages-a32e", "head": "d7e3041421452d573e45df25f350fb69afb49c4f", "pr": 142, "state": "merged", "merge": "78c72e4c17f43b1165468366868eb8f23d0e76a8"},
+    {"task": "Catalog CHAI pages", "run": "bc-84f38b7a-a813-5d8c-83fe-ea21b6828f4e", "branch": "cursor/chai-pages-a32e", "head": "57063c243616d492665248a32c6d9426df82d442", "pr": 132, "state": "merged", "merge": "bf9617b0fbb700e4c003ae69e3d811683ac43539"},
+    {"task": "Catalog forecasting institute pages", "run": "bc-7c1da7a8-9aa6-51d0-af4a-e566c8a4fc37", "branch": "cursor/fri-pages-a32e", "head": "40191a9c155fe7220946a64a6c74ad40d44b360f", "pr": 133, "state": "merged", "merge": "52a74935e20792c9ab58f96bc55c7f27e0d6962c", "note": "Seventeen institute pages stay unknown. Seventeen panel pages are creative_commons because each page states CC BY."},
+    {"task": "Catalog AI Impacts pages", "run": "bc-72a3bae8-f235-559c-a3eb-dabcaee23062", "branch": "cursor/ai-impacts-pages-a32e", "head": "ef1f0b0cc0f56c6b90a4caab45c01ff1832eb735", "pr": 141, "state": "merged", "merge": "f86b4b3cf04fd89b9a7f8d8fc4badd91e2555271"},
+    {"task": "Catalog OpenAI research pages", "run": "bc-e135bd9d-8654-5933-8a6b-97da10a19fac", "branch": "cursor/openai-research-pages-a32e", "head": "f8d372dd5fb31cc5561d20b0c3f9de022a8d69c4", "pr": 137, "state": "merged", "merge": "71bf85eeaf3e3e2d0bacbd86e5d1dcb27894061b", "note": "No rows. The confirming GET was blocked."},
+    {"task": "Catalog Anthropic research pages", "run": "bc-011baf57-f566-5ac2-a9b5-3fd62bc1edde", "branch": "cursor/anthropic-research-pages-a32e", "head": "6a9ca0e5ac3203dc11634efcac3416675f6e167e", "pr": 136, "state": "merged", "merge": "6d95b581003983ee4d625336e8006e9aa3cab996"},
+    {"task": "Catalog DeepMind publication pages", "run": "bc-8cbdefef-e947-5271-8bbd-20576be01573", "branch": "cursor/deepmind-pages-a32e", "head": "0db57259ce6d8418bee82031308cd6e06beedd6a", "pr": 129, "state": "merged", "merge": "170c40e456e46fdf5a0d9852ff48cb7bc97a6031"},
+    {"task": "Catalog EleutherAI pages", "run": "bc-410ff18f-9458-500a-a8d5-a06561b7357e", "branch": "cursor/eleuther-pages-a32e", "head": "a6848b3bb4b55e3e6d2737cafe14b70612377c15", "pr": 128, "state": "merged", "merge": "6818fe0fa0be98a6ab96a777da6d9462122818b2"},
+    {"task": "Catalog OSTP AI pages", "run": "bc-78802903-df20-53f7-8963-8fe5faceaabc", "branch": "cursor/ostp-ai-pages-a32e", "head": "972da71ab7b37f6d686d9893b725300e3c911b7c", "pr": 138, "state": "merged", "merge": "866072bbae7feca78141644a2c369a9bd79d83c4"},
+    {"task": "Catalog Convergence Analysis pages", "run": "bc-2150f762-7626-586d-abfc-023d2b85d6ee", "branch": "cursor/convergence-pages-a32e", "head": "1bc632cc30e12060ccabca652a5e39ed13c4c8b4", "pr": 139, "state": "merged", "merge": "660568cebd0b5d4c52a05b96d58bd26d16ca5634"},
+    {"task": "Catalog CSER pages", "run": "bc-4f8f1e04-1e54-5bcc-9fd0-3fbf52f28736", "branch": "cursor/cser-pages-a32e", "head": "7f3c6aace0f7b9b38843f560de8f62734aa58781", "pr": 143, "state": "merged", "merge": "bdbe3435d51742fb41eec250ae1a2388b275566d"},
+    {"task": "Catalog LCFI pages", "run": "bc-6041db82-19e0-566c-b622-bd61be01b204", "branch": "cursor/lcfi-pages-a32e", "head": "691d7646cd37befc930fce1fb81fe42df89a538e", "pr": 146, "state": "merged", "merge": "69dba4d2caa68664907336d515fffaa8273d81e4"},
+    {"task": "Catalog Redwood Research pages", "run": "bc-6b3b67f3-20ae-59b5-87f8-47c44eda8bb4", "branch": "cursor/redwood-pages-a32e", "head": "238f30badc4db21f0d5fdcb14ca5875c4591b3fb", "pr": 144, "state": "merged", "merge": "00c1e0718cc76c7303021b7d8370f56e610df572"},
+    {"task": "Catalog Apollo Research pages", "run": "bc-3b70fb2b-a59a-5d1e-b5b1-2becb1c0e409", "branch": "cursor/apollo-pages-a32e", "head": "bfa6ebc1234b2c0245e671fb75cfac5e43de84dd", "pr": 145, "state": "merged", "merge": "ef7f2c9929c170358bbb69ab92a4ffb5072b3850"},
+    {"task": "Catalog AI Now pages", "run": "bc-d9093c16-9e86-5b9b-9716-f6759f032ffa", "branch": "cursor/ainow-pages-a32e", "head": "71916438cd11740cc28fe1ae2268c665ce4e491f", "pr": 159, "state": "merged", "merge": "69890772739ac8613834620f9e6523c8948f8b49", "note": "Two hundred seventy-two rows stay unknown. One publication is creative_commons because it states CC BY-SA. Twenty-three dates stay unknown."},
+    {"task": "Catalog Berkman Klein pages", "run": "bc-5e7c9b26-bc22-5edb-b250-097b442e906c", "branch": "cursor/berkman-ai-pages-a32e", "head": "c29ddd80409e9a8452dc883fd7efacb07023d0b6", "pr": 158, "state": "merged", "merge": "c3099562b5a88d08dc29193f62ece633c5e7f5de", "note": "Thirty-four rows are creative_commons. Nineteen dates stay unknown. The AI Initiative page returned HTTP 403 and is omitted."},
+    {"task": "Catalog CLTR pages", "run": "bc-36d91f2b-927d-5668-aa81-756fd38f1ac1", "branch": "cursor/cltr-pages-a32e", "head": "1a89a6241c43d54d8a262b7751dccfc8e5515e9a", "pr": 149, "state": "merged", "merge": "6d500c9624f623c853a547f09daeea7c64bce920"},
+    {"task": "Catalog Conjecture pages", "run": "bc-97c7a10d-9d49-5954-84d5-d3213a83c6e9", "branch": "cursor/conjecture-pages-a32e", "head": "fd1d578f68698acc5e11a1ad52366ba33c47ad45", "pr": 156, "state": "merged", "merge": "15f0cc798055da79bce31143c4ed7c57140fc886", "note": "Fifty-five rows stay unknown. Eleven dates stay unknown. mit and apache-2.0 are not folded into creative_commons."},
+    {"task": "Catalog FAR AI pages", "run": "bc-af826cce-21d1-5617-9426-b7d13233ecf0", "branch": "cursor/far-ai-pages-a32e", "head": "9b60c09b649981c4dd636477026a871c43269e91", "pr": 157, "state": "merged", "merge": "ae07e1ccb7a33ceaf195468dd1fec3954594d0e2", "note": "One hundred fifty-five rows stay unknown. One post is creative_commons. Forty-three dates stay unknown. The module is not a belief collector."},
+    {"task": "Catalog BlueDot Impact pages", "run": "bc-f1daca0a-c498-5088-ac68-3fbb5e789708", "branch": "cursor/bluedot-pages-a32e", "head": "e99b77fa27ad9b10abb7e228f8c2b1a20c1cfc40", "pr": 151, "state": "merged", "merge": "0777ccf790b48c6ed5159472675a260b75d378f6"},
+    {"task": "Catalog Open Philanthropy pages", "run": "bc-3685d80f-6a29-59ca-8abe-a88231aeb80c", "branch": "cursor/openphil-ai-pages-a32e", "head": "37329a6070cf8c7ef4d4c361cc843ff02a620764", "pr": 150, "state": "merged", "merge": "dba0673b8a859d1d8b9d5c45e702bc75829cf0bf"},
+    {"task": "Catalog Stanford CRFM pages", "run": "bc-3d5d24cc-6d76-5859-8305-cc50fd12ade9", "branch": "cursor/crfm-pages-a32e", "head": "072387166a3e64c78ff5847690e5a127c3309408", "pr": 155, "state": "merged", "merge": "390e6b48785cb7901f54b203e550b101e176f004", "note": "Sixty rows stay unknown. One page is creative_commons. All sixty-one dates stay unknown. Stanford HAI pages are not included."},
+    {"task": "Catalog GPI pages", "run": "bc-bcb56659-2d11-5237-8fda-ad526b196dd4", "branch": "cursor/gpi-pages-a32e", "head": "0fe1394f1958b996e195b7b1954a4914de4a2817", "pr": 147, "state": "merged", "merge": "949ea4bbeeb0aef5a7f3ef5892a0d8dda0dbd2c6"},
+    {"task": "Catalog Future Society pages", "run": "bc-ac9e8a2a-0c91-59b0-9dc7-4d6b0d2b36a7", "branch": "cursor/future-society-pages-a32e", "head": "6ca1e7432aa8cbda3f5b5be7e0fcd841523795ee", "pr": 148, "state": "merged", "merge": "98db4d79e124ee2ca29599574e739bc9f9dcb9a1"},
+    {"task": "Catalog Vector Institute pages", "run": "bc-531ca8a8-55d2-52ff-9cbd-c950f3097132", "branch": "cursor/vector-pages-a32e", "head": "04ae405a5d5a93d58d427e04bed1d3e6b867db09", "pr": 154, "state": "merged", "merge": "fcb1a0ab00073a04ac3fad9e69231763027732ad", "note": "Thirty-nine rows stay unknown. One date stays unknown. A restricted deed wins when it appears with a permissive one."},
+    {"task": "Catalog Mila pages", "run": "bc-e25e74c1-fa9f-59e7-a5f8-a3eba4acb236", "branch": "cursor/mila-pages-a32e", "head": "17f65a9a4278bab4aff61bc5e0c132112deb9ec1", "pr": 153, "state": "merged", "merge": "5c91e14d747217a3b6faa97b9d0a59ae8e9f0972", "note": "One hundred fifty-six rows stay unknown. Eighty-seven dates stay unknown. A public-domain mark stays unknown."},
+    {"task": "Catalog ICO AI pages", "run": "bc-3695beb5-28a2-545a-9c54-10b5671c2fb6", "branch": "cursor/ico-ai-pages-a32e", "head": "13b8daec9e849f3fbb2216fcba3f88563dd8b5b5", "pr": 160, "state": "merged", "merge": "606c3397ae093681cf7f41f5d4fc6b72ef5c82ad", "note": "One hundred thirty-three rows are uk_ogl because each page states open government licence. One hundred nine dates stay unknown."},
+    {"task": "Catalog FTC AI pages", "run": "bc-661f7766-8b30-5bb3-948a-45164e73c5b3", "branch": "cursor/ftc-ai-pages-a32e", "head": "9a76c278691cfb36817e8e74627b4ef84a68fb3a", "pr": 152, "state": "merged", "merge": "dbf764cf58eb8c9a102fa8275450587932d7456f", "note": "No rows. ftc.gov returned an Akamai robot block. A .gov host alone stays unknown."},
+    {"task": "Catalog Rethink Priorities pages", "run": "bc-046afa7b-4fd3-52cc-b294-f40ff46d0370", "branch": "cursor/rethink-pages-a32e", "head": "7fd7ffdc2b1178cb8e49bdc9fb6104002d85993b", "pr": 164, "state": "merged", "merge": "6fd5485a1d701350062f8d22d1e8e800600d21cf", "note": "Thirty-three rows stay unknown. A CC-BY citation footnote is not a page licence."},
+    {"task": "Catalog Forethought pages", "run": "bc-728837b0-de0e-57d8-ab4f-133d928f899e", "branch": "cursor/forethought-pages-a32e", "head": "e9f9872543ce113c3704f5c7be5db55fb51eead4", "pr": 171, "state": "merged", "merge": "fa80e2dc5e5104d2d045536a261ce93b55747de2", "note": "One hundred thirty-six rows stay unknown. Fifty-eight dates stay unknown. The support URL redirected to careers and is not a separate row."},
+    {"task": "Catalog IAPS pages", "run": "bc-177e190c-8589-568e-af8c-924ac664da63", "branch": "cursor/iaps-pages-a32e", "head": "552df5b5c535ff8036af71657cc428f215ece96e", "pr": 166, "state": "merged", "merge": "7306b65447ae3bebc56138f969c5194398891af6", "note": "One hundred eighty rows stay unknown. Seventy-three dates stay unknown."},
+    {"task": "Catalog BAIR pages", "run": "bc-5fe82191-1f4c-5c4d-a205-a25386f0b5b1", "branch": "cursor/bair-pages-a32e", "head": "1a3b0971bd5af2200c21e0a479ec557069a76310", "pr": 168, "state": "draft", "note": "Thirteen rows stay unknown. Individual blog posts are not listed."},
+    {"task": "Catalog Amii pages", "run": "bc-9cb32774-5e00-560f-9fbd-36c02ff3e693", "branch": "cursor/amii-pages-a32e", "head": "de94db9ee4617f37b7e0ddef8065de2e0a0ce4c4", "pr": 162, "state": "merged", "merge": "19bfbe1e92305e74ab017f1931d03357297c8f50", "note": "Twenty-eight rows stay unknown. Every date stays unknown."},
+    {"task": "Catalog Schwartz Reisman pages", "run": "bc-b3cbfc74-6b64-52dd-a145-5d8921877d36", "branch": "cursor/sri-pages-a32e", "head": "849640c5d8970e2fd4f7cad6dc10238af1563cd7", "pr": 165, "state": "merged", "merge": "4db6b661e0ef7e348462ac387738c892b0de159e", "note": "Thirty-four rows stay unknown. Every date stays unknown."},
+    {"task": "Catalog Data and Society pages", "run": "bc-6a4beaa6-847f-5f6f-96bd-cef104613014", "branch": "cursor/datasociety-pages-a32e", "head": "33f86f73d424cdba054bc964a699764c4d85bda2", "state": "returned", "note": "Tests lock CC BY as creative_commons and a sole CC BY-NC-SA as unknown. The 192 pages state CC BY-NC-SA, so those rows should become cc_by_nc_sa."},
+    {"task": "Catalog Mozilla AI pages", "run": "bc-044c0f65-0d89-5cac-98ef-c019a3a0ed6a", "branch": "cursor/mozilla-ai-pages-a32e", "head": "36c103ec639c76d8942d8ad6a91c082964f105d6", "pr": 167, "state": "merged", "merge": "a87ac56917129f54510fdfa0159f343dec497076", "note": "Four rows stay unknown. MPL 2.0 is its own token. blog.mozilla.org returned HTTP 403."},
+    {"task": "Catalog Ought pages", "run": "bc-f272c423-6444-50aa-bc9a-76129bd2d702", "branch": "cursor/ought-pages-a32e", "head": "8b0a9808c479c4e9f808bcdf6481f00ae8e0275d", "pr": 161, "state": "merged", "merge": "b5ef0c1ee026a7d047e800807b080236ee98361f", "note": "Thirty-two rows stay unknown. Eighteen dates stay unknown."},
+    {"task": "Catalog Cooperative AI pages", "run": "bc-0f5fe1c5-4731-5c7e-98c5-7b50a32dac29", "branch": "cursor/caf-pages-a32e", "head": "4d0b41481a236e0471377a2b704158e381e13093", "pr": 170, "state": "merged", "merge": "b5aa6e35d97f56dea46aa76ba260f5f89ed5e899", "note": "One hundred eight rows stay unknown. One page is creative_commons. Eighty-five dates stay unknown."},
+    {"task": "Catalog Distill pages", "run": "bc-ca09a5d9-58da-5212-bb96-fadd8156159d", "branch": "cursor/distill-pages-a32e", "head": "185bd8eab453b9661f0c0ba686f4f20c12c7b680", "pr": 169, "state": "merged", "merge": "4cb1496890dc421397d15954e6faa3d08bf15f23", "note": "Forty-five rows are creative_commons because each article states CC BY. A bare licences URL stays unknown."},
+    {"task": "Catalog CDT AI pages", "run": "bc-b66dee87-0006-5a47-8d35-4a47bc38c2e8", "branch": "cursor/cdt-ai-pages-a32e", "head": "35a3bfcc8aa8237539b94581b9ae2a2575601dc7", "pr": 163, "state": "merged", "merge": "e53cb1c9318a3d7686fd1423140b6032617f45a4", "note": "No rows. cdt.org returned a Cloudflare challenge."},
+    {"task": "Catalog SaferAI pages", "run": "bc-44881ccc-b0bf-5b7e-b347-cdaa63288c82", "branch": "cursor/saferai-pages-a32e", "head": "4e9fecd24bd69a6a0ffd0327a2846e81226cfdf3", "pr": 172, "state": "merged", "merge": "ff690d05d2660e9e9e799d6e65cac770d6d7f7ce", "note": "Ninety-four rows stay unknown. Forty-seven dates stay unknown. www.saferai.org failed TLS and was not stored."},
+    {"task": "Catalog Palisade Research pages", "run": "bc-f3d6f770-2a0d-55a3-aa6d-3a059d21aefb", "branch": "cursor/palisade-pages-a32e", "head": "22feb081a480e6500a2f174707dd292c5f4a60cc", "pr": 176, "state": "draft", "note": "Forty rows stay unknown. Fifteen dates stay unknown. www.palisaderesearch.org returned HTTP 522."},
+    {"task": "Catalog MATS program pages", "run": "bc-9799731d-29a6-5655-9bd9-cb302fdb4b0a", "branch": "cursor/mats-pages-a32e", "head": "eae36438b080d30d181bca83e3f417689f10096a", "pr": 177, "state": "draft", "note": "Thirty-nine rows stay unknown. Every date stays unknown. Person profiles are not rows."},
+    {"task": "Catalog Alignment Research Center pages", "run": "bc-1239ad6a-6a66-5ae6-aadb-0bdd04d65b5b", "branch": "cursor/alignment-org-pages-a32e", "head": "844aa4887145674d2e9d591abb85f33c3261cecb", "pr": 173, "state": "merged", "merge": "20f85dd947abdca8a05b11c62dd723c3d87a1ca2", "note": "Thirty-six www.alignment.org rows stay unknown. One date stays unknown. metr.org is not included."},
+    {"task": "Catalog PIBBSS pages", "run": "bc-2f0c07ba-a0a3-54e8-8a0e-7d058fa572fe", "branch": "cursor/pibbss-pages-a32e", "head": "2328e8f7b01fe607f74712eb04888361b7f03b21", "pr": 174, "state": "merged", "merge": "83b8c7a6be85a47528d254f14360b24044eebfb3", "note": "Ten rows stay unknown. Every date stays unknown. princint.ai redirects were not stored."},
+    {"task": "Catalog OECD.AI pages", "run": "bc-6d783638-6315-585e-a899-2c3c3215875a", "branch": "cursor/oecd-ai-pages-a32e", "head": "edf64c22d704baac2ac0fd7e93efe7b354234bf8", "pr": 178, "state": "draft", "note": "Seventy-nine rows stay unknown. Every date stays unknown. An OECD copyright notice is not a reuse licence."},
+    {"task": "Catalog Meta FAIR pages", "run": "bc-9b4a8689-4e1a-5624-8cba-2f23b0833b6c", "branch": "cursor/meta-fair-pages-a32e"},
+    {"task": "Catalog Apart Research pages", "run": "bc-c3a744c8-5144-5674-bc58-3b295ad6b040", "branch": "cursor/apart-pages-a32e", "head": "0f5a829d9ae412526c7f163f984ce751436e9011", "state": "returned", "note": "Mixed restricted and permissive text was locked to the restricted token. The worker is changing that case to unknown."},
+    {"task": "Catalog Center for AI Policy pages", "run": "bc-62d10381-ffc8-5ef9-ba7a-d4dff25a4032", "branch": "cursor/caip-pages-a32e"},
+    {"task": "Catalog CIP pages", "run": "bc-0b37d81c-78d9-5dc6-899c-151cee9b2606", "branch": "cursor/cip-pages-a32e"},
+    {"task": "Catalog MLCommons pages", "run": "bc-338c0faa-3ee5-5580-a066-36b4654226ba", "branch": "cursor/mlcommons-pages-a32e"},
+    {"task": "Catalog Cohere For AI pages", "run": "bc-9c69bb47-8f7c-5de2-90ee-f75cf69c1dcf", "branch": "cursor/cohere-ai-pages-a32e"},
+    {"task": "Catalog Timaeus pages", "run": "bc-441d677f-f8bf-5704-8910-36ac42d243fb", "branch": "cursor/timaeus-pages-a32e"},
+    {"task": "Catalog GPAI pages", "run": "bc-70d7b273-bf8c-56ca-b717-ee2416309e49", "branch": "cursor/gpai-pages-a32e"},
+    {"task": "Catalog LMSYS pages", "run": "bc-1160dfee-145a-5132-9a2a-b343856afb45", "branch": "cursor/lmsys-pages-a32e"},
+    {"task": "Catalog Our World in Data AI pages", "run": "bc-b72ce770-7e87-5117-abaa-ec877bb0afe1", "branch": "cursor/owid-ai-pages-a32e", "head": "e5125fa2276a6e8f4799b4e8788f0e7d5386e31b", "pr": 175, "state": "draft", "note": "Thirteen artificial-intelligence pages are creative_commons because each states CC BY. Grapher URLs and CSV downloads are not stored."},
+    {"task": "Catalog Gray Swan pages", "run": "bc-2ea696e5-75a3-55d4-a7bf-8be3e4771f40", "branch": "cursor/grayswan-pages-a32e"},
+    {"task": "Catalog Goodfire pages", "run": "bc-16d836f2-cca7-5780-82f1-9054369fbdcf", "branch": "cursor/goodfire-pages-a32e"},
+    {"task": "Catalog Transluce pages", "run": "bc-8fc60731-ffc9-5ad8-871f-dd0d9df5e93d", "branch": "cursor/transluce-pages-a32e"},
+    {"task": "Catalog LawZero pages", "run": "bc-7b05afa4-e522-55d4-874c-0b7e6dda7f30", "branch": "cursor/lawzero-pages-a32e"},
+    {"task": "Catalog Haize Labs pages", "run": "bc-44ecf10a-4d94-51f2-9dab-f37605f6573d", "branch": "cursor/haize-pages-a32e", "head": "66c11bfa0f47f847d3a597ea0232fb8a8ce4df07", "pr": 192, "state": "merged", "merge": "5b4aca5c3bb60447567e73440d3908d1a9b526ca", "note": "No rows. haizelabs.com returned a Cloudflare challenge."},
+    {"task": "Catalog Sakana AI pages", "run": "bc-761241dd-a9b6-56c6-92f4-d8a219f910c5", "branch": "cursor/sakana-pages-a32e", "head": "51a187d97d5a1e5a0018878c1172ccfdd50a7cc3", "pr": 193, "state": "merged", "merge": "13b5e62d770cebbd32130a00e6763b3fc235e11e", "note": "One hundred twenty-seven pages. Four research pages are apache-2.0. Four dates stay unknown."},
+    {"task": "Catalog Adept pages", "run": "bc-6c6c12c2-50f5-5a0d-989a-a5963ae4867b", "branch": "cursor/adept-pages-a32e", "head": "084e090c5a62253189de239ad3ea0abed79cbb2e", "pr": 194, "state": "merged", "merge": "f338f5defdedbd68b64616510097096029b19ec3", "note": "No rows. adept.ai returned a Cloudflare challenge. A generic Creative Commons licences URL stays unknown."},
+    {"task": "Catalog Stanford SERI pages", "run": "bc-773bee44-2853-5e2b-9316-4264800babb8", "branch": "cursor/seri-pages-a32e", "head": "c36567af27235409fa5c46c0cc2f798e59f5b226", "pr": 195, "state": "merged", "merge": "d46adfd3261404553b280539202b7670f51cc8dd", "note": "Seventy-one rows stay unknown. Sixty-six dates stay unknown. A sole restricted deed keeps its own token."},
+    {"task": "Catalog Mistral research pages", "run": "bc-6bdf3acb-d9b1-5bc8-ad3f-6ef5b1d243dd", "branch": "cursor/mistral-ai-pages-a32e", "head": "aad6aed1af9af49ea55bde578f0f8f00c20810e7", "pr": 196, "state": "merged", "merge": "22faa844d180a10eec47ece69cab66ed35851333", "note": "Two hundred seventy pages. Sixty-five are apache-2.0. Three Voxtral pages are cc_by_nc. A generic Creative Commons licences URL stays unknown."},
+    {"task": "Catalog CAIDP pages", "run": "bc-f6a06045-6ab3-5512-b440-7c5ee90e5bb1", "branch": "cursor/caidp-pages-a32e", "head": "90c5f71b5cc31ef995dba58c8ddbbbd666b511df", "pr": 197, "state": "merged", "note": "Fifty-nine rows stay unknown. Every date stays unknown. A generic Creative Commons licences URL stays unknown. Apache License, Version 2.0 is apache-2.0.", "merge": "aca33176340266d17717f885626da3b3690cae2e"},
+    {"task": "Catalog LawAI pages", "run": "bc-4c5d3722-fb26-5ecd-8b43-789a9cab1a7e", "branch": "cursor/law-ai-pages-a32e", "head": "c19d1e1185cbea1b178ed46c616783ba1d6c209d", "pr": 198, "state": "merged", "note": "One hundred fourteen rows stay unknown. The Law-Following AI workshop is creative_commons_attribution because it states CC BY 2.0. Six dates stay unknown.", "merge": "2040a6eb1af8b3de215583eb3cfd276734e046e7"},
+    {"task": "Catalog Montreal ethics pages", "run": "bc-2c2f8fa6-dfe8-5625-8265-010bdb5f0ca2", "branch": "cursor/maiei-pages-a32e", "head": "1f8bc3b9853dc7bd839c2fe3bb1518a3710b8fc2", "pr": 199, "state": "merged", "note": "Nine hundred thirteen rows are creative_commons_attribution because the footer states CC BY 4.0. One page stays unknown because it also states the MIT License. Twenty dates stay unknown.", "merge": "84a783d3a8239792d582dc51123c6e43fac33444"},
+    {"task": "Catalog Stability AI pages", "run": "bc-1a29251d-ceba-551f-b045-08a9664131da", "branch": "cursor/stability-ai-pages-a32e", "head": "40afa82e65ce8246495963b96ab6f3b4d4bdb5ac", "pr": 200, "state": "merged", "note": "One hundred fifty rows stay unknown. Three are creative_commons, one is apache-2.0, and one is mit. Two dates stay unknown.", "merge": "513e1bfd308a7f8fd2f1bb0f04388d03a575e1d6"},
+    {"task": "Catalog Carnegie AI pages", "run": "bc-7aa6a239-d145-5f46-a4b7-493c0cc4e7ea", "branch": "cursor/carnegie-ai-pages-a32e", "head": "50013648acf1922439ad4d1ddeea72500ecc99ca", "pr": 201, "state": "merged", "note": "One hundred seventy-seven rows stay unknown. Twenty dates stay unknown.", "merge": "78c5d65d74335673ba03b12e797aa4bffcf61394"},
+    {"task": "Catalog Inflection pages", "run": "bc-8dc05813-1404-5e85-b843-e9bf89827ae6", "branch": "cursor/inflection-pages-a32e", "head": "81081db698554b48bcfbb0042ce63e57891fe25a", "pr": 202, "state": "merged", "note": "Twenty-two rows stay unknown. Three dates stay unknown.", "merge": "0e31af40c10d10d9ddd6c9b41a71eb22a6780bab"},
+    {"task": "Catalog Holistic AI pages", "run": "bc-dbe2c807-bec3-596a-8e2e-a3c56fbf54b8", "branch": "cursor/holistic-ai-pages-a32e", "head": "ec6eb0618f6c6a184bba6bfdfe3a7631ee494929", "state": "draft", "note": "Two hundred seventy-nine rows stay unknown. Seven dates stay unknown. A generic Creative Commons licences URL stays unknown.", "pr": 203},
+    {"task": "Catalog Simon Institute pages", "run": "bc-c5a8ecbd-2d32-5c0e-bf46-0b6577816a9c", "branch": "cursor/silg-pages-a32e", "head": "1f481813ae388ac3df61a48d8a980102e01fd3e4", "state": "draft", "note": "Ninety-three rows stay unknown. One date stays unknown. The disaster-risk row stays unknown because the only deed is a UNDRR photo credit.", "pr": 206},
+    {"task": "Catalog AI Objectives pages", "run": "bc-b989899b-12b6-54c2-ba87-c40abd2f7aa1", "branch": "cursor/aio-pages-a32e", "head": "cac3c1fdcb64ae4b2a021e1affcbe20e0c480daa", "state": "draft", "note": "Forty-four rows stay unknown. Fifteen dates stay unknown. A generic Creative Commons licences URL stays unknown.", "pr": 205},
+    {"task": "Catalog Brookings AI pages", "run": "bc-6c62b79b-3648-5645-a67d-9ec76fcce668", "branch": "cursor/brookings-ai-pages-a32e", "head": "4159584d5ad7ee32e376d9cdb7cb98d24506df19", "state": "draft", "note": "Nine hundred thirty-seven pages. Eight hundred ninety-four stay unknown. Forty-two are creative_commons_attribution. The US-China article is mit. A generic Creative Commons licences URL stays unknown.", "pr": 204},
+    {"task": "Catalog FHI pages", "run": "bc-08724534-1c80-5439-934d-655ac70aada1", "branch": "cursor/fhi-pages-a32e"},
+    {"task": "Catalog DAIR pages", "run": "bc-217b94cf-1ed9-5331-a0ef-8e4c53ee330d", "branch": "cursor/dair-pages-a32e"},
+    {"task": "Catalog AI21 pages", "run": "bc-fc0ed278-7872-5ccc-9bac-e5e928c243c2", "branch": "cursor/ai21-pages-a32e"},
+    {"task": "Catalog xAI pages", "run": "bc-79c85031-be1f-54d4-b112-7a4b1167d3f7", "branch": "cursor/xai-pages-a32e"},
+    {"task": "Catalog SSI pages", "run": "bc-d03005fd-419a-5775-884e-84147ff67f2d", "branch": "cursor/ssi-pages-a32e"},
+    {"task": "Catalog Imbue pages", "run": "bc-f37d2851-6e25-54b7-b0a5-75cb82e6e60f", "branch": "cursor/imbue-pages-a32e"},
+    {"task": "Catalog MIT FutureTech pages", "run": "bc-4a54e078-d6d6-5ca1-95a2-b1a8a082e30d", "branch": "cursor/futuretech-pages-a32e"},
+    {"task": "Catalog Oxford ethics pages", "run": "bc-8a042557-9d50-553f-91d9-7f0b436c4a0c", "branch": "cursor/oxford-ethics-pages-a32e"},
+    {"task": "Catalog AJL pages", "run": "bc-9c10af67-b231-54dd-bbb7-6736fd694205", "branch": "cursor/ajl-pages-a32e"},
+    {"task": "Catalog ELLIS pages", "run": "bc-42188ca2-4bdb-5b8d-ac1b-afc27d4fb931", "branch": "cursor/ellis-pages-a32e"},
+    {"task": "Catalog SCSP pages", "run": "bc-2d46ce51-9573-5c48-9683-7cf6a53bc991", "branch": "cursor/scsp-pages-a32e"},
+    {"task": "Catalog Responsible AI pages", "run": "bc-141237ce-dac3-5372-aa8f-f9579cc689e8", "branch": "cursor/rai-pages-a32e"},
+    {"task": "Catalog IFP pages", "run": "bc-0d8a964c-5207-5af1-b7a1-56e2b2c56e98", "branch": "cursor/ifp-pages-a32e"},
+    {"task": "Catalog Inria pages", "run": "bc-af7de0d2-def6-5852-992c-26021b12c4f2", "branch": "cursor/inria-pages-a32e"},
+    {"task": "Catalog DFKI pages", "run": "bc-f3a55aec-4128-5f35-9cbe-2d783eae40a9", "branch": "cursor/dfki-pages-a32e"},
+    {"task": "Catalog Atlantic Council AI pages", "run": "bc-109cc63f-5cce-5168-b744-3bb67a2d190e", "branch": "cursor/atlantic-ai-pages-a32e"},
+    {"task": "Catalog Belfer Center AI pages", "run": "bc-d36a6201-7792-52d5-9c07-608a956b505c", "branch": "cursor/belfer-pages-a32e"},
+    {"task": "Catalog EFF AI pages", "run": "bc-2754b328-868f-522f-a25e-d7079be33b95", "branch": "cursor/eff-ai-pages-a32e"}
   ],
   "merge_continue_dispatched_at": "2026-10-05T18:31:30Z",
   "merge_continue_targets_pr": 31,
