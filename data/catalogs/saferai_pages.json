@@ -1,0 +1,665 @@
+{
+  "catalog_id": "saferai_pages",
+  "description": "Metadata for confirmed public SaferAI pages on www.safer-ai.org. Each row was stored only after one bounded GET returned that page's HTML. Cloudflare, SiteGround captcha, an HTTP 202 challenge, an Akamai 403, a robots disallow, and an off-host redirect are not stored. Entries keep a title, publisher, canonical URL, date, and rights label. Page bodies are not stored. Rights stays unknown unless the page states a reuse licence. creative_commons means CC0 or CC BY-SA. creative_commons_attribution means CC BY without NC, ND, or SA. A missing publication date stays unknown. Updated, modified, and copyright years are not publication dates. This catalog is not a belief collector and runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "General-Purpose AI Systems",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/general-purpose-ai-systems",
+      "date": "2023-03-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Probabilistic Risk Assessment - Promises, Benefits and Challenges",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/probabilistic-risk-assessment-promises-benefits-and-challenges",
+      "date": "2023-05-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Slowing Down AI: Rationales, Proposals, and Difficulties",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/slowing-down-ai-rationales-proposals-and-difficulties",
+      "date": "2023-05-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "SaferAI OECD Post: Basic Safety Requirements for AI Risk Management",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/saferai-oecd-post-basic-safety-requirements-for-ai-risk-management",
+      "date": "2023-07-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "How Can Biosafety Inform AI Safety?",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/how-can-biosafety-inform-ai-safety",
+      "date": "2023-09-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "How Can Nuclear Safety Inform AI Safety?",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/how-can-nuclear-safety-inform-ai-safety",
+      "date": "2023-09-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "RSPs Are Risk Management Done Wrong",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/rsps-are-risk-management-done-wrong",
+      "date": "2023-10-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Is OpenAI's Preparedness Framework better than its competitors' \"Responsible Scaling Policies\"? A Comparative Analysis",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/is-openais-preparedness-framework-better-than-its-competitors-responsible-scaling-policies-a-comparative-analysis",
+      "date": "2024-01-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Distinguishing audits, evals, and red-teaming",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/distinguishing-audits-evals-and-red-teaming",
+      "date": "2024-02-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "A short overview of AI-related biorisks",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/a-short-overview-of-ai-related-biorisks",
+      "date": "2024-04-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "An opinionated literature review to Inform the EU Codes of Practice on GPAI with systemic risks",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/an-opinionated-literature-review-to-inform-the-eu-codes-of-practice-on-gpai-with-systemic-risks",
+      "date": "2024-06-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "6 expert-backed claims on AI risk management",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/6-expert-backed-claims-on-ai-risk-management",
+      "date": "2024-07-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Framework to Rate AI Developers’ Risk Management Maturity",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/a-framework-to-rate-ai-developers-risk-management-maturity",
+      "date": "2024-09-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "The first AI risk management ratings expose a two-speed industry with common shortcomings",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/the-first-ai-risk-management-ratings-expose-industry-wide-shortcomings",
+      "date": "2024-10-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Anthropic’s responsible scaling policy update makes a step backwards",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/anthropics-responsible-scaling-policy-update-makes-a-step-backwards",
+      "date": "2024-10-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "On the importance of distinguishing risk tolerance and KRI thresholds",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/on-the-importance-of-distinguishing-risk-tolerance-and-kri-thresholds",
+      "date": "2025-01-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Frontier AI Risk Management Framework",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/a-frontier-ai-risk-management-framework",
+      "date": "2025-02-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mapping AI Benchmark Data to Quantitative Risk Estimates Through Expert Elicitation",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/mapping-ai-benchmark-data-to-quantitative-risk-estimates-through-expert-elicitation",
+      "date": "2025-03-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "We need to avert an AI Safety Winter — SaferAI’s commentary published by RUSI",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/we-need-to-avert-an-ai-safety-winter-saferais-commentary-published-by-rusi",
+      "date": "2025-03-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Informing the Code of Practice: A hierarchical methodology of defining risk tiers",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/informing-the-code-of-practice-a-hierarchical-methodology-of-defining-risk-tiers",
+      "date": "2025-04-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Our feedback to the first EU general-purpose AI Code of Practice",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/our-feedback-to-the-first-eu-general-purpose-ai-code-of-practice",
+      "date": "2025-04-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Reflecting on the Paris AI Action Summit: A three-month look back at our contributions",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/reflecting-on-the-paris-ai-action-summit-a-three-month-look-back-at-our-contributions",
+      "date": "2025-05-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "G7 Hiroshima AI Process Code of Conduct and EU AI Act GPAI - Commonality Analysis",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/g7-hiroshima-ai-process-code-of-conduct-and-eu-ai-act-gpai-commonality-analysis",
+      "date": "2025-05-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Risk Tiers: Towards a Gold Standard for Advanced AI",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/risk-tiers-towards-a-goldstandard-for-advanced-ai",
+      "date": "2025-11-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Safety Frameworks and Standards: A comparative analysis to advance risk management of frontier AI",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/safety-frameworks-and-standards-a-comparative-analysis-to-advance-risk-management-of-frontier-ai",
+      "date": "2025-11-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Why Europe should bet on reliable AI infrastructure",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/why-europe-should-bet-on-safe-ai-infrastructure",
+      "date": "2025-11-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Methodology for Quantitative AI Risk Modeling",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/a-methodology-for-quantitative-ai-risk-modeling",
+      "date": "2025-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Role of Risk Modeling in Advanced AI Risk Management",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/the-role-of-risk-modeling-in-advanced-ai-risk-management",
+      "date": "2025-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Toward Quantitative Modeling of Cybersecurity Risks Due to AI Misuse",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/toward-quantitative-modeling-of-cybersecurity-risks-due-to-ai-misuse",
+      "date": "2025-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Technical report: LLM-simulated expert judgement for quantitative AI risk estimation",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/technical-report-llm-simulated-expert-judgement-for-quantitative-ai-risk-estimation",
+      "date": "2025-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "European voices converge on reliable AI",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/european-voices-converge-on-reliable-ai",
+      "date": "2025-12-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Narrowing the gap between AI benchmarks and real-life cyber risk assessment",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/beyond-benchmarks-in-ai-cyber-risk-assessment",
+      "date": "2026-01-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "An overview of existing and potential future GenAI/GPAI standards",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/an-overview-of-existing-and-potential-future-genai-gpai-standards",
+      "date": "2026-01-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "SaferAI selected to support EU AI Act implementation through CBRN risk assessment",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/saferai-selected-to-support-eu-ai-act-implementation-through-cbrn-risk-assessment",
+      "date": "2026-02-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Analyzing SSF requirements in the GPAI Code of Practice: A case study using Anthropic's Frontier Compliance Framework",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/analyzing-ssf-requirements-in-the-gpai-code-of-practice-a-case-study-using-anthropics-frontier-compliance-framework",
+      "date": "2026-03-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Case for European Investment in High-Risk, High-Reward AI Reliability Research",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/the-case-for-european-investment-in-high-risk-high-reward-ai-reliability-research",
+      "date": "2026-03-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Lessons from our European Parliament roundtable on reliable AI",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/lessons-from-our-european-parliament-roundtable-on-reliable-ai",
+      "date": "2026-04-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Quantitative AI risk assessment: a starting point",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/quantitative-ai-risk-assessment-a-starting-point",
+      "date": "2026-05-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "How can Europe make AI safe and reliable?",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/how-can-europe-make-ai-safe-and-reliable",
+      "date": "2026-06-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Emerging Best Practices for Frontier AI Safety Frameworks",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/emerging-best-practices-for-frontier-ai-safety-frameworks",
+      "date": "2026-07-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Exploring Systems-Thinking Approaches to Loss of Control Risk",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/exploring-systems-thinking-approaches-to-loss-of-control-risk",
+      "date": "2026-07-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Lessons from External Review of DeepMind's Scheming Inability Safety Case",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/lessons-from-external-review-of-deepminds-scheming-inability-safety-case",
+      "date": "2026-07-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Shot across the bow: how systems thinking can help mitigate loss of control hazards",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/shot-across-the-bow-how-systems-thinking-can-help-mitigate-loss-of-control-hazards",
+      "date": "2026-07-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "How we protect confidential information",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/how-we-protect-confidential-information",
+      "date": "2026-07-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "GLM-5.2 Risk Evaluation Report",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/glm-5-2-evaluation-report",
+      "date": "2026-08-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Better evaluations are not enough. AI governance needs a better evaluation pipeline.",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/better-evaluations-are-not-enough-ai-governance-needs-a-better-evaluation-pipeline",
+      "date": "2026-08-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Open Problems in AI Risk Modeling: Insights from a Workshop on the Technical Foundations of AI Risk Modeling",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research/open-problems-in-ai-risk-modelinginsights-from-a-workshop-on-the-technicalfoundations-of-ai-risk-modeling",
+      "date": "2026-09-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "SaferAI",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "About",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Alice Teilhard",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/alice-teilhard",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Benedict Bruckamp",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/benedict-bruckamp",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bruno Galizzi",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/bruno-galizzi",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Chloé Touzet",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/chloe-touzet",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Cornelia Kutterer",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/cornelia-kutterer",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Duncan Cass-Beggs",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/duncan-cass-beggs",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Elizabeth Burgnon",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/elizabeth-burgnon",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Fabien Roger",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/fabien-roger",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Gabor Szorad",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/gabor-szorad",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Henry Papadatos",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/henry-papadatos",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Jack Kengott",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/jack-kengott",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Jacob Davies",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/jacob-davies",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Jakub Kryś",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/jakub-krys",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "James Gealy",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/james-gealy",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Jane Valentine",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/jane-valentine",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Jason Lee",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/jason-lee",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Lydia Preston",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/lydia-preston",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Malcolm Murray",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/malcolm-murray",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Martin Rusch",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/martin-rusch",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Max Schaffelder",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/max-schaffelder",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "May Dixit",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/may-dixit",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Nada Hegazy",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/nada-hegazy",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Renn Karageorgieva",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/renn-karageorgieva",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Said Saillant",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/said-saillant",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Simeon Campos",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/about/simeon-campos",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Blog",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/blog",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Careers",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/careers",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Contact us",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/contact",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Cookie Policy",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/cookie-policy",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Founding Engineer (Infrastructure)",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/jobs/founding-engineer-infrastructure",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research Scientist/Engineer",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/jobs/research-scientist-engineer",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Risk Modeling Lead",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/jobs/risk-modeling-lead",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Company Practices Archives",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research_subject/company-practices",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Cybersecurity Archives",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research_subject/cybersecurity",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Lessons from Other Industries Archives",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research_subject/lessons-from-other-industries",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Loss of Control Archives",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research_subject/loss-of-control",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Policy Archives",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research_subject/policy",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Risk Management Archives",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research_subject/risk-management",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Risk Modeling Archives",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research_subject/risk-modeling",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Standards Archives",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research_subject/standards",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Memo Archives",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research_type/memo",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Paper Archives",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research_type/paper",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Technical Report Archives",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/research_type/technical-report",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Terms of Service",
+      "publisher": "SaferAI",
+      "canonical_url": "https://www.safer-ai.org/terms-of-service",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
