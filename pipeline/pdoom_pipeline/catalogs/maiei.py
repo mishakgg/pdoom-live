@@ -19,9 +19,10 @@ permissive text stays unknown. A CC BY or CC BY-SA anchor on a by-nc, by-nd,
 by-nc-sa, by-nc-nd, or public-domain mark URL stays unknown. A CC0 anchor on a
 publicdomain/mark URL stays unknown. The Public Domain Mark, all rights
 reserved, a terms link, and the host name stay unknown. A generic
-creativecommons.org/licenses/ URL stays unknown. ``uk_ogl`` requires the
-British phrase Open Government Licence. ``mit``, ``apache-2.0``, and
-``mpl-2.0`` stay their own tokens. Mixed software licences stay unknown.
+creativecommons.org/licenses/ URL is not a deed, and anchor text on that URL
+is not a licence statement. ``uk_ogl`` requires the British phrase Open
+Government Licence. ``mit``, ``apache-2.0``, and ``mpl-2.0`` stay their own
+tokens. Mixed software licences stay unknown.
 
 A page that does not state a publication date keeps the date unknown. Updated,
 modified, and copyright years are not publication dates. This module does not
@@ -196,6 +197,17 @@ _CC_URL = re.compile(
     r"|licenses/(?P<code>by-nc-nd|by-nc-sa|by-nc|by-nd|by-sa|by))"
     r"(?![a-z0-9-])"
 )
+# creativecommons.org/licenses with no deed segment. A following /by or
+# /by-nc path is a deed and must not match. http, https, a www host, a missing
+# trailing slash, and a query or fragment stay on this generic path.
+_GENERIC_CC_LICENCES = re.compile(
+    r"(?i)(?<![a-z0-9])"
+    r"(?:(?:https?:)?//(?:www\.)?|(?:www\.)?)"
+    r"creativecommons\.org/licenses/?"
+    r"(?:\?[^#\s\"'<>]*)?(?:#[^\s\"'<>]*)?"
+    r"(?![a-z0-9/])"
+)
+_ANCHOR_ELEMENT = re.compile(r"(?is)<a\b([^>]*)>(.*?)</a>")
 _CC_TEXT = (
     ("by-nc-nd", re.compile(r"(?<![a-z0-9])cc[\s-]*by[\s-]*nc[\s-]*nd(?![a-z0-9])")),
     ("by-nc-sa", re.compile(r"(?<![a-z0-9])cc[\s-]*by[\s-]*nc[\s-]*sa(?![a-z0-9])")),
@@ -395,26 +407,36 @@ def rights_from_page(page_text: str) -> str:
     permissive mix of those is ``creative_commons``. A sole restricted deed
     keeps its own token. Mixed restricted and permissive text stays unknown,
     including a CC BY or CC BY-SA anchor on a restricted or public-domain mark
-    URL, and a CC0 anchor on a publicdomain/mark URL. Mixed software licences
-    stay unknown. ``uk_ogl`` requires the phrase Open Government Licence.
-    Script and style text does not count.
+    URL, and a CC0 anchor on a publicdomain/mark URL. Anchor text on a generic
+    creativecommons.org/licenses/ URL is not a licence statement. Mixed software
+    licences stay unknown. ``uk_ogl`` requires the phrase Open Government
+    Licence. Script, style, and comment text does not count.
     """
 
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     visible = _without_hidden(page_text)
-    plain = _plain(visible).casefold().translate(_DASHES)
-    blobs = [plain, *_meta_values(visible, _LICENSE_META), *_jsonld_licences(page_text), *_hrefs(visible)]
+    licence_html = _drop_generic_cc_licence_anchors(visible)
+    plain = _licence_blob(_plain(licence_html))
+    blobs = [
+        plain,
+        *(_licence_blob(value) for value in _meta_values(visible, _LICENSE_META)),
+        *(_licence_blob(value) for value in _jsonld_licences(page_text)),
+        *(
+            _licence_blob(href)
+            for href in _hrefs(licence_html)
+            if not _is_generic_cc_licences_url(href)
+        ),
+    ]
     codes: set[str] = set()
     mit = False
     apache = False
     mpl = False
     for blob in blobs:
-        folded = blob.casefold().translate(_DASHES)
-        codes.update(_cc_codes(folded))
-        mit = mit or bool(_MIT.search(folded) or _MIT_URL.search(folded))
-        apache = apache or bool(_APACHE.search(folded) or _APACHE_URL.search(folded))
-        mpl = mpl or bool(_MPL.search(folded) or _MPL_URL.search(folded))
+        codes.update(_cc_codes(blob))
+        mit = mit or bool(_MIT.search(blob) or _MIT_URL.search(blob))
+        apache = apache or bool(_APACHE.search(blob) or _APACHE_URL.search(blob))
+        mpl = mpl or bool(_MPL.search(blob) or _MPL_URL.search(blob))
     software = {name for name, present in (("mit", mit), ("apache", apache), ("mpl", mpl)) if present}
     ogl = _OGL_PHRASE.search(plain) is not None
     restricted = codes & _RESTRICTED
@@ -658,6 +680,36 @@ def _robots_star_rules(robots_text: str) -> list[tuple[str, str]]:
         if "*" in agents:
             return rules
     return []
+
+
+def _is_generic_cc_licences_url(href: str) -> bool:
+    """True when the URL is creativecommons.org/licenses with no deed segment."""
+
+    target = unescape(href).replace("\\/", "/").strip()
+    if not target:
+        return False
+    return _GENERIC_CC_LICENCES.fullmatch(target) is not None
+
+
+def _without_generic_cc_licences(value: str) -> str:
+    return _GENERIC_CC_LICENCES.sub(" ", value)
+
+
+def _drop_generic_cc_licence_anchors(html: str) -> str:
+    """Drop anchors whose target is a generic licences URL, including their text."""
+
+    def replace(match: re.Match[str]) -> str:
+        href = _attrs(match.group(1)).get("href", "")
+        if _is_generic_cc_licences_url(href):
+            return " "
+        return match.group(0)
+
+    return _ANCHOR_ELEMENT.sub(replace, html)
+
+
+def _licence_blob(value: str) -> str:
+    text = _without_generic_cc_licences(unescape(value).replace("\\/", "/"))
+    return re.sub(r"\s+", " ", text.casefold().translate(_DASHES)).strip()
 
 
 def _cc_codes(folded: str) -> set[str]:

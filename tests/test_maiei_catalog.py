@@ -293,6 +293,36 @@ def test_permissive_anchors_on_restricted_or_mark_urls_stay_unknown():
     )
 
 
+def test_generic_creativecommons_licences_url_is_not_a_deed():
+    """Anchor text on a generic licences URL is not a licence statement."""
+
+    for label in ("CC BY", "CC BY 4.0", "CC BY-SA"):
+        page = f'<a href="https://creativecommons.org/licenses/">{label}</a>'
+        assert rights_from_page(page) == RIGHTS_UNKNOWN
+    generic_urls = (
+        "https://creativecommons.org/licenses/",
+        "https://creativecommons.org/licenses",
+        "http://creativecommons.org/licenses/",
+        "http://creativecommons.org/licenses",
+        "https://www.creativecommons.org/licenses/",
+        "http://www.creativecommons.org/licenses/",
+        "https://creativecommons.org/licenses/?lang=en",
+        "https://creativecommons.org/licenses?ref=cc-by",
+        "http://www.creativecommons.org/licenses?deed=cc-by-sa",
+    )
+    for url in generic_urls:
+        for label in ("CC BY", "CC BY 4.0", "CC BY-SA"):
+            assert rights_from_page(f'<a href="{url}">{label}</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page(
+        '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
+    ) == RIGHTS_CC_ATTRIBUTION
+    stated = (
+        "<p>Licensed under CC BY 4.0.</p>"
+        '<a href="https://creativecommons.org/licenses/">CC BY-SA</a>'
+    )
+    assert rights_from_page(stated) == RIGHTS_CC_ATTRIBUTION
+
+
 def test_mixed_restricted_permissive_and_software_licences_stay_unknown():
     assert rights_from_page("<p>Licensed under CC BY 4.0 and CC BY-NC 4.0.</p>") == RIGHTS_UNKNOWN
     assert rights_from_page("<p>CC BY-NC and CC BY-ND.</p>") == RIGHTS_UNKNOWN
