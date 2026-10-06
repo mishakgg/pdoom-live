@@ -39,7 +39,7 @@ Publication dates only. Updated, modified, and copyright years are not
 publication dates. A missing date stays unknown. The live URL is stored as
 confirmed. A different rel=canonical does not replace it.
 
-This module does not fetch and it does not import requests. It is not a
+This module does not fetch. The requests library is not used. It is not a
 belief collector. runner_wired stays false. Belief collection stays on
 RssCollector.
 """
