@@ -1,0 +1,1351 @@
+{
+  "catalog_id": "datasociety_pages",
+  "description": "Metadata for public Data & Society HTML pages about artificial intelligence on datasociety.net. Each stored URL was confirmed with one bounded GET that returned HTML. A challenge page, non-HTML response, or redirect off that host is not stored. Rows store the title, publisher, canonical URL, date, and rights. Page bodies are not stored. A missing date is unknown. creative_commons is only CC0, CC BY-SA, or a mix of those. creative_commons_attribution is CC BY alone. A sole CC BY-NC, CC BY-ND, CC BY-NC-SA, or CC BY-NC-ND keeps cc_by_nc, cc_by_nd, cc_by_nc_sa, or cc_by_nc_nd. uk_ogl is only the Open Government Licence. us_government_work is only a rights field. runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Primer: Algorithmic Accountability",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/primer-algorithmic-accountability/",
+      "date": "2014-03-17",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Future of Labor: Understanding Intelligent Systems",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/future-of-labor-understanding-intelligent-systems/",
+      "date": "2014-10-08",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 25 | Our Algorithmic Future: Can Community Driven Incentives Create Greater Transparency?",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-25-our-algorithmic-future-can-community-driven-incentives-create-greater-transparency/",
+      "date": "2015-02-19",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Futures Forum 2015",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/futures-forum-2015/",
+      "date": "2015-03-25",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 33 | Captivating Algorithms: Recommender Systems as Traps",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-33-captivating-algorithms-recommender-systems-as-traps/",
+      "date": "2015-04-16",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 48 | Social Media, Algorithms, and the Public Interest",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-48-social-media-algorithms-and-the-public-interest/",
+      "date": "2015-07-30",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Data & Civil Rights: Courts and Predictive Algorithms",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/data-civil-rights-courts-and-predictive-algorithms/",
+      "date": "2015-10-27",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 70 | When algorithms become culture",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-70-when-algorithms-become-culture/",
+      "date": "2016-02-25",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Who Controls the Public Sphere in an Era of Algorithms?",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/who-controls-the-public-sphere-in-an-era-of-algorithms/",
+      "date": "2016-02-26",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "No More Magic Algorithms: Cultural Policy in an Era of Discoverability",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/no-more-magic-algorithms-cultural-policy-in-an-era-of-discoverability/",
+      "date": "2016-05-09",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Who Controls the Public Sphere in an Era of Algorithms: Case Studies",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/who-controls-the-public-sphere-in-an-era-of-algorithms-case-studies/",
+      "date": "2016-05-13",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Who Controls the Public Sphere in an Era of Algorithms?: Questions and Assumptions",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/who-controls-the-public-sphere-in-an-era-of-algorithms-questions-and-assumptions/",
+      "date": "2016-05-13",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "An AI Pattern Language",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/an-ai-pattern-language/",
+      "date": "2016-09-29",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "The Inescapability of Uncertainty: AI, Uncertainty, and Why You Should Vote No Matter What Predictions Say",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/the-inescapability-of-uncertainty-ai-uncertainty-and-why-you-should-vote-no-matter-what-predictions-say/",
+      "date": "2016-10-31",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Living in a Culture of Algorithms",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/living-in-a-culture-of-algorithms/",
+      "date": "2017-01-25",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "An AI Pattern Language: Accounting for Human Factors & Human Frames",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/an-ai-pattern-language-accounting-for-human-factors-human-frames/",
+      "date": "2017-01-30",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 96 | Post-Truth and New Realities: Algorithms, Alternative Facts, and Digital Ethics",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-96-post-truth-and-new-realities-algorithms-alternative-facts-and-digital-ethics/",
+      "date": "2017-04-12",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Toward Accountability: Data, Fairness, Algorithms, Consequences",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/toward-accountability-data-fairness-algorithms-consequences/",
+      "date": "2017-04-12",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 98 | AI in the Open World: Directions, Challenges, and Futures",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-98-ai-in-the-open-world-directions-challenges-and-futures/",
+      "date": "2017-04-26",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databites 100 Series: Machine Learning: What’s Fair and How Do We Decide?",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databites-100-series-machine-learning-whats-fair-and-how-do-we-decide/",
+      "date": "2017-06-22",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 104 | WTF: What’s the Future and Why It’s Up to Us",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-104-wtf-whats-the-future-and-why-its-up-to-us/",
+      "date": "2017-10-11",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Beyond the Rhetoric of Algorithmic Solutionism",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/beyond-the-rhetoric-of-algorithmic-solutionism/",
+      "date": "2018-01-11",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Algorithmic Accountability: A Primer",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/algorithmic-accountability-a-primer/",
+      "date": "2018-04-18",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Artificial Intelligence & Human Rights: A Workshop at Data & Society",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/artificial-intelligence-human-rights-a-workshop-at-data-society/",
+      "date": "2018-05-11",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Artificial Intelligence: What’s Human Rights Got To Do With It?",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/artificial-intelligence-whats-human-rights-got-to-do-with-it/",
+      "date": "2018-05-14",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 109 | Algorithms of Oppression",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-109-algorithms-of-oppression/",
+      "date": "2018-05-15",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 111 | Making Algorithms Stumble",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-111-making-algorithms-stumble/",
+      "date": "2018-06-20",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 112 | Algorithmic Accountability & Transparency in Criminal Justice Software",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-112-algorithmic-accountability-transparency-in-criminal-justice-software/",
+      "date": "2018-06-27",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Governing Artificial Intelligence: Upholding Human Rights & Dignity",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/governing-artificial-intelligence-upholding-human-rights-dignity/",
+      "date": "2018-10-10",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Let’s Avoid an Artificial Intelligentsia: Inclusion, Artificial Intelligence, and Human Rights",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/lets-avoid-an-artificial-intelligentsia-inclusion-artificial-intelligence-and-human-rights/",
+      "date": "2018-10-12",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "AI in Context: The Labor of Integrating New Technologies",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/ai-in-context-the-labor-of-integrating-new-technologies/",
+      "date": "2019-01-30",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Explainer: Algorithmic Management in the Workplace",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/explainer-algorithmic-management-in-the-workplace/",
+      "date": "2019-02-06",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Accountable Algorithmic Futures",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/accountable-algorithmic-futures/",
+      "date": "2019-04-19",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 119: Ghost Work",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-119-ghost-work/",
+      "date": "2019-05-08",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Systemic Algorithmic Harms",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/systemic-algorithmic-harms/",
+      "date": "2019-05-31",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 121 | What Do We Know? The Inability to Question Mark Zuckerberg in Congress",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-121-what-do-we-know-the-inability-to-question-mark-zuckerberg-in-congress/",
+      "date": "2019-06-05",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 122 | Not The Only One — Practical Adventures in Creating an AI Memoir",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-122-not-the-only-one-practical-adventures-in-creating-an-ai-memoir/",
+      "date": "2019-06-12",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 122 | Why Now is the Time for Racial Literacy in Tech",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-122-why-now-is-the-time-for-racial-literacy-in-tech/",
+      "date": "2019-06-12",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Algorithms on the Shop Floor: Data-Driven Technologies in Organizational Context",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/algorithms-on-the-shop-floor-data-driven-technologies-in-organizational-context/",
+      "date": "2019-06-14",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "From Panic to Profit: AI Propaganda Machines",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/from-panic-to-profit-ai-propaganda-machines/",
+      "date": "2019-07-16",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Poverty Lawgorithms: A Poverty Lawyer’s Guide to Fighting Automated Decision-Making Harms on Low-Income Communities",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/poverty-lawgorithms-a-poverty-lawyers-guide-to-fighting-automated-decision-making-harms-on-low-income-communities/",
+      "date": "2020-09-15",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 135 | Disruption and Repair: Integrating AI in Clinical Care",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-135-disruption-and-repair-integrating-ai-in-clinical-care/",
+      "date": "2020-09-30",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Repairing Innovation: A Study of Integrating AI in Clinical Care",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/repairing-innovation-a-study-of-integrating-ai-in-clinical-care/",
+      "date": "2020-09-30",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Computing in/from the South: A Global Celebration",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/computing-in-from-the-south-a-global-celebration/",
+      "date": "2020-12-03",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 140 | Governing an Algorithm in the Wild",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-140-governing-an-algorithm-in-the-wild/",
+      "date": "2020-12-08",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Algorithmic Autobiographies and Fictions: How to Write with Your Digital Self",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/algorithmic-autobiographies-and-fictions-how-to-write-with-your-digital-self/",
+      "date": "2020-12-09",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Mapping AI in the Global South",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/mapping-ai-in-the-global-south/",
+      "date": "2021-01-26",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Rewriting the Vaccine Distribution Algorithm",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/rewriting-the-vaccine-distribution-algorithm/",
+      "date": "2021-02-09",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "House Arrest: How an Automated Algorithm Constrained Congress for a Century",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/house-arrest-how-an-automated-algorithm-constrained-congress-for-a-century/",
+      "date": "2021-04-14",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Becoming Data | Episode 3: Data, AI & Automation",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/becoming-data-episode-3-data-ai-automation/",
+      "date": "2021-06-01",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 145 | Algorithmic Governance and the State of Impact Assessment in the EU, US, and Canada",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-145-algorithmic-governance-and-the-state-of-impact-assessment-in-the-eu-us-and-canada/",
+      "date": "2021-06-23",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Assembling Accountability: Algorithmic Impact Assessment for the Public Interest",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/assembling-accountability-algorithmic-impact-assessment-for-the-public-interest/",
+      "date": "2021-06-29",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Strategic Knowledge: Teens use “algorithmic folklore” to crack TikTok’s black box",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/strategic-knowledge-teens-use-algorithmic-folklore-to-crack-tiktoks-black-box/",
+      "date": "2021-07-14",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Parables of AI in/from the Global South",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/parables-of-ai-in-from-the-global-south/",
+      "date": "2021-10-21",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "The Social Life of Algorithmic Harms: Call for Applications",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/the-social-life-of-algorithmic-harms-call-for-applications/",
+      "date": "2021-11-03",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Recommendations for Incorporating Human Rights into AI Impact Assessments",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/recommendations-for-incorporating-human-rights-into-ai-impact-assessments/",
+      "date": "2021-11-22",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "A Primer on AI in/from the Majority World: An Empirical Site and a Standpoint",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/a-primer-on-ai-in-from-the-majority-world-an-empirical-site-and-a-standpoint/",
+      "date": "2022-09-14",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "How to Read the White House’s Blueprint for an AI Bill of Rights",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/how-to-read-the-white-houses-blueprint-for-an-ai-bill-of-rights/",
+      "date": "2022-10-04",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "AI In/From the Majority World Primer: UNSCRIPTED",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-150-ai-in-from-the-majority-world-primer-unscripted/",
+      "date": "2022-10-13",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Parables of AI in/from the Majority World: An Anthology",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/parables-of-ai-in-from-the-majority-world-an-anthology/",
+      "date": "2022-12-07",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "A New Executive Order Ties Equity in AI to a Broader Civil Rights Agenda",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/a-new-executive-order-ties-equity-in-ai-to-a-broader-civil-rights-agenda/",
+      "date": "2023-02-23",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "The Social Life of Algorithmic Harms Workshop March 10-11, 2022",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/the-social-life-of-algorithmic-harms-workshop-march-10-11-2022/",
+      "date": "2023-03-14",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "AI Harms Are Already Here: And we can’t rely on the tech industry to address them.",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/ai-harms-are-already-here-and-we-cant-rely-on-the-tech-industry-to-address-them/",
+      "date": "2023-04-03",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "AI Harms Are Already Here",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/ai-harms-are-already-here/",
+      "date": "2023-04-03",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Platform Governance Research Network Conference",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/platform-governance-research-network-conference/",
+      "date": "2023-04-03",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Member Perspective: An Excerpt from the National AI Advisory Committee Year One Report",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/member-perspective-an-excerpt-from-the-national-ai-advisory-committee-year-one-report/",
+      "date": "2023-04-23",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Ima Put a Computational Hex on You",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/ima-put-a-computational-hex-on-you/",
+      "date": "2023-05-04",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Data & Society Announces the Launch of its Algorithmic Impact Methods Lab",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/data-society-announces-the-launch-of-its-algorithmic-impact-methods-lab/",
+      "date": "2023-05-10",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Highlights from the 2023 Platform Governance Research Network Conference",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/highlights-from-the-2023-platform-governance-research-network-conference/",
+      "date": "2023-06-07",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Response to the NTIA’s Request for Comment on AI Accountability Policy",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/response-to-the-ntias-request-for-comment-on-ai-accountability-policy/",
+      "date": "2023-06-12",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Response to the White House OSTP’s Request for Information on National Priorities for Artificial Intelligence",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/response-to-the-white-house-ostps-request-for-information-on-national-priorities-for-artificial-intelligence/",
+      "date": "2023-07-19",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Response to the National Science Foundation’s RFI on Developing a Roadmap for the Directorate for Technology, Innovation, and Partnerships",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/response-to-the-national-science-foundations-rfi-on-developing-a-roadmap-for-the-directorate-for-technology-innovation-and-partnerships/",
+      "date": "2023-08-09",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Doppelgangers in a Digital World: From deep fakes and avatars to big data, we all have a doppelganger that lives and acts online.",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/doppelgangers-in-a-digital-world-from-deep-fakes-and-avatars-to-big-data-we-all-have-a-doppelganger-that-lives-and-acts-online/",
+      "date": "2023-08-16",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Democratizing AI: Principles for Meaningful Public Participation",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/democratizing-ai-principles-for-meaningful-public-participation/",
+      "date": "2023-09-27",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Celebrating the Blueprint for an AI Bill of Rights",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/celebrating-the-blueprint-for-an-ai-bill-of-rights/",
+      "date": "2023-10-03",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Blooming in Muddy Waters: DEI at AI Ethics Conferences",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/blooming-in-muddy-waters-dei-at-ai-ethics-conferences/",
+      "date": "2023-10-11",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Points: Shaping AI Systems By Shifting Power",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/shaping-ai-systems-by-shifting-power/",
+      "date": "2023-10-18",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Democratizing AI: Principles for Meaningful Public Participation",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-155-democratizing-ai-principles-for-meaningful-public-participation/",
+      "date": "2023-10-19",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "AI Red-Teaming is Not a One-Stop Solution to AI Harms: Recommendations for Using Red-Teaming for AI Accountability",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/ai-red-teaming-is-not-a-one-stop-solution-to-ai-harms-recommendations-for-using-red-teaming-for-ai-accountability/",
+      "date": "2023-10-25",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Decoding the AI Executive Order",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/decoding-the-ai-executive-order/",
+      "date": "2023-11-07",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "I Implemented a Federal Government Executive Order on Technology in Mexico. Here’s What I Learned",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/i-implemented-a-federal-government-executive-order-on-technology-in-mexico-heres-what-i-learned/",
+      "date": "2023-11-15",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Written Statement: US Senate AI Insight Forum",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/written-statement-us-senate-ai-insight-forum/",
+      "date": "2023-12-06",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Response to OMB’s Artificial Intelligence Draft Memorandum",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/response-to-ombs-artificial-intelligence-draft-memorandum/",
+      "date": "2023-12-13",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Getting Beyond the AI Existential Crisis",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/getting-beyond-the-ai-existential-crisis/",
+      "date": "2024-01-03",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Measuring Justice: Field Notes on Algorithmic Impact Assessments",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/measuring-justice-field-notes-on-algorithmic-impact-assessments/",
+      "date": "2024-01-10",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Generative AI’s Labor Impacts: Hierarchy",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-156-hierarchy-generative-ais-labor-impacts/",
+      "date": "2024-01-18",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Generative AI’s Labor Impacts: A Three-Part Series",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/generative-ais-labor-impacts-a-three-part-series/",
+      "date": "2024-01-18",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "When Kindness Kills: How algorithms accelerate savior swarms",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/when-kindness-kills-how-algorithms-accelerate-savior-swarms/",
+      "date": "2024-01-24",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Why We’re Endorsing the AI Environmental Impacts Act",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/why-were-endorsing-the-ai-environmental-impacts-act/",
+      "date": "2024-02-01",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Generative AI’s Labor Impacts: Recognition",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-157-recognition-generative-ais-labor-impacts/",
+      "date": "2024-02-13",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Response to RFI Related to NIST’s Assignments Under the AI Executive Order",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/response-to-rfi-related-to-nists-assignments-under-the-ai-executive-order/",
+      "date": "2024-02-14",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "What’s Trust Got to Do With It? Trust Issues: Perspectives on Community, Technology, and Trust",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/whats-trust-got-to-do-with-it-trust-issues-perspectives-on-community-technology-and-trust/",
+      "date": "2024-03-21",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "What’s Trust Got To Do With It? | ‘Trust Issues’ Workshop Public Panel",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/whats-trust-got-to-do-with-it-trust-issues-workshop-public-panel/",
+      "date": "2024-03-21",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "The Science and Technology of Social Justice",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/the-science-and-technology-of-social-justice/",
+      "date": "2024-03-29",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Generative AI’s Labor Impacts: Adaptation",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-158-adaptation-generative-ais-labor-impacts/",
+      "date": "2024-04-18",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "AI Governance Needs Sociotechnical Expertise: Why the Humanities and Social Sciences Are Critical to Government Efforts",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/ai-governance-sociotechnical-expertise-why-the-humanities-and-social-sciences-are-critical-to-government-efforts/",
+      "date": "2024-05-15",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "A Sociotechnical Approach to AI Policy",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/a-sociotechnical-approach-to-ai-policy/",
+      "date": "2024-05-28",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Enrolling Citizens: A Primer on Archetypes of Democratic Engagement With AI",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/enrolling-citizens-a-primer-on-archetypes-of-democratic-engagement-with-ai/",
+      "date": "2024-06-12",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Why AI Safety Requires a Sociotechnical Approach: Our Top Ten Reads",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/why-ai-safety-requires-a-sociotechnical-approach-our-top-ten-reads/",
+      "date": "2024-07-24",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "The Algorithmic Impact Methods Lab: Methods from the Field",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/the-algorithmic-impact-methods-lab-methods-from-the-field/",
+      "date": "2024-09-18",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Contributions to the Field AI Accountability: Infrastructural Struggles, and the Surveillance of Labor",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/contributions-to-the-field-ai-accountability-infrastructural-struggles-and-the-surveillance-of-labor/",
+      "date": "2024-10-03",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "How to Think Like a Sociotechnical Researcher",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/how-to-think-like-a-sociotechnical-researcher/",
+      "date": "2024-10-09",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Living in the Shadow of AI and Data",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/living-in-the-shadow-of-ai-and-data/",
+      "date": "2024-11-14",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Generative AI and Labor: Power, Hype, and Value at Work",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/generative-ai-and-labor-power-hype-and-value-at-work/",
+      "date": "2024-12-04",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Imagining Alternatives: Insights from the Data for Black Lives Conference",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/imagining-alternatives-insights-from-the-data-for-black-lives-conference/",
+      "date": "2025-01-15",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Red-Teaming in the Public Interest",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/red-teaming-in-the-public-interest-5/",
+      "date": "2025-02-09",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Red-Teaming Generative AI Harm",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/red-teaming-generative-ai-harm/",
+      "date": "2025-02-20",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Connective (t)Issues Stories of Digitality, Infrastructures, and Resistance",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/connective-tissues-stories-of-digitality-infrastructures-and-resistance-2/",
+      "date": "2025-03-20",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Connective (t)Issues: Stories of Digitality, Infrastructures, and Resistance",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/connective-tissues-stories-of-digitality-infrastructures-and-resistance/",
+      "date": "2025-03-20",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Dispelling Myths of AI and Efficiency",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/dispelling-myths-of-ai-and-efficiency/",
+      "date": "2025-03-26",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Resisting Predatory Data",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/resisting-predatory-data/",
+      "date": "2025-04-10",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "The Cloud is Dead, Deadly, and Haunted",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/the-cloud-is-dead-deadly-and-haunted/",
+      "date": "2025-04-21",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "What is Work Worth?",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/what-is-work-worth/",
+      "date": "2025-05-10",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Scam GPT: GenAI and the Automation of Fraud",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/scam-gpt-genai-and-the-automation-of-fraud/",
+      "date": "2025-05-21",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Trust Issues: An Anthology",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/trust-issues-an-anthology/",
+      "date": "2025-05-29",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Tech Power and the Crisis of Democracy",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/tech-power-and-the-crisis-of-democracy-ideologies-of-control-a-series-on-tech-power-and-democratic-crisis/",
+      "date": "2025-06-03",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Our Statement to the House Oversight Committee on the Federal Government’s Use of AI",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/news-events/our-statement-to-the-house-oversight-committee-on-the-federal-governments-use-of-ai/",
+      "date": "2025-06-05",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Challenging AI Hype and Tech Industry Power",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/challenging-ai-hype-and-tech-industry-power/",
+      "date": "2025-06-06",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Chatbots in Disguise: How Participants Use GenAI to Hack Qualitative Research",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/chatbots-in-disguise-how-participants-use-genai-to-hack-qualitative-research/",
+      "date": "2025-06-11",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "There’s No Reason to Ban State AI Regulation",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/theres-no-reason-to-ban-state-ai-regulation/",
+      "date": "2025-06-18",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Gear Shift: Driving Change in Public Sector Technology through Community Input",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/gear-shift-driving-change-in-public-sector-technology-through-community-input/",
+      "date": "2025-06-25",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Response to the American Science Acceleration Project Request for Information",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/news-events/response-to-the-american-science-acceleration-project-request-for-information/",
+      "date": "2025-06-27",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Data Centers Aren’t the Future of American Prosperity",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/data-centers-arent-the-future-of-american-prosperity/",
+      "date": "2025-07-23",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "What Happens When People Turn to Chatbots for Therapy?",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/what-happens-when-people-turn-to-chatbots-for-therapy/",
+      "date": "2025-08-06",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "In Pennsylvania, a Nuclear Revival for an Uncertain AI Future",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/in-pennsylvania-a-nuclear-revival-for-an-uncertain-ai-future/",
+      "date": "2025-08-20",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Understanding AI: A Four-Part Event Series",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/understanding-ai-a-four-part-event-series/",
+      "date": "2025-09-05",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Fashion Data Doubles: How AI is Reshaping Modeling Work",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/policy-and-accountability-fashion-data-doubles-how-ai-is-reshaping-modeling-work/",
+      "date": "2025-09-10",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "The “Privacy” Trap: How “Privacy-Preserving AI Techniques” Mask the New Worker Surveillance and Datafication",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/the-privacy-trap-how-privacy-preserving-ai-techniques-mask-the-new-worker-surveillance-and-datafication/",
+      "date": "2025-10-08",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "A Roadmap for Rewiring Democracy in the Age of AI",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/a-roadmap-for-rewiring-democracy-in-the-age-of-ai/",
+      "date": "2025-10-24",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Participation and Trust: The Uses and Limits of Algorithmic Impact Assessments",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/the-uses-and-limits-of-algorithmic-impact-assessments/",
+      "date": "2025-10-29",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "On arXiv, an Influx of AI Slop Pits Surface Against Substance",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/on-arxiv-an-influx-of-ai-slop-pits-surface-against-substance/",
+      "date": "2025-10-31",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Myths of AI",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/myths-of-ai/",
+      "date": "2025-11-08",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "From Care Labor to Data Labor: India’s Door-to-Door Health Activists",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/reframing-our-relationship-to-technology-from-care-labor-to-data-labor-indias-door-to-door-health-activists-from-our-series-democratizing-ai-for-the-global-majority/",
+      "date": "2025-11-19",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Democratizing AI for the Global Majority",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/democratizing-ai-for-the-global-majority/",
+      "date": "2025-11-20",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "All the Lonely People: On Being Alone with Digital Companions",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/all-the-lonely-people-on-being-alone-with-digital-companions/",
+      "date": "2025-12-02",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Comment to the FDA on Generative AI-Enabled Digital Mental Health Medical Devices",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/comment-to-the-fda-on-generative-ai-enabled-digital-mental-health-medical-devices/",
+      "date": "2025-12-09",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Rethinking AI Sovereignty in and from the Majority World",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/rethinking-ai-sovereignty-in-and-from-the-majority-world/",
+      "date": "2025-12-10",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Turning the Tide: Climate Action In and Against Tech",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/turning-the-tide-climate-action-in-and-against-tech/",
+      "date": "2025-12-10",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Our Year in Review: How Data & Society’s Work Made Sense of 2025",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/our-year-in-review-how-data-societys-work-made-sense-of-2025/",
+      "date": "2025-12-18",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Data & Society in 2024",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/data-society-in-2024/",
+      "date": "2025-12-19",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Data as Destiny in the Steel City: How Pittsburgh’s Industrial Past Is Being Leveraged for an AI Future",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/data-as-destiny-in-the-steel-city-how-pittsburghs-industrial-past-is-being-leveraged-for-an-ai-future/",
+      "date": "2026-01-14",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "How Tech Platforms Fail to Protect Societies in Conflict Regions",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/policy-and-accountability-how-tech-platforms-fail-to-protect-societies-in-conflict-regions-from-our-series-democratizing-ai-for-the-global-majority/",
+      "date": "2026-01-21",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "The Big AI State: How the Trump Administration Is Shaping US Industrial Policy Toward “Global Technological Dominance”",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/the-big-ai-state-how-the-trump-administration-is-shaping-us-industrial-policy-toward-global-technological-dominance/",
+      "date": "2026-01-21",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "One Year Later: What We’ve Learned About Trump’s AI Agenda",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/news-events/one-year-later-what-weve-learned-about-trumps-ai-agenda/",
+      "date": "2026-01-23",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "“AI Can’t Do Nothing With Us!”: Inside One Atlanta Workforce Training Program",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/ai-cant-do-nothing-with-us-inside-one-atlanta-workforce-training-program/",
+      "date": "2026-01-29",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Algorithmic Impact Methods Lab",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-projects/algorithmic-impact-methods-lab/about/",
+      "date": "2026-01-29",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Algorithmic Impact Methods Lab",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-projects/algorithmic-impact-methods-lab/get-the-toolkit/",
+      "date": "2026-01-29",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Algorithmic Impact Methods Lab",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-projects/algorithmic-impact-methods-lab/notes-from-the-field/",
+      "date": "2026-01-29",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Algorithmic Impact Methods Lab",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-projects/algorithmic-impact-methods-lab/our-pilots/",
+      "date": "2026-01-29",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "(404) Job Not Found: How Government Can Help AI Education Deliver Real Benefits for Workers",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/404-job-not-found-how-government-can-help-ai-education-deliver-real-benefits-for-workers/",
+      "date": "2026-02-04",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "(404) Job Not Found: What Workforce Training Can’t Fix for Black Atlantans in the Age of AI",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/404-job-not-found-what-workforce-training-cant-fix-for-black-atlantans-in-the-age-of-ai/",
+      "date": "2026-02-04",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Building Civic Strength for an AI Era",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/building-civic-strength-for-an-ai-era/",
+      "date": "2026-02-09",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Databite No. 164 | (404) Job Not Found: The AI Literacy Trap at Work",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/databite-no-164-404-job-not-found-the-ai-literacy-trap-at-work/",
+      "date": "2026-02-17",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Simulated Flies: How Behavior Models Become Scientific Instruments",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/ai-in-science-simulated-flies-how-behavior-models-become-scientific-instruments/",
+      "date": "2026-02-18",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Toward Self-Determined AI Development in Africa: Learning from the Past to Inform the Fourth Industrial Revolution",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/policy-and-accountability-toward-self-determined-ai-development-in-africa-learning-from-the-past-to-inform-the-fourth-industrial-revolution/",
+      "date": "2026-02-25",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Mental Health, Chatbots, and the Future of Care",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/mental-health-chatbots-and-the-future-of-care/",
+      "date": "2026-02-26",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Deepfake Financial Fraud: The Global Regulation of AI-Driven Scams",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/deepfake-financial-fraud-the-global-regulation-of-ai-driven-scams/",
+      "date": "2026-03-02",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Can We Run Experiments on History with AI?",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/can-we-run-experiments-on-history-with-ai/",
+      "date": "2026-03-05",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Responding to Workers’ Concerns About AI Implementation",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/impact-stories/responding-to-workers-concerns-about-ai-implementation/",
+      "date": "2026-03-17",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "When AI-Altered Media Becomes a Due Process Crisis",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/policy-and-accountability-when-ai-altered-media-becomes-a-due-process-crisis/",
+      "date": "2026-03-18",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "The Craft of Science with AI: Evidence, Judgment, and Practice",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/news-events/the-craft-of-science-with-ai-evidence-judgment-and-practice/",
+      "date": "2026-03-19",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Participation, Agency, and Algorithmic Accountability",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/participation-agency-and-algorithmic-accountability/",
+      "date": "2026-03-25",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Protecting the Public from Chatbot Harms: Aligning State Policy with Research",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/protecting-the-public-from-chatbot-harms-aligning-state-policy-with-research/",
+      "date": "2026-03-25",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Last Place in the AI-First Economy: How the AI Industry Relies on Worker Disempowerment",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/last-place-in-the-ai-first-economy-how-the-ai-industry-relies-on-worker-disempowerment/",
+      "date": "2026-04-01",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Social Snacks: AI Companions and the Hunger for Connection",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/social-snacks-ai-companions-and-the-hunger-for-connection/",
+      "date": "2026-04-01",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Pennsylvania’s Power: Why Local Authority Is the Key to AI Infrastructure Decisions",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/pennsylvanias-power-why-local-authority-is-the-key-to-ai-infrastructure-decisions/",
+      "date": "2026-04-08",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "AI on the Ground",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/ai-on-the-ground/",
+      "date": "2026-04-16",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Could This Be the Last Generation of Graduate Students?",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/ai-in-science-could-this-be-the-last-generation-of-graduate-students/",
+      "date": "2026-04-29",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Developing Emotion-Based Speech Technology for the Māori Language",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/reframing-our-relationship-to-technology-developing-emotion-based-speech-technology-for-the-maori-language-from-our-series-democratizing-ai-for-the-global-majority/",
+      "date": "2026-05-06",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Our Statement on the White House’s New Approach to AI Oversight",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/news-events/our-statement-on-the-white-houses-new-approach-to-ai-oversight/",
+      "date": "2026-05-07",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Data & Society Launches AI Civics, a Public Education Program to Build Democratic Power Over Technology",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/news-events/data-society-launches-ai-civics-a-public-education-program-to-build-democratic-power-over-technology/",
+      "date": "2026-05-12",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Building the Moral Infrastructure of Mental Health AI",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/building-the-moral-infrastructure-of-mental-health-ai/",
+      "date": "2026-05-20",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "How AI Systems Can Misread Domestic Violence",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/how-ai-systems-can-misread-domestic-violence/",
+      "date": "2026-05-28",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Can Anyone Meaningfully Opt Out of an AI-Driven Future?",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/can-anyone-meaningfully-opt-out-of-an-ai-driven-future/",
+      "date": "2026-06-11",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Assembling Accountability: AI, Power, and Community Agency",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/impact-stories/assembling-accountability-ai-power-and-community-agency/",
+      "date": "2026-06-15",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Beyond the Hype: What AI Is Actually Doing to Workers",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/impact-stories/beyond-the-hype-what-ai-is-actually-doing-to-workers/",
+      "date": "2026-06-15",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "The Hidden Costs of AI: Who Pays When a Data Center Moves In?",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/impact-stories/the-hidden-costs-of-ai-who-pays-when-a-data-center-moves-in/",
+      "date": "2026-06-15",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "The Rise of AI-Supported Healthcare: Safeguarding Patients and Healthcare Workers",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/impact-stories/the-rise-of-ai-supported-healthcare-how-to-safeguard-patients-and-healthcare-workers/",
+      "date": "2026-06-15",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "AI Civics",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/ai-civics/",
+      "date": "2026-06-16",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "AI in Science",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/ai-in-science/",
+      "date": "2026-06-16",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Greening AI in the Public Sector: An Introductory Handbook for Procurement",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/greening-ai-in-the-public-sector-an-introductory-handbook-for-procurement/",
+      "date": "2026-06-17",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Democracy in the Age of AI",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/democracy-in-the-age-of-ai/",
+      "date": "2026-06-26",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "What If Municipal Governments Built Their Own AI Models?",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/what-if-municipal-governments-built-their-own-ai-models/",
+      "date": "2026-07-22",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "The Limits of Human Oversight in the Age of AI Agents",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/the-limits-of-human-oversight-in-the-age-of-ai-agents/",
+      "date": "2026-07-28",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "The Oversight Fallacy: Why AI Agents Require More than Humans-in-the-Loop",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/the-oversight-fallacy-why-ai-agents-require-more-than-humans-in-the-loop/",
+      "date": "2026-07-29",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "A Sociotechnical Research Agenda for the Oversight of AI Agents",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/a-sociotechnical-research-agenda-for-the-oversight-of-ai-agents/",
+      "date": "2026-08-12",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Our New Research and Policy Collection: Governing AI Agents",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/our-new-research-and-policy-collection-governing-ai-agents/",
+      "date": "2026-09-10",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "The AI Factory: Data Centers, Power, and Resistance in Late Industrial Pennsylvania",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/the-ai-factory-data-centers-power-and-resistance-in-late-industrial-pennsylvania/",
+      "date": "2026-09-21",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "The AI Factory: How Policymakers Can Support Local Decision-Making on AI Infrastructure",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/the-ai-factory-how-policymakers-can-support-local-decision-making-on-ai-infrastructure/",
+      "date": "2026-09-21",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "New Project from Data & Society Will Turn a Worker Lens on the AI Economy",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/news-events/new-project-from-data-society-will-turn-a-worker-lens-on-the-ai-economy/",
+      "date": "2026-09-30",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Why We Are Turning a Worker Lens on the AI Economy",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/research-library/why-we-are-turning-a-worker-lens-on-the-ai-economy/",
+      "date": "2026-09-30",
+      "rights": "cc_by_nc_sa"
+    },
+    {
+      "title": "Worker Lens on the AI Economy",
+      "publisher": "Data & Society",
+      "canonical_url": "https://datasociety.net/worker-lens-on-the-ai-economy/",
+      "date": "2026-09-30",
+      "rights": "cc_by_nc_sa"
+    }
+  ]
+}
