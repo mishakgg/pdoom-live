@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-06T002602Z",
-  "reviewed_at": "2026-10-06T00:26:02Z",
-  "previous_review_id": "2026-10-06T002101Z",
-  "status_path": "coordination/status/status-2026-10-06T002602Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-06T002602Z.json",
+  "review_id": "2026-10-06T003243Z",
+  "reviewed_at": "2026-10-06T00:32:43Z",
+  "previous_review_id": "2026-10-06T002602Z",
+  "status_path": "coordination/status/status-2026-10-06T003243Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-06T003243Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "83b8c7a6be85a47528d254f14360b24044eebfb3",
   "origin_main_subject": "Merge pull request #174 from mishakgg/cursor/pibbss-pages-a32e",
@@ -113,7 +113,7 @@
       "reason": "5585848 only updates docs/FRONTEND_HANDOFF.md. GitHub CI 37274485308, E2E 37274485285, and runtime 37274485294 succeeded on that head. The handoff still records two local spawnSync python ENOENT failures. Not folded into the six-workstream candidate."
     }
   ],
-  "next_action": "Pull requests 172, 173, and 174 are merged. main is 83b8c7a6be85a47528d254f14360b24044eebfb3. Drafts 175 through 178 are Our World in Data, Palisade, MATS, and OECD.AI. Apart Research is back with its worker because mixed deeds were labeled with the restricted token. Draft 168 stays open. Pull requests 32 and 23 stay open. Do not merge pull request 32.",
+  "next_action": "Draft 179 is Apart Research, 23 unknown pages, mixed deeds stay unknown. Drafts 168 and 175 through 178 are open and not green. GPAI, MLCommons, Timaeus, Cohere For AI, Center for AI Policy, and Meta FAIR are back with their workers for rights fixes. New catalogs are Montreal AI Ethics Institute, Sakana, Haize Labs, Institute for Law and AI, and Mistral research. main is 83b8c7a6be85a47528d254f14360b24044eebfb3. Pull requests 32 and 23 stay open. Do not merge pull request 32.",
   "concurrent_workers_launched_at": "2026-10-05T18:46:00Z",
   "concurrent_workers_model": "grok-4.7-xhigh",
   "concurrent_workers": [
