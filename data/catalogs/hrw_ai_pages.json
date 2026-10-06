@@ -1,0 +1,6 @@
+{
+  "catalog_id": "hrw_ai_pages",
+  "description": "Metadata for public Human Rights Watch AI, machine-learning, and AI-policy HTML pages on www.hrw.org and hrw.org. Each stored URL was one bounded GET of HTML on those hosts. robots.txt allows news and publications indexes and disallows admin, search, login, and print paths. Topic query filters were not fetched. Challenges, captchas, logins, donations, PDFs, non-HTML, HTML in place of robots.txt, and off-host redirects are omitted. Rows store title, publisher, canonical URL, date, and rights. Page text is not stored. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix. Sole restricted deeds keep their tokens. Missing dates are unknown. Updated, modified, and copyright years are not dates. Not a belief collector. runner_wired stays false.",
+  "runner_wired": false,
+  "entries": []
+}
