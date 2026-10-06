@@ -1,0 +1,6 @@
+{
+  "catalog_id": "scsp_pages",
+  "description": "Metadata for public Special Competitive Studies Project research, publication, and news pages about AI on scsp.ai. www.scsp.ai counts only when the response stays on that host. Bounded GETs of robots.txt and those paths returned a Cloudflare challenge and stayed on-host, so the catalog is empty and that page is not stored. Login, PDFs, downloads, and other hosts are omitted. Rows store title, publisher, canonical URL, date, and rights. Page text is not stored. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix of those. A sole CC BY-NC, CC BY-ND, CC BY-NC-SA, or CC BY-NC-ND keeps its own token. A missing date stays unknown. Updated, modified, and copyright years are not publication dates. Not a belief collector. runner_wired stays false.",
+  "runner_wired": false,
+  "entries": []
+}
