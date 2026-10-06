@@ -1,0 +1,6 @@
+{
+  "catalog_id": "mpi_is_pages",
+  "description": "Metadata for public Max Planck Institute for Intelligent Systems pages on is.mpg.de and www.is.mpg.de. Research, group, news, and publication HTML pages are eligible. Rows keep a title, publisher, canonical URL, date, and rights. Page bodies are not stored. A bot-detection challenge blocked /, /research, /news, /publications, /groups, /sitemap.xml, /sitemap_index.xml, /news/sitemap, /publications/sitemap, and https://www.is.mpg.de/, so those paths are an empty catalog. creative_commons means CC0, CC BY-SA, or a permissive mix of those. creative_commons_attribution means CC BY alone. A missing date is unknown. Updated, modified, and copyright years are not publication dates. runner_wired is false.",
+  "runner_wired": false,
+  "entries": []
+}
