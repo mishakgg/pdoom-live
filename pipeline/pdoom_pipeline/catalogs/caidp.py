@@ -18,9 +18,9 @@ URL stays unknown. A CC0 anchor on a publicdomain/mark URL stays unknown.
 Public Domain Mark, all rights reserved, terms, and the host name stay
 unknown. MIT, Apache-2.0, and MPL-2.0 keep their own tokens. Mixed software
 licences stay unknown. ``uk_ogl`` requires the British phrase Open Government
-Licence. A generic creativecommons.org/licenses/ URL stays unknown. A missing
-publication date stays unknown. Updated, modified, and copyright years are
-not publication dates.
+Licence. A generic creativecommons.org/licenses/ URL stays unknown, and the
+text inside that anchor does not count. A missing publication date stays
+unknown. Updated, modified, and copyright years are not publication dates.
 
 This module does not fetch. runner_wired stays false. It is not a belief collector.
 """
@@ -300,7 +300,10 @@ _RESTRICTED_TOKENS = {
 _PERMISSIVE = frozenset({"by", "by-sa", "zero"})
 _MIT_PHRASE = re.compile(r"\bmit licen[cs]e\b")
 _MIT_URL = re.compile(r"(?:opensource\.org/licenses/mit|spdx\.org/licenses/mit)(?![a-z0-9-])")
-_APACHE_PHRASE = re.compile(r"\bapache-2\.0\b|\bapache licen[cs]e(?:\s+version)?\s*2\.0\b")
+_APACHE_PHRASE = re.compile(
+    r"\bapache-2\.0\b|\bapache licen[cs]e(?:\s*,\s*|\s+)(?:version\s+)?2\.0\b"
+)
+_ANCHOR_WITH_BODY = re.compile(r"(?is)<a\b([^>]*)>(.*?)</a>")
 _APACHE_URL = re.compile(
     r"(?:www\.)?apache\.org/licenses/license-2\.0(?![a-z0-9])|spdx\.org/licenses/apache-2\.0(?![a-z0-9-])"
 )
@@ -471,12 +474,13 @@ def rights_from_page(page_text: str) -> str:
     public-domain mark URL stays unknown, as does a CC0 label on a
     publicdomain/mark URL. MIT, Apache-2.0, and MPL-2.0 stay their own
     tokens. A software licence beside any Creative Commons deed stays
-    unknown. ``uk_ogl`` requires the phrase Open Government Licence.
+    unknown. ``uk_ogl`` requires the phrase Open Government Licence. Anchor
+    text on a generic creativecommons.org/licenses/ URL does not count.
     """
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     visible = _without_hidden(page_text)
-    plain = _plain(visible)
+    plain = _plain(_without_generic_cc_anchor_text(visible))
     folded = plain.casefold().translate(_DASHES)
     codes = _text_codes(folded)
     hrefs = _hrefs(visible)
@@ -723,6 +727,36 @@ def _label(
     if ogl:
         return RIGHTS_UK_OGL
     return RIGHTS_UNKNOWN
+
+
+def _without_generic_cc_anchor_text(html: str) -> str:
+    """Drop the visible text of a generic creativecommons.org/licenses/ anchor.
+
+    The anchor text is not a licence statement. Text outside that anchor still
+    counts, and a specific deed URL is left in place.
+    """
+
+    def replace(match: re.Match[str]) -> str:
+        href = _attrs(f"<a{match.group(1)}>").get("href", "")
+        if _is_generic_cc_licenses_url(href):
+            return " "
+        return match.group(0)
+
+    return _ANCHOR_WITH_BODY.sub(replace, html)
+
+
+def _is_generic_cc_licenses_url(href: str) -> bool:
+    """True for the licences index, not for a deed such as licenses/by/4.0/."""
+    raw = unescape(href).strip().casefold()
+    if not raw:
+        return False
+    parsed = urlparse(raw)
+    if parsed.scheme not in {"http", "https"}:
+        return False
+    host = (parsed.hostname or "").rstrip(".")
+    if host not in {"creativecommons.org", "www.creativecommons.org"}:
+        return False
+    return (parsed.path or "/") in {"/licenses", "/licenses/"}
 
 
 def _text_codes(folded: str) -> set[str]:
