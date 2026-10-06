@@ -1,0 +1,6 @@
+{
+  "catalog_id": "dfki_pages",
+  "description": "Metadata for public DFKI research, project, publication, news, and people pages on dfki.de and www.dfki.de. Publisher is DFKI. A row is stored only when one bounded GET returns HTML that stays on those hosts. This catalog is empty because robots.txt, sitemap.xml, and the public listings returned a Cloudflare challenge. Login walls and pages outside the institute are omitted. Rows store a title, publisher, canonical URL, date, and rights. Page text is not stored. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix of those. A sole restricted deed keeps its token. A missing date stays unknown. Updated, modified, and copyright years are not publication dates. Not a belief collector. runner_wired is false.",
+  "runner_wired": false,
+  "entries": []
+}
