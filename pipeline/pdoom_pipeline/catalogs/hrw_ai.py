@@ -4,7 +4,9 @@ Hosts are www.hrw.org and hrw.org. Each stored URL was confirmed with one
 bounded GET that returned HTML and stayed on those hosts: 15 second timeout,
 at most 3 redirects, and at most 2000000 bytes. Only pages whose path is
 about artificial intelligence, machine learning, or AI policy are stored.
-Unrelated topics, login walls, and donation pages are omitted. A Cloudflare
+Ai Weiwei, the initials A.I. Bastyrkin, and Amnesty International abbreviations
+(HRW and AI, AI USA, AI UK) are not stored. Unrelated topics, login walls, and
+donation pages are omitted. A Cloudflare
 challenge, a captcha, an authentication wall, a non-HTML body, a robots
 disallow, HTML served in place of robots.txt, or an off-host redirect is not
 stored. robots.txt allows the public news and publications indexes. It
@@ -332,11 +334,23 @@ _EXCLUDED_PARTS = frozenset(
 )
 # Topic is artificial intelligence, machine learning, or AI policy.
 # A hyphen-delimited "ai" token does not match airstrike, campaign, or email.
+# Ai Weiwei, the initials A.I. Bastyrkin, and Amnesty International ("AI" next
+# to HRW, AI USA, or AI UK) are not artificial intelligence.
 _AI_TOPIC = re.compile(
     r"(?i)(?:"
     r"artificial-intelligence|"
     r"machine-learning|"
     r"(?:^|[-/])ai(?:[-/]|$)"
+    r")"
+)
+_NOT_AI_TECHNOLOGY = re.compile(
+    r"(?i)(?:"
+    r"weiwei|"
+    r"bastyrkin|"
+    r"(?:^|[-/])hrw-ai-usa(?:[-/]|$)|"
+    r"(?:^|[-/])hrw-ai-and(?:[-/]|$)|"
+    r"(?:^|[-/])hrw-and-ai(?:[-/]|$)|"
+    r"(?:^|[-/])intervention-ai-uk(?:[-/]|$)"
     r")"
 )
 _HEAD_MARKERS = (
@@ -603,6 +617,8 @@ def is_ai_topic_path(path: str) -> bool:
         return False
     parts = [part for part in lowered.split("/") if part]
     if any(part in _EXCLUDED_PARTS for part in parts):
+        return False
+    if _NOT_AI_TECHNOLOGY.search(lowered):
         return False
     return _AI_TOPIC.search(lowered) is not None
 

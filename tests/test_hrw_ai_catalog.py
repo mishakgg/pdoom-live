@@ -90,6 +90,9 @@ REJECTED_URLS = (
     "https://www.hrw.org/news/2020/01/01/email-privacy/",
     "https://www.hrw.org/news/2020/01/01/campaign-update/",
     "https://www.hrw.org/news/2020/01/01/airstrikes-continue/",
+    "https://www.hrw.org/news/2011/04/06/china-release-artist-and-critic-ai-weiwei",
+    "https://www.hrw.org/news/2016/08/29/joint-hrw-and-ai-letter-anatoly-matios",
+    "https://www.hrw.org/news/2020/07/05/letter-chairman-investigation-committee-russian-federation-ai-bastyrkin-0",
     "https://www.hrw.org/",
     "https://127.0.0.1/news/ai-policy/",
     "https://www.hrw.org/news/ai-policy/../secret",
@@ -198,9 +201,19 @@ def test_committed_catalog_is_metadata_only():
         if previous is not None:
             assert order >= previous
         previous = order
-    assert hosts <= OFFICIAL_HOSTS
-    assert sum(rights_counts.values()) == len(document["entries"])
-    assert unknown_dates <= len(document["entries"])
+    assert hosts == {"www.hrw.org"}
+    assert len(document["entries"]) == 32
+    assert rights_counts == {RIGHTS_UNKNOWN: 32}
+    assert unknown_dates == 0
+    assert "weiwei" not in raw.casefold()
+    assert "bastyrkin" not in raw.casefold()
+    assert "amnesty" not in raw.casefold()
+    by_url = {entry["canonical_url"]: entry for entry in document["entries"]}
+    gig = by_url[SAMPLE_URL]
+    assert gig["title"] == "AI Already Runs the Gig Economy"
+    assert gig["date"] == "2026-06-03"
+    assert gig["rights"] == RIGHTS_UNKNOWN
+    assert gig["publisher"] == PUBLISHER
     validate_catalog(document)
 
 
@@ -241,6 +254,14 @@ def test_hosts_are_only_the_two_hrw_hosts():
     assert not is_ai_topic_path("/news/2020/01/01/email-privacy/")
     assert not is_ai_topic_path("/news/2020/01/01/campaign-update/")
     assert not is_ai_topic_path("/news/2020/01/01/airstrikes-continue/")
+    assert not is_ai_topic_path("/news/2011/04/06/china-release-artist-and-critic-ai-weiwei")
+    assert not is_ai_topic_path("/news/2016/08/29/joint-hrw-and-ai-letter-anatoly-matios")
+    assert not is_ai_topic_path("/news/2004/04/13/joint-hrw-ai-usa-letter-united-states-trade-representative-robert-b-zoellick")
+    assert not is_ai_topic_path("/news/2016/08/19/letter-hrw-ai-and-lphr-uk-foreign-secretary")
+    assert not is_ai_topic_path("/news/2020/07/05/letter-chairman-investigation-committee-russian-federation-ai-bastyrkin-0")
+    assert not is_ai_topic_path(
+        "/news/2025/04/17/human-rights-watchs-written-intervention-ai-uk-uk-governments-duty-prevent-genocide"
+    )
     assert not is_ai_topic_path("/donate/ai-fund/")
     assert not is_ai_topic_path("/news/2024/01/01/ai-report.pdf")
     assert not is_ai_topic_path("/search/ai")

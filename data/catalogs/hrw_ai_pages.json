@@ -2,5 +2,230 @@
   "catalog_id": "hrw_ai_pages",
   "description": "Metadata for public Human Rights Watch AI, machine-learning, and AI-policy HTML pages on www.hrw.org and hrw.org. Each stored URL was one bounded GET of HTML on those hosts. robots.txt allows news and publications indexes and disallows admin, search, login, and print paths. Topic query filters were not fetched. Challenges, captchas, logins, donations, PDFs, non-HTML, HTML in place of robots.txt, and off-host redirects are omitted. Rows store title, publisher, canonical URL, date, and rights. Page text is not stored. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix. Sole restricted deeds keep their tokens. Missing dates are unknown. Updated, modified, and copyright years are not dates. Not a belief collector. runner_wired stays false.",
   "runner_wired": false,
-  "entries": []
+  "entries": [
+    {
+      "title": "Remarks to the Association for the Advancement of Artificial Intelligence On Banning Fully Autonomous Weapons",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2015/01/29/remarks-association-advancement-artificial-intelligence-banning-fully-autonomous",
+      "date": "2015-01-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Want To Worry About AI? Then Worry About This…",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2018/03/07/want-worry-about-ai-then-worry-about",
+      "date": "2018-03-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Deadly US Applications of Artificial Intelligence",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2019/02/14/deadly-us-applications-artificial-intelligence",
+      "date": "2019-02-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "EU Should Regulate Artificial Intelligence to Protect Rights",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2021/01/14/eu-should-regulate-artificial-intelligence-protect-rights",
+      "date": "2021-01-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "EU: Artificial Intelligence Regulation Threatens Social Safety Net",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2021/11/10/eu-artificial-intelligence-regulation-threatens-social-safety-net",
+      "date": "2021-11-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "How the EU’s Flawed Artificial Intelligence Regulation Endangers the Social Safety Net: Questions and Answers",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2021/11/10/how-eus-flawed-artificial-intelligence-regulation-endangers-social-safety-net",
+      "date": "2021-11-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Future of Artificial Intelligence",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2022/11/28/future-artificial-intelligence",
+      "date": "2022-11-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Pandora’s Box: Generative AI Companies, ChatGPT, and Human Rights",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2023/05/03/pandoras-box-generative-ai-companies-chatgpt-and-human-rights",
+      "date": "2023-05-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "EU: Artificial Intelligence Regulation Should Protect People’s Rights",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2023/07/12/eu-artificial-intelligence-regulation-should-protect-peoples-rights",
+      "date": "2023-07-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "EU: Artificial Intelligence Regulation Should Ban Social Scoring",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2023/10/09/eu-artificial-intelligence-regulation-should-ban-social-scoring",
+      "date": "2023-10-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "US: Congress must regulate artificial intelligence to protect rights",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2023/10/17/us-congress-must-regulate-artificial-intelligence-protect-rights",
+      "date": "2023-10-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Brazil: Children’s Personal Photos Misused to Power AI Tools",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2024/06/10/brazil-childrens-personal-photos-misused-power-ai-tools",
+      "date": "2024-06-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Children’s Personal Photos Are Powering AI Exploitation",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2024/06/27/childrens-personal-photos-are-powering-ai-exploitation",
+      "date": "2024-06-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Using AI to Fight Trafficking Is Dangerous",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2024/07/01/using-ai-fight-trafficking-dangerous",
+      "date": "2024-07-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Australia: Children’s Personal Photos Misused to Power AI Tools",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2024/07/03/australia-childrens-personal-photos-misused-power-ai-tools",
+      "date": "2024-07-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Brazil Prevents Meta from Using People to Power Its AI",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2024/07/03/brazil-prevents-meta-using-people-power-its-ai",
+      "date": "2024-07-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Submission to Australia’s Senate Select Committee on Adopting Artificial Intelligence",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2024/07/17/submission-australias-senate-select-committee-adopting-artificial-intelligence",
+      "date": "2024-07-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "720 Australian and Brazilian Children Better Protected from AI Misuse",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2024/09/03/720-australian-and-brazilian-children-better-protected-ai-misuse",
+      "date": "2024-09-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Brazil Bans X from Using Children to Power Its AI",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2024/12/20/brazil-bans-x-using-children-power-its-ai",
+      "date": "2024-12-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Google Announces Willingness to Develop AI for Weapons",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2025/02/06/google-announces-willingness-develop-ai-weapons",
+      "date": "2025-02-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "UK Plans AI Experiment on Children Seeking Asylum",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2025/07/31/uk-plans-ai-experiment-on-children-seeking-asylum",
+      "date": "2025-07-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Trump Administration Takes Aim at AI Accountability Laws",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2025/12/16/trump-administration-takes-aim-at-ai-accountability-laws",
+      "date": "2025-12-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Human Cost of Unregulated AI Tools",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2026/02/16/the-human-cost-of-unregulated-ai-tools",
+      "date": "2026-02-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Opening Statement to Oireachtas Joint Committee on Artificial Intelligence",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2026/04/28/opening-statement-to-oireachtas-joint-committee-on-artificial-intelligence",
+      "date": "2026-04-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Vatican Urges Strict Regulation of Artificial Intelligence in War",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2026/05/26/vatican-urges-strict-regulation-of-artificial-intelligence-in-war",
+      "date": "2026-05-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Already Runs the Gig Economy",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2026/06/03/ai-already-runs-the-gig-economy",
+      "date": "2026-06-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Addressing Artificial Intelligence in the Military Domain",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2026/06/14/addressing-artificial-intelligence-in-the-military-domain",
+      "date": "2026-06-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "UK: Home Office Should Halt AI Experiment on Children Seeking Asylum",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2026/06/18/uk-home-office-should-halt-ai-experiment-on-children-seeking-asylum",
+      "date": "2026-06-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "The UK’s Discriminatory AI Experiment on Child Refugees",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2026/06/19/the-uks-discriminatory-ai-experiment-on-child-refugees",
+      "date": "2026-06-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Australia School Photos Scraped for AI-Fueled Image Misuse",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2026/07/30/australia-school-photos-scraped-for-ai-fueled-image-misuse",
+      "date": "2026-07-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Taxing Tech in Age of AI Could Fund Human Rights",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2026/08/19/taxing-tech-in-age-of-ai-could-fund-human-rights",
+      "date": "2026-08-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Tom Lantos Human Rights Commission, Us Congress Hearing On “Artificial Intelligence in the Military Domain: Implications For Human Rights”",
+      "publisher": "Human Rights Watch",
+      "canonical_url": "https://www.hrw.org/news/2026/09/16/tom-lantos-human-rights-commission-us-congress-hearing-on-artificial-intelligence",
+      "date": "2026-09-16",
+      "rights": "unknown"
+    }
+  ]
 }
