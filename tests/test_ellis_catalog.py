@@ -166,9 +166,30 @@ def test_committed_catalog_has_only_confirmed_ellis_fields():
         path = urlparse(url).path
         assert path == "/news" or path.startswith("/news/") or path.startswith("/research") or path.startswith("/publication")
         assert not path.lower().endswith(".pdf")
-    assert hosts <= {OFFICIAL_HOST, WWW_HOST}
-    assert sum(rights_counts.values()) == len(document["entries"])
-    assert unknown_dates <= len(document["entries"])
+    assert hosts == {OFFICIAL_HOST}
+    assert WWW_HOST not in hosts
+    assert len(document["entries"]) == 7446
+    assert rights_counts == {RIGHTS_UNKNOWN: 7446}
+    assert unknown_dates == 7141
+    paths = [urlparse(entry["canonical_url"]).path for entry in document["entries"]]
+    assert sum(path == "/news" or path.startswith("/news/") for path in paths) == 306
+    assert sum(path == "/research" or path.startswith("/research/") for path in paths) == 137
+    assert sum(path == "/publication" or path.startswith("/publication/") for path in paths) == 7003
+    by_url = {entry["canonical_url"]: entry for entry in document["entries"]}
+    award = by_url["https://ellis.eu/news/ellis-phd-award-2020"]
+    assert award["title"] == "Two ELLIS PhD Award Winners 2020 Announced"
+    assert award["date"] == "2020-09-18"
+    assert award["rights"] == RIGHTS_UNKNOWN
+    panel = by_url["https://ellis.eu/news/10-ellis-researchers-appointed-to-the-ai-act-scientific-panel"]
+    assert panel["title"] == "10 ELLIS Researchers Appointed to the AI Act Scientific Panel"
+    assert panel["date"] == "2026-06-03"
+    paper = by_url["https://ellis.eu/publication/2003-video-google-a-text-retrieval-approach-to-object-matching-in-videos"]
+    assert paper["title"] == "Video Google: a text retrieval approach to object matching in videos"
+    assert paper["date"] == UNKNOWN_DATE
+    assert by_url["https://ellis.eu/news"]["title"] == "Latest News"
+    assert by_url["https://ellis.eu/news"]["date"] == UNKNOWN_DATE
+    assert by_url["https://ellis.eu/research"]["title"] == "Research"
+    assert by_url["https://ellis.eu/research"]["date"] == UNKNOWN_DATE
 
 
 def test_sole_restricted_deeds_keep_their_own_tokens():
