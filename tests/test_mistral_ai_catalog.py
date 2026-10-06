@@ -533,7 +533,9 @@ def test_permissive_anchor_on_a_restricted_or_mark_url_stays_unknown():
     generic = '<a href="https://creativecommons.org/licenses/">licence notice</a>'
     assert rights_from_page(generic) == RIGHTS_UNKNOWN
     generic_with_by = '<a href="https://creativecommons.org/licenses/">CC BY</a>'
-    assert rights_from_page(generic_with_by) == RIGHTS_CC_BY
+    assert rights_from_page(generic_with_by) == RIGHTS_UNKNOWN
+    generic_with_sa = '<a href="https://creativecommons.org/licenses/">CC BY-SA</a>'
+    assert rights_from_page(generic_with_sa) == RIGHTS_UNKNOWN
 
 
 def test_mixed_restricted_and_permissive_stays_unknown():

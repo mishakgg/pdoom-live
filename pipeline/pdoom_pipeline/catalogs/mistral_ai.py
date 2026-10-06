@@ -18,8 +18,9 @@ a public-domain mark URL stays unknown. The Public Domain Mark, all rights
 reserved, terms, and the host name stay unknown. MIT, Apache-2.0, and
 MPL-2.0 keep their own tokens. Mixed software licences stay unknown.
 ``uk_ogl`` requires the British phrase Open Government Licence. A generic
-creativecommons.org/licenses/ URL stays unknown. A hyphen is a word
-boundary, so CC BY does not match CC BY-NC. Updated, modified, and copyright
+creativecommons.org/licenses/ URL stays unknown, including when its anchor
+text says CC BY or CC BY-SA. A hyphen is a word boundary, so CC BY does not
+match CC BY-NC. Updated, modified, and copyright
 years are not publication dates. A missing date stays unknown. The live URL
 is stored as confirmed; a different rel=canonical does not replace it. This
 module does not fetch and it is not a belief collector. ``runner_wired``
@@ -497,8 +498,9 @@ def rights_from_page(page_text: str) -> str:
     is not MIT. The Mistral non-production licence (MNPL), alone or beside
     Apache 2.0, stays unknown. Mixed software licences stay unknown. uk_ogl
     requires the British phrase Open Government Licence. A generic
-    creativecommons.org/licenses/ URL stays unknown. Script, style, and
-    comment text does not count.
+    creativecommons.org/licenses/ URL stays unknown, including when the
+    anchor text says CC BY or CC BY-SA. Script, style, and comment text
+    does not count.
     """
 
     if not isinstance(page_text, str):
@@ -649,8 +651,32 @@ def _strip_mark_anchors(page_html: str) -> str:
     return _FULL_ANCHOR.sub(replace, page_html)
 
 
+def _is_generic_cc_licenses_url(href: str) -> bool:
+    """True for creativecommons.org/licenses/ with no specific deed."""
+
+    folded = _fold(href)
+    if "creativecommons.org/licenses" not in folded:
+        return False
+    return not any(match.group("license") for match in _CC_URL.finditer(folded))
+
+
+def _strip_generic_license_anchors(page_html: str) -> str:
+    """Drop anchors whose URL is a generic creativecommons.org/licenses/ page.
+
+    CC BY or CC BY-SA text on that URL is not a licence statement.
+    """
+
+    def replace(match: re.Match[str]) -> str:
+        href = _attrs(f"<a {match.group(1)}>").get("href", "")
+        if _is_generic_cc_licenses_url(href):
+            return " "
+        return match.group(0)
+
+    return _FULL_ANCHOR.sub(replace, page_html)
+
+
 def _licence_signals(page_text: str) -> tuple[set[str], bool]:
-    page_text = _strip_mark_anchors(page_text)
+    page_text = _strip_generic_license_anchors(_strip_mark_anchors(page_text))
     without_comments = _COMMENT.sub(" ", page_text)
     codes: set[str] = set()
     gov = False
