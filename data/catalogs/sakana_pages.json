@@ -1,0 +1,896 @@
+{
+  "catalog_id": "sakana_pages",
+  "description": "Metadata for public Sakana AI research, blog, and publication pages on sakana.ai. Each stored URL was confirmed with one bounded GET that returned HTML. robots.txt is a 404 and does not disallow these paths. A challenge, captcha, product console, login page, or off-host redirect is not stored. Rows keep a title, publisher, canonical URL, date, and rights label. Page bodies, abstracts, quotes, transcripts, and charts are not stored. Updated, modified, and copyright years are not publication dates. creative_commons_attribution means only CC BY. creative_commons means CC0, CC BY-SA, or a permissive mix of those. Restricted CC deeds keep their own tokens. This module does not fetch. It is not a belief collector, and runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "We raised $30M to develop nature-inspired AI in Japan",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/seed-round/",
+      "date": "2024-01-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "We received a supercomputing grant from the Japanese government",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/nedo-grant/",
+      "date": "2024-02-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "進化的アルゴリズムによる基盤モデルの構築",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/evolutionary-model-merge-jp/",
+      "date": "2024-03-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Evolving New Foundation Models: Unleashing the Power of Automating Model Development",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/evolutionary-model-merge/",
+      "date": "2024-03-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "画像生成モデルへの進化的モデルマージの適用 日本語対応した高速な画像生成モデルを教育目的で公開",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/evosdxl-jp/",
+      "date": "2024-04-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Can LLMs invent better ways to train LLMs?",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/llm-squared/",
+      "date": "2024-06-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "日本の美を学んだAI：浮世絵風画像生成モデルEvo-Ukiyoeと浮世絵カラー化モデルEvo-Nishikieを公開",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/evo-ukiyoe/",
+      "date": "2024-07-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "進化的モデルマージによる視覚言語モデルの新たな能力の獲得 複数の画像を扱える日本語視覚言語モデルを公開",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/evovlm-jp/",
+      "date": "2024-08-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "「AIサイエンティスト」： AIが自ら研究する時代へ",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ai-scientist-jp/",
+      "date": "2024-08-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ai-scientist/",
+      "date": "2024-08-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing Our Series A",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/series-a/",
+      "date": "2024-09-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "シリーズA【続報】：日本のリーディングカンパニーから資金を調達、日本市場での事業展開を加速",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/series-a-jp/",
+      "date": "2024-09-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "多様性を重視した集団ベースのモデルマージ",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/cycleqd-jp/",
+      "date": "2024-12-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Population-based Model Merging via Quality Diversity",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/cycleqd/",
+      "date": "2024-12-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "An Evolved Universal Transformer Memory",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/namm/",
+      "date": "2024-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Automating the Search for Artificial Life with Foundation Models",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/asal/",
+      "date": "2024-12-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Transformer²: Self-Adaptive LLMs",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/transformer-squared/",
+      "date": "2025-01-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "新手法「TAID」を用いた小規模日本語言語モデル「TinySwallow-1.5B」の公開",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/taid-jp/",
+      "date": "2025-01-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "TAID: A Novel Method for Efficient Knowledge Transfer from Large Language Models to Small Language Models",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/taid/",
+      "date": "2025-02-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "サカナの論文ミス CEOが語る勇み足とAIのごまかし問題",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ai-cuda-engineer-post-mortem/",
+      "date": "2025-03-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI「事業開発本部」を立ち上げ：AI技術のビジネス展開に着手",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/business-team/",
+      "date": "2025-03-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "The AI Scientist Generates its First Peer-Reviewed Scientific Publication",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ai-scientist-first-publication/",
+      "date": "2025-03-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "世界初、100%AI生成の論文が査読通過 「AIサイエンティスト」が達成",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ai-scientist-first-publication-jp/",
+      "date": "2025-03-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI super-powers AI reasoning using Japan’s own Sudoku Puzzles",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/sudoku-bench/",
+      "date": "2025-03-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI、防衛イノベーションの日米コンペティションで受賞",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/defense-challenge-2025-jp/",
+      "date": "2025-03-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI Wins Award at US-Japan Competition for Defense Innovation",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/defense-challenge-2025/",
+      "date": "2025-03-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "江戸時代の古文風テキストで会話できるチャットボット「からまる」を公開：過去の書物の継続学習による大規模言語モデルの開発",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/karamaru/",
+      "date": "2025-04-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AIで働く研究者インタビュー（2025年3月メディア掲載）",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/cv-interview-2025/",
+      "date": "2025-04-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "「時間を使って考える」AIの新パラダイム、Continuous Thought Machine（CTM）を提案",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ctm-jp/",
+      "date": "2025-05-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Continuous Thought Machines",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ctm/",
+      "date": "2025-05-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing a Multiyear Partnership between Sakana AI and MUFG Bank",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/mufg-bank/",
+      "date": "2025-05-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI、三菱UFJ銀行と今後数年にわたる包括的パートナーシップ契約締結",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/mufg/",
+      "date": "2025-05-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "AIの創造的な推論力を測る：Sudoku-Benchリーダーボード公開",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/sudoku-bench-jp/",
+      "date": "2025-05-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "自らのコードを書き換え自己改善するAI：「ダーウィン・ゲーデルマシン」（DGM）の提案",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/dgm-jp/",
+      "date": "2025-05-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Darwin Gödel Machine: AI that improves itself by rewriting its own code",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/dgm/",
+      "date": "2025-05-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "EDINET-Bench: 有価証券報告書を用いた日本語金融ベンチマークの公開",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/edinet-bench/",
+      "date": "2025-06-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI、北國フィナンシャルホールディングスと戦略提携 地域金融×AIの推進に向けたMOUを締結",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/hokkokubank/",
+      "date": "2025-06-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Text-to-LoRA: Instant Transformer Adaption",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/text-to-lora/",
+      "date": "2025-06-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "実用的なアルゴリズムエンジニアリングの自動化へ：ALE-BenchおよびALE-Agentの開発",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ale-bench-jp/",
+      "date": "2025-06-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Towards Automating Long-Horizon Algorithm Engineering for Hard Optimization Problems",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ale-bench/",
+      "date": "2025-06-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Reinforcement Learning Teachers of Test Time Scaling",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/rlt/",
+      "date": "2025-06-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "「集合知」と「試行錯誤」によるフロンティアAIの推論時スケーリング",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ab-mcts-jp/",
+      "date": "2025-07-01",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "Inference-Time Scaling and Collective Intelligence for Frontier AI",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ab-mcts/",
+      "date": "2025-07-01",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "最先端のAI技術をビジネスへ：Sakana AI、Applied Teamメンバーインタビュー",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/applied-team-interview-2025/",
+      "date": "2025-07-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "【イベントレポート】Applied Research Engineer Open House 2025：金融・防衛の難関課題に挑む、AI社会実装の最前線",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/open-house-2025/",
+      "date": "2025-08-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Competition and Attraction Improve Model Fusion",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/m2n2/",
+      "date": "2025-08-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI CUDA Engineer続報：堅牢なベンチマークの構築と中間報告",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ai-cuda-engineer-update/",
+      "date": "2025-09-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "ShinkaEvolve: Evolving New Algorithms with LLMs, Orders of Magnitude More Efficiently",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/shinka-evolve/",
+      "date": "2025-09-25",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "Sakana AI and Daiwa Securities Group to Develop AI for Advanced Asset Consulting",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/daiwa-securities/",
+      "date": "2025-10-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI、大和証券グループと総資産コンサルティング高度化AIの開発へ",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/daiwa-shoken/",
+      "date": "2025-10-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "ShinkaEvolve in Action: How a Human-AI Partnership Conquered a Coding Challenge",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/icfp-2025/",
+      "date": "2025-10-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "採用候補者向け Sakana AI Applied Team 紹介",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/applied-team-intro/",
+      "date": "2025-10-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Applied Team メンバー紹介",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/applied-team-profiles/",
+      "date": "2025-10-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Petri Dish Neural Cellular Automata",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/pd-nca/",
+      "date": "2025-11-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing Our Series B",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/series-b/",
+      "date": "2025-11-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "AIを駆使してAI実装を加速する：Sakana AI、Software Engineerインタビュー",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/swe-interview-2025/",
+      "date": "2025-11-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "AIエージェントが最適化プログラミングコンテストで初優勝",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ahc-2025/",
+      "date": "2025-12-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI Agent Wins AtCoder Heuristic Contest (First AI to Place 1st)",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ahc058/",
+      "date": "2026-01-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Digital Red Queen: Adversarial Program Evolution in Core War with LLMs",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/drq/",
+      "date": "2026-01-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Extending the Context of Pretrained LLMs by Dropping Their Positional Embeddings",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/drope/",
+      "date": "2026-01-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "RePo: Language Models with Context Re-Positioning",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/repo/",
+      "date": "2026-01-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "An Unofficial Guide to Prepare for a Research Position Application",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/unofficial-guide/",
+      "date": "2026-01-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI、Googleとの戦略的パートナーシップ締結を発表",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/google/",
+      "date": "2026-01-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "オフィス移転のお知らせ",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/azabudai-hills/",
+      "date": "2026-02-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Salesforce Ventures invests in Sakana AI",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/salesforce-ventures/",
+      "date": "2026-02-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing a Strategic Investment from Citi",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/citi/",
+      "date": "2026-02-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing a Strategic Partnership with Datadog",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/datadog/",
+      "date": "2026-02-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Instant LLM Updates with Doc-to-LoRA and Text-to-LoRA",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/doc-to-lora/",
+      "date": "2026-02-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "MUFGとSakana AIの「AI融資エキスパート」、実案件での検証フェーズへ",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/mufg-ai-lending/",
+      "date": "2026-03-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI、防衛イノベーション科学技術研究所からの委託研究を開始",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/atla-contract-2026/",
+      "date": "2026-03-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "【Sakana AI Applied Case Interview】銀行業務へのAIエージェント実装に向けた開発の舞台裏",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/mufg-ai-lending-interview/",
+      "date": "2026-03-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "【読売新聞】Sakana AIの独自システムがSNS上の「認知戦」を可視化",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/narrative-intelligence/",
+      "date": "2026-03-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "最大規模のオープン基盤モデルを各国仕様へ適応させる事後学習技術を開発",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/namazu-alpha/",
+      "date": "2026-03-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "AIによるAI研究の実現へ：AIサイエンティスト論文がNature誌に掲載",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ai-scientist-nature-jp/",
+      "date": "2026-03-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "The AI Scientist: Towards Fully Automated AI Research, Now Published in Nature",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ai-scientist-nature/",
+      "date": "2026-03-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "新しいBusiness Intelligenceへ：Ultra Deep Researchアシスタント「Sakana Marlin」βテスト開始",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/marlin-beta/",
+      "date": "2026-04-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI、総務省事業においてSNS空間の可視化と偽・誤情報対策を行う独自技術を開発",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/mic-project/",
+      "date": "2026-04-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Digital Ecosystems: Interactive Multi-Agent Neural Cellular Automata",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/digital-ecosystem/",
+      "date": "2026-04-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "String Seed of Thought: Prompting LLMs for Distribution-Faithful and Diverse Generation",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ssot/",
+      "date": "2026-04-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana Fugu: A Multi-Agent Orchestration System as a Foundation Model",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/fugu-beta/",
+      "date": "2026-04-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Trinity: An Evolved LLM Coordinator",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/trinity/",
+      "date": "2026-04-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learning to Orchestrate Agents in Natural Language with the Conductor",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/learning-to-orchestrate/",
+      "date": "2026-04-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "KAME: Tandem Architecture for Enhancing Knowledge in Real-Time Speech-to-Speech Conversational AI",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/kame-icassp-2026/",
+      "date": "2026-04-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI、SMBCグループと共同で複数AIエージェントを活用する「提案書自動生成アプリケーション」を開発",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/smbc-proposal-ai/",
+      "date": "2026-04-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sparser, Faster, Lighter Transformer Language Models",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/twell/",
+      "date": "2026-05-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "防衛分野における開発の最前線：Sakana AI、Software Engineerインタビュー",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/defense-swe-interview-2026/",
+      "date": "2026-05-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "DiffusionBlocks: Training Neural Networks One Block at a Time",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/diffusion-blocks/",
+      "date": "2026-05-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI、一般社団法人DEEP DIVEとAIを活用した情報分析に関するパートナーシップを締結",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/deep-dive-partnership/",
+      "date": "2026-05-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "金融領域の業務をAIエージェントで変える：Sakana AI、Software Engineerインタビュー",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/finance-swe-interview-2026/",
+      "date": "2026-06-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI、初の商用プロダクト「Sakana Marlin」を提供開始",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/marlin-release/",
+      "date": "2026-06-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana Fugu: One Model to Command Them All",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/fugu-release/",
+      "date": "2026-06-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "CoffeeBench: マルチエージェント経済環境におけるLLMエージェントの長期タスクベンチマーク",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/coffee-bench/",
+      "date": "2026-06-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI 伊藤錬、国連「AI for Good」グローバル委員会創設委員に就任",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/ai-for-good-commission/",
+      "date": "2026-07-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bridging Spherical Black-Box Optimizers",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/bbob/",
+      "date": "2026-07-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learning Multi-Agent Coordination via Sheaf-ADMM",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/sheaf-admm/",
+      "date": "2026-07-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana Translate：Sakana Chatが翻訳に対応、翻訳・添削・質疑の3機能を搭載",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/translate-release/",
+      "date": "2026-07-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "The AI Picbreeder Experiment: Can AI agents be creative when nobody tells them what to create?",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/picbreeder-ai/",
+      "date": "2026-07-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Smart Cellular Bricks: Towards Collective Intelligence for the Physical World",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/smart-cellular-bricks/",
+      "date": "2026-07-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI Teams With NVIDIA to Advance Open Model Innovation from Japan",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/nvidia-open-model-innovation/",
+      "date": "2026-07-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Fugu-Cyber: our new orchestration model that achieves state-of-the-art performance on real-world cybersecurity benchmarks",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/fugu-cyber-release/",
+      "date": "2026-07-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "UnMaskFork: Test-Time Scaling for Masked Diffusion via Deterministic Action Branching",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/umf/",
+      "date": "2026-07-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing Fugu-Ultra v1.1 and Claude Code interface for Fugu",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/fugu-1-1-claude-code-interface/",
+      "date": "2026-07-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Dreaming in Voxels: How AI is Generating Playable Minecraft Worlds",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/dream-cubed/",
+      "date": "2026-07-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI防衛・インテリジェンスチーム、「DIVER OSINT CTF 2026」で5位入賞 Fuguを活用したOSINTエージェントの可能性",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/diver-osint/",
+      "date": "2026-07-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "From Japan, Products the World Will Use: An Interview with Sakana AI's Head of Product Development",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/product-development-interview/",
+      "date": "2026-07-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI、日本語特化のLLM API「Sakana Namazu」を提供開始",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/namazu-api/",
+      "date": "2026-08-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI、大和証券グループとの共同AIプロジェクトを本格展開フェーズへ移行 ウェルスマネジメント業務支援AIの開発を開始",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/daiwa-shoken-full-scale/",
+      "date": "2026-08-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "ベースモデルに依存しないオーケストレーションに向けて：Gemma 4版 Sakana Fuguの検証",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/fugu-gemma4/",
+      "date": "2026-08-10",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "Sakana Chatがアップデート：「Sakana Fugu」と新世代「Sakana Namazu」が利用可能に",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/chat-update/",
+      "date": "2026-08-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana Translateをアップデート：翻訳モデルに新世代「Sakana Namazu」を搭載",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/translate-update/",
+      "date": "2026-08-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI、防衛省から「総合分析業務に必要なAI機能の調査・実証」を受注",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/defense-integrated-analysis/",
+      "date": "2026-08-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Percept-Lens: A Deep Dive into AI-Generated Image Detection",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/percept-lens/",
+      "date": "2026-09-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI、ＳＣＳＫ、住友商事の3社、AI活用による日本の産業変革と社会課題解決に向け包括業務提携 ～日本発の技術力・完遂力を核に、AIの社会実装を加速～",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/scsk-sc-partnership/",
+      "date": "2026-09-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Fugu Max and Fugu Ultra v2: Orchestrating the Pareto Frontier",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/fugu-max-release/",
+      "date": "2026-09-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "英国王立協会特集号に見る、世界モデルの最前線とAIの未来",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/world-models-royal-society-issue/",
+      "date": "2026-09-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Training 1000-layer networks without backpropagation",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/pc-alm/",
+      "date": "2026-09-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana Marlinアップデート：レポートと対話する「Interactive Reading」と、出力スライドのPowerPoint対応",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/marlin-update/",
+      "date": "2026-09-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana Chatをアップデート：最新モデルに刷新、メモリー機能を追加",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/chat-fugumax/",
+      "date": "2026-09-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Inside Sakana AI's Product Team",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/inside-product-team/",
+      "date": "2026-09-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Sakana AI's Frontier Intelligence Group (FIG)",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/frontier-intelligence-group/",
+      "date": "2026-09-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Next Frontier: Welcoming AI Pioneer Jürgen Schmidhuber to Sakana AI",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/schmidhuber/",
+      "date": "2026-09-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI、「日本スタートアップ大賞2026」で総務大臣賞（情報通信分野）を受賞",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/japan-startup-award-2026/",
+      "date": "2026-09-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "SAIL: Scaling In-Context Imitation Learning",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/sail/",
+      "date": "2026-09-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sakana AI Blog",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/blog/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "About Sakana AI",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/company-info-old/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AIがAIを作る：Sakana AI「RSI Lab」始動",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/rsi-lab-jp/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Sakana AI’s Recursive Self-Improvement (RSI) Lab",
+      "publisher": "Sakana AI",
+      "canonical_url": "https://sakana.ai/rsi-lab/",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
