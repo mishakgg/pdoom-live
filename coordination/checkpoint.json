@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-06T003849Z",
-  "reviewed_at": "2026-10-06T00:38:49Z",
-  "previous_review_id": "2026-10-06T003243Z",
-  "status_path": "coordination/status/status-2026-10-06T003849Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-06T003849Z.json",
+  "review_id": "2026-10-06T004239Z",
+  "reviewed_at": "2026-10-06T00:42:39Z",
+  "previous_review_id": "2026-10-06T003849Z",
+  "status_path": "coordination/status/status-2026-10-06T004239Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-06T004239Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "cf81f483b833168111d6fb14120c31346bfc19d7",
   "origin_main_subject": "Merge pull request #178 from mishakgg/cursor/oecd-ai-pages-a32e",
@@ -113,7 +113,7 @@
       "reason": "5585848 only updates docs/FRONTEND_HANDOFF.md. GitHub CI 37274485308, E2E 37274485285, and runtime 37274485294 succeeded on that head. The handoff still records two local spawnSync python ENOENT failures. Not folded into the six-workstream candidate."
     }
   ],
-  "next_action": "Pull requests 175 through 178 are merged. main is cf81f483b833168111d6fb14120c31346bfc19d7. Drafts 179 through 186 are Apart Research, GPAI, Cohere Labs, Center for AI Policy, MLCommons, Timaeus, Meta FAIR, and Goodfire. Gray Swan, the Collective Intelligence Project, and LMSYS are back with their workers for rights fixes. Draft 168 stays open. Pull requests 32 and 23 stay open. Do not merge pull request 32.",
+  "next_action": "main is cf81f483b833168111d6fb14120c31346bfc19d7. Drafts 179 through 190 are open. Gray Swan is back with its worker so a software licence beside a Creative Commons deed stays unknown. Draft 168 stays open. Pull requests 32 and 23 stay open. Do not merge pull request 32.",
   "concurrent_workers_launched_at": "2026-10-05T18:46:00Z",
   "concurrent_workers_model": "grok-4.7-xhigh",
   "concurrent_workers": [
