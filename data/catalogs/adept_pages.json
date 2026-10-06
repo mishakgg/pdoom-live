@@ -1,0 +1,6 @@
+{
+  "catalog_id": "adept_pages",
+  "description": "Metadata for public Adept research and blog pages on adept.ai. A row is stored only when one bounded GET returns HTML that stays on adept.ai and that robots.txt allows. This catalog is empty because those GETs returned a Cloudflare challenge. Login pages, product consoles, and off-host redirects are omitted. Rows store a title, publisher, canonical URL, date, and rights label. Page text is not stored. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix of those. A sole CC BY-NC, CC BY-ND, CC BY-NC-SA, or CC BY-NC-ND keeps its own token. A missing date stays unknown. Updated, modified, and copyright years are not publication dates. This catalog is not a belief collector and runner_wired stays false.",
+  "runner_wired": false,
+  "entries": []
+}
