@@ -255,6 +255,39 @@ def test_a_permissive_anchor_on_a_restricted_or_mark_url_stays_unknown():
     ) == RIGHTS_CREATIVE_COMMONS
 
 
+def test_generic_creativecommons_licenses_url_anchor_text_stays_unknown():
+    cases = (
+        "https://creativecommons.org/licenses/",
+        "https://creativecommons.org/licenses",
+        "http://creativecommons.org/licenses/",
+        "https://www.creativecommons.org/licenses/",
+        "http://www.creativecommons.org/licenses",
+        "https://creativecommons.org/licenses/?lang=en",
+        "https://creativecommons.org/licenses?ref=footer",
+    )
+    for href in cases:
+        assert rights_from_page(f'<a href="{href}">CC BY</a>') == RIGHTS_UNKNOWN
+        assert rights_from_page(f'<a href="{href}">CC BY 4.0</a>') == RIGHTS_UNKNOWN
+        assert rights_from_page(f'<a href="{href}">CC BY-SA</a>') == RIGHTS_UNKNOWN
+    elsewhere = (
+        "<p>Licensed under CC BY 4.0.</p>"
+        '<a href="https://creativecommons.org/licenses/">CC BY-SA</a>'
+    )
+    assert rights_from_page(elsewhere) == RIGHTS_CC_ATTRIBUTION
+    sharealike_elsewhere = (
+        '<a href="https://creativecommons.org/licenses/">CC BY</a>'
+        "<p>CC BY-SA 4.0</p>"
+    )
+    assert rights_from_page(sharealike_elsewhere) == RIGHTS_CREATIVE_COMMONS
+    deed = '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
+    assert rights_from_page(deed) == RIGHTS_CC_ATTRIBUTION
+    deed_beside_generic = (
+        '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
+        '<a href="https://creativecommons.org/licenses/">CC BY-SA</a>'
+    )
+    assert rights_from_page(deed_beside_generic) == RIGHTS_CC_ATTRIBUTION
+
+
 def test_public_domain_mark_terms_host_and_generic_licence_url_stay_unknown():
     mark = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">Public Domain Mark</a>'
     assert rights_from_page(mark) == RIGHTS_UNKNOWN
@@ -275,6 +308,7 @@ def test_software_licences_and_open_government_licence():
     assert rights_from_page("<p>Researchers from Harvard, MIT, and other universities.</p>") == RIGHTS_UNKNOWN
     assert rights_from_page("<p>Licensed under the MIT License.</p>") == RIGHTS_MIT
     assert rights_from_page("<p>Licensed under the Apache License 2.0.</p>") == RIGHTS_APACHE
+    assert rights_from_page("<p>Apache License, Version 2.0</p>") == RIGHTS_APACHE
     assert rights_from_page("<p>Licensed under the Mozilla Public License 2.0.</p>") == RIGHTS_MPL
     assert rights_from_page("<p>MIT License and apache-2.0.</p>") == RIGHTS_UNKNOWN
     assert rights_from_page("<p>Licensed under CC BY 4.0 and the MIT License.</p>") == RIGHTS_UNKNOWN

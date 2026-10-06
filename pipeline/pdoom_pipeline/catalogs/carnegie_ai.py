@@ -142,6 +142,8 @@ _LDJSON = re.compile(
 _TAG = re.compile(r"(?is)<[^>]+>")
 _META = re.compile(r"(?is)<meta\b[^>]*>")
 _LINK = re.compile(r"(?is)<(?:link|a)\b[^>]*>")
+_ANCHOR_ELEMENT = re.compile(r"(?is)<a\b([^>]*)>(.*?)</a>")
+_GENERIC_CC_HOSTS = frozenset({"creativecommons.org", "www.creativecommons.org"})
 _H1 = re.compile(r"(?is)<h1\b[^>]*>(.*?)</h1>")
 _TITLE = re.compile(r"(?is)<title\b[^>]*>(.*?)</title>")
 _ATTR = re.compile(
@@ -405,15 +407,16 @@ def rights_from_page(page_text: str) -> str:
     mit, apache, or mpl plus a permissive CC deed stays unknown. A CC BY or
     CC BY-SA anchor on a restricted or Public Domain Mark URL stays unknown.
     A CC0 anchor on a publicdomain/mark URL stays unknown. Public Domain Mark
-    is not CC0. A generic creativecommons.org/licenses/ URL, a copyright
-    notice, All rights reserved, a terms link, and the host name are not
-    licences.
+    is not CC0. A generic creativecommons.org/licenses/ URL is not a licence,
+    and the visible text of that anchor does not count. Text elsewhere on the
+    page still counts. A specific deed URL still counts. A copyright notice,
+    All rights reserved, a terms link, and the host name are not licences.
     """
 
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     visible = _without_hidden(page_text)
-    plain = _plain(visible).casefold().translate(_DASHES)
+    plain = _plain(_without_generic_cc_license_anchors(visible)).casefold().translate(_DASHES)
     codes = _text_codes(plain)
     hrefs = _hrefs(visible)
     for href in hrefs:
@@ -812,6 +815,41 @@ def _meta_pairs(page_html: str) -> list[tuple[str, str]]:
         if key and attrs.get("content"):
             found.append((key, attrs["content"]))
     return found
+
+
+def _is_generic_cc_licenses_url(href: str) -> bool:
+    """True for the Creative Commons licences index, not a deed.
+
+    http and https, a www host, a trailing slash, and a query string stay on
+    that generic path. A deed such as /licenses/by/4.0/ does not.
+    """
+
+    parsed = urlparse(href.strip())
+    if parsed.scheme.casefold() not in {"http", "https"}:
+        return False
+    host = (parsed.hostname or "").casefold().rstrip(".")
+    if host not in _GENERIC_CC_HOSTS:
+        return False
+    path = (parsed.path or "").casefold()
+    if len(path) > 1 and path.endswith("/"):
+        path = path[:-1]
+    return path == "/licenses"
+
+
+def _without_generic_cc_license_anchors(page_html: str) -> str:
+    """Drop anchors whose href is only the generic licences index.
+
+    The visible text of that anchor is not a licence statement. Other text
+    on the page is left in place.
+    """
+
+    def replace(match: re.Match[str]) -> str:
+        href = _attrs("<a" + match.group(1) + ">").get("href", "")
+        if _is_generic_cc_licenses_url(href):
+            return " "
+        return match.group(0)
+
+    return _ANCHOR_ELEMENT.sub(replace, page_html)
 
 
 def _hrefs(page_html: str) -> list[str]:
