@@ -1,0 +1,343 @@
+{
+  "catalog_id": "scale_ai_pages",
+  "description": "Public Scale AI research, news, and publication HTML on scale.com and www.scale.com. www.scale.com redirects to scale.com and stays on an allowed host. labs.scale.com, consoles, login walls, PDFs, and unrelated marketing are omitted. robots.txt allows /blog and disallows /research. Sitemap was XML. Each stored URL was one bounded GET. A challenge, HTML robots.txt, unresolved host, or off-host redirect stores no row. Rows keep title, publisher, canonical URL, date, and rights. Page text, abstracts, PDFs, quotes, transcripts, and chart data are omitted. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix. A missing publication date is unknown. Updated, modified, and copyright years are not dates. Not a belief collector. runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Scale AI Partnering with the U.S. AI Safety Institute to Evaluate AI Models",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/first-independent-model-evaluator-for-the-usaisi",
+      "date": "2025-02-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scale AI Partners with Korea’s AI Safety Institute to Advance Global AI Evaluation and Governance",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/korea-ai-safety-institute-partnership",
+      "date": "2025-10-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "When Language Isn't the Whole Story: What ROK-FORTRESS Reveals About Multilingual AI Safety",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/rok-fortress-multilingual-ai-safety",
+      "date": "2025-10-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Can Coding Agents Become Engineers? We’re Finding Out.",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/swe-atlas",
+      "date": "2026-03-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Scale Labs",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/scale-labs",
+      "date": "2026-03-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scale AI + Universal Robots: Enabling Physical AI for Real-World Deployment",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/scale-ai-universal-robots-physical-ai",
+      "date": "2026-03-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "How do you make fundamentally nondeterministic agents trustable? | Human in the Loop: Episode 18",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/hitl-ep-18",
+      "date": "2026-03-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "The People Behind the Models: Meet Toni-Marie Achilli",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/toni-marie-achilli-outlier-expert",
+      "date": "2026-03-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scale AI and BAE Systems Combine Forces to Modernize the Tactical Edge",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/scale-bae-modernize-tactical-edge",
+      "date": "2026-03-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Dialect: The Missing Layer Between AI and Enterprise Trust",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/dialect",
+      "date": "2026-03-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Hidden Risks in Pharma's Most Common GenAI Starting Point",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/hidden-risks-in-pharma",
+      "date": "2026-04-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI-Native Data Layer: Making Enterprise Data Agent-Ready",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/ai-native-data-layer",
+      "date": "2026-04-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Understanding New Biosecurity Risks Posed by LLMs",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/llm-novice-uplift",
+      "date": "2026-04-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "HiL-Bench: Your Agent is Smart. It Just Won't Ask for Help.",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/hil",
+      "date": "2026-04-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scale AI Acquires ICG Solutions to Accelerate National Security AI",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/scale-acquires-icg-solutions",
+      "date": "2026-04-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scale AI Signs MOU with DOE to Advance the Genesis Mission",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/scale-ai-doe-genesis-mission-mou",
+      "date": "2026-05-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Static AI to Continual Enterprise Learning: A Living Dialect of Tribal Knowledge",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/dialect-of-tribal-knowledge",
+      "date": "2026-05-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scale AI Expands Pentagon AI Partnership to $500 Million",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/scale-ai-pentagon-cdao-500-million-agreement",
+      "date": "2026-05-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "SWE Atlas is Complete: Measuring Coding Agents Across the Engineering Loop",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/swe-atlas-complete",
+      "date": "2026-05-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Ten Years of Scale",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/ten-years-of-scale",
+      "date": "2026-05-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Is Moving at the Speed of Innovation. Our Ability to Evaluate It Must Too.",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/ai-evaluation-framework-national-security",
+      "date": "2026-05-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "U.S. Government Can Now Access Scale Capabilities Through GSA Schedule",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/scale-ai-gsa-schedule-available",
+      "date": "2026-05-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Meet Randi Loveland: The Math Educator Helping Improve AI Models",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/meet-the-contributors-randi-loveland",
+      "date": "2026-05-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Deployment Lessons from Global Governments",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/deployment-lessons-from-global-governments",
+      "date": "2026-06-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "LIVE at NY Tech Week 2026: Human in the Loop!",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/ny-tech-week-2026-human-in-the-loop",
+      "date": "2026-06-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "When AI Agents Ask, Attackers Can Answer",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/aspi",
+      "date": "2026-06-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing The Six Percent Report",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/introducing-the-six-percent-report",
+      "date": "2026-06-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Agentic Warfare: Four Policy Briefs",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/agentic-warfare-four-policy-briefs",
+      "date": "2026-06-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scale Partners with Circadence to Advance AI-Driven Cyber Readiness",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/scale-circadence-ai-driven-cyber-readiness",
+      "date": "2026-06-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "How We Engineer World-Class Data at Scale",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/data-quality",
+      "date": "2026-06-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Can AI Agents Do the Work of Drug Discovery?",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/drugdiscoverybench",
+      "date": "2026-06-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scale AI Partners with Singapore's IMDA to Advance AI Evaluation for Southeast Asia",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/singapore-imda-mou",
+      "date": "2026-07-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Agents Can Now Improve Other Agents",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/vero",
+      "date": "2026-07-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Arabic-First AI: Building From the Ground Up",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/arabic-first-ai",
+      "date": "2026-07-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mayo Clinic + Scale: Reliable AI for Better Healthcare",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/mayo-clinic-scale",
+      "date": "2026-07-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Decision Advantage in NATO",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/ai-decision-advantage-in-nato",
+      "date": "2026-07-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Insights Generator: Diagnosing Agent Failures",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/insights-generator",
+      "date": "2026-07-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "From Partnership to Execution: Scale AI Joins the Genesis Mission Consortium",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/scale-ai-joins-genesis-mission-consortium",
+      "date": "2026-07-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "National AI: Strategy to Infrastructure",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/strategy-to-infrastructure",
+      "date": "2026-07-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scale AI Appoints Francis deSouza as CEO to Lead Next Phase of Company’s Growth",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/scale-appoints-new-ceo",
+      "date": "2026-07-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Cost of Control: Untangling the Myth and Realities of Sovereign AI",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/untangling-the-myth-and-realities-of-sovereign-ai",
+      "date": "2026-08-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "How Public Institutions Scale Expertise",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/how-public-institutions-scale-expertise",
+      "date": "2026-08-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "ALIF: Building AI Fluency, One Cohort at a Time",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/alif-building-ai-fluency-one-cohort-at-a-time",
+      "date": "2026-08-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "In An Agentic World Where Automation Gets Cheap, Which Work Is Worth Routing to a Human?",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/hitl-routing",
+      "date": "2026-09-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Why You Need to Red Team Your Enterprise AI",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/why-you-need-to-red-team-your-enterprise-ai",
+      "date": "2026-09-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Deploying enterprise AI agents with Scale and Google Cloud",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/deploying-enterprise-ai-agents-with-scale-and-google-cloud",
+      "date": "2026-09-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "To Steer the AI Frontier, Washington Must Build Its Testing Power",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog/steer-the-ai-frontier-washington-must-build-its-testing-power",
+      "date": "2026-09-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Blog",
+      "publisher": "Scale AI",
+      "canonical_url": "https://scale.com/blog",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
