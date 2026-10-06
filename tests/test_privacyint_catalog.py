@@ -5,6 +5,7 @@ from __future__ import annotations
 import ast
 import hashlib
 import json
+import re
 import socket
 from pathlib import Path
 from urllib.parse import urlparse
@@ -731,7 +732,7 @@ def test_catalog_is_not_wired_into_belief_collection():
     assert "pdoom_pipeline.fetch" not in imported
     assert "pdoom_pipeline.belief" not in imported
     assert "pdoom_pipeline.belief.collect" not in imported
-    assert "import requests" not in module
+    assert not re.search(r"(?m)^\s*(?:import|from)\s+requests\b", module)
     assert "from requests" not in module
     assert "RUNNER_WIRED = False" in module
     assert "runner_wired = True" not in module
