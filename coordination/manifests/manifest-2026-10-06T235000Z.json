@@ -1,0 +1,9 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-06T235000Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Merged pull requests 287 through 291. Draft 250 stays open because the runtime image check failed. Draft 292 records NAVER Labs. The Pew Research Center and Georgia Tech Machine Learning Center catalogs are withheld.",
+  "follow_up_prs": [168, 250, 292],
+  "origin_main_sha": "9cefc43be04b5c676406fad21206ccda4d4215fc"
+}
