@@ -9,7 +9,9 @@ entries list is valid.
 ``creative_commons`` means a stated CC0 or CC BY-SA deed. ``creative_commons_attribution``
 means CC BY without NC, ND, or SA. CC BY-NC, CC BY-ND, CC BY-NC-ND, and
 CC BY-NC-SA keep their own tokens and are never folded into ``creative_commons``.
-A restricted deed wins when a permissive deed is also stated. A hyphen is a
+A restricted deed together with CC BY, CC BY-SA, or CC0 stays unknown. A sole
+restricted deed keeps its own token. A CC BY anchor on a by-nc URL stays
+unknown, and a CC0 anchor on a publicdomain/mark URL stays unknown. A hyphen is a
 word boundary, so CC BY does not match CC BY-NC. ``licenses/by`` does not match
 ``licenses/by-nc``. A generic creativecommons.org/licenses/ URL is not a
 permissive deed. The Public Domain Mark is not CC0. A copyright notice, All
@@ -214,7 +216,7 @@ _TEXT_CODES = (
         "by",
         re.compile(
             r"\bcc[\s-]*by\b(?![\s-]*(?:nc|nd|sa)\b)"
-            r"(?![\s-]*(?:non[\s-]*commercial|no[\s-]*deriv)\b)"
+            r"(?![\s-]*(?:non[\s-]*commercial\b|no[\s-]*deriv))"
         ),
     ),
     (
@@ -245,7 +247,7 @@ _TEXT_CODES = (
         "by",
         re.compile(
             r"creative commons attribution\b"
-            r"(?![\s-]*(?:non[\s-]*commercial|no[\s-]*deriv|share[\s-]*alike|nc|nd|sa)\b)"
+            r"(?![\s-]*(?:non[\s-]*commercial\b|no[\s-]*deriv|share[\s-]*alike\b|nc\b|nd\b|sa\b))"
         ),
     ),
     ("mark", re.compile(r"\bpublic domain mark\b")),
@@ -457,8 +459,9 @@ def rights_from_page(page_text: str) -> str:
     """Return a rights label from a reuse licence the page itself states.
 
     ``creative_commons`` is CC0 or CC BY-SA. ``creative_commons_attribution`` is
-    CC BY without NC, ND, or SA. Restricted deeds keep their own tokens and win
-    when a permissive deed is also present. The Public Domain Mark is not CC0.
+    CC BY without NC, ND, or SA. A sole restricted deed keeps its own token. A
+    restricted deed together with CC BY, CC BY-SA, or CC0 stays unknown. The
+    Public Domain Mark is not CC0, including a CC0 anchor on a mark URL.
     ``mit`` or ``apache-2.0`` mixed with a permissive Creative Commons deed
     stays unknown. ``uk_ogl`` requires the phrase open government licence.
     ``us_government_work`` requires a rights field. Script and style text does
@@ -472,6 +475,10 @@ def rights_from_page(page_text: str) -> str:
     ogl = OGL_PHRASE in _plain_text(_visible(page_text)).casefold()
     restricted = codes & _RESTRICTED
     permissive = codes & _PERMISSIVE
+    if "mark" in codes and permissive:
+        return RIGHTS_UNKNOWN
+    if restricted and permissive:
+        return RIGHTS_UNKNOWN
     if len(restricted) > 1:
         return RIGHTS_UNKNOWN
     if len(restricted) == 1:
@@ -617,7 +624,6 @@ def _licence_signals(page_text: str) -> tuple[set[str], bool, bool, bool]:
     for blob in blobs:
         codes.update(_cc_codes(blob))
         mit, apache, mpl = _note_software(blob, mit, apache, mpl)
-    codes.discard("mark")
     return codes, mit, apache, mpl
 
 
