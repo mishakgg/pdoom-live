@@ -256,6 +256,27 @@ def test_public_page_without_a_reuse_licence_stays_unknown():
     assert BODY not in rights_from_page(public + BODY)
 
 
+def test_generic_creativecommons_licenses_url_ignores_anchor_text():
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/">CC BY</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/">CC BY 4.0</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/">CC BY-SA</a>') == RIGHTS_UNKNOWN
+    no_slash = '<a href="https://creativecommons.org/licenses">CC BY</a>'
+    assert rights_from_page(no_slash) == RIGHTS_UNKNOWN
+    http = '<a href="http://creativecommons.org/licenses/">CC BY</a>'
+    assert rights_from_page(http) == RIGHTS_UNKNOWN
+    www = '<a href="https://www.creativecommons.org/licenses/">CC BY-SA</a>'
+    assert rights_from_page(www) == RIGHTS_UNKNOWN
+    query = '<a href="https://creativecommons.org/licenses/?lang=en">CC BY 4.0</a>'
+    assert rights_from_page(query) == RIGHTS_UNKNOWN
+    elsewhere = (
+        '<a href="https://creativecommons.org/licenses/">CC BY-SA</a>'
+        "<p>This page is licensed under CC BY 4.0.</p>"
+    )
+    assert rights_from_page(elsewhere) == RIGHTS_CC_ATTRIBUTION
+    deed = '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
+    assert rights_from_page(deed) == RIGHTS_CC_ATTRIBUTION
+
+
 def test_sole_restricted_deeds_keep_their_own_tokens():
     notices = [
         ("<p>Licensed under CC BY-NC 4.0.</p>", RIGHTS_CC_BY_NC),
