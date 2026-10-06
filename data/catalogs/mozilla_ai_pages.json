@@ -1,0 +1,35 @@
+{
+  "catalog_id": "mozilla_ai_pages",
+  "description": "Mozilla Foundation AI pages on www.mozilla.org. The host was confirmed with a bounded GET. foundation.mozilla.org redirects off-host to www.mozillafoundation.org and is not stored. A challenge, HTTP 202, non-HTML response, or off-host redirect stores no row. An empty catalog is correct when every GET is blocked. Each row is title, publisher, canonical URL, date, and rights. Page text is not stored. A missing date is unknown. Updated, modified, and copyright years are not publication dates. Rights stay unknown unless the page states CC0, CC BY, or CC BY-SA, labeled creative_commons. CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay unknown. The Mozilla Public License is mpl-2.0, not creative_commons. A public page, copyright notice, or terms link is not a licence. runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Empowering developers with open AI tools for a trustworthy future",
+      "publisher": "Mozilla",
+      "canonical_url": "https://www.mozilla.org/en-US/foundation/annualreport/2024/article/empowering-developers-with-open-ai-tools-for-a-trustworthy-future/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Evolving Together: Redefining Mozilla in the AI Era",
+      "publisher": "Mozilla",
+      "canonical_url": "https://www.mozilla.org/en-US/foundation/annualreport/2024/article/evolving-together-redefining-mozilla-in-the-ai-era/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scaling local AI innovation for real-world impact",
+      "publisher": "Mozilla",
+      "canonical_url": "https://www.mozilla.org/en-US/foundation/annualreport/2024/article/scaling-local-ai-innovation-for-real-world-impact/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Shaping AI we can trust: Mozilla’s portfolio at work",
+      "publisher": "Mozilla",
+      "canonical_url": "https://www.mozilla.org/en-US/foundation/annualreport/2024/article/shaping-ai-we-can-trust-mozillas-portfolio-at-work/",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "catalog_id": "ought_pages",
+  "description": "Metadata for public HTML pages on ought.org. Each canonical URL was confirmed with one bounded GET that returned HTML. The catalog stores the title, publisher, canonical URL, date, and rights. Page bodies, abstracts, and PDFs are not stored. A missing date is unknown. Updated, modified, and copyright years are not publication dates. Rights stay unknown unless the page states CC0, CC BY, or CC BY-SA. A blocked or non-HTML response is not stored. runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Progress Update July 2018",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/updates/2018-07-16-progress-update",
+      "date": "2018-07-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Progress Update Winter 2018",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/updates/2018-12-31-progress-update",
+      "date": "2018-12-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Talk transcript: Delegating open-ended cognitive work",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/updates/2019-08-01-delegation-talk",
+      "date": "2019-08-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Progress Update October 2019",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/updates/2019-10-28-progress-update",
+      "date": "2019-10-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Evaluating Arguments One Step at a Time",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/updates/2020-01-11-arguments",
+      "date": "2020-01-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Ought Raises $3.8 Million",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/updates/2020-02-14-funding",
+      "date": "2020-02-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Automating reasoning about the future at Ought",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/updates/2020-11-09-forecasting",
+      "date": "2020-11-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Building Elicit, the AI research assistant",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/updates/2022-03-22-elicit",
+      "date": "2022-03-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Supervise Process, not Outcomes",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/updates/2022-04-06-process",
+      "date": "2022-04-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Plan for Elicit",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/updates/2022-04-08-elicit-plan",
+      "date": "2022-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "How to use Elicit responsibly",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/updates/2022-04-25-responsibility",
+      "date": "2022-04-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Library and Tutorial for Factored Cognition with Language Models",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/updates/2022-10-06-ice-primer",
+      "date": "2022-10-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Safety Needs Great Product Builders",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/updates/2022-11-02-ai-safety-needs-great-product-builders",
+      "date": "2022-11-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Ought has spun off Elicit",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/updates/2023-09-25-spinoff",
+      "date": "2023-09-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Ought",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "About us",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/about",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Donate",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/donate",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Elicit",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/elicit",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Our Mission",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/mission",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Delegating open-ended cognitive work",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/presentations/delegating-cognitive-work-2019-06",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Factored Cognition (May 2018)",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/presentations/factored-cognition-2018-05",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Dialog Markets",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/research/dialog-markets",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Automating dialogs by learning cognitive actions on a shared workspace",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/research/dialog-markets/dalca",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Markets for microtasks with uncertain rewards",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/research/dialog-markets/microtasks",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Factored Cognition",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/research/factored-cognition",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Networks of Workspaces: A user-friendly approach to capability amplification",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/research/factored-cognition/networks-of-workspaces",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scalable mechanisms for solving cognitive tasks",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/research/factored-cognition/scalability",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "A set of tasks for evaluating scalable problem solving",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/research/factored-cognition/tasks",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "A taxonomy of approaches to capability amplification",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/research/factored-cognition/taxonomy",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Predicting Slow Judgments",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/research/judgments",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Team",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/team",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Updates",
+      "publisher": "Ought",
+      "canonical_url": "https://ought.org/updates",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
