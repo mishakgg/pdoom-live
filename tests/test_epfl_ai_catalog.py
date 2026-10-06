@@ -559,10 +559,11 @@ def test_a_person_is_not_the_publisher():
     record = page_record(_page("Artificial Intelligence Laboratory"), page_url=SAMPLE_URL)
     assert record["publisher"] == PUBLISHER
     assert "Ada" not in record["publisher"]
-    missing = _page("Artificial Intelligence Laboratory").replace(
+    missing = _page("Laboratory notes").replace(
         'content="EPFL"',
         'content="Ada Example"',
     )
+    missing = missing.replace("<title>Laboratory notes - EPFL</title>", "<title>Laboratory notes</title>")
     missing = missing.replace("<p>EPFL</p>", "")
     with pytest.raises(CatalogError, match="publisher"):
         page_record(missing, page_url=SAMPLE_URL)
