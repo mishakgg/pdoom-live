@@ -6,12 +6,14 @@ A Cloudflare challenge, a captcha interstitial, an HTTP 202, an Akamai 403,
 a non-HTML response, a robots disallow, or an off-host redirect is not stored.
 ``creative_commons`` means only a stated CC0, CC BY, or CC BY-SA deed.
 CC BY-NC, CC BY-ND, CC BY-NC-ND, and CC BY-NC-SA are their own tokens and are
-never folded into ``creative_commons``. A restricted deed wins when a
-permissive deed is also stated. A hyphen is a word boundary, so CC BY must
-not match CC BY-NC, and licenses/by must not match licenses/by-nc. A generic
+never folded into ``creative_commons``. A page that states both a restricted
+deed and a permissive deed stays unknown. A sole restricted deed keeps its
+own token. A hyphen is a word boundary, so CC BY must not match CC BY-NC,
+and licenses/by must not match licenses/by-nc. A generic
 creativecommons.org/licenses/ URL is not a permissive deed. The Public Domain
-Mark is not CC0. Anchor text that says CC0 or CC BY on a public-domain mark
-or by-nc URL does not reclassify that URL. A copyright notice, All rights
+Mark is not CC0. Anchor text that says CC0, CC BY, or CC BY-SA on a
+public-domain mark or restricted deed URL does not reclassify that URL and
+stays unknown. A copyright notice, All rights
 reserved, a terms link, and a host name are not licences. ``mit`` and
 ``apache-2.0`` are their own tokens. A page that does not state a publication
 date keeps the date unknown. Updated, modified, last updated, and copyright
@@ -213,6 +215,7 @@ _RESTRICTED_PRIORITY = (
     ("by-nc", RIGHTS_CC_BY_NC),
     ("by-nd", RIGHTS_CC_BY_ND),
 )
+_RESTRICTED_CODES = frozenset(code for code, _token in _RESTRICTED_PRIORITY)
 _PERMISSIVE = frozenset({"zero", "by", "by-sa"})
 _MIT = re.compile(
     r"(?i)\bmit\s+licen[cs]e\b|\blicen[cs]ed under (?:the )?mit(?:\s+licen[cs]e)?\b"
@@ -448,15 +451,16 @@ def rights_from_page(page_text: str) -> str:
     """Return a rights label from a reuse licence the page itself states.
 
     ``creative_commons`` means CC0, CC BY, or CC BY-SA only. CC BY-NC,
-    CC BY-ND, CC BY-NC-ND, and CC BY-NC-SA keep their own tokens. A restricted
-    deed wins when a permissive deed is also stated. A hyphen is a word
-    boundary, so CC BY does not match CC BY-NC and licenses/by does not match
-    licenses/by-nc. A generic creativecommons.org/licenses/ URL is not a
-    permissive deed. The Public Domain Mark is not CC0. Anchor text on a
-    public-domain mark or by-nc URL does not reclassify that URL. A copyright
-    notice, All rights reserved, a terms link, and a host name are not
-    licences. ``mit`` and ``apache-2.0`` are their own tokens. Script and
-    style text does not count.
+    CC BY-ND, CC BY-NC-ND, and CC BY-NC-SA keep their own tokens when they are
+    the only deed. A restricted deed and a permissive deed on the same page
+    stay unknown. A hyphen is a word boundary, so CC BY does not match
+    CC BY-NC and licenses/by does not match licenses/by-nc. A generic
+    creativecommons.org/licenses/ URL is not a permissive deed. The Public
+    Domain Mark is not CC0. A deceptive anchor whose visible text says CC BY,
+    CC BY-SA, or CC0, while the href is a restricted deed or a public-domain
+    mark, stays unknown. A copyright notice, All rights reserved, a terms
+    link, and a host name are not licences. ``mit`` and ``apache-2.0`` are
+    their own tokens. Script and style text does not count.
     """
 
     if not isinstance(page_text, str):
@@ -473,8 +477,11 @@ def rights_from_page(page_text: str) -> str:
     plain = _plain_text(reduced).casefold().translate(_DASHES)
     codes.update(_text_codes(plain))
     codes.update(_url_codes(plain))
+    restricted = {code for code, _token in _RESTRICTED_PRIORITY if code in codes}
+    if restricted and (codes & _PERMISSIVE):
+        return RIGHTS_UNKNOWN
     for code, token in _RESTRICTED_PRIORITY:
-        if code in codes:
+        if code in restricted:
             return token
     if codes & _PERMISSIVE:
         return RIGHTS_CREATIVE_COMMONS
@@ -628,10 +635,24 @@ def _take_creativecommons_anchors(visible: str) -> tuple[str, set[str]]:
         href = _attrs("<a" + match.group(1) + ">").get("href", "")
         if "creativecommons.org" not in href.casefold():
             return match.group(0)
-        codes.update(_url_codes(href))
+        # A public-domain mark is not CC0. Visible CC0, CC BY, or CC BY-SA
+        # text on that URL does not reclassify it.
+        if _url_is_public_domain_mark(href):
+            return " "
+        url_codes = _url_codes(href)
+        codes.update(url_codes)
+        # Visible CC BY, CC BY-SA, or CC0 on a restricted href is not that
+        # restricted token. Keeping both codes makes the mix unknown.
+        if url_codes & _RESTRICTED_CODES:
+            codes.update(_text_codes(match.group(2)) & _PERMISSIVE)
         return " "
 
     return _ANCHOR.sub(replace, visible), codes
+
+
+def _url_is_public_domain_mark(value: str) -> bool:
+    folded = unescape(value).casefold().translate(_DASHES)
+    return any(match.group("pd") == "mark" for match in _CC_URL.finditer(folded))
 
 
 def _url_codes(value: str) -> set[str]:
