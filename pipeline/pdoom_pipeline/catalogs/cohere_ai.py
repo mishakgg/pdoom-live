@@ -10,8 +10,9 @@ or an off-host redirect is not stored. Rights is ``creative_commons`` only for
 a stated CC0, CC BY, or CC BY-SA deed. CC BY-NC, CC BY-ND, CC BY-NC-ND, and
 CC BY-NC-SA stay their own tokens. A hyphen continues a licence token, so CC
 BY does not match CC BY-NC, and licenses/by does not match licenses/by-nc.
-Restricted deeds win when a permissive deed is also stated. The Public Domain
-Mark is not CC0. apache-2.0 and mit stay their own tokens. A copyright notice,
+A restricted deed together with CC0, CC BY, or CC BY-SA stays unknown. A sole
+restricted deed keeps its own token. A permissive anchor on a restricted or
+Public Domain Mark URL stays unknown. The Public Domain Mark is not CC0. apache-2.0 and mit stay their own tokens. A copyright notice,
 All rights reserved, a terms link, and a host name are not licences. A page
 that does not state a publication date keeps the date unknown. Updated,
 modified, and copyright years are not publication dates. The live URL is
@@ -448,13 +449,15 @@ def record_from_response(
 def rights_from_page(page_text: str) -> str:
     """Return a rights token stated by the page.
 
-    ``creative_commons`` means CC0, CC BY, or CC BY-SA only. CC BY-NC,
-    CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND are their own tokens and are never
-    folded into ``creative_commons``. When a restricted deed and a permissive
-    deed both appear, the restricted token wins. A hyphen continues the
-    token, so CC BY does not match CC BY-NC and licenses/by does not match
-    licenses/by-nc. A generic creativecommons.org/licenses/ URL is not a
-    permissive deed. The Public Domain Mark is not CC0. ``mit`` and
+    ``creative_commons`` means CC0, CC BY, or CC BY-SA only. A sole CC BY-NC,
+    CC BY-ND, CC BY-NC-SA, or CC BY-NC-ND deed keeps its own token and is never
+    folded into ``creative_commons``. When one of those restricted deeds is
+    also stated with CC0, CC BY, or CC BY-SA, rights stay unknown. A hyphen
+    continues the token, so CC BY does not match CC BY-NC and licenses/by does
+    not match licenses/by-nc. A generic creativecommons.org/licenses/ URL is
+    not a permissive deed. An anchor whose visible text says CC BY, CC BY-SA,
+    or CC0 stays unknown when the href is a by-nc, by-nd, by-nc-sa, by-nc-nd,
+    or Public Domain Mark URL. The Public Domain Mark is not CC0. ``mit`` and
     ``apache-2.0`` stay their own tokens. A copyright notice, All rights
     reserved, a terms link, and a host name are not licences. Script and
     style text does not count.
@@ -469,14 +472,17 @@ def rights_from_page(page_text: str) -> str:
         folded = piece.casefold().translate(_DASHES)
         codes.update(_cc_codes(folded))
         named.update(_named_tokens(folded))
-    for code in _RESTRICTED_ORDER:
-        if code in codes:
-            return _RESTRICTED_TOKENS[code]
-    # The Public Domain Mark is not CC0. A mark link does not become a
-    # permissive deed when nearby text says CC0, CC BY, or CC BY-SA.
-    if "mark" in codes:
-        codes -= _PERMISSIVE_CC
+    restricted = [code for code in _RESTRICTED_ORDER if code in codes]
     permissive = bool(codes & _PERMISSIVE_CC)
+    # CC0, CC BY, or CC BY-SA together with a restricted deed or the Public
+    # Domain Mark stays unknown. That includes a permissive anchor whose href
+    # is by-nc, by-nd, by-nc-sa, by-nc-nd, or publicdomain/mark.
+    if permissive and (restricted or "mark" in codes):
+        return RIGHTS_UNKNOWN
+    if restricted:
+        return _RESTRICTED_TOKENS[restricted[0]]
+    if "mark" in codes:
+        return RIGHTS_UNKNOWN
     if permissive and named:
         return RIGHTS_UNKNOWN
     if len(named) > 1:

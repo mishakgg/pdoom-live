@@ -1298,29 +1298,41 @@ def test_hyphen_does_not_let_cc_by_match_cc_by_nc():
 
 
 def test_by_nc_url_is_not_read_as_cc_by():
-    page = '<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY</a>'
-    assert rights_from_page(page) == RIGHTS_CC_BY_NC
-    single = "<a href='https://creativecommons.org/licenses/by-nc-nd/4.0/'>CC BY</a>"
-    assert rights_from_page(single) == RIGHTS_CC_BY_NC_ND
+    deceptive = [
+        '<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY</a>',
+        '<a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY</a>',
+        '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY</a>',
+        "<a href='https://creativecommons.org/licenses/by-nc-nd/4.0/'>CC BY</a>",
+        '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC BY</a>',
+        '<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-SA</a>',
+        '<a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-SA</a>',
+        '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-SA</a>',
+        '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-SA</a>',
+        '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC BY-SA</a>',
+        '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC0</a>',
+    ]
+    for page in deceptive:
+        assert rights_from_page(page) == RIGHTS_UNKNOWN
     generic = '<a href="https://creativecommons.org/licenses/">Creative Commons</a>'
     assert rights_from_page(generic) == RIGHTS_UNKNOWN
 
 
-def test_mixed_restricted_and_permissive_keeps_the_restricted_token():
+def test_mixed_restricted_and_permissive_stays_unknown():
     mixed = "<p>Licensed under CC BY 4.0 and CC BY-NC 4.0.</p>"
-    assert rights_from_page(mixed) == RIGHTS_CC_BY_NC
+    assert rights_from_page(mixed) == RIGHTS_UNKNOWN
     both_urls = (
         '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
         '<a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND</a>'
     )
-    assert rights_from_page(both_urls) == RIGHTS_CC_BY_ND
+    assert rights_from_page(both_urls) == RIGHTS_UNKNOWN
     zero_and_nd = (
         "<p>This work is licensed under CC0.</p>"
         '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">deed</a>'
     )
-    assert rights_from_page(zero_and_nd) == RIGHTS_CC_BY_NC_ND
+    assert rights_from_page(zero_and_nd) == RIGHTS_UNKNOWN
     by_sa_and_nc_sa = "<p>CC BY-SA 4.0 and CC BY-NC-SA 4.0.</p>"
-    assert rights_from_page(by_sa_and_nc_sa) == RIGHTS_CC_BY_NC_SA
+    assert rights_from_page(by_sa_and_nc_sa) == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>CC BY-NC 4.0</p>") == RIGHTS_CC_BY_NC
 
 
 def test_public_domain_mark_is_not_cc0():
