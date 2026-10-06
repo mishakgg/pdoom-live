@@ -1,0 +1,833 @@
+{
+  "catalog_id": "fas_ai_pages",
+  "description": "Metadata for public Federation of American Scientists pages about artificial intelligence, machine learning, or AI policy on fas.org and www.fas.org. Each row was confirmed with one bounded GET on those hosts. Challenges, captchas, login walls, donation pages, robots disallows, and unrelated topics are omitted. Rows store title, publisher, canonical URL, date, and rights. Page text is not stored. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix of those. A missing date is unknown. Updated, modified, and copyright years are not publication dates. This catalog is not a belief collector and runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "JASON: Artificial Intelligence for Health Care",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/ai-health-care/",
+      "date": "2018-02-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Pentagon Pursues Artificial Intelligence",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/dod-ai-crs/",
+      "date": "2018-05-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Artificial Intelligence and National Security, and More from CRS",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/artificial-intelligence-crs/",
+      "date": "2019-12-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Leveraging Machine Learning To Reduce Cost & Burden of Reviewing Research Proposals at S&T Agencies",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/leveraging-machine-learning-to-reduce-cost-burden-of-reviewing-research-proposals-at-s-t-agencies/",
+      "date": "2020-08-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Advancing American AI through National Public-Private Partnerships for AI Research",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/advancing-american-ai-through-national-public-private-partnerships-for-ai-research/",
+      "date": "2020-12-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "A National Program for Building Artificial Intelligence within Communities",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/a-national-program-for-building-artificial-intelligence-within-communities/",
+      "date": "2020-12-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Fair Artificial Intelligence Research & Regulation (FAIRR) Bureau",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/a-fair-artificial-intelligence-research-regulation-fairr-bureau/",
+      "date": "2021-01-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "A National AI for Good Initiative",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/a-national-ai-for-good-initiative/",
+      "date": "2021-02-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Superconducting Optoelectronic Intelligence",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/a-focused-research-organization-for-superconducting-optoelectronic-intelligence/",
+      "date": "2021-04-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "A National Framework for AI Procurement",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/a-national-framework-for-ai-procurement/",
+      "date": "2021-06-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Enabling Responsible U.S. Leadership on Global AI Regulation",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/enabling-responsible-u-s-leadership-on-global-ai-regulation/",
+      "date": "2021-06-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Creating an AI Testbed for Government",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/creating-an-ai-testbed-for-government/",
+      "date": "2022-01-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI for science: creating a virtuous circle of discovery and innovation",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/ai-for-science/",
+      "date": "2022-08-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Creating Auditing Tools for AI Equity",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/creating-auditing-tools-for-ai-equity/",
+      "date": "2023-04-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "How Do OpenAI’s Efforts To Make GPT-4 “Safer” Stack Up Against The NIST AI Risk Management Framework?",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/how-do-openais-efforts-to-make-gpt-4-safer-stack-up-against-the-nist-ai-risk-management-framework/",
+      "date": "2023-05-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Six Policy Ideas for the National AI Strategy",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/six-ideas-for-national-ai-strategy/",
+      "date": "2023-07-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "FY24 NDAA AI Tracker",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/fy24-ndaa-ai-tracker/",
+      "date": "2023-07-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bio x AI Policy Development Sprint",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/accelerator/bio-ai-policy-sprint/",
+      "date": "2023-08-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Revolutionary Advances in AI Won’t Wait",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/innovation-in-ai-wont-wait/",
+      "date": "2023-08-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Trust Issues: An Analysis of NSF's Funding for Trustworthy AI",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/trust-issues/",
+      "date": "2023-09-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI in Action: Recommendations for AI Policy in Health, Education, and Labor",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/ai-in-action-help/",
+      "date": "2023-10-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "‘Safe, Secure, and Trustworthy AI’ is Necessary and Urgent, Says Federation of American Scientists (FAS)",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/biden-artificial-intelligence-executive-order/",
+      "date": "2023-10-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Understanding the Visa Policies under the AI Executive Order",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/unlocking-american-competitiveness-ai-eo/",
+      "date": "2023-10-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Tracking AI Provisions in FY 2024 Appropriations Bills",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/tracking-ai-provisions-in-fy24-appropriations-bills/",
+      "date": "2023-11-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Biorevolution is Underway. Now is the Time for Biology to Harness the Potential of Artificial Intelligence",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/federal-policy-recommendations-biology-to-harness-the-potential-of-artificial-intelligence/",
+      "date": "2023-12-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Automating Scientific Discovery: A Research Agenda for Advancing Self-Driving Labs",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/automating-scientific-discovery/",
+      "date": "2024-01-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Legislative Proposals to Deploy Artificial Intelligence Strategically",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/accelerator/ai-legislation/",
+      "date": "2024-03-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Can Preparedness Frameworks Pull Their Weight?",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/scaling-ai-safety/",
+      "date": "2024-03-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Federation of American Scientists Among Leading Technology Organizations Pushing Congress to Support Responsible AI Innovation NIST Funding Request",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/nist-funding-responsible-ai/",
+      "date": "2024-04-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bold Emerging Technologies and Artificial Intelligence Policy for 2025 and Beyond",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/day-one-project/emerging-tech/",
+      "date": "2024-04-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Establishing Data-Sharing Standards for AI Models in Healthcare",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/data-sharing-standards-healthcare/",
+      "date": "2024-06-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "A NIST Foundation to Support the Agency’s AI Mandate",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/nist-foundation/",
+      "date": "2024-06-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Establish a Teacher AI Literacy Development Program",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/teacher-ai-literacy-development/",
+      "date": "2024-06-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Establishing a National Center for AI in Education",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/ai-in-education/",
+      "date": "2024-06-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "How to Create an AI Incident Reporting System",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/establishing-an-ai-incident-reporting-system/",
+      "date": "2024-06-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Artificial Intelligence",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/initiative/artificial-intelligence/",
+      "date": "2024-06-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Creating an Early Warning System for AI-Powered Threats",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/an-early-warning-system-for-ai/",
+      "date": "2024-06-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Supporting States in Balanced Approaches to AI in K-12 Education",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/balanced-ai-in-education/",
+      "date": "2024-06-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "A National Training Program for AI-Ready Students",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/a-national-training-program-for-ai-ready-students/",
+      "date": "2024-06-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Creating a National Security AI Entrepreneur Visa",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/ai-entrepreneur-visa-legislative-sprint/",
+      "date": "2024-06-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Improving Health Outcomes Through AI",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/improving-health-equity-through-ai/",
+      "date": "2024-06-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Strengthening Children’s Online Voice Privacy",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/childrens-online-voice-privacy/",
+      "date": "2024-06-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Fostering an Evidence-Based Ecosystem for AI in Education",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/genaira/",
+      "date": "2024-06-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Safe Harbor for AI Researchers",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/safe-harbor-for-ai-researchers/",
+      "date": "2024-06-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Federation of American Scientists Joins in Support of Authorizing the US Artificial Intelligence Safety Institute (AISI) within the National Institute of Standards and Technology (NIST)",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/fas-ansi-nist/",
+      "date": "2024-07-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Public Comment on the U.S. Artificial Intelligence Safety Institute's Draft Document: NIST AI 800-1, Managing Misuse Risk for Dual-Use Foundation Models",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/nist-ai-800-1/",
+      "date": "2024-08-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Three Artificial Intelligence Bills Endorsed by Federation of American Scientists Advance from the House Committee",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/ai-bills-house/",
+      "date": "2024-09-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "A National Talent Surge for Teaching in the AI Era",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/national-talent-surge-ai-era-teachers/",
+      "date": "2024-11-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Accelerating Materials Science with AI and Robotics",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/accelerating-materials-science-with-ai-and-robotics/",
+      "date": "2024-11-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Driving Equitable Healthcare Innovations through AI for Medicaid",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/ai-for-medicaid-initiative/",
+      "date": "2024-12-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Modernizing AI Analysis in Education Contexts",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/modernizing-ai-fairness-analysis-in-education-contexts/",
+      "date": "2024-12-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Teacher Education Clearinghouse for AI and Data Science",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/teacher-education-clearinghouse-for-ai-and-data-science/",
+      "date": "2024-12-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Public Comment on Executive Branch Agency Handling of CAI",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/public-comment-executive-agency-handling-cai/",
+      "date": "2024-12-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Establishing an AI Corps to Accelerate HHS Transformation",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/ai-corps-hhs-transformation/",
+      "date": "2024-12-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Kickstarting Collaborative, AI-Ready Datasets in the Life Sciences",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/collaborative-datasets-life-sciences/",
+      "date": "2025-01-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "A National Guidance Platform for AI Acquisition",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/guidance-platform-ai-acquisition/",
+      "date": "2025-01-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Antitrust in the AI Era",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/antitrust-in-the-ai-era/",
+      "date": "2025-01-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Ensuring Child Safety in the AI Era",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/ensuring-child-safety-ai-era/",
+      "date": "2025-01-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Building a Digital Content Authentication Research Ecosystem",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/digital-content-authentication-ecosystem/",
+      "date": "2025-01-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "POLICY SPRINT: AI & Energy",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/accelerator/ai-energy-policy-sprint-2025/",
+      "date": "2025-01-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bring AI Governance to Competitive Grants",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/blank-checks-for-black-boxes/",
+      "date": "2025-01-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Strengthening Info Integrity with Provenance for AI-Generated Text",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/strengthening-information-integrity-provenance/",
+      "date": "2025-02-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Expanding Local Government Capacity for AI Procurement and Use",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/expanding-state-local-capacity-ai-procurement/",
+      "date": "2025-02-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Federation of American Scientists Calls on OMB to Maintain the Agency AI Use Case Inventories at Their Current Level of Detail",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/ai-use-case-current-level-of-detail/",
+      "date": "2025-03-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Federation of American Scientists and 16 Tech Organizations Call on OMB and OSTP to Maintain Agency AI Use Case Inventories",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/omb-ai-use-case-inventories/",
+      "date": "2025-03-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Securing American AI Leadership: A Strategic Action Plan for Innovation, Adoption, and Trust",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/rfi-development-of-artificial-intelligence-ai-action-plan/",
+      "date": "2025-03-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "FAS Statement on Generative AI Use",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/fas-statement-on-generative-ai-use/",
+      "date": "2025-04-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI, Energy, and Climate: What’s at Stake? Hint: A lot.",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/ai-energy-climate-whats-at-stake/",
+      "date": "2025-05-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Policy Ideas for a Safer AI Future",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/accelerator/policy-ideas-for-a-safer-ai-future/",
+      "date": "2025-06-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Accelerating AI Interpretability",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/accelerating-ai-interpretability/",
+      "date": "2025-06-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Accelerating R&D for Critical AI Assurance and Security Tech",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/accelerating-rd-for-critical-ai/",
+      "date": "2025-06-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "A National Center for Advanced AI Reliability and Security",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/a-national-center-for-advanced-ai-reliability-and-security/",
+      "date": "2025-06-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Codifying and Expanding Continuous AI Benchmarking",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/codifying-expanding-continuous-ai-benchmarking/",
+      "date": "2025-06-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Enhancing State and Local Government AI Capacity",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/grants-enhancing-state-local-ai-capacity/",
+      "date": "2025-06-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Risk Assessment Framework for AI Integration into Nuclear C3",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/risk-assessment-framework-ai-nuclear-weapons/",
+      "date": "2025-06-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Adaptive Reuse of Coal Infrastructure to Support Data Centers",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/adaptive-reuse-legacy-coal-infrastructure/",
+      "date": "2025-06-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Enhancing US Power Grid by using AI to Accelerate Permitting",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/enhancing-us-power-grid-by-using-ai-to-accelerate-permitting/",
+      "date": "2025-06-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "FAS Opposes Conditioning BEAD Funding on halting AI regulation",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/fas-opposes-ai-regulation-preemption/",
+      "date": "2025-06-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Unlocking AI’s Grid Modernization Potential",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/unlocking-ai-grid-modernization-potential/",
+      "date": "2025-06-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Advance AI with Cleaner Air and Healthier Outcomes",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/advance-ai-with-cleaner-air-and-healthier-outcomes/",
+      "date": "2025-06-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Reporting AI’s Impacts to Build Public Trust and Advance AI",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/reporting-ai-impact-to-build-public-trust/",
+      "date": "2025-06-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Measuring AI’s Energy/Environmental Footprint to Access Impacts",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/measuring-and-standardizing-ais-energy-footprint/",
+      "date": "2025-06-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Speed Grid Connection Using ‘Smart AI Fast Lanes’",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/speed-grid-connection-smart-ai-fast-lanes/",
+      "date": "2025-06-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Analyzing Grant Data to Reveal Science Frontiers with AI",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/ai-analyze-grant-data-science-frontiers/",
+      "date": "2025-07-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI x Global Risk Nexus Project",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/initiative/ai-x-global-risk-nexus-project/",
+      "date": "2025-07-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "What’s Progress and What’s Not in the AI Action Plan",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/trump-administrations-ai-action-plan/",
+      "date": "2025-07-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Making Healthcare AI Human-Centered",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/healthcare-ai-tools/",
+      "date": "2025-11-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Analytical Literacy First: A Prerequisite for AI, Data, and Digital Fluency",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/analytical-literacy-first/",
+      "date": "2025-11-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Federal coordination to support responsible AI deployment",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/fair-in-education-act/",
+      "date": "2026-01-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "States Can Lead on AI Implementation, Here's How",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/cali-ai-governance-state-implementation/",
+      "date": "2026-02-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI & Global Risk Capitol Hill Forum",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/event/ai-global-risk-summit/",
+      "date": "2026-04-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI & Global Risk Gala",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/event/ai-global-risk-gala/",
+      "date": "2026-04-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI x Global Risk Summit",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/ai-x-global-risk-summit/",
+      "date": "2026-04-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI x Global Risk Summit: Know Before You Go",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/kbyg-ai-x-global-risk-summit/",
+      "date": "2026-05-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Federation of American Scientists, Future of Life Institute Present Converging Risks Report, AI Impact Awards at Gala",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/converging-risks-report-ai-impact-awards/",
+      "date": "2026-05-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Rural Proofing Artificial Intelligence",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/making-rural-communities-visible-ai/",
+      "date": "2026-06-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Americans Would Trust AI More If Fairness Was Guaranteed. Here Are Ten Ways To Start.",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/source-code-launch-blog/",
+      "date": "2026-06-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Decision Subject Representative Program for AI Systems",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/decision-subject-representative-program-for-ai-systems/",
+      "date": "2026-06-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "FairCare Verification: A Human-Centered Path for AI in Medicaid",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/faircare-verification/",
+      "date": "2026-06-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Source Code: Building an AI Trust and Fairness Policy Agenda",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/accelerator/source-code/",
+      "date": "2026-06-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Fair AI-Fueled Data Center Development for Communities",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/community-benefit-agreements-data-center-development/",
+      "date": "2026-06-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Settlement Wins Against Big Tech Should Underwrite Digital Resilience Funds",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/settlement-wins-digital-resilience-funds/",
+      "date": "2026-06-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Establishing AI Procurement Guardrails for Student Safety",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/student-safety-ai-procurement-guardrails/",
+      "date": "2026-06-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Policy Agenda for Fostering Trust and Fairness in AI",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/policy-agenda-fairness-trust-ai-source-code/",
+      "date": "2026-06-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "How State Leaders Can Put People First in AI Decision-Making",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/put-people-first-in-ai-decision-making/",
+      "date": "2026-06-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "How AI’s Soft Law Sandcastles Can Become Hard Law Skyscrapers",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/ai-sandcastles-skyscrapers/",
+      "date": "2026-09-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "We Need An Independent AI Evaluation Clearinghouse (IAIEC) to Provide Accreditation, Funding, and Independence in the AI Assurance Ecosystem",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication/ai-evaluation-clearinghouse/",
+      "date": "2026-09-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Impact Awards Archives",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication-term/ai-impact-awards/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Legislative Sprint Archives",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication-term/ai-legislative-sprint/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI policy Archives",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication-term/ai-policy/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI safety Archives",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication-term/ai-safety/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI x Energy Sprint Archives",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication-term/ai-x-energy-sprint/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AISI Archives",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication-term/aisi/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "artifical intelligence Archives",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication-term/artifical-intelligence/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Artificial Intelligence Archives",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication-term/artificial-intelligence/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "deep fakes Archives",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication-term/deep-fakes/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "machine learning Archives",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication-term/machine-learning/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "nist-ai-800-1 Archives",
+      "publisher": "Federation of American Scientists",
+      "canonical_url": "https://fas.org/publication-term/nist-ai-800-1/",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
