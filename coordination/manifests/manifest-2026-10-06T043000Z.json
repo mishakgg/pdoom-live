@@ -1,0 +1,9 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-06T043000Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Merged pull request 280. Draft 250 stays open because the runtime image check failed. Drafts 281 through 286 record the World Economic Forum, Tsinghua AIR, DeepSeek, the Johns Hopkins Institute for Assured Autonomy, the Internet Society, and the Brennan Center.",
+  "follow_up_prs": [168, 250, 281, 282, 283, 284, 285, 286],
+  "origin_main_sha": "2eaa16d73a566648c333928914737eb89e0cb8f7"
+}
