@@ -1,0 +1,406 @@
+{
+  "catalog_id": "transluce_pages",
+  "description": "Metadata for public pages of Transluce, the interpretability research organization. Each stored URL was confirmed with one bounded GET of HTML from an official Transluce host. www.transluce.org redirects to transluce.org. Challenges and redirects off the host are omitted. Rows store the title, publisher, canonical URL, date, and rights. Page bodies, PDFs, quotes, and model outputs are not stored. A missing date is unknown. Updated, modified, and copyright years are not publication dates. creative_commons is CC0 or CC BY-SA. creative_commons_attribution is CC BY alone. Restricted deeds keep their own tokens. A restricted deed with a permissive deed stays unknown. uk_ogl requires the phrase open government licence. runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Eliciting Language Model Behaviors with Investigator Agents",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/automated-elicitation",
+      "date": "2024-10-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scaling Automatic Neuron Description",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/neuron-descriptions",
+      "date": "2024-10-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Monitor: An AI-Driven Observability Interface",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/observability-interface",
+      "date": "2024-10-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Releasing AI-driven tools for understanding AI systems",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/releasing-ai-tools",
+      "date": "2024-10-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Docent",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/docent/blog/introducing-docent",
+      "date": "2025-03-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Investigating truthfulness in a pre-release o3 model",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/investigating-o3-truthfulness",
+      "date": "2025-04-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Surfacing Pathological Behaviors in Language Models",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/pathological-behaviors",
+      "date": "2025-06-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Docent's public alpha",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/docent/blog/public-alpha",
+      "date": "2025-08-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Automatically Jailbreaking Frontier Language Models with Investigator Agents",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/jailbreaking-frontier-models",
+      "date": "2025-09-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Open-sourcing Docent",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/docent/blog/open-source",
+      "date": "2025-09-24",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "Training Language Models to Explain Their Own Computations",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/self-explanations",
+      "date": "2025-11-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Monitoring SWE-bench Agents",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/docent/blog/swe-bench",
+      "date": "2025-11-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Language Model Circuits Are Sparse in the Neuron Basis",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/neuron-circuits",
+      "date": "2025-11-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scalably Extracting Latent Representations of Users",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/user-modeling",
+      "date": "2025-11-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Predictive Concept Decoders",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/pcd",
+      "date": "2025-12-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Oversight Assistants: Turning Compute into Understanding",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/oversight-assistants",
+      "date": "2026-01-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Diagnosing a performance regression on Terminal-Bench with Docent",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/docent/blog/terminal-bench",
+      "date": "2026-02-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Building Technology to Drive AI Governance",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/building-technology-to-drive-ai-governance",
+      "date": "2026-02-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Analysis Plans",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/docent/blog/analysis-plans",
+      "date": "2026-06-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Toward A Public Science of Model Behavior",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/behavior-science",
+      "date": "2026-07-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "WeirdChat",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/weirdchat",
+      "date": "2026-07-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Foundation Models for Oversight",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/foundation-models-for-oversight",
+      "date": "2026-07-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Measuring coding agent misalignment in the wild",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/docent/blog/coding-agent-behaviors",
+      "date": "2026-08-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "User awareness in frontier models",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/user-awareness",
+      "date": "2026-08-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scaling Laws for Exact String Elicitation",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/elicitation-scaling-laws",
+      "date": "2026-08-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scaling Activation Oracles to Trillion-Parameter Models",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/scaling-activation-oracles",
+      "date": "2026-08-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mental Health Behavior Report",
+      "publisher": "Transluce",
+      "canonical_url": "https://behaviors.transluce.org/mental-health",
+      "date": "2026-08-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing Transluce's Mental Health Evaluation",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/announcing-mental-health-evaluation",
+      "date": "2026-08-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Some Focus Areas for Embedded Evaluations and How to Approach Them",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/embedded-evaluations",
+      "date": "2026-09-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Early rogue AI agent activity and attempts to hack found on urlquery.net",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/agent-activity",
+      "date": "2026-09-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Agents Targeted U.S. and Canadian Government Websites",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/us-canada-gov",
+      "date": "2026-09-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Transluce Behavior Reports",
+      "publisher": "Transluce",
+      "canonical_url": "https://behaviors.transluce.org/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Transluce",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Help Fund Scalable Democratic Oversight of AI",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/2025-fundraiser",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Company",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/about",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Docent - Analyze Complex AI Behaviors",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/docent",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Docent Blog",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/docent/blog",
+      "date": "unknown",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "Docent Changelog",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/docent/changelog",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Donate to Transluce",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/donate",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Llama 3.1 8B (AWQ) - Anger - Global Analysis",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/elicitation-detail/llama-anger-global",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Llama 3.1 8B (AWQ) - Anger - Local Alternatives Analysis",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/elicitation-detail/llama-anger-local",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Llama 3.1 8B - Harmful Advice - Global Analysis",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/elicitation-detail/llama-pills-global",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Llama 3.1 8B - Harmful Advice - Local Alternatives Analysis",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/elicitation-detail/llama-pills-local",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Qwen 2.5 7B (AWQ) - Anger - Global Analysis",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/elicitation-detail/qwen-anger-global",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Qwen 2.5 7B (AWQ) - Anger - Local Alternatives Analysis",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/elicitation-detail/qwen-anger-local",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Qwen 2.5 14B (AWQ) - Self-Harm - Global Analysis",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/elicitation-detail/qwen-self-harm-global",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Qwen 2.5 14B (AWQ) - Self-Harm - Local Alternatives Analysis",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/elicitation-detail/qwen-self-harm-local",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "RL Sample Visualizer",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/elicitation-detail/run-visualizer",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Independence and Transparency Policy",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/independence-and-transparency-policy",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Transluce Hires a Head of Governance",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/introducing-conrad",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Transluce",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/introducing-transluce",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Incident Reports",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/investigations",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "News",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/news",
+      "date": "unknown",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "Oversight Foundations Blog",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/oversight-foundations",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Responsible Disclosure Policy",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/responsible-disclosure-policy",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Tools",
+      "publisher": "Transluce",
+      "canonical_url": "https://transluce.org/tools",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Transluce Trust Center",
+      "publisher": "Transluce",
+      "canonical_url": "https://trust.transluce.org/",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
