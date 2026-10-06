@@ -1,0 +1,6 @@
+{
+  "catalog_id": "epic_ai_pages",
+  "description": "Metadata for public Electronic Privacy Information Center AI, machine-learning, and AI-policy pages. Hosts are epic.org and www.epic.org. Rows store title, publisher, canonical URL, date, and rights. Page text is not stored. Empty because a Cloudflare challenge blocked /, https://www.epic.org/, /wp-sitemap.xml, /issues/ai/, /issues/artificial-intelligence/, /ai/, https://www.epic.org/issues/ai/, and /issues/consumer-privacy/artificial-intelligence/. robots.txt allows those paths. /wp/wp-admin/ is disallowed and was not fetched. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix. A missing date is unknown. Updated, modified, and copyright years are not publication dates. Not a belief collector. runner_wired stays false.",
+  "runner_wired": false,
+  "entries": []
+}
