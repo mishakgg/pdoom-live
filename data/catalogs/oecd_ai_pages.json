@@ -1,0 +1,560 @@
+{
+  "catalog_id": "oecd_ai_pages",
+  "description": "Metadata for confirmed public pages of the OECD.AI Policy Observatory at https://oecd.ai. Each stored URL was confirmed with one bounded GET that returned HTML on that host. A Cloudflare challenge, a SiteGround captcha, an HTTP 202 challenge, an Akamai 403, a robots disallow, a non-HTML response, or a redirect off-host is not stored. Rows store a title, publisher, canonical URL, date, and rights label. Abstracts, chart data, indicator tables, and page bodies are not stored. Rights stay unknown unless the page states a reuse licence. creative_commons means only CC0, CC BY, or CC BY-SA. A copyright notice is not a licence. A missing publication date stays unknown. Updated, modified, and copyright years are not publication dates. runner_wired is false. This catalog is not a belief collector.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "The OECD Artificial Intelligence Policy Observatory",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "About the Global Partnership on Artificial Intelligence (GPAI)",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/about/about-gpai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "About OECD.AI",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/about/about-oecd-ai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Background",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/about/background",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "About the OECD Working Party on Artificial Intelligence Governance (AIGO)",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/about/network-of-experts",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Partners",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/about/partners",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "The context",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/about/the-context",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Principles Overview",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/ai-principles",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Papers & Publications",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/ai-publications",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Policy Toolkit",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/ai-toolkit/get-started",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Catalogue of Tools & Metrics for Trustworthy AI",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/catalogue/overview",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Survey for the classification of AI Systems",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/classificationsurvey",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Wonk community",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/community",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Contact",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/contact",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Policies",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/dashboards/overview",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Live data from OECD.AI",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/data",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generative AI",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/genai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Live data on generative AI use and development",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/genai/data",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generative AI: external resources",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/genai/external-resources",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "The benefits of generative AI",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/genai/issues/benefits",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generative AI – The issues",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/genai/issues/overview",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generative AI: the risks and the unknowns",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/genai/issues/risks-and-unknowns",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generative AI: initiatives & policies",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/genai/policies-and-initiatives",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generative AI publications",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/genai/publications",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generative AI Videos",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/genai/videos",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI in Government: Overview",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/gov",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "List of participants in the OECD Expert Group on AI (AIGO)",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/list-of-participants-oecd-expert-group-on-ai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "OECD methods & metrics for trustworthy AI",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/oecd-metrics-and-methods",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Policy Areas Overview",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/policy-areas",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Search",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/search",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Compute Overview",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-compute",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Compute Posts",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-compute/blog-posts",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Compute and climate: live data",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-compute/data",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Compute Climate Discussions",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-compute/discussions",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI compute & climate: external resources",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-compute/external-resources",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Compute & climate: meeting summaries",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-compute/meeting-summaries",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Compute & climate: publications",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-compute/publications",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Compute Videos",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-compute/videos",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Futures overview",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-futures",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Futures Posts",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-futures/blog-posts",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Futures",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-futures/data",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Futures Discussions",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-futures/discussions",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Futures Experts",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-futures/experts",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Futures – External resources",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-futures/external-resources",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Futures – Meeting summaries",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-futures/meeting-summaries",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Futures - Publications",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-futures/publications",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Futures Videos",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/ai-futures/videos",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Data privacy – Overview",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/data-privacy",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Health Overview",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/health",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI incidents Overview",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/incidents",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Incidents Posts",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/incidents/blog-posts",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Incidents",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/incidents/data",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Incidents Discussions",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/incidents/discussions",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Incidents Experts",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/incidents/experts",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Incidents External Resources",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/incidents/external-resources",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Incidents Meeting Summaries",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/incidents/meeting-summaries",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Incidents Publications",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/incidents/publications",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Incidents Videos",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/incidents/videos",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Risk & Accountability Overview",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/risk-accountability",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Risk & Accountability Posts",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/risk-accountability/blog-posts",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Risk & Accountability",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/risk-accountability/data",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Risk Accountability Discussions",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/risk-accountability/discussions",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Risk Accountability Experts",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/risk-accountability/experts",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Risk Accountability External Resources",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/risk-accountability/external-resources",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Risk Accountability Meeting Summaries",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/risk-accountability/meeting-summaries",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Risk Accountability Publications",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/risk-accountability/publications",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Risk & Accountability Videos",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/site/risk-accountability/videos",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Survey : Practical use cases for implementation of the OECD AI Principles",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/survey",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "HAIP Reporting Framework",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/transparency/overview",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Trends & data Overview",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/trends-and-data",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Videos",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/videos",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "The AI Wonk",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/wonk",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "OECD Programme on AI in Work, Innovation, Productivity and Skills",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/work-innovation-productivity-skills",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Events",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/work-innovation-productivity-skills/events",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Live data",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/work-innovation-productivity-skills/live-data",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Working Group on Data Governance",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/working-group-data-governance",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Future of Work",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/working-group-future-of-work",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Working Group on Innovation and Commercialisation",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/working-group-innovation-and-commercialisation",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Working Group on Responsible AI",
+      "publisher": "OECD.AI",
+      "canonical_url": "https://oecd.ai/en/working-group-responsible-ai",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
