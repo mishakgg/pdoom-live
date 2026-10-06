@@ -1,0 +1,35 @@
+{
+  "catalog_id": "cmu_ai_pages",
+  "description": "Metadata for public Carnegie Mellon University AI research and news HTML pages. Hosts are ai.cmu.edu and www.ai.cmu.edu. www.ai.cmu.edu does not resolve, so that host is an empty catalog. Each stored URL was confirmed with one bounded GET of HTML on ai.cmu.edu. robots.txt allows these research and news paths. Person profiles, login walls, PDFs, and redirects off these hosts are omitted. Other cmu.edu hosts are omitted. Rows store a title, publisher, canonical URL, publication date, and rights. Page text is not stored. creative_commons_attribution means CC BY alone. creative_commons means CC0, CC BY-SA, or a permissive mix of those. A missing publication date is unknown. Updated, modified, and copyright years are not publication dates. This catalog is not a belief collector and runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Research and Policy Impact",
+      "publisher": "Carnegie Mellon University AI",
+      "canonical_url": "https://ai.cmu.edu/research-and-policy-impact",
+      "date": "2025-07-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI for Science",
+      "publisher": "Carnegie Mellon University AI",
+      "canonical_url": "https://ai.cmu.edu/research-and-policy-impact/ai-for-science",
+      "date": "2025-07-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "History of AI at CMU",
+      "publisher": "Carnegie Mellon University AI",
+      "canonical_url": "https://ai.cmu.edu/research-and-policy-impact/history-of-ai-at-cmu",
+      "date": "2025-07-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI News and Events",
+      "publisher": "Carnegie Mellon University AI",
+      "canonical_url": "https://ai.cmu.edu/ai-news-and-events",
+      "date": "2025-10-08",
+      "rights": "unknown"
+    }
+  ]
+}
