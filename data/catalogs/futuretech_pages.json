@@ -1,0 +1,588 @@
+{
+  "catalog_id": "futuretech_pages",
+  "description": "Metadata for public MIT FutureTech research and publication pages on futuretech.mit.edu. Each stored URL was confirmed with one bounded GET. robots.txt does not disallow these paths. A challenge, an HTTP error, a non-HTML body, a robots disallow, or an off-host redirect is not stored. PDFs, downloads, and other mit.edu hosts are omitted. Rows keep a title, publisher, canonical URL, date, and rights label. Page bodies, abstracts, quotes, transcripts, and charts are not stored. Updated, modified, and copyright years are not publication dates. creative_commons_attribution means only CC BY. creative_commons means CC0, CC BY-SA, or a permissive mix of those. Restricted CC deeds keep their own tokens. This module does not fetch. It is not a belief collector, and runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "The Economic Impact of Moore's Law: Evidence from When it Faltered",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/the-economic-impact-of-moores-law-evidence-from-when-it-faltered",
+      "date": "2017-01-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Does Winning a Patent Race lead to more follow-on Innovation?",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/does-winning-a-patent-race-lead-to-more-follow-on-innovation",
+      "date": "2017-01-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "University licensing and the flow of scientific knowledge",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/university-licensing-and-the-flow-of-scientific-knowledge",
+      "date": "2017-07-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Science Is Shaped by Wikipedia: Evidence From a Randomized Control Trial",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/science-is-shaped-by-wikipedia-evidence-from-a-randomized-control-trial",
+      "date": "2017-09-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "First Solar",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/first-solar",
+      "date": "2017-09-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Decomposing the \"Tacit Knowledge Problem:\" Codification of Knowledge and Access in CRISPR Gene-Editing",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/decomposing-the-tacit-knowledge-problem-codification-of-knowledge-and-access-in-crispr-gene-editing",
+      "date": "2017-11-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Trade Offs in Firm Culture? Nope You Can Have it All",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/trade-offs-firm-culture-nope-you-can-have-it-all",
+      "date": "2018-08-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Gene synthesis allows biologists to source genes from farther away in the tree of life",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/gene-synthesis-allows-biologists-to-source-genes-from-farther-away-in-the-tree-of-life",
+      "date": "2018-10-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "How to Measure and Draw Causal Inferences with Patent Scope",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/how-to-measure-draw-causal-inferences-patent-scope",
+      "date": "2019-05-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Close Relationship Between Management Practices and Corporate Culture",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/close-relationship-management-practices-corporate-culture",
+      "date": "2019-10-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Why Innovation's Future Isn't (Just) Open",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/why-innovations-future-isnt-just-open",
+      "date": "2020-05-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Building the algorithm commons: Who discovered the algorithms that underpin computing in the modern enterprise?",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/building-the-algorithm-commons-who-discovered-the-algorithms-that-underpin-computing-in-the-modern-enterprise",
+      "date": "2020-06-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "There's plenty of room at the Top: What will drive computer performance after Moore's law?",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/theres-plenty-of-room-at-the-top-what-will-drive-computer-performance-after-moores-law",
+      "date": "2020-06-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Computational Limits of Deep Learning",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/the-computational-limits-of-deep-learning",
+      "date": "2020-07-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Decline of Computers as a General Purpose Technology",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/the-decline-of-computers-as-a-general-purpose-technology",
+      "date": "2021-03-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "How Fast do Algorithms Improve?",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/how-fast-do-algorithms-improve",
+      "date": "2021-09-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Deep Learning's Diminishing Returns: The Cost of Improvement is Becoming Unsustainable",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/deep-learning-diminishing-returns",
+      "date": "2021-10-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Compute Trends Across Three Eras of Machine Learning",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/compute-trends-across-three-eras-of-machine-learning",
+      "date": "2022-02-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Importance of (Exponentially More) Computing Power",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/the-importance-of-exponentially-more-computing-power",
+      "date": "2022-06-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Trial by Internet: A Response to Judicial Critics",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/trial-by-internet-response-to-judicial-critics",
+      "date": "2022-06-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Trial by Internet: A Randomized Field Experiment on Wikipedia's Influence on Judges' Legal Reasoning",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/trial-by-internet-randomized-field-experiment",
+      "date": "2022-08-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Intentional and serendipitous diffusion of ideas: Evidence from academic conferences",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/intentional-serendipitous-diffusion-ideas",
+      "date": "2022-09-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Why Innovators in China Stay Close to the Market",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/why-innovators-china-stay-close-market",
+      "date": "2022-09-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "The growing influence of industry in AI research",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/the-growing-influence-of-industry-in-ai-research",
+      "date": "2023-03-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Democratising case law while teaching students: writing Wikipedia articles on legal cases",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/democratising-case-law-teaching-students",
+      "date": "2023-06-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Grand Illusion: The Myth of Software Portability and Implications for ML Progress",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/grand-illusion-myth-software-portability",
+      "date": "2023-09-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Unleash the Unexpected for Radical Innovation",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/unleash-unexpected-radical-innovation",
+      "date": "2023-09-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Large Language Model Routing with Benchmark Datasets",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/large-language-model-routing-benchmark-datasets",
+      "date": "2023-09-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "What should be done about the growing influence of industry in AI research?",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/what-should-be-done-growing-influence-industry-ai-research",
+      "date": "2023-12-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Compute Divide in Machine Learning: A Threat to Academic Contribution and Scrutiny?",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/compute-divide-machine-learning",
+      "date": "2024-01-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Beyond AI Exposure: Which Tasks are Cost-Effective to Automate with Computer Vision?",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/beyond-ai-exposure-which-tasks-are-cost-effective-to-automate-with-computer-vision",
+      "date": "2024-02-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Algorithmic progress in language models",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/algorithmic-progress-in-language-models",
+      "date": "2024-03-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "User-generated content shapes judicial reasoning: Evidence from a randomized control trial on Wikipedia",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/user-generated-content-shapes-judicial-reasoning",
+      "date": "2024-03-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Model for Estimating the Economic Costs of Computer Vision Systems That Use Deep Learning",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/model-for-estimating-economic-costs-computer-vision",
+      "date": "2024-03-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Neural Scaling Laws for Embodied AI",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/neural-scaling-laws-embodied-ai",
+      "date": "2024-05-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Neural Scaling Laws in Robotics",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/neural-scaling-laws-robotics",
+      "date": "2024-05-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "The AI Risk Repository: A Comprehensive Meta-Review, Database, and Taxonomy of Risks From Artificial Intelligence",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/the-ai-risk-repository",
+      "date": "2024-08-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "The last mile problem: Why job automation will be slower than technological progress suggests",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/last-mile-problem-job-automation",
+      "date": "2024-08-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Economic impacts of AI-augmented R&D",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/economic-impacts-ai-augmented-rd",
+      "date": "2024-09-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Environmental uncertainty and entrepreneurial orientation in collectivist and individualist cultures: evidence from Brazil and Belgium",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/environmental-uncertainty-entrepreneurial-orientation",
+      "date": "2024-09-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Damocles's Switchboard: Information Externalities and the Autocratic Logic of Internet Control",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/damocless-switchboard-information-externalities-and-the-autocratic-logic-of-internet-control",
+      "date": "2024-10-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "The dual edges of AI: Advancing knowledge while reducing diversity",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/the-dual-edges-of-ai",
+      "date": "2025-05-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Expertise",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/expertise",
+      "date": "2025-06-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Meek Models Shall Inherit the Earth",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/meek-models-shall-inherit-the-earth",
+      "date": "2025-06-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Quantum Tortoise and the Classical Hare: When Will Quantum Computers Outpace Classical Ones and When Will They Be Left Behind?",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/the-quantum-tortoise-and-the-classical-hare",
+      "date": "2025-06-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing the Quantum Economic Advantage Online Calculator",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/introducing-the-quantum-economic-advantage-online-calculator",
+      "date": "2025-08-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Quantum Advantage in Computational Chemistry?",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/quantum-advantage-in-computational-chemistry",
+      "date": "2025-08-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mapping the Impact of Foundation Models on the UN Sustainable Development Goals",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/mapping-the-impact-of-foundation-models-on-the-un-sustainable-development-goals-kse1w",
+      "date": "2025-09-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Do Larger Firms Exert More Market Power? Markups and Markdowns along the Size Distribution",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/market-power-size",
+      "date": "2025-09-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Reconceiving the National Research Enterprise",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/reconceiving-the-national-research-enterprise",
+      "date": "2025-10-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mapping the AI Governance Landscape",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/mapping-the-ai-governance-landscape",
+      "date": "2025-10-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "LLMs in Citation Intent Classification: Progress, Precision, and Reproducibility Challenge",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/llms-in-citation-intent-classification-progress-precision-and-reproducibility-challenge",
+      "date": "2025-10-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Quantum Deep Learning Still Needs a Quantum Leap",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/quantum-deep-learning-still-needs-a-quantum-leap",
+      "date": "2025-11-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Rapid Growth of AI Foundation Model Usage in Science",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/the-rapid-growth-of-ai-foundation-model-usage-in-science",
+      "date": "2025-11-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "EvilGenie: A Reward Hacking Benchmark",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/evilgenie-a-reward-hacking-benchmark",
+      "date": "2025-11-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "On the Origin of Algorithmic Progress in AI",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/on-the-origin-of-algorithmic-progress-in-ai-u7f18",
+      "date": "2025-11-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "How fast are algorithms reducing the demands on memory? A survey of progress in space complexity",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/how-fast-are-algorithms-reducing-the-demands-on-memory-a-survey-of-progress-in-space-complexity",
+      "date": "2025-11-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Price of Progress: Algorithmic Efficiency and the Falling Cost of AI Inference",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/the-price-of-progress-algorithmic-efficiency-and-the-falling-cost-of-ai-inference",
+      "date": "2025-11-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mapping AI Risk Mitigations: Evidence Scan and Preliminary AI Risk Mitigation Taxonomy",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/mapping-ai-risk-mitigations-evidence-scan-and-preliminary-ai-risk-mitigation-taxonomy",
+      "date": "2025-12-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI and Scale: A Quantitative Task-Based Theory of Automation",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/ai-and-scale-a-quantitative-task-based-theory-of-automation",
+      "date": "2026-01-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Four Facts About U.S.-China AI Competition in Science",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/four-facts-about-u-s--china-ai-competition-in-science",
+      "date": "2026-01-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "How Much Progress Has There Been in NVIDIA Datacenter GPUs?",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/how-much-progress-has-there-been-in-nvidia-datacenter-gpus",
+      "date": "2026-01-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Is there \"Secret Sauce'' in Large Language Model Development?",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/is-there-secret-sauce-in-large-language-model-development",
+      "date": "2026-02-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Identifying Rent-Sharing using Firms’ Energy Input Mix",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/identifying-rent-sharing-using-firms-energy-input-mix",
+      "date": "2026-02-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "The AI risk repository: A meta-review, database, and taxonomy of risks from artificial intelligence",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/the-ai-risk-repository-a-meta-review-database-and-taxonomy-of-risks-from-artificial-intelligence",
+      "date": "2026-03-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "From Shares to Machines: How Common Ownership Drives Automation",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/from-shares-to-machines-how-common-ownership-drives-automation",
+      "date": "2026-04-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Incident Monitoring through a Public Health Lens",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/ai-incident-monitoring-through-a-public-health-lens",
+      "date": "2026-04-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "A simple classification of AI incident trajectories",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/a-simple-classification-of-ai-incident-trajectories",
+      "date": "2026-04-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI and Scale: A Quantitative Task-Based Theory of Automation",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/ai-and-scale-a-quantitative-task-based-theory-of-automation-2",
+      "date": "2026-05-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Risks Create a Jagged Frontier of LLM Productivity Gains Across Computer Occupations",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/risks-create-a-jagged-frontier-of-llm-productivity-gains-across-computer-occupations",
+      "date": "2026-05-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Prioritization of Risks from Artificial Intelligence: A Delphi Study of 272 International Experts",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/prioritization-of-risks-from-artificial-intelligence-a-delphi-study-of-272-international-experts",
+      "date": "2026-06-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Shrinking Lifespan of LLMs in Science",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/the-shrinking-lifespan-of-llms-in-science",
+      "date": "2026-06-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Two AI Metrics Diverged: Will it Make All the Difference?",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/two-ai-metrics-diverged-will-it-make-all-the-difference",
+      "date": "2026-07-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Adoption in S&P 500 Firms",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/ai-adoption-in-s-p-500-firms",
+      "date": "2026-07-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Crashing Waves vs. Rising Tides: Preliminary Findings on AI Automation from Thousands of Worker Evaluations of Labor Market Tasks",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/crashing-waves-vs-rising-tides-preliminary-findings-on-ai-automation-from-thousands-of-worker-evaluations-of-labor-market-tasks",
+      "date": "2026-07-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Birth, Life, and Death of AI Models",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/birth-life-and-death-of-ai-models",
+      "date": "2026-09-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scientific Work",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/scientific-work",
+      "date": "2026-09-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "The AI-Enabled Scientific Frontier",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/the-ai-enabled-scientific-frontier-3h8uh",
+      "date": "2026-09-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI in Science: Early Insights",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/ai-in-science-early-insights",
+      "date": "2026-09-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mapping U.S. Federal AI Governance Against Sector Vulnerability",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/mapping-u-s-federal-ai-governance-against-sector-vulnerability",
+      "date": "2026-09-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Shrinking Lifespan of LLMs in Science",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/the-shrinking-lifespan-of-llms-in-science-2",
+      "date": "2026-09-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Open Science, Closed Models: How Funding Shapes AI in Science",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/publication/open-science-closed-models-how-funding-shapes-ai-in-science",
+      "date": "2026-09-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research",
+      "publisher": "MIT FutureTech",
+      "canonical_url": "https://futuretech.mit.edu/research",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
