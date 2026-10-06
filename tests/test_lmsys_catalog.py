@@ -71,7 +71,7 @@ CONFIRMED = {
     "https://www.lmsys.org/blog/2023-10-30-toxicchat": (
         "ToxicChat: A Benchmark for Content Moderation in Real-world User-AI Interactions",
         "2023-10-30",
-        "cc-by-nc",
+        "cc_by_nc",
     ),
     "https://www.lmsys.org/blog/2023-03-30-vicuna": (
         "Vicuna: An Open-Source Chatbot Impressing GPT-4 with 90%* ChatGPT Quality",
@@ -288,29 +288,38 @@ def test_hyphen_is_a_word_boundary_so_cc_by_does_not_match_cc_by_nc():
 
 
 def test_by_nc_url_is_not_read_as_cc_by():
-    page = '<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY</a>'
-    assert rights_from_page(page) == RIGHTS_CC_BY_NC
-    single = "<a href='https://creativecommons.org/licenses/by-nc-nd/4.0/'>CC BY</a>"
-    assert rights_from_page(single) == RIGHTS_CC_BY_NC_ND
+    deceptive = [
+        '<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY</a>',
+        "<a href='https://creativecommons.org/licenses/by-nd/4.0/'>CC BY</a>",
+        '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-SA</a>',
+        "<a href='https://creativecommons.org/licenses/by-nc-nd/4.0/'>CC BY</a>",
+        '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC BY</a>',
+        '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC BY-SA</a>',
+        '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC0</a>',
+    ]
+    for page in deceptive:
+        assert rights_from_page(page) == RIGHTS_UNKNOWN
+    matching = '<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>'
+    assert rights_from_page(matching) == RIGHTS_CC_BY_NC
     by_url = '<a href="https://creativecommons.org/licenses/by/4.0/">licence</a>'
     assert rights_from_page(by_url) == RIGHTS_CREATIVE_COMMONS
     generic = '<a href="https://creativecommons.org/licenses/">Creative Commons</a>'
     assert rights_from_page(generic) == RIGHTS_UNKNOWN
 
 
-def test_mixed_restricted_and_permissive_keeps_the_restricted_deed():
+def test_mixed_restricted_and_permissive_stays_unknown():
     mixed = "<p>Licensed under CC BY 4.0 and CC BY-NC 4.0.</p>"
-    assert rights_from_page(mixed) == RIGHTS_CC_BY_NC
+    assert rights_from_page(mixed) == RIGHTS_UNKNOWN
     zero_and_nd = (
         "<p>Licensed under CC0.</p>"
         '<a href="https://creativecommons.org/licenses/by-nd/4.0/">NoDerivatives</a>'
     )
-    assert rights_from_page(zero_and_nd) == RIGHTS_CC_BY_ND
+    assert rights_from_page(zero_and_nd) == RIGHTS_UNKNOWN
     by_sa_and_nc = (
         '<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>'
         "<p>Figures are available under CC BY-NC-ND.</p>"
     )
-    assert rights_from_page(by_sa_and_nc) == RIGHTS_CC_BY_NC_ND
+    assert rights_from_page(by_sa_and_nc) == RIGHTS_UNKNOWN
 
 
 def test_public_domain_mark_is_not_cc0():

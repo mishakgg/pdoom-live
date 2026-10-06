@@ -8,12 +8,15 @@ a captcha, HTTP 202, an Akamai 403, a non-HTML response, or an off-host
 redirect is not stored.
 
 ``creative_commons`` means only CC0, CC BY, or CC BY-SA. CC BY-NC, CC BY-ND,
-CC BY-NC-SA, and CC BY-NC-ND are their own tokens and are never folded into
-``creative_commons``. A restricted deed wins when a permissive deed is also
-present. A hyphen is a word boundary, so CC BY does not match CC BY-NC, and
+CC BY-NC-SA, and CC BY-NC-ND are their own tokens (``cc_by_nc``, ``cc_by_nd``,
+``cc_by_nc_sa``, ``cc_by_nc_nd``) and are never folded into ``creative_commons``.
+A page that states both a restricted deed and a permissive deed stays unknown.
+A hyphen is a word boundary, so CC BY does not match CC BY-NC, and
 licenses/by does not match licenses/by-nc. A generic creativecommons.org/licenses/
-URL is not a permissive deed. The Public Domain Mark is not CC0. apache-2.0
-and mit are their own tokens and are not folded into ``creative_commons``.
+URL is not a permissive deed. The Public Domain Mark is not CC0. An anchor
+whose visible text says CC BY, CC BY-SA, or CC0 while the link is a restricted
+or Public Domain Mark URL stays unknown. apache-2.0 and mit are their own
+tokens and are not folded into ``creative_commons``.
 A copyright notice, All rights reserved, a terms link, and a host name are
 not licences.
 
@@ -41,10 +44,10 @@ CATALOG_FILENAME = "lmsys_pages.json"
 RUNNER_WIRED = False
 PUBLISHER = "LMSYS Org"
 RIGHTS_CREATIVE_COMMONS = "creative_commons"
-RIGHTS_CC_BY_NC = "cc-by-nc"
-RIGHTS_CC_BY_ND = "cc-by-nd"
-RIGHTS_CC_BY_NC_SA = "cc-by-nc-sa"
-RIGHTS_CC_BY_NC_ND = "cc-by-nc-nd"
+RIGHTS_CC_BY_NC = "cc_by_nc"
+RIGHTS_CC_BY_ND = "cc_by_nd"
+RIGHTS_CC_BY_NC_SA = "cc_by_nc_sa"
+RIGHTS_CC_BY_NC_ND = "cc_by_nc_nd"
 RIGHTS_MIT = "mit"
 RIGHTS_APACHE = "apache-2.0"
 RIGHTS_UNKNOWN = "unknown"
@@ -81,6 +84,7 @@ _META = re.compile(r"(?is)<meta\b[^>]*>")
 _H1 = re.compile(r"(?is)<h1\b[^>]*>(.*?)</h1>")
 _TITLE = re.compile(r"(?is)<title\b[^>]*>(.*?)</title>")
 _LINKISH = re.compile(r"(?is)<(?:a|link)\b[^>]*>")
+_ANCHOR = re.compile(r"(?is)<a\b([^>]*)>(.*?)</a>")
 _ATTR = re.compile(
     r"""(?is)([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+))"""
 )
@@ -244,6 +248,18 @@ _EXACT_APACHE = frozenset({"apache-2.0", "apache-2", "apache2.0"})
 # A grant such as "released under CC-BY-NC-4.0" is scanned separately.
 _CHART_DEED = re.compile(
     r"\bcc-by(?:-nc)?(?:-sa|-nd)?(?:-\d+(?:\.\d+)?| \d+(?:\.\d+)?)\b"
+)
+# Visible CC BY, CC BY-SA, or CC0 on a restricted or Public Domain Mark URL.
+_DECEPTIVE_LABEL = re.compile(
+    r"\bcc[\s-]*by[\s-]*sa\b"
+    r"|\bcc[\s-]*by\b(?![\s-]*(?:nc|nd|sa)\b)"
+    r"|\bcc[\s-]*0\b|\bcc0\b|\bcc[\s-]*zero\b"
+)
+_DECEPTIVE_HREF = re.compile(
+    r"creativecommons\.org/"
+    r"(?:licenses/(?:by-nc-nd|by-nc-sa|by-nc|by-nd)|publicdomain/mark)"
+    r"(?![a-z0-9-])",
+    re.I,
 )
 
 
@@ -450,21 +466,38 @@ def record_from_response(
     return page_record(page_html, page_url=confirmed)
 
 
+def _deceptive_permissive_anchor(visible_html: str) -> bool:
+    """True when anchor text says CC BY, CC BY-SA, or CC0 but the href does not."""
+
+    for attrs, inner in _ANCHOR.findall(visible_html):
+        href = _attrs(f"<a{attrs}>").get("href", "")
+        if not href or _DECEPTIVE_HREF.search(_normalize_licence_text(href)) is None:
+            continue
+        label = _plain_text(inner).casefold().translate(_DASHES)
+        if _DECEPTIVE_LABEL.search(label):
+            return True
+    return False
+
+
 def rights_from_page(page_text: str) -> str:
     """Return a rights token from a reuse licence the page itself states.
 
-    ``creative_commons`` means CC0, CC BY, or CC BY-SA only. CC BY-NC,
-    CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay their own tokens. A restricted
-    deed wins when a permissive deed is also present. The Public Domain Mark
-    is not CC0. apache-2.0 and mit stay their own tokens. A copyright notice,
-    All rights reserved, a terms link, a host name, and a model-licence cell
-    are not the page licence. Script and style text does not count.
+    ``creative_commons`` means CC0, CC BY, or CC BY-SA only. A sole CC BY-NC,
+    CC BY-ND, CC BY-NC-SA, or CC BY-NC-ND deed stays its own token. When a
+    restricted deed and a permissive deed are both present, the label stays
+    unknown. An anchor whose text says CC BY, CC BY-SA, or CC0 and whose href
+    is a restricted or Public Domain Mark URL stays unknown. The Public Domain
+    Mark is not CC0. apache-2.0 and mit stay their own tokens. A copyright
+    notice, All rights reserved, a terms link, a host name, and a model-licence
+    cell are not the page licence. Script and style text does not count.
     """
 
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     visible = _HIDDEN.sub(" ", page_text)
     plain = _plain_text(visible).casefold().translate(_DASHES)
+    if _deceptive_permissive_anchor(visible):
+        return RIGHTS_UNKNOWN
     # Chart cells are removed from the prose scan. Grant sentences keep them.
     codes = _cc_codes(_CHART_DEED.sub(" ", plain))
     for href in _hrefs(visible):
@@ -472,6 +505,9 @@ def rights_from_page(page_text: str) -> str:
     for match in _GRANT.finditer(plain):
         codes.update(_cc_codes(_normalize_licence_text(match.group(0))))
     restricted = [token for code, token in _RESTRICTED_TOKENS if code in codes]
+    permissive = bool(codes & _PERMISSIVE)
+    if restricted and permissive:
+        return RIGHTS_UNKNOWN
     if restricted:
         return restricted[0]
     if "mark" in codes or "public domain mark" in plain:
@@ -479,7 +515,6 @@ def rights_from_page(page_text: str) -> str:
     scopes = _licence_scopes(page_text, visible, plain)
     mit = any(_states_mit(scope) for scope in scopes)
     apache = any(_states_apache(scope) for scope in scopes)
-    permissive = bool(codes & _PERMISSIVE)
     if permissive and (mit or apache):
         return RIGHTS_UNKNOWN
     if mit and apache:
@@ -619,7 +654,7 @@ def _cc_codes(text: str) -> set[str]:
         ):
             codes.add("by-sa")
         if re.search(
-            r"\battribution\b(?![\s-]*(?:non[\s-]*commercial|no[\s-]*deriv|share[\s-]*alike|nc|nd|sa)\b)",
+            r"\battribution\b(?![\s-]*(?:non[\s-]*commercial|no[\s-]*deriv|share[\s-]*alike|nc|nd|sa))",
             text,
         ):
             codes.add("by")
