@@ -23,6 +23,7 @@ from pdoom_pipeline.catalogs.grayswan import (
     RIGHTS_CC_BY_ND,
     RIGHTS_CREATIVE_COMMONS,
     RIGHTS_MIT,
+    RIGHTS_MPL,
     RIGHTS_UNKNOWN,
     RUNNER_WIRED,
     UNKNOWN_DATE,
@@ -876,12 +877,18 @@ def test_mit_and_apache_are_not_creative_commons():
     assert rights_from_page("<p>apache-2.0</p>") == RIGHTS_APACHE
     assert rights_from_page("<p>Licensed under the Apache License 2.0.</p>") == RIGHTS_APACHE
     assert rights_from_page("<p>The Massachusetts Institute of Technology.</p>") == RIGHTS_UNKNOWN
-    assert rights_from_page("<p>CC BY 4.0 and the MIT License.</p>") == RIGHTS_CREATIVE_COMMONS
-    assert rights_from_page("<p>CC BY-NC 4.0 and apache-2.0.</p>") == RIGHTS_CC_BY_NC
+    assert rights_from_page("<p>MPL-2.0</p>") == RIGHTS_MPL
+    assert rights_from_page("<p>Mozilla Public License 2.0</p>") == RIGHTS_MPL
+    assert rights_from_page("<p>CC BY 4.0 and the MIT License.</p>") == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>CC BY-NC 4.0 and apache-2.0.</p>") == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>CC0 and MPL-2.0.</p>") == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>CC BY-SA 4.0 and the MIT License.</p>") == RIGHTS_UNKNOWN
     document = copy.deepcopy(load_catalog())
     document["entries"][0]["rights"] = RIGHTS_MIT
     validate_catalog(document)
     document["entries"][0]["rights"] = RIGHTS_APACHE
+    validate_catalog(document)
+    document["entries"][0]["rights"] = RIGHTS_MPL
     validate_catalog(document)
     document["entries"][0]["rights"] = RIGHTS_CC_BY_NC
     validate_catalog(document)

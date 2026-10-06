@@ -13,10 +13,11 @@ and licenses/by must not match licenses/by-nc. A generic
 creativecommons.org/licenses/ URL is not a permissive deed. The Public Domain
 Mark is not CC0. Anchor text that says CC0, CC BY, or CC BY-SA on a
 public-domain mark or restricted deed URL does not reclassify that URL and
-stays unknown. A copyright notice, All rights
-reserved, a terms link, and a host name are not licences. ``mit`` and
-``apache-2.0`` are their own tokens. A page that does not state a publication
-date keeps the date unknown. Updated, modified, last updated, and copyright
+stays unknown. A copyright notice, All rights reserved, a terms link, and a
+host name are not licences. ``mit``, ``apache-2.0``, and ``mpl-2.0`` are
+their own tokens when they are the only licence. A software licence beside
+any Creative Commons deed stays unknown. A page that does not state a
+publication date keeps the date unknown. Updated, modified, last updated, and copyright
 years are not publication dates. The live URL is stored as confirmed; a
 different rel=canonical does not replace it. This module does not fetch and
 it is not a belief collector. runner_wired stays false.
@@ -45,6 +46,7 @@ RIGHTS_CC_BY_NC_ND = "cc_by_nc_nd"
 RIGHTS_CC_BY_NC_SA = "cc_by_nc_sa"
 RIGHTS_MIT = "mit"
 RIGHTS_APACHE = "apache-2.0"
+RIGHTS_MPL = "mpl-2.0"
 RIGHTS_UNKNOWN = "unknown"
 ALLOWED_RIGHTS = frozenset(
     {
@@ -55,6 +57,7 @@ ALLOWED_RIGHTS = frozenset(
         RIGHTS_CC_BY_NC_SA,
         RIGHTS_MIT,
         RIGHTS_APACHE,
+        RIGHTS_MPL,
         RIGHTS_UNKNOWN,
     }
 )
@@ -224,6 +227,11 @@ _APACHE = re.compile(
     r"(?i)\bapache-2\.0\b"
     r"|\bapache\s+licen[cs]e(?:\s*,?\s*version)?\s*2(?:\.0)?\b"
     r"|\blicen[cs]ed under (?:the )?apache(?:\s+licen[cs]e)?(?:\s*,?\s*version)?\s*2(?:\.0)?\b"
+)
+_MPL = re.compile(
+    r"(?i)\bmpl-2\.0\b"
+    r"|\bmpl\s+2\.0\b"
+    r"|\bmozilla\s+public\s+licen[cs]e(?:\s*,?\s*version)?\s*2(?:\.0)?\b"
 )
 
 
@@ -459,8 +467,10 @@ def rights_from_page(page_text: str) -> str:
     Domain Mark is not CC0. A deceptive anchor whose visible text says CC BY,
     CC BY-SA, or CC0, while the href is a restricted deed or a public-domain
     mark, stays unknown. A copyright notice, All rights reserved, a terms
-    link, and a host name are not licences. ``mit`` and ``apache-2.0`` are
-    their own tokens. Script and style text does not count.
+    link, and a host name are not licences. ``mit``, ``apache-2.0``, and
+    ``mpl-2.0`` keep their own tokens only when no Creative Commons deed is
+    also stated. A software licence beside CC BY, CC BY-SA, CC0, or a
+    restricted deed stays unknown. Script and style text does not count.
     """
 
     if not isinstance(page_text, str):
@@ -478,6 +488,10 @@ def rights_from_page(page_text: str) -> str:
     codes.update(_text_codes(plain))
     codes.update(_url_codes(plain))
     restricted = {code for code, _token in _RESTRICTED_PRIORITY if code in codes}
+    has_creative_commons = bool(restricted or (codes & _PERMISSIVE))
+    software = _software_licences(_plain_text(visible).casefold().translate(_DASHES))
+    if has_creative_commons and software:
+        return RIGHTS_UNKNOWN
     if restricted and (codes & _PERMISSIVE):
         return RIGHTS_UNKNOWN
     for code, token in _RESTRICTED_PRIORITY:
@@ -485,11 +499,8 @@ def rights_from_page(page_text: str) -> str:
             return token
     if codes & _PERMISSIVE:
         return RIGHTS_CREATIVE_COMMONS
-    licence_text = _plain_text(visible).casefold().translate(_DASHES)
-    if _APACHE.search(licence_text):
-        return RIGHTS_APACHE
-    if _MIT.search(licence_text):
-        return RIGHTS_MIT
+    if len(software) == 1:
+        return next(iter(software))
     return RIGHTS_UNKNOWN
 
 
@@ -648,6 +659,17 @@ def _take_creativecommons_anchors(visible: str) -> tuple[str, set[str]]:
         return " "
 
     return _ANCHOR.sub(replace, visible), codes
+
+
+def _software_licences(text: str) -> set[str]:
+    found: set[str] = set()
+    if _APACHE.search(text):
+        found.add(RIGHTS_APACHE)
+    if _MPL.search(text):
+        found.add(RIGHTS_MPL)
+    if _MIT.search(text):
+        found.add(RIGHTS_MIT)
+    return found
 
 
 def _url_is_public_domain_mark(value: str) -> bool:
