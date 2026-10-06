@@ -381,8 +381,13 @@ def rights_from_page(page_text: str) -> str:
     """Return the rights token stated by the page.
 
     Public availability, a copyright year, all rights reserved, a terms link,
-    the host name, and the Public Domain Mark stay unknown. Script, style, and
-    comment text does not count.
+    the host name, and the Public Domain Mark stay unknown. A generic
+    creativecommons.org/licenses/ URL, with or without a trailing slash, stays
+    unknown. That anchor's visible text does not count, including when it says
+    CC BY, CC BY 4.0, or CC BY-SA. The same holds for http, a www host, and a
+    query string on that path. Text elsewhere on the page still counts, and a
+    specific deed URL such as creativecommons.org/licenses/by/4.0/ still
+    counts. Script, style, and comment text does not count.
     """
 
     if not isinstance(page_text, str):
@@ -410,7 +415,7 @@ def rights_from_page(page_text: str) -> str:
     for value in licences:
         codes |= _codes_in_url(value)
         codes |= _codes_in_text(value)
-    plain = _plain(visible)
+    plain = _plain(_drop_generic_licence_anchor_text(visible))
     codes |= _codes_in_text(plain)
     codes |= _codes_in_url(plain)
     return _rights_label(codes, ogl=_OGL_PHRASE in plain)
@@ -645,6 +650,37 @@ def _anchor_mismatch(visible_html: str) -> bool:
         if "cc0" in text_codes and "pd-mark" in href_codes:
             return True
     return False
+
+
+def _is_generic_cc_licenses_url(href: str) -> bool:
+    """True for creativecommons.org/licenses with no deed in the path.
+
+    A trailing slash, an http scheme, a www host, and a query string do not
+    make the path a deed. The anchor text on this URL is not a licence.
+    """
+
+    if not isinstance(href, str) or not href.strip():
+        return False
+    parsed = urlparse(_normalize(href))
+    host = (parsed.hostname or "").lower().rstrip(".")
+    path = (parsed.path or "").lower()
+    return (
+        parsed.scheme.lower() in {"http", "https"}
+        and host in {"creativecommons.org", "www.creativecommons.org"}
+        and path in {"/licenses", "/licenses/"}
+    )
+
+
+def _drop_generic_licence_anchor_text(visible_html: str) -> str:
+    """Remove the visible text of anchors that point at the generic licences URL."""
+
+    def replace(match: re.Match[str]) -> str:
+        href = _attrs(f"<a {match.group(1)}>").get("href", "")
+        if _is_generic_cc_licenses_url(href):
+            return " "
+        return match.group(0)
+
+    return _ANCHOR.sub(replace, visible_html)
 
 
 def _codes_in_url(value: str) -> set[str]:

@@ -338,6 +338,36 @@ def test_deceptive_permissive_anchors_stay_unknown():
         assert rights_from_page(page) == RIGHTS_UNKNOWN
 
 
+def test_generic_creativecommons_licences_url_stays_unknown():
+    generic = [
+        '<a href="https://creativecommons.org/licenses/">CC BY</a>',
+        '<a href="https://creativecommons.org/licenses/">CC BY 4.0</a>',
+        '<a href="https://creativecommons.org/licenses/">CC BY-SA</a>',
+        '<a href="https://creativecommons.org/licenses">CC BY</a>',
+        '<a href="http://creativecommons.org/licenses/">CC BY</a>',
+        '<a href="https://www.creativecommons.org/licenses/">CC BY-SA</a>',
+        '<a href="http://www.creativecommons.org/licenses">CC BY 4.0</a>',
+        '<a href="https://creativecommons.org/licenses/?lang=en">CC BY</a>',
+        '<a href="https://creativecommons.org/licenses?ref=footer">CC BY-SA</a>',
+    ]
+    for page in generic:
+        assert rights_from_page(page) == RIGHTS_UNKNOWN
+    elsewhere = (
+        '<a href="https://creativecommons.org/licenses/">CC BY</a>'
+        "<p>Licensed under CC0.</p>"
+    )
+    assert rights_from_page(elsewhere) == RIGHTS_CREATIVE_COMMONS
+    by_elsewhere = (
+        '<a href="https://creativecommons.org/licenses/">CC BY-SA</a>'
+        "<p>Licensed under CC BY 4.0.</p>"
+    )
+    assert rights_from_page(by_elsewhere) == RIGHTS_CC_BY
+    specific = '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
+    assert rights_from_page(specific) == RIGHTS_CC_BY
+    specific_sa = '<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>'
+    assert rights_from_page(specific_sa) == RIGHTS_CREATIVE_COMMONS
+
+
 def test_software_tokens_and_non_licences_stay_distinct():
     assert rights_from_page("<p>MIT License</p>") == RIGHTS_MIT
     assert rights_from_page("<p>Licensed under the MIT License.</p>") == RIGHTS_MIT
