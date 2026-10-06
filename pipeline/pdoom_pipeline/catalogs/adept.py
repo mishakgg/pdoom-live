@@ -25,8 +25,9 @@ a publicdomain/mark URL stays unknown. Public Domain Mark, all rights
 reserved, terms, and the host name stay unknown. MIT, Apache-2.0, and
 MPL-2.0 keep their own tokens. Mixed software licences stay unknown.
 uk_ogl requires the British phrase "open government licence". A generic
-creativecommons.org/licenses/ URL stays unknown. A hyphen is a word
-boundary, so CC BY does not match CC BY-NC.
+creativecommons.org/licenses/ URL stays unknown, including when its anchor
+text says CC BY or CC BY-SA. A hyphen is a word boundary, so CC BY does not
+match CC BY-NC.
 
 Publication dates only. Updated, modified, and copyright years stay unknown.
 The live URL is stored as confirmed. A different rel=canonical does not
@@ -207,6 +208,11 @@ _META = re.compile(r"(?is)<meta\b[^>]*>")
 _H1 = re.compile(r"(?is)<h1\b[^>]*>(.*?)</h1>")
 _TITLE = re.compile(r"(?is)<title\b[^>]*>(.*?)</title>")
 _HREF = re.compile(r"""(?is)\bhref\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+))""")
+_ANCHOR = re.compile(r"(?is)<a\b([^>]*)>(.*?)</a>")
+# The licences index has no deed. licenses/by and licenses/by-sa do not match.
+_GENERIC_LICENSES_URL = re.compile(
+    r"(?i)^(?:https?:)?//(?:www\.)?creativecommons\.org/licenses/?(?:[?#]\S*)?$"
+)
 _RIGHTS_ELEMENT = re.compile(r"(?is)<(span|div|p|dd|li|td|section)\b([^>]*)>(.*?)</\1>")
 _ATTR = re.compile(
     r"""(?is)([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+))"""
@@ -524,8 +530,9 @@ def rights_from_page(page_text: str) -> str:
     URL stays unknown. Public Domain Mark is not CC0. MIT plus CC BY stays
     unknown. MIT, Apache-2.0, and MPL-2.0 keep their own tokens. Mixed
     software licences stay unknown. uk_ogl requires the British phrase
-    "open government licence". A generic creativecommons.org/licenses/ URL,
-    all rights reserved, a terms link, and the host name are not licences.
+    "open government licence". A generic creativecommons.org/licenses/ URL
+    stays unknown, including when the anchor text says CC BY or CC BY-SA.
+    All rights reserved, a terms link, and the host name are not licences.
     """
 
     if not isinstance(page_text, str):
@@ -757,7 +764,7 @@ def _rights_signals(page_text: str) -> tuple[set[str], set[str], bool, bool]:
         text = _plain(body)
         if text and len(text) <= MAX_FIELD_CHARS and _states_us_government_work(text):
             gov = True
-    plain = _plain(visible)
+    plain = _plain(_without_generic_license_anchor_text(visible))
     cc_codes |= _cc_codes(plain)
     software |= _software_codes(plain)
     for href in _hrefs(visible):
@@ -765,6 +772,23 @@ def _rights_signals(page_text: str) -> tuple[set[str], set[str], bool, bool]:
         software |= _software_codes(href)
     ogl = OGL_PHRASE in plain.casefold()
     return cc_codes, software, ogl, gov
+
+
+def _without_generic_license_anchor_text(page_html: str) -> str:
+    """Drop anchor text on a creativecommons.org/licenses/ index URL.
+
+    That URL names no deed. CC BY or CC BY-SA written as its anchor text is
+    not a licence. A versioned deed URL keeps its text so a mismatch stays
+    unknown.
+    """
+
+    def replace(match: re.Match[str]) -> str:
+        href = _attrs(f"<a {match.group(1)}>").get("href", "")
+        if _GENERIC_LICENSES_URL.fullmatch(_fold(href)):
+            return " "
+        return match.group(0)
+
+    return _ANCHOR.sub(replace, page_html)
 
 
 def _cc_codes(value: str) -> set[str]:

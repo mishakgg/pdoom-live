@@ -280,7 +280,9 @@ def test_public_domain_mark_terms_and_the_host_name_stay_unknown():
     generic = '<a href="https://creativecommons.org/licenses/">licence notice</a>'
     assert rights_from_page(generic) == RIGHTS_UNKNOWN
     generic_with_by = '<a href="https://creativecommons.org/licenses/">CC BY</a>'
-    assert rights_from_page(generic_with_by) == RIGHTS_CREATIVE_COMMONS_ATTRIBUTION
+    assert rights_from_page(generic_with_by) == RIGHTS_UNKNOWN
+    generic_with_sa = '<a href="https://creativecommons.org/licenses/">CC BY-SA</a>'
+    assert rights_from_page(generic_with_sa) == RIGHTS_UNKNOWN
 
 
 def test_software_licences_keep_their_tokens_and_mixes_stay_unknown():
