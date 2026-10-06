@@ -44,9 +44,9 @@ field.
 
 Publication dates only. Updated, modified, and copyright years stay unknown.
 A year-only date stays unknown. Script, style, and comment text does not
-count. This module does not fetch and it does not import requests. It is
-not a belief collector. runner_wired stays false. RssCollector stays the
-only belief collector.
+count. This module does not fetch. The requests library is not used.
+It is not a belief collector. runner_wired stays false. RssCollector stays
+the only belief collector.
 """
 
 from __future__ import annotations
