@@ -1,0 +1,1085 @@
+{
+  "catalog_id": "cohere_ai_pages",
+  "description": "Metadata for public Cohere Labs research pages on https://cohere.com/research. cohere.for.ai and for.ai redirect off-host, so those hosts are not stored. Each row was confirmed with one bounded GET of HTML on cohere.com. Cloudflare challenges, captchas, HTTP 202, Akamai 403s, robots blocks, and off-host redirects are omitted. Rows store the title, publisher, canonical URL, date, and rights. Abstracts, bodies, PDFs, and chart data are not stored. A missing date is unknown. Updated, modified, and copyright years are not publication dates. creative_commons means only CC0, CC BY, or CC BY-SA. CC BY-NC, CC BY-ND, CC BY-NC-ND, and CC BY-NC-SA stay their own tokens. apache-2.0 and mit stay their own tokens. The product site, docs, and playground are not included. runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Predicting Twitter Engagement With Deep Language Models",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/predicting-twitter-engagement-with-deep-language-models-2020-09-26",
+      "date": "2020-09-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "No News is Good News: A Critique of the One Billion Word Benchmark",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/no-news-is-good-news-a-critique-of-the-one-billion-word-benchmark-2021-10-25",
+      "date": "2021-10-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mitigating Harm in Language Models with Conditional-Likelihood Filtration",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/mitigating-harm-in-language-models-with-conditional-likelihood-filtration-2021-11-28",
+      "date": "2021-11-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scalable Training of Language Models using PAX pjit and TPUv4",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/scalable-training-of-language-models-using-pax-pjit-and-tpu-v-four-2022-04-13",
+      "date": "2022-04-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Robust Distillation for Worst-class Performance",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/robust-distillation-for-worst-class-performance-2022-06-13",
+      "date": "2022-06-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Studying the Impact of Magnitude Pruning on Contrastive Learning Methods",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/studying-the-impact-of-magnitude-pruning-on-contrastive-learning-methods-2022-07-01",
+      "date": "2022-07-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Interlocking Backpropagation: Improving depthwise model-parallelism",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/interlocking-backpropagation-improving-depthwise-model-parallelism-2022-07-07",
+      "date": "2022-07-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Metadata Archaeology: Unearthing Data Subsets by Leveraging Training Dynamics",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/metadata-archaeology-unearthing-data-subsets-by-leveraging-training-dynamics-2022-09-20",
+      "date": "2022-09-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Prioritized Training on Points that are Learnable, Worth Learning, and Not Yet Learnt",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/prioritized-training-on-points-that-are-learnable-worth-learning-and-not-yet-learnt-2022-09-26",
+      "date": "2022-09-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Exploring Low Rank Training of Deep Neural Networks",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/exploring-low-rank-training-of-deep-neural-networks-2022-09-27",
+      "date": "2022-09-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Improving Policy Learning via Language Dynamics Distillation",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/improving-policy-learning-via-language-dynamics-distillation-2022-09-30",
+      "date": "2022-09-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Large Language Models are not Zero Shot Communicators",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/large-language-models-are-not-zero-shot-communicators-2022-10-26",
+      "date": "2022-10-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Goldilocks of Pragmatic Understanding: Fine-Tuning Strategy Matters for Implicature Resolution by LLMs",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/the-goldilocks-of-pragmatic-understanding-fine-tuning-strategy-matters-for-implicature-resolution-by-llms-2022-10-26",
+      "date": "2022-10-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "αNAS: Neural Architecture Search using Property Guided Synthesis",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/anas-neural-architecture-search-using-property-guided-synthesis-2022-11-10",
+      "date": "2022-11-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Intriguing Properties of Compression on Multilingual Models",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/intriguing-properties-of-compression-on-multilingual-models-2022-11-26",
+      "date": "2022-11-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "FAIR-Ensemble: When Fairness Naturally Emerges From Deep Ensembling",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/fair-ensemble-when-fairness-naturally-emerges-from-deep-ensembling-2023-03-01",
+      "date": "2023-03-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Associative Memory Augmented Asynchronous Spatiotemporal Representation Learning for Event-based Perception",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/associative-memory-augmented-asynchronous-spatiotemporal-representation-learning-for-event-based-perception-2023-03-02",
+      "date": "2023-03-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "MTEB: Massive Text Embedding Benchmark",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/mteb-massive-text-embedding-benchmark-2023-03-19",
+      "date": "2023-03-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Efficient Methods for Natural Language Processing: A Survey",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/efficient-methods-for-natural-language-processing-a-survey-2023-03-24",
+      "date": "2023-03-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "PASHA: Efficient HPO and NAS with Progressive Resource Allocation",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/pasha-efficient-hpo-and-nas-with-progressive-resource-allocation-2023-04-11",
+      "date": "2023-04-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "On the Challenges of Using Black-Box APIs for Toxicity Evaluation in Research",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/on-the-challenges-of-using-black-box-apis-for-toxicity-evaluation-in-research-2023-04-24",
+      "date": "2023-04-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "BigScience: A Case Study in the Social Construction of a Multilingual Large Language Model",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/bigscience-a-case-study-in-the-social-construction-of-a-multilingual-large-language-model-2023-05-05",
+      "date": "2023-05-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Lifting the Veil on Hyper-parameters for Value-based Deep Reinforcement Learning",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/lifting-the-veil-on-hyper-parameters-for-value-based-deep-reinforcement-learning-2023-05-05",
+      "date": "2023-05-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Language Models Don't Always Say What They Think: Unfaithful Explanations in Chain-of-Thought Prompting",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/language-models-don-t-always-say-what-they-think-unfaithful-explanations-in-chain-of-thought-prompting-2023-05-07",
+      "date": "2023-05-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Intriguing Properties of Quantization at Scale",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/intriguing-properties-of-quantization-at-scale-2023-05-30",
+      "date": "2023-05-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Evaluating the Social Impact of Generative AI Systems in Systems and Society",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/evaluating-the-social-impact-of-generative-ai-systems-in-systems-and-society-2023-06-12",
+      "date": "2023-06-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Presidio Recommendations on Responsible Generative AI - World Economic Forum",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/the-presidio-recommendations-on-responsible-generative-ai-world-economic-forum-2023-06-14",
+      "date": "2023-06-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sparkles: Unlocking Chats Across Multiple Images for Multimodal Instruction-Following Models",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/sparkles-unlocking-chats-across-multiple-images-for-multimodal-instruction-following-models-2023-08-31",
+      "date": "2023-08-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "When Less is More: Investigating Data Pruning for Pretraining LLMs at Scale",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/when-less-is-more-investigating-data-pruning-for-pretraining-llms-at-scale-2023-09-08",
+      "date": "2023-09-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Pushing Mixture of Experts to the Limit: Extremely Parameter Efficient MoE for Instruction Tuning",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/pushing-mixture-of-experts-to-the-limit-extremely-parameter-efficient-moe-for-instruction-tuning-2023-09-11",
+      "date": "2023-09-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Grand Illusion: The Myth of Software Portability and Implications for ML Progress",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/the-grand-illusion-the-myth-of-software-portability-and-implications-for-ml-progress-2023-09-12",
+      "date": "2023-09-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Human Feedback is not Gold Standard",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/human-feedback-is-not-gold-standard-2023-09-28",
+      "date": "2023-09-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Goodtriever: Adaptive Toxicity Mitigation with Retrieval-augmented Models",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/goodtriever-adaptive-toxicity-mitigation-with-retrieval-augmented-models-2023-10-11",
+      "date": "2023-10-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Which Prompts Make The Difference? Data Prioritization For Efficient Human LLM Evaluation",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/which-prompts-make-the-difference-data-prioritization-for-efficient-human-llm-evaluation-2023-10-22",
+      "date": "2023-10-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Repetition In Repetition Out: Towards Understanding Neural Text Degeneration from the Data Perspective",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/repetition-in-repetition-out-towards-understanding-neural-text-degeneration-from-the-data-perspective-2023-10-23",
+      "date": "2023-10-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Locally Differentially Private Document Generation Using Zero Shot Prompting",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/locally-differentially-private-document-generation-using-zero-shot-prompting-2023-10-24",
+      "date": "2023-10-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Data Provenance Initiative: A Large Scale Audit of Dataset Licensing & Attribution in AI",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/the-data-provenance-initiative-a-large-scale-audit-of-dataset-licensing-and-attribution-in-ai-2023-10-25",
+      "date": "2023-10-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Elo Uncovered: Robustness and Best Practices in Language Model Evaluation",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/elo-uncovered-robustness-and-best-practices-in-language-model-evaluation-2023-11-29",
+      "date": "2023-11-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "On the Fairness Impacts of Hardware Selection in Machine Learning",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/on-the-fairness-impacts-of-hardware-selection-in-machine-learning-2023-12-06",
+      "date": "2023-12-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Aya Dataset: An Open-Access Collection for Multilingual Instruction Tuning",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/aya-dataset-paper-2024-02-13",
+      "date": "2024-02-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Aya Model: Open-Access Multilingual Language Model",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/aya-model-paper-2024-02-13",
+      "date": "2024-02-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Back to Basics – REINFORCE for Human Feedback in LLMs",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/back-to-basics-revisiting-reinforce-style-optimization-for-learning-from-human-feedback-in-llms-2024-02-23",
+      "date": "2024-02-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Investigating Continual Pretraining in Large Language Models: Insights and Implications",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/investigating-continual-pretraining-in-large-language-models-insights-and-implications-2024-02-27",
+      "date": "2024-02-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Here's a Free Lunch: Sanitizing Backdoored Models with Model Merge",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/here-s-a-free-lunch-sanitizing-backdoored-models-with-model-merge-2024-02-29",
+      "date": "2024-02-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "LLMCRIT: Teaching Large Language Models to Use Criteria",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/llmcrit-teaching-large-language-models-to-use-criteria-2024-03-02",
+      "date": "2024-03-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "From One to Many: Expanding the Scope of Toxicity Mitigation in Language Models",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/from-one-to-many-expanding-the-scope-of-toxicity-mitigation-in-language-models-2024-03-07",
+      "date": "2024-03-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "SnapKV: LLM Knows What You are Looking for Before Generation",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/snapkv-llm-knows-what-you-are-looking-for-before-generation-2024-04-22",
+      "date": "2024-04-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "The PRISM Alignment Project: What Participatory, Representative and Individualised Human Feedback Reveals About the Subjective and Multicultural Alignment of Large Language Models",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/the-prism-alignment-project-what-participatory-representative-and-individualised-human-feedback-reveals-about-the-subjective-and-multicultural-alignment-of-large-language-models-2024-04-24",
+      "date": "2024-04-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Replacing Judges with Juries: Evaluating LLM Generations with a Panel of Diverse Models",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/replacing-judges-with-juries-evaluating-llm-generations-with-a-panel-of-diverse-models-2024-04-29",
+      "date": "2024-04-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Countering Reward Over-optimization in LLM with Demonstration-Guided Reinforcement Learning",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/countering-reward-over-optimization-in-llm-with-demonstration-guided-reinforcement-learning-2024-04-30",
+      "date": "2024-04-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Fishing for Magikarp: Automatically Detecting Under-trained Tokens in Large Language Models",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/fishing-for-magikarp-automatically-detecting-under-trained-tokens-in-large-language-models-2024-05-08",
+      "date": "2024-05-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Aya 23: Open Weight Releases to Further Multilingual Progress",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/aya-command-23-8b-and-35b-technical-report-2024-05-23",
+      "date": "2024-05-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "OPERA: Automatic Offline Policy Evaluation with Re-weighted Aggregates of Multiple Estimators",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/opera-automatic-offline-policy-evaluation-with-re-weighted-aggregates-of-multiple-estimators-2024-05-27",
+      "date": "2024-05-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Critical Learning Periods: Leveraging Early training Dynamics for Efficient Data Pruning",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/critical-learning-periods-leveraging-early-training-dynamics-for-efficient-data-pruning-2024-05-31",
+      "date": "2024-05-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "IrokoBench: A New Benchmark for African Languages in the Age of Large Language Models",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/irokobench-a-new-benchmark-for-african-languages-in-the-age-of-large-language-models-2024-06-07",
+      "date": "2024-06-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Self-Improving Robust Preference Optimization",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/self-improving-robust-preference-optimization-2024-06-07",
+      "date": "2024-06-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Multilingual Alignment Prism: Aligning Global and Local Preferences to Reduce Harm",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/the-multilingual-alignment-prism-aligning-global-and-local-preferences-to-reduce-harm-2024-06-08",
+      "date": "2024-06-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Time-Constrained Robust MDPs",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/time-constrained-robust-mdps-2024-06-12",
+      "date": "2024-06-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "SEACrowd: A Multilingual Multimodal Data Hub and Benchmark Suite for Southeast Asian Languages",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/seacrowd-a-multilingual-multimodal-data-hub-and-benchmark-suite-for-southeast-asian-languages-2024-06-14",
+      "date": "2024-06-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "A SMART Mnemonic Sounds like \"Glue Tonic\": Mixing LLMs with Student Feedback to Make Mnemonic Learning Stick",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/a-smart-mnemonic-sounds-like-glue-tonic-mixing-llms-with-student-feedback-to-make-mnemonic-learning-stick-2024-06-21",
+      "date": "2024-06-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Contrastive Policy Gradient: Aligning LLMs on sequence-level scores in a supervised-friendly fashion",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/contrastive-policy-gradient-aligning-llms-on-sequence-level-scores-in-a-supervised-friendly-fashion-2024-06-27",
+      "date": "2024-06-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Policy Primer - The AI Language Gap",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/policy-primer-the-ai-language-gap-2024-06-27",
+      "date": "2024-06-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Tools Fail: Detecting Silent Errors in Faulty Tools",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/tools-fail-detecting-silent-errors-in-faulty-tools-2024-06-27",
+      "date": "2024-06-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Understanding and Mitigating Language Confusion in LLMs",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/understanding-and-mitigating-language-confusion-in-llms-2024-06-28",
+      "date": "2024-06-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "How Does Quantization Affect Multilingual LLMs?",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/how-does-quantization-affect-multilingual-llms-2024-07-05",
+      "date": "2024-07-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "LLM See, LLM Do: Guiding Data Generation to Target Non-Differentiable Objectives",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/llm-see-llm-do-guiding-data-generation-to-target-non-differentiable-objectives-2024-07-05",
+      "date": "2024-07-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Open Problems in Technical AI Governance",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/open-problems-in-technical-ai-governance-2024-07-05",
+      "date": "2024-07-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "RLHF Can Speak Many Languages: Unlocking Multilingual Preference Optimization for LLMs",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/rlhf-can-speak-many-languages-unlocking-multilingual-preference-optimization-for-llms-2024-07-05",
+      "date": "2024-07-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Periodic agent-state based Q-learning for POMDPs",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/periodic-agent-state-based-q-learning-for-pomdps-2024-07-08",
+      "date": "2024-07-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "On the Limitations of Compute Thresholds as a Governance Strategy",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/on-the-limitations-of-compute-thresholds-as-a-governance-strategy-2024",
+      "date": "2024-07-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Consent in Crisis: The Rapid Decline of the AI Data Commons",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/consent-in-crisis-the-rapid-decline-of-the-ai-data-commons-2024-07-19",
+      "date": "2024-07-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Policy Primer - The Limits of Thresholds",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/policy-primer-the-limits-of-thresholds-2024-07-22",
+      "date": "2024-07-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "BAM! Just Like That: Simple and Efficient Parameter Upcycling for Mixture of Experts",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/bam-just-like-that-simple-and-efficient-parameter-upcycling-for-mixture-of-experts-2024-08-15",
+      "date": "2024-08-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Light bulbs have energy ratings — so why can’t AI chatbots?",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/light-bulbs-have-energy-ratings-so-why-can-t-ai-chatbots-2024-08-21",
+      "date": "2024-08-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "To Code, or Not To Code? Exploring Impact of Code in Pre-training",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/to-code-or-not-to-code-2024-08-21",
+      "date": "2024-08-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Multilingual Arbitrage: Optimizing Data Pools to Accelerate Multilingual Progress",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/multilingual-arbitrage-optimizing-data-pools-to-accelerate-multilingual-progress-2024-08-28",
+      "date": "2024-08-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Nexus: Specialization meets Adaptability for Efficiently Training Mixture of Experts",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/nexus-specialization-meets-adaptability-for-efficiently-training-mixture-of-experts-2024-08-29",
+      "date": "2024-08-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Future of International Scientific Assessments of AI’s Risks",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/the-future-of-international-scientific-assessments-of-ai-s-risks-2024-08-29",
+      "date": "2024-08-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Imitating Language via Scalable Inverse Reinforcement Learning",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/imitating-language-via-scalable-inverse-reinforcement-learning-2024-09-02",
+      "date": "2024-09-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Diversify and Conquer: Diversity-Centric Data Selection with Iterative Refinement",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/diversify-and-conquer-diversity-centric-data-selection-with-iterative-refinement-2024-09-18",
+      "date": "2024-09-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Fishing for Magikarp: Automatically Detecting Under-trained Tokens in Large Language Models",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/fishing-for-magikarp-automatically-detecting-under-trained-tokens-in-large-language-models-2024-09-24",
+      "date": "2024-09-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Near-Optimal Distributionally Robust Reinforcement Learning with General Norms",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/near-optimal-distributionally-robust-reinforcement-learning-with-general-norms-2024-09-25",
+      "date": "2024-09-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Adaptation Odyssey in LLMs: Why Does Additional Pretraining Sometimes Fail to Improve?",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/adaptation-odyssey-in-llms-why-does-additional-pretraining-sometimes-fail-to-improve-2024-10-08",
+      "date": "2024-10-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mix Data or Merge Models? Optimizing for Diverse Multi-Task Learning",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/mix-data-or-merge-models-optimizing-for-diverse-multi-task-learning-2024-10-15",
+      "date": "2024-10-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Improving Reward Models with Synthetic Critiques",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/improving-reward-models-with-synthetic-critiques-2024-10-18",
+      "date": "2024-10-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Understanding Likelihood Over-optimisation in Direct Alignment Algorithms",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/understanding-likelihood-over-optimisation-in-direct-alignment-algorithms-2024-10-18",
+      "date": "2024-10-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scalable Data Ablation Approximations for Language Models through Modular Training and Merging",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/scalable-data-ablation-approximations-for-language-models-through-modular-training-and-merging-2024-10-21",
+      "date": "2024-10-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "M-RewardBench: Evaluating Reward Models in Multilingual Settings",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/m-rewardbench-evaluating-reward-models-in-multilingual-settings-2024-11-05",
+      "date": "2024-11-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Procedural Knowledge in Pretraining Drives Reasoning in Large Language Models",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/procedural-knowledge-in-pretraining-drives-reasoning-in-large-language-models-2024-11-20",
+      "date": "2024-11-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "INCLUDE: Evaluating Multilingual Language Understanding with Regional Knowledge",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/include-evaluating-multilingual-language-understanding-with-regional-knowledge-2024-11-29",
+      "date": "2024-11-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Commit0: Library Generation from Scratch",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/commit0-library-generation-from-scratch-2024-12-02",
+      "date": "2024-12-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Reality of AI and Biorisk",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/the-reality-of-ai-and-biorisk-2024-12-02",
+      "date": "2024-12-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Global MMLU",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/global-mmlu-2024-12-05",
+      "date": "2024-12-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Aya Expanse: Advancing Multilingual AI Research",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/aya-expanse-combining-research-breakthroughs-for-a-new-multilingual-frontier-2024-12-06",
+      "date": "2024-12-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "If You Can't Use Them, Recycle Them",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/if-you-can-t-use-them-recycle-them-2024-12-09",
+      "date": "2024-12-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Policy Primer - Translating Safety",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/translating-safety-2024-12-10",
+      "date": "2024-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bridging the Data Provenance Gap Across Text, Speech, and Video",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/bridging-the-data-provenance-gap-across-text-speech-and-video-2024-12-18",
+      "date": "2024-12-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Fairness of Deep Ensembles: On the interplay between per-group task difficulty and under-representation",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/fairness-of-deep-ensembles-2025-03-02",
+      "date": "2025-02-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Policy Primer - Efficient AI",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/efficient-ai-2025-02-06",
+      "date": "2025-02-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "No Need for Explanations: LLMs can implicitly learn from mistakes in-context",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/no-need-for-explanations-llms-can-implicitly-learn-from-mistakes-in-context-2023-10-23",
+      "date": "2025-02-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "From Tools to Teammates: Evaluating LLMs in Multi-Session Coding Interactions",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/from-tools-to-teammates-evaluating-llms-in-multi-session-coding-interactions-2025-02-19",
+      "date": "2025-02-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "When Personalization Meets Reality: A Multi-Faceted Analysis of Personalized Preference Learning",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/when-personalization-meets-reality-a-multi-faceted-analysis-of-personalized-preference-learning-2025-02-26",
+      "date": "2025-02-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Block Diffusion: Bridging Autoregressive & Diffusion LMs",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/block-diffusion-interpolating-between-autoregressive-and-diffusion-language-models-2025-03-12",
+      "date": "2025-03-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Command A: An Enterprise-Ready Large Language Model",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/command-a-an-enterprise-ready-family-of-large-language-models-2025-03-27",
+      "date": "2025-03-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Kaleidoscope: Exams for Multilingual Vision Evaluation",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/kaleidoscope-exams-for-multilingual-vision-evaluation-2025-04-10",
+      "date": "2025-04-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Déjà Vu: Multilingual LLM Evaluation through the Lens of Machine Translation Evaluation",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/deja-vu-multilingual-llm-evaluation-through-the-lens-of-machine-translation-evaluation-2025-04-17",
+      "date": "2025-04-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Leaderboard Illusion",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/the-leaderboard-illusion-2025-04-30",
+      "date": "2025-04-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Crosslingual Reasoning through Test-Time Scaling",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/crosslingual-reasoning-through-test-time-scaling-2025-05-08",
+      "date": "2025-05-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Aya Vision: Multilingual Multimodal AI Advancements",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/aya-vision-2025-05-14",
+      "date": "2025-05-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "No Need for Explanations: LLMs can implicitly learn from mistakes in-context",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/no-need-for-explanations-llms-can-implicitly-learn-from-mistakes-in-context-2025-05-21",
+      "date": "2025-05-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Reverse Engineering Human Preferences with Reinforcement Learning",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/reverse-engineering-human-preferences-with-reinforcement-learning-2025-05-21",
+      "date": "2025-05-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Reality Check: A New Evaluation Ecosystem Is Necessary to Understand AI's Real World Effects",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/reality-check-a-new-evaluation-ecosystem-is-necessary-to-understand-ai-s-real-world-effects-2025-05-28",
+      "date": "2025-05-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "How to Improve the Robustness of Closed-Source Models on NLI",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/how-to-improve-the-robustness-of-closed-source-models-on-nli-2025-05-28",
+      "date": "2025-05-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Multilingual Divide and Its Impact on Global AI Safety",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/the-multilingual-divide-and-its-impact-on-global-ai-safety-2025-05-28",
+      "date": "2025-05-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "BPE Stays on SCRIPT: Structured Encoding for Robust Multilingual Pretokenization",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/bpe-stays-on-script-structured-encoding-for-robust-multilingual-pretokenization-2025-05-30",
+      "date": "2025-05-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "One Tokenizer To Rule Them All: Emergent Language Plasticity via Multilingual Tokenizers",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/one-tokenizer-to-rule-them-all-emergent-language-plasticity-via-multilingual-tokenizers-2025-05-30",
+      "date": "2025-05-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "The State of Multilingual LLM Safety Research: From Measuring the Language Gap to Mitigating It",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/the-state-of-multilingual-llm-safety-research-from-measuring-the-language-gap-to-mitigating-it-2025-05-30",
+      "date": "2025-05-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "RewardBench 2: Advancing Reward Model Evaluation",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/rewardbench-2-advancing-reward-model-evaluation-2025-06-02",
+      "date": "2025-06-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Treasure Hunt: Real-time Targeting of the Long Tail using Training-Time Markers",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/treasure-hunt-real-time-targeting-of-the-long-tail-using-training-time-markers-2025-06-18",
+      "date": "2025-06-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "When Life Gives You Samples: The Benefits of Scaling up Inference Compute for Multilingual LLMs",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/when-life-gives-you-samples-the-benefits-of-scaling-up-inference-compute-for-multilingual-llms-2025-06-19",
+      "date": "2025-06-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "NeoBabel: A Multilingual Open Tower for Visual Generation",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/neobabel-a-multilingual-open-tower-for-visual-generation-2025-07-09",
+      "date": "2025-07-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Verification Limits Code LLM Training",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/verification-limits-code-llm-training-2025-09-26",
+      "date": "2025-09-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Making, not Taking, the Best of N",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/making-not-taking-the-best-of-n-2025-10-01",
+      "date": "2025-10-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "EAGER: Entropy-Aware Generation for Adaptive Inference-Time Scaling",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/eager-entropy-aware-generation-for-adaptive-inference-time-scaling-2025-10-16",
+      "date": "2025-10-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Art of Asking: Multilingual Prompt Optimization for Synthetic Data",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/the-art-of-asking-multilingual-prompt-optimization-for-synthetic-data-2025-10-23",
+      "date": "2025-10-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Findings of the WMT25 Multilingual Instruction Shared Task: Persistent Hurdles in Reasoning, Generation, and Evaluation",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/findings-of-the-wmt25-multilingual-instruction-shared-task-persistent-hurdles-in-reasoning-generation-and-evaluation-2025-10-29",
+      "date": "2025-10-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "SimMerge: Learning to Select Merge Operators from Similarity Signals",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/simmerge-learning-to-select-merge-operators-from-similarity-signals-2026-01-15",
+      "date": "2026-01-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Unlocking Reasoning Capability on Machine Translation in Large Language Models",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/unlocking-reasoning-capability-on-machine-translation-in-large-language-models-2026-02-16",
+      "date": "2026-02-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Tiny Aya: Bridging Scale and Multilingual Depth",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/tiny-aya-bridging-scale-and-multilingual-depth-2026-02-17",
+      "date": "2026-02-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "CIRCLE: A Framework for Evaluating AI from a Real-World Lens",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/circle-a-framework-for-evaluating-ai-from-a-real-world-lens-2026-03-03",
+      "date": "2026-03-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "LLM2Vec-Gen: Generative Embeddings from Large Language Models",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/llm2vec-gen-generative-embeddings-from-large-language-models-2026-03-11",
+      "date": "2026-03-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "BidirLM: From Text to Omnimodal Bidirectional Encoders by Adapting and Composing Causal LLMs",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/bidirlm-from-text-to-omnimodal-bidirectional-encoders-by-adapting-and-composing-causal-llms-2026-04-02",
+      "date": "2026-04-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "BERT-as-a-Judge: A Robust Alternative to Lexical Methods for Efficient Reference-Based LLM Evaluation",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/bert-as-a-judge-a-robust-alternative-to-lexical-methods-for-efficient-reference-based-llm-evaluation-2026-04-10",
+      "date": "2026-04-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Agents Explore but Agents Ignore: LLMs Lack Environmental Curiosity",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/agents-explore-but-agents-ignore-llms-lack-environmental-curiosity-2026-04-19",
+      "date": "2026-04-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Soft-SVeRL: Self-Verified Reinforcement Learning with Soft Rewards",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/soft-sverl-self-verified-reinforcement-learning-with-soft-rewards-2026-05-27",
+      "date": "2026-05-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Exposure Scores: What they measure, what they miss, and what comes next",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/ai-exposure-scores-what-they-measure-what-they-miss-and-what-comes-next-2026-06-10",
+      "date": "2026-06-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Culture Funnel: You can’t align what isn’t in the data",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/the-culture-funnel-you-can-t-align-what-isn-t-in-the-data-2026-06-15",
+      "date": "2026-06-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "CALIBER: Calibrating confidence before and after reasoning in language models",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/caliber-calibrating-confidence-before-and-after-reasoning-in-language-models-2026-06-24",
+      "date": "2026-06-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Evaluating the Retrieval Robustness of Large Language Models",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/evaluating-the-retrieval-robustness-of-large-language-models-2026-07-08",
+      "date": "2026-07-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "The IOL-AI Challenge: An Open Challenge towards Advancing Linguistic Reasoning",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/the-iol-ai-challenge-an-open-challenge-towards-advancing-linguistic-reasoning-2026-08-18",
+      "date": "2026-08-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Building Multilingual Bridges",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers/building-multilingual-bridges-2026-09-10",
+      "date": "2026-09-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Agentic Task Ecosystem (ATE)",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/agentic-task-ecosystem",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Aya",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/aya",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Advancing Education through AI",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/education",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Building the Future(s) of Work at Cohere Labs",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/futures-of-work",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Global MMLU | Multilingual AI Evaluation Benchmark",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/globalmmlu",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Cohere Labs - Catalyst Grants",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/grants",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research Grant Program Application",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/grants/application",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research Newsletter",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/newsletter",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Cohere Labs - Open Science Community",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/open-science",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Cohere Open Science Initiative Application",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/open-science/application",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research Papers",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/papers",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Cohere Labs - Scholars Program",
+      "publisher": "Cohere Labs",
+      "canonical_url": "https://cohere.com/research/scholars-program",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}

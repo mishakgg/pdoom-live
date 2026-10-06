@@ -1,0 +1,770 @@
+{
+  "catalog_id": "timaeus_pages",
+  "description": "Metadata for public Timaeus pages confirmed on https://timaeus.co. www.timaeus.co redirects there. Each row comes from one bounded HTML GET. Cloudflare challenges, captchas, HTTP 202, Akamai 403s, robots blocks, and off-host redirects are omitted. Rows keep the title, publisher, canonical URL, date, and rights. Page bodies, abstracts, and PDFs are not stored. A missing date is unknown. Updated, modified, and copyright years are not publication dates. creative_commons means only CC0, CC BY, or CC BY-SA. CC BY-NC, CC BY-ND, CC BY-NC-ND, and CC BY-NC-SA are their own tokens. Mixed deeds stay unknown. mit and apache-2.0 are their own tokens. A copyright notice, All rights reserved, a terms link, or a host name is not a licence. Not a belief collector. runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Neural networks generalize because of this one weird trick",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/slt/2023-01-18-nns-generalize/",
+      "date": "2023-01-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Spooky action at a distance in the loss landscape",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/slt/2023-01-28-spooky-action/",
+      "date": "2023-01-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Gradient surfing: the hidden role of regularization",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/slt/2023-02-06-gradient-surfing/",
+      "date": "2023-02-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Interview Daniel Murfet on Universal Phenomena in Learning Machines",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/slt/2023-02-06-interview-dan/",
+      "date": "2023-02-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "The shallow reality of 'deep learning theory'",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/the-shallow-reality-of-deep-learning-theory/2023-02-22-intro/",
+      "date": "2023-02-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Empirical risk minimization is fundamentally confused",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/the-shallow-reality-of-deep-learning-theory/2023-03-22-erm/",
+      "date": "2023-03-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Approximation is expensive, but the lunch is cheap",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/the-shallow-reality-of-deep-learning-theory/2023-04-19-approximation/",
+      "date": "2023-04-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "DSLT 0. Distilling Singular Learning Theory",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/dslt/2023-06-16-dslt-0/",
+      "date": "2023-06-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "DSLT 1. The RLCT Measures the Effective Dimension of Neural Networks",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/dslt/2023-06-18-dslt-1/",
+      "date": "2023-06-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "DSLT 2. Why Neural Networks obey Occam's Razor",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/dslt/2023-06-18-dslt-2/",
+      "date": "2023-06-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "DSLT 3. Neural Networks are Singular",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/dslt/2023-06-20-dslt-3/",
+      "date": "2023-06-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "DSLT 4. Phase Transitions in Neural Networks",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/dslt/2023-06-24-dslt-4/",
+      "date": "2023-06-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Local Learning Coefficient: A Singularity-Aware Complexity Measure",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2023-08-23-quantifying-degeneracy/",
+      "date": "2023-08-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "You're Measuring Model Complexity Wrong",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/distillations/2023-06-16-lambdahat/",
+      "date": "2023-10-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing Timaeus",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/updates/2023-10-22-timaeus/",
+      "date": "2023-10-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learning coefficient estimation: the details",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/slt/2023-11-15-llc-estimation/",
+      "date": "2023-11-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generalization, from thermodynamics to statistical physics",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/the-shallow-reality-of-deep-learning-theory/2023-11-30-generalization/",
+      "date": "2023-11-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Loss Landscape Degeneracy and Stagewise Development of Transformers",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2024-02-04-developmental-landscape/",
+      "date": "2024-02-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Timaeus's First Four Months",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/updates/2024-02-28-timaeus/",
+      "date": "2024-02-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Simple versus Short: Higher-order degeneracy and error-correction",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/slt/2024-03-11-simple-vs-short/",
+      "date": "2024-03-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stagewise Development in Neural Networks",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/distillations/2024-03-20-icl/",
+      "date": "2024-03-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "So you want to work on technical AI safety",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/misc/2024-06-24-advice/",
+      "date": "2024-08-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Singular learning theory: exercises",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/slt/2024-08-30-exercises/",
+      "date": "2024-08-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Differentiation and Specialization of Attention Heads via the Refined Local Learning Coefficient",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2024-10-04-differentiation-and-specialization/",
+      "date": "2024-10-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Open Roles @ Timaeus",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/updates/2025-01-17-hiring/",
+      "date": "2025-01-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Dynamics of Transient Structure in In-Context Linear Regression Transformers",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2025-01-29-transient-structure/",
+      "date": "2025-01-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Structure Development in List-Sorting Transformers",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2025-01-30-list-sorting/",
+      "date": "2025-01-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "You Are What You Eat – AI Alignment Requires Understanding How Data Shapes Structure and Generalisation",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2025-02-08-position/",
+      "date": "2025-02-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Programs as Singularities",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2025-04-10-programs-as-singularities/",
+      "date": "2025-04-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Modes of Sequence Models and Learning Coefficients",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2025-04-25-modes/",
+      "date": "2025-04-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Structural Inference: Interpreting Small Language Models with Susceptibilities",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2025-04-25-susceptibilities/",
+      "date": "2025-04-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Director of Operations @ Timaeus",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/updates/2025-05-22-hiring/",
+      "date": "2025-05-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "From Global to Local: A Scalable Benchmark for Local Posterior Sampling",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2025-07-29-local-posterior-sampling/",
+      "date": "2025-07-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Embryology of a Language Model",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2025-08-01-embryology-of-a-language-model/",
+      "date": "2025-08-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research Engineer @ Timaeus",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/updates/2025-08-12-hiring/",
+      "date": "2025-08-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bayesian Influence Functions for Hessian-Free Data Attribution",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2025-09-30-bayesian-influence/",
+      "date": "2025-09-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Loss Kernel: A Geometric Probe for Deep Learning Interpretability",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2025-09-30-the-loss-kernel/",
+      "date": "2025-10-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Influence Dynamics and Stagewise Data Attribution",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2025-10-05-influence-dynamics/",
+      "date": "2025-10-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Compressibility Measures Complexity: Minimum Description Length Meets Singular Learning Theory",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2025-10-13-smdl/",
+      "date": "2025-10-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Open Roles @ Timaeus",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/updates/2026-01-07-hiring/",
+      "date": "2026-01-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stagewise Reinforcement Learning and the Geometry of the Regret Landscape",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2026-01-12-stagewise-reinforcement-learning/",
+      "date": "2026-01-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Towards Spectroscopy: Susceptibility Clusters in Language Models",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2026-01-19-towards-spectroscopy/",
+      "date": "2026-01-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Patterning: The Dual of Interpretability",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2026-01-20-patterning/",
+      "date": "2026-01-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "From Influence Functions to Statistical Physics",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/influence-functions/",
+      "date": "2026-03-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Timaeus Research Fellows Program",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/updates/2026-04-09-fellows/",
+      "date": "2026-04-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research Positions @ Timaeus",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/updates/2026-04-09-hiring/",
+      "date": "2026-04-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Guide for Sampling Hyperparameter Selection",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2026-04-21-sampling-guide/",
+      "date": "2026-04-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "How to Scale Susceptibilities",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2026-04-21-spectroscopy-definitions/",
+      "date": "2026-04-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Interpreting the Ising Model",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2026-04-21-spectroscopy-ising/",
+      "date": "2026-04-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Spectroscopy at Scale: Finding Interpretable Structure in Pythia-1.4B",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2026-04-21-spectroscopy-main/",
+      "date": "2026-04-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Patterning Toy Models of Superposition",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2026-04-24-patterning-tms/",
+      "date": "2026-04-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "From Influence Functions to Statistical Physics",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2026-04-30-bif/",
+      "date": "2026-04-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Align",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2026-05-01-align/",
+      "date": "2026-05-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Linear Response Estimators for Singular Statistical Models",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2026-05-08-linear-response-estimators/",
+      "date": "2026-05-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Interpreting Reinforcement Learning Agents with Susceptibilities",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2026-05-08-rl2-interpreting-agents/",
+      "date": "2026-05-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Susceptibilities and Patterning: A Primer on Linear Response in Bayesian Learning",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2026-05-08-susceptibility-primer/",
+      "date": "2026-05-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Elicitation without Backpropagation: Steering Model Behavior by Optimizing the Latent Posterior",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/2026-07-21-elicitation-without-backprop/",
+      "date": "2026-07-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Breakthrough Scientific Progress on AI Safety",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bayesian Influence Functions",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/blog/bif/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Get Involved",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/community/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Contact",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/contact/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Events",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/events/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "SLT & Alignment Summit 2023",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/events/2023-q2-berkeley-conference/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "SLT & Alignment Summit 2023",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/events/2023-q2-virtual-primer/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "The 2023 Amsterdam Retreat",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/events/2023-q3-amsterdam-retreat/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "2023 Melbourne Hackathon",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/events/2023-q3-melbourne-hackathon/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Developmental Interpretability Conference 2023",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/events/2023-q4-oxford-conference/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "ILIAD 2024",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/events/2024-q3-iliad/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Australian AI Safety Forum 2024",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/events/2024-q4-aus-ais-forum/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "ODYSSEY 2025",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/events/2025-q3-odyssey/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Focus Period: Mathematical Science of AI Safety",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/events/2025-q4-mathematical-science-of-ai-safety/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learn about SLT",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/learn/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "SLT Reference Guide",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/learn/reference/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "News",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/news/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Opportunities",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/opportunities/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research Sprints",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/participate/research-sprints/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Privacy Policy",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/privacy-policy/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Privacy Policy",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/privacy-policy/content/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Project Ideas",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "LLCs and Ablations",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/ablations/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "LLC Dynamics in Adversarial Training",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/adv-trianing/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Algorithmic Tasks",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/algorithmic-tasks/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Review of Complexity Measures",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/complexity-measures/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learning Coefficient Analysis of Double Descent Phenomena",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/double-descent/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "LLC Analysis of Grokking Phenomena",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/grokking/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Induction Heads",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/induction-heads/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "LLC Analysis of Jailbreak Susceptibility in Language Models",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/jailbreaks/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Lottery Tickets vs. DevInterp",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/lottery-tickets/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Extending the MDL Principle to Singular Models",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/mdl/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Saddles and Metastability in SLT",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/metastability/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Natural Gradient Descent",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/natural-gradient-descent/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "RL of Board Game Agents",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/reinforcement-learning/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Understanding relative finite variance in simple models",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/relative-finite-variance/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scaling Local Learning Coefficients",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/scaling/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "SGD vs. Bayes in Toy Landscapes",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/sgd-vs-bayes/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Task Variability",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/task-variability/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Toy Models of LayerNorm",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/toy-models-of-ln/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Toy Models of Superposition",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/toy-models/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "LLCs of Compiled Neural Networks",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/tracr/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Trojan Detection via Learning Coefficient Analysis",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/trojan-detection/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "LLCs and Unlearning",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/unlearning/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Development of Vision Circuits",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/projects/vision/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "From Theory to Practice",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research Agenda",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/research/agenda/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sublevelsets",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/sublevelsets/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Our Team",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/team/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Updates",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/updates/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Timaeus Update October 2023",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/updates/2023-m10/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Timaeus Update November 2023",
+      "publisher": "Timaeus",
+      "canonical_url": "https://timaeus.co/updates/2023-m11/",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
