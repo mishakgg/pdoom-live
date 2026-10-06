@@ -1,0 +1,6 @@
+{
+  "catalog_id": "amnesty_ai_pages",
+  "description": "Metadata for public Amnesty International pages about artificial intelligence, machine learning, or AI policy on www.amnesty.org and amnesty.org. Rows store title, publisher, canonical URL, date, and rights. Page text is not stored. Empty because robots.txt on both hosts returned HTTP 403 HTML with a Cloudflare challenge, and an HTML document in place of robots.txt does not allow a fetch. Both homepages returned the same challenge. No sitemap or AI page was fetched. Donation, login, and unrelated topics are omitted. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix. A missing publication date is unknown. Updated, modified, and copyright years are not publication dates. Not a belief collector. runner_wired stays false.",
+  "runner_wired": false,
+  "entries": []
+}
