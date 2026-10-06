@@ -266,7 +266,7 @@ _CC_TEXT = (
     (
         "by",
         re.compile(
-            r"creative commons\s+attribution(?![\s-]*(?:share[\s-]*alike|non[\s-]*commercial|no[\s-]*deriv|sa|nc|nd)\b)"
+            r"creative commons\s+attribution(?![\s-]*(?:share[\s-]*alike|non[\s-]*commercial|no[\s-]*deriv|sa\b|nc\b|nd\b))"
         ),
     ),
     (
