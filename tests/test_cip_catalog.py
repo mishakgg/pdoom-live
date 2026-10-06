@@ -761,34 +761,45 @@ def test_hyphen_is_a_word_boundary_so_cc_by_does_not_match_cc_by_nc():
 
 def test_a_by_nc_url_is_not_read_as_cc_by():
     page = '<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY</a>'
-    assert rights_from_page(page) == RIGHTS_CC_BY_NC
+    assert rights_from_page(page) == RIGHTS_UNKNOWN
     page = '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-SA</a>'
-    assert rights_from_page(page) == RIGHTS_CC_BY_NC_SA
+    assert rights_from_page(page) == RIGHTS_UNKNOWN
+    page = '<a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY</a>'
+    assert rights_from_page(page) == RIGHTS_UNKNOWN
+    page = '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-SA</a>'
+    assert rights_from_page(page) == RIGHTS_UNKNOWN
+    mark = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC BY</a>'
+    assert rights_from_page(mark) == RIGHTS_UNKNOWN
+    mark_sa = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC BY-SA</a>'
+    assert rights_from_page(mark_sa) == RIGHTS_UNKNOWN
+    mark_zero = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC0</a>'
+    assert rights_from_page(mark_zero) == RIGHTS_UNKNOWN
     permissive = '<a href="https://creativecommons.org/licenses/by/4.0/">licence</a>'
     assert rights_from_page(permissive) == RIGHTS_CREATIVE_COMMONS
     generic = '<a href="https://creativecommons.org/licenses/">Creative Commons</a>'
     assert rights_from_page(generic) == RIGHTS_UNKNOWN
 
 
-def test_mixed_restricted_and_permissive_deeds_keep_the_restricted_token():
+def test_mixed_restricted_and_permissive_deeds_stay_unknown():
     mixed = "<p>Licensed under CC BY 4.0 and CC BY-NC 4.0.</p>"
-    assert rights_from_page(mixed) == RIGHTS_CC_BY_NC
+    assert rights_from_page(mixed) == RIGHTS_UNKNOWN
     zero_and_nd = (
         "<p>Licensed under CC0.</p>"
         '<a href="https://creativecommons.org/licenses/by-nd/4.0/">NoDerivatives</a>'
     )
-    assert rights_from_page(zero_and_nd) == RIGHTS_CC_BY_ND
+    assert rights_from_page(zero_and_nd) == RIGHTS_UNKNOWN
     by_sa_and_nc_nd = (
         '<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>'
         "<p>Figures are available under CC BY-NC-ND.</p>"
     )
-    assert rights_from_page(by_sa_and_nc_nd) == RIGHTS_CC_BY_NC_ND
+    assert rights_from_page(by_sa_and_nc_nd) == RIGHTS_UNKNOWN
     anchor_conflict = (
         '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
         '<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>'
     )
-    assert rights_from_page(anchor_conflict) == RIGHTS_CC_BY_NC
-    assert rights_from_page("<p>MIT License and CC BY-NC 4.0.</p>") == RIGHTS_CC_BY_NC
+    assert rights_from_page(anchor_conflict) == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>MIT License and CC BY-NC 4.0.</p>") == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>apache-2.0 and CC BY-SA 4.0 are both named.</p>") == RIGHTS_UNKNOWN
 
 
 def test_public_domain_mark_all_rights_reserved_and_a_host_name_are_not_licences():
@@ -825,7 +836,7 @@ def test_software_licences_and_us_government_work_are_not_creative_commons():
     assert rights_from_page("<p>MIT License</p>") == RIGHTS_MIT
     assert rights_from_page("<p>apache-2.0</p>") == RIGHTS_APACHE
     assert rights_from_page("<p>Mozilla Public License 2.0</p>") == RIGHTS_MPL
-    assert rights_from_page("<p>MIT License and CC BY 4.0.</p>") == RIGHTS_MIT
+    assert rights_from_page("<p>MIT License and CC BY 4.0.</p>") == RIGHTS_UNKNOWN
     assert rights_from_page("<p>The code is mpl-2.0 and also apache-2.0.</p>") == RIGHTS_UNKNOWN
     body = "<p>This item is a US government work.</p>"
     assert rights_from_page(body) == RIGHTS_UNKNOWN

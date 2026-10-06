@@ -9,9 +9,10 @@ not stored.
 
 ``creative_commons`` means only a stated CC0, CC BY, or CC BY-SA deed.
 CC BY-NC, CC BY-ND, CC BY-NC-ND, and CC BY-NC-SA keep their own tokens and
-are never folded into ``creative_commons``. A restricted deed wins when a
-permissive deed is also stated. A hyphen is a word boundary, so CC BY does
-not match CC BY-NC, and licenses/by does not match licenses/by-nc. A generic
+are never folded into ``creative_commons``. A page that states both a
+restricted deed and a permissive deed stays unknown. A hyphen is a word
+boundary, so CC BY does not match CC BY-NC, and licenses/by does not match
+licenses/by-nc. A generic
 creativecommons.org/licenses/ URL is not a permissive deed. The Public
 Domain Mark is not CC0. A copyright notice, All rights reserved, a terms
 link, or a host name is not a licence. ``uk_ogl`` is used only when the page
@@ -88,6 +89,8 @@ _LDJSON = re.compile(
 _TAG = re.compile(r"(?is)<[^>]+>")
 _META = re.compile(r"(?is)<meta\b[^>]*>")
 _LINKISH = re.compile(r"(?is)<(?:a|link)\b[^>]*>")
+_ANCHOR = re.compile(r"(?is)<a\b([^>]*)>(.*?)</a>")
+_MARK_HREF = re.compile(r"creativecommons\.org/publicdomain/mark(?![a-z0-9-])")
 _H1 = re.compile(r"(?is)<h1\b[^>]*>(.*?)</h1>")
 _TITLE = re.compile(r"(?is)<title\b[^>]*>(.*?)</title>")
 _ATTR = re.compile(
@@ -215,7 +218,7 @@ _TEXT_DEEDS = (
     (
         "by",
         re.compile(
-            r"creative commons attribution(?![\s-]*(?:non[\s-]*commercial|no[\s-]*deriv|share[\s-]*alike|nc|nd|sa)\b)"
+            r"creative commons attribution(?![\s-]*(?:non[\s-]*commercial|no[\s-]*derivatives?|share[\s-]*alike|nc|nd|sa)\b)"
         ),
     ),
     (
@@ -256,6 +259,8 @@ _RESTRICTED_PRIORITY = (
     ("by-nd", RIGHTS_CC_BY_ND),
 )
 _PERMISSIVE = frozenset({"by", "by-sa", "zero"})
+# A restricted token is not returned when one of these is also stated.
+_BLOCKS_RESTRICTED = frozenset({"by", "by-sa", "zero", "mit", "apache-2.0", "mpl-2.0"})
 _SOFTWARE = (
     ("apache-2.0", RIGHTS_APACHE),
     ("mpl-2.0", RIGHTS_MPL),
@@ -451,16 +456,19 @@ def record_from_response(
 def rights_from_page(page_text: str) -> str:
     """Return a rights label from a reuse licence the page itself states.
 
-    ``creative_commons`` means CC0, CC BY, or CC BY-SA only. CC BY-NC,
-    CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND are their own tokens. A restricted
-    deed wins when a permissive deed is also stated. A hyphen is a word
-    boundary, so CC BY does not match CC BY-NC and licenses/by does not match
-    licenses/by-nc. The Public Domain Mark is not CC0. ``mit``, ``apache-2.0``,
-    and ``mpl-2.0`` are not folded into ``creative_commons``. ``uk_ogl``
-    requires the phrase open government licence. ``us_government_work``
-    requires a rights field. A copyright notice, All rights reserved, a terms
-    link, and a host name are not licences. Script and style text does not
-    count, except a JSON-LD license or rights field.
+    ``creative_commons`` means CC0, CC BY, or CC BY-SA only. A sole CC BY-NC,
+    CC BY-ND, CC BY-NC-SA, or CC BY-NC-ND deed keeps its own token. A restricted
+    deed together with CC BY, CC BY-SA, CC0, MIT, or Apache-2.0 stays unknown.
+    A hyphen is a word boundary, so CC BY does not match CC BY-NC and
+    licenses/by does not match licenses/by-nc. An anchor whose text says CC BY,
+    CC BY-SA, or CC0 while the href is a restricted deed or the Public Domain
+    Mark stays unknown. The Public Domain Mark is not CC0. ``mit``,
+    ``apache-2.0``, and ``mpl-2.0`` are not folded into ``creative_commons``.
+    MIT together with CC BY stays unknown, and two software licences stay
+    unknown. ``uk_ogl`` requires the phrase open government licence.
+    ``us_government_work`` requires a rights field. A copyright notice, All
+    rights reserved, a terms link, and a host name are not licences. Script
+    and style text does not count, except a JSON-LD license or rights field.
     """
 
     if not isinstance(page_text, str):
@@ -469,7 +477,7 @@ def rights_from_page(page_text: str) -> str:
     rights_fields = _rights_fields(page_text)
     for field in rights_fields:
         codes.update(_codes_in_fragment(field))
-    visible = _visible(page_text)
+    visible = _drop_mark_anchors(_visible(page_text))
     for href in _hrefs(visible):
         codes.update(_codes_in_fragment(href))
     plain = _fold(_plain_text(visible))
@@ -590,15 +598,20 @@ def _public_path(path: str) -> bool:
 
 
 def _label(codes: set[str], *, ogl: bool, us_gov: bool) -> str:
-    for code, token in _RESTRICTED_PRIORITY:
-        if code in codes:
-            return token
+    restricted = [token for code, token in _RESTRICTED_PRIORITY if code in codes]
+    permissive = bool(codes & _PERMISSIVE)
     software = [token for code, token in _SOFTWARE if code in codes]
-    if len(software) == 1:
-        return software[0]
+    if restricted and (codes & _BLOCKS_RESTRICTED):
+        return RIGHTS_UNKNOWN
+    if restricted:
+        return restricted[0]
     if len(software) > 1:
         return RIGHTS_UNKNOWN
-    if codes & _PERMISSIVE:
+    if len(software) == 1 and permissive:
+        return RIGHTS_UNKNOWN
+    if len(software) == 1:
+        return software[0]
+    if permissive:
         return RIGHTS_CREATIVE_COMMONS
     if ogl:
         return RIGHTS_UK_OGL
@@ -629,6 +642,21 @@ def _codes_in_fragment(fragment: str) -> set[str]:
     if "zero" in codes and _PD_MARK.search(folded) and _EXPLICIT_ZERO.search(folded) is None:
         codes.discard("zero")
     return codes
+
+
+def _drop_mark_anchors(page_html: str) -> str:
+    """Drop anchors whose href is the Public Domain Mark.
+
+    The visible text of that anchor is not a CC0, CC BY, or CC BY-SA deed.
+    """
+
+    def replace(match: re.Match[str]) -> str:
+        href = _fold(_attrs("<a " + match.group(1) + ">").get("href", "")).replace("\\/", "/")
+        if _MARK_HREF.search(href):
+            return " "
+        return match.group(0)
+
+    return _ANCHOR.sub(replace, page_html)
 
 
 def _rights_fields(page_html: str) -> list[str]:
