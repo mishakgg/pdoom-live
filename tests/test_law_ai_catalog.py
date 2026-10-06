@@ -280,6 +280,33 @@ def test_cc0_anchor_on_public_domain_mark_stays_unknown():
     assert rights_from_page(bare) == RIGHTS_CC_BY_NC
 
 
+def test_generic_creativecommons_licences_url_anchor_text_stays_unknown():
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/">CC BY</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/">CC BY 4.0</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/">CC BY-SA</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://creativecommons.org/licenses">CC BY</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="http://creativecommons.org/licenses/">CC BY 4.0</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://www.creativecommons.org/licenses/">CC BY-SA</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="http://www.creativecommons.org/licenses?lang=en">CC BY</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/?ref=footer">CC BY 4.0</a>') == RIGHTS_UNKNOWN
+    elsewhere = (
+        '<a href="https://creativecommons.org/licenses/">CC BY</a>'
+        "<p>Licensed under CC BY-SA 4.0.</p>"
+    )
+    assert rights_from_page(elsewhere) == RIGHTS_CREATIVE_COMMONS
+    by_elsewhere = (
+        '<a href="https://creativecommons.org/licenses/">CC BY-SA</a>'
+        "<p>CC BY</p>"
+    )
+    assert rights_from_page(by_elsewhere) == RIGHTS_CREATIVE_COMMONS_ATTRIBUTION
+    assert rights_from_page(
+        '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
+    ) == RIGHTS_CREATIVE_COMMONS_ATTRIBUTION
+    assert rights_from_page(
+        '<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>'
+    ) == RIGHTS_CREATIVE_COMMONS
+
+
 def test_public_domain_mark_terms_and_host_stay_unknown():
     mark = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">Public Domain Mark</a>'
     assert rights_from_page(mark) == RIGHTS_UNKNOWN

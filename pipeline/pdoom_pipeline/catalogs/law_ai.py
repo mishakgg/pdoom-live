@@ -24,8 +24,12 @@ A CC BY or CC BY-SA anchor on a by-nc, by-nd, by-nc-sa, by-nc-nd, or
 public-domain mark URL stays unknown. A CC0 anchor on a publicdomain/mark
 URL stays unknown. The Public Domain Mark, all rights reserved, a terms
 link, and the host name are not licences. A generic
-creativecommons.org/licenses/ URL stays unknown. mit, apache-2.0, and
-mpl-2.0 stay their own tokens. Mixed software licences stay unknown.
+creativecommons.org/licenses/ URL stays unknown, with or without a trailing
+slash, on http or https, with or without www, and with a query string. Anchor
+text on that generic URL is not a licence statement. Text elsewhere on the
+page still counts. A specific deed URL such as licenses/by/4.0/ still counts.
+mit, apache-2.0, and mpl-2.0 stay their own tokens. Mixed software licences
+stay unknown.
 uk_ogl requires the British phrase Open Government Licence.
 
 This module does not fetch. It is not a belief collector, and runner_wired
@@ -39,7 +43,7 @@ import re
 from datetime import date
 from html import unescape
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlsplit
 
 from pdoom_pipeline.urls import hostname_is_blocked
 
@@ -376,13 +380,14 @@ def rights_from_page(page_text: str) -> str:
     creative_commons_attribution. CC0, CC BY-SA, or a permissive mix of those
     is creative_commons. Mixed restricted and permissive text stays unknown.
     A permissive anchor on a restricted or public-domain mark URL stays
-    unknown. Public Domain Mark is not CC0. uk_ogl needs the phrase Open
+    unknown. Anchor text on a generic creativecommons.org/licenses/ URL does
+    not count. Public Domain Mark is not CC0. uk_ogl needs the phrase Open
     Government Licence.
     """
 
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
-    visible = _visible(page_text)
+    visible = _drop_generic_licence_anchor_text(_visible(page_text))
     if _anchor_licence_conflict(visible):
         return RIGHTS_UNKNOWN
     pieces = [_plain(visible), *_hrefs(visible), *_meta_values(visible, _LICENSE_META)]
@@ -661,6 +666,46 @@ def _login_path(path: str) -> bool:
 def _is_download(path: str) -> bool:
     bare = path[:-1] if path.endswith("/") else path
     return bare.casefold().endswith(_DOWNLOAD_SUFFIXES)
+
+
+def _generic_licences_url(href: str) -> bool:
+    """True for creativecommons.org/licenses with no deed in the path.
+
+    A trailing slash, an http scheme, a www host, and a query string stay on
+    that generic path. licenses/by/4.0/ is a specific deed and is not generic.
+    """
+
+    raw = href.strip()
+    if not raw:
+        return False
+    if raw.startswith("//"):
+        raw = "https:" + raw
+    try:
+        parsed = urlsplit(raw)
+        host = (parsed.hostname or "").casefold().rstrip(".")
+    except ValueError:
+        return False
+    if parsed.scheme.casefold() not in {"http", "https"}:
+        return False
+    if host not in {"creativecommons.org", "www.creativecommons.org"}:
+        return False
+    return parsed.path.casefold() in {"/licenses", "/licenses/"}
+
+
+def _drop_generic_licence_anchor_text(visible_html: str) -> str:
+    """Remove visible text from anchors that point at the generic licences URL.
+
+    That text is not a licence statement. Text outside the anchor remains.
+    """
+
+    def replace(match: re.Match[str]) -> str:
+        attrs = match.group(1)
+        href = _fold(_attrs(f"<a {attrs}>").get("href", ""))
+        if _generic_licences_url(href):
+            return f"<a {attrs}></a>"
+        return match.group(0)
+
+    return _ANCHOR.sub(replace, visible_html)
 
 
 def _anchor_licence_conflict(visible_html: str) -> bool:
