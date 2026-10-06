@@ -200,8 +200,10 @@ def test_anchor_text_cc_by_on_a_by_nc_url_stays_unknown():
     assert rights_from_page(anchor) == RIGHTS_UNKNOWN
     longer = '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en">CC BY</a>'
     assert rights_from_page(longer) == RIGHTS_UNKNOWN
-    bare = '<a href="https://creativecommons.org/licenses/">CC BY</a>'
+    bare = '<a href="https://creativecommons.org/licenses/">licence</a>'
     assert rights_from_page(bare) == RIGHTS_UNKNOWN
+    bare_text = "<p>https://creativecommons.org/licenses/</p>"
+    assert rights_from_page(bare_text) == RIGHTS_UNKNOWN
     by_url = '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
     assert rights_from_page(by_url) == RIGHTS_CREATIVE_COMMONS
     by_sa_url = '<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY</a>'
