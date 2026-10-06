@@ -140,7 +140,7 @@ def test_catalog_rows_match_confirmed_silg_pages():
         for key in ("abstract", "body", "quote", "transcript", "chart", "chart_data"):
             assert key not in entry
     assert order == sorted(order)
-    assert rights_counts == {RIGHTS_UNKNOWN: 92, RIGHTS_CC_BY_NC_ND: 1}
+    assert rights_counts == {RIGHTS_UNKNOWN: 93}
     assert unknown_dates == 1
     assert entries[0]["title"] == "How We Will Evaluate Our Impact"
     assert entries[0]["date"] == "2021-03-12"
@@ -155,7 +155,7 @@ def test_catalog_rows_match_confirmed_silg_pages():
         if entry["canonical_url"].endswith("/si-at-the-un-high-level-meeting-on-disaster-risk-reduction")
     )
     assert photo["date"] == "2023-05-26"
-    assert photo["rights"] == RIGHTS_CC_BY_NC_ND
+    assert photo["rights"] == RIGHTS_UNKNOWN
     assert photo["title"] == "SI at the UN High-Level Meeting on Disaster Risk Reduction"
     assert entries[-1]["canonical_url"] == PROGRAM_URL
     assert entries[-1]["title"] == "Our work"
@@ -271,6 +271,38 @@ def test_mismatched_anchors_and_mixed_deeds_stay_unknown():
     assert rights_from_page(generic) == RIGHTS_UNKNOWN
 
 
+def test_generic_licence_url_anchor_text_and_photo_credits_stay_unknown():
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/">CC BY</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/">CC BY 4.0</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://creativecommons.org/licenses/">CC BY-SA</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://creativecommons.org/licenses">CC BY</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="http://creativecommons.org/licenses/">CC BY</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<a href="https://www.creativecommons.org/licenses/">CC BY-SA</a>') == RIGHTS_UNKNOWN
+    assert rights_from_page(
+        '<a href="https://creativecommons.org/licenses/?lang=en">CC BY 4.0</a>'
+    ) == RIGHTS_UNKNOWN
+    elsewhere = (
+        '<a href="https://creativecommons.org/licenses/">CC BY</a>'
+        "<p>Licensed under CC BY-SA 4.0.</p>"
+    )
+    assert rights_from_page(elsewhere) == RIGHTS_CREATIVE_COMMONS
+    assert rights_from_page(
+        '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
+    ) == RIGHTS_CREATIVE_COMMONS_ATTRIBUTION
+    photo = (
+        "<p>Photo credit: UNDRR ("
+        '<a href="https://creativecommons.org/licenses/by-nc-nd/2.0/">CC BY-NC-ND 2.0</a>).</p>'
+    )
+    assert rights_from_page(photo) == RIGHTS_UNKNOWN
+    assert rights_from_page("<figcaption>Caption credit: CC BY-SA 4.0.</figcaption>") == RIGHTS_UNKNOWN
+    assert rights_from_page(
+        '<p>Image credit: <a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a></p>'
+    ) == RIGHTS_UNKNOWN
+    separate = photo + "<p>Licensed under CC BY 4.0.</p>"
+    assert rights_from_page(separate) == RIGHTS_CREATIVE_COMMONS_ATTRIBUTION
+    assert rights_from_page("<style>CC BY 4.0</style><p>All rights reserved.</p>") == RIGHTS_UNKNOWN
+
+
 def test_public_domain_mark_terms_hosts_and_reserved_rights_stay_unknown():
     assert rights_from_page("<p>Public Domain Mark is not a Creative Commons Zero dedication.</p>") == (
         RIGHTS_UNKNOWN
@@ -291,6 +323,7 @@ def test_software_licences_and_uk_ogl_stay_distinct():
     assert rights_from_page("<p>MIT Licence</p>") == RIGHTS_MIT
     assert rights_from_page("<p>Apache-2.0</p>") == RIGHTS_APACHE
     assert rights_from_page("<p>Apache License 2.0</p>") == RIGHTS_APACHE
+    assert rights_from_page("<p>Apache License, Version 2.0</p>") == RIGHTS_APACHE
     assert rights_from_page("<p>MPL-2.0</p>") == RIGHTS_MPL
     assert rights_from_page("<p>Mozilla Public License 2.0</p>") == RIGHTS_MPL
     assert rights_from_page("<p>MIT License and Apache-2.0</p>") == RIGHTS_UNKNOWN

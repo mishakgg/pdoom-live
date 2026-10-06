@@ -18,8 +18,11 @@ unknown. A CC BY or CC BY-SA anchor on a by-nc, by-nd, by-nc-sa, by-nc-nd, or
 public-domain mark URL stays unknown. A CC0 anchor on a publicdomain/mark URL
 stays unknown. Public Domain Mark, all rights reserved, terms, and a host
 name stay unknown. ``uk_ogl`` requires the British phrase Open Government
-Licence. A generic creativecommons.org/licenses/ URL stays unknown. A hyphen
-is a word boundary, so CC BY does not match CC BY-NC.
+Licence. A generic creativecommons.org/licenses/ URL stays unknown, and the
+text inside that anchor does not count. A photo credit, caption credit, or
+image credit that names someone else's licence does not count. Script, style,
+and comment text do not count. A hyphen is a word boundary, so CC BY does not
+match CC BY-NC. The canonical Apache notice may include a comma.
 
 A missing publication date stays unknown. Updated, modified, and copyright
 years are not publication dates. The live URL is stored as confirmed. This
@@ -302,9 +305,25 @@ _MIT = re.compile(
 )
 _APACHE = re.compile(
     r"(?<![a-z0-9])apache-2\.0(?![a-z0-9])"
-    r"|\bapache licen[cs]e(?:\s+version)?\s*2\.0\b"
+    r"|\bapache licen[cs]e(?:\s*,\s*version|\s+version|\s*,)?\s*2\.0\b"
     r"|apache\.org/licenses/license-2\.0(?![a-z0-9-])"
     r"|spdx\.org/licenses/apache-2\.0(?![a-z0-9-])"
+)
+_ANCHOR = re.compile(r"(?is)<a\b([^>]*)>(.*?)</a>")
+_HREF_ATTR = re.compile(
+    r"""(?is)\bhref\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+))"""
+)
+# A deed path such as /licenses/by/4.0/ is not generic. Optional slash, query,
+# http, and a www host still leave the URL generic.
+_GENERIC_CC_LICENSES = re.compile(
+    r"^(?:https?:)?//(?:www\.)?creativecommons\.org/licenses/?(?:\?[^#]*)?(?:#.*)?$"
+)
+_CREDIT_PHRASE = re.compile(r"(?i)\b(?:photo|caption|image)\s+credit\b")
+_CREDIT_OPEN = re.compile(
+    r"(?is)<(p|figcaption|li|em|span|caption|figure|small|cite|dd|td|div)\b[^>]*>"
+)
+_CREDIT_CLOSE = re.compile(
+    r"(?is)</(?:p|figcaption|li|em|span|caption|figure|small|cite|dd|td|div)\s*>"
 )
 _MPL = re.compile(
     r"(?<![a-z0-9])mpl-2\.0(?![a-z0-9])"
@@ -462,7 +481,10 @@ def rights_from_page(page_text: str) -> str:
     CC0, and a CC0, CC BY, or CC BY-SA label on a mark or other deed URL stays
     unknown. MIT, Apache-2.0, and MPL-2.0 stay their own tokens. A software
     licence beside any Creative Commons deed stays unknown. ``uk_ogl`` requires
-    the British phrase Open Government Licence in the visible page text.
+    the British phrase Open Government Licence in the visible page text. The
+    text of an anchor whose href is only creativecommons.org/licenses/ does not
+    count. A photo, caption, or image credit that names another licence does
+    not count. Script, style, and comment text do not count.
     """
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
@@ -675,16 +697,74 @@ def validate_date(value: object) -> str:
 
 
 def _rights_signals(page_text: str) -> tuple[set[str], set[str], bool]:
-    cc_codes: set[str] = set()
-    software: set[str] = set()
-    for blob in _LDJSON.findall(page_text):
-        cc_codes |= _cc_codes(blob)
-        software |= _software_codes(blob)
-    visible = _visible(page_text)
-    cc_codes |= _cc_codes(visible)
-    software |= _software_codes(visible)
-    ogl = _states_ogl(visible)
-    return cc_codes, software, ogl
+    visible = _drop_generic_cc_anchors(_drop_credit_licences(_visible(page_text)))
+    return _cc_codes(visible), _software_codes(visible), _states_ogl(visible)
+
+
+def _drop_generic_cc_anchors(html: str) -> str:
+    """Remove anchors that point at the generic Creative Commons licences URL.
+
+    The anchor text is not a deed. Text outside the anchor still is.
+    """
+
+    def replace(match: re.Match[str]) -> str:
+        href_match = _HREF_ATTR.search(match.group(1))
+        if href_match is None:
+            return match.group(0)
+        href = href_match.group(1) or href_match.group(2) or href_match.group(3) or ""
+        if _is_generic_cc_licenses_url(href):
+            return " "
+        return match.group(0)
+
+    return _ANCHOR.sub(replace, html)
+
+
+def _is_generic_cc_licenses_url(href: str) -> bool:
+    folded = _fold(href)
+    return _GENERIC_CC_LICENSES.fullmatch(folded) is not None
+
+
+def _drop_credit_licences(html: str) -> str:
+    """Drop a photo, caption, or image credit, including a licence it names."""
+    spans: list[tuple[int, int]] = []
+    for match in _CREDIT_PHRASE.finditer(html):
+        start_region = max(0, match.start() - 500)
+        opens = list(_CREDIT_OPEN.finditer(html[start_region : match.start()]))
+        removed = False
+        if opens:
+            last = opens[-1]
+            abs_open = start_region + last.start()
+            close = re.search(
+                rf"(?is)</{last.group(1)}\s*>",
+                html[match.end() : match.end() + 1500],
+            )
+            if close is not None:
+                abs_end = match.end() + close.end()
+                if abs_end - abs_open <= 2000:
+                    spans.append((abs_open, abs_end))
+                    removed = True
+        if removed:
+            continue
+        close = _CREDIT_CLOSE.search(html[match.end() : match.end() + 1200])
+        end = match.end() + close.end() if close is not None else min(match.end() + 800, len(html))
+        spans.append((match.start(), end))
+    if not spans:
+        return html
+    spans.sort()
+    merged: list[tuple[int, int]] = [spans[0]]
+    for start, end in spans[1:]:
+        if start <= merged[-1][1]:
+            merged[-1] = (merged[-1][0], max(merged[-1][1], end))
+        else:
+            merged.append((start, end))
+    pieces: list[str] = []
+    cursor = 0
+    for start, end in merged:
+        pieces.append(html[cursor:start])
+        pieces.append(" ")
+        cursor = end
+    pieces.append(html[cursor:])
+    return "".join(pieces)
 
 
 def _cc_codes(value: str) -> set[str]:
