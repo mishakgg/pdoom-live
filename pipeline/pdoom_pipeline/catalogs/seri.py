@@ -7,15 +7,19 @@ interstitial, a robot check, a non-HTML body, or a redirect off that host is
 not stored. Page bodies are not stored. A missing date is unknown. Updated,
 modified, and copyright years are not publication dates.
 
-Rights stay unknown unless the page states CC0, CC BY, or CC BY-SA. Those three
-are creative_commons. CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay
-unknown, and a restricted deed wins when it appears beside a permissive one.
+creative_commons is CC0, CC BY-SA, or a permissive mix of those.
+creative_commons_attribution is CC BY alone. A sole CC BY-NC, CC BY-ND,
+CC BY-NC-SA, or CC BY-NC-ND keeps cc_by_nc, cc_by_nd, cc_by_nc_sa, or
+cc_by_nc_nd. A restricted deed beside CC BY, CC BY-SA, or CC0 stays unknown.
 A hyphen continues a licence token, so CC BY does not match CC BY-NC. A
-creativecommons.org/licenses/ URL has to name one deed. uk_ogl is used only
-when the page states the Open Government Licence. us_government_work is used
-only when a rights field says the item is a US government work. A public page,
-a copyright notice, all rights reserved, a terms link, and a .edu host are not
-licences. Stanford HAI and Stanford CRFM are not this host.
+creativecommons.org/licenses/ URL has to name one deed. A permissive anchor
+on a restricted or public-domain mark URL stays unknown. mit, apache-2.0, and
+mpl-2.0 keep their own tokens. A software licence beside a Creative Commons
+deed, or two software licences, stays unknown. uk_ogl is only the British
+phrase Open Government Licence. us_government_work is only an explicit rights
+field. A public page, a copyright notice, all rights reserved, a terms link,
+the Public Domain Mark, and a .edu host are not licences. Stanford HAI and
+Stanford CRFM are not this host.
 
 This catalog is not a collector. runner_wired stays false.
 """
@@ -37,14 +41,30 @@ RUNNER_WIRED = False
 UNKNOWN_DATE = "unknown"
 RIGHTS_UNKNOWN = "unknown"
 RIGHTS_CREATIVE_COMMONS = "creative_commons"
+RIGHTS_CC_BY = "creative_commons_attribution"
+RIGHTS_CC_BY_NC = "cc_by_nc"
+RIGHTS_CC_BY_ND = "cc_by_nd"
+RIGHTS_CC_BY_NC_SA = "cc_by_nc_sa"
+RIGHTS_CC_BY_NC_ND = "cc_by_nc_nd"
 RIGHTS_UK_OGL = "uk_ogl"
 RIGHTS_US_GOVERNMENT_WORK = "us_government_work"
+RIGHTS_MIT = "mit"
+RIGHTS_APACHE = "apache-2.0"
+RIGHTS_MPL = "mpl-2.0"
 ALLOWED_RIGHTS = frozenset(
     {
         RIGHTS_UNKNOWN,
         RIGHTS_CREATIVE_COMMONS,
+        RIGHTS_CC_BY,
+        RIGHTS_CC_BY_NC,
+        RIGHTS_CC_BY_ND,
+        RIGHTS_CC_BY_NC_SA,
+        RIGHTS_CC_BY_NC_ND,
         RIGHTS_UK_OGL,
         RIGHTS_US_GOVERNMENT_WORK,
+        RIGHTS_MIT,
+        RIGHTS_APACHE,
+        RIGHTS_MPL,
     }
 )
 OFFICIAL_HOST = "seri.stanford.edu"
@@ -201,48 +221,102 @@ _CHALLENGE_MARKERS = (
     "robot interstitial",
     "pardon our interruption",
 )
-# Longer restricted deeds are listed before shorter ones. A hyphen is not the end
-# of a deed, so licenses/by does not match licenses/by-nc.
-_CC_URL = re.compile(
-    r"(?i)creativecommons\.org/"
-    r"(?:publicdomain/(?P<pd>zero|mark)"
-    r"|licenses/(?P<deed>by-nc-nd|by-nc-sa|by-nc|by-nd|by-sa|by))"
-    r"(?![a-z0-9-])"
+_ANCHOR = re.compile(r"(?is)<a\b[^>]*>.*?</a>")
+_DASHES = str.maketrans(
+    {
+        "\u2010": "-",
+        "\u2011": "-",
+        "\u2012": "-",
+        "\u2013": "-",
+        "\u2014": "-",
+        "\u2212": "-",
+    }
 )
-_TEXT_CODES = (
-    ("by-nc-nd", re.compile(r"(?i)(?<![a-z0-9])cc[\s-]*by[\s-]*nc[\s-]*nd(?![a-z0-9])")),
-    ("by-nc-sa", re.compile(r"(?i)(?<![a-z0-9])cc[\s-]*by[\s-]*nc[\s-]*sa(?![a-z0-9])")),
-    ("by-nc", re.compile(r"(?i)(?<![a-z0-9])cc[\s-]*by[\s-]*nc(?![a-z0-9])")),
-    ("by-nd", re.compile(r"(?i)(?<![a-z0-9])cc[\s-]*by[\s-]*nd(?![a-z0-9])")),
+# Longer deeds are listed first. A hyphen does not end the token, so CC BY does
+# not match CC BY-NC and licenses/by does not match licenses/by-nc.
+_DEED_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
     (
         "by-nc-nd",
         re.compile(
-            r"(?i)creative commons attribution[\s-]+non[\s-]*commercial[\s-]+no[\s-]*derivatives"
+            r"(?:creativecommons\.org/licenses/by-nc-nd(?![a-z0-9-])"
+            r"|\bcc[\s-]*by[\s-]*nc[\s-]*nd(?![a-z0-9-])"
+            r"|creative\s+commons\s+attribution[\s-]+non[\s-]*commercial[\s-]+no[\s-]*deriv)"
         ),
     ),
     (
         "by-nc-sa",
         re.compile(
-            r"(?i)creative commons attribution[\s-]+non[\s-]*commercial[\s-]+share[\s-]*alike"
+            r"(?:creativecommons\.org/licenses/by-nc-sa(?![a-z0-9-])"
+            r"|\bcc[\s-]*by[\s-]*nc[\s-]*sa(?![a-z0-9-])"
+            r"|creative\s+commons\s+attribution[\s-]+non[\s-]*commercial[\s-]+share[\s-]*alike)"
         ),
     ),
-    ("by-nc", re.compile(r"(?i)creative commons attribution[\s-]+non[\s-]*commercial")),
-    ("by-nd", re.compile(r"(?i)creative commons attribution[\s-]+no[\s-]*derivatives")),
-    ("mark", re.compile(r"(?i)public domain mark\b")),
-    ("by-sa", re.compile(r"(?i)(?<![a-z0-9])cc[\s-]*by[\s-]*sa(?![a-z0-9])")),
-    ("by-sa", re.compile(r"(?i)creative commons attribution[\s-]+share[\s-]*alike")),
-    ("zero", re.compile(r"(?i)(?<![a-z0-9])cc[\s-]*0(?![a-z0-9])|\bcreative commons zero\b|\bcc zero\b")),
-    ("by", re.compile(r"(?i)(?<![a-z0-9])cc[\s-]*by(?![a-z0-9-])")),
+    (
+        "by-nc",
+        re.compile(
+            r"(?:creativecommons\.org/licenses/by-nc(?![a-z0-9-])"
+            r"|\bcc[\s-]*by[\s-]*nc(?![a-z0-9-])"
+            r"|creative\s+commons\s+attribution[\s-]+non[\s-]*commercial(?![a-z0-9-]))"
+        ),
+    ),
+    (
+        "by-nd",
+        re.compile(
+            r"(?:creativecommons\.org/licenses/by-nd(?![a-z0-9-])"
+            r"|\bcc[\s-]*by[\s-]*nd(?![a-z0-9-])"
+            r"|creative\s+commons\s+attribution[\s-]+no[\s-]*deriv)"
+        ),
+    ),
+    (
+        "by-sa",
+        re.compile(
+            r"(?:creativecommons\.org/licenses/by-sa(?![a-z0-9-])"
+            r"|\bcc[\s-]*by[\s-]*sa(?![a-z0-9-])"
+            r"|creative\s+commons\s+attribution[\s-]+share[\s-]*alike(?![a-z0-9-]))"
+        ),
+    ),
     (
         "by",
         re.compile(
-            r"(?i)creative commons attribution(?![\s-]*(?:non[\s-]*commercial|no[\s-]*deriv|share[\s-]*alike))"
+            r"(?:creativecommons\.org/licenses/by(?![a-z0-9-])"
+            r"|\bcc[\s-]*by(?![a-z0-9-])"
+            r"|creative\s+commons\s+attribution(?![a-z0-9-])(?![\s-]*(?:non[\s-]*commercial|no[\s-]*deriv|share[\s-]*alike)))"
+        ),
+    ),
+    (
+        "zero",
+        re.compile(
+            r"(?:creativecommons\.org/publicdomain/zero(?![a-z0-9-])"
+            r"|\bcc0(?![a-z0-9-])"
+            r"|\bcc[\s-]+0(?![a-z0-9-])"
+            r"|\bcc[\s-]*zero\b"
+            r"|creative\s+commons(?:\s+public\s+domain)?[\s-]+zero\b)"
+        ),
+    ),
+    (
+        "mark",
+        re.compile(
+            r"(?:creativecommons\.org/publicdomain/mark(?![a-z0-9-])"
+            r"|public\s+domain\s+mark\b)"
         ),
     ),
 )
+_GENERIC_LICENSES_URL = re.compile(r"creativecommons\.org/licenses/?(?!/|[a-z0-9-])")
 _RESTRICTED_DEEDS = frozenset({"by-nc", "by-nd", "by-nc-sa", "by-nc-nd"})
 _PERMISSIVE_DEEDS = frozenset({"by", "by-sa", "zero"})
-_OGL = re.compile(r"(?i)open government licence\b|open-government-licence")
+_RESTRICTED_TOKENS = {
+    "by-nc": RIGHTS_CC_BY_NC,
+    "by-nd": RIGHTS_CC_BY_ND,
+    "by-nc-sa": RIGHTS_CC_BY_NC_SA,
+    "by-nc-nd": RIGHTS_CC_BY_NC_ND,
+}
+_OGL_PHRASE = "open government licence"
+_MIT = re.compile(r"(?:\bmit\s+licen[cs]e\b|\blicen[cs]ed\s+under\s+(?:the\s+)?mit(?:\s+licen[cs]e)?\b)")
+_APACHE = re.compile(
+    r"(?:\bapache-2\.0\b|\bapache\s+licen[cs]e(?:\s*,?\s*version)?\s*2(?:\.0)?\b"
+    r"|\blicen[cs]ed\s+under\s+(?:the\s+)?apache(?:\s+licen[cs]e)?(?:\s*,?\s*version)?\s*2(?:\.0)?\b)"
+)
+_MPL = re.compile(r"(?:\bmpl-2\.0\b|\bmpl\s*2\.0\b|\bmozilla\s+public\s+licen[cs]e(?:\s*,?\s*version)?\s*2\.0\b)")
 _GOV_WORK = re.compile(
     r"(?i)\b(?:a\s+)?works?\s+of\s+the\s+(?:united\s+states|u\.s\.|us)\s+government\b"
     r"|\b(?:united\s+states|u\.s\.|us)\s+government\s+works?\b"
@@ -361,24 +435,49 @@ def record_from_response(
 
 
 def rights_from_page(page_text: str) -> str:
-    """Return a rights label. Public availability alone stays unknown.
+    """Return a rights label stated by the page, or unknown.
 
-    creative_commons is only CC0, CC BY, or CC BY-SA. A restricted deed, a
-    public-domain mark, a copyright notice, or a .edu host stays unknown.
+    creative_commons is CC0, CC BY-SA, or a permissive mix of those.
+    creative_commons_attribution is CC BY alone. A sole restricted deed keeps
+    its own token. A restricted deed beside a permissive deed stays unknown.
+    A permissive anchor on a restricted or public-domain mark URL stays
+    unknown, as does a generic creativecommons.org/licenses/ URL.
     """
 
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
-    visible = _visible_html(page_text)
-    codes = _licence_codes(visible + " " + " ".join(_jsonld_licence_strings(page_text)))
-    if codes & _RESTRICTED_DEEDS:
+    codes = _page_deed_codes(page_text)
+    if "mark" in codes:
         return RIGHTS_UNKNOWN
+    groups = 0
+    if codes & _RESTRICTED_DEEDS:
+        groups += 1
     if codes & _PERMISSIVE_DEEDS:
-        return RIGHTS_CREATIVE_COMMONS
-    if _us_government_work(" ".join(_rights_fields(page_text))):
-        return RIGHTS_US_GOVERNMENT_WORK
-    if _OGL.search(_plain(visible)):
+        groups += 1
+    software = _software_tokens(page_text)
+    if software:
+        groups += 1
+    ogl = _states_uk_ogl(page_text)
+    gov = _us_government_work(" ".join(_rights_fields(page_text)))
+    if ogl:
+        groups += 1
+    if gov:
+        groups += 1
+    if groups != 1:
+        return RIGHTS_UNKNOWN
+    if codes & _RESTRICTED_DEEDS:
+        found = codes & _RESTRICTED_DEEDS
+        if len(found) != 1:
+            return RIGHTS_UNKNOWN
+        return _RESTRICTED_TOKENS[next(iter(found))]
+    if codes & _PERMISSIVE_DEEDS:
+        return _permissive_label(codes & _PERMISSIVE_DEEDS)
+    if len(software) == 1:
+        return next(iter(software))
+    if ogl:
         return RIGHTS_UK_OGL
+    if gov:
+        return RIGHTS_US_GOVERNMENT_WORK
     return RIGHTS_UNKNOWN
 
 
@@ -755,25 +854,89 @@ def _text_values(value: object) -> list[str]:
     return []
 
 
-def _licence_codes(page_text: str) -> set[str]:
+def _permissive_label(codes: set[str]) -> str:
+    """CC0 or CC BY-SA, including a mix with CC BY, is creative_commons."""
+
+    if codes <= _PERMISSIVE_DEEDS and codes & {"by-sa", "zero"}:
+        return RIGHTS_CREATIVE_COMMONS
+    if codes == {"by"}:
+        return RIGHTS_CC_BY
+    return RIGHTS_UNKNOWN
+
+
+def _page_deed_codes(page_text: str) -> set[str]:
     codes: set[str] = set()
-    text = page_text
-    for match in list(_CC_URL.finditer(text)):
-        pd = (match.group("pd") or "").lower()
-        deed = (match.group("deed") or "").lower()
-        if pd == "mark":
-            codes.add("mark")
-        elif pd == "zero":
-            codes.add("zero")
-        elif deed:
-            codes.add(deed)
-        text = text.replace(match.group(0), " ", 1)
-    plain = _plain(text)
-    for code, pattern in _TEXT_CODES:
-        if pattern.search(plain):
-            codes.add(code)
-            plain = pattern.sub(" ", plain)
+    visible = _visible_html(page_text)
+    kept: list[str] = []
+    cursor = 0
+    for match in _ANCHOR.finditer(visible):
+        kept.append(visible[cursor : match.start()])
+        cursor = match.end()
+        href = _attrs(match.group(0)).get("href", "")
+        inner = _plain(match.group(0))
+        codes.update(_anchor_deed_codes(href, inner))
+    kept.append(visible[cursor:])
+    codes.update(_deed_codes(_fold(_plain(" ".join(kept)))))
+    for tag in _LINK.findall(visible):
+        href = _attrs(tag).get("href", "")
+        if href:
+            codes.update(_deed_codes(_fold(href)))
+    for tag in _META.findall(visible):
+        attrs = _attrs(tag)
+        key = (attrs.get("property") or attrs.get("name") or "").casefold()
+        if key in _RIGHTS_META and attrs.get("content"):
+            codes.update(_deed_codes(_fold(attrs["content"])))
+    for value in _jsonld_licence_strings(page_text):
+        codes.update(_deed_codes(_fold(value)))
     return codes
+
+
+def _anchor_deed_codes(href: str, inner: str) -> set[str]:
+    """Ignore a permissive label pasted onto a different deed URL."""
+
+    folded_href = _fold(href)
+    href_codes = _deed_codes(folded_href)
+    if _GENERIC_LICENSES_URL.search(folded_href) and not href_codes:
+        return set()
+    text_codes = _deed_codes(_fold(inner))
+    href_bad = href_codes & (_RESTRICTED_DEEDS | {"mark"})
+    if href_bad and (text_codes & _PERMISSIVE_DEEDS) and not (text_codes & _RESTRICTED_DEEDS):
+        return set()
+    return href_codes | text_codes
+
+
+def _deed_codes(folded: str) -> set[str]:
+    found: set[str] = set()
+    if not folded:
+        return found
+    for name, pattern in _DEED_PATTERNS:
+        if pattern.search(folded):
+            found.add(name)
+    return found
+
+
+def _software_tokens(page_text: str) -> set[str]:
+    visible = _fold(_plain(_visible_html(page_text)))
+    fields = _fold("\n".join(_rights_fields(page_text)))
+    blob = visible + "\n" + fields
+    found: set[str] = set()
+    if _MIT.search(blob):
+        found.add(RIGHTS_MIT)
+    if _APACHE.search(blob):
+        found.add(RIGHTS_APACHE)
+    if _MPL.search(blob):
+        found.add(RIGHTS_MPL)
+    return found
+
+
+def _states_uk_ogl(page_text: str) -> bool:
+    visible = _fold(_plain(_visible_html(page_text)))
+    fields = _fold("\n".join(_rights_fields(page_text)))
+    return _OGL_PHRASE in visible or _OGL_PHRASE in fields
+
+
+def _fold(value: str) -> str:
+    return value.casefold().translate(_DASHES)
 
 
 def _us_government_work(rights_text: str) -> bool:
