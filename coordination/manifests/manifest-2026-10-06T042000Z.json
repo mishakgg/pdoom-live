@@ -1,0 +1,9 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-06T042000Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Merged pull requests 274 through 279. Draft 250 stays open because the runtime image check failed. Draft 280 records Together AI.",
+  "follow_up_prs": [168, 250, 280],
+  "origin_main_sha": "4e73f87af7cb7faa2b47eeb62fc09356f44fc7ec"
+}
