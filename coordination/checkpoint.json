@@ -2,11 +2,11 @@
   "record_kind": "pdoom-live-coordination-checkpoint",
   "record_version": 1,
   "coordinator": "agent-7",
-  "review_id": "2026-10-06T000627Z",
-  "reviewed_at": "2026-10-06T00:06:27Z",
-  "previous_review_id": "2026-10-05T235746Z",
-  "status_path": "coordination/status/status-2026-10-06T000627Z.md",
-  "manifest_path": "coordination/manifests/manifest-2026-10-06T000627Z.json",
+  "review_id": "2026-10-06T001008Z",
+  "reviewed_at": "2026-10-06T00:10:08Z",
+  "previous_review_id": "2026-10-06T000627Z",
+  "status_path": "coordination/status/status-2026-10-06T001008Z.md",
+  "manifest_path": "coordination/manifests/manifest-2026-10-06T001008Z.json",
   "dependency_map_path": "coordination/dependency-map.json",
   "origin_main_sha": "606c3397ae093681cf7f41f5d4fc6b72ef5c82ad",
   "origin_main_subject": "Merge pull request #160 from mishakgg/cursor/ico-ai-pages-a32e",
@@ -113,7 +113,7 @@
       "reason": "5585848 only updates docs/FRONTEND_HANDOFF.md. GitHub CI 37274485308, E2E 37274485285, and runtime 37274485294 succeeded on that head. The handoff still records two local spawnSync python ENOENT failures. Not folded into the six-workstream candidate."
     }
   ],
-  "next_action": "Pull requests 133, 155, 158, 159, and 160 are merged. main is 606c3397ae093681cf7f41f5d4fc6b72ef5c82ad. Drafts 161 through 170 stay open while checks finish. Pull requests 32 and 23 stay open. Do not merge pull request 32.",
+  "next_action": "Pull requests 133, 155, 158, 159, and 160 are merged. main is 606c3397ae093681cf7f41f5d4fc6b72ef5c82ad. Draft 171 is the Forethought catalog, 136 unknown rows. Drafts 161 through 170 stay open while checks finish. Pull requests 32 and 23 stay open. Do not merge pull request 32.",
   "concurrent_workers_launched_at": "2026-10-05T18:46:00Z",
   "concurrent_workers_model": "grok-4.7-xhigh",
   "concurrent_workers": [
@@ -244,7 +244,7 @@
     {"task": "Catalog ICO AI pages", "run": "bc-3695beb5-28a2-545a-9c54-10b5671c2fb6", "branch": "cursor/ico-ai-pages-a32e", "head": "13b8daec9e849f3fbb2216fcba3f88563dd8b5b5", "pr": 160, "state": "merged", "merge": "606c3397ae093681cf7f41f5d4fc6b72ef5c82ad", "note": "One hundred thirty-three rows are uk_ogl because each page states open government licence. One hundred nine dates stay unknown."},
     {"task": "Catalog FTC AI pages", "run": "bc-661f7766-8b30-5bb3-948a-45164e73c5b3", "branch": "cursor/ftc-ai-pages-a32e", "head": "9a76c278691cfb36817e8e74627b4ef84a68fb3a", "pr": 152, "state": "merged", "merge": "dbf764cf58eb8c9a102fa8275450587932d7456f", "note": "No rows. ftc.gov returned an Akamai robot block. A .gov host alone stays unknown."},
     {"task": "Catalog Rethink Priorities pages", "run": "bc-046afa7b-4fd3-52cc-b294-f40ff46d0370", "branch": "cursor/rethink-pages-a32e", "head": "7fd7ffdc2b1178cb8e49bdc9fb6104002d85993b", "pr": 164, "state": "draft", "note": "Thirty-three rows stay unknown. A CC-BY citation footnote is not a page licence."},
-    {"task": "Catalog Forethought pages", "run": "bc-728837b0-de0e-57d8-ab4f-133d928f899e", "branch": "cursor/forethought-pages-a32e"},
+    {"task": "Catalog Forethought pages", "run": "bc-728837b0-de0e-57d8-ab4f-133d928f899e", "branch": "cursor/forethought-pages-a32e", "head": "e9f9872543ce113c3704f5c7be5db55fb51eead4", "pr": 171, "state": "draft", "note": "One hundred thirty-six rows stay unknown. Fifty-eight dates stay unknown. The support URL redirected to careers and is not a separate row."},
     {"task": "Catalog IAPS pages", "run": "bc-177e190c-8589-568e-af8c-924ac664da63", "branch": "cursor/iaps-pages-a32e", "head": "552df5b5c535ff8036af71657cc428f215ece96e", "pr": 166, "state": "draft", "note": "One hundred eighty rows stay unknown. Seventy-three dates stay unknown."},
     {"task": "Catalog BAIR pages", "run": "bc-5fe82191-1f4c-5c4d-a205-a25386f0b5b1", "branch": "cursor/bair-pages-a32e", "head": "1a3b0971bd5af2200c21e0a479ec557069a76310", "pr": 168, "state": "draft", "note": "Thirteen rows stay unknown. Individual blog posts are not listed."},
     {"task": "Catalog Amii pages", "run": "bc-9cb32774-5e00-560f-9fbd-36c02ff3e693", "branch": "cursor/amii-pages-a32e", "head": "de94db9ee4617f37b7e0ddef8065de2e0a0ce4c4", "pr": 162, "state": "draft", "note": "Twenty-eight rows stay unknown. Every date stays unknown."},
@@ -271,7 +271,8 @@
     {"task": "Catalog Timaeus pages", "run": "bc-441d677f-f8bf-5704-8910-36ac42d243fb", "branch": "cursor/timaeus-pages-a32e"},
     {"task": "Catalog GPAI pages", "run": "bc-70d7b273-bf8c-56ca-b717-ee2416309e49", "branch": "cursor/gpai-pages-a32e"},
     {"task": "Catalog LMSYS pages", "run": "bc-1160dfee-145a-5132-9a2a-b343856afb45", "branch": "cursor/lmsys-pages-a32e"},
-    {"task": "Catalog Our World in Data AI pages", "run": "bc-b72ce770-7e87-5117-abaa-ec877bb0afe1", "branch": "cursor/owid-ai-pages-a32e"}
+    {"task": "Catalog Our World in Data AI pages", "run": "bc-b72ce770-7e87-5117-abaa-ec877bb0afe1", "branch": "cursor/owid-ai-pages-a32e"},
+    {"task": "Catalog Gray Swan pages", "run": "bc-2ea696e5-75a3-55d4-a7bf-8be3e4771f40", "branch": "cursor/grayswan-pages-a32e"}
   ],
   "merge_continue_dispatched_at": "2026-10-05T18:31:30Z",
   "merge_continue_targets_pr": 31,
