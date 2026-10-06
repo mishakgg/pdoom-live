@@ -1,0 +1,798 @@
+{
+  "catalog_id": "cip_pages",
+  "description": "Metadata for confirmed public Collective Intelligence Project pages on www.cip.org. cip.org redirects there and is not stored. Each URL was confirmed with one bounded HTML GET. Cloudflare, captcha, HTTP 202, Akamai 403, robots, oversized responses, and off-host redirects are omitted. Rows store title, publisher, canonical URL, date, and rights. Abstracts, PDFs, bodies, and chart data are not stored. Missing dates are unknown. Updated, modified, and copyright years are not publication dates. creative_commons is only CC0, CC BY, or CC BY-SA. CC BY-NC, CC BY-ND, CC BY-NC-ND, and CC BY-NC-SA stay their own tokens. Restricted deeds win. uk_ogl requires open government licence. runner_wired is false. This catalog is not a belief collector.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "TIME100 AI: Divya Siddarth and Saffron Huang",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog-2-1/blog-post-title-two-3hyrg",
+      "date": "2019-03-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Turing-Complete Governance",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/turing-complete-governance",
+      "date": "2022-10-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Co-owning the Future with Data Cooperatives @ Stanford HAI",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/data-cooperatives",
+      "date": "2022-12-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Case for Collective Intelligence @ iWORD 2022",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/iwordci",
+      "date": "2022-12-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generative AI and Democracy @ iWORD 2022",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/iword-generative-ai",
+      "date": "2022-12-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Building The CI Corporation",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/ci-corporation",
+      "date": "2023-01-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Generative AI and the Digital Commons",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/generative-ai-digital-commons",
+      "date": "2023-02-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "We should all get to decide what to do about AI",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/alignment",
+      "date": "2023-05-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Four Approaches to Democratizing AI",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/democratizing-ai",
+      "date": "2023-07-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Assessing Large Language Models: A Multidimensional View of the Elephant",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/a-multidimensional-view-of-the-elephant",
+      "date": "2023-08-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "CIP and Anthropic launch Collective Constitutional AI",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/ccai",
+      "date": "2023-10-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Risk Prioritization: OpenAI Alignment Assembly Report",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/participatory-ai-risk-prioritization",
+      "date": "2023-10-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Alignment Assemblies: Nine Months In",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/alignment-assemblies-nine-months-in",
+      "date": "2023-11-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI For Institutions: Website Launch & Update",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/ai-for-institutions-launch",
+      "date": "2023-12-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Roadmap to Democratic AI",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/ai-roadmap",
+      "date": "2024-03-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Beyond Public and Private: Collective Provision Under Conditions of Supermodularity",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/aw3xt4x7anrrufs8x0bgkn4fsklsom",
+      "date": "2024-04-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI and the Commons: Data Governance for Generative AI",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/ai-and-the-commons-data-governance-for-generative-ai",
+      "date": "2024-05-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Building the Field of Democratic AI: Our Roadmap Launch and Webinar",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/building-the-field-of-democratic-ai-our-roadmap-launch-webinar",
+      "date": "2024-05-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "We need network societies, not network states",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/network-societies",
+      "date": "2024-05-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Four tools that CIP is working on",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/four-tools-that-cip-is-working-on",
+      "date": "2024-07-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Predistribution over Redistribution: Beyond the Windfall Clause",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/predistribution-over-redistribution-beyond-the-windfall-clause",
+      "date": "2024-08-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "“Rethinking ‘Checks and Balances’ for the A.I. Age”",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog-2-1/blog-post-title-one-ggn49",
+      "date": "2024-09-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Shared Code: Democratizing AI Companies",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/shared-code",
+      "date": "2024-10-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Runtime AI, and the Subtleties of Language",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/runtimeai",
+      "date": "2024-10-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "The AI Safety Paradox: When 'Safe' AI Makes Systems More Dangerous",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/safetyparadox",
+      "date": "2024-11-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Andy Ayrey on Truth Terminal, Agentic AI, and Data Commons",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/terminaloftruth",
+      "date": "2024-11-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "LLM Judges Are Unreliable",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/llm-judges-are-unreliable",
+      "date": "2025-05-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing the Global Pulse Indicators",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/introducing-the-global-pulse-indicators",
+      "date": "2025-08-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "2025 Global Dialogues Index",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/2025gdindex",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Map",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/ai-map",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI for Institutions Workshops: Your Outlier Opinions",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/ai-opinions",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Alignment Assemblies",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/alignmentassemblies",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Annual and Quarterly Reports",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/annualreports",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Audrey",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/audrey",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Austin",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/austin",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Blog 2",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog-2-1",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Global Dialogues — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/category/Global+Dialogues",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "New Economics for AI — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/category/New+Economics+for+AI",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Policy Brief — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/category/Policy+Brief",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Report — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/category/Report",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Agentic AI — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/Agentic+AI",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Andy Ayrey — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/Andy+Ayrey",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "CIP Insights — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/CIP+Insights",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Interviews — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/Interviews",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "ai — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/ai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "ai literacy — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/ai+literacy",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "alignment — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/alignment",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "board structures — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/board+structures",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "commons — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/commons",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "data — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/data",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "democracy — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/democracy",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "global dialogues — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/global+dialogues",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "governance — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/governance",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "indicators — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/indicators",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "language — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/language",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "language models — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/language+models",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "policy — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/policy",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "predistribution — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/predistribution",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "redistribution — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/redistribution",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "safety — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/safety",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "stakeholder capitalism — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/stakeholder+capitalism",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "systems — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/systems",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "systems safety — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/systems+safety",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "technology — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/technology",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "tools — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/tools",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "tra — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/tra",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "transcript — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/transcript",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "windfall clause — Blog",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/blog/tag/windfall+clause",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Careers",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/careers",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Lead Product Engineer",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/careers/productengineer",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Global Dialogues Challenge",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/challenge",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Divya Siddarth",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/divya",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Donate",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/donate",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Earth Species Project",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/earthspecies",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Evan",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/evan",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Faisal",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/faisal",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Funders and Partners",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/funding-partnerships",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Global Dialogues",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/globaldialogues",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Collective Intelligence Project",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/home",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Contact",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/interest-form",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "James",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/james",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Jhilmil",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/jhilmil",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Joal",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/joal",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "New Page",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/new-page",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Privacy Policy",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/privacy-policy",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research Fellowship",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research-fellowship",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Journal Article — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/category/Journal+Article",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "News/Media Article — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/category/News%2FMedia+Article",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Policy Brief — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/category/Policy+Brief",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Policy Consultation — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/category/Policy+Consultation",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Preprint — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/category/Preprint",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Report — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/category/Report",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research Agenda — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/category/Research+Agenda",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research Brief — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/category/Research+Brief",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Technical Report — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/category/Technical+Report",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Working Paper — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/category/Working+Paper",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "CI corporation — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/tag/CI+corporation",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "ai — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/tag/ai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "commons — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/tag/commons",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "crypto — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/tag/crypto",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "data — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/tag/data",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "governance — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/tag/governance",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "institutions — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/tag/institutions",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "public goods — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/tag/public+goods",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "remaking tech institutions — Research",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/research/tag/remaking+tech+institutions",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "S4D Conversation on AI and Democracy",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/s4d",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Saffron Huang",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/saffron",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Supermodular",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/supermodular",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Unbiased AI Principles",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/unbiased-ai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Whitepaper",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/whitepaper",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Zarinah Agnew",
+      "publisher": "The Collective Intelligence Project",
+      "canonical_url": "https://www.cip.org/zarinah",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
