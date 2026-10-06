@@ -13,9 +13,11 @@ copyright years are not publication dates. ``creative_commons`` means only a
 stated CC0, CC BY, or CC BY-SA deed. CC BY-NC, CC BY-ND, CC BY-NC-ND, and
 CC BY-NC-SA are their own tokens and are never folded into creative_commons.
 A hyphen is a word boundary in a naive pattern, so CC BY must not match
-CC BY-NC, and licenses/by must not match licenses/by-nc. Restricted deeds
-win when a permissive deed is also present. apache-2.0 and mit are their own
-tokens. Mixed apache or mit plus permissive CC stays unknown. A generic
+CC BY-NC, and licenses/by must not match licenses/by-nc. A sole restricted
+deed keeps its token. A restricted deed mixed with CC BY, CC BY-SA, or CC0
+stays unknown, including a permissive anchor on a restricted or Public
+Domain Mark URL. apache-2.0 and mit are their own tokens. Mixed apache or
+mit plus permissive CC stays unknown. A generic
 creativecommons.org/licenses/ URL is not a permissive deed. The Public
 Domain Mark is not CC0. A copyright notice, All rights reserved, a terms
 link, or a host name is not a licence. The live URL is stored as confirmed.
@@ -377,23 +379,26 @@ def record_from_response(
 def rights_from_page(page_text: str) -> str:
     """Return a rights label. Public availability alone stays unknown.
 
-    ``creative_commons`` is only CC0, CC BY, or CC BY-SA. Sole CC BY-NC,
-    CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND keep their own tokens. A restricted
-    deed wins when a permissive deed is also present. A by-nc URL stays a
-    restricted token even when the anchor text says CC BY. apache-2.0 and mit
-    are their own tokens. Mixed apache or mit plus permissive CC stays unknown.
-    The Public Domain Mark is not CC0.
+    ``creative_commons`` is only CC0, CC BY, or CC BY-SA. A sole CC BY-NC,
+    CC BY-ND, CC BY-NC-SA, or CC BY-NC-ND deed keeps its own token. When a
+    restricted deed and CC BY, CC BY-SA, or CC0 are both present, rights stay
+    unknown. A permissive anchor on a by-nc, by-nd, by-nc-sa, by-nc-nd, or
+    Public Domain Mark URL stays unknown. Two different restricted deeds stay
+    unknown. apache-2.0 and mit are their own tokens. Mixed apache or mit plus
+    permissive CC stays unknown. The Public Domain Mark is not CC0.
     """
 
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     codes, mit, apache = _licence_signals(page_text)
+    permissive = bool(codes & _PERMISSIVE)
     restricted = _restricted_rights(codes)
+    if permissive and restricted is not None:
+        return RIGHTS_UNKNOWN
     if restricted is not None:
         return restricted
     if "mark" in codes:
         return RIGHTS_UNKNOWN
-    permissive = bool(codes & _PERMISSIVE)
     if permissive and (mit or apache):
         return RIGHTS_UNKNOWN
     if mit and apache:

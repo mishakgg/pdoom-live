@@ -221,13 +221,21 @@ def test_hyphen_word_boundary_does_not_read_cc_by_inside_a_restricted_deed():
 def test_a_by_nc_url_is_not_read_as_licenses_by():
     by_nc = '<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY</a>'
     assert "licenses/by" in by_nc
-    assert rights_from_page(by_nc) == RIGHTS_CC_BY_NC
+    assert rights_from_page(by_nc) == RIGHTS_UNKNOWN
     by_nd = '<a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY</a>'
-    assert rights_from_page(by_nd) == RIGHTS_CC_BY_ND
+    assert rights_from_page(by_nd) == RIGHTS_UNKNOWN
     by_nc_sa = '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-SA</a>'
-    assert rights_from_page(by_nc_sa) == RIGHTS_CC_BY_NC_SA
+    assert rights_from_page(by_nc_sa) == RIGHTS_UNKNOWN
     by_nc_nd = '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY</a>'
-    assert rights_from_page(by_nc_nd) == RIGHTS_CC_BY_NC_ND
+    assert rights_from_page(by_nc_nd) == RIGHTS_UNKNOWN
+    by_sa_on_nc = '<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-SA</a>'
+    assert rights_from_page(by_sa_on_nc) == RIGHTS_UNKNOWN
+    mark_by = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC BY</a>'
+    assert rights_from_page(mark_by) == RIGHTS_UNKNOWN
+    mark_by_sa = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC BY-SA</a>'
+    assert rights_from_page(mark_by_sa) == RIGHTS_UNKNOWN
+    mark_zero = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC0</a>'
+    assert rights_from_page(mark_zero) == RIGHTS_UNKNOWN
     generic = '<a href="https://creativecommons.org/licenses/">Creative Commons</a>'
     assert rights_from_page(generic) == RIGHTS_UNKNOWN
     by_url = '<a href="https://creativecommons.org/licenses/by/4.0/">licence</a>'
@@ -238,23 +246,33 @@ def test_a_by_nc_url_is_not_read_as_licenses_by():
     assert rights_from_page(zero_url) == RIGHTS_CREATIVE_COMMONS
 
 
-def test_mixed_restricted_and_permissive_deeds_let_the_restricted_deed_win():
+def test_mixed_restricted_and_permissive_deeds_stay_unknown():
     both = "<p>Licensed under CC BY 4.0 and also under CC BY-NC 4.0.</p>"
-    assert rights_from_page(both) == RIGHTS_CC_BY_NC
+    assert rights_from_page(both) == RIGHTS_UNKNOWN
     by_sa_and_nd = "<p>CC BY-SA 4.0. CC BY-ND 4.0.</p>"
-    assert rights_from_page(by_sa_and_nd) == RIGHTS_CC_BY_ND
+    assert rights_from_page(by_sa_and_nd) == RIGHTS_UNKNOWN
     zero_and_nc_nd = "<p>CC0 and CC BY-NC-ND.</p>"
-    assert rights_from_page(zero_and_nc_nd) == RIGHTS_CC_BY_NC_ND
+    assert rights_from_page(zero_and_nc_nd) == RIGHTS_UNKNOWN
+    zero_and_nc_sa = "<p>CC0 and CC BY-NC-SA.</p>"
+    assert rights_from_page(zero_and_nc_sa) == RIGHTS_UNKNOWN
     links = (
         '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
         '<a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND</a>'
     )
-    assert rights_from_page(links) == RIGHTS_CC_BY_ND
+    assert rights_from_page(links) == RIGHTS_UNKNOWN
     named = (
         "<p>Creative Commons Attribution 4.0 and "
         "Creative Commons Attribution-NonCommercial 4.0.</p>"
     )
-    assert rights_from_page(named) == RIGHTS_CC_BY_NC
+    assert rights_from_page(named) == RIGHTS_UNKNOWN
+    for page in (both, by_sa_and_nd, zero_and_nc_nd, zero_and_nc_sa, links, named):
+        assert rights_from_page(page) not in {
+            RIGHTS_CC_BY_NC,
+            RIGHTS_CC_BY_ND,
+            RIGHTS_CC_BY_NC_ND,
+            RIGHTS_CC_BY_NC_SA,
+            RIGHTS_CREATIVE_COMMONS,
+        }
     conflict = "<p>CC BY-NC 4.0 and CC BY-ND 4.0.</p>"
     assert rights_from_page(conflict) == RIGHTS_UNKNOWN
     assert rights_from_page(conflict) != RIGHTS_CREATIVE_COMMONS
