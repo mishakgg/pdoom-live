@@ -526,15 +526,17 @@ def rights_from_page(page_text: str) -> str:
     ``creative_commons`` is CC0, CC BY, or CC BY-SA, and only when no
     restricted deed is also stated. ``creative_commons_attribution`` is CC BY
     alone. A by-nc URL is not ``creative_commons``, even when the anchor text
-    says CC BY. Public Domain Mark, All rights reserved, a public page, and a
-    company research blog stay unknown. Script and style text does not count.
+    says CC BY. A CC0, CC BY, or CC BY-SA label on a public-domain mark URL
+    stays unknown. A publicdomain/zero URL stays ``creative_commons``. Public
+    Domain Mark, All rights reserved, a public page, and a company research
+    blog stay unknown. Script and style text does not count.
     """
 
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     visible = _HIDDEN.sub(" ", page_text)
     plain = _plain_text(visible).casefold().translate(_DASHES)
-    codes = _cc_codes(visible, plain)
+    codes = _cc_codes(visible)
     restricted = codes & _RESTRICTED
     permissive = codes & _PERMISSIVE
     mit = bool(_MIT.search(plain) or _MIT.search(visible))
@@ -710,7 +712,27 @@ def _same_official_page(page_url: str, final_url: str | None) -> bool:
     return True
 
 
-def _cc_codes(visible_html: str, plain: str) -> set[str]:
+_ANCHOR = re.compile(r"(?is)<a\b([^>]*)>(.*?)</a>")
+_MARK_HREF = re.compile(r"(?i)creativecommons\.org/publicdomain/mark(?![a-z0-9-])")
+
+
+def _drop_public_domain_mark_labels(visible_html: str) -> str:
+    """Drop the visible label of an anchor whose href is a Public Domain Mark.
+
+    The mark URL is not a CC0, CC BY, or CC BY-SA deed. A permissive label on
+    that href must not be read as one. Other text on the page is left in place.
+    """
+
+    def replace(match: re.Match[str]) -> str:
+        href = _attrs(f"<a{match.group(1)}>").get("href", "")
+        if _MARK_HREF.search(href):
+            return " "
+        return match.group(0)
+
+    return _ANCHOR.sub(replace, visible_html)
+
+
+def _cc_codes(visible_html: str) -> set[str]:
     codes: set[str] = set()
     for match in _CC_URL.finditer(visible_html):
         if match.group("pd"):
@@ -721,7 +743,7 @@ def _cc_codes(visible_html: str, plain: str) -> set[str]:
         code = (match.group("code") or "").lower()
         if code:
             codes.add(code)
-    folded = plain.translate(_DASHES)
+    folded = _plain_text(_drop_public_domain_mark_labels(visible_html)).casefold().translate(_DASHES)
     for code, pattern in _TEXT_DEEDS:
         if pattern.search(folded):
             codes.add(code)

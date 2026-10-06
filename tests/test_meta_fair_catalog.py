@@ -703,6 +703,19 @@ def test_mixed_restricted_and_permissive_stays_unknown():
     assert rights_from_page(mit) == RIGHTS_UNKNOWN
 
 
+def test_a_cc0_label_on_a_public_domain_mark_url_stays_unknown():
+    mark_cc0 = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC0</a>'
+    assert rights_from_page(mark_cc0) == RIGHTS_UNKNOWN
+    mark_by = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC BY</a>'
+    assert rights_from_page(mark_by) == RIGHTS_UNKNOWN
+    mark_sa = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC BY-SA</a>'
+    assert rights_from_page(mark_sa) == RIGHTS_UNKNOWN
+    bare = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">Public Domain Mark</a>'
+    assert rights_from_page(bare) == RIGHTS_UNKNOWN
+    zero = '<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>'
+    assert rights_from_page(zero) == RIGHTS_CREATIVE_COMMONS
+
+
 def test_public_domain_mark_and_all_rights_reserved_stay_unknown():
     mark = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">Public Domain Mark</a>'
     assert rights_from_page(mark) == RIGHTS_UNKNOWN
