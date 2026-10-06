@@ -1,0 +1,413 @@
+{
+  "catalog_id": "tii_pages",
+  "description": "Metadata for public Technology Innovation Institute AI research, model, news, and program HTML pages on www.tii.ae and tii.ae. Each URL was one bounded GET (12s, 3 redirects, 2000000 bytes) that stayed on those hosts. robots.txt allows these paths. An HTML document in place of robots.txt does not allow a fetch. Challenges, captchas, login walls, non-HTML shells, robots disallows, and off-host redirects are omitted. Other centers, PDFs, and model weights are omitted. Rows store title, publisher, canonical URL, date, and rights. Page text is not stored. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix. A missing date is unknown. Updated, modified, and copyright years are not publication dates. Not a belief collector. runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "UAE a pioneer of employing AI to build knowledge-based economy: Omar Al Olama",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/article/uae-pioneer-employing-ai-build-knowledge-based-economy-omar-al-olama",
+      "date": "2020-10-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "TII and MBZUAI Form Strategic Collaboration to Advance AI Research",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/tii-and-mbzuai-form-strategic-collaboration-advance-ai-research",
+      "date": "2021-03-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Machine Learning Integration for Signal Processing",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/machine-learning-integration-signal-processing",
+      "date": "2021-08-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "TII congratulates Prof. Merouane Debbah, Chief Researcher, AI & Telecoms Systems",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/tii-congratulates-prof-merouane-debbah-chief-researcher-ai-telecoms-systems",
+      "date": "2021-12-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Researchers pave the road to true 3D AI",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/article/researchers-pave-road-true-3d-ai",
+      "date": "2021-12-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "TII, LightOn Partner to Build NOOR Platform for Exascale Computing for Foundation Models",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/tii-lighton-partner-build-noor-platform-exascale-computing-foundation-models",
+      "date": "2021-12-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Researchers extend the use of deep learning for distinguishing encrypted text from random noise",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/article/researchers-extend-use-deep-learning-distinguishing-encrypted-text-random-noise",
+      "date": "2021-12-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Technology Innovation Institute Announces Launch of NOOR, the World’s Largest Arabic NLP Model",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/technology-innovation-institute-announces-launch-noor-worlds-largest-arabic-nlp-model",
+      "date": "2022-04-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Three Researchers from AI Cross-Center Unit to Pursue Higher Studies at Mohamed bin Zayed University of Artificial Intelligence",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/three-researchers-ai-cross-center-unit-pursue-higher-studies-mohamed-bin-zayed-university",
+      "date": "2022-06-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "AIDRC’s Dr. Thierry Lestable features in sponsor interview ahead of Black Hat USA 2022",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/aidrcs-dr-thierry-lestable-features-sponsor-interview-ahead-black-hat-usa-2022",
+      "date": "2022-09-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Autonomous Robotics Research Center’s Nanodrones Team wins Nanocopter AI Challenge 2022",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/autonomous-robotics-research-centers-nanodrones-team-wins-nanocopter-ai-challenge-2022",
+      "date": "2022-10-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI and Digital Science Research Center’s Prof. George Alexandropoulos to Address Prestigious RISTA Cutting-Edge Forum",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/ai-and-digital-science-research-centers-prof-george-alexandropoulos-address-prestigious-rista",
+      "date": "2022-10-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI and Digital Science Research Center Collaborates with MBZUAI, Kuwait College of Science and Technology for IEEE Paper on Tactile Internet.",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/ai-and-digital-science-research-center-collaborates-mbzuai-kuwait-college-science-and",
+      "date": "2022-11-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI and Digital Science Research Center’s Dr. Reda Alami’s research paper accepted for publication at ACML 2022",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/ai-and-digital-science-research-centers-dr-reda-alamis-research-paper-accepted-publication",
+      "date": "2022-11-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "NeurIPS 2022 Conference Accepts Research Paper Co-authored by AI and Digital Science Research Center’s Dr. Maxim Panov and Kirill Fedyanin",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/neurips-2022-conference-accepts-research-paper-co-authored-ai-and-digital-science-research",
+      "date": "2022-11-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "AIDRC’s Researchers Receive Best Paper Award at 2022 IEEE Global Communications Conference",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/aidrcs-researchers-receive-best-paper-award-2022-ieee-global-communications-conference",
+      "date": "2022-12-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Algerian Government Honors AIDRC Researcher for Outstanding Achievement",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/algerian-government-honors-aidrc-researcher-outstanding-achievement",
+      "date": "2022-12-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Scientists Develop Ground-breaking Deep Learning Model for Real-time Security Environments",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/scientists-develop-ground-breaking-deep-learning-model-real-time-security-environments",
+      "date": "2023-02-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Abu Dhabi-based Technology Innovation Institute Introduces Falcon LLM: Foundational Large Language Model (LLM) outperforms GPT-3 with 40 Billion Parameters",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/abu-dhabi-based-technology-innovation-institute-introduces-falcon-llm-foundational-large",
+      "date": "2023-03-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI and Digital Science Research Center’s Dr. Lina Bariah and Prof. Mérouane Debbah Unveil New Developments in AI and Digital Twin Technology",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/ai-and-digital-science-research-centers-dr-lina-bariah-and-prof-merouane-debbah-unveil-new",
+      "date": "2023-03-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Technology Innovation Institute Partners with Mohamed bin Zayed University of Artificial Intelligence to Drive Abu Dhabi’s Smart City Ambitions",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/technology-innovation-institute-partners-mohamed-bin-zayed-university-artificial-intelligence",
+      "date": "2023-03-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "UAE's Technology Innovation Institute Launches Open-Source \"Falcon 40B\" Large Language Model for Research & Commercial Utilization",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/uaes-technology-innovation-institute-launches-open-source-falcon-40b-large-language-model",
+      "date": "2023-05-25",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "UAE’s Falcon 40B Dominates Leaderboard: Ranks #1 Globally in Latest Hugging Face Independent Verification of Open-source AI Models",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/uaes-falcon-40b-dominates-leaderboard-ranks-1-globally-latest-hugging-face-independent",
+      "date": "2023-05-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "UAE's Falcon 40B is now Royalty Free",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/uaes-falcon-40b-now-royalty-free",
+      "date": "2023-05-31",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "Falcon 40B: World’s Top AI Model Rewards Most Creative Use Cases in Call for Proposals with Training Compute Power",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/falcon-40b-worlds-top-ai-model-rewards-most-creative-use-cases-call-proposals-training-compute",
+      "date": "2023-06-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Technology Innovation Institute Introduces World’s Most Powerful Open LLM: Falcon 180B",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/technology-innovation-institute-introduces-worlds-most-powerful-open-llm-falcon-180b",
+      "date": "2023-09-06",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "Abu Dhabi’s Advanced Technology Research Council launches ‘AI71’: New AI Company Pioneering Decentralised Data Control for Companies & Countries",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/abu-dhabis-advanced-technology-research-council-launches-ai71-new-ai-company-pioneering",
+      "date": "2023-11-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Commentary on the EU Artificial Intelligence Act",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/commentary-eu-artificial-intelligence-act",
+      "date": "2023-12-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "UAE’s Technology Innovation Institute Launches ‘Falcon Foundation’ to Champion Open-sourcing of Generative AI Models",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/uaes-technology-innovation-institute-launches-falcon-foundation-champion-open-sourcing",
+      "date": "2024-02-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Falcon 2: UAE’s Technology Innovation Institute Releases New AI Model Series, Outperforming Meta’s New Llama 3",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/falcon-2-uaes-technology-innovation-institute-releases-new-ai-model-series-outperforming-metas",
+      "date": "2024-05-13",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "Introducing the Open Arabic LLM Leaderboard: Empowering the Arabic Language Modeling Community",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/introducing-open-arabic-llm-leaderboard-empowering-arabic-language-modeling-community",
+      "date": "2024-05-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "UAE’s Technology Innovation Institute Revolutionizes AI Language Models With New Architecture",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/uaes-technology-innovation-institute-revolutionizes-ai-language-models-new-architecture",
+      "date": "2024-08-12",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "H.E. Faisal Al Bannai Named Among TIME’s 100 Most Influential AI Leaders",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/he-faisal-al-bannai-named-among-times-100-most-influential-ai-leaders",
+      "date": "2024-09-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Technology Innovation Institute Appoints Dr. Hakim Hacid Chief Researcher of AI Research Unit, the Home of Falcon",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/technology-innovation-institute-appoints-dr-hakim-hacid-chief-researcher-ai-research-unit-home",
+      "date": "2024-09-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Technology Innovation Institute Achieves Fastest Speeds with Vision-based AI Drone Racing",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/technology-innovation-institute-achieves-fastest-speeds-vision-based-ai-drone-racing",
+      "date": "2024-10-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "TII to Host Inaugural Open-Source AI Summit Convening Leading Global AI Scientists and Industry Experts",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/tii-host-inaugural-open-source-ai-summit-convening-leading-global-ai-scientists-and-industry",
+      "date": "2024-10-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Abu Dhabi’s Technology Innovation Institute and AI71 Honored with UAE AI Award for Emirati AI Solutions",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/abu-dhabis-technology-innovation-institute-and-ai71-honored-uae-ai-award-emirati-ai-solutions",
+      "date": "2024-11-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Abu Dhabi’s Technology Innovation Institute Inaugurates Open-Source AI Summit with Critical Discussions on the Future of AI",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/abu-dhabis-technology-innovation-institute-inaugurates-open-source-ai-summit-critical",
+      "date": "2024-11-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Nabat, New Abu Dhabi Climate Tech Venture, to use AI and Robotics to Restore Mangroves and Boost Climate Resilience",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/nabat-new-abu-dhabi-climate-tech-venture-use-ai-and-robotics-restore-mangroves-and-boost",
+      "date": "2024-12-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Falcon 3: UAE’s Technology Innovation Institute Launches World’s most Powerful Small AI Models that can also be run on Light Infrastructures, including Laptops",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/falcon-3-uaes-technology-innovation-institute-launches-worlds-most-powerful-small-ai-models",
+      "date": "2024-12-17",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "UAE’s Technology Innovation Institute Expands Falcon 3 with Multimodal Capabilities: Image, Video, and Audio",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/uaes-technology-innovation-institute-expands-falcon-3-multimodal-capabilities-image-video-and",
+      "date": "2025-01-08",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "Artificial Intelligence Triumphs in World’s Most Sophisticated Autonomous Drone Race in Abu Dhabi",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/artificial-intelligence-triumphs-worlds-most-sophisticated-autonomous-drone-race-abu-dhabi",
+      "date": "2025-04-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Middle East’s Leading AI Powerhouse TII Launches Two New AI Models: Falcon Arabic - the First Arabic Model in the Falcon Series & Falcon-H1, a Best-in-Class High-Performance Model",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/middle-easts-leading-ai-powerhouse-tii-launches-two-new-ai-models-falcon-arabic-first-arabic",
+      "date": "2025-05-21",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "Technology Innovation Institute and AI71 Collaborate with Amazon Web Services to Scale AI Innovations in the UAE and Beyond",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/technology-innovation-institute-and-ai71-collaborate-amazon-web-services-scale-ai-innovations",
+      "date": "2025-05-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Technology Innovation Institute Announces Falcon-H1 model availability as NVIDIA NIM to Deliver Sovereign AI at Scale",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/technology-innovation-institute-announces-falcon-h1-model-availability-nvidia-nim-deliver",
+      "date": "2025-06-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Abu Dhabi’s TII and NVIDIA Launch Middle East’s First Joint ‘AI & Robotics’ NVAITC Research Lab",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/abu-dhabis-tii-and-nvidia-launch-middle-easts-first-joint-ai-robotics-nvaitc-research-lab",
+      "date": "2025-09-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI Seminar Series: Kajetan Schweighofer",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/ai-seminar-series-kajetan-schweighofer",
+      "date": "2025-10-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "TII and Canada’s Mila Announce Strategic Partnership to Accelerate Global AI Research",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/tii-and-canadas-mila-announce-strategic-partnership-accelerate-global-ai-research",
+      "date": "2025-11-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Abu Dhabi’s TII Launches Falcon-H1 Arabic, Establishing the World’s Leading Arabic AI Model",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/abu-dhabis-tii-launches-falcon-h1-arabic-establishing-worlds-leading-arabic-ai-model",
+      "date": "2026-01-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "TII Launches Falcon Reasoning: Best 7B AI Model Globally, Also Outperforms Larger Models",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/tii-launches-falcon-reasoning-best-7b-ai-model-globally-also-outperforms-larger-models",
+      "date": "2026-01-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Technology Innovation Institute Announces Strategic Collaboration with Qualcomm to Advance Edge-AI and Autonomous Robotics",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/technology-innovation-institute-announces-strategic-collaboration-qualcomm-advance-edge-ai-and",
+      "date": "2026-01-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "TII Launches Falcon Perception, A New Multimodal AI Model That Helps Machines See and Understand the World – with Efficiency that Rivals Larger Models",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/tii-launches-falcon-perception-new-multimodal-ai-model-helps-machines-see-and-understand-world",
+      "date": "2026-05-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "OPAQUE Acquires Abu Dhabi-Developed Cryptographic AI Technology from TII, Extending Confidential AI Across the Full Lifecycle with Post-Quantum Protection",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/opaque-acquires-abu-dhabi-developed-cryptographic-ai-technology-tii-extending-confidential-ai",
+      "date": "2026-05-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "From Deep Science to Defence Deployment: Three Abu Dhabi AI Startups Debut at Eurosatory Paris 2026 as Bilateral Ties Deepen",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/deep-science-defence-deployment-three-abu-dhabi-ai-startups-debut-eurosatory-paris-2026",
+      "date": "2026-06-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "TII Founding Partner of a New Global Standard for Verifiable, Quantum-Safe Artificial Intelligence",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/tii-founding-partner-new-global-standard-verifiable-quantum-safe-artificial-intelligence",
+      "date": "2026-06-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "TII Announces Its Founding Role in TRACE, an Open Standard for Verifiable AI, Contributing Cryptography, Post-Quantum and Identity Expertise",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/news/tii-announces-its-founding-role-trace-open-standard-verifiable-ai-contributing-cryptography",
+      "date": "2026-08-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI and Digital Science Research Center",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/ai-and-digital-science",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Our Research",
+      "publisher": "Technology Innovation Institute",
+      "canonical_url": "https://www.tii.ae/ai-and-digital-science/our-research",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
