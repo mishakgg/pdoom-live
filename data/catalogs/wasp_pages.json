@@ -1,0 +1,3220 @@
+{
+  "catalog_id": "wasp_pages",
+  "description": "Metadata for public Wallenberg AI, Autonomous Systems and Software Program research, program, and news pages. Hosts are wasp-sweden.org and www.wasp-sweden.org. www.wasp-sweden.org redirects to wasp-sweden.org, so a response is stored only at a final URL that stays on one of these hosts. Each stored URL was confirmed with one bounded GET of HTML that robots.txt allows. Person profiles, PDFs, login walls, and off-host pages are omitted. A challenge page, an HTML document in place of robots.txt, an unresolved host, or a redirect off these hosts is not stored. Rows store a title, publisher, canonical URL, publication date, and rights. Page text is not stored. creative_commons_attribution means CC BY alone. creative_commons means CC0, CC BY-SA, or a permissive mix of those. A missing publication date is unknown. Updated, modified, and copyright years are not publication dates. This catalog is not a belief collector and runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "WASP Program Board appointed",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-program-board-appointed/",
+      "date": "2015-06-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Graduate School Management group appointed",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-graduate-school-management-group-appointed/",
+      "date": "2015-09-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Program Director and Program Management Group appointed",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-program-director-and-program-management-group-appointed/",
+      "date": "2015-09-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Six challenging projects as WASP take off",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-launches-six-challenging-projects/",
+      "date": "2015-10-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP announce for 26 PhD students",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-announces-for-26-phd-students/",
+      "date": "2015-10-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP attracts huge interest from industry",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-receives-52-applications-for-industrial-doctoral-studies/",
+      "date": "2015-11-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Kick-off WASP Graduate School April 7-8",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/kick-off-wasp-graduate-school-april-7-8/",
+      "date": "2016-04-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Affiliated PhD students",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-affiliated-phd-students/",
+      "date": "2016-04-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Professor in Software Technology",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/professor-in-software-technology/",
+      "date": "2016-05-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sweden´s largest research program offers four strongly financed Professorships",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/swedens-largest-research-program-offers-four-strongly-financed-professorships/",
+      "date": "2016-06-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Associate Professor in Software Technology",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/associate-professor-in-software-technology/",
+      "date": "2016-07-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sweden´s largest research program offers strongly financed positions",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/swedens-largest-research-program-offers-strongly-financed-positions/",
+      "date": "2016-07-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Pre-announcement: WASP Industrial PhD student positions",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/pre-announcement-wasp-industrial-phd-student-positions/",
+      "date": "2016-11-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Umeå University makes massive effort on autonomous systems for industry and society of the future",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/umea-university-makes-massive-effort-on-autonomous-systems-for-industry-and-society-of-the-future/",
+      "date": "2016-11-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Industrial PhD student positions",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-industrial-phd-student-positions/",
+      "date": "2017-01-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP announces 22 PhD student positions",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-announces-22-phd-student-positions/",
+      "date": "2017-05-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP signs Memorandum of Understandings with three leading international universities",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-signs-memorandum-of-understandings-with-three-leading-international-universities/",
+      "date": "2017-06-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Continued high interest for WASP industrial PhD positions",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/continued-high-interest-for-wasp-industrial-phd-positions/",
+      "date": "2017-06-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP PhD student wins sustainability prize",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-phd-student-wins-sustainability-prize-2/",
+      "date": "2017-06-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP collaboration granted permission to test 5G",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-collaboration-granted-permission-to-test-5g/",
+      "date": "2017-08-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Gunnar E. Carlsson new member of International Scientific Advisory Board (ISAB)",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/gunnar-e-carlsson-new-member-of-international-scientific-advisory-board-isab/",
+      "date": "2017-09-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Second Call for Affiliated WASP PhD Students",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/announcement-second-call-for-affiliated-wasp-phd-students/",
+      "date": "2017-09-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP ISAB meeting 6-7 September 2017",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-isab-meeting-6-7-september-2017-3/",
+      "date": "2017-09-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP announces PhD positions",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-announces-phd-positions/",
+      "date": "2017-09-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP-NTU joint workshop in Stockholm",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/upcoming-wasp-ntu-joint-workshop-in-stockholm/",
+      "date": "2017-10-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Strategic Recruiting for the Software Area – Meet Professor Benoit Baudry and Professor Martin Monperrus",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/strategic-recruiting-for-the-software-area-meet-professor-benoit-baudry-and-professor-martin-monperrus/",
+      "date": "2017-10-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Research Arenas are ready for research",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-research-arenas-are-ready-for-research/",
+      "date": "2017-10-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Carl-Johan Seger New WASP Professor at Chalmers",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/carl-johan-seger-new-wasp-professor-at-chalmers/",
+      "date": "2017-10-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Additional billion Swedish kronor from KAW to extend WASP into artificial intelligence",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/additional-billion-swedish-kronor-from-kaw-to-extend-wasp-into-artificial-intelligence/",
+      "date": "2017-11-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP announces PhD and Postdoc positions",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-announces-phd-and-postdoc-positions/",
+      "date": "2017-12-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Gunnar Bark to head WASP Research Arenas",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/gunnar-bark-to-head-wasp-research-arenas/",
+      "date": "2018-01-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Kick Off for New PhD students",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-kick-off-for-new-phd-students/",
+      "date": "2018-01-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Winterconference 2018",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-winterconference-2018/",
+      "date": "2018-01-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Industrial PhD student positions in AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-industrial-phd-student-positions-in-ai/",
+      "date": "2018-03-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Large interest in AI4X conference day on health",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/large-interest-in-ai4x-conference-day-on-health/",
+      "date": "2018-03-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "62 WASP AI Positions",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-ai-positions/",
+      "date": "2018-03-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP AI Industrial PhD Student Application Information and Matching Day, Stockholm, April 11, 2018",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-ai-industrial-phd-student-application-information-and-matching-day-stockholm-april-11-2018/",
+      "date": "2018-03-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Improving the toolbox for software engineers - Meet Christoph Reichenbach",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/improving-the-toolbox-for-software-engineers-meet-christoph-reichenbach/",
+      "date": "2018-04-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP AI-Math announces 18 PhD positions",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-ai-math-announces-18-phd-positions/",
+      "date": "2018-04-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP open calls for positions and projects",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-open-calls-for-positions-and-projects/",
+      "date": "2018-04-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Faculty Day and Industry Day 2018",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-faculty-day-and-industry-day-2018/",
+      "date": "2018-05-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Industry Day - for Improved Industry Support",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-industry-day-for-improved-industry-support/",
+      "date": "2018-05-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Jesper Tordenlid New Manager of WARA Public Safety",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/jesper-tordenlid-new-manager-of-wara-public-safety/",
+      "date": "2018-06-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Three WASP PhD positions at Lund University",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/three-wasp-phd-positions-at-lund-university/",
+      "date": "2018-06-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Call for Graduate Course Proposals",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/call-for-graduate-course-proposals-in-ai/",
+      "date": "2018-06-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Martin Danelljan defends first WASP associated doctoral thesis",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/martin-danelljan-defends-first-wasp-associated-doctoral-thesis/",
+      "date": "2018-06-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "NTU Singapore gives extra power to WASP",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/ntu-in-singapore-gives-extra-power-to-wasp/",
+      "date": "2018-07-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Open calls for positions and projects",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/open-calls/",
+      "date": "2018-08-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Professors Awarded Prestigious Prizes",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-professors-prizes/",
+      "date": "2018-08-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Best paper awards to WASP PhD students",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/best-paper-awards-to-wasp-phd-students/",
+      "date": "2018-09-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "2000 Researchers petition for AI investment",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/2000-researchers-petition-for-ai-investment/",
+      "date": "2018-09-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Foresight 2018",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-foresight-2018/",
+      "date": "2018-09-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Autonomous Sea Rescue Tested - WARA Public Safety demonstration",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/autonomous-sea-rescue-tested-wara-public-safety-demonstration/",
+      "date": "2018-10-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "New professor with focus on ethical and societal impact of AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/new-professor-with-focus-on-ethical-and-societal-impact-of-ai/",
+      "date": "2018-10-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Taking the pulse of AI in Sweden",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/taking-the-pulse-of-ai-in-sweden/",
+      "date": "2018-11-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Fredrik Präntare awarded best degree project by The Swedish Association of Graduate Engineers",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/fredrik-prantare-awarded-best-degree-project-by-the-swedish-association-of-graduate-engineers/",
+      "date": "2018-11-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Code fixing code",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/code-fixing-code/",
+      "date": "2018-11-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP offers 17 postdoc positions",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-offers-17-postdoc-positions/",
+      "date": "2018-11-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Industrial PhD student positions in Autonomous Systems and Software",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-industrial-phd-student-positions-in-autonomous-systems-and-software/",
+      "date": "2018-12-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Professor Proutiere’s work among top 30 at world’s largest AI conference",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-professor-proutieres-work-amog-top-30-at-worlds-largest-ai-conference/",
+      "date": "2018-12-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Prize for AI algorithm",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/prize-for-ai-algorithm-2/",
+      "date": "2018-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Assistant Professorships in Machine Learning",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/assistant-professorships-in-machine-learning/",
+      "date": "2018-12-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Winter Conference 2019",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-winter-conference-2019/",
+      "date": "2018-12-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Swedish infrastructure for AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/swedish-infrastructure-for-ai/",
+      "date": "2018-12-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Webinar Industrial PhD Student positions February 1st",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/webinar-industrial-phd-student-positions/",
+      "date": "2019-01-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "PhD students on WASP form council for collaboration",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/phd-students-on-wasp-form-council-for-collaboration/",
+      "date": "2019-02-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Call open – 25 PhD student projects in AS",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/call-open-25-phd-student-projects-in-as/",
+      "date": "2019-03-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Coming Succession in the WASP Program Leadership",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/coming-succession-in-the-wasp-program-leadership-2/",
+      "date": "2019-03-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sweden steps up on societal impacts of AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sweden-steps-up-on-societal-impacts-of-ai-2/",
+      "date": "2019-03-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Scientists Awarded Prestigious Grants",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-scientists-awarded-prestigious-grants-2/",
+      "date": "2019-04-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Academics and industry gave a view into the cloud",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/academics-and-industry-gave-a-view-into-the-cloud-2/",
+      "date": "2019-05-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP attracts international AI expertise",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-attracts-international-ai-expertise-2/",
+      "date": "2019-05-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Future Sea Rescue Systems at Gränsö Manor",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/future-sea-rescue-systems-at-granso-manor/",
+      "date": "2019-06-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Making Art – Like a Programmer",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/making-art-like-a-programmer/",
+      "date": "2019-08-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Risk Assessment in Cyber-Physical Systems",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/risk-assessment-in-cyber-physical-systems/",
+      "date": "2019-08-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Open positions within WASP",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/open-positions-within-wasp/",
+      "date": "2019-09-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Registration Open – First Open WASP Conference",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/registration-open-first-open-wasp-conference/",
+      "date": "2019-09-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI guided drones conducted rescue operation",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/ai-guided-drones-conducted-rescue-operation/",
+      "date": "2019-10-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bo Wahlberg – Fellow in the International Federation for Automatic Control",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/bo-wahlberg-fellow-in-the-international-federation-for-automatic-control/",
+      "date": "2019-10-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Postdoctoral Scholarship – Open Call",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-postdoctoral-scholarship-open-call/",
+      "date": "2019-10-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Hector Geffner Wallenberg Guest Professor in AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/hector-geffner-wallenberg-guest-professor-in-ai/",
+      "date": "2019-10-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "“GPUs will make us reach the future faster” Three questions for professor Akenine-Möller",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/gpus-will-make-us-reach-the-future-faster-three-questions-for-professor-akenine-moller/",
+      "date": "2019-10-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP AI study trip to Germany",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-ai-study-trip-to-germany/",
+      "date": "2019-11-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Expansion of Sweden’s largest research program",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/expansion-of-swedens-largest-research-project/",
+      "date": "2019-12-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Welcome to the New WASP Website",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/welcome-to-the-new-wasp-website/",
+      "date": "2019-12-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Peers Awarded",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-peers-awarded/",
+      "date": "2020-01-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Diego Calvanese Honored as ACM Fellow",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/diego-calvanese-honored-as-acm-fellow/",
+      "date": "2020-01-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Automation of Science – for the Benefit of Mankind",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/the-automation-of-science-for-the-benefit-of-mankind/",
+      "date": "2020-02-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "“Artificial intelligence has to be able to both reason and learn new things\"",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/artificial-intelligence-has-to-be-able-to-both-reason-and-learn-new-things/",
+      "date": "2020-02-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "The WASP Programme on Display",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/the-wasp-programme-on-display/",
+      "date": "2020-02-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcement: Torbjörn Lundahl New WARA Director",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/announcement-torbjorn-lundahl-new-wara-director/",
+      "date": "2020-02-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "“Nobody is Above the Rule of Law”",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nobody-is-above-the-rule-of-law/",
+      "date": "2020-03-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Information Regarding COVID-19",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/information-regarding-covid-19/",
+      "date": "2020-03-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "New Perspectives From a Research Visit Overseas",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/new-perspectives-from-a-research-visit-overseas/",
+      "date": "2020-03-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Tool to Choose the Right Tool!",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/a-tool-to-choose-the-right-tool/",
+      "date": "2020-05-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Exploring Robot Navigation Under Uncertainty with his Future Goal Set",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/exploring-robot-navigation-under-uncertainty-with-his-future-goal-set/",
+      "date": "2020-05-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Time to Hand Over the Director Shirt",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/time-to-hand-over-the-director-shirt/",
+      "date": "2020-06-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Social AI is Essential and Underexplored",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/social-ai-is-under-explored-and-essential/",
+      "date": "2020-08-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "New Director to Lead WASP",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/new-director-to-lead-wasp/",
+      "date": "2020-08-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Creating Natural Speech and Motion with Probabilistic Models",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/natural-speech-and-motion-with-probabilistic-models/",
+      "date": "2020-09-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP4ALL 2020 – Registration Open",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp4all-2020-registration-open/",
+      "date": "2020-09-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "New Podcast on AI and WASP’s Contribution to Sweden",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/new-podcast-on-ai-and-wasps-contribution-to-sweden/",
+      "date": "2020-10-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Virtual Industry Meeting 2020",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-virtual-industry-meeting-2020/",
+      "date": "2020-10-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "New Program on Data-Driven Life Science",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/new-program-on-data-driven-life-science/",
+      "date": "2020-10-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Art Installation - Under the Hood of a Browser",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/art-installation-under-the-hood-of-a-browser/",
+      "date": "2020-10-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "High-Profile Talks at WASP4ALL 2020",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/high-profile-talks-at-wasp4all-2020/",
+      "date": "2020-12-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Industry Meeting 2020 Concluded",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-industry-meeting-2020-concluded/",
+      "date": "2020-12-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Launches NEST – First Call Open",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-launches-nest-first-call-open/",
+      "date": "2021-01-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Awarded Research Output in 2020",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/awarded-research-output-in-2020/",
+      "date": "2021-01-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Improving Conditions for Autonomous Ships",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/improving-conditions-for-autonomous-ships/",
+      "date": "2021-02-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Register for the Launch of WARA 2.0",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/register-for-the-launch-of-wara-2-0/",
+      "date": "2021-02-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Most Powerful Supercomputer in Sweden Installed",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/the-most-powerful-supercomputer-in-sweden-installed/",
+      "date": "2021-03-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "First Three Industry Bridge Projects Selected",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/first-three-industry-bridge-projects-selected/",
+      "date": "2021-03-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "A big machine with lots of data – WASP researchers in a pilot study with ESS",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/a-big-machine-with-lots-of-data-wasp-researchers-in-a-pilot-study-with-ess/",
+      "date": "2021-04-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI researchers and life scientists join forces through WASP and DDLS collaboration",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/ai-researchers-and-life-scientists-join-forces-through-wasp-and-ddls-collaboration/",
+      "date": "2021-04-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP4ALL 2021 June 2 – Building Excellence for the Era of AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp4all-2021-building-excellence-for-the-era-of-ai/",
+      "date": "2021-05-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "New Call – WASP-DDLS Joint Projects",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/new-call-wasp-ddls-joint-projects/",
+      "date": "2021-05-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Supercomputer Berzelius Now Available",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/supercomputer-berzelius-now-available/",
+      "date": "2021-06-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP in New Partnership with Aalto University",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-in-new-partnership-with-aalto-university/",
+      "date": "2021-06-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sara Mazur is Awarded IVAs Gold Medal",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sara-mazur-is-awarded-ivas-gold-medal/",
+      "date": "2021-10-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Virtual Job Fair December 7th 2021",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-virtual-job-fair-december-7th-2021/",
+      "date": "2021-11-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Open Call for Wallenberg - NTU Presidential Postdoctoral Fellowships",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/open-call-for-wallenberg-ntu-presidential-postdoctoral-fellowships/",
+      "date": "2021-11-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP funded postdoc Olov Andersson on winning team in the DARPA SubT Challenge",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-funded-postdoc-olov-andersson-on-winning-team-in-the-darpa-subt-challenge/",
+      "date": "2021-11-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Miriah Meyer: Designing visualization systems with and for people in the world",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/miriah-meyer-designing-visualization-systems-with-and-for-people-in-the-world/",
+      "date": "2021-11-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Machine that Learns How to Learn - ‘Transformational’ approach to machine learning could accelerate search for new disease treatments",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/a-machine-that-learns-how-to-learn-transformational-approach-to-machine-learning-could-accelerate-search-for-new-disease-treatments/",
+      "date": "2021-12-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "DDLS and WASP Successful Joint Call",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/ddls-and-wasp-successful-joint-call/",
+      "date": "2021-12-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Virtual Job Fair December 7th",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-virtual-job-fair-december-7th/",
+      "date": "2021-12-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "CyberGlow - a playful diptych at Nobel Week Lights 2021",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/cyberglow-a-playful-diptych-at-nobel-week-lights-2021/",
+      "date": "2021-12-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "NESTs: New excellent research environments in WASP",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nests-new-excellent-research-environments-in-wasp/",
+      "date": "2022-01-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP storsatsar på excellenta forskningsmiljöer – NESTs",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/wasp-storsatsar-pa-excellenta-forskningsmiljoer-nests/",
+      "date": "2022-01-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP ED ska göra universitetens utbildningar ledande inom AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/wasp-ed-ska-gora-universitetens-utbildningar-ledande-inom-ai/",
+      "date": "2022-01-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP ED will put the university educations at the forefront of AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-ed-will-put-the-university-educations-at-the-forefront-of-ai/",
+      "date": "2022-01-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Olov Andersson is the WASP Alum of the year 2021",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/olov-andersson-is-the-wasp-alum-of-the-year-2021/",
+      "date": "2022-01-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Webinar: Industrial PhD Student Call 2022",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/webinar-industrial-phd-student-call-2022/",
+      "date": "2022-01-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Virtual Job Fair Concluded",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-virtual-job-fair-concluded/",
+      "date": "2022-01-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Invited talk by WASP Alum of the Year",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/invited-talk-by-wasp-alum-of-the-year/",
+      "date": "2022-02-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Making an Impact on the Future of Medicine",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/making-an-impact-on-the-future-of-medicine/",
+      "date": "2022-03-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Meet the WASP Researchers – Emelie Engström",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/meet-the-wasp-researchers-emelie-engstrom/",
+      "date": "2022-03-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Applications to WASP doctoral student positions break records",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/applications-to-wasp-doctoral-student-positions-break-records/",
+      "date": "2022-03-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Meet the WASP Researchers - Michael Felsberg",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/meet-the-wasp-researchers-michael-felsberg/",
+      "date": "2022-04-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Robot Scientist ’Eve’ Illuminates Reproducibility in Breast Cancer Research",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/robot-scientist-eve-illuminates-reproducibility-in-breast-cancer-research/",
+      "date": "2022-04-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Meet the WASP Researchers - Johanna Björklund",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/meet-the-wasp-researchers-johanna-bjorklund/",
+      "date": "2022-04-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Meet the WASP Researchers - Jens Sjölund",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/meet-the-wasp-researchers-jens-sjolund/",
+      "date": "2022-05-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "May 30: WASP4ALL 2022 - Software Powering the Digital Future",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/may-30-wasp4all-2022-software-powering-the-digital-future/",
+      "date": "2022-05-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "180 million SEK for Research on Cyber Security",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/180-million-sek-for-research-on-cyber-security/",
+      "date": "2022-05-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "180 miljoner kronor till forskning om cybersäkerhet",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/180-miljoner-kronor-till-forskning-om-cybersakerhet/",
+      "date": "2022-05-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Open registration for WASP Industry Days 2022 - Augmenting Human Intelligence",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/open-registration-for-wasp-industry-days-2022/",
+      "date": "2022-05-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP is Awarded 725 MSEK",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-is-awarded-725-msek/",
+      "date": "2022-05-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Meet the WASP Researchers - Axel Ringh",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/meet-the-wasp-researchers-axel-ringh/",
+      "date": "2022-06-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP is recruiting the next generation researchers in AI, Autonomous Systems and Software",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-is-recruiting-the-next-generation-researchers-in-ai-autonomous-systems-and-software/",
+      "date": "2022-06-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Meet the WASP Researchers - Andrei Sabelfeld",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/meet-the-wasp-researchers-andrei-sabelfeld/",
+      "date": "2022-06-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Talangen som jagar det icke-intuitiva",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/talangen-som-jagar-det-icke-intuitiva/",
+      "date": "2022-06-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "The talent in search of the counter-intuitive",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/the-talent-in-search-of-the-counter-intuitive/",
+      "date": "2022-06-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "June 23 last day to register to WASP Industry Days 2022",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/june-23-last-day-to-register-to-wasp-industry-days-2022/",
+      "date": "2022-06-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Meet the WASP Researchers - Gabriel Skantze",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/meet-the-wasp-researchers-gabriel-skantze/",
+      "date": "2022-06-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Meet the WASP Researchers - Hector Geffner",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/meet-the-wasp-researchers-hector-geffner/",
+      "date": "2022-06-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Salla Franzén to Speak at WING Day",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/salla-franzen-to-speak-at-wing-day/",
+      "date": "2022-08-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Vera Koponen unifies logic and statistics in AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/vera-koponen-unifies-logic-and-statistics-in-ai/",
+      "date": "2022-08-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Per Runeson - Engineering of Software-intensive Autonomous Systems",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/per-runeson-engineering-of-software-intensive-autonomous-systems/",
+      "date": "2022-09-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "SelfAPR: a new approach improving automatic software repair",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/selfapr-a-new-approach-improving-automatic-software-repair/",
+      "date": "2022-09-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Kary Främling intends to make AI understandable",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/kary-framling-intends-to-make-ai-understandable/",
+      "date": "2022-09-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "A Machine Learning Approach for Discovering the Materials of the Future",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/a-machine-learning-approach-for-discovering-the-materials-of-the-future/",
+      "date": "2022-10-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI effektiviserar utvecklingen av framtidens avancerade material",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/ai-effektiviserar-utvecklingen-av-framtidens-avancerade-material/",
+      "date": "2022-10-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Christian Berger looks at software from different perspectives",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/christian-berger-looks-at-software-from-different-perspectives/",
+      "date": "2022-10-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Robust Security and Privacy for the Internet of Things",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/robust-security-and-privacy-for-the-internet-of-things/",
+      "date": "2022-10-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Tvärvetenskap ska säkra sakernas internet",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/tvarvetenskap-ska-sakra-sakernas-internet/",
+      "date": "2022-10-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Meeting to augment the new WASP-DDLS Community",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/meeting-to-augment-the-new-wasp-ddls-community/",
+      "date": "2022-10-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Helping self-adaptive systems and humans understand each other",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/helping-self-adaptive-systems-and-humans-understand-each-other/",
+      "date": "2022-10-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Moa Johansson is interested in neuro-symbolic systems",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/moa-johansson-is-interested-in-neuro-symbolic-systems/",
+      "date": "2022-11-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Thomas Schön builds mathematical models from measured data",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/thomas-schon-builds-mathematical-models-from-measured-data/",
+      "date": "2022-11-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "un|fold: Making sense of software through emotions",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/unfold-making-sense-of-software-through-emotions/",
+      "date": "2022-11-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Affiliated groups of excellence at Luleå University of Technology",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/affiliated-groups-of-excellence-at-lulea-technical-university/",
+      "date": "2022-11-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "WCIB: portal for live cloud facility operations data",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wcib-portal-for-live-cloud-facility-operations-data/",
+      "date": "2022-11-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Ahmed Rezine looks for ways to extend automated verification techniques",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/ahmed-rezine-looks-for-ways-to-extend-automated-verification-techniques/",
+      "date": "2022-11-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Förenade av tyngdlöshet",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/forenade-av-tyngdloshet/",
+      "date": "2022-11-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "United by Weightlessness",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/united-by-weightlessness/",
+      "date": "2022-11-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Martina Maggio - Intersection between control engineering and software",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/martina-maggio-intersection-between-control-engineering-and-software/",
+      "date": "2022-12-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Nobel laureates visited Un|fold during ongoing Nobel week lights",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nobel-laureates-visited-unfold-during-ongoing-nobel-week-lights/",
+      "date": "2022-12-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP-Sweden.org nu även på svenska",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/wasp-sweden-org-nu-aven-pa-svenska/",
+      "date": "2022-12-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "DARMA Bridge: Robotic simulation moving to real-world scenarios",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/darma-bridge-robotic-simulation-moving-to-real-world-scenarios/",
+      "date": "2022-12-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "DDLS and WASP joint call 2022",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/ddls-and-wasp-joint-call-2022/",
+      "date": "2022-12-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "AD-EYE: improving functional safety of intelligent transportation systems",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/testbed-automated-driving/",
+      "date": "2023-01-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "A new industry postdoc program within WASP promotes knowledge exchange",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/industry-postdoc-program/",
+      "date": "2023-01-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Årets alumn 2022 har gått från akademin till nystartat techbolag",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/arets-alumn-2022-har-gatt-fran-akademin-till-nystartat-techbolag/",
+      "date": "2023-01-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Alum of the year 2022, from academia to tech start-up",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-alum-of-the-year-2022-from-academia-to-tech-start-up/",
+      "date": "2023-01-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Supercomputer Berzelius to be Upgraded",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/supercomputer-berzelius-to-be-upgraded/",
+      "date": "2023-01-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Rafia Inam – Greater levels of autonomy increase the need for explainability",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/rafia-inam-greater-levels-of-autonomy-increase-the-need-for-explainability/",
+      "date": "2023-01-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Pre-release of GPT-SW3",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/pre-release-of-gpt-sw3/",
+      "date": "2023-01-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Axel Flinth wants to understand mathematical properties of equivariant neural networks",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/axel-flinth-wants-to-understand-mathematical-properties-of-equivariant-neural-networks/",
+      "date": "2023-01-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Machine learning and quantum computing to advance chemistry",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/machine-learning-and-quantum-computing-to-advance-chemistry/",
+      "date": "2023-02-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Luc De Raedt - Unifying probability, logic and neural networks in neurosymbolic AI systems",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/luc-de-raedt-unifying-probability-logic-and-neural-networks-in-neurosymbolic-ai-systems/",
+      "date": "2023-02-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Nyckeln till framgång är AI och frihet",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/karnan-i-framgangen-ar-ai-och-frihet/",
+      "date": "2023-02-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "The core of success spells AI and freedom",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/the-core-of-success-spells-ai-and-freedom/",
+      "date": "2023-02-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Jan Bosch works on engineering solutions for ML/DL models in industrial production settings",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/jan-bosch-works-on-engineering-solutions-for-ml-dl-models-in-industrial-production-settings/",
+      "date": "2023-02-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP and DDLS joint call for research visits 2023",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-and-ddls-joint-call-for-research-visits-2023/",
+      "date": "2023-02-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "GPT-SW3 finalist for the Best Use of Tech by Tech Awards Sweden",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/gpt-sw3-finalist-for-the-best-use-of-tech-by-tech-award-sweden/",
+      "date": "2023-03-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Marcus Liwicki strives for sustainable, secure and equal machine learning",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/marcus-liwicki-strives-for-sustainable-secure-and-equal-machine-learning/",
+      "date": "2023-03-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Emma Tegling – Guaranteeing stability, robustness, and resilience in large-scale complex networks",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/emma-tegling-guaranteeing-stability-robustness-and-resilience-in-large-scale-complex-networks/",
+      "date": "2023-03-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP4ALL 2023: Building the future Cyber Security landscape",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp4all-2023-building-the-future-cyber-security-landscape/",
+      "date": "2023-03-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP invests 200 million SEK in Cyber Security",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-invests-200-million-sek-in-cyber-security/",
+      "date": "2023-04-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Niklas Wahlström makes machine learning models more physics-informed",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/niklas-wahlstrom-makes-machine-learning-models-more-physics-informed/",
+      "date": "2023-04-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Fredrik Heintz – Combining reasoning and learning for safe and trustworthy AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/fredrik-heintz-combining-reasoning-and-learning-for-safe-and-trustworthy-ai/",
+      "date": "2023-04-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Pouria Tajvar - Understanding the human immune cell interaction network",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/pouria-tajvar-understanding-the-human-immune-cell-interaction-network/",
+      "date": "2023-05-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Morteza Haghir Chehreghani – Under-Supervised Machine Learning and Decision Making",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/morteza-haghir-chehreghani-under-supervised-machine-learning-and-decision-making/",
+      "date": "2023-05-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Kalle Åström – Computer vision and machine learning",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/kalle-astrom-computer-vision-and-machine-learning/",
+      "date": "2023-05-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Niclas Fock to head WASP Research Arenas",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/niclas-fock-to-head-wasp-research-arenas/",
+      "date": "2023-05-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "How can we make large language models safer?",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/how-can-we-make-large-language-models-safer/",
+      "date": "2023-06-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Second DDLS and WASP joint call: 13 projects approved",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/second-ddls-and-wasp-joint-call-13-projects-approved/",
+      "date": "2023-06-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "WISE and WASP join forces in mutual project call",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wise-and-wasp-join-forces-in-mutual-project-call/",
+      "date": "2023-06-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Daniel Axehill – Real-time optimization and motion planning",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/daniel-axehill-real-time-optimization-and-motion-planning/",
+      "date": "2023-06-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Lokalisering av autonoma fordon i underjordiska gruvor",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/lokalisering-av-autonoma-fordon-i-underjordiska-gruvor/",
+      "date": "2023-06-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Localization for Autonomous Vehicles in Underground Mines",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/localization-for-autonomous-vehicles-in-underground-mines/",
+      "date": "2023-06-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Simon Olsson – Interface between the natural sciences and machine learning",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/simon-olsson-interface-between-the-natural-sciences-and-machine-learning/",
+      "date": "2023-06-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Pontus de Laval new Chair of the WASP Board",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/pontus-de-laval-new-chair-of-the-wasp-board/",
+      "date": "2023-06-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Privacy-preserving strategies for intelligent systems",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/privacy-preserving-strategies-for-intelligent-systems/",
+      "date": "2023-07-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Ana Paiva, new WASP Distinguished Guest Professor",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/ana-paiva-new-wasp-distinguished-guest-professor/",
+      "date": "2023-08-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Ana Paiva - ny gästprofessor via WASP",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/ana-paiva-ny-gastprofessor-via-wasp/",
+      "date": "2023-08-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Victor Morel - CyberSecIT",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/victor-morel-cybersecit/",
+      "date": "2023-08-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Vicenç Torra - Data privacy for machine and statistical learning",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/vicenc-torra-data-privacy-for-machine-and-statistical-learning/",
+      "date": "2023-08-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Five Bridge projects ready to start",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/five-bridge-projects-ready-to-start/",
+      "date": "2023-09-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Simin Nadjm-Tehrani – Dependable AI systems",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/simin-nadjm-tehrani-dependable-ai-systems/",
+      "date": "2023-09-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Three summer schools summed up",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/three-summer-schools-summed-up/",
+      "date": "2023-09-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Industry Days 2023",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-industry-days-november-6-7-2023/",
+      "date": "2023-09-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP participation in the development of EU's research policy",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/wasp-mojliggor-inflytande-pa-eus-forskningspolitik/",
+      "date": "2023-09-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP participation in the development of EU's research policy",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-participation-in-the-development-of-eus-research-policy/",
+      "date": "2023-09-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Dániel Varró - Critical Software-Intensive Systems",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/daniel-varro-critical-software-intensive-systems/",
+      "date": "2023-09-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP-visit to the world class AI ecosystem in Canada",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/a-visit-to-the-world-class-ai-ecosystem-in-canada/",
+      "date": "2023-10-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Kathlén Kohn – Investigating geometric structures to unravel the mysteries of deep learning",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/kathlen-kohn-investigating-geometric-structures-to-unravel-the-mysteries-of-deep-learning/",
+      "date": "2023-10-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP researchers and PhD students present 14 papers at NeurIPS 2023",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-researchers-and-phd-students-present-14-papers-at-neurips-2023/",
+      "date": "2023-10-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Forest companies invest in company started by WASP alumni",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/forest-companies-invest-in-company-started-by-wasp-alumni/",
+      "date": "2023-11-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Skogsbolag investerar i bolag startat av WASP-alumner",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/skogsbolag-investerar-i-bolag-startat-av-wasp-alumner/",
+      "date": "2023-11-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Strong interest in joint WASP-WISE project call",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/strong-interest-in-joint-wasp-wise-project-call/",
+      "date": "2023-11-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Open release of GPT-SW3 the Swedish LLM",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/open-release-of-gpt-sw3-the-swedish-llm/",
+      "date": "2023-12-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "[re|in]verse: a light, sound and water installation revealing software layers involved in core matrix operations",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/reinverse-a-light-sound-and-water-installation-revealing-software-layers-involved-in-core-matrix-operations/",
+      "date": "2023-12-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Chairman and WASP Professor new Fellows of IVA",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-chairman-and-wasp-professor-new-fellows-of-iva/",
+      "date": "2023-12-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Professor Martin Monperrus awarded for pioneering the use of Machine Learning",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-professor-martin-monperrus-awarded-for-pioneering-the-use-of-machine-learning/",
+      "date": "2024-01-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "New data portal connects Swedish industry and academia",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/new-data-portal-connects-swedish-industry-and-academia/",
+      "date": "2024-02-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Rebekka Wohlrab WASP Alumni of the Year 2023",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/rebekka-wohlrab-wasp-alumni-of-the-year-2023/",
+      "date": "2024-02-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "New course in Data Feminism - Creating awareness is the first step",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/new-course-in-data-feminism-creating-awareness-is-the-first-step/",
+      "date": "2024-03-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "New lab trains space robots in weightless environments",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/space-robotics-lab/",
+      "date": "2024-04-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Research on Display in the U.S.",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-research-on-display-in-the-u-s/",
+      "date": "2024-04-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Eight WASP researchers appointed Wallenberg Scholars",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/eight-wasp-researchers-appointed-wallenberg-scholars/",
+      "date": "2024-04-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "Knut and Alice Wallenberg Foundation extends WASP Research Program with a new initiative: AI for Science",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/knut-and-alice-wallenberg-foundation-extends-wasp-research-program-with-a-new-initiative-ai-for-science/",
+      "date": "2024-06-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Knut och Alice Wallenbergs Stiftelse utökar WASP-programmet med ett nytt initiativ: AI for Science",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/knut-och-alice-wallenbergs-stiftelse-utokar-wasp-programmet-med-ett-nytt-initiativ-ai-for-science/",
+      "date": "2024-06-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP and WISE expand cooperation – two new project calls",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-and-wise-expand-cooperation-two-new-project-calls/",
+      "date": "2024-06-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Framtidens AI med människan i centrum",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/framtidens-ai-med-manniskan-i-centrum/",
+      "date": "2024-06-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "The Human-Centred Future of AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/the-human-centred-future-of-ai/",
+      "date": "2024-06-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP och California Institute of Technology stärker sitt samarbete inom AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/wasp-och-california-institute-of-technology-starker-sitt-samarbete-inom-ai/",
+      "date": "2024-06-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP and California Institute of Technology strengthen their collaboration within AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-and-california-institute-of-technology-strengthens-their-collaboration-within-ai/",
+      "date": "2024-06-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Matteo Iovino new project manager for WARA Robotics",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/matteo-iovino-new-project-manager-for-wara-robotics/",
+      "date": "2024-06-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Thematic Summer School on Embodied AI – an opportunity to meet experts and discuss the future of embodied AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/thematic-summer-school-on-embodied-ai-an-opportunity-to-meet-experts-and-discuss-the-future-of-embodied-ai/",
+      "date": "2024-07-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Azra Abtahi Fahliani: “Sweden is a welcoming environment for international researchers”",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/azra-abtahi-fahliani-sweden-is-a-welcoming-environment-for-international-researchers/",
+      "date": "2024-08-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "How can we change the geometry of a neuromanifold by varying the architecture of its neural network?",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/how-can-we-change-the-geometry-of-a-neuromanifold-by-varying-the-architecture-of-its-neural-network/",
+      "date": "2024-08-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP industrial PhD receives “Young Author Award”",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-industrial-phd-receives-young-author-award/",
+      "date": "2024-08-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Five research projects will increase Sweden’s resilience against cyber attacks",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/five-research-projects-will-increase-swedens-resilience-against-cyber-attacks/",
+      "date": "2024-09-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Fem forskningsprojekt ska stärka Sverige mot cyberattacker",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/fem-forskningsprojekt-ska-starka-sverige-mot-cyberattacker/",
+      "date": "2024-09-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Community Building Summer School welcomes new PhD students to WASP",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-community-building-summer-school-welcomes-new-phd-students-to-wasp/",
+      "date": "2024-09-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Two new joint calls - WASP and WISE",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/two-new-joint-calls-wasp-and-wise/",
+      "date": "2024-09-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP PhD student, Derya Akbaba, receives Best Paper Award",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-phd-student-derya-akbaba-receives-best-paper-award/",
+      "date": "2024-09-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Automated driving system-company incorporates research into product-development",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/automated-driving-system-company-incorporates-research-into-product-development/",
+      "date": "2024-09-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Explorative learning in practice at this year’s WARA PS Demonstration Week",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/explorative-learning-in-practice-at-this-years-wara-ps-demonstration-week/",
+      "date": "2024-10-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP och ETH Zürich ingår samarbete för att stärka AI-forskningen",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/wasp-och-eth-zurich-ingar-samarbete-for-att-starka-ai-forskningen/",
+      "date": "2024-10-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP and ETH Zurich strengthen their collaboration within AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-and-eth-zurich-strengthen-their-collaboration-within-ai/",
+      "date": "2024-10-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP researchers and PhD students present 20 papers at NeurIPS 2024",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-researchers-and-phd-students-present-19-papers-at-neurips-2024/",
+      "date": "2024-10-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Proof checker and pseudo-Boolean solver developed by WASP PhD excels at international conference",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/proof-checker-and-pseudo-boolean-solver-developed-by-wasp-phd-excels-at-international-conference/",
+      "date": "2024-11-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Amy Loutfi Appointed Program Director of WASP",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/amy-loutfi-appointed-program-director-of-wasp/",
+      "date": "2024-11-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Several grants awarded to WASP researchers by The Swedish Research Council",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/several-grants-awarded-to-wasp-researchers-by-the-swedish-research-council/",
+      "date": "2024-11-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Cross-Sector Conference to Build Sweden's AI Readiness",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/cross-sector-conference-to-build-swedens-ai-readiness/",
+      "date": "2024-11-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Spotlighting gender (im)balance in machine learning",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/spotlighting-gender-imbalance-in-machine-learning/",
+      "date": "2024-12-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Can we trust robots? Researchers aim to make them safer",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/can-we-trust-robots-researchers-aim-to-make-them-safer/",
+      "date": "2024-12-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP och Mila - Quebec AI Institute ingår nytt partnerskap",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/wasp-och-mila-quebec-ai-institute-ingar-nytt-partnerskap/",
+      "date": "2024-12-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP and Mila - Quebec AI Institute enter new partnership",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-and-mila-quebec-ai-institute-enter-new-partnership/",
+      "date": "2024-12-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Aiming to make GNNs safer for real-world deployment",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/aiming-to-make-gnns-safer-for-real-world-deployment/",
+      "date": "2024-12-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "New industrial projects and affiliated PhD students approved",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/new-industrial-projects-and-affiliated-phd-students-approved/",
+      "date": "2024-12-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Reflecting on five years as WASP Program Director",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/reflecting-on-five-years-as-wasp-program-director/",
+      "date": "2024-12-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "PhD students challenged by the industry at WARA Robotics Challenge",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/phd-students-challenged-by-the-industry-at-wara-robotics-challenge/",
+      "date": "2025-01-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Lars Svensson WASP Alum of the Year 2024",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/lars-svensson-wasp-alumni-of-the-year-2024/",
+      "date": "2025-01-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI outperforms experts in detecting ovarian cancer",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/ai-outperforms-experts-in-detecting-ovarian-cancer/",
+      "date": "2025-01-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "New research agreement enhances UK-Sweden collaboration",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/new-research-agreement-enhances-uk-sweden-collaboration/",
+      "date": "2025-02-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Nytt forskningsavtal stärker samarbetet mellan Storbritannien och Sverige",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/nytt-forskningsavtal-starker-samarbetet-mellan-storbritannien-och-sverige/",
+      "date": "2025-02-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "New Call - Proof of Concept Grants",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/new-call-proof-of-concept-grants/",
+      "date": "2025-02-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Five things you need to know about AI 2025",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/five-things-you-need-to-know-about-ai-2025/",
+      "date": "2025-02-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Walk the talk for Diversity and Inclusion: Meet Diversity and Inclusion Group’s new chair Per Runeson",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/walk-the-talk-for-diversity-and-inclusion-meet-diversity-and-inclusion-groups-new-chair-per-runeson/",
+      "date": "2025-02-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Advancing AI for healthcare is Christos Matsoukas’ call",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/advancing-ai-for-healthcare-is-christos-matsoukas-call/",
+      "date": "2025-02-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Nordic Academic AI Initiatives Formalize Collaboration - Nordic AIR",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/national-academic-ai-centers-in-the-nordics-formalize-collaboration-nordic-air/",
+      "date": "2025-03-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Första nordiska forskningsavtalet inom AI på plats - Nordic AIR",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/forsta-nordiska-forskningsavtalet-inom-ai-pa-plats-nordic-air/",
+      "date": "2025-03-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Frida Norlund contributes to a more efficient mineral concentration process",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/frida-norlund-contributes-to-a-more-efficient-mineral-concentration-process/",
+      "date": "2025-03-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Forskarna som måste ligga steget före",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/forskarna-som-maste-ligga-steget-fore/",
+      "date": "2025-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "The researchers who need to be one step ahead",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/the-researchers-who-need-to-be-one-step-ahead/",
+      "date": "2025-04-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Cybersecurity expert engaged as a chair guest professor by WASP",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/cybersecurity-expert-engaged-as-a-chair-guest-professor-by-wasp/",
+      "date": "2025-04-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Cybersäkerhetsexpert är ny WASP gästprofessor",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/cybersakerhetsexpert-ar-ny-wasp-gastprofessor/",
+      "date": "2025-04-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Three 30 MSEK projects awarded grants",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/three-30-msek-projects-awarded-grants/",
+      "date": "2025-04-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Fellow awarded Amazon Research Award",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-fellow-awarded-amazon-research-award/",
+      "date": "2025-04-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Lena Stempfle builds better models and broadens her horizons",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/lena-stempfle-builds-better-models-and-broadens-her-horizon/",
+      "date": "2025-04-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP-WISE NEST Projects: Advancing Multidisciplinary Research",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-wise-nest-projects-advancing-multidisciplinary-research/",
+      "date": "2025-04-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP team wins Beluga AI Challenge",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-team-wins-beluga-ai-challenge/",
+      "date": "2025-05-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mattias Tiger: Advancing AI safety and autonomous systems",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/mattias-tiger-advancing-ai-safety-and-autonomous-systems/",
+      "date": "2025-05-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Kathlén Kohn awarded prestigious mathematics prize",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/kathlen-kohn-awarded-prestigious-mathematics-prize/",
+      "date": "2025-05-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP – Celebrating 10 years of impact",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-celebrating-10-years-of-impact/",
+      "date": "2025-05-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP lanserar nytt forskningsinitiativ som förenar AI och medicin",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/wasp-lanserar-nytt-forskningsinitiativ-som-forenar-ai-och-medicin/",
+      "date": "2025-06-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP launches new research initiative combining AI and medicine",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-launches-new-research-initiative-combining-ai-and-medicine/",
+      "date": "2025-06-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "From troubleshooting to problem solving – Tobias Sundqvist paves the way for AI at Tietoevry",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/tobias-sundqvist-paves-the-way-for-ai-at-tietoevry/",
+      "date": "2025-06-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP research ecosystem to benefit from NAISS–Nvidia–KBLab partnership",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-research-ecosystem-to-benefit-from-naiss-nvidia-kblab-partnership/",
+      "date": "2025-06-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Niclas Fock steps down as Director of WASP Research Arenas",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/niclas-fock-steps-down-as-director-of-wasp-research-arenas/",
+      "date": "2025-06-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Fellow Simon Olsson awarded inaugural ICTP-IBM AI prize",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-fellow-simon-olsson-wins-inaugural-ictp-ibm-ai-prize/",
+      "date": "2025-07-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Exploring the shapes of deep learning with Kathlén Kohn",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/exploring-the-shapes-of-deep-learning/",
+      "date": "2025-08-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "How can we design AI systems that are both safe and resilient?",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/how-can-we-design-ai-systems-that-are-both-safe-and-resilient/",
+      "date": "2025-08-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Highlighting Neurosymbolic AI: Luc De Raedt presents at IJCAI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/luc-de-raedt-ijcai/",
+      "date": "2025-09-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research on autonomous maritime systems receives ACM Distinguished Paper Award",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/research-on-autonomous-maritime-systems-receives-acm-distinguished-paper-award/",
+      "date": "2025-09-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Exploring the future of language models: Highlights from the WASP Thematic Summer School 2025",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/exploring-the-future-of-language-models-highlights-from-the-wasp-thematic-summer-school-2025/",
+      "date": "2025-09-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Rocío Mercado receives ERC Starting Grant",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/rocio-mercado-receives-erc-starting-grant/",
+      "date": "2025-09-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP research shapes software security",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/alexandre-bartel-earns-accolades-and-shapes-software-security/",
+      "date": "2025-09-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Thomas Schön elected to the Royal Swedish Academy of Science",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/thomas-schon-elected-to-the-royal-swedish-academy-of-science/",
+      "date": "2025-09-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Thomas Schön invald i Kungliga Vetenskapsakademien",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/thomas-schon-invald-i-kungliga-vetenskapsakademien/",
+      "date": "2025-09-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Stefan Stojanovic’s journey from theory to practice",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/stefan-stojanovics-journey-from-theory-to-practice/",
+      "date": "2025-09-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP researchers and PhD students present 27 papers at NeurIPS 2025",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-researchers-and-phd-students-present-27-papers-at-neurips-2025/",
+      "date": "2025-10-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Study trip: Exploring research and industry in Vietnam",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/study-trip-exploring-research-and-industry-in-vietnam/",
+      "date": "2025-10-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Academia & Industry Days 2025: Bold ideas, practical pathways, shared ambition",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-academia-industry-days-2025-bold-ideas-practical-pathways-shared-ambition/",
+      "date": "2025-10-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Demo Week 2025: Advancing collaboration in public safety",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/demo-week-2025-advancing-collaboration-in-public-safety/",
+      "date": "2025-10-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Clearing danger, shaping decisions: Pavlo Melnyk’s geometry in action",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/clearing-danger-shaping-decisions-pavlo-melnyks-geometry-in-action/",
+      "date": "2025-10-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research on next-generation AI planning receives SEK 15 million",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/research-on-next-generation-ai-planning-receives-sek-15-million/",
+      "date": "2025-10-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Forskning om nästa generations AI-planering får 15 miljoner",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/forskning-om-nasta-generations-ai-planering-far-15-miljoner/",
+      "date": "2025-10-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Take humour seriously — your students will thank you",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/take-humour-seriously-your-students-will-thank-you/",
+      "date": "2025-10-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP at Digitalize in Stockholm 2025: AI Everywhere",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-at-digitalize-in-stockholm-2025-ai-everywhere/",
+      "date": "2025-11-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP-WISE team receives prestigious EU grant for neuromorphic sensor project",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-researcher-receives-prestigious-eu-grant-for-neuromorphic-sensor-project/",
+      "date": "2025-11-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Measuring What Matters: Evaluation as a Driver of Generative AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wallenberg-scientific-forum-2025/",
+      "date": "2025-11-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Designing molecular recipes: Rocío Mercado Oropeza’s push for smarter molecular AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/designing-molecular-recipes-rocio-mercado-oropezas-push-for-smarter-molecular-ai/",
+      "date": "2025-11-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Four WASP researchers awarded major new funding from the Swedish Research Council",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/four-wasp-researchers-awarded-major-new-funding-from-the-swedish-research-council/",
+      "date": "2025-11-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Amy Loutfi featured in two national podcasts on the future of AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/amy-loutfi-featured-in-two-national-podcasts-on-the-future-of-ai/",
+      "date": "2025-11-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Jendrik Seipp wins ICAPS 2025 Influential Paper Award",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/jendrik-seipp-wins-icaps-2025-influential-paper-award/",
+      "date": "2025-12-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Simon Olsson awarded ERC Consolidator Grant",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/simon-olsson-awarded-erc-consolidator-grant/",
+      "date": "2025-12-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP-affiliated researchers at the Clarivate 2025 Highly Cited Researchers list",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-researchers-at-the-clarivate-2025-highly-cited-researchers-list/",
+      "date": "2025-12-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Building Healthy AI: Fredrik Johansson on Causal Thinking, Clinical Impact, and the Arc of a Research Career",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/building-healthy-ai-fredrik-johansson-on-causal-thinking-clinical-impact-and-the-arc-of-a-research-career/",
+      "date": "2025-12-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Upcoming call: KAW Proof of Concept Grants in AI, Quantum technologies or ICT",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/upcoming-call-kaw-proof-of-concept-grants-in-ai-quantum-technologies-or-ict/",
+      "date": "2025-12-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "From Submarines to Autonomous Systems: Mårten Lager Named WASP Alum of the Year 2025",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/from-submarines-to-autonomous-systems-marten-lager-named-wasp-alumni-of-the-year-2025/",
+      "date": "2026-01-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Speech and motion: Shivam Mehta receives the 2025 WASP Best Thesis Award",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/speech-and-motion-shivam-mehta-receives-the-2025-wasp-best-thesis-award/",
+      "date": "2026-01-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Winter Conference 2026 features collaboration and community",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-winter-conference-2026-features-collaboration-and-community/",
+      "date": "2026-01-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP–WISE NEST 2 Joint Call Now Open",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-wise-nest-2-joint-call-now-open/",
+      "date": "2026-02-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP students explore Singapore’s AI research landscape",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-students-explore-singapores-ai-research-landscape/",
+      "date": "2026-02-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Advanced security technology rarely used – researchers at Umeå University explain, and offer a solution",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/advanced-security-technology-rarely-used-researchers-at-umea-university-explain-and-offer-a-solution/",
+      "date": "2026-02-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Låg användning av modern säkerhetsteknik – Umeå-forskare presenterar smart lösning",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/lag-anvandning-av-modern-sakerhetsteknik-umea-forskare-presenterar-smart-losning/",
+      "date": "2026-02-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP etablerar ny forskningsarena inom AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/wasp-etablerar-ny-forskningsarena-inom-ai/",
+      "date": "2026-02-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP to Establish New AI Research Arena",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-to-establish-new-ai-research-arena/",
+      "date": "2026-02-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "New initiative aims to give Sweden its own large-scale AI language model",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/new-initiative-aims-to-give-sweden-its-own-large-scale-ai-language-model/",
+      "date": "2026-02-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Ny satsning ska ge Sverige en egen storskalig AI-språkmodell",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/ny-satsning-ska-ge-sverige-en-egen-storskalig-ai-sprakmodell/",
+      "date": "2026-02-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Uppsala universitet blir nytt partneruniversitet till WASP",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/uppsala-universitet-blir-nytt-partneruniversitet-till-wasp/",
+      "date": "2026-02-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Uppsala University becomes a new partner university in WASP",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/uppsala-university-becomes-a-new-partner-university-in-wasp/",
+      "date": "2026-02-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "AD-EYE featured in Swedish TV news program",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/ad-eye-featured-in-swedish-tv-news-program/",
+      "date": "2026-02-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Belgioioso awarded prize for work on smarter infrastructure systems",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/belgioioso-awarded-prize-for-work-on-smarter-infrastructure-systems/",
+      "date": "2026-03-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP-connected research recognized with Most Influential Paper awards",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-connected-research-recognized-with-most-influential-paper-awards/",
+      "date": "2026-03-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Open Call: WASP and WASP-HS Project Call",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/open-call-wasp-and-wasp-hs-project-call/",
+      "date": "2026-04-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Öppen utlysning: WASP och WASP-HS projektutlysning",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/oppen-utlysning-wasp-och-wasp-hs-projektutlysning/",
+      "date": "2026-04-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "From visits to leading universities to embassy dinner: WASP International Study Trip to Singapore",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/from-visits-to-leading-universities-to-embassy-dinner-wasp-international-study-trip-to-singapore/",
+      "date": "2026-04-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Alexandre Proutiere receives ACM SIGMETRICS Achievement Award",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/alexandre-proutiere-receives-acm-sigmetrics-achievement-award/",
+      "date": "2026-04-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Martin Monperrus Elevated to IEEE Fellow for Advances in AI-Driven Software Engineering",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/martin-monperrus-elevated-to-ieee-fellow-for-advances-in-ai-driven-software-engineering/",
+      "date": "2026-04-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Miriah Meyer: “I’m a fangirl of theory”",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/miriah-meyer-im-a-fangirl-of-theory/",
+      "date": "2026-04-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASF 2026 explores the foundations of neurosymbolic AI",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasf-2026-explores-the-foundations-of-neurosymbolic-ai/",
+      "date": "2026-04-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Where are WASP alumni today? Statistics from a recent WASP follow‑up",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/where-are-wasp-alumni-today-statistics-from-a-recent-wasp-follow-up/",
+      "date": "2026-04-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Updates in the WARA Ops portal",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/updates-in-the-wara-ops-portal/",
+      "date": "2026-05-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Exploring the intersection of society, life sciences and technology",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/exploring-the-intersection-of-society-life-sciences-and-technology/",
+      "date": "2026-05-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "Jialong Li receives award for his work on open source teleoperation",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/jialong-li-receives-award-for-his-work-on-open-source-teleoperation/",
+      "date": "2026-05-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "The data only industry can provide",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/the-data-only-industry-can-provide/",
+      "date": "2026-05-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP researchers receive Best Paper Award for advancing safety in AI-based autonomy",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-researchers-receive-best-paper-award-for-advancing-safety-in-ai-based-autonomy/",
+      "date": "2026-05-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Projektsida SE.LLMA",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/projektsida-se-llma/",
+      "date": "2026-05-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learn more about SE.LLMA",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/learn-more-about-se-llma/",
+      "date": "2026-06-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP-affiliated research accepted to CVPR 2026",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-affiliated-research-accepted-to-cvpr-2026/",
+      "date": "2026-06-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "ELLIS adds seven new units – one of them in Sweden",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/ellis-adds-seven-new-units-one-of-them-in-sweden/",
+      "date": "2026-06-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "WARA Public Safety introduces Vinnova Drone Challenge at Data Collection Week",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wara-public-safety-introduces-vinnova-drone-challenge-at-data-collection-week/",
+      "date": "2026-06-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Strong WASP presence at ICML 2026",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/strong-wasp-presence-at-icml-2026/",
+      "date": "2026-07-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Alexandre Bartel receives Nordea's Scientific Prize 2026",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/alexandre-bartel-receives-nordeas-scientific-prize-2026/",
+      "date": "2026-07-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "The long game: When someone is paid to think ahead",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/the-long-game-when-someone-is-paid-to-think-ahead/",
+      "date": "2026-08-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP researchers receives the Automatica Best Paper Award",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-researchers-receives-the-automatica-best-paper-award/",
+      "date": "2026-08-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP research helps Sony AI’s table tennis robot decide in milliseconds",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-research-helps-sony-ais-table-tennis-robot-decide-in-milliseconds/",
+      "date": "2026-09-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP researchers contribute to ECCV 2026",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-researchers-contribute-to-eccv-2026/",
+      "date": "2026-09-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Community building summer school gives new WASP PhD students a first introduction",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/community-building-summer-school-gives-new-wasp-phd-students-a-first-introduction/",
+      "date": "2026-09-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP strengthens Swedish AI research through recruitment of Julian Togelius",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-strengthens-swedish-ai-research-through-recruitment-of-julian-togelius/",
+      "date": "2026-09-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP students strengthen ties with Mila’s reinforcement learning community",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-students-strengthen-ties-with-milas-reinforcement-learning-community/",
+      "date": "2026-09-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Three projects awarded funding in first joint WASP and WASP-HS call",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/three-projects-awarded-funding-in-first-joint-wasp-and-wasp-hs-call/",
+      "date": "2026-09-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Two WASP researchers awarded ERC Starting Grants",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/two-wasp-researchers-awarded-erc-starting-grants/",
+      "date": "2026-09-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Christian Berger to lead the WASP Graduate School from 2027",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/christian-berger-to-lead-the-wasp-graduate-school-from-2027/",
+      "date": "2026-09-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP går in i en ny fas med säkrad långsiktig finansiering",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/wasp-gar-in-i-en-ny-fas-med-sakrad-langsiktig-finansiering/",
+      "date": "2026-09-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP enters a new phase with long-term funding secured",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-enters-a-new-phase-with-long-term-funding-secured/",
+      "date": "2026-09-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Luc De Raedt Receives EurAI Distinguished Service Award 2026",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/luc-de-raedt-receives-eurai-distinguished-service-award-2026/",
+      "date": "2026-09-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP and WASP-HS launch new cross-disciplinary AI webinar series",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-and-wasp-hs-launch-new-cross-disciplinary-ai-webinar-series/",
+      "date": "2026-09-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "AI scientist makes biological discoveries autonomously",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/ai-scientist-makes-biological-discoveries-autonomously/",
+      "date": "2026-10-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Wallenberg AI, Autonomous Systems and Software Program",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/about-us/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Lighthouses",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/about-us/lighthouses/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Organization and governance",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/about-us/organization-and-governance/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Board of Directors",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/about-us/organization-and-governance/board-of-directors/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "International Scientific Advisory Board",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/about-us/organization-and-governance/international-scientific-advisory-board/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Management",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/about-us/organization-and-governance/management/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Diversity and Inclusion Group",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/about-us/organization-and-governance/wasp-diversity-and-inclusion-group/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Exploring AI for Science in Tokyo, Japan – a PhD student travel report",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/exploring-ai-for-science-in-tokyo-japan-a-phd-student-travel-report/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Exploring ICML 2023 in Honolulu, Hawaii – a PhD student travel report",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/exploring-icml-2023-in-honolulu-hawaii/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "From international conference to robot lab visit – a travel report from Seoul",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/from-international-conference-to-robot-lab-visit-a-travel-report-from-seoul/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Funded projects",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/funded-projects/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Graduate School",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/graduate-school/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Industrial and Affiliated PhD Student Program",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/graduate-school/affiliated-phd-student-program/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "FAQ: WASP Industrial PhD Student",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/graduate-school/affiliated-phd-student-program/faq-wasp-industrial-phd-student/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Courses",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/graduate-school/courses/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "International opportunities",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/graduate-school/internationalization/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research stint abroad",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/graduate-school/internationalization/study-stint-abroad/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "International study visits",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/graduate-school/internationalization/study-visits/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Events, conferences, and activities",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/graduate-school/networking-meetup/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Ivo Batkovic – Experiences from Berkeley",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/ivo-batkovic-experiences-from-berkeley/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Mia Kokic – Experiences from Stanford",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/mia-kokic-experiences-from-stanford/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-project __main__",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/multi-dimensional-alignment-and-integration/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST project: 2DFound",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-2dfound/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-project: 3D Scene Perception, Embeddings and Neural Rendering",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-3d-scene-perception-embeddings-and-neural-rendering/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-project: AI-based side-channel attacks and countermeasures for autonomous systems",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-ai-based-side-channel-attacks-and-countermeasures-for-autonomous-systems/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-project: AIR²",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-air2/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST project: Brain Inspired AI Design of Topological Magnets for Sustainable Computing",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-brain-inspired-ai-design-of-topological-magnets-for-sustainable-computing/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-project: Cloud-Robotics",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-cloud-robotics/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-project CyberSecIT",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-cybersecit/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-project Data-bound computing",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-data-bound-computing/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-Project DISCOWER",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-discower/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-project: DYNACON",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-dynacon/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST project: InBio",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-inbio/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-project: Learning 3D Genome Dynamics from Heterogeneous Data",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-learning-3d-genome-dynamics-from-heterogeneous-data/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-project: Learning in networks",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-learning-in-networks/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-project: Multimodal AI-based Precision Diagnostics and Decision Support for Breast Cancer",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-multimodal-ai-based-precision-diagnostics-and-decision-support-for-breast-cancer/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-project PerCorSo",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-percorso/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST project: RAM3",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-ram3/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-project: ShiftLeft Securing the Software Supply Chain by Code-centric Analysis",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-shiftleft-securing-the-software-supply-chain-by-code-centric-analysis/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-project: Source",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-source/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST project: SPEED",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-speed/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST-project: Time-Resolved Imaging and Multi-Channel Evaluation of Cellular Dynamics",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/nest-project-time-resolved-imaging-and-multi-channel-evaluation-of-cellular-dynamics/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "News",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/news/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Opportunities",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/opportunities/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Publications Bibl",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/publications-bibl/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Publications",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/publications/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Reports",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/reports/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/research/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Projects",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/research/projects/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "NEST Environments",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/research/projects/nest-environments/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "SE.LLMA",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/research/projects/sellma/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Research Arenas",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/research/research-arenas/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "WARA AI-TRICS",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/research/research-arenas/wara-ai-trics/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "WARA AI TRICS: Time Series Challenge",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/research/research-arenas/wara-ai-trics/wara-ai-trics-time-series-challenge/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "WARA Media and Language",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/research/research-arenas/wara-media-and-language/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "WARA Medicine",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/research/research-arenas/wara-medicine/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "WARA Ops",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/research/research-arenas/wara-operational-data/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "WARA Public Safety",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/research/research-arenas/wara-ps-public-safety/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "WARA Robotics",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/research/research-arenas/wara-robotics/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Recruited Faculty",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/research/wasp-recruited-faculty/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "STING - Synthesis and analysis with Transducers and Invertible Neural Generators",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sting-synthesis-and-analysis-with-transducers-and-invertible-neural-generators/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Wallenberg AI, Autonomous Systems and Software Program",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/ai-autonoma-system-och-mjukvara/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Nyheter",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/nyheter/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Om WASP",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/om-wasp/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Forskning",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/om-wasp/forskning/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "SE.LLMA",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/om-wasp/forskning/se-llma/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Forskarskolan",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/om-wasp/graduate-school-2/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Industriellt samarbete",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/om-wasp/industriellt-samarbete/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Utlysningar och lediga tjänster",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/om-wasp/opportunities-2/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Vision och uppdrag",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/sv/om-wasp/vision-och-uppdrag/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Doctoral Theses",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/theses/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Alumni",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-alumni/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP International Postdoctoral Scholarship",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-postdoc/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "WASP Publications 2015-2024",
+      "publisher": "Wallenberg AI, Autonomous Systems and Software Program",
+      "canonical_url": "https://wasp-sweden.org/wasp-publications-2015-2024/",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
