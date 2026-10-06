@@ -10,8 +10,9 @@ A row would keep only the title, publisher, canonical URL, date, and rights
 label from an on-host HTML page. Page text, reports, and PDFs are not stored.
 creative_commons means only a stated CC0, CC BY, or CC BY-SA deed. CC BY-NC
 and CC BY-NC-SA, including IGO variants, keep their own tokens and are never
-folded into creative_commons. A restricted deed wins when a permissive deed
-is also stated. The Public Domain Mark is not CC0. uk_ogl is used only when
+folded into creative_commons. A page that states both a restricted deed and
+CC0, CC BY, or CC BY-SA stays unknown. A sole restricted deed keeps its token.
+The Public Domain Mark is not CC0. uk_ogl is used only when
 the page text contains the British phrase "open government licence".
 eu_reuse_decision is used only when the page states Decision 2011/833/EU.
 A copyright notice, All rights reserved, a terms link, or a host name is not
@@ -418,15 +419,16 @@ def record_from_response(
 def rights_from_page(page_text: str) -> str:
     """Return a rights label from a reuse licence the page itself states.
 
-    creative_commons means CC0, CC BY, or CC BY-SA only. CC BY-NC and
-    CC BY-NC-SA, including IGO variants, keep their own tokens. CC BY-ND,
+    creative_commons means CC0, CC BY, or CC BY-SA only. A sole CC BY-NC or
+    CC BY-NC-SA deed, including an IGO variant, keeps its own token. CC BY-ND,
     CC BY-NC-ND, and the Public Domain Mark stay unknown. A restricted deed
-    wins when a permissive deed is also stated. A hyphen is a word boundary,
-    so CC BY does not match CC BY-NC, and licenses/by does not match
-    licenses/by-nc. A generic creativecommons.org/licenses/ URL is not a
-    permissive deed. uk_ogl requires the phrase open government licence.
-    eu_reuse_decision requires Decision 2011/833/EU. Script and style text
-    does not count.
+    together with CC0, CC BY, or CC BY-SA stays unknown, including when the
+    visible anchor says CC BY or CC BY-SA and the href is a restricted or
+    public-domain mark URL. A hyphen is a word boundary, so CC BY does not
+    match CC BY-NC, and licenses/by does not match licenses/by-nc. A generic
+    creativecommons.org/licenses/ URL is not a permissive deed. uk_ogl
+    requires the phrase open government licence. eu_reuse_decision requires
+    Decision 2011/833/EU. Script and style text does not count.
     """
 
     if not isinstance(page_text, str):
@@ -558,12 +560,20 @@ def _location_is_off_host(location: str) -> bool:
 
 
 def _rights_from_codes(codes: set[str], stated: str) -> str:
+    has_restricted = bool(codes & _UNTOKENIZED_RESTRICTED) or any(
+        code in codes for code, _token in _TOKEN_FOR_RESTRICTED
+    )
+    has_permissive = bool(codes & _PERMISSIVE)
+    # CC BY, CC BY-SA, or CC0 alongside a restricted deed stays unknown.
+    # A sole restricted deed still keeps its own token.
+    if has_restricted and has_permissive:
+        return RIGHTS_UNKNOWN
     if codes & _UNTOKENIZED_RESTRICTED:
         return RIGHTS_UNKNOWN
     for code, token in _TOKEN_FOR_RESTRICTED:
         if code in codes:
             return token
-    if codes & _PERMISSIVE:
+    if has_permissive:
         return RIGHTS_CREATIVE_COMMONS
     if _EU_REUSE.search(stated):
         return RIGHTS_EU_REUSE
