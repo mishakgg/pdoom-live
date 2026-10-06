@@ -1,0 +1,6 @@
+{
+  "catalog_id": "cdt_ai_pages",
+  "description": "Metadata for public Center for Democracy and Technology artificial-intelligence pages on cdt.org. A row is stored only when one bounded GET of that host returns HTML. Cloudflare, a SiteGround captcha, an HTTP 202 challenge, Akamai, a robot interstitial, or a redirect off cdt.org stores no row. This catalog is empty because that GET returned a Cloudflare challenge. Stored fields are title, publisher, canonical URL, date, and rights. Page bodies and PDFs are not stored. A missing date is unknown. Updated, modified, and copyright years are not publication dates. Rights stay unknown unless the page states CC0, CC BY, or CC BY-SA. runner_wired is false.",
+  "runner_wired": false,
+  "entries": []
+}
