@@ -1,0 +1,9 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-06T034000Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Merged pull requests 249 and 251 through 257. Draft 250 stays open because the runtime image check failed. Drafts 258 through 263 record the Max Planck Institute for Security and Privacy, the Technology Innovation Institute, the Council on Foreign Relations, the Centre for International Governance Innovation, KAIST AI, and the Shanghai Artificial Intelligence Laboratory.",
+  "follow_up_prs": [168, 250, 258, 259, 260, 261, 262, 263],
+  "origin_main_sha": "3f202cd0c85fc6f1f63462cddef2487b1560c274"
+}
