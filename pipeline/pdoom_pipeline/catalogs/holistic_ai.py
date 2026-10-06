@@ -18,7 +18,8 @@ a CC0 anchor on a publicdomain/mark URL stays unknown. The Public Domain Mark,
 all rights reserved, terms, and the host name stay unknown. mit, apache-2.0,
 and mpl-2.0 stay their own tokens; mixed software licences stay unknown.
 uk_ogl requires the British phrase Open Government Licence. A generic
-creativecommons.org/licenses/ URL stays unknown.
+creativecommons.org/licenses/ URL stays unknown, and the visible text of
+that anchor does not count. Text elsewhere on the page still counts.
 
 A page that does not state a publication date keeps the date unknown.
 Updated, modified, and copyright years are not publication dates. This module
@@ -117,6 +118,7 @@ _LDJSON = re.compile(
 _TAG = re.compile(r"(?is)<[^>]+>")
 _META = re.compile(r"(?is)<meta\b[^>]*>")
 _LINK = re.compile(r"(?is)<(?:link|a)\b[^>]*>")
+_ANCHOR_PAIR = re.compile(r"(?is)<a\b([^>]*)>(.*?)</a>")
 _H1 = re.compile(r"(?is)<h1\b[^>]*>(.*?)</h1>")
 _ARTICLE_H1 = re.compile(
     r"(?is)<h1\b[^>]*class=\"[^\"]*(?:lr_blog-child_title|lr_papers-child-header_title)[^\"]*\"[^>]*>(.*?)</h1>"
@@ -428,15 +430,19 @@ def rights_from_page(page_text: str) -> str:
     not match licenses/by-nc. Mixed restricted and permissive text stays
     unknown. A software licence beside a Creative Commons deed stays unknown.
     Public Domain Mark is not CC0. A generic creativecommons.org/licenses/ URL,
-    a copyright notice, All rights reserved, a terms link, and a host name are
-    not licences.
+    with or without a trailing slash, is not a licence, and the visible text
+    of that anchor does not count. The same is true for http, a www host, and
+    a query string on that generic path. Text elsewhere on the page still
+    counts. A copyright notice, All rights reserved, a terms link, and a host
+    name are not licences.
     """
 
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
     ld_values = _jsonld_rights_and_licenses(page_text)
     visible = _without_hidden(page_text)
-    plain = _plain(visible).casefold().translate(_DASHES)
+    counted = _drop_generic_cc_anchor_text(visible)
+    plain = _plain(counted).casefold().translate(_DASHES)
     blobs = [plain, *(_meta_values(visible, _LICENSE_META)), *ld_values, *_hrefs(visible)]
     codes: set[str] = set()
     mit = False
@@ -789,6 +795,39 @@ def _meta_values(page_html: str, keys: frozenset[str] | tuple[str, ...]) -> list
         if key in wanted and attrs.get("content"):
             found.append(attrs["content"])
     return found
+
+
+def _drop_generic_cc_anchor_text(page_html: str) -> str:
+    """Remove visible text from anchors that only point at /licenses/.
+
+    A generic Creative Commons licences URL is not a deed. CC BY or CC BY-SA
+    written as that anchor's text is not a licence statement. A specific deed
+    path such as /licenses/by/4.0/ is left unchanged.
+    """
+
+    def replace(match: re.Match[str]) -> str:
+        href = _attrs("<a" + match.group(1) + ">").get("href", "")
+        if _is_generic_cc_licenses_url(href):
+            return " "
+        return match.group(0)
+
+    return _ANCHOR_PAIR.sub(replace, page_html)
+
+
+def _is_generic_cc_licenses_url(href: str) -> bool:
+    text = unescape(href).strip()
+    if not text:
+        return False
+    parsed = urlparse(text)
+    if parsed.scheme.casefold() not in {"http", "https"}:
+        return False
+    host = (parsed.hostname or "").casefold().rstrip(".")
+    if host not in {"creativecommons.org", "www.creativecommons.org"}:
+        return False
+    path = (parsed.path or "").casefold()
+    if len(path) > 1 and path.endswith("/"):
+        path = path[:-1]
+    return path == "/licenses"
 
 
 def _hrefs(page_html: str) -> list[str]:

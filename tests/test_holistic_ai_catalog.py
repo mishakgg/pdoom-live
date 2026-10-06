@@ -228,6 +228,29 @@ def test_cc_by_alone_is_attribution_and_permissive_mix_is_creative_commons():
     assert rights_from_page(zero_and_by) == RIGHTS_CREATIVE_COMMONS
 
 
+def test_generic_creativecommons_licenses_url_anchor_text_stays_unknown():
+    pages = [
+        '<a href="https://creativecommons.org/licenses/">CC BY</a>',
+        '<a href="https://creativecommons.org/licenses/">CC BY 4.0</a>',
+        '<a href="https://creativecommons.org/licenses/">CC BY-SA</a>',
+        '<a href="https://creativecommons.org/licenses">CC BY</a>',
+        '<a href="http://creativecommons.org/licenses/">CC BY 4.0</a>',
+        '<a href="https://www.creativecommons.org/licenses/">CC BY-SA</a>',
+        '<a href="http://www.creativecommons.org/licenses">CC BY</a>',
+        '<a href="https://creativecommons.org/licenses/?lang=en">CC BY</a>',
+        '<a href="https://creativecommons.org/licenses?ref=footer">CC BY-SA</a>',
+    ]
+    for page in pages:
+        assert rights_from_page(page) == RIGHTS_UNKNOWN
+    elsewhere = (
+        "<p>Licensed under CC BY 4.0.</p>"
+        '<a href="https://creativecommons.org/licenses/">CC BY-SA</a>'
+    )
+    assert rights_from_page(elsewhere) == RIGHTS_CC_ATTRIBUTION
+    deed = '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
+    assert rights_from_page(deed) == RIGHTS_CC_ATTRIBUTION
+
+
 def test_hyphen_does_not_let_cc_by_match_cc_by_nc():
     source = Path(holistic_ai.__file__).read_text(encoding="utf-8")
     assert "(?!-)" in source
