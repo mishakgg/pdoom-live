@@ -46,9 +46,8 @@ and a separate photo credit names another licence, the page stays
 
 Updated, modified, and copyright years are not publication dates. Script,
 style, and comment text does not count. A missing publication date stays
-unknown. This module does not fetch and it does not import requests. It is
-not a belief collector. ``runner_wired`` stays false. Belief collection stays
-on RssCollector.
+unknown. This module does not fetch. It is not a belief collector.
+``runner_wired`` stays false. Belief collection stays on RssCollector.
 """
 
 from __future__ import annotations
@@ -109,7 +108,7 @@ MAX_DESCRIPTION_CHARS = 1100
 CATALOG_DESCRIPTION = (
     "Metadata for public Shanghai Artificial Intelligence Laboratory research and news pages. "
     "Hosts are www.shlab.org.cn, shlab.org.cn, www.pjlab.org.cn, and pjlab.org.cn. "
-    "www.pjlab.org.cn and pjlab.org.cn do not resolve. "
+    "www.pjlab.org.cn does not resolve. pjlab.org.cn does not resolve. "
     "shlab.org.cn did not complete a TLS handshake, so that host contributes no rows. "
     "www.shlab.org.cn returned an HTML document in place of robots.txt, so research and news pages were not fetched. "
     "The catalog is empty. "

@@ -674,8 +674,8 @@ def test_validator_rejects_long_text_bad_rights_and_stored_text(tmp_path: Path):
     }
     document = copy.deepcopy(load_catalog())
     document["entries"] = [
-        dict(entry),
         dict(entry, canonical_url=NEWS_URL, title="Intern Release"),
+        dict(entry),
     ]
     validate_catalog(document)
 
