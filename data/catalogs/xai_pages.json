@@ -1,0 +1,602 @@
+{
+  "catalog_id": "xai_pages",
+  "description": "Confirmed public xAI research and news pages on x.ai. www.x.ai is stored only when the response stays on that host. Console, chat, login, PDFs, and other hosts are omitted. A challenge, HTTP error, non-HTML body, robots disallow, or off-host redirect stores no row. Rows keep title, publisher, canonical URL, date, and rights. Page text is not stored. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix. Sole CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND keep their own tokens. Mixed restricted and permissive text stays unknown. uk_ogl requires Open Government Licence. A missing date stays unknown. Updated, modified, and copyright years are not publication dates. Not a belief collector. runner_wired stays false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Announcing Grok",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok",
+      "date": "2023-11-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok-1 Model Card",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok/model-card",
+      "date": "2023-11-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing PromptIDE",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/prompt-ide",
+      "date": "2023-11-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Open Release of Grok-1",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-os",
+      "date": "2024-03-17",
+      "rights": "apache-2.0"
+    },
+    {
+      "title": "Announcing Grok-1.5",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-1.5",
+      "date": "2024-03-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok-1.5 Vision Preview",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-1.5v",
+      "date": "2024-04-12",
+      "rights": "cc_by_nd"
+    },
+    {
+      "title": "Series B funding round",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/series-b",
+      "date": "2024-05-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok-2 Beta Release",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-2",
+      "date": "2024-08-13",
+      "rights": "unknown"
+    },
+    {
+      "title": "API Public Beta",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/api",
+      "date": "2024-11-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Image Generation Release",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-image-generation-release",
+      "date": "2024-12-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bringing Grok to Everyone",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-1212",
+      "date": "2024-12-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "xAI raises $6B Series C",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/series-c",
+      "date": "2024-12-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok 3 Beta — The Age of Reasoning Agents",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-3",
+      "date": "2025-02-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok 4",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-4",
+      "date": "2025-07-09",
+      "rights": "unknown"
+    },
+    {
+      "title": "Announcing xAI for Government",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/government",
+      "date": "2025-07-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Code Fast 1",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-code-fast-1",
+      "date": "2025-08-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok 4 Fast",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-4-fast",
+      "date": "2025-09-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Expanding xAI for Government with GSA OneGov",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/onegov",
+      "date": "2025-09-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok 4.1",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-4-1",
+      "date": "2025-11-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok 4.1 Fast and Agent Tools API",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-4-1-fast",
+      "date": "2025-11-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok goes Global with KSA",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-goes-global",
+      "date": "2025-11-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "xAI and El Salvador Pioneer the World's First Nationwide AI Education Program",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/el-salvador-partnership",
+      "date": "2025-12-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Voice Agent API",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-voice-agent-api",
+      "date": "2025-12-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Collections API",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-collections-api",
+      "date": "2025-12-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Supporting the DOW's mission with AI",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/us-gov-dept-of-war",
+      "date": "2025-12-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Grok Business and Grok Enterprise",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-business",
+      "date": "2025-12-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "xAI Raises $20B Series E",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/series-e",
+      "date": "2026-01-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Imagine API",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-imagine-api",
+      "date": "2026-01-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "xAI joins SpaceX",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/xai-joins-spacex",
+      "date": "2026-02-02",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Speech to Text and Text to Speech APIs",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-stt-and-tts-apis",
+      "date": "2026-04-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Voice Think Fast 1.0",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-voice-think-fast-1",
+      "date": "2026-04-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Custom Voices",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-custom-voices",
+      "date": "2026-04-30",
+      "rights": "unknown"
+    },
+    {
+      "title": "New Compute Partnership with Anthropic",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/anthropic-compute-partnership",
+      "date": "2026-05-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Connectors in web, iOS, and Android",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-connectors",
+      "date": "2026-05-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Imagine Quality Mode API",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-imagine-quality-mode",
+      "date": "2026-05-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Connect Grok to Hermes Agent",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-hermes",
+      "date": "2026-05-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Skills in web, iOS, and Android",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-skills",
+      "date": "2026-05-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Use Grok in OpenClaw",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-openclaw",
+      "date": "2026-05-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Use Grok in OpenCode",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-opencode",
+      "date": "2026-05-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Grok Build",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-build-cli",
+      "date": "2026-05-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Use Grok in Kilo Code",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-kilocode",
+      "date": "2026-05-27",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Build 0.1 on API",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-build-0-1",
+      "date": "2026-05-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Composer 2.5",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/composer-2-5",
+      "date": "2026-06-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Imagine 1.5 Preview",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-imagine-1-5",
+      "date": "2026-06-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Build Plugin Marketplace",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-plugin-marketplace",
+      "date": "2026-06-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Agent Dashboard in Grok Build",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/agent-dashboard",
+      "date": "2026-06-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Use Grok in Warp",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-warp",
+      "date": "2026-06-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Imagine Video 1.5",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-imagine-video-1-5",
+      "date": "2026-06-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok for PowerPoint",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/introducing-powerpoint-addin",
+      "date": "2026-06-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok on Amazon Bedrock",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-amazon-bedrock",
+      "date": "2026-06-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok on Databricks",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-databricks",
+      "date": "2026-06-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok for Word",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/introducing-word-addin",
+      "date": "2026-06-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing /goal",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/introducing-goal",
+      "date": "2026-06-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing the Voice Agent Builder",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-voice-agent-builder",
+      "date": "2026-07-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Build is Now Open Source",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-build-open-source",
+      "date": "2026-07-15",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Grok 4.5",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-4-5",
+      "date": "2026-07-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Automations in Grok",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-automations",
+      "date": "2026-07-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok for Excel",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/introducing-excel-addin",
+      "date": "2026-07-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok for Outlook",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/introducing-outlook-addin",
+      "date": "2026-07-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Bringing Grok 4.5 to iOS, Android, Web, and X",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-4-5-everywhere",
+      "date": "2026-07-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Workflows in Grok Build",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/workflows",
+      "date": "2026-07-23",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok in Google Workspace",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/introducing-google-workspace-addon",
+      "date": "2026-07-24",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Build Mode",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-build-mode",
+      "date": "2026-07-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok 4.5 in GitHub Copilot",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-github-copilot",
+      "date": "2026-07-28",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Grok Voice Think Fast 2.0",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-voice-think-fast-2",
+      "date": "2026-07-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Imagine Video 1.5 with References",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-imagine-video-1-5-references",
+      "date": "2026-07-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Imagine Image 2.0",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-imagine-image-2",
+      "date": "2026-08-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Grok Bot",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/introducing-grok-bot",
+      "date": "2026-08-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Grok 4.6",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-4-6",
+      "date": "2026-08-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok 4.6 in GitHub Copilot",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-4-6-github-copilot",
+      "date": "2026-08-14",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok 4.6 on Amazon Bedrock",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-4-6-amazon-bedrock",
+      "date": "2026-08-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Build on web and mobile",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-build-for-everyone",
+      "date": "2026-08-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok 4.6 on Gemini Enterprise Agent Platform",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-4-6-vertex-ai",
+      "date": "2026-08-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok 4.6 on Microsoft Foundry",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-4-6-microsoft-foundry",
+      "date": "2026-08-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Bot is now included with more plans",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-bot-more-plans",
+      "date": "2026-08-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Bot now works with X",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-bot-and-x",
+      "date": "2026-08-29",
+      "rights": "unknown"
+    },
+    {
+      "title": "Biosecurity at the frontier",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/biosafety-at-the-frontier",
+      "date": "2026-09-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Designing Grok Bot for a world of persistent agents",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/designing-grok-bot",
+      "date": "2026-09-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Grok Bot for Enterprise",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-bot-for-enterprise",
+      "date": "2026-09-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Setting Grok Bot loose on procurement",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-bot-procurement",
+      "date": "2026-09-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "Memory in Grok Build",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-build-memory",
+      "date": "2026-09-16",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Grok Voice Transcribe 2.0",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-voice-transcribe-2",
+      "date": "2026-09-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing Grok 4.7",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-4-7",
+      "date": "2026-09-21",
+      "rights": "unknown"
+    },
+    {
+      "title": "How SpaceXAI is using Grok Bot to scale customer support",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/grok-bot-customer-support",
+      "date": "2026-09-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "Team Bots: shared AI teammates that learn as they work",
+      "publisher": "xAI",
+      "canonical_url": "https://x.ai/news/team-bots",
+      "date": "2026-09-28",
+      "rights": "unknown"
+    }
+  ]
+}
