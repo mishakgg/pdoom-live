@@ -1,0 +1,28 @@
+{
+  "catalog_id": "ssi_pages",
+  "description": "Public Safe Superintelligence pages on ssi.inc: homepage, /updates, and /contact. No public research index returned HTML. Each URL was one bounded GET (12s, 3 redirects, 400000 bytes) that stayed on that host. robots.txt is an HTML 404 and does not disallow the paths. www.ssi.inc redirects off-host and is omitted. A challenge, HTTP error, non-HTML body, robots disallow, login, PDF, download, or off-host redirect is not stored. Rows keep title, publisher, URL, date, and rights. Page text is not stored. creative_commons_attribution means CC BY alone. creative_commons means CC0, CC BY-SA, or a permissive mix of those. A missing date is unknown. Updated, modified, and copyright years are not publication dates. This module does not fetch. It is not a belief collector, and runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Safe Superintelligence Inc.",
+      "publisher": "Safe Superintelligence",
+      "canonical_url": "https://ssi.inc/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Contact Us",
+      "publisher": "Safe Superintelligence",
+      "canonical_url": "https://ssi.inc/contact",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Updates",
+      "publisher": "Safe Superintelligence",
+      "canonical_url": "https://ssi.inc/updates",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
