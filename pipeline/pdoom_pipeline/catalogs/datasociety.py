@@ -3,13 +3,16 @@
 Rows keep a title, publisher, canonical URL, date, and rights label. Page
 bodies, abstracts, PDFs, quotes, and chart data are not stored. A missing date
 stays unknown. Updated, modified, and copyright years are not publication
-dates. Rights stay unknown unless the page states CC0, CC BY, or CC BY-SA,
-which are labeled creative_commons. CC BY-NC, CC BY-ND, CC BY-NC-SA, and
-CC BY-NC-ND stay unknown. A restricted deed wins when it appears beside a
-permissive one. uk_ogl is used only when the page states the Open Government
-Licence. us_government_work is used only when a rights field says the item is
-a US government work. A public page, a copyright notice, or a terms link is
-not a licence. This module does not fetch. runner_wired stays false.
+dates. creative_commons is only CC0, CC BY-SA, or a mix of those.
+creative_commons_attribution is CC BY alone. A sole CC BY-NC, CC BY-ND,
+CC BY-NC-SA, or CC BY-NC-ND keeps cc_by_nc, cc_by_nd, cc_by_nc_sa, or
+cc_by_nc_nd. A generic creativecommons.org/licenses/ URL is not a deed, and
+anchor text on that path does not count. A public-domain mark is not CC0.
+A software licence beside a Creative Commons deed stays unknown. A photo,
+caption, or image credit does not set the page licence. uk_ogl is only the
+British phrase Open Government Licence. us_government_work is only an
+explicit rights field. Script, style, and comment text does not count. This
+module does not fetch. runner_wired stays false.
 """
 
 from __future__ import annotations
@@ -29,14 +32,30 @@ RUNNER_WIRED = False
 UNKNOWN_DATE = "unknown"
 RIGHTS_UNKNOWN = "unknown"
 RIGHTS_CREATIVE_COMMONS = "creative_commons"
+RIGHTS_CC_ATTRIBUTION = "creative_commons_attribution"
+RIGHTS_CC_BY_NC = "cc_by_nc"
+RIGHTS_CC_BY_ND = "cc_by_nd"
+RIGHTS_CC_BY_NC_SA = "cc_by_nc_sa"
+RIGHTS_CC_BY_NC_ND = "cc_by_nc_nd"
 RIGHTS_UK_OGL = "uk_ogl"
 RIGHTS_US_GOVERNMENT_WORK = "us_government_work"
+RIGHTS_MIT = "mit"
+RIGHTS_APACHE = "apache-2.0"
+RIGHTS_MPL = "mpl-2.0"
 RIGHTS_LABELS = frozenset(
     {
         RIGHTS_UNKNOWN,
         RIGHTS_CREATIVE_COMMONS,
+        RIGHTS_CC_ATTRIBUTION,
+        RIGHTS_CC_BY_NC,
+        RIGHTS_CC_BY_ND,
+        RIGHTS_CC_BY_NC_SA,
+        RIGHTS_CC_BY_NC_ND,
         RIGHTS_UK_OGL,
         RIGHTS_US_GOVERNMENT_WORK,
+        RIGHTS_MIT,
+        RIGHTS_APACHE,
+        RIGHTS_MPL,
     }
 )
 OFFICIAL_HOST = "datasociety.net"
@@ -77,27 +96,35 @@ _LDJSON = re.compile(
     r"(?is)<script\b[^>]*type\s*=\s*['\"]application/ld\+json['\"][^>]*>(.*?)</script>"
 )
 _DATE_PUBLISHED = re.compile(r'"datePublished"\s*:\s*"(\d{4}-\d{2}-\d{2})')
-_LD_RIGHTS = re.compile(
-    r'"(?:license|rights)"\s*:\s*"((?:\\.|[^"\\])*)"',
-    re.IGNORECASE,
-)
 _TAG = re.compile(r"(?is)<[^>]+>")
 _META = re.compile(r"(?is)<meta\b[^>]*>")
 _LINK = re.compile(r"(?is)<link\b[^>]*>")
 _ANCHOR = re.compile(r"(?is)<a\b[^>]*>")
+_ANCHOR_FULL = re.compile(r"(?is)<a\b([^>]*)>(.*?)</a>")
+_CREDIT_PHRASE = re.compile(
+    r"(?i)\b(?:photo|caption|image)\s+credit\b"
+    r"|\billustration\s*:"
+    r"|\billustration by\b"
+    r"|\bheader image\b"
+    r"|\bimage from\b"
+    r"|\bimage\s*:"
+    r"|\d(?:\.\d)?\s*-licen[cs]ed\b"
+)
 _H1 = re.compile(r"(?is)<h1\b[^>]*>(.*?)</h1>")
 _TITLE = re.compile(r"(?is)<title\b[^>]*>(.*?)</title>")
 _ATTR = re.compile(
     r"""(?is)([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+))"""
 )
-_RIGHTS_META = frozenset(
+_GOV_META = frozenset({"rights", "dc.rights", "dcterms.rights"})
+_LICENSE_META = frozenset(
     {
+        "license",
+        "licence",
+        "dc.license",
+        "dcterms.license",
         "rights",
         "dc.rights",
         "dcterms.rights",
-        "license",
-        "dc.license",
-        "dcterms.license",
     }
 )
 _PUBLICATION_DATE_KEYS = (
@@ -173,41 +200,80 @@ _DOWNLOAD_SUFFIXES = (
     ".tgz",
     ".tar",
 )
-# Longer restricted deeds are listed first. A hyphen is a word boundary, so
-# "CC BY" must not match "CC BY-NC", and a licenses/ URL must name one deed.
-_RESTRICTED_DEEDS = (
-    re.compile(r"creativecommons\.org/licenses/by-nc-sa(?:/|\b)"),
-    re.compile(r"creativecommons\.org/licenses/by-nc-nd(?:/|\b)"),
-    re.compile(r"creativecommons\.org/licenses/by-nc(?:/|\b)"),
-    re.compile(r"creativecommons\.org/licenses/by-nd(?:/|\b)"),
-    re.compile(r"\bcc[\s-]*by[\s-]*nc[\s-]*sa\b"),
-    re.compile(r"\bcc[\s-]*by[\s-]*nc[\s-]*nd\b"),
-    re.compile(r"\bcc[\s-]*by[\s-]*nc\b"),
-    re.compile(r"\bcc[\s-]*by[\s-]*nd\b"),
-    re.compile(r"attribution[\s-]+non[\s-]*commercial[\s-]+share[\s-]*alike"),
-    re.compile(r"attribution[\s-]+non[\s-]*commercial[\s-]+no[\s-]*deriv"),
-    re.compile(r"attribution[\s-]+non[\s-]*commercial\b"),
-    re.compile(r"attribution[\s-]+no[\s-]*deriv"),
+# Longer deeds are listed first. A hyphen is a word boundary, so CC BY must
+# not match CC BY-NC. licenses/by does not match licenses/by-nc. A bare
+# licenses/ path is not a deed.
+_CC_URL = re.compile(
+    r"creativecommons\.org/"
+    r"(?:licenses/(?P<license>by-nc-nd|by-nc-sa|by-nc|by-nd|by-sa|by)"
+    r"|publicdomain/(?P<pd>zero|mark))"
+    r"(?![a-z0-9-])"
 )
-_PERMISSIVE_DEEDS = (
-    re.compile(r"creativecommons\.org/publicdomain/zero(?:/|\b)"),
-    re.compile(r"creativecommons\.org/licenses/by-sa(?:/|\b)"),
-    re.compile(r"creativecommons\.org/licenses/by/(?:\d|\b)"),
-    re.compile(r"\bcc[\s-]*0\b"),
-    re.compile(r"\bcc[\s-]*zero\b"),
-    re.compile(r"creative commons(?:\s+public\s+domain)?[\s-]+zero\b"),
-    re.compile(r"\bcc[\s-]*by[\s-]*sa\b(?![\s-]*(?:nc|nd)\b)"),
-    re.compile(r"attribution[\s-]+share[\s-]*alike\b"),
-    re.compile(r"\bcc[\s-]*by\b(?![\s-]*(?:nc|nd|sa)\b)"),
-    re.compile(r"creative commons[\s-]+attribution\b(?![\s-]*(?:non|no[\s-]*deriv|share))"),
+_TEXT_CODES = (
+    ("by-nc-nd", re.compile(r"\bcc[\s-]*by[\s-]*nc[\s-]*nd\b")),
+    ("by-nc-sa", re.compile(r"\bcc[\s-]*by[\s-]*nc[\s-]*sa\b")),
+    ("by-nc", re.compile(r"\bcc[\s-]*by[\s-]*nc\b(?![\s-]*(?:sa|nd)\b)")),
+    ("by-nd", re.compile(r"\bcc[\s-]*by[\s-]*nd\b")),
+    ("by-nc", re.compile(r"\bcc[\s-]*by[\s-]*non[\s-]*commercial\b")),
+    ("by-nd", re.compile(r"\bcc[\s-]*by[\s-]*no[\s-]*deriv")),
+    ("by-sa", re.compile(r"\bcc[\s-]*by[\s-]*sa\b(?![\s-]*(?:nc|nd)\b)")),
+    (
+        "zero",
+        re.compile(
+            r"\bcc0\b|\bcc[\s-]*0\b|\bcc[\s-]*zero\b|"
+            r"\bcreative commons(?:\s+public\s+domain)?[\s-]+zero\b"
+        ),
+    ),
+    (
+        "by",
+        re.compile(
+            r"\bcc[\s-]*by\b(?![\s-]*(?:nc|nd|sa)\b)"
+            r"(?![\s-]*(?:non[\s-]*commercial\b|no[\s-]*deriv))"
+        ),
+    ),
+    (
+        "by-nc-nd",
+        re.compile(r"creative commons attribution[\s-]+non[\s-]*commercial[\s-]+no[\s-]*deriv"),
+    ),
+    (
+        "by-nc-sa",
+        re.compile(r"creative commons attribution[\s-]+non[\s-]*commercial[\s-]+share[\s-]*alike"),
+    ),
+    (
+        "by-nc",
+        re.compile(
+            r"creative commons attribution[\s-]+non[\s-]*commercial\b"
+            r"(?![\s-]*(?:share[\s-]*alike|no[\s-]*deriv))"
+        ),
+    ),
+    ("by-nd", re.compile(r"creative commons attribution[\s-]+no[\s-]*deriv")),
+    ("by-sa", re.compile(r"creative commons attribution[\s-]+share[\s-]*alike\b")),
+    (
+        "by",
+        re.compile(
+            r"creative commons attribution\b"
+            r"(?![\s-]*(?:non[\s-]*commercial\b|no[\s-]*deriv|share[\s-]*alike\b|nc\b|nd\b|sa\b))"
+        ),
+    ),
 )
-_PUBLIC_DOMAIN_MARK = (
-    re.compile(r"creativecommons\.org/publicdomain/mark(?:/|\b)"),
-    re.compile(r"public[\s-]+domain[\s-]+mark\b"),
+_PERMISSIVE = frozenset({"by", "by-sa", "zero"})
+_RESTRICTED = frozenset({"by-nc", "by-nd", "by-nc-sa", "by-nc-nd"})
+_DEED_CODES = _PERMISSIVE | _RESTRICTED
+_RESTRICTED_TOKENS = {
+    "by-nc": RIGHTS_CC_BY_NC,
+    "by-nd": RIGHTS_CC_BY_ND,
+    "by-nc-sa": RIGHTS_CC_BY_NC_SA,
+    "by-nc-nd": RIGHTS_CC_BY_NC_ND,
+}
+_MIT_PHRASE = re.compile(r"\bmit licen[cs]e\b")
+_MIT_URL = re.compile(r"(?:opensource\.org/licenses/mit|spdx\.org/licenses/mit)(?![a-z0-9-])")
+_APACHE_PHRASE = re.compile(r"\bapache-2\.0\b|\bapache licen[cs]e(?:\s*,?\s*version)?\s*2\.0\b")
+_APACHE_URL = re.compile(
+    r"(?:apache\.org/licenses/license-2\.0|spdx\.org/licenses/apache-2\.0)(?![a-z0-9-])"
 )
-_OGL = re.compile(
-    r"open government licence\b|nationalarchives\.gov\.uk/doc/open-government-licence(?:/|$)"
-)
+_MPL_PHRASE = re.compile(r"\bmpl-2\.0\b|\bmozilla public license(?:\s*,?\s*version)?\s*2\.0\b")
+_MPL_URL = re.compile(r"(?:mozilla\.org/mpl/2\.0|spdx\.org/licenses/mpl-2\.0)(?![a-z0-9-])")
+_OGL_PHRASE = re.compile(r"\bopen government licence\b")
 _GOV_WORK = re.compile(
     r"\b(?:a\s+)?works?\s+of\s+the\s+(?:united\s+states|u\.s\.|us)\s+government\b"
     r"|\b(?:united\s+states|u\.s\.|us)\s+government\s+works?\b"
@@ -315,28 +381,58 @@ def record_from_response(
 
 
 def rights_from_page(page_text: str) -> str:
-    """Return a rights label stated by the page.
+    """Return a rights label from a reuse licence the page itself states.
 
-    creative_commons means CC0, CC BY, or CC BY-SA. Longer restricted deeds
-    are checked first, so CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND
-    stay unknown, including when a permissive deed appears beside them. A
-    public-domain mark is not CC0. uk_ogl requires the Open Government
-    Licence. us_government_work requires a rights field. A public page, a
-    copyright notice, and a terms link are not licences.
+    creative_commons is CC0, CC BY-SA, or a mix of those. CC BY alone is
+    creative_commons_attribution. A sole restricted deed keeps cc_by_nc,
+    cc_by_nd, cc_by_nc_sa, or cc_by_nc_nd. Two restricted deeds, a restricted
+    deed beside a permissive one, and a software licence beside any Creative
+    Commons deed stay unknown. A generic licenses/ URL is not a deed, and
+    anchor text on that path or on a public-domain mark URL does not count.
+    A photo, caption, or image credit does not set the page licence. uk_ogl
+    is only the British phrase Open Government Licence. us_government_work
+    is only an explicit rights field. Script, style, and comment text does
+    not count.
     """
 
     if not isinstance(page_text, str):
         raise CatalogError("page text must be a string")
-    fields = _normalize_licence_text(_rights_field_text(page_text))
-    corpus = _normalize_licence_text(_rights_corpus(page_text))
-    if _states_us_government_work(fields) and not _has_restricted(fields):
-        return RIGHTS_US_GOVERNMENT_WORK
-    if _has_restricted(corpus):
+    codes, mit, apache, mpl = _licence_signals(page_text)
+    government = _states_us_government_work(page_text)
+    ogl = _states_open_government_licence(page_text)
+    restricted = codes & _RESTRICTED
+    permissive = codes & _PERMISSIVE
+    software = (mit, apache, mpl)
+    if (restricted or permissive) and any(software):
         return RIGHTS_UNKNOWN
-    if _has_permissive(corpus):
+    if sum(software) > 1:
+        return RIGHTS_UNKNOWN
+    if len(restricted) > 1 or (restricted and permissive):
+        return RIGHTS_UNKNOWN
+    if len(restricted) == 1 and (ogl or government):
+        return RIGHTS_UNKNOWN
+    if len(restricted) == 1:
+        return _RESTRICTED_TOKENS[next(iter(restricted))]
+    if mit:
+        return RIGHTS_MIT
+    if apache:
+        return RIGHTS_APACHE
+    if mpl:
+        return RIGHTS_MPL
+    if permissive and (ogl or government):
+        return RIGHTS_UNKNOWN
+    if permissive <= {"zero", "by-sa"} and permissive:
         return RIGHTS_CREATIVE_COMMONS
-    if _OGL.search(corpus):
+    if permissive == {"by"}:
+        return RIGHTS_CC_ATTRIBUTION
+    if permissive:
+        return RIGHTS_UNKNOWN
+    if ogl and government:
+        return RIGHTS_UNKNOWN
+    if ogl:
         return RIGHTS_UK_OGL
+    if government:
+        return RIGHTS_US_GOVERNMENT_WORK
     return RIGHTS_UNKNOWN
 
 
@@ -658,58 +754,154 @@ def _canonical_href(page_html: str) -> str:
     return ""
 
 
-def _rights_corpus(page_html: str) -> str:
-    parts = [_rights_field_text(page_html), _plain(_without_hidden(page_html))]
-    visible = _without_hidden(page_html)
-    for tag in _ANCHOR.findall(visible) + _LINK.findall(visible):
-        href = _attrs(tag).get("href", "")
-        if href:
-            parts.append(href)
-    return "\n".join(parts)
-
-
-def _rights_field_text(page_html: str) -> str:
-    parts: list[str] = []
-    for blob in _LDJSON.findall(page_html):
-        for raw in _LD_RIGHTS.findall(blob):
-            parts.append(raw.replace("\\/", "/"))
+def _licence_signals(page_html: str) -> tuple[set[str], bool, bool, bool]:
+    prepared = _prepare_licence_html(page_html)
+    folded = _fold(prepared)
+    codes = _cc_codes(folded)
+    mit, apache, mpl = _software_flags(folded)
     visible = _without_hidden(page_html)
     metas = _metas(visible)
-    for name in _RIGHTS_META:
-        if metas.get(name):
-            parts.append(metas[name])
-    for tag in _LINK.findall(visible):
-        attrs = _attrs(tag)
-        rel = {part.casefold() for part in attrs.get("rel", "").split()}
-        if "license" in rel and attrs.get("href"):
-            parts.append(attrs["href"])
-    for block in _RIGHTS_DD.findall(visible):
-        parts.append(_plain(block))
-    return "\n".join(parts)
+    for name in _LICENSE_META:
+        if not metas.get(name):
+            continue
+        value = _fold(metas[name])
+        kind = _cc_href_kind(metas[name])
+        if kind in _DEED_CODES:
+            codes.add(kind)
+        elif kind not in {"generic", "mark"}:
+            codes.update(_cc_codes(value))
+        mit, apache, mpl = _merge_software((mit, apache, mpl), _software_flags(value))
+    return codes, mit, apache, mpl
 
 
-def _normalize_licence_text(value: str) -> str:
-    text = unescape(value).casefold().replace("\xa0", " ").replace("\\/", "/")
+def _prepare_licence_html(page_html: str) -> str:
+    """Drop hidden text, credits, generic licence URLs, and public-domain marks."""
+
+    visible = _blank_credits(_without_hidden(page_html))
+
+    def replace_anchor(match: re.Match[str]) -> str:
+        href = _attrs(f"<a {match.group(1)}>").get("href", "")
+        kind = _cc_href_kind(href)
+        if kind in {"generic", "mark"}:
+            return " "
+        return match.group(0)
+
+    return _ANCHOR_FULL.sub(replace_anchor, visible)
+
+
+def _blank_credits(html: str) -> str:
+    """Ignore photo, caption, and image credits. They are not the page licence."""
+
+    blanked = re.sub(
+        r"(?is)<(p|figcaption|span|li|cite|figure|h6|i|em)\b[^>]*\b(?:caption|photo-credit|image-credit|wp-caption)\b[^>]*>.*?</\1>",
+        " ",
+        html,
+    )
+
+    def blank_phrase(match: re.Match[str]) -> str:
+        if _CREDIT_PHRASE.search(_plain(match.group(0))):
+            return " "
+        return match.group(0)
+
+    blanked = re.sub(
+        r"(?is)<(p|figcaption|li|cite|figure|h6|i|em)\b[^>]*>.*?</\1>",
+        blank_phrase,
+        blanked,
+    )
+    return re.sub(
+        r"(?is)\b(?:photo|caption|image)\s+credit\b[^<.]{0,300}",
+        " ",
+        blanked,
+    )
+
+
+def _cc_href_kind(href: str) -> str | None:
+    """Classify one Creative Commons URL. A bare licenses/ path is generic."""
+
+    raw = unescape(href).strip().replace("\\/", "/")
+    raw = raw.split("#", 1)[0]
+    path_part = raw.partition("?")[0].strip()
+    match = re.match(
+        r"(?i)^(?:https?:)?//(?:www\.)?creativecommons\.org(?P<path>/[^?#]*)?$",
+        path_part,
+    )
+    if match is None:
+        return None
+    parts = [part.casefold() for part in (match.group("path") or "/").split("/") if part]
+    if not parts:
+        return None
+    if parts[0] == "licenses":
+        if len(parts) == 1:
+            return "generic"
+        code = parts[1]
+        if code in _DEED_CODES:
+            return code
+        return "generic"
+    if parts[0] == "publicdomain" and len(parts) > 1:
+        if parts[1] == "zero":
+            return "zero"
+        if parts[1] == "mark":
+            return "mark"
+    return None
+
+
+def _cc_codes(folded: str) -> set[str]:
+    codes: set[str] = set()
+    for match in _CC_URL.finditer(folded):
+        license_code = match.group("license")
+        if license_code:
+            codes.add(license_code.casefold())
+            continue
+        public_domain = (match.group("pd") or "").casefold()
+        if public_domain == "zero":
+            codes.add("zero")
+        elif public_domain == "mark":
+            codes.add("mark")
+    for code, pattern in _TEXT_CODES:
+        if pattern.search(folded):
+            codes.add(code)
+    codes.discard("mark")
+    return codes
+
+
+def _software_flags(folded: str) -> tuple[bool, bool, bool]:
+    return (
+        bool(_MIT_PHRASE.search(folded) or _MIT_URL.search(folded)),
+        bool(_APACHE_PHRASE.search(folded) or _APACHE_URL.search(folded)),
+        bool(_MPL_PHRASE.search(folded) or _MPL_URL.search(folded)),
+    )
+
+
+def _merge_software(
+    left: tuple[bool, bool, bool], right: tuple[bool, bool, bool]
+) -> tuple[bool, bool, bool]:
+    return (left[0] or right[0], left[1] or right[1], left[2] or right[2])
+
+
+def _states_open_government_licence(page_html: str) -> bool:
+    prepared = _fold(_prepare_licence_html(page_html))
+    return _OGL_PHRASE.search(prepared) is not None
+
+
+def _states_us_government_work(page_html: str) -> bool:
+    visible = _without_hidden(page_html)
+    metas = _metas(visible)
+    fields = [metas[name] for name in _GOV_META if metas.get(name)]
+    fields.extend(_plain(block) for block in _RIGHTS_DD.findall(visible))
+    for field in fields:
+        text = _fold(field)
+        if _NEGATED_GOV_WORK.search(text):
+            continue
+        if _GOV_WORK.search(text):
+            return True
+    return False
+
+
+def _fold(value: str) -> str:
+    text = unescape(value).replace("\\/", "/").replace("\xa0", " ")
     for src in ("\u2010", "\u2011", "\u2012", "\u2013", "\u2014", "\u2212"):
         text = text.replace(src, "-")
-    return re.sub(r"\s+", " ", text)
-
-
-def _has_restricted(text: str) -> bool:
-    return any(pattern.search(text) for pattern in _RESTRICTED_DEEDS)
-
-
-def _has_permissive(text: str) -> bool:
-    remaining = text
-    for pattern in _PUBLIC_DOMAIN_MARK:
-        remaining = pattern.sub(" ", remaining)
-    return any(pattern.search(remaining) for pattern in _PERMISSIVE_DEEDS)
-
-
-def _states_us_government_work(text: str) -> bool:
-    if not text or _NEGATED_GOV_WORK.search(text):
-        return False
-    return _GOV_WORK.search(text) is not None
+    return re.sub(r"\s+", " ", text).casefold()
 
 
 def _normalize_date(value: str) -> str | None:

@@ -14,7 +14,15 @@ import pytest
 import pdoom_pipeline.catalogs.datasociety as datasociety
 from pdoom_pipeline.catalogs.datasociety import (
     PUBLISHER,
+    RIGHTS_APACHE,
+    RIGHTS_CC_ATTRIBUTION,
+    RIGHTS_CC_BY_NC,
+    RIGHTS_CC_BY_NC_ND,
+    RIGHTS_CC_BY_NC_SA,
+    RIGHTS_CC_BY_ND,
     RIGHTS_CREATIVE_COMMONS,
+    RIGHTS_MIT,
+    RIGHTS_MPL,
     RIGHTS_UK_OGL,
     RIGHTS_UNKNOWN,
     RIGHTS_US_GOVERNMENT_WORK,
@@ -75,28 +83,84 @@ def _page(body: str, *, title: str = "AI accountability primer", url: str = SAMP
     """
 
 
-def test_sole_nc_and_nd_deeds_stay_unknown():
+def test_sole_restricted_deeds_keep_their_own_tokens():
     notices = (
-        "<p>Licensed under CC BY-NC 4.0.</p>",
-        "<p>Licensed under CC BY-ND 4.0.</p>",
-        "<p>Licensed under CC BY-NC-SA 4.0.</p>",
-        "<p>Licensed under CC BY-NC-ND 4.0.</p>",
-        '<a href="https://creativecommons.org/licenses/by-nc/4.0/">Attribution-NonCommercial</a>',
-        '<a href="https://creativecommons.org/licenses/by-nd/4.0/">Attribution-NoDerivatives</a>',
-        '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA</a>',
-        '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND</a>',
-        "<p>Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license.</p>",
-        "<p>Creative Commons Attribution-NoDerivatives 4.0.</p>",
+        ("<p>Licensed under CC BY-NC 4.0.</p>", RIGHTS_CC_BY_NC),
+        ("<p>Licensed under CC BY-ND 4.0.</p>", RIGHTS_CC_BY_ND),
+        ("<p>Licensed under CC BY-NC-SA 4.0.</p>", RIGHTS_CC_BY_NC_SA),
+        ("<p>Licensed under CC BY-NC-ND 4.0.</p>", RIGHTS_CC_BY_NC_ND),
+        ('<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>', RIGHTS_CC_BY_NC),
+        ('<a href="https://creativecommons.org/licenses/by-nd/4.0/">CC BY-ND</a>', RIGHTS_CC_BY_ND),
+        (
+            '<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA</a>',
+            RIGHTS_CC_BY_NC_SA,
+        ),
+        (
+            '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/">CC BY-NC-ND</a>',
+            RIGHTS_CC_BY_NC_ND,
+        ),
+        (
+            "<p>Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license.</p>",
+            RIGHTS_CC_BY_NC_SA,
+        ),
+        ("<p>Creative Commons Attribution-NoDerivatives 4.0.</p>", RIGHTS_CC_BY_ND),
     )
-    for notice in notices:
-        assert rights_from_page(notice) == RIGHTS_UNKNOWN
+    for notice, expected in notices:
+        assert rights_from_page(notice) == expected
+        assert rights_from_page(notice) != RIGHTS_CREATIVE_COMMONS
+        assert rights_from_page(notice) != RIGHTS_CC_ATTRIBUTION
+        assert "-" not in expected
+
+
+def test_cc_by_alone_is_creative_commons_attribution():
+    assert rights_from_page("<p>CC BY</p>") == RIGHTS_CC_ATTRIBUTION
+    assert rights_from_page("<p>CC BY 4.0</p>") == RIGHTS_CC_ATTRIBUTION
+    page = '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
+    assert rights_from_page(page) == RIGHTS_CC_ATTRIBUTION
+    attribution = "<p>Licensed under a Creative Commons Attribution 4.0 International License.</p>"
+    assert rights_from_page(attribution) == RIGHTS_CC_ATTRIBUTION
+    assert rights_from_page("<p>Licensed under CC BY-SA 4.0.</p>") == RIGHTS_CREATIVE_COMMONS
+    assert rights_from_page("<p>This work is licensed under CC0.</p>") == RIGHTS_CREATIVE_COMMONS
+    mixed = "<p>Licensed under CC0 and CC BY-SA 4.0.</p>"
+    assert rights_from_page(mixed) == RIGHTS_CREATIVE_COMMONS
+    by_and_zero = "<p>Licensed under CC BY 4.0 and CC0.</p>"
+    assert rights_from_page(by_and_zero) == RIGHTS_UNKNOWN
+
+
+def test_a_generic_licenses_url_is_not_a_deed():
+    texts = ("CC BY", "CC BY 4.0", "CC BY-SA")
+    hrefs = (
+        "https://creativecommons.org/licenses/",
+        "https://creativecommons.org/licenses",
+        "http://creativecommons.org/licenses/",
+        "http://creativecommons.org/licenses",
+        "https://www.creativecommons.org/licenses/",
+        "http://www.creativecommons.org/licenses/",
+        "https://creativecommons.org/licenses/?lang=en",
+        "https://creativecommons.org/licenses?lang=en",
+    )
+    for href in hrefs:
+        for text in texts:
+            page = f'<a href="{href}">{text}</a>'
+            assert rights_from_page(page) == RIGHTS_UNKNOWN
+    specific = '<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>'
+    assert rights_from_page(specific) == RIGHTS_CREATIVE_COMMONS
+
+
+def test_anchor_text_on_a_public_domain_mark_stays_unknown():
+    by_mark = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC BY</a>'
+    zero_mark = '<a href="https://creativecommons.org/publicdomain/mark/1.0/">CC0</a>'
+    assert rights_from_page(by_mark) == RIGHTS_UNKNOWN
+    assert rights_from_page(zero_mark) == RIGHTS_UNKNOWN
+    words = "<p>This work is identified with the Public Domain Mark.</p>"
+    assert rights_from_page(words) == RIGHTS_UNKNOWN
+    zero = '<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>'
+    assert rights_from_page(zero) == RIGHTS_CREATIVE_COMMONS
 
 
 def test_anchor_text_cc_by_on_a_by_nc_url_stays_unknown():
     page = '<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY</a>'
     assert rights_from_page(page) == RIGHTS_UNKNOWN
-    bare = '<a href="https://creativecommons.org/licenses/">licence</a>'
-    assert rights_from_page(bare) == RIGHTS_UNKNOWN
     named = '<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.en">CC BY</a>'
     assert rights_from_page(named) == RIGHTS_UNKNOWN
 
@@ -111,23 +175,64 @@ def test_mixed_permissive_and_restricted_stays_unknown():
     assert rights_from_page(beside) == RIGHTS_UNKNOWN
     share = "<p>CC BY-SA together with CC BY-NC-SA.</p>"
     assert rights_from_page(share) == RIGHTS_UNKNOWN
+    two_restricted = "<p>Licensed under CC BY-NC 4.0 and CC BY-ND 4.0.</p>"
+    assert rights_from_page(two_restricted) == RIGHTS_UNKNOWN
 
 
-def test_a_public_domain_mark_is_not_cc0():
-    mark = (
-        '<a href="https://creativecommons.org/publicdomain/mark/1.0/">Public Domain Mark 1.0</a>'
+def test_software_licences_and_credits():
+    assert rights_from_page("<p>MIT License</p>") == RIGHTS_MIT
+    assert rights_from_page("<p>Apache License, Version 2.0</p>") == RIGHTS_APACHE
+    assert rights_from_page("<p>Mozilla Public License 2.0</p>") == RIGHTS_MPL
+    assert rights_from_page("<p>MIT</p>") == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>MIT License and CC BY 4.0.</p>") == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>Apache License, Version 2.0 and CC BY-NC-SA 4.0.</p>") == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>MIT License and Apache License, Version 2.0.</p>") == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>Photo credit: Ada Lovelace / CC BY 4.0</p>") == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>Image credit: diagram, CC0.</p>") == RIGHTS_UNKNOWN
+    assert rights_from_page("<figcaption>Caption credit: CC BY-SA 4.0.</figcaption>") == RIGHTS_UNKNOWN
+    page_licence = (
+        "<p>Image credit: Jane Doe, CC BY 4.0.</p>"
+        "<p>Unless otherwise noted, this site and its contents are licensed under a "
+        "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license.</p>"
     )
-    assert rights_from_page(mark) == RIGHTS_UNKNOWN
-    words = "<p>This work is identified with the Public Domain Mark.</p>"
-    assert rights_from_page(words) == RIGHTS_UNKNOWN
-    zero = '<a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>'
-    assert rights_from_page(zero) == RIGHTS_CREATIVE_COMMONS
-    by = '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a>'
-    assert rights_from_page(by) == RIGHTS_CREATIVE_COMMONS
-    by_sa = "<p>Licensed under CC BY-SA 4.0.</p>"
-    assert rights_from_page(by_sa) == RIGHTS_CREATIVE_COMMONS
-    attribution = "<p>Licensed under a Creative Commons Attribution 4.0 International License.</p>"
-    assert rights_from_page(attribution) == RIGHTS_CREATIVE_COMMONS
+    assert rights_from_page(page_licence) == RIGHTS_CC_BY_NC_SA
+    caption = (
+        '<p class="wp-caption-text">Jamillah Knowles / '
+        '<a href="https://creativecommons.org/licenses/by/4.0/">CC BY</a></p>'
+        "<p>Licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license.</p>"
+    )
+    assert rights_from_page(caption) == RIGHTS_CC_BY_NC_SA
+    assert rights_from_page(
+        '<p class="wp-caption-text">https://creativecommons.org/licenses/by/4.0/</p>'
+    ) == RIGHTS_UNKNOWN
+    illustration = (
+        "<p><i>Illustration: Jamillah Knowles / https://creativecommons.org/licenses/by/4.0/</i></p>"
+        "<p>Licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license.</p>"
+    )
+    assert rights_from_page(illustration) == RIGHTS_CC_BY_NC_SA
+    header_image = (
+        '<h6>Header image: <a href="https://creativecommons.org/licenses/by-nc/2.0/">CC BY 2.0</a>-licensed photo</h6>'
+        "<p>Licensed under CC BY-NC-SA 4.0.</p>"
+    )
+    assert rights_from_page(header_image) == RIGHTS_CC_BY_NC_SA
+    image_from = (
+        '<p><a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a> image from Pixabay.</p>'
+        "<p>Licensed under CC BY-NC-SA 4.0.</p>"
+    )
+    assert rights_from_page(image_from) == RIGHTS_CC_BY_NC_SA
+    assert rights_from_page("<p>Illustration: Ada Lovelace / CC BY 4.0</p>") == RIGHTS_UNKNOWN
+    image_line = (
+        "<p><i>Image: Jamillah Knowles / https://creativecommons.org/licenses/by/4.0/</i></p>"
+        "<p>Licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license.</p>"
+    )
+    assert rights_from_page(image_line) == RIGHTS_CC_BY_NC_SA
+    assert rights_from_page("<p>Image: Ada Lovelace / CC BY 4.0</p>") == RIGHTS_UNKNOWN
+    illustration_by = (
+        "<p><em>Illustration by Jamillah Knowles, edited from the original. "
+        "https://creativecommons.org/licenses/by/4.0/</em></p>"
+        "<p>Licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International license.</p>"
+    )
+    assert rights_from_page(illustration_by) == RIGHTS_CC_BY_NC_SA
 
 
 def test_public_pages_copyright_and_terms_are_not_licences():
@@ -137,6 +242,8 @@ def test_public_pages_copyright_and_terms_are_not_licences():
     american = "<p>Licensed under the Open Government License v3.0.</p>"
     hidden = (
         "<script>var license = 'https://creativecommons.org/licenses/by/4.0/';</script>"
+        "<style>CC BY-SA 4.0</style>"
+        "<!-- MIT License -->"
         "<p>All rights reserved.</p>"
     )
     assert rights_from_page(public) == RIGHTS_UNKNOWN
@@ -230,7 +337,7 @@ def test_page_record_keeps_metadata_and_not_the_body_or_a_probability():
         "publisher": PUBLISHER,
         "canonical_url": SAMPLE_URL,
         "date": "2018-04-18",
-        "rights": RIGHTS_UNKNOWN,
+        "rights": RIGHTS_CC_BY_NC_SA,
     }
     stored = json.dumps(record)
     assert "p(doom)" not in stored.casefold()
@@ -290,13 +397,16 @@ def test_catalog_file_stores_no_body_or_probability_and_runner_wired_is_false():
     for entry in document["entries"]:
         assert set(entry) == {"title", "publisher", "canonical_url", "date", "rights"}
         assert entry["publisher"] == PUBLISHER
-        assert entry["rights"] == RIGHTS_UNKNOWN
+        assert entry["rights"] == RIGHTS_CC_BY_NC_SA
         assert entry["date"] == UNKNOWN_DATE or len(entry["date"]) == 10
         assert official_datasociety_host(entry["canonical_url"].split("/")[2])
         assert not entry["canonical_url"].lower().endswith(".pdf")
         urls.append(entry["canonical_url"])
     for url in REQUIRED_URLS:
         assert url in urls
+    assert len(urls) == 192
+    assert document["description"].count("cc_by_nc_sa") == 1
+    assert "creative_commons_attribution" in document["description"]
     assert "Just a moment" not in raw
     validate_catalog(document)
 
@@ -364,13 +474,22 @@ def test_validator_rejects_body_storage_bad_rights_and_a_wired_runner(tmp_path: 
         validate_catalog(quote)
 
     bad_rights = copy.deepcopy(document)
-    bad_rights["entries"][0]["rights"] = "cc_by_nc_sa"
+    bad_rights["entries"][0]["rights"] = "cc-by-nc"
     with pytest.raises(CatalogError):
         validate_catalog(bad_rights)
 
     creative = copy.deepcopy(document)
     creative["entries"][0]["rights"] = RIGHTS_CREATIVE_COMMONS
     validate_catalog(creative)
+    attribution = copy.deepcopy(document)
+    attribution["entries"][0]["rights"] = RIGHTS_CC_ATTRIBUTION
+    validate_catalog(attribution)
+    noncommercial = copy.deepcopy(document)
+    noncommercial["entries"][0]["rights"] = RIGHTS_CC_BY_NC_SA
+    validate_catalog(noncommercial)
+    apache = copy.deepcopy(document)
+    apache["entries"][0]["rights"] = RIGHTS_APACHE
+    validate_catalog(apache)
     government = copy.deepcopy(document)
     government["entries"][0]["rights"] = RIGHTS_US_GOVERNMENT_WORK
     validate_catalog(government)
