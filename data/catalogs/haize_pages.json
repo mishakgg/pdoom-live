@@ -1,0 +1,6 @@
+{
+  "catalog_id": "haize_pages",
+  "description": "Metadata for public Haize Labs research and blog pages on haizelabs.com. A row is stored only when one bounded GET returns on-host HTML that robots.txt allows. The host returned a Cloudflare block, so this catalog is empty and the blocked page is not stored. robots.txt allows /. Login pages and off-host redirects are omitted. Rows store a title, publisher, canonical URL, date, and rights label. Page text is not stored. A missing date stays unknown. Updated, modified, and copyright years are not publication dates. creative_commons_attribution means only CC BY. creative_commons means CC0, CC BY-SA, or a permissive mix of those. Restricted deeds keep their own tokens. This catalog is not a belief collector and runner_wired stays false.",
+  "runner_wired": false,
+  "entries": []
+}
