@@ -1,0 +1,287 @@
+{
+  "catalog_id": "palisade_pages",
+  "description": "Metadata for confirmed public HTML pages on palisaderesearch.org. Each stored URL was confirmed with one bounded GET. www.palisaderesearch.org returned HTTP 522 and is omitted. Cloudflare, sg-captcha, HTTP 202, Akamai 403, robots disallows, off-host redirects, and non-HTML responses are not stored. Rows store a title, publisher, canonical URL, date, and rights. No abstracts or PDFs are stored. A missing date is unknown. Updated, modified, copyright years, and the site publish clock are not publication dates. Rights stay unknown unless the page states a reuse licence. creative_commons means CC0, CC BY, or CC BY-SA. creative_commons_attribution means CC BY without NC, ND, or SA. Restricted deeds are not folded into those labels. runner_wired is false. This catalog is not a belief collector.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Badllama: cheaply removing safety fine-tuning from Llama 2-Chat 13B",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research/badllama",
+      "date": "2023-10-31",
+      "rights": "unknown"
+    },
+    {
+      "title": "Unelicitable backdoors in language models via cryptographic transformer circuits",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research/unelicitable-backdoors",
+      "date": "2024-06-03",
+      "rights": "unknown"
+    },
+    {
+      "title": "Badllama 3: removing safety finetuning from Llama 3 in minutes",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research/badllama-3",
+      "date": "2024-07-01",
+      "rights": "unknown"
+    },
+    {
+      "title": "Automated deception is here",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/blog/automated-deception-is-here",
+      "date": "2024-07-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Introducing FoxVox",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/blog/foxvox",
+      "date": "2024-07-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Palisade’s response to the Department of Commerce’s proposed AI reporting requirements",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/blog/response-to-doc-proposed-ai-reporting",
+      "date": "2024-10-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "LLM Honeypot: an early warning system for autonomous hacking",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research/llm-honeypot",
+      "date": "2024-10-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "BadGPT-4o: stripping safety finetuning from GPT models",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research/badgpt-4o",
+      "date": "2024-12-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Hacking CTFs with plain agents",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research/intercode-ctf",
+      "date": "2025-01-17",
+      "rights": "unknown"
+    },
+    {
+      "title": "Biollama: testing biology pre-training risks",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research/biollama",
+      "date": "2025-02-10",
+      "rights": "unknown"
+    },
+    {
+      "title": "Demonstrating specification gaming in reasoning models",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research/specification-gaming",
+      "date": "2025-02-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Evaluating AI cyber capabilities with crowdsourced elicitation",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research/cyber-crowdsourced-elicitation",
+      "date": "2025-05-26",
+      "rights": "unknown"
+    },
+    {
+      "title": "Shutdown resistance in reasoning models",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research/shutdown-resistance",
+      "date": "2025-07-05",
+      "rights": "unknown"
+    },
+    {
+      "title": "Hacking Cable: AI in post-exploitation operations",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/blog/hacking-cable",
+      "date": "2025-09-04",
+      "rights": "unknown"
+    },
+    {
+      "title": "End-to-end hacking with AI agents",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research/end-to-end-hacking",
+      "date": "2025-09-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Misalignment Bounty: crowdsourcing AI agent misbehavior",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research/misalignment-bounty",
+      "date": "2025-10-22",
+      "rights": "unknown"
+    },
+    {
+      "title": "GPT-5 at CTFs: case studies from top cybersecurity events",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research/gpt5-at-ctfs",
+      "date": "2025-11-20",
+      "rights": "unknown"
+    },
+    {
+      "title": "Help keep AI under human control: 2026 fundraiser",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/blog/ai-control-palisade-2026",
+      "date": "2025-12-18",
+      "rights": "unknown"
+    },
+    {
+      "title": "Technical Report: Shutdown Resistance in Large Language Models, on robots!",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research/shutdown-resistance-on-robots",
+      "date": "2026-02-12",
+      "rights": "unknown"
+    },
+    {
+      "title": "Palisade is on YouTube",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/blog/announcing-our-new-youtube-channel",
+      "date": "2026-02-19",
+      "rights": "unknown"
+    },
+    {
+      "title": "Language Models Can Autonomously Hack and Self-Replicate",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research/self-replication",
+      "date": "2026-05-07",
+      "rights": "unknown"
+    },
+    {
+      "title": "The risk of humans losing control: Jeffrey Ladish on Four Corners",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/blog/four-corners-loss-of-control",
+      "date": "2026-07-06",
+      "rights": "unknown"
+    },
+    {
+      "title": "Palisade Podcast episode “AI Hacking Incidents with Tim Hua of Transluce”",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/blog/palisade-podcast-tim-hua",
+      "date": "2026-08-11",
+      "rights": "unknown"
+    },
+    {
+      "title": "Palisade Podcast episode “Daniel Kokotajlo on AI 2040 and Plan A”",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/blog/palisade-podcast-daniel-kokotajlo",
+      "date": "2026-08-25",
+      "rights": "unknown"
+    },
+    {
+      "title": "Palisade Podcast episode “How to Actually Influence AI Policy (No Law Degree Required) — with Matthew Lipka”",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/blog/palisade-podcast-matthew-lipka",
+      "date": "2026-09-08",
+      "rights": "unknown"
+    },
+    {
+      "title": "Home",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "About",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/about/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Blog",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/blog",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Contact",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/contact/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Donate",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/donate/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "FoxVox: one click to alter reality",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/foxvox",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "frominside.ai",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/from-inside-ai",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learn about AI (and earn $40)",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/in-person-briefing",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Learn about AI (and earn $40)",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/in-person-law-student-briefing",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Podcast",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/podcast",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Privacy Policy",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/privacy-policy/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Research",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/research",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sign up for a briefing video call with Palisade Research",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/state-policymaker-briefings",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Terms and Conditions",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/terms/",
+      "date": "unknown",
+      "rights": "unknown"
+    },
+    {
+      "title": "Sign up for a briefing video call with Palisade Research",
+      "publisher": "Palisade Research",
+      "canonical_url": "https://palisaderesearch.org/virtual-briefing",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}

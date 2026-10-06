@@ -1,0 +1,14 @@
+{
+  "catalog_id": "gpi_pages",
+  "description": "Metadata for public Global Priorities Institute pages on globalprioritiesinstitute.org. Each canonical URL was confirmed with one bounded GET that returned HTML. The catalog stores the title, publisher, canonical URL, date, and rights. Page bodies and PDFs are not stored. A missing date is unknown. Rights stay unknown unless the page states a reuse licence that allows copying. A public page is not a licence. runner_wired is false.",
+  "runner_wired": false,
+  "entries": [
+    {
+      "title": "Global Priorities Institute",
+      "publisher": "Global Priorities Institute",
+      "canonical_url": "https://www.globalprioritiesinstitute.org/",
+      "date": "unknown",
+      "rights": "unknown"
+    }
+  ]
+}
