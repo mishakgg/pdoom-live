@@ -1,0 +1,9 @@
+{
+  "record_kind": "pdoom-live-coordination-manifest",
+  "record_version": 1,
+  "review_id": "2026-10-06T040000Z",
+  "candidate_state": "merged_to_main",
+  "reason": "Merged pull requests 258 through 263. Draft 250 stays open because the runtime image check failed. Drafts 264 through 273 record Microsoft Research, the Center for Strategic and International Studies, Human Rights Watch, Freedom House, the Stimson Center, the Wilson Center, the Wallenberg AI, Autonomous Systems and Software Program, New America, the Berkeley Center for Long-Term Cybersecurity, and Carnegie Mellon AI.",
+  "follow_up_prs": [168, 250, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273],
+  "origin_main_sha": "d0065c450fa07ec0ce1f241aa6f9822c9c825cdc"
+}
