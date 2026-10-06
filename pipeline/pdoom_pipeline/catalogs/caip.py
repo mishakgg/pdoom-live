@@ -10,8 +10,8 @@ from a page on those hosts, so they are not stored.
 Rights stay unknown unless the page states a reuse licence.
 ``creative_commons`` means only a stated CC0, CC BY, or CC BY-SA deed.
 CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND are their own tokens and are
-never folded into ``creative_commons``. A restricted deed wins when a
-permissive deed is also stated. A hyphen is a word boundary, so CC BY does
+never folded into ``creative_commons``. A page that states both a restricted
+deed and a permissive deed stays unknown. A hyphen is a word boundary, so CC BY does
 not match CC BY-NC, and licenses/by does not match licenses/by-nc. A generic
 creativecommons.org/licenses/ URL is not a permissive deed. The Public
 Domain Mark is not CC0. ``uk_ogl`` is used only when the page text states the
@@ -487,15 +487,17 @@ def record_from_response(
 def rights_from_page(page_text: str) -> str:
     """Return a rights label from a reuse licence the page itself states.
 
-    ``creative_commons`` means CC0, CC BY, or CC BY-SA only. CC BY-NC,
-    CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay their own tokens. A restricted
-    deed wins when a permissive deed is also present. A hyphen continues the
-    token, so CC BY does not match CC BY-NC and licenses/by does not match
-    licenses/by-nc. The Public Domain Mark is not CC0. ``uk_ogl`` requires the
-    British phrase in the page text. ``us_government_work`` requires a rights
-    field. ``mit``, ``apache-2.0``, and ``mpl-2.0`` are not folded into
-    ``creative_commons``. A copyright notice, All rights reserved, a terms
-    link, and a .org host are not licences.
+    ``creative_commons`` means CC0, CC BY, or CC BY-SA only. A sole CC BY-NC,
+    CC BY-ND, CC BY-NC-SA, or CC BY-NC-ND deed stays its own token. A page that
+    also states CC BY, CC BY-SA, CC0, MIT, or Apache-2.0 stays unknown, including
+    a CC BY or CC BY-SA anchor whose href is a restricted or Public Domain Mark
+    URL. A CC0 anchor on a publicdomain/mark URL stays unknown. A hyphen
+    continues the token, so CC BY does not match CC BY-NC and licenses/by does
+    not match licenses/by-nc. The Public Domain Mark is not CC0. ``uk_ogl``
+    requires the British phrase in the page text. ``us_government_work``
+    requires a rights field. ``mit``, ``apache-2.0``, and ``mpl-2.0`` are not
+    folded into ``creative_commons``. A copyright notice, All rights reserved,
+    a terms link, and a .org host are not licences.
     """
 
     if not isinstance(page_text, str):
@@ -508,11 +510,15 @@ def rights_from_page(page_text: str) -> str:
     codes: set[str] = set()
     for blob in blobs:
         codes.update(_cc_codes(blob))
-    for code in ("by-nc-nd", "by-nc-sa", "by-nc", "by-nd"):
-        if code in codes:
-            return _RESTRICTED_CC[code]
+    joined = "\n".join(blobs)
+    restricted = [code for code in ("by-nc-nd", "by-nc-sa", "by-nc", "by-nd") if code in codes]
+    permissive_also = bool(codes & _PERMISSIVE_CC) or _states_mit(joined) or _states_apache(joined)
+    if restricted and permissive_also:
+        return RIGHTS_UNKNOWN
     if "mark" in codes:
         return RIGHTS_UNKNOWN
+    if restricted:
+        return _RESTRICTED_CC[restricted[0]]
     named: set[str] = set()
     if codes & _PERMISSIVE_CC:
         named.add(RIGHTS_CREATIVE_COMMONS)
@@ -520,7 +526,6 @@ def rights_from_page(page_text: str) -> str:
         named.add(RIGHTS_UK_OGL)
     if _rights_field_says_us_government_work(page_text):
         named.add(RIGHTS_US_GOVERNMENT_WORK)
-    joined = "\n".join(blobs)
     if _states_mit(joined):
         named.add(RIGHTS_MIT)
     if _states_apache(joined):
