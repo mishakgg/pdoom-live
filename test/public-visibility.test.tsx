@@ -69,7 +69,7 @@ describe("website publication boundary", () => {
     const mismatches = ["rejected-source", "unreviewed-source", "public-item"].map((state) => `visibility-cross-${state}`);
     // Canonical import currently permits independent item and evidence references.
     expect(validateDocument(fixture).statements.filter((row) => mismatches.includes(row.slug))).toHaveLength(3);
-    const listed = await listStatements({ limit: 50 }, pool);
+    const listed = await listStatements({ sort: "event_time_desc", limit: 50 }, pool);
     const bundle = await loadPublicExport(asOf, pool);
     const inputs = await loadTrendInputs(pool);
     const paths = (await listSitemapRecords(pool, { offset: 0, limit: 500 })).map((row) => row.path);
@@ -114,7 +114,7 @@ describe("website publication boundary", () => {
       expect(source.status).toBe(404);
       expect(item.status).toBe(404);
     }
-    const response = await sourcesApi(new Request("http://localhost/api/sources"));
+    const response = await sourcesApi(new Request("http://localhost/api/sources"), {});
     expect((await response.json()).data.map((row: { slug: string }) => row.slug)).toEqual(sources.map((row) => row.slug));
     const source = await getSource("visibility-source-human-verified", pool);
     expect(source?.items).toHaveLength(source!.item_count);
@@ -167,7 +167,7 @@ describe("website publication boundary", () => {
     for (const state of REVIEW_STATES) {
       const organization = `visibility-org-${suffix(state)}`;
       const matches = await listPeople({ organization, limit: 50 }, pool);
-      const statements = await listStatements({ organization, limit: 50 }, pool);
+      const statements = await listStatements({ sort: "event_time_desc", organization, limit: 50 }, pool);
       expect(matches.page.total).toBe(publicStates.includes(state) ? 1 : 0);
       expect(statements.page.total).toBe(publicStates.includes(state) ? person!.statement_total : 0);
       expect(matches.page.total).toBe(matches.data.length);
@@ -183,7 +183,7 @@ describe("website publication boundary", () => {
   });
 
   it("filters forecasts independently, relationship states and both endpoints on application reads", async () => {
-    const listed = await listStatements({ person: "visibility-person", limit: 50 }, pool);
+    const listed = await listStatements({ sort: "event_time_desc", person: "visibility-person", limit: 50 }, pool);
     for (const state of REVIEW_STATES) {
       const slug = `visibility-forecast-${suffix(state)}`;
       const detail = await getStatement(slug, pool);
@@ -346,6 +346,7 @@ describe("website publication boundary", () => {
     expect(await getSource(staged.source_slug, pool)).toBeNull();
     expect(await getSourceItem(staged.item_slug, pool)).toBeNull();
     await applyReviewDecision(pool, {
+      decision_key: null,
       statement_slug: staged.slug, decision: "approve", reviewer: "visibility-fixture", reviewed_at: asOf,
       note: null, rejection_reason: null, confirmations: emptyConfirmations(false), corrections: {}, relationship: null,
       source_content_hash: null, evidence_hash: null, content_version: null,
@@ -358,7 +359,7 @@ describe("website publication boundary", () => {
     expect((await getStatement(staged.slug, pool))?.review_state).toBe("needs_review");
     expect((await getStatementDiscovery(staged.slug, pool))?.indexable).toBe(false);
     expect((await getSourceItemDiscovery(staged.item_slug, pool))?.indexable).toBe(false);
-    expect((await listStatements({ review_state: "needs_review", limit: 50 }, pool)).data.some((row) => row.slug === staged.slug)).toBe(true);
+    expect((await listStatements({ sort: "event_time_desc", review_state: "needs_review", limit: 50 }, pool)).data.some((row) => row.slug === staged.slug)).toBe(true);
     expect((await loadPublicExport(asOf, pool)).statements.some((row) => row.slug === staged.slug)).toBe(false);
   });
 
@@ -366,6 +367,7 @@ describe("website publication boundary", () => {
     const before = await getOverview(pool);
     const slug = "visibility-machine-validated";
     await applyReviewDecision(pool, {
+      decision_key: null,
       statement_slug: slug, decision: "reject", reviewer: "visibility-fixture", reviewed_at: asOf,
       note: null, rejection_reason: "extraction_error", confirmations: emptyConfirmations(false), corrections: {}, relationship: null,
       source_content_hash: null, evidence_hash: null, content_version: null,
@@ -378,9 +380,10 @@ describe("website publication boundary", () => {
     expect(after.dataset.source_item_count).toBe(before.dataset.source_item_count - 1);
     expect(after.revisions).toHaveLength(0);
     const person = await getPerson("visibility-person", pool);
-    const listed = await listStatements({ person: "visibility-person", limit: 50 }, pool);
+    const listed = await listStatements({ sort: "event_time_desc", person: "visibility-person", limit: 50 }, pool);
     expect(person?.statement_total).toBe(listed.page.total);
-    expect((await getTopic("ai-extinction", pool))?.statement_total).toBe(listed.page.total);
+    const topicStatements = await listStatements({ sort: "event_time_desc", topic: "ai-extinction", limit: 50 }, pool);
+    expect((await getTopic("ai-extinction", pool))?.statement_total).toBe(topicStatements.page.total);
     expect((await loadPublicExport(asOf, pool)).statements.some((row) => row.slug === slug)).toBe(false);
   });
 });

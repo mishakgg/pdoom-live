@@ -22,7 +22,7 @@ import {
 } from "@pdoom/contracts";
 import type pg from "pg";
 import { effectiveReviewStateSql } from "./coverage";
-import { websiteSourceItemSql, websiteStatementSql } from "./website-visibility";
+import { websiteStatementSql } from "./website-visibility";
 import { getPool } from "./pool";
 import { InvalidCursorError } from "./queries";
 import { isPool, isStatementTimeout, withConsistentRead } from "./read-snapshot";
@@ -602,7 +602,7 @@ function sourceItemsSql(prepared: ReturnType<typeof prepareSearchText>, parsed: 
       FROM source_items si
       CROSS JOIN q
       JOIN sources src ON src.id = si.source_id
-      WHERE si.is_current AND ${websiteSourceItemSql()}
+      WHERE si.is_current
         AND (${from}::timestamptz IS NULL OR si.published_at >= ${from}::timestamptz)
         AND (${to}::timestamptz IS NULL OR si.published_at <= ${to}::timestamptz)
         AND (${person}::text IS NULL OR EXISTS (
@@ -619,10 +619,24 @@ function sourceItemsSql(prepared: ReturnType<typeof prepareSearchText>, parsed: 
             AND src.review_state = ANY(q.public_states)
         ))
     ),
-    matched AS (
+    -- Match titles first so expensive publication checks run only on candidate items.
+    text_matches AS MATERIALIZED (
       SELECT scored.*, ${matchFromRank("scored.hit_rank")} AS hit_match
       FROM scored
       WHERE scored.hit_rank > 0
+    ),
+    candidate_statements AS MATERIALIZED (
+      SELECT candidate_s.* FROM statements candidate_s
+      JOIN text_matches ON text_matches.id = candidate_s.source_item_id
+    ),
+    public_items AS MATERIALIZED (
+      SELECT DISTINCT candidate_s.source_item_id
+      FROM candidate_statements candidate_s
+      WHERE ${websiteStatementSql("candidate_s")}
+    ),
+    matched AS (
+      SELECT text_matches.* FROM text_matches
+      JOIN public_items ON public_items.source_item_id = text_matches.id
     )
     ${mode === "count"
       ? "SELECT count(*)::int AS total_count FROM matched"
