@@ -133,3 +133,19 @@ A 304 is successful only with retained validated bytes that parse successfully, 
 The storage supervisor holds its exclusive lease and adapts this hook to `BoundedScratch.atomic_bytes` beneath the fixed F: collection root. Its temporary bytes, caches, logs and lock also belong inside that counted root. The default local writer preserves ordinary standalone refresh behavior and has no 25 GB guarantee. Never release a Windows collection pilot through the default writer. All remote uploads require size/checksum readback and a verified private manifest before tracked local cleanup.
 
 A once-only metadata/staging pilot may proceed only after the combined gateway, source pins, quota and private Drive verification pass and the coordinator authorizes release. Use the exact eight reviewed feed descriptors, `leads=[]`, `include_belief=False`, `max_sources=8`, and explicit evidence/extraction false in their policy copies. No current source admits a full raw-response archive. T11–T14 remain required before publishing semantic claims or aggregates: attribution from author/guest metadata, numeric definitions/conditionality/horizons, duplicate/version normalization, and extraction/review eligibility need independent validation. Candidate collection is not evidence of a person's belief or population consensus. No schedule or public import is enabled by these guards.
+
+### Per-source provenance retention
+
+Adapter observation versions retain source-specific provenance observations,
+including authors and millisecond evidence locators. A source observed through two
+admitted feeds remains available when only one feed is revoked. Narrower evidence
+permission removes excerpt bytes from all provenance revisions belonging to that
+source. Scoped RSS GUIDs and recoverable URL aliases are restored on reload before
+collection resumes.
+
+A provenance-only correction is counted as `changed`, but keeps its source-content
+hash and public `content_version`; it increments a separate internal provenance
+revision. Public publication must still pass the accepted-claim coverage gate for
+changed author/participant/evidence locators. No prior approval is granted merely
+because the source text digest matches. The store migration itself neither
+publishes changes nor retracts existing database records.

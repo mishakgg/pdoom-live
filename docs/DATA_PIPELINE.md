@@ -121,3 +121,51 @@ PYTHONPATH=pipeline python -m pdoom_pipeline.observability check --snapshot snap
 ```
 
 That command reports failures. It does not rewrite the observation store.
+
+### Observation identity and provenance revisions
+
+The retained observation store scopes RSS upstream GUIDs by the admitted source
+identity. A feed-local GUID such as `1` cannot merge unrelated feeds. Platform-wide
+arXiv, GitHub and OpenAlex identifiers keep their existing namespace. Clean legacy
+store files are read without changing their content hashes, content versions or
+public source-item slugs; recoverable RSS aliases acquire their source scope from
+retained observations. Source URL aliases survive save/reload.
+
+A content version may have several independently retained source observations.
+Their internal `provenance_observations` history preserves source identity, author
+candidates, collector metadata and evidence locators, including start/end
+milliseconds. An author or locator correction appends a provenance revision even
+when the content digest is unchanged. Exact replay reuses its revision. The
+content digest and public `content_version` retain their existing meaning; these
+internal provenance revisions do not manufacture a new content hash, author
+identity, confidence level or public historical source-item row.
+
+The top-level fields of a retained version project its selected provenance
+observation for the existing exporter. Admission revocation removes observations
+for that source while keeping independently admitted co-observations. Evidence
+permission changes scrub every retained provenance revision for that source, not
+only the selected projection. Previously published database records still need
+the separate reviewed revocation workflow described in `REFRESH.md`.
+
+Public approval is separate: changing a projected author, participant or evidence
+locator must be evaluated by the accepted-claim coverage gate, with unmatched
+provenance downgraded for review. A byte hash match alone is not approval. This
+store change preserves an internal provenance history; it does not implement
+immutable public provenance-revision history or repair already published records.
+
+A legacy RSS record containing different-source observations under different
+canonical URLs may already have been merged by an unscoped GUID. Loading such a
+record fails with `legacy RSS identity reconciliation required`, its logical-key
+SHA-256 prefix and safe source identifiers. The saved file is not rewritten.
+Keep that file and any matching database/export backup for operator review; do
+not delete state and reingest as version 1. Reconcile the source items and any
+published references explicitly before retrying. Legitimate co-observations with
+the same canonical URL still load normally. No automatic public repair is made.
+
+Successful migration writes internal observation-store schema `1.1.0`, marking
+that RSS upstream identity is scoped. The legacy connectivity check runs only
+while loading schema `1.0.0` (or its historical missing-version equivalent).
+After a validated URL move, revoking the original source can legitimately remove
+the only retained observation of the original logical URL; a scoped store keeps
+that stable logical/public identity on subsequent reloads. Unknown future store
+schemas require explicit migration rather than being silently interpreted.

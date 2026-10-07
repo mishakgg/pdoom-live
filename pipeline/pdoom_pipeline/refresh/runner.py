@@ -576,21 +576,9 @@ def _enforce_retained_policy(state, store, sources, leads, work, now):
                     admitted_ids.add(identity)
         except (CollectorFailure, KeyError, ValueError):
             continue
-    for key, item in list(store.items.items()):
-        item.versions = [version for version in item.versions if version.get("source_identity") in admitted_ids]
-        if not item.versions:
-            del store.items[key]
-            continue
-        for version in item.versions:
-            policy_row = next((row for row in sources if row.get("id") == version.get("source_identity")), {})
-            policy = policies.get(policy_row.get("canonical_url")) or CollectionPolicy(False)
-            for field in ("upstream_version", "raw_body", "article_text", "evidence_body"):
-                (version.get("metadata") or {}).pop(field, None)
-            if not policy.evidence:
-                version["segments"] = []
-    # Rebuild indexes after admission revocation so old URLs cannot alias new IDs.
-    rebuilt = ObservationStore.from_dict(store.to_dict())
-    store.by_url, store.by_upstream = rebuilt.by_url, rebuilt.by_upstream
+    evidence_ids = {row.get("id") for row in sources
+                    if (policies.get(row.get("canonical_url")) or CollectionPolicy(False)).evidence}
+    store.retain_sources(admitted_ids, evidence_ids)
     allowed = {}
     for url, permission in state.raw_bodies.items():
         for item in work:

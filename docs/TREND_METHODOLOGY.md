@@ -77,6 +77,10 @@ Dropping the earlier number is not a revision. The earlier row is **superseded**
 
 A human-verified `retracts` link whose target is not an eligible replacement number is a **withdrawal**. `to_value` is null. No replacement probability is required, and the historical statement stays on the revision record. The withdrawn row leaves the latest cross-section. That does not draw a verified return to an older number unless a separate verified link says so. The stored relationship enum remains `updates`, `clarifies`, `retracts`, `contradicts`, and `repeats`. The engine also accepts `withdraws` if a later schema adds it. This change does not migrate that enum.
 
+Cross-section selection ranks all eligible estimates before applying withdrawals. If the latest estimate is withdrawn, no older estimate automatically takes its place, whether or not an update link joins them. A genuinely later explicit estimate can contribute. Withdrawing only an older estimate does not remove a separate newer estimate.
+
+Relationship direction is older estimate (`from`) to later replacement or withdrawal statement (`to`). Both the relationship and its target statement must be `human_verified`, even if an imported method allows additional review states. Event times must be known and strictly increasing; unknown, invalid, equal, or reversed times remain inspectable but do not apply a withdrawal or establish a revision/repeat. This also excludes self-links and backward edges in a cycle. Timestamps are compared as instants, including UTC offsets. These checks use the current reviewed corpus; they do not assert a historical as-of reconstruction.
+
 Historical revisions draw a line only along those verified links. Ranges are not points on a revision line. There is no cross-person revision median. Each person is a separate series.
 
 ## Summaries and sparse data
@@ -148,6 +152,7 @@ Each excluded in-scope record carries a reason code and a sentence. The sentence
 | `withdrawn` | A human-verified withdrawal removes this estimate. No replacement number is required |
 | `no_verified_revision` | No human-verified update, retraction, or withdrawal connects this estimate |
 | `relationship_not_a_revision` | Repeat, clarification, or contradiction |
+| `relationship_time_order` | The target lacks a known, strictly later event time |
 | `different_person` | The relationship joins two people |
 | `topic_not_target` | Filed under a watched sibling topic and a different question |
 | `missing_forecast` | No structured forecast is stored |
