@@ -9,6 +9,8 @@ These are research-register metadata, audit findings, proposed analytical recipe
 - [chinese/aliases.json](chinese/aliases.json) is a conservative lookup with automatic merging disabled. [chinese/query_lexicon.json](chinese/query_lexicon.json) contains unexecuted retrieval templates. [chinese/test_cases.json](chinese/test_cases.json) contains 25 wholly invented semantic test vectors with 41 partial contract fragments. [chinese/reference_manifest.json](chinese/reference_manifest.json) pins the schema, specification and inventory they reference.
 - [analysis_recipes.json](analysis_recipes.json) is a proposed analysis checklist, not a production configuration. [methodology_example_checks.json](methodology_example_checks.json) is the reproducible 19-check synthetic arithmetic result.
 
+- [implementation_tasks.json](implementation_tasks.json) records the unexecuted Step 6 plan, dependency order, existing/proposed paths, authorization gates and acceptance evidence. Its task IDs and titles match the [readable plan](../../docs/evidence-program/implementation_tasks.md); it is not an executable configuration.
+
 Changes to source records or metrics must update the combined inventory and corresponding CSV views together. Keep source IDs stable; add explicit reviewable revisions rather than silently turning candidate sources into collected evidence. The [offline checker](../../tools/evidence_program/README.md) verifies that the redundant views agree.
 
 Third-party source rights are not changed by the repository's [data license](../LICENSE). Follow each source record's artifact-specific rights notes before any acquisition, retention or publication.

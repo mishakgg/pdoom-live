@@ -1,6 +1,6 @@
 # AI evidence program
 
-The source research, repository audit, proposed dataset contract, Chinese preparation and modelling methodology are integrated here as readable documentation, native JSON/CSV and executable offline checks. They extend the project's research and design surface; they are not imported production evidence.
+The source research, repository audit, proposed dataset contract, Chinese preparation, modelling methodology and implementation plan are integrated here as readable documentation, native JSON/CSV and executable offline checks. They extend the project's research and design surface; they are not imported production evidence.
 
 ## Sequential deliverables
 
@@ -11,7 +11,7 @@ The source research, repository audit, proposed dataset contract, Chinese prepar
 | 3. Specify the proposed dataset | Complete, frozen v0.1.0 | [Dataset specification](dataset_spec.md) | [14 schemas and field dictionary](../../tools/evidence_program/contracts/), [validator and 71 regression tests](../../tools/evidence_program/README.md) |
 | 4. Prepare Chinese evidence handling | Complete, preparation only | [Chinese guide](chinese_guide.md) | [23 alias entries](../../data/evidence-program/chinese/aliases.json), [query lexicon](../../data/evidence-program/chinese/query_lexicon.json), [25 synthetic cases](../../data/evidence-program/chinese/test_cases.json) |
 | 5. Describe modelling methodology | Complete, proposed methodology | [Modelling methodology](modelling_methodology.md) | [Analysis recipes](../../data/evidence-program/analysis_recipes.json), [19 synthetic arithmetic checks](../../data/evidence-program/methodology_example_checks.json) |
-| 6. Break implementation into tasks | Pending | [Status placeholder](implementation_tasks.md) | No implementation tickets created yet |
+| 6. Break implementation into tasks | Complete, proposed and unexecuted | [27 bounded tasks](implementation_tasks.md) | [Task pack and dependencies](../../data/evidence-program/implementation_tasks.json) |
 
 The source IDs GL001–GL040 and CN001–CN024 are stable research-register identifiers, not production source-artifact revision IDs. All 64 families remain `candidate_not_collected`. The source inventory records availability and rights findings dated 7 October 2026; it is neither a census nor legal clearance to ingest source content.
 
@@ -40,3 +40,8 @@ Collection remains a separate authorized operational step. Preserve the [collect
 ## Data and reuse
 
 See the [data directory guide](../../data/evidence-program/README.md) for JSON/CSV roles. The repository's data dedication covers original inventory metadata and synthetic fixtures only to the extent permitted by its existing [data license](../../data/LICENSE). It does not license third-party articles, benchmark tasks, transcripts, model weights or underlying datasets linked by this inventory. Their artifact-specific rights remain in each record and require separate review.
+
+
+## Implementation handoff
+
+The [Step 6 plan](implementation_tasks.md) builds on merged protections and keeps source integration, operational authorization, scientific validation and publication separate. Execute one assigned ticket at a time in dependency order. All implementation tickets remain unexecuted; the optional PR 32 UI port is deferred. Deployment remains on hold. The [machine-readable pack](../../data/evidence-program/implementation_tasks.json) is a planning artifact, not an executable configuration or permission grant.

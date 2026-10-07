@@ -26,7 +26,8 @@ The aggregate check exits nonzero on any failed gate. It does not fetch endpoint
 - 23 alias entries, review requirements, disabled automatic merging and valid Chinese inventory references
 - 30 lexicon concepts and 14 query templates; these remain unexecuted retrieval aids
 - Reproducible 19-check methodology arithmetic result and known record-type references in proposed recipes
-- Local documentation links and negative tests for the new integration gates
+- [Implementation task pack](../../data/evidence-program/implementation_tasks.json): unique task IDs, known source/recipe references, acyclic resolved dependencies, safe existing/proposed paths, nonempty acceptance evidence, unexecuted statuses and matching Markdown task IDs/titles
+- Local documentation links and negative tests for the integration gates
 
 ## Frozen contract contents
 
@@ -41,6 +42,6 @@ The frozen schemas, validator, example builder, fixtures and contract tests are 
 
 ## Limits and isolation
 
-Passing is not evidence of truth, identity approval, source permissions, translation quality, scientific comparability, statistical validity, calibration or production publication. A shape-valid Chinese fragment is not a complete record. Synthetic examples cannot establish real extractor performance. The recipes are proposed methodology, not implemented analytics.
+Passing is not evidence of truth, identity approval, source permissions, translation quality, scientific comparability, statistical validity, calibration or production publication. A shape-valid Chinese fragment is not a complete record. Synthetic examples cannot establish real extractor performance. The recipes are proposed methodology, not implemented analytics. The task pack is an unexecuted plan and grants no operational permissions. Proposed paths describe the audited historical baseline; checks do not require those paths to remain absent after later authorized implementation.
 
 No app runtime, database schema, production import/seed path or collector configuration depends on this directory. Existing database and pipeline suites remain separate. This check does not replace them or claim they ran.

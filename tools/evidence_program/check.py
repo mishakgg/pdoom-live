@@ -174,6 +174,98 @@ def check_chinese(aliases, lexicon, cases, schema, validator, format_checker):
     return fragments
 
 
+def check_task_plan(plan, recipes, markdown, base_paths=None):
+    """Check planning references and dependencies, never execute the task pack."""
+    require(re.fullmatch(r'implementation-plan/\d+\.\d+\.\d+', plan.get('plan_version', '')),
+            'Invalid implementation plan version')
+    require(plan.get('status') == 'proposed_unexecuted_plan', 'Task pack must remain an unexecuted plan')
+    require(re.fullmatch(r'[0-9a-f]{40}', plan.get('baseline_commit', '')),
+            'Invalid task baseline commit')
+    require(plan.get('audit_baseline_commit') == BASELINE, 'Task audit baseline mismatch')
+    require(isinstance(plan.get('execution_policy'), str) and plan['execution_policy'].strip(),
+            'Task execution policy missing')
+    require(isinstance(plan.get('global_boundaries'), list) and plan['global_boundaries']
+            and all(isinstance(v, str) and v.strip() for v in plan['global_boundaries']),
+            'Task global boundaries missing')
+    known_recipes = {recipe['id'] for recipe in recipes['recipes']}
+
+    def unique_strings(values, label):
+        require(isinstance(values, list) and all(isinstance(v, str) and v.strip() for v in values),
+                f'{label} must be a list of nonempty strings')
+        require(len(values) == len(set(values)), f'Duplicate {label}')
+        return set(values)
+
+    require(unique_strings(plan.get('source_ids'), 'task-pack source IDs') == SOURCE_IDS,
+            'Task-pack source IDs differ from inventory')
+    require(unique_strings(plan.get('recipes'), 'task-pack recipe IDs') == known_recipes,
+            'Task-pack recipe IDs differ from methodology')
+    tasks = plan.get('tasks')
+    require(isinstance(tasks, list) and tasks, 'Task pack has no tasks')
+    ids = []
+    existing_paths = set()
+    proposed_paths = set()
+    for task in tasks:
+        require(isinstance(task, dict) and re.fullmatch(r'EP[0-9]{2,}', task.get('id', '')),
+                'Invalid implementation task ID')
+        ids.append(task['id'])
+        for field in ['title', 'phase', 'owner_role', 'scope', 'authorization_gate']:
+            require(isinstance(task.get(field), str) and task[field].strip(),
+                    f"Task {task['id']} missing {field}")
+        require(task.get('priority') in {'P0', 'P1', 'P2'}, 'Invalid task priority')
+        require(task.get('status') in {'planned', 'deferred'}, 'Task falsely claims execution')
+        unique_strings(task.get('depends_on'), 'task dependencies')
+        require(unique_strings(task.get('source_ids'), 'task source IDs') <= SOURCE_IDS,
+                'Task refers to unknown source ID')
+        require(unique_strings(task.get('recipe_ids'), 'task recipe IDs') <= known_recipes,
+                'Task refers to unknown recipe ID')
+        unique_strings(task.get('non_goals'), 'task non-goals')
+        for field in ['acceptance_tests', 'completion_evidence']:
+            require(unique_strings(task.get(field), field), f'Task missing {field}')
+        for field in ['existing_paths', 'proposed_paths']:
+            paths = unique_strings(task.get(field), field)
+            for value in paths:
+                path = Path(value)
+                require(value != '.' and not path.is_absolute() and value == path.as_posix() and
+                        '..' not in path.parts and ':' not in value and '\\' not in value,
+                        f'Unsafe task path: {value}')
+                resolved = (ROOT / path).resolve()
+                require(resolved.is_relative_to(ROOT), f'Task path escapes repository: {value}')
+                if field == 'existing_paths':
+                    require(resolved.exists() or (base_paths is not None and value in base_paths),
+                            f'Task existing path not found: {value}')
+            (existing_paths if field == 'existing_paths' else proposed_paths).update(paths)
+    require(len(ids) == len(set(ids)), 'Duplicate implementation task ID')
+    require(not (existing_paths & proposed_paths), 'Task path classified as both existing and proposed')
+    by_id = {task['id']: task for task in tasks}
+    for task in tasks:
+        require(set(task['depends_on']) <= by_id.keys(), 'Task depends on unknown task')
+        require(task['id'] not in task['depends_on'], 'Task depends on itself')
+    active, visited = set(), set()
+
+    def visit(task_id):
+        require(task_id not in active, 'Task dependency cycle')
+        if task_id in visited:
+            return
+        active.add(task_id)
+        for dependency in by_id[task_id]['depends_on']:
+            visit(dependency)
+        active.remove(task_id)
+        visited.add(task_id)
+
+    for task_id in ids:
+        visit(task_id)
+    headings = re.findall(r'^## (EP[0-9]{2,}) (.+)$', markdown, flags=re.MULTILINE)
+    require(len(headings) == len(ids) and len({item[0] for item in headings}) == len(ids),
+            'Task documentation heading count/IDs mismatch')
+    require(dict(headings) == {task['id']: task['title'] for task in tasks},
+            'Task documentation IDs/titles differ from JSON')
+    # Proposed paths describe the historical baseline. Do not require them to
+    # remain absent forever: later, authorized implementations may create them.
+    return {'implementation_tasks': len(tasks),
+            'planned_implementation_tasks': sum(t['status'] == 'planned' for t in tasks),
+            'deferred_implementation_tasks': sum(t['status'] == 'deferred' for t in tasks)}
+
+
 def check_fingerprints():
     manifest = read_json(HERE / 'frozen_contract_manifest.json')
     require(manifest['contract_version'] == '0.1.0', 'Frozen version changed without review')
@@ -233,6 +325,8 @@ def run(base_paths=None):
     record_types = set(SCHEMA['$defs']['record']['properties']['record_type']['enum'])
     for recipe in recipes['recipes']:
         require(set(recipe['record_types']) <= record_types, 'Recipe refers to unknown record types')
+    task_counts = check_task_plan(read_json(DATA / 'implementation_tasks.json'), recipes,
+                                  (DOCS / 'implementation_tasks.md').read_text(encoding='utf-8'), base_paths)
     links = check_doc_links(base_paths)
     loader = unittest.TestLoader()
     contract_suite = loader.discover(str(HERE / 'tests'), pattern='test_contract.py')
@@ -243,7 +337,7 @@ def run(base_paths=None):
     require(integration_suite.countTestCases() > 0, 'Integration regression tests missing')
     integration_result = unittest.TextTestRunner(verbosity=1).run(integration_suite)
     require(integration_result.wasSuccessful(), 'Integration regression suite failed')
-    return {'status': 'passed', **COUNTS, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
+    return {'status': 'passed', **COUNTS, **task_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
             'documentation_relative_links': links, 'integration_regression_tests': integration_result.testsRun,
             'scope': 'Offline consistency and synthetic regression checks only. No source fetch, collection, production import, deployment, rights approval or language-accuracy evaluation.'}
 
