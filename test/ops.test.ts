@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import { chmod, mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { chmod, mkdtemp, mkdir, open, readFile, rm, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
@@ -53,6 +53,9 @@ describe("production operations files", () => {
     expect(caddy).toContain("www.pdoom.live");
     expect(caddy).toContain("redir https://pdoom.live{uri} permanent");
     expect(caddy).not.toContain("5432");
+    expect(compose).toContain("./deploy/state:/etc/caddy/state:ro");
+    expect(compose).not.toContain("./deploy/state/upstream.caddy:");
+    expect(caddy).toContain("import /etc/caddy/state/upstream.caddy");
     expect(upstream).toContain("health_uri /api/ready");
     expect(upstream).toContain("lb_retries 0");
     expect(upstream).not.toContain("*");
@@ -64,6 +67,42 @@ describe("production operations files", () => {
     expect(example).not.toContain("sk-");
     const docker = await readFile("Dockerfile", "utf8");
     expect(docker).toContain("org.opencontainers.image.revision");
+  });
+
+  it("atomically replaces the upstream entry visible through the directory mount", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "pdoom-upstream-"));
+    const upstream = join(dir, "upstream.caddy");
+    try {
+      await writeFile(upstream, "reverse_proxy web:3000\n");
+      const oldFile = await open(upstream, "r");
+      try {
+        const oldInode = (await oldFile.stat()).ino;
+        const switched = run("bash", ["-c", 'source scripts/deploy/lib.sh; render_upstream pdoom-prod-web-candidate'], { PDOOM_STATE_DIR: dir });
+        expect(switched.status, switched.stderr).toBe(0);
+        expect((await stat(upstream)).ino).not.toBe(oldInode);
+        // A single-file mount would still see this old inode, not the candidate.
+        expect(await oldFile.readFile("utf8")).toBe("reverse_proxy web:3000\n");
+        const next = await readFile(upstream, "utf8");
+        expect(next).toContain("reverse_proxy pdoom-prod-web-candidate:3000");
+        expect(next).toContain("health_uri /api/ready");
+        const restored = run("bash", ["-c", 'source scripts/deploy/lib.sh; render_upstream web'], { PDOOM_STATE_DIR: dir });
+        expect(restored.status, restored.stderr).toBe(0);
+        expect(await readFile(upstream, "utf8")).toBe(await readFile("deploy/caddy/upstream.caddy", "utf8"));
+        const invalid = run("bash", ["-c", 'source scripts/deploy/lib.sh; render_upstream "bad;host"'], { PDOOM_STATE_DIR: dir });
+        expect(invalid.status).not.toBe(0);
+        expect(await readFile(upstream, "utf8")).toBe(await readFile("deploy/caddy/upstream.caddy", "utf8"));
+      } finally {
+        await oldFile.close();
+      }
+    } finally {
+      await rm(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("reconciles the proxy mount before switching traffic or recreating web", () => {
+    const result = run("bash", ["scripts/deploy/release-switch.test.sh"]);
+    expect(result.status, `${result.stdout}\n${result.stderr}`).toBe(0);
+    expect(result.stdout).toContain("release_switch_test_ok");
   });
 
   it("requires acknowledgement for a breaking pending migration and refuses a diverged database", async () => {
