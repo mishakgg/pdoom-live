@@ -6,6 +6,7 @@ import {
   fixtureDatabaseUrl,
   hostileEvidence,
   longEvidenceText,
+  privateMetadataMarker,
   rejectedMarker,
   rejectedSlug,
   unreviewedMarker,
@@ -42,6 +43,27 @@ async function applyOverlay(databaseUrl: string): Promise<void> {
       longEvidenceText,
     ]);
     if (longEvidence.rowCount !== 1) throw new Error("long evidence overlay did not match the fixture segment");
+    const privateMetadata = await pool.query(
+      "UPDATE source_items SET metadata_json = metadata_json || jsonb_build_object('private_note', $1::text) WHERE slug = 'riley-hostile-2025'",
+      [privateMetadataMarker],
+    );
+    if (privateMetadata.rowCount !== 1) throw new Error("private metadata overlay did not match the fixture item");
+    // Item audit pages require a public statement linked to evidence on that same item.
+    const publicLongEvidence = await pool.query(
+      `INSERT INTO statements (
+         slug, person_id, source_item_id, statement_type, normalized_text, event_time,
+         evidence_segment_id, extractor_name, extractor_version, confidence, review_state, extraction_run_id
+       )
+       SELECT 'e2e-long-evidence-public', s.person_id, si.id, 'explicit_qualitative',
+              'A fictional qualitative note with long evidence for layout checks.', s.event_time,
+              e.id, s.extractor_name, s.extractor_version, s.confidence, 'machine_validated', s.extraction_run_id
+       FROM statements s
+       JOIN source_items si ON si.slug = 'harbor-large-note'
+       JOIN evidence_segments e ON e.source_item_id = si.id AND e.slug = 'harbor-large-note-evidence'
+       WHERE s.slug = 'mateo-undated'
+       RETURNING slug`,
+    );
+    if (publicLongEvidence.rowCount !== 1) throw new Error("public long evidence statement was not inserted");
     const stale = await pool.query(
       "UPDATE sources SET last_success_at = '2000-01-01T00:00:00Z', last_checked_at = '2000-01-01T00:00:00Z' WHERE slug = 'jonah-blog'",
     );

@@ -20,6 +20,7 @@ export const unreviewedSlug = "e2e-unreviewed-candidate";
 export const rejectedSlug = "e2e-rejected-statement";
 export const unreviewedMarker = "unreviewed candidate private marker zeta";
 export const rejectedMarker = "rejected statement private marker zeta";
+export const privateMetadataMarker = "private source metadata marker sigma";
 
 export const longEvidenceToken = "L".repeat(160);
 export const longEvidenceText = `${"Long evidence sentence for wrap checking. ".repeat(36)}${longEvidenceToken}`;
