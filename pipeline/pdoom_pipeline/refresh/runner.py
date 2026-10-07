@@ -167,8 +167,7 @@ def run_refresh(
                 for url, body in pending.items():
                     if url == primary_url:
                         state.write_body(url, body, expires_at=policy.raw_until, rights_basis=policy.rights_basis or "")
-        state.save()
-        store.save(state_dir(collection_dir) / "observations.json", write_bytes)
+        _save_checkpoint(state, store, collection_dir, write_bytes)
     client.cache_put = None
     client.cache_get = None
     client.url_policy = None
@@ -227,8 +226,7 @@ def run_refresh(
     _merge_enrichment(document, read_enrichment_sources(collection_dir))
     canonical = collection_dir / "canonical-live.json"
     atomic_bytes(canonical, json.dumps(document).encode(), write_bytes)
-    state.save()
-    store.save(state_dir(collection_dir) / "observations.json", write_bytes)
+    _save_checkpoint(state, store, collection_dir, write_bytes)
     if enrichment_dir(collection_dir).exists():
         belief_names = {path.name for path in belief_dir(collection_dir).glob("*")}
         overlap = belief_names.intersection(path.name for path in enrichment_dir(collection_dir).glob("*") if path.name != "README.md")
@@ -238,6 +236,14 @@ def run_refresh(
             "publication": {"imported": False, "public_revocations_applied": False},
             "policy_decisions": [{"source_key": item["key"], **asdict(item["policy"])}
                                  for item in work if item.get("policy") and not item.get("error")]}
+
+
+def _save_checkpoint(state, store, collection_dir, write_bytes) -> None:
+    # The checkpoint commits successful freshness, validators and the cursor.
+    # Persist its observation payload first. A refused write or process exit can
+    # leave replayable data ahead of the checkpoint, never success ahead of data.
+    store.save(state_dir(collection_dir) / "observations.json", write_bytes)
+    state.save()
 
 
 def _run_adapter_item(item, *, client, state, store, observed_at, counts, errors, checked, visited_urls) -> bool:

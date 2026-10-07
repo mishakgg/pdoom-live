@@ -405,3 +405,111 @@ def test_revocation_reports_artifact_scope_not_public_withdrawal(tmp_path, monke
     assert revoked["publication"] == {"imported": False, "public_revocations_applied": False}
     assert published_snapshot.read_bytes() == snapshot_bytes
     assert first["document"]["statements"]
+
+
+def test_observation_write_refusal_never_commits_serialized_success(tmp_path):
+    from pdoom_pipeline.ingest.writes import atomic_bytes
+    _run(tmp_path)
+    state_path = tmp_path / "collection/state/collection_state.json"
+    data_path = tmp_path / "collection/state/observations.json"
+    canonical = tmp_path / "collection/canonical-live.json"
+    before_state = state_path.read_bytes()
+    before_data = data_path.read_bytes()
+    before_canonical = canonical.read_bytes()
+    state_payloads = []
+    changed_feed = FEED.replace("Feed note", "Changed feed note")
+
+    def refuse_data(path, payload):
+        if path.name == "collection_state.json":
+            # The old ordering serialized and committed this success before
+            # hitting the observation quota refusal. Capture that exact path.
+            state_payloads.append(json.loads(payload))
+        if path.name == "observations.json":
+            raise OSError("observation quota reservation refused")
+        atomic_bytes(path, payload)
+
+    with pytest.raises(OSError, match="observation quota"):
+        _run(tmp_path, now=LATER, pages={FEED_URL: (changed_feed.encode(), "application/rss+xml", '"changed"')}, write_bytes=refuse_data)
+    assert state_payloads == []
+    assert state_path.read_bytes() == before_state
+    assert data_path.read_bytes() == before_data
+    assert canonical.read_bytes() == before_canonical
+    assert _state(tmp_path)["sources"][FEED_URL]["last_success_at"] == NOW
+    assert _state(tmp_path)["sources"][FEED_URL]["etag"] == '"good"'
+
+    recovered = _run(tmp_path, now="2026-10-01T14:00:00Z", pages={FEED_URL: (changed_feed.encode(), "application/rss+xml", '"changed"')})
+    assert recovered["status"] == "succeeded"
+    assert recovered["counts"]["changed"] == 1
+    saved_data = json.loads(data_path.read_text())
+    assert len(saved_data["items"][0]["versions"]) == 2
+    assert _state(tmp_path)["sources"][FEED_URL]["etag"] == '"changed"'
+
+
+@pytest.mark.parametrize("crash_boundary", ["after_observations", "after_checkpoint"])
+def test_process_crash_cannot_put_success_ahead_of_observations(tmp_path, crash_boundary):
+    import os
+    import subprocess
+    import sys
+    from pdoom_pipeline.ingest.store import ObservationStore
+
+    _run(tmp_path)
+    state_path = tmp_path / "collection/state/collection_state.json"
+    data_path = tmp_path / "collection/state/observations.json"
+    canonical = tmp_path / "collection/canonical-live.json"
+    before_state = state_path.read_bytes()
+    before_data = data_path.read_bytes()
+    before_canonical = canonical.read_bytes()
+    changed_feed = FEED.replace("Feed note", "Changed feed note")
+    # Terminate only this disposable child, without graceful exception cleanup.
+    code = """
+import os, sys
+from pathlib import Path
+from test_collection_guards import _run, FEED, FEED_URL, LATER
+from pdoom_pipeline.ingest.writes import atomic_bytes
+boundary = sys.argv[2]
+changed = FEED.replace('Feed note', 'Changed feed note')
+def sink(path, payload):
+    atomic_bytes(path, payload)
+    if (boundary == 'after_observations' and path.name == 'observations.json') or (boundary == 'after_checkpoint' and path.name == 'collection_state.json'):
+        os._exit(73)
+_run(Path(sys.argv[1]), now=LATER, pages={FEED_URL: (changed.encode(), 'application/rss+xml', '"changed"')}, write_bytes=sink)
+raise SystemExit('crash boundary was not reached')
+"""
+    root = Path(__file__).resolve().parents[1]
+    env = dict(os.environ)
+    env["PYTHONDONTWRITEBYTECODE"] = "1"
+    env["PYTHONPATH"] = os.pathsep.join((str(root / "pipeline"), str(root / "tests")))
+    crashed = subprocess.run([sys.executable, "-c", code, str(tmp_path), crash_boundary], cwd=root, env=env, capture_output=True, text=True, timeout=30)
+    assert crashed.returncode == 73, crashed.stdout + crashed.stderr
+    assert data_path.read_bytes() != before_data
+    assert canonical.read_bytes() == before_canonical
+    loaded_store = ObservationStore.load(data_path)
+    current_hash = next(iter(loaded_store.items.values())).current_hash
+    if crash_boundary == "after_observations":
+        assert state_path.read_bytes() == before_state
+        assert _state(tmp_path)["sources"][FEED_URL]["last_success_at"] == NOW
+        assert _state(tmp_path)["sources"][FEED_URL]["etag"] == '"good"'
+    else:
+        saved = _state(tmp_path)["sources"][FEED_URL]
+        assert saved["last_success_at"] == LATER
+        assert saved["etag"] == '"changed"'
+        assert saved["content_versions"][-1]["content_hash"] == current_hash
+
+    recovered = _run(tmp_path, now="2026-10-01T14:00:00Z", pages={FEED_URL: (changed_feed.encode(), "application/rss+xml", '"changed"')})
+    assert recovered["status"] == "succeeded"
+    assert recovered["counts"]["changed"] == 0
+    assert recovered["counts"]["unchanged"] == 1
+    assert _state(tmp_path)["sources"][FEED_URL]["content_versions"][-1]["content_hash"] == current_hash
+    assert len(next(iter(ObservationStore.load(data_path).items.values())).versions) == 2
+
+
+def test_each_success_checkpoint_follows_its_observation_write(tmp_path):
+    from pdoom_pipeline.ingest.writes import atomic_bytes
+    writes = []
+    def sink(path, payload):
+        writes.append(path.name)
+        atomic_bytes(path, payload)
+    assert _run(tmp_path, write_bytes=sink)["status"] == "succeeded"
+    checkpoints = [index for index, name in enumerate(writes) if name == "collection_state.json"]
+    assert len(checkpoints) == 2  # per-source progress and final assembly
+    assert all(writes[index - 1] == "observations.json" for index in checkpoints)
