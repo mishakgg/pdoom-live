@@ -307,6 +307,8 @@ Suggested shared states:
 
 The public product may expose different states differently. High-impact statements should not quietly bypass review/quality gates. `human_verified` is written only by an operator review decision. The machine extraction stays in `statement_extractions`. `review_decisions` appends each approve, reject, or needs-changes action. See `docs/CURATION.md`.
 
+`review_decisions.machine_claim_json` and `accepted_claim_json` store the version 1 machine input and full human-accepted interpretation separately from the immutable candidate key and correction delta. Approval coverage requires equality with the accepted representation, including claim semantics and evidence locators. Migration `006_accepted_claims` leaves these columns null on legacy decisions and deliberately requires reapproval rather than deriving approval from mutable live data. See `docs/CURATION.md` for the exact fields and replay policy.
+
 ## Deletion and correction
 
 Sources can disappear, authors can correct themselves, and extraction can be wrong.

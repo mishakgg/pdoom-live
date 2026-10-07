@@ -3,8 +3,9 @@ import { getPool } from "./pool";
 
 /**
  * Fingerprint of rows that can change a public payload without a new import:
- * review decisions, statement and forecast text, source versions, evidence
- * hashes, people, cohort membership, and published trend definitions.
+ * review decisions and accepted-claim semantics (including attribution,
+ * extractors, dates, evidence locators and topic membership), source versions,
+ * people, cohort membership, and published trend definitions.
  *
  * Large tables contribute a count plus a 64-bit xor of hashes. That detects
  * inserts and ordinary updates, including two reviews that share an HTTP-date
@@ -25,13 +26,16 @@ SELECT md5(concat_ws(E'\\n',
     SELECT count(*)::text || '|' || coalesce(max(reviewed_at)::text, '') || '|' || coalesce(max(created_at)::text, '') || '|' ||
       coalesce(bit_xor(hashtextextended(
         decision_key || '|' || resulting_review_state || '|' || corrections_json::text || '|' ||
-        source_content_hash || '|' || evidence_hash || '|' || content_version::text, 0
+        source_content_hash || '|' || evidence_hash || '|' || content_version::text || '|' ||
+        coalesce(machine_claim_json::text, '') || '|' || coalesce(accepted_claim_json::text, ''), 0
       ))::text, '0')
     FROM review_decisions
   ), '0'),
   coalesce((
     SELECT count(*)::text || '|' || coalesce(bit_xor(hashtextextended(
-      slug || '|' || review_state || '|' || statement_type || '|' || normalized_text || '|' || coalesce(event_time::text, ''), 0
+      slug || '|' || review_state || '|' || statement_type || '|' || normalized_text || '|' || coalesce(event_time::text, '') || '|' ||
+      person_id::text || '|' || source_item_id::text || '|' || evidence_segment_id::text || '|' ||
+      extractor_name || '|' || extractor_version, 0
     ))::text, '0')
     FROM statements
   ), '0'),
@@ -40,7 +44,9 @@ SELECT md5(concat_ws(E'\\n',
       statement_id::text || '|' || review_state || '|' || question_key || '|' || coalesce(question_text, '') || '|' ||
       coalesce(horizon_text, '') || '|' || coalesce(condition_text, '') || '|' || coalesce(definition_text, '') || '|' ||
       coalesce(unit, '') || '|' || value_type || '|' || coalesce(value_numeric::text, '') || '|' ||
-      coalesce(value_min::text, '') || '|' || coalesce(value_max::text, ''), 0
+      coalesce(value_min::text, '') || '|' || coalesce(value_max::text, '') || '|' || forecast_kind || '|' ||
+      coalesce(target_date_start::text, '') || '|' || coalesce(target_date_end::text, '') || '|' ||
+      coalesce(distribution_json::text, '') || '|' || coalesce(resolution_criteria, ''), 0
     ))::text, '0')
     FROM forecasts
   ), '0'),
@@ -51,8 +57,17 @@ SELECT md5(concat_ws(E'\\n',
     FROM source_items
   ), '0'),
   coalesce((
-    SELECT count(*)::text || '|' || coalesce(bit_xor(hashtextextended(slug || '|' || segment_hash, 0))::text, '0')
+    SELECT count(*)::text || '|' || coalesce(bit_xor(hashtextextended(jsonb_build_array(
+      slug, source_item_id, segment_kind, text, context_text, segment_hash,
+      start_char, end_char, start_ms, end_ms
+    )::text, 0))::text, '0')
     FROM evidence_segments
+  ), '0'),
+  coalesce((
+    SELECT count(*)::text || '|' || coalesce(bit_xor(hashtextextended(
+      jsonb_build_array(statement_id, topic_id)::text, 0
+    ))::text, '0')
+    FROM statement_topics
   ), '0'),
   coalesce((
     SELECT count(*)::text || '|' || coalesce(max(updated_at)::text, '') || '|' || coalesce(bit_xor(hashtextextended(

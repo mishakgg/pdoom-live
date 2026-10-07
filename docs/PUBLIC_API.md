@@ -26,6 +26,12 @@ The API is read-only. There is no authentication, account, or write endpoint.
 
 Affiliations, external identities, sources, forecasts, and relationships use the same filter. A forecast whose own review state is not public is omitted even if the statement is public, so a non-public number is not attached to a public statement.
 
+A statement also requires a source in an included review state, so every exported statement, source item, and relationship retains its public source and endpoint links. The website's exact audit exception for an unreviewed source container does not apply to `/api/v1` or research exports. An explicitly rejected source cannot expose its statements through either surface. A removed original can retain its public audit record; availability is distinct from review rejection.
+
+Referenced evidence must belong to the statement's declared source item, because its locator and content hash accompany that evidence in the public representation. Cross-item evidence references are omitted, including when the foreign item is otherwise public; the stored rows remain available for internal review.
+
+Trend reads also remove hidden statement content and independently nonpublic forecast values/metadata before aggregation. Exclusions for a public statement can report a missing usable forecast but cannot preserve its hidden number, range, distribution, definition, or horizon. Unreviewed/rejected statements are absent from named exclusions and inspection rows. Redacted website-visible needs-review candidates may still contribute only to aggregate omission counts in research output. Removing hidden input rows can reduce exclusion counts without changing the cohort denominator or calculation method.
+
 People with status `active` or `historical` are included. A person with status `review` is included only when they are the speaker of a public statement, so that statement still has a person record. `in_current_cohort` says whether they belong to the loaded cohort.
 
 ## Endpoints

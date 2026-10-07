@@ -56,7 +56,7 @@ Version 1 source-item slugs stay `item-` plus the first 20 hex characters of the
 
 The review candidate key is the curation hash in `packages/contracts/src/curation.ts`: person, source hash, evidence hash, extractor, statement type, question, horizon, unit, and numeric values. It is not a collection index. Review decisions are append-only. Import does not rewrite `statement_extractions` or `review_decisions`.
 
-When the incoming extraction matches the reviewed candidate key, import keeps the stored review state and any corrected text, statement type, evidence span, and forecast fields. When the source hash, evidence hash, or content version no longer matches the latest approval, the stored `human_verified` value remains and public reads report `needs_review`. A rejection stays rejected. Restoring the reviewed bytes makes that approval apply again.
+When the incoming extraction equals the latest decision's versioned machine-input or accepted-claim snapshot, import restores its complete accepted interpretation, including cumulative corrections. Candidate identity alone or matching evidence bytes do not confer approval. Changed claim semantics or provenance leave stored `human_verified` in place while public reads report `needs_review`. A rejection stays rejected. Restoring an exactly covered interpretation reapplies approval and corrections. Legacy approvals without snapshots require explicit reapproval after migration `006_accepted_claims`; their matching cumulative deltas remain replayable. The snapshot and migration policy are in `docs/CURATION.md`.
 
 ## Schedule
 

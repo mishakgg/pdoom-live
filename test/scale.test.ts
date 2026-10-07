@@ -1,4 +1,6 @@
 import { writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import { createPool } from "../packages/db/src/pool";
 import { stableId } from "../packages/db/src/ids";
 import { effectiveReviewStateSql } from "../packages/db/src/coverage";
@@ -13,7 +15,7 @@ const pool = createPool(process.env.DATABASE_URL ?? "postgresql://postgres:postg
 const PEOPLE = 400;
 const SOURCES = 1200;
 const ITEMS = 3000;
-const REPORT_PATH = "/tmp/pdoom-public-read-scale.json";
+const REPORT_PATH = join(tmpdir(), "pdoom-public-read-scale.json");
 
 function dbQueries() {
   return counterSnapshot()

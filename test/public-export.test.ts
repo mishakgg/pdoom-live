@@ -152,8 +152,8 @@ describe("public snapshot", () => {
   it("runs the operator export command", async () => {
     const outDir = await mkdtemp(join(tmpdir(), "pdoom-export-cli-"));
     const result = await execFileAsync(
-      join(repoRoot, "node_modules/.bin/tsx"),
-      ["packages/db/src/cli.ts", "export", "--out", outDir, "--generated-at", GENERATED_AT],
+      process.execPath,
+      [join(repoRoot, "node_modules/tsx/dist/cli.mjs"), "packages/db/src/cli.ts", "export", "--out", outDir, "--generated-at", GENERATED_AT],
       { cwd: repoRoot, env: { ...process.env, DATABASE_URL: process.env.DATABASE_URL } },
     );
     const printed = JSON.parse(result.stdout) as { snapshot_id: string; counts: { statements: number } };

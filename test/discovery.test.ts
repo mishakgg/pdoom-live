@@ -457,7 +457,7 @@ describe("public feed and sitemap filtering", () => {
       const paths = records.map((record) => record.path);
       expect(paths).toContain("/statements/ada-extinction-2023");
       expect(paths).toContain("/statements/ada-inferred-2024");
-      expect(paths).toContain("/statements/samira-labor-2024");
+      expect(paths).not.toContain("/statements/samira-labor-2024");
       expect(paths).toContain("/people/ada-quill");
       expect(paths).toContain("/source-items/ada-essay-2023");
       expect(paths).not.toContain("/statements/jonah-extinction-review-2024");
@@ -476,6 +476,8 @@ describe("public feed and sitemap filtering", () => {
       const hidden = await getStatementDiscovery("jonah-extinction-review-2024", client);
       expect(hidden?.indexable).toBe(false);
       expect(hidden?.normalized_text).toBe("");
+      const unsettledSource = await getStatementDiscovery("samira-labor-2024", client);
+      expect(unsettledSource?.indexable).toBe(false);
 
       const feed = await listFeedEntries(client, 100);
       const slugs = feed.map((entry) => entry.slug);
@@ -485,6 +487,7 @@ describe("public feed and sitemap filtering", () => {
       expect(slugs).not.toContain("ada-misuse-2024");
       expect(slugs).not.toContain("priya-coding-2025");
       expect(slugs).not.toContain("riley-hostile-2025");
+      expect(slugs).not.toContain("samira-labor-2024");
       expect(feed.every((entry) => !("evidence" in entry))).toBe(true);
 
       const removed = feed.find((entry) => entry.source_item_slug === "ada-essay-2023");

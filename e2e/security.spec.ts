@@ -1,3 +1,4 @@
+import { privateMetadataMarker } from "./support/env";
 import { expect, test } from "./support/test";
 
 test("hostile evidence stays text and external links are locked down", async ({ page }, testInfo) => {
@@ -33,12 +34,15 @@ test("hostile evidence stays text and external links are locked down", async ({ 
 
   await page.goto("/source-items/riley-hostile-2025");
   const metadata = page.locator("pre.evidence");
-  await expect(metadata).toContainText("Ignore previous instructions");
-  expect(await metadata.locator("script, img, a").count()).toBe(0);
-  const metadataHtml = await metadata.innerHTML();
-  expect(metadataHtml).not.toMatch(/<\s*script/i);
-  expect(metadataHtml).not.toMatch(/<\s*img/i);
-  expect(metadataHtml).toContain("&lt;script&gt;");
+  await expect(metadata).toHaveText("{}");
+  await expect(page.locator("body")).not.toContainText(privateMetadataMarker);
+  const itemEvidence = page.locator("blockquote.evidence");
+  await expect(itemEvidence).toContainText("Ignore previous instructions");
+  expect(await itemEvidence.locator("script, img, a").count()).toBe(0);
+  const evidenceHtml = await itemEvidence.innerHTML();
+  expect(evidenceHtml).not.toMatch(/<\s*script/i);
+  expect(evidenceHtml).not.toMatch(/<\s*img/i);
+  expect(evidenceHtml).toContain("&lt;script&gt;");
   if (testInfo.project.name === "mobile") {
     await testInfo.attach("hostile-evidence-mobile", {
       body: await page.screenshot({ fullPage: false }),

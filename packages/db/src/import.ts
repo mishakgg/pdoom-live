@@ -558,7 +558,8 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
          extractor_version = EXCLUDED.extractor_version,
          candidate_key = EXCLUDED.candidate_key,
          confidence = EXCLUDED.confidence,
-         review_state = EXCLUDED.review_state,
+         review_state = CASE WHEN EXISTS (SELECT 1 FROM review_decisions d WHERE d.statement_id = statements.id)
+           THEN statements.review_state ELSE EXCLUDED.review_state END,
          extraction_run_id = EXCLUDED.extraction_run_id`,
       [
         stableId(`statement:${statement.slug}`),
@@ -579,6 +580,7 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
     );
     const skipTopics = matchesReviewed && Array.isArray(prior?.corrections.topic_slugs);
     if (!skipTopics) {
+      await client.query(`DELETE FROM statement_topics WHERE statement_id = $1`, [stableId(`statement:${statement.slug}`)]);
       for (const topicSlug of statement.topic_slugs) {
         await client.query(
           `INSERT INTO statement_topics (statement_id, topic_id, confidence, method)
@@ -597,11 +599,17 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
     }
   }
 
+  // A supplied statement without a forecast is a new interpretation of that
+  // statement. Keep forecasts for statements absent from the import document.
+  await client.query(`DELETE FROM forecasts WHERE statement_id = ANY($1::uuid[])
+    AND NOT (statement_id = ANY($2::uuid[]))`, [
+    doc.statements.map((statement) => stableId(`statement:${statement.slug}`)),
+    doc.forecasts.map((forecast) => stableId(`statement:${forecast.statement_slug}`)),
+  ]);
   for (const forecast of doc.forecasts) {
     const prior = preserved.get(forecast.statement_slug);
     const incomingKey = incomingKeys.get(forecast.statement_slug);
     const matchesReviewed = Boolean(prior && prior.reviewed_candidate_key === incomingKey);
-    const reviewState = prior ? (prior.forecast_review_state ?? prior.review_state) : forecast.review_state;
     await client.query(
       `INSERT INTO forecasts (
          id, statement_id, forecast_kind, question_key, question_text, definition_text, condition_text,
@@ -643,7 +651,7 @@ async function upsertAll(client: pg.PoolClient, doc: CanonicalImport): Promise<v
         correctedString(prior, "unit", forecast.unit, matchesReviewed),
         forecast.distribution ? JSON.stringify(forecast.distribution) : null,
         forecast.resolution_criteria,
-        reviewState,
+        forecast.review_state,
       ],
     );
   }
@@ -750,25 +758,28 @@ type ReviewPreservation = {
   review_state: string;
   reviewed_candidate_key: string;
   corrections: Record<string, unknown>;
-  forecast_review_state: string | null;
 };
 
 async function loadReviewPreservation(client: pg.PoolClient, slugs: string[]): Promise<Map<string, ReviewPreservation>> {
   const preserved = new Map<string, ReviewPreservation>();
   if (!slugs.length) return preserved;
   const result = await client.query(
-    `SELECT s.slug, s.review_state, d.candidate_key AS reviewed_candidate_key, d.corrections_json,
-            f.review_state AS forecast_review_state
+    `SELECT s.slug, s.review_state, d.candidate_key AS reviewed_candidate_key, d.corrections_json
      FROM statements s
      JOIN LATERAL (
-       SELECT candidate_key, corrections_json
-       FROM review_decisions
-       WHERE statement_id = s.id
+       SELECT latest.candidate_key, latest.accepted_claim_json,
+         (SELECT COALESCE(jsonb_object_agg(c.key, c.value ORDER BY history.reviewed_at, history.decision_key), '{}'::jsonb)
+          FROM review_decisions history
+          CROSS JOIN LATERAL jsonb_each(history.corrections_json) c
+          WHERE history.statement_id = s.id AND history.candidate_key = latest.candidate_key
+            AND (history.reviewed_at, history.decision_key) <= (latest.reviewed_at, latest.decision_key)
+         ) AS corrections_json
+       FROM review_decisions latest
+       WHERE latest.statement_id = s.id
        ORDER BY reviewed_at DESC, decision_key DESC
        LIMIT 1
      ) d ON true
-     LEFT JOIN forecasts f ON f.statement_id = s.id
-     WHERE s.slug = ANY($1::text[])`,
+     WHERE s.slug = ANY($1::text[]) AND d.accepted_claim_json IS NULL`,
     [slugs],
   );
   for (const row of result.rows) {
@@ -777,7 +788,6 @@ async function loadReviewPreservation(client: pg.PoolClient, slugs: string[]): P
       review_state: String(row.review_state),
       reviewed_candidate_key: String(row.reviewed_candidate_key),
       corrections: corrections as Record<string, unknown>,
-      forecast_review_state: row.forecast_review_state ? String(row.forecast_review_state) : null,
     });
   }
   return preserved;

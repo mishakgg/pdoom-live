@@ -7,6 +7,7 @@ import {
 } from "@pdoom/contracts";
 import { effectiveReviewStateSql } from "./coverage";
 import { getPool } from "./pool";
+import { websiteSourceItemSql, websiteStatementSql } from "./website-visibility";
 
 type Queryable = {
   query: (text: string, values?: unknown[]) => Promise<{ rows: Array<Record<string, unknown>> }>;
@@ -51,13 +52,18 @@ WITH entries AS (
       JOIN people p ON p.id = s.person_id
       WHERE s.source_item_id = si.id
         AND ${statementReviewSql} = ANY($2::text[])
+        AND ${websiteStatementSql()}
         AND p.status = ANY($1::text[])
     )
   UNION ALL
   SELECT '/statements/' || s.slug, COALESCE(s.event_time, s.created_at)
   FROM statements s
   JOIN people p ON p.id = s.person_id
+  JOIN source_items si ON si.id = s.source_item_id
+  JOIN sources src ON src.id = si.source_id
   WHERE ${statementReviewSql} = ANY($2::text[])
+    AND ${websiteStatementSql()}
+    AND src.review_state = ANY($2::text[])
     AND p.status = ANY($1::text[])
     AND s.slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'
   UNION ALL
@@ -127,6 +133,8 @@ export async function listFeedEntries(pool: Queryable, limit: number): Promise<F
      JOIN source_items si ON si.id = s.source_item_id
      JOIN sources src ON src.id = si.source_id
      WHERE ${statementReviewSql} = ANY($1::text[])
+       AND ${websiteStatementSql()}
+       AND src.review_state = ANY($1::text[])
        AND p.status = ANY($2::text[])
        AND s.slug ~ '^[a-z0-9]+(-[a-z0-9]+)*$'
      ORDER BY s.event_time DESC NULLS LAST, s.created_at DESC, s.id DESC
@@ -175,7 +183,7 @@ export async function getStatementDiscovery(slug: string, pool: Queryable = getP
   const result = await pool.query(
     `SELECT s.slug, s.statement_type, s.normalized_text, ${statementReviewSql} AS review_state, s.event_time,
             p.slug AS person_slug, p.display_name, p.status AS person_status,
-            src.name AS source_name, src.source_type,
+            src.name AS source_name, src.source_type, src.review_state AS source_review_state,
             si.slug AS source_item_slug, si.title AS source_item_title, si.canonical_url AS source_canonical_url,
             si.availability, si.collection_status,
             d.dataset_kind
@@ -184,13 +192,14 @@ export async function getStatementDiscovery(slug: string, pool: Queryable = getP
      JOIN source_items si ON si.id = s.source_item_id
      JOIN sources src ON src.id = si.source_id
      LEFT JOIN dataset_imports d ON d.is_current
-     WHERE s.slug = $1`,
+     WHERE s.slug = $1 AND ${websiteStatementSql()}`,
     [slug],
   );
   const row = result.rows[0];
   if (!row || !isPublicReviewState(String(row.review_state))) return null;
   const indexable =
-    isIndexableReviewState(String(row.review_state)) && isIndexablePersonStatus(String(row.person_status));
+    isIndexableReviewState(String(row.review_state)) && isIndexablePersonStatus(String(row.person_status)) &&
+    isIndexableReviewState(String(row.source_review_state));
   return {
     slug: String(row.slug),
     statement_type: String(row.statement_type),
@@ -240,6 +249,7 @@ export async function getSourceItemDiscovery(slug: string, pool: Queryable = get
               JOIN people p ON p.id = s.person_id
               WHERE s.source_item_id = si.id
                 AND ${statementReviewSql} = ANY($2::text[])
+                AND ${websiteStatementSql()}
                 AND p.status = ANY($3::text[])
             ) AS has_indexable_statement,
             EXISTS (
@@ -249,6 +259,7 @@ export async function getSourceItemDiscovery(slug: string, pool: Queryable = get
               WHERE current.id IS NOT NULL
                 AND s.source_item_id = current.id
                 AND ${statementReviewSql} = ANY($2::text[])
+                AND ${websiteStatementSql()}
                 AND p.status = ANY($3::text[])
             ) AS current_has_indexable_statement
      FROM source_items si
@@ -257,8 +268,9 @@ export async function getSourceItemDiscovery(slug: string, pool: Queryable = get
        ON current.source_id = si.source_id
       AND current.logical_key = si.logical_key
       AND current.is_current
+      AND ${websiteSourceItemSql("current")}
      LEFT JOIN dataset_imports d ON d.is_current
-     WHERE si.slug = $1`,
+     WHERE si.slug = $1 AND ${websiteSourceItemSql()}`,
     [slug, reviewStates, personStatuses],
   );
   const row = result.rows[0];

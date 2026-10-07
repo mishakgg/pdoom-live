@@ -34,9 +34,9 @@ export function SourceRecord({ source }: { source: LoadedSource }) {
   const reading = collectionReading(source);
   return (
     <>
-      <p className="kicker">{phraseLabel(source.source_type)} · {phraseLabel(source.collection_method)} · {freshnessLabel(source.freshness)}</p>
+      <p className="kicker">{phraseLabel(source.source_type)}{source.audit_only ? " · Statement audit source" : ` · ${phraseLabel(source.collection_method)} · ${freshnessLabel(source.freshness)}`}</p>
       <h1>{source.name}</h1>
-      {source.rights_notes ? <p className="lede">{source.rights_notes}</p> : <p className="lede">No rights note is recorded for this source.</p>}
+      {source.audit_only ? <p className="lede">This source container is unreviewed. Only items supporting public statements are shown for audit.</p> : source.rights_notes ? <p className="lede">{source.rights_notes}</p> : <p className="lede">No rights note is recorded for this source.</p>}
       <dl className="audit">
         <dt>Source type</dt>
         <dd>{phraseLabel(source.source_type)}</dd>
@@ -47,14 +47,18 @@ export function SourceRecord({ source }: { source: LoadedSource }) {
           {reviewLabel(source.review_state)}
           {isHumanVerified(source.review_state) ? "" : " · not a settled source record"}
         </dd>
-        <dt>Last successful collection</dt>
-        <dd>{formatWhen(source.last_success_at)}</dd>
-        <dt>Last check</dt>
-        <dd>{formatWhen(source.last_checked_at)}</dd>
-        <dt>Collection reading</dt>
-        <dd>{reading.label}. {reading.detail}</dd>
-        <dt>Collection</dt>
-        <dd>{source.enabled ? "Enabled" : "Disabled"}{source.collection_adapter ? ` · ${source.collection_adapter}` : ""}</dd>
+        {!source.audit_only ? (
+          <>
+            <dt>Last successful collection</dt>
+            <dd>{formatWhen(source.last_success_at)}</dd>
+            <dt>Last check</dt>
+            <dd>{formatWhen(source.last_checked_at)}</dd>
+            <dt>Collection reading</dt>
+            <dd>{reading.label}. {reading.detail}</dd>
+            <dt>Collection</dt>
+            <dd>{source.enabled ? "Enabled" : "Disabled"}{source.collection_adapter ? ` · ${source.collection_adapter}` : ""}</dd>
+          </>
+        ) : null}
         {source.owner_slug && source.owner_name ? (
           <>
             <dt>Owner</dt>
@@ -62,7 +66,7 @@ export function SourceRecord({ source }: { source: LoadedSource }) {
           </>
         ) : null}
       </dl>
-      {!source.enabled ? <p className="warning">This source is disabled. Items already stored remain listed.</p> : null}
+      {!source.audit_only && !source.enabled ? <p className="warning">This source is disabled. Items already stored remain listed.</p> : null}
       <section aria-labelledby="source-items">
         <h2 id="source-items">Items</h2>
         {source.items.length ? source.items.map((item) => {

@@ -22,6 +22,7 @@ import {
 } from "@pdoom/contracts";
 import type pg from "pg";
 import { effectiveReviewStateSql } from "./coverage";
+import { websiteStatementSql } from "./website-visibility";
 import { getPool } from "./pool";
 import { InvalidCursorError } from "./queries";
 import { isPool, isStatementTimeout, withConsistentRead } from "./read-snapshot";
@@ -366,7 +367,7 @@ function peopleSql(prepared: ReturnType<typeof prepareSearchText>, parsed: Searc
         ${rank} AS hit_rank
       FROM people p
       CROSS JOIN q
-      LEFT JOIN affiliations a ON a.id = p.current_affiliation_id
+      LEFT JOIN affiliations a ON a.id = p.current_affiliation_id AND a.review_state = ANY(q.public_states)
       LEFT JOIN organizations o ON o.id = a.organization_id
       WHERE (${person}::text IS NULL OR p.slug = ${person})
     ),
@@ -545,14 +546,14 @@ function statementsSql(prepared: ReturnType<typeof prepareSearchText>, parsed: S
       JOIN people p ON p.id = s.person_id
       JOIN source_items si ON si.id = s.source_item_id
       JOIN sources src ON src.id = si.source_id
-      LEFT JOIN forecasts f ON f.statement_id = s.id
+      LEFT JOIN forecasts f ON f.statement_id = s.id AND f.review_state = ANY(q.public_states)
       LEFT JOIN LATERAL (
         SELECT jsonb_agg(jsonb_build_object('slug', t.slug, 'name', t.name) ORDER BY t.name) AS topics
         FROM statement_topics st
         JOIN topics t ON t.id = st.topic_id
         WHERE st.statement_id = s.id
       ) topics ON true
-      WHERE ${effectiveReviewStateSql("s")} = ANY(q.public_states)
+      WHERE ${websiteStatementSql()}
         AND s.search_vector @@ q.tsq
         AND (${filters.person}::text IS NULL OR p.slug = ${filters.person})
         AND (${filters.statementType}::text IS NULL OR s.statement_type = ${filters.statementType})
@@ -607,16 +608,35 @@ function sourceItemsSql(prepared: ReturnType<typeof prepareSearchText>, parsed: 
         AND (${person}::text IS NULL OR EXISTS (
           SELECT 1 FROM source_participants sp
           JOIN people p ON p.id = sp.person_id
-          WHERE sp.source_item_id = si.id AND p.slug = ${person}
+          WHERE sp.source_item_id = si.id AND p.slug = ${person} AND EXISTS (
+            SELECT 1 FROM statements attributed_s
+            WHERE attributed_s.source_item_id = si.id AND attributed_s.person_id = sp.person_id
+              AND ${websiteStatementSql("attributed_s")}
+          )
         ) OR EXISTS (
           SELECT 1 FROM people owner
           WHERE owner.id = src.owner_person_id AND owner.slug = ${person}
+            AND src.review_state = ANY(q.public_states)
         ))
     ),
-    matched AS (
+    -- Match titles first so expensive publication checks run only on candidate items.
+    text_matches AS MATERIALIZED (
       SELECT scored.*, ${matchFromRank("scored.hit_rank")} AS hit_match
       FROM scored
       WHERE scored.hit_rank > 0
+    ),
+    matched_item_statements AS MATERIALIZED (
+      SELECT candidate_s.* FROM statements candidate_s
+      JOIN text_matches ON text_matches.id = candidate_s.source_item_id
+    ),
+    public_items AS MATERIALIZED (
+      SELECT DISTINCT candidate_s.source_item_id
+      FROM matched_item_statements candidate_s
+      WHERE ${websiteStatementSql("candidate_s")}
+    ),
+    matched AS (
+      SELECT text_matches.* FROM text_matches
+      JOIN public_items ON public_items.source_item_id = text_matches.id
     )
     ${mode === "count"
       ? "SELECT count(*)::int AS total_count FROM matched"
