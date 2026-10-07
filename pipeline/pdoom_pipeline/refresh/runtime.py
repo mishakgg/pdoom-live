@@ -11,6 +11,7 @@ from pdoom_pipeline.collectors.rss import RssCollector
 from pdoom_pipeline.errors import CollectorFailure
 from pdoom_pipeline.fetch import SafeFetcher
 from pdoom_pipeline.ingest.store import ObservationStore
+from pdoom_pipeline.refresh.admission import github_username, openalex_author, public_url
 
 ADMITTED = ("rss", "arxiv", "github", "openalex_works")
 
@@ -24,12 +25,16 @@ def call_adapter(
 ) -> dict[str, Any]:
     if name not in ADMITTED:
         raise CollectorFailure("parser_unsupported", f"adapter {name} is not admitted")
+    fetcher.last = None
     try:
         observations = _collect(name, fetcher=fetcher, source=source, observed_at=observed_at)
     except CollectorFailure:
-        if fetcher.last and fetcher.last.not_modified:
-            return _fetched(fetcher, observations=[], outcome="unchanged")
         raise
+    except Exception as exc:
+        raise CollectorFailure("collector_bug", "adapter failed before validation") from exc
+    for observation in observations:
+        if observation.source_identity != source["source_identity"]:
+            raise CollectorFailure("blocked_by_policy", "collector returned a different source identity")
     outcome = "unchanged" if fetcher.last and fetcher.last.not_modified else "fetched"
     return _fetched(fetcher, observations=observations, outcome=outcome)
 
@@ -68,6 +73,7 @@ def adapter_source(source: dict[str, Any]) -> dict[str, Any] | None:
     if name is None or not source.get("enabled", True):
         return None
     url = source["canonical_url"]
+    public_url(url)
     payload: dict[str, Any] = {
         "adapter": name,
         "source_identity": source["id"],
@@ -75,13 +81,23 @@ def adapter_source(source: dict[str, Any]) -> dict[str, Any] | None:
         "name": source.get("name") or source["id"],
     }
     if name == "github":
-        username = url.rstrip("/").split("/")[-1]
+        username = github_username(source)
         payload["username"] = username
         payload["url"] = f"https://api.github.com/users/{username}/repos?per_page=10&sort=updated&type=owner"
     elif name == "openalex_works":
-        author = url.rstrip("/").split(":")[-1]
+        author = openalex_author(source)
         payload["openalex_author_id"] = author
+        from urllib.parse import urlencode
+        payload["url"] = "https://api.openalex.org/works?" + urlencode({
+            "filter": f"authorships.author.id:{author}", "per-page": 25,
+            "sort": "publication_date:desc",
+            "select": "id,display_name,publication_date,doi,ids,authorships,primary_location,abstract_inverted_index,language",
+            "mailto": "collector@pdoom.live",
+        })
     elif name == "arxiv":
+        parsed = public_url(url)
+        if parsed.hostname not in {"export.arxiv.org", "arxiv.org"} or parsed.path != "/api/query":
+            raise CollectorFailure("blocked_by_policy", "arXiv source must be its official query endpoint")
         payload["search_query"] = source.get("search_query") or ""
     return payload
 

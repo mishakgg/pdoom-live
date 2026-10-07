@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any
 
 from pdoom_pipeline.contracts import SourceObservation
+from pdoom_pipeline.ingest.writes import WriteBytes, atomic_bytes
 
 
 @dataclass
@@ -121,11 +122,8 @@ class ObservationStore:
         status = "new" if item.content_version == 1 else "version_changed"
         return IngestResult(status, logical_key, item.content_version, observation.content_hash)
 
-    def save(self, path: Path) -> None:
-        path.parent.mkdir(parents=True, exist_ok=True)
-        temporary = path.with_suffix(path.suffix + ".tmp")
-        temporary.write_text(json.dumps(self.to_dict(), sort_keys=True), encoding="utf-8")
-        temporary.replace(path)
+    def save(self, path: Path, write_bytes: WriteBytes | None = None) -> None:
+        atomic_bytes(path, json.dumps(self.to_dict(), sort_keys=True).encode(), write_bytes)
 
     def to_dict(self) -> dict[str, Any]:
         return {
