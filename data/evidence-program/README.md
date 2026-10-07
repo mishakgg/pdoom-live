@@ -18,3 +18,5 @@ Third-party source rights are not changed by the repository's [data license](../
 ## Additive research catalogs
 
 [Chinese safety-evaluation research](research/chinese-safety-evaluations.json) uses separate provisional ZHS IDs. It contains source metadata and scoped findings for seven proposed new families plus one CN020 enrichment; no prompt corpus, full result table or production-ready observation is embedded. All candidates remain unadmitted. The original 64-source inventory and audit are unchanged. Read the [review and proposed adapter specification](../../docs/evidence-program/research/chinese-safety-evaluations.md) before interpreting its fields.
+
+[Adoption and productivity research](research/adoption-productivity.json) records five provisional AP collections, including GL023 enrichment and a distinct METR productivity family. Separate study/wave identities, scoped artifact access/rights, interpretation guards and next actions remain research-only. No participant records or operational observations are embedded. See the [review and proposed StatCan adapter](../../docs/evidence-program/research/adoption-productivity.md).

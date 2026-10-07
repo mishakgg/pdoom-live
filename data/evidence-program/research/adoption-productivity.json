@@ -1,0 +1,1395 @@
+{
+  "catalog_version": "adoption-productivity-research/1.0.0",
+  "reviewed_on": "2026-10-07",
+  "title": "Real-world AI adoption and productivity: bounded primary-source review",
+  "catalog_state": "research_only_not_admitted",
+  "operational_admission": "not_admitted",
+  "collector_enabled": false,
+  "scoring_enabled": false,
+  "scope": "Five source collections, with distinct study/wave evidence units. Labor-market outcomes excluded. Research metadata and limited sourced findings only; no raw upload, participant rows, signed URLs or production-ready observations.",
+  "baseline_inventory": {
+    "repo_path": "data/evidence-program/source_inventory.json",
+    "version": "1.1",
+    "record_count": 64,
+    "audit_commit": "f5274396885dbb654fc2861a78fa5be8f42fad38",
+    "sha256": "a4b5046c3dec44598eeab3f025db75783f9ae5f702e0570d7b31fb3026dde678"
+  },
+  "repository_review_commit": "0d593337b6f5921a1b5ebdef2052bdf8dee0cd84",
+  "priority_ranking": [
+    {
+      "candidate_id": "AP001",
+      "reason": "Bounded structured national adoption, verified denominator/date metadata and scoped public reuse terms."
+    },
+    {
+      "candidate_id": "AP002",
+      "reason": "Task-randomized real work with separated forecasts/durations, transparent caveats and pinned release identities; CSV/code rights hold."
+    },
+    {
+      "candidate_id": "AP003",
+      "reason": "Routine operational customer-support outcomes outside coding; public final result tables, with nonrandom design and replication/rights limits."
+    }
+  ],
+  "collections": [
+    {
+      "candidate_id": "AP001",
+      "name": "Statistics Canada business AI use and linked productivity",
+      "summary": "Two distinct evidence units: CSBC weighted adoption aggregates and SDTIU-linked administrative productivity associations. Shared publisher is not shared study identity.",
+      "classification": "new_relative_to_frozen_inventory",
+      "collection_status": "candidate_not_collected",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "inventory_relationships": [],
+      "historical_coverage": "CSBC retrospective AI-use module verified for Q2 2024, Q2 2025 and Q2 2026. SDTIU companion pools 2019/2021 waves and was summarized 22 April 2026.",
+      "update_frequency": "CSBC tables explicitly Occasional, despite the broader quarterly survey. SDTIU summary is a static research result.",
+      "access_method": "Public table pages, three WDS metadata objects and bounded discrete points without authentication. No complete cube, firm-level panel or administrative microdata downloaded.",
+      "rights_summary": "Applicable public StatCan tables/publications use the Statistics Canada Open Licence. Preserve prescribed attribution/adaptation notices, not merely a license URL. Underlying publisher paper and confidential inputs have separate unresolved rights/access.",
+      "duplicate_evidence_policy": "Table cells, WDS and comparative articles reproduce the same wave estimates. SDTIU HTML/PDF and three nested specifications share one study; never attach these coefficients to CSBC adoption rows.",
+      "artifacts": [
+        {
+          "artifact_id": "statcan_licence",
+          "url": "https://www.statcan.gc.ca/en/terms-conditions/open-licence",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "Grant, attribution, limitations and identification prohibition",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "declared_license",
+          "license_identifier": "Statistics-Canada-Open-Licence",
+          "rights_evidence_artifact_ids": [
+            "statcan_licence"
+          ],
+          "rights_scope": "Applicable non-confidential Statistics Canada information only; excludes third-party publications and confidential inputs.",
+          "rights_note": "Allows covered commercial reuse/adaptation with accurate representation, official reproduction/adaptation attribution and non-endorsement. Identification-oriented linkage prohibited."
+        },
+        {
+          "artifact_id": "statcan_table_2024",
+          "url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310082501",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "Q2 2024 retrospective AI-use table; frequency; footnotes",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "declared_license",
+          "license_identifier": "Statistics-Canada-Open-Licence",
+          "rights_evidence_artifact_ids": [
+            "statcan_licence"
+          ],
+          "rights_scope": "Applicable non-confidential Statistics Canada information only; excludes third-party publications and confidential inputs.",
+          "rights_note": "Allows covered commercial reuse/adaptation with accurate representation, official reproduction/adaptation attribution and non-endorsement. Identification-oriented linkage prohibited."
+        },
+        {
+          "artifact_id": "statcan_table_2025",
+          "url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310100401",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "Q2 2025 retrospective AI-use table; frequency; footnotes",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "declared_license",
+          "license_identifier": "Statistics-Canada-Open-Licence",
+          "rights_evidence_artifact_ids": [
+            "statcan_licence"
+          ],
+          "rights_scope": "Applicable non-confidential Statistics Canada information only; excludes third-party publications and confidential inputs.",
+          "rights_note": "Allows covered commercial reuse/adaptation with accurate representation, official reproduction/adaptation attribution and non-endorsement. Identification-oriented linkage prohibited."
+        },
+        {
+          "artifact_id": "statcan_table_2026",
+          "url": "https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=3310116701",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "Q2 2026 retrospective AI-use table; frequency; footnotes",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "declared_license",
+          "license_identifier": "Statistics-Canada-Open-Licence",
+          "rights_evidence_artifact_ids": [
+            "statcan_licence"
+          ],
+          "rights_scope": "Applicable non-confidential Statistics Canada information only; excludes third-party publications and confidential inputs.",
+          "rights_note": "Allows covered commercial reuse/adaptation with accurate representation, official reproduction/adaptation attribution and non-endorsement. Identification-oriented linkage prohibited."
+        },
+        {
+          "artifact_id": "statcan_metadata",
+          "url": "https://www150.statcan.gc.ca/t1/wds/rest/getCubeMetadata",
+          "access_status": "bounded_sample_opened",
+          "inspection_note": "Three cube metadata objects and per-wave population/question members verified. Hash identifies review response; raw response not bundled.",
+          "provenance_locator": "POST three product objects; members 1/25/1; unit 239; footnotes",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "declared_license",
+          "license_identifier": "Statistics-Canada-Open-Licence",
+          "rights_evidence_artifact_ids": [
+            "statcan_licence"
+          ],
+          "rights_scope": "Applicable non-confidential Statistics Canada information only; excludes third-party publications and confidential inputs.",
+          "rights_note": "Allows covered commercial reuse/adaptation with accurate representation, official reproduction/adaptation attribution and non-endorsement. Identification-oriented linkage prohibited.",
+          "sha256": "a2744c1b601cf4b73fbd467d5fd85558451546bcc03f850bc3bb58c8f54c80a0"
+        },
+        {
+          "artifact_id": "statcan_points",
+          "url": "https://www150.statcan.gc.ca/t1/wds/rest/getDataFromCubePidCoordAndLatestNPeriods",
+          "access_status": "bounded_sample_opened",
+          "inspection_note": "Private/all-industry points rechecked for all three products. SHA-256 identifies the six-point response; separate LLM control not included in that hash. No raw fixture in repo.",
+          "provenance_locator": "POST six denominator-check points and separate conditional-LLM control",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "declared_license",
+          "license_identifier": "Statistics-Canada-Open-Licence",
+          "rights_evidence_artifact_ids": [
+            "statcan_licence"
+          ],
+          "rights_scope": "Applicable non-confidential Statistics Canada information only; excludes third-party publications and confidential inputs.",
+          "rights_note": "Allows covered commercial reuse/adaptation with accurate representation, official reproduction/adaptation attribution and non-endorsement. Identification-oriented linkage prohibited.",
+          "sha256": "d3ebeb6b4646eb8e324799d575eb8767196180ebf35ceed9f809a1858f482b76"
+        },
+        {
+          "artifact_id": "statcan_guide",
+          "url": "https://www.statcan.gc.ca/en/developers/wds/user-guide",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "Discrete POST requests, reference-date roles, code definitions and Eastern release time",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "declared_license",
+          "license_identifier": "Statistics-Canada-Open-Licence",
+          "rights_evidence_artifact_ids": [
+            "statcan_licence"
+          ],
+          "rights_scope": "Applicable non-confidential Statistics Canada information only; excludes third-party publications and confidential inputs.",
+          "rights_note": "Allows covered commercial reuse/adaptation with accurate representation, official reproduction/adaptation attribution and non-endorsement. Identification-oriented linkage prohibited."
+        },
+        {
+          "artifact_id": "statcan_instrument",
+          "url": "https://www.statcan.gc.ca/en/statistical-programs/instrument/5318_Q1_V25",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "Q1 respondent classification; Q33 retrospective use and conditional applications",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "declared_license",
+          "license_identifier": "Statistics-Canada-Open-Licence",
+          "rights_evidence_artifact_ids": [
+            "statcan_licence"
+          ],
+          "rights_scope": "Applicable non-confidential Statistics Canada information only; excludes third-party publications and confidential inputs.",
+          "rights_note": "Allows covered commercial reuse/adaptation with accurate representation, official reproduction/adaptation attribution and non-endorsement. Identification-oriented linkage prohibited."
+        },
+        {
+          "artifact_id": "statcan_analysis",
+          "url": "https://www150.statcan.gc.ca/n1/pub/11-621-m/11-621-m2026010-eng.htm",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "2026 sampling/collection; three-wave comparison and applications among users",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "declared_license",
+          "license_identifier": "Statistics-Canada-Open-Licence",
+          "rights_evidence_artifact_ids": [
+            "statcan_licence"
+          ],
+          "rights_scope": "Applicable non-confidential Statistics Canada information only; excludes third-party publications and confidential inputs.",
+          "rights_note": "Allows covered commercial reuse/adaptation with accurate representation, official reproduction/adaptation attribution and non-endorsement. Identification-oriented linkage prohibited."
+        },
+        {
+          "artifact_id": "statcan_sdtiu_summary",
+          "url": "https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026004/article/00002-eng.htm",
+          "access_status": "primary_opened",
+          "inspection_note": "Public summary HTML and official PDF independently read; underlying journal paper not inspected.",
+          "provenance_locator": "22 April 2026; Figure 2 and linked-study description",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "declared_license",
+          "license_identifier": "Statistics-Canada-Open-Licence",
+          "rights_evidence_artifact_ids": [
+            "statcan_licence"
+          ],
+          "rights_scope": "Applicable non-confidential Statistics Canada information only; excludes third-party publications and confidential inputs.",
+          "rights_note": "Allows covered commercial reuse/adaptation with accurate representation, official reproduction/adaptation attribution and non-endorsement. Identification-oriented linkage prohibited."
+        },
+        {
+          "artifact_id": "statcan_sdtiu_paper",
+          "url": "https://utppublishing.com/doi/10.3138/cpp.2025-065",
+          "access_status": "access_blocked",
+          "inspection_note": "Publisher returned 403 Forbidden. No alternate access route attempted; methods and rights unresolved.",
+          "provenance_locator": "Underlying Canadian Public Policy article identity",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        }
+      ],
+      "evidence_units": [
+        {
+          "unit_id": "statcan_csbc_ai_use",
+          "measurement_type": "self_reported_adoption",
+          "causal_status": "descriptive",
+          "deployment_maturity": "unspecified",
+          "population_or_sample": "Weighted aggregates from establishments with employees; selected subgroup is private-sector businesses. 2026 article: 21,105 sampled units, 9,251 respondents.",
+          "publication_or_wave_identity": "Separate Q2 2024/2025/2026 products",
+          "artifact_ids": [
+            "statcan_metadata",
+            "statcan_points",
+            "statcan_instrument",
+            "statcan_analysis"
+          ],
+          "comparability_limitations": "Respondent-relative 12-month recall; no pilot-versus-routine distinction, firm-panel continuity or measured productivity."
+        },
+        {
+          "unit_id": "statcan_sdtiu_linked_productivity",
+          "measurement_type": "administrative_productivity",
+          "causal_status": "observational_association",
+          "deployment_maturity": "not_established",
+          "population_or_sample": "Pooled 2019 and 2021 SDTIU linked to administrative business records; exact analyzed N not established.",
+          "publication_or_wave_identity": "22 April 2026 summary; underlying DOI 10.3138/cpp.2025-065",
+          "artifact_ids": [
+            "statcan_sdtiu_summary",
+            "statcan_sdtiu_paper"
+          ],
+          "comparability_limitations": "Nested controls on overlapping evidence; exact productivity construction, SE and linked microdata access unresolved."
+        }
+      ],
+      "sample_fields": [
+        "WDS: productId, coordinate, vectorId, responseStatusCode",
+        "refPer, refPer2, refPerRaw, refPerRaw2",
+        "value, decimals, scalarFactorCode",
+        "statusCode, symbolCode, securityLevelCode, frequencyCode",
+        "metadata memberUomCode, member definitions, footnotes and corrections",
+        "native releaseTime (Eastern semantics, no asserted UTC offset)",
+        "separate wave, collection window and respondent-relative recall",
+        "SDTIU result: study, specification, association, significance, source figure"
+      ],
+      "findings": [
+        {
+          "finding_id": "AP001-F1",
+          "text": "Private-sector values are 6.2%, 12.4%, 19.0%; all-industry values are 6.1%, 12.2%, 19.2%. Each private coordinate is 1.25.1.0.0.0.0.0.0.0 and independently validated against its own metadata.",
+          "evidence_artifact_ids": [
+            "statcan_metadata",
+            "statcan_points"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP001-F2",
+          "text": "The 2026 24.8% LLM figure is conditional on AI use, not all-business adoption, and must be excluded from the proposed adapter.",
+          "evidence_artifact_ids": [
+            "statcan_points",
+            "statcan_instrument",
+            "statcan_analysis"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP001-F3",
+          "text": "Q2 collection windows are 2 April–6 May 2024, 1 April–5 May 2025, and 1 April–6 May 2026. Native refPer January 1 and refPerRaw March 1 are separate source fields; their dates are not collection dates.",
+          "evidence_artifact_ids": [
+            "statcan_metadata",
+            "statcan_points"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP001-F4",
+          "text": "Inspected points: statusCode 3 (A/excellent), symbolCode 0, securityLevelCode 0/public, decimals 1, scalarFactorCode 0, frequencyCode 18/Occasional; metadata unit 239/percent. Grade A denotes an SE category (0 to under 2.5 percentage points), not an exact SE or confidence interval.",
+          "evidence_artifact_ids": [
+            "statcan_guide",
+            "statcan_metadata",
+            "statcan_points"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP001-F5",
+          "text": "SDTIU Figure 2 gives 16.8%, 10.2%, and 5.1% productivity associations under successively richer controls. First two p<0.01; last not significant. They are nested specifications, not three independent causal effects.",
+          "evidence_artifact_ids": [
+            "statcan_sdtiu_summary"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP001-F6",
+          "text": "Fresh response arrived in request order; the earlier claimed out-of-order response was not independently reproduced. Match responses by product/coordinate defensively without claiming an observed ordering failure.",
+          "evidence_artifact_ids": [
+            "statcan_points",
+            "statcan_guide"
+          ],
+          "verification_level": "primary_source_reported"
+        }
+      ],
+      "limitations": [
+        "No source observations admitted; response hashes identify reviewed artifacts but executable fixtures are absent.",
+        "Do not infer quarterly history beyond inspected module waves.",
+        "No exact SDTIU formula, sample N, standard errors or public linked microdata established."
+      ]
+    },
+    {
+      "candidate_id": "AP002",
+      "name": "METR real-work developer productivity experiments",
+      "summary": "Task-randomized AI access on experienced developers’ own repositories; recorded duration is separate from predictions and representative adoption.",
+      "classification": "new_relative_to_frozen_inventory",
+      "collection_status": "candidate_not_collected",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "inventory_relationships": [
+        {
+          "source_id": "GL004",
+          "relationship": "same_publisher_distinct_evidence_family",
+          "evidence_artifact_id": "metr_early_paper"
+        }
+      ],
+      "historical_coverage": "Early study: February–June 2025; announcement 10 July and paper v2 25 July 2025. Later experiment began August 2025 and was reported 24 February 2026.",
+      "update_frequency": "Episodic studies and publication/repository revisions; not a regular statistical series.",
+      "access_method": "Public versioned paper, official blogs and pinned repositories. Header and first three rows of each CSV were read; no complete acquisition or regression execution.",
+      "rights_summary": "Paper v2 explicitly CC BY 4.0. Both repository API license fields were null; CSV and code reuse rights remain unspecified. No paper-to-data license inheritance.",
+      "duplicate_evidence_policy": "Early paper/blog/CSV are one experiment. Late returning participants create dependence, while tasks are new. No cross-release participant crosswalk established; GL004 horizons are distinct evidence.",
+      "artifacts": [
+        {
+          "artifact_id": "metr_early_paper",
+          "url": "https://arxiv.org/html/2507.09089v2",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "Abstract; 2.1–2.2; Appendix D.2; license",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-4.0",
+          "rights_evidence_artifact_ids": [
+            "metr_early_paper"
+          ],
+          "rights_scope": "Paper v2 only.",
+          "rights_note": "Paper’s explicit CC BY 4.0 statement does not cover separately hosted CSV/code."
+        },
+        {
+          "artifact_id": "metr_early_csv",
+          "url": "https://github.com/METR/Measuring-Early-2025-AI-on-Exp-OSS-Devs/blob/7ff2d7670235f531dff77eff58355bd77392f396/data_complete.csv",
+          "access_status": "bounded_sample_opened",
+          "inspection_note": "Nine-column header and three rows only; no participant rows retained in this catalog.",
+          "provenance_locator": "Header and first three rows",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact.",
+          "git_commit": "7ff2d7670235f531dff77eff58355bd77392f396",
+          "git_blob_sha": "b61294d8214aa723d2b15986ab050e516955004a"
+        },
+        {
+          "artifact_id": "metr_early_readme",
+          "url": "https://github.com/METR/Measuring-Early-2025-AI-on-Exp-OSS-Devs/blob/7ff2d7670235f531dff77eff58355bd77392f396/README.md",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "Data dictionary and regression interpretation",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact.",
+          "git_commit": "7ff2d7670235f531dff77eff58355bd77392f396"
+        },
+        {
+          "artifact_id": "metr_early_code",
+          "url": "https://github.com/METR/Measuring-Early-2025-AI-on-Exp-OSS-Devs/blob/7ff2d7670235f531dff77eff58355bd77392f396/regression.py",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "run_regression; treatment-mean imputation; uncertainty comment",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact.",
+          "git_commit": "7ff2d7670235f531dff77eff58355bd77392f396"
+        },
+        {
+          "artifact_id": "metr_coding_correction",
+          "url": "https://github.com/METR/Measuring-Early-2025-AI-on-Exp-OSS-Devs/commit/7ff2d7670235f531dff77eff58355bd77392f396",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "Commit timestamp and README-only diff",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "metr_late_csv",
+          "url": "https://github.com/METR/Measuring-Late-2025-AI-on-OSS-Devs/blob/55f007216a26493f0a9b7650ab3191cad7fb9e7f/data.csv",
+          "access_status": "bounded_sample_opened",
+          "inspection_note": "Three rows include complete and incomplete tasks; no participant rows retained.",
+          "provenance_locator": "Header and first three rows",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact.",
+          "git_commit": "55f007216a26493f0a9b7650ab3191cad7fb9e7f",
+          "git_blob_sha": "96ce351cc1bbdb3d3bfc863d4beca038754392d2"
+        },
+        {
+          "artifact_id": "metr_late_readme",
+          "url": "https://github.com/METR/Measuring-Late-2025-AI-on-OSS-Devs/blob/55f007216a26493f0a9b7650ab3191cad7fb9e7f/README.md",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "Field descriptions, isPanelDeveloper and new issues",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact.",
+          "git_commit": "55f007216a26493f0a9b7650ab3191cad7fb9e7f"
+        },
+        {
+          "artifact_id": "metr_late_code",
+          "url": "https://github.com/METR/Measuring-Late-2025-AI-on-OSS-Devs/blob/55f007216a26493f0a9b7650ab3191cad7fb9e7f/regression.py",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "zero_fill, ditched/completed/started filtering",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact.",
+          "git_commit": "55f007216a26493f0a9b7650ab3191cad7fb9e7f"
+        },
+        {
+          "artifact_id": "metr_late_update",
+          "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "Selection, compensation, concurrent-agent limitations and subgroup results",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "metr_early_repo_metadata",
+          "url": "https://api.github.com/repos/METR/Measuring-Early-2025-AI-on-Exp-OSS-Devs",
+          "access_status": "metadata_only",
+          "inspection_note": "Repository metadata and root contents inspected; no effective code/data license established.",
+          "provenance_locator": "license:null and root inventory",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "metr_late_repo_metadata",
+          "url": "https://api.github.com/repos/METR/Measuring-Late-2025-AI-on-OSS-Devs",
+          "access_status": "metadata_only",
+          "inspection_note": "Repository metadata and root contents inspected; no effective code/data license established.",
+          "provenance_locator": "license:null and root inventory",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        }
+      ],
+      "evidence_units": [
+        {
+          "unit_id": "metr_early_2025",
+          "measurement_type": "recorded_task_duration",
+          "causal_status": "randomized_access_effect",
+          "deployment_maturity": "experimental_access_real_tasks",
+          "population_or_sample": "16 experienced developers and 246 tasks",
+          "publication_or_wave_identity": "arXiv 2507.09089v2; corrected README at 7ff2d7670235f531dff77eff58355bd77392f396",
+          "artifact_ids": [
+            "metr_early_paper",
+            "metr_early_csv",
+            "metr_early_readme"
+          ],
+          "comparability_limitations": "Convenience sample; developer-entered minutes with recording checks; study-level tool descriptions do not identify each task’s model checkpoint."
+        },
+        {
+          "unit_id": "metr_late_2025",
+          "measurement_type": "recorded_task_duration",
+          "causal_status": "selection_limited_randomized_access",
+          "deployment_maturity": "experimental_access_real_tasks",
+          "population_or_sample": "Official update: 10 returning and 47 new developers, 143 repositories, more than 800 tasks",
+          "publication_or_wave_identity": "24 February 2026 report; repository 55f007216a26493f0a9b7650ab3191cad7fb9e7f",
+          "artifact_ids": [
+            "metr_late_update",
+            "metr_late_csv",
+            "metr_late_readme"
+          ],
+          "comparability_limitations": "Changed selection, pay and concurrent-agent timing; do not infer an unqualified time trend or equate anonymized IDs across releases."
+        }
+      ],
+      "sample_fields": [
+        "early CSV: dev_id, issue_id (identifiers documented, no values retained)",
+        "predicted_time_no_ai",
+        "predicted_time_ai_allowed",
+        "prior_task_exposure_1_to_5",
+        "external_resource_needs_1_to_3",
+        "ai_treatment",
+        "initial_implementation_time",
+        "post_review_implementation_time",
+        "late CSV: issue status, study dates and panel membership (schema differs)"
+      ],
+      "findings": [
+        {
+          "finding_id": "AP002-F1",
+          "text": "Early randomization reports approximately 19% longer completion time with AI. Forecasts and recorded outcomes remain distinct.",
+          "evidence_artifact_ids": [
+            "metr_early_paper"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP002-F2",
+          "text": "23 February 2026 correction changes README coding to 1=AI allowed and 0=AI disallowed; it does not change the CSV.",
+          "evidence_artifact_ids": [
+            "metr_coding_correction",
+            "metr_early_readme"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP002-F3",
+          "text": "The output labeled speedup is exp(adjusted treatment coefficient)-1; a positive value means longer time. It is not the unadjusted ratio of mean durations.",
+          "evidence_artifact_ids": [
+            "metr_early_code",
+            "metr_early_readme"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP002-F4",
+          "text": "Early code imputes missing review time by treatment-specific means; late code zero-fills and excludes ditched issues. Completed and started subsets differ. Preserve raw missingness and explicit transformations.",
+          "evidence_artifact_ids": [
+            "metr_early_code",
+            "metr_late_code"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP002-F5",
+          "text": "Paper v2 names HC3 uncertainty while an early code comment names nonrobust SE; no recomputation resolved that discrepancy. Preserve named publication and implementation conventions.",
+          "evidence_artifact_ids": [
+            "metr_early_paper",
+            "metr_early_code"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP002-F6",
+          "text": "Later report gives elapsed-time estimates of -18% for returning and -4% for new developers, both with intervals spanning zero. Selection and measurement changes limit interpretation. These are source-reported results, not recomputed estimates.",
+          "evidence_artifact_ids": [
+            "metr_late_update"
+          ],
+          "verification_level": "primary_source_reported"
+        }
+      ],
+      "limitations": [
+        "No CSV or code rights grant verified.",
+        "No independent execution, uncertainty reconciliation or participant linkage.",
+        "No macro-productivity, routine organization-wide deployment or p(doom) inference."
+      ]
+    },
+    {
+      "candidate_id": "AP003",
+      "name": "Generative AI at Work customer-support rollout",
+      "summary": "Administrative operational productivity in routine customer support, with nonrandom staggered deployment; public result tables rather than an established open microdataset.",
+      "classification": "new_relative_to_frozen_inventory",
+      "collection_status": "candidate_not_collected",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "inventory_relationships": [],
+      "historical_coverage": "Manuscript v2 Appendix A.1 documents September 2019–June 2021 records. Final article published 4 February 2025; QJE 140(2), May 2025, pages 889–942.",
+      "update_frequency": "One underlying rollout with manuscript, appendix and final-publication revisions.",
+      "access_method": "Author-hosted final publisher PDF directly opened. Publisher landing currently inaccessible; manuscript arXiv v2 separately opened. Code-deposit citation verified, manifest and terms unresolved.",
+      "rights_summary": "Final article explicitly CC BY-NC 4.0; commercial reuse is not generally cleared. Manuscript and replication deposit rights are separately unverified; no public participant data established.",
+      "duplicate_evidence_policy": "QJE, arXiv versions, NBER 31161 and institutional summaries concern the same rollout. Keep publication-specific sample/estimate identities; do not count repeated dissemination as independent evidence.",
+      "artifacts": [
+        {
+          "artifact_id": "qje_final_pdf",
+          "url": "https://danielle.li/assets/docs/GenerativeAIatWork.pdf",
+          "access_status": "primary_opened",
+          "inspection_note": "Author-hosted final publisher PDF directly opened; final results and printed rights verified.",
+          "provenance_locator": "pp.889,907,936,942; Table II col.3; sections III.C, IV.A–C",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "restricted_use",
+          "license_identifier": "CC-BY-NC-4.0",
+          "rights_evidence_artifact_ids": [
+            "qje_final_pdf"
+          ],
+          "rights_scope": "Final QJE article only.",
+          "rights_note": "Noncommercial license; no blanket clearance for commercial republication or separate data/code."
+        },
+        {
+          "artifact_id": "qje_publisher",
+          "url": "https://academic.oup.com/qje/article/140/2/889/7990658",
+          "access_status": "access_blocked",
+          "inspection_note": "Direct open redirected to inaccessible article-minimal endpoint. Main results independently verified via author-hosted final PDF.",
+          "provenance_locator": "DOI 10.1093/qje/qjae044",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "qje_manuscript_v2",
+          "url": "https://arxiv.org/html/2304.11771v2",
+          "access_status": "primary_opened",
+          "inspection_note": "Manuscript methods directly opened; not represented as independently reopened final appendix.",
+          "provenance_locator": "Version 6 November 2024; Appendix A.1–A.2.3",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "qje_manuscript_v1",
+          "url": "https://arxiv.org/abs/2304.11771v1",
+          "access_status": "metadata_only",
+          "inspection_note": "Versioned abstract metadata inspected; full manuscript not used as final-result authority.",
+          "provenance_locator": "Versioned abstract sample and 14% headline",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "qje_replication",
+          "url": "https://doi.org/10.7910/DVN/FSV1X7",
+          "access_status": "access_blocked",
+          "inspection_note": "Citation verified; DOI/Dataverse attempts did not expose a usable manifest or terms. No data availability or license inferred.",
+          "provenance_locator": "Final paper’s replication-code statement",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "qje_nber",
+          "url": "https://www.nber.org/papers/w31161",
+          "access_status": "access_blocked",
+          "inspection_note": "403 Forbidden; stopped on this endpoint.",
+          "provenance_locator": "Working-paper identity",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        }
+      ],
+      "evidence_units": [
+        {
+          "unit_id": "generative_ai_at_work_rollout",
+          "measurement_type": "administrative_productivity",
+          "causal_status": "nonrandom_staggered_rollout",
+          "deployment_maturity": "routine_customer_support",
+          "population_or_sample": "Final publication: 5,172 agents; Table II col.3: 12,295 agent-month regression observations",
+          "publication_or_wave_identity": "Final QJE qjae044 distinguished from arXiv v1/v2",
+          "artifact_ids": [
+            "qje_final_pdf",
+            "qje_manuscript_v2"
+          ],
+          "comparability_limitations": "Difference-in-differences identification assumptions; single support setting; a preceding small RCT does not make the headline analysis randomized."
+        }
+      ],
+      "sample_fields": [
+        "result-table metadata only: publication_version",
+        "study_id",
+        "outcome",
+        "estimand",
+        "table_and_column",
+        "coefficient",
+        "standard_error",
+        "standard_error_method",
+        "regression_observation_count",
+        "observation_unit",
+        "normalization_baseline",
+        "underlying appendix field descriptions are not public-download columns"
+      ],
+      "findings": [
+        {
+          "finding_id": "AP003-F1",
+          "text": "Final paper reports 5,172 agents and roughly 15% greater productivity. Table II col.3 is +0.301 resolutions/hour, SE 0.0329 clustered by agent, N=12,295 agent-months. The coefficient is not a percent and N is not the agent count.",
+          "evidence_artifact_ids": [
+            "qje_final_pdf"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP003-F2",
+          "text": "Published prose gives 15.2% relative to the pretreatment baseline. The Table II dependent-variable mean 2.176 is not that baseline and must not be substituted for it.",
+          "evidence_artifact_ids": [
+            "qje_final_pdf"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP003-F3",
+          "text": "The final analysis uses nonrandom staggered rollout with managerial allocation and constrained training/license capacity. Administrative productivity and customer-survey satisfaction are different measurement types.",
+          "evidence_artifact_ids": [
+            "qje_final_pdf"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP003-F4",
+          "text": "arXiv v1 reports about 5,000 agents and 14%; later manuscript/final report 5,172 and about 15%. These are revisions of overlapping evidence.",
+          "evidence_artifact_ids": [
+            "qje_manuscript_v1",
+            "qje_manuscript_v2",
+            "qje_final_pdf"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP003-F5",
+          "text": "Manuscript v2 corroborates September 2019–June 2021 and documented identifiers/timestamps. Its Appendix A.2.3 describes a dimensionally inconsistent division for resolutions/hour; do not implement that wording as a formula. Final-appendix construction remains unresolved.",
+          "evidence_artifact_ids": [
+            "qje_manuscript_v2"
+          ],
+          "verification_level": "primary_source_reported"
+        }
+      ],
+      "limitations": [
+        "Final 52-page appendix was not independently reopened; no signed download link retained.",
+        "Public raw data, replication file types and deposit rights remain unverified.",
+        "Outcome construction and exact normalization need verification before derived measurement code.",
+        "No labor-market outcomes included."
+      ]
+    },
+    {
+      "candidate_id": "AP004",
+      "name": "Cui and colleagues workplace developer experiments",
+      "summary": "Three main employer experiments estimate recorded code output under randomized Copilot access, retaining adoption IV, assignment ITT and ancillary evidence separately.",
+      "classification": "new_relative_to_frozen_inventory",
+      "collection_status": "candidate_not_collected",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "inventory_relationships": [],
+      "historical_coverage": "Main experiments during 2022–2023; observation windows extend through 2024. June 2025 author manuscript; final publication 27 February 2026 despite DOI containing 2025.",
+      "update_frequency": "Static experiments with manuscript and publication revisions; not a continuous productivity series.",
+      "access_method": "Publisher landing, public appendix and author manuscript opened. Supplement links replication files, but downstream retrieval failed; package contents are unknown.",
+      "rights_summary": "Copyright 2026 INFORMS observed; no applicable open license established for paper, appendix, author manuscript or replication package.",
+      "duplicate_evidence_policy": "Three main site experiments share derived pooled results; pooled estimate is not a fourth trial. Earlier versions overlap, but an exact two-company version crosswalk is unverified. Ancillary abandoned Accenture trial is outside headline N and pool.",
+      "artifacts": [
+        {
+          "artifact_id": "cui_publisher",
+          "url": "https://pubsonline.informs.org/doi/10.1287/mnsc.2025.00535",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "Abstract; article information; acknowledgments",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "Copyright 2026 INFORMS; no scoped open license established."
+        },
+        {
+          "artifact_id": "cui_appendix",
+          "url": "https://pubsonline.informs.org/doi/suppl/10.1287/mnsc.2025.00535/suppl_file/mnsc.2025.00535.sm1.pdf",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "15-page appendix: A; B.1/Table 5; E/Table 8; F/Table 9",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "cui_manuscript",
+          "url": "https://www.mertdemirer.com/Papers/Demirer_AI_productivity.pdf",
+          "access_status": "primary_opened",
+          "inspection_note": "38-page public author manuscript inspected; mutable URL requires byte/version pin before later acquisition.",
+          "provenance_locator": "June 2025 manuscript; Table 1; sections 2.1,2.2,4.1,4.2; Table 3",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "cui_supplement",
+          "url": "https://pubsonline.informs.org/doi/suppl/10.1287/mnsc.2025.00535",
+          "access_status": "primary_opened",
+          "inspection_note": "Landing page read; downstream services.informs.org link failed. No replication manifest or participant-level package claim.",
+          "provenance_locator": "Supplemental material and replication link",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "cui_ssrn",
+          "url": "https://doi.org/10.2139/ssrn.4945566",
+          "access_status": "index_only",
+          "inspection_note": "Primary search-index metadata only: written 20 August 2025/revised 21 August; not a full historical-version comparison.",
+          "provenance_locator": "Author-deposited version metadata",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        }
+      ],
+      "evidence_units": [
+        {
+          "unit_id": "cui_three_site_experiments",
+          "measurement_type": "administrative_work_output",
+          "causal_status": "randomized_access_with_distinct_iv_and_itt",
+          "deployment_maturity": "experimental_access_workplace",
+          "population_or_sample": "Main analyzed samples: Microsoft 1,521; Accenture 316; anonymous company 3,030; total 4,867. Ancillary abandoned Accenture analysis N=204 is excluded from that total.",
+          "publication_or_wave_identity": "June 2025 manuscript plus final 27 February 2026 article/appendix",
+          "artifact_ids": [
+            "cui_publisher",
+            "cui_manuscript",
+            "cui_appendix"
+          ],
+          "comparability_limitations": "Assignment differs from induced adoption; site/windows differ across estimates; code output is not equal-complexity work or direct business value."
+        }
+      ],
+      "sample_fields": [
+        "study_id",
+        "site_id",
+        "publication_version",
+        "experimental_window",
+        "observation_window",
+        "assignment",
+        "adoption_definition",
+        "outcome",
+        "estimand",
+        "estimate",
+        "standard_error",
+        "normalization_baseline",
+        "analysis_sample",
+        "table",
+        "specification"
+      ],
+      "findings": [
+        {
+          "finding_id": "AP004-F1",
+          "text": "Main sample is 4,867 developers (1,521+316+3,030). The 26.08% (SE 10.3) headline is a precision-weighted mean of site W-IV estimates for adoption induced by assignment, not one pooled regression or an ITT/time-speedup estimate.",
+          "evidence_artifact_ids": [
+            "cui_publisher",
+            "cui_manuscript",
+            "cui_appendix"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP004-F2",
+          "text": "Appendix Table 5 two-site early-window pull-request ITT is 4.66% (SE 3.56), not significant; Microsoft 29 weeks and Accenture 21 weeks. Its site set, windows and estimand differ from the main W-IV result.",
+          "evidence_artifact_ids": [
+            "cui_appendix"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP004-F3",
+          "text": "Appendix E/Table 8 also reports an abandoned first Accenture trial, N=204, pull-request W-IV -39.18% (SE 36.78), with imputed control adoption. Retain it as qualified ancillary evidence, outside the three main trials and headline pool.",
+          "evidence_artifact_ids": [
+            "cui_appendix"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP004-F4",
+          "text": "Table 1 gives Microsoft experiment Sep 2022–Apr 2023/observed Jan 2022–Apr 2024; Accenture Jul–Dec 2023/observed Jul 2022–Mar 2024; anonymous Sep–Oct 2023/observed Jun 2023–Feb 2024. Section 2.2 says anonymous trial started October 2023: exact start remains unresolved.",
+          "evidence_artifact_ids": [
+            "cui_manuscript"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP004-F5",
+          "text": "Studied tool is 2022–23 Copilot autocomplete. Initial Microsoft adoption can mean registration; later definition uses observed usage. Postregistration is reported, not preregistration.",
+          "evidence_artifact_ids": [
+            "cui_manuscript",
+            "cui_publisher"
+          ],
+          "verification_level": "primary_source_reported"
+        }
+      ],
+      "limitations": [
+        "No exact model checkpoint or serving configuration established.",
+        "No replication manifest, microdata, executable reproducibility or redistribution right verified.",
+        "Do not quietly resolve anonymous-company start dates or collapse revisions.",
+        "No labor-market outcomes extracted."
+      ]
+    },
+    {
+      "candidate_id": "AP005",
+      "name": "US Census BTOS AI-use core and supplement",
+      "summary": "Existing GL023 enrichment: reported adoption with explicit question, denominator, recall-window and wording-regime boundaries; workbook availability and cells remain unverified.",
+      "classification": "existing_family_enrichment",
+      "collection_status": "candidate_not_collected",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "inventory_relationships": [
+        {
+          "source_id": "GL023",
+          "relationship": "same_family_enrichment",
+          "evidence_artifact_id": "btos_overview"
+        }
+      ],
+      "historical_coverage": "Core AI questions from September 2023. Second AI supplement collected 17 November 2025–8 February 2026. Search-indexed catalogue lists 11 September 2023–20 September 2026, but workbook extent and date roles were not inspected.",
+      "update_frequency": "Biweekly aggregate releases; individual businesses report once per 12 weeks for a year. Supplement timing and six-month recall are separate.",
+      "access_method": "Official story, questionnaire, CES paper and overview read. Direct download catalogue/help render JS shells; primary indexed content qualified separately. National.xlsx open returned Internal Error; no headers/body/cells inspected.",
+      "rights_summary": "Workbook internal notices uninspected. DS027 is general US government-work policy with foreign/nonemployee exceptions, not a verified worldwide license. CES paper explicitly requires author clearance for republication.",
+      "duplicate_evidence_policy": "Deduplicate matching item/population/period/release across story, workbook and CES representations. Core two-week use, six-month retrospective functional/task use and expected use are distinct observations; preserve November 2025 wording break.",
+      "artifacts": [
+        {
+          "artifact_id": "btos_story",
+          "url": "https://www.census.gov/library/stories/2026/05/ai-use-businesses.html",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "26 May 2026; AI Trends Across Sectors; Future Improvements to BTOS",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "btos_questionnaire",
+          "url": "https://www.census.gov/hfp/btos/downloads/BTOS%20Core%20and%20AI%20Content.pdf",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "11-page V4 Core and AI FINAL 9.12.2025; Q23–24, Q30–33",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "btos_ces",
+          "url": "https://www2.census.gov/library/working-papers/2026/adrm/ces/CES-WP-26-25.pdf",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "CES 26-25, April 2026; cover; 2.1 fn.5; 2.2; Appendix A",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "restricted_use",
+          "license_identifier": "Author-clearance-required-for-republication",
+          "rights_evidence_artifact_ids": [
+            "btos_ces"
+          ],
+          "rights_scope": "CES working paper text/publication only.",
+          "rights_note": "Cover requires author clearance for republication in whole or part; no blanket reuse grant inferred."
+        },
+        {
+          "artifact_id": "btos_catalogue",
+          "url": "https://www.census.gov/hfp/btos/data_downloads",
+          "access_status": "index_only",
+          "inspection_note": "Direct JS shell. Indexed catalogue showed 24 September 2026 update and coverage through 20 September; not live workbook extent.",
+          "provenance_locator": "Current Data/Core Questions/National",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "btos_national",
+          "url": "https://www.census.gov/hfp/btos/downloads/National.xlsx",
+          "access_status": "access_blocked",
+          "inspection_note": "Web open Internal Error; this review did not inspect headers, content type, workbook body, schema or cells. Retrieval failure is not a rights denial.",
+          "provenance_locator": "Proposed national aggregate workbook endpoint",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "btos_overview",
+          "url": "https://www.census.gov/data/experimental-data-products/business-trends-and-outlook-survey.html",
+          "access_status": "primary_opened",
+          "inspection_note": "Public primary source inspected in the dated bounded review.",
+          "provenance_locator": "13 July 2026 overview; frame and panels",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "btos_help",
+          "url": "https://www.census.gov/hfp/btos/help",
+          "access_status": "index_only",
+          "inspection_note": "Primary search-index content only; direct open JS shell. Microdata described as limited to approved FSRDC projects.",
+          "provenance_locator": "FAQ 4,6,10",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        },
+        {
+          "artifact_id": "btos_rights_policy",
+          "url": "https://www2.census.gov/foia/ds_policies/ds027.pdf",
+          "access_status": "primary_opened",
+          "inspection_note": "General policy read, not artifact-specific worldwide licensing evidence.",
+          "provenance_locator": "Scope p.2; copyright paragraph p.9",
+          "reviewed_on": "2026-10-07",
+          "raw_content_in_catalog": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_scope": "This artifact only; no inheritance from another publication or repository.",
+          "rights_note": "No applicable reuse grant verified for this artifact."
+        }
+      ],
+      "evidence_units": [
+        {
+          "unit_id": "census_btos_core",
+          "measurement_type": "self_reported_adoption",
+          "causal_status": "descriptive",
+          "deployment_maturity": "unspecified",
+          "population_or_sample": "US employer businesses including single/multi-location businesses; farms excluded; public weighted aggregates.",
+          "publication_or_wave_identity": "Pre-change goods/services wording versus any-business-function wording beginning 17 November 2025 collection",
+          "artifact_ids": [
+            "btos_story",
+            "btos_questionnaire",
+            "btos_ces",
+            "btos_overview"
+          ],
+          "comparability_limitations": "Biweekly estimates do not imply each respondent is surveyed biweekly. First revised collection/reference/release dates differ; no causal productivity inference."
+        },
+        {
+          "unit_id": "census_btos_ai_supplement",
+          "measurement_type": "self_reported_adoption",
+          "causal_status": "descriptive",
+          "deployment_maturity": "unspecified",
+          "population_or_sample": "Business-respondent reports about business functions and employee tasks; no independent employee interview implied.",
+          "publication_or_wave_identity": "Second supplement collection 17 November 2025–8 February 2026; six panels over 12 weeks",
+          "artifact_ids": [
+            "btos_questionnaire",
+            "btos_ces"
+          ],
+          "comparability_limitations": "Six-month retrospective functions/tasks and next-six-month expectations remain separate from two-week core current use; conditional Q32 denominator retained."
+        }
+      ],
+      "sample_fields": [
+        "documented questionnaire fields, not verified workbook columns",
+        "Q23 current two-week AI use",
+        "Q24 15 functions in prior six months",
+        "Q30 employee AI task use",
+        "Q31 employee GenAI task use",
+        "Q32 conditional GenAI task categories",
+        "Q33 expected next-six-month use",
+        "questionnaire version, wording regime, reference/collection/release dates, population and response category"
+      ],
+      "findings": [
+        {
+          "finding_id": "AP005-F1",
+          "text": "Official article reports 19.8% current AI use as of 3 May 2026. This is article-derived, not a verified workbook cell; retain its period wording pending actual workbook mapping.",
+          "evidence_artifact_ids": [
+            "btos_story"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP005-F2",
+          "text": "First revised wording collection was 17–30 November 2025, referring to 3–16 November, released 4 December 2025. Release-date wording in help is not a contradictory collection date.",
+          "evidence_artifact_ids": [
+            "btos_ces",
+            "btos_story"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP005-F3",
+          "text": "Q23 asks current two-week use; Q24 and Q30–32 concern prior-six-month functions/tasks; Q32 is conditional on Q31 Yes; Q33 is expected future use. Preserve question and denominator identity.",
+          "evidence_artifact_ids": [
+            "btos_questionnaire"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "AP005-F4",
+          "text": "Catalogue range through 20 September 2026 is supported at primary search-index level only; live workbook schema, rights notices, uncertainty fields and values remain uninspected.",
+          "evidence_artifact_ids": [
+            "btos_catalogue",
+            "btos_national"
+          ],
+          "verification_level": "index_only_inconclusive"
+        },
+        {
+          "finding_id": "AP005-F5",
+          "text": "Employer-business frame and six-panel reporting cadence are documented; the approximately 1.2 million sample is not a completed-response count or biweekly census.",
+          "evidence_artifact_ids": [
+            "btos_overview"
+          ],
+          "verification_level": "primary_source_reported"
+        }
+      ],
+      "limitations": [
+        "Previously claimed XLSX content-type success was not reproduced; no fetched/parsed workbook claim.",
+        "Public aggregate access is separate from approved-project-only microdata access.",
+        "General government copyright policy cannot silently clear all linked artifacts."
+      ]
+    }
+  ],
+  "interpretation_guards": {
+    "metr_treatment_coding": {
+      "1": "AI allowed",
+      "0": "AI disallowed"
+    },
+    "metr_positive_time_ratio_minus_one_means": "longer_time",
+    "cui_iv_and_itt_may_be_collapsed": false,
+    "csbc_and_sdtiu_may_be_joined_as_one_study": false,
+    "census_wording_regimes_may_be_pooled_without_break": false,
+    "labor_market_outcomes_in_scope": false,
+    "census_revised_wording_first_collection_window": [
+      "2025-11-17",
+      "2025-11-30"
+    ],
+    "census_revised_wording_first_reference_window": [
+      "2025-11-03",
+      "2025-11-16"
+    ],
+    "census_revised_wording_first_release": "2025-12-04"
+  },
+  "proposed_adapter": {
+    "name": "statcan_csbc_private_ai_use",
+    "status": "proposed_not_implemented",
+    "candidate_id": "AP001",
+    "canonical_contract_mapping": "pending_separate_review",
+    "maximum_output_points": 3,
+    "product_ids": [
+      "33100825",
+      "33101004",
+      "33101167"
+    ],
+    "coordinate": "1.25.1.0.0.0.0.0.0.0",
+    "maximum_source_objects": 6,
+    "allow_bulk_download": false,
+    "acquisition_scope": "Three allowlisted metadata objects and three private-sector points only. Code maps require pinned documentation or separately reviewed refresh scope; no implicit getCodeSets expansion.",
+    "numeric_representation": "exact_decimal_strings",
+    "measurement_type": "reported_adoption",
+    "causal_status": "descriptive",
+    "deployment_maturity": "unspecified",
+    "unknown_standard_error": null,
+    "reviewed_private_values": [
+      {
+        "product_id": "33100825",
+        "decimal_value": "6.2",
+        "unit": "percent"
+      },
+      {
+        "product_id": "33101004",
+        "decimal_value": "12.4",
+        "unit": "percent"
+      },
+      {
+        "product_id": "33101167",
+        "decimal_value": "19.0",
+        "unit": "percent"
+      }
+    ],
+    "sample_verification_status": "independently_rechecked_primary_values",
+    "fixture_status": "not_packaged_or_executed",
+    "unknowns": [
+      "Exact standard error; status grade must not manufacture one.",
+      "Deployment intensity, pilot/routine status and respondent continuity.",
+      "A reviewed lossless mapping to frozen v0.1.0 or a separately versioned contract."
+    ],
+    "sample_native_release_time": "2026-05-27T08:30",
+    "release_time_semantics": "Native WDS text; documented Eastern time with daylight saving. Never append Z without conversion and a separately preserved native field.",
+    "identity": "productId + coordinate + native reference period; artifact/version hash and release metadata track revisions. Metadata, question members and footnotes also versioned.",
+    "acceptance_tests": [
+      "Reviewed fixtures yield exactly 6.2, 12.4 and 19.0 percent for three source identities. Later source revisions create reviewable versions, not permanent-value assertions.",
+      "Validate Canada/private-sector/affirmative retrospective-use members for each product. Reject all-industry 19.2 and conditional-LLM 24.8 from private adoption output.",
+      "Reject expected-use items, application shares, duplicate keys, missing keys and unexpected products or coordinates.",
+      "Require SUCCESS, object responseStatusCode 0 and exactly one point for latestN 1; transport success is distinct from per-point quality.",
+      "Preserve both native refPer/refPerRaw and ending fields, wave and collection windows; recall is respondent-relative 12 months. Native January/March values are not collection dates.",
+      "Preserve native releaseTime and documented Eastern semantics. No invented UTC Z or inferred timezone offset.",
+      "Shuffled input order yields the same identities/output. This is a defensive test, not an independently reproduced source-order failure.",
+      "Retain exact decimal strings, percent unit239, scaling, precision, frequency and raw quality/symbol/security codes separately. Missing/suppressed values never become zero or invented exact SE.",
+      "Idempotent re-ingestion; changed value, metadata, footnote, population or question retains predecessor and requires review. Mirrors add provenance, not observations.",
+      "Every point remains descriptive reported adoption with unspecified deployment maturity; no measured productivity, causal effect, firm panel or p(doom) generated.",
+      "Bound acquisition to three allowlisted metadata objects and three points, configured byte/time limits and no bulk downloads. Negative controls are local reviewed fixtures, not additional collector requests.",
+      "Export applicable official reproduction/adaptation attribution, product/reference metadata and licence URL; do not inherit rights for confidential or third-party inputs.",
+      "Network disabled in deterministic tests; raw source fixtures, if later packaged, require durable bytes/hash and provenance rather than reconstructed report snippets."
+    ],
+    "existing_contract_mapping_candidate": {
+      "record_type": "resource_observation",
+      "data.resource_kind": "adoption",
+      "data.measurement.observation_mode": "reported",
+      "data.measurement.result.unit": "percent",
+      "native_provenance_strategy": "Use source_artifact evidence plus upstream_refs for source cell/release identity. Preserve population/question/recall and native flags/date roles in explicit scoped method/provenance material; review losslessness before emitting records.",
+      "schema_change_required": "not_established; existing v0.1.0 already permits the core type/kind/unit",
+      "status": "design_candidate_not_emitted_or_validated_as_full_record"
+    }
+  },
+  "next_actions": [
+    {
+      "action_id": "AP-A01",
+      "candidate_ids": [
+        "AP001",
+        "AP002",
+        "AP003",
+        "AP004",
+        "AP005"
+      ],
+      "status": "completed",
+      "action": "Bounded verification and research-only integration: reconcile five collections, exact artifact access levels, inventory relationships, corrected estimands/dates, source pins, and explicit holds.",
+      "completion_evidence": "Dated source metadata and findings below; deterministic catalog tests verify consistency only. No admission, live collector or raw source bundle.",
+      "work_mode": "completed_bounded_work"
+    },
+    {
+      "action_id": "AP-A02",
+      "candidate_ids": [
+        "AP001"
+      ],
+      "status": "pending_contract_review",
+      "action": "Prepare durable bounded StatCan fixtures and an explicit lossless mapping before implementing the three-point adapter. Offline design is feasible within research scope; a frozen-contract change or operational collection must stay separately reviewed.",
+      "completion_evidence": "Existing v0.1.0 core mapping candidate is resource_observation/adoption/reported/percent. Finish lossless native provenance/date/flag handling and durable reviewed fixture bytes/hashes; execute proposed offline tests without contract drift. Current catalog validator is complete; source-payload parser remains unimplemented.",
+      "work_mode": "offline_implementation_design"
+    },
+    {
+      "action_id": "AP-A03",
+      "candidate_ids": [
+        "AP002"
+      ],
+      "status": "pending_rights_review",
+      "action": "Before data/code retention or recomputation, establish artifact-specific METR reuse rights and reconcile publication-version uncertainty conventions.",
+      "completion_evidence": "Explicit applicable CSV/code permission or unresolved rights hold; named HC3 versus nonrobust convention and preserved early/late imputation/filtering. No participant crosswalk inferred.",
+      "work_mode": "rights_and_method_hold"
+    },
+    {
+      "action_id": "AP-A04",
+      "candidate_ids": [
+        "AP003"
+      ],
+      "status": "blocked_access",
+      "action": "Before derived QJE outcomes, inspect a lawfully accessible final appendix and public replication manifest/terms; resolve productivity construction and normalization without bypassing current failures.",
+      "completion_evidence": "Stable manifest, file types, scoped rights and source-backed formula; distinguish code/synthetic/confidential inputs. If still inaccessible, keep published results only.",
+      "work_mode": "access_dependent"
+    },
+    {
+      "action_id": "AP-A05",
+      "candidate_ids": [
+        "AP004"
+      ],
+      "status": "blocked_access",
+      "action": "Before Cui package acquisition or exact historical linkage, verify public manifest/README/rights and publication/site date crosswalk.",
+      "completion_evidence": "Stable package metadata without full archive, separate code/data rights, main versus ancillary trial identities, and a resolved or explicitly unresolved anonymous-company start date.",
+      "work_mode": "access_dependent"
+    },
+    {
+      "action_id": "AP-A06",
+      "candidate_ids": [
+        "AP005"
+      ],
+      "status": "blocked_access",
+      "action": "Before a BTOS adapter, inspect bounded workbook metadata and one national AI-use sample if safely supported; reconcile actual date/uncertainty/rights fields.",
+      "completion_evidence": "Actual workbook size, sheets/headers, exact cell provenance and period semantics, rights notices and suppression/uncertainty; stop if safe bounded access cannot be established.",
+      "work_mode": "access_dependent"
+    },
+    {
+      "action_id": "AP-A07",
+      "candidate_ids": [
+        "AP001"
+      ],
+      "status": "blocked_access",
+      "action": "Before SDTIU derived outcomes, obtain lawfully accessible full methods or an authorized excerpt for DOI 10.3138/cpp.2025-065.",
+      "completion_evidence": "Productivity numerator/denominator, transformation, administrative source, N/selection, SE, specification interpretation and separate paper rights; no confidential firm-level records.",
+      "work_mode": "access_dependent"
+    }
+  ],
+  "focused_follow_up_prompts": [
+    {
+      "action_id": "AP-A03",
+      "why_needed": "Paper rights do not license separate CSV/code; statistical conventions conflict.",
+      "prompt": "Source URLs: https://arxiv.org/html/2507.09089v2 ; https://github.com/METR/Measuring-Early-2025-AI-on-Exp-OSS-Devs/tree/7ff2d7670235f531dff77eff58355bd77392f396 ; https://github.com/METR/Measuring-Late-2025-AI-on-OSS-Devs/tree/55f007216a26493f0a9b7650ab3191cad7fb9e7f . Before any authorized METR recomputation, resolve only public artifact-specific data/code rights for the two pinned releases and the paper-v2 HC3 versus early-code nonrobust comment discrepancy. Preserve both waves’ raw missingness, imputation and filtering. Return source-backed resolution or an explicit hold. No author contact, login, execution, participant linkage or collection. Read-only bounded public-source research only. No login, outreach, access-control bypass, bulk acquisition, repository change or operational admission."
+    },
+    {
+      "action_id": "AP-A04",
+      "why_needed": "Final appendix was not independently reverified, replication manifest/terms remain unresolved, and a manuscript formula is dimensionally inconsistent.",
+      "prompt": "Source URLs: https://academic.oup.com/qje/article/140/2/889/7990658 ; https://doi.org/10.7910/DVN/FSV1X7 ; https://arxiv.org/html/2304.11771v2 . Verify only public final-appendix outcome construction and replication manifest/terms for QJE DOI 10.1093/qje/qjae044 and deposit 10.7910/DVN/FSV1X7. Inspect the resolutions/hour formula and normalization; distinguish file types and rights. Respect recorded access failures/denials, use stable links, and stop at access controls. No signed URLs, participant records, login, author contact or code execution. Read-only bounded public-source research only. No login, outreach, access-control bypass, bulk acquisition, repository change or operational admission."
+    },
+    {
+      "action_id": "AP-A05",
+      "why_needed": "Package content/rights and anonymous-site exact start remain unresolved.",
+      "prompt": "Source URLs: https://pubsonline.informs.org/doi/suppl/10.1287/mnsc.2025.00535 ; https://www.mertdemirer.com/Papers/Demirer_AI_productivity.pdf . For Cui DOI 10.1287/mnsc.2025.00535, inspect only accessible public supplement metadata, manifest/README and code/data rights. Compare primary version identities and Table 1 September–October 2023 versus Section 2.2 October start without silently choosing one. Preserve three main trials and the separate ancillary abandoned Accenture trial. No full archive, login, contact, participant download or access bypass; return unresolved where necessary. Read-only bounded public-source research only. No login, outreach, access-control bypass, bulk acquisition, repository change or operational admission."
+    },
+    {
+      "action_id": "AP-A06",
+      "why_needed": "Neither workbook headers nor body were obtained; article date wording is not cell provenance.",
+      "prompt": "Source URLs: https://www.census.gov/hfp/btos/data_downloads ; https://www.census.gov/hfp/btos/downloads/National.xlsx ; https://www.census.gov/library/stories/2026/05/ai-use-businesses.html . At the official BTOS catalogue and National.xlsx endpoint, establish workbook size and safe bounded access first. Inspect only metadata/headers and a tightly bounded national AI-use sample when feasible; otherwise report the blocker. Record sheets, question IDs, units, uncertainty/suppression and rights notice, and reconcile article 19.8% as of 3 May 2026 with actual collection/reference/release semantics. Preserve the November 2025 wording break. No microdata, bulk download, login or admission. Read-only bounded public-source research only. No login, outreach, access-control bypass, bulk acquisition, repository change or operational admission."
+    },
+    {
+      "action_id": "AP-A07",
+      "why_needed": "Public summary lacks exact variable construction and uncertainty; publisher paper returned 403.",
+      "prompt": "Source URLs: https://www150.statcan.gc.ca/n1/pub/36-28-0001/2026004/article/00002-eng.htm ; https://utppublishing.com/doi/10.3138/cpp.2025-065 . For Li/Liu DOI 10.3138/cpp.2025-065, verify a lawfully accessible full-text methods source or authorized excerpt without bypassing the publisher 403. Identify productivity numerator/denominator, deflation/transformation, administrative datasets, analysis windows, N, selection, SE and percentage interpretation. Preserve three nested specifications and separate rights. Do not request or seek confidential firm records. Read-only bounded public-source research only. No login, outreach, access-control bypass, bulk acquisition, repository change or operational admission."
+    }
+  ],
+  "verification_limits": [
+    "Live source checks are dated factual/access research, distinct from deterministic repository metadata tests.",
+    "No statistical recomputation, runtime import, operational admission, rights approval or deployment.",
+    "Hashes identify selected reviewed response bodies, not durable executable fixtures; mutable documents still require future version pinning."
+  ]
+}

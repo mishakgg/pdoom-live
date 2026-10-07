@@ -28,6 +28,7 @@ The aggregate check exits nonzero on any failed gate. It does not fetch endpoint
 - Reproducible 19-check methodology arithmetic result and known record-type references in proposed recipes
 - [Implementation task pack](../../data/evidence-program/implementation_tasks.json): unique task IDs, known source/recipe references, acyclic resolved dependencies, safe existing/proposed paths, nonempty acceptance evidence, unexecuted statuses and matching Markdown task IDs/titles
 - [Chinese safety research catalog](../../data/evidence-program/research/chinese-safety-evaluations.json): separate candidate IDs, frozen-inventory identity, scoped artifact/rights references, inactive admission markers, index-only qualification, and bounded proposed-only FLAMES specification
+- [Adoption/productivity research catalog](../../data/evidence-program/research/adoption-productivity.json): inactive collection markers, separate survey/study identities, scoped provenance and rights, interpretation/date guards, and a bounded proposed-only StatCan specification
 - Local documentation links (including nested research guides) and negative tests for the integration gates
 
 ## Frozen contract contents
@@ -48,3 +49,5 @@ Passing is not evidence of truth, identity approval, source permissions, transla
 No app runtime, database schema, production import/seed path or collector configuration depends on this directory. Existing database and pipeline suites remain separate. This check does not replace them or claim they ran.
 
 Research-catalog checks are offline metadata consistency checks. They do not refetch pinned artifacts, establish legal rights, verify experiments, parse the source results table or implement the proposed adapter. Raw source files are not bundled; recorded hashes identify artifacts inspected during the dated review.
+
+[check_adoption_productivity.py](check_adoption_productivity.py) checks the adoption/productivity catalog, not live source payloads. Its focused regressions reject accidental admission, signed URLs, rights inheritance, measurement/estimand conflation, Census date-role collapse and adapter expansion. It does not implement the source adapter, package real-response fixtures, resolve source discrepancies or change frozen schemas.
