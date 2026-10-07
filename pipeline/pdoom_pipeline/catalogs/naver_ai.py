@@ -9,9 +9,8 @@ stores nothing. An empty entries list is valid.
 
 A row keeps the title, publisher, canonical URL, publication date, and rights
 label. Page text, abstracts, quotes, transcripts, PDFs, and chart data are
-not stored. The organization's own model or dataset licence stated on a page
-may be that page's rights token. A photo, image, or caption credit that names
-someone else's licence stays unknown.
+not stored. A model or dataset licence grants no page rights. A photo, image,
+or caption credit that names someone else's licence stays unknown.
 
 Rights stay unknown unless the page states a reuse licence.
 ``creative_commons_attribution`` is CC BY alone. ``creative_commons`` is CC0,
@@ -95,7 +94,7 @@ CATALOG_DESCRIPTION = (
     "or an off-host redirect stores nothing. An empty catalog is valid. "
     "Rows keep a title, publisher, canonical URL, publication date, and rights. "
     "Abstracts, quotes, transcripts, PDFs, and chart data are omitted. "
-    "A model or dataset licence on the page may be its rights token. "
+    "Model and dataset licences do not establish page rights. "
     "creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix. "
     "A missing or year-only date is unknown. Updated, modified, and copyright years are not dates. "
     "Open Government Licence is the British phrase for uk_ogl. "
@@ -593,7 +592,9 @@ def record_from_response(
         return None
     if not _on_official_host(target):
         return None
-    if robots_txt is not None and not robots_allows(robots_txt, urlparse(target).path or "/"):
+    parsed = urlparse(target)
+    robots_path = (parsed.path or "/") + ("?" + parsed.query if parsed.query else "")
+    if robots_txt is not None and not robots_allows(robots_txt, robots_path):
         return None
     if not response_stores_a_page(
         status=status,
@@ -647,7 +648,7 @@ def rights_from_page(page_text: str) -> str:
     restricted or public-domain mark URL stays unknown. A generic
     creativecommons.org/licenses/ URL is not a deed, and visible anchor text
     on it stays unknown. A photo, caption, or image credit does not count.
-    The page's own model or dataset licence does count. Bare MIT stays
+    A model or dataset licence does not establish page rights. Bare MIT stays
     unknown. Licensed under the MIT License is mit. A software licence beside
     any Creative Commons deed stays unknown. Two software licences stay
     unknown. A university name is not a software licence. uk_ogl requires the
@@ -864,7 +865,7 @@ def _add_date(found: list[str], value: str | None) -> None:
 
 
 def _licence_signals(page_text: str) -> tuple[set[str], bool]:
-    page_text = _strip_image_credits(page_text)
+    page_text = _strip_artifact_licences(_strip_image_credits(page_text))
     page_text = _strip_generic_license_anchors(_strip_mark_anchors(page_text))
     visible = _visible_html(page_text)
     codes: set[str] = set()
@@ -985,6 +986,25 @@ def _strip_generic_license_anchors(page_html: str) -> str:
         return match.group(0)
 
     return _FULL_ANCHOR.sub(replace, page_html)
+
+
+_ARTIFACT_SCOPE = re.compile(r"(?i)\b(?:datasets?|models?|software|source code)\b|Anny-One|데이터셋|모델")
+_ARTIFACT_BLOCK = re.compile(r"(?is)<(p|li|figcaption|td|dd|figure|div|span)\b([^>]*)>(.*?)</\1>")
+
+
+def _strip_artifact_licences(page_html: str) -> str:
+    """An artifact's licence grants no rights to the page describing it."""
+
+    def replace_block(match: re.Match[str]) -> str:
+        body = match.group(3)
+        if _ARTIFACT_SCOPE.search(_plain_text(body)) and _codes_in_string(body):
+            return " "
+        return match.group(0)
+
+    stripped = _ARTIFACT_BLOCK.sub(replace_block, page_html)
+    if "<" not in stripped and _ARTIFACT_SCOPE.search(stripped):
+        return " "
+    return stripped
 
 
 def _strip_image_credits(page_html: str) -> str:

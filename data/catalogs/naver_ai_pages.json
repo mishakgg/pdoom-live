@@ -1,6 +1,6 @@
 {
   "catalog_id": "naver_ai_pages",
-  "description": "Public NAVER Labs AI pages on www.naverlabs.com and naverlabs.com. Each row is one bounded robots-allowed HTML GET on those hosts. An unresolved host, HTML or challenge robots.txt, a Cloudflare, cookie, or captcha challenge, or an off-host redirect stores nothing. An empty catalog is valid. Rows keep a title, publisher, canonical URL, publication date, and rights. Abstracts, quotes, transcripts, PDFs, and chart data are omitted. A model or dataset licence on the page may be its rights token. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix. A missing or year-only date is unknown. Updated, modified, and copyright years are not dates. Open Government Licence is the British phrase for uk_ogl. Not a belief collector. runner_wired is false.",
+  "description": "Public NAVER Labs AI pages on www.naverlabs.com and naverlabs.com. Each row is one bounded robots-allowed HTML GET on those hosts. An unresolved host, HTML or challenge robots.txt, a Cloudflare, cookie, or captcha challenge, or an off-host redirect stores nothing. An empty catalog is valid. Rows keep a title, publisher, canonical URL, publication date, and rights. Abstracts, quotes, transcripts, PDFs, and chart data are omitted. Model and dataset licences do not establish page rights. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix. A missing or year-only date is unknown. Updated, modified, and copyright years are not dates. Open Government Licence is the British phrase for uk_ogl. Not a belief collector. runner_wired is false.",
   "runner_wired": false,
   "entries": [
     {
@@ -3123,7 +3123,7 @@
       "publisher": "NAVER Labs",
       "canonical_url": "https://www.naverlabs.com/blogDetail?seq=34435",
       "date": "2026-03-23",
-      "rights": "cc_by_nc_sa"
+      "rights": "unknown"
     },
     {
       "title": "네이버지도에 3차원 전광판 설치하기",

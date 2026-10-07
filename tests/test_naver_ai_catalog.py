@@ -172,7 +172,7 @@ def test_committed_rows_are_www_naver_labs_metadata():
             unknown_dates += 1
     assert hosts == {"www.naverlabs.com"}
     assert len(document["entries"]) == 647
-    assert rights == {RIGHTS_UNKNOWN: 646, RIGHTS_CC_BY_NC_SA: 1}
+    assert rights == {RIGHTS_UNKNOWN: 647}
     assert unknown_dates == 175
     by_url = {entry["canonical_url"]: entry for entry in document["entries"]}
     assert by_url["https://www.naverlabs.com/"]["title"] == "NAVER LABS"
@@ -189,7 +189,7 @@ def test_committed_rows_are_www_naver_labs_metadata():
     assert flow["rights"] == RIGHTS_UNKNOWN
     assert "FLOW" in flow["title"]
     anny = by_url["https://www.naverlabs.com/blogDetail?seq=34435"]
-    assert anny["rights"] == RIGHTS_CC_BY_NC_SA
+    assert anny["rights"] == RIGHTS_UNKNOWN
     assert anny["date"] == "2026-03-23"
     assert anny["title"] == "Anny-One, 3D 바디 모델 기반 대규모 합성 데이터셋"
     updates = by_url["https://www.naverlabs.com/blogDetail?seq=33877"]
@@ -306,17 +306,17 @@ def test_photo_caption_and_image_credits_stay_unknown():
     assert rights_from_page(separate) == RIGHTS_CC_BY
 
 
-def test_model_and_dataset_licences_count_and_software_mixes_stay_unknown():
+def test_artifact_licences_do_not_grant_page_rights_and_software_mixes_stay_unknown():
     assert rights_from_page("<p>MIT</p>") == RIGHTS_UNKNOWN
     assert rights_from_page("<p>Licensed under the MIT License.</p>") == RIGHTS_MIT
     assert rights_from_page("<p>This work is licensed under the MIT License.</p>") == RIGHTS_MIT
     assert rights_from_page("<p>Apache-2.0</p>") == RIGHTS_APACHE
     assert rights_from_page("<p>Apache License, Version 2.0</p>") == RIGHTS_APACHE
     assert rights_from_page("<p>This dataset is licensed under the Apache License, Version 2.0.</p>") == (
-        RIGHTS_APACHE
+        RIGHTS_UNKNOWN
     )
-    assert rights_from_page("<p>The model is licensed under CC BY 4.0.</p>") == RIGHTS_CC_BY
-    assert rights_from_page("<p>Anny-One은 CC BY-NC-SA 4.0 라이선스 하에 공개합니다.</p>") == RIGHTS_CC_BY_NC_SA
+    assert rights_from_page("<p>The model is licensed under CC BY 4.0.</p>") == RIGHTS_UNKNOWN
+    assert rights_from_page("<p>Anny-One은 CC BY-NC-SA 4.0 라이선스 하에 공개합니다.</p>") == RIGHTS_UNKNOWN
     assert rights_from_page("<p>MPL-2.0</p>") == RIGHTS_MPL
     assert rights_from_page("<p>Mozilla Public License 2.0</p>") == RIGHTS_MPL
     assert rights_from_page("<p>MIT License and Apache-2.0</p>") == RIGHTS_UNKNOWN
@@ -587,3 +587,25 @@ def test_runner_wired_is_false_and_collect_beliefs_does_not_import_the_catalog()
         assert "naver_ai" not in text
     init = (ROOT / "pipeline" / "pdoom_pipeline" / "catalogs" / "__init__.py").read_text(encoding="utf-8")
     assert init.strip() == '"""Package marker."""'
+
+
+def test_artifact_licence_scope_preserves_separate_page_permission():
+    artifact = '<p>This dataset uses <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>.</p>'
+    assert rights_from_page(artifact) == RIGHTS_UNKNOWN
+    assert rights_from_page(artifact + '<p>This page is licensed under CC BY 4.0.</p>') == RIGHTS_CC_BY
+    assert rights_from_page('<p>Anny-One은 CC BY-NC-SA 4.0 라이선스 하에 공개됩니다.</p>') == RIGHTS_UNKNOWN
+    assert rights_from_page('<span>The model is licensed under CC BY 4.0.</span>') == RIGHTS_UNKNOWN
+    assert rights_from_page('This dataset is licensed under CC BY 4.0.') == RIGHTS_UNKNOWN
+
+
+@pytest.mark.parametrize("rule", ["Disallow: /*?seq=", "Disallow: /blogDetail?seq=10034631$"])
+def test_query_specific_robots_blocks_detail_page_admission(rule):
+    assert record_from_response(
+        status=200, content_type="text/html", page_html=_page("FLOW"),
+        page_url=SAMPLE_URL, robots_txt="User-agent: *\n" + rule + "\n",
+    ) is None
+    allowed = record_from_response(
+        status=200, content_type="text/html", page_html=_page("Research"),
+        page_url="https://www.naverlabs.com/research", robots_txt="User-agent: *\n" + rule + "\n",
+    )
+    assert allowed is not None
