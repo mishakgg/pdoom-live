@@ -10,6 +10,8 @@ Responses are JSON. There is no content negotiation. A breaking change to a resp
 
 Unversioned routes such as `/api/statements`, `/api/overview`, and `/api/health` remain the application query API. They are not a stability promise. They can include `needs_review` statements that the website shows as unsettled. They do not include `unreviewed` or `rejected` records. New consumers should call `/api/v1`.
 
+Application statement pagination keeps the requested date order on every page, with unknown dates first in ascending order and last in descending order. Previous cursors return the immediately preceding page, including across unknown-date boundaries; people pages keep name/UUID order in both traversal directions. Application and `/api/v1` cursor version 1 remain compatible; newly issued date cursors retain database microseconds while older millisecond cursors remain accepted. Display timestamps are unchanged. Malformed cursor timestamps, UUIDs, and empty name keys return `400 invalid_cursor`.
+
 The API is read-only. There is no authentication, account, or write endpoint.
 
 ## Review states
