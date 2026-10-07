@@ -114,7 +114,7 @@ This is an example of the format, not a grant for any current source. `admitted`
 
 Fetched bytes stay in bounded memory until the entire selected source finishes successfully. Only its exact primary fetch response may enter the raw cache; robots, transcripts and ancillary URLs do not inherit that permission. Cache reads require a recorded, unexpired permission. At each run, revoked, expired and legacy ungoverned cache bodies are removed from the URL-hashed body directory. Permission changes never silently extend an existing cache expiry. Normalized adapter metadata drops full feed bodies (`upstream_version`); retained excerpts remain bounded. Revoked admission suppresses retained observations from the next artifact, and narrower evidence/extraction flags remove cached evidence and statement candidates before staging/export. The return value includes `policy_decisions`, and successful source checkpoints record the applied policy for a private manifest.
 
-This is artifact-level enforcement. Public database import currently retains records absent from later documents. Revoking a source in a new collection artifact does not delete or retract already published database records; any public revocation requires a separate reviewed product/DB workflow.
+**Revocation applies to the new collection artifacts only.** The result explicitly reports `publication.imported=false` and `publication.public_revocations_applied=false`. Public database import currently retains records absent from later documents. Revoking a source in a new collection artifact does not delete or retract already published database records; any public revocation requires a separate reviewed product/DB workflow.
 
 ## Source identity and truthful checks
 

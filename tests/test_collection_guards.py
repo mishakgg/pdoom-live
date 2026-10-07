@@ -379,3 +379,29 @@ def test_legacy_openalex_failure_preserves_registry_success(tmp_path):
     assert saved["last_success_at"] == NOW
     assert saved["etag"] == '"old"'
     assert result["result"]["refresh"]["checks"][source["canonical_url"]]["last_success_at"] == NOW
+
+
+def test_collection_flags_do_not_revoke_retained_adapter_versions(tmp_path):
+    first = _run(tmp_path)
+    later = _run(tmp_path, now=LATER, include_adapters=False)
+    assert later["status"] == "failed"  # no check, no successful freshness
+    assert later["document"]["source_items"] == first["document"]["source_items"]
+    assert json.loads((tmp_path / "collection/state/observations.json").read_text())["items"]
+
+
+def test_revocation_reports_artifact_scope_not_public_withdrawal(tmp_path, monkeypatch):
+    import subprocess
+    lead = _leads(include_older=False)
+    pages = {"https://refresh.example/notes": (ESSAY.encode(), "text/html", '"e"')}
+    first = _run(tmp_path, leads=lead, sources=[], pages=pages)
+    published_snapshot = tmp_path / "previous-public-snapshot.json"
+    snapshot_bytes = json.dumps(first["document"]).encode()
+    published_snapshot.write_bytes(snapshot_bytes)
+    lead[0]["enabled"] = False
+    # Collection has no authorization or code path to invoke a product import.
+    monkeypatch.setattr(subprocess, "run", lambda *args, **kwargs: pytest.fail("collector must not invoke publication"))
+    revoked = _run(tmp_path, leads=lead, sources=[], pages=pages, now=LATER)
+    assert not revoked["document"]["statements"]
+    assert revoked["publication"] == {"imported": False, "public_revocations_applied": False}
+    assert published_snapshot.read_bytes() == snapshot_bytes
+    assert first["document"]["statements"]

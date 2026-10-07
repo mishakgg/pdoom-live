@@ -235,6 +235,7 @@ def run_refresh(
         if overlap:
             raise RuntimeError(f"belief staging collided with enrichment files: {sorted(overlap)}")
     return {"status": status, "counts": counts, "cursor": cursor_after, "document": document, "result": result,
+            "publication": {"imported": False, "public_revocations_applied": False},
             "policy_decisions": [{"source_key": item["key"], **asdict(item["policy"])}
                                  for item in work if item.get("policy") and not item.get("error")]}
 
@@ -553,7 +554,22 @@ def _enforce_retained_policy(state, store, sources, leads, work, now):
                 payload["statements"] = []
             if not policy.evidence:
                 item.pop("locators", None)
-    admitted_ids = {item["source"]["source_identity"] for item in work if item["kind"] == "adapter" and not item.get("error")}
+    # Not selecting an adapter in this pass is not revocation. Retention follows
+    # the full supplied registry, not the active source slice or collection flags.
+    admitted_ids = set()
+    for row in sources:
+        identity = row.get("id")
+        if sum(other.get("id") == identity for other in sources) > 1:
+            continue
+        if sum(other.get("canonical_url") == row.get("canonical_url") for other in sources) > 1:
+            continue
+        policy = policies.get(row.get("canonical_url")) or CollectionPolicy(False)
+        try:
+            if policy.admitted and adapter_source(row) is not None:
+                if identity not in state.bindings or state.bindings[identity] == _binding(row):
+                    admitted_ids.add(identity)
+        except (CollectorFailure, KeyError, ValueError):
+            continue
     for key, item in list(store.items.items()):
         item.versions = [version for version in item.versions if version.get("source_identity") in admitted_ids]
         if not item.versions:
