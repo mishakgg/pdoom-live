@@ -75,15 +75,18 @@ class GitHubCollector:
         observations = []
         for repo in data[:30]:
             if not isinstance(repo, dict):
-                continue
+                raise CollectorFailure("invalid_content", "github repository row was not an object")
+            if any(not isinstance(repo.get(key), str) or not repo[key].strip() for key in ("full_name", "html_url")):
+                raise CollectorFailure("invalid_content", "github repository row has invalid identity fields")
             observation = _repository_observation(
                 repo,
                 source_identity=source_identity,
                 username=username,
                 observed_at=observed_at,
             )
-            if observation is not None:
-                observations.append(observation)
+            if observation is None:
+                raise CollectorFailure("invalid_content", "github repository row missing full_name or html_url")
+            observations.append(observation)
         return observations
 
 

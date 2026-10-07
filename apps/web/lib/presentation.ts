@@ -206,7 +206,7 @@ export function researchFilters(params: Record<string, string | undefined>): Res
 }
 
 export function filterStateKey(params: Record<string, string | undefined>): string {
-  return RESEARCH_FILTER_KEYS.map((key) => `${key}=${params[key] ?? ""}`).join("&");
+  return JSON.stringify([...RESEARCH_FILTER_KEYS, "status", "type"].map((key) => params[key] ?? ""));
 }
 
 export function withResearch(

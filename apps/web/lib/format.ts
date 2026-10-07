@@ -1,4 +1,4 @@
-import { STATEMENT_TYPE_LABELS, type StatementType } from "@pdoom/contracts";
+import { STATEMENT_TYPE_LABELS, type StatementType } from "@pdoom/contracts/browser";
 
 const REVIEW_LABELS: Record<string, string> = {
   human_verified: "Human verified",
@@ -30,11 +30,14 @@ export function countLabel(count: number, singular: string, plural = `${singular
   return `${count} ${count === 1 ? singular : plural}`;
 }
 
+let utcDateTimeFormatter: Intl.DateTimeFormat | undefined;
+
 export function formatWhen(value: string | null | undefined): string {
   if (!value) return "Time unknown";
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return "Time unknown";
-  return new Intl.DateTimeFormat("en-GB", {
+  // One lazy formatter avoids repeated locale setup in long server-rendered lists.
+  utcDateTimeFormatter ??= new Intl.DateTimeFormat("en-GB", {
     year: "numeric",
     month: "short",
     day: "2-digit",
@@ -42,7 +45,8 @@ export function formatWhen(value: string | null | undefined): string {
     minute: "2-digit",
     timeZone: "UTC",
     hourCycle: "h23",
-  }).format(date) + " UTC";
+  });
+  return utcDateTimeFormatter.format(date) + " UTC";
 }
 
 export function formatDay(value: string | null | undefined): string {

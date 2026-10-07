@@ -110,18 +110,6 @@ wait_ready() {
   return 1
 }
 
-render_upstream() {
-  local host="$1"
-  sed "s|reverse_proxy [^ ]*|reverse_proxy ${host}:3000|" "$ROOT/deploy/caddy/upstream.caddy" >"$STATE_DIR/upstream.caddy.next"
-  mv "$STATE_DIR/upstream.caddy.next" "$STATE_DIR/upstream.caddy"
-}
-
-reload_caddy() {
-  if docker ps --format '{{.Names}}' | grep -qx pdoom-prod-caddy; then
-    docker exec pdoom-prod-caddy caddy reload --config /etc/caddy/Caddyfile --adapter caddyfile
-  fi
-}
-
 abort_candidate() {
   docker rm -f pdoom-prod-web-candidate >/dev/null 2>&1 || true
   if [[ "$class" == "breaking" ]]; then
@@ -135,6 +123,13 @@ if docker ps --format '{{.Names}}' | grep -qx pdoom-prod-web; then
   if ! wait_ready pdoom-prod-web-candidate; then
     abort_candidate
   fi
+  # Reconcile changed proxy mounts before replacing the upstream file. The
+  # migration from a single-file mount requires one Caddy recreation; subsequent
+  # releases keep the running proxy. --no-deps leaves the serving web untouched.
+  compose up -d --no-deps caddy
+  # Confirm the current route works at the admin boundary before changing its
+  # on-disk target. A cold-start failure leaves the old web and routing intact.
+  reload_caddy
   render_upstream pdoom-prod-web-candidate
   reload_caddy
   GIT_COMMIT="$sha" BUILD_TIME="$built_at" PDOOM_WEB_IMAGE="pdoom-live:$sha" compose up -d --no-deps --force-recreate web

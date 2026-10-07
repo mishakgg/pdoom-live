@@ -135,7 +135,7 @@ describe("entity selection", () => {
     expect(screen.queryByRole("option", { name: /Samir Okonkwo/ })).toBeNull();
   });
 
-  it("leaves blank fields out of the submitted form", () => {
+  it("omits blank submitted data without disabling editable controls", () => {
     const submitted = vi.fn((event: Event) => event.preventDefault());
     render(
       <FilterForm onSubmit={submitted}>
@@ -145,7 +145,15 @@ describe("entity selection", () => {
       </FilterForm>,
     );
     fireEvent.click(screen.getByRole("button", { name: "Apply filters" }));
-    expect(document.querySelector<HTMLInputElement>("input[name='q']")?.disabled).toBe(true);
+    const form = screen.getByRole("button", { name: "Apply filters" }).closest("form")!;
+    const formData = new FormData(form);
+    // jsdom does not dispatch the native formdata event when constructing FormData.
+    const event = new Event("formdata");
+    Object.defineProperty(event, "formData", { value: formData });
+    form.dispatchEvent(event);
+    expect(formData.has("q")).toBe(false);
+    expect(formData.get("person")).toBe("ada-quill");
+    expect(document.querySelector<HTMLInputElement>("input[name='q']")?.disabled).toBe(false);
     expect(document.querySelector<HTMLInputElement>("input[name='person']")?.disabled).toBe(false);
     expect(submitted).toHaveBeenCalled();
   });

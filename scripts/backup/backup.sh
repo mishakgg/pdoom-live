@@ -2,9 +2,12 @@
 # Write a custom-format PostgreSQL backup, checksum, and manifest.
 # A local backup is not disaster recovery until it is copied off the VM.
 set -euo pipefail
+umask 077
 HERE="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck source=../deploy/lib.sh
 source "$HERE/../deploy/lib.sh"
+# shellcheck source=../backup/environment.sh
+source "$HERE/../backup/environment.sh"
 require_cmd docker python3 sha256sum
 
 container="${PDOOM_PG_CONTAINER:-pdoom-prod-postgres}"
@@ -31,13 +34,23 @@ valid_db_name "$db_user" || die "database user is invalid"
 [[ "$container" =~ ^[A-Za-z0-9][A-Za-z0-9_.-]+$ ]] || die "container name is invalid"
 mkdir -p "$output_dir"
 stamp="$(date -u +%Y%m%dT%H%M%SZ)"
-base="${database}_${stamp}"
-partial="$output_dir/.${base}.partial"
+# mktemp reserves a private per-invocation namespace, even for concurrent jobs
+# with the same timestamp. Cleanup can only touch this run's own staging/files.
+work="$(mktemp -d "$output_dir/.${database}_${stamp}.XXXXXXXX")"
+base="${work##*/}"
+base="${base#.}"
+partial="$work/archive.dump"
 final="$output_dir/${base}.dump"
 final_checksum="$output_dir/${base}.sha256"
 final_manifest="$output_dir/${base}.manifest.json"
+published=()
+committed=0
 cleanup() {
-  rm -f "$partial" "$partial.sha256" "$partial.manifest.json" "$final" "$final_checksum" "$final_manifest"
+  rm -rf "$work"
+  if [[ "$committed" -ne 1 ]]; then
+    local file
+    for file in "${published[@]}"; do rm -f "$file"; done
+  fi
 }
 trap cleanup EXIT
 
@@ -78,13 +91,18 @@ with open(manifest, "w", encoding="utf-8") as handle:
     handle.write("\n")
 PY
 
-mv "$partial" "$final"
-mv "$partial.sha256" "$final_checksum"
-mv "$partial.manifest.json" "$final_manifest"
-trap - EXIT
+# Hard links publish without replacing an existing identity. A failed link
+# never authorizes cleanup of that existing file; only successful links are ours.
+ln -T "$partial" "$final"
+published+=("$final")
+ln -T "$partial.sha256" "$final_checksum"
+published+=("$final_checksum")
+ln -T "$partial.manifest.json" "$final_manifest"
+published+=("$final_manifest")
+committed=1
 echo "$final"
 
 if [[ -n "$hook" ]]; then
   [[ -f "$hook" && -x "$hook" && "$hook" == /* ]] || die "backup hook must be an absolute executable file"
-  "$hook" "$output_dir" "$final_manifest"
+  "$hook" "$output_dir" "$final_manifest" >&2
 fi

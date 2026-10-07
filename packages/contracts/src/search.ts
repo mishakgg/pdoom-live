@@ -50,8 +50,7 @@ export const SEARCH_RANK: Record<SearchMatch, number> = {
 export const SEARCH_QUERY_MAX = 200;
 export const SEARCH_TOKEN_LIMIT = 8;
 export const SEARCH_TOKEN_LENGTH = 48;
-export const SEARCH_DEBOUNCE_MS = 200;
-export const SEARCH_SUGGEST_MIN = 2;
+export { SEARCH_DEBOUNCE_MS, SEARCH_SUGGEST_MIN } from "./search-ui";
 export const SEARCH_PAGE_LIMIT_DEFAULT = 8;
 export const SEARCH_PAGE_LIMIT_MAX = 20;
 

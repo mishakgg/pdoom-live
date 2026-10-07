@@ -2,9 +2,12 @@
 # Keep recent daily backups and a bounded set of older weekly snapshots.
 # Incomplete or unverified backups are never deleted.
 set -euo pipefail
+umask 077
 HERE="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck source=../deploy/lib.sh
 source "$HERE/../deploy/lib.sh"
+# shellcheck source=../backup/environment.sh
+source "$HERE/../backup/environment.sh"
 require_cmd python3
 
 output_dir="${PDOOM_BACKUP_DIR:-/var/lib/pdoom/backups}"

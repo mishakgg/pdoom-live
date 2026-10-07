@@ -1,6 +1,6 @@
 "use client";
 
-import { createRequestGate } from "@pdoom/contracts";
+import { createRequestGate } from "@pdoom/contracts/browser";
 import { useEffect, useRef, useState } from "react";
 import { fingerprintFromOverview } from "@/lib/presentation";
 

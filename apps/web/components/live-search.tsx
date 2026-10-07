@@ -5,9 +5,10 @@ import {
   SEARCH_SUGGEST_MIN,
   createRequestGate,
   type SearchResponse,
-} from "@pdoom/contracts";
+} from "@pdoom/contracts/browser";
 import Link from "next/link";
-import { useEffect, useId, useMemo, useState, type KeyboardEvent } from "react";
+import { usePathname } from "next/navigation";
+import { useCallback, useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from "react";
 
 type Suggestion = { id: string; href: string; label: string; detail?: string; kind: string };
 
@@ -75,6 +76,14 @@ function suggestionsFrom(response: SearchResponse | null): Suggestion[] {
 }
 
 export function LiveSearch() {
+  const pathname = usePathname();
+  return <SearchInput key={pathname} />;
+}
+
+function SearchInput() {
+  const root = useRef<HTMLFormElement>(null);
+  const pending = useRef<AbortController | null>(null);
+  const [requestEpoch, setRequestEpoch] = useState(0);
   const gate = useMemo(() => createRequestGate(), []);
   const listId = useId();
   const [q, setQ] = useState("");
@@ -84,13 +93,35 @@ export function LiveSearch() {
   const items = suggestionsFrom(open ? response : null);
   const showList = open && items.length > 0;
   const activeItem = active >= 0 ? items[active] : undefined;
+  const activeId = activeItem?.id;
+
+  const dismiss = useCallback(() => {
+    gate.next();
+    pending.current?.abort();
+    setOpen(false);
+    setActive(-1);
+  }, [gate]);
+
+  useEffect(() => {
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.target instanceof Node && !root.current?.contains(event.target)) dismiss();
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, [dismiss]);
+
+  useEffect(() => {
+    if (activeId) document.getElementById(activeId)?.scrollIntoView?.({ block: "nearest" });
+  }, [activeId]);
 
   useEffect(() => {
     const trimmed = q.trim();
     if (trimmed.length < SEARCH_SUGGEST_MIN) return;
     const controller = new AbortController();
+    pending.current = controller;
     const requestId = gate.next();
     const timer = window.setTimeout(() => {
+      if (!gate.shouldApply(requestId)) return;
       void (async () => {
         try {
           const result = await fetch(`/api/search?q=${encodeURIComponent(trimmed)}&mode=suggest`, {
@@ -118,14 +149,14 @@ export function LiveSearch() {
     return () => {
       window.clearTimeout(timer);
       controller.abort();
+      gate.next();
     };
-  }, [q, gate]);
+  }, [q, gate, requestEpoch]);
 
   function onKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Escape") {
       event.preventDefault();
-      setOpen(false);
-      setActive(-1);
+      dismiss();
       return;
     }
     if (!showList) return;
@@ -144,7 +175,17 @@ export function LiveSearch() {
   const countLabel = items.length === 1 ? "1 search suggestion" : `${items.length} search suggestions`;
 
   return (
-    <form className="search" action="/search" method="get" role="search">
+    <form
+      ref={root}
+      className="search"
+      action="/search"
+      method="get"
+      role="search"
+      onSubmit={dismiss}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) dismiss();
+      }}
+    >
       <label>
         <span className="kicker">Search</span>
         <input
@@ -158,7 +199,9 @@ export function LiveSearch() {
           value={q}
           autoComplete="off"
           placeholder="Person, statement, topic, source"
+          onFocus={() => setRequestEpoch((epoch) => epoch + 1)}
           onChange={(event) => {
+            dismiss();
             const next = event.target.value;
             setQ(next);
             setResponse(null);
@@ -175,7 +218,17 @@ export function LiveSearch() {
         <ul id={listId} role="listbox" aria-label="Search suggestions" onMouseDown={(event) => event.preventDefault()}>
           {items.map((item, index) => (
             <li key={item.id} role="presentation">
-              <Link id={item.id} role="option" aria-selected={index === active} href={item.href}>
+              <Link
+                id={item.id}
+                role="option"
+                aria-selected={index === active}
+                href={item.href}
+                onClick={() => {
+                  dismiss();
+                  setQ("");
+                  setResponse(null);
+                }}
+              >
                 <span className="kicker">{item.kind}</span>
                 <span>{item.label}</span>
                 {item.detail ? <span className="meta">{item.detail}</span> : null}

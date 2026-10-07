@@ -5,8 +5,8 @@ import {
   SEARCH_SUGGEST_MIN,
   createRequestGate,
   type SearchResponse,
-} from "@pdoom/contracts";
-import { useEffect, useId, useMemo, useState, type KeyboardEvent, type MouseEvent } from "react";
+} from "@pdoom/contracts/browser";
+import { useCallback, useEffect, useId, useMemo, useRef, useState, type KeyboardEvent, type MouseEvent } from "react";
 import { optionsFromSearch, type EntityKind, type EntityOption } from "@/lib/entity-options";
 
 export type EntitySelection = {
@@ -26,6 +26,9 @@ export function EntitySelect({
   name: string;
   selected: EntitySelection | null;
 }) {
+  const root = useRef<HTMLDivElement>(null);
+  const pending = useRef<AbortController | null>(null);
+  const [requestEpoch, setRequestEpoch] = useState(0);
   const gate = useMemo(() => createRequestGate(), []);
   const listId = useId();
   const inputId = useId();
@@ -38,13 +41,36 @@ export function EntitySelect({
   const [status, setStatus] = useState("");
   const showList = open && options.length > 0;
   const activeOption = active >= 0 ? options[active] : undefined;
+  const activeId = activeOption ? `${listId}-${activeOption.slug}` : undefined;
+
+  const dismiss = useCallback(() => {
+    gate.next();
+    pending.current?.abort();
+    setOpen(false);
+    setActive(-1);
+    setStatus("");
+  }, [gate]);
+
+  useEffect(() => {
+    const onPointerDown = (event: PointerEvent) => {
+      if (event.target instanceof Node && !root.current?.contains(event.target)) dismiss();
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, [dismiss]);
+
+  useEffect(() => {
+    if (activeId) document.getElementById(activeId)?.scrollIntoView?.({ block: "nearest" });
+  }, [activeId]);
 
   useEffect(() => {
     const trimmed = query.trim();
     if (trimmed.length < SEARCH_SUGGEST_MIN) return;
     const controller = new AbortController();
+    pending.current = controller;
     const requestId = gate.next();
     const timer = window.setTimeout(() => {
+      if (!gate.shouldApply(requestId)) return;
       void (async () => {
         try {
           const result = await fetch(
@@ -77,10 +103,12 @@ export function EntitySelect({
     return () => {
       window.clearTimeout(timer);
       controller.abort();
+      gate.next();
     };
-  }, [query, gate, kind, label]);
+  }, [query, gate, kind, label, requestEpoch]);
 
   function choose(option: EntityOption) {
+    dismiss();
     setChoice({ slug: option.slug, name: option.name, detail: option.detail });
     setQuery("");
     setOptions([]);
@@ -91,6 +119,8 @@ export function EntitySelect({
 
   function clear(event: MouseEvent<HTMLButtonElement>) {
     const form = event.currentTarget.form;
+    dismiss();
+    setQuery("");
     setChoice(null);
     setStatus(`Cleared ${label.toLowerCase()}`);
     if (!form) return;
@@ -105,8 +135,7 @@ export function EntitySelect({
   function onKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Escape") {
       event.preventDefault();
-      setOpen(false);
-      setActive(-1);
+      dismiss();
       return;
     }
     if (!showList) return;
@@ -123,7 +152,13 @@ export function EntitySelect({
   }
 
   return (
-    <div className="entity">
+    <div
+      ref={root}
+      className="entity"
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) dismiss();
+      }}
+    >
       <label htmlFor={inputId}>{label}</label>
       <input
         id={inputId}
@@ -136,7 +171,9 @@ export function EntitySelect({
         value={query}
         autoComplete="off"
         placeholder={choice ? `Change ${label.toLowerCase()}` : "Search by name"}
+        onFocus={() => setRequestEpoch((epoch) => epoch + 1)}
         onChange={(event) => {
+          dismiss();
           const next = event.target.value;
           setQuery(next);
           setOptions([]);

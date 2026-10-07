@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import { chmod, mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { chmod, mkdtemp, mkdir, open, readFile, rm, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createHash } from "node:crypto";
@@ -53,6 +53,15 @@ describe("production operations files", () => {
     expect(caddy).toContain("www.pdoom.live");
     expect(caddy).toContain("redir https://pdoom.live{uri} permanent");
     expect(caddy).not.toContain("5432");
+    expect(compose).toContain("./deploy/state:/etc/caddy/state:ro");
+    expect(compose).not.toContain("./deploy/state/upstream.caddy:");
+    expect(caddy).toContain("import /etc/caddy/state/upstream.caddy");
+    const proxyHealth = await readFile("scripts/deploy/proxy-health.sh", "utf8");
+    // A read-only /etc/caddy directory would prevent Docker from creating the
+    // nested /etc/caddy/state mountpoint during validation-container startup.
+    expect(proxyHealth).toContain('$ROOT/deploy/caddy/Caddyfile:/etc/caddy/Caddyfile:ro');
+    expect(proxyHealth).toContain('$ROOT/deploy/caddy:/etc/caddy/state:ro');
+    expect(proxyHealth).not.toContain('$ROOT/deploy/caddy:/etc/caddy:ro');
     expect(upstream).toContain("health_uri /api/ready");
     expect(upstream).toContain("lb_retries 0");
     expect(upstream).not.toContain("*");
@@ -64,6 +73,48 @@ describe("production operations files", () => {
     expect(example).not.toContain("sk-");
     const docker = await readFile("Dockerfile", "utf8");
     expect(docker).toContain("org.opencontainers.image.revision");
+  });
+
+  it("atomically replaces the upstream entry visible through the directory mount", async () => {
+    const dir = await mkdtemp(join(tmpdir(), "pdoom-upstream-"));
+    const upstream = join(dir, "upstream.caddy");
+    try {
+      await writeFile(upstream, "reverse_proxy web:3000\n");
+      const oldFile = await open(upstream, "r");
+      try {
+        const oldInode = (await oldFile.stat()).ino;
+        const switched = run("bash", ["-c", 'source scripts/deploy/lib.sh; render_upstream pdoom-prod-web-candidate'], { PDOOM_STATE_DIR: dir });
+        expect(switched.status, switched.stderr).toBe(0);
+        expect((await stat(upstream)).ino).not.toBe(oldInode);
+        // A single-file mount would still see this old inode, not the candidate.
+        expect(await oldFile.readFile("utf8")).toBe("reverse_proxy web:3000\n");
+        const next = await readFile(upstream, "utf8");
+        expect(next).toContain("reverse_proxy pdoom-prod-web-candidate:3000");
+        expect(next).toContain("health_uri /api/ready");
+        const restored = run("bash", ["-c", 'source scripts/deploy/lib.sh; render_upstream web'], { PDOOM_STATE_DIR: dir });
+        expect(restored.status, restored.stderr).toBe(0);
+        expect(await readFile(upstream, "utf8")).toBe(await readFile("deploy/caddy/upstream.caddy", "utf8"));
+        const invalid = run("bash", ["-c", 'source scripts/deploy/lib.sh; render_upstream "bad;host"'], { PDOOM_STATE_DIR: dir });
+        expect(invalid.status).not.toBe(0);
+        expect(await readFile(upstream, "utf8")).toBe(await readFile("deploy/caddy/upstream.caddy", "utf8"));
+      } finally {
+        await oldFile.close();
+      }
+    } finally {
+      await rm(dir, { recursive: true, force: true });
+    }
+  });
+
+  it("reconciles the proxy mount before switching traffic or recreating web", () => {
+    const result = run("bash", ["scripts/deploy/release-switch.test.sh"]);
+    expect(result.status, `${result.stdout}\n${result.stderr}`).toBe(0);
+    expect(result.stdout).toContain("release_switch_test_ok");
+  });
+
+  it("only records rollback after routing reaches its verified image and rejects schema mismatch", () => {
+    const result = run("bash", ["scripts/deploy/rollback-routing.test.sh"]);
+    expect(result.status, `${result.stdout}\n${result.stderr}`).toBe(0);
+    expect(result.stdout).toContain("rollback_routing_test_ok");
   });
 
   it("requires acknowledgement for a breaking pending migration and refuses a diverged database", async () => {
@@ -143,6 +194,12 @@ describe("production operations files", () => {
     expect(result.stdout.trim().split("\n").filter(Boolean)).toEqual(["cccccccc"]);
   });
 
+  it("isolates backup identities and loads private configured defaults safely", () => {
+    const result = run("bash", ["scripts/backup/backup-safety.test.sh"]);
+    expect(result.status, `${result.stdout}\n${result.stderr}`).toBe(0);
+    expect(result.stdout).toContain("backup_safety_test_ok");
+  });
+
   it("keeps the newest verified backups and dry-run does not delete them", async () => {
     const dir = await mkdtemp(join(tmpdir(), "pdoom-backups-"));
     try {
@@ -151,12 +208,12 @@ describe("production operations files", () => {
       await writeBackup(dir, "20260927T000000Z", "early");
       await writeBackup(dir, "20260927T010000Z", "three");
       await writeFile(join(dir, ".partial.dump"), "partial");
-      const dry = run("bash", ["scripts/backup/retain.sh", "--output-dir", dir, "--keep-daily", "1", "--keep-weekly", "0", "--dry-run"]);
+      const dry = run("bash", ["scripts/backup/retain.sh", "--output-dir", dir, "--keep-daily", "1", "--keep-weekly", "0", "--dry-run"], { PDOOM_OPS_ENV_MODE: "process" });
       expect(dry.status).toBe(0);
       expect(dry.stdout).toContain("would delete");
       expect(dry.stdout).toContain("pdoom_ops_drill_20260927T000000Z.dump");
       expect(await readFile(join(dir, "pdoom_ops_drill_20260920T010000Z.dump"), "utf8")).toBe("one");
-      const real = run("bash", ["scripts/backup/retain.sh", "--output-dir", dir, "--keep-daily", "1", "--keep-weekly", "0"]);
+      const real = run("bash", ["scripts/backup/retain.sh", "--output-dir", dir, "--keep-daily", "1", "--keep-weekly", "0"], { PDOOM_OPS_ENV_MODE: "process" });
       expect(real.status).toBe(0);
       await expect(readFile(join(dir, "pdoom_ops_drill_20260927T010000Z.dump"), "utf8")).resolves.toBe("three");
       await expect(readFile(join(dir, "pdoom_ops_drill_20260927T000000Z.dump"), "utf8")).rejects.toThrow();
@@ -165,6 +222,12 @@ describe("production operations files", () => {
     } finally {
       await rm(dir, { recursive: true, force: true });
     }
+  });
+
+  it("waits for the runtime smoke database's final TCP listener", () => {
+    const result = run("bash", ["scripts/runtime-postgres-ready.test.sh"]);
+    expect(result.status, `${result.stdout}\n${result.stderr}`).toBe(0);
+    expect(result.stdout).toContain("runtime_postgres_ready_test_ok");
   });
 
   it("waits until postgres init finishes before trusting pg_isready", () => {
@@ -194,7 +257,7 @@ describe("production operations files", () => {
       );
       const allowed = run("bash", ["scripts/deploy/rollback.sh", "--dry-run"], { PDOOM_STATE_DIR: dir });
       expect(allowed.status).toBe(0);
-      expect(allowed.stdout).toContain("preserve_database=yes");
+      expect(allowed.stdout).toContain("verify_database_migrations=yes");
     } finally {
       await rm(dir, { recursive: true, force: true });
     }

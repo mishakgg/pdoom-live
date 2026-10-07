@@ -58,12 +58,21 @@ function decodeCursor(cursor: string): CursorPayload {
   try {
     const parsed = JSON.parse(Buffer.from(cursor, "base64url").toString("utf8")) as CursorPayload;
     if (parsed.v !== 1 || (parsed.dir !== "next" && parsed.dir !== "prev")) throw new Error("bad");
-    if (parsed.t !== null && (typeof parsed.t !== "string" || parsed.t.length > 300)) throw new Error("bad");
-    if (!/^[0-9a-f-]{36}$/i.test(parsed.id)) throw new Error("bad");
+    if (parsed.t !== null && (typeof parsed.t !== "string" || parsed.t.length === 0 || parsed.t.length > 300)) throw new Error("bad");
+    if (typeof parsed.id !== "string" || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(parsed.id)) throw new Error("bad");
     return parsed;
   } catch {
     throw new InvalidCursorError();
   }
+}
+
+/** Accept existing millisecond cursors and exact PostgreSQL microsecond cursors. */
+function isStatementCursorTime(value: string | null): boolean {
+  if (value === null) return true;
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.(?:\d{3}|\d{6})Z$/.test(value) || value.startsWith("0000-")) return false;
+  const milliseconds = `${value.slice(0, 23)}Z`;
+  const parsed = Date.parse(milliseconds);
+  return Number.isFinite(parsed) && new Date(parsed).toISOString() === milliseconds;
 }
 
 function day(value: Date | string | null): string | null {
@@ -89,6 +98,7 @@ function num(value: string | number | null): number | null {
 const statementSelect = `
   SELECT
     s.id, s.slug, s.statement_type, s.normalized_text, s.event_time, ${effectiveReviewStateSql("s")} AS review_state, s.confidence,
+    to_char(s.event_time AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"') AS cursor_event_time,
     s.extractor_version,
     p.slug AS person_slug, p.display_name,
     src.slug AS source_slug, src.name AS source_name, src.source_type,
@@ -209,27 +219,33 @@ export async function listStatements(input: StatementListQuery, pool: Sql = getP
   const values: unknown[] = [];
   const where = statementFilters(query, values);
   const cursor = query.cursor ? decodeCursor(query.cursor) : null;
-  const direction = cursor?.dir ?? "next";
+  if (cursor && !isStatementCursorTime(cursor.t)) throw new InvalidCursorError();
+  const forward = !cursor || cursor.dir === "next";
   const desc = query.sort === "event_time_desc";
-  const forward = direction === "next" ? desc : !desc;
+  const queryDescending = desc === forward;
   let cursorClause = "";
   if (cursor) {
     values.push(cursor.t);
-    const timeParam = values.length;
+    const timeParam = `$${values.length}`;
     values.push(cursor.id);
-    const idParam = values.length;
-    const op = forward ? "<" : ">";
+    const idParam = `$${values.length}`;
+    const op = queryDescending ? "<" : ">";
+    // Ascending order starts with unknown dates; descending order ends with
+    // them. Moving backwards reverses both ordering and that null boundary.
+    const afterNull = queryDescending ? "" : `OR s.event_time IS NOT NULL`;
+    const afterDated = queryDescending ? "OR s.event_time IS NULL" : "";
     cursorClause = `${where ? "AND" : "WHERE"} (
-      ($${timeParam}::timestamptz IS NULL AND s.event_time IS NULL AND s.id ${op} $${idParam}::uuid)
-      OR ($${timeParam}::timestamptz IS NOT NULL AND (
-        s.event_time ${op} $${timeParam}::timestamptz
-        OR (s.event_time = $${timeParam}::timestamptz AND s.id ${op} $${idParam}::uuid)
-        ${forward && desc ? `OR s.event_time IS NULL` : ""}
-        ${!forward && !desc ? `OR ($${timeParam}::timestamptz IS NULL)` : ""}
+      (${timeParam}::timestamptz IS NULL AND (
+        (s.event_time IS NULL AND s.id ${op} ${idParam}::uuid) ${afterNull}
+      ))
+      OR (${timeParam}::timestamptz IS NOT NULL AND (
+        s.event_time ${op} ${timeParam}::timestamptz
+        OR (s.event_time = ${timeParam}::timestamptz AND s.id ${op} ${idParam}::uuid)
+        ${afterDated}
       ))
     )`;
   }
-  const order = forward ? "s.event_time DESC NULLS LAST, s.id DESC" : "s.event_time ASC NULLS FIRST, s.id ASC";
+  const order = queryDescending ? "s.event_time DESC NULLS LAST, s.id DESC" : "s.event_time ASC NULLS FIRST, s.id ASC";
   values.push(query.limit + 1);
   const sql = `${statementSelect} ${where} ${cursorClause} ORDER BY ${order} LIMIT $${values.length}`;
   const result = await pool.query(sql, values);
@@ -248,12 +264,12 @@ export async function listStatements(input: StatementListQuery, pool: Sql = getP
       limit: query.limit,
       total: total.rows[0].count as number,
       next_cursor:
-        last && (hasExtra || direction === "prev")
-          ? encodeCursor({ v: 1, t: last.event_time, id: last.id, dir: "next" })
+        last && (forward ? hasExtra : Boolean(cursor))
+          ? encodeCursor({ v: 1, t: rows[rows.length - 1].cursor_event_time as string | null, id: last.id, dir: "next" })
           : null,
       prev_cursor:
-        first && cursor
-          ? encodeCursor({ v: 1, t: first.event_time, id: first.id, dir: "prev" })
+        first && (forward ? Boolean(cursor) : hasExtra)
+          ? encodeCursor({ v: 1, t: rows[0].cursor_event_time as string | null, id: first.id, dir: "prev" })
           : null,
     },
   };
@@ -378,13 +394,15 @@ export function listPeople(input: PeopleListQuery, pool: Sql = getPool()) {
   }
   const where = clauses.length ? `WHERE ${clauses.join(" AND ")}` : "";
   const cursor = query.cursor ? decodeCursor(query.cursor) : null;
+  if (cursor && cursor.t === null) throw new InvalidCursorError();
+  const forward = !cursor || cursor.dir === "next";
   let cursorClause = "";
   if (cursor?.t) {
     values.push(cursor.t);
     const nameParam = values.length;
     values.push(cursor.id);
     const idParam = values.length;
-    const op = cursor.dir === "prev" ? "<" : ">";
+    const op = forward ? ">" : "<";
     cursorClause = `${where ? "AND" : "WHERE"} (p.display_name ${op} $${nameParam} OR (p.display_name = $${nameParam} AND p.id ${op} $${idParam}::uuid))`;
   }
   values.push(query.limit + 1);
@@ -404,12 +422,13 @@ export function listPeople(input: PeopleListQuery, pool: Sql = getPool()) {
       ) grouped
     ) counts ON true
     ${where} ${cursorClause}
-    ORDER BY p.display_name ASC, p.id ASC
+    ORDER BY ${forward ? "p.display_name ASC, p.id ASC" : "p.display_name DESC, p.id DESC"}
     LIMIT $${values.length}
   `;
   const result = await pool.query(sql, values);
   const hasExtra = result.rows.length > query.limit;
-  const rows = result.rows.slice(0, query.limit);
+  let rows = result.rows.slice(0, query.limit);
+  if (!forward) rows = rows.reverse();
   const countValues: unknown[] = [];
   const countClauses: string[] = [];
   if (query.q) {
@@ -456,8 +475,8 @@ export function listPeople(input: PeopleListQuery, pool: Sql = getPool()) {
     page: {
       limit: query.limit,
       total: total.rows[0].count as number,
-      next_cursor: last && hasExtra ? encodeCursor({ v: 1, t: last.display_name, id: last.id, dir: "next" }) : null,
-      prev_cursor: first && cursor ? encodeCursor({ v: 1, t: first.display_name, id: first.id, dir: "prev" }) : null,
+      next_cursor: last && (forward ? hasExtra : Boolean(cursor)) ? encodeCursor({ v: 1, t: last.display_name, id: last.id, dir: "next" }) : null,
+      prev_cursor: first && (forward ? Boolean(cursor) : hasExtra) ? encodeCursor({ v: 1, t: first.display_name, id: first.id, dir: "prev" }) : null,
     },
   };
   });

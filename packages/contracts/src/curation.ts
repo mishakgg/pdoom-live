@@ -12,7 +12,8 @@ import {
 } from "./enums";
 import { normalizeTimestamp } from "./normalize";
 
-export const REVIEW_DECISION_SCHEMA = "review-decisions/1.0.0";
+export const REVIEW_DECISION_SCHEMA = "review-decisions/2.0.0";
+export const LEGACY_REVIEW_DECISION_SCHEMA = "review-decisions/1.0.0";
 
 /**
  * Identity version 1 is the existing SHA-256 material in `candidateKey`.
@@ -447,11 +448,52 @@ export function decisionKey(command: ReviewCommand): string {
   return createHash("sha256").update(JSON.stringify({ ...command, decision_key: null }), "utf8").digest("hex");
 }
 
-export const reviewManifestSchema = z.object({
-  schema_version: z.literal(REVIEW_DECISION_SCHEMA),
-  decisions: z.array(reviewCommandSchema),
+/** Exact JSON shape emitted by statement_claim_v1. Do not normalize its values. */
+export const reviewClaimSnapshotSchema = z.object({
+  version: z.literal(1),
+  person_slug: slug,
+  source: z.object({
+    slug, canonical_url: z.string(), content_hash: z.string(), content_version: z.number().int().positive(),
+  }).strict(),
+  extractor_name: z.string(), extractor_version: z.string(),
+  statement_type: z.enum(STATEMENT_TYPES), normalized_text: z.string(), event_time: z.string().nullable(),
+  evidence: z.object({
+    source_item_slug: slug, segment_kind: z.string(), text: z.string(), hash: z.string(),
+    context_text: z.string().nullable(), start_char: z.number().nullable(), end_char: z.number().nullable(),
+    start_ms: z.number().nullable(), end_ms: z.number().nullable(),
+  }).strict(),
+  forecast: z.object({
+    forecast_kind: z.string(), question_key: z.string(), question_text: z.string(),
+    definition_text: z.string().nullable(), condition_text: z.string().nullable(),
+    target_date_start: z.string().nullable(), target_date_end: z.string().nullable(),
+    horizon_text: z.string().nullable(), value_type: z.string(),
+    value_numeric: z.number().nullable(), value_min: z.number().nullable(), value_max: z.number().nullable(),
+    unit: z.string().nullable(), distribution_json: z.record(z.string(), z.unknown()).nullable(),
+    resolution_criteria: z.string().nullable(),
+  }).strict().nullable(),
+  topic_slugs: z.array(slug),
 }).strict();
 
+export const boundReviewDecisionSchema = reviewCommandSchema.extend({
+  machine_claim: reviewClaimSnapshotSchema.nullable(),
+  accepted_claim: reviewClaimSnapshotSchema.nullable(),
+}).refine((value) => (value.machine_claim === null) === (value.accepted_claim === null), {
+  message: "review snapshots must both be present or both be null",
+});
+
+export const currentReviewManifestSchema = z.object({
+  schema_version: z.literal(REVIEW_DECISION_SCHEMA),
+  decisions: z.array(boundReviewDecisionSchema),
+}).strict();
+
+export const reviewManifestSchema = z.discriminatedUnion("schema_version", [
+  z.object({ schema_version: z.literal(LEGACY_REVIEW_DECISION_SCHEMA), decisions: z.array(reviewCommandSchema) }).strict(),
+  currentReviewManifestSchema,
+]);
+
+export type ReviewClaimSnapshot = z.infer<typeof reviewClaimSnapshotSchema>;
+export type BoundReviewDecision = z.infer<typeof boundReviewDecisionSchema>;
+export type CurrentReviewManifest = z.infer<typeof currentReviewManifestSchema>;
 export type ReviewManifest = z.infer<typeof reviewManifestSchema>;
 
 const candidateHash = z.string().regex(/^(sha256:)?[a-f0-9]{64}$/, "candidate content hash must be SHA-256");
