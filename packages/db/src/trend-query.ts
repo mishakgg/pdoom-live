@@ -1,6 +1,7 @@
 import {
   COMPARABILITY_POLICY_VERSION,
   CURRENT_CORPUS_HISTORY,
+  RESEARCH_REVIEW_STATES,
   aggregationSchema,
   distributionAggregationSchema,
   quantityAggregationSchema,
@@ -176,7 +177,14 @@ async function currentCohort(pool: pg.Pool): Promise<CohortRef | null> {
   };
 }
 
-export const FORECAST_INPUT_SQL = `SELECT s.slug AS statement_slug, p.slug AS person_slug, p.display_name, s.statement_type, ${effectiveReviewStateSql("s")} AS review_state,
+function trendSourceSql(alias: string, researchSources: boolean): string {
+  return researchSources
+    ? `${alias}.review_state IN (${RESEARCH_REVIEW_STATES.map((state) => `'${state}'`).join(", ")})`
+    : `${alias}.review_state <> 'rejected'`;
+}
+
+function forecastInputSql(researchSources = false): string {
+  return `SELECT s.slug AS statement_slug, p.slug AS person_slug, p.display_name, s.statement_type, ${effectiveReviewStateSql("s")} AS review_state,
             s.event_time, f.question_key, f.question_text, f.definition_text, f.condition_text, f.forecast_kind,
             f.value_type, f.value_numeric, f.value_min, f.value_max, f.unit, f.horizon_text,
             f.target_date_start, f.target_date_end, f.distribution_json, f.resolution_criteria,
@@ -194,11 +202,16 @@ export const FORECAST_INPUT_SQL = `SELECT s.slug AS statement_slug, p.slug AS pe
      JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2
      LEFT JOIN forecasts f ON f.statement_id = s.id
      LEFT JOIN source_items si ON si.id = s.source_item_id
+     JOIN sources src ON src.id = si.source_id
      LEFT JOIN statement_topics st ON st.statement_id = s.id
      LEFT JOIN topics t ON t.id = st.topic_id
+     WHERE ${trendSourceSql("src", researchSources)}
      GROUP BY s.id, p.slug, p.display_name, f.question_key, f.question_text, f.definition_text, f.condition_text,
               f.forecast_kind, f.value_type, f.value_numeric, f.value_min, f.value_max, f.unit, f.horizon_text, f.review_state,
               f.target_date_start, f.target_date_end, f.distribution_json, f.resolution_criteria, si.observed_at`;
+}
+
+export const FORECAST_INPUT_SQL = forecastInputSql();
 
 function dateOnly(value: unknown): string | null {
   if (!value) return null;
@@ -260,21 +273,26 @@ export function mapForecastRow(row: Record<string, unknown>): TrendCandidate {
   };
 }
 
-async function loadInputs(pool: pg.Pool, cohort: CohortRef): Promise<CohortInputs> {
+async function loadInputs(pool: pg.Pool, cohort: CohortRef, researchSources = false): Promise<CohortInputs> {
   const size = await pool.query(
     `SELECT count(*)::int AS count
      FROM cohort_memberships cm JOIN cohorts c ON c.id = cm.cohort_id
      WHERE c.slug = $1 AND c.version = $2`,
     [cohort.slug, cohort.version],
   );
-  const forecasts = await pool.query(FORECAST_INPUT_SQL, [cohort.slug, cohort.version]);
+  const forecasts = await pool.query(forecastInputSql(researchSources), [cohort.slug, cohort.version]);
   const edges = await pool.query(
     `SELECT fs.slug AS from_statement_slug, ts.slug AS to_statement_slug, r.relationship_type, r.review_state, r.method
      FROM statement_relationships r
      JOIN statements fs ON fs.id = r.from_statement_id
      JOIN statements ts ON ts.id = r.to_statement_id
+     JOIN source_items fsi ON fsi.id = fs.source_item_id
+     JOIN sources fsrc ON fsrc.id = fsi.source_id
+     JOIN source_items tsi ON tsi.id = ts.source_item_id
+     JOIN sources tsrc ON tsrc.id = tsi.source_id
      JOIN cohort_memberships cm ON cm.person_id = fs.person_id
      JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2
+     WHERE ${trendSourceSql("fsrc", researchSources)} AND ${trendSourceSql("tsrc", researchSources)}
      ORDER BY fs.slug, ts.slug, r.relationship_type`,
     [cohort.slug, cohort.version],
   );
@@ -529,7 +547,7 @@ function headerFor(method: MethodSpec, inputs: CohortInputs, density: TrendDensi
   };
 }
 
-async function computeVolume(method: MethodSpec, inputs: CohortInputs, pool: pg.Pool): Promise<VolumeTrend> {
+async function computeVolume(method: MethodSpec, inputs: CohortInputs, pool: pg.Pool, researchSources = false): Promise<VolumeTrend> {
   const reviewStates = method.volume_review_states ?? ["human_verified", "machine_validated"];
   const parsed = volumeAggregationSchema.parse({
     type: "count_by_topic_and_statement_type",
@@ -544,7 +562,10 @@ async function computeVolume(method: MethodSpec, inputs: CohortInputs, pool: pg.
      JOIN cohort_memberships cm ON cm.person_id = p.id
      JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2
      JOIN statement_topics st ON st.statement_id = s.id
-     JOIN topics t ON t.id = st.topic_id`,
+     JOIN topics t ON t.id = st.topic_id
+     JOIN source_items si ON si.id = s.source_item_id
+     JOIN sources src ON src.id = si.source_id
+     WHERE ${trendSourceSql("src", researchSources)}`,
     [inputs.cohort.slug, inputs.cohort.version],
   );
   const volume = computeStatementVolume({
@@ -670,16 +691,16 @@ export async function loadTrendInputs(pool = getPool()): Promise<CohortInputs | 
   return loadInputs(pool, cohort);
 }
 
-export async function listComputedTrends(pool = getPool()): Promise<PublicTrend[]> {
+export async function listComputedTrends(pool = getPool(), researchSources = false): Promise<PublicTrend[]> {
   const cohort = await currentCohort(pool);
   if (!cohort) return [];
-  const inputs = await loadInputs(pool, cohort);
+  const inputs = await loadInputs(pool, cohort, researchSources);
   const published = await publishedMethods(pool, cohort);
   const methods = resolveTrendMethods(published, inputs.candidates);
   const trends: PublicTrend[] = [];
   for (const method of methods) {
     if (method.kind === "volume") {
-      trends.push(await computeVolume(method, inputs, pool));
+      trends.push(await computeVolume(method, inputs, pool, researchSources));
       continue;
     }
     const computed = computeMethod(method, inputs);
@@ -697,8 +718,8 @@ export async function listComputedTrends(pool = getPool()): Promise<PublicTrend[
   return trends;
 }
 
-export async function getTrend(slug: string, pool = getPool()): Promise<PublicTrend | null> {
-  const trends = await listComputedTrends(pool);
+export async function getTrend(slug: string, pool = getPool(), researchSources = false): Promise<PublicTrend | null> {
+  const trends = await listComputedTrends(pool, researchSources);
   return trends.find((trend) => trend.slug === slug) ?? null;
 }
 

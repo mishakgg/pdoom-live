@@ -22,6 +22,7 @@ import {
 } from "@pdoom/contracts";
 import type pg from "pg";
 import { effectiveReviewStateSql } from "./coverage";
+import { websiteSourceItemSql, websiteStatementSql } from "./website-visibility";
 import { getPool } from "./pool";
 import { InvalidCursorError } from "./queries";
 import { isPool, isStatementTimeout, withConsistentRead } from "./read-snapshot";
@@ -366,7 +367,7 @@ function peopleSql(prepared: ReturnType<typeof prepareSearchText>, parsed: Searc
         ${rank} AS hit_rank
       FROM people p
       CROSS JOIN q
-      LEFT JOIN affiliations a ON a.id = p.current_affiliation_id
+      LEFT JOIN affiliations a ON a.id = p.current_affiliation_id AND a.review_state = ANY(q.public_states)
       LEFT JOIN organizations o ON o.id = a.organization_id
       WHERE (${person}::text IS NULL OR p.slug = ${person})
     ),
@@ -545,14 +546,14 @@ function statementsSql(prepared: ReturnType<typeof prepareSearchText>, parsed: S
       JOIN people p ON p.id = s.person_id
       JOIN source_items si ON si.id = s.source_item_id
       JOIN sources src ON src.id = si.source_id
-      LEFT JOIN forecasts f ON f.statement_id = s.id
+      LEFT JOIN forecasts f ON f.statement_id = s.id AND f.review_state = ANY(q.public_states)
       LEFT JOIN LATERAL (
         SELECT jsonb_agg(jsonb_build_object('slug', t.slug, 'name', t.name) ORDER BY t.name) AS topics
         FROM statement_topics st
         JOIN topics t ON t.id = st.topic_id
         WHERE st.statement_id = s.id
       ) topics ON true
-      WHERE ${effectiveReviewStateSql("s")} = ANY(q.public_states)
+      WHERE ${websiteStatementSql()}
         AND s.search_vector @@ q.tsq
         AND (${filters.person}::text IS NULL OR p.slug = ${filters.person})
         AND (${filters.statementType}::text IS NULL OR s.statement_type = ${filters.statementType})
@@ -601,7 +602,7 @@ function sourceItemsSql(prepared: ReturnType<typeof prepareSearchText>, parsed: 
       FROM source_items si
       CROSS JOIN q
       JOIN sources src ON src.id = si.source_id
-      WHERE si.is_current
+      WHERE si.is_current AND ${websiteSourceItemSql()}
         AND (${from}::timestamptz IS NULL OR si.published_at >= ${from}::timestamptz)
         AND (${to}::timestamptz IS NULL OR si.published_at <= ${to}::timestamptz)
         AND (${person}::text IS NULL OR EXISTS (

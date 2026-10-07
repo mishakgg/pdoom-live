@@ -13,6 +13,7 @@ import { effectiveReviewStateSql } from "./coverage";
 import { getPool } from "./pool";
 import { isPool, queryOnClient, withConsistentRead } from "./read-snapshot";
 import { listComputedTrends } from "./trend-query";
+import { websiteSourceAuditSql, websiteSourceItemSql, websiteStatementSql } from "./website-visibility";
 
 type Sql = pg.Pool | pg.PoolClient;
 
@@ -98,7 +99,7 @@ const statementSelect = `
   JOIN people p ON p.id = s.person_id
   JOIN source_items si ON si.id = s.source_item_id
   JOIN sources src ON src.id = si.source_id
-  LEFT JOIN forecasts f ON f.statement_id = s.id
+  LEFT JOIN forecasts f ON f.statement_id = s.id AND ${isPublicReviewSql("f.review_state")}
   LEFT JOIN LATERAL (
     SELECT jsonb_agg(jsonb_build_object('slug', t.slug, 'name', t.name) ORDER BY t.name) AS topics
     FROM statement_topics st
@@ -149,7 +150,7 @@ function mapStatement(row: Record<string, unknown>) {
 export type StatementSummary = ReturnType<typeof mapStatement>;
 
 function statementFilters(query: StatementListQuery, values: unknown[]): string {
-  const clauses: string[] = [];
+  const clauses: string[] = ["src.review_state <> 'rejected'"];
   if (query.person) {
     values.push(query.person);
     clauses.push(`p.slug = $${values.length}`);
@@ -159,7 +160,7 @@ function statementFilters(query: StatementListQuery, values: unknown[]): string 
     clauses.push(`EXISTS (
       SELECT 1 FROM affiliations a
       JOIN organizations o ON o.id = a.organization_id
-      WHERE a.person_id = p.id AND o.slug = $${values.length}
+      WHERE a.person_id = p.id AND o.slug = $${values.length} AND ${isPublicReviewSql("a.review_state")}
     )`);
   }
   if (query.source) {
@@ -280,7 +281,7 @@ export function getStatement(slug: string, pool: Sql = getPool()) {
      JOIN source_items si ON si.id = s.source_item_id
      JOIN sources src ON src.id = si.source_id
      JOIN evidence_segments e ON e.id = s.evidence_segment_id
-     LEFT JOIN forecasts f ON f.statement_id = s.id
+     LEFT JOIN forecasts f ON f.statement_id = s.id AND ${isPublicReviewSql("f.review_state")}
      LEFT JOIN extraction_runs er ON er.id = s.extraction_run_id
      LEFT JOIN LATERAL (
        SELECT jsonb_agg(jsonb_build_object('slug', t.slug, 'name', t.name) ORDER BY t.name) AS topics
@@ -288,7 +289,7 @@ export function getStatement(slug: string, pool: Sql = getPool()) {
        JOIN topics t ON t.id = st.topic_id
        WHERE st.statement_id = s.id
      ) topics ON true
-     WHERE s.slug = $1`,
+     WHERE s.slug = $1 AND ${websiteStatementSql()}`,
     [slug],
   );
   const row = result.rows[0];
@@ -300,7 +301,10 @@ export function getStatement(slug: string, pool: Sql = getPool()) {
      FROM statement_relationships r
      JOIN statements fs ON fs.id = r.from_statement_id
      JOIN statements ts ON ts.id = r.to_statement_id
-     WHERE fs.slug = $1 OR ts.slug = $1`,
+     WHERE (fs.slug = $1 OR ts.slug = $1)
+       AND ${isPublicReviewSql("r.review_state")}
+       AND ${websiteStatementSql("fs")}
+       AND ${websiteStatementSql("ts")}`,
     [slug],
   );
   return {
@@ -365,7 +369,7 @@ export function listPeople(input: PeopleListQuery, pool: Sql = getPool()) {
     values.push(query.organization);
     clauses.push(`EXISTS (
       SELECT 1 FROM affiliations a JOIN organizations o ON o.id = a.organization_id
-      WHERE a.person_id = p.id AND o.slug = $${values.length}
+      WHERE a.person_id = p.id AND o.slug = $${values.length} AND ${isPublicReviewSql("a.review_state")}
     )`);
   }
   if (query.status) {
@@ -389,13 +393,13 @@ export function listPeople(input: PeopleListQuery, pool: Sql = getPool()) {
            o.slug AS organization_slug, o.name AS organization_name, a.role, a.review_state AS affiliation_review_state,
            counts.counts
     FROM people p
-    LEFT JOIN affiliations a ON a.id = p.current_affiliation_id
+    LEFT JOIN affiliations a ON a.id = p.current_affiliation_id AND ${isPublicReviewSql("a.review_state")}
     LEFT JOIN organizations o ON o.id = a.organization_id
     LEFT JOIN LATERAL (
       SELECT jsonb_object_agg(statement_type, count) AS counts
       FROM (
         SELECT statement_type, count(*)::int AS count
-        FROM statements s WHERE s.person_id = p.id AND ${isPublicReviewSql("s.review_state")}
+        FROM statements s WHERE s.person_id = p.id AND ${websiteStatementSql()}
         GROUP BY statement_type
       ) grouped
     ) counts ON true
@@ -416,7 +420,7 @@ export function listPeople(input: PeopleListQuery, pool: Sql = getPool()) {
     countValues.push(query.organization);
     countClauses.push(`EXISTS (
       SELECT 1 FROM affiliations a JOIN organizations o ON o.id = a.organization_id
-      WHERE a.person_id = p.id AND o.slug = $${countValues.length}
+      WHERE a.person_id = p.id AND o.slug = $${countValues.length} AND ${isPublicReviewSql("a.review_state")}
     )`);
   }
   if (query.status) {
@@ -472,21 +476,21 @@ export function getPerson(slug: string, pool: Sql = getPool()) {
   const affiliations = await pool.query(
     `SELECT a.role, a.start_date, a.end_date, a.confidence_level, a.verification_detail, a.review_state, o.slug, o.name
      FROM affiliations a JOIN organizations o ON o.id = a.organization_id
-     WHERE a.person_id = $1
+     WHERE a.person_id = $1 AND ${isPublicReviewSql("a.review_state")}
      ORDER BY a.start_date NULLS LAST`,
     [person.id],
   );
   const identities = await pool.query(
     `SELECT namespace, external_id, canonical_url, handle, verification_method, verification_detail,
             confidence_level, review_state, verified_at
-     FROM external_identities WHERE person_id = $1 ORDER BY namespace`,
+     FROM external_identities WHERE person_id = $1 AND ${isPublicReviewSql("review_state")} ORDER BY namespace`,
     [person.id],
   );
   const statements = await listStatements({ person: slug, limit: 50, sort: "event_time_desc" }, pool);
   const sources = await pool.query(
     `SELECT slug, name, source_type, canonical_url, collection_method, collection_adapter, review_state,
             last_checked_at, last_success_at, enabled
-     FROM sources WHERE owner_person_id = $1 ORDER BY name`,
+     FROM sources WHERE owner_person_id = $1 AND ${isPublicReviewSql("review_state")} ORDER BY name`,
     [person.id],
   );
   const asOf = new Date().toISOString();
@@ -555,7 +559,7 @@ export async function listTopics(pool = getPool()) {
         SELECT s.statement_type, count(*)::int AS count
         FROM statement_topics st
         JOIN statements s ON s.id = st.statement_id
-        WHERE st.topic_id = t.id AND ${isPublicReviewSql("s.review_state")}
+        WHERE st.topic_id = t.id AND ${websiteStatementSql()}
         GROUP BY s.statement_type
       ) grouped
     ) counts ON true
@@ -586,7 +590,7 @@ export function getTopic(slug: string, pool: Sql = getPool()) {
          SELECT s.statement_type, count(*)::int AS count
          FROM statement_topics st
          JOIN statements s ON s.id = st.statement_id
-         WHERE st.topic_id = t.id AND ${isPublicReviewSql("s.review_state")}
+         WHERE st.topic_id = t.id AND ${websiteStatementSql()}
          GROUP BY s.statement_type
        ) grouped
      ) counts ON true
@@ -616,10 +620,11 @@ export async function listSources(pool = getPool()) {
            src.review_state, src.rights_notes,
            p.display_name AS owner_name, p.slug AS owner_slug,
            o.name AS organization_name,
-           (SELECT count(*)::int FROM source_items si WHERE si.source_id = src.id) AS item_count
+           (SELECT count(*)::int FROM source_items si WHERE si.source_id = src.id AND ${websiteSourceItemSql()}) AS item_count
     FROM sources src
     LEFT JOIN people p ON p.id = src.owner_person_id
     LEFT JOIN organizations o ON o.id = src.owner_organization_id
+    WHERE ${isPublicReviewSql("src.review_state")}
     ORDER BY src.name
   `);
   return result.rows.map((row) => ({
@@ -651,33 +656,36 @@ export function getSource(slug: string, pool: Sql = getPool()) {
             src.review_state, src.rights_notes,
             p.display_name AS owner_name, p.slug AS owner_slug,
             o.name AS organization_name,
-            (SELECT count(*)::int FROM source_items si WHERE si.source_id = src.id) AS item_count
+            (SELECT count(*)::int FROM source_items si WHERE si.source_id = src.id AND ${websiteSourceItemSql()}) AS item_count
      FROM sources src
      LEFT JOIN people p ON p.id = src.owner_person_id
      LEFT JOIN organizations o ON o.id = src.owner_organization_id
-     WHERE src.slug = $1`,
+     WHERE src.slug = $1 AND ${websiteSourceAuditSql()}`,
     [slug],
   );
   const row = sources.rows[0];
   if (!row) return null;
   const asOf = new Date().toISOString();
+  const publicSource = isPublicReviewState(String(row.review_state));
+  const auditFlags: { audit_only?: boolean } = publicSource ? {} : { audit_only: true };
   const source = {
+    ...auditFlags,
     slug: String(row.slug),
     name: String(row.name),
     source_type: String(row.source_type),
     canonical_url: String(row.canonical_url),
-    platform: row.platform ? String(row.platform) : null,
-    enabled: Boolean(row.enabled),
-    last_checked_at: iso(row.last_checked_at),
-    last_success_at: iso(row.last_success_at),
-    collection_method: String(row.collection_method),
-    collection_adapter: row.collection_adapter ? String(row.collection_adapter) : null,
+    platform: publicSource && row.platform ? String(row.platform) : null,
+    enabled: publicSource && Boolean(row.enabled),
+    last_checked_at: publicSource ? iso(row.last_checked_at) : null,
+    last_success_at: publicSource ? iso(row.last_success_at) : null,
+    collection_method: publicSource ? String(row.collection_method) : "not_recorded",
+    collection_adapter: publicSource && row.collection_adapter ? String(row.collection_adapter) : null,
     review_state: String(row.review_state),
-    freshness: classifyFreshness(iso(row.last_success_at), asOf),
-    rights_notes: row.rights_notes ? String(row.rights_notes) : null,
-    owner_name: row.owner_name ? String(row.owner_name) : null,
-    owner_slug: row.owner_slug ? String(row.owner_slug) : null,
-    organization_name: row.organization_name ? String(row.organization_name) : null,
+    freshness: classifyFreshness(publicSource ? iso(row.last_success_at) : null, asOf),
+    rights_notes: publicSource && row.rights_notes ? String(row.rights_notes) : null,
+    owner_name: publicSource && row.owner_name ? String(row.owner_name) : null,
+    owner_slug: publicSource && row.owner_slug ? String(row.owner_slug) : null,
+    organization_name: publicSource && row.organization_name ? String(row.organization_name) : null,
     item_count: Number(row.item_count),
   };
   const items = await pool.query(
@@ -685,7 +693,7 @@ export function getSource(slug: string, pool: Sql = getPool()) {
             si.availability, si.content_reference, si.language
      FROM source_items si
      JOIN sources src ON src.id = si.source_id
-     WHERE src.slug = $1
+     WHERE src.slug = $1 AND ${websiteSourceItemSql()}
      ORDER BY si.published_at DESC NULLS LAST`,
     [slug],
   );
@@ -710,24 +718,29 @@ export function getSourceItem(slug: string, pool: Sql = getPool()) {
   return queryOnClient(pool, async (pool) => {
   const result = await pool.query(
     `SELECT si.slug, si.title, si.canonical_url, si.published_at, si.published_timezone, si.observed_at,
-            si.language, si.content_hash, si.content_version, si.content_reference, si.metadata_json,
+            si.language, si.content_hash, si.content_version, si.content_reference,
             si.collection_status, si.availability, si.logical_key,
             src.slug AS source_slug, src.name AS source_name, src.source_type
      FROM source_items si
      JOIN sources src ON src.id = si.source_id
-     WHERE si.slug = $1`,
+     WHERE si.slug = $1 AND ${websiteSourceItemSql()}`,
     [slug],
   );
   const row = result.rows[0];
   if (!row) return null;
   const participants = await pool.query(
-    `SELECT sp.role, sp.attribution_method, sp.attribution_detail, sp.confidence_level, p.slug AS person_slug, p.display_name,
+    `SELECT sp.role, sp.attribution_method, sp.confidence_level, p.slug AS person_slug, p.display_name,
             o.slug AS organization_slug, o.name AS organization_name
      FROM source_participants sp
      JOIN source_items si ON si.id = sp.source_item_id
+     JOIN sources src ON src.id = si.source_id
      LEFT JOIN people p ON p.id = sp.person_id
      LEFT JOIN organizations o ON o.id = sp.organization_id
-     WHERE si.slug = $1
+     WHERE si.slug = $1 AND ((sp.person_id IS NULL AND ${isPublicReviewSql("src.review_state")}) OR EXISTS (
+       SELECT 1 FROM statements visible_s
+       WHERE visible_s.source_item_id = si.id AND visible_s.person_id = sp.person_id
+         AND ${websiteStatementSql("visible_s")}
+     ))
      ORDER BY sp.role`,
     [slug],
   );
@@ -735,7 +748,11 @@ export function getSourceItem(slug: string, pool: Sql = getPool()) {
     `SELECT e.slug, e.segment_kind, e.sequence, e.start_char, e.end_char, e.start_ms, e.end_ms, e.text, e.context_text, e.segment_hash
      FROM evidence_segments e
      JOIN source_items si ON si.id = e.source_item_id
-     WHERE si.slug = $1
+     WHERE si.slug = $1 AND EXISTS (
+       SELECT 1 FROM statements visible_s
+       WHERE visible_s.evidence_segment_id = e.id
+         AND ${websiteStatementSql("visible_s")}
+     )
      ORDER BY e.sequence`,
     [slug],
   );
@@ -750,7 +767,8 @@ export function getSourceItem(slug: string, pool: Sql = getPool()) {
     content_hash: String(row.content_hash),
     content_version: Number(row.content_version),
     content_reference: row.content_reference ? String(row.content_reference) : null,
-    metadata: row.metadata_json,
+    // Item metadata is not reviewed with a statement and may contain staged candidates.
+    metadata: {},
     collection_status: String(row.collection_status),
     availability: String(row.availability),
     logical_key: String(row.logical_key),
@@ -758,7 +776,7 @@ export function getSourceItem(slug: string, pool: Sql = getPool()) {
     participants: participants.rows.map((participant) => ({
       role: String(participant.role),
       attribution_method: String(participant.attribution_method),
-      attribution_detail: participant.attribution_detail ? String(participant.attribution_detail) : null,
+      attribution_detail: null,
       confidence_level: String(participant.confidence_level),
       person_slug: participant.person_slug ? String(participant.person_slug) : null,
       display_name: participant.display_name ? String(participant.display_name) : null,
@@ -836,12 +854,12 @@ export function getCoverage(asOf = new Date().toISOString(), pool: Sql = getPool
     ? `JOIN cohort_memberships cm ON cm.person_id = p.id
        JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2`
     : "";
-  const sourceScope = cohortRow
-    ? `WHERE src.owner_person_id IN (
+  const sourceScope = `WHERE ${isPublicReviewSql("src.review_state")}` + (cohortRow
+    ? ` AND (src.owner_person_id IN (
          SELECT cm.person_id FROM cohort_memberships cm
          JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2
-       ) OR src.owner_person_id IS NULL`
-    : "";
+       ) OR src.owner_person_id IS NULL)`
+    : "");
   const people = await pool.query(
     `SELECT count(DISTINCT p.id)::int AS cohort_size,
             count(DISTINCT p.id) FILTER (WHERE src.id IS NOT NULL)::int AS people_with_sources,
@@ -854,9 +872,9 @@ export function getCoverage(asOf = new Date().toISOString(), pool: Sql = getPool
             count(DISTINCT p.id) FILTER (WHERE st.person_id IS NOT NULL)::int AS statement_bearing_people
      FROM people p
      ${memberJoin}
-     LEFT JOIN sources src ON src.owner_person_id = p.id
+     LEFT JOIN sources src ON src.owner_person_id = p.id AND ${isPublicReviewSql("src.review_state")}
      LEFT JOIN (
-       SELECT DISTINCT person_id FROM statements WHERE ${isPublicReviewSql("review_state")}
+       SELECT DISTINCT person_id FROM statements s WHERE ${websiteStatementSql()}
      ) st ON st.person_id = p.id`,
     [...params, ACADEMIC_SOURCE_TYPES, FIRST_PARTY_SOURCE_TYPES],
   );
@@ -869,22 +887,21 @@ export function getCoverage(asOf = new Date().toISOString(), pool: Sql = getPool
   const latest = await pool.query(
     `SELECT max(src.last_success_at) AS last_success_at, max(src.last_checked_at) AS last_checked_at, max(si.observed_at) AS observed_at
      FROM sources src
-     LEFT JOIN source_items si ON si.source_id = src.id
+     LEFT JOIN source_items si ON si.source_id = src.id AND ${websiteSourceItemSql()}
      ${sourceScope}`,
     params,
   );
   const failing = await pool.query(
     `SELECT count(DISTINCT src.id)::int AS failing
      FROM sources src
-     LEFT JOIN source_items si ON si.source_id = src.id AND si.collection_status = ANY($${failingParam}::text[])
+     LEFT JOIN source_items si ON si.source_id = src.id AND ${websiteSourceItemSql()} AND si.collection_status = ANY($${failingParam}::text[])
      ${sourceScope ? sourceScope.replace("WHERE", "WHERE (") + ") AND" : "WHERE"} (
        (src.last_checked_at IS NOT NULL AND src.last_success_at IS NULL) OR si.id IS NOT NULL
      )`,
     [...params, FAILING_COLLECTION_STATUSES],
   );
   const statements = await pool.query(
-    `SELECT count(*)::int AS count FROM statements s WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[])`,
-    [REVIEW_STATES.filter(isPublicReviewState)],
+    `SELECT count(*)::int AS count FROM statements s WHERE ${websiteStatementSql()}`,
   );
   const freshness: Record<Freshness, number> = { current: 0, aging: 0, stale: 0, never_checked: 0 };
   const sourcesByType: Record<string, number> = {};
@@ -927,9 +944,9 @@ export function getOverview(pool: Sql = getPool()) {
   const dataset = await getDatasetRecord(pool);
   const coverage = await getCoverage(new Date().toISOString(), pool);
   const people = await pool.query("SELECT count(*)::int AS count FROM people");
-  const statements = await pool.query(`SELECT count(*)::int AS count FROM statements WHERE ${isPublicReviewSql("review_state")}`);
-  const items = await pool.query("SELECT count(*)::int AS count FROM source_items");
-  const observed = await pool.query("SELECT max(observed_at) AS observed_at, max(published_at) AS published_at FROM source_items");
+  const statements = await pool.query(`SELECT count(*)::int AS count FROM statements s WHERE ${websiteStatementSql()}`);
+  const items = await pool.query(`SELECT count(*)::int AS count FROM source_items si WHERE ${websiteSourceItemSql()}`);
+  const observed = await pool.query(`SELECT max(observed_at) AS observed_at, max(published_at) AS published_at FROM source_items si WHERE ${websiteSourceItemSql()}`);
   const cohort = dataset?.cohort_slug
     ? await pool.query(`SELECT slug, version, name, definition FROM cohorts WHERE slug = $1 AND version = $2`, [
         dataset.cohort_slug,
@@ -937,7 +954,7 @@ export function getOverview(pool: Sql = getPool()) {
       ])
     : { rows: [] as Array<Record<string, unknown>> };
   const verified = await pool.query(
-    `SELECT count(*)::int AS count FROM statements s WHERE ${effectiveReviewStateSql("s")} = 'human_verified'`,
+    `SELECT count(*)::int AS count FROM statements s WHERE ${websiteStatementSql()} AND ${effectiveReviewStateSql("s")} = 'human_verified'`,
   );
   const showTrends = dataset?.dataset_kind !== "live" || Number(verified.rows[0].count) > 0;
   const computed = showTrends ? await listComputedTrends(pool as unknown as pg.Pool) : [];
@@ -952,7 +969,7 @@ export function getOverview(pool: Sql = getPool()) {
      JOIN statements fs ON fs.id = r.from_statement_id
      JOIN statements ts ON ts.id = r.to_statement_id
      JOIN people p ON p.id = ts.person_id
-     WHERE ${isPublicReviewSql("r.review_state")} AND ${isPublicReviewSql("fs.review_state")} AND ${isPublicReviewSql("ts.review_state")}
+     WHERE ${isPublicReviewSql("r.review_state")} AND ${websiteStatementSql("fs")} AND ${websiteStatementSql("ts")}
      ORDER BY ts.event_time DESC NULLS LAST
      LIMIT 5`,
   );

@@ -28,6 +28,16 @@ type Db = pg.Pool | pg.PoolClient;
 
 const PUBLIC_STATES = [...RESEARCH_REVIEW_STATES];
 
+/** Research records must retain public source links, without the website audit exception. */
+function researchStatementSql(statementAlias: string, statesParam: string): string {
+  return `(${effectiveReviewStateSql(statementAlias)} = ANY(${statesParam}::text[]) AND EXISTS (
+    SELECT 1 FROM source_items research_si
+    JOIN sources research_src ON research_src.id = research_si.source_id
+    WHERE research_si.id = ${statementAlias}.source_item_id
+      AND research_src.review_state = ANY(${statesParam}::text[])
+  ))`;
+}
+
 export type PublicPage<T> = {
   data: T[];
   page: {
@@ -328,7 +338,7 @@ function publicPersonPredicate(alias: string, publicParam: string): string {
     ${alias}.status IN ('active', 'historical')
     OR EXISTS (
       SELECT 1 FROM statements s
-      WHERE s.person_id = ${alias}.id AND ${effectiveReviewStateSql("s")} = ANY(${publicParam}::text[])
+      WHERE s.person_id = ${alias}.id AND ${researchStatementSql("s", publicParam)}
     )
   )`;
 }
@@ -505,6 +515,7 @@ export function summarizeStatement(statement: PublicStatement): PublicStatementS
 function statementWhere(query: PublicStatementQuery, values: unknown[]): { where: string; publicParam: string } {
   const publicParam = bind(values, PUBLIC_STATES);
   const clauses = [
+    `src.review_state = ANY(${publicParam}::text[])`,
     query.review_state
       ? `${effectiveReviewStateSql("s")} = ${bind(values, query.review_state)}`
       : `${effectiveReviewStateSql("s")} = ANY(${publicParam}::text[])`,
@@ -639,8 +650,8 @@ async function fetchRelationships(pool: Db, statementSlug?: string): Promise<Pub
      JOIN statements fs ON fs.id = r.from_statement_id
      JOIN statements ts ON ts.id = r.to_statement_id
      WHERE r.review_state = ANY($1::text[])
-       AND ${effectiveReviewStateSql("fs")} = ANY($1::text[])
-       AND ${effectiveReviewStateSql("ts")} = ANY($1::text[])
+       AND ${researchStatementSql("fs", "$1")}
+       AND ${researchStatementSql("ts", "$1")}
        ${slugClause}
      ORDER BY fs.slug, ts.slug, r.relationship_type`,
     values,
@@ -684,7 +695,7 @@ export async function getPublicStatement(slug: string, pool: Db = getPool()): Pr
   if (isPool(pool)) return withConsistentRead(pool, (db) => getPublicStatement(slug, db));
   const values: unknown[] = [PUBLIC_STATES, slug];
   const result = await pool.query(
-    `${statementSelect} WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[]) AND s.slug = $2`,
+    `${statementSelect} WHERE ${researchStatementSql("s", "$1")} AND s.slug = $2`,
     values,
   );
   const row = result.rows[0];
@@ -734,7 +745,7 @@ const personSelect = (publicParam: string) => `
     FROM (
       SELECT statement_type, count(*)::int AS count
       FROM statements s
-      WHERE s.person_id = p.id AND ${effectiveReviewStateSql("s")} = ANY(${publicParam}::text[])
+      WHERE s.person_id = p.id AND ${researchStatementSql("s", publicParam)}
       GROUP BY statement_type
     ) grouped
   ) counts ON true
@@ -892,7 +903,7 @@ export async function listPublicTopics(pool: Db = getPool()): Promise<{ data: Pu
          SELECT s.statement_type, count(*)::int AS count
          FROM statement_topics st
          JOIN statements s ON s.id = st.statement_id
-         WHERE st.topic_id = t.id AND ${effectiveReviewStateSql("s")} = ANY($1::text[])
+         WHERE st.topic_id = t.id AND ${researchStatementSql("s", "$1")}
          GROUP BY s.statement_type
        ) grouped
      ) counts ON true
@@ -923,7 +934,7 @@ export async function getPublicTopic(slug: string, pool: Db = getPool()): Promis
          SELECT s.statement_type, count(*)::int AS count
          FROM statement_topics st
          JOIN statements s ON s.id = st.statement_id
-         WHERE st.topic_id = t.id AND ${effectiveReviewStateSql("s")} = ANY($1::text[])
+         WHERE st.topic_id = t.id AND ${researchStatementSql("s", "$1")}
          GROUP BY s.statement_type
        ) grouped
      ) counts ON true
@@ -970,7 +981,7 @@ const sourceSelect = `
            SELECT count(DISTINCT si.id)::int
            FROM source_items si
            JOIN statements s ON s.source_item_id = si.id
-           WHERE si.source_id = src.id AND ${effectiveReviewStateSql("s")} = ANY($1::text[])
+           WHERE si.source_id = src.id AND ${researchStatementSql("s", "$1")}
          ) AS public_item_count
   FROM sources src
   LEFT JOIN people p ON p.id = src.owner_person_id
@@ -1021,7 +1032,7 @@ export function getPublicSource(slug: string, asOf: string, pool: Db = getPool()
      WHERE src.slug = $2
        AND EXISTS (
          SELECT 1 FROM statements s
-         WHERE s.source_item_id = si.id AND ${effectiveReviewStateSql("s")} = ANY($1::text[])
+         WHERE s.source_item_id = si.id AND ${researchStatementSql("s", "$1")}
        )
      ORDER BY si.published_at DESC NULLS LAST, si.slug
      LIMIT $3`,
@@ -1057,8 +1068,13 @@ async function loadParticipants(pool: Db, sourceItemSlug?: string) {
      LEFT JOIN organizations o ON o.id = sp.organization_id
      WHERE EXISTS (
        SELECT 1 FROM statements s
-       WHERE s.source_item_id = si.id AND ${effectiveReviewStateSql("s")} = ANY($1::text[])
+       WHERE s.source_item_id = si.id AND ${researchStatementSql("s", "$1")}
      )
+     AND (sp.person_id IS NULL OR EXISTS (
+       SELECT 1 FROM statements participant_s
+       WHERE participant_s.source_item_id = si.id AND participant_s.person_id = sp.person_id
+         AND ${researchStatementSql("participant_s", "$1")}
+     ))
      ${clause}
      ORDER BY si.slug, sp.role, p.slug NULLS LAST, o.slug NULLS LAST`,
     values,
@@ -1110,7 +1126,7 @@ const sourceItemSelect = `
   WHERE src.review_state = ANY($1::text[])
     AND EXISTS (
       SELECT 1 FROM statements s
-      WHERE s.source_item_id = si.id AND ${effectiveReviewStateSql("s")} = ANY($1::text[])
+      WHERE s.source_item_id = si.id AND ${researchStatementSql("s", "$1")}
     )
 `;
 
@@ -1141,7 +1157,7 @@ export async function listPublicOrganizations(pool: Db = getPool()): Promise<Pub
        FROM source_participants sp
        JOIN source_items si ON si.id = sp.source_item_id
        JOIN statements s ON s.source_item_id = si.id
-       WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[]) AND sp.organization_id IS NOT NULL
+       WHERE ${researchStatementSql("s", "$1")} AND sp.organization_id IS NOT NULL
      )
      ORDER BY o.slug`,
     [PUBLIC_STATES],
@@ -1156,7 +1172,7 @@ export async function listPublicOrganizations(pool: Db = getPool()): Promise<Pub
 
 async function researchStatementSlugs(pool: Db): Promise<Set<string>> {
   const result = await pool.query(
-    `SELECT s.slug FROM statements s WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[])`,
+    `SELECT s.slug FROM statements s WHERE ${researchStatementSql("s", "$1")}`,
     [PUBLIC_STATES],
   );
   return new Set(result.rows.map((row) => String(row.slug)));
@@ -1220,7 +1236,7 @@ function presentTrend(trend: PublicTrend, allowed: Set<string>, asOf: string) {
 }
 
 async function loadResearchTrends(asOf: string, pool: Db) {
-  const trends = await listComputedTrends(pool as unknown as pg.Pool);
+  const trends = await listComputedTrends(pool as unknown as pg.Pool, true);
   const allowed = await researchStatementSlugs(pool);
   return trends.map((trend) => presentTrend(trend, allowed, asOf)).sort((left, right) => left.slug.localeCompare(right.slug));
 }
@@ -1251,7 +1267,7 @@ export function listPublicTrends(pool: Db = getPool()) {
 
 export function getPublicTrend(slug: string, asOf: string, pool: Db = getPool()) {
   return queryOnClient(pool, async (pool) => {
-  const trend = await getTrend(slug, pool as unknown as pg.Pool);
+  const trend = await getTrend(slug, pool as unknown as pg.Pool, true);
   if (!trend) return null;
   return presentTrend(trend, await researchStatementSlugs(pool), asOf);
   });
@@ -1333,18 +1349,18 @@ export function getPublicCatalog(asOf: string | null, pool: Db = getPool()) {
          (SELECT count(DISTINCT si.id)::int FROM source_items si
             JOIN sources src ON src.id = si.source_id
             WHERE src.review_state = ANY($1::text[])
-              AND EXISTS (SELECT 1 FROM statements s WHERE s.source_item_id = si.id AND ${effectiveReviewStateSql("s")} = ANY($1::text[]))) AS source_items,
-         (SELECT count(*)::int FROM statements s WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[])) AS statements,
+              AND EXISTS (SELECT 1 FROM statements s WHERE s.source_item_id = si.id AND ${researchStatementSql("s", "$1")})) AS source_items,
+         (SELECT count(*)::int FROM statements s WHERE ${researchStatementSql("s", "$1")}) AS statements,
          (SELECT count(*)::int FROM forecasts f
             JOIN statements s ON s.id = f.statement_id
-            WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[]) AND f.review_state = ANY($1::text[])) AS forecasts,
+            WHERE ${researchStatementSql("s", "$1")} AND f.review_state = ANY($1::text[])) AS forecasts,
          (SELECT count(*)::int FROM topics) AS topics,
          (SELECT count(*)::int FROM statement_relationships r
             JOIN statements fs ON fs.id = r.from_statement_id
             JOIN statements ts ON ts.id = r.to_statement_id
             WHERE r.review_state = ANY($1::text[])
-              AND ${effectiveReviewStateSql("fs")} = ANY($1::text[])
-              AND ${effectiveReviewStateSql("ts")} = ANY($1::text[])) AS relationships,
+              AND ${researchStatementSql("fs", "$1")}
+              AND ${researchStatementSql("ts", "$1")}) AS relationships,
          (SELECT count(*)::int FROM trend_definitions WHERE published) AS trends`,
       [PUBLIC_STATES],
     );
@@ -1352,7 +1368,7 @@ export function getPublicCatalog(asOf: string | null, pool: Db = getPool()) {
       `SELECT max(si.observed_at) AS observed_at, max(si.published_at) AS published_at
        FROM source_items si
        JOIN statements s ON s.source_item_id = si.id
-       WHERE ${effectiveReviewStateSql("s")} = ANY($1::text[])`,
+       WHERE ${researchStatementSql("s", "$1")}`,
       [PUBLIC_STATES],
   );
   const sourceTimes = await pool.query(
