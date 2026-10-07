@@ -143,6 +143,12 @@ describe("production operations files", () => {
     expect(result.stdout.trim().split("\n").filter(Boolean)).toEqual(["cccccccc"]);
   });
 
+  it("isolates backup identities and loads private configured defaults safely", () => {
+    const result = run("bash", ["scripts/backup/backup-safety.test.sh"]);
+    expect(result.status, `${result.stdout}\n${result.stderr}`).toBe(0);
+    expect(result.stdout).toContain("backup_safety_test_ok");
+  });
+
   it("keeps the newest verified backups and dry-run does not delete them", async () => {
     const dir = await mkdtemp(join(tmpdir(), "pdoom-backups-"));
     try {
@@ -151,12 +157,12 @@ describe("production operations files", () => {
       await writeBackup(dir, "20260927T000000Z", "early");
       await writeBackup(dir, "20260927T010000Z", "three");
       await writeFile(join(dir, ".partial.dump"), "partial");
-      const dry = run("bash", ["scripts/backup/retain.sh", "--output-dir", dir, "--keep-daily", "1", "--keep-weekly", "0", "--dry-run"]);
+      const dry = run("bash", ["scripts/backup/retain.sh", "--output-dir", dir, "--keep-daily", "1", "--keep-weekly", "0", "--dry-run"], { PDOOM_OPS_ENV_MODE: "process" });
       expect(dry.status).toBe(0);
       expect(dry.stdout).toContain("would delete");
       expect(dry.stdout).toContain("pdoom_ops_drill_20260927T000000Z.dump");
       expect(await readFile(join(dir, "pdoom_ops_drill_20260920T010000Z.dump"), "utf8")).toBe("one");
-      const real = run("bash", ["scripts/backup/retain.sh", "--output-dir", dir, "--keep-daily", "1", "--keep-weekly", "0"]);
+      const real = run("bash", ["scripts/backup/retain.sh", "--output-dir", dir, "--keep-daily", "1", "--keep-weekly", "0"], { PDOOM_OPS_ENV_MODE: "process" });
       expect(real.status).toBe(0);
       await expect(readFile(join(dir, "pdoom_ops_drill_20260927T010000Z.dump"), "utf8")).resolves.toBe("three");
       await expect(readFile(join(dir, "pdoom_ops_drill_20260927T000000Z.dump"), "utf8")).rejects.toThrow();

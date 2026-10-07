@@ -58,11 +58,13 @@ The import runs in one transaction. A failed import leaves the previous rows. An
 
 ## Backup and retention
 
-`scripts/backup/backup.sh` runs `pg_dump --format=custom` inside the Postgres container, over the local socket, as `POSTGRES_USER`. The official image trusts that socket, so the password is not placed on the command line. The dump is written to a hidden partial name. After `pg_restore --list` succeeds and the file is non-empty, the script checksums it and renames it into place. The manifest records the database name, UTC time, SHA-256, byte size, migration versions, dataset id, and application commit when those are known. It does not record the database URL or password.
+`scripts/backup/backup.sh` runs `pg_dump --format=custom` inside the Postgres container, over the local socket, as `POSTGRES_USER`. The official image trusts that socket, so the password is not placed on the command line. The dump is written inside a private per-run staging directory. After `pg_restore --list` succeeds and the file is non-empty, the script checksums it and publishes a uniquely suffixed dump/checksum/manifest triple using no-clobber links. It never overwrites an existing final identity. Failed retries clean only their own staging and newly published files, so simultaneous/same-second jobs cannot erase an earlier backup. An invocation sets `umask 077`, yielding mode `600` artifacts and mode `700` newly created directories. The manifest records the database name, UTC time, SHA-256, byte size, migration versions, dataset id, and application commit when those are known. It does not record the database URL or password.
 
 `scripts/backup/retain.sh` keeps the newest verified backup for each of the last `PDOOM_BACKUP_KEEP_DAILY` days (at least one day) and, beyond that window, one backup per week for `PDOOM_BACKUP_KEEP_WEEKLY` weeks. `--dry-run` prints deletions and does not remove files. A partial file, a missing manifest, or a checksum mismatch is never deleted.
 
-`PDOOM_BACKUP_HOOK` may be an absolute path of an executable. The script runs that file with the backup directory and the manifest path. It does not pass the value through a shell. An example `rsync` wrapper is `scripts/backup/sync-hook.example`. Install the real wrapper outside the repository.
+`PDOOM_BACKUP_HOOK` may be an absolute path of an executable. The script runs that file with the backup directory and the manifest path. It does not pass the value through a shell. An example `rsync` wrapper is `scripts/backup/sync-hook.example`. Install the real wrapper outside the repository. Hook output is sent to stderr so backup stdout remains exactly one archive path. A hook failure returns a failure status but retains the completed local archive for retry.
+
+Backup, retention and restore default to loading the validated mode-600 `PDOOM_ENV_FILE` (normally `/etc/pdoom/production.env`). CLI flags override values from that file. Isolated tests and the restore drill explicitly use `PDOOM_OPS_ENV_MODE=process` with throwaway settings; this mode intentionally bypasses the production file.
 
 Suggested cadence, from the deploy user's crontab:
 

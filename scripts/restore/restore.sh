@@ -3,9 +3,12 @@
 # Replacing an existing database requires --confirm-replace.
 # Replacing the production database also requires --confirm-production.
 set -euo pipefail
+umask 077
 HERE="$(cd "$(dirname "$0")" && pwd)"
 # shellcheck source=../deploy/lib.sh
 source "$HERE/../deploy/lib.sh"
+# shellcheck source=../backup/environment.sh
+source "$HERE/../backup/environment.sh"
 require_cmd docker python3 sha256sum
 
 container="${PDOOM_PG_CONTAINER:-pdoom-prod-postgres}"
