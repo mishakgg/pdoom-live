@@ -5,7 +5,7 @@ import {
   SEARCH_SUGGEST_MIN,
   createRequestGate,
   type SearchResponse,
-} from "@pdoom/contracts";
+} from "@pdoom/contracts/browser";
 import { useCallback, useEffect, useId, useMemo, useRef, useState, type KeyboardEvent, type MouseEvent } from "react";
 import { optionsFromSearch, type EntityKind, type EntityOption } from "@/lib/entity-options";
 
