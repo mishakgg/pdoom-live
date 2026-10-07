@@ -1,29 +1,30 @@
 "use client";
 
-import type { FormEvent, ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
-function omitEmptyFields(event: FormEvent<HTMLFormElement>) {
-  for (const element of Array.from(event.currentTarget.elements)) {
-    if (!(element instanceof HTMLInputElement || element instanceof HTMLSelectElement)) continue;
-    if (!element.name || element.disabled || element.type === "submit" || element.type === "button") continue;
-    if (element.value.trim() === "") element.disabled = true;
+function omitEmptyFields(event: FormDataEvent) {
+  // Change the submitted data, not the controls: canceled navigation and Back
+  // must leave every filter editable. Preserve nonempty same-name entries.
+  const names = new Set<string>();
+  for (const [name, value] of event.formData) {
+    if (typeof value === "string" && value.trim() === "") names.add(name);
+  }
+  for (const name of names) {
+    const values = event.formData.getAll(name).filter((value) => typeof value !== "string" || value.trim() !== "");
+    event.formData.delete(name);
+    for (const value of values) event.formData.append(name, value);
   }
 }
 
 export function FilterForm({
   children,
-  onSubmit,
   ...props
 }: React.ComponentProps<"form"> & { children: ReactNode }) {
-  return (
-    <form
-      {...props}
-      onSubmit={(event) => {
-        omitEmptyFields(event);
-        onSubmit?.(event);
-      }}
-    >
-      {children}
-    </form>
-  );
+  const form = useRef<HTMLFormElement>(null);
+  useEffect(() => {
+    const element = form.current;
+    element?.addEventListener("formdata", omitEmptyFields);
+    return () => element?.removeEventListener("formdata", omitEmptyFields);
+  }, []);
+  return <form {...props} ref={form}>{children}</form>;
 }
