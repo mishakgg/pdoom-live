@@ -609,3 +609,22 @@ def test_query_specific_robots_blocks_detail_page_admission(rule):
         page_url="https://www.naverlabs.com/research", robots_txt="User-agent: *\n" + rule + "\n",
     )
     assert allowed is not None
+
+
+@pytest.mark.parametrize("wrapper", ["p", "div", "section", "article", "span", "aside", "custom"])
+@pytest.mark.parametrize("licence", [
+    "The model is licensed under CC BY 4.0.",
+    "이 데이터셋은 CC BY 4.0 라이선스로 공개됩니다.",
+])
+def test_artifact_licence_scope_is_independent_of_html_wrapper(wrapper, licence):
+    assert rights_from_page(f"<{wrapper}>{licence}</{wrapper}>") == RIGHTS_UNKNOWN
+
+
+def test_nested_wrapper_preserves_only_unambiguous_page_permission():
+    artifact = "<section>The model is licensed under CC BY-NC-SA 4.0.</section>"
+    page = "<article>This page is licensed under CC BY 4.0.</article>"
+    assert rights_from_page("<div>" + artifact + page + "</div>") == RIGHTS_CC_BY
+    conflicting = '<p>This page is licensed under <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY</a>.</p>'
+    assert rights_from_page("<div>" + artifact + conflicting + "</div>") == RIGHTS_UNKNOWN
+    ambiguous = "<p>The model and this page are licensed under CC BY 4.0.</p>"
+    assert rights_from_page(ambiguous) == RIGHTS_UNKNOWN

@@ -989,22 +989,32 @@ def _strip_generic_license_anchors(page_html: str) -> str:
 
 
 _ARTIFACT_SCOPE = re.compile(r"(?i)\b(?:datasets?|models?|software|source code)\b|Anny-One|데이터셋|모델")
-_ARTIFACT_BLOCK = re.compile(r"(?is)<(p|li|figcaption|td|dd|figure|div|span)\b([^>]*)>(.*?)</\1>")
+_PAGE_LICENCE_SCOPE = re.compile(
+    r"(?i)\b(?:this|the)\s+(?:page|article|website(?:\s+content)?)\s+"
+    r"(?:is\s+)?licen[cs]ed\s+under\b"
+)
+_SCOPE_BOUNDARY = re.compile(
+    r"(?is)</?(?:p|li|div|section|article|figure|figcaption|td|dd|dt|h[1-6]|br|hr)\b[^>]*>"
+)
 
 
 def _strip_artifact_licences(page_html: str) -> str:
-    """An artifact's licence grants no rights to the page describing it."""
+    """With artifact context, retain only unambiguous independent page licences.
 
-    def replace_block(match: re.Match[str]) -> str:
-        body = match.group(3)
-        if _ARTIFACT_SCOPE.search(_plain_text(body)) and _codes_in_string(body):
-            return " "
-        return match.group(0)
-
-    stripped = _ARTIFACT_BLOCK.sub(replace_block, page_html)
-    if "<" not in stripped and _ARTIFACT_SCOPE.search(stripped):
-        return " "
-    return stripped
+    Scope is detected over visible text before structural boundaries are split,
+    so an unknown wrapper cannot turn artifact permission into page permission.
+    Inline links remain intact to preserve restricted-deed/anchor conflicts.
+    """
+    visible = _visible_html(page_html)
+    if not _ARTIFACT_SCOPE.search(_plain_text(visible)):
+        return page_html
+    fragments = re.split(r"\n+|(?<=[.!?])\s+", _SCOPE_BOUNDARY.sub("\n", visible))
+    page_licences = []
+    for fragment in fragments:
+        plain = _plain_text(fragment)
+        if _PAGE_LICENCE_SCOPE.search(plain) and not _ARTIFACT_SCOPE.search(plain):
+            page_licences.append(fragment)
+    return "\n".join(page_licences)
 
 
 def _strip_image_credits(page_html: str) -> str:
