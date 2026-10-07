@@ -1,0 +1,336 @@
+{
+  "baseline_commit": "f5274396885dbb654fc2861a78fa5be8f42fad38",
+  "main_sha_checked": "f5274396885dbb654fc2861a78fa5be8f42fad38",
+  "main_matches_baseline": true,
+  "main_check_time_utc": "2026-10-07T17:28Z",
+  "verified_date": "2026-10-07",
+  "scope": "Pinned repository snapshots/configuration/code only. No production database inspection, no new live collection, no tests or collectors executed. Stored coverage report not regenerated against latest code.",
+  "metrics": [
+    {
+      "metric": "tracked_people",
+      "value": 328,
+      "denominator": 328,
+      "unit": "people",
+      "scope": "October cohort",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10-people.jsonl",
+      "interpretation": "Purposive roster, not all AI researchers. Count checked against report."
+    },
+    {
+      "metric": "verified_external_identity",
+      "value": 246,
+      "denominator": 328,
+      "unit": "people",
+      "scope": "Stored October coverage report; overlapping funnel stages",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "interpretation": "People counts, not statement counts. Eligibility is static report classification, not human approval or verified live publication."
+    },
+    {
+      "metric": "accessible_source",
+      "value": 250,
+      "denominator": 328,
+      "unit": "people",
+      "scope": "Stored October coverage report; overlapping funnel stages",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "interpretation": "People counts, not statement counts. Eligibility is static report classification, not human approval or verified live publication."
+    },
+    {
+      "metric": "nonacademic_accessible_source",
+      "value": 24,
+      "denominator": 328,
+      "unit": "people",
+      "scope": "Stored October coverage report; overlapping funnel stages",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "interpretation": "People counts, not statement counts. Eligibility is static report classification, not human approval or verified live publication."
+    },
+    {
+      "metric": "observed_item",
+      "value": 63,
+      "denominator": 328,
+      "unit": "people",
+      "scope": "Stored October coverage report; overlapping funnel stages",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "interpretation": "People counts, not statement counts. Eligibility is static report classification, not human approval or verified live publication."
+    },
+    {
+      "metric": "attributable_evidence",
+      "value": 63,
+      "denominator": 328,
+      "unit": "people",
+      "scope": "Stored October coverage report; overlapping funnel stages",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "interpretation": "People counts, not statement counts. Eligibility is static report classification, not human approval or verified live publication."
+    },
+    {
+      "metric": "usable_evidence",
+      "value": 22,
+      "denominator": 328,
+      "unit": "people",
+      "scope": "Stored October coverage report; overlapping funnel stages",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "interpretation": "People counts, not statement counts. Eligibility is static report classification, not human approval or verified live publication."
+    },
+    {
+      "metric": "statement_candidate",
+      "value": 15,
+      "denominator": 328,
+      "unit": "people",
+      "scope": "Stored October coverage report; overlapping funnel stages",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "interpretation": "People counts, not statement counts. Eligibility is static report classification, not human approval or verified live publication."
+    },
+    {
+      "metric": "public_review_eligible_statement",
+      "value": 12,
+      "denominator": 328,
+      "unit": "people",
+      "scope": "Stored October coverage report; overlapping funnel stages",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "interpretation": "People counts, not statement counts. Eligibility is static report classification, not human approval or verified live publication."
+    },
+    {
+      "metric": "research_export_eligible_statement",
+      "value": 2,
+      "denominator": 328,
+      "unit": "people",
+      "scope": "Stored October coverage report; overlapping funnel stages",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "interpretation": "People counts, not statement counts. Eligibility is static report classification, not human approval or verified live publication."
+    },
+    {
+      "metric": "china_headquartered_affiliation_people",
+      "value": 15,
+      "denominator": 328,
+      "unit": "people",
+      "scope": "October per-person report",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10-people.jsonl",
+      "interpretation": "Current organization headquarters, not nationality, citizenship or document language."
+    },
+    {
+      "metric": "china_headquartered_affiliation_with_usable_evidence",
+      "value": 0,
+      "denominator": 15,
+      "unit": "people",
+      "scope": "CN-headquartered subset of October per-person report",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10-people.jsonl",
+      "interpretation": "Zero means no usable evidence in this saved report, never zero risk."
+    },
+    {
+      "metric": "registry_rows",
+      "value": 322,
+      "denominator": null,
+      "unit": "source rows",
+      "scope": "October registry",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/seed/cohort/v2026-10/sources.jsonl",
+      "interpretation": "Source registration is not observation or extraction."
+    },
+    {
+      "metric": "explicit_zh_registry_rows",
+      "value": 2,
+      "denominator": 322,
+      "unit": "source rows",
+      "scope": "October registry",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/seed/cohort/v2026-10/sources.jsonl",
+      "interpretation": "Language fields are incomplete; both rows are disabled reference-only profiles, not personal forecasts."
+    },
+    {
+      "metric": "explicit_zh_registry_rows_enabled",
+      "value": 0,
+      "denominator": 2,
+      "unit": "source rows",
+      "scope": "Rows with explicit zh language",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/seed/cohort/v2026-10/sources.jsonl",
+      "interpretation": "Not a measure of all Chinese-language internet sources."
+    },
+    {
+      "metric": "openalex_registry_rows",
+      "value": 246,
+      "denominator": 322,
+      "unit": "source rows",
+      "scope": "October registry",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/seed/cohort/v2026-10/sources.jsonl",
+      "interpretation": "Author-work metadata configurations; not246 substantive belief sources."
+    },
+    {
+      "metric": "arxiv_registry_rows",
+      "value": 0,
+      "denominator": 322,
+      "unit": "source rows",
+      "scope": "October registry",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/seed/cohort/v2026-10/sources.jsonl",
+      "interpretation": "Runtime supports arXiv but registry has no arxiv_api rows."
+    },
+    {
+      "metric": "saved_september_observation_rows",
+      "value": 234,
+      "denominator": null,
+      "unit": "rows",
+      "scope": "September saved source_observations.jsonl",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/collections/cohort-v2026-09/source_observations.jsonl",
+      "interpretation": "Not unique documents or independent people."
+    },
+    {
+      "metric": "saved_october_observation_rows",
+      "value": 99,
+      "denominator": null,
+      "unit": "rows",
+      "scope": "October saved source_observations.jsonl",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/collections/cohort-v2026-10/source_observations.jsonl",
+      "interpretation": "Not unique documents or independent people."
+    },
+    {
+      "metric": "saved_combined_observation_rows",
+      "value": 333,
+      "denominator": null,
+      "unit": "rows",
+      "scope": "Both saved observation files",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "interpretation": "333 raw rows; report notes one duplicate canonical URL. No global web-content denominator."
+    },
+    {
+      "metric": "saved_combined_candidate_rows",
+      "value": 41,
+      "denominator": null,
+      "unit": "candidate statement rows",
+      "scope": "Both saved candidate_statements.jsonl files",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "interpretation": "40September+1October. Candidate does not imply accepted or publicly displayed."
+    },
+    {
+      "metric": "candidate_review_state_machine_validated",
+      "value": 2,
+      "denominator": 41,
+      "unit": "candidate statement rows",
+      "scope": "Both saved candidate files",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "interpretation": "Machine review state, not human approval."
+    },
+    {
+      "metric": "candidate_review_state_needs_review",
+      "value": 27,
+      "denominator": 41,
+      "unit": "candidate statement rows",
+      "scope": "Both saved candidate files",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "interpretation": "Machine review state, not human approval."
+    },
+    {
+      "metric": "candidate_review_state_unreviewed",
+      "value": 12,
+      "denominator": 41,
+      "unit": "candidate statement rows",
+      "scope": "Both saved candidate files",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "interpretation": "Machine review state, not human approval."
+    },
+    {
+      "metric": "candidate_human_verified_rows",
+      "value": 0,
+      "denominator": 41,
+      "unit": "candidate statement rows",
+      "scope": "Both saved candidate files",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "interpretation": "Checked-in candidate states only. Live database review decisions not inspected."
+    },
+    {
+      "metric": "deepseek_catalog_rows",
+      "value": 36,
+      "denominator": null,
+      "unit": "metadata rows",
+      "scope": "DeepSeek catalog only",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/deepseek_pages.json",
+      "interpretation": "Titles/URLs/dates/rights; no article body, benchmark measurement or extracted statement."
+    },
+    {
+      "metric": "deepseek_zh_route_rows",
+      "value": 18,
+      "denominator": 36,
+      "unit": "metadata rows",
+      "scope": "DeepSeek catalog only",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/deepseek_pages.json",
+      "interpretation": "Chinese-route/title metadata is not proof of collected original Chinese body."
+    },
+    {
+      "metric": "deepseek_language_paired_page_groups",
+      "value": 18,
+      "denominator": 36,
+      "unit": "paired URL groups",
+      "scope": "DeepSeek catalog only",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/deepseek_pages.json",
+      "interpretation": "36rows collapse to18 bilingual route groups; not36 independent claims."
+    }
+  ],
+  "canonical_september_snapshot": {
+    "dataset_id": "cohort-2026-09",
+    "generated_at": "2026-09-27T03:13:11Z",
+    "counts": {
+      "organizations": 87,
+      "people": 323,
+      "affiliations": 407,
+      "external_identities": 413,
+      "sources": 312,
+      "source_items": 234,
+      "participants": 234,
+      "evidence_segments": 40,
+      "topics": 13,
+      "statements": 40,
+      "forecasts": 37,
+      "relationships": 3,
+      "cohorts": 1,
+      "ingestion_runs": 2,
+      "extraction_runs": 20,
+      "trend_definitions": 0
+    },
+    "source_url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/collections/cohort-v2026-09/canonical-live.json",
+    "interpretation": "Saved artifact; dataset_kind=live is a label, not verification of current live deployment."
+  },
+  "denominator_warnings": [
+    "The64-source inventory is a bounded candidate list:40global+24Chinese, not the world and not64 independent statistical populations.",
+    "People-by-observation-language memberships total330 and overlap; not a disjoint partition of328people.",
+    "source_shape.academic_source_only216 and primary_gap_counts.academic_source_only181 use different classification rules.",
+    "Each family can appear at several pipeline stages; sum of stage counts is not a source total.",
+    "Existing checked-in collections and historical smoke reports do not mean this new requested collection has started.",
+    "No per-source operational observation count inferred from tests, fixture files, source-code constants or catalog row counts."
+  ],
+  "audit_catalog_scope": {
+    "inspected_payload_files": 27,
+    "paths": [
+      "data/catalogs/ai_impacts_pages.json",
+      "data/catalogs/anthropic_research_pages.json",
+      "data/catalogs/apollo_pages.json",
+      "data/catalogs/baai_pages.json",
+      "data/catalogs/cais_pages.json",
+      "data/catalogs/crfm_pages.json",
+      "data/catalogs/deepmind_pages.json",
+      "data/catalogs/deepseek_pages.json",
+      "data/catalogs/epoch_pages.json",
+      "data/catalogs/eu_ai_act.json",
+      "data/catalogs/eu_ai_office_pages.json",
+      "data/catalogs/fri_pages.json",
+      "data/catalogs/google_research_pages.json",
+      "data/catalogs/japan_ai_pages.json",
+      "data/catalogs/lmsys_pages.json",
+      "data/catalogs/metr_pages.json",
+      "data/catalogs/mlcommons_pages.json",
+      "data/catalogs/oecd_ai_pages.json",
+      "data/catalogs/openai_research_pages.json",
+      "data/catalogs/owid_ai_pages.json",
+      "data/catalogs/pjlab_pages.json",
+      "data/catalogs/singapore_ai_pages.json",
+      "data/catalogs/stanford_hai_pages.json",
+      "data/catalogs/tsinghua_air_pages.json",
+      "data/catalogs/uk_aisi_pages.json",
+      "data/catalogs/uk_ogl_ai_safety.json",
+      "data/catalogs/us_federal_ai_publications.json"
+    ]
+  },
+  "source_inventory_count": {
+    "global": 40,
+    "chinese": 24,
+    "total": 64
+  },
+  "main_check_times_utc": [
+    "2026-10-07T17:04Z",
+    "2026-10-07T17:28Z"
+  ],
+  "main_check_time_precision": "minute"
+}

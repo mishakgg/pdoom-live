@@ -1,0 +1,266 @@
+{
+  "checklist_version": "0.1.0",
+  "status": "proposed_methodology_not_implemented",
+  "baseline_commit": "f5274396885dbb654fc2861a78fa5be8f42fad38",
+  "scope": "Companion planning checklist, not a new dataset record type or production scoring configuration.",
+  "current_readiness": "Coverage and synthetic arithmetic can be checked; real analyses require verified eligible observations and their gates.",
+  "common_gates": [
+    "Pin lawful upstream release, native identifiers and ordered transformations before considering new collection.",
+    "Verify source provenance, exact revisions, actor/model identity and duplicate/translation lineage.",
+    "Pass frozen v0.1 contract and exact unit checks without adding fields or statuses.",
+    "Pass recipe-specific semantic comparability and temporal eligibility checks.",
+    "Specify analysis units, dependencies, missingness, uncertainty and sensitivity rules.",
+    "Freeze and review the analysis specification before held-out evaluation; obtain separate publication approval."
+  ],
+  "recipes": [
+    {
+      "id": "R01",
+      "name": "Compare benchmark performance",
+      "record_types": [
+        "benchmark_run",
+        "model_version",
+        "release_event",
+        "source_artifact",
+        "snapshot"
+      ],
+      "estimand": "Performance change on a declared task distribution under a fixed evaluation protocol.",
+      "prerequisites": [
+        "Exact model version or narrowly qualified provider label.",
+        "Same benchmark/task release, split, metric, harness, prompt/scaffold, tools and inference budget, or validated bridge.",
+        "Declared time axis, date precision, panel and contamination strata."
+      ],
+      "analysis": [
+        "Matched fixed-panel differences by capability dimension.",
+        "Bounded scores: absolute percentage-point change and elapsed-time slope; relative change/error reduction only when meaningful.",
+        "Positive ratio scales: endpoint annualized change; any time-trend fit is separately specified and validated."
+      ],
+      "outputs": [
+        "Per-dimension series and contributing run IDs.",
+        "Protocol breaks, selected-best versus fixed-panel panels, exclusions and paired/cluster-aware uncertainty."
+      ],
+      "stop_if": [
+        "Metric scale does not justify proposed rate.",
+        "Unbridged protocol/model-identity change.",
+        "Evidence cannot support claimed generalization beyond observed tasks."
+      ],
+      "forbidden_conclusions": [
+        "Universal intelligence growth rate.",
+        "Automatic catastrophe-probability change."
+      ],
+      "synthetic_examples": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "id": "R02",
+      "name": "Measure resources and efficiency",
+      "record_types": [
+        "resource_observation",
+        "benchmark_run",
+        "model_version",
+        "source_artifact",
+        "snapshot"
+      ],
+      "estimand": "Change in an explicitly bounded resource, or resources required for fixed performance under a fixed protocol.",
+      "prerequisites": [
+        "Measurement phase, hardware, precision, utilization and reported/measured/estimated class.",
+        "Native currency, price date, billing denominator and any reproducible conversion.",
+        "Lineage for benchmark-imputed compute to detect circular association."
+      ],
+      "analysis": [
+        "Separate comparable physical-resource and monetary series.",
+        "Observed fixed-performance resource frontier with stated interpolation limits."
+      ],
+      "outputs": [
+        "Native and transformed values, assumptions and uncertainty.",
+        "Observed frontier and uncovered ranges."
+      ],
+      "stop_if": [
+        "Cost boundaries, units or currencies are not comparable.",
+        "Benchmark-inferred compute would be treated as independent evidence for the same relation."
+      ],
+      "forbidden_conclusions": [
+        "Token price equals provider cost.",
+        "Compute growth alone identifies capability or harm growth."
+      ]
+    },
+    {
+      "id": "R03",
+      "name": "Compare safety and harms",
+      "record_types": [
+        "safety_evaluation",
+        "incident",
+        "model_version",
+        "source_artifact",
+        "snapshot"
+      ],
+      "estimand": "Protocol-specific safety-evaluation outcome or recorded event frequency within a defined observation process.",
+      "prerequisites": [
+        "Matched threat model, evaluator effort, mitigations and rubric for safety tests.",
+        "Event-level deduplication with separate involvement, verification and causation.",
+        "Exposure and ascertainment model before reporting an incident rate."
+      ],
+      "analysis": [
+        "Within-protocol safety comparisons.",
+        "Counts of reviewed events separately from reports, allegations and near misses.",
+        "Exposure-based rates only when denominator and reporting assumptions are defensible."
+      ],
+      "outputs": [
+        "Test conditions, threshold definitions and uncertainty.",
+        "Reporting lag, event IDs, revisions and exposure limits."
+      ],
+      "stop_if": [
+        "Laboratory findings would be pooled with deployed harms.",
+        "No exposure denominator for a rate claim."
+      ],
+      "forbidden_conclusions": [
+        "Zero observed failures means zero risk.",
+        "Incident count scaled to extinction probability."
+      ]
+    },
+    {
+      "id": "R04",
+      "name": "Compare adoption observations",
+      "record_types": [
+        "resource_observation",
+        "source_artifact",
+        "snapshot"
+      ],
+      "estimand": "Adoption or economic change for a defined population, question and reference period.",
+      "prerequisites": [
+        "Survey population, instrument/wave, design weights, reference periods and uncertainty.",
+        "Documented breaks in wording, sampling, sector coverage or collection mode.",
+        "Cross-country concept/denominator alignment before comparison."
+      ],
+      "analysis": [
+        "Within-series changes first.",
+        "Separate regimes at unsupported breaks.",
+        "Side-by-side qualified descriptions when quantitative harmonization is not defensible."
+      ],
+      "outputs": [
+        "Population, sample/exposure denominator, weighting and breaks.",
+        "Descriptive changes with documented limitations."
+      ],
+      "stop_if": [
+        "Administrative registrations would be labelled capability gains.",
+        "Incomparable national measures would be ranked on one scale."
+      ],
+      "forbidden_conclusions": [
+        "Observed association identifies causal productivity effect.",
+        "Current deployment and intention to adopt are identical."
+      ]
+    },
+    {
+      "id": "R05",
+      "name": "Describe beliefs and revisions",
+      "record_types": [
+        "actor",
+        "statement",
+        "forecast_question",
+        "forecast",
+        "source_artifact",
+        "snapshot"
+      ],
+      "estimand": "Distribution or revision of attributed forecasts among a declared selected group answering an exact question.",
+      "prerequisites": [
+        "Same outcome, population, condition, horizon, units and answer semantics.",
+        "One active estimate per person/question under declared as-of and withdrawal rules.",
+        "Survey aggregate attributed to a wave-specific collective, with separate aggregator and sampling context."
+      ],
+      "analysis": [
+        "Distributions and medians only for compatible shapes and questions.",
+        "Matched-person change separately from entry/exit composition.",
+        "Preserve intervals, bounds, quantiles and qualitative records without invented point values."
+      ],
+      "outputs": [
+        "Exact question revision, eligible/contributing people, exclusion reasons and estimate age.",
+        "Reviewable revision and translation lineage."
+      ],
+      "stop_if": [
+        "Missing horizons or differing conditions would be silently pooled.",
+        "Publisher would be substituted for anonymous respondents."
+      ],
+      "forbidden_conclusions": [
+        "Purposive corpus is global expert consensus.",
+        "Speaker count is a confidence interval on event probability."
+      ]
+    },
+    {
+      "id": "R06",
+      "name": "Reconstruct historical information",
+      "record_types": [
+        "snapshot",
+        "source_artifact",
+        "statement",
+        "forecast_question",
+        "forecast",
+        "resolution"
+      ],
+      "estimand": "Information admissible at a declared cutoff, or separately labelled authenticated retrospective evidence.",
+      "prerequisites": [
+        "Exact revisions and closed dependencies with truthful known_at and represented review times.",
+        "Conservative precision-aware forecast-time eligibility.",
+        "Explicit distinction between current-corpus chronology, as-known snapshot and retrospective reconstruction."
+      ],
+      "analysis": [
+        "Select active eligible revisions without counting audit history as independent events.",
+        "Forward-time and related-event-family holdouts.",
+        "Separate late-discovered pre-outcome published forecasts from strict as-known backtests."
+      ],
+      "outputs": [
+        "Snapshot/manifest identity, cutoff, timing mode and excluded records.",
+        "Timestamp authentication, survivorship/discovery bias and leakage audit."
+      ],
+      "stop_if": [
+        "Publication time would overwrite known_at.",
+        "Later labels, transformations or corrections leak into earlier claims."
+      ],
+      "forbidden_conclusions": [
+        "Retrospective retrieval proves prospective discoverability.",
+        "Date filtering removes all hindsight leakage."
+      ]
+    },
+    {
+      "id": "R07",
+      "name": "Evaluate resolved forecasts",
+      "record_types": [
+        "forecast_question",
+        "forecast",
+        "resolution",
+        "source_artifact",
+        "snapshot"
+      ],
+      "estimand": "Forecast performance on a prespecified eligible resolved question set and forecast-origin rule.",
+      "prerequisites": [
+        "Exact question revision, admissible forecast and human-reviewed resolution evidence.",
+        "Separate origins, deadlines, resolution times and evaluation cutoffs.",
+        "Same event set, lead times/origins, weighting and missing-forecast rules for method comparisons.",
+        "Prespecified baseline and uncertainty/dependence design."
+      ],
+      "analysis": [
+        "Brier loss for eligible resolved binary point probabilities.",
+        "Baseline-relative skill only for nonzero baseline loss.",
+        "Reliability and discrimination separately; shape-specific scoring for nonbinary forecasts requires another reviewed protocol."
+      ],
+      "outputs": [
+        "Case and forecast counts, exclusions, score, baseline and dependence-aware uncertainty.",
+        "Frozen statuses open/resolved/ambiguous/void; unmet conditions explained in rationale or exclusion context."
+      ],
+      "stop_if": [
+        "Future deadline, ambiguity or missing follow-up would become a false binary outcome.",
+        "Inadequate informative cases/clusters for the intended claim.",
+        "Score would bypass deliberately disabled public scoring."
+      ],
+      "forbidden_conclusions": [
+        "Four synthetic cases establish calibration.",
+        "Human survival gives repeated independent extinction trials."
+      ],
+      "synthetic_examples": [
+        "C"
+      ]
+    }
+  ],
+  "scenario_boundary": "One-pathway conditional chain-rule identity only; no probabilities supplied, causal model fitted, or total harm probability identified.",
+  "publication_boundary": "Private acquisition and analysis do not authorize public publication or activation of scoring."
+}

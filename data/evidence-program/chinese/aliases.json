@@ -1,0 +1,1354 @@
+{
+  "artifact_type": "preparatory_entity_author_lookup",
+  "schema_version": "1.0",
+  "status": "prepared_for_human_review",
+  "verification_date": "2026-10-07",
+  "artifact_language": "en",
+  "not_ingested_dataset_records": true,
+  "human_review_required": true,
+  "production_schema_unchanged": true,
+  "policy": {
+    "actor_ids_assigned": false,
+    "lookup_keys_are_local_only": true,
+    "automatic_merging_allowed": false,
+    "verified_definition": "Primary evidence was opened and inspected. Verified is a limited evidence status, not human identity review, a production identity decision, or a legal-entity assertion.",
+    "source_ids_meaning": "Related finalized source-inventory entries; these are not actor IDs or proof that a quoted belief belongs to an actor.",
+    "type_vocabulary": "Preparatory types only. Person/organization candidates still need human review. Teams need actor-type adjudication; model/product labels must not become person actors.",
+    "name_rules": [
+      "Retain original script and exact source spelling.",
+      "Names, pinyin, initials and translations are search aids, not identity keys.",
+      "A relation other than a name-equivalence relation must not be imported as an alias.",
+      "Unverified search variants and unresolved test strings must not enter verified production aliases.",
+      "Language does not establish nationality, location or jurisdiction.",
+      "Record source-time affiliations separately from the page-access date.",
+      "Corporate brand, legal operator, team, product, model family, checkpoint, API alias and person are different entity levels."
+    ],
+    "evidence_scope": "Only minimal names, bibliographic links and original paraphrases retained. No full article text, secrets or contact data. Access date does not establish a release date, current-model status or complete organizational history.",
+    "normalization_limits": [
+      "Unicode/whitespace normalization may aid search, but retain the observed spelling.",
+      "Simplified/traditional conversion, surname-first order, acronym expansion and pinyin variants require occurrence-specific review.",
+      "Do not infer affiliation dates from undated live pages."
+    ],
+    "actor_type_representable_meaning": "Schema type compatibility only: true means the preparatory person/organization category can be represented by a frozen actor kind after separate adjudication. It does not approve identity, merging, source attribution, rights, publication or production admission. A model/product/team relation cannot be flattened into actor aliases."
+  },
+  "entries": [
+    {
+      "lookup_key": "deepseek_organization",
+      "entry_class": "verified_mapping",
+      "entity_type": "organization",
+      "canonical_name": "DeepSeek",
+      "names": [
+        {
+          "name": "DeepSeek",
+          "language": "en"
+        },
+        {
+          "name": "深度求索",
+          "language": "zh-Hans"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "DeepSeek",
+          "to": "深度求索",
+          "relation": "bilingual_brand_name"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN001",
+        "CN002",
+        "CN024"
+      ],
+      "evidence": [
+        {
+          "url": "https://www.deepseek.com/",
+          "locator": "Page title; copyright footer",
+          "supports": "Title pairs DeepSeek with 深度求索; footer names 杭州深度求索人工智能基础技术研究有限公司.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Company/brand-level lookup; legal operator name is contextual evidence, not an automatic merger instruction.",
+      "no_auto_merge_caveats": [
+        "DeepSeek also appears in model and service names. Resolve the occurrence type.",
+        "Do not merge DeepSeek-R1, release families, serving models or API aliases into the organization."
+      ],
+      "actor_type_representable": true
+    },
+    {
+      "lookup_key": "qwen_team",
+      "entry_class": "verified_mapping",
+      "entity_type": "research_team",
+      "canonical_name": "Qwen Team, Alibaba Group",
+      "names": [
+        {
+          "name": "Qwen Team, Alibaba Group",
+          "language": "en"
+        },
+        {
+          "name": "阿里巴巴通义千问团队",
+          "language": "zh-Hans"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "Qwen Team, Alibaba Group",
+          "to": "阿里巴巴通义千问团队",
+          "relation": "bilingual_team_name"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN003"
+      ],
+      "evidence": [
+        {
+          "url": "https://qwen.readthedocs.io/en/latest/getting_started/concepts.html",
+          "locator": "Key Concepts / Qwen, opening paragraph",
+          "supports": "Identifies Qwen Team, Alibaba Group as the developer of the model series.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://qwen.readthedocs.io/zh-cn/latest/getting_started/concepts.html",
+          "locator": "核心概念 / 通义千问 (Qwen), opening paragraph",
+          "supports": "Identifies 阿里巴巴通义千问团队 as the developer of the same named series.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Team-level bilingual mapping established across the corresponding official documentation.",
+      "no_auto_merge_caveats": [
+        "Qwen alone often means a model family or application. Require an explicit team byline before speaker attribution.",
+        "Research team is a preparatory type; review whether a defined production actor should be an organization or collective. Do not cast automatically."
+      ],
+      "actor_type_representable": false
+    },
+    {
+      "lookup_key": "zhipu_organization",
+      "entry_class": "verified_mapping",
+      "entity_type": "organization",
+      "canonical_name": "智谱 / Z.AI / Zhipu AI",
+      "names": [
+        {
+          "name": "智谱",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "Z.AI",
+          "language": "en"
+        },
+        {
+          "name": "Zhipu AI",
+          "language": "en"
+        },
+        {
+          "name": "智谱AI",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "Z.ai",
+          "language": "en"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "智谱",
+          "to": "Z.AI",
+          "relation": "bilingual_company_brand_name"
+        },
+        {
+          "from": "Zhipu AI",
+          "to": "智谱AI",
+          "relation": "bilingual_provider_brand_name_in_paired_documentation"
+        },
+        {
+          "from": "智谱AI",
+          "to": "智谱",
+          "relation": "contextual_brand_variant"
+        },
+        {
+          "from": "Z.ai",
+          "to": "Z.AI",
+          "relation": "documented_brand_capitalization_variant"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN004"
+      ],
+      "evidence": [
+        {
+          "url": "https://www.zhipuai.cn/zh/about",
+          "locator": "关于智谱, first paragraph; copyright footer",
+          "supports": "Explicitly pairs 智谱 with Z.AI and identifies the company; footer names 北京智谱华章科技股份有限公司.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://github.com/zai-org/GLM-4.5",
+          "locator": "README introductory documentation links",
+          "supports": "Uses Zhipu AI technical documentation for the provider documentation linked by its paired Chinese README.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://github.com/zai-org/GLM-4.5/blob/main/README_zh.md",
+          "locator": "README introductory documentation links",
+          "supports": "Corresponding official Chinese text uses 智谱AI技术文档 and 智谱AI开放平台.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://www.zhipuai.cn/en",
+          "locator": "News / annual-results company announcement; header logo",
+          "supports": "Uses Z.ai for the company and Z.AI for its brand logo.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Corporate/provider branding names linked through the official company about page and paired Chinese/English GLM documentation. The same branding also appears on products, so the occurrence still needs classification.",
+      "no_auto_merge_caveats": [
+        "The same site also lists Z.ai as a product. Company-brand evidence does not resolve every Z.ai occurrence.",
+        "Keep GLM, ChatGLM, 智谱清言 and named researchers separate.",
+        "Do not infer corporate legal-name history or a merger from a brand-name match."
+      ],
+      "unverified_search_variants": [
+        "Zhipu"
+      ],
+      "actor_type_representable": true
+    },
+    {
+      "lookup_key": "moonshot_organization",
+      "entry_class": "verified_mapping",
+      "entity_type": "organization",
+      "canonical_name": "Moonshot AI",
+      "names": [
+        {
+          "name": "Moonshot AI",
+          "language": "en"
+        },
+        {
+          "name": "月之暗面",
+          "language": "zh-Hans"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "Moonshot AI",
+          "to": "月之暗面",
+          "relation": "bilingual_organization_name"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN005"
+      ],
+      "evidence": [
+        {
+          "url": "https://www.moonshot.cn/about",
+          "locator": "我们的旅程 / 2023 founding entry",
+          "supports": "Explicitly pairs 月之暗面 with Moonshot AI; product navigation separately lists Kimi.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Company-level name mapping.",
+      "no_auto_merge_caveats": [
+        "Kimi denotes products/models, not an individual or a blanket alias for every company position.",
+        "The corporate legal operator in the footer and brand should be reviewed separately when legal-entity precision matters."
+      ],
+      "actor_type_representable": true
+    },
+    {
+      "lookup_key": "minimax_brand_operator",
+      "entry_class": "verified_mapping",
+      "entity_type": "organization",
+      "canonical_name": "MiniMax",
+      "names": [
+        {
+          "name": "MiniMax",
+          "language": "en"
+        },
+        {
+          "name": "上海稀宇科技有限公司",
+          "language": "zh-Hans"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "MiniMax",
+          "to": "上海稀宇科技有限公司",
+          "relation": "product_brand_operated_by"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN006"
+      ],
+      "evidence": [
+        {
+          "url": "https://www.minimax.cn/",
+          "locator": "MiniMax / 关于我们",
+          "supports": "Identifies MiniMax as an AI company and separately describes its models and products.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://agent.minimax.cn/doc/zh/terms-of-service.html",
+          "locator": "Updated 2026-01-19; 一、协议的范围, clause 1",
+          "supports": "Names 上海稀宇科技有限公司 as the operator of MiniMax products.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Verified cross-language brand-to-Chinese-operator relation. This is not a claim that two legal entities are identical.",
+      "no_auto_merge_caveats": [
+        "Do not apply an alias-equivalence merge to a brand/operator relationship.",
+        "Do not treat MiniMax-M1 or another checkpoint as an organization.",
+        "稀宇科技 and Shanghai Xiyu Technology are discovery variants only here; the official Chinese full operator name is the verified form."
+      ],
+      "actor_type_representable": true
+    },
+    {
+      "lookup_key": "baidu_organization",
+      "entry_class": "verified_mapping",
+      "entity_type": "organization",
+      "canonical_name": "Baidu",
+      "names": [
+        {
+          "name": "Baidu",
+          "language": "en"
+        },
+        {
+          "name": "百度",
+          "language": "zh-Hans"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "Baidu",
+          "to": "百度",
+          "relation": "bilingual_corporate_brand_name"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN007"
+      ],
+      "evidence": [
+        {
+          "url": "https://home.baidu.com/",
+          "locator": "关于百度; 百度公司介绍; Baidu copyright footer and English investor-site link",
+          "supports": "The official corporate page uses 百度 and Baidu for its company/brand.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Corporate brand lookup; does not adjudicate subsidiaries or contracting entities.",
+      "no_auto_merge_caveats": [
+        "ERNIE, 文心 and 文心一言 are model/product labels, not people.",
+        "Do not attribute a team article to all Baidu researchers or to a named executive without a byline or quotation."
+      ],
+      "actor_type_representable": true
+    },
+    {
+      "lookup_key": "bytedance_organization",
+      "entry_class": "verified_mapping",
+      "entity_type": "organization",
+      "canonical_name": "ByteDance",
+      "names": [
+        {
+          "name": "ByteDance",
+          "language": "en"
+        },
+        {
+          "name": "字节跳动",
+          "language": "zh-Hans"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "ByteDance",
+          "to": "字节跳动",
+          "relation": "bilingual_corporate_brand_name"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN008"
+      ],
+      "evidence": [
+        {
+          "url": "https://www.bytedance.com/en/",
+          "locator": "Homepage title and culture introduction",
+          "supports": "Official English corporate page identifies ByteDance.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://www.bytedance.com/zh/",
+          "locator": "Homepage title and copyright footer",
+          "supports": "Corresponding Chinese corporate page identifies 字节跳动.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Corporate-group/brand-level bilingual lookup; no jurisdiction or nationality is inferred.",
+      "no_auto_merge_caveats": [
+        "ByteDance, its Seed research team and Doubao products are different levels.",
+        "Do not infer cross-border legal structure, current headquarters or an individual speaker from this mapping."
+      ],
+      "actor_type_representable": true
+    },
+    {
+      "lookup_key": "bytedance_seed_team",
+      "entry_class": "verified_mapping",
+      "entity_type": "research_team",
+      "canonical_name": "ByteDance Seed",
+      "names": [
+        {
+          "name": "ByteDance Seed",
+          "language": "en"
+        },
+        {
+          "name": "字节跳动 Seed",
+          "language": "zh-Hans"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "ByteDance Seed",
+          "to": "字节跳动 Seed",
+          "relation": "bilingual_team_name"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN008"
+      ],
+      "evidence": [
+        {
+          "url": "https://seed.bytedance.com/zh/",
+          "locator": "Page title; 欢迎加入字节跳动 Seed; ByteDance Seed image label",
+          "supports": "Chinese official team page uses 字节跳动 Seed and ByteDance Seed.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://seed.bytedance.com/en/",
+          "locator": "Join ByteDance Seed; model and product sections",
+          "supports": "English official page distinguishes the Seed team from listed models and services.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Research-team mapping. Seed is not a verified full legal organization name.",
+      "no_auto_merge_caveats": [
+        "Do not merge with ByteDance as a whole or with Doubao, Seedance, Seedream or a Seed model version.",
+        "Production actor type requires review; research_team is not an enum in the frozen actor schema."
+      ],
+      "actor_type_representable": false
+    },
+    {
+      "lookup_key": "baai_organization",
+      "entry_class": "verified_mapping",
+      "entity_type": "organization",
+      "canonical_name": "Beijing Academy of Artificial Intelligence",
+      "names": [
+        {
+          "name": "Beijing Academy of Artificial Intelligence",
+          "language": "en"
+        },
+        {
+          "name": "BAAI",
+          "language": "en"
+        },
+        {
+          "name": "北京智源人工智能研究院",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "智源研究院",
+          "language": "zh-Hans"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "北京智源人工智能研究院",
+          "to": "Beijing Academy of Artificial Intelligence",
+          "relation": "bilingual_organization_name"
+        },
+        {
+          "from": "BAAI",
+          "to": "Beijing Academy of Artificial Intelligence",
+          "relation": "official_abbreviation"
+        },
+        {
+          "from": "智源研究院",
+          "to": "北京智源人工智能研究院",
+          "relation": "contextual_short_name"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN009",
+        "CN020"
+      ],
+      "evidence": [
+        {
+          "url": "https://event-cdn.baai.ac.cn/20210308/2020-brain-and-machine-intelligence-report.pdf",
+          "locator": "PDF page index 52, printed page 51 / 52; 关于我们",
+          "supports": "Explicitly pairs the Chinese full name, English full name and BAAI abbreviation.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://hub.baai.ac.cn/view/43585",
+          "locator": "Official 智源研究院 recruitment post, Chinese and English sections",
+          "supports": "Uses 智源研究院 and full bilingual institution names in one institutional announcement.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Institutional identity only; the source PDF is historical and not evidence of every current officeholder.",
+      "no_auto_merge_caveats": [
+        "Do not confuse 智源 with 智谱 despite similar pinyin prefixes.",
+        "Hosting a consensus does not make BAAI the sole speaker or make all signatories institutional representatives.",
+        "FlagEval is a project/tool, not a person or interchangeable organization name."
+      ],
+      "actor_type_representable": true
+    },
+    {
+      "lookup_key": "shanghai_ai_laboratory",
+      "entry_class": "verified_mapping",
+      "entity_type": "organization",
+      "canonical_name": "Shanghai Artificial Intelligence Laboratory",
+      "names": [
+        {
+          "name": "Shanghai Artificial Intelligence Laboratory",
+          "language": "en"
+        },
+        {
+          "name": "上海人工智能实验室",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "上海AI实验室",
+          "language": "zh-Hans"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "上海人工智能实验室",
+          "to": "Shanghai Artificial Intelligence Laboratory",
+          "relation": "bilingual_organization_name"
+        },
+        {
+          "from": "上海AI实验室",
+          "to": "上海人工智能实验室",
+          "relation": "official_contextual_short_name"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN010",
+        "CN018",
+        "CN019"
+      ],
+      "evidence": [
+        {
+          "url": "https://www.shlab.org.cn/",
+          "locator": "Bilingual homepage heading; adjacent news summaries",
+          "supports": "Pairs 上海人工智能实验室 with Shanghai Artificial Intelligence Laboratory and uses 上海AI实验室 as its short form.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Institution-level lookup; Shanghai AI Laboratory/Shanghai AI Lab are normalized discovery variants pending occurrence review.",
+      "no_auto_merge_caveats": [
+        "Do not equate the laboratory, its safety center, OpenCompass, AI45 framework or named researchers.",
+        "English institutional text does not establish Chinese original prose."
+      ],
+      "unverified_search_variants": [
+        "Shanghai AI Laboratory",
+        "Shanghai AI Lab"
+      ],
+      "actor_type_representable": true
+    },
+    {
+      "lookup_key": "tsinghua_air",
+      "entry_class": "verified_mapping",
+      "entity_type": "organization",
+      "canonical_name": "Institute for AI Industry Research (AIR), Tsinghua University",
+      "names": [
+        {
+          "name": "Institute for AI Industry Research (AIR), Tsinghua University",
+          "language": "en"
+        },
+        {
+          "name": "清华大学智能产业研究院",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "AIR",
+          "language": "en"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "清华大学智能产业研究院",
+          "to": "Institute for AI Industry Research (AIR), Tsinghua University",
+          "relation": "bilingual_organization_name"
+        },
+        {
+          "from": "AIR",
+          "to": "清华大学智能产业研究院",
+          "relation": "contextual_abbreviation"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN011"
+      ],
+      "evidence": [
+        {
+          "url": "https://air.tsinghua.edu.cn/info/1046/1207.htm",
+          "locator": "张亚勤 faculty page, institutional role line",
+          "supports": "Names 清华大学智能产业研究院 and its AIR abbreviation.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://air.tsinghua.edu.cn/en/info/1046/1188.htm",
+          "locator": "Ya-Qin Zhang faculty page, founding-dean role line",
+          "supports": "Gives the corresponding official English institute name.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Mapping is specific to Tsinghua University AIR.",
+      "no_auto_merge_caveats": [
+        "AIR is a highly ambiguous acronym; require Tsinghua affiliation/domain context.",
+        "AIR publishing a translation does not make it the author of the underlying consensus."
+      ],
+      "actor_type_representable": true
+    },
+    {
+      "lookup_key": "qwen_model_family",
+      "entry_class": "verified_mapping",
+      "entity_type": "model_family",
+      "canonical_name": "Qwen",
+      "names": [
+        {
+          "name": "Qwen",
+          "language": "en"
+        },
+        {
+          "name": "通义千问",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "Tongyi Qianwen",
+          "language": "zh-Latn"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "Qwen",
+          "to": "通义千问",
+          "relation": "bilingual_model_family_name"
+        },
+        {
+          "from": "Tongyi Qianwen",
+          "to": "通义千问",
+          "relation": "documented_pinyin"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN003"
+      ],
+      "evidence": [
+        {
+          "url": "https://qwen.readthedocs.io/en/latest/getting_started/concepts.html",
+          "locator": "Key Concepts / Qwen, opening sentence",
+          "supports": "Explicitly identifies Qwen, Chinese 通义千问 and pinyin Tongyi Qianwen as a model series.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Model-family mapping; retain full version/size/type/date suffixes for checkpoints.",
+      "no_auto_merge_caveats": [
+        "Not a person or an automatic alias of the Qwen Team or Alibaba.",
+        "Family identity does not make Qwen3 variants, API services or later releases the same model."
+      ],
+      "related_entities": [
+        {
+          "name": "Qwen Team, Alibaba Group",
+          "relation": "developed_by"
+        }
+      ],
+      "actor_type_representable": false
+    },
+    {
+      "lookup_key": "kimi_product_model_label",
+      "entry_class": "verified_mapping",
+      "entity_type": "product_or_model_label",
+      "canonical_name": "Kimi",
+      "names": [
+        {
+          "name": "Kimi",
+          "language": "und"
+        },
+        {
+          "name": "Kimi K2",
+          "language": "und"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "Kimi K2",
+          "to": "Kimi",
+          "relation": "named_model_series_under_brand"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN005"
+      ],
+      "evidence": [
+        {
+          "url": "https://www.moonshot.cn/about",
+          "locator": "Product navigation",
+          "supports": "Lists Kimi as a product separately from the Moonshot AI company.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://github.com/MoonshotAI/Kimi-K2",
+          "locator": "Repository title and introductory description",
+          "supports": "Identifies Kimi K2 as a model series developed by Moonshot AI.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Kimi has no verified alternative Chinese-script name in this pass. Kimi K2 is a related model label, not an interchangeable alias of all Kimi products.",
+      "no_auto_merge_caveats": [
+        "Never classify Kimi as an individual speaker.",
+        "Do not merge a product brand, K2 series, individual checkpoint and Moonshot AI organization.",
+        "Generated responses are model outputs, not automatically company beliefs."
+      ],
+      "related_entities": [
+        {
+          "name": "Moonshot AI",
+          "relation": "developer_or_product_provider"
+        }
+      ],
+      "actor_type_representable": false
+    },
+    {
+      "lookup_key": "glm_model_family",
+      "entry_class": "verified_mapping",
+      "entity_type": "model_family",
+      "canonical_name": "GLM",
+      "names": [
+        {
+          "name": "GLM",
+          "language": "und"
+        },
+        {
+          "name": "GLM-4.5",
+          "language": "und"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "GLM-4.5",
+          "to": "GLM",
+          "relation": "model_version_in_family"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN004"
+      ],
+      "evidence": [
+        {
+          "url": "https://www.zhipuai.cn/zh/about",
+          "locator": "Development timeline; GLM navigation",
+          "supports": "Distinguishes 智谱 company history from the GLM framework and named model versions.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://github.com/zai-org/GLM-4.5/blob/main/README_zh.md",
+          "locator": "Chinese model README",
+          "supports": "Describes GLM models in Chinese; GLM remains a Latin-script label.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "GLM is a model/framework-family label. No Chinese-script translation of the token is asserted.",
+      "no_auto_merge_caveats": [
+        "Never treat GLM as a person, 智谱 as the model name, or a family as a fixed checkpoint.",
+        "GLM can mean a statistical generalized linear model outside this context; require vendor/model context.",
+        "ChatGLM, AutoGLM and 智谱清言 require separate version/product review."
+      ],
+      "related_entities": [
+        {
+          "name": "智谱 / Z.AI",
+          "relation": "associated_developer"
+        }
+      ],
+      "actor_type_representable": false
+    },
+    {
+      "lookup_key": "ernie_model_family",
+      "entry_class": "verified_mapping",
+      "entity_type": "model_family",
+      "canonical_name": "ERNIE / 文心",
+      "names": [
+        {
+          "name": "ERNIE",
+          "language": "en"
+        },
+        {
+          "name": "文心",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "ERNIE 5.1",
+          "language": "en"
+        },
+        {
+          "name": "文心 5.1",
+          "language": "zh-Hans"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "文心 5.1",
+          "to": "ERNIE 5.1",
+          "relation": "exact_bilingual_model_version_label"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN007"
+      ],
+      "evidence": [
+        {
+          "url": "https://cloud.baidu.com/product/model.html",
+          "locator": "文心大模型 heading; technical-news card 文心 5.1 (ERNIE 5.1)",
+          "supports": "Explicitly pairs the 5.1 names within the official model-family page.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "The directly verified bilingual pair is version-specific. The broader family association is contextual, not permission to flatten all Wenxin services into ERNIE.",
+      "no_auto_merge_caveats": [
+        "ERNIE is not an individual person or an alias for Baidu.",
+        "Do not collapse 文心一言 / ERNIE Bot, a model family and a specific ERNIE checkpoint.",
+        "The 5.1 label is used only as identity evidence, not a claim that it is the latest release or a comparable measurement."
+      ],
+      "related_entities": [
+        {
+          "name": "Baidu / 百度",
+          "relation": "developer"
+        }
+      ],
+      "actor_type_representable": false
+    },
+    {
+      "lookup_key": "zhang_yaqin_person",
+      "entry_class": "verified_mapping",
+      "entity_type": "person",
+      "canonical_name": "张亚勤 / Ya-Qin Zhang",
+      "names": [
+        {
+          "name": "张亚勤",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "Ya-Qin Zhang",
+          "language": "en"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "张亚勤",
+          "to": "Ya-Qin Zhang",
+          "relation": "bilingual_person_name"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN009",
+        "CN011"
+      ],
+      "evidence": [
+        {
+          "url": "https://air.tsinghua.edu.cn/info/1046/1207.htm",
+          "locator": "Faculty name and founding-dean biography",
+          "supports": "Official Chinese faculty identity.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://air.tsinghua.edu.cn/en/info/1046/1188.htm",
+          "locator": "Faculty name and corresponding founding-dean biography",
+          "supports": "Official English faculty identity; matching institute role and career history support the cross-language link.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Tsinghua AIR founding-dean identity. Faculty biographies distinguish a historical Baidu presidency from the AIR role.",
+      "no_auto_merge_caveats": [
+        "Zhang Yaqin and Yaqin Zhang are reasonable search normalizations, not independently opened name spellings here.",
+        "Do not resolve a bare Zhang or Y. Zhang to this person.",
+        "CN009 is a collective endorsement; CN011 headline membership does not attribute every sentence to him."
+      ],
+      "unverified_search_variants": [
+        "Zhang Yaqin",
+        "Yaqin Zhang",
+        "Zhang Ya-Qin"
+      ],
+      "actor_type_representable": true
+    },
+    {
+      "lookup_key": "yao_qizhi_person",
+      "entry_class": "verified_mapping",
+      "entity_type": "person",
+      "canonical_name": "姚期智 / Andrew Chi-Chih Yao",
+      "names": [
+        {
+          "name": "姚期智",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "Andrew Chi-Chih Yao",
+          "language": "en"
+        },
+        {
+          "name": "Andrew Yao",
+          "language": "en"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "姚期智",
+          "to": "Andrew Chi-Chih Yao",
+          "relation": "bilingual_person_name"
+        },
+        {
+          "from": "Andrew Yao",
+          "to": "Andrew Chi-Chih Yao",
+          "relation": "documented_publication_name_variant"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN009",
+        "CN011"
+      ],
+      "evidence": [
+        {
+          "url": "https://openings.iiis.tsinghua.edu.cn/uploadfile/2011/0629/20110629110723174.pdf",
+          "locator": "PDF page index 16, 姚期智先生简介, opening name line",
+          "supports": "Explicitly pairs 姚期智 with Andrew Chi-Chih Yao.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://iiis.tsinghua.edu.cn/en/People/Faculty/yaoqizhi.htm",
+          "locator": "Faculty heading; recent-publications entry Managing Extreme AI Risks amid Rapid Progress",
+          "supports": "Official faculty page identifies Andrew Chi-Chih Yao and lists a publication with the Andrew Yao variant.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Tsinghua IIIS researcher identity. Historical biography is used for names, not current position dates.",
+      "no_auto_merge_caveats": [
+        "Do not auto-resolve Yao or A. Yao, or rewrite all Chi-Chih/Qizhi variants without contextual evidence.",
+        "A jointly signed statement does not create a numerical forecast attributed to each participant."
+      ],
+      "actor_type_representable": true
+    },
+    {
+      "lookup_key": "zeng_yi_ai_person",
+      "entry_class": "verified_mapping",
+      "entity_type": "person",
+      "canonical_name": "曾毅 / Yi Zeng (AI safety researcher)",
+      "names": [
+        {
+          "name": "曾毅",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "Yi Zeng",
+          "language": "en"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "曾毅",
+          "to": "Yi Zeng",
+          "relation": "bilingual_person_name_with_affiliation_context"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN009"
+      ],
+      "evidence": [
+        {
+          "url": "https://ai.ruc.edu.cn/szdw/zrjs/zy/index.htm",
+          "locator": "Faculty name, AI ethics/safety biography and selected publications",
+          "supports": "Chinese faculty page names 曾毅 and lists his publications under Yi Zeng.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://ai.ruc.edu.cn/GSAI_HOME/FACULTYn/YiZeng/index.htm",
+          "locator": "Faculty title, AI ethics/safety research and professional affiliations",
+          "supports": "Corresponding English faculty page confirms the AI safety/governance context.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://idais-beijing.baai.ac.cn/?lang=zh",
+          "locator": "Signature list",
+          "supports": "Lists 曾毅 with 中国科学院自动化研究所; this historical source affiliation must be retained as recorded.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "AI-safety researcher identity anchored to RUC first-party faculty pages as observed. CN009 has a different source-time affiliation; no transition date is inferred.",
+      "no_auto_merge_caveats": [
+        "An opened Central South University faculty page also uses 曾毅 / Yi Zeng for a materials researcher. Both scripts can collide.",
+        "Do not overwrite historical source affiliations with the current faculty-page snapshot.",
+        "Bare Yi Zeng or 曾毅 remains ambiguous without institutional/research context."
+      ],
+      "actor_type_representable": true
+    },
+    {
+      "lookup_key": "yang_yaodong_person",
+      "entry_class": "verified_mapping",
+      "entity_type": "person",
+      "canonical_name": "杨耀东 / Yaodong Yang",
+      "names": [
+        {
+          "name": "杨耀东",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "Yaodong Yang",
+          "language": "en"
+        }
+      ],
+      "verified_mappings": [
+        {
+          "from": "杨耀东",
+          "to": "Yaodong Yang",
+          "relation": "bilingual_person_name"
+        }
+      ],
+      "verification_status": "verified_primary_opened",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN009",
+        "CN017"
+      ],
+      "evidence": [
+        {
+          "url": "https://yangyaodong.com/",
+          "locator": "Homepage title and first heading",
+          "supports": "Author-controlled page explicitly pairs 杨耀东 and Yaodong Yang.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://www.ai.pku.edu.cn/en/info/1406/1957.htm",
+          "locator": "Faculty name, research interests and homepage link",
+          "supports": "Peking University faculty page identifies Yaodong Yang and points to the same author homepage.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://arxiv.org/abs/2310.19852",
+          "locator": "Author list",
+          "supports": "CN017 includes Yaodong Yang as a coauthor.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Peking University alignment/multi-agent researcher identity. Different page snapshots may describe roles with different titles; role dates require separate checking.",
+      "no_auto_merge_caveats": [
+        "Do not resolve Y. Yang or Yang to this person without paper/institution context.",
+        "Coauthorship of a review does not make every cited forecast the author’s own belief."
+      ],
+      "actor_type_representable": true
+    },
+    {
+      "lookup_key": "collision_yi_zeng",
+      "entry_class": "unresolved_case",
+      "entity_type": "unresolved_person_reference",
+      "canonical_name": null,
+      "observed_or_test_forms": [
+        {
+          "name": "曾毅",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "Yi Zeng",
+          "language": "en"
+        }
+      ],
+      "example_origin": "observed_collision_in_opened_primary_pages",
+      "verified_mappings": [],
+      "verification_status": "unresolved_do_not_merge",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN009"
+      ],
+      "evidence": [
+        {
+          "url": "https://ai.ruc.edu.cn/szdw/zrjs/zy/index.htm",
+          "locator": "Biography and publications",
+          "supports": "AI ethics/safety and governance context.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        },
+        {
+          "url": "https://faculty.csu.edu.cn/cengyi3/en/index.htm",
+          "locator": "Yi Zeng heading; Chinese biography",
+          "supports": "曾毅 at the Powder Metallurgy Research Institute; materials/composites research context.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "Both the AI-safety faculty page and the materials-science faculty page use the same Chinese and English name strings; an occurrence without context has no unique resolved person.",
+      "no_auto_merge_caveats": [
+        "No identity equivalence is asserted by this entry.",
+        "Do not import these strings into production actor aliases."
+      ],
+      "resolution_required": [
+        "Require source-time affiliation, paper/topic and author-controlled identity evidence.",
+        "Treat the RUC AI-safety researcher and CSU materials researcher as separate candidates."
+      ],
+      "actor_type_representable": false
+    },
+    {
+      "lookup_key": "romanization_haonan_li",
+      "entry_class": "unresolved_case",
+      "entity_type": "unresolved_person_reference",
+      "canonical_name": null,
+      "observed_or_test_forms": [
+        {
+          "name": "Haonan Li",
+          "language": "en"
+        },
+        {
+          "name": "李浩楠",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "李昊楠",
+          "language": "zh-Hans"
+        }
+      ],
+      "example_origin": "observed_latin_name_with_explicitly_unverified_hanzi_test_candidates",
+      "verified_mappings": [],
+      "verification_status": "unresolved_do_not_merge",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [
+        "CN022"
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/haonan-li/CMMLU",
+          "locator": "引用 / BibTeX author field",
+          "supports": "The opened official repository citation lists Haonan Li, without a verified Chinese-script mapping.",
+          "access": "primary_page_opened",
+          "verified_date": "2026-10-07"
+        }
+      ],
+      "context": "CN022 cites Haonan Li. This pass has not verified a Chinese-script identity. The two Hanzi strings are illustrative back-transliteration candidates, not asserted names of the author.",
+      "no_auto_merge_caveats": [
+        "No identity equivalence is asserted by this entry.",
+        "Do not import these strings into production actor aliases."
+      ],
+      "resolution_required": [
+        "Find an author-controlled or faculty page explicitly pairing the names and matching this paper.",
+        "Never generate Chinese names by pinyin back-transliteration."
+      ],
+      "actor_type_representable": false
+    },
+    {
+      "lookup_key": "initial_y_zhang",
+      "entry_class": "unresolved_case",
+      "entity_type": "unresolved_person_reference",
+      "canonical_name": null,
+      "observed_or_test_forms": [
+        {
+          "name": "Y. Zhang",
+          "language": "en"
+        },
+        {
+          "name": "张亚勤",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "Ya-Qin Zhang",
+          "language": "en"
+        }
+      ],
+      "example_origin": "synthetic_initial_truncation_test_case",
+      "verified_mappings": [],
+      "verification_status": "unresolved_do_not_merge",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [],
+      "evidence": [],
+      "context": "Y. Zhang is a constructed abbreviated-reference test, not a byline observed in CN009 or CN011. The verified Ya-Qin Zhang entry is only one possible candidate; the initial string alone does not resolve it.",
+      "no_auto_merge_caveats": [
+        "No identity equivalence is asserted by this entry.",
+        "Do not import these strings into production actor aliases."
+      ],
+      "resolution_required": [
+        "Retrieve the full byline, affiliation and paper identifier.",
+        "Preserve the unresolved source string rather than filling in a famous researcher."
+      ],
+      "actor_type_representable": false
+    },
+    {
+      "lookup_key": "name_order_wang_wei",
+      "entry_class": "unresolved_case",
+      "entity_type": "unresolved_person_reference",
+      "canonical_name": null,
+      "observed_or_test_forms": [
+        {
+          "name": "Wang Wei",
+          "language": "zh-Latn"
+        },
+        {
+          "name": "Wei Wang",
+          "language": "zh-Latn"
+        },
+        {
+          "name": "王伟",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "王威",
+          "language": "zh-Hans"
+        },
+        {
+          "name": "王维",
+          "language": "zh-Hans"
+        }
+      ],
+      "example_origin": "synthetic_homophone_and_name_order_test_case",
+      "verified_mappings": [],
+      "verification_status": "unresolved_do_not_merge",
+      "verification_date": "2026-10-07",
+      "human_review_required": true,
+      "automatic_merge_allowed": false,
+      "source_ids": [],
+      "evidence": [],
+      "context": "Illustrative collision and name-order example only. These strings are not asserted to denote the same person or any author in the inventory.",
+      "no_auto_merge_caveats": [
+        "No identity equivalence is asserted by this entry.",
+        "Do not import these strings into production actor aliases."
+      ],
+      "resolution_required": [
+        "Check the author’s own name order and Chinese script; require a publication/affiliation anchor.",
+        "Do not automatically reverse tokens or normalize homophonous Hanzi into one identity."
+      ],
+      "actor_type_representable": false
+    }
+  ],
+  "summary": {
+    "entry_count": 23,
+    "verified_mapping_entries": 19,
+    "verified_person_entries": 4,
+    "unresolved_cases": 4
+  },
+  "known_access_limits": [
+    {
+      "url": "https://www.zhipuai.cn/en/about",
+      "result": "Timed out twice; not used as verified evidence. The opened Chinese corporate about page directly pairs 智谱 with Z.AI."
+    },
+    {
+      "url": "https://www.baai.ac.cn/en/about-us",
+      "result": "Opened without extractable body; primary bilingual institutional PDF and official recruitment post used instead."
+    },
+    {
+      "url": "https://agents.baidu.com/docs/develop/model/ERNIE_bot_introduce/",
+      "result": "Opened without extractable body; no ERNIE Bot bilingual mapping is asserted from its search snippet."
+    }
+  ]
+}

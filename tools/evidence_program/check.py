@@ -1,0 +1,268 @@
+#!/usr/bin/env python3
+"""Offline repository checks for the evidence program; never ingests or fetches.
+
+Run from any directory: python tools/evidence_program/check.py
+Optional --base-tree supplies GitHub tree JSON for checking an overlay without a
+checkout. CI must omit it so documentation links resolve against the real tree.
+"""
+from __future__ import annotations
+
+import argparse
+import csv
+import hashlib
+import json
+import re
+import sys
+import unittest
+from pathlib import Path
+from urllib.parse import unquote, urlsplit
+
+HERE = Path(__file__).resolve().parent
+ROOT = HERE.parents[1]
+DATA = ROOT / 'data/evidence-program'
+DOCS = ROOT / 'docs/evidence-program'
+BASELINE = 'f5274396885dbb654fc2861a78fa5be8f42fad38'
+SOURCE_IDS = {f'GL{i:03}' for i in range(1, 41)} | {f'CN{i:03}' for i in range(1, 25)}
+COUNTS = {'source_families': 64, 'contract_regression_tests': 71, 'chinese_cases': 25,
+          'chinese_fragments': 41, 'alias_entries': 23, 'methodology_arithmetic_checks': 19}
+
+
+def require(condition, message):
+    if not condition:
+        raise ValueError(message)
+
+
+def read_json(path):
+    return json.loads(path.read_text(encoding='utf-8'))
+
+
+def check_url(value):
+    require(isinstance(value, str), f'URL is not a string: {value!r}')
+    parsed = urlsplit(value)
+    require(parsed.scheme in {'https', 'http'} and bool(parsed.hostname)
+            and parsed.username is None and parsed.password is None
+            and not any(c.isspace() for c in value), f'Invalid URL: {value!r}')
+
+
+def check_sources(inventory, global_rows, chinese_rows):
+    rows = global_rows + chinese_rows
+    ids = [r['source_id'] for r in rows]
+    require(len(ids) == 64 and set(ids) == SOURCE_IDS, 'Expected unique GL001–GL040 / CN001–CN024')
+    require(inventory['records'] == rows, 'Combined inventory differs from source partitions')
+    require(len({r['primary_url'] for r in rows}) == len(rows), 'Duplicate primary source URL')
+    fields = {'source_id', 'name', 'institution_region', 'languages', 'evidence_layer', 'primary_url',
+              'data_url', 'access_method', 'available_content', 'historical_coverage', 'rights_status',
+              'rights_url', 'rights_notes', 'verification_status', 'verified_date', 'collection_status',
+              'priority', 'next_action', 'caveats'}
+    for row in rows:
+        require(fields <= row.keys(), f"Missing fields: {row.get('source_id')}")
+        require(row['collection_status'] == 'candidate_not_collected', 'Inventory must not claim collection')
+        require(row['rights_status'] in {'explicit-license', 'terms-restricted', 'unknown'}, 'Unknown rights status')
+        require(row['verification_status'] in {'opened-primary', 'documentation-only', 'access-blocked'}, 'Unknown verification status')
+        require(row['priority'] in {'P0', 'P1', 'P2'}, 'Unknown priority')
+        require(row['languages'] and all(isinstance(v, str) for v in row['languages']), 'Missing language list')
+        for key in fields - {'data_url', 'rights_url', 'languages'}:
+            require(isinstance(row[key], str) and row[key].strip(), f"Invalid {key}: {row['source_id']}")
+        for key in ['primary_url', 'data_url', 'rights_url']:
+            if row[key] is not None:
+                check_url(row[key])
+
+
+def check_coverage(inventory, mapping, metrics, references):
+    require(len(mapping) == 64 and {r['source_id'] for r in mapping} == SOURCE_IDS, 'Coverage IDs do not match inventory')
+    require(inventory['repository_coverage'] == mapping, 'Combined inventory coverage diverges')
+    require(inventory['coverage_baseline'] == metrics, 'Combined inventory baseline diverges')
+    require(metrics['baseline_commit'] == references['baseline_commit'] == BASELINE, 'Audit baseline changed without review')
+    prefix = f'https://github.com/mishakgg/pdoom-live/blob/{BASELINE}/'
+    allowed = {r['url'] for r in references['references']}
+    used = set()
+    for ref in references['references']:
+        require(ref['url'].startswith(prefix) and unquote(urlsplit(ref['url']).path.split('/blob/'+BASELINE+'/', 1)[1]) == ref['path'], 'Coverage reference URL/path mismatch')
+        require(re.fullmatch(r'[0-9a-f]{40}', ref['git_blob_sha']), 'Invalid historical Git blob hash')
+        require(not Path(ref['path']).is_absolute() and '..' not in Path(ref['path']).parts, 'Unsafe coverage path')
+    names = {r['source_id']: r['name'] for r in inventory['records']}
+    for row in mapping:
+        require(row['name'] == names[row['source_id']], 'Coverage name mismatch')
+        require(row['artifact_links'], 'Coverage entry has no evidence links')
+        for link in row['artifact_links']:
+            check_url(link)
+            require(link in allowed, f'Unrecognized pinned coverage link: {link}')
+            used.add(link)
+    for row in metrics['metrics']:
+        require(row['source_url'] in allowed, 'Metric source missing from pinned references')
+        used.add(row['source_url'])
+        require(row['unit'] and row['scope'] and row['interpretation'], 'Metric lacks interpretation')
+        require(row['value'] >= 0, 'Negative count metric')
+        if row.get('denominator') is not None:
+            require(row['denominator'] > 0 and row['value'] <= row['denominator'], 'Invalid metric denominator')
+    require(used == allowed, 'Unreferenced/missing pinned coverage reference')
+
+
+def csv_value(value):
+    if isinstance(value, (dict, list)):
+        return json.dumps(value, ensure_ascii=False, separators=(',', ':'))
+    return '' if value is None else str(value)
+
+
+def check_csv(path, rows):
+    with path.open(encoding='utf-8', newline='') as handle:
+        reader = csv.DictReader(handle)
+        actual = list(reader)
+        fields = reader.fieldnames
+    require(bool(fields), f'Empty CSV: {path.name}')
+    expected = [{key: csv_value(row.get(key)) for key in fields} for row in rows]
+    require(actual == expected, f'CSV diverges from JSON: {path.name}')
+
+
+def schema_for_fragment(schema, path):
+    """Resolve the actual field path; old/new benchmark names are fixture labels."""
+    parts = path.split('.')
+    if parts[0] in {'old_benchmark_run', 'new_benchmark_run'}:
+        parts[0] = 'benchmark_run'
+    if parts[0] == 'times':
+        node = schema['$defs']['times']
+        parts = parts[1:]
+    else:
+        require(len(parts) >= 3 and parts[1] == 'data', f'Unsupported fragment path: {path}')
+        node = schema['$defs'].get(parts[0] + '_data')
+        require(node is not None, f'Unknown record type: {path}')
+        parts = parts[2:]
+    for part in parts:
+        while '$ref' in node:
+            ref = node['$ref']
+            require(ref.startswith('#/$defs/'), 'Nonlocal schema reference')
+            node = schema['$defs'][ref.rsplit('/', 1)[1]]
+        require(part in node.get('properties', {}), f'Unknown schema field: {path}')
+        node = node['properties'][part]
+    return dict(node, **{'$defs': schema['$defs']})
+
+
+def check_chinese(aliases, lexicon, cases, schema, validator, format_checker):
+    cn_ids = {sid for sid in SOURCE_IDS if sid.startswith('CN')}
+    require(aliases['human_review_required'] is True and aliases['policy']['automatic_merging_allowed'] is False, 'Alias policy weakened')
+    entries = aliases['entries']
+    require(len(entries) == 23 and len({e['lookup_key'] for e in entries}) == 23, 'Alias entry count/keys changed')
+    for entry in entries:
+        require(entry['human_review_required'] is True and entry['automatic_merge_allowed'] is False, 'Alias review/merge guard weakened')
+        require(set(entry['source_ids']) <= cn_ids, 'Alias refers to unknown source ID')
+        if entry['entry_class'] != 'verified_mapping':
+            require(not entry['verified_mappings'], 'Unresolved alias has verified mappings')
+        for evidence in entry.get('evidence', []):
+            check_url(evidence['url'])
+    require(len(lexicon['concepts']) == 30 and len(lexicon['query_templates']) == 14, 'Lexicon counts changed')
+    for query in lexicon['query_templates']:
+        require(query['source_ids'] and set(query['source_ids']) <= cn_ids, 'Query refers to unknown source ID')
+    require(cases['synthetic'] is True and cases['status'] == 'preparation_only_not_production_records', 'Chinese fixture isolation weakened')
+    require(len(cases['cases']) == 25 and {c['case_id'] for c in cases['cases']} == {f'ZH{i:03}' for i in range(1, 26)}, 'Chinese case IDs/count changed')
+    fragments = 0
+    for case in cases['cases']:
+        require(case['synthetic'] is True and case['expected']['requires_human_review'] is True, 'Chinese case guard weakened')
+        source = case['input']['original_text']
+        span = case['input']['quote_span']
+        require(span['coordinate_system'] == 'unicode_codepoints_zero_based_half_open', 'Unexpected span coordinates')
+        require(isinstance(span['start'], int) and isinstance(span['end'], int)
+                and 0 <= span['start'] < span['end'] <= len(source), 'Invalid Chinese span range')
+        require(source[span['start']:span['end']] == span['text'], 'Chinese code-point span does not match original')
+        for fragment in case['expected'].get('contract_fragments', []):
+            field = schema_for_fragment(schema, fragment['path'])
+            if 'schema_definition' in fragment:
+                require(field.get('$ref') == '#/$defs/' + fragment['schema_definition'], 'Fragment shortcut does not match actual schema path')
+            errors = list(validator(field, format_checker=format_checker).iter_errors(fragment['value']))
+            require(not errors, f"Invalid fragment {case['case_id']} {fragment['path']}: " + '; '.join(e.message for e in errors))
+            fragments += 1
+    require(fragments == 41, 'Chinese fragment count changed')
+    return fragments
+
+
+def check_fingerprints():
+    manifest = read_json(HERE / 'frozen_contract_manifest.json')
+    require(manifest['contract_version'] == '0.1.0', 'Frozen version changed without review')
+    for rel, expected in manifest['sha256'].items():
+        path = (HERE / rel).resolve()
+        require(path.is_relative_to(HERE), 'Unsafe frozen-contract path')
+        require(hashlib.sha256(path.read_bytes()).hexdigest() == expected, f'Frozen contract drift: {rel}')
+    for ref in read_json(DATA / 'chinese/reference_manifest.json')['references'].values():
+        path = (ROOT / ref['repo_path']).resolve()
+        require(path.is_relative_to(ROOT), 'Unsafe reference path')
+        payload = path.read_bytes()
+        require(hashlib.sha256(payload).hexdigest() == ref['sha256'] and len(payload) == ref['bytes'], f"Reference drift: {ref['repo_path']}")
+
+
+def check_doc_links(base_paths=None):
+    # Only introduced program docs and root README; existing docs are untouched.
+    files = [ROOT / 'README.md'] + list(DOCS.glob('*.md')) + list(DATA.rglob('*.md')) + list(HERE.glob('*.md'))
+    checked = 0
+    for file in files:
+        text = file.read_text(encoding='utf-8')
+        for target in re.findall(r'\[[^\]]+\]\(([^)]+)\)', text):
+            target = target.split(' "', 1)[0]
+            parsed = urlsplit(target)
+            if parsed.scheme or parsed.netloc or not parsed.path:
+                continue
+            path = (file.parent / unquote(parsed.path)).resolve()
+            require(path.is_relative_to(ROOT), f'Documentation link escapes repository: {file.name} {target}')
+            rel = path.relative_to(ROOT).as_posix()
+            exists = path.exists() or (base_paths is not None and (rel in base_paths or any(p.startswith(rel.rstrip('/')+'/') for p in base_paths)))
+            require(exists, f'Broken documentation link: {file.relative_to(ROOT)} -> {target}')
+            checked += 1
+    return checked
+
+
+def run(base_paths=None):
+    # Missing dependencies are a clear error; this check never installs packages.
+    from validate_dataset import check_contracts, validate_bundle, SCHEMA, Draft202012Validator, FORMAT_CHECKER
+    from check_methodology_examples import verify_examples
+    inventory = read_json(DATA / 'source_inventory.json')
+    mapping = read_json(DATA / 'coverage_mapping.json')
+    metrics = read_json(DATA / 'baseline_metrics.json')
+    check_sources(inventory, read_json(DATA / 'global_sources.json'), read_json(DATA / 'chinese_sources.json'))
+    check_coverage(inventory, mapping, metrics, read_json(DATA / 'coverage_references.json'))
+    check_csv(DATA / 'source_inventory.csv', inventory['records'])
+    check_csv(DATA / 'coverage_mapping.csv', mapping)
+    check_csv(DATA / 'baseline_metrics.csv', metrics['metrics'])
+    check_fingerprints()
+    schemas, _ = check_contracts()
+    require(len(schemas) == 14, 'Expected 14 frozen schemas')
+    bundle = read_json(HERE / 'examples/synthetic_dataset.json')
+    require(not validate_bundle(bundle), 'Synthetic contract bundle is invalid')
+    fragments = check_chinese(read_json(DATA / 'chinese/aliases.json'), read_json(DATA / 'chinese/query_lexicon.json'), read_json(DATA / 'chinese/test_cases.json'), SCHEMA, Draft202012Validator, FORMAT_CHECKER)
+    arithmetic = verify_examples()
+    require(arithmetic == read_json(DATA / 'methodology_example_checks.json') and arithmetic['checks_passed'] == 19, 'Methodology arithmetic report diverges')
+    recipes = read_json(DATA / 'analysis_recipes.json')
+    require(recipes['status'] == 'proposed_methodology_not_implemented', 'Recipes must remain proposed')
+    record_types = set(SCHEMA['$defs']['record']['properties']['record_type']['enum'])
+    for recipe in recipes['recipes']:
+        require(set(recipe['record_types']) <= record_types, 'Recipe refers to unknown record types')
+    links = check_doc_links(base_paths)
+    loader = unittest.TestLoader()
+    contract_suite = loader.discover(str(HERE / 'tests'), pattern='test_contract.py')
+    require(contract_suite.countTestCases() == 71, 'Frozen contract test count changed')
+    result = unittest.TextTestRunner(verbosity=1).run(contract_suite)
+    require(result.wasSuccessful(), 'Frozen contract regression suite failed')
+    integration_suite = unittest.TestLoader().discover(str(HERE / 'tests'), pattern='test_integration.py')
+    require(integration_suite.countTestCases() > 0, 'Integration regression tests missing')
+    integration_result = unittest.TextTestRunner(verbosity=1).run(integration_suite)
+    require(integration_result.wasSuccessful(), 'Integration regression suite failed')
+    return {'status': 'passed', **COUNTS, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
+            'documentation_relative_links': links, 'integration_regression_tests': integration_result.testsRun,
+            'scope': 'Offline consistency and synthetic regression checks only. No source fetch, collection, production import, deployment, rights approval or language-accuracy evaluation.'}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--base-tree', type=Path, help='GitHub tree JSON for an overlay-only local check; omit in CI')
+    args = parser.parse_args()
+    paths = None
+    if args.base_tree:
+        tree = read_json(args.base_tree)
+        paths = {r['path'] for r in tree}
+    try:
+        print(json.dumps(run(paths), indent=2))
+    except (ValueError, KeyError, OSError, ImportError) as exc:
+        print(f'Evidence program check failed: {exc}', file=sys.stderr)
+        return 1
+    return 0
+
+
+if __name__ == '__main__':
+    sys.exit(main())

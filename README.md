@@ -59,6 +59,7 @@ Key design documents:
 - [Data model](./docs/DATA_MODEL.md)
 - [Source and provenance policy](./docs/SOURCE_AND_PROVENANCE_POLICY.md)
 - [Initial roadmap](./docs/ROADMAP.md)
+- [AI evidence program](./docs/evidence-program/README.md) — source inventory, coverage audit, proposed dataset contract, Chinese preparation, methodology and offline checks.
 - [Operator observability](./docs/OBSERVABILITY.md)
 
 ## Status
@@ -108,6 +109,7 @@ The app listens on `http://localhost:3000`.
 | `npm run build` | Production build |
 | `npm run test:e2e` | Playwright browser suite against the E2E databases. Separate from `npm test`. |
 | `PYTHONPATH=pipeline python -m pytest` | Collector, identity, and seed tests. No network. |
+| `python tools/evidence_program/check.py` | Evidence-program source, coverage, frozen-contract, Chinese preparation and methodology checks. No network; Python schema dependencies required. |
 | `PYTHONPATH=pipeline python -m pdoom_pipeline.observability check --snapshot <file>` | Check a pipeline snapshot with the same quality rules. |
 | `PYTHONPATH=pipeline python -m pdoom_pipeline.jobs.enrich_sources --live` | Confirm pages and ORCID URLs for the existing cohort. Does not add people. |
 

@@ -1,0 +1,24 @@
+{
+  "format_version": "1.0",
+  "purpose": "Repository-native fingerprints for the frozen Step 3 contract and finalized Step 4 reference dependencies. Documentation paths and run commands are adapted for repository use.",
+  "references": {
+    "dataset_schema": {
+      "repo_path": "tools/evidence_program/contracts/dataset.schema.json",
+      "sha256": "215b0d119ae562d3b66620f6ff76070ec158f149d205de5d123d48a50aef46fc",
+      "bytes": 71106,
+      "contract_content_unchanged": true
+    },
+    "dataset_spec": {
+      "repo_path": "docs/evidence-program/dataset_spec.md",
+      "sha256": "e8c2e905b7fa4c3b08c6aa41fd1617d2347a2b68bbed3610a284e5c6ccc68227",
+      "bytes": 20883,
+      "contract_content_unchanged": false
+    },
+    "source_inventory": {
+      "repo_path": "data/evidence-program/chinese_sources.json",
+      "sha256": "bdf08cd24adfbf280372b843ec4eda301c9b7c602eb44d386c507cde90612159",
+      "bytes": 45366,
+      "contract_content_unchanged": false
+    }
+  }
+}

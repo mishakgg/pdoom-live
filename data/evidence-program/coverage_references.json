@@ -1,0 +1,321 @@
+{
+  "baseline_commit": "f5274396885dbb654fc2861a78fa5be8f42fad38",
+  "scope": "Pinned GitHub paths inspected during the Step 2 repository audit. Offline checks validate URL/path membership and commit, not live endpoint availability or current production state.",
+  "references": [
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/ai_impacts_pages.json",
+      "path": "data/catalogs/ai_impacts_pages.json",
+      "git_blob_sha": "ea2b48a4c6caf1d818f7500bbadd86be5cb2aa16"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/anthropic_research_pages.json",
+      "path": "data/catalogs/anthropic_research_pages.json",
+      "git_blob_sha": "a4f320dbb3cd3a91a0afcaa8d2e33d962b7275cb"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/apollo_pages.json",
+      "path": "data/catalogs/apollo_pages.json",
+      "git_blob_sha": "fe720c03a89c69b519f8cc25575b5e15549886cb"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/baai_pages.json",
+      "path": "data/catalogs/baai_pages.json",
+      "git_blob_sha": "a6af73ac3ee28bf342b0631d302f5e3c18d91673"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/crfm_pages.json",
+      "path": "data/catalogs/crfm_pages.json",
+      "git_blob_sha": "eb509177bd02357daa3c7b993c84e0298a95e686"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/deepmind_pages.json",
+      "path": "data/catalogs/deepmind_pages.json",
+      "git_blob_sha": "17d2849bd574af4876274ebbaef15b95d36bb178"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/deepseek_pages.json",
+      "path": "data/catalogs/deepseek_pages.json",
+      "git_blob_sha": "711155703c24e42cbc74e875ba53343c3985be20"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/epoch_pages.json",
+      "path": "data/catalogs/epoch_pages.json",
+      "git_blob_sha": "0f7542aa44e15d154476cbd6e84f4b3dc3811e83"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/eu_ai_act.json",
+      "path": "data/catalogs/eu_ai_act.json",
+      "git_blob_sha": "a74138c74d9527d9634307744b8db892a5fec7b9"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/fri_pages.json",
+      "path": "data/catalogs/fri_pages.json",
+      "git_blob_sha": "8d23b0d5435c9398ded326072cc4155e067ab533"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/google_research_pages.json",
+      "path": "data/catalogs/google_research_pages.json",
+      "git_blob_sha": "382eb8936937e72845a875b203082b6ed4e08304"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/japan_ai_pages.json",
+      "path": "data/catalogs/japan_ai_pages.json",
+      "git_blob_sha": "e4f456ce2115ffab315430d9f81a14e3958cb9a8"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/metr_pages.json",
+      "path": "data/catalogs/metr_pages.json",
+      "git_blob_sha": "ab0adc357196edbac9046d5c4adcfa061525fd76"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/mlcommons_pages.json",
+      "path": "data/catalogs/mlcommons_pages.json",
+      "git_blob_sha": "eac10a10f1bab99257e65f02bf6b771c8e635b2b"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/oecd_ai_pages.json",
+      "path": "data/catalogs/oecd_ai_pages.json",
+      "git_blob_sha": "dfe3aa75c5b8c4493ba9c38ba819fe989dbc8f8b"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/openai_research_pages.json",
+      "path": "data/catalogs/openai_research_pages.json",
+      "git_blob_sha": "38e6bb54bd14108a7504eba3ef5a629e73593590"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/pjlab_pages.json",
+      "path": "data/catalogs/pjlab_pages.json",
+      "git_blob_sha": "48d95fcc5b29e01e5480391c3953bca57536ff72"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/singapore_ai_pages.json",
+      "path": "data/catalogs/singapore_ai_pages.json",
+      "git_blob_sha": "c1ed4ead1e0a466c3a5ee11f19b6b5600848232b"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/stanford_hai_pages.json",
+      "path": "data/catalogs/stanford_hai_pages.json",
+      "git_blob_sha": "88946ebf7f25bebdd750a7c135c313572a20f93f"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/tsinghua_air_pages.json",
+      "path": "data/catalogs/tsinghua_air_pages.json",
+      "git_blob_sha": "7ae64b94499dfd557e04f3e24085b2f05822b221"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/uk_aisi_pages.json",
+      "path": "data/catalogs/uk_aisi_pages.json",
+      "git_blob_sha": "4847d42f56be26889ac63eb2afde089a2de32cd7"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/collections/cohort-v2026-09/candidate_statements.jsonl",
+      "path": "data/collections/cohort-v2026-09/candidate_statements.jsonl",
+      "git_blob_sha": "e162d186318fbfaa09b66b0316b72650dc34b4ca"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/collections/cohort-v2026-09/canonical-live.json",
+      "path": "data/collections/cohort-v2026-09/canonical-live.json",
+      "git_blob_sha": "cca4be57762abebc732fdee690ae05dfc752829c"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/collections/cohort-v2026-09/source_observations.jsonl",
+      "path": "data/collections/cohort-v2026-09/source_observations.jsonl",
+      "git_blob_sha": "2700b7145fe47d1d3acc08e6c23ca271aa3c6eef"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/collections/cohort-v2026-09/source_observations.jsonl#L66",
+      "path": "data/collections/cohort-v2026-09/source_observations.jsonl",
+      "git_blob_sha": "2700b7145fe47d1d3acc08e6c23ca271aa3c6eef"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/collections/cohort-v2026-09/source_observations.jsonl#L93",
+      "path": "data/collections/cohort-v2026-09/source_observations.jsonl",
+      "git_blob_sha": "2700b7145fe47d1d3acc08e6c23ca271aa3c6eef"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/collections/cohort-v2026-10/candidate_statements.jsonl",
+      "path": "data/collections/cohort-v2026-10/candidate_statements.jsonl",
+      "git_blob_sha": "0bf87e565a6ee651ddfc4cb37e82e36f86bf307a"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/collections/cohort-v2026-10/source_observations.jsonl",
+      "path": "data/collections/cohort-v2026-10/source_observations.jsonl",
+      "git_blob_sha": "06d801d6b307325aa2b6d15ef9097027caebc424"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10-people.jsonl",
+      "path": "data/reports/coverage-v2026-10-people.jsonl",
+      "git_blob_sha": "98be9ca90ec57cab84647b7f8540ca85b1591611"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/coverage-v2026-10.json",
+      "path": "data/reports/coverage-v2026-10.json",
+      "git_blob_sha": "9bcc9395e6549a9c380119e6494bbfef59497bb9"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reports/live-collector-smoke.json",
+      "path": "data/reports/live-collector-smoke.json",
+      "git_blob_sha": "31f171deecbd0b9ea5a0da393820def9f4150372"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/reviews/README.md",
+      "path": "data/reviews/README.md",
+      "git_blob_sha": "040890c8b9f110c84f39af17305d41aeea1891f2"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/seed/cohort/v2026-09/belief_sources.jsonl",
+      "path": "data/seed/cohort/v2026-09/belief_sources.jsonl",
+      "git_blob_sha": "514b42811e3c1813717e308cc08e219fd861831c"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/seed/cohort/v2026-09/sources.jsonl",
+      "path": "data/seed/cohort/v2026-09/sources.jsonl",
+      "git_blob_sha": "34bb15955774c26d2c83311c911ea70ba3b2177d"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/seed/cohort/v2026-10/sources.jsonl",
+      "path": "data/seed/cohort/v2026-10/sources.jsonl",
+      "git_blob_sha": "92342d743ecb7db15375284df25202952c2a0f95"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/ai_impacts.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/ai_impacts.py",
+      "git_blob_sha": "da0861f534ed22bca1baef4f818b1a8faea97763"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/anthropic_research.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/anthropic_research.py",
+      "git_blob_sha": "7364226a60e2d53fffcfd1f696687d023b00590e"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/apollo.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/apollo.py",
+      "git_blob_sha": "51134f3c8be64f0be5ee73559fcb658b2086dad9"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/baai.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/baai.py",
+      "git_blob_sha": "08e4ab47f5da8473d20866ea093fc871b50b9bb6"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/crfm.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/crfm.py",
+      "git_blob_sha": "f1876b5e563b9e810c96d01caa265bbe08e81131"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/deepmind.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/deepmind.py",
+      "git_blob_sha": "c64cd56ae42c21cb2d9e070e581150eee66b5e60"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/deepseek.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/deepseek.py",
+      "git_blob_sha": "9488641a6cbaa75aa35a90cb35ba18d3a3a7c62b"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/epoch.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/epoch.py",
+      "git_blob_sha": "bb20e511c782233452c7e40dc96e06db81d42289"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/eu_ai_act.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/eu_ai_act.py",
+      "git_blob_sha": "4613e4f2db033d3bfd5e82c419d5ee5141cdcb36"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/fri.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/fri.py",
+      "git_blob_sha": "815c934b1c529e2f0c4ab9088bdba66ac2c90869"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/google_research.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/google_research.py",
+      "git_blob_sha": "6973e55a9835282e347a76b67f925dc791bf2207"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/japan_ai.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/japan_ai.py",
+      "git_blob_sha": "e13c9c4d5333fd0e94e7425d2c1d6aa91c9d215f"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/metr.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/metr.py",
+      "git_blob_sha": "512d0930999d431cfc9c5974eb970ed6366ced32"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/mlcommons.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/mlcommons.py",
+      "git_blob_sha": "3de992c2bea92b3e17025bf081fca5bd13cb342e"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/oecd_ai.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/oecd_ai.py",
+      "git_blob_sha": "0d768f980de78cc5f14d8495c072a9d409d02ab5"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/openai_research.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/openai_research.py",
+      "git_blob_sha": "9eb5b9f082493b253f64b4916c58b611a1e9590a"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/pjlab.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/pjlab.py",
+      "git_blob_sha": "345fb552e78c8d3d4d060250b6e490d9f393756b"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/singapore_ai.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/singapore_ai.py",
+      "git_blob_sha": "14581a58f20f8687bd486e68028709d2e058bac1"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/stanford_hai.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/stanford_hai.py",
+      "git_blob_sha": "9b96d96df177f86388b87082be709d41dc5d5c57"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/tsinghua_air.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/tsinghua_air.py",
+      "git_blob_sha": "c78de5cb926508875478f1663a45d92bd3c85a06"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/uk_aisi.py",
+      "path": "pipeline/pdoom_pipeline/catalogs/uk_aisi.py",
+      "git_blob_sha": "b418b54a99f5d92f73bea3f4e5f5a7e2ccdd9d1f"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/collectors/aiid.py",
+      "path": "pipeline/pdoom_pipeline/collectors/aiid.py",
+      "git_blob_sha": "96748a551de09e4a59d83465f7c012c4c13633f9"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/collectors/arxiv.py",
+      "path": "pipeline/pdoom_pipeline/collectors/arxiv.py",
+      "git_blob_sha": "bf68832eab71a2a31f657ea0d1d61ed571fb0635"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/collectors/github.py",
+      "path": "pipeline/pdoom_pipeline/collectors/github.py",
+      "git_blob_sha": "cc5f7f4cbb6bfc01c7bb0a07e231a581b4511291"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/collectors/huggingface.py",
+      "path": "pipeline/pdoom_pipeline/collectors/huggingface.py",
+      "git_blob_sha": "83167b57b36293034978d88e17264411682429c6"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/collectors/oecd_ai.py",
+      "path": "pipeline/pdoom_pipeline/collectors/oecd_ai.py",
+      "git_blob_sha": "a26780803b2ce706b766bfff44a904dbc4a57f6d"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/collectors/openalex_works.py",
+      "path": "pipeline/pdoom_pipeline/collectors/openalex_works.py",
+      "git_blob_sha": "0dca41d89231f47fbc8799b40c4e4347bba9a2a9"
+    },
+    {
+      "url": "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/refresh/runtime.py",
+      "path": "pipeline/pdoom_pipeline/refresh/runtime.py",
+      "git_blob_sha": "e954c5236e41c669526a86ebf95380de2f52fe9f"
+    }
+  ]
+}

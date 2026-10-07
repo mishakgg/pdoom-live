@@ -1,0 +1,7 @@
+# CI/test tooling only; no application-runtime dependency or automatic install.
+jsonschema==4.26.0
+referencing==0.37.0
+attrs==26.1.0
+jsonschema-specifications==2025.9.1
+rpds-py==2026.6.3
+typing-extensions==4.16.0; python_version < "3.13"
