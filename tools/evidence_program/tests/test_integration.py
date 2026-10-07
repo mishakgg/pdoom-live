@@ -274,5 +274,154 @@ class ResearchCatalogTests(unittest.TestCase):
             self.validate()
 
 
+class AdoptionProductivityCatalogTests(unittest.TestCase):
+    def setUp(self):
+        from check_adoption_productivity import check_catalog
+        self.check_catalog = check_catalog
+        self.catalog = check.read_json(check.DATA / 'research/adoption-productivity.json')
+        self.inventory_hash = check.hashlib.sha256((check.DATA / 'source_inventory.json').read_bytes()).hexdigest()
+        self.markdown = (check.DOCS / 'research/adoption-productivity.md').read_text(encoding='utf-8')
+
+    def validate(self):
+        return self.check_catalog(self.catalog, self.inventory_hash, self.markdown)
+
+    def test_adoption_catalog_positive(self):
+        result = self.validate()
+        self.assertEqual(result['adoption_productivity_collections'], 5)
+        self.assertEqual(result['adoption_productivity_evidence_units'], 8)
+
+    def test_adoption_duplicate_candidate_rejected(self):
+        self.catalog['collections'][1]['candidate_id'] = 'AP001'
+        with self.assertRaisesRegex(ValueError, 'candidate IDs'):
+            self.validate()
+
+    def test_adoption_admission_rejected(self):
+        self.catalog['collector_enabled'] = True
+        with self.assertRaisesRegex(ValueError, 'cannot enable admission'):
+            self.validate()
+
+    def test_adoption_family_promotion_rejected(self):
+        self.catalog['collections'][0]['collection_status'] = 'collected'
+        with self.assertRaisesRegex(ValueError, 'family cannot enable'):
+            self.validate()
+
+    def test_adoption_inventory_drift_rejected(self):
+        self.catalog['baseline_inventory']['sha256'] = '0' * 64
+        with self.assertRaisesRegex(ValueError, 'frozen inventory'):
+            self.validate()
+
+    def test_adoption_participant_rows_rejected(self):
+        self.catalog['participant_rows'] = []
+        with self.assertRaisesRegex(ValueError, 'participant records'):
+            self.validate()
+
+    def test_adoption_signed_artifact_url_rejected(self):
+        self.catalog['collections'][0]['artifacts'][0]['url'] += '?Signature=do-not-retain'
+        with self.assertRaisesRegex(ValueError, 'Signed or credential'):
+            self.validate()
+
+    def test_adoption_rights_provenance_required(self):
+        self.catalog['collections'][0]['artifacts'][0]['rights_evidence_artifact_ids'] = []
+        with self.assertRaisesRegex(ValueError, 'rights declaration lacks'):
+            self.validate()
+
+    def test_adoption_missing_findings_provenance_rejected(self):
+        self.catalog['collections'][0]['findings'][0]['evidence_artifact_ids'] = ['unknown']
+        with self.assertRaisesRegex(ValueError, 'finding lacks'):
+            self.validate()
+
+    def test_adoption_metrology_class_conflation_rejected(self):
+        self.catalog['collections'][0]['evidence_units'][0]['measurement_type'] = 'administrative_productivity'
+        with self.assertRaisesRegex(ValueError, 'measurement/causal/deployment'):
+            self.validate()
+
+    def test_adoption_routine_use_inference_rejected(self):
+        self.catalog['collections'][4]['evidence_units'][0]['deployment_maturity'] = 'routine'
+        with self.assertRaisesRegex(ValueError, 'measurement/causal/deployment'):
+            self.validate()
+
+    def test_adoption_metr_reverse_coding_rejected(self):
+        self.catalog['interpretation_guards']['metr_treatment_coding']['1'] = 'AI disallowed'
+        with self.assertRaisesRegex(ValueError, 'interpretation guard'):
+            self.validate()
+
+    def test_adoption_metr_speedup_sign_rejected(self):
+        self.catalog['interpretation_guards']['metr_positive_time_ratio_minus_one_means'] = 'faster'
+        with self.assertRaisesRegex(ValueError, 'interpretation guard'):
+            self.validate()
+
+    def test_adoption_cui_estimand_collapse_rejected(self):
+        self.catalog['interpretation_guards']['cui_iv_and_itt_may_be_collapsed'] = True
+        with self.assertRaisesRegex(ValueError, 'interpretation guard'):
+            self.validate()
+
+    def test_adoption_census_date_conflation_rejected(self):
+        self.catalog['interpretation_guards']['census_revised_wording_first_reference_window'] = ['2025-11-17', '2025-11-30']
+        with self.assertRaisesRegex(ValueError, 'dates conflated'):
+            self.validate()
+
+    def test_adoption_census_must_remain_enrichment(self):
+        self.catalog['collections'][4]['classification'] = 'new_relative_to_frozen_inventory'
+        with self.assertRaisesRegex(ValueError, 'classification boundary'):
+            self.validate()
+
+    def test_adoption_adapter_activation_rejected(self):
+        self.catalog['proposed_adapter']['status'] = 'implemented'
+        with self.assertRaisesRegex(ValueError, 'remain a proposal'):
+            self.validate()
+
+    def test_adoption_adapter_expansion_rejected(self):
+        self.catalog['proposed_adapter']['maximum_output_points'] = 4
+        with self.assertRaisesRegex(ValueError, 'bounded scope'):
+            self.validate()
+
+    def test_adoption_invented_standard_error_rejected(self):
+        self.catalog['proposed_adapter']['unknown_standard_error'] = '1.25'
+        with self.assertRaisesRegex(ValueError, 'unknown uncertainty'):
+            self.validate()
+
+    def test_adoption_paper_license_cannot_clear_csv(self):
+        artifact = self.catalog['collections'][1]['artifacts'][1]
+        artifact.update(rights_status='declared_license', license_identifier='CC-BY-4.0',
+                        rights_evidence_artifact_ids=['metr_early_paper'])
+        with self.assertRaisesRegex(ValueError, 'cannot inherit a paper license'):
+            self.validate()
+
+    def test_adoption_uninspected_workbook_cannot_be_upgraded(self):
+        self.catalog['collections'][4]['artifacts'][4]['access_status'] = 'bounded_sample_opened'
+        with self.assertRaisesRegex(ValueError, 'cannot become verified content'):
+            self.validate()
+
+    def test_adoption_review_samples_are_not_tested_fixtures(self):
+        self.catalog['proposed_adapter']['fixture_status'] = 'tested'
+        with self.assertRaisesRegex(ValueError, 'not executable fixture'):
+            self.validate()
+
+    def test_adoption_all_industry_value_cannot_replace_private_value(self):
+        self.catalog['proposed_adapter']['reviewed_private_values'][2]['decimal_value'] = '19.2'
+        with self.assertRaisesRegex(ValueError, 'private-sector values'):
+            self.validate()
+
+    def test_adoption_float_value_rejected(self):
+        self.catalog['proposed_adapter']['reviewed_private_values'][0]['decimal_value'] = 6.2
+        with self.assertRaisesRegex(ValueError, 'decimal representation'):
+            self.validate()
+
+    def test_adoption_source_pin_must_match_url(self):
+        self.catalog['collections'][1]['artifacts'][1]['git_commit'] = '0' * 40
+        with self.assertRaisesRegex(ValueError, 'URL/pin mismatch'):
+            self.validate()
+
+    def test_adoption_next_action_required(self):
+        self.catalog['next_actions'] = []
+        with self.assertRaisesRegex(ValueError, 'next action'):
+            self.validate()
+
+    def test_adoption_doc_drift_rejected(self):
+        self.markdown = self.markdown.replace('## AP001 Statistics Canada', '## AP001 Changed title')
+        with self.assertRaisesRegex(ValueError, 'documentation IDs/titles'):
+            self.validate()
+
+
 if __name__ == '__main__':
     unittest.main()

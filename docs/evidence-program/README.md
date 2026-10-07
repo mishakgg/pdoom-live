@@ -49,3 +49,5 @@ The [Step 6 plan](implementation_tasks.md) builds on merged protections and keep
 ## Additive research reviews
 
 [Chinese safety-evaluation research](research/chinese-safety-evaluations.md) records eight provisional candidates, artifact-specific access and rights, corrected historical-version comparisons, and an unimplemented bounded FLAMES adapter specification. It enriches discovery without changing the frozen 64-source inventory or admitting operational collection. The [JSON catalog](../../data/evidence-program/research/chinese-safety-evaluations.json) retains source pins and explicit unresolved limitations.
+
+[Real-world adoption and productivity](research/adoption-productivity.md) separately reviews five collections, retaining reported adoption, administrative outcomes and causal estimands. It records corrected dates/version identities, access and rights holds, conditional next actions and a proposed three-point StatCan adapter. The [JSON catalog](../../data/evidence-program/research/adoption-productivity.json) is additive; the frozen inventory and contract remain unchanged.

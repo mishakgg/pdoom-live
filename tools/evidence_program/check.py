@@ -404,6 +404,7 @@ def run(base_paths=None):
     # Missing dependencies are a clear error; this check never installs packages.
     from validate_dataset import check_contracts, validate_bundle, SCHEMA, Draft202012Validator, FORMAT_CHECKER
     from check_methodology_examples import verify_examples
+    from check_adoption_productivity import check_catalog as check_adoption_catalog
     inventory = read_json(DATA / 'source_inventory.json')
     mapping = read_json(DATA / 'coverage_mapping.json')
     metrics = read_json(DATA / 'baseline_metrics.json')
@@ -430,6 +431,9 @@ def run(base_paths=None):
     research_counts = check_research_catalog(read_json(DATA / 'research/chinese-safety-evaluations.json'),
                                             hashlib.sha256((DATA / 'source_inventory.json').read_bytes()).hexdigest(),
                                             (DOCS / 'research/chinese-safety-evaluations.md').read_text(encoding='utf-8'))
+    adoption_counts = check_adoption_catalog(read_json(DATA / 'research/adoption-productivity.json'),
+                                            hashlib.sha256((DATA / 'source_inventory.json').read_bytes()).hexdigest(),
+                                            (DOCS / 'research/adoption-productivity.md').read_text(encoding='utf-8'))
     links = check_doc_links(base_paths)
     loader = unittest.TestLoader()
     contract_suite = loader.discover(str(HERE / 'tests'), pattern='test_contract.py')
@@ -440,7 +444,7 @@ def run(base_paths=None):
     require(integration_suite.countTestCases() > 0, 'Integration regression tests missing')
     integration_result = unittest.TextTestRunner(verbosity=1).run(integration_suite)
     require(integration_result.wasSuccessful(), 'Integration regression suite failed')
-    return {'status': 'passed', **COUNTS, **task_counts, **research_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
+    return {'status': 'passed', **COUNTS, **task_counts, **research_counts, **adoption_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
             'documentation_relative_links': links, 'integration_regression_tests': integration_result.testsRun,
             'scope': 'Offline consistency and synthetic regression checks only. No source fetch, collection, production import, deployment, rights approval or language-accuracy evaluation.'}
 
