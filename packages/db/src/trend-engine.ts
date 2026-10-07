@@ -266,6 +266,24 @@ function pointValue(candidate: TrendCandidate): number | null {
   return typeof value === "number" && Number.isFinite(value) ? value : null;
 }
 
+function eventTime(candidate: TrendCandidate): number | null {
+  if (!candidate.event_time) return null;
+  const time = Date.parse(candidate.event_time);
+  return Number.isFinite(time) ? time : null;
+}
+
+/** A verified link does not establish a chronology absent from its endpoints. */
+function isForwardRelationship(from: TrendCandidate, to: TrendCandidate): boolean {
+  const fromTime = eventTime(from);
+  const toTime = eventTime(to);
+  return fromTime !== null && toTime !== null && toTime > fromTime;
+}
+
+function relationshipReviewed(edge: RevisionEdge, target: TrendCandidate, reviewStates: string[]): boolean {
+  return edge.review_state === "human_verified" && reviewStates.includes(edge.review_state)
+    && target.review_state === "human_verified";
+}
+
 function exclusionReason(
   candidate: TrendCandidate,
   scope: TrendScope,
@@ -385,9 +403,10 @@ function isSuperseded(
   return edges.some((edge) => {
     if (edge.from_statement_slug !== candidate.statement_slug) return false;
     if (!CHANGE_RELATIONSHIPS.has(edge.relationship_type)) return false;
-    if (!reviewStates.includes(edge.review_state)) return false;
     if (!eligibleSlugs.has(edge.to_statement_slug)) return false;
-    return bySlug.get(edge.to_statement_slug)?.person_slug === candidate.person_slug;
+    const target = bySlug.get(edge.to_statement_slug);
+    return Boolean(target && target.person_slug === candidate.person_slug
+      && relationshipReviewed(edge, target, reviewStates) && isForwardRelationship(candidate, target));
   });
 }
 
@@ -402,9 +421,9 @@ function isBareWithdrawal(
   return edges.some((edge) => {
     if (edge.from_statement_slug !== candidate.statement_slug) return false;
     if (!WITHDRAWAL_RELATIONSHIPS.has(edge.relationship_type)) return false;
-    if (!reviewStates.includes(edge.review_state)) return false;
     const target = allBySlug.get(edge.to_statement_slug) ?? bySlug.get(edge.to_statement_slug);
     if (!target || target.person_slug !== candidate.person_slug) return false;
+    if (!relationshipReviewed(edge, target, reviewStates) || !isForwardRelationship(candidate, target)) return false;
     if (edge.relationship_type === "retracts" && eligibleSlugs.has(edge.to_statement_slug) && pointValue(target) !== null) return false;
     return true;
   });
@@ -428,25 +447,31 @@ function reduceLatest(
   const allBySlug = new Map(allCandidates.map((item) => [item.statement_slug, item]));
   const withdrawn = eligible.filter((candidate) => isBareWithdrawal(candidate, eligibleSlugs, bySlug, allBySlug, edges, reviewStates));
   const withdrawnSlugs = new Set(withdrawn.map((candidate) => candidate.statement_slug));
-  const active = eligible.filter((candidate) => !withdrawnSlugs.has(candidate.statement_slug));
-  const ranked = [...active].sort((a, b) => {
-    const time = (b.event_time ?? "").localeCompare(a.event_time ?? "");
-    if (time !== 0) return time;
+  // Choose the latest estimate before applying withdrawal. Removing it first
+  // would silently reinstate an older belief that the person has not restored.
+  const ranked = [...eligible].sort((a, b) => {
+    const leftTime = eventTime(a);
+    const rightTime = eventTime(b);
+    if (leftTime !== rightTime) {
+      if (leftTime === null) return 1;
+      if (rightTime === null) return -1;
+      return rightTime - leftTime;
+    }
     return a.statement_slug.localeCompare(b.statement_slug);
   });
   const latest = new Map<string, TrendCandidate>();
   const dropped: TrendCandidate[] = [];
   for (const candidate of ranked) {
     if (!latest.has(candidate.person_slug)) latest.set(candidate.person_slug, candidate);
-    else dropped.push(candidate);
+    else if (!withdrawnSlugs.has(candidate.statement_slug)) dropped.push(candidate);
   }
   return {
-    kept: [...latest.values()],
+    kept: [...latest.values()].filter((candidate) => !withdrawnSlugs.has(candidate.statement_slug)),
     exclusions: [
       ...withdrawn.map((candidate) => exclusion(candidate, "withdrawn")),
       ...dropped.map((candidate) => {
         const kept = latest.get(candidate.person_slug);
-        if (kept && sameContribution(candidate, kept)) return exclusion(candidate, "duplicate_statement");
+        if (kept && !withdrawnSlugs.has(kept.statement_slug) && sameContribution(candidate, kept)) return exclusion(candidate, "duplicate_statement");
         return exclusion(
           candidate,
           isSuperseded(candidate, eligibleSlugs, bySlug, edges, reviewStates) ? "superseded" : "not_latest",
@@ -671,10 +696,15 @@ export function computeHistoricalRevision(input: CohortContext & {
     if (!from || !to) continue;
     if (!inScope(from, input.scope) && !inScope(to, input.scope)) continue;
     const anchor = inScope(from, input.scope) ? from : to;
-    if (!input.scope.review_states.includes(edge.review_state)) {
-      if (CHANGE_RELATIONSHIPS.has(edge.relationship_type) || edge.relationship_type === "repeats") {
+    if (!relationshipReviewed(edge, to, input.scope.review_states)) {
+      if (CHANGE_RELATIONSHIPS.has(edge.relationship_type) || WITHDRAWAL_RELATIONSHIPS.has(edge.relationship_type) || edge.relationship_type === "repeats") {
         edgeExclusions.push(edgeExclusion(edge, anchor, "review_state"));
       }
+      continue;
+    }
+    if ((CHANGE_RELATIONSHIPS.has(edge.relationship_type) || WITHDRAWAL_RELATIONSHIPS.has(edge.relationship_type) || edge.relationship_type === "repeats")
+      && !isForwardRelationship(from, to)) {
+      edgeExclusions.push(edgeExclusion(edge, anchor, "relationship_time_order"));
       continue;
     }
     const withdrawalAllowed = allowedChanges.has("retracts") || allowedChanges.has("withdraws");

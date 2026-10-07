@@ -272,12 +272,13 @@ function decodeCursor(cursor: string): CursorPayload {
   }
 }
 
-/** Statement cursors store event_time from Date.toISOString(), or null when the source time is unknown. */
+/** Accept existing millisecond cursors and exact PostgreSQL microsecond cursors. */
 function isStatementCursorTime(value: string | null): boolean {
   if (value === null) return true;
-  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/.test(value)) return false;
-  const parsed = Date.parse(value);
-  return Number.isFinite(parsed) && new Date(parsed).toISOString() === value;
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.(?:\d{3}|\d{6})Z$/.test(value) || value.startsWith("0000-")) return false;
+  const milliseconds = `${value.slice(0, 23)}Z`;
+  const parsed = Date.parse(milliseconds);
+  return Number.isFinite(parsed) && new Date(parsed).toISOString() === milliseconds;
 }
 
 function iso(value: Date | string | null): string | null {
@@ -373,6 +374,7 @@ function pageResult<T>(input: {
 const statementSelect = `
   SELECT
     s.slug, s.statement_type, s.normalized_text, s.event_time, ${effectiveReviewStateSql("s")} AS review_state,
+    to_char(s.event_time AT TIME ZONE 'UTC', 'YYYY-MM-DD"T"HH24:MI:SS.US"Z"') AS cursor_event_time,
     p.slug AS person_slug, p.display_name,
     src.slug AS source_slug, src.name AS source_name, src.source_type,
     si.slug AS source_item_slug, si.title AS source_item_title, si.canonical_url,
@@ -630,6 +632,7 @@ async function fetchStatements(
   );
   const hasExtra = result.rows.length > query.limit;
   const mapped = result.rows.map((row) => mapStatement(row));
+  const cursorTimes = new Map(result.rows.map((row) => [String(row.slug), row.cursor_event_time as string | null]));
   const page = pageResult({
     rows: mapped,
     limit: query.limit,
@@ -637,7 +640,7 @@ async function fetchStatements(
     cursor,
     forward: order.forward,
     hasExtra,
-    cursorOf: (row) => ({ t: row.event_time, id: row.slug }),
+    cursorOf: (row) => ({ t: cursorTimes.get(row.slug) ?? null, id: row.slug }),
   });
   return { rows: page.data, page: page.page };
 }

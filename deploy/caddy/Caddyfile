@@ -23,5 +23,5 @@ pdoom.live {
 	header {
 		-Server
 	}
-	import /etc/caddy/upstream.caddy
+	import /etc/caddy/state/upstream.caddy
 }
