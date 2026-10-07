@@ -758,3 +758,23 @@ def test_catalog_is_not_wired_into_belief_collection_and_does_not_import_request
     assert "from pdoom_pipeline.collectors.rss import RssCollector" in beliefs
     init = (ROOT / "pipeline" / "pdoom_pipeline" / "catalogs" / "__init__.py").read_text(encoding="utf-8")
     assert init == '"""Package marker."""\n'
+
+
+@pytest.mark.parametrize("rule,path,allowed", [
+    ("Disallow: /en/*", "/en/research", False),
+    ("Disallow: /en/research$", "/en/research", False),
+    ("Disallow: /en/research$", "/en/research/groups", True),
+    ("Disallow: /en/*\nAllow: /en/research$", "/en/research", True),
+    ("Disallow: /en/*\nAllow: /en/research$", "/en/people", False),
+    ("Disallow: /en/*\nAllow: /en/*", "/en/research", True),
+    ("Disallow: /*?private=", "/en/research?private=1", False),
+])
+def test_robots_wildcards_and_end_anchors(rule, path, allowed):
+    assert robots_allows("User-agent: *\n" + rule + "\n", path) is allowed
+
+
+def test_wildcard_robots_blocks_catalog_admission():
+    assert record_from_response(
+        status=200, content_type="text/html", page_html=_page("Research at CISPA"),
+        page_url=RESEARCH_URL, robots_txt="User-agent: *\nDisallow: /en/*\n",
+    ) is None

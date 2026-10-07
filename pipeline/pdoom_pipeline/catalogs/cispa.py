@@ -478,7 +478,7 @@ def is_official_host(hostname: str) -> bool:
 
 
 def robots_allows(body: str, path: str) -> bool:
-    """True when the * group does not disallow path.
+    """True when the * group allows the path, including wildcard/end-anchor rules.
 
     A challenge page or an HTML document served in place of robots.txt does
     not allow a fetch. Comment-only robots text allows every path.
@@ -497,13 +497,13 @@ def robots_allows(body: str, path: str) -> bool:
         target = "/" + target
     allowed = 0
     disallowed = 0
-    for kind, prefix in rules:
-        if not prefix or not target.startswith(prefix):
+    for kind, pattern in rules:
+        if not _robots_matches(pattern, target):
             continue
         if kind == "allow":
-            allowed = max(allowed, len(prefix))
+            allowed = max(allowed, len(pattern))
         else:
-            disallowed = max(disallowed, len(prefix))
+            disallowed = max(disallowed, len(pattern))
     return allowed >= disallowed
 
 
@@ -629,7 +629,8 @@ def record_from_response(
 
     target = final_url or page_url
     if robots_txt is not None:
-        path = urlparse(target).path or "/"
+        parsed = urlparse(target)
+        path = (parsed.path or "/") + ("?" + parsed.query if parsed.query else "")
         if not robots_allows(robots_txt, path):
             return None
     if not response_stores_a_page(
@@ -1065,6 +1066,17 @@ def _wildcard_rules(body: str) -> list[tuple[str, str]] | None:
         if "*" in group_agents:
             return group_rules
     return None
+
+
+def _robots_matches(pattern: str, path: str) -> bool:
+    if not pattern:
+        return False
+    anchored = pattern.endswith("$")
+    body = pattern[:-1] if anchored else pattern
+    regex = "^" + ".*".join(re.escape(chunk) for chunk in body.split("*"))
+    if anchored:
+        regex += "$"
+    return re.search(regex, path) is not None
 
 
 def _on_official_host(url: str) -> bool:
