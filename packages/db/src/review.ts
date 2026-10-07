@@ -1,6 +1,8 @@
 import {
   ATTRIBUTION_METHODS,
   CANDIDATE_IDENTITY_VERSION,
+  REVIEW_DECISION_SCHEMA,
+  boundReviewDecisionSchema,
   SOURCE_TYPES,
   assertReviewTransition,
   candidateKey,
@@ -18,6 +20,8 @@ import {
   type CandidateEnvelope,
   type ReviewCommand,
   type ReviewManifest,
+  type CurrentReviewManifest,
+  type ReviewClaimSnapshot,
   type ReviewState,
   type StatementType,
 } from "@pdoom/contracts";
@@ -167,215 +171,265 @@ async function ensureExtraction(client: pg.PoolClient, row: StatementRow): Promi
   );
 }
 
+type ReplaySnapshots = { machine_claim: ReviewClaimSnapshot | null; accepted_claim: ReviewClaimSnapshot | null };
+
 export async function applyReviewDecision(pool: pg.Pool, raw: ReviewCommand): Promise<{ decision_key: string; idempotent: boolean }> {
   const command = reviewCommandSchema.parse(raw);
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
-    const key = command.decision_key ?? decisionKey({ ...command, decision_key: null });
-    const existing = await client.query(
-      `SELECT decision FROM review_decisions WHERE decision_key = $1 AND corrections_json = $2::jsonb`,
-      [key, JSON.stringify(command.corrections)],
-    );
-    if (existing.rowCount) {
-      await client.query("COMMIT");
-      return { decision_key: key, idempotent: true };
-    }
-    const conflict = await client.query(`SELECT 1 FROM review_decisions WHERE decision_key = $1`, [key]);
-    if (conflict.rowCount) throw new Error("conflicting review decision");
-    const row = await loadStatement(client, command.statement_slug);
-    if (!row) throw new Error(`review refers to nonexistent statement ${command.statement_slug}`);
-    if (command.source_content_hash && command.source_content_hash !== row.content_hash) {
-      throw new Error("source content hash mismatch; the reviewed source version changed");
-    }
-    if (command.evidence_hash && command.evidence_hash !== row.segment_hash) {
-      const original = await client.query(`SELECT evidence_hash FROM statement_extractions WHERE statement_id = $1`, [row.id]);
-      const originalHash = original.rows[0]?.evidence_hash as string | undefined;
-      if (command.evidence_hash !== originalHash) {
-        throw new Error("evidence hash mismatch; the reviewed evidence changed");
-      }
-    }
-    if (command.content_version && command.content_version !== row.content_version) {
-      throw new Error("source content version mismatch; the reviewed source version changed");
-    }
-    assertReviewTransition(row.review_state as ReviewState, command.decision);
-    if (command.decision === "reject" && !command.rejection_reason) throw new Error("rejection requires a reason");
-    if (command.rejection_reason === "other" && !command.note) throw new Error("rejection reason other requires a note");
-    const nextType = command.corrections.statement_type ?? row.statement_type;
-    const evidenceText = command.corrections.evidence_text ?? row.evidence_text;
-    const evidenceChanged = Boolean(command.corrections.evidence_text) || command.corrections.start_char !== undefined || command.corrections.end_char !== undefined;
-    const acceptedEvidenceHash = evidenceChanged ? sha256(evidenceText) : row.segment_hash;
-    if (command.corrections.evidence_text && !row.evidence_text.includes(command.corrections.evidence_text)) {
-      throw new Error("corrected evidence must be an exact span of the stored evidence");
-    }
-    const valueNumeric = command.corrections.value_numeric !== undefined ? command.corrections.value_numeric : num(row.value_numeric);
-    const valueMin = command.corrections.value_min !== undefined ? command.corrections.value_min : num(row.value_min);
-    const valueMax = command.corrections.value_max !== undefined ? command.corrections.value_max : num(row.value_max);
-    const valueType = command.corrections.value_type ?? row.value_type ?? "none";
-    const unit = command.corrections.unit !== undefined ? command.corrections.unit : row.unit;
-    const numericFilled = valueNumeric !== null || valueMin !== null || valueMax !== null;
-    if (nextType !== "explicit_numeric" && numericFilled) {
-      throw new Error("a qualitative or inferred statement cannot gain a numeric value");
-    }
-    if (nextType === "explicit_numeric" && !evidenceSupportsNumbers(evidenceText, { unit, value_type: valueType, value_numeric: valueNumeric, value_min: valueMin, value_max: valueMax })) {
-      throw new Error("evidence does not contain the numeric value");
-    }
-    const questionKey = command.corrections.question_key ?? row.question_key;
-    if (command.decision === "approve" && nextType === "explicit_numeric") {
-      const confirms = command.confirmations;
-      if (!Object.values(confirms).every(Boolean)) throw new Error("explicit numeric approval requires every confirmation");
-      if (!questionKey || !isKnownQuestionKey(questionKey)) throw new Error("explicit numeric approval requires a known question key");
-      if (!command.confirmations.question_key) throw new Error("question key must be confirmed by the operator");
-    }
-    if (questionKey && command.corrections.question_key && !isKnownQuestionKey(questionKey)) {
-      throw new Error(`malformed question key: ${questionKey}`);
-    }
-    await ensureExtraction(client, row);
-    // Retain the machine input across later empty-delta decisions on a corrected
-    // claim. If the live interpretation changed, this is a newly reviewed input.
-    const claim = await client.query<{ machine_claim: unknown }>(`
-      SELECT CASE WHEN d.accepted_claim_json = statement_claim_v1(s.id)
-        THEN d.machine_claim_json ELSE statement_claim_v1(s.id) END AS machine_claim
-      FROM statements s
-      LEFT JOIN LATERAL (
-        SELECT machine_claim_json, accepted_claim_json FROM review_decisions
-        WHERE statement_id = s.id ORDER BY reviewed_at DESC, decision_key DESC LIMIT 1
-      ) d ON true WHERE s.id = $1
-    `, [row.id]);
-    const machineClaim = claim.rows[0]?.machine_claim;
-    if (!machineClaim || typeof machineClaim !== "object") {
-      throw new Error("statement claim is unavailable for review");
-    }
-    if (command.corrections.normalized_text || command.corrections.statement_type) {
-      await client.query(
-        `UPDATE statements SET normalized_text = $2, statement_type = $3 WHERE id = $1`,
-        [row.id, command.corrections.normalized_text ?? row.normalized_text, nextType],
-      );
-    }
-    if (command.corrections.evidence_text || command.corrections.start_char !== undefined || command.corrections.end_char !== undefined) {
-      await client.query(
-        `UPDATE evidence_segments
-         SET text = $2, start_char = $3, end_char = $4, segment_hash = $5
-         WHERE id = $1`,
-        [
-          row.evidence_id,
-          evidenceText,
-          command.corrections.start_char !== undefined ? command.corrections.start_char : row.start_char,
-          command.corrections.end_char !== undefined ? command.corrections.end_char : row.end_char,
-          acceptedEvidenceHash,
-        ],
-      );
-    }
-    if (command.corrections.topic_slugs) {
-      await client.query(`DELETE FROM statement_topics WHERE statement_id = $1`, [row.id]);
-      for (const topicSlug of command.corrections.topic_slugs) {
-        const topic = await client.query(`SELECT id FROM topics WHERE slug = $1`, [topicSlug]);
-        if (!topic.rowCount) throw new Error(`unknown topic ${topicSlug}`);
-        await client.query(
-          `INSERT INTO statement_topics (statement_id, topic_id, confidence, method) VALUES ($1,$2,$3,$4)`,
-          [row.id, topic.rows[0].id, num(row.confidence) ?? 1, "curator_review"],
-        );
-      }
-    }
-    const resulting = resultingReviewState(command.decision);
-    if (nextType === "explicit_numeric" && (command.corrections.question_key || row.question_key)) {
-      await client.query(
-        `INSERT INTO forecasts (
-           id, statement_id, forecast_kind, question_key, question_text, definition_text, condition_text,
-           horizon_text, value_type, value_numeric, value_min, value_max, unit, review_state
-         ) VALUES ($1,$2,'probability',$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)
-         ON CONFLICT (statement_id) DO UPDATE SET
-           question_key = EXCLUDED.question_key,
-           question_text = EXCLUDED.question_text,
-           definition_text = EXCLUDED.definition_text,
-           condition_text = EXCLUDED.condition_text,
-           horizon_text = EXCLUDED.horizon_text,
-           value_type = EXCLUDED.value_type,
-           value_numeric = EXCLUDED.value_numeric,
-           value_min = EXCLUDED.value_min,
-           value_max = EXCLUDED.value_max,
-           unit = EXCLUDED.unit,
-           review_state = EXCLUDED.review_state`,
-        [
-          stableId(`forecast:${row.slug}`),
-          row.id,
-          questionKey,
-          command.corrections.question_text ?? row.question_text ?? questionKey,
-          command.corrections.definition_text !== undefined ? command.corrections.definition_text : row.definition_text,
-          command.corrections.condition_text !== undefined ? command.corrections.condition_text : row.condition_text,
-          command.corrections.horizon_text !== undefined ? command.corrections.horizon_text : row.horizon_text,
-          valueType,
-          valueNumeric,
-          valueMin,
-          valueMax,
-          unit,
-          resulting,
-        ],
-      );
-    } else if (row.question_key) {
-      await client.query(`UPDATE forecasts SET review_state = $2 WHERE statement_id = $1`, [row.id, resulting]);
-    }
-    await client.query(`UPDATE statements SET review_state = $2 WHERE id = $1`, [row.id, resulting]);
-    if (command.relationship) {
-      const other = await client.query(`SELECT id FROM statements WHERE slug = $1`, [command.relationship.other_statement_slug]);
-      if (!other.rowCount) throw new Error(`relationship target ${command.relationship.other_statement_slug} does not exist`);
-      await client.query(
-        `INSERT INTO statement_relationships (
-           id, from_statement_id, to_statement_id, relationship_type, method, confidence, review_state
-         ) VALUES ($1,$2,$3,$4,'curator_review',1,$5)
-         ON CONFLICT (from_statement_id, to_statement_id, relationship_type) DO UPDATE SET
-           method = EXCLUDED.method,
-           review_state = EXCLUDED.review_state`,
-        [
-          stableId(`relationship:${row.slug}:${command.relationship.other_statement_slug}:${command.relationship.relationship_type}`),
-          row.id,
-          other.rows[0].id,
-          command.relationship.relationship_type,
-          resulting,
-        ],
-      );
-    }
-    await client.query(
-      `INSERT INTO review_decisions (
-         id, decision_key, statement_id, candidate_key, decision, rejection_reason, previous_review_state,
-         resulting_review_state, reviewed_at, reviewer, note, extractor_name, extractor_version,
-         source_item_id, evidence_segment_id, source_content_hash, evidence_hash, content_version,
-         corrections_json, original_extraction_json, relationship_json, machine_claim_json, accepted_claim_json
-       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19::jsonb,$20::jsonb,$21::jsonb,
-         $22::jsonb, statement_claim_v1($3))`,
-      [
-        stableId(`review:${key}`),
-        key,
-        row.id,
-        row.candidate_key,
-        command.decision,
-        command.rejection_reason,
-        row.review_state,
-        resulting,
-        command.reviewed_at,
-        command.reviewer,
-        command.note,
-        row.extractor_name,
-        row.extractor_version,
-        row.source_item_id,
-        row.evidence_id,
-        row.content_hash,
-        acceptedEvidenceHash,
-        row.content_version,
-        JSON.stringify(command.corrections),
-        JSON.stringify(snapshot(row)),
-        command.relationship ? JSON.stringify(command.relationship) : null,
-        JSON.stringify(machineClaim),
-      ],
-    );
+    const result = await applyReviewDecisionOnClient(client, command);
     await client.query("COMMIT");
-    return { decision_key: key, idempotent: false };
+    return result;
   } catch (error) {
-    await client.query("ROLLBACK");
+    await client.query("ROLLBACK").catch(() => undefined);
     throw error;
   } finally {
     client.release();
   }
+}
+
+/** Imports and validation share the mutation checks; the caller owns the transaction. */
+async function applyReviewDecisionOnClient(client: pg.PoolClient, command: ReviewCommand, replay?: ReplaySnapshots) {
+  const key = command.decision_key ?? decisionKey({ ...command, decision_key: null });
+  const existing = await client.query(
+    `SELECT d.*, s.slug AS statement_slug FROM review_decisions d
+     JOIN statements s ON s.id = d.statement_id WHERE d.decision_key = $1`, [key],
+  );
+  if (existing.rowCount) {
+    const stored = existing.rows[0];
+    const equal = (left: unknown, right: unknown) => canonicalJson(left) === canonicalJson(right);
+    const matches = stored.statement_slug === command.statement_slug && stored.decision === command.decision
+      && stored.reviewer === command.reviewer && new Date(stored.reviewed_at).toISOString() === command.reviewed_at
+      && stored.note === command.note && stored.rejection_reason === command.rejection_reason
+      && equal(stored.corrections_json, command.corrections) && equal(stored.relationship_json, command.relationship)
+      && (!command.source_content_hash || stored.source_content_hash === command.source_content_hash)
+      && (!command.evidence_hash || stored.evidence_hash === command.evidence_hash
+        || (!replay && stored.original_extraction_json?.evidence_hash === command.evidence_hash))
+      && (!command.content_version || stored.content_version === command.content_version)
+      && (!replay || (equal(stored.machine_claim_json, replay.machine_claim) && equal(stored.accepted_claim_json, replay.accepted_claim)));
+    if (!matches) throw new Error("conflicting review decision");
+    return { decision_key: key, idempotent: true };
+  }
+  if (replay && command.decision === "approve" && (!replay.machine_claim || !replay.accepted_claim)) {
+    throw new Error("approval replay requires bound machine and accepted claim snapshots; review this legacy decision again");
+  }
+  if (replay) await client.query("SELECT id FROM statements WHERE slug = $1 FOR UPDATE", [command.statement_slug]);
+  const row = await loadStatement(client, command.statement_slug);
+  if (!row) throw new Error(`review refers to nonexistent statement ${command.statement_slug}`);
+  if (replay?.machine_claim && replay.accepted_claim) {
+    const accepted = replay.accepted_claim;
+    if (command.source_content_hash !== accepted.source.content_hash || command.evidence_hash !== accepted.evidence.hash
+        || command.content_version !== accepted.source.content_version) {
+      throw new Error("review manifest provenance disagrees with its accepted claim snapshot");
+    }
+    const covered = await client.query<{ covered: boolean }>(`
+      SELECT statement_claim_v1($1) IN ($2::jsonb, $3::jsonb) OR COALESCE((
+        SELECT d.machine_claim_json = $2::jsonb AND d.accepted_claim_json = statement_claim_v1($1)
+        FROM review_decisions d WHERE d.statement_id = $1
+        ORDER BY d.reviewed_at DESC, d.decision_key DESC LIMIT 1
+      ), false) AS covered`, [row.id, JSON.stringify(replay.machine_claim), JSON.stringify(accepted)]);
+    if (!covered.rows[0]?.covered) throw new Error("review manifest does not cover the current claim; re-review the changed interpretation");
+  }
+  if (command.source_content_hash && command.source_content_hash !== row.content_hash) {
+    throw new Error("source content hash mismatch; the reviewed source version changed");
+  }
+  if (!replay?.accepted_claim && command.evidence_hash && command.evidence_hash !== row.segment_hash) {
+    const original = await client.query(`SELECT evidence_hash FROM statement_extractions WHERE statement_id = $1`, [row.id]);
+    const originalHash = original.rows[0]?.evidence_hash as string | undefined;
+    if (command.evidence_hash !== originalHash) {
+      throw new Error("evidence hash mismatch; the reviewed evidence changed");
+    }
+  }
+  if (command.content_version && command.content_version !== row.content_version) {
+    throw new Error("source content version mismatch; the reviewed source version changed");
+  }
+  assertReviewTransition(row.review_state as ReviewState, command.decision);
+  if (command.decision === "reject" && !command.rejection_reason) throw new Error("rejection requires a reason");
+  if (command.rejection_reason === "other" && !command.note) throw new Error("rejection reason other requires a note");
+  const nextType = command.corrections.statement_type ?? row.statement_type;
+  const evidenceText = command.corrections.evidence_text ?? row.evidence_text;
+  const evidenceChanged = Boolean(command.corrections.evidence_text) || command.corrections.start_char !== undefined || command.corrections.end_char !== undefined;
+  const acceptedEvidenceHash = evidenceChanged ? sha256(evidenceText) : row.segment_hash;
+  if (command.corrections.evidence_text && !row.evidence_text.includes(command.corrections.evidence_text)) {
+    throw new Error("corrected evidence must be an exact span of the stored evidence");
+  }
+  const valueNumeric = command.corrections.value_numeric !== undefined ? command.corrections.value_numeric : num(row.value_numeric);
+  const valueMin = command.corrections.value_min !== undefined ? command.corrections.value_min : num(row.value_min);
+  const valueMax = command.corrections.value_max !== undefined ? command.corrections.value_max : num(row.value_max);
+  const valueType = command.corrections.value_type ?? row.value_type ?? "none";
+  const unit = command.corrections.unit !== undefined ? command.corrections.unit : row.unit;
+  const numericFilled = valueNumeric !== null || valueMin !== null || valueMax !== null;
+  if (nextType !== "explicit_numeric" && numericFilled) {
+    throw new Error("a qualitative or inferred statement cannot gain a numeric value");
+  }
+  if (nextType === "explicit_numeric" && !evidenceSupportsNumbers(evidenceText, { unit, value_type: valueType, value_numeric: valueNumeric, value_min: valueMin, value_max: valueMax })) {
+    throw new Error("evidence does not contain the numeric value");
+  }
+  const questionKey = command.corrections.question_key ?? row.question_key;
+  if (command.decision === "approve" && nextType === "explicit_numeric") {
+    const confirms = command.confirmations;
+    if (!Object.values(confirms).every(Boolean)) throw new Error("explicit numeric approval requires every confirmation");
+    if (!questionKey || !isKnownQuestionKey(questionKey)) throw new Error("explicit numeric approval requires a known question key");
+    if (!command.confirmations.question_key) throw new Error("question key must be confirmed by the operator");
+  }
+  if (questionKey && command.corrections.question_key && !isKnownQuestionKey(questionKey)) {
+    throw new Error(`malformed question key: ${questionKey}`);
+  }
+  await ensureExtraction(client, row);
+  // Retain the machine input across later empty-delta decisions on a corrected
+  // claim. If the live interpretation changed, this is a newly reviewed input.
+  const claim = await client.query<{ machine_claim: unknown }>(`
+    SELECT CASE WHEN d.accepted_claim_json = statement_claim_v1(s.id)
+      THEN d.machine_claim_json ELSE statement_claim_v1(s.id) END AS machine_claim
+    FROM statements s
+    LEFT JOIN LATERAL (
+      SELECT machine_claim_json, accepted_claim_json FROM review_decisions
+      WHERE statement_id = s.id ORDER BY reviewed_at DESC, decision_key DESC LIMIT 1
+    ) d ON true WHERE s.id = $1
+  `, [row.id]);
+  const machineClaim = replay ? replay.machine_claim : claim.rows[0]?.machine_claim;
+  if (!replay && (!machineClaim || typeof machineClaim !== "object")) {
+    throw new Error("statement claim is unavailable for review");
+  }
+  if (command.corrections.normalized_text || command.corrections.statement_type) {
+    await client.query(
+      `UPDATE statements SET normalized_text = $2, statement_type = $3 WHERE id = $1`,
+      [row.id, command.corrections.normalized_text ?? row.normalized_text, nextType],
+    );
+  }
+  if (command.corrections.evidence_text || command.corrections.start_char !== undefined || command.corrections.end_char !== undefined) {
+    await client.query(
+      `UPDATE evidence_segments
+       SET text = $2, start_char = $3, end_char = $4, segment_hash = $5
+       WHERE id = $1`,
+      [
+        row.evidence_id,
+        evidenceText,
+        command.corrections.start_char !== undefined ? command.corrections.start_char : row.start_char,
+        command.corrections.end_char !== undefined ? command.corrections.end_char : row.end_char,
+        acceptedEvidenceHash,
+      ],
+    );
+  }
+  if (command.corrections.topic_slugs) {
+    await client.query(`DELETE FROM statement_topics WHERE statement_id = $1`, [row.id]);
+    for (const topicSlug of command.corrections.topic_slugs) {
+      const topic = await client.query(`SELECT id FROM topics WHERE slug = $1`, [topicSlug]);
+      if (!topic.rowCount) throw new Error(`unknown topic ${topicSlug}`);
+      await client.query(
+        `INSERT INTO statement_topics (statement_id, topic_id, confidence, method) VALUES ($1,$2,$3,$4)`,
+        [row.id, topic.rows[0].id, num(row.confidence) ?? 1, "curator_review"],
+      );
+    }
+  }
+  const resulting = resultingReviewState(command.decision);
+  if (nextType === "explicit_numeric" && (command.corrections.question_key || row.question_key)) {
+    await client.query(
+      `INSERT INTO forecasts (
+         id, statement_id, forecast_kind, question_key, question_text, definition_text, condition_text,
+         horizon_text, value_type, value_numeric, value_min, value_max, unit, review_state
+       ) VALUES ($1,$2,'probability',$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)
+       ON CONFLICT (statement_id) DO UPDATE SET
+         question_key = EXCLUDED.question_key,
+         question_text = EXCLUDED.question_text,
+         definition_text = EXCLUDED.definition_text,
+         condition_text = EXCLUDED.condition_text,
+         horizon_text = EXCLUDED.horizon_text,
+         value_type = EXCLUDED.value_type,
+         value_numeric = EXCLUDED.value_numeric,
+         value_min = EXCLUDED.value_min,
+         value_max = EXCLUDED.value_max,
+         unit = EXCLUDED.unit,
+         review_state = EXCLUDED.review_state`,
+      [
+        stableId(`forecast:${row.slug}`),
+        row.id,
+        questionKey,
+        command.corrections.question_text ?? row.question_text ?? questionKey,
+        command.corrections.definition_text !== undefined ? command.corrections.definition_text : row.definition_text,
+        command.corrections.condition_text !== undefined ? command.corrections.condition_text : row.condition_text,
+        command.corrections.horizon_text !== undefined ? command.corrections.horizon_text : row.horizon_text,
+        valueType,
+        valueNumeric,
+        valueMin,
+        valueMax,
+        unit,
+        resulting,
+      ],
+    );
+  } else if (row.question_key) {
+    await client.query(`UPDATE forecasts SET review_state = $2 WHERE statement_id = $1`, [row.id, resulting]);
+  }
+  await client.query(`UPDATE statements SET review_state = $2 WHERE id = $1`, [row.id, resulting]);
+  if (command.relationship) {
+    const other = await client.query(`SELECT id FROM statements WHERE slug = $1`, [command.relationship.other_statement_slug]);
+    if (!other.rowCount) throw new Error(`relationship target ${command.relationship.other_statement_slug} does not exist`);
+    await client.query(
+      `INSERT INTO statement_relationships (
+         id, from_statement_id, to_statement_id, relationship_type, method, confidence, review_state
+       ) VALUES ($1,$2,$3,$4,'curator_review',1,$5)
+       ON CONFLICT (from_statement_id, to_statement_id, relationship_type) DO UPDATE SET
+         method = EXCLUDED.method,
+         review_state = EXCLUDED.review_state`,
+      [
+        stableId(`relationship:${row.slug}:${command.relationship.other_statement_slug}:${command.relationship.relationship_type}`),
+        row.id,
+        other.rows[0].id,
+        command.relationship.relationship_type,
+        resulting,
+      ],
+    );
+  }
+  if (replay?.accepted_claim) {
+    const accepted = await client.query<{ matches: boolean }>(
+      "SELECT statement_claim_v1($1) = $2::jsonb AS matches", [row.id, JSON.stringify(replay.accepted_claim)],
+    );
+    if (!accepted.rows[0]?.matches) throw new Error("replayed corrections do not reconstruct the accepted claim; import its complete decision history");
+  }
+  await client.query(
+    `INSERT INTO review_decisions (
+       id, decision_key, statement_id, candidate_key, decision, rejection_reason, previous_review_state,
+       resulting_review_state, reviewed_at, reviewer, note, extractor_name, extractor_version,
+       source_item_id, evidence_segment_id, source_content_hash, evidence_hash, content_version,
+       corrections_json, original_extraction_json, relationship_json, machine_claim_json, accepted_claim_json
+     ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19::jsonb,$20::jsonb,$21::jsonb,
+       $22::jsonb, CASE WHEN $22::jsonb IS NULL THEN NULL ELSE statement_claim_v1($3) END)`,
+    [
+      stableId(`review:${key}`),
+      key,
+      row.id,
+      row.candidate_key,
+      command.decision,
+      command.rejection_reason,
+      row.review_state,
+      resulting,
+      command.reviewed_at,
+      command.reviewer,
+      command.note,
+      row.extractor_name,
+      row.extractor_version,
+      row.source_item_id,
+      row.evidence_id,
+      row.content_hash,
+      acceptedEvidenceHash,
+      row.content_version,
+      JSON.stringify(command.corrections),
+      JSON.stringify(snapshot(row)),
+      command.relationship ? JSON.stringify(command.relationship) : null,
+      machineClaim === null ? null : JSON.stringify(machineClaim),
+    ],
+  );
+  return { decision_key: key, idempotent: false };
+}
+
+function canonicalJson(value: unknown): string {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
+  if (value && typeof value === "object") {
+    return `{${Object.entries(value as Record<string, unknown>).sort(([a], [b]) => a.localeCompare(b))
+      .map(([key, item]) => `${JSON.stringify(key)}:${canonicalJson(item)}`).join(",")}}`;
+  }
+  return JSON.stringify(value);
 }
 
 export async function reviewStatus(pool = getPool()) {
@@ -741,87 +795,77 @@ export function validateReviewManifest(raw: unknown): ReviewManifest {
   return reviewManifestSchema.parse(raw);
 }
 
+function orderedManifestDecisions(manifest: ReviewManifest) {
+  return manifest.decisions.map((entry) => {
+    const { machine_claim = null, accepted_claim = null, ...raw } = entry as ReviewCommand & Partial<ReplaySnapshots>;
+    const command = reviewCommandSchema.parse(raw);
+    const key = command.decision_key ?? decisionKey(command);
+    return { command, key, replay: { machine_claim, accepted_claim } };
+  }).sort((left, right) => left.command.reviewed_at.localeCompare(right.command.reviewed_at) || left.key.localeCompare(right.key));
+}
+
 export async function validateReviewManifestInDatabase(pool: pg.Pool, raw: unknown): Promise<string[]> {
-  const manifest = validateReviewManifest(raw);
+  const entries = orderedManifestDecisions(validateReviewManifest(raw));
   const errors: string[] = [];
   const seen = new Set<string>();
   const client = await pool.connect();
   try {
-    const states = new Map<string, ReviewState>();
-    for (const decision of manifest.decisions) {
-      const key = decision.decision_key ?? decisionKey({ ...decision, decision_key: null });
-      if (seen.has(key)) {
-        errors.push(`duplicate decision ${key}`);
+    await client.query("BEGIN");
+    for (const entry of entries) {
+      if (seen.has(entry.key)) {
+        errors.push(`duplicate decision ${entry.key}`);
         continue;
       }
-      seen.add(key);
-      const stored = await client.query(
-        `SELECT 1 FROM review_decisions WHERE decision_key = $1 AND corrections_json = $2::jsonb`,
-        [key, JSON.stringify(decision.corrections)],
-      );
-      const conflict = await client.query(`SELECT 1 FROM review_decisions WHERE decision_key = $1`, [key]);
-      if (conflict.rowCount && !stored.rowCount) errors.push(`conflicting review decision ${key}`);
-      if (stored.rowCount) continue;
-      const row = await loadStatement(client, decision.statement_slug);
-      if (!row) {
-        errors.push(`missing statement ${decision.statement_slug}`);
-        continue;
-      }
-      if (decision.source_content_hash && decision.source_content_hash !== row.content_hash) {
-        errors.push(`source hash mismatch for ${decision.statement_slug}`);
-      }
-      if (decision.evidence_hash && decision.evidence_hash !== row.segment_hash) {
-        const original = await client.query(`SELECT evidence_hash FROM statement_extractions WHERE statement_id = $1`, [row.id]);
-        if (decision.evidence_hash !== original.rows[0]?.evidence_hash) {
-          errors.push(`evidence hash mismatch for ${decision.statement_slug}`);
-        }
-      }
-      if (decision.content_version && decision.content_version !== row.content_version) {
-        errors.push(`content version mismatch for ${decision.statement_slug}`);
-      }
-      if (decision.corrections.question_key && !isKnownQuestionKey(decision.corrections.question_key)) {
-        errors.push(`malformed question key ${decision.corrections.question_key}`);
-      }
-      const nextType = decision.corrections.statement_type ?? row.statement_type;
-      const numeric = [decision.corrections.value_numeric, decision.corrections.value_min, decision.corrections.value_max].some((value) => value !== null && value !== undefined);
-      if (nextType !== "explicit_numeric" && numeric) errors.push(`numeric value on non-numeric statement ${decision.statement_slug}`);
-      const previous = states.get(decision.statement_slug) ?? (row.review_state as ReviewState);
+      seen.add(entry.key);
+      await client.query("SAVEPOINT validate_decision");
       try {
-        assertReviewTransition(previous, decision.decision);
+        await applyReviewDecisionOnClient(client, entry.command, entry.replay);
       } catch (error) {
-        errors.push(error instanceof Error ? error.message : "invalid transition");
+        await client.query("ROLLBACK TO SAVEPOINT validate_decision");
+        errors.push(error instanceof Error ? error.message : "review validation failed");
       }
-      states.set(decision.statement_slug, resultingReviewState(decision.decision));
-      if (decision.decision === "reject" && !decision.rejection_reason) errors.push(`missing rejection reason for ${decision.statement_slug}`);
+      await client.query("RELEASE SAVEPOINT validate_decision");
     }
+    return errors;
   } finally {
+    await client.query("ROLLBACK").catch(() => undefined);
     client.release();
   }
-  return errors;
 }
 
 export async function importReviewManifest(pool: pg.Pool, raw: unknown): Promise<{ applied: number; idempotent: number }> {
-  const manifest = validateReviewManifest(raw);
+  const entries = orderedManifestDecisions(validateReviewManifest(raw));
   let applied = 0;
   let idempotent = 0;
-  for (const decision of manifest.decisions) {
-    const result = await applyReviewDecision(pool, decision);
-    if (result.idempotent) idempotent += 1;
-    else applied += 1;
+  const client = await pool.connect();
+  try {
+    await client.query("BEGIN");
+    for (const entry of entries) {
+      const result = await applyReviewDecisionOnClient(client, entry.command, entry.replay);
+      if (result.idempotent) idempotent += 1;
+      else applied += 1;
+    }
+    await client.query("COMMIT");
+    return { applied, idempotent };
+  } catch (error) {
+    await client.query("ROLLBACK").catch(() => undefined);
+    throw error;
+  } finally {
+    client.release();
   }
-  return { applied, idempotent };
 }
 
-export async function exportReviewManifest(pool: pg.Pool): Promise<ReviewManifest> {
+export async function exportReviewManifest(pool: pg.Pool): Promise<CurrentReviewManifest> {
   const result = await pool.query(
     `SELECT corrections_json, relationship_json, reviewer, reviewed_at, note, rejection_reason, decision,
-            source_content_hash, evidence_hash, content_version, d.decision_key, s.slug AS statement_slug
+            source_content_hash, evidence_hash, content_version, d.decision_key, s.slug AS statement_slug,
+            d.machine_claim_json, d.accepted_claim_json
      FROM review_decisions d
      JOIN statements s ON s.id = d.statement_id
      ORDER BY d.reviewed_at, d.decision_key`,
   );
-    const decisions = result.rows.map((row) =>
-    reviewCommandSchema.parse({
+  const decisions = result.rows.map((row) =>
+    boundReviewDecisionSchema.parse({
       decision_key: row.decision_key,
       statement_slug: row.statement_slug,
       decision: row.decision,
@@ -837,10 +881,12 @@ export async function exportReviewManifest(pool: pg.Pool): Promise<ReviewManifes
       source_content_hash: row.source_content_hash,
       evidence_hash: row.evidence_hash,
       content_version: row.content_version,
+      machine_claim: row.machine_claim_json,
+      accepted_claim: row.accepted_claim_json,
     }),
   );
   decisions.sort((a, b) => a.reviewed_at.localeCompare(b.reviewed_at) || (a.decision_key ?? "").localeCompare(b.decision_key ?? ""));
-  return { schema_version: "review-decisions/1.0.0", decisions };
+  return { schema_version: REVIEW_DECISION_SCHEMA, decisions };
 }
 
 const SOURCE_TYPE_SET = new Set<string>(SOURCE_TYPES);
