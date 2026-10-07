@@ -56,6 +56,12 @@ describe("production operations files", () => {
     expect(compose).toContain("./deploy/state:/etc/caddy/state:ro");
     expect(compose).not.toContain("./deploy/state/upstream.caddy:");
     expect(caddy).toContain("import /etc/caddy/state/upstream.caddy");
+    const proxyHealth = await readFile("scripts/deploy/proxy-health.sh", "utf8");
+    // A read-only /etc/caddy directory would prevent Docker from creating the
+    // nested /etc/caddy/state mountpoint during validation-container startup.
+    expect(proxyHealth).toContain('$ROOT/deploy/caddy/Caddyfile:/etc/caddy/Caddyfile:ro');
+    expect(proxyHealth).toContain('$ROOT/deploy/caddy:/etc/caddy/state:ro');
+    expect(proxyHealth).not.toContain('$ROOT/deploy/caddy:/etc/caddy:ro');
     expect(upstream).toContain("health_uri /api/ready");
     expect(upstream).toContain("lb_retries 0");
     expect(upstream).not.toContain("*");
