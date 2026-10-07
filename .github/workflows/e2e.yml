@@ -49,6 +49,16 @@ jobs:
           path: ~/.cache/ms-playwright
           key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
       - run: npm ci
+      - name: Bound APT transport waits
+        timeout-minutes: 1
+        shell: bash
+        run: |
+          # Applies only to this disposable runner. Keep mirrors and trust unchanged.
+          printf '%s\n' \
+            'Acquire::Retries "1";' \
+            'Acquire::http::Timeout "30";' \
+            'Acquire::https::Timeout "30";' \
+            | sudo tee /etc/apt/apt.conf.d/99-pdoom-ci-timeouts
       - run: npx playwright install --with-deps chromium
         timeout-minutes: 15
       - run: npm run build
