@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Backup, restore, failed-migration, and bad-import drill against a throwaway database.
 set -euo pipefail
+# This drill supplies only throwaway container/DB settings, never production.env.
+export PDOOM_OPS_ENV_MODE=process
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 IMAGE="${PDOOM_IMAGE:-pdoom-live:ci}"
 LIVE="${PDOOM_DRILL_DATASET:-$ROOT/data/collections/cohort-v2026-09/canonical-live.json}"

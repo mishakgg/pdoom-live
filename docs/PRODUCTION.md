@@ -265,7 +265,7 @@ bash scripts/deploy/publish-dataset.sh --file data/collections/cohort-v2026-09/c
 bash scripts/deploy-smoke.sh https://pdoom.live
 ```
 
-The release, backup, and restore scripts read `PDOOM_ENV_FILE`. When it is unset they use `/etc/pdoom/production.env`. They do not read a copy inside the git checkout. The loopback `compose.yaml` file earlier in this runbook can use `APP_BASE_URL=http://127.0.0.1:3000`. `check-env.sh` is for the public file and requires `https://pdoom.live`.
+The release, backup, retention, and restore scripts read `PDOOM_ENV_FILE`. Backup/retention/restore validate its permissions and production settings before parsing assignment data; they never execute it as shell code. File values establish defaults and command-line flags take precedence. Throwaway drills can explicitly set `PDOOM_OPS_ENV_MODE=process` to use only their inherited environment and CLI arguments, without reading a production file; do not use that mode for the documented production cron job. When it is unset they use `/etc/pdoom/production.env`. They do not read a copy inside the git checkout. The loopback `compose.yaml` file earlier in this runbook can use `APP_BASE_URL=http://127.0.0.1:3000`. `check-env.sh` is for the public file and requires `https://pdoom.live`.
 
 The first release applies `001_init.sql`, which is classified as breaking, so `--ack-breaking` is required. The script backs up the database before it applies migrations. Later releases skip that backup when no migration is pending.
 
@@ -279,7 +279,7 @@ Rollback first starts a separate previous-image candidate and verifies readiness
 
 Release identity is baked into the image as `GIT_COMMIT`, `BUILD_TIME`, and the label `org.opencontainers.image.revision`. The boot log prints `commit` and `built_at` when those values are a git SHA and a UTC timestamp. Compose does not override them from the env file. This is not a status API.
 
-`scripts/backup/backup.sh` runs `pg_dump` inside the Postgres container over the local socket as `POSTGRES_USER`. The password is not placed on the command line. `scripts/restore/restore.sh` uses the same container client.
+`scripts/backup/backup.sh` runs `pg_dump` inside the Postgres container over the local socket as `POSTGRES_USER`. The password is not placed on the command line. Every run reserves its own hidden staging directory and unique final filename suffix. Final files are published without overwriting an existing archive identity, and failure cleanup touches only that invocation's files. Dumps, checksums, and manifests are mode `600`; newly created backup directories are mode `700`. `scripts/restore/restore.sh` uses the same container client and checks the configured production database name before replacement.
 
 ```bash
 export PDOOM_ENV_FILE=/etc/pdoom/production.env
