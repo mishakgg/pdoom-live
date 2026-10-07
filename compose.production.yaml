@@ -37,7 +37,8 @@ services:
       - "443:443/udp"
     volumes:
       - ./deploy/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
-      - ./deploy/state/upstream.caddy:/etc/caddy/upstream.caddy:ro
+      # Mount the directory so atomic upstream replacements remain visible.
+      - ./deploy/state:/etc/caddy/state:ro
       - caddy_data:/data
       - caddy_config:/config
     networks:

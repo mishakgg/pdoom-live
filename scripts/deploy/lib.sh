@@ -41,6 +41,15 @@ prepare_state() {
   fi
 }
 
+# Directory bind mounts follow the renamed entry; a single-file mount would
+# retain the old inode. Keep the write atomic so Caddy never reads a partial file.
+render_upstream() {
+  local host="$1"
+  [[ "$host" =~ ^[A-Za-z0-9][A-Za-z0-9_.-]*$ ]] || die "upstream host is invalid"
+  sed "s|reverse_proxy [^ ]*|reverse_proxy ${host}:3000|" "$ROOT/deploy/caddy/upstream.caddy" >"$STATE_DIR/upstream.caddy.next"
+  mv "$STATE_DIR/upstream.caddy.next" "$STATE_DIR/upstream.caddy"
+}
+
 load_env_file() {
   [[ -f "$ENV_FILE" ]] || die "missing env file $ENV_FILE"
   local line key value

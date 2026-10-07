@@ -21,7 +21,8 @@ trap cleanup EXIT
 
 docker run --rm \
   -e ACME_EMAIL=ops@pdoom.live \
-  -v "$ROOT/deploy/caddy:/etc/caddy:ro" \
+  -v "$ROOT/deploy/caddy/Caddyfile:/etc/caddy/Caddyfile:ro" \
+  -v "$ROOT/deploy/caddy:/etc/caddy/state:ro" \
   caddy:2.10-alpine \
   caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile
 
