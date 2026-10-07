@@ -110,20 +110,6 @@ wait_ready() {
   return 1
 }
 
-reload_caddy() {
-  local attempt
-  # Compose -d only starts the process. The admin listener may not be ready yet,
-  # and an exited/restarting proxy must never turn a reload into a silent success.
-  for attempt in $(seq 1 40); do
-    if docker exec pdoom-prod-caddy caddy reload --config /etc/caddy/Caddyfile --adapter caddyfile >/dev/null 2>&1; then
-      return 0
-    fi
-    sleep 1
-  done
-  echo "Caddy did not accept its configuration within 40 attempts; refusing to continue the traffic switch" >&2
-  return 1
-}
-
 abort_candidate() {
   docker rm -f pdoom-prod-web-candidate >/dev/null 2>&1 || true
   if [[ "$class" == "breaking" ]]; then

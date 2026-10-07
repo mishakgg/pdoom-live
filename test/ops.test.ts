@@ -111,6 +111,12 @@ describe("production operations files", () => {
     expect(result.stdout).toContain("release_switch_test_ok");
   });
 
+  it("only records rollback after routing reaches its verified image and rejects schema mismatch", () => {
+    const result = run("bash", ["scripts/deploy/rollback-routing.test.sh"]);
+    expect(result.status, `${result.stdout}\n${result.stderr}`).toBe(0);
+    expect(result.stdout).toContain("rollback_routing_test_ok");
+  });
+
   it("requires acknowledgement for a breaking pending migration and refuses a diverged database", async () => {
     const dir = await mkdtemp(join(tmpdir(), "pdoom-ops-"));
     try {
@@ -239,7 +245,7 @@ describe("production operations files", () => {
       );
       const allowed = run("bash", ["scripts/deploy/rollback.sh", "--dry-run"], { PDOOM_STATE_DIR: dir });
       expect(allowed.status).toBe(0);
-      expect(allowed.stdout).toContain("preserve_database=yes");
+      expect(allowed.stdout).toContain("verify_database_migrations=yes");
     } finally {
       await rm(dir, { recursive: true, force: true });
     }

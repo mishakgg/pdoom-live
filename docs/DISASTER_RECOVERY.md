@@ -39,10 +39,10 @@ Application releases and dataset publication are different operations. A code de
 | Class | During rollout | Application rollback |
 | --- | --- | --- |
 | none | No schema change. Candidate is checked before Caddy is reloaded. | Switch back to the previous image. Keep the database. |
-| compatible | Previous and new web images can both run. A backup is taken, then migrations run, then the candidate is promoted. | Switch images. Do not restore unless the data itself is wrong. |
+| compatible | The SQL may preserve old columns, but the old runtime rejects migration versions it does not contain. A backup is taken before migrations. | Image-only rollback requires an exact migration-file match; otherwise restore a matching backup first. |
 | breaking | The previous image may become unready as soon as the migration commits. Pass `--ack-breaking`. | Restore the pre-migration backup, then start the previous image. |
 
-There are no down migrations. `scripts/deploy/rollback.sh` will not invent one.
+There are no down migrations. `scripts/deploy/rollback.sh` will not invent one. It compares actual database migration filenames with the selected previous image, even if release metadata says `none` or `compatible`, and refuses a mismatch. This also detects partially committed/unrecorded migration versions. The comparison does not prove that an edited migration with the same filename has identical SQL; immutable migrations and a future checksum/compatibility protocol remain necessary.
 
 Migration `006_accepted_claims` adds nullable machine-input and accepted-claim snapshots. It preserves existing review/extraction audit rows and does not manufacture approval snapshots from current data. With the new application, legacy `human_verified` decisions become effectively `needs_review` until an operator explicitly reapproves the exact interpretation; those records leave verified exports and numeric trends. Matching cumulative correction deltas remain replayable. Plan this review workload before rollout and keep the pre-migration backup. The canonical import and review manifest schema versions remain unchanged. Older application images do not enforce the stronger semantic coverage, so rolling back the application also rolls back that safety guarantee.
 
@@ -87,7 +87,7 @@ A new database name is created and loaded. That path does not drop the live data
 | What happened | What to do |
 | --- | --- |
 | New image exits before it is ready | The candidate is removed. The previous container keeps serving. Fix the image and run the release again. |
-| Candidate becomes ready, then the recreated web container does not | Caddy stays pointed at the candidate. The release record is not updated. |
+| Candidate becomes ready, then the recreated web container does not | Caddy stays pointed at the candidate. The release record is not updated. Rollback starts its own candidate, verifies actual DB migration compatibility, and switches back to permanent `web` before recording success. |
 | Candidate never becomes ready | It is not promoted. If the release already applied a breaking migration, restore the pre-migration backup before starting the old image. |
 | Migration fails | That migration's transaction rolls back and its version is not recorded. The previous web container is still the one Caddy uses. |
 | Breaking migration commits, then the new image is bad | `rollback.sh` without a backup refuses to switch. Restore the pre-migration backup, then start the previous image. |
@@ -95,6 +95,8 @@ A new database name is created and loaded. That path does not drop the live data
 | Dataset import commits, then the data is wrong | Restore the pre-import backup, or import a corrected file when surplus rows are acceptable. |
 | Disk fills | `scripts/deploy/disk.sh` fails a release below `PDOOM_MIN_FREE_MB`. Retention bounds backups. Image cleanup removes `pdoom-live:<sha>` tags other than the current and previous release. It does not delete those two. |
 | VM is gone | Install Docker on a new VM, restore an off-host backup into a new Postgres volume, build `pdoom-live:<sha>` from the recorded commit, start `compose.production.yaml`, and point DNS at the VM. Caddy obtains certificates after port 80 and 443 reach it. |
+
+Rollback keeps the last usable candidate serving if its permanent web replacement fails. Proxy failures retain possible serving containers and never produce a successful rollback message. Do not remove candidates until the active Caddy route is verified. A requested database restore is not reversed if later application/proxy checks fail.
 
 ## Drill
 
