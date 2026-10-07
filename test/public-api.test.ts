@@ -260,8 +260,11 @@ describe("public API v1", () => {
         `INSERT INTO review_decisions (
            id, decision_key, statement_id, candidate_key, decision, previous_review_state,
            resulting_review_state, reviewed_at, reviewer, source_item_id, evidence_segment_id,
-           source_content_hash, evidence_hash, content_version, corrections_json, original_extraction_json
-         ) VALUES ($1,$2,$3,$4,'approve','needs_review','human_verified',$5,'test',$6,$7,$8,$9,$10,'{}'::jsonb,'{}'::jsonb)`,
+           source_content_hash, evidence_hash, content_version, corrections_json, original_extraction_json,
+           machine_claim_json, accepted_claim_json
+         ) VALUES ($1,$2,$3,$4,'approve','needs_review','human_verified',$5,'test',$6,$7,$8,$9,$10,'{}'::jsonb,'{}'::jsonb,
+           jsonb_set(jsonb_set(statement_claim_v1($3), '{source,content_hash}', to_jsonb($8::text)), '{evidence,hash}', to_jsonb($9::text)),
+           jsonb_set(jsonb_set(statement_claim_v1($3), '{source,content_hash}', to_jsonb($8::text)), '{evidence,hash}', to_jsonb($9::text)))`,
         [
           stableId(`review:${key}`),
           key,
