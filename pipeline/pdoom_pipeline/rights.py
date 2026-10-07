@@ -12,6 +12,9 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 from urllib.parse import urlsplit
+from datetime import datetime, timezone
+
+from pdoom_pipeline.errors import CollectorFailure
 
 CC0 = "cc0"
 CC_BY = "cc-by"
@@ -182,3 +185,51 @@ def _deed_suffix(rest: list[str]) -> bool:
     if not rest:
         return True
     return len(rest) == 1 and _DEED_PART.fullmatch(rest[0]) is not None
+
+
+@dataclass(frozen=True)
+class CollectionPolicy:
+    admitted: bool
+    evidence: bool = False
+    extraction: bool = False
+    raw_until: str | None = None
+    rights_basis: str | None = None
+
+
+def collection_policy(row: dict, *, now: str, lead: bool = False) -> CollectionPolicy:
+    """Read only curator policy. Public availability and prose never grant raw retention.
+
+    Existing explicitly enabled registry rows with rights notes, and curated
+    executable leads with a basis, retain their metadata/excerpt behavior.
+    A structured policy overrides that legacy admission and can only narrow it
+    unless it explicitly supplies admission and a rights basis.
+    """
+    if row.get("enabled") is False:
+        return CollectionPolicy(False)
+    policy = row.get("collection_policy")
+    if policy is None:
+        basis = row.get("basis") if lead else row.get("rights_notes")
+        admitted = bool(isinstance(basis, str) and basis.strip() and (lead or row.get("enabled") is True))
+        return CollectionPolicy(admitted, admitted, admitted, rights_basis=basis)
+    if not isinstance(policy, dict):
+        raise CollectorFailure("blocked_by_policy", "collection_policy must be an object")
+    basis = policy.get("rights_basis")
+    admitted = policy.get("admitted") is True and isinstance(basis, str) and bool(basis.strip())
+    evidence = admitted and policy.get("evidence", True) is True
+    extraction = evidence and policy.get("extraction", True) is True
+    raw_until = None
+    raw = policy.get("raw_retention")
+    if admitted and raw is not None:
+        if not isinstance(raw, dict) or not classify_license(raw.get("license")).allows_copy(unchanged=True):
+            raise CollectorFailure("blocked_by_policy", "raw retention requires a recognized copying license")
+        try:
+            expiry = datetime.fromisoformat(raw["expires_at"].replace("Z", "+00:00"))
+            current = datetime.fromisoformat(now.replace("Z", "+00:00"))
+            if expiry.tzinfo is None or current.tzinfo is None:
+                raise ValueError("timezone required")
+            # Expired permissions allow metadata/snippets, never the old body cache.
+            if expiry > current:
+                raw_until = expiry.astimezone(timezone.utc).isoformat().replace("+00:00", "Z")
+        except (KeyError, TypeError, ValueError) as exc:
+            raise CollectorFailure("blocked_by_policy", "raw retention requires an explicit zoned expiry") from exc
+    return CollectionPolicy(admitted, evidence, extraction, raw_until, basis if admitted else None)

@@ -77,20 +77,31 @@ def canonicalize_url(url: str) -> str:
 
 
 def _platform_canonical(url: str) -> str:
-    youtube = _YOUTUBE.search(url)
-    if youtube:
-        return f"https://www.youtube.com/watch?v={youtube.group(1)}"
-    arxiv = _ARXIV_NEW.search(url) or _ARXIV_OLD.search(url)
-    if arxiv:
-        return f"https://arxiv.org/abs/{arxiv.group(1)}"
-    author = _OPENALEX_AUTHOR.search(url)
-    if author:
-        return f"https://openalex.org/{author.group(1).upper()}"
-    work = _OPENALEX_WORK.search(url)
-    if work:
-        return f"https://openalex.org/{work.group(1).upper()}"
-    doi = _DOI.search(url)
-    if "doi.org" in urlparse(url).netloc or urlparse(url).netloc.endswith("dx.doi.org"):
+    parsed = urlparse(url)
+    host = (parsed.hostname or "").lower()
+    if host in {"youtube.com", "www.youtube.com"}:
+        values = [value for key, value in parse_qsl(parsed.query) if key == "v"]
+        video = values[0] if parsed.path == "/watch" and len(values) == 1 else None
+        embedded = re.fullmatch(r"/embed/([A-Za-z0-9_-]{6,})", parsed.path)
+        video = embedded.group(1) if embedded else video
+        if video and re.fullmatch(r"[A-Za-z0-9_-]{6,}", video):
+            return f"https://www.youtube.com/watch?v={video}"
+    elif host == "youtu.be":
+        video = parsed.path.lstrip("/")
+        if re.fullmatch(r"[A-Za-z0-9_-]{6,}", video):
+            return f"https://www.youtube.com/watch?v={video}"
+    if host in {"arxiv.org", "www.arxiv.org", "export.arxiv.org"}:
+        target = "arxiv.org" + parsed.path
+        arxiv = _ARXIV_NEW.match(target) or _ARXIV_OLD.match(target)
+        if arxiv:
+            return f"https://arxiv.org/abs/{arxiv.group(1)}"
+    if host == "openalex.org":
+        author = _OPENALEX_AUTHOR.fullmatch("openalex.org" + parsed.path)
+        work = _OPENALEX_WORK.fullmatch("openalex.org" + parsed.path)
+        if author or work:
+            return f"https://openalex.org/{(author or work).group(1).upper()}"
+    if host in {"doi.org", "dx.doi.org", "www.doi.org"}:
+        doi = _DOI.fullmatch(parsed.path.lstrip("/"))
         if doi:
             return f"https://doi.org/{doi.group(1)}"
     return url
