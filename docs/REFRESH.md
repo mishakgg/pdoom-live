@@ -112,7 +112,7 @@ An optional `collection_policy` object overrides legacy rights decisions:
 
 This is an example of the format, not a grant for any current source. `admitted` and a nonempty rights basis are required for structured policy. Evidence and extraction default to true only within admission; `evidence: false` also disables extraction. Raw persistence is off unless a recognized copying license and an explicit zoned expiry are supplied. Unchanged-only copying licenses govern the unchanged raw bytes, not a grant to redistribute derived text. Public availability, open-access labels, source text, and free-text notes do not grant raw retention. Existing checked-in sources have no structured raw permission.
 
-Fetched bytes stay in bounded memory until the entire selected source finishes successfully. Only its exact primary fetch response may enter the raw cache; robots, transcripts and ancillary URLs do not inherit that permission. Cache reads require a recorded, unexpired permission. At each run, revoked, expired and legacy ungoverned cache bodies are removed from the URL-hashed body directory. Permission changes never silently extend an existing cache expiry. Normalized adapter metadata drops full feed bodies (`upstream_version`); retained excerpts remain bounded. Revoked admission suppresses retained observations from the next artifact, and narrower evidence/extraction flags remove cached evidence and statement candidates before staging/export. The return value includes `policy_decisions`, and successful source checkpoints record the applied policy for a private manifest.
+Only a licensed primary response is buffered until the entire selected source finishes successfully. Ancillary page/transcript response bodies are handed to the collector without being accumulated by the refresh checkpoint/cache layer. Only the exact primary fetch response may enter the raw cache; robots, transcripts and ancillary URLs do not inherit that permission. Cache reads require a recorded, unexpired permission. At each run, revoked, expired and legacy ungoverned cache bodies are removed from the URL-hashed body directory. Permission changes never silently extend an existing cache expiry. Normalized adapter metadata drops full feed bodies (`upstream_version`); retained excerpts remain bounded. Revoked admission suppresses retained observations from the next artifact, and narrower evidence/extraction flags remove cached evidence and statement candidates before staging/export. The return value includes `policy_decisions`, and successful source checkpoints record the applied policy for a private manifest.
 
 **Revocation applies to the new collection artifacts only.** The result explicitly reports `publication.imported=false` and `publication.public_revocations_applied=false`. Public database import currently retains records absent from later documents. Revoking a source in a new collection artifact does not delete or retract already published database records; any public revocation requires a separate reviewed product/DB workflow.
 
@@ -174,3 +174,20 @@ GitHub repository-list and OpenAlex works parsers reject malformed rows rather
 than dropping them into an apparently empty success. Actually empty valid feeds
 and arrays still succeed. Invalid response roots/rows cannot commit new successful
 freshness or HTTP validators, and last-good observations remain available.
+
+### Response-buffer memory
+
+The refresh cache stages at most one response body, and only when the current
+source policy explicitly permits raw retention for its exact primary fetch URL.
+The belief checkpoint layer keeps body-free primary response metadata for HTTP
+validators and 304 handling; it does not keep every transcript/page FetchResult.
+Ancillary raw bodies can be released after the collector processes them.
+
+This bounds the runner's pending raw-response buffer independently of transcript
+count: zero bytes with raw retention disabled, otherwise one admitted primary
+response within the fetcher's response-size limit. It is not a bound on the whole
+corpus or all normalized/extracted outputs held while a source is processed.
+Those permitted outputs and their existing evidence/retention limits remain
+unchanged. A source failure still persists no new body; expired or revoked raw
+permissions still purge the old body, and 304 without an admitted retained body
+still performs its single unconditional recovery fetch.

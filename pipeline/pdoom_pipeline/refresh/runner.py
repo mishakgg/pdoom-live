@@ -129,7 +129,12 @@ def run_refresh(
         client.url_policy = item.get("scope")
         primary_url = (item.get("source") or {}).get("url") or (item.get("lead") or {}).get("fetch_url") or item["key"]
         client.cache_get = lambda url: state.read_body(url, now=started) if policy.raw_until and url == primary_url else None
-        client.cache_put = lambda url, body, _headers: pending.__setitem__(url, body)
+        def retain_primary(url, body, _headers):
+            # Ancillary pages/transcripts never inherit the primary source's raw
+            # permission. Do not keep their bodies until the whole source ends.
+            if policy.raw_until and url == primary_url:
+                pending[url] = body
+        client.cache_put = retain_primary
         if item.get("error"):
             counts["failed"] += 1
             errors.append(f"{item['key']}: {item['error'].error_class}")
@@ -308,7 +313,13 @@ def _run_belief_item(
                 return b""
             failed.append(exc)
             raise
-        responses[url] = result
+        if url == key:
+            # Only primary response metadata is needed for validators/304 status.
+            # Returning body bytes lets the collector consume each response
+            # without retaining every ancillary FetchResult in this closure.
+            responses[url] = FetchResult(url=result.url, status=result.status,
+                                         headers=dict(result.headers), body=b"",
+                                         not_modified=result.not_modified, attempts=result.attempts)
         return result.body
 
     try:
