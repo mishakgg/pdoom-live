@@ -23,6 +23,7 @@ import { isPool, isStatementTimeout, queryOnClient, withConsistentRead } from ".
 import { SearchTimeoutError } from "./search";
 import type { Exclusion, RevisionResult } from "./trend-engine";
 import { getTrend, listComputedTrends, type PublicTrend } from "./trend-query";
+import { statementEvidenceMatchesItemSql } from "./website-visibility";
 
 type Db = pg.Pool | pg.PoolClient;
 
@@ -30,7 +31,7 @@ const PUBLIC_STATES = [...RESEARCH_REVIEW_STATES];
 
 /** Research records must retain public source links, without the website audit exception. */
 function researchStatementSql(statementAlias: string, statesParam: string): string {
-  return `(${effectiveReviewStateSql(statementAlias)} = ANY(${statesParam}::text[]) AND EXISTS (
+  return `(${effectiveReviewStateSql(statementAlias)} = ANY(${statesParam}::text[]) AND ${statementEvidenceMatchesItemSql(statementAlias)} AND EXISTS (
     SELECT 1 FROM source_items research_si
     JOIN sources research_src ON research_src.id = research_si.source_id
     WHERE research_si.id = ${statementAlias}.source_item_id
@@ -516,6 +517,7 @@ function statementWhere(query: PublicStatementQuery, values: unknown[]): { where
   const publicParam = bind(values, PUBLIC_STATES);
   const clauses = [
     `src.review_state = ANY(${publicParam}::text[])`,
+    statementEvidenceMatchesItemSql(),
     query.review_state
       ? `${effectiveReviewStateSql("s")} = ${bind(values, query.review_state)}`
       : `${effectiveReviewStateSql("s")} = ANY(${publicParam}::text[])`,

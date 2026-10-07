@@ -52,6 +52,7 @@ WITH entries AS (
       JOIN people p ON p.id = s.person_id
       WHERE s.source_item_id = si.id
         AND ${statementReviewSql} = ANY($2::text[])
+        AND ${websiteStatementSql()}
         AND p.status = ANY($1::text[])
     )
   UNION ALL
@@ -248,6 +249,7 @@ export async function getSourceItemDiscovery(slug: string, pool: Queryable = get
               JOIN people p ON p.id = s.person_id
               WHERE s.source_item_id = si.id
                 AND ${statementReviewSql} = ANY($2::text[])
+                AND ${websiteStatementSql()}
                 AND p.status = ANY($3::text[])
             ) AS has_indexable_statement,
             EXISTS (
@@ -257,6 +259,7 @@ export async function getSourceItemDiscovery(slug: string, pool: Queryable = get
               WHERE current.id IS NOT NULL
                 AND s.source_item_id = current.id
                 AND ${statementReviewSql} = ANY($2::text[])
+                AND ${websiteStatementSql()}
                 AND p.status = ANY($3::text[])
             ) AS current_has_indexable_statement
      FROM source_items si

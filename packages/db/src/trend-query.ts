@@ -35,6 +35,7 @@ import {
 } from "./trend-engine";
 import { effectiveReviewStateSql } from "./coverage";
 import { getPool } from "./pool";
+import { statementEvidenceMatchesItemSql } from "./website-visibility";
 
 export type TrendSource = "published_definition" | "prepared_method" | "discovered_question";
 
@@ -205,7 +206,7 @@ function forecastInputSql(researchSources = false): string {
      JOIN sources src ON src.id = si.source_id
      LEFT JOIN statement_topics st ON st.statement_id = s.id
      LEFT JOIN topics t ON t.id = st.topic_id
-     WHERE ${trendSourceSql("src", researchSources)}
+     WHERE ${trendSourceSql("src", researchSources)} AND ${statementEvidenceMatchesItemSql()}
      GROUP BY s.id, p.slug, p.display_name, f.question_key, f.question_text, f.definition_text, f.condition_text,
               f.forecast_kind, f.value_type, f.value_numeric, f.value_min, f.value_max, f.unit, f.horizon_text, f.review_state,
               f.target_date_start, f.target_date_end, f.distribution_json, f.resolution_criteria, si.observed_at`;
@@ -293,6 +294,7 @@ async function loadInputs(pool: pg.Pool, cohort: CohortRef, researchSources = fa
      JOIN cohort_memberships cm ON cm.person_id = fs.person_id
      JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2
      WHERE ${trendSourceSql("fsrc", researchSources)} AND ${trendSourceSql("tsrc", researchSources)}
+       AND ${statementEvidenceMatchesItemSql("fs")} AND ${statementEvidenceMatchesItemSql("ts")}
      ORDER BY fs.slug, ts.slug, r.relationship_type`,
     [cohort.slug, cohort.version],
   );
@@ -565,7 +567,7 @@ async function computeVolume(method: MethodSpec, inputs: CohortInputs, pool: pg.
      JOIN topics t ON t.id = st.topic_id
      JOIN source_items si ON si.id = s.source_item_id
      JOIN sources src ON src.id = si.source_id
-     WHERE ${trendSourceSql("src", researchSources)}`,
+     WHERE ${trendSourceSql("src", researchSources)} AND ${statementEvidenceMatchesItemSql()}`,
     [inputs.cohort.slug, inputs.cohort.version],
   );
   const volume = computeStatementVolume({

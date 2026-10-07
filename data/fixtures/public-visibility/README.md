@@ -6,4 +6,6 @@ All names, identities, excerpts, URLs, and organizations are fictional. Load onl
 
 The historical removed item remains visible for audit. Its newer version is unreviewed, so the audit metadata must not link to that hidden version. Raw staging metadata contains a marker that must never appear in application responses or SSR.
 
+Three machine-validated statements reference evidence on a different item: an item in a rejected source, one in an unreviewed source, and an otherwise public item. Canonical import accepts these independent references; all public reads must fail closed on the mismatch, and a relationship to a mismatched statement must be omitted. Same-item historical/removed audit evidence stays public.
+
 Before the real staging/review tests add rows, the website has 11 public statements and 11 audit items, with 3 source containers in its source lists. Research exports have 9 statements and 9 items, with 2 source containers: they omit needs-review content and the unreviewed-container audit exception. Research statements and relationships must retain source, item, and endpoint records in the same export.

@@ -28,6 +28,8 @@ Affiliations, external identities, sources, forecasts, and relationships use the
 
 A statement also requires a source in an included review state, so every exported statement, source item, and relationship retains its public source and endpoint links. The website's exact audit exception for an unreviewed source container does not apply to `/api/v1` or research exports. An explicitly rejected source cannot expose its statements through either surface. A removed original can retain its public audit record; availability is distinct from review rejection.
 
+Referenced evidence must belong to the statement's declared source item, because its locator and content hash accompany that evidence in the public representation. Cross-item evidence references are omitted, including when the foreign item is otherwise public; the stored rows remain available for internal review.
+
 People with status `active` or `historical` are included. A person with status `review` is included only when they are the speaker of a public statement, so that statement still has a person record. `in_current_cohort` says whether they belong to the loaded cohort.
 
 ## Endpoints

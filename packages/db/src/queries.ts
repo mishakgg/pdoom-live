@@ -13,7 +13,7 @@ import { effectiveReviewStateSql } from "./coverage";
 import { getPool } from "./pool";
 import { isPool, queryOnClient, withConsistentRead } from "./read-snapshot";
 import { listComputedTrends } from "./trend-query";
-import { websiteSourceAuditSql, websiteSourceItemSql, websiteStatementSql } from "./website-visibility";
+import { statementEvidenceMatchesItemSql, websiteSourceAuditSql, websiteSourceItemSql, websiteStatementSql } from "./website-visibility";
 
 type Sql = pg.Pool | pg.PoolClient;
 
@@ -150,7 +150,7 @@ function mapStatement(row: Record<string, unknown>) {
 export type StatementSummary = ReturnType<typeof mapStatement>;
 
 function statementFilters(query: StatementListQuery, values: unknown[]): string {
-  const clauses: string[] = ["src.review_state <> 'rejected'"];
+  const clauses: string[] = ["src.review_state <> 'rejected'", statementEvidenceMatchesItemSql()];
   if (query.person) {
     values.push(query.person);
     clauses.push(`p.slug = $${values.length}`);
@@ -1013,4 +1013,3 @@ export function getOverview(pool: Sql = getPool()) {
   };
   });
 }
-

@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { REVIEW_STATES, type ReviewState } from "@pdoom/contracts";
 import { assertTestDatabase, readDatabaseUrl } from "../packages/db/src/env";
-import { clearProductTables, importCanonical, resetDatabase } from "../packages/db/src/import";
+import { clearProductTables, importCanonical, resetDatabase, validateDocument } from "../packages/db/src/import";
 import { createPool, closePool } from "../packages/db/src/pool";
 import { getCoverage, getOverview, getPerson, getSource, getSourceItem, getStatement, getTopic, listPeople, listSources, listStatements, listTopics, loadTrendInputs } from "../packages/db/src/queries";
 import { getSourceItemDiscovery, getStatementDiscovery, listFeedEntries, listSitemapRecords } from "../packages/db/src/discovery";
@@ -49,6 +49,43 @@ afterAll(async () => {
 });
 
 describe("website publication boundary", () => {
+  it("fails closed on cross-item evidence even when the declared source or foreign item is public", async () => {
+    const mismatches = ["rejected-source", "unreviewed-source", "public-item"].map((state) => `visibility-cross-${state}`);
+    // Canonical import currently permits independent item and evidence references.
+    expect(validateDocument(fixture).statements.filter((row) => mismatches.includes(row.slug))).toHaveLength(3);
+    const listed = await listStatements({ limit: 50 }, pool);
+    const bundle = await loadPublicExport(asOf, pool);
+    const inputs = await loadTrendInputs(pool);
+    const paths = (await listSitemapRecords(pool, { offset: 0, limit: 500 })).map((row) => row.path);
+    const feed = await listFeedEntries(pool, 100);
+    for (const slug of mismatches) {
+      expect(await getStatement(slug, pool)).toBeNull();
+      expect(await getStatementDiscovery(slug, pool)).toBeNull();
+      expect(await getSourceItem(`${slug}-item`, pool)).toBeNull();
+      expect(await getSourceItemDiscovery(`${slug}-item`, pool)).toBeNull();
+      expect(listed.data.some((row) => row.slug === slug)).toBe(false);
+      expect(bundle.statements.some((row) => row.slug === slug)).toBe(false);
+      expect(bundle.source_items.some((row) => row.slug === `${slug}-item`)).toBe(false);
+      expect(inputs?.candidates.some((row) => row.statement_slug === slug)).toBe(false);
+      expect(paths).not.toContain(`/statements/${slug}`);
+      expect(paths).not.toContain(`/source-items/${slug}-item`);
+      expect(feed.some((row) => row.slug === slug)).toBe(false);
+      expect((await publicGet(`statements/${slug}`)).status).toBe(404);
+      const response = await statementApi(new Request(`http://localhost/api/statements/${slug}`), { params: Promise.resolve({ slug }) });
+      expect(response.status).toBe(404);
+    }
+    expect(listed.page.total).toBe(11);
+    expect(bundle.catalog.counts.statements).toBe(9);
+    const statementHits = await searchPublic({ q: "visibility cross", type: "statement", limit: 20, mode: "page" }, pool);
+    const itemHits = await searchPublic({ q: "visibility cross", type: "source_item", limit: 20, mode: "page" }, pool);
+    expect(statementHits.groups.statement.data).toEqual([]);
+    expect(itemHits.groups.source_item.data).toEqual([]);
+    const source = await getSource("visibility-source-human-verified", pool);
+    expect(source?.items.some((row) => row.slug.startsWith("visibility-cross-"))).toBe(false);
+    expect(renderToStaticMarkup(<SourceRecord source={source!} />)).not.toContain("visibility-cross-");
+    expect(await getSourceItem("visibility-old-removed-item", pool)).not.toBeNull();
+  });
+
   it("hides staged/rejected sources and item evidence, including exact routes and metadata", async () => {
     const sources = await listSources(pool);
     expect(sources.map((row) => row.review_state).sort()).toEqual([...publicStates].sort());

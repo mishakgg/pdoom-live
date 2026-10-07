@@ -698,6 +698,78 @@
       "availability": "available",
       "is_current": true,
       "ingestion_run_slug": null
+    },
+    {
+      "slug": "visibility-cross-rejected-source-item",
+      "source_slug": "visibility-source-human-verified",
+      "upstream_id": "visibility-cross-rejected-source-item",
+      "logical_key": "visibility-cross-rejected-source-item",
+      "canonical_url": "https://synthetic.pdoom.example/items/visibility-cross-rejected-source-item",
+      "title": "visibility-cross-rejected-source title",
+      "published_at": "2023-06-12T15:00:00Z",
+      "published_timezone": "UTC",
+      "observed_at": "2023-06-12T16:00:00Z",
+      "updated_at_source": null,
+      "language": "en",
+      "content_hash": null,
+      "content_hash_input": "visibility-cross-rejected-source 8 percent.",
+      "content_version": 1,
+      "content_reference": "fixture://source-items/ada-essay-2023",
+      "metadata": {
+        "private_staging_marker": "Never publish raw staging metadata"
+      },
+      "collection_status": "collected",
+      "availability": "available",
+      "is_current": true,
+      "ingestion_run_slug": null
+    },
+    {
+      "slug": "visibility-cross-unreviewed-source-item",
+      "source_slug": "visibility-source-human-verified",
+      "upstream_id": "visibility-cross-unreviewed-source-item",
+      "logical_key": "visibility-cross-unreviewed-source-item",
+      "canonical_url": "https://synthetic.pdoom.example/items/visibility-cross-unreviewed-source-item",
+      "title": "visibility-cross-unreviewed-source title",
+      "published_at": "2023-06-12T15:00:00Z",
+      "published_timezone": "UTC",
+      "observed_at": "2023-06-12T16:00:00Z",
+      "updated_at_source": null,
+      "language": "en",
+      "content_hash": null,
+      "content_hash_input": "visibility-cross-unreviewed-source 8 percent.",
+      "content_version": 1,
+      "content_reference": "fixture://source-items/ada-essay-2023",
+      "metadata": {
+        "private_staging_marker": "Never publish raw staging metadata"
+      },
+      "collection_status": "collected",
+      "availability": "available",
+      "is_current": true,
+      "ingestion_run_slug": null
+    },
+    {
+      "slug": "visibility-cross-public-item-item",
+      "source_slug": "visibility-source-human-verified",
+      "upstream_id": "visibility-cross-public-item-item",
+      "logical_key": "visibility-cross-public-item-item",
+      "canonical_url": "https://synthetic.pdoom.example/items/visibility-cross-public-item-item",
+      "title": "visibility-cross-public-item title",
+      "published_at": "2023-06-12T15:00:00Z",
+      "published_timezone": "UTC",
+      "observed_at": "2023-06-12T16:00:00Z",
+      "updated_at_source": null,
+      "language": "en",
+      "content_hash": null,
+      "content_hash_input": "visibility-cross-public-item 8 percent.",
+      "content_version": 1,
+      "content_reference": "fixture://source-items/ada-essay-2023",
+      "metadata": {
+        "private_staging_marker": "Never publish raw staging metadata"
+      },
+      "collection_status": "collected",
+      "availability": "available",
+      "is_current": true,
+      "ingestion_run_slug": null
     }
   ],
   "participants": [
@@ -857,6 +929,33 @@
     {
       "source_item_slug": "visibility-mixed-item",
       "person_slug": "visibility-private-person",
+      "organization_slug": null,
+      "role": "author",
+      "attribution_method": "synthetic_fixture",
+      "attribution_detail": null,
+      "confidence_level": "high"
+    },
+    {
+      "source_item_slug": "visibility-cross-rejected-source-item",
+      "person_slug": "visibility-person",
+      "organization_slug": null,
+      "role": "author",
+      "attribution_method": "synthetic_fixture",
+      "attribution_detail": null,
+      "confidence_level": "high"
+    },
+    {
+      "source_item_slug": "visibility-cross-unreviewed-source-item",
+      "person_slug": "visibility-person",
+      "organization_slug": null,
+      "role": "author",
+      "attribution_method": "synthetic_fixture",
+      "attribution_detail": null,
+      "confidence_level": "high"
+    },
+    {
+      "source_item_slug": "visibility-cross-public-item-item",
+      "person_slug": "visibility-person",
       "organization_slug": null,
       "role": "author",
       "attribution_method": "synthetic_fixture",
@@ -1079,6 +1178,42 @@
       "start_ms": null,
       "end_ms": null,
       "text": "visibility-mixed-hidden evidence 8 percent.",
+      "context_text": "Synthetic public visibility regression fixture."
+    },
+    {
+      "slug": "visibility-cross-rejected-source-evidence",
+      "source_item_slug": "visibility-cross-rejected-source-item",
+      "segment_kind": "text",
+      "sequence": 1,
+      "start_char": 0,
+      "end_char": 121,
+      "start_ms": null,
+      "end_ms": null,
+      "text": "visibility-cross-rejected-source evidence 8 percent.",
+      "context_text": "Synthetic public visibility regression fixture."
+    },
+    {
+      "slug": "visibility-cross-unreviewed-source-evidence",
+      "source_item_slug": "visibility-cross-unreviewed-source-item",
+      "segment_kind": "text",
+      "sequence": 1,
+      "start_char": 0,
+      "end_char": 121,
+      "start_ms": null,
+      "end_ms": null,
+      "text": "visibility-cross-unreviewed-source evidence 8 percent.",
+      "context_text": "Synthetic public visibility regression fixture."
+    },
+    {
+      "slug": "visibility-cross-public-item-evidence",
+      "source_item_slug": "visibility-cross-public-item-item",
+      "segment_kind": "text",
+      "sequence": 1,
+      "start_char": 0,
+      "end_char": 121,
+      "start_ms": null,
+      "end_ms": null,
+      "text": "visibility-cross-public-item evidence 8 percent.",
       "context_text": "Synthetic public visibility regression fixture."
     }
   ],
@@ -1479,6 +1614,60 @@
       "topic_slugs": [
         "ai-extinction"
       ]
+    },
+    {
+      "extractor_version": "fixture-extractor/1.0.0",
+      "confidence": 0.95,
+      "review_state": "machine_validated",
+      "extraction_run_slug": null,
+      "topic_method": "fixture",
+      "topic_confidence": 0.99,
+      "slug": "visibility-cross-rejected-source",
+      "person_slug": "visibility-person",
+      "source_item_slug": "visibility-cross-rejected-source-item",
+      "statement_type": "explicit_numeric",
+      "normalized_text": "visibility-cross-rejected-source estimate 8%.",
+      "event_time": "2023-06-12T15:00:00Z",
+      "evidence_slug": "visibility-rejected-container-evidence",
+      "topic_slugs": [
+        "ai-extinction"
+      ]
+    },
+    {
+      "extractor_version": "fixture-extractor/1.0.0",
+      "confidence": 0.95,
+      "review_state": "machine_validated",
+      "extraction_run_slug": null,
+      "topic_method": "fixture",
+      "topic_confidence": 0.99,
+      "slug": "visibility-cross-unreviewed-source",
+      "person_slug": "visibility-person",
+      "source_item_slug": "visibility-cross-unreviewed-source-item",
+      "statement_type": "explicit_numeric",
+      "normalized_text": "visibility-cross-unreviewed-source estimate 8%.",
+      "event_time": "2023-06-12T15:00:00Z",
+      "evidence_slug": "visibility-unreviewed-container-evidence",
+      "topic_slugs": [
+        "ai-extinction"
+      ]
+    },
+    {
+      "extractor_version": "fixture-extractor/1.0.0",
+      "confidence": 0.95,
+      "review_state": "machine_validated",
+      "extraction_run_slug": null,
+      "topic_method": "fixture",
+      "topic_confidence": 0.99,
+      "slug": "visibility-cross-public-item",
+      "person_slug": "visibility-person",
+      "source_item_slug": "visibility-cross-public-item-item",
+      "statement_type": "explicit_numeric",
+      "normalized_text": "visibility-cross-public-item estimate 8%.",
+      "event_time": "2023-06-12T15:00:00Z",
+      "evidence_slug": "visibility-machine-validated-evidence",
+      "topic_slugs": [
+        "ai-extinction"
+      ]
     }
   ],
   "forecasts": [
@@ -1841,6 +2030,66 @@
       "question_text": "Unconditional probability of literal human extinction caused by advanced AI by the end of 2070.",
       "forecast_kind": "probability",
       "value_type": "point"
+    },
+    {
+      "definition_text": "Literal human extinction. Not catastrophic harm, disempowerment, or a conditional probability.",
+      "condition_text": null,
+      "target_date_start": null,
+      "target_date_end": "2070-12-31",
+      "horizon_text": "by end of 2070",
+      "value_text": "8%",
+      "value_numeric": 0.08,
+      "value_min": null,
+      "value_max": null,
+      "unit": "probability",
+      "distribution": null,
+      "resolution_criteria": null,
+      "review_state": "machine_validated",
+      "statement_slug": "visibility-cross-rejected-source",
+      "question_key": "ai_extinction_unconditional_by_2070",
+      "question_text": "Unconditional probability of literal human extinction caused by advanced AI by the end of 2070.",
+      "forecast_kind": "probability",
+      "value_type": "point"
+    },
+    {
+      "definition_text": "Literal human extinction. Not catastrophic harm, disempowerment, or a conditional probability.",
+      "condition_text": null,
+      "target_date_start": null,
+      "target_date_end": "2070-12-31",
+      "horizon_text": "by end of 2070",
+      "value_text": "8%",
+      "value_numeric": 0.08,
+      "value_min": null,
+      "value_max": null,
+      "unit": "probability",
+      "distribution": null,
+      "resolution_criteria": null,
+      "review_state": "machine_validated",
+      "statement_slug": "visibility-cross-unreviewed-source",
+      "question_key": "ai_extinction_unconditional_by_2070",
+      "question_text": "Unconditional probability of literal human extinction caused by advanced AI by the end of 2070.",
+      "forecast_kind": "probability",
+      "value_type": "point"
+    },
+    {
+      "definition_text": "Literal human extinction. Not catastrophic harm, disempowerment, or a conditional probability.",
+      "condition_text": null,
+      "target_date_start": null,
+      "target_date_end": "2070-12-31",
+      "horizon_text": "by end of 2070",
+      "value_text": "8%",
+      "value_numeric": 0.08,
+      "value_min": null,
+      "value_max": null,
+      "unit": "probability",
+      "distribution": null,
+      "resolution_criteria": null,
+      "review_state": "machine_validated",
+      "statement_slug": "visibility-cross-public-item",
+      "question_key": "ai_extinction_unconditional_by_2070",
+      "question_text": "Unconditional probability of literal human extinction caused by advanced AI by the end of 2070.",
+      "forecast_kind": "probability",
+      "value_type": "point"
     }
   ],
   "relationships": [
@@ -1904,6 +2153,14 @@
       "from_statement_slug": "visibility-machine-validated",
       "to_statement_slug": "visibility-rejected-container",
       "relationship_type": "contradicts",
+      "method": "same_question_later_statement",
+      "confidence": 0.98,
+      "review_state": "human_verified"
+    },
+    {
+      "from_statement_slug": "visibility-machine-validated",
+      "to_statement_slug": "visibility-cross-rejected-source",
+      "relationship_type": "clarifies",
       "method": "same_question_later_statement",
       "confidence": 0.98,
       "review_state": "human_verified"

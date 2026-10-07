@@ -6,9 +6,20 @@ export function websiteReviewSql(column: string): string {
   return `${column} IN (${PUBLIC_REVIEW_STATES.map((state) => `'${state}'`).join(", ")})`;
 }
 
+/** Public provenance has one item locator/hash; its evidence must belong to that item.
+ * Independent database FKs/import slugs do not guarantee this relationship.
+ */
+export function statementEvidenceMatchesItemSql(statementAlias = "s"): string {
+  return `EXISTS (
+    SELECT 1 FROM evidence_segments publication_e
+    WHERE publication_e.id = ${statementAlias}.evidence_segment_id
+      AND publication_e.source_item_id = ${statementAlias}.source_item_id
+  )`;
+}
+
 /** A source rejection overrides a statement's review state; removal does not. */
 export function websiteStatementSql(statementAlias = "s"): string {
-  return `(${websiteReviewSql(effectiveReviewStateSql(statementAlias))} AND EXISTS (
+  return `(${websiteReviewSql(effectiveReviewStateSql(statementAlias))} AND ${statementEvidenceMatchesItemSql(statementAlias)} AND EXISTS (
     SELECT 1 FROM source_items visible_si
     JOIN sources visible_src ON visible_src.id = visible_si.source_id
     WHERE visible_si.id = ${statementAlias}.source_item_id AND visible_src.review_state <> 'rejected'
