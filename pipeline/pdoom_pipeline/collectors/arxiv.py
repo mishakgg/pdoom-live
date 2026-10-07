@@ -51,9 +51,13 @@ class ArxivCollector:
             root = fromstring(payload)
         except XmlParseError as exc:
             raise CollectorFailure("invalid_content", f"malformed arxiv feed: {exc}") from exc
+        if root.tag != f"{ATOM}feed":
+            raise CollectorFailure("invalid_content", "arxiv response is not an Atom feed")
         observations: list[SourceObservation] = []
         for entry in list(root):
             if entry.tag != f"{ATOM}entry":
+                if entry.tag.split("}")[-1] == "entry":
+                    raise CollectorFailure("invalid_content", "arxiv entry has an invalid namespace")
                 continue
             observations.append(_entry(entry, source_identity=source_identity, observed_at=observed_at))
         return observations

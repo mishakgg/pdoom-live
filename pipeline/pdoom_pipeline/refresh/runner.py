@@ -13,6 +13,7 @@ from pdoom_pipeline.belief.collect import collect_beliefs
 from pdoom_pipeline.errors import CollectorFailure
 from pdoom_pipeline.export.corpus import export_corpus
 from pdoom_pipeline.export.versions import merge_observation_store
+from pdoom_pipeline.extract.statements import EXTRACTOR_VERSION
 from pdoom_pipeline.urls import canonicalize_url
 from pdoom_pipeline.fetch import FetchResult, SafeFetcher
 from pdoom_pipeline.ingest.collection_state import CollectionState, utc_now
@@ -103,7 +104,9 @@ def run_refresh(
                 elif legacy.get("source_identity") != identity:
                     item["error"] = CollectorFailure("blocked_by_policy", "legacy lead attribution changed; review required")
     _enforce_retained_policy(state, store, registry_sources, leads, work, started)
-    selected, cursor_before, _planned = _select(work, state.cursor, max_sources)
+    scan_before = state.scan_cursor if state.scan_cursor is not None else state.cursor
+    selected, _scan_before, _planned = _select(work, scan_before, max_sources)
+    cursor_before = state.cursor
     cursor_after = state.cursor
     counts = {"new": 0, "changed": 0, "unchanged": 0, "skipped": 0, "failed": 0}
     errors: list[str] = []
@@ -131,6 +134,8 @@ def run_refresh(
             counts["failed"] += 1
             errors.append(f"{item['key']}: {item['error'].error_class}")
             _check(checked, item.get("url") or item["key"], state, success=False, checked_at=started)
+            state.scan_cursor = item["key"]
+            _save_checkpoint(state, store, collection_dir, write_bytes)
             continue
         if item["kind"] == "adapter":
             success = _run_adapter_item(
@@ -167,6 +172,9 @@ def run_refresh(
                 for url, body in pending.items():
                     if url == primary_url:
                         state.write_body(url, body, expires_at=policy.raw_until, rights_basis=policy.rights_basis or "")
+        # Fairness progress is distinct from a successful data checkpoint.
+        # Failed and cooling sources cannot permanently monopolize a slice.
+        state.scan_cursor = item["key"]
         _save_checkpoint(state, store, collection_dir, write_bytes)
     client.cache_put = None
     client.cache_get = None
@@ -196,6 +204,8 @@ def run_refresh(
         "status": status,
         "cursor_before": cursor_before,
         "cursor_after": cursor_after,
+        "scan_cursor_before": scan_before,
+        "scan_cursor_after": state.scan_cursor,
         "new_count": counts["new"],
         "changed_count": counts["changed"],
         "unchanged_count": counts["unchanged"],
@@ -210,7 +220,7 @@ def run_refresh(
         "relationships": view_change_candidates(belief_statements),
         "runs": runs,
         "source_leads": [],
-        "extractor_version": "rule-extract-0.4.0",
+        "extractor_version": EXTRACTOR_VERSION,
         "refresh": refresh,
     }
     write_belief_staging(
@@ -232,14 +242,15 @@ def run_refresh(
         overlap = belief_names.intersection(path.name for path in enrichment_dir(collection_dir).glob("*") if path.name != "README.md")
         if overlap:
             raise RuntimeError(f"belief staging collided with enrichment files: {sorted(overlap)}")
-    return {"status": status, "counts": counts, "cursor": cursor_after, "document": document, "result": result,
+    return {"status": status, "counts": counts, "cursor": cursor_after, "scan_cursor": state.scan_cursor,
+            "document": document, "result": result,
             "publication": {"imported": False, "public_revocations_applied": False},
             "policy_decisions": [{"source_key": item["key"], **asdict(item["policy"])}
                                  for item in work if item.get("policy") and not item.get("error")]}
 
 
 def _save_checkpoint(state, store, collection_dir, write_bytes) -> None:
-    # The checkpoint commits successful freshness, validators and the cursor.
+    # Successful freshness/validators and fair scan progress are separate fields.
     # Persist its observation payload first. A refused write or process exit can
     # leave replayable data ahead of the checkpoint, never success ahead of data.
     store.save(state_dir(collection_dir) / "observations.json", write_bytes)
