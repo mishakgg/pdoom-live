@@ -26,7 +26,7 @@ State stays in files next to the collection. There is no second database and no 
 
 | Path | Role |
 | --- | --- |
-| `data/collections/cohort-v2026-09/state/collection_state.json` | Per-source identity, conditional-request validators, cursor, content hashes, last attempt, last success, retry time, and at most eight errors |
+| `data/collections/cohort-v2026-09/state/collection_state.json` | Per-source identity, conditional-request validators, successful-source cursor, independent scan cursor, content hashes, last attempt, last success, retry time, and at most eight errors |
 | `data/collections/cohort-v2026-09/state/observations.json` | Retained observation versions |
 | `data/collections/cohort-v2026-09/state/bodies/` | Licensed, unexpired last validated body, keyed by the exact primary fetch URL; absent by default |
 | `data/collections/cohort-v2026-09/state/refresh.lock` | Overlap lock |
@@ -124,7 +124,7 @@ A source ID is durably bound to its URL, collection method, external identity an
 
 Outbound fetches, redirected requests and feed-supplied transcript targets default to the admitted origin. A curator can supply `allowed_fetch_origins` as an explicit list of HTTP(S) origins for reviewed cross-origin redirects or transcripts. The list does not bypass SSRF, response-size, deadline or parser checks. Sources requiring unreviewed redirects fail truthfully until their additional origin is reviewed.
 
-A 304 is successful only with retained validated bytes that parse successfully, or a successful unconditional recovery fetch. An unsupported/malformed feed, robots refusal, unresolved page attribution, transcript failure, or collector bug fails the selected source. It preserves the previous successful timestamp, validators, source cursor and observation version. Last-attempt time and bounded error history still record the failure. The scheduling cursor advances only after a successful source check. Retained items do not turn an all-failed pass into success. Valid empty feeds are successful checks.
+A 304 is successful only with retained validated bytes that parse successfully, or a successful unconditional recovery fetch. An unsupported/malformed feed, robots refusal, unresolved page attribution, transcript failure, or collector bug fails the selected source. It preserves the previous successful timestamp, validators, source cursor and observation version. Last-attempt time and bounded error history still record the failure. The successful-source cursor advances only after a successful source check. A separate durable scan cursor advances after each considered source, including failures, policy rejections and cooldown skips, so one failing slice cannot starve later sources. Retained items do not turn an all-failed pass into success. Valid empty feeds are successful checks.
 
 ## Bounded storage integration
 
@@ -149,3 +149,28 @@ revision. Public publication must still pass the accepted-claim coverage gate fo
 changed author/participant/evidence locators. No prior approval is granted merely
 because the source text digest matches. The store migration itself neither
 publishes changes nor retracts existing database records.
+
+### Fair bounded source selection
+
+`scan_cursor` is the last source considered for scheduling; the existing `cursor`
+remains the last source that completed a successful check. Failed, policy-invalid
+and cooling sources consume a bounded source slot and advance only the scan
+position. A later pass continues after them and wraps around, so a permanently
+failing first slice cannot starve healthy sources. Backoff skips make no HTTP
+request and do not change source attempts, successful freshness or validators.
+A source remains retryable on a later cycle when its retry window expires.
+
+The scan position is persisted through the same data-before-state write seam. A
+refused durable state write leaves the previous scheduling position intact;
+replaying a considered source is safe. Cancellation before an item leaves that
+item unconsidered. A source interrupted during its attempt records a truthful
+failure and can be retried on a later cycle. Existing state without `scan_cursor`
+starts from the last successful cursor. The refresh report exposes both scan
+positions separately; the private Drive batch/manifest upload checkpoint is
+unchanged. These changes do not enable a schedule or start collection.
+
+The admitted arXiv parser requires an Atom feed with correctly namespaced entries.
+GitHub repository-list and OpenAlex works parsers reject malformed rows rather
+than dropping them into an apparently empty success. Actually empty valid feeds
+and arrays still succeed. Invalid response roots/rows cannot commit new successful
+freshness or HTTP validators, and last-good observations remain available.

@@ -93,15 +93,18 @@ class OpenAlexWorksCollector:
             raise CollectorFailure("invalid_content", "openalex response missing results")
         observations = []
         for work in works:
-            if isinstance(work, dict):
-                observations.append(_work(work, source_identity=source_identity, observed_at=observed_at))
+            if not isinstance(work, dict):
+                raise CollectorFailure("invalid_content", "openalex work row was not an object")
+            observations.append(_work(work, source_identity=source_identity, observed_at=observed_at))
         return observations
 
 
 def _work(work: dict, *, source_identity: str, observed_at: str) -> SourceObservation:
-    openalex_url = str(work.get("id") or "")
+    openalex_url = work.get("id")
+    if not isinstance(openalex_url, str):
+        raise CollectorFailure("invalid_content", "openalex work missing id")
     work_id = openalex_url.rstrip("/").split("/")[-1]
-    if not work_id.startswith("W"):
+    if not work_id.startswith("W") or not work_id[1:].isdigit():
         raise CollectorFailure("invalid_content", "openalex work missing id")
     landing = ((work.get("primary_location") or {}) or {}).get("landing_page_url") or ""
     doi = work.get("doi") or ""

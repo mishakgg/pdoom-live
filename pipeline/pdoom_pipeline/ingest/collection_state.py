@@ -35,6 +35,7 @@ class CollectionState:
         self.sources: dict[str, dict[str, Any]] = {}
         self.items: dict[str, dict[str, Any]] = {}
         self.cursor: str | None = None
+        self.scan_cursor: str | None = None
         self.schema_version = SCHEMA
         self.bindings: dict[str, str] = {}
         self.raw_bodies: dict[str, dict] = {}
@@ -49,6 +50,7 @@ class CollectionState:
         state.sources = dict(payload.get("sources") or {})
         state.items = dict(payload.get("items") or {})
         state.cursor = payload.get("cursor")
+        state.scan_cursor = payload.get("scan_cursor")
         state.bindings = dict(payload.get("bindings") or {})
         state.raw_bodies = dict(payload.get("raw_bodies") or {})
         return state
@@ -57,6 +59,7 @@ class CollectionState:
         payload = {
             "schema_version": SCHEMA,
             "cursor": self.cursor,
+            "scan_cursor": self.scan_cursor,
             "sources": self.sources,
             "items": self.items,
             "bindings": self.bindings,
