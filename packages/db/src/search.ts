@@ -608,10 +608,15 @@ function sourceItemsSql(prepared: ReturnType<typeof prepareSearchText>, parsed: 
         AND (${person}::text IS NULL OR EXISTS (
           SELECT 1 FROM source_participants sp
           JOIN people p ON p.id = sp.person_id
-          WHERE sp.source_item_id = si.id AND p.slug = ${person}
+          WHERE sp.source_item_id = si.id AND p.slug = ${person} AND EXISTS (
+            SELECT 1 FROM statements attributed_s
+            WHERE attributed_s.source_item_id = si.id AND attributed_s.person_id = sp.person_id
+              AND ${websiteStatementSql("attributed_s")}
+          )
         ) OR EXISTS (
           SELECT 1 FROM people owner
           WHERE owner.id = src.owner_person_id AND owner.slug = ${person}
+            AND src.review_state = ANY(q.public_states)
         ))
     ),
     matched AS (

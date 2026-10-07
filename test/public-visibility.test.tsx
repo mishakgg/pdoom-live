@@ -5,7 +5,7 @@ import { REVIEW_STATES, type ReviewState } from "@pdoom/contracts";
 import { assertTestDatabase, readDatabaseUrl } from "../packages/db/src/env";
 import { clearProductTables, importCanonical, resetDatabase, validateDocument } from "../packages/db/src/import";
 import { createPool, closePool } from "../packages/db/src/pool";
-import { getCoverage, getOverview, getPerson, getSource, getSourceItem, getStatement, getTopic, listPeople, listSources, listStatements, listTopics, loadTrendInputs } from "../packages/db/src/queries";
+import { getCoverage, getOverview, getPerson, getSource, getSourceItem, getStatement, getTopic, listPeople, listSources, listStatements, listTopics, listComputedTrends, loadTrendInputs } from "../packages/db/src/queries";
 import { getSourceItemDiscovery, getStatementDiscovery, listFeedEntries, listSitemapRecords } from "../packages/db/src/discovery";
 import { loadPublicExport } from "../packages/db/src/public-read";
 import { searchPublic } from "../packages/db/src/search";
@@ -13,10 +13,12 @@ import { applyReviewDecision, emptyConfirmations, stageCandidates } from "../pac
 import { SourceRecord } from "../apps/web/app/sources/[slug]/page";
 import { SourceItemRecord } from "../apps/web/app/source-items/[slug]/page";
 import { PersonProfile } from "../apps/web/components/person-profile";
+import { TrendView } from "../apps/web/components/trend-view";
 import { GET as sourcesApi } from "../apps/web/app/api/sources/route";
 import { GET as sourceApi } from "../apps/web/app/api/sources/[slug]/route";
 import { GET as itemApi } from "../apps/web/app/api/source-items/[slug]/route";
 import { GET as statementApi } from "../apps/web/app/api/statements/[slug]/route";
+import { GET as trendApi } from "../apps/web/app/api/trends/[slug]/route";
 import { handlePublicApi } from "../apps/web/lib/public-api-handler";
 import { resetPublicRepresentationCache } from "../apps/web/lib/representation-cache";
 import { publicApiLimiter } from "../apps/web/lib/rate-limit";
@@ -29,6 +31,20 @@ const asOf = "2026-10-01T00:00:00.000Z";
 
 async function publicGet(path: string) {
   return handlePublicApi(new Request(`http://localhost/api/v1/${path}`));
+}
+
+function assertHiddenForecastValuesRedacted(value: unknown, hiddenSlugs: Set<string>): void {
+  if (Array.isArray(value)) {
+    for (const child of value) assertHiddenForecastValuesRedacted(child, hiddenSlugs);
+  } else if (value && typeof value === "object") {
+    const row = value as Record<string, unknown>;
+    if (typeof row.statement_slug === "string" && hiddenSlugs.has(row.statement_slug)) {
+      for (const key of ["preserved_value", "value_numeric", "value_min", "value_max", "distribution", "definition_text", "condition_text", "horizon_text", "resolution_criteria", "target_date_start", "target_date_end"]) {
+        if (key in row) expect(row[key]).toBeNull();
+      }
+    }
+    for (const child of Object.values(row)) assertHiddenForecastValuesRedacted(child, hiddenSlugs);
+  }
 }
 
 beforeAll(async () => {
@@ -245,6 +261,76 @@ describe("website publication boundary", () => {
     for (const state of ["unreviewed", "rejected"]) {
       expect(forecastHits.groups.statement.data.find((row) => row.slug === `visibility-forecast-${state}`)?.forecast).toBeNull();
     }
+  });
+
+  it("keeps hidden statement/forecast values out of trend exclusions, metadata, charts, API and exports", async () => {
+    const privateMarkers = [
+      "FORECAST_UNREVIEWED_PRIVATE_MARKER", "FORECAST_REJECTED_PRIVATE_MARKER",
+      "STATEMENT_UNREVIEWED_PRIVATE_MARKER", "STATEMENT_REJECTED_PRIVATE_MARKER", "STATEMENT_MIXED_PRIVATE_MARKER",
+    ];
+    const hiddenStatementSlugs = ["visibility-unreviewed", "visibility-rejected", "visibility-mixed-hidden"];
+    const inputs = await loadTrendInputs(pool);
+    for (const slug of hiddenStatementSlugs) expect(inputs?.candidates.some((row) => row.statement_slug === slug)).toBe(false);
+    for (const state of ["unreviewed", "rejected"]) {
+      const candidate = inputs!.candidates.find((row) => row.statement_slug === `visibility-forecast-${state}`);
+      expect(candidate?.value_numeric).toBeNull();
+      expect(candidate?.value_min).toBeNull();
+      expect(candidate?.value_max).toBeNull();
+      expect(candidate?.distribution).toBeNull();
+      expect(candidate?.question_key).toBeNull();
+      expect(candidate?.definition_text).toBeNull();
+      expect(candidate?.horizon_text).toBeNull();
+      expect(candidate?.resolution_criteria).toBeNull();
+    }
+    expect(inputs!.candidates.find((row) => row.statement_slug === "visibility-forecast-needs-review")?.value_numeric).toBe(0.9539);
+    const trends = await listComputedTrends(pool);
+    const bundle = await loadPublicExport(asOf, pool);
+    const hiddenForecastSlugs = new Set(["visibility-forecast-unreviewed", "visibility-forecast-rejected"]);
+    assertHiddenForecastValuesRedacted(trends, hiddenForecastSlugs);
+    assertHiddenForecastValuesRedacted(bundle.trends, new Set([...hiddenForecastSlugs, "visibility-forecast-needs-review"]));
+    const inspection = trends.find((row) => row.kind === "inspection");
+    expect(inspection?.inspection.rows.some((row) => row.statement_slug === "visibility-human-verified")).toBe(true);
+    expect(inspection?.inspection.rows.some((row) => hiddenForecastSlugs.has(row.statement_slug))).toBe(false);
+    expect(bundle.trends.find((row) => row.kind === "inspection")?.inspection.rows.some((row) => row.statement_slug === "visibility-human-verified")).toBe(true);
+    const privateNumbers = ["0.7319", "0.8429", "0.6193", "0.6283", "0.6393", "73.19", "84.29", "61.93", "62.83", "63.93"];
+    const websiteBytes = JSON.stringify(trends);
+    const researchBytes = JSON.stringify(bundle);
+    for (const marker of [...privateMarkers, ...privateNumbers, ...hiddenStatementSlugs]) {
+      expect(websiteBytes).not.toContain(marker);
+      expect(researchBytes).not.toContain(marker);
+    }
+    expect(researchBytes).not.toContain("FORECAST_NEEDS_REVIEW_MARKER");
+    expect(researchBytes).not.toContain("0.9539");
+    expect(researchBytes).not.toContain("95.39");
+    expect(researchBytes).not.toContain('"visibility-needs-review"');
+    const inspectionMarkup = renderToStaticMarkup(<TrendView trend={inspection!} />);
+    expect(inspectionMarkup).toContain("visibility-human-verified");
+    for (const marker of [...privateMarkers, ...privateNumbers, ...hiddenStatementSlugs]) expect(inspectionMarkup).not.toContain(marker);
+    const distribution = trends.find((row) => row.kind === "distribution")!;
+    expect(distribution).toBeTruthy();
+    const markup = renderToStaticMarkup(<TrendView trend={distribution} />);
+    for (const marker of [...privateMarkers, ...privateNumbers, ...hiddenStatementSlugs]) expect(markup).not.toContain(marker);
+    const siteResponse = await trendApi(new Request(`http://localhost/api/trends/${distribution.slug}`), { params: Promise.resolve({ slug: distribution.slug }) });
+    expect(siteResponse.status).toBe(200);
+    const sitePayload = await siteResponse.json();
+    assertHiddenForecastValuesRedacted(sitePayload, hiddenForecastSlugs);
+    const siteBody = JSON.stringify(sitePayload);
+    for (const marker of [...privateMarkers, ...privateNumbers, ...hiddenStatementSlugs]) expect(siteBody).not.toContain(marker);
+    const researchResponse = await publicGet(`trends/${distribution.slug}`);
+    expect(researchResponse.status).toBe(200);
+    const researchPayload = await researchResponse.json();
+    assertHiddenForecastValuesRedacted(researchPayload, new Set([...hiddenForecastSlugs, "visibility-forecast-needs-review"]));
+    const researchBody = JSON.stringify(researchPayload);
+    for (const marker of [...privateMarkers, ...privateNumbers, "FORECAST_NEEDS_REVIEW_MARKER", "0.9539", "95.39"]) expect(researchBody).not.toContain(marker);
+  });
+
+  it("uses only public speaker attribution or reviewed ownership for source-item person filters", async () => {
+    const privateMatches = await searchPublic({ q: "visibility", type: "source_item", person: "visibility-private-person", limit: 20, mode: "page" }, pool);
+    expect(privateMatches.groups.source_item.data).toEqual([]);
+    expect(privateMatches.groups.source_item.page.total).toBe(0);
+    const visibleMatches = await searchPublic({ q: "visibility", type: "source_item", person: "visibility-person", limit: 20, mode: "page" }, pool);
+    expect(visibleMatches.groups.source_item.data.map((row) => row.slug)).toContain("visibility-mixed-item");
+    expect(visibleMatches.groups.source_item.data.map((row) => row.slug)).toContain("visibility-audit-public-item");
   });
 
   it("publishes only covered evidence after real staging/approval and hides stale material from research/indexing", async () => {

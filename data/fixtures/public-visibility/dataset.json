@@ -278,7 +278,7 @@
       "name": "Unreviewed audit container",
       "canonical_url": "https://synthetic.pdoom.example/audit",
       "platform": "blog",
-      "owner_person_slug": "visibility-person",
+      "owner_person_slug": "visibility-private-person",
       "owner_organization_slug": null,
       "collection_method": "fixture",
       "collection_adapter": "private-adapter-marker",
@@ -1672,84 +1672,106 @@
   ],
   "forecasts": [
     {
-      "definition_text": "Literal human extinction. Not catastrophic harm, disempowerment, or a conditional probability.",
+      "definition_text": "STATEMENT_UNREVIEWED_PRIVATE_MARKER",
       "condition_text": null,
       "target_date_start": null,
       "target_date_end": "2070-12-31",
-      "horizon_text": "by end of 2070",
-      "value_text": "8%",
-      "value_numeric": 0.08,
-      "value_min": null,
-      "value_max": null,
+      "horizon_text": "STATEMENT_UNREVIEWED_PRIVATE_MARKER by end of 2070",
+      "value_text": null,
+      "value_numeric": null,
+      "value_min": 0.6193,
+      "value_max": 0.6203,
       "unit": "probability",
       "distribution": null,
-      "resolution_criteria": null,
+      "resolution_criteria": "STATEMENT_UNREVIEWED_PRIVATE_MARKER",
       "review_state": "unreviewed",
       "statement_slug": "visibility-unreviewed",
       "question_key": "ai_extinction_unconditional_by_2070",
       "question_text": "Unconditional probability of literal human extinction caused by advanced AI by the end of 2070.",
       "forecast_kind": "probability",
-      "value_type": "point"
+      "value_type": "range"
     },
     {
-      "definition_text": "Literal human extinction. Not catastrophic harm, disempowerment, or a conditional probability.",
+      "definition_text": "FORECAST_UNREVIEWED_PRIVATE_MARKER",
       "condition_text": null,
       "target_date_start": null,
       "target_date_end": "2070-12-31",
-      "horizon_text": "by end of 2070",
-      "value_text": "8%",
-      "value_numeric": 0.08,
-      "value_min": null,
-      "value_max": null,
+      "horizon_text": "FORECAST_UNREVIEWED_PRIVATE_MARKER by end of 2070",
+      "value_text": null,
+      "value_numeric": null,
+      "value_min": 0.7319,
+      "value_max": 0.7329,
       "unit": "probability",
       "distribution": null,
-      "resolution_criteria": null,
+      "resolution_criteria": "FORECAST_UNREVIEWED_PRIVATE_MARKER",
       "review_state": "unreviewed",
       "statement_slug": "visibility-forecast-unreviewed",
       "question_key": "ai_extinction_unconditional_by_2070",
       "question_text": "Unconditional probability of literal human extinction caused by advanced AI by the end of 2070.",
       "forecast_kind": "probability",
-      "value_type": "point"
+      "value_type": "range"
     },
     {
-      "definition_text": "Literal human extinction. Not catastrophic harm, disempowerment, or a conditional probability.",
+      "definition_text": "STATEMENT_REJECTED_PRIVATE_MARKER",
       "condition_text": null,
       "target_date_start": null,
       "target_date_end": "2070-12-31",
-      "horizon_text": "by end of 2070",
-      "value_text": "8%",
-      "value_numeric": 0.08,
+      "horizon_text": "STATEMENT_REJECTED_PRIVATE_MARKER by end of 2070",
+      "value_text": null,
+      "value_numeric": null,
       "value_min": null,
       "value_max": null,
       "unit": "probability",
-      "distribution": null,
-      "resolution_criteria": null,
+      "distribution": {
+        "quantiles": [
+          {
+            "p": 0.25,
+            "value": 0.6283
+          },
+          {
+            "p": 0.75,
+            "value": 0.6293
+          }
+        ]
+      },
+      "resolution_criteria": "STATEMENT_REJECTED_PRIVATE_MARKER",
       "review_state": "rejected",
       "statement_slug": "visibility-rejected",
       "question_key": "ai_extinction_unconditional_by_2070",
       "question_text": "Unconditional probability of literal human extinction caused by advanced AI by the end of 2070.",
       "forecast_kind": "probability",
-      "value_type": "point"
+      "value_type": "distribution"
     },
     {
-      "definition_text": "Literal human extinction. Not catastrophic harm, disempowerment, or a conditional probability.",
+      "definition_text": "FORECAST_REJECTED_PRIVATE_MARKER",
       "condition_text": null,
       "target_date_start": null,
       "target_date_end": "2070-12-31",
-      "horizon_text": "by end of 2070",
-      "value_text": "8%",
-      "value_numeric": 0.08,
+      "horizon_text": "FORECAST_REJECTED_PRIVATE_MARKER by end of 2070",
+      "value_text": null,
+      "value_numeric": null,
       "value_min": null,
       "value_max": null,
       "unit": "probability",
-      "distribution": null,
-      "resolution_criteria": null,
+      "distribution": {
+        "quantiles": [
+          {
+            "p": 0.25,
+            "value": 0.8429
+          },
+          {
+            "p": 0.75,
+            "value": 0.8439
+          }
+        ]
+      },
+      "resolution_criteria": "FORECAST_REJECTED_PRIVATE_MARKER",
       "review_state": "rejected",
       "statement_slug": "visibility-forecast-rejected",
       "question_key": "ai_extinction_unconditional_by_2070",
       "question_text": "Unconditional probability of literal human extinction caused by advanced AI by the end of 2070.",
       "forecast_kind": "probability",
-      "value_type": "point"
+      "value_type": "distribution"
     },
     {
       "definition_text": "Literal human extinction. Not catastrophic harm, disempowerment, or a conditional probability.",
@@ -1772,18 +1794,18 @@
       "value_type": "point"
     },
     {
-      "definition_text": "Literal human extinction. Not catastrophic harm, disempowerment, or a conditional probability.",
+      "definition_text": "FORECAST_NEEDS_REVIEW_MARKER",
       "condition_text": null,
       "target_date_start": null,
       "target_date_end": "2070-12-31",
-      "horizon_text": "by end of 2070",
-      "value_text": "8%",
-      "value_numeric": 0.08,
+      "horizon_text": "FORECAST_NEEDS_REVIEW_MARKER by end of 2070",
+      "value_text": "95.39%",
+      "value_numeric": 0.9539,
       "value_min": null,
       "value_max": null,
       "unit": "probability",
       "distribution": null,
-      "resolution_criteria": null,
+      "resolution_criteria": "FORECAST_NEEDS_REVIEW_MARKER",
       "review_state": "needs_review",
       "statement_slug": "visibility-forecast-needs-review",
       "question_key": "ai_extinction_unconditional_by_2070",
@@ -1837,19 +1859,30 @@
       "target_date_start": null,
       "target_date_end": "2070-12-31",
       "horizon_text": "by end of 2070",
-      "value_text": "8%",
-      "value_numeric": 0.08,
+      "value_text": null,
+      "value_numeric": null,
       "value_min": null,
       "value_max": null,
       "unit": "probability",
-      "distribution": null,
+      "distribution": {
+        "quantiles": [
+          {
+            "p": 0.25,
+            "value": 0.08
+          },
+          {
+            "p": 0.75,
+            "value": 0.1
+          }
+        ]
+      },
       "resolution_criteria": null,
       "review_state": "human_verified",
       "statement_slug": "visibility-human-verified",
-      "question_key": "ai_extinction_unconditional_by_2070",
-      "question_text": "Unconditional probability of literal human extinction caused by advanced AI by the end of 2070.",
+      "question_key": "visibility_unpooled_public",
+      "question_text": "Synthetic distribution without a registered pooling question.",
       "forecast_kind": "probability",
-      "value_type": "point"
+      "value_type": "distribution"
     },
     {
       "definition_text": "Literal human extinction. Not catastrophic harm, disempowerment, or a conditional probability.",
@@ -2012,24 +2045,24 @@
       "value_type": "point"
     },
     {
-      "definition_text": "Literal human extinction. Not catastrophic harm, disempowerment, or a conditional probability.",
+      "definition_text": "STATEMENT_MIXED_PRIVATE_MARKER",
       "condition_text": null,
       "target_date_start": null,
       "target_date_end": "2070-12-31",
-      "horizon_text": "by end of 2070",
-      "value_text": "8%",
-      "value_numeric": 0.08,
-      "value_min": null,
-      "value_max": null,
+      "horizon_text": "STATEMENT_MIXED_PRIVATE_MARKER by end of 2070",
+      "value_text": null,
+      "value_numeric": null,
+      "value_min": 0.6393,
+      "value_max": 0.6403,
       "unit": "probability",
       "distribution": null,
-      "resolution_criteria": null,
+      "resolution_criteria": "STATEMENT_MIXED_PRIVATE_MARKER",
       "review_state": "unreviewed",
       "statement_slug": "visibility-mixed-hidden",
       "question_key": "ai_extinction_unconditional_by_2070",
       "question_text": "Unconditional probability of literal human extinction caused by advanced AI by the end of 2070.",
       "forecast_kind": "probability",
-      "value_type": "point"
+      "value_type": "range"
     },
     {
       "definition_text": "Literal human extinction. Not catastrophic harm, disempowerment, or a conditional probability.",

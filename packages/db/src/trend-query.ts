@@ -1,6 +1,7 @@
 import {
   COMPARABILITY_POLICY_VERSION,
   CURRENT_CORPUS_HISTORY,
+  PUBLIC_REVIEW_STATES,
   RESEARCH_REVIEW_STATES,
   aggregationSchema,
   distributionAggregationSchema,
@@ -35,7 +36,7 @@ import {
 } from "./trend-engine";
 import { effectiveReviewStateSql } from "./coverage";
 import { getPool } from "./pool";
-import { statementEvidenceMatchesItemSql } from "./website-visibility";
+import { websiteStatementSql } from "./website-visibility";
 
 export type TrendSource = "published_definition" | "prepared_method" | "discovered_question";
 
@@ -184,6 +185,11 @@ function trendSourceSql(alias: string, researchSources: boolean): string {
     : `${alias}.review_state <> 'rejected'`;
 }
 
+function trendReviewSql(column: string, researchSources: boolean): string {
+  const states = researchSources ? RESEARCH_REVIEW_STATES : PUBLIC_REVIEW_STATES;
+  return `${column} IN (${states.map((state) => `'${state}'`).join(", ")})`;
+}
+
 function forecastInputSql(researchSources = false): string {
   return `SELECT s.slug AS statement_slug, p.slug AS person_slug, p.display_name, s.statement_type, ${effectiveReviewStateSql("s")} AS review_state,
             s.event_time, f.question_key, f.question_text, f.definition_text, f.condition_text, f.forecast_kind,
@@ -202,11 +208,13 @@ function forecastInputSql(researchSources = false): string {
      JOIN cohort_memberships cm ON cm.person_id = p.id
      JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2
      LEFT JOIN forecasts f ON f.statement_id = s.id
+       AND ${trendReviewSql("f.review_state", researchSources)}
+       ${researchSources ? `AND ${trendReviewSql(effectiveReviewStateSql("s"), true)}` : ""}
      LEFT JOIN source_items si ON si.id = s.source_item_id
      JOIN sources src ON src.id = si.source_id
      LEFT JOIN statement_topics st ON st.statement_id = s.id
      LEFT JOIN topics t ON t.id = st.topic_id
-     WHERE ${trendSourceSql("src", researchSources)} AND ${statementEvidenceMatchesItemSql()}
+     WHERE ${trendSourceSql("src", researchSources)} AND ${websiteStatementSql()}
      GROUP BY s.id, p.slug, p.display_name, f.question_key, f.question_text, f.definition_text, f.condition_text,
               f.forecast_kind, f.value_type, f.value_numeric, f.value_min, f.value_max, f.unit, f.horizon_text, f.review_state,
               f.target_date_start, f.target_date_end, f.distribution_json, f.resolution_criteria, si.observed_at`;
@@ -294,7 +302,8 @@ async function loadInputs(pool: pg.Pool, cohort: CohortRef, researchSources = fa
      JOIN cohort_memberships cm ON cm.person_id = fs.person_id
      JOIN cohorts c ON c.id = cm.cohort_id AND c.slug = $1 AND c.version = $2
      WHERE ${trendSourceSql("fsrc", researchSources)} AND ${trendSourceSql("tsrc", researchSources)}
-       AND ${statementEvidenceMatchesItemSql("fs")} AND ${statementEvidenceMatchesItemSql("ts")}
+       AND ${websiteStatementSql("fs")} AND ${websiteStatementSql("ts")}
+       AND ${trendReviewSql("r.review_state", researchSources)}
      ORDER BY fs.slug, ts.slug, r.relationship_type`,
     [cohort.slug, cohort.version],
   );
@@ -567,7 +576,8 @@ async function computeVolume(method: MethodSpec, inputs: CohortInputs, pool: pg.
      JOIN topics t ON t.id = st.topic_id
      JOIN source_items si ON si.id = s.source_item_id
      JOIN sources src ON src.id = si.source_id
-     WHERE ${trendSourceSql("src", researchSources)} AND ${statementEvidenceMatchesItemSql()}`,
+     WHERE ${trendSourceSql("src", researchSources)} AND ${websiteStatementSql()}
+       ${researchSources ? `AND ${trendReviewSql(effectiveReviewStateSql("s"), true)}` : ""}`,
     [inputs.cohort.slug, inputs.cohort.version],
   );
   const volume = computeStatementVolume({

@@ -30,6 +30,8 @@ A statement also requires a source in an included review state, so every exporte
 
 Referenced evidence must belong to the statement's declared source item, because its locator and content hash accompany that evidence in the public representation. Cross-item evidence references are omitted, including when the foreign item is otherwise public; the stored rows remain available for internal review.
 
+Trend reads also remove hidden statement content and independently nonpublic forecast values/metadata before aggregation. Exclusions for a public statement can report a missing usable forecast but cannot preserve its hidden number, range, distribution, definition, or horizon. Unreviewed/rejected statements are absent from named exclusions and inspection rows. Redacted website-visible needs-review candidates may still contribute only to aggregate omission counts in research output. Removing hidden input rows can reduce exclusion counts without changing the cohort denominator or calculation method.
+
 People with status `active` or `historical` are included. A person with status `review` is included only when they are the speaker of a public statement, so that statement still has a person record. `in_current_cohort` says whether they belong to the loaded cohort.
 
 ## Endpoints
