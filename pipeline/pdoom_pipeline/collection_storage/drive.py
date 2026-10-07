@@ -54,7 +54,10 @@ class UrllibTransport:
 
     def send(self, method, url, headers, body):
         _google_url(url)
-        token = self._token()
+        try:
+            token = self._token()
+        except Exception:
+            raise StorageStop("secure credential provider unavailable") from None
         if not isinstance(token, str) or not token or "\n" in token or "\r" in token:
             raise StorageStop("secure credential provider returned invalid access token")
         req = request.Request(url, data=body, method=method,

@@ -11,6 +11,8 @@ import json
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
+from pdoom_pipeline.errors import CollectorFailure
+from pdoom_pipeline.ingest.writes import WriteBytes, atomic_bytes
 
 SCHEMA = "collection-state/1.0.0"
 MAX_ERRORS = 8
@@ -27,16 +29,19 @@ def iso(value: datetime) -> str:
 
 
 class CollectionState:
-    def __init__(self, path: Path):
+    def __init__(self, path: Path, write_bytes: WriteBytes | None = None):
         self.path = path
+        self.write_bytes = write_bytes
         self.sources: dict[str, dict[str, Any]] = {}
         self.items: dict[str, dict[str, Any]] = {}
         self.cursor: str | None = None
         self.schema_version = SCHEMA
+        self.bindings: dict[str, str] = {}
+        self.raw_bodies: dict[str, dict] = {}
 
     @classmethod
-    def load(cls, path: Path) -> "CollectionState":
-        state = cls(path)
+    def load(cls, path: Path, write_bytes: WriteBytes | None = None) -> "CollectionState":
+        state = cls(path, write_bytes)
         if not path.exists():
             return state
         payload = json.loads(path.read_text(encoding="utf-8"))
@@ -44,19 +49,26 @@ class CollectionState:
         state.sources = dict(payload.get("sources") or {})
         state.items = dict(payload.get("items") or {})
         state.cursor = payload.get("cursor")
+        state.bindings = dict(payload.get("bindings") or {})
+        state.raw_bodies = dict(payload.get("raw_bodies") or {})
         return state
 
     def save(self) -> None:
-        self.path.parent.mkdir(parents=True, exist_ok=True)
         payload = {
             "schema_version": SCHEMA,
             "cursor": self.cursor,
             "sources": self.sources,
             "items": self.items,
+            "bindings": self.bindings,
+            "raw_bodies": self.raw_bodies,
         }
-        temporary = self.path.with_suffix(self.path.suffix + ".tmp")
-        temporary.write_text(json.dumps(payload, sort_keys=True), encoding="utf-8")
-        temporary.replace(self.path)
+        atomic_bytes(self.path, json.dumps(payload, sort_keys=True).encode(), self.write_bytes)
+
+    def bind(self, identity: str, fingerprint: str) -> None:
+        previous = self.bindings.get(identity)
+        if previous is not None and previous != fingerprint:
+            raise CollectorFailure("blocked_by_policy", "source identity changed; explicit admission review is required")
+        self.bindings[identity] = fingerprint
 
     def source(self, key: str) -> dict[str, Any]:
         row = self.sources.get(key)
@@ -95,6 +107,8 @@ class CollectionState:
 
     def record_attempt(self, key: str, *, identity: str, url: str, now: str) -> None:
         row = self.source(key)
+        if row.get("last_attempt_at") and row["source_identity"] != identity:
+            raise CollectorFailure("blocked_by_policy", "fetch URL is already bound to another source identity")
         row["source_identity"] = identity
         row["canonical_url"] = url
         row["last_attempt_at"] = now
@@ -117,9 +131,9 @@ class CollectionState:
         row = self.source(key)
         row["last_outcome"] = outcome
         row["last_attempt_at"] = now
-        if cursor is not None:
-            row["cursor"] = cursor
         if success:
+            if cursor is not None:
+                row["cursor"] = cursor
             row["last_success_at"] = now
             row["consecutive_failures"] = 0
             row["retry_not_before"] = None
@@ -182,15 +196,27 @@ class CollectionState:
         digest = hashlib.sha256(url.encode("utf-8")).hexdigest()
         return self.path.parent / "bodies" / digest
 
-    def write_body(self, url: str, body: bytes) -> None:
+    def write_body(self, url: str, body: bytes, *, expires_at: str, rights_basis: str) -> None:
         path = self.body_path(url)
-        path.parent.mkdir(parents=True, exist_ok=True)
-        temporary = path.with_suffix(".tmp")
-        temporary.write_bytes(body)
-        temporary.replace(path)
+        atomic_bytes(path, body, self.write_bytes)
+        self.raw_bodies[url] = {"expires_at": expires_at, "rights_basis": rights_basis}
 
-    def read_body(self, url: str) -> bytes | None:
+    def read_body(self, url: str, *, now: str | None = None) -> bytes | None:
+        permission = self.raw_bodies.get(url)
+        if not permission or utc_now(permission["expires_at"]) <= utc_now(now):
+            return None
         path = self.body_path(url)
         if not path.exists():
             return None
         return path.read_bytes()
+
+    def purge_bodies(self, allowed: dict[str, dict]) -> None:
+        """Delete only this state's URL-hashed cache files, including legacy bodies."""
+        allowed_digests = {self.body_path(url).name for url in allowed}
+        directory = self.path.parent / "bodies"
+        if directory.exists():
+            for path in directory.iterdir():
+                if path.is_file() and len(path.name) == 64 and all(char in "0123456789abcdef" for char in path.name):
+                    if path.name not in allowed_digests:
+                        path.unlink()
+        self.raw_bodies = allowed

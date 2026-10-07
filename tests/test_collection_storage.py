@@ -86,6 +86,8 @@ class FakeDrive:
         self.offsets.append(offset)
         row["data"] += data
         if len(row["data"]) == total:
+            assert row["id"] not in self.remote
+            self.quota["usage"] = str(int(self.quota["usage"]) + total)
             self.remote[row["id"]] = private_meta(row["id"], parents=[row["parent"]], size=str(total),
                 appProperties=row["meta"]["appProperties"],
                 md5Checksum="bad" if self.corrupt else hashlib.md5(row["data"], usedforsecurity=False).hexdigest(),
@@ -413,8 +415,12 @@ with s.BoundedScratch(min_free_bytes=0) as lease:
     lease.atomic_json('state/crash-fixture.json', {{'complete':True}})
     os._exit(17)
 """
+    import os
+    environment = os.environ.copy()
+    inherited = [str(Path(value).resolve()) for value in environment.get("PYTHONPATH", "").split(os.pathsep) if value]
+    environment["PYTHONPATH"] = os.pathsep.join([str(Path(__file__).resolve().parents[1] / "pipeline"), *inherited])
     result = subprocess.run([sys.executable, '-s', '-B', '-X', 'utf8', '-c', code],
-                            cwd=root.parent, capture_output=True, timeout=30)
+                            cwd=root.parent, env=environment, capture_output=True, timeout=30)
     assert result.returncode == 17, result.stderr.decode(errors='replace')
     with scratch() as s:
         assert s.read_json('state/crash-fixture.json') == {'complete': True}
@@ -541,3 +547,102 @@ def test_pilot_keeps_truthful_partial_status_and_never_imports(root):
         run_metadata_pilot(scratch=s,drive=d,pin=PIN,seed_dir=root,people=[],
                     registry_sources=registry(),refresh=fake_refresh,released=True)
         assert len(called)==1
+
+
+@pytest.mark.parametrize("name", ["runner/CON", "runner/com1.txt", "runner/LPT²", "runner/file.", "runner/file ", "runner/*.bin"])
+def test_gateway_rejects_windows_device_and_alias_names(root, name):
+    with scratch() as s:
+        with pytest.raises(StorageStop, match="Windows scratch filename"):
+            s.path(name)
+
+
+def test_credential_provider_failure_is_redacted_before_network():
+    def unavailable():
+        raise RuntimeError("private credential text must never escape")
+    transport=UrllibTransport(unavailable,granted_scopes=frozenset({DRIVE_FILE_SCOPE}))
+    with pytest.raises(StorageStop) as exc:
+        transport.send("GET","https://www.googleapis.com/drive/v3/about",{},None)
+    assert str(exc.value)=="secure credential provider unavailable"
+
+
+@pytest.mark.parametrize("change", [{"collection_policy":{"admitted":False}},
+                                    {"collection_policy":{"admitted":True,"raw_retention":{"license":"CC0"}}},
+                                    {"allowed_fetch_origins":["https://unreviewed.example"]}])
+def test_pilot_does_not_override_new_structured_rights_or_expand_origins(change):
+    from pdoom_pipeline.collection_storage.pilot import admitted_sources
+    rows=registry()
+    rows[0].update(change)
+    with pytest.raises(StorageStop, match="new reviewed pin"):
+        admitted_sources(rows)
+
+
+@pytest.mark.parametrize("recovery", ["resume", "submit"])
+def test_committed_cleanup_and_replay_need_zero_new_drive_quota(root, monkeypatch, recovery):
+    d = FakeDrive()
+    data = b"x" * (2 * CHUNK_BYTES)
+    with scratch() as s:
+        sup = Supervisor(s, d, PIN)
+        monkeypatch.setattr(sup, "_cleanup", lambda p: (_ for _ in ()).throw(StorageStop("crash after commit")))
+        with pytest.raises(StorageStop, match="crash after commit"):
+            sup.submit([artifact(data)], cursor_after={"n": 4})
+        committed = s.read_json(CHECKPOINT)
+        assert int(d.quota["usage"]) > 408200000000 + len(data)
+        # The upload fills the account, but committed cleanup is still possible.
+        d.quota["limit"] = d.quota["usage"]
+    with scratch() as s:
+        sup = Supervisor(s, d, PIN)
+        result = sup.resume() if recovery == "resume" else sup.submit([artifact(data)], cursor_after={"n": 4})
+        assert result == committed
+        assert not s.path(PENDING).exists()
+        assert len(d.begun) == 2
+        assert sup.submit([artifact(data)], cursor_after={"n": 4}) == committed
+
+
+def test_manifest_resume_reserves_only_uncommitted_bytes_after_quota_usage_increases(root):
+    d = FakeDrive()
+    d.fail_manifest = True
+    data = b"x" * (2 * CHUNK_BYTES)
+    with scratch() as s:
+        sup = Supervisor(s, d, PIN)
+        with pytest.raises(StorageStop, match="manifest interruption"):
+            sup.submit([artifact(data)], cursor_after={})
+        pending = s.read_json(PENDING)
+        remaining = pending["manifest"]["size"]
+        assert int(d.quota["usage"]) == 408200000000 + len(data)
+        # Only the manifest can still consume quota; the data file is verified.
+        d.quota["limit"] = str(int(d.quota["usage"]) + remaining)
+        d.fail_manifest = False
+        sup.resume()
+        assert int(d.quota["usage"]) == int(d.quota["limit"])
+        assert not s.path(PENDING).exists()
+        assert d.begun == ["id1", "id2"]
+
+
+def test_lost_completed_manifest_response_can_commit_at_full_drive_quota(root):
+    d = FakeDrive()
+    original = d.chunk
+    def lose_manifest(session, offset, data, total):
+        if d.sessions[session]["meta"]["name"].startswith("manifest-"):
+            d.lose_final = True
+        return original(session, offset, data, total)
+    d.chunk = lose_manifest
+    with scratch() as s:
+        with pytest.raises(StorageStop, match="response lost"):
+            Supervisor(s, d, PIN).submit([artifact()], cursor_after={})
+        assert not s.path(CHECKPOINT).exists()
+        d.quota["limit"] = d.quota["usage"]
+        d.chunk = original
+        Supervisor(s, d, PIN).resume()
+        assert s.read_json(CHECKPOINT)
+        assert d.begun == ["id1", "id2"]
+
+
+def test_manifest_bytes_are_reserved_before_staging(root):
+    d = FakeDrive()
+    d.quota = {"limit": "10", "usage": "0"}
+    with scratch() as s:
+        with pytest.raises(StorageStop, match="quota"):
+            Supervisor(s, d, PIN).submit([artifact()], cursor_after={})
+        assert not s.path(PENDING).exists()
+        assert not list(s.path("staging").iterdir())
+        assert d.allocated == 0

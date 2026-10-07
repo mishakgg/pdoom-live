@@ -89,7 +89,8 @@ class Supervisor:
             limit, usage = int(quota["limit"]), int(quota["usage"])
         except (KeyError, TypeError, ValueError):
             raise StorageStop("Drive quota is unavailable; claimed capacity is not assumed") from None
-        if limit <= 0 or usage < 0 or limit - usage < bytes_needed + 1024 * 1024:
+        if (limit <= 0 or usage < 0 or bytes_needed < 0
+                or (bytes_needed > 0 and limit - usage < bytes_needed)):
             raise StorageStop("insufficient verified Drive quota")
         root = self.drive.get(self.pin.folder_id)
         if (not root or root.get("id") != self.pin.folder_id or root.get("trashed") is not False
@@ -118,7 +119,7 @@ class Supervisor:
         if len(encoded) > 128 * 1024:
             raise StorageStop("batch metadata exceeds bound")
         batch_id = hashlib.sha256(encoded).hexdigest()
-        self.preflight(sum(a["size"] for a in descriptors))
+        self.preflight(0)  # Identity/privacy validation also applies to idempotent cleanup.
         checkpoint = self.scratch.read_json(CHECKPOINT)
         if checkpoint and checkpoint.get("batch_id") == batch_id:
             if self.scratch.read_json(PENDING):
@@ -127,6 +128,8 @@ class Supervisor:
         pending = self.scratch.read_json(PENDING)
         if pending and pending.get("batch_id") != batch_id:
             raise StorageStop("finish pending batch before accepting another")
+        if pending and pending["phase"] == "uploading":
+            return self.resume()
         if not pending:
             clean = cleanup_inputs or []
             for relative in clean:
@@ -138,7 +141,9 @@ class Supervisor:
             for i, descriptor in enumerate(descriptors):
                 pending["entries"].append({**descriptor, "local": f"staging/{batch_id}/{i}.bin",
                                             "key": f"{batch_id}-{i}", "staged": False})
-            self.scratch.atomic_json(PENDING, pending)
+        # Reserve uncommitted files plus the bounded manifest before staging.
+        self.preflight(self._remaining_upload_bytes(pending, checkpoint))
+        self.scratch.atomic_json(PENDING, pending)
         for artifact, entry in zip(artifacts, pending["entries"]):
             if entry["staged"]:
                 self._local_verify(entry)
@@ -181,7 +186,10 @@ class Supervisor:
     def _upload(self, entry: dict, pending: dict) -> None:
         self._local_verify(entry)
         if not entry.get("remote_id"):
-            entry["remote_id"] = self.drive.allocate_id()
+            remote_id = self.drive.allocate_id()
+            if not re.fullmatch(r"[A-Za-z0-9_-]{1,200}", remote_id):
+                raise StorageStop("invalid generated remote file ID")
+            entry["remote_id"] = remote_id
             self.scratch.atomic_json(PENDING, pending)  # Durable ID BEFORE remote mutation.
         remote = self.drive.get(entry["remote_id"])
         if remote:
@@ -219,26 +227,54 @@ class Supervisor:
             raise StorageStop("completed upload is not available for readback")
         self._remote_verify(entry, remote)
 
+    @staticmethod
+    def _manifest_bytes(pending: dict, checkpoint: dict | None, *, reserve: bool = False) -> bytes:
+        files = []
+        for entry in pending["entries"]:
+            row = {k: entry[k] for k in ("name", "size", "sha256", "retention")}
+            # Generated IDs are bounded to 200 ASCII bytes. Before allocation this
+            # gives a conservative manifest reservation, without arbitrary headroom.
+            row["md5"] = entry.get("md5", "0" * 32) if reserve else entry["md5"]
+            row["remote_id"] = entry.get("remote_id", "x" * 200) if reserve else entry["remote_id"]
+            files.append(row)
+        receipt = {"schema_version": "1", "batch_id": pending["batch_id"], "pin": pending["pin"],
+                   "cursor_after": pending["cursor_after"], "previous_manifest_id":
+                   (checkpoint or {}).get("manifest_id"), "files": files}
+        return json.dumps(receipt, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
+
+    def _remaining_upload_bytes(self, pending: dict, checkpoint: dict | None) -> int:
+        remaining = 0
+        for entry in pending["entries"] + ([pending["manifest"]] if pending.get("manifest") else []):
+            if entry.get("staged", True):
+                self._local_verify(entry)
+            remote = self.drive.get(entry["remote_id"]) if entry.get("remote_id") else None
+            if remote:
+                self._remote_verify(entry, remote)
+            else:
+                # Reserve the full incomplete object: Drive quota may only account
+                # for its bytes on completion, regardless of the resumable offset.
+                remaining += entry["size"]
+        if not pending.get("manifest"):
+            remaining += len(self._manifest_bytes(pending, checkpoint, reserve=True))
+        return remaining
+
     def resume(self) -> dict:
         pending = self.scratch.read_json(PENDING)
         if not pending:
             return self.scratch.read_json(CHECKPOINT) or {}
-        self.preflight(sum(e["size"] for e in pending["entries"]))
+        self.preflight(0)
         checkpoint = self.scratch.read_json(CHECKPOINT)
         if checkpoint and checkpoint.get("batch_id") == pending["batch_id"]:
+            # No remote mutation or upload capacity is needed after commit.
             self._cleanup(pending)
             return checkpoint
         if pending["phase"] == "preparing":
             raise StorageStop("incomplete preparation; restage the same admitted batch")
+        self.preflight(self._remaining_upload_bytes(pending, checkpoint))
         for entry in pending["entries"]:
             self._upload(entry, pending)
         if not pending.get("manifest"):
-            receipt = {"schema_version": "1", "batch_id": pending["batch_id"], "pin": pending["pin"],
-                       "cursor_after": pending["cursor_after"], "previous_manifest_id":
-                       (checkpoint or {}).get("manifest_id"), "files": [
-                           {k: e[k] for k in ("name", "size", "sha256", "md5", "retention", "remote_id")}
-                           for e in pending["entries"]]}
-            raw = json.dumps(receipt, sort_keys=True, separators=(",", ":")).encode()
+            raw = self._manifest_bytes(pending, checkpoint)
             relative = f"staging/{pending['batch_id']}/manifest.json"
             digest = self.scratch.atomic_bytes(relative, [raw], max_bytes=len(raw), metadata=True)
             pending["manifest"] = {"name": f"manifest-{pending['batch_id']}.json", "local": relative,

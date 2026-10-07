@@ -27,6 +27,8 @@ def admitted_sources(registry_sources: list[dict]) -> list[dict]:
         row = by_id.get(pin["id"])
         if not row or {k: row.get(k) for k in PIN_KEYS} != pin:
             raise StorageStop("pilot identity, URL, method or rights policy differs from reviewed pin")
+        if row.get("collection_policy") is not None or row.get("allowed_fetch_origins") not in (None, []):
+            raise StorageStop("pilot structured rights/origin policy requires a new reviewed pin")
         selected.append({**row, "collection_policy": {"admitted": True, "rights_basis": row["rights_notes"],
                                                         "evidence": False, "extraction": False}})
     if len(selected) != 8:
@@ -143,8 +145,12 @@ def run_metadata_pilot(*, scratch: BoundedScratch, drive, pin: DrivePin, seed_di
     if result.get("status") not in {"succeeded", "partial", "failed", "interrupted", "skipped"}:
         raise StorageStop("runner returned an unknown outcome")
     # Even a failed run may have useful bounded diagnostics; never relabel it success.
+    publication = result.get("publication", {"imported": False, "public_revocations_applied": False})
+    if publication.get("imported") is not False or publication.get("public_revocations_applied") is not False:
+        raise StorageStop("pilot runner crossed the private publication boundary")
     outcome = {"kind": "metadata-pilot", "status": result["status"], "counts": result["counts"],
-               "cursor": result.get("cursor"), "public_import": False}
+               "cursor": result.get("cursor"), "public_import": False, "publication": publication,
+               "policy_decisions": result.get("policy_decisions", [])}
     sink(scratch.path("runner/pilot-outcome.json"), json.dumps(outcome, sort_keys=True).encode())
     artifacts, clean = _snapshot(scratch, sources)
     return supervisor.submit(artifacts, cursor_after=outcome, cleanup_inputs=clean)

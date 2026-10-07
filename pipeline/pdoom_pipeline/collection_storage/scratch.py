@@ -105,6 +105,13 @@ class BoundedScratch(AbstractContextManager):
         p = Path(relative)
         if p.is_absolute() or p.drive or ".." in p.parts or ":" in relative or "\\" in relative:
             raise StorageStop("invalid relative scratch path")
+        for part in p.parts:
+            base = part.split(".")[0].upper()
+            device = base in {"CON", "PRN", "AUX", "NUL", "CONIN$", "CONOUT$"}
+            numbered = (base.startswith(("COM", "LPT")) and len(base) == 4
+                        and base[-1] in "123456789¹²³")
+            if device or numbered or part.endswith((" ", ".")) or any(c in part for c in '<>|?*"'):
+                raise StorageStop("invalid Windows scratch filename")
         target = self.root / p
         _plain(target)
         if not target.resolve().is_relative_to(self.root.resolve()):
