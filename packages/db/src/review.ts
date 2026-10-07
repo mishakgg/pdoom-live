@@ -242,6 +242,10 @@ export async function applyReviewDecision(pool: pg.Pool, raw: ReviewCommand): Pr
         WHERE statement_id = s.id ORDER BY reviewed_at DESC, decision_key DESC LIMIT 1
       ) d ON true WHERE s.id = $1
     `, [row.id]);
+    const machineClaim = claim.rows[0]?.machine_claim;
+    if (!machineClaim || typeof machineClaim !== "object") {
+      throw new Error("statement claim is unavailable for review");
+    }
     if (command.corrections.normalized_text || command.corrections.statement_type) {
       await client.query(
         `UPDATE statements SET normalized_text = $2, statement_type = $3 WHERE id = $1`,
@@ -361,7 +365,7 @@ export async function applyReviewDecision(pool: pg.Pool, raw: ReviewCommand): Pr
         JSON.stringify(command.corrections),
         JSON.stringify(snapshot(row)),
         command.relationship ? JSON.stringify(command.relationship) : null,
-        JSON.stringify(claim.rows[0].machine_claim),
+        JSON.stringify(machineClaim),
       ],
     );
     await client.query("COMMIT");
