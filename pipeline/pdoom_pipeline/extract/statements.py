@@ -12,33 +12,35 @@ import re
 from pdoom_pipeline.belief.taxonomy import KEY_TOPIC, QUESTION_KEYS
 from pdoom_pipeline.contracts import REVIEW_STATES
 
-EXTRACTOR_VERSION = "rule-extract-0.4.0"
+EXTRACTOR_VERSION = "rule-extract-0.4.1"
 SPEAKER_GAP = "<<<SPEAKER_GAP>>>"
 # Statement evidence is an excerpt. A longer source page is not stored whole.
 # infer_topic_signal keeps its own 1500-character cap.
 EVIDENCE_EXCERPT_LIMIT = 1200
+MAX_PROBABILITY_EXPRESSIONS = 6
 
 PROBABILITY_CUE = re.compile(
     r"\b(chance|probability|prob\.?|odds|credence|p\s*\(\s*doom\s*\)|likelihood)\b",
     re.I,
 )
-_PERCENT_NUMBER = r"\d{1,3}(?:\.\d+)?"
+_PERCENT_NUMBER = r"(?:\d{1,3}(?:\.\d+)?|\.\d+)"
 _PERCENT_UNIT = r"(?:%|percent\b)"
+_NUMBER_START = r"(?<![\w.,/+−-])"
 # The unit may be "%" or the word "percent". "10 and 20 percent" is one range.
 # A bare 10 is not a probability, and the word does not mean the integer 10.
 PERCENT = re.compile(
-    rf"(?P<min>{_PERCENT_NUMBER})\s*(?:{_PERCENT_UNIT})?\s*(?:–|-|to|and)\s*(?P<max>{_PERCENT_NUMBER})\s*{_PERCENT_UNIT}"
-    rf"|(?P<single>{_PERCENT_NUMBER})\s*{_PERCENT_UNIT}",
+    rf"{_NUMBER_START}(?P<min>{_PERCENT_NUMBER})\s*(?:{_PERCENT_UNIT})?\s*(?:–|-|to|and)\s*(?P<max>{_PERCENT_NUMBER})\s*{_PERCENT_UNIT}(?![\w%])"
+    rf"|{_NUMBER_START}(?P<single>{_PERCENT_NUMBER})\s*{_PERCENT_UNIT}(?![\w%])",
     re.I,
 )
 # A leading-dot or zero-point decimal is already on the 0–1 scale. "0.10" is not 10%.
 _DECIMAL_NUMBER = r"0?\.\d+"
 DECIMAL_PROBABILITY = re.compile(
-    rf"(?<![\d.])(?P<min>{_DECIMAL_NUMBER})(?!\d)\s*(?:–|-|to|and)\s*(?<![\d.])(?P<max>{_DECIMAL_NUMBER})(?![\d%])"
-    rf"|(?<![\d.])(?P<single>{_DECIMAL_NUMBER})(?![\d%])"
+    rf"{_NUMBER_START}(?P<min>{_DECIMAL_NUMBER})(?![\w.%])\s*(?:–|-|to|and)\s*(?P<max>{_DECIMAL_NUMBER})(?![\w.%])"
+    rf"|{_NUMBER_START}(?P<single>{_DECIMAL_NUMBER})(?![\w.%])"
 )
-ONE_IN = re.compile(r"\b(?P<num>\d{1,4})\s+in\s+(?P<den>\d{1,6})\b", re.I)
-FRACTION_CHANCE = re.compile(r"~?\s*(?P<num>\d{1,2})\s*/\s*(?P<den>\d{1,2})\s+chance\b", re.I)
+ONE_IN = re.compile(rf"{_NUMBER_START}(?P<num>\d{{1,4}})\s+in\s+(?P<den>\d{{1,6}})(?![\w%]|[.,]\d)", re.I)
+FRACTION_CHANCE = re.compile(rf"{_NUMBER_START}~?\s*(?P<num>\d{{1,2}})\s*/\s*(?P<den>\d{{1,2}})\s+chance\b", re.I)
 _YEAR = r"(?:20|21)\d{2}"
 _NUMWORD = r"(?:\d{1,3}|one|two|three|four|five|six|seven|eight|nine|ten|fifteen|twenty|thirty|forty|fifty)"
 WORD_VALUE = {
@@ -231,6 +233,10 @@ def _explicit(sentence: str, person_id: str | None, *, start: int, end: int, con
     probabilities = _probabilities(sentence, person_id, start, end, context)
     if probabilities:
         return probabilities
+    if _probability_context(sentence) and re.search(r"\d", sentence):
+        # Failed probability parsing is abstention, not an arrival-year forecast
+        # inferred from a remaining year in the same sentence.
+        return []
     timeline = _timeline(sentence, person_id, start, end, context)
     if timeline:
         return [timeline]
@@ -244,34 +250,41 @@ def _explicit(sentence: str, person_id: str | None, *, start: int, end: int, con
 
 
 def _probabilities(sentence: str, person_id: str | None, start: int, end: int, context: str) -> list[dict]:
-    if not PROBABILITY_CUE.search(sentence) and "p(doom)" not in sentence.lower() and not _risk_percent(sentence):
+    if not _probability_context(sentence) or _ambiguous_probability_outcome(sentence):
+        return []
+    matches = []
+    occupied: list[tuple[int, int]] = []
+    for pattern in (PERCENT, DECIMAL_PROBABILITY, FRACTION_CHANCE, ONE_IN):
+        for match in pattern.finditer(sentence):
+            if _span_overlaps(match.start(), match.end(), occupied):
+                continue
+            occupied.append((match.start(), match.end()))
+            matches.append(match)
+            if len(matches) > MAX_PROBABILITY_EXPRESSIONS:
+                # Do not collect unbounded match lists or publish only a prefix
+                # of a dense numeric passage whose binding is unsupported.
+                return []
+    matches.sort(key=lambda match: match.start())
+    if matches and not _same_outcome_continuations(sentence, matches):
         return []
     found = []
-    occupied: list[tuple[int, int]] = []
-    for match in PERCENT.finditer(sentence):
-        occupied.append((match.start(), match.end()))
-        built = _percent_statement(sentence, match, person_id, start, end, context)
-        if built:
-            found.append(built)
-        if len(found) >= 6:
-            return found
-    for match in DECIMAL_PROBABILITY.finditer(sentence):
-        if _span_overlaps(match.start(), match.end(), occupied):
+    for match in matches:
+        if _unsupported_probability_prefix(sentence, match.start()):
             continue
-        occupied.append((match.start(), match.end()))
-        built = _decimal_statement(sentence, match, person_id, start, end, context)
-        if built:
-            found.append(built)
-        if len(found) >= 6:
-            return found
-    for match in list(FRACTION_CHANCE.finditer(sentence)) + list(ONE_IN.finditer(sentence)):
-        if match.re is FRACTION_CHANCE:
+        if match.re not in (PERCENT, DECIMAL_PROBABILITY) or match.group("single"):
+            if _dangling_range_endpoint(sentence, match.start()) or _dangling_range_start(sentence, match.end()):
+                continue
+        if match.re is PERCENT:
+            built = _percent_statement(sentence, match, person_id, start, end, context)
+        elif match.re is DECIMAL_PROBABILITY:
+            built = _decimal_statement(sentence, match, person_id, start, end, context)
+        elif match.re is FRACTION_CHANCE:
             built = _fraction_statement(sentence, match, person_id, start, end, context)
         else:
             built = _one_in_statement(sentence, match, person_id, start, end, context)
         if built:
             found.append(built)
-        if len(found) >= 6:
+        if len(found) >= MAX_PROBABILITY_EXPRESSIONS:
             break
     return found
 
@@ -292,6 +305,10 @@ def _percent_statement(sentence, match, person_id, start, end, context) -> dict 
             return None
         value_min = value_max = None
         value_text = match.group(0).strip()
+        # Canonical value_text accepts 0.5%, not .5%; evidence retains the exact
+        # source spelling and character offsets rather than adding a source zero.
+        if value_text.startswith("."):
+            value_text = "0" + value_text
         value_type = "point"
         span = value_text
     else:
@@ -396,11 +413,14 @@ def _fraction_statement(sentence, match, person_id, start, end, context) -> dict
 
 
 def _probability_record(sentence, person_id, *, start, end, context, match_at, span, value, value_min, value_max, value_text, value_type, approximate) -> dict | None:
-    question_key, definition = _risk_question(sentence)
-    arrival = _arrival_key(sentence)
+    outcome_text = _probability_outcome_text(sentence)
+    question_key, definition = _risk_question(outcome_text)
+    if question_key == "extinction_unconditional" and _risk_question(sentence)[0] == "extinction_conditional_agi":
+        question_key = "extinction_conditional_agi"
+    arrival = _arrival_key(outcome_text)
     if question_key is None and arrival and _horizon_near(sentence, match_at):
         question_key = arrival
-        definition = _arrival_definition(sentence)
+        definition = _arrival_definition(outcome_text)
     if question_key is None:
         return None
     horizon = _horizon_near(sentence, match_at) or _horizon(sentence)
@@ -441,7 +461,123 @@ def _probability_record(sentence, person_id, *, start, end, context, match_at, s
 
 
 def _risk_percent(sentence: str) -> bool:
-    return bool(re.search(r"\brisk\b", sentence, re.I) and PERCENT.search(sentence))
+    return bool(re.search(r"\brisk\b", sentence, re.I) and re.search(r"%|\bpercent\b", sentence, re.I))
+
+
+def _probability_context(sentence: str) -> bool:
+    return bool(PROBABILITY_CUE.search(sentence) or "p(doom)" in sentence.lower() or _risk_percent(sentence))
+
+
+def _signed_token(sentence: str, start: int) -> bool:
+    prefix = sentence[:start]
+    return prefix.rstrip().endswith(("-", "−", "+")) or bool(re.search(r"\b(?:plus|minus|negative|positive)\s*$", prefix, re.I))
+
+
+def _unsupported_probability_prefix(sentence: str, start: int) -> bool:
+    # Also used by adjacent-sentence extraction, which must not salvage a signed
+    # or grouped token that the single-sentence probability path rejected.
+    return _signed_token(sentence, start) or bool(re.search(r"\d[\s']+$", sentence[:start]))
+
+
+def _dangling_range_endpoint(sentence: str, start: int) -> bool:
+    prefix = sentence[:start]
+    earlier = re.search(r"(?P<value>[\d.,]+)\s*(?:to|and|[–-])\s*$", prefix, re.I)
+    if not earlier:
+        return False
+    # A year that cannot be a percent may precede an independent next estimate.
+    return not (
+        re.fullmatch(_YEAR, earlier.group("value"))
+        and re.search(r"\b(?:by|before|in|around)\s*$", prefix[:earlier.start()], re.I)
+        and re.search(r"\band\s*$", prefix, re.I)
+    )
+
+
+def _dangling_range_start(sentence: str, end: int) -> bool:
+    # A valid-looking left point must not survive when the range parser cannot
+    # consume the right endpoint (signed, grouped, out of range, or wrong scale).
+    return bool(re.match(r"\s*(?:to|and|[–-])\s*[+−-]?\s*(?:\d|\.\d)", sentence[end:], re.I))
+
+
+def _probability_outcome_text(sentence: str) -> str:
+    # Named entities in an explicit condition are not a second forecast outcome.
+    # Keep the original sentence for evidence, condition and horizon extraction.
+    text = re.sub(r"\b(?:if|unless|given|assuming|conditional on)\b[^,;.!?]{0,180}", " ", sentence, flags=re.I)
+    # A named cause (AGI, or a takeover causing deaths) is not a second event
+    # probability. The cause remains verbatim in evidence and question text.
+    text = re.sub(r"\b(?:from|caused by|due to|because of|of building)\s+(?:(?:an?|the|advanced|powerful|ai)\s+)*(?:agi|asi|superintelligence|takeover|catastrophe)\b", " ", text, flags=re.I)
+    text = re.sub(r"\b(?:agi|asi|superintelligence)(?=-caused\b|\s+(?:will|could|would|may)\s+(?:cause|lead to|result in)\b)", " ", text, flags=re.I)
+    return text
+
+
+def _ambiguous_probability_outcome(sentence: str) -> bool:
+    text = _probability_outcome_text(sentence)
+    if re.search(r"\b(?:no|not|never|without|avoid\w*|prevent\w*|avert\w*|escape\w*|absence|unlike|versus)\b|n't\b|\bfail\w*\s+to\b|\b(?:rather than|instead of|compared with|compared to)\b", text, re.I):
+        return True
+    families = (
+        r"\bextinction\b",
+        r"\bcatastroph(?:ic|e)\b",
+        r"\bdisempower(?:ed|ment)\b|\bloss of control\b",
+        r"\b(?:most humans die|humans die|kill everyone)\b",
+        r"\btakeover\b",
+        r"\bhuman[-\s]level\b",
+        r"\btransformative\b",
+        r"\b(?:asi|superintelligence)\b",
+        r"\bagi\b|\bartificial general intelligence\b",
+        r"\b(?:jobs?|workers?|employment|unemployment)\b",
+        r"\b(?:tasks?|coding|software engineering)\b",
+        r"\b(?:productivity|gdp|wages?|economic growth)\b",
+    )
+    outcomes = sum(bool(re.search(pattern, text, re.I)) for pattern in families)
+    return outcomes > 1
+
+
+def _same_outcome_continuations(sentence: str, matches: list[re.Match]) -> bool:
+    """Every numeric clause must name the event or use a bounded continuation.
+
+    Check the prefix before the first number even for a single expression.
+    Unknown nouns (rain, a benchmark score, etc.) must not borrow an extinction
+    or arrival question from another clause in the sentence.
+    """
+    continuation_words = {
+        "a", "an", "the", "and", "or", "but", "of", "for", "that", "this", "it",
+        "chance", "probability", "credence", "likelihood", "odds", "percent",
+        "i", "we", "my", "we'll", "i'll", "will", "would", "could", "may", "might",
+        "estimate", "assign", "expect", "think", "believe", "see", "happen", "occur", "arrive",
+        "there", "give", "put", "risk", "personal", "currently",
+        "between", "greater", "lower", "upper", "high", "low", "disturbingly",
+        "live", "human", "species", "permanently", "involuntarily",
+        "by", "before", "within", "in", "at", "end", "over", "next", "year", "years",
+        "decade", "decades", "century", "centuries", "roughly", "about", "around",
+        "more", "less", "than", "least", "most", "is", "to",
+        "above", "from", "now", "posting", "report",
+    }
+    prefix = _probability_outcome_text(sentence[:matches[0].start()])
+    introductions = list(re.finditer(r"\b(?:chance|probability|credence|likelihood|odds|risk)\b", prefix, re.I))
+    regions = []
+    if introductions:
+        # Inspect the event phrase after the latest probability introducer. A
+        # harmless preamble before it need not belong to the continuation grammar.
+        regions.append(prefix[introductions[-1].start():])
+    else:
+        stop = matches[1].start() if len(matches) > 1 else len(sentence)
+        following = re.split(r"[;,]|\b(?:and|or|but)\b", sentence[matches[0].end():stop], flags=re.I)[0]
+        explicitly_bound_after = _probability_context(following) and (_risk_question(following)[0] or _arrival_key(following))
+        if not explicitly_bound_after:
+            regions.append(prefix)
+    for index, match in enumerate(matches):
+        stop = matches[index + 1].start() if index + 1 < len(matches) else len(sentence)
+        regions.append(sentence[match.end():stop])
+    for region in regions:
+        tail = _probability_outcome_text(region)
+        # Preserve the existing attributed-byline form without treating the
+        # speaker's name as an unsupported event noun.
+        tail = re.sub(r"^[A-Z][A-Za-z'-]+(?:\s+[A-Z][A-Za-z'-]+){1,3}\s+(?:writes|wrote)\s+that\s+", "", tail)
+        for clause in re.split(r"[;,]|\b(?:and|or|but)\b", tail, flags=re.I):
+            if _risk_question(clause)[0] or _arrival_key(clause):
+                continue
+            if set(re.findall(r"[a-z]+(?:'[a-z]+)?", clause.lower())) - continuation_words:
+                return False
+    return True
 
 
 def _timeline(sentence: str, person_id: str | None, start: int, end: int, context: str) -> dict | None:
@@ -1021,7 +1157,7 @@ def _anaphora_windows(sentences: list[tuple[str, int, int]], covered: set[int], 
             definition = (row.get("definition_text") or "").lower()
             if definition and definition not in nxt.lower():
                 continue
-            if row.get("value_text") and row["value_text"] not in sentence:
+            if row.get("value_text") and not _probability_spelling_in_source(row["value_text"], sentence):
                 continue
             row["evidence_text"] = combined
             row["normalized_text"] = " ".join(combined.split())[:600]
@@ -1051,6 +1187,12 @@ def _for_that_answers(sentences: list[tuple[str, int, int]], covered: set[int], 
         match = PERCENT.search(sentence)
         if not match or not match.group("single"):
             continue
+        if _unsupported_probability_prefix(sentence, match.start()) or _dangling_range_endpoint(sentence, match.start()) or _dangling_range_start(sentence, match.end()):
+            continue
+        if len(list(PERCENT.finditer(sentence))) != 1:
+            continue
+        if not _same_outcome_continuations(sentence, [match]):
+            continue
         previous, prev_start, _prev_end = sentences[index - 1]
         question_key, definition = _risk_question(previous)
         if not question_key or not definition or definition.lower() not in previous.lower():
@@ -1063,7 +1205,11 @@ def _for_that_answers(sentences: list[tuple[str, int, int]], covered: set[int], 
         value_text = f"{_trim_number(match.group('single'))}%"
         if value_text not in sentence:
             continue
+        if value_text.startswith("."):
+            value_text = "0" + value_text
         combined = f"{previous} {sentence}"
+        if _ambiguous_probability_outcome(combined):
+            continue
         row = _base(
             sentence,
             person_id,
@@ -1110,6 +1256,11 @@ def _list_continuations(sentences: list[tuple[str, int, int]], covered: set[int]
         match = LIST_CONTINUATION.match(sentence)
         if not match or _risk_question(sentence)[0] or _arrival_key(sentence) or _attributes_to_someone_else(sentence):
             continue
+        if _unsupported_probability_prefix(sentence, match.start("num")):
+            continue
+        percent_match = PERCENT.search(sentence)
+        if not percent_match or not _same_outcome_continuations(sentence, [percent_match]):
+            continue
         previous, prev_start, _prev_end = sentences[index - 1]
         prior = PRIOR_PROBABILITY.search(previous)
         if not prior:
@@ -1141,6 +1292,8 @@ def _list_continuations(sentences: list[tuple[str, int, int]], covered: set[int]
         if value_text not in sentence:
             continue
         combined = f"{previous} {sentence}"
+        if _ambiguous_probability_outcome(combined):
+            continue
         row = _base(
             sentence,
             person_id,
@@ -1297,6 +1450,10 @@ def _trim_number(raw: str) -> str:
     return raw
 
 
+def _probability_spelling_in_source(value: str, text: str) -> bool:
+    return value in text or (value.startswith("0.") and value[1:] in text)
+
+
 def _horizon(sentence: str, *, relative: bool = True) -> str | None:
     match = HORIZON_YEAR.search(sentence)
     if match:
@@ -1352,9 +1509,9 @@ def _stance_near_topic(sentence: str) -> bool:
 
 
 def _sentences_with_spans(text: str) -> list[tuple[str, int, int]]:
-    # A dot between digits is a decimal, not a sentence boundary. "0.10" stays one token.
+    # Leading-dot decimals are numeric tokens too: ".5%" must not become "5%".
     spans = []
-    for match in re.finditer(r"(?:\d+\.\d+|[^.!?\n])+(?:[.!?]+|(?=\n)|$)", text):
+    for match in re.finditer(r"(?:\d*\.\d+|[^.!?\n])+(?:[.!?]+|(?=\n)|$)", text):
         sentence = " ".join(match.group(0).split())
         if sentence:
             spans.append((sentence, match.start(), match.end()))

@@ -9,6 +9,8 @@
     "multiple_timestamps": 0,
     "timezone_offset": 0,
     "numeric_range": 0,
+    "numeric_token": 0,
+    "outcome_binding": 0,
     "condition": 0,
     "relative_horizon": 0,
     "duplicate_passage": 0,
@@ -16,7 +18,7 @@
     "robots_policy": 0
   },
   "error_total": 0,
-  "case_count": 22,
+  "case_count": 31,
   "failed_cases": 0,
   "cases": [
     {
@@ -778,10 +780,324 @@
           "blocked_by_policy"
         ]
       }
+    },
+    {
+      "id": "leading-dot-percent",
+      "class": "numeric_token",
+      "ok": true,
+      "errors": [],
+      "actual": {
+        "admitted": true,
+        "statement_count": 1,
+        "values": [
+          0.005
+        ],
+        "horizons": [
+          "by 2070"
+        ],
+        "distinct_horizons": [
+          "by 2070"
+        ],
+        "question_keys": [
+          "extinction_unconditional"
+        ],
+        "question_key": "extinction_unconditional",
+        "value_numeric": 0.005,
+        "value_min": null,
+        "value_max": null,
+        "value_type": "point",
+        "unit": "probability",
+        "horizon_text": "by 2070",
+        "target_date_end": "2070-12-31",
+        "condition_text": null,
+        "start_ms": [
+          null
+        ],
+        "review_states": [
+          "machine_validated"
+        ],
+        "evidence": [
+          "I estimate a .5% chance of human extinction by 2070."
+        ],
+        "context": [
+          "I estimate a .5% chance of human extinction by 2070."
+        ],
+        "role": null
+      }
+    },
+    {
+      "id": "out-of-range-percent-no-suffix",
+      "class": "numeric_token",
+      "ok": true,
+      "errors": [],
+      "actual": {
+        "admitted": false,
+        "statement_count": 0,
+        "values": [],
+        "horizons": [],
+        "distinct_horizons": [],
+        "question_keys": [],
+        "question_key": null,
+        "value_numeric": null,
+        "value_min": null,
+        "value_max": null,
+        "value_type": null,
+        "unit": null,
+        "horizon_text": null,
+        "target_date_end": null,
+        "condition_text": null,
+        "start_ms": [],
+        "review_states": [],
+        "evidence": [],
+        "context": [],
+        "role": null
+      }
+    },
+    {
+      "id": "signed-percent-abstains",
+      "class": "numeric_token",
+      "ok": true,
+      "errors": [],
+      "actual": {
+        "admitted": false,
+        "statement_count": 0,
+        "values": [],
+        "horizons": [],
+        "distinct_horizons": [],
+        "question_keys": [],
+        "question_key": null,
+        "value_numeric": null,
+        "value_min": null,
+        "value_max": null,
+        "value_type": null,
+        "unit": null,
+        "horizon_text": null,
+        "target_date_end": null,
+        "condition_text": null,
+        "start_ms": [],
+        "review_states": [],
+        "evidence": [],
+        "context": [],
+        "role": null
+      }
+    },
+    {
+      "id": "grouped-percent-abstains",
+      "class": "numeric_token",
+      "ok": true,
+      "errors": [],
+      "actual": {
+        "admitted": false,
+        "statement_count": 0,
+        "values": [],
+        "horizons": [],
+        "distinct_horizons": [],
+        "question_keys": [],
+        "question_key": null,
+        "value_numeric": null,
+        "value_min": null,
+        "value_max": null,
+        "value_type": null,
+        "unit": null,
+        "horizon_text": null,
+        "target_date_end": null,
+        "condition_text": null,
+        "start_ms": [],
+        "review_states": [],
+        "evidence": [],
+        "context": [],
+        "role": null
+      }
+    },
+    {
+      "id": "year-not-range-endpoint",
+      "class": "numeric_token",
+      "ok": true,
+      "errors": [],
+      "actual": {
+        "admitted": true,
+        "statement_count": 2,
+        "values": [
+          0.1,
+          0.5
+        ],
+        "horizons": [
+          "by 2030",
+          "by 2040"
+        ],
+        "distinct_horizons": [
+          "by 2030",
+          "by 2040"
+        ],
+        "question_keys": [
+          "agi_by_year_probability",
+          "agi_by_year_probability"
+        ],
+        "question_key": null,
+        "value_numeric": null,
+        "value_min": null,
+        "value_max": null,
+        "value_type": null,
+        "unit": null,
+        "horizon_text": null,
+        "target_date_end": null,
+        "condition_text": null,
+        "start_ms": [
+          null,
+          null
+        ],
+        "review_states": [
+          "machine_validated",
+          "machine_validated"
+        ],
+        "evidence": [
+          "I estimate a 10% chance of AGI by 2030 and 50% by 2040.",
+          "I estimate a 10% chance of AGI by 2030 and 50% by 2040."
+        ],
+        "context": [
+          "I estimate a 10% chance of AGI by 2030 and 50% by 2040.",
+          "I estimate a 10% chance of AGI by 2030 and 50% by 2040."
+        ],
+        "role": null
+      }
+    },
+    {
+      "id": "mixed-outcome-abstains",
+      "class": "outcome_binding",
+      "ok": true,
+      "errors": [],
+      "actual": {
+        "admitted": false,
+        "statement_count": 0,
+        "values": [],
+        "horizons": [],
+        "distinct_horizons": [],
+        "question_keys": [],
+        "question_key": null,
+        "value_numeric": null,
+        "value_min": null,
+        "value_max": null,
+        "value_type": null,
+        "unit": null,
+        "horizon_text": null,
+        "target_date_end": null,
+        "condition_text": null,
+        "start_ms": [],
+        "review_states": [],
+        "evidence": [],
+        "context": [],
+        "role": null
+      }
+    },
+    {
+      "id": "complement-event-abstains",
+      "class": "outcome_binding",
+      "ok": true,
+      "errors": [],
+      "actual": {
+        "admitted": false,
+        "statement_count": 0,
+        "values": [],
+        "horizons": [],
+        "distinct_horizons": [],
+        "question_keys": [],
+        "question_key": null,
+        "value_numeric": null,
+        "value_min": null,
+        "value_max": null,
+        "value_type": null,
+        "unit": null,
+        "horizon_text": null,
+        "target_date_end": null,
+        "condition_text": null,
+        "start_ms": [],
+        "review_states": [],
+        "evidence": [],
+        "context": [],
+        "role": null
+      }
+    },
+    {
+      "id": "unknown-second-outcome-abstains",
+      "class": "outcome_binding",
+      "ok": true,
+      "errors": [],
+      "actual": {
+        "admitted": true,
+        "statement_count": 0,
+        "values": [],
+        "horizons": [],
+        "distinct_horizons": [],
+        "question_keys": [],
+        "question_key": null,
+        "value_numeric": null,
+        "value_min": null,
+        "value_max": null,
+        "value_type": null,
+        "unit": null,
+        "horizon_text": null,
+        "target_date_end": null,
+        "condition_text": null,
+        "start_ms": [],
+        "review_states": [],
+        "evidence": [],
+        "context": [],
+        "role": "author",
+        "ownership": "owned",
+        "source_type": "blog",
+        "roles_present": [
+          "author"
+        ],
+        "fetched": [
+          "https://ada.example/robots.txt",
+          "https://ada.example/mixed-forecast"
+        ],
+        "error_classes": []
+      }
+    },
+    {
+      "id": "conditional-event-keeps-outcome",
+      "class": "outcome_binding",
+      "ok": true,
+      "errors": [],
+      "actual": {
+        "admitted": true,
+        "statement_count": 1,
+        "values": [
+          0.1
+        ],
+        "horizons": [
+          "by 2070"
+        ],
+        "distinct_horizons": [
+          "by 2070"
+        ],
+        "question_keys": [
+          "extinction_conditional_agi"
+        ],
+        "question_key": "extinction_conditional_agi",
+        "value_numeric": 0.1,
+        "value_min": null,
+        "value_max": null,
+        "value_type": "point",
+        "unit": "probability",
+        "horizon_text": "by 2070",
+        "target_date_end": "2070-12-31",
+        "condition_text": "If we build AGI, I assign a 10% chance to human extinction by 2070",
+        "start_ms": [
+          null
+        ],
+        "review_states": [
+          "machine_validated"
+        ],
+        "evidence": [
+          "If we build AGI, I assign a 10% chance to human extinction by 2070."
+        ],
+        "context": [
+          "If we build AGI, I assign a 10% chance to human extinction by 2070."
+        ],
+        "role": null
+      }
     }
-  ],
-  "label": "improved",
-  "base_sha": "d13c8ab9bc2d643e28b7f52daf1a4c15724e77d7",
-  "baseline_error_total": 30,
-  "note": "errors_by_class counts failed checks, not extracted statements. A higher statement count is not a better score."
+  ]
 }

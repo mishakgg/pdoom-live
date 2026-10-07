@@ -13,12 +13,17 @@ def test_evaluation_reduces_every_error_class():
     baseline = json.loads(BASELINE.read_text(encoding="utf-8"))
     saved = json.loads(RESULTS.read_text(encoding="utf-8"))
     improved = evaluate_corpus()
-    assert set(CLASSES) <= set(baseline["errors_by_class"])
+    # The saved historical baseline has 22 cases. Newly added abstention cases
+    # have explicit gold expectations, not invented historical error counts.
+    assert set(baseline["errors_by_class"]) <= set(CLASSES)
     assert improved["error_total"] < baseline["error_total"]
     assert improved["error_total"] == 0
     for name in CLASSES:
         assert improved["errors_by_class"][name] == 0
-        assert improved["errors_by_class"][name] <= baseline["errors_by_class"][name]
+        if name in baseline["errors_by_class"]:
+            assert improved["errors_by_class"][name] <= baseline["errors_by_class"][name]
         assert saved["errors_by_class"][name] == 0
     assert saved["error_total"] == 0
     assert baseline["error_total"] == 30
+    assert saved["case_count"] == improved["case_count"] == 31
+    assert {row["class"] for row in improved["cases"]} >= {"numeric_token", "outcome_binding"}

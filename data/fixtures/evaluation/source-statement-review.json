@@ -183,6 +183,15 @@
       "robots": "User-agent: *\nDisallow:\n\nUser-agent: pdoom.live-collector\nDisallow: /private\n",
       "transcript": "Ada Lovelace (00:01:02): I think there is a 10% chance of human extinction by 2040.",
       "expect": { "admitted": true, "statement_count": 0, "fetched_transcript": false, "error_class": "blocked_by_policy" }
-    }
+    },
+    {"id": "leading-dot-percent", "class": "numeric_token", "mode": "extract", "text": "I estimate a .5% chance of human extinction by 2070.", "expect": {"statement_count": 1, "question_key": "extinction_unconditional", "value_numeric": 0.005, "value_type": "point"}},
+    {"id": "out-of-range-percent-no-suffix", "class": "numeric_token", "mode": "extract", "text": "I estimate a 1000% chance of AGI by 2030.", "expect": {"statement_count": 0, "values": []}},
+    {"id": "signed-percent-abstains", "class": "numeric_token", "mode": "extract", "text": "I estimate a -10% chance of AGI by 2030.", "expect": {"statement_count": 0, "values": []}},
+    {"id": "grouped-percent-abstains", "class": "numeric_token", "mode": "extract", "text": "I estimate a 1,000% chance of AGI by 2030.", "expect": {"statement_count": 0, "values": []}},
+    {"id": "year-not-range-endpoint", "class": "numeric_token", "mode": "extract", "text": "I estimate a 10% chance of AGI by 2030 and 50% by 2040.", "expect": {"statement_count": 2, "values": [0.1, 0.5], "distinct_horizons": ["by 2030", "by 2040"]}},
+    {"id": "mixed-outcome-abstains", "class": "outcome_binding", "mode": "extract", "text": "I estimate 10% chance of human extinction by 2070; I estimate 50% chance of AGI by 2030.", "expect": {"statement_count": 0, "values": []}},
+    {"id": "complement-event-abstains", "class": "outcome_binding", "mode": "extract", "text": "My probability of avoiding human extinction by 2070 is 95%.", "expect": {"statement_count": 0, "values": []}},
+    {"id": "unknown-second-outcome-abstains", "class": "outcome_binding", "mode": "essay", "expect": {"admitted": true, "statement_count": 0, "values": []}, "url": "https://ada.example/mixed-forecast", "html": "<html><head><title>Forecast notes</title><meta name=\"author\" content=\"Ada Lovelace\"></head><body><p>I assign a 10% chance to extinction by 2070 and a 50% chance to rain by 2030.</p></body></html>"},
+    {"id": "conditional-event-keeps-outcome", "class": "outcome_binding", "mode": "extract", "text": "If we build AGI, I assign a 10% chance to human extinction by 2070.", "expect": {"statement_count": 1, "question_key": "extinction_conditional_agi", "value_numeric": 0.1, "condition_contains": "If we build AGI"}}
   ]
 }
