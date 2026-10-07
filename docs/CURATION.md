@@ -36,10 +36,10 @@ Explicit numeric approval requires the operator to confirm person, evidence, val
 
 ## Files
 
-Review manifests use schema `review-decisions/1.0.0`:
+New review manifests use schema `review-decisions/2.0.0`:
 
 ```json
-{ "schema_version": "review-decisions/1.0.0", "decisions": [] }
+{ "schema_version": "review-decisions/2.0.0", "decisions": [] }
 ```
 
 Store them under `data/reviews/`. They contain operator identifiers and decision text, not credentials.
@@ -47,11 +47,17 @@ Store them under `data/reviews/`. They contain operator identifiers and decision
 Commands:
 
 - `npm run review:status`
-- `npm run review:validate -- <file>` reads the database and does not write decisions
+- `npm run review:validate -- <file>` dry-runs the same mutation checks inside a transaction that always rolls back; it leaves no decisions or corrections behind
 - `npm run review:import -- <file>`
 - `npm run review:export -- <file>`
 - `npm run review:stage -- <candidate-jsonl>` inserts `unreviewed` statements for people already in the dataset
 
-Re-importing the same decision key is a no-op. A reused key with different corrections is a conflict. Decisions are exported and applied in `reviewed_at` order, then `decision_key`. Applying that sequence to the extracted statements reconstructs the reviewed dataset.
+Every v2 decision carries `machine_claim` and `accepted_claim`, copied from its stored version-1 snapshots. Snapshot JSON is preserved exactly, including explicit nulls and timestamp precision. Import checks that the current interpretation is that machine input, that accepted interpretation, or the previously covered step of the same decision history. After applying the recorded corrections, the resulting claim must equal the exported accepted snapshot. Matching source and evidence hashes alone cannot authorize replay onto changed semantics.
+
+Import sorts decisions by `reviewed_at`, then `decision_key`, and applies the whole file in one transaction. Any invalid entry rolls back all changes. Export the complete decision history: a final empty-delta decision alone may not reconstruct earlier cumulative corrections. Validation uses the same checks in a rolled-back transaction, including ordered earlier corrections, rather than an approximate read-only preflight. It may briefly acquire database row locks.
+
+An exact replay is a no-op. A reused key with changed target, action, reviewer, timestamp, note, rejection reason, corrections, relationship, asserted provenance, or supplied snapshots is a conflict. Existing operator commands remain separate from manifest restoration.
+
+Schema `review-decisions/1.0.0` remains parseable for inspection. Fresh approvals from v1 or null-snapshot v2 entries are rejected with a re-review requirement. Existing legacy null snapshots remain null on export; they are never filled from mutable live rows. Legacy rejections and needs-changes entries may be replayed without granting verification, retaining null coverage. No database migration is required: v2 transfers the snapshots already stored by migration 006. Unsupported manifest or claim-snapshot versions are rejected.
 
 The queue orders explicit numeric records, then explicit qualitative records, then possible same-question view changes, then other high-confidence records, and model-inferred signals last. That order is not a score of the people.
