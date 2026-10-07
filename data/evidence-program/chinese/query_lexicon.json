@@ -1,0 +1,860 @@
+{
+  "format_version": "1.0",
+  "status": "preparation_only_not_executed_as_a_campaign",
+  "language": "en",
+  "verified_date": "2026-10-07",
+  "notices": [
+    "Terms and query templates are retrieval aids, not quotations or verified claims.",
+    "Variants are not automatic synonyms for event definitions or identities.",
+    "No search campaign, source ingestion, paid API calls or recurring monitoring is performed by this file."
+  ],
+  "concepts": [
+    {
+      "term_id": "LX01",
+      "category": "risk_outcomes",
+      "zh_Hans": [
+        "人类灭绝",
+        "全人类灭绝"
+      ],
+      "zh_Hant": [
+        "人類滅絕",
+        "全人類滅絕"
+      ],
+      "en": [
+        "human extinction",
+        "extinction of humanity"
+      ],
+      "interpretation_caution": "Require humans as the affected population; species extinction is a different outcome."
+    },
+    {
+      "term_id": "LX02",
+      "category": "risk_outcomes",
+      "zh_Hans": [
+        "生存性风险",
+        "存在性风险"
+      ],
+      "zh_Hant": [
+        "生存性風險",
+        "存在性風險"
+      ],
+      "en": [
+        "existential risk"
+      ],
+      "interpretation_caution": "Translation varies; do not assume every occurrence means literal human extinction."
+    },
+    {
+      "term_id": "LX03",
+      "category": "risk_outcomes",
+      "zh_Hans": [
+        "灾难性风险",
+        "全球性灾难",
+        "不可逆危害"
+      ],
+      "zh_Hant": [
+        "災難性風險",
+        "全球性災難"
+      ],
+      "en": [
+        "catastrophic risk",
+        "global catastrophe",
+        "irreversible harm"
+      ],
+      "interpretation_caution": "Catastrophe, irreversible harm and extinction are not synonymous."
+    },
+    {
+      "term_id": "LX04",
+      "category": "risk_outcomes",
+      "zh_Hans": [
+        "失控",
+        "控制丧失",
+        "权力寻求",
+        "自主复制"
+      ],
+      "zh_Hant": [
+        "失控",
+        "控制喪失",
+        "權力尋求",
+        "自主複製"
+      ],
+      "en": [
+        "loss of control",
+        "power seeking",
+        "self-replication"
+      ],
+      "interpretation_caution": "A capability demonstration, hypothetical scenario and forecast need separate classifications."
+    },
+    {
+      "term_id": "LX05",
+      "category": "risk_outcomes",
+      "zh_Hans": [
+        "滥用",
+        "恶意使用",
+        "系统性风险"
+      ],
+      "zh_Hant": [
+        "濫用",
+        "惡意使用",
+        "系統性風險"
+      ],
+      "en": [
+        "misuse",
+        "malicious use",
+        "systemic risk"
+      ],
+      "interpretation_caution": "Identify the mechanism and harm scale rather than converting generic risk to p(doom)."
+    },
+    {
+      "term_id": "LX06",
+      "category": "safety",
+      "zh_Hans": [
+        "安全",
+        "安全性",
+        "安保",
+        "网络安全"
+      ],
+      "zh_Hant": [
+        "安全性",
+        "網絡安全"
+      ],
+      "en": [
+        "safety",
+        "security",
+        "cybersecurity"
+      ],
+      "interpretation_caution": "Chinese safety/security overlap; classify the domain using context."
+    },
+    {
+      "term_id": "LX07",
+      "category": "safety",
+      "zh_Hans": [
+        "对齐",
+        "可控",
+        "可信",
+        "内生安全"
+      ],
+      "zh_Hant": [
+        "對齊",
+        "可控",
+        "可信",
+        "內生安全"
+      ],
+      "en": [
+        "alignment",
+        "controllability",
+        "trustworthiness",
+        "intrinsic safety"
+      ],
+      "interpretation_caution": "Normative commitments or techniques do not establish demonstrated safety."
+    },
+    {
+      "term_id": "LX08",
+      "category": "safety",
+      "zh_Hans": [
+        "红线",
+        "黄线",
+        "风险阈值",
+        "拒答率",
+        "越狱成功率"
+      ],
+      "zh_Hant": [
+        "紅線",
+        "黃線",
+        "風險閾值",
+        "拒答率"
+      ],
+      "en": [
+        "red line",
+        "warning threshold",
+        "refusal rate",
+        "jailbreak success rate"
+      ],
+      "interpretation_caution": "A policy threshold or test success rate is not an unconditional disaster probability."
+    },
+    {
+      "term_id": "LX09",
+      "category": "milestones",
+      "zh_Hans": [
+        "通用人工智能",
+        "AGI",
+        "人工通用智能"
+      ],
+      "zh_Hant": [],
+      "en": [
+        "artificial general intelligence",
+        "AGI"
+      ],
+      "interpretation_caution": "Retain the source definition and task population; no universal threshold is assumed."
+    },
+    {
+      "term_id": "LX10",
+      "category": "milestones",
+      "zh_Hans": [
+        "超级智能",
+        "超人工智能",
+        "超越人类"
+      ],
+      "zh_Hant": [
+        "超級智能",
+        "超越人類"
+      ],
+      "en": [
+        "superintelligence",
+        "ASI",
+        "surpass humans"
+      ],
+      "interpretation_caution": "Specify whether the comparison is one task or general capability."
+    },
+    {
+      "term_id": "LX11",
+      "category": "milestones",
+      "zh_Hans": [
+        "实现时间",
+        "到来时间",
+        "何时实现",
+        "时间表",
+        "预计"
+      ],
+      "zh_Hant": [
+        "實現時間",
+        "到來時間",
+        "時間表",
+        "預計"
+      ],
+      "en": [
+        "arrival date",
+        "when achieved",
+        "timeline",
+        "expected"
+      ],
+      "interpretation_caution": "A product schedule, hope or target is not automatically a probabilistic forecast."
+    },
+    {
+      "term_id": "LX12",
+      "category": "milestones",
+      "zh_Hans": [
+        "发布",
+        "预览版",
+        "开放权重",
+        "正式上线",
+        "退役",
+        "停止服务"
+      ],
+      "zh_Hant": [
+        "發布",
+        "預覽版",
+        "開放權重",
+        "正式上線",
+        "停止服務"
+      ],
+      "en": [
+        "release",
+        "preview",
+        "weights release",
+        "general availability",
+        "retirement"
+      ],
+      "interpretation_caution": "Announcement, access and withdrawal dates differ; API aliases can change serving models."
+    },
+    {
+      "term_id": "LX13",
+      "category": "capability_progress",
+      "zh_Hans": [
+        "评测",
+        "基准",
+        "排行榜",
+        "准确率",
+        "得分"
+      ],
+      "zh_Hant": [
+        "評測",
+        "基準",
+        "排行榜",
+        "準確率"
+      ],
+      "en": [
+        "evaluation",
+        "benchmark",
+        "leaderboard",
+        "accuracy",
+        "score"
+      ],
+      "interpretation_caution": "Preserve dataset version, split, evaluator, scale and protocol."
+    },
+    {
+      "term_id": "LX14",
+      "category": "capability_progress",
+      "zh_Hans": [
+        "推理",
+        "长上下文",
+        "工具调用",
+        "智能体",
+        "多模态"
+      ],
+      "zh_Hant": [
+        "推理",
+        "長上下文",
+        "工具調用",
+        "智能體",
+        "多模態"
+      ],
+      "en": [
+        "reasoning",
+        "long context",
+        "tool use",
+        "agents",
+        "multimodal"
+      ],
+      "interpretation_caution": "Topic labels are not standardized metrics."
+    },
+    {
+      "term_id": "LX15",
+      "category": "capability_progress",
+      "zh_Hans": [
+        "进步速度",
+        "能力提升",
+        "增长率",
+        "翻倍时间",
+        "提升百分点"
+      ],
+      "zh_Hant": [
+        "進步速度",
+        "能力提升",
+        "增長率",
+        "翻倍時間"
+      ],
+      "en": [
+        "progress rate",
+        "capability improvement",
+        "growth rate",
+        "doubling time",
+        "percentage-point change"
+      ],
+      "interpretation_caution": "Do not pool mismatched tests; percentage points are not percent change."
+    },
+    {
+      "term_id": "LX16",
+      "category": "capability_progress",
+      "zh_Hans": [
+        "污染",
+        "训练数据重叠",
+        "泄漏",
+        "复现"
+      ],
+      "zh_Hant": [
+        "污染",
+        "訓練數據重疊",
+        "洩漏",
+        "復現"
+      ],
+      "en": [
+        "contamination",
+        "training overlap",
+        "leakage",
+        "replication"
+      ],
+      "interpretation_caution": "Repeated citations or identical tables are not independent replications."
+    },
+    {
+      "term_id": "LX17",
+      "category": "resources",
+      "zh_Hans": [
+        "算力",
+        "训练成本",
+        "推理价格",
+        "GPU时",
+        "能耗"
+      ],
+      "zh_Hant": [
+        "算力",
+        "訓練成本",
+        "推理價格",
+        "能耗"
+      ],
+      "en": [
+        "compute",
+        "training cost",
+        "inference price",
+        "GPU hours",
+        "energy"
+      ],
+      "interpretation_caution": "Retain hardware, precision, currency, denominator and cost boundaries."
+    },
+    {
+      "term_id": "LX18",
+      "category": "resources",
+      "zh_Hans": [
+        "参数量",
+        "词元",
+        "上下文长度",
+        "每百万输入"
+      ],
+      "zh_Hant": [
+        "參數量",
+        "詞元",
+        "上下文長度"
+      ],
+      "en": [
+        "parameters",
+        "tokens",
+        "context length",
+        "per million input tokens"
+      ],
+      "interpretation_caution": "Total versus activated parameters and input versus output token pricing differ."
+    },
+    {
+      "term_id": "LX19",
+      "category": "deployment",
+      "zh_Hans": [
+        "备案",
+        "登记",
+        "部署",
+        "用户数"
+      ],
+      "zh_Hant": [
+        "備案",
+        "登記",
+        "部署",
+        "用戶數"
+      ],
+      "en": [
+        "filing",
+        "registration",
+        "deployment",
+        "user count"
+      ],
+      "interpretation_caution": "Administrative registrations, unique models, launches and active users have different units."
+    },
+    {
+      "term_id": "LX20",
+      "category": "probability",
+      "zh_Hans": [
+        "概率",
+        "几率",
+        "可能性",
+        "百分之",
+        "千分之",
+        "万分之"
+      ],
+      "zh_Hant": [
+        "概率",
+        "機率",
+        "可能性",
+        "百分之",
+        "千分之",
+        "萬分之"
+      ],
+      "en": [
+        "probability",
+        "chance",
+        "percent",
+        "per thousand",
+        "per ten thousand"
+      ],
+      "interpretation_caution": "Only explicitly numerical expressions permit exact decimal conversion."
+    },
+    {
+      "term_id": "LX21",
+      "category": "probability",
+      "zh_Hans": [
+        "至少",
+        "不低于",
+        "超过",
+        "至多",
+        "不超过",
+        "不到"
+      ],
+      "zh_Hant": [
+        "至少",
+        "不低於",
+        "超過",
+        "至多",
+        "不超過",
+        "不到"
+      ],
+      "en": [
+        "at least",
+        "no less than",
+        "above",
+        "at most",
+        "no more than",
+        "below"
+      ],
+      "interpretation_caution": "Preserve direction and inclusivity; bounds are not points."
+    },
+    {
+      "term_id": "LX22",
+      "category": "probability",
+      "zh_Hans": [
+        "大约",
+        "左右",
+        "十有八九",
+        "几乎不可能",
+        "不能排除"
+      ],
+      "zh_Hant": [
+        "大約",
+        "左右",
+        "十有八九",
+        "幾乎不可能"
+      ],
+      "en": [
+        "approximately",
+        "around",
+        "very likely",
+        "almost impossible",
+        "cannot rule out"
+      ],
+      "interpretation_caution": "Do not assign numerical probabilities to idioms or vague qualifiers."
+    },
+    {
+      "term_id": "LX23",
+      "category": "conditioning",
+      "zh_Hans": [
+        "如果",
+        "假如",
+        "在……条件下",
+        "除非",
+        "取决于"
+      ],
+      "zh_Hant": [
+        "如果",
+        "假如",
+        "在……條件下",
+        "除非",
+        "取決於"
+      ],
+      "en": [
+        "if",
+        "provided that",
+        "conditional on",
+        "unless",
+        "depends on"
+      ],
+      "interpretation_caution": "Preserve all antecedents and negation scope; never drop a condition."
+    },
+    {
+      "term_id": "LX24",
+      "category": "conditioning",
+      "zh_Hans": [
+        "并非",
+        "不是",
+        "未必",
+        "不是不可能",
+        "没有证据"
+      ],
+      "zh_Hant": [
+        "並非",
+        "不是",
+        "未必",
+        "沒有證據"
+      ],
+      "en": [
+        "not",
+        "not necessarily",
+        "not impossible",
+        "no evidence"
+      ],
+      "interpretation_caution": "Negating an estimate is not endorsing its complement or a zero probability."
+    },
+    {
+      "term_id": "LX25",
+      "category": "time",
+      "zh_Hans": [
+        "截至",
+        "之前",
+        "年底",
+        "明年",
+        "未来十年",
+        "本世纪"
+      ],
+      "zh_Hant": [
+        "截至",
+        "之前",
+        "年底",
+        "明年",
+        "未來十年",
+        "本世紀"
+      ],
+      "en": [
+        "by",
+        "before",
+        "year-end",
+        "next year",
+        "next ten years",
+        "this century"
+      ],
+      "interpretation_caution": "Anchor relative dates to the utterance, not repost or retrieval; preserve timezone uncertainty."
+    },
+    {
+      "term_id": "LX26",
+      "category": "attribution",
+      "zh_Hans": [
+        "我认为",
+        "我们估计",
+        "他表示",
+        "据称",
+        "转述",
+        "提问"
+      ],
+      "zh_Hant": [
+        "我認為",
+        "我們估計",
+        "他表示",
+        "據稱",
+        "轉述",
+        "提問"
+      ],
+      "en": [
+        "I believe",
+        "we estimate",
+        "said",
+        "allegedly",
+        "reported speech",
+        "question"
+      ],
+      "interpretation_caution": "Reporter, interviewer, quoted speaker and collective are distinct."
+    },
+    {
+      "term_id": "LX27",
+      "category": "attribution",
+      "zh_Hans": [
+        "联合声明",
+        "共识",
+        "签署",
+        "署名",
+        "机构声明"
+      ],
+      "zh_Hant": [
+        "聯合聲明",
+        "共識",
+        "簽署",
+        "署名",
+        "機構聲明"
+      ],
+      "en": [
+        "joint statement",
+        "consensus",
+        "signatory",
+        "institutional statement"
+      ],
+      "interpretation_caution": "Endorsement is not a separate probability from each named signatory."
+    },
+    {
+      "term_id": "LX28",
+      "category": "survey",
+      "zh_Hans": [
+        "问卷",
+        "受访者",
+        "抽样",
+        "中位数",
+        "占比",
+        "调查波次"
+      ],
+      "zh_Hant": [
+        "問卷",
+        "受訪者",
+        "抽樣",
+        "中位數",
+        "佔比",
+        "調查波次"
+      ],
+      "en": [
+        "questionnaire",
+        "respondents",
+        "sampling",
+        "median",
+        "share",
+        "survey wave"
+      ],
+      "interpretation_caution": "Respondent share, median elicited probability and author opinion are different quantities."
+    },
+    {
+      "term_id": "LX29",
+      "category": "survey",
+      "zh_Hans": [
+        "综述",
+        "文献综述",
+        "调查"
+      ],
+      "zh_Hant": [
+        "綜述",
+        "文獻綜述",
+        "調查"
+      ],
+      "en": [
+        "review",
+        "literature survey",
+        "survey"
+      ],
+      "interpretation_caution": "The English word survey and Chinese 调查 can denote different research designs."
+    },
+    {
+      "term_id": "LX30",
+      "category": "provenance",
+      "zh_Hans": [
+        "原文",
+        "译文",
+        "官方翻译",
+        "转载",
+        "更正",
+        "撤回"
+      ],
+      "zh_Hant": [
+        "原文",
+        "譯文",
+        "官方翻譯",
+        "轉載",
+        "更正",
+        "撤回"
+      ],
+      "en": [
+        "original",
+        "translation",
+        "official translation",
+        "repost",
+        "correction",
+        "retraction"
+      ],
+      "interpretation_caution": "Track lineage and revisions; publication on an official site does not automatically clear reuse rights."
+    }
+  ],
+  "query_templates": [
+    {
+      "query_id": "Q01",
+      "source_ids": [
+        "CN001",
+        "CN002",
+        "CN024"
+      ],
+      "query_template": "site:deepseek.com (\"深度求索\" OR \"DeepSeek\") (\"发布\" OR \"研究\" OR \"风险\" OR \"安全\")",
+      "purpose_and_guardrail": "Current releases and first-party risk discussion; do not treat model-generated chat answers as company views."
+    },
+    {
+      "query_id": "Q02",
+      "source_ids": [
+        "CN003"
+      ],
+      "query_template": "(\"Qwen\" OR \"通义千问\") (\"技术报告\" OR \"评测\" OR \"预计\" OR \"AGI\")",
+      "purpose_and_guardrail": "Discover official Qwen releases/reports, then resolve current URLs from verified documentation; the translated brand term remains a search expansion, not automatic identity approval."
+    },
+    {
+      "query_id": "Q03",
+      "source_ids": [
+        "CN004"
+      ],
+      "query_template": "site:github.com/zai-org (\"GLM\" OR \"智谱\") (\"README_zh\" OR \"report\" OR \"安全\")",
+      "purpose_and_guardrail": "Find first-party versioned artifacts; compare code, weight and paper licenses separately."
+    },
+    {
+      "query_id": "Q04",
+      "source_ids": [
+        "CN005",
+        "CN006"
+      ],
+      "query_template": "(\"月之暗面\" OR \"MiniMax\" OR \"稀宇\") (\"技术报告\" OR \"正式发布\" OR \"模型更新\")",
+      "purpose_and_guardrail": "Filter results to verified official domains/repositories before attributing or copying."
+    },
+    {
+      "query_id": "Q05",
+      "source_ids": [
+        "CN007",
+        "CN008"
+      ],
+      "query_template": "(\"百度\" OR \"字节跳动 Seed\") (\"评测\" OR \"推理\" OR \"参数\" OR \"发布日期\")",
+      "purpose_and_guardrail": "Vendor-reported capability and chronology candidates, not independent measured results."
+    },
+    {
+      "query_id": "Q06",
+      "source_ids": [
+        "CN009",
+        "CN010",
+        "CN011",
+        "CN018"
+      ],
+      "query_template": "(\"人工智能\" OR \"AI\") (\"生存性风险\" OR \"灾难性风险\" OR \"失控\") (\"共识\" OR \"声明\" OR \"框架\")",
+      "purpose_and_guardrail": "Use the registered first-party institutional domains and inspect collective authorship and translation lineage."
+    },
+    {
+      "query_id": "Q07",
+      "source_ids": [
+        "CN019",
+        "CN020"
+      ],
+      "query_template": "(\"OpenCompass\" OR \"司南\" OR \"FlagEval\" OR \"天秤\") (\"评测报告\" OR \"榜单\" OR \"存档\" OR \"版本\")",
+      "purpose_and_guardrail": "Find dated score snapshots and their protocols, not a current ranking alone."
+    },
+    {
+      "query_id": "Q08",
+      "source_ids": [
+        "CN021",
+        "CN022"
+      ],
+      "query_template": "(\"C-Eval\" OR \"CMMLU\") (\"LICENSE\" OR \"版本\" OR \"zero-shot\" OR \"five-shot\")",
+      "purpose_and_guardrail": "Verify benchmark artifacts, revisions and license scope before any acquisition."
+    },
+    {
+      "query_id": "Q09",
+      "source_ids": [
+        "CN023"
+      ],
+      "query_template": "site:cac.gov.cn \"生成式人工智能服务\" (\"备案\" OR \"登记\")",
+      "purpose_and_guardrail": "Discover administrative series; distinguish published date, as-of date and file update date."
+    },
+    {
+      "query_id": "Q10",
+      "source_ids": [
+        "CN014",
+        "CN015",
+        "CN016"
+      ],
+      "query_template": "(\"人工智能\" OR \"artificial intelligence\") (\"风险感知\" OR \"risk perception\") (\"问卷\" OR \"样本\" OR \"survey\")",
+      "purpose_and_guardrail": "Prefer original author/publisher pages and seek questionnaire, wave and data-availability details."
+    },
+    {
+      "query_id": "Q11",
+      "source_ids": [
+        "CN017"
+      ],
+      "query_template": "\"AI Alignment\" (\"综述\" OR \"survey\") (\"作者\" OR \"arxiv\")",
+      "purpose_and_guardrail": "Literature review discovery only; survey in the title is not evidence of respondent data."
+    },
+    {
+      "query_id": "Q12",
+      "source_ids": [
+        "CN001",
+        "CN003",
+        "CN004",
+        "CN007",
+        "CN008",
+        "CN024"
+      ],
+      "query_template": "{verified_actor_or_model_name} (\"训练成本\" OR \"推理价格\" OR \"算力\" OR \"每百万\")",
+      "purpose_and_guardrail": "Keep currency, model version, token direction and price basis; no paid API calls."
+    },
+    {
+      "query_id": "Q13",
+      "source_ids": [
+        "CN009",
+        "CN011"
+      ],
+      "query_template": "{verified_person_name_variant} (\"我认为\" OR \"预计\" OR \"概率\" OR \"到来时间\")",
+      "purpose_and_guardrail": "Name lookup must be verified independently; retrieve full question and answer, not a headline."
+    },
+    {
+      "query_id": "Q14",
+      "source_ids": [
+        "CN012",
+        "CN013"
+      ],
+      "query_template": "(\"生成式人工智能服务管理暂行办法\" OR \"新一代人工智能伦理规范\") (\"修订\" OR \"发布\")",
+      "purpose_and_guardrail": "Policy context, not probability or deployment measurement; present obligations require current legal verification."
+    }
+  ],
+  "workflow": [
+    "Select a record family and primary source domain before combining terms.",
+    "Run simplified/traditional/English variants separately and log which form matched.",
+    "Require the primary page and sufficient context; search snippets alone are discovery metadata.",
+    "Retain negative and uncertain screening outcomes without converting silence to low risk.",
+    "Stop at authentication, access denial, unknown rights or ambiguous identity; request only the authorization actually needed."
+  ]
+}

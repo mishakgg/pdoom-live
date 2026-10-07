@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/pdataset/proposed-v0.1/forecast.schema.json",
+  "title": "Forecast proposed 0.1.0",
+  "allOf": [
+    {
+      "$ref": "https://example.invalid/pdataset/proposed-v0.1/dataset.schema.json#/$defs/record"
+    },
+    {
+      "properties": {
+        "record_type": {
+          "const": "forecast"
+        }
+      }
+    }
+  ]
+}

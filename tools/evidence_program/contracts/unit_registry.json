@@ -1,0 +1,82 @@
+{
+  "version": "0.1.0",
+  "status": "proposed starter vocabulary, not a complete ontology",
+  "units": [
+    {
+      "unit": "probability",
+      "definition": "Fraction in [0,1]; never an unlabelled percentage."
+    },
+    {
+      "unit": "percent",
+      "definition": "Bounded proportion in [0,100]."
+    },
+    {
+      "unit": "percent_change",
+      "definition": "Signed percentage change, not bounded above by 100."
+    },
+    {
+      "unit": "ratio",
+      "definition": "Dimensionless ratio; valid scale is metric-specific."
+    },
+    {
+      "unit": "count",
+      "definition": "Count or explicitly described mean/expectation; literal discreteness needs a metric-specific check."
+    },
+    {
+      "unit": "score",
+      "definition": "Benchmark-specific scale, defined in metric; no universal normalization."
+    },
+    {
+      "unit": "calendar_year",
+      "definition": "Integer Gregorian year 1..9999; preserves year-only forecast precision."
+    },
+    {
+      "unit": "second",
+      "definition": "Seconds; clarify wall-clock, CPU or task duration in metric."
+    },
+    {
+      "unit": "hour",
+      "definition": "Hours; clarify time basis and denominator."
+    },
+    {
+      "unit": "token",
+      "definition": "Tokens under a named tokenizer; aggregate means may be fractional."
+    },
+    {
+      "unit": "parameter",
+      "definition": "Model parameters under a declared counting rule; active versus total must be distinguished."
+    },
+    {
+      "unit": "FLOP",
+      "definition": "Floating-point operations; specify counting convention, precision and scope."
+    },
+    {
+      "unit": "FLOP/s",
+      "definition": "Floating-point operations per second; distinguish theoretical peak from measured sustained throughput."
+    },
+    {
+      "unit": "GPU_hour",
+      "definition": "Accelerator-hours; hardware model, count and utilization basis must be explicit."
+    },
+    {
+      "unit": "watt",
+      "definition": "Power; installed capacity, rated draw and measured draw are distinct."
+    },
+    {
+      "unit": "joule",
+      "definition": "Energy with a declared system boundary."
+    },
+    {
+      "unit": "kWh",
+      "definition": "Kilowatt-hours with a declared system boundary."
+    },
+    {
+      "unit": "currency_nominal",
+      "definition": "Signed amount in currency_basis.currency at stated date; nonnegative prices require metric minimum."
+    },
+    {
+      "unit": "currency_constant",
+      "definition": "Signed constant-price amount with currency code, base year and adjustment method."
+    }
+  ]
+}

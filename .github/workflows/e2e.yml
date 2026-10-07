@@ -9,9 +9,15 @@ on:
 permissions:
   contents: read
 
+# Superseded runs of this workflow/ref are cancelled; push and PR refs stay separate.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   browser:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     services:
       postgres:
         image: postgres:16
@@ -44,5 +50,6 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ hashFiles('package-lock.json') }}
       - run: npm ci
       - run: npx playwright install --with-deps chromium
+        timeout-minutes: 15
       - run: npm run build
       - run: npm run test:e2e

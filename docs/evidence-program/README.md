@@ -1,0 +1,42 @@
+# AI evidence program
+
+The source research, repository audit, proposed dataset contract, Chinese preparation and modelling methodology are integrated here as readable documentation, native JSON/CSV and executable offline checks. They extend the project's research and design surface; they are not imported production evidence.
+
+## Sequential deliverables
+
+| Step | Status | Readable result | Native companions |
+| --- | --- | --- | --- |
+| 1. Prioritize global and Chinese sources | Complete | [Source priorities](source_priorities.md) | [64-source inventory](../../data/evidence-program/source_inventory.json), [CSV](../../data/evidence-program/source_inventory.csv) |
+| 2. Audit existing coverage | Complete | [Coverage findings](coverage_findings.md) | [64 source mappings](../../data/evidence-program/coverage_mapping.json), [28 baseline metrics](../../data/evidence-program/baseline_metrics.json) |
+| 3. Specify the proposed dataset | Complete, frozen v0.1.0 | [Dataset specification](dataset_spec.md) | [14 schemas and field dictionary](../../tools/evidence_program/contracts/), [validator and 71 regression tests](../../tools/evidence_program/README.md) |
+| 4. Prepare Chinese evidence handling | Complete, preparation only | [Chinese guide](chinese_guide.md) | [23 alias entries](../../data/evidence-program/chinese/aliases.json), [query lexicon](../../data/evidence-program/chinese/query_lexicon.json), [25 synthetic cases](../../data/evidence-program/chinese/test_cases.json) |
+| 5. Describe modelling methodology | Complete, proposed methodology | [Modelling methodology](modelling_methodology.md) | [Analysis recipes](../../data/evidence-program/analysis_recipes.json), [19 synthetic arithmetic checks](../../data/evidence-program/methodology_example_checks.json) |
+| 6. Break implementation into tasks | Pending | [Status placeholder](implementation_tasks.md) | No implementation tickets created yet |
+
+The source IDs GL001–GL040 and CN001–CN024 are stable research-register identifiers, not production source-artifact revision IDs. All 64 families remain `candidate_not_collected`. The source inventory records availability and rights findings dated 7 October 2026; it is neither a census nor legal clearance to ingest source content.
+
+The coverage baseline is pinned to repository commit `f5274396885dbb654fc2861a78fa5be8f42fad38`. It describes inspected checked-in artifacts, not the current production database. Catalogs, adapters, source configurations, saved observations, extracted candidates and approved public evidence are separate stages. In particular, no finding here turns catalog metadata into collected quantitative data.
+
+## Run the integrated checks
+
+From the repository root, use Python 3.12 (CI-tested) with the dependencies in [requirements-ci.txt](../../tools/evidence_program/requirements-ci.txt) available. The pinned dependency set requires Python 3.11+:
+
+```bash
+python tools/evidence_program/check.py
+```
+
+The [scoped GitHub workflow](../../.github/workflows/evidence-program.yml) installs pinned testing dependencies in its disposable CI environment and then runs the same offline entry point. The check itself does not install software, fetch sources, use credentials, write to a database or start a collector. It validates source and coverage references, JSON/CSV agreement, frozen contract fingerprints, the 71 contract tests, Chinese code-point spans and 41 schema fragments, methodology arithmetic, and local documentation links.
+
+Passing is evidence of reproducible file consistency and synthetic regression behavior. It is not proof of factual accuracy, rights clearance, Chinese-language extraction quality, benchmark comparability, forecast calibration or a successful production import. See [checks and limitations](../../tools/evidence_program/README.md).
+
+## Relationship to the existing product
+
+The production [ingestion contract](../INGESTION_CONTRACT.md), [data model](../DATA_MODEL.md), [public API](../PUBLIC_API.md) and [trend methodology](../TREND_METHODOLOGY.md) remain authoritative for the running application. The proposed 13-type evidence contract lives under `tools/evidence_program/contracts/` rather than replacing `packages/contracts/` or creating a migration. A future compatibility adapter must preserve identities, revisions, exact decimals, review state and provenance and reject lossy conversions.
+
+Synthetic examples live only under [the isolated tooling directory](../../tools/evidence_program/examples/). Chinese semantic cases also carry explicit synthetic/preparation markers and are partial fragments, not production records. Neither location is read by the application's database seed or import commands. No live collector, public scoring route or deployment is enabled by this integration.
+
+Collection remains a separate authorized operational step. Preserve the [collection storage controls](../COLLECTION_STORAGE.md), including the configured Windows F:-only scratch boundary and hard 25,000,000,000-byte cap, and verified private handoff before cleanup. The collection workflow has not started. Website deployment is separate from local collector storage.
+
+## Data and reuse
+
+See the [data directory guide](../../data/evidence-program/README.md) for JSON/CSV roles. The repository's data dedication covers original inventory metadata and synthetic fixtures only to the extent permitted by its existing [data license](../../data/LICENSE). It does not license third-party articles, benchmark tasks, transcripts, model weights or underlying datasets linked by this inventory. Their artifact-specific rights remain in each record and require separate review.
