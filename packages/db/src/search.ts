@@ -625,13 +625,13 @@ function sourceItemsSql(prepared: ReturnType<typeof prepareSearchText>, parsed: 
       FROM scored
       WHERE scored.hit_rank > 0
     ),
-    item_statement_rows AS MATERIALIZED (
+    matched_item_statements AS MATERIALIZED (
       SELECT candidate_s.* FROM statements candidate_s
       JOIN text_matches ON text_matches.id = candidate_s.source_item_id
     ),
     public_items AS MATERIALIZED (
       SELECT DISTINCT candidate_s.source_item_id
-      FROM item_statement_rows candidate_s
+      FROM matched_item_statements candidate_s
       WHERE ${websiteStatementSql("candidate_s")}
     ),
     matched AS (
