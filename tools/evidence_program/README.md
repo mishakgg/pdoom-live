@@ -27,7 +27,8 @@ The aggregate check exits nonzero on any failed gate. It does not fetch endpoint
 - 30 lexicon concepts and 14 query templates; these remain unexecuted retrieval aids
 - Reproducible 19-check methodology arithmetic result and known record-type references in proposed recipes
 - [Implementation task pack](../../data/evidence-program/implementation_tasks.json): unique task IDs, known source/recipe references, acyclic resolved dependencies, safe existing/proposed paths, nonempty acceptance evidence, unexecuted statuses and matching Markdown task IDs/titles
-- Local documentation links and negative tests for the integration gates
+- [Chinese safety research catalog](../../data/evidence-program/research/chinese-safety-evaluations.json): separate candidate IDs, frozen-inventory identity, scoped artifact/rights references, inactive admission markers, index-only qualification, and bounded proposed-only FLAMES specification
+- Local documentation links (including nested research guides) and negative tests for the integration gates
 
 ## Frozen contract contents
 
@@ -45,3 +46,5 @@ The frozen schemas, validator, example builder, fixtures and contract tests are 
 Passing is not evidence of truth, identity approval, source permissions, translation quality, scientific comparability, statistical validity, calibration or production publication. A shape-valid Chinese fragment is not a complete record. Synthetic examples cannot establish real extractor performance. The recipes are proposed methodology, not implemented analytics. The task pack is an unexecuted plan and grants no operational permissions. Proposed paths describe the audited historical baseline; checks do not require those paths to remain absent after later authorized implementation.
 
 No app runtime, database schema, production import/seed path or collector configuration depends on this directory. Existing database and pipeline suites remain separate. This check does not replace them or claim they ran.
+
+Research-catalog checks are offline metadata consistency checks. They do not refetch pinned artifacts, establish legal rights, verify experiments, parse the source results table or implement the proposed adapter. Raw source files are not bundled; recorded hashes identify artifacts inspected during the dated review.

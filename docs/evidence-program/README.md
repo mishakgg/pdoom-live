@@ -45,3 +45,7 @@ See the [data directory guide](../../data/evidence-program/README.md) for JSON/C
 ## Implementation handoff
 
 The [Step 6 plan](implementation_tasks.md) builds on merged protections and keeps source integration, operational authorization, scientific validation and publication separate. Execute one assigned ticket at a time in dependency order. All implementation tickets remain unexecuted; the optional PR 32 UI port is deferred. Deployment remains on hold. The [machine-readable pack](../../data/evidence-program/implementation_tasks.json) is a planning artifact, not an executable configuration or permission grant.
+
+## Additive research reviews
+
+[Chinese safety-evaluation research](research/chinese-safety-evaluations.md) records eight provisional candidates, artifact-specific access and rights, corrected historical-version comparisons, and an unimplemented bounded FLAMES adapter specification. It enriches discovery without changing the frozen 64-source inventory or admitting operational collection. The [JSON catalog](../../data/evidence-program/research/chinese-safety-evaluations.json) retains source pins and explicit unresolved limitations.

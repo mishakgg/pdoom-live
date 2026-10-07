@@ -266,6 +266,106 @@ def check_task_plan(plan, recipes, markdown, base_paths=None):
             'deferred_implementation_tasks': sum(t['status'] == 'deferred' for t in tasks)}
 
 
+def check_research_catalog(catalog, inventory_hash, markdown):
+    """Validate research metadata only; no retrieval, admission or adapter execution."""
+    require(catalog.get('catalog_version') == 'chinese-safety-research/1.0.0', 'Unknown research catalog version')
+    require(catalog.get('catalog_state') == 'research_only_not_admitted' and
+            catalog.get('operational_admission') == 'not_admitted' and
+            catalog.get('collector_enabled') is False, 'Research catalog cannot enable admission')
+    require(not ({'records', 'observations'} & catalog.keys()), 'Research catalog cannot embed observation records')
+    baseline = catalog['baseline_inventory']
+    require(baseline['repo_path'] == 'data/evidence-program/source_inventory.json' and
+            baseline['record_count'] == len(SOURCE_IDS) and baseline['version'] == '1.1' and
+            baseline['audit_commit'] == BASELINE and baseline['sha256'] == inventory_hash,
+            'Research catalog frozen inventory mismatch')
+    families = catalog['families']
+    ids = [f['candidate_id'] for f in families]
+    require(len(ids) == 8 and set(ids) == {f'ZHS{i:03}' for i in range(1, 9)}, 'Research candidate IDs/count mismatch')
+    require(sum(f['classification'] == 'new_relative_to_frozen_inventory' for f in families) == 7 and
+            sum(f['classification'] == 'existing_family_enrichment' for f in families) == 1,
+            'Research catalog must retain seven new candidates plus one enrichment')
+    all_artifacts = {}
+    for family in families:
+        require(family['collection_status'] == 'candidate_not_collected' and
+                family['operational_admission'] == 'not_admitted' and family['collector_enabled'] is False,
+                'Research family cannot enable collection/admission')
+        require(family['research_status'] in {'primary_research_verified', 'index_only_direct_access_blocked'},
+                'Unknown research verification status')
+        for field in ['name', 'summary', 'rights_summary']:
+            require(isinstance(family.get(field), str) and family[field].strip(), f'Missing research {field}')
+        artifacts = family['artifacts']
+        by_id = {a['artifact_id']: a for a in artifacts}
+        require(artifacts and len(by_id) == len(artifacts) and not (by_id.keys() & all_artifacts.keys()),
+                'Missing/duplicate research artifact ID')
+        for artifact in artifacts:
+            check_url(artifact['url'])
+            require(artifact['raw_content_in_catalog'] is False, 'Research catalog cannot embed raw artifacts')
+            require(artifact['access_status'] in {'primary_opened', 'bounded_sample_opened', 'access_blocked',
+                                                  'index_only', 'index_only_direct_timeout'}, 'Invalid artifact access status')
+            require(artifact['reviewed_on'] == catalog['reviewed_on'] and artifact['provenance_locator'],
+                    'Research artifact lacks dated provenance')
+            require(artifact['rights_status'] in {'declared_license', 'restricted_use', 'unknown'} and
+                    artifact['rights_note'], 'Research artifact lacks scoped rights')
+            refs = artifact['rights_evidence_artifact_ids']
+            require(set(refs) <= by_id.keys(), 'Unknown rights evidence artifact')
+            if artifact['rights_status'] != 'unknown':
+                require(artifact.get('license_identifier') and refs, 'Declared rights lack evidence/scope')
+            for field, length in [('git_commit', 40), ('identified_commit', 40), ('git_blob_sha', 40), ('sha256', 64)]:
+                if field in artifact:
+                    require(isinstance(artifact[field], str) and re.fullmatch('[0-9a-f]{'+str(length)+'}', artifact[field]),
+                            f'Invalid research artifact {field}')
+            if 'git_commit' in artifact:
+                require('/blob/' + artifact['git_commit'] + '/' in artifact['url'], 'Artifact URL/pin mismatch')
+        for relation in family['inventory_relationships']:
+            require(relation['source_id'] in SOURCE_IDS and relation['evidence_artifact_id'] in by_id,
+                    'Unknown research inventory/evidence reference')
+        findings = family['findings']
+        require(findings and len({f['finding_id'] for f in findings}) == len(findings), 'Missing/duplicate research finding')
+        for finding in findings:
+            require(finding['text'] and finding['evidence_artifact_ids'] and
+                    set(finding['evidence_artifact_ids']) <= by_id.keys(), 'Research finding lacks artifact provenance')
+            require(finding['verification_level'] in {'primary_source_reported', 'index_only_inconclusive'},
+                    'Unknown finding verification level')
+        if family['research_status'] == 'index_only_direct_access_blocked':
+            require(all(a['access_status'] not in {'primary_opened', 'bounded_sample_opened'} for a in artifacts) and
+                    all(f['verification_level'] == 'index_only_inconclusive' for f in findings),
+                    'Index-only evidence cannot become opened-primary verification')
+        all_artifacts.update(by_id)
+    by_family = {f['candidate_id']: f for f in families}
+    require(any(r['source_id'] == 'CN019' and r['relationship'] == 'documented_integration'
+                for r in by_family['ZHS001']['inventory_relationships']), 'FLAMES/CN019 relationship missing')
+    require(by_family['ZHS008']['classification'] == 'existing_family_enrichment' and
+            any(r['source_id'] == 'CN020' and r['relationship'] == 'same_family_component'
+                for r in by_family['ZHS008']['inventory_relationships']), 'C-SEM must remain CN020 enrichment')
+    spec = catalog['proposed_adapter']
+    require(spec['status'] == 'proposed_not_implemented' and spec['candidate_id'] == 'ZHS001', 'Research adapter must remain a specification')
+    require(set(spec['artifact_ids']) == {'flames_readme', 'flames_license'} and len(spec['artifact_ids']) == 2 and
+            spec['content_fetches_max'] == 2 and 0 < spec['bytes_per_file_max'] <= 131072 and
+            spec['reject_unexpected_redirects'] is True, 'FLAMES adapter bounds changed')
+    for artifact_id in spec['artifact_ids']:
+        artifact = all_artifacts[artifact_id]
+        require(all(artifact.get(k) for k in ['git_commit', 'git_blob_sha', 'sha256']) and
+                0 < artifact['size_bytes'] <= spec['bytes_per_file_max'], 'FLAMES specification lacks bounded integrity pins')
+    require(spec['numeric_representation'] == 'exact_decimal_strings' and
+            set(spec['unknown_fields']) == {'model_checkpoint', 'evaluated_at', 'denominator', 'fully_specified_protocol'} and
+            all(v is None for v in spec['unknown_fields'].values()) and spec['independent_experiment_count'] is None,
+            'FLAMES specification must preserve unknowns/exact decimals')
+    require(spec['parse_section'] == 'Leaderboard' and spec['expected_unique_model_labels'] == 17 and
+            spec['expected_scalar_cells'] == 187 and len(spec['spot_checks']) == 3,
+            'FLAMES historical table scope/cardinality changed')
+    for spot in spec['spot_checks']:
+        require(isinstance(spot['decimal_value'], str) and re.fullmatch(r'\d+(?:\.\d+)?', spot['decimal_value']),
+                'Research numeric spot checks require decimal strings')
+        require(spot['unit'] in {'percent', 'source_defined_score'} and
+                spot['raw_value'] == spot['decimal_value'] + ('%' if spot['unit'] == 'percent' else ''),
+                'Research spot-check value/unit mismatch')
+    headings = re.findall(r'^## (ZHS[0-9]{3}) (.+)$', markdown, flags=re.MULTILINE)
+    require(len(headings) == len(ids) and dict(headings) == {f['candidate_id']: f['name'] for f in families},
+            'Research catalog documentation IDs/titles mismatch')
+    return {'research_candidates': len(families), 'research_artifact_references': len(all_artifacts),
+            'unadmitted_research_candidates': len(families)}
+
+
 def check_fingerprints():
     manifest = read_json(HERE / 'frozen_contract_manifest.json')
     require(manifest['contract_version'] == '0.1.0', 'Frozen version changed without review')
@@ -282,7 +382,7 @@ def check_fingerprints():
 
 def check_doc_links(base_paths=None):
     # Only introduced program docs and root README; existing docs are untouched.
-    files = [ROOT / 'README.md'] + list(DOCS.glob('*.md')) + list(DATA.rglob('*.md')) + list(HERE.glob('*.md'))
+    files = [ROOT / 'README.md'] + list(DOCS.rglob('*.md')) + list(DATA.rglob('*.md')) + list(HERE.glob('*.md'))
     checked = 0
     for file in files:
         text = file.read_text(encoding='utf-8')
@@ -327,6 +427,9 @@ def run(base_paths=None):
         require(set(recipe['record_types']) <= record_types, 'Recipe refers to unknown record types')
     task_counts = check_task_plan(read_json(DATA / 'implementation_tasks.json'), recipes,
                                   (DOCS / 'implementation_tasks.md').read_text(encoding='utf-8'), base_paths)
+    research_counts = check_research_catalog(read_json(DATA / 'research/chinese-safety-evaluations.json'),
+                                            hashlib.sha256((DATA / 'source_inventory.json').read_bytes()).hexdigest(),
+                                            (DOCS / 'research/chinese-safety-evaluations.md').read_text(encoding='utf-8'))
     links = check_doc_links(base_paths)
     loader = unittest.TestLoader()
     contract_suite = loader.discover(str(HERE / 'tests'), pattern='test_contract.py')
@@ -337,7 +440,7 @@ def run(base_paths=None):
     require(integration_suite.countTestCases() > 0, 'Integration regression tests missing')
     integration_result = unittest.TextTestRunner(verbosity=1).run(integration_suite)
     require(integration_result.wasSuccessful(), 'Integration regression suite failed')
-    return {'status': 'passed', **COUNTS, **task_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
+    return {'status': 'passed', **COUNTS, **task_counts, **research_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
             'documentation_relative_links': links, 'integration_regression_tests': integration_result.testsRun,
             'scope': 'Offline consistency and synthetic regression checks only. No source fetch, collection, production import, deployment, rights approval or language-accuracy evaluation.'}
 
