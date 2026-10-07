@@ -9,7 +9,7 @@ import os
 from pathlib import Path
 
 from .scratch import BoundedScratch, CHUNK_BYTES, StorageStop
-from .supervisor import Artifact, CHECKPOINT, PENDING, DrivePin, Supervisor
+from .supervisor import Artifact, CHECKPOINT, MAX_BATCH_BYTES, PENDING, DrivePin, Supervisor
 
 PIN_KEYS = ("id", "canonical_url", "collection_method", "review_state", "rights_notes",
             "verification_method", "owner_person_id", "enabled", "continuously_collectible")
@@ -107,7 +107,7 @@ def run_metadata_pilot(*, scratch: BoundedScratch, drive, pin: DrivePin, seed_di
         raise StorageStop("parent release is required for the one-time metadata pilot")
     sources = admitted_sources(registry_sources)
     supervisor = Supervisor(scratch, drive, pin)
-    supervisor.preflight(128 * 1024 * 1024)
+    supervisor.preflight(0)  # Validate identity/privacy before zero-upload recovery.
     checkpoint = scratch.read_json(CHECKPOINT)
     if checkpoint and checkpoint.get("cursor_after", {}).get("kind") == "metadata-pilot":
         return supervisor.resume()
@@ -119,6 +119,9 @@ def run_metadata_pilot(*, scratch: BoundedScratch, drive, pin: DrivePin, seed_di
         return supervisor.submit(artifacts, cursor_after=pending["cursor_after"], cleanup_inputs=clean)
     if not checkpoint or checkpoint.get("cursor_after") != {"kind": "drive-smoke", "synthetic": True}:
         raise StorageStop("verified synthetic Drive smoke checkpoint is required before fetching")
+    # A new fetch reserves the collection batch; pending/replayed pilots above
+    # delegate only their remaining upload reservation to the supervisor.
+    supervisor.preflight(MAX_BATCH_BYTES)
     if refresh is None:
         from pdoom_pipeline.refresh.runner import run_refresh
         refresh = run_refresh

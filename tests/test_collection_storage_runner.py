@@ -10,7 +10,7 @@ from test_collection_storage import FakeDrive, PIN, root, scratch
 from pdoom_pipeline.collection_storage.bootstrap import synthetic_smoke
 from pdoom_pipeline.collection_storage.pilot import admitted_sources, run_metadata_pilot
 from pdoom_pipeline.collection_storage.scratch import METADATA_RESERVE, StorageStop
-from pdoom_pipeline.collection_storage.supervisor import CHECKPOINT, PENDING
+from pdoom_pipeline.collection_storage.supervisor import CHECKPOINT, PENDING, Supervisor
 from pdoom_pipeline.fetch import FetchResult, SafeFetcher
 from pdoom_pipeline.refresh.runner import run_refresh
 
@@ -115,3 +115,88 @@ def test_real_runner_failed_feed_remains_partial_in_remote_checkpoint(root, fetc
         assert result["cursor_after"]["counts"]["failed"] == 1
         assert result["cursor_after"]["counts"]["new"] == 7
         assert len(called) == 8
+
+
+@pytest.mark.parametrize("cleanup_crash", [False, True], ids=["completed-replay", "committed-cleanup"])
+def test_actual_pilot_entrypoint_recovers_at_full_drive_quota(root, fetcher, monkeypatch, cleanup_crash):
+    require_hook()
+    client, called = fetcher
+    d = FakeDrive()
+    args = dict(drive=d, pin=PIN, seed_dir=SEED, people=[], registry_sources=REGISTRY,
+                refresh=run_refresh, fetcher=client, released=True, now=NOW)
+    with scratch() as s:
+        synthetic_smoke(s, d, PIN)
+        usage_before = int(d.quota["usage"])
+        with monkeypatch.context() as fault:
+            if cleanup_crash:
+                def interrupted_cleanup(self, pending):
+                    raise StorageStop("crash after committed pilot checkpoint")
+                fault.setattr(Supervisor, "_cleanup", interrupted_cleanup)
+                with pytest.raises(StorageStop, match="committed pilot checkpoint"):
+                    run_metadata_pilot(scratch=s, **args)
+            else:
+                run_metadata_pilot(scratch=s, **args)
+        committed = s.read_json(CHECKPOINT)
+        assert committed["cursor_after"]["kind"] == "metadata-pilot"
+        assert committed["cursor_after"]["counts"]["new"] == 8
+        assert bool(s.read_json(PENDING)) == cleanup_crash
+        assert int(d.quota["usage"]) > usage_before
+        d.quota["limit"] = d.quota["usage"]
+        uploads_before = len(d.begun)
+    with scratch() as s:
+        assert run_metadata_pilot(scratch=s, **args) == committed
+        assert not s.path(PENDING).exists()
+        assert not [p for p in s.path("runner").rglob("*") if p.is_file()]
+        assert run_metadata_pilot(scratch=s, **args) == committed
+        assert len(d.begun) == uploads_before
+        assert len(called) == 8  # No source refetch during either recovery/replay.
+
+
+def test_actual_pilot_entrypoint_reserves_only_pending_manifest(root, fetcher):
+    require_hook()
+    client, called = fetcher
+    d = FakeDrive()
+    args = dict(drive=d, pin=PIN, seed_dir=SEED, people=[], registry_sources=REGISTRY,
+                refresh=run_refresh, fetcher=client, released=True, now=NOW)
+    with scratch() as s:
+        smoke = synthetic_smoke(s, d, PIN)
+        usage_before = int(d.quota["usage"])
+        d.fail_manifest = True
+        with pytest.raises(StorageStop, match="manifest interruption"):
+            run_metadata_pilot(scratch=s, **args)
+        assert s.read_json(CHECKPOINT) == smoke
+        pending = s.read_json(PENDING)
+        assert pending["phase"] == "uploading"
+        assert all(entry["remote_id"] in d.remote for entry in pending["entries"])
+        assert int(d.quota["usage"]) > usage_before
+        remaining = pending["manifest"]["size"]
+        assert remaining < 128 * 1024 * 1024
+        d.quota["limit"] = str(int(d.quota["usage"]) + remaining)
+        d.fail_manifest = False
+        uploads_before = len(d.begun)
+    with scratch() as s:
+        result = run_metadata_pilot(scratch=s, **args)
+        assert result["cursor_after"]["kind"] == "metadata-pilot"
+        assert result["cursor_after"]["counts"]["new"] == 8
+        assert int(d.quota["usage"]) == int(d.quota["limit"])
+        assert len(d.begun) == uploads_before + 1  # Only the pending manifest.
+        assert len(called) == 8
+        assert not s.path(PENDING).exists()
+        assert not [p for p in s.path("runner").rglob("*") if p.is_file()]
+
+
+def test_fresh_actual_pilot_still_refuses_full_quota_before_fetch(root, fetcher):
+    require_hook()
+    client, called = fetcher
+    d = FakeDrive()
+    with scratch() as s:
+        smoke = synthetic_smoke(s, d, PIN)
+        uploads_before = len(d.begun)
+        d.quota["limit"] = d.quota["usage"]
+        with pytest.raises(StorageStop, match="quota"):
+            run_metadata_pilot(scratch=s, drive=d, pin=PIN, seed_dir=SEED, people=[],
+                    registry_sources=REGISTRY, refresh=run_refresh, fetcher=client, released=True, now=NOW)
+        assert s.read_json(CHECKPOINT) == smoke
+        assert not s.path(PENDING).exists()
+        assert called == []
+        assert len(d.begun) == uploads_before
