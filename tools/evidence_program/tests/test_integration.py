@@ -104,5 +104,97 @@ class IntegrationTests(unittest.TestCase):
                 check.check_csv(path, [{'source_id': 'GL001', 'name': 'original'}])
 
 
+class TaskPlanTests(unittest.TestCase):
+    def setUp(self):
+        self.plan = check.read_json(check.DATA / 'implementation_tasks.json')
+        self.recipes = check.read_json(check.DATA / 'analysis_recipes.json')
+        self.markdown = (check.DOCS / 'implementation_tasks.md').read_text(encoding='utf-8')
+        self.paths = {path for task in self.plan['tasks'] for path in task['existing_paths']}
+
+    def validate(self):
+        return check.check_task_plan(self.plan, self.recipes, self.markdown, self.paths)
+
+    def test_task_pack_positive(self):
+        result = self.validate()
+        self.assertEqual(result['implementation_tasks'], len(self.plan['tasks']))
+
+    def test_duplicate_task_id_rejected(self):
+        self.plan['tasks'].append(dict(self.plan['tasks'][0]))
+        with self.assertRaisesRegex(ValueError, 'Duplicate implementation task ID'):
+            self.validate()
+
+    def test_unknown_dependency_rejected(self):
+        self.plan['tasks'][0]['depends_on'] = ['EP99999']
+        with self.assertRaisesRegex(ValueError, 'unknown task'):
+            self.validate()
+
+    def test_self_dependency_rejected(self):
+        task = self.plan['tasks'][0]
+        task['depends_on'] = [task['id']]
+        with self.assertRaisesRegex(ValueError, 'itself'):
+            self.validate()
+
+    def test_dependency_cycle_rejected(self):
+        first, second = self.plan['tasks'][:2]
+        first['depends_on'] = [second['id']]
+        second['depends_on'] = [first['id']]
+        with self.assertRaisesRegex(ValueError, 'dependency cycle'):
+            self.validate()
+
+    def test_unknown_task_source_rejected(self):
+        self.plan['tasks'][0]['source_ids'] = ['GL999']
+        with self.assertRaisesRegex(ValueError, 'unknown source ID'):
+            self.validate()
+
+    def test_unknown_task_recipe_rejected(self):
+        self.plan['tasks'][0]['recipe_ids'] = ['R999']
+        with self.assertRaisesRegex(ValueError, 'unknown recipe ID'):
+            self.validate()
+
+    def test_task_path_traversal_rejected(self):
+        for path in ['../outside.py', '/tmp/outside.py', 'C:\\outside.py', '.']:
+            with self.subTest(path=path):
+                self.plan['tasks'][0]['proposed_paths'] = [path]
+                with self.assertRaisesRegex(ValueError, 'Unsafe task path'):
+                    self.validate()
+
+    def test_task_missing_existing_path_rejected(self):
+        self.plan['tasks'][0]['existing_paths'].append('missing-task-baseline-file.py')
+        with self.assertRaisesRegex(ValueError, 'existing path not found'):
+            self.validate()
+
+    def test_conflicting_task_path_roles_rejected(self):
+        self.plan['tasks'][0]['proposed_paths'].append(self.plan['tasks'][0]['existing_paths'][0])
+        with self.assertRaisesRegex(ValueError, 'both existing and proposed'):
+            self.validate()
+
+    def test_later_creation_of_proposed_path_is_allowed(self):
+        # Existence today does not change the proposed-at-baseline designation.
+        self.paths.update(self.plan['tasks'][0]['proposed_paths'])
+        self.validate()
+
+    def test_task_doc_title_drift_rejected(self):
+        task = self.plan['tasks'][0]
+        self.markdown = self.markdown.replace('## ' + task['id'] + ' ' + task['title'],
+                                               '## ' + task['id'] + ' Changed title', 1)
+        with self.assertRaisesRegex(ValueError, 'IDs/titles'):
+            self.validate()
+
+    def test_task_doc_missing_heading_rejected(self):
+        self.markdown = self.markdown.replace('## ' + self.plan['tasks'][0]['id'] + ' ', '## Removed ', 1)
+        with self.assertRaisesRegex(ValueError, 'heading count'):
+            self.validate()
+
+    def test_plan_cannot_claim_execution(self):
+        self.plan['tasks'][0]['status'] = 'completed'
+        with self.assertRaisesRegex(ValueError, 'claims execution'):
+            self.validate()
+
+    def test_task_acceptance_evidence_required(self):
+        self.plan['tasks'][0]['completion_evidence'] = []
+        with self.assertRaisesRegex(ValueError, 'missing completion_evidence'):
+            self.validate()
+
+
 if __name__ == '__main__':
     unittest.main()
