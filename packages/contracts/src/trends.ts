@@ -27,6 +27,7 @@ export const EXCLUSION_REASONS = [
   "withdrawn",
   "no_verified_revision",
   "relationship_not_a_revision",
+  "relationship_time_order",
   "different_person",
 ] as const;
 export type ExclusionReason = (typeof EXCLUSION_REASONS)[number];
@@ -46,12 +47,13 @@ export const EXCLUSION_LABELS: Record<ExclusionReason, string> = {
   definition_mismatch: "The outcome definition does not match this comparison.",
   insufficient_agreement: "The stored fields do not agree closely enough to pool this record. It stays individually inspectable.",
   value_type_not_point: "A range, bound, quantile, or distribution was supplied where this summary needs a point. It is preserved and not converted into a midpoint.",
-  not_latest: "A later explicit estimate from the same person is kept in this cross-section. Dropping the earlier number is not, by itself, a revision.",
+  not_latest: "A later explicit estimate from the same person takes precedence. If that estimate was withdrawn, this older number is not automatically reinstated. Dropping the earlier number is not, by itself, a revision.",
   duplicate_statement: "This statement repeats the same value at the same time as the kept statement. It is not a second contribution.",
   superseded: "Superseded estimate. A human-verified update or retraction links it to a later estimate on the same question.",
   withdrawn: "A human-verified withdrawal or retraction removes this estimate. No replacement number is required, and the historical statement stays on the record.",
   no_verified_revision: "No human-verified update, retraction, or withdrawal connects this estimate to another on the same question.",
   relationship_not_a_revision: "This relationship is a repeat, clarification, or contradiction. It is not drawn as a change of forecast.",
+  relationship_time_order: "This relationship does not establish a strictly later dated statement. Missing, equal, or reversed event times are not drawn as a revision or applied as a withdrawal.",
   different_person: "This relationship joins two different people, so it is not one person's revision.",
 };
 
