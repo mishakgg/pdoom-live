@@ -1,0 +1,90 @@
+[
+  {
+    "id": "src:person:holden-karnofsky:blog:5bb42de6a9b9",
+    "canonical_url": "https://www.cold-takes.com/rss/",
+    "collection_method": "rss_feed",
+    "review_state": "machine_validated",
+    "rights_notes": "Public RSS whose author field is Holden Karnofsky on his own site.",
+    "verification_method": "owned_feed_author",
+    "owner_person_id": "person:holden-karnofsky",
+    "enabled": true,
+    "continuously_collectible": true
+  },
+  {
+    "id": "src:person:jack-clark:newsletter:d76e6230a20b",
+    "canonical_url": "https://jack-clark.net/feed/",
+    "collection_method": "rss_feed",
+    "review_state": "machine_validated",
+    "rights_notes": "Public RSS on jack-clark.net. Items are kept only when the author field is Jack Clark.",
+    "verification_method": "owned_feed_author",
+    "owner_person_id": "person:jack-clark",
+    "enabled": true,
+    "continuously_collectible": true
+  },
+  {
+    "id": "src:person:nathan-lambert:newsletter:633e5ebcb836",
+    "canonical_url": "https://www.interconnects.ai/feed",
+    "collection_method": "rss_feed",
+    "review_state": "machine_validated",
+    "rights_notes": "Public RSS whose author field is Nathan Lambert.",
+    "verification_method": "owned_feed_author",
+    "owner_person_id": "person:nathan-lambert",
+    "enabled": true,
+    "continuously_collectible": true
+  },
+  {
+    "id": "src:person:yoshua-bengio:blog:ffc92830c602",
+    "canonical_url": "https://yoshuabengio.org/en/feed",
+    "collection_method": "rss_feed",
+    "review_state": "machine_validated",
+    "rights_notes": "Public RSS on yoshuabengio.org whose author field is Yoshua Bengio.",
+    "verification_method": "owned_feed_author",
+    "owner_person_id": "person:yoshua-bengio",
+    "enabled": true,
+    "continuously_collectible": true
+  },
+  {
+    "id": "src:person:jan-leike:newsletter:fc63a55532c5",
+    "canonical_url": "https://aligned.substack.com/feed",
+    "collection_method": "rss_feed",
+    "review_state": "machine_validated",
+    "rights_notes": "Jan Leike's public Substack. Items are kept only when the author field is Jan Leike.",
+    "verification_method": "owned_feed_author",
+    "owner_person_id": "person:jan-leike",
+    "enabled": true,
+    "continuously_collectible": true
+  },
+  {
+    "id": "src:person:paul-christiano:newsletter:7b0b1c3e0129",
+    "canonical_url": "https://paulfchristiano.substack.com/feed",
+    "collection_method": "rss_feed",
+    "review_state": "machine_validated",
+    "rights_notes": "Paul Christiano's public Substack. Items are kept only when the author field is Paul Christiano.",
+    "verification_method": "owned_feed_author",
+    "owner_person_id": "person:paul-christiano",
+    "enabled": true,
+    "continuously_collectible": true
+  },
+  {
+    "id": "src:person:lilian-weng:rss:c4683e6fa717",
+    "canonical_url": "https://lilianweng.github.io/index.xml",
+    "collection_method": "rss_feed",
+    "review_state": "machine_validated",
+    "rights_notes": "Public RSS or Atom feed linked from a name-confirmed page. Excerpts only.",
+    "verification_method": "claimed_url_page_name",
+    "owner_person_id": "person:lilian-weng",
+    "enabled": true,
+    "continuously_collectible": true
+  },
+  {
+    "id": "src:person:victoria-krakovna:blog:b06eb7b3e1d8",
+    "canonical_url": "https://vkrakovna.wordpress.com/feed",
+    "collection_method": "rss_feed",
+    "review_state": "machine_validated",
+    "rights_notes": "Victoria Krakovna's public WordPress feed. Items are kept only when the author field matches and a statement candidate is present.",
+    "verification_method": "owned_feed_author",
+    "owner_person_id": "person:victoria-krakovna",
+    "enabled": true,
+    "continuously_collectible": true
+  }
+]
