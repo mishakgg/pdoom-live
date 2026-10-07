@@ -114,12 +114,15 @@ class SafeFetcher:
         self.header_provider: Callable[[str], dict[str, str]] | None = None
         self.cache_get: Callable[[str], bytes | None] | None = None
         self.cache_put: Callable[[str, bytes, dict[str, str]], None] | None = None
+        self.url_policy: Callable[[str], None] | None = None
         self.user_agent = user_agent
         self.allowed_content_types = allowed_content_types
         self._host_next: dict[str, float] = {}
         self.last: FetchResult | None = None
 
     def validate_destination(self, url: str) -> list[str]:
+        if self.url_policy is not None:
+            self.url_policy(url)
         parsed = urlparse(url)
         if parsed.scheme.lower() not in {"http", "https"}:
             raise CollectorFailure(UNSAFE_URL, f"unsupported scheme: {parsed.scheme}")
@@ -164,7 +167,7 @@ class SafeFetcher:
                         conditional = False
                         continue
                     self.last = result
-                    return result
+                    raise CollectorFailure("invalid_content", "304 has no validated retained body")
                 if self.cache_put is not None and result.body:
                     self.cache_put(url, result.body, result.headers)
                 self.last = result
@@ -236,6 +239,7 @@ class SafeFetcher:
             request_headers = {key.lower(): value for key, value in merged.items()}
             if self.transport is not None:
                 result = self.transport(current, request_headers)
+                self.validate_destination(result.url)
                 result.requested_urls = list(requested)
                 self._check_status_and_type(result)
                 if result.status != 304 and len(result.body) > self.max_bytes:

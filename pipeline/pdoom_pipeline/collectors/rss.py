@@ -246,16 +246,16 @@ class RssCollector:
 
 
 def _entries(root: UnsafeElementTree.Element) -> list[UnsafeElementTree.Element]:
-    tag = root.tag.lower()
-    if tag == "rss" or tag.endswith("}rss") or root.find("channel") is not None:
+    tag = root.tag
+    if tag == "rss":
         channel = root.find("channel")
         if channel is None:
             raise CollectorFailure("invalid_content", "rss feed has no channel")
         return list(channel.findall("item"))
-    if tag.endswith("feed") or tag == "feed":
+    if tag in {"feed", "{http://www.w3.org/2005/Atom}feed"}:
         entries = root.findall("atom:entry", ATOM_NS)
         if not entries:
-            entries = [child for child in list(root) if child.tag.endswith("entry")]
+            entries = [child for child in list(root) if child.tag == "entry"]
         return entries
     raise CollectorFailure("parser_unsupported", f"unsupported feed root: {root.tag}")
 

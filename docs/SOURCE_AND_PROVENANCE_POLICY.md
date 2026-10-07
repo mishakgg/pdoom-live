@@ -66,7 +66,7 @@ Prefer storing:
 
 Do not build the product around republishing complete copyrighted articles, newsletters, podcast transcripts, or books.
 
-If a source license explicitly permits broader retention, record the license/rights basis.
+If a source license explicitly permits broader retention, record the license/rights basis and an explicit expiry. The recurring runner enforces curator admission and separate evidence/extraction flags, defaults raw response persistence to off, and removes expired or revoked body caches. Public availability and open-access metadata are not copying permission. See [refresh admission and retention](./REFRESH.md#admission-and-retention-controls) for the configuration and the distinction between current artifacts and already published database records.
 
 ## Evidence
 
