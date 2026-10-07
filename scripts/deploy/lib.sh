@@ -50,6 +50,20 @@ render_upstream() {
   mv "$STATE_DIR/upstream.caddy.next" "$STATE_DIR/upstream.caddy"
 }
 
+reload_caddy() {
+  local attempt
+  # Compose -d only starts the process. The admin listener may not be ready yet,
+  # and an exited/restarting proxy must never turn a reload into a silent success.
+  for attempt in $(seq 1 40); do
+    if docker exec pdoom-prod-caddy caddy reload --config /etc/caddy/Caddyfile --adapter caddyfile >/dev/null 2>&1; then
+      return 0
+    fi
+    sleep 1
+  done
+  echo "Caddy did not accept its configuration within 40 attempts; refusing to continue the traffic switch" >&2
+  return 1
+}
+
 load_env_file() {
   [[ -f "$ENV_FILE" ]] || die "missing env file $ENV_FILE"
   local line key value
