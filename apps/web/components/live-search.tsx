@@ -5,7 +5,7 @@ import {
   SEARCH_SUGGEST_MIN,
   createRequestGate,
   type SearchResponse,
-} from "@pdoom/contracts";
+} from "@pdoom/contracts/browser";
 import Link from "next/link";
 import { useEffect, useId, useMemo, useState, type KeyboardEvent } from "react";
 

@@ -5,6 +5,7 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
+    "./browser": "./src/browser.ts",
     "./schema/canonical-import.schema.json": "./schema/canonical-import.schema.json",
     "./openapi/public-v1.openapi.json": "./openapi/public-v1.openapi.json"
   },
