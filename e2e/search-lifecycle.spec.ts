@@ -40,7 +40,7 @@ for (const name of ["Search people, statements, topics, and sources", "Person"])
   });
 }
 
-test("keyboard suggestions stay visible, dismiss outside, and reset after navigation", async ({ page }) => {
+test("keyboard suggestions stay visible, dismiss outside, and reset after navigation", async ({ page }, testInfo) => {
   // Keep unique slugs/DOM IDs while retaining one real detail destination below.
   await page.route("**/api/search?**", (route) => route.fulfill({
     json: { ...suggestions, groups: { ...suggestions.groups, person: {
@@ -63,7 +63,16 @@ test("keyboard suggestions stay visible, dismiss outside, and reset after naviga
     return itemBounds.top >= listBounds.top && itemBounds.bottom <= listBounds.bottom + 1;
   });
   expect(visible).toBe(true);
-  await page.getByRole("heading", { name: "Statements", exact: true }).click();
+  // On mobile the popup covers the page heading. Click exposed page padding,
+  // after verifying hit-testing really is outside the widget; never force a
+  // click through a suggestion (which would test a different interaction).
+  const outside = { x: 2, y: 2 };
+  expect(await page.evaluate(({ x, y }) => {
+    const target = document.elementFromPoint(x, y);
+    return target !== null && !target.closest("form.search");
+  }, outside)).toBe(true);
+  if (testInfo.project.use.hasTouch) await page.touchscreen.tap(outside.x, outside.y);
+  else await page.mouse.click(outside.x, outside.y);
   await expect(page.getByRole("listbox")).toHaveCount(0);
   await input.fill("adab");
   await page.getByRole("option", { name: /Ada fixture 0/ }).click();
