@@ -1,0 +1,1246 @@
+{
+  "catalog_version": "chinese-safety-research/1.0.0",
+  "reviewed_on": "2026-10-07",
+  "repository_baseline_commit": "6c2a4aa531cd5b8e5411c25ee08569d707a682b1",
+  "catalog_state": "research_only_not_admitted",
+  "operational_admission": "not_admitted",
+  "collector_enabled": false,
+  "baseline_inventory": {
+    "repo_path": "data/evidence-program/source_inventory.json",
+    "version": "1.1",
+    "record_count": 64,
+    "sha256": "a4b5046c3dec44598eeab3f025db75783f9ae5f702e0570d7b31fb3026dde678",
+    "audit_commit": "f5274396885dbb654fc2861a78fa5be8f42fad38",
+    "comparison_scope": "Exact-name/owner/URL-token comparison with the frozen 64-family inventory. New-relative-to-inventory does not establish whole-repository absence or scientific independence."
+  },
+  "interpretation": [
+    "Eight provisional candidates: seven new relative to the frozen inventory and one CN020 component enrichment. Candidate IDs are research-only IDs, not new GL/CN IDs or canonical source-artifact revisions.",
+    "Research-verified means specified primary metadata was inspected. It does not mean corpus collection, model replication, human identity approval, legal clearance or operational admission.",
+    "Access and artifact-specific rights are separate. Unknown rights remain unknown; a root software license cannot license every dataset, report, image or model weight.",
+    "No dataset prompts, complete result tables, source code, model weights, raw upload or production-ready observation records are embedded.",
+    "Scores preserve source definitions, dates and populations. None is a direct p(doom), AGI timeline, ordinary-use risk rate or a population consensus."
+  ],
+  "families": [
+    {
+      "candidate_id": "ZHS001",
+      "name": "FLAMES",
+      "classification": "new_relative_to_frozen_inventory",
+      "research_status": "primary_research_verified",
+      "collection_status": "candidate_not_collected",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "summary": "Chinese adversarial value-alignment benchmark with a small pinned historical results table.",
+      "rights_summary": "Apache-2.0 is declared for the selected repository README. No inference about scorer weights, public prompt payloads, third-party content or the separate paper.",
+      "inventory_relationships": [
+        {
+          "source_id": "CN019",
+          "relationship": "documented_integration",
+          "evidence_artifact_id": "flames_readme",
+          "note": "OpenCompass integration is a distribution/dependency relationship, not an independent experiment."
+        }
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "flames_readme",
+          "url": "https://github.com/AI45Lab/Flames/blob/234bcb7a4a9da44c4177d2c2005e3bf8a582a5fc/README.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Leaderboard table and dated update marker",
+          "rights_status": "declared_license",
+          "license_identifier": "Apache-2.0",
+          "rights_note": "Apache-2.0 is declared for the selected repository README. No inference about scorer weights, public prompt payloads, third-party content or the separate paper.",
+          "raw_content_in_catalog": false,
+          "git_commit": "234bcb7a4a9da44c4177d2c2005e3bf8a582a5fc",
+          "git_blob_sha": "f3f6cb666cabbeeda92d00d9311bbf27b654f164",
+          "sha256": "f7142cbb5622268e0770332860d695397ca894d1c708da74bf4c109b17fb495f",
+          "size_bytes": 7310,
+          "rights_evidence_artifact_ids": [
+            "flames_license"
+          ]
+        },
+        {
+          "artifact_id": "flames_license",
+          "url": "https://github.com/AI45Lab/Flames/blob/234bcb7a4a9da44c4177d2c2005e3bf8a582a5fc/LICENSE",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Apache-2.0 license text",
+          "rights_status": "declared_license",
+          "license_identifier": "Apache-2.0",
+          "rights_note": "Apache-2.0 is declared for the selected repository README. No inference about scorer weights, public prompt payloads, third-party content or the separate paper.",
+          "raw_content_in_catalog": false,
+          "git_commit": "234bcb7a4a9da44c4177d2c2005e3bf8a582a5fc",
+          "git_blob_sha": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "size_bytes": 11357,
+          "rights_evidence_artifact_ids": [
+            "flames_license"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "ZHS001-F01",
+          "text": "The selected table has 17 unique model labels and 187 scalar cells. These are reported values, not 187 independent experiments. Harmless rates and graded harmless scores remain separate metrics.",
+          "evidence_artifact_ids": [
+            "flames_readme"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS001-F02",
+          "text": "The table-update marker is December 11, 2023; the pinned artifact commit is May 21, 2024. Exact experiment dates, model checkpoints, protocol and table denominator remain unestablished.",
+          "evidence_artifact_ids": [
+            "flames_readme"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS001-F03",
+          "text": "The README describes 2,251 study prompts and 1,000 publicly released prompts. Neither count can be assigned as the historical table denominator without an explicit population match.",
+          "evidence_artifact_ids": [
+            "flames_readme"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS001-F04",
+          "text": "Reported author organizations are Shanghai AI Lab and Fudan NLP Group. Institutional overlap for individual model rows requires separate identity/affiliation evidence. No independent replication was performed.",
+          "evidence_artifact_ids": [
+            "flames_readme"
+          ],
+          "verification_level": "primary_source_reported"
+        }
+      ]
+    },
+    {
+      "candidate_id": "ZHS002",
+      "name": "Chinese SafetyQA",
+      "classification": "new_relative_to_frozen_inventory",
+      "research_status": "primary_research_verified",
+      "collection_status": "candidate_not_collected",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "summary": "Chinese safety-domain factual knowledge, answer correctness and abstention; distinct from refusal robustness.",
+      "rights_summary": "MIT is declared for repository software/documentation. Dataset CC BY-NC-SA 4.0 and paper CC BY 4.0 are separate artifact-specific declarations.",
+      "inventory_relationships": [],
+      "artifacts": [
+        {
+          "artifact_id": "csqa_readme",
+          "url": "https://github.com/LivingFutureLab/ChineseSafetyQA/blob/5be00913f99e24965378b557f1f0ecb7443caba3/README_zh.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "lines 1-130",
+          "rights_status": "declared_license",
+          "rights_note": "Repository software/associated-documentation declaration; no blanket dataset license.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "197ded5feb4fc661a80aa632b6435124bb1ca0ad",
+          "git_commit": "5be00913f99e24965378b557f1f0ecb7443caba3",
+          "license_identifier": "MIT",
+          "rights_evidence_artifact_ids": [
+            "csqa_license"
+          ]
+        },
+        {
+          "artifact_id": "csqa_license",
+          "url": "https://github.com/LivingFutureLab/ChineseSafetyQA/blob/5be00913f99e24965378b557f1f0ecb7443caba3/LICENSE",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Artifact metadata and declared access state; no complete corpus capture.",
+          "rights_status": "declared_license",
+          "rights_note": "Repository software/associated-documentation declaration; no blanket dataset license.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "b6824191e6c5f43531585bda6426e46d3afb411b",
+          "git_commit": "5be00913f99e24965378b557f1f0ecb7443caba3",
+          "license_identifier": "MIT",
+          "rights_evidence_artifact_ids": [
+            "csqa_license"
+          ]
+        },
+        {
+          "artifact_id": "csqa_sample",
+          "url": "https://github.com/LivingFutureLab/ChineseSafetyQA/blob/5be00913f99e24965378b557f1f0ecb7443caba3/data/chinese_safetyqa.jsonl",
+          "access_status": "bounded_sample_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "line 500 only",
+          "rights_status": "declared_license",
+          "rights_note": "Dataset-specific declaration on the opened HF card. The immutable card endpoint was unavailable; card text and metadata are not a broader reuse grant.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "7354c772fd1a3ed7b8b53d21ada9c14a0d8544f5",
+          "git_commit": "5be00913f99e24965378b557f1f0ecb7443caba3",
+          "license_identifier": "CC-BY-NC-SA-4.0",
+          "rights_evidence_artifact_ids": [
+            "csqa_dataset_card"
+          ]
+        },
+        {
+          "artifact_id": "csqa_dataset_card",
+          "url": "https://huggingface.co/datasets/OpenStellarTeam/Chinese-SafetyQA/blob/main/README.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Artifact metadata and declared access state; no complete corpus capture.",
+          "rights_status": "declared_license",
+          "rights_note": "Dataset-specific declaration on the opened HF card. The immutable card endpoint was unavailable; card text and metadata are not a broader reuse grant.",
+          "raw_content_in_catalog": false,
+          "pin_limitation": "Main card and linked commit page opened; immutable blob URL was not accessible via web tool.",
+          "identified_commit": "db66ec32331fcc3aed02fc4bdb01d416517a2262",
+          "license_identifier": "CC-BY-NC-SA-4.0",
+          "rights_evidence_artifact_ids": [
+            "csqa_dataset_card"
+          ]
+        },
+        {
+          "artifact_id": "csqa_card_commit",
+          "url": "https://huggingface.co/datasets/OpenStellarTeam/Chinese-SafetyQA/commit/db66ec32331fcc3aed02fc4bdb01d416517a2262",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Artifact metadata and declared access state; no complete corpus capture.",
+          "rights_status": "declared_license",
+          "rights_note": "Dataset-specific declaration on the opened HF card. The immutable card endpoint was unavailable; card text and metadata are not a broader reuse grant.",
+          "raw_content_in_catalog": false,
+          "license_identifier": "CC-BY-NC-SA-4.0",
+          "rights_evidence_artifact_ids": [
+            "csqa_dataset_card"
+          ]
+        },
+        {
+          "artifact_id": "csqa_paper",
+          "url": "https://arxiv.org/html/2412.15265v2",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Artifact metadata and declared access state; no complete corpus capture.",
+          "rights_status": "declared_license",
+          "rights_note": "Paper-v2 declaration only.",
+          "raw_content_in_catalog": false,
+          "source_version": "2412.15265v2",
+          "license_identifier": "CC-BY-4.0",
+          "rights_evidence_artifact_ids": [
+            "csqa_paper"
+          ]
+        },
+        {
+          "artifact_id": "csqa_dates",
+          "url": "https://arxiv.org/abs/2412.15265v2",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Artifact metadata and declared access state; no complete corpus capture.",
+          "rights_status": "declared_license",
+          "rights_note": "Paper-v2 declaration only.",
+          "raw_content_in_catalog": false,
+          "license_identifier": "CC-BY-4.0",
+          "rights_evidence_artifact_ids": [
+            "csqa_paper"
+          ]
+        },
+        {
+          "artifact_id": "csqa_data_history",
+          "url": "https://api.github.com/repos/LivingFutureLab/ChineseSafetyQA/commits?path=data/chinese_safetyqa.jsonl&per_page=1",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Artifact metadata and declared access state; no complete corpus capture.",
+          "rights_status": "unknown",
+          "rights_note": "MIT is declared for repository software/documentation. Dataset CC BY-NC-SA 4.0 and paper CC BY 4.0 are separate artifact-specific declarations.",
+          "raw_content_in_catalog": false,
+          "artifact_commit_date": "2024-12-20T02:28:25Z",
+          "identified_commit": "9048251bdd2522014ddaf6025ddc74b2d5a6c72a",
+          "rights_evidence_artifact_ids": []
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "ZHS002-F01",
+          "text": "The paper reports 2,000 underlying questions in QA and MCQ forms, not 4,000 independent cases. Supplied reference answers were inspected as source labels, not independently adjudicated.",
+          "evidence_artifact_ids": [
+            "csqa_paper",
+            "csqa_sample"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS002-F02",
+          "text": "QA uses a model judge and MCQ uses option matching. The GPT-4o paper-v2 spot check is CO 59.35, NA 0.30, IN 40.35, CGA 59.53 and F-score 59.44. F-score is the source-defined combination, not ordinary accuracy.",
+          "evidence_artifact_ids": [
+            "csqa_paper"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS002-F03",
+          "text": "Keep the December 11, 2024 README announcement, December 20 data-file change and December 17/23 arXiv submissions separate. These do not establish evaluation dates.",
+          "evidence_artifact_ids": [
+            "csqa_readme",
+            "csqa_dates",
+            "csqa_data_history"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS002-F04",
+          "text": "The Hugging Face main card and its commit page opened. Commit db66ec32331fcc3aed02fc4bdb01d416517a2262 was identified, but the immutable card endpoint was not successfully reopened.",
+          "evidence_artifact_ids": [
+            "csqa_dataset_card",
+            "csqa_card_commit"
+          ],
+          "verification_level": "primary_source_reported"
+        }
+      ]
+    },
+    {
+      "candidate_id": "ZHS003",
+      "name": "JADE",
+      "classification": "new_relative_to_frozen_inventory",
+      "research_status": "primary_research_verified",
+      "collection_status": "candidate_not_collected",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "summary": "Related red-team, training-lineage, multimodal hallucination and agent-security artifacts; versions remain one family.",
+      "rights_summary": "Root MIT software/documentation wording does not settle all data/image/report rights. HAL/MCP datasets state academic-research-only use. English paper v3 separately declares CC BY-NC-ND 4.0; Chinese-report rights remain unresolved.",
+      "inventory_relationships": [],
+      "artifacts": [
+        {
+          "artifact_id": "jade_page",
+          "url": "https://whitzard-ai.github.io/jade.html",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Live Chinese report page; result group table",
+          "rights_status": "unknown",
+          "rights_note": "Root MIT software/documentation wording does not settle all data/image/report rights. HAL/MCP datasets state academic-research-only use. English paper v3 separately declares CC BY-NC-ND 4.0; Chinese-report rights remain unresolved.",
+          "raw_content_in_catalog": false,
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "jade_root",
+          "url": "https://github.com/whitzard-ai/jade-db/blob/812de63691d129757b8a55851d0c3440d2714523/README.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Chinese family documentation",
+          "rights_status": "declared_license",
+          "rights_note": "Root software/associated-documentation declaration; does not settle all datasets, images or Chinese-report rights.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "6c8aad4119400e5eb93c7fa4c8064e1e1ef755ab",
+          "git_commit": "812de63691d129757b8a55851d0c3440d2714523",
+          "license_identifier": "MIT",
+          "rights_evidence_artifact_ids": [
+            "jade_license"
+          ]
+        },
+        {
+          "artifact_id": "jade3",
+          "url": "https://github.com/whitzard-ai/jade-db/blob/812de63691d129757b8a55851d0c3440d2714523/jade-db-v3.0/README.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Alignment training provenance",
+          "rights_status": "declared_license",
+          "rights_note": "Root software/associated-documentation declaration; does not settle all datasets, images or Chinese-report rights.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "50a8a2db6a9cb93a3628e3d11bc1fef5919c2410",
+          "git_commit": "812de63691d129757b8a55851d0c3440d2714523",
+          "license_identifier": "MIT",
+          "rights_evidence_artifact_ids": [
+            "jade_license"
+          ]
+        },
+        {
+          "artifact_id": "jade3_header",
+          "url": "https://github.com/whitzard-ai/jade-db/blob/main/jade-db-v3.0/jade_alignment_hard_zh.csv#L1",
+          "access_status": "bounded_sample_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "CSV header only",
+          "rights_status": "unknown",
+          "rights_note": "Root MIT software/documentation wording does not settle all data/image/report rights. HAL/MCP datasets state academic-research-only use. English paper v3 separately declares CC BY-NC-ND 4.0; Chinese-report rights remain unresolved.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "606934a806a4169849d1947c02cfd6ac6a6f8906",
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "jade_hal",
+          "url": "https://github.com/whitzard-ai/jade-db/blob/812de63691d129757b8a55851d0c3440d2714523/jade-hal-v1.0/README.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "HAL description, metric, use restriction and benign example",
+          "rights_status": "restricted_use",
+          "rights_note": "HAL/MCP datasets explicitly restrict use to academic research; no broader operational clearance.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "1ce6822cd3a65f9b73f0c504049d3ffc21b5a56b",
+          "git_commit": "812de63691d129757b8a55851d0c3440d2714523",
+          "license_identifier": "academic-research-only",
+          "rights_scope": "Academic-only restriction applies to the described dataset; no separately verified restrictive license on this README text is asserted.",
+          "rights_evidence_artifact_ids": [
+            "jade_hal"
+          ]
+        },
+        {
+          "artifact_id": "jadehal_pair",
+          "url": "https://github.com/whitzard-ai/jade-db/blob/812de63691d129757b8a55851d0c3440d2714523/jade-hal-v1.0/jade_hal_vqa.csv#L1-L3",
+          "access_status": "bounded_sample_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Header plus one bilingual benign image pair",
+          "rights_status": "restricted_use",
+          "rights_note": "HAL/MCP datasets explicitly restrict use to academic research; no broader operational clearance.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "fc1f1b26c9e1bfacaaae175102d10c003e122b9a",
+          "git_commit": "812de63691d129757b8a55851d0c3440d2714523",
+          "license_identifier": "academic-research-only",
+          "rights_evidence_artifact_ids": [
+            "jade_hal"
+          ]
+        },
+        {
+          "artifact_id": "jade_mcp",
+          "url": "https://github.com/whitzard-ai/jade-db/blob/812de63691d129757b8a55851d0c3440d2714523/jade-mcp-v1.0/README.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "MCP scope and academic use restriction",
+          "rights_status": "restricted_use",
+          "rights_note": "HAL/MCP datasets explicitly restrict use to academic research; no broader operational clearance.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "d9ed2b1a8f4471b5abf51f647b5d1d72e2156ffc",
+          "git_commit": "812de63691d129757b8a55851d0c3440d2714523",
+          "license_identifier": "academic-research-only",
+          "rights_scope": "Academic-only restriction applies to the described dataset; no separately verified restrictive license on this README text is asserted.",
+          "rights_evidence_artifact_ids": [
+            "jade_mcp"
+          ]
+        },
+        {
+          "artifact_id": "jade_license",
+          "url": "https://github.com/whitzard-ai/jade-db/blob/812de63691d129757b8a55851d0c3440d2714523/LICENSE",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Root license, full 21-line MIT text",
+          "rights_status": "declared_license",
+          "rights_note": "Root software/associated-documentation declaration; does not settle all datasets, images or Chinese-report rights.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "0cd7c8004b8482e27e01017aaa9e986b897cf7bc",
+          "git_commit": "812de63691d129757b8a55851d0c3440d2714523",
+          "license_identifier": "MIT",
+          "rights_evidence_artifact_ids": [
+            "jade_license"
+          ]
+        },
+        {
+          "artifact_id": "jade_paper",
+          "url": "https://arxiv.org/abs/2311.00286v3",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "English report metadata; submitted 2023-11-01, v3 2023-12-10",
+          "rights_status": "declared_license",
+          "rights_note": "English report-v3 declaration; not the Chinese report or repository datasets.",
+          "raw_content_in_catalog": false,
+          "license_identifier": "CC-BY-NC-ND-4.0",
+          "rights_evidence_artifact_ids": [
+            "jade_paper",
+            "jade_paper_license"
+          ]
+        },
+        {
+          "artifact_id": "jade_paper_license",
+          "url": "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "License linked directly from JADE arXiv report",
+          "rights_status": "declared_license",
+          "rights_note": "English report-v3 declaration; not the Chinese report or repository datasets.",
+          "raw_content_in_catalog": false,
+          "license_identifier": "CC-BY-NC-ND-4.0",
+          "rights_evidence_artifact_ids": [
+            "jade_paper",
+            "jade_paper_license"
+          ]
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "ZHS003-F01",
+          "text": "The Chinese report gives 74.13% average, 49.00% minimum and 93.50% maximum violation rates for its group of eight Chinese open models. These are group statistics from an attack-selected setting, not individual scores or ordinary-use harm rates.",
+          "evidence_artifact_ids": [
+            "jade_page"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS003-F02",
+          "text": "JADE3 training triples derive from earlier JADE evaluation questions. HAL documentation reports 200 bilingual VQA records over 100 images; a bounded pair shares the same image. Preserve dependencies and do not double-count language variants.",
+          "evidence_artifact_ids": [
+            "jade3",
+            "jade_hal",
+            "jadehal_pair"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS003-F03",
+          "text": "MCP documentation describes six categories and 33 subclasses, while its public subset mainly covers privacy leakage. No executable server example or attack workflow was acquired or run.",
+          "evidence_artifact_ids": [
+            "jade_mcp"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS003-F04",
+          "text": "Repository revision 812de63691d129757b8a55851d0c3440d2714523 is an artifact pin, not an experiment date. Current docs also mention a later BadPhoneAgent item, outside this review.",
+          "evidence_artifact_ids": [
+            "jade_root"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS003-F05",
+          "text": "Chinese primary documentation is available, but all-item original Chinese authorship and the direction of HAL translation are not established.",
+          "evidence_artifact_ids": [
+            "jade_root",
+            "jadehal_pair"
+          ],
+          "verification_level": "primary_source_reported"
+        }
+      ]
+    },
+    {
+      "candidate_id": "ZHS004",
+      "name": "LiveSecBench",
+      "classification": "new_relative_to_frozen_inventory",
+      "research_status": "primary_research_verified",
+      "collection_status": "candidate_not_collected",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "summary": "Version-changing Chinese-context evaluation with historical paper snapshots and a partially accessible current landing page.",
+      "rights_summary": "Repository Apache-2.0 and paper CC BY-NC-SA 4.0 declarations are separate. Full questions are withheld; no reuse grant for the current leaderboard database is established.",
+      "inventory_relationships": [],
+      "artifacts": [
+        {
+          "artifact_id": "live_root",
+          "url": "https://github.com/ydli-ai/LiveSecBench/blob/35af1f81cf62fe2133db9d26d8b74964236c1267/README.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Current Chinese repository documentation",
+          "rights_status": "declared_license",
+          "rights_note": "Inspected repository declaration; not the separately licensed papers, withheld questions or leaderboard database.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "96c33891bfa40d50e08b785ad003cb5d12acab40",
+          "git_commit": "35af1f81cf62fe2133db9d26d8b74964236c1267",
+          "license_identifier": "Apache-2.0",
+          "rights_evidence_artifact_ids": [
+            "live_license"
+          ]
+        },
+        {
+          "artifact_id": "live_sample",
+          "url": "https://github.com/ydli-ai/LiveSecBench/blob/35af1f81cf62fe2133db9d26d8b74964236c1267/livesecbench/question_set/factuality/sample_data.json#L1-L21",
+          "access_status": "bounded_sample_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "First benign factuality record",
+          "rights_status": "unknown",
+          "rights_note": "Repository Apache-2.0 and paper CC BY-NC-SA 4.0 declarations are separate. Full questions are withheld; no reuse grant for the current leaderboard database is established.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "ec839f2d7763e520eff8cfe1bbbc67d7567cf4b8",
+          "git_commit": "35af1f81cf62fe2133db9d26d8b74964236c1267",
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "live_changes",
+          "url": "https://github.com/ydli-ai/LiveSecBench/blob/35af1f81cf62fe2133db9d26d8b74964236c1267/docs/CHANGELOG.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Version history through 2026-03-09",
+          "rights_status": "declared_license",
+          "rights_note": "Inspected repository declaration; not the separately licensed papers, withheld questions or leaderboard database.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "39f3f520df0bf7628fbdc0a4959f083c92bc4107",
+          "git_commit": "35af1f81cf62fe2133db9d26d8b74964236c1267",
+          "license_identifier": "Apache-2.0",
+          "rights_evidence_artifact_ids": [
+            "live_license"
+          ]
+        },
+        {
+          "artifact_id": "live_format",
+          "url": "https://github.com/ydli-ai/LiveSecBench/blob/35af1f81cf62fe2133db9d26d8b74964236c1267/docs/RESULT_FORMAT.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Documented local output structures, not live API",
+          "rights_status": "declared_license",
+          "rights_note": "Inspected repository declaration; not the separately licensed papers, withheld questions or leaderboard database.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "4184bd306060c8f7639955f013601f82f7eb492c",
+          "git_commit": "35af1f81cf62fe2133db9d26d8b74964236c1267",
+          "license_identifier": "Apache-2.0",
+          "rights_evidence_artifact_ids": [
+            "live_license"
+          ]
+        },
+        {
+          "artifact_id": "live_license",
+          "url": "https://github.com/ydli-ai/LiveSecBench/blob/35af1f81cf62fe2133db9d26d8b74964236c1267/LICENSE",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Apache-2.0 header and definitions",
+          "rights_status": "declared_license",
+          "rights_note": "Inspected repository declaration; not the separately licensed papers, withheld questions or leaderboard database.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+          "git_commit": "35af1f81cf62fe2133db9d26d8b74964236c1267",
+          "license_identifier": "Apache-2.0",
+          "rights_evidence_artifact_ids": [
+            "live_license"
+          ]
+        },
+        {
+          "artifact_id": "live_v1",
+          "url": "https://arxiv.org/html/2511.02366v1",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "2025-11-04 report, benchmark v251030, Table 1",
+          "rights_status": "declared_license",
+          "rights_note": "Inspected paper-version declaration only.",
+          "raw_content_in_catalog": false,
+          "license_identifier": "CC-BY-NC-SA-4.0",
+          "rights_evidence_artifact_ids": [
+            "live_v1"
+          ]
+        },
+        {
+          "artifact_id": "live_v2",
+          "url": "https://arxiv.org/html/2511.02366v2",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "2025-12-20 report, benchmark v251215, Tables 1/2",
+          "rights_status": "declared_license",
+          "rights_note": "Inspected paper-version declaration only.",
+          "raw_content_in_catalog": false,
+          "license_identifier": "CC-BY-NC-SA-4.0",
+          "rights_evidence_artifact_ids": [
+            "live_v2"
+          ]
+        },
+        {
+          "artifact_id": "live_v2_metadata",
+          "url": "https://arxiv.org/abs/2511.02366v2",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Version date and expanded benchmark scope",
+          "rights_status": "declared_license",
+          "rights_note": "Inspected paper-version declaration only.",
+          "raw_content_in_catalog": false,
+          "license_identifier": "CC-BY-NC-SA-4.0",
+          "rights_evidence_artifact_ids": [
+            "live_v2"
+          ]
+        },
+        {
+          "artifact_id": "live_page",
+          "url": "https://livesecbench.intokentech.cn/",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "March 2026 landing page; score area remained a loading placeholder",
+          "rights_status": "unknown",
+          "rights_note": "Repository Apache-2.0 and paper CC BY-NC-SA 4.0 declarations are separate. Full questions are withheld; no reuse grant for the current leaderboard database is established.",
+          "raw_content_in_catalog": false,
+          "rights_evidence_artifact_ids": []
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "ZHS004-F01",
+          "text": "Historical v251030 / arXiv v1 (November 4, 2025) describes six dimensions; reasoning is excluded from Overall. The abstract names 18 models, while its methods/table name 22. Keep this count discrepancy.",
+          "evidence_artifact_ids": [
+            "live_v1"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS004-F02",
+          "text": "Paper v2 (December 20, 2025) describes v251215: 57 models, five dimensions and DeepSeek-V3.2 judging. The overall value 76.90 for v1 label DeepSeek-R1-0528 and 62.43 for v2 label DeepSeek/DeepSeek-R1-0528* are cross-protocol values, not evidence of model regression.",
+          "evidence_artifact_ids": [
+            "live_v1",
+            "live_v2",
+            "live_v2_metadata"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS004-F03",
+          "text": "The current official landing page opens and labels March 2026 with four displayed dimensions and a changed synthesis method. Its score area remains a loading placeholder. Landing metadata is not a verified current results export.",
+          "evidence_artifact_ids": [
+            "live_page"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS004-F04",
+          "text": "The benign factuality sample is dated November 20, 2025, later than v251030. It cannot identify that earlier paper population. Software/changelog dates are not measurement dates.",
+          "evidence_artifact_ids": [
+            "live_sample",
+            "live_changes"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS004-F05",
+          "text": "Output-format documentation describes locally generated files, not a verified public API. Do not backfill historic judges from current defaults, pool versions, or assume every rewritten item was originally authored in Chinese.",
+          "evidence_artifact_ids": [
+            "live_format",
+            "live_root",
+            "live_v1"
+          ],
+          "verification_level": "primary_source_reported"
+        }
+      ]
+    },
+    {
+      "candidate_id": "ZHS005",
+      "name": "CHiSafetyBench",
+      "classification": "new_relative_to_frozen_inventory",
+      "research_status": "primary_research_verified",
+      "collection_status": "candidate_not_collected",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "summary": "Chinese risk recognition and risky-request refusal, with distinct populations and dialogue-history variants.",
+      "rights_summary": "No reuse grant was established for the inspected repository data, README or figures. The paper uses arXiv nonexclusive distribution terms, not a general CC reuse grant.",
+      "inventory_relationships": [],
+      "artifacts": [
+        {
+          "artifact_id": "chi_safetybench_artifact_1",
+          "url": "https://github.com/UnicomAI/UnicomBenchmark/blob/a06da90aac1a5665ddbdcd159c5ba29077e27df8/CHiSafetyBench/README.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "documentation",
+          "rights_status": "unknown",
+          "rights_note": "No reuse grant was established for the inspected repository data, README or figures. The paper uses arXiv nonexclusive distribution terms, not a general CC reuse grant.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "4bb9d081ca210b32d2dfe1704aada55784209e3a",
+          "artifact_version_date": "2024-08-31T13:12:43Z",
+          "language": "English",
+          "git_commit": "a06da90aac1a5665ddbdcd159c5ba29077e27df8",
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "chi_safetybench_artifact_2",
+          "url": "https://github.com/UnicomAI/UnicomBenchmark/blob/a06da90aac1a5665ddbdcd159c5ba29077e27df8/CHiSafetyBench/dataset/v1/mcq.json#L1-L9",
+          "access_status": "bounded_sample_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "bounded_input_sample",
+          "rights_status": "unknown",
+          "rights_note": "No reuse grant was established for the inspected repository data, README or figures. The paper uses arXiv nonexclusive distribution terms, not a general CC reuse grant.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "7ecb372e24f4db60f0fc9011e014be666c7819cf",
+          "language": "Chinese",
+          "git_commit": "a06da90aac1a5665ddbdcd159c5ba29077e27df8",
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "chi_safetybench_artifact_3",
+          "url": "https://arxiv.org/html/2406.10311v2",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "paper",
+          "rights_status": "unknown",
+          "rights_note": "Host distribution license identified; no general reuse permission established.",
+          "raw_content_in_catalog": false,
+          "source_version": "arXiv:2406.10311v2",
+          "artifact_version_date": "2024-09-02T03:37:35Z",
+          "language": "English",
+          "license_identifier": "arXiv-nonexclusive-distrib-1.0",
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "chi_safetybench_artifact_4",
+          "url": "https://api.github.com/repos/UnicomAI/UnicomBenchmark/git/trees/4dc201ae8568eabaed89bdb7a99a9fa48f2e602c?recursive=1",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "dataset_tree_metadata",
+          "rights_status": "unknown",
+          "rights_note": "No reuse grant was established for the inspected repository data, README or figures. The paper uses arXiv nonexclusive distribution terms, not a general CC reuse grant.",
+          "raw_content_in_catalog": false,
+          "rights_evidence_artifact_ids": []
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "ZHS005-F01",
+          "text": "The paper reports 1,567 MCQs and 563 QA prompts; these are distinct task populations, not one interchangeable denominator. Only a small benign MCQ sample was inspected.",
+          "evidence_artifact_ids": [
+            "chi_safetybench_artifact_2",
+            "chi_safetybench_artifact_3"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS005-F02",
+          "text": "Paper-v2 Table 2 reports ChatGLM3-6B RR-1 65.36%, RR-2 65.19% and HR 3.91%. RR-1 combines refusal types; RR-2 is responsible refusal; HR is harmful response. Preserve metric definitions and unknown experiment dates.",
+          "evidence_artifact_ids": [
+            "chi_safetybench_artifact_3"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS005-F03",
+          "text": "Qwen-72B is the reported QA judge. Chinese payload has mixed lineage: SafetyBench-derived material, manual construction and translated/adapted HarmfulQA. Chinese text does not prove original Chinese authorship.",
+          "evidence_artifact_ids": [
+            "chi_safetybench_artifact_3"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS005-F04",
+          "text": "June 2024 release, August 31 artifact changes and September 2 paper v2 are distinct date types. No fixed subsequent results cadence was verified.",
+          "evidence_artifact_ids": [
+            "chi_safetybench_artifact_1",
+            "chi_safetybench_artifact_3"
+          ],
+          "verification_level": "primary_source_reported"
+        }
+      ]
+    },
+    {
+      "candidate_id": "ZHS006",
+      "name": "SuperCLUE-Safety / SC-Safety",
+      "classification": "new_relative_to_frozen_inventory",
+      "research_status": "primary_research_verified",
+      "collection_status": "candidate_not_collected",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "summary": "Historical multi-round adversarial results with important table-revision and denominator conflicts.",
+      "rights_summary": "Repository/table/question reuse rights remain unresolved. The model-column label 许可 describes model availability, not a benchmark license. Paper terms are arXiv nonexclusive distribution.",
+      "inventory_relationships": [],
+      "artifacts": [
+        {
+          "artifact_id": "superclue_safety_artifact_1",
+          "url": "https://github.com/CLUEbenchmark/SuperCLUE-Safety/blob/3b9789520c13fdcdfb7ba5326b1c741e2459305e/README.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Chinese_documentation_and_results",
+          "rights_status": "unknown",
+          "rights_note": "Repository/table/question reuse rights remain unresolved. The model-column label 许可 describes model availability, not a benchmark license. Paper terms are arXiv nonexclusive distribution.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "782e9e41b9e0bb588a08399bdb6fe4d4f95de0a8",
+          "artifact_version_date": "2024-03-15T04:14:37Z",
+          "language": "Chinese",
+          "git_commit": "3b9789520c13fdcdfb7ba5326b1c741e2459305e",
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "superclue_safety_artifact_2",
+          "url": "https://github.com/CLUEbenchmark/SuperCLUE-Safety/blob/3b9789520c13fdcdfb7ba5326b1c741e2459305e/README_2023.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "historical_documentation",
+          "rights_status": "unknown",
+          "rights_note": "Repository/table/question reuse rights remain unresolved. The model-column label 许可 describes model availability, not a benchmark license. Paper terms are arXiv nonexclusive distribution.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "b0d2b9c00841288ae5eb5e052099f388252a3e8d",
+          "git_commit": "3b9789520c13fdcdfb7ba5326b1c741e2459305e",
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "superclue_safety_artifact_3",
+          "url": "https://github.com/CLUEbenchmark/SuperCLUE-Safety/blob/3b9789520c13fdcdfb7ba5326b1c741e2459305e/README_202312.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "historical_documentation",
+          "rights_status": "unknown",
+          "rights_note": "Repository/table/question reuse rights remain unresolved. The model-column label 许可 describes model availability, not a benchmark license. Paper terms are arXiv nonexclusive distribution.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "5a1aaf1a8acf8fbca6293aec06d89d9fa5e12efa",
+          "version_caution": "Filename alone is not evidence of the result date; created in March 15 commit, contains January 4 announcement.",
+          "git_commit": "3b9789520c13fdcdfb7ba5326b1c741e2459305e",
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "superclue_safety_artifact_4",
+          "url": "https://arxiv.org/html/2310.05818v1",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "paper",
+          "rights_status": "unknown",
+          "rights_note": "Host distribution license identified; no general reuse permission established.",
+          "raw_content_in_catalog": false,
+          "source_version": "arXiv:2310.05818v1",
+          "artifact_version_date": "2023-10-09T16:03:22Z",
+          "language": "English",
+          "license_identifier": "arXiv-nonexclusive-distrib-1.0",
+          "rights_evidence_artifact_ids": []
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "ZHS006-F01",
+          "text": "Question-count descriptions conflict: paper abstract says 4,912 questions; Dataset Statistics says 4,912 pairs; Chinese README says 4,912 questions / 2,456 pairs. The denominator remains unresolved.",
+          "evidence_artifact_ids": [
+            "superclue_safety_artifact_1",
+            "superclue_safety_artifact_4"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS006-F02",
+          "text": "March 15, 2024 revision 3b9789520c13fdcdfb7ba5326b1c741e2459305e adds model rows and swaps some responsibility/instruction category values. The unchanged January 4 announcement is not the current table experiment date.",
+          "evidence_artifact_ids": [
+            "superclue_safety_artifact_1",
+            "superclue_safety_artifact_3"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS006-F03",
+          "text": "At that March revision, Yi-34B-Chat has total 89.30, traditional safety 85.89, responsibility 94.06 and instruction attack 88.07. These are source-defined scores; category tables repeat parts of the main table.",
+          "evidence_artifact_ids": [
+            "superclue_safety_artifact_1"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS006-F04",
+          "text": "Judge validation exists: the paper reports 77% exact agreement and 85% within one point for a limited Chinese-Alpaca-2-13B comparison. This is limited validation, not absent validation or proof of universal judging accuracy.",
+          "evidence_artifact_ids": [
+            "superclue_safety_artifact_4"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS006-F05",
+          "text": "No full question/answer corpus, public results API or ongoing measurement cadence was established. Historical filenames and commit dates alone cannot identify evaluation time.",
+          "evidence_artifact_ids": [
+            "superclue_safety_artifact_1",
+            "superclue_safety_artifact_2",
+            "superclue_safety_artifact_3"
+          ],
+          "verification_level": "primary_source_reported"
+        }
+      ]
+    },
+    {
+      "candidate_id": "ZHS007",
+      "name": "M³-SafetyBench",
+      "classification": "new_relative_to_frozen_inventory",
+      "research_status": "index_only_direct_access_blocked",
+      "collection_status": "candidate_not_collected",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "summary": "Publisher-indexed Chinese technical-report lead; direct article/PDF access remains blocked.",
+      "rights_summary": "No open reuse license for the report, data or supplements was verified.",
+      "inventory_relationships": [],
+      "artifacts": [
+        {
+          "artifact_id": "m3_doi",
+          "url": "https://www.sciengine.com/doi/10.1360/SSI-2025-0254",
+          "access_status": "access_blocked",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Artifact metadata and declared access state; no complete corpus capture.",
+          "rights_status": "unknown",
+          "rights_note": "No open reuse license for the report, data or supplements was verified.",
+          "raw_content_in_catalog": false,
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "m3_pdf",
+          "url": "https://www.sciengine.com/cfs/files/pdfs/view/1674-7267/656CB3099A23415A9200E79A74D1D42C.pdf",
+          "access_status": "access_blocked",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Artifact metadata and declared access state; no complete corpus capture.",
+          "rights_status": "unknown",
+          "rights_note": "No open reuse license for the report, data or supplements was verified.",
+          "raw_content_in_catalog": false,
+          "source_version": "2025, volume 55, issue 11, pages 2923-2940; DOI 10.1360/SSI-2025-0254",
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "m3_publisher_index",
+          "url": "https://scis.scichina.com/ssi-cs-information-security.html",
+          "access_status": "index_only_direct_timeout",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Artifact metadata and declared access state; no complete corpus capture.",
+          "rights_status": "unknown",
+          "rights_note": "No open reuse license for the report, data or supplements was verified.",
+          "raw_content_in_catalog": false,
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "m3_table_index",
+          "url": "https://www.sciengine.com/doi/pdf/2C376132D17A4F8B9290DE2BA867E2E3",
+          "access_status": "index_only",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "printed page 2936, Table 6",
+          "rights_status": "unknown",
+          "rights_note": "No open reuse license for the report, data or supplements was verified.",
+          "raw_content_in_catalog": false,
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "m3_methods_index",
+          "url": "https://www.sciengine.com/doi/pdfView/2C376132D17A4F8B9290DE2BA867E2E3",
+          "access_status": "index_only",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "printed page 2935, section 4.1",
+          "rights_status": "unknown",
+          "rights_note": "No open reuse license for the report, data or supplements was verified.",
+          "raw_content_in_catalog": false,
+          "rights_evidence_artifact_ids": []
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "ZHS007-F01",
+          "text": "Both the DOI page and direct PDF returned HTTP 403; the publisher index timed out. Only publisher-indexed text was available. No access-control bypass or successful primary full-text read is claimed.",
+          "evidence_artifact_ids": [
+            "m3_doi",
+            "m3_pdf",
+            "m3_publisher_index"
+          ],
+          "verification_level": "index_only_inconclusive"
+        },
+        {
+          "finding_id": "ZHS007-F02",
+          "text": "Indexed text describes content/function safety across general and education settings and an online date of November 7, 2025. Reported large prompt totals are not proof of an accessible dataset.",
+          "evidence_artifact_ids": [
+            "m3_pdf",
+            "m3_publisher_index"
+          ],
+          "verification_level": "index_only_inconclusive"
+        },
+        {
+          "finding_id": "ZHS007-F03",
+          "text": "Indexed Table 6 displays a Qwen2.5-14B-Instruct overall score of 95.94, but the separately indexed weighting description does not straightforwardly reproduce it. Direct method context is needed; do not reconstruct the composite or label this an author error.",
+          "evidence_artifact_ids": [
+            "m3_table_index",
+            "m3_methods_index"
+          ],
+          "verification_level": "index_only_inconclusive"
+        },
+        {
+          "finding_id": "ZHS007-F04",
+          "text": "All indexed results remain discovery leads awaiting direct artifact verification. No numerical value here is admitted as a verified evaluation observation.",
+          "evidence_artifact_ids": [
+            "m3_table_index"
+          ],
+          "verification_level": "index_only_inconclusive"
+        }
+      ]
+    },
+    {
+      "candidate_id": "ZHS008",
+      "name": "C-SEM within FlagEval",
+      "classification": "existing_family_enrichment",
+      "research_status": "primary_research_verified",
+      "collection_status": "candidate_not_collected",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "summary": "Chinese lexical/semantic capability inputs enriching CN020, not another independent FlagEval family or measured safety series.",
+      "rights_summary": "FlagEval toolkit Apache-2.0 does not establish a separate grant for C-SEM CSV inputs or their source materials.",
+      "inventory_relationships": [
+        {
+          "source_id": "CN020",
+          "relationship": "same_family_component",
+          "evidence_artifact_id": "csem_readme",
+          "note": "Concrete input-discovery enrichment; no new FlagEval family or verified hosted model result."
+        }
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "csem_readme",
+          "url": "https://github.com/flageval-baai/FlagEval/blob/0d48d4847e238cea8a1555fa0ff26cb93a81afd1/csem/README-zh.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Artifact metadata and declared access state; no complete corpus capture.",
+          "rights_status": "unknown",
+          "rights_note": "FlagEval toolkit Apache-2.0 does not establish a separate grant for C-SEM CSV inputs or their source materials.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "082aef11ae660ea44568cae7c7685d323957ddbb",
+          "source_version": "C-SEM v1.0",
+          "git_commit": "0d48d4847e238cea8a1555fa0ff26cb93a81afd1",
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "csem_directory",
+          "url": "https://api.github.com/repos/flageval-baai/FlagEval/contents/csem?ref=0d48d4847e238cea8a1555fa0ff26cb93a81afd1",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Artifact metadata and declared access state; no complete corpus capture.",
+          "rights_status": "unknown",
+          "rights_note": "FlagEval toolkit Apache-2.0 does not establish a separate grant for C-SEM CSV inputs or their source materials.",
+          "raw_content_in_catalog": false,
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "csem_sample",
+          "url": "https://github.com/flageval-baai/FlagEval/blob/0d48d4847e238cea8a1555fa0ff26cb93a81afd1/csem/LLSRC_v1.csv",
+          "access_status": "bounded_sample_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "header and first data row only",
+          "rights_status": "unknown",
+          "rights_note": "FlagEval toolkit Apache-2.0 does not establish a separate grant for C-SEM CSV inputs or their source materials.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "1c662e3c6c7dca383d7fb6cb6a8b0558b00951a4",
+          "git_commit": "0d48d4847e238cea8a1555fa0ff26cb93a81afd1",
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "csem_license",
+          "url": "https://github.com/flageval-baai/FlagEval/blob/0d48d4847e238cea8a1555fa0ff26cb93a81afd1/LICENSE",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Artifact metadata and declared access state; no complete corpus capture.",
+          "rights_status": "declared_license",
+          "rights_note": "Repository toolkit declaration only; separate C-SEM CSV/source-material grant remains unresolved.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "0f76b3f815dfc24059124fb281f6c77e4e7210c6",
+          "git_commit": "0d48d4847e238cea8a1555fa0ff26cb93a81afd1",
+          "license_identifier": "Apache-2.0",
+          "rights_evidence_artifact_ids": [
+            "csem_license"
+          ]
+        },
+        {
+          "artifact_id": "flageval_meta",
+          "url": "https://github.com/FlagOpen/FlagEval/blob/main/README.md",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "component-license warning",
+          "rights_status": "unknown",
+          "rights_note": "FlagEval toolkit Apache-2.0 does not establish a separate grant for C-SEM CSV inputs or their source materials.",
+          "raw_content_in_catalog": false,
+          "git_blob_sha": "07a97f63aeaa736a4263942864843f4ad6ded2f2",
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "csem_history",
+          "url": "https://api.github.com/repos/flageval-baai/FlagEval/commits?path=csem&per_page=1",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Artifact metadata and declared access state; no complete corpus capture.",
+          "rights_status": "unknown",
+          "rights_note": "FlagEval toolkit Apache-2.0 does not establish a separate grant for C-SEM CSV inputs or their source materials.",
+          "raw_content_in_catalog": false,
+          "artifact_commit_date": "2023-11-21T07:32:38Z",
+          "identified_commit": "0d48d4847e238cea8a1555fa0ff26cb93a81afd1",
+          "rights_evidence_artifact_ids": []
+        },
+        {
+          "artifact_id": "csem_data_history",
+          "url": "https://api.github.com/repos/flageval-baai/FlagEval/commits?path=csem/LLSRC_v1.csv&per_page=1",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-07",
+          "provenance_locator": "Artifact metadata and declared access state; no complete corpus capture.",
+          "rights_status": "unknown",
+          "rights_note": "FlagEval toolkit Apache-2.0 does not establish a separate grant for C-SEM CSV inputs or their source materials.",
+          "raw_content_in_catalog": false,
+          "artifact_commit_date": "2023-11-17T07:44:31Z",
+          "identified_commit": "218fcb7be163ffe6763edead328a7e41c8b453b6",
+          "rights_evidence_artifact_ids": []
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "ZHS008-F01",
+          "text": "Public v1 contains four CSV task files and bilingual documentation. A benign header/first row was inspected; no complete corpus or model-performance result was acquired.",
+          "evidence_artifact_ids": [
+            "csem_directory",
+            "csem_sample"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS008-F02",
+          "text": "Public C-SEM and hosted FlagEval sets update asynchronously. Hosted testing uses a larger, richer set and a 5-shot protocol; public v1 cannot be presumed to reproduce hosted scores.",
+          "evidence_artifact_ids": [
+            "csem_readme"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS008-F03",
+          "text": "The inspected component pin 0d48d4847e238cea8a1555fa0ff26cb93a81afd1 is dated November 21, 2023. Version and artifact dates do not establish an evaluation date or fixed update schedule.",
+          "evidence_artifact_ids": [
+            "csem_readme",
+            "csem_history"
+          ],
+          "verification_level": "primary_source_reported"
+        },
+        {
+          "finding_id": "ZHS008-F04",
+          "text": "This resolves part of CN020 input-discovery metadata, not its leaderboard-result or rights gap. Semantic capability alone does not establish safer behavior.",
+          "evidence_artifact_ids": [
+            "csem_readme",
+            "csem_license",
+            "flageval_meta"
+          ],
+          "verification_level": "primary_source_reported"
+        }
+      ]
+    }
+  ],
+  "proposed_adapter": {
+    "status": "proposed_not_implemented",
+    "candidate_id": "ZHS001",
+    "artifact_ids": [
+      "flames_readme",
+      "flames_license"
+    ],
+    "content_fetches_max": 2,
+    "bytes_per_file_max": 131072,
+    "reject_unexpected_redirects": true,
+    "parse_section": "Leaderboard",
+    "source_artifact_language": "en",
+    "evaluation_language": "zh",
+    "source_dimension_labels": [
+      "Fairness",
+      "Safety",
+      "Morality",
+      "Legality",
+      "Data protection"
+    ],
+    "table_updated_at": "2023-12-11",
+    "artifact_commit_date": "2024-05-21T07:23:50Z",
+    "expected_unique_model_labels": 17,
+    "expected_scalar_cells": 187,
+    "independent_experiment_count": null,
+    "numeric_representation": "exact_decimal_strings",
+    "unknown_fields": {
+      "model_checkpoint": null,
+      "evaluated_at": null,
+      "denominator": null,
+      "fully_specified_protocol": null
+    },
+    "spot_checks": [
+      {
+        "model_label": "GPT-4",
+        "dimension": "Overall",
+        "metric": "Harmless rate",
+        "raw_value": "40.01%",
+        "decimal_value": "40.01",
+        "unit": "percent"
+      },
+      {
+        "model_label": "GPT-4",
+        "dimension": "Safety",
+        "metric": "Harmless rate",
+        "raw_value": "27.51%",
+        "decimal_value": "27.51",
+        "unit": "percent"
+      },
+      {
+        "model_label": "GPT-4",
+        "dimension": "Safety",
+        "metric": "Harmless score",
+        "raw_value": "67.7",
+        "decimal_value": "67.7",
+        "unit": "source_defined_score"
+      }
+    ],
+    "excluded": [
+      "Prompt files and full question/answer corpora",
+      "Scorer weights, model calls and evaluation execution",
+      "Successful-attack comparison and dataset-statistics tables",
+      "Guessed checkpoints, experiment dates, denominators or affiliation independence",
+      "Forecast/person-belief/p(doom) conversion",
+      "Production import, collection admission and scheduling"
+    ],
+    "acceptance_requirements": [
+      "Use only the two immutable artifact URLs and verify Git blob SHA, SHA-256 and size against this catalog; reject content drift, unexpected redirects, oversize responses and extra fetches.",
+      "Parse only the named historical table. Preserve table, row and column locators, raw strings, source labels and rate-versus-score units.",
+      "Require the pinned fixture cardinality and three bounded numeric spot checks; malformed cells/headers fail or remain explicitly missing, never zero-filled.",
+      "Keep source update, artifact commit, retrieval and unknown experiment dates separate. Do not infer the table population from public-subset or study counts.",
+      "Retain exact model labels and separate institutional-overlap review. Language translations require separate provenance.",
+      "Deduplicate by pinned source/row/metric identity; an OpenCompass mirror cannot add an independent measurement.",
+      "Require separately reviewed staging/compatibility and rights decisions before any real observation can be admitted. This specification contains no production-ready example record."
+    ]
+  }
+}

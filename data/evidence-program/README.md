@@ -14,3 +14,7 @@ These are research-register metadata, audit findings, proposed analytical recipe
 Changes to source records or metrics must update the combined inventory and corresponding CSV views together. Keep source IDs stable; add explicit reviewable revisions rather than silently turning candidate sources into collected evidence. The [offline checker](../../tools/evidence_program/README.md) verifies that the redundant views agree.
 
 Third-party source rights are not changed by the repository's [data license](../LICENSE). Follow each source record's artifact-specific rights notes before any acquisition, retention or publication.
+
+## Additive research catalogs
+
+[Chinese safety-evaluation research](research/chinese-safety-evaluations.json) uses separate provisional ZHS IDs. It contains source metadata and scoped findings for seven proposed new families plus one CN020 enrichment; no prompt corpus, full result table or production-ready observation is embedded. All candidates remain unadmitted. The original 64-source inventory and audit are unchanged. Read the [review and proposed adapter specification](../../docs/evidence-program/research/chinese-safety-evaluations.md) before interpreting its fields.

@@ -196,5 +196,83 @@ class TaskPlanTests(unittest.TestCase):
             self.validate()
 
 
+class ResearchCatalogTests(unittest.TestCase):
+    def setUp(self):
+        self.catalog = check.read_json(check.DATA / 'research/chinese-safety-evaluations.json')
+        self.inventory_hash = check.hashlib.sha256((check.DATA / 'source_inventory.json').read_bytes()).hexdigest()
+        self.markdown = (check.DOCS / 'research/chinese-safety-evaluations.md').read_text(encoding='utf-8')
+
+    def validate(self):
+        return check.check_research_catalog(self.catalog, self.inventory_hash, self.markdown)
+
+    def test_research_catalog_positive(self):
+        self.assertEqual(self.validate()['research_candidates'], 8)
+
+    def test_research_duplicate_candidate_rejected(self):
+        self.catalog['families'][1]['candidate_id'] = 'ZHS001'
+        with self.assertRaisesRegex(ValueError, 'candidate IDs'):
+            self.validate()
+
+    def test_research_active_admission_rejected(self):
+        self.catalog['collector_enabled'] = True
+        with self.assertRaisesRegex(ValueError, 'cannot enable admission'):
+            self.validate()
+
+    def test_research_family_collection_rejected(self):
+        self.catalog['families'][0]['collection_status'] = 'collected'
+        with self.assertRaisesRegex(ValueError, 'cannot enable collection'):
+            self.validate()
+
+    def test_research_frozen_inventory_drift_rejected(self):
+        self.catalog['baseline_inventory']['sha256'] = '0' * 64
+        with self.assertRaisesRegex(ValueError, 'frozen inventory mismatch'):
+            self.validate()
+
+    def test_research_unknown_inventory_reference_rejected(self):
+        self.catalog['families'][0]['inventory_relationships'][0]['source_id'] = 'CN999'
+        with self.assertRaisesRegex(ValueError, 'Unknown research inventory'):
+            self.validate()
+
+    def test_research_missing_rights_provenance_rejected(self):
+        self.catalog['families'][0]['artifacts'][0]['rights_evidence_artifact_ids'] = []
+        with self.assertRaisesRegex(ValueError, 'Declared rights lack evidence'):
+            self.validate()
+
+    def test_research_index_only_cannot_be_upgraded(self):
+        self.catalog['families'][6]['artifacts'][0]['access_status'] = 'primary_opened'
+        with self.assertRaisesRegex(ValueError, 'Index-only evidence'):
+            self.validate()
+
+    def test_research_adapter_cannot_be_activated(self):
+        self.catalog['proposed_adapter']['status'] = 'implemented'
+        with self.assertRaisesRegex(ValueError, 'remain a specification'):
+            self.validate()
+
+    def test_research_adapter_fetch_expansion_rejected(self):
+        self.catalog['proposed_adapter']['content_fetches_max'] = 3
+        with self.assertRaisesRegex(ValueError, 'adapter bounds'):
+            self.validate()
+
+    def test_research_guessed_denominator_rejected(self):
+        self.catalog['proposed_adapter']['unknown_fields']['denominator'] = 1000
+        with self.assertRaisesRegex(ValueError, 'preserve unknowns'):
+            self.validate()
+
+    def test_research_float_spot_check_rejected(self):
+        self.catalog['proposed_adapter']['spot_checks'][0]['decimal_value'] = 40.01
+        with self.assertRaisesRegex(ValueError, 'decimal strings'):
+            self.validate()
+
+    def test_research_bad_pin_rejected(self):
+        self.catalog['families'][0]['artifacts'][0]['git_blob_sha'] = 'main'
+        with self.assertRaisesRegex(ValueError, 'Invalid research artifact git_blob_sha'):
+            self.validate()
+
+    def test_research_doc_title_drift_rejected(self):
+        self.markdown = self.markdown.replace('## ZHS001 FLAMES', '## ZHS001 Wrong title')
+        with self.assertRaisesRegex(ValueError, 'documentation IDs/titles'):
+            self.validate()
+
+
 if __name__ == '__main__':
     unittest.main()
