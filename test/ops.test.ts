@@ -218,6 +218,12 @@ describe("production operations files", () => {
     }
   });
 
+  it("waits for the runtime smoke database's final TCP listener", () => {
+    const result = run("bash", ["scripts/runtime-postgres-ready.test.sh"]);
+    expect(result.status, `${result.stdout}\n${result.stderr}`).toBe(0);
+    expect(result.stdout).toContain("runtime_postgres_ready_test_ok");
+  });
+
   it("waits until postgres init finishes before trusting pg_isready", () => {
     const result = run("bash", ["scripts/restore/postgres-ready.test.sh"]);
     expect(result.status, `${result.stdout}\n${result.stderr}`).toBe(0);

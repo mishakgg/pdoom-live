@@ -30,13 +30,27 @@ docker run -d --name "$PG" --network "$NET" \
   -e POSTGRES_DB=pdoom_live \
   postgres:16 >/dev/null
 
+# The official image briefly starts a Unix-socket-only server during initdb,
+# then stops it before starting the final TCP listener. Do not mistake that
+# temporary server for readiness from the app container's network connection.
+postgres_ready=0
 for _ in $(seq 1 40); do
-  if docker exec "$PG" pg_isready -U pdoom -d pdoom_live >/dev/null 2>&1; then
+  if docker exec "$PG" pg_isready -h 127.0.0.1 -p 5432 -t 2 -U pdoom -d pdoom_live >/dev/null 2>&1; then
+    postgres_ready=1
     break
   fi
   sleep 1
 done
-docker exec "$PG" pg_isready -U pdoom -d pdoom_live >/dev/null
+if [[ "$postgres_ready" != 1 ]]; then
+  # Only print the state enum, not logs/configuration that could contain secrets.
+  pg_state="$(docker inspect --format '{{.State.Status}}' "$PG" 2>/dev/null || true)"
+  case "$pg_state" in
+    created|running|paused|restarting|removing|exited|dead) ;;
+    *) pg_state=unknown ;;
+  esac
+  echo "postgres TCP readiness timed out after 40 attempts (container_state=$pg_state); migrations were not started" >&2
+  exit 1
+fi
 
 run_cli() {
   docker run --rm --network "$NET" \
