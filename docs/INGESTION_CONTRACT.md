@@ -38,7 +38,9 @@ Re-importing the same document does not create duplicate statements. A changed c
 
 An ingestion run status may be `running`, `succeeded`, `partial`, or `failed`. `unchanged_count`, `skipped_count`, and `failed_count` are optional on older documents and default to zero in the database. A `partial` or `failed` run is not a full success. `publish-dataset.sh` refuses a document whose latest belief or refresh run is `failed`.
 
-Import keeps an existing review decision. Unchanged extraction does not replace stored approval, rejection, corrected text, or corrected forecast fields, and it does not rewrite `review_decisions` or `statement_extractions`. A changed source hash, evidence hash, or content version leaves `human_verified` stored and public reads report `needs_review` until the reviewed bytes are imported again. A rejection stays rejected.
+Import keeps existing review decisions and does not rewrite `review_decisions` or `statement_extractions`. A new decision stores a versioned machine-input snapshot and a complete accepted-claim snapshot. Exact unchanged extraction or replay of the accepted claim restores all cumulative corrections, including after later empty-delta decisions. Changes to attribution, extractor, statement/forecast interpretation, source version or evidence require review. Stored `human_verified` may remain while public reads report `needs_review`; approval returns only when the exact covered input is replayed and the full accepted interpretation is restored. A rejection stays rejected. Legacy decisions without complete snapshots require reapproval; matching legacy correction deltas remain preserved. See `docs/CURATION.md` for the representation and migration policy. The canonical JSON schema stays at `1.0.0`.
+
+For statements present in an import, topic membership and forecast presence are authoritative. An omitted forecast removes that statement's previous forecast; statements absent from the document and their forecasts are retained. This prevents an old forecast or topic assignment from silently surviving a changed interpretation.
 
 ## Statement classes
 

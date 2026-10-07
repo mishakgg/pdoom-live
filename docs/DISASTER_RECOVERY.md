@@ -44,6 +44,8 @@ Application releases and dataset publication are different operations. A code de
 
 There are no down migrations. `scripts/deploy/rollback.sh` will not invent one.
 
+Migration `006_accepted_claims` adds nullable machine-input and accepted-claim snapshots. It preserves existing review/extraction audit rows and does not manufacture approval snapshots from current data. With the new application, legacy `human_verified` decisions become effectively `needs_review` until an operator explicitly reapproves the exact interpretation; those records leave verified exports and numeric trends. Matching cumulative correction deltas remain replayable. Plan this review workload before rollout and keep the pre-migration backup. The canonical import and review manifest schema versions remain unchanged. Older application images do not enforce the stronger semantic coverage, so rolling back the application also rolls back that safety guarantee.
+
 The candidate is promoted only after `/api/ready` returns 200. Caddy uses that same URL as an active health check, retries an upstream zero times, and gives up after one second. A stopped or unready web process is not served as a successful page.
 
 ## Dataset publication

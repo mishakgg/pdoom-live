@@ -81,7 +81,7 @@ function num(value: string | number | null): number | null {
 
 async function loadStatement(client: pg.PoolClient, slug: string): Promise<StatementRow | null> {
   const result = await client.query(
-    `SELECT s.id, s.slug, s.statement_type, s.normalized_text, s.review_state, s.confidence,
+    `SELECT s.id, s.slug, s.statement_type, s.normalized_text, ${effectiveReviewStateSql("s")} AS review_state, s.confidence,
             s.extraction_confidence_level, s.extractor_name, s.extractor_version, s.candidate_key,
             s.proposed_topics, s.event_time,
             p.slug AS person_slug, p.display_name,
@@ -231,6 +231,17 @@ export async function applyReviewDecision(pool: pg.Pool, raw: ReviewCommand): Pr
       throw new Error(`malformed question key: ${questionKey}`);
     }
     await ensureExtraction(client, row);
+    // Retain the machine input across later empty-delta decisions on a corrected
+    // claim. If the live interpretation changed, this is a newly reviewed input.
+    const claim = await client.query<{ machine_claim: unknown }>(`
+      SELECT CASE WHEN d.accepted_claim_json = statement_claim_v1(s.id)
+        THEN d.machine_claim_json ELSE statement_claim_v1(s.id) END AS machine_claim
+      FROM statements s
+      LEFT JOIN LATERAL (
+        SELECT machine_claim_json, accepted_claim_json FROM review_decisions
+        WHERE statement_id = s.id ORDER BY reviewed_at DESC, decision_key DESC LIMIT 1
+      ) d ON true WHERE s.id = $1
+    `, [row.id]);
     if (command.corrections.normalized_text || command.corrections.statement_type) {
       await client.query(
         `UPDATE statements SET normalized_text = $2, statement_type = $3 WHERE id = $1`,
@@ -325,8 +336,9 @@ export async function applyReviewDecision(pool: pg.Pool, raw: ReviewCommand): Pr
          id, decision_key, statement_id, candidate_key, decision, rejection_reason, previous_review_state,
          resulting_review_state, reviewed_at, reviewer, note, extractor_name, extractor_version,
          source_item_id, evidence_segment_id, source_content_hash, evidence_hash, content_version,
-         corrections_json, original_extraction_json, relationship_json
-       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19::jsonb,$20::jsonb,$21::jsonb)`,
+         corrections_json, original_extraction_json, relationship_json, machine_claim_json, accepted_claim_json
+       ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19::jsonb,$20::jsonb,$21::jsonb,
+         $22::jsonb, statement_claim_v1($3))`,
       [
         stableId(`review:${key}`),
         key,
@@ -349,6 +361,7 @@ export async function applyReviewDecision(pool: pg.Pool, raw: ReviewCommand): Pr
         JSON.stringify(command.corrections),
         JSON.stringify(snapshot(row)),
         command.relationship ? JSON.stringify(command.relationship) : null,
+        JSON.stringify(claim.rows[0].machine_claim),
       ],
     );
     await client.query("COMMIT");

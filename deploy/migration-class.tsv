@@ -6,3 +6,4 @@
 002_dataset_contract.sql	compatible
 003_review_decisions.sql	breaking
 004_refresh_runs.sql	compatible
+006_accepted_claims.sql	breaking
