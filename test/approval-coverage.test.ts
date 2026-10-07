@@ -5,6 +5,9 @@ import { effectiveReviewStateSql } from "../packages/db/src/coverage";
 import { importCanonical, resetDatabase, validateDocument } from "../packages/db/src/import";
 import { createPool } from "../packages/db/src/pool";
 import { applyReviewDecision, emptyConfirmations } from "../packages/db/src/review";
+import { publicContentRevision } from "../packages/db/src/public-revision";
+import { loadPublicRepresentation, resetPublicRepresentationCache } from "../apps/web/lib/representation-cache";
+import { representPublicJson } from "../apps/web/lib/public-http";
 
 const pool = createPool(process.env.DATABASE_URL!);
 const original = validateDocument(JSON.parse(readFileSync("data/fixtures/refresh/dataset.json", "utf8")));
@@ -23,7 +26,8 @@ function command(overrides: Record<string, unknown> = {}) {
 
 async function state() {
   const result = await pool.query(`SELECT ${effectiveReviewStateSql("s")} AS effective,
-    s.review_state AS stored, s.normalized_text, f.question_key, f.horizon_text, f.definition_text,
+    s.review_state AS stored, s.normalized_text, f.review_state AS forecast_review_state,
+    f.question_key, f.horizon_text, f.definition_text,
     e.text AS evidence_text, e.start_char, e.end_char
     FROM statements s LEFT JOIN forecasts f ON f.statement_id = s.id
     JOIN evidence_segments e ON e.id = s.evidence_segment_id WHERE s.slug = $1`, [slug]);
@@ -39,6 +43,7 @@ async function audit() {
 
 describe("approval covers the accepted claim and survives canonical replay", () => {
   beforeEach(async () => {
+    resetPublicRepresentationCache();
     await resetDatabase(pool);
     await importCanonical(pool, original);
   });
@@ -96,6 +101,47 @@ describe("approval covers the accepted claim and survives canonical replay", () 
     await pool.query(`UPDATE forecasts SET condition_text = 'if AGI is built'
       WHERE statement_id = (SELECT id FROM statements WHERE slug = $1)`, [slug]);
     expect((await state()).effective).toBe("needs_review");
+  });
+
+  it("uses incoming forecast state when a changed interpretation is outside approval coverage", async () => {
+    await applyReviewDecision(pool, command());
+    const changed = structuredClone(original);
+    changed.forecasts[0].condition_text = "if AGI is built";
+    changed.forecasts[0].review_state = "unreviewed";
+    await importCanonical(pool, changed);
+    expect((await state()).effective).toBe("needs_review");
+    expect((await state()).forecast_review_state).toBe("unreviewed");
+    await importCanonical(pool, original);
+    expect((await state()).forecast_review_state).toBe("human_verified");
+  });
+
+  const inPlaceChanges: Array<[string, string]> = [
+    ["extractor", `UPDATE statements SET extractor_version = 'another-extractor/3' WHERE slug = $1`],
+    ["locator", `UPDATE evidence_segments SET end_ms = 5000
+      WHERE id = (SELECT evidence_segment_id FROM statements WHERE slug = $1)`],
+    ["target date", `UPDATE forecasts SET target_date_end = '2100-12-31'
+      WHERE statement_id = (SELECT id FROM statements WHERE slug = $1)`],
+    ["topic membership", `INSERT INTO statement_topics (statement_id, topic_id, confidence, method)
+      SELECT s.id, t.id, 1, 'test-in-place-change' FROM statements s CROSS JOIN topics t
+      WHERE s.slug = $1 AND t.slug = 'ai-disempowerment'`],
+  ];
+  it.each(inPlaceChanges)("invalidates a primed representation immediately after an in-place %s change", async (_name, sql) => {
+    await applyReviewDecision(pool, command());
+    const before = await publicContentRevision(pool);
+    let reads = 0;
+    const load = () => loadPublicRepresentation("t02-claim-coverage", pool, async (db) => {
+      reads += 1;
+      const result = await db.query(`SELECT ${effectiveReviewStateSql("s")} AS review_state
+        FROM statements s WHERE s.slug = $1`, [slug]);
+      return representPublicJson(result.rows[0]);
+    });
+    expect((await load())?.body).toContain("human_verified");
+    await load();
+    expect(reads).toBe(1);
+    await pool.query(sql, [slug]);
+    expect(await publicContentRevision(pool)).not.toBe(before);
+    expect((await load())?.body).toContain("needs_review");
+    expect(reads).toBe(2);
   });
 
   it("normalizes topic order, timestamp offsets and JSON object serialization", async () => {
@@ -171,6 +217,7 @@ describe("approval covers the accepted claim and survives canonical replay", () 
     await importCanonical(pool, original);
     expect((await state()).normalized_text).toBe("Legacy accepted correction.");
     expect((await state()).effective).toBe("needs_review");
+    expect((await state()).forecast_review_state).not.toBe("human_verified");
     expect(await audit()).toEqual(before);
     await applyReviewDecision(pool, command({ reviewed_at: "2026-10-06T15:00:00Z" }));
     expect((await state()).effective).toBe("human_verified");

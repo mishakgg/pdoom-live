@@ -42,6 +42,10 @@ Import keeps existing review decisions and does not rewrite `review_decisions` o
 
 For statements present in an import, topic membership and forecast presence are authoritative. An omitted forecast removes that statement's previous forecast; statements absent from the document and their forecasts are retained. This prevents an old forecast or topic assignment from silently surviving a changed interpretation.
 
+Forecast review state comes from the incoming extraction until an exactly matching machine/accepted snapshot restores an operator decision. A stored verified forecast does not retain that label after an uncovered interpretation change. Matching legacy corrections can be restored without conferring verification.
+
+The public representation revision tracks accepted-claim semantics, including attribution and extractor references, forecast dates/distributions/resolution, evidence locators/context, and topic membership. In-place semantic changes invalidate a primed representation on its next revision check; the existing cache TTL and bounded hash-collision policy are unchanged.
+
 ## Statement classes
 
 `statement_type` is one of:

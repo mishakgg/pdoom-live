@@ -137,7 +137,8 @@ export async function restoreCoveredDecisions(
   await client.query(`
     ${coveredDecisionsSql}
     UPDATE forecasts f
-    SET review_state = c.resulting_review_state,
+    SET review_state = CASE WHEN c.resulting_review_state = 'human_verified'
+          THEN 'needs_review' ELSE c.resulting_review_state END,
         question_key = CASE WHEN c.corrections_json ? 'question_key' THEN c.corrections_json->>'question_key' ELSE f.question_key END,
         question_text = CASE WHEN c.corrections_json ? 'question_text' THEN c.corrections_json->>'question_text' ELSE f.question_text END,
         definition_text = CASE
