@@ -25,6 +25,8 @@ CLASSES = (
     "multiple_timestamps",
     "timezone_offset",
     "numeric_range",
+    "numeric_token",
+    "outcome_binding",
     "condition",
     "relative_horizon",
     "duplicate_passage",
