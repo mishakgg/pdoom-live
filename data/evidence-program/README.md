@@ -60,3 +60,7 @@ The [human-reliance catalog](research/human-reliance.json) adds five unadmitted 
 ## Labor-market research review
 
 [Curated catalog](research/labor-market.json) and [guide](../../docs/evidence-program/research/labor-market.md) add four unadmitted collections, a held GL023/AP005 workforce follow-up, all-thirteen-catalog overlap review and seven bounded prompts. The one German Eurostat aggregate fixture is separately licensed under tools/, outside this directory’s CC0 dedication. No live collection, source admission, causal estimate or exposure score.
+
+## Forecast and survey reconstruction
+
+[Seven-collection catalog](research/forecast-surveys.json) and [guide](../../docs/evidence-program/research/forecast-surveys.md) preserve three existing-family enrichments and four new named study/forecast collections, all-fourteen-catalog comparison and eight bounded prompts. A small CC BY 4.0 LEAP instrument/table derivative lives under tools/, outside this data/CC0 dedication. Source metadata and factual summaries do not relicense source reports, unpublished responses or model exports. No pooled forecast, unique-participant sum, live collection or canonical admission.
