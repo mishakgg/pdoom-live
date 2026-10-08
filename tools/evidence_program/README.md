@@ -80,3 +80,19 @@ Output remains experimental review JSON, not an installed dependency inventory o
 [The fixture notice](tests/fixtures/historical-backfills/NOTICE.md) explains synthetic-only CI. The real gzip has unresolved reuse rights and is not bundled, nor are full extracted results. Separate private local acceptance of the fixed 16,071-byte artifact is distinguished from CI; the ACL paper's license never licenses that file. Local filesystem mtime and gzip header mtime are not historical publication evidence.
 
 [check_historical_backfills.py](check_historical_backfills.py) checks the five-family [catalog](../../data/evidence-program/research/historical-capability-backfills.json), guarded interpretations, artifact rights/date roles, inactive admission markers and focused follow-ups. The aggregate check runs these metadata checks and synthetic reader/security regressions only; it does not acquire or test the real WMT artifact in CI. Passing does not settle historical comparability, legal rights, missing-data interpretation or lossless production mapping.
+
+## Scientific-progress catalog and manual aggregate ledger
+
+The [guide](../../docs/evidence-program/research/scientific-progress.md) and [catalog](../../data/evidence-program/research/scientific-progress.json) retain five collections and compare every prior research catalog at exact baseline hashes. `check_scientific_progress.py` checks source-specific qualifications, aggregate values, rights/access boundaries, source references and the six-by-five duplicate-review matrix. These are documentary consistency checks, not empirical verification.
+
+`validate_scientific_ledger.py` is an implemented local JSON validator, not a source extractor or collector. Its [manually curated ledger](../../data/evidence-program/research/alab-correction-ledger.json) preserves original/superseded 41/58 as an indexed-primary assertion, current targets 36/4/17 of 57 and recipes 105/353. It returns one DOI-keyed campaign and exactly two current records; correction is not a new experiment. Exact duplicate observation identities are idempotent and conflicting duplicates fail. Calendar/labor fields and unavailable source hashes remain null.
+
+```bash
+python tools/evidence_program/validate_scientific_ledger.py data/evidence-program/research/alab-correction-ledger.json
+python -m unittest discover -s tools/evidence_program/tests -p 'test_scientific*.py'
+python tools/evidence_program/check.py
+```
+
+The stdlib-only validator caps input at 64 KiB, nesting at 12, input records at 32 with exactly three unique claims, and provenance at three locators per record. It rejects unexpected fields, floats/nonfinite/boolean counts, duplicate JSON keys, invalid partitions/correction edges, URL deviations, symlink components, special files and parent traversal. The POSIX file reader fails closed when safe-open support is unavailable; filesystem mount locality is not established. Locators remain inert untrusted text. The contract is deliberately narrow, with fixed real and synthetic DOI/URL profiles, and checks structural consistency only.
+
+Tests use an original [synthetic fixture](tests/fixtures/scientific-progress/synthetic-alab-ledger.json) with different counts and a reserved fictional DOI/URL; see [NOTICE](tests/fixtures/scientific-progress/NOTICE.md). Source-specific tests separately validate manually curated factual metadata without fetching source bytes. No participant/team records, chemical protocols, experimental data, sequences, coordinates, numerical certificate archives or source code are acquired or executed. The prior three offline readers, frozen schemas and 64-family inventory remain unchanged.
