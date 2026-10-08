@@ -127,10 +127,7 @@ def run_metadata_pilot(*, scratch: BoundedScratch, drive, pin: DrivePin, seed_di
         refresh = run_refresh
     if "write_bytes" not in inspect.signature(refresh).parameters:
         raise StorageStop("refresh runner lacks required bounded write hook")
-    seed_dir = Path(seed_dir)
-    from .scratch import validate_windows_path, _plain
-    validate_windows_path(str(seed_dir))
-    _plain(seed_dir)
+    seed_dir = scratch.paths.validate_seed(seed_dir)
     sink = gateway_sink(scratch)
     def stop():
         if cancelled and cancelled():
