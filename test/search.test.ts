@@ -1,8 +1,8 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
-import { SEARCH_ENTITY_TYPES, SEARCH_RANK, SEARCH_SUGGEST_LIMITS, prepareSearchText } from "@pdoom/contracts";
+import { SEARCH_ENTITY_TYPES, SEARCH_RANK, SEARCH_SUGGEST_LIMITS, prepareSearchText, type SearchEntityType } from "@pdoom/contracts";
 import { counterSnapshot } from "@pdoom/observability";
-import { listStatements } from "../packages/db/src/queries";
+import { InvalidCursorError, listStatements } from "../packages/db/src/queries";
 import { createPool } from "../packages/db/src/pool";
 import { searchPublic } from "../packages/db/src/search";
 import { GET as searchRoute } from "../apps/web/app/api/search/route";
@@ -288,40 +288,83 @@ describe("empty search groups on PostgreSQL", () => {
   });
 });
 
-// Construct the existing v2 cursor format for a no-match request without mutating
-// the fixture. Both supported sort modes must still reach the page query.
+// Construct the v2 cursor format without mutating the fixture, including queries
+// with no matching rows, so both validation and real SQL casts are exercised.
+function cursorFor(q: string, type: SearchEntityType, id: unknown): string {
+  const prepared = prepareSearchText(q);
+  const fp = createHash("sha256").update(JSON.stringify({
+    q: prepared.normalized,
+    tokens: prepared.tokens,
+    type,
+    topic: null,
+    person: null,
+    statement_type: null,
+    from: null,
+    to: null,
+  })).digest("hex").slice(0, 16);
+  return Buffer.from(JSON.stringify({
+    v: 2,
+    fp,
+    rank: SEARCH_RANK.all_tokens,
+    tie: "",
+    id,
+    sort: type === "statement" || type === "source_item" ? "time" : "name",
+  }), "utf8").toString("base64url");
+}
+
 describe("empty search cursor pages on PostgreSQL", () => {
-  it.each(["person", "statement"] as const)("retains %s cursor pages and UUID validation", async (type) => {
+  it.each(["person", "statement"] as const)("retains %s cursor pages for canonical UUID strings", async (type) => {
     const input = { q: "zzzznoterm9f3a", type, mode: "page" as const, limit: 5 };
-    const prepared = prepareSearchText(input.q);
-    const fp = createHash("sha256").update(JSON.stringify({
-      q: prepared.normalized,
-      tokens: prepared.tokens,
-      type,
-      topic: null,
-      person: null,
-      statement_type: null,
-      from: null,
-      to: null,
-    })).digest("hex").slice(0, 16);
-    const cursorWithId = (id: string) => Buffer.from(JSON.stringify({
-      v: 2,
-      fp,
-      rank: SEARCH_RANK.all_tokens,
-      tie: "",
-      id,
-      sort: type === "statement" ? "time" : "name",
-    }), "utf8").toString("base64url");
+    for (const id of [
+      "00000000-0000-0000-0000-000000000000",
+      "abcdefab-cdef-4abc-8def-abcdefabcdef",
+      "ABCDEFAB-CDEF-4ABC-8DEF-ABCDEFABCDEF",
+      "aBcDeFaB-cDeF-4aBc-8dEf-AbCdEfAbCdEf",
+      "ffffffff-ffff-ffff-ffff-ffffffffffff",
+      "12345678-1234-0234-0234-123456789abc",
+    ]) {
+      const before = searchDbQueryCount();
+      const result = await searchPublic({ ...input, cursor: cursorFor(input.q, type, id) }, pool);
+      expect(searchDbQueryCount() - before).toBe(6);
+      expect(result.groups[type]).toEqual({ data: [], page: { limit: 5, total: 0, next_cursor: null } });
+    }
+  });
 
-    const beforeValid = searchDbQueryCount();
-    const result = await searchPublic({ ...input, cursor: cursorWithId("00000000-0000-4000-8000-000000000001") }, pool);
-    expect(searchDbQueryCount() - beforeValid).toBe(6);
-    expect(result.groups[type]).toEqual({ data: [], page: { limit: 5, total: 0, next_cursor: null } });
+  it.each(SEARCH_ENTITY_TYPES)("rejects malformed %s IDs before PostgreSQL even for empty searches", async (type) => {
+    const input = { q: "zzzznoterm9f3a", type, mode: "page" as const, limit: 5 };
+    const before = searchDbQueryCount();
+    await expect(searchPublic({ ...input, cursor: cursorFor(input.q, type, "-".repeat(36)) }, pool)).rejects.toBeInstanceOf(InvalidCursorError);
+    expect(searchDbQueryCount() - before).toBe(0);
+  });
+});
 
-    // The existing decoder accepts this UUID-shaped string; PostgreSQL rejects
-    // its page-query UUID parameter even though the preceding count was zero.
-    const beforeInvalid = searchDbQueryCount();
-    await expect(searchPublic({ ...input, cursor: cursorWithId("-".repeat(36)) }, pool)).rejects.toMatchObject({ code: "22P02" });
-    expect(searchDbQueryCount() - beforeInvalid).toBe(6);
+describe("search cursor API errors", () => {
+  it.each([
+    { type: "person", q: "Ada Quill" },
+    { type: "organization", q: "AGI 2030" },
+    { type: "statement", q: "extinction" },
+    { type: "topic", q: "extinction" },
+    { type: "source", q: "Harbor Compute notes" },
+    { type: "source_item", q: "Fictional labor paper" },
+  ] as const)("returns invalid_cursor for malformed $type IDs with matching and empty queries", async ({ type, q }) => {
+    for (const text of [q, "zzzznoterm9f3a", "!!!"]) {
+      for (const id of ["-".repeat(36), "a".repeat(36), "000000000-000-0000-0000-000000000000", ["00000000-0000-4000-8000-000000000001"]]) {
+        const params = new URLSearchParams({ q: text, type, cursor: cursorFor(text, type, id) });
+        const before = searchDbQueryCount();
+        const response = await searchRoute(new Request(`http://localhost/api/search?${params}`));
+        expect(response.status).toBe(400);
+        expect(await response.json()).toEqual({ error: { code: "invalid_cursor", message: "Cursor is invalid." } });
+        expect(searchDbQueryCount() - before).toBe(0);
+      }
+    }
+  });
+
+  it("distinguishes an invalid typed cursor from a schema-invalid cursor request", async () => {
+    const invalidCursor = await searchRoute(new Request("http://localhost/api/search?q=ada&type=person&cursor=not-a-cursor"));
+    expect(invalidCursor.status).toBe(400);
+    expect(await invalidCursor.json()).toEqual({ error: { code: "invalid_cursor", message: "Cursor is invalid." } });
+    const invalidQuery = await searchRoute(new Request("http://localhost/api/search?q=ada&cursor=not-a-cursor"));
+    expect(invalidQuery.status).toBe(400);
+    expect(await invalidQuery.json()).toEqual({ error: { code: "invalid_query", message: "Query parameters are invalid." } });
   });
 });
