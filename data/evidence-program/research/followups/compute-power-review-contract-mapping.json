@@ -1,0 +1,2423 @@
+{
+  "review": "Batch E Deep Session 7 native contract mapping",
+  "current_snapshot": {
+    "commit": "f4320b6a1b6d5fac08efaa306768c487398977d9",
+    "verification": "Parent verified 24 selected file blobs against this tree; selected snapshots only, not full checkout.",
+    "manifest": "data/evidence-program/research/followups/compute-power-review-repository-files-manifest.json"
+  },
+  "historical_supplied_commit": {
+    "commit": "87dda3d74f9f9874e82d83d1628b53f9da4b5526",
+    "status": "uninspected; current snapshot review does not retroactively inspect it"
+  },
+  "contract_status": "Repository-contained proposed 0.1.0 portable prototype, explicitly not existing production import schema or migration.",
+  "authority_order": [
+    "dataset.schema.json for shape",
+    "field_dictionary.json descriptive generated index",
+    "unit_registry.json definitions",
+    "dataset_spec.md documents additional companion-validator semantics; validator code not present or executed here"
+  ],
+  "native_validation_limits": [
+    "JSON Schema shape and FormatChecker only; no repository source code imported or run.",
+    "x-target-types and cross-record semantics require companion validator, uninspected/unexecuted.",
+    "Passing fictional records does not admit source observations, establish real identity joins, clear rights, or certify adapters/live collection."
+  ],
+  "field_mapping": [
+    {
+      "topic": "artifact identity and URLs",
+      "source_native_fields": [
+        "artifacts[].id",
+        "url",
+        "accession",
+        "artifact_version",
+        "body_sha256"
+      ],
+      "native_paths": [
+        "record.id",
+        "record.revision",
+        "data.canonical_url",
+        "data.content_sha256",
+        "data.archive_url",
+        "record.upstream_refs[]"
+      ],
+      "mapping_status": "partial",
+      "decision_and_limits": "Native source IDs/revisions, one canonical URL, optional hash and upstream release/key are available. No typed accession/form, original+resolved URL pair, response metadata, hash-unavailable reason or exact representation/host roles. Keep source-native receipt externally. Never label analyst serialization hash as source bytes.",
+      "probe_ids": [
+        "SP020",
+        "SP052",
+        "SP053",
+        "SP054"
+      ]
+    },
+    {
+      "topic": "issuer identity",
+      "source_native_fields": [
+        "subjects[].source_identifiers.CIK",
+        "subjects[].kind",
+        "physical_boundary"
+      ],
+      "native_paths": [
+        "actor.data.actor_kind",
+        "actor.data.name",
+        "actor.data.external_ids",
+        "resource_observation.data.subject_refs",
+        "resource_observation.data.scope"
+      ],
+      "mapping_status": "partial",
+      "decision_and_limits": "An issuer is an organization actor with verified external identity. Portfolio boundary remains scope prose. A publisher actor is not a physical asset; owner/operator/tenant/developer role and dated asset allocation are absent.",
+      "probe_ids": [
+        "SP001",
+        "SP022"
+      ]
+    },
+    {
+      "topic": "composite generator key",
+      "source_native_fields": [
+        "Plant ID",
+        "Generator ID",
+        "source_namespace"
+      ],
+      "native_paths": [
+        "record.upstream_refs[].dataset_id",
+        "record.upstream_refs[].release",
+        "record.upstream_refs[].record_id"
+      ],
+      "mapping_status": "opaque_only",
+      "decision_and_limits": "Preserve BOTH literal string components and namespace in the source-native layer. Upstream record_id can hold an unambiguous reversible composite serialization but schema cannot parse/check it. Do not put generator IDs into organization external_ids or pretend the operator actor is the generator. Native urn slug is lowercase; original uppercase CPP_1 belongs in upstream text, not lossy lowercasing.",
+      "probe_ids": [
+        "SP014",
+        "SP015",
+        "SP042"
+      ]
+    },
+    {
+      "topic": "facility/campus/plant/phase grain",
+      "source_native_fields": [
+        "subjects[].kind",
+        "parent_id",
+        "phase_id",
+        "physical_boundary"
+      ],
+      "native_paths": [],
+      "mapping_status": "missing",
+      "decision_and_limits": "No facility, campus, plant, generator, request or phase record type. Native subject targets are actor/model_version only. Keep asset graph external and require a reviewed extension before lossless native admission.",
+      "probe_ids": [
+        "SP006",
+        "SP007",
+        "SP038",
+        "SP042",
+        "SP043"
+      ]
+    },
+    {
+      "topic": "measurement basis",
+      "source_native_fields": [
+        "source_metric_or_predicate",
+        "source_native",
+        "scope"
+      ],
+      "native_paths": [
+        "data.resource_kind",
+        "data.measurement.metric.key",
+        "data.measurement.metric.definition",
+        "data.measurement.metric.context",
+        "data.scope",
+        "data.measurement.method"
+      ],
+      "mapping_status": "partial",
+      "decision_and_limits": "Distinct stable metric keys and definitions retain active/contracted/undelivered/eventual/net-summer/nameplate boundaries as text. No controlled basis enum or semantic comparability rule. One resource record holds one measurement; two rating assertions of one source row require separate resource measurements plus explicit common source key. This is not two physical units.",
+      "probe_ids": [
+        "SP005",
+        "SP037"
+      ]
+    },
+    {
+      "topic": "numeric representation and units",
+      "source_native_fields": [
+        "value",
+        "unit"
+      ],
+      "native_paths": [
+        "data.measurement.result",
+        "data.measurement.metric.unit",
+        "record.upstream_refs[].transformations"
+      ],
+      "mapping_status": "supported_with_transform",
+      "decision_and_limits": "Native exact decimal strings reject JSON floats/exponents. Native unit registry has watt but no MW/GW, count but no GPUs, kWh/joule but no MWh/GWh. Any future SI-prefix conversion must be authorized, exact-decimal and versioned while retaining source lexeme/unit/precision. The tests convert only invented numbers. No energy→power, power→compute or generation→load conversion is justified.",
+      "probe_ids": [
+        "SP025",
+        "SP026",
+        "SP029",
+        "SP030"
+      ]
+    },
+    {
+      "topic": "lower/upper bounds",
+      "source_native_fields": [
+        "qualifier",
+        "comparator"
+      ],
+      "native_paths": [
+        "data.measurement.result.kind",
+        "data.measurement.result.bound",
+        "data.measurement.result.inclusive"
+      ],
+      "mapping_status": "supported",
+      "decision_and_limits": "Strict > maps to lower_bound with inclusive false; >= maps inclusive true. Bounds are not points and cannot support exact residuals.",
+      "probe_ids": [
+        "SP002",
+        "SP031",
+        "SP047"
+      ]
+    },
+    {
+      "topic": "approximate qualifier",
+      "source_native_fields": [
+        "qualifier approximately",
+        "as displayed to one decimal; preliminary"
+      ],
+      "native_paths": [
+        "data.measurement.uncertainty_notes",
+        "data.measurement.metric.context",
+        "evidence[].excerpt"
+      ],
+      "mapping_status": "prose_only",
+      "decision_and_limits": "No typed approximate/rounded/preliminary qualifier. Category can preserve wording or notes can preserve source lexical uncertainty, but neither automatically preserves usable numeric approximation semantics. Do not invent interval endpoints or silently admit a point. Rights govern excerpts.",
+      "probe_ids": [
+        "SP027",
+        "SP028",
+        "SP048"
+      ]
+    },
+    {
+      "topic": "stock flow and forecast stock",
+      "source_native_fields": [
+        "stock_flow"
+      ],
+      "native_paths": [
+        "data.scope",
+        "data.measurement.metric.definition",
+        "data.measurement.metric.context"
+      ],
+      "mapping_status": "prose_only",
+      "decision_and_limits": "No stock/flow/forecast-stock discriminator, common-vintage guard or no-double-counting invariant. Preserve external typed field and semantic acceptance requirements.",
+      "probe_ids": [
+        "SP024"
+      ]
+    },
+    {
+      "topic": "stage dimensions and raw code",
+      "source_native_fields": [
+        "stage_dimensions",
+        "source_stage",
+        "Status"
+      ],
+      "native_paths": [
+        "data.measurement.result(kind=category)",
+        "data.measurement.uncertainty_notes",
+        "data.scope"
+      ],
+      "mapping_status": "prose_or_separate_categorical_only",
+      "decision_and_limits": "No commercial/construction/connection/operation axes, per-axis evidence/date or status-transition graph. Raw TS is a possible categorical lexical result but metric.unit remains required; do not invent a status unit or treat power metric plus category as approved mapping. A statement may retain attributed prose, but this is not a physical stage ontology.",
+      "probe_ids": [
+        "SP009",
+        "SP011"
+      ]
+    },
+    {
+      "topic": "observation publication and system times",
+      "source_native_fields": [
+        "dates.observation_month",
+        "publication_date",
+        "inspected_on"
+      ],
+      "native_paths": [
+        "times.event",
+        "times.published",
+        "times.known_at",
+        "times.retrieved_at",
+        "times.evaluated"
+      ],
+      "mapping_status": "partial",
+      "decision_and_limits": "event/published/evaluated allow instant/date/range/unknown; all five time fields required. Month can be inclusive month range at month precision. known_at/retrieved_at demand exact UTC timestamps: a historical date-only inspected_on cannot honestly invent midnight. New mapping time is not original source-retrieval time.",
+      "probe_ids": [
+        "SP016",
+        "SP033",
+        "SP034",
+        "SP035",
+        "SP036"
+      ]
+    },
+    {
+      "topic": "forecast, acceptance, revision and source-created times",
+      "source_native_fields": [
+        "planned_operation_month",
+        "forecast_dates",
+        "accepted_source_timestamp",
+        "revision_date",
+        "record_created"
+      ],
+      "native_paths": [],
+      "mapping_status": "missing_dedicated_roles",
+      "decision_and_limits": "No resource forecast target/vintage, source acceptance, source-created or explicit revision-time fields. Quarter is not native temporal precision. Do not substitute times.event with forecast target or times.known_at with filing/acceptance. Keep raw timezone-unknown acceptance timestamp external.",
+      "probe_ids": [
+        "SP010",
+        "SP012",
+        "SP032"
+      ]
+    },
+    {
+      "topic": "authority observation mode",
+      "source_native_fields": [
+        "source_authority",
+        "authority_status",
+        "independent_physical_validation"
+      ],
+      "native_paths": [
+        "source_artifact.data.publisher_ref",
+        "source_artifact.data.author_refs",
+        "measurement.observation_mode",
+        "measurement.method",
+        "governance.review_state"
+      ],
+      "mapping_status": "partial",
+      "decision_and_limits": "Use reported for issuer/utility/agency assertions; official hosting or financial audit does not make measured. Measured requires identifiable evaluation procedure, estimated requires assumptions. No dedicated independence/source-dependency field. Review state is not physical validation.",
+      "probe_ids": [
+        "ENUM-MODE-1",
+        "ENUM-MODE-2",
+        "ENUM-MODE-3"
+      ]
+    },
+    {
+      "topic": "identity containment split and repeated disclosure",
+      "source_native_fields": [
+        "relationships[].relation",
+        "classification",
+        "from_refs",
+        "to_refs",
+        "unresolved_links"
+      ],
+      "native_paths": [
+        "evidence[]",
+        "supersedes"
+      ],
+      "mapping_status": "missing_graph",
+      "decision_and_limits": "Multiple locators and exact revisions exist, but no general resource relationship graph or factual/possible/rejected edge enum. supersedes is correction history for SAME persistent record, not containment, asset split, general status transition or inferred identity. Evidence supports/contradicts/context is not asset-relationship typing.",
+      "probe_ids": [
+        "SP003",
+        "SP004",
+        "SP008",
+        "SP017",
+        "SP018",
+        "SP021",
+        "SP045"
+      ]
+    },
+    {
+      "topic": "missingness and acquisition outcome",
+      "source_native_fields": [
+        "access outcome",
+        "body_capture_note",
+        "missing_record_rules"
+      ],
+      "native_paths": [
+        "data.availability",
+        "measurement.result(kind=missing)"
+      ],
+      "mapping_status": "partial",
+      "decision_and_limits": "Source availability enum is available/removed/restricted/unknown; missing result has six reasons. No request/error/complete-read taxonomy. Retrieval failure does not establish absence, commissioning, retirement or zero.",
+      "probe_ids": [
+        "SP013",
+        "SP020",
+        "SP054"
+      ]
+    },
+    {
+      "topic": "rights review and publication",
+      "source_native_fields": [
+        "rights_profile_id",
+        "rights_profiles",
+        "evidence_status"
+      ],
+      "native_paths": [
+        "governance.rights_state",
+        "governance.rights_basis",
+        "governance.rights_url",
+        "governance.review_state",
+        "governance.publication_state"
+      ],
+      "mapping_status": "partial",
+      "decision_and_limits": "Record-level rights fields preserve basis/link. Detailed artifact exceptions, licensor, attribution and raw/quote/metadata scopes remain source-native detail. Native JSON Schema alone does not enforce publication prerequisites; documented companion validator is uninspected/unexecuted.",
+      "probe_ids": [
+        "SP023"
+      ]
+    },
+    {
+      "topic": "unknown AI allocation",
+      "source_native_fields": [
+        "ai_allocation"
+      ],
+      "native_paths": [
+        "data.scope",
+        "data.measurement.uncertainty_notes"
+      ],
+      "mapping_status": "prose_only",
+      "decision_and_limits": "No typed AI attribution or allocation. Preserve unknown explicitly; no capacity/share computation.",
+      "probe_ids": [
+        "SP051"
+      ]
+    },
+    {
+      "topic": "revisions and idempotence",
+      "source_native_fields": [
+        "artifact_version",
+        "observation vintage",
+        "repeated_disclosure"
+      ],
+      "native_paths": [
+        "record.id",
+        "record.revision",
+        "record.supersedes",
+        "record.upstream_refs[].release",
+        "evidence[]"
+      ],
+      "mapping_status": "partial",
+      "decision_and_limits": "Persistent IDs and required supersedes on revision >=2 are structural. Correct same-ID chain, duplicate semantics, prior stock retention and source-alias collapse need semantic logic; no adapter tested.",
+      "probe_ids": [
+        "SP017",
+        "SP018",
+        "SP044",
+        "SP045"
+      ]
+    }
+  ],
+  "native_definitions": {
+    "decimal": {
+      "schema_pointer": "/$defs/decimal",
+      "schema": {
+        "type": "string",
+        "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+        "maxLength": 120,
+        "description": "Exact base-10 value; no exponent, commas, NaN, Infinity or binary floating-point JSON number. Original lexical precision is retained."
+      }
+    },
+    "record_id": {
+      "schema_pointer": "/$defs/record_id",
+      "schema": {
+        "type": "string",
+        "pattern": "^urn:pdataset:(source_artifact|actor|statement|model_version|release_event|benchmark_run|resource_observation|safety_evaluation|incident|forecast_question|forecast|resolution|snapshot):[a-z0-9][a-z0-9._-]{0,119}$",
+        "description": "Persistent, type-prefixed identifier. Never reused for a different entity or observation."
+      }
+    },
+    "record_ref": {
+      "schema_pointer": "/$defs/record_ref",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/record_id"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Exact immutable revision, never implicit latest."
+          }
+        },
+        "required": [
+          "id",
+          "revision"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "timestamp": {
+      "schema_pointer": "/$defs/timestamp",
+      "schema": {
+        "type": "string",
+        "format": "date-time",
+        "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,6})?Z$",
+        "description": "RFC3339 UTC timestamp ending Z, at most six fractional digits; real calendar date is checked by FormatChecker."
+      }
+    },
+    "unit": {
+      "schema_pointer": "/$defs/unit",
+      "schema": {
+        "type": "string",
+        "enum": [
+          "probability",
+          "percent",
+          "percent_change",
+          "ratio",
+          "count",
+          "score",
+          "calendar_year",
+          "second",
+          "hour",
+          "token",
+          "parameter",
+          "FLOP",
+          "FLOP/s",
+          "GPU_hour",
+          "watt",
+          "joule",
+          "kWh",
+          "currency_nominal",
+          "currency_constant"
+        ],
+        "description": "Versioned unit identifier. Currency basis, score scale, hardware type and denominators belong in metric context."
+      }
+    },
+    "temporal": {
+      "schema_pointer": "/$defs/temporal",
+      "schema": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "instant"
+              },
+              "at": {
+                "$ref": "#/$defs/timestamp",
+                "description": "Actual timestamp; do not invent midnight for date-only evidence."
+              }
+            },
+            "required": [
+              "kind",
+              "at"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "date"
+              },
+              "date": {
+                "type": "string",
+                "format": "date",
+                "description": "Actual calendar day when day precision is all that is known."
+              }
+            },
+            "required": [
+              "kind",
+              "date"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "range"
+              },
+              "start": {
+                "type": "string",
+                "format": "date"
+              },
+              "end": {
+                "type": "string",
+                "format": "date"
+              },
+              "precision": {
+                "type": "string",
+                "enum": [
+                  "day",
+                  "month",
+                  "year",
+                  "uncertain"
+                ],
+                "description": "Precision supported by the source; endpoints are inclusive dates."
+              }
+            },
+            "required": [
+              "kind",
+              "start",
+              "end",
+              "precision"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "unknown"
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Why no reliable time is available."
+              }
+            },
+            "required": [
+              "kind",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        ],
+        "description": "Source-supported time with explicit precision; range endpoints must be ordered."
+      }
+    },
+    "value": {
+      "schema_pointer": "/$defs/value",
+      "schema": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "point"
+              },
+              "value": {
+                "$ref": "#/$defs/decimal",
+                "description": "Reported point value."
+              },
+              "unit": {
+                "$ref": "#/$defs/unit"
+              }
+            },
+            "required": [
+              "kind",
+              "value",
+              "unit"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "interval"
+              },
+              "lower": {
+                "$ref": "#/$defs/decimal",
+                "description": "Lower endpoint."
+              },
+              "upper": {
+                "$ref": "#/$defs/decimal",
+                "description": "Upper endpoint."
+              },
+              "unit": {
+                "$ref": "#/$defs/unit"
+              },
+              "interval_kind": {
+                "type": "string",
+                "enum": [
+                  "reported_range",
+                  "confidence",
+                  "credible",
+                  "measurement"
+                ],
+                "description": "What the endpoints mean."
+              },
+              "level": {
+                "$ref": "#/$defs/decimal",
+                "description": "Coverage probability, only for confidence or credible intervals."
+              }
+            },
+            "required": [
+              "kind",
+              "lower",
+              "upper",
+              "unit",
+              "interval_kind"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "lower_bound"
+              },
+              "bound": {
+                "$ref": "#/$defs/decimal",
+                "description": "Lower limit, not a point estimate."
+              },
+              "inclusive": {
+                "type": "boolean"
+              },
+              "unit": {
+                "$ref": "#/$defs/unit"
+              }
+            },
+            "required": [
+              "kind",
+              "bound",
+              "inclusive",
+              "unit"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "upper_bound"
+              },
+              "bound": {
+                "$ref": "#/$defs/decimal",
+                "description": "Upper limit, not a point estimate."
+              },
+              "inclusive": {
+                "type": "boolean"
+              },
+              "unit": {
+                "$ref": "#/$defs/unit"
+              }
+            },
+            "required": [
+              "kind",
+              "bound",
+              "inclusive",
+              "unit"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "quantiles"
+              },
+              "unit": {
+                "$ref": "#/$defs/unit"
+              },
+              "quantiles": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "q": {
+                      "$ref": "#/$defs/decimal",
+                      "description": "Cumulative probability in [0,1]."
+                    },
+                    "value": {
+                      "$ref": "#/$defs/decimal",
+                      "description": "Value at q, in stated unit."
+                    }
+                  },
+                  "required": [
+                    "q",
+                    "value"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 2,
+                "description": "Strictly increasing q; nondecreasing values. No implied distribution between quantiles."
+              }
+            },
+            "required": [
+              "kind",
+              "unit",
+              "quantiles"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "date_point"
+              },
+              "date": {
+                "type": "string",
+                "format": "date"
+              }
+            },
+            "required": [
+              "kind",
+              "date"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "date_quantiles"
+              },
+              "quantiles": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "q": {
+                      "$ref": "#/$defs/decimal",
+                      "description": "Cumulative probability in [0,1]."
+                    },
+                    "date": {
+                      "type": "string",
+                      "format": "date"
+                    }
+                  },
+                  "required": [
+                    "q",
+                    "date"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 2,
+                "description": "Strictly increasing q; nondecreasing dates."
+              }
+            },
+            "required": [
+              "kind",
+              "quantiles"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "category"
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Verbatim or documented categorical answer."
+              },
+              "vocabulary": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Named/versioned vocabulary, or source_verbatim."
+              }
+            },
+            "required": [
+              "kind",
+              "label",
+              "vocabulary"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "boolean"
+              },
+              "value": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "kind",
+              "value"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "const": "missing"
+              },
+              "reason": {
+                "type": "string",
+                "enum": [
+                  "not_reported",
+                  "not_measured",
+                  "not_applicable",
+                  "withheld",
+                  "unavailable",
+                  "unparseable"
+                ],
+                "description": "Missing never means zero."
+              },
+              "detail": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Optional clarification."
+              }
+            },
+            "required": [
+              "kind",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        ],
+        "description": "Tagged value union; no midpoint substitutions or conversion of prose to invented probabilities."
+      }
+    },
+    "metric": {
+      "schema_pointer": "/$defs/metric",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Stable metric name, including a version when definitions change."
+          },
+          "definition": {
+            "type": "string",
+            "minLength": 1,
+            "description": "What is counted or measured, including numerator and denominator."
+          },
+          "unit": {
+            "$ref": "#/$defs/unit"
+          },
+          "direction": {
+            "type": "string",
+            "enum": [
+              "higher_better",
+              "lower_better",
+              "neutral",
+              "unspecified"
+            ],
+            "description": "Direction under this metric, not a general safety judgment."
+          },
+          "minimum": {
+            "$ref": "#/$defs/decimal",
+            "description": "Valid scale minimum if defined."
+          },
+          "maximum": {
+            "$ref": "#/$defs/decimal",
+            "description": "Valid scale maximum if defined."
+          },
+          "context": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Hardware, currency base year, sample basis or other interpretation-critical context."
+          }
+        },
+        "required": [
+          "key",
+          "definition",
+          "unit",
+          "direction"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "times": {
+      "schema_pointer": "/$defs/times",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "known_at": {
+            "$ref": "#/$defs/timestamp",
+            "description": "First recorded availability of this revision to this dataset; never backdate after late discovery."
+          },
+          "retrieved_at": {
+            "$ref": "#/$defs/timestamp",
+            "description": "Time the underlying material was retrieved or captured for this revision."
+          },
+          "published": {
+            "$ref": "#/$defs/temporal",
+            "description": "When the underlying source was published."
+          },
+          "event": {
+            "$ref": "#/$defs/temporal",
+            "description": "When the described event happened, not its publication."
+          },
+          "evaluated": {
+            "$ref": "#/$defs/temporal",
+            "description": "When an evaluation was run; unknown with reason when not applicable."
+          }
+        },
+        "required": [
+          "known_at",
+          "retrieved_at",
+          "published",
+          "event",
+          "evaluated"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "evidence": {
+      "schema_pointer": "/$defs/evidence",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "source_ref": {
+            "$ref": "#/$defs/record_ref",
+            "description": "Source artifact and exact revision used.",
+            "x-target-types": [
+              "source_artifact"
+            ]
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Page, section, table cell, transcript timestamp or other stable source selector."
+          },
+          "relation": {
+            "type": "string",
+            "enum": [
+              "supports",
+              "contradicts",
+              "context"
+            ],
+            "description": "Relationship to this record."
+          },
+          "excerpt": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Optional short evidence text; distribute only if permitted."
+          },
+          "extraction_method": {
+            "type": "string",
+            "enum": [
+              "manual",
+              "parser",
+              "model_assisted",
+              "synthetic"
+            ],
+            "description": "How this evidence link was produced."
+          },
+          "extractor_version": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Parser/model/prompt pipeline version, or manual-v1."
+          }
+        },
+        "required": [
+          "source_ref",
+          "locator",
+          "relation",
+          "extraction_method",
+          "extractor_version"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "governance": {
+      "schema_pointer": "/$defs/governance",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "review_state": {
+            "type": "string",
+            "enum": [
+              "unreviewed",
+              "machine_validated",
+              "human_verified",
+              "needs_review",
+              "rejected"
+            ],
+            "description": "Evidence/attribution review; not a guarantee of truth."
+          },
+          "reviewer_ref": {
+            "$ref": "#/$defs/record_ref",
+            "description": "Human or accountable organization recorded as reviewer.",
+            "x-target-types": [
+              "actor"
+            ]
+          },
+          "reviewed_at": {
+            "$ref": "#/$defs/timestamp",
+            "description": "Review decision timestamp."
+          },
+          "rights_state": {
+            "type": "string",
+            "enum": [
+              "unknown",
+              "link_only",
+              "metadata_only",
+              "redistribution_allowed",
+              "restricted"
+            ],
+            "description": "Export rights for content of this record; not inherited automatically from software or dataset license."
+          },
+          "rights_basis": {
+            "type": "string",
+            "minLength": 1,
+            "description": "License, permission or reason for restriction; unknown is explicit."
+          },
+          "rights_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "publication_state": {
+            "type": "string",
+            "enum": [
+              "internal",
+              "eligible",
+              "withheld"
+            ],
+            "description": "Eligible requires verified review and cleared rights; does not mean actually published."
+          }
+        },
+        "required": [
+          "review_state",
+          "rights_state",
+          "rights_basis",
+          "publication_state"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "measurement": {
+      "schema_pointer": "/$defs/measurement",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "metric": {
+            "$ref": "#/$defs/metric"
+          },
+          "result": {
+            "$ref": "#/$defs/value"
+          },
+          "observation_mode": {
+            "type": "string",
+            "enum": [
+              "reported",
+              "measured",
+              "estimated"
+            ],
+            "description": "Reported: another party claims it. Measured: identifiable evaluator ran it. Estimated: derived using assumptions."
+          },
+          "method": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Method and source of estimate; disclose assumptions and transformations."
+          },
+          "sample_size": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "uncertainty_notes": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Sampling, contamination, measurement error and other uncertainty not encoded in value."
+          }
+        },
+        "required": [
+          "metric",
+          "result",
+          "observation_mode",
+          "method"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "source_artifact_data": {
+      "schema_pointer": "/$defs/source_artifact_data",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "canonical_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Source title in its source language."
+          },
+          "source_type": {
+            "type": "string",
+            "enum": [
+              "paper",
+              "model_card",
+              "report",
+              "dataset",
+              "repository",
+              "blog",
+              "social_post",
+              "interview",
+              "video",
+              "podcast",
+              "survey",
+              "market",
+              "other"
+            ],
+            "description": "Artifact type, separate from publisher nationality."
+          },
+          "language": {
+            "$ref": "#/$defs/language"
+          },
+          "publisher_ref": {
+            "$ref": "#/$defs/record_ref",
+            "description": "Publishing organization or person.",
+            "x-target-types": [
+              "actor"
+            ]
+          },
+          "author_refs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/record_ref",
+              "description": "Author or attributed speaker.",
+              "x-target-types": [
+                "actor"
+              ]
+            },
+            "minItems": 0,
+            "description": "May be empty when unknown; never invent a person author."
+          },
+          "content_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "archive_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "translation": {
+            "type": "object",
+            "properties": {
+              "original_ref": {
+                "$ref": "#/$defs/record_ref",
+                "description": "Original-language artifact, exact captured revision.",
+                "x-target-types": [
+                  "source_artifact"
+                ]
+              },
+              "method": {
+                "type": "string",
+                "enum": [
+                  "human",
+                  "machine",
+                  "machine_human_reviewed"
+                ],
+                "description": "Translation process."
+              },
+              "translator": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Translator or model/version identifier."
+              },
+              "review_status": {
+                "type": "string",
+                "enum": [
+                  "unreviewed",
+                  "checked",
+                  "disputed"
+                ],
+                "description": "Language review, separate from evidence review."
+              },
+              "notes": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Preserved ambiguity, changes in terminology or omitted material."
+              }
+            },
+            "required": [
+              "original_ref",
+              "method",
+              "translator",
+              "review_status"
+            ],
+            "additionalProperties": false
+          },
+          "availability": {
+            "type": "string",
+            "enum": [
+              "available",
+              "removed",
+              "restricted",
+              "unknown"
+            ],
+            "description": "Current access status at retrieval."
+          }
+        },
+        "required": [
+          "canonical_url",
+          "title",
+          "source_type",
+          "language",
+          "author_refs",
+          "availability"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "actor_data": {
+      "schema_pointer": "/$defs/actor_data",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "actor_kind": {
+            "type": "string",
+            "enum": [
+              "person",
+              "organization",
+              "collective"
+            ],
+            "description": "Entity type; a collective represents surveyed or market participants, not the publisher."
+          },
+          "collective": {
+            "type": "object",
+            "properties": {
+              "collective_kind": {
+                "type": "string",
+                "enum": [
+                  "survey_respondents",
+                  "market_participants",
+                  "expert_panel",
+                  "other"
+                ],
+                "description": "Population represented by an aggregate."
+              },
+              "population_scope": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Inclusion frame and wave-specific population; do not imply representativeness."
+              },
+              "anonymity": {
+                "type": "string",
+                "enum": [
+                  "anonymous",
+                  "pseudonymous",
+                  "mixed",
+                  "identified"
+                ],
+                "description": "Identity disclosure status."
+              }
+            },
+            "required": [
+              "collective_kind",
+              "population_scope",
+              "anonymity"
+            ],
+            "additionalProperties": false
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Preferred name; preserve original script."
+          },
+          "name_language": {
+            "$ref": "#/$defs/language"
+          },
+          "aliases": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Verified alternate name."
+            },
+            "minItems": 0,
+            "description": "Names are not identity keys."
+          },
+          "jurisdictions": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "ISO3166-1 alpha-2, EU, global or unknown."
+                },
+                "relationship": {
+                  "type": "string",
+                  "enum": [
+                    "registered_in",
+                    "based_in",
+                    "operates_in",
+                    "affiliation_geography"
+                  ],
+                  "description": "Geographic relationship, never inferred from language."
+                },
+                "valid_time": {
+                  "$ref": "#/$defs/temporal"
+                }
+              },
+              "required": [
+                "code",
+                "relationship",
+                "valid_time"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "description": "Multiple jurisdictions allowed; an empty array means not established."
+          },
+          "affiliations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "organization_ref": {
+                  "$ref": "#/$defs/record_ref",
+                  "description": "Organization affiliation, not implied citizenship.",
+                  "x-target-types": [
+                    "actor"
+                  ]
+                },
+                "role": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Public professional role."
+                },
+                "valid_time": {
+                  "$ref": "#/$defs/temporal"
+                }
+              },
+              "required": [
+                "organization_ref",
+                "role",
+                "valid_time"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "description": "Dated professional affiliations."
+          },
+          "external_ids": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "namespace": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "ORCID, ROR or other named identifier registry."
+                },
+                "value": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Identifier as assigned by that registry."
+                }
+              },
+              "required": [
+                "namespace",
+                "value"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "description": "Verified external identity mappings."
+          }
+        },
+        "required": [
+          "actor_kind",
+          "name",
+          "name_language",
+          "aliases",
+          "jurisdictions",
+          "affiliations",
+          "external_ids"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "resource_observation_data": {
+      "schema_pointer": "/$defs/resource_observation_data",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "subject_refs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/record_ref",
+              "description": "Organization, model or infrastructure owner being measured.",
+              "x-target-types": [
+                "actor",
+                "model_version"
+              ]
+            },
+            "minItems": 1,
+            "description": "Measured subject."
+          },
+          "resource_kind": {
+            "type": "string",
+            "enum": [
+              "training_compute",
+              "inference_compute",
+              "compute_price",
+              "training_cost",
+              "inference_price",
+              "energy",
+              "power",
+              "hardware",
+              "parameters",
+              "tokens",
+              "labor",
+              "revenue",
+              "investment",
+              "adoption",
+              "productivity",
+              "other"
+            ],
+            "description": "Observation domain."
+          },
+          "measurement": {
+            "$ref": "#/$defs/measurement"
+          },
+          "scope": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Per run, per token, annual, installed capacity or other denominator and boundary."
+          },
+          "currency_basis": {
+            "type": "object",
+            "properties": {
+              "currency": {
+                "type": "string",
+                "pattern": "^[A-Z]{3}$",
+                "description": "ISO4217 original currency code. Conversion is optional and explicit."
+              },
+              "price_basis": {
+                "type": "string",
+                "enum": [
+                  "nominal",
+                  "constant"
+                ],
+                "description": "Price basis."
+              },
+              "base_year": {
+                "type": "integer",
+                "minimum": 1900,
+                "maximum": 2200
+              },
+              "conversion_method": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Original currency, date and exchange/inflation source."
+              }
+            },
+            "required": [
+              "currency",
+              "price_basis",
+              "conversion_method"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "subject_refs",
+          "resource_kind",
+          "measurement",
+          "scope"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "record": {
+      "schema_pointer": "/$defs/record",
+      "schema": {
+        "type": "object",
+        "properties": {
+          "schema_version": {
+            "const": "0.1.0"
+          },
+          "record_type": {
+            "enum": [
+              "source_artifact",
+              "actor",
+              "statement",
+              "model_version",
+              "release_event",
+              "benchmark_run",
+              "resource_observation",
+              "safety_evaluation",
+              "incident",
+              "forecast_question",
+              "forecast",
+              "resolution",
+              "snapshot"
+            ]
+          },
+          "id": {
+            "$ref": "#/$defs/record_id"
+          },
+          "revision": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "synthetic": {
+            "type": "boolean",
+            "description": "True for test-only records, never mixed silently with real observations."
+          },
+          "times": {
+            "$ref": "#/$defs/times"
+          },
+          "governance": {
+            "$ref": "#/$defs/governance"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/evidence"
+            },
+            "minItems": 0,
+            "description": "Traceable source references; empty only for source artifacts and snapshots."
+          },
+          "supersedes": {
+            "$ref": "#/$defs/record_ref",
+            "description": "Immediately preceding revision of the same persistent record, for correction history.",
+            "x-target-types": [
+              "source_artifact",
+              "actor",
+              "statement",
+              "model_version",
+              "release_event",
+              "benchmark_run",
+              "resource_observation",
+              "safety_evaluation",
+              "incident",
+              "forecast_question",
+              "forecast",
+              "resolution",
+              "snapshot"
+            ]
+          },
+          "legacy_refs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "system": {
+                  "const": "pdoom-live"
+                },
+                "entity": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Existing ledger table/entity name."
+                },
+                "key": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Exact existing slug or identifier; no lossy implicit mapping."
+                },
+                "repository_commit": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{40}$"
+                }
+              },
+              "required": [
+                "system",
+                "entity",
+                "key",
+                "repository_commit"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "description": "Optional additive bridge to the existing ledger."
+          },
+          "upstream_refs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "dataset_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Upstream dataset or provider identifier; preserve its own namespace."
+                },
+                "release": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Exact upstream release/version or dated snapshot identifier."
+                },
+                "record_id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Original upstream row, question, run or cell identifier; never replace it silently."
+                },
+                "schema_name": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Original schema or format name."
+                },
+                "schema_version": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Original upstream schema version, or explicit unknown when not supplied."
+                },
+                "schema_url": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "source_ref": {
+                  "$ref": "#/$defs/record_ref",
+                  "description": "Evidence artifact for this upstream release or record.",
+                  "x-target-types": [
+                    "source_artifact"
+                  ]
+                },
+                "transformations": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "operation": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Normalization, mapping or conversion operation."
+                      },
+                      "version": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Transformation implementation/rule version."
+                      },
+                      "description": {
+                        "type": "string",
+                        "minLength": 1,
+                        "description": "Input fields, assumptions and any information loss."
+                      }
+                    },
+                    "required": [
+                      "operation",
+                      "version",
+                      "description"
+                    ],
+                    "additionalProperties": false
+                  },
+                  "minItems": 0,
+                  "description": "Ordered transformations; empty means identity mapping without conversion."
+                }
+              },
+              "required": [
+                "dataset_id",
+                "release",
+                "record_id",
+                "schema_name",
+                "schema_version",
+                "source_ref",
+                "transformations"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "description": "Crosswalk to upstream records. The upstream release stays authoritative; this envelope need not duplicate its whole dataset."
+          },
+          "data": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "schema_version",
+          "record_type",
+          "id",
+          "revision",
+          "synthetic",
+          "times",
+          "governance",
+          "evidence",
+          "data"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "record_type": {
+                  "const": "source_artifact"
+                }
+              },
+              "required": [
+                "record_type"
+              ]
+            },
+            "then": {
+              "properties": {
+                "id": {
+                  "pattern": "^urn:pdataset:source_artifact:"
+                },
+                "data": {
+                  "$ref": "#/$defs/source_artifact_data"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "record_type": {
+                  "const": "actor"
+                }
+              },
+              "required": [
+                "record_type"
+              ]
+            },
+            "then": {
+              "properties": {
+                "id": {
+                  "pattern": "^urn:pdataset:actor:"
+                },
+                "data": {
+                  "$ref": "#/$defs/actor_data"
+                },
+                "evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "record_type": {
+                  "const": "statement"
+                }
+              },
+              "required": [
+                "record_type"
+              ]
+            },
+            "then": {
+              "properties": {
+                "id": {
+                  "pattern": "^urn:pdataset:statement:"
+                },
+                "data": {
+                  "$ref": "#/$defs/statement_data"
+                },
+                "evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "record_type": {
+                  "const": "model_version"
+                }
+              },
+              "required": [
+                "record_type"
+              ]
+            },
+            "then": {
+              "properties": {
+                "id": {
+                  "pattern": "^urn:pdataset:model_version:"
+                },
+                "data": {
+                  "$ref": "#/$defs/model_version_data"
+                },
+                "evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "record_type": {
+                  "const": "release_event"
+                }
+              },
+              "required": [
+                "record_type"
+              ]
+            },
+            "then": {
+              "properties": {
+                "id": {
+                  "pattern": "^urn:pdataset:release_event:"
+                },
+                "data": {
+                  "$ref": "#/$defs/release_event_data"
+                },
+                "evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "record_type": {
+                  "const": "benchmark_run"
+                }
+              },
+              "required": [
+                "record_type"
+              ]
+            },
+            "then": {
+              "properties": {
+                "id": {
+                  "pattern": "^urn:pdataset:benchmark_run:"
+                },
+                "data": {
+                  "$ref": "#/$defs/benchmark_run_data"
+                },
+                "evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "record_type": {
+                  "const": "resource_observation"
+                }
+              },
+              "required": [
+                "record_type"
+              ]
+            },
+            "then": {
+              "properties": {
+                "id": {
+                  "pattern": "^urn:pdataset:resource_observation:"
+                },
+                "data": {
+                  "$ref": "#/$defs/resource_observation_data"
+                },
+                "evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "record_type": {
+                  "const": "safety_evaluation"
+                }
+              },
+              "required": [
+                "record_type"
+              ]
+            },
+            "then": {
+              "properties": {
+                "id": {
+                  "pattern": "^urn:pdataset:safety_evaluation:"
+                },
+                "data": {
+                  "$ref": "#/$defs/safety_evaluation_data"
+                },
+                "evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "record_type": {
+                  "const": "incident"
+                }
+              },
+              "required": [
+                "record_type"
+              ]
+            },
+            "then": {
+              "properties": {
+                "id": {
+                  "pattern": "^urn:pdataset:incident:"
+                },
+                "data": {
+                  "$ref": "#/$defs/incident_data"
+                },
+                "evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "record_type": {
+                  "const": "forecast_question"
+                }
+              },
+              "required": [
+                "record_type"
+              ]
+            },
+            "then": {
+              "properties": {
+                "id": {
+                  "pattern": "^urn:pdataset:forecast_question:"
+                },
+                "data": {
+                  "$ref": "#/$defs/forecast_question_data"
+                },
+                "evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "record_type": {
+                  "const": "forecast"
+                }
+              },
+              "required": [
+                "record_type"
+              ]
+            },
+            "then": {
+              "properties": {
+                "id": {
+                  "pattern": "^urn:pdataset:forecast:"
+                },
+                "data": {
+                  "$ref": "#/$defs/forecast_data"
+                },
+                "evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "record_type": {
+                  "const": "resolution"
+                }
+              },
+              "required": [
+                "record_type"
+              ]
+            },
+            "then": {
+              "properties": {
+                "id": {
+                  "pattern": "^urn:pdataset:resolution:"
+                },
+                "data": {
+                  "$ref": "#/$defs/resolution_data"
+                },
+                "evidence": {
+                  "minItems": 1
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "record_type": {
+                  "const": "snapshot"
+                }
+              },
+              "required": [
+                "record_type"
+              ]
+            },
+            "then": {
+              "properties": {
+                "id": {
+                  "pattern": "^urn:pdataset:snapshot:"
+                },
+                "data": {
+                  "$ref": "#/$defs/snapshot_data"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "revision": {
+                  "minimum": 2
+                }
+              },
+              "required": [
+                "revision"
+              ]
+            },
+            "then": {
+              "required": [
+                "supersedes"
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "standalone_resource_schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.invalid/pdataset/proposed-v0.1/resource_observation.schema.json",
+    "title": "Resource Observation proposed 0.1.0",
+    "allOf": [
+      {
+        "$ref": "https://example.invalid/pdataset/proposed-v0.1/dataset.schema.json#/$defs/record"
+      },
+      {
+        "properties": {
+          "record_type": {
+            "const": "resource_observation"
+          }
+        }
+      }
+    ]
+  },
+  "field_dictionary_audit": {
+    "relevant_entries_checked": 191,
+    "shape_mismatches": [],
+    "unit_registry_matches_schema_enum": true,
+    "requiredness_note": "Parent-local required lists and conditional requirements are preserved in native_definitions; field_dictionary requiredness is not globally transitive."
+  },
+  "unit_registry": {
+    "version": "0.1.0",
+    "status": "proposed starter vocabulary, not a complete ontology",
+    "units": [
+      {
+        "unit": "probability",
+        "definition": "Fraction in [0,1]; never an unlabelled percentage."
+      },
+      {
+        "unit": "percent",
+        "definition": "Bounded proportion in [0,100]."
+      },
+      {
+        "unit": "percent_change",
+        "definition": "Signed percentage change, not bounded above by 100."
+      },
+      {
+        "unit": "ratio",
+        "definition": "Dimensionless ratio; valid scale is metric-specific."
+      },
+      {
+        "unit": "count",
+        "definition": "Count or explicitly described mean/expectation; literal discreteness needs a metric-specific check."
+      },
+      {
+        "unit": "score",
+        "definition": "Benchmark-specific scale, defined in metric; no universal normalization."
+      },
+      {
+        "unit": "calendar_year",
+        "definition": "Integer Gregorian year 1..9999; preserves year-only forecast precision."
+      },
+      {
+        "unit": "second",
+        "definition": "Seconds; clarify wall-clock, CPU or task duration in metric."
+      },
+      {
+        "unit": "hour",
+        "definition": "Hours; clarify time basis and denominator."
+      },
+      {
+        "unit": "token",
+        "definition": "Tokens under a named tokenizer; aggregate means may be fractional."
+      },
+      {
+        "unit": "parameter",
+        "definition": "Model parameters under a declared counting rule; active versus total must be distinguished."
+      },
+      {
+        "unit": "FLOP",
+        "definition": "Floating-point operations; specify counting convention, precision and scope."
+      },
+      {
+        "unit": "FLOP/s",
+        "definition": "Floating-point operations per second; distinguish theoretical peak from measured sustained throughput."
+      },
+      {
+        "unit": "GPU_hour",
+        "definition": "Accelerator-hours; hardware model, count and utilization basis must be explicit."
+      },
+      {
+        "unit": "watt",
+        "definition": "Power; installed capacity, rated draw and measured draw are distinct."
+      },
+      {
+        "unit": "joule",
+        "definition": "Energy with a declared system boundary."
+      },
+      {
+        "unit": "kWh",
+        "definition": "Kilowatt-hours with a declared system boundary."
+      },
+      {
+        "unit": "currency_nominal",
+        "definition": "Signed amount in currency_basis.currency at stated date; nonnegative prices require metric minimum."
+      },
+      {
+        "unit": "currency_constant",
+        "definition": "Signed constant-price amount with currency code, base year and adjustment method."
+      }
+    ]
+  },
+  "original_acceptance_coverage": [
+    {
+      "id": "AC01",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Preserve >850 MW active and approximately 3.1 GW contracted separately. Reject addition, exact residual and unproven subset.",
+      "new_synthetic_shape_probe_ids": [
+        "SP001",
+        "SP024",
+        "SP026",
+        "SP027",
+        "SP028"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC02",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Keep strict > qualifiers. Do not store 250,000 or 850 as exact counts/capacities or manufacture a refreshed GPU total.",
+      "new_synthetic_shape_probe_ids": [
+        "SP002",
+        "SP031"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC03",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Record factual containment with source citation. Retain both stages; do not add them to 1,200 MW.",
+      "new_synthetic_shape_probe_ids": [
+        "SP003"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC04",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Attach the three filing assertions to the described November announcement; no three independent incidents and no current-resolution inference.",
+      "new_synthetic_shape_probe_ids": [
+        "SP004"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC05",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Keep anonymous lease matches possible. Contractual access and remaining-undelivered MW cannot establish a 132 MW delivery by subtraction.",
+      "new_synthetic_shape_probe_ids": [
+        "SP005"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC06",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Do not join anonymous lease/delay or company-wide totals to a campus or uninspected Epoch record.",
+      "new_synthetic_shape_probe_ids": [
+        "SP006",
+        "SP043",
+        "SP051"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC07",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Keep split assertion and null parent/children. Treat possible repeat separately; do not assign MW or infer two physical split events.",
+      "new_synthetic_shape_probe_ids": [
+        "SP007"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC08",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Retain A as predecessor, identify the two source children, record reporting split and source-declared conservation. Do not count A plus both children as distinct new capacity.",
+      "new_synthetic_shape_probe_ids": [
+        "SP008"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC09",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Preserve Request for Service -> Contract for Electric Service as commercial-stage labels; populate neither connection nor operation.",
+      "new_synthetic_shape_probe_ids": [
+        "SP009"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC10",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Keep Q2 2030 and Q2 2032 as forecast vintages, with source-reported +24 months. Actual initial-service date remains unknown.",
+      "new_synthetic_shape_probe_ids": [
+        "SP010",
+        "SP032"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC11",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Keep prior announced 750 MW and disjunctive Withdrawn or No Bid reason; no physical decommissioning inference.",
+      "new_synthetic_shape_probe_ids": [
+        "SP011"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC12",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Store March 12 creation date and 2037 announced load. A new row is not proof of a new executed RFS, contract or physical asset.",
+      "new_synthetic_shape_probe_ids": [
+        "SP010",
+        "SP012"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC13",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Record absent-from-this-artifact only after successful complete relevant read; no commissioning, cancellation or retirement inference. Access errors are acquisition failures, not absences.",
+      "new_synthetic_shape_probe_ids": [
+        "SP013",
+        "SP054"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC14",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Keep separate plant+generator entities. Generator string alone, reporting company alone or matching MW cannot merge them.",
+      "new_synthetic_shape_probe_ids": [
+        "SP014",
+        "SP015",
+        "SP042"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC15",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Preserve 22.2 MW net-summer and 26.1 MW nameplate as separate measures for one unit; do not add or replace either.",
+      "new_synthetic_shape_probe_ids": [
+        "SP001",
+        "SP005",
+        "SP025"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC16",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Retain July observation, August planned operation and September 24 release; TS is the observed source status. A passed target is not actual operation.",
+      "new_synthetic_shape_probe_ids": [
+        "SP001",
+        "SP009",
+        "SP010",
+        "SP016",
+        "SP033"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC17",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Two URL parameters with the same key, values and dates produce one resource observation and dependent locators.",
+      "new_synthetic_shape_probe_ids": [
+        "SP004",
+        "SP017"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC18",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Append linked operational assertion with evidence and valid date; keep the prior TS vintage. The transition adds no second generator capacity stock.",
+      "new_synthetic_shape_probe_ids": [
+        "SP018",
+        "SP044",
+        "SP045"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC19",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Reject data-center waiting-time use: the population excludes load requests. Do not invent workbook columns or a unit crosswalk.",
+      "new_synthetic_shape_probe_ids": [
+        "SP019",
+        "SP051"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC20",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "August XLS link creates attachment metadata only; it does not overwrite the July keyed status.",
+      "new_synthetic_shape_probe_ids": [
+        "SP013",
+        "SP020"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC21",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Keep one request and two explicit component edges. Do not copy aggregate request MW into every unit or assume conserved capacity without evidence.",
+      "new_synthetic_shape_probe_ids": [
+        "SP021"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC22",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Do not merge by redaction token, row order, dates or capacity; require a public anonymous identifier/crosswalk.",
+      "new_synthetic_shape_probe_ids": [
+        "SP022"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC23",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Treat read access separately from redistribution. Preserve EIA attribution and LBNL data-file-only scope; no full issuer/utility artifact grant inferred.",
+      "new_synthetic_shape_probe_ids": [
+        "SP023"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    },
+    {
+      "id": "AC24",
+      "original_execution_status": "specified_only_not_executed",
+      "original_expected_result": "Ten reported online are included in twenty-one broken ground within thirty-one committed projects. Do not add overlapping counts, or 8,500 MW to 12,400 MW; eventual demand is not operating power.",
+      "new_synthetic_shape_probe_ids": [
+        "SP003",
+        "SP009",
+        "SP024"
+      ],
+      "behavioral_requirement_satisfied_by_these_probes": false,
+      "remaining_gate": "Execute separately approved real adapter/semantic checks with evidence-backed identities, scopes and dates. Schema acceptance alone cannot establish this behavioral result."
+    }
+  ],
+  "blockers": [
+    "No native asset/phase/generator/request entity grain or source-backed relationship graph.",
+    "Composite generator key only opaque upstream text; no enforced plant+generator identity.",
+    "Approximate qualifier, stock/flow, four stage axes, actor-to-asset roles and AI allocation are not typed.",
+    "Resource forecast target/vintage, acceptance/revision/source-created times and quarter precision lack dedicated fields.",
+    "Historical date-only source retrieval cannot satisfy exact retrieved_at honestly without new provenance.",
+    "Companion semantic validator and production contracts/adapter implementation are outside supplied snapshots and not executed.",
+    "Source reproducibility, rights, later operational evidence and cross-source bridges remain separate gates."
+  ]
+}

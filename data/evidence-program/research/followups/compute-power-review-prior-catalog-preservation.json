@@ -1,0 +1,667 @@
+{
+  "record_type": "current_catalog_facts_preserved",
+  "commit": "f4320b6a1b6d5fac08efaa306768c487398977d9",
+  "scope": "File contents verified at this commit; any embedded older audit or source-review dates retain their historical scope. This is not a production audit.",
+  "catalogs": [
+    {
+      "catalog_path": "data/evidence-program/research/compute-supply-chain.json",
+      "pinned_url": "https://github.com/mishakgg/pdoom-live/blob/f4320b6a1b6d5fac08efaa306768c487398977d9/data/evidence-program/research/compute-supply-chain.json",
+      "git_blob_sha": "61ec10c62ba709e47acf52aeef6f39b0cc49bdb4",
+      "sha256": "23c44facb6e89591976a194300b0f6d41e3ce176162417dd29807f6399c1ab10",
+      "preserved_objects": [
+        {
+          "json_pointer": "/collections/7",
+          "value": {
+            "name": "CoreWeave fleet, power and deployment-constraint filings",
+            "classification": "new_documentary_collection_family",
+            "rank": null,
+            "inventory_ids": [
+              "GL002",
+              "GL003"
+            ],
+            "reporting_scope": "Company-wide fleet; data centers include owned/leased portions receiving active power, not necessarily distinct owned facilities.",
+            "historical_coverage": "Prospectus retrospectively reports 2022–2024 fleet; FY2025 10-K adds deployment/power context. Dynamic quarterly list not established.",
+            "update_frequency": "Annual/quarterly filings; equivalent GPU counts not guaranteed.",
+            "artifacts": [
+              {
+                "artifact_id": "cw_prospectus",
+                "url": "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/d899798d424b4.htm",
+                "locator": "Cover; glossary piii; MD&A p104; fleet-composition discussion",
+                "verification_status": "public_primary_documentary_read",
+                "rights_status": "unknown",
+                "rights_evidence_url": null
+              },
+              {
+                "artifact_id": "cw_prospectus_index",
+                "url": "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/0001193125-25-067651-index.htm",
+                "locator": "Prospectus dated 2025-03-27; filed 2025-03-31",
+                "verification_status": "public_primary_documentary_read",
+                "rights_status": "unknown",
+                "rights_evidence_url": null
+              },
+              {
+                "artifact_id": "cw_fy2025",
+                "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm",
+                "locator": "Business p5; MD&A p67; Risk Factors pp16–17",
+                "verification_status": "public_primary_documentary_read",
+                "rights_status": "unknown",
+                "rights_evidence_url": null
+              },
+              {
+                "artifact_id": "cw_fy2025_index",
+                "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/0001769628-26-000104-index.htm",
+                "locator": "Filed 2026-03-02; reporting period 2025-12-31",
+                "verification_status": "public_primary_documentary_read",
+                "rights_status": "unknown",
+                "rights_evidence_url": null
+              },
+              {
+                "artifact_id": "cw_archive",
+                "url": "https://investors.coreweave.com/financials/quarterly-results/",
+                "locator": "Latest Quarters/Quarterly Results Archive shell; dynamic list absent",
+                "verification_status": "archive_shell_or_selector_only",
+                "rights_status": "unknown",
+                "rights_evidence_url": null
+              }
+            ],
+            "verified_samples": [
+              {
+                "source_artifact": "cw_prospectus",
+                "accession": "0001193125-25-067651",
+                "document_date": "2025-03-27",
+                "sec_filing_date": "2025-03-31",
+                "historical_observations": [
+                  {
+                    "as_of": "2022-12-31",
+                    "data_centers": 3,
+                    "gpus": {
+                      "value": 17000,
+                      "comparator": ">"
+                    },
+                    "active_power_MW": {
+                      "value": 10,
+                      "qualifier": "approximately"
+                    }
+                  },
+                  {
+                    "as_of": "2023-12-31",
+                    "data_centers": 10,
+                    "gpus": {
+                      "value": 53000,
+                      "comparator": ">"
+                    },
+                    "active_power_MW": {
+                      "value": 70,
+                      "comparator": ">"
+                    }
+                  },
+                  {
+                    "as_of": "2024-12-31",
+                    "data_centers": 32,
+                    "gpus": {
+                      "value": 250000,
+                      "comparator": ">"
+                    },
+                    "active_power_MW": {
+                      "value": 360,
+                      "comparator": ">"
+                    }
+                  }
+                ]
+              },
+              {
+                "source_artifact": "cw_fy2025",
+                "accession": "0001769628-26-000104",
+                "observation_date": "2025-12-31",
+                "filing_date": "2026-03-02",
+                "active_power": {
+                  "value": 850,
+                  "comparator": ">",
+                  "unit": "MW"
+                },
+                "contracted_power": {
+                  "value": 3.1,
+                  "qualifier": "approximately",
+                  "unit": "GW"
+                }
+              },
+              {
+                "source_artifact": "cw_fy2025",
+                "event_time": "November 2025",
+                "stage": "issuer_reported_data_center_delivery_delay",
+                "announcement_day": null,
+                "delayed_MW": null,
+                "duration": null,
+                "resolution": null
+              }
+            ],
+            "limitations": [
+              ">250,000 GPUs across 32 centers at December 31, 2024 is a lower bound, not one SKU or schedulable cluster. Majority Hopper does not classify every device.",
+              ">850 MW active versus approximately 3.1 GW contracted at December 31, 2025 is not energy consumption or an updated GPU count.",
+              "Do not add active/contracted power or supplier shipments/purchaser fleet. Resolve facility/operator identities before GL003 linkage.",
+              "Unknown issuer-content redistribution basis. The November 2025 delay passage lacks exact sites, magnitude, duration and resolution."
+            ],
+            "decision": "Preserve observation/document/filing dates, glossary definitions and stage-specific lower bounds.",
+            "canonical_observation_mapping": "not_approved",
+            "independent_physical_validation": false,
+            "id": "SCB008",
+            "access": "Public SEC filings and accession metadata; physical quantities may remain narrative.",
+            "related_review_collection_ids": [],
+            "sources": [
+              "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/d899798d424b4.htm",
+              "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/0001193125-25-067651-index.htm",
+              "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm",
+              "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/0001769628-26-000104-index.htm",
+              "https://investors.coreweave.com/financials/quarterly-results/"
+            ],
+            "rights": "Artifact-specific rights and acquisition dispositions remain listed below. Public access, financial audit and SEC hosting do not establish a blanket issuer-content or extracted-data reuse grant.",
+            "primary_url": "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/d899798d424b4.htm",
+            "completed_work": {
+              "status": "completed_bounded_review_with_holds",
+              "work": "Checked prospectus and 10-K plus accession metadata, retrospective fleet bounds, glossary data-center definition, active/contracted power and unspecified delivery-delay outcome.",
+              "evidence_urls": [
+                "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/d899798d424b4.htm",
+                "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/0001193125-25-067651-index.htm",
+                "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm",
+                "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/0001769628-26-000104-index.htm",
+                "https://investors.coreweave.com/financials/quarterly-results/"
+              ]
+            },
+            "next_action": "Define fleet/facility identities and stage-specific power fields before any GL003 enrichment.",
+            "verification_scope": "primary_documentary_sample_supported_not_independent_physical_validation"
+          }
+        },
+        {
+          "json_pointer": "/corrections/7",
+          "value": {
+            "id": "SCB-C8",
+            "source_id": "SCB008",
+            "finding": "CoreWeave prospectus dated March 27 was filed March 31, 2025; FY2025 10-K filed March 2, 2026. Data-center units follow issuer glossary.",
+            "evidence_urls": [
+              "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/d899798d424b4.htm",
+              "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/0001193125-25-067651-index.htm",
+              "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/0001769628-26-000104-index.htm"
+            ],
+            "status": "correction_or_qualification"
+          }
+        },
+        {
+          "json_pointer": "/next_actions/7",
+          "value": {
+            "action_id": "SCB008-A1",
+            "status": "pending_authorization_or_clearance",
+            "priority": "P1",
+            "scope_limit": "No operational source acquisition or implementation approved.",
+            "source_id": "SCB008",
+            "action": "Define fleet/facility identities and stage-specific power fields before any GL003 enrichment.",
+            "title": "Define CoreWeave fleet records",
+            "prompt_id": "SCB008-F1"
+          }
+        },
+        {
+          "json_pointer": "/follow_up_prompts/7",
+          "value": {
+            "prompt": "Use only the CoreWeave March 2025 prospectus and FY2025 SEC filing plus their accession metadata below. Prepare at most five fleet/power/deployment records. Keep historical observation dates, prospectus date, filing dates, glossary data-center definition, lower bounds and contracted versus active power distinct. Record November 2025 delay magnitude/resolution as unknown. List required facility/operator identifiers for a future GL003 join; do not download Epoch tables, infer refreshed GPU totals or claim independent physical validation. Sources: https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/d899798d424b4.htm ; https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/0001193125-25-067651-index.htm ; https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm ; https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/0001769628-26-000104-index.htm ; https://investors.coreweave.com/financials/quarterly-results/. Public read-only work only. No login, outreach, source execution, repository edits, bulk download or operational collection. Respect denials without bypass. Return a short decision, precise primary locators and remaining blockers; no new adapter or per-report validator.",
+            "source_id": "SCB008",
+            "id": "SCB008-F1",
+            "priority": "P1",
+            "title": "Define CoreWeave fleet records"
+          }
+        }
+      ],
+      "preserved_catalog_holds": [
+        "All eight source collectors/canonical mappings remain disabled.",
+        "SK hynix release/archive verification held under prohibited automated access.",
+        "NVIDIA-site acquisition held separately from SEC filing rights.",
+        "Compiled factual-data redistribution needs a documented basis.",
+        "Exact Epoch overlap, anonymous packaging-order linkage, stock snapshot dates and fleet utilization remain unknown."
+      ],
+      "original_operational_admission": false
+    },
+    {
+      "catalog_path": "data/evidence-program/research/electricity-deployment.json",
+      "pinned_url": "https://github.com/mishakgg/pdoom-live/blob/f4320b6a1b6d5fac08efaa306768c487398977d9/data/evidence-program/research/electricity-deployment.json",
+      "git_blob_sha": "97c75bd56af90a1a9ab555ffbdecf59871f20154",
+      "sha256": "a52cf43427e436ec3974b92ad3c8f8f0a0a342d834df5cfb83931843258172f4",
+      "preserved_objects": [
+        {
+          "json_pointer": "/priority_ranking/1",
+          "value": {
+            "rank": 2,
+            "id": "EDB002",
+            "basis": "Analytical missing evidence, not acquisition permission or verification completeness. EIA/CSO/LBNL have strongest scoped reuse basis."
+          }
+        },
+        {
+          "json_pointer": "/collections/1",
+          "value": {
+            "name": "Georgia PSC Large Load Economic Development filings",
+            "classification": "new_source_family",
+            "inventory_ids": [
+              "GL003",
+              "GL030"
+            ],
+            "priority_rank": 2,
+            "ai_attribution": "unknown",
+            "primary_url": "https://psc.ga.gov/search/facts-document/?documentId=226607",
+            "historical_coverage": "Q1 2024 filing 218694 dated 2024-05-15 and Q2 2026 filing 227753 dated 2026-08-17 verified; selected endpoints/revision, not a complete audited quarterly archive.",
+            "update_frequency": "Quarterly with intervening revisions.",
+            "reporting_lag": "Q1 2026:45 days; Q2 metadata:48 days. Filing lag is not guaranteed availability or a fixed SLA.",
+            "artifacts": [
+              {
+                "artifact_id": "EDB002-q1",
+                "url": "https://services.psc.ga.gov/api/v1/External/Public/Get/Document/DownloadFile/226607/107887",
+                "access_status": "primary_text_inspected",
+                "locator": "Printed pp 1–4; physical pp 27, 33–36",
+                "rights_status": "unknown",
+                "rights_scope": "This artifact only; no inheritance to underlying or third-party material."
+              },
+              {
+                "artifact_id": "EDB002-q1meta",
+                "url": "https://psc.ga.gov/search/facts-document/?documentId=226607",
+                "access_status": "primary_metadata_inspected",
+                "locator": "226607 attachment listing",
+                "rights_status": "unknown",
+                "rights_scope": "This artifact only; no inheritance to underlying or third-party material."
+              },
+              {
+                "artifact_id": "EDB002-q2meta",
+                "url": "https://psc.ga.gov/search/facts-document/?documentId=227753",
+                "access_status": "primary_metadata_inspected",
+                "locator": "227753 filing date and ZIP title",
+                "rights_status": "unknown",
+                "rights_scope": "This artifact only; no inheritance to underlying or third-party material."
+              },
+              {
+                "artifact_id": "EDB002-revision",
+                "url": "https://psc.ga.gov/search/facts-document/?documentId=225690",
+                "access_status": "primary_metadata_inspected",
+                "locator": "225690 revises Q3/Q4 2025",
+                "rights_status": "unknown",
+                "rights_scope": "This artifact only; no inheritance to underlying or third-party material."
+              },
+              {
+                "artifact_id": "EDB002-history",
+                "url": "https://psc.ga.gov/search/facts-document/?documentId=218694",
+                "access_status": "primary_metadata_inspected",
+                "locator": "218694 Q1 2024",
+                "rights_status": "unknown",
+                "rights_scope": "This artifact only; no inheritance to underlying or third-party material."
+              }
+            ],
+            "samples": [
+              {
+                "sample_id": "EDB002-Q1",
+                "values": {
+                  "committed_customers": 31,
+                  "commitment_capacity_MW": 12400,
+                  "broken_ground_projects": 21,
+                  "of_those_reported_online": 10,
+                  "pending_construction_projects": 10,
+                  "eventual_load_broken_ground_MW": 8500
+                },
+                "locator": "Q1 2026 report printed p 1",
+                "verification": "primary_text_inspected",
+                "evidence_basis": "source_reported_not_independently_validated_physical_outcome",
+                "qualification": "RFS and electric-service contracts are combined; 8500  MW reaches the mid-2030s. Online project count has no measured operating MW.",
+                "ai_attribution": "unknown",
+                "observation_cutoff": "2026-03-31",
+                "publication_date": "2026-05-15",
+                "capacity_horizon": "mid-2030s",
+                "entity_type": "utility_customer_project_aggregate",
+                "facility_id": null
+              },
+              {
+                "sample_id": "EDB002-revision-metadata",
+                "values": {
+                  "document_id": 225690,
+                  "periods_revised": [
+                    "2025-Q3",
+                    "2025-Q4"
+                  ]
+                },
+                "locator": "PSC description/filing date",
+                "verification": "primary_text_inspected",
+                "evidence_basis": "source_reported_not_independently_validated_physical_outcome",
+                "qualification": "Revision contents not opened; preserve predecessor links without assuming which numeric cells changed.",
+                "ai_attribution": "unknown",
+                "publication_date": "2026-03-04"
+              }
+            ],
+            "overlap": "Staff testimony repeating these disclosures is dependent evidence. GL003 join requires explicit public project identity, not similar MW or geography.",
+            "id": "EDB002",
+            "access": "Public filing IDs and PDF/DOCX/XLSX/ZIP metadata. Selected public Q1 PDF inspected; no spreadsheet or ZIP collected and no trade-secret attachment accessed.",
+            "rights": "Utility-authored public attachments have no verified open redistribution grant. Public disclosure is an access label, not a license.",
+            "limitations": [
+              "Q1 physical p 27 and p 36 explicitly document one project split into two; anonymous capacities alone cannot identify parents or match facilities.",
+              "Physical p 33 shows stage changes; p 34 removals; p 35 revised expected service dates. None proves actual customer-meter commissioning.",
+              "Keep redactions; no customer reidentification or private meter data. Customer, project, industry segment and phase counts are not interchangeable."
+            ],
+            "sources": [
+              "https://services.psc.ga.gov/api/v1/External/Public/Get/Document/DownloadFile/226607/107887",
+              "https://psc.ga.gov/search/facts-document/?documentId=226607",
+              "https://psc.ga.gov/search/facts-document/?documentId=227753",
+              "https://psc.ga.gov/search/facts-document/?documentId=225690",
+              "https://psc.ga.gov/search/facts-document/?documentId=218694"
+            ],
+            "completed_work": [
+              "Verified Q1 primary aggregate, project-split footnotes, stage changes/removals/service dates and Q1 2024/Q2 2026/revised 2025 filing metadata."
+            ],
+            "next_action": "Retain revision and parent/phase gates; resolve a permitted attachment reuse basis before extraction.",
+            "decision": "Retain documentary research metadata with source-specific rights, access, identity and interpretation holds; no operational admission.",
+            "verification_scope": "primary_reported_sample_inspected_not_independent_physical_validation"
+          }
+        },
+        {
+          "json_pointer": "/collections/3",
+          "value": {
+            "name": "EIA-860M preliminary generator inventory",
+            "classification": "new_source_family",
+            "inventory_ids": [
+              "GL003",
+              "GL030"
+            ],
+            "priority_rank": 4,
+            "ai_attribution": "unknown",
+            "primary_url": "https://www.eia.gov/electricity/data/eia860m/",
+            "historical_coverage": "Monthly archive July 2015–August 2026. Since March 2017 includes retirements since 2002; Puerto Rico added March 2018. These are different coverage dates.",
+            "update_frequency": "Monthly preliminary; annual EIA-860 final inventory.",
+            "reporting_lag": "August inventory released 2026-09-24:24 days after month-end. EPM Table 6.5 covers July 2026 released 2026-09-24:55 days.",
+            "artifacts": [
+              {
+                "artifact_id": "EDB004-catalog",
+                "url": "https://www.eia.gov/electricity/data/eia860m/",
+                "access_status": "primary_metadata_and_method_inspected",
+                "locator": "Archive/revision/coverage notes",
+                "rights_status": "public_domain_policy",
+                "rights_scope": "This artifact only; no inheritance to underlying or third-party material."
+              },
+              {
+                "artifact_id": "EDB004-table",
+                "url": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_05",
+                "access_status": "primary_text_inspected",
+                "locator": "Table 6.5 plant 68741/generator CPP_1",
+                "rights_status": "public_domain_policy",
+                "rights_scope": "This artifact only; no inheritance to underlying or third-party material."
+              },
+              {
+                "artifact_id": "EDB004-terms",
+                "url": "https://www.eia.gov/about/copyrights_reuse.php",
+                "access_status": "primary_text_inspected",
+                "locator": "Public domain/reuse and protected material",
+                "rights_status": "public_domain_policy",
+                "rights_scope": "This artifact only; no inheritance to underlying or third-party material."
+              }
+            ],
+            "samples": [
+              {
+                "sample_id": "EDB004-CPP_1",
+                "values": {
+                  "plant_id": "68741",
+                  "generator_id": "CPP_1",
+                  "net_summer_capacity_MW": 22.2,
+                  "nameplate_capacity_MW": 26.1,
+                  "status_code": "TS",
+                  "planned_operation": "2026-08"
+                },
+                "locator": "EPM Table 6.5",
+                "verification": "primary_text_inspected",
+                "evidence_basis": "source_reported_not_independently_validated_physical_outcome",
+                "qualification": "Construction complete but not commercially operational at this vintage; planned August date is not actual commissioning.",
+                "ai_attribution": "unknown",
+                "observation_period": "2026-07",
+                "publication_date": "2026-09-24",
+                "entity_type": "electric_generator",
+                "facility_id": null
+              }
+            ],
+            "overlap": "Supply context for GL030; LBNL queue and eventual generator are potentially one asset at different stages, subject to explicit matching. No AI allocation from proximity.",
+            "id": "EDB004",
+            "access": "Documented public monthly Excel and codes files. HTML Table 6.5 sample read; workbooks/API equivalence not validated.",
+            "rights": "EIA data/information products have explicit public-domain/reuse policy; acknowledge source/date. Private contributions, photos and trademarks excluded.",
+            "limitations": [
+              "Use plant+generator IDs; six CPP generators appear separately, so plant/owner joins must not multiply each row.",
+              "MW generation capacity is neither demand nor firm power deliverable to a particular connection. An energy-source code such as MWH is not the capacity-column unit.",
+              "Monthly estimates can change without explanation; retain vintages and link later annual final records, not overwrite or double-count."
+            ],
+            "sources": [
+              "https://www.eia.gov/electricity/data/eia860m/",
+              "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_05",
+              "https://www.eia.gov/about/copyrights_reuse.php"
+            ],
+            "completed_work": [
+              "Verified EPM 68741/CPP_1 TS sample, July reference/September release/August plan, monthly archive, silent revisions, geography changes and EIA reuse."
+            ],
+            "next_action": "Preserve the selected generator and date roles; any later commissioning evidence must be a linked vintage, not a new capacity increment.",
+            "decision": "Retain documentary research metadata with source-specific rights, access, identity and interpretation holds; no operational admission.",
+            "verification_scope": "primary_reported_sample_inspected_not_independent_physical_validation"
+          }
+        },
+        {
+          "json_pointer": "/collections/6",
+          "value": {
+            "name": "Berkeley Lab/GridTracker Queued Up",
+            "classification": "new_source_family",
+            "inventory_ids": [
+              "GL003",
+              "GL030"
+            ],
+            "priority_rank": 7,
+            "ai_attribution": "unknown",
+            "primary_url": "https://emp.lbl.gov/queues",
+            "historical_coverage": "2026 edition through 2025; outcome cohorts extend to 2000 with operator-specific availability. Seven ISO/RTOs+50 non-ISO operators represent about 98% of installed US capacity, not 98% of AI loads.",
+            "update_frequency": "Annual.",
+            "reporting_lag": "Data workbook May 2026 and PDF June 2026 for year-end 2025; approximately 5–6 months. ETA catalogue date 05/2026 applies to collection metadata, not a forced PDF release date.",
+            "artifacts": [
+              {
+                "artifact_id": "EDB007-index",
+                "url": "https://emp.lbl.gov/queues",
+                "access_status": "primary_metadata_and_summary_inspected",
+                "locator": "Data/report dates and data-file license",
+                "rights_status": "artifact_specific",
+                "rights_scope": "This artifact only; no inheritance to underlying or third-party material."
+              },
+              {
+                "artifact_id": "EDB007-edition",
+                "url": "https://eta.lbl.gov/publications/queued-2026-edition-characteristics",
+                "access_status": "primary_text_inspected",
+                "locator": "Abstract/coverage/aggregate highlights/data-file rights",
+                "rights_status": "artifact_specific",
+                "rights_scope": "CC-BY-4.0 explicitly for Queued Up data file; other artifacts separately assessed."
+              }
+            ],
+            "samples": [
+              {
+                "sample_id": "EDB007-2025",
+                "values": {
+                  "active_projects_approx": 8200,
+                  "generation_GW": 1312,
+                  "storage_GW_approx": 749,
+                  "draft_or_executed_agreement_capacity_not_commercial_GW": 549
+                },
+                "locator": "2026 edition official highlights",
+                "verification": "primary_text_inspected",
+                "evidence_basis": "source_reported_not_independently_validated_physical_outcome",
+                "qualification": "Published aggregate, not individual workbook inspection. Generation and storage are separate components; agreement execution is not commercial operation.",
+                "ai_attribution": "unknown",
+                "observation_cutoff": "2025-12-31",
+                "entity_type": "transmission_generation_queue_aggregate",
+                "facility_id": null
+              }
+            ],
+            "overlap": "New supply-delay family contextualizing GL030/GL003. Underlying ISO/RTO records are provenance parents, not independent evidence of extra capacity.",
+            "id": "EDB007",
+            "access": "Official landing pages and 14.85 MB XLSX listing inspected. No workbook row or whole workbook collected; aggregates only.",
+            "rights": "Data file explicitly CC BY 4.0, attribution to LBNL and GridTracker. Does not automatically license every report graphic/linked artifact.",
+            "limitations": [
+              "Explicitly excludes load requests, distribution-connected and behind-the-meter projects. Cannot estimate data-center connection waits.",
+              "Track operator/request IDs, hybrid parent/components and vintages before sums. Preserve requested/completed/withdrawn/active denominators and cohort cutoffs.",
+              "MW queue inventory is not committed output, firm delivered capacity or MWh. Match commissioning to an EIA asset without adding it twice."
+            ],
+            "sources": [
+              "https://emp.lbl.gov/queues",
+              "https://eta.lbl.gov/publications/queued-2026-edition-characteristics"
+            ],
+            "completed_work": [
+              "Verified 2026 primary aggregates, scope exclusions, operator/coverage description, May/June artifact dates and data-file CC BY attribution."
+            ],
+            "next_action": "Retain supply-only context and a future identifier/duplicate checklist; no data-center waiting-time series.",
+            "decision": "Retain documentary research metadata with source-specific rights, access, identity and interpretation holds; no operational admission.",
+            "verification_scope": "primary_reported_sample_inspected_not_independent_physical_validation"
+          }
+        },
+        {
+          "json_pointer": "/next_actions/1",
+          "value": {
+            "action_id": "EDB002-A1",
+            "source_id": "EDB002",
+            "title": "Map Georgia report revisions",
+            "priority": "P0",
+            "status": "follow_up_not_started",
+            "action": "Retain revision and parent/phase gates; resolve a permitted attachment reuse basis before extraction.",
+            "prompt_id": "EDB002-F1"
+          }
+        },
+        {
+          "json_pointer": "/next_actions/3",
+          "value": {
+            "action_id": "EDB004-A1",
+            "source_id": "EDB004",
+            "title": "Qualify one generator vintage",
+            "priority": "P1",
+            "status": "follow_up_not_started",
+            "action": "Preserve the selected generator and date roles; any later commissioning evidence must be a linked vintage, not a new capacity increment.",
+            "prompt_id": "EDB004-F1"
+          }
+        },
+        {
+          "json_pointer": "/next_actions/6",
+          "value": {
+            "action_id": "EDB007-A1",
+            "source_id": "EDB007",
+            "title": "Bound generation queue interpretation",
+            "priority": "P1",
+            "status": "follow_up_not_started",
+            "action": "Retain supply-only context and a future identifier/duplicate checklist; no data-center waiting-time series.",
+            "prompt_id": "EDB007-F1"
+          }
+        },
+        {
+          "json_pointer": "/follow_up_prompts/1",
+          "value": {
+            "id": "EDB002-F1",
+            "source_id": "EDB002",
+            "title": "Map Georgia report revisions",
+            "priority": "P0",
+            "prompt": "Using https://services.psc.ga.gov/api/v1/External/Public/Get/Document/DownloadFile/226607/107887 and filing metadata 226607, 227753, 225690 and 218694, describe at most 6 document relationships and one anonymous split already explicit in the Q1 text. Reuse receipts, or inspect at most 5 metadata pages and the selected public Q1 PDF, total 10 MB. Separate RFS, service contract, broken ground, online count and eventual MW; preserve March 31 cutoff/May 15 filing and redacted identities. Do not download ZIP/XLSX or match anonymous customers by MW. Record what must be cleared for factual attachment reuse. Use only public records or already-reviewed receipts. Respect access denials; no login, outreach, customer reidentification, source execution, bulk downloads, repository edits, new validators or new source families. Return evidence, unknowns and rights scope, then stop."
+          }
+        },
+        {
+          "json_pointer": "/follow_up_prompts/3",
+          "value": {
+            "id": "EDB004-F1",
+            "source_id": "EDB004",
+            "title": "Qualify one generator vintage",
+            "priority": "P1",
+            "prompt": "Use https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_05, https://www.eia.gov/electricity/data/eia860m/ and https://www.eia.gov/about/copyrights_reuse.php or existing receipts, at most 3 small pages/1 MB of retained excerpts. Produce a documentary comparison checklist for plant 68741 generator CPP_1: 22.2 net-summer MW, 26.1 nameplate MW, TS, July 2026 observed vintage, August planned operation and September 24 release. Do not fetch whole workbooks or infer commercial service because the planned month passed. Explain composite-key/revision/geography guards and unknown AI allocation. Use only public records or already-reviewed receipts. Respect access denials; no login, outreach, customer reidentification, source execution, bulk downloads, repository edits, new validators or new source families. Return evidence, unknowns and rights scope, then stop."
+          }
+        },
+        {
+          "json_pointer": "/follow_up_prompts/6",
+          "value": {
+            "id": "EDB007-F1",
+            "source_id": "EDB007",
+            "title": "Bound generation queue interpretation",
+            "priority": "P1",
+            "prompt": "Use only https://emp.lbl.gov/queues and https://eta.lbl.gov/publications/queued-2026-edition-characteristics, at most 2 pages or existing receipts. Describe a future join checklist for operator/request IDs, hybrid components, year-end 2025 snapshot, agreement versus commercial status and EIA plant+generator linkage. Preserve 1312 generation GW, 749 storage GW and 549 agreement-but-not-commercial GW as distinct published aggregates, not workbook-row observations. Do not download the 14.85 MB workbook, compute new completion rates or interpret load queues that this source excludes. Use only public records or already-reviewed receipts. Respect access denials; no login, outreach, customer reidentification, source execution, bulk downloads, repository edits, new validators or new source families. Return evidence, unknowns and rights scope, then stop."
+          }
+        }
+      ],
+      "preserved_catalog_holds": [
+        "ERCOT August/Batch Zero HTTP403; no current primary numeric verification",
+        "ERCOT earlier large-load history and NPRR implementation not verified",
+        "EirGrid CP1089/name history/CP1093 date conflict and Q2 workbook unverified in current pass; reuse restricted",
+        "Georgia/PJM attachment or data redistribution rights unknown",
+        "CSO MEC02 catalogue/export metadata rate-limited; table rights independently verified",
+        "Netbeheer operator-data standard license/current CSV schemas and historical snapshots unverified",
+        "No exact Epoch facility match or AI-use attribution established"
+      ],
+      "original_operational_admission": false
+    },
+    {
+      "catalog_path": "data/evidence-program/source_inventory.json",
+      "pinned_url": "https://github.com/mishakgg/pdoom-live/blob/f4320b6a1b6d5fac08efaa306768c487398977d9/data/evidence-program/source_inventory.json",
+      "git_blob_sha": "e2e8890789f38ef0b4fb0366e08252dd257901c4",
+      "sha256": "a4b5046c3dec44598eeab3f025db75783f9ae5f702e0570d7b31fb3026dde678",
+      "preserved_objects": [
+        {
+          "json_pointer": "/records/2",
+          "value": {
+            "source_id": "GL003",
+            "name": "Epoch AI: AI data centers",
+            "institution_region": "United States; global facilities",
+            "languages": [
+              "en"
+            ],
+            "evidence_layer": "compute_cost",
+            "primary_url": "https://epoch.ai/data/ai-data-centers",
+            "data_url": "https://epoch.ai/data/data_centers/data_centers.zip",
+            "access_method": "Public ZIP of CSV tables documented on source page",
+            "available_content": "Facility capacity, construction timelines, chip quantities and related cooling/chip-type tables.",
+            "historical_coverage": "Mostly facilities operational from 2024 onward plus selected earlier exceptions and under-construction projects; listed update 2026-10-05.",
+            "rights_status": "explicit-license",
+            "rights_url": "https://creativecommons.org/licenses/by/4.0/",
+            "rights_notes": "Dataset page explicitly grants CC BY 4.0 reuse.",
+            "verification_status": "opened-primary",
+            "verified_date": "2026-10-07",
+            "collection_status": "candidate_not_collected",
+            "priority": "P0",
+            "next_action": "Separate operational, under-construction and projected capacity; preserve observation date and underlying permits/satellite references.",
+            "caveats": "US-heavy coverage is acknowledged by publisher. Announced/planned capacity is not available training compute; estimates can change."
+          }
+        },
+        {
+          "json_pointer": "/repository_coverage/2",
+          "value": {
+            "source_id": "GL003",
+            "name": "Epoch AI: AI data centers",
+            "repo_stage": {
+              "catalog_scaffold_present": true,
+              "catalog_target_metadata": true,
+              "related_catalog_metadata": false,
+              "registry_target_reference": false,
+              "related_registry_reference": true,
+              "adapter_present": true,
+              "adapter_scope": [
+                "standalone metadata-only catalog"
+              ],
+              "runner_target_wired": false,
+              "runner_family_supported": false,
+              "saved_target_observations": false,
+              "related_saved_observations": true,
+              "extracted_target_statements": false,
+              "reviewed_public_evidence": false,
+              "target_status": "catalog-only",
+              "scope_notes": "Boolean false means not established in the named checked-in scope. Target datasets are distinguished from related publisher/identity records; production and live publication are unverified."
+            },
+            "artifact_links": [
+              "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/catalogs/epoch_pages.json",
+              "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/catalogs/epoch.py",
+              "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/seed/cohort/v2026-10/sources.jsonl",
+              "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/pipeline/pdoom_pipeline/refresh/runtime.py",
+              "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/collections/cohort-v2026-09/source_observations.jsonl",
+              "https://github.com/mishakgg/pdoom-live/blob/f5274396885dbb654fc2861a78fa5be8f42fad38/data/collections/cohort-v2026-10/source_observations.jsonl"
+            ],
+            "evidence_summary": "Epoch catalog explicitly lists AI-data-centers landing metadata, not ZIP tables or operational capacity observations.",
+            "usable_content_type": "Facility capacity, construction timelines, chip quantities and related cooling/chip-type tables. Repository-verified usable stage: landing-page metadata only.",
+            "missing_work": "No persisted target-content observations, extracted target statements or checked-in human-reviewed publication evidence verified.",
+            "verification_limit": "Pinned checked-in data only; not production. Complete tree and registry inspected;27 relevant catalog payloads, both saved belief corpora and canonical export inspected. Unrelated catalog bodies not exhaustively searched. Generic support is not target setup or a completed run.",
+            "priority": "P0"
+          }
+        }
+      ],
+      "preserved_catalog_holds": null,
+      "original_operational_admission": null
+    }
+  ]
+}

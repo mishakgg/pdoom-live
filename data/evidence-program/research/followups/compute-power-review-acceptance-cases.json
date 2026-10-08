@@ -1,0 +1,1460 @@
+{
+  "record_type": "original_semantic_requirements_and_separate_synthetic_shape_probes",
+  "original": {
+    "source_ledger_sha256": "e34b1e3e0ff27e07a02a76bf2b503c914f9a92313c88381643b03cd217d8555a",
+    "count": 24,
+    "unchanged_acceptance_cases": [
+      {
+        "id": "AC01",
+        "fixture_kind": "inspected_observation",
+        "topic": "overlapping active/contracted capacity",
+        "inputs": [
+          "OBS-CW06",
+          "OBS-CW07"
+        ],
+        "expected_result": "Preserve >850 MW active and approximately 3.1 GW contracted separately. Reject addition, exact residual and unproven subset.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC02",
+        "fixture_kind": "inspected_observation",
+        "topic": "lower bounds",
+        "inputs": [
+          "OBS-CW01",
+          "OBS-CW06"
+        ],
+        "expected_result": "Keep strict > qualifiers. Do not store 250,000 or 850 as exact counts/capacities or manufacture a refreshed GPU total.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC03",
+        "fixture_kind": "synthetic_case",
+        "topic": "explicit containment",
+        "inputs": "Synthetic source explicitly states active 300 MW is included in contracted 900 MW.",
+        "expected_result": "Record factual containment with source citation. Retain both stages; do not add them to 1,200 MW.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC04",
+        "fixture_kind": "inspected_observation",
+        "topic": "repeated disclosure",
+        "inputs": [
+          "OBS-CW08-1",
+          "OBS-CW08-2",
+          "OBS-CW08-3"
+        ],
+        "expected_result": "Attach the three filing assertions to the described November announcement; no three independent incidents and no current-resolution inference.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC05",
+        "fixture_kind": "inspected_observation",
+        "topic": "metric-basis change",
+        "inputs": [
+          "OBS-CW10",
+          "OBS-CW11",
+          "OBS-CW12"
+        ],
+        "expected_result": "Keep anonymous lease matches possible. Contractual access and remaining-undelivered MW cannot establish a 132 MW delivery by subtraction.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC06",
+        "fixture_kind": "inspected_observation",
+        "topic": "unsupported facility attribution",
+        "inputs": [
+          "SUBJECT-CW-KENILWORTH",
+          "EDGE-CW-UNNAMED-NAMED",
+          "EDGE-CW-EPOCH"
+        ],
+        "expected_result": "Do not join anonymous lease/delay or company-wide totals to a campus or uninspected Epoch record.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC07",
+        "fixture_kind": "inspected_observation",
+        "topic": "unresolved split",
+        "inputs": [
+          "OBS-GA-SPLIT-P27",
+          "OBS-GA-SPLIT-P36"
+        ],
+        "expected_result": "Keep split assertion and null parent/children. Treat possible repeat separately; do not assign MW or infer two physical split events.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC08",
+        "fixture_kind": "synthetic_case",
+        "topic": "phase splitting",
+        "inputs": "A hypothetical source explicitly says request A is split into A1 and A2, without changing total requested load.",
+        "expected_result": "Retain A as predecessor, identify the two source children, record reporting split and source-declared conservation. Do not count A plus both children as distinct new capacity.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC09",
+        "fixture_kind": "inspected_observation",
+        "topic": "request versus contract",
+        "inputs": "OBS-GA-R2",
+        "expected_result": "Preserve Request for Service -> Contract for Electric Service as commercial-stage labels; populate neither connection nor operation.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC10",
+        "fixture_kind": "inspected_observation",
+        "topic": "forecast/actual substitution",
+        "inputs": "OBS-GA-R4",
+        "expected_result": "Keep Q2 2030 and Q2 2032 as forecast vintages, with source-reported +24 months. Actual initial-service date remains unknown.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC11",
+        "fixture_kind": "inspected_observation",
+        "topic": "explicit removal",
+        "inputs": "OBS-GA-R3",
+        "expected_result": "Keep prior announced 750 MW and disjunctive Withdrawn or No Bid reason; no physical decommissioning inference.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC12",
+        "fixture_kind": "inspected_observation",
+        "topic": "record creation versus request",
+        "inputs": "OBS-GA-CREATED",
+        "expected_result": "Store March 12 creation date and 2037 announced load. A new row is not proof of a new executed RFS, contract or physical asset.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC13",
+        "fixture_kind": "synthetic_case",
+        "topic": "missing-record interpretation",
+        "inputs": "Hypothetical later planned-additions table omits 68741 / CPP_1.",
+        "expected_result": "Record absent-from-this-artifact only after successful complete relevant read; no commissioning, cancellation or retirement inference. Access errors are acquisition failures, not absences.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC14",
+        "fixture_kind": "synthetic_case",
+        "topic": "generator composite key",
+        "inputs": "Two hypothetical plants both use Generator ID CPP_1.",
+        "expected_result": "Keep separate plant+generator entities. Generator string alone, reporting company alone or matching MW cannot merge them.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC15",
+        "fixture_kind": "inspected_observation",
+        "topic": "different MW definitions",
+        "inputs": "OBS-EIA-UNIT",
+        "expected_result": "Preserve 22.2 MW net-summer and 26.1 MW nameplate as separate measures for one unit; do not add or replace either.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC16",
+        "fixture_kind": "inspected_observation",
+        "topic": "separate dates and unmet target",
+        "inputs": "OBS-EIA-UNIT",
+        "expected_result": "Retain July observation, August planned operation and September 24 release; TS is the observed source status. A passed target is not actual operation.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC17",
+        "fixture_kind": "inspected_observation",
+        "topic": "same-vintage repeat",
+        "inputs": [
+          "OBS-EIA-UNIT",
+          "OBS-EIA-ALIAS"
+        ],
+        "expected_result": "Two URL parameters with the same key, values and dates produce one resource observation and dependent locators.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC18",
+        "fixture_kind": "synthetic_case",
+        "topic": "linked status transition",
+        "inputs": "A hypothetical later dated official record explicitly reports commercial operation for 68741 / CPP_1.",
+        "expected_result": "Append linked operational assertion with evidence and valid date; keep the prior TS vintage. The transition adds no second generator capacity stock.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC19",
+        "fixture_kind": "inspected_documentary_boundary",
+        "topic": "generation versus load queues",
+        "inputs": "LBNL-QUEUED-2026-METADATA",
+        "expected_result": "Reject data-center waiting-time use: the population excludes load requests. Do not invent workbook columns or a unit crosswalk.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC20",
+        "fixture_kind": "inspected_documentary_boundary",
+        "topic": "attachment is not inspected status",
+        "inputs": "EIA-860M-LANDING-2026-09-24",
+        "expected_result": "August XLS link creates attachment metadata only; it does not overwrite the July keyed status.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC21",
+        "fixture_kind": "synthetic_case",
+        "topic": "one request, multiple generators",
+        "inputs": "A hypothetical documented queue authority/request Q maps to two EIA units.",
+        "expected_result": "Keep one request and two explicit component edges. Do not copy aggregate request MW into every unit or assume conserved capacity without evidence.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC22",
+        "fixture_kind": "synthetic_case",
+        "topic": "anonymous cross-vintage match",
+        "inputs": "A hypothetical later report contains REDACTED and the same 600 MW value.",
+        "expected_result": "Do not merge by redaction token, row order, dates or capacity; require a public anonymous identifier/crosswalk.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC23",
+        "fixture_kind": "inspected_documentary_boundary",
+        "topic": "rights scope",
+        "inputs": [
+          "RIGHTS-EIA",
+          "RIGHTS-LBNL",
+          "RIGHTS-SEC-ISSUER",
+          "RIGHTS-GA"
+        ],
+        "expected_result": "Treat read access separately from redistribution. Preserve EIA attribution and LBNL data-file-only scope; no full issuer/utility artifact grant inferred.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC24",
+        "fixture_kind": "inspected_observation",
+        "topic": "nested stages and eventual demand",
+        "inputs": "OBS-GA-PORTFOLIO",
+        "expected_result": "Ten reported online are included in twenty-one broken ground within thirty-one committed projects. Do not add overlapping counts, or 8,500 MW to 12,400 MW; eventual demand is not operating power.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      }
+    ],
+    "execution_status": "All 24 original requirements remain specified_only_not_executed. New SP/REQ/ENUM cases test native JSON Schema shape only."
+  },
+  "new_synthetic_probes": {
+    "notice": "All instances are newly authored fictional tests. None is a source observation, adapter run, or execution of the original AC01–AC24 behavioral cases.",
+    "probes": [
+      {
+        "id": "SP001",
+        "description": "Complete fictional resource observation",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC01",
+          "AC15",
+          "AC16"
+        ],
+        "classification": "native_shape",
+        "interpretation": "Pass certifies shape only. Operator reference is not an asset identity.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP001 / fixture_payload"
+      },
+      {
+        "id": "SP002",
+        "description": "Strict lower bound preserves greater-than",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC02"
+        ],
+        "classification": "native_shape",
+        "interpretation": "A lower_bound with inclusive false can preserve a strict >. No equality is inferred.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP002 / fixture_payload"
+      },
+      {
+        "id": "SP003",
+        "description": "No native containment edge on resource data",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC03",
+          "AC24"
+        ],
+        "classification": "domain_hole",
+        "interpretation": "Containment is absent; preserve external source-native relationship, do not silently drop it.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP003 / fixture_payload"
+      },
+      {
+        "id": "SP004",
+        "description": "Multiple evidence locators can support one observation",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC04",
+          "AC17"
+        ],
+        "classification": "native_shape",
+        "interpretation": "No native semantic repetition/independence classification is created by evidence array.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP004 / fixture_payload"
+      },
+      {
+        "id": "SP005",
+        "description": "Different rating records for same source unit",
+        "schema": "dataset",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC05",
+          "AC15"
+        ],
+        "classification": "native_shape",
+        "interpretation": "Native schema accepts distinct metric keys; it does not enforce non-addition.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP005 / fixture_payload"
+      },
+      {
+        "id": "SP006",
+        "description": "No native facility ID on resource data",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC06"
+        ],
+        "classification": "domain_hole",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP006 / fixture_payload"
+      },
+      {
+        "id": "SP007",
+        "description": "Null unresolved subject cannot satisfy a record reference",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC07"
+        ],
+        "classification": "domain_hole",
+        "interpretation": "Do not invent an actor identity to force an anonymous split into this shape.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP007 / fixture_payload"
+      },
+      {
+        "id": "SP008",
+        "description": "No native asset split relation",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC08"
+        ],
+        "classification": "domain_hole",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP008 / fixture_payload"
+      },
+      {
+        "id": "SP009",
+        "description": "No native four-axis stage object",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC09",
+          "AC16",
+          "AC24"
+        ],
+        "classification": "domain_hole",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP009 / fixture_payload"
+      },
+      {
+        "id": "SP010",
+        "description": "No dedicated forecast target in resource times",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC10",
+          "AC12",
+          "AC16"
+        ],
+        "classification": "domain_hole",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP010 / fixture_payload"
+      },
+      {
+        "id": "SP011",
+        "description": "Categorical result retains disjunctive wording structurally",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC11"
+        ],
+        "classification": "representation_only",
+        "interpretation": "Category variant exists; resource metric still mandates a unit. A power metric plus categorical status is not a recommended canonical status encoding.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP011 / fixture_payload"
+      },
+      {
+        "id": "SP012",
+        "description": "No dedicated source record creation date",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC12"
+        ],
+        "classification": "domain_hole",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP012 / fixture_payload"
+      },
+      {
+        "id": "SP013",
+        "description": "Explicit missing value is representable",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC13",
+          "AC20"
+        ],
+        "classification": "native_shape",
+        "interpretation": "Acquisition event taxonomy is not supplied by this missing-value representation.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP013 / fixture_payload"
+      },
+      {
+        "id": "SP014",
+        "description": "Opaque upstream composite key preserves literal strings",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC14"
+        ],
+        "classification": "representation_only",
+        "interpretation": "record_id is unparsed text: namespace and both components need separate local semantic validation.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP014 / fixture_payload"
+      },
+      {
+        "id": "SP015",
+        "description": "Generator-only upstream key still passes schema",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC14"
+        ],
+        "classification": "domain_counterexample",
+        "interpretation": "Deliberate under-specified identity is structurally accepted. No native composite-key rule.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP015 / fixture_payload"
+      },
+      {
+        "id": "SP016",
+        "description": "Month-range event and separate publication day",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC16"
+        ],
+        "classification": "native_shape",
+        "interpretation": "Range endpoints encode coarse period, not an invented exact operation day.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP016 / fixture_payload"
+      },
+      {
+        "id": "SP017",
+        "description": "Duplicate identical records pass JSON Schema",
+        "schema": "dataset",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC17"
+        ],
+        "classification": "structural_counterexample",
+        "interpretation": "No JSON Schema uniqueness-by-ID rule; companion validator is not executed here.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP017 / fixture_payload"
+      },
+      {
+        "id": "SP018",
+        "description": "Linked next revision has required supersedes shape",
+        "schema": "dataset",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC18"
+        ],
+        "classification": "native_shape",
+        "interpretation": "A correction revision is not automatically a new physical status event. Later observations need their own vintage semantics; chain validity is untested.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP018 / fixture_payload"
+      },
+      {
+        "id": "SP019",
+        "description": "Semantically false queue population claim passes free-text scope",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC19"
+        ],
+        "classification": "domain_counterexample",
+        "interpretation": "Schema cannot validate scope truth; documentary population exclusion remains binding.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP019 / fixture_payload"
+      },
+      {
+        "id": "SP020",
+        "description": "Source metadata without content hash is valid",
+        "schema": "source_artifact",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC20"
+        ],
+        "classification": "native_shape",
+        "interpretation": "Metadata record does not establish attachment bytes were read.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP020 / fixture_payload"
+      },
+      {
+        "id": "SP021",
+        "description": "No native many-to-many queue-component edges",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC21"
+        ],
+        "classification": "domain_hole",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP021 / fixture_payload"
+      },
+      {
+        "id": "SP022",
+        "description": "Anonymous name without external IDs passes actor shape",
+        "schema": "actor",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC22"
+        ],
+        "classification": "domain_counterexample",
+        "interpretation": "Name or redaction token never establishes persistent project identity.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP022 / fixture_payload"
+      },
+      {
+        "id": "SP023",
+        "description": "Ineligible review/rights combination passes JSON Schema alone",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC23"
+        ],
+        "classification": "documented_validator_counterexample",
+        "interpretation": "dataset_spec documents companion publication gates; not a claimed repository-wide defect and not permission to publish.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP023 / fixture_payload"
+      },
+      {
+        "id": "SP024",
+        "description": "No native stock-flow discriminator",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC01",
+          "AC24"
+        ],
+        "classification": "domain_hole",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP024 / fixture_payload"
+      },
+      {
+        "id": "SP025",
+        "description": "Unregistered MW fails even though its physical scale is meaningful",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC15"
+        ],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP025 / fixture_payload"
+      },
+      {
+        "id": "SP026",
+        "description": "Unregistered GW fails",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC01"
+        ],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP026 / fixture_payload"
+      },
+      {
+        "id": "SP027",
+        "description": "Approximate qualifier has no typed field",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC01"
+        ],
+        "classification": "domain_hole",
+        "interpretation": "Preserve approximate text in source-native evidence/notes; no arbitrary interval or exact point substitution.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP027 / fixture_payload"
+      },
+      {
+        "id": "SP028",
+        "description": "Approximate number demoted to point is structurally accepted",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC01"
+        ],
+        "classification": "domain_counterexample",
+        "interpretation": "This deliberately loses a qualifier: schema acceptance does not make that transformation valid.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP028 / fixture_payload"
+      },
+      {
+        "id": "SP029",
+        "description": "JSON numeric measurement value is rejected",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP029 / fixture_payload"
+      },
+      {
+        "id": "SP030",
+        "description": "Exponent decimal lexical form rejected",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP030 / fixture_payload"
+      },
+      {
+        "id": "SP031",
+        "description": "Bound without inclusivity rejected",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC02"
+        ],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP031 / fixture_payload"
+      },
+      {
+        "id": "SP032",
+        "description": "Quarter precision is not in temporal enum",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC10"
+        ],
+        "classification": "domain_hole",
+        "interpretation": "Quarter lexical precision needs external preservation; native precision has day/month/year/uncertain.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP032 / fixture_payload"
+      },
+      {
+        "id": "SP033",
+        "description": "Direct month token is not a full date",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC16"
+        ],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP033 / fixture_payload"
+      },
+      {
+        "id": "SP034",
+        "description": "Actual date validation enabled",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP034 / fixture_payload"
+      },
+      {
+        "id": "SP035",
+        "description": "Unknown date requires reason",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP035 / fixture_payload"
+      },
+      {
+        "id": "SP036",
+        "description": "Reversed date range passes schema",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [],
+        "classification": "documented_validator_counterexample",
+        "interpretation": "Companion validator is documented to check ordering; not run.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP036 / fixture_payload"
+      },
+      {
+        "id": "SP037",
+        "description": "Metric/result unit mismatch passes schema",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [],
+        "classification": "documented_validator_counterexample",
+        "interpretation": "Companion validator documents metric/unit checks; not run. Power-to-energy conversion is forbidden here.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP037 / fixture_payload"
+      },
+      {
+        "id": "SP038",
+        "description": "Source artifact as subject passes generic record_ref shape",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [],
+        "classification": "documented_validator_counterexample",
+        "interpretation": "x-target-types is a custom annotation; companion validator documents enforcing actor/model_version targets.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP038 / fixture_payload"
+      },
+      {
+        "id": "SP039",
+        "description": "Empty subject_refs rejected",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP039 / fixture_payload"
+      },
+      {
+        "id": "SP040",
+        "description": "Empty resource evidence rejected",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP040 / fixture_payload"
+      },
+      {
+        "id": "SP041",
+        "description": "Unresolved reference passes schema",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [],
+        "classification": "documented_validator_counterexample",
+        "interpretation": "Bundle reference resolution belongs to companion validator, not JSON Schema.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP041 / fixture_payload"
+      },
+      {
+        "id": "SP042",
+        "description": "Generator actor-kind is unsupported",
+        "schema": "actor",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC14"
+        ],
+        "classification": "domain_hole",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP042 / fixture_payload"
+      },
+      {
+        "id": "SP043",
+        "description": "Facility record-type is unsupported",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC06"
+        ],
+        "classification": "domain_hole",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP043 / fixture_payload"
+      },
+      {
+        "id": "SP044",
+        "description": "Revision two without supersedes fails",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC18"
+        ],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP044 / fixture_payload"
+      },
+      {
+        "id": "SP045",
+        "description": "Wrong-type revision predecessor passes schema",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [
+          "AC18"
+        ],
+        "classification": "documented_validator_counterexample",
+        "interpretation": "Companion validator documents same-ID chain checks; not run.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP045 / fixture_payload"
+      },
+      {
+        "id": "SP046",
+        "description": "Record revision zero fails",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP046 / fixture_payload"
+      },
+      {
+        "id": "SP047",
+        "description": "Upper bound valid",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP047 / fixture_payload"
+      },
+      {
+        "id": "SP048",
+        "description": "Interval valid without invented approximation width",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [],
+        "classification": "representation_only",
+        "interpretation": "Wholly fictional explicitly reported interval; no real approximate phrase converted.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP048 / fixture_payload"
+      },
+      {
+        "id": "SP049",
+        "description": "Reversed numeric interval passes schema",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [],
+        "classification": "documented_validator_counterexample",
+        "interpretation": "Companion validator documents exact-decimal range checks; not run.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP049 / fixture_payload"
+      },
+      {
+        "id": "SP050",
+        "description": "Confidence interval missing level passes schema",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [],
+        "classification": "documented_validator_counterexample",
+        "interpretation": "Specification requires a coverage level, enforced outside this schema shape.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP050 / fixture_payload"
+      },
+      {
+        "id": "SP051",
+        "description": "AI allocation field not native",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC06",
+          "AC19"
+        ],
+        "classification": "domain_hole",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP051 / fixture_payload"
+      },
+      {
+        "id": "SP052",
+        "description": "Publisher versus host has no source-host field",
+        "schema": "source_artifact",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "domain_hole",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP052 / fixture_payload"
+      },
+      {
+        "id": "SP053",
+        "description": "Two native URL variants have canonical and archive slots only",
+        "schema": "source_artifact",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "domain_hole",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP053 / fixture_payload"
+      },
+      {
+        "id": "SP054",
+        "description": "Availability error is not an enum member",
+        "schema": "source_artifact",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [
+          "AC13"
+        ],
+        "classification": "domain_hole",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP054 / fixture_payload"
+      },
+      {
+        "id": "SP055",
+        "description": "Synthetic/live consistency is not schema enforced",
+        "schema": "dataset",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [],
+        "classification": "documented_validator_counterexample",
+        "interpretation": "Synthetic dataset contains an intentionally non-synthetic record. Companion validator documents synthetic isolation; not run.",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result SP055 / fixture_payload"
+      },
+      {
+        "id": "REQ001",
+        "description": "Missing required field: schema_version",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ001 / fixture_payload"
+      },
+      {
+        "id": "REQ002",
+        "description": "Missing required field: record_type",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ002 / fixture_payload"
+      },
+      {
+        "id": "REQ003",
+        "description": "Missing required field: id",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ003 / fixture_payload"
+      },
+      {
+        "id": "REQ004",
+        "description": "Missing required field: revision",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ004 / fixture_payload"
+      },
+      {
+        "id": "REQ005",
+        "description": "Missing required field: synthetic",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ005 / fixture_payload"
+      },
+      {
+        "id": "REQ006",
+        "description": "Missing required field: times",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ006 / fixture_payload"
+      },
+      {
+        "id": "REQ007",
+        "description": "Missing required field: governance",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ007 / fixture_payload"
+      },
+      {
+        "id": "REQ008",
+        "description": "Missing required field: evidence",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ008 / fixture_payload"
+      },
+      {
+        "id": "REQ009",
+        "description": "Missing required field: data",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ009 / fixture_payload"
+      },
+      {
+        "id": "REQ010",
+        "description": "Missing required field: data.subject_refs",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ010 / fixture_payload"
+      },
+      {
+        "id": "REQ011",
+        "description": "Missing required field: data.resource_kind",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ011 / fixture_payload"
+      },
+      {
+        "id": "REQ012",
+        "description": "Missing required field: data.measurement",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ012 / fixture_payload"
+      },
+      {
+        "id": "REQ013",
+        "description": "Missing required field: data.scope",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ013 / fixture_payload"
+      },
+      {
+        "id": "REQ014",
+        "description": "Missing required field: data.measurement.metric",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ014 / fixture_payload"
+      },
+      {
+        "id": "REQ015",
+        "description": "Missing required field: data.measurement.result",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ015 / fixture_payload"
+      },
+      {
+        "id": "REQ016",
+        "description": "Missing required field: data.measurement.observation_mode",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ016 / fixture_payload"
+      },
+      {
+        "id": "REQ017",
+        "description": "Missing required field: data.measurement.method",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ017 / fixture_payload"
+      },
+      {
+        "id": "REQ018",
+        "description": "Missing required field: data.measurement.metric.key",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ018 / fixture_payload"
+      },
+      {
+        "id": "REQ019",
+        "description": "Missing required field: data.measurement.metric.definition",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ019 / fixture_payload"
+      },
+      {
+        "id": "REQ020",
+        "description": "Missing required field: data.measurement.metric.unit",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ020 / fixture_payload"
+      },
+      {
+        "id": "REQ021",
+        "description": "Missing required field: data.measurement.metric.direction",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ021 / fixture_payload"
+      },
+      {
+        "id": "REQ022",
+        "description": "Missing required field: times.known_at",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ022 / fixture_payload"
+      },
+      {
+        "id": "REQ023",
+        "description": "Missing required field: times.retrieved_at",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ023 / fixture_payload"
+      },
+      {
+        "id": "REQ024",
+        "description": "Missing required field: times.published",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ024 / fixture_payload"
+      },
+      {
+        "id": "REQ025",
+        "description": "Missing required field: times.event",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ025 / fixture_payload"
+      },
+      {
+        "id": "REQ026",
+        "description": "Missing required field: times.evaluated",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ026 / fixture_payload"
+      },
+      {
+        "id": "REQ027",
+        "description": "Missing required field: governance.review_state",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ027 / fixture_payload"
+      },
+      {
+        "id": "REQ028",
+        "description": "Missing required field: governance.rights_state",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ028 / fixture_payload"
+      },
+      {
+        "id": "REQ029",
+        "description": "Missing required field: governance.rights_basis",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ029 / fixture_payload"
+      },
+      {
+        "id": "REQ030",
+        "description": "Missing required field: governance.publication_state",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ030 / fixture_payload"
+      },
+      {
+        "id": "REQ031",
+        "description": "Missing required field: evidence.0.source_ref",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ031 / fixture_payload"
+      },
+      {
+        "id": "REQ032",
+        "description": "Missing required field: evidence.0.locator",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ032 / fixture_payload"
+      },
+      {
+        "id": "REQ033",
+        "description": "Missing required field: evidence.0.relation",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ033 / fixture_payload"
+      },
+      {
+        "id": "REQ034",
+        "description": "Missing required field: evidence.0.extraction_method",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ034 / fixture_payload"
+      },
+      {
+        "id": "REQ035",
+        "description": "Missing required field: evidence.0.extractor_version",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ035 / fixture_payload"
+      },
+      {
+        "id": "REQ036",
+        "description": "Missing required field: upstream_refs.0.dataset_id",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ036 / fixture_payload"
+      },
+      {
+        "id": "REQ037",
+        "description": "Missing required field: upstream_refs.0.release",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ037 / fixture_payload"
+      },
+      {
+        "id": "REQ038",
+        "description": "Missing required field: upstream_refs.0.record_id",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ038 / fixture_payload"
+      },
+      {
+        "id": "REQ039",
+        "description": "Missing required field: upstream_refs.0.schema_name",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ039 / fixture_payload"
+      },
+      {
+        "id": "REQ040",
+        "description": "Missing required field: upstream_refs.0.schema_version",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ040 / fixture_payload"
+      },
+      {
+        "id": "REQ041",
+        "description": "Missing required field: upstream_refs.0.source_ref",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ041 / fixture_payload"
+      },
+      {
+        "id": "REQ042",
+        "description": "Missing required field: upstream_refs.0.transformations",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result REQ042 / fixture_payload"
+      },
+      {
+        "id": "ENUM-MODE-1",
+        "description": "Native observation_mode reported",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result ENUM-MODE-1 / fixture_payload"
+      },
+      {
+        "id": "ENUM-MODE-2",
+        "description": "Native observation_mode measured",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result ENUM-MODE-2 / fixture_payload"
+      },
+      {
+        "id": "ENUM-MODE-3",
+        "description": "Native observation_mode estimated",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": true,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result ENUM-MODE-3 / fixture_payload"
+      },
+      {
+        "id": "ENUM-INVALID-1",
+        "description": "Unsupported enum value independently_verified",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result ENUM-INVALID-1 / fixture_payload"
+      },
+      {
+        "id": "ENUM-INVALID-2",
+        "description": "Unsupported enum value electric_generator",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result ENUM-INVALID-2 / fixture_payload"
+      },
+      {
+        "id": "ENUM-INVALID-3",
+        "description": "Unsupported enum value capacity_stage",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result ENUM-INVALID-3 / fixture_payload"
+      },
+      {
+        "id": "ENUM-INVALID-4",
+        "description": "Unsupported enum value physical_verified",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result ENUM-INVALID-4 / fixture_payload"
+      },
+      {
+        "id": "ENUM-INVALID-5",
+        "description": "Unsupported enum value public_access",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result ENUM-INVALID-5 / fixture_payload"
+      },
+      {
+        "id": "ENUM-INVALID-6",
+        "description": "Unsupported enum value published",
+        "schema": "resource_observation",
+        "expected_native_schema_acceptance": false,
+        "related_original_acceptance_ids": [],
+        "classification": "native_shape",
+        "interpretation": "",
+        "fixture_location": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json result ENUM-INVALID-6 / fixture_payload"
+      }
+    ]
+  },
+  "executed_summary": {
+    "native_schemas_loaded_and_self_checked": 14,
+    "new_synthetic_probes_executed": 106,
+    "distinct_fixture_payloads": 103,
+    "expected_outcomes_matched": 106,
+    "unexpected_outcomes": 0,
+    "native_schema_accepts": 29,
+    "native_schema_rejections": 77,
+    "classifications": {
+      "native_shape": 72,
+      "domain_hole": 17,
+      "representation_only": 3,
+      "domain_counterexample": 4,
+      "structural_counterexample": 1,
+      "documented_validator_counterexample": 9
+    },
+    "original_requirements_preserved_unchanged": true,
+    "original_requirement_count": 24,
+    "original_requirements_with_linked_shape_probes": 24,
+    "original_behavioral_cases_executed": 0,
+    "original_behavioral_cases_passed": 0,
+    "repository_validator_or_adapter_runs": 0,
+    "external_requests": 0,
+    "source_records_admitted": 0,
+    "field_dictionary_entries_checked": 191,
+    "field_dictionary_shape_mismatches": 0
+  },
+  "interpretation": "All 24 original cases remain unexecuted. New shape probes neither discharge their semantic requirements nor execute a collector or adapter.",
+  "reviewer_added_manual_guards": [
+    {
+      "id": "RV-M01",
+      "topic": "Mixed Georgia portfolio",
+      "expected": "Keep 26 data-center and 5 industrial source classifications distinct from AI allocation. No 31-AI-data-center interpretation.",
+      "execution_status": "manual_source_visual_review_only"
+    },
+    {
+      "id": "RV-M02",
+      "topic": "Source precision",
+      "expected": "Preserve Table 1 source-printed 8493 MW and narrative rounded 8500 MW by locator. Neither replaces the other or represents operating demand.",
+      "execution_status": "manual_source_visual_review_only"
+    },
+    {
+      "id": "RV-M03",
+      "topic": "Native cardinality",
+      "expected": "Separate metric records can refer to one source row and one generator. No extra physical unit or capacity from record count.",
+      "execution_status": "manual_contract_review_only"
+    },
+    {
+      "id": "RV-M04",
+      "topic": "Truncated source capture",
+      "expected": "HTTP 200 with preset byte cap exceeded is incomplete acquisition, not a complete source checksum or missing generator.",
+      "execution_status": "manual_capture_outcome_review_only"
+    }
+  ]
+}

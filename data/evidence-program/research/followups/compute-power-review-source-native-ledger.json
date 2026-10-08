@@ -1,0 +1,3699 @@
+{
+  "record_type": "preserved_submitted_source_native_ledger",
+  "review_id": "deep-batch-e-session7",
+  "scope": "Submitted evidence and proposed requirements retained semantically. Transient tool handles omitted; original sealed bytes remain unchanged and byte-identified in delta.json. Historical session claims are not relabeled as current reviewer work.",
+  "submission": {
+    "title": "Deep Session 7: Compute and power capacity accounting",
+    "format": "source-native evidence ledger / analyst envelope v1",
+    "prepared_at_utc": "2026-10-08T17:17:17+00:00",
+    "inspection_date": "2026-10-08",
+    "user_timezone": "Europe/Istanbul",
+    "repository_context": {
+      "repository_url": "https://github.com/mishakgg/pdoom-live",
+      "supplied_commit": "87dda3d74f9f9874e82d83d1628b53f9da4b5526",
+      "inspected_commit": null,
+      "status": "supplied baseline uninspected",
+      "source_labels_from_user": [
+        "SCB008",
+        "SCB008-A1",
+        "GL003",
+        "EDB002",
+        "EDB002-A1",
+        "EDB004",
+        "EDB004-A1",
+        "EDB007"
+      ],
+      "attempts": [
+        {
+          "path": "docs/evidence-program/source_priorities.md",
+          "result": "DisabledError"
+        },
+        {
+          "path": "docs/evidence-program/dataset_spec.md",
+          "result": "DisabledError"
+        }
+      ],
+      "other_requested_material": "Compute-supply-chain and electricity-deployment guides and matching catalogs, and GL003 in source_inventory.json were not inspected after repository access failed. Existence or absence is not asserted.",
+      "canonical_mapping": "deferred",
+      "verified_compatibility": false,
+      "repository_edits": false
+    },
+    "decision_summary": {
+      "case_1": "Issuer portfolio facts and two subsequent SEC vintages are auditable; unnamed lease continuation is only possible, and no Epoch facility allocation or delay resolution is established.",
+      "case_2": "One split assertion and six within-Q1 revision/stage relationships are auditable; split endpoints and cross-filing revised-Q4/Q2 bridges remain unresolved.",
+      "case_3": "One EIA composite-key generator observation is auditable; no later keyed operational status or demand-side power allocation is established.",
+      "strongest_next_slice": "EIA single-generator status and vintage record, conditional on repository mapping and reproducible source capture; no adapter or collector built."
+    },
+    "bounds": {
+      "coreweave": {
+        "initial_SEC_bodies_inspected": 2,
+        "initial_SEC_accession_pages_inspected": 2,
+        "subsequent_SEC_filings_inspected": 2,
+        "subsequent_accessions": [
+          "0001769628-26-000222",
+          "0001769628-26-000366"
+        ],
+        "further_SEC_filings_allowed": 0,
+        "Epoch_facility_descriptions_opened": 0,
+        "Epoch_bulk_downloads": 0,
+        "source_execution": false,
+        "stop_reasons": [
+          "SEC subsequent-filing limit reached.",
+          "No source-identified Kenilworth facility record was visible in retrieved Epoch directory or found by one exact official-domain search.",
+          "No CSV, ZIP, or unrelated facility was fetched to force a match."
+        ]
+      },
+      "georgia": {
+        "named_metadata_pages_inspected": 3,
+        "supplied_pdf_count": 1,
+        "supplied_pdf_bytes": 841648,
+        "additional_pdf_count": 0,
+        "additional_pdf_bytes": 0,
+        "total_unique_pdf_bytes": 841648,
+        "additional_pdf_cap": 2,
+        "new_pdf_budget_bytes": 10000000,
+        "zip_downloads": 0,
+        "xlsx_downloads": 0,
+        "blocked_or_unsupported_routes": [
+          "A HEAD request to the supplied PDF returned HTTP 405 (method unsupported); bounded ordinary GET then succeeded.",
+          "Web screenshot delivery was inconsistent; existing permitted PDF was rendered locally for visual inspection.",
+          "225690 and 227753 provide ZIP-only comparison content; stopped without downloading or guessing alternate files."
+        ],
+        "tests": "No adapter, collector, repository edit or executable acceptance tests. Manual evidence walkthroughs only."
+      },
+      "eia_lbnl": {
+        "starting_pages_inspected": 5,
+        "official_exact_key_searches": 2,
+        "search_queries": [
+          {
+            "engine": "system1",
+            "query": "site:eia.gov \"68741\" \"CPP_1\" 2026",
+            "recency_days": 45,
+            "result": "No useful keyed subsequent page surfaced; generic official results only."
+          },
+          {
+            "engine": "system2",
+            "query": "site:eia.gov \"68741\" \"CPP_1\"",
+            "result": "Starting current table, one alternate parameter and older PDFs; older PDFs not opened."
+          }
+        ],
+        "additional_keyed_candidate_pages_inspected": 1,
+        "subsequently_published_keyed_pages_verified": 0,
+        "added_candidate": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=table_6_05",
+        "stop_reason": "Current official pages still advertise September 24 release / October 23 next release; bounded searches produced no later eligible keyed artifact. Alternate candidate is a same-vintage repeat. This is a bounded non-finding, not a claim that no other record exists.",
+        "lbnl_pdf_downloaded": false,
+        "lbnl_xlsx_downloaded": false,
+        "eia_workbooks_downloaded": false,
+        "accounts_outreach_bulk_or_source_execution": false
+      },
+      "global": "No accounts/login, outreach, bulk dataset downloads, private identity resolution, source code execution, repository edits, collectors, deployment, prohibited route repetitions, resource conversions or cross-stage capacity summation."
+    },
+    "case_studies": [
+      {
+        "id": "CASE-1",
+        "title": "CoreWeave operator totals, anonymous leases and facility attribution",
+        "source_labels_from_user": [
+          "SCB008",
+          "SCB008-A1",
+          "GL003"
+        ]
+      },
+      {
+        "id": "CASE-2",
+        "title": "Georgia anonymous split and within-document project revisions",
+        "source_labels_from_user": [
+          "EDB002",
+          "EDB002-A1"
+        ]
+      },
+      {
+        "id": "CASE-3",
+        "title": "EIA generator status and generation-queue boundary",
+        "source_labels_from_user": [
+          "EDB004",
+          "EDB004-A1",
+          "EDB007"
+        ]
+      }
+    ],
+    "artifacts": [
+      {
+        "id": "CW_424B4_20250331",
+        "url": "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/d899798d424b4.htm",
+        "accession_url": "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/0001193125-25-067651-index.htm",
+        "accession": "0001193125-25-067651",
+        "form": "424B4",
+        "prospectus_date": "2025-03-27",
+        "filing_date": "2025-03-31",
+        "accepted_source_timestamp": "2025-03-31 06:08:15",
+        "accepted_timestamp_timezone": "not asserted; preserved as displayed",
+        "main_document_bytes_from_index": 3526266,
+        "inspection": "Targeted HTML inspection: SELECT DEFINED TERMS; overview; Securing Sufficient Power Capacity.",
+        "locators": {
+          "data_center_definition": "SELECT DEFINED TERMS, printed page iii, retrieved line 196",
+          "fleet": "Prospectus Summary / Overview, retrieved lines 308-309",
+          "repeated_fleet": "Securing Sufficient Power Capacity, printed page 104, retrieved lines 3203-3205"
+        },
+        "inspected_on": "2026-10-08",
+        "body_sha256": null,
+        "body_capture_note": "Targeted web inspection; no raw source-byte snapshot or checksum retained.",
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "source_authority": "CoreWeave issuer-authored disclosure; SEC is the filing host.",
+        "accession_metadata_authority": "SEC EDGAR",
+        "artifact_version": "0001193125-25-067651",
+        "publication_date": "2025-03-31",
+        "revision_date": null,
+        "revision_date_reason": "No amendment/revision date established for this accession."
+      },
+      {
+        "id": "CW_10K_FY2025",
+        "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm",
+        "accession_url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/0001769628-26-000104-index.htm",
+        "accession": "0001769628-26-000104",
+        "form": "10-K",
+        "period": "2025-12-31",
+        "filing_date": "2026-03-02",
+        "accepted_source_timestamp": "2026-03-02 16:14:01",
+        "accepted_timestamp_timezone": "not asserted; preserved as displayed",
+        "main_document_bytes_from_index": 2792032,
+        "inspection": "Targeted HTML inspection: footprint; power capacity; third-party delivery risk; Kenilworth; Note 8.",
+        "locators": {
+          "fleet": "Business overview, printed page 5, retrieved line 219; Securing Sufficient Power Capacity, lines 1883-1884",
+          "delay": "Item 1A, third-party data center provider risk, printed pages 16-17, retrieved lines 512-518",
+          "Kenilworth": "Item 1A, joint venture and real property risks, retrieved lines 1126 and 1154",
+          "anonymous_lease": "Note 8, Leases Not Yet Commenced, printed page 112, retrieved lines 3581-3582"
+        },
+        "inspected_on": "2026-10-08",
+        "body_sha256": null,
+        "body_capture_note": "Targeted web inspection; no raw source-byte snapshot or checksum retained.",
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "source_authority": "CoreWeave issuer-authored disclosure; SEC is the filing host.",
+        "accession_metadata_authority": "SEC EDGAR",
+        "artifact_version": "0001769628-26-000104",
+        "publication_date": "2026-03-02",
+        "revision_date": null,
+        "revision_date_reason": "No amendment/revision date established for this accession."
+      },
+      {
+        "id": "CW_10Q_Q12026",
+        "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000222/crwv-20260331.htm",
+        "accession_url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000222/0001769628-26-000222-index.htm",
+        "accession": "0001769628-26-000222",
+        "form": "10-Q",
+        "period": "2026-03-31",
+        "filing_date": "2026-05-08",
+        "accepted_source_timestamp": "2026-05-07 19:21:42",
+        "accepted_timestamp_timezone": "not asserted; preserved as displayed",
+        "main_document_bytes_from_index": 1741543,
+        "selection": "Exact official SEC-domain search for crwv-20260331 after issuer quarterly and SEC listing pages exposed no filing rows.",
+        "inspection": "Targeted HTML inspection: Note 3; Note 8; risk passages for delivery/November 2025/Kenilworth; searches for active power, contracted power, delivery, resolved.",
+        "locators": {
+          "delay": "Item 1A, third-party data center provider risk, retrieved line 1823",
+          "Kenilworth": "Note 3, Unconsolidated Joint Venture, retrieved lines 583-587; Item 1A lines 2443 and 2471",
+          "anonymous_lease": "Note 8, Leases Not Yet Commenced, printed page 22, retrieved lines 943-944"
+        },
+        "inspected_on": "2026-10-08",
+        "body_sha256": null,
+        "body_capture_note": "Targeted web inspection; no raw source-byte snapshot or checksum retained.",
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "source_authority": "CoreWeave issuer-authored disclosure; SEC is the filing host.",
+        "accession_metadata_authority": "SEC EDGAR",
+        "artifact_version": "0001769628-26-000222",
+        "publication_date": "2026-05-08",
+        "revision_date": null,
+        "revision_date_reason": "No amendment/revision date established for this accession."
+      },
+      {
+        "id": "CW_10Q_Q22026",
+        "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm",
+        "accession_url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/0001769628-26-000366-index.htm",
+        "accession": "0001769628-26-000366",
+        "form": "10-Q",
+        "period": "2026-06-30",
+        "filing_date": "2026-08-12",
+        "accepted_source_timestamp": "2026-08-11 19:24:42",
+        "accepted_timestamp_timezone": "not asserted; preserved as displayed",
+        "main_document_bytes_from_index": 2197519,
+        "selection": "Exact official SEC-domain search for crwv-20260630 after issuer quarterly and SEC listing pages exposed no filing rows.",
+        "inspection": "Targeted HTML inspection: Note 3; Note 8; risk passages for delivery/November 2025/Kenilworth; searches for active power, contracted power, delivery, resolved.",
+        "locators": {
+          "delay": "Item 1A, third-party data center provider risk, retrieved line 2009",
+          "Kenilworth": "Note 3, Unconsolidated Joint Venture, retrieved lines 635-636; Item 1A lines 2629 and 2642",
+          "anonymous_lease": "Note 8, Leases Not Yet Commenced, printed pages 24-25, retrieved lines 1025 and 1032"
+        },
+        "inspected_on": "2026-10-08",
+        "body_sha256": null,
+        "body_capture_note": "Targeted web inspection; no raw source-byte snapshot or checksum retained.",
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "source_authority": "CoreWeave issuer-authored disclosure; SEC is the filing host.",
+        "accession_metadata_authority": "SEC EDGAR",
+        "artifact_version": "0001769628-26-000366",
+        "publication_date": "2026-08-12",
+        "revision_date": null,
+        "revision_date_reason": "No amendment/revision date established for this accession."
+      },
+      {
+        "id": "CW_QUARTERLY_LISTING_20261008",
+        "url": "https://investors.coreweave.com/financials/quarterly-results/",
+        "version": "mutable page accessed 2026-10-08; no immutable version provided",
+        "result": "Headings and select controls retrieved, no individual quarterly report rows.",
+        "inspected_on": "2026-10-08",
+        "body_sha256": null,
+        "body_capture_note": "Targeted web inspection; no raw source-byte snapshot or checksum retained.",
+        "rights_profile_id": "RIGHTS-SEC-ISSUER"
+      },
+      {
+        "id": "CW_SEC_LISTING_20261008",
+        "url": "https://investors.coreweave.com/financials/sec-filings/default.aspx",
+        "version": "mutable page accessed 2026-10-08",
+        "result": "Linked from quarterly listing; table heading retrieved but no filing rows. All-rights-reserved footer applies to site; not treated as a filing redistribution grant.",
+        "inspected_on": "2026-10-08",
+        "body_sha256": null,
+        "body_capture_note": "Targeted web inspection; no raw source-byte snapshot or checksum retained.",
+        "rights_profile_id": "RIGHTS-SEC-ISSUER"
+      },
+      {
+        "id": "EPOCH_DESCRIPTION_20261008",
+        "url": "https://epoch.ai/data/ai-data-centers",
+        "version": "live description accessed 2026-10-08; no immutable release/hash inspected",
+        "displayed_dataset_updates_not_inspected_payloads": {
+          "data_centers_csv": "2026-10-05",
+          "timelines_csv": "2026-10-08",
+          "all_datasets_zip": "2026-10-08"
+        },
+        "locators": {
+          "unit_definition": "What is an AI data center?, retrieved lines 219-224",
+          "rights": "Citations, retrieved line 284",
+          "method_basis": "FAQ, What information do you collect? and How do you estimate IT power, compute, and cost?, retrieved lines 300-305"
+        },
+        "inspected_on": "2026-10-08",
+        "body_sha256": null,
+        "body_capture_note": "Targeted web inspection; no raw source-byte snapshot or checksum retained.",
+        "rights_profile_id": "RIGHTS-EPOCH"
+      },
+      {
+        "id": "EPOCH_DIRECTORY_20261005",
+        "url": "https://epoch.ai/data/ai-data-centers/directory",
+        "displayed_updated_date": "2026-10-05",
+        "version": "live directory accessed 2026-10-08",
+        "result": "Retrieved first visible group and See more button. No Kenilworth or CoreWeave string in retrieved text; this is not proof of database absence.",
+        "inspected_on": "2026-10-08",
+        "body_sha256": null,
+        "body_capture_note": "Targeted web inspection; no raw source-byte snapshot or checksum retained.",
+        "rights_profile_id": "RIGHTS-EPOCH"
+      },
+      {
+        "id": "CC_BY40_DEED",
+        "url": "https://creativecommons.org/licenses/by/4.0/",
+        "version": "Attribution 4.0 International deed linked directly by Epoch's data-use statement",
+        "inspected_on": "2026-10-08",
+        "body_sha256": null,
+        "body_capture_note": "Targeted web inspection; no raw source-byte snapshot or checksum retained.",
+        "rights_profile_id": "RIGHTS-EPOCH"
+      },
+      {
+        "id": "ga-226607-107887",
+        "url": "https://services.psc.ga.gov/api/v1/External/Public/Get/Document/DownloadFile/226607/107887",
+        "metadata_url": "https://psc.ga.gov/search/facts-document/?documentId=226607",
+        "title": "DKT 55378 Lg Load Econ Dev Rept Q1 2026 PD.pdf",
+        "filing_number": "226607",
+        "file_id": "107887",
+        "parent_docket_metadata": "55378",
+        "report_cover_docket": "56002",
+        "version": "Q1 2026 public disclosure; PDF 1.7; 36 physical pages",
+        "filed_date": "2026-05-15",
+        "received_date": "2026-05-15",
+        "report_date": "2026-05-15",
+        "observation_date": "2026-03-31",
+        "download_bytes": 841648,
+        "sha256": "5dfc4c931f75509f93ed7dc1b44307ddf613aa0f4397914b1330ab34aca703de",
+        "pdf_metadata_creation_raw": "D:20260515115354-04'00'",
+        "pdf_metadata_modification_raw": "D:20260515115426-04'00'",
+        "http_last_modified": null,
+        "http_etag": null,
+        "access": "web text retrieval and bounded official direct GET succeeded; no login",
+        "inspection": "text extracted; physical pp2,3,7,27,33,34,35,36 rendered and visually inspected",
+        "authority": "Georgia Power Company as reporting utility; Georgia PSC as official filing host; not independent physical verification",
+        "rights": {
+          "read_access": "public",
+          "redistribution_grant": "not established",
+          "scope": "public utility-authored filing; PUBLIC DISCLOSURE is an access label, not an explicit reuse license",
+          "additional_evidence": "physical pp2-3 assert trade-secret protection for designated confidential information; no applicable redistribution grant located in the inspected material"
+        },
+        "inspected_on": "2026-10-08",
+        "rights_profile_id": "RIGHTS-GA",
+        "publication_date": "2026-05-15",
+        "artifact_version": "226607/107887"
+      },
+      {
+        "id": "ga-metadata-225690",
+        "url": "https://psc.ga.gov/search/facts-document/?documentId=225690",
+        "filing_number": "225690",
+        "description": "Large Load Economic Development Report Q3 Q4 2025 Revised PD",
+        "filed_date": "2026-03-04",
+        "received_date": "2026-03-04",
+        "revision_publication_date": "2026-03-04",
+        "observation_periods": [
+          "2025-Q3",
+          "2025-Q4"
+        ],
+        "parent_docket": "55378",
+        "inspection": "metadata only",
+        "attachment_displayed": "dkt_55378_lg_ld_econ_dev_rept_q3_q4_2025_revised_pd.zip",
+        "allowed_individual_comparison_pdf": false,
+        "stop_reason": "only ZIP attachment exposed; user forbids ZIP downloads; underlying revision content uninspected",
+        "inspected_on": "2026-10-08",
+        "rights_profile_id": "RIGHTS-GA",
+        "publication_date": "2026-03-04",
+        "artifact_version": "225690/metadata-only"
+      },
+      {
+        "id": "ga-metadata-227753",
+        "url": "https://psc.ga.gov/search/facts-document/?documentId=227753",
+        "filing_number": "227753",
+        "description": "DKT 55378 Lg Load Econ Dev Report Q2 2026 PD",
+        "filed_date": "2026-08-17",
+        "received_date": "2026-08-17",
+        "observation_period": "2026-Q2",
+        "parent_docket": "55378",
+        "inspection": "metadata only",
+        "attachment_displayed": "dkt_55378_lg_load_econ_dev_rept_q2_2026_pd.zip",
+        "allowed_individual_comparison_pdf": false,
+        "stop_reason": "only ZIP attachment exposed; user forbids ZIP downloads; Q2 underlying report uninspected",
+        "inspected_on": "2026-10-08",
+        "rights_profile_id": "RIGHTS-GA",
+        "publication_date": "2026-08-17",
+        "artifact_version": "227753/metadata-only"
+      },
+      {
+        "id": "EIA-EPM-6.5-2026-09-24",
+        "url": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_05",
+        "title": "Electric Power Monthly, Table 6.5. Planned U.S. Electric Generating Unit Additions",
+        "version_type": "mutable HTML identified by displayed observation and release dates; no immutable byte version inspected",
+        "observation_month": "2026-07",
+        "publication_date": "2026-09-24",
+        "announced_next_release": "2026-10-23",
+        "explicit_revision_date": null,
+        "locators": {
+          "header": "L19–28",
+          "record": "L47: Plant ID 68741 / Generator ID CPP_1",
+          "notes": "L2392–2396"
+        },
+        "source_authority": "Official EIA compilation sourced to Form EIA-860 and EIA-860M; not independent site verification",
+        "key_rules": "Table notes: EIA assigns unique Entity ID and Plant ID; owners/operators assign Generator IDs. Use Plant ID + Generator ID for unit identity, not generator string alone.",
+        "inspected_on": "2026-10-08",
+        "rights_profile_id": "RIGHTS-EIA",
+        "body_sha256": null,
+        "body_capture_note": "Web representation inspected; no immutable byte snapshot retained."
+      },
+      {
+        "id": "EIA-EPM-6.5-ALIAS-2026-09-24",
+        "url": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=table_6_05",
+        "title": "Electric Power Monthly, Table 6.5 (alternate query parameter)",
+        "version_type": "mutable HTML, same displayed July 2026 / September 24 2026 vintage as starting table",
+        "locators": {
+          "header": "L21",
+          "record": "L47"
+        },
+        "relation": "repeated disclosure of same keyed observation, not subsequent vintage",
+        "discovery_note": "Search snippet [historical tool handle omitted] had a stale V status, but direct page inspection returned TS and the same release date; snippet was not admitted as a historical status observation.",
+        "inspected_on": "2026-10-08",
+        "rights_profile_id": "RIGHTS-EIA",
+        "body_sha256": null,
+        "body_capture_note": "Web representation inspected; no immutable byte snapshot retained."
+      },
+      {
+        "id": "EIA-860M-LANDING-2026-09-24",
+        "url": "https://www.eia.gov/electricity/data/eia860m/",
+        "title": "Preliminary Monthly Electric Generator Inventory",
+        "publication_date": "2026-09-24",
+        "announced_next_release": "2026-10-23",
+        "latest_link_label_inspected": "August 2026 XLS",
+        "linked_workbook_inspected": false,
+        "locators": {
+          "methodology": "L61–71",
+          "latest_link": "L78–81"
+        },
+        "key_methodology": "Monthly inventory can incorporate annual survey data before full EIA verification; preliminary capacity estimates can be corrected in later inventories without specific acknowledgment. They are not facility capacity commitments.",
+        "limit": "This landing page does not state a keyed August status for 68741/CPP_1. A link label cannot update the July observation.",
+        "inspected_on": "2026-10-08",
+        "rights_profile_id": "RIGHTS-EIA",
+        "body_sha256": null,
+        "body_capture_note": "Web representation inspected; no immutable byte snapshot retained."
+      },
+      {
+        "id": "EIA-RIGHTS-2026-10-08",
+        "url": "https://www.eia.gov/about/copyrights_reuse.php",
+        "version_type": "undated policy page, inspected 2026-10-08",
+        "locators": {
+          "reuse": "L21–25",
+          "exceptions": "L28–33"
+        },
+        "read_access": "public page successfully inspected",
+        "redistribution_scope": "EIA information products on its website may be used/distributed with acknowledgment including publication date. Third-party protected material, photographs and marks are separately restricted.",
+        "applicable_slice": "EIA's tabular information and factual keyed row, with attribution; no blanket grant for unrelated contributor content or branding",
+        "inspected_on": "2026-10-08",
+        "rights_profile_id": "RIGHTS-EIA",
+        "body_sha256": null,
+        "body_capture_note": "Web representation inspected; no immutable byte snapshot retained."
+      },
+      {
+        "id": "LBNL-QUEUES-LANDING-2026-10-08",
+        "url": "https://emp.lbl.gov/queues",
+        "title": "Queued Up: Characteristics of Power Plants Seeking Transmission Interconnection",
+        "edition": "2026 edition; data through end of 2025",
+        "version_type": "mutable landing page",
+        "datafile_last_updated": "2026-05 (page statement)",
+        "report_published": "2026-06 (page statement)",
+        "locators": {
+          "timing": "L6",
+          "generation_queue_definition": "L4–5",
+          "datafile_rights": "L20–22"
+        },
+        "read_access": "public page successfully inspected",
+        "redistribution_scope": "Explicit CC BY 4.0 notice for the Queued Up data file; attribution to Lawrence Berkeley National Laboratory and GridTracker.",
+        "rights_limit": "Notice is artifact-specific to data file. Do not extend automatically to report PDF, graphics, every underlying provider record, or older editions.",
+        "downloaded_dataset": false,
+        "inspected_on": "2026-10-08",
+        "rights_profile_id": "RIGHTS-LBNL",
+        "body_sha256": null,
+        "body_capture_note": "Web representation inspected; no immutable byte snapshot retained."
+      },
+      {
+        "id": "LBNL-QUEUED-2026-METADATA",
+        "url": "https://eta.lbl.gov/publications/queued-2026-edition-characteristics",
+        "title": "Queued Up: 2026 Edition, Characteristics of Power Plants Seeking Transmission Interconnection As of the End of 2025",
+        "catalog_date_published": "2026-05",
+        "version_type": "publication metadata page, accessed 2026-10-08",
+        "locators": {
+          "catalog_date": "L24–26",
+          "scope_exclusions": "L33–36",
+          "datafile_rights": "L54–56",
+          "attachments": "L64–68"
+        },
+        "scope": "Transmission-generation interconnection requests through end of 2025; excludes load interconnection, distribution-connected and behind-the-meter projects.",
+        "attachment_metadata_only": [
+          {
+            "label": "Slide Deck PDF",
+            "displayed_size": "17.57 MB",
+            "inspected": false
+          },
+          {
+            "label": "Data File XLSX",
+            "displayed_size": "14.85 MB",
+            "inspected": false
+          }
+        ],
+        "codebook_status": "Metadata says codebook is in XLSX; field dictionary not inspected and no column names guessed.",
+        "date_note": "Keep catalog's May 2026 publication field separate from queues landing page's June 2026 report-publication statement and May datafile update. No exact PDF version read.",
+        "inspected_on": "2026-10-08",
+        "rights_profile_id": "RIGHTS-LBNL",
+        "body_sha256": null,
+        "body_capture_note": "Web representation inspected; no immutable byte snapshot retained."
+      }
+    ],
+    "rights_profiles": [
+      {
+        "id": "RIGHTS-SEC-ISSUER",
+        "read_access": "Public HTML inspected; SEC metadata inspected.",
+        "redistribution_status": "Artifact-specific full-content grant not established in inspected material.",
+        "scope": "Issuer-authored filings; SEC hosting alone is not an applicable reuse grant for issuer text, exhibits or images.",
+        "use_in_this_deliverable": "Source links, accession metadata and selected factual observations; no complete source copies included.",
+        "policy_artifact_ids": []
+      },
+      {
+        "id": "RIGHTS-GA",
+        "read_access": "Public filing PDF and filing metadata inspected.",
+        "redistribution_status": "Explicit artifact reuse grant not established.",
+        "scope": "PUBLIC DISCLOSURE describes access; utility authorship and regulator hosting are retained separately.",
+        "use_in_this_deliverable": "Selected factual rows and analytical conclusions with PDF locators, not the original PDF.",
+        "policy_artifact_ids": [
+          "ga-226607-107887"
+        ]
+      },
+      {
+        "id": "RIGHTS-EIA",
+        "read_access": "Successful public table inspection; later table retrievals returned a transient error.",
+        "redistribution_status": "EIA permits use/distribution of its information products with publication-date acknowledgment.",
+        "scope": "EIA table data and text; separately protected third-party materials, photographs and marks are excluded.",
+        "acknowledgment": "Source: U.S. Energy Information Administration, Electric Power Monthly, September 24, 2026.",
+        "policy_artifact_ids": [
+          "EIA-RIGHTS-2026-10-08"
+        ]
+      },
+      {
+        "id": "RIGHTS-EPOCH",
+        "read_access": "Public description and visible directory inspected; no dataset payload or facility record inspected.",
+        "redistribution_status": "Current data-use statement links CC BY 4.0 with source/author attribution.",
+        "scope": "No inferred extension to older uninspected snapshots or third-party imagery, permits and company documents.",
+        "policy_artifact_ids": [
+          "EPOCH_DESCRIPTION_20261008",
+          "CC_BY40_DEED"
+        ]
+      },
+      {
+        "id": "RIGHTS-LBNL",
+        "read_access": "Public documentation inspected; XLSX/PDF attachments uninspected.",
+        "redistribution_status": "Explicit CC BY 4.0 declaration for the 2026 Queued Up data file.",
+        "scope": "Attribute Lawrence Berkeley National Laboratory and GridTracker; do not automatically extend to report PDF, older editions or all underlying provider records.",
+        "policy_artifact_ids": [
+          "LBNL-QUEUES-LANDING-2026-10-08",
+          "LBNL-QUEUED-2026-METADATA"
+        ]
+      }
+    ],
+    "subjects": [
+      {
+        "id": "SUBJECT-CW-ISSUER",
+        "kind": "issuer_portfolio",
+        "source_namespace": "SEC CIK",
+        "source_identifiers": {
+          "CIK": "0001769628"
+        },
+        "label": "CoreWeave, Inc. and subsidiaries",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "factual same issuer across inspected accession metadata",
+        "physical_boundary": "Issuer-wide network; not one physical site."
+      },
+      {
+        "id": "SUBJECT-CW-DELAY",
+        "kind": "unresolved_event_subject",
+        "source_namespace": "CoreWeave disclosure",
+        "source_identifiers": {},
+        "label": "Unnamed third-party provider and certain delayed data centers",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "No named assets; repeated November 2025 announcement reference only."
+      },
+      {
+        "id": "SUBJECT-CW-KENILWORTH",
+        "kind": "issuer_scoped_named_campus_reference",
+        "source_namespace": "CoreWeave disclosure",
+        "source_identifiers": {
+          "place": "Kenilworth, New Jersey",
+          "relationship": "June 2025 joint venture"
+        },
+        "label": "Multi-phase Kenilworth campus reference",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "Named documentary reference; exact parcel, phase and Epoch identifier unresolved."
+      },
+      {
+        "id": "SUBJECT-GA-PORTFOLIO",
+        "kind": "reported_portfolio",
+        "source_namespace": "Georgia PSC filing 226607",
+        "source_identifiers": {
+          "reporting_utility": "Georgia Power Company"
+        },
+        "label": "Q1 2026 large-load commitments",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "Portfolio only; 31 customers/projects are source labels, not reconstructed individual identities."
+      },
+      {
+        "id": "SUBJECT-EIA-PLANT",
+        "kind": "plant",
+        "source_namespace": "EIA",
+        "source_identifiers": {
+          "Plant ID": "68741"
+        },
+        "label": "Canyon Peak Power Station",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "factual source identifier"
+      },
+      {
+        "id": "SUBJECT-EIA-UNIT",
+        "kind": "generator",
+        "source_namespace": "EIA",
+        "source_identifiers": {
+          "Plant ID": "68741",
+          "Generator ID": "CPP_1",
+          "reporting Entity ID": "67225"
+        },
+        "label": "Canyon Peak Power Station / CPP_1",
+        "parent_id": "SUBJECT-EIA-PLANT",
+        "phase_id": null,
+        "identity_status": "factual composite generator identifier; reporting entity is a role, not the generator key"
+      },
+      {
+        "id": "SUBJECT-CW10",
+        "kind": "anonymous_lease_disclosure_handle",
+        "source_namespace": "CW_10K_FY2025",
+        "source_identifiers": {},
+        "source_label": "unnamed single site",
+        "local_locator": "Note 8, Leases Not Yet Commenced, printed page 112, retrieved lines 3581-3582",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "Analyst handle for this disclosure only; not a persistent asset or customer identifier."
+      },
+      {
+        "id": "SUBJECT-CW11",
+        "kind": "anonymous_lease_disclosure_handle",
+        "source_namespace": "CW_10Q_Q12026",
+        "source_identifiers": {},
+        "source_label": "unnamed single site",
+        "local_locator": "Note 8, Leases Not Yet Commenced, printed page 22, retrieved lines 943-944",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "Analyst handle for this disclosure only; not a persistent asset or customer identifier."
+      },
+      {
+        "id": "SUBJECT-CW12",
+        "kind": "anonymous_lease_disclosure_handle",
+        "source_namespace": "CW_10Q_Q22026",
+        "source_identifiers": {},
+        "source_label": "unnamed single site",
+        "local_locator": "Note 8, Leases Not Yet Commenced, printed pages 24-25, retrieved lines 1025 and 1032",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "Analyst handle for this disclosure only; not a persistent asset or customer identifier."
+      },
+      {
+        "id": "SUBJECT-GA-SPLIT-P27",
+        "kind": "unresolved_split_subject",
+        "source_namespace": "ga-226607-107887",
+        "source_identifiers": {},
+        "source_label": null,
+        "local_locator": "Physical p27, * footnote below table; no visible corresponding row marker",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "Analyst handle for this disclosure only; not a persistent asset or customer identifier."
+      },
+      {
+        "id": "SUBJECT-GA-SPLIT-P36",
+        "kind": "unresolved_split_subject",
+        "source_namespace": "ga-226607-107887",
+        "source_identifiers": {},
+        "source_label": null,
+        "local_locator": "Physical p36, ** footnote below table; no visible corresponding row marker",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "Analyst handle for this disclosure only; not a persistent asset or customer identifier."
+      },
+      {
+        "id": "SUBJECT-GA-R1",
+        "kind": "anonymous_disclosure_handle",
+        "source_namespace": "ga-226607-107887",
+        "source_identifiers": {},
+        "source_label": "REDACTED",
+        "local_locator": "physical p33, table row 1",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "Analyst handle for this disclosure only; not a persistent asset or customer identifier."
+      },
+      {
+        "id": "SUBJECT-GA-R2",
+        "kind": "anonymous_disclosure_handle",
+        "source_namespace": "ga-226607-107887",
+        "source_identifiers": {},
+        "source_label": "REDACTED",
+        "local_locator": "physical p33, table row 2",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "Analyst handle for this disclosure only; not a persistent asset or customer identifier."
+      },
+      {
+        "id": "SUBJECT-GA-R3",
+        "kind": "anonymous_disclosure_handle",
+        "source_namespace": "ga-226607-107887",
+        "source_identifiers": {},
+        "source_label": "REDACTED",
+        "local_locator": "physical p34, table row 1",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "Analyst handle for this disclosure only; not a persistent asset or customer identifier."
+      },
+      {
+        "id": "SUBJECT-GA-R4",
+        "kind": "anonymous_disclosure_handle",
+        "source_namespace": "ga-226607-107887",
+        "source_identifiers": {},
+        "source_label": "REDACTED",
+        "local_locator": "physical p35, table row 1",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "Analyst handle for this disclosure only; not a persistent asset or customer identifier."
+      },
+      {
+        "id": "SUBJECT-GA-R5",
+        "kind": "anonymous_disclosure_handle",
+        "source_namespace": "ga-226607-107887",
+        "source_identifiers": {},
+        "source_label": "REDACTED",
+        "local_locator": "physical p35, table row 8",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "Analyst handle for this disclosure only; not a persistent asset or customer identifier."
+      },
+      {
+        "id": "SUBJECT-GA-R6",
+        "kind": "anonymous_disclosure_handle",
+        "source_namespace": "ga-226607-107887",
+        "source_identifiers": {},
+        "source_label": "REDACTED",
+        "local_locator": "physical p35, table row 18",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "Analyst handle for this disclosure only; not a persistent asset or customer identifier."
+      },
+      {
+        "id": "SUBJECT-GA-CREATED",
+        "kind": "anonymous_disclosure_handle",
+        "source_namespace": "ga-226607-107887",
+        "source_identifiers": {},
+        "source_label": "REDACTED",
+        "local_locator": "physical p36, table row 1 and footnote *",
+        "parent_id": null,
+        "phase_id": null,
+        "identity_status": "Analyst handle for this disclosure only; not a persistent asset or customer identifier."
+      }
+    ],
+    "observations": [
+      {
+        "id": "OBS-CW01",
+        "case_id": "CASE-1",
+        "artifact_id": "CW_424B4_20250331",
+        "locator": "Prospectus Summary / Overview, retrieved lines 308-309",
+        "subject_id": "SUBJECT-CW-ISSUER",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_metric": "GPUs running",
+          "value": 250000,
+          "unit": "GPUs",
+          "qualifier": "more than",
+          "comparator": ">",
+          "source_stage": "running, issuer-reported",
+          "entity_source": "CoreWeave, Inc. and subsidiaries; issuer-wide data center network",
+          "parent_or_phase": null
+        },
+        "dates": {
+          "observation_date": "2024-12-31",
+          "event_month": null,
+          "forecast_dates": [],
+          "report_period": null,
+          "publication_date": "2025-03-31",
+          "revision_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Dates preserved at the source precision; unknown revision date is not the filing or retrieval date."
+        },
+        "source_authority": "CoreWeave issuer disclosure filed with SEC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-CW01-A1"
+        ]
+      },
+      {
+        "id": "OBS-CW02",
+        "case_id": "CASE-1",
+        "artifact_id": "CW_424B4_20250331",
+        "locator": "Prospectus Summary / Overview, retrieved lines 308-309; SELECT DEFINED TERMS, printed page iii, retrieved line 196",
+        "subject_id": "SUBJECT-CW-ISSUER",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_metric": "data centers",
+          "value": 32,
+          "unit": "source-defined data centers",
+          "qualifier": "unqualified reported integer",
+          "source_stage": "receiving active power; no campus count equivalence",
+          "entity_source": "CoreWeave issuer-wide data center network",
+          "parent_or_phase": "source count can include an owned or leased portion receiving active power"
+        },
+        "dates": {
+          "observation_date": "2024-12-31",
+          "event_month": null,
+          "forecast_dates": [],
+          "report_period": null,
+          "publication_date": "2025-03-31",
+          "revision_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Dates preserved at the source precision; unknown revision date is not the filing or retrieval date."
+        },
+        "source_authority": "CoreWeave issuer disclosure filed with SEC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-CW02-A1"
+        ]
+      },
+      {
+        "id": "OBS-CW05",
+        "case_id": "CASE-1",
+        "artifact_id": "CW_10K_FY2025",
+        "locator": "Business overview, printed page 5, retrieved line 219; Securing Sufficient Power Capacity, lines 1883-1884",
+        "subject_id": "SUBJECT-CW-ISSUER",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_metric": "data centers operated",
+          "value": 43,
+          "unit": "data centers",
+          "qualifier": "unqualified reported integer",
+          "source_stage": "operated, issuer-reported",
+          "entity_source": "CoreWeave issuer-wide network",
+          "parent_or_phase": null
+        },
+        "dates": {
+          "observation_date": "2025-12-31",
+          "event_month": null,
+          "forecast_dates": [],
+          "report_period": "2025-12-31",
+          "publication_date": "2026-03-02",
+          "revision_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Dates preserved at the source precision; unknown revision date is not the filing or retrieval date."
+        },
+        "source_authority": "CoreWeave issuer disclosure filed with SEC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-CW05-A1"
+        ]
+      },
+      {
+        "id": "OBS-CW06",
+        "case_id": "CASE-1",
+        "artifact_id": "CW_10K_FY2025",
+        "locator": "Business overview, printed page 5, retrieved line 219; Securing Sufficient Power Capacity, lines 1883-1884",
+        "subject_id": "SUBJECT-CW-ISSUER",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_metric": "active power",
+          "value": 850,
+          "unit": "MW",
+          "qualifier": "over",
+          "comparator": ">",
+          "source_stage": "active power, issuer term",
+          "entity_source": "CoreWeave issuer-wide network",
+          "parent_or_phase": null
+        },
+        "dates": {
+          "observation_date": "2025-12-31",
+          "event_month": null,
+          "forecast_dates": [],
+          "report_period": "2025-12-31",
+          "publication_date": "2026-03-02",
+          "revision_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Dates preserved at the source precision; unknown revision date is not the filing or retrieval date."
+        },
+        "source_authority": "CoreWeave issuer disclosure filed with SEC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-CW06-A1"
+        ]
+      },
+      {
+        "id": "OBS-CW07",
+        "case_id": "CASE-1",
+        "artifact_id": "CW_10K_FY2025",
+        "locator": "Business overview, printed page 5, retrieved line 219; Securing Sufficient Power Capacity, lines 1883-1884",
+        "subject_id": "SUBJECT-CW-ISSUER",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_metric": "total contracted power capacity",
+          "value": 3.1,
+          "unit": "GW",
+          "qualifier": "approximately",
+          "source_stage": "contracted; future deployment anticipated",
+          "entity_source": "CoreWeave issuer-wide network",
+          "parent_or_phase": null
+        },
+        "dates": {
+          "observation_date": "2025-12-31",
+          "event_month": null,
+          "forecast_dates": [
+            "future periods, unspecified"
+          ],
+          "report_period": "2025-12-31",
+          "publication_date": "2026-03-02",
+          "revision_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Dates preserved at the source precision; unknown revision date is not the filing or retrieval date."
+        },
+        "source_authority": "CoreWeave issuer disclosure filed with SEC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-CW07-A1"
+        ]
+      },
+      {
+        "id": "OBS-CW08-1",
+        "case_id": "CASE-1",
+        "artifact_id": "CW_10K_FY2025",
+        "locator": "Item 1A, third-party data center provider risk, printed pages 16-17, retrieved lines 512-518",
+        "subject_id": "SUBJECT-CW-DELAY",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_metric": "November 2025 delivery delays",
+          "value": null,
+          "unit": null,
+          "qualifier": "retrospective issuer statement repeated in three filings",
+          "source_stage": "delivery delayed as announced; current resolution unknown",
+          "entity_source": "Unidentified third-party data center provider and certain data centers",
+          "parent_or_phase": null
+        },
+        "dates": {
+          "observation_date": null,
+          "event_month": "2025-11",
+          "forecast_dates": [],
+          "report_period": "2025-12-31",
+          "publication_date": "2026-03-02",
+          "revision_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Report periods identify filing vintages; they are not treated as a dated physical status observation."
+        },
+        "source_authority": "CoreWeave issuer disclosure filed with SEC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-CW08-1-A1"
+        ]
+      },
+      {
+        "id": "OBS-CW08-2",
+        "case_id": "CASE-1",
+        "artifact_id": "CW_10Q_Q12026",
+        "locator": "Item 1A, third-party data center provider risk, retrieved line 1823",
+        "subject_id": "SUBJECT-CW-DELAY",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_metric": "November 2025 delivery delays",
+          "value": null,
+          "unit": null,
+          "qualifier": "retrospective issuer statement repeated in three filings",
+          "source_stage": "delivery delayed as announced; current resolution unknown",
+          "entity_source": "Unidentified third-party data center provider and certain data centers",
+          "parent_or_phase": null
+        },
+        "dates": {
+          "observation_date": null,
+          "event_month": "2025-11",
+          "forecast_dates": [],
+          "report_period": "2026-03-31",
+          "publication_date": "2026-05-08",
+          "revision_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Report periods identify filing vintages; they are not treated as a dated physical status observation."
+        },
+        "source_authority": "CoreWeave issuer disclosure filed with SEC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-CW08-2-A1"
+        ]
+      },
+      {
+        "id": "OBS-CW08-3",
+        "case_id": "CASE-1",
+        "artifact_id": "CW_10Q_Q22026",
+        "locator": "Item 1A, third-party data center provider risk, retrieved line 2009",
+        "subject_id": "SUBJECT-CW-DELAY",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_metric": "November 2025 delivery delays",
+          "value": null,
+          "unit": null,
+          "qualifier": "retrospective issuer statement repeated in three filings",
+          "source_stage": "delivery delayed as announced; current resolution unknown",
+          "entity_source": "Unidentified third-party data center provider and certain data centers",
+          "parent_or_phase": null
+        },
+        "dates": {
+          "observation_date": null,
+          "event_month": "2025-11",
+          "forecast_dates": [],
+          "report_period": "2026-06-30",
+          "publication_date": "2026-08-12",
+          "revision_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Report periods identify filing vintages; they are not treated as a dated physical status observation."
+        },
+        "source_authority": "CoreWeave issuer disclosure filed with SEC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-CW08-3-A1"
+        ]
+      },
+      {
+        "id": "OBS-CW09-1",
+        "case_id": "CASE-1",
+        "artifact_id": "CW_10K_FY2025",
+        "locator": "Item 1A, joint venture and real property risks, retrieved lines 1126 and 1154",
+        "subject_id": "SUBJECT-CW-KENILWORTH",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_metric": "named campus joint venture and development",
+          "value": null,
+          "unit": null,
+          "qualifier": "issuer report",
+          "source_stage": "Multi-phase campus development; no completed phase or power-delivery milestone established by cited passages",
+          "entity_source": "Multi-phase data center campus in Kenilworth, New Jersey; June 2025 joint venture",
+          "parent_or_phase": "campus named, individual phase and parcel IDs undisclosed"
+        },
+        "dates": {
+          "observation_date": null,
+          "event_month": "2025-06",
+          "forecast_dates": [],
+          "report_period": "2025-12-31",
+          "publication_date": "2026-03-02",
+          "revision_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Report periods identify filing vintages; they are not treated as a dated physical status observation."
+        },
+        "source_authority": "CoreWeave issuer disclosure filed with SEC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-CW09-1-A1"
+        ]
+      },
+      {
+        "id": "OBS-CW09-2",
+        "case_id": "CASE-1",
+        "artifact_id": "CW_10Q_Q12026",
+        "locator": "Note 3, Unconsolidated Joint Venture, retrieved lines 583-587; Item 1A lines 2443 and 2471",
+        "subject_id": "SUBJECT-CW-KENILWORTH",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_metric": "campus development and conditional lease commencement",
+          "value": null,
+          "unit": null,
+          "qualifier": "issuer report",
+          "source_stage": "development; lease commencement conditional on construction completion",
+          "entity_source": "Multi-phase data center campus in Kenilworth, New Jersey; June 2025 joint venture",
+          "parent_or_phase": "campus named, individual phase and parcel IDs undisclosed"
+        },
+        "dates": {
+          "observation_date": null,
+          "event_month": "2025-06",
+          "forecast_dates": [
+            "completion date unspecified"
+          ],
+          "report_period": "2026-03-31",
+          "publication_date": "2026-05-08",
+          "revision_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Report periods identify filing vintages; they are not treated as a dated physical status observation."
+        },
+        "source_authority": "CoreWeave issuer disclosure filed with SEC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-CW09-2-A1"
+        ]
+      },
+      {
+        "id": "OBS-CW09-3",
+        "case_id": "CASE-1",
+        "artifact_id": "CW_10Q_Q22026",
+        "locator": "Note 3, Unconsolidated Joint Venture, retrieved lines 635-636; Item 1A lines 2629 and 2642",
+        "subject_id": "SUBJECT-CW-KENILWORTH",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_metric": "campus development and conditional lease commencement",
+          "value": null,
+          "unit": null,
+          "qualifier": "issuer report",
+          "source_stage": "development; lease commencement conditional on construction completion",
+          "entity_source": "Multi-phase data center campus in Kenilworth, New Jersey; June 2025 joint venture",
+          "parent_or_phase": "campus named, individual phase and parcel IDs undisclosed"
+        },
+        "dates": {
+          "observation_date": null,
+          "event_month": "2025-06",
+          "forecast_dates": [
+            "completion date unspecified"
+          ],
+          "report_period": "2026-06-30",
+          "publication_date": "2026-08-12",
+          "revision_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Report periods identify filing vintages; they are not treated as a dated physical status observation."
+        },
+        "source_authority": "CoreWeave issuer disclosure filed with SEC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-CW09-3-A1"
+        ]
+      },
+      {
+        "id": "OBS-CW10",
+        "case_id": "CASE-1",
+        "artifact_id": "CW_10K_FY2025",
+        "locator": "Note 8, Leases Not Yet Commenced, printed page 112, retrieved lines 3581-3582",
+        "subject_id": "SUBJECT-CW10",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_metric": "electrical power provided for by agreement",
+          "value": 393,
+          "unit": "MW",
+          "qualifier": "reported contractual access quantity",
+          "source_stage": "lease not yet commenced / power delivery expected",
+          "entity_source": "Source-local anonymous single-site lease, Note 8, FY2025",
+          "parent_or_phase": "various buildings at one unnamed site; phases unnamed"
+        },
+        "dates": {
+          "observation_date": "2025-12-31",
+          "event_month": null,
+          "forecast_dates": [
+            "2026",
+            "2027"
+          ],
+          "report_period": "2025-12-31",
+          "publication_date": "2026-03-02",
+          "revision_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Dates preserved at the source precision; unknown revision date is not the filing or retrieval date."
+        },
+        "source_authority": "CoreWeave issuer disclosure filed with SEC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-CW10-A1"
+        ]
+      },
+      {
+        "id": "OBS-CW11",
+        "case_id": "CASE-1",
+        "artifact_id": "CW_10Q_Q12026",
+        "locator": "Note 8, Leases Not Yet Commenced, printed page 22, retrieved lines 943-944",
+        "subject_id": "SUBJECT-CW11",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_metric": "electrical power provided for by agreement",
+          "value": 525,
+          "unit": "MW",
+          "qualifier": "reported contractual access quantity",
+          "source_stage": "lease not yet commenced / power delivery expected",
+          "entity_source": "Source-local anonymous single-site lease, Note 8, Q1 2026",
+          "parent_or_phase": "various buildings at one unnamed site; phases unnamed"
+        },
+        "dates": {
+          "observation_date": "2026-03-31",
+          "event_month": null,
+          "forecast_dates": [
+            "2026",
+            "2028"
+          ],
+          "report_period": "2026-03-31",
+          "publication_date": "2026-05-08",
+          "revision_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Dates preserved at the source precision; unknown revision date is not the filing or retrieval date."
+        },
+        "source_authority": "CoreWeave issuer disclosure filed with SEC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-CW11-A1"
+        ]
+      },
+      {
+        "id": "OBS-CW12",
+        "case_id": "CASE-1",
+        "artifact_id": "CW_10Q_Q22026",
+        "locator": "Note 8, Leases Not Yet Commenced, printed pages 24-25, retrieved lines 1025 and 1032",
+        "subject_id": "SUBJECT-CW12",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_metric": "electrical power remaining undelivered",
+          "value": 393,
+          "unit": "MW",
+          "qualifier": "reported remainder",
+          "source_stage": "undelivered; future phased delivery expected",
+          "entity_source": "Source-local anonymous single-site lease, Note 8, Q2 2026",
+          "parent_or_phase": "various buildings at one unnamed site; phases unnamed"
+        },
+        "dates": {
+          "observation_date": "2026-06-30",
+          "event_month": null,
+          "forecast_dates": [
+            "2026",
+            "2028"
+          ],
+          "report_period": "2026-06-30",
+          "publication_date": "2026-08-12",
+          "revision_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Dates preserved at the source precision; unknown revision date is not the filing or retrieval date."
+        },
+        "source_authority": "CoreWeave issuer disclosure filed with SEC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-SEC-ISSUER",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-CW12-A1"
+        ]
+      },
+      {
+        "id": "OBS-GA-PORTFOLIO",
+        "case_id": "CASE-2",
+        "artifact_id": "ga-226607-107887",
+        "locator": "Physical p5 / printed p1; p7 / printed p3 Table 1",
+        "subject_id": "SUBJECT-GA-PORTFOLIO",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "committed_customers": 31,
+          "eventual_demand_MW": 12400,
+          "forecast_horizon": "mid-2030s",
+          "broken_ground_projects": 21,
+          "online_projects_included_in_broken_ground": 10,
+          "pending_construction_projects": 10,
+          "eventual_demand_MW_of_broken_ground_projects": 8500,
+          "committed_projects": 31
+        },
+        "dates": {
+          "observation_date": "2026-03-31",
+          "forecast_horizon": "mid-2030s",
+          "publication_date": "2026-05-15",
+          "revision_date": null,
+          "inspected_on": "2026-10-08"
+        },
+        "source_authority": "Georgia Power utility disclosure hosted by Georgia PSC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-GA",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-GA-PORTFOLIO-A1",
+          "OBS-GA-PORTFOLIO-A2",
+          "OBS-GA-PORTFOLIO-A3",
+          "OBS-GA-PORTFOLIO-A4",
+          "OBS-GA-PORTFOLIO-A5",
+          "OBS-GA-PORTFOLIO-A6",
+          "OBS-GA-PORTFOLIO-A7"
+        ]
+      },
+      {
+        "id": "OBS-GA-SPLIT-P27",
+        "case_id": "CASE-2",
+        "artifact_id": "ga-226607-107887",
+        "locator": "Physical p27, * footnote below table; no visible corresponding row marker",
+        "subject_id": "SUBJECT-GA-SPLIT-P27",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_assertion": "A previously unified project is separated into two because component characteristics differ.",
+          "parent_source_identifier": null,
+          "child_source_identifiers": [
+            null,
+            null
+          ],
+          "parent_capacity": null,
+          "child_capacities": [
+            null,
+            null
+          ]
+        },
+        "dates": {
+          "observation_period": "2026-Q1",
+          "event_date": null,
+          "publication_date": "2026-05-15",
+          "revision_date": null,
+          "inspected_on": "2026-10-08"
+        },
+        "source_authority": "Georgia Power utility disclosure hosted by Georgia PSC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-GA",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-GA-SPLIT-P27-A1"
+        ]
+      },
+      {
+        "id": "OBS-GA-SPLIT-P36",
+        "case_id": "CASE-2",
+        "artifact_id": "ga-226607-107887",
+        "locator": "Physical p36, ** footnote below table; no visible corresponding row marker",
+        "subject_id": "SUBJECT-GA-SPLIT-P36",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "source_assertion": "A previously unified project is separated into two because component characteristics differ.",
+          "parent_source_identifier": null,
+          "child_source_identifiers": [
+            null,
+            null
+          ],
+          "parent_capacity": null,
+          "child_capacities": [
+            null,
+            null
+          ]
+        },
+        "dates": {
+          "observation_period": "2026-Q1",
+          "event_date": null,
+          "publication_date": "2026-05-15",
+          "revision_date": null,
+          "inspected_on": "2026-10-08"
+        },
+        "source_authority": "Georgia Power utility disclosure hosted by Georgia PSC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-GA",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-GA-SPLIT-P36-A1"
+        ]
+      },
+      {
+        "id": "OBS-GA-R1",
+        "case_id": "CASE-2",
+        "artifact_id": "ga-226607-107887",
+        "locator": "physical p33, table row 1",
+        "subject_id": "SUBJECT-GA-R1",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "Project Name": "REDACTED",
+          "Q4 2025": "Technical Review",
+          "Q1 2026": "Contract for Electric Service"
+        },
+        "dates": {
+          "observation_date": "2026-03-31",
+          "previous_reference_period": "2025-Q4",
+          "publication_date": "2026-05-15",
+          "revision_date": null,
+          "revision_effective_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Q4 values are retrospectively supplied in Q1; the earlier Q4 PDF and its revised version were not read."
+        },
+        "source_authority": "Georgia Power utility disclosure hosted by Georgia PSC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-GA",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-GA-R1-A1"
+        ]
+      },
+      {
+        "id": "OBS-GA-R2",
+        "case_id": "CASE-2",
+        "artifact_id": "ga-226607-107887",
+        "locator": "physical p33, table row 2",
+        "subject_id": "SUBJECT-GA-R2",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "Project Name": "REDACTED",
+          "Q4 2025": "Request for Service",
+          "Q1 2026": "Contract for Electric Service"
+        },
+        "dates": {
+          "observation_date": "2026-03-31",
+          "previous_reference_period": "2025-Q4",
+          "publication_date": "2026-05-15",
+          "revision_date": null,
+          "revision_effective_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Q4 values are retrospectively supplied in Q1; the earlier Q4 PDF and its revised version were not read."
+        },
+        "source_authority": "Georgia Power utility disclosure hosted by Georgia PSC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-GA",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-GA-R2-A1"
+        ]
+      },
+      {
+        "id": "OBS-GA-R3",
+        "case_id": "CASE-2",
+        "artifact_id": "ga-226607-107887",
+        "locator": "physical p34, table row 1",
+        "subject_id": "SUBJECT-GA-R3",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "Project Name": "REDACTED",
+          "Announced Load (MW) in Q4 25": 750,
+          "Reason for Removal": "Withdrawn or No Bid"
+        },
+        "dates": {
+          "observation_date": "2026-03-31",
+          "previous_reference_period": "2025-Q4",
+          "publication_date": "2026-05-15",
+          "revision_date": null,
+          "revision_effective_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Q4 values are retrospectively supplied in Q1; the earlier Q4 PDF and its revised version were not read."
+        },
+        "source_authority": "Georgia Power utility disclosure hosted by Georgia PSC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-GA",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-GA-R3-A1"
+        ]
+      },
+      {
+        "id": "OBS-GA-R4",
+        "case_id": "CASE-2",
+        "artifact_id": "ga-226607-107887",
+        "locator": "physical p35, table row 1",
+        "subject_id": "SUBJECT-GA-R4",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "Project Name": "REDACTED",
+          "Q4 2025": "Q2 2030",
+          "Q1 2026": "Q2 2032",
+          "Change (Months)": 24
+        },
+        "dates": {
+          "observation_date": "2026-03-31",
+          "previous_reference_period": "2025-Q4",
+          "publication_date": "2026-05-15",
+          "revision_date": null,
+          "revision_effective_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Q4 values are retrospectively supplied in Q1; the earlier Q4 PDF and its revised version were not read.",
+          "forecast_vintages": [
+            {
+              "reference_period": "2025-Q4",
+              "raw_forecast": "Q2 2030",
+              "precision": "quarter"
+            },
+            {
+              "reference_period": "2026-Q1",
+              "raw_forecast": "Q2 2032",
+              "precision": "quarter"
+            }
+          ]
+        },
+        "source_authority": "Georgia Power utility disclosure hosted by Georgia PSC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-GA",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-GA-R4-A1"
+        ]
+      },
+      {
+        "id": "OBS-GA-R5",
+        "case_id": "CASE-2",
+        "artifact_id": "ga-226607-107887",
+        "locator": "physical p35, table row 8",
+        "subject_id": "SUBJECT-GA-R5",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "Project Name": "REDACTED",
+          "Q4 2025": "Q3 2029",
+          "Q1 2026": "Q2 2029",
+          "Change (Months)": -3
+        },
+        "dates": {
+          "observation_date": "2026-03-31",
+          "previous_reference_period": "2025-Q4",
+          "publication_date": "2026-05-15",
+          "revision_date": null,
+          "revision_effective_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Q4 values are retrospectively supplied in Q1; the earlier Q4 PDF and its revised version were not read.",
+          "forecast_vintages": [
+            {
+              "reference_period": "2025-Q4",
+              "raw_forecast": "Q3 2029",
+              "precision": "quarter"
+            },
+            {
+              "reference_period": "2026-Q1",
+              "raw_forecast": "Q2 2029",
+              "precision": "quarter"
+            }
+          ]
+        },
+        "source_authority": "Georgia Power utility disclosure hosted by Georgia PSC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-GA",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-GA-R5-A1"
+        ]
+      },
+      {
+        "id": "OBS-GA-R6",
+        "case_id": "CASE-2",
+        "artifact_id": "ga-226607-107887",
+        "locator": "physical p35, table row 18",
+        "subject_id": "SUBJECT-GA-R6",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "Project Name": "REDACTED",
+          "Q4 2025": "Q2 2029",
+          "Q1 2026": "Q4 2027",
+          "Change (Months)": -18
+        },
+        "dates": {
+          "observation_date": "2026-03-31",
+          "previous_reference_period": "2025-Q4",
+          "publication_date": "2026-05-15",
+          "revision_date": null,
+          "revision_effective_date": null,
+          "inspected_on": "2026-10-08",
+          "date_note": "Q4 values are retrospectively supplied in Q1; the earlier Q4 PDF and its revised version were not read.",
+          "forecast_vintages": [
+            {
+              "reference_period": "2025-Q4",
+              "raw_forecast": "Q2 2029",
+              "precision": "quarter"
+            },
+            {
+              "reference_period": "2026-Q1",
+              "raw_forecast": "Q4 2027",
+              "precision": "quarter"
+            }
+          ]
+        },
+        "source_authority": "Georgia Power utility disclosure hosted by Georgia PSC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-GA",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-GA-R6-A1"
+        ]
+      },
+      {
+        "id": "OBS-GA-CREATED",
+        "case_id": "CASE-2",
+        "artifact_id": "ga-226607-107887",
+        "locator": "physical p36, table row 1 and footnote *",
+        "subject_id": "SUBJECT-GA-CREATED",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "Project Name": "REDACTED",
+          "Announced Load*": 3500,
+          "Created Date": "3/12/2026"
+        },
+        "dates": {
+          "observation_date": "2026-03-31",
+          "record_created_date": "2026-03-12",
+          "forecast_horizon": "2037",
+          "publication_date": "2026-05-15",
+          "revision_date": null,
+          "inspected_on": "2026-10-08"
+        },
+        "source_authority": "Georgia Power utility disclosure hosted by Georgia PSC",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-GA",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-GA-CREATED-A1"
+        ]
+      },
+      {
+        "id": "OBS-EIA-UNIT",
+        "case_id": "CASE-3",
+        "artifact_id": "EIA-EPM-6.5-2026-09-24",
+        "locator": "Table 6.5, header L21; row L47 keyed 68741 / CPP_1; notes L2392-2396",
+        "subject_id": "SUBJECT-EIA-UNIT",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "Year": 2026,
+          "Month": 8,
+          "Entity ID": 67225,
+          "Entity Name": "Canyon Peak Power, LLC",
+          "Plant Producer Type": "IPP",
+          "Plant Name": "Canyon Peak Power Station",
+          "Plant State": "CO",
+          "Plant ID": 68741,
+          "Generator ID": "CPP_1",
+          "Net Summer Capacity (MW)": 22.2,
+          "Technology": "Natural Gas Fired Combustion Turbine",
+          "Energy Source Code": "NG",
+          "Prime Mover Code": "GT",
+          "Status": "TS",
+          "Nameplate Capacity (MW)": 26.1
+        },
+        "dates": {
+          "observation_month": "2026-07",
+          "planned_operation_month": "2026-08",
+          "publication_date": "2026-09-24",
+          "revision_date": null,
+          "inspection_date": "2026-10-08"
+        },
+        "source_authority": "EIA official preliminary inventory compilation; source surveys EIA-860 / EIA-860M",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-EIA",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-EIA-UNIT-A1",
+          "OBS-EIA-UNIT-A2",
+          "OBS-EIA-UNIT-A3"
+        ]
+      },
+      {
+        "id": "OBS-EIA-ALIAS",
+        "case_id": "CASE-3",
+        "artifact_id": "EIA-EPM-6.5-ALIAS-2026-09-24",
+        "locator": "Header L21; keyed row L47",
+        "subject_id": "SUBJECT-EIA-UNIT",
+        "evidence_status": "inspected_documentary_observation",
+        "source_native": {
+          "Year": 2026,
+          "Month": 8,
+          "Entity ID": 67225,
+          "Entity Name": "Canyon Peak Power, LLC",
+          "Plant Producer Type": "IPP",
+          "Plant Name": "Canyon Peak Power Station",
+          "Plant State": "CO",
+          "Plant ID": 68741,
+          "Generator ID": "CPP_1",
+          "Net Summer Capacity (MW)": 22.2,
+          "Technology": "Natural Gas Fired Combustion Turbine",
+          "Energy Source Code": "NG",
+          "Prime Mover Code": "GT",
+          "Status": "TS",
+          "Nameplate Capacity (MW)": 26.1
+        },
+        "dates": {
+          "observation_month": "2026-07",
+          "planned_operation_month": "2026-08",
+          "publication_date": "2026-09-24",
+          "revision_date": null,
+          "inspection_date": "2026-10-08"
+        },
+        "source_authority": "Same EIA publication through alternate table parameter",
+        "independent_physical_validation": false,
+        "rights_profile_id": "RIGHTS-EIA",
+        "ai_allocation": {
+          "value": null,
+          "status": "unknown"
+        },
+        "assertion_ids": [
+          "OBS-EIA-ALIAS-A1"
+        ]
+      }
+    ],
+    "assertions": [
+      {
+        "id": "OBS-CW01-A1",
+        "observation_id": "OBS-CW01",
+        "subject_id": "SUBJECT-CW-ISSUER",
+        "source_metric_or_predicate": "GPUs running",
+        "value": 250000,
+        "unit": "GPUs",
+        "qualifier": "more than",
+        "stock_flow": "stock at date",
+        "scope": "CoreWeave, Inc. and subsidiaries; issuer-wide data center network",
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "unknown",
+          "connection": "unknown",
+          "operation": "GPUs running, issuer-reported at 2024-12-31"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_424B4_20250331",
+            "locator": "Prospectus Summary / Overview, retrieved lines 308-309"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-CW02-A1",
+        "observation_id": "OBS-CW02",
+        "subject_id": "SUBJECT-CW-ISSUER",
+        "source_metric_or_predicate": "data centers",
+        "value": 32,
+        "unit": "source-defined data centers",
+        "qualifier": "unqualified reported integer",
+        "stock_flow": "stock at date",
+        "scope": "CoreWeave issuer-wide data center network",
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "unknown",
+          "connection": "Receiving active power under source data-center definition",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_424B4_20250331",
+            "locator": "Prospectus Summary / Overview, retrieved lines 308-309; SELECT DEFINED TERMS, printed page iii, retrieved line 196"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-CW05-A1",
+        "observation_id": "OBS-CW05",
+        "subject_id": "SUBJECT-CW-ISSUER",
+        "source_metric_or_predicate": "data centers operated",
+        "value": 43,
+        "unit": "data centers",
+        "qualifier": "unqualified reported integer",
+        "stock_flow": "stock at date",
+        "scope": "CoreWeave issuer-wide network",
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "unknown",
+          "connection": "unknown",
+          "operation": "Data centers operated, issuer-reported at 2025-12-31"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10K_FY2025",
+            "locator": "Business overview, printed page 5, retrieved line 219; Securing Sufficient Power Capacity, lines 1883-1884"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-CW06-A1",
+        "observation_id": "OBS-CW06",
+        "subject_id": "SUBJECT-CW-ISSUER",
+        "source_metric_or_predicate": "active power",
+        "value": 850,
+        "unit": "MW",
+        "qualifier": "over",
+        "stock_flow": "stock at date",
+        "scope": "CoreWeave issuer-wide network",
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "unknown",
+          "connection": "Active power, issuer term; IT/facility boundary and physical verification not established",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10K_FY2025",
+            "locator": "Business overview, printed page 5, retrieved line 219; Securing Sufficient Power Capacity, lines 1883-1884"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-CW07-A1",
+        "observation_id": "OBS-CW07",
+        "subject_id": "SUBJECT-CW-ISSUER",
+        "source_metric_or_predicate": "total contracted power capacity",
+        "value": 3.1,
+        "unit": "GW",
+        "qualifier": "approximately",
+        "stock_flow": "stock of contractual capacity at date",
+        "scope": "CoreWeave issuer-wide network",
+        "stage_dimensions": {
+          "commercial_commitment": "Total contracted power, issuer term; exact overlap with active unknown",
+          "construction": "unknown",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10K_FY2025",
+            "locator": "Business overview, printed page 5, retrieved line 219; Securing Sufficient Power Capacity, lines 1883-1884"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-CW08-1-A1",
+        "observation_id": "OBS-CW08-1",
+        "subject_id": "SUBJECT-CW-DELAY",
+        "source_metric_or_predicate": "November 2025 delivery delays",
+        "value": null,
+        "unit": null,
+        "qualifier": "retrospective issuer statement repeated in three filings",
+        "stock_flow": "event assertion, not capacity",
+        "scope": "Unidentified third-party data center provider and certain data centers",
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "unknown; delivery-delay passage does not identify the responsible stage",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10K_FY2025",
+            "locator": "Item 1A, third-party data center provider risk, printed pages 16-17, retrieved lines 512-518"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-CW08-2-A1",
+        "observation_id": "OBS-CW08-2",
+        "subject_id": "SUBJECT-CW-DELAY",
+        "source_metric_or_predicate": "November 2025 delivery delays",
+        "value": null,
+        "unit": null,
+        "qualifier": "retrospective issuer statement repeated in three filings",
+        "stock_flow": "event assertion, not capacity",
+        "scope": "Unidentified third-party data center provider and certain data centers",
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "unknown; delivery-delay passage does not identify the responsible stage",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10Q_Q12026",
+            "locator": "Item 1A, third-party data center provider risk, retrieved line 1823"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-CW08-3-A1",
+        "observation_id": "OBS-CW08-3",
+        "subject_id": "SUBJECT-CW-DELAY",
+        "source_metric_or_predicate": "November 2025 delivery delays",
+        "value": null,
+        "unit": null,
+        "qualifier": "retrospective issuer statement repeated in three filings",
+        "stock_flow": "event assertion, not capacity",
+        "scope": "Unidentified third-party data center provider and certain data centers",
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "unknown; delivery-delay passage does not identify the responsible stage",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10Q_Q22026",
+            "locator": "Item 1A, third-party data center provider risk, retrieved line 2009"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-CW09-1-A1",
+        "observation_id": "OBS-CW09-1",
+        "subject_id": "SUBJECT-CW-KENILWORTH",
+        "source_metric_or_predicate": "named campus joint venture and development",
+        "value": null,
+        "unit": null,
+        "qualifier": "issuer report",
+        "stock_flow": "project and commitment assertions",
+        "scope": "Multi-phase data center campus in Kenilworth, New Jersey; June 2025 joint venture",
+        "stage_dimensions": {
+          "commercial_commitment": "June 2025 joint venture reported",
+          "construction": "Multi-phase campus development reported; no completed phase established",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10K_FY2025",
+            "locator": "Item 1A, joint venture and real property risks, retrieved lines 1126 and 1154"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-CW09-2-A1",
+        "observation_id": "OBS-CW09-2",
+        "subject_id": "SUBJECT-CW-KENILWORTH",
+        "source_metric_or_predicate": "campus development and conditional lease commencement",
+        "value": null,
+        "unit": null,
+        "qualifier": "issuer report",
+        "stock_flow": "project and commitment assertions",
+        "scope": "Multi-phase data center campus in Kenilworth, New Jersey; June 2025 joint venture",
+        "stage_dimensions": {
+          "commercial_commitment": "Joint venture / forward-starting lease narrative",
+          "construction": "Development; lease commencement conditional on completion; no completed phase identified",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10Q_Q12026",
+            "locator": "Note 3, Unconsolidated Joint Venture, retrieved lines 583-587; Item 1A lines 2443 and 2471"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-CW09-3-A1",
+        "observation_id": "OBS-CW09-3",
+        "subject_id": "SUBJECT-CW-KENILWORTH",
+        "source_metric_or_predicate": "campus development and conditional lease commencement",
+        "value": null,
+        "unit": null,
+        "qualifier": "issuer report",
+        "stock_flow": "project and commitment assertions",
+        "scope": "Multi-phase data center campus in Kenilworth, New Jersey; June 2025 joint venture",
+        "stage_dimensions": {
+          "commercial_commitment": "Joint venture / forward-starting lease narrative",
+          "construction": "Development; lease commencement conditional on completion; no completed phase identified",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10Q_Q22026",
+            "locator": "Note 3, Unconsolidated Joint Venture, retrieved lines 635-636; Item 1A lines 2629 and 2642"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-CW10-A1",
+        "observation_id": "OBS-CW10",
+        "subject_id": "SUBJECT-CW10",
+        "source_metric_or_predicate": "electrical power provided for by agreement",
+        "value": 393,
+        "unit": "MW",
+        "qualifier": "reported contractual access quantity",
+        "stock_flow": "contractual capacity stock with future delivery schedule",
+        "scope": "Source-local anonymous single-site lease, Note 8, FY2025",
+        "stage_dimensions": {
+          "commercial_commitment": "Lease agreement reported; disclosure under Leases Not Yet Commenced",
+          "construction": "unknown",
+          "connection": "Future power delivery forecast; no identified delivery milestone",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10K_FY2025",
+            "locator": "Note 8, Leases Not Yet Commenced, printed page 112, retrieved lines 3581-3582"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-CW11-A1",
+        "observation_id": "OBS-CW11",
+        "subject_id": "SUBJECT-CW11",
+        "source_metric_or_predicate": "electrical power provided for by agreement",
+        "value": 525,
+        "unit": "MW",
+        "qualifier": "reported contractual access quantity",
+        "stock_flow": "contractual capacity stock with future delivery schedule",
+        "scope": "Source-local anonymous single-site lease, Note 8, Q1 2026",
+        "stage_dimensions": {
+          "commercial_commitment": "Lease agreement reported; disclosure under Leases Not Yet Commenced",
+          "construction": "unknown",
+          "connection": "Future power delivery forecast; no identified delivery milestone",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10Q_Q12026",
+            "locator": "Note 8, Leases Not Yet Commenced, printed page 22, retrieved lines 943-944"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-CW12-A1",
+        "observation_id": "OBS-CW12",
+        "subject_id": "SUBJECT-CW12",
+        "source_metric_or_predicate": "electrical power remaining undelivered",
+        "value": 393,
+        "unit": "MW",
+        "qualifier": "reported remainder",
+        "stock_flow": "undelivered capacity stock at date",
+        "scope": "Source-local anonymous single-site lease, Note 8, Q2 2026",
+        "stage_dimensions": {
+          "commercial_commitment": "Lease agreement reported; disclosure under Leases Not Yet Commenced",
+          "construction": "unknown",
+          "connection": "Future power delivery forecast; no identified delivery milestone",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10Q_Q22026",
+            "locator": "Note 8, Leases Not Yet Commenced, printed pages 24-25, retrieved lines 1025 and 1032"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-PORTFOLIO-A1",
+        "observation_id": "OBS-GA-PORTFOLIO",
+        "subject_id": "SUBJECT-GA-PORTFOLIO",
+        "source_metric_or_predicate": "committed_customers",
+        "value": 31,
+        "unit": "customers",
+        "qualifier": "at least executed Request for Electric Service; an executed RFS alone does not establish a Contract for Electric Service",
+        "stock_flow": "count stock",
+        "scope": "Q1 2026 reported portfolio; eventual MW horizon is mid-2030s",
+        "stage_dimensions": {
+          "commercial_commitment": "at least executed RFS within reported committed portfolio",
+          "construction": "unknown for this metric",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "Physical p5 / printed p1; p7 / printed p3 Table 1"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-PORTFOLIO-A2",
+        "observation_id": "OBS-GA-PORTFOLIO",
+        "subject_id": "SUBJECT-GA-PORTFOLIO",
+        "source_metric_or_predicate": "committed_projects",
+        "value": 31,
+        "unit": "projects",
+        "qualifier": "source narrative also calls the reported units projects; no customer-to-physical-asset crosswalk established",
+        "stock_flow": "count stock",
+        "scope": "Q1 2026 reported portfolio; eventual MW horizon is mid-2030s",
+        "stage_dimensions": {
+          "commercial_commitment": "at least executed RFS within reported committed portfolio",
+          "construction": "unknown for this metric",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "Physical p5 / printed p1; p7 / printed p3 Table 1"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-PORTFOLIO-A3",
+        "observation_id": "OBS-GA-PORTFOLIO",
+        "subject_id": "SUBJECT-GA-PORTFOLIO",
+        "source_metric_or_predicate": "eventual_demand_MW",
+        "value": 12400,
+        "unit": "MW",
+        "qualifier": "reported rounded narrative quantity; commitments comprise Contracts for Electric Service plus Requests for Service",
+        "stock_flow": "forecast demand stock",
+        "scope": "Q1 2026 reported portfolio; eventual MW horizon is mid-2030s",
+        "stage_dimensions": {
+          "commercial_commitment": "at least executed RFS within reported committed portfolio",
+          "construction": "unknown for this metric",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "Physical p5 / printed p1; p7 / printed p3 Table 1"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-PORTFOLIO-A4",
+        "observation_id": "OBS-GA-PORTFOLIO",
+        "subject_id": "SUBJECT-GA-PORTFOLIO",
+        "source_metric_or_predicate": "broken_ground_projects",
+        "value": 21,
+        "unit": "projects",
+        "qualifier": "broken ground",
+        "stock_flow": "count stock",
+        "scope": "Q1 2026 reported portfolio; eventual MW horizon is mid-2030s",
+        "stage_dimensions": {
+          "commercial_commitment": "at least executed RFS within reported committed portfolio",
+          "construction": "broken ground",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "Physical p5 / printed p1; p7 / printed p3 Table 1"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-PORTFOLIO-A5",
+        "observation_id": "OBS-GA-PORTFOLIO",
+        "subject_id": "SUBJECT-GA-PORTFOLIO",
+        "source_metric_or_predicate": "online_projects_included_in_broken_ground",
+        "value": 10,
+        "unit": "projects",
+        "qualifier": "online, as reported",
+        "stock_flow": "count stock",
+        "scope": "Q1 2026 reported portfolio; eventual MW horizon is mid-2030s",
+        "stage_dimensions": {
+          "commercial_commitment": "at least executed RFS within reported committed portfolio",
+          "construction": "included in broken-ground population",
+          "connection": "unknown",
+          "operation": "reported online"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "Physical p5 / printed p1; p7 / printed p3 Table 1"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-PORTFOLIO-A6",
+        "observation_id": "OBS-GA-PORTFOLIO",
+        "subject_id": "SUBJECT-GA-PORTFOLIO",
+        "source_metric_or_predicate": "pending_construction_projects",
+        "value": 10,
+        "unit": "projects",
+        "qualifier": "pending construction",
+        "stock_flow": "count stock",
+        "scope": "Q1 2026 reported portfolio; eventual MW horizon is mid-2030s",
+        "stage_dimensions": {
+          "commercial_commitment": "at least executed RFS within reported committed portfolio",
+          "construction": "pending",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "Physical p5 / printed p1; p7 / printed p3 Table 1"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-PORTFOLIO-A7",
+        "observation_id": "OBS-GA-PORTFOLIO",
+        "subject_id": "SUBJECT-GA-PORTFOLIO",
+        "source_metric_or_predicate": "eventual_demand_MW_of_broken_ground_projects",
+        "value": 8500,
+        "unit": "MW",
+        "qualifier": "reported rounded narrative quantity; eventual demand of projects that have broken ground",
+        "stock_flow": "forecast demand stock",
+        "scope": "Q1 2026 reported portfolio; eventual MW horizon is mid-2030s",
+        "stage_dimensions": {
+          "commercial_commitment": "at least executed RFS within reported committed portfolio",
+          "construction": "broken ground",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "Physical p5 / printed p1; p7 / printed p3 Table 1"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-SPLIT-P27-A1",
+        "observation_id": "OBS-GA-SPLIT-P27",
+        "subject_id": "SUBJECT-GA-SPLIT-P27",
+        "source_metric_or_predicate": "source_reports_project_split",
+        "value": {
+          "parent_count_as_reported": 1,
+          "component_count_as_reported": 2
+        },
+        "unit": null,
+        "qualifier": "Endpoint identities and physical phase type unresolved",
+        "stock_flow": "reporting-structure event, not capacity flow",
+        "scope": "Unidentified source project; no row capacities assigned",
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "unknown",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "Physical p27, * footnote below table; no visible corresponding row marker"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-SPLIT-P36-A1",
+        "observation_id": "OBS-GA-SPLIT-P36",
+        "subject_id": "SUBJECT-GA-SPLIT-P36",
+        "source_metric_or_predicate": "source_reports_project_split",
+        "value": {
+          "parent_count_as_reported": 1,
+          "component_count_as_reported": 2
+        },
+        "unit": null,
+        "qualifier": "Endpoint identities and physical phase type unresolved",
+        "stock_flow": "reporting-structure event, not capacity flow",
+        "scope": "Unidentified source project; no row capacities assigned",
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "unknown",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "Physical p36, ** footnote below table; no visible corresponding row marker"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-R1-A1",
+        "observation_id": "OBS-GA-R1",
+        "subject_id": "SUBJECT-GA-R1",
+        "source_metric_or_predicate": "reported commercial-stage revision",
+        "value": {
+          "Project Name": "REDACTED",
+          "Q4 2025": "Technical Review",
+          "Q1 2026": "Contract for Electric Service"
+        },
+        "unit": null,
+        "qualifier": "within-row source assertion",
+        "stock_flow": "commercial-stage assertion",
+        "scope": null,
+        "stage_dimensions": {
+          "commercial_commitment": "Technical Review -> Contract for Electric Service (source project-stage labels; agreement itself not inspected)",
+          "construction": "unknown",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "physical p33, table row 1"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-R2-A1",
+        "observation_id": "OBS-GA-R2",
+        "subject_id": "SUBJECT-GA-R2",
+        "source_metric_or_predicate": "reported commercial-stage revision",
+        "value": {
+          "Project Name": "REDACTED",
+          "Q4 2025": "Request for Service",
+          "Q1 2026": "Contract for Electric Service"
+        },
+        "unit": null,
+        "qualifier": "within-row source assertion",
+        "stock_flow": "commercial-stage assertion",
+        "scope": null,
+        "stage_dimensions": {
+          "commercial_commitment": "Request for Service -> Contract for Electric Service (source project-stage labels; agreement itself not inspected)",
+          "construction": "unknown",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "physical p33, table row 2"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-R3-A1",
+        "observation_id": "OBS-GA-R3",
+        "subject_id": "SUBJECT-GA-R3",
+        "source_metric_or_predicate": "Announced Load (MW) in Q4 25",
+        "value": 750,
+        "unit": "MW",
+        "qualifier": "prior announced load; removal reason remains Withdrawn or No Bid",
+        "stock_flow": "prior forecast stock; reported pipeline removal, not decommissioning",
+        "scope": null,
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "unknown",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "physical p34, table row 1"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-R4-A1",
+        "observation_id": "OBS-GA-R4",
+        "subject_id": "SUBJECT-GA-R4",
+        "source_metric_or_predicate": "Change (Months)",
+        "value": 24,
+        "unit": "months",
+        "qualifier": "reported change in initial-service forecast",
+        "stock_flow": "forecast revision, not elapsed construction time",
+        "scope": null,
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "unknown",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "physical p35, table row 1"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-R5-A1",
+        "observation_id": "OBS-GA-R5",
+        "subject_id": "SUBJECT-GA-R5",
+        "source_metric_or_predicate": "Change (Months)",
+        "value": -3,
+        "unit": "months",
+        "qualifier": "reported change in initial-service forecast",
+        "stock_flow": "forecast revision, not elapsed construction time",
+        "scope": null,
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "unknown",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "physical p35, table row 8"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-R6-A1",
+        "observation_id": "OBS-GA-R6",
+        "subject_id": "SUBJECT-GA-R6",
+        "source_metric_or_predicate": "Change (Months)",
+        "value": -18,
+        "unit": "months",
+        "qualifier": "reported change in initial-service forecast",
+        "stock_flow": "forecast revision, not elapsed construction time",
+        "scope": null,
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "unknown",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "physical p35, table row 18"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-GA-CREATED-A1",
+        "observation_id": "OBS-GA-CREATED",
+        "subject_id": "SUBJECT-GA-CREATED",
+        "source_metric_or_predicate": "Announced Load*",
+        "value": 3500,
+        "unit": "MW",
+        "qualifier": "announced load as of 2037; record creation only",
+        "stock_flow": "forecast demand stock",
+        "scope": "One anonymous creation-table row; no executed RFS, contract or connection established",
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "unknown",
+          "connection": "unknown",
+          "operation": "unknown"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "physical p36, table row 1 and footnote *"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-EIA-UNIT-A1",
+        "observation_id": "OBS-EIA-UNIT",
+        "subject_id": "SUBJECT-EIA-UNIT",
+        "source_metric_or_predicate": "Net Summer Capacity (MW)",
+        "value": 22.2,
+        "unit": "MW",
+        "qualifier": "as displayed to one decimal; preliminary",
+        "stock_flow": "stock-like rated generating-unit capacity in planned inventory; not energy flow or incremental capacity commissioned",
+        "scope": "One generator; neither demand-side delivery nor AI allocation identified",
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "source-reported complete under TS",
+          "connection": "unknown",
+          "operation": "source says not yet in commercial operation, as of July 2026"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "EIA-EPM-6.5-2026-09-24",
+            "locator": "Table 6.5, header L21; row L47 keyed 68741 / CPP_1; notes L2392-2396"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-EIA-UNIT-A2",
+        "observation_id": "OBS-EIA-UNIT",
+        "subject_id": "SUBJECT-EIA-UNIT",
+        "source_metric_or_predicate": "Nameplate Capacity (MW)",
+        "value": 26.1,
+        "unit": "MW",
+        "qualifier": "as displayed to one decimal; preliminary",
+        "stock_flow": "stock-like rated generating-unit capacity in planned inventory; not energy flow or incremental capacity commissioned",
+        "scope": "One generator; neither demand-side delivery nor AI allocation identified",
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "source-reported complete under TS",
+          "connection": "unknown",
+          "operation": "source says not yet in commercial operation, as of July 2026"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "EIA-EPM-6.5-2026-09-24",
+            "locator": "Table 6.5, header L21; row L47 keyed 68741 / CPP_1; notes L2392-2396"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-EIA-UNIT-A3",
+        "observation_id": "OBS-EIA-UNIT",
+        "subject_id": "SUBJECT-EIA-UNIT",
+        "source_metric_or_predicate": "Status",
+        "value": "TS",
+        "unit": null,
+        "qualifier": "Construction complete but not yet in commercial operation",
+        "stock_flow": "categorical status at observation month",
+        "scope": null,
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "source-reported complete under TS",
+          "connection": "unknown",
+          "operation": "source says not yet in commercial operation, as of July 2026"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "EIA-EPM-6.5-2026-09-24",
+            "locator": "Table 6.5, header L21; row L47 keyed 68741 / CPP_1; notes L2392-2396"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      },
+      {
+        "id": "OBS-EIA-ALIAS-A1",
+        "observation_id": "OBS-EIA-ALIAS",
+        "subject_id": "SUBJECT-EIA-UNIT",
+        "source_metric_or_predicate": "repeated_keyed_disclosure",
+        "value": "OBS-EIA-UNIT",
+        "unit": null,
+        "qualifier": "same key, values, status, observation month and publication date",
+        "stock_flow": "documentary repetition; no new capacity",
+        "scope": null,
+        "stage_dimensions": {
+          "commercial_commitment": "unknown",
+          "construction": "source-reported complete under TS",
+          "connection": "unknown",
+          "operation": "source says not yet in commercial operation, as of July 2026"
+        },
+        "authority_status": "documentary assertion; physical validation not established",
+        "source_evidence": [
+          {
+            "artifact_id": "EIA-EPM-6.5-ALIAS-2026-09-24",
+            "locator": "Header L21; keyed row L47"
+          }
+        ],
+        "ai_allocation": "unknown",
+        "capacity_arithmetic": "No aggregation or conversion authorized by this ledger."
+      }
+    ],
+    "relationships": [
+      {
+        "id": "EDGE-CW-ISSUER",
+        "classification": "factual_match",
+        "relation": "same_issuer_distinct_dated_observations",
+        "from_refs": [
+          "OBS-CW01",
+          "OBS-CW02"
+        ],
+        "to_refs": [
+          "OBS-CW05",
+          "OBS-CW06",
+          "OBS-CW07"
+        ],
+        "basis": "Same CIK 0001769628 in the accession metadata; scope is issuer portfolio, not identified facilities.",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_424B4_20250331",
+            "locator": "SEC accession metadata / filer CIK"
+          },
+          {
+            "artifact_id": "CW_10K_FY2025",
+            "locator": "SEC accession metadata / filer CIK"
+          }
+        ],
+        "aggregation_consequence": "Do not sum stocks across dates or infer a disjoint physical campus count."
+      },
+      {
+        "id": "EDGE-CW-OVERLAP",
+        "classification": "possible_match",
+        "relation": "potential_overlap_between_stage_scopes",
+        "from_refs": [
+          "OBS-CW06"
+        ],
+        "to_refs": [
+          "OBS-CW07"
+        ],
+        "basis": "Same issuer/date, active and total contracted labels; inspected text does not establish exact inclusion/exclusion.",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10K_FY2025",
+            "locator": "Business overview, printed page 5, retrieved line 219; Securing Sufficient Power Capacity, lines 1883-1884"
+          }
+        ],
+        "aggregation_consequence": "Non-additive; neither exact subset nor contracted-minus-active headroom established.",
+        "missing_link": "Explicit common metric boundary and asset coverage/overlap reconciliation."
+      },
+      {
+        "id": "EDGE-CW-LEASE-1",
+        "classification": "possible_match",
+        "relation": "possible_same_anonymous_lease_disclosure",
+        "from_refs": [
+          "OBS-CW10"
+        ],
+        "to_refs": [
+          "OBS-CW11"
+        ],
+        "basis": "Parallel Note 8 single-site / various-buildings narrative, but no source lease/site identifier.",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10K_FY2025",
+            "locator": "Note 8, Leases Not Yet Commenced, printed page 112, retrieved lines 3581-3582"
+          },
+          {
+            "artifact_id": "CW_10Q_Q12026",
+            "locator": "Note 8, Leases Not Yet Commenced, printed page 22, retrieved lines 943-944"
+          }
+        ],
+        "aggregation_consequence": "No same-asset merge, increment, subtraction or delivery inference.",
+        "missing_link": "Public lease/site/phase identifier or explicit issuer bridge and compatible metric scope."
+      },
+      {
+        "id": "EDGE-CW-LEASE-2",
+        "classification": "possible_match",
+        "relation": "possible_same_anonymous_lease_disclosure",
+        "from_refs": [
+          "OBS-CW11"
+        ],
+        "to_refs": [
+          "OBS-CW12"
+        ],
+        "basis": "Parallel Note 8 single-site / various-buildings narrative, but no source lease/site identifier. Q2 uses an undelivered-remainder metric.",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10Q_Q12026",
+            "locator": "Note 8, Leases Not Yet Commenced, printed page 22, retrieved lines 943-944"
+          },
+          {
+            "artifact_id": "CW_10Q_Q22026",
+            "locator": "Note 8, Leases Not Yet Commenced, printed pages 24-25, retrieved lines 1025 and 1032"
+          }
+        ],
+        "aggregation_consequence": "No same-asset merge, increment, subtraction or delivery inference.",
+        "missing_link": "Public lease/site/phase identifier or explicit issuer bridge and compatible metric scope."
+      },
+      {
+        "id": "EDGE-CW-DELAY-REPEAT",
+        "classification": "factual_match",
+        "relation": "repeated_disclosure",
+        "from_refs": [
+          "OBS-CW08-1"
+        ],
+        "to_refs": [
+          "OBS-CW08-2",
+          "OBS-CW08-3"
+        ],
+        "basis": "All passages explicitly refer to the November 2025 announcement.",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10K_FY2025",
+            "locator": "Item 1A, third-party data center provider risk, printed pages 16-17, retrieved lines 512-518"
+          },
+          {
+            "artifact_id": "CW_10Q_Q12026",
+            "locator": "Item 1A, third-party data center provider risk, retrieved line 1823"
+          },
+          {
+            "artifact_id": "CW_10Q_Q22026",
+            "locator": "Item 1A, third-party data center provider risk, retrieved line 2009"
+          }
+        ],
+        "aggregation_consequence": "One described announcement, multiple dependent assertions; no proof of ongoing delay or resolution."
+      },
+      {
+        "id": "EDGE-CW-UNNAMED-NAMED",
+        "classification": "rejected_join",
+        "relation": "unsupported_facility_attribution",
+        "from_refs": [
+          "OBS-CW08-1",
+          "OBS-CW08-2",
+          "OBS-CW08-3",
+          "OBS-CW10",
+          "OBS-CW11",
+          "OBS-CW12"
+        ],
+        "to_refs": [
+          "SUBJECT-CW-KENILWORTH"
+        ],
+        "basis": "No source bridge connects the unnamed lease/delay to the separately named Kenilworth campus.",
+        "source_evidence": [
+          {
+            "artifact_id": "CW_10K_FY2025",
+            "locator": "Note 8 and separate Kenilworth risk paragraphs"
+          }
+        ],
+        "aggregation_consequence": "No campus capacity or delay assignment."
+      },
+      {
+        "id": "EDGE-CW-EPOCH",
+        "classification": "rejected_join",
+        "relation": "unsupported_portfolio_to_facility_allocation",
+        "from_refs": [
+          "OBS-CW01",
+          "OBS-CW02",
+          "OBS-CW06",
+          "OBS-CW07"
+        ],
+        "to_refs": [
+          "EXTERNAL-GL003-NO-RECORD"
+        ],
+        "basis": "Issuer portfolio quantities are not identified site/phase quantities; Epoch counts/buildings and IT-power estimates have different boundaries.",
+        "source_evidence": [
+          {
+            "artifact_id": "EPOCH_DESCRIPTION_20261008",
+            "locator": "What is an AI data center?; FAQ IT-power description"
+          }
+        ],
+        "aggregation_consequence": "No allocation of totals or MW-to-GPU conversion.",
+        "missing_link": "Individually inspectable Epoch record identifier, precise site/phase bridge and explicit quantity allocation."
+      },
+      {
+        "id": "EDGE-GA-ONLINE-CONTAINED",
+        "classification": "factual_match",
+        "relation": "reported_population_containment",
+        "from_refs": [
+          "OBS-GA-PORTFOLIO-A5"
+        ],
+        "to_refs": [
+          "OBS-GA-PORTFOLIO-A4"
+        ],
+        "basis": "Source explicitly includes ten reported online within twenty-one broken-ground projects.",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "Physical p5 and p7 / Table 1"
+          }
+        ],
+        "aggregation_consequence": "Do not add 10 online to 21 broken ground."
+      },
+      {
+        "id": "EDGE-GA-BROKEN-CONTAINED",
+        "classification": "factual_match",
+        "relation": "reported_population_containment",
+        "from_refs": [
+          "OBS-GA-PORTFOLIO-A4"
+        ],
+        "to_refs": [
+          "OBS-GA-PORTFOLIO-A2"
+        ],
+        "basis": "Source places twenty-one broken-ground projects within thirty-one committed projects.",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "Physical p5 and p7 / Table 1"
+          }
+        ],
+        "aggregation_consequence": "Do not add 21 broken-ground projects to their 31-project parent population; customer and physical asset identities remain unresolved."
+      },
+      {
+        "id": "EDGE-GA-DEMAND-CONTAINED",
+        "classification": "factual_match",
+        "relation": "reported_population_containment",
+        "from_refs": [
+          "OBS-GA-PORTFOLIO-A7"
+        ],
+        "to_refs": [
+          "OBS-GA-PORTFOLIO-A3"
+        ],
+        "basis": "Source describes 8,500 MW as the eventual demand associated with the broken-ground portion of 12,400 MW commitments.",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "Physical p5, bullet 2"
+          }
+        ],
+        "aggregation_consequence": "No addition; neither quantity is measured operating MW."
+      },
+      {
+        "id": "EDGE-GA-SPLIT-REPEAT",
+        "classification": "possible_match",
+        "relation": "possible_repeated_split_reference",
+        "from_refs": [
+          "OBS-GA-SPLIT-P27"
+        ],
+        "to_refs": [
+          "OBS-GA-SPLIT-P36"
+        ],
+        "basis": "Equivalent footnote wording; missing row markers and project IDs prevent a factual event identity match.",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "Physical pp27 and 36; visual inspection"
+          }
+        ],
+        "aggregation_consequence": "Study one split assertion with a possible second reference; do not count two independently identified physical splits or allocate row MW.",
+        "missing_link": "Public anonymous parent/child IDs and visible footnote-to-row crosswalk."
+      },
+      {
+        "id": "EDGE-GA-R1",
+        "classification": "factual_match",
+        "relation": "reported commercial-stage revision",
+        "from_refs": [
+          "OBS-GA-R1"
+        ],
+        "to_refs": [
+          "OBS-GA-R1-A1"
+        ],
+        "basis": "The current PDF directly pairs these values on one anonymous row; factual match is limited to that source assertion.",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "physical p33, table row 1"
+          }
+        ],
+        "aggregation_consequence": "No physical operation inferred; no cross-page or cross-filing asset identity inferred."
+      },
+      {
+        "id": "EDGE-GA-R2",
+        "classification": "factual_match",
+        "relation": "reported commercial-stage revision",
+        "from_refs": [
+          "OBS-GA-R2"
+        ],
+        "to_refs": [
+          "OBS-GA-R2-A1"
+        ],
+        "basis": "The current PDF directly pairs these values on one anonymous row; factual match is limited to that source assertion.",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "physical p33, table row 2"
+          }
+        ],
+        "aggregation_consequence": "No physical operation inferred; no cross-page or cross-filing asset identity inferred."
+      },
+      {
+        "id": "EDGE-GA-R3",
+        "classification": "factual_match",
+        "relation": "explicit reported pipeline removal",
+        "from_refs": [
+          "OBS-GA-R3"
+        ],
+        "to_refs": [
+          "OBS-GA-R3-A1"
+        ],
+        "basis": "The current PDF directly pairs these values on one anonymous row; factual match is limited to that source assertion.",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "physical p34, table row 1"
+          }
+        ],
+        "aggregation_consequence": "No physical operation inferred; no cross-page or cross-filing asset identity inferred."
+      },
+      {
+        "id": "EDGE-GA-R4",
+        "classification": "factual_match",
+        "relation": "reported initial-service forecast postponed",
+        "from_refs": [
+          "OBS-GA-R4"
+        ],
+        "to_refs": [
+          "OBS-GA-R4-A1"
+        ],
+        "basis": "The current PDF directly pairs these values on one anonymous row; factual match is limited to that source assertion.",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "physical p35, table row 1"
+          }
+        ],
+        "aggregation_consequence": "No physical operation inferred; no cross-page or cross-filing asset identity inferred."
+      },
+      {
+        "id": "EDGE-GA-R5",
+        "classification": "factual_match",
+        "relation": "reported initial-service forecast brought forward",
+        "from_refs": [
+          "OBS-GA-R5"
+        ],
+        "to_refs": [
+          "OBS-GA-R5-A1"
+        ],
+        "basis": "The current PDF directly pairs these values on one anonymous row; factual match is limited to that source assertion.",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "physical p35, table row 8"
+          }
+        ],
+        "aggregation_consequence": "No physical operation inferred; no cross-page or cross-filing asset identity inferred."
+      },
+      {
+        "id": "EDGE-GA-R6",
+        "classification": "factual_match",
+        "relation": "reported initial-service forecast brought forward",
+        "from_refs": [
+          "OBS-GA-R6"
+        ],
+        "to_refs": [
+          "OBS-GA-R6-A1"
+        ],
+        "basis": "The current PDF directly pairs these values on one anonymous row; factual match is limited to that source assertion.",
+        "source_evidence": [
+          {
+            "artifact_id": "ga-226607-107887",
+            "locator": "physical p35, table row 18"
+          }
+        ],
+        "aggregation_consequence": "No physical operation inferred; no cross-page or cross-filing asset identity inferred."
+      },
+      {
+        "id": "EDGE-EIA-REPEAT",
+        "classification": "factual_match",
+        "relation": "repeated_disclosure",
+        "from_refs": [
+          "OBS-EIA-ALIAS"
+        ],
+        "to_refs": [
+          "OBS-EIA-UNIT"
+        ],
+        "basis": "Direct inspections returned the same July observation and September 24 release through both table parameters.",
+        "source_evidence": [
+          {
+            "artifact_id": "EIA-EPM-6.5-2026-09-24",
+            "locator": "Header and keyed row"
+          },
+          {
+            "artifact_id": "EIA-EPM-6.5-ALIAS-2026-09-24",
+            "locator": "Header and keyed row"
+          }
+        ],
+        "aggregation_consequence": "One capacity observation; second representation is dependent evidence."
+      },
+      {
+        "id": "EDGE-EIA-PARENT",
+        "classification": "factual_match",
+        "relation": "contained_in",
+        "from_refs": [
+          "SUBJECT-EIA-UNIT"
+        ],
+        "to_refs": [
+          "SUBJECT-EIA-PLANT"
+        ],
+        "basis": "Source row explicitly provides both IDs.",
+        "source_evidence": [
+          {
+            "artifact_id": "EIA-EPM-6.5-2026-09-24",
+            "locator": "Keyed row; table identifier notes"
+          }
+        ],
+        "aggregation_consequence": "Asset hierarchy only; do not sum a unit with a plant aggregate that includes it."
+      },
+      {
+        "id": "EDGE-EIA-MW",
+        "classification": "rejected_join",
+        "relation": "interchangeable_or_additive_measurement",
+        "from_refs": [
+          "OBS-EIA-UNIT-A1"
+        ],
+        "to_refs": [
+          "OBS-EIA-UNIT-A2"
+        ],
+        "basis": "Both describe the same generator under different capacity definitions.",
+        "source_evidence": [
+          {
+            "artifact_id": "EIA-EPM-6.5-2026-09-24",
+            "locator": "Net Summer Capacity and Nameplate Capacity columns, row 68741 / CPP_1"
+          }
+        ],
+        "aggregation_consequence": "Keep 22.2 MW net-summer and 26.1 MW nameplate separately; no sum or substitution."
+      },
+      {
+        "id": "EDGE-EIA-LOAD",
+        "classification": "rejected_join",
+        "relation": "unsupported_generation_to_load_attribution",
+        "from_refs": [
+          "SUBJECT-EIA-UNIT"
+        ],
+        "to_refs": [
+          "SUBJECT-CW-KENILWORTH",
+          "SUBJECT-GA-PORTFOLIO"
+        ],
+        "basis": "No inspected source establishes a physical delivery or allocation link.",
+        "source_evidence": [
+          {
+            "artifact_id": "EIA-EPM-6.5-2026-09-24",
+            "locator": "Keyed generator row"
+          }
+        ],
+        "aggregation_consequence": "Generator capacity cannot be assigned as usable data-center power; AI allocation unknown."
+      },
+      {
+        "id": "EDGE-LBNL-LOAD",
+        "classification": "rejected_join",
+        "relation": "population_mismatch",
+        "from_refs": [
+          "LBNL-QUEUED-2026-METADATA"
+        ],
+        "to_refs": [
+          "EXTERNAL-DATA-CENTER-WAITING-TIME"
+        ],
+        "basis": "Publication scope excludes load interconnection requests, distribution-connected and behind-the-meter projects.",
+        "source_evidence": [
+          {
+            "artifact_id": "LBNL-QUEUED-2026-METADATA",
+            "locator": "Abstract, L35-36"
+          }
+        ],
+        "aggregation_consequence": "No data-center waiting-time estimate or demand-side queue attribution."
+      }
+    ],
+    "unresolved_links": [
+      {
+        "id": "GAP-CW-DELAY",
+        "subject_id": "SUBJECT-CW-DELAY",
+        "missing": "Exact site, magnitude, duration, phase and resolution; repeated risk language does not supply current status.",
+        "effect": "No identified delivery milestone or remediation status."
+      },
+      {
+        "id": "GAP-CW-EPOCH",
+        "subject_id": "SUBJECT-CW-KENILWORTH",
+        "missing": "No supported Epoch record ID/permalink and precise site/phase correspondence were exposed in bounded inspection.",
+        "effect": "No facility pair admitted; this is not a claim that the database lacks the campus."
+      },
+      {
+        "id": "GAP-GA-SPLIT",
+        "missing": "Public anonymous parent/child identifiers or a marked row crosswalk linking the split statement, predecessor and two components; preferably an individually accessible revision/comparison PDF with those aliases.",
+        "effect": "Split occurrence is documented; parent/child entity edges and capacities remain null."
+      },
+      {
+        "id": "GAP-GA-COMPARISON-1",
+        "from": "ga-metadata-225690",
+        "to": "ga-226607-107887",
+        "status": "unresolved",
+        "missing_link": "Individually published Q3/Q4 revised comparison PDF and a public row identity crosswalk; cannot determine whether Q1's Q4 cells reproduce the revised Q4 version."
+      },
+      {
+        "id": "GAP-GA-COMPARISON-2",
+        "from": "ga-226607-107887",
+        "to": "ga-metadata-227753",
+        "status": "unresolved",
+        "missing_link": "Individually published Q2 PDF with public anonymous predecessor/phase IDs or explicit comparisons; metadata does not establish continuation, commissioning or disappearance."
+      },
+      {
+        "id": "GAP-EIA-U1",
+        "missing": "A later dated official keyed record explicitly reporting actual operational status for Plant ID 68741 + Generator ID CPP_1",
+        "effect": "No commissioning milestone or status transition admitted"
+      },
+      {
+        "id": "GAP-EIA-U2",
+        "missing": "Public item-level August inventory/status without forbidden bulk workbook",
+        "effect": "August XLS link metadata is not unit evidence"
+      },
+      {
+        "id": "GAP-EIA-U3",
+        "missing": "Documented mapping from queue authority + original request identifier and components/phases to EIA plant + generator",
+        "effect": "No LBNL request-to-generator join"
+      },
+      {
+        "id": "GAP-EIA-U4",
+        "missing": "Evidence of delivery/connection and allocation to a specified demand-side asset",
+        "effect": "Generator MW cannot be treated as usable AI/data-center power"
+      }
+    ],
+    "external_reference_placeholders": [
+      {
+        "id": "EXTERNAL-GL003-NO-RECORD",
+        "status": "unresolved target; no Epoch facility ID identified"
+      },
+      {
+        "id": "EXTERNAL-DATA-CENTER-WAITING-TIME",
+        "status": "rejected target population; no such estimate produced"
+      }
+    ],
+    "documentary_boundaries": {
+      "coreweave_definition_findings": [
+        "The prospectus defines its count to include an owned/leased portion receiving active power.",
+        "Q1/Q2 targeted searches returned no active power or contracted power phrases; omission is not an explicit definition change or evidence that prior capacity vanished.",
+        "The inspected Q1/Q2 passages give no named delivery milestone or resolution for the November 2025 delay.",
+        "FY2025 overview uses approximately 360 MW for 2024, while its Securing Sufficient Power Capacity passage uses more than 360 MW. Preserve wording by locator; no explicit correction was located.",
+        "The anonymous Note 8 quantity changes from contractual access to an undelivered remainder. This is an observed source-metric wording change, not a proven issuer-wide active-power redefinition.",
+        "Epoch's unit may group nearby buildings under common hardware ownership or operation and does not separate a campus from a building. Its estimated IT-power boundary must not be equated to issuer active MW without evidence."
+      ],
+      "epoch": {
+        "inspected": "Public description and visible linked directory",
+        "facility_pages_inspected": 0,
+        "bulk_files_inspected": 0,
+        "result": "No supported source-identified pair surfaced; database absence not inferred.",
+        "source_artifact_ids": [
+          "EPOCH_DESCRIPTION_20261008",
+          "EPOCH_DIRECTORY_20261005"
+        ]
+      },
+      "georgia_comparison": {
+        "individual_revision_rows": 6,
+        "split_assertions_studied": 1,
+        "second_footnote_relation": "possible repeat, not an independently identified second split",
+        "earlier_and_later_report_content": "225690 and 227753 expose ZIP-only attachments; content not inspected; exactly missing public comparison PDF and anonymous identity bridge retained."
+      },
+      "lbnl_scope": {
+        "source_artifact_id": "LBNL-QUEUED-2026-METADATA",
+        "included": "transmission generation requests through end of 2025",
+        "excluded": [
+          "load interconnection requests",
+          "distribution-connected projects",
+          "behind-the-meter projects"
+        ],
+        "codebook": "Inside uninspected workbook; canonical source columns not guessed.",
+        "date_statements": {
+          "catalog_date_published": "2026-05",
+          "landing_data_file_update": "2026-05",
+          "landing_report_publication": "2026-06"
+        },
+        "date_resolution": "Kept as separate publisher statements; no exact attachment version inspected."
+      },
+      "eia_retrieval": {
+        "successful_excerpts": {
+          "header_L21": "Data for July 2026 Release Date: September 24, 2026 Next Release Date: October 23, 2026",
+          "record_L47": "2026 | 8 | 67225 | Canyon Peak Power, LLC | IPP | Canyon Peak Power Station | CO | 68741 | CPP_1 | 22.2 | Natural Gas Fired Combustion Turbine | NG | GT | (TS) Construction complete, but not yet in commercial operation | 26.1",
+          "id_note_L2394": "Entity ID and Plant ID are official, unique identification numbers assigned by EIA; Generator IDs are assigned by plant owners and/or operators.",
+          "later_retrieval_difference": "Parent reports subsequent root reopen/find attempts returned transient Unexpected Error for both URL parameters. Successful subagent inspection remains the cited July-vintage evidence; no subsequent live-table retry was attempted by this subagent after the stop instruction."
+        },
+        "analyst_excerpt_serialization_sha256": "6f0c8f2ca28500f8b130db54027f65f2f01be57c4bc1fc7b6c3e53785e43494f",
+        "checksum_scope": "Hash of the preserved analyst excerpt object, not the original EIA HTML body.",
+        "later_root_reopen": "Both parameter forms later returned Unexpected Error; no resulting status update or absence claim.",
+        "search_snippet": "A V snippet was rejected in favor of directly inspected TS content; no historical V observation admitted."
+      }
+    },
+    "identity_and_stage_specification": {
+      "status": "Analyst-proposed source-native envelope and logical requirements, not repository field names or a verified repository contract.",
+      "identity_layers": [
+        {
+          "layer": "artifact",
+          "identity": "Publisher namespace + accession/document/file identifier + actual inspected version/representation; URL alone is insufficient for mutable sources."
+        },
+        {
+          "layer": "subject/entity",
+          "identity": "Stable issuer or physical asset key where evidenced. Anonymous disclosure handles identify statements only, not persistent projects."
+        },
+        {
+          "layer": "observation",
+          "identity": "Artifact version + exact record locator + observation vintage + source scope; keep multiple evidence representations."
+        },
+        {
+          "layer": "assertion",
+          "identity": "Specific predicate or metric claim supported by the observation, with date role, qualifier and source authority."
+        }
+      ],
+      "required_information_groups": [
+        {
+          "group": "source provenance",
+          "requirements": [
+            "Original and resolved URL",
+            "publisher/author versus host",
+            "accession/document/file ID",
+            "displayed edition/release/version",
+            "locator",
+            "retrieval time and precision",
+            "byte hash when captured; otherwise explicit unavailable reason",
+            "access outcome"
+          ]
+        },
+        {
+          "group": "entity and containment",
+          "requirements": [
+            "source namespace and literal identifiers",
+            "entity grain",
+            "owner/operator/tenant/developer role",
+            "parent campus/plant",
+            "phase/building/unit key",
+            "anonymous identifiers only when public",
+            "explicit identity/containment evidence"
+          ]
+        },
+        {
+          "group": "quantity",
+          "requirements": [
+            "source metric name",
+            "raw value",
+            "unit",
+            "lower/upper bound or approximate qualifier",
+            "metric boundary (e.g. net-summer/nameplate/IT/utility/contractual/eventual load)",
+            "stock versus flow/forecast stock",
+            "population/physical scope"
+          ]
+        },
+        {
+          "group": "dates",
+          "requirements": [
+            "source observation/event date",
+            "forecast target and forecast vintage",
+            "publication/filing and acceptance timestamps",
+            "explicit revision date if supplied",
+            "detected difference date separately",
+            "original precision (year/quarter/month/day)",
+            "no manufactured daily dates"
+          ]
+        },
+        {
+          "group": "stage",
+          "requirements": [
+            "commercial commitment",
+            "construction",
+            "connection/energization",
+            "operation/commercial operation",
+            "raw source status code",
+            "unknown state and reason",
+            "per-axis date and evidence where available"
+          ]
+        },
+        {
+          "group": "authority and rights",
+          "requirements": [
+            "issuer/utility report versus agency compilation versus independent check",
+            "dependence on earlier disclosure",
+            "public read outcome",
+            "applicable artifact-specific reuse statement",
+            "licensor, attribution and exceptions",
+            "unknown AI allocation retained"
+          ]
+        },
+        {
+          "group": "relationship",
+          "requirements": [
+            "edge type",
+            "factual/possible/rejected classification",
+            "source supporting the bridge",
+            "explicit unresolved endpoint",
+            "aggregation consequence",
+            "many-to-many coverage where source documents it"
+          ]
+        }
+      ],
+      "stage_rules": [
+        "The four dimensions are independent, not one monotonic status ladder.",
+        "A Request for Service or contract does not prove ground-breaking, grid connection, power delivery or commercial operation.",
+        "A construction-complete status can coexist with pre-commercial operation and unknown connection.",
+        "An issuer active-power label is preserved without equating it to measured IT load or independent operation verification.",
+        "Source authority is not a stage. Official hosting, financial audit status or dataset inclusion does not establish independent physical validation.",
+        "An event repeated in a later filing does not acquire the filing period as a new physical observation date."
+      ],
+      "edge_types": [
+        "same_source_entity",
+        "repeated_disclosure",
+        "revises_assertion",
+        "source_reports_split",
+        "split_into_when_endpoints_known",
+        "contained_in",
+        "possible_same_entity",
+        "possible_overlap",
+        "rejected_join"
+      ],
+      "edge_class_definitions": {
+        "factual_match": "Directly evidenced source identity, pairing, repetition or containment; remains at the source authority level.",
+        "possible_match": "A candidate bridge lacks essential identity or scope evidence; do not merge or allocate.",
+        "rejected_join": "The proposed use is unsupported or conflicts with source scope/definitions; reason and missing evidence retained."
+      },
+      "aggregation_policy": [
+        "This investigation authorizes no capacity summation or conversion.",
+        "For a later separately authorized aggregator, explicit disjoint asset scopes, common metric definition, compatible date and stage, and supported containment would be prerequisites.",
+        "Do not add parents to included phases/children, alternate capacity ratings of the same asset, repeated disclosures, or successive stocks/vintages.",
+        "A reporting split does not itself establish physical subdivision, added demand or conserved numerical partition.",
+        "Lower-bound and approximate values are not point estimates; do not derive exact differences or growth from them.",
+        "Do not convert MW into GPUs/FLOPs, generation into delivered load, unknown AI allocation into a share, or any resource quantity into catastrophe probability."
+      ],
+      "missing_record_rules": [
+        "An HTTP error, login wall, disabled retrieval or missing text is acquisition failure, never asset absence.",
+        "A successful later table that omits an entity can only support absent-from-that-artifact, subject to table scope and complete relevant inspection.",
+        "Commissioning, cancellation, retirement and resolution each require affirmative dated evidence; elapsed targets are forecasts only.",
+        "Retain older assertions and link corrections; do not replace history silently."
+      ],
+      "minimum_epoch_join": [
+        "Both artifact identifiers, versions and exact source locators.",
+        "Issuer/company identifier and time-specific role: asset owner, facility operator, tenant, primary user or developer.",
+        "Public site identity: stable project/permit/parcel identifier or an explicit alias bridge corroborated by precise location.",
+        "Parent campus and building/hall/phase/leased-portion identity with a clear physical boundary.",
+        "An individually inspected Epoch record identifier/permalink and its applicable vintage.",
+        "Dates to establish temporal overlap and distinguish planned from observed states.",
+        "Compatible metric boundary, unit, qualifier and stage; monetary ownership share is not capacity allocation.",
+        "An explicit source-backed containment or allocation edge before assigning operator quantities to a phase."
+      ],
+      "minimum_queue_to_generator_join": [
+        "Queue authority namespace plus original source request identifier, with request vintage.",
+        "Explicit parent/replacement/split and hybrid-component relationships where source documents supply them; preserve one-to-many mappings.",
+        "Exact EIA Plant ID plus exact Generator ID, with vintage; preserve ID string punctuation and do not merge by generator name alone.",
+        "An authoritative bridge document that identifies both sides and which units, phases, or components the request covers.",
+        "Request, study, agreement, construction, connection and commercial-operation dates/statuses distinguished; request date and target date cannot be COD.",
+        "Capacity definition and unit on each side; aggregate request MW cannot be silently apportioned to a generator.",
+        "Provenance, source locator, publication/revision dates and redistribution terms for each link.",
+        "No claim that LBNL exposes these named columns: the linked codebook was not inspected."
+      ],
+      "canonical_mapping": "DEFERRED: repository contracts and GL003 record were not inspected."
+    },
+    "acceptance_cases": [
+      {
+        "id": "AC01",
+        "fixture_kind": "inspected_observation",
+        "topic": "overlapping active/contracted capacity",
+        "inputs": [
+          "OBS-CW06",
+          "OBS-CW07"
+        ],
+        "expected_result": "Preserve >850 MW active and approximately 3.1 GW contracted separately. Reject addition, exact residual and unproven subset.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC02",
+        "fixture_kind": "inspected_observation",
+        "topic": "lower bounds",
+        "inputs": [
+          "OBS-CW01",
+          "OBS-CW06"
+        ],
+        "expected_result": "Keep strict > qualifiers. Do not store 250,000 or 850 as exact counts/capacities or manufacture a refreshed GPU total.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC03",
+        "fixture_kind": "synthetic_case",
+        "topic": "explicit containment",
+        "inputs": "Synthetic source explicitly states active 300 MW is included in contracted 900 MW.",
+        "expected_result": "Record factual containment with source citation. Retain both stages; do not add them to 1,200 MW.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC04",
+        "fixture_kind": "inspected_observation",
+        "topic": "repeated disclosure",
+        "inputs": [
+          "OBS-CW08-1",
+          "OBS-CW08-2",
+          "OBS-CW08-3"
+        ],
+        "expected_result": "Attach the three filing assertions to the described November announcement; no three independent incidents and no current-resolution inference.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC05",
+        "fixture_kind": "inspected_observation",
+        "topic": "metric-basis change",
+        "inputs": [
+          "OBS-CW10",
+          "OBS-CW11",
+          "OBS-CW12"
+        ],
+        "expected_result": "Keep anonymous lease matches possible. Contractual access and remaining-undelivered MW cannot establish a 132 MW delivery by subtraction.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC06",
+        "fixture_kind": "inspected_observation",
+        "topic": "unsupported facility attribution",
+        "inputs": [
+          "SUBJECT-CW-KENILWORTH",
+          "EDGE-CW-UNNAMED-NAMED",
+          "EDGE-CW-EPOCH"
+        ],
+        "expected_result": "Do not join anonymous lease/delay or company-wide totals to a campus or uninspected Epoch record.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC07",
+        "fixture_kind": "inspected_observation",
+        "topic": "unresolved split",
+        "inputs": [
+          "OBS-GA-SPLIT-P27",
+          "OBS-GA-SPLIT-P36"
+        ],
+        "expected_result": "Keep split assertion and null parent/children. Treat possible repeat separately; do not assign MW or infer two physical split events.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC08",
+        "fixture_kind": "synthetic_case",
+        "topic": "phase splitting",
+        "inputs": "A hypothetical source explicitly says request A is split into A1 and A2, without changing total requested load.",
+        "expected_result": "Retain A as predecessor, identify the two source children, record reporting split and source-declared conservation. Do not count A plus both children as distinct new capacity.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC09",
+        "fixture_kind": "inspected_observation",
+        "topic": "request versus contract",
+        "inputs": "OBS-GA-R2",
+        "expected_result": "Preserve Request for Service -> Contract for Electric Service as commercial-stage labels; populate neither connection nor operation.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC10",
+        "fixture_kind": "inspected_observation",
+        "topic": "forecast/actual substitution",
+        "inputs": "OBS-GA-R4",
+        "expected_result": "Keep Q2 2030 and Q2 2032 as forecast vintages, with source-reported +24 months. Actual initial-service date remains unknown.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC11",
+        "fixture_kind": "inspected_observation",
+        "topic": "explicit removal",
+        "inputs": "OBS-GA-R3",
+        "expected_result": "Keep prior announced 750 MW and disjunctive Withdrawn or No Bid reason; no physical decommissioning inference.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC12",
+        "fixture_kind": "inspected_observation",
+        "topic": "record creation versus request",
+        "inputs": "OBS-GA-CREATED",
+        "expected_result": "Store March 12 creation date and 2037 announced load. A new row is not proof of a new executed RFS, contract or physical asset.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC13",
+        "fixture_kind": "synthetic_case",
+        "topic": "missing-record interpretation",
+        "inputs": "Hypothetical later planned-additions table omits 68741 / CPP_1.",
+        "expected_result": "Record absent-from-this-artifact only after successful complete relevant read; no commissioning, cancellation or retirement inference. Access errors are acquisition failures, not absences.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC14",
+        "fixture_kind": "synthetic_case",
+        "topic": "generator composite key",
+        "inputs": "Two hypothetical plants both use Generator ID CPP_1.",
+        "expected_result": "Keep separate plant+generator entities. Generator string alone, reporting company alone or matching MW cannot merge them.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC15",
+        "fixture_kind": "inspected_observation",
+        "topic": "different MW definitions",
+        "inputs": "OBS-EIA-UNIT",
+        "expected_result": "Preserve 22.2 MW net-summer and 26.1 MW nameplate as separate measures for one unit; do not add or replace either.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC16",
+        "fixture_kind": "inspected_observation",
+        "topic": "separate dates and unmet target",
+        "inputs": "OBS-EIA-UNIT",
+        "expected_result": "Retain July observation, August planned operation and September 24 release; TS is the observed source status. A passed target is not actual operation.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC17",
+        "fixture_kind": "inspected_observation",
+        "topic": "same-vintage repeat",
+        "inputs": [
+          "OBS-EIA-UNIT",
+          "OBS-EIA-ALIAS"
+        ],
+        "expected_result": "Two URL parameters with the same key, values and dates produce one resource observation and dependent locators.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC18",
+        "fixture_kind": "synthetic_case",
+        "topic": "linked status transition",
+        "inputs": "A hypothetical later dated official record explicitly reports commercial operation for 68741 / CPP_1.",
+        "expected_result": "Append linked operational assertion with evidence and valid date; keep the prior TS vintage. The transition adds no second generator capacity stock.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC19",
+        "fixture_kind": "inspected_documentary_boundary",
+        "topic": "generation versus load queues",
+        "inputs": "LBNL-QUEUED-2026-METADATA",
+        "expected_result": "Reject data-center waiting-time use: the population excludes load requests. Do not invent workbook columns or a unit crosswalk.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC20",
+        "fixture_kind": "inspected_documentary_boundary",
+        "topic": "attachment is not inspected status",
+        "inputs": "EIA-860M-LANDING-2026-09-24",
+        "expected_result": "August XLS link creates attachment metadata only; it does not overwrite the July keyed status.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC21",
+        "fixture_kind": "synthetic_case",
+        "topic": "one request, multiple generators",
+        "inputs": "A hypothetical documented queue authority/request Q maps to two EIA units.",
+        "expected_result": "Keep one request and two explicit component edges. Do not copy aggregate request MW into every unit or assume conserved capacity without evidence.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC22",
+        "fixture_kind": "synthetic_case",
+        "topic": "anonymous cross-vintage match",
+        "inputs": "A hypothetical later report contains REDACTED and the same 600 MW value.",
+        "expected_result": "Do not merge by redaction token, row order, dates or capacity; require a public anonymous identifier/crosswalk.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC23",
+        "fixture_kind": "inspected_documentary_boundary",
+        "topic": "rights scope",
+        "inputs": [
+          "RIGHTS-EIA",
+          "RIGHTS-LBNL",
+          "RIGHTS-SEC-ISSUER",
+          "RIGHTS-GA"
+        ],
+        "expected_result": "Treat read access separately from redistribution. Preserve EIA attribution and LBNL data-file-only scope; no full issuer/utility artifact grant inferred.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      },
+      {
+        "id": "AC24",
+        "fixture_kind": "inspected_observation",
+        "topic": "nested stages and eventual demand",
+        "inputs": "OBS-GA-PORTFOLIO",
+        "expected_result": "Ten reported online are included in twenty-one broken ground within thirty-one committed projects. Do not add overlapping counts, or 8,500 MW to 12,400 MW; eventual demand is not operating power.",
+        "execution_status": "specified_only_not_executed",
+        "review_status": "manual evidence walkthrough/design review only"
+      }
+    ],
+    "next_adapter_requirements": {
+      "recommended_slice": "One EIA plant+generator keyed observation with typed capacities, raw status, date roles, and linked future vintages.",
+      "reason": "Explicit composite identifier, status meaning and EIA reuse statement; avoids anonymous project matching and bulk inputs.",
+      "admission_status": "Design and inspected documentary fixture only; implementation, acquisition reliability and operational transition unverified.",
+      "input_scope": "Individually accessible official EIA Table 6.5 keyed record and source notes; later unit-specific official records only when directly inspected.",
+      "output_behavior": [
+        "Retain 68741 and CPP_1 as strings",
+        "Keep 22.2 net-summer MW and 26.1 nameplate MW distinct",
+        "Preserve July observation, August forecast and September 24 release",
+        "Keep TS history and add later explicit status without adding capacity",
+        "Retain query aliases as evidence representations, not new resources",
+        "No queue-to-load or AI allocation"
+      ],
+      "rights_gate": {
+        "EIA_table_text_data": "Applicable reuse statement inspected; carry publication-date acknowledgment; exclude protected material and marks.",
+        "optional_extensions": "Epoch current-data and LBNL 2026 data-file licenses do not establish issuer/Georgia full-artifact rights or all underlying-source rights."
+      },
+      "mapping_gate": "Read exact repository contracts and preserved inventory IDs before canonical mapping or compatibility claims.",
+      "capture_gate": [
+        "Capture original/resolved URL, retrieval timestamp, response metadata, raw source bytes and checksum on a successful read",
+        "Record source version and date precision separately from capture version",
+        "Retain source-native headers/keyed row/locators and extraction method/version",
+        "Treat failures as acquisition events rather than absence or status changes"
+      ],
+      "identity_gate": "A later official record must explicitly contain both EIA key components; queue and demand-side joins require documented source identifiers and scope bridges.",
+      "acceptance_execution": "24 specified cases; no executable behavioral tests, collector or adapter executed."
+    },
+    "validation": {
+      "behavioral_tests_executed": false,
+      "manual_walkthroughs": "Documentary evidence and proposed expected outcomes only; not executed tests.",
+      "artifact_checks": "JSON parsing and internal reference checks; separate PDF render/layout review. These checks do not validate physical capacity or repository compatibility."
+    }
+  }
+}
