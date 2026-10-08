@@ -15,6 +15,10 @@ Changes to source records or metrics must update the combined inventory and corr
 
 Third-party source rights are not changed by the repository's [data license](../LICENSE). Follow each source record's artifact-specific rights notes before any acquisition, retention or publication.
 
+## Current research review status
+
+The [dated original-session queue](../../docs/evidence-program/research/research-session-review-queue.md) records all 26 original reviews integrated at its verified 8 October 2026 cutoff, separately from evidence admission. The [follow-up queue](../../docs/evidence-program/research/followups/follow-up-queue.md) distinguishes three received ledger/report bundles from [four delivered research prompts](../../docs/evidence-program/research/followups/prompts/coverage-assessment.md); delivery does not confirm a launched session. Follow-up claims remain pending independent review, and earlier catalog/action snapshots are preserved.
+
 ## Additive research catalogs
 
 [Chinese safety-evaluation research](research/chinese-safety-evaluations.json) uses separate provisional ZHS IDs. It contains source metadata and scoped findings for seven proposed new families plus one CN020 enrichment; no prompt corpus, full result table or production-ready observation is embedded. All candidates remain unadmitted. The original 64-source inventory and audit are unchanged. Read the [review and proposed adapter specification](../../docs/evidence-program/research/chinese-safety-evaluations.md) before interpreting its fields.
