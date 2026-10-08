@@ -64,3 +64,7 @@ The [human-reliance catalog](research/human-reliance.json) adds five unadmitted 
 ## Forecast and survey reconstruction
 
 [Seven-collection catalog](research/forecast-surveys.json) and [guide](../../docs/evidence-program/research/forecast-surveys.md) preserve three existing-family enrichments and four new named study/forecast collections, all-fourteen-catalog comparison and eight bounded prompts. A small CC BY 4.0 LEAP instrument/table derivative lives under tools/, outside this data/CC0 dedication. Source metadata and factual summaries do not relicense source reports, unpublished responses or model exports. No pooled forecast, unique-participant sum, live collection or canonical admission.
+
+## Incident and near-miss primary evidence
+
+[Eight-collection catalog](research/incidents-near-misses.json) and [guide](../../docs/evidence-program/research/incidents-near-misses.md) compare all fifteen earlier catalogs, reuse existing NHTSA and OpenAI claims, and distinguish source/artifact/event/claim novelty. A bounded offline two-change NHTSA fact ledger sits under tools/ with a scoped notice. No raw narratives, sensitive patient/personnel records, source corpus, operational collection, canonical import or deployment.
