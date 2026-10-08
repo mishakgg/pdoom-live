@@ -69,3 +69,7 @@ The [research guide](research/persuasion-information.md) and [catalog](../../dat
 ## Robotics and physical-world capability
 
 The [research guide](research/robotics-physical.md) and [catalog](../../data/evidence-program/research/robotics-physical.json) review five physical-robotics families against all eight prior catalogs and the frozen 64. A bounded manual BARN table validator keeps all 60 reported outcomes, tied-credit ambiguity, source averages and null reset/practice/checkpoint facts. It is not an HTML extractor or physical reproduction. A separately licensed fixture under tools/ retains CC BY 4.0. Source controls, collection and canonical admission remain disabled. The [dated queue](research/research-session-review-queue.md) records this ninth review separately.
+
+## Training-data availability and feedback loops
+
+The [guide](research/training-data-feedback.md) and [catalog](../../data/evidence-program/research/training-data-feedback.json) review five collections against the frozen64 and nine prior catalogs. A two-file, three-crawl Common Crawl reader preserves page/URL/estimated-digest semantics and unknown-language residuals, with synthetic-only public CI and separate private exact-artifact acceptance. FineWeb2 release denominators, experimental reference-data provenance, code/manuscript differences and layered rights remain qualified. Nothing is admitted or collected operationally. The [dated queue](research/research-session-review-queue.md) records this tenth review separately.
