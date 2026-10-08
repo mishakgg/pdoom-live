@@ -590,6 +590,11 @@ class OrganizationalSafetyTests(unittest.TestCase):
             self.check_queue(self.queue)
 
     def test_research_queue_premature_merge_rejected(self):
+        from test_open_model_queue import synthetic_snapshot
+        self.queue = synthetic_snapshot(25, 1)
+        valid = self.check_queue(self.queue)
+        self.assertEqual(valid['research_queue_reviews_integrated_at_snapshot'], 25)
+        self.assertEqual(valid['research_queue_reviews_prepared_at_snapshot'], 1)
         self.queue = self.queue.replace('| Review prepared; integration pending |', '| Review integrated |')
         with self.assertRaisesRegex(ValueError, 'promote unfinished'):
             self.check_queue(self.queue)

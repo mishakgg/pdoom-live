@@ -1,10 +1,10 @@
 # Research session review queue
 
-Status snapshot: 8 October 2026, 11:39:15 UTC. This is a historical source-review handoff snapshot for sessions 24–26, before their final batch publication.
+Status snapshot: 8 October 2026, 11:54:24 UTC. All 26 original reviews are integrated; this is a dated repository status, not live source admission or collection status.
 
-The 26 research sessions below are listed in arrival order. Substantive source reviews proceed sequentially; separately completed reviews may share a publication batch. Twenty-three reviews are integrated, and sessions 24–26 have completed separate source-review handoffs prepared for the final independent batch review and integration. All 26 original source reviews are complete; repository publication and post-merge checks for the final three remain pending. Final document assembly and publication occur after this cutoff. The batch is not yet merged at this snapshot.
+The 26 research sessions below are listed in arrival order. Their substantive source reviews and repository integration are complete. Sessions 24–26 were merged in [PR 330](https://github.com/mishakgg/pdoom-live/pull/330); all four post-merge checks for the exact merge commit were observed successful at this cutoff. Open source-specific holds remain open. Three separately received follow-up bundles and four newly delivered prompts are tracked in the [follow-up queue](followups/follow-up-queue.md); they are not additional original sessions.
 
-Snapshot counts: 23 integrated; 3 prepared or awaiting CI; 0 queued.
+Snapshot counts: 26 integrated; 0 prepared or awaiting CI; 0 queued.
 
 ## Status definitions
 
@@ -40,9 +40,9 @@ Snapshot counts: 23 integrated; 3 prepared or awaiting CI; 0 queued.
 | 21 | Mitigation effectiveness | Review integrated | [Research guide](mitigation-effectiveness.md) · [PR 329](https://github.com/mishakgg/pdoom-live/pull/329) | Separate source review complete with explicit holds; 7 actions and 7 bounded prompts; implementation deferred |
 | 22 | Negative results and replications | Review integrated | [Research guide](negative-replications.md) · [PR 329](https://github.com/mishakgg/pdoom-live/pull/329) | Separate source review complete with explicit holds; 8 actions and 8 bounded prompts; implementation deferred |
 | 23 | Compute supply-chain bottlenecks | Review integrated | [Research guide](compute-supply-chain.md) · [PR 329](https://github.com/mishakgg/pdoom-live/pull/329) | Seven primary-supported collections and one SK hynix rights-only candidate; 8 actions and 8 bounded prompts; implementation deferred |
-| 24 | Chinese governance in practice | Review prepared; integration pending | [Research guide](chinese-governance.md) · [Catalog](../../../data/evidence-program/research/chinese-governance.json) | Separate source review complete with explicit holds; 6 actions and 6 bounded prompts; implementation deferred |
-| 25 | Benchmark drift and contamination | Review prepared; integration pending | [Research guide](benchmark-drift.md) · [Catalog](../../../data/evidence-program/research/benchmark-drift.json) | Separate source review complete with explicit holds; 8 actions and 8 bounded prompts; implementation deferred |
-| 26 | Electricity and deployment bottlenecks | Review prepared; integration pending | [Research guide](electricity-deployment.md) · [Catalog](../../../data/evidence-program/research/electricity-deployment.json) | Separate source review complete with explicit holds; 8 actions and 8 bounded prompts; implementation deferred |
+| 24 | Chinese governance in practice | Review integrated | [Research guide](chinese-governance.md) · [Catalog](../../../data/evidence-program/research/chinese-governance.json) · [PR 330](https://github.com/mishakgg/pdoom-live/pull/330) | Separate source review complete with explicit holds; 6 actions and 6 bounded prompts; implementation deferred |
+| 25 | Benchmark drift and contamination | Review integrated | [Research guide](benchmark-drift.md) · [Catalog](../../../data/evidence-program/research/benchmark-drift.json) · [PR 330](https://github.com/mishakgg/pdoom-live/pull/330) | Separate source review complete with explicit holds; 8 actions and 8 bounded prompts; implementation deferred |
+| 26 | Electricity and deployment bottlenecks | Review integrated | [Research guide](electricity-deployment.md) · [Catalog](../../../data/evidence-program/research/electricity-deployment.json) · [PR 330](https://github.com/mishakgg/pdoom-live/pull/330) | Separate source review complete with explicit holds; 8 actions and 8 bounded prompts; implementation deferred |
 
 ## Open actions for reviewed sessions
 
@@ -262,7 +262,7 @@ Retain eight new documentary collection families and prioritize TSMC, Micron and
 
 ### Session 24 Chinese governance in practice
 
-The [separate review](chinese-governance.md) and [JSON record](../../../data/evidence-program/research/chinese-governance.json) document the completed source-review handoff. Independent batch review and publication remained pending at this historical cutoff.
+The [separate review](chinese-governance.md) and [JSON record](../../../data/evidence-program/research/chinese-governance.json) were merged together in [PR 330](https://github.com/mishakgg/pdoom-live/pull/330) at [972f2bb](https://github.com/mishakgg/pdoom-live/commit/972f2bbdc3e123c83ce9ea695c9f265fe6720032). All four post-merge checks were observed successful at 11:54:24 UTC on 8 October 2026. Research admission and unresolved evidence holds are unchanged.
 
 Retain six research collections: five new families plus CN023 provincial enrichment. Prioritize enforcement/reinspection, CNCERT organized testing and procurement corrections/awards. Institutional reports do not establish completed compliance, independent audit or model safety. One CNCERT specification remains deferred; no operational admission.
 
@@ -271,7 +271,7 @@ Retain six research collections: five new families plus CN023 provincial enrichm
 
 ### Session 25 Benchmark drift and contamination
 
-The [separate review](benchmark-drift.md) and [JSON record](../../../data/evidence-program/research/benchmark-drift.json) document the completed source-review handoff. Independent batch review and publication remained pending at this historical cutoff.
+The [separate review](benchmark-drift.md) and [JSON record](../../../data/evidence-program/research/benchmark-drift.json) were merged together in [PR 330](https://github.com/mishakgg/pdoom-live/pull/330) at [972f2bb](https://github.com/mishakgg/pdoom-live/commit/972f2bbdc3e123c83ce9ea695c9f265fe6720032). All four post-merge checks were observed successful at 11:54:24 UTC on 8 October 2026. Research admission and unresolved evidence holds are unchanged.
 
 Retain eight qualified research collections: five new families and three enrichments. Prioritize EvalPlus revision provenance, lm-eval measurement changes and LiveBench retroactive revisions. Preserve measurement identity and evidence-specific contamination semantics; one EvalPlus mapping specification remains deferred, with no benchmark run or operational admission.
 
@@ -280,7 +280,7 @@ Retain eight qualified research collections: five new families and three enrichm
 
 ### Session 26 Electricity and deployment bottlenecks
 
-The [separate review](electricity-deployment.md) and [JSON record](../../../data/evidence-program/research/electricity-deployment.json) document the completed source-review handoff. Independent batch review and publication remained pending at this historical cutoff.
+The [separate review](electricity-deployment.md) and [JSON record](../../../data/evidence-program/research/electricity-deployment.json) were merged together in [PR 330](https://github.com/mishakgg/pdoom-live/pull/330) at [972f2bb](https://github.com/mishakgg/pdoom-live/commit/972f2bbdc3e123c83ce9ea695c9f265fe6720032). All four post-merge checks were observed successful at 11:54:24 UTC on 8 October 2026. Research admission and unresolved evidence holds are unchanged.
 
 Retain eight new documentary families. Prioritize ERCOT, Georgia PSC and EirGrid for analytical value while retaining EirGrid row/rights holds and blocked ERCOT August/Batch Zero values as unverified. EIA, CSO tables and the LBNL data file have the clearest scoped reuse basis. One conditional two-PDF ERCOT specification remains deferred; no physical-capacity or operational-compute series is admitted.
 
@@ -297,4 +297,4 @@ This index records review progress and links to repository-native research guide
 
 ## Snapshot maintenance
 
-This file records status at its stated time, not live main/CI state. After independent review, merge and post-merge checks, a later authorized update may record a new dated snapshot with verified PR/commit evidence. Until then, sessions 24–26 remain prepared in this historical snapshot even if this document itself is subsequently merged. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.
+This file records status at its stated time, not live main/CI state. The 26/0/0 snapshot above is backed by the verified final-batch merge and post-merge checks. Later reviewed changes should record their own dated status and PR/commit evidence, with follow-up work maintained separately. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.

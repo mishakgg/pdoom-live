@@ -2,6 +2,10 @@
 
 The source research, repository audit, proposed dataset contract, Chinese preparation, modelling methodology and implementation plan are integrated here as readable documentation, native JSON/CSV and executable offline checks. They extend the project's research and design surface; they are not imported production evidence.
 
+## Current research review status
+
+The [dated original-session queue](research/research-session-review-queue.md) records all 26 original reviews integrated at its verified 8 October 2026 cutoff, separately from evidence admission. The [follow-up queue](research/followups/follow-up-queue.md) distinguishes three received ledger/report bundles from [four delivered research prompts](research/followups/prompts/coverage-assessment.md); delivery does not confirm a launched session. Follow-up claims remain pending independent review, and earlier catalog/action snapshots are preserved.
+
 ## Sequential deliverables
 
 | Step | Status | Readable result | Native companions |
