@@ -1,12 +1,12 @@
 {
   "title": "Follow-up research queue",
-  "snapshot_at": "2026-10-08T20:19:35Z",
+  "snapshot_at": "2026-10-08T21:10:00Z",
   "original_session_count": 26,
   "original_session_queue": "docs/evidence-program/research/research-session-review-queue.md",
-  "received_bundle_count": 7,
-  "received_file_count": 18,
+  "received_bundle_count": 10,
+  "received_file_count": 26,
   "new_prompt_count": 7,
-  "distinction": "Three earlier reviewed bundles and the four received deep-session A/labor, B/experimental, C/safeguard and D/model-tariff research deltas retain distinct provenance. D is merged and post-merge verified at the recorded commit. Documentary integration remains separate from source admission, collection and operational evidence.",
+  "distinction": "Three earlier reviewed bundles and four completed deep-session research deltas A–D retain distinct provenance and their recorded merge proofs. Three further deep-session results E/compute-power, F/Chinese safety and G/incidents-enforcement are received in that exact order; E source review is active and F/G are queued. Receipt does not establish source truth, completed external execution, source admission or collection.",
   "bundles": [
     {
       "sequence": 1,
@@ -606,6 +606,252 @@
         "evidence-program": "https://github.com/mishakgg/pdoom-live/actions/runs/37837947224/job/113519719982",
         "test": "https://github.com/mishakgg/pdoom-live/actions/runs/37837947072/job/113519719512"
       }
+    },
+    {
+      "sequence": 8,
+      "title": "Compute and power capacity accounting",
+      "source_reported_title": "Deep Session 7: Compute and power capacity accounting",
+      "slug": "deep-compute-power",
+      "submission_id": "bundle-e",
+      "prompt_number": 7,
+      "arrival_order": 5,
+      "evening_arrival_order": 1,
+      "received_at": "2026-10-08T20:56:07Z",
+      "original_sessions": [
+        23,
+        26
+      ],
+      "collection_ids": [
+        "SCB008",
+        "GL003",
+        "EDB002",
+        "EDB004",
+        "EDB007"
+      ],
+      "prompt_path": "docs/evidence-program/research/followups/prompts/07-resolve-compute-power-stage-accounting.txt",
+      "prompt_sha256": "0988e729b4559a94afb4c8df1aa5704ce0996f387f955106c072ff06342ee8a6",
+      "prompt_mapping_basis": "Exact ledger title and matching content; original initiating prompt not included; linked prompt hash binds the previously delivered repository prompt, not a verified initiating prompt used by the external session.",
+      "received_files": 3,
+      "received_bytes": 273568,
+      "artifacts": [
+        {
+          "artifact_role": "Complete pasted research answer / narrative summary",
+          "submitted_filename": "Yapıştırılan metin(20261008-205512).txt",
+          "bytes": 14679,
+          "sha256": "fd17e6e40a3f979acfb6b0dd6a7c38436bdfdee2ebe5eace459b350483331734",
+          "hash_scope": "entire_submitted_file_bytes",
+          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+        },
+        {
+          "artifact_role": "Eight-page decision report PDF",
+          "submitted_filename": "compute_power_capacity_decision_report_2026-10-08(1).pdf",
+          "bytes": 102418,
+          "sha256": "1d1baab9b965a47ed20dc07cd15508b86c09416e1ee3b237fbd7084a6617cb1c",
+          "hash_scope": "entire_submitted_file_bytes",
+          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+        },
+        {
+          "artifact_role": "Complete source-native compute/power evidence ledger",
+          "submitted_filename": "compute_power_capacity_ledger_2026-10-08(1).json",
+          "bytes": 156471,
+          "sha256": "e34b1e3e0ff27e07a02a76bf2b503c914f9a92313c88381643b03cd217d8555a",
+          "hash_scope": "entire_submitted_file_bytes",
+          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+        }
+      ],
+      "missing_named_deliverable_companions": [],
+      "narrative_companion_note": "Both named ledger and PDF companions supplied; original filenames have upload suffix (1).",
+      "intake_manifest_sha256": "c8c4cd8277d292defef65f646dc03d8a94880e4a6c2f08411865590e0e84abb3",
+      "review_status": "source_review_in_progress",
+      "review_started": true,
+      "review_complete": false,
+      "review_after": [
+        "bundle-d"
+      ],
+      "integration_status": "receipt_only_no_substantive_delta_included",
+      "substantive_findings_included": false,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "canonical_contract_mapping": "unverified_pending_separate_source_review",
+      "source_reported_content_counts": {
+        "artifacts": 18,
+        "subjects": 18,
+        "observations": 26,
+        "assertions": 34,
+        "relationships": 22,
+        "unresolved_links": 9,
+        "acceptance_cases": 24
+      },
+      "source_reported_acceptance_cases_executed": false,
+      "source_reported_repository_context": {
+        "status": "supplied_baseline_uninspected",
+        "supplied_planning_baseline": "87dda3d74f9f9874e82d83d1628b53f9da4b5526",
+        "inspected_commit": null,
+        "repository_schema_validation": "not_run",
+        "canonical_mapping": "deferred_unverified",
+        "interpretation": "Historical external-session report only. The supplied commit was explicitly uninspected; no current access denial or missing repository files are inferred. Current intake-patch blob verification is a separate activity."
+      },
+      "review_claim_limit": "Receipt, file integrity, title mapping and source-native counts only. External findings, source-byte claims, acceptance cases, rights and canonical mappings have not been independently cleared by this patch. Receipt is not verification of completed external execution.",
+      "next_action": "Complete bounded independent source review while retaining reported limitations; publish any reviewed delta separately."
+    },
+    {
+      "sequence": 9,
+      "title": "Chinese safety-evaluation comparability",
+      "source_reported_title": "Deep Session 5 — Chinese safety-evaluation comparability",
+      "slug": "deep-chinese-safety-comparability",
+      "submission_id": "bundle-f",
+      "prompt_number": 5,
+      "arrival_order": 6,
+      "evening_arrival_order": 2,
+      "received_at": "2026-10-08T20:56:18Z",
+      "original_sessions": [
+        1
+      ],
+      "collection_ids": [
+        "ZHS001",
+        "ZHS006",
+        "ZHS004"
+      ],
+      "prompt_path": "docs/evidence-program/research/followups/prompts/05-resolve-chinese-evaluation-comparability.txt",
+      "prompt_sha256": "2e1bb844fb0944ac4f73046accb1e9215e5f675ab43eadd597d5989e5fd774c0",
+      "prompt_mapping_basis": "Exact ledger title and matching content; original initiating prompt not included; linked prompt hash binds the previously delivered repository prompt, not a verified initiating prompt used by the external session.",
+      "received_files": 2,
+      "received_bytes": 157516,
+      "artifacts": [
+        {
+          "artifact_role": "Complete pasted narrative decision report; original export filename/format unknown",
+          "submitted_filename": "Yapıştırılan metin(20261008-205609).txt",
+          "bytes": 13689,
+          "sha256": "cb0971261b332a6a571f7fa7d86ef9ac46780dbc8992474176d42ecb3940d040",
+          "hash_scope": "entire_submitted_file_bytes",
+          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+        },
+        {
+          "artifact_role": "Complete source-native Chinese safety comparability assertion/lineage ledger",
+          "submitted_filename": "chinese-safety-comparability-ledger(1).json",
+          "bytes": 143827,
+          "sha256": "e7c31e6702512085f907150d32d7bb37ee49f2861fffb4affe225001feed9395",
+          "hash_scope": "entire_submitted_file_bytes",
+          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+        }
+      ],
+      "missing_named_deliverable_companions": [],
+      "narrative_companion_note": "Complete narrative supplied as text. No separate PDF named; original report export name/format unknown, so no missing PDF inferred.",
+      "intake_manifest_sha256": "c8c4cd8277d292defef65f646dc03d8a94880e4a6c2f08411865590e0e84abb3",
+      "review_status": "source_review_queued",
+      "review_started": false,
+      "review_complete": false,
+      "review_after": [
+        "bundle-e"
+      ],
+      "integration_status": "receipt_only_no_substantive_delta_included",
+      "substantive_findings_included": false,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "canonical_contract_mapping": "unverified_pending_separate_source_review",
+      "source_reported_content_counts": {
+        "artifacts": 15,
+        "assertions": 40,
+        "lineage_edges": 17,
+        "comparability_decisions": 18,
+        "acceptance_cases": 20,
+        "rights_records": 9
+      },
+      "source_reported_acceptance_cases_executed": false,
+      "source_reported_repository_context": {
+        "status": "supplied_baseline_uninspected",
+        "supplied_planning_baseline": "87dda3d74f9f9874e82d83d1628b53f9da4b5526",
+        "inspected_commit": null,
+        "repository_schema_validation": "not_run",
+        "canonical_mapping": "deferred_unverified",
+        "interpretation": "Historical external-session report only. The supplied commit was explicitly uninspected; no current access denial or missing repository files are inferred. Current intake-patch blob verification is a separate activity."
+      },
+      "review_claim_limit": "Receipt, file integrity, title mapping and source-native counts only. External findings, source-byte claims, acceptance cases, rights and canonical mappings have not been independently cleared by this patch. Receipt is not verification of completed external execution.",
+      "next_action": "Begin bounded independent source review after bundle-e; retain receipt-only status until reviewed."
+    },
+    {
+      "sequence": 10,
+      "title": "Incident corrections and enforcement outcomes",
+      "source_reported_title": "Deep Session 6: Incident corrections and enforcement outcomes",
+      "slug": "deep-incident-enforcement",
+      "submission_id": "bundle-g",
+      "prompt_number": 6,
+      "arrival_order": 7,
+      "evening_arrival_order": 3,
+      "received_at": "2026-10-08T20:56:57Z",
+      "original_sessions": [
+        16,
+        24
+      ],
+      "collection_ids": [
+        "INM003",
+        "INM006",
+        "CGP001"
+      ],
+      "prompt_path": "docs/evidence-program/research/followups/prompts/06-trace-incident-enforcement-outcomes.txt",
+      "prompt_sha256": "489f98984107d5084caece845c7671b74ac54444c468ba677e653c34f55d8415",
+      "prompt_mapping_basis": "Exact ledger title and matching content; original initiating prompt not included; linked prompt hash binds the previously delivered repository prompt, not a verified initiating prompt used by the external session.",
+      "received_files": 3,
+      "received_bytes": 290926,
+      "artifacts": [
+        {
+          "artifact_role": "Complete pasted research answer / narrative summary",
+          "submitted_filename": "Yapıştırılan metin(20261008-205538).txt",
+          "bytes": 13465,
+          "sha256": "8868b94fbb7cf2463509a9ad12bcd03e814acca521e53e2754b037a7c35c791d",
+          "hash_scope": "entire_submitted_file_bytes",
+          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+        },
+        {
+          "artifact_role": "Five-page decision report PDF",
+          "submitted_filename": "deep-session-6-decision-report(1).pdf",
+          "bytes": 101025,
+          "sha256": "c136b3086e3c4fa7d137ceea6738e6bec609f4e760edbb6ac3dcfd1af84f5387",
+          "hash_scope": "entire_submitted_file_bytes",
+          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+        },
+        {
+          "artifact_role": "Complete source-native incident/enforcement assertion ledger",
+          "submitted_filename": "deep-session-6-assertion-ledger(1).json",
+          "bytes": 176436,
+          "sha256": "fce6e5f2d8b512fa7bc3e43949f50b7ac2839162120a38d7085b7ed5cb0333f5",
+          "hash_scope": "entire_submitted_file_bytes",
+          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+        }
+      ],
+      "missing_named_deliverable_companions": [],
+      "narrative_companion_note": "Both named ledger and PDF companions supplied; original filenames have upload suffix (1).",
+      "intake_manifest_sha256": "c8c4cd8277d292defef65f646dc03d8a94880e4a6c2f08411865590e0e84abb3",
+      "review_status": "source_review_queued",
+      "review_started": false,
+      "review_complete": false,
+      "review_after": [
+        "bundle-f"
+      ],
+      "integration_status": "receipt_only_no_substantive_delta_included",
+      "substantive_findings_included": false,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "canonical_contract_mapping": "unverified_pending_separate_source_review",
+      "source_reported_content_counts": {
+        "artifacts": 20,
+        "assertions": 43,
+        "relationships": 29,
+        "unresolved_links": 17,
+        "acceptance_cases": 20,
+        "event_and_document_chains": 7
+      },
+      "source_reported_acceptance_cases_executed": false,
+      "source_reported_repository_context": {
+        "status": "supplied_baseline_uninspected",
+        "supplied_planning_baseline": "87dda3d74f9f9874e82d83d1628b53f9da4b5526",
+        "inspected_commit": null,
+        "repository_schema_validation": "not_run",
+        "canonical_mapping": "deferred_unverified",
+        "interpretation": "Historical external-session report only. The supplied commit was explicitly uninspected; no current access denial or missing repository files are inferred. Current intake-patch blob verification is a separate activity."
+      },
+      "review_claim_limit": "Receipt, file integrity, title mapping and source-native counts only. External findings, source-byte claims, acceptance cases, rights and canonical mappings have not been independently cleared by this patch. Receipt is not verification of completed external execution.",
+      "next_action": "Begin bounded independent source review after bundle-f; retain receipt-only status until reviewed."
     }
   ],
   "new_prompts": [
@@ -733,11 +979,11 @@
       "sequence": 5,
       "title": "Resolve Chinese safety-evaluation comparability",
       "path": "docs/evidence-program/research/followups/prompts/05-resolve-chinese-evaluation-comparability.txt",
-      "status": "prompt_delivered_launch_unconfirmed",
+      "status": "research_output_received_source_review_queued",
       "delivered_at": "2026-10-08T15:17:06Z",
       "delivery_time_precision": "second",
       "session_launch_confirmed": false,
-      "research_output_received": false,
+      "research_output_received": true,
       "collection_ids": [
         "ZHS001",
         "ZHS006",
@@ -748,17 +994,24 @@
       "content_preserved_from_frozen_prompt": true,
       "delivery_basis": "Prompt delivery confirmed; exact frozen TXT bytes preserved. Chat-body bytes were not independently read back for this repository update.",
       "session_execution_status": "unknown",
-      "next_action": "Await a separately supplied research result; receipt will be logged before substantive review."
+      "next_action": "Begin bounded independent source review after bundle-e; retain receipt-only status until reviewed.",
+      "prior_receipt_status_preserved": "prompt_delivered_launch_unconfirmed",
+      "submission_id": "bundle-f",
+      "received_at": "2026-10-08T20:56:18Z",
+      "review_status": "source_review_queued",
+      "integration_status": "receipt_only_no_substantive_delta_included",
+      "output_prompt_mapping_basis": "Session title and matching content; exact external initiating prompt not supplied.",
+      "execution_verification_note": "Output receipt does not establish independently verified launch history, completed external execution or executed acceptance cases."
     },
     {
       "sequence": 6,
       "title": "Trace incident corrections and enforcement outcomes",
       "path": "docs/evidence-program/research/followups/prompts/06-trace-incident-enforcement-outcomes.txt",
-      "status": "prompt_delivered_launch_unconfirmed",
+      "status": "research_output_received_source_review_queued",
       "delivered_at": "2026-10-08T15:18:42Z",
       "delivery_time_precision": "second",
       "session_launch_confirmed": false,
-      "research_output_received": false,
+      "research_output_received": true,
       "collection_ids": [
         "INM003",
         "INM006",
@@ -769,17 +1022,24 @@
       "content_preserved_from_frozen_prompt": true,
       "delivery_basis": "Prompt delivery confirmed; exact frozen TXT bytes preserved. Chat-body bytes were not independently read back for this repository update.",
       "session_execution_status": "unknown",
-      "next_action": "Await a separately supplied research result; receipt will be logged before substantive review."
+      "next_action": "Begin bounded independent source review after bundle-f; retain receipt-only status until reviewed.",
+      "prior_receipt_status_preserved": "prompt_delivered_launch_unconfirmed",
+      "submission_id": "bundle-g",
+      "received_at": "2026-10-08T20:56:57Z",
+      "review_status": "source_review_queued",
+      "integration_status": "receipt_only_no_substantive_delta_included",
+      "output_prompt_mapping_basis": "Session title and matching content; exact external initiating prompt not supplied.",
+      "execution_verification_note": "Output receipt does not establish independently verified launch history, completed external execution or executed acceptance cases."
     },
     {
       "sequence": 7,
       "title": "Resolve compute and power capacity accounting",
       "path": "docs/evidence-program/research/followups/prompts/07-resolve-compute-power-stage-accounting.txt",
-      "status": "prompt_delivered_launch_unconfirmed",
+      "status": "research_output_received_source_review_in_progress",
       "delivered_at": "2026-10-08T15:20:15Z",
       "delivery_time_precision": "second",
       "session_launch_confirmed": false,
-      "research_output_received": false,
+      "research_output_received": true,
       "collection_ids": [
         "SCB008",
         "GL003",
@@ -792,7 +1052,14 @@
       "content_preserved_from_frozen_prompt": true,
       "delivery_basis": "Prompt delivery confirmed; exact frozen TXT bytes preserved. Chat-body bytes were not independently read back for this repository update.",
       "session_execution_status": "unknown",
-      "next_action": "Await a separately supplied research result; receipt will be logged before substantive review."
+      "next_action": "Complete bounded independent source review while retaining reported limitations; publish any reviewed delta separately.",
+      "prior_receipt_status_preserved": "prompt_delivered_launch_unconfirmed",
+      "submission_id": "bundle-e",
+      "received_at": "2026-10-08T20:56:07Z",
+      "review_status": "source_review_in_progress",
+      "integration_status": "receipt_only_no_substantive_delta_included",
+      "output_prompt_mapping_basis": "Session title and matching content; exact external initiating prompt not supplied.",
+      "execution_verification_note": "Output receipt does not establish independently verified launch history, completed external execution or executed acceptance cases."
     }
   ],
   "operational_admission": "not_admitted",
@@ -800,19 +1067,60 @@
   "canonical_contract_mapping": "pending_separate_review",
   "original_reviews_integrated": 26,
   "original_queue_integration_commit": "972f2bbdc3e123c83ce9ea695c9f265fe6720032",
-  "snapshot_scope": "Progress reconciliation after the verified D research merge. Seven reviewed deltas retain their source-specific holds; A/B/C integration history remains unchanged. Prompts 5–7 retain their prior unknown-launch/no-result receipt states. No canonical admission, live collection or automatic price/lifecycle join is established.",
+  "snapshot_scope": "Receipt-only progress update after E/F/G arrived. All 26 original reviews and seven previously reviewed follow-up deltas retain their scientific content, source IDs, holds and integration history. No E/F/G substantive findings are adopted.",
   "reviewed_bundle_count": 7,
   "reviewed_findings_included": true,
   "unreviewed_supplied_claims_adopted": false,
   "claim_adoption_rule": "Only independently reviewed bounded findings and explicit limitations from the seven linked deltas are included. Receipt hashes, prompt delivery, structural schema acceptance and candidate inclusion do not establish source truth, lossless canonical mapping, execution or admission.",
   "original_queue_reconciliation_commit": "8b6fa1f9b389a625fa44c0656e3de47c509bff9a",
-  "deep_result_bundle_count": 4,
-  "deep_result_file_count": 12,
+  "deep_result_bundle_count": 7,
+  "deep_result_file_count": 20,
   "intake_snapshot_at": "2026-10-08T15:13:31Z",
   "intake_index_sha256": "9abc8254d73a7ed115adec19edee99954b56484749b8ddbfa2ea90bbbe8f97a3",
-  "review_order": "bundle-a (prompt 1), bundle-b (prompt 2), bundle-c (prompt 4), bundle-d (prompt 3); review in arrival order.",
+  "review_order": "bundle-a (prompt 1), bundle-b (prompt 2), bundle-c (prompt 4), bundle-d (prompt 3), bundle-e (prompt 7), bundle-f (prompt 5), bundle-g (prompt 6); review in arrival order.",
   "repository_context_for_this_queue_update": {
+    "base_commit": "f4320b6a1b6d5fac08efaa306768c487398977d9",
+    "base_tree_sha": "11c5f32815800d665c70af7bb7322738ec7bbb84",
+    "scope": "Current repository blobs verified for this receipt-only patch. This does not replace the uninspected external-session baseline or establish source/contract verification for E/F/G. Previously reviewed scientific packages and all historical source-review pins are unchanged."
+  },
+  "pending_source_review_bundle_count": 3,
+  "active_source_review_bundle_count": 1,
+  "queued_source_review_bundle_count": 2,
+  "previous_repository_context_for_queue_update": {
     "base_commit": "78ded6f5a1351dc44722d749479d213afeaf6784",
     "scope": "Hash-verified current base after D research PR 343. Prior source-review and candidate-integration pins remain historical; scientific packages, catalogs, contracts, inventory and submitted context are unchanged."
+  },
+  "evening_intake": {
+    "received_batch_order": [
+      "bundle-e",
+      "bundle-f",
+      "bundle-g"
+    ],
+    "mapped_prompt_order": [
+      7,
+      5,
+      6
+    ],
+    "first_received_at": "2026-10-08T20:56:07Z",
+    "last_received_at": "2026-10-08T20:56:57Z",
+    "intake_sealed_at": "2026-10-08T21:04:13.711861+00:00",
+    "intake_index_sha256": "c8c4cd8277d292defef65f646dc03d8a94880e4a6c2f08411865590e0e84abb3",
+    "original_file_count": 8,
+    "original_bytes": 722010,
+    "source_native_assertion_count": 117,
+    "specified_unexecuted_acceptance_cases": 64,
+    "count_scope": "Counts describe received source-native ledgers; they are not verified findings, admitted observations or executed test passes.",
+    "duplicate_check": {
+      "prior_local_files_checked": 11185,
+      "prior_exact_byte_duplicates": 0,
+      "duplicate_hashes_within_new_originals": 0,
+      "scope": "Exact-byte comparison against prior local dataset-plan files; not a semantic or exhaustive external duplicate assessment."
+    },
+    "missing_named_deliverable_companions": [],
+    "original_source_contents_published": false,
+    "private_identity_metadata_published": false,
+    "scientific_findings_adopted": false,
+    "source_acceptance_cases_executed": false,
+    "note": "Earlier intake_snapshot_at and intake_index_sha256 fields retain the A–D historical receipt. This separate record binds only E/F/G."
   }
 }
