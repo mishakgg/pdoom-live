@@ -2,6 +2,10 @@
 
 Reviewed 8 October 2026. One combined submitted report, seven collections: five candidate source families and two enrichments. This is curated research and bounded offline preparation, not source admission. The frozen 64-source inventory and canonical contracts remain unchanged.
 
+## Follow-up qualification: 8 October 2026
+
+The [safeguard and evaluator lineage follow-up](followups/safeguard-lineage-review.md) ([JSON](../../../data/evidence-program/research/followups/safeguard-lineage-review.json)) adds an independently reviewed research delta for deep prompt 4 / bundle C. ASI001 remains a benchmark/dependency identity and a separate prior metadata-only observation of one clean archived record. It does not pin CaMeL’s evaluator runtime, paper-production pipeline, error/completion denominator or safeguard effectiveness. A dependency floor and static policy-code revision cannot establish the historical execution environment. Source-described CaMeL, AISI and Apollo runs remain separate from reviewer-observed execution; none was executed here. The earlier clean-artifact observation is preserved without publishing a raw trace or extending it to attack resistance. All six hold groups remain: CaMeL production/runtime, AISI final retest, Apollo original correspondence, artifact rights, lossless mapping/admission and representativeness. Historical text and catalog bytes below remain unchanged; current action dispositions are in the linked follow-up. No canonical admission or live collection is established.
+
 ## Decision and scope
 
 Prioritize AgentDojo metadata, NHTSA revision/filing evidence and AIxCC organizer corrections. Their value is different: task observations, administrative evidence and defensive contest results cannot be pooled into a risk rate, universal autonomy score or p(doom).

@@ -1,0 +1,108 @@
+{
+  "record_type": "documentary_relationship_specification",
+  "status": "research_ledger_only_not_native_schema",
+  "repository_commit": "58de347f57cf37dd9e6495b433b45b3501cc3de1",
+  "scope": "Documentary lineage and aggregate interpretation only. No new contract, adapter, collector, attack execution, or admitted record.",
+  "native_endpoints": {
+    "artifact": "source_artifact record exact (id,revision), if an actual artifact is established",
+    "model": "model_version record exact (id,revision), with checkpoint certainty preserved",
+    "evaluation": "safety_evaluation record exact (id,revision), only if required fields can be supported"
+  },
+  "ledger_edge_fields": [
+    "edge_key",
+    "edge_type",
+    "from_assertion_key",
+    "to_assertion_key_or_null",
+    "evidence_artifact_key",
+    "evidence_locator",
+    "status",
+    "null_reason",
+    "evaluator_role",
+    "model_checkpoint_identity_and_certainty",
+    "safeguard_configuration_before_after",
+    "scenario",
+    "threat_model",
+    "access",
+    "tools",
+    "attacker_effort_budget",
+    "success_criterion",
+    "denominator_value_unit_definition_population",
+    "all_clock_roles_and_precision",
+    "uncertainty_definition",
+    "underlying_result_key",
+    "independent_replication_increment"
+  ],
+  "allowed_documentary_edge_types": {
+    "reported_failure_followed_by_change": "Chronology, not effectiveness. Separate observed/reported failure assertion from intervention assertion.",
+    "change_has_final_outcome": "Final effectiveness is unknown unless a matching final-configuration retest is identified. A null target with explicit reason is permitted in this ledger, never a dangling native ref.",
+    "matched_retest_of": "Require all specified correspondence evidence and dated evaluator record; intended safeguard change is allowed, accidental checkpoint/configuration mismatch is not.",
+    "derivative_summary_of": "Two artifacts may describe one result; preserve publisher and original evaluator role, source dates and scope. Explicit source/result correspondence needed.",
+    "revision_of": "Preserve old/new raw assertions; native supersedes only for consecutive revisions of the same persistent record. Correction scope and protocol equivalence remain separate.",
+    "static_helper_related_to_result": "Code concern may be related, but production mapping remains unresolved without primary provenance; never a proven published-error edge.",
+    "benchmark_family_dependency": "ME002 may depend on ASI001 without sharing its runtime or scoring semantics."
+  },
+  "manual_join_rule": {
+    "must_match": [
+      "scenario",
+      "threat_model",
+      "access",
+      "tools",
+      "attacker_effort_budget",
+      "success_criterion",
+      "denominator_definition_unit_population",
+      "model_checkpoint_or_documented_equivalence"
+    ],
+    "must_correspond": [
+      "before_evaluated_configuration_matches_before_target",
+      "after_evaluated_configuration_matches_explicit_final_target",
+      "intervention_is_the_declared_configuration_change",
+      "evaluator_identity_role_and_dated_retest"
+    ],
+    "unknown_or_mismatch": "Hold/reject comparative effectiveness; retain both individual observations with qualifications.",
+    "sufficient_result": "Bounded comparability of stated observations only; no causal, population-wide or significance claim without separate evidence."
+  },
+  "native_limits": [
+    "No generalized remediation/retest/derivative edge in any of the three contracts.",
+    "evidence.relation is only supports, contradicts or context.",
+    "parent_model_refs describes model derivation, not safeguard changes.",
+    "source_artifact.translation describes translation, not developer summaries.",
+    "Structured sidecar fields cannot be inserted into native data objects with additionalProperties=false."
+  ],
+  "branch_instances": [
+    {
+      "ids": [
+        "ME002",
+        "ASI001"
+      ],
+      "failure_rule": "Prior exact-commit catalog documents error→security=0 static convention.",
+      "production_mapping": null,
+      "production_mapping_null_reason": "No explicit primary mapping from helper to paper-v2 estimate/interval production.",
+      "runtime_revision": null,
+      "runtime_null_reason": "Dependency lower bound and benchmark family are not an immutable runtime."
+    },
+    {
+      "ids": [
+        "ME007"
+      ],
+      "states": [
+        "failure_observed",
+        "safeguard_stack_updated",
+        "final_configuration_effectiveness_unverified"
+      ],
+      "quantified_effect": null,
+      "null_reason": "Final-configuration issue prevented verification; no matching dated public retest established by this contract review.",
+      "unrelated_comparison": "Model B >420-minute biological-misuse observation is not the GPT-5.5 cyber retest."
+    },
+    {
+      "ids": [
+        "OS004",
+        "OS-A07"
+      ],
+      "summary_role": "developer_attributed_external_evaluation",
+      "original_status": "unlocated_in_inspected_sources_as_reported_by_source_review",
+      "original_ref": null,
+      "independent_replication_increment": 0,
+      "null_reason": "No release/checkpoint-specific original established; similar/later titles cannot establish correspondence."
+    }
+  ]
+}

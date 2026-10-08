@@ -1,0 +1,1257 @@
+{
+  "record_type": "review_package_validation",
+  "checked_at_utc_window": [
+    "2026-10-08T17:11:29Z",
+    "2026-10-08T17:15:02Z"
+  ],
+  "clock_scope": "Bounded task clock interval; not file mtime or source event time.",
+  "all_passed": true,
+  "check_count": 307,
+  "checks": [
+    {
+      "check": "JSON publication files parse",
+      "passed": true
+    },
+    {
+      "check": "Original input manifest SHA256 matches receipt",
+      "passed": true
+    },
+    {
+      "check": "Original unchanged: Pasted text(5).txt",
+      "passed": true
+    },
+    {
+      "check": "Original unchanged: session4_evidence_ledger(1).json",
+      "passed": true
+    },
+    {
+      "check": "Original unchanged: session4_decision_report(1).pdf",
+      "passed": true
+    },
+    {
+      "check": "32 submitted case inputs preserved unchanged",
+      "passed": true
+    },
+    {
+      "check": "35 current manual cases",
+      "passed": true
+    },
+    {
+      "check": "47 probes with complete input and expected/actual outcome",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-A-BRIEF",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-A-CAMEL-PAPER",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-A-CAMEL-ABSTRACT",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-A-CAMEL-NOTEBOOK",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-A-CAMEL-PINNED-README",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-A-CAMEL-PINNED-LICENSE",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-A-CAMEL-HISTORY",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-A-CAMEL-README",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-A-AISI-GPT55",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-A-AISI-TRENDS",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-A-AISI-PRIVACY",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-A-APOLLO-CARD",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-A-APOLLO-INDEX",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-A-CC-DEED",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-A-CAMEL-PDF",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-CAMEL-ZERO",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-CAMEL-949",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-CAMEL-UNCERTAINTY",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-CAMEL-CONCERN",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-CAMEL-FAILURES",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-CAMEL-DENOMINATOR",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-CAMEL-FORMULA",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-CAMEL-PRODUCTION",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-CAMEL-RUNTIME",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-CAMEL-README",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-AISI-FAILURE",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-AISI-EFFORT",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-AISI-INTERVENTION",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-AISI-FINAL",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-AISI-RETEST-SEARCH",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-AISI-MODELB",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-APOLLO-SCOPE",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-APOLLO-ASTRA-BASE",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-APOLLO-SOL-BASE",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-APOLLO-ASTRA-CONTROL",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-APOLLO-AWARE-XHIGH",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-APOLLO-AWARE-GPT55",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-APOLLO-AWARE-MAX",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-APOLLO-LIMITATION",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-APOLLO-ORIGINAL",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-APOLLO-COMPARATOR-ACCESS",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-O-CAMEL-RIGHTS-NOTICES",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-L-01",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-L-02",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-L-03",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-L-04",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-L-05",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-L-06",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-L-07",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-L-08",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-L-09",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-L-10",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-L-11",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-L-12",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-L-13",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-L-14",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-C-01",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-C-02",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-C-03",
+      "passed": true
+    },
+    {
+      "check": "Unique S4-C-04",
+      "passed": true
+    },
+    {
+      "check": "All document-local artifact/observation/case/decision references resolve",
+      "passed": true
+    },
+    {
+      "check": "All manual case mapping and probe references resolve",
+      "passed": true
+    },
+    {
+      "check": "All probe acceptance references resolve",
+      "passed": true
+    },
+    {
+      "check": "All relationship endpoints resolve or explicit null hold",
+      "passed": true
+    },
+    {
+      "check": "No private paths/tool refs in docs/evidence-program/research/followups/safeguard-lineage-review.md",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-repository-files-manifest.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-repository-files-manifest.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-contract-mapping.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-relationship-specification.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-acceptance-cases.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-schema-test-results.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-follow-up-actions.json",
+      "passed": true
+    },
+    {
+      "check": "No private paths/tool refs in data/evidence-program/research/followups/safeguard-lineage-review.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-repository-files-manifest.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-contract-mapping.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-contract-mapping.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-acceptance-cases.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-primary-verification.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-follow-up-actions.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-repository-files-manifest.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-prior-catalog-preservation.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-schema-test-results.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-relationship-specification.json",
+      "passed": true
+    },
+    {
+      "check": "No private paths/tool refs in data/evidence-program/research/followups/safeguard-lineage-review-contract-mapping.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-prior-catalog-preservation.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-schema-test-results.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-acceptance-cases.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-relationship-specification.json",
+      "passed": true
+    },
+    {
+      "check": "No private paths/tool refs in data/evidence-program/research/followups/safeguard-lineage-review-relationship-specification.json",
+      "passed": true
+    },
+    {
+      "check": "No private paths/tool refs in data/evidence-program/research/followups/safeguard-lineage-review-acceptance-cases.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review-schema-test-results.json",
+      "passed": true
+    },
+    {
+      "check": "Packaged file ref data/evidence-program/research/followups/safeguard-lineage-review.json",
+      "passed": true
+    },
+    {
+      "check": "No private paths/tool refs in data/evidence-program/research/followups/safeguard-lineage-review-schema-test-results.json",
+      "passed": true
+    },
+    {
+      "check": "No private paths/tool refs in data/evidence-program/research/followups/safeguard-lineage-review-schema-replay-results.json",
+      "passed": true
+    },
+    {
+      "check": "No private paths/tool refs in data/evidence-program/research/followups/safeguard-lineage-review-primary-verification.json",
+      "passed": true
+    },
+    {
+      "check": "No private paths/tool refs in data/evidence-program/research/followups/safeguard-lineage-review-follow-up-actions.json",
+      "passed": true
+    },
+    {
+      "check": "No private paths/tool refs in data/evidence-program/research/followups/safeguard-lineage-review-prior-catalog-preservation.json",
+      "passed": true
+    },
+    {
+      "check": "No private paths/tool refs in data/evidence-program/research/followups/safeguard-lineage-review-repository-files-manifest.json",
+      "passed": true
+    },
+    {
+      "check": "Historical null commit retained independently of pinned reviewer commit",
+      "passed": true
+    },
+    {
+      "check": "No operational admission or collector",
+      "passed": true
+    },
+    {
+      "check": "CaMeL zero,949 and printed term retained",
+      "passed": true
+    },
+    {
+      "check": "AISI final result unknown with reason",
+      "passed": true
+    },
+    {
+      "check": "Model B strict bound preserved",
+      "passed": true
+    },
+    {
+      "check": "Apollo original unlocated not nonexistent",
+      "passed": true
+    },
+    {
+      "check": "All prior repository file bytes retain pinned hashes",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-001",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-001",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-002",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-002",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-003",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-003",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-004",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-004",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-005",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-005",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-006",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-006",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-007",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-007",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-008",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-008",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-009",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-009",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-010",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-010",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-011",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-011",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-012",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-012",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-013",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-013",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-014",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-014",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-015",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-015",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-016",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-016",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-017",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-017",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-018",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-018",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-019",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-019",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-020",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-020",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-021",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-021",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-022",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-022",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-023",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-023",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-024",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-024",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-025",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-025",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-026",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-026",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-027",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-027",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-028",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-028",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-029",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-029",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-030",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-030",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-031",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-031",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-032",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-032",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-033",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-033",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-034",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-034",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-035",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-035",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-036",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-036",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-037",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-037",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-038",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-038",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-039",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-039",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-040",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-040",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-041",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-041",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-042",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-042",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-043",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-043",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-044",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-044",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-045",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-045",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-046",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-046",
+      "passed": true
+    },
+    {
+      "check": "Inline synthetic replay SC-047",
+      "passed": true
+    },
+    {
+      "check": "Inline input digest SC-047",
+      "passed": true
+    },
+    {
+      "check": "Original historical edge unchanged S4-L-01",
+      "passed": true
+    },
+    {
+      "check": "Current edge mapping explicit S4-L-01",
+      "passed": true
+    },
+    {
+      "check": "Original historical edge unchanged S4-L-02",
+      "passed": true
+    },
+    {
+      "check": "Current edge mapping explicit S4-L-02",
+      "passed": true
+    },
+    {
+      "check": "Original historical edge unchanged S4-L-03",
+      "passed": true
+    },
+    {
+      "check": "Current edge mapping explicit S4-L-03",
+      "passed": true
+    },
+    {
+      "check": "Original historical edge unchanged S4-L-04",
+      "passed": true
+    },
+    {
+      "check": "Current edge mapping explicit S4-L-04",
+      "passed": true
+    },
+    {
+      "check": "Original historical edge unchanged S4-L-05",
+      "passed": true
+    },
+    {
+      "check": "Current edge mapping explicit S4-L-05",
+      "passed": true
+    },
+    {
+      "check": "Original historical edge unchanged S4-L-06",
+      "passed": true
+    },
+    {
+      "check": "Current edge mapping explicit S4-L-06",
+      "passed": true
+    },
+    {
+      "check": "Original historical edge unchanged S4-L-07",
+      "passed": true
+    },
+    {
+      "check": "Current edge mapping explicit S4-L-07",
+      "passed": true
+    },
+    {
+      "check": "Original historical edge unchanged S4-L-08",
+      "passed": true
+    },
+    {
+      "check": "Current edge mapping explicit S4-L-08",
+      "passed": true
+    },
+    {
+      "check": "Original historical edge unchanged S4-L-09",
+      "passed": true
+    },
+    {
+      "check": "Current edge mapping explicit S4-L-09",
+      "passed": true
+    },
+    {
+      "check": "Original historical edge unchanged S4-L-10",
+      "passed": true
+    },
+    {
+      "check": "Current edge mapping explicit S4-L-10",
+      "passed": true
+    },
+    {
+      "check": "Original historical edge unchanged S4-L-11",
+      "passed": true
+    },
+    {
+      "check": "Current edge mapping explicit S4-L-11",
+      "passed": true
+    },
+    {
+      "check": "Original historical edge unchanged S4-L-12",
+      "passed": true
+    },
+    {
+      "check": "Current edge mapping explicit S4-L-12",
+      "passed": true
+    },
+    {
+      "check": "Original historical edge unchanged S4-L-13",
+      "passed": true
+    },
+    {
+      "check": "Current edge mapping explicit S4-L-13",
+      "passed": true
+    },
+    {
+      "check": "Case030 current mapping reconciled",
+      "passed": true
+    },
+    {
+      "check": "New manual case concrete input S4-CONTRACT-033",
+      "passed": true
+    },
+    {
+      "check": "New manual case concrete input S4-CONTRACT-034",
+      "passed": true
+    },
+    {
+      "check": "New manual case concrete input S4-CONTRACT-035",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-001",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-002",
+      "passed": true
+    },
+    {
+      "check": "Missing result has missing-specific prose SC-002",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-003",
+      "passed": true
+    },
+    {
+      "check": "Effort fixture prose SC-003",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-004",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-005",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-006",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-007",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-008",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-009",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-010",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-010",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-011",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-011",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-012",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-012",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-013",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-014",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-015",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-016",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-017",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-018",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-019",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-020",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-021",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-022",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-023",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-024",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-025",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-025",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-026",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-026",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-027",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-028",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-029",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-030",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-031",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-031",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-032",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-032",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-033",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-033",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-034",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-034",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-035",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-035",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-036",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-036",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-037",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-037",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-038",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-038",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-039",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-039",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-040",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-041",
+      "passed": true
+    },
+    {
+      "check": "Effort fixture prose SC-041",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-042",
+      "passed": true
+    },
+    {
+      "check": "Missing result has missing-specific prose SC-042",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-043",
+      "passed": true
+    },
+    {
+      "check": "Matched retest conclusion agrees",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-043",
+      "passed": true
+    },
+    {
+      "check": "Matched retest conclusion agrees",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-044",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-045",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-046",
+      "passed": true
+    },
+    {
+      "check": "Awareness negative labelled",
+      "passed": true
+    },
+    {
+      "check": "No stale zero-count prose SC-047",
+      "passed": true
+    }
+  ],
+  "count_scope": {
+    "source_artifacts": 15,
+    "observations": 27,
+    "lineage_edges": 14,
+    "accepted": 7,
+    "corrected": 7,
+    "held": 6,
+    "submitted_manual_cases": 32,
+    "current_manual_cases": 35,
+    "synthetic_probes": 47
+  },
+  "limits": [
+    "Static schema/semantic validation of explicitly synthetic inputs only.",
+    "No real-source canonical bundle, source execution, study replication, collector or admission.",
+    "Manifest bytes must be recomputed if any publication file changes."
+  ],
+  "receipt_scope_note": "Historical source-review receipt, with public file references relocated. Candidate integration checks are separate. Synthetic native-contract probes are not observed source executions, real-source canonical validation, independent safety replication or admission."
+}

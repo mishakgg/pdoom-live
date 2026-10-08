@@ -1,0 +1,68 @@
+{
+  "actions": [
+    {
+      "action_id": "ME002-A1",
+      "prompt_id": "ME002-F1",
+      "status": "bounded_documentary_followup_complete_residual_lineage_hold",
+      "completed": [
+        "Reconcile prior static helper evidence",
+        "Reverify published aggregate and version",
+        "Read pinned README/LICENSE",
+        "Attempt targeted history"
+      ],
+      "remaining_hold_refs": [
+        "S4-HOLD-01",
+        "S4-HOLD-04"
+      ],
+      "repeat_broad_discovery": false
+    },
+    {
+      "action_id": "ME007-A1",
+      "prompt_id": "ME007-F1",
+      "status": "bounded_documentary_followup_complete_retest_hold",
+      "completed": [
+        "Verify failure/intervention/unknown final outcome",
+        "Reject trends substitution",
+        "Separate capability correction and exact artifact rights"
+      ],
+      "remaining_hold_refs": [
+        "S4-HOLD-02",
+        "S4-HOLD-04"
+      ],
+      "repeat_broad_discovery": false
+    },
+    {
+      "action_id": "OS-A07",
+      "status": "bounded_search_complete_original_linkage_hold",
+      "completed": [
+        "Named developer section and official science index",
+        "Separate original versus derivative claims and checkpoint/cohort/CoT access"
+      ],
+      "remaining_hold_refs": [
+        "S4-HOLD-03",
+        "S4-HOLD-04"
+      ],
+      "repeat_AISI_Astra_branch": false
+    }
+  ],
+  "integration_guidance": {
+    "allowed_after_independent_review": "Additive dated research delta/guide and existing-guide links. Preserve original catalogs/fingerprints and source inventory exactly.",
+    "original_session_count": 26,
+    "new_source_admission": false,
+    "collector_enabled": false,
+    "new_adapter": false,
+    "contracts_or_validators_changed": false,
+    "public_artifact_rule": "Publish only review-manifest publication_files. Every referenced local evidence key resolves inside the public delta/cases/mapping; do not publish private source inspection files or original uploads.",
+    "required_checks": [
+      "Independent source-review clearance",
+      "Self-contained reference resolution",
+      "Original catalog hash preservation",
+      "Unchanged applicable evidence-program checks",
+      "Exact integration commit and CI verification"
+    ],
+    "no_new_followon_session": true
+  },
+  "integration_status": "reviewed_delta_included_in_this_candidate",
+  "integration_base_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5",
+  "integration_boundary": "Independent source clearance is complete. Candidate inclusion is separate from remote publication, exact-commit CI and merge; all six source/mapping/admission hold groups remain."
+}
