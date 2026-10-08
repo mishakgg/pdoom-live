@@ -2,6 +2,10 @@
 
 Reviewed 8 October 2026 against repository commit `9cfda7eb65c1b6c257c9d9f0c8e96d53073b56e5`. See the [separate JSON record](../../../data/evidence-program/research/electricity-deployment.json) and [dated review queue](research-session-review-queue.md).
 
+## Follow-up qualification: 8 October 2026
+
+The [compute and power follow-up](followups/compute-power-review.md) ([JSON](../../../data/evidence-program/research/followups/compute-power-review.json)) adds independently reviewed documentary findings for deep bundle E / prompt 7. For EDB002 / EDB002-A1, Georgia’s 31 committed customers include 26 data-center and five industrial customers; ten online are nested within 21 broken-ground projects. Table 8,493 MW and rounded narrative 8,500 MW retain their distinct locators. The anonymous split has no visible parent/child row bridge; six within-report comparisons are not cross-vintage physical identity. For EDB004 / EDB004-A1, plant 68741 / CPP_1 has separate July 2026 TS status, 22.2 MW net-summer and 26.1 MW nameplate ratings, August planned-operation target and September 24 publication. No later keyed operation record or complete bounded source-body capture is established. For EDB007 / EDB007-A1, generation queue scope does not establish load interconnection, demand delivery or an AI allocation. Crosswalk, capture, artifact rights and lossless facility/stage/relationship mapping remain held. All original catalog records, source/action IDs and prior guide text remain historical evidence. The 106 synthetic schema probes do not discharge the 24 original unexecuted semantic requirements. No canonical admission or live collection follows.
+
 ## Decision
 
 Retain eight new documentary source families, eight bounded next actions and one ERCOT specification. No collector, canonical observation mapping, implementation or new validator is admitted.

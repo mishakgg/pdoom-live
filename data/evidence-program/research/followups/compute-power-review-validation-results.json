@@ -1,0 +1,886 @@
+{
+  "record_type": "local_documentary_review_package_validation",
+  "summary": {
+    "checks": 173,
+    "passed": 173,
+    "failed": 0
+  },
+  "checks": [
+    {
+      "check": "sealed original: Yapıştırılan metin(20261008-205512).txt",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "sealed original: compute_power_capacity_decision_report_2026-10-08(1).pdf",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "sealed original: compute_power_capacity_ledger_2026-10-08(1).json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Submitted ledger semantic preservation",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Original24 requirements unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Original24 remain unexecuted",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Original inventory counts",
+      "passed": true,
+      "detail": {
+        "case_studies": 3,
+        "artifacts": 18,
+        "subjects": 18,
+        "observations": 26,
+        "assertions": 34,
+        "relationships": 22,
+        "unresolved_links": 9,
+        "acceptance_cases": 24
+      }
+    },
+    {
+      "check": "Source-native reference resolution",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "Pinned repository blob: AGENTS.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: data/evidence-program/research/compute-supply-chain.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: data/evidence-program/research/electricity-deployment.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: data/evidence-program/source_inventory.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: docs/evidence-program/dataset_spec.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: docs/evidence-program/research/compute-supply-chain.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: docs/evidence-program/research/electricity-deployment.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: docs/evidence-program/source_priorities.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/actor.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/benchmark_run.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/dataset.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/field_dictionary.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/forecast.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/forecast_question.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/incident.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/model_version.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/release_event.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/resolution.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/resource_observation.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/safety_evaluation.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/snapshot.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/source_artifact.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/statement.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Pinned repository blob: tools/evidence_program/contracts/unit_registry.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "24 selected current repository files",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Historical87dda3d uninspected preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No operational admission or publication",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "18 artifact current review dispositions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "18 artifact rights scopes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Georgia original-body hash independently matched",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "EIA incomplete capture not labeled source hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "106 expected synthetic outcomes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Schema accept/reject counts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No original semantic requirement marked executed",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP003",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP004",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP005",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP006",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP007",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP008",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP009",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP010",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP011",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP012",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP013",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP014",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP015",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP016",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP017",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP018",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP019",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP020",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP021",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP022",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP023",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP024",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP025",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP026",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP027",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP028",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP029",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP030",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP031",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP032",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP033",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP034",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP035",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP036",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP037",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP038",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP039",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP040",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP041",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP042",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP043",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP044",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP045",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP046",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP047",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP048",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP049",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP050",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP051",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP052",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP053",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP054",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: SP055",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ001",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ003",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ004",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ005",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ006",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ007",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ008",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ009",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ010",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ011",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ012",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ013",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ014",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ015",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ016",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ017",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ018",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ019",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ020",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ021",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ022",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ023",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ024",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ025",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ026",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ027",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ028",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ029",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ030",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ031",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ032",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ033",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ034",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ035",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ036",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ037",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ038",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ039",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ040",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ041",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: REQ042",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: ENUM-MODE-1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: ENUM-MODE-2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: ENUM-MODE-3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: ENUM-INVALID-1",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: ENUM-INVALID-2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: ENUM-INVALID-3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: ENUM-INVALID-4",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: ENUM-INVALID-5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Embedded synthetic payload: ENUM-INVALID-6",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No executor-private links: docs/evidence-program/research/followups/compute-power-review.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No transient citation markers: docs/evidence-program/research/followups/compute-power-review.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No executor-private links: data/evidence-program/research/followups/compute-power-review.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No transient citation markers: data/evidence-program/research/followups/compute-power-review.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No executor-private links: data/evidence-program/research/followups/compute-power-review-source-native-ledger.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No transient citation markers: data/evidence-program/research/followups/compute-power-review-source-native-ledger.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No executor-private links: data/evidence-program/research/followups/compute-power-review-primary-verification.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No transient citation markers: data/evidence-program/research/followups/compute-power-review-primary-verification.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No executor-private links: data/evidence-program/research/followups/compute-power-review-rights-by-artifact.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No transient citation markers: data/evidence-program/research/followups/compute-power-review-rights-by-artifact.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No executor-private links: data/evidence-program/research/followups/compute-power-review-relationship-specification.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No transient citation markers: data/evidence-program/research/followups/compute-power-review-relationship-specification.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No executor-private links: data/evidence-program/research/followups/compute-power-review-contract-mapping.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No transient citation markers: data/evidence-program/research/followups/compute-power-review-contract-mapping.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No executor-private links: data/evidence-program/research/followups/compute-power-review-acceptance-cases.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No transient citation markers: data/evidence-program/research/followups/compute-power-review-acceptance-cases.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No executor-private links: data/evidence-program/research/followups/compute-power-review-schema-test-results.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No transient citation markers: data/evidence-program/research/followups/compute-power-review-schema-test-results.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No executor-private links: data/evidence-program/research/followups/compute-power-review-prior-catalog-preservation.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No transient citation markers: data/evidence-program/research/followups/compute-power-review-prior-catalog-preservation.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No executor-private links: data/evidence-program/research/followups/compute-power-review-repository-files-manifest.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No transient citation markers: data/evidence-program/research/followups/compute-power-review-repository-files-manifest.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No executor-private links: data/evidence-program/research/followups/compute-power-review-follow-up-actions.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "No transient citation markers: data/evidence-program/research/followups/compute-power-review-follow-up-actions.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Review local links exist",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "limits": "Integrity, preservation and synthetic-record shape checks only. No physical validation, full repository suite, source adapter, semantic acceptance implementation, rights clearance or publication.",
+  "receipt_scope_note": "Historical authored source-review receipt: 173 integrity checks. Independent source review separately passed 581 checks and replayed 106 synthetic schema probes; all 24 original semantic requirements remain unexecuted. Integration regression checks and remote CI are different activities."
+}

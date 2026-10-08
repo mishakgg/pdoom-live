@@ -1,0 +1,93 @@
+{
+  "record_type": "bounded_next_actions",
+  "new_sessions_launched": 0,
+  "actions": [
+    {
+      "id": "CP-N01",
+      "priority": "P0",
+      "title": "Review and integrate documentary delta",
+      "status": "independently_reviewed_documentary_delta_included_in_candidate",
+      "owner": "Parent review/integration",
+      "action": "Review this bounded package; preserve source IDs and original historical context; integrate only reviewed documentary status and explicit holds. No source admission or native schema change is implied.",
+      "new_session_needed": false,
+      "source_review_status_preserved": "ready_for_parent_independent_review",
+      "integration_limit": "Source review is complete at the bounded scope. Candidate publication, exact-commit CI and merge remain separate and unverified. CP-N02–CP-N07 and all operational holds remain unchanged."
+    },
+    {
+      "id": "CP-N02",
+      "priority": "P1",
+      "title": "Define lossless EIA companion mapping",
+      "status": "design_gate",
+      "owner": "Future authorized implementation",
+      "action": "Select source-artifact/resource-observation fields plus a source-native composite generator/stage/vintage companion; preserve opaque upstream keys and measurement basis, then define semantic checks. Use synthetic probes before any real record admission.",
+      "new_session_needed": false
+    },
+    {
+      "id": "CP-N03",
+      "priority": "P1",
+      "title": "Obtain reproducible keyed EIA capture",
+      "status": "capture_gate",
+      "owner": "Future bounded acquisition review",
+      "action": "The starting HTML advertised 2,388,675 bytes and exceeded this pass 1 MB cap. Decide an explicit permitted capture bound or compact official representation; retain exact source bytes, headers, row and notes before claiming raw replay. No new fetch requested by this action list.",
+      "new_session_needed": false
+    },
+    {
+      "id": "CP-N04",
+      "priority": "P1",
+      "title": "Preserve later EIA status requirement",
+      "status": "evidence_unavailable_within_scope",
+      "owner": "Future explicit status review",
+      "action": "Only append an operation assertion when a dated official record explicitly identifies 68741 / CPP_1. Do not infer from August target, workbook label, missing row or retrieval error. No scheduled monitor created.",
+      "new_session_needed": false
+    },
+    {
+      "id": "CP-N05",
+      "priority": "P1",
+      "title": "Retain Georgia crosswalk holds",
+      "status": "blocked_on_public_evidence_and_reuse",
+      "owner": "Source evidence gate",
+      "action": "Require individually published comparison documents and an explicit anonymous parent/child or stable row crosswalk. Metadata currently exposes ZIP-only comparisons. Do not reidentify projects, fetch ZIP/XLSX or generate more source sessions merely to repeat this search.",
+      "new_session_needed": false
+    },
+    {
+      "id": "CP-N06",
+      "priority": "P1",
+      "title": "Retain CoreWeave allocation holds",
+      "status": "branch_budget_exhausted",
+      "owner": "Source evidence gate",
+      "action": "Two subsequent SEC filings already inspected. Further work needs a separately authorized source scope plus explicit lease/site/phase identifiers and an Epoch record. No refreshed GPU estimate, exact headroom or delay-resolution claim.",
+      "new_session_needed": false
+    },
+    {
+      "id": "CP-N07",
+      "priority": "P1",
+      "title": "Scope source rights before export",
+      "status": "rights_gate",
+      "owner": "Artifact rights review",
+      "action": "Keep EIA information permission with dated attribution, Epoch current-data CC BY 4.0 and LBNL 2026 data-file-only license separate. Full issuer/utility artifacts and third-party evidence remain uncleared for publication.",
+      "new_session_needed": false
+    }
+  ],
+  "existing_action_reconciliation": [
+    {
+      "action_id": "SCB008-A1",
+      "bounded_work": "completed_with_residual_holds",
+      "source_admission": "not_admitted"
+    },
+    {
+      "action_id": "EDB002-A1",
+      "bounded_work": "completed_with_residual_holds",
+      "source_admission": "not_admitted"
+    },
+    {
+      "action_id": "EDB004-A1",
+      "bounded_work": "completed_with_residual_holds",
+      "source_admission": "not_admitted"
+    },
+    {
+      "action_id": "EDB007-A1",
+      "bounded_work": "boundary_check_completed_with_residual_join_hold",
+      "source_admission": "not_admitted"
+    }
+  ]
+}

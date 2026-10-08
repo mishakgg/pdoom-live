@@ -2,6 +2,10 @@
 
 Session 23, reviewed 8 October 2026 against repository commit `6cf8c1c89a387a5b26022dd9ea0a216d45b2b629`. See the [separate JSON record](../../../data/evidence-program/research/compute-supply-chain.json) and [dated review queue](research-session-review-queue.md).
 
+## Follow-up qualification: 8 October 2026
+
+The [compute and power follow-up](followups/compute-power-review.md) ([JSON](../../../data/evidence-program/research/followups/compute-power-review.json)) adds independently reviewed documentary findings for deep bundle E / prompt 7. For SCB008 / SCB008-A1 and GL003, source-defined operator portfolio counts, active power and contractual power retain separate scopes, dates, bounds and precision. The FY2025 393 MW contractual-access, Q1 525 MW contractual-access and Q2 393 MW remaining-undelivered disclosures do not establish a 132 MW delivery or an exact lease/site/phase match. Repeated November 2025 risk passages do not establish present delay resolution. No inspected public bridge links the anonymous lease to Kenilworth or an Epoch facility key/vintage. Catalog-only GL003 status, facility/allocation identity, active/contracted overlap and full-artifact rights remain held; no MW-to-GPU/FLOP conversion or capacity aggregate is admitted. All original catalog records, source/action IDs and prior guide text remain historical evidence. The 106 synthetic schema probes do not discharge the 24 original unexecuted semantic requirements. No canonical admission or live collection follows.
+
 ## Decision
 
 Prioritize TSMC, Micron and ASML. Retain eight new documentary collection families, eight bounded next actions and one rights-gated ASML specification. No collector, canonical observation mapping or historical series is admitted.

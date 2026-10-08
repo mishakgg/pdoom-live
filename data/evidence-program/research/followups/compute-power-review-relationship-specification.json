@@ -1,0 +1,709 @@
+{
+  "status": "Source-native companion specification; actual native mapping separately documented in data/evidence-program/research/followups/compute-power-review-contract-mapping.json",
+  "identity_layers": [
+    {
+      "layer": "artifact",
+      "identity": "Publisher namespace + accession/document/file identifier + actual inspected version/representation; URL alone is insufficient for mutable sources."
+    },
+    {
+      "layer": "subject/entity",
+      "identity": "Stable issuer or physical asset key where evidenced. Anonymous disclosure handles identify statements only, not persistent projects."
+    },
+    {
+      "layer": "observation",
+      "identity": "Artifact version + exact record locator + observation vintage + source scope; keep multiple evidence representations."
+    },
+    {
+      "layer": "assertion",
+      "identity": "Specific predicate or metric claim supported by the observation, with date role, qualifier and source authority."
+    }
+  ],
+  "required_information_groups": [
+    {
+      "group": "source provenance",
+      "requirements": [
+        "Original and resolved URL",
+        "publisher/author versus host",
+        "accession/document/file ID",
+        "displayed edition/release/version",
+        "locator",
+        "retrieval time and precision",
+        "byte hash when captured; otherwise explicit unavailable reason",
+        "access outcome"
+      ]
+    },
+    {
+      "group": "entity and containment",
+      "requirements": [
+        "source namespace and literal identifiers",
+        "entity grain",
+        "owner/operator/tenant/developer role",
+        "parent campus/plant",
+        "phase/building/unit key",
+        "anonymous identifiers only when public",
+        "explicit identity/containment evidence"
+      ]
+    },
+    {
+      "group": "quantity",
+      "requirements": [
+        "source metric name",
+        "raw value",
+        "unit",
+        "lower/upper bound or approximate qualifier",
+        "metric boundary (e.g. net-summer/nameplate/IT/utility/contractual/eventual load)",
+        "stock versus flow/forecast stock",
+        "population/physical scope"
+      ]
+    },
+    {
+      "group": "dates",
+      "requirements": [
+        "source observation/event date",
+        "forecast target and forecast vintage",
+        "publication/filing and acceptance timestamps",
+        "explicit revision date if supplied",
+        "detected difference date separately",
+        "original precision (year/quarter/month/day)",
+        "no manufactured daily dates"
+      ]
+    },
+    {
+      "group": "stage",
+      "requirements": [
+        "commercial commitment",
+        "construction",
+        "connection/energization",
+        "operation/commercial operation",
+        "raw source status code",
+        "unknown state and reason",
+        "per-axis date and evidence where available"
+      ]
+    },
+    {
+      "group": "authority and rights",
+      "requirements": [
+        "issuer/utility report versus agency compilation versus independent check",
+        "dependence on earlier disclosure",
+        "public read outcome",
+        "applicable artifact-specific reuse statement",
+        "licensor, attribution and exceptions",
+        "unknown AI allocation retained"
+      ]
+    },
+    {
+      "group": "relationship",
+      "requirements": [
+        "edge type",
+        "factual/possible/rejected classification",
+        "source supporting the bridge",
+        "explicit unresolved endpoint",
+        "aggregation consequence",
+        "many-to-many coverage where source documents it"
+      ]
+    }
+  ],
+  "stage_rules": [
+    "The four dimensions are independent, not one monotonic status ladder.",
+    "A Request for Service or contract does not prove ground-breaking, grid connection, power delivery or commercial operation.",
+    "A construction-complete status can coexist with pre-commercial operation and unknown connection.",
+    "An issuer active-power label is preserved without equating it to measured IT load or independent operation verification.",
+    "Source authority is not a stage. Official hosting, financial audit status or dataset inclusion does not establish independent physical validation.",
+    "An event repeated in a later filing does not acquire the filing period as a new physical observation date."
+  ],
+  "edge_types": [
+    "same_source_entity",
+    "repeated_disclosure",
+    "revises_assertion",
+    "source_reports_split",
+    "split_into_when_endpoints_known",
+    "contained_in",
+    "possible_same_entity",
+    "possible_overlap",
+    "rejected_join"
+  ],
+  "edge_class_definitions": {
+    "factual_match": "Directly evidenced source identity, pairing, repetition or containment; remains at the source authority level.",
+    "possible_match": "A candidate bridge lacks essential identity or scope evidence; do not merge or allocate.",
+    "rejected_join": "The proposed use is unsupported or conflicts with source scope/definitions; reason and missing evidence retained."
+  },
+  "aggregation_policy": [
+    "This investigation authorizes no capacity summation or conversion.",
+    "For a later separately authorized aggregator, explicit disjoint asset scopes, common metric definition, compatible date and stage, and supported containment would be prerequisites.",
+    "Do not add parents to included phases/children, alternate capacity ratings of the same asset, repeated disclosures, or successive stocks/vintages.",
+    "A reporting split does not itself establish physical subdivision, added demand or conserved numerical partition.",
+    "Lower-bound and approximate values are not point estimates; do not derive exact differences or growth from them.",
+    "Do not convert MW into GPUs/FLOPs, generation into delivered load, unknown AI allocation into a share, or any resource quantity into catastrophe probability."
+  ],
+  "missing_record_rules": [
+    "An HTTP error, login wall, disabled retrieval or missing text is acquisition failure, never asset absence.",
+    "A successful later table that omits an entity can only support absent-from-that-artifact, subject to table scope and complete relevant inspection.",
+    "Commissioning, cancellation, retirement and resolution each require affirmative dated evidence; elapsed targets are forecasts only.",
+    "Retain older assertions and link corrections; do not replace history silently."
+  ],
+  "minimum_epoch_join": [
+    "Both artifact identifiers, versions and exact source locators.",
+    "Issuer/company identifier and time-specific role: asset owner, facility operator, tenant, primary user or developer.",
+    "Public site identity: stable project/permit/parcel identifier or an explicit alias bridge corroborated by precise location.",
+    "Parent campus and building/hall/phase/leased-portion identity with a clear physical boundary.",
+    "An individually inspected Epoch record identifier/permalink and its applicable vintage.",
+    "Dates to establish temporal overlap and distinguish planned from observed states.",
+    "Compatible metric boundary, unit, qualifier and stage; monetary ownership share is not capacity allocation.",
+    "An explicit source-backed containment or allocation edge before assigning operator quantities to a phase."
+  ],
+  "minimum_queue_to_generator_join": [
+    "Queue authority namespace plus original source request identifier, with request vintage.",
+    "Explicit parent/replacement/split and hybrid-component relationships where source documents supply them; preserve one-to-many mappings.",
+    "Exact EIA Plant ID plus exact Generator ID, with vintage; preserve ID string punctuation and do not merge by generator name alone.",
+    "An authoritative bridge document that identifies both sides and which units, phases, or components the request covers.",
+    "Request, study, agreement, construction, connection and commercial-operation dates/statuses distinguished; request date and target date cannot be COD.",
+    "Capacity definition and unit on each side; aggregate request MW cannot be silently apportioned to a generator.",
+    "Provenance, source locator, publication/revision dates and redistribution terms for each link.",
+    "No claim that LBNL exposes these named columns: the linked codebook was not inspected."
+  ],
+  "canonical_mapping": "Partial structural mapping only. Native asset, relationship and independent stage-axis support is absent; no new schema implemented.",
+  "record_type": "reviewed_identity_and_stage_specification",
+  "review_commit": "f4320b6a1b6d5fac08efaa306768c487398977d9",
+  "reviewed_relationships": [
+    {
+      "id": "EDGE-CW-ISSUER",
+      "classification": "factual_match",
+      "relation": "same_issuer_distinct_dated_observations",
+      "from_refs": [
+        "OBS-CW01",
+        "OBS-CW02"
+      ],
+      "to_refs": [
+        "OBS-CW05",
+        "OBS-CW06",
+        "OBS-CW07"
+      ],
+      "basis": "Same CIK 0001769628 in the accession metadata; scope is issuer portfolio, not identified facilities.",
+      "source_evidence": [
+        {
+          "artifact_id": "CW_424B4_20250331",
+          "locator": "SEC accession metadata / filer CIK"
+        },
+        {
+          "artifact_id": "CW_10K_FY2025",
+          "locator": "SEC accession metadata / filer CIK"
+        }
+      ],
+      "aggregation_consequence": "Do not sum stocks across dates or infer a disjoint physical campus count."
+    },
+    {
+      "id": "EDGE-CW-OVERLAP",
+      "classification": "possible_match",
+      "relation": "potential_overlap_between_stage_scopes",
+      "from_refs": [
+        "OBS-CW06"
+      ],
+      "to_refs": [
+        "OBS-CW07"
+      ],
+      "basis": "Same issuer/date, active and total contracted labels; inspected text does not establish exact inclusion/exclusion.",
+      "source_evidence": [
+        {
+          "artifact_id": "CW_10K_FY2025",
+          "locator": "Business overview, printed page 5, retrieved line 219; Securing Sufficient Power Capacity, lines 1883-1884"
+        }
+      ],
+      "aggregation_consequence": "Non-additive; neither exact subset nor contracted-minus-active headroom established.",
+      "missing_link": "Explicit common metric boundary and asset coverage/overlap reconciliation."
+    },
+    {
+      "id": "EDGE-CW-LEASE-1",
+      "classification": "possible_match",
+      "relation": "possible_same_anonymous_lease_disclosure",
+      "from_refs": [
+        "OBS-CW10"
+      ],
+      "to_refs": [
+        "OBS-CW11"
+      ],
+      "basis": "Parallel Note 8 single-site / various-buildings narrative, but no source lease/site identifier.",
+      "source_evidence": [
+        {
+          "artifact_id": "CW_10K_FY2025",
+          "locator": "Note 8, Leases Not Yet Commenced, printed page 112, retrieved lines 3581-3582"
+        },
+        {
+          "artifact_id": "CW_10Q_Q12026",
+          "locator": "Note 8, Leases Not Yet Commenced, printed page 22, retrieved lines 943-944"
+        }
+      ],
+      "aggregation_consequence": "No same-asset merge, increment, subtraction or delivery inference.",
+      "missing_link": "Public lease/site/phase identifier or explicit issuer bridge and compatible metric scope."
+    },
+    {
+      "id": "EDGE-CW-LEASE-2",
+      "classification": "possible_match",
+      "relation": "possible_same_anonymous_lease_disclosure",
+      "from_refs": [
+        "OBS-CW11"
+      ],
+      "to_refs": [
+        "OBS-CW12"
+      ],
+      "basis": "Parallel Note 8 single-site / various-buildings narrative, but no source lease/site identifier. Q2 uses an undelivered-remainder metric.",
+      "source_evidence": [
+        {
+          "artifact_id": "CW_10Q_Q12026",
+          "locator": "Note 8, Leases Not Yet Commenced, printed page 22, retrieved lines 943-944"
+        },
+        {
+          "artifact_id": "CW_10Q_Q22026",
+          "locator": "Note 8, Leases Not Yet Commenced, printed pages 24-25, retrieved lines 1025 and 1032"
+        }
+      ],
+      "aggregation_consequence": "No same-asset merge, increment, subtraction or delivery inference.",
+      "missing_link": "Public lease/site/phase identifier or explicit issuer bridge and compatible metric scope."
+    },
+    {
+      "id": "EDGE-CW-DELAY-REPEAT",
+      "classification": "factual_match",
+      "relation": "repeated_disclosure",
+      "from_refs": [
+        "OBS-CW08-1"
+      ],
+      "to_refs": [
+        "OBS-CW08-2",
+        "OBS-CW08-3"
+      ],
+      "basis": "All passages explicitly refer to the November 2025 announcement.",
+      "source_evidence": [
+        {
+          "artifact_id": "CW_10K_FY2025",
+          "locator": "Item 1A, third-party data center provider risk, printed pages 16-17, retrieved lines 512-518"
+        },
+        {
+          "artifact_id": "CW_10Q_Q12026",
+          "locator": "Item 1A, third-party data center provider risk, retrieved line 1823"
+        },
+        {
+          "artifact_id": "CW_10Q_Q22026",
+          "locator": "Item 1A, third-party data center provider risk, retrieved line 2009"
+        }
+      ],
+      "aggregation_consequence": "One described announcement, multiple dependent assertions; no proof of ongoing delay or resolution."
+    },
+    {
+      "id": "EDGE-CW-UNNAMED-NAMED",
+      "classification": "rejected_join",
+      "relation": "unsupported_facility_attribution",
+      "from_refs": [
+        "OBS-CW08-1",
+        "OBS-CW08-2",
+        "OBS-CW08-3",
+        "OBS-CW10",
+        "OBS-CW11",
+        "OBS-CW12"
+      ],
+      "to_refs": [
+        "SUBJECT-CW-KENILWORTH"
+      ],
+      "basis": "No source bridge connects the unnamed lease/delay to the separately named Kenilworth campus.",
+      "source_evidence": [
+        {
+          "artifact_id": "CW_10K_FY2025",
+          "locator": "Note 8 and separate Kenilworth risk paragraphs"
+        }
+      ],
+      "aggregation_consequence": "No campus capacity or delay assignment."
+    },
+    {
+      "id": "EDGE-CW-EPOCH",
+      "classification": "rejected_join",
+      "relation": "unsupported_portfolio_to_facility_allocation",
+      "from_refs": [
+        "OBS-CW01",
+        "OBS-CW02",
+        "OBS-CW06",
+        "OBS-CW07"
+      ],
+      "to_refs": [
+        "EXTERNAL-GL003-NO-RECORD"
+      ],
+      "basis": "Issuer portfolio quantities are not identified site/phase quantities; Epoch counts/buildings and IT-power estimates have different boundaries.",
+      "source_evidence": [
+        {
+          "artifact_id": "EPOCH_DESCRIPTION_20261008",
+          "locator": "What is an AI data center?; FAQ IT-power description"
+        }
+      ],
+      "aggregation_consequence": "No allocation of totals or MW-to-GPU conversion.",
+      "missing_link": "Individually inspectable Epoch record identifier, precise site/phase bridge and explicit quantity allocation."
+    },
+    {
+      "id": "EDGE-GA-ONLINE-CONTAINED",
+      "classification": "factual_match",
+      "relation": "reported_population_containment",
+      "from_refs": [
+        "OBS-GA-PORTFOLIO-A5"
+      ],
+      "to_refs": [
+        "OBS-GA-PORTFOLIO-A4"
+      ],
+      "basis": "Source explicitly includes ten reported online within twenty-one broken-ground projects.",
+      "source_evidence": [
+        {
+          "artifact_id": "ga-226607-107887",
+          "locator": "Physical p5 and p7 / Table 1"
+        }
+      ],
+      "aggregation_consequence": "Do not add 10 online to 21 broken ground."
+    },
+    {
+      "id": "EDGE-GA-BROKEN-CONTAINED",
+      "classification": "factual_match",
+      "relation": "reported_population_containment",
+      "from_refs": [
+        "OBS-GA-PORTFOLIO-A4"
+      ],
+      "to_refs": [
+        "OBS-GA-PORTFOLIO-A2"
+      ],
+      "basis": "Source places twenty-one broken-ground projects within thirty-one committed projects.",
+      "source_evidence": [
+        {
+          "artifact_id": "ga-226607-107887",
+          "locator": "Physical p5 and p7 / Table 1"
+        }
+      ],
+      "aggregation_consequence": "Do not add 21 broken-ground projects to their 31-project parent population; customer and physical asset identities remain unresolved."
+    },
+    {
+      "id": "EDGE-GA-DEMAND-CONTAINED",
+      "classification": "factual_match",
+      "relation": "reported_population_containment",
+      "from_refs": [
+        "OBS-GA-PORTFOLIO-A7"
+      ],
+      "to_refs": [
+        "OBS-GA-PORTFOLIO-A3"
+      ],
+      "basis": "Source describes 8,500 MW as the eventual demand associated with the broken-ground portion of 12,400 MW commitments.",
+      "source_evidence": [
+        {
+          "artifact_id": "ga-226607-107887",
+          "locator": "Physical p5, bullet 2"
+        }
+      ],
+      "aggregation_consequence": "No addition; neither quantity is measured operating MW."
+    },
+    {
+      "id": "EDGE-GA-SPLIT-REPEAT",
+      "classification": "possible_match",
+      "relation": "possible_repeated_split_reference",
+      "from_refs": [
+        "OBS-GA-SPLIT-P27"
+      ],
+      "to_refs": [
+        "OBS-GA-SPLIT-P36"
+      ],
+      "basis": "Equivalent footnote wording; missing row markers and project IDs prevent a factual event identity match.",
+      "source_evidence": [
+        {
+          "artifact_id": "ga-226607-107887",
+          "locator": "Physical pp27 and 36; visual inspection"
+        }
+      ],
+      "aggregation_consequence": "Study one split assertion with a possible second reference; do not count two independently identified physical splits or allocate row MW.",
+      "missing_link": "Public anonymous parent/child IDs and visible footnote-to-row crosswalk."
+    },
+    {
+      "id": "EDGE-GA-R1",
+      "classification": "factual_match",
+      "relation": "reported commercial-stage revision",
+      "from_refs": [
+        "OBS-GA-R1"
+      ],
+      "to_refs": [
+        "OBS-GA-R1-A1"
+      ],
+      "basis": "The current PDF directly pairs these values on one anonymous row; factual match is limited to that source assertion.",
+      "source_evidence": [
+        {
+          "artifact_id": "ga-226607-107887",
+          "locator": "physical p33, table row 1"
+        }
+      ],
+      "aggregation_consequence": "No physical operation inferred; no cross-page or cross-filing asset identity inferred."
+    },
+    {
+      "id": "EDGE-GA-R2",
+      "classification": "factual_match",
+      "relation": "reported commercial-stage revision",
+      "from_refs": [
+        "OBS-GA-R2"
+      ],
+      "to_refs": [
+        "OBS-GA-R2-A1"
+      ],
+      "basis": "The current PDF directly pairs these values on one anonymous row; factual match is limited to that source assertion.",
+      "source_evidence": [
+        {
+          "artifact_id": "ga-226607-107887",
+          "locator": "physical p33, table row 2"
+        }
+      ],
+      "aggregation_consequence": "No physical operation inferred; no cross-page or cross-filing asset identity inferred."
+    },
+    {
+      "id": "EDGE-GA-R3",
+      "classification": "factual_match",
+      "relation": "explicit reported pipeline removal",
+      "from_refs": [
+        "OBS-GA-R3"
+      ],
+      "to_refs": [
+        "OBS-GA-R3-A1"
+      ],
+      "basis": "The current PDF directly pairs these values on one anonymous row; factual match is limited to that source assertion.",
+      "source_evidence": [
+        {
+          "artifact_id": "ga-226607-107887",
+          "locator": "physical p34, table row 1"
+        }
+      ],
+      "aggregation_consequence": "No physical operation inferred; no cross-page or cross-filing asset identity inferred."
+    },
+    {
+      "id": "EDGE-GA-R4",
+      "classification": "factual_match",
+      "relation": "reported initial-service forecast postponed",
+      "from_refs": [
+        "OBS-GA-R4"
+      ],
+      "to_refs": [
+        "OBS-GA-R4-A1"
+      ],
+      "basis": "The current PDF directly pairs these values on one anonymous row; factual match is limited to that source assertion.",
+      "source_evidence": [
+        {
+          "artifact_id": "ga-226607-107887",
+          "locator": "physical p35, table row 1"
+        }
+      ],
+      "aggregation_consequence": "No physical operation inferred; no cross-page or cross-filing asset identity inferred."
+    },
+    {
+      "id": "EDGE-GA-R5",
+      "classification": "factual_match",
+      "relation": "reported initial-service forecast brought forward",
+      "from_refs": [
+        "OBS-GA-R5"
+      ],
+      "to_refs": [
+        "OBS-GA-R5-A1"
+      ],
+      "basis": "The current PDF directly pairs these values on one anonymous row; factual match is limited to that source assertion.",
+      "source_evidence": [
+        {
+          "artifact_id": "ga-226607-107887",
+          "locator": "physical p35, table row 8"
+        }
+      ],
+      "aggregation_consequence": "No physical operation inferred; no cross-page or cross-filing asset identity inferred."
+    },
+    {
+      "id": "EDGE-GA-R6",
+      "classification": "factual_match",
+      "relation": "reported initial-service forecast brought forward",
+      "from_refs": [
+        "OBS-GA-R6"
+      ],
+      "to_refs": [
+        "OBS-GA-R6-A1"
+      ],
+      "basis": "The current PDF directly pairs these values on one anonymous row; factual match is limited to that source assertion.",
+      "source_evidence": [
+        {
+          "artifact_id": "ga-226607-107887",
+          "locator": "physical p35, table row 18"
+        }
+      ],
+      "aggregation_consequence": "No physical operation inferred; no cross-page or cross-filing asset identity inferred."
+    },
+    {
+      "id": "EDGE-EIA-REPEAT",
+      "classification": "factual_match",
+      "relation": "repeated_disclosure",
+      "from_refs": [
+        "OBS-EIA-ALIAS"
+      ],
+      "to_refs": [
+        "OBS-EIA-UNIT"
+      ],
+      "basis": "Direct inspections returned the same July observation and September 24 release through both table parameters.",
+      "source_evidence": [
+        {
+          "artifact_id": "EIA-EPM-6.5-2026-09-24",
+          "locator": "Header and keyed row"
+        },
+        {
+          "artifact_id": "EIA-EPM-6.5-ALIAS-2026-09-24",
+          "locator": "Header and keyed row"
+        }
+      ],
+      "aggregation_consequence": "One capacity observation; second representation is dependent evidence."
+    },
+    {
+      "id": "EDGE-EIA-PARENT",
+      "classification": "factual_match",
+      "relation": "contained_in",
+      "from_refs": [
+        "SUBJECT-EIA-UNIT"
+      ],
+      "to_refs": [
+        "SUBJECT-EIA-PLANT"
+      ],
+      "basis": "Source row explicitly provides both IDs.",
+      "source_evidence": [
+        {
+          "artifact_id": "EIA-EPM-6.5-2026-09-24",
+          "locator": "Keyed row; table identifier notes"
+        }
+      ],
+      "aggregation_consequence": "Asset hierarchy only; do not sum a unit with a plant aggregate that includes it."
+    },
+    {
+      "id": "EDGE-EIA-MW",
+      "classification": "rejected_join",
+      "relation": "interchangeable_or_additive_measurement",
+      "from_refs": [
+        "OBS-EIA-UNIT-A1"
+      ],
+      "to_refs": [
+        "OBS-EIA-UNIT-A2"
+      ],
+      "basis": "Both describe the same generator under different capacity definitions.",
+      "source_evidence": [
+        {
+          "artifact_id": "EIA-EPM-6.5-2026-09-24",
+          "locator": "Net Summer Capacity and Nameplate Capacity columns, row 68741 / CPP_1"
+        }
+      ],
+      "aggregation_consequence": "Keep 22.2 MW net-summer and 26.1 MW nameplate separately; no sum or substitution."
+    },
+    {
+      "id": "EDGE-EIA-LOAD",
+      "classification": "rejected_join",
+      "relation": "unsupported_generation_to_load_attribution",
+      "from_refs": [
+        "SUBJECT-EIA-UNIT"
+      ],
+      "to_refs": [
+        "SUBJECT-CW-KENILWORTH",
+        "SUBJECT-GA-PORTFOLIO"
+      ],
+      "basis": "No inspected source establishes a physical delivery or allocation link.",
+      "source_evidence": [
+        {
+          "artifact_id": "EIA-EPM-6.5-2026-09-24",
+          "locator": "Keyed generator row"
+        }
+      ],
+      "aggregation_consequence": "Generator capacity cannot be assigned as usable data-center power; AI allocation unknown."
+    },
+    {
+      "id": "EDGE-LBNL-LOAD",
+      "classification": "rejected_join",
+      "relation": "population_mismatch",
+      "from_refs": [
+        "LBNL-QUEUED-2026-METADATA"
+      ],
+      "to_refs": [
+        "EXTERNAL-DATA-CENTER-WAITING-TIME"
+      ],
+      "basis": "Publication scope excludes load interconnection requests, distribution-connected and behind-the-meter projects.",
+      "source_evidence": [
+        {
+          "artifact_id": "LBNL-QUEUED-2026-METADATA",
+          "locator": "Abstract, L35-36"
+        }
+      ],
+      "aggregation_consequence": "No data-center waiting-time estimate or demand-side queue attribution."
+    }
+  ],
+  "unresolved_links": [
+    {
+      "id": "GAP-CW-DELAY",
+      "subject_id": "SUBJECT-CW-DELAY",
+      "missing": "Exact site, magnitude, duration, phase and resolution; repeated risk language does not supply current status.",
+      "effect": "No identified delivery milestone or remediation status."
+    },
+    {
+      "id": "GAP-CW-EPOCH",
+      "subject_id": "SUBJECT-CW-KENILWORTH",
+      "missing": "No supported Epoch record ID/permalink and precise site/phase correspondence were exposed in bounded inspection.",
+      "effect": "No facility pair admitted; this is not a claim that the database lacks the campus."
+    },
+    {
+      "id": "GAP-GA-SPLIT",
+      "missing": "Public anonymous parent/child identifiers or a marked row crosswalk linking the split statement, predecessor and two components; preferably an individually accessible revision/comparison PDF with those aliases.",
+      "effect": "Split occurrence is documented; parent/child entity edges and capacities remain null."
+    },
+    {
+      "id": "GAP-GA-COMPARISON-1",
+      "from": "ga-metadata-225690",
+      "to": "ga-226607-107887",
+      "status": "unresolved",
+      "missing_link": "Individually published Q3/Q4 revised comparison PDF and a public row identity crosswalk; cannot determine whether Q1's Q4 cells reproduce the revised Q4 version."
+    },
+    {
+      "id": "GAP-GA-COMPARISON-2",
+      "from": "ga-226607-107887",
+      "to": "ga-metadata-227753",
+      "status": "unresolved",
+      "missing_link": "Individually published Q2 PDF with public anonymous predecessor/phase IDs or explicit comparisons; metadata does not establish continuation, commissioning or disappearance."
+    },
+    {
+      "id": "GAP-EIA-U1",
+      "missing": "A later dated official keyed record explicitly reporting actual operational status for Plant ID 68741 + Generator ID CPP_1",
+      "effect": "No commissioning milestone or status transition admitted"
+    },
+    {
+      "id": "GAP-EIA-U2",
+      "missing": "Public item-level August inventory/status without forbidden bulk workbook",
+      "effect": "August XLS link metadata is not unit evidence"
+    },
+    {
+      "id": "GAP-EIA-U3",
+      "missing": "Documented mapping from queue authority + original request identifier and components/phases to EIA plant + generator",
+      "effect": "No LBNL request-to-generator join"
+    },
+    {
+      "id": "GAP-EIA-U4",
+      "missing": "Evidence of delivery/connection and allocation to a specified demand-side asset",
+      "effect": "Generator MW cannot be treated as usable AI/data-center power"
+    }
+  ],
+  "reviewer_context": [
+    {
+      "id": "REVIEW-GA-TABLE1-CONTEXT",
+      "case_id": "CASE-2",
+      "artifact_id": "ga-226607-107887",
+      "locator": "Physical p7 / printed p3, Table 1 headings and bottom source-printed total",
+      "evidence_status": "reviewer_read_source_bytes_and_visually_inspected",
+      "source_values": {
+        "Data Center - Total Customers": "26",
+        "Industrial - Total Customers": "5",
+        "21 out of 31 Customers have broken ground, MW": "8493"
+      },
+      "compared_narrative": {
+        "observation_id": "OBS-GA-PORTFOLIO",
+        "source_value": "8500",
+        "unit": "MW",
+        "qualifier": "rounded eventual-demand narrative",
+        "locator": "physical p5 / printed p1 bullet 2"
+      },
+      "observation_date": "2026-03-31",
+      "publication_date": "2026-05-15",
+      "stock_flow": "source customer counts and eventual-demand capacity, not energy flow or measured operating power",
+      "ai_allocation": "unknown",
+      "authority": "Georgia Power utility report, not independent physical validation",
+      "no_calculation": "All recorded values are source-printed; no arithmetic or anonymous matching performed."
+    }
+  ]
+}

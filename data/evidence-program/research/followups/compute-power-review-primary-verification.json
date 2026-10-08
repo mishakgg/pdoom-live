@@ -1,0 +1,390 @@
+{
+  "record_type": "bounded_primary_documentary_verification",
+  "review_commit": "f4320b6a1b6d5fac08efaa306768c487398977d9",
+  "inspection_window_utc": [
+    "2026-10-08T21:01:12Z",
+    "2026-10-08T21:07:34Z"
+  ],
+  "artifact_reviews": [
+    {
+      "artifact_id": "CW_424B4_20250331",
+      "url": "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/d899798d424b4.htm",
+      "review": {
+        "disposition": "reverified_body_known_sample",
+        "locator": "Glossary printed iii; Overview; MD&A p104; web lines 196,308,3204",
+        "finding": "Strict >250,000 GPU count and source-defined 32 data centers retained. Accession metadata remains submitted/prior-verified evidence; not reopened in this pass.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "CW_10K_FY2025",
+      "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm",
+      "review": {
+        "disposition": "reverified_body_known_sample",
+        "locator": "Business p5; Securing Sufficient Power p67; Note 8 p112; lines 219,1883-1884,3581-3582",
+        "finding": "Over 850 active, approximately 3.1 GW contracted; anonymous 393 MW access and expected 2026/2027. Prior approximate versus more-than 360 MW wording preserved by locator, without selecting an exact value.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "CW_10Q_Q12026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000222/crwv-20260331.htm",
+      "review": {
+        "disposition": "reverified_body_and_accession",
+        "locator": "Note 8 p22 lines 943-944; delay risk line 1823; Kenilworth line 2471; SEC index filing/accepted/period",
+        "finding": "525 MW contractual access with 2026/2028 targets; repeated November announcement; no explicit lease/site ID; filed 2026-05-08 versus accepted 2026-05-07 19:21:42 as displayed.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "CW_10Q_Q22026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm",
+      "review": {
+        "disposition": "reverified_body_and_accession",
+        "locator": "Note 8 pp24-25 lines 1025,1032; delay line 2009; Kenilworth lines 2629,2642; SEC index",
+        "finding": "393 MW remaining undelivered with 2026/2028 targets; repeated announcement; filed 2026-08-12 versus accepted 2026-08-11 19:24:42 as displayed.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "CW_QUARTERLY_LISTING_20261008",
+      "url": "https://investors.coreweave.com/financials/quarterly-results/",
+      "review": {
+        "disposition": "submitted_historical_access_preserved_not_reopened",
+        "locator": "Submitted listing receipt",
+        "finding": "Historical incomplete rendered listing is retained; no current archive completeness claim.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "CW_SEC_LISTING_20261008",
+      "url": "https://investors.coreweave.com/financials/sec-filings/default.aspx",
+      "review": {
+        "disposition": "submitted_historical_access_preserved_not_reopened",
+        "locator": "Submitted listing receipt",
+        "finding": "No current archive completeness or filing-body rights claim.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "EPOCH_DESCRIPTION_20261008",
+      "url": "https://epoch.ai/data/ai-data-centers",
+      "review": {
+        "disposition": "reverified_definition_and_rights",
+        "locator": "Definition lines 219-224; citations 284; methodology 300-305; displayed downloads 255-281",
+        "finding": "Nearby buildings may form one record; campus/building are not separated; estimated IT-power basis and current data CC BY 4.0 declaration retained. No payload or facility page fetched.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "EPOCH_DIRECTORY_20261005",
+      "url": "https://epoch.ai/data/ai-data-centers/directory",
+      "review": {
+        "disposition": "submitted_historical_bounded_discovery_preserved_not_reopened",
+        "locator": "Submitted visible-directory evidence",
+        "finding": "No supported candidate key established; no absence inference and no fresh facility discovery pass.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "CC_BY40_DEED",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "review": {
+        "disposition": "reopened_linked_license",
+        "locator": "Epoch direct CC-BY link resolves to Attribution 4.0 deed",
+        "finding": "License is applied only through the source-specific grant, with source/author credit and other rights limits.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "ga-226607-107887",
+      "url": "https://services.psc.ga.gov/api/v1/External/Public/Get/Document/DownloadFile/226607/107887",
+      "review": {
+        "disposition": "reverified_original_bytes_and_visual_rows",
+        "locator": "Physical pp5,7,27,33,34,35,36; six row comparisons; metadata 226607",
+        "finding": "841648 bytes; submitted SHA-256 matched. Original source-read and local visual bounds recorded separately below.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": "5dfc4c931f75509f93ed7dc1b44307ddf613aa0f4397914b1330ab34aca703de",
+      "source_body_hash_scope": "whole original response body, independently matched"
+    },
+    {
+      "artifact_id": "ga-metadata-225690",
+      "url": "https://psc.ga.gov/search/facts-document/?documentId=225690",
+      "review": {
+        "disposition": "reverified_metadata_only",
+        "locator": "Filing description/date/attachment lines 71-97",
+        "finding": "2026-03-04 revised Q3/Q4; ZIP-only attachment exposed. No linked individual comparison PDF; stopped.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "ga-metadata-227753",
+      "url": "https://psc.ga.gov/search/facts-document/?documentId=227753",
+      "review": {
+        "disposition": "reverified_metadata_only",
+        "locator": "Filing description/date/attachment lines 71-97",
+        "finding": "2026-08-17 Q2; ZIP-only attachment exposed. No linked individual comparison PDF; stopped.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "EIA-EPM-6.5-2026-09-24",
+      "url": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_05",
+      "review": {
+        "disposition": "reverified_keyed_web_observation_raw_capture_incomplete",
+        "locator": "Header 21; row 47; identifier/source notes 2392-2396",
+        "finding": "Same July 2026 observation, August planned month, September 24 release and TS. HTTP 200 raw-body request exceeded 1 MB cap; no complete bytes/hash retained.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "EIA-EPM-6.5-ALIAS-2026-09-24",
+      "url": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=table_6_05",
+      "review": {
+        "disposition": "submitted_historical_same_vintage_evidence_preserved_not_reopened",
+        "locator": "Submitted alternate-parameter header/row",
+        "finding": "Historical same-vintage alias remains dependent representation. No new source absence or transition claim.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "EIA-860M-LANDING-2026-09-24",
+      "url": "https://www.eia.gov/electricity/data/eia860m/",
+      "review": {
+        "disposition": "reverified_methodology_and_attachment_metadata",
+        "locator": "Release 63; method 64-71; August XLS label 80",
+        "finding": "Preliminary capacity estimates may change without specific acknowledgment; annual 860 final; workbook label is not keyed status and workbook not fetched.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "EIA-RIGHTS-2026-10-08",
+      "url": "https://www.eia.gov/about/copyrights_reuse.php",
+      "review": {
+        "disposition": "reverified_rights_page",
+        "locator": "Public-domain/data reuse 21-25; protected-material exceptions 28-33",
+        "finding": "EIA information reuse with dated acknowledgment; protected third-party materials, photos and marks separately excluded.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "LBNL-QUEUES-LANDING-2026-10-08",
+      "url": "https://emp.lbl.gov/queues",
+      "review": {
+        "disposition": "reverified_documentation_and_data_file_license",
+        "locator": "Timing 6; data-file rights 20-22",
+        "finding": "May data-file update distinct from June PDF; CC BY 4.0 statement is data-file-specific and includes LBNL/GridTracker attribution. Neither attachment fetched.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    },
+    {
+      "artifact_id": "LBNL-QUEUED-2026-METADATA",
+      "url": "https://eta.lbl.gov/publications/queued-2026-edition-characteristics",
+      "review": {
+        "disposition": "reverified_documentation_boundary",
+        "locator": "Catalog date 24-26; scope 35; codebook 36; rights 54-56; attachment metadata 64-68",
+        "finding": "Transmission generation only; load/distribution/behind-meter excluded. Codebook inside uninspected 14.85 MB XLSX; no field names guessed.",
+        "inspection_window_utc": [
+          "2026-10-08T21:01:12Z",
+          "2026-10-08T21:07:34Z"
+        ]
+      },
+      "source_body_sha256": null,
+      "source_body_hash_scope": "No whole-source byte hash established in current review"
+    }
+  ],
+  "source_byte_captures": [
+    {
+      "url": "https://services.psc.ga.gov/api/v1/External/Public/Get/Document/DownloadFile/226607/107887",
+      "attempt_time_utc": "2026-10-08T21:04:53.950081+00:00",
+      "scope": "single supplied official PDF; cap 1000000 bytes; not an additional comparison PDF",
+      "status": 200,
+      "resolved_url": "https://services.psc.ga.gov/api/v1/External/Public/Get/Document/DownloadFile/226607/107887",
+      "headers": {
+        "Content-Length": "841648",
+        "Content-Type": "application/pdf",
+        "Server": "Kestrel",
+        "Strict-Transport-Security": "max-age=2592000",
+        "Content-Disposition": "attachment; filename=\"DKT 55378 Lg Load Econ Dev Rept Q1 2026 PD.pdf\"; filename*=UTF-8''DKT%2055378%20Lg%20Load%20Econ%20Dev%20Rept%20Q1%202026%20PD.pdf",
+        "X-Powered-By": "ASP.NET",
+        "Date": "Thu, 08 Oct 2026 21:04:59 GMT",
+        "Connection": "close"
+      },
+      "bytes": 841648,
+      "sha256": "5dfc4c931f75509f93ed7dc1b44307ddf613aa0f4397914b1330ab34aca703de",
+      "capture": "original HTTP response body bytes",
+      "source_review_local_receipt_identity": {
+        "label": "primary-receipts/ga-226607-107887.pdf",
+        "scope": "Historical source-review receipt identifier, not a repository link. Original PDF remains excluded from the public payload.",
+        "published": false
+      },
+      "public_source_url": "https://services.psc.ga.gov/api/v1/External/Public/Get/Document/DownloadFile/226607/107887"
+    },
+    {
+      "url": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_05",
+      "attempt_time_utc": "2026-10-08T21:06:11.170970+00:00",
+      "scope": "single starting official Table 6.5 HTML; cap 1000000 bytes; no later-vintage or workbook fetch",
+      "status": 200,
+      "resolved_url": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_05",
+      "headers": {
+        "Content-Type": "text/html; charset=UTF-8",
+        "Server": "Microsoft-IIS/10.0",
+        "X-Powered-By": "ASP.NET",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Content-Length": "2388675",
+        "Expires": "Thu, 08 Oct 2026 21:06:17 GMT",
+        "Cache-Control": "max-age=0, no-cache, no-store",
+        "Pragma": "no-cache",
+        "Date": "Thu, 08 Oct 2026 21:06:17 GMT",
+        "Connection": "close",
+        "Alt-Svc": "h3=\":443\"; ma=93600"
+      },
+      "bytes": 1000001,
+      "error": "single-source byte cap exceeded"
+    }
+  ],
+  "access_attempt_history": [
+    {
+      "action": "Bounded ordinary GET of supplied Georgia PDF",
+      "first_outcome": "automatic approval review was cancelled before execution",
+      "retry": "same request once after parent supplied original user authorization evidence",
+      "outcome": "HTTP 200, exact submitted byte hash matched"
+    },
+    {
+      "action": "Georgia source PDF screenshots through web tool",
+      "pages_one_based": [
+        27,
+        33,
+        34,
+        35,
+        36
+      ],
+      "outcome": "First four returned handles but no pixels in runtime; page 36 returned source endpoint error. No visual verification claimed from these calls. Later local rendering used the authorized same-source byte capture."
+    },
+    {
+      "action": "EIA raw table response body capture",
+      "outcome": "HTTP 200 and advertised Content-Length 2388675; stopped at preset 1,000,000-byte cap, read 1,000,001-byte sentinel, discarded incomplete bytes; no retry or alternate source representation."
+    }
+  ],
+  "visual_inspection": {
+    "source": "ga-226607-107887",
+    "locally_rendered_pages": [
+      5,
+      7,
+      27,
+      33,
+      34,
+      35,
+      36
+    ],
+    "pages_visually_inspected": [
+      7,
+      27,
+      33,
+      34,
+      35,
+      36
+    ],
+    "method": "Poppler pdftoppm at 100 dpi and view_image; text extraction separately used pdftotext -layout",
+    "findings": "No footnote-to-project row marker visible on 27/36; six selected comparison rows and p7 portfolio headings/source-printed 8,493 MW verified."
+  },
+  "submitted_report_inspection": {
+    "pages": 8,
+    "text_read": "all eight extracted pages",
+    "intake_visual_scope": "all 8 pages visually inspected by intake",
+    "reviewer_visual_scope": "Not independently rerendered; source-document pages inspected instead."
+  },
+  "stopping_conditions": {
+    "later_SEC_filings": "Exactly the submitted Q1 and Q2 accessions; no third subsequent filing",
+    "Epoch": "Description/license only in current pass; 0 facility records, 0 bulk payloads",
+    "Georgia": "Named 3 metadata pages and 1 supplied PDF; 0 additional PDFs; 0 new comparison PDF bytes; 0 ZIP/XLSX",
+    "EIA": "Starting table, methodology and rights only in current pass; 0 new follow-up/status pages and 0 later operational vintages",
+    "LBNL": "Two named documentation pages only; 0 PDF/XLSX",
+    "other_prohibited_routes": "ERCOT, EirGrid and SK hynix blocked routes not attempted"
+  },
+  "evidence_preservation": "Failed reread, missing bytes and absent key search results never erase prior verified documentary assertions."
+}

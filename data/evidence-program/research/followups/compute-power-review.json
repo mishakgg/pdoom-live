@@ -1,0 +1,597 @@
+{
+  "record_type": "reviewed_compute_power_capacity_research_delta",
+  "review_id": "deep-batch-e-session7",
+  "reviewer_primary_inspection_window_utc": [
+    "2026-10-08T21:01:12Z",
+    "2026-10-08T21:07:34Z"
+  ],
+  "clock_scope": "Tool/developer clock brackets and HTTP capture timestamps; filesystem mtimes are not source dates.",
+  "intake_manifest_sha256": "1ac83cd1fb4b86baeb79d1b109abc1d692eb48ac57428e6dbfcf8e9dd3441d14",
+  "intake_originals": [
+    {
+      "filename": "Yapıştırılan metin(20261008-205512).txt",
+      "bytes": 14679,
+      "sha256": "fd17e6e40a3f979acfb6b0dd6a7c38436bdfdee2ebe5eace459b350483331734",
+      "hash_scope": "whole immutable submitted file bytes",
+      "read_only": true
+    },
+    {
+      "filename": "compute_power_capacity_decision_report_2026-10-08(1).pdf",
+      "bytes": 102418,
+      "sha256": "1d1baab9b965a47ed20dc07cd15508b86c09416e1ee3b237fbd7084a6617cb1c",
+      "hash_scope": "whole immutable submitted file bytes",
+      "read_only": true
+    },
+    {
+      "filename": "compute_power_capacity_ledger_2026-10-08(1).json",
+      "bytes": 156471,
+      "sha256": "e34b1e3e0ff27e07a02a76bf2b503c914f9a92313c88381643b03cd217d8555a",
+      "hash_scope": "whole immutable submitted file bytes",
+      "read_only": true
+    }
+  ],
+  "original_prompt_sha256": "0988e729b4559a94afb4c8df1aa5704ce0996f387f955106c072ff06342ee8a6",
+  "repository_context": {
+    "submitted_historical": {
+      "repository_url": "https://github.com/mishakgg/pdoom-live",
+      "supplied_commit": "87dda3d74f9f9874e82d83d1628b53f9da4b5526",
+      "inspected_commit": null,
+      "status": "supplied baseline uninspected",
+      "source_labels_from_user": [
+        "SCB008",
+        "SCB008-A1",
+        "GL003",
+        "EDB002",
+        "EDB002-A1",
+        "EDB004",
+        "EDB004-A1",
+        "EDB007"
+      ],
+      "attempts": [
+        {
+          "path": "docs/evidence-program/source_priorities.md",
+          "result": "DisabledError"
+        },
+        {
+          "path": "docs/evidence-program/dataset_spec.md",
+          "result": "DisabledError"
+        }
+      ],
+      "other_requested_material": "Compute-supply-chain and electricity-deployment guides and matching catalogs, and GL003 in source_inventory.json were not inspected after repository access failed. Existence or absence is not asserted.",
+      "canonical_mapping": "deferred",
+      "verified_compatibility": false,
+      "repository_edits": false
+    },
+    "reviewer": {
+      "inspected_commit": "f4320b6a1b6d5fac08efaa306768c487398977d9",
+      "method": "GitHub connector ref/tree plus local Git blob hashing",
+      "verified_selected_files": 24,
+      "full_checkout": false,
+      "native_mapping": "partial_with_companion_requirements",
+      "production_validation": false,
+      "main_resolution_observation_window_utc": [
+        "2026-10-08T21:06:51Z",
+        "2026-10-08T21:07:03Z"
+      ]
+    }
+  },
+  "preserved_catalog_identifiers": [
+    "SCB008",
+    "SCB008-A1",
+    "GL003",
+    "EDB002",
+    "EDB002-A1",
+    "EDB004",
+    "EDB004-A1",
+    "EDB007",
+    "EDB007-A1"
+  ],
+  "scope": "Three documentary cases and source-native identity/stage accounting. No aggregate resource estimate, no bulk or live collector, no accounts/outreach, no anonymous reidentification, no source-code execution, no repository mutation/publication.",
+  "accepted": [
+    {
+      "id": "CP-A01",
+      "source_ids": [
+        "SCB008"
+      ],
+      "observation_ids": [
+        "OBS-CW01",
+        "OBS-CW02",
+        "OBS-CW05",
+        "OBS-CW06",
+        "OBS-CW07"
+      ],
+      "decision": "Keep issuer-reported portfolio stocks, native metric labels, strict lower bounds and dates. The prospectus count permits leased or owned portions receiving active power. Active and contracted power are non-additive with exact overlap unresolved."
+    },
+    {
+      "id": "CP-A02",
+      "source_ids": [
+        "SCB008"
+      ],
+      "observation_ids": [
+        "OBS-CW10",
+        "OBS-CW11",
+        "OBS-CW12"
+      ],
+      "decision": "Keep separate anonymous Note 8 disclosures: FY2025 393 MW contractual access, Q1 525 MW contractual access, Q2 393 MW remaining undelivered. Forecast years remain separate. Same-site continuation stays possible, not factual; no delivery subtraction."
+    },
+    {
+      "id": "CP-A03",
+      "source_ids": [
+        "SCB008",
+        "GL003"
+      ],
+      "observation_ids": [
+        "OBS-CW08-1",
+        "OBS-CW08-2",
+        "OBS-CW08-3",
+        "OBS-CW09-1",
+        "OBS-CW09-2",
+        "OBS-CW09-3"
+      ],
+      "decision": "Repeated November 2025 announcement is dependent disclosure. Kenilworth is a separately named development; no exact facility allocation or delay resolution is established."
+    },
+    {
+      "id": "CP-A04",
+      "source_ids": [
+        "EDB002"
+      ],
+      "observation_ids": [
+        "OBS-GA-PORTFOLIO",
+        "OBS-GA-SPLIT-P27",
+        "OBS-GA-SPLIT-P36",
+        "OBS-GA-R1",
+        "OBS-GA-R2",
+        "OBS-GA-R3",
+        "OBS-GA-R4",
+        "OBS-GA-R5",
+        "OBS-GA-R6",
+        "OBS-GA-CREATED"
+      ],
+      "decision": "Retain one source-documented anonymous split with unresolved endpoints and possible repeated footnote; six within-Q1 comparisons remain documentary pairings only. Customer/row names remain REDACTED. Eventual load is not measured operating power."
+    },
+    {
+      "id": "CP-A05",
+      "source_ids": [
+        "EDB004",
+        "EDB007"
+      ],
+      "observation_ids": [
+        "OBS-EIA-UNIT",
+        "OBS-EIA-ALIAS"
+      ],
+      "decision": "Preserve EIA plant 68741 plus generator CPP_1, separate 22.2 net-summer/26.1 nameplate MW, TS and July observation/August target/September 24 publication. The alias is retained as historically inspected same-vintage evidence, not a new current recheck. Berkeley Lab excludes load requests."
+    },
+    {
+      "id": "CP-A06",
+      "source_ids": [
+        "SCB008",
+        "EDB002",
+        "EDB004",
+        "EDB007",
+        "GL003"
+      ],
+      "decision": "Retain all 3 cases, 18 artifacts, 18 subjects, 26 observations, 34 assertions, 22 relationships, 9 unresolved links and 24 original unexecuted acceptance requirements. Four independent stage dimensions, source authority, stock/flow, date roles, rights scope and unknown AI allocation remain mandatory."
+    }
+  ],
+  "corrected_or_qualified": [
+    {
+      "id": "CP-C01",
+      "kind": "repository_mapping_now_partly_resolved",
+      "decision": "Supplied 87dda3d remains historically uninspected. Reviewer independently resolved main to f4320b6a and Git-blob-verified 24 selected files before reusing local snapshots. Actual native shape is now mapped; this is not a full checkout, production validation or faithful native representation of every field."
+    },
+    {
+      "id": "CP-C02",
+      "kind": "source_byte_provenance_confirmed",
+      "decision": "One bounded successful official Georgia GET returned 841648 original bytes matching the submitted SHA-256. Prior source hash is now independently confirmed. Reuse rights are not inferred from capture success."
+    },
+    {
+      "id": "CP-C03",
+      "kind": "portfolio_context_and_rounding_added",
+      "decision": "Georgia physical p7 Table 1 labels 26 data-center customers and 5 industrial customers, and directly prints 8493 MW for broken-ground customers. Keep this source-table value alongside narrative rounded 8500 MW, by locator; no summation, identity allocation or AI share is computed. The 31-customer portfolio is not 31 AI data centers."
+    },
+    {
+      "id": "CP-C04",
+      "kind": "access_state_qualified",
+      "decision": "Current EIA keyed web inspection succeeds. Historical transient errors remain true past acquisition outcomes. The single raw HTML capture hit its preset 1 MB cap after Content-Length 2388675; incomplete bytes were not saved and no whole-source checksum is claimed."
+    },
+    {
+      "id": "CP-C05",
+      "kind": "test_claim_separation",
+      "decision": "Original AC01-AC24 remain specified-only and unexecuted. New offline synthetic JSON Schema probes are reported separately; they do not execute an adapter, certify source accuracy, establish joins or validate all semantic acceptance requirements."
+    }
+  ],
+  "held": [
+    {
+      "id": "CP-H01",
+      "source_ids": [
+        "SCB008"
+      ],
+      "gap_refs": [
+        "GAP-CW-DELAY"
+      ],
+      "missing": "Explicit active/contracted inclusion rule, anonymous lease/site/phase bridge, identified November-delay magnitude/duration/resolution.",
+      "consequence": "No exact headroom, delivered increment, refreshed GPU total or current delay assertion."
+    },
+    {
+      "id": "CP-H02",
+      "source_ids": [
+        "SCB008",
+        "GL003"
+      ],
+      "gap_refs": [
+        "GAP-CW-EPOCH"
+      ],
+      "missing": "Individually inspected Epoch record identifier/vintage plus explicit public site/phase and quantity-allocation bridge.",
+      "consequence": "Zero facility descriptions opened and zero facility joins admitted. Failed bounded discovery does not imply database absence."
+    },
+    {
+      "id": "CP-H03",
+      "source_ids": [
+        "EDB002"
+      ],
+      "gap_refs": [
+        "GAP-GA-SPLIT",
+        "GAP-GA-COMPARISON-1",
+        "GAP-GA-COMPARISON-2"
+      ],
+      "missing": "Visible footnote-to-row or public anonymous parent/child crosswalk; individually accessible revised-Q4/Q2 comparison PDFs.",
+      "consequence": "225690 and 227753 remain metadata-only ZIP listings. No ZIP/XLSX was fetched and no endpoint, capacity or customer identity was invented."
+    },
+    {
+      "id": "CP-H04",
+      "source_ids": [
+        "EDB004",
+        "EDB007"
+      ],
+      "gap_refs": [
+        "GAP-EIA-U1",
+        "GAP-EIA-U2",
+        "GAP-EIA-U3",
+        "GAP-EIA-U4"
+      ],
+      "missing": "Later affirmative official plant-plus-generator operation record, request-ID bridge, and demand-side delivery/allocation evidence.",
+      "consequence": "No commissioning from elapsed target, disappearance, error or August workbook label; no generation-to-load or AI allocation."
+    },
+    {
+      "id": "CP-H05",
+      "source_ids": [
+        "EDB004"
+      ],
+      "missing": "Complete bounded original EIA source-body capture or a separately approved compact official representation with key, header and notes.",
+      "consequence": "Current web-output/excerpt hashes identify analyst/tool serialization, not EIA HTML. Acquisition reliability and raw-byte replay remain open."
+    },
+    {
+      "id": "CP-H06",
+      "source_ids": [
+        "SCB008",
+        "EDB002",
+        "GL003",
+        "EDB007"
+      ],
+      "missing": "Artifact-specific rights basis for full issuer/utility content retention/export and any underlying third-party materials.",
+      "consequence": "Public read, SEC/PSC hosting and inspected dataset licenses do not establish blanket redistribution. No raw source bodies belong in the prepared publication set."
+    },
+    {
+      "id": "CP-H07",
+      "source_ids": [
+        "SCB008",
+        "EDB002",
+        "EDB004",
+        "EDB007",
+        "GL003"
+      ],
+      "missing": "Approved native asset/relationship/stage semantics or a lossless companion contract, independent review and any later adapter authorization.",
+      "consequence": "Source-native research only. No real resource record, collector, operational series, migration or publication admitted."
+    }
+  ],
+  "original_counts": {
+    "case_studies": 3,
+    "artifacts": 18,
+    "subjects": 18,
+    "observations": 26,
+    "assertions": 34,
+    "relationships": 22,
+    "unresolved_links": 9,
+    "acceptance_cases": 24
+  },
+  "preserved_source_native_evidence": "data/evidence-program/research/followups/compute-power-review-source-native-ledger.json",
+  "reviewer_added_context": [
+    {
+      "id": "REVIEW-GA-TABLE1-CONTEXT",
+      "case_id": "CASE-2",
+      "artifact_id": "ga-226607-107887",
+      "locator": "Physical p7 / printed p3, Table 1 headings and bottom source-printed total",
+      "evidence_status": "reviewer_read_source_bytes_and_visually_inspected",
+      "source_values": {
+        "Data Center - Total Customers": "26",
+        "Industrial - Total Customers": "5",
+        "21 out of 31 Customers have broken ground, MW": "8493"
+      },
+      "compared_narrative": {
+        "observation_id": "OBS-GA-PORTFOLIO",
+        "source_value": "8500",
+        "unit": "MW",
+        "qualifier": "rounded eventual-demand narrative",
+        "locator": "physical p5 / printed p1 bullet 2"
+      },
+      "observation_date": "2026-03-31",
+      "publication_date": "2026-05-15",
+      "stock_flow": "source customer counts and eventual-demand capacity, not energy flow or measured operating power",
+      "ai_allocation": "unknown",
+      "authority": "Georgia Power utility report, not independent physical validation",
+      "no_calculation": "All recorded values are source-printed; no arithmetic or anonymous matching performed."
+    }
+  ],
+  "primary_verification": "data/evidence-program/research/followups/compute-power-review-primary-verification.json",
+  "artifact_specific_rights": "data/evidence-program/research/followups/compute-power-review-rights-by-artifact.json",
+  "relationships": "data/evidence-program/research/followups/compute-power-review-relationship-specification.json",
+  "native_mapping": "data/evidence-program/research/followups/compute-power-review-contract-mapping.json",
+  "acceptance": "data/evidence-program/research/followups/compute-power-review-acceptance-cases.json",
+  "prior_catalogs": "data/evidence-program/research/followups/compute-power-review-prior-catalog-preservation.json",
+  "next_actions": "data/evidence-program/research/followups/compute-power-review-follow-up-actions.json",
+  "admission": {
+    "real_records_admitted": 0,
+    "operational_admission": "not_admitted",
+    "collector_enabled": false,
+    "repository_written": false,
+    "publication_performed": false
+  },
+  "interpretation_guards": [
+    "This investigation authorizes no capacity summation or conversion.",
+    "For a later separately authorized aggregator, explicit disjoint asset scopes, common metric definition, compatible date and stage, and supported containment would be prerequisites.",
+    "Do not add parents to included phases/children, alternate capacity ratings of the same asset, repeated disclosures, or successive stocks/vintages.",
+    "A reporting split does not itself establish physical subdivision, added demand or conserved numerical partition.",
+    "Lower-bound and approximate values are not point estimates; do not derive exact differences or growth from them.",
+    "Do not convert MW into GPUs/FLOPs, generation into delivered load, unknown AI allocation into a share, or any resource quantity into catastrophe probability."
+  ],
+  "strongest_implementable_slice": {
+    "source_id": "EDB004",
+    "subject": "Plant 68741 / Generator CPP_1",
+    "status": "documentary fixture and partial mapping only",
+    "remaining_gates": [
+      "lossless source-native companion representation",
+      "complete reproducible source-byte capture",
+      "semantic acceptance implementation and independent review",
+      "later affirmative keyed operation evidence for any transition",
+      "separate explicit request/generator/demand allocation bridges"
+    ]
+  },
+  "source_review_state_preserved": "ready_for_independent_review_with_residual_holds",
+  "review_state": "review_complete_with_residual_holds",
+  "title": "Compute and power capacity accounting follow-up",
+  "bundle_sequence": 8,
+  "submission_id": "bundle-e",
+  "deep_prompt_number": 7,
+  "original_sessions": [
+    23,
+    26
+  ],
+  "integration_status": "reviewed_delta_included_in_this_candidate",
+  "integration_base_commit": "246f746e3a267363c7f6d2e0494eb72fb4c98bc9",
+  "integration_base_tree_sha": "ec8f87a1f6aa4251f3df69cd56445083b794d59b",
+  "integration_snapshot_at": "2026-10-08T21:27:52Z",
+  "source_review_base_commit": "f4320b6a1b6d5fac08efaa306768c487398977d9",
+  "implementation_status": "additive_research_annotations_only",
+  "historical_catalogs_preserved": true,
+  "operational_admission": "not_admitted",
+  "collector_enabled": false,
+  "canonical_import": false,
+  "canonical_contract_mapping": "partial_with_companion_requirements_and_semantic_holds",
+  "raw_source_files_published": false,
+  "remote_publication_claimed": false,
+  "source_review_provenance": {
+    "review_manifest_sha256": "9d8201c2e6c0cd2e07b9363feb62ac48c443d48a7a5819ad4b39bf44e58b1491",
+    "independent_clearance_sha256": "33eb9107acfadcec868a304aa18f99be87d8ca9a9409ae4bdc0e76ef5445d8cb",
+    "independent_seal_sha256": "a12b8befa1f4a88b07fe73c8112dfa33214b62d77c2da7974a43ed5287b68f92",
+    "decision": "clear_for_parent_documentary_integration_with_all_residual_holds_preserved",
+    "reviewed_at_utc": "2026-10-08T21:23:00Z",
+    "review_base_commit": "f4320b6a1b6d5fac08efaa306768c487398977d9",
+    "reviewed_source_outputs": [
+      {
+        "path": "review.md",
+        "bytes": 12207,
+        "sha256": "d98ae8cb6867f63e2f8d1d70db45b7554aaa7102c0022ad60c18fb53e1202347",
+        "hash_scope": "entire prepared file bytes"
+      },
+      {
+        "path": "delta.json",
+        "bytes": 14963,
+        "sha256": "823659ffee136f1a96ad376a60144201cafcda72242c8ed180ec755fdbaebeb5",
+        "hash_scope": "entire prepared file bytes"
+      },
+      {
+        "path": "source-native-ledger.json",
+        "bytes": 163049,
+        "sha256": "404fb2b3884e399dc7c9e6d6791635a4e71da8d408761ccf517a1fd910f598f6",
+        "hash_scope": "entire prepared file bytes"
+      },
+      {
+        "path": "primary-verification.json",
+        "bytes": 17692,
+        "sha256": "d8865fbc0dc143f9053d19223b4d8f1412bea73014350662cc675b0f2c6a344f",
+        "hash_scope": "entire prepared file bytes"
+      },
+      {
+        "path": "rights-by-artifact.json",
+        "bytes": 14608,
+        "sha256": "2489070c9156251e08035ec51af07818f7073f4a46941ce81b040e35accca2b6",
+        "hash_scope": "entire prepared file bytes"
+      },
+      {
+        "path": "relationship-specification.json",
+        "bytes": 28376,
+        "sha256": "4c112a9ce0fd696ca58e8a062ed12a3b976864b7f074f5c49546ac9233a65c5f",
+        "hash_scope": "entire prepared file bytes"
+      },
+      {
+        "path": "contract-mapping.json",
+        "bytes": 82638,
+        "sha256": "ef752439f9b05c72bd6a3bf602e0bc962c720b521dde0e3778b5d5e57a34b1bd",
+        "hash_scope": "entire prepared file bytes"
+      },
+      {
+        "path": "acceptance-cases.json",
+        "bytes": 62484,
+        "sha256": "5d8181ef9311feb096b20c3c82a0066b2ad89193dd74d709cd15c1bdf3c5a92f",
+        "hash_scope": "entire prepared file bytes"
+      },
+      {
+        "path": "schema-test-results.json",
+        "bytes": 494405,
+        "sha256": "b2df22e7fa83bd06d0e1f8cce6e0cb2185ad8c81ceca489dc8cca5c26e9279ab",
+        "hash_scope": "entire prepared file bytes"
+      },
+      {
+        "path": "prior-catalog-preservation.json",
+        "bytes": 41302,
+        "sha256": "3ade1a070125ed16291300922472354f148d9c977164c5e835741dc9e906f97e",
+        "hash_scope": "entire prepared file bytes"
+      },
+      {
+        "path": "repository-files-manifest.json",
+        "bytes": 15682,
+        "sha256": "065619b284cebd17f199a1670bb8d8f402547fdda0cdd1ef67622b99a2cce63d",
+        "hash_scope": "entire prepared file bytes"
+      },
+      {
+        "path": "follow-up-actions.json",
+        "bytes": 4168,
+        "sha256": "5cece1c4b35e3281dd9bf472d92a6cff3650523e2484e6e9aeccc2cbc61797e1",
+        "hash_scope": "entire prepared file bytes"
+      },
+      {
+        "path": "validation-results.json",
+        "bytes": 21006,
+        "sha256": "9342cee98e1f963d208f451cdced486b1e2f66cc2b7bc43edce052bf106c8229",
+        "hash_scope": "entire prepared file bytes"
+      }
+    ],
+    "hash_scope": "Hashes bind the 13 pre-integration cleared inputs. Their filename labels are historical identity metadata, not repository links. Public destinations are listed separately.",
+    "independent_checks": {
+      "checks": 581,
+      "passed": 581,
+      "failed": 0
+    },
+    "authored_validator_replay": {
+      "checks": 173,
+      "passed": 173,
+      "failed": 0
+    },
+    "synthetic_probe_replay": {
+      "native_schemas_loaded_and_self_checked": 14,
+      "new_synthetic_probes_executed": 106,
+      "distinct_fixture_payloads": 103,
+      "expected_outcomes_matched": 106,
+      "unexpected_outcomes": 0,
+      "native_schema_accepts": 29,
+      "native_schema_rejections": 77,
+      "classifications": {
+        "native_shape": 72,
+        "domain_hole": 17,
+        "representation_only": 3,
+        "domain_counterexample": 4,
+        "structural_counterexample": 1,
+        "documented_validator_counterexample": 9
+      },
+      "original_requirements_preserved_unchanged": true,
+      "original_requirement_count": 24,
+      "original_requirements_with_linked_shape_probes": 24,
+      "original_behavioral_cases_executed": 0,
+      "original_behavioral_cases_passed": 0,
+      "repository_validator_or_adapter_runs": 0,
+      "external_requests": 0,
+      "source_records_admitted": 0,
+      "field_dictionary_entries_checked": 191,
+      "field_dictionary_shape_mismatches": 0
+    },
+    "original_semantic_tests": {
+      "executed": 0,
+      "passed": 0,
+      "status": "All AC01–AC24 remain specified_only_not_executed; synthetic shape probes do not discharge them."
+    },
+    "residual_holds": [
+      "CP-H01: active/contracted inclusion, anonymous lease/site/phase bridge and November-delay magnitude/duration/resolution.",
+      "CP-H02: inspected Epoch facility key/vintage and explicit public site/phase/allocation bridge.",
+      "CP-H03: public Georgia anonymous parent/child or stable row crosswalk and individually accessible comparison PDFs; ZIP/XLSX stopping rule remains.",
+      "CP-H04: later affirmative EIA plant-plus-generator operational record, queue-request bridge and demand delivery/allocation evidence.",
+      "CP-H05: complete bounded original EIA bytes or separately authorized compact official representation; no uncaptured source checksum.",
+      "CP-H06: full issuer/utility artifact and underlying third-party reuse scope remains uncleared.",
+      "CP-H07: lossless native companion/asset/stage/relationship design and separately authorized semantic tests/import/adapter work."
+    ],
+    "integration_conditions": [
+      "Integrate only the exact 13 hash-bound files, preserving source-native originals as historical evidence and keeping current corrections separate.",
+      "Retain current catalog records, source/action IDs, nine unresolved links, all seven hold groups and the unexecuted status of all 24 original semantic requirements.",
+      "Exclude raw primary receipts, source PDF/images, local replay/support scripts and sealed intake originals from publication.",
+      "Do not describe this clearance as operational admission, a production audit, source accuracy/rights certification or completion of the original behavioral tests.",
+      "No additional source acquisition, source-budget extension, reidentification, cross-stage capacity arithmetic or MW-to-GPU/FLOP conversion is authorized."
+    ]
+  },
+  "public_reference_map": [
+    {
+      "source_review_filename_label": "review.md",
+      "repository_path": "docs/evidence-program/research/followups/compute-power-review.md"
+    },
+    {
+      "source_review_filename_label": "delta.json",
+      "repository_path": "data/evidence-program/research/followups/compute-power-review.json"
+    },
+    {
+      "source_review_filename_label": "source-native-ledger.json",
+      "repository_path": "data/evidence-program/research/followups/compute-power-review-source-native-ledger.json"
+    },
+    {
+      "source_review_filename_label": "primary-verification.json",
+      "repository_path": "data/evidence-program/research/followups/compute-power-review-primary-verification.json"
+    },
+    {
+      "source_review_filename_label": "rights-by-artifact.json",
+      "repository_path": "data/evidence-program/research/followups/compute-power-review-rights-by-artifact.json"
+    },
+    {
+      "source_review_filename_label": "relationship-specification.json",
+      "repository_path": "data/evidence-program/research/followups/compute-power-review-relationship-specification.json"
+    },
+    {
+      "source_review_filename_label": "contract-mapping.json",
+      "repository_path": "data/evidence-program/research/followups/compute-power-review-contract-mapping.json"
+    },
+    {
+      "source_review_filename_label": "acceptance-cases.json",
+      "repository_path": "data/evidence-program/research/followups/compute-power-review-acceptance-cases.json"
+    },
+    {
+      "source_review_filename_label": "schema-test-results.json",
+      "repository_path": "data/evidence-program/research/followups/compute-power-review-schema-test-results.json"
+    },
+    {
+      "source_review_filename_label": "prior-catalog-preservation.json",
+      "repository_path": "data/evidence-program/research/followups/compute-power-review-prior-catalog-preservation.json"
+    },
+    {
+      "source_review_filename_label": "repository-files-manifest.json",
+      "repository_path": "data/evidence-program/research/followups/compute-power-review-repository-files-manifest.json"
+    },
+    {
+      "source_review_filename_label": "follow-up-actions.json",
+      "repository_path": "data/evidence-program/research/followups/compute-power-review-follow-up-actions.json"
+    },
+    {
+      "source_review_filename_label": "validation-results.json",
+      "repository_path": "data/evidence-program/research/followups/compute-power-review-validation-results.json"
+    }
+  ],
+  "supporting_files": [
+    "data/evidence-program/research/followups/compute-power-review-source-native-ledger.json",
+    "data/evidence-program/research/followups/compute-power-review-primary-verification.json",
+    "data/evidence-program/research/followups/compute-power-review-rights-by-artifact.json",
+    "data/evidence-program/research/followups/compute-power-review-relationship-specification.json",
+    "data/evidence-program/research/followups/compute-power-review-contract-mapping.json",
+    "data/evidence-program/research/followups/compute-power-review-acceptance-cases.json",
+    "data/evidence-program/research/followups/compute-power-review-schema-test-results.json",
+    "data/evidence-program/research/followups/compute-power-review-prior-catalog-preservation.json",
+    "data/evidence-program/research/followups/compute-power-review-repository-files-manifest.json",
+    "data/evidence-program/research/followups/compute-power-review-follow-up-actions.json",
+    "data/evidence-program/research/followups/compute-power-review-validation-results.json"
+  ],
+  "boundary_statement": "Documentary research only. No native schema change, source acquisition, budget extension, original behavioral-test execution, real-record import, collection, capacity aggregation, facility reidentification or MW-to-GPU/FLOP conversion. All seven hold groups remain. Candidate preparation is separate from publication and exact-commit CI/merge."
+}

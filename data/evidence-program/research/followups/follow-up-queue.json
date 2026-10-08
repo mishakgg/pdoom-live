@@ -1,12 +1,12 @@
 {
   "title": "Follow-up research queue",
-  "snapshot_at": "2026-10-08T21:10:00Z",
+  "snapshot_at": "2026-10-08T21:27:52Z",
   "original_session_count": 26,
   "original_session_queue": "docs/evidence-program/research/research-session-review-queue.md",
   "received_bundle_count": 10,
   "received_file_count": 26,
   "new_prompt_count": 7,
-  "distinction": "Three earlier reviewed bundles and four completed deep-session research deltas A–D retain distinct provenance and their recorded merge proofs. Three further deep-session results E/compute-power, F/Chinese safety and G/incidents-enforcement are received in that exact order; E source review is active and F/G are queued. Receipt does not establish source truth, completed external execution, source admission or collection.",
+  "distinction": "Three earlier reviewed bundles and deep-session deltas A–D retain their prior provenance and verified merge history. E / prompt 7 now has an independently cleared documentary delta included in this candidate; F / prompt 5 source review is active and G / prompt 6 remains queued. Candidate inclusion does not establish remote merge, source admission or collection.",
   "bundles": [
     {
       "sequence": 1,
@@ -640,7 +640,8 @@
           "bytes": 14679,
           "sha256": "fd17e6e40a3f979acfb6b0dd6a7c38436bdfdee2ebe5eace459b350483331734",
           "hash_scope": "entire_submitted_file_bytes",
-          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+          "intake_content_assessment_preserved": "receipt_and_readability_only_not_primary_source_verification",
+          "content_assessment": "independently_reviewed_at_linked_documentary_delta_scope_original_hash_preserved"
         },
         {
           "artifact_role": "Eight-page decision report PDF",
@@ -648,7 +649,8 @@
           "bytes": 102418,
           "sha256": "1d1baab9b965a47ed20dc07cd15508b86c09416e1ee3b237fbd7084a6617cb1c",
           "hash_scope": "entire_submitted_file_bytes",
-          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+          "intake_content_assessment_preserved": "receipt_and_readability_only_not_primary_source_verification",
+          "content_assessment": "independently_reviewed_at_linked_documentary_delta_scope_original_hash_preserved"
         },
         {
           "artifact_role": "Complete source-native compute/power evidence ledger",
@@ -656,23 +658,24 @@
           "bytes": 156471,
           "sha256": "e34b1e3e0ff27e07a02a76bf2b503c914f9a92313c88381643b03cd217d8555a",
           "hash_scope": "entire_submitted_file_bytes",
-          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+          "intake_content_assessment_preserved": "receipt_and_readability_only_not_primary_source_verification",
+          "content_assessment": "independently_reviewed_at_linked_documentary_delta_scope_original_hash_preserved"
         }
       ],
       "missing_named_deliverable_companions": [],
       "narrative_companion_note": "Both named ledger and PDF companions supplied; original filenames have upload suffix (1).",
       "intake_manifest_sha256": "c8c4cd8277d292defef65f646dc03d8a94880e4a6c2f08411865590e0e84abb3",
-      "review_status": "source_review_in_progress",
+      "review_status": "review_complete_with_residual_holds",
       "review_started": true,
-      "review_complete": false,
+      "review_complete": true,
       "review_after": [
         "bundle-d"
       ],
-      "integration_status": "receipt_only_no_substantive_delta_included",
-      "substantive_findings_included": false,
+      "integration_status": "reviewed_delta_included_in_this_candidate",
+      "substantive_findings_included": true,
       "operational_admission": "not_admitted",
       "collector_enabled": false,
-      "canonical_contract_mapping": "unverified_pending_separate_source_review",
+      "canonical_contract_mapping": "partial_with_companion_requirements_and_semantic_holds",
       "source_reported_content_counts": {
         "artifacts": 18,
         "subjects": 18,
@@ -691,8 +694,38 @@
         "canonical_mapping": "deferred_unverified",
         "interpretation": "Historical external-session report only. The supplied commit was explicitly uninspected; no current access denial or missing repository files are inferred. Current intake-patch blob verification is a separate activity."
       },
-      "review_claim_limit": "Receipt, file integrity, title mapping and source-native counts only. External findings, source-byte claims, acceptance cases, rights and canonical mappings have not been independently cleared by this patch. Receipt is not verification of completed external execution.",
-      "next_action": "Complete bounded independent source review while retaining reported limitations; publish any reviewed delta separately."
+      "review_claim_limit": "Bounded documentary review and partial native mapping only. All 24 original semantic requirements remain specified and unexecuted. The 106 fictional schema probes are not physical validation, real-record import, lossless semantic validation or source admission.",
+      "next_action": "Independently inspect the integration candidate, then verify publication and exact-commit CI/merge separately. Retain all seven source, identity, rights, capture and semantic-mapping hold groups.",
+      "review_completed_at": "2026-10-08T21:23:00Z",
+      "delta_path": "data/evidence-program/research/followups/compute-power-review.json",
+      "guide_path": "docs/evidence-program/research/followups/compute-power-review.md",
+      "contract_mapping_path": "data/evidence-program/research/followups/compute-power-review-contract-mapping.json",
+      "source_review_manifest_sha256": "9d8201c2e6c0cd2e07b9363feb62ac48c443d48a7a5819ad4b39bf44e58b1491",
+      "independent_clearance_sha256": "33eb9107acfadcec868a304aa18f99be87d8ca9a9409ae4bdc0e76ef5445d8cb",
+      "source_review_checks": {
+        "independent": 581,
+        "authored_integrity": 173,
+        "synthetic_schema_probes": 106,
+        "original_semantic_cases_executed": 0,
+        "original_semantic_cases_passed": 0
+      },
+      "residual_holds_remain": true,
+      "residual_hold_ids": [
+        "CP-H01",
+        "CP-H02",
+        "CP-H03",
+        "CP-H04",
+        "CP-H05",
+        "CP-H06",
+        "CP-H07"
+      ],
+      "reviewer_current_repository_context": {
+        "inspected_commit": "f4320b6a1b6d5fac08efaa306768c487398977d9",
+        "integration_base_commit": "246f746e3a267363c7f6d2e0494eb72fb4c98bc9",
+        "selected_source_review_files": 24,
+        "lossless_mapping_held": true,
+        "production_validation": false
+      }
     },
     {
       "sequence": 9,
@@ -738,8 +771,8 @@
       "missing_named_deliverable_companions": [],
       "narrative_companion_note": "Complete narrative supplied as text. No separate PDF named; original report export name/format unknown, so no missing PDF inferred.",
       "intake_manifest_sha256": "c8c4cd8277d292defef65f646dc03d8a94880e4a6c2f08411865590e0e84abb3",
-      "review_status": "source_review_queued",
-      "review_started": false,
+      "review_status": "source_review_in_progress",
+      "review_started": true,
       "review_complete": false,
       "review_after": [
         "bundle-e"
@@ -767,7 +800,7 @@
         "interpretation": "Historical external-session report only. The supplied commit was explicitly uninspected; no current access denial or missing repository files are inferred. Current intake-patch blob verification is a separate activity."
       },
       "review_claim_limit": "Receipt, file integrity, title mapping and source-native counts only. External findings, source-byte claims, acceptance cases, rights and canonical mappings have not been independently cleared by this patch. Receipt is not verification of completed external execution.",
-      "next_action": "Begin bounded independent source review after bundle-e; retain receipt-only status until reviewed."
+      "next_action": "Complete separate bounded Chinese-comparability source review after E’s source clearance. No F findings are adopted by this candidate."
     },
     {
       "sequence": 10,
@@ -979,7 +1012,7 @@
       "sequence": 5,
       "title": "Resolve Chinese safety-evaluation comparability",
       "path": "docs/evidence-program/research/followups/prompts/05-resolve-chinese-evaluation-comparability.txt",
-      "status": "research_output_received_source_review_queued",
+      "status": "research_output_received_source_review_in_progress",
       "delivered_at": "2026-10-08T15:17:06Z",
       "delivery_time_precision": "second",
       "session_launch_confirmed": false,
@@ -994,11 +1027,11 @@
       "content_preserved_from_frozen_prompt": true,
       "delivery_basis": "Prompt delivery confirmed; exact frozen TXT bytes preserved. Chat-body bytes were not independently read back for this repository update.",
       "session_execution_status": "unknown",
-      "next_action": "Begin bounded independent source review after bundle-e; retain receipt-only status until reviewed.",
+      "next_action": "Complete separate bounded Chinese-comparability source review after E’s source clearance. No F findings are adopted by this candidate.",
       "prior_receipt_status_preserved": "prompt_delivered_launch_unconfirmed",
       "submission_id": "bundle-f",
       "received_at": "2026-10-08T20:56:18Z",
-      "review_status": "source_review_queued",
+      "review_status": "source_review_in_progress",
       "integration_status": "receipt_only_no_substantive_delta_included",
       "output_prompt_mapping_basis": "Session title and matching content; exact external initiating prompt not supplied.",
       "execution_verification_note": "Output receipt does not establish independently verified launch history, completed external execution or executed acceptance cases."
@@ -1035,7 +1068,7 @@
       "sequence": 7,
       "title": "Resolve compute and power capacity accounting",
       "path": "docs/evidence-program/research/followups/prompts/07-resolve-compute-power-stage-accounting.txt",
-      "status": "research_output_received_source_review_in_progress",
+      "status": "research_output_received_review_complete_with_residual_holds",
       "delivered_at": "2026-10-08T15:20:15Z",
       "delivery_time_precision": "second",
       "session_launch_confirmed": false,
@@ -1052,14 +1085,15 @@
       "content_preserved_from_frozen_prompt": true,
       "delivery_basis": "Prompt delivery confirmed; exact frozen TXT bytes preserved. Chat-body bytes were not independently read back for this repository update.",
       "session_execution_status": "unknown",
-      "next_action": "Complete bounded independent source review while retaining reported limitations; publish any reviewed delta separately.",
+      "next_action": "Independently inspect the integration candidate, then verify publication and exact-commit CI/merge separately. Retain all seven source, identity, rights, capture and semantic-mapping hold groups.",
       "prior_receipt_status_preserved": "prompt_delivered_launch_unconfirmed",
       "submission_id": "bundle-e",
       "received_at": "2026-10-08T20:56:07Z",
-      "review_status": "source_review_in_progress",
-      "integration_status": "receipt_only_no_substantive_delta_included",
+      "review_status": "review_complete_with_residual_holds",
+      "integration_status": "reviewed_delta_included_in_this_candidate",
       "output_prompt_mapping_basis": "Session title and matching content; exact external initiating prompt not supplied.",
-      "execution_verification_note": "Output receipt does not establish independently verified launch history, completed external execution or executed acceptance cases."
+      "execution_verification_note": "Output receipt does not establish independently verified launch history, completed external execution or executed acceptance cases.",
+      "reviewed_delta_path": "data/evidence-program/research/followups/compute-power-review.json"
     }
   ],
   "operational_admission": "not_admitted",
@@ -1067,11 +1101,11 @@
   "canonical_contract_mapping": "pending_separate_review",
   "original_reviews_integrated": 26,
   "original_queue_integration_commit": "972f2bbdc3e123c83ce9ea695c9f265fe6720032",
-  "snapshot_scope": "Receipt-only progress update after E/F/G arrived. All 26 original reviews and seven previously reviewed follow-up deltas retain their scientific content, source IDs, holds and integration history. No E/F/G substantive findings are adopted.",
-  "reviewed_bundle_count": 7,
+  "snapshot_scope": "Additive E compute/power documentary candidate after independent source clearance; eight reviewed deltas linked. All 26 original reviews, seven prior deltas, source/action IDs and residual holds are retained. F/G findings are not adopted.",
+  "reviewed_bundle_count": 8,
   "reviewed_findings_included": true,
   "unreviewed_supplied_claims_adopted": false,
-  "claim_adoption_rule": "Only independently reviewed bounded findings and explicit limitations from the seven linked deltas are included. Receipt hashes, prompt delivery, structural schema acceptance and candidate inclusion do not establish source truth, lossless canonical mapping, execution or admission.",
+  "claim_adoption_rule": "Only independently reviewed bounded findings and explicit limitations from the eight linked deltas are included. Receipt hashes, prompt delivery, structural schema acceptance and candidate inclusion do not establish source truth, lossless canonical mapping, execution or admission.",
   "original_queue_reconciliation_commit": "8b6fa1f9b389a625fa44c0656e3de47c509bff9a",
   "deep_result_bundle_count": 7,
   "deep_result_file_count": 20,
@@ -1079,13 +1113,14 @@
   "intake_index_sha256": "9abc8254d73a7ed115adec19edee99954b56484749b8ddbfa2ea90bbbe8f97a3",
   "review_order": "bundle-a (prompt 1), bundle-b (prompt 2), bundle-c (prompt 4), bundle-d (prompt 3), bundle-e (prompt 7), bundle-f (prompt 5), bundle-g (prompt 6); review in arrival order.",
   "repository_context_for_this_queue_update": {
-    "base_commit": "f4320b6a1b6d5fac08efaa306768c487398977d9",
-    "base_tree_sha": "11c5f32815800d665c70af7bb7322738ec7bbb84",
-    "scope": "Current repository blobs verified for this receipt-only patch. This does not replace the uninspected external-session baseline or establish source/contract verification for E/F/G. Previously reviewed scientific packages and all historical source-review pins are unchanged."
+    "base_commit": "246f746e3a267363c7f6d2e0494eb72fb4c98bc9",
+    "base_tree_sha": "ec8f87a1f6aa4251f3df69cd56445083b794d59b",
+    "source_review_commit": "f4320b6a1b6d5fac08efaa306768c487398977d9",
+    "scope": "Exact current-base Git blobs reconciled after receipt-only PR 345. The f4320b6a source-review pin and submitted uninspected 87dda3d baseline/null inspected commit remain separately preserved."
   },
-  "pending_source_review_bundle_count": 3,
+  "pending_source_review_bundle_count": 2,
   "active_source_review_bundle_count": 1,
-  "queued_source_review_bundle_count": 2,
+  "queued_source_review_bundle_count": 1,
   "previous_repository_context_for_queue_update": {
     "base_commit": "78ded6f5a1351dc44722d749479d213afeaf6784",
     "scope": "Hash-verified current base after D research PR 343. Prior source-review and candidate-integration pins remain historical; scientific packages, catalogs, contracts, inventory and submitted context are unchanged."
@@ -1119,8 +1154,29 @@
     "missing_named_deliverable_companions": [],
     "original_source_contents_published": false,
     "private_identity_metadata_published": false,
-    "scientific_findings_adopted": false,
+    "scientific_findings_adopted": true,
     "source_acceptance_cases_executed": false,
-    "note": "Earlier intake_snapshot_at and intake_index_sha256 fields retain the A–D historical receipt. This separate record binds only E/F/G."
+    "note": "Earlier intake_snapshot_at and intake_index_sha256 fields retain the A–D historical receipt. This separate record binds only E/F/G.",
+    "receipt_only_scientific_findings_adopted_preserved": false,
+    "current_review_scope": "Only E has a separately cleared documentary delta included in this candidate; F review is active and G queued. Original intake counts/hashes and all 64 unexecuted original cases are unchanged.",
+    "integration_proof": {
+      "pr_url": "https://github.com/mishakgg/pdoom-live/pull/345",
+      "merge_commit": "246f746e3a267363c7f6d2e0494eb72fb4c98bc9",
+      "tree_sha": "ec8f87a1f6aa4251f3df69cd56445083b794d59b",
+      "status": "merged_and_postmerge_verified",
+      "observed_at_utc": "2026-10-08T21:27:17Z",
+      "checks": {
+        "evidence-program": "success",
+        "image": "success",
+        "browser": "success",
+        "test": "success"
+      },
+      "scope": "Receipt-only E/F/G intake, not substantive E integration."
+    }
+  },
+  "previous_receipt_repository_context_preserved": {
+    "base_commit": "f4320b6a1b6d5fac08efaa306768c487398977d9",
+    "base_tree_sha": "11c5f32815800d665c70af7bb7322738ec7bbb84",
+    "scope": "Current repository blobs verified for this receipt-only patch. This does not replace the uninspected external-session baseline or establish source/contract verification for E/F/G. Previously reviewed scientific packages and all historical source-review pins are unchanged."
   }
 }
