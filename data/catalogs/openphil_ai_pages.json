@@ -1,6 +1,0 @@
-{
-  "catalog_id": "openphil_ai_pages",
-  "description": "Metadata for public Open Philanthropy pages about AI risk, AI safety, or AI forecasting on openphilanthropy.org. A row is stored only after one bounded GET returns HTML from that host. Redirects, Cloudflare challenges, robot blocks, and non-HTML responses are omitted. The catalog stores the title, publisher, canonical URL, date, and rights. Page bodies, abstracts, PDFs, chart data, and grant amounts are not stored. A missing date is unknown. Updated, modified, and copyright years are not publication dates. Rights stay unknown unless the page states CC0, CC BY, or CC BY-SA and does not also state a restricted deed. A public page is not a licence. No HTML page was confirmed, so entries is empty. runner_wired is false.",
-  "runner_wired": false,
-  "entries": []
-}

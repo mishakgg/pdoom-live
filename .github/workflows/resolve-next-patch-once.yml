@@ -1,0 +1,408 @@
+name: One-time Next patch resolver v2
+
+on:
+  push:
+    branches: [audit/next-16-3-8-resolver-2026-10-08]
+    paths: [.github/workflows/resolve-next-patch-once.yml]
+
+# This workflow belongs only on its isolated diagnostic branch. Never merge it.
+permissions:
+  contents: read
+
+concurrency:
+  group: next-16-3-8-resolver-2026-10-08
+  cancel-in-progress: false
+
+jobs:
+  resolve:
+    if: github.repository == 'mishakgg/pdoom-live'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: 8f12d1ba5f21ea3050dfa1eae3135f41ad46784a
+          persist-credentials: false
+          fetch-depth: 1
+          path: source
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22.23.3
+          check-latest: false
+      - name: Resolve only approved Next patch metadata and audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PYCODE'
+          """One-time metadata-only resolver. Invoked only by the reviewed isolated workflow."""
+          import base64
+          import copy
+          import hashlib
+          import json
+          import os
+          import selectors
+          import signal
+          import time
+          from pathlib import Path
+          import shutil
+          import subprocess
+          import sys
+          import tempfile
+          from urllib.parse import urlparse
+          
+          BASE_COMMIT = '8f12d1ba5f21ea3050dfa1eae3135f41ad46784a'
+          LOCK_SHA256 = 'b8166b6013ac3bc51114bc4d7cbddc64dbbb229cc40efcfc19e74dedce894c1a'
+          TARGET = '16.3.8'
+          PROPOSAL_VERSION = 2
+          MANIFEST_LIMIT = 16 * 1024
+          LOCK_LIMIT = 512 * 1024
+          CANDIDATE_TOTAL_LIMIT = 560 * 1024
+          REPORT_LIMIT = 512 * 1024
+          REPORT_TOTAL_LIMIT = 1024 * 1024
+          TOTAL_RAW_EXPORT_LIMIT = 1600 * 1024
+          TOTAL_ENCODED_EXPORT_LIMIT = 3 * 1024 * 1024
+          DIAGNOSTIC_OUTPUT_LIMIT = 128 * 1024
+          SEVERITIES = ('info', 'low', 'moderate', 'high', 'critical')
+          WORKSPACE_LINKS = {
+              'node_modules/@pdoom/contracts': {'resolved': 'packages/contracts', 'link': True},
+              'node_modules/@pdoom/db': {'resolved': 'packages/db', 'link': True},
+              'node_modules/@pdoom/observability': {'resolved': 'packages/observability', 'link': True},
+              'node_modules/@pdoom/web': {'resolved': 'apps/web', 'link': True},
+          }
+          PATHS = ['package.json', 'package-lock.json', 'apps/web/package.json',
+                   'packages/contracts/package.json', 'packages/db/package.json',
+                   'packages/observability/package.json']
+          CHANGED_FILES = ['package.json', 'apps/web/package.json', 'package-lock.json']
+          CORE = {'node_modules/next', 'node_modules/@next/env',
+                  'node_modules/eslint-config-next', 'node_modules/@next/eslint-plugin-next'}
+          
+          def digest(data):
+              return hashlib.sha256(data).hexdigest()
+          
+          def read_bounded(path, maximum):
+              with path.open('rb') as stream:
+                  data = stream.read(maximum + 1)
+              if len(data) > maximum:
+                  raise ValueError('File byte limit exceeded: ' + str(path.name))
+              return data
+          
+          def read_inputs(root):
+              values = {path: read_bounded(root/path, LOCK_LIMIT if path == 'package-lock.json' else MANIFEST_LIMIT)
+                        for path in PATHS}
+              if sum(map(len, values.values())) > CANDIDATE_TOTAL_LIMIT:
+                  raise ValueError('Combined candidate byte limit exceeded.')
+              return values
+          
+          def validate_integrity(value):
+              if not isinstance(value, str) or not value.startswith('sha512-') or len(value) > 100:
+                  raise ValueError('Missing or invalid SHA-512 registry integrity.')
+              try:
+                  decoded = base64.b64decode(value[7:], validate=True)
+              except ValueError as error:
+                  raise ValueError('Invalid registry integrity encoding.') from error
+              if len(decoded) != 64:
+                  raise ValueError('Invalid registry integrity digest length.')
+          
+          def public_registry_only(lock):
+              for name, package in lock['packages'].items():
+                  if not isinstance(package, dict):
+                      raise ValueError('Malformed lock entry.')
+                  if name in WORKSPACE_LINKS:
+                      if package != WORKSPACE_LINKS[name]:
+                          raise ValueError('Changed workspace link: ' + name)
+                      continue
+                  if 'link' in package:
+                      raise ValueError('Unexpected link field: ' + name)
+                  if not name.startswith('node_modules/'):
+                      continue
+                  resolved = package.get('resolved')
+                  if not isinstance(resolved, str) or not resolved:
+                      raise ValueError('Missing registry resolution: ' + name)
+                  url = urlparse(resolved)
+                  if (url.scheme != 'https' or url.netloc != 'registry.npmjs.org'
+                          or url.username or url.password or url.query or url.fragment):
+                      raise ValueError('Non-public-registry dependency; refusing resolution/audit.')
+                  validate_integrity(package.get('integrity'))
+          
+          def bounded_run(command, *, env, cwd, timeout, stdout_limit, stderr_limit):
+              # Drain binary pipes incrementally and enforce limits before appending data.
+              # No unbounded capture_output/communicate call is used.
+              process = subprocess.Popen(command, env=env, cwd=cwd, stdout=subprocess.PIPE,
+                                         stderr=subprocess.PIPE, start_new_session=True)
+              buffers = {'stdout': bytearray(), 'stderr': bytearray()}
+              limits = {'stdout': stdout_limit, 'stderr': stderr_limit}
+              deadline = time.monotonic() + timeout
+              selector = selectors.DefaultSelector()
+              try:
+                  for name, stream in [('stdout', process.stdout), ('stderr', process.stderr)]:
+                      os.set_blocking(stream.fileno(), False)
+                      selector.register(stream, selectors.EVENT_READ, name)
+                  while selector.get_map():
+                      remaining = deadline - time.monotonic()
+                      if remaining <= 0:
+                          raise subprocess.TimeoutExpired(command, timeout)
+                      for key, _ in selector.select(min(remaining, 0.1)):
+                          data = os.read(key.fileobj.fileno(), 8192)
+                          if not data:
+                              selector.unregister(key.fileobj)
+                              continue
+                          name = key.data
+                          if len(buffers[name]) + len(data) > limits[name]:
+                              raise ValueError('Subprocess ' + name + ' byte limit exceeded.')
+                          buffers[name].extend(data)
+                  remaining = deadline - time.monotonic()
+                  if remaining <= 0:
+                      raise subprocess.TimeoutExpired(command, timeout)
+                  code = process.wait(timeout=remaining)
+                  return subprocess.CompletedProcess(command, code, bytes(buffers['stdout']), bytes(buffers['stderr']))
+              except BaseException:
+                  try:
+                      os.killpg(process.pid, signal.SIGKILL)
+                  except ProcessLookupError:
+                      pass
+                  process.wait(timeout=5)
+                  raise
+              finally:
+                  selector.close()
+                  process.stdout.close()
+                  process.stderr.close()
+          
+          def validate_audit(raw, code):
+              if not isinstance(raw, bytes) or len(raw) > REPORT_LIMIT:
+                  raise ValueError('Audit byte limit exceeded or non-binary capture.')
+              report = json.loads(raw.decode('utf-8'))
+              if (not isinstance(report, dict) or type(report.get('auditReportVersion')) is not int
+                      or report['auditReportVersion'] != 2 or 'error' in report):
+                  raise ValueError('Invalid audit report envelope.')
+              entries = report.get('vulnerabilities')
+              metadata = report.get('metadata')
+              counts = metadata.get('vulnerabilities') if isinstance(metadata, dict) else None
+              if not isinstance(entries, dict) or not isinstance(counts, dict):
+                  raise ValueError('Missing audit entries/counts.')
+              if set(counts) != set(SEVERITIES) | {'total'}:
+                  raise ValueError('Unexpected audit count fields.')
+              if any(type(value) is not int or value < 0 for value in counts.values()):
+                  raise ValueError('Invalid audit count type/value.')
+              observed = {severity: 0 for severity in SEVERITIES}
+              for name, entry in entries.items():
+                  if (not isinstance(name, str) or not name or not isinstance(entry, dict)
+                          or entry.get('name') != name or entry.get('severity') not in observed
+                          or type(entry.get('isDirect')) is not bool
+                          or not isinstance(entry.get('via'), list)
+                          or not isinstance(entry.get('nodes'), list) or not entry['nodes']
+                          or any(not isinstance(node, str) or not node for node in entry['nodes'])
+                          or not isinstance(entry.get('range'), str)):
+                      raise ValueError('Malformed audit package entry.')
+                  observed[entry['severity']] += 1
+              if counts['total'] != len(entries) or any(counts[key] != value for key, value in observed.items()):
+                  raise ValueError('Audit entry/severity/total mismatch.')
+              if code != (1 if entries else 0):
+                  raise ValueError('Audit exit code inconsistent with findings.')
+              return report
+          
+          def export_chunks(artifacts):
+              # Bound the complete export before emitting any bytes, including base64/JSON overhead.
+              if sum(len(data) for _, _, data in artifacts) > TOTAL_RAW_EXPORT_LIMIT:
+                  raise ValueError('Combined raw export byte limit exceeded.')
+              lines = []
+              receipts = {}
+              total_encoded = 0
+              for kind, name, data in artifacts:
+                  limit = REPORT_LIMIT if kind == 'audit' else (LOCK_LIMIT if name == 'package-lock.json' else MANIFEST_LIMIT)
+                  if len(data) > limit:
+                      raise ValueError('Per-artifact export byte limit exceeded.')
+                  encoded = base64.b64encode(data).decode('ascii')
+                  chunks = [encoded[i:i+4096] for i in range(0, len(encoded), 4096)]
+                  receipts[(kind, name)] = {'sha256': digest(data), 'bytes': len(data), 'chunks': len(chunks)}
+                  for index, chunk in enumerate(chunks):
+                      line = 'PATCH_EXPORT_CHUNK ' + json.dumps({'kind': kind, 'name': name, 'index': index,
+                                 'total': len(chunks), 'base64': chunk}, separators=(',', ':'))
+                      total_encoded += len(line.encode('utf-8')) + 1
+                      if total_encoded > TOTAL_ENCODED_EXPORT_LIMIT:
+                          raise ValueError('Combined encoded export byte limit exceeded.')
+                      lines.append(line)
+              for line in lines:
+                  print(line)
+              return receipts
+          
+          def validate_scope(before, after):
+              if any(len(data) > (LOCK_LIMIT if path == 'package-lock.json' else MANIFEST_LIMIT) for path, data in after.items()):
+                  raise ValueError('Candidate file byte limit exceeded.')
+              if sum(map(len, after.values())) > CANDIDATE_TOTAL_LIMIT:
+                  raise ValueError('Combined candidate byte limit exceeded.')
+              # Manifest bytes may change only at the two approved caret lower bounds.
+              expected = dict(before)
+              root = before['package.json'].decode()
+              web = before['apps/web/package.json'].decode()
+              old_root = '"eslint-config-next": "^16.3.6"'
+              old_web = '"next": "^16.3.6"'
+              if root.count(old_root) != 1 or web.count(old_web) != 1:
+                  raise ValueError('Unexpected input manifest targets.')
+              expected['package.json'] = root.replace(old_root, '"eslint-config-next": "^16.3.8"').encode()
+              expected['apps/web/package.json'] = web.replace(old_web, '"next": "^16.3.8"').encode()
+              for path in PATHS:
+                  if path != 'package-lock.json' and after[path] != expected[path]:
+                      raise ValueError('Unexpected manifest change: ' + path)
+              old_lock = json.loads(before['package-lock.json'])
+              new_lock = json.loads(after['package-lock.json'])
+              public_registry_only(new_lock)
+              if {k:v for k,v in old_lock.items() if k != 'packages'} != {k:v for k,v in new_lock.items() if k != 'packages'}:
+                  raise ValueError('Unexpected lockfile top-level change.')
+              old, new = old_lock['packages'], new_lock['packages']
+              if set(old) != set(new):
+                  raise ValueError('Unexpected added/removed lock entries: ' + json.dumps(sorted(set(old) ^ set(new))))
+              changed = sorted(name for name in old if old[name] != new[name])
+              allowed = CORE | {'', 'apps/web'} | {name for name in old if name.startswith('node_modules/@next/swc-')}
+              unexpected = sorted(set(changed) - allowed)
+              if unexpected:
+                  raise ValueError('Unexpected lock entry changes: ' + json.dumps(unexpected))
+              expected_root = copy.deepcopy(old[''])
+              expected_root['devDependencies']['eslint-config-next'] = '^16.3.8'
+              expected_web = copy.deepcopy(old['apps/web'])
+              expected_web['dependencies']['next'] = '^16.3.8'
+              if new[''] != expected_root or new['apps/web'] != expected_web:
+                  raise ValueError('Unexpected workspace lock metadata.')
+              for name in CORE | {name for name in old if name.startswith('node_modules/@next/swc-')}:
+                  expected_package = copy.deepcopy(old[name])
+                  if expected_package.get('version') != '16.3.6':
+                      raise ValueError('Unexpected baseline Next-family version.')
+                  expected_package['version'] = TARGET
+                  expected_package['resolved'] = expected_package['resolved'].replace('-16.3.6.tgz', '-16.3.8.tgz')
+                  validate_integrity(new[name].get('integrity'))
+                  expected_package['integrity'] = new[name]['integrity']
+                  if name == 'node_modules/next':
+                      expected_package['dependencies']['@next/env'] = TARGET
+                      for dependency in expected_package['optionalDependencies']:
+                          if dependency.startswith('@next/swc-'):
+                              expected_package['optionalDependencies'][dependency] = TARGET
+                  if name == 'node_modules/eslint-config-next':
+                      expected_package['dependencies']['@next/eslint-plugin-next'] = TARGET
+                  # Every other field, including dev/optional/link/engines/dependency edges,
+                  # must remain exactly equal to the reviewed baseline.
+                  if new[name] != expected_package:
+                      raise ValueError('Unexpected Next-family metadata or version change: ' + name)
+              # Explicitly protect the unresolved dev findings and all other dependencies.
+              for name in ['vitest', '@vitest/mocker', 'tinypool', 'braces', 'micromatch', 'fast-glob']:
+                  key = 'node_modules/' + name
+                  if old[key] != new[key]:
+                      raise ValueError('Unapproved dev-chain change: ' + name)
+              return changed
+          
+          def run_npm(npm, args, env, work, label):
+              is_audit = args[0] == 'audit'
+              result = bounded_run([npm, *args], env=env, cwd=work, timeout=120,
+                                   stdout_limit=REPORT_LIMIT if is_audit else DIAGNOSTIC_OUTPUT_LIMIT,
+                                   stderr_limit=DIAGNOSTIC_OUTPUT_LIMIT)
+              # Audit stdout stays raw binary until bounded base64 export, preserving all
+              # newline encodings and Unicode separators exactly. Other logs are diagnostic only.
+              if not is_audit:
+                  for line in result.stdout.decode('utf-8', errors='replace').splitlines():
+                      print(label + '_STDOUT ' + line)
+              for line in result.stderr.decode('utf-8', errors='replace').splitlines():
+                  print(label + '_STDERR ' + line)
+              return result
+          
+          def main():
+              source = Path(os.environ['GITHUB_WORKSPACE']) / 'source'
+              root = Path(tempfile.mkdtemp(prefix='pdoom-next-resolver-', dir=os.environ['RUNNER_TEMP']))
+              work, home, cache = root/'input', root/'home', root/'cache'
+              for directory in [work, home, cache]:
+                  directory.mkdir()
+              before = read_inputs(source)
+              if digest(before['package-lock.json']) != LOCK_SHA256:
+                  raise ValueError('Unexpected base lockfile bytes.')
+              public_registry_only(json.loads(before['package-lock.json']))
+              for path, data in before.items():
+                  target = work/path
+                  target.parent.mkdir(parents=True, exist_ok=True)
+                  target.write_bytes(data)
+              for name in ['user.npmrc', 'global.npmrc']:
+                  (home/name).write_text('')
+              env = {'PATH': os.environ['PATH'], 'HOME': str(home), 'CI': 'true',
+                     'npm_config_userconfig': str(home/'user.npmrc'),
+                     'npm_config_globalconfig': str(home/'global.npmrc'),
+                     'npm_config_cache': str(cache)}
+              npm = shutil.which('npm')
+              if not npm:
+                  raise ValueError('npm unavailable.')
+              versions = {}
+              for tool in ['node', 'npm']:
+                  result = bounded_run([tool, '--version'], env=env, cwd=work, timeout=10, stdout_limit=1024, stderr_limit=1024)
+                  if result.returncode != 0:
+                      raise ValueError('Version lookup failed.')
+                  versions[tool] = result.stdout.decode('ascii').strip()
+              common = ['--package-lock-only', '--ignore-scripts', '--no-audit', '--no-fund',
+                        '--save-prefix=^', '--registry=https://registry.npmjs.org',
+                        '--fetch-retries=1', '--fetch-timeout=20000',
+                        '--fetch-retry-mintimeout=1000', '--fetch-retry-maxtimeout=2000']
+              # npm's install command is used ONLY in package-lock-only mode: it resolves
+              # registry metadata, writes the copied lock/manifests, and installs no packages.
+              commands = [
+                  ['install', 'eslint-config-next@16.3.8', '--save-dev', *common],
+                  ['install', 'next@16.3.8', '--workspace=apps/web', *common],
+              ]
+              for index, args in enumerate(commands):
+                  result = run_npm(npm, args, env, work, 'RESOLVER_' + str(index))
+                  if result.returncode != 0:
+                      raise ValueError('Metadata-only resolver failed with exit ' + str(result.returncode))
+                  if any(work.rglob('node_modules')):
+                      raise ValueError('Unexpected node_modules creation.')
+              actual_files = {str(path.relative_to(work)) for path in work.rglob('*') if path.is_file()}
+              if actual_files != set(PATHS):
+                  raise ValueError('Unexpected files created in isolated resolver input.')
+              after = read_inputs(work)
+              changed_entries = validate_scope(before, after)
+              receipt = {'proposal_version': PROPOSAL_VERSION, 'base_commit': BASE_COMMIT, 'target_version': TARGET, 'versions': versions,
+                         'input_sha256': {path:digest(data) for path,data in before.items()},
+                         'changed_lock_entries': changed_entries, 'files': {}, 'audits': {},
+                         'source_unchanged': read_inputs(source) == before,
+                         'node_modules_created': False}
+              artifacts = [('file', path, after[path]) for path in CHANGED_FILES]
+              report_bytes = 0
+              failed = not receipt['source_unchanged']
+              for mode, flags in [('all', []), ('omit-dev', ['--omit=dev'])]:
+                  args = ['audit', '--package-lock-only', '--ignore-scripts', '--json',
+                          '--registry=https://registry.npmjs.org', '--fetch-retries=1',
+                          '--fetch-timeout=20000', '--fetch-retry-mintimeout=1000',
+                          '--fetch-retry-maxtimeout=2000', *flags]
+                  try:
+                      result = run_npm(npm, args, env, work, 'PATCH_AUDIT_' + mode)
+                      report_bytes += len(result.stdout)
+                      if report_bytes > REPORT_TOTAL_LIMIT:
+                          raise ValueError('Combined audit report byte limit exceeded.')
+                      artifacts.append(('audit', mode, result.stdout))
+                      report = validate_audit(result.stdout, result.returncode)
+                  except (subprocess.TimeoutExpired, ValueError, UnicodeDecodeError) as error:
+                      receipt['audits'][mode] = {'status': 'retrieval_or_validation_failed', 'reason': str(error)[:512]}
+                      failed = True
+                      break
+                  receipt['audits'][mode] = {'status': 'audit_completed', 'exit_code': result.returncode,
+                          'counts': report['metadata']['vulnerabilities'],
+                          'package_entries': sorted(report['vulnerabilities']),
+                          'sha256': digest(result.stdout), 'bytes': len(result.stdout)}
+                  if mode == 'omit-dev' and report['vulnerabilities']:
+                      failed = True
+              exports = export_chunks(artifacts)
+              for path in CHANGED_FILES:
+                  receipt['files'][path] = exports[('file', path)]
+              for mode in receipt['audits']:
+                  if ('audit', mode) in exports:
+                      receipt['audits'][mode]['raw_export'] = exports[('audit', mode)]
+              receipt['resolved_inputs_unchanged_by_audit'] = read_inputs(work) == after
+              receipt['node_modules_created'] = any(work.rglob('node_modules'))
+              failed |= not receipt['resolved_inputs_unchanged_by_audit'] or receipt['node_modules_created']
+              receipt['status'] = 'needs_review_or_retrieval' if failed else 'candidate_ready_for_diff_review'
+              print('PATCH_RESOLVER_RECEIPT ' + json.dumps(receipt, sort_keys=True))
+              with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as summary:
+                  summary.write('Metadata-only Next 16.3.8 candidate. No application code or installed dependencies ran.\n\n')
+                  summary.write('Full diff review and all repository CI gates are still required. Omit-dev is not a runtime-image inventory.\n\n')
+                  summary.write('```json\n' + json.dumps(receipt,indent=2) + '\n```\n')
+              return 3 if failed else 0
+          
+          if __name__ == '__main__':
+              try:
+                  sys.exit(main())
+              except (ValueError, subprocess.TimeoutExpired) as error:
+                  print('PATCH_RESOLVER_BLOCKED ' + json.dumps({'reason':str(error)}))
+                  sys.exit(3)
+          PYCODE
