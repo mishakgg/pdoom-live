@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import { renderToStaticMarkup } from "react-dom/server";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { REVIEW_STATES, type ReviewState } from "@pdoom/contracts";
+import { counterSnapshot } from "@pdoom/observability";
 import { assertTestDatabase, readDatabaseUrl } from "../packages/db/src/env";
 import { clearProductTables, importCanonical, resetDatabase, validateDocument } from "../packages/db/src/import";
 import { createPool, closePool } from "../packages/db/src/pool";
@@ -28,6 +29,12 @@ const fixture = JSON.parse(readFileSync("data/fixtures/public-visibility/dataset
 const publicStates: ReviewState[] = ["needs_review", "machine_validated", "human_verified"];
 const suffix = (state: string) => state.replaceAll("_", "-");
 const asOf = "2026-10-01T00:00:00.000Z";
+
+function searchDbQueryCount() {
+  return counterSnapshot()
+    .filter((row) => row.name === "pdoom_db_queries_total")
+    .reduce((total, row) => total + row.value, 0);
+}
 
 async function publicGet(path: string) {
   return handlePublicApi(new Request(`http://localhost/api/v1/${path}`));
@@ -92,10 +99,14 @@ describe("website publication boundary", () => {
     }
     expect(listed.page.total).toBe(11);
     expect(bundle.catalog.counts.statements).toBe(9);
+    const beforeStatements = searchDbQueryCount();
     const statementHits = await searchPublic({ q: "visibility cross", type: "statement", limit: 20, mode: "page" }, pool);
+    expect(searchDbQueryCount() - beforeStatements).toBe(5);
+    const beforeItems = searchDbQueryCount();
     const itemHits = await searchPublic({ q: "visibility cross", type: "source_item", limit: 20, mode: "page" }, pool);
-    expect(statementHits.groups.statement.data).toEqual([]);
-    expect(itemHits.groups.source_item.data).toEqual([]);
+    expect(searchDbQueryCount() - beforeItems).toBe(5);
+    expect(statementHits.groups.statement).toEqual({ data: [], page: { limit: 20, total: 0, next_cursor: null } });
+    expect(itemHits.groups.source_item).toEqual({ data: [], page: { limit: 20, total: 0, next_cursor: null } });
     const source = await getSource("visibility-source-human-verified", pool);
     expect(source?.items.some((row) => row.slug.startsWith("visibility-cross-"))).toBe(false);
     expect(renderToStaticMarkup(<SourceRecord source={source!} />)).not.toContain("visibility-cross-");
@@ -325,7 +336,9 @@ describe("website publication boundary", () => {
   });
 
   it("uses only public speaker attribution or reviewed ownership for source-item person filters", async () => {
+    const beforePrivateMatches = searchDbQueryCount();
     const privateMatches = await searchPublic({ q: "visibility", type: "source_item", person: "visibility-private-person", limit: 20, mode: "page" }, pool);
+    expect(searchDbQueryCount() - beforePrivateMatches).toBe(5);
     expect(privateMatches.groups.source_item.data).toEqual([]);
     expect(privateMatches.groups.source_item.page.total).toBe(0);
     const visibleMatches = await searchPublic({ q: "visibility", type: "source_item", person: "visibility-person", limit: 20, mode: "page" }, pool);

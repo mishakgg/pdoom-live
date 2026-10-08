@@ -794,9 +794,11 @@ async function searchKind(
   const map = MAPPERS[kind] as (row: ScoredRow) => SearchHit;
   const countQuery = build(prepared, parsed, cursor, limit, "count");
   const count = await client.query(countQuery.text, countQuery.values);
+  const total = Number(count.rows[0]?.total_count ?? 0);
+  // Use the zero-count observation; retain the page path for cursor validation.
+  if (total === 0 && cursor === null) return emptyGroup(limit);
   const page = build(prepared, parsed, cursor, limit, "page");
   const rows = await client.query(page.text, page.values);
-  const total = Number(count.rows[0]?.total_count ?? 0);
   return pageOf(rows.rows as ScoredRow[], limit, total, map, { fp, sort });
 }
 
