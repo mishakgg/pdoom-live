@@ -81,3 +81,7 @@ The [guide](research/human-reliance.md) and [catalog](../../data/evidence-progra
 ## Algorithmic efficiency and scaling review
 
 [Research guide](research/algorithmic-efficiency.md) and [catalog](../../data/evidence-program/research/algorithmic-efficiency.json) retain five unadmitted families, source conflicts and all-eleven-catalog overlap. One separately licensed offline AlgoPerf trial reader yields 74 checkpoint observations and one derived inclusive validation crossing, preserving strict runtime semantics separately. No training data, upstream execution, official score, universal curve or operational collection.
+
+## Agent evaluations and incident revisions
+
+[Combined research guide](research/agent-security-incidents.md) and [catalog](../../data/evidence-program/research/agent-security-incidents.json) retain seven collections, five candidate families and two enrichments. One payload-excluding offline AgentDojo metadata decoder uses synthetic public fixtures; historical attacked outcomes remain unverified. Official incident/review/correction chains preserve author, authority and revision scope. No source admission, live collection, attack execution or pooled risk score.

@@ -52,3 +52,7 @@ The [human-reliance catalog](research/human-reliance.json) adds five unadmitted 
 ## Algorithmic efficiency review
 
 [Curated catalog](research/algorithmic-efficiency.json) and [guide](../../docs/evidence-program/research/algorithmic-efficiency.md) preserve five unadmitted source families, clocks/targets/tuning distinctions, artifact rights and bounded follow-up prompts. Apache-2.0 AlgoPerf fixtures and their derivatives live under tools/, outside data/CC0, with original and derivative hashes/omissions disclosed. They are not canonical imported observations.
+
+## Agent security and incident research
+
+[Seven-collection catalog](research/agent-security-incidents.json) preserves benchmark conditions, family/event/artifact identity, rights and official-source corrections. The [guide](../../docs/evidence-program/research/agent-security-incidents.md) separates completed offline metadata work from held acquisition/mapping and eight bounded documentary prompts. Only self-authored synthetic trace-shaped fixtures are public, under tools/; no generated conversations or source payloads are relicensed by data/CC0.
