@@ -68,3 +68,14 @@ The [human-reliance catalog](research/human-reliance.json) adds five unadmitted 
 ## Incident and near-miss primary evidence
 
 [Eight-collection catalog](research/incidents-near-misses.json) and [guide](../../docs/evidence-program/research/incidents-near-misses.md) compare all fifteen earlier catalogs, reuse existing NHTSA and OpenAI claims, and distinguish source/artifact/event/claim novelty. A bounded offline two-change NHTSA fact ledger sits under tools/ with a scoped notice. No raw narratives, sensitive patient/personnel records, source corpus, operational collection, canonical import or deployment.
+
+## Research reviews 17–20
+
+Four separately reviewed sessions share one documentation publication batch. Each keeps its own source decisions, corrections, next actions and copy-ready bounded prompts. The original inventory, earlier catalogs and product behavior remain unchanged.
+
+- Session 17: [Inference cost and price–performance](../../docs/evidence-program/research/inference-price-performance.md) · [JSON](research/inference-price-performance.json)
+- Session 18: [Claim-to-result provenance](../../docs/evidence-program/research/claim-result-provenance.md) · [JSON](research/claim-result-provenance.json)
+- Session 19: [Model identity and retirement histories](../../docs/evidence-program/research/model-identity-retirement.md) · [JSON](research/model-identity-retirement.json)
+- Session 20: [Undercovered languages and regions](../../docs/evidence-program/research/undercovered-languages.md) · [JSON](research/undercovered-languages.json)
+
+All four remain unadmitted research metadata. Linked source licenses, unknowns and access restrictions are not changed by the repository’s data dedication. No new source adapter, source corpus, participant records, source/model execution, live collector, canonical import or deployment. The only tooling change permits a contiguous prepared block in the existing dated queue checker, with focused queue regressions.

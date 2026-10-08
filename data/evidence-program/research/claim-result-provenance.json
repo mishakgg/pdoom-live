@@ -1,0 +1,781 @@
+{
+  "schema_version": "research-review-1",
+  "session_sequence": 18,
+  "title": "Claim-to-result provenance",
+  "reviewed_on": "2026-10-08",
+  "status": "reviewed_with_explicit_holds",
+  "repository_review_commit": "82fd46330539bd484c80190c69868d71b2052f6e",
+  "scope": "Separate source review; original factual provenance metadata only. The acquisition was partial, not a complete artifact audit.",
+  "operational_admission": false,
+  "collector_enabled": false,
+  "canonical_contract_mapping": "not_implemented",
+  "implementation_status": "specification_only_deferred",
+  "source_code_execution": false,
+  "third_party_rights": "Original factual metadata does not relicense articles, bibliography, code, model files, benchmark outputs or linked archives.",
+  "verdict": "Keep seven collections: five new collection/infrastructure families and two existing-family enrichments. Rank ReScience, HF archives, Crossref/RW. Ranking reflects marginal provenance value, not blanket acquisition or redistribution clearance.",
+  "priority_ranking": [
+    {
+      "rank": 1,
+      "id": "CRP001"
+    },
+    {
+      "rank": 2,
+      "id": "CRP002"
+    },
+    {
+      "rank": 3,
+      "id": "CRP006"
+    },
+    {
+      "rank": 4,
+      "id": "CRP005"
+    },
+    {
+      "rank": 5,
+      "id": "CRP003"
+    },
+    {
+      "rank": 6,
+      "id": "CRP004"
+    },
+    {
+      "rank": 7,
+      "id": "CRP007"
+    }
+  ],
+  "interpretation_guards": [
+    "Verification states describe specific edges/artifacts; no blanket verified/reproducible boolean.",
+    "Repository commit, SWHID, host DOI and content-byte digest remain distinct; all differ from evidence of actual execution.",
+    "Preserve contradictions and original observations; supersession requires an explicit correction relationship.",
+    "Group duplicate reporting only with native event/artifact evidence; equal names/scores are insufficient.",
+    "Replication author claims remain reported replication findings; this review performed no independent execution.",
+    "Retraction is work/claim scoped, never an author-profile accusation.",
+    "Keep publication, deposit, modification, retrieval and execution clocks separate.",
+    "No metric pooling, confidence-interval conversion, p(doom) conversion or operational collection."
+  ],
+  "collections": [
+    {
+      "name": "ReScience C replication packages",
+      "classification": "new_collection_family",
+      "rank": 1,
+      "decision": "Prioritize one reported-replication crosswalk; hold claims of complete archival or independent execution reproduction.",
+      "primary_url": "https://rescience.github.io/bibliography/Ashok_2022.html",
+      "inventory_ids": [
+        "GL039",
+        "GL040"
+      ],
+      "historical_coverage": "Selected article published 2022-05-23. Complete archive span was not independently enumerated.",
+      "update_frequency": "Publication and bibliography revisions; no fixed cadence established.",
+      "rights": {
+        "article": "CC-BY-4.0 explicitly in PDF and Zenodo record",
+        "bibliography": "CC-BY-SA-4.0 claim remains unverified; bibliography redistribution held",
+        "code": "Zenodo other-open; exact grant unresolved",
+        "data_checkpoints": "No clearance inferred"
+      },
+      "sample": {
+        "article_doi": "10.5281/zenodo.6574629",
+        "code_doi": "10.5281/zenodo.6508499",
+        "declared_swhid": "swh:1:dir:90d1c4d52eec769a1a18df5bd1f8bd0955f0ac24",
+        "review_url": "https://openreview.net/forum?id=ScfP3G73CY",
+        "data_doi": null,
+        "native_run_id": null,
+        "checkpoint_digest": null,
+        "observations": [
+          {
+            "table": 1,
+            "page": 7,
+            "architecture": "ResNet-18",
+            "input_resolution": 224,
+            "method": "ProtoNet",
+            "accuracy_percent": "74.07",
+            "reported_95pct_ci_halfwidth": "0.71"
+          },
+          {
+            "table": 1,
+            "page": 7,
+            "architecture": "ResNet-18",
+            "input_resolution": 224,
+            "method": "ProtoNet + Jigsaw",
+            "accuracy_percent": "77.29",
+            "reported_95pct_ci_halfwidth": "0.73"
+          },
+          {
+            "table": 9,
+            "page": 14,
+            "architecture": "Conv-4-64",
+            "input_resolution": 84,
+            "method": "ProtoNet",
+            "accuracy_percent": "66.78",
+            "reported_95pct_ci_halfwidth": "0.84"
+          },
+          {
+            "table": 9,
+            "page": 14,
+            "architecture": "Conv-4-64",
+            "input_resolution": 84,
+            "method": "ProtoNet + Jigsaw",
+            "accuracy_percent": "64.94",
+            "reported_95pct_ci_halfwidth": "0.75"
+          }
+        ],
+        "protocol": "miniImageNet; 5-way 5-shot; 600 evaluation episodes; mean accuracy with stated 95% confidence intervals. Episodes are not independent training runs.",
+        "code_url": "https://github.com/ashok-arjun/MLRC-2021-Few-Shot-Learning-And-Self-Supervision/",
+        "original_work": {
+          "title": "When Does Self-supervision Improve Few-shot Learning?",
+          "title_relation_evidence": "Replication paper scope, page 1",
+          "original_arxiv_id_unverified": "1910.03560",
+          "original_arxiv_page_rechecked": false
+        }
+      },
+      "duplicate_evidence": "Journal, author PDF and Zenodo describe the same replication study; four observations remain in two protocol contexts. SP001 is a different reproduction study, not overlapping measurements.",
+      "sources": [
+        "https://rescience.github.io/bibliography/Ashok_2022.html",
+        "https://ashok-arjun.github.io/papers/AshokRescienceC.pdf",
+        "https://zenodo.org/records/6508499"
+      ],
+      "next_action": "Map only the four checked observations and attributed archive links; preserve unresolved code identity and rights.",
+      "id": "CRP001",
+      "access": "Public journal entry and article; selected deposit metadata available. Bibliography file and Git/SWH verification remain held; further acquisition is held.",
+      "limitations": [
+        "Published replication authors report support for the original architecture/resolution and a different result under changed conditions; do not label the whole original paper a failed replication.",
+        "Recorded SWHID is directly visible in the PDF. Tag→commit→tree equality remains unverified; SWH retrieval and execution provenance are not established."
+      ],
+      "related_review_collection_ids": [
+        "SP001",
+        "OM004"
+      ]
+    },
+    {
+      "name": "Hugging Face Open LLM Leaderboard archives",
+      "classification": "new_collection_family_related_host",
+      "rank": 2,
+      "decision": "Retain versioned aggregate-result provenance; hold raw redistribution, trace access and resolved-execution claims.",
+      "primary_url": "https://huggingface.co/datasets/open-llm-leaderboard/results/blob/79baa2ab316ba40c29cd558444361394b7cf48e3/meta-llama/Llama-3.1-8B-Instruct/results_2025-02-06T09-49-35.437423.json",
+      "inventory_ids": [
+        "GL005"
+      ],
+      "historical_coverage": "Official collections distinguish 2023–2024 and June 2024–2025 generations. V1 archived June 2024; retirement announced 2025-03-13. Sample result filename dated 2025-02-06.",
+      "update_frequency": "Historical evaluation archive, with later metadata/request changes; request activity is not completed evaluation activity.",
+      "rights": {
+        "requests": "Apache-2.0 card declaration verified",
+        "results": "No affirmative aggregate-result license established; redistribution held",
+        "weights_inputs_traces": "Separate artifact terms; no rights inherited from requests or harness"
+      },
+      "sample": {
+        "result_repository_revision": "79baa2ab316ba40c29cd558444361394b7cf48e3",
+        "file_bytes": 114657,
+        "model": "meta-llama/Llama-3.1-8B-Instruct",
+        "reported_model_revision": "0e9e39f249a16976918f6564b8830bc894c89659",
+        "dtype": "torch.float16",
+        "metric": "prompt_level_strict_acc,none",
+        "value": 0.4195933456561922,
+        "reported_stderr": 0.021236532548855144,
+        "task": "leaderboard_ifeval",
+        "task_version": 2.0,
+        "original_samples": 541,
+        "effective_samples": 541,
+        "num_fewshot": 0,
+        "dataset_path": "wis-k/instruction-following-eval",
+        "test_split": "train",
+        "chat_template": null,
+        "reported_evaluator_git_hash": "a781a6b",
+        "evaluator_resolution": "unresolved; no verified evaluator repository/revision mapping",
+        "task_hash": "35b1a968304ce1d8fa21032567a89deea9b44fc4851893dea1a34179b20df314"
+      },
+      "duplicate_evidence": "The file repeats metrics under results, groups and leaderboard aggregates. These are views of one source result, not independent trials. LiveBench shares a host only. OM001 may share model identity; IPP studies may share labels but need measurement-level evidence before matching.",
+      "sources": [
+        "https://huggingface.co/datasets/open-llm-leaderboard/results/blob/79baa2ab316ba40c29cd558444361394b7cf48e3/meta-llama/Llama-3.1-8B-Instruct/results_2025-02-06T09-49-35.437423.json",
+        "https://huggingface.co/datasets/open-llm-leaderboard/requests",
+        "https://huggingface.co/docs/leaderboards/en/open_llm_leaderboard/archive",
+        "https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard/discussions/1135"
+      ],
+      "next_action": "Resolve aggregate-result rights and the recorded harness revision before any acquisition expansion; do not fetch weights or gated traces.",
+      "id": "CRP002",
+      "access": "Individual result JSON and repository revisions; generic requests viewer reports schema failure. Detailed-output datasets are separately gated; no gate accepted.",
+      "limitations": [
+        "Repository commit is not an independently hashed weight file or proof of the bytes executed.",
+        "Null chat_template does not establish an implementation error. Source task config, random seeds and output type are retained as reported, not executed.",
+        "Source start_time/end_time are non-calendar-looking values; do not convert them into execution dates without clock semantics. The filename and date field are distinct source assertions.",
+        "Meta model-card IFEval 80.4 comparison remains unverified; keep it as a deferred comparability example, not an established discrepancy."
+      ],
+      "related_review_collection_ids": [
+        "OM001",
+        "OM004",
+        "IPP001",
+        "IPP003"
+      ]
+    },
+    {
+      "name": "SWE-bench submission registry provenance",
+      "classification": "enrichment_existing_family",
+      "rank": 5,
+      "decision": "Enrich GL007 submission links and outcome provenance; keep registry checking separate from independent recomputation.",
+      "primary_url": "https://github.com/SWE-bench/experiments/blob/40f164d5b8f1d249bf95a6df8b74b577fd8e519d/evaluation/lite/20240402_sweagent_gpt4/metadata.yaml",
+      "inventory_ids": [
+        "GL007"
+      ],
+      "historical_coverage": "Inventory records submissions since 2023. Review uses supplied immutable repository revision; submission-folder date is not verified execution time.",
+      "update_frequency": "Contributor submissions, metadata edits and corrections.",
+      "rights": {
+        "registry_artifacts": "No blanket experiments license established; redistribution held",
+        "code_benchmark": "A benchmark or SWE-agent code license does not clear submitted predictions, patches or trajectories"
+      },
+      "sample": {
+        "revision": "40f164d5b8f1d249bf95a6df8b74b577fd8e519d",
+        "submission": "evaluation/lite/20240402_sweagent_gpt4",
+        "paper": "https://arxiv.org/abs/2405.15793",
+        "system_repo": "https://github.com/SWE-agent/SWE-agent",
+        "model": "gpt-4-1106-preview",
+        "checked": true,
+        "resolved_list_entries": 54,
+        "resolved_example": "psf__requests-2317",
+        "results_reported_git_blob": "2ce5b11042b7acff479ad70276ddf05b54f1240c",
+        "no_generation_count_status": "Reported 18 entries/17 unique remain unverified; no independent complete recount established"
+      },
+      "duplicate_evidence": "One GL007 submission can be reported in paper, registry and logs. Add provenance to existing family; do not count each location as a separate success.",
+      "sources": [
+        "https://github.com/SWE-bench/experiments/blob/40f164d5b8f1d249bf95a6df8b74b577fd8e519d/evaluation/lite/20240402_sweagent_gpt4/metadata.yaml",
+        "https://github.com/SWE-bench/experiments/blob/40f164d5b8f1d249bf95a6df8b74b577fd8e519d/evaluation/lite/20240402_sweagent_gpt4/results/results.json"
+      ],
+      "next_action": "Verify only selected submission asset metadata, exact outcome counts and rights if a later bounded acquisition is authorized.",
+      "id": "CRP003",
+      "access": "Selected pinned metadata.yaml and results.json were inspected; linked logs/trajectories not acquired.",
+      "limitations": [
+        "checked:true is a registry assertion, not this review independently rerunning tests.",
+        "Do not sum outcome-list lengths as disjoint categories; preserve lists and separately derived counts when fully read.",
+        "Scaffold/harness commit, execution date and provider-served model bytes remain unresolved."
+      ],
+      "related_review_collection_ids": []
+    },
+    {
+      "name": "OpenML studies, tasks, flows and runs",
+      "classification": "new_collection_family",
+      "rank": 6,
+      "decision": "Keep documented run/task provenance and deactivation history; live-run acquisition remains unverified.",
+      "primary_url": "https://blog.openml.org/openml/2019/10/26/OpenML-Machine-Learning-as-a-community.html",
+      "inventory_ids": [
+        "GL039",
+        "GL040"
+      ],
+      "historical_coverage": "Provider-rendered sample upload is 2016-02-11; earliest collection-wide record remains unverified. Complete study-specific range unknown.",
+      "update_frequency": "Contribution-driven runs, annotations and task/dataset status changes.",
+      "rights": {
+        "platform": "Research use subject to contributed artifact licenses; public access is not blanket redistribution",
+        "sample_dataset": "Historical label Public is not a standard license; unresolved"
+      },
+      "sample": {
+        "evidence_status": "provider_rendered_historical_output",
+        "run_id": 523926,
+        "task_id": 59,
+        "dataset_id": 61,
+        "dataset_name": "iris",
+        "flow_id": 2629,
+        "flow_version": 8,
+        "setup_id": 3526,
+        "metric": "predictive_accuracy",
+        "value": "0.966667",
+        "upload_time_source_text": "2016-02-11 22:05:23",
+        "evaluation_protocol": "one repeat, 10 stratified folds",
+        "dependencies": "None in rendered flow; not evidence of dependency-free execution"
+      },
+      "duplicate_evidence": "Study, run, task, flow and evaluation are related entities, not five independent measurements. A documented reconstruction is not independently reproduced execution.",
+      "sources": [
+        "https://blog.openml.org/openml/2019/10/26/OpenML-Machine-Learning-as-a-community.html",
+        "https://docs.openml.org/examples/40_paper/2015_neurips_feurer_example/",
+        "https://docs.openml.org/intro/terms/"
+      ],
+      "next_action": "Hold current API admission; if authorized later, inspect one run/task/flow metadata chain, with inactive status and explicit split provenance.",
+      "id": "CRP004",
+      "access": "Provider walkthrough and reconstruction example read; no successful current run-API response in this pass.",
+      "limitations": [
+        "Feurer reconstruction explicitly includes inactive tasks because issues were found after publication.",
+        "Choosing the lowest task ID is the documentation’s reconstruction heuristic, not proof of original split identity; dataset ID alone is insufficient."
+      ],
+      "related_review_collection_ids": [
+        "SP001"
+      ]
+    },
+    {
+      "name": "Zenodo deposits with DataCite relationships",
+      "classification": "new_infrastructure_family_existing_artifact_overlap",
+      "rank": 4,
+      "decision": "Use metadata relation/version backbone; deposited file completeness, execution and redistribution remain separately assessed.",
+      "primary_url": "https://zenodo.org/api/records/6574629",
+      "inventory_ids": [
+        "GL039"
+      ],
+      "historical_coverage": "Selected deposits date April/May 2022. Repository-wide launch/versioning chronology was not verified; no exhaustive historical claim.",
+      "update_frequency": "Deposits, file versions and metadata edits; registry metadata timestamps can differ.",
+      "rights": {
+        "zenodo_metadata": "CC0 except email addresses, official policy verified",
+        "article": "cc-by-4.0",
+        "code": "other-open, exact terms unresolved",
+        "datacite": "Selected relation facts recorded; no blanket file rights inferred"
+      },
+      "sample": {
+        "article_doi": "10.5281/zenodo.6574629",
+        "article_concept_doi": "10.5281/zenodo.6574628",
+        "code_doi": "10.5281/zenodo.6508499",
+        "code_concept_doi": "10.5281/zenodo.6508498",
+        "code_version": "v1",
+        "code_zip_reported_size": 4419478,
+        "code_zip_reported_checksum": "md5:971cf0332d38cd80f8a616afdd93920a",
+        "code_zip_downloaded": false,
+        "relations": [
+          {
+            "subject": "10.5281/zenodo.6574629",
+            "predicate": "IsSupplementedBy",
+            "object": "10.5281/zenodo.6508499"
+          },
+          {
+            "subject": "10.5281/zenodo.6574629",
+            "predicate": "IsVersionOf",
+            "object": "10.5281/zenodo.6574628"
+          },
+          {
+            "subject": "10.5281/zenodo.6574629",
+            "predicate": "IsPartOf",
+            "object": "https://zenodo.org/communities/rescience"
+          }
+        ],
+        "zenodo_modified": "2024-07-16T17:37:24.969133+00:00",
+        "datacite_updated": "2022-05-23T20:32:09.000Z"
+      },
+      "duplicate_evidence": "CRP001 article/code records are the same artifacts reviewed here, not another replication. Prior OM002 and PI005 already use Zenodo-hosted artifacts; a new infrastructure family does not create new underlying studies.",
+      "sources": [
+        "https://zenodo.org/api/records/6574629",
+        "https://zenodo.org/api/records/6508499",
+        "https://api.datacite.org/dois/10.5281/zenodo.6574629",
+        "https://about.zenodo.org/policies/"
+      ],
+      "next_action": "Reuse the same artifact identities across ReScience and registry assertions; hold unresolved code redistribution.",
+      "id": "CRP005",
+      "access": "Selected anonymous Zenodo and DataCite JSON successfully materialized; no code ZIP or weights acquired.",
+      "limitations": [
+        "DOIs identify deposits/version families, not content checksums. Keep concept DOI, version DOI, SWHID, Git object and byte digest in distinct fields.",
+        "Zenodo/DataCite represent one deposit’s attributed relationships; differing metadata times must survive.",
+        "Provider-reported ZIP checksum is not independently recomputed. Metadata archive access does not prove every needed artifact was archived or executable."
+      ],
+      "related_review_collection_ids": [
+        "OM002",
+        "PI005",
+        "CRP001"
+      ]
+    },
+    {
+      "name": "Crossref/Crossmark updates with Retraction Watch attribution",
+      "classification": "new_collection_family",
+      "rank": 3,
+      "decision": "Prioritize production metadata correction edges with notice-level scope and source attribution.",
+      "primary_url": "https://api.crossref.org/v1/works/10.1038/s41586-024-07566-y",
+      "inventory_ids": [
+        "GL039"
+      ],
+      "historical_coverage": "Retrospective notices; earliest complete year not established. Crossref made Retraction Watch public in September 2023.",
+      "update_frequency": "Publisher redeposits and Retraction Watch every working day; corrections/expressions of concern less comprehensive than retractions.",
+      "rights": {
+        "facts_references": "Freely reusable facts",
+        "crossref_generated_and_retraction_watch": "CC0",
+        "abstract_fulltext": "Separate rights",
+        "sample_nature_notice": "CC-BY-4.0"
+      },
+      "sample": {
+        "original_doi": "10.1038/s41586-024-07566-y",
+        "correction_doi": "10.1038/s41586-025-08905-3",
+        "date": "2025-03-21",
+        "asserting_source": "publisher",
+        "scope": "Theoretical assumption alpha_i=gamma_i=0 becomes beta_i=gamma_i=0; no numerical-result change reported.",
+        "code_reference": "10.5281/zenodo.10866595",
+        "code_reference_role": "reference 13, not typed relation",
+        "relation": {},
+        "duplicate_example": {
+          "work_doi": "10.1155/2022/1779131",
+          "notice_doi": "10.1155/2023/9761643",
+          "date": "2023-09-14",
+          "assertions": [
+            {
+              "source": "publisher"
+            },
+            {
+              "source": "retraction-watch",
+              "record_id": "47559"
+            }
+          ],
+          "normalized_notice_count": 1
+        }
+      },
+      "duplicate_evidence": "One notice with two source assertions, plus reverse relations, remains one update event. SP002 A-Lab and PI005 correction/concern chains are distinct studies that can reuse this relation pattern. TD003 is a distinct synthetic-feedback study, not the Nature study merely because the topic overlaps. IPP002 throughput correction remains the same earlier evidence event.",
+      "sources": [
+        "https://api.crossref.org/v1/works/10.1038/s41586-024-07566-y",
+        "https://www.nature.com/articles/s41586-025-08905-3",
+        "https://api.crossref.org/works/10.1155/2022/1779131",
+        "https://api.crossref.org/works/10.1155/2023/9761643",
+        "https://www.crossref.org/documentation/retrieve-metadata/retraction-watch/",
+        "https://community.crossref.org/t/deprecating-retraction-watch-annotations-in-the-labs-api/15884"
+      ],
+      "next_action": "Map the two checked notice chains with separate assertions and affected-claim scope; no author profile flags.",
+      "id": "CRP006",
+      "access": "Selected production REST records and official notices verified; no CSV corpus downloaded.",
+      "limitations": [
+        "29 May 2026 deprecation stops new Crossmark/Retraction Watch update annotations to Labs; existing annotations remain. Use production REST.",
+        "Absence of a relationship means no update observed, not never corrected.",
+        "Only the work/claim affected by an official notice is annotated; do not infer author-level misconduct or unrelated result invalidity."
+      ],
+      "related_review_collection_ids": [
+        "SP001",
+        "SP002",
+        "PI001",
+        "PI005",
+        "INM001",
+        "TD003",
+        "IPP002"
+      ]
+    },
+    {
+      "name": "arXiv version histories and version-local status",
+      "classification": "enrichment_existing_family",
+      "rank": 7,
+      "decision": "Enrich GL040 with version-local title, status, rights and declared artifact links.",
+      "primary_url": "https://arxiv.org/abs/2509.00072v4",
+      "inventory_ids": [
+        "GL040",
+        "GL039"
+      ],
+      "historical_coverage": "Checked example spans August 2025–May 2026; corpus-wide historical link completeness not audited.",
+      "update_frequency": "Author revisions/withdrawals through arXiv submission cycle.",
+      "rights": {
+        "metadata": "CC0",
+        "v1": "arXiv nonexclusive distribution permission; no blanket reuse grant",
+        "v2": "No license for this version due to withdrawn",
+        "v4": "CC-BY-4.0"
+      },
+      "sample": {
+        "arxiv_id": "2509.00072",
+        "versions": [
+          {
+            "version": "v1",
+            "submitted": "2025-08-26T16:41:37Z",
+            "title": "Beyond Memorization: Reasoning-Driven Synthesis as a Mitigation Strategy Against Benchmark Contamination",
+            "withdrawn": false
+          },
+          {
+            "version": "v2",
+            "submitted": "2025-10-06T14:10:14Z",
+            "withdrawn": true,
+            "reason": "incomplete work"
+          },
+          {
+            "version": "v4",
+            "submitted": "2026-05-13T04:56:17Z",
+            "title": "Test of Time: Rethinking Temporal Signal of Benchmark Contamination",
+            "withdrawn": false,
+            "comment": "ACL 2026"
+          }
+        ]
+      },
+      "duplicate_evidence": "GL040 enrichment only. Link versions into one arXiv lineage but keep claims and underlying measurements unresolved until evidenced. TD003 and IPP002 demonstrate why version dates and study regimes must remain distinct.",
+      "sources": [
+        "https://arxiv.org/abs/2509.00072v1",
+        "https://arxiv.org/abs/2509.00072v2",
+        "https://arxiv.org/abs/2509.00072v4",
+        "https://info.arxiv.org/help/api/tou.html"
+      ],
+      "next_action": "Keep a three-version factual status map; no replacement of historical claim text or rights by latest metadata.",
+      "id": "CRP007",
+      "access": "Explicit-version HTML pages and rights links verified; Atom API exact-version behavior not tested here. Legacy API requests at most one per three seconds and one connection.",
+      "limitations": [
+        "The intermediate v2 withdrawal does not mark the available latest v4 withdrawn.",
+        "Title and author changes do not by themselves prove a new or identical underlying evaluation event.",
+        "Latest license cannot be applied retroactively; a historical code link does not establish code revision or executed bytes."
+      ],
+      "related_review_collection_ids": [
+        "TD003",
+        "IPP002"
+      ]
+    }
+  ],
+  "corrections": [
+    {
+      "id": "CRP-C01",
+      "source_id": "CRP001",
+      "status": "qualification",
+      "finding": "Published replication authors report support for the original architecture/resolution and a different result under changed conditions; do not label the whole original paper a failed replication.",
+      "evidence_urls": [
+        "https://rescience.github.io/bibliography/Ashok_2022.html",
+        "https://ashok-arjun.github.io/papers/AshokRescienceC.pdf",
+        "https://zenodo.org/records/6508499"
+      ]
+    },
+    {
+      "id": "CRP-C02",
+      "source_id": "CRP002",
+      "status": "qualification",
+      "finding": "Repository commit is not an independently hashed weight file or proof of the bytes executed.",
+      "evidence_urls": [
+        "https://huggingface.co/datasets/open-llm-leaderboard/results/blob/79baa2ab316ba40c29cd558444361394b7cf48e3/meta-llama/Llama-3.1-8B-Instruct/results_2025-02-06T09-49-35.437423.json",
+        "https://huggingface.co/datasets/open-llm-leaderboard/requests",
+        "https://huggingface.co/docs/leaderboards/en/open_llm_leaderboard/archive",
+        "https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard/discussions/1135"
+      ]
+    },
+    {
+      "id": "CRP-C03",
+      "source_id": "CRP003",
+      "status": "qualification",
+      "finding": "checked:true is a registry assertion, not this review independently rerunning tests.",
+      "evidence_urls": [
+        "https://github.com/SWE-bench/experiments/blob/40f164d5b8f1d249bf95a6df8b74b577fd8e519d/evaluation/lite/20240402_sweagent_gpt4/metadata.yaml",
+        "https://github.com/SWE-bench/experiments/blob/40f164d5b8f1d249bf95a6df8b74b577fd8e519d/evaluation/lite/20240402_sweagent_gpt4/results/results.json"
+      ]
+    },
+    {
+      "id": "CRP-C04",
+      "source_id": "CRP004",
+      "status": "qualification",
+      "finding": "Feurer reconstruction explicitly includes inactive tasks because issues were found after publication.",
+      "evidence_urls": [
+        "https://blog.openml.org/openml/2019/10/26/OpenML-Machine-Learning-as-a-community.html",
+        "https://docs.openml.org/examples/40_paper/2015_neurips_feurer_example/",
+        "https://docs.openml.org/intro/terms/"
+      ]
+    },
+    {
+      "id": "CRP-C05",
+      "source_id": "CRP005",
+      "status": "qualification",
+      "finding": "DOIs identify deposits/version families, not content checksums. Keep concept DOI, version DOI, SWHID, Git object and byte digest in distinct fields.",
+      "evidence_urls": [
+        "https://zenodo.org/api/records/6574629",
+        "https://zenodo.org/api/records/6508499",
+        "https://api.datacite.org/dois/10.5281/zenodo.6574629",
+        "https://about.zenodo.org/policies/"
+      ]
+    },
+    {
+      "id": "CRP-C06",
+      "source_id": "CRP006",
+      "status": "qualification",
+      "finding": "29 May 2026 deprecation stops new Crossmark/Retraction Watch update annotations to Labs; existing annotations remain. Use production REST.",
+      "evidence_urls": [
+        "https://api.crossref.org/v1/works/10.1038/s41586-024-07566-y",
+        "https://www.nature.com/articles/s41586-025-08905-3",
+        "https://api.crossref.org/works/10.1155/2022/1779131",
+        "https://api.crossref.org/works/10.1155/2023/9761643",
+        "https://www.crossref.org/documentation/retrieve-metadata/retraction-watch/",
+        "https://community.crossref.org/t/deprecating-retraction-watch-annotations-in-the-labs-api/15884"
+      ]
+    },
+    {
+      "id": "CRP-C07",
+      "source_id": "CRP007",
+      "status": "qualification",
+      "finding": "The intermediate v2 withdrawal does not mark the available latest v4 withdrawn.",
+      "evidence_urls": [
+        "https://arxiv.org/abs/2509.00072v1",
+        "https://arxiv.org/abs/2509.00072v2",
+        "https://arxiv.org/abs/2509.00072v4",
+        "https://info.arxiv.org/help/api/tou.html"
+      ]
+    }
+  ],
+  "proposed_implementation": {
+    "status": "specification_only_not_implemented",
+    "unit": "One reported result under a particular protocol and artifact version, with multiple attributed reports allowed.",
+    "record_types": {
+      "artifact_version": [
+        "native_identifier",
+        "kind",
+        "version",
+        "family_identifier",
+        "url",
+        "digest_algorithm",
+        "digest_value",
+        "digest_origin",
+        "rights",
+        "retrieved_at"
+      ],
+      "evaluation_specification": [
+        "native_run_id_nullable",
+        "model_code_data_artifact_refs",
+        "task_version",
+        "split",
+        "prompting",
+        "scaffold",
+        "precision",
+        "budget",
+        "seeds",
+        "execution_clock_semantics",
+        "execution_time_nullable"
+      ],
+      "observation": [
+        "evaluation_ref",
+        "claim_location",
+        "metric",
+        "raw_value",
+        "unit",
+        "denominator",
+        "uncertainty_type",
+        "uncertainty_value",
+        "reporting_status"
+      ],
+      "attributed_relationship": [
+        "subject",
+        "predicate",
+        "object",
+        "asserting_source",
+        "evidence_locator",
+        "source_snapshot",
+        "event_date",
+        "observed_at",
+        "verification_status"
+      ]
+    },
+    "verification_states": [
+      "declared_link",
+      "identifier_verified",
+      "artifact_bytes_fetched",
+      "provider_execution_report",
+      "independent_result_recomputed"
+    ],
+    "rules": [
+      "Verification states describe specific edges/artifacts; no blanket verified/reproducible boolean.",
+      "Repository commit, SWHID, host DOI and content-byte digest remain distinct; all differ from evidence of actual execution.",
+      "Preserve contradictions and original observations; supersession requires an explicit correction relationship.",
+      "Group duplicate reporting only with native event/artifact evidence; equal names/scores are insufficient.",
+      "Replication author claims remain reported replication findings; this review performed no independent execution.",
+      "Retraction is work/claim scoped, never an author-profile accusation.",
+      "Keep publication, deposit, modification, retrieval and execution clocks separate.",
+      "No metric pooling, confidence-interval conversion, p(doom) conversion or operational collection."
+    ],
+    "bounded_pilot": {
+      "seed": "Ashok:2022 / DOI 10.5281/zenodo.6574629",
+      "scope": "Reuse checked article/deposit evidence only: four selected aggregates, two protocols, one study; map archived identifiers as declared where unresolved. No new adapter, parser, validator or framework.",
+      "acceptance": [
+        "Exactly four numeric observations with source precision, percent unit, stated 95% interval convention and 600 evaluation episodes.",
+        "Separate ResNet-18/224 and Conv-4-64/84 contexts; no pooled SSL effect or paper-wide failure flag.",
+        "One study across journal/author PDF/Zenodo; retain four distinct observations.",
+        "Version/concept/code DOIs distinct; SWH and Git identity unverified until actual metadata evidence exists.",
+        "No fetched-code, checkpoint, execution or independently reproduced flags without evidence.",
+        "Rights isolated by bibliography/article/code/metadata; other-open stays unresolved.",
+        "Changed snapshots preserve prior observations; identical bytes add retrieval provenance, not a second study."
+      ],
+      "further_acquisition": "Not performed. Further acquisition requires separate authorization; no additional artifacts may be fetched under this documentation mapping specification."
+    }
+  },
+  "next_actions": [
+    {
+      "action_id": "CRP-A01",
+      "source_id": "CRP001",
+      "priority": "P0",
+      "title": "Resolve replication package identity",
+      "status": "bounded_follow_up_not_started",
+      "prompt_id": "CRP-P01"
+    },
+    {
+      "action_id": "CRP-A02",
+      "source_id": "CRP002",
+      "priority": "P0",
+      "title": "Clarify leaderboard provenance rights",
+      "status": "bounded_follow_up_not_started",
+      "prompt_id": "CRP-P02"
+    },
+    {
+      "action_id": "CRP-A03",
+      "source_id": "CRP003",
+      "priority": "P1",
+      "title": "Clarify submission artifact claims",
+      "status": "bounded_follow_up_not_started",
+      "prompt_id": "CRP-P03"
+    },
+    {
+      "action_id": "CRP-A04",
+      "source_id": "CRP004",
+      "priority": "P1",
+      "title": "Verify one OpenML chain",
+      "status": "bounded_follow_up_not_started",
+      "prompt_id": "CRP-P04"
+    },
+    {
+      "action_id": "CRP-A05",
+      "source_id": "CRP005",
+      "priority": "P1",
+      "title": "Map deposit relationship evidence",
+      "status": "bounded_follow_up_not_started",
+      "prompt_id": "CRP-P05"
+    },
+    {
+      "action_id": "CRP-A06",
+      "source_id": "CRP006",
+      "priority": "P0",
+      "title": "Map attributed correction notices",
+      "status": "bounded_follow_up_not_started",
+      "prompt_id": "CRP-P06"
+    },
+    {
+      "action_id": "CRP-A07",
+      "source_id": "CRP007",
+      "priority": "P1",
+      "title": "Map version-local arXiv status",
+      "status": "bounded_follow_up_not_started",
+      "prompt_id": "CRP-P07"
+    }
+  ],
+  "follow_up_prompts": [
+    {
+      "id": "CRP-P01",
+      "source_id": "CRP001",
+      "priority": "P0",
+      "title": "Resolve replication package identity",
+      "prompt": "Review only Ashok:2022, article DOI 10.5281/zenodo.6574629 and code DOI 10.5281/zenodo.6508499. Reuse the four checked aggregate observations and Zenodo metadata summarized in this review. Resolve the declared v1 tag/commit/SWH directory relationship and exact code rights only after separate authorization for additional acquisition. Do not fetch additional artifacts under this mapping task. If not authorized, retain explicit unverified identity/license fields. No archive, checkpoint, dataset, code execution or external contact. Return a compact evidence map, not an adapter."
+    },
+    {
+      "id": "CRP-P02",
+      "source_id": "CRP002",
+      "priority": "P0",
+      "title": "Clarify leaderboard provenance rights",
+      "prompt": "Review only the checked HF result for meta-llama/Llama-3.1-8B-Instruct dated 2025-02-06 at result repository revision 79baa2ab316ba40c29cd558444361394b7cf48e3. Determine from public small documentation whether an explicit grant covers aggregate results and whether evaluator git_hash a781a6b has a documented repository. Preserve 541 prompts, task version 2.0 and model revision 0e9e39f249a16976918f6564b8830bc894c89659. No weights, gated details, execution, login or permission bypass. Stop with precise holds if unresolved; no new collector."
+    },
+    {
+      "id": "CRP-P03",
+      "source_id": "CRP003",
+      "priority": "P1",
+      "title": "Clarify submission artifact claims",
+      "prompt": "Review only SWE-bench experiments revision 40f164d5b8f1d249bf95a6df8b74b577fd8e519d, evaluation/lite/20240402_sweagent_gpt4. Use already-read metadata and results; any new artifact acquisition requires separate authorization. Check outcome-list duplication and exact rights/scaffold/harness/date claims from small public metadata only. Preserve checked as registry assertion, not independent execution. No trajectories, patches archive, tests, models or repo changes. Return unresolved fields when evidence is absent."
+    },
+    {
+      "id": "CRP-P04",
+      "source_id": "CRP004",
+      "priority": "P1",
+      "title": "Verify one OpenML chain",
+      "prompt": "Review the provider-rendered OpenML run 523926, task 59, dataset 61, flow 2629 version 8 and setup 3526. Current run-API retrieval remains unverified and remains held; do not retrieve additional API data without separate authorization. Map existing historical output and the documented deactivation/reconstruction caveat now. If later authorized, inspect only small metadata for that chain; no predictions, data files or execution. Do not infer original task from oldest-ID heuristic. Stop after one chain."
+    },
+    {
+      "id": "CRP-P05",
+      "source_id": "CRP005",
+      "priority": "P1",
+      "title": "Map deposit relationship evidence",
+      "prompt": "Using only the checked Zenodo 6508499/6574629 and DataCite 10.5281/zenodo.6574629 metadata, map version/concept DOIs, supplementary-code relations and distinct source timestamps. Keep the 4,419,478-byte ZIP checksum provider-reported and other-open unresolved. Reuse CRP001 study/artifact identities. No new downloads, code execution, permission changes or general adapter. Return one compact crosswalk with explicit gaps."
+    },
+    {
+      "id": "CRP-P06",
+      "source_id": "CRP006",
+      "priority": "P0",
+      "title": "Map attributed correction notices",
+      "prompt": "Using already checked production Crossref records, map 10.1038/s41586-024-07566-y→10.1038/s41586-025-08905-3 and 10.1155/2022/1779131→10.1155/2023/9761643. Preserve the Nature theory-only scope and one retraction notice with publisher and Retraction Watch 47559 assertions dated 2023-09-14. Do not infer author misconduct, numerical changes or independent reproduction. Retain notice/source/date and reverse-edge provenance; do not use retired Labs updates. No bulk CSV or code implementation. Stop after these two chains."
+    },
+    {
+      "id": "CRP-P07",
+      "source_id": "CRP007",
+      "priority": "P1",
+      "title": "Map version-local arXiv status",
+      "prompt": "Use the checked HTML metadata for arXiv 2509.00072v1, v2, v4. Preserve v2 withdrawal, available v4, changed title/author list and each version’s license. Do not propagate latest status or rights backwards or infer that a declared code URL identifies executed code. No manuscript bulk download, Atom harvesting or execution. Return a compact version map with unresolved underlying-measurement relationships; no new adapter."
+    }
+  ],
+  "holds": [
+    "ReScience bibliography rights and Git/tag/SWH equality remain unverified; code other-open is unresolved.",
+    "HF aggregate-result rights and evaluator revision remain unresolved; no model-weight or trace execution proof.",
+    "SWE-bench no_generation duplicate recount, harness/date provenance and registry-artifact rights remain held.",
+    "Current OpenML run API and original split identity remain unverified.",
+    "No further acquisition, code archive, checkpoint, participant file, dataset corpus or execution is authorized by this documentation record."
+  ]
+}

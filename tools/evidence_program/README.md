@@ -166,3 +166,9 @@ python tools/evidence_program/check.py
 ```
 
 [check_incidents_near_misses.py](check_incidents_near_misses.py) verifies eight collections, all fifteen catalog fingerprints, 120 overlap cells, critical attribution/unit boundaries and eight standalone bounded prompts. [Guide](../../docs/evidence-program/research/incidents-near-misses.md). Source documentary review remains separate from fixed manual-ledger acceptance and synthetic/adversarial tests. No source corpus, raw narrative, patient/personnel records, execution, pooled harm rate or p(doom) conversion.
+
+## Sequential review with batched publication
+
+Research sessions 17–20 add documentation and structured research records only; proposed source mappings remain deferred. The existing queue checker now permits a contiguous block of reviewed/prepared or awaiting-CI sessions between integrated and queued rows. Arrival identities/order, exact status counts and no gaps or out-of-order promotion remain required. The existing queue tests cover publication batches; no per-report validator, fixture suite or application runtime is added.
+
+Run the same aggregate command, `python tools/evidence_program/check.py`. Its consistency checks do not establish source accuracy, current official benchmark status, access rights or canonical admission. The [dated queue](../../docs/evidence-program/research/research-session-review-queue.md) distinguishes separately completed source review from pending batch integration.

@@ -1,4 +1,4 @@
-"""Offline consistency of the dated 26-session queue, independent of source catalogs."""
+"""Offline consistency of the dated 26-session queue, including publication batches."""
 from __future__ import annotations
 import re
 
@@ -23,7 +23,9 @@ def check_queue(markdown):
     statuses = [r[2].strip() for r in rows]
     require(all(s in STATUS_RANK for s in statuses), 'Unknown research queue status')
     ranks = [STATUS_RANK[s] for s in statuses]
-    require(ranks == sorted(ranks) and ranks.count(1) <= 1,
+    # Substantive reviews remain ordered; several reviewed sessions may await one
+    # publication batch. Integrated, prepared and queued blocks stay contiguous.
+    require(ranks == sorted(ranks),
             'Research queue cannot promote unfinished or out-of-order sessions')
     counts = (ranks.count(0), ranks.count(1), ranks.count(2))
     summary = re.findall(r'^Snapshot counts: (\d+) integrated; (\d+) prepared or awaiting CI; (\d+) queued\.$',

@@ -47,9 +47,44 @@ class ResearchQueueTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'out-of-order'):
             check_queue(self.text.replace('| 6 | Historical capability backfills | Queued |', '| 6 | Historical capability backfills | Review integrated |'))
 
-    def test_two_active_sessions_rejected(self):
+    def test_contiguous_prepared_batch_is_accepted(self):
+        r = check_queue(synthetic_snapshot(16, 4))
+        self.assertEqual((r['research_queue_reviews_integrated_at_snapshot'],
+                          r['research_queue_reviews_prepared_at_snapshot'],
+                          r['research_queue_reviews_queued_at_snapshot']), (16, 4, 6))
+
+    def test_contiguous_mixed_prepared_and_ci_batch_is_accepted(self):
+        s = synthetic_snapshot(16, 4).replace(
+            '| 18 | Claim-to-result provenance | Review prepared; integration pending |',
+            '| 18 | Claim-to-result provenance | Awaiting CI |')
+        self.assertEqual(check_queue(s)['research_queue_reviews_prepared_at_snapshot'], 4)
+
+    def test_gap_in_prepared_batch_rejected(self):
+        s = synthetic_snapshot(16, 4).replace(
+            '| 18 | Claim-to-result provenance | Review prepared; integration pending |',
+            '| 18 | Claim-to-result provenance | Queued |')
         with self.assertRaisesRegex(ValueError, 'out-of-order'):
-            check_queue(self.text.replace('| 5 | Concentration and shared dependencies | Queued |', '| 5 | Concentration and shared dependencies | Awaiting CI |'))
+            check_queue(s)
+
+    def test_integrated_row_inside_prepared_batch_rejected(self):
+        s = synthetic_snapshot(16, 4).replace(
+            '| 18 | Claim-to-result provenance | Review prepared; integration pending |',
+            '| 18 | Claim-to-result provenance | Review integrated |')
+        with self.assertRaisesRegex(ValueError, 'out-of-order'):
+            check_queue(s)
+
+    def test_batch_promotion_without_updated_counts_rejected(self):
+        s = synthetic_snapshot(16, 4).replace(
+            '| 17 | Inference cost and price–performance | Review prepared; integration pending |',
+            '| 17 | Inference cost and price–performance | Review integrated |')
+        with self.assertRaisesRegex(ValueError, 'summary/status'):
+            check_queue(s)
+
+    def test_prepared_batch_at_queue_boundaries(self):
+        for integrated, active in ((0, 4), (22, 4), (0, 26), (26, 0)):
+            with self.subTest(integrated=integrated, active=active):
+                r = check_queue(synthetic_snapshot(integrated, active))
+                self.assertEqual(r['research_queue_reviews_prepared_at_snapshot'], active)
 
     def test_unknown_status_rejected(self):
         with self.assertRaisesRegex(ValueError, 'Unknown'):
