@@ -96,4 +96,15 @@ The [research guide](research/forecast-surveys.md) and [catalog](../../data/evid
 
 ## Incidents and near-misses review
 
-The [guide](research/incidents-near-misses.md) and [catalog](../../data/evidence-program/research/incidents-near-misses.json) retain regulator, manufacturer, provider and respondent roles across eight collections. Two NHTSA corrections already belong to ASI005-F04; OpenAI sycophancy remains the same ASI007 episode. A [manual fact-ledger reader](../../tools/evidence_program/read_nhtsa_corrections.py) tests publication revisions offline without parsing PDFs, collecting incidents or inventing prior content. Fifteen prior reviews and the frozen inventory remain unchanged; the [dated queue](research/research-session-review-queue.md) records item 16 as prepared.
+The [guide](research/incidents-near-misses.md) and [catalog](../../data/evidence-program/research/incidents-near-misses.json) retain regulator, manufacturer, provider and respondent roles across eight collections. Two NHTSA corrections already belong to ASI005-F04; OpenAI sycophancy remains the same ASI007 episode. A [manual fact-ledger reader](../../tools/evidence_program/read_nhtsa_corrections.py) tests publication revisions offline without parsing PDFs, collecting incidents or inventing prior content. Fifteen prior reviews and the frozen inventory remain unchanged; the [dated queue](research/research-session-review-queue.md) records review progress.
+
+## Research reviews 17–20
+
+Four separately reviewed sessions share one documentation publication batch. Each keeps its own source decisions, corrections, next actions and copy-ready bounded prompts. The original inventory, earlier catalogs and product behavior remain unchanged.
+
+- Session 17: [Inference cost and price–performance](research/inference-price-performance.md) · [JSON](../../data/evidence-program/research/inference-price-performance.json)
+- Session 18: [Claim-to-result provenance](research/claim-result-provenance.md) · [JSON](../../data/evidence-program/research/claim-result-provenance.json)
+- Session 19: [Model identity and retirement histories](research/model-identity-retirement.md) · [JSON](../../data/evidence-program/research/model-identity-retirement.json)
+- Session 20: [Undercovered languages and regions](research/undercovered-languages.md) · [JSON](../../data/evidence-program/research/undercovered-languages.json)
+
+All four remain unadmitted research metadata. Linked source licenses, unknowns and access restrictions are not changed by the repository’s data dedication. No new source adapter, source corpus, participant records, source/model execution, live collector, canonical import or deployment. The only tooling change permits a contiguous prepared block in the existing dated queue checker, with focused queue regressions.

@@ -1,0 +1,1132 @@
+{
+  "schema_version": "research-review-1",
+  "session_sequence": 20,
+  "title": "Undercovered languages and regions",
+  "reviewed_on": "2026-10-08",
+  "status": "reviewed_with_explicit_holds",
+  "repository_review_commit": "82fd46330539bd484c80190c69868d71b2052f6e",
+  "scope": "Separate source review of public metadata, rights statements and limited factual aggregate examples. No corpus, respondent records, harmful prompt/answer payloads or source responses are included.",
+  "operational_admission": false,
+  "collector_enabled": false,
+  "canonical_contract_mapping": "not_implemented",
+  "implementation_status": "specification_only_deferred",
+  "source_code_execution": false,
+  "source_snapshot_limit": "No exact upstream HTTP-byte identity is claimed. Source locators, access limits and artifact-scoped rights are preserved.",
+  "third_party_rights": "Original factual metadata does not extend source grants, clear restricted corpora or resolve conflicting source-license claims.",
+  "verdict": "Retain eight scoped collections: six originating collections and two enrichments of inventory families. INE, MERA and KoBBQ remain the best three; NIA correction is an immediate provenance warning with unresolved base definitions. All operational admission remains not_admitted.",
+  "priority_ranking": [
+    {
+      "rank": 1,
+      "id": "ULR008",
+      "reason": "Verified two-cell public aggregate with explicit denominator and scoped reuse; adds microenterprises."
+    },
+    {
+      "rank": 2,
+      "id": "ULR006",
+      "reason": "Locally grounded Russian diagnostic and explicit task MIT; preserve case/framing structure."
+    },
+    {
+      "rank": 3,
+      "id": "ULR003",
+      "reason": "Korean cultural validation and adaptation metadata; count reconciliation required before comparisons."
+    }
+  ],
+  "interpretation_guards": [
+    "Keep native labels unchanged and English glosses separately marked; source-language authority is not equivalent to demographic representativeness.",
+    "Stimuli, human annotations, measured model results, population surveys, correction events and operator declarations are distinct evidence kinds.",
+    "Do not infer inherent national/ethnic traits, national AI risk or p(doom) from language, exam provenance, normative labels, adoption or benchmark scores.",
+    "Separate prompt/template/case/actor-pair/respondent/statistical-enterprise/deployment counting units.",
+    "Pin release, split, evaluation protocol, cohort, control source and publication vintage; absence of known contamination is not a clean audit.",
+    "Corpus license, code license, paper license, webpage permission, metadata access and submitted-output access have separate scopes."
+  ],
+  "collections": [
+    {
+      "name": "AnswerCarefully Japanese safety revision metadata",
+      "rank": null,
+      "classification": "new_originating_collection_relative_to_64_family_inventory",
+      "inventory_ids": [
+        "GL020"
+      ],
+      "decision": "Retain public release and correction metadata; gate corpus acquisition and prohibit corpus mirroring.",
+      "primary_url": "https://llmc.nii.ac.jp/answercarefully-dataset/",
+      "sources": [
+        "https://llmc.nii.ac.jp/answercarefully-dataset/",
+        "https://huggingface.co/datasets/llm-jp/AnswerCarefully",
+        "https://huggingface.co/datasets/llm-jp/AnswerCarefully/blob/main/LICENSE"
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "ulr001_notice",
+          "url": "https://llmc.nii.ac.jp/answercarefully-dataset/",
+          "locator": "News: 2024-12-24 correction; ACv2.2, borderline, ACv3 descriptions",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "unknown",
+          "rights_note": "Public inspection does not establish general redistribution rights."
+        },
+        {
+          "artifact_id": "ulr001_gate",
+          "url": "https://huggingface.co/datasets/llm-jp/AnswerCarefully",
+          "locator": "Contact-sharing and terms gate; public card",
+          "access_status": "metadata_public_corpus_gated",
+          "rights_status": "custom_purpose_restricted_no_original_redistribution",
+          "rights_note": "Corpus terms are not blanket webpage/paper rights."
+        },
+        {
+          "artifact_id": "ulr001_terms",
+          "url": "https://huggingface.co/datasets/llm-jp/AnswerCarefully/blob/main/LICENSE",
+          "locator": "Terms, displayed revision a7d206c",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "custom_purpose_restricted_no_original_redistribution",
+          "rights_note": "LLM safety-improvement purpose only, commercial use permitted within purpose; original redistribution barred; non-overlapping derivatives require attribution; accepted-user sharing allowance in this license file. Gate card wording must also be retained."
+        }
+      ],
+      "sample": {
+        "evidence_kind": "correction_event",
+        "notice_date": "2024-12-24",
+        "affected_ids": [
+          "answercarefully-instruction-test-001-001-0000144-001",
+          "answercarefully-instruction-test-001-001-0000148-001"
+        ],
+        "original_split": "ACv1 test",
+        "overlapping_split": "ACv2 development",
+        "corrected_file": "AnswerCarefullyVersion001_Test_rev20241224.json",
+        "correction": "remove these two items from revised ACv1 test",
+        "label_original": "地域的にデリケートな問題",
+        "label_en_translation": "regionally sensitive issues",
+        "translation_status": "reviewer_gloss_not_original"
+      },
+      "historical_coverage": "Published releases 2024-04-30 through ACv3 2026-07-05; ACv2: 1,800 items, 336 test/1,464 development; ACv3: 300, 100 test/200 development. Borderline v1: 75, 65 test/10 development.",
+      "update_frequency": "Irregular publisher releases and correction notices.",
+      "native_evidence_added": "Japanese-authored examples use an international taxonomy. ACv2.2 adaptation tags distinguish phrase-level from deeper cultural changes; borderline and ACv3 have separate purposes and populations.",
+      "limitations": [
+        "Curated stimuli and reference answers are not observed harms or representative beliefs.",
+        "Historical results need exact version/split; cross-version test reuse and documented test/development overlap undermine naive trends.",
+        "Do not infer safety improvement from a release or use corpus purpose permission for unrelated reuse."
+      ],
+      "next_action": "Store the two-ID correction event and version/split relationships; leave corpus access and model-result ingestion closed.",
+      "id": "ULR001",
+      "access": "Public NII notice, HF card and license inspected. No login, contact sharing, consent, files behind gate or prompt/answer corpus acquired.",
+      "rights": "Custom restricted corpus terms; public descriptive metadata only in proposal; no full webpage or paper reproduction.",
+      "related_review_collection_ids": [],
+      "duplicate_evidence": "GL020 is Japan AISI tooling/presets, not this originating NII collection. A future AISI evaluation using it shares the same stimulus provenance; do not count as independent coverage."
+    },
+    {
+      "name": "NIA Korean Internet Usage Survey correction lineage",
+      "rank": null,
+      "classification": "enrichment",
+      "inventory_ids": [
+        "GL026"
+      ],
+      "decision": "Retain a correction record immediately; hold comparable subscription estimates until BOTH denominator definitions and PDF rights are verified.",
+      "primary_url": "https://nia.or.kr/site/nia_kor/ex/bbs/View.do?bcIdx=29198&cbIdx=99870&parentSeq=29198",
+      "sources": [
+        "https://nia.or.kr/site/nia_kor/ex/bbs/View.do?bcIdx=29198&cbIdx=99870&parentSeq=29198",
+        "https://www.nia.or.kr/site/nia_kor/ex/bbs/View.do?bcIdx=29199&cbIdx=99870",
+        "https://www.data.go.kr/data/15086936/fileData.do",
+        "https://www.nia.or.kr/common/board/Download.do?bcIdx=29198&cbIdx=99870&fileNo=3"
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "ulr002_report_notice",
+          "url": "https://nia.or.kr/site/nia_kor/ex/bbs/View.do?bcIdx=29198&cbIdx=99870&parentSeq=29198",
+          "locator": "2026-05-26 revision notice, figure 93, survey overview",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "unknown",
+          "rights_note": "Public inspection does not establish general redistribution rights."
+        },
+        {
+          "artifact_id": "ulr002_tables_notice",
+          "url": "https://www.nia.or.kr/site/nia_kor/ex/bbs/View.do?bcIdx=29199&cbIdx=99870",
+          "locator": "2026-05-26 Base-label correction",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "unknown",
+          "rights_note": "Public inspection does not establish general redistribution rights."
+        },
+        {
+          "artifact_id": "ulr002_catalog",
+          "url": "https://www.data.go.kr/data/15086936/fileData.do",
+          "locator": "Catalog title, annual frequency, temporal coverage, usage license",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "KOGL_type_2_attribution_noncommercial",
+          "rights_note": "Applies to cataloged XLSX; neither MSIT Type 1 release nor this Type 2 catalog establishes PDF rights."
+        },
+        {
+          "artifact_id": "ulr002_pdf",
+          "url": "https://www.nia.or.kr/common/board/Download.do?bcIdx=29198&cbIdx=99870&fileNo=3",
+          "locator": "Corrected filename 2025_인터넷이용실태조사_보고서_수정_260512.pdf",
+          "access_status": "corrected_pdf_content_unverified",
+          "rights_status": "unknown",
+          "rights_note": "Public inspection does not establish general redistribution rights."
+        }
+      ],
+      "sample": {
+        "evidence_kind": "denominator_revision_event",
+        "survey_year": 2025,
+        "figure_original": "그림 93",
+        "group_original": "전체",
+        "measure_original_notice": "인공지능 구독",
+        "measure_original_headline": "생성형 AI 서비스 유료 구독률",
+        "measure_en_translation": "generative AI service paid subscription rate (headline)",
+        "translation_status": "reviewer_gloss_not_original",
+        "published_original_percent": 7.9,
+        "published_revised_percent": 17.8,
+        "original_denominator_definition": null,
+        "revised_denominator_definition": null,
+        "denominator_status": "both_exact_definitions_unverified_hold",
+        "revision_reason_original": "인공지능 구독 관련 base 변경에 따른 그래프 수정",
+        "revision_reason_en_translation": "graphs corrected following an AI-subscription base change",
+        "publication_date": "2026-03-31",
+        "correction_notice_date": "2026-05-26",
+        "file_name_date_token": "260512",
+        "trend_change": null
+      },
+      "historical_coverage": "Annual survey; inspected 2025 wave collected 2025-10-17 to 2025-12-12. Survey target 22,500 households and resident members aged 3+, not the AI-item achieved base. AI-variable historical extent unverified.",
+      "update_frequency": "Annual reports plus irregular corrections; catalog next registration 2027-04-27 is publisher schedule, not guaranteed delivery.",
+      "native_evidence_added": "Korean correction text identifies a denominator change and table Base-label repair omitted by a simple translated headline. Preserve earlier headline alongside revision history.",
+      "limitations": [
+        "Never describe 7.9 to 17.8 as temporal growth or merely fix a percentage.",
+        "Do not infer old or new denominator from ratios, AI experience rate, age coverage or household target.",
+        "Catalog title _20251231 conflicts with stated August 2020–August 2023 coverage; workbook coverage is unresolved.",
+        "Keep publication, filename token and correction dates distinct; exact original/revised definitions remain null until verified."
+      ],
+      "next_action": "Keep GL026 subscription comparisons held; use only an authorized supplied original/revised figure-93 base-label excerpt and artifact-rights evidence to resolve the hold. Do not circumvent access restrictions.",
+      "id": "ULR002",
+      "access": "Public correction notices and XLSX catalog verified. Corrected PDF content and exact old/new base labels remain unavailable for this review. No workbook or respondent files acquired.",
+      "rights": "XLSX catalog explicitly KOGL Type 2 (attribution/noncommercial); corrected PDF license unresolved. GL026 release Type 1 cannot propagate.",
+      "related_review_collection_ids": [],
+      "duplicate_evidence": "Same originating MSIT/NIA survey as GL026; Korean/English releases, tables, XLSX and press coverage are representations of a wave, not independent adoption observations."
+    },
+    {
+      "name": "KoBBQ Korean cultural-validation metadata",
+      "rank": 3,
+      "classification": "new_originating_collection_relative_to_64_family_inventory",
+      "inventory_ids": [],
+      "decision": "Prioritize local-validation metadata; hold cross-snapshot score comparisons pending row-count/version reconciliation.",
+      "primary_url": "https://huggingface.co/datasets/naver-ai/kobbq/blob/main/README.md",
+      "sources": [
+        "https://huggingface.co/datasets/naver-ai/kobbq/blob/main/README.md",
+        "https://github.com/naver-ai/KoBBQ/blob/main/data/README.md",
+        "https://huggingface.co/datasets/naver-ai/kobbq",
+        "https://api.github.com/repos/naver-ai/KoBBQ/contents/data",
+        "https://github.com/naver-ai/KoBBQ/blob/main/LICENSE"
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "ulr003_card",
+          "url": "https://huggingface.co/datasets/naver-ai/kobbq/blob/main/README.md",
+          "locator": "Dataset card revision 73d12ac, counts and ethical statement",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "MIT_declared_for_dataset_with_separate_use_statement",
+          "rights_note": "Card declares MIT; also retain prohibition on training systems to generate/publish group-targeted biased language. Do not silently discard the accompanying statement."
+        },
+        {
+          "artifact_id": "ulr003_documentation",
+          "url": "https://github.com/naver-ai/KoBBQ/blob/main/data/README.md",
+          "locator": "Template codes, questionnaire, aggregate participant counts",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "unknown",
+          "rights_note": "Public inspection does not establish general redistribution rights."
+        },
+        {
+          "artifact_id": "ulr003_viewer",
+          "url": "https://huggingface.co/datasets/naver-ai/kobbq",
+          "locator": "Viewer split line and safe metadata columns",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "MIT_declared_for_dataset",
+          "rights_note": "No stereotype or scenario payload copied."
+        },
+        {
+          "artifact_id": "ulr003_manifest",
+          "url": "https://api.github.com/repos/naver-ai/KoBBQ/contents/data",
+          "locator": "Five-file data directory; actual survey_result.json",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "unknown",
+          "rights_note": "Public inspection does not establish general redistribution rights."
+        },
+        {
+          "artifact_id": "ulr003_license",
+          "url": "https://github.com/naver-ai/KoBBQ/blob/main/LICENSE",
+          "locator": "MIT copyright NAVER Cloud Corp. 2024-present",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "MIT",
+          "rights_note": "Keep license notice; dataset card is the data-specific declaration."
+        }
+      ],
+      "sample": {
+        "evidence_kind": "validation_metadata",
+        "questionnaire_language": "ko",
+        "validation_participants": 1600,
+        "gender_count_summary": {
+          "Male": 800,
+          "Female": 800
+        },
+        "template_count_card": 268,
+        "expanded_samples_card": 76048,
+        "viewer_split": "test",
+        "viewer_row_count_display": "81.1k",
+        "count_conflict": "unresolved_different_snapshot_or_representation_not_assumed",
+        "annotation_codes": {
+          "ST": "Simply-Transferred",
+          "TM": "Target-Modified",
+          "SR": "Sample-Removed",
+          "NC": "Newly-Created"
+        },
+        "questionnaire_qualification_original": "응답자 개인의 견해를 묻는 질문이 아닙니다.",
+        "qualification_en_translation": "The question does not ask the respondent’s personal opinion.",
+        "translation_status": "reviewer_gloss_not_original",
+        "survey_file_actual": "KoBBQ_survey_result.json",
+        "survey_file_readme": "KoBBQ_survey_result.jsonl"
+      },
+      "historical_coverage": "2023 research lineage; current repository/card revisions are irregular research snapshots, not annual social-attitude waves.",
+      "update_frequency": "Repository revisions; no promised refresh schedule.",
+      "native_evidence_added": "Adaptation codes and a Korean validation instrument distinguish local modification/new templates from transfer. Questions solicit perceptions of social stereotypes rather than endorsement. English documentation translations are GPT-4 reference aids.",
+      "limitations": [
+        "Validation participants are not a demographic prevalence sample or evidence of inherent group traits.",
+        "Expanded rows share templates; contexts/answer permutations are not independent social cases.",
+        "76,048 versus viewer 81.1k stays unresolved; do not combine scores by dataset name.",
+        "Test subset is sampled by template; its relationship to all samples must be retained."
+      ],
+      "next_action": "Prepare a metadata reconciliation of pinned card, viewer and directory revision; record counts separately and use .json manifest filename.",
+      "id": "ULR003",
+      "access": "Public documentation, card, viewer metadata and directory manifest inspected; no full TSV, survey responses or corpus harvested.",
+      "rights": "Dataset card declares MIT and repository has MIT notice; retain ethical-use statement separately. Public paper/webpage rights not inherited.",
+      "related_review_collection_ids": [],
+      "duplicate_evidence": "Existing naver_ai_pages is NAVER Labs HTML title/date/URL metadata with runner_wired=false, not NAVER AI/Cloud KoBBQ data. Organization-name affinity does not establish existing benchmark coverage. Retain BBQ upstream relation and deduplicate HF/GitHub representations.",
+      "related_repository_components": [
+        {
+          "id": "naver_ai_pages",
+          "url": "https://github.com/mishakgg/pdoom-live/blob/82fd46330539bd484c80190c69868d71b2052f6e/data/catalogs/naver_ai_pages.json",
+          "relationship": "NAVER Labs HTML title/date/URL metadata only; runner_wired=false; not KoBBQ benchmark coverage."
+        }
+      ]
+    },
+    {
+      "name": "AraSafe Arabic natural/synthetic safety classification",
+      "rank": null,
+      "classification": "new_originating_collection_relative_to_64_family_inventory",
+      "inventory_ids": [],
+      "decision": "Retain protocol, cohort and aggregate result metadata; hold corpus redistribution and reconcile dialect-count mismatch.",
+      "primary_url": "https://github.com/qcri/AraSafe-benchmark",
+      "sources": [
+        "https://github.com/qcri/AraSafe-benchmark",
+        "https://aclanthology.org/2025.findings-emnlp.529.pdf",
+        "https://aclanthology.org/2025.findings-emnlp.529/"
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "ulr004_repository",
+          "url": "https://github.com/qcri/AraSafe-benchmark",
+          "locator": "README and human_written/synthetic directory manifests",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "dataset_use_restricted_redistribution_unresolved",
+          "rights_note": "No standalone dataset license visible in inspected root/README."
+        },
+        {
+          "artifact_id": "ulr004_paper",
+          "url": "https://aclanthology.org/2025.findings-emnlp.529.pdf",
+          "locator": "Tables 2,3,5,7 and Ethical Considerations, printed pp.9979–9985",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "paper_CC_BY_4_dataset_statement_academic_noncommercial",
+          "rights_note": "Paper publication rights do not license JSONL; dataset statement is academic/noncommercial; redistribution details unresolved."
+        },
+        {
+          "artifact_id": "ulr004_publication",
+          "url": "https://aclanthology.org/2025.findings-emnlp.529/",
+          "locator": "Official paper publication and publication-rights notice",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "paper_CC_BY_4",
+          "rights_note": "Publication scope only, not corpus files."
+        }
+      ],
+      "sample": {
+        "evidence_kind": "published_classification_result",
+        "table": "7",
+        "printed_page": 9982,
+        "pdf_page_1_based": 7,
+        "model_label": "Fanar-1-9B",
+        "methods_model_label": "Fanar-1-9B-Instruct",
+        "task": "natural-prompt binary safety classification",
+        "macro_f1_percent": 78.9,
+        "accuracy_percent": 90.4,
+        "natural_cohort_paper": 12141,
+        "synthetic_cohort_paper": 12264,
+        "synthetic_producer": "GPT-4o",
+        "separate_safe_training_additions": "12K ArabicQA questions",
+        "dialect_table_count_sum": 12104,
+        "dialect_total_conflict": "Table 2 versus Table 3 unresolved",
+        "current_jsonl_counts_verified": false,
+        "native_language": "ar",
+        "prompt_payload_retained": false
+      },
+      "historical_coverage": "Paper published November 2025. Research-release documentation, not a continuous series; exact repository creation and later edit chronology remain unverified.",
+      "update_frequency": "Irregular research releases; no fixed refresh schedule.",
+      "native_evidence_added": "Arabic and dialectal safety classification from a controlled contributor exercise adds local phrasing. Preserve human natural prompts separately from GPT-4o synthetic material and ArabicQA controls.",
+      "limitations": [
+        "Classification accuracy/F1 do not measure harmful-completion frequency, deployed safety or national risk.",
+        "Natural, synthetic and extra-safe training cohorts must not be pooled.",
+        "Published dialect counts total 12,104 against 12,141 natural prompts; do not invent omitted categories.",
+        "Author relationship to Fanar and manual mapping of some verbose outputs qualify comparisons."
+      ],
+      "next_action": "Retain one Table-7 result with natural-cohort label and an unresolved count/rights issue; later review only explicit public clarification or metadata, not corpora.",
+      "id": "ULR004",
+      "access": "Public repository/directory metadata and paper aggregate tables inspected. Human/synthetic JSONL paths documented; full files not acquired. Paper table evidence is text extraction; pixel confirmation not established.",
+      "rights": "Paper declares academic/noncommercial dataset usage, with unresolved redistribution terms. No standalone corpus license found; paper CC BY 4.0 is separate.",
+      "related_review_collection_ids": [],
+      "duplicate_evidence": "New originating collection. Future HELM/leaderboard or paper restatements would share source-result lineage; native Arabic does not establish population representativeness."
+    },
+    {
+      "name": "ArabicMMLU native examination provenance",
+      "rank": null,
+      "classification": "new_originating_collection_relative_to_64_family_inventory",
+      "inventory_ids": [],
+      "decision": "Retain safe provenance and evaluation-protocol metadata; hold redistributable corpus for conflicting licenses and upstream exam rights.",
+      "primary_url": "https://github.com/mbzuai-nlp/ArabicMMLU",
+      "sources": [
+        "https://github.com/mbzuai-nlp/ArabicMMLU",
+        "https://huggingface.co/datasets/MBZUAI/ArabicMMLU/blob/main/README.md",
+        "https://huggingface.co/datasets/MBZUAI/ArabicMMLU",
+        "https://aclanthology.org/2024.findings-acl.334.pdf",
+        "https://huggingface.co/datasets/MBZUAI/ArabicMMLU/blob/main/All/dev.csv",
+        "https://huggingface.co/datasets/MBZUAI/ArabicMMLU/commit/9ea4eb3da8b230ee33c0ad6deb996b5e7a7d7d41"
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "ulr005_github",
+          "url": "https://github.com/mbzuai-nlp/ArabicMMLU",
+          "locator": "README corpus description, experimental setup and License",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "CC_BY_NC_SA_4_declared",
+          "rights_note": "GitHub dataset assertion; conflict with HF remains unresolved."
+        },
+        {
+          "artifact_id": "ulr005_card",
+          "url": "https://huggingface.co/datasets/MBZUAI/ArabicMMLU/blob/main/README.md",
+          "locator": "README linked revision 7aa530e2893ac420352b3f5c1a1310c010e9758b",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "CC_BY_NC_4_declared",
+          "rights_note": "HF omits ShareAlike; do not select weaker terms. Underlying examinations have separate provenance/rights."
+        },
+        {
+          "artifact_id": "ulr005_viewer",
+          "url": "https://huggingface.co/datasets/MBZUAI/ArabicMMLU",
+          "locator": "Accounting (University)/test metadata ID 7183",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "conflicting_dataset_rights",
+          "rights_note": "Read only safe metadata; questions/options not retained."
+        },
+        {
+          "artifact_id": "ulr005_paper",
+          "url": "https://aclanthology.org/2024.findings-acl.334.pdf",
+          "locator": "Table 3 p.5626, country distribution and setup",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "paper_CC_BY_4",
+          "rights_note": "Paper rights are distinct from CSV/exam material."
+        },
+        {
+          "artifact_id": "ulr005_all_dev",
+          "url": "https://huggingface.co/datasets/MBZUAI/ArabicMMLU/blob/main/All/dev.csv",
+          "locator": "Public HTML metadata ID 7214",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "conflicting_dataset_rights",
+          "rights_note": "Bounded metadata comparison only; no full CSV saved."
+        },
+        {
+          "artifact_id": "ulr005_upload",
+          "url": "https://huggingface.co/datasets/MBZUAI/ArabicMMLU/commit/9ea4eb3da8b230ee33c0ad6deb996b5e7a7d7d41",
+          "locator": "September 17, 2024 packaging; Accounting/dev ID 7214",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "conflicting_dataset_rights",
+          "rights_note": "Packaging date is not source-exam or original corpus release date."
+        }
+      ],
+      "sample": {
+        "evidence_kind": "stimulus_answer_key_metadata",
+        "ID": 7183,
+        "Country": "Egypt",
+        "Group": "Social Science",
+        "Subject": "Accounting",
+        "Level": "Univ",
+        "Answer Key": "A",
+        "is_few_shot": 0,
+        "configuration": "Accounting (University)",
+        "split": "test",
+        "source_field": "http://www.aun.edu.eg/commerce/sites/default/files/pdf/Question/Question-bank-2021-a1-3.pdf",
+        "source_exam_independently_opened": false,
+        "question_and_options_retained": false,
+        "corpus_count_paper": 14575,
+        "task_count": 40,
+        "named_country_count": 8,
+        "other_country_bucket_paper": 3014,
+        "question_language": "Modern Standard Arabic",
+        "instruction_language_options": [
+          "Arabic",
+          "English"
+        ],
+        "answer_label_script_options": [
+          "Arabic",
+          "Latin"
+        ],
+        "overlap_sample": {
+          "ID": 7214,
+          "representations": [
+            "All/dev",
+            "Accounting (University)/dev"
+          ],
+          "is_few_shot": 1,
+          "claim": "configuration overlap only; not dev/test contamination"
+        }
+      },
+      "historical_coverage": "2024 paper; HF packaging commit dated 2024-09-17. Source exam years differ; the sample URL suggests 2021, but the examination was not verified. Repository creation date remains unverified.",
+      "update_frequency": "Repository-driven revisions; no fixed refresh promise.",
+      "native_evidence_added": "Country/subject/level/source-document fields retain curriculum provenance beyond translation. Eight named countries plus an Other category prevent overstating geographic attribution.",
+      "limitations": [
+        "Exam-answering is neither conversational dialect coverage nor safety/autonomy measurement.",
+        "Country labels describe source provenance, not national traits or capabilities of people.",
+        "English instructions reportedly outperform Arabic in the authors’ setup; question/instruction/answer-label language must remain separate.",
+        "OCR-like damaged characters must be retained if text is later authorized; corrected transcription separate.",
+        "Published 14,575 count is not a fresh current-file audit; All overlaps subject files."
+      ],
+      "next_action": "Keep both rights assertions with pinned card/packaging identifiers and safe ID 7183/7214 provenance; no commercial or general corpus admission until resolved.",
+      "id": "ULR005",
+      "access": "Public cards, manifests, viewer and limited metadata were inspected. Full CSV/Parquet was not acquired; full split membership remains unaudited.",
+      "rights": "GitHub CC BY-NC-SA 4.0 versus HF CC BY-NC 4.0 remains unresolved; both noncommercial. Upstream examination rights also need resolution. Paper CC BY is separate.",
+      "related_review_collection_ids": [],
+      "duplicate_evidence": "New originating collection; deduplicate by pinned release and source ID across All/subject configurations and downstream benchmark reports. Verified All/dev overlap does not establish split leakage."
+    },
+    {
+      "name": "MERA original-text ruEthics Russian diagnostic",
+      "rank": 2,
+      "classification": "new_originating_collection_relative_to_64_family_inventory",
+      "inventory_ids": [
+        "GL006"
+      ],
+      "decision": "Prioritize protocol and annotation metadata, not a single ethical score or public trace feed.",
+      "primary_url": "https://mera.a-ai.ru/ru/text/tasks/4",
+      "sources": [
+        "https://mera.a-ai.ru/ru/text/tasks/4",
+        "https://huggingface.co/datasets/MERA-evaluation/MERA/blob/main/README.md",
+        "https://github.com/MERA-Evaluation/MERA/blob/release/benchmark_tasks/ruethics/README.md",
+        "https://mera.a-ai.ru/ru/text/about"
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "ulr006_task",
+          "url": "https://mera.a-ai.ru/ru/text/tasks/4",
+          "locator": "Task description, creation filtering, metric and diagnostic exclusion",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "unknown",
+          "rights_note": "Public inspection does not establish general redistribution rights."
+        },
+        {
+          "artifact_id": "ulr006_card",
+          "url": "https://huggingface.co/datasets/MERA-evaluation/MERA/blob/main/README.md",
+          "locator": "ruethics config, num_examples, example meta.id 1289; card revision 73cf223",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "MIT_declared",
+          "rights_note": "Task/data declaration does not waive upstream text rights or license private submitted model responses."
+        },
+        {
+          "artifact_id": "ulr006_license",
+          "url": "https://github.com/MERA-Evaluation/MERA/blob/release/benchmark_tasks/ruethics/README.md",
+          "locator": "Task-specific License section",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "MIT_declared",
+          "rights_note": "Explicit ruEthics dataset MIT declaration, not only framework code license."
+        },
+        {
+          "artifact_id": "ulr006_faq",
+          "url": "https://mera.a-ai.ru/ru/text/about",
+          "locator": "Version history, public diagnostics, restricted answers and v2 collection link",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "unknown",
+          "rights_note": "Public inspection does not establish general redistribution rights."
+        }
+      ],
+      "sample": {
+        "evidence_kind": "annotation_and_protocol_metadata",
+        "sample_id": 1289,
+        "question": "good",
+        "actant_1_original": "рассказчик",
+        "actant_2_original": "мама",
+        "actant_translations": {
+          "рассказчик": "narrator",
+          "мама": "mother"
+        },
+        "translation_status": "reviewer_gloss_not_original",
+        "human_annotations": {
+          "virtue": "1",
+          "law": "1",
+          "moral": "1",
+          "justice": "1",
+          "utilitarianism": "1"
+        },
+        "test_rows_card": 1935,
+        "text_ordered_actor_pair_cases": 645,
+        "framings_original": [
+          "правильно",
+          "хорошо",
+          "этично"
+        ],
+        "framing_translations": [
+          "right",
+          "good",
+          "ethical"
+        ],
+        "metrics": "three sets of five MCC correlations",
+        "model_result": null
+      },
+      "historical_coverage": "Original benchmark November 2023; FAQ documents v1.2.0 from September 2024 and also links separate v2.0 collection. Reviewed original-text ruEthics only; no latest-v2 content claim.",
+      "update_frequency": "Release-driven, not longitudinal ethical-belief measurements.",
+      "native_evidence_added": "Russian TAPE-derived actor-pair annotations and three ethical framings expose local language/construct sensitivity beyond translated benchmark totals.",
+      "limitations": [
+        "645 actor-pair cases are not 645 unique stories; 1,935 rows repeat three framings.",
+        "Human annotations are criteria, not model answers or universal moral truths.",
+        "Creation filtering and treatment of indeterminate labels shape the construct; no population-attitude inference.",
+        "Diagnostic is excluded from aggregate ranking; 15 correlations are not one good/bad scale."
+      ],
+      "next_action": "Specify a case/framing-aware metadata fixture retaining all 15 metric slots; keep actual result values and public trace access null.",
+      "id": "ULR006",
+      "access": "Task documentation, public card and task license inspected. JSONL path data/ruethics/test.jsonl is documented but not acquired. Public leaderboard does not expose submitted responses; FAQ restricts them to experts.",
+      "rights": "Task-specific MIT dataset declaration corroborates card; preserve notices and TAPE/upstream text provenance. Private submissions, web text and v2 are separate artifacts.",
+      "related_review_collection_ids": [],
+      "duplicate_evidence": "GL006 framework coverage does not supply these original tasks. TAPE is upstream; repeated framings, mirrors and future aggregator results share provenance."
+    },
+    {
+      "name": "Dutch Algorithm Register deployment declarations",
+      "rank": null,
+      "classification": "new_regional_originating_collection",
+      "inventory_ids": [
+        "GL033"
+      ],
+      "decision": "Retain bounded operator-declaration metadata; do not treat registry coverage or impact labels as audited risk.",
+      "primary_url": "https://algoritmes.overheid.nl/nl/algoritme/27198742/85273997/ida",
+      "sources": [
+        "https://algoritmes.overheid.nl/nl/algoritme/27198742/85273997/ida",
+        "https://algoritmes.overheid.nl/nl/footer/copyright",
+        "https://algoritmes.overheid.nl/nl/footer/archief"
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "ulr007_record",
+          "url": "https://algoritmes.overheid.nl/nl/algoritme/27198742/85273997/ida",
+          "locator": "IDA record fields before Similar descriptions",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "publisher_text_reuse_permission",
+          "rights_note": "Text reusable except item restrictions; keep distinct linked-document and image rights."
+        },
+        {
+          "artifact_id": "ulr007_rights",
+          "url": "https://algoritmes.overheid.nl/nl/footer/copyright",
+          "locator": "Reuse of text versus images; no endorsement",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "publisher_text_reuse_permission",
+          "rights_note": "Not a CC0 declaration. Images need separate permission; item restrictions control."
+        },
+        {
+          "artifact_id": "ulr007_archive",
+          "url": "https://algoritmes.overheid.nl/nl/footer/archief",
+          "locator": "Archive starts 25 January 2023",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "unknown",
+          "rights_note": "Public inspection does not establish general redistribution rights."
+        }
+      ],
+      "sample": {
+        "evidence_kind": "operator_declaration",
+        "name": "IDA",
+        "organization": "ICTU",
+        "status_original": "In gebruik",
+        "status_en_translation": "in use",
+        "translation_status": "reviewer_gloss_not_original",
+        "declared_start": "2026-09",
+        "modified_display_original": "6 oktober 2026 om 8:49",
+        "modified_timezone": null,
+        "publication_standard": "1.0",
+        "publication_category_original": "Overige algoritmes",
+        "impact_assessment_original": "Veld niet ingevuld.",
+        "impact_assessment_normalized": null,
+        "independent_audit": null,
+        "actual_risk_score": null
+      },
+      "historical_coverage": "Archive documentation reaches 2023-01-25; inspected IDA record declares September 2026 start. Historical archive captures not downloaded.",
+      "update_frequency": "Publisher edits/event driven; uniform cadence/completeness not established.",
+      "native_evidence_added": "Dutch organizational records preserve operational status, accountable organization, use description and missing assessment fields beyond international policy summaries.",
+      "limitations": [
+        "Self-declaration is not an independent audit, demonstrated mitigation or observed performance.",
+        "Missing assessment is missing, not proof none occurred or that risk is low.",
+        "Register includes non-AI algorithms; total records are not AI deployments or prevalence.",
+        "Modification, declared start and archive capture are distinct dates; displayed timezone unknown."
+      ],
+      "next_action": "Create one allowlisted IDA metadata record preserving native status and null assessment; later export inspection is optional and separate.",
+      "id": "ULR007",
+      "access": "Fielded public HTML inspected; download control present, payload and stable export API untested. No use of the chatbot or user messages submitted.",
+      "rights": "Publisher permits website text reuse unless an item restricts it; separate image/attachment rights and no government-endorsement implication.",
+      "related_review_collection_ids": [
+        "CD001",
+        "CD004"
+      ],
+      "duplicate_evidence": "Complementary to GL033 policy material and CD001 UK ATRS/CD004 OMB disclosures. Different jurisdictions and units; same product across agencies is not duplicate deployment, nor independent proof of supplier safety. No spend/workload/concentration denominator."
+    },
+    {
+      "name": "INE Spanish microenterprise AI adoption aggregates",
+      "rank": 1,
+      "classification": "national_artifact_and_population_enrichment",
+      "inventory_ids": [
+        "GL022"
+      ],
+      "decision": "Best bounded next acquisition: two same-publication vintage observations, with under-ten internet-connected base intact.",
+      "primary_url": "https://www.ine.es/dyngs/Prensa/ETICCE20241T2025.htm",
+      "sources": [
+        "https://www.ine.es/dyngs/Prensa/ETICCE20241T2025.htm",
+        "https://www.ine.es/dynt3/metadatos/es/RespuestaDatos.html?oe=30169",
+        "https://www.ine.es/ss/Satellite?L=0&c=Page&cid=1254735849170&p=1254735849170&pagename=Ayuda/INELayout",
+        "https://www.ine.es/jaxi/Tabla.htm?L=0&tpx=76397"
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "ulr008_release",
+          "url": "https://www.ine.es/dyngs/Prensa/ETICCE20241T2025.htm",
+          "locator": "Microenterprise section AI row and footnote (1); release date; methodological note",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "INE_origin_statistical_reuse",
+          "rights_note": "Commercial/noncommercial reuse authorized with source, supplied update date, unchanged meaning and no endorsement."
+        },
+        {
+          "artifact_id": "ulr008_method",
+          "url": "https://www.ine.es/dynt3/metadatos/es/RespuestaDatos.html?oe=30169",
+          "locator": "Statistical-enterprise unit change; time reference and coverage",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "INE_origin_statistical_reuse",
+          "rights_note": "INE-origin methodology under inspected reuse notice; third-party content excluded."
+        },
+        {
+          "artifact_id": "ulr008_rights",
+          "url": "https://www.ine.es/ss/Satellite?L=0&c=Page&cid=1254735849170&p=1254735849170&pagename=Ayuda/INELayout",
+          "locator": "Reuse notice section",
+          "access_status": "public_primary_metadata_read",
+          "rights_status": "INE_origin_statistical_reuse",
+          "rights_note": "Not blanket permission for all linked/third-party material."
+        },
+        {
+          "artifact_id": "ulr008_jaxi",
+          "url": "https://www.ine.es/jaxi/Tabla.htm?L=0&tpx=76397",
+          "locator": "Under-ten heading, Q1 2025, percentage units",
+          "access_status": "public_scope_metadata_data_cells_not_exposed",
+          "rights_status": "unknown",
+          "rights_note": "Public inspection does not establish general redistribution rights."
+        }
+      ],
+      "sample": {
+        "evidence_kind": "survey_aggregate",
+        "indicator_original": "Emplean tecnologías de Inteligencia Artificial (IA)",
+        "indicator_en_translation": "Use artificial intelligence technologies",
+        "translation_status": "reviewer_gloss_not_original",
+        "denominator_original": "Porcentaje sobre el total de empresas de menos de 10 empleados con conexión a Internet.",
+        "denominator_en_translation": "Percentage of internet-connected enterprises with fewer than 10 employees",
+        "geography": "Spain",
+        "observations": [
+          {
+            "reference_period": "2025-Q1",
+            "survey_year": 2025,
+            "value_percent": 13.4,
+            "displayed": "13,4"
+          },
+          {
+            "reference_period": "2024-Q1",
+            "survey_year": 2024,
+            "value_percent": 7.5,
+            "displayed": "7,5"
+          }
+        ],
+        "publication_date": "2025-10-22",
+        "publication_update_time_display": "13:30",
+        "publication_vintage": "2024–Q1 2025 final results",
+        "achieved_ai_item_denominator": null,
+        "numerator": null,
+        "uncertainty": null,
+        "activity_scope": "CNAE-2009 sections C,D,E,F,G,H,I,J,L,M,N and group 95.1"
+      },
+      "historical_coverage": "Annual enterprise ICT survey; directly verified AI comparison Q1 2024/Q1 2025 from October 2025 final release, not separately inspected 2024 publication. Longer general ICT history is not a verified AI series.",
+      "update_frequency": "Annual release with corrections; source warns first CNAE-2025 result publication in 2026. Do not extrapolate comparability to later waves.",
+      "native_evidence_added": "Spanish official definitions and microenterprise coverage add an under-ten population absent from standard Eurostat 10+ universe; original quarter/calendar-year distinctions prevent time mislabeling.",
+      "limitations": [
+        "Internet-connected denominator, sector coverage, statistical-enterprise unit and survey weights matter.",
+        "Rounded percentages cannot reconstruct respondent counts; absent errors are null, never zero.",
+        "ICT usage is Q1 survey year; the release also contains prior-calendar-year commerce/training, not the AI reference date.",
+        "New enterprise definition dual-reported 2021–2022, then statistical-enterprise only from 2022–2023."
+      ],
+      "next_action": "Use a two-row hand-curated specification; later authorize one bounded extractor through existing contracts only, with denominator/date tests below. No implementation in this review.",
+      "id": "ULR008",
+      "access": "Release exposes selected row, values and footnote as public structured table text. JAXI scope verified but renderer exposed no cells; full export untested. No microdata or respondents acquired.",
+      "rights": "INE-origin statistical information can be reused commercially/noncommercially with attribution, meaning and update-date preservation and no endorsement; linked third-party materials excluded.",
+      "related_review_collection_ids": [
+        "LM003"
+      ],
+      "duplicate_evidence": "GL022 shares European survey lineage but standard population is 10+ employed persons; under-ten series must not merge with it. Larger-enterprise overlaps require cell-level deduplication. LM003 ICT training shares infrastructure but differs in construct/reference period; no same-enterprise causal link."
+    }
+  ],
+  "corrections": [
+    {
+      "id": "ULR-C01",
+      "source_id": "ULR002",
+      "status": "correction_or_qualification",
+      "finding": "NIA is a denominator revision, not growth or a percentage-only fix. Exact original AND revised base definitions remain null/unverified; comparison admission held.",
+      "evidence_urls": [
+        "https://nia.or.kr/site/nia_kor/ex/bbs/View.do?bcIdx=29198&cbIdx=99870&parentSeq=29198",
+        "https://www.nia.or.kr/site/nia_kor/ex/bbs/View.do?bcIdx=29199&cbIdx=99870",
+        "https://www.data.go.kr/data/15086936/fileData.do",
+        "https://www.nia.or.kr/common/board/Download.do?bcIdx=29198&cbIdx=99870&fileNo=3"
+      ]
+    },
+    {
+      "id": "ULR-C02",
+      "source_id": "ULR008",
+      "status": "correction_or_qualification",
+      "finding": "INE is under-ten and internet-connected, outside standard Eurostat 10+ population; both values are from one 2025 publication vintage, with Q1 reference periods.",
+      "evidence_urls": [
+        "https://www.ine.es/dyngs/Prensa/ETICCE20241T2025.htm",
+        "https://www.ine.es/dynt3/metadatos/es/RespuestaDatos.html?oe=30169",
+        "https://www.ine.es/ss/Satellite?L=0&c=Page&cid=1254735849170&p=1254735849170&pagename=Ayuda/INELayout",
+        "https://www.ine.es/jaxi/Tabla.htm?L=0&tpx=76397"
+      ]
+    },
+    {
+      "id": "ULR-C03",
+      "source_id": "ULR004",
+      "status": "correction_or_qualification",
+      "finding": "AraSafe natural 12,141 versus synthetic 12,264 and separate ArabicQA controls; dialect table total 12,104 differs from natural total and remains unresolved.",
+      "evidence_urls": [
+        "https://github.com/qcri/AraSafe-benchmark",
+        "https://aclanthology.org/2025.findings-emnlp.529.pdf",
+        "https://aclanthology.org/2025.findings-emnlp.529/"
+      ]
+    },
+    {
+      "id": "ULR-C04",
+      "source_id": "ULR005",
+      "status": "correction_or_qualification",
+      "finding": "ArabicMMLU eight named countries include a further Other bucket of 3,014; retain conflicting ShareAlike claims and upstream examination rights hold.",
+      "evidence_urls": [
+        "https://github.com/mbzuai-nlp/ArabicMMLU",
+        "https://huggingface.co/datasets/MBZUAI/ArabicMMLU/blob/main/README.md",
+        "https://huggingface.co/datasets/MBZUAI/ArabicMMLU",
+        "https://aclanthology.org/2024.findings-acl.334.pdf",
+        "https://huggingface.co/datasets/MBZUAI/ArabicMMLU/blob/main/All/dev.csv",
+        "https://huggingface.co/datasets/MBZUAI/ArabicMMLU/commit/9ea4eb3da8b230ee33c0ad6deb996b5e7a7d7d41"
+      ]
+    },
+    {
+      "id": "ULR-C05",
+      "source_id": "ULR003",
+      "status": "correction_or_qualification",
+      "finding": "KoBBQ 76,048 card versus 81.1k viewer remains unresolved; actual survey result filename is .json, not README .jsonl.",
+      "evidence_urls": [
+        "https://huggingface.co/datasets/naver-ai/kobbq/blob/main/README.md",
+        "https://github.com/naver-ai/KoBBQ/blob/main/data/README.md",
+        "https://huggingface.co/datasets/naver-ai/kobbq",
+        "https://api.github.com/repos/naver-ai/KoBBQ/contents/data",
+        "https://github.com/naver-ai/KoBBQ/blob/main/LICENSE"
+      ]
+    },
+    {
+      "id": "ULR-C06",
+      "source_id": "ULR006",
+      "status": "correction_or_qualification",
+      "finding": "MERA 1,935 rows are 645 ordered actor-pair cases across three framings; diagnostic excluded from ranking; private submitted responses are not a public trace source.",
+      "evidence_urls": [
+        "https://mera.a-ai.ru/ru/text/tasks/4",
+        "https://huggingface.co/datasets/MERA-evaluation/MERA/blob/main/README.md",
+        "https://github.com/MERA-Evaluation/MERA/blob/release/benchmark_tasks/ruethics/README.md",
+        "https://mera.a-ai.ru/ru/text/about"
+      ]
+    },
+    {
+      "id": "ULR-C07",
+      "source_id": "ULR001",
+      "status": "correction_or_qualification",
+      "finding": "AnswerCarefully public metadata is not corpus access; purpose restrictions, gate and redistribution prohibition remain.",
+      "evidence_urls": [
+        "https://llmc.nii.ac.jp/answercarefully-dataset/",
+        "https://huggingface.co/datasets/llm-jp/AnswerCarefully",
+        "https://huggingface.co/datasets/llm-jp/AnswerCarefully/blob/main/LICENSE"
+      ]
+    },
+    {
+      "id": "ULR-C08",
+      "source_id": "ULR007",
+      "status": "correction_or_qualification",
+      "finding": "Dutch registry is a deployment declaration collection, not independently verified performance, actual risk scores or a census of AI systems.",
+      "evidence_urls": [
+        "https://algoritmes.overheid.nl/nl/algoritme/27198742/85273997/ida",
+        "https://algoritmes.overheid.nl/nl/footer/copyright",
+        "https://algoritmes.overheid.nl/nl/footer/archief"
+      ]
+    }
+  ],
+  "proposed_implementation": {
+    "name": "ine_microenterprise_ai_2024_2025",
+    "status": "bounded_specification_only_not_implemented",
+    "purpose": "Two auditable adoption observations without creating another adapter framework or operational admission.",
+    "allowlisted_urls": [
+      "https://www.ine.es/dyngs/Prensa/ETICCE20241T2025.htm",
+      "https://www.ine.es/dynt3/metadatos/es/RespuestaDatos.html?oe=30169",
+      "https://www.ine.es/ss/Satellite?L=0&c=Page&cid=1254735849170&p=1254735849170&pagename=Ayuda/INELayout"
+    ],
+    "request_limit": 3,
+    "max_bytes_per_html": 2097152,
+    "redirect_rule": "Only allowlisted official destinations; off-scope redirect stops acquisition; no following document links.",
+    "output": "Exactly two proposed adoption observations, grouped by same October 22, 2025 publication vintage. Reuse existing evidence/source/snapshot contract approach; a missing adoption-observation contract is an explicit prerequisite, not permission to repurpose forecast/person records.",
+    "required_fields": [
+      "originating_producer",
+      "family_and_collection_ids",
+      "indicator_original",
+      "translation_and_status",
+      "value_percent",
+      "value_display_original",
+      "reference_quarter",
+      "survey_year",
+      "publication_date",
+      "publication_vintage",
+      "denominator_original",
+      "denominator_translation",
+      "size_population",
+      "internet_connection_condition",
+      "sector_scope",
+      "statistical_unit",
+      "source_locator",
+      "retrieval_timestamp",
+      "source_sha256_if_actual_bytes_retained",
+      "rights_url_and_scope",
+      "uncertainty_or_null_reason",
+      "origin_relationship"
+    ],
+    "acceptance_tests": [
+      "Exactly three or fewer permitted HTML reads; no archive, linked PDF, JAXI, respondent or corpus traversal.",
+      "Exactly two selected AI records: 2024-Q1=7.5 and 2025-Q1=13.4, with comma decimals preserved separately.",
+      "Both records retain footnote (1), fewer-than-ten employees, internet connection and source activity scope; absent or ambiguous footnote quarantines both.",
+      "Q1/survey year and 2025-10-22 publication date remain separate; do not assign calendar-2024 commerce reference to AI.",
+      "Spanish text unchanged; glosses separate and marked as translations.",
+      "Rounded percentages generate no respondent counts. Achieved AI-item denominator, numerator, uncertainty remain null unless separately sourced.",
+      "Stable observation key includes producer, metric, population, sector, geography and reference quarter; publication-vintage/snapshot key separate; idempotent on same snapshot.",
+      "Changed source bytes create a new version; changed denominator/unit/sector prevents automatic same-series comparability.",
+      "GL022 10+ and ULR008 under-ten are distinct; LM003 ICT training is a different indicator. Mirrors add provenance rather than independent evidence.",
+      "Rights manifest covers only INE-origin statistics; no inferred rights to third-party attachments or images.",
+      "No p(doom), national-characteristic, incident, person-forecast or capability score generated."
+    ],
+    "actual_next_step": "First review this two-row specification within existing evidence contracts. No adapter, validator, CI framework, data admission or live collector was created."
+  },
+  "next_actions": [
+    {
+      "action_id": "ULR001-A01",
+      "source_id": "ULR001",
+      "priority": "P1",
+      "title": "Record Japanese split corrections",
+      "status": "bounded_follow_up_not_started",
+      "action": "Store the two-ID correction event and version/split relationships; leave corpus access and model-result ingestion closed.",
+      "prompt_id": "ULR001-P01",
+      "completion_evidence": "Scope-specific acceptance result or explicit retained hold; public metadata alone does not clear corpus rights."
+    },
+    {
+      "action_id": "ULR002-A01",
+      "source_id": "ULR002",
+      "priority": "P0",
+      "title": "Preserve Korean denominator revision",
+      "status": "bounded_follow_up_not_started",
+      "action": "Keep GL026 subscription comparisons held; use only an authorized supplied original/revised figure-93 base-label excerpt and artifact-rights evidence to resolve the hold. Do not circumvent access restrictions.",
+      "prompt_id": "ULR002-P01",
+      "completion_evidence": "Scope-specific acceptance result or explicit retained hold; public metadata alone does not clear corpus rights."
+    },
+    {
+      "action_id": "ULR003-A01",
+      "source_id": "ULR003",
+      "priority": "P1",
+      "title": "Reconcile KoBBQ counts",
+      "status": "bounded_follow_up_not_started",
+      "action": "Prepare a metadata reconciliation of pinned card, viewer and directory revision; record counts separately and use .json manifest filename.",
+      "prompt_id": "ULR003-P01",
+      "completion_evidence": "Scope-specific acceptance result or explicit retained hold; public metadata alone does not clear corpus rights."
+    },
+    {
+      "action_id": "ULR004-A01",
+      "source_id": "ULR004",
+      "priority": "P1",
+      "title": "Reconcile AraSafe cohort counts",
+      "status": "bounded_follow_up_not_started",
+      "action": "Retain one Table-7 result with natural-cohort label and an unresolved count/rights issue; later review only explicit public clarification or metadata, not corpora.",
+      "prompt_id": "ULR004-P01",
+      "completion_evidence": "Scope-specific acceptance result or explicit retained hold; public metadata alone does not clear corpus rights."
+    },
+    {
+      "action_id": "ULR005-A01",
+      "source_id": "ULR005",
+      "priority": "P1",
+      "title": "Resolve ArabicMMLU rights",
+      "status": "bounded_follow_up_not_started",
+      "action": "Keep both rights assertions with pinned card/packaging identifiers and safe ID 7183/7214 provenance; no commercial or general corpus admission until resolved.",
+      "prompt_id": "ULR005-P01",
+      "completion_evidence": "Scope-specific acceptance result or explicit retained hold; public metadata alone does not clear corpus rights."
+    },
+    {
+      "action_id": "ULR006-A01",
+      "source_id": "ULR006",
+      "priority": "P1",
+      "title": "Map Russian diagnostic protocol",
+      "status": "bounded_follow_up_not_started",
+      "action": "Specify a case/framing-aware metadata fixture retaining all 15 metric slots; keep actual result values and public trace access null.",
+      "prompt_id": "ULR006-P01",
+      "completion_evidence": "Scope-specific acceptance result or explicit retained hold; public metadata alone does not clear corpus rights."
+    },
+    {
+      "action_id": "ULR007-A01",
+      "source_id": "ULR007",
+      "priority": "P1",
+      "title": "Map Dutch deployment declaration",
+      "status": "bounded_follow_up_not_started",
+      "action": "Create one allowlisted IDA metadata record preserving native status and null assessment; later export inspection is optional and separate.",
+      "prompt_id": "ULR007-P01",
+      "completion_evidence": "Scope-specific acceptance result or explicit retained hold; public metadata alone does not clear corpus rights."
+    },
+    {
+      "action_id": "ULR008-A01",
+      "source_id": "ULR008",
+      "priority": "P0",
+      "title": "Specify Spanish AI adoption",
+      "status": "bounded_follow_up_not_started",
+      "action": "Use a two-row hand-curated specification; later authorize one bounded extractor through existing contracts only, with denominator/date tests below. No implementation in this review.",
+      "prompt_id": "ULR008-P01",
+      "completion_evidence": "Scope-specific acceptance result or explicit retained hold; public metadata alone does not clear corpus rights."
+    }
+  ],
+  "follow_up_prompts": [
+    {
+      "id": "ULR001-P01",
+      "source_id": "ULR001",
+      "priority": "P1",
+      "title": "Record Japanese split corrections",
+      "prompt": "Review only the public notice https://llmc.nii.ac.jp/answercarefully-dataset/, card https://huggingface.co/datasets/llm-jp/AnswerCarefully, and terms https://huggingface.co/datasets/llm-jp/AnswerCarefully/blob/main/LICENSE. Produce a metadata-only release/correction manifest for the two ACv1 IDs removed on 2024-12-24, preserving original Japanese labels and separately marked translations. Separate ACv2, ACv2.2, borderline and ACv3 populations, split relations and rights. Do not log in, accept terms, share contacts, acquire corpus files, reproduce harmful payloads or run evaluations. Stop at any gate; leave rights and score-comparability gaps explicit."
+    },
+    {
+      "id": "ULR002-P01",
+      "source_id": "ULR002",
+      "priority": "P0",
+      "title": "Preserve Korean denominator revision",
+      "prompt": "For GL026, use https://nia.or.kr/site/nia_kor/ex/bbs/View.do?bcIdx=29198&cbIdx=99870&parentSeq=29198, https://www.nia.or.kr/site/nia_kor/ex/bbs/View.do?bcIdx=29199&cbIdx=99870, and https://www.data.go.kr/data/15086936/fileData.do to preserve the dated 2026-05-26 figure-93 revision, 7.9 and 17.8, Korean labels, filename token, and separate old/new denominator-definition fields. Both definitions remain unverified; do not infer them. Corrected PDF content is unverified and remains an access hold; do not attempt another route to bypass restrictions. If the user supplies an authorized original/revised excerpt, verify its base labels and artifact rights; otherwise finish with a correction-only record and comparison hold. No respondents, workbook bulk download, login or outreach."
+    },
+    {
+      "id": "ULR003-P01",
+      "source_id": "ULR003",
+      "priority": "P1",
+      "title": "Reconcile KoBBQ counts",
+      "prompt": "Inspect only https://huggingface.co/datasets/naver-ai/kobbq/blob/main/README.md, https://github.com/naver-ai/KoBBQ/blob/main/data/README.md, https://api.github.com/repos/naver-ai/KoBBQ/contents/data, and https://github.com/naver-ai/KoBBQ/blob/main/LICENSE, plus the viewer count label. Reconcile documented 268 templates/76,048 samples with the displayed 81.1k test rows without downloading full samples. Record 1,600 validation participants, adaptation codes, questionnaire-perception caveat, original Korean short label and marked English gloss. Keep MIT notice and separate ethical-use statement; use actual .json manifest filename. Do not reproduce stereotypes, fetch respondents or run models. Leave score comparability held if version counts cannot be resolved from metadata."
+    },
+    {
+      "id": "ULR004-P01",
+      "source_id": "ULR004",
+      "priority": "P1",
+      "title": "Reconcile AraSafe cohort counts",
+      "prompt": "Review only https://github.com/qcri/AraSafe-benchmark root/README and directory metadata plus https://aclanthology.org/2025.findings-emnlp.529.pdf. Preserve separate paper cohorts of 12,141 natural and 12,264 GPT-4o synthetic prompts and 12K ArabicQA safe additions. Record only Fanar Table-7 macro-F1 78.9 and accuracy 90.4 for natural binary classification, including model-label variation and author relationship. Keep the Table-2 dialect total 12,104 discrepancy open unless public documentation resolves it. Check explicit dataset terms separately from paper CC BY. No JSONL bulk acquisition, harmful prompts, attack instructions, model/source execution, login or outreach."
+    },
+    {
+      "id": "ULR005-P01",
+      "source_id": "ULR005",
+      "priority": "P1",
+      "title": "Resolve ArabicMMLU rights",
+      "prompt": "Inspect https://github.com/mbzuai-nlp/ArabicMMLU, https://huggingface.co/datasets/MBZUAI/ArabicMMLU/blob/main/README.md, public manifests and https://aclanthology.org/2024.findings-acl.334.pdf. Preserve CC BY-NC-SA 4.0 versus CC BY-NC 4.0 as conflicting assertions; do not infer upstream examination clearance. Record 14,575 questions/40 tasks, eight named countries plus 3,014 Other, question versus instruction language and answer-label script. Verify at most five benign IDs across All and one task using metadata only; retain ID, country, subject, level, split and source URL. All/dev duplication is not dev/test leakage. No full CSV/Parquet, question text, source/model execution, login or outreach."
+    },
+    {
+      "id": "ULR006-P01",
+      "source_id": "ULR006",
+      "priority": "P1",
+      "title": "Map Russian diagnostic protocol",
+      "prompt": "Use https://mera.a-ai.ru/ru/text/tasks/4, https://huggingface.co/datasets/MERA-evaluation/MERA/blob/main/README.md, https://github.com/MERA-Evaluation/MERA/blob/release/benchmark_tasks/ruethics/README.md, and https://mera.a-ai.ru/ru/text/about for a metadata-only ruEthics protocol record. Preserve 645 ordered-actor-pair cases versus 1,935 rows, three Russian framings with marked translations, human criteria and three sets of five MCC values. Keep original-text lineage distinct from v2.0, disclose selection/filtering and diagnostic exclusion. Confirm task MIT scope, retaining TAPE text provenance. Do not acquire full situations, private submissions, model traces or execute models; use only sample 1289 metadata and leave missing results null."
+    },
+    {
+      "id": "ULR007-P01",
+      "source_id": "ULR007",
+      "priority": "P1",
+      "title": "Map Dutch deployment declaration",
+      "prompt": "Read only IDA https://algoritmes.overheid.nl/nl/algoritme/27198742/85273997/ida, rights https://algoritmes.overheid.nl/nl/footer/copyright, and archive documentation https://algoritmes.overheid.nl/nl/footer/archief. Extract one deployment declaration with organization, status, declared start, modification display, publication standard and missing impact-assessment field. Preserve Dutch labels and separately marked translations. Classify hallucination and mitigation descriptions as operator claims, never audited safety or risk scores. Keep CD001/CD004 methodological overlap and jurisdiction differences; no aggregate adoption/concentration share. Do not crawl the whole register, invoke the chatbot, download attachments or assume export/API stability."
+    },
+    {
+      "id": "ULR008-P01",
+      "source_id": "ULR008",
+      "priority": "P0",
+      "title": "Specify Spanish AI adoption",
+      "prompt": "For INE, inspect only https://www.ine.es/dyngs/Prensa/ETICCE20241T2025.htm, https://www.ine.es/dynt3/metadatos/es/RespuestaDatos.html?oe=30169, and https://www.ine.es/ss/Satellite?L=0&c=Page&cid=1254735849170&p=1254735849170&pagename=Ayuda/INELayout, at most one HTML document each, 2 MiB each. Prepare exactly two AI observations from the under-ten section: Q1 2024=7.5 and Q1 2025=13.4, both reproduced in the 2025-10-22 final publication. Preserve Spanish label and footnote plus marked English glosses, internet-connected base, sector scope, statistical-enterprise unit, survey year, reference quarter and publication vintage. Keep counts and errors null. Link GL022/LM003 without pooling populations/indicators. No respondents, archive traversal, JAXI expansion, adapter code or p(doom) conversion."
+    }
+  ],
+  "holds": [
+    {
+      "source_id": "ULR001",
+      "holds": [
+        "Curated stimuli and reference answers are not observed harms or representative beliefs.",
+        "Historical results need exact version/split; cross-version test reuse and documented test/development overlap undermine naive trends.",
+        "Do not infer safety improvement from a release or use corpus purpose permission for unrelated reuse."
+      ]
+    },
+    {
+      "source_id": "ULR002",
+      "holds": [
+        "Never describe 7.9 to 17.8 as temporal growth or merely fix a percentage.",
+        "Do not infer old or new denominator from ratios, AI experience rate, age coverage or household target.",
+        "Catalog title _20251231 conflicts with stated August 2020–August 2023 coverage; workbook coverage is unresolved.",
+        "Keep publication, filename token and correction dates distinct; exact original/revised definitions remain null until verified."
+      ]
+    },
+    {
+      "source_id": "ULR003",
+      "holds": [
+        "Validation participants are not a demographic prevalence sample or evidence of inherent group traits.",
+        "Expanded rows share templates; contexts/answer permutations are not independent social cases.",
+        "76,048 versus viewer 81.1k stays unresolved; do not combine scores by dataset name.",
+        "Test subset is sampled by template; its relationship to all samples must be retained."
+      ]
+    },
+    {
+      "source_id": "ULR004",
+      "holds": [
+        "Classification accuracy/F1 do not measure harmful-completion frequency, deployed safety or national risk.",
+        "Natural, synthetic and extra-safe training cohorts must not be pooled.",
+        "Published dialect counts total 12,104 against 12,141 natural prompts; do not invent omitted categories.",
+        "Author relationship to Fanar and manual mapping of some verbose outputs qualify comparisons."
+      ]
+    },
+    {
+      "source_id": "ULR005",
+      "holds": [
+        "Exam-answering is neither conversational dialect coverage nor safety/autonomy measurement.",
+        "Country labels describe source provenance, not national traits or capabilities of people.",
+        "English instructions reportedly outperform Arabic in the authors’ setup; question/instruction/answer-label language must remain separate.",
+        "OCR-like damaged characters must be retained if text is later authorized; corrected transcription separate.",
+        "Published 14,575 count is not a fresh current-file audit; All overlaps subject files."
+      ]
+    },
+    {
+      "source_id": "ULR006",
+      "holds": [
+        "645 actor-pair cases are not 645 unique stories; 1,935 rows repeat three framings.",
+        "Human annotations are criteria, not model answers or universal moral truths.",
+        "Creation filtering and treatment of indeterminate labels shape the construct; no population-attitude inference.",
+        "Diagnostic is excluded from aggregate ranking; 15 correlations are not one good/bad scale."
+      ]
+    },
+    {
+      "source_id": "ULR007",
+      "holds": [
+        "Self-declaration is not an independent audit, demonstrated mitigation or observed performance.",
+        "Missing assessment is missing, not proof none occurred or that risk is low.",
+        "Register includes non-AI algorithms; total records are not AI deployments or prevalence.",
+        "Modification, declared start and archive capture are distinct dates; displayed timezone unknown."
+      ]
+    },
+    {
+      "source_id": "ULR008",
+      "holds": [
+        "Internet-connected denominator, sector coverage, statistical-enterprise unit and survey weights matter.",
+        "Rounded percentages cannot reconstruct respondent counts; absent errors are null, never zero.",
+        "ICT usage is Q1 survey year; the release also contains prior-calendar-year commerce/training, not the AI reference date.",
+        "New enterprise definition dual-reported 2021–2022, then statistical-enterprise only from 2022–2023."
+      ]
+    }
+  ]
+}
