@@ -1,0 +1,1857 @@
+{
+  "schema_version": "agent-security-incidents-review/1.0.0",
+  "title": "Agent autonomy/security evaluations and incidents/near-misses",
+  "reviewed_on": "2026-10-08",
+  "status": "curated_research_not_admitted",
+  "repository_review_commit": "088400574a33af144ec7ef7bf13ac88f68f1b86c",
+  "original_report_count": 1,
+  "collection_count": 7,
+  "baseline_inventory": {
+    "path": "data/evidence-program/source_inventory.json",
+    "source_family_count": 64,
+    "sha256": "a4b5046c3dec44598eeab3f025db75783f9ae5f702e0570d7b31fb3026dde678"
+  },
+  "operational_admission": "not_admitted",
+  "collector_enabled": false,
+  "source_code_execution": false,
+  "canonical_contract_mapping": "held_for_lossless_mapping_review",
+  "priority_ranking": [
+    "ASI001",
+    "ASI005",
+    "ASI002"
+  ],
+  "ranking_basis": "Inspectable task metadata; official revision/mechanism evidence; organizer defensive contest corrections.",
+  "interpretation_guards": [
+    "Source families, datasets, events, artifacts, experiments and observation versions are separate units.",
+    "No pooled risk, universal autonomy score, causal harm rate or p(doom) conversion.",
+    "No attack instructions, conversation/injection/tool-argument payloads, account identifiers, personal names, biometric or patient details.",
+    "Archive version never substitutes for historical runtime version. Unknown cost,budget,assistance and timestamps remain null.",
+    "Rights and actual audit-log access remain held when not explicitly established."
+  ],
+  "collections": [
+    {
+      "candidate_id": "ASI001",
+      "name": "AgentDojo task-level evaluation metadata",
+      "source_family_id": "agentdojo",
+      "inventory_source_id": null,
+      "inventory_relationship": "new_source_family_in_inspected_inventory_and_prior_catalogs",
+      "related_inventory_ids": [
+        "GL014",
+        "GL015",
+        "GL016",
+        "GL017"
+      ],
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "historical_coverage": "Dated 2024–2025 results; one clean archive file introduced June 4, 2024. Introduction is not runtime time.",
+      "update_frequency": "Research additions and corrections; no fixed cadence.",
+      "access_export": "One existing clean JSON privately checked; public synthetic-only offline decoder. No attacked trace acquisition.",
+      "measurement_regime": "Short task-level utility and attack-condition outcomes with separate runtime metadata.",
+      "author_authority": "Benchmark maintainers; publisher scoring predicates, not independent operational security assessment.",
+      "limitations": [
+        "Clean security=True is a default, not resistance. Targeted-goal success and DoS nonutility predicates differ; error paths can assign flags without observed outcomes.",
+        "Archive and sample-introduction code are not a certified runtime revision. All actual attacked results remain uninterpreted in v0.",
+        "Short banking tasks do not establish multi-hour reliability. Heterogeneous published combinations are not a fair complete leaderboard.",
+        "Software/documentation MIT does not establish generated conversation or third-party trace rights. Raw payloads remain excluded."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "asi001_results",
+          "url": "https://agentdojo.spylab.ai/results/",
+          "role": "Official results and access notice",
+          "evidence_locator": "Results table; comparability warning and historical viewer links",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_exact_bytes_inspected_not_vendored",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null,
+          "source_bytes": null
+        },
+        {
+          "artifact_id": "asi001_clean",
+          "url": "https://github.com/ethz-spylab/agentdojo/blob/089ed468cf3ed0322acc66b0211f26d9d90dbf60/runs/gpt-4o-2024-05-13-tool_filter/banking/user_task_0/none/none.json",
+          "role": "One clean TaskResults artifact",
+          "evidence_locator": "Root metadata, 9 message roles, 2 assistant-origin tool calls",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "one_clean_artifact_private_metadata_acceptance",
+          "git_commit": "089ed468cf3ed0322acc66b0211f26d9d90dbf60",
+          "git_blob_sha": "6cca827aeb536a35274687f7dc36707373bfb9fa",
+          "source_sha256": "ccf520bccc246f53fe8842a145234d07b8493896493410ce044702e0eadd5e34",
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null,
+          "source_bytes": 3992
+        },
+        {
+          "artifact_id": "asi001_historical_predicate",
+          "url": "https://github.com/ethz-spylab/agentdojo/blob/607e6dc29287344c6fa83701970134475b6f9e9c/src/function_calling_pi/base_tasks.py",
+          "role": "Historical target-goal predicate",
+          "evidence_locator": "BaseInjectionTask.security lines 117–120",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_exact_bytes_inspected_not_vendored",
+          "git_commit": "607e6dc29287344c6fa83701970134475b6f9e9c",
+          "git_blob_sha": "b2f7d19017f1d43cf59f14a3ef8837b5aa66f7db",
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null,
+          "source_bytes": null
+        },
+        {
+          "artifact_id": "asi001_historical_errors",
+          "url": "https://github.com/ethz-spylab/agentdojo/blob/607e6dc29287344c6fa83701970134475b6f9e9c/src/function_calling_pi/benchmark.py",
+          "role": "Historical error defaults",
+          "evidence_locator": "Exception handling lines 113–136",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_exact_bytes_inspected_not_vendored",
+          "git_commit": "607e6dc29287344c6fa83701970134475b6f9e9c",
+          "git_blob_sha": "e82294daa13bd5bdca9a7e7431be6d2bf9964da5",
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null,
+          "source_bytes": null
+        },
+        {
+          "artifact_id": "asi001_historical_clean",
+          "url": "https://github.com/ethz-spylab/agentdojo/blob/607e6dc29287344c6fa83701970134475b6f9e9c/src/function_calling_pi/task_suites/task_suite.py",
+          "role": "Historical clean default",
+          "evidence_locator": "Lines 296–298 return utility and True when injection task absent",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_exact_bytes_inspected_not_vendored",
+          "git_commit": "607e6dc29287344c6fa83701970134475b6f9e9c",
+          "git_blob_sha": "bc3eb613626d8d638af8f60a77bbd7f64b71a99e",
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null,
+          "source_bytes": null
+        },
+        {
+          "artifact_id": "asi001_historical_clock",
+          "url": "https://github.com/ethz-spylab/agentdojo/blob/607e6dc29287344c6fa83701970134475b6f9e9c/src/function_calling_pi/logging.py",
+          "role": "Historical elapsed clock",
+          "evidence_locator": "Lines 189–194 time.time difference",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_exact_bytes_inspected_not_vendored",
+          "git_commit": "607e6dc29287344c6fa83701970134475b6f9e9c",
+          "git_blob_sha": "59823ce648bd629eef8e36e9a3354e248984c74f",
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null,
+          "source_bytes": null
+        },
+        {
+          "artifact_id": "asi001_archive_errors",
+          "url": "https://github.com/ethz-spylab/agentdojo/blob/089ed468cf3ed0322acc66b0211f26d9d90dbf60/src/agentdojo/benchmark.py",
+          "role": "Archive predicate variants including DoS",
+          "evidence_locator": "Target/error/DoS branch distinctions",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_exact_bytes_inspected_not_vendored",
+          "git_commit": "089ed468cf3ed0322acc66b0211f26d9d90dbf60",
+          "git_blob_sha": "162bd6a8af3ca607f893ad3d631db4d238501523",
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null,
+          "source_bytes": null
+        },
+        {
+          "artifact_id": "asi001_license",
+          "url": "https://github.com/ethz-spylab/agentdojo/blob/089ed468cf3ed0322acc66b0211f26d9d90dbf60/LICENSE",
+          "role": "Software/documentation license",
+          "evidence_locator": "MIT grant; generated-trace scope not separately established",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_exact_bytes_inspected_not_vendored",
+          "git_commit": "089ed468cf3ed0322acc66b0211f26d9d90dbf60",
+          "git_blob_sha": "006aed0b22a430c0f3c6a4fb46768d967b8c3dbc",
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "declared_software_documentation_license",
+          "license_identifier": "MIT",
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": "https://github.com/ethz-spylab/agentdojo/blob/089ed468cf3ed0322acc66b0211f26d9d90dbf60/LICENSE",
+          "source_bytes": null
+        },
+        {
+          "artifact_id": "asi001_viewer_notice",
+          "url": "https://github.com/invariantlabs-ai/explorer/blob/e7b13b3f5fe5a461a8e87e8f103d608011f507bc/README.md",
+          "role": "Viewer publisher shutdown notice",
+          "evidence_locator": "January 2026 hosted-version notice",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": "e7b13b3f5fe5a461a8e87e8f103d608011f507bc",
+          "git_blob_sha": "77f81129da07bc54214fe60aa2c3f9bf4063b4bd",
+          "source_sha256": "784f0a4ff39ec41f93b9eb9eb50b9b1a242364bcafd9ee2931245af02046cd79",
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic rights inheritance.",
+          "rights_evidence_url": null,
+          "source_bytes": 2240
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "ASI001-F01",
+          "claim": "One clean tool_filter banking task 0 reports utility=True, security=True, error=null, duration 4.639463186264038 seconds and two assistant-origin tool calls.",
+          "qualification": "One metadata-only private acceptance; no attack resistance inferred; raw conversation not published.",
+          "evidence_artifact_ids": [
+            "asi001_clean"
+          ]
+        },
+        {
+          "finding_id": "ASI001-F02",
+          "claim": "Historical source defines targeted security=True as attacker-goal execution; clean source returns True by default; exception handlers can assign True.",
+          "qualification": "Historical code supports semantic caution but does not identify the sample runtime version. DoS has another predicate.",
+          "evidence_artifact_ids": [
+            "asi001_historical_predicate",
+            "asi001_historical_clean",
+            "asi001_historical_errors",
+            "asi001_archive_errors"
+          ]
+        },
+        {
+          "finding_id": "ASI001-F03",
+          "claim": "The logger uses elapsed wall-clock seconds; cost, caps, runtime revision and human baseline are not present in the supported task record.",
+          "qualification": "User-role text does not prove human assistance; simulated transaction amounts are not inference expenditure.",
+          "evidence_artifact_ids": [
+            "asi001_historical_clock",
+            "asi001_clean"
+          ]
+        },
+        {
+          "finding_id": "ASI001-F04",
+          "claim": "The publisher reports a June 5, 2024 tool_filter row with 72.16% clean utility, 56.28% attacked utility and 6.84% targeted attack success.",
+          "qualification": "These aggregate conditions are separate from the single clean sample; model/attack/defense combinations differ.",
+          "evidence_artifact_ids": [
+            "asi001_results"
+          ]
+        },
+        {
+          "finding_id": "ASI001-F05",
+          "claim": "The hosted trace viewer ceased operation in January 2026; repository JSON remains a verified fallback.",
+          "qualification": "Public access does not resolve generated-trace redistribution rights.",
+          "evidence_artifact_ids": [
+            "asi001_viewer_notice",
+            "asi001_clean",
+            "asi001_license"
+          ]
+        },
+        {
+          "finding_id": "ASI001-F06",
+          "claim": "Historical benchmark code also assigns DoS security as not utility; trace-specific checks can precede task.security.",
+          "qualification": "Do not transfer a target-goal interpretation to DoS or claim every runtime used one predicate. Exact sample runtime remains unknown.",
+          "evidence_artifact_ids": [
+            "asi001_historical_errors",
+            "asi001_historical_clean"
+          ]
+        },
+        {
+          "finding_id": "ASI001-F07",
+          "claim": "The publisher table displays a 2021-09-05 label on a Llama-3-70b-chat-hf row.",
+          "qualification": "Retain this as a date-quality anomaly, not evidence of pre-2024 evaluation coverage; do not silently repair the date.",
+          "evidence_artifact_ids": [
+            "asi001_results"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "ASI002",
+      "name": "DARPA AIxCC contest results and corrections",
+      "source_family_id": "darpa-aixcc",
+      "inventory_source_id": null,
+      "inventory_relationship": "new_source_family_in_inspected_inventory_and_prior_catalogs",
+      "related_inventory_ids": [
+        "GL007",
+        "GL015",
+        "GL016"
+      ],
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "historical_coverage": "2024 semifinal and 2025 final, followed by releases/corrections.",
+      "update_frequency": "Competition-driven with occasional corrections.",
+      "access_export": "Official HTML scoreboard and archive/infrastructure documentation. Actual competition audit-log artifact remains unverified.",
+      "measurement_regime": "Organizer-scored complete Cyber Reasoning Systems; selected defensive contest tasks.",
+      "author_authority": "AIxCC organizer and DARPA; team systems differ from bare models.",
+      "limitations": [
+        "Do not sum team findings as unique vulnerabilities or translate contest score into field-wide security.",
+        "Prize money, development credits, allowed caps and measured expenditure are separate quantities. Published averages are not per-task records.",
+        "Scoring code accepting an audit log does not establish public availability of actual competition logs. Local API documentation is not a public result service.",
+        "Organizer prose, procedures, code, team submissions, target projects and logs have separate rights."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "asi002_results",
+          "url": "https://aicyberchallenge.com/",
+          "role": "Official scoreboard and denominator correction",
+          "evidence_locator": "Correction notice; Team Atlanta scored-round row",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi002_darpa_results",
+          "url": "https://www.darpa.mil/news/2025/aixcc-results",
+          "role": "DARPA final-result report",
+          "evidence_locator": "August 8, 2025 Deep Dive and editors note",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi002_scoring",
+          "url": "https://www.darpa.mil/news/2025/ai-cyber-challenge-scoring",
+          "role": "Organizer scoring explanation",
+          "evidence_locator": "March 19, 2025 rounds, weighting and funding",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi002_procedures",
+          "url": "https://aicyberchallenge.com/storage/2025/06/AFC-Procedures-and-Scoring-Guide-Version-2_0-_20250606.pdf",
+          "role": "Final procedures version2",
+          "evidence_locator": "June 6, 2025; sections 1.5, 2.6.1, 3.10.2–3.10.3, 4.2",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "public_distribution_statement",
+          "license_identifier": null,
+          "rights_scope": "This procedures document carries Distribution Statement A; no grant inferred for code, target projects, team systems or logs.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi002_archive",
+          "url": "https://archive.aicyberchallenge.com/",
+          "role": "Release archive",
+          "evidence_locator": "Team systems and finals scoring pipeline",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi002_pipeline",
+          "url": "https://github.com/AIxCyberChallenge/scoring-pipeline/blob/91eb828ffdaa3f7044148c7d7dcf05d9f4b1682a/README.md",
+          "role": "Static scoring input documentation",
+          "evidence_locator": "Audit-log input and local service documentation",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": "91eb828ffdaa3f7044148c7d7dcf05d9f4b1682a",
+          "git_blob_sha": "558735b28387202f3a1dee3699c2261f017cb4f8",
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null,
+          "source_bytes": 18542
+        },
+        {
+          "artifact_id": "asi002_license",
+          "url": "https://github.com/AIxCyberChallenge/scoring-pipeline/blob/91eb828ffdaa3f7044148c7d7dcf05d9f4b1682a/LICENSE",
+          "role": "Scoring code license",
+          "evidence_locator": "Software and associated documentation",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": "91eb828ffdaa3f7044148c7d7dcf05d9f4b1682a",
+          "git_blob_sha": "a027c19660a291d91ef84639f8f5957d93c48335",
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "declared_software_documentation_license",
+          "license_identifier": "MIT",
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": "https://github.com/AIxCyberChallenge/scoring-pipeline/blob/91eb828ffdaa3f7044148c7d7dcf05d9f4b1682a/LICENSE",
+          "source_bytes": 1096
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "ASI002-F01",
+          "claim": "Team Atlanta scored-round row: rank 1, 43 vulnerabilities found, 31 successful patches, total score 393.",
+          "qualification": "Score is organizer-weighted, not a simple patch percentage.",
+          "evidence_artifact_ids": [
+            "asi002_results"
+          ]
+        },
+        {
+          "finding_id": "ASI002-F02",
+          "claim": "Organizer corrected the synthetic-vulnerability denominator 70→63 while discoveries remained 54; published discovery and patch percentages became 86% and 68%.",
+          "qualification": "Correction publication date not established; preserve superseded claim and replacement as one revision chain.",
+          "evidence_artifact_ids": [
+            "asi002_results",
+            "asi002_darpa_results"
+          ]
+        },
+        {
+          "finding_id": "ASI002-F03",
+          "claim": "DARPA reports 43 synthetic vulnerabilities patched, mean $152 per competition task and mean 45 minutes to patch submission.",
+          "qualification": "These are operator aggregate reports, not budgets, timing caps or task-level observations; expenditure/clock denominators remain underdocumented.",
+          "evidence_artifact_ids": [
+            "asi002_darpa_results"
+          ]
+        },
+        {
+          "finding_id": "ASI002-F04",
+          "claim": "DARPA prose calls the 68% patch rate a share of identified vulnerabilities, but 43/54≈80% whereas 43/63≈68%.",
+          "qualification": "Retain denominator ambiguity and correction scope rather than silently rewriting the source.",
+          "evidence_artifact_ids": [
+            "asi002_darpa_results"
+          ]
+        },
+        {
+          "finding_id": "ASI002-F05",
+          "claim": "Three exhibition rounds are unscored and the final is scored; patching has greater weight, with timing/functionality considerations.",
+          "qualification": "Version 2 procedures refer to round-specific resource and task details; numeric final caps not verified in inspected sections.",
+          "evidence_artifact_ids": [
+            "asi002_scoring",
+            "asi002_procedures"
+          ]
+        },
+        {
+          "finding_id": "ASI002-F06",
+          "claim": "Released scoring software requires a separately supplied audit log.",
+          "qualification": "No concrete actual-final audit log was established in bounded review; keep task ingestion held.",
+          "evidence_artifact_ids": [
+            "asi002_archive",
+            "asi002_pipeline",
+            "asi002_license"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "ASI003",
+      "name": "Sierra tau-bench historical reliability results",
+      "source_family_id": "tau-bench",
+      "inventory_source_id": null,
+      "inventory_relationship": "new_source_family_in_inspected_inventory_and_prior_catalogs",
+      "related_inventory_ids": [
+        "GL014",
+        "GL015",
+        "GL016"
+      ],
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "historical_coverage": "Original 2024 benchmark and later repository history; successor benchmark distinct.",
+      "update_frequency": "Research and version releases.",
+      "access_export": "Pinned README and historical-directory metadata; no trajectory payload acquisition.",
+      "measurement_regime": "Repeated-trial tool-use reliability with an LLM-simulated user.",
+      "author_authority": "Study authors/maintainers; reward and consistency measures under a simulated policy/tool setting.",
+      "limitations": [
+        "pass^k means all k trials succeed; pass@k means at least one succeeds. They are not interchangeable.",
+        "A simulated user is not a human customer or proof of runtime human intervention. Reward success may miss policy failures.",
+        "Historical original-retail costs do not transfer to later airline tables; action caps are not wall-clock duration.",
+        "Root MIT covers software/documentation; no separate full-trajectory grant verified. Tasks are explicitly outdated in current README."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "asi003_readme",
+          "url": "https://github.com/sierra-research/tau-bench/blob/59a200c6d575d595120f1cb70fea53cef0632f6b/README.md",
+          "role": "Pinned results and deprecation notice",
+          "evidence_locator": "Historical airline table, benchmark status",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_exact_bytes_inspected_not_vendored",
+          "git_commit": "59a200c6d575d595120f1cb70fea53cef0632f6b",
+          "git_blob_sha": "346ccaff6728628db78bb16cfde9701c1495c483",
+          "source_sha256": "1a4b1b00634fe46fd677dd11dfa25a9bf357b5d7c3d726ff83025e8f104329f9",
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null,
+          "source_bytes": 8447
+        },
+        {
+          "artifact_id": "asi003_trajectories",
+          "url": "https://github.com/sierra-research/tau-bench/tree/59a200c6d575d595120f1cb70fea53cef0632f6b/historical_trajectories",
+          "role": "Historical JSON directory metadata",
+          "evidence_locator": "Filenames only; payloads not acquired",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": "59a200c6d575d595120f1cb70fea53cef0632f6b",
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi003_paper",
+          "url": "https://arxiv.org/html/2406.12045v1",
+          "role": "Original paper version1",
+          "evidence_locator": "Consistency definition, experimental configuration and cost analysis",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi003_license",
+          "url": "https://github.com/sierra-research/tau-bench/blob/59a200c6d575d595120f1cb70fea53cef0632f6b/LICENSE",
+          "role": "Root software/documentation license",
+          "evidence_locator": "MIT; trajectory scope unresolved",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_exact_bytes_inspected_not_vendored",
+          "git_commit": "59a200c6d575d595120f1cb70fea53cef0632f6b",
+          "git_blob_sha": "f9898aaf4584ef45227d66baa8902053b9e39d04",
+          "source_sha256": "243d23d45b80122b5ac575586ccef352fdc9c45e6d7d2605449aca8a17478b42",
+          "source_bytes_vendored": false,
+          "rights_status": "declared_software_documentation_license",
+          "license_identifier": "MIT",
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": "https://github.com/sierra-research/tau-bench/blob/59a200c6d575d595120f1cb70fea53cef0632f6b/LICENSE",
+          "source_bytes": 1063
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "ASI003-F01",
+          "claim": "Historical GPT-4o tool-calling airline row reports pass^1=.420 and pass^4=.200.",
+          "qualification": "Published aggregate; not recalculated from trajectory files.",
+          "evidence_artifact_ids": [
+            "asi003_readme"
+          ]
+        },
+        {
+          "finding_id": "ASI003-F02",
+          "claim": "pass^k measures all-trial consistency; original study uses an LLM-simulated user and a 30-action agent limit.",
+          "qualification": "This is neither pass@k nor a measured human-time horizon or duration.",
+          "evidence_artifact_ids": [
+            "asi003_paper"
+          ]
+        },
+        {
+          "finding_id": "ASI003-F03",
+          "claim": "Original retail analysis reports approximately $0.38 agent and $0.23 simulated-user cost per task.",
+          "qualification": "Historical paper configuration only; later airline cost and wall-clock remain unknown.",
+          "evidence_artifact_ids": [
+            "asi003_paper"
+          ]
+        },
+        {
+          "finding_id": "ASI003-F04",
+          "claim": "Pinned README labels original tasks outdated and points to a successor.",
+          "qualification": "Preserve version identity; public JSON pointers and root MIT do not clear full-payload reuse.",
+          "evidence_artifact_ids": [
+            "asi003_readme",
+            "asi003_trajectories",
+            "asi003_license"
+          ]
+        },
+        {
+          "finding_id": "ASI003-F05",
+          "claim": "The original paper airline pass^1 of .352 differs from the historical README .420 row.",
+          "qualification": "These configurations/versions remain distinct; do not derive pass^k by raising aggregate pass^1 to k. The estimator requires sufficient trials per task.",
+          "evidence_artifact_ids": [
+            "asi003_paper",
+            "asi003_readme"
+          ]
+        },
+        {
+          "finding_id": "ASI003-F06",
+          "claim": "The current README successor display label is tau3-bench while its link targets the tau2-bench repository.",
+          "qualification": "Preserve the observed label and destination; neither changes original benchmark identity.",
+          "evidence_artifact_ids": [
+            "asi003_readme"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "ASI004",
+      "name": "METR time-horizon data and protocol corrections",
+      "source_family_id": "metr",
+      "inventory_source_id": "GL004",
+      "inventory_relationship": "enrichment_existing_source_family",
+      "related_inventory_ids": [
+        "GL004"
+      ],
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "historical_coverage": "TH1.0 and TH1.1 versioned research series; current page and March 2026 repository pin reviewed.",
+      "update_frequency": "Research-driven releases and corrections.",
+      "access_export": "Documented raw paths/schema and selected aggregate YAML metadata; raw task JSONL not acquired.",
+      "measurement_regime": "Success probability against human-expert baseline task time; not agent runtime.",
+      "author_authority": "METR evaluator; fitted horizon, uncertainty and task-suite choices remain explicit.",
+      "limitations": [
+        "Human minutes/hours describe baseline task difficulty, not autonomous runtime or complete real-world work.",
+        "TH1.0 and TH1.1 differ; FAQ illustration can be stale relative to current chart. Values above 16 hours carry a publisher reliability warning.",
+        "Repository archive commit is not runtime scaffold revision; evaluator baseline and rescoring labor do not automatically equal intervention.",
+        "README references a LICENSE absent from the complete inspected root listing; data reuse remains unknown.",
+        "The pinned analysis commit predates later dashboard models; current estimates are not proven reproducible from that snapshot alone."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "asi004_page",
+          "url": "https://metr.org/time-horizons/",
+          "role": "Official methods/dashboard/correction notice",
+          "evidence_locator": "FAQ example, TH1.1 chart, March 3 correction, May 8 page update",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi004_readme",
+          "url": "https://github.com/METR/eval-analysis-public/blob/52cb829c7a2efb2d659285c4b1768d191d97f8d2/README.md",
+          "role": "Analysis repository schema/version routes",
+          "evidence_locator": "TH1.0/TH1.1 raw-path and column documentation",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": "52cb829c7a2efb2d659285c4b1768d191d97f8d2",
+          "git_blob_sha": "62265ad316203e3cbf8ab6cc2510dfaba45ecb6f",
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null,
+          "source_bytes": 4254
+        },
+        {
+          "artifact_id": "asi004_params",
+          "url": "https://github.com/METR/eval-analysis-public/blob/52cb829c7a2efb2d659285c4b1768d191d97f8d2/reports/time-horizon-1-1/params.yaml",
+          "role": "Pinned analysis parameters",
+          "evidence_locator": "METR-Horizon-v1.1 task versions and bootstrap settings",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": "52cb829c7a2efb2d659285c4b1768d191d97f8d2",
+          "git_blob_sha": "1f571f1b0563a9b42bbc0ebaff50e73a9ae9be9f",
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null,
+          "source_bytes": 6348
+        },
+        {
+          "artifact_id": "asi004_release",
+          "url": "https://metr.org/blog/2026-1-29-time-horizon-1-1/",
+          "role": "TH1.1 release and human-baseline provenance",
+          "evidence_locator": "January 29, 2026; task counts, infrastructure and measured versus estimated baselines",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic rights inheritance.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi004_note",
+          "url": "https://metr.org/notes/2026-03-20-impact-of-modelling-assumptions-on-time-horizon-results/",
+          "role": "Less-reviewed researcher sensitivity note",
+          "evidence_locator": "March 20, 2026; regularization, attempt counts and model assumptions",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic rights inheritance.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi004_aggregate11",
+          "url": "https://metr.org/assets/benchmark_results_1_1.yaml",
+          "role": "Official versioned model aggregate metadata",
+          "evidence_locator": "Selected GPT-5 p50 and p80 fields; entire aggregate excluded",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "bounded_aggregate_bytes_verified_metadata_subset_only",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": "aae31902b0519a4da73e16643915e5e8aca13cd3315c3aac893ce3d6dfe92ad9",
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic rights inheritance.",
+          "rights_evidence_url": null,
+          "source_bytes": 16255
+        },
+        {
+          "artifact_id": "asi004_aggregate10",
+          "url": "https://metr.org/assets/benchmark_results_1_0.yaml",
+          "role": "Official versioned model aggregate metadata",
+          "evidence_locator": "Selected GPT-5 p50 and p80 fields; entire aggregate excluded",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "bounded_aggregate_bytes_verified_metadata_subset_only",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": "f15fd2f13cd8d28f06f5430fabf21dcd1284193ec152bdedc34e11dcc525df66",
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic rights inheritance.",
+          "rights_evidence_url": null,
+          "source_bytes": 14328
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "ASI004-F01",
+          "claim": "The FAQ illustrates GPT-5 with 2h17m at 50% success, while the current TH1.1 chart displays 3.4h.",
+          "qualification": "Retain the version/display mismatch; neither value is a measured GPT-5 runtime or a current frontier maximum.",
+          "evidence_artifact_ids": [
+            "asi004_page"
+          ]
+        },
+        {
+          "finding_id": "ASI004-F02",
+          "claim": "Documented task fields include task_id, task_family, alias, score_binarized, score_cont, human_minutes and diversity weights.",
+          "qualification": "Raw task JSONL contents and complete task coverage remain unverified in this review.",
+          "evidence_artifact_ids": [
+            "asi004_readme"
+          ]
+        },
+        {
+          "finding_id": "ASI004-F03",
+          "claim": "The page records a March 3, 2026 regularization correction and warns that estimates above 16 hours are unreliable.",
+          "qualification": "Preserve version-specific predecessors, fitted uncertainty and warning; no pooled autonomy series.",
+          "evidence_artifact_ids": [
+            "asi004_page"
+          ]
+        },
+        {
+          "finding_id": "ASI004-F04",
+          "claim": "Pinned parameters identify METR-Horizon-v1.1, task revisions and 1000 bootstrap samples.",
+          "qualification": "Analysis configuration is not complete per-run caps, expenditure, intervention or runtime provenance.",
+          "evidence_artifact_ids": [
+            "asi004_params"
+          ]
+        },
+        {
+          "finding_id": "ASI004-F05",
+          "claim": "METR is already GL004; prior SP003 cites the same repository README for RE-Bench.",
+          "qualification": "Shared documentation/producer is not a shared study, task or observation.",
+          "evidence_artifact_ids": [
+            "asi004_readme"
+          ]
+        },
+        {
+          "finding_id": "ASI004-F06",
+          "claim": "Current official GPT-5 p50 is 203.012577 human-minutes in TH1.1 and 130.816528 in TH1.0, versus the FAQ illustration of 137.",
+          "qualification": "The FAQ example has no verified matching suite/version. Source retrieval, model release, website update and analysis commit dates are separate.",
+          "evidence_artifact_ids": [
+            "asi004_page",
+            "asi004_aggregate11",
+            "asi004_aggregate10"
+          ]
+        },
+        {
+          "finding_id": "ASI004-F07",
+          "claim": "TH1.1 changes 170 to 228 tasks: 73 added, 15 removed and 53 updated, with infrastructure moving from Vivaria to Inspect.",
+          "qualification": "The 8-hour-plus task set expands from 14 to 31; only five have directly measured human baselines and most long baselines are estimates.",
+          "evidence_artifact_ids": [
+            "asi004_release"
+          ]
+        },
+        {
+          "finding_id": "ASI004-F08",
+          "claim": "The researcher note attributes the regularization correction to previously flattened slopes and reports recent p50 reductions up to 20%.",
+          "qualification": "The less-reviewed sensitivity note is not a replacement for all official estimates. Its typical eight attempts and dashboard six runs require protocol-date separation.",
+          "evidence_artifact_ids": [
+            "asi004_note",
+            "asi004_page"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "ASI005",
+      "name": "NHTSA crash reports, recalls and revision documentation",
+      "source_family_id": "nhtsa-automated-driving",
+      "inventory_source_id": null,
+      "inventory_relationship": "new_source_family_in_inspected_inventory_and_prior_catalogs",
+      "related_inventory_ids": [
+        "GL018",
+        "GL019"
+      ],
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "historical_coverage": "SGO reporting since 2021; current reporting regime from June 16, 2025; selected 2023 recall and 2026 revisions.",
+      "update_frequency": "Monthly SGO releases; recall and investigation updates separately.",
+      "access_export": "Official reporting page/CSV pointers, dictionary and one regulator-held recall filing; no bulk reports or narratives.",
+      "measurement_regime": "Administrative crash reports, technical recall filings and corrections, with author/authority separation.",
+      "author_authority": "Cruise authors the selected manufacturer filing; NHTSA hosts it and authors reporting documentation.",
+      "limitations": [
+        "950 potentially affected units are equipment, not victims. Manufacturer explanation is not an independent NHTSA causal determination.",
+        "System engagement near a crash does not establish causation, incremental injury or an isolated learned-model failure.",
+        "Report versions, publication cutoffs, agency processing corrections and actual incidents are distinct. No exposure denominator for cross-manufacturer risk rates.",
+        "Agency-authored material, manufacturer submissions, third-party attachments and confidential/redacted content require separate rights decisions."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "asi005_sgo",
+          "url": "https://www.nhtsa.gov/laws-regulations/standing-general-order-crash-reporting",
+          "role": "SGO collection and interpretive limits",
+          "evidence_locator": "Reporting regimes, release dates, CSV and dictionary links",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi005_csv",
+          "url": "https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Incident_Reports_ADS.csv",
+          "role": "Official CSV pointer",
+          "evidence_locator": "Pointer only; row/narrative payload not acquired",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi005_recall",
+          "url": "https://static.nhtsa.gov/odi/rcl/2023/RCLRPT-23E086-7725.PDF",
+          "role": "Manufacturer Part573 filing held by NHTSA",
+          "evidence_locator": "Recall 23E-086, submitted November 7, 2023; affected units and collision-response explanation",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi005_dictionary",
+          "url": "https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Data_Element_Definitions.pdf",
+          "role": "Agency data dictionary and publication corrections",
+          "evidence_locator": "Physical page 4, September 15, 2026 change log",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic rights inheritance.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi005_amendment",
+          "url": "https://www.nhtsa.gov/sites/nhtsa.gov/files/2025-04/third-amended-SGO-2021-01_2025.pdf",
+          "role": "Third amended reporting order",
+          "evidence_locator": "Issued April 24, 2025; effective June 16, 2025",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic rights inheritance.",
+          "rights_evidence_url": null
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "ASI005-F01",
+          "claim": "Recall 23E-086 submitted November 7, 2023 concerns 950 potentially affected automated-driving-system units and discusses the October 2 incident.",
+          "qualification": "Manufacturer-attributed explanation; units are not injured people and no incremental injury estimate is supplied.",
+          "evidence_artifact_ids": [
+            "asi005_recall"
+          ]
+        },
+        {
+          "finding_id": "ASI005-F02",
+          "claim": "The filing describes inappropriate post-collision pull-over behavior instead of remaining stationary.",
+          "qualification": "Attributed technical mechanism, not a separately proven NHTSA causal finding or isolation of a learned-model cause.",
+          "evidence_artifact_ids": [
+            "asi005_recall"
+          ]
+        },
+        {
+          "finding_id": "ASI005-F03",
+          "claim": "The September 15, 2026 release uses an August 17 receipt cutoff under a regime effective June 16, 2025.",
+          "qualification": "Receipt cutoff is not an event-date cutoff; historical regimes and submission versions remain distinct.",
+          "evidence_artifact_ids": [
+            "asi005_dictionary",
+            "asi005_amendment",
+            "asi005_sgo"
+          ]
+        },
+        {
+          "finding_id": "ASI005-F04",
+          "claim": "The linked September 2026 data dictionary documents an August 27 unrelated-narrative correction and June 15 restoration of reports omitted from the May 15 release.",
+          "qualification": "Agency processing corrections are not new crashes or automatically manufacturer report revisions; no corrected narratives reproduced. Publication bytes can change even when Report ID/Version remain the same; record the release artifact version.",
+          "evidence_artifact_ids": [
+            "asi005_dictionary"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "ASI006",
+      "name": "OAIC determinations and Administrative Review Tribunal outcomes",
+      "source_family_id": "oaic-art-privacy",
+      "inventory_source_id": null,
+      "inventory_relationship": "new_source_family_in_inspected_inventory_and_prior_catalogs",
+      "related_inventory_ids": [
+        "GL018",
+        "GL019"
+      ],
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "historical_coverage": "Bunnings conduct 2018–2021; original 2024 determination/announcement, 2026 review and regulator updates.",
+      "update_frequency": "Case-driven decisions, reviews and explanatory updates.",
+      "access_export": "Official summaries and document-level rights pages; full judgment not inspected and no bulk case API verified.",
+      "measurement_regime": "Source-attributed organizational findings with review/reversal and retained-breach relationships.",
+      "author_authority": "OAIC original determination and later updates; ART review summary has separate authority and scope.",
+      "limitations": [
+        "Collection/consent findings reversed in this case while notification/privacy-policy breaches remain; do not freeze original allegations as final.",
+        "Facial-recognition collection is not necessarily an accuracy failure; store/collection counts are not proven injuries.",
+        "Regulator no-appeal and concluded statements are source-attributed status, not exhaustive independent certification of every possible proceeding.",
+        "OAIC CC BY 4.0 exceptions and ART restricted copyright are separate; neither automatically licenses externally hosted judgments."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "asi006_original",
+          "url": "https://www.oaic.gov.au/news/media-centre/bunnings-breached-australians-privacy-with-facial-recognition-tool",
+          "role": "Original regulator announcement",
+          "evidence_locator": "November 19, 2024; underlying determination October 29, 2024 [2024]AICmr 230",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi006_review",
+          "url": "https://www.art.gov.au/about-us/our-role/guidance-and-appeals-panel-decisions",
+          "role": "Official ART review summary",
+          "evidence_locator": "February 4, 2026 [2026]ARTA 130",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi006_guidance",
+          "url": "https://www.oaic.gov.au/news/media-centre/privacy-commissioner-publishes-updated-guidance-on-facial-recognition-in-retail-spaces",
+          "role": "Later regulator case-status and guidance update",
+          "evidence_locator": "July 29, 2026; matter concluded, 62 stores and March date wording",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi006_rights",
+          "url": "https://www.oaic.gov.au/about-the-OAIC/copyright",
+          "role": "OAIC rights policy",
+          "evidence_locator": "First-party CC BY 4.0 with exclusions",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "declared_scoped_license",
+          "license_identifier": "CC-BY-4.0",
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": "https://www.oaic.gov.au/about-the-OAIC/copyright"
+        },
+        {
+          "artifact_id": "asi006_no_appeal",
+          "url": "https://www.oaic.gov.au/news/media-centre/privacy-commissioner-statement-on-administrative-review-tribunals-bunnings-decision",
+          "role": "Regulator no-appeal statement",
+          "evidence_locator": "March 5, 2026; Commissioner states no appeal filed",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic rights inheritance.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi006_annual",
+          "url": "https://www.oaic.gov.au/__data/assets/pdf_file/0036/257769/OAIC_Annual-Report_Vol-1_2024-25.pdf",
+          "role": "Regulator annual-report case study",
+          "evidence_locator": "Original determination date and at-least-62-store wording",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic rights inheritance.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi006_art_rights",
+          "url": "https://www.art.gov.au/copyright",
+          "role": "ART rights policy",
+          "evidence_locator": "Numbered conditions 1–4",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "limited_unaltered_use_permission",
+          "license_identifier": null,
+          "rights_scope": "Unaltered reproduction retaining notice for personal noncommercial or within-organization use; other rights reserved. No general public derivative/full-text grant inferred.",
+          "rights_evidence_url": "https://www.art.gov.au/copyright"
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "ASI006-F01",
+          "claim": "November 19, 2024 announcement concerns 63 stores during November 2018–November 2021; underlying determination is dated October 29, 2024.",
+          "qualification": "Announcement date and decision date differ; no person-level or biometric details retained.",
+          "evidence_artifact_ids": [
+            "asi006_original",
+            "asi006_annual"
+          ]
+        },
+        {
+          "finding_id": "ASI006-F02",
+          "claim": "Official ART summary dated February 4, 2026 says facial-recognition use permitted in this case while notification/privacy-policy breaches remained.",
+          "qualification": "Retain partially reversed and retained findings separately; full judgment not inspected.",
+          "evidence_artifact_ids": [
+            "asi006_review"
+          ]
+        },
+        {
+          "finding_id": "ASI006-F03",
+          "claim": "July 29, 2026 OAIC guidance describes the matter as concluded and uses 62 stores, unlike the original 63.",
+          "qualification": "Attribute the status to OAIC and preserve the store-count discrepancy; no independent comprehensive docket check.",
+          "evidence_artifact_ids": [
+            "asi006_guidance",
+            "asi006_original"
+          ]
+        },
+        {
+          "finding_id": "ASI006-F04",
+          "claim": "The July guidance contains February wording and a closing March 2026 reference, while the identified ART decision is February 4, 2026.",
+          "qualification": "Source-date conflict remains visible; do not silently manufacture a second review decision.",
+          "evidence_artifact_ids": [
+            "asi006_guidance",
+            "asi006_review"
+          ]
+        },
+        {
+          "finding_id": "ASI006-F05",
+          "claim": "OAIC first-party material has scoped CC BY 4.0 terms.",
+          "qualification": "This does not grant ART or external judgment reuse rights.",
+          "evidence_artifact_ids": [
+            "asi006_rights"
+          ]
+        },
+        {
+          "finding_id": "ASI006-F06",
+          "claim": "On March 5, 2026 the Commissioner stated no appeal had been filed; July 29 guidance describes the matter as concluded.",
+          "qualification": "Source-attributed regulator status, not independently certified absence of every later proceeding.",
+          "evidence_artifact_ids": [
+            "asi006_no_appeal",
+            "asi006_guidance"
+          ]
+        },
+        {
+          "finding_id": "ASI006-F07",
+          "claim": "The annual report says at least 62 stores, between the original announcement of 63 and later guidance of 62.",
+          "qualification": "Retain all three source-dated populations/scopes; reason for discrepancy unestablished.",
+          "evidence_artifact_ids": [
+            "asi006_annual",
+            "asi006_original",
+            "asi006_guidance"
+          ]
+        },
+        {
+          "finding_id": "ASI006-F08",
+          "claim": "ART permits limited unaltered reproduction with notice for specified personal/internal uses.",
+          "qualification": "This is not OAIC CC BY 4.0 and does not authorize full-text public derivatives or externally hosted judgments.",
+          "evidence_artifact_ids": [
+            "asi006_art_rights",
+            "asi006_rights"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "ASI007",
+      "name": "OpenAI GPT-4o sycophancy deployment postmortems",
+      "source_family_id": "openai",
+      "inventory_source_id": "GL014",
+      "inventory_relationship": "enrichment_existing_source_family",
+      "related_inventory_ids": [
+        "GL014",
+        "GL018",
+        "GL019"
+      ],
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "historical_coverage": "One April 2025 deployment failure with April 29 and May 2 postmortems.",
+      "update_frequency": "Event-driven operator disclosure; completeness unestablished.",
+      "access_export": "Two official HTML publications; no structured incident export or blanket open-content license verified.",
+      "measurement_regime": "Operator acknowledgement, release-process account and corrective-action timeline.",
+      "author_authority": "OpenAI operator assessment, not independent surveillance or controlled causal decomposition.",
+      "limitations": [
+        "Two publications describe one deployment incident; do not double-count artifacts as events.",
+        "Positive offline/A-B metrics and concerning qualitative feedback represent a release-decision account, not calibrated field harm rates.",
+        "Interacting reward/data/feedback/memory explanations are tentative operator assessment, not proof that memory generally causes sycophancy.",
+        "No measured clinical-harm total or harmed-user count. Remediation was operator-controlled, not autonomous self-correction."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "asi007_initial",
+          "url": "https://openai.com/index/sycophancy-in-gpt-4o/",
+          "role": "Initial operator postmortem",
+          "evidence_locator": "April 29, 2025; rollout and rollback timeline",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "asi007_expanded",
+          "url": "https://openai.com/index/expanding-on-sycophancy/",
+          "role": "Expanded operator account",
+          "evidence_locator": "May 2, 2025; evaluations, release process and causal limitations",
+          "reviewed_on": "2026-10-08",
+          "verification_level": "current_primary_documentary_review",
+          "git_commit": null,
+          "git_blob_sha": null,
+          "source_sha256": null,
+          "source_bytes_vendored": false,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+          "rights_evidence_url": null
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "ASI007-F01",
+          "claim": "The May 2 account dates rollout start to April 24, completion to April 25, and rollback start to April 28, 2025, taking approximately one day.",
+          "qualification": "Detailed dates come from the expanded postmortem. Exact rollback completion and timezone are not supplied; exposure/response windows are not interaction duration.",
+          "evidence_artifact_ids": [
+            "asi007_expanded"
+          ]
+        },
+        {
+          "finding_id": "ASI007-F02",
+          "claim": "The expanded account says positive offline/A-B results outweighed concerning qualitative feedback and no explicit sycophancy deployment evaluation existed.",
+          "qualification": "Source-attributed release-process failure; not proof of a quantified individual harm mechanism.",
+          "evidence_artifact_ids": [
+            "asi007_expanded"
+          ]
+        },
+        {
+          "finding_id": "ASI007-F03",
+          "claim": "The operator described interacting reward signals, feedback, data and memory as an early explanation.",
+          "qualification": "No controlled causal decomposition and no general memory→sycophancy claim established.",
+          "evidence_artifact_ids": [
+            "asi007_expanded"
+          ]
+        },
+        {
+          "finding_id": "ASI007-F04",
+          "claim": "April 29 and May 2 are distinct evidence artifacts for one event under GL014.",
+          "qualification": "Event-level matching against GL018/GL019 remains unestablished; no claim that the event was absent.",
+          "evidence_artifact_ids": [
+            "asi007_initial",
+            "asi007_expanded"
+          ]
+        }
+      ]
+    }
+  ],
+  "overlap_review": {
+    "schema_version": 1,
+    "reviewed_on": "2026-10-08",
+    "repository_commit": "088400574a33af144ec7ef7bf13ac88f68f1b86c",
+    "frozen_inventory_count": 64,
+    "prior_catalog_count": 12,
+    "prior_candidate_collections": 63,
+    "prior_artifact_references": 464,
+    "complete_catalogs_loaded_and_reviewed": true,
+    "current_scope": "One original combined intake item 13, seven collections; not split into two original receipts.",
+    "per_catalog_review": [
+      {
+        "catalog": "adoption-productivity.json",
+        "candidate_ids": [
+          "AP001",
+          "AP002",
+          "AP003",
+          "AP004",
+          "AP005"
+        ],
+        "artifact_reference_count": 41,
+        "review": "AP002 has the same METR producer but distinct randomized real-work productivity studies. No time-horizon task/run match is established; actual developer duration, survey predictions and horizon human baseline cannot be merged."
+      },
+      {
+        "catalog": "algorithmic-efficiency.json",
+        "candidate_ids": [
+          "AE001",
+          "AE002",
+          "AE003",
+          "AE004",
+          "AE005"
+        ],
+        "artifact_reference_count": 35,
+        "review": "AE004 shares OpenAI as producer but concerns 2020 efficiency research, not 2025 sycophancy. AE001 defensive benchmark analogies do not create common experiments. No item 13 artifact/run/event identity found."
+      },
+      {
+        "catalog": "chinese-safety-evaluations.json",
+        "candidate_ids": [
+          "ZHS001",
+          "ZHS002",
+          "ZHS003",
+          "ZHS004",
+          "ZHS005",
+          "ZHS006",
+          "ZHS007",
+          "ZHS008"
+        ],
+        "artifact_reference_count": 49,
+        "review": "Safety-evaluation theme and overlapping model labels do not identify AgentDojo or tau runs. No item 13 family/artifact/run identity found; no nationality-based risk inference."
+      },
+      {
+        "catalog": "concentration-dependencies.json",
+        "candidate_ids": [
+          "CD001",
+          "CD002",
+          "CD003",
+          "CD004",
+          "CD005"
+        ],
+        "artifact_reference_count": 28,
+        "review": "CD001 deployment disclosure metadata is a different collection and jurisdiction from NHTSA/OAIC. Organization/provider references are not incident or causal links."
+      },
+      {
+        "catalog": "historical-capability-backfills.json",
+        "candidate_ids": [
+          "HC001",
+          "HC002",
+          "HC003",
+          "HC004",
+          "HC005"
+        ],
+        "artifact_reference_count": 46,
+        "review": "Historical benchmark artifacts and shared model/task terminology are distinct evaluation families. No item 13 benchmark version, run or event identity found."
+      },
+      {
+        "catalog": "human-reliance.json",
+        "candidate_ids": [
+          "HR001",
+          "HR002",
+          "HR003",
+          "HR004",
+          "HR005"
+        ],
+        "artifact_reference_count": 25,
+        "review": "Human-AI interaction and feedback studies are distinct controlled study cohorts. They do not constitute independent clinical-harm evidence for the sycophancy incident."
+      },
+      {
+        "catalog": "open-model-diffusion.json",
+        "candidate_ids": [
+          "OM001",
+          "OM002",
+          "OM003",
+          "OM004",
+          "OM005"
+        ],
+        "artifact_reference_count": 37,
+        "review": "Model metadata and availability references do not establish same evaluations, scaffolds or outcomes. No item 13 family/artifact identity found."
+      },
+      {
+        "catalog": "organizational-safety.json",
+        "candidate_ids": [
+          "OS001",
+          "OS002",
+          "OS003",
+          "OS004",
+          "OS005"
+        ],
+        "artifact_reference_count": 50,
+        "review": "OS004 is already GL014 OpenAI governance/deployment enrichment. Sycophancy pair adds a new incident/postmortem subtype, not a new producer family. OS002 METR external automated-R&D review is a different assessment; its report revisions must not be mistaken for horizon revisions."
+      },
+      {
+        "catalog": "persuasion-information.json",
+        "candidate_ids": [
+          "PI001",
+          "PI002",
+          "PI003",
+          "PI004",
+          "PI005"
+        ],
+        "artifact_reference_count": 30,
+        "review": "PI001/PI002/PI005 use LLMs in controlled studies; shared GPT labels do not join participants, treatments, events or harm. No sycophancy event identity found."
+      },
+      {
+        "catalog": "robotics-physical.json",
+        "candidate_ids": [
+          "RP001",
+          "RP002",
+          "RP003",
+          "RP004",
+          "RP005"
+        ],
+        "artifact_reference_count": 35,
+        "review": "BARN/RoboArena/TriFinger/PhAIL/STRANDS are evaluation/deployment evidence families distinct from NHTSA roadway reports and Cruise recall. Physical failures/interventions are not the same road incident/exposure regime."
+      },
+      {
+        "catalog": "scientific-progress.json",
+        "candidate_ids": [
+          "SP001",
+          "SP002",
+          "SP003",
+          "SP004",
+          "SP005"
+        ],
+        "artifact_reference_count": 46,
+        "review": "SP003 is METR RE-Bench enrichment of GL004 and references the same mutable eval-analysis-public README. This is documentation overlap, not verified identical README bytes, task membership or run observations. RE-Bench best-of-k allocated budgets differ from horizon success-vs-human-time regression."
+      },
+      {
+        "catalog": "training-data-feedback.json",
+        "candidate_ids": [
+          "TD001",
+          "TD002",
+          "TD003",
+          "TD004",
+          "TD005"
+        ],
+        "artifact_reference_count": 42,
+        "review": "Data provenance/synthetic feedback studies are not evidence that feedback or memory caused the OpenAI deployment regression. No common experiment/event identity found."
+      }
+    ],
+    "per_collection_review": [
+      {
+        "candidate_id": "ASI001",
+        "family": "AgentDojo",
+        "classification": "new_source_family_candidate",
+        "existing_inventory_source_id": null,
+        "family_overlap": "None found in frozen 64 or 12 catalog collections.",
+        "artifact_overlap": "None found among 464 prior artifact references. A future developer-card quotation must point back to original evaluation artifact rather than add independent evidence.",
+        "study_run_event_overlap": "Clean sample is one run; published defense/attack result row is a distinct aggregate. Same model/task name does not establish same observation."
+      },
+      {
+        "candidate_id": "ASI002",
+        "family": "DARPA AIxCC",
+        "classification": "new_source_family_candidate",
+        "existing_inventory_source_id": null,
+        "family_overlap": "Not SWE-bench GL007; shared software/security domain does not make same benchmark.",
+        "artifact_overlap": "Scoreboard, correction notice, DARPA summary, archive and scoring software have distinct document roles.",
+        "study_run_event_overlap": "2024 semifinal, unscored exhibition rounds and 2025 scored final separate. Correction 70→63 revises one aggregate, not another experiment. Shared vulnerabilities across teams prohibit summing discoveries as distinct vulnerabilities."
+      },
+      {
+        "candidate_id": "ASI003",
+        "family": "tau-bench",
+        "classification": "new_source_family_candidate",
+        "existing_inventory_source_id": null,
+        "family_overlap": "None found in frozen 64 or 12 prior catalogs.",
+        "artifact_overlap": "README/paper/trajectory links may describe overlapping trials; successor tau2 has separate version identity.",
+        "study_run_event_overlap": "Historical airline GPT-4o result and original-paper retail cost are different configurations. pass^k all-trial consistency is not pass@k any-success or time horizon."
+      },
+      {
+        "candidate_id": "ASI004",
+        "family": "METR time horizons",
+        "classification": "existing_family_enrichment",
+        "existing_inventory_source_id": "GL004",
+        "prior_candidate_links": [
+          "SP003",
+          "AP002",
+          "OS002"
+        ],
+        "family_overlap": "Direct GL004 family enrichment; AP002 distinct evidence family with same producer; OS002 distinct R&D review.",
+        "artifact_overlap": "SP003 includes https://github.com/METR/eval-analysis-public/blob/main/README.md; shared mutable-document identity but no old/new byte equivalence proved.",
+        "study_run_event_overlap": "RE-Bench/time-horizon task/run overlap requires explicit crosswalk; never inferred from same METR publisher. TH1.0/TH1.1/regularization corrections preserve version relations."
+      },
+      {
+        "candidate_id": "ASI005",
+        "family": "NHTSA reporting recalls investigations",
+        "classification": "new_source_family_candidate",
+        "existing_inventory_source_id": null,
+        "related_inventory_ids": [
+          "GL018",
+          "GL019"
+        ],
+        "family_overlap": "New regulator evidence collection relative to inspected catalogs.",
+        "artifact_overlap": "SGO reports/revisions, manufacturer recall filing and regulator investigations have different author/evidentiary roles.",
+        "study_run_event_overlap": "Cruise 2023-10-02 incident/recall 23E086 link one event with remediation record, 950 potentially affected equipment units not 950 events or injuries. AIID/OECD same-event match remains unestablished."
+      },
+      {
+        "candidate_id": "ASI006",
+        "family": "OAIC determinations and ART review chain",
+        "classification": "new_source_family_candidate",
+        "existing_inventory_source_id": null,
+        "related_inventory_ids": [
+          "GL018",
+          "GL019"
+        ],
+        "family_overlap": "New regulator/review collection. OAIC and ART are distinct issuers within a linked case chain, not one blanket license family.",
+        "artifact_overlap": "2024 determination announcement, 2026 tribunal summary, no-appeal and concluded-matter statements are different source-dated artifacts.",
+        "study_run_event_overlap": "Bunnings 2018–2021 conduct and 2024–2026 legal findings are one linked matter, not multiple independent deployments/incidents. Partial reversal and retained breaches stay scoped. AIID/OECD event match not established."
+      },
+      {
+        "candidate_id": "ASI007",
+        "family": "OpenAI deployment postmortems",
+        "classification": "existing_family_enrichment",
+        "existing_inventory_source_id": "GL014",
+        "prior_candidate_links": [
+          "OS004",
+          "AE004"
+        ],
+        "related_inventory_ids": [
+          "GL018",
+          "GL019"
+        ],
+        "family_overlap": "GL014/OS004 existing family enrichment; AE004 same producer distinct efficiency evidence.",
+        "artifact_overlap": "Apr 29 and May 2, 2025 postmortems absent from 464 inspected references; new incident subtype/linked artifacts.",
+        "study_run_event_overlap": "One April 2025 rollout/rollback failure, two explanatory publications; not two independent incidents. Operator causal hypotheses not confirmed study effects or measured clinical harms. AIID/OECD event match unestablished."
+      }
+    ],
+    "new_source_family_candidates": 5,
+    "existing_family_enrichments": 2,
+    "no_new_inventory_rows": true,
+    "search_limits": "Comparison covers supplied frozen inventory and all twelve committed prior research catalogs at exact base. It does not prove exhaustive absence from external incident indexes or all repository material.",
+    "later_item16": "Incident-only intake 16 is logged but not reviewed in this work. It may overlap ASI005–ASI007 and must later reuse event/artifact identity rather than duplicate evidence; no facts or recommendations from item 16 were preemptively adopted.",
+    "separate_identity_levels": [
+      "producer",
+      "source_family",
+      "artifact_and_version",
+      "study_or_campaign",
+      "run_or_trial",
+      "incident_or_case",
+      "claim_or_measurement"
+    ]
+  },
+  "implementation": {
+    "name": "agentdojo_run_metadata_v0",
+    "status": "implemented_offline_synthetic_public_fixtures",
+    "reader_path": "tools/evidence_program/read_agentdojo_metadata.py",
+    "fixture_path": "tools/evidence_program/tests/fixtures/agent-security-incidents/clean.synthetic.json",
+    "max_bytes": 262144,
+    "max_messages": 100,
+    "max_assistant_tool_calls": 300,
+    "max_json_nodes": 20000,
+    "max_json_depth": 24,
+    "network_calls": 0,
+    "model_calls": 0,
+    "source_execution": false,
+    "task_execution": false,
+    "public_real_trace_fixtures": 0,
+    "private_clean_acceptance": "passed_one_existing_3992_byte_artifact_metadata_only",
+    "raw_trace_retention": "excluded_from_public_payload",
+    "actual_attacked_run_interpretation": "unverified_historical_predicate",
+    "synthetic_target_interpretation": "publisher_security_true_means_attacker_goal_success_when_explicit_target_predicate_applies",
+    "clean_interpretation": "not_applicable_clean",
+    "error_interpretation": "error_flag_not_observed_outcome",
+    "dos_interpretation": "nonutility_predicate_not_target_goal",
+    "missing_fields": [
+      "historical_runtime_version",
+      "evaluation_timestamp",
+      "actual_inference_cost",
+      "token_cap",
+      "spending_cap",
+      "human_intervention",
+      "human_baseline_seconds"
+    ],
+    "intake_acquisition_proposal_status": "18_file_network_adapter_not_implemented_or_run",
+    "source_hash_and_version": "SHA256 plus Git blob; stable source key plus byte-hash observation version; retrieval/archive changes alone do not create measurements",
+    "audited_attack_labels": [
+      null,
+      "none",
+      "dos",
+      "important_instructions"
+    ],
+    "synthetic_only_attack_label": "synthetic_target"
+  },
+  "revision_chains": [
+    {
+      "chain_id": "ASI-R01",
+      "candidate_id": "ASI002",
+      "scope": "synthetic_vulnerability_denominator",
+      "before": 70,
+      "after": 63,
+      "found": 54,
+      "correction_publication_date": null,
+      "event_count_increment": 0
+    },
+    {
+      "chain_id": "ASI-R02",
+      "candidate_id": "ASI005",
+      "scope": "manufacturer_report_versions_and_agency_processing_corrections_separate",
+      "event_count_increment": 0
+    },
+    {
+      "chain_id": "ASI-R03",
+      "candidate_id": "ASI006",
+      "scope": "original_determination_to_ART_partial_reversal_and_retained_findings_to_regulator_updates",
+      "global_latest_proceedings_status": "not_exhaustively_verified",
+      "event_count_increment": 0
+    },
+    {
+      "chain_id": "ASI-R04",
+      "candidate_id": "ASI007",
+      "scope": "two_postmortems_one_deployment_failure",
+      "artifact_count": 2,
+      "event_count": 1
+    }
+  ],
+  "holds": [
+    "All operational admission, canonical mapping, live collection and deployment.",
+    "AgentDojo full-trace rights and exact runtime linkage; no actual attacked-outcome derivation.",
+    "AIxCC actual audit logs, task caps/intervention/accounting and artifact-specific rights.",
+    "tau trajectory rights, exact task/version/reward semantics and later table cost/duration.",
+    "METR task-level payloads/rights, version comparability, uncertainty and runtime provenance.",
+    "NHTSA revision keys, reporting-regime comparability, exposure denominators and submitted-document rights.",
+    "OAIC full judgment scope, source-dated discrepancies and subsequent proceedings beyond attributed regulator status.",
+    "OpenAI selected operator-disclosure coverage, independent mechanism/harm evidence and full-text rights.",
+    "Potential overlap with separately queued item 16 incidents report, unreviewed and not assumed."
+  ],
+  "next_actions": [
+    {
+      "action_id": "ASI-A01",
+      "status": "completed_bounded_review",
+      "title": "Verify seven collections and overlap",
+      "result": "Current primary review and frozen 64 plus all twelve prior catalogs; family/event/artifact boundaries and source corrections retained."
+    },
+    {
+      "action_id": "ASI-A02",
+      "status": "completed_offline_implementation",
+      "title": "Implement payload-excluding AgentDojo metadata reader",
+      "result": "Synthetic public tests and one private clean-artifact metadata acceptance; no attacked trace or network reader."
+    },
+    {
+      "action_id": "ASI-A03",
+      "status": "held_documentary_review",
+      "title": "AgentDojo runtime and trace-rights gate",
+      "prompt_id": "ASI-P01",
+      "completion_condition": "Return bounded source-grounded evidence and keep unresolved rights/access/provenance holds explicit; no automatic source admission."
+    },
+    {
+      "action_id": "ASI-A04",
+      "status": "held_documentary_review",
+      "title": "AIxCC actual audit-log metadata",
+      "prompt_id": "ASI-P02",
+      "completion_condition": "Return bounded source-grounded evidence and keep unresolved rights/access/provenance holds explicit; no automatic source admission."
+    },
+    {
+      "action_id": "ASI-A05",
+      "status": "held_documentary_review",
+      "title": "tau trajectory scope and rights",
+      "prompt_id": "ASI-P03",
+      "completion_condition": "Return bounded source-grounded evidence and keep unresolved rights/access/provenance holds explicit; no automatic source admission."
+    },
+    {
+      "action_id": "ASI-A06",
+      "status": "held_documentary_review",
+      "title": "METR suite and correction comparability",
+      "prompt_id": "ASI-P04",
+      "completion_condition": "Return bounded source-grounded evidence and keep unresolved rights/access/provenance holds explicit; no automatic source admission."
+    },
+    {
+      "action_id": "ASI-A07",
+      "status": "held_documentary_review",
+      "title": "NHTSA revision and author mapping",
+      "prompt_id": "ASI-P05",
+      "completion_condition": "Return bounded source-grounded evidence and keep unresolved rights/access/provenance holds explicit; no automatic source admission."
+    },
+    {
+      "action_id": "ASI-A08",
+      "status": "held_documentary_review",
+      "title": "OAIC and ART source-dated review chain",
+      "prompt_id": "ASI-P06",
+      "completion_condition": "Return bounded source-grounded evidence and keep unresolved rights/access/provenance holds explicit; no automatic source admission."
+    },
+    {
+      "action_id": "ASI-A09",
+      "status": "held_documentary_review",
+      "title": "OpenAI postmortem event identity",
+      "prompt_id": "ASI-P07",
+      "completion_condition": "Return bounded source-grounded evidence and keep unresolved rights/access/provenance holds explicit; no automatic source admission."
+    },
+    {
+      "action_id": "ASI-A10",
+      "status": "held_documentary_review",
+      "title": "Lossless agent and incident mapping",
+      "prompt_id": "ASI-P08",
+      "completion_condition": "Return bounded source-grounded evidence and keep unresolved rights/access/provenance holds explicit; no automatic source admission."
+    }
+  ],
+  "follow_up_prompts": [
+    {
+      "prompt_id": "ASI-P01",
+      "title": "AgentDojo runtime and trace-rights gate",
+      "prompt": "Inspect at most the AgentDojo root LICENSE at archive 089ed468cf3ed0322acc66b0211f26d9d90dbf60 and three small historical source/metadata documents at sample-introduction commit 607e6dc29287344c6fa83701970134475b6f9e9c in https://github.com/ethz-spylab/agentdojo . Determine whether any explicit evidence binds existing clean record runs/gpt-4o-2024-05-13-tool_filter/banking/user_task_0/none/none.json to runtime code, without retrieving that trace again or any attacked trace. Preserve clean default, exception flags, DoS nonutility and target-goal predicates. Seek an explicit generated-trace grant; software MIT alone leaves that scope unknown. Stop after four documents. Read-only public-source research only. No login, outreach, access-control bypass, bulk archives, repository edits, live collection, canonical admission or deployment. Do not acquire or reproduce conversation, injection, exploit, tool-argument, account, identity, biometric or patient payloads. Do not run source scripts, models, evaluations, attacks or tools against targets. Stop at an access or permission gate and report it. Return exact URLs/versions, evidence locators, author/authority, artifact-specific rights, verified versus unknown facts and a bounded stopping condition."
+    },
+    {
+      "prompt_id": "ASI-P02",
+      "title": "AIxCC actual audit-log metadata",
+      "prompt": "Inspect https://archive.aicyberchallenge.com/ , https://aicyberchallenge.com/ and at most two small README/license manifests at https://github.com/AIxCyberChallenge/scoring-pipeline/tree/91eb828ffdaa3f7044148c7d7dcf05d9f4b1682a . Establish whether a concrete actual competition audit-log artifact and its rights are publicly documented; do not download logs or target code. Preserve corrected synthetic denominator 63, 54 found, 43 patched; distinguish weighted team score, resource caps, aggregate USD152 and 45-minute reports. Stop after four metadata documents; absence in that scope does not prove no logs exist. Read-only public-source research only. No login, outreach, access-control bypass, bulk archives, repository edits, live collection, canonical admission or deployment. Do not acquire or reproduce conversation, injection, exploit, tool-argument, account, identity, biometric or patient payloads. Do not run source scripts, models, evaluations, attacks or tools against targets. Stop at an access or permission gate and report it. Return exact URLs/versions, evidence locators, author/authority, artifact-specific rights, verified versus unknown facts and a bounded stopping condition."
+    },
+    {
+      "prompt_id": "ASI-P03",
+      "title": "tau trajectory scope and rights",
+      "prompt": "Inspect README.md, LICENSE and one directory manifest at https://github.com/sierra-research/tau-bench/tree/59a200c6d575d595120f1cb70fea53cef0632f6b plus the methods of https://arxiv.org/html/2406.12045v1 , at most four artifacts. Do not fetch trajectory JSON. Establish any trajectory-specific grant and precise historical-table configuration. Preserve pass^k all-trial success versus pass@k any success, LLM-simulated users, original-retail cost versus later airline results, outdated tasks and successor separation. Stop after these four artifacts. Read-only public-source research only. No login, outreach, access-control bypass, bulk archives, repository edits, live collection, canonical admission or deployment. Do not acquire or reproduce conversation, injection, exploit, tool-argument, account, identity, biometric or patient payloads. Do not run source scripts, models, evaluations, attacks or tools against targets. Stop at an access or permission gate and report it. Return exact URLs/versions, evidence locators, author/authority, artifact-specific rights, verified versus unknown facts and a bounded stopping condition."
+    },
+    {
+      "prompt_id": "ASI-P04",
+      "title": "METR suite and correction comparability",
+      "prompt": "Inspect https://metr.org/time-horizons/ , https://metr.org/blog/2026-1-29-time-horizon-1-1/ , https://metr.org/notes/2026-03-20-impact-of-modelling-assumptions-on-time-horizon-results/ and the README at https://github.com/METR/eval-analysis-public/tree/52cb829c7a2efb2d659285c4b1768d191d97f8d2 , at most four documents. No raw runs or task artifacts. Build a version-scoped mapping of suite, human-baseline measurement versus estimation, p50/p80, scaffold, correction, uncertainty and run-count statements. The FAQ 137-minute GPT-5 example is not current TH1.1 or TH1.0 metadata. Keep data rights unknown absent an explicit grant. Stop after this mapping. Read-only public-source research only. No login, outreach, access-control bypass, bulk archives, repository edits, live collection, canonical admission or deployment. Do not acquire or reproduce conversation, injection, exploit, tool-argument, account, identity, biometric or patient payloads. Do not run source scripts, models, evaluations, attacks or tools against targets. Stop at an access or permission gate and report it. Return exact URLs/versions, evidence locators, author/authority, artifact-specific rights, verified versus unknown facts and a bounded stopping condition."
+    },
+    {
+      "prompt_id": "ASI-P05",
+      "title": "NHTSA revision and author mapping",
+      "prompt": "Inspect https://www.nhtsa.gov/laws-regulations/standing-general-order-crash-reporting and its currently linked data dictionary plus https://static.nhtsa.gov/odi/rcl/2023/RCLRPT-23E086-7725.PDF , at most three documents. Do not download incident CSV rows or narratives. Map report/version/submission/regime keys and source-dated processing corrections separately from manufacturer revisions and new events. Preserve 950 equipment units, manufacturer authorship, engagement versus causation, no exposure denominators and artifact-specific rights. Stop after a synthetic-only revision mapping. Read-only public-source research only. No login, outreach, access-control bypass, bulk archives, repository edits, live collection, canonical admission or deployment. Do not acquire or reproduce conversation, injection, exploit, tool-argument, account, identity, biometric or patient payloads. Do not run source scripts, models, evaluations, attacks or tools against targets. Stop at an access or permission gate and report it. Return exact URLs/versions, evidence locators, author/authority, artifact-specific rights, verified versus unknown facts and a bounded stopping condition."
+    },
+    {
+      "prompt_id": "ASI-P06",
+      "title": "OAIC and ART source-dated review chain",
+      "prompt": "Inspect at most four official metadata/summary/rights documents starting from https://www.oaic.gov.au/news/media-centre/bunnings-breached-australians-privacy-with-facial-recognition-tool , https://www.art.gov.au/about-us/our-role/guidance-and-appeals-panel-decisions and https://www.oaic.gov.au/news/media-centre/privacy-commissioner-publishes-updated-guidance-on-facial-recognition-in-retail-spaces . Preserve October 29 determination versus November 19 announcement, February 4 ART versus later March wording, 63 versus 62 stores, reversed collection/consent and retained notification/policy findings. Attribute no-appeal/concluded status to the regulator and retain any unverified proceedings scope. Separate OAIC rights from ART/external judgments. No personal case data or legal advice. Stop after four documents. Read-only public-source research only. No login, outreach, access-control bypass, bulk archives, repository edits, live collection, canonical admission or deployment. Do not acquire or reproduce conversation, injection, exploit, tool-argument, account, identity, biometric or patient payloads. Do not run source scripts, models, evaluations, attacks or tools against targets. Stop at an access or permission gate and report it. Return exact URLs/versions, evidence locators, author/authority, artifact-specific rights, verified versus unknown facts and a bounded stopping condition."
+    },
+    {
+      "prompt_id": "ASI-P07",
+      "title": "OpenAI postmortem event identity",
+      "prompt": "Inspect https://openai.com/index/sycophancy-in-gpt-4o/ and https://openai.com/index/expanding-on-sycophancy/ plus at most one directly linked official correction if present, at most three documents. Preserve one April 2025 deployment incident, separate rollout/mitigation/rollback/publication clocks, operator-attributed mechanism hypotheses and absence of quantified clinical harm or harmed-user counts. Determine any explicit revision or reuse grant without inferring a causal decomposition or general memory effect. Stop after three documents. Read-only public-source research only. No login, outreach, access-control bypass, bulk archives, repository edits, live collection, canonical admission or deployment. Do not acquire or reproduce conversation, injection, exploit, tool-argument, account, identity, biometric or patient payloads. Do not run source scripts, models, evaluations, attacks or tools against targets. Stop at an access or permission gate and report it. Return exact URLs/versions, evidence locators, author/authority, artifact-specific rights, verified versus unknown facts and a bounded stopping condition."
+    },
+    {
+      "prompt_id": "ASI-P08",
+      "title": "Lossless agent and incident mapping",
+      "prompt": "Read at most 20 small files in mishakgg/pdoom-live at base 088400574a33af144ec7ef7bf13ac88f68f1b86c and the prepared agent-security-incidents catalog/guide if available. Use only synthetic metadata to map evaluation conditions, runtime unknowns, publisher versus derived flags, error/default distinctions, source hashes/version links, incident author/authority and correction relationships to existing frozen contracts. Do not claim a new schema is necessary until existing mapping is evaluated. Separately queued item 16 is unreviewed; note potential later event/artifact overlap without importing its conclusions. No external dataset acquisition. Stop after the mapping table. Read-only public-source research only. No login, outreach, access-control bypass, bulk archives, repository edits, live collection, canonical admission or deployment. Do not acquire or reproduce conversation, injection, exploit, tool-argument, account, identity, biometric or patient payloads. Do not run source scripts, models, evaluations, attacks or tools against targets. Stop at an access or permission gate and report it. Return exact URLs/versions, evidence locators, author/authority, artifact-specific rights, verified versus unknown facts and a bounded stopping condition."
+    }
+  ],
+  "corrections": [
+    {
+      "correction_id": "ASI-C01",
+      "correction": "AgentDojo security=True is not safety: clean default, error assignments, targeted goal and DoS semantics remain distinct."
+    },
+    {
+      "correction_id": "ASI-C02",
+      "correction": "Historical source at sample introduction corroborates predicates without proving actual runtime; real attacked outcomes remain uninterpreted."
+    },
+    {
+      "correction_id": "ASI-C03",
+      "correction": "Root software MIT does not clear generated trace rights; only synthetic fixtures are public."
+    },
+    {
+      "correction_id": "ASI-C04",
+      "correction": "AIxCC 70 to 63 denominator correction is one revision; 68%-of-identified prose conflicts with 43/54."
+    },
+    {
+      "correction_id": "ASI-C05",
+      "correction": "AIxCC reported USD 152 and 45 minutes are aggregates, not actual task budgets or caps."
+    },
+    {
+      "correction_id": "ASI-C06",
+      "correction": "tau pass^k is all-trial reliability, not pass@k; later airline results do not inherit original retail costs."
+    },
+    {
+      "correction_id": "ASI-C07",
+      "correction": "METR FAQ 137 minutes differs from current TH1.1 203.012577 and TH1.0 130.816528; human time is not runtime."
+    },
+    {
+      "correction_id": "ASI-C08",
+      "correction": "METR suite/infrastructure changes, estimated long baselines, regularization correction and six/eight-run wording are version-scoped."
+    },
+    {
+      "correction_id": "ASI-C09",
+      "correction": "NHTSA affected equipment, submitted manufacturer mechanisms and agency processing corrections do not establish victim counts or independent causality."
+    },
+    {
+      "correction_id": "ASI-C10",
+      "correction": "OAIC original determination date differs from announcement; ART partly reverses findings and later regulator statements update status."
+    },
+    {
+      "correction_id": "ASI-C11",
+      "correction": "OAIC 63/62 stores and February/March review wording remain source-dated discrepancies."
+    },
+    {
+      "correction_id": "ASI-C12",
+      "correction": "Two OpenAI postmortems represent one incident; operator explanation is not controlled causal or clinical-harm evidence."
+    },
+    {
+      "correction_id": "ASI-C13",
+      "correction": "Five new families and two enrichments remain unadmitted; source-family absence is not event-level absence from incident indexes."
+    }
+  ],
+  "prior_catalog_fingerprints": [
+    {
+      "path": "data/evidence-program/research/adoption-productivity.json",
+      "sha256": "96a7568a5af567b48c5aa7bba5ec15cde64c623a5468cb3a20a023bd091b02bc",
+      "git_blob_sha": "fbd2337a06d86c04d3092ba1b63a2e815b3b7d1c"
+    },
+    {
+      "path": "data/evidence-program/research/algorithmic-efficiency.json",
+      "sha256": "c9650355f580ecf3e4ce9d780890c2574a27e2eca66727da3608a71355f9e126",
+      "git_blob_sha": "f55636b9f11702e611ed2b68e7065d84d145b81c"
+    },
+    {
+      "path": "data/evidence-program/research/chinese-safety-evaluations.json",
+      "sha256": "f858ca920524a02ab8bfe7b23629cca66680a4821133af0bd1664a40a38d131d",
+      "git_blob_sha": "e205499dfaabf8769582c0a2b33859bb4564bf2f"
+    },
+    {
+      "path": "data/evidence-program/research/concentration-dependencies.json",
+      "sha256": "9932151bdcd225e0c2faecde8f02e3933af3583d85c8689303f6c1fb60d42f30",
+      "git_blob_sha": "e98df02f9c42060decf2d157f1b4fa7e7b18ad1c"
+    },
+    {
+      "path": "data/evidence-program/research/historical-capability-backfills.json",
+      "sha256": "fca26ba6df579a389db713c7fe7d1b4823fbd22bfb84c4810dc0804988a1dd6e",
+      "git_blob_sha": "41ed220a48e676acf2bd691e3309a9105ef834f9"
+    },
+    {
+      "path": "data/evidence-program/research/human-reliance.json",
+      "sha256": "23be491aa1f94ec633d613795e7953169a79180df760e1d8da6ae02ff2068dd6",
+      "git_blob_sha": "2288da918c4cd8126e8f5acdd6d3b2e0d737c456"
+    },
+    {
+      "path": "data/evidence-program/research/open-model-diffusion.json",
+      "sha256": "649be6f110f6826159d880c761192bf51532395334dfe9923be50e4defd7ba34",
+      "git_blob_sha": "686e7a69a3020215e21afd984e6b3a4e7eb2e399"
+    },
+    {
+      "path": "data/evidence-program/research/organizational-safety.json",
+      "sha256": "a07d8a1020b84bdfd9acaf185baae737a10d9160863f4c82d580cd0e4f8d3353",
+      "git_blob_sha": "14e560889f729f14bd2e0c0290ac51bdcc32d1c6"
+    },
+    {
+      "path": "data/evidence-program/research/persuasion-information.json",
+      "sha256": "5b0fea0355661da31db5977ce914b917e7e79cac45fbc87316a8e864bac838e5",
+      "git_blob_sha": "d06a5acc63d629db60f83a3d0035d516d017e970"
+    },
+    {
+      "path": "data/evidence-program/research/robotics-physical.json",
+      "sha256": "e11b27ca8fdcb41d85263ce33a0cf3274f29e0864997731e6e9fb91ce339e174",
+      "git_blob_sha": "0c4966311faa77754d9275e8c9ce880580718eaa"
+    },
+    {
+      "path": "data/evidence-program/research/scientific-progress.json",
+      "sha256": "ff5140f09fa63036cc3d4720f0c40749ddc100fcb0e2b4c533da81038d87549a",
+      "git_blob_sha": "fdce2e6cb61147704c32bb7e300b2b331e7b6c0e"
+    },
+    {
+      "path": "data/evidence-program/research/training-data-feedback.json",
+      "sha256": "26030f07eca4f880be583134bf5abb640ed83d68aa468728b2ec9360f4e9406b",
+      "git_blob_sha": "71fee288b4b9bad9e09461b144c4e85f58bb20e9"
+    }
+  ],
+  "verification_separation": {
+    "source_review": "Primary public documents; exact hashes only when complete bytes verified. Most incident receipts are factual observations, not page snapshots.",
+    "pdf_inspection": "Current review uses text extraction; no successful image-render inspection claimed.",
+    "public_fixtures": "One self-authored synthetic TaskResults-shaped JSON and manifest; no real conversations, upstream source code or downloaded aggregate bodies.",
+    "private_acceptance": "Existing one unique clean source file checked locally; no extra retrieval during decoder acceptance.",
+    "canonical_admission": "Not admitted; no contract or deployment change."
+  }
+}
