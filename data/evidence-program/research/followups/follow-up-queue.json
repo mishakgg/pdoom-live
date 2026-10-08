@@ -1,12 +1,12 @@
 {
   "title": "Follow-up research queue",
-  "snapshot_at": "2026-10-08T15:20:15Z",
+  "snapshot_at": "2026-10-08T15:46:07Z",
   "original_session_count": 26,
   "original_session_queue": "docs/evidence-program/research/research-session-review-queue.md",
   "received_bundle_count": 7,
   "received_file_count": 18,
   "new_prompt_count": 7,
-  "distinction": "Three earlier reviewed ledger/report bundles remain separate from four newly returned deep-session bundles (12 files) and three newly delivered prompts (5–7). Submitted findings are not parent-reviewed evidence.",
+  "distinction": "Three earlier reviewed bundles remain separate from four deep-session submissions (12 files). Bundle A now has an independently cleared research delta included in this candidate; B starts separate review and C/D remain queued. Delivery, documentary review, candidate inclusion and remote integration are distinct.",
   "bundles": [
     {
       "sequence": 1,
@@ -156,7 +156,8 @@
           "bytes": 10384,
           "sha256": "a16843625e5168938b05b2eb6bc118cbb307bc292450c46e72e13c624e0810ba",
           "hash_scope": "entire_submitted_file_bytes",
-          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+          "intake_content_assessment_preserved": "receipt_and_readability_only_not_primary_source_verification",
+          "content_assessment": "independently_reviewed_at_linked_delta_scope_original_hash_preserved"
         },
         {
           "artifact_role": "supporting_decision_report_pdf",
@@ -164,7 +165,8 @@
           "bytes": 102608,
           "sha256": "3e89d6918171610994d50a530c6eff26fb27ae4729a22b1d19c38610978f2708",
           "hash_scope": "entire_submitted_file_bytes",
-          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+          "intake_content_assessment_preserved": "receipt_and_readability_only_not_primary_source_verification",
+          "content_assessment": "independently_reviewed_at_linked_delta_scope_original_hash_preserved"
         },
         {
           "artifact_role": "typed_research_evidence_ledger",
@@ -172,19 +174,20 @@
           "bytes": 442681,
           "sha256": "470c7e6f374f1fd7fee6ccafa0a7fd5267c8684b6e64edb220b981689f3e86ba",
           "hash_scope": "entire_submitted_file_bytes",
-          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+          "intake_content_assessment_preserved": "receipt_and_readability_only_not_primary_source_verification",
+          "content_assessment": "independently_reviewed_at_linked_delta_scope_original_hash_preserved"
         }
       ],
       "intake_manifest_sha256": "7362c9e8e5f23b8dec8527dc7d22060f2cdf260f178cbe0a5918d52867c7263f",
-      "review_status": "in_progress",
+      "review_status": "review_complete_with_residual_holds",
       "review_started": true,
-      "review_complete": false,
-      "integration_status": "pending_substantive_review",
-      "substantive_findings_included": false,
-      "reviewed_fact_records": 0,
+      "review_complete": true,
+      "integration_status": "reviewed_delta_included_in_this_candidate",
+      "substantive_findings_included": true,
+      "reviewed_fact_records": 10,
       "operational_admission": "not_admitted",
       "collector_enabled": false,
-      "next_action": "Review submitted labor claims against verified current repository contracts and prior reviewed LM evidence, then log accepted/held/rejected decisions and follow-up actions before integration.",
+      "next_action": "Independently review this candidate, then verify publication and exact-commit CI/merge. Preserve remaining evidence, lossless-mapping and admission holds; review B separately.",
       "review_starting_points": [
         "Reconcile the uninspected planning baseline with verified current main.",
         "Check BLS aggregate definitions and source-byte provenance claims.",
@@ -200,7 +203,34 @@
         "later_changes_reconciled": false,
         "interpretation": "The submission reports inaccessible repository context. This is historical source-reported context, not proof of current repository inaccessibility or missing files; reconcile during review."
       },
-      "review_claim_limit": "The report and typed ledger are externally submitted research artifacts, not independently verified primary-source evidence. Claimed checks, acceptance cases and upstream hashes remain unverified by this intake."
+      "review_claim_limit": "Independent review verifies the specifically linked artifact/observation/lineage/mapping findings and corrections. Original submitted clocks and access failures remain historical; 32 manual cases and 26 fragment probes do not establish full canonical validation or operational admission.",
+      "original_sessions": [
+        14
+      ],
+      "review_completed_at": "2026-10-08T15:40:33Z",
+      "delta_path": "data/evidence-program/research/followups/labor-measurement.json",
+      "guide_path": "docs/evidence-program/research/followups/labor-measurement.md",
+      "contract_mapping_path": "data/evidence-program/research/followups/labor-measurement-contract-mapping.json",
+      "reviewed_fact_records_scope": "Ten accepted findings in delta.accepted; six corrections and five hold groups remain separate.",
+      "source_artifact_records": 34,
+      "selected_observation_records": 11,
+      "manual_semantic_cases": 32,
+      "synthetic_schema_fragment_cases": 26,
+      "lineage_edges": 10,
+      "residual_holds_remain": true,
+      "component_mapping_action_ids": [
+        "LM-A09"
+      ],
+      "component_mapping_prompt_ids": [
+        "LM-P07"
+      ],
+      "reviewer_current_repository_context": {
+        "inspected_commit": "87dda3d74f9f9874e82d83d1628b53f9da4b5526",
+        "integration_base_commit": "2266b56681812cde175257734dc16ed1c88c1323",
+        "repository_access_resolved": true,
+        "lossless_mapping_held": true,
+        "full_canonical_validation_run": false
+      }
     },
     {
       "sequence": 5,
@@ -252,15 +282,15 @@
         }
       ],
       "intake_manifest_sha256": "18444f36a4d6dd8d3922453406a3d54e22299b988aea826f2dcd9aadcc322477",
-      "review_status": "queued",
-      "review_started": false,
+      "review_status": "in_progress",
+      "review_started": true,
       "review_complete": false,
       "integration_status": "pending_substantive_review",
       "substantive_findings_included": false,
       "reviewed_fact_records": 0,
       "operational_admission": "not_admitted",
       "collector_enabled": false,
-      "next_action": "After Session 1, review METR/I4R/Costello evidence and preserved uncertainty/edition/denominator holds, then log decisions and follow-up actions before integration.",
+      "next_action": "Review B separately after the completed bounded source review of A; reconcile METR/I4R/Costello claims and retain uncertainty, edition and denominator holds. No B findings are included in this candidate.",
       "review_starting_points": [
         "Reconcile unread main and supplied AP002/NR007 overlap.",
         "Separate declared METR HC3 methods from historical execution and cross-wave comparability.",
@@ -449,7 +479,7 @@
       "sequence": 1,
       "title": "Resolve labor measurement lineage",
       "path": "docs/evidence-program/research/followups/prompts/01-resolve-labor-measurement-lineage.txt",
-      "status": "research_output_received_review_in_progress",
+      "status": "research_output_received_review_complete_with_residual_holds",
       "delivered_at": "2026-10-08T11:11:00Z",
       "delivery_time_precision": "minute",
       "research_output_received": true,
@@ -472,13 +502,15 @@
       "content_preserved_from_delivered_prompt": true,
       "session_execution_status": "externally_reported_complete_not_independently_verified",
       "submission_id": "bundle-a",
-      "received_at": "2026-10-08T15:00:58Z"
+      "received_at": "2026-10-08T15:00:58Z",
+      "reviewed_delta_path": "data/evidence-program/research/followups/labor-measurement.json",
+      "integration_status": "reviewed_delta_included_in_this_candidate"
     },
     {
       "sequence": 2,
       "title": "Reconcile experimental effects and uncertainty",
       "path": "docs/evidence-program/research/followups/prompts/02-reconcile-experimental-effects.txt",
-      "status": "research_output_received_review_queued",
+      "status": "research_output_received_review_in_progress",
       "delivered_at": "2026-10-08T11:11:00Z",
       "delivery_time_precision": "minute",
       "research_output_received": true,
@@ -624,11 +656,11 @@
   "canonical_contract_mapping": "pending_separate_review",
   "original_reviews_integrated": 26,
   "original_queue_integration_commit": "972f2bbdc3e123c83ce9ea695c9f265fe6720032",
-  "snapshot_scope": "Intake and prompt-delivery snapshot after the earlier reviewed deltas. One new bundle is in substantive review and three are queued; no findings from those four are adopted here. Remote publication/CI and operational admission remain separate.",
-  "reviewed_bundle_count": 3,
+  "snapshot_scope": "Additive labor research candidate after independent source-review clearance. Four reviewed deltas are included; B review starts separately, C/D stay queued, and prompts 5–7 have no returned output at the last receipt snapshot. No canonical admission or remote merge is claimed.",
+  "reviewed_bundle_count": 4,
   "reviewed_findings_included": true,
   "unreviewed_supplied_claims_adopted": false,
-  "claim_adoption_rule": "Only the independently reviewed documentary findings and explicit limits in the three earlier linked deltas are included. Receipt, local-file hashes and readability of the four new submissions do not verify their findings, upstream hashes, claimed checks or contract compatibility.",
+  "claim_adoption_rule": "Only independently reviewed findings and explicit limitations from the four linked deltas are included. Unreviewed B/C/D reports, receipt hashes and prompt delivery do not establish source truth, contract compatibility or completed checks.",
   "original_queue_reconciliation_commit": "8b6fa1f9b389a625fa44c0656e3de47c509bff9a",
   "deep_result_bundle_count": 4,
   "deep_result_file_count": 12,
@@ -636,7 +668,7 @@
   "intake_index_sha256": "9abc8254d73a7ed115adec19edee99954b56484749b8ddbfa2ea90bbbe8f97a3",
   "review_order": "bundle-a (prompt 1), bundle-b (prompt 2), bundle-c (prompt 4), bundle-d (prompt 3); review in arrival order.",
   "repository_context_for_this_queue_update": {
-    "base_commit": "87dda3d74f9f9874e82d83d1628b53f9da4b5526",
-    "scope": "Queue metadata and links reconciled with hash-verified repository files at this commit; this does not retroactively verify the submitted research or its repository mappings."
+    "base_commit": "2266b56681812cde175257734dc16ed1c88c1323",
+    "scope": "Hash-verified current-main scoped files reused, including PR 337 intake/prompt metadata. The labor source review independently inspected 87dda3d74f9f9874e82d83d1628b53f9da4b5526; submitted-session null commit remains preserved."
   }
 }
