@@ -4,7 +4,7 @@ The source research, repository audit, proposed dataset contract, Chinese prepar
 
 ## Current research review status
 
-The [dated original-session queue](research/research-session-review-queue.md) records all 26 original reviews integrated at its verified 8 October 2026 cutoff, separately from evidence admission. The [follow-up queue](research/followups/follow-up-queue.md) distinguishes three received ledger/report bundles from [four delivered research prompts](research/followups/prompts/coverage-assessment.md); delivery does not confirm a launched session. All three received bundles now have completed documentary reviews and linked deltas, with completed bounded checks separated from remaining holds. Earlier catalog/action snapshots are preserved; remote publication/CI and evidence admission are separate.
+The [dated original-session queue](research/research-session-review-queue.md) records all 26 original reviews integrated at its verified 8 October 2026 cutoff, separately from evidence admission. The [follow-up queue](research/followups/follow-up-queue.md) preserves three earlier reviewed bundles and separately logs four newly returned deep-session bundles (12 files): labor in review, then experimental effects, safeguards and model/tariff results queued in arrival order. It also indexes all seven delivered prompts; prompts 5–7 have no returned output at the 15:20:15 UTC snapshot. Receipt and prompt delivery do not establish reviewed findings, completed checks, source admission or ingestion.
 
 Reviewed follow-up deltas included in this version:
 
