@@ -1,0 +1,1935 @@
+{
+  "schema_version": "1.0",
+  "title": "AI-assisted scientific progress",
+  "reviewed_on": "2026-10-08",
+  "status": "review_prepared_with_manual_aggregate_validator",
+  "repository_review_commit": "e5121ee888393db656610be749dfc2d03897c751",
+  "original_research_baseline_commit": "6c2a4aa531cd5b8e5411c25ee08569d707a682b1",
+  "baseline_inventory": {
+    "source_family_count": 64,
+    "sha256": "a4b5046c3dec44598eeab3f025db75783f9ae5f702e0570d7b31fb3026dde678",
+    "unchanged": true
+  },
+  "operational_admission": "not_admitted",
+  "collector_enabled": false,
+  "canonical_contract_mapping": "pending_separate_review",
+  "source_bodies_vendored": false,
+  "participant_or_team_records_vendored": false,
+  "experimental_or_biological_material_vendored": false,
+  "source_code_or_model_execution": false,
+  "interpretation_guards": {
+    "proxy_to_pdoom_allowed": false,
+    "universal_scientific_productivity_rate_enabled": false,
+    "suggestion_implies_validated_discovery": false,
+    "reanalysis_implies_independent_replication": false,
+    "assessment_implies_training_reproduction": false,
+    "feedback_calls_imply_discoveries": false,
+    "best_of_k_implies_continuous_autonomy": false,
+    "public_link_implies_artifact_rights": false,
+    "code_license_inherits_to_dataset": false,
+    "current_table_match_implies_regeneration": false,
+    "missing_outcome_implies_failure": false,
+    "multiple_metrics_imply_independent_experiments": false,
+    "campaign_duration_implies_labor_saved": false,
+    "historical_claim_contributes_to_current_totals": false,
+    "platform_novelty_implies_new_to_science": false,
+    "aggregate_only": true,
+    "artifact_specific_rights_required": true
+  },
+  "ranking_basis": "source_utility_not_capability_or_risk",
+  "priority_ranking": [
+    {
+      "candidate_id": "SP001",
+      "rank": 1,
+      "reason": "Randomized contribution comparison; current summaries verified, uncertainty remains held."
+    },
+    {
+      "candidate_id": "SP002",
+      "rank": 2,
+      "reason": "Physical outcomes with consequential correction chain and distinct denominators."
+    },
+    {
+      "candidate_id": "SP003",
+      "rank": 3,
+      "reason": "Explicit budgets and executable-task outcomes, with selection and export gaps."
+    }
+  ],
+  "catalog_overlap_review": {
+    "commit": "e5121ee888393db656610be749dfc2d03897c751",
+    "catalogs_compared": [
+      {
+        "path": "data/evidence-program/research/adoption-productivity.json",
+        "git_blob_sha": "fbd2337a06d86c04d3092ba1b63a2e815b3b7d1c",
+        "sha256": "96a7568a5af567b48c5aa7bba5ec15cde64c623a5468cb3a20a023bd091b02bc",
+        "collection_count": 5,
+        "result": "AP002 is METR real-work developer productivity, a different study and sample from RE-Bench. Shared producer GL004; no same-study, exact-artifact or measurement duplicate found.",
+        "same_study_duplicates": [],
+        "exact_artifact_duplicates": []
+      },
+      {
+        "path": "data/evidence-program/research/chinese-safety-evaluations.json",
+        "git_blob_sha": "e205499dfaabf8769582c0a2b33859bb4564bf2f",
+        "sha256": "f858ca920524a02ab8bfe7b23629cca66680a4821133af0bd1664a40a38d131d",
+        "collection_count": 8,
+        "result": "All eight safety-evaluation collections are distinct from the five scientific-progress studies; no same-study, exact-artifact or measurement duplicate found.",
+        "same_study_duplicates": [],
+        "exact_artifact_duplicates": []
+      },
+      {
+        "path": "data/evidence-program/research/concentration-dependencies.json",
+        "git_blob_sha": "e98df02f9c42060decf2d157f1b4fa7e7b18ad1c",
+        "sha256": "9932151bdcd225e0c2faecde8f02e3933af3583d85c8689303f6c1fb60d42f30",
+        "collection_count": 5,
+        "result": "All five ownership, survey, deployment and dependency collections are distinct; shared institutions do not merge studies. No same-study, exact-artifact or measurement duplicate found.",
+        "same_study_duplicates": [],
+        "exact_artifact_duplicates": []
+      },
+      {
+        "path": "data/evidence-program/research/historical-capability-backfills.json",
+        "git_blob_sha": "41ed220a48e676acf2bd691e3309a9105ef834f9",
+        "sha256": "fca26ba6df579a389db713c7fe7d1b4823fbd22bfb84c4810dc0804988a1dd6e",
+        "collection_count": 5,
+        "result": "IPC/WMT/TREC/SAT/VOC are distinct benchmark families from CASP and RE-Bench; no same-study, exact-artifact or measurement duplicate found.",
+        "same_study_duplicates": [],
+        "exact_artifact_duplicates": []
+      },
+      {
+        "path": "data/evidence-program/research/open-model-diffusion.json",
+        "git_blob_sha": "686e7a69a3020215e21afd984e6b3a4e7eb2e399",
+        "sha256": "649be6f110f6826159d880c761192bf51532395334dfe9923be50e4defd7ba34",
+        "collection_count": 5,
+        "result": "Hub/OSAI/Epoch/OLMo/PeaTMOSS artifacts are distinct. Reproduction materials are not evidence of scientific discovery. No same-study, exact-artifact or measurement duplicate found.",
+        "same_study_duplicates": [],
+        "exact_artifact_duplicates": []
+      },
+      {
+        "path": "data/evidence-program/research/organizational-safety.json",
+        "git_blob_sha": "14e560889f729f14bd2e0c0290ac51bdcc32d1c6",
+        "sha256": "a07d8a1020b84bdfd9acaf185baae737a10d9160863f4c82d580cd0e4f8d3353",
+        "collection_count": 5,
+        "result": "OS002 includes METR governance reviews and OS005 DeepMind safety frameworks; same producers, different artifacts and studies from RE-Bench/AlphaTensor.",
+        "same_study_duplicates": [],
+        "exact_artifact_duplicates": []
+      }
+    ],
+    "collections_compared": 33,
+    "method": "Compare study identifiers, exact artifact URLs, collection scope and shared-producer links across every prior research catalog; matches at producer/domain level do not establish measurement duplication.",
+    "legacy_catalog_findings": [
+      {
+        "path": "data/catalogs/metr_pages.json",
+        "git_blob_sha": "ab0adc357196edbac9046d5c4adcfa061525fd76",
+        "relationship": "RE-Bench release landing page already cataloged; result-level review is enrichment, not a new landing-page discovery."
+      },
+      {
+        "path": "data/catalogs/deepmind_pages.json",
+        "git_blob_sha": "17d2849bd574af4876274ebbaef15b95d36bb178",
+        "relationship": "AlphaTensor for Optimizing Quantum Computations (2024) is distinct from 2022 matrix multiplication."
+      }
+    ],
+    "comparison_matrix": [
+      {
+        "catalog": "data/evidence-program/research/adoption-productivity.json",
+        "git_blob_sha": "fbd2337a06d86c04d3092ba1b63a2e815b3b7d1c",
+        "sha256": "96a7568a5af567b48c5aa7bba5ec15cde64c623a5468cb3a20a023bd091b02bc",
+        "collection_count": 5,
+        "family_checks": {
+          "i4r": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "alab": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "rebench": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog.",
+            "producer_overlap": {
+              "candidate_id": "AP002",
+              "relationship": "same_producer_distinct_studies",
+              "basis": "AP002 studies 2025 experienced OSS developers, not 2024 RE-Bench prepared research-engineering tasks."
+            }
+          },
+          "alphatensor": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "casp": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          }
+        }
+      },
+      {
+        "catalog": "data/evidence-program/research/chinese-safety-evaluations.json",
+        "git_blob_sha": "e205499dfaabf8769582c0a2b33859bb4564bf2f",
+        "sha256": "f858ca920524a02ab8bfe7b23629cca66680a4821133af0bd1664a40a38d131d",
+        "collection_count": 8,
+        "family_checks": {
+          "i4r": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "alab": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "rebench": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "alphatensor": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "casp": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          }
+        }
+      },
+      {
+        "catalog": "data/evidence-program/research/concentration-dependencies.json",
+        "git_blob_sha": "e98df02f9c42060decf2d157f1b4fa7e7b18ad1c",
+        "sha256": "9932151bdcd225e0c2faecde8f02e3933af3583d85c8689303f6c1fb60d42f30",
+        "collection_count": 5,
+        "family_checks": {
+          "i4r": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "alab": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "rebench": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "alphatensor": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog.",
+            "context_overlap": {
+              "candidate_ids": [
+                "CD002",
+                "CD005"
+              ],
+              "relationship": "organizational_or_corporate_context_only",
+              "basis": "Google deps.dev and FTC partnership/provider observations do not measure AlphaTensor scientific outcomes."
+            }
+          },
+          "casp": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          }
+        }
+      },
+      {
+        "catalog": "data/evidence-program/research/historical-capability-backfills.json",
+        "git_blob_sha": "41ed220a48e676acf2bd691e3309a9105ef834f9",
+        "sha256": "fca26ba6df579a389db713c7fe7d1b4823fbd22bfb84c4810dc0804988a1dd6e",
+        "collection_count": 5,
+        "family_checks": {
+          "i4r": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "alab": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "rebench": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "alphatensor": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "casp": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          }
+        }
+      },
+      {
+        "catalog": "data/evidence-program/research/open-model-diffusion.json",
+        "git_blob_sha": "686e7a69a3020215e21afd984e6b3a4e7eb2e399",
+        "sha256": "649be6f110f6826159d880c761192bf51532395334dfe9923be50e4defd7ba34",
+        "collection_count": 5,
+        "family_checks": {
+          "i4r": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "alab": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "rebench": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "alphatensor": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "casp": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          }
+        }
+      },
+      {
+        "catalog": "data/evidence-program/research/organizational-safety.json",
+        "git_blob_sha": "14e560889f729f14bd2e0c0290ac51bdcc32d1c6",
+        "sha256": "a07d8a1020b84bdfd9acaf185baae737a10d9160863f4c82d580cd0e4f8d3353",
+        "collection_count": 5,
+        "family_checks": {
+          "i4r": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "alab": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          },
+          "rebench": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog.",
+            "producer_overlap": {
+              "candidate_id": "OS002",
+              "relationship": "same_producer_distinct_evidence_artifact",
+              "basis": "METR review of Anthropic2026 automated-R&D report is governance/assessment evidence, not original2024 RE-Bench observation export. Possible citations do not create independent runs."
+            }
+          },
+          "alphatensor": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog.",
+            "producer_overlap": {
+              "candidate_id": "OS005",
+              "relationship": "same_producer_distinct_science_artifact_family",
+              "basis": "DeepMind FSF/model implementation reports differ from2022 multiplication discoveries."
+            }
+          },
+          "casp": {
+            "exact_study_or_named_family_hits": [],
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "No selected-study artifact or measurement is recorded in this reviewed catalog."
+          }
+        }
+      }
+    ],
+    "negative_result_limit": "No selected study/artifact/measurement is recorded in the six catalogs; underlying papers may cite the selected studies."
+  },
+  "inventory_relationships": [
+    {
+      "candidate_id": "SP003",
+      "source_id": "GL004",
+      "relationship": "new_research_engineering_artifact_within_existing_METR_family"
+    },
+    {
+      "candidate_id": "SP004",
+      "source_id": "GL016",
+      "relationship": "same_producer_different_artifact_family_not_model_card"
+    },
+    {
+      "source_ids": [
+        "GL034",
+        "GL039",
+        "GL040"
+      ],
+      "relationship": "secondary_synthesis_or_discovery_metadata_not_additional_independent_observations"
+    }
+  ],
+  "collections": [
+    {
+      "candidate_id": "SP001",
+      "name": "I4R AI-Games randomized reproduction study",
+      "summary": "Controlled arm-level comparison of computational reproduction, with null and adverse results retained.",
+      "classification": "new_relative_to_frozen_inventory",
+      "inventory_source_id": null,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "historical_coverage": "Seven events February–November 2024; online publication 2026-05-28, issue 2026-06-02; 2026-07-06 affiliation correction does not change results.",
+      "update_frequency": "Fixed study; repository revisions are irregular, no collection cadence verified.",
+      "access_method": "Public published PDF and GitHub aggregate tables/static code; participant files only listed; OSF content unavailable in this check.",
+      "rights_summary": "Data/generated figures CC BY 4.0; code MIT; paper CC BY-NC-ND 4.0. Do not infer table-specific or third-party dataset clearance from a different artifact.",
+      "duplicate_evidence_policy": "One experiment across paper, preregistration, repository and mirrors; preserve study/window and per-artifact lineage.",
+      "human_led_steps": "Humans prompt, operate tools, run permitted code, inspect reproduction and identify substantive errors; AI-led is not human-free.",
+      "limitations": [
+        "Selected social-science papers, coauthorship incentives and seven-hour event format are not a representative research-labor sample.",
+        "Preregistration date 2024-05-02 follows the February pilot; no blanket fully preregistered label.",
+        "Completion means use nonmissing completion times; per-arm nonmissing denominators unverified. RMST censors missing events at 420 minutes and is a separate estimand.",
+        "No participant/team-level records or code execution in this review."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "sp001_paper",
+          "url": "https://eprints.whiterose.ac.uk/id/eprint/241548/1/brodeur-et-al-2026-ai-assisted-teams-outperform-ai-led-teams-but-not-human-only-teams-in-assessing-research-1.pdf",
+          "artifact_role": "author-deposited published PDF",
+          "provenance_locator": "Article pp. 3–4: procedures and task definitions; Article pp. 4–5: counts and Table 1; Article p. 8: limitations",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-NC-ND-4.0",
+          "rights_scope": "Article rights differ from repository data and code; no rights inferred for source-study data or personal records.",
+          "rights_evidence_url": "https://www.pnas.org/doi/10.1073/pnas.2524747123",
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp001_publisher",
+          "url": "https://www.pnas.org/doi/10.1073/pnas.2524747123",
+          "artifact_role": "publisher version record",
+          "provenance_locator": "Information: publication dates, license, change history",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-NC-ND-4.0",
+          "rights_scope": "Article rights differ from repository data and code; no rights inferred for source-study data or personal records.",
+          "rights_evidence_url": "https://www.pnas.org/doi/10.1073/pnas.2524747123",
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp001_readme",
+          "url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/README.md",
+          "artifact_role": "official repository README",
+          "provenance_locator": "Project layout; License; Preregistration description",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "MIT",
+          "rights_scope": "Article rights differ from repository data and code; no rights inferred for source-study data or personal records.",
+          "rights_evidence_url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/LICENSE",
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp001_branches_table",
+          "url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/output/tables/branches.tex",
+          "artifact_role": "committed aggregate output",
+          "provenance_locator": "Named artifact at pinned source commit",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Repository LICENSE-data names data and generated figures. Table-specific applicability is not separately explicit; facts cited without vendoring output.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": "4671f6e831a37f9bd329619203f5dfc294655d1a",
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp001_rmst_table",
+          "url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/output/tables/rmst.tex",
+          "artifact_role": "committed aggregate output",
+          "provenance_locator": "Named artifact at pinned source commit",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Repository LICENSE-data names data and generated figures. Table-specific applicability is not separately explicit; facts cited without vendoring output.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": "214b51b2d380361a91fd11ae4ce9db3d66c33536",
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp001_cleaning_code",
+          "url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/code/cleaning.R",
+          "artifact_role": "static source read",
+          "provenance_locator": "Named artifact at pinned source commit",
+          "access_status": "static_source_read",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "MIT",
+          "rights_scope": "Article rights differ from repository data and code; no rights inferred for source-study data or personal records.",
+          "rights_evidence_url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/LICENSE",
+          "artifact_sha256": null,
+          "git_blob_sha": "43798a2415ccf4e98903a3c74b1cad2237c87f7f",
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp001_branches_code",
+          "url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/code/branches.R",
+          "artifact_role": "static source read",
+          "provenance_locator": "Line 33 computes sd(); line 61 labels standard errors",
+          "access_status": "static_source_read",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "MIT",
+          "rights_scope": "Article rights differ from repository data and code; no rights inferred for source-study data or personal records.",
+          "rights_evidence_url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/LICENSE",
+          "artifact_sha256": null,
+          "git_blob_sha": "c302b4ca7dda648e30fad50a8809e71fb39bb56a",
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp001_rmst_code",
+          "url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/code/rmst.R",
+          "artifact_role": "static source read",
+          "provenance_locator": "Named artifact at pinned source commit",
+          "access_status": "static_source_read",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "MIT",
+          "rights_scope": "Article rights differ from repository data and code; no rights inferred for source-study data or personal records.",
+          "rights_evidence_url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/LICENSE",
+          "artifact_sha256": null,
+          "git_blob_sha": "cfb6afd0017e9acf2cb46fb3e0c2ebdbd7f44dba",
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp001_master_code",
+          "url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/code/master.R",
+          "artifact_role": "static source read",
+          "provenance_locator": "Named artifact at pinned source commit",
+          "access_status": "static_source_read",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "MIT",
+          "rights_scope": "Article rights differ from repository data and code; no rights inferred for source-study data or personal records.",
+          "rights_evidence_url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/LICENSE",
+          "artifact_sha256": null,
+          "git_blob_sha": "312e6d317ab7051ddc7ea6ee1380aac652acc235",
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp001_data_license",
+          "url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/LICENSE-data",
+          "artifact_role": "artifact license",
+          "provenance_locator": "Named artifact at pinned source commit",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-4.0",
+          "rights_scope": "Article rights differ from repository data and code; no rights inferred for source-study data or personal records.",
+          "rights_evidence_url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/LICENSE-data",
+          "artifact_sha256": null,
+          "git_blob_sha": "d54a67e989efe167a8f12088432a6f2eb2ec4c3b",
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp001_code_license",
+          "url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/LICENSE",
+          "artifact_role": "artifact license",
+          "provenance_locator": "Named artifact at pinned source commit",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "MIT",
+          "rights_scope": "Article rights differ from repository data and code; no rights inferred for source-study data or personal records.",
+          "rights_evidence_url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/LICENSE",
+          "artifact_sha256": null,
+          "git_blob_sha": "37e8a9dc3b9677cff1dac9768fd0eb299111c08e",
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp001_osf",
+          "url": "https://osf.io/sz2g8/",
+          "artifact_role": "official preregistration endpoint",
+          "provenance_locator": "Named artifact at pinned source commit",
+          "access_status": "access_unverified",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Article rights differ from repository data and code; no rights inferred for source-study data or personal records.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp001_dta",
+          "url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/data/AI%20games.dta",
+          "artifact_role": "participant_file_metadata_only",
+          "provenance_locator": "Pinned GitHub directory entry, not file contents",
+          "access_status": "metadata_only_not_downloaded",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-4.0",
+          "rights_scope": "Repository data license; underlying third-party materials excluded. Contents remain outside this review.",
+          "rights_evidence_url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/LICENSE-data",
+          "artifact_sha256": null,
+          "git_blob_sha": "1437ca1bf616c921e1bb9d58684fa7e5172696a9",
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp001_rds",
+          "url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/data/AI%20games.rds",
+          "artifact_role": "participant_file_metadata_only",
+          "provenance_locator": "Pinned GitHub directory entry, not file contents",
+          "access_status": "metadata_only_not_downloaded",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-4.0",
+          "rights_scope": "Repository data license; underlying third-party materials excluded. Contents remain outside this review.",
+          "rights_evidence_url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/LICENSE-data",
+          "artifact_sha256": null,
+          "git_blob_sha": "b36a7fa9b8002e146596f635d34e64a67082991e",
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp001_xlsx",
+          "url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/data/AI%20games.xlsx",
+          "artifact_role": "participant_file_metadata_only",
+          "provenance_locator": "Pinned GitHub directory entry, not file contents",
+          "access_status": "metadata_only_not_downloaded",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-4.0",
+          "rights_scope": "Repository data license; underlying third-party materials excluded. Contents remain outside this review.",
+          "rights_evidence_url": "https://github.com/I4Replication/AI-Games/blob/c2721bb6c2ddfad2633d9ab0a01dc514ec956923/LICENSE-data",
+          "artifact_sha256": null,
+          "git_blob_sha": "8982032d80b44e51463f811dd9552719fec94f17",
+          "source_body_vendored": false
+        }
+      ],
+      "samples": [
+        {
+          "kind": "observed_aggregate",
+          "fields": {
+            "unit": "study_arm",
+            "arm_order": [
+              "Human-only",
+              "AI-assisted",
+              "AI-led"
+            ],
+            "team_denominators": [
+              33,
+              35,
+              35
+            ],
+            "reproduction_successes": [
+              31,
+              32,
+              13
+            ],
+            "mean_minutes_published": [
+              "82.0",
+              "93.3",
+              "179.7"
+            ],
+            "mean_minutes_committed": [
+              "82.0",
+              "93.3",
+              "179.7"
+            ],
+            "rmst_minutes_without_success_committed": [
+              "102",
+              "121",
+              "331"
+            ],
+            "rmst_horizon_minutes": 420,
+            "completion_mean_denominators": null
+          },
+          "evidence_artifact_ids": [
+            "sp001_paper",
+            "sp001_branches_table",
+            "sp001_rmst_table"
+          ],
+          "qualification": "Published and committed arm summaries, not independently recomputed; no participant rows."
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "SP001-F01",
+          "text": "288 researchers formed 103 teams studying 12 selected papers across seven events. Teams had 420 minutes.",
+          "evidence_artifact_ids": [
+            "sp001_paper",
+            "sp001_readme"
+          ],
+          "qualification": "Study sample counts, not independent papers or a scientific-discovery rate."
+        },
+        {
+          "finding_id": "SP001-F02",
+          "text": "Current committed completion means match the paper. Static source reads show workbook to RDS to table lineage; legacy DTA is not the current analysis input.",
+          "evidence_artifact_ids": [
+            "sp001_branches_table",
+            "sp001_cleaning_code",
+            "sp001_master_code",
+            "sp001_branches_code"
+          ],
+          "qualification": "A matching committed output is not evidence that regeneration from the current input was executed."
+        },
+        {
+          "finding_id": "SP001-F03",
+          "text": "branches.R computes sd() while its table note and the publication label parenthesized values standard errors.",
+          "evidence_artifact_ids": [
+            "sp001_branches_code",
+            "sp001_branches_table",
+            "sp001_paper"
+          ],
+          "qualification": "Uncertainty ingestion is held. Retain the raw label and code-defined statistic; do not substitute SEs or recompute from unverified denominators."
+        },
+        {
+          "finding_id": "SP001-F04",
+          "text": "No significant AI-assistance advantage in reproduction was reported; human-only teams detected more major errors.",
+          "evidence_artifact_ids": [
+            "sp001_paper"
+          ],
+          "qualification": "A result from GPT-4/GPT-4o-era 2024 configurations, not a general result about all future AI."
+        },
+        {
+          "finding_id": "SP001-F05",
+          "text": "Virtual 2025 is excluded by current code; the table last changed 2026-04-30, whereas cleaning/RDS last changed 2026-06-02.",
+          "evidence_artifact_ids": [
+            "sp001_cleaning_code",
+            "sp001_branches_table",
+            "sp001_rds"
+          ],
+          "qualification": "Dates neither prove stale output nor certify regeneration. Legacy row-count/time recomputation claims were not independently reverified and are excluded from verified numbers."
+        }
+      ]
+    },
+    {
+      "candidate_id": "SP002",
+      "name": "A-Lab campaign outcomes and correction chain",
+      "summary": "One physical campaign with corrected target outcomes, separate recipe attempts, and preserved historical claim.",
+      "classification": "new_relative_to_frozen_inventory",
+      "inventory_source_id": null,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "historical_coverage": "One 17-day campaign reported 2023-11-29, corrected online 2026-01-19 (issue 2026-02-05); experimental calendar dates unknown.",
+      "update_frequency": "Publication/correction-driven; no regular feed verified.",
+      "access_method": "Corrected university-hosted PDF and publisher correction read as text. Historical original supported by indexed primary excerpt only; no experimental ZIP, protocols or structures acquired.",
+      "rights_summary": "Article and correction CC BY 4.0 with third-party exceptions. ZIP members and upstream structures remain unknown. No source bodies vendored.",
+      "duplicate_evidence_policy": "One campaign identity keyed to DOI 10.1038/s41586-023-06734-w across title changes, publisher mirrors, original and correction. Reanalysis does not add a new 2026 experiment.",
+      "human_led_steps": "Humans select targets, prepare/maintain equipment, handle exceptions and interpret existing measurements retrospectively.",
+      "limitations": [
+        "Selected material classes and platform constraints limit generality; target presence can include permitted disorder and is not necessarily high purity.",
+        "No controlled human productivity baseline, independently repeated campaign or broadly representative validated discoveries per researcher-hour.",
+        "Exclude later human-rescue outcomes, speculative improvements and training-data leakage target from corrected campaign totals.",
+        "17 days is elapsed campaign time; calendar dates, labor hours, labor saved and robot-active hours remain null."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "sp002_corrected",
+          "url": "https://bartel.cems.umn.edu/sites/bartel.cems.umn.edu/files/2026-02/szymanski.ceder_2023-nature.pdf",
+          "artifact_role": "corrected_paper",
+          "provenance_locator": "Figure 2: PDF page 3 / printed page 88; duration: abstract page 1 and Outlook page 5",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-4.0",
+          "rights_scope": "Article text/figures with third-party exceptions; extracted aggregate facts retain attribution and correction notice.",
+          "rights_evidence_url": "https://bartel.cems.umn.edu/sites/bartel.cems.umn.edu/files/2026-02/szymanski.ceder_2023-nature.pdf",
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp002_correction",
+          "url": "https://www.nature.com/articles/s41586-025-09992-y",
+          "artifact_role": "author_correction",
+          "provenance_locator": "Correction paragraphs on excluded target, inconclusive outcomes, changed title and novelty; rights statement",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-4.0",
+          "rights_scope": "Correction with third-party exceptions; not archive-member clearance.",
+          "rights_evidence_url": "https://www.nature.com/articles/s41586-025-09992-y",
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp002_original",
+          "url": "https://perssongroup.lbl.gov/papers/szymanski_autonomous_laboratory_2023.pdf",
+          "artifact_role": "historical_original_paper",
+          "provenance_locator": "Indexed primary abstract and opening campaign summary",
+          "access_status": "indexed_primary_excerpt_only",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Original full snapshot and own license notice unverified; corrected article rights do not silently license this mirror.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp002_archive",
+          "url": "https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-023-06734-w/MediaObjects/41586_2023_6734_MOESM3_ESM.zip",
+          "artifact_role": "experimental_archive_out_of_scope",
+          "provenance_locator": "Previously supplied supplementary-data URL; not independently reopened in this review",
+          "access_status": "inherited_link_not_reverified",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Member rights, internal schema and upstream structures remain unknown; no historical HEAD response treated as current.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        }
+      ],
+      "samples": [
+        {
+          "kind": "observed_aggregate",
+          "fields": {
+            "campaign_doi": "10.1038/s41586-023-06734-w",
+            "result_version": "corrected_2026",
+            "target_outcomes": {
+              "successful": 36,
+              "inconclusive": 4,
+              "not_obtained": 17,
+              "denominator": 57
+            },
+            "recipe_outcomes": {
+              "successful": 105,
+              "denominator": 353,
+              "other_outcome_categories": null
+            },
+            "elapsed_days": 17,
+            "period_start": null,
+            "period_end": null,
+            "researcher_hours": null,
+            "researcher_hours_saved": null,
+            "robot_active_hours": null
+          },
+          "evidence_artifact_ids": [
+            "sp002_corrected",
+            "sp002_correction"
+          ],
+          "qualification": "Counts from Figure 2, duration from abstract/Outlook. Recipe remainder is not a diagnosed failure category."
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "SP002-F01",
+          "text": "Corrected target partition is 36 successful, 4 inconclusive and 17 not obtained of 57; successful recipes are 105 of 353.",
+          "evidence_artifact_ids": [
+            "sp002_corrected",
+            "sp002_correction"
+          ],
+          "qualification": "Target and recipe denominators are different units and cannot be pooled."
+        },
+        {
+          "finding_id": "SP002-F02",
+          "text": "Original 41/58 is superseded; excluding one training-data target and reclassifying four claimed successes explains the corrected result.",
+          "evidence_artifact_ids": [
+            "sp002_original",
+            "sp002_correction"
+          ],
+          "qualification": "Historical original is indexed-primary evidence, not a captured full snapshot. Arithmetic 40/57 is not a separate published version."
+        },
+        {
+          "finding_id": "SP002-F03",
+          "text": "Authors reanalyzed existing measurements, assessed by post-publication peer review; novelty is relative to the prediction platform.",
+          "evidence_artifact_ids": [
+            "sp002_correction"
+          ],
+          "qualification": "Neither independently repeated experiments nor necessarily new-to-science materials."
+        },
+        {
+          "finding_id": "SP002-F04",
+          "text": "Correction online date is 2026-01-19; publication date remains 2023-11-29 and experimental calendar dates remain unknown.",
+          "evidence_artifact_ids": [
+            "sp002_corrected",
+            "sp002_correction"
+          ],
+          "qualification": "Use DOI rather than changed title as campaign identity; correction issue date 2026-02-05 is a different date role."
+        }
+      ]
+    },
+    {
+      "candidate_id": "SP003",
+      "name": "METR RE-Bench research-engineering evaluations",
+      "summary": "Prepared research-engineering tasks under explicit budgets with selected-best outcomes and fast scoring feedback.",
+      "classification": "existing_family_enrichment",
+      "inventory_source_id": "GL004",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "historical_coverage": "Release 2024-11-22; paper v2 2025-05-27; inspected task commit 2025-01-30, not established as original execution version.",
+      "update_frequency": "Irregular report/repository revisions; no verified collection cadence.",
+      "access_method": "Public release, paper tables and pinned task documentation; partial human baseline summaries exist, but complete original run export and transcript export remain unverified.",
+      "rights_summary": "Task software/documentation MIT. Original run-level data, separate participant records and transcripts have unknown reuse rights.",
+      "duplicate_evidence_policy": "RE-Bench release, paper, task repository and traces describe one study; time-horizon datasets require a run/task crosswalk. Existing page catalog already contains the release landing page.",
+      "human_led_steps": "Humans define tasks, objectives, infrastructure, scoring and rule checks; human baseliners could use LLMs.",
+      "limitations": [
+        "Seven prepared environments with short feedback cycles are not open-ended scientific research; human selection is nonrandom and not an AI-free control.",
+        "Best-of-k selection and aggregated attempt budgets are not average treatment effects or continuous autonomous duration.",
+        "API interruptions and some slowdowns excluded from timing; human breaks and timing not tightly policed.",
+        "Inspected task revision postdates original release. Some task documentation disagrees internally; no code executed."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "sp003_release",
+          "url": "https://metr.org/blog/2024-11-22-evaluating-r-d-capabilities-of-llms/",
+          "artifact_role": "aggregate_or_artifact_documentation",
+          "provenance_locator": "Release date; kernel example; Results; time-budget explanation; data-release statement",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Original dataset and transcript reuse remain unverified; arXiv nonexclusive distribution is not dataset permission.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp003_paper_v2",
+          "url": "https://arxiv.org/html/2411.15114v2",
+          "artifact_role": "paper",
+          "provenance_locator": "Abstract/footnote 1; sections 3.4, 4, 4.2, 4.3, 5.1; Appendix A",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Original dataset and transcript reuse remain unverified; arXiv nonexclusive distribution is not dataset permission.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp003_history",
+          "url": "https://arxiv.org/abs/2411.15114v2",
+          "artifact_role": "aggregate_or_artifact_documentation",
+          "provenance_locator": "Submission history and license link",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Original dataset and transcript reuse remain unverified; arXiv nonexclusive distribution is not dataset permission.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp003_readme",
+          "url": "https://github.com/METR/RE-Bench/blob/93b98062e55f6945d4a7e213a3226dd419896170/README.md",
+          "artifact_role": "aggregate_or_artifact_documentation",
+          "provenance_locator": "Pinned task artifact",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "MIT",
+          "rights_scope": "MIT repository software/documentation only; not blanket original-run, participant or transcript data rights.",
+          "rights_evidence_url": "https://github.com/METR/RE-Bench/blob/93b98062e55f6945d4a7e213a3226dd419896170/LICENSE",
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp003_license",
+          "url": "https://github.com/METR/RE-Bench/blob/93b98062e55f6945d4a7e213a3226dd419896170/LICENSE",
+          "artifact_role": "aggregate_or_artifact_documentation",
+          "provenance_locator": "Pinned task artifact",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "MIT",
+          "rights_scope": "MIT repository software/documentation only; not blanket original-run, participant or transcript data rights.",
+          "rights_evidence_url": "https://github.com/METR/RE-Bench/blob/93b98062e55f6945d4a7e213a3226dd419896170/LICENSE",
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp003_kernel_readme",
+          "url": "https://github.com/METR/RE-Bench/blob/93b98062e55f6945d4a7e213a3226dd419896170/ai_rd_triton_cumsum/README.md",
+          "artifact_role": "aggregate_or_artifact_documentation",
+          "provenance_locator": "Pinned task artifact",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "MIT",
+          "rights_scope": "MIT repository software/documentation only; not blanket original-run, participant or transcript data rights.",
+          "rights_evidence_url": "https://github.com/METR/RE-Bench/blob/93b98062e55f6945d4a7e213a3226dd419896170/LICENSE",
+          "artifact_sha256": null,
+          "git_blob_sha": "3ba055fb843f330fd98c6dd762b6148473680168",
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp003_kernel_manifest",
+          "url": "https://github.com/METR/RE-Bench/blob/93b98062e55f6945d4a7e213a3226dd419896170/ai_rd_triton_cumsum/manifest.yaml",
+          "artifact_role": "aggregate_or_artifact_documentation",
+          "provenance_locator": "Pinned task artifact",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "MIT",
+          "rights_scope": "MIT repository software/documentation only; not blanket original-run, participant or transcript data rights.",
+          "rights_evidence_url": "https://github.com/METR/RE-Bench/blob/93b98062e55f6945d4a7e213a3226dd419896170/LICENSE",
+          "artifact_sha256": null,
+          "git_blob_sha": "2eb567d94707207a341230be650d88f0182b2e0f",
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp003_kernel_score",
+          "url": "https://github.com/METR/RE-Bench/blob/93b98062e55f6945d4a7e213a3226dd419896170/ai_rd_triton_cumsum/assets/score.py",
+          "artifact_role": "static_code_documentation",
+          "provenance_locator": "Read as text only",
+          "access_status": "static_source_read",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "MIT",
+          "rights_scope": "MIT repository software/documentation only; not blanket original-run, participant or transcript data rights.",
+          "rights_evidence_url": "https://github.com/METR/RE-Bench/blob/93b98062e55f6945d4a7e213a3226dd419896170/LICENSE",
+          "artifact_sha256": null,
+          "git_blob_sha": "6eaa514a4176c14e7c88ec1519bfbb21402dcd53",
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp003_transcript",
+          "url": "https://transcripts.metr.org/run/#1511911269/",
+          "artifact_role": "aggregate_or_artifact_documentation",
+          "provenance_locator": "Web extraction returned only application shell; no trace export verified",
+          "access_status": "application_shell_only",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Original dataset and transcript reuse remain unverified; arXiv nonexclusive distribution is not dataset permission.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp003_metr_time_horizon_readme",
+          "url": "https://github.com/METR/eval-analysis-public/blob/main/README.md",
+          "artifact_role": "aggregate_or_artifact_documentation",
+          "provenance_locator": "Current unpinned README only",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Original dataset and transcript reuse remain unverified; arXiv nonexclusive distribution is not dataset permission.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        }
+      ],
+      "samples": [
+        {
+          "kind": "observed_aggregate",
+          "fields": {
+            "task": "Optimize a Kernel",
+            "metric": "selected_solution_runtime",
+            "unit": "milliseconds",
+            "o1_preview": "0.64",
+            "best_human": "0.67",
+            "starting_implementation_release": "4.74",
+            "reference_implementation": "1.60",
+            "starting_implementation_pinned_readme": "4.76"
+          },
+          "evidence_artifact_ids": [
+            "sp003_release",
+            "sp003_kernel_readme"
+          ],
+          "qualification": "Selected published outcomes only; 4.74/4.76 discrepancy is preserved rather than reconciled without evidence."
+        },
+        {
+          "kind": "observed_aggregate",
+          "fields": {
+            "environments": 7,
+            "human_attempts": 71,
+            "human_experts": 61,
+            "nominal_human_attempt_hours": 8,
+            "scoring_calls_per_hour": {
+              "AIDE": "36.8",
+              "Modular": "25.3",
+              "human": "3.4"
+            }
+          },
+          "evidence_artifact_ids": [
+            "sp003_paper_v2"
+          ],
+          "qualification": "Aggregate study counts only; feedback evaluations per hour are not discoveries per hour."
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "SP003-F01",
+          "text": "At a 32-hour total budget the study combines multiple attempts: four 8-hour human, sixty-four 0.5-hour Modular or sixteen 2-hour AIDE attempts.",
+          "evidence_artifact_ids": [
+            "sp003_paper_v2",
+            "sp003_release"
+          ],
+          "qualification": "Best-of-k resampling with replacement; Scaling Law uses random selection because scores are hidden. Not 32 sustained autonomous hours."
+        },
+        {
+          "finding_id": "SP003-F02",
+          "text": "Pinned kernel README includes nine partial public baseline summary rows, including a duration labeled 8:59.",
+          "evidence_artifact_ids": [
+            "sp003_kernel_readme"
+          ],
+          "qualification": "No human/run records copied here. Partial summaries do not establish completeness or original-study run identity."
+        },
+        {
+          "finding_id": "SP003-F03",
+          "text": "Pinned README summary says 10^11 inputs while detailed instructions and scoring source use 100,000,000; scoring uses a natural-log runtime conditional on correctness.",
+          "evidence_artifact_ids": [
+            "sp003_kernel_readme",
+            "sp003_kernel_score"
+          ],
+          "qualification": "Static inspection only. Preserve disagreement, separate raw task score from normalized cross-task score."
+        },
+        {
+          "finding_id": "SP003-F04",
+          "text": "Complete matching original-study analysis export, trace export and rights remain unverified despite partial public summaries.",
+          "evidence_artifact_ids": [
+            "sp003_paper_v2",
+            "sp003_transcript",
+            "sp003_metr_time_horizon_readme"
+          ],
+          "qualification": "Bounded negative search, not proof no export exists. Adjacent METR time-horizon data cannot silently substitute."
+        }
+      ]
+    },
+    {
+      "candidate_id": "SP004",
+      "name": "AlphaTensor matrix-multiplication artifacts",
+      "summary": "Published algorithm discoveries with released checkable certificates and separate hardware-specific benchmark documentation.",
+      "classification": "new_relative_to_frozen_inventory",
+      "inventory_source_id": null,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "historical_coverage": "Paper online 2022-10-05 (issue 2022-10-06); pinned repository commit 2022-10-04.",
+      "update_frequency": "Publication snapshot; no scheduled updates verified.",
+      "access_method": "Public NPZ entries and notebook/source documentation inspected as metadata/text only; arrays, notebook cells and benchmarks were not executed.",
+      "rights_summary": "Software Apache 2.0; other repository materials CC BY 4.0; paper CC BY 4.0 with exceptions. Copyright licenses do not settle patent scope.",
+      "duplicate_evidence_policy": "2022 matrix multiplication distinct from 2024 quantum-computation AlphaTensor catalog entry; released certificates, paper and publicity are not independent training replications.",
+      "human_led_steps": "Humans define tensor/problem, search space, objective, implementation and validation.",
+      "limitations": [
+        "Selected successful algorithms lack full failed-search denominator and measured labor savings.",
+        "Lower scalar multiplication count does not establish lower wall time, energy or improved numerical stability.",
+        "Original notebook enables pickle loading and targets a hardcoded example; documented checker is not verified execution.",
+        "Historical GPU/software availability and complete original training system unverified."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "sp004_paper",
+          "url": "https://www.nature.com/articles/s41586-022-05172-4",
+          "artifact_role": "published_paper",
+          "provenance_locator": "Algorithm discovery results; Methods training regime; Data/Code availability; Extended Data Fig. 1; rights",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-4.0",
+          "rights_scope": "Article CC BY 4.0 with third-party exceptions; declared intended patent filing remains a separate question.",
+          "rights_evidence_url": "https://www.nature.com/articles/s41586-022-05172-4",
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp004_readme",
+          "url": "https://github.com/google-deepmind/alphatensor/blob/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/README.md",
+          "artifact_role": "static_source_or_documentation",
+          "provenance_locator": "Pinned repository artifact",
+          "access_status": "static_source_read",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "Apache-2.0",
+          "rights_scope": "Apache 2.0 software; non-software materials separately CC BY 4.0.",
+          "rights_evidence_url": "https://github.com/google-deepmind/alphatensor/blob/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/README.md",
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp004_original_notebook",
+          "url": "https://github.com/google-deepmind/alphatensor/blob/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/algorithms/explore_factorizations.ipynb",
+          "artifact_role": "static_source_or_documentation",
+          "provenance_locator": "Original notebook JSON text only; no cell execution",
+          "access_status": "static_source_read",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "Apache-2.0",
+          "rights_scope": "Apache 2.0 software; non-software materials separately CC BY 4.0.",
+          "rights_evidence_url": "https://github.com/google-deepmind/alphatensor/blob/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/README.md",
+          "artifact_sha256": null,
+          "git_blob_sha": "a6ee03828786a9147e4d4f8200aaf1502a6ee4f8",
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp004_benchmark_readme",
+          "url": "https://github.com/google-deepmind/alphatensor/blob/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/benchmarking/README.md",
+          "artifact_role": "static_source_or_documentation",
+          "provenance_locator": "Pinned repository artifact",
+          "access_status": "static_source_read",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "Apache-2.0",
+          "rights_scope": "Apache 2.0 software; non-software materials separately CC BY 4.0.",
+          "rights_evidence_url": "https://github.com/google-deepmind/alphatensor/blob/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/README.md",
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp004_benchmark_script",
+          "url": "https://github.com/google-deepmind/alphatensor/blob/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/benchmarking/run_gpu_benchmark.py",
+          "artifact_role": "static_source_or_documentation",
+          "provenance_locator": "Original source read as documentation only",
+          "access_status": "static_source_read",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "Apache-2.0",
+          "rights_scope": "Apache 2.0 software; non-software materials separately CC BY 4.0.",
+          "rights_evidence_url": "https://github.com/google-deepmind/alphatensor/blob/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/README.md",
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp004_benchmark_requirements",
+          "url": "https://github.com/google-deepmind/alphatensor/blob/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/benchmarking/requirements.txt",
+          "artifact_role": "static_source_or_documentation",
+          "provenance_locator": "Pinned repository artifact",
+          "access_status": "static_source_read",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "Apache-2.0",
+          "rights_scope": "Apache 2.0 software; non-software materials separately CC BY 4.0.",
+          "rights_evidence_url": "https://github.com/google-deepmind/alphatensor/blob/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/README.md",
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp004_f2",
+          "url": "https://github.com/google-deepmind/alphatensor/blob/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/algorithms/factorizations_f2.npz",
+          "artifact_role": "numerical_certificate_archive",
+          "provenance_locator": "Pinned directory metadata; arrays not inspected",
+          "access_status": "metadata_only_not_downloaded",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-4.0",
+          "rights_scope": "Explicit README distinction for non-software materials; no arrays copied.",
+          "rights_evidence_url": "https://github.com/google-deepmind/alphatensor/blob/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/README.md",
+          "artifact_sha256": null,
+          "git_blob_sha": "74ca8d8d9db45e59d01a2db8cd974896b6497587",
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp004_r",
+          "url": "https://github.com/google-deepmind/alphatensor/blob/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/algorithms/factorizations_r.npz",
+          "artifact_role": "numerical_certificate_archive",
+          "provenance_locator": "Pinned directory metadata; arrays not inspected",
+          "access_status": "metadata_only_not_downloaded",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-4.0",
+          "rights_scope": "Explicit README distinction for non-software materials; no arrays copied.",
+          "rights_evidence_url": "https://github.com/google-deepmind/alphatensor/blob/1949163da3bef7e3eb268a3ac015fd1c2dbfc767/README.md",
+          "artifact_sha256": null,
+          "git_blob_sha": "5ff45960f86da6237f105f78aaa82d29cb18c30e",
+          "source_body_vendored": false
+        }
+      ],
+      "samples": [
+        {
+          "kind": "observed_schema",
+          "fields": {
+            "dimensions_key": "3,4,5",
+            "value_components": [
+              "u",
+              "v",
+              "w"
+            ],
+            "rank_definition": "shared final axis",
+            "tensor_convention": "symmetrized multiplication tensor representing (AB)^T; shape (a*b,b*c,c*a)"
+          },
+          "evidence_artifact_ids": [
+            "sp004_original_notebook"
+          ],
+          "qualification": "Observed notebook schema and checker text, not an inspected numerical certificate."
+        },
+        {
+          "kind": "observed_aggregate",
+          "fields": {
+            "matrix_dimensions": [
+              4,
+              4,
+              4
+            ],
+            "arithmetic": "F2 / modulo two",
+            "scalar_multiplications": 47,
+            "baseline_multiplications": 49,
+            "baseline": "two recursive Strassen levels"
+          },
+          "evidence_artifact_ids": [
+            "sp004_paper"
+          ],
+          "qualification": "Published operation-count claim; certificate correctness not independently checked."
+        },
+        {
+          "kind": "observed_aggregate",
+          "fields": {
+            "expected_speedup_percent": "8.5",
+            "baseline": "Strassen squared",
+            "matrix_shape": [
+              8192,
+              8192
+            ],
+            "dtype": "float32",
+            "hardware": "NVIDIA V100"
+          },
+          "evidence_artifact_ids": [
+            "sp004_benchmark_script",
+            "sp004_benchmark_readme"
+          ],
+          "qualification": "Expected result in source documentation, not an observed local benchmark; separate from finite-field operation count."
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "SP004-F01",
+          "text": "Released certificates make correctness independently checkable in principle; this review read only schema/checker logic.",
+          "evidence_artifact_ids": [
+            "sp004_original_notebook",
+            "sp004_f2",
+            "sp004_r"
+          ],
+          "qualification": "Do not claim checked certificates or reproduced training; allow_pickle=True loader was never run."
+        },
+        {
+          "finding_id": "SP004-F02",
+          "text": "Notebook example is 3,4,5, not a comprehensive check of all entries or the headline 4,4,4 certificate.",
+          "evidence_artifact_ids": [
+            "sp004_original_notebook"
+          ],
+          "qualification": "Any later checker needs a safe data-only design, exact arithmetic and explicit dimension scope."
+        },
+        {
+          "finding_id": "SP004-F03",
+          "text": "The GPU script documents an expected speedup against Strassen squared but prints per-algorithm ratios to jax.numpy.dot.",
+          "evidence_artifact_ids": [
+            "sp004_benchmark_script",
+            "sp004_benchmark_requirements"
+          ],
+          "qualification": "Baselines and historical runtime environment must remain separate; no runtime result independently verified."
+        }
+      ]
+    },
+    {
+      "candidate_id": "SP005",
+      "name": "CASP independent scientific-prediction assessment",
+      "summary": "Blind external assessment of scientific predictions against experimental reference structures, without sequence or coordinate acquisition.",
+      "classification": "new_relative_to_frozen_inventory",
+      "inventory_source_id": null,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "historical_coverage": "Family starts 1994, biennial; observed score schema from CASP14/2020, CSV inventory CASP16/2024, CASP17/2026 final assessments pending.",
+      "update_frequency": "Biennial rounds plus irregular assessment corrections.",
+      "access_method": "Anonymous HTML and linked plain-text score export verified; CASP16 CSV directory listed only. No sequences, coordinates, model archives or participant records stored.",
+      "rights_summary": "Current site terms link CC BY 4.0; historical raw-score scope lacks separate explicit notice. Unknown does not mean prohibited, but does not authorize redistribution.",
+      "duplicate_evidence_policy": "Round/target-domain/submission/metric/assessment-version identity; HTML/text/CSV mirrors repeat one assessment; domains and multiple submissions are correlated.",
+      "human_led_steps": "Humans determine reference structures, curate targets and assess submissions. Official Human submission category does not quantify manual intervention.",
+      "limitations": [
+        "Accuracy is not a discovery count, elapsed-time improvement or researcher-hours saved.",
+        "Metric scales, domain boundaries, categories, difficulty and first-versus-best selection change between rounds.",
+        "Independent assessment is different from independent model-training replication.",
+        "No final CASP17 score admitted before actual release and inspection."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "sp005__home",
+          "url": "https://predictioncenter.org/",
+          "artifact_role": "organizer_round_index",
+          "provenance_locator": "CASP1 1994 through CASP17 2026; blind prediction purpose",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Current website Terms link to CC BY 4.0; historical raw-score applicability and upstream predictions/coordinates remain unverified.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp005_14_html",
+          "url": "https://predictioncenter.org/casp14/results.cgi?groups_id=&model=1&target=T1031-D1&view=tables",
+          "artifact_role": "per_target_aggregate_score_table",
+          "provenance_locator": "First-model T1031-D1 row and official Text file link",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Current website Terms link to CC BY 4.0; historical raw-score applicability and upstream predictions/coordinates remain unverified.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp005_14_txt",
+          "url": "https://predictioncenter.org/casp14/results.cgi?access_type=1&dm_class=all&groups_id=&groups_list=&model=1&multi_sort=&order=&pc=&result_id=&results=all&sub_type=&target=T1031-D1&targets_list=&tr_type=all&view=txt",
+          "artifact_role": "plain_text_score_export",
+          "provenance_locator": "Header and selected AlphaFold2 row verified via official HTML Text file link after direct-open tool error",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Current website Terms link to CC BY 4.0; historical raw-score applicability and upstream predictions/coordinates remain unverified.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp005_14_groups",
+          "url": "https://predictioncenter.org/casp14/docs.cgi?view=groupsbyname",
+          "artifact_role": "method_group_crosswalk",
+          "provenance_locator": "Group427 AlphaFold2 Human; 390 submitted models for78 regular targets",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Current website Terms link to CC BY 4.0; historical raw-score applicability and upstream predictions/coordinates remain unverified.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp005_14_help",
+          "url": "https://predictioncenter.org/casp14/doc/help.html",
+          "artifact_role": "score_schema_documentation",
+          "provenance_locator": "Model identity, GDT_TS, NP,NT,NP_P definitions; score versus confidence distinction",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Current website Terms link to CC BY 4.0; historical raw-score applicability and upstream predictions/coordinates remain unverified.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp005_16_method",
+          "url": "https://predictioncenter.org/casp16/",
+          "artifact_role": "organizer_protocol",
+          "provenance_locator": "Biennial blind assessment; independent assessors cannot predict in assessed category; current Terms link to CC BY4.0",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Current website Terms link to CC BY 4.0; historical raw-score applicability and upstream predictions/coordinates remain unverified.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp005_16_directory",
+          "url": "https://predictioncenter.org/download_area/CASP16/results/tables/",
+          "artifact_role": "advertised_score_artifact_directory",
+          "provenance_locator": "Five CSV hrefs and advertised file sizes only; CSV bodies not retrieved",
+          "access_status": "directory_only_not_downloaded",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Current website Terms link to CC BY 4.0; historical raw-score applicability and upstream predictions/coordinates remain unverified.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp005_17_status",
+          "url": "https://predictioncenter.org/casp17/index.cgi",
+          "artifact_role": "current_round_status",
+          "provenance_locator": "Prediction season ended September11 2026; assessments in progress; results scheduled one day before conference starting November30 2026",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "Current website Terms link to CC BY 4.0; historical raw-score applicability and upstream predictions/coordinates remain unverified.",
+          "rights_evidence_url": null,
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        },
+        {
+          "artifact_id": "sp005_cc_by4",
+          "url": "https://creativecommons.org/licenses/by/4.0/",
+          "artifact_role": "site_linked_terms",
+          "provenance_locator": "Current CASP16 Terms of Use link resolves to CC BY4.0; historical raw-export scope not independently explicit",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-4.0",
+          "rights_scope": "Current website Terms link to CC BY 4.0; historical raw-score applicability and upstream predictions/coordinates remain unverified.",
+          "rights_evidence_url": "https://creativecommons.org/licenses/by/4.0/",
+          "artifact_sha256": null,
+          "git_blob_sha": null,
+          "source_body_vendored": false
+        }
+      ],
+      "samples": [
+        {
+          "kind": "observed_schema",
+          "fields": {
+            "fields": [
+              "model",
+              "GDT_TS",
+              "NP_P",
+              "NP",
+              "NT",
+              "LDDT",
+              "TMscore"
+            ],
+            "metric_scales": {
+              "GDT_TS": "0–100 score",
+              "NP_P": "percent coverage",
+              "NP": "evaluable overlapping residue count",
+              "NT": "evaluable target/domain residue count",
+              "LDDT": "observed fractional score",
+              "TMscore": "observed fractional score"
+            },
+            "coverage_formula": "NP_P = 100 * NP / NT",
+            "elapsed_compute": null,
+            "researcher_effort": null
+          },
+          "evidence_artifact_ids": [
+            "sp005_14_txt",
+            "sp005_14_help"
+          ],
+          "qualification": "Observed schema only; no group/team row, sequence or coordinate reproduced. LDDT is assessed accuracy, not pLDDT model confidence."
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "SP005-F01",
+          "text": "Organizer describes blind assessment and prohibits assessors from predicting in the category they assess.",
+          "evidence_artifact_ids": [
+            "sp005_16_method"
+          ],
+          "qualification": "Independent outcome assessment, not causal labor productivity or independently recreated training."
+        },
+        {
+          "finding_id": "SP005-F02",
+          "text": "Official AlphaFold2 submission category is Human.",
+          "evidence_artifact_ids": [
+            "sp005_14_groups"
+          ],
+          "qualification": "Category does not imply no AI or a quantified amount of human intervention. No participant/team record is published here."
+        },
+        {
+          "finding_id": "SP005-F03",
+          "text": "CASP17 assessment is in progress: actual prediction season-end update is 2026-09-11; release is scheduled one day before conference starting 2026-11-30.",
+          "evidence_artifact_ids": [
+            "sp005_17_status"
+          ],
+          "qualification": "Planned August 31 timetable and generic August homepage wording are not the actual update; future scheduled release is not an observed result."
+        },
+        {
+          "finding_id": "SP005-F04",
+          "text": "Current Terms link is CC BY 4.0, but the historical text score export has no separate artifact notice.",
+          "evidence_artifact_ids": [
+            "sp005_16_method",
+            "sp005_cc_by4",
+            "sp005_14_txt"
+          ],
+          "qualification": "Do not extend site terms to every historical prediction/coordinate artifact. CSV listing is not inspected CSV data."
+        }
+      ]
+    }
+  ],
+  "critical_qualifications": {
+    "i4r": {
+      "current_table_means_match_paper": true,
+      "current_regeneration_verified": false,
+      "legacy_recomputation_independently_verified": false,
+      "code_dispersion_statistic": "sample_SD",
+      "published_dispersion_label": "standard_errors",
+      "uncertainty_ingestion": "held",
+      "participant_files_read": false,
+      "virtual_2025_in_2024_sample": false
+    },
+    "alab": {
+      "campaign_count": 1,
+      "corrected_target_partition": [
+        36,
+        4,
+        17,
+        57
+      ],
+      "recipe_success_fraction": [
+        105,
+        353
+      ],
+      "historical_target_success_fraction": [
+        41,
+        58
+      ],
+      "historical_source_status": "indexed_primary_excerpt_only",
+      "intermediate_40_of_57_is_published_version": false,
+      "independent_experimental_replication": "not_established",
+      "novelty_scope": "new_to_platform_not_necessarily_new_to_science",
+      "archive_members_inspected": false,
+      "article_byte_pins_verified": false,
+      "calendar_dates_known": false,
+      "labor_hours_known": false,
+      "human_rescue_outcomes_excluded": true
+    },
+    "rebench": {
+      "release_starting_runtime_ms": "4.74",
+      "pinned_readme_starting_runtime_ms": "4.76",
+      "partial_public_human_summaries_exist": true,
+      "complete_original_export_verified": false,
+      "human_baseline_ai_free": false,
+      "task_commit_proven_original_run_version": false,
+      "nominal_32_hour_budget_is_sustained_autonomy": false,
+      "raw_human_rows_vendored": false
+    },
+    "alphatensor": {
+      "headline_arithmetic": "F2_modulo_two",
+      "headline_multiplications": 47,
+      "baseline_multiplications": 49,
+      "numerical_arrays_inspected": false,
+      "notebook_or_benchmark_executed": false,
+      "certificate_independently_verified": false,
+      "training_reproduced": false,
+      "notebook_pickle_loader_used": false,
+      "expected_speedup_is_observed_result": false,
+      "quantum_2024_same_study": false
+    },
+    "casp": {
+      "score_schema_observed": true,
+      "raw_group_rows_vendored": false,
+      "sequence_or_coordinate_files_acquired": false,
+      "historical_raw_score_rights": "scope_unverified",
+      "casp17_final_results_verified": false,
+      "independent_assessment_is_training_replication": false
+    }
+  },
+  "verification_separation": {
+    "live_source_review": "Documentary facts and source metadata checked separately from deterministic repository tests.",
+    "offline_checks": "Original catalog consistency and manually curated aggregate contract only; no new empirical result.",
+    "byte_provenance": "Null hash means bytes not captured; a DOI or Git blob identity is not a fabricated SHA-256.",
+    "rights": "No unknown-rights raw artifacts or full source bodies copied."
+  },
+  "corrections": [
+    {
+      "claim": "Legacy I4R duration discrepancy implies failure of current outputs.",
+      "qualification": "Current committed table matches the paper. Legacy recomputation is not independently reverified and current regeneration remains untested."
+    },
+    {
+      "claim": "I4R parenthesized values can be ingested as standard errors.",
+      "qualification": "Static code uses sd(); preserve label/code discrepancy and hold uncertainty ingestion."
+    },
+    {
+      "claim": "Figure 2 supplies A-Lab counts and campaign duration.",
+      "qualification": "Counts are Figure 2; 17 days comes from abstract/Outlook."
+    },
+    {
+      "claim": "A two-document corrected-paper/notice allowlist also captures original 41/58.",
+      "qualification": "A separate historical original artifact is necessary and remains indexed-primary only; 40/57 is explanatory arithmetic, not another publication."
+    },
+    {
+      "claim": "A-Lab reanalysis or post-publication peer review is independent replication.",
+      "qualification": "No independently repeated campaign established; correction changes interpretation of the same evidence."
+    },
+    {
+      "claim": "No RE-Bench human summary is public.",
+      "qualification": "Partial summaries exist in task documentation; complete matching original export and rights are still unverified."
+    },
+    {
+      "claim": "RE-Bench release/runtime/task revision are interchangeable.",
+      "qualification": "4.74 versus 4.76 ms, post-release task snapshot, input-size discrepancy and partial timing anomaly remain separate."
+    },
+    {
+      "claim": "AlphaTensor checker documentation verifies all numerical certificates.",
+      "qualification": "No arrays or checker were run; the documented example is 3,4,5 and pickle loading remains unsafe and unused."
+    },
+    {
+      "claim": "CASP17 2026 means final results exist.",
+      "qualification": "Assessment ongoing on 2026-10-08; schedule is not observed release. Raw historical score license scope remains unverified."
+    }
+  ],
+  "offline_validator": {
+    "status": "implemented_offline_only",
+    "kind": "manual_aggregate_ledger_validator_not_source_extractor",
+    "entry_point": "tools/evidence_program/validate_scientific_ledger.py",
+    "synthetic_fixture": "tools/evidence_program/tests/fixtures/scientific-progress/synthetic-alab-ledger.json",
+    "real_curated_ledger": "data/evidence-program/research/alab-correction-ledger.json",
+    "network_enabled": false,
+    "pdf_or_web_extraction_implemented": false,
+    "canonical_import": false,
+    "source_article_bytes_acquired": false,
+    "source_scientific_validation_performed": false,
+    "output_status": "experimental_review_records_not_admitted",
+    "scope": "Validate a bounded manually curated three-record aggregate ledger; preserve original/corrected target relationship and separate recipe denominator. Synthetic regression fixtures are original examples, not empirical source data.",
+    "maximum_bytes": 65536,
+    "maximum_depth": 12,
+    "maximum_input_records": 32,
+    "maximum_unique_claims": 3,
+    "maximum_provenance_per_record": 3,
+    "exact_url_allowlist": true,
+    "reject_unknown_fields": true,
+    "deterministic_current_view": true,
+    "source_hashes_must_remain_null": true
+  },
+  "next_actions": [
+    {
+      "action_id": "SP-A01",
+      "candidate_ids": [
+        "SP001",
+        "SP002",
+        "SP003",
+        "SP004",
+        "SP005"
+      ],
+      "status": "completed",
+      "action": "Compare all six prior research catalogs and verify selected primary aggregate claims without source execution.",
+      "completion_evidence": "Exact current-main catalog hashes and artifact-qualified findings above."
+    },
+    {
+      "action_id": "SP-A02",
+      "candidate_ids": [
+        "SP002"
+      ],
+      "status": "completed",
+      "action": "Implement a bounded offline manual aggregate ledger validator and synthetic regressions.",
+      "completion_evidence": "Local validator, real curated metadata ledger and synthetic fixture; extraction and canonical mapping remain unimplemented."
+    },
+    {
+      "action_id": "SP-A03",
+      "candidate_ids": [
+        "SP001"
+      ],
+      "status": "open",
+      "action": "Resolve current aggregate lineage and SD-versus-SE ambiguity using producer-published aggregate evidence.",
+      "completion_evidence": "Keep separate raw display label, code-defined statistic, completion-time/RMST estimands and current-versus-legacy versions until resolved."
+    },
+    {
+      "action_id": "SP-A04",
+      "candidate_ids": [
+        "SP002"
+      ],
+      "status": "pending_access_review",
+      "action": "Acquire permitted byte snapshots and explicit original historical provenance before proposing PDF/web extraction.",
+      "completion_evidence": "Approved corrected paper, correction and original snapshot hashes and locators; stop at access restrictions, unsafe redirects or size limits."
+    },
+    {
+      "action_id": "SP-A05",
+      "candidate_ids": [
+        "SP003"
+      ],
+      "status": "open",
+      "action": "Find original-study export/rights and exact task/scaffold/model joins, preserving task discrepancies.",
+      "completion_evidence": "Document complete versus partial export status; do not substitute adjacent time-horizon data or copy participant rows."
+    },
+    {
+      "action_id": "SP-A06",
+      "candidate_ids": [
+        "SP004"
+      ],
+      "status": "open",
+      "action": "Design a data-only certificate verification contract without acquiring arrays or executing source code.",
+      "completion_evidence": "Explicit safe-container, dtype, dimension, arithmetic and transpose checks; separate patent/rights and performance questions."
+    },
+    {
+      "action_id": "SP-A07",
+      "candidate_ids": [
+        "SP005"
+      ],
+      "status": "pending_rights_review",
+      "action": "Resolve historical score-artifact scope and later final-release status before proposing bounded score acquisition.",
+      "completion_evidence": "One edition and approved aggregate score scope, rights evidence and version pin; no group/participant rows, sequences or coordinates."
+    },
+    {
+      "action_id": "SP-A08",
+      "candidate_ids": [
+        "SP001",
+        "SP002",
+        "SP003",
+        "SP004",
+        "SP005"
+      ],
+      "status": "pending_contract_review",
+      "action": "Review lossless canonical mapping and dependence rules before any source admission.",
+      "completion_evidence": "Preserve study/claim/artifact identities, correction edges, exact units, missingness, provenance and rights without changing frozen contract in this integration."
+    }
+  ],
+  "focused_follow_up_prompts": [
+    {
+      "action_id": "SP-A03",
+      "why_needed": "Resolve current aggregate lineage and SD-versus-SE ambiguity using producer-published aggregate evidence.",
+      "prompt": "Read only the pinned I4R aggregate branches/RMST tables and static analysis documentation at https://github.com/I4Replication/AI-Games/tree/c2721bb6c2ddfad2633d9ab0a01dc514ec956923. Check already-public producer clarification of branches.R sd() versus standard-error label and evidence that current workbook/RDS changes regenerated committed tables. Report source URLs, version dates, exact aggregate locators and what remains unknown. Do not read participant/team files, run R/notebooks, contact authors, infer SEs or extend the 2024 sample to Virtual 2025. Stop when existing public aggregate evidence resolves the issue or a bounded check finds none."
+    },
+    {
+      "action_id": "SP-A04",
+      "why_needed": "Acquire permitted byte snapshots and explicit original historical provenance before proposing PDF/web extraction.",
+      "prompt": "Review only three A-Lab aggregate-evidence artifacts: https://bartel.cems.umn.edu/sites/bartel.cems.umn.edu/files/2026-02/szymanski.ceder_2023-nature.pdf, https://www.nature.com/articles/s41586-025-09992-y, and https://perssongroup.lbl.gov/papers/szymanski_autonomous_laboratory_2023.pdf. Check whether safely accessible, permitted aggregate-only source snapshots can be pinned. Keep full-artifact hashes null unless the exact approved bytes are acquired and verified; an excerpt hash is only an excerpt hash. Do not acquire a full artifact containing protocols. Stop at authentication, CAPTCHA, unsafe redirects, denied hosts or size limits; report a blocker rather than bypassing it. Do not retrieve experimental ZIP members, protocols or structures. Check Figure 2 counts, abstract/Outlook duration, historical 41/58 and correction relationship. Keep article date 2023-11-29, correction 2026-01-19 and unknown campaign calendar dates distinct; 40/57 is not a new published version. Return a provenance receipt and extractor feasibility assessment, not a collector."
+    },
+    {
+      "action_id": "SP-A05",
+      "why_needed": "Find original-study export/rights and exact task/scaffold/model joins, preserving task discrepancies.",
+      "prompt": "Inspect the METR RE-Bench release https://metr.org/blog/2024-11-22-evaluating-r-d-capabilities-of-llms/, paper https://arxiv.org/html/2411.15114v2 and task metadata at https://github.com/METR/RE-Bench/tree/93b98062e55f6945d4a7e213a3226dd419896170. Find only already-public original-study export manifests, rights and run-to-task/scaffold/model version documentation. Preserve release 4.74 versus README 4.76 ms, internal input-size discrepancy and existence of partial baseline summaries. Do not download participant files, transcript bodies or execution assets, run tasks, or use time-horizon data as a substitute. Return bounded presence/absence findings with links and release conditions."
+    },
+    {
+      "action_id": "SP-A06",
+      "why_needed": "Design a data-only certificate verification contract without acquiring arrays or executing source code.",
+      "prompt": "Using only text documentation in https://github.com/google-deepmind/alphatensor/tree/1949163da3bef7e3eb268a3ac015fd1c2dbfc767, specify a safe non-executing archive-inspection and data-only conversion plan for a single explicitly scoped certificate. Record F2 versus standard arithmetic, shared rank axis, dimensions, (AB)^T tensor convention, maximum bytes/shapes and rejected object/pickle payloads. Do not download arrays, enable allow_pickle, run notebooks/checkers/benchmarks or claim verified correctness. Distinguish the 2022 multiplication study from 2024 quantum work and documentary expected GPU speedup from observed performance. Return acceptance criteria and unresolved rights/patent/environment questions only."
+    },
+    {
+      "action_id": "SP-A07",
+      "why_needed": "Resolve historical score-artifact scope and later final-release status before proposing bounded score acquisition.",
+      "prompt": "Inspect only public rights statements and aggregate assessment status at https://predictioncenter.org/casp14/, https://predictioncenter.org/casp16/ and https://predictioncenter.org/casp17/index.cgi. Determine whether an explicit public notice covers a chosen historical score export and whether CASP17 final results have actually been released. Do not infer current results from a schedule. Propose at most one edition-specific aggregate score schema preserving target-domain/category/model-selection/metric/version dependence, with unknown labor and compute null. Do not acquire group/participant rows, sequences, coordinates or model archives, and do not contact organizers. Stop after the bounded public-document check."
+    },
+    {
+      "action_id": "SP-A08",
+      "why_needed": "Review lossless canonical mapping and dependence rules before any source admission.",
+      "prompt": "Read the repository scientific-progress guide, curated catalog and manual A-Lab ledger plus frozen evidence-program contracts. Produce a compatibility review, with synthetic examples only, preserving historical/current claims, target-versus-recipe denominators, study/artifact/version identity, source locators, null hashes and missing dates/labor, rights scope and independent-assessment-versus-replication distinctions. Identify any lossy fields without editing the frozen schemas, admitting sources, creating a collector, scoring risk or converting proxies to p(doom). Return exact mapping gaps and minimal separately reviewable next step."
+    }
+  ],
+  "holds": [
+    {
+      "id": "SCI-H01",
+      "scope": "I4R uncertainty and current regeneration",
+      "reason": "SD-versus-SE label/code disagreement; current regeneration not tested.",
+      "release_condition": "Producer-public clarification and aggregate lineage evidence without participant acquisition."
+    },
+    {
+      "id": "SCI-H02",
+      "scope": "A-Lab source extraction",
+      "reason": "No approved full article/correction byte pins; historical 41/58 indexed only.",
+      "release_condition": "Bounded permitted byte snapshots and locators; manual validation is not extraction."
+    },
+    {
+      "id": "SCI-H03",
+      "scope": "A-Lab labor and independent replication",
+      "reason": "No labor-hour baseline or independently repeated campaign established.",
+      "release_condition": "New explicit aggregate evidence, never inference from 17 elapsed days or peer review."
+    },
+    {
+      "id": "SCI-H04",
+      "scope": "RE-Bench original export/identity/rights",
+      "reason": "Only partial human summaries and documentary study aggregates verified.",
+      "release_condition": "Original-study manifest, artifact-specific rights and run/task/scaffold/model join."
+    },
+    {
+      "id": "SCI-H05",
+      "scope": "AlphaTensor numerical verification",
+      "reason": "Arrays and checker not executed; unsafe original pickle-enabled loader not used.",
+      "release_condition": "Separately authorized safe data-only design and certificate verification; no automatic benchmark/training claim."
+    },
+    {
+      "id": "SCI-H06",
+      "scope": "CASP historical reuse and final 2026 results",
+      "reason": "Historical score license scope unverified; CASP17 assessment ongoing.",
+      "release_condition": "Explicit artifact terms and actual final artifact release with round/version identity."
+    },
+    {
+      "id": "SCI-H07",
+      "scope": "Canonical source admission and comparability",
+      "reason": "Manual ledger and catalogs are research-only, cross-study estimands incompatible.",
+      "release_condition": "Separate lossless contract, rights, dependence and operational review."
+    }
+  ],
+  "excluded_evidence": [
+    {
+      "title": "Artificial Intelligence, Scientific Discovery, and Product Innovation",
+      "decision": "excluded_from_productivity_evidence",
+      "evidence_url": "https://economics.mit.edu/news/assuring-accurate-research-record",
+      "reason": "MIT states that it lacks confidence in the data and research and that findings should not be relied upon.",
+      "qualification": "A primary institutional reliability warning; not an independently checked current arXiv withdrawal flag."
+    }
+  ]
+}

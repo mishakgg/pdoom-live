@@ -1,10 +1,10 @@
 # Research session review queue
 
-Status snapshot: 8 October 2026, 01:54 UTC. This is a pre-integration snapshot for session 6.
+Status snapshot: 8 October 2026, 02:40 UTC. This is a pre-integration snapshot for session 7.
 
-The 26 research sessions below are listed in arrival order. Review and integration proceed sequentially. Five reviews are integrated, one review is prepared for independent review and integration, and 20 remain queued. Session 6 is active; it is not yet merged at this snapshot.
+The 26 research sessions below are listed in arrival order. Review and integration proceed sequentially. Six reviews are integrated, one review is prepared for independent review and integration, and 19 remain queued. Session 7 is active; it is not yet merged at this snapshot.
 
-Snapshot counts: 5 integrated; 1 prepared or awaiting CI; 20 queued.
+Snapshot counts: 6 integrated; 1 prepared or awaiting CI; 19 queued.
 
 ## Status definitions
 
@@ -22,8 +22,8 @@ Snapshot counts: 5 integrated; 1 prepared or awaiting CI; 20 queued.
 | 3 | Organizational safety practices | Review integrated | [Research guide](organizational-safety.md) · [PR 314](https://github.com/mishakgg/pdoom-live/pull/314) | HAIP reader and durable fixtures unimplemented; rights review, Microsoft certificate/PDF and Apollo original-report holds; five bounded prompts |
 | 4 | Open-model diffusion and accessibility | Review integrated | [Research guide](open-model-diffusion.md) · [PR 315](https://github.com/mishakgg/pdoom-live/pull/315) | Two-file offline reader implemented with separately licensed research fixtures; production mapping, broader histories, access and artifact rights remain held |
 | 5 | Concentration and shared dependencies | Review integrated | [Research guide](concentration-dependencies.md) · [PR 316](https://github.com/mishakgg/pdoom-live/pull/316) | One licensed fixed-graph offline reader implemented; ATRS semantic extraction, historical comparability, rights and canonical mapping remain held; seven focused prompts |
-| 6 | Historical capability backfills | Review prepared; integration pending | [Research guide](historical-capability-backfills.md) · [Catalog](../../../data/evidence-program/research/historical-capability-backfills.json) | Bounded offline WMT08 reader; synthetic-only CI; private real-artifact acceptance separate; score redistribution rights, historical comparability and canonical mapping remain held |
-| 7 | AI-assisted scientific progress | Queued | Pending review | Not yet assessed |
+| 6 | Historical capability backfills | Review integrated | [Research guide](historical-capability-backfills.md) · [PR 317](https://github.com/mishakgg/pdoom-live/pull/317) | Bounded offline WMT08 reader; synthetic-only CI; private real-artifact acceptance separate; score redistribution rights, historical comparability and canonical mapping remain held |
+| 7 | AI-assisted scientific progress | Review prepared; integration pending | [Research guide](scientific-progress.md) · [Catalog](../../../data/evidence-program/research/scientific-progress.json) | Manual aggregate correction ledger validator implemented; source extraction, article byte pins, uncertainty, original exports, numerical validation, historical reuse and canonical mapping remain held |
 | 8 | Persuasion and information ecosystems | Queued | Pending review | Not yet assessed |
 | 9 | Robotics and physical-world capability | Queued | Pending review | Not yet assessed |
 | 10 | Training-data availability and feedback loops | Queued | Pending review | Not yet assessed |
@@ -90,17 +90,26 @@ The [source review](concentration-dependencies.md) and fixed-graph offline reade
 
 ### Session 6 Historical capability backfills
 
-The [source review](historical-capability-backfills.md) prepares five unadmitted historical families. Independent integration review, publication and CI/merge remain pending at this snapshot.
+The [source review](historical-capability-backfills.md) and bounded offline WMT08 reader were merged in [PR 317](https://github.com/mishakgg/pdoom-live/pull/317) at [e5121ee](https://github.com/mishakgg/pdoom-live/commit/e5121ee888393db656610be749dfc2d03897c751). All four post-merge checks passed. The five historical source families remain unadmitted.
 
 - The bounded WMT08 reader uses synthetic-only CI. Separate private local acceptance checks the exact 16,071-byte gzip and 2,584 score rows/17 metric labels; the source file and full extracted results are not public fixtures because their reuse rights remain unknown.
 - Event, publication, artifact-generation, transport and preservation dates remain separate. Original runs, corrected assertions, rescoring and genuinely later evaluations do not become interchangeable observations.
 - Missing scores remain distinct from diagnosed failure. A competition entry, surviving table or weak score does not prove all attempted or abandoned work is covered.
 - Preserve TREC access-conditional raw archives and unresolved score transcription, SAT penalties versus runtime, WMT cohort-dependent human comparison and VOC protocol breaks. Follow-up prompts retain artifact rights/access and lossless mapping holds. No collector, canonical import, capability curve or p(doom) is enabled.
 
+### Session 7 AI-assisted scientific progress
+
+The [source review](scientific-progress.md) prepares five unadmitted collections. Independent integration review, publication and CI/merge remain pending at this snapshot.
+
+- Completed bounded work: five primary-source documentary reviews and all-six-catalog overlap comparison; a local manual A-Lab aggregate ledger validator with synthetic regressions. It is not a PDF/web extractor.
+- Preserve one campaign, original indexed-primary 41/58 assertion, corrected 36/4/17 of 57 targets and 105/353 recipes. Article hashes, calendar dates and labor remain null; reanalysis is not independent experimental replication.
+- Current I4R table matches published means; SD-versus-SE and regeneration stay held. RE-Bench partial summaries do not establish a complete original export or run/task version join. AlphaTensor numerical checks were not executed. CASP17 final assessment is pending and historical raw-score rights are scope-unverified.
+- Six focused prompts cover aggregate lineage/uncertainty, safe aggregate provenance, original engineering export, safe certificate design, assessment rights/status and canonical mapping. No source admission, operational collection, universal productivity rate or p(doom) mapping is enabled.
+
 ## Scope
 
-This index records review progress and links to repository-native research guides. Integrated research catalogs remain unadmitted candidate evidence. The first three reviews retain their unimplemented source-reader proposals. Session 4 implements a fixed two-file annotation reader, session 5 a fixed one-file graph structure reader, and session 6 a bounded offline gzip reader with synthetic-only CI; no operational collector is enabled. Refresh status and unresolved actions when later reviewed changes are merged.
+This index records review progress and links to repository-native research guides. Integrated research catalogs remain unadmitted candidate evidence. The first three reviews retain their unimplemented source-reader proposals. Session 4 implements a fixed two-file annotation reader, session 5 a fixed one-file graph structure reader, session 6 a bounded offline gzip reader with synthetic-only CI, and session 7 a manual aggregate ledger validator; no operational collector is enabled. Refresh status and unresolved actions when later reviewed changes are merged.
 
 ## Snapshot maintenance
 
-This file records status at its stated time, not live main/CI state. After independent review, merge and post-merge checks, a later authorized update may record a new dated snapshot with verified PR/commit evidence. Until then, session 6 remains prepared in this historical snapshot even if this document itself is subsequently merged. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.
+This file records status at its stated time, not live main/CI state. After independent review, merge and post-merge checks, a later authorized update may record a new dated snapshot with verified PR/commit evidence. Until then, session 7 remains prepared in this historical snapshot even if this document itself is subsequently merged. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.
