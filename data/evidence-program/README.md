@@ -89,3 +89,13 @@ Three separately reviewed sessions share this documentation publication batch. E
 - Session 23: [Compute supply-chain bottlenecks](../../docs/evidence-program/research/compute-supply-chain.md) · [JSON](research/compute-supply-chain.json)
 
 All three remain unadmitted research metadata with artifact-specific rights and evidence holds. Proposed implementations are deferred. No adapter, new validator, source corpus, participant record, source/model execution, live collector, canonical import or deployment is added. The existing shared checks are reused.
+
+## Research reviews 24–26
+
+The final three original source reviews share one documentation publication batch. Each keeps its own evidence decisions, corrections, completed checks, open actions and bounded copy-ready prompts.
+
+- Session 24: [Chinese governance in practice](../../docs/evidence-program/research/chinese-governance.md) · [JSON](research/chinese-governance.json)
+- Session 25: [Benchmark drift and contamination](../../docs/evidence-program/research/benchmark-drift.md) · [JSON](research/benchmark-drift.json)
+- Session 26: [Electricity and deployment bottlenecks](../../docs/evidence-program/research/electricity-deployment.md) · [JSON](research/electricity-deployment.json)
+
+All three remain unadmitted research metadata with source-specific rights, access and evidence holds. Proposed implementations are deferred. No adapter, new per-report validator, source corpus, personal record, benchmark execution, live collector, canonical import or deployment is added. Existing shared checks are reused.
