@@ -1,12 +1,15 @@
+import { createHash } from "node:crypto";
 import {
   SEARCH_ENTITY_TYPES,
   SEARCH_PAGE_LIMIT_DEFAULT,
   SEARCH_RANK,
   SEARCH_SUGGEST_LIMITS,
+  prepareSearchText,
   type SearchEntityType,
 } from "@pdoom/contracts";
 import type pg from "pg";
 import { describe, expect, it, vi } from "vitest";
+import { InvalidCursorError } from "../packages/db/src/queries";
 import { SearchTimeoutError, searchPublic } from "../packages/db/src/search";
 
 type Row = Record<string, unknown>;
@@ -39,13 +42,35 @@ function fakePool(client: pg.PoolClient) {
 const COUNT_SELECT = "SELECT count(*)::int AS total_count FROM matched";
 const PAGE_SELECT = "SELECT * FROM matched";
 const EMPTY_CURSOR_ID = "00000000-0000-0000-0000-000000000000";
-const MALFORMED_CURSOR_ID = "-".repeat(36);
+const VALID_CURSOR_IDS = [
+  EMPTY_CURSOR_ID,
+  "abcdefab-cdef-4abc-8def-abcdefabcdef",
+  "ABCDEFAB-CDEF-4ABC-8DEF-ABCDEFABCDEF",
+  "aBcDeFaB-cDeF-4aBc-8dEf-AbCdEfAbCdEf",
+  "ffffffff-ffff-ffff-ffff-ffffffffffff",
+  "12345678-1234-0234-0234-123456789abc",
+];
+const MALFORMED_CURSOR_IDS: Array<{ label: string; id: unknown }> = [
+  { label: "36 hyphens", id: "-".repeat(36) },
+  { label: "36 hex digits", id: "a".repeat(36) },
+  { label: "misplaced hyphen", id: "000000000-000-0000-0000-000000000000" },
+  { label: "array-coerced UUID", id: [EMPTY_CURSOR_ID] },
+  { label: "nested array-coerced UUID", id: [[EMPTY_CURSOR_ID]] },
+  { label: "missing ID", id: undefined },
+  { label: "null ID", id: null },
+  { label: "object ID", id: {} },
+  { label: "numeric ID", id: 0 },
+  { label: "nonhex ID", id: "g0000000-0000-0000-0000-000000000000" },
+  { label: "compact ID", id: "0".repeat(32) },
+  { label: "braced ID", id: `{${EMPTY_CURSOR_ID}}` },
+  { label: "trailing newline", id: `${EMPTY_CURSOR_ID}\n` },
+];
 const modes = ["page", "suggest"] as const;
 const cases = SEARCH_ENTITY_TYPES.flatMap((type) => modes.map((mode) => ({ type, mode })));
 
-function withMalformedCursorId(cursor: string): string {
+function withCursorPayload(cursor: string, changes: Record<string, unknown>): string {
   const payload = JSON.parse(Buffer.from(cursor, "base64url").toString("utf8")) as Record<string, unknown>;
-  payload.id = MALFORMED_CURSOR_ID;
+  Object.assign(payload, changes);
   return Buffer.from(JSON.stringify(payload), "utf8").toString("base64url");
 }
 
@@ -242,20 +267,68 @@ describe("search count/page query budget", () => {
     expect(result.groups[type]).toEqual({ data: [], page: { limit: 1, total: 0, next_cursor: null } });
   });
 
-  it.each(["person", "statement"] as const)("preserves %s cursor UUID cast errors after a zero count", async (type) => {
-    const first = hitRow(type, 1);
-    const error = Object.assign(new Error("invalid input syntax for type uuid"), { code: "22P02" });
-    const db = fakeClient([{ total_count: 2 }], [first, hitRow(type, 2)], [{ total_count: 0 }], error);
+  it.each(SEARCH_ENTITY_TYPES)("rejects malformed %s cursor IDs before a direct client query", async (type) => {
+    const mint = fakeClient([{ total_count: 2 }], [hitRow(type, 1), hitRow(type, 2)]);
     const input = { q: "result", type, mode: "page" as const, limit: 1 };
-    const initial = await searchPublic(input, db.client);
-    // The existing decoder accepts this ID shape; PostgreSQL rejects its UUID cast.
-    const cursor = withMalformedCursorId(initial.groups[type].page.next_cursor!);
+    const initial = await searchPublic(input, mint.client);
+    for (const { label, id } of MALFORMED_CURSOR_IDS) {
+      const db = fakeClient();
+      const cursor = withCursorPayload(initial.groups[type].page.next_cursor!, { id });
+      await expect(searchPublic({ ...input, cursor }, db.client), label).rejects.toBeInstanceOf(InvalidCursorError);
+      expect(db.query, label).not.toHaveBeenCalled();
+      expect(db.release, label).not.toHaveBeenCalled();
+    }
+  });
 
-    await expect(searchPublic({ ...input, cursor }, db.client)).rejects.toBe(error);
-    expect(db.query).toHaveBeenCalledTimes(4);
-    expect(db.query.mock.calls[2]).toEqual(db.query.mock.calls[0]);
-    expectSharedRelation(db.query.mock.calls[2]!, db.query.mock.calls[3]!);
-    expect(db.query.mock.calls[3]![1]?.slice(-4)).toEqual([first.hit_rank, first.tie, MALFORMED_CURSOR_ID, 2]);
+  it.each(["person", "statement"] as const)("preserves canonical %s IDs, ranks, ties, and base64 padding", async (type) => {
+    const mint = fakeClient([{ total_count: 2 }], [hitRow(type, 1), hitRow(type, 2)]);
+    const input = { q: "result", type, mode: "page" as const, limit: 1 };
+    const initial = await searchPublic(input, mint.client);
+    for (const id of VALID_CURSOR_IDS) {
+      for (const rank of [0, ...Object.values(SEARCH_RANK)]) {
+        for (const tie of ["", type === "statement" ? "2026-01-01 00:00:00.000001" : "Äda researcher"]) {
+          const db = fakeClient([{ total_count: 0 }], []);
+          const cursor = withCursorPayload(initial.groups[type].page.next_cursor!, { id, rank, tie }) + "==";
+          const result = await searchPublic({ ...input, cursor }, db.client);
+          expect(db.query).toHaveBeenCalledTimes(2);
+          expect(db.query.mock.calls[1]![1]?.slice(-4)).toEqual([rank, tie, id, 2]);
+          expect(result.groups[type]).toEqual({ data: [], page: { limit: 1, total: 0, next_cursor: null } });
+        }
+      }
+    }
+  });
+
+  it("still rejects incompatible cursor metadata before database access", async () => {
+    const mint = fakeClient([{ total_count: 2 }], [hitRow("person", 1), hitRow("person", 2)]);
+    const input = { q: "result", type: "person" as const, mode: "page" as const, limit: 1 };
+    const initial = await searchPublic(input, mint.client);
+    for (const changes of [{ v: 1 }, { fp: "stale" }, { sort: "time" }, { rank: -1 }, { rank: 1 }, { rank: 1001 }, { rank: 1.5 }, { tie: null }, { tie: "a".repeat(81) }]) {
+      const db = fakeClient();
+      const cursor = withCursorPayload(initial.groups.person.page.next_cursor!, changes);
+      await expect(searchPublic({ ...input, cursor }, db.client)).rejects.toBeInstanceOf(InvalidCursorError);
+      expect(db.query).not.toHaveBeenCalled();
+    }
+  });
+
+  it("validates cursor IDs before the no-token early return", async () => {
+    const input = { q: "!!!", type: "person" as const, mode: "page" as const, limit: 1 };
+    const prepared = prepareSearchText(input.q);
+    const fp = createHash("sha256").update(JSON.stringify({
+      q: prepared.normalized, tokens: prepared.tokens, type: input.type,
+      topic: null, person: null, statement_type: null, from: null, to: null,
+    })).digest("hex").slice(0, 16);
+    const valid = Buffer.from(JSON.stringify({ v: 2, fp, rank: 0, tie: "", id: EMPTY_CURSOR_ID, sort: "name" })).toString("base64url");
+    const db = fakeClient();
+    const pool = fakePool(db.client);
+    for (const { label, id } of MALFORMED_CURSOR_IDS) {
+      const cursor = withCursorPayload(valid, { id });
+      await expect(searchPublic({ ...input, cursor }, pool.pool), label).rejects.toBeInstanceOf(InvalidCursorError);
+    }
+    const result = await searchPublic({ ...input, cursor: valid }, pool.pool);
+    expect(result.query.reason).toBe("no_tokens");
+    expect(pool.connect).not.toHaveBeenCalled();
+    expect(pool.query).not.toHaveBeenCalled();
+    expect(db.query).not.toHaveBeenCalled();
     expect(db.release).not.toHaveBeenCalled();
   });
 
@@ -336,25 +409,19 @@ describe("search snapshot lifecycle", () => {
     expect(db.release).toHaveBeenCalledTimes(1);
   });
 
-  it.each(["person", "statement"] as const)("rolls back and releases after a malformed %s cursor and zero count", async (type) => {
-    const first = hitRow(type, 1);
-    const mint = fakeClient([{ total_count: 2 }], [first, hitRow(type, 2)]);
+  it.each(SEARCH_ENTITY_TYPES)("rejects malformed %s cursor IDs before pool checkout", async (type) => {
+    const mint = fakeClient([{ total_count: 2 }], [hitRow(type, 1), hitRow(type, 2)]);
     const input = { q: "result", type, mode: "page" as const, limit: 1 };
     const initial = await searchPublic(input, mint.client);
-    const cursor = withMalformedCursorId(initial.groups[type].page.next_cursor!);
-    const error = Object.assign(new Error("invalid input syntax for type uuid"), { code: "22P02" });
-    const db = fakeClient([], [], [], [{ total_count: 0 }], error, []);
-    const pool = fakePool(db.client);
-
-    await expect(searchPublic({ ...input, cursor }, pool.pool)).rejects.toBe(error);
-    expectSnapshotStart(db.query.mock.calls);
-    expectSharedRelation(db.query.mock.calls[3]!, db.query.mock.calls[4]!);
-    expect(db.query.mock.calls[4]![1]?.slice(-4)).toEqual([first.hit_rank, first.tie, MALFORMED_CURSOR_ID, 2]);
-    expect(db.query).toHaveBeenCalledTimes(6);
-    expect(db.query.mock.calls.at(-1)).toEqual(["ROLLBACK"]);
-    expect(db.query.mock.calls.some(([sql]) => sql === "COMMIT")).toBe(false);
-    expect(pool.connect).toHaveBeenCalledTimes(1);
-    expect(pool.query).not.toHaveBeenCalled();
-    expect(db.release).toHaveBeenCalledTimes(1);
+    for (const { label, id } of MALFORMED_CURSOR_IDS) {
+      const db = fakeClient();
+      const pool = fakePool(db.client);
+      const cursor = withCursorPayload(initial.groups[type].page.next_cursor!, { id });
+      await expect(searchPublic({ ...input, cursor }, pool.pool), label).rejects.toBeInstanceOf(InvalidCursorError);
+      expect(pool.connect, label).not.toHaveBeenCalled();
+      expect(pool.query, label).not.toHaveBeenCalled();
+      expect(db.query, label).not.toHaveBeenCalled();
+      expect(db.release, label).not.toHaveBeenCalled();
+    }
   });
 });

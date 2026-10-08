@@ -1,11 +1,13 @@
 import { STATEMENT_TYPES, STATEMENT_TYPE_LABELS, parseSearchParams, searchQuerySchema, SEARCH_ENTITY_TYPES } from "@pdoom/contracts";
 import { searchPublic } from "@pdoom/db";
+import Link from "next/link";
 import { EntitySelect } from "@/components/entity-select";
 import { FilterForm } from "@/components/filter-form";
 import { ActiveFilters } from "@/components/filters";
 import { SearchResults } from "@/components/search-results";
 import { resolveFilterLabels, type FilterLabels } from "@/lib/entity-labels";
 import { filterStateKey, researchFilters } from "@/lib/presentation";
+import { isInvalidCursor } from "@/lib/http";
 import { canonicalOrigin, hasDiscoveryFilter, listPageFields, pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
@@ -99,9 +101,19 @@ async function Results({ params }: { params: Record<string, string | undefined> 
   if (!parsed.success) {
     return <p className="warning">Those filters are not valid. Adjust the query and try again.</p>;
   }
-  const result = await searchPublic(parsed.data);
   const queryString = new URLSearchParams(
     Object.entries(params).filter((entry): entry is [string, string] => Boolean(entry[1]) && entry[0] !== "cursor"),
   ).toString();
+  let result;
+  try {
+    result = await searchPublic(parsed.data);
+  } catch (error) {
+    if (!isInvalidCursor(error)) throw error;
+    return (
+      <p className="warning" role="alert">
+        This search link is invalid or out of date. <Link href={`/search?${queryString}`}>Restart this search</Link>.
+      </p>
+    );
+  }
   return <SearchResults result={result} queryString={queryString} filters={researchFilters(params)} />;
 }

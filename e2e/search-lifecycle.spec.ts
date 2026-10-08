@@ -100,3 +100,45 @@ test("canceled filter submits preserve editing and omit only empty submitted val
   await status.selectOption("");
   expect(await form.evaluate((element) => [...new FormData(element as HTMLFormElement).entries()])).toEqual([]);
 });
+
+for (const problem of ["malformed ID", "stale fingerprint"]) {
+  test(`search recovers from a ${problem} while retaining filters`, async ({ page }) => {
+    const params = new URLSearchParams({
+      q: "extinction", type: "statement", person: "ada-quill", topic: "ai-extinction",
+      statement_type: "explicit_numeric", from: "2020-01-01", to: "2026-12-31", mode: "page", limit: "1",
+    });
+    const response = await page.request.get(`/api/search?${params}`);
+    expect(response.ok()).toBe(true);
+    const result = await response.json() as SearchResponse;
+    const cursor = result.groups.statement.page.next_cursor;
+    expect(cursor).toBeTruthy();
+    const payload = JSON.parse(Buffer.from(cursor!, "base64url").toString("utf8")) as Record<string, unknown>;
+    if (problem === "malformed ID") payload.id = "-".repeat(36);
+    else payload.fp = "stale";
+    params.set("cursor", Buffer.from(JSON.stringify(payload)).toString("base64url"));
+    await page.goto(`/search?${params}`);
+
+    const warning = page.getByRole("alert").filter({ hasText: "This search link is invalid or out of date." });
+    await expect(warning).toBeVisible();
+    const restart = page.getByRole("link", { name: "Restart this search" });
+    params.delete("cursor");
+    await expect(restart).toHaveAttribute("href", `/search?${params}`);
+    const form = page.locator("form.filters");
+    await expect(form.getByRole("textbox", { name: "Text", exact: true })).toHaveValue("extinction");
+    await expect(form.locator('[name="type"]')).toHaveValue("statement");
+    await expect(form.locator('[name="person"]')).toHaveValue("ada-quill");
+    await expect(form.locator('[name="topic"]')).toHaveValue("ai-extinction");
+    await expect(form.locator('[name="statement_type"]')).toHaveValue("explicit_numeric");
+    await expect(form.locator('[name="from"]')).toHaveValue("2020-01-01");
+    await expect(form.locator('[name="to"]')).toHaveValue("2026-12-31");
+    await expect(form.getByRole("button", { name: "Search", exact: true })).toBeEnabled();
+
+    await restart.click();
+    await expect(page).toHaveURL((url) => url.pathname === "/search" && url.searchParams.toString() === params.toString());
+    await expect(warning).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: "Explicit numerical estimates", exact: true })).toBeVisible();
+    await page.goBack();
+    await expect(warning).toBeVisible();
+    await expect(restart).toHaveAttribute("href", `/search?${params}`);
+  });
+}

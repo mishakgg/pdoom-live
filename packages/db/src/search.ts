@@ -191,7 +191,7 @@ function decodeCursor(cursor: string, fp: string, sort: SortMode): CursorPayload
     if (parsed.v !== 2 || parsed.fp !== fp || parsed.sort !== sort) throw new Error("bad");
     if (!Number.isInteger(parsed.rank) || parsed.rank < 0 || parsed.rank > 1000) throw new Error("bad");
     if (typeof parsed.tie !== "string" || parsed.tie.length > 80) throw new Error("bad");
-    if (!/^[0-9a-f-]{36}$/i.test(parsed.id)) throw new Error("bad");
+    if (typeof parsed.id !== "string" || !/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(parsed.id)) throw new Error("bad");
     if (!Object.values(SEARCH_RANK).includes(parsed.rank) && parsed.rank !== 0) throw new Error("bad");
     return parsed;
   } catch (error) {
