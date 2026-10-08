@@ -1,0 +1,42 @@
+Deep Session 5 — Resolve Chinese safety-evaluation comparability
+
+We’re expanding https://github.com/mishakgg/pdoom-live into a verified evidence dataset on AI risks, capabilities, development speed and timelines. Record the exact repository commit and primary artifact versions you actually inspect.
+
+Research a narrow set of unresolved measurement questions for mishakgg/pdoom-live. The goal is to make three already cataloged Chinese evaluation families interpretable enough for a later, separately authorized adapter. Produce a rigorous evidence ledger and decision report, not another benchmark directory or model ranking.
+
+Repository context
+
+The supplied repository baseline is https://github.com/mishakgg/pdoom-live/tree/87dda3d74f9f9874e82d83d1628b53f9da4b5526. Read docs/evidence-program/source_priorities.md, docs/evidence-program/dataset_spec.md, docs/evidence-program/research/chinese-safety-evaluations.md and its matching data/evidence-program/research/chinese-safety-evaluations.json. Consult the inventory and Chinese guide only as necessary. These are research candidates, not operationally admitted observations. If the repository is unavailable, say so once, treat this supplied commit as uninspected, and use the facts below as attributed starting context. Continue the primary-source research. Do not invent contract fields, report inaccessible files as absent, or claim a repository mapping was verified.
+
+Investigate three connected questions
+
+1. ZHS001 FLAMES: identify the historical table’s actual evaluated population, model/checkpoint identities, protocol and evaluator relationship. The pinned README describes 2,251 study prompts and 1,000 public prompts, but neither was established as the denominator of its 17-model, 187-scalar table. Its table marker is December 11, 2023; artifact commit is May 21, 2024. Inspect its officially linked paper/methods and at most two directly relevant author-controlled supplements or history records. Can any explicit statement bind the table to its question population, judge/scoring version and evaluation period? Distinguish benchmark authors’ institutional affiliations, model developers, evaluators and genuine external replications. Unknown affiliation or a different publisher does not prove independence. Preserve harmless rates versus graded harmless scores.
+
+Pinned artifacts:
+https://github.com/AI45Lab/Flames/blob/234bcb7a4a9da44c4177d2c2005e3bf8a582a5fc/README.md
+https://github.com/AI45Lab/Flames/blob/234bcb7a4a9da44c4177d2c2005e3bf8a582a5fc/LICENSE
+
+2. ZHS006 SuperCLUE-Safety: resolve, if primary evidence permits, what the reported 4,912 questions versus 2,456 pairs counts represent and whether the March table revision was a correction, added evaluations or a mixture. The paper abstract says 4,912 questions; Dataset Statistics says 4,912 pairs; the Chinese README says 4,912 questions / 2,456 pairs. March 15, 2024 changes include category-value swaps while the January 4 announcement remains. Trace only relevant README/history/method passages. Separate one dialogue, one turn, one model answer and one judged sample. Existing judge validation is limited: reported 77% exact agreement and 85% within one point for Chinese-Alpaca-2-13B. Seek its actual validation population and protocol, without upgrading it to universal validity or treating it as absent.
+
+Starting artifacts:
+https://github.com/CLUEbenchmark/SuperCLUE-Safety/blob/3b9789520c13fdcdfb7ba5326b1c741e2459305e/README.md
+https://github.com/CLUEbenchmark/SuperCLUE-Safety/blob/3b9789520c13fdcdfb7ba5326b1c741e2459305e/README_202312.md
+https://arxiv.org/html/2310.05818v1
+
+3. ZHS004 LiveSecBench: determine which comparisons survive the v251030-to-v251215 protocol change. Paper v1 has six dimensions with reasoning excluded from Overall and conflicting 18/22 model counts. V2 describes 57 models, five dimensions and DeepSeek-V3.2 judging. The DeepSeek-R1-0528 values 76.90 and 62.43 cannot establish regression. Seek officially linked versioned result metadata or method supplements establishing population, weights, judge, prompts/protocol, model identity and evaluation dates. The March 2026 landing page’s four dimensions and loading score area are a third regime, not a replacement export. Do not guess endpoints.
+
+Starting artifacts:
+https://arxiv.org/html/2511.02366v1
+https://arxiv.org/html/2511.02366v2
+https://github.com/ydli-ai/LiveSecBench/blob/35af1f81cf62fe2133db9d26d8b74964236c1267/docs/CHANGELOG.md
+https://livesecbench.intokentech.cn/
+
+Deliverables
+
+Return one machine-readable assertion/lineage ledger and a concise decision report. Preserve source ID, artifact URL/version, exact locator, original Chinese wording where essential with your labeled English gloss, metric/unit, model label, population/denominator, evaluator/judge, date roles, revision/dependence edges, rights scope and unresolved fields. Distinguish directly inspected facts from supplied context and inference. Give a comparability verdict for each proposed comparison, and exactly what evidence would change a hold. Re-publications, translations and mirrors must not become independent evaluations.
+
+Include at least eight concrete acceptance cases, using inspected numeric examples only when their locator is available. Clearly label synthetic rejection cases: denominator substitution, date substitution, rate/score conflation, duplicate mirror, assumed evaluator independence and cross-version trend. Manual walkthroughs are not executed tests. If repository contracts were readable, provide a lossless mapping proposal and explicit unsupported fields; otherwise give a source-native ledger for later integration.
+
+Bounds and stop rules
+
+Use the named artifacts plus at most six additional author/publisher-controlled methods, history or supplement documents, no more than two per family. Stop each branch when resolved, when this bound is reached, or at an access restriction. A well-supported unresolved result is useful. Do not reopen blocked M³ routes or broaden into JADE, new benchmarks, hosted-model tariffs or Western safeguard retests. No accounts, outreach, bulk downloads, prompt/response corpora, scorer/model execution, repository edits, implementation or ingestion. Inspect artifact-specific rights without inheriting data rights from software licenses. No inferred universal safety ranking, national-risk comparison or probability of catastrophe.
