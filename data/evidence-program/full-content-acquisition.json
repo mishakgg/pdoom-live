@@ -1,0 +1,1690 @@
+{
+  "schema_version": "full-content-acquisition/1.0.0",
+  "title": "Complete source preservation and first acquisition wave",
+  "reviewed_on": "2026-10-08",
+  "repository_baseline": "b8724361863e78a7ad1e270b285f22705662fa3d",
+  "prior_selection_baseline": "6603e384eb57b651f3e4ec6980e875087d926c3d",
+  "status_cutoff_utc": "2026-10-08T22:44:41.344004+00:00",
+  "review_basis": {
+    "inventory_records": 64,
+    "research_catalogs_reviewed_for_selection": 26,
+    "catalogs_matched_by_Git_blob": 26,
+    "qualification": "Selection review and bounded artifact-specific verification, not a fresh audit of every underlying source."
+  },
+  "policy": {
+    "raw_preservation": "Preserve complete useful permitted originals, meaningful historical versions, all original fields/uncertainty and provenance. Rights, legitimate access, integrity and bounded storage govern this stage.",
+    "canonical_mapping": "Downstream semantic mapping, adapter acceptance and statistical interpretation are separate; unfinished mapping is not a prerequisite for lawful raw preservation.",
+    "public_publication": "Private archive retention and public redistribution eligibility are separate from permission to publish. No public raw-data publication is performed by this policy document.",
+    "metadata_only": "Fallback for restricted or unresolved bodies. The strict metadata queue is a separate component, not a universal retention restriction.",
+    "compact_data_in_Git": "Complete compact licensed CSV/JSON datasets may be reviewed for Git publication alongside normalized measurements and provenance. Metadata-only retention is not required.",
+    "bulk_history_in_Drive": "Bulky originals, binary/document archives and many historical vintages remain in the verified private archive with stable content hashes and manifest references.",
+    "source_specific_rights": "No data grant inferred solely from another artifact or a software license. Keep unknown rights/access held; check current source terms and denials.",
+    "deduplication": "One physical source blob per complete SHA-256 plus byte length; retain all source/version/retrieval/license/supersession edges. Transport archives and duplicate exports are not new sources.",
+    "execution": "No live collector, canonical adapter, scoring change, new credential, public sharing, paid LFS or automatic cap increase is enabled."
+  },
+  "capacity": {
+    "scratch_hard_max_bytes": 25000000000,
+    "free_space_reserve_bytes": 5000000000,
+    "current_tested_artifact_bound_bytes": 10485760,
+    "initial_transfer": "Sequential bounded complete originals with space reserved for original, temporary and full raw-readback copies.",
+    "extension": "Review an exact artifact-specific larger total bound and connector-supported transfer; chunking must preserve every byte and require offsets, lengths, part hashes, whole reassembly/hash, version consistency and complete raw readback. Do not silently bypass the tested whole-artifact bound.",
+    "backend_limits": "Current connected archive transport supports bounded transfers and raw readback; direct quota/preallocated-ID/resumable controls and standalone backend credentials are not established.",
+    "cleanup": "Reconcile uncertain uploads before retry. Cleanup only tracked transfer scratch after all expected files, raw checksums and checkpoint verification succeed."
+  },
+  "summary": {
+    "selected_source_originals": 9,
+    "verified_archived_source_originals": 4,
+    "verified_archived_source_bytes": 7488579,
+    "prepared_not_acquired_originals": 5,
+    "selected_total_known_or_advertised_bytes": 25454290,
+    "selected_total_qualification": "Mixed measured full-body lengths and explicitly labelled HTTP advertised lengths; not total acquired corpus bytes.",
+    "record_counts_not_summed_across_vintages": true,
+    "rights_clear_larger_transfer_extensions": 2,
+    "rights_access_hold_groups": 5,
+    "prior_exact_rights_hold_targets": 10,
+    "packaging_is_not_source": "The verified 96,127-byte transfer ZIP contains three source originals totaling 661,699 bytes plus support files. Count those three originals, not the ZIP as an extra source."
+  },
+  "initial_wave": [
+    {
+      "artifact_id": "GL001-all_ai_models",
+      "source_ids": [
+        "GL001"
+      ],
+      "domain": "development_resources",
+      "title": "AI model development and training observations",
+      "original_url": "https://epoch.ai/data/all_ai_models.csv",
+      "version": {
+        "kind": "mutable_url_snapshot",
+        "observed_at": "2026-10-08T21:58:20.060859+00:00",
+        "sha256": "d845f68989881cb922ee6fd131d2bce6fb9c88dce5978eb0719a4c053476eff9",
+        "etag": "\"4785d564ef2ad19c4183e3ab8b7dbdf9\"",
+        "note": "Recheck on capture. A changed hash is a new snapshot, not this verified byte identity."
+      },
+      "content": {
+        "format": "csv",
+        "scope": "Complete original CSV, all records and columns, unchanged. References are retained as fields; separately linked content is not licensed by this grant.",
+        "fields": [
+          "Model",
+          "Domain",
+          "Task",
+          "Organization",
+          "Authors",
+          "Publication date",
+          "Reference",
+          "Link",
+          "Citations",
+          "Notability criteria",
+          "Notability criteria notes",
+          "Parameters",
+          "Parameters notes",
+          "Training compute (FLOP)",
+          "Training compute notes",
+          "Training dataset size (total)",
+          "Dataset size notes",
+          "Training time (hours)",
+          "Training time notes",
+          "Training hardware",
+          "Approach",
+          "Confidence",
+          "Abstract",
+          "Epochs",
+          "WikiText and Penn Treebank data",
+          "Model accessibility",
+          "Country (of organization)",
+          "Base model",
+          "Finetune compute (FLOP)",
+          "Finetune compute notes",
+          "Hardware quantity",
+          "Hardware utilization (MFU)",
+          "Last modified",
+          "Training cloud compute vendor",
+          "Training data center",
+          "Archived links",
+          "Batch size",
+          "Batch size notes",
+          "Organization categorization",
+          "Foundation model",
+          "Training compute lower bound",
+          "Training compute upper bound",
+          "Training chip-hours",
+          "Training code accessibility",
+          "Accessibility notes",
+          "Possibly over 1e23 FLOP",
+          "Training compute cost (2023 USD)",
+          "Utilization notes",
+          "Numerical format",
+          "Frontier model",
+          "Training power draw (W)",
+          "Training compute estimation method",
+          "Hugging Face developer id",
+          "Post-training compute (FLOP)",
+          "Post-training compute notes",
+          "Hardware utilization (HFU)",
+          "Open model weights?"
+        ]
+      },
+      "extent": {
+        "size_bytes": 6826880,
+        "size_basis": "prior_complete_file_inspection",
+        "record_count": 3626,
+        "field_count": 57,
+        "file_count": 1
+      },
+      "rights": {
+        "license": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "primary_evidence": [
+          {
+            "url": "https://epoch.ai/data/ai-models",
+            "locator": "Citations / licensing FAQ",
+            "finding": "Dataset-specific attribution grant for Epoch data."
+          }
+        ],
+        "private_retention": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_redistribution_eligibility": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_publication_status": "not_published_by_this_work; separate_repository_or_sharing_decision_required",
+        "conditions": [
+          "Credit Epoch AI, source and supplied authors; retain notices and source links.",
+          "Link license, indicate modifications, avoid endorsement claims and incompatible restrictions."
+        ],
+        "scope_exclusions": [
+          "Linked publications, websites, model weights and training datasets need separate rights."
+        ]
+      },
+      "history": {
+        "availability": "Mutable current export; historical entities/record modification dates within file. No immutable publisher snapshot archive established.",
+        "preserve": "Dated, hashed new original whenever source bytes change; link supersession without overwriting historical snapshots."
+      },
+      "access": {
+        "auth": "none observed",
+        "status": "public_200_in_prior_complete_inspection",
+        "robots_url": "https://epoch.ai/robots.txt",
+        "robots_status": "checked_2026-10-08_no_matching_disallow_for_data_path",
+        "backend": "Root-owned private Drive project; no write in this plan."
+      },
+      "preservation": {
+        "readiness": "permitted_bounded_preservation",
+        "archive_status": "verified_remote_original",
+        "whole_source_sha256": "d845f68989881cb922ee6fd131d2bce6fb9c88dce5978eb0719a4c053476eff9",
+        "hash_scope": "complete_source_original_verified_by_remote_raw_readback",
+        "source_native_unchanged": true,
+        "remote_raw_readback_verified": true,
+        "verified_at_utc": "2026-10-08T22:34:52.003718+00:00",
+        "checkpoint_verified": true,
+        "tracked_transfer_scratch_cleaned": true,
+        "current_tested_artifact_bound_bytes": 10485760,
+        "required_capture_checks": [],
+        "canonical_mapping_blocks_preservation": false
+      },
+      "canonical_mapping": {
+        "status": "not_canonically_admitted",
+        "raw_preservation_blocker": false,
+        "requirements": [
+          "Model/hardware identity and version; preserve units, uncertainty, missingness and source estimates.",
+          "No conversion of theoretical compute, confidence labels or cost estimates into independently measured outcomes."
+        ]
+      },
+      "public_repository_data_status": "not_admitted_or_published_by_this_plan",
+      "research_source_url": "https://github.com/mishakgg/pdoom-live/blob/b8724361863e78a7ad1e270b285f22705662fa3d/data/evidence-program/source_inventory.json"
+    },
+    {
+      "artifact_id": "GL002-ml_hardware",
+      "source_ids": [
+        "GL002"
+      ],
+      "domain": "development_resources",
+      "title": "Machine-learning hardware specifications",
+      "original_url": "https://epoch.ai/data/ml_hardware.csv",
+      "version": {
+        "kind": "mutable_url_snapshot",
+        "observed_at": "2026-10-08T21:58:25.050998+00:00",
+        "sha256": "aeb80ac5f29b971fba531ed19d11bf6bda5adcc0239d6dc9fcf3e6558653db81",
+        "etag": "\"e45cb87a3c432dbca7665f357fbd0417\"",
+        "note": "Recheck on capture. A changed hash is a new snapshot, not this verified byte identity."
+      },
+      "content": {
+        "format": "csv",
+        "scope": "Complete original CSV, all records and columns, unchanged. References are retained as fields; separately linked content is not licensed by this grant.",
+        "fields": [
+          "Hardware name",
+          "Manufacturer",
+          "Type",
+          "Notes",
+          "Release date",
+          "Release price (USD)",
+          "Tensor-FP16/BF16 performance (FLOP/s)",
+          "FP8 performance (FLOP/s)",
+          "FP4 performance (FLOP/s)",
+          "Memory (bytes)",
+          "Memory bandwidth (byte/s)",
+          "Intranode bandwidth (byte/s)",
+          "Internode bandwidth (bit/s)",
+          "TDP (W)",
+          "FP64 (double precision) performance (FLOP/s)",
+          "FP32 (single precision) performance (FLOP/s)",
+          "TF32 (TensorFloat-32) performance (FLOP/s)",
+          "FP16 (half precision) performance (FLOP/s)",
+          "INT16 performance (OP/s)",
+          "INT8 performance (OP/s)",
+          "INT4 performance (OP/s)",
+          "Foundry",
+          "Die Size (mm^2)",
+          "Base clock (MHz)",
+          "Boost clock (MHz)",
+          "Memory clock (MHz)",
+          "Memory bus (bit)",
+          "Tensor cores",
+          "Process size (nm)",
+          "Transistors (millions)",
+          "Link to datasheet",
+          "Source for the price",
+          "ML models",
+          "Last modified",
+          "Max performance",
+          "Energy efficiency",
+          "Total processing performance (bit-OP/s)",
+          "Price-performance",
+          "ML OP/s"
+        ]
+      },
+      "extent": {
+        "size_bytes": 98058,
+        "size_basis": "prior_complete_file_inspection",
+        "record_count": 178,
+        "field_count": 39,
+        "file_count": 1
+      },
+      "rights": {
+        "license": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "primary_evidence": [
+          {
+            "url": "https://epoch.ai/data/machine-learning-hardware",
+            "locator": "Citations / licensing FAQ",
+            "finding": "Dataset-specific attribution grant for Epoch data."
+          }
+        ],
+        "private_retention": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_redistribution_eligibility": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_publication_status": "not_published_by_this_work; separate_repository_or_sharing_decision_required",
+        "conditions": [
+          "Credit Epoch AI, source and supplied authors; retain notices and source links.",
+          "Link license, indicate modifications, avoid endorsement claims and incompatible restrictions."
+        ],
+        "scope_exclusions": [
+          "Linked publications, websites, model weights and training datasets need separate rights."
+        ]
+      },
+      "history": {
+        "availability": "Mutable current export; historical entities/record modification dates within file. No immutable publisher snapshot archive established.",
+        "preserve": "Dated, hashed new original whenever source bytes change; link supersession without overwriting historical snapshots."
+      },
+      "access": {
+        "auth": "none observed",
+        "status": "public_200_in_prior_complete_inspection",
+        "robots_url": "https://epoch.ai/robots.txt",
+        "robots_status": "checked_2026-10-08_no_matching_disallow_for_data_path",
+        "backend": "Root-owned private Drive project; no write in this plan."
+      },
+      "preservation": {
+        "readiness": "permitted_bounded_preservation",
+        "archive_status": "prepared_not_acquired",
+        "whole_source_sha256": "aeb80ac5f29b971fba531ed19d11bf6bda5adcc0239d6dc9fcf3e6558653db81",
+        "hash_scope": "prior_complete_inspection; capture_and_readback_still_required",
+        "source_native_unchanged": null,
+        "remote_raw_readback_verified": false,
+        "verified_at_utc": null,
+        "checkpoint_verified": false,
+        "tracked_transfer_scratch_cleaned": false,
+        "current_tested_artifact_bound_bytes": 10485760,
+        "required_capture_checks": [
+          "Use the exact original URL/version or previously verified original bytes.",
+          "Verify current legitimate access/robots and source-specific terms before any new source request.",
+          "Verify complete byte length and SHA-256; reconcile changes from previous observations instead of silently relabeling a new snapshot.",
+          "Retain attribution/license/provenance dependencies; verify remote raw bytes and checkpoint before cleanup."
+        ],
+        "canonical_mapping_blocks_preservation": false
+      },
+      "canonical_mapping": {
+        "status": "not_canonically_admitted",
+        "raw_preservation_blocker": false,
+        "requirements": [
+          "Model/hardware identity and version; preserve units, uncertainty, missingness and source estimates.",
+          "No conversion of theoretical compute, confidence labels or cost estimates into independently measured outcomes."
+        ]
+      },
+      "public_repository_data_status": "not_admitted_or_published_by_this_plan",
+      "research_source_url": "https://github.com/mishakgg/pdoom-live/blob/b8724361863e78a7ad1e270b285f22705662fa3d/data/evidence-program/source_inventory.json"
+    },
+    {
+      "artifact_id": "GL003-data-centers-complete-bundle",
+      "source_ids": [
+        "GL003"
+      ],
+      "domain": "development_resources",
+      "title": "AI data centers: complete six-table publisher bundle",
+      "original_url": "https://epoch.ai/data/data_centers/data_centers.zip",
+      "version": {
+        "kind": "mutable_url_snapshot",
+        "observed_at": "2026-10-08T22:33:09.363611+00:00",
+        "sha256": null,
+        "etag": "\"dfeb20bd67475307fb4dda455c93538d\"",
+        "publisher_labels": [
+          "Hub Oct 5, 2026",
+          "ZIP Oct 8, 2026"
+        ],
+        "note": "Labels disagree by component/update role; pin full bytes at actual capture."
+      },
+      "content": {
+        "format": "zip_of_csv",
+        "scope": "Complete original publisher ZIP, unchanged. Expected six tables from publisher documentation; actual ZIP member list and CRCs require acquisition verification.",
+        "components": [
+          {
+            "url": "https://epoch.ai/data/data_centers/data_centers.csv",
+            "fields": [
+              "Name",
+              "Current H100 equivalents",
+              "Current power (MW)",
+              "Current total capital cost (2025 USD billions)",
+              "Owner",
+              "Users",
+              "Selected Sources",
+              "Calculations sheet",
+              "Project",
+              "Current chip types",
+              "All chip types",
+              "Investors",
+              "Construction companies",
+              "Energy companies",
+              "Country",
+              "Address"
+            ],
+            "size_bytes": 69463,
+            "size_basis": "HTTP_advertised_not_complete_body",
+            "observed_header_bytes": 252
+          },
+          {
+            "url": "https://epoch.ai/data/data_centers/data_center_timelines.csv",
+            "fields": [
+              "Data center",
+              "Date",
+              "Construction status",
+              "Buildings operational",
+              "IT power (MW)",
+              "Power (MW)",
+              "H100 equivalents",
+              "Performance (8-bit OP/s)",
+              "Total capital cost (2025 USD billions)",
+              "Compute cost (2025 USD billions)",
+              "Construction cost (2025 USD billions)",
+              "Annual operating cost (2025 USD billions)",
+              "Water use (MGD)",
+              "Current H100 equivalents (from Data center)"
+            ],
+            "size_bytes": 184404,
+            "size_basis": "HTTP_advertised_not_complete_body",
+            "observed_header_bytes": 338
+          },
+          {
+            "url": "https://epoch.ai/data/data_centers/data_centers_chip_quantities.csv",
+            "fields": [
+              "Handle",
+              "Date",
+              "Chip type",
+              "Number of Units",
+              "Chip type source",
+              "Number of Units source",
+              "Owner",
+              "User",
+              "Notes",
+              "Data center",
+              "Timeline"
+            ],
+            "size_bytes": 83346,
+            "size_basis": "HTTP_advertised_not_complete_body",
+            "observed_header_bytes": 116
+          },
+          {
+            "url": "https://epoch.ai/data/ai_chip_sales_chip_types.csv",
+            "fields": [
+              "Name",
+              "ML Hardware (linked)",
+              "Designer",
+              "Primarily for Chinese market",
+              "TDP (W) (from ML Hardware (linked))",
+              "16-bit FLOP/s",
+              "8-bit OP/s",
+              "Notes",
+              "Memory",
+              "Memory bandwidth",
+              "H100e",
+              "Cost per chip (approx.)",
+              "Release date",
+              "Unofficial estimated TDP (W)"
+            ],
+            "size_bytes": 7334,
+            "size_basis": "HTTP_advertised_not_complete_body",
+            "observed_header_bytes": 227
+          },
+          {
+            "url": "https://epoch.ai/data/data_centers/data_center_chillers.csv",
+            "fields": [
+              "Model",
+              "Manufacturer",
+              "Type",
+              "Cooling capacity (kW)",
+              "Number of fans",
+              "Length (m)",
+              "Width (m)",
+              "Area (m^2)",
+              "Source",
+              "Link",
+              "Spot check",
+              "Notes"
+            ],
+            "size_bytes": 34665,
+            "size_basis": "HTTP_advertised_not_complete_body",
+            "observed_header_bytes": 122
+          },
+          {
+            "url": "https://epoch.ai/data/data_centers/data_center_cooling_towers.csv",
+            "fields": [
+              "Model",
+              "Manufacturer",
+              "Length (m)",
+              "Width (m)",
+              "Height (m)",
+              "Area (m^2)",
+              "Cooling capacity (stated, kW)",
+              "Cooling capacity (central estimate, kW)",
+              "Source",
+              "Link",
+              "Spot check",
+              "Notes",
+              "Fan Diameter (m)",
+              "Number of Fans",
+              "Fan estimate diameter (m)",
+              "Type",
+              "Motor Horsepower"
+            ],
+            "size_bytes": 85832,
+            "size_basis": "HTTP_advertised_not_complete_body",
+            "observed_header_bytes": 245
+          }
+        ]
+      },
+      "extent": {
+        "size_bytes": 114113,
+        "size_basis": "HTTP_GET_response_header_no_body_read",
+        "record_count": null,
+        "publisher_site_count": 93,
+        "publisher_site_count_is_not_verified_file_row_count": true,
+        "file_count": 1,
+        "expected_zip_table_count": 6
+      },
+      "rights": {
+        "license": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "primary_evidence": [
+          {
+            "url": "https://epoch.ai/data/ai-data-centers",
+            "locator": "Citations; Downloads; Python Import",
+            "finding": "Data-specific attribution grant and the six-table ZIP/CSV pointers."
+          },
+          {
+            "url": "https://epoch.ai/data/data-centers-documentation",
+            "locator": "Overview / Use This Work",
+            "finding": "Complete ZIP and data reuse corroborated."
+          }
+        ],
+        "private_retention": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_redistribution_eligibility": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_publication_status": "not_published_by_this_work; separate_repository_or_sharing_decision_required",
+        "conditions": [
+          "Credit Epoch AI/source/authors; preserve notices, source URLs and license. Indicate adaptations and avoid endorsement."
+        ],
+        "scope_exclusions": [
+          "Commercial satellite/aerial imagery, permits and separately linked sources are not implicitly cleared."
+        ]
+      },
+      "history": {
+        "availability": "Published automatically generated changelog plus date-bearing timeline/chip tables. Immutable historical ZIP snapshots not established.",
+        "url": "https://epoch.ai/data/ai-data-centers/updates",
+        "preserve": "Retain original ZIP by acquisition time/hash and all timeline rows; distinguish retrospective corrections from actual expansion."
+      },
+      "access": {
+        "auth": "none observed",
+        "status": "HTTP_200_headers_and_six_CSV_headers_verified",
+        "robots_url": "https://epoch.ai/robots.txt",
+        "robots_status": "checked_2026-10-08_no_matching_disallow_for_data_paths"
+      },
+      "preservation": {
+        "readiness": "permitted_bounded_preservation",
+        "archive_status": "prepared_not_acquired",
+        "whole_source_sha256": null,
+        "hash_scope": "not_computed_from_a_complete_body",
+        "source_native_unchanged": null,
+        "remote_raw_readback_verified": false,
+        "verified_at_utc": null,
+        "checkpoint_verified": false,
+        "tracked_transfer_scratch_cleaned": false,
+        "current_tested_artifact_bound_bytes": 10485760,
+        "required_capture_checks": [
+          "Use the exact original URL/version or previously verified original bytes.",
+          "Verify current legitimate access/robots and source-specific terms before any new source request.",
+          "Verify complete byte length and SHA-256; reconcile changes from previous observations instead of silently relabeling a new snapshot.",
+          "Retain attribution/license/provenance dependencies; verify remote raw bytes and checkpoint before cleanup.",
+          "The six table names and headers are documented/observed separately. Actual ZIP member names, whole archive hash and CRCs have not been inspected.",
+          "Inspect inert archive safely with bounded expansion, path/member validation and CRC checks before treating it as the complete original bundle."
+        ],
+        "canonical_mapping_blocks_preservation": false
+      },
+      "canonical_mapping": {
+        "status": "not_canonically_admitted",
+        "raw_preservation_blocker": false,
+        "requirements": [
+          "Facility/project identity, dated construction stage, affiliation uncertainty, capacity versus use and IT versus total power.",
+          "Preserve H100-equivalents versus 8-bit OP/s and 2025-dollar cost definitions."
+        ]
+      },
+      "public_repository_data_status": "not_admitted_or_published_by_this_plan",
+      "research_source_url": "https://github.com/mishakgg/pdoom-live/blob/b8724361863e78a7ad1e270b285f22705662fa3d/data/evidence-program/source_inventory.json"
+    },
+    {
+      "artifact_id": "BD001-results-before",
+      "source_ids": [
+        "BD001"
+      ],
+      "domain": "capabilities",
+      "title": "EvalPlus complete published result snapshot 2024-04-21",
+      "original_url": "https://raw.githubusercontent.com/evalplus/evalplus.github.io/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+      "version": {
+        "kind": "git_commit",
+        "commit": "3b9f5b48c92a492a48fde6c0e1bffb9295812caf",
+        "date": "2024-04-21T06:25:04Z",
+        "git_blob_sha1": "72c9baaa8b3a962a9207bbed41f77651ec0f97ba",
+        "sha256": "4d293d4450da091dab4ee4ab333d73b34973066a5dc122c8eef3ada6421b00cb"
+      },
+      "content": {
+        "format": "json",
+        "scope": "Complete original published aggregate measured-results JSON, not per-task runs or generated completions.",
+        "fields": [
+          "Model label as object key",
+          "link",
+          "open-data",
+          "prompted",
+          "size",
+          "pass@1.humaneval",
+          "pass@1.humaneval+",
+          "pass@1.mbpp",
+          "pass@1.mbpp+"
+        ]
+      },
+      "extent": {
+        "size_bytes": 32977,
+        "size_basis": "complete_local_original_hashed_and_matched_to_upstream_Git_blob",
+        "record_count": 101,
+        "record_unit": "model-labelled top-level object per snapshot",
+        "metric_slots": 404,
+        "nonnull_metric_values": 358,
+        "null_metric_values": 46,
+        "file_count": 1
+      },
+      "rights": {
+        "license": "Apache-2.0",
+        "license_url": "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/LICENSE",
+        "primary_evidence": [
+          {
+            "url": "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/LICENSE",
+            "locator": "License in exact dedicated leaderboard repository"
+          }
+        ],
+        "private_retention": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_redistribution_eligibility": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_publication_status": "not_published_by_this_work; separate_repository_or_sharing_decision_required",
+        "conditions": [
+          "Keep the complete Apache-2.0 license with copies.",
+          "Retain applicable copyright, attribution, patent and trademark notices; retain NOTICE content if supplied.",
+          "Keep original bytes unchanged; mark modifications prominently in derivative files.",
+          "No endorsement or trademark grant; no warranty.",
+          "Do not extend this grant to linked model weights, generated outputs, benchmark tasks or third-party sources."
+        ],
+        "scope_exclusions": [
+          "Separately linked works, datasets, weights and unpublished microdata are not cleared by this artifact grant."
+        ],
+        "scope": "Only results.json at this dedicated leaderboard repository commit; not inheritance from separate evaluation software.",
+        "license_git_blob_sha1": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+        "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "notice_check": {
+          "each_pinned_root_has_files": 5,
+          "each_pinned_root_has_subdirectories": 0,
+          "NOTICE_file_exists": false,
+          "additional_checks": "Identical index.html and both leaderboard.html editions checked; no additional copyright/NOTICE/license-attribution markers found. Preserve full LICENSE and unchanged original results."
+        }
+      },
+      "history": {
+        "known_pair_total_bytes": 60702,
+        "models_per_snapshot": 101,
+        "publication_change": "After snapshot accompanies MBPP v0.2.0 and some unavailable results become null. Preserve both complete bodies, not only corrected values.",
+        "comparison_warning": "Same labels do not establish identical inference runs/checkpoints; task removal, prompt changes and unavailable original outputs prevent a causal capability-improvement interpretation.",
+        "further_versions": "Enumerate relevant per-file Git history as a later bounded expansion; do not claim these two snapshots are complete historical coverage."
+      },
+      "access": {
+        "public_source": true,
+        "fresh_checks": "GitHub connector succeeded on pinned contents/license and first 32 result lines; no new sign-in. Existing full bytes verified locally.",
+        "authentication": "Public artifacts; connector used existing authorized connection. No anonymous raw GET tested.",
+        "robots": "GitHub robots restrict HTML history/tree/raw/archive routes; use documented content/API access and respect rate limits. raw.githubusercontent.com/robots.txt returned 404, not a license or blanket crawl permission.",
+        "terms_url": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+        "robots_url": "https://github.com/robots.txt",
+        "header_size_verified": false
+      },
+      "preservation": {
+        "readiness": "permitted_bounded_preservation",
+        "archive_status": "verified_remote_original",
+        "whole_source_sha256": "4d293d4450da091dab4ee4ab333d73b34973066a5dc122c8eef3ada6421b00cb",
+        "hash_scope": "complete_source_original_verified_by_remote_raw_readback",
+        "source_native_unchanged": true,
+        "remote_raw_readback_verified": true,
+        "verified_at_utc": "2026-10-08T22:43:41.535555+00:00",
+        "checkpoint_verified": true,
+        "tracked_transfer_scratch_cleaned": true,
+        "current_tested_artifact_bound_bytes": 10485760,
+        "required_capture_checks": [],
+        "canonical_mapping_blocks_preservation": false
+      },
+      "canonical_mapping": {
+        "status": "not_admitted; benchmark-drift mapping specification is separate",
+        "raw_preservation_blocker": false,
+        "requirements": [
+          "Preserve nulls, original labels, links and published percentage values.",
+          "Each snapshot is a publication vintage, not a new independent model evaluation.",
+          "Retain correction lineage and benchmark/task-set version before any matched trend."
+        ]
+      },
+      "public_repository_data_status": "not_admitted_or_published_by_this_plan",
+      "research_source_url": "https://github.com/mishakgg/pdoom-live/blob/b8724361863e78a7ad1e270b285f22705662fa3d/data/evidence-program/research/benchmark-drift.json"
+    },
+    {
+      "artifact_id": "BD001-results-after",
+      "source_ids": [
+        "BD001"
+      ],
+      "domain": "capabilities",
+      "title": "EvalPlus complete published result snapshot 2024-04-22",
+      "original_url": "https://raw.githubusercontent.com/evalplus/evalplus.github.io/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+      "version": {
+        "kind": "git_commit",
+        "commit": "65db7ffdb66ae3fee800bee8d998b412f0a6e648",
+        "date": "2024-04-22T01:27:32Z",
+        "git_blob_sha1": "f2ad111f348de70277826266d61c61a2095f48a7",
+        "sha256": "89c068b081aaf2778e5a77549b3549ac7825231a9a1125ca309a2d18677ea941"
+      },
+      "content": {
+        "format": "json",
+        "scope": "Complete original published aggregate measured-results JSON, not per-task runs or generated completions.",
+        "fields": [
+          "Model label as object key",
+          "link",
+          "open-data",
+          "prompted",
+          "size",
+          "pass@1.humaneval",
+          "pass@1.humaneval+",
+          "pass@1.mbpp",
+          "pass@1.mbpp+"
+        ]
+      },
+      "extent": {
+        "size_bytes": 27725,
+        "size_basis": "complete_local_original_hashed_and_matched_to_upstream_Git_blob",
+        "record_count": 101,
+        "record_unit": "model-labelled top-level object per snapshot",
+        "metric_slots": 404,
+        "nonnull_metric_values": 322,
+        "null_metric_values": 82,
+        "file_count": 1
+      },
+      "rights": {
+        "license": "Apache-2.0",
+        "license_url": "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/LICENSE",
+        "primary_evidence": [
+          {
+            "url": "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/LICENSE",
+            "locator": "License in exact dedicated leaderboard repository"
+          }
+        ],
+        "private_retention": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_redistribution_eligibility": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_publication_status": "not_published_by_this_work; separate_repository_or_sharing_decision_required",
+        "conditions": [
+          "Keep the complete Apache-2.0 license with copies.",
+          "Retain applicable copyright, attribution, patent and trademark notices; retain NOTICE content if supplied.",
+          "Keep original bytes unchanged; mark modifications prominently in derivative files.",
+          "No endorsement or trademark grant; no warranty.",
+          "Do not extend this grant to linked model weights, generated outputs, benchmark tasks or third-party sources."
+        ],
+        "scope_exclusions": [
+          "Separately linked works, datasets, weights and unpublished microdata are not cleared by this artifact grant."
+        ],
+        "scope": "Only results.json at this dedicated leaderboard repository commit; not inheritance from separate evaluation software.",
+        "license_git_blob_sha1": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64",
+        "license_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "notice_check": {
+          "each_pinned_root_has_files": 5,
+          "each_pinned_root_has_subdirectories": 0,
+          "NOTICE_file_exists": false,
+          "additional_checks": "Identical index.html and both leaderboard.html editions checked; no additional copyright/NOTICE/license-attribution markers found. Preserve full LICENSE and unchanged original results."
+        }
+      },
+      "history": {
+        "known_pair_total_bytes": 60702,
+        "models_per_snapshot": 101,
+        "publication_change": "After snapshot accompanies MBPP v0.2.0 and some unavailable results become null. Preserve both complete bodies, not only corrected values.",
+        "comparison_warning": "Same labels do not establish identical inference runs/checkpoints; task removal, prompt changes and unavailable original outputs prevent a causal capability-improvement interpretation.",
+        "further_versions": "Enumerate relevant per-file Git history as a later bounded expansion; do not claim these two snapshots are complete historical coverage."
+      },
+      "access": {
+        "public_source": true,
+        "fresh_checks": "GitHub connector succeeded on pinned contents/license and first 32 result lines; no new sign-in. Existing full bytes verified locally.",
+        "authentication": "Public artifacts; connector used existing authorized connection. No anonymous raw GET tested.",
+        "robots": "GitHub robots restrict HTML history/tree/raw/archive routes; use documented content/API access and respect rate limits. raw.githubusercontent.com/robots.txt returned 404, not a license or blanket crawl permission.",
+        "terms_url": "https://docs.github.com/en/site-policy/github-terms/github-terms-of-service",
+        "robots_url": "https://github.com/robots.txt",
+        "header_size_verified": false
+      },
+      "preservation": {
+        "readiness": "permitted_bounded_preservation",
+        "archive_status": "verified_remote_original",
+        "whole_source_sha256": "89c068b081aaf2778e5a77549b3549ac7825231a9a1125ca309a2d18677ea941",
+        "hash_scope": "complete_source_original_verified_by_remote_raw_readback",
+        "source_native_unchanged": true,
+        "remote_raw_readback_verified": true,
+        "verified_at_utc": "2026-10-08T22:43:41.535555+00:00",
+        "checkpoint_verified": true,
+        "tracked_transfer_scratch_cleaned": true,
+        "current_tested_artifact_bound_bytes": 10485760,
+        "required_capture_checks": [],
+        "canonical_mapping_blocks_preservation": false
+      },
+      "canonical_mapping": {
+        "status": "not_admitted; benchmark-drift mapping specification is separate",
+        "raw_preservation_blocker": false,
+        "requirements": [
+          "Preserve nulls, original labels, links and published percentage values.",
+          "Each snapshot is a publication vintage, not a new independent model evaluation.",
+          "Retain correction lineage and benchmark/task-set version before any matched trend."
+        ]
+      },
+      "public_repository_data_status": "not_admitted_or_published_by_this_plan",
+      "research_source_url": "https://github.com/mishakgg/pdoom-live/blob/b8724361863e78a7ad1e270b285f22705662fa3d/data/evidence-program/research/benchmark-drift.json"
+    },
+    {
+      "artifact_id": "GL038-LEAP-wave12-html",
+      "source_ids": [
+        "GL038",
+        "FS003"
+      ],
+      "domain": "risk_timeline_forecasts",
+      "title": "LEAP Wave 12 complete published HTML response",
+      "original_url": "https://leap.forecastingresearch.org/reports/wave12",
+      "version": {
+        "wave": 12,
+        "title": "Safety Policies",
+        "first_released": "2026-10-05",
+        "fieldwork_start": "2026-08-25",
+        "fieldwork_end": "2026-09-15",
+        "source_aggregate_generated_at": "2026-09-19 03:32 UTC",
+        "publisher_revision_identifier": null,
+        "snapshot_identity": "2f236aa3d8125e60770412d081008b1d53e797732e308f6eb2a1e32ca2658c38"
+      },
+      "content": {
+        "format": "html",
+        "scope": "Full original HTML HTTP response body, including its embedded published aggregate payload, wording, resolution details, scenario conditions, published rationale excerpts, notes and license. Preserve inert bytes without executing embedded scripts. Linked images, JavaScript bundles, third-party works, and unpublished respondent microdata are separate artifacts and not cleared here.",
+        "fields": [
+          "wave/release/fieldwork/aggregate-generation clocks",
+          "question text and resolution criteria",
+          "scenario/policy condition",
+          "participant-group label",
+          "published median and 25th/75th respondent percentiles",
+          "reported n with its source label",
+          "public rationale/notes"
+        ]
+      },
+      "extent": {
+        "size_bytes": 600997,
+        "size_basis": "complete_prior_local_original_rehashed_current_HEAD_only_agrees_size",
+        "record_count": null,
+        "file_count": 1,
+        "complete_table_inventory_not_counted": true
+      },
+      "rights": {
+        "license": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "primary_evidence": [
+          {
+            "url": "https://leap.forecastingresearch.org/reports/wave12",
+            "locator": "Footer Content licensed under CC-BY links directly to CC BY 4.0"
+          }
+        ],
+        "private_retention": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_redistribution_eligibility": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_publication_status": "not_published_by_this_work; separate_repository_or_sharing_decision_required",
+        "conditions": [
+          "Credit edition-specific authors or publisher and title/source; retain notices and license link; identify modifications; no endorsement implied."
+        ],
+        "scope_exclusions": [
+          "Unpublished respondent microdata",
+          "Separately loaded assets or third-party works"
+        ],
+        "attribution": "Forecasting Research Institute, LEAP Wave 12: Safety Policies, first released 5 October 2026; preserve publisher citation and source URL"
+      },
+      "history": {
+        "wave_history": "Older waves are separate studies/reports, not revisions of Wave 12. No earlier revision manifest for this URL verified.",
+        "retention": "Keep existing 2026-10-08 12:21 snapshot; subsequent authorized acquisitions append immutable full-body versions keyed by retrieval time and content digest. Never overwrite by URL."
+      },
+      "access": {
+        "authentication_required_for_observed_route": false,
+        "head_status": 200,
+        "robots_url": "https://leap.forecastingresearch.org/robots.txt",
+        "robots_observation": "200, User-agent * Allow /",
+        "terms_limit": "No comprehensive platform-terms audit; explicit content license and observed route are the evidence. Do not bypass later denial."
+      },
+      "preservation": {
+        "readiness": "permitted_bounded_preservation",
+        "archive_status": "verified_remote_original",
+        "whole_source_sha256": "2f236aa3d8125e60770412d081008b1d53e797732e308f6eb2a1e32ca2658c38",
+        "hash_scope": "complete_source_original_verified_by_remote_raw_readback",
+        "source_native_unchanged": true,
+        "remote_raw_readback_verified": true,
+        "verified_at_utc": "2026-10-08T22:43:41.535555+00:00",
+        "checkpoint_verified": true,
+        "tracked_transfer_scratch_cleaned": true,
+        "current_tested_artifact_bound_bytes": 10485760,
+        "required_capture_checks": [],
+        "canonical_mapping_blocks_preservation": false,
+        "snapshot_qualification": "Known prior complete HTML snapshot archived; fresh HEAD agreed on byte length only. No claim that current body is identical; do not execute scripts or load assets."
+      },
+      "canonical_mapping": {
+        "status": "held_for_lossless_semantics_and_denominator_review",
+        "raw_preservation_blocker": false,
+        "requirements": [
+          "Catastrophe is not literal extinction.",
+          "Keep unconditional, status quo and policy-conditional forecasts distinct.",
+          "Keep question by-date and resolution before-date wording separately.",
+          "Quartiles describe respondents, not event confidence intervals.",
+          "157 expert total versus categories summing to 149 remains unresolved.",
+          "Wave 12 weighting unit and effective n are unresolved; older first-three-wave raking does not fill these gaps."
+        ]
+      },
+      "public_repository_data_status": "not_admitted_or_published_by_this_plan",
+      "research_source_url": "https://github.com/mishakgg/pdoom-live/blob/b8724361863e78a7ad1e270b285f22705662fa3d/data/evidence-program/research/forecast-surveys.json"
+    },
+    {
+      "artifact_id": "GL010-2401.02843-v1",
+      "source_ids": [
+        "GL010",
+        "FS001",
+        "GL040"
+      ],
+      "domain": "risk_timeline_forecasts",
+      "title": "Thousands of AI Authors on the Future of AI, v1",
+      "original_url": "https://arxiv.org/pdf/2401.02843v1",
+      "version": {
+        "kind": "arxiv_version",
+        "version": "v1",
+        "release_date": "2024-01-05T14:53:09Z",
+        "etag": "\"sha256:79572b88d024b046265d605a5b315692f9470426d2758d8fa1e9eae857c85824\"",
+        "sha256": null,
+        "note": "Version-specific URLs; HTTP ETag is not a locally computed body digest."
+      },
+      "content": {
+        "format": "pdf",
+        "scope": "Complete study-paper edition including appendices; not respondent microdata or a new elicitation wave.",
+        "fields": [
+          "edition-specific authors and publication history",
+          "AI capability/task milestones",
+          "HLMI versus full-automation constructs",
+          "elicitation framing and forecast aggregates",
+          "risk/outcome items",
+          "methods, denominators and appendices"
+        ]
+      },
+      "extent": {
+        "size_bytes": 5925368,
+        "size_basis": "HTTP_HEAD_server_assertion_not_downloaded_body",
+        "pages_reported_by_web_reader": 38,
+        "record_count": null,
+        "file_count": 1
+      },
+      "rights": {
+        "license": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "primary_evidence": [
+          {
+            "url": "https://arxiv.org/abs/2401.02843v1",
+            "locator": "Version-specific license link",
+            "license": "CC-BY-4.0"
+          }
+        ],
+        "private_retention": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_redistribution_eligibility": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_publication_status": "not_published_by_this_work; separate_repository_or_sharing_decision_required",
+        "conditions": [
+          "Credit edition-specific authors or publisher and title/source; retain notices and license link; identify modifications; no endorsement implied."
+        ],
+        "scope_exclusions": [
+          "Google Sheets respondent data",
+          "separately hosted 2024 report or questionnaire",
+          "reanalysis blog content",
+          "linked external data or code"
+        ]
+      },
+      "history": {
+        "strategy": "Preserve v1, v2 and v3 separately with their own license and metadata; do not use the unversioned latest PDF as an archival key.",
+        "analysis_vs_wave": "Different editions may revise estimates for a past elicitation wave. Never label a reanalysis change as a respondent-belief change or a new survey wave."
+      },
+      "access": {
+        "authentication_required_for_observed_routes": false,
+        "pdf_web_read_status": "all three direct versioned PDFs resolved; 38 pages each reported",
+        "robots_url": "https://arxiv.org/robots.txt",
+        "robots_observation": "User-agent * permits /abs, /pdf and /html; Crawl-delay 15; prohibits /src and /e-print and indiscriminate automated downloads.",
+        "route_rule": "Use the observed /pdf/version URLs, serially with at least 15 seconds between arXiv requests. Do not retrieve TeX/source routes or indiscriminately traverse papers.",
+        "terms_limit": "This targeted paper review does not authorize or establish a bulk arXiv mirror."
+      },
+      "preservation": {
+        "readiness": "permitted_bounded_preservation",
+        "archive_status": "prepared_not_acquired",
+        "whole_source_sha256": null,
+        "hash_scope": "not_computed_from_a_complete_body",
+        "source_native_unchanged": null,
+        "remote_raw_readback_verified": false,
+        "verified_at_utc": null,
+        "checkpoint_verified": false,
+        "tracked_transfer_scratch_cleaned": false,
+        "current_tested_artifact_bound_bytes": 10485760,
+        "required_capture_checks": [
+          "Use the exact original URL/version or previously verified original bytes.",
+          "Verify current legitimate access/robots and source-specific terms before any new source request.",
+          "Verify complete byte length and SHA-256; reconcile changes from previous observations instead of silently relabeling a new snapshot.",
+          "Retain attribution/license/provenance dependencies; verify remote raw bytes and checkpoint before cleanup.",
+          "Use only versioned PDF paths, serially respecting the observed 15-second arXiv crawl delay; no src/e-print or indiscriminate traversal."
+        ],
+        "canonical_mapping_blocks_preservation": false
+      },
+      "canonical_mapping": {
+        "status": "held_for_instrument_and_cross_revision_lineage",
+        "raw_preservation_blocker": false,
+        "requirements": [
+          "Do not harmonize 2022 reanalysis values 2059/2060 into a single smooth historical series.",
+          "Keep HLMI and FAOL separate; retain exact question/conditionality by edition.",
+          "Do not infer unchanged respondent case identity or denominator across editions."
+        ]
+      },
+      "public_repository_data_status": "not_admitted_or_published_by_this_plan",
+      "research_source_url": "https://github.com/mishakgg/pdoom-live/blob/b8724361863e78a7ad1e270b285f22705662fa3d/data/evidence-program/research/forecast-surveys.json"
+    },
+    {
+      "artifact_id": "GL010-2401.02843-v2",
+      "source_ids": [
+        "GL010",
+        "FS001",
+        "GL040"
+      ],
+      "domain": "risk_timeline_forecasts",
+      "title": "Thousands of AI Authors on the Future of AI, v2",
+      "original_url": "https://arxiv.org/pdf/2401.02843v2",
+      "version": {
+        "kind": "arxiv_version",
+        "version": "v2",
+        "release_date": "2024-04-30T18:15:42Z",
+        "etag": "\"sha256:cd87716bd8249bf66f655cd2731ee8c0928aabfc6edf190bd16f6de514f8a2e5\"",
+        "sha256": null,
+        "note": "Version-specific URLs; HTTP ETag is not a locally computed body digest."
+      },
+      "content": {
+        "format": "pdf",
+        "scope": "Complete study-paper edition including appendices; not respondent microdata or a new elicitation wave.",
+        "fields": [
+          "edition-specific authors and publication history",
+          "AI capability/task milestones",
+          "HLMI versus full-automation constructs",
+          "elicitation framing and forecast aggregates",
+          "risk/outcome items",
+          "methods, denominators and appendices"
+        ]
+      },
+      "extent": {
+        "size_bytes": 5925409,
+        "size_basis": "HTTP_HEAD_server_assertion_not_downloaded_body",
+        "pages_reported_by_web_reader": 38,
+        "record_count": null,
+        "file_count": 1
+      },
+      "rights": {
+        "license": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "primary_evidence": [
+          {
+            "url": "https://arxiv.org/abs/2401.02843v2",
+            "locator": "Version-specific license link",
+            "license": "CC-BY-4.0"
+          }
+        ],
+        "private_retention": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_redistribution_eligibility": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_publication_status": "not_published_by_this_work; separate_repository_or_sharing_decision_required",
+        "conditions": [
+          "Credit edition-specific authors or publisher and title/source; retain notices and license link; identify modifications; no endorsement implied."
+        ],
+        "scope_exclusions": [
+          "Google Sheets respondent data",
+          "separately hosted 2024 report or questionnaire",
+          "reanalysis blog content",
+          "linked external data or code"
+        ]
+      },
+      "history": {
+        "strategy": "Preserve v1, v2 and v3 separately with their own license and metadata; do not use the unversioned latest PDF as an archival key.",
+        "analysis_vs_wave": "Different editions may revise estimates for a past elicitation wave. Never label a reanalysis change as a respondent-belief change or a new survey wave."
+      },
+      "access": {
+        "authentication_required_for_observed_routes": false,
+        "pdf_web_read_status": "all three direct versioned PDFs resolved; 38 pages each reported",
+        "robots_url": "https://arxiv.org/robots.txt",
+        "robots_observation": "User-agent * permits /abs, /pdf and /html; Crawl-delay 15; prohibits /src and /e-print and indiscriminate automated downloads.",
+        "route_rule": "Use the observed /pdf/version URLs, serially with at least 15 seconds between arXiv requests. Do not retrieve TeX/source routes or indiscriminately traverse papers.",
+        "terms_limit": "This targeted paper review does not authorize or establish a bulk arXiv mirror."
+      },
+      "preservation": {
+        "readiness": "permitted_bounded_preservation",
+        "archive_status": "prepared_not_acquired",
+        "whole_source_sha256": null,
+        "hash_scope": "not_computed_from_a_complete_body",
+        "source_native_unchanged": null,
+        "remote_raw_readback_verified": false,
+        "verified_at_utc": null,
+        "checkpoint_verified": false,
+        "tracked_transfer_scratch_cleaned": false,
+        "current_tested_artifact_bound_bytes": 10485760,
+        "required_capture_checks": [
+          "Use the exact original URL/version or previously verified original bytes.",
+          "Verify current legitimate access/robots and source-specific terms before any new source request.",
+          "Verify complete byte length and SHA-256; reconcile changes from previous observations instead of silently relabeling a new snapshot.",
+          "Retain attribution/license/provenance dependencies; verify remote raw bytes and checkpoint before cleanup.",
+          "Use only versioned PDF paths, serially respecting the observed 15-second arXiv crawl delay; no src/e-print or indiscriminate traversal."
+        ],
+        "canonical_mapping_blocks_preservation": false
+      },
+      "canonical_mapping": {
+        "status": "held_for_instrument_and_cross_revision_lineage",
+        "raw_preservation_blocker": false,
+        "requirements": [
+          "Do not harmonize 2022 reanalysis values 2059/2060 into a single smooth historical series.",
+          "Keep HLMI and FAOL separate; retain exact question/conditionality by edition.",
+          "Do not infer unchanged respondent case identity or denominator across editions."
+        ]
+      },
+      "public_repository_data_status": "not_admitted_or_published_by_this_plan",
+      "research_source_url": "https://github.com/mishakgg/pdoom-live/blob/b8724361863e78a7ad1e270b285f22705662fa3d/data/evidence-program/research/forecast-surveys.json"
+    },
+    {
+      "artifact_id": "GL010-2401.02843-v3",
+      "source_ids": [
+        "GL010",
+        "FS001",
+        "GL040"
+      ],
+      "domain": "risk_timeline_forecasts",
+      "title": "Thousands of AI Authors on the Future of AI, v3",
+      "original_url": "https://arxiv.org/pdf/2401.02843v3",
+      "version": {
+        "kind": "arxiv_version",
+        "version": "v3",
+        "release_date": "2025-10-08T18:38:53Z",
+        "etag": "\"sha256:7640714e2b8a0722dccbb6a149e109d151e99c5829879f99e75d3f95b716718c\"",
+        "sha256": null,
+        "note": "Version-specific URLs; HTTP ETag is not a locally computed body digest."
+      },
+      "content": {
+        "format": "pdf",
+        "scope": "Complete study-paper edition including appendices; not respondent microdata or a new elicitation wave.",
+        "fields": [
+          "edition-specific authors and publication history",
+          "AI capability/task milestones",
+          "HLMI versus full-automation constructs",
+          "elicitation framing and forecast aggregates",
+          "risk/outcome items",
+          "methods, denominators and appendices"
+        ]
+      },
+      "extent": {
+        "size_bytes": 5902763,
+        "size_basis": "HTTP_HEAD_server_assertion_not_downloaded_body",
+        "pages_reported_by_web_reader": 38,
+        "record_count": null,
+        "file_count": 1
+      },
+      "rights": {
+        "license": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "primary_evidence": [
+          {
+            "url": "https://arxiv.org/abs/2401.02843v3",
+            "locator": "Version-specific license link",
+            "license": "CC-BY-4.0"
+          }
+        ],
+        "private_retention": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_redistribution_eligibility": "permitted_for_this_exact_artifact_subject_to_stated_conditions",
+        "public_publication_status": "not_published_by_this_work; separate_repository_or_sharing_decision_required",
+        "conditions": [
+          "Credit edition-specific authors or publisher and title/source; retain notices and license link; identify modifications; no endorsement implied."
+        ],
+        "scope_exclusions": [
+          "Google Sheets respondent data",
+          "separately hosted 2024 report or questionnaire",
+          "reanalysis blog content",
+          "linked external data or code"
+        ]
+      },
+      "history": {
+        "strategy": "Preserve v1, v2 and v3 separately with their own license and metadata; do not use the unversioned latest PDF as an archival key.",
+        "analysis_vs_wave": "Different editions may revise estimates for a past elicitation wave. Never label a reanalysis change as a respondent-belief change or a new survey wave."
+      },
+      "access": {
+        "authentication_required_for_observed_routes": false,
+        "pdf_web_read_status": "all three direct versioned PDFs resolved; 38 pages each reported",
+        "robots_url": "https://arxiv.org/robots.txt",
+        "robots_observation": "User-agent * permits /abs, /pdf and /html; Crawl-delay 15; prohibits /src and /e-print and indiscriminate automated downloads.",
+        "route_rule": "Use the observed /pdf/version URLs, serially with at least 15 seconds between arXiv requests. Do not retrieve TeX/source routes or indiscriminately traverse papers.",
+        "terms_limit": "This targeted paper review does not authorize or establish a bulk arXiv mirror."
+      },
+      "preservation": {
+        "readiness": "permitted_bounded_preservation",
+        "archive_status": "prepared_not_acquired",
+        "whole_source_sha256": null,
+        "hash_scope": "not_computed_from_a_complete_body",
+        "source_native_unchanged": null,
+        "remote_raw_readback_verified": false,
+        "verified_at_utc": null,
+        "checkpoint_verified": false,
+        "tracked_transfer_scratch_cleaned": false,
+        "current_tested_artifact_bound_bytes": 10485760,
+        "required_capture_checks": [
+          "Use the exact original URL/version or previously verified original bytes.",
+          "Verify current legitimate access/robots and source-specific terms before any new source request.",
+          "Verify complete byte length and SHA-256; reconcile changes from previous observations instead of silently relabeling a new snapshot.",
+          "Retain attribution/license/provenance dependencies; verify remote raw bytes and checkpoint before cleanup.",
+          "Use only versioned PDF paths, serially respecting the observed 15-second arXiv crawl delay; no src/e-print or indiscriminate traversal."
+        ],
+        "canonical_mapping_blocks_preservation": false
+      },
+      "canonical_mapping": {
+        "status": "held_for_instrument_and_cross_revision_lineage",
+        "raw_preservation_blocker": false,
+        "requirements": [
+          "Do not harmonize 2022 reanalysis values 2059/2060 into a single smooth historical series.",
+          "Keep HLMI and FAOL separate; retain exact question/conditionality by edition.",
+          "Do not infer unchanged respondent case identity or denominator across editions."
+        ]
+      },
+      "public_repository_data_status": "not_admitted_or_published_by_this_plan",
+      "research_source_url": "https://github.com/mishakgg/pdoom-live/blob/b8724361863e78a7ad1e270b285f22705662fa3d/data/evidence-program/research/forecast-surveys.json"
+    }
+  ],
+  "larger_transfer_extensions": [
+    {
+      "artifact_id": "EDB004-2026-08-generator-inventory",
+      "source_ids": [
+        "GL003",
+        "GL030",
+        "EDB004"
+      ],
+      "domain": "development_resources",
+      "title": "EIA August 2026 complete preliminary generator workbook",
+      "original_url": "https://www.eia.gov/electricity/data/eia860m/xls/august_generator2026.xlsx",
+      "source_version": {
+        "kind": "dated_mutable_file",
+        "observed_at": "2026-10-08T22:31:58.067711+00:00",
+        "etag": "\"8098ac47aa4bdd1:0\"",
+        "last_modified": "Wed, 23 Sep 2026 22:24:21 GMT",
+        "sha256": null
+      },
+      "content": {
+        "format": "xlsx",
+        "scope": "Complete original workbook, without running macros/formulas or following external connections.",
+        "fields": [
+          "Current and proposed generator status and capacity; retired generators; exact workbook columns/sheets not inspected."
+        ]
+      },
+      "extent": {
+        "size_bytes": 13955142,
+        "size_basis": "HTTP_HEAD_content_length_only",
+        "record_count": null,
+        "file_count": 1
+      },
+      "rights": {
+        "status": "public_domain_policy",
+        "license": "EIA-public-domain-policy",
+        "license_url": "https://www.eia.gov/about/copyrights_reuse.php",
+        "primary_evidence": [
+          {
+            "url": "https://www.eia.gov/electricity/data/eia860m/",
+            "locator": "Data downloads and scope; copyright note for LBNL data file"
+          },
+          {
+            "url": "https://www.eia.gov/about/copyrights_reuse.php",
+            "locator": "Public domain and reuse / data-file copyright notice"
+          }
+        ],
+        "private_retention": "permitted_subject_to_conditions",
+        "public_redistribution": "permitted_subject_to_conditions",
+        "conditions": [
+          "Acknowledge U.S. Energy Information Administration and publication date. Separate private-contributed/protected material and trademarks."
+        ],
+        "exclusions": [
+          "No extension to third-party photos/content, logos or linked raw data outside the stated product."
+        ]
+      },
+      "history": {
+        "availability": "Monthly archive listed July 2015–August 2026; present vintage may be silently corrected. Annual EIA-860 is final reference.",
+        "restriction": "Historical /archive/ paths and the linked codes workbook fall under robots disallow; hold automated retrieval until a permitted route or explicit publisher clearance is established."
+      },
+      "access": {
+        "auth": "none observed",
+        "status": "HTTP_200_HEAD",
+        "robots_url": "https://www.eia.gov/robots.txt",
+        "robots_status": "current_selected_path_allowed; archive_paths_disallowed",
+        "range_support": "Accept-Ranges: bytes advertised; actual 206/Content-Range consistency untested"
+      },
+      "mapping": {
+        "status": "not_canonically_admitted",
+        "raw_preservation_blocker": false,
+        "requirements": [
+          "Separate generation supply from AI load; no automatic AI attribution.",
+          "Track plant/generator or operator/request IDs and vintages, pending/withdrawn/operational stages, hybrid components and capacity denominators."
+        ]
+      },
+      "preservation": {
+        "readiness": "rights_clear_reviewed_transfer_extension_needed",
+        "archive_status": "not_acquired",
+        "blocker": "Exceeds current tested 10 MiB artifact bound; requires separately reviewed artifact-specific larger total ceiling and bounded transfer/readback path. Not a permanent retention or rights limit.",
+        "canonical_mapping_blocks_preservation": false
+      }
+    },
+    {
+      "artifact_id": "EDB007-queued-up-2026-workbook",
+      "source_ids": [
+        "GL003",
+        "GL030",
+        "EDB007"
+      ],
+      "domain": "development_resources",
+      "title": "Queued Up 2026 complete project-level workbook",
+      "original_url": "https://eta-publications.lbl.gov/sites/default/files/2026-05/lbnl_ix_queue_data_file_thru2025.xlsx",
+      "source_version": {
+        "kind": "dated_mutable_file",
+        "observed_at": "2026-10-08T22:33:09.362818+00:00",
+        "etag": "\"69fcd4cb-ed9924\"",
+        "last_modified": "Thu, 07 May 2026 18:07:07 GMT",
+        "sha256": null
+      },
+      "content": {
+        "format": "xlsx",
+        "scope": "Complete original workbook, without running macros/formulas or following external connections.",
+        "fields": [
+          "Full project-level interconnection queue dataset through 2025; data dictionary; 36 additional summary tabs, per publisher description. Exact columns/row counts not inspected."
+        ]
+      },
+      "extent": {
+        "size_bytes": 15571236,
+        "size_basis": "HTTP_HEAD_content_length_only",
+        "record_count": null,
+        "file_count": 1
+      },
+      "rights": {
+        "status": "explicit_data_license",
+        "license": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "primary_evidence": [
+          {
+            "url": "https://eta.lbl.gov/publications/queued-2026-edition-characteristics",
+            "locator": "Data downloads and scope; copyright note for LBNL data file"
+          },
+          {
+            "url": "https://eta.lbl.gov/publications/queued-2026-edition-characteristics",
+            "locator": "Public domain and reuse / data-file copyright notice"
+          }
+        ],
+        "private_retention": "permitted_subject_to_conditions",
+        "public_redistribution": "permitted_subject_to_conditions",
+        "conditions": [
+          "Credit Lawrence Berkeley National Laboratory and GridTracker; retain copyright and supplied notices; link CC BY 4.0; indicate modifications."
+        ],
+        "exclusions": [
+          "No extension to third-party photos/content, logos or linked raw data outside the stated product."
+        ]
+      },
+      "history": {
+        "availability": "Annual editions; this explicit May 2026 workbook ends at 2025. Historic file URLs not enumerated.",
+        "preserve": "Keep complete original workbook, codebook and all tabs at each permitted edition; link revisions rather than summing repeated projects."
+      },
+      "access": {
+        "auth": "none observed",
+        "status": "HTTP_200_HEAD",
+        "robots_url": "https://eta-publications.lbl.gov/robots.txt",
+        "robots_status": "checked_no_matching_disallow_for_selected_file",
+        "range_support": "Accept-Ranges: bytes advertised; actual 206/Content-Range consistency untested"
+      },
+      "mapping": {
+        "status": "not_canonically_admitted",
+        "raw_preservation_blocker": false,
+        "requirements": [
+          "Separate generation supply from AI load; no automatic AI attribution.",
+          "Track plant/generator or operator/request IDs and vintages, pending/withdrawn/operational stages, hybrid components and capacity denominators."
+        ]
+      },
+      "preservation": {
+        "readiness": "rights_clear_reviewed_transfer_extension_needed",
+        "archive_status": "not_acquired",
+        "blocker": "Exceeds current tested 10 MiB artifact bound; requires separately reviewed artifact-specific larger total ceiling and bounded transfer/readback path. Not a permanent retention or rights limit.",
+        "canonical_mapping_blocks_preservation": false
+      }
+    }
+  ],
+  "rights_access_holds": [
+    {
+      "source_ids": [
+        "GL004",
+        "BD005"
+      ],
+      "name": "METR TH1.0/TH1.1 raw-run originals at March correction and its parent",
+      "status": "held_artifact_rights",
+      "exact_artifacts": [
+        {
+          "artifact_id": "GL004-time-horizon-1-0-52cb829",
+          "version": "52cb829c7a2efb2d659285c4b1768d191d97f8d2",
+          "source_path": "reports/time-horizon-1-0/data/raw/runs.jsonl",
+          "direct_artifact_url": "https://raw.githubusercontent.com/METR/eval-analysis-public/52cb829c7a2efb2d659285c4b1768d191d97f8d2/reports/time-horizon-1-0/data/raw/runs.jsonl",
+          "git_blob_sha1": "19f2b1f2619543c4b5c88b3031f852084ce92f99",
+          "publisher_git_blob_bytes": 24022538,
+          "body_sha256": null
+        },
+        {
+          "artifact_id": "GL004-time-horizon-1-0-571a941",
+          "version": "571a941b2336c417731001229281a5d2202c1e0e",
+          "source_path": "reports/time-horizon-1-0/data/raw/runs.jsonl",
+          "direct_artifact_url": "https://raw.githubusercontent.com/METR/eval-analysis-public/571a941b2336c417731001229281a5d2202c1e0e/reports/time-horizon-1-0/data/raw/runs.jsonl",
+          "git_blob_sha1": "19f2b1f2619543c4b5c88b3031f852084ce92f99",
+          "publisher_git_blob_bytes": 24022538,
+          "body_sha256": null
+        },
+        {
+          "artifact_id": "GL004-time-horizon-1-1-52cb829",
+          "version": "52cb829c7a2efb2d659285c4b1768d191d97f8d2",
+          "source_path": "reports/time-horizon-1-1/data/raw/runs.jsonl",
+          "direct_artifact_url": "https://raw.githubusercontent.com/METR/eval-analysis-public/52cb829c7a2efb2d659285c4b1768d191d97f8d2/reports/time-horizon-1-1/data/raw/runs.jsonl",
+          "git_blob_sha1": "0a22eb1fcadcbdafbbabcf84e1121d7b59cc57ee",
+          "publisher_git_blob_bytes": 15008064,
+          "body_sha256": null
+        },
+        {
+          "artifact_id": "GL004-time-horizon-1-1-571a941",
+          "version": "571a941b2336c417731001229281a5d2202c1e0e",
+          "source_path": "reports/time-horizon-1-1/data/raw/runs.jsonl",
+          "direct_artifact_url": "https://raw.githubusercontent.com/METR/eval-analysis-public/571a941b2336c417731001229281a5d2202c1e0e/reports/time-horizon-1-1/data/raw/runs.jsonl",
+          "git_blob_sha1": "37de3f39ff4fdf0ba2feb4538da368d71dac0162",
+          "publisher_git_blob_bytes": 13105640,
+          "body_sha256": null
+        }
+      ],
+      "blockers": [
+        "No effective artifact-specific raw-run reuse/retention grant verified. The complete 91-entry pinned repository tree has no LICENSE despite the README referring to one."
+      ],
+      "unblock": "Resolve artifact-specific raw-data grant and legitimate exact transfer route; then preserve full originals independently of canonical mapping.",
+      "canonical_mapping_is_separate": true,
+      "rights": {
+        "status": "unknown_hold",
+        "declaration_url": "https://github.com/METR/eval-analysis-public/blob/52cb829c7a2efb2d659285c4b1768d191d97f8d2/README.md",
+        "private_retention": "Off-platform complete retention not cleared by this review; absence of a license is not a finding that all copying is unlawful.",
+        "redistribution": "Not cleared. Public hosting and a citation request are insufficient.",
+        "conditions_to_resolve": [
+          "Explicit raw-run scope",
+          "Historical blob/version coverage",
+          "Retention versus redistribution",
+          "Required attribution/notices and any use limits"
+        ],
+        "platform_terms_limit": "GitHub public viewing/forking through the service is not a blanket off-platform data license."
+      },
+      "history": {
+        "correction_commit": "52cb829c7a2efb2d659285c4b1768d191d97f8d2",
+        "parent_commit": "571a941b2336c417731001229281a5d2202c1e0e",
+        "current_pair_git_blob_bytes": 39030602,
+        "unique_blobs_across_pair_and_parent": 3,
+        "unique_git_blob_bytes_across_pair_and_parent": 52136242,
+        "deduplication": "TH1.0 has the identical 19f2b1f… blob at both refs. TH1.1 changes from 37de3f… (13,105,640 bytes) to 0a22eb… (15,008,064 bytes). Preserve one copy per content hash plus both version edges.",
+        "fitting_revision": "Reviewed correction changes regularization 0.1 to 0.00001; this commit also adds runs/models, so not every output change is caused by fitting.",
+        "coverage": "Reviewed TH1 historical models 2019–Nov 2025 and TH1.1 2026; these repository pins do not establish complete present dashboard coverage."
+      }
+    },
+    {
+      "source_ids": [
+        "GL005",
+        "BD003"
+      ],
+      "name": "LiveBench compact original judgment Parquet and historical replacement",
+      "status": "held_artifact_license_and_pinned_transfer_verification",
+      "exact_artifacts": [
+        {
+          "artifact_id": "GL005-model-judgment-9704e5d",
+          "version": "9704e5da7bfbefe75ac1482a13de827127295993",
+          "source_path": "data/leaderboard-00000-of-00001.parquet",
+          "direct_artifact_url": null,
+          "observed_artifact_page_url": "https://huggingface.co/datasets/livebench/model_judgment/blob/main/data/leaderboard-00000-of-00001.parquet",
+          "observed_revision_url": "https://huggingface.co/datasets/livebench/model_judgment/commit/9704e5da7bfbefe75ac1482a13de827127295993",
+          "publisher_lfs_sha256": "35ad896970151776145c96b31c5ddb3a2749ea9a1d91e6b7f1a4c4c04735182a",
+          "publisher_file_bytes": 737444,
+          "publisher_reported_records": 60372,
+          "independently_counted_records": null,
+          "direct_url_status": "Not verified; pinned page requests returned tool access errors."
+        }
+      ],
+      "blockers": [
+        "Official datasheet grants Apache-2.0 to the benchmark suite, but the specific model_judgment dataset card has no license declaration; scope over this score-export artifact remains unresolved.",
+        "Pinned Parquet blob page and HF API could not be read with this tool. Exact direct download URL and complete body transfer were not verified; no substitute URL claimed as observed."
+      ],
+      "unblock": "Resolve artifact-specific raw-data grant and legitimate exact transfer route; then preserve full originals independently of canonical mapping.",
+      "canonical_mapping_is_separate": true,
+      "rights": {
+        "status": "suite_declaration_verified; judgment_artifact_scope_unresolved",
+        "suite_statement_url": "https://github.com/LiveBench/LiveBench/blob/5556d06c5fcc2c1a34fc786f3e334fa3ef96080f/docs/DATASHEET.md",
+        "suite_statement_blob_sha1": "b8511f6682dd045d077c1bb45745b4bcb9859b74",
+        "judgment_card_url": "https://huggingface.co/datasets/livebench/model_judgment/blob/main/README.md",
+        "private_retention": "Publisher documents downloading judgments; HF public-repository terms provide rights through its services. Off-platform archival scope is not treated as conclusively cleared here.",
+        "redistribution": "Hold until judgment export license scope is resolved; do not inherit answer/question or repository software licenses.",
+        "platform_terms_url": "https://huggingface.co/terms-of-service",
+        "platform_terms_scope": "Public content grant is framed through services/functionality, and accompanying licenses continue to apply. Not used as blanket external-redistribution clearance."
+      },
+      "history": {
+        "observed_history_url": "https://huggingface.co/datasets/livebench/model_judgment/commits/main",
+        "observed_history_entries": 13,
+        "observed_history_range": [
+          "2024-06-12",
+          "2025-04-07"
+        ],
+        "previous_revision_short": "5896e3b",
+        "previous_full_revision": null,
+        "previous_reported_records": 93624,
+        "previous_lfs_bytes": 1152090,
+        "previous_lfs_sha256": "8f490d557d86b5dab0da9db1169142f69ebe69907fbaba361b4f00e4fe4f171d",
+        "qualification": "Previous values are explicitly visible as removed lines in the 9704e5d primary commit diff; previous full revision not verified.",
+        "preservation_reason": "The latest visible export shrinks relative to its parent. Do not overwrite historical blobs or equate this Apr 2025 upload with complete 2026 leaderboard coverage."
+      }
+    },
+    {
+      "source_ids": [
+        "GL011"
+      ],
+      "name": "FRI XPT complete replication data",
+      "status": "hold_artifact_specific_data_rights",
+      "exact_artifacts": [],
+      "blockers": [
+        "The exact MIT grant covers software and associated documentation; reviewed evidence did not establish a CSV-specific or report-specific grant. Public availability alone is not affirmative blanket redistribution clearance. This is not a claim that the package lacks a license."
+      ],
+      "unblock": "Resolve the grant applicable to packaged respondent CSVs and enumerate their exact pinned paths/manifest through primary documentation. No outreach sent.",
+      "canonical_mapping_is_separate": true,
+      "observed_official_routes": [
+        "https://github.com/forecastingresearch/xpt-lib/tree/replication/data"
+      ],
+      "version": "251acb5254448c9bdb4caa4b5011481c2c149aef",
+      "history": "Use immutable commit, not floating replication branch. Earlier commits and complete response-file manifest not reviewed here."
+    },
+    {
+      "source_ids": [
+        "GL037"
+      ],
+      "name": "MIT AI Risk Repository full database workbook",
+      "status": "hold_export_route_and_version",
+      "exact_artifacts": [],
+      "blockers": [
+        "Dataset-specific CC BY 4.0 is verified, but no legitimate full export and immutable version was established. Publisher-linked workbook routes did not yield a verified artifact."
+      ],
+      "unblock": "Read-only resolve an official no-auth full workbook/download route and version metadata, then check that host robots/terms and headers. Exact URLs above were extracted from official HTML, not guessed.",
+      "canonical_mapping_is_separate": true,
+      "observed_official_routes": [
+        "https://airisk.mit.edu/risks",
+        "https://docs.google.com/spreadsheets/d/15LeHcpeuZC9txkvcaMoh3sUhkMvdMMry69xxXL46DT0/copy"
+      ],
+      "rights": {
+        "license": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "evidence_url": "https://airisk.mit.edu/risks",
+        "locator": "Footer licenses MIT AI Risk Initiative data; page explicitly offers full database copying/downloading.",
+        "private_retention": "Licensed database content can be retained when legitimate full artifact route resolves.",
+        "redistribution": "MIT-licensed data may be redistributed with attribution; this does not confer rights to entire cited papers or separately linked third-party materials."
+      },
+      "history": "Living workbook may change; release/update history alone is not an immutable historical dataset manifest. Retain publisher versions when actually observed; do not manufacture historical exports."
+    },
+    {
+      "source_ids": [
+        "GL010"
+      ],
+      "name": "AI Impacts respondent responses and ESPAI2024 attachments",
+      "status": "hold_artifact_specific_rights_and_prior_access_failure",
+      "exact_artifacts": [],
+      "blockers": [
+        "Prior questionnaire failure is inherited evidence and intentionally not retried. No response rows acquired, login, or bypass."
+      ],
+      "unblock": "Obtain artifact-specific primary license/scope and a legitimate accessible route. Keep 2024 administered wording/horizons unresolved; no 2023 substitutions.",
+      "canonical_mapping_is_separate": true,
+      "observed_official_routes": [
+        "https://docs.google.com/spreadsheets/d/1aOydfhZHuVwU_fwTgE0_O_-8p-uMrRDYV5R5QnwOMGI/edit",
+        "https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf",
+        "https://aiimpacts.org/wp-content/uploads/2026/09/2024-Expert-Survey-on-Progress-in-AI.pdf"
+      ],
+      "rights_note": "Research-page CC0 footer does not establish license inheritance to separately hosted Sheet/PDF attachments; blog posts explicitly excluded. arXiv paper license is not transferable to these artifacts."
+    }
+  ],
+  "prior_exact_rights_holds": [
+    {
+      "catalog_id": "IPP002",
+      "catalog_path": "data/evidence-program/research/inference-price-performance.json",
+      "artifact_pointer": "/collections/1/artifacts/0",
+      "original_url": "https://github.com/ml-energy/leaderboard/blob/7885788e837b80ad172e02e6e8c47e8d0b85520e/public/data/tasks/gpqa.json",
+      "version": "7885788e837b80ad172e02e6e8c47e8d0b85520e",
+      "retention_status": "held_artifact_specific_raw_rights",
+      "blockers": [
+        "Compiled GPQA JSON applicability remains unresolved.",
+        "Actual run dates, immutable model/checkpoint identity, achieved quality and export-to-run provenance remain unknown."
+      ],
+      "scope_note": "These exact targets remain held; this does not restrict distinct Epoch GL001/GL002/GL003 data-specific grants or all licensed full-content collection."
+    },
+    {
+      "catalog_id": "TD001",
+      "catalog_path": "data/evidence-program/research/training-data-feedback.json",
+      "artifact_pointer": "/collections/0/artifacts/0",
+      "original_url": "https://github.com/commoncrawl/cc-crawl-statistics/blob/1053c982a91ba0bb4323c5f00ec3230d9cd54e4b/plots/languages.csv",
+      "version": "1053c982a91ba0bb4323c5f00ec3230d9cd54e4b",
+      "retention_status": "held_artifact_specific_raw_rights",
+      "blockers": [
+        "Aggregate-file/version/intended-use applicability remains unresolved.",
+        "Lossless canonical mapping remains separate and unperformed."
+      ],
+      "scope_note": "These exact targets remain held; this does not restrict distinct Epoch GL001/GL002/GL003 data-specific grants or all licensed full-content collection."
+    },
+    {
+      "catalog_id": "TD001",
+      "catalog_path": "data/evidence-program/research/training-data-feedback.json",
+      "artifact_pointer": "/collections/0/artifacts/1",
+      "original_url": "https://github.com/commoncrawl/cc-crawl-statistics/blob/1053c982a91ba0bb4323c5f00ec3230d9cd54e4b/plots/crawlsize/monthly.csv",
+      "version": "1053c982a91ba0bb4323c5f00ec3230d9cd54e4b",
+      "retention_status": "held_artifact_specific_raw_rights",
+      "blockers": [
+        "Aggregate-file/version/intended-use applicability remains unresolved.",
+        "Lossless canonical mapping remains separate and unperformed."
+      ],
+      "scope_note": "These exact targets remain held; this does not restrict distinct Epoch GL001/GL002/GL003 data-specific grants or all licensed full-content collection."
+    },
+    {
+      "catalog_id": "TD002",
+      "catalog_path": "data/evidence-program/research/training-data-feedback.json",
+      "artifact_pointer": "/collections/1/artifacts/0",
+      "original_url": "https://github.com/Data-Provenance-Initiative/Data-Provenance-Collection/blob/ce6662deccf011574427b6f112df479d261960b8/data_summaries/_template.json",
+      "version": "ce6662deccf011574427b6f112df479d261960b8",
+      "retention_status": "held_artifact_specific_raw_rights",
+      "blockers": [
+        "Metadata grant applicability remains unresolved.",
+        "Per-record ancestry and exact historical Consent panel locator/schema/access/rights remain unresolved."
+      ],
+      "scope_note": "These exact targets remain held; this does not restrict distinct Epoch GL001/GL002/GL003 data-specific grants or all licensed full-content collection."
+    },
+    {
+      "catalog_id": "TD002",
+      "catalog_path": "data/evidence-program/research/training-data-feedback.json",
+      "artifact_pointer": "/collections/1/artifacts/1",
+      "original_url": "https://github.com/Data-Provenance-Initiative/Data-Provenance-Collection/blob/ce6662deccf011574427b6f112df479d261960b8/data_summaries/Alpaca.json",
+      "version": "ce6662deccf011574427b6f112df479d261960b8",
+      "retention_status": "held_artifact_specific_raw_rights",
+      "blockers": [
+        "Metadata grant applicability remains unresolved.",
+        "Per-record ancestry and exact historical Consent panel locator/schema/access/rights remain unresolved."
+      ],
+      "scope_note": "These exact targets remain held; this does not restrict distinct Epoch GL001/GL002/GL003 data-specific grants or all licensed full-content collection."
+    },
+    {
+      "catalog_id": "TD004",
+      "catalog_path": "data/evidence-program/research/training-data-feedback.json",
+      "artifact_pointer": "/collections/3/artifacts/0",
+      "original_url": "https://github.com/huggingface/fineweb-2/blob/d0defb24f193bb9a5a11b8b14524a03c4858e1b6/fineweb2-language-distribution.csv",
+      "version": "d0defb24f193bb9a5a11b8b14524a03c4858e1b6",
+      "retention_status": "held_artifact_specific_raw_rights",
+      "blockers": [
+        "Statistics-CSV applicability remains unresolved.",
+        "Exact statistical/paper denominator bridge, subset processing differences and cross-corpus overlap remain unresolved."
+      ],
+      "scope_note": "These exact targets remain held; this does not restrict distinct Epoch GL001/GL002/GL003 data-specific grants or all licensed full-content collection."
+    },
+    {
+      "catalog_id": "IPP003",
+      "catalog_path": "data/evidence-program/research/inference-price-performance.json",
+      "artifact_pointer": "/collections/2/artifacts/0",
+      "original_url": "https://github.com/epoch-research/llm-benchmark-efficiency/blob/34b923314338360d1b1bbed6ec30d9299e54fdae/data/epoch_ai_eval_data.csv",
+      "version": "34b923314338360d1b1bbed6ec30d9299e54fdae",
+      "retention_status": "held_artifact_specific_raw_rights",
+      "blockers": [
+        "Historical original-Epoch grant applicability remains unresolved.",
+        "AA/other mixed-field rights and exact row-level score/version provenance remain unresolved.",
+        "No full-file SHA-256 or runtime row membership established."
+      ],
+      "scope_note": "These exact targets remain held; this does not restrict distinct Epoch GL001/GL002/GL003 data-specific grants or all licensed full-content collection."
+    },
+    {
+      "catalog_id": "IPP003",
+      "catalog_path": "data/evidence-program/research/inference-price-performance.json",
+      "artifact_pointer": "/collections/2/artifacts/1",
+      "original_url": "https://github.com/epoch-research/llm-benchmark-efficiency/blob/34b923314338360d1b1bbed6ec30d9299e54fdae/data/epoch_ai_price_data_not_in_aa_with_benchmarks.csv",
+      "version": "34b923314338360d1b1bbed6ec30d9299e54fdae",
+      "retention_status": "held_artifact_specific_raw_rights",
+      "blockers": [
+        "Historical original-Epoch grant applicability remains unresolved.",
+        "AA/other mixed-field rights and exact row-level score/version provenance remain unresolved.",
+        "No full-file SHA-256 or runtime row membership established."
+      ],
+      "scope_note": "These exact targets remain held; this does not restrict distinct Epoch GL001/GL002/GL003 data-specific grants or all licensed full-content collection."
+    },
+    {
+      "catalog_id": "IPP003",
+      "catalog_path": "data/evidence-program/research/inference-price-performance.json",
+      "artifact_pointer": "/collections/2/artifacts/2",
+      "original_url": "https://github.com/epoch-research/llm-benchmark-efficiency/blob/34b923314338360d1b1bbed6ec30d9299e54fdae/data/aa_data_with_math5.csv",
+      "version": "34b923314338360d1b1bbed6ec30d9299e54fdae",
+      "retention_status": "held_artifact_specific_raw_rights",
+      "blockers": [
+        "Historical original-Epoch grant applicability remains unresolved.",
+        "AA/other mixed-field rights and exact row-level score/version provenance remain unresolved.",
+        "No full-file SHA-256 or runtime row membership established."
+      ],
+      "scope_note": "These exact targets remain held; this does not restrict distinct Epoch GL001/GL002/GL003 data-specific grants or all licensed full-content collection."
+    },
+    {
+      "catalog_id": "AE002",
+      "catalog_path": "data/evidence-program/research/algorithmic-efficiency.json",
+      "artifact_pointer": "/collections/1/artifacts/2",
+      "original_url": "https://github.com/KellerJordan/modded-nanogpt/blob/4ea6b937337a4889b8cfe3f38a93d120048d8f71/records/track_3_optimization/results/51ece938-03c5-4343-8dcc-3f3336b07008.txt",
+      "version": "4ea6b937337a4889b8cfe3f38a93d120048d8f71",
+      "retention_status": "held_artifact_specific_raw_rights",
+      "blockers": [
+        "Contributed log/component applicability remains unresolved.",
+        "Separate timing convention, claimed-versus-rerun outcome and performance questions remain outside this pass."
+      ],
+      "scope_note": "These exact targets remain held; this does not restrict distinct Epoch GL001/GL002/GL003 data-specific grants or all licensed full-content collection."
+    }
+  ],
+  "scientific_status": {
+    "canonical_admission": false,
+    "independent_replication": false,
+    "pdoom_conversion": false,
+    "production_dataset_import": false,
+    "preserve_source_uncertainty": true
+  }
+}
