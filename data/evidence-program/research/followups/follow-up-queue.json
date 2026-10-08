@@ -1,12 +1,12 @@
 {
   "title": "Follow-up research queue",
-  "snapshot_at": "2026-10-08T16:24:00Z",
+  "snapshot_at": "2026-10-08T17:48:00Z",
   "original_session_count": 26,
   "original_session_queue": "docs/evidence-program/research/research-session-review-queue.md",
   "received_bundle_count": 7,
   "received_file_count": 18,
   "new_prompt_count": 7,
-  "distinction": "Three earlier reviewed bundles and completed labor follow-up A remain distinct from experimental follow-up B, whose reviewed delta is included in this candidate. C starts separate review; D remains queued. Delivery, documentary review, candidate inclusion and verified remote integration are separate.",
+  "distinction": "Three earlier reviewed bundles and integrated A/labor and B/experimental deltas remain distinct from C/safeguard, whose independently reviewed delta is included in this candidate. D starts its separate model/tariff review. Delivery, documentary review, candidate inclusion and verified remote integration are separate.",
   "bundles": [
     {
       "sequence": 1,
@@ -298,12 +298,12 @@
       "review_status": "review_complete_with_residual_holds",
       "review_started": true,
       "review_complete": true,
-      "integration_status": "reviewed_delta_included_in_this_candidate",
+      "integration_status": "merged_and_postmerge_verified",
       "substantive_findings_included": true,
       "reviewed_fact_records": 43,
       "operational_admission": "not_admitted",
       "collector_enabled": false,
-      "next_action": "Independently review this candidate, then verify publication and exact-commit CI/merge. Preserve execution/statistic/generation, comparability, rights, publisher disposition and lossless-mapping/admission holds; review C separately.",
+      "next_action": "Preserve execution/statistic/generation, comparability, rights, publisher disposition and lossless-mapping/admission holds. B research integration is present at the recorded merge; source evidence is unchanged.",
       "review_starting_points": [
         "Reconcile unread main and supplied AP002/NR007 overlap.",
         "Separate declared METR HC3 methods from historical execution and cross-wave comparability.",
@@ -347,6 +347,16 @@
         "repository_access_resolved": true,
         "lossless_mapping_held": true,
         "full_canonical_validation_run": false
+      },
+      "prior_integration_status_preserved": "reviewed_delta_included_in_this_candidate",
+      "integration_pr_url": "https://github.com/mishakgg/pdoom-live/pull/340",
+      "integration_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5",
+      "postmerge_checks_observed_at": "2026-10-08T17:46:41Z",
+      "postmerge_checks": {
+        "test": "success",
+        "browser": "success",
+        "image": "success",
+        "evidence-program": "success"
       }
     },
     {
@@ -377,7 +387,8 @@
           "bytes": 6047,
           "sha256": "4f60524f67c258233495630461d67bb4b26f4672fd2708395a464982adfd6bd7",
           "hash_scope": "entire_submitted_file_bytes",
-          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+          "content_assessment": "independently_reviewed_at_linked_delta_scope_original_hash_preserved",
+          "intake_content_assessment_preserved": "receipt_and_readability_only_not_primary_source_verification"
         },
         {
           "artifact_role": "typed_research_evidence_ledger",
@@ -385,7 +396,8 @@
           "bytes": 586306,
           "sha256": "905eda64dd6546412769b8e9befc15b8716776c5e2c50102c355fdf3395b64a4",
           "hash_scope": "entire_submitted_file_bytes",
-          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+          "content_assessment": "independently_reviewed_at_linked_delta_scope_original_hash_preserved",
+          "intake_content_assessment_preserved": "receipt_and_readability_only_not_primary_source_verification"
         },
         {
           "artifact_role": "supporting_decision_report_pdf",
@@ -393,19 +405,20 @@
           "bytes": 81340,
           "sha256": "96f9fbf5af2c6865bb0617184835e9a0c33e003b3a059325613e2ca3a34de17d",
           "hash_scope": "entire_submitted_file_bytes",
-          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+          "content_assessment": "independently_reviewed_at_linked_delta_scope_original_hash_preserved",
+          "intake_content_assessment_preserved": "receipt_and_readability_only_not_primary_source_verification"
         }
       ],
       "intake_manifest_sha256": "1e4ba3030c6bab7bd0440f90219b941d9c8b4e996b29dc24bc4ba89be8a4f935",
-      "review_status": "in_progress",
+      "review_status": "review_complete_with_residual_holds",
       "review_started": true,
-      "review_complete": false,
-      "integration_status": "pending_substantive_review",
-      "substantive_findings_included": false,
-      "reviewed_fact_records": 0,
+      "review_complete": true,
+      "integration_status": "reviewed_delta_included_in_this_candidate",
+      "substantive_findings_included": true,
+      "reviewed_fact_records": 27,
       "operational_admission": "not_admitted",
       "collector_enabled": false,
-      "next_action": "Review C separately after completed bounded A/B source reviews. Reconcile CaMeL, AISI and Apollo lineage while preserving reported-versus-executed distinctions. No C findings are included in this candidate.",
+      "next_action": "Independently review this candidate, then verify remote publication and exact-commit CI/merge. Preserve all six hold groups; D model/tariff research starts separately.",
       "review_starting_points": [
         "Preserve reported CaMeL count separately from unresolved scoring/interval generation/runtime lineage.",
         "Preserve AISI failure, intervention and unknown final outcome as separate assertions.",
@@ -421,11 +434,39 @@
         "later_changes_reconciled": false,
         "interpretation": "The submission reports inaccessible repository context. This is historical source-reported context, not proof of current repository inaccessibility or missing files; reconcile during review."
       },
-      "review_claim_limit": "The report and typed ledger are externally submitted research artifacts, not independently verified primary-source evidence. Claimed checks, acceptance cases and upstream hashes remain unverified by this intake.",
+      "review_claim_limit": "Bounded documentary findings and corrected dispositions are independently reviewed. Submitted null repository access and failed reads remain historical. Static code evidence is not source execution; 35 manual cases and 47 synthetic native-contract probes are not a real-source canonical bundle or replicated safety evaluation.",
       "review_after": [
         "bundle-a",
         "bundle-b"
-      ]
+      ],
+      "original_sessions": [
+        3,
+        13,
+        21
+      ],
+      "review_completed_window_utc": [
+        "2026-10-08T17:03:00Z",
+        "2026-10-08T17:17:00Z"
+      ],
+      "delta_path": "data/evidence-program/research/followups/safeguard-lineage-review.json",
+      "guide_path": "docs/evidence-program/research/followups/safeguard-lineage-review.md",
+      "contract_mapping_path": "data/evidence-program/research/followups/safeguard-lineage-review-contract-mapping.json",
+      "reviewed_fact_records_scope": "27 source-observation records with historical submitted content and separate current dispositions; not 27 newly verified independent results. Seven accepted findings, seven corrections and six hold groups are separate.",
+      "source_artifact_records": 15,
+      "submitted_manual_semantic_cases": 32,
+      "current_manual_semantic_cases": 35,
+      "synthetic_native_contract_probes": 47,
+      "submitted_conflict_records": 4,
+      "lineage_edges": 14,
+      "residual_holds_remain": true,
+      "hold_groups": 6,
+      "reviewer_current_repository_context": {
+        "inspected_commit": "58de347f57cf37dd9e6495b433b45b3501cc3de1",
+        "integration_base_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5",
+        "repository_access_resolved": true,
+        "lossless_mapping_held": true,
+        "real_source_canonical_validation_run": false
+      }
     },
     {
       "sequence": 7,
@@ -480,15 +521,15 @@
         }
       ],
       "intake_manifest_sha256": "913d9073a55f45f724ecf4ab3e457b951c8cae08cff87fd70241a4c0dd789aa4",
-      "review_status": "queued",
-      "review_started": false,
+      "review_status": "in_progress",
+      "review_started": true,
       "review_complete": false,
       "integration_status": "pending_substantive_review",
       "substantive_findings_included": false,
       "reviewed_fact_records": 0,
       "operational_admission": "not_admitted",
       "collector_enabled": false,
-      "next_action": "After A/B/C, reconcile Azure lifecycle assertions and DeepSeek tariff/alias evidence with current contracts and prior reviews, then record accepted/held/rejected claims and follow-up actions before integration.",
+      "next_action": "Review D separately after bounded A/B/C source reviews. Reconcile Azure lifecycle and DeepSeek tariff/alias evidence, keeping conflicting dates, exact prices and null boundaries separate. No D findings are adopted in this candidate.",
       "review_starting_points": [
         "Keep conflicting Azure dates as separate assertions until explicit scope/version evidence resolves them.",
         "Distinguish documented vocabulary from observed API lifecycle state.",
@@ -571,13 +612,14 @@
       "submission_id": "bundle-b",
       "received_at": "2026-10-08T15:01:30Z",
       "reviewed_delta_path": "data/evidence-program/research/followups/experimental-effects-review.json",
-      "integration_status": "reviewed_delta_included_in_this_candidate"
+      "integration_status": "merged_and_postmerge_verified",
+      "integration_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5"
     },
     {
       "sequence": 3,
       "title": "Resolve hosted-model and tariff events",
       "path": "docs/evidence-program/research/followups/prompts/03-resolve-model-tariff-events.txt",
-      "status": "research_output_received_review_queued",
+      "status": "research_output_received_review_in_progress",
       "delivered_at": "2026-10-08T11:11:00Z",
       "delivery_time_precision": "minute",
       "research_output_received": true,
@@ -606,7 +648,7 @@
       "sequence": 4,
       "title": "Verify safeguard and evaluator lineage",
       "path": "docs/evidence-program/research/followups/prompts/04-verify-safeguard-evaluator-lineage.txt",
-      "status": "research_output_received_review_in_progress",
+      "status": "research_output_received_review_complete_with_residual_holds",
       "delivered_at": "2026-10-08T11:11:00Z",
       "delivery_time_precision": "minute",
       "research_output_received": true,
@@ -624,7 +666,9 @@
       "content_preserved_from_delivered_prompt": true,
       "session_execution_status": "externally_reported_complete_not_independently_verified",
       "submission_id": "bundle-c",
-      "received_at": "2026-10-08T15:09:02Z"
+      "received_at": "2026-10-08T15:09:02Z",
+      "reviewed_delta_path": "data/evidence-program/research/followups/safeguard-lineage-review.json",
+      "integration_status": "reviewed_delta_included_in_this_candidate"
     },
     {
       "sequence": 5,
@@ -697,11 +741,11 @@
   "canonical_contract_mapping": "pending_separate_review",
   "original_reviews_integrated": 26,
   "original_queue_integration_commit": "972f2bbdc3e123c83ce9ea695c9f265fe6720032",
-  "snapshot_scope": "Additive experimental research candidate after independent source-review clearance; five linked reviewed deltas, including labor A already merged at the verified base. C starts separately, D stays queued; prompts 5–7 have no returned output at their last receipt snapshot. No canonical admission or B remote merge is claimed.",
-  "reviewed_bundle_count": 5,
+  "snapshot_scope": "Additive safeguard research candidate after independent source clearance; six reviewed deltas, A and B retained on the hash-verified current base. D starts separately; prompts 5–7 keep their prior no-result receipt snapshot. No canonical admission or C remote merge is claimed.",
+  "reviewed_bundle_count": 6,
   "reviewed_findings_included": true,
   "unreviewed_supplied_claims_adopted": false,
-  "claim_adoption_rule": "Only independently reviewed findings and explicit limitations from the five linked deltas are included. Unreviewed C/D reports, receipt hashes and prompt delivery do not establish source truth, contract compatibility or completed checks.",
+  "claim_adoption_rule": "Only independently reviewed findings and explicit limitations from the six linked deltas are included. Unreviewed D findings, receipt hashes and prompt delivery do not establish source truth, lossless contract compatibility or completed checks.",
   "original_queue_reconciliation_commit": "8b6fa1f9b389a625fa44c0656e3de47c509bff9a",
   "deep_result_bundle_count": 4,
   "deep_result_file_count": 12,
@@ -709,7 +753,7 @@
   "intake_index_sha256": "9abc8254d73a7ed115adec19edee99954b56484749b8ddbfa2ea90bbbe8f97a3",
   "review_order": "bundle-a (prompt 1), bundle-b (prompt 2), bundle-c (prompt 4), bundle-d (prompt 3); review in arrival order.",
   "repository_context_for_this_queue_update": {
-    "base_commit": "de11304cf65bb4798e4691b81d588a214246d63e",
-    "scope": "Hash-verified scoped current-main files including merged labor PR 338. Experimental source review remains pinned to 2266b56681812cde175257734dc16ed1c88c1323; submitted-session null commits remain unchanged."
+    "base_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5",
+    "scope": "Hash-verified scoped current-main files including merged labor PR 338 and experimental PR 340. C source-review pin remains 58de347f57cf37dd9e6495b433b45b3501cc3de1; original submitted null commits are historical and unchanged."
   }
 }

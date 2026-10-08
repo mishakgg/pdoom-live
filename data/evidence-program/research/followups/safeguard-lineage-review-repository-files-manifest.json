@@ -1,0 +1,279 @@
+{
+  "repository": "mishakgg/pdoom-live",
+  "commit": "58de347f57cf37dd9e6495b433b45b3501cc3de1",
+  "tree_url": "https://api.github.com/repos/mishakgg/pdoom-live/git/trees/58de347f57cf37dd9e6495b433b45b3501cc3de1",
+  "tree_truncated": false,
+  "method": "Git object hash of full local file bytes matched to exact-commit GitHub connector tree, then copied into detached review directory. SHA-256 is a separate byte digest.",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 8618,
+      "git_blob_sha": "ac38cf31cdbfd2e914493c4c62be31fda23118e0",
+      "expected_git_blob_sha": "ac38cf31cdbfd2e914493c4c62be31fda23118e0",
+      "sha256": "3aa87f78b765a11b64b3bf3979961948a77d2d0477944d1dbc4a83df32812a38",
+      "verified": true
+    },
+    {
+      "path": "README.md",
+      "bytes": 9220,
+      "git_blob_sha": "65ae36c492aeb574542d818ba8448bc481e53627",
+      "expected_git_blob_sha": "65ae36c492aeb574542d818ba8448bc481e53627",
+      "sha256": "e67e462c139a5ed0d32e456b6055684f25bad40ad51edaedfd3da9618c828292",
+      "verified": true
+    },
+    {
+      "path": "docs/PRODUCT.md",
+      "bytes": 5370,
+      "git_blob_sha": "070e342ffb2b94095090b6f15036a3d682f6a8ec",
+      "expected_git_blob_sha": "070e342ffb2b94095090b6f15036a3d682f6a8ec",
+      "sha256": "6ecb110a76341862deceb1c81caeadaddcf9b34f021667eea41ee16a36011621",
+      "verified": true
+    },
+    {
+      "path": "docs/DATA_MODEL.md",
+      "bytes": 9996,
+      "git_blob_sha": "01b0123977a8557b1a1701ec9dd2e65dcb24e361",
+      "expected_git_blob_sha": "01b0123977a8557b1a1701ec9dd2e65dcb24e361",
+      "sha256": "7a51a2981ea7f0975f98bc998b0308f00d8b6bbff72e922c3879d3733b502da9",
+      "verified": true
+    },
+    {
+      "path": "docs/SOURCE_AND_PROVENANCE_POLICY.md",
+      "bytes": 7017,
+      "git_blob_sha": "632daf30c417104335ea0faa1a411537c3ba62ad",
+      "expected_git_blob_sha": "632daf30c417104335ea0faa1a411537c3ba62ad",
+      "sha256": "b66732018dc8424861bf83438cffaee4b68f0506e59849ae63a8cc4dbf659cef",
+      "verified": true
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "bytes": 4519,
+      "git_blob_sha": "a7ac6616488ebc2a16f1bbceb63ac77cd484eae4",
+      "expected_git_blob_sha": "a7ac6616488ebc2a16f1bbceb63ac77cd484eae4",
+      "sha256": "e73fa44a55be25e42a7cfc3414441e899746b4d972a6dc382bc3c5cccdff5b65",
+      "verified": true
+    },
+    {
+      "path": "docs/evidence-program/source_priorities.md",
+      "bytes": 9569,
+      "git_blob_sha": "f12394089acf562d430c83edff39ee07940b6645",
+      "expected_git_blob_sha": "f12394089acf562d430c83edff39ee07940b6645",
+      "sha256": "490fc5b027370809d193a62ccbb91f42af27c28d25d913153fc6770c21d8aa20",
+      "verified": true
+    },
+    {
+      "path": "data/evidence-program/source_inventory.json",
+      "bytes": 336316,
+      "git_blob_sha": "e2e8890789f38ef0b4fb0366e08252dd257901c4",
+      "expected_git_blob_sha": "e2e8890789f38ef0b4fb0366e08252dd257901c4",
+      "sha256": "a4b5046c3dec44598eeab3f025db75783f9ae5f702e0570d7b31fb3026dde678",
+      "verified": true
+    },
+    {
+      "path": "docs/evidence-program/research/research-session-review-queue.md",
+      "bytes": 51855,
+      "git_blob_sha": "95e7a198b827f11ee6b7b530fb775fe18a573d40",
+      "expected_git_blob_sha": "95e7a198b827f11ee6b7b530fb775fe18a573d40",
+      "sha256": "1c42526948e587f5b9048b351c74136f6c8875977b7aa155a1987ab51d56df8c",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/validate_dataset.py",
+      "bytes": 26585,
+      "git_blob_sha": "c7ee32f03fece2eb8ad1c6596e21ddd81ed23ef3",
+      "expected_git_blob_sha": "c7ee32f03fece2eb8ad1c6596e21ddd81ed23ef3",
+      "sha256": "f6fff30345db268c1c4cd8f7fc422cacfa39f023a83831993f415bbd1278e840",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/frozen_contract_manifest.json",
+      "bytes": 2515,
+      "git_blob_sha": "217696824eb37177d82d8983e5e27cfae90a08a2",
+      "expected_git_blob_sha": "217696824eb37177d82d8983e5e27cfae90a08a2",
+      "sha256": "ed9ce05e726aa0a8ebf44eda3e5b579250761a002f5f0840757ea9b71c1ebc17",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/field_dictionary.json",
+      "bytes": 133923,
+      "git_blob_sha": "6a6eeff5d879657a39935638c3b44c6a3128563b",
+      "expected_git_blob_sha": "6a6eeff5d879657a39935638c3b44c6a3128563b",
+      "sha256": "dabb13ed77234a9d09c085806461863d008e698266375bec1b4a22f1f63837aa",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/forecast_question.schema.json",
+      "bytes": 444,
+      "git_blob_sha": "9fc182cad5b4de2ca773f53e6ce17fcfe7755024",
+      "expected_git_blob_sha": "9fc182cad5b4de2ca773f53e6ce17fcfe7755024",
+      "sha256": "67944a699689991fea473787463b7cdae8ddeffc4fc947230cdd623667490e01",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/statement.schema.json",
+      "bytes": 420,
+      "git_blob_sha": "8281bfca9a6edaad8de55646663231b01a2d1b1d",
+      "expected_git_blob_sha": "8281bfca9a6edaad8de55646663231b01a2d1b1d",
+      "sha256": "c8aa84a229c600db28e2c5b980f8dd949fa8f283385cb3e59d469d55e894fffd",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/resource_observation.schema.json",
+      "bytes": 453,
+      "git_blob_sha": "37609205d42746dcef681c716ed0491d101d0da5",
+      "expected_git_blob_sha": "37609205d42746dcef681c716ed0491d101d0da5",
+      "sha256": "b2a54b297662cc126ea8e95acb3f2c6017a09bec914fbab1f7bd99d64730e9e6",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/release_event.schema.json",
+      "bytes": 432,
+      "git_blob_sha": "03e153f12f1f8dd7d6cee9960ade0046624de413",
+      "expected_git_blob_sha": "03e153f12f1f8dd7d6cee9960ade0046624de413",
+      "sha256": "e6a15d597a589eadd3b632e48ee57b00b32980528fdf9befd3b17a5bad01dbc6",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/benchmark_run.schema.json",
+      "bytes": 432,
+      "git_blob_sha": "fb748a2a1ded6eb1b123182eaf54dbf320fa6aa6",
+      "expected_git_blob_sha": "fb748a2a1ded6eb1b123182eaf54dbf320fa6aa6",
+      "sha256": "cd3718ae7fd1b025129ad935cdfbba04226519d375ba1d430b7085d050a56690",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/source_artifact.schema.json",
+      "bytes": 438,
+      "git_blob_sha": "89567ad69d5b78fc0f7945fc9a97a23f2e441adc",
+      "expected_git_blob_sha": "89567ad69d5b78fc0f7945fc9a97a23f2e441adc",
+      "sha256": "4a7e308d4596dac2857767f57289b1b896dbc905e085d15a6f631b53c4c7f280",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/incident.schema.json",
+      "bytes": 417,
+      "git_blob_sha": "0015c1d97a4bbd155d2bd9c6957cdf18542e2bd2",
+      "expected_git_blob_sha": "0015c1d97a4bbd155d2bd9c6957cdf18542e2bd2",
+      "sha256": "feb9b30d2f03b234ee97c67ce450e81b184df9acdbadce1edaa2d660a9ce6ef7",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/unit_registry.json",
+      "bytes": 2560,
+      "git_blob_sha": "784ce0120ef0346f9e92950e90dd38891ed88b5a",
+      "expected_git_blob_sha": "784ce0120ef0346f9e92950e90dd38891ed88b5a",
+      "sha256": "db68b6b7b37d166fdf47fba7d0e028faf425f7c06474ad0044f9bc8dd8b927ed",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/snapshot.schema.json",
+      "bytes": 417,
+      "git_blob_sha": "81323c958c7e40448eb533ea93104d4936893d17",
+      "expected_git_blob_sha": "81323c958c7e40448eb533ea93104d4936893d17",
+      "sha256": "cdc62341002c30755a8657ebfe72860d57ef2c78d1e3045d7a89a952509c2ac6",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/dataset.schema.json",
+      "bytes": 71106,
+      "git_blob_sha": "fad7d2d1c69ac48de71ec98d5a04850fc5474ac7",
+      "expected_git_blob_sha": "fad7d2d1c69ac48de71ec98d5a04850fc5474ac7",
+      "sha256": "215b0d119ae562d3b66620f6ff76070ec158f149d205de5d123d48a50aef46fc",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/actor.schema.json",
+      "bytes": 408,
+      "git_blob_sha": "786d71fbe145b901a41c0c8a02b97a7045121270",
+      "expected_git_blob_sha": "786d71fbe145b901a41c0c8a02b97a7045121270",
+      "sha256": "d5b1e161a98b7c866054f74567db68abc1ae2ee67930074426ef408c231a13a4",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/resolution.schema.json",
+      "bytes": 423,
+      "git_blob_sha": "c548920e209da5fd1f9c40506a5040995f49efaa",
+      "expected_git_blob_sha": "c548920e209da5fd1f9c40506a5040995f49efaa",
+      "sha256": "a3f97af7a2c4b759e07680396e5ebeaeb5fed3d6c4bd5c714e8462cdbc0adb1a",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/forecast.schema.json",
+      "bytes": 417,
+      "git_blob_sha": "aa9853327f4edd25fb42d396f8d9d9e949b65c2d",
+      "expected_git_blob_sha": "aa9853327f4edd25fb42d396f8d9d9e949b65c2d",
+      "sha256": "d2b0439b361779413db7a1366052f09aa7ad07645f482d13a2325c92f4ed28f1",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/model_version.schema.json",
+      "bytes": 432,
+      "git_blob_sha": "89147b316606dc72222130978e969e6bbbdd2df4",
+      "expected_git_blob_sha": "89147b316606dc72222130978e969e6bbbdd2df4",
+      "sha256": "7efa40fe0053b1c21f8961fad5f64625f2f82fa4a74f9cd927796effbbf8cb5d",
+      "verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/safety_evaluation.schema.json",
+      "bytes": 444,
+      "git_blob_sha": "a23465173bb83eb182686d5f9ea0f3cae49d07a3",
+      "expected_git_blob_sha": "a23465173bb83eb182686d5f9ea0f3cae49d07a3",
+      "sha256": "588398395a360fd3103424d3c178108fd728f5e7a9b6f36aa7778240c56976eb",
+      "verified": true
+    },
+    {
+      "path": "docs/evidence-program/research/organizational-safety.md",
+      "bytes": 60512,
+      "git_blob_sha": "e8a1f19c621e2ed147c1cb611a37b907663b98c8",
+      "expected_git_blob_sha": "e8a1f19c621e2ed147c1cb611a37b907663b98c8",
+      "sha256": "0016333f1742c8fc5e325675ae4efc457afe59f54f09fad7b17f3c7eb0b06ac6",
+      "verified": true
+    },
+    {
+      "path": "docs/evidence-program/research/agent-security-incidents.md",
+      "bytes": 59342,
+      "git_blob_sha": "c998cf75e3e455103336fd1068162d4b26f8b9da",
+      "expected_git_blob_sha": "c998cf75e3e455103336fd1068162d4b26f8b9da",
+      "sha256": "d49f4de3dd882a71c9b6a656da57e9b71b5b03aeb6f142200d658cae4c03fca8",
+      "verified": true
+    },
+    {
+      "path": "docs/evidence-program/research/mitigation-effectiveness.md",
+      "bytes": 18078,
+      "git_blob_sha": "fb7f34056710926f4d31c3e089a4f00a0f39a5da",
+      "expected_git_blob_sha": "fb7f34056710926f4d31c3e089a4f00a0f39a5da",
+      "sha256": "a6bca5ab47aa10b65788110bdbfd0769831880a1039e6dbfde8cf4a99427f8db",
+      "verified": true
+    },
+    {
+      "path": "data/evidence-program/research/organizational-safety.json",
+      "bytes": 101310,
+      "git_blob_sha": "14e560889f729f14bd2e0c0290ac51bdcc32d1c6",
+      "expected_git_blob_sha": "14e560889f729f14bd2e0c0290ac51bdcc32d1c6",
+      "sha256": "a07d8a1020b84bdfd9acaf185baae737a10d9160863f4c82d580cd0e4f8d3353",
+      "verified": true
+    },
+    {
+      "path": "data/evidence-program/research/agent-security-incidents.json",
+      "bytes": 103267,
+      "git_blob_sha": "3f70bd73568448dde0cebb5051aab624118fc1c1",
+      "expected_git_blob_sha": "3f70bd73568448dde0cebb5051aab624118fc1c1",
+      "sha256": "503f555e612eddf87a617aa587d88752c2c7307fd6faed111ed396b6af371c32",
+      "verified": true
+    },
+    {
+      "path": "data/evidence-program/research/mitigation-effectiveness.json",
+      "bytes": 58675,
+      "git_blob_sha": "2915d098bc66ee1d248628e94469c8d52bed1de6",
+      "expected_git_blob_sha": "2915d098bc66ee1d248628e94469c8d52bed1de6",
+      "sha256": "d8ac9bebddb7098162aa301acf15b281dabd67ac44543302195dfcd11461c987",
+      "verified": true
+    }
+  ],
+  "tree_retrieval_interval_utc": {
+    "not_before": "2026-10-08T16:16:42Z",
+    "not_after": "2026-10-08T16:16:56Z",
+    "basis": "Runtime clock reminders immediately before and after the GitHub connector tree call; no exact server retrieval timestamp supplied."
+  },
+  "hash_scope_note": "Hashes bind the historical source-review files at the stated pinned commit. Current integration guide and queue additions do not alter that prior-byte claim."
+}

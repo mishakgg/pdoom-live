@@ -1,0 +1,329 @@
+{
+  "record_type": "current_contract_mapping_review",
+  "repository_commit": "58de347f57cf37dd9e6495b433b45b3501cc3de1",
+  "schema_version": "0.1.0",
+  "contract_status": "Proposed portable design prototype; not existing production import schema or source admission.",
+  "assessment": "Native core projection is structurally possible, but a fully lossless structured mapping into the three contracts alone is not available. Typed research-ledger sidecars remain necessary; no schema changes proposed.",
+  "contract_urls": {
+    "dataset": "https://github.com/mishakgg/pdoom-live/blob/58de347f57cf37dd9e6495b433b45b3501cc3de1/tools/evidence_program/contracts/dataset.schema.json",
+    "source_artifact": "https://github.com/mishakgg/pdoom-live/blob/58de347f57cf37dd9e6495b433b45b3501cc3de1/tools/evidence_program/contracts/source_artifact.schema.json",
+    "model_version": "https://github.com/mishakgg/pdoom-live/blob/58de347f57cf37dd9e6495b433b45b3501cc3de1/tools/evidence_program/contracts/model_version.schema.json",
+    "safety_evaluation": "https://github.com/mishakgg/pdoom-live/blob/58de347f57cf37dd9e6495b433b45b3501cc3de1/tools/evidence_program/contracts/safety_evaluation.schema.json"
+  },
+  "schema_verification": "Every reused file is exact-commit Git-blob verified; see data/evidence-program/research/followups/safeguard-lineage-review-repository-files-manifest.json.",
+  "field_mapping": [
+    {
+      "mapping_id": "MAP-01",
+      "ledger_qualifier": "Artifact URL/title/type/language and access",
+      "destination_field_paths": [
+        "source_artifact.data.canonical_url",
+        "source_artifact.data.title",
+        "source_artifact.data.source_type",
+        "source_artifact.data.language",
+        "source_artifact.data.availability"
+      ],
+      "support_status": "native",
+      "preservation_rule": "Use artifact-specific URL/revision and title; unknown availability is not nonexistent. Allowed source types include paper, model_card, report, repository and blog. No source-body retrieval implied.",
+      "schema_definitions": [
+        "source_artifact_data"
+      ]
+    },
+    {
+      "mapping_id": "MAP-02",
+      "ledger_qualifier": "Artifact exact revision and evidence locator",
+      "destination_field_paths": [
+        "record.id",
+        "record.revision",
+        "record.supersedes",
+        "record.evidence[].source_ref",
+        "record.evidence[].locator"
+      ],
+      "support_status": "native",
+      "preservation_rule": "Each reference names an explicit ID and integer revision. supersedes is the immediately preceding revision of the same ID, not an arbitrary related artifact. Source artifact revisions must describe actual captures, not inferred immutable upstream bytes.",
+      "schema_definitions": [
+        "record",
+        "record_ref",
+        "evidence"
+      ]
+    },
+    {
+      "mapping_id": "MAP-03",
+      "ledger_qualifier": "OS004/OS-A07/ASI001/ME002/ME007 original IDs",
+      "destination_field_paths": [
+        "record.legacy_refs[].system",
+        "record.legacy_refs[].entity",
+        "record.legacy_refs[].key",
+        "record.legacy_refs[].repository_commit"
+      ],
+      "support_status": "native",
+      "preservation_rule": "Retain exact existing catalog and action IDs as legacy keys. Synthetic URNs are test-only and never replacements for catalog IDs. Include the exact verified commit.",
+      "schema_definitions": [
+        "record"
+      ]
+    },
+    {
+      "mapping_id": "MAP-04",
+      "ledger_qualifier": "Whole-artifact digest versus excerpt digest versus Git object",
+      "destination_field_paths": [
+        "source_artifact.data.content_sha256",
+        "model_version.data.artifact_digest"
+      ],
+      "support_status": "partial",
+      "preservation_rule": "content_sha256 is only a verified complete source-artifact byte SHA-256. Do not put a 40-hex Git blob/commit or excerpt hash here. Model artifact_digest is for immutable weights/configuration, not a notebook. Digest scope, provider-reported status, excerpt digests and Git object identities remain separate typed research-ledger fields.",
+      "schema_definitions": [
+        "source_artifact_data",
+        "model_version_data"
+      ]
+    },
+    {
+      "mapping_id": "MAP-05",
+      "ledger_qualifier": "Publisher/developer/evaluator identity",
+      "destination_field_paths": [
+        "source_artifact.data.publisher_ref",
+        "source_artifact.data.author_refs",
+        "model_version.data.developer_refs",
+        "safety_evaluation.data.evaluator_refs"
+      ],
+      "support_status": "native",
+      "preservation_rule": "References resolve to actors. External-evaluator role, commissioned role and independence evidence are not inferred from separate publisher/evaluator IDs. Unknown authors may be an empty list; evaluator and developer references cannot be empty.",
+      "schema_definitions": [
+        "source_artifact_data",
+        "model_version_data",
+        "safety_evaluation_data"
+      ]
+    },
+    {
+      "mapping_id": "MAP-06",
+      "ledger_qualifier": "Provider release label / exact model checkpoint",
+      "destination_field_paths": [
+        "model_version.data.family",
+        "model_version.data.version_label",
+        "model_version.data.provider_model_id",
+        "model_version.data.artifact_digest",
+        "model_version.data.version_certainty"
+      ],
+      "support_status": "partial",
+      "preservation_rule": "version_certainty is immutable/provider_label/inferred/unknown. Omit unknown optional checkpoint/digest fields; preserve null and reason in the ledger. A named near-final representative version is not an immutable released checkpoint. Required version_label must not invent a checkpoint.",
+      "schema_definitions": [
+        "model_version_data"
+      ]
+    },
+    {
+      "mapping_id": "MAP-07",
+      "ledger_qualifier": "Safeguard configuration and intervention lineage",
+      "destination_field_paths": [
+        "safety_evaluation.data.protocol.configuration",
+        "safety_evaluation.data.protocol.configuration_sha256",
+        "safety_evaluation.data.limitations"
+      ],
+      "support_status": "text_only",
+      "preservation_rule": "Configuration text can preserve known settings; its hash only covers actual configuration bytes. No native typed safeguard-version entity, intervention record, before/after edge, changed-config identity or configuration-date slot. Keep exact structured qualifiers and intervention assertion in the research ledger.",
+      "schema_definitions": [
+        "protocol",
+        "safety_evaluation_data"
+      ]
+    },
+    {
+      "mapping_id": "MAP-08",
+      "ledger_qualifier": "Protocol / AgentDojo evaluator-runtime version",
+      "destination_field_paths": [
+        "safety_evaluation.data.protocol.name",
+        "safety_evaluation.data.protocol.version",
+        "safety_evaluation.data.protocol.reproducibility"
+      ],
+      "support_status": "partial",
+      "preservation_rule": "protocol.version is required and described as exact release/commit. Schema accepts any nonempty string, including unknown, but that does not establish exact runtime linkage. Treat unknown runtime as a semantic hold, not a fabricated version. agentdojo>=0.1.34, archive revision and family ASI001 are not runtime pins. No native explicit runtime-null slot.",
+      "schema_definitions": [
+        "protocol"
+      ]
+    },
+    {
+      "mapping_id": "MAP-09",
+      "ledger_qualifier": "Reported central counts / effort / strict bounds",
+      "destination_field_paths": [
+        "safety_evaluation.data.measurement.result",
+        "safety_evaluation.data.measurement.metric",
+        "safety_evaluation.data.measurement.observation_mode",
+        "safety_evaluation.data.measurement.method"
+      ],
+      "support_status": "native",
+      "preservation_rule": "Use kind point, decimal strings and unit count/hour; use lower_bound with inclusive=false for over seven hours. Research reviewer uses reported for source aggregates, not measured. Do not calculate substitute uncertainty or change observation unit.",
+      "schema_definitions": [
+        "value",
+        "metric",
+        "measurement"
+      ]
+    },
+    {
+      "mapping_id": "MAP-10",
+      "ledger_qualifier": "Task / attack-attempt / completed-execution denominators and cohorts",
+      "destination_field_paths": [
+        "safety_evaluation.data.measurement.metric.definition",
+        "safety_evaluation.data.measurement.metric.context",
+        "safety_evaluation.data.measurement.sample_size",
+        "safety_evaluation.data.measurement.method"
+      ],
+      "support_status": "partial",
+      "preservation_rule": "Denominator definitions and cohort/comparator belong in text; sample_size is optional integer >=1 and has no typed denominator role. Do not equate 949 attacks with completed executions or task count. Preserve typed numerator, each denominator kind, population, comparator and null reasons in the ledger.",
+      "schema_definitions": [
+        "metric",
+        "measurement"
+      ]
+    },
+    {
+      "mapping_id": "MAP-11",
+      "ledger_qualifier": "Execution failures and source scoring convention",
+      "destination_field_paths": [
+        "safety_evaluation.data.protocol.configuration",
+        "safety_evaluation.data.measurement.method",
+        "safety_evaluation.data.limitations"
+      ],
+      "support_status": "text_only",
+      "preservation_rule": "Prior verified CaMeL static helper overwrites security with zero on non-null error. That convention does not demonstrate completed protection or prove paper-v2 production lineage. No native typed execution-status/observed-vs-assigned outcome fields.",
+      "schema_definitions": [
+        "protocol",
+        "measurement",
+        "safety_evaluation_data"
+      ]
+    },
+    {
+      "mapping_id": "MAP-12",
+      "ledger_qualifier": "Printed uncertainty and calibrated interval lineage",
+      "destination_field_paths": [
+        "safety_evaluation.data.measurement.uncertainty_notes",
+        "safety_evaluation.data.measurement.result"
+      ],
+      "support_status": "partial",
+      "preservation_rule": "Keep the printed term and unresolved definition in uncertainty_notes; do not encode 0 ± 0.0 as a confidence interval. A genuine interval needs endpoints, unit, interval_kind and, for confidence/credible, a level. Computational lineage and printed-term type stay typed in the ledger.",
+      "schema_definitions": [
+        "measurement",
+        "value"
+      ]
+    },
+    {
+      "mapping_id": "MAP-13",
+      "ledger_qualifier": "Unknown final-configuration effectiveness",
+      "destination_field_paths": [
+        "safety_evaluation.data.measurement.result",
+        "safety_evaluation.data.conclusion",
+        "safety_evaluation.data.limitations"
+      ],
+      "support_status": "partial",
+      "preservation_rule": "A missing result with reason unavailable and detail can represent no verified final outcome; never use zero/false/success. Unknown dates are explicit. Native safety_evaluation still requires protocol/model/evaluator identities, so real record projection is held when exact required lineage cannot be supplied. No native failure→intervention→outcome edge.",
+      "schema_definitions": [
+        "safety_evaluation_data",
+        "measurement",
+        "value"
+      ]
+    },
+    {
+      "mapping_id": "MAP-14",
+      "ledger_qualifier": "Publication/event/evaluation and discovery clocks",
+      "destination_field_paths": [
+        "record.times.published",
+        "record.times.event",
+        "record.times.evaluated",
+        "record.times.retrieved_at",
+        "record.times.known_at"
+      ],
+      "support_status": "native",
+      "preservation_rule": "Use date/range/instant only at observed precision; unknown requires reason. Day-only evidence must not become invented midnight. Date of publication is not study, model release, configuration or retest date. Additional role-specific clocks remain in ledger; none is dropped.",
+      "schema_definitions": [
+        "times",
+        "temporal"
+      ]
+    },
+    {
+      "mapping_id": "MAP-15",
+      "ledger_qualifier": "Developer summary versus external original / independence",
+      "destination_field_paths": [
+        "record.evidence[].source_ref",
+        "record.evidence[].relation",
+        "safety_evaluation.data.measurement.observation_mode",
+        "safety_evaluation.data.measurement.method",
+        "safety_evaluation.data.limitations"
+      ],
+      "support_status": "partial",
+      "preservation_rule": "Native evidence relation supports/contradicts/context has no derivative_summary_of or replication relation. Keep two artifacts, one underlying assertion when explicitly established, and a typed ledger derivative edge; no increment for independent replication. source_artifact.translation is not a summary edge.",
+      "schema_definitions": [
+        "evidence",
+        "source_artifact_data",
+        "measurement"
+      ]
+    },
+    {
+      "mapping_id": "MAP-16",
+      "ledger_qualifier": "Before/after matching and rejection criteria",
+      "destination_field_paths": [
+        "safety_evaluation.data.model_ref",
+        "safety_evaluation.data.protocol",
+        "safety_evaluation.data.measurement.metric.definition",
+        "record.times.evaluated"
+      ],
+      "support_status": "partial",
+      "preservation_rule": "Individual records can preserve known values and exact refs. Matching scenario, threat model, access, tools, attacker budget, success criterion, denominator basis/population, checkpoint and intended target configuration is manual-only; no native comparison-key or retest-edge validation.",
+      "schema_definitions": [
+        "safety_evaluation_data",
+        "protocol",
+        "metric"
+      ]
+    },
+    {
+      "mapping_id": "MAP-17",
+      "ledger_qualifier": "Rights by metadata/paraphrase, aggregates, retained body, redistribution",
+      "destination_field_paths": [
+        "record.governance.rights_state",
+        "record.governance.rights_basis",
+        "record.governance.rights_url",
+        "record.governance.publication_state"
+      ],
+      "support_status": "partial",
+      "preservation_rule": "Single coarse rights state cannot substitute for four artifact-specific rights scopes. Keep each scope, exception, attribution and unknown reason in ledger. Unknown stays unknown/withheld. Source license does not automatically cover linked bodies, code, traces or summaries.",
+      "schema_definitions": [
+        "governance"
+      ]
+    },
+    {
+      "mapping_id": "MAP-18",
+      "ledger_qualifier": "Review, admission and uncertainty status",
+      "destination_field_paths": [
+        "record.governance.review_state",
+        "record.governance.publication_state",
+        "record.synthetic"
+      ],
+      "support_status": "partial",
+      "preservation_rule": "Research review, structural validity, publication eligibility and actual admission are separate. Current schemas are proposed 0.1.0 portable design prototypes, not an ingestion API; tests never admit observations. No native per-assertion verified/unresolved/not-applicable status or null-reason object; retain those in ledger.",
+      "schema_definitions": [
+        "governance",
+        "record"
+      ]
+    },
+    {
+      "mapping_id": "MAP-19",
+      "ledger_qualifier": "Upstream raw assertion and transformation history",
+      "destination_field_paths": [
+        "record.upstream_refs",
+        "record.evidence[].excerpt",
+        "safety_evaluation.data.measurement.method"
+      ],
+      "support_status": "partial",
+      "preservation_rule": "upstream_refs can preserve release/row/schema and ordered transformations with source_ref. It does not encode all raw/normalized qualifiers or relationship keys. Excerpts only when allowed; ledger retains source-language raw assertion, exact units and scoped digest, avoiding source-body redistribution.",
+      "schema_definitions": [
+        "record",
+        "evidence"
+      ]
+    }
+  ],
+  "required_field_holds": [
+    "Real protocol.version is unknown for the requested runtime/near-final studies; a schema-valid nonempty unknown string must not be called an exact version.",
+    "Actual final retest does not exist in this supplement; no real successful-remediation record is fabricated.",
+    "Unlocated Apollo original is not fabricated as a source_artifact or dereferenced by a dangling native ref.",
+    "Any model/version/evaluator projection still requires evidence-supported mandatory identity fields. Missing raw information is retained in the research ledger rather than invented to pass a schema."
+  ],
+  "catalog_preservation_ref": "data/evidence-program/research/followups/safeguard-lineage-review-prior-catalog-preservation.json",
+  "synthetic_validation_ref": "data/evidence-program/research/followups/safeguard-lineage-review-schema-test-results.json",
+  "manual_semantic_cases_ref": "data/evidence-program/research/followups/safeguard-lineage-review-acceptance-cases.json",
+  "relationship_specification_ref": "data/evidence-program/research/followups/safeguard-lineage-review-relationship-specification.json",
+  "publication_path_note": "Package references are remapped to public repository paths. Historical repository_commit and exact commit URLs remain the source-review snapshot, not the integration base.",
+  "source_publication_path_note_preserved": "All relative file references in this detached package refer to files shipped with it. They are not existing repository paths or evidence URLs. Pinned source URLs identify repository evidence."
+}

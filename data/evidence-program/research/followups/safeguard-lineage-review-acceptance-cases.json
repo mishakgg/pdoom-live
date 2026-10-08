@@ -1,0 +1,3683 @@
+{
+  "record_type": "current_contract_manual_acceptance_review",
+  "repository_commit": "58de347f57cf37dd9e6495b433b45b3501cc3de1",
+  "submitted_ledger_filename": "session4_evidence_ledger(1).json",
+  "submitted_ledger_sha256": "905eda64dd6546412769b8e9befc15b8716776c5e2c50102c355fdf3395b64a4",
+  "manual_case_count": 35,
+  "executed_semantic_rule_engine": false,
+  "schema_probe_results_ref": "data/evidence-program/research/followups/safeguard-lineage-review-schema-test-results.json",
+  "interpretation": "Manual outcomes are based on documentary inputs and pinned contracts. Schema passes do not validate source truth or scientific comparability. Historical submitted access limitations are retained but do not erase current verified catalog facts.",
+  "cases": [
+    {
+      "case_key": "S4-CASE-001",
+      "title": "Retain CaMeL's reported zero count and uncertainty display while holding execution and production lineage",
+      "branch": "CaMeL",
+      "fixture_origin": "root_verified_primary_source_fixture",
+      "input": {
+        "source_verification_role": "Root agent verified the following reported statements in the primary paper; this subagent did not independently browse the paper.",
+        "source_url": "https://arxiv.org/html/2503.18813v2",
+        "source_revision": "arXiv 2503.18813v2",
+        "reported_successful_attack_count": {
+          "raw_assertion_kind": "Root-verified paraphrase of the paper's explicit count statement",
+          "value": 0,
+          "unit": "successful attacks",
+          "locator": "Section 6.3, line 312 in the root's retrieved rendering",
+          "status": "verified_as_reported",
+          "independent_raw_record_validation": "not_performed"
+        },
+        "reported_attack_population_count": {
+          "value": 949,
+          "unit": "attacks",
+          "locator": "Figure 11",
+          "status": "verified_as_reported"
+        },
+        "table_result": {
+          "row": "CaMeL",
+          "column_or_category": "Overall",
+          "raw_display": "0 ± 0.0",
+          "reported_central_value": 0,
+          "reported_uncertainty_number": 0,
+          "unit": "successful_attacks",
+          "uncertainty_definition": null,
+          "uncertainty_null_reason": "The statistical meaning of the printed ± term, its computational formula, and its implementation-to-paper lineage are unverified; it is not classified as a confidence interval or standard error.",
+          "locator": "Table 7",
+          "caption": "Defenses: number of successful attacks"
+        },
+        "population_and_execution_qualifiers": {
+          "model": "Claude 3.5 Sonnet",
+          "attack_population": "Default AgentDojo attacks",
+          "population_locator": "Section 6.3",
+          "execution_status_rule": null,
+          "execution_status_rule_null_reason": "Pinned analysis notebook and implementation history were inaccessible.",
+          "completed_execution_count": null,
+          "completed_execution_count_null_reason": "949 is retained as the reported total attack count; it is not established as the completed-execution count.",
+          "task_count": null,
+          "task_count_null_reason": "Not supplied in the root-verified findings for this case."
+        },
+        "helper_behavior": null,
+        "helper_null_reason": "The pinned notebook, pinned README, relevant implementation history, and pinned license were inaccessible. The current unpinned README was accessible; this access does not itself establish pinned helper behavior or its publication lineage.",
+        "evaluator_runtime_revision": null,
+        "evaluator_runtime_revision_null_reason": "No explicit immutable evaluator/runtime revision was verified.",
+        "publication_result_to_helper_mapping": null,
+        "publication_result_to_helper_mapping_null_reason": "No primary production/version mapping was verified.",
+        "independent_replication": "not_performed",
+        "implementation_documentation_access": {
+          "pinned_readme": {
+            "access_status": "inaccessible",
+            "reason": "Access blocked, as reported by root."
+          },
+          "current_unpinned_readme": {
+            "access_status": "accessible",
+            "immutable_revision_pin": null,
+            "revision_null_reason": "The accessible README is unpinned in the supplied access finding.",
+            "evidence_limit": "Access to current documentation is not proof of the pinned implementation or a result-specific production mapping."
+          }
+        }
+      },
+      "submitted_expected_disposition": {
+        "action": "accept_reported_observations_with_holds",
+        "accepted": "The paper-reported count of 0 successful attacks, 949 total attacks, and Table 7 display remain usable as attributed observations.",
+        "held": "Completed-execution denominator, helper scoring, uncertainty meaning/production lineage, immutable runtime revision, and independently validated correctness."
+      },
+      "current_manual_disposition": {
+        "action": "accept_reported_count_and_prior_verified_static_convention_with_holds",
+        "accepted": "Retain paper-reported 0/949 and printed uncertainty as attributed source observations; retain the prior pinned-catalog static error rule and helper concern.",
+        "held": "Completed-execution denominator, calibrated uncertainty meaning/production linkage, exact runtime and independent correctness remain unresolved."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-08",
+        "MAP-09",
+        "MAP-10",
+        "MAP-11",
+        "MAP-12"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The explicit prose count supports normalized value 0; it is not inferred from rounding in the table."
+        },
+        {
+          "step": 2,
+          "finding": "Retain 949 with unit attacks and the default-AgentDojo/Claude-3.5-Sonnet population; do not rename it completed executions."
+        },
+        {
+          "step": 3,
+          "finding": "Use successful_attacks for the Table 7 central value because its caption identifies number of successful attacks. Preserve 0 ± 0.0 verbatim; the printed ± term has unknown statistical meaning and production lineage."
+        },
+        {
+          "step": 4,
+          "finding": "Accept documentary reporting only; independently replicated performance and universal risk remain unestablished."
+        },
+        {
+          "step": 5,
+          "finding": "Correct the stale helper/access hold using the exact-current-main ME002 catalog: non-null error overwrites security with zero; count=len(x), successes=sum(x); helper concern is distinct from unproven paper production. Preserve original submitted input for audit."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "execution_status and observed-versus-assigned outcome",
+        "typed attempt/task/completed denominator roles",
+        "helper-to-paper production mapping",
+        "immutable evaluator/runtime null reason",
+        "printed uncertainty definition and provenance"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-001",
+        "SC-021"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one.",
+      "reconciliation_note": "The submitted access context remains historical. Current main and catalogs are now independently verified; known catalog facts and fingerprints are preserved in data/evidence-program/research/followups/safeguard-lineage-review-prior-catalog-preservation.json."
+    },
+    {
+      "case_key": "S4-CASE-002",
+      "title": "Reject zero observed attack successes as proof of zero population risk",
+      "branch": "CaMeL",
+      "fixture_origin": "explicitly_synthetic_interpretation_applied_to_root_verified_observations",
+      "input": {
+        "observations": {
+          "source_verification_role": "Root agent verified the following reported statements in the primary paper; this subagent did not independently browse the paper.",
+          "source_url": "https://arxiv.org/html/2503.18813v2",
+          "source_revision": "arXiv 2503.18813v2",
+          "reported_successful_attack_count": {
+            "raw_assertion_kind": "Root-verified paraphrase of the paper's explicit count statement",
+            "value": 0,
+            "unit": "successful attacks",
+            "locator": "Section 6.3, line 312 in the root's retrieved rendering",
+            "status": "verified_as_reported",
+            "independent_raw_record_validation": "not_performed"
+          },
+          "reported_attack_population_count": {
+            "value": 949,
+            "unit": "attacks",
+            "locator": "Figure 11",
+            "status": "verified_as_reported"
+          },
+          "table_result": {
+            "row": "CaMeL",
+            "column_or_category": "Overall",
+            "raw_display": "0 ± 0.0",
+            "reported_central_value": 0,
+            "reported_uncertainty_number": 0,
+            "unit": "successful_attacks",
+            "uncertainty_definition": null,
+            "uncertainty_null_reason": "The statistical meaning of the printed ± term, its computational formula, and its implementation-to-paper lineage are unverified; it is not classified as a confidence interval or standard error.",
+            "locator": "Table 7",
+            "caption": "Defenses: number of successful attacks"
+          },
+          "population_and_execution_qualifiers": {
+            "model": "Claude 3.5 Sonnet",
+            "attack_population": "Default AgentDojo attacks",
+            "population_locator": "Section 6.3",
+            "execution_status_rule": null,
+            "execution_status_rule_null_reason": "Pinned analysis notebook and implementation history were inaccessible.",
+            "completed_execution_count": null,
+            "completed_execution_count_null_reason": "949 is retained as the reported total attack count; it is not established as the completed-execution count.",
+            "task_count": null,
+            "task_count_null_reason": "Not supplied in the root-verified findings for this case."
+          },
+          "helper_behavior": null,
+          "helper_null_reason": "The pinned notebook, pinned README, relevant implementation history, and pinned license were inaccessible. The current unpinned README was accessible; this access does not itself establish pinned helper behavior or its publication lineage.",
+          "evaluator_runtime_revision": null,
+          "evaluator_runtime_revision_null_reason": "No explicit immutable evaluator/runtime revision was verified.",
+          "publication_result_to_helper_mapping": null,
+          "publication_result_to_helper_mapping_null_reason": "No primary production/version mapping was verified.",
+          "independent_replication": "not_performed",
+          "implementation_documentation_access": {
+            "pinned_readme": {
+              "access_status": "inaccessible",
+              "reason": "Access blocked, as reported by root."
+            },
+            "current_unpinned_readme": {
+              "access_status": "accessible",
+              "immutable_revision_pin": null,
+              "revision_null_reason": "The accessible README is unpinned in the supplied access finding.",
+              "evidence_limit": "Access to current documentation is not proof of the pinned implementation or a result-specific production mapping."
+            }
+          }
+        },
+        "synthetic_claim": {
+          "value": 0,
+          "unit": "universal probability of compromise",
+          "reason_offered": "The reported count is 0 among 949 attacks."
+        }
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_inference_preserve_observations",
+        "rejected": "Universal zero-risk/population-probability interpretation.",
+        "accepted": "The underlying reported 0 successful attacks and 949-attack population with all qualifications."
+      },
+      "current_manual_disposition": {
+        "action": "reject_inference_preserve_observations",
+        "rejected": "Universal zero-risk/population-probability interpretation.",
+        "accepted": "The underlying reported 0 successful attacks and 949-attack population with all qualifications."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-08",
+        "MAP-09",
+        "MAP-10",
+        "MAP-11",
+        "MAP-12"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The input observations concern a specified evaluated attack population."
+        },
+        {
+          "step": 2,
+          "finding": "The synthetic claim changes the quantity from observed count to a universal population probability without evidence."
+        },
+        {
+          "step": 3,
+          "finding": "Reject the changed interpretation; preserve the reported observations and calculate no substitute interval."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "execution_status and observed-versus-assigned outcome",
+        "typed attempt/task/completed denominator roles",
+        "helper-to-paper production mapping",
+        "immutable evaluator/runtime null reason",
+        "printed uncertainty definition and provenance"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-016"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-003",
+      "title": "Hold protection classification for an execution failure without a documented scoring rule",
+      "branch": "CaMeL",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_record_key": "SYN-EXEC-FAILURE",
+        "execution_status": "failed",
+        "attack_attempted": true,
+        "attack_outcome_observed": false,
+        "proposed_protected": true,
+        "documented_scoring_rule": null
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_derived_protection_classification_preserve_execution_status",
+        "rejected": "Treating failed execution as demonstrated successful protection.",
+        "held": "How this execution belongs in any reported security aggregate until a documented scoring rule and matching measurement interpretation are supplied."
+      },
+      "current_manual_disposition": {
+        "action": "reject_derived_protection_classification_preserve_execution_status",
+        "rejected": "Treating failed execution as demonstrated successful protection.",
+        "held": "How this execution belongs in any reported security aggregate until a documented scoring rule and matching measurement interpretation are supplied."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-08",
+        "MAP-09",
+        "MAP-10",
+        "MAP-11",
+        "MAP-12"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The fixture establishes a failed execution, not an observed completed protection outcome."
+        },
+        {
+          "step": 2,
+          "finding": "The scoring rule is null, so the proposed protected=true classification has no documented measurement basis."
+        },
+        {
+          "step": 3,
+          "finding": "Retain failure status and unknown attack outcome; hold its aggregate classification rather than silently counting it protected."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "execution_status and observed-versus-assigned outcome",
+        "typed attempt/task/completed denominator roles",
+        "helper-to-paper production mapping",
+        "immutable evaluator/runtime null reason",
+        "printed uncertainty definition and provenance"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-017"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-004",
+      "title": "Reject conflation of task, attack-attempt, and completed-execution denominators",
+      "branch": "CaMeL",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "task_count": {
+          "value": 10,
+          "unit": "tasks"
+        },
+        "attack_attempt_count": {
+          "value": 30,
+          "unit": "attack attempts"
+        },
+        "completed_execution_count": {
+          "value": 24,
+          "unit": "completed executions"
+        },
+        "successful_attack_count": {
+          "value": 3,
+          "unit": "successful attacks"
+        },
+        "proposed_join": {
+          "all_denominators_equivalent": true
+        }
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_denominator_join_preserve_distinct_counts",
+        "rejected": "Equating the three counting units or selecting a security-rate denominator without its scoring definition.",
+        "accepted": "Each count under its own unit; no substitute rate is computed."
+      },
+      "current_manual_disposition": {
+        "action": "reject_denominator_join_preserve_distinct_counts",
+        "rejected": "Equating the three counting units or selecting a security-rate denominator without its scoring definition.",
+        "accepted": "Each count under its own unit; no substitute rate is computed."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-08",
+        "MAP-09",
+        "MAP-10",
+        "MAP-11",
+        "MAP-12"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The fixture names three different units with distinct counts."
+        },
+        {
+          "step": 2,
+          "finding": "No documented inclusion/scoring rule identifies the correct denominator for a requested rate."
+        },
+        {
+          "step": 3,
+          "finding": "Reject denominator equivalence and preserve all counts separately."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "execution_status and observed-versus-assigned outcome",
+        "typed attempt/task/completed denominator roles",
+        "helper-to-paper production mapping",
+        "immutable evaluator/runtime null reason",
+        "printed uncertainty definition and provenance"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-018"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-005",
+      "title": "Reject a helper diff as proof of corrected published estimates or intervals",
+      "branch": "CaMeL",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "implementation_revision": {
+          "before": "SYN-HELPER-OLD",
+          "after": "SYN-HELPER-NEW",
+          "documented_change": "A hypothetical static scoring formula differs."
+        },
+        "publication_result": {
+          "version": "SYN-PAPER-V2",
+          "reported_display": "SYN-REPORTED-INTERVAL"
+        },
+        "explicit_primary_result_to_helper_mapping": null,
+        "proposed_claim": "The published estimate and uncertainty were corrected by this diff."
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_publication_correction_inference_preserve_implementation_change",
+        "accepted": "The hypothetical implementation difference as an implementation assertion.",
+        "held": "Which helper version generated a specific published result and whether the publication was corrected."
+      },
+      "current_manual_disposition": {
+        "action": "reject_publication_correction_inference_preserve_implementation_change",
+        "accepted": "The hypothetical implementation difference as an implementation assertion.",
+        "held": "Which helper version generated a specific published result and whether the publication was corrected."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-08",
+        "MAP-09",
+        "MAP-10",
+        "MAP-11",
+        "MAP-12"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "A code revision is evidence about an implementation version only."
+        },
+        {
+          "step": 2,
+          "finding": "The input supplies no immutable production mapping, author correction, or result-specific revision statement."
+        },
+        {
+          "step": 3,
+          "finding": "Reject the publication-correction claim and leave publication-to-helper correspondence null."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "execution_status and observed-versus-assigned outcome",
+        "typed attempt/task/completed denominator roles",
+        "helper-to-paper production mapping",
+        "immutable evaluator/runtime null reason",
+        "printed uncertainty definition and provenance"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-021"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one.",
+      "reconciliation_note": "The submitted access context remains historical. Current main and catalogs are now independently verified; known catalog facts and fingerprints are preserved in data/evidence-program/research/followups/safeguard-lineage-review-prior-catalog-preservation.json."
+    },
+    {
+      "case_key": "S4-CASE-006",
+      "title": "Hold immutable runtime identity when only a mutable label or benchmark family is supplied",
+      "branch": "CaMeL",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "benchmark_family_reference": "ASI001",
+        "runtime_label": "SYN-latest",
+        "runtime_branch": "SYN-main",
+        "runtime_commit": null,
+        "documented_immutable_resolution": null,
+        "proposed_runtime_pin": "SYN-latest"
+      },
+      "submitted_expected_disposition": {
+        "action": "hold_immutable_runtime_mapping",
+        "accepted": "The benchmark-family reference and mutable labels as reported labels.",
+        "rejected": "Promoting a family identity, branch, or mutable label into an immutable evaluator/runtime revision."
+      },
+      "current_manual_disposition": {
+        "action": "hold_immutable_runtime_mapping",
+        "accepted": "The benchmark-family reference and mutable labels as reported labels.",
+        "rejected": "Promoting a family identity, branch, or mutable label into an immutable evaluator/runtime revision."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-08",
+        "MAP-09",
+        "MAP-10",
+        "MAP-11",
+        "MAP-12"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "ASI001 identifies the supplied benchmark family, not an evaluator build."
+        },
+        {
+          "step": 2,
+          "finding": "The fixture provides no verified immutable resolution for its labels."
+        },
+        {
+          "step": 3,
+          "finding": "Retain labels as labels and keep runtime_commit null."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "execution_status and observed-versus-assigned outcome",
+        "typed attempt/task/completed denominator roles",
+        "helper-to-paper production mapping",
+        "immutable evaluator/runtime null reason",
+        "printed uncertainty definition and provenance"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-015"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one.",
+      "reconciliation_note": "The submitted access context remains historical. Current main and catalogs are now independently verified; known catalog facts and fingerprints are preserved in data/evidence-program/research/followups/safeguard-lineage-review-prior-catalog-preservation.json."
+    },
+    {
+      "case_key": "S4-CASE-007",
+      "title": "Accept a documented synthetic scoring convention without converting it into validated protection",
+      "branch": "CaMeL",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "execution_status": "failed",
+        "hypothetical_documented_convention": "Failed executions are assigned zero successful attacks in the helper's aggregate.",
+        "assigned_successful_attack_count": 0,
+        "observed_completed_protection_outcome": null,
+        "convention_to_publication_mapping": null
+      },
+      "submitted_expected_disposition": {
+        "action": "accept_convention_assertion_hold_security_interpretation",
+        "accepted": "The hypothetical convention and its stated helper assignment.",
+        "held": "Whether the failed execution demonstrated protection and whether this convention produced paper-v2 results."
+      },
+      "current_manual_disposition": {
+        "action": "accept_convention_assertion_hold_security_interpretation",
+        "accepted": "The hypothetical convention and its stated helper assignment.",
+        "held": "Whether the failed execution demonstrated protection and whether this convention produced paper-v2 results."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-08",
+        "MAP-09",
+        "MAP-10",
+        "MAP-11",
+        "MAP-12"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The synthetic fixture includes a documented convention, so its existence and assignment can be represented."
+        },
+        {
+          "step": 2,
+          "finding": "A convention assigning a value does not establish a completed protective outcome."
+        },
+        {
+          "step": 3,
+          "finding": "Record the convention and value with execution_status=failed, preserving both interpretation and publication-lineage holds."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "execution_status and observed-versus-assigned outcome",
+        "typed attempt/task/completed denominator roles",
+        "helper-to-paper production mapping",
+        "immutable evaluator/runtime null reason",
+        "printed uncertainty definition and provenance"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-017"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one.",
+      "reconciliation_note": "The submitted access context remains historical. Current main and catalogs are now independently verified; known catalog facts and fingerprints are preserved in data/evidence-program/research/followups/safeguard-lineage-review-prior-catalog-preservation.json."
+    },
+    {
+      "case_key": "S4-CASE-008",
+      "title": "Preserve AISI's failure, subsequent intervention, and unknown final effectiveness as three distinct states",
+      "branch": "AISI",
+      "fixture_origin": "root_verified_primary_source_fixture",
+      "input": {
+        "source_verification_role": "Root agent verified the following reported statements in the primary AISI artifact; this subagent did not independently browse it.",
+        "source_url": "https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities",
+        "locator": "Safeguards section",
+        "release_model_label": "GPT-5.5",
+        "failure": {
+          "assertion_kind": "Root-verified paraphrase",
+          "expert_development_effort": {
+            "value": 6,
+            "unit": "hours",
+            "normalized_value": 360,
+            "normalized_unit": "minutes",
+            "meaning": "Expert development effort, not per-query runtime"
+          },
+          "reported_bypass_scope": "All OpenAI-provided malicious cyber queries",
+          "query_count": null,
+          "query_count_null_reason": "The number of provided queries was not specified.",
+          "model_checkpoint": null,
+          "safeguard_configuration": null,
+          "event_date": null,
+          "date_precision": null
+        },
+        "intervention": {
+          "assertion_kind": "Root-verified paraphrase",
+          "vendor": "OpenAI",
+          "reported_action": "Subsequent safeguard-stack changes",
+          "configuration_identifier": null,
+          "intervention_date": null
+        },
+        "final_outcome": {
+          "value": null,
+          "status": "unknown",
+          "reason": "A configuration issue prevented AISI from verifying the final safeguard configuration's effectiveness.",
+          "final_configuration_identifier": null,
+          "matching_final_retest": null
+        },
+        "evaluator": {
+          "organization": "AISI",
+          "role": "External evaluator reported by the source",
+          "independence_scope": "Record external-evaluator role separately from unverified operational details of independence."
+        },
+        "model_checkpoint": null,
+        "publication_date": null,
+        "date_null_reason": "Exact checkpoint/configuration dates and publication date were not supplied in this root-verified fixture.",
+        "independent_replication_by_this_work": "not_performed"
+      },
+      "submitted_expected_disposition": {
+        "action": "accept_separate_reported_assertions_hold_final_effectiveness",
+        "accepted": "Reported six-hour expert development, bypass scope, subsequent stack changes, and the stated verification blocker.",
+        "held": "Final safeguard effectiveness, matching retest, unspecified query denominator, and exact configuration lineage."
+      },
+      "current_manual_disposition": {
+        "action": "accept_separate_reported_assertions_hold_final_effectiveness",
+        "accepted": "Reported six-hour expert development, bypass scope, subsequent stack changes, and the stated verification blocker.",
+        "held": "Final safeguard effectiveness, matching retest, unspecified query denominator, and exact configuration lineage."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-07",
+        "MAP-09",
+        "MAP-10",
+        "MAP-13",
+        "MAP-16"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "Normalize six reported hours to 360 minutes while preserving its meaning as expert development effort."
+        },
+        {
+          "step": 2,
+          "finding": "Retain all provided queries as a reported scope without fabricating a numeric query denominator or per-attempt rate."
+        },
+        {
+          "step": 3,
+          "finding": "Record later stack changes as an intervention assertion separate from the failure."
+        },
+        {
+          "step": 4,
+          "finding": "Preserve effectiveness=null because the source explicitly reports that a configuration issue prevented AISI verification."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "typed failure/intervention/final outcome edge",
+        "checkpoint/configuration dates and exact match",
+        "scenario/threat/access/tools/effort/success-criterion/denominator join keys",
+        "evaluator independence scope",
+        "typed unknown query count and final outcome"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-002"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-009",
+      "title": "Reject a reported vendor stack change as proof of verified final effectiveness",
+      "branch": "AISI",
+      "fixture_origin": "explicitly_synthetic_interpretation_applied_to_root_verified_observations",
+      "input": {
+        "observations": {
+          "source_verification_role": "Root agent verified the following reported statements in the primary AISI artifact; this subagent did not independently browse it.",
+          "source_url": "https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities",
+          "locator": "Safeguards section",
+          "release_model_label": "GPT-5.5",
+          "failure": {
+            "assertion_kind": "Root-verified paraphrase",
+            "expert_development_effort": {
+              "value": 6,
+              "unit": "hours",
+              "normalized_value": 360,
+              "normalized_unit": "minutes",
+              "meaning": "Expert development effort, not per-query runtime"
+            },
+            "reported_bypass_scope": "All OpenAI-provided malicious cyber queries",
+            "query_count": null,
+            "query_count_null_reason": "The number of provided queries was not specified.",
+            "model_checkpoint": null,
+            "safeguard_configuration": null,
+            "event_date": null,
+            "date_precision": null
+          },
+          "intervention": {
+            "assertion_kind": "Root-verified paraphrase",
+            "vendor": "OpenAI",
+            "reported_action": "Subsequent safeguard-stack changes",
+            "configuration_identifier": null,
+            "intervention_date": null
+          },
+          "final_outcome": {
+            "value": null,
+            "status": "unknown",
+            "reason": "A configuration issue prevented AISI from verifying the final safeguard configuration's effectiveness.",
+            "final_configuration_identifier": null,
+            "matching_final_retest": null
+          },
+          "evaluator": {
+            "organization": "AISI",
+            "role": "External evaluator reported by the source",
+            "independence_scope": "Record external-evaluator role separately from unverified operational details of independence."
+          },
+          "model_checkpoint": null,
+          "publication_date": null,
+          "date_null_reason": "Exact checkpoint/configuration dates and publication date were not supplied in this root-verified fixture.",
+          "independent_replication_by_this_work": "not_performed"
+        },
+        "synthetic_inference": {
+          "vendor_changed_stack": true,
+          "therefore_final_effectiveness": "verified_improvement"
+        }
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_effectiveness_inference_preserve_intervention",
+        "rejected": "verified_improvement from the existence of a vendor change.",
+        "accepted": "Reported intervention and explicitly unresolved final effectiveness."
+      },
+      "current_manual_disposition": {
+        "action": "reject_effectiveness_inference_preserve_intervention",
+        "rejected": "verified_improvement from the existence of a vendor change.",
+        "accepted": "Reported intervention and explicitly unresolved final effectiveness."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-07",
+        "MAP-09",
+        "MAP-10",
+        "MAP-13",
+        "MAP-16"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The source supports a stack-change assertion."
+        },
+        {
+          "step": 2,
+          "finding": "The same evidence states that AISI could not verify the final effectiveness."
+        },
+        {
+          "step": 3,
+          "finding": "Reject the synthetic improvement claim and preserve final_outcome.value=null with its stated blocker."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "typed failure/intervention/final outcome edge",
+        "checkpoint/configuration dates and exact match",
+        "scenario/threat/access/tools/effort/success-criterion/denominator join keys",
+        "evaluator independence scope",
+        "typed unknown query count and final outcome"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-022"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-010",
+      "title": "Accept an explicitly synthetic matched final-configuration retest relationship without generalizing effectiveness",
+      "branch": "AISI",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "intended_comparison": "Before/after the explicitly named synthetic safeguard intervention under otherwise matched evaluation conditions.",
+        "intervention": {
+          "from_configuration": "SYN-STACK-BEFORE",
+          "to_configuration": "SYN-STACK-FINAL",
+          "configuration_change_is_intended": true
+        },
+        "before": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-BEFORE",
+          "evaluated_configuration": "SYN-STACK-BEFORE",
+          "criterion_met_count": 8,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-01",
+          "date_precision": "day"
+        },
+        "after": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-FINAL",
+          "evaluated_configuration": "SYN-STACK-FINAL",
+          "criterion_met_count": 2,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-02",
+          "date_precision": "day"
+        },
+        "documented_checkpoint_correspondence": "The same SYN-CHECKPOINT-A is evaluated in both phases.",
+        "uncertainty_definition": null,
+        "statistical_significance_claim": null,
+        "generalization_claim": null
+      },
+      "submitted_expected_disposition": {
+        "action": "accept_synthetic_comparable_retest_relationship",
+        "accepted": "A comparison relationship for the two synthetic observations under the declared matched conditions.",
+        "held": "Statistical significance, population-wide effectiveness, and any real GPT-5.5 outcome."
+      },
+      "current_manual_disposition": {
+        "action": "accept_synthetic_comparable_retest_relationship",
+        "accepted": "A comparison relationship for the two synthetic observations under the declared matched conditions.",
+        "held": "Statistical significance, population-wide effectiveness, and any real GPT-5.5 outcome."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-07",
+        "MAP-09",
+        "MAP-10",
+        "MAP-13",
+        "MAP-16"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The scenario, threat model, access, tools, effort budget, success criterion, and denominator definition/population match."
+        },
+        {
+          "step": 2,
+          "finding": "Both phases evaluate SYN-CHECKPOINT-A; each evaluated safeguard configuration matches its intended target, and the stack change is the explicit intervention."
+        },
+        {
+          "step": 3,
+          "finding": "Retain dated counts 8/20 and 2/20 as synthetic observations and accept their bounded comparison relationship."
+        },
+        {
+          "step": 4,
+          "finding": "No uncertainty method or generalization evidence is supplied, so neither significance nor real-world effectiveness is claimed."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "typed failure/intervention/final outcome edge",
+        "checkpoint/configuration dates and exact match",
+        "scenario/threat/access/tools/effort/success-criterion/denominator join keys",
+        "evaluator independence scope",
+        "typed unknown query count and final outcome"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-043"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-011",
+      "title": "Reject a before/after effectiveness join with only scenario correspondence mismatched",
+      "branch": "AISI",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "intended_comparison": "Before/after the explicitly named synthetic safeguard intervention under otherwise matched evaluation conditions.",
+        "intervention": {
+          "from_configuration": "SYN-STACK-BEFORE",
+          "to_configuration": "SYN-STACK-FINAL",
+          "configuration_change_is_intended": true
+        },
+        "before": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-BEFORE",
+          "evaluated_configuration": "SYN-STACK-BEFORE",
+          "criterion_met_count": 8,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-01",
+          "date_precision": "day"
+        },
+        "after": {
+          "scenario": "SYN-SCENARIO-B",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-FINAL",
+          "evaluated_configuration": "SYN-STACK-FINAL",
+          "criterion_met_count": 2,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-02",
+          "date_precision": "day"
+        },
+        "documented_checkpoint_correspondence": "The same SYN-CHECKPOINT-A is evaluated in both phases.",
+        "uncertainty_definition": null,
+        "statistical_significance_claim": null,
+        "generalization_claim": null,
+        "changed_dimension": "scenario",
+        "only_condition_changed_from_matched_fixture": "after.scenario",
+        "proposed_claim": "The final safeguard's before/after effectiveness is established by a matched comparison."
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "scenario"
+      },
+      "current_manual_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "scenario"
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-07",
+        "MAP-09",
+        "MAP-10",
+        "MAP-13",
+        "MAP-16"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "Start from the matched synthetic fixture; only the scenario condition is changed, with any derived correspondence statement withheld as necessary."
+        },
+        {
+          "step": 2,
+          "finding": "The post-intervention observation measures a different scenario."
+        },
+        {
+          "step": 3,
+          "finding": "The remaining comparison conditions stay as shown in the input; the intended safeguard intervention alone does not repair the mismatch."
+        },
+        {
+          "step": 4,
+          "finding": "Reject the proposed join, preserve both observation records and the exact mismatch, and hold conclusions requiring matched final-configuration evidence."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "typed failure/intervention/final outcome edge",
+        "checkpoint/configuration dates and exact match",
+        "scenario/threat/access/tools/effort/success-criterion/denominator join keys",
+        "evaluator independence scope",
+        "typed unknown query count and final outcome"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-031"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-012",
+      "title": "Reject a before/after effectiveness join with only threat model correspondence mismatched",
+      "branch": "AISI",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "intended_comparison": "Before/after the explicitly named synthetic safeguard intervention under otherwise matched evaluation conditions.",
+        "intervention": {
+          "from_configuration": "SYN-STACK-BEFORE",
+          "to_configuration": "SYN-STACK-FINAL",
+          "configuration_change_is_intended": true
+        },
+        "before": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-BEFORE",
+          "evaluated_configuration": "SYN-STACK-BEFORE",
+          "criterion_met_count": 8,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-01",
+          "date_precision": "day"
+        },
+        "after": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-B",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-FINAL",
+          "evaluated_configuration": "SYN-STACK-FINAL",
+          "criterion_met_count": 2,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-02",
+          "date_precision": "day"
+        },
+        "documented_checkpoint_correspondence": "The same SYN-CHECKPOINT-A is evaluated in both phases.",
+        "uncertainty_definition": null,
+        "statistical_significance_claim": null,
+        "generalization_claim": null,
+        "changed_dimension": "threat model",
+        "only_condition_changed_from_matched_fixture": "after.threat_model",
+        "proposed_claim": "The final safeguard's before/after effectiveness is established by a matched comparison."
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "threat model"
+      },
+      "current_manual_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "threat model"
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-07",
+        "MAP-09",
+        "MAP-10",
+        "MAP-13",
+        "MAP-16"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "Start from the matched synthetic fixture; only the threat model condition is changed, with any derived correspondence statement withheld as necessary."
+        },
+        {
+          "step": 2,
+          "finding": "The post-intervention observation uses a different threat model."
+        },
+        {
+          "step": 3,
+          "finding": "The remaining comparison conditions stay as shown in the input; the intended safeguard intervention alone does not repair the mismatch."
+        },
+        {
+          "step": 4,
+          "finding": "Reject the proposed join, preserve both observation records and the exact mismatch, and hold conclusions requiring matched final-configuration evidence."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "typed failure/intervention/final outcome edge",
+        "checkpoint/configuration dates and exact match",
+        "scenario/threat/access/tools/effort/success-criterion/denominator join keys",
+        "evaluator independence scope",
+        "typed unknown query count and final outcome"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-032"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-013",
+      "title": "Reject a before/after effectiveness join with only access correspondence mismatched",
+      "branch": "AISI",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "intended_comparison": "Before/after the explicitly named synthetic safeguard intervention under otherwise matched evaluation conditions.",
+        "intervention": {
+          "from_configuration": "SYN-STACK-BEFORE",
+          "to_configuration": "SYN-STACK-FINAL",
+          "configuration_change_is_intended": true
+        },
+        "before": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-BEFORE",
+          "evaluated_configuration": "SYN-STACK-BEFORE",
+          "criterion_met_count": 8,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-01",
+          "date_precision": "day"
+        },
+        "after": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-B",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-FINAL",
+          "evaluated_configuration": "SYN-STACK-FINAL",
+          "criterion_met_count": 2,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-02",
+          "date_precision": "day"
+        },
+        "documented_checkpoint_correspondence": "The same SYN-CHECKPOINT-A is evaluated in both phases.",
+        "uncertainty_definition": null,
+        "statistical_significance_claim": null,
+        "generalization_claim": null,
+        "changed_dimension": "access",
+        "only_condition_changed_from_matched_fixture": "after.access",
+        "proposed_claim": "The final safeguard's before/after effectiveness is established by a matched comparison."
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "access"
+      },
+      "current_manual_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "access"
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-07",
+        "MAP-09",
+        "MAP-10",
+        "MAP-13",
+        "MAP-16"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "Start from the matched synthetic fixture; only the access condition is changed, with any derived correspondence statement withheld as necessary."
+        },
+        {
+          "step": 2,
+          "finding": "The post-intervention observation uses different access conditions."
+        },
+        {
+          "step": 3,
+          "finding": "The remaining comparison conditions stay as shown in the input; the intended safeguard intervention alone does not repair the mismatch."
+        },
+        {
+          "step": 4,
+          "finding": "Reject the proposed join, preserve both observation records and the exact mismatch, and hold conclusions requiring matched final-configuration evidence."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "typed failure/intervention/final outcome edge",
+        "checkpoint/configuration dates and exact match",
+        "scenario/threat/access/tools/effort/success-criterion/denominator join keys",
+        "evaluator independence scope",
+        "typed unknown query count and final outcome"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-033"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-014",
+      "title": "Reject a before/after effectiveness join with only tools correspondence mismatched",
+      "branch": "AISI",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "intended_comparison": "Before/after the explicitly named synthetic safeguard intervention under otherwise matched evaluation conditions.",
+        "intervention": {
+          "from_configuration": "SYN-STACK-BEFORE",
+          "to_configuration": "SYN-STACK-FINAL",
+          "configuration_change_is_intended": true
+        },
+        "before": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-BEFORE",
+          "evaluated_configuration": "SYN-STACK-BEFORE",
+          "criterion_met_count": 8,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-01",
+          "date_precision": "day"
+        },
+        "after": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-B"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-FINAL",
+          "evaluated_configuration": "SYN-STACK-FINAL",
+          "criterion_met_count": 2,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-02",
+          "date_precision": "day"
+        },
+        "documented_checkpoint_correspondence": "The same SYN-CHECKPOINT-A is evaluated in both phases.",
+        "uncertainty_definition": null,
+        "statistical_significance_claim": null,
+        "generalization_claim": null,
+        "changed_dimension": "tools",
+        "only_condition_changed_from_matched_fixture": "after.tools",
+        "proposed_claim": "The final safeguard's before/after effectiveness is established by a matched comparison."
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "tools"
+      },
+      "current_manual_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "tools"
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-07",
+        "MAP-09",
+        "MAP-10",
+        "MAP-13",
+        "MAP-16"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "Start from the matched synthetic fixture; only the tools condition is changed, with any derived correspondence statement withheld as necessary."
+        },
+        {
+          "step": 2,
+          "finding": "The post-intervention tool allowance differs."
+        },
+        {
+          "step": 3,
+          "finding": "The remaining comparison conditions stay as shown in the input; the intended safeguard intervention alone does not repair the mismatch."
+        },
+        {
+          "step": 4,
+          "finding": "Reject the proposed join, preserve both observation records and the exact mismatch, and hold conclusions requiring matched final-configuration evidence."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "typed failure/intervention/final outcome edge",
+        "checkpoint/configuration dates and exact match",
+        "scenario/threat/access/tools/effort/success-criterion/denominator join keys",
+        "evaluator independence scope",
+        "typed unknown query count and final outcome"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-034"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-015",
+      "title": "Reject a before/after effectiveness join with only effort budget correspondence mismatched",
+      "branch": "AISI",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "intended_comparison": "Before/after the explicitly named synthetic safeguard intervention under otherwise matched evaluation conditions.",
+        "intervention": {
+          "from_configuration": "SYN-STACK-BEFORE",
+          "to_configuration": "SYN-STACK-FINAL",
+          "configuration_change_is_intended": true
+        },
+        "before": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-BEFORE",
+          "evaluated_configuration": "SYN-STACK-BEFORE",
+          "criterion_met_count": 8,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-01",
+          "date_precision": "day"
+        },
+        "after": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 15,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-FINAL",
+          "evaluated_configuration": "SYN-STACK-FINAL",
+          "criterion_met_count": 2,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-02",
+          "date_precision": "day"
+        },
+        "documented_checkpoint_correspondence": "The same SYN-CHECKPOINT-A is evaluated in both phases.",
+        "uncertainty_definition": null,
+        "statistical_significance_claim": null,
+        "generalization_claim": null,
+        "changed_dimension": "effort budget",
+        "only_condition_changed_from_matched_fixture": "after.effort_budget",
+        "proposed_claim": "The final safeguard's before/after effectiveness is established by a matched comparison."
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "effort budget"
+      },
+      "current_manual_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "effort budget"
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-07",
+        "MAP-09",
+        "MAP-10",
+        "MAP-13",
+        "MAP-16"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "Start from the matched synthetic fixture; only the effort budget condition is changed, with any derived correspondence statement withheld as necessary."
+        },
+        {
+          "step": 2,
+          "finding": "The post-intervention human effort budget differs, although its query limit is unchanged."
+        },
+        {
+          "step": 3,
+          "finding": "The remaining comparison conditions stay as shown in the input; the intended safeguard intervention alone does not repair the mismatch."
+        },
+        {
+          "step": 4,
+          "finding": "Reject the proposed join, preserve both observation records and the exact mismatch, and hold conclusions requiring matched final-configuration evidence."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "typed failure/intervention/final outcome edge",
+        "checkpoint/configuration dates and exact match",
+        "scenario/threat/access/tools/effort/success-criterion/denominator join keys",
+        "evaluator independence scope",
+        "typed unknown query count and final outcome"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-035"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-016",
+      "title": "Reject a before/after effectiveness join with only success criterion correspondence mismatched",
+      "branch": "AISI",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "intended_comparison": "Before/after the explicitly named synthetic safeguard intervention under otherwise matched evaluation conditions.",
+        "intervention": {
+          "from_configuration": "SYN-STACK-BEFORE",
+          "to_configuration": "SYN-STACK-FINAL",
+          "configuration_change_is_intended": true
+        },
+        "before": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-BEFORE",
+          "evaluated_configuration": "SYN-STACK-BEFORE",
+          "criterion_met_count": 8,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-01",
+          "date_precision": "day"
+        },
+        "after": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-B",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-FINAL",
+          "evaluated_configuration": "SYN-STACK-FINAL",
+          "criterion_met_count": 2,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-02",
+          "date_precision": "day"
+        },
+        "documented_checkpoint_correspondence": "The same SYN-CHECKPOINT-A is evaluated in both phases.",
+        "uncertainty_definition": null,
+        "statistical_significance_claim": null,
+        "generalization_claim": null,
+        "changed_dimension": "success criterion",
+        "only_condition_changed_from_matched_fixture": "after.success_criterion",
+        "proposed_claim": "The final safeguard's before/after effectiveness is established by a matched comparison."
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "success criterion"
+      },
+      "current_manual_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "success criterion"
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-07",
+        "MAP-09",
+        "MAP-10",
+        "MAP-13",
+        "MAP-16"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "Start from the matched synthetic fixture; only the success criterion condition is changed, with any derived correspondence statement withheld as necessary."
+        },
+        {
+          "step": 2,
+          "finding": "The scored success criterion changes."
+        },
+        {
+          "step": 3,
+          "finding": "The remaining comparison conditions stay as shown in the input; the intended safeguard intervention alone does not repair the mismatch."
+        },
+        {
+          "step": 4,
+          "finding": "Reject the proposed join, preserve both observation records and the exact mismatch, and hold conclusions requiring matched final-configuration evidence."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "typed failure/intervention/final outcome edge",
+        "checkpoint/configuration dates and exact match",
+        "scenario/threat/access/tools/effort/success-criterion/denominator join keys",
+        "evaluator independence scope",
+        "typed unknown query count and final outcome"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-036"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-017",
+      "title": "Reject a before/after effectiveness join with only denominator correspondence mismatched",
+      "branch": "AISI",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "intended_comparison": "Before/after the explicitly named synthetic safeguard intervention under otherwise matched evaluation conditions.",
+        "intervention": {
+          "from_configuration": "SYN-STACK-BEFORE",
+          "to_configuration": "SYN-STACK-FINAL",
+          "configuration_change_is_intended": true
+        },
+        "before": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-BEFORE",
+          "evaluated_configuration": "SYN-STACK-BEFORE",
+          "criterion_met_count": 8,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-01",
+          "date_precision": "day"
+        },
+        "after": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "completed executions",
+            "population": "SYN-COHORT-A",
+            "definition": "Only completed executions are included, with failed executions omitted."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-FINAL",
+          "evaluated_configuration": "SYN-STACK-FINAL",
+          "criterion_met_count": 2,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-02",
+          "date_precision": "day"
+        },
+        "documented_checkpoint_correspondence": "The same SYN-CHECKPOINT-A is evaluated in both phases.",
+        "uncertainty_definition": null,
+        "statistical_significance_claim": null,
+        "generalization_claim": null,
+        "changed_dimension": "denominator",
+        "only_condition_changed_from_matched_fixture": "after.denominator",
+        "proposed_claim": "The final safeguard's before/after effectiveness is established by a matched comparison."
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "denominator"
+      },
+      "current_manual_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "denominator"
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-07",
+        "MAP-09",
+        "MAP-10",
+        "MAP-13",
+        "MAP-16"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "Start from the matched synthetic fixture; only the denominator condition is changed, with any derived correspondence statement withheld as necessary."
+        },
+        {
+          "step": 2,
+          "finding": "Equal numeric denominators conceal a different unit and inclusion rule."
+        },
+        {
+          "step": 3,
+          "finding": "The remaining comparison conditions stay as shown in the input; the intended safeguard intervention alone does not repair the mismatch."
+        },
+        {
+          "step": 4,
+          "finding": "Reject the proposed join, preserve both observation records and the exact mismatch, and hold conclusions requiring matched final-configuration evidence."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "typed failure/intervention/final outcome edge",
+        "checkpoint/configuration dates and exact match",
+        "scenario/threat/access/tools/effort/success-criterion/denominator join keys",
+        "evaluator independence scope",
+        "typed unknown query count and final outcome"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-037"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-018",
+      "title": "Reject a before/after effectiveness join with only checkpoint correspondence mismatched",
+      "branch": "AISI",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "intended_comparison": "Before/after the explicitly named synthetic safeguard intervention under otherwise matched evaluation conditions.",
+        "intervention": {
+          "from_configuration": "SYN-STACK-BEFORE",
+          "to_configuration": "SYN-STACK-FINAL",
+          "configuration_change_is_intended": true
+        },
+        "before": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-BEFORE",
+          "evaluated_configuration": "SYN-STACK-BEFORE",
+          "criterion_met_count": 8,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-01",
+          "date_precision": "day"
+        },
+        "after": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-B",
+          "expected_target_configuration": "SYN-STACK-FINAL",
+          "evaluated_configuration": "SYN-STACK-FINAL",
+          "criterion_met_count": 2,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-02",
+          "date_precision": "day"
+        },
+        "documented_checkpoint_correspondence": null,
+        "uncertainty_definition": null,
+        "statistical_significance_claim": null,
+        "generalization_claim": null,
+        "changed_dimension": "checkpoint correspondence",
+        "only_condition_changed_from_matched_fixture": "after.model_checkpoint",
+        "proposed_claim": "The final safeguard's before/after effectiveness is established by a matched comparison."
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "checkpoint correspondence"
+      },
+      "current_manual_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "checkpoint correspondence"
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-07",
+        "MAP-09",
+        "MAP-10",
+        "MAP-13",
+        "MAP-16"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "Start from the matched synthetic fixture; only the checkpoint correspondence condition is changed, with any derived correspondence statement withheld as necessary."
+        },
+        {
+          "step": 2,
+          "finding": "The post-intervention observation tests a different model checkpoint without a justified correspondence mapping."
+        },
+        {
+          "step": 3,
+          "finding": "The remaining comparison conditions stay as shown in the input; the intended safeguard intervention alone does not repair the mismatch."
+        },
+        {
+          "step": 4,
+          "finding": "Reject the proposed join, preserve both observation records and the exact mismatch, and hold conclusions requiring matched final-configuration evidence."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "typed failure/intervention/final outcome edge",
+        "checkpoint/configuration dates and exact match",
+        "scenario/threat/access/tools/effort/success-criterion/denominator join keys",
+        "evaluator independence scope",
+        "typed unknown query count and final outcome"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-038"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-019",
+      "title": "Reject a before/after effectiveness join with only final-configuration correspondence mismatched",
+      "branch": "AISI",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "intended_comparison": "Before/after the explicitly named synthetic safeguard intervention under otherwise matched evaluation conditions.",
+        "intervention": {
+          "from_configuration": "SYN-STACK-BEFORE",
+          "to_configuration": "SYN-STACK-FINAL",
+          "configuration_change_is_intended": true
+        },
+        "before": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-BEFORE",
+          "evaluated_configuration": "SYN-STACK-BEFORE",
+          "criterion_met_count": 8,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-01",
+          "date_precision": "day"
+        },
+        "after": {
+          "scenario": "SYN-SCENARIO-A",
+          "threat_model": "SYN-THREAT-MODEL-A",
+          "access": "SYN-ACCESS-A",
+          "tools": [
+            "SYN-TOOL-A"
+          ],
+          "effort_budget": {
+            "human_minutes": 60,
+            "query_limit": 20
+          },
+          "success_criterion": "SYN-CRITERION-A",
+          "denominator": {
+            "value": 20,
+            "unit": "query scenarios",
+            "population": "SYN-COHORT-A",
+            "definition": "One scored attempt for every scenario in SYN-COHORT-A."
+          },
+          "model_checkpoint": "SYN-CHECKPOINT-A",
+          "expected_target_configuration": "SYN-STACK-FINAL",
+          "evaluated_configuration": "SYN-STACK-OTHER",
+          "criterion_met_count": 2,
+          "evaluator": {
+            "identity": "SYN-EVALUATOR-I",
+            "role": "independent external evaluator within this synthetic fixture"
+          },
+          "evaluation_date": "2000-01-02",
+          "date_precision": "day"
+        },
+        "documented_checkpoint_correspondence": "The same SYN-CHECKPOINT-A is evaluated in both phases.",
+        "uncertainty_definition": null,
+        "statistical_significance_claim": null,
+        "generalization_claim": null,
+        "changed_dimension": "final-configuration correspondence",
+        "only_condition_changed_from_matched_fixture": "after.evaluated_configuration",
+        "proposed_claim": "The final safeguard's before/after effectiveness is established by a matched comparison."
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "final-configuration correspondence"
+      },
+      "current_manual_disposition": {
+        "action": "reject_comparison_preserve_separate_observations",
+        "rejected": "Matched before/after effectiveness comparison and any claim that it verifies the intended final configuration.",
+        "accepted": "The two synthetic observations under their actual distinct conditions.",
+        "blocking_dimension": "final-configuration correspondence"
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-07",
+        "MAP-09",
+        "MAP-10",
+        "MAP-13",
+        "MAP-16"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "Start from the matched synthetic fixture; only the final-configuration correspondence condition is changed, with any derived correspondence statement withheld as necessary."
+        },
+        {
+          "step": 2,
+          "finding": "The retest's evaluated safeguard configuration does not match the intended final configuration."
+        },
+        {
+          "step": 3,
+          "finding": "The remaining comparison conditions stay as shown in the input; the intended safeguard intervention alone does not repair the mismatch."
+        },
+        {
+          "step": 4,
+          "finding": "Reject the proposed join, preserve both observation records and the exact mismatch, and hold conclusions requiring matched final-configuration evidence."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "typed failure/intervention/final outcome edge",
+        "checkpoint/configuration dates and exact match",
+        "scenario/threat/access/tools/effort/success-criterion/denominator join keys",
+        "evaluator independence scope",
+        "typed unknown query count and final outcome"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-039"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-020",
+      "title": "Retain the separate Model B biological-misuse observation with its strict time inequality",
+      "branch": "AISI",
+      "fixture_origin": "root_verified_primary_source_fixture",
+      "input": {
+        "source_verification_role": "Root-verified primary-source findings; this subagent did not independently browse the artifact.",
+        "source_url": "https://www.aisi.gov.uk/frontier-ai-trends-report",
+        "locator": "Figure 13 and its study context",
+        "study_domain": "Biological misuse",
+        "anonymized_model_label": "Model B",
+        "time_to_observed_outcome": {
+          "operator": ">",
+          "value": 7,
+          "unit": "hours",
+          "normalized_operator": ">",
+          "normalized_value": 420,
+          "normalized_unit": "minutes"
+        },
+        "model_release_window": {
+          "start_year": 2024,
+          "end_year": 2025,
+          "precision": "year"
+        },
+        "release_spacing": {
+          "value": 6,
+          "unit": "months"
+        },
+        "identified_model_or_checkpoint": null,
+        "identity_null_reason": "Model B's identity/checkpoint is unknown in the supplied verified findings.",
+        "query_denominator": null,
+        "denominator_null_reason": "Query count is unknown.",
+        "correspondence_to_gpt_5_5_final_safeguards": null,
+        "correspondence_null_reason": "This separate biological-misuse study does not provide matching GPT-5.5 final-stack retest evidence."
+      },
+      "submitted_expected_disposition": {
+        "action": "accept_separate_reported_observation_with_holds",
+        "accepted": "An anonymized Model B observation of over seven hours, normalized to >420 minutes, within its separate biological-misuse study.",
+        "held": "Model identity, query denominator, and any GPT-5.5-final-configuration retest relationship."
+      },
+      "current_manual_disposition": {
+        "action": "accept_separate_reported_observation_with_holds",
+        "accepted": "An anonymized Model B observation of over seven hours, normalized to >420 minutes, within its separate biological-misuse study.",
+        "held": "Model identity, query denominator, and any GPT-5.5-final-configuration retest relationship."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-07",
+        "MAP-09",
+        "MAP-10",
+        "MAP-13",
+        "MAP-16"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "Normalize hours to minutes while preserving the strict greater-than operator."
+        },
+        {
+          "step": 2,
+          "finding": "Preserve the biological-misuse domain, 2024–2025 release-year window, six-month spacing, and their distinct clock meanings."
+        },
+        {
+          "step": 3,
+          "finding": "Keep model identity and query denominator null."
+        },
+        {
+          "step": 4,
+          "finding": "Do not create a retest or shared-checkpoint edge to the cyber-safeguard observation."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "typed failure/intervention/final outcome edge",
+        "checkpoint/configuration dates and exact match",
+        "scenario/threat/access/tools/effort/success-criterion/denominator join keys",
+        "evaluator independence scope",
+        "typed unknown query count and final outcome"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-003"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-021",
+      "title": "Reject substitution of the trends Model B observation for a GPT-5.5 final-safeguard retest",
+      "branch": "AISI",
+      "fixture_origin": "explicitly_synthetic_interpretation_applied_to_root_verified_observations",
+      "input": {
+        "cyber_observations": {
+          "source_verification_role": "Root agent verified the following reported statements in the primary AISI artifact; this subagent did not independently browse it.",
+          "source_url": "https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities",
+          "locator": "Safeguards section",
+          "release_model_label": "GPT-5.5",
+          "failure": {
+            "assertion_kind": "Root-verified paraphrase",
+            "expert_development_effort": {
+              "value": 6,
+              "unit": "hours",
+              "normalized_value": 360,
+              "normalized_unit": "minutes",
+              "meaning": "Expert development effort, not per-query runtime"
+            },
+            "reported_bypass_scope": "All OpenAI-provided malicious cyber queries",
+            "query_count": null,
+            "query_count_null_reason": "The number of provided queries was not specified.",
+            "model_checkpoint": null,
+            "safeguard_configuration": null,
+            "event_date": null,
+            "date_precision": null
+          },
+          "intervention": {
+            "assertion_kind": "Root-verified paraphrase",
+            "vendor": "OpenAI",
+            "reported_action": "Subsequent safeguard-stack changes",
+            "configuration_identifier": null,
+            "intervention_date": null
+          },
+          "final_outcome": {
+            "value": null,
+            "status": "unknown",
+            "reason": "A configuration issue prevented AISI from verifying the final safeguard configuration's effectiveness.",
+            "final_configuration_identifier": null,
+            "matching_final_retest": null
+          },
+          "evaluator": {
+            "organization": "AISI",
+            "role": "External evaluator reported by the source",
+            "independence_scope": "Record external-evaluator role separately from unverified operational details of independence."
+          },
+          "model_checkpoint": null,
+          "publication_date": null,
+          "date_null_reason": "Exact checkpoint/configuration dates and publication date were not supplied in this root-verified fixture.",
+          "independent_replication_by_this_work": "not_performed"
+        },
+        "trends_observation": {
+          "source_verification_role": "Root-verified primary-source findings; this subagent did not independently browse the artifact.",
+          "source_url": "https://www.aisi.gov.uk/frontier-ai-trends-report",
+          "locator": "Figure 13 and its study context",
+          "study_domain": "Biological misuse",
+          "anonymized_model_label": "Model B",
+          "time_to_observed_outcome": {
+            "operator": ">",
+            "value": 7,
+            "unit": "hours",
+            "normalized_operator": ">",
+            "normalized_value": 420,
+            "normalized_unit": "minutes"
+          },
+          "model_release_window": {
+            "start_year": 2024,
+            "end_year": 2025,
+            "precision": "year"
+          },
+          "release_spacing": {
+            "value": 6,
+            "unit": "months"
+          },
+          "identified_model_or_checkpoint": null,
+          "identity_null_reason": "Model B's identity/checkpoint is unknown in the supplied verified findings.",
+          "query_denominator": null,
+          "denominator_null_reason": "Query count is unknown.",
+          "correspondence_to_gpt_5_5_final_safeguards": null,
+          "correspondence_null_reason": "This separate biological-misuse study does not provide matching GPT-5.5 final-stack retest evidence."
+        },
+        "synthetic_join": {
+          "same_model": true,
+          "same_threat_model": true,
+          "final_stack_retested": true,
+          "reason_offered": ">420 minutes is longer than six hours."
+        }
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_cross_study_retest_join_preserve_both_observations",
+        "rejected": "A Model B identity match, matching-threat-model claim, or final-stack retest inferred from elapsed durations.",
+        "accepted": "The separately attributed cyber and biological-misuse observations."
+      },
+      "current_manual_disposition": {
+        "action": "reject_cross_study_retest_join_preserve_both_observations",
+        "rejected": "A Model B identity match, matching-threat-model claim, or final-stack retest inferred from elapsed durations.",
+        "accepted": "The separately attributed cyber and biological-misuse observations."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-06",
+        "MAP-07",
+        "MAP-09",
+        "MAP-10",
+        "MAP-13",
+        "MAP-16"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The observations concern cyber safeguards and biological misuse, respectively."
+        },
+        {
+          "step": 2,
+          "finding": "Model B has no established identity or matching checkpoint/configuration, and its query denominator is unknown."
+        },
+        {
+          "step": 3,
+          "finding": "The durations also retain different study-context meanings; time comparison alone does not establish common methods."
+        },
+        {
+          "step": 4,
+          "finding": "Reject the cross-study retest claim and preserve the final GPT-5.5 outcome as unknown."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "typed failure/intervention/final outcome edge",
+        "checkpoint/configuration dates and exact match",
+        "scenario/threat/access/tools/effort/success-criterion/denominator join keys",
+        "evaluator independence scope",
+        "typed unknown query count and final outcome"
+      ],
+      "synthetic_schema_probe_refs": [],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-022",
+      "title": "Deduplicate an explicitly linked synthetic Apollo original and developer-card summary",
+      "branch": "Apollo",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "original_artifact": {
+          "fixture_artifact_key": "SYN-APOLLO-ORIGINAL",
+          "evidence_role": "External evaluator original",
+          "evaluator": "SYN-APOLLO",
+          "release_label": "SYN-ASTRA-RELEASE",
+          "model_checkpoint": "SYN-ASTRA-CHECKPOINT-A",
+          "study_date": "2000-02-01",
+          "study_date_precision": "day",
+          "protocol_revision": "SYN-PROTOCOL-1",
+          "underlying_result_key": "SYN-RESULT-A",
+          "measure": "SYN-AGGREGATE",
+          "value": 2,
+          "denominator": {
+            "value": 10,
+            "unit": "synthetic trials",
+            "definition": "All trials in SYN-COHORT-A"
+          },
+          "uncertainty_definition": null
+        },
+        "developer_card": {
+          "fixture_artifact_key": "SYN-DEVELOPER-CARD",
+          "evidence_role": "Developer summary of external evaluation",
+          "release_label": "SYN-ASTRA-RELEASE",
+          "model_checkpoint": "SYN-ASTRA-CHECKPOINT-A",
+          "explicitly_links_original": "SYN-APOLLO-ORIGINAL",
+          "explicitly_attributes_underlying_result": "SYN-RESULT-A",
+          "measure": "SYN-AGGREGATE",
+          "value": 2,
+          "denominator": {
+            "value": 10,
+            "unit": "synthetic trials",
+            "definition": "All trials in SYN-COHORT-A"
+          },
+          "publication_date": "2000-02-02",
+          "publication_date_precision": "day"
+        },
+        "correspondence_evidence": "The synthetic card explicitly links and attributes the exact result to the synthetic original and matching checkpoint."
+      },
+      "submitted_expected_disposition": {
+        "action": "accept_synthetic_derivative_relationship",
+        "accepted": "Two artifact appearances linked to one underlying synthetic result.",
+        "rejected": "Counting the developer summary as an independent evaluation or replication.",
+        "underlying_result_count": 1,
+        "artifact_appearance_count": 2
+      },
+      "current_manual_disposition": {
+        "action": "accept_synthetic_derivative_relationship",
+        "accepted": "Two artifact appearances linked to one underlying synthetic result.",
+        "rejected": "Counting the developer summary as an independent evaluation or replication.",
+        "underlying_result_count": 1,
+        "artifact_appearance_count": 2
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-05",
+        "MAP-06",
+        "MAP-09",
+        "MAP-10",
+        "MAP-12",
+        "MAP-15"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The synthetic card directly links the original and explicitly attributes the same underlying result."
+        },
+        {
+          "step": 2,
+          "finding": "Release, checkpoint, measure and denominator correspond within the fixture."
+        },
+        {
+          "step": 3,
+          "finding": "Preserve both artifact roles and dates while linking the card as a derivative appearance."
+        },
+        {
+          "step": 4,
+          "finding": "Count one underlying result; preserve the original's unknown uncertainty definition."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "developer-versus-original role and underlying-result identity",
+        "derivative edge and independent replication increment",
+        "original report unavailable reason",
+        "checkpoint/protocol correspondence",
+        "calendar study date versus duration",
+        "cohort and unknown uncertainty/denominator"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-007",
+        "SC-025",
+        "SC-044"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-023",
+      "title": "Hold synthetic Apollo correspondence when the developer card names a different checkpoint",
+      "branch": "Apollo",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "original_artifact": {
+          "fixture_artifact_key": "SYN-APOLLO-ORIGINAL",
+          "evidence_role": "External evaluator original",
+          "evaluator": "SYN-APOLLO",
+          "release_label": "SYN-ASTRA-RELEASE",
+          "model_checkpoint": "SYN-ASTRA-CHECKPOINT-A",
+          "study_date": "2000-02-01",
+          "study_date_precision": "day",
+          "protocol_revision": "SYN-PROTOCOL-1",
+          "underlying_result_key": "SYN-RESULT-A",
+          "measure": "SYN-AGGREGATE",
+          "value": 2,
+          "denominator": {
+            "value": 10,
+            "unit": "synthetic trials",
+            "definition": "All trials in SYN-COHORT-A"
+          },
+          "uncertainty_definition": null
+        },
+        "developer_card": {
+          "fixture_artifact_key": "SYN-DEVELOPER-CARD",
+          "evidence_role": "Developer summary of external evaluation",
+          "release_label": "SYN-ASTRA-RELEASE",
+          "model_checkpoint": "SYN-ASTRA-CHECKPOINT-B",
+          "explicitly_links_original": "SYN-APOLLO-ORIGINAL",
+          "explicitly_attributes_underlying_result": "SYN-RESULT-A",
+          "measure": "SYN-AGGREGATE",
+          "value": 2,
+          "denominator": {
+            "value": 10,
+            "unit": "synthetic trials",
+            "definition": "All trials in SYN-COHORT-A"
+          },
+          "publication_date": "2000-02-02",
+          "publication_date_precision": "day"
+        },
+        "correspondence_evidence": null,
+        "proposed_join": "The original verifies the developer card for CHECKPOINT-B."
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_checkpoint_specific_verification_join",
+        "accepted": "Separate original and summary assertions under their stated checkpoints.",
+        "held": "Whether the original independently establishes the card's claims for its different checkpoint."
+      },
+      "current_manual_disposition": {
+        "action": "reject_checkpoint_specific_verification_join",
+        "accepted": "Separate original and summary assertions under their stated checkpoints.",
+        "held": "Whether the original independently establishes the card's claims for its different checkpoint."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-05",
+        "MAP-06",
+        "MAP-09",
+        "MAP-10",
+        "MAP-12",
+        "MAP-15"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The original names checkpoint A; the synthetic card names checkpoint B."
+        },
+        {
+          "step": 2,
+          "finding": "A title/link/result-label resemblance does not repair conflicting checkpoint identity."
+        },
+        {
+          "step": 3,
+          "finding": "Reject the checkpoint-specific verification edge and preserve both identities plus the correspondence conflict."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "developer-versus-original role and underlying-result identity",
+        "derivative edge and independent replication increment",
+        "original report unavailable reason",
+        "checkpoint/protocol correspondence",
+        "calendar study date versus duration",
+        "cohort and unknown uncertainty/denominator"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-028"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-024",
+      "title": "Do not identify a later similarly titled synthetic Apollo report as the release-specific original",
+      "branch": "Apollo",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "developer_card": {
+          "release": "SYN-ASTRA-RELEASE",
+          "checkpoint": "SYN-CHECKPOINT-A",
+          "publication_date": "2000-03-01",
+          "original_link": null
+        },
+        "later_report": {
+          "title": "SYN-SIMILAR-TITLE",
+          "publication_date": "2000-06-01",
+          "study_date": "2000-05-01",
+          "checkpoint": null,
+          "explicit_release_correspondence": null
+        },
+        "proposed_original_relation": true,
+        "bounded_search_scope": "The synthetic developer card and official science index only."
+      },
+      "submitted_expected_disposition": {
+        "action": "hold_release_specific_original_identification",
+        "accepted": "The later report as a separate synthetic artifact.",
+        "rejected": "Treating date/title similarity as release/checkpoint correspondence.",
+        "original_search_status": "unlocated_in_inspected_sources"
+      },
+      "current_manual_disposition": {
+        "action": "hold_release_specific_original_identification",
+        "accepted": "The later report as a separate synthetic artifact.",
+        "rejected": "Treating date/title similarity as release/checkpoint correspondence.",
+        "original_search_status": "unlocated_in_inspected_sources"
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-05",
+        "MAP-06",
+        "MAP-09",
+        "MAP-10",
+        "MAP-12",
+        "MAP-15"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The card has no explicit original link in this fixture."
+        },
+        {
+          "step": 2,
+          "finding": "The later report supplies no matching checkpoint or release correspondence."
+        },
+        {
+          "step": 3,
+          "finding": "Hold original identification; describe the bounded outcome as unlocated in inspected sources rather than nonexistent."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "developer-versus-original role and underlying-result identity",
+        "derivative edge and independent replication increment",
+        "original report unavailable reason",
+        "checkpoint/protocol correspondence",
+        "calendar study date versus duration",
+        "cohort and unknown uncertainty/denominator"
+      ],
+      "synthetic_schema_probe_refs": [],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-025",
+      "title": "Deduplicate repeated synthetic appearances of the same unchanged assertion",
+      "branch": "Apollo",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "appearance_a": {
+          "fixture_artifact_key": "SYN-HTML",
+          "underlying_assertion_key": "SYN-ASSERTION-1",
+          "revision": "SYN-REV-1",
+          "value": 2,
+          "denominator": 10,
+          "evidence_role": "Original rendering"
+        },
+        "appearance_b": {
+          "fixture_artifact_key": "SYN-PDF",
+          "underlying_assertion_key": "SYN-ASSERTION-1",
+          "revision": "SYN-REV-1",
+          "value": 2,
+          "denominator": 10,
+          "evidence_role": "Alternative rendering"
+        },
+        "explicit_equivalence_evidence": "The synthetic publisher explicitly identifies the two renderings as the same revision and result."
+      },
+      "submitted_expected_disposition": {
+        "action": "accept_synthetic_duplicate_appearance_edge",
+        "accepted": "Two preserved artifact appearances attached to one underlying assertion.",
+        "underlying_assertion_count": 1,
+        "independent_replication_count": 0
+      },
+      "current_manual_disposition": {
+        "action": "accept_synthetic_duplicate_appearance_edge",
+        "accepted": "Two preserved artifact appearances attached to one underlying assertion.",
+        "underlying_assertion_count": 1,
+        "independent_replication_count": 0
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-05",
+        "MAP-06",
+        "MAP-09",
+        "MAP-10",
+        "MAP-12",
+        "MAP-15"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The fixture supplies explicit equivalence of revision and underlying result; similarity alone is not used."
+        },
+        {
+          "step": 2,
+          "finding": "Values and denominators agree."
+        },
+        {
+          "step": 3,
+          "finding": "Keep both provenance appearances and deduplicate the assertion for counting."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "developer-versus-original role and underlying-result identity",
+        "derivative edge and independent replication increment",
+        "original report unavailable reason",
+        "checkpoint/protocol correspondence",
+        "calendar study date versus duration",
+        "cohort and unknown uncertainty/denominator"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-010",
+        "SC-025",
+        "SC-044"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-026",
+      "title": "Preserve a revised synthetic assertion and the scope of its correction",
+      "branch": "Apollo",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "prior_assertion": {
+          "fixture_assertion_key": "SYN-ASSERTION-V1",
+          "revision": "SYN-REV-1",
+          "value": 2,
+          "denominator": {
+            "value": 10,
+            "unit": "trials"
+          },
+          "publication_date": "2000-04-01"
+        },
+        "revised_assertion": {
+          "fixture_assertion_key": "SYN-ASSERTION-V2",
+          "revision": "SYN-REV-2",
+          "value": 3,
+          "denominator": {
+            "value": 12,
+            "unit": "trials"
+          },
+          "publication_date": "2000-04-03"
+        },
+        "explicit_correction_statement": {
+          "revises": "SYN-ASSERTION-V1",
+          "replacement": "SYN-ASSERTION-V2",
+          "scope": "The aggregate numerator and denominator for the same named result are corrected.",
+          "protocol_equivalence": null
+        }
+      },
+      "submitted_expected_disposition": {
+        "action": "accept_synthetic_scoped_revision_edge_preserve_history",
+        "accepted": "Both versioned assertions with a correction/supersession edge scoped to the aggregate numerator and denominator.",
+        "held": "Protocol equivalence and longitudinal comparability not established by the correction statement alone."
+      },
+      "current_manual_disposition": {
+        "action": "accept_synthetic_scoped_revision_edge_preserve_history",
+        "accepted": "Both versioned assertions with a correction/supersession edge scoped to the aggregate numerator and denominator.",
+        "held": "Protocol equivalence and longitudinal comparability not established by the correction statement alone."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-05",
+        "MAP-06",
+        "MAP-09",
+        "MAP-10",
+        "MAP-12",
+        "MAP-15"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The fixture explicitly states which prior assertion is corrected and the scope of replacement."
+        },
+        {
+          "step": 2,
+          "finding": "Preserve both raw versions, values, denominators and publication dates."
+        },
+        {
+          "step": 3,
+          "finding": "Create a scoped documentary revision relationship, not an independent replication or silent overwrite."
+        },
+        {
+          "step": 4,
+          "finding": "Leave protocol equivalence and cross-version comparability unresolved."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "developer-versus-original role and underlying-result identity",
+        "derivative edge and independent replication increment",
+        "original report unavailable reason",
+        "checkpoint/protocol correspondence",
+        "calendar study date versus duration",
+        "cohort and unknown uncertainty/denominator"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-011"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-027",
+      "title": "Reject silent overwrite or false deduplication of changed synthetic assertions",
+      "branch": "Apollo",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "prior": {
+          "revision": "SYN-R1",
+          "reported_count": 2,
+          "denominator": 10
+        },
+        "later": {
+          "revision": "SYN-R2",
+          "reported_count": 3,
+          "denominator": 12
+        },
+        "documented_revision_relation": null,
+        "proposed_action": "Delete the prior assertion and retain the later numbers under its identity as an unchanged duplicate."
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_overwrite_preserve_conflicting_versions",
+        "accepted": "Separate versioned assertions and an unresolved conflict/correspondence record.",
+        "rejected": "Treating changed values as an unchanged duplicate or silently replacing the earlier observation."
+      },
+      "current_manual_disposition": {
+        "action": "reject_overwrite_preserve_conflicting_versions",
+        "accepted": "Separate versioned assertions and an unresolved conflict/correspondence record.",
+        "rejected": "Treating changed values as an unchanged duplicate or silently replacing the earlier observation."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-05",
+        "MAP-06",
+        "MAP-09",
+        "MAP-10",
+        "MAP-12",
+        "MAP-15"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The observed synthetic values and denominators differ."
+        },
+        {
+          "step": 2,
+          "finding": "No explicit revision/correction relationship is supplied."
+        },
+        {
+          "step": 3,
+          "finding": "Retain both assertions and their revisions; hold supersession scope and reject destructive logical overwrite."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "developer-versus-original role and underlying-result identity",
+        "derivative edge and independent replication increment",
+        "original report unavailable reason",
+        "checkpoint/protocol correspondence",
+        "calendar study date versus duration",
+        "cohort and unknown uncertainty/denominator"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-012"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-028",
+      "title": "Reject transfer of hypothetical code or host rights to a distinct report and aggregate artifact",
+      "branch": "cross-cutting",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "license_statement": {
+          "subject": "SYN-CODE-REPOSITORY",
+          "license_label": "SYN-CODE-LICENSE",
+          "scope": "Code files in SYN-CODE-REPOSITORY"
+        },
+        "different_artifact": {
+          "fixture_artifact_key": "SYN-REPORT",
+          "kind": "Externally linked report with aggregate results"
+        },
+        "artifact_specific_applicable_statement": null,
+        "proposed_permissions": {
+          "factual_metadata_or_paraphrase": "cleared by code license",
+          "aggregate_reuse": "cleared by code license",
+          "source_body_retention": "cleared by code license",
+          "redistribution": "cleared by code license"
+        }
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_cross_artifact_rights_transfer",
+        "rejected": "All four blanket permissions inferred from a code/host license with no applicable scope evidence.",
+        "accepted": "The license statement only for its stated subject/scope; the distinct artifact's four rights categories remain unknown."
+      },
+      "current_manual_disposition": {
+        "action": "reject_cross_artifact_rights_transfer",
+        "rejected": "All four blanket permissions inferred from a code/host license with no applicable scope evidence.",
+        "accepted": "The license statement only for its stated subject/scope; the distinct artifact's four rights categories remain unknown."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-04",
+        "MAP-19"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The hypothetical statement identifies code files as its subject."
+        },
+        {
+          "step": 2,
+          "finding": "The target report and aggregates are distinct artifacts and lack an applicable statement in the fixture."
+        },
+        {
+          "step": 3,
+          "finding": "Reject the transfer and preserve factual metadata/paraphrase, aggregate reuse, source-body retention and redistribution as separate unknown rights assessments."
+        },
+        {
+          "step": 4,
+          "finding": "No legal clearance, retention permission or redistribution permission is inferred."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "digest scope and verification status",
+        "four independent rights scopes",
+        "source-review versus current-main provenance",
+        "per-assertion null reasons and unsupported typed qualifiers"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-027"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-029",
+      "title": "Reject classifying a Git object identifier as a verified whole-artifact byte hash",
+      "branch": "cross-cutting",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "observed_identifier": {
+          "value": "1111111111111111111111111111111111111111",
+          "kind": "Git commit object ID",
+          "verification": "Identifier supplied by synthetic source"
+        },
+        "inspected_material": "A hypothetical short static excerpt only",
+        "whole_artifact_bytes_inspected": false,
+        "proposed_digest": {
+          "value": "1111111111111111111111111111111111111111",
+          "kind": "verified whole-artifact byte hash",
+          "algorithm": "SHA-256"
+        }
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_digest_type_and_verification_claim_preserve_git_identifier",
+        "accepted": "The identifier with kind Git commit object ID and its actual evidentiary status.",
+        "rejected": "Calling it a SHA-256 byte digest or a verified hash of an uninspected artifact."
+      },
+      "current_manual_disposition": {
+        "action": "reject_digest_type_and_verification_claim_preserve_git_identifier",
+        "accepted": "The identifier with kind Git commit object ID and its actual evidentiary status.",
+        "rejected": "Calling it a SHA-256 byte digest or a verified hash of an uninspected artifact."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-04",
+        "MAP-19"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The input explicitly identifies a Git commit object ID; it is not a digest of the target artifact's raw bytes."
+        },
+        {
+          "step": 2,
+          "finding": "Whole artifact bytes were not inspected, so whole-artifact digest verification was not performed."
+        },
+        {
+          "step": 3,
+          "finding": "Reject the proposed type/algorithm/verification claim and preserve the identifier's true kind."
+        },
+        {
+          "step": 4,
+          "finding": "Do not substitute excerpt hashes, provider-reported digests or Git object IDs for one another."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "digest scope and verification status",
+        "four independent rights scopes",
+        "source-review versus current-main provenance",
+        "per-assertion null reasons and unsupported typed qualifiers"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-008",
+        "SC-009"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CASE-030",
+      "title": "Reject a proposed mapping that discards consequential qualifiers while claiming compatibility",
+      "branch": "cross-cutting",
+      "fixture_origin": "explicitly_synthetic_fixture",
+      "input": {
+        "synthetic_only": true,
+        "research_observation": {
+          "value": 0,
+          "unit": "reported successful attacks",
+          "execution_status": "unknown",
+          "denominator_definition": "total attempted attacks; completed count unknown",
+          "uncertainty_definition": null,
+          "uncertainty_null_reason": "Lineage not established",
+          "threat_model": "SYN-THREAT-MODEL",
+          "access": "SYN-ACCESS",
+          "tools": [
+            "SYN-TOOL"
+          ],
+          "effort_budget": {
+            "value": 60,
+            "unit": "minutes"
+          },
+          "success_criterion": "SYN-CRITERION",
+          "checkpoint": "SYN-CHECKPOINT",
+          "safeguard_configuration": "SYN-STACK",
+          "configuration_date": null,
+          "evaluator_role": "SYN-EXTERNAL",
+          "evidence_role": "reported observation",
+          "source_revision": "SYN-REV"
+        },
+        "proposed_lossy_projection": {
+          "value": 0,
+          "unit": "successes",
+          "claim": "Validated current-contract compatible evaluation"
+        },
+        "contracts_inspected": false
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_lossy_projection_and_compatibility_claim",
+        "accepted": "The complete qualified observation retained in the research ledger.",
+        "held": "Destination field mappings and current-contract compatibility.",
+        "rejected": "Dropping consequential qualifiers or treating an unseen schema as validated."
+      },
+      "current_manual_disposition": {
+        "action": "reject_lossy_projection_and_compatibility_claim",
+        "accepted": "Retain the complete qualified research observation. Exact current field destinations and native/partial/text-only support are assessed in the linked mapping decisions.",
+        "held": "A lossless structured mapping into the three native contracts alone and a real-source canonical projection remain held; current destination support is no longer unassessed.",
+        "rejected": "The synthetic value/unit-only projection omits execution status, denominator meaning, uncertainty, protocol/context, dates and source role, and cannot be called a validated faithful evaluation."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-04",
+        "MAP-05",
+        "MAP-06",
+        "MAP-07",
+        "MAP-08",
+        "MAP-09",
+        "MAP-10",
+        "MAP-11",
+        "MAP-12",
+        "MAP-14",
+        "MAP-15",
+        "MAP-16",
+        "MAP-17",
+        "MAP-18",
+        "MAP-19"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The unchanged submitted input, including contracts_inspected=false, describes the historical fixture. This review separately inspected exact pinned current contracts; the old access failure is not the current mapping result."
+        },
+        {
+          "step": 2,
+          "finding": "MAP-09 supports a reported numeric result; MAP-10 only partially supports denominator/cohort meaning. MAP-11 and MAP-12 preserve execution rules and uncertainty in text but provide no complete typed representation of those qualifiers."
+        },
+        {
+          "step": 3,
+          "finding": "MAP-06 through MAP-08 and MAP-14 through MAP-16 identify concrete model, protocol, clock and evidence destinations while retaining unsupported configuration, relationship, independence and comparison qualifiers in the research ledger. Mandatory exact protocol lineage cannot be fabricated."
+        },
+        {
+          "step": 4,
+          "finding": "Reject the lossy two-field projection. Preserve all source-side fields and explicit null reasons; partial/native/text-only support is assessed rather than unassessed, while full lossless structured compatibility remains held."
+        },
+        {
+          "step": 5,
+          "finding": "Related synthetic probes demonstrate both structural rejections and semantically invalid projections that can pass shape checks. Their success does not validate this unchanged historical case input as a native real-source bundle."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "typed execution status and assigned-versus-observed outcomes",
+        "typed denominator definition and completed-execution null reason",
+        "uncertainty definition and production lineage",
+        "configuration identity/date and typed remediation/comparison relationship",
+        "scenario, threat, access, tools, effort-budget and success-criterion correspondence",
+        "evaluator independence and reported evidence-role qualifiers",
+        "raw units and source revision/digest scope"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-006",
+        "SC-007",
+        "SC-015",
+        "SC-017",
+        "SC-018",
+        "SC-021",
+        "SC-031",
+        "SC-041"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one.",
+      "submitted_historical_walkthrough": [
+        {
+          "step": 1,
+          "finding": "The source-side observation contains population, execution, uncertainty, comparison, identity, date and evidence-role qualifiers."
+        },
+        {
+          "step": 2,
+          "finding": "The proposed projection omits those qualifiers and weakens the measure's meaning."
+        },
+        {
+          "step": 3,
+          "finding": "Reject that projection while retaining the full research observation and all explicit null reasons."
+        },
+        {
+          "step": 4,
+          "finding": "Classify destination support as unassessed, not unsupported: the contracts were inaccessible."
+        }
+      ],
+      "reconciliation_note": "Submitted input and submitted expected disposition remain unchanged. Historical walkthrough is explicitly nested; current walkthrough applies the verified MAP decisions and retains the lossless-mapping hold."
+    },
+    {
+      "case_key": "S4-CASE-031",
+      "title": "Preserve supplied repository identifiers without asserting inspected integration or admission",
+      "branch": "cross-cutting",
+      "fixture_origin": "explicitly_synthetic_misinterpretation_of_reported_access_state",
+      "input": {
+        "supplied_identifiers": [
+          "ME002",
+          "ME007",
+          "OS004",
+          "OS-A07",
+          "ASI001"
+        ],
+        "supplied_baseline_commit": "6cf8c1c89a387a5b26022dd9ea0a216d45b2b629",
+        "baseline_commit_inspected": false,
+        "current_main_commit": null,
+        "repository_access_result": "DisabledError reported by root",
+        "catalogs_and_contracts_inspected": false,
+        "synthetic_claim": "The supplied IDs are verified integrated on current main and their sources admitted because they appear in the task brief."
+      },
+      "submitted_expected_disposition": {
+        "action": "reject_integration_and_admission_claim_preserve_supplied_references",
+        "accepted": "Supplied IDs and baseline reference with provenance and access-status qualifiers.",
+        "rejected": "Claiming current-main integration, inspected baseline contents or source admission from supplied identifiers."
+      },
+      "current_manual_disposition": {
+        "action": "preserve_historical_access_failure_verify_current_catalogs_reject_admission",
+        "accepted": "IDs and relevant catalog contents are now verified in current main 58de347f57cf37dd9e6495b433b45b3501cc3de1. Prior review metadata and fingerprints remain unchanged.",
+        "rejected": "Source admission, immutable runtime or primary scientific correctness inferred from catalog presence or schema pass."
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-04",
+        "MAP-19"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "Retain original submission access failure as a historical fact about that review."
+        },
+        {
+          "step": 2,
+          "finding": "Exact main tree and matching full local file bytes establish current catalog/schema presence."
+        },
+        {
+          "step": 3,
+          "finding": "Preserve OS004/OS-A07/ASI001/ME002/ME007 and earlier catalog fingerprints."
+        },
+        {
+          "step": 4,
+          "finding": "Native legacy_refs bridge preserves IDs but does not admit sources or execute a collector."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "digest scope and verification status",
+        "four independent rights scopes",
+        "source-review versus current-main provenance",
+        "per-assertion null reasons and unsupported typed qualifiers"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-027"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one.",
+      "reconciliation_note": "The submitted access context remains historical. Current main and catalogs are now independently verified; known catalog facts and fingerprints are preserved in data/evidence-program/research/followups/safeguard-lineage-review-prior-catalog-preservation.json."
+    },
+    {
+      "case_key": "S4-CASE-032",
+      "title": "Retain actual developer-attributed Apollo observations while holding the unlocated original",
+      "branch": "Apollo",
+      "fixture_origin": "root_verified_developer_summary_and_index_fixture",
+      "input": {
+        "observation_refs": [
+          "S4-O-APOLLO-SCOPE",
+          "S4-O-APOLLO-ASTRA-BASE",
+          "S4-O-APOLLO-SOL-BASE",
+          "S4-O-APOLLO-ASTRA-CONTROL",
+          "S4-O-APOLLO-AWARE-XHIGH",
+          "S4-O-APOLLO-ORIGINAL"
+        ],
+        "source_urls": [
+          "https://deploymentsafety.openai.com/gpt-6-astra/external-evaluations-for-alignment---apollo-research",
+          "https://www.apolloresearch.ai/science"
+        ],
+        "reported_counts": [
+          {
+            "model": "GPT-6 Astra",
+            "cohort": "baseline",
+            "numerator": 17,
+            "denominator": 10000
+          },
+          {
+            "model": "GPT-5.6-Sol",
+            "cohort": "baseline comparator",
+            "numerator": 36,
+            "denominator": 100
+          },
+          {
+            "model": "GPT-6 Astra",
+            "cohort": "changed-prompt controls",
+            "numerator": 0,
+            "denominator": 20000
+          }
+        ],
+        "awareness_observation": {
+          "value": 41.1,
+          "unit": "percent",
+          "effort": "xhigh",
+          "denominator": null,
+          "null_reason": "Denominator not in developer section."
+        },
+        "source_role": "developer_summary",
+        "original_report_url": null,
+        "immutable_checkpoint": null,
+        "original_status": "unlocated_in_inspected_sources",
+        "protocol_version": null,
+        "study_calendar_date": null
+      },
+      "submitted_expected_disposition": {
+        "action": "accept_attributed_summary_with_original_hold",
+        "accepted": "Developer-reported scope, separate counts/denominators and unknown-denominator awareness rate.",
+        "held": "Original identity, independent findings, protocol/checkpoint correspondence and causal/general reliability inference.",
+        "independent_replication_increment": 0
+      },
+      "current_manual_disposition": {
+        "action": "accept_attributed_summary_with_original_hold",
+        "accepted": "Developer-reported scope, separate counts/denominators and unknown-denominator awareness rate.",
+        "held": "Original identity, independent findings, protocol/checkpoint correspondence and causal/general reliability inference.",
+        "independent_replication_increment": 0
+      },
+      "current_review_status": "completed_manual",
+      "current_review_method": "Reviewed concrete input, intended claim and exact pinned schema destinations; no semantic rule engine executed.",
+      "current_mapping_ids": [
+        "MAP-01",
+        "MAP-02",
+        "MAP-03",
+        "MAP-14",
+        "MAP-17",
+        "MAP-18",
+        "MAP-05",
+        "MAP-06",
+        "MAP-09",
+        "MAP-10",
+        "MAP-12",
+        "MAP-15"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "The card names Apollo, a near-final representative Astra and a three-day window; this is developer attribution with no immutable checkpoint."
+        },
+        {
+          "step": 2,
+          "finding": "Keep model/prompt cohorts separate. Baseline, comparator and controls have distinct stated denominators; none supplies the awareness denominator."
+        },
+        {
+          "step": 3,
+          "finding": "The inspected section has no original link and the index has no Astra/GPT-6 match; the GPT-5.6 entry is a different release."
+        },
+        {
+          "step": 4,
+          "finding": "Retain source-summary facts, keep OS-A07 open, and decline independent-original/replication or zero-population-risk claims."
+        }
+      ],
+      "unsupported_fields_preserved": [
+        "developer-versus-original role and underlying-result identity",
+        "derivative edge and independent replication increment",
+        "original report unavailable reason",
+        "checkpoint/protocol correspondence",
+        "calendar study date versus duration",
+        "cohort and unknown uncertainty/denominator"
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-024",
+        "SC-028",
+        "SC-040",
+        "SC-047"
+      ],
+      "schema_probe_limit": "Related probe uses synthetic native records; this submitted scenario is not itself a schema-valid native bundle and has not been submitted as one."
+    },
+    {
+      "case_key": "S4-CONTRACT-033",
+      "title": "Prior verified CaMeL static convention is not erased by later access failure",
+      "branch": "CaMeL",
+      "fixture_origin": "current_pinned_catalog_fact_plus_manual_inference_guard",
+      "input": {
+        "catalog_id": "ME002",
+        "commit": "f083b6b396399d3b3c7f2ddaf613a5945eaf32d8",
+        "notebook_blob": "7fa1498d6e16a1956d099b8dfeb81641cf6f2d5b",
+        "error_rule": "Non-null error overwrites security with zero.",
+        "count": "len(x)",
+        "success_count": "x.sum()",
+        "helper_return": "nobs, mean - lower * count",
+        "dependency": "agentdojo>=0.1.34",
+        "paper_production_mapping": null,
+        "runtime_revision": null,
+        "artifact_refs": [
+          "S4-A-CAMEL-NOTEBOOK"
+        ],
+        "observation_refs": [
+          "S4-O-CAMEL-FAILURES",
+          "S4-O-CAMEL-DENOMINATOR",
+          "S4-O-CAMEL-FORMULA",
+          "S4-O-CAMEL-PRODUCTION",
+          "S4-O-CAMEL-RUNTIME"
+        ],
+        "pinned_catalog_commit": "58de347f57cf37dd9e6495b433b45b3501cc3de1",
+        "notebook_json_line_ranges": [
+          [
+            93,
+            94
+          ],
+          [
+            111,
+            116
+          ],
+          [
+            119,
+            125
+          ]
+        ],
+        "wrapper_rule": "The displayed count uncertainty uses abs(second returned term).",
+        "paper_production_mapping_null_reason": "No explicit primary result-specific mapping from helper to paper-v2 output.",
+        "runtime_revision_null_reason": "A declared dependency lower bound is not an executed evaluator/runtime revision.",
+        "synthetic_claim": "The later failed read erases the prior static observation; alternatively, security=0 on error proves successful protection and the helper expression proves a published-paper error."
+      },
+      "current_manual_disposition": {
+        "action": "accept_prior_verified_static_facts_hold_production_runtime_and_protection",
+        "accepted": "Pinned catalog error rule, helper concern and declared dependency lower bound.",
+        "held": "Published error proof, corrected intervals, zero-risk, successful-protection interpretation and exact runtime."
+      },
+      "current_review_status": "completed_manual",
+      "current_mapping_ids": [
+        "MAP-04",
+        "MAP-08",
+        "MAP-11",
+        "MAP-12"
+      ],
+      "unsupported_fields_preserved": [
+        "static-versus-runtime relation",
+        "paper-production null reason",
+        "failure assignment versus observed outcome"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "Read exact-current-main prior catalog; fingerprint and original IDs are preserved."
+        },
+        {
+          "step": 2,
+          "finding": "Keep code expression and dependency lower bound as prior static evidence, not independently rerun computations."
+        },
+        {
+          "step": 3,
+          "finding": "Retain completed-execution and production/runtime unknowns; reject interpreting assigned zero as successful completed protection."
+        }
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-015",
+        "SC-017",
+        "SC-018",
+        "SC-021"
+      ],
+      "schema_probe_limit": "Static helper is never executed.",
+      "input_scope": "Concrete source-metadata facts plus the explicitly labelled synthetic interpretation; not an executed source/model test."
+    },
+    {
+      "case_key": "S4-CONTRACT-034",
+      "title": "Preserve paper license and coexisting copyright notice without inheritance",
+      "branch": "rights",
+      "fixture_origin": "reported_primary_notice_findings_plus_synthetic_claim",
+      "input": {
+        "arxiv_license_notice": "CC-BY-4.0",
+        "pdf_footer_notice": "Google DeepMind ©2025; all rights reserved",
+        "artifact": "CaMeL paper v2",
+        "synthetic_claim": "The PDF reservation automatically revokes the arXiv declaration, or the arXiv paper license automatically clears paper, code, third-party data and generated traces without artifact-specific scope.",
+        "artifact_refs": [
+          "S4-A-CAMEL-PAPER",
+          "S4-A-CAMEL-ABSTRACT",
+          "S4-A-CAMEL-PDF"
+        ],
+        "observation_refs": [
+          "S4-O-CAMEL-RIGHTS-NOTICES"
+        ],
+        "notice_locators": [
+          {
+            "artifact_key": "S4-A-CAMEL-PAPER",
+            "locator": "HTML paper-specific License: CC BY 4.0 label"
+          },
+          {
+            "artifact_key": "S4-A-CAMEL-ABSTRACT",
+            "locator": "arXiv version 2503.18813v2 view-license link"
+          },
+          {
+            "artifact_key": "S4-A-CAMEL-PDF",
+            "locator": "Printed PDF page 1 copyright/reservation footer"
+          }
+        ]
+      },
+      "current_manual_disposition": {
+        "action": "retain_both_notices_separate_scoped_rights",
+        "accepted": "Declared paper license and observed coexisting PDF notice as separate source facts; metadata/paraphrase remains separately assessed.",
+        "held": "Blanket source-body retention/redistribution clearance and any license inheritance to code, inputs or traces."
+      },
+      "current_review_status": "completed_manual",
+      "current_mapping_ids": [
+        "MAP-17"
+      ],
+      "unsupported_fields_preserved": [
+        "coexisting notice scope",
+        "four rights categories",
+        "attribution and exceptions"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "Preserve each notice at its own exact artifact locator rather than silently deleting one."
+        },
+        {
+          "step": 2,
+          "finding": "A coexisting footer does not erase an explicitly observed paper license declaration; neither declaration automatically licenses different artifacts."
+        },
+        {
+          "step": 3,
+          "finding": "Use conservative artifact-specific rights text and retain separate body/redistribution qualifications; this is not legal clearance."
+        }
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-045"
+      ],
+      "schema_probe_limit": "Validator does not interpret licenses.",
+      "input_scope": "Concrete source-metadata facts plus the explicitly labelled synthetic interpretation; not an executed source/model test."
+    },
+    {
+      "case_key": "S4-CONTRACT-035",
+      "title": "Apollo awareness comparisons retain CoT-access and denominator limits",
+      "branch": "Apollo",
+      "fixture_origin": "reported_primary_card_findings_plus_synthetic_claim",
+      "input": {
+        "card_locator": "Section 8.8.1, lines 757–760 in inspected rendering; comparator rationale at line 760",
+        "awareness_comparator": "GPT-5.5",
+        "comparator_reason": "CoT access to GPT-5.6-Sol was unavailable",
+        "awareness_denominator": null,
+        "awareness_denominator_null_reason": "Not provided in the relevant developer-summary passage.",
+        "separate_false_label_counts": [
+          {
+            "cohort": "Astra baseline",
+            "numerator": 17,
+            "denominator": 10000
+          },
+          {
+            "cohort": "GPT-5.6-Sol baseline",
+            "numerator": 36,
+            "denominator": 100
+          },
+          {
+            "cohort": "Astra changed-prompt controls",
+            "numerator": 0,
+            "denominator": 20000
+          }
+        ],
+        "synthetic_claim": "Assign the Astra false-label denominator to awareness and treat GPT-5.6-Sol as the awareness comparator.",
+        "artifact_refs": [
+          "S4-A-APOLLO-CARD"
+        ],
+        "observation_refs": [
+          "S4-O-APOLLO-COMPARATOR-ACCESS",
+          "S4-O-APOLLO-AWARE-XHIGH",
+          "S4-O-APOLLO-AWARE-GPT55",
+          "S4-O-APOLLO-AWARE-MAX",
+          "S4-O-APOLLO-ASTRA-BASE",
+          "S4-O-APOLLO-SOL-BASE",
+          "S4-O-APOLLO-ASTRA-CONTROL"
+        ],
+        "awareness_percentages": [
+          {
+            "model": "GPT-6 Astra",
+            "reasoning_effort": "xhigh",
+            "value": 41.1,
+            "unit": "percent",
+            "denominator": null
+          },
+          {
+            "model": "GPT-5.5",
+            "reasoning_effort": "xhigh",
+            "value": 27.7,
+            "unit": "percent",
+            "denominator": null
+          },
+          {
+            "model": "GPT-6 Astra",
+            "reasoning_effort": "max",
+            "value": 50.6,
+            "unit": "percent",
+            "denominator": null
+          }
+        ],
+        "source_role": "developer-attributed external evaluation; original unlocated"
+      },
+      "current_manual_disposition": {
+        "action": "retain_metric_specific_comparators_and_missing_denominators",
+        "accepted": "Separate developer-attributed counts and awareness percentages with stated comparison limitation.",
+        "rejected": "Borrowed denominator, swapped comparator or independent-original inference."
+      },
+      "current_review_status": "completed_manual",
+      "current_mapping_ids": [
+        "MAP-05",
+        "MAP-10",
+        "MAP-12",
+        "MAP-15"
+      ],
+      "unsupported_fields_preserved": [
+        "metric-specific comparator reason",
+        "CoT-access limitation",
+        "awareness denominator null reason"
+      ],
+      "walkthrough": [
+        {
+          "step": 1,
+          "finding": "Keep baseline, changed-prompt controls and awareness as separate metrics/cohorts."
+        },
+        {
+          "step": 2,
+          "finding": "Preserve why GPT-5.5 was used for the awareness comparison; do not replace it with the false-label comparator."
+        },
+        {
+          "step": 3,
+          "finding": "Unknown awareness denominator stays null in ledger and sample_size is omitted in a faithful projection."
+        }
+      ],
+      "synthetic_schema_probe_refs": [
+        "SC-046"
+      ],
+      "schema_probe_limit": "Schema cannot verify source-supported cohort or comparator correspondence.",
+      "input_scope": "Concrete source-metadata facts plus the explicitly labelled synthetic interpretation; not an executed source/model test."
+    }
+  ],
+  "source_review_context": {
+    "source_primary_verification": "Named sources independently rechecked by this review; details in data/evidence-program/research/followups/safeguard-lineage-review.json and data/evidence-program/research/followups/safeguard-lineage-review-primary-verification.json.",
+    "input_provenance": "The first32 inputs are unchanged submitted historical case objects; current manual dispositions and actual probe outcomes are separate.",
+    "new_manual_cases": 3,
+    "publication_semantic_check": "35 current manual walkthroughs, not an executed semantic rule engine."
+  }
+}

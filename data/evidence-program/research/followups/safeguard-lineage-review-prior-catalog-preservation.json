@@ -1,0 +1,1311 @@
+{
+  "record_type": "review_catalog_preservation",
+  "review_commit": "58de347f57cf37dd9e6495b433b45b3501cc3de1",
+  "claim_scope": "Exact current-main catalog contents and recorded prior facts; not new primary-source verification or source admission. All existing IDs remain unchanged.",
+  "catalogs": [
+    {
+      "catalog_path": "data/evidence-program/research/organizational-safety.json",
+      "pinned_url": "https://github.com/mishakgg/pdoom-live/blob/58de347f57cf37dd9e6495b433b45b3501cc3de1/data/evidence-program/research/organizational-safety.json",
+      "file_fingerprint": {
+        "path": "data/evidence-program/research/organizational-safety.json",
+        "bytes": 101310,
+        "git_blob_sha": "14e560889f729f14bd2e0c0290ac51bdcc32d1c6",
+        "expected_git_blob_sha": "14e560889f729f14bd2e0c0290ac51bdcc32d1c6",
+        "sha256": "a07d8a1020b84bdfd9acaf185baae737a10d9160863f4c82d580cd0e4f8d3353",
+        "verified": true
+      },
+      "preserved_objects": [
+        {
+          "json_pointer": "/collections/3",
+          "value": {
+            "candidate_id": "OS004",
+            "name": "OpenAI governance and deployment records",
+            "summary": "GL014 governance enrichment with distinct advisory roles, declared decision authority, reported review actions and release-specific determinations.",
+            "classification": "existing_family_enrichment",
+            "collection_status": "candidate_not_collected",
+            "operational_admission": "not_admitted",
+            "collector_enabled": false,
+            "inventory_relationships": [
+              {
+                "source_id": "GL014",
+                "relationship": "same_family_enrichment",
+                "evidence_artifact_id": "openai_hub"
+              },
+              {
+                "source_id": "GL017",
+                "relationship": "original_evaluator_report_evolving_assessment_protocol",
+                "evidence_artifact_id": "aisi_astra_pdf"
+              },
+              {
+                "source_id": "GL021",
+                "relationship": "externally_attributed_assessment_link_requires_matching_original",
+                "evidence_artifact_id": "openai_astra_apollo"
+              }
+            ],
+            "historical_coverage": "Selected organizational documents from 28 May 2024 to the hub update displayed 7 October 2026. Astra first publication is 3 September 2026; current HTML separately lists 9 and 22 September revisions.",
+            "update_frequency": "Event-driven announcements, policy versions, cards and addenda. No complete internal decision history or release census established.",
+            "access_method": "Public official HTML, Preparedness v2 PDF and Frontier Governance Framework PDF inspected. Astra HTML sections support selected claims; its View PDF click failed with no usable direct PDF URL. No decision-log export established. AISI official pages, arXiv metadata and a 33-page v1 paper were inspected; a dedicated Apollo Astra original was not located in a bounded search.",
+            "rights_summary": "No artifact-specific report/cards/announcement redistribution grant established; user Input/Output provisions do not license corporate-report text. A separately identified original AISI paper v1 declares CC BY 4.0; that paper-only grant does not clear any OpenAI artifact.",
+            "duplicate_evidence_policy": "A card’s summaries of external work are externally attributed developer disclosures. Link a specific original evaluator assessment/checkpoint before assigning independence or duplicate identity; retain policy, report and card relationships. The original AISI paper explicitly identifies earlier card evaluations and later improved protocols: preserve an evolving-assessment relationship rather than identical-row duplication.",
+            "artifacts": [
+              {
+                "artifact_id": "openai_hub",
+                "url": "https://deploymentsafety.openai.com/",
+                "provenance_locator": "Updates list; Oct 07 GPT-6 Sol and GPT-6 Luna",
+                "access_status": "primary_opened",
+                "inspection_note": "public_html_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This particular document or page; no inherited model/software license.",
+                "rights_note": "No artifact-specific open redistribution grant established in the bounded review.",
+                "rights_evidence_artifact_ids": [],
+                "date_observation": "2026-10-07 update displayed"
+              },
+              {
+                "artifact_id": "openai_ssc_formation",
+                "url": "https://openai.com/index/openai-board-forms-safety-and-security-committee/",
+                "provenance_locator": "Body paragraphs 1–3",
+                "access_status": "primary_opened",
+                "inspection_note": "public_html_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This particular document or page; no inherited model/software license.",
+                "rights_note": "No artifact-specific open redistribution grant established in the bounded review.",
+                "rights_evidence_artifact_ids": [],
+                "published_at": "2024-05-28",
+                "updated_at": "2024-06-18"
+              },
+              {
+                "artifact_id": "openai_ssc_update",
+                "url": "https://openai.com/index/update-on-safety-and-security-practices/",
+                "provenance_locator": "Introduction and section 1",
+                "access_status": "primary_opened",
+                "inspection_note": "public_html_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This particular document or page; no inherited model/software license.",
+                "rights_note": "No artifact-specific open redistribution grant established in the bounded review.",
+                "rights_evidence_artifact_ids": [],
+                "published_at": "2024-09-16"
+              },
+              {
+                "artifact_id": "openai_pf_v2_announcement",
+                "url": "https://openai.com/index/updating-our-preparedness-framework/",
+                "provenance_locator": "Clarified capability levels and Defined Safeguards Reports bullets",
+                "access_status": "primary_opened",
+                "inspection_note": "public_html_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This particular document or page; no inherited model/software license.",
+                "rights_note": "No artifact-specific open redistribution grant established in the bounded review.",
+                "rights_evidence_artifact_ids": [],
+                "published_at": "2025-04-15"
+              },
+              {
+                "artifact_id": "openai_pf_v2",
+                "url": "https://cdn.openai.com/pdf/18a02b5d-6b67-4cec-ab64-68cdfbddebcd/preparedness-framework-v2.pdf",
+                "provenance_locator": "Cover and Appendix B, printed p15 / one-based PDF p16",
+                "access_status": "primary_opened",
+                "inspection_note": "public_pdf_text_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This particular document or page; no inherited model/software license.",
+                "rights_note": "No artifact-specific open redistribution grant established in the bounded review.",
+                "rights_evidence_artifact_ids": [],
+                "last_updated": "2025-04-15",
+                "version": "2",
+                "pdf_pages": 22
+              },
+              {
+                "artifact_id": "openai_fgf_announcement",
+                "url": "https://openai.com/index/openai-frontier-governance-framework/",
+                "provenance_locator": "Publication date and first two body paragraphs",
+                "access_status": "primary_opened",
+                "inspection_note": "public_html_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This particular document or page; no inherited model/software license.",
+                "rights_note": "No artifact-specific open redistribution grant established in the bounded review.",
+                "rights_evidence_artifact_ids": [],
+                "published_at": "2026-05-28"
+              },
+              {
+                "artifact_id": "openai_fgf",
+                "url": "https://cdn.openai.com/pdf/e37d949b-8c9f-4d76-b99e-4272f4631a7e/openai-frontier-governance-framework.pdf",
+                "provenance_locator": "Introduction printed pp1–2; section6 printed p18; section7 printed pp19–20",
+                "access_status": "primary_opened",
+                "inspection_note": "public_pdf_text_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This particular document or page; no inherited model/software license.",
+                "rights_note": "No artifact-specific open redistribution grant established in the bounded review.",
+                "rights_evidence_artifact_ids": [],
+                "published_at": null,
+                "pdf_pages": 22,
+                "publication_date_basis": "Linked launch announcement dates the publication, not an explicit PDF effective date."
+              },
+              {
+                "artifact_id": "openai_astra",
+                "url": "https://deploymentsafety.openai.com/gpt-6-astra",
+                "provenance_locator": "Publication header; Change log; section10.2 Safeguards; sections8.8 and8.8.1",
+                "access_status": "primary_opened",
+                "inspection_note": "public_html_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This particular document or page; no inherited model/software license.",
+                "rights_note": "No artifact-specific open redistribution grant established in the bounded review.",
+                "rights_evidence_artifact_ids": [],
+                "published_at": "2026-09-03",
+                "observed_revision_dates": [
+                  "2026-09-09",
+                  "2026-09-22"
+                ]
+              },
+              {
+                "artifact_id": "openai_astra_safeguards",
+                "url": "https://deploymentsafety.openai.com/gpt-6-astra/safeguards",
+                "provenance_locator": "10.2 Safeguards; final introductory paragraph",
+                "access_status": "primary_opened",
+                "inspection_note": "public_html_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This particular document or page; no inherited model/software license.",
+                "rights_note": "No artifact-specific open redistribution grant established in the bounded review.",
+                "rights_evidence_artifact_ids": [],
+                "underlying_artifact_id": "openai_astra"
+              },
+              {
+                "artifact_id": "openai_astra_changelog",
+                "url": "https://deploymentsafety.openai.com/gpt-6-astra/change-log",
+                "provenance_locator": "Change log",
+                "access_status": "primary_opened",
+                "inspection_note": "public_html_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This particular document or page; no inherited model/software license.",
+                "rights_note": "No artifact-specific open redistribution grant established in the bounded review.",
+                "rights_evidence_artifact_ids": [],
+                "underlying_artifact_id": "openai_astra"
+              },
+              {
+                "artifact_id": "openai_astra_aisi",
+                "url": "https://deploymentsafety.openai.com/gpt-6-astra/external-evaluations-for-alignment-uk-aisi",
+                "provenance_locator": "8.8 External Evaluations for Alignment – UK AISI",
+                "access_status": "primary_opened",
+                "inspection_note": "public_html_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This particular document or page; no inherited model/software license.",
+                "rights_note": "No artifact-specific open redistribution grant established in the bounded review.",
+                "rights_evidence_artifact_ids": [],
+                "underlying_artifact_id": "openai_astra"
+              },
+              {
+                "artifact_id": "openai_astra_apollo",
+                "url": "https://deploymentsafety.openai.com/gpt-6-astra/external-evaluations-for-alignment---apollo-research",
+                "provenance_locator": "8.8.1 External Evaluations for Alignment – Apollo Research",
+                "access_status": "primary_opened",
+                "inspection_note": "public_html_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This particular document or page; no inherited model/software license.",
+                "rights_note": "No artifact-specific open redistribution grant established in the bounded review.",
+                "rights_evidence_artifact_ids": [],
+                "underlying_artifact_id": "openai_astra"
+              },
+              {
+                "artifact_id": "openai_terms",
+                "url": "https://openai.com/policies/terms-of-use/",
+                "provenance_locator": "Content and Our IP rights; no artifact-specific report reuse license identified",
+                "access_status": "primary_opened",
+                "inspection_note": "public_html_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This particular document or page; no inherited model/software license.",
+                "rights_note": "No artifact-specific open redistribution grant established in the bounded review.",
+                "rights_evidence_artifact_ids": []
+              },
+              {
+                "artifact_id": "aisi_research_index",
+                "url": "https://www.aisi.gov.uk/research",
+                "provenance_locator": "GPT-6 Astra evaluation entry dated September 28, 2026",
+                "access_status": "primary_opened",
+                "inspection_note": "public_html_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "Only this artifact; no license inherited by OpenAI cards or other AISI materials.",
+                "rights_note": "No general artifact reuse grant established in this bounded review.",
+                "rights_evidence_artifact_ids": []
+              },
+              {
+                "artifact_id": "aisi_astra_original_landing",
+                "url": "https://www.aisi.gov.uk/research/evaluating-whether-gpt-6-astra-performs-unsanctioned-supply-chain-attacks",
+                "provenance_locator": "Abstract and full paper link",
+                "access_status": "primary_opened",
+                "inspection_note": "public_html_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "Only this artifact; no license inherited by OpenAI cards or other AISI materials.",
+                "rights_note": "No general artifact reuse grant established in this bounded review.",
+                "rights_evidence_artifact_ids": []
+              },
+              {
+                "artifact_id": "aisi_astra_blog",
+                "url": "https://www.aisi.gov.uk/blog/gpt-6-astra-performs-unsanctioned-supply-chain-attacks-in-simulations",
+                "provenance_locator": "Opening paragraphs, Simulation Awareness Limitations and full report link",
+                "access_status": "primary_opened",
+                "inspection_note": "public_html_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "Only this artifact; no license inherited by OpenAI cards or other AISI materials.",
+                "rights_note": "No general artifact reuse grant established in this bounded review.",
+                "rights_evidence_artifact_ids": []
+              },
+              {
+                "artifact_id": "aisi_astra_arxiv_v1",
+                "url": "https://arxiv.org/abs/2609.38415v1",
+                "provenance_locator": "Submission history and view license",
+                "access_status": "metadata_only",
+                "inspection_note": "Unversioned arXiv metadata page opened and v1 explicitly listed; canonical version-specific citation retained.",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "declared_license",
+                "license_identifier": "CC-BY-4.0",
+                "rights_scope": "The identified AISI paper v1 only; not card text, site content, transcripts or separate data.",
+                "rights_note": "The arXiv v1 listing linked CC BY 4.0; scope stays limited to this paper.",
+                "rights_evidence_artifact_ids": [
+                  "aisi_astra_arxiv_v1",
+                  "cc_by_4"
+                ],
+                "opened_url": "https://arxiv.org/abs/2609.38415",
+                "published_at": "2026-09-29T19:09:55Z",
+                "version": "v1"
+              },
+              {
+                "artifact_id": "aisi_astra_pdf",
+                "url": "https://arxiv.org/pdf/2609.38415",
+                "provenance_locator": "Title page; section 3.1, printed page9 / physical PDF page9; section 3.3, printed page10",
+                "access_status": "primary_opened",
+                "inspection_note": "Public unversioned PDF text opened; v1 matched inspected arXiv history. No byte hash retained; URL may change on future revisions.",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "declared_license",
+                "license_identifier": "CC-BY-4.0",
+                "rights_scope": "The identified AISI paper v1 only; not card text, site content, transcripts or separate data.",
+                "rights_note": "The arXiv v1 listing linked CC BY 4.0; scope stays limited to this paper.",
+                "rights_evidence_artifact_ids": [
+                  "aisi_astra_arxiv_v1",
+                  "cc_by_4"
+                ],
+                "version_observed": "v1",
+                "page_count": 33
+              },
+              {
+                "artifact_id": "cc_by_4",
+                "url": "https://creativecommons.org/licenses/by/4.0/",
+                "provenance_locator": "Attribution, sharing/adaptation and notices",
+                "access_status": "primary_opened",
+                "inspection_note": "public_license_deed_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "Only this artifact; no license inherited by OpenAI cards or other AISI materials.",
+                "rights_note": "No general artifact reuse grant established in this bounded review.",
+                "rights_evidence_artifact_ids": []
+              },
+              {
+                "artifact_id": "apollo_science_index",
+                "url": "https://www.apolloresearch.ai/science",
+                "provenance_locator": "Bounded full-index text search for Astra returned no match",
+                "access_status": "primary_opened",
+                "inspection_note": "public_html_opened",
+                "reviewed_on": "2026-10-07",
+                "raw_content_in_catalog": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "Only this artifact; no license inherited by OpenAI cards or other AISI materials.",
+                "rights_note": "No general artifact reuse grant established in this bounded review.",
+                "rights_evidence_artifact_ids": []
+              }
+            ],
+            "sample_fields": [
+              "organization",
+              "policy/version",
+              "publication/update/effective/event date roles",
+              "advisory body",
+              "decision body",
+              "override authority",
+              "model",
+              "decision summary",
+              "internal report availability",
+              "source section"
+            ],
+            "observed_sample": {
+              "organization": "OpenAI",
+              "model": "GPT-6 Astra",
+              "artifact_id": "openai_astra",
+              "published_at": "2026-09-03",
+              "event_date": null,
+              "decision_body": "OpenAI leadership",
+              "advisory_body": "Safety Advisory Group",
+              "decision_summary": "Reported launch safeguards determination",
+              "support_kind": "organization_reported",
+              "internal_minutes_or_full_report_available": false
+            },
+            "findings": [
+              {
+                "finding_id": "OS004-F1",
+                "text": "The 28 May 2024 SSC formation announcement defines recommendations to the full Board; the page’s 18 June membership update is a separate timestamp.",
+                "evidence_artifact_ids": [
+                  "openai_ssc_formation"
+                ],
+                "statement_kind": "declared_authority",
+                "support_kind": "organization_reported",
+                "verification_level": "primary_source_reported"
+              },
+              {
+                "finding_id": "OS004-F2",
+                "text": "The 16 September 2024 update announces independent Board oversight and authority to delay releases; it does not provide the exact effective date of that structure. A stated power does not prove exercise.",
+                "evidence_artifact_ids": [
+                  "openai_ssc_update"
+                ],
+                "statement_kind": "declared_authority",
+                "support_kind": "organization_reported",
+                "verification_level": "primary_source_reported"
+              },
+              {
+                "finding_id": "OS004-F3",
+                "text": "The same September update separately reports SSC and Board review of the o1 assessment; exact review date is not supplied.",
+                "evidence_artifact_ids": [
+                  "openai_ssc_update"
+                ],
+                "statement_kind": "reported_completed_action",
+                "support_kind": "organization_reported",
+                "verification_level": "primary_source_reported"
+              },
+              {
+                "finding_id": "OS004-F4",
+                "text": "Preparedness v2 Appendix B gives CEO or designee final go/no-go authority, permits leadership action without SAG participation, preserves SSC oversight access and permits Board reversal. These are defined powers, not evidence an override occurred. The document was last updated 15 April 2025; no separate effective date is established.",
+                "evidence_artifact_ids": [
+                  "openai_pf_v2",
+                  "openai_pf_v2_announcement"
+                ],
+                "statement_kind": "declared_authority",
+                "support_kind": "organization_reported",
+                "verification_level": "primary_source_reported"
+              },
+              {
+                "finding_id": "OS004-F5",
+                "text": "The Frontier Governance Framework announcement is dated 28 May 2026. It and the PDF describe a complementary relationship with Preparedness; no repeal or effective date should be inferred from the announcement.",
+                "evidence_artifact_ids": [
+                  "openai_fgf_announcement",
+                  "openai_fgf"
+                ],
+                "statement_kind": "formal_commitment",
+                "support_kind": "organization_reported",
+                "verification_level": "primary_source_reported"
+              },
+              {
+                "finding_id": "OS004-F6",
+                "text": "The Astra safeguards section reports leadership’s public-launch safeguards determination informed by SAG advice and an internal report. That internal report and exact decision date are not available in the passage; 3 September is original publication, not approval time.",
+                "evidence_artifact_ids": [
+                  "openai_astra",
+                  "openai_astra_safeguards"
+                ],
+                "statement_kind": "reported_release_decision",
+                "support_kind": "organization_reported",
+                "verification_level": "primary_source_reported"
+              },
+              {
+                "finding_id": "OS004-F7",
+                "text": "Astra’s current HTML lists 9 and 22 September revisions; the hub separately shows an October 7 update for Sol/Luna. Keep these artifact-specific timestamps apart.",
+                "evidence_artifact_ids": [
+                  "openai_astra_changelog",
+                  "openai_hub"
+                ],
+                "statement_kind": "document_metadata",
+                "support_kind": "official_document_metadata",
+                "verification_level": "primary_source_reported"
+              },
+              {
+                "finding_id": "OS004-F8",
+                "text": "Astra contains developer-published summaries of AISI and Apollo work. Apollo used a near-final representative checkpoint; AISI alignment evaluations were in simulated environments. These sections are not independent assurance of the organization’s decision process.",
+                "evidence_artifact_ids": [
+                  "openai_astra_aisi",
+                  "openai_astra_apollo"
+                ],
+                "statement_kind": "reported_completed_action",
+                "support_kind": "organization_reported",
+                "verification_level": "primary_source_reported"
+              },
+              {
+                "finding_id": "OS004-F9",
+                "text": "A bounded follow-up identified an original AISI Astra paper. Official index entry is dated 28 September 2026, while arXiv v1 submission is 29 September, 19:09:55 UTC; preserve distinct publication events.",
+                "evidence_artifact_ids": [
+                  "aisi_research_index",
+                  "aisi_astra_arxiv_v1"
+                ],
+                "statement_kind": "document_metadata",
+                "support_kind": "official_document_metadata",
+                "verification_level": "primary_source_reported"
+              },
+              {
+                "finding_id": "OS004-F10",
+                "text": "AISI section 3.1 identifies earlier evaluation versions underlying the Astra card and later improvements to realism. Link an evolving assessment protocol; neither force identical-result deduplication nor treat the related work as fully independent corroboration.",
+                "evidence_artifact_ids": [
+                  "aisi_astra_pdf"
+                ],
+                "statement_kind": "external_assessment",
+                "support_kind": "external_assessor_reported",
+                "verification_level": "primary_source_reported"
+              },
+              {
+                "finding_id": "OS004-F11",
+                "text": "The AISI study reports simulated tests with cyber classifiers disabled and unresolved simulation-awareness limitations. This scoped model-behavior study does not independently assure governance or production safeguards.",
+                "evidence_artifact_ids": [
+                  "aisi_astra_original_landing",
+                  "aisi_astra_blog",
+                  "aisi_astra_pdf"
+                ],
+                "statement_kind": "external_assessment",
+                "support_kind": "external_assessor_reported",
+                "verification_level": "primary_source_reported"
+              },
+              {
+                "finding_id": "OS004-F12",
+                "text": "The arXiv v1 license link establishes CC BY 4.0 for this paper only. It does not license OpenAI cards, the whole AISI site, transcripts or separately linked data.",
+                "evidence_artifact_ids": [
+                  "aisi_astra_arxiv_v1",
+                  "cc_by_4"
+                ],
+                "statement_kind": "document_metadata",
+                "support_kind": "official_document_metadata",
+                "verification_level": "primary_source_reported"
+              },
+              {
+                "finding_id": "OS004-F13",
+                "text": "No dedicated Apollo Astra original report was located in one targeted official-domain search and the current science index. This limited negative result is not proof that no public report exists; developer-card attribution remains distinct.",
+                "evidence_artifact_ids": [
+                  "apollo_science_index"
+                ],
+                "statement_kind": "document_metadata",
+                "support_kind": "official_document_metadata",
+                "verification_level": "primary_source_reported"
+              }
+            ],
+            "limitations": [
+              "Selected public summaries do not reveal full deliberations, complete sign-offs or internal disagreement.",
+              "Declared veto/override powers do not prove an actual override.",
+              "A revised card must not be treated as its immutable first-publication text.",
+              "Underlying evaluator relationships need exact assessment and checkpoint identities."
+            ]
+          }
+        },
+        {
+          "json_pointer": "/next_actions/6",
+          "value": {
+            "action_id": "OS-A07",
+            "candidate_ids": [
+              "OS004"
+            ],
+            "status": "open",
+            "work_type": "targeted_source_gap",
+            "action": "Retain the targeted Apollo original-report identification gap; AISI original identification, scoped license and evolving-protocol relationship are already verified.",
+            "completion_evidence": "A public release-specific Apollo original and checkpoint/date/scope correspondence, or a retained bounded-search hold. No repeated broad AISI search or numerical crosswalk is needed."
+          }
+        },
+        {
+          "json_pointer": "/focused_follow_up_prompts/4",
+          "value": {
+            "action_id": "OS-A07",
+            "why_needed": "A bounded official search did not identify a dedicated Apollo Astra original; AISI original verification is already complete.",
+            "prompt": "Check only the public Apollo links in https://deploymentsafety.openai.com/gpt-6-astra/external-evaluations-for-alignment---apollo-research and the official https://www.apolloresearch.ai/science index for an explicitly linked release-specific original report. If found, record tested checkpoint, dates and scope relative to the card; otherwise retain unknown availability without inferring absence. AISI original-paper identification and protocol/license checks are already complete. No repeated broad search, scores, governance-audit claim, archive crawl, login or outreach."
+          }
+        }
+      ],
+      "catalog_context": {
+        "catalog_version": "organizational-safety-research/1.0.0",
+        "catalog_state": "research_only_not_admitted",
+        "operational_admission": "not_admitted",
+        "collector_enabled": false,
+        "scoring_enabled": false,
+        "baseline_inventory": {
+          "repo_path": "data/evidence-program/source_inventory.json",
+          "version": "1.1",
+          "record_count": 64,
+          "audit_commit": "f5274396885dbb654fc2861a78fa5be8f42fad38",
+          "sha256": "a4b5046c3dec44598eeab3f025db75783f9ae5f702e0570d7b31fb3026dde678"
+        },
+        "repository_review_commit": "72436af9c44e7da2fae70e87c3573f65d60860a7",
+        "interpretation_guards": {
+          "policy_implies_exercised_authority": false,
+          "reported_action_implies_effectiveness": false,
+          "external_review_implies_audit_pass": false,
+          "missing_disclosure_implies_absence": false,
+          "staff_counts_imply_safety": false,
+          "publication_date_implies_decision_date": false,
+          "changed_public_role_wording_implies_authority_transfer": false,
+          "proxy_to_pdoom_allowed": false,
+          "evidence_classes_are_orthogonal": true,
+          "metr_pilot_publication_veto_must_be_disclosed": true,
+          "metr_two_textual_changes_currently_verified": true,
+          "metr_text_changes_imply_effectiveness": false,
+          "aisi_card_and_later_paper_relation": "evolving_assessment_protocol",
+          "aisi_paper_license_clears_openai_cards": false
+        },
+        "verification_limits": [
+          "Primary-source verification is a dated bounded reading, not empirical replication, independent audit or legal clearance.",
+          "No source-body fixture bytes or verified content hashes were retained. Policy effective dates, dated changelogs and arXiv version metadata are explicit provenance, but mutable page/PDF aliases still require byte/version pinning before future acquisition.",
+          "Offline tests validate catalog consistency and selected negative cases, not organizational truth, effectiveness, source-reader behavior or active compliance.",
+          "The frozen 64-family inventory, canonical contracts, earlier research catalogs, collection settings and production surfaces remain untouched."
+        ]
+      }
+    },
+    {
+      "catalog_path": "data/evidence-program/research/agent-security-incidents.json",
+      "pinned_url": "https://github.com/mishakgg/pdoom-live/blob/58de347f57cf37dd9e6495b433b45b3501cc3de1/data/evidence-program/research/agent-security-incidents.json",
+      "file_fingerprint": {
+        "path": "data/evidence-program/research/agent-security-incidents.json",
+        "bytes": 103267,
+        "git_blob_sha": "3f70bd73568448dde0cebb5051aab624118fc1c1",
+        "expected_git_blob_sha": "3f70bd73568448dde0cebb5051aab624118fc1c1",
+        "sha256": "503f555e612eddf87a617aa587d88752c2c7307fd6faed111ed396b6af371c32",
+        "verified": true
+      },
+      "preserved_objects": [
+        {
+          "json_pointer": "/collections/0",
+          "value": {
+            "candidate_id": "ASI001",
+            "name": "AgentDojo task-level evaluation metadata",
+            "source_family_id": "agentdojo",
+            "inventory_source_id": null,
+            "inventory_relationship": "new_source_family_in_inspected_inventory_and_prior_catalogs",
+            "related_inventory_ids": [
+              "GL014",
+              "GL015",
+              "GL016",
+              "GL017"
+            ],
+            "operational_admission": "not_admitted",
+            "collector_enabled": false,
+            "historical_coverage": "Dated 2024–2025 results; one clean archive file introduced June 4, 2024. Introduction is not runtime time.",
+            "update_frequency": "Research additions and corrections; no fixed cadence.",
+            "access_export": "One existing clean JSON privately checked; public synthetic-only offline decoder. No attacked trace acquisition.",
+            "measurement_regime": "Short task-level utility and attack-condition outcomes with separate runtime metadata.",
+            "author_authority": "Benchmark maintainers; publisher scoring predicates, not independent operational security assessment.",
+            "limitations": [
+              "Clean security=True is a default, not resistance. Targeted-goal success and DoS nonutility predicates differ; error paths can assign flags without observed outcomes.",
+              "Archive and sample-introduction code are not a certified runtime revision. All actual attacked results remain uninterpreted in v0.",
+              "Short banking tasks do not establish multi-hour reliability. Heterogeneous published combinations are not a fair complete leaderboard.",
+              "Software/documentation MIT does not establish generated conversation or third-party trace rights. Raw payloads remain excluded."
+            ],
+            "artifacts": [
+              {
+                "artifact_id": "asi001_results",
+                "url": "https://agentdojo.spylab.ai/results/",
+                "role": "Official results and access notice",
+                "evidence_locator": "Results table; comparability warning and historical viewer links",
+                "reviewed_on": "2026-10-08",
+                "verification_level": "current_exact_bytes_inspected_not_vendored",
+                "git_commit": null,
+                "git_blob_sha": null,
+                "source_sha256": null,
+                "source_bytes_vendored": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+                "rights_evidence_url": null,
+                "source_bytes": null
+              },
+              {
+                "artifact_id": "asi001_clean",
+                "url": "https://github.com/ethz-spylab/agentdojo/blob/089ed468cf3ed0322acc66b0211f26d9d90dbf60/runs/gpt-4o-2024-05-13-tool_filter/banking/user_task_0/none/none.json",
+                "role": "One clean TaskResults artifact",
+                "evidence_locator": "Root metadata, 9 message roles, 2 assistant-origin tool calls",
+                "reviewed_on": "2026-10-08",
+                "verification_level": "one_clean_artifact_private_metadata_acceptance",
+                "git_commit": "089ed468cf3ed0322acc66b0211f26d9d90dbf60",
+                "git_blob_sha": "6cca827aeb536a35274687f7dc36707373bfb9fa",
+                "source_sha256": "ccf520bccc246f53fe8842a145234d07b8493896493410ce044702e0eadd5e34",
+                "source_bytes_vendored": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+                "rights_evidence_url": null,
+                "source_bytes": 3992
+              },
+              {
+                "artifact_id": "asi001_historical_predicate",
+                "url": "https://github.com/ethz-spylab/agentdojo/blob/607e6dc29287344c6fa83701970134475b6f9e9c/src/function_calling_pi/base_tasks.py",
+                "role": "Historical target-goal predicate",
+                "evidence_locator": "BaseInjectionTask.security lines 117–120",
+                "reviewed_on": "2026-10-08",
+                "verification_level": "current_exact_bytes_inspected_not_vendored",
+                "git_commit": "607e6dc29287344c6fa83701970134475b6f9e9c",
+                "git_blob_sha": "b2f7d19017f1d43cf59f14a3ef8837b5aa66f7db",
+                "source_sha256": null,
+                "source_bytes_vendored": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+                "rights_evidence_url": null,
+                "source_bytes": null
+              },
+              {
+                "artifact_id": "asi001_historical_errors",
+                "url": "https://github.com/ethz-spylab/agentdojo/blob/607e6dc29287344c6fa83701970134475b6f9e9c/src/function_calling_pi/benchmark.py",
+                "role": "Historical error defaults",
+                "evidence_locator": "Exception handling lines 113–136",
+                "reviewed_on": "2026-10-08",
+                "verification_level": "current_exact_bytes_inspected_not_vendored",
+                "git_commit": "607e6dc29287344c6fa83701970134475b6f9e9c",
+                "git_blob_sha": "e82294daa13bd5bdca9a7e7431be6d2bf9964da5",
+                "source_sha256": null,
+                "source_bytes_vendored": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+                "rights_evidence_url": null,
+                "source_bytes": null
+              },
+              {
+                "artifact_id": "asi001_historical_clean",
+                "url": "https://github.com/ethz-spylab/agentdojo/blob/607e6dc29287344c6fa83701970134475b6f9e9c/src/function_calling_pi/task_suites/task_suite.py",
+                "role": "Historical clean default",
+                "evidence_locator": "Lines 296–298 return utility and True when injection task absent",
+                "reviewed_on": "2026-10-08",
+                "verification_level": "current_exact_bytes_inspected_not_vendored",
+                "git_commit": "607e6dc29287344c6fa83701970134475b6f9e9c",
+                "git_blob_sha": "bc3eb613626d8d638af8f60a77bbd7f64b71a99e",
+                "source_sha256": null,
+                "source_bytes_vendored": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+                "rights_evidence_url": null,
+                "source_bytes": null
+              },
+              {
+                "artifact_id": "asi001_historical_clock",
+                "url": "https://github.com/ethz-spylab/agentdojo/blob/607e6dc29287344c6fa83701970134475b6f9e9c/src/function_calling_pi/logging.py",
+                "role": "Historical elapsed clock",
+                "evidence_locator": "Lines 189–194 time.time difference",
+                "reviewed_on": "2026-10-08",
+                "verification_level": "current_exact_bytes_inspected_not_vendored",
+                "git_commit": "607e6dc29287344c6fa83701970134475b6f9e9c",
+                "git_blob_sha": "59823ce648bd629eef8e36e9a3354e248984c74f",
+                "source_sha256": null,
+                "source_bytes_vendored": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+                "rights_evidence_url": null,
+                "source_bytes": null
+              },
+              {
+                "artifact_id": "asi001_archive_errors",
+                "url": "https://github.com/ethz-spylab/agentdojo/blob/089ed468cf3ed0322acc66b0211f26d9d90dbf60/src/agentdojo/benchmark.py",
+                "role": "Archive predicate variants including DoS",
+                "evidence_locator": "Target/error/DoS branch distinctions",
+                "reviewed_on": "2026-10-08",
+                "verification_level": "current_exact_bytes_inspected_not_vendored",
+                "git_commit": "089ed468cf3ed0322acc66b0211f26d9d90dbf60",
+                "git_blob_sha": "162bd6a8af3ca607f893ad3d631db4d238501523",
+                "source_sha256": null,
+                "source_bytes_vendored": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+                "rights_evidence_url": null,
+                "source_bytes": null
+              },
+              {
+                "artifact_id": "asi001_license",
+                "url": "https://github.com/ethz-spylab/agentdojo/blob/089ed468cf3ed0322acc66b0211f26d9d90dbf60/LICENSE",
+                "role": "Software/documentation license",
+                "evidence_locator": "MIT grant; generated-trace scope not separately established",
+                "reviewed_on": "2026-10-08",
+                "verification_level": "current_exact_bytes_inspected_not_vendored",
+                "git_commit": "089ed468cf3ed0322acc66b0211f26d9d90dbf60",
+                "git_blob_sha": "006aed0b22a430c0f3c6a4fb46768d967b8c3dbc",
+                "source_sha256": null,
+                "source_bytes_vendored": false,
+                "rights_status": "declared_software_documentation_license",
+                "license_identifier": "MIT",
+                "rights_scope": "This artifact only; no automatic inheritance to linked code, generated traces, submissions or other authors.",
+                "rights_evidence_url": "https://github.com/ethz-spylab/agentdojo/blob/089ed468cf3ed0322acc66b0211f26d9d90dbf60/LICENSE",
+                "source_bytes": null
+              },
+              {
+                "artifact_id": "asi001_viewer_notice",
+                "url": "https://github.com/invariantlabs-ai/explorer/blob/e7b13b3f5fe5a461a8e87e8f103d608011f507bc/README.md",
+                "role": "Viewer publisher shutdown notice",
+                "evidence_locator": "January 2026 hosted-version notice",
+                "reviewed_on": "2026-10-08",
+                "verification_level": "current_primary_documentary_review",
+                "git_commit": "e7b13b3f5fe5a461a8e87e8f103d608011f507bc",
+                "git_blob_sha": "77f81129da07bc54214fe60aa2c3f9bf4063b4bd",
+                "source_sha256": "784f0a4ff39ec41f93b9eb9eb50b9b1a242364bcafd9ee2931245af02046cd79",
+                "source_bytes_vendored": false,
+                "rights_status": "unknown",
+                "license_identifier": null,
+                "rights_scope": "This artifact only; no automatic rights inheritance.",
+                "rights_evidence_url": null,
+                "source_bytes": 2240
+              }
+            ],
+            "findings": [
+              {
+                "finding_id": "ASI001-F01",
+                "claim": "One clean tool_filter banking task 0 reports utility=True, security=True, error=null, duration 4.639463186264038 seconds and two assistant-origin tool calls.",
+                "qualification": "One metadata-only private acceptance; no attack resistance inferred; raw conversation not published.",
+                "evidence_artifact_ids": [
+                  "asi001_clean"
+                ]
+              },
+              {
+                "finding_id": "ASI001-F02",
+                "claim": "Historical source defines targeted security=True as attacker-goal execution; clean source returns True by default; exception handlers can assign True.",
+                "qualification": "Historical code supports semantic caution but does not identify the sample runtime version. DoS has another predicate.",
+                "evidence_artifact_ids": [
+                  "asi001_historical_predicate",
+                  "asi001_historical_clean",
+                  "asi001_historical_errors",
+                  "asi001_archive_errors"
+                ]
+              },
+              {
+                "finding_id": "ASI001-F03",
+                "claim": "The logger uses elapsed wall-clock seconds; cost, caps, runtime revision and human baseline are not present in the supported task record.",
+                "qualification": "User-role text does not prove human assistance; simulated transaction amounts are not inference expenditure.",
+                "evidence_artifact_ids": [
+                  "asi001_historical_clock",
+                  "asi001_clean"
+                ]
+              },
+              {
+                "finding_id": "ASI001-F04",
+                "claim": "The publisher reports a June 5, 2024 tool_filter row with 72.16% clean utility, 56.28% attacked utility and 6.84% targeted attack success.",
+                "qualification": "These aggregate conditions are separate from the single clean sample; model/attack/defense combinations differ.",
+                "evidence_artifact_ids": [
+                  "asi001_results"
+                ]
+              },
+              {
+                "finding_id": "ASI001-F05",
+                "claim": "The hosted trace viewer ceased operation in January 2026; repository JSON remains a verified fallback.",
+                "qualification": "Public access does not resolve generated-trace redistribution rights.",
+                "evidence_artifact_ids": [
+                  "asi001_viewer_notice",
+                  "asi001_clean",
+                  "asi001_license"
+                ]
+              },
+              {
+                "finding_id": "ASI001-F06",
+                "claim": "Historical benchmark code also assigns DoS security as not utility; trace-specific checks can precede task.security.",
+                "qualification": "Do not transfer a target-goal interpretation to DoS or claim every runtime used one predicate. Exact sample runtime remains unknown.",
+                "evidence_artifact_ids": [
+                  "asi001_historical_errors",
+                  "asi001_historical_clean"
+                ]
+              },
+              {
+                "finding_id": "ASI001-F07",
+                "claim": "The publisher table displays a 2021-09-05 label on a Llama-3-70b-chat-hf row.",
+                "qualification": "Retain this as a date-quality anomaly, not evidence of pre-2024 evaluation coverage; do not silently repair the date.",
+                "evidence_artifact_ids": [
+                  "asi001_results"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "json_pointer": "/overlap_review/per_collection_review/0",
+          "value": {
+            "candidate_id": "ASI001",
+            "family": "AgentDojo",
+            "classification": "new_source_family_candidate",
+            "existing_inventory_source_id": null,
+            "family_overlap": "None found in frozen 64 or 12 catalog collections.",
+            "artifact_overlap": "None found among 464 prior artifact references. A future developer-card quotation must point back to original evaluation artifact rather than add independent evidence.",
+            "study_run_event_overlap": "Clean sample is one run; published defense/attack result row is a distinct aggregate. Same model/task name does not establish same observation."
+          }
+        }
+      ],
+      "catalog_context": {
+        "schema_version": "agent-security-incidents-review/1.0.0",
+        "status": "curated_research_not_admitted",
+        "repository_review_commit": "088400574a33af144ec7ef7bf13ac88f68f1b86c",
+        "baseline_inventory": {
+          "path": "data/evidence-program/source_inventory.json",
+          "source_family_count": 64,
+          "sha256": "a4b5046c3dec44598eeab3f025db75783f9ae5f702e0570d7b31fb3026dde678"
+        },
+        "operational_admission": "not_admitted",
+        "collector_enabled": false,
+        "interpretation_guards": [
+          "Source families, datasets, events, artifacts, experiments and observation versions are separate units.",
+          "No pooled risk, universal autonomy score, causal harm rate or p(doom) conversion.",
+          "No attack instructions, conversation/injection/tool-argument payloads, account identifiers, personal names, biometric or patient details.",
+          "Archive version never substitutes for historical runtime version. Unknown cost,budget,assistance and timestamps remain null.",
+          "Rights and actual audit-log access remain held when not explicitly established."
+        ],
+        "holds": [
+          "All operational admission, canonical mapping, live collection and deployment.",
+          "AgentDojo full-trace rights and exact runtime linkage; no actual attacked-outcome derivation.",
+          "AIxCC actual audit logs, task caps/intervention/accounting and artifact-specific rights.",
+          "tau trajectory rights, exact task/version/reward semantics and later table cost/duration.",
+          "METR task-level payloads/rights, version comparability, uncertainty and runtime provenance.",
+          "NHTSA revision keys, reporting-regime comparability, exposure denominators and submitted-document rights.",
+          "OAIC full judgment scope, source-dated discrepancies and subsequent proceedings beyond attributed regulator status.",
+          "OpenAI selected operator-disclosure coverage, independent mechanism/harm evidence and full-text rights.",
+          "Potential overlap with separately queued item 16 incidents report, unreviewed and not assumed."
+        ],
+        "prior_catalog_fingerprints": [
+          {
+            "path": "data/evidence-program/research/adoption-productivity.json",
+            "sha256": "96a7568a5af567b48c5aa7bba5ec15cde64c623a5468cb3a20a023bd091b02bc",
+            "git_blob_sha": "fbd2337a06d86c04d3092ba1b63a2e815b3b7d1c"
+          },
+          {
+            "path": "data/evidence-program/research/algorithmic-efficiency.json",
+            "sha256": "c9650355f580ecf3e4ce9d780890c2574a27e2eca66727da3608a71355f9e126",
+            "git_blob_sha": "f55636b9f11702e611ed2b68e7065d84d145b81c"
+          },
+          {
+            "path": "data/evidence-program/research/chinese-safety-evaluations.json",
+            "sha256": "f858ca920524a02ab8bfe7b23629cca66680a4821133af0bd1664a40a38d131d",
+            "git_blob_sha": "e205499dfaabf8769582c0a2b33859bb4564bf2f"
+          },
+          {
+            "path": "data/evidence-program/research/concentration-dependencies.json",
+            "sha256": "9932151bdcd225e0c2faecde8f02e3933af3583d85c8689303f6c1fb60d42f30",
+            "git_blob_sha": "e98df02f9c42060decf2d157f1b4fa7e7b18ad1c"
+          },
+          {
+            "path": "data/evidence-program/research/historical-capability-backfills.json",
+            "sha256": "fca26ba6df579a389db713c7fe7d1b4823fbd22bfb84c4810dc0804988a1dd6e",
+            "git_blob_sha": "41ed220a48e676acf2bd691e3309a9105ef834f9"
+          },
+          {
+            "path": "data/evidence-program/research/human-reliance.json",
+            "sha256": "23be491aa1f94ec633d613795e7953169a79180df760e1d8da6ae02ff2068dd6",
+            "git_blob_sha": "2288da918c4cd8126e8f5acdd6d3b2e0d737c456"
+          },
+          {
+            "path": "data/evidence-program/research/open-model-diffusion.json",
+            "sha256": "649be6f110f6826159d880c761192bf51532395334dfe9923be50e4defd7ba34",
+            "git_blob_sha": "686e7a69a3020215e21afd984e6b3a4e7eb2e399"
+          },
+          {
+            "path": "data/evidence-program/research/organizational-safety.json",
+            "sha256": "a07d8a1020b84bdfd9acaf185baae737a10d9160863f4c82d580cd0e4f8d3353",
+            "git_blob_sha": "14e560889f729f14bd2e0c0290ac51bdcc32d1c6"
+          },
+          {
+            "path": "data/evidence-program/research/persuasion-information.json",
+            "sha256": "5b0fea0355661da31db5977ce914b917e7e79cac45fbc87316a8e864bac838e5",
+            "git_blob_sha": "d06a5acc63d629db60f83a3d0035d516d017e970"
+          },
+          {
+            "path": "data/evidence-program/research/robotics-physical.json",
+            "sha256": "e11b27ca8fdcb41d85263ce33a0cf3274f29e0864997731e6e9fb91ce339e174",
+            "git_blob_sha": "0c4966311faa77754d9275e8c9ce880580718eaa"
+          },
+          {
+            "path": "data/evidence-program/research/scientific-progress.json",
+            "sha256": "ff5140f09fa63036cc3d4720f0c40749ddc100fcb0e2b4c533da81038d87549a",
+            "git_blob_sha": "fdce2e6cb61147704c32bb7e300b2b331e7b6c0e"
+          },
+          {
+            "path": "data/evidence-program/research/training-data-feedback.json",
+            "sha256": "26030f07eca4f880be583134bf5abb640ed83d68aa468728b2ec9360f4e9406b",
+            "git_blob_sha": "71fee288b4b9bad9e09461b144c4e85f58bb20e9"
+          }
+        ],
+        "verification_separation": {
+          "source_review": "Primary public documents; exact hashes only when complete bytes verified. Most incident receipts are factual observations, not page snapshots.",
+          "pdf_inspection": "Current review uses text extraction; no successful image-render inspection claimed.",
+          "public_fixtures": "One self-authored synthetic TaskResults-shaped JSON and manifest; no real conversations, upstream source code or downloaded aggregate bodies.",
+          "private_acceptance": "Existing one unique clean source file checked locally; no extra retrieval during decoder acceptance.",
+          "canonical_admission": "Not admitted; no contract or deployment change."
+        }
+      }
+    },
+    {
+      "catalog_path": "data/evidence-program/research/mitigation-effectiveness.json",
+      "pinned_url": "https://github.com/mishakgg/pdoom-live/blob/58de347f57cf37dd9e6495b433b45b3501cc3de1/data/evidence-program/research/mitigation-effectiveness.json",
+      "file_fingerprint": {
+        "path": "data/evidence-program/research/mitigation-effectiveness.json",
+        "bytes": 58675,
+        "git_blob_sha": "2915d098bc66ee1d248628e94469c8d52bed1de6",
+        "expected_git_blob_sha": "2915d098bc66ee1d248628e94469c8d52bed1de6",
+        "sha256": "d8ac9bebddb7098162aa301acf15b281dabd67ac44543302195dfcd11461c987",
+        "verified": true
+      },
+      "preserved_objects": [
+        {
+          "json_pointer": "/priority_ranking/1",
+          "value": {
+            "rank": 2,
+            "id": "ME002",
+            "basis": "Incremental controlled-comparison value and safe aggregate acquisition readiness, not universal safeguard effectiveness."
+          }
+        },
+        {
+          "json_pointer": "/collections/1",
+          "value": {
+            "name": "CaMeL architectural safeguards on AgentDojo",
+            "classification": "new_experimental_package_existing_benchmark_dependency",
+            "inventory_ids": [
+              "GL016"
+            ],
+            "rank": 2,
+            "decision": "Retain model-specific comparisons with utility/error/uncertainty qualifications; reuse ASI001 identity, not its runtime semantics.",
+            "historical_coverage": "Paper March 2025, revised June 2025; selected code revision June 2025.",
+            "update_frequency": "Versioned research artifact; explicitly unsupported/unmaintained.",
+            "primary_url": "https://arxiv.org/html/2503.18813v2",
+            "evidence_locators": [
+              "Section 6.1; Table 2",
+              "Section 6.3; Tables 5–7",
+              "Section 6.5; Figure 13",
+              "Section 7",
+              "analysis.ipynb lines 60–153 at pinned revision"
+            ],
+            "verified_aggregate_sample": {
+              "published": "2025-03-24",
+              "revised": "2025-06-24",
+              "o3_benign_utility": {
+                "model_label": "o3 High",
+                "native_percent": 84.5,
+                "native_reported_plusminus": 7.2,
+                "camel_percent": 77.3,
+                "camel_reported_plusminus": 8.3,
+                "task_denominator": null
+              },
+              "claude_security": {
+                "model_label": "Claude 3.5 Sonnet",
+                "attack_denominator": 949,
+                "tool_filter_successes": 8,
+                "camel_successes": 0
+              },
+              "same_model_utility": {
+                "model_label": "Claude 3.5 Sonnet",
+                "clean_tool_filter_percent": 73.2,
+                "clean_camel_percent": 63.92,
+                "under_attack_tool_filter_percent": 72.71,
+                "under_attack_camel_percent": 66.7,
+                "source": "Tables 5 and 6",
+                "clean_task_denominator": null
+              },
+              "overhead": {
+                "context": "Claude 3.5 Sonnet; under attack; median per-task token ratios",
+                "input_multiplier": 2.82,
+                "output_multiplier": 2.73,
+                "tokenizer": "GPT-4o proxy tokenizer",
+                "excludes": "tool-documentation tokens",
+                "source": "Section 6.5 / Figure 13"
+              },
+              "static_code": {
+                "commit": "f083b6b396399d3b3c7f2ddaf613a5945eaf32d8",
+                "notebook_blob": "7fa1498d6e16a1956d099b8dfeb81641cf6f2d5b",
+                "pyproject_blob": "0766dd5de9b28fc1f8b5581a693533b76fa7af69",
+                "readme_blob": "2d950e6aeaf3a088ce20ca72623887004388ac65",
+                "error_rule": "Non-null error overwrites security with zero; later grouping sums security as attack successes.",
+                "dependency": "agentdojo>=0.1.34",
+                "runtime_revision_for_paper": null,
+                "uncertainty_issue": "Count-interval helper returns mean - lower * count rather than count_successes - lower * count. This static expression mixes a proportion and a count; its use to generate the paper has not been established. Published count-error magnitudes are not independently validated."
+              }
+            },
+            "artifact_rights": [
+              {
+                "url": "https://arxiv.org/abs/2503.18813v2",
+                "license": "CC-BY-4.0",
+                "scope": "paper"
+              },
+              {
+                "url": "https://github.com/google-research/camel-prompt-injection/blob/main/LICENSE",
+                "license": "Apache-2.0",
+                "scope": "code; not all AgentDojo inputs or generated logs"
+              }
+            ],
+            "limitations": [
+              "Zero observed attacks does not establish zero population risk.",
+              "Policies, execution errors, task failures and successful useful protection remain separate.",
+              "The readme warns implementation may be insecure/buggy and will not be maintained.",
+              "Do not join o3 utility with Claude attack counts as one system.",
+              "Nonzero results for other models and side-channel limitations prevent general zero-failure claims."
+            ],
+            "id": "ME002",
+            "access": "Published tables and bounded static notebook/config excerpts; no logs or model calls.",
+            "related_review_collection_ids": [
+              "ASI001",
+              "OS005"
+            ],
+            "sources": [
+              "https://arxiv.org/html/2503.18813v2",
+              "https://arxiv.org/abs/2503.18813v2",
+              "https://github.com/google-research/camel-prompt-injection/blob/main/LICENSE",
+              "https://github.com/google-research/camel-prompt-injection/blob/f083b6b396399d3b3c7f2ddaf613a5945eaf32d8/analysis.ipynb"
+            ],
+            "rights": "Artifact-specific declarations below; public access does not clear unrelated datasets, generated logs or participant records. Unknown rights remain held.",
+            "completed_work": {
+              "status": "completed_bounded_source_review",
+              "work": "Checked primary published aggregates, endpoint and denominator semantics, costs, versions, artifact-specific rights, access and meaningful prior overlap. Unverified raw-content claims remain qualified.",
+              "evidence_urls": [
+                "https://arxiv.org/html/2503.18813v2",
+                "https://arxiv.org/abs/2503.18813v2",
+                "https://github.com/google-research/camel-prompt-injection/blob/main/LICENSE",
+                "https://github.com/google-research/camel-prompt-injection/blob/f083b6b396399d3b3c7f2ddaf613a5945eaf32d8/analysis.ipynb"
+              ],
+              "evidence_locators": [
+                "Section 6.1; Table 2",
+                "Section 6.3; Tables 5–7",
+                "Section 6.5; Figure 13",
+                "Section 7",
+                "analysis.ipynb lines 60–153 at pinned revision"
+              ]
+            },
+            "next_action": "Keep source error-handling and count-errorbar caveats attached; seek an explicit author correction/version mapping before trusting uncertainty or interpreting failed executions as protection."
+          }
+        },
+        {
+          "json_pointer": "/collections/6",
+          "value": {
+            "name": "UK AISI safeguard stress tests and remediation",
+            "classification": "existing_family_enrichment",
+            "inventory_ids": [
+              "GL017"
+            ],
+            "rank": null,
+            "decision": "Retain strict effort bound and linked failure/update/unverified states; do not infer a successful fix.",
+            "historical_coverage": "Evaluations since November 2023; selected 2024–2025 model pair and later GPT-5.5 report.",
+            "update_frequency": "Event-driven reports; no fixed sampling schedule.",
+            "primary_url": "https://www.aisi.gov.uk/frontier-ai-trends-report",
+            "evidence_locators": [
+              "Safeguards section; Figure 13 and adjacent paragraph",
+              "GPT-5.5 cyber evaluation Safeguards subsection"
+            ],
+            "verified_aggregate_sample": {
+              "comparison": {
+                "release_spacing_months": 6,
+                "release_period": "2024–2025",
+                "domain": "biological misuse",
+                "model_a_minutes": 10,
+                "model_a_type": "Find/apply previously public vulnerability",
+                "model_b_minutes_lower_bound": 420,
+                "model_b_bound": "strict greater-than",
+                "model_b_type": "Develop novel universal bypass",
+                "both_bypasses_found": true,
+                "model_identities": null,
+                "query_denominators": null
+              },
+              "remediation": {
+                "url": "https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities",
+                "model": "GPT-5.5",
+                "domain": "cyber misuse",
+                "expert_effort_hours": 6,
+                "outcome_states": [
+                  "failure_observed",
+                  "safeguard_stack_updated",
+                  "final_configuration_effectiveness_unverified"
+                ],
+                "reason": "Configuration issue in the provided final version prevented verification",
+                "query_denominator": null,
+                "quantified_remediation_effect": null
+              }
+            },
+            "artifact_rights": [
+              {
+                "url": "https://www.aisi.gov.uk/frontier-ai-trends-report",
+                "license": null,
+                "scope": "Content-specific license not established; no inferred OGL"
+              },
+              {
+                "url": "https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities",
+                "license": null,
+                "scope": "Content-specific license not established"
+              }
+            ],
+            "limitations": [
+              "Effort is expert search cost, not defender spending or harm.",
+              "Unmatched model/safeguard/attacker conditions prevent causal attribution.",
+              "No exploit details, attack queries or operational incident additions included."
+            ],
+            "id": "ME007",
+            "access": "Public HTML/figure-section aggregates; no row-level API verified.",
+            "related_review_collection_ids": [
+              "OS004"
+            ],
+            "sources": [
+              "https://www.aisi.gov.uk/frontier-ai-trends-report",
+              "https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities"
+            ],
+            "rights": "Artifact-specific declarations below; public access does not clear unrelated datasets, generated logs or participant records. Unknown rights remain held.",
+            "completed_work": {
+              "status": "completed_bounded_source_review",
+              "work": "Checked primary published aggregates, endpoint and denominator semantics, costs, versions, artifact-specific rights, access and meaningful prior overlap. Unverified raw-content claims remain qualified.",
+              "evidence_urls": [
+                "https://www.aisi.gov.uk/frontier-ai-trends-report",
+                "https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities"
+              ],
+              "evidence_locators": [
+                "Safeguards section; Figure 13 and adjacent paragraph",
+                "GPT-5.5 cyber evaluation Safeguards subsection"
+              ]
+            },
+            "next_action": "Keep the final GPT-5.5 configuration unverified unless a dated evaluator retest explicitly establishes its outcome."
+          }
+        },
+        {
+          "json_pointer": "/corrections/1",
+          "value": {
+            "id": "ME-C02",
+            "finding": "The 77.3% o3 task result and 0/949 Claude attack result are different slices. Same-Claude tool-filter/CaMeL clean utility is 73.20%/63.92%; under attack 72.71%/66.70%.",
+            "source_id": "ME002",
+            "status": "correction_or_qualification",
+            "evidence_urls": [
+              "https://arxiv.org/html/2503.18813v2",
+              "https://arxiv.org/abs/2503.18813v2",
+              "https://github.com/google-research/camel-prompt-injection/blob/main/LICENSE",
+              "https://github.com/google-research/camel-prompt-injection/blob/f083b6b396399d3b3c7f2ddaf613a5945eaf32d8/analysis.ipynb"
+            ]
+          }
+        },
+        {
+          "json_pointer": "/corrections/2",
+          "value": {
+            "id": "ME-C03",
+            "finding": "Pinned notebook overwrites security with zero for execution errors. A static attack-count interval formula mixes a proportion and count; execution and paper-generation lineage remain unverified. Do not treat its reported error bars as independently validated.",
+            "source_id": "ME002",
+            "status": "correction_or_qualification",
+            "evidence_urls": [
+              "https://arxiv.org/html/2503.18813v2",
+              "https://arxiv.org/abs/2503.18813v2",
+              "https://github.com/google-research/camel-prompt-injection/blob/main/LICENSE",
+              "https://github.com/google-research/camel-prompt-injection/blob/f083b6b396399d3b3c7f2ddaf613a5945eaf32d8/analysis.ipynb"
+            ]
+          }
+        },
+        {
+          "json_pointer": "/corrections/7",
+          "value": {
+            "id": "ME-C08",
+            "finding": "Model B effort is strictly greater than 420 minutes. GPT-5.5 final mitigation effectiveness remains unverified; revisions do not create a success outcome.",
+            "source_id": "ME007",
+            "status": "correction_or_qualification",
+            "evidence_urls": [
+              "https://www.aisi.gov.uk/frontier-ai-trends-report",
+              "https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities"
+            ]
+          }
+        },
+        {
+          "json_pointer": "/next_actions/1",
+          "value": {
+            "action_id": "ME002-A1",
+            "title": "Resolve score and interval lineage",
+            "status": "bounded_follow_up_not_started",
+            "action": "Keep source error-handling and count-errorbar caveats attached; seek an explicit author correction/version mapping before trusting uncertainty or interpreting failed executions as protection.",
+            "prompt_id": "ME002-F1",
+            "source_id": "ME002",
+            "priority": "P1"
+          }
+        },
+        {
+          "json_pointer": "/next_actions/6",
+          "value": {
+            "action_id": "ME007-A1",
+            "title": "Check verified remediation outcome",
+            "status": "bounded_follow_up_not_started",
+            "action": "Keep the final GPT-5.5 configuration unverified unless a dated evaluator retest explicitly establishes its outcome.",
+            "prompt_id": "ME007-F1",
+            "source_id": "ME007",
+            "priority": "P1"
+          }
+        },
+        {
+          "json_pointer": "/follow_up_prompts/1",
+          "value": {
+            "title": "Resolve score and interval lineage",
+            "prompt": "Inspect only published CaMeL errata/README and the pinned analysis.ipynb scoring excerpt at f083b6b396399d3b3c7f2ddaf613a5945eaf32d8, especially lines 93–94 and 111–125. Establish whether any public evidence links that helper to paper-v2 attack-count intervals or corrects it. Separate an implementation concern from a proven published-error correction. Preserve 0/949 as the reported Claude count with execution-status qualification; do not invent corrected intervals. Also record any explicit immutable AgentDojo evaluator version, otherwise leave it unknown. This is a bounded aggregate/metadata follow-up for pdoom-live research. no repository edits, adapter implementation, source execution, login, bulk download, participant identifiers, operational attack payloads or external outreach. Respect access controls. Return evidence URLs/locators, resolved fields and remaining holds; stop after these named artifacts. Sources: https://arxiv.org/html/2503.18813v2 ; https://github.com/google-research/camel-prompt-injection/blob/f083b6b396399d3b3c7f2ddaf613a5945eaf32d8/analysis.ipynb.",
+            "source_id": "ME002",
+            "id": "ME002-F1",
+            "priority": "P1"
+          }
+        },
+        {
+          "json_pointer": "/follow_up_prompts/6",
+          "value": {
+            "title": "Check verified remediation outcome",
+            "prompt": "Review the existing official AISI GPT-5.5 safeguards report and any explicitly linked dated correction/retest only. Look for verified final-configuration effectiveness after the six-hour expert bypass and subsequent stack changes. If absent, preserve the three states failure observed, mitigation changed, effectiveness unverified. Do not infer success from a vendor fix or unrelated capability score. Retain the separate trends-study bound Model B >420 minutes and unknown identities/query denominators. Record artifact rights as unknown unless explicitly provided; no attack details, raw logs or model tests. This is a bounded aggregate/metadata follow-up for pdoom-live research. no repository edits, adapter implementation, source execution, login, bulk download, participant identifiers, operational attack payloads or external outreach. Respect access controls. Return evidence URLs/locators, resolved fields and remaining holds; stop after these named artifacts. Sources: https://www.aisi.gov.uk/frontier-ai-trends-report ; https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities.",
+            "source_id": "ME007",
+            "id": "ME007-F1",
+            "priority": "P1"
+          }
+        }
+      ],
+      "catalog_context": {
+        "schema_version": "research-review-1",
+        "status": "reviewed_with_explicit_holds",
+        "repository_review_commit": "82fd46330539bd484c80190c69868d71b2052f6e",
+        "operational_admission": false,
+        "collector_enabled": false,
+        "interpretation_guards": [
+          "Keep study, intervention, model, task/pool, scoring predicate, policy and evaluator versions separate.",
+          "Preserve endpoint-specific comparator and denominator; do not infer exact numerators from rounded rates.",
+          "Execution failure, blocked harm, harmless refusal and useful task completion are different outcomes.",
+          "Effort, inference overhead, compensation, time delay and lost utility are different costs.",
+          "No finite zero or nonsignificant contrast proves absence of risk/effect.",
+          "Longitudinal publication dates are not comparable repeated experimental conditions.",
+          "No operational attack content, participant records or source code are published. Rights silence stays unknown."
+        ],
+        "holds": [
+          "No operational ingestion, runtime execution or new adapter implementation.",
+          "Attack corpora, raw traces, participant data and production traffic remain excluded.",
+          "Exact runtime/evaluator linkage and calibrated CaMeL count uncertainty require separate evidence.",
+          "OSF data/code rights and Buçinca raw release/rights unresolved.",
+          "AISI article rights unresolved; no inferred OGL.",
+          "Live Redwood numerical feeds remain unverified; any later follow-up remains restricted to small aggregate metadata.",
+          "No exact upstream HTML/PDF byte identity is claimed."
+        ]
+      }
+    }
+  ]
+}

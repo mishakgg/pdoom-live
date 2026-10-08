@@ -1,0 +1,339 @@
+{
+  "repository_commit": "58de347f57cf37dd9e6495b433b45b3501cc3de1",
+  "execution_window_utc": [
+    "2026-10-08T17:11:29Z",
+    "2026-10-08T17:15:02Z"
+  ],
+  "pinned_file_count": 33,
+  "synthetic_probe_count": 47,
+  "all_expected_results_observed": true,
+  "scope": "Existing unchanged pinned schemas and validator replayed on the revised inline synthetic inputs; wrapper checks rerun. No source/model/scorer/notebook execution.",
+  "checks": [
+    {
+      "probe_id": "SC-001",
+      "input_sha256": "90262be0109321d97f5eae263a2484c61b13e6843c0325aaeaa131c5870226c4",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-002",
+      "input_sha256": "82477e5fb1860c9e90660577f057fbb877c1f4c1e4c14a1ab82b63cae55e1057",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-003",
+      "input_sha256": "e7c6a1786cafe3b7a21a6060ffaf0b0f7bff156934c01d65f1f1495c0b666f38",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-004",
+      "input_sha256": "ea8ffb2f65bc1143099cbf84bdbedd231dc7b0799be04af211e90edc77f7ee3d",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "schema"
+      ]
+    },
+    {
+      "probe_id": "SC-005",
+      "input_sha256": "94a2bb25f741531a2fa4674b04635b2ff84319c34007b9fe3e106006240837fa",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "evaluation_time"
+      ]
+    },
+    {
+      "probe_id": "SC-006",
+      "input_sha256": "fd6b05ff8cc0ddfd46a75ba7d4606b938cd248c8abf3e04ad6d348887e7184e2",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "schema"
+      ]
+    },
+    {
+      "probe_id": "SC-007",
+      "input_sha256": "5fc317f96b092651bc048bcb6fa33d6869c745f974a14573922fcaff8b1956fd",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "schema"
+      ]
+    },
+    {
+      "probe_id": "SC-008",
+      "input_sha256": "97ba6d667c373f651af01383aac9f76ce39c12f5de1b6a78f2d504c13aece67a",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "schema"
+      ]
+    },
+    {
+      "probe_id": "SC-009",
+      "input_sha256": "0976ac6d1db6bc7911a86641e58405ebd2a08a55b5a2cc707392652a2027a644",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-010",
+      "input_sha256": "86aac51ffcf174adb0f71facc4bd3d647ce2f49eace48d2e350db98c607d2401",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "duplicate_revision"
+      ]
+    },
+    {
+      "probe_id": "SC-011",
+      "input_sha256": "61c0547e995119b16685ee6ad636e37b836482a66438528ab8127a5098f8b68d",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-012",
+      "input_sha256": "0b6b8b96107c69f4a60265e8899f318c8b30201247863d3ff42056a79a016b17",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "revision_lineage"
+      ]
+    },
+    {
+      "probe_id": "SC-013",
+      "input_sha256": "541f38a44915ff490ad0d531dce91748eaff89a1ac6daf33a3bbfcf6b7813fdc",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "schema"
+      ]
+    },
+    {
+      "probe_id": "SC-014",
+      "input_sha256": "ab952b81b7adf00c4e573a31f966a19eafe8550e06b7ba47a75cdc11bc194cfc",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "schema"
+      ]
+    },
+    {
+      "probe_id": "SC-015",
+      "input_sha256": "b0afa1b24f95b87652208445a53fe124c3e022b6dd35990fe4de0e1b343958e7",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-016",
+      "input_sha256": "884bfe746d5b9482ceb547838549e7d7630697ac1eab5388f7873af24bdc90da",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-017",
+      "input_sha256": "b87862f35a02cbd1d482cc816cbfaa9df3aa1210b3e8fa7d12fe4d6c9f52f3ce",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-018",
+      "input_sha256": "b5d625f559247673f41185e07d3e26f0b466c9069e206a7ede10d538d7761918",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-019",
+      "input_sha256": "f7e195487029d45a1468800b8fe89599f8d9b76eccb18c32b7f08f3acb2b337f",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "schema"
+      ]
+    },
+    {
+      "probe_id": "SC-020",
+      "input_sha256": "10bb0414835829424fa9a218bbc86e8782f1bbc8df9bf629920d62e36b7b19a7",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "interval_level"
+      ]
+    },
+    {
+      "probe_id": "SC-021",
+      "input_sha256": "33172a928d6b216429a30ed32dcb02349dc5d022912d0d43801de86f44d05a47",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-022",
+      "input_sha256": "0ff127e200bacd22b738f40717297a8b4201413b6db9cb4698aefc904cd7f2a1",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-023",
+      "input_sha256": "59413d9e98feb5bb37b1c06a903d066a099d17f0ee0b683904f20436071d54d8",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "reference_type"
+      ]
+    },
+    {
+      "probe_id": "SC-024",
+      "input_sha256": "ce766bf4882b7ee73f5607a6a93b38fe0f0f3efd3326d6f726e2d7e7c4046950",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "missing_reference"
+      ]
+    },
+    {
+      "probe_id": "SC-025",
+      "input_sha256": "5a2352fd61e08e5169454839a56c3329119a1a0114e2308e934a1055e3679f3d",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-026",
+      "input_sha256": "7998aff6008bf7fda23ada88c0d0c81332487179b68ef45b9695709437d75ce9",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "revision_time"
+      ]
+    },
+    {
+      "probe_id": "SC-027",
+      "input_sha256": "3c154983d3b1dc5394cde1cb5aa113eca7a3fe2aafdbbd910c39a2b715dffc19",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "publication_gate"
+      ]
+    },
+    {
+      "probe_id": "SC-028",
+      "input_sha256": "da15b6a0cbb4214ac4f22194a57c4864f2cd2a883a90db5739b19e0c84179a17",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-029",
+      "input_sha256": "7e8d9098a3824777c8ccde540592b0a05041cf8ba1fd5e32821f1e5e4a39c434",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "schema"
+      ]
+    },
+    {
+      "probe_id": "SC-030",
+      "input_sha256": "87e245fe3b9aebc309cfd2c12dce6c42f3fd9cf3eee3d2744a58f8230116c04c",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "measurement_type"
+      ]
+    },
+    {
+      "probe_id": "SC-031",
+      "input_sha256": "b96a181841dfca2d9b76ebad1fb4cfc4173ff8e0b0ad5c060dc2e630916834f2",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-032",
+      "input_sha256": "a572dc4b0d0707781e35cd0f9c0151319f1cfd7f6e1443b829acac3e9d67f311",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-033",
+      "input_sha256": "19a1c431f0791d7cedbe2fa4ae75a49f6eca8109e9fed9920b99b8ef7c93b5f2",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-034",
+      "input_sha256": "5433620832fa0ab8fd77bad9557cf5d4d3c26648e7ef5acfb1be9fed5f9861e2",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-035",
+      "input_sha256": "f639d8bb5ab4ffd64a9af07c190cd1e7eb6914b8eda8bfd46420fe84e217dc02",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-036",
+      "input_sha256": "a3a57a572de8b2233e52d26d10c200c4303b711fd19bfb7e0838cfdcb770e101",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-037",
+      "input_sha256": "5a825dff9785afd290b32703f7eb42cc7e6d904fc6eb550cc8cba996bdc929ac",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-038",
+      "input_sha256": "cab024f250a83c39af6405eb37ae3ba372c060eb222181173c03714fe383ec87",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-039",
+      "input_sha256": "7e80fb42d1dc47556a16527545b99d17022714e67a991acb7d0dd944d2a6872c",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-040",
+      "input_sha256": "5422746f94ac13608344caadeab039a8ee05a835c21e467d49984c553b761409",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-041",
+      "input_sha256": "98f05bd78c24d2fa914a2c69fdde0854efd7b7bf1387f4a052ea115f8391219f",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "schema"
+      ]
+    },
+    {
+      "probe_id": "SC-042",
+      "input_sha256": "9253e3f80b6b7f4202724538a217f229bebd2fc5e892dd6f816705f884445903",
+      "expectation_met": true,
+      "actual_validator_codes": [
+        "schema"
+      ]
+    },
+    {
+      "probe_id": "SC-043",
+      "input_sha256": "b2dde0a5f8e4214bc15dd237789a6153837d290c4119e58481769886470e1da7",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-044",
+      "input_sha256": "a9fe50acd83e565c5b35fdf5f032656f9a0827a1ac22b706398bf7069f6433ea",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-045",
+      "input_sha256": "53f6c96ba55f77a09571612ecda643cd0680bc0310f77228b39ee39f93ae3aba",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-046",
+      "input_sha256": "e484864fd8a8a02b8a69a02a5c05d6cf1faf2d3363ae8e228d2f0bfe0bae9be7",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    },
+    {
+      "probe_id": "SC-047",
+      "input_sha256": "48e9ae6f955694e236964d159ee13afc1dae4d2ddac83014fed866018d97f9b3",
+      "expectation_met": true,
+      "actual_validator_codes": []
+    }
+  ],
+  "replay_method": "The unchanged pinned validate_dataset.check_contracts registry registers all 14 schema documents locally. Native bundle and wrapper validations use only these registered documents; no remote resolution is needed.",
+  "stopped_attempt": {
+    "completed": false,
+    "reason": "An initial replay was stopped during unregistered wrapper-schema URI resolution. It receives no success credit; the completed replay used the local registry without network access."
+  },
+  "receipt_scope_note": "Historical source-review receipt, with public file references relocated. Candidate integration checks are separate. Synthetic native-contract probes are not observed source executions, real-source canonical validation, independent safety replication or admission."
+}
