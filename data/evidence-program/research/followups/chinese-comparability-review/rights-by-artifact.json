@@ -1,0 +1,166 @@
+{
+  "original_rights_record_count": 9,
+  "original_rights_records": [
+    {
+      "rights_id": "R-F-PAPERS",
+      "source_id": "ZHS001",
+      "artifact_ids": [
+        "FLAMES-PAPER-V1",
+        "FLAMES-PAPER-V6"
+      ],
+      "evidence_status": "directly_inspected_banner",
+      "declaration": "arXiv.org perpetual non-exclusive license",
+      "exact_locator": "v1 HTML license banner L42; v6 HTML license banner L62",
+      "scope": "Paper distribution declaration; no separate benchmark-data or result-export grant established.",
+      "separate_data_or_results_license": null
+    },
+    {
+      "rights_id": "R-F-DATA-USE",
+      "source_id": "ZHS001",
+      "artifact_ids": [
+        "FLAMES-PAPER-V6"
+      ],
+      "evidence_status": "directly_inspected",
+      "declaration_short_quote": "solely for research purposes",
+      "exact_locator": "§7 Ethical Considerations, HTML L269",
+      "scope": "Statement about Flames-prompts and Flames-responses; not a verified redistribution license.",
+      "separate_data_or_results_license": null
+    },
+    {
+      "rights_id": "R-F-PIN",
+      "source_id": "ZHS001",
+      "artifact_ids": [
+        "FLAMES-README-PIN",
+        "FLAMES-LICENSE-PIN"
+      ],
+      "evidence_status": "uninspected_access_restriction",
+      "declaration": null,
+      "exact_locator": null,
+      "scope": "Pinned license, table and public-prompt rights unverified."
+    },
+    {
+      "id": "ZHS006-R1",
+      "status": "directly_inspected",
+      "applies_to": "Paper arXiv:2310.05818v1",
+      "declaration_url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "applicability_locator": "Paper HTML L35 and arXiv abstract view-license link; turn3view2 and turn8view0",
+      "statement_locator": "License L2-L6, turn13view0",
+      "grant_scope": "Submitter grants arXiv perpetual non-exclusive article distribution.",
+      "benchmark_data_rights": null,
+      "aggregate_result_republication_rights": null,
+      "repository_software_rights": null,
+      "interpretation": "This article-distribution grant does not establish dataset, result-export, or software permissions for this project."
+    },
+    {
+      "id": "ZHS006-R2",
+      "status": "unresolved_access_restriction",
+      "applies_to": "Pinned README text, historical result tables, benchmark questions and response artifacts",
+      "applicable_license": null,
+      "explanation": "No artifact-specific rights statement inspected for these artifacts; do not inherit from the paper grant or assume public access is permission."
+    },
+    {
+      "rights_id": "R-L-PAPERS",
+      "source_id": "ZHS004",
+      "artifact_ids": [
+        "LS-P1",
+        "LS-P2"
+      ],
+      "evidence_status": "directly_inspected_banner",
+      "declaration": "CC BY-NC-SA 4.0",
+      "exact_locator": "v1 HTML L29; v2 HTML L35",
+      "scope": "These paper artifacts, with attribution/noncommercial/share-alike conditions retained; no separate data/export license established.",
+      "separate_data_or_results_license": null
+    },
+    {
+      "rights_id": "R-L-REPO",
+      "source_id": "ZHS004",
+      "artifact_ids": [
+        "LS-S1"
+      ],
+      "evidence_status": "directly_inspected_label_only",
+      "declaration": "Apache-2.0 license",
+      "exact_locator": "Repository Resources, HTML L148 and L387",
+      "scope": "Repository license label; full license text not inspected. No inferred scope over questions or historical result exports."
+    },
+    {
+      "rights_id": "R-L-WEB",
+      "source_id": "ZHS004",
+      "artifact_ids": [
+        "LS-L1"
+      ],
+      "evidence_status": "directly_inspected",
+      "declaration": "All Rights Reserved",
+      "exact_locator": "Website footer, HTML L76",
+      "scope": "Website notice; no versioned result-export grant inspected."
+    },
+    {
+      "rights_id": "R-L-OTHER",
+      "source_id": "ZHS004",
+      "artifact_ids": [
+        "LS-C1",
+        "LS-S2"
+      ],
+      "evidence_status": "unresolved",
+      "declaration": null,
+      "exact_locator": null,
+      "scope": "Pinned CHANGELOG inaccessible; no artifact-specific guide/data declaration inspected."
+    }
+  ],
+  "current_rights_review": [
+    {
+      "rights_record_id": "R-F-PAPERS",
+      "current_status": "declaration_currently_confirmed_at_original_scope",
+      "current_note": "Retain original artifact-specific scope and all no-inheritance limitations.",
+      "legal_clearance_claimed": false
+    },
+    {
+      "rights_record_id": "R-F-DATA-USE",
+      "current_status": "declaration_currently_confirmed_at_original_scope",
+      "current_note": "Retain original artifact-specific scope and all no-inheritance limitations.",
+      "legal_clearance_claimed": false
+    },
+    {
+      "rights_record_id": "R-F-PIN",
+      "current_status": "original_access_hold_plus_prior_catalog_declaration",
+      "current_note": "Current catalog declares Apache-2.0 for pinned README, citing license artifact. Its reported upstream hashes are historical, not freshly verified. Keep declaration without extending to scorer weights, public prompts, responses, paper or separate exports.",
+      "legal_clearance_claimed": false
+    },
+    {
+      "rights_record_id": "ZHS006-R1",
+      "current_status": "declaration_currently_confirmed_at_original_scope",
+      "current_note": "Retain original artifact-specific scope and all no-inheritance limitations.",
+      "legal_clearance_claimed": false
+    },
+    {
+      "rights_record_id": "ZHS006-R2",
+      "current_status": "unresolved_retained",
+      "current_note": "Prior catalog also leaves repository/table/question rights unknown; 许可 is model availability terminology, not a dataset license. That Chinese label is historical catalog evidence only.",
+      "legal_clearance_claimed": false
+    },
+    {
+      "rights_record_id": "R-L-PAPERS",
+      "current_status": "declaration_currently_confirmed_at_original_scope",
+      "current_note": "Retain original artifact-specific scope and all no-inheritance limitations.",
+      "legal_clearance_claimed": false
+    },
+    {
+      "rights_record_id": "R-L-REPO",
+      "current_status": "declaration_currently_confirmed_at_original_scope",
+      "current_note": "Current README bytes and license label verified; prior catalog has separate pinned license inspection. No rights inheritance to withheld questions, response corpora or website export.",
+      "legal_clearance_claimed": false
+    },
+    {
+      "rights_record_id": "R-L-WEB",
+      "current_status": "declaration_currently_confirmed_at_original_scope",
+      "current_note": "Retain original artifact-specific scope and all no-inheritance limitations.",
+      "legal_clearance_claimed": false
+    },
+    {
+      "rights_record_id": "R-L-OTHER",
+      "current_status": "mixed_current_document_and_historical_catalog_context",
+      "current_note": "Current guide bytes verified but no new guide-specific rights declaration inspected. Pinned CHANGELOG reread failed; prior catalog scope and hashes remain historical.",
+      "legal_clearance_claimed": false
+    }
+  ],
+  "raw_source_payload_publication": "Not authorized by this review; inspection receipts are excluded from the recommended documentary publication payload."
+}

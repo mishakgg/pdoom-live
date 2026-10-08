@@ -1,0 +1,90 @@
+{
+  "reviewed_on": "2026-10-08",
+  "gloss_status": "Labeled English glosses preserve source-specific constructs; they are not taxonomy-equivalence findings.",
+  "entries": [
+    {
+      "source_id": "ZHS001",
+      "assertion_id": "F014",
+      "source_url": "https://arxiv.org/html/2311.06899v6",
+      "locator": "§3.1 Morality; Appendix C.1",
+      "current_status": "primary_wording_verified",
+      "original_chinese": [
+        "和谐",
+        "仁",
+        "礼",
+        "中庸"
+      ],
+      "english_gloss": [
+        "harmony",
+        "benevolence",
+        "courtesy",
+        "Doctrine of the Mean"
+      ],
+      "caution": "The paper itself supplies these English renderings. Preserve the source morality construct; no national or universal risk metric."
+    },
+    {
+      "source_id": "ZHS006",
+      "assertion_id": "ZHS006-A8",
+      "source_url": "https://github.com/CLUEbenchmark/SuperCLUE-Safety/blob/3b9789520c13fdcdfb7ba5326b1c741e2459305e/README.md",
+      "current_status": "original_chinese_sentence_unrecovered",
+      "original_chinese": null,
+      "english_gloss": null,
+      "caution": "Prior catalog reports 4912 questions / 2456 pairs. Exact Chinese count sentence is not recovered in this review and must not be reconstructed from its English description."
+    },
+    {
+      "source_id": "ZHS006",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/246f746e3a267363c7f6d2e0494eb72fb4c98bc9/data/evidence-program/research/chinese-safety-evaluations.json",
+      "locator": "families[ZHS006].rights_summary",
+      "current_status": "historical_catalog_context_only",
+      "original_chinese": [
+        "许可"
+      ],
+      "english_gloss": [
+        "license/permission (literal label); catalog interprets this model column as availability"
+      ],
+      "caution": "No fresh upstream inspection; never transfer a model availability label into benchmark reuse permission."
+    },
+    {
+      "source_id": "ZHS004",
+      "assertion_id": "LS-A12",
+      "source_url": "https://livesecbench.intokentech.cn/",
+      "locator": "Edition label; 核心特色与测评维度; 测评说明; leaderboard loading area",
+      "current_status": "primary_wording_verified",
+      "original_chinese": [
+        "2026年3月",
+        "公共安全",
+        "公平与偏见",
+        "隐私",
+        "真实性",
+        "只公开结果不公开题目",
+        "加载榜单数据中..."
+      ],
+      "english_gloss": [
+        "March 2026",
+        "Public Safety",
+        "Fairness and Bias",
+        "Privacy",
+        "Truthfulness",
+        "Publish results but not questions",
+        "Loading leaderboard data..."
+      ],
+      "caution": "Four advertised domains and a loading state are not score rows. No equation to prior six/five-domain protocols."
+    },
+    {
+      "source_id": "ZHS004",
+      "assertion_id": "LS-A14",
+      "source_url": "https://github.com/ydli-ai/LiveSecBench/blob/35af1f81cf62fe2133db9d26d8b74964236c1267/docs/USER_GUIDE.md",
+      "locator": "§2.4 dimension_name_map; §2.5 scoring example",
+      "current_status": "primary_bytes_git_verified",
+      "original_chinese": [
+        "事实性",
+        "合法性"
+      ],
+      "english_gloss": [
+        "factuality",
+        "legality"
+      ],
+      "caution": "Guide maps these terms to factuality/legality internally. It does not prove equivalence to the later paper/page Truthfulness domain."
+    }
+  ]
+}

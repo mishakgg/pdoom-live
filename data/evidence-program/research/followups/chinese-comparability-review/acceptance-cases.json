@@ -1,0 +1,701 @@
+{
+  "origin": "submitted Deep Session 5 ledger",
+  "original_case_count": 20,
+  "all_original_cases_remain_unexecuted": true,
+  "cases": [
+    {
+      "case_id": "AC01",
+      "case_kind": "inspected_example",
+      "label": "Explicit table binding",
+      "source_assertion_ids": [
+        "F003",
+        "F004"
+      ],
+      "input": {
+        "paper": "FLAMES-PAPER-V6",
+        "table": 4,
+        "declared_prompts": 1000,
+        "models": 17,
+        "judge_type": "human"
+      },
+      "proposed_operation": "Record the paper-stated population and judge, while leaving the historical README binding pending.",
+      "expected_disposition": "Accept as an attributed paper claim; do not mark actual sample completeness verified.",
+      "evidence": [
+        {
+          "artifact_id": "FLAMES-PAPER-V6",
+          "artifact_url": "https://arxiv.org/html/2311.06899v6",
+          "artifact_version": "arXiv:2311.06899v6",
+          "exact_locator": "§4.1, 'Prompts for evaluation'; §4.3 first sentence after Table 4; HTML lines 198–200 and 231",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "FLAMES-PAPER-V6",
+          "artifact_url": "https://arxiv.org/html/2311.06899v6",
+          "artifact_version": "arXiv:2311.06899v6",
+          "exact_locator": "§3.3, Table 3 and final paragraph; §4.3 first sentence; HTML lines 178–191 and 231",
+          "evidence_status": "directly_inspected"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC02",
+      "case_kind": "inspected_example",
+      "label": "Preserve rate and graded score",
+      "source_assertion_ids": [
+        "F005",
+        "F006"
+      ],
+      "input": {
+        "model": "ChatGPT",
+        "dimension": "Fairness",
+        "harmless_rate_percent": 45.38,
+        "harmless_score_points": 79.8
+      },
+      "proposed_operation": "Store the two located values as different metric/unit records.",
+      "expected_disposition": "Accept two metrics from the same evaluation; do not count two independent evaluations.",
+      "evidence": [
+        {
+          "artifact_id": "FLAMES-PAPER-V6",
+          "artifact_url": "https://arxiv.org/html/2311.06899v6",
+          "artifact_version": "arXiv:2311.06899v6",
+          "exact_locator": "§4.2, equations (1)–(2) and following sentence; HTML lines 203–209",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "FLAMES-PAPER-V6",
+          "artifact_url": "https://arxiv.org/html/2311.06899v6",
+          "artifact_version": "arXiv:2311.06899v6",
+          "exact_locator": "Table 4, ChatGPT row, Fairness and Data protection columns; HTML line 212",
+          "evidence_status": "directly_inspected"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC03",
+      "case_kind": "synthetic_rejection",
+      "label": "Denominator substitution",
+      "source_assertion_ids": [
+        "F002",
+        "F003"
+      ],
+      "input": {
+        "constructed_prompt_pool": 2251,
+        "declared_table_prompts": 1000
+      },
+      "proposed_operation": "Use the constructed-pool count as the historical table denominator.",
+      "expected_disposition": "Reject substitution; retain pool and declared evaluated subset separately, with the unresolved count conflict.",
+      "evidence": [
+        {
+          "artifact_id": "FLAMES-PAPER-V6",
+          "artifact_url": "https://arxiv.org/html/2311.06899v6",
+          "artifact_version": "arXiv:2311.06899v6",
+          "exact_locator": "§3.2, Table 2; HTML lines 166–174",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "FLAMES-PAPER-V6",
+          "artifact_url": "https://arxiv.org/html/2311.06899v6",
+          "artifact_version": "arXiv:2311.06899v6",
+          "exact_locator": "§4.1, 'Prompts for evaluation'; §4.3 first sentence after Table 4; HTML lines 198–200 and 231",
+          "evidence_status": "directly_inspected"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC04",
+      "case_kind": "synthetic_rejection",
+      "label": "Date substitution",
+      "source_assertion_ids": [
+        "LS-A09"
+      ],
+      "input": {
+        "paper": "LS-P2",
+        "paper_version_date": "2025-12-20",
+        "evaluation_date": null
+      },
+      "proposed_operation": "Set response-generation date equal to the paper version date.",
+      "expected_disposition": "Reject; record paper metadata and leave the actual run interval unknown.",
+      "evidence": [
+        {
+          "artifact_id": "LS-P2",
+          "artifact_url": "https://arxiv.org/html/2511.02366v2",
+          "artifact_version": "arXiv:2511.02366v2; benchmark label v251215",
+          "exact_locator": "Table 1, rank 15 row and caption",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "LS-P2",
+          "artifact_url": "https://arxiv.org/html/2511.02366v2",
+          "artifact_version": "arXiv:2511.02366v2; benchmark label v251215",
+          "exact_locator": "HTML header: arXiv:2511.02366v2, 20 Dec 2025, L37",
+          "evidence_status": "directly_inspected"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC05",
+      "case_kind": "synthetic_rejection",
+      "label": "Rate/score conflation",
+      "source_assertion_ids": [
+        "F005",
+        "F006"
+      ],
+      "input": {
+        "value": 79.8,
+        "native_metric": "harmless_score",
+        "native_unit": "graded-score points"
+      },
+      "proposed_operation": "Report this value as the percentage of completely harmless answers.",
+      "expected_disposition": "Reject; Eq. (2) aggregates all grades while Eq. (1) counts label 3 only.",
+      "evidence": [
+        {
+          "artifact_id": "FLAMES-PAPER-V6",
+          "artifact_url": "https://arxiv.org/html/2311.06899v6",
+          "artifact_version": "arXiv:2311.06899v6",
+          "exact_locator": "§4.2, equations (1)–(2) and following sentence; HTML lines 203–209",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "FLAMES-PAPER-V6",
+          "artifact_url": "https://arxiv.org/html/2311.06899v6",
+          "artifact_version": "arXiv:2311.06899v6",
+          "exact_locator": "Table 4, ChatGPT row, Fairness and Data protection columns; HTML line 212",
+          "evidence_status": "directly_inspected"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC06",
+      "case_kind": "synthetic_rejection",
+      "label": "Duplicate mirror or translation",
+      "source_assertion_ids": [
+        "LS-A04"
+      ],
+      "input": {
+        "artifact": "LS-P1",
+        "representations": [
+          "HTML",
+          "PDF"
+        ],
+        "hypothetical_extra_representation": "translation of the same table"
+      },
+      "proposed_operation": "Increment the independent-evaluation count once for each representation.",
+      "expected_disposition": "Reject; attach representation/republication edges to the same result. A new run requires separate evidence.",
+      "evidence": [
+        {
+          "artifact_id": "LS-P1",
+          "artifact_url": "https://arxiv.org/html/2511.02366v1",
+          "artifact_version": "arXiv:2511.02366v1; benchmark label v251030",
+          "exact_locator": "Table 1, DeepSeek-R1-0528 row; PDF page 4",
+          "evidence_status": "directly_inspected"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC07",
+      "case_kind": "synthetic_rejection",
+      "label": "Assumed evaluator independence",
+      "source_assertion_ids": [
+        "F009"
+      ],
+      "input": {
+        "benchmark_author_affiliations": [
+          "Shanghai Artificial Intelligence Laboratory",
+          "Fudan University"
+        ],
+        "per_model_relationship": null
+      },
+      "proposed_operation": "Mark the study independent because its publisher differs from a developer or human-rater affiliations are unknown.",
+      "expected_disposition": "Reject; publisher, benchmark author, evaluator, judge and developer roles must be recorded separately.",
+      "evidence": [
+        {
+          "artifact_id": "FLAMES-PAPER-V6",
+          "artifact_url": "https://arxiv.org/html/2311.06899v6",
+          "artifact_version": "arXiv:2311.06899v6",
+          "exact_locator": "Author/affiliation block, HTML L67–68; §3.3 L191; §4.3 L231",
+          "evidence_status": "directly_inspected"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC08",
+      "case_kind": "synthetic_rejection",
+      "label": "Cross-version trend",
+      "source_assertion_ids": [
+        "LS-A04",
+        "LS-A09",
+        "LS-A15"
+      ],
+      "input": {
+        "target_label_v1": "DeepSeek-R1-0528",
+        "overall_v251030": 76.9,
+        "target_label_v2": "DeepSeek/DeepSeek-R1-0528*",
+        "overall_v251215": 62.43
+      },
+      "proposed_operation": "Report the displayed difference as model safety regression.",
+      "expected_disposition": "Reject the trend interpretation; retain version-scoped scores and require LS-COMP02 bridge evidence.",
+      "evidence": [
+        {
+          "artifact_id": "LS-P1",
+          "artifact_url": "https://arxiv.org/html/2511.02366v1",
+          "artifact_version": "arXiv:2511.02366v1; benchmark label v251030",
+          "exact_locator": "Table 1, DeepSeek-R1-0528 row; PDF page 4",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "LS-P2",
+          "artifact_url": "https://arxiv.org/html/2511.02366v2",
+          "artifact_version": "arXiv:2511.02366v2; benchmark label v251215",
+          "exact_locator": "Table 1, rank 15 row and caption",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "LS-P1",
+          "artifact_url": "https://arxiv.org/html/2511.02366v1",
+          "artifact_version": "arXiv:2511.02366v1; benchmark label v251030",
+          "exact_locator": "v1 section 2.1 and Table 1",
+          "evidence_status": "inference"
+        },
+        {
+          "artifact_id": "LS-P2",
+          "artifact_url": "https://arxiv.org/html/2511.02366v2",
+          "artifact_version": "arXiv:2511.02366v2; benchmark label v251215",
+          "exact_locator": "v2 sections 4.1 and 5.1, Tables 1-2",
+          "evidence_status": "inference"
+        },
+        {
+          "artifact_id": "LS-L1",
+          "artifact_url": "https://livesecbench.intokentech.cn/",
+          "artifact_version": "Mutable landing page; displayed March 2026 edition; observed 2026-10-08",
+          "exact_locator": "Landing page edition/dimensions",
+          "evidence_status": "inference"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC09",
+      "case_kind": "inspected_consistency_flag",
+      "label": "FLAMES integer-denominator incompatibility",
+      "source_assertion_ids": [
+        "F003",
+        "F005",
+        "F006",
+        "F007"
+      ],
+      "input": {
+        "model": "ChatGPT",
+        "dimension": "Data protection",
+        "declared_n": 75,
+        "reported_rate_percent": 55.26
+      },
+      "proposed_operation": "Check whether ordinary two-decimal rounding can produce the rate from an integer harmless count over the declared N.",
+      "expected_disposition": "Flag incompatible claims. Do not silently replace N by a guessed value or rewrite the rate.",
+      "evidence": [
+        {
+          "artifact_id": "FLAMES-PAPER-V6",
+          "artifact_url": "https://arxiv.org/html/2311.06899v6",
+          "artifact_version": "arXiv:2311.06899v6",
+          "exact_locator": "§4.1, 'Prompts for evaluation'; §4.3 first sentence after Table 4; HTML lines 198–200 and 231",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "FLAMES-PAPER-V6",
+          "artifact_url": "https://arxiv.org/html/2311.06899v6",
+          "artifact_version": "arXiv:2311.06899v6",
+          "exact_locator": "§4.2, equations (1)–(2) and following sentence; HTML lines 203–209",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "FLAMES-PAPER-V6",
+          "artifact_url": "https://arxiv.org/html/2311.06899v6",
+          "artifact_version": "arXiv:2311.06899v6",
+          "exact_locator": "Table 4, ChatGPT row, Fairness and Data protection columns; HTML line 212",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "FLAMES-PAPER-V6",
+          "artifact_url": "https://arxiv.org/html/2311.06899v6",
+          "artifact_version": "arXiv:2311.06899v6",
+          "exact_locator": "§4.1 Prompts for evaluation; §4.2 Eq. (1); Table 4, ChatGPT × Data protection",
+          "evidence_status": "inference"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC10",
+      "case_kind": "inspected_example",
+      "label": "Scoped SuperCLUE judge validation",
+      "source_assertion_ids": [
+        "ZHS006-A3"
+      ],
+      "input": {
+        "target": "Chinese-Alpaca-2-13B",
+        "human_raters": 3,
+        "exact_agreement": 0.77,
+        "within_one_agreement": 0.85,
+        "validation_n": null
+      },
+      "proposed_operation": "Retain the reported agreement with its model, majority-vote protocol and unknown validation N.",
+      "expected_disposition": "Accept the attributed, limited claim; no universal validity or sample-size-dependent precision.",
+      "evidence": [
+        {
+          "artifact_id": "ZHS006-paper-v1",
+          "artifact_url": "https://arxiv.org/html/2310.05818v1",
+          "artifact_version": "2310.05818v1",
+          "exact_locator": "Section 2, Automated vs. Human Assessment Consistency; HTML L190-L205; PDF pp4-5 L241-L302; Table 1",
+          "evidence_status": "directly_inspected"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC11",
+      "case_kind": "synthetic_rejection",
+      "label": "Unproved rubric crosswalk",
+      "source_assertion_ids": [
+        "ZHS006-A4"
+      ],
+      "input": {
+        "validation_scale": [
+          1,
+          2,
+          3
+        ],
+        "assessment_scale": [
+          0,
+          1,
+          2
+        ]
+      },
+      "proposed_operation": "Subtract one from the validation scores and claim the result validates the assessment rubric.",
+      "expected_disposition": "Reject; risk severity and safe-answer informativeness are different category meanings.",
+      "evidence": [
+        {
+          "artifact_id": "ZHS006-paper-v1",
+          "artifact_url": "https://arxiv.org/html/2310.05818v1",
+          "artifact_version": "2310.05818v1",
+          "exact_locator": "Section 2, Automated vs. Human Assessment Consistency versus Assessment Methodology; HTML L193 and L208-L221; PDF pp4-5 L245-L247 and L303-L314",
+          "evidence_status": "directly_inspected"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC12",
+      "case_kind": "inspected_consistency_flag",
+      "label": "SuperCLUE printed arithmetic",
+      "source_assertion_ids": [
+        "ZHS006-A7"
+      ],
+      "input": {
+        "model": "Xinghuo4.0",
+        "round_1": 85.6,
+        "round_2": 88.36,
+        "printed_difference": -1.24
+      },
+      "proposed_operation": "Interpret the printed difference as round_2 minus round_1.",
+      "expected_disposition": "Flag inconsistency: arithmetic gives +2.76. Preserve all printed cells pending author clarification.",
+      "evidence": [
+        {
+          "artifact_id": "ZHS006-paper-v1",
+          "artifact_url": "https://arxiv.org/html/2310.05818v1",
+          "artifact_version": "2310.05818v1",
+          "exact_locator": "Table 4, Xinghuo4.0 row; HTML L250; PDF p6 L380; screenshot turn13view2",
+          "evidence_status": "directly_inspected"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC13",
+      "case_kind": "inspected_example",
+      "label": "Reasoning exclusion from Overall",
+      "source_assertion_ids": [
+        "LS-A02",
+        "LS-A04"
+      ],
+      "input": {
+        "paper": "LS-P1",
+        "model": "DeepSeek-R1-0528",
+        "overall": 76.9,
+        "reasoning": 47.27
+      },
+      "proposed_operation": "Treat Reasoning as a separately reported dimension excluded from the source Overall.",
+      "expected_disposition": "Accept the source-defined distinction; do not substitute a six-dimension average.",
+      "evidence": [
+        {
+          "artifact_id": "LS-P1",
+          "artifact_url": "https://arxiv.org/html/2511.02366v1",
+          "artifact_version": "arXiv:2511.02366v1; benchmark label v251030",
+          "exact_locator": "Section 2.1; Figure 1 caption; Table 1 caption",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "LS-P1",
+          "artifact_url": "https://arxiv.org/html/2511.02366v1",
+          "artifact_version": "arXiv:2511.02366v1; benchmark label v251030",
+          "exact_locator": "Table 1, DeepSeek-R1-0528 row; PDF page 4",
+          "evidence_status": "directly_inspected"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC14",
+      "case_kind": "inspected_consistency_flag",
+      "label": "LiveSecBench five/six-round conflict",
+      "source_assertion_ids": [
+        "LS-A07",
+        "LS-A14"
+      ],
+      "input": {
+        "paper": "LS-P2",
+        "section_3_2_rounds": 5,
+        "section_5_1_rounds": 6
+      },
+      "proposed_operation": "Choose one as the canonical protocol using the current guide default.",
+      "expected_disposition": "Hold canonical protocol; retain both passages. A current example is not a historical erratum.",
+      "evidence": [
+        {
+          "artifact_id": "LS-P2",
+          "artifact_url": "https://arxiv.org/html/2511.02366v2",
+          "artifact_version": "arXiv:2511.02366v2; benchmark label v251215",
+          "exact_locator": "Section 3.2 versus section 5.1",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "LS-S2",
+          "artifact_url": "https://github.com/ydli-ai/LiveSecBench/blob/main/docs/USER_GUIDE.md",
+          "artifact_version": "Rendered main snapshot observed 2026-10-08; exact commit not exposed",
+          "exact_locator": "Opening paragraph; sections 2.1, 2.4-2.8 and 4.1-4.4",
+          "evidence_status": "directly_inspected"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC15",
+      "case_kind": "inspected_example",
+      "label": "Questions, battles and validation samples",
+      "source_assertion_ids": [
+        "LS-A06",
+        "LS-A08"
+      ],
+      "input": {
+        "paper": "LS-P2",
+        "unique_questions": 852,
+        "pairwise_battles": 23005,
+        "validation_battles": 200
+      },
+      "proposed_operation": "Store these as three different populations, with model-answer totals unresolved.",
+      "expected_disposition": "Accept source-reported counts under separate units; prohibit denominator substitution.",
+      "evidence": [
+        {
+          "artifact_id": "LS-P2",
+          "artifact_url": "https://arxiv.org/html/2511.02366v2",
+          "artifact_version": "arXiv:2511.02366v2; benchmark label v251215",
+          "exact_locator": "Abstract; Table 1 caption; section 5.1 and Table 2",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "LS-P2",
+          "artifact_url": "https://arxiv.org/html/2511.02366v2",
+          "artifact_version": "arXiv:2511.02366v2; benchmark label v251215",
+          "exact_locator": "Section 5.1, sentence following DeepSeek-V3.2 judge statement",
+          "evidence_status": "directly_inspected"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC16",
+      "case_kind": "inspected_consistency_flag",
+      "label": "Battle-participation ambiguity",
+      "source_assertion_ids": [
+        "LS-A06",
+        "LS-A10"
+      ],
+      "input": {
+        "pairwise_battles": 23005,
+        "models": 57,
+        "reported_avg_per_model": 403.6
+      },
+      "proposed_operation": "Use the reported average as independently verified participation exposure.",
+      "expected_disposition": "Hold derived exposure. Under two evaluated sides per battle, participation counting differs from battles/models; require author count conventions.",
+      "evidence": [
+        {
+          "artifact_id": "LS-P2",
+          "artifact_url": "https://arxiv.org/html/2511.02366v2",
+          "artifact_version": "arXiv:2511.02366v2; benchmark label v251215",
+          "exact_locator": "Abstract; Table 1 caption; section 5.1 and Table 2",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "LS-P2",
+          "artifact_url": "https://arxiv.org/html/2511.02366v2",
+          "artifact_version": "arXiv:2511.02366v2; benchmark label v251215",
+          "exact_locator": "Table 2 total row and caption",
+          "evidence_status": "inference"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC17",
+      "case_kind": "synthetic_rejection",
+      "label": "Loading-state substitution",
+      "source_assertion_ids": [
+        "LS-A12"
+      ],
+      "input": {
+        "artifact": "LS-L1",
+        "score_area": "加载榜单数据中...",
+        "english_gloss": "Loading leaderboard data..."
+      },
+      "proposed_operation": "Interpret loading text as a zero-row result export that replaces the papers.",
+      "expected_disposition": "Reject; score rows were not retrieved. Preserve the displayed edition as a distinct advertised regime.",
+      "evidence": [
+        {
+          "artifact_id": "LS-L1",
+          "artifact_url": "https://livesecbench.intokentech.cn/",
+          "artifact_version": "Mutable landing page; displayed March 2026 edition; observed 2026-10-08",
+          "exact_locator": "Edition label; 核心特色与测评维度, four numbered items; score-loading area; 测评说明",
+          "evidence_status": "directly_inspected"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC18",
+      "case_kind": "synthetic_rejection",
+      "label": "Revision classification from an announcement",
+      "source_assertion_ids": [
+        "ZHS006-A9"
+      ],
+      "input": {
+        "revision_evidence": "user-supplied category swaps; before/after history uninspected"
+      },
+      "proposed_operation": "Classify every change as a correction, new evaluation or mixture from an unchanged announcement alone.",
+      "expected_disposition": "Hold classification; require versioned row-level history and run/correction provenance.",
+      "evidence": [
+        {
+          "artifact_id": "ZHS006-readme-pin",
+          "artifact_url": "https://github.com/CLUEbenchmark/SuperCLUE-Safety/blob/3b9789520c13fdcdfb7ba5326b1c741e2459305e/README.md",
+          "artifact_version": "3b9789520c13fdcdfb7ba5326b1c741e2459305e",
+          "exact_locator": null,
+          "evidence_status": "supplied_context"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC19",
+      "case_kind": "synthetic_rejection",
+      "label": "Checkpoint merge from labels",
+      "source_assertion_ids": [
+        "F008",
+        "F011",
+        "F012"
+      ],
+      "input": {
+        "v1_label": "InternLM-7B",
+        "v6_label": "InternLM-Chat-7B",
+        "checkpoint_equivalence": null
+      },
+      "proposed_operation": "Merge the labels as one verified checkpoint.",
+      "expected_disposition": "Reject equivalence until an author-controlled model manifest resolves the labels and exact snapshots.",
+      "evidence": [
+        {
+          "artifact_id": "FLAMES-PAPER-V6",
+          "artifact_url": "https://arxiv.org/html/2311.06899v6",
+          "artifact_version": "arXiv:2311.06899v6",
+          "exact_locator": "Table 4, Model column; HTML lines 212–228",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "FLAMES-PAPER-V1",
+          "artifact_url": "https://arxiv.org/html/2311.06899v1",
+          "artifact_version": "arXiv:2311.06899v1",
+          "exact_locator": "§5.1 'Prompts for testing'; Table 4 and §5.3 first sentence; HTML lines 197 and 208–222",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "FLAMES-PAPER-V1",
+          "artifact_url": "https://arxiv.org/html/2311.06899v1",
+          "artifact_version": "arXiv:2311.06899v1",
+          "exact_locator": "v1 Table 4 Claude row/Overall, HTML line 211; v6 Table 4 Claude row/Overall, HTML line 214; respective §5.1/§4.1",
+          "evidence_status": "mixed"
+        },
+        {
+          "artifact_id": "FLAMES-PAPER-V6",
+          "artifact_url": "https://arxiv.org/html/2311.06899v6",
+          "artifact_version": "arXiv:2311.06899v6",
+          "exact_locator": "v1 Table 4 Claude row/Overall, HTML line 211; v6 Table 4 Claude row/Overall, HTML line 214; respective §5.1/§4.1",
+          "evidence_status": "mixed"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    },
+    {
+      "case_id": "AC20",
+      "case_kind": "synthetic_rejection",
+      "label": "Software-to-data rights inheritance",
+      "source_assertion_ids": [
+        "LS-A13"
+      ],
+      "input": {
+        "repository_license_label": "Apache-2.0 license",
+        "historical_results_license": null
+      },
+      "proposed_operation": "Apply the software license label to historical leaderboard export rights.",
+      "expected_disposition": "Reject inheritance; require an applicable declaration identifying the results artifact/version.",
+      "evidence": [
+        {
+          "artifact_id": "LS-S1",
+          "artifact_url": "https://github.com/ydli-ai/LiveSecBench",
+          "artifact_version": "Rendered main README snapshot observed 2026-10-08; exact commit not exposed",
+          "exact_locator": "配置概览; 结果产出; 排行榜与文档",
+          "evidence_status": "directly_inspected"
+        },
+        {
+          "artifact_id": "LS-S1",
+          "artifact_url": "https://github.com/ydli-ai/LiveSecBench",
+          "artifact_version": "Rendered main README snapshot observed 2026-10-08; exact commit not exposed",
+          "exact_locator": "Repository Resources; HTML L148 and L387",
+          "evidence_status": "directly_inspected"
+        }
+      ],
+      "execution_status": "not_executed",
+      "review_type": "manual acceptance specification and reasoning only"
+    }
+  ],
+  "current_probe_separation": "Any new offline structural or arithmetic checks are separately recorded. They do not execute these semantic acceptance specifications or the original study."
+}

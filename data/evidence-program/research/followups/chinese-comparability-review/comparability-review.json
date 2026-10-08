@@ -1,0 +1,436 @@
+{
+  "original_count": 18,
+  "original_decisions": [
+    {
+      "comparison_id": "FC1",
+      "source_id": "ZHS001",
+      "proposed_comparison": "Interpret v6 Table 4 by its stated population and metrics",
+      "verdict": "limited_descriptive_use_with_conflict_flag",
+      "evidence_needed_to_change_hold": [
+        "Author correction or versioned aggregate count manifest resolving the n=75/rate conflict",
+        "Per-model item inclusion/missing-answer policy and aggregation rule"
+      ],
+      "qualification": {
+        "survives": "Source-reported within-version values with exact labels, separate rate/score, human judge and declared category counts.",
+        "hold": "Actual count reconstruction, uncertainty estimates or data-protection count-based comparisons."
+      },
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "FC2",
+      "source_id": "ZHS001",
+      "proposed_comparison": "Bind inaccessible pinned README table to v6 paper Table 4",
+      "verdict": "hold",
+      "evidence_needed_to_change_hold": [
+        "Accessible pinned README or authenticated author export at that exact commit",
+        "Evidence that table values, model identities, prompt population, human rubric and evaluation interval refer to the same run"
+      ],
+      "qualification": {},
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "FC3",
+      "source_id": "ZHS001",
+      "proposed_comparison": "Compare v1 and v6 same-looking model labels as a time trend",
+      "verdict": "hold",
+      "evidence_needed_to_change_hold": [
+        "Versioned prompt-ID/category overlap or corrected aggregate denominator crosswalk",
+        "Author statement distinguishing corrected cells, added evaluations and re-runs",
+        "Same checkpoint/service snapshot or explicit identity history",
+        "Actual response-generation/annotation dates",
+        "Compatible rubric and generation protocol, or an author-supplied bridge evaluated on common items"
+      ],
+      "qualification": {},
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "FC4",
+      "source_id": "ZHS001",
+      "proposed_comparison": "Use public scorer results interchangeably with historical human results",
+      "verdict": "hold",
+      "evidence_needed_to_change_hold": [
+        "Released scorer checkpoint/version tied to the paper",
+        "Common-item calibration against the historical human labels with known populations",
+        "Explicit scoring/run provenance for each result row"
+      ],
+      "qualification": {},
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "FC5",
+      "source_id": "ZHS001",
+      "proposed_comparison": "Treat publisher/mirror/affiliation difference as evaluator independence",
+      "verdict": "reject_inference",
+      "evidence_needed_to_change_hold": [
+        "Evidence of a distinct evaluation run, evaluator organization and model-developer relationship, protocol and result lineage",
+        "A republication alone cannot lift this rejection"
+      ],
+      "qualification": {},
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "FC6",
+      "source_id": "ZHS001",
+      "proposed_comparison": "Infer exact checkpoint equivalence from InternLM/ChatYuan relabeling",
+      "verdict": "hold",
+      "evidence_needed_to_change_hold": [
+        "Author-controlled model manifest mapping both labels to identical weight hash or stable provider snapshot",
+        "Collection date and inference settings for each row"
+      ],
+      "qualification": {},
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "ZHS006-C1",
+      "source_id": "ZHS006",
+      "proposed_comparison": "Use 2,456 dialogues or 4,912 turns as the scored denominator for the historical tables",
+      "verdict": "hold",
+      "evidence_needed_to_change_hold": [
+        "Author correction identifying intended question and pair totals",
+        "Versioned table/run manifest giving per-model dialogue/turn/generated-answer/judged-answer totals and exclusions",
+        "Scoring denominator and missing-output policy"
+      ],
+      "qualification": {
+        "reason": "Pair semantics are interpretable; total-count conflict and actual scored population remain unbound."
+      },
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "ZHS006-C2",
+      "source_id": "ZHS006",
+      "proposed_comparison": "Treat March 2024 change as a safety trend or classify the whole update as correction/addition",
+      "verdict": "hold",
+      "evidence_needed_to_change_hold": [
+        "Accessible author-controlled before/after diff with parent/revised commits",
+        "Row-level correction/addition statements",
+        "Model/checkpoint, evaluation date, dataset and judge/protocol metadata for changed rows"
+      ],
+      "qualification": {
+        "reason": "Relevant GitHub contents/history were blocked; reported category swaps do not by themselves classify every change or date a run."
+      },
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "ZHS006-C3",
+      "source_id": "ZHS006",
+      "proposed_comparison": "Report 77% exact and 85% within-one agreement as the paper's scoped validation",
+      "verdict": "allow_as_attributed_scoped_claim",
+      "evidence_needed_to_change_hold": null,
+      "qualification": {
+        "reason": "Model, human aggregation, rating scale and reported agreement are located; preserve unknown N and judge identity.",
+        "prohibited_extension": "Universal judge validity, precision estimates, significance, or validation of another rubric/model/version."
+      },
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "ZHS006-C4",
+      "source_id": "ZHS006",
+      "proposed_comparison": "Use validation agreement to certify all leaderboard scores",
+      "verdict": "hold",
+      "evidence_needed_to_change_hold": [
+        "Validation sample manifest and Ns by model/category/turn",
+        "Judge identity, version, prompt and sampling settings",
+        "Human annotation protocol and tie resolution",
+        "Explicit link between validation rubric and table scoring rubric",
+        "Evidence covering the proposed broader population"
+      ],
+      "qualification": {
+        "reason": "Single selected model, unknown validation population, and unlinked rubrics."
+      },
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "ZHS006-C5",
+      "source_id": "ZHS006",
+      "proposed_comparison": "Interpret within-paper initial-versus-follow-up scores as a dated model regression",
+      "verdict": "reject_time_trend; allow_only_source_attributed_turn_comparison_when_arithmetic_consistent",
+      "evidence_needed_to_change_hold": [
+        "For arithmetic flags, an author correction or run record",
+        "For longitudinal comparison, separately dated runs with matched populations, protocol, judge and identified checkpoints"
+      ],
+      "qualification": {
+        "reason": "Turns are conversational conditions, not time points; inconsistent rows additionally require quarantine."
+      },
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "LS-COMP01",
+      "source_id": "ZHS004",
+      "proposed_comparison": "Values and source ordering inside a single published Table 1",
+      "verdict": "Allow descriptive, version-qualified reporting only",
+      "evidence_needed_to_change_hold": [
+        "For stronger performance comparisons: release-bound population and completed-answer counts, judge protocol, normalization/aggregation, pairing metadata and uncertainty analysis."
+      ],
+      "qualification": {
+        "limits": "Do not infer population safety rates, effect significance, universal ranking, or external replication. V1 cohort conflict and unknown judge remain attached."
+      },
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "LS-COMP02",
+      "source_id": "ZHS004",
+      "proposed_comparison": "DeepSeek-R1-0528 Overall 76.90 in v251030 versus 62.43 in v251215",
+      "verdict": "Hold trend/regression interpretation; retain both reported values",
+      "evidence_needed_to_change_hold": [
+        "Author-controlled versioned run manifests specifying question-set hashes and counts, dimension crosswalk/weights, judge snapshot and instruction hashes, target checkpoints/endpoints and inference settings, run dates, pairings/order, rating/normalization parameters, plus an explicit common-anchor or paired-protocol bridge. A shared model display name alone cannot lift this hold."
+      ],
+      "qualification": {
+        "reasons": [
+          "Dimensions changed",
+          "Question overlap unknown",
+          "Opponent cohort changed",
+          "Judge version not linked across runs",
+          "Normalization/weights unbound",
+          "Actual target identities and evaluation periods unbound"
+        ]
+      },
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "LS-COMP03",
+      "source_id": "ZHS004",
+      "proposed_comparison": "Privacy scores across paper versions, or Factuality relabeled Truthfulness",
+      "verdict": "Hold quantitative equivalence",
+      "evidence_needed_to_change_hold": [
+        "Author-verified domain definition/item-population mapping and a common judge/scoring/calibration design. Shared or similar dimension wording is insufficient."
+      ],
+      "qualification": {},
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "LS-COMP04",
+      "source_id": "ZHS004",
+      "proposed_comparison": "v251215 results versus the March 2026 landing page",
+      "verdict": "Allow a documented taxonomy change; hold result comparison",
+      "evidence_needed_to_change_hold": [
+        "Officially linked versioned March results and metadata tying each value to its population, metric, judge, model identity and dates; then the same bridge requirements as LS-COMP02. Loading text is not an export."
+      ],
+      "qualification": {},
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "LS-COMP05",
+      "source_id": "ZHS004",
+      "proposed_comparison": "V2 Avg. per Model as actual mean battle participation exposure",
+      "verdict": "Hold derived exposure use; preserve source value",
+      "evidence_needed_to_change_hold": [
+        "Author clarification or erratum defining battle events versus model-side counts and explaining byes/missing comparisons."
+      ],
+      "qualification": {},
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "LS-COMP06",
+      "source_id": "ZHS004",
+      "proposed_comparison": "V2 judge agreement generalized beyond the sampled battle population",
+      "verdict": "Retain 98.5% on 200; hold transfer claims",
+      "evidence_needed_to_change_hold": [
+        "Validation sampling frame, model/dimension allocation, human protocol and blinded/adjudicated replication under the intended target setting."
+      ],
+      "qualification": {},
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "CROSS-FAMILY-01",
+      "source_ids": [
+        "ZHS001",
+        "ZHS006",
+        "ZHS004"
+      ],
+      "proposed_comparison": "Pool the three families into a common safety score or directly compare their numeric levels.",
+      "verdict": "hold_construct_and_scale_equivalence",
+      "evidence_needed_to_change_hold": [
+        "A specified common estimand and documented domain/population mapping.",
+        "A versioned bridge on identified targets and common anchors with compatible judges, protocols and dates.",
+        "A demonstrated calibration between categorical harmlessness, graded response quality and cohort-dependent tournament scores."
+      ],
+      "qualification": "The shared ledger supplies provenance fields; it does not make the measurements interchangeable.",
+      "operational_admission": false
+    }
+  ],
+  "current_decisions": [
+    {
+      "comparison_id": "FC1",
+      "current_disposition": "limited_descriptive_use_with_conflict_flag",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": [
+        "Author correction or versioned aggregate count manifest resolving the n=75/rate conflict",
+        "Per-model item inclusion/missing-answer policy and aggregation rule"
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "FC2",
+      "current_disposition": "hold",
+      "review_note": "Historical catalog facts survive failed reread, but matching table shape alone is insufficient to bind the original README to paper run provenance.",
+      "evidence_needed_to_change_hold": [
+        "Accessible pinned README or authenticated author export at that exact commit",
+        "Evidence that table values, model identities, prompt population, human rubric and evaluation interval refer to the same run"
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "FC3",
+      "current_disposition": "hold",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": [
+        "Versioned prompt-ID/category overlap or corrected aggregate denominator crosswalk",
+        "Author statement distinguishing corrected cells, added evaluations and re-runs",
+        "Same checkpoint/service snapshot or explicit identity history",
+        "Actual response-generation/annotation dates",
+        "Compatible rubric and generation protocol, or an author-supplied bridge evaluated on common items"
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "FC4",
+      "current_disposition": "hold",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": [
+        "Released scorer checkpoint/version tied to the paper",
+        "Common-item calibration against the historical human labels with known populations",
+        "Explicit scoring/run provenance for each result row"
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "FC5",
+      "current_disposition": "reject_inference",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": [
+        "Evidence of a distinct evaluation run, evaluator organization and model-developer relationship, protocol and result lineage",
+        "A republication alone cannot lift this rejection"
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "FC6",
+      "current_disposition": "hold",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": [
+        "Author-controlled model manifest mapping both labels to identical weight hash or stable provider snapshot",
+        "Collection date and inference settings for each row"
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "ZHS006-C1",
+      "current_disposition": "hold",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": [
+        "Author correction identifying intended question and pair totals",
+        "Versioned table/run manifest giving per-model dialogue/turn/generated-answer/judged-answer totals and exclusions",
+        "Scoring denominator and missing-output policy"
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "ZHS006-C2",
+      "current_disposition": "hold",
+      "review_note": "Prior catalog records both row additions and category swaps. Preserve that structural fact; whole-revision correction/additional-run classification and date attribution remain held.",
+      "evidence_needed_to_change_hold": [
+        "Accessible author-controlled before/after diff with parent/revised commits",
+        "Row-level correction/addition statements",
+        "Model/checkpoint, evaluation date, dataset and judge/protocol metadata for changed rows"
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "ZHS006-C3",
+      "current_disposition": "allow_as_attributed_scoped_claim",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": null,
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "ZHS006-C4",
+      "current_disposition": "hold",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": [
+        "Validation sample manifest and Ns by model/category/turn",
+        "Judge identity, version, prompt and sampling settings",
+        "Human annotation protocol and tie resolution",
+        "Explicit link between validation rubric and table scoring rubric",
+        "Evidence covering the proposed broader population"
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "ZHS006-C5",
+      "current_disposition": "reject_time_trend; allow_only_source_attributed_turn_comparison_when_arithmetic_consistent",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": [
+        "For arithmetic flags, an author correction or run record",
+        "For longitudinal comparison, separately dated runs with matched populations, protocol, judge and identified checkpoints"
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "LS-COMP01",
+      "current_disposition": "Allow descriptive, version-qualified reporting only",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": [
+        "For stronger performance comparisons: release-bound population and completed-answer counts, judge protocol, normalization/aggregation, pairing metadata and uncertainty analysis."
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "LS-COMP02",
+      "current_disposition": "Hold trend/regression interpretation; retain both reported values",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": [
+        "Author-controlled versioned run manifests specifying question-set hashes and counts, dimension crosswalk/weights, judge snapshot and instruction hashes, target checkpoints/endpoints and inference settings, run dates, pairings/order, rating/normalization parameters, plus an explicit common-anchor or paired-protocol bridge. A shared model display name alone cannot lift this hold."
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "LS-COMP03",
+      "current_disposition": "Hold quantitative equivalence",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": [
+        "Author-verified domain definition/item-population mapping and a common judge/scoring/calibration design. Shared or similar dimension wording is insufficient."
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "LS-COMP04",
+      "current_disposition": "Allow a documented taxonomy change; hold result comparison",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": [
+        "Officially linked versioned March results and metadata tying each value to its population, metric, judge, model identity and dates; then the same bridge requirements as LS-COMP02. Loading text is not an export."
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "LS-COMP05",
+      "current_disposition": "Hold derived exposure use; preserve source value",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": [
+        "Author clarification or erratum defining battle events versus model-side counts and explaining byes/missing comparisons."
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "LS-COMP06",
+      "current_disposition": "Retain 98.5% on 200; hold transfer claims",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": [
+        "Validation sampling frame, model/dimension allocation, human protocol and blinded/adjudicated replication under the intended target setting."
+      ],
+      "operational_admission": false
+    },
+    {
+      "comparison_id": "CROSS-FAMILY-01",
+      "current_disposition": "hold_construct_and_scale_equivalence",
+      "review_note": "Original qualified disposition retained; no source reread supplies a cross-run or cross-family bridge.",
+      "evidence_needed_to_change_hold": [
+        "A specified common estimand and documented domain/population mapping.",
+        "A versioned bridge on identified targets and common anchors with compatible judges, protocols and dates.",
+        "A demonstrated calibration between categorical harmlessness, graded response quality and cohort-dependent tournament scores."
+      ],
+      "operational_admission": false
+    }
+  ],
+  "cross_family_numeric_synthesis_authorized": false,
+  "catastrophe_probability_inference": false
+}

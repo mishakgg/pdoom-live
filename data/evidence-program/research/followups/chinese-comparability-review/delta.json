@@ -1,0 +1,152 @@
+{
+  "review_version": "1.0",
+  "batch": "F",
+  "session": "Deep Session 5",
+  "reviewed_on": "2026-10-08",
+  "repository_commit": "246f746e3a267363c7f6d2e0494eb72fb4c98bc9",
+  "operational_admission": false,
+  "collector_enabled": false,
+  "repository_mutations": false,
+  "original_baseline_inspected": false,
+  "submitted_evidence_counts": {
+    "artifacts": 15,
+    "assertions": 40,
+    "lineage_edges": 17,
+    "comparability_decisions": 18,
+    "acceptance_cases": 20,
+    "rights_ledger": 9
+  },
+  "changes": [
+    {
+      "delta_id": "F-D01",
+      "classification": "current_repository_context_added",
+      "targets": [
+        "repository_context"
+      ],
+      "change": "Current 246f746e repository files and schema blobs verified before local reuse. Original supplied 87dda3d remains uninspected in its historical submission. Actual mapping is separate from the original source-native ledger.",
+      "evidence": [
+        "repository-files-manifest.json",
+        "contract-work/contract-mapping.json"
+      ]
+    },
+    {
+      "delta_id": "F-D02",
+      "classification": "historical_evidence_reconciled_not_erased",
+      "targets": [
+        "F001",
+        "F013",
+        "ZHS006-A8",
+        "ZHS006-A9",
+        "R-F-PIN"
+      ],
+      "change": "Preserve earlier catalog scoped FLAMES Apache declaration and SuperCLUE count/revision facts alongside session-specific failed access. Neither makes previously unseen original bytes currently verified.",
+      "evidence": [
+        "prior-catalog-preservation.json"
+      ]
+    },
+    {
+      "delta_id": "F-D03",
+      "classification": "fresh_document_pin_added",
+      "targets": [
+        "LS-S1",
+        "LS-S2",
+        "LS-A13",
+        "LS-A14",
+        "ZHS004-E07"
+      ],
+      "change": "Fresh two-document bytes bind to exact current LiveSec commit and blobs. Do not backdate this pin to submitted snapshots or use software examples as historical run manifests.",
+      "evidence": [
+        "inspection/livesec-git-binding.json",
+        "primary-verification.json"
+      ]
+    },
+    {
+      "delta_id": "F-D04",
+      "classification": "source_claims_verified_holds_retained",
+      "targets": [
+        "F002",
+        "F003",
+        "F004",
+        "F005",
+        "F006",
+        "F007",
+        "F008",
+        "F009",
+        "F010",
+        "F011",
+        "F012",
+        "F013",
+        "F014",
+        "F015",
+        "ZHS006-A1",
+        "ZHS006-A2",
+        "ZHS006-A3",
+        "ZHS006-A4",
+        "ZHS006-A5",
+        "ZHS006-A6",
+        "ZHS006-A7",
+        "ZHS006-A10",
+        "LS-A01",
+        "LS-A02",
+        "LS-A03",
+        "LS-A04",
+        "LS-A05",
+        "LS-A06",
+        "LS-A07",
+        "LS-A08",
+        "LS-A09",
+        "LS-A10",
+        "LS-A11",
+        "LS-A12",
+        "LS-A13",
+        "LS-A14",
+        "LS-A15"
+      ],
+      "change": "Paper semantics, values and original conflicts are retained with source authority and original scope. Exact run identities, dates, denominators and comparison bridges remain open.",
+      "evidence": [
+        "assertion-review.json",
+        "comparability-review.json"
+      ]
+    },
+    {
+      "delta_id": "F-D05",
+      "classification": "test_scope_separated",
+      "targets": [
+        "AC01",
+        "AC02",
+        "AC03",
+        "AC04",
+        "AC05",
+        "AC06",
+        "AC07",
+        "AC08",
+        "AC09",
+        "AC10",
+        "AC11",
+        "AC12",
+        "AC13",
+        "AC14",
+        "AC15",
+        "AC16",
+        "AC17",
+        "AC18",
+        "AC19",
+        "AC20"
+      ],
+      "change": "All 20 submitted cases remain not_executed. New schema probes and arithmetic are separately labeled and cannot imply full semantic acceptance.",
+      "evidence": [
+        "acceptance-cases.json",
+        "arithmetic-review.json",
+        "contract-work/schema-probe-results.json"
+      ]
+    }
+  ],
+  "current_held_fields": [
+    "FLAMES historical README/paper run linkage and category denominator conflict",
+    "SuperCLUE actual scored dialogue/turn/answer totals, rubric/judge linkage and row-level revision reasons",
+    "LiveSec historical judge/model snapshots, rounds conflict, exposure units, weights/normalization and release bridge",
+    "Actual generation and annotation dates for all evaluated rows",
+    "Artifact-specific export/data rights",
+    "Operational adapter and admission authorization"
+  ]
+}
