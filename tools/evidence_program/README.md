@@ -120,3 +120,11 @@ The [synthetic fixture notice](tests/fixtures/training-data/NOTICE.md) explains 
 [check_training_data_feedback.py](check_training_data_feedback.py) checks the five-source catalog, source-specific metadata fingerprints, 45 overlap cells across nine prior catalogs, rights/identity guards, completed work and remaining holds. Fingerprints protect reviewed documentary content from unnoticed changes; they do not establish truth or permission. No corpus, page content, source execution, model training, live collection, canonical admission or universal stock estimate is produced.
 
 Commands: `python -m unittest discover -s tools/evidence_program/tests -p "test_training_data*.py"` and `python tools/evidence_program/check.py`. The [guide](../../docs/evidence-program/research/training-data-feedback.md) gives exact source pins, local/synthetic CLI commands and six bounded standalone follow-up prompts.
+
+## Human-reliance research checks
+
+[check_human_reliance.py](check_human_reliance.py) validates five unadmitted families, exact earlier-catalog identities and source/rights/interpretation holds. [validate_okamura_summary.py](validate_okamura_summary.py) checks the [manually curated paper ledger](../../data/evidence-program/research/okamura-aggregate-ledger.json): seven aggregate counts, five completer group counts and denominator arithmetic. It does not extract a publication or reproduce participant data.
+
+[decode_okamura_decisions.py](decode_okamura_decisions.py) is a pure in-memory synthetic-only prototype using a provisional bit convention inferred from earlier research descriptions; the current workbook dictionary is unverified. Zero/blank, bounded inputs, duplicate ephemeral row keys, raw-flag semantics and separate excluded-population accounting have negative tests. It neither reads XLSX nor accepts real source data. Paper aggregates do not establish the bit mapping; workbook acquisition/acceptance stays held.
+
+Run `python -m unittest discover -s tools/evidence_program/tests -p 'test_human_reliance*.py' -v` or the aggregate command. No source CSV/XLSX, source-script execution, participant output, clinical decision tool, collector or canonical import is enabled. See the [guide](../../docs/evidence-program/research/human-reliance.md) for explicit completed/proposed/blocked work.

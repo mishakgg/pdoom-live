@@ -407,6 +407,7 @@ def run(base_paths=None):
     from check_adoption_productivity import check_catalog as check_adoption_catalog
     from check_organizational_safety import check_catalog as check_organizational_catalog
     from check_research_queue import check_queue
+    from check_human_reliance import check_catalog as check_human_reliance_catalog, check_aggregate_ledger as check_human_reliance_ledger
     from check_training_data_feedback import check_catalog as check_training_catalog, check_reader_fixtures as check_training_fixtures
     from check_open_model_diffusion import check_catalog as check_open_model_catalog
     from check_concentration_dependencies import check_catalog as check_concentration_catalog
@@ -472,6 +473,11 @@ def run(base_paths=None):
                                             hashlib.sha256((DATA / 'source_inventory.json').read_bytes()).hexdigest(),
                                             (DOCS / 'research/training-data-feedback.md').read_text(encoding='utf-8'), ROOT)
     training_fixture_counts = check_training_fixtures(ROOT)
+    human_reliance_counts = check_human_reliance_catalog(
+        read_json(DATA / 'research/human-reliance.json'),
+        hashlib.sha256((DATA / 'source_inventory.json').read_bytes()).hexdigest(),
+        (DOCS / 'research/human-reliance.md').read_text(encoding='utf-8'), ROOT)
+    human_reliance_ledger_counts = check_human_reliance_ledger(ROOT)
     queue_counts = check_queue((DOCS / 'research/research-session-review-queue.md').read_text(encoding='utf-8'))
     links = check_doc_links(base_paths)
     loader = unittest.TestLoader()
@@ -511,7 +517,11 @@ def run(base_paths=None):
     require(training_suite.countTestCases() > 0, 'Training-data regression tests missing')
     training_result = unittest.TextTestRunner(verbosity=1).run(training_suite)
     require(training_result.wasSuccessful(), 'Training-data regression suite failed')
-    return {'status': 'passed', **COUNTS, **task_counts, **research_counts, **adoption_counts, **organizational_counts, **open_model_counts, **concentration_counts, **historical_counts, **scientific_counts, **scientific_ledger_counts, **persuasion_counts, **persuasion_ledger_counts, **robotics_counts, **robotics_fixture_counts, **training_counts, **training_fixture_counts, **queue_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
+    human_reliance_suite = unittest.TestLoader().discover(str(HERE / 'tests'), pattern='test_human_reliance*.py')
+    require(human_reliance_suite.countTestCases() > 0, 'Human-reliance regression tests missing')
+    human_reliance_result = unittest.TextTestRunner(verbosity=1).run(human_reliance_suite)
+    require(human_reliance_result.wasSuccessful(), 'Human-reliance regression suite failed')
+    return {'status': 'passed', **COUNTS, **task_counts, **research_counts, **adoption_counts, **organizational_counts, **open_model_counts, **concentration_counts, **historical_counts, **scientific_counts, **scientific_ledger_counts, **persuasion_counts, **persuasion_ledger_counts, **robotics_counts, **robotics_fixture_counts, **training_counts, **training_fixture_counts, **human_reliance_counts, **human_reliance_ledger_counts, **queue_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
             'documentation_relative_links': links, 'integration_regression_tests': integration_result.testsRun,
             'open_model_regression_tests': open_model_result.testsRun,
             'concentration_regression_tests': concentration_result.testsRun,
@@ -520,7 +530,8 @@ def run(base_paths=None):
             'persuasion_regression_tests': persuasion_result.testsRun,
             'robotics_regression_tests': robotics_result.testsRun,
             'training_data_regression_tests': training_result.testsRun,
-            'scope': 'Offline consistency, synthetic regression and two pinned licensed annotation fixtures and one pinned generated dependency-graph fixture, plus synthetic-only historical gzip tests and manual scientific and persuasion aggregate metadata/ledger checks with synthetic regressions, plus a licensed manually curated BARN physical-results table with bounded offline validation. Common Crawl aggregate parsing uses self-authored synthetic CSV fixtures only. Real WMT and Common Crawl artifact acceptance are separate/private and do not run in CI. No live fetch, operational collection, production import, deployment, rights approval or language-accuracy evaluation.'}
+            'human_reliance_regression_tests': human_reliance_result.testsRun,
+            'scope': 'Offline consistency, synthetic regression and two pinned licensed annotation fixtures and one pinned generated dependency-graph fixture, plus synthetic-only historical gzip tests and manual scientific and persuasion aggregate metadata/ledger checks with synthetic regressions, plus a licensed manually curated BARN physical-results table with bounded offline validation. Common Crawl aggregate parsing uses self-authored synthetic CSV fixtures only. Real WMT and Common Crawl artifact acceptance are separate/private and do not run in CI. Human-reliance checks use a manual published-aggregate ledger and provisional synthetic-only decoder; no participant files or source workbook acceptance. No live fetch, operational collection, production import, deployment, rights approval or language-accuracy evaluation.'}
 
 
 def main():
