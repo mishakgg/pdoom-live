@@ -1,0 +1,93 @@
+{
+  "actions": [
+    {
+      "action_id": "F-A01",
+      "subject": "FLAMES population and original table binding",
+      "comparison_ids": [
+        "FC1",
+        "FC2"
+      ],
+      "required_action": "Obtain permitted author-controlled aggregate run/table correspondence and denominator clarification, not prompt/response corpora. Preserve each printed value pending correction.",
+      "boundary": "later separately authorized targeted verification; do not retry blocked route",
+      "status": "open_not_executed"
+    },
+    {
+      "action_id": "F-A02",
+      "subject": "FLAMES versions, identities and judging",
+      "comparison_ids": [
+        "FC3",
+        "FC4",
+        "FC6"
+      ],
+      "required_action": "Identify checkpoint/service snapshots, collection interval, rubric and scorer release plus common-item bridge before longitudinal or judge-interchangeability use.",
+      "boundary": "author metadata required; no model execution",
+      "status": "open_not_executed"
+    },
+    {
+      "action_id": "F-A03",
+      "subject": "SuperCLUE totals and judge validation",
+      "comparison_ids": [
+        "ZHS006-C1",
+        "ZHS006-C3",
+        "ZHS006-C4"
+      ],
+      "required_action": "Resolve question/pair totals against scored-answer/exclusion manifest and validation Ns, exact judge and rubric crosswalk. Retain 77% and 85% as scoped claims.",
+      "boundary": "targeted author metadata required; no outreach authorized",
+      "status": "open_not_executed"
+    },
+    {
+      "action_id": "F-A04",
+      "subject": "SuperCLUE revision causes",
+      "comparison_ids": [
+        "ZHS006-C2",
+        "ZHS006-C5"
+      ],
+      "required_action": "Preserve cataloged row additions/swaps and require row-level correction/rerun reasons; retain printed Xinghuo inconsistency until an authoritative correction.",
+      "boundary": "future authorized history review; current document cap exhausted",
+      "status": "open_not_executed"
+    },
+    {
+      "action_id": "F-A05",
+      "subject": "LiveSec release comparability",
+      "comparison_ids": [
+        "LS-COMP01",
+        "LS-COMP02",
+        "LS-COMP03",
+        "LS-COMP05",
+        "LS-COMP06"
+      ],
+      "required_action": "Require release-bound question-set and response-count metadata, exact targets/judges, rounds/pairing/order, weights and normalization plus common-anchor calibration. Resolve exposure count convention.",
+      "boundary": "aggregate metadata only; no private data or live evaluations",
+      "status": "open_not_executed"
+    },
+    {
+      "action_id": "F-A06",
+      "subject": "LiveSec March 2026 results",
+      "comparison_ids": [
+        "LS-COMP04"
+      ],
+      "required_action": "Use only an officially linked versioned score export with sufficient provenance if made available. A loading state is not an export and does not justify endpoint guessing.",
+      "boundary": "no public export established; no outreach authorized",
+      "status": "open_not_executed"
+    },
+    {
+      "action_id": "F-A07",
+      "subject": "Rights and operational boundary",
+      "comparison_ids": [
+        "CROSS-FAMILY-01"
+      ],
+      "required_action": "Clear intended metadata/text/table reuse per artifact, then seek separate adapter authorization and native semantic-gate design. Do not publish raw inspection receipts.",
+      "boundary": "publication, implementation and ingestion remain outside this review",
+      "status": "open_not_executed"
+    },
+    {
+      "action_id": "F-A08",
+      "subject": "Independent review and native mapping",
+      "comparison_ids": [],
+      "required_action": "Recheck package hashes, preservation counts, new blob pins and schema probes. Preserve all unsupported semantic fields in documentary research and keep native records withheld/synthetic.",
+      "boundary": "root owns independent review/publication",
+      "status": "open_not_executed"
+    }
+  ],
+  "current_session_stop": "Bound reached with useful unresolved results; no further primary documents are requested in this review."
+}

@@ -1,0 +1,26 @@
+{
+  "observed_on": "2026-10-08",
+  "branch_ref": "refs/heads/main",
+  "resolved_commit": "35af1f81cf62fe2133db9d26d8b74964236c1267",
+  "tree_response_sha": "35af1f81cf62fe2133db9d26d8b74964236c1267",
+  "truncated": false,
+  "entries": [
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "96c33891bfa40d50e08b785ad003cb5d12acab40",
+      "size": 9437,
+      "url": "https://api.github.com/repos/ydli-ai/LiveSecBench/git/blobs/96c33891bfa40d50e08b785ad003cb5d12acab40"
+    },
+    {
+      "path": "docs/USER_GUIDE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "54615dc2506cad5a3c96653527b137ff910fcf51",
+      "size": 17762,
+      "url": "https://api.github.com/repos/ydli-ai/LiveSecBench/git/blobs/54615dc2506cad5a3c96653527b137ff910fcf51"
+    }
+  ],
+  "scope": "Version metadata only for two already-inspected documents; does not retroactively pin the submitted mutable snapshots."
+}

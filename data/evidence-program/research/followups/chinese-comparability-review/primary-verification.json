@@ -1,0 +1,349 @@
+{
+  "reviewed_on": "2026-10-08",
+  "source_scope": "Exactly the same 15 submitted artifact identities; no new methods/supplement documents",
+  "source_authority": "Author/publisher-controlled primary documents report their own evaluations. Metadata/representation reads are not independent studies.",
+  "budget": {
+    "named_primary_artifacts": 9,
+    "additional_document_limit_total": 6,
+    "additional_document_limit_per_family": 2,
+    "additional_document_slots_charged": {
+      "ZHS001": [
+        "FLAMES-PAPER-V6",
+        "FLAMES-PAPER-V1"
+      ],
+      "ZHS006": [
+        "ZHS006-history",
+        "ZHS006-license"
+      ],
+      "ZHS004": [
+        "LS-S1",
+        "LS-S2"
+      ]
+    },
+    "representation_accounting": "HTML/PDF and bibliographic landing representations of a versioned paper are recorded together. The SuperCLUE submission-history page is conservatively charged as an additional slot. These representations never count as independent evaluations.",
+    "stops": {
+      "ZHS001": "Pinned README and LICENSE: DisabledError; paper branch: two versioned papers inspected.",
+      "ZHS006": "Pinned READMEs: DisabledError; paper/history/rights checks ended at the allocated bound.",
+      "ZHS004": "Pinned CHANGELOG: Internal Error with no absence or permission conclusion; two linked supplementary documents inspected."
+    },
+    "no_accounts_or_outreach": true,
+    "no_corpus_retrieval_or_bulk_download": true,
+    "no_model_or_scorer_execution": true,
+    "no_repository_edits_adapter_implementation_or_ingestion": true,
+    "no_endpoint_guessing": true,
+    "acceptance_cases_executed": false,
+    "artifact_integrity_checks_only": [
+      "JSON parsing",
+      "identifier uniqueness",
+      "reference integrity",
+      "required acceptance-case coverage"
+    ]
+  },
+  "current_artifact_checks": [
+    {
+      "artifact_id": "FLAMES-README-PIN",
+      "source_id": "ZHS001",
+      "url": "https://github.com/AI45Lab/Flames/blob/234bcb7a4a9da44c4177d2c2005e3bf8a582a5fc/README.md",
+      "submitted_version": "234bcb7a4a9da44c4177d2c2005e3bf8a582a5fc",
+      "submitted_inspection_status": "access_restricted_uninspected",
+      "reviewed_on": "2026-10-08",
+      "current_web_receipt_ids": [],
+      "current_bytes_captured": false,
+      "current_content_sha256": null,
+      "current_git_blob_sha": null,
+      "current_git_commit": null,
+      "raw_payload_publication_authorized": false,
+      "current_status": "held_prior_access_restriction_not_retried",
+      "scope": "Original DisabledError preserved; no alternate source route attempted. Existing catalog facts remain historical evidence, not current byte verification."
+    },
+    {
+      "artifact_id": "FLAMES-LICENSE-PIN",
+      "source_id": "ZHS001",
+      "url": "https://github.com/AI45Lab/Flames/blob/234bcb7a4a9da44c4177d2c2005e3bf8a582a5fc/LICENSE",
+      "submitted_version": "234bcb7a4a9da44c4177d2c2005e3bf8a582a5fc",
+      "submitted_inspection_status": "access_restricted_uninspected",
+      "reviewed_on": "2026-10-08",
+      "current_web_receipt_ids": [],
+      "current_bytes_captured": false,
+      "current_content_sha256": null,
+      "current_git_blob_sha": null,
+      "current_git_commit": null,
+      "raw_payload_publication_authorized": false,
+      "current_status": "held_prior_access_restriction_not_retried",
+      "scope": "Original DisabledError preserved; no alternate source route attempted. Existing catalog facts remain historical evidence, not current byte verification."
+    },
+    {
+      "artifact_id": "FLAMES-PAPER-V6",
+      "source_id": "ZHS001",
+      "url": "https://arxiv.org/html/2311.06899v6",
+      "submitted_version": "arXiv:2311.06899v6",
+      "submitted_inspection_status": "direct",
+      "reviewed_on": "2026-10-08",
+      "current_web_receipt_ids": [
+        "turn1019view0",
+        "turn1021view0",
+        "turn1026view0",
+        "turn1028view1"
+      ],
+      "current_bytes_captured": false,
+      "current_content_sha256": null,
+      "current_git_blob_sha": null,
+      "current_git_commit": null,
+      "raw_payload_publication_authorized": false,
+      "current_status": "current_primary_rendered_text_verified",
+      "scope": "Named paper/version or previously charged supplement reread with exact locators. Rendered-text verification does not establish original byte hashes, study replication or operational admission.",
+      "metadata_limit": "Version day confirmed in HTML. Exact-version abstract URL returned Internal Error; original submission seconds remain historical, not currently reconfirmed."
+    },
+    {
+      "artifact_id": "FLAMES-PAPER-V1",
+      "source_id": "ZHS001",
+      "url": "https://arxiv.org/html/2311.06899v1",
+      "submitted_version": "arXiv:2311.06899v1",
+      "submitted_inspection_status": "direct",
+      "reviewed_on": "2026-10-08",
+      "current_web_receipt_ids": [
+        "turn1019view1",
+        "turn1021view2",
+        "turn1026view1"
+      ],
+      "current_bytes_captured": false,
+      "current_content_sha256": null,
+      "current_git_blob_sha": null,
+      "current_git_commit": null,
+      "raw_payload_publication_authorized": false,
+      "current_status": "current_primary_rendered_text_verified",
+      "scope": "Named paper/version or previously charged supplement reread with exact locators. Rendered-text verification does not establish original byte hashes, study replication or operational admission.",
+      "metadata_limit": "Version day confirmed in HTML; original exact submission seconds not reread."
+    },
+    {
+      "artifact_id": "ZHS006-paper-v1",
+      "source_id": "ZHS006",
+      "url": "https://arxiv.org/html/2310.05818v1",
+      "submitted_version": "2310.05818v1",
+      "submitted_inspection_status": "directly_inspected",
+      "reviewed_on": "2026-10-08",
+      "current_web_receipt_ids": [
+        "turn1019view2",
+        "turn1022view1",
+        "turn1026view6",
+        "turn1026view7"
+      ],
+      "current_bytes_captured": false,
+      "current_content_sha256": null,
+      "current_git_blob_sha": null,
+      "current_git_commit": null,
+      "raw_payload_publication_authorized": false,
+      "current_status": "current_primary_rendered_text_verified",
+      "scope": "Named paper/version or previously charged supplement reread with exact locators. Rendered-text verification does not establish original byte hashes, study replication or operational admission.",
+      "representation_limit": "PDF text also inspected. Screenshot calls returned references only in this tool environment; no new visual screenshot-verification claim."
+    },
+    {
+      "artifact_id": "ZHS006-readme-pin",
+      "source_id": "ZHS006",
+      "url": "https://github.com/CLUEbenchmark/SuperCLUE-Safety/blob/3b9789520c13fdcdfb7ba5326b1c741e2459305e/README.md",
+      "submitted_version": "3b9789520c13fdcdfb7ba5326b1c741e2459305e",
+      "submitted_inspection_status": "not_inspected_access_restriction",
+      "reviewed_on": "2026-10-08",
+      "current_web_receipt_ids": [],
+      "current_bytes_captured": false,
+      "current_content_sha256": null,
+      "current_git_blob_sha": null,
+      "current_git_commit": null,
+      "raw_payload_publication_authorized": false,
+      "current_status": "held_prior_access_restriction_not_retried",
+      "scope": "Original DisabledError preserved; no alternate source route attempted. Existing catalog facts remain historical evidence, not current byte verification."
+    },
+    {
+      "artifact_id": "ZHS006-readme-202312-pin",
+      "source_id": "ZHS006",
+      "url": "https://github.com/CLUEbenchmark/SuperCLUE-Safety/blob/3b9789520c13fdcdfb7ba5326b1c741e2459305e/README_202312.md",
+      "submitted_version": "3b9789520c13fdcdfb7ba5326b1c741e2459305e",
+      "submitted_inspection_status": "not_inspected_access_restriction",
+      "reviewed_on": "2026-10-08",
+      "current_web_receipt_ids": [],
+      "current_bytes_captured": false,
+      "current_content_sha256": null,
+      "current_git_blob_sha": null,
+      "current_git_commit": null,
+      "raw_payload_publication_authorized": false,
+      "current_status": "held_prior_access_restriction_not_retried",
+      "scope": "Original DisabledError preserved; no alternate source route attempted. Existing catalog facts remain historical evidence, not current byte verification."
+    },
+    {
+      "artifact_id": "ZHS006-history",
+      "source_id": "ZHS006",
+      "url": "https://arxiv.org/abs/2310.05818v1",
+      "submitted_version": "v1 metadata as retrieved",
+      "submitted_inspection_status": "directly_inspected",
+      "reviewed_on": "2026-10-08",
+      "current_web_receipt_ids": [
+        "turn1022view2",
+        "turn1023view0"
+      ],
+      "current_bytes_captured": false,
+      "current_content_sha256": null,
+      "current_git_blob_sha": null,
+      "current_git_commit": null,
+      "raw_payload_publication_authorized": false,
+      "current_status": "current_primary_rendered_text_verified",
+      "scope": "Named paper/version or previously charged supplement reread with exact locators. Rendered-text verification does not establish original byte hashes, study replication or operational admission."
+    },
+    {
+      "artifact_id": "ZHS006-license",
+      "source_id": "ZHS006",
+      "url": "https://arxiv.org/licenses/nonexclusive-distrib/1.0/license.html",
+      "submitted_version": "nonexclusive-distrib/1.0; retrieved 2026-10-08",
+      "submitted_inspection_status": "directly_inspected",
+      "reviewed_on": "2026-10-08",
+      "current_web_receipt_ids": [
+        "turn1025view2",
+        "turn1029view2"
+      ],
+      "current_bytes_captured": false,
+      "current_content_sha256": null,
+      "current_git_blob_sha": null,
+      "current_git_commit": null,
+      "raw_payload_publication_authorized": false,
+      "current_status": "current_primary_rendered_text_verified",
+      "scope": "Named paper/version or previously charged supplement reread with exact locators. Rendered-text verification does not establish original byte hashes, study replication or operational admission."
+    },
+    {
+      "artifact_id": "LS-P1",
+      "source_id": "ZHS004",
+      "url": "https://arxiv.org/html/2511.02366v1",
+      "submitted_version": "arXiv:2511.02366v1; benchmark label v251030",
+      "submitted_inspection_status": "directly inspected",
+      "reviewed_on": "2026-10-08",
+      "current_web_receipt_ids": [
+        "turn1020view0",
+        "turn1028view0",
+        "turn1029view1",
+        "turn1029view3"
+      ],
+      "current_bytes_captured": false,
+      "current_content_sha256": null,
+      "current_git_blob_sha": null,
+      "current_git_commit": null,
+      "raw_payload_publication_authorized": false,
+      "current_status": "current_primary_rendered_text_verified",
+      "scope": "Named paper/version or previously charged supplement reread with exact locators. Rendered-text verification does not establish original byte hashes, study replication or operational admission.",
+      "representation_limit": "PDF text also inspected. Screenshot calls returned references only in this tool environment; no new visual screenshot-verification claim."
+    },
+    {
+      "artifact_id": "LS-P2",
+      "source_id": "ZHS004",
+      "url": "https://arxiv.org/html/2511.02366v2",
+      "submitted_version": "arXiv:2511.02366v2; benchmark label v251215",
+      "submitted_inspection_status": "directly inspected",
+      "reviewed_on": "2026-10-08",
+      "current_web_receipt_ids": [
+        "turn1020view1",
+        "turn1021view5",
+        "turn1023view2",
+        "turn1026view3",
+        "turn1029view0"
+      ],
+      "current_bytes_captured": false,
+      "current_content_sha256": null,
+      "current_git_blob_sha": null,
+      "current_git_commit": null,
+      "raw_payload_publication_authorized": false,
+      "current_status": "current_primary_rendered_text_verified",
+      "scope": "Named paper/version or previously charged supplement reread with exact locators. Rendered-text verification does not establish original byte hashes, study replication or operational admission."
+    },
+    {
+      "artifact_id": "LS-C1",
+      "source_id": "ZHS004",
+      "url": "https://github.com/ydli-ai/LiveSecBench/blob/35af1f81cf62fe2133db9d26d8b74964236c1267/docs/CHANGELOG.md",
+      "submitted_version": "35af1f81cf62fe2133db9d26d8b74964236c1267",
+      "submitted_inspection_status": "requested, content uninspected",
+      "reviewed_on": "2026-10-08",
+      "current_web_receipt_ids": [
+        "turn1026view2"
+      ],
+      "current_bytes_captured": false,
+      "current_content_sha256": null,
+      "current_git_blob_sha": null,
+      "current_git_commit": null,
+      "raw_payload_publication_authorized": false,
+      "current_status": "held_current_internal_error",
+      "scope": "One exact named URL reread returned Internal Error; no absence, permissions, or missing-content conclusion. No alternate route attempted."
+    },
+    {
+      "artifact_id": "LS-L1",
+      "source_id": "ZHS004",
+      "url": "https://livesecbench.intokentech.cn/",
+      "submitted_version": "Mutable landing page; displayed March 2026 edition; observed 2026-10-08",
+      "submitted_inspection_status": "directly inspected rendered text",
+      "reviewed_on": "2026-10-08",
+      "current_web_receipt_ids": [
+        "turn1020view2",
+        "turn1023view1"
+      ],
+      "current_bytes_captured": false,
+      "current_content_sha256": null,
+      "current_git_blob_sha": null,
+      "current_git_commit": null,
+      "raw_payload_publication_authorized": false,
+      "current_status": "current_primary_rendered_text_verified",
+      "scope": "Named paper/version or previously charged supplement reread with exact locators. Rendered-text verification does not establish original byte hashes, study replication or operational admission."
+    },
+    {
+      "artifact_id": "LS-S1",
+      "source_id": "ZHS004",
+      "url": "https://github.com/ydli-ai/LiveSecBench",
+      "submitted_version": "Rendered main README snapshot observed 2026-10-08; exact commit not exposed",
+      "submitted_inspection_status": "directly inspected",
+      "reviewed_on": "2026-10-08",
+      "current_web_receipt_ids": [
+        "turn1025view0",
+        "turn1027view2"
+      ],
+      "current_bytes_captured": true,
+      "current_content_sha256": "ac3e36034b7aede5cda1333e9e63b620d174c25a0f3d621a50687c78fc50b640",
+      "current_git_blob_sha": "96c33891bfa40d50e08b785ad003cb5d12acab40",
+      "current_git_commit": "35af1f81cf62fe2133db9d26d8b74964236c1267",
+      "raw_payload_publication_authorized": false,
+      "current_status": "current_primary_bytes_git_verified",
+      "current_size_bytes": 9437,
+      "byte_receipt": "inspection/livesec-readme-connector.json",
+      "git_binding_receipt": "inspection/livesec-git-binding.json",
+      "scope": "Fresh connector bytes independently match returned blob SHA and exact current Git tree. Original mutable snapshot stays historically unpinned; neither snapshot is a historical result-run manifest."
+    },
+    {
+      "artifact_id": "LS-S2",
+      "source_id": "ZHS004",
+      "url": "https://github.com/ydli-ai/LiveSecBench/blob/main/docs/USER_GUIDE.md",
+      "submitted_version": "Rendered main snapshot observed 2026-10-08; exact commit not exposed",
+      "submitted_inspection_status": "directly inspected relevant methods and output passages",
+      "reviewed_on": "2026-10-08",
+      "current_web_receipt_ids": [
+        "turn1025view1",
+        "turn1026view4",
+        "turn1027view0",
+        "turn1027view1"
+      ],
+      "current_bytes_captured": true,
+      "current_content_sha256": "06098c0389bde2bddf646b0a3246f79bdb6dcb934b4569483062ebe88b3a1868",
+      "current_git_blob_sha": "54615dc2506cad5a3c96653527b137ff910fcf51",
+      "current_git_commit": "35af1f81cf62fe2133db9d26d8b74964236c1267",
+      "raw_payload_publication_authorized": false,
+      "current_status": "current_primary_bytes_git_verified",
+      "current_size_bytes": 17762,
+      "byte_receipt": "inspection/livesec-user-guide-connector.json",
+      "git_binding_receipt": "inspection/livesec-git-binding.json",
+      "scope": "Fresh connector bytes independently match returned blob SHA and exact current Git tree. Original mutable snapshot stays historically unpinned; neither snapshot is a historical result-run manifest."
+    }
+  ],
+  "metadata_only_requests": [
+    {
+      "url": "https://api.github.com/repos/ydli-ai/LiveSecBench/git/ref/heads/main",
+      "purpose": "resolve versions of already inspected README and guide"
+    },
+    {
+      "url": "https://api.github.com/repos/ydli-ai/LiveSecBench/git/trees/35af1f81cf62fe2133db9d26d8b74964236c1267?recursive=1",
+      "purpose": "bind only the two document blobs; no other files fetched"
+    }
+  ],
+  "stop_status": "All families stopped at the original two-additional-document bound or preserved access restriction. M³, other benchmarks, model execution, endpoint discovery and live collection were not opened."
+}

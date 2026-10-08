@@ -1,0 +1,1016 @@
+{
+  "format": "documentary_review_integrity_checks",
+  "all_checks_passed": true,
+  "check_count": 252,
+  "checks": [
+    {
+      "check": "original ledger exact bytes retained",
+      "passed": true
+    },
+    {
+      "check": "input byte length Yap\u0131\u015ft\u0131r\u0131lan metin(20261008-205609).txt",
+      "passed": true
+    },
+    {
+      "check": "input sha256 Yap\u0131\u015ft\u0131r\u0131lan metin(20261008-205609).txt",
+      "passed": true
+    },
+    {
+      "check": "input byte length chinese-safety-comparability-ledger(1).json",
+      "passed": true
+    },
+    {
+      "check": "input sha256 chinese-safety-comparability-ledger(1).json",
+      "passed": true
+    },
+    {
+      "check": "preserved count artifacts",
+      "passed": true
+    },
+    {
+      "check": "unique ids artifacts",
+      "passed": true
+    },
+    {
+      "check": "preserved count assertions",
+      "passed": true
+    },
+    {
+      "check": "unique ids assertions",
+      "passed": true
+    },
+    {
+      "check": "preserved count lineage_edges",
+      "passed": true
+    },
+    {
+      "check": "unique ids lineage_edges",
+      "passed": true
+    },
+    {
+      "check": "preserved count comparability_decisions",
+      "passed": true
+    },
+    {
+      "check": "unique ids comparability_decisions",
+      "passed": true
+    },
+    {
+      "check": "preserved count acceptance_cases",
+      "passed": true
+    },
+    {
+      "check": "unique ids acceptance_cases",
+      "passed": true
+    },
+    {
+      "check": "preserved nine rights records",
+      "passed": true
+    },
+    {
+      "check": "original inspected baseline remains null",
+      "passed": true
+    },
+    {
+      "check": "original operational admission remains false",
+      "passed": true
+    },
+    {
+      "check": "acceptance case specifications preserved",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC01",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC02",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC03",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC04",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC05",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC06",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC07",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC08",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC09",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC10",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC11",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC12",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC13",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC14",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC15",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC16",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC17",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC18",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC19",
+      "passed": true
+    },
+    {
+      "check": "unexecuted AC20",
+      "passed": true
+    },
+    {
+      "check": "F001 artifact ref FLAMES-README-PIN",
+      "passed": true
+    },
+    {
+      "check": "F002 artifact ref FLAMES-PAPER-V6",
+      "passed": true
+    },
+    {
+      "check": "F003 artifact ref FLAMES-PAPER-V6",
+      "passed": true
+    },
+    {
+      "check": "F004 artifact ref FLAMES-PAPER-V6",
+      "passed": true
+    },
+    {
+      "check": "F005 artifact ref FLAMES-PAPER-V6",
+      "passed": true
+    },
+    {
+      "check": "F006 artifact ref FLAMES-PAPER-V6",
+      "passed": true
+    },
+    {
+      "check": "F007 artifact ref FLAMES-PAPER-V6",
+      "passed": true
+    },
+    {
+      "check": "F008 artifact ref FLAMES-PAPER-V6",
+      "passed": true
+    },
+    {
+      "check": "F009 artifact ref FLAMES-PAPER-V6",
+      "passed": true
+    },
+    {
+      "check": "F010 artifact ref FLAMES-PAPER-V6",
+      "passed": true
+    },
+    {
+      "check": "F011 artifact ref FLAMES-PAPER-V1",
+      "passed": true
+    },
+    {
+      "check": "F012 artifact ref FLAMES-PAPER-V1",
+      "passed": true
+    },
+    {
+      "check": "F012 artifact ref FLAMES-PAPER-V6",
+      "passed": true
+    },
+    {
+      "check": "F013 artifact ref FLAMES-PAPER-V6",
+      "passed": true
+    },
+    {
+      "check": "F014 artifact ref FLAMES-PAPER-V6",
+      "passed": true
+    },
+    {
+      "check": "F015 artifact ref FLAMES-PAPER-V6",
+      "passed": true
+    },
+    {
+      "check": "ZHS006-A1 artifact ref ZHS006-paper-v1",
+      "passed": true
+    },
+    {
+      "check": "ZHS006-A1 artifact ref ZHS006-paper-v1",
+      "passed": true
+    },
+    {
+      "check": "ZHS006-A2 artifact ref ZHS006-paper-v1",
+      "passed": true
+    },
+    {
+      "check": "ZHS006-A3 artifact ref ZHS006-paper-v1",
+      "passed": true
+    },
+    {
+      "check": "ZHS006-A4 artifact ref ZHS006-paper-v1",
+      "passed": true
+    },
+    {
+      "check": "ZHS006-A5 artifact ref ZHS006-paper-v1",
+      "passed": true
+    },
+    {
+      "check": "ZHS006-A6 artifact ref ZHS006-paper-v1",
+      "passed": true
+    },
+    {
+      "check": "ZHS006-A7 artifact ref ZHS006-paper-v1",
+      "passed": true
+    },
+    {
+      "check": "ZHS006-A8 artifact ref ZHS006-readme-pin",
+      "passed": true
+    },
+    {
+      "check": "ZHS006-A9 artifact ref ZHS006-readme-pin",
+      "passed": true
+    },
+    {
+      "check": "ZHS006-A10 artifact ref ZHS006-history",
+      "passed": true
+    },
+    {
+      "check": "LS-A01 artifact ref LS-P1",
+      "passed": true
+    },
+    {
+      "check": "LS-A02 artifact ref LS-P1",
+      "passed": true
+    },
+    {
+      "check": "LS-A03 artifact ref LS-P1",
+      "passed": true
+    },
+    {
+      "check": "LS-A04 artifact ref LS-P1",
+      "passed": true
+    },
+    {
+      "check": "LS-A05 artifact ref LS-P1",
+      "passed": true
+    },
+    {
+      "check": "LS-A06 artifact ref LS-P2",
+      "passed": true
+    },
+    {
+      "check": "LS-A07 artifact ref LS-P2",
+      "passed": true
+    },
+    {
+      "check": "LS-A08 artifact ref LS-P2",
+      "passed": true
+    },
+    {
+      "check": "LS-A09 artifact ref LS-P2",
+      "passed": true
+    },
+    {
+      "check": "LS-A10 artifact ref LS-P2",
+      "passed": true
+    },
+    {
+      "check": "LS-A11 artifact ref LS-P1",
+      "passed": true
+    },
+    {
+      "check": "LS-A11 artifact ref LS-P2",
+      "passed": true
+    },
+    {
+      "check": "LS-A12 artifact ref LS-L1",
+      "passed": true
+    },
+    {
+      "check": "LS-A13 artifact ref LS-S1",
+      "passed": true
+    },
+    {
+      "check": "LS-A14 artifact ref LS-S2",
+      "passed": true
+    },
+    {
+      "check": "LS-A15 artifact ref LS-P1",
+      "passed": true
+    },
+    {
+      "check": "LS-A15 artifact ref LS-P2",
+      "passed": true
+    },
+    {
+      "check": "LS-A15 artifact ref LS-L1",
+      "passed": true
+    },
+    {
+      "check": "repo blob AGENTS.md",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 AGENTS.md",
+      "passed": true
+    },
+    {
+      "check": "repo blob data/evidence-program/research/chinese-safety-evaluations.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 data/evidence-program/research/chinese-safety-evaluations.json",
+      "passed": true
+    },
+    {
+      "check": "repo blob docs/evidence-program/chinese_guide.md",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 docs/evidence-program/chinese_guide.md",
+      "passed": true
+    },
+    {
+      "check": "repo blob docs/evidence-program/dataset_spec.md",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 docs/evidence-program/dataset_spec.md",
+      "passed": true
+    },
+    {
+      "check": "repo blob docs/evidence-program/research/chinese-safety-evaluations.md",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 docs/evidence-program/research/chinese-safety-evaluations.md",
+      "passed": true
+    },
+    {
+      "check": "repo blob docs/evidence-program/source_priorities.md",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 docs/evidence-program/source_priorities.md",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/examples/synthetic_dataset.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/examples/synthetic_dataset.json",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/validate_dataset.py",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/validate_dataset.py",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/contracts/actor.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/contracts/actor.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/contracts/benchmark_run.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/contracts/benchmark_run.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/contracts/dataset.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/contracts/dataset.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/contracts/forecast.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/contracts/forecast.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/contracts/forecast_question.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/contracts/forecast_question.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/contracts/incident.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/contracts/incident.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/contracts/model_version.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/contracts/model_version.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/contracts/release_event.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/contracts/release_event.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/contracts/resolution.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/contracts/resolution.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/contracts/resource_observation.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/contracts/resource_observation.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/contracts/safety_evaluation.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/contracts/safety_evaluation.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/contracts/snapshot.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/contracts/snapshot.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/contracts/source_artifact.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/contracts/source_artifact.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo blob tools/evidence_program/contracts/statement.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repo sha256 tools/evidence_program/contracts/statement.schema.json",
+      "passed": true
+    },
+    {
+      "check": "mapping current commit",
+      "passed": true
+    },
+    {
+      "check": "mapping preserves all source assertions",
+      "passed": true
+    },
+    {
+      "check": "mapping preserved section interpretation_rules",
+      "passed": true
+    },
+    {
+      "check": "mapping preserved section artifacts",
+      "passed": true
+    },
+    {
+      "check": "mapping preserved section lineage_edges",
+      "passed": true
+    },
+    {
+      "check": "mapping preserved section comparability_decisions",
+      "passed": true
+    },
+    {
+      "check": "mapping preserved section acceptance_cases",
+      "passed": true
+    },
+    {
+      "check": "mapping preserved section actor_roles",
+      "passed": true
+    },
+    {
+      "check": "mapping preserved section rights_ledger",
+      "passed": true
+    },
+    {
+      "check": "mapping preserved section unit_model",
+      "passed": true
+    },
+    {
+      "check": "mapping preserved section decision_report",
+      "passed": true
+    },
+    {
+      "check": "native pointer evidence /evidence/*/source_ref",
+      "passed": true
+    },
+    {
+      "check": "native pointer evidence /evidence/*/locator",
+      "passed": true
+    },
+    {
+      "check": "native pointer evidence /evidence/*/relation",
+      "passed": true
+    },
+    {
+      "check": "native pointer evidence /evidence/*/extraction_method",
+      "passed": true
+    },
+    {
+      "check": "native pointer evidence /evidence/*/extractor_version",
+      "passed": true
+    },
+    {
+      "check": "native pointer dates /times/known_at",
+      "passed": true
+    },
+    {
+      "check": "native pointer dates /times/retrieved_at",
+      "passed": true
+    },
+    {
+      "check": "native pointer dates /times/published",
+      "passed": true
+    },
+    {
+      "check": "native pointer dates /times/event",
+      "passed": true
+    },
+    {
+      "check": "native pointer dates /times/evaluated",
+      "passed": true
+    },
+    {
+      "check": "native pointer rights /governance/rights_state",
+      "passed": true
+    },
+    {
+      "check": "native pointer rights /governance/rights_basis",
+      "passed": true
+    },
+    {
+      "check": "native pointer rights /governance/rights_url",
+      "passed": true
+    },
+    {
+      "check": "native pointer rights /governance/publication_state",
+      "passed": true
+    },
+    {
+      "check": "native pointer rights /governance/review_state",
+      "passed": true
+    },
+    {
+      "check": "native pointer metric /data/measurement/metric",
+      "passed": true
+    },
+    {
+      "check": "native pointer metric /data/measurement/result",
+      "passed": true
+    },
+    {
+      "check": "native pointer metric /data/measurement/observation_mode",
+      "passed": true
+    },
+    {
+      "check": "native pointer metric /data/measurement/method",
+      "passed": true
+    },
+    {
+      "check": "native pointer metric /data/measurement/uncertainty_notes",
+      "passed": true
+    },
+    {
+      "check": "native pointer population /data/measurement/sample_size",
+      "passed": true
+    },
+    {
+      "check": "native pointer population /data/measurement/metric/definition",
+      "passed": true
+    },
+    {
+      "check": "native pointer population /data/measurement/metric/context",
+      "passed": true
+    },
+    {
+      "check": "native pointer population /data/protocol/configuration",
+      "passed": true
+    },
+    {
+      "check": "native pointer protocol_judge /data/protocol/name",
+      "passed": true
+    },
+    {
+      "check": "native pointer protocol_judge /data/protocol/version",
+      "passed": true
+    },
+    {
+      "check": "native pointer protocol_judge /data/protocol/configuration",
+      "passed": true
+    },
+    {
+      "check": "native pointer protocol_judge /data/protocol/configuration_sha256",
+      "passed": true
+    },
+    {
+      "check": "native pointer protocol_judge /data/protocol/reproducibility",
+      "passed": true
+    },
+    {
+      "check": "native pointer identity /data/model_ref",
+      "passed": true
+    },
+    {
+      "check": "native pointer identity /data/developer_refs",
+      "passed": true
+    },
+    {
+      "check": "native pointer identity /data/version_label",
+      "passed": true
+    },
+    {
+      "check": "native pointer identity /data/provider_model_id",
+      "passed": true
+    },
+    {
+      "check": "native pointer identity /data/artifact_digest",
+      "passed": true
+    },
+    {
+      "check": "native pointer identity /data/version_certainty",
+      "passed": true
+    },
+    {
+      "check": "native pointer actor /data/evaluator_refs",
+      "passed": true
+    },
+    {
+      "check": "native pointer actor /data/author_refs",
+      "passed": true
+    },
+    {
+      "check": "native pointer actor /data/publisher_ref",
+      "passed": true
+    },
+    {
+      "check": "native pointer actor /data/name",
+      "passed": true
+    },
+    {
+      "check": "native pointer actor /data/affiliations",
+      "passed": true
+    },
+    {
+      "check": "native pointer actor /data/external_ids",
+      "passed": true
+    },
+    {
+      "check": "native pointer actor /data/jurisdictions",
+      "passed": true
+    },
+    {
+      "check": "native pointer independence /data/independence",
+      "passed": true
+    },
+    {
+      "check": "native pointer independence /data/limitations",
+      "passed": true
+    },
+    {
+      "check": "native pointer independence /data/measurement/uncertainty_notes",
+      "passed": true
+    },
+    {
+      "check": "native pointer disagreement_lineage /evidence/*/relation",
+      "passed": true
+    },
+    {
+      "check": "native pointer disagreement_lineage /supersedes",
+      "passed": true
+    },
+    {
+      "check": "native pointer disagreement_lineage /data/limitations",
+      "passed": true
+    },
+    {
+      "check": "native pointer disagreement_lineage /data/measurement/uncertainty_notes",
+      "passed": true
+    },
+    {
+      "check": "native pointer disagreement_lineage /data/translation",
+      "passed": true
+    },
+    {
+      "check": "native pointer disagreement_lineage /data/relationships",
+      "passed": true
+    },
+    {
+      "check": "native pointer comparability /data/benchmark",
+      "passed": true
+    },
+    {
+      "check": "native pointer comparability /data/protocol",
+      "passed": true
+    },
+    {
+      "check": "native pointer comparability /data/measurement",
+      "passed": true
+    },
+    {
+      "check": "native pointer comparability /data/limitations",
+      "passed": true
+    },
+    {
+      "check": "native pointer snapshot /data/snapshot_kind",
+      "passed": true
+    },
+    {
+      "check": "native pointer snapshot /data/cutoff",
+      "passed": true
+    },
+    {
+      "check": "native pointer snapshot /data/created_at",
+      "passed": true
+    },
+    {
+      "check": "native pointer snapshot /data/members",
+      "passed": true
+    },
+    {
+      "check": "native pointer snapshot /data/canonicalization",
+      "passed": true
+    },
+    {
+      "check": "native pointer snapshot /data/notice",
+      "passed": true
+    },
+    {
+      "check": "native pointer source_artifact /data/canonical_url",
+      "passed": true
+    },
+    {
+      "check": "native pointer source_artifact /data/title",
+      "passed": true
+    },
+    {
+      "check": "native pointer source_artifact /data/source_type",
+      "passed": true
+    },
+    {
+      "check": "native pointer source_artifact /data/language",
+      "passed": true
+    },
+    {
+      "check": "native pointer source_artifact /data/content_sha256",
+      "passed": true
+    },
+    {
+      "check": "native pointer source_artifact /data/availability",
+      "passed": true
+    },
+    {
+      "check": "native pointer source_artifact /upstream_refs",
+      "passed": true
+    },
+    {
+      "check": "native required source_artifact",
+      "passed": true
+    },
+    {
+      "check": "native fields source_artifact",
+      "passed": true
+    },
+    {
+      "check": "native required actor",
+      "passed": true
+    },
+    {
+      "check": "native fields actor",
+      "passed": true
+    },
+    {
+      "check": "native required model_version",
+      "passed": true
+    },
+    {
+      "check": "native fields model_version",
+      "passed": true
+    },
+    {
+      "check": "native required benchmark_run",
+      "passed": true
+    },
+    {
+      "check": "native fields benchmark_run",
+      "passed": true
+    },
+    {
+      "check": "native required safety_evaluation",
+      "passed": true
+    },
+    {
+      "check": "native fields safety_evaluation",
+      "passed": true
+    },
+    {
+      "check": "native required snapshot",
+      "passed": true
+    },
+    {
+      "check": "native fields snapshot",
+      "passed": true
+    },
+    {
+      "check": "20 distinct new probes",
+      "passed": true
+    },
+    {
+      "check": "probe expected outcomes matched",
+      "passed": true
+    },
+    {
+      "check": "14 schema accepts and six rejects",
+      "passed": true
+    },
+    {
+      "check": "no upstream code execution",
+      "passed": true
+    },
+    {
+      "check": "original cases not executed by probes",
+      "passed": true
+    },
+    {
+      "check": "offline probe registry",
+      "passed": true
+    },
+    {
+      "check": "no adapter or admission",
+      "passed": true
+    },
+    {
+      "check": "upstream fresh blob README.md",
+      "passed": true
+    },
+    {
+      "check": "upstream fresh sha256 README.md",
+      "passed": true
+    },
+    {
+      "check": "upstream fresh size README.md",
+      "passed": true
+    },
+    {
+      "check": "upstream fresh blob docs/USER_GUIDE.md",
+      "passed": true
+    },
+    {
+      "check": "upstream fresh sha256 docs/USER_GUIDE.md",
+      "passed": true
+    },
+    {
+      "check": "upstream fresh size docs/USER_GUIDE.md",
+      "passed": true
+    },
+    {
+      "check": "F007 no integer repair",
+      "passed": true
+    },
+    {
+      "check": "SuperCLUE printed difference conflict",
+      "passed": true
+    },
+    {
+      "check": "LiveSec conditional exposure",
+      "passed": true
+    },
+    {
+      "check": "LiveSec aggregates",
+      "passed": true
+    },
+    {
+      "check": "current artifact checks cover every original",
+      "passed": true
+    },
+    {
+      "check": "current assertion review covers every original",
+      "passed": true
+    },
+    {
+      "check": "lineage preserved",
+      "passed": true
+    },
+    {
+      "check": "comparability preserved",
+      "passed": true
+    },
+    {
+      "check": "rights preserved",
+      "passed": true
+    },
+    {
+      "check": "prior catalog exact selected families",
+      "passed": true
+    },
+    {
+      "check": "delta evidence file repository-files-manifest.json",
+      "passed": true
+    },
+    {
+      "check": "delta evidence file contract-work/contract-mapping.json",
+      "passed": true
+    },
+    {
+      "check": "delta evidence file prior-catalog-preservation.json",
+      "passed": true
+    },
+    {
+      "check": "delta evidence file inspection/livesec-git-binding.json",
+      "passed": true
+    },
+    {
+      "check": "delta evidence file primary-verification.json",
+      "passed": true
+    },
+    {
+      "check": "delta evidence file assertion-review.json",
+      "passed": true
+    },
+    {
+      "check": "delta evidence file comparability-review.json",
+      "passed": true
+    },
+    {
+      "check": "delta evidence file acceptance-cases.json",
+      "passed": true
+    },
+    {
+      "check": "delta evidence file arithmetic-review.json",
+      "passed": true
+    },
+    {
+      "check": "delta evidence file contract-work/schema-probe-results.json",
+      "passed": true
+    }
+  ],
+  "scope": "Original byte preservation, inventories, actual contract paths, new source blob pins, probe outcomes and arithmetic only. Not original-study execution, semantic acceptance, full native validator execution or independent review."
+}

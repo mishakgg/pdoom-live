@@ -1,0 +1,486 @@
+{
+  "format": "review_only_synthetic_schema_probes",
+  "version": "1.0",
+  "repository_commit": "246f746e3a267363c7f6d2e0494eb72fb4c98bc9",
+  "schemas_loaded_as_data": 14,
+  "jsonschema_version": "4.26.0",
+  "offline_registry_only": true,
+  "upstream_code_executed": false,
+  "network_access": false,
+  "adapter_implemented": false,
+  "operational_admission": false,
+  "original_acceptance_cases_executed": false,
+  "notice": "Twenty SP probes of fictional schema shapes are NOT the twenty original AC acceptance cases. Semantic dispositions are review explanations, not executed acceptance checks. No upstream validator or source code was executed; no research question is settled by schema success.",
+  "run_at": "2026-10-08T21:37:24.677024Z",
+  "probe_count": 20,
+  "schema_accepted_count": 14,
+  "schema_rejected_count": 6,
+  "all_expected_schema_outcomes_matched": true,
+  "six_type_baseline_wrapper_results": [
+    {
+      "record_type": "source_artifact",
+      "schema_accepted": true
+    },
+    {
+      "record_type": "actor",
+      "schema_accepted": true
+    },
+    {
+      "record_type": "model_version",
+      "schema_accepted": true
+    },
+    {
+      "record_type": "safety_evaluation",
+      "schema_accepted": true
+    },
+    {
+      "record_type": "benchmark_run",
+      "schema_accepted": true
+    },
+    {
+      "record_type": "snapshot",
+      "schema_accepted": true
+    }
+  ],
+  "pinned_original_fixture_json_shape_check": {
+    "record_count": 21,
+    "schema_accepted": true,
+    "errors": [],
+    "upstream_validator_executed": false
+  },
+  "results": [
+    {
+      "probe_id": "SP01",
+      "title": "Positive shape control across the six relevant native record types",
+      "schema": "dataset.schema.json",
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "synthetic_shape_control_only",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Shape success is not evidence adjudication.",
+      "companion_validator_static_inspection": "Not executed. Full validator result is deliberately not claimed.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": true,
+      "expected_schema_outcome_matched": true,
+      "errors": [],
+      "input_sha256": "5b2e367489575f3220ec8fcb610343d23104c84337bc590fb02a3b55197d4378",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP02",
+      "title": "Numerator/denominator consistency is not checked by schema",
+      "schema": "safety_evaluation.schema.json",
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "hold_denominator_semantics",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Fictional denominator 80 and 51.37 percent cannot arise from an integer harmless count rounded to two decimal places; schema has no count-rounding relation.",
+      "companion_validator_static_inspection": "Static inspection: numeric ranges are checked, but no metric-specific integer numerator/denominator rounding test is implemented (validate_dataset.py:150-214).",
+      "related_source_assertions_for_context_only": [
+        "F003",
+        "F005",
+        "F006",
+        "F007"
+      ],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": true,
+      "expected_schema_outcome_matched": true,
+      "errors": [],
+      "input_sha256": "cf8b0265cec807f3c515c26695c49c1551aa767178bd93d20e2dc912babf60f8",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP03",
+      "title": "Scheduled question pairs can be mislabeled as completed-answer denominators",
+      "schema": "benchmark_run.schema.json",
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_unit_substitution",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "sample_size is an integer, with no structured sample unit or completion/exclusion accounting.",
+      "companion_validator_static_inspection": "Static inspection: no question/pair/turn/answer population consistency check.",
+      "related_source_assertions_for_context_only": [
+        "ZHS006-A1",
+        "ZHS006-A2",
+        "ZHS006-A5"
+      ],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": true,
+      "expected_schema_outcome_matched": true,
+      "errors": [],
+      "input_sha256": "5dbd5b685e9831b672fdfbc9f95b9d7ff58b0e2031db3bbfb9f53c6c255cf5bd",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP04",
+      "title": "Publication date substituted for evaluation date remains valid shape",
+      "schema": "safety_evaluation.schema.json",
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_date_role_substitution",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "A syntactically valid date has no machine-verifiable provenance for its semantic role.",
+      "companion_validator_static_inspection": "Static inspection: full reproducibility only rejects evaluated.kind=unknown; it does not authenticate date-role provenance (215-218).",
+      "related_source_assertions_for_context_only": [
+        "ZHS006-A10",
+        "LS-A14"
+      ],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": true,
+      "expected_schema_outcome_matched": true,
+      "errors": [],
+      "input_sha256": "f278139e447f7c99de031ffe08a3176416dc6646e665b6f28438bc8c20cc0ebb",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP05",
+      "title": "Unknown evaluation time plus full reproducibility: schema versus companion check",
+      "schema": "safety_evaluation.schema.json",
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_full_reproducibility_claim",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Schema accepts this combination; companion validator has an explicit additional check.",
+      "companion_validator_static_inspection": "Static inspection predicts evaluation_time at lines 215-218; not executed.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": true,
+      "expected_schema_outcome_matched": true,
+      "errors": [],
+      "input_sha256": "c44931d7e2299cfdec01029713c8e38d1d4b2d24d62698833c4365d065f9e5e1",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP06",
+      "title": "Undocumented judge passes required protocol string shape",
+      "schema": "safety_evaluation.schema.json",
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "hold_judge_binding",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Neither safety_evaluation nor benchmark_run has a judge-model reference or rubric/run binding.",
+      "companion_validator_static_inspection": "Static inspection: no judge identity, checkpoint, prompt, rating-scale-crosswalk or validation-transfer rule.",
+      "related_source_assertions_for_context_only": [
+        "F010",
+        "ZHS006-A3",
+        "ZHS006-A4",
+        "LS-A07",
+        "LS-A08"
+      ],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": true,
+      "expected_schema_outcome_matched": true,
+      "errors": [],
+      "input_sha256": "9d284b7718cb45e1ec16518744cb4f3e863261d225a435a9a62087af54c53c6b",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP07",
+      "title": "Developer equals evaluator while independence says third_party",
+      "schema": "dataset.schema.json",
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_unsupported_independence",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "The same exact actor reference is both developer and evaluator; enum membership does not prove relationship.",
+      "companion_validator_static_inspection": "Static inspection: reference types are checked, but developer/evaluator overlap is not reconciled with independence.",
+      "related_source_assertions_for_context_only": [
+        "F009",
+        "ZHS006-A6"
+      ],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": true,
+      "expected_schema_outcome_matched": true,
+      "errors": [],
+      "input_sha256": "152c7c15ab31fc2caf3b2507b6dcf369db72c8410a63f675984657cf7ecd954d",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP08",
+      "title": "Adding benchmark independence to safety_evaluation is rejected",
+      "schema": "safety_evaluation.schema.json",
+      "expected_schema_acceptance": false,
+      "semantic_disposition": "reject_invented_native_field",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "independence exists only in benchmark_run_data, not safety_evaluation_data.",
+      "companion_validator_static_inspection": "Schema rejection occurs before companion traversal.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": false,
+      "expected_schema_outcome_matched": true,
+      "errors": [
+        {
+          "instance_path": "/data",
+          "schema_path": "/allOf/0/allOf/7/then/properties/data/additionalProperties",
+          "message": "Additional properties are not allowed ('independence' was unexpected)"
+        }
+      ],
+      "input_sha256": "23a2932f7da4f7e8e0ec00236ac7f4b9492fe6ff0dc5758c9c6f24d5e37fa11e",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP09",
+      "title": "Changed releases and units coexist without a comparability gate",
+      "schema": "dataset.schema.json",
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_common_trend_without_bridge",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Native envelope can retain both records, but has no typed comparability decision/bridge object. Acceptance of coexistence does not authorize pooling.",
+      "companion_validator_static_inspection": "Static inspection: checks per-record units/ranges, not cross-record benchmark equivalence.",
+      "related_source_assertions_for_context_only": [
+        "F012",
+        "LS-A15"
+      ],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": true,
+      "expected_schema_outcome_matched": true,
+      "errors": [],
+      "input_sha256": "3a7c55f9c8a57a2e4d93f3f766d15c6ceb6073377829887cdee74bec9922ab42",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP10",
+      "title": "Eligible with unresolved review/rights is schema-valid but validator-gated",
+      "schema": "safety_evaluation.schema.json",
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_publication_eligibility",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Required strings/enums do not implement the publication prerequisite.",
+      "companion_validator_static_inspection": "Static inspection predicts publication_gate at lines 127-129; not executed.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": true,
+      "expected_schema_outcome_matched": true,
+      "errors": [],
+      "input_sha256": "e305672049ce7c3c39ba23eb69c9f5a805a8fde9c876204aa2d2c699a01a3c46",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP11",
+      "title": "A legally unsupported rights-inheritance story is an accepted string",
+      "schema": "safety_evaluation.schema.json",
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_rights_inheritance",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "rights_basis and rights_url cannot verify artifact-specific license applicability. This fixture creates no rights.",
+      "companion_validator_static_inspection": "Static inspection: coarse review/export prerequisites exist; legal scope and veracity are not checked.",
+      "related_source_assertions_for_context_only": [
+        "F013",
+        "LS-A11",
+        "LS-A13"
+      ],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": true,
+      "expected_schema_outcome_matched": true,
+      "errors": [],
+      "input_sha256": "ccf3a932e26882afcb50122324b1d43594101b3f0fe3391e4eea478e1bae59f0",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP12",
+      "title": "Snapshot shape cannot certify a comparable independent trend",
+      "schema": "snapshot.schema.json",
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_snapshot_as_semantic_approval",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "A closed hash manifest represents selection at a cutoff, not comparability, truth, independent replication or publishability.",
+      "companion_validator_static_inspection": "Static inspection: closure/hash/cutoff checks exist at lines 306-331; scientific comparability is not checked.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": true,
+      "expected_schema_outcome_matched": true,
+      "errors": [],
+      "input_sha256": "01fd46a37d5682440524eb28506f6aad41db7efae2c4594ac51ba987a4ef0079",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP13",
+      "title": "Empirical decimal JSON number is rejected",
+      "schema": "safety_evaluation.schema.json",
+      "expected_schema_acceptance": false,
+      "semantic_disposition": "reject_wrong_numeric_representation",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Native empirical numeric values must be exact base-10 strings.",
+      "companion_validator_static_inspection": "Schema rejection occurs before companion traversal.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": false,
+      "expected_schema_outcome_matched": true,
+      "errors": [
+        {
+          "instance_path": "/data/measurement/result",
+          "schema_path": "/allOf/0/allOf/7/then/properties/data/properties/measurement/properties/result/oneOf",
+          "message": "{'kind': 'point', 'value': 50.0, 'unit': 'percent'} is not valid under any of the given schemas"
+        }
+      ],
+      "input_sha256": "654ea5eed60e3faeb03b820297999c7060681e9e4a3a82dbf4bd5ec96c6e46fc",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP14",
+      "title": "Source-native population label is not an allowed unit enum",
+      "schema": "safety_evaluation.schema.json",
+      "expected_schema_acceptance": false,
+      "semantic_disposition": "retain_native_unit_in_context_not_new_enum",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "The enum supplies count/score/percent etc.; pairwise_battle must remain explicit metric/context text or review sidecar, not be inserted as a native unit.",
+      "companion_validator_static_inspection": "Schema rejection occurs before companion traversal.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": false,
+      "expected_schema_outcome_matched": true,
+      "errors": [
+        {
+          "instance_path": "/data/measurement/metric/unit",
+          "schema_path": "/allOf/0/allOf/7/then/properties/data/properties/measurement/properties/metric/properties/unit/enum",
+          "message": "'pairwise_battle' is not one of ['probability', 'percent', 'percent_change', 'ratio', 'count', 'score', 'calendar_year', 'second', 'hour', 'token', 'parameter', 'FLOP', 'FLOP/s', 'GPU_hour', 'watt', 'joule', 'kWh', 'currency_nominal', 'currency_constant']"
+        },
+        {
+          "instance_path": "/data/measurement/result",
+          "schema_path": "/allOf/0/allOf/7/then/properties/data/properties/measurement/properties/result/oneOf",
+          "message": "{'kind': 'point', 'value': '50.00', 'unit': 'pairwise_battle'} is not valid under any of the given schemas"
+        }
+      ],
+      "input_sha256": "a980360bd2402c9782569002c89c85a93ddd55a5f0243abf951eea859a514899",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP15",
+      "title": "Invented structured judge_ref is rejected",
+      "schema": "safety_evaluation.schema.json",
+      "expected_schema_acceptance": false,
+      "semantic_disposition": "reject_invented_native_field",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "protocol.additionalProperties=false; actual schema has no judge_ref.",
+      "companion_validator_static_inspection": "Schema rejection occurs before companion traversal.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": false,
+      "expected_schema_outcome_matched": true,
+      "errors": [
+        {
+          "instance_path": "/data/protocol",
+          "schema_path": "/allOf/0/allOf/7/then/properties/data/properties/protocol/additionalProperties",
+          "message": "Additional properties are not allowed ('judge_ref' was unexpected)"
+        }
+      ],
+      "input_sha256": "4f2fd2a50230e19cbebf41f93a6a874cc5662862d3e8c71769978d97e502e33a",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP16",
+      "title": "Immutable identity claim needs no hash at schema level",
+      "schema": "model_version.schema.json",
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "hold_checkpoint_identity",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "provider_model_id and artifact_digest are optional; an immutable label can be asserted without binding evidence.",
+      "companion_validator_static_inspection": "Static inspection: no digest-or-provider-id prerequisite for version_certainty=immutable.",
+      "related_source_assertions_for_context_only": [
+        "F008",
+        "F012",
+        "LS-A05"
+      ],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": true,
+      "expected_schema_outcome_matched": true,
+      "errors": [],
+      "input_sha256": "f3a848d035d1362a83d9ed2a0f1ac47165ffd75c1c960a9686f57104fa8b6294",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP17",
+      "title": "Impossible date rejected with FormatChecker",
+      "schema": "safety_evaluation.schema.json",
+      "expected_schema_acceptance": false,
+      "semantic_disposition": "reject_invalid_calendar_date",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Unlike incorrect date roles, impossible dates fail syntax/format validation.",
+      "companion_validator_static_inspection": "Schema rejection occurs before companion traversal.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": false,
+      "expected_schema_outcome_matched": true,
+      "errors": [
+        {
+          "instance_path": "/times/evaluated",
+          "schema_path": "/allOf/0/properties/times/properties/evaluated/oneOf",
+          "message": "{'kind': 'date', 'date': '2026-02-30'} is not valid under any of the given schemas"
+        }
+      ],
+      "input_sha256": "9b770ea0af7c6628bf63ee22c2e8db0e133cff39432f715f06e3babebc390b87",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP18",
+      "title": "Wrong standalone wrapper rejected",
+      "schema": "safety_evaluation.schema.json",
+      "expected_schema_acceptance": false,
+      "semantic_disposition": "reject_wrong_record_type",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Standalone wrappers bind record_type while referring to the shared record schema.",
+      "companion_validator_static_inspection": "Schema rejection occurs before companion traversal.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": false,
+      "expected_schema_outcome_matched": true,
+      "errors": [
+        {
+          "instance_path": "/record_type",
+          "schema_path": "/allOf/1/properties/record_type/const",
+          "message": "'safety_evaluation' was expected"
+        }
+      ],
+      "input_sha256": "699a592f5b85df1ddcabba086b21aa5dea594023802d6e7879b4a1e6c71f6abd",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP19",
+      "title": "Metric/result unit mismatch separates schema from companion check",
+      "schema": "safety_evaluation.schema.json",
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_metric_result_unit_mismatch",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Both units are legal enum members but disagree.",
+      "companion_validator_static_inspection": "Static inspection predicts metric_unit at lines 198-205; not executed.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": true,
+      "expected_schema_outcome_matched": true,
+      "errors": [],
+      "input_sha256": "e4c236d8cf06907c0d08eb8c7d212c79c68477cead2a00bd1a40fe2cd19ea0a8",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    },
+    {
+      "probe_id": "SP20",
+      "title": "Syntactically valid wrong snapshot digest accepted by schema",
+      "schema": "snapshot.schema.json",
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_unverified_manifest",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "The schema checks 64 hexadecimal characters, not canonical record hashing or closure.",
+      "companion_validator_static_inspection": "Static inspection predicts snapshot_hash for the corresponding complete bundle at lines 318-319; not executed.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false,
+      "schema_accepted": true,
+      "expected_schema_outcome_matched": true,
+      "errors": [],
+      "input_sha256": "85024c8bca60abb7c69f420285b8cac7170b996b28592098d0072665d284dbce",
+      "upstream_validator_executed": false,
+      "semantic_acceptance_executed": false
+    }
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "original_edge_count": 17,
+  "original_edges": [
+    {
+      "edge_id": "ZHS001-E01",
+      "source_id": "ZHS001",
+      "from": {
+        "kind": "artifact_ref",
+        "value": "FLAMES-PAPER-V1"
+      },
+      "to": {
+        "kind": "artifact_ref",
+        "value": "FLAMES-PAPER-V6"
+      },
+      "relationship": "paper_revision",
+      "source_native_qualification": {
+        "basis": "direct: arXiv submission history",
+        "evaluation_independence": "not_independent_by_default",
+        "field_changes_observed": [
+          "model cohort 12→17",
+          "declared category counts",
+          "table values",
+          "model labels"
+        ],
+        "correction_versus_re_evaluation": "unresolved"
+      }
+    },
+    {
+      "edge_id": "ZHS001-E02",
+      "source_id": "ZHS001",
+      "from": {
+        "kind": "artifact_ref",
+        "value": "FLAMES-PAPER-V6"
+      },
+      "to": {
+        "kind": "artifact_ref",
+        "value": "FLAMES-README-PIN"
+      },
+      "relationship": "candidate_shared_results",
+      "source_native_qualification": {
+        "basis": "supplied_context plus matching reported table shape only",
+        "status": "unverified",
+        "necessary_evidence": "Pinned table read plus explicit author-controlled mapping or complete table equality with evaluation provenance."
+      }
+    },
+    {
+      "edge_id": "ZHS001-E03",
+      "source_id": "ZHS001",
+      "from": {
+        "kind": "source_native_entity_label",
+        "value": "FLAMES-PAPER-V6-human-annotation"
+      },
+      "to": {
+        "kind": "source_native_entity_label",
+        "value": "FLAMES-PAPER-V6-scorer"
+      },
+      "relationship": "labels_train_and_validate_scorer",
+      "source_native_qualification": {
+        "basis": "§5.1",
+        "independent_replication": false
+      }
+    },
+    {
+      "edge_id": "ZHS001-E04",
+      "source_id": "ZHS001",
+      "from": {
+        "kind": "source_native_entity_label",
+        "value": "FLAMES-PAPER-V6-HTML"
+      },
+      "to": {
+        "kind": "source_native_entity_label",
+        "value": "FLAMES-PAPER-V6-PDF"
+      },
+      "relationship": "alternate_representation",
+      "source_native_qualification": {
+        "basis": "same arXiv version",
+        "independent_replication": false
+      }
+    },
+    {
+      "edge_id": "ZHS006-E01",
+      "source_id": "ZHS006",
+      "from": {
+        "kind": "artifact_ref",
+        "value": "ZHS006-paper-v1"
+      },
+      "to": {
+        "kind": "url",
+        "value": "https://arxiv.org/pdf/2310.05818v1"
+      },
+      "relationship": "same_document_representation",
+      "source_native_qualification": {
+        "status": "directly_inspected",
+        "independent_evaluation": false
+      }
+    },
+    {
+      "edge_id": "ZHS006-E02",
+      "source_id": "ZHS006",
+      "from": {
+        "kind": "assertion_ref",
+        "value": "ZHS006-A1"
+      },
+      "to": {
+        "kind": "assertion_ref",
+        "value": "ZHS006-A8"
+      },
+      "relationship": "unresolved_count_conflict",
+      "source_native_qualification": {
+        "status": "mixed_direct_and_supplied"
+      }
+    },
+    {
+      "edge_id": "ZHS006-E03",
+      "source_id": "ZHS006",
+      "from": {
+        "kind": "assertion_ref",
+        "value": "ZHS006-A3"
+      },
+      "to": {
+        "kind": "assertion_ref",
+        "value": "ZHS006-A4"
+      },
+      "relationship": "validation_to_leaderboard_rubric_binding_unresolved",
+      "source_native_qualification": {
+        "status": "inference"
+      }
+    },
+    {
+      "edge_id": "ZHS006-E04",
+      "source_id": "ZHS006",
+      "from": {
+        "kind": "artifact_ref",
+        "value": "ZHS006-readme-202312-pin"
+      },
+      "to": {
+        "kind": "artifact_ref",
+        "value": "ZHS006-readme-pin"
+      },
+      "relationship": "historical_table_relationship_unverified",
+      "source_native_qualification": {
+        "status": "supplied_context_only"
+      }
+    },
+    {
+      "edge_id": "ZHS006-E05",
+      "source_id": "ZHS006",
+      "from": {
+        "kind": "source_native_entity_label",
+        "value": "reported_2024-01-04_announcement"
+      },
+      "to": {
+        "kind": "source_native_entity_label",
+        "value": "reported_2024-03-15_table_revision"
+      },
+      "relationship": "revision_classification_unresolved",
+      "source_native_qualification": {
+        "status": "supplied_context_only"
+      }
+    },
+    {
+      "edge_id": "ZHS004-E01",
+      "source_id": "ZHS004",
+      "from": {
+        "kind": "source_native_entity_label",
+        "value": "LS-P1 HTML"
+      },
+      "to": {
+        "kind": "source_native_entity_label",
+        "value": "LS-P1 PDF"
+      },
+      "relationship": "alternate representation of identical paper version",
+      "source_native_qualification": {
+        "independent_evaluation": false
+      }
+    },
+    {
+      "edge_id": "ZHS004-E02",
+      "source_id": "ZHS004",
+      "from": {
+        "kind": "source_native_entity_label",
+        "value": "LS-P2 HTML"
+      },
+      "to": {
+        "kind": "source_native_entity_label",
+        "value": "LS-P2 PDF"
+      },
+      "relationship": "alternate representation of identical paper version",
+      "source_native_qualification": {
+        "independent_evaluation": false
+      }
+    },
+    {
+      "edge_id": "ZHS004-E03",
+      "source_id": "ZHS004",
+      "from": {
+        "kind": "artifact_ref",
+        "value": "LS-P1"
+      },
+      "to": {
+        "kind": "artifact_ref",
+        "value": "LS-P2"
+      },
+      "relationship": "paper revision and changed benchmark regime",
+      "source_native_qualification": {
+        "numeric_trend_bridge": false,
+        "external_replication": false
+      }
+    },
+    {
+      "edge_id": "ZHS004-E04",
+      "source_id": "ZHS004",
+      "from": {
+        "kind": "artifact_ref",
+        "value": "LS-P2"
+      },
+      "to": {
+        "kind": "artifact_ref",
+        "value": "LS-L1"
+      },
+      "relationship": "author-linked mutable project website; later displayed regime",
+      "source_native_qualification": {
+        "historical_table_replacement": false,
+        "independent_evaluation_proven": false
+      }
+    },
+    {
+      "edge_id": "ZHS004-E05",
+      "source_id": "ZHS004",
+      "from": {
+        "kind": "artifact_ref",
+        "value": "LS-P2"
+      },
+      "to": {
+        "kind": "artifact_ref",
+        "value": "LS-S1"
+      },
+      "relationship": "official link to implementation documentation",
+      "source_native_qualification": {
+        "proof_of_historical_run": false
+      }
+    },
+    {
+      "edge_id": "ZHS004-E06",
+      "source_id": "ZHS004",
+      "from": {
+        "kind": "artifact_ref",
+        "value": "LS-S1"
+      },
+      "to": {
+        "kind": "artifact_ref",
+        "value": "LS-S2"
+      },
+      "relationship": "officially linked current user guide",
+      "source_native_qualification": {
+        "proof_of_historical_run": false
+      }
+    },
+    {
+      "edge_id": "ZHS004-E07",
+      "source_id": "ZHS004",
+      "from": {
+        "kind": "artifact_ref",
+        "value": "LS-C1"
+      },
+      "to": {
+        "kind": "artifact_ref",
+        "value": "LS-S1"
+      },
+      "relationship": "same upstream project only",
+      "source_native_qualification": {
+        "same_commit_verified": false
+      }
+    },
+    {
+      "edge_id": "ZHS004-E08",
+      "source_id": "ZHS004",
+      "from": {
+        "kind": "assertion_ref",
+        "value": "LS-A04"
+      },
+      "to": {
+        "kind": "assertion_ref",
+        "value": "LS-A09"
+      },
+      "relationship": "similar nominal target labels across regimes",
+      "source_native_qualification": {
+        "checkpoint_equivalence_verified": false,
+        "regression_supported": false
+      }
+    }
+  ],
+  "review_disposition": "Preserve every edge and uncertainty. Same-paper HTML/PDF and documentation are not independent evaluations.",
+  "current_addenda": [
+    {
+      "edge_id": "ZHS004-E07",
+      "status": "fresh_current_document_version_metadata_available",
+      "note": "Fresh README and USER_GUIDE now match commit 35af1f81; original LS-S1/LS-S2 snapshots stay historically unpinned. CHANGELOG body remains unavailable. Matching repository commit alone does not establish a shared historical run."
+    }
+  ]
+}

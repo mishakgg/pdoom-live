@@ -1,0 +1,2547 @@
+{
+  "format": "review_only_synthetic_schema_probes",
+  "version": "1.0",
+  "repository_commit": "246f746e3a267363c7f6d2e0494eb72fb4c98bc9",
+  "schemas_loaded_as_data": 14,
+  "jsonschema_version": "4.26.0",
+  "offline_registry_only": true,
+  "upstream_code_executed": false,
+  "network_access": false,
+  "adapter_implemented": false,
+  "operational_admission": false,
+  "original_acceptance_cases_executed": false,
+  "notice": "Twenty SP probes of fictional schema shapes are NOT the twenty original AC acceptance cases. Semantic dispositions are review explanations, not executed acceptance checks. No upstream validator or source code was executed; no research question is settled by schema success.",
+  "probes": [
+    {
+      "probe_id": "SP01",
+      "title": "Positive shape control across the six relevant native record types",
+      "schema": "dataset.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "dataset_id": "wholly-fictional-local-schema-probes",
+        "dataset_kind": "synthetic",
+        "generated_at": "2026-10-08T12:00:00Z",
+        "records": [
+          {
+            "schema_version": "0.1.0",
+            "record_type": "source_artifact",
+            "id": "urn:pdataset:source_artifact:probe",
+            "revision": 1,
+            "synthetic": true,
+            "times": {
+              "known_at": "2026-10-08T12:00:00Z",
+              "retrieved_at": "2026-10-08T12:00:00Z",
+              "published": {
+                "kind": "date",
+                "date": "2026-09-30"
+              },
+              "event": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              },
+              "evaluated": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              }
+            },
+            "governance": {
+              "review_state": "needs_review",
+              "rights_state": "unknown",
+              "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+              "publication_state": "internal"
+            },
+            "evidence": [],
+            "data": {
+              "canonical_url": "https://example.invalid/fictional/source-v1",
+              "title": "Wholly fictional schema-probe source",
+              "source_type": "report",
+              "language": "en",
+              "author_refs": [],
+              "availability": "unknown"
+            }
+          },
+          {
+            "schema_version": "0.1.0",
+            "record_type": "actor",
+            "id": "urn:pdataset:actor:probe",
+            "revision": 1,
+            "synthetic": true,
+            "times": {
+              "known_at": "2026-10-08T12:00:00Z",
+              "retrieved_at": "2026-10-08T12:00:00Z",
+              "published": {
+                "kind": "date",
+                "date": "2026-09-30"
+              },
+              "event": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              },
+              "evaluated": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              }
+            },
+            "governance": {
+              "review_state": "needs_review",
+              "rights_state": "unknown",
+              "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+              "publication_state": "internal"
+            },
+            "evidence": [
+              {
+                "source_ref": {
+                  "id": "urn:pdataset:source_artifact:probe",
+                  "revision": 1
+                },
+                "locator": "Fictional appendix A, table 1, row A",
+                "relation": "supports",
+                "extraction_method": "synthetic",
+                "extractor_version": "local-schema-probes-v1"
+              }
+            ],
+            "data": {
+              "actor_kind": "organization",
+              "name": "Fictional Developer Lab",
+              "name_language": "en",
+              "aliases": [],
+              "jurisdictions": [],
+              "affiliations": [],
+              "external_ids": []
+            }
+          },
+          {
+            "schema_version": "0.1.0",
+            "record_type": "model_version",
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1,
+            "synthetic": true,
+            "times": {
+              "known_at": "2026-10-08T12:00:00Z",
+              "retrieved_at": "2026-10-08T12:00:00Z",
+              "published": {
+                "kind": "date",
+                "date": "2026-09-30"
+              },
+              "event": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              },
+              "evaluated": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              }
+            },
+            "governance": {
+              "review_state": "needs_review",
+              "rights_state": "unknown",
+              "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+              "publication_state": "internal"
+            },
+            "evidence": [
+              {
+                "source_ref": {
+                  "id": "urn:pdataset:source_artifact:probe",
+                  "revision": 1
+                },
+                "locator": "Fictional appendix A, table 1, row A",
+                "relation": "supports",
+                "extraction_method": "synthetic",
+                "extractor_version": "local-schema-probes-v1"
+              }
+            ],
+            "data": {
+              "developer_refs": [
+                {
+                  "id": "urn:pdataset:actor:probe",
+                  "revision": 1
+                }
+              ],
+              "family": "Fictional Model",
+              "version_label": "fictional-v1",
+              "modality": [
+                "text"
+              ],
+              "access": "unknown",
+              "parent_model_refs": [],
+              "version_certainty": "unknown"
+            }
+          },
+          {
+            "schema_version": "0.1.0",
+            "record_type": "safety_evaluation",
+            "id": "urn:pdataset:safety_evaluation:probe",
+            "revision": 1,
+            "synthetic": true,
+            "times": {
+              "known_at": "2026-10-08T12:00:00Z",
+              "retrieved_at": "2026-10-08T12:00:00Z",
+              "published": {
+                "kind": "date",
+                "date": "2026-09-30"
+              },
+              "event": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              },
+              "evaluated": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              }
+            },
+            "governance": {
+              "review_state": "needs_review",
+              "rights_state": "unknown",
+              "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+              "publication_state": "internal"
+            },
+            "evidence": [
+              {
+                "source_ref": {
+                  "id": "urn:pdataset:source_artifact:probe",
+                  "revision": 1
+                },
+                "locator": "Fictional appendix A, table 1, row A",
+                "relation": "supports",
+                "extraction_method": "synthetic",
+                "extractor_version": "local-schema-probes-v1"
+              }
+            ],
+            "data": {
+              "model_ref": {
+                "id": "urn:pdataset:model_version:probe",
+                "revision": 1
+              },
+              "evaluator_refs": [
+                {
+                  "id": "urn:pdataset:actor:probe",
+                  "revision": 1
+                }
+              ],
+              "risk_domain": "other",
+              "protocol": {
+                "name": "Fictional probe protocol",
+                "version": "fictional-v1",
+                "configuration": "Fictional tasks; execution and judge settings not established.",
+                "reproducibility": "partial"
+              },
+              "measurement": {
+                "metric": {
+                  "key": "fictional-harmless-rate-v1",
+                  "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+                  "unit": "percent",
+                  "direction": "higher_better",
+                  "minimum": "0",
+                  "maximum": "100"
+                },
+                "result": {
+                  "kind": "point",
+                  "value": "50.00",
+                  "unit": "percent"
+                },
+                "observation_mode": "reported",
+                "method": "Wholly fictional schema illustration. No evaluation was performed.",
+                "sample_size": 80
+              },
+              "conclusion": "No empirical conclusion: wholly fictional fixture.",
+              "limitations": "Synthetic only; no source correctness, exact model, judge, independence or pooling established.",
+              "disclosure_level": "summary_only"
+            }
+          },
+          {
+            "schema_version": "0.1.0",
+            "record_type": "benchmark_run",
+            "id": "urn:pdataset:benchmark_run:probe",
+            "revision": 1,
+            "synthetic": true,
+            "times": {
+              "known_at": "2026-10-08T12:00:00Z",
+              "retrieved_at": "2026-10-08T12:00:00Z",
+              "published": {
+                "kind": "date",
+                "date": "2026-09-30"
+              },
+              "event": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              },
+              "evaluated": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              }
+            },
+            "governance": {
+              "review_state": "needs_review",
+              "rights_state": "unknown",
+              "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+              "publication_state": "internal"
+            },
+            "evidence": [
+              {
+                "source_ref": {
+                  "id": "urn:pdataset:source_artifact:probe",
+                  "revision": 1
+                },
+                "locator": "Fictional appendix A, table 1, row A",
+                "relation": "supports",
+                "extraction_method": "synthetic",
+                "extractor_version": "local-schema-probes-v1"
+              }
+            ],
+            "data": {
+              "model_ref": {
+                "id": "urn:pdataset:model_version:probe",
+                "revision": 1
+              },
+              "evaluator_refs": [
+                {
+                  "id": "urn:pdataset:actor:probe",
+                  "revision": 1
+                }
+              ],
+              "benchmark": {
+                "name": "Fictional benchmark",
+                "version": "fictional-v1",
+                "split": "unknown",
+                "task": "Fictional test only",
+                "contamination_status": "unknown"
+              },
+              "protocol": {
+                "name": "Fictional probe protocol",
+                "version": "fictional-v1",
+                "configuration": "Fictional tasks; execution and judge settings not established.",
+                "reproducibility": "partial"
+              },
+              "measurement": {
+                "metric": {
+                  "key": "fictional-harmless-rate-v1",
+                  "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+                  "unit": "percent",
+                  "direction": "higher_better",
+                  "minimum": "0",
+                  "maximum": "100"
+                },
+                "result": {
+                  "kind": "point",
+                  "value": "50.00",
+                  "unit": "percent"
+                },
+                "observation_mode": "reported",
+                "method": "Wholly fictional schema illustration. No evaluation was performed.",
+                "sample_size": 80
+              },
+              "independence": "developer_reported"
+            }
+          },
+          {
+            "schema_version": "0.1.0",
+            "record_type": "snapshot",
+            "id": "urn:pdataset:snapshot:probe",
+            "revision": 1,
+            "synthetic": true,
+            "times": {
+              "known_at": "2026-10-08T12:00:00Z",
+              "retrieved_at": "2026-10-08T12:00:00Z",
+              "published": {
+                "kind": "date",
+                "date": "2026-09-30"
+              },
+              "event": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              },
+              "evaluated": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              }
+            },
+            "governance": {
+              "review_state": "needs_review",
+              "rights_state": "unknown",
+              "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+              "publication_state": "internal"
+            },
+            "evidence": [],
+            "data": {
+              "snapshot_kind": "observed_ledger",
+              "cutoff": "2026-10-08T12:00:00Z",
+              "created_at": "2026-10-08T12:00:00Z",
+              "members": [
+                {
+                  "record_ref": {
+                    "id": "urn:pdataset:source_artifact:probe",
+                    "revision": 1
+                  },
+                  "sha256": "699a592f5b85df1ddcabba086b21aa5dea594023802d6e7879b4a1e6c71f6abd"
+                },
+                {
+                  "record_ref": {
+                    "id": "urn:pdataset:actor:probe",
+                    "revision": 1
+                  },
+                  "sha256": "1859756b5b951e3b7f00438848054f1d27fd0f44b3b6cc70313cf02cd9b16073"
+                },
+                {
+                  "record_ref": {
+                    "id": "urn:pdataset:model_version:probe",
+                    "revision": 1
+                  },
+                  "sha256": "6805a1a06f18bd816d15c3ecc63e69603b98b32c0fd24d420d57c2c99a21dc18"
+                },
+                {
+                  "record_ref": {
+                    "id": "urn:pdataset:safety_evaluation:probe",
+                    "revision": 1
+                  },
+                  "sha256": "7430db5aa8ea850b278f20cd4ee1d3e5013760c00d78ce0a7f494218807feb19"
+                },
+                {
+                  "record_ref": {
+                    "id": "urn:pdataset:benchmark_run:probe",
+                    "revision": 1
+                  },
+                  "sha256": "991dc28420fe0478ebae7f142a9778707f7f5953b4dcd2e9727ca233aa7aa591"
+                }
+              ],
+              "canonicalization": "python-json-sort-utf8-v1",
+              "notice": "Wholly fictional closed ledger; no claim of comparability, independence or rights clearance."
+            }
+          }
+        ]
+      },
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "synthetic_shape_control_only",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Shape success is not evidence adjudication.",
+      "companion_validator_static_inspection": "Not executed. Full validator result is deliberately not claimed.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP02",
+      "title": "Numerator/denominator consistency is not checked by schema",
+      "schema": "safety_evaluation.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "safety_evaluation",
+        "id": "urn:pdataset:safety_evaluation:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:probe",
+              "revision": 1
+            },
+            "locator": "Fictional appendix A, table 1, row A",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "local-schema-probes-v1"
+          }
+        ],
+        "data": {
+          "model_ref": {
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1
+          },
+          "evaluator_refs": [
+            {
+              "id": "urn:pdataset:actor:probe",
+              "revision": 1
+            }
+          ],
+          "risk_domain": "other",
+          "protocol": {
+            "name": "Fictional probe protocol",
+            "version": "fictional-v1",
+            "configuration": "Fictional tasks; execution and judge settings not established.",
+            "reproducibility": "partial"
+          },
+          "measurement": {
+            "metric": {
+              "key": "fictional-harmless-rate-v1",
+              "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+              "unit": "percent",
+              "direction": "higher_better",
+              "minimum": "0",
+              "maximum": "100"
+            },
+            "result": {
+              "kind": "point",
+              "value": "51.37",
+              "unit": "percent"
+            },
+            "observation_mode": "reported",
+            "method": "Wholly fictional schema illustration. No evaluation was performed.",
+            "sample_size": 80
+          },
+          "conclusion": "No empirical conclusion: wholly fictional fixture.",
+          "limitations": "Synthetic only; no source correctness, exact model, judge, independence or pooling established.",
+          "disclosure_level": "summary_only"
+        }
+      },
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "hold_denominator_semantics",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Fictional denominator 80 and 51.37 percent cannot arise from an integer harmless count rounded to two decimal places; schema has no count-rounding relation.",
+      "companion_validator_static_inspection": "Static inspection: numeric ranges are checked, but no metric-specific integer numerator/denominator rounding test is implemented (validate_dataset.py:150-214).",
+      "related_source_assertions_for_context_only": [
+        "F003",
+        "F005",
+        "F006",
+        "F007"
+      ],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP03",
+      "title": "Scheduled question pairs can be mislabeled as completed-answer denominators",
+      "schema": "benchmark_run.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "benchmark_run",
+        "id": "urn:pdataset:benchmark_run:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:probe",
+              "revision": 1
+            },
+            "locator": "Fictional appendix A, table 1, row A",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "local-schema-probes-v1"
+          }
+        ],
+        "data": {
+          "model_ref": {
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1
+          },
+          "evaluator_refs": [
+            {
+              "id": "urn:pdataset:actor:probe",
+              "revision": 1
+            }
+          ],
+          "benchmark": {
+            "name": "Fictional benchmark",
+            "version": "fictional-v1",
+            "split": "unknown",
+            "task": "Fictional test only",
+            "contamination_status": "unknown"
+          },
+          "protocol": {
+            "name": "Fictional probe protocol",
+            "version": "fictional-v1",
+            "configuration": "Fictional tasks; execution and judge settings not established.",
+            "reproducibility": "partial"
+          },
+          "measurement": {
+            "metric": {
+              "key": "fictional-harmless-rate-v1",
+              "definition": "Forty scheduled question pairs incorrectly treated as forty completed judged answers.",
+              "unit": "percent",
+              "direction": "higher_better",
+              "minimum": "0",
+              "maximum": "100"
+            },
+            "result": {
+              "kind": "point",
+              "value": "50.00",
+              "unit": "percent"
+            },
+            "observation_mode": "reported",
+            "method": "Wholly fictional schema illustration. No evaluation was performed.",
+            "sample_size": 40
+          },
+          "independence": "developer_reported"
+        }
+      },
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_unit_substitution",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "sample_size is an integer, with no structured sample unit or completion/exclusion accounting.",
+      "companion_validator_static_inspection": "Static inspection: no question/pair/turn/answer population consistency check.",
+      "related_source_assertions_for_context_only": [
+        "ZHS006-A1",
+        "ZHS006-A2",
+        "ZHS006-A5"
+      ],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP04",
+      "title": "Publication date substituted for evaluation date remains valid shape",
+      "schema": "safety_evaluation.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "safety_evaluation",
+        "id": "urn:pdataset:safety_evaluation:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "date",
+            "date": "2026-09-30"
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:probe",
+              "revision": 1
+            },
+            "locator": "Fictional appendix A, table 1, row A",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "local-schema-probes-v1"
+          }
+        ],
+        "data": {
+          "model_ref": {
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1
+          },
+          "evaluator_refs": [
+            {
+              "id": "urn:pdataset:actor:probe",
+              "revision": 1
+            }
+          ],
+          "risk_domain": "other",
+          "protocol": {
+            "name": "Fictional probe protocol",
+            "version": "fictional-v1",
+            "configuration": "Fictional tasks; execution and judge settings not established.",
+            "reproducibility": "full"
+          },
+          "measurement": {
+            "metric": {
+              "key": "fictional-harmless-rate-v1",
+              "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+              "unit": "percent",
+              "direction": "higher_better",
+              "minimum": "0",
+              "maximum": "100"
+            },
+            "result": {
+              "kind": "point",
+              "value": "50.00",
+              "unit": "percent"
+            },
+            "observation_mode": "reported",
+            "method": "Wholly fictional schema illustration. No evaluation was performed.",
+            "sample_size": 80
+          },
+          "conclusion": "No empirical conclusion: wholly fictional fixture.",
+          "limitations": "Synthetic only; no source correctness, exact model, judge, independence or pooling established.",
+          "disclosure_level": "summary_only"
+        }
+      },
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_date_role_substitution",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "A syntactically valid date has no machine-verifiable provenance for its semantic role.",
+      "companion_validator_static_inspection": "Static inspection: full reproducibility only rejects evaluated.kind=unknown; it does not authenticate date-role provenance (215-218).",
+      "related_source_assertions_for_context_only": [
+        "ZHS006-A10",
+        "LS-A14"
+      ],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP05",
+      "title": "Unknown evaluation time plus full reproducibility: schema versus companion check",
+      "schema": "safety_evaluation.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "safety_evaluation",
+        "id": "urn:pdataset:safety_evaluation:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:probe",
+              "revision": 1
+            },
+            "locator": "Fictional appendix A, table 1, row A",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "local-schema-probes-v1"
+          }
+        ],
+        "data": {
+          "model_ref": {
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1
+          },
+          "evaluator_refs": [
+            {
+              "id": "urn:pdataset:actor:probe",
+              "revision": 1
+            }
+          ],
+          "risk_domain": "other",
+          "protocol": {
+            "name": "Fictional probe protocol",
+            "version": "fictional-v1",
+            "configuration": "Fictional tasks; execution and judge settings not established.",
+            "reproducibility": "full"
+          },
+          "measurement": {
+            "metric": {
+              "key": "fictional-harmless-rate-v1",
+              "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+              "unit": "percent",
+              "direction": "higher_better",
+              "minimum": "0",
+              "maximum": "100"
+            },
+            "result": {
+              "kind": "point",
+              "value": "50.00",
+              "unit": "percent"
+            },
+            "observation_mode": "reported",
+            "method": "Wholly fictional schema illustration. No evaluation was performed.",
+            "sample_size": 80
+          },
+          "conclusion": "No empirical conclusion: wholly fictional fixture.",
+          "limitations": "Synthetic only; no source correctness, exact model, judge, independence or pooling established.",
+          "disclosure_level": "summary_only"
+        }
+      },
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_full_reproducibility_claim",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Schema accepts this combination; companion validator has an explicit additional check.",
+      "companion_validator_static_inspection": "Static inspection predicts evaluation_time at lines 215-218; not executed.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP06",
+      "title": "Undocumented judge passes required protocol string shape",
+      "schema": "safety_evaluation.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "safety_evaluation",
+        "id": "urn:pdataset:safety_evaluation:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:probe",
+              "revision": 1
+            },
+            "locator": "Fictional appendix A, table 1, row A",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "local-schema-probes-v1"
+          }
+        ],
+        "data": {
+          "model_ref": {
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1
+          },
+          "evaluator_refs": [
+            {
+              "id": "urn:pdataset:actor:probe",
+              "revision": 1
+            }
+          ],
+          "risk_domain": "other",
+          "protocol": {
+            "name": "Fictional probe protocol",
+            "version": "fictional-v1",
+            "configuration": "Automated scoring; judge identity, checkpoint, rubric and instruction unknown.",
+            "reproducibility": "partial"
+          },
+          "measurement": {
+            "metric": {
+              "key": "fictional-harmless-rate-v1",
+              "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+              "unit": "percent",
+              "direction": "higher_better",
+              "minimum": "0",
+              "maximum": "100"
+            },
+            "result": {
+              "kind": "point",
+              "value": "50.00",
+              "unit": "percent"
+            },
+            "observation_mode": "reported",
+            "method": "Wholly fictional schema illustration. No evaluation was performed.",
+            "sample_size": 80
+          },
+          "conclusion": "No empirical conclusion: wholly fictional fixture.",
+          "limitations": "Synthetic only; no source correctness, exact model, judge, independence or pooling established.",
+          "disclosure_level": "summary_only"
+        }
+      },
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "hold_judge_binding",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Neither safety_evaluation nor benchmark_run has a judge-model reference or rubric/run binding.",
+      "companion_validator_static_inspection": "Static inspection: no judge identity, checkpoint, prompt, rating-scale-crosswalk or validation-transfer rule.",
+      "related_source_assertions_for_context_only": [
+        "F010",
+        "ZHS006-A3",
+        "ZHS006-A4",
+        "LS-A07",
+        "LS-A08"
+      ],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP07",
+      "title": "Developer equals evaluator while independence says third_party",
+      "schema": "dataset.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "dataset_id": "wholly-fictional-local-schema-probes",
+        "dataset_kind": "synthetic",
+        "generated_at": "2026-10-08T12:00:00Z",
+        "records": [
+          {
+            "schema_version": "0.1.0",
+            "record_type": "source_artifact",
+            "id": "urn:pdataset:source_artifact:probe",
+            "revision": 1,
+            "synthetic": true,
+            "times": {
+              "known_at": "2026-10-08T12:00:00Z",
+              "retrieved_at": "2026-10-08T12:00:00Z",
+              "published": {
+                "kind": "date",
+                "date": "2026-09-30"
+              },
+              "event": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              },
+              "evaluated": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              }
+            },
+            "governance": {
+              "review_state": "needs_review",
+              "rights_state": "unknown",
+              "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+              "publication_state": "internal"
+            },
+            "evidence": [],
+            "data": {
+              "canonical_url": "https://example.invalid/fictional/source-v1",
+              "title": "Wholly fictional schema-probe source",
+              "source_type": "report",
+              "language": "en",
+              "author_refs": [],
+              "availability": "unknown"
+            }
+          },
+          {
+            "schema_version": "0.1.0",
+            "record_type": "actor",
+            "id": "urn:pdataset:actor:probe",
+            "revision": 1,
+            "synthetic": true,
+            "times": {
+              "known_at": "2026-10-08T12:00:00Z",
+              "retrieved_at": "2026-10-08T12:00:00Z",
+              "published": {
+                "kind": "date",
+                "date": "2026-09-30"
+              },
+              "event": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              },
+              "evaluated": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              }
+            },
+            "governance": {
+              "review_state": "needs_review",
+              "rights_state": "unknown",
+              "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+              "publication_state": "internal"
+            },
+            "evidence": [
+              {
+                "source_ref": {
+                  "id": "urn:pdataset:source_artifact:probe",
+                  "revision": 1
+                },
+                "locator": "Fictional appendix A, table 1, row A",
+                "relation": "supports",
+                "extraction_method": "synthetic",
+                "extractor_version": "local-schema-probes-v1"
+              }
+            ],
+            "data": {
+              "actor_kind": "organization",
+              "name": "Fictional Developer Lab",
+              "name_language": "en",
+              "aliases": [],
+              "jurisdictions": [],
+              "affiliations": [],
+              "external_ids": []
+            }
+          },
+          {
+            "schema_version": "0.1.0",
+            "record_type": "model_version",
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1,
+            "synthetic": true,
+            "times": {
+              "known_at": "2026-10-08T12:00:00Z",
+              "retrieved_at": "2026-10-08T12:00:00Z",
+              "published": {
+                "kind": "date",
+                "date": "2026-09-30"
+              },
+              "event": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              },
+              "evaluated": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              }
+            },
+            "governance": {
+              "review_state": "needs_review",
+              "rights_state": "unknown",
+              "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+              "publication_state": "internal"
+            },
+            "evidence": [
+              {
+                "source_ref": {
+                  "id": "urn:pdataset:source_artifact:probe",
+                  "revision": 1
+                },
+                "locator": "Fictional appendix A, table 1, row A",
+                "relation": "supports",
+                "extraction_method": "synthetic",
+                "extractor_version": "local-schema-probes-v1"
+              }
+            ],
+            "data": {
+              "developer_refs": [
+                {
+                  "id": "urn:pdataset:actor:probe",
+                  "revision": 1
+                }
+              ],
+              "family": "Fictional Model",
+              "version_label": "fictional-v1",
+              "modality": [
+                "text"
+              ],
+              "access": "unknown",
+              "parent_model_refs": [],
+              "version_certainty": "unknown"
+            }
+          },
+          {
+            "schema_version": "0.1.0",
+            "record_type": "benchmark_run",
+            "id": "urn:pdataset:benchmark_run:probe",
+            "revision": 1,
+            "synthetic": true,
+            "times": {
+              "known_at": "2026-10-08T12:00:00Z",
+              "retrieved_at": "2026-10-08T12:00:00Z",
+              "published": {
+                "kind": "date",
+                "date": "2026-09-30"
+              },
+              "event": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              },
+              "evaluated": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              }
+            },
+            "governance": {
+              "review_state": "needs_review",
+              "rights_state": "unknown",
+              "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+              "publication_state": "internal"
+            },
+            "evidence": [
+              {
+                "source_ref": {
+                  "id": "urn:pdataset:source_artifact:probe",
+                  "revision": 1
+                },
+                "locator": "Fictional appendix A, table 1, row A",
+                "relation": "supports",
+                "extraction_method": "synthetic",
+                "extractor_version": "local-schema-probes-v1"
+              }
+            ],
+            "data": {
+              "model_ref": {
+                "id": "urn:pdataset:model_version:probe",
+                "revision": 1
+              },
+              "evaluator_refs": [
+                {
+                  "id": "urn:pdataset:actor:probe",
+                  "revision": 1
+                }
+              ],
+              "benchmark": {
+                "name": "Fictional benchmark",
+                "version": "fictional-v1",
+                "split": "unknown",
+                "task": "Fictional test only",
+                "contamination_status": "unknown"
+              },
+              "protocol": {
+                "name": "Fictional probe protocol",
+                "version": "fictional-v1",
+                "configuration": "Fictional tasks; execution and judge settings not established.",
+                "reproducibility": "partial"
+              },
+              "measurement": {
+                "metric": {
+                  "key": "fictional-harmless-rate-v1",
+                  "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+                  "unit": "percent",
+                  "direction": "higher_better",
+                  "minimum": "0",
+                  "maximum": "100"
+                },
+                "result": {
+                  "kind": "point",
+                  "value": "50.00",
+                  "unit": "percent"
+                },
+                "observation_mode": "reported",
+                "method": "Wholly fictional schema illustration. No evaluation was performed.",
+                "sample_size": 80
+              },
+              "independence": "third_party"
+            }
+          }
+        ]
+      },
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_unsupported_independence",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "The same exact actor reference is both developer and evaluator; enum membership does not prove relationship.",
+      "companion_validator_static_inspection": "Static inspection: reference types are checked, but developer/evaluator overlap is not reconciled with independence.",
+      "related_source_assertions_for_context_only": [
+        "F009",
+        "ZHS006-A6"
+      ],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP08",
+      "title": "Adding benchmark independence to safety_evaluation is rejected",
+      "schema": "safety_evaluation.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "safety_evaluation",
+        "id": "urn:pdataset:safety_evaluation:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:probe",
+              "revision": 1
+            },
+            "locator": "Fictional appendix A, table 1, row A",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "local-schema-probes-v1"
+          }
+        ],
+        "data": {
+          "model_ref": {
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1
+          },
+          "evaluator_refs": [
+            {
+              "id": "urn:pdataset:actor:probe",
+              "revision": 1
+            }
+          ],
+          "risk_domain": "other",
+          "protocol": {
+            "name": "Fictional probe protocol",
+            "version": "fictional-v1",
+            "configuration": "Fictional tasks; execution and judge settings not established.",
+            "reproducibility": "partial"
+          },
+          "measurement": {
+            "metric": {
+              "key": "fictional-harmless-rate-v1",
+              "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+              "unit": "percent",
+              "direction": "higher_better",
+              "minimum": "0",
+              "maximum": "100"
+            },
+            "result": {
+              "kind": "point",
+              "value": "50.00",
+              "unit": "percent"
+            },
+            "observation_mode": "reported",
+            "method": "Wholly fictional schema illustration. No evaluation was performed.",
+            "sample_size": 80
+          },
+          "conclusion": "No empirical conclusion: wholly fictional fixture.",
+          "limitations": "Synthetic only; no source correctness, exact model, judge, independence or pooling established.",
+          "disclosure_level": "summary_only",
+          "independence": "unknown"
+        }
+      },
+      "expected_schema_acceptance": false,
+      "semantic_disposition": "reject_invented_native_field",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "independence exists only in benchmark_run_data, not safety_evaluation_data.",
+      "companion_validator_static_inspection": "Schema rejection occurs before companion traversal.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP09",
+      "title": "Changed releases and units coexist without a comparability gate",
+      "schema": "dataset.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "dataset_id": "wholly-fictional-local-schema-probes",
+        "dataset_kind": "synthetic",
+        "generated_at": "2026-10-08T12:00:00Z",
+        "records": [
+          {
+            "schema_version": "0.1.0",
+            "record_type": "source_artifact",
+            "id": "urn:pdataset:source_artifact:probe",
+            "revision": 1,
+            "synthetic": true,
+            "times": {
+              "known_at": "2026-10-08T12:00:00Z",
+              "retrieved_at": "2026-10-08T12:00:00Z",
+              "published": {
+                "kind": "date",
+                "date": "2026-09-30"
+              },
+              "event": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              },
+              "evaluated": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              }
+            },
+            "governance": {
+              "review_state": "needs_review",
+              "rights_state": "unknown",
+              "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+              "publication_state": "internal"
+            },
+            "evidence": [],
+            "data": {
+              "canonical_url": "https://example.invalid/fictional/source-v1",
+              "title": "Wholly fictional schema-probe source",
+              "source_type": "report",
+              "language": "en",
+              "author_refs": [],
+              "availability": "unknown"
+            }
+          },
+          {
+            "schema_version": "0.1.0",
+            "record_type": "actor",
+            "id": "urn:pdataset:actor:probe",
+            "revision": 1,
+            "synthetic": true,
+            "times": {
+              "known_at": "2026-10-08T12:00:00Z",
+              "retrieved_at": "2026-10-08T12:00:00Z",
+              "published": {
+                "kind": "date",
+                "date": "2026-09-30"
+              },
+              "event": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              },
+              "evaluated": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              }
+            },
+            "governance": {
+              "review_state": "needs_review",
+              "rights_state": "unknown",
+              "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+              "publication_state": "internal"
+            },
+            "evidence": [
+              {
+                "source_ref": {
+                  "id": "urn:pdataset:source_artifact:probe",
+                  "revision": 1
+                },
+                "locator": "Fictional appendix A, table 1, row A",
+                "relation": "supports",
+                "extraction_method": "synthetic",
+                "extractor_version": "local-schema-probes-v1"
+              }
+            ],
+            "data": {
+              "actor_kind": "organization",
+              "name": "Fictional Developer Lab",
+              "name_language": "en",
+              "aliases": [],
+              "jurisdictions": [],
+              "affiliations": [],
+              "external_ids": []
+            }
+          },
+          {
+            "schema_version": "0.1.0",
+            "record_type": "model_version",
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1,
+            "synthetic": true,
+            "times": {
+              "known_at": "2026-10-08T12:00:00Z",
+              "retrieved_at": "2026-10-08T12:00:00Z",
+              "published": {
+                "kind": "date",
+                "date": "2026-09-30"
+              },
+              "event": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              },
+              "evaluated": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              }
+            },
+            "governance": {
+              "review_state": "needs_review",
+              "rights_state": "unknown",
+              "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+              "publication_state": "internal"
+            },
+            "evidence": [
+              {
+                "source_ref": {
+                  "id": "urn:pdataset:source_artifact:probe",
+                  "revision": 1
+                },
+                "locator": "Fictional appendix A, table 1, row A",
+                "relation": "supports",
+                "extraction_method": "synthetic",
+                "extractor_version": "local-schema-probes-v1"
+              }
+            ],
+            "data": {
+              "developer_refs": [
+                {
+                  "id": "urn:pdataset:actor:probe",
+                  "revision": 1
+                }
+              ],
+              "family": "Fictional Model",
+              "version_label": "fictional-v1",
+              "modality": [
+                "text"
+              ],
+              "access": "unknown",
+              "parent_model_refs": [],
+              "version_certainty": "unknown"
+            }
+          },
+          {
+            "schema_version": "0.1.0",
+            "record_type": "benchmark_run",
+            "id": "urn:pdataset:benchmark_run:probe",
+            "revision": 1,
+            "synthetic": true,
+            "times": {
+              "known_at": "2026-10-08T12:00:00Z",
+              "retrieved_at": "2026-10-08T12:00:00Z",
+              "published": {
+                "kind": "date",
+                "date": "2026-09-30"
+              },
+              "event": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              },
+              "evaluated": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              }
+            },
+            "governance": {
+              "review_state": "needs_review",
+              "rights_state": "unknown",
+              "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+              "publication_state": "internal"
+            },
+            "evidence": [
+              {
+                "source_ref": {
+                  "id": "urn:pdataset:source_artifact:probe",
+                  "revision": 1
+                },
+                "locator": "Fictional appendix A, table 1, row A",
+                "relation": "supports",
+                "extraction_method": "synthetic",
+                "extractor_version": "local-schema-probes-v1"
+              }
+            ],
+            "data": {
+              "model_ref": {
+                "id": "urn:pdataset:model_version:probe",
+                "revision": 1
+              },
+              "evaluator_refs": [
+                {
+                  "id": "urn:pdataset:actor:probe",
+                  "revision": 1
+                }
+              ],
+              "benchmark": {
+                "name": "Fictional benchmark",
+                "version": "fictional-v1",
+                "split": "unknown",
+                "task": "Fictional test only",
+                "contamination_status": "unknown"
+              },
+              "protocol": {
+                "name": "Fictional probe protocol",
+                "version": "fictional-v1",
+                "configuration": "Fictional tasks; execution and judge settings not established.",
+                "reproducibility": "partial"
+              },
+              "measurement": {
+                "metric": {
+                  "key": "fictional-harmless-rate-v1",
+                  "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+                  "unit": "percent",
+                  "direction": "higher_better",
+                  "minimum": "0",
+                  "maximum": "100"
+                },
+                "result": {
+                  "kind": "point",
+                  "value": "50.00",
+                  "unit": "percent"
+                },
+                "observation_mode": "reported",
+                "method": "Wholly fictional schema illustration. No evaluation was performed.",
+                "sample_size": 80
+              },
+              "independence": "developer_reported"
+            }
+          },
+          {
+            "schema_version": "0.1.0",
+            "record_type": "benchmark_run",
+            "id": "urn:pdataset:benchmark_run:different-regime",
+            "revision": 1,
+            "synthetic": true,
+            "times": {
+              "known_at": "2026-10-08T12:00:00Z",
+              "retrieved_at": "2026-10-08T12:00:00Z",
+              "published": {
+                "kind": "date",
+                "date": "2026-09-30"
+              },
+              "event": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              },
+              "evaluated": {
+                "kind": "unknown",
+                "reason": "Not established in this wholly fictional fixture."
+              }
+            },
+            "governance": {
+              "review_state": "needs_review",
+              "rights_state": "unknown",
+              "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+              "publication_state": "internal"
+            },
+            "evidence": [
+              {
+                "source_ref": {
+                  "id": "urn:pdataset:source_artifact:probe",
+                  "revision": 1
+                },
+                "locator": "Fictional appendix A, table 1, row A",
+                "relation": "supports",
+                "extraction_method": "synthetic",
+                "extractor_version": "local-schema-probes-v1"
+              }
+            ],
+            "data": {
+              "model_ref": {
+                "id": "urn:pdataset:model_version:probe",
+                "revision": 1
+              },
+              "evaluator_refs": [
+                {
+                  "id": "urn:pdataset:actor:probe",
+                  "revision": 1
+                }
+              ],
+              "benchmark": {
+                "name": "Fictional benchmark",
+                "version": "fictional-v2",
+                "split": "unknown",
+                "task": "Different population and domain",
+                "contamination_status": "unknown"
+              },
+              "protocol": {
+                "name": "Fictional probe protocol",
+                "version": "fictional-v1",
+                "configuration": "Fictional tasks; execution and judge settings not established.",
+                "reproducibility": "partial"
+              },
+              "measurement": {
+                "metric": {
+                  "key": "fictional-harmless-rate-v1",
+                  "definition": "A differently normalized tournament score on a changed cohort.",
+                  "unit": "score",
+                  "direction": "higher_better",
+                  "minimum": "0",
+                  "maximum": "100"
+                },
+                "result": {
+                  "kind": "point",
+                  "value": "62.00",
+                  "unit": "score"
+                },
+                "observation_mode": "reported",
+                "method": "Wholly fictional schema illustration. No evaluation was performed.",
+                "sample_size": 80
+              },
+              "independence": "developer_reported"
+            }
+          }
+        ]
+      },
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_common_trend_without_bridge",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Native envelope can retain both records, but has no typed comparability decision/bridge object. Acceptance of coexistence does not authorize pooling.",
+      "companion_validator_static_inspection": "Static inspection: checks per-record units/ranges, not cross-record benchmark equivalence.",
+      "related_source_assertions_for_context_only": [
+        "F012",
+        "LS-A15"
+      ],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP10",
+      "title": "Eligible with unresolved review/rights is schema-valid but validator-gated",
+      "schema": "safety_evaluation.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "safety_evaluation",
+        "id": "urn:pdataset:safety_evaluation:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "eligible"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:probe",
+              "revision": 1
+            },
+            "locator": "Fictional appendix A, table 1, row A",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "local-schema-probes-v1"
+          }
+        ],
+        "data": {
+          "model_ref": {
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1
+          },
+          "evaluator_refs": [
+            {
+              "id": "urn:pdataset:actor:probe",
+              "revision": 1
+            }
+          ],
+          "risk_domain": "other",
+          "protocol": {
+            "name": "Fictional probe protocol",
+            "version": "fictional-v1",
+            "configuration": "Fictional tasks; execution and judge settings not established.",
+            "reproducibility": "partial"
+          },
+          "measurement": {
+            "metric": {
+              "key": "fictional-harmless-rate-v1",
+              "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+              "unit": "percent",
+              "direction": "higher_better",
+              "minimum": "0",
+              "maximum": "100"
+            },
+            "result": {
+              "kind": "point",
+              "value": "50.00",
+              "unit": "percent"
+            },
+            "observation_mode": "reported",
+            "method": "Wholly fictional schema illustration. No evaluation was performed.",
+            "sample_size": 80
+          },
+          "conclusion": "No empirical conclusion: wholly fictional fixture.",
+          "limitations": "Synthetic only; no source correctness, exact model, judge, independence or pooling established.",
+          "disclosure_level": "summary_only"
+        }
+      },
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_publication_eligibility",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Required strings/enums do not implement the publication prerequisite.",
+      "companion_validator_static_inspection": "Static inspection predicts publication_gate at lines 127-129; not executed.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP11",
+      "title": "A legally unsupported rights-inheritance story is an accepted string",
+      "schema": "safety_evaluation.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "safety_evaluation",
+        "id": "urn:pdataset:safety_evaluation:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "redistribution_allowed",
+          "rights_basis": "Fictional incorrect assertion that a software license automatically licenses all result data.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:probe",
+              "revision": 1
+            },
+            "locator": "Fictional appendix A, table 1, row A",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "local-schema-probes-v1"
+          }
+        ],
+        "data": {
+          "model_ref": {
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1
+          },
+          "evaluator_refs": [
+            {
+              "id": "urn:pdataset:actor:probe",
+              "revision": 1
+            }
+          ],
+          "risk_domain": "other",
+          "protocol": {
+            "name": "Fictional probe protocol",
+            "version": "fictional-v1",
+            "configuration": "Fictional tasks; execution and judge settings not established.",
+            "reproducibility": "partial"
+          },
+          "measurement": {
+            "metric": {
+              "key": "fictional-harmless-rate-v1",
+              "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+              "unit": "percent",
+              "direction": "higher_better",
+              "minimum": "0",
+              "maximum": "100"
+            },
+            "result": {
+              "kind": "point",
+              "value": "50.00",
+              "unit": "percent"
+            },
+            "observation_mode": "reported",
+            "method": "Wholly fictional schema illustration. No evaluation was performed.",
+            "sample_size": 80
+          },
+          "conclusion": "No empirical conclusion: wholly fictional fixture.",
+          "limitations": "Synthetic only; no source correctness, exact model, judge, independence or pooling established.",
+          "disclosure_level": "summary_only"
+        }
+      },
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_rights_inheritance",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "rights_basis and rights_url cannot verify artifact-specific license applicability. This fixture creates no rights.",
+      "companion_validator_static_inspection": "Static inspection: coarse review/export prerequisites exist; legal scope and veracity are not checked.",
+      "related_source_assertions_for_context_only": [
+        "F013",
+        "LS-A11",
+        "LS-A13"
+      ],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP12",
+      "title": "Snapshot shape cannot certify a comparable independent trend",
+      "schema": "snapshot.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "snapshot",
+        "id": "urn:pdataset:snapshot:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "internal"
+        },
+        "evidence": [],
+        "data": {
+          "snapshot_kind": "observed_ledger",
+          "cutoff": "2026-10-08T12:00:00Z",
+          "created_at": "2026-10-08T12:00:00Z",
+          "members": [
+            {
+              "record_ref": {
+                "id": "urn:pdataset:source_artifact:probe",
+                "revision": 1
+              },
+              "sha256": "699a592f5b85df1ddcabba086b21aa5dea594023802d6e7879b4a1e6c71f6abd"
+            },
+            {
+              "record_ref": {
+                "id": "urn:pdataset:actor:probe",
+                "revision": 1
+              },
+              "sha256": "1859756b5b951e3b7f00438848054f1d27fd0f44b3b6cc70313cf02cd9b16073"
+            },
+            {
+              "record_ref": {
+                "id": "urn:pdataset:model_version:probe",
+                "revision": 1
+              },
+              "sha256": "6805a1a06f18bd816d15c3ecc63e69603b98b32c0fd24d420d57c2c99a21dc18"
+            },
+            {
+              "record_ref": {
+                "id": "urn:pdataset:safety_evaluation:probe",
+                "revision": 1
+              },
+              "sha256": "7430db5aa8ea850b278f20cd4ee1d3e5013760c00d78ce0a7f494218807feb19"
+            },
+            {
+              "record_ref": {
+                "id": "urn:pdataset:benchmark_run:probe",
+                "revision": 1
+              },
+              "sha256": "991dc28420fe0478ebae7f142a9778707f7f5953b4dcd2e9727ca233aa7aa591"
+            }
+          ],
+          "canonicalization": "python-json-sort-utf8-v1",
+          "notice": "Invalid fictional claim: all members now form a comparable independent trend."
+        }
+      },
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_snapshot_as_semantic_approval",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "A closed hash manifest represents selection at a cutoff, not comparability, truth, independent replication or publishability.",
+      "companion_validator_static_inspection": "Static inspection: closure/hash/cutoff checks exist at lines 306-331; scientific comparability is not checked.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP13",
+      "title": "Empirical decimal JSON number is rejected",
+      "schema": "safety_evaluation.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "safety_evaluation",
+        "id": "urn:pdataset:safety_evaluation:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:probe",
+              "revision": 1
+            },
+            "locator": "Fictional appendix A, table 1, row A",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "local-schema-probes-v1"
+          }
+        ],
+        "data": {
+          "model_ref": {
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1
+          },
+          "evaluator_refs": [
+            {
+              "id": "urn:pdataset:actor:probe",
+              "revision": 1
+            }
+          ],
+          "risk_domain": "other",
+          "protocol": {
+            "name": "Fictional probe protocol",
+            "version": "fictional-v1",
+            "configuration": "Fictional tasks; execution and judge settings not established.",
+            "reproducibility": "partial"
+          },
+          "measurement": {
+            "metric": {
+              "key": "fictional-harmless-rate-v1",
+              "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+              "unit": "percent",
+              "direction": "higher_better",
+              "minimum": "0",
+              "maximum": "100"
+            },
+            "result": {
+              "kind": "point",
+              "value": 50.0,
+              "unit": "percent"
+            },
+            "observation_mode": "reported",
+            "method": "Wholly fictional schema illustration. No evaluation was performed.",
+            "sample_size": 80
+          },
+          "conclusion": "No empirical conclusion: wholly fictional fixture.",
+          "limitations": "Synthetic only; no source correctness, exact model, judge, independence or pooling established.",
+          "disclosure_level": "summary_only"
+        }
+      },
+      "expected_schema_acceptance": false,
+      "semantic_disposition": "reject_wrong_numeric_representation",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Native empirical numeric values must be exact base-10 strings.",
+      "companion_validator_static_inspection": "Schema rejection occurs before companion traversal.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP14",
+      "title": "Source-native population label is not an allowed unit enum",
+      "schema": "safety_evaluation.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "safety_evaluation",
+        "id": "urn:pdataset:safety_evaluation:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:probe",
+              "revision": 1
+            },
+            "locator": "Fictional appendix A, table 1, row A",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "local-schema-probes-v1"
+          }
+        ],
+        "data": {
+          "model_ref": {
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1
+          },
+          "evaluator_refs": [
+            {
+              "id": "urn:pdataset:actor:probe",
+              "revision": 1
+            }
+          ],
+          "risk_domain": "other",
+          "protocol": {
+            "name": "Fictional probe protocol",
+            "version": "fictional-v1",
+            "configuration": "Fictional tasks; execution and judge settings not established.",
+            "reproducibility": "partial"
+          },
+          "measurement": {
+            "metric": {
+              "key": "fictional-harmless-rate-v1",
+              "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+              "unit": "pairwise_battle",
+              "direction": "higher_better",
+              "minimum": "0",
+              "maximum": "100"
+            },
+            "result": {
+              "kind": "point",
+              "value": "50.00",
+              "unit": "pairwise_battle"
+            },
+            "observation_mode": "reported",
+            "method": "Wholly fictional schema illustration. No evaluation was performed.",
+            "sample_size": 80
+          },
+          "conclusion": "No empirical conclusion: wholly fictional fixture.",
+          "limitations": "Synthetic only; no source correctness, exact model, judge, independence or pooling established.",
+          "disclosure_level": "summary_only"
+        }
+      },
+      "expected_schema_acceptance": false,
+      "semantic_disposition": "retain_native_unit_in_context_not_new_enum",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "The enum supplies count/score/percent etc.; pairwise_battle must remain explicit metric/context text or review sidecar, not be inserted as a native unit.",
+      "companion_validator_static_inspection": "Schema rejection occurs before companion traversal.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP15",
+      "title": "Invented structured judge_ref is rejected",
+      "schema": "safety_evaluation.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "safety_evaluation",
+        "id": "urn:pdataset:safety_evaluation:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:probe",
+              "revision": 1
+            },
+            "locator": "Fictional appendix A, table 1, row A",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "local-schema-probes-v1"
+          }
+        ],
+        "data": {
+          "model_ref": {
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1
+          },
+          "evaluator_refs": [
+            {
+              "id": "urn:pdataset:actor:probe",
+              "revision": 1
+            }
+          ],
+          "risk_domain": "other",
+          "protocol": {
+            "name": "Fictional probe protocol",
+            "version": "fictional-v1",
+            "configuration": "Fictional tasks; execution and judge settings not established.",
+            "reproducibility": "partial",
+            "judge_ref": {
+              "id": "urn:pdataset:model_version:probe",
+              "revision": 1
+            }
+          },
+          "measurement": {
+            "metric": {
+              "key": "fictional-harmless-rate-v1",
+              "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+              "unit": "percent",
+              "direction": "higher_better",
+              "minimum": "0",
+              "maximum": "100"
+            },
+            "result": {
+              "kind": "point",
+              "value": "50.00",
+              "unit": "percent"
+            },
+            "observation_mode": "reported",
+            "method": "Wholly fictional schema illustration. No evaluation was performed.",
+            "sample_size": 80
+          },
+          "conclusion": "No empirical conclusion: wholly fictional fixture.",
+          "limitations": "Synthetic only; no source correctness, exact model, judge, independence or pooling established.",
+          "disclosure_level": "summary_only"
+        }
+      },
+      "expected_schema_acceptance": false,
+      "semantic_disposition": "reject_invented_native_field",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "protocol.additionalProperties=false; actual schema has no judge_ref.",
+      "companion_validator_static_inspection": "Schema rejection occurs before companion traversal.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP16",
+      "title": "Immutable identity claim needs no hash at schema level",
+      "schema": "model_version.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "model_version",
+        "id": "urn:pdataset:model_version:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:probe",
+              "revision": 1
+            },
+            "locator": "Fictional appendix A, table 1, row A",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "local-schema-probes-v1"
+          }
+        ],
+        "data": {
+          "developer_refs": [
+            {
+              "id": "urn:pdataset:actor:probe",
+              "revision": 1
+            }
+          ],
+          "family": "Fictional Model",
+          "version_label": "Fictional Mutable Product",
+          "modality": [
+            "text"
+          ],
+          "access": "unknown",
+          "parent_model_refs": [],
+          "version_certainty": "immutable"
+        }
+      },
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "hold_checkpoint_identity",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "provider_model_id and artifact_digest are optional; an immutable label can be asserted without binding evidence.",
+      "companion_validator_static_inspection": "Static inspection: no digest-or-provider-id prerequisite for version_certainty=immutable.",
+      "related_source_assertions_for_context_only": [
+        "F008",
+        "F012",
+        "LS-A05"
+      ],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP17",
+      "title": "Impossible date rejected with FormatChecker",
+      "schema": "safety_evaluation.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "safety_evaluation",
+        "id": "urn:pdataset:safety_evaluation:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "date",
+            "date": "2026-02-30"
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:probe",
+              "revision": 1
+            },
+            "locator": "Fictional appendix A, table 1, row A",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "local-schema-probes-v1"
+          }
+        ],
+        "data": {
+          "model_ref": {
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1
+          },
+          "evaluator_refs": [
+            {
+              "id": "urn:pdataset:actor:probe",
+              "revision": 1
+            }
+          ],
+          "risk_domain": "other",
+          "protocol": {
+            "name": "Fictional probe protocol",
+            "version": "fictional-v1",
+            "configuration": "Fictional tasks; execution and judge settings not established.",
+            "reproducibility": "partial"
+          },
+          "measurement": {
+            "metric": {
+              "key": "fictional-harmless-rate-v1",
+              "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+              "unit": "percent",
+              "direction": "higher_better",
+              "minimum": "0",
+              "maximum": "100"
+            },
+            "result": {
+              "kind": "point",
+              "value": "50.00",
+              "unit": "percent"
+            },
+            "observation_mode": "reported",
+            "method": "Wholly fictional schema illustration. No evaluation was performed.",
+            "sample_size": 80
+          },
+          "conclusion": "No empirical conclusion: wholly fictional fixture.",
+          "limitations": "Synthetic only; no source correctness, exact model, judge, independence or pooling established.",
+          "disclosure_level": "summary_only"
+        }
+      },
+      "expected_schema_acceptance": false,
+      "semantic_disposition": "reject_invalid_calendar_date",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Unlike incorrect date roles, impossible dates fail syntax/format validation.",
+      "companion_validator_static_inspection": "Schema rejection occurs before companion traversal.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP18",
+      "title": "Wrong standalone wrapper rejected",
+      "schema": "safety_evaluation.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "source_artifact",
+        "id": "urn:pdataset:source_artifact:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "internal"
+        },
+        "evidence": [],
+        "data": {
+          "canonical_url": "https://example.invalid/fictional/source-v1",
+          "title": "Wholly fictional schema-probe source",
+          "source_type": "report",
+          "language": "en",
+          "author_refs": [],
+          "availability": "unknown"
+        }
+      },
+      "expected_schema_acceptance": false,
+      "semantic_disposition": "reject_wrong_record_type",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Standalone wrappers bind record_type while referring to the shared record schema.",
+      "companion_validator_static_inspection": "Schema rejection occurs before companion traversal.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP19",
+      "title": "Metric/result unit mismatch separates schema from companion check",
+      "schema": "safety_evaluation.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "safety_evaluation",
+        "id": "urn:pdataset:safety_evaluation:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:probe",
+              "revision": 1
+            },
+            "locator": "Fictional appendix A, table 1, row A",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "local-schema-probes-v1"
+          }
+        ],
+        "data": {
+          "model_ref": {
+            "id": "urn:pdataset:model_version:probe",
+            "revision": 1
+          },
+          "evaluator_refs": [
+            {
+              "id": "urn:pdataset:actor:probe",
+              "revision": 1
+            }
+          ],
+          "risk_domain": "other",
+          "protocol": {
+            "name": "Fictional probe protocol",
+            "version": "fictional-v1",
+            "configuration": "Fictional tasks; execution and judge settings not established.",
+            "reproducibility": "partial"
+          },
+          "measurement": {
+            "metric": {
+              "key": "fictional-harmless-rate-v1",
+              "definition": "100 times harmless answers divided by completed answers in this fictional task.",
+              "unit": "percent",
+              "direction": "higher_better",
+              "minimum": "0",
+              "maximum": "100"
+            },
+            "result": {
+              "kind": "point",
+              "value": "50.00",
+              "unit": "score"
+            },
+            "observation_mode": "reported",
+            "method": "Wholly fictional schema illustration. No evaluation was performed.",
+            "sample_size": 80
+          },
+          "conclusion": "No empirical conclusion: wholly fictional fixture.",
+          "limitations": "Synthetic only; no source correctness, exact model, judge, independence or pooling established.",
+          "disclosure_level": "summary_only"
+        }
+      },
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_metric_result_unit_mismatch",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "Both units are legal enum members but disagree.",
+      "companion_validator_static_inspection": "Static inspection predicts metric_unit at lines 198-205; not executed.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false
+    },
+    {
+      "probe_id": "SP20",
+      "title": "Syntactically valid wrong snapshot digest accepted by schema",
+      "schema": "snapshot.schema.json",
+      "input": {
+        "schema_version": "0.1.0",
+        "record_type": "snapshot",
+        "id": "urn:pdataset:snapshot:probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2026-10-08T12:00:00Z",
+          "retrieved_at": "2026-10-08T12:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2026-09-30"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Not established in this wholly fictional fixture."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly fictional diagnostic; rights claims below are not legal grants.",
+          "publication_state": "internal"
+        },
+        "evidence": [],
+        "data": {
+          "snapshot_kind": "observed_ledger",
+          "cutoff": "2026-10-08T12:00:00Z",
+          "created_at": "2026-10-08T12:00:00Z",
+          "members": [
+            {
+              "record_ref": {
+                "id": "urn:pdataset:source_artifact:probe",
+                "revision": 1
+              },
+              "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+            },
+            {
+              "record_ref": {
+                "id": "urn:pdataset:actor:probe",
+                "revision": 1
+              },
+              "sha256": "1859756b5b951e3b7f00438848054f1d27fd0f44b3b6cc70313cf02cd9b16073"
+            },
+            {
+              "record_ref": {
+                "id": "urn:pdataset:model_version:probe",
+                "revision": 1
+              },
+              "sha256": "6805a1a06f18bd816d15c3ecc63e69603b98b32c0fd24d420d57c2c99a21dc18"
+            },
+            {
+              "record_ref": {
+                "id": "urn:pdataset:safety_evaluation:probe",
+                "revision": 1
+              },
+              "sha256": "7430db5aa8ea850b278f20cd4ee1d3e5013760c00d78ce0a7f494218807feb19"
+            },
+            {
+              "record_ref": {
+                "id": "urn:pdataset:benchmark_run:probe",
+                "revision": 1
+              },
+              "sha256": "991dc28420fe0478ebae7f142a9778707f7f5953b4dcd2e9727ca233aa7aa591"
+            }
+          ],
+          "canonicalization": "python-json-sort-utf8-v1",
+          "notice": "Wholly fictional closed ledger; no claim of comparability, independence or rights clearance."
+        }
+      },
+      "expected_schema_acceptance": true,
+      "semantic_disposition": "reject_unverified_manifest",
+      "semantic_disposition_basis": "Review-authored explanation; not an executed semantic acceptance test.",
+      "limitation_demonstrated": "The schema checks 64 hexadecimal characters, not canonical record hashing or closure.",
+      "companion_validator_static_inspection": "Static inspection predicts snapshot_hash for the corresponding complete bundle at lines 318-319; not executed.",
+      "related_source_assertions_for_context_only": [],
+      "executes_original_acceptance_case": false
+    }
+  ]
+}

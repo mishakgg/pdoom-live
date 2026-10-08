@@ -1,0 +1,44 @@
+{
+  "executed": true,
+  "scope": "Our own bounded arithmetic on the submitted located numbers. No original acceptance case, benchmark, scorer or upstream code executed.",
+  "checks": [
+    {
+      "check_id": "AR-F007",
+      "kind": "independent_decimal_arithmetic_only",
+      "inputs": {
+        "n": 75,
+        "rate": "55.26",
+        "rounding": "nearest 0.01, half-up"
+      },
+      "integer_counts_matching": [],
+      "conclusion": "No matching integer; no replacement denominator established."
+    },
+    {
+      "check_id": "AR-SUPER-DIFF",
+      "kind": "independent_decimal_arithmetic_only",
+      "inputs": [
+        "88.36",
+        "85.6"
+      ],
+      "computed_difference": "2.76",
+      "reported_difference": "-1.24",
+      "conclusion": "Printed arithmetic conflict; do not repair."
+    },
+    {
+      "check_id": "AR-LS-EXPOSURE",
+      "kind": "conditional_unit_arithmetic_only",
+      "battle_count": 23005,
+      "model_count": 57,
+      "battles_divided_by_models": "403.6",
+      "two_participations_per_battle_conditional": "807.2",
+      "conclusion": "First matches 403.6; second is conditional 807.2. Neither repairs source metadata."
+    },
+    {
+      "check_id": "AR-LS-SUMS",
+      "kind": "aggregate_arithmetic_only",
+      "questions_sum": 852,
+      "battles_sum": 23005,
+      "conclusion": "Matches displayed 852 and 23005; does not verify run completeness."
+    }
+  ]
+}

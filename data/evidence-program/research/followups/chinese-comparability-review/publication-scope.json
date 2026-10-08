@@ -1,0 +1,60 @@
+{
+  "status": "recommended_documentary_scope_for_root_review_only",
+  "remote_publication_performed": false,
+  "root_owns_independent_review_and_publication": true,
+  "recommended_files": [
+    "review.md",
+    "delta.json",
+    "primary-verification.json",
+    "assertion-review.json",
+    "source-native-ledger.json",
+    "acceptance-cases.json",
+    "comparability-review.json",
+    "lineage-review.json",
+    "rights-by-artifact.json",
+    "prior-catalog-preservation.json",
+    "terminology-review.json",
+    "follow-up-actions.json",
+    "arithmetic-review.json",
+    "repository-files-manifest.json",
+    "repository-tree-entries.json",
+    "repository-schema-tree.json",
+    "contract-work/contract-mapping.json",
+    "contract-work/schema-probes.json",
+    "contract-work/schema-probe-results.json",
+    "contract-work/mapping-integrity.json",
+    "contract-work/schema-probes.py",
+    "inspection/livesec-git-binding.json",
+    "validation-results.json",
+    "validate_review.py",
+    "publication-scope.json"
+  ],
+  "excluded_categories": [
+    {
+      "paths": [
+        "inspection/livesec-readme-connector.json",
+        "inspection/livesec-user-guide-connector.json"
+      ],
+      "reason": "Raw upstream documentation captured only for local source inspection; no blanket republication clearance provided."
+    },
+    {
+      "paths": [
+        "original-context/intake-manifest.json"
+      ],
+      "reason": "Local intake receipts include Library identifiers and workspace routing; preserve for audit rather than public documentary publication."
+    },
+    {
+      "paths": [
+        "contract-work/pinned/"
+      ],
+      "reason": "Verified local research inputs already exist at pinned repository commit; no duplicate implementation overlay is needed."
+    },
+    {
+      "paths": [
+        "original-context/"
+      ],
+      "reason": "Immutable original context retained locally; source-native-ledger.json carries every submitted structured field. Root decides any separately needed original narrative/prompt publication."
+    }
+  ],
+  "rights_notice": "This list does not grant new rights to upstream benchmark corpora, source article text, website results or model outputs. No adapter/native admission is implied."
+}
