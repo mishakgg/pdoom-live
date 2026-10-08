@@ -17,7 +17,13 @@ Third-party source rights are not changed by the repository's [data license](../
 
 ## Current research review status
 
-The [dated original-session queue](../../docs/evidence-program/research/research-session-review-queue.md) records all 26 original reviews integrated at its verified 8 October 2026 cutoff, separately from evidence admission. The [follow-up queue](../../docs/evidence-program/research/followups/follow-up-queue.md) distinguishes three received ledger/report bundles from [four delivered research prompts](../../docs/evidence-program/research/followups/prompts/coverage-assessment.md); delivery does not confirm a launched session. Follow-up claims remain pending independent review, and earlier catalog/action snapshots are preserved.
+The [dated original-session queue](../../docs/evidence-program/research/research-session-review-queue.md) records all 26 original reviews integrated at its verified 8 October 2026 cutoff, separately from evidence admission. The [follow-up queue](../../docs/evidence-program/research/followups/follow-up-queue.md) distinguishes three received ledger/report bundles from [four delivered research prompts](../../docs/evidence-program/research/followups/prompts/coverage-assessment.md); delivery does not confirm a launched session. All three received bundles now have completed documentary reviews and linked deltas, with completed bounded checks separated from remaining holds. Earlier catalog/action snapshots are preserved; remote publication/CI and evidence admission are separate.
+
+Reviewed follow-up deltas included in this version:
+
+- Bundle 1: [Rights and releases](../../docs/evidence-program/research/followups/rights-release.md) · [JSON](research/followups/rights-release.json)
+- Bundle 2: [PhAIL, MLPerf and RoboArena comparability](../../docs/evidence-program/research/followups/physical-inference-comparability.md) · [JSON](research/followups/physical-inference-comparability.json)
+- Bundle 3: [Survey instruments and denominators](../../docs/evidence-program/research/followups/instrument-denominator.md) · [JSON](research/followups/instrument-denominator.json)
 
 ## Additive research catalogs
 

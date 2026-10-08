@@ -1,5 +1,9 @@
 # Forecast and survey reconstruction
 
+## Follow-up qualification: 8 October 2026
+
+For FS001 / FS-A03, FS002 / FS-A04 and FS003 / FS-A05, the [instrument and denominator follow-up](followups/instrument-denominator.md) ([JSON](../../../data/evidence-program/research/followups/instrument-denominator.json)) records completed bounded report/instrument/caption checks. It explicitly limits FS001-F05/F06 to the 2023 questionnaire, keeps 2024 exact instrument fields and cross-edition n unresolved, preserves XPT's conflicting thresholds and qualifies LEAP weighting. Original catalog bytes and all residual rights/denominator holds remain intact.
+
 Reviewed 8 October 2026 against `mishakgg/pdoom-live@71df61f85bd8534f8fe95180cc13c9e31ded687c`. Seven curated collections remain unadmitted: three enrichments (GL010, GL011, GL038), three new historical/survey study families and one new forecast collection. The frozen 64 register, all 14 prior catalogs, contracts and previous reader/fixture bytes remain unchanged. A narrow LF checkout rule is added to the earlier AgentDojo synthetic-fixture directory to preserve its existing byte hashes.
 
 The implemented slice is a bounded offline reader for one manually curated CC BY 4.0 LEAP instrument/table selection, not a live collector or HTML extractor. It yields four published group summaries with exact decimal probability strings. No respondent files, private beliefs, demographic records, profiles or simulation trajectories were acquired for this integration.

@@ -1,5 +1,9 @@
 # Training-data availability and feedback loops
 
+## Follow-up qualification: 8 October 2026
+
+For TD001 / TD-A03, TD002 / TD-A04 and TD004 / TD-A06, the [rights and release follow-up](followups/rights-release.md) ([JSON](../../../data/evidence-program/research/followups/rights-release.json)) records completed bounded documentary checks alongside the remaining raw-reuse, ancestry, release-denominator and mapping holds. The original catalog and review below remain historical; the linked delta is the current qualification for those components.
+
 Reviewed 8 October 2026 against `mishakgg/pdoom-live@d196d9c89b8ba12d584a2f19e8ded1623ab0142a`. This is a prepared research review and bounded offline reader, awaiting independent review and integration at this snapshot. All five collections remain unadmitted. The [catalog](../../../data/evidence-program/research/training-data-feedback.json) contains source-specific metadata, qualifications and follow-up work.
 
 ## Decision

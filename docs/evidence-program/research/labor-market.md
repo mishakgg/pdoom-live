@@ -1,5 +1,9 @@
 # Labor-market effects and skill demand
 
+## Follow-up qualification: 8 October 2026
+
+For LM003 / LM-A05 / LM-P03, the [instrument and denominator follow-up](followups/instrument-denominator.md) ([JSON](../../../data/evidence-program/research/followups/instrument-denominator.json)) verifies only the 2022 model questionnaire's 2021 training period, OR/union and typed enterprise-denominator roles. German historical administration and 2012 remain held; the original 2024→2023 evidence and fixture are unchanged.
+
 Reviewed 8 October 2026 against `mishakgg/pdoom-live@ab1434f30114df6784409d84069e9a8f785a45b1`. One submitted report, four curated collections: three new source families and one GL022 training-artifact enrichment. All remain unadmitted. The frozen 64-family inventory and all thirteen previous catalogs/readers/contracts are unchanged.
 
 ## Recommendation and boundaries

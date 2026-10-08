@@ -1,0 +1,1107 @@
+{
+  "title": "Rights and release follow-up delta",
+  "bundle_sequence": 1,
+  "reviewed_on": "2026-10-08",
+  "status": "reviewed_with_residual_holds",
+  "original_sessions": [
+    10,
+    12,
+    17
+  ],
+  "scope": "Six existing collections, ten exact targets; documentary rights/release/provenance annotations only.",
+  "historical_catalogs_preserved": true,
+  "supplied_packet_commit": "82fd46330539bd484c80190c69868d71b2052f6e",
+  "catalog_reference_commit": "972f2bbdc3e123c83ce9ea695c9f265fe6720032",
+  "catalog_fingerprints": [
+    {
+      "path": "data/evidence-program/research/training-data-feedback.json",
+      "sha256": "26030f07eca4f880be583134bf5abb640ed83d68aa468728b2ec9360f4e9406b",
+      "git_blob_sha1_computed": "71fee288b4b9bad9e09461b144c4e85f58bb20e9"
+    },
+    {
+      "path": "data/evidence-program/research/algorithmic-efficiency.json",
+      "sha256": "c9650355f580ecf3e4ce9d780890c2574a27e2eca66727da3608a71355f9e126",
+      "git_blob_sha1_computed": "f55636b9f11702e611ed2b68e7065d84d145b81c"
+    },
+    {
+      "path": "data/evidence-program/research/inference-price-performance.json",
+      "sha256": "927088a08a0cfe32778ee1f3018addee0d99c31f02860c4d97fc2655fe0e4c01",
+      "git_blob_sha1_computed": "26fd01eceaccc99ab3a0dd0c4b2db282f834fedc"
+    }
+  ],
+  "historical_context_correction": "IPP002 and IPP003 already exist. Their absence at the supplied older snapshot is historical; no new family or artifact ID is created.",
+  "operational_admission": "not_admitted",
+  "collector_enabled": false,
+  "canonical_contract_mapping": "not_performed",
+  "implementation_status": "documentary_annotations_only",
+  "source_code_execution": false,
+  "raw_source_files_published": false,
+  "raw_reuse_grants_resolved": 0,
+  "raw_reuse_holds_remaining": 10,
+  "rights_interpretation": "Unknown means applicability was not established within the reviewed scope; it is neither permission nor a legal finding of prohibition. Repository-level licenses can cover data where applicable; an individually named-file grant is not a universal legal requirement.",
+  "entries": [
+    {
+      "collection_id": "IPP002",
+      "catalog_path": "data/evidence-program/research/inference-price-performance.json",
+      "collection_pointer": "/collections/1",
+      "prior_assertion_refs": [
+        {
+          "pointer": "/collections/1/historical_coverage",
+          "existing_assertion_id": null,
+          "reference_basis": "Existing ID when present; otherwise exact pointer in pinned catalog"
+        },
+        {
+          "pointer": "/collections/1/rights",
+          "existing_assertion_id": null,
+          "reference_basis": "Existing ID when present; otherwise exact pointer in pinned catalog"
+        },
+        {
+          "pointer": "/corrections/0",
+          "existing_assertion_id": "IPP-C01",
+          "reference_basis": "Existing ID when present; otherwise exact pointer in pinned catalog"
+        }
+      ],
+      "existing_action_id": "IPP-A02",
+      "action_pointer": "/next_actions/1",
+      "existing_prompt_id": "IPP-P02",
+      "prompt_pointer": "/follow_up_prompts/1",
+      "prior_action_status": "bounded_follow_up_not_started",
+      "prior_hold_refs": [
+        {
+          "pointer": "/holds/0",
+          "existing_hold_id": null,
+          "id_null_reason": "Historical hold has no standalone ID; retained by catalog pointer."
+        }
+      ],
+      "targets": [
+        {
+          "existing_artifact_id": null,
+          "catalog_pointer": "/collections/1/artifacts/0",
+          "url": "https://github.com/ml-energy/leaderboard/blob/7885788e837b80ad172e02e6e8c47e8d0b85520e/public/data/tasks/gpqa.json",
+          "version": "7885788e837b80ad172e02e6e8c47e8d0b85520e",
+          "id_null_reason": "Existing catalog artifact has no artifact_id; collection, pointer and exact pinned URL identify it.",
+          "hash_verification_this_review": "metadata_blob_identity_only",
+          "hash_evidence": [
+            {
+              "algorithm": "Git blob SHA-1",
+              "value": "bf29ccb9e275b0fcceb985f4a90be294851bde25",
+              "scope": "Reported in pinned Git tree metadata; target bytes not independently hashed",
+              "verification": "metadata_reported_this_review"
+            },
+            {
+              "algorithm": "SHA-256",
+              "value": null,
+              "scope": "No target-file bytes acquired",
+              "verification": "not_performed"
+            }
+          ],
+          "raw_file_reuse": "held",
+          "rights_status": "unknown",
+          "applicable_grant_established": false
+        }
+      ],
+      "review_completed": true,
+      "bounded_component_status": "completed_with_unresolved_hold",
+      "overall_action_status": "still_held_for_residual_evidence",
+      "completed_scope": "Official 2025-12-01 v3.0 announcement and separate 2026-01-29 publication announcement verified; compiled-JSON grant remains unresolved after bounded public review.",
+      "verified_fact_ids": [
+        "RR01-F01",
+        "RR01-F02",
+        "RR01-F03"
+      ],
+      "superseded_scope": "IPP-A02 bounded_follow_up_not_started and the current claim that official v3 release date remains unverified are superseded for the specified documentary request.",
+      "still_held": [
+        "Compiled GPQA JSON applicability remains unresolved.",
+        "Actual run dates, immutable model/checkpoint identity, achieved quality and export-to-run provenance remain unknown."
+      ],
+      "next_research_boundary": "Do not rerun the completed announcement/README/HF-card inquiry. Seek newly available explicit export/run provenance or artifact applicability only; no gate, raw trace or model execution."
+    },
+    {
+      "collection_id": "TD001",
+      "catalog_path": "data/evidence-program/research/training-data-feedback.json",
+      "collection_pointer": "/collections/0",
+      "prior_assertion_refs": [
+        {
+          "pointer": "/collections/0/limitations/5",
+          "existing_assertion_id": null,
+          "reference_basis": "Existing ID when present; otherwise exact pointer in pinned catalog"
+        },
+        {
+          "pointer": "/corrections/5",
+          "existing_assertion_id": "TD-C06",
+          "reference_basis": "Existing ID when present; otherwise exact pointer in pinned catalog"
+        }
+      ],
+      "existing_action_id": "TD-A03",
+      "action_pointer": "/next_actions/2",
+      "existing_prompt_id": "TD-P01",
+      "prompt_pointer": "/focused_follow_up_prompts/0",
+      "prior_action_status": "held",
+      "prior_hold_refs": [
+        {
+          "pointer": "/holds/0",
+          "existing_hold_id": null,
+          "id_null_reason": "Historical hold has no standalone ID; retained by catalog pointer."
+        }
+      ],
+      "targets": [
+        {
+          "existing_artifact_id": "td001_languages",
+          "catalog_pointer": "/collections/0/artifacts/0",
+          "url": "https://github.com/commoncrawl/cc-crawl-statistics/blob/1053c982a91ba0bb4323c5f00ec3230d9cd54e4b/plots/languages.csv",
+          "version": "1053c982a91ba0bb4323c5f00ec3230d9cd54e4b",
+          "id_null_reason": null,
+          "hash_verification_this_review": "inherited_prior_catalog_not_reverified",
+          "hash_evidence": [
+            {
+              "algorithm": "SHA-256",
+              "value": "4f3b987a60d72a356c480d788a930388ebe05225307aec7fc280513f6f9b0cff",
+              "scope": "Prior catalog assertion for exact CSV bytes; not reverified in this review",
+              "verification": "inherited_prior_catalog"
+            },
+            {
+              "algorithm": "Git blob SHA-1",
+              "value": "95b7ac9f5899906bb982189c02ccbd67d1e4922f",
+              "scope": "Prior catalog object identity; no target-byte verification this review",
+              "verification": "inherited_prior_catalog"
+            }
+          ],
+          "raw_file_reuse": "held",
+          "rights_status": "unknown",
+          "applicable_grant_established": false
+        },
+        {
+          "existing_artifact_id": "td001_monthly",
+          "catalog_pointer": "/collections/0/artifacts/1",
+          "url": "https://github.com/commoncrawl/cc-crawl-statistics/blob/1053c982a91ba0bb4323c5f00ec3230d9cd54e4b/plots/crawlsize/monthly.csv",
+          "version": "1053c982a91ba0bb4323c5f00ec3230d9cd54e4b",
+          "id_null_reason": null,
+          "hash_verification_this_review": "inherited_prior_catalog_not_reverified",
+          "hash_evidence": [
+            {
+              "algorithm": "SHA-256",
+              "value": "b49fb0e4acd9cd3a4676cc4bad17eca9645e38dcecfea1dfc3f2436a1c7b98a7",
+              "scope": "Prior catalog assertion for exact CSV bytes; not reverified in this review",
+              "verification": "inherited_prior_catalog"
+            },
+            {
+              "algorithm": "Git blob SHA-1",
+              "value": "9fc5003a81b908222e403a75930302cbafee8788",
+              "scope": "Prior catalog object identity; no target-byte verification this review",
+              "verification": "inherited_prior_catalog"
+            }
+          ],
+          "raw_file_reuse": "held",
+          "rights_status": "unknown",
+          "applicable_grant_established": false
+        }
+      ],
+      "review_completed": true,
+      "bounded_component_status": "completed_with_unresolved_hold",
+      "overall_action_status": "still_held_for_residual_evidence",
+      "completed_scope": "Bounded rights inquiry is complete. This review independently checked pinned README/LICENSE and current Terms; the supplied FAQ check is inherited, not newly repeated.",
+      "verified_fact_ids": [
+        "RR01-F04"
+      ],
+      "superseded_scope": "Any implication that the same bounded generic rights search has never been performed. No underlying raw-reuse hold is superseded.",
+      "still_held": [
+        "Aggregate-file/version/intended-use applicability remains unresolved.",
+        "Lossless canonical mapping remains separate and unperformed."
+      ],
+      "next_research_boundary": "Reopen documentary rights research only when a new official aggregate applicability statement, authorized new route, or materially different intended payload exists. Do not repeat the same pages."
+    },
+    {
+      "collection_id": "TD002",
+      "catalog_path": "data/evidence-program/research/training-data-feedback.json",
+      "collection_pointer": "/collections/1",
+      "prior_assertion_refs": [
+        {
+          "pointer": "/collections/1/limitations/1",
+          "existing_assertion_id": null,
+          "reference_basis": "Existing ID when present; otherwise exact pointer in pinned catalog"
+        },
+        {
+          "pointer": "/corrections/5",
+          "existing_assertion_id": "TD-C06",
+          "reference_basis": "Existing ID when present; otherwise exact pointer in pinned catalog"
+        }
+      ],
+      "existing_action_id": "TD-A04",
+      "action_pointer": "/next_actions/3",
+      "existing_prompt_id": "TD-P02",
+      "prompt_pointer": "/focused_follow_up_prompts/1",
+      "prior_action_status": "held",
+      "prior_hold_refs": [
+        {
+          "pointer": "/holds/1",
+          "existing_hold_id": null,
+          "id_null_reason": "Historical hold has no standalone ID; retained by catalog pointer."
+        }
+      ],
+      "targets": [
+        {
+          "existing_artifact_id": "td002_template",
+          "catalog_pointer": "/collections/1/artifacts/0",
+          "url": "https://github.com/Data-Provenance-Initiative/Data-Provenance-Collection/blob/ce6662deccf011574427b6f112df479d261960b8/data_summaries/_template.json",
+          "version": "ce6662deccf011574427b6f112df479d261960b8",
+          "id_null_reason": null,
+          "hash_verification_this_review": "complete_target_metadata_bytes_verified",
+          "hash_evidence": [
+            {
+              "algorithm": "SHA-256",
+              "value": "04f8605ca55671cfb05c5ef05d10d214d9524741e235600a0c47fbfd34b1bc4a",
+              "scope": "Complete permitted metadata JSON bytes fetched this review",
+              "verification": "independently_computed_this_review"
+            },
+            {
+              "algorithm": "Git blob SHA-1",
+              "value": "63999396aa5c13361ef28c2cd5ac260d2f58dbb4",
+              "scope": "Computed with Git blob header from the same bytes; matches prior catalog object ID",
+              "verification": "independently_computed_this_review"
+            }
+          ],
+          "raw_file_reuse": "held",
+          "rights_status": "unknown",
+          "applicable_grant_established": false
+        },
+        {
+          "existing_artifact_id": "td002_alpaca",
+          "catalog_pointer": "/collections/1/artifacts/1",
+          "url": "https://github.com/Data-Provenance-Initiative/Data-Provenance-Collection/blob/ce6662deccf011574427b6f112df479d261960b8/data_summaries/Alpaca.json",
+          "version": "ce6662deccf011574427b6f112df479d261960b8",
+          "id_null_reason": null,
+          "hash_verification_this_review": "complete_target_metadata_bytes_verified",
+          "hash_evidence": [
+            {
+              "algorithm": "SHA-256",
+              "value": "b71dbf91e3dc8ee5b6ba3b80d9b4a55488d291c906abc0dad5fa3bcaeaca50e6",
+              "scope": "Complete permitted metadata JSON bytes fetched this review",
+              "verification": "independently_computed_this_review"
+            },
+            {
+              "algorithm": "Git blob SHA-1",
+              "value": "0575c43c536c992cbd211017e1bb56c29ed5740d",
+              "scope": "Computed with Git blob header from the same bytes; matches prior catalog object ID",
+              "verification": "independently_computed_this_review"
+            }
+          ],
+          "raw_file_reuse": "held",
+          "rights_status": "unknown",
+          "applicable_grant_established": false
+        }
+      ],
+      "review_completed": true,
+      "bounded_component_status": "completed_with_unresolved_hold",
+      "overall_action_status": "still_held_for_residual_evidence",
+      "completed_scope": "Four-file metadata-rights inquiry complete; code-only wording and upstream license-field subjects independently checked; two full metadata hashes match.",
+      "verified_fact_ids": [
+        "RR01-F05",
+        "RR01-F06"
+      ],
+      "superseded_scope": "Only the pending four-file rights-check component is completed; no metadata rights or broader provenance hold is cleared.",
+      "still_held": [
+        "Metadata grant applicability remains unresolved.",
+        "Per-record ancestry and exact historical Consent panel locator/schema/access/rights remain unresolved."
+      ],
+      "next_research_boundary": "A DPI metadata applicability statement could resolve the rights component. Separately research already-requested ancestry/Consent evidence only with bounded exact locators; do not retrieve described datasets."
+    },
+    {
+      "collection_id": "TD004",
+      "catalog_path": "data/evidence-program/research/training-data-feedback.json",
+      "collection_pointer": "/collections/3",
+      "prior_assertion_refs": [
+        {
+          "pointer": "/collections/3/findings/0",
+          "existing_assertion_id": "TD-F09",
+          "reference_basis": "Existing ID when present; otherwise exact pointer in pinned catalog"
+        },
+        {
+          "pointer": "/collections/3/findings/1",
+          "existing_assertion_id": "TD-F10",
+          "reference_basis": "Existing ID when present; otherwise exact pointer in pinned catalog"
+        },
+        {
+          "pointer": "/collections/3/artifacts/1",
+          "existing_assertion_id": "td004_card",
+          "reference_basis": "Existing ID when present; otherwise exact pointer in pinned catalog"
+        },
+        {
+          "pointer": "/corrections/1",
+          "existing_assertion_id": "TD-C02",
+          "reference_basis": "Existing ID when present; otherwise exact pointer in pinned catalog"
+        }
+      ],
+      "existing_action_id": "TD-A06",
+      "action_pointer": "/next_actions/5",
+      "existing_prompt_id": "TD-P04",
+      "prompt_pointer": "/focused_follow_up_prompts/3",
+      "prior_action_status": "held",
+      "prior_hold_refs": [
+        {
+          "pointer": "/holds/3",
+          "existing_hold_id": null,
+          "id_null_reason": "Historical hold has no standalone ID; retained by catalog pointer."
+        }
+      ],
+      "targets": [
+        {
+          "existing_artifact_id": "td004_csv",
+          "catalog_pointer": "/collections/3/artifacts/0",
+          "url": "https://github.com/huggingface/fineweb-2/blob/d0defb24f193bb9a5a11b8b14524a03c4858e1b6/fineweb2-language-distribution.csv",
+          "version": "d0defb24f193bb9a5a11b8b14524a03c4858e1b6",
+          "id_null_reason": null,
+          "hash_verification_this_review": "inherited_prior_catalog_not_reverified",
+          "hash_evidence": [
+            {
+              "algorithm": "SHA-256",
+              "value": "0c6e6fbcef62cb034aff493187dee8d327c6bb2c08bb14a81a9c7221b091e0a5",
+              "scope": "Prior catalog assertion for exact CSV bytes; not reverified here",
+              "verification": "inherited_prior_catalog"
+            },
+            {
+              "algorithm": "Git blob SHA-1",
+              "value": "24e400385ad45ebf477bb2dc49e502d9af8a4fd5",
+              "scope": "Reported in pinned tree metadata; target bytes not independently hashed",
+              "verification": "metadata_reported_this_review"
+            }
+          ],
+          "raw_file_reuse": "held",
+          "rights_status": "unknown",
+          "applicable_grant_established": false
+        }
+      ],
+      "review_completed": true,
+      "bounded_component_status": "completed_with_unresolved_hold",
+      "overall_action_status": "still_held_for_residual_evidence",
+      "completed_scope": "Pinned rights statements and four-release chronology checked; card revision and byte hash verified.",
+      "verified_fact_ids": [
+        "RR01-F07",
+        "RR01-F08"
+      ],
+      "superseded_scope": "The release chronology is now documented. This enriches the historical review; no prior numerical denominator or CSV-to-release equivalence assertion is superseded.",
+      "still_held": [
+        "Statistics-CSV applicability remains unresolved.",
+        "Exact statistical/paper denominator bridge, subset processing differences and cross-corpus overlap remain unresolved."
+      ],
+      "next_research_boundary": "Use a specific release-to-CSV membership/denominator statement if available; do not re-audit known release dates or fetch corpora. Rights work needs new applicability evidence."
+    },
+    {
+      "collection_id": "IPP003",
+      "catalog_path": "data/evidence-program/research/inference-price-performance.json",
+      "collection_pointer": "/collections/2",
+      "prior_assertion_refs": [
+        {
+          "pointer": "/collections/2/rights",
+          "existing_assertion_id": null,
+          "reference_basis": "Existing ID when present; otherwise exact pointer in pinned catalog"
+        },
+        {
+          "pointer": "/collections/2/limitations/4",
+          "existing_assertion_id": null,
+          "reference_basis": "Existing ID when present; otherwise exact pointer in pinned catalog"
+        }
+      ],
+      "existing_action_id": "IPP-A03",
+      "action_pointer": "/next_actions/2",
+      "existing_prompt_id": "IPP-P03",
+      "prompt_pointer": "/follow_up_prompts/2",
+      "prior_action_status": "bounded_follow_up_not_started",
+      "prior_hold_refs": [
+        {
+          "pointer": "/holds/1",
+          "existing_hold_id": null,
+          "id_null_reason": "Historical hold has no standalone ID; retained by catalog pointer."
+        }
+      ],
+      "targets": [
+        {
+          "existing_artifact_id": null,
+          "catalog_pointer": "/collections/2/artifacts/0",
+          "url": "https://github.com/epoch-research/llm-benchmark-efficiency/blob/34b923314338360d1b1bbed6ec30d9299e54fdae/data/epoch_ai_eval_data.csv",
+          "version": "34b923314338360d1b1bbed6ec30d9299e54fdae",
+          "id_null_reason": "Existing catalog artifact has no artifact_id; collection, pointer and exact pinned URL identify it.",
+          "hash_verification_this_review": "header_bytes_and_tree_reported_blob_only",
+          "hash_evidence": [
+            {
+              "algorithm": "SHA-256",
+              "value": "fd6ebe8a46c19a07f22723474eb13214ec9613ee6847d360d7ccde2a9baeb7a1",
+              "scope": "First physical header line, including line ending; never a whole-file hash",
+              "verification": "independently_computed_header_only"
+            },
+            {
+              "algorithm": "Git blob SHA-1",
+              "value": "d9d1047d96542f20470da46ccf2a1db933f4398e",
+              "scope": "Official tree-reported complete-file object ID; not independently verified from full bytes",
+              "verification": "metadata_reported_this_review"
+            }
+          ],
+          "raw_file_reuse": "held",
+          "rights_status": "unknown",
+          "applicable_grant_established": false
+        },
+        {
+          "existing_artifact_id": null,
+          "catalog_pointer": "/collections/2/artifacts/1",
+          "url": "https://github.com/epoch-research/llm-benchmark-efficiency/blob/34b923314338360d1b1bbed6ec30d9299e54fdae/data/epoch_ai_price_data_not_in_aa_with_benchmarks.csv",
+          "version": "34b923314338360d1b1bbed6ec30d9299e54fdae",
+          "id_null_reason": "Existing catalog artifact has no artifact_id; collection, pointer and exact pinned URL identify it.",
+          "hash_verification_this_review": "header_bytes_and_tree_reported_blob_only",
+          "hash_evidence": [
+            {
+              "algorithm": "SHA-256",
+              "value": "5118ddfc03a6b953da8198e7e95e26ccefb9996f3458952d56def857779bf00d",
+              "scope": "First physical header line, including line ending; never a whole-file hash",
+              "verification": "independently_computed_header_only"
+            },
+            {
+              "algorithm": "Git blob SHA-1",
+              "value": "78b228d7c9806c8311f4ed9ed872a56a4d8d0d35",
+              "scope": "Official tree-reported complete-file object ID; not independently verified from full bytes",
+              "verification": "metadata_reported_this_review"
+            }
+          ],
+          "raw_file_reuse": "held",
+          "rights_status": "unknown",
+          "applicable_grant_established": false
+        },
+        {
+          "existing_artifact_id": null,
+          "catalog_pointer": "/collections/2/artifacts/2",
+          "url": "https://github.com/epoch-research/llm-benchmark-efficiency/blob/34b923314338360d1b1bbed6ec30d9299e54fdae/data/aa_data_with_math5.csv",
+          "version": "34b923314338360d1b1bbed6ec30d9299e54fdae",
+          "id_null_reason": "Existing catalog artifact has no artifact_id; collection, pointer and exact pinned URL identify it.",
+          "hash_verification_this_review": "header_bytes_and_tree_reported_blob_only",
+          "hash_evidence": [
+            {
+              "algorithm": "SHA-256",
+              "value": "5118ddfc03a6b953da8198e7e95e26ccefb9996f3458952d56def857779bf00d",
+              "scope": "First physical header line, including line ending; never a whole-file hash",
+              "verification": "independently_computed_header_only"
+            },
+            {
+              "algorithm": "Git blob SHA-1",
+              "value": "a9bb1a17a815507174daf7b060a7835a018133f1",
+              "scope": "Official tree-reported complete-file object ID; not independently verified from full bytes",
+              "verification": "metadata_reported_this_review"
+            }
+          ],
+          "raw_file_reuse": "held",
+          "rights_status": "unknown",
+          "applicable_grant_established": false
+        }
+      ],
+      "review_completed": true,
+      "bounded_component_status": "completed_with_unresolved_hold",
+      "overall_action_status": "still_held_for_residual_evidence",
+      "completed_scope": "Three header fingerprints, notebook source provenance, substitutions, exporter mismatch and repricing semantics verified; the bounded documentary result is complete with explicit residuals.",
+      "verified_fact_ids": [
+        "RR01-F09",
+        "RR01-F10",
+        "RR01-F11",
+        "RR01-F12",
+        "RR01-F13",
+        "RR01-F14",
+        "RR01-F15"
+      ],
+      "superseded_scope": "IPP-A03 bounded_follow_up_not_started is superseded by completed bounded documentary review, without pretending requested cell-level provenance is fully resolved.",
+      "still_held": [
+        "Historical original-Epoch grant applicability remains unresolved.",
+        "AA/other mixed-field rights and exact row-level score/version provenance remain unresolved.",
+        "No full-file SHA-256 or runtime row membership established."
+      ],
+      "next_research_boundary": "Further research must target exact historical permission applicability or row/field provenance under a new bounded authorized scope. Do not repeat generic CC BY/current AA terms, header checks or known substitutions."
+    },
+    {
+      "collection_id": "AE002",
+      "catalog_path": "data/evidence-program/research/algorithmic-efficiency.json",
+      "collection_pointer": "/collections/1",
+      "prior_assertion_refs": [
+        {
+          "pointer": "/collections/1/limitations/4",
+          "existing_assertion_id": null,
+          "reference_basis": "Existing ID when present; otherwise exact pointer in pinned catalog"
+        }
+      ],
+      "existing_action_id": "AE-A04",
+      "action_pointer": "/next_actions/3",
+      "existing_prompt_id": "AE-P02",
+      "prompt_pointer": "/focused_follow_up_prompts/1",
+      "prior_action_status": "held_documentary_review",
+      "prior_hold_refs": [
+        {
+          "pointer": "/holds/2",
+          "existing_hold_id": null,
+          "id_null_reason": "Historical hold has no standalone ID; retained by catalog pointer."
+        }
+      ],
+      "targets": [
+        {
+          "existing_artifact_id": "ae002_log",
+          "catalog_pointer": "/collections/1/artifacts/2",
+          "url": "https://github.com/KellerJordan/modded-nanogpt/blob/4ea6b937337a4889b8cfe3f38a93d120048d8f71/records/track_3_optimization/results/51ece938-03c5-4343-8dcc-3f3336b07008.txt",
+          "version": "4ea6b937337a4889b8cfe3f38a93d120048d8f71",
+          "id_null_reason": null,
+          "hash_verification_this_review": "inherited_prior_catalog_not_reverified",
+          "hash_evidence": [
+            {
+              "algorithm": "SHA-256",
+              "value": "b0032cb0d43cf874273ada0c6b373ec99ba8bd3de3c821d6309eebdebf94cdf7",
+              "scope": "Prior catalog assertion for exact log bytes; not reverified this review",
+              "verification": "inherited_prior_catalog"
+            },
+            {
+              "algorithm": "Git blob SHA-1",
+              "value": "9deb28c67f953ba40a376a3b703c5a2cba7ad3cc",
+              "scope": "Prior catalog object identity; log not reacquired",
+              "verification": "inherited_prior_catalog"
+            }
+          ],
+          "raw_file_reuse": "held",
+          "rights_status": "unknown",
+          "applicable_grant_established": false
+        }
+      ],
+      "review_completed": true,
+      "bounded_component_status": "completed_with_unresolved_hold",
+      "overall_action_status": "still_held_for_residual_evidence",
+      "completed_scope": "MIT subject, reproducibility rule and exact acceptance-comment body/date checked; rights-only bounded review complete.",
+      "verified_fact_ids": [
+        "RR01-F16"
+      ],
+      "superseded_scope": "The checked rights-document component no longer requires repeating the same records; AE-A04 remains held for the listed residuals. Acceptance does not establish rights consent.",
+      "still_held": [
+        "Contributed log/component applicability remains unresolved.",
+        "Separate timing convention, claimed-versus-rerun outcome and performance questions remain outside this pass."
+      ],
+      "next_research_boundary": "A new applicable contribution/component grant can reopen rights work. Timing/rerun work must use its separate bounded question and must not execute the log."
+    }
+  ],
+  "verified_facts": [
+    {
+      "id": "RR01-F01",
+      "status": "independently_verified",
+      "claim": "The pinned publisher announcement records leaderboard v3.0 release on 2025-12-01 and a separate diagnostics-blog/arXiv announcement on 2026-01-29.",
+      "limit": "Announcement dates only; no independent paper publication date or measurement-run date.",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/ml-energy/leaderboard/7885788e837b80ad172e02e6e8c47e8d0b85520e/src/config/announcements.ts",
+          "locator": "lines 14–28",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:14.794014+00:00",
+          "content_sha256": "6f70bdf4e98138c334dabd0cb47613f09cd720c06b4c9939ada7294f299e11ca",
+          "hash_scope": "complete_document"
+        }
+      ]
+    },
+    {
+      "id": "RR01-F02",
+      "status": "independently_verified",
+      "claim": "Pinned ML.ENERGY README describes data compilation via mlenergy-data. The complete nontruncated tree has no LICENSE/NOTICE path and reports gpqa.json blob bf29ccb9e275b0fcceb985f4a90be294851bde25, size 161530.",
+      "limit": "No GPQA target bytes retrieved or SHA-256 computed; tree absence is bounded, not proof no applicable rights exist.",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/ml-energy/leaderboard/7885788e837b80ad172e02e6e8c47e8d0b85520e/README.md",
+          "locator": "Building the Data, lines 9–19",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:14.793169+00:00",
+          "content_sha256": "b48eb72d269e7107019669ba873e7bf6796c1c192b7267872245f2888282505c",
+          "hash_scope": "complete_document"
+        },
+        {
+          "url": "https://api.github.com/repos/ml-energy/leaderboard/git/trees/7885788e837b80ad172e02e6e8c47e8d0b85520e?recursive=1",
+          "locator": "tree path public/data/tasks/gpqa.json; truncated=false",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:30.176121+00:00",
+          "content_sha256": "65ac97099a1e74e779050ca71800b8878bafeb0e79bde9d00acf4347b208f055",
+          "hash_scope": "complete_metadata"
+        }
+      ]
+    },
+    {
+      "id": "RR01-F03",
+      "status": "independently_verified",
+      "claim": "Separate HF benchmark-v3 metadata reports revision fea6cb99d037d11f86f9c45a6991b9e5764f4529, Apache-2.0, gated=auto, creation 2026-02-16T05:47:56.000Z and modification 2026-02-19T04:29:40.000Z. Public card displays contact-sharing access conditions.",
+      "limit": "Dataset declaration does not establish compiled leaderboard JSON coverage. Gate not entered; repository lifecycle dates are not runs.",
+      "evidence": [
+        {
+          "url": "https://huggingface.co/api/datasets/ml-energy/benchmark-v3?expand%5B%5D=sha&expand%5B%5D=lastModified&expand%5B%5D=createdAt&expand%5B%5D=gated&expand%5B%5D=cardData",
+          "locator": "sha, cardData.license, gated, createdAt, lastModified",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:30.188304+00:00",
+          "content_sha256": "9360c3ec3cac07d6e5fce5d6ca053c69528979b7ee0bfaaf54d3f473dd660a17",
+          "hash_scope": "complete_metadata"
+        },
+        {
+          "url": "https://huggingface.co/datasets/ml-energy/benchmark-v3",
+          "locator": "public card License and access banner",
+          "observed_on": "2026-10-08",
+          "content_sha256": null,
+          "hash_scope": "parsed_primary_page_text; native response bytes not hashed"
+        }
+      ]
+    },
+    {
+      "id": "RR01-F04",
+      "status": "independently_verified",
+      "claim": "Common Crawl pinned README describes statistics generation/publication; the root Apache text defines the licensed Work. Current Terms display 2024-03-07 and separate service access/use from originating-content rights.",
+      "limit": "No target-specific applicability bridge identified in these checked documents. Apache is not inherently code-only; an express filename is not a universal legal prerequisite.",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/commoncrawl/cc-crawl-statistics/1053c982a91ba0bb4323c5f00ec3230d9cd54e4b/README.md",
+          "locator": "overview and Step 5",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:14.794610+00:00",
+          "content_sha256": "5e6e1612a716eb79d3acae4a91ff2bf308f38294017f6e7bfefff5f602c3781b",
+          "hash_scope": "complete_document"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/commoncrawl/cc-crawl-statistics/1053c982a91ba0bb4323c5f00ec3230d9cd54e4b/LICENSE",
+          "locator": "sections 1, 2 and 4",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:14.795049+00:00",
+          "content_sha256": "b40930bbcf80744c86c46a12bc9da056641d722716c378f5659b9e555ef833e1",
+          "hash_scope": "complete_document"
+        },
+        {
+          "url": "https://commoncrawl.org/terms-of-use",
+          "locator": "update date and sections 1–4",
+          "observed_on": "2026-10-08",
+          "content_sha256": null,
+          "hash_scope": "parsed_primary_page_text; native response bytes not hashed"
+        }
+      ]
+    },
+    {
+      "id": "RR01-F05",
+      "status": "independently_verified",
+      "claim": "DPI README expressly designates code as Apache-2.0. Template and Alpaca license fields are assertions about described datasets, including distinct upstream OpenAI/CC BY-NC and inferred GitHub Apache labels.",
+      "limit": "Those fields do not themselves license DPI metadata. No dated metadata-release or metadata-license effective date established in the four documents.",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/Data-Provenance-Initiative/Data-Provenance-Collection/ce6662deccf011574427b6f112df479d261960b8/README.md",
+          "locator": "Dataset Provenance and line 219",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:20.504137+00:00",
+          "content_sha256": "db4c35a5f4f2b17a14680fc1c6854a6f36f82a930c6dfffa4f0297b5ea7dd4f1",
+          "hash_scope": "complete_document"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Data-Provenance-Initiative/Data-Provenance-Collection/ce6662deccf011574427b6f112df479d261960b8/LICENSE",
+          "locator": "sections 1–5",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:20.590117+00:00",
+          "content_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "hash_scope": "complete_document"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Data-Provenance-Initiative/Data-Provenance-Collection/ce6662deccf011574427b6f112df479d261960b8/data_summaries/_template.json",
+          "locator": "Licenses and License Notes",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:20.608774+00:00",
+          "content_sha256": "04f8605ca55671cfb05c5ef05d10d214d9524741e235600a0c47fbfd34b1bc4a",
+          "hash_scope": "complete_document"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Data-Provenance-Initiative/Data-Provenance-Collection/ce6662deccf011574427b6f112df479d261960b8/data_summaries/Alpaca.json",
+          "locator": "/alpaca/Licenses, /alpaca/License Notes, /alpaca/Inferred Metadata",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:20.617643+00:00",
+          "content_sha256": "b71dbf91e3dc8ee5b6ba3b80d9b4a55488d291c906abc0dad5fa3bcaeaca50e6",
+          "hash_scope": "complete_document"
+        }
+      ]
+    },
+    {
+      "id": "RR01-F06",
+      "status": "independently_verified",
+      "claim": "Both complete DPI target metadata byte hashes and computed Git blob identities match the supplied matrix.",
+      "limit": "Byte identity is not a reuse grant or publication clearance.",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/Data-Provenance-Initiative/Data-Provenance-Collection/ce6662deccf011574427b6f112df479d261960b8/data_summaries/_template.json",
+          "locator": "complete 3915-byte response",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:20.608774+00:00",
+          "content_sha256": "04f8605ca55671cfb05c5ef05d10d214d9524741e235600a0c47fbfd34b1bc4a",
+          "hash_scope": "complete_document"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Data-Provenance-Initiative/Data-Provenance-Collection/ce6662deccf011574427b6f112df479d261960b8/data_summaries/Alpaca.json",
+          "locator": "complete 3733-byte response",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:20.617643+00:00",
+          "content_sha256": "b71dbf91e3dc8ee5b6ba3b80d9b4a55488d291c906abc0dad5fa3bcaeaca50e6",
+          "hash_scope": "complete_document"
+        }
+      ]
+    },
+    {
+      "id": "RR01-F07",
+      "status": "independently_verified",
+      "claim": "FineWeb2 GitHub README separately declares code Apache-2.0 and dataset ODC-By. Pinned HF card af9c13333eb981300149d5ca60a8e9d659b276b9 declares ODC-By 1.0 plus Common Crawl terms and links the statistics CSV at mutable GitHub main.",
+      "limit": "Association does not settle scope for the exact historical CSV; database and independent content rights remain separate.",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/huggingface/fineweb-2/d0defb24f193bb9a5a11b8b14524a03c4858e1b6/README.md",
+          "locator": "License, line 93",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:24.884447+00:00",
+          "content_sha256": "6f3de90e34167999ca3c2202424b95530544888d6609d2d5204cddd753e62e2f",
+          "hash_scope": "complete_document"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/huggingface/fineweb-2/d0defb24f193bb9a5a11b8b14524a03c4858e1b6/LICENSE",
+          "locator": "sections 1–4",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:24.938674+00:00",
+          "content_sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+          "hash_scope": "complete_document"
+        },
+        {
+          "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-2/resolve/af9c13333eb981300149d5ca60a8e9d659b276b9/README.md",
+          "locator": "lines 13150 and 13579–13581",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:30.220248+00:00",
+          "content_sha256": "08d38a7e5cb7aae4b6fcc284fec4dd636ea653e4e5e74ef66a60d9616005b090",
+          "hash_scope": "complete_document"
+        }
+      ]
+    },
+    {
+      "id": "RR01-F08",
+      "status": "independently_verified",
+      "claim": "FineWeb2 card dates v2.0.0 to 2024-12-08, v2.0.1 to 2025-01-08, v2.1.0 to 2025-06-27, and v2.1.1 to 2025-10-27. Git commit d0defb24f193bb9a5a11b8b14524a03c4858e1b6 is 2025-10-27T18:15:37Z with message updating the statistics CSV.",
+      "limit": "Same-day events do not prove the CSV is a release-equivalent denominator snapshot or grant retrospective rights.",
+      "evidence": [
+        {
+          "url": "https://huggingface.co/datasets/HuggingFaceFW/fineweb-2/resolve/af9c13333eb981300149d5ca60a8e9d659b276b9/README.md",
+          "locator": "Changelog, lines 13243–13249",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:30.220248+00:00",
+          "content_sha256": "08d38a7e5cb7aae4b6fcc284fec4dd636ea653e4e5e74ef66a60d9616005b090",
+          "hash_scope": "complete_document"
+        },
+        {
+          "url": "https://api.github.com/repos/huggingface/fineweb-2/git/commits/d0defb24f193bb9a5a11b8b14524a03c4858e1b6",
+          "locator": "author.date, committer.date, message",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:34.863529+00:00",
+          "content_sha256": "718d11427901393c9b00ceaefacda60f0edc865c2ad904c41fe2206b6d058e2c",
+          "hash_scope": "complete_metadata"
+        }
+      ]
+    },
+    {
+      "id": "RR01-F09",
+      "status": "independently_verified",
+      "claim": "Epoch pinned README identifies data inputs; the complete nontruncated tree contains no license path. Pinned commit date is 2025-03-13T18:32:35Z. Current study page is dated 2025-03-12 and download panels 2025-11-20.",
+      "limit": "Article publication, pinned commit and current export update are different events.",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/epoch-research/llm-benchmark-efficiency/34b923314338360d1b1bbed6ec30d9299e54fdae/README.md",
+          "locator": "data/ statement",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:24.950667+00:00",
+          "content_sha256": "db646afb383dcd08bfee42b9db659046dba4a681dbeab33457f93953321c8bf7",
+          "hash_scope": "complete_document"
+        },
+        {
+          "url": "https://api.github.com/repos/epoch-research/llm-benchmark-efficiency/git/trees/34b923314338360d1b1bbed6ec30d9299e54fdae?recursive=1",
+          "locator": "complete tree; truncated=false",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:35.365656+00:00",
+          "content_sha256": "a549bf0df5e87553a87c5f4113c9c083289e5a820051cd88618dadd2a3b96092",
+          "hash_scope": "complete_metadata"
+        },
+        {
+          "url": "https://api.github.com/repos/epoch-research/llm-benchmark-efficiency/git/commits/34b923314338360d1b1bbed6ec30d9299e54fdae",
+          "locator": "author.date and committer.date",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:35.586016+00:00",
+          "content_sha256": "17f8fde1224f2a2b211147929205ae114463cac515dea3ce98364ae2ff0f1c70",
+          "hash_scope": "complete_metadata"
+        },
+        {
+          "url": "https://epoch.ai/data-insights/llm-inference-price-trends",
+          "locator": "article date and Download this data panels",
+          "observed_on": "2026-10-08",
+          "content_sha256": null,
+          "hash_scope": "parsed_primary_page_text; native response bytes not hashed"
+        }
+      ]
+    },
+    {
+      "id": "RR01-F10",
+      "status": "independently_verified",
+      "claim": "Current Epoch page states a CC BY grant for Epoch work and links CC BY 4.0; mixed data origin is documented.",
+      "limit": "This does not establish historical CSV applicability or field-level third-party coverage. No current AA terms applied retroactively.",
+      "evidence": [
+        {
+          "url": "https://epoch.ai/data-insights/llm-inference-price-trends",
+          "locator": "rights statement; Data; citation license link",
+          "observed_on": "2026-10-08",
+          "content_sha256": null,
+          "hash_scope": "parsed_primary_page_text; native response bytes not hashed"
+        },
+        {
+          "url": "https://creativecommons.org/licenses/by/4.0/",
+          "locator": "deed Attribution, No additional restrictions, Notices",
+          "observed_on": "2026-10-08",
+          "content_sha256": null,
+          "hash_scope": "parsed_primary_page_text; native response bytes not hashed"
+        }
+      ]
+    },
+    {
+      "id": "RR01-F11",
+      "status": "independently_verified",
+      "claim": "Epoch source separately labels AA and Epoch-price inputs, concatenates them, and reads original evaluation aggregates from epoch_ai_eval_data.csv.",
+      "limit": "Inert source documentation only; no result reproduction or row-level ownership determination.",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/epoch-research/llm-benchmark-efficiency/34b923314338360d1b1bbed6ec30d9299e54fdae/llm_evaluation_cost_trends.ipynb",
+          "locator": "/cells/3/source through /cells/8/source; /cells/12/source",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:39.409779+00:00",
+          "content_sha256": "7e20b54b6670b4fafc816474ede25bd05b6328fe8aaf55f7ee335d6b38d004c8",
+          "hash_scope": "Complete retrieved notebook response bytes, before source-cell projection",
+          "content_bytes": 437684,
+          "inspection_scope": "Inert source cells only; outputs ignored, no code executed",
+          "source_cell_projection_sha256": "e7a93288ebf31717c54eac6ec31da058655fbbb2496180a783a1331d076c1519",
+          "source_cell_projection_hash_scope": "Derived source-cell projection only; not the full notebook response"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/epoch-research/llm-benchmark-efficiency/34b923314338360d1b1bbed6ec30d9299e54fdae/save_evaluation_data.ipynb",
+          "locator": "/cells/0/source, /cells/2/source, /cells/18/source",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:39.370550+00:00",
+          "content_sha256": "89499fb54d32a9baf2349668e6691f538e8939ea54293c5301551ec66488aedc",
+          "hash_scope": "Complete retrieved notebook response bytes, before source-cell projection",
+          "content_bytes": 432492,
+          "inspection_scope": "Inert source cells only; outputs ignored, no code executed",
+          "source_cell_projection_sha256": "2cfc1e48396ad335b93e560d67ea7577374f562fac6625e74ffb81881b19ee50",
+          "source_cell_projection_hash_scope": "Derived source-cell projection only; not the full notebook response"
+        }
+      ]
+    },
+    {
+      "id": "RR01-F12",
+      "status": "independently_verified",
+      "claim": "Epoch mapping explicitly substitutes gpt-4-0613 → GPT-4-0314, gpt-4-turbo-2024-04-09 → GPT-4 Turbo, and mistral-large-2407 → Mistral-Large-2-2024-06; high/medium o1 and o3-mini variants map to common labels.",
+      "limit": "Preserve measured and assigned identifiers plus reasoning settings; this is not checkpoint equivalence. Do not silently correct the Mistral label.",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/epoch-research/llm-benchmark-efficiency/34b923314338360d1b1bbed6ec30d9299e54fdae/llm_evaluation_cost_trends.ipynb",
+          "locator": "/cells/14/source",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:39.409779+00:00",
+          "content_sha256": "7e20b54b6670b4fafc816474ede25bd05b6328fe8aaf55f7ee335d6b38d004c8",
+          "hash_scope": "Complete retrieved notebook response bytes, before source-cell projection",
+          "content_bytes": 437684,
+          "inspection_scope": "Inert source cells only; outputs ignored, no code executed",
+          "source_cell_projection_sha256": "e7a93288ebf31717c54eac6ec31da058655fbbb2496180a783a1331d076c1519",
+          "source_cell_projection_hash_scope": "Derived source-cell projection only; not the full notebook response"
+        }
+      ]
+    },
+    {
+      "id": "RR01-F13",
+      "status": "independently_verified",
+      "claim": "All three exact Epoch header-byte hashes match. Original evaluation header has Model, Task, epochs, total_samples, input_tokens, output_tokens, total_tokens; exporter additionally specifies Release Date and reads but does not export reasoning_effort.",
+      "limit": "No full CSV SHA-256 or generated-byte equivalence; no backfilling missing fields.",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/epoch-research/llm-benchmark-efficiency/34b923314338360d1b1bbed6ec30d9299e54fdae/data/epoch_ai_eval_data.csv",
+          "locator": "first 72 bytes; one physical header line",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:39.490825+00:00",
+          "content_sha256": "fd6ebe8a46c19a07f22723474eb13214ec9613ee6847d360d7ccde2a9baeb7a1",
+          "hash_scope": "first_physical_header_line_only"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/epoch-research/llm-benchmark-efficiency/34b923314338360d1b1bbed6ec30d9299e54fdae/data/epoch_ai_price_data_not_in_aa_with_benchmarks.csv",
+          "locator": "first 168 bytes; one physical header line",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:39.943931+00:00",
+          "content_sha256": "5118ddfc03a6b953da8198e7e95e26ccefb9996f3458952d56def857779bf00d",
+          "hash_scope": "first_physical_header_line_only"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/epoch-research/llm-benchmark-efficiency/34b923314338360d1b1bbed6ec30d9299e54fdae/data/aa_data_with_math5.csv",
+          "locator": "first 168 bytes; one physical header line",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:42.771059+00:00",
+          "content_sha256": "5118ddfc03a6b953da8198e7e95e26ccefb9996f3458952d56def857779bf00d",
+          "hash_scope": "first_physical_header_line_only"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/epoch-research/llm-benchmark-efficiency/34b923314338360d1b1bbed6ec30d9299e54fdae/save_evaluation_data.ipynb",
+          "locator": "/cells/18/source",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:39.370550+00:00",
+          "content_sha256": "89499fb54d32a9baf2349668e6691f538e8939ea54293c5301551ec66488aedc",
+          "hash_scope": "Complete retrieved notebook response bytes, before source-cell projection",
+          "content_bytes": 432492,
+          "inspection_scope": "Inert source cells only; outputs ignored, no code executed",
+          "source_cell_projection_sha256": "2cfc1e48396ad335b93e560d67ea7577374f562fac6625e74ffb81881b19ee50",
+          "source_cell_projection_hash_scope": "Derived source-cell projection only; not the full notebook response"
+        }
+      ]
+    },
+    {
+      "id": "RR01-F14",
+      "status": "independently_verified",
+      "claim": "Epoch article explains that repricing creates distinct observations with new values in the release-date field.",
+      "limit": "Treat these as price-effective events where applicable, not automatically new model releases. No target-row dates audited.",
+      "evidence": [
+        {
+          "url": "https://epoch.ai/data-insights/llm-inference-price-trends",
+          "locator": "Data paragraph about changed LLM prices",
+          "observed_on": "2026-10-08",
+          "content_sha256": null,
+          "hash_scope": "parsed_primary_page_text; native response bytes not hashed"
+        }
+      ]
+    },
+    {
+      "id": "RR01-F15",
+      "status": "newly_verified_documentary_delta",
+      "claim": "Cell 15 assigns merged_df first with a left join and then overwrites it with a right join on mapped Model Name; cell 18 creates eval_cost_df by dropping missing Model or total_tokens.",
+      "limit": "Documentary selection semantics only. Actual join cardinality, retained cohort and downstream results were not executed or counted.",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/epoch-research/llm-benchmark-efficiency/34b923314338360d1b1bbed6ec30d9299e54fdae/llm_evaluation_cost_trends.ipynb",
+          "locator": "/cells/15/source and /cells/18/source",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:39.409779+00:00",
+          "content_sha256": "7e20b54b6670b4fafc816474ede25bd05b6328fe8aaf55f7ee335d6b38d004c8",
+          "hash_scope": "Complete retrieved notebook response bytes, before source-cell projection",
+          "content_bytes": 437684,
+          "inspection_scope": "Inert source cells only; outputs ignored, no code executed",
+          "source_cell_projection_sha256": "e7a93288ebf31717c54eac6ec31da058655fbbb2496180a783a1331d076c1519",
+          "source_cell_projection_hash_scope": "Derived source-cell projection only; not the full notebook response"
+        }
+      ]
+    },
+    {
+      "id": "RR01-F16",
+      "status": "independently_verified",
+      "claim": "NanoGPT MIT scope includes software and associated documentation; Track 3 requires reproducibility code in logs. Exact owner comment 4358326452 is dated/updated 2026-05-01T07:27:24Z, says done and links historical commit d035e686c3fab8e5f8f72515fe3f4c2932911022, with no grant language.",
+      "limit": "Acceptance/submission is provenance, not separate rights consent; target log and embedded components were not read or cleared.",
+      "evidence": [
+        {
+          "url": "https://raw.githubusercontent.com/KellerJordan/modded-nanogpt/4ea6b937337a4889b8cfe3f38a93d120048d8f71/LICENSE",
+          "locator": "defined Software and notice condition",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:25.008668+00:00",
+          "content_sha256": "8c8d17398ecce3dd3fcb1bb77b5d268a427f8250f364ac655c9b38df5b693f6b",
+          "hash_scope": "complete_document"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/KellerJordan/modded-nanogpt/4ea6b937337a4889b8cfe3f38a93d120048d8f71/records/track_3_optimization/README.md",
+          "locator": "Reproducibility, line 184",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:30.150372+00:00",
+          "content_sha256": "03d496e8d3157df21d2f0174e8c259527abf17b482eeeb00137472be8c23ff93",
+          "hash_scope": "complete_document"
+        },
+        {
+          "url": "https://api.github.com/repos/KellerJordan/modded-nanogpt/issues/comments/4358326452",
+          "locator": "id, author_association, created_at, updated_at, body",
+          "observed_on": "2026-10-08",
+          "observed_at": "2026-10-08T11:41:35.638858+00:00",
+          "content_sha256": "1c2117da86078f1d4cc96e02aa39953141a8b27ebd0efba9a5af5f8310d1aa39",
+          "hash_scope": "complete_metadata"
+        }
+      ]
+    }
+  ],
+  "precise_supersessions": [
+    {
+      "catalog": "inference-price-performance",
+      "pointer": "/collections/1/historical_coverage",
+      "old_assertion": "Broader historical start and v3 release date remain unverified.",
+      "effective_correction": "Official publisher-dated leaderboard v3.0 announcement is 2025-12-01. Broader start, actual runs and artifact-to-release equivalence remain unverified.",
+      "status": "superseded_only_for_stated_component",
+      "verified_fact_ids": [
+        "RR01-F01"
+      ]
+    },
+    {
+      "catalog": "inference-price-performance",
+      "pointer": "/next_actions/1/status",
+      "old_assertion": "bounded_follow_up_not_started",
+      "effective_correction": "Bounded public documentary rights/release request completed with unresolved compiled-JSON applicability; other run/quality holds remain.",
+      "status": "superseded_only_for_stated_component",
+      "verified_fact_ids": [
+        "RR01-F01",
+        "RR01-F02",
+        "RR01-F03"
+      ]
+    },
+    {
+      "catalog": "inference-price-performance",
+      "pointer": "/next_actions/2/status",
+      "old_assertion": "bounded_follow_up_not_started",
+      "effective_correction": "Bounded provenance/rights review completed with explicit historical/field/row residuals; do not claim all field provenance resolved.",
+      "status": "superseded_only_for_stated_component",
+      "verified_fact_ids": [
+        "RR01-F09",
+        "RR01-F10",
+        "RR01-F11",
+        "RR01-F12",
+        "RR01-F13",
+        "RR01-F14",
+        "RR01-F15"
+      ]
+    }
+  ],
+  "inherited_or_unverified_context": [
+    {
+      "topic": "Original wider source reviews",
+      "status": "inherited_not_repeated",
+      "detail": "Existing source numerical analyses, population counts, performance/rerun calculations, crawl chronology and broad overlap decisions were not reopened."
+    },
+    {
+      "topic": "Unrechecked supplied auxiliary documents",
+      "status": "supplied_unverified_in_this_delta",
+      "detail": "Common Crawl FAQ/root listing/revision time, NanoGPT root README/root listing/revision time, ML.ENERGY linked benchmark/live app shell and compilation commit time, and Epoch llm_price_trends.ipynb were not reacquired. Their supplied review outcomes are preserved as attributed context, not fresh independent checks."
+    },
+    {
+      "topic": "Native target bytes",
+      "status": "still_unverified_in_this_delta",
+      "detail": "No CC CSV, FineWeb2 CSV, NanoGPT log or ML.ENERGY compiled GPQA JSON acquired. Epoch only headers. Source hashes and metadata identities keep their original scopes."
+    },
+    {
+      "topic": "FineWeb2 card resolution",
+      "status": "partially_verified",
+      "detail": "Exact pinned card bytes and hash verified. The supplied earlier main-to-pin redirect observation was not re-enacted; no claim about current main equivalence is needed."
+    },
+    {
+      "topic": "Original prompt compliance",
+      "status": "not_assessed",
+      "detail": "Both outputs fully read. The original combined research prompt was not supplied in this intake, so exact compliance with that unknown prompt cannot be certified."
+    },
+    {
+      "topic": "All raw target rights",
+      "status": "still_held",
+      "detail": "No new applicable grant established for any of the 10 targets; no legal prohibition is inferred. No permissions or admission promoted."
+    }
+  ],
+  "verification_limits": [
+    "Documentary source checks and receipt consistency are distinct from source-adapter acceptance, empirical replication and canonical/runtime mapping.",
+    "No Common Crawl CSV, FineWeb2 CSV, NanoGPT log or ML.ENERGY compiled GPQA target was reacquired; only DPI targets were fully hashed and Epoch targets were read through headers.",
+    "Private source bytes, notebook projections and the supplied reports are not republished as fixtures.",
+    "Existing broader timing, population, denominator, quality and overlap analyses were not reopened."
+  ],
+  "outside_bundle": [
+    "IPP001",
+    "IPP004",
+    "TD003",
+    "TD005",
+    "AE001",
+    "AE003",
+    "AE004",
+    "AE005"
+  ]
+}

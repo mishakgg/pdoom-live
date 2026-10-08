@@ -1,6 +1,6 @@
 {
   "title": "Follow-up research queue",
-  "snapshot_at": "2026-10-08T11:54:24.693Z",
+  "snapshot_at": "2026-10-08T12:38:08Z",
   "original_session_count": 26,
   "original_session_queue": "docs/evidence-program/research/research-session-review-queue.md",
   "received_bundle_count": 3,
@@ -42,8 +42,15 @@
         "IPP-P03"
       ],
       "received_files": 2,
-      "review_status": "in_progress",
-      "integration_status": "not_integrated"
+      "review_status": "review_complete_with_residual_holds",
+      "integration_status": "reviewed_delta_included_in_this_version",
+      "review_completed_at": "2026-10-08T11:57:10.999150+00:00",
+      "delta_path": "data/evidence-program/research/followups/rights-release.json",
+      "guide_path": "docs/evidence-program/research/followups/rights-release.md",
+      "reviewed_fact_records": 16,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "residual_holds_remain": true
     },
     {
       "sequence": 2,
@@ -69,8 +76,15 @@
         "IPP-P01"
       ],
       "received_files": 2,
-      "review_status": "not_started",
-      "integration_status": "not_integrated"
+      "review_status": "review_complete_with_residual_holds",
+      "integration_status": "reviewed_delta_included_in_this_version",
+      "review_completed_at": "2026-10-08T12:15:54.244754+00:00",
+      "delta_path": "data/evidence-program/research/followups/physical-inference-comparability.json",
+      "guide_path": "docs/evidence-program/research/followups/physical-inference-comparability.md",
+      "reviewed_fact_records": 12,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "residual_holds_remain": true
     },
     {
       "sequence": 3,
@@ -99,8 +113,15 @@
         "LM-P03"
       ],
       "received_files": 2,
-      "review_status": "not_started",
-      "integration_status": "not_integrated"
+      "review_status": "review_complete_with_residual_holds",
+      "integration_status": "reviewed_delta_included_in_this_version",
+      "review_completed_at": "2026-10-08T12:32:10.352396+00:00",
+      "delta_path": "data/evidence-program/research/followups/instrument-denominator.json",
+      "guide_path": "docs/evidence-program/research/followups/instrument-denominator.md",
+      "reviewed_fact_records": 27,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "residual_holds_remain": true
     }
   ],
   "new_prompts": [
@@ -212,7 +233,12 @@
   "operational_admission": "not_admitted",
   "collector_enabled": false,
   "canonical_contract_mapping": "pending_separate_review",
-  "supplied_source_claims_adopted": false,
   "original_reviews_integrated": 26,
-  "original_queue_integration_commit": "972f2bbdc3e123c83ce9ea695c9f265fe6720032"
+  "original_queue_integration_commit": "972f2bbdc3e123c83ce9ea695c9f265fe6720032",
+  "snapshot_scope": "Completed source reviews and reviewed delta files included in this version; remote merge/CI and operational admission are separate.",
+  "reviewed_bundle_count": 3,
+  "reviewed_findings_included": true,
+  "unreviewed_supplied_claims_adopted": false,
+  "claim_adoption_rule": "Only the independently reviewed documentary findings and explicit limits in linked deltas are included; received reports are not blanket certified.",
+  "original_queue_reconciliation_commit": "8b6fa1f9b389a625fa44c0656e3de47c509bff9a"
 }

@@ -1,0 +1,1663 @@
+{
+  "title": "Survey instrument and denominator follow-up delta",
+  "bundle_sequence": 3,
+  "reviewed_on": "2026-10-08",
+  "status": "reviewed_with_residual_holds",
+  "original_sessions": [
+    14,
+    15
+  ],
+  "scope": "Four existing collections; documentary instrument, denominator and edition qualifications only.",
+  "historical_catalogs_preserved": true,
+  "supplied_packet_commit": "82fd46330539bd484c80190c69868d71b2052f6e",
+  "catalog_reference_commit": "8f12d1ba5f21ea3050dfa1eae3135f41ad46784a",
+  "catalog_fingerprints": [
+    {
+      "path": "data/evidence-program/research/forecast-surveys.json",
+      "sha256": "ecc3a2daddfd4eb752678b8a4c274699d64f3a5befa219f0fdef06285fb402e7",
+      "git_blob_sha1_computed": "a853e672b5743eb93242ed06cee02a0acdb8c45a"
+    },
+    {
+      "path": "data/evidence-program/research/labor-market.json",
+      "sha256": "ad523101a8ee7b40423fc39194f107e874369f21538ab92460f71c8664ed1d96",
+      "git_blob_sha1_computed": "1cb293039390c3d2d4efcb5f8f958a8c5766f551"
+    }
+  ],
+  "operational_admission": "not_admitted",
+  "collector_enabled": false,
+  "canonical_contract_mapping": "not_performed",
+  "implementation_status": "documentary_annotations_only",
+  "source_code_execution": false,
+  "raw_source_files_published": false,
+  "entries": [
+    {
+      "collection_id": "FS001",
+      "catalog_path": "data/evidence-program/research/forecast-surveys.json",
+      "collection_pointer": "/collections/0",
+      "prior_assertion_refs": [
+        {
+          "pointer": "/collections/0/findings/2",
+          "existing_assertion_id": "FS001-F03"
+        },
+        {
+          "pointer": "/collections/0/findings/3",
+          "existing_assertion_id": "FS001-F04"
+        },
+        {
+          "pointer": "/collections/0/findings/4",
+          "existing_assertion_id": "FS001-F05"
+        },
+        {
+          "pointer": "/collections/0/findings/5",
+          "existing_assertion_id": "FS001-F06"
+        },
+        {
+          "pointer": "/collections/0/findings/7",
+          "existing_assertion_id": "FS001-F08"
+        },
+        {
+          "pointer": "/collections/0/findings/8",
+          "existing_assertion_id": "FS001-F09"
+        },
+        {
+          "pointer": "/collections/0/findings/9",
+          "existing_assertion_id": "FS001-F10"
+        }
+      ],
+      "existing_action_id": "FS-A03",
+      "action_pointer": "/next_actions/2",
+      "existing_prompt_id": "FS-P01",
+      "prompt_pointer": "/follow_up_prompts/0",
+      "prior_action_status": "held_documentary_review",
+      "prior_hold_refs": [
+        {
+          "pointer": "/holds/0",
+          "existing_hold_id": "FS-H01",
+          "id_null_reason": null
+        }
+      ],
+      "targets": [
+        {
+          "existing_artifact_id": "fs001_01",
+          "catalog_pointer": "/collections/0/artifacts/0",
+          "url": "https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf"
+        },
+        {
+          "existing_artifact_id": "fs001_02",
+          "catalog_pointer": "/collections/0/artifacts/1",
+          "url": "https://wiki.aiimpacts.org/_media/ai_timelines/predictions_of_human-level_ai_timelines/ai_timeline_surveys/2023_espai_paid.pdf"
+        },
+        {
+          "existing_artifact_id": "fs001_03",
+          "catalog_pointer": "/collections/0/artifacts/2",
+          "url": "https://github.com/tadamcz/espai/blob/5bea2ed3014d5360d1599bad989d3252d3b8ba3c/data/README.md"
+        },
+        {
+          "existing_artifact_id": "fs001_04",
+          "catalog_pointer": "/collections/0/artifacts/3",
+          "url": "https://aiimpacts.org/"
+        },
+        {
+          "existing_artifact_id": "fs001_05",
+          "catalog_pointer": "/collections/0/artifacts/4",
+          "url": "https://aiimpacts.org/2022-expert-survey-on-progress-in-ai/"
+        },
+        {
+          "existing_artifact_id": "fs001_06",
+          "catalog_pointer": "/collections/0/artifacts/5",
+          "url": "https://arxiv.org/abs/2401.02843"
+        },
+        {
+          "existing_artifact_id": "fs001_07",
+          "catalog_pointer": "/collections/0/artifacts/6",
+          "url": "https://aiimpacts.org/wp-content/uploads/2026/09/2024-Expert-Survey-on-Progress-in-AI.pdf"
+        }
+      ],
+      "review_completed": true,
+      "bounded_component_status": "completed_with_residual_holds",
+      "overall_action_status": "still_held_for_residual_evidence",
+      "completed_scope": "Completed bounded 2024-report routing/item/fitted-denominator reconstruction and 2022 analysis-edition check. Independent standalone-questionnaire comparison remains incomplete.",
+      "verified_fact_ids": [
+        "B3-ESPAI-01",
+        "B3-ESPAI-02",
+        "B3-ESPAI-03",
+        "B3-ESPAI-04",
+        "B3-ESPAI-05",
+        "B3-ESPAI-06",
+        "B3-ESPAI-07",
+        "B3-ESPAI-08",
+        "B3-ESPAI-09",
+        "B3-ESPAI-10",
+        "B3-ESPAI-11",
+        "B3-ESPAI-12"
+      ],
+      "superseded_scope": "Unqualified use of FS001-F05/F06 as 2024 administered-instrument evidence is superseded by an explicit 2023-questionnaire edition restriction. The bounded report reconstruction is complete; standalone instrument/rights and common-case holds remain.",
+      "still_held": [
+        "Standalone 2024 questionnaire content and independent report-to-instrument match.",
+        "Exact 2024 fixed-year HLMI/FAOL horizons and FAOL-specific probability thresholds.",
+        "Separate report/questionnaire rights; no inheritance from site CC0, paper CC BY, or code license.",
+        "Common usable-case count and aggregate-analysis lineage across 2022 revisions; mirror/panel lineage beyond report assertions.",
+        "FAOL scientific-disruption condition scope; direct-risk item aggregate weights and all effective sample sizes.",
+        "Source PDF byte identity and Figure 3 graphical nodes remain unverified; text-only report checks do not establish them."
+      ]
+    },
+    {
+      "collection_id": "FS002",
+      "catalog_path": "data/evidence-program/research/forecast-surveys.json",
+      "collection_pointer": "/collections/1",
+      "prior_assertion_refs": [
+        {
+          "pointer": "/collections/1/findings/0",
+          "existing_assertion_id": "FS002-F01"
+        },
+        {
+          "pointer": "/collections/1/findings/1",
+          "existing_assertion_id": "FS002-F02"
+        },
+        {
+          "pointer": "/collections/1/findings/3",
+          "existing_assertion_id": "FS002-F04"
+        },
+        {
+          "pointer": "/collections/1/findings/8",
+          "existing_assertion_id": "FS002-F09"
+        },
+        {
+          "pointer": "/collections/1/findings/9",
+          "existing_assertion_id": "FS002-F10"
+        },
+        {
+          "pointer": "/collections/1/findings/10",
+          "existing_assertion_id": "FS002-F11"
+        },
+        {
+          "pointer": "/collections/1/findings/11",
+          "existing_assertion_id": "FS002-F12"
+        }
+      ],
+      "existing_action_id": "FS-A04",
+      "action_pointer": "/next_actions/3",
+      "existing_prompt_id": "FS-P02",
+      "prompt_pointer": "/follow_up_prompts/1",
+      "prior_action_status": "held_documentary_review",
+      "prior_hold_refs": [
+        {
+          "pointer": "/holds/1",
+          "existing_hold_id": "FS-H02",
+          "id_null_reason": null
+        }
+      ],
+      "targets": [
+        {
+          "existing_artifact_id": "fs002_01",
+          "catalog_pointer": "/collections/1/artifacts/0",
+          "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/QuestionInfo.csv"
+        },
+        {
+          "existing_artifact_id": "fs002_02",
+          "catalog_pointer": "/collections/1/artifacts/1",
+          "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/data/questionMetadata.csv"
+        },
+        {
+          "existing_artifact_id": "fs002_03",
+          "catalog_pointer": "/collections/1/artifacts/2",
+          "url": "https://forecastingresearch.org/research/near-term-xpt-accuracy"
+        },
+        {
+          "existing_artifact_id": "fs002_04",
+          "catalog_pointer": "/collections/1/artifacts/3",
+          "url": "https://forecastingresearch.org/research/existential-risk-persuasion-tournament"
+        },
+        {
+          "existing_artifact_id": "fs002_05",
+          "catalog_pointer": "/collections/1/artifacts/4",
+          "url": "https://github.com/forecastingresearch/xpt-lib/commit/251acb5254448c9bdb4caa4b5011481c2c149aef"
+        },
+        {
+          "existing_artifact_id": "fs002_06",
+          "catalog_pointer": "/collections/1/artifacts/5",
+          "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/README.md"
+        },
+        {
+          "existing_artifact_id": "fs002_07",
+          "catalog_pointer": "/collections/1/artifacts/6",
+          "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/LICENSE.md"
+        },
+        {
+          "existing_artifact_id": "fs002_08",
+          "catalog_pointer": "/collections/1/artifacts/7",
+          "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/DESCRIPTION"
+        },
+        {
+          "existing_artifact_id": "fs002_09",
+          "catalog_pointer": "/collections/1/artifacts/8",
+          "url": "https://api.github.com/repos/forecastingresearch/xpt-lib/branches/replication"
+        }
+      ],
+      "review_completed": true,
+      "bounded_component_status": "completed_with_residual_holds",
+      "overall_action_status": "still_held_for_residual_evidence",
+      "completed_scope": "Completed exact pinned CSV, README and license check; both conflicting thresholds and non-resolving dated clarifications are established.",
+      "verified_fact_ids": [
+        "B3-X01",
+        "B3-X02",
+        "B3-X03"
+      ],
+      "superseded_scope": "The exact pinned threshold fields and dated-clarification check is complete, but neither conflicting assertion is superseded by a selected administered threshold.",
+      "still_held": [
+        "Administered Q3 threshold and interface/document edition, despite verified >10% versus >1% conflict.",
+        "Appendix 6, package over-200 versus analyzed-cohort denominator, item-by-stage validity/weights/ESS, and file-specific rights."
+      ]
+    },
+    {
+      "collection_id": "FS003",
+      "catalog_path": "data/evidence-program/research/forecast-surveys.json",
+      "collection_pointer": "/collections/2",
+      "prior_assertion_refs": [
+        {
+          "pointer": "/collections/2/findings/1",
+          "existing_assertion_id": "FS003-F02"
+        },
+        {
+          "pointer": "/collections/2/findings/2",
+          "existing_assertion_id": "FS003-F03"
+        },
+        {
+          "pointer": "/collections/2/findings/3",
+          "existing_assertion_id": "FS003-F04"
+        },
+        {
+          "pointer": "/collections/2/findings/5",
+          "existing_assertion_id": "FS003-F06"
+        },
+        {
+          "pointer": "/collections/2/findings/6",
+          "existing_assertion_id": "FS003-F07"
+        },
+        {
+          "pointer": "/collections/2/findings/7",
+          "existing_assertion_id": "FS003-F08"
+        }
+      ],
+      "existing_action_id": "FS-A05",
+      "action_pointer": "/next_actions/4",
+      "existing_prompt_id": "FS-P03",
+      "prompt_pointer": "/follow_up_prompts/2",
+      "prior_action_status": "held_documentary_review",
+      "prior_hold_refs": [
+        {
+          "pointer": "/holds/2",
+          "existing_hold_id": "FS-H03",
+          "id_null_reason": null
+        }
+      ],
+      "targets": [
+        {
+          "existing_artifact_id": "fs003_01",
+          "catalog_pointer": "/collections/2/artifacts/0",
+          "url": "https://leap.forecastingresearch.org/reports/wave12"
+        },
+        {
+          "existing_artifact_id": "fs003_02",
+          "catalog_pointer": "/collections/2/artifacts/1",
+          "url": "https://leap.forecastingresearch.org/reports"
+        },
+        {
+          "existing_artifact_id": "fs003_03",
+          "catalog_pointer": "/collections/2/artifacts/2",
+          "url": "https://forecastingresearch.org/research/longitudinal-expert-ai-panel-leap-working-paper"
+        }
+      ],
+      "review_completed": true,
+      "bounded_component_status": "completed_with_residual_holds",
+      "overall_action_status": "still_held_for_residual_evidence",
+      "completed_scope": "Completed Wave 12 caption and separately scoped first-three-wave methods check. The existence of wave-specific weighting language is no longer unknown.",
+      "verified_fact_ids": [
+        "B3-L01",
+        "B3-L02",
+        "B3-L03"
+      ],
+      "superseded_scope": "A blanket absence of Wave 12-specific weighting language is narrowed by the verified caption. No prior denominator or weighting-implementation hold is cleared.",
+      "still_held": [
+        "Equal-weighting unit and exact Wave 12 implementation, AI Risk Expert weights and all effective sample sizes.",
+        "Exact aggregate-cell n semantics, group overlap and the 157-versus-149 explanation."
+      ]
+    },
+    {
+      "collection_id": "LM003",
+      "catalog_path": "data/evidence-program/research/labor-market.json",
+      "collection_pointer": "/collections/2",
+      "prior_assertion_refs": [
+        {
+          "pointer": "/collections/2/findings/1",
+          "existing_assertion_id": "LM003-F02"
+        },
+        {
+          "pointer": "/collections/2/findings/3",
+          "existing_assertion_id": "LM003-F04"
+        },
+        {
+          "pointer": "/collections/2/findings/5",
+          "existing_assertion_id": "LM003-F06"
+        }
+      ],
+      "existing_action_id": "LM-A05",
+      "action_pointer": "/next_actions/4",
+      "existing_prompt_id": "LM-P03",
+      "prompt_pointer": "/follow_up_prompts/2",
+      "prior_action_status": "held_documentary_review",
+      "prior_hold_refs": [
+        {
+          "pointer": "/holds/3",
+          "existing_hold_id": null,
+          "id_null_reason": "Historical hold has no standalone ID; retained by catalog pointer."
+        }
+      ],
+      "targets": [
+        {
+          "existing_artifact_id": "lm003_slice",
+          "catalog_pointer": "/collections/2/artifacts/0",
+          "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_ske_ittn2?lang=en&geo=DE&size_emp=GE10&nace_r2=C10-S951_X_K&indic_is=E_ITT2&unit=PC_ENT"
+        },
+        {
+          "existing_artifact_id": "lm003_table",
+          "catalog_pointer": "/collections/2/artifacts/1",
+          "url": "https://ec.europa.eu/eurostat/databrowser/view/isoc_ske_ittn2/default/table?lang=en"
+        },
+        {
+          "existing_artifact_id": "lm003_size_table",
+          "catalog_pointer": "/collections/2/artifacts/2",
+          "url": "https://ec.europa.eu/eurostat/databrowser/view/isoc_ske_itts/default/table"
+        },
+        {
+          "existing_artifact_id": "lm003_api_docs",
+          "catalog_pointer": "/collections/2/artifacts/3",
+          "url": "https://ec.europa.eu/eurostat/web/user-guides/data-browser/api-data-access/api-introduction"
+        },
+        {
+          "existing_artifact_id": "lm003_availability",
+          "catalog_pointer": "/collections/2/artifacts/4",
+          "url": "https://ec.europa.eu/eurostat/documents/341889/725159/Variables%2Bsummary%2BENT2%2BSDMX%2Bincl%2B2024.pdf/a1959c27-52f1-0d3d-7955-53bbe791e209?t=1670238367252"
+        },
+        {
+          "existing_artifact_id": "lm003_metadata",
+          "catalog_pointer": "/collections/2/artifacts/5",
+          "url": "https://ec.europa.eu/eurostat/cache/metadata/en/isoc_e_esms.htm"
+        },
+        {
+          "existing_artifact_id": "lm003_reference",
+          "catalog_pointer": "/collections/2/artifacts/6",
+          "url": "https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/40327.pdf"
+        },
+        {
+          "existing_artifact_id": "lm003_rights",
+          "catalog_pointer": "/collections/2/artifacts/7",
+          "url": "https://ec.europa.eu/eurostat/web/main/help/copyright-notice"
+        },
+        {
+          "existing_artifact_id": "lm003_desi",
+          "catalog_pointer": "/collections/2/artifacts/8",
+          "url": "https://digital-decade-desi.digital-strategy.ec.europa.eu/datasets/desi/charts/desi-indicators?breakdown=ent_all_xfin&indicator=desi_eitt&period=desi_2025&unit=pc_ent"
+        }
+      ],
+      "review_completed": true,
+      "bounded_component_status": "completed_with_residual_holds",
+      "overall_action_status": "still_held_for_residual_evidence",
+      "completed_scope": "Completed official 2022 model v1.2 C2 training-period, union, denominator-role and manual-rights check. Only the 2022 model-to-2021 mapping is established.",
+      "verified_fact_ids": [
+        "B3-EU01",
+        "B3-EU02",
+        "B3-EU03",
+        "B3-EU04",
+        "B3-EU05",
+        "B3-EU06",
+        "B3-EU07",
+        "B3-EU08",
+        "B3-EU09"
+      ],
+      "superseded_scope": "The unknown-period component is resolved only for the 2022 model: training in 2021. Historical German implementation and 2012 are still unknown; existing 2024→2023 evidence is unchanged.",
+      "still_held": [
+        "2012 model instrument/reference period and German administered 2012/2022 wording, routing, deviations and period.",
+        "Historical German numerical item/population/sample denominators, weights and effective sample sizes.",
+        "Other years, German quantified population change and any causal/same-enterprise AI-adoption linkage remain unverified.",
+        "2012 instrument rights and raw 2020 source-column semantics remain unknown."
+      ]
+    }
+  ],
+  "verified_facts": [
+    {
+      "id": "B3-L01",
+      "collection_id": "FS003",
+      "status": "newly_verified_documentary_assertion",
+      "claim": "Wave 12-specific equal-weighting statement exists, without a specified unit or implementation.",
+      "values": {
+        "quoted_fragment": "same equal weighting as every forecast table in this report",
+        "caption_scope": "Within-group yes shares for policy support; caption says those shares are not raw headcounts.",
+        "equal_weight_unit": null,
+        "wave12_weight_algorithm": null,
+        "AI_Risk_Expert_weights": null,
+        "effective_n": null,
+        "cell_n_definition": null
+      },
+      "limits": [
+        "The caption describes shares, not the definition of table n.",
+        "No equal respondent-weight assumption or transfer of first-three-wave raking vectors.",
+        "No new forecast-cell extraction or statistical re-estimation."
+      ],
+      "evidence": [
+        {
+          "url": "https://leap.forecastingresearch.org/reports/wave12",
+          "locator": "Policy Probabilities, Question II, Policy Support figure caption; HTML figcaption",
+          "observed_on": "2026-10-08",
+          "content_sha256": "2f236aa3d8125e60770412d081008b1d53e797732e308f6eb2a1e32ca2658c38",
+          "hash_scope": "exact complete HTTP response body",
+          "content_bytes": 600997,
+          "observed_at": "2026-10-08T12:21:25.948116+00:00"
+        }
+      ]
+    },
+    {
+      "id": "B3-L02",
+      "collection_id": "FS003",
+      "status": "verified_prior_guard_and_method_scope",
+      "claim": "The Wave 12 opening still states 157 experts with four category counts summing to 149; the initial methods are separately scoped.",
+      "values": {
+        "reported_experts": 157,
+        "reported_category_counts": [
+          25,
+          34,
+          38,
+          52
+        ],
+        "derived_category_sum": 149,
+        "derived_gap": 8,
+        "gap_explanation": null,
+        "imputed_uncategorized": null,
+        "cross_group_overlap": null,
+        "methods_publication_date": "2025-11-10",
+        "methods_scope": "first three waves",
+        "methods_expert_and_public": "raking",
+        "methods_expert_category_targets": "equal among four categories; one quarter each",
+        "methods_superforecasters": "not reweighted",
+        "wave12_application_established": false
+      },
+      "limits": [
+        "No unique-person total from the four groups.",
+        "The supplied Appendix A.V fewer-than-ten unassigned-contacts note was not independently revisited and cannot explain the Wave 12 gap."
+      ],
+      "evidence": [
+        {
+          "url": "https://leap.forecastingresearch.org/reports/wave12",
+          "locator": "Opening paragraph",
+          "observed_on": "2026-10-08",
+          "content_sha256": "2f236aa3d8125e60770412d081008b1d53e797732e308f6eb2a1e32ca2658c38",
+          "hash_scope": "exact complete HTTP response body",
+          "content_bytes": 600997,
+          "observed_at": "2026-10-08T12:21:25.948116+00:00"
+        },
+        {
+          "url": "https://forecastingresearch.org/research/longitudinal-expert-ai-panel-leap-working-paper",
+          "locator": "Introduction; Reweighting; footnote 40",
+          "observed_on": "2026-10-08",
+          "content_sha256": null,
+          "hash_scope": "Web-extracted primary text; native response/PDF bytes not independently hashed"
+        }
+      ]
+    },
+    {
+      "id": "B3-L03",
+      "collection_id": "FS003",
+      "status": "verified_prior_construct_and_rights_guard",
+      "claim": "LEAP question and resolution preserve different end-boundary wording; report rights remain artifact scoped.",
+      "values": {
+        "question_id": "leap-ai-catastrophe-by-2050-unconditional",
+        "event": "principally AI-caused mortality greater than 10 percent of persons alive at a five-year period start",
+        "question_end_operator": "by",
+        "question_end_date": "2050-12-31",
+        "resolution_period_start_operator": ">=",
+        "resolution_period_start": "2025-12-31",
+        "resolution_period_end_operator": "before",
+        "resolution_period_end_boundary": "resolution date",
+        "scenario": "expected world including anticipated policies",
+        "causation": "direct/proximate; but-for substantial AI involvement within preceding year",
+        "report_license": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/"
+      },
+      "limits": [
+        "Private inert HTML inspection only; embedded script source was not executed.",
+        "This is catastrophe, not literal extinction; older methods and unpublished respondent data do not inherit the report license.",
+        "Existing four-cell fixture, reported aggregate timestamp and quartile semantics are unchanged."
+      ],
+      "evidence": [
+        {
+          "url": "https://leap.forecastingresearch.org/reports/wave12",
+          "locator": "Outcome Forecasts Question I; Full Question Background and Resolution Details; footer",
+          "observed_on": "2026-10-08",
+          "content_sha256": "2f236aa3d8125e60770412d081008b1d53e797732e308f6eb2a1e32ca2658c38",
+          "hash_scope": "exact complete HTTP response body",
+          "content_bytes": 600997,
+          "observed_at": "2026-10-08T12:21:25.948116+00:00"
+        }
+      ]
+    },
+    {
+      "id": "B3-X01",
+      "collection_id": "FS002",
+      "status": "verified_conflicting_primary_assertions",
+      "claim": "Pinned Q3 full-text and subtitle thresholds conflict in all four metadata stages. Dated clarifications do not resolve the threshold.",
+      "values": {
+        "pin": "251acb5254448c9bdb4caa4b5011481c2c149aef",
+        "question_set": 3,
+        "QuestionInfo_questionText_threshold_percent": 10,
+        "questionMetadata_subtitle_threshold_percent": 1,
+        "operator": ">",
+        "stage_ids": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "years": [
+          2030,
+          2050,
+          2100
+        ],
+        "event_window_years": 5,
+        "population_at_risk": "humans alive at start of period",
+        "canonical_administered_threshold": null,
+        "clarification_2022_06_20": {
+          "period_start_operator": ">=",
+          "period_start": "2022-06-15",
+          "period_end_operator": "before",
+          "period_end_boundary": "resolution date"
+        },
+        "clarification_2022_06_28": "proximate causation via but-for substantial AI involvement during the preceding year",
+        "clarification_resolves_threshold": false
+      },
+      "limits": [
+        "README identifies full text and clarifications issued to forecasters; this does not verify which conflicting subtitle appeared in the administered interface.",
+        "Appendix 6 access failure is supplied prior history; the route was not retried.",
+        "No typo correction, questionnaire replacement or threshold selection."
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/QuestionInfo.csv",
+          "locator": "Logical record 3; questionText, clarifications, details",
+          "observed_on": "2026-10-08",
+          "content_sha256": "8384615980d10ab11bfd9925d5f7cab8c1726df83a4471b209d5d641e687192c",
+          "hash_scope": "complete repository-file bytes decoded from connector base64; not an HTTP response-body hash",
+          "content_bytes": 94059
+        },
+        {
+          "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/data/questionMetadata.csv",
+          "locator": "setName 3. AI Catastrophic Risk; subtitle; stages 1-4",
+          "observed_on": "2026-10-08",
+          "content_sha256": "ef6d02c500ade34504fe6f73696f7b7e0ca5eda9880e8c73868f69a29e9d789d",
+          "hash_scope": "complete repository-file bytes decoded from connector base64; not an HTTP response-body hash",
+          "content_bytes": 44052
+        }
+      ]
+    },
+    {
+      "id": "B3-X02",
+      "collection_id": "FS002",
+      "status": "verified_prior_construct_and_denominator_guards",
+      "claim": "Q4 retains extinction OR population below 5000, and metadata/configuration/time units are separate from observations.",
+      "values": {
+        "question_set": 4,
+        "event": "human extinction OR global population below 5000",
+        "population_operator": "<",
+        "years": [
+          2030,
+          2050,
+          2100
+        ],
+        "causation": "direct or proximate AI cause; qualifying multicausal events count",
+        "question_sets": 59,
+        "stage_metadata_rows": 236,
+        "stage_count": 4,
+        "defaultForecast50": "50",
+        "default_is_forecast": false,
+        "timestampId_unit": "ordinal",
+        "timestampId_is_elapsed_time": false,
+        "belief_targets": [
+          "own",
+          "predicted other experts",
+          "predicted other superforecasters"
+        ],
+        "item_stage_n": null,
+        "effective_n": null
+      },
+      "limits": [
+        "59 and 236 are checked metadata units, never respondent counts.",
+        "Previously derived 172 expanded own-belief subquestions is retained as inherited context, not re-derived here.",
+        "169 analyzed people and over-200 package description remain different denominator assertions; no respondent records acquired."
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/QuestionInfo.csv",
+          "locator": "Logical record 4",
+          "observed_on": "2026-10-08",
+          "content_sha256": "8384615980d10ab11bfd9925d5f7cab8c1726df83a4471b209d5d641e687192c",
+          "hash_scope": "complete repository-file bytes decoded from connector base64; not an HTTP response-body hash",
+          "content_bytes": 94059
+        },
+        {
+          "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/data/questionMetadata.csv",
+          "locator": "Q4 stage records; metadata schema",
+          "observed_on": "2026-10-08",
+          "content_sha256": "ef6d02c500ade34504fe6f73696f7b7e0ca5eda9880e8c73868f69a29e9d789d",
+          "hash_scope": "complete repository-file bytes decoded from connector base64; not an HTTP response-body hash",
+          "content_bytes": 44052
+        },
+        {
+          "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/README.md",
+          "locator": "Files; Notes",
+          "observed_on": "2026-10-08",
+          "content_sha256": "e4aa465aab8d85222c2edd234ccd109c7889731cdf29ae788712bdc6df3d360a",
+          "hash_scope": "complete repository-file bytes decoded from connector base64; not an HTTP response-body hash",
+          "content_bytes": 3923
+        }
+      ]
+    },
+    {
+      "id": "B3-X03",
+      "collection_id": "FS002",
+      "status": "verified_artifact_scoped_rights_evidence",
+      "claim": "The exact pinned package license and description are material MIT evidence without separately resolving every CSV/report reuse grant.",
+      "values": {
+        "license": "MIT",
+        "grant_subject": "software and associated documentation",
+        "DESCRIPTION_license": "MIT + file LICENSE",
+        "CSV_specific_grant_verified": false,
+        "report_grant_verified": false
+      },
+      "limits": [
+        "Do not say the package has no license.",
+        "Do not turn this review into raw-CSV publication clearance, acquisition of respondent files, or report-license inheritance."
+      ],
+      "evidence": [
+        {
+          "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/LICENSE.md",
+          "locator": "MIT grant",
+          "observed_on": "2026-10-08",
+          "content_sha256": "cbf3de79cc13501dcb700075941adf5294b99a1a779e2d9712e73f9835f1141e",
+          "hash_scope": "complete repository-file bytes decoded from connector base64; not an HTTP response-body hash",
+          "content_bytes": 1089
+        },
+        {
+          "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/DESCRIPTION",
+          "locator": "License field and package description",
+          "observed_on": "2026-10-08",
+          "content_sha256": "114b4a5cee8e03e609b8f2688f213961c6b321208d3554d651eeb0845bee1e64",
+          "hash_scope": "complete repository-file bytes decoded from connector base64; not an HTTP response-body hash",
+          "content_bytes": 1120
+        }
+      ]
+    },
+    {
+      "id": "B3-ESPAI-01",
+      "collection_id": "FS001",
+      "status": "corroborated_report_assertion",
+      "claim": "2024 survey frame, study clocks and response denominators",
+      "values": {
+        "frame_publication_year": 2023,
+        "venues": [
+          "NeurIPS",
+          "ICML",
+          "ICLR",
+          "AAAI",
+          "JMLR",
+          "IJCAI"
+        ],
+        "contacted_addresses_excluding_known_failures": 19874,
+        "complete_or_partial_returns": 2052,
+        "included_eligible_respondents": 1580,
+        "included_reached_final_question": 1502,
+        "included_partial": 78,
+        "fieldwork": [
+          "2024-12-09",
+          "2024-12-24"
+        ],
+        "report_publication_month": "2026-09"
+      },
+      "limits": [
+        "The report's rounded response rate uses returns versus contacted addresses. The 1,580 eligible analysis participants are a separate denominator; reached-final-question does not establish every-item completeness."
+      ],
+      "evidence": [
+        {
+          "url": "https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf",
+          "printed_page": 4,
+          "section": "2.1",
+          "lines": "67-101",
+          "observed_on": "2026-10-08",
+          "locator": "Printed page 4; Section 2.1; Extracted lines 67-101",
+          "content_sha256": null,
+          "hash_scope": "Web-extracted primary text; native response/PDF bytes not independently hashed"
+        }
+      ]
+    },
+    {
+      "id": "B3-ESPAI-02",
+      "collection_id": "FS001",
+      "status": "corroborated_report_assertion",
+      "claim": "Participant-level framing and routing",
+      "values": {
+        "assignment_unit": "participant",
+        "fixed_years_assignment_probability": "1/2",
+        "fixed_probabilities_assignment_probability": "1/2",
+        "framing_preserved_across_survey": true,
+        "figure3_n_role": "valid_item_responses"
+      },
+      "limits": [
+        "Figure 3 caption is text-verified. Its graphical nodes were not visually verified because screenshots were unavailable. Assignment fractions are not analysis weights or realized n."
+      ],
+      "evidence": [
+        {
+          "url": "https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf",
+          "printed_pages": [
+            6,
+            7
+          ],
+          "sections": [
+            "2.4",
+            "2.5",
+            "Figure 3 caption"
+          ],
+          "lines": "125-151",
+          "observed_on": "2026-10-08",
+          "locator": "Printed pages 6, 7; Sections 2.4, 2.5, Figure 3 caption; Extracted lines 125-151",
+          "content_sha256": null,
+          "hash_scope": "Web-extracted primary text; native response/PDF bytes not independently hashed"
+        }
+      ]
+    },
+    {
+      "id": "B3-ESPAI-03",
+      "collection_id": "FS001",
+      "status": "corroborated_report_assertion",
+      "claim": "Three distinct direct-risk variants and valid-item counts",
+      "values": {
+        "item_n": [
+          744,
+          392,
+          353
+        ],
+        "one_variant_per_participant": true,
+        "routing_ratio": [
+          2,
+          1,
+          1
+        ],
+        "derived_assignment_probabilities": [
+          "1/2",
+          "1/4",
+          "1/4"
+        ],
+        "horizon_kinds": [
+          "unspecified",
+          "unspecified",
+          "elicitation_relative"
+        ],
+        "third_variant_years": 100,
+        "absolute_resolution_date": null,
+        "standalone_questionnaire_match_verified": false
+      },
+      "limits": [
+        "Routing fractions are an exact derivation from the report's one-of-three and 2:1:1 statement. Counts are valid item responses, not totals of everyone assigned. Supplied outcome/mechanism/horizon excerpts match the report; none creates a literal-extinction-only outcome or an explicit calendar cutoff."
+      ],
+      "evidence": [
+        {
+          "url": "https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf",
+          "printed_pages": [
+            22,
+            23,
+            27
+          ],
+          "sections": [
+            "3.9",
+            "Table 4 rows 1-3"
+          ],
+          "lines": "462-482,517-527",
+          "observed_on": "2026-10-08",
+          "locator": "Printed pages 22, 23, 27; Sections 3.9, Table 4 rows 1-3; Extracted lines 462-482,517-527",
+          "content_sha256": null,
+          "hash_scope": "Web-extracted primary text; native response/PDF bytes not independently hashed"
+        }
+      ]
+    },
+    {
+      "id": "B3-ESPAI-04",
+      "collection_id": "FS001",
+      "status": "corroborated_with_stronger_locator",
+      "claim": "Direct-risk versus conditional-impact construct boundary",
+      "values": {
+        "direct_risk_assumes_eventual_HLMI": false,
+        "impact_item_assumes_eventual_HLMI": true,
+        "impact_item_n": 1538,
+        "impact_category_count": 5,
+        "impact_required_total_percent": 100,
+        "negative_probability_response_excluded": 1
+      },
+      "limits": [
+        "Page 28 explicitly contrasts the conditions and response formats. It is stronger evidence than merely observing absent wording. Do not transfer this condition or the impact denominator to direct-risk variants."
+      ],
+      "evidence": [
+        {
+          "url": "https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf",
+          "printed_pages": [
+            19,
+            21,
+            28
+          ],
+          "sections": [
+            "3.8",
+            "3.9 after Figure 18"
+          ],
+          "lines": "421-442,533-539",
+          "observed_on": "2026-10-08",
+          "locator": "Printed pages 19, 21, 28; Sections 3.8, 3.9 after Figure 18; Extracted lines 421-442,533-539",
+          "content_sha256": null,
+          "hash_scope": "Web-extracted primary text; native response/PDF bytes not independently hashed"
+        }
+      ]
+    },
+    {
+      "id": "B3-ESPAI-05",
+      "collection_id": "FS001",
+      "status": "corroborated_report_assertion",
+      "claim": "HLMI definitions and item/fitted denominators",
+      "values": {
+        "fixed_probability_item_n": 537,
+        "fixed_year_item_n": 471,
+        "fitted_n_MSE": 985,
+        "fitted_n_log_loss": 985,
+        "fixed_probability_thresholds_percent": [
+          10,
+          50,
+          90
+        ],
+        "fixed_year_horizons": null,
+        "scientific_activity_assumption": "continues_without_major_negative_disruption",
+        "criterion": "feasibility",
+        "scope": "every_task",
+        "machine_aid": "unaided",
+        "performance": "better_than_human_workers",
+        "cost": "lower_than_human_workers",
+        "intrinsic_human_advantages": "excluded"
+      },
+      "limits": [
+        "537/471 are retained separately from 985. The stated 1/3 for fixed-probability HLMI is an overall routing chance. Exact 2024 HLMI fixed-year horizons are not supplied by the inspected report excerpt."
+      ],
+      "evidence": [
+        {
+          "url": "https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf",
+          "printed_pages": [
+            5,
+            12,
+            43
+          ],
+          "sections": [
+            "2.3",
+            "3.2",
+            "Appendix E/Table 6"
+          ],
+          "lines": "103-106,252-281,938-962",
+          "observed_on": "2026-10-08",
+          "locator": "Printed pages 5, 12, 43; Sections 2.3, 3.2, Appendix E/Table 6; Extracted lines 103-106,252-281,938-962",
+          "content_sha256": null,
+          "hash_scope": "Web-extracted primary text; native response/PDF bytes not independently hashed"
+        }
+      ]
+    },
+    {
+      "id": "B3-ESPAI-06",
+      "collection_id": "FS001",
+      "status": "corroborated_report_assertion_with_label_scope",
+      "claim": "FAOL report labels, sequence and unresolved instrument fields",
+      "values": {
+        "sequence": [
+          "four_specified_occupations",
+          "nominate_existing_late_occupation",
+          "forecast_nominated_occupation",
+          "forecast_FAOL"
+        ],
+        "report_occupation_labels": [
+          "Truck Driver",
+          "Surgeon",
+          "Retail Salesperson",
+          "AI Researcher"
+        ],
+        "fixed_year_item_n": 233,
+        "fixed_probability_item_n": 234,
+        "fitted_n_MSE": 456,
+        "fitted_n_log_loss": 456,
+        "fixed_year_horizons": null,
+        "fixed_probability_thresholds_percent": null,
+        "science_disruption_assumption_scope": null,
+        "criterion": "feasibility",
+        "scope": "all_occupations_fully_automatable"
+      },
+      "limits": [
+        "The occupation names are verified as report table labels, not exact administered prompts. Section 3.2 verifies sequence. Keep FAOL-specific horizons/thresholds and scientific-disruption condition scope unresolved; no 2023 fill-in."
+      ],
+      "evidence": [
+        {
+          "url": "https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf",
+          "printed_pages": [
+            5,
+            12,
+            43
+          ],
+          "sections": [
+            "2.3",
+            "3.2",
+            "Appendix E/Table 6"
+          ],
+          "lines": "107-113,271-281,960-966",
+          "observed_on": "2026-10-08",
+          "locator": "Printed pages 5, 12, 43; Sections 2.3, 3.2, Appendix E/Table 6; Extracted lines 107-113,271-281,960-966",
+          "content_sha256": null,
+          "hash_scope": "Web-extracted primary text; native response/PDF bytes not independently hashed"
+        }
+      ]
+    },
+    {
+      "id": "B3-ESPAI-07",
+      "collection_id": "FS001",
+      "status": "corroborated_report_assertion",
+      "claim": "Reported distribution-fitting and aggregation method",
+      "values": {
+        "family": "gamma_CDF",
+        "primary_fit_loss": "mean_squared_error",
+        "primary_aggregation": "pointwise_arithmetic_mean_of_fitted_CDFs",
+        "equal_contribution_unit": "fitted_respondent_distribution",
+        "alternative_aggregation": "pointwise_median",
+        "alternative_fit_loss": "log_loss",
+        "ESS": null,
+        "independent_execution": false
+      },
+      "limits": [
+        "This is an aggregation-method assertion, not a survey-weight vector, design-based denominator, or proof of identical case identities across losses. No models were fitted or pooled."
+      ],
+      "evidence": [
+        {
+          "url": "https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf",
+          "printed_pages": [
+            8,
+            43
+          ],
+          "sections": [
+            "2.7",
+            "Appendix E"
+          ],
+          "lines": "169-182,938-954",
+          "observed_on": "2026-10-08",
+          "locator": "Printed pages 8, 43; Sections 2.7, Appendix E; Extracted lines 169-182,938-954",
+          "content_sha256": null,
+          "hash_scope": "Web-extracted primary text; native response/PDF bytes not independently hashed"
+        }
+      ]
+    },
+    {
+      "id": "B3-ESPAI-08",
+      "collection_id": "FS001",
+      "status": "corroborated_report_assertion",
+      "claim": "Publisher-combined direct-risk row is not a new sample",
+      "values": {
+        "publisher_combined_n": 1489,
+        "combination_is_new_sample": false,
+        "reviewer_pooling": false
+      },
+      "limits": [
+        "The report combines variants and describes an approximate lower-bound interpretation with logical-coherence caveats. Recording its row does not authorize a new pooled common-question estimate."
+      ],
+      "evidence": [
+        {
+          "url": "https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf",
+          "printed_pages": [
+            23,
+            27
+          ],
+          "sections": [
+            "3.9 footnote 10",
+            "Table 4 final row"
+          ],
+          "lines": "484-501,528-529",
+          "observed_on": "2026-10-08",
+          "locator": "Printed pages 23, 27; Sections 3.9 footnote 10, Table 4 final row; Extracted lines 484-501,528-529",
+          "content_sha256": null,
+          "hash_scope": "Web-extracted primary text; native response/PDF bytes not independently hashed"
+        }
+      ]
+    },
+    {
+      "id": "B3-ESPAI-09",
+      "collection_id": "FS001",
+      "status": "lineage_corroborated_with_evidence_tiers",
+      "claim": "Successive analysis editions of the 2022 elicitation",
+      "values": {
+        "elicitation_wave": 2022,
+        "ordered_assertions": [
+          {
+            "year": 2059,
+            "edition": "original 2022 report as retrospectively described by arXiv v3",
+            "tier": "author_retrospective_assertion",
+            "original_2022_page_independently_read": false
+          },
+          {
+            "year": 2060,
+            "edition": "arXiv 2401.02843v3",
+            "edition_date": "2025-10-08",
+            "tier": "direct_read_of_versioned_report"
+          },
+          {
+            "year": 2059,
+            "edition": "September 2026 ESPAI2024 report",
+            "tier": "direct_read_of_report"
+          }
+        ],
+        "authors_stated_explanation": "code_and_data_cleaning_changes",
+        "common_cross_revision_n": null,
+        "unchanged_case_identity_verified": false,
+        "respondent_belief_change_inferred": false,
+        "new_2022_wave_inferred": false
+      },
+      "limits": [
+        "The dates belong to analysis editions of the 2022 elicitation. The 2026 report describes 2060 as reported in 2023; that is the survey/report context, not the v3 upload date. v1/v2 content was not examined."
+      ],
+      "evidence": [
+        {
+          "url": "https://arxiv.org/html/2401.02843v3",
+          "section": "3.2.1 footnote 1",
+          "lines": "139",
+          "observed_on": "2026-10-08",
+          "locator": "Section 3.2.1 footnote 1; Extracted lines 139",
+          "content_sha256": null,
+          "hash_scope": "Web-extracted primary text; native response/PDF bytes not independently hashed"
+        },
+        {
+          "url": "https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf",
+          "printed_page": 1,
+          "section": "Introduction footnote 1",
+          "lines": "28-37",
+          "observed_on": "2026-10-08",
+          "locator": "Printed page 1; Section Introduction footnote 1; Extracted lines 28-37",
+          "content_sha256": null,
+          "hash_scope": "Web-extracted primary text; native response/PDF bytes not independently hashed"
+        }
+      ]
+    },
+    {
+      "id": "B3-ESPAI-10",
+      "collection_id": "FS001",
+      "status": "optional_edition_specific_enrichment_not_common_denominator",
+      "claim": "2022 cleaned-response n=461 is specific to arXiv v3",
+      "values": {
+        "elicitation_wave": 2022,
+        "analysis_edition": "arXiv 2401.02843v3",
+        "HLMI_valid_responses_after_cleaning_n": 461,
+        "common_cross_revision_n": null
+      },
+      "limits": [
+        "The source's caption limits the total-response exception to 2016, so 461 is the v3 table's cleaned valid-response count for 2022. It cannot populate the shared null or establish original/2026 usable cases."
+      ],
+      "evidence": [
+        {
+          "url": "https://arxiv.org/html/2401.02843v3",
+          "section": "Appendix B.2, Table 6",
+          "lines": "509-515",
+          "observed_on": "2026-10-08",
+          "locator": "Section Appendix B.2, Table 6; Extracted lines 509-515",
+          "content_sha256": null,
+          "hash_scope": "Web-extracted primary text; native response/PDF bytes not independently hashed"
+        }
+      ]
+    },
+    {
+      "id": "B3-ESPAI-11",
+      "collection_id": "FS001",
+      "status": "holds_preserved",
+      "claim": "Standalone 2024 instrument and exact horizons remain unverified",
+      "values": {
+        "published_2024_questionnaire_link": true,
+        "standalone_attachment_retried": false,
+        "standalone_content_verified": false,
+        "independently_verified_administered_instrument": false,
+        "used_2023_questionnaire_to_fill_2024": false
+      },
+      "limits": [
+        "Appendix B states a future-calendar-year increment and other changes. It does not establish all exact prompts, numeric horizons, probability thresholds, or routing of the inaccessible standalone questionnaire. The task block's 10/20/50 years at pp.8-9 must not be migrated to HLMI/FAOL."
+      ],
+      "evidence": [
+        {
+          "url": "https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf",
+          "printed_pages": [
+            40,
+            41
+          ],
+          "sections": [
+            "Appendix B",
+            "Appendix C"
+          ],
+          "lines": "893-913,923-932",
+          "observed_on": "2026-10-08",
+          "locator": "Printed pages 40, 41; Sections Appendix B, Appendix C; Extracted lines 893-913,923-932",
+          "content_sha256": null,
+          "hash_scope": "Web-extracted primary text; native response/PDF bytes not independently hashed"
+        }
+      ]
+    },
+    {
+      "id": "B3-ESPAI-12",
+      "collection_id": "FS001",
+      "status": "context_corroborated_not_numerical_resolution",
+      "claim": "Separate 2023-survey reanalysis note is context only",
+      "values": {
+        "publication_date": "2024-12-16",
+        "author": "Ben Weinstein-Raun",
+        "subject": "reanalysis_of_2023_ESPAI",
+        "specific_2059_2060_explanation": false,
+        "linked_code_executed": false
+      },
+      "limits": [
+        "The linked note supplies reanalysis context. It neither establishes the three-edition case lineage nor resolves the particular one-year discrepancy."
+      ],
+      "evidence": [
+        {
+          "url": "https://blog.aiimpacts.org/p/reanalyzing-the-2023-expert-survey",
+          "lines": "2-18",
+          "observed_on": "2026-10-08",
+          "locator": "Extracted lines 2-18",
+          "content_sha256": null,
+          "hash_scope": "Web-extracted primary text; native response/PDF bytes not independently hashed"
+        }
+      ]
+    },
+    {
+      "id": "B3-EU01",
+      "collection_id": "LM003",
+      "status": "documentary_verified",
+      "claim": "The reproduced instrument is the 2022 model questionnaire version 1.2.",
+      "values": {},
+      "limits": [],
+      "evidence": [
+        {
+          "url": "https://ec.europa.eu/eurostat/documents/3859598/16403569/KS-GQ-22-011-EN-N.pdf/34b63261-fde1-39b2-2385-f3d3c61fb7a3?t=1680160843392&version=1.0",
+          "locators": [
+            "Annex 1; PDF page 145, printed p143, questionnaire p7/23",
+            "PDF page 152, printed p150, questionnaire p14/23; footer identifies V 1.2_Final.Docx"
+          ],
+          "observed_on": "2026-10-08",
+          "locator": "Annex 1; PDF page 145, printed p143, questionnaire p7/23; PDF page 152, printed p150, questionnaire p14/23; footer identifies V 1.2_Final.Docx",
+          "content_sha256": "d5a11ac0c20b19c713cd0b946811d16a259ecbfc207cfeb52dc5164fe03eef65",
+          "hash_scope": "exact complete HTTP PDF response body",
+          "content_bytes": 6752784,
+          "observed_at": "2026-10-08T12:20:59.837343+00:00"
+        }
+      ]
+    },
+    {
+      "id": "B3-EU02",
+      "collection_id": "LM003",
+      "status": "documentary_verified",
+      "claim": "C2 expressly concerns training during 2021. Its two items distinguish ICT specialists from other persons employed.",
+      "values": {
+        "reference_period": {
+          "survey_year": 2022,
+          "model_training_reference_year": 2021,
+          "german_administered_reference_year_verified": null
+        }
+      },
+      "limits": [],
+      "evidence": [
+        {
+          "url": "https://ec.europa.eu/eurostat/documents/3859598/16403569/KS-GQ-22-011-EN-N.pdf/34b63261-fde1-39b2-2385-f3d3c61fb7a3?t=1680160843392&version=1.0",
+          "locators": [
+            "PDF page 152, printed p150, C2",
+            "PDF page 37, printed p35, explanatory C2",
+            "PDF page 66, printed p64, variable coding"
+          ],
+          "observed_on": "2026-10-08",
+          "locator": "PDF page 152, printed p150, C2; PDF page 37, printed p35, explanatory C2; PDF page 66, printed p64, variable coding",
+          "content_sha256": "d5a11ac0c20b19c713cd0b946811d16a259ecbfc207cfeb52dc5164fe03eef65",
+          "hash_scope": "exact complete HTTP PDF response body",
+          "content_bytes": 6752784,
+          "observed_at": "2026-10-08T12:20:59.837343+00:00"
+        }
+      ]
+    },
+    {
+      "id": "B3-EU03",
+      "collection_id": "LM003",
+      "status": "documentary_verified",
+      "claim": "C2 is asked of all in-scope enterprises. It is not restricted to enterprises currently employing specialists or enterprises with internet access. An enterprise without ICT specialists during 2021 answers No to C2a.",
+      "values": {
+        "routing_evidence": [
+          "Module C is headed all enterprises; C1 has no skip bypassing C2.",
+          "A1=0 routes to C1; Module C includes C2 before an A1=0 skip after C6.",
+          "C2 standard coding explicitly labels all enterprises."
+        ]
+      },
+      "limits": [],
+      "evidence": [
+        {
+          "url": "https://ec.europa.eu/eurostat/documents/3859598/16403569/KS-GQ-22-011-EN-N.pdf/34b63261-fde1-39b2-2385-f3d3c61fb7a3?t=1680160843392&version=1.0",
+          "locators": [
+            "PDF page 145, printed p143, A1",
+            "PDF page 152, printed p150, Module C and C2a",
+            "PDF page 66, printed p64, C2 filter/remarks"
+          ],
+          "observed_on": "2026-10-08",
+          "locator": "PDF page 145, printed p143, A1; PDF page 152, printed p150, Module C and C2a; PDF page 66, printed p64, C2 filter/remarks",
+          "content_sha256": "d5a11ac0c20b19c713cd0b946811d16a259ecbfc207cfeb52dc5164fe03eef65",
+          "hash_scope": "exact complete HTTP PDF response body",
+          "content_bytes": 6752784,
+          "observed_at": "2026-10-08T12:20:59.837343+00:00"
+        }
+      ]
+    },
+    {
+      "id": "B3-EU04",
+      "collection_id": "LM003",
+      "status": "documentary_verified",
+      "claim": "E_ITT2 is a count of enterprises satisfying ITSPT2=1 OR ITUST2=1. It is a union, not a sum of the two training-type counts.",
+      "values": {
+        "numerator_rule": "Count(ENT_ID) where ITSPT2=1 or ITUST2=1"
+      },
+      "limits": [],
+      "evidence": [
+        {
+          "url": "https://ec.europa.eu/eurostat/documents/3859598/16403569/KS-GQ-22-011-EN-N.pdf/34b63261-fde1-39b2-2385-f3d3c61fb7a3?t=1680160843392&version=1.0",
+          "locators": [
+            "PDF page 92, printed p90, E_ITT2 row"
+          ],
+          "observed_on": "2026-10-08",
+          "locator": "PDF page 92, printed p90, E_ITT2 row",
+          "content_sha256": "d5a11ac0c20b19c713cd0b946811d16a259ecbfc207cfeb52dc5164fe03eef65",
+          "hash_scope": "exact complete HTTP PDF response body",
+          "content_bytes": 6752784,
+          "observed_at": "2026-10-08T12:20:59.837343+00:00"
+        }
+      ]
+    },
+    {
+      "id": "B3-EU05",
+      "collection_id": "LM003",
+      "status": "documentary_verified",
+      "claim": "ENT denotes the raised enterprise population for the surveyed size and industry groups; ENT_SAMPLE denotes the unraised final net enterprise sample.",
+      "values": {
+        "denominator_roles": {
+          "ENT": "raised_enterprise_population",
+          "ENT_SAMPLE": "unraised_final_net_sample",
+          "PC_ENT": "percentage_of_all_enterprises"
+        }
+      },
+      "limits": [
+        "No German item n, population count, weighting vector, standard error, or effective sample size was established. PC_ENT is not employee share or unraised respondent share."
+      ],
+      "evidence": [
+        {
+          "url": "https://ec.europa.eu/eurostat/documents/3859598/16403569/KS-GQ-22-011-EN-N.pdf/34b63261-fde1-39b2-2385-f3d3c61fb7a3?t=1680160843392&version=1.0",
+          "locators": [
+            "PDF page 78, printed p76, ENT and ENT_SAMPLE",
+            "PDF page 133, printed p131, PC_ENT example using aggregate numerator / ENT"
+          ],
+          "observed_on": "2026-10-08",
+          "locator": "PDF page 78, printed p76, ENT and ENT_SAMPLE; PDF page 133, printed p131, PC_ENT example using aggregate numerator / ENT",
+          "content_sha256": "d5a11ac0c20b19c713cd0b946811d16a259ecbfc207cfeb52dc5164fe03eef65",
+          "hash_scope": "exact complete HTTP PDF response body",
+          "content_bytes": 6752784,
+          "observed_at": "2026-10-08T12:20:59.837343+00:00"
+        }
+      ]
+    },
+    {
+      "id": "B3-EU06",
+      "collection_id": "LM003",
+      "status": "documentary_verified",
+      "claim": "The mandatory model population covers enterprises with at least 10 employees and self-employed persons, in NACE Rev.2 sections C–J and L–N plus group 95.1, across the country. Enterprises of size 0–9 are optional.",
+      "values": {},
+      "limits": [
+        "A model target-population statement, not certification of historical German frame or statistical-unit implementation."
+      ],
+      "evidence": [
+        {
+          "url": "https://ec.europa.eu/eurostat/documents/3859598/16403569/KS-GQ-22-011-EN-N.pdf/34b63261-fde1-39b2-2385-f3d3c61fb7a3?t=1680160843392&version=1.0",
+          "locators": [
+            "PDF pages 16–17, printed pp14–15, section 2.2.4",
+            "PDF page 140, printed p138, Annex 1 scope"
+          ],
+          "observed_on": "2026-10-08",
+          "locator": "PDF pages 16–17, printed pp14–15, section 2.2.4; PDF page 140, printed p138, Annex 1 scope",
+          "content_sha256": "d5a11ac0c20b19c713cd0b946811d16a259ecbfc207cfeb52dc5164fe03eef65",
+          "hash_scope": "exact complete HTTP PDF response body",
+          "content_bytes": 6752784,
+          "observed_at": "2026-10-08T12:20:59.837343+00:00"
+        }
+      ]
+    },
+    {
+      "id": "B3-EU07",
+      "collection_id": "LM003",
+      "status": "documentary_verified",
+      "claim": "The manual explicitly records the inclusion of veterinary activities (division 75) since 2021.",
+      "values": {},
+      "limits": [
+        "Preserve a population-comparability annotation; no German quantitative effect or correction inferred."
+      ],
+      "evidence": [
+        {
+          "url": "https://ec.europa.eu/eurostat/documents/3859598/16403569/KS-GQ-22-011-EN-N.pdf/34b63261-fde1-39b2-2385-f3d3c61fb7a3?t=1680160843392&version=1.0",
+          "locators": [
+            "PDF page 16, printed p14, final sentence"
+          ],
+          "observed_on": "2026-10-08",
+          "locator": "PDF page 16, printed p14, final sentence",
+          "content_sha256": "d5a11ac0c20b19c713cd0b946811d16a259ecbfc207cfeb52dc5164fe03eef65",
+          "hash_scope": "exact complete HTTP PDF response body",
+          "content_bytes": 6752784,
+          "observed_at": "2026-10-08T12:20:59.837343+00:00"
+        }
+      ]
+    },
+    {
+      "id": "B3-EU08",
+      "collection_id": "LM003",
+      "status": "documentary_verified",
+      "claim": "The model gives general enterprise weighting guidance and identifies ENT_WGHT as an enterprise grossing-up factor.",
+      "values": {},
+      "limits": [
+        "Guidance and variable definition do not supply German historical implementation, actual weights, numerical denominator, or ESS."
+      ],
+      "evidence": [
+        {
+          "url": "https://ec.europa.eu/eurostat/documents/3859598/16403569/KS-GQ-22-011-EN-N.pdf/34b63261-fde1-39b2-2385-f3d3c61fb7a3?t=1680160843392&version=1.0",
+          "locators": [
+            "PDF page 142, printed p140, questionnaire p4/23, Weighting of results",
+            "PDF page 75, printed p73, Y2 ENT_WGHT"
+          ],
+          "observed_on": "2026-10-08",
+          "locator": "PDF page 142, printed p140, questionnaire p4/23, Weighting of results; PDF page 75, printed p73, Y2 ENT_WGHT",
+          "content_sha256": "d5a11ac0c20b19c713cd0b946811d16a259ecbfc207cfeb52dc5164fe03eef65",
+          "hash_scope": "exact complete HTTP PDF response body",
+          "content_bytes": 6752784,
+          "observed_at": "2026-10-08T12:20:59.837343+00:00"
+        }
+      ]
+    },
+    {
+      "id": "B3-EU09",
+      "collection_id": "LM003",
+      "status": "documentary_verified_raw_metadata_only",
+      "claim": "The E_ITT2 row has raw value 2020 in the Notes / Source (if not previous year) column.",
+      "values": {
+        "raw_documentary_metadata": {
+          "column_header": "Notes / Source (if not previous year)",
+          "raw_value": "2020",
+          "semantics": null,
+          "used_as_reference_year": false
+        }
+      },
+      "limits": [
+        "The header does not say training reference year. Do not overwrite the explicit 2021 C2 period or invent semantics such as publication, collection, or instrument year."
+      ],
+      "evidence": [
+        {
+          "url": "https://ec.europa.eu/eurostat/documents/3859598/16403569/KS-GQ-22-011-EN-N.pdf/34b63261-fde1-39b2-2385-f3d3c61fb7a3?t=1680160843392&version=1.0",
+          "locators": [
+            "PDF page 92, printed p90, E_ITT2 row and table header"
+          ],
+          "observed_on": "2026-10-08",
+          "locator": "PDF page 92, printed p90, E_ITT2 row and table header",
+          "content_sha256": "d5a11ac0c20b19c713cd0b946811d16a259ecbfc207cfeb52dc5164fe03eef65",
+          "hash_scope": "exact complete HTTP PDF response body",
+          "content_bytes": 6752784,
+          "observed_at": "2026-10-08T12:20:59.837343+00:00"
+        }
+      ]
+    }
+  ],
+  "documentary_links": [
+    {
+      "url": "https://arxiv.org/html/2401.02843v3",
+      "relationship": "versioned full text related to existing fs001_06, not identical landing-page bytes",
+      "existing_artifact_id": null,
+      "related_existing_artifact_id": "fs001_06"
+    },
+    {
+      "url": "https://ec.europa.eu/eurostat/documents/3859598/16403569/KS-GQ-22-011-EN-N.pdf/34b63261-fde1-39b2-2385-f3d3c61fb7a3?t=1680160843392&version=1.0",
+      "relationship": "2023 official manual reproducing 2022 model, documentary supplement for LM003-F02/F04 and lm003_metadata; does not replace lm003_reference 2024-period artifact",
+      "existing_artifact_id": null,
+      "related_existing_artifact_id": "lm003_metadata"
+    }
+  ],
+  "precise_qualifications": [
+    {
+      "target": "FS001-F05/F06; /collections/0/findings/4 and /5",
+      "effect": "Add provenance qualification: exact 10/20/40 and 10/20/50 horizons in original findings belong to fs001_02, the 2023 questionnaire. Separate 2024 report-derived construct/routing/count assertions; 2024 exact horizons and FAOL thresholds stay null."
+    },
+    {
+      "target": "FS001-F08; /collections/0/findings/7",
+      "effect": "Add versioned 2025-10-08 v3 and September 2026 report locators as successive analyses of 2022 elicitation; common case-set denominator stays null."
+    },
+    {
+      "target": "FS002-F11; /collections/1/findings/10",
+      "effect": "Add both source fields/stages, dated clarifications and README role without selecting administered threshold."
+    },
+    {
+      "target": "FS003-F06/F07; /collections/2/findings/5 and /6",
+      "effect": "Add Wave 12-specific equal-weighting caption; separately retain first-three-wave methods; gap, n semantics, overlap, weights and ESS unresolved."
+    },
+    {
+      "target": "LM003-F02/F04; /collections/2/findings/1 and /3",
+      "effect": "Add 2022-model→2021 documentary assertion without editing the 2024→2023 observation fixture or setting a German-administered period. OR/union and ENT/ENT_SAMPLE roles remain model-level evidence."
+    }
+  ],
+  "exact_document_hashes": [
+    {
+      "url": "https://leap.forecastingresearch.org/reports/wave12",
+      "sha256": "2f236aa3d8125e60770412d081008b1d53e797732e308f6eb2a1e32ca2658c38",
+      "bytes": 600997,
+      "hash_scope": "exact complete HTTP response body",
+      "git_blob_sha1": null,
+      "rights_scope": "published report CC BY 4.0; scope excludes linked works and unpublished records",
+      "raw_fixture_clearance": false
+    },
+    {
+      "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/QuestionInfo.csv",
+      "sha256": "8384615980d10ab11bfd9925d5f7cab8c1726df83a4471b209d5d641e687192c",
+      "bytes": 94059,
+      "hash_scope": "complete repository-file bytes decoded from connector base64; not an HTTP response-body hash",
+      "git_blob_sha1": "1d012f95ff28c68fb711008f801cfd1191211521",
+      "rights_scope": "MIT package software/documentation evidence; separate artifact-scope caveats retained",
+      "raw_fixture_clearance": false
+    },
+    {
+      "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/data/questionMetadata.csv",
+      "sha256": "ef6d02c500ade34504fe6f73696f7b7e0ca5eda9880e8c73868f69a29e9d789d",
+      "bytes": 44052,
+      "hash_scope": "complete repository-file bytes decoded from connector base64; not an HTTP response-body hash",
+      "git_blob_sha1": "b9ac215975b945e4df9b0179f2d5cd82b55409c6",
+      "rights_scope": "MIT package software/documentation evidence; separate artifact-scope caveats retained",
+      "raw_fixture_clearance": false
+    },
+    {
+      "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/README.md",
+      "sha256": "e4aa465aab8d85222c2edd234ccd109c7889731cdf29ae788712bdc6df3d360a",
+      "bytes": 3923,
+      "hash_scope": "complete repository-file bytes decoded from connector base64; not an HTTP response-body hash",
+      "git_blob_sha1": "e59f56765074bdae183f7917bb4936107de3a872",
+      "rights_scope": "MIT package software/documentation evidence; separate artifact-scope caveats retained",
+      "raw_fixture_clearance": false
+    },
+    {
+      "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/LICENSE.md",
+      "sha256": "cbf3de79cc13501dcb700075941adf5294b99a1a779e2d9712e73f9835f1141e",
+      "bytes": 1089,
+      "hash_scope": "complete repository-file bytes decoded from connector base64; not an HTTP response-body hash",
+      "git_blob_sha1": "9f58b1a053593d5a81277b77deca6c81981d7297",
+      "rights_scope": "MIT package software/documentation evidence; separate artifact-scope caveats retained",
+      "raw_fixture_clearance": false
+    },
+    {
+      "url": "https://github.com/forecastingresearch/xpt-lib/blob/251acb5254448c9bdb4caa4b5011481c2c149aef/DESCRIPTION",
+      "sha256": "114b4a5cee8e03e609b8f2688f213961c6b321208d3554d651eeb0845bee1e64",
+      "bytes": 1120,
+      "hash_scope": "complete repository-file bytes decoded from connector base64; not an HTTP response-body hash",
+      "git_blob_sha1": "c0846c2f1e7a189ec76ad74ceb93e44324904c10",
+      "rights_scope": "MIT package software/documentation evidence; separate artifact-scope caveats retained",
+      "raw_fixture_clearance": false
+    },
+    {
+      "url": "https://ec.europa.eu/eurostat/documents/3859598/16403569/KS-GQ-22-011-EN-N.pdf/34b63261-fde1-39b2-2385-f3d3c61fb7a3?t=1680160843392&version=1.0",
+      "sha256": "d5a11ac0c20b19c713cd0b946811d16a259ecbfc207cfeb52dc5164fe03eef65",
+      "bytes": 6752784,
+      "hash_scope": "exact complete HTTP PDF response body",
+      "git_blob_sha1": null,
+      "rights_scope": "manual CC BY 4.0 with stated third-party/cover exceptions; no statistical-cube or historical standalone-questionnaire grant inferred",
+      "raw_fixture_clearance": false
+    }
+  ],
+  "rejected_or_qualified_claims": [
+    {
+      "type": "unsupported_inference_not_supplied_fact_contradiction",
+      "target": "LEAP",
+      "assertion": "Equal weighting establishes per-person weights, exact cell n, ESS, overlap or an uncategorized group of eight.",
+      "disposition": "not_accepted"
+    },
+    {
+      "type": "provenance_qualification",
+      "target": "FS001-F05/F06",
+      "assertion": "Unqualified 2023-questionnaire horizons or exact occupation prompts describe independently verified 2024 administration.",
+      "disposition": "not_accepted; retain original 2023 source and add explicit edition qualification"
+    },
+    {
+      "type": "unsupported_inference_not_supplied_fact_contradiction",
+      "target": "XPT",
+      "assertion": "Dated clarifications correct Q3 to one threshold or certify the administered interface.",
+      "disposition": "not_accepted"
+    },
+    {
+      "type": "unsupported_inference_not_supplied_fact_contradiction",
+      "target": "Eurostat",
+      "assertion": "2022 model period proves historical German administration, 2012→2011, or a general year-minus-one rule.",
+      "disposition": "not_accepted"
+    },
+    {
+      "type": "implementation_scope",
+      "target": "supplied P2 shared documentary-ledger proposal",
+      "assertion": "Documentary envelopes demonstrate lossless canonical mapping or authorize schema/adapter/validator changes.",
+      "disposition": "not_accepted; prospective specification only"
+    }
+  ],
+  "inherited_or_unverified_context": [
+    "LEAP aggregate timestamp and four forecast cells remain previously reviewed evidence; not re-extracted.",
+    "LEAP methods Appendix A.V fewer-than-ten unassigned contacts remains supplied; no Wave 12 linkage.",
+    "XPT 172 expanded subquestions and cohort/public-comparison dates remain inherited prior context unless explicitly checked in findings.",
+    "Current German metadata 2025/unit implementation, 2012 regulatory search excerpt and 2012 routes were not revisited.",
+    "Original combined prompts were not supplied; no formal prompt-compliance certification."
+  ],
+  "prior_access_outcomes": [
+    {
+      "url": "https://aiimpacts.org/wp-content/uploads/2026/09/2024-Expert-Survey-on-Progress-in-AI.pdf",
+      "result": "web_internal_error; one ordinary direct GET HTTP403",
+      "content_verified": false,
+      "after_result": "stopped",
+      "independent_status": "supplied_prior_access_outcome_not_reproduced",
+      "review_action": "Not retried; no escalation or bypass"
+    },
+    {
+      "url": "https://aiimpacts.org/wp-content/uploads/2026/09/ESPAI2024.pdf",
+      "result": "web PDF text available; direct byte GET HTTP403",
+      "content_verified": true,
+      "source_bytes_verified": false,
+      "independent_status": "supplied_prior_access_outcome_not_reproduced",
+      "review_action": "Not retried; no escalation or bypass"
+    },
+    {
+      "url": "https://forecastingresearch.org/pdf/existential-risk-persuasion-tournament.pdf",
+      "result": "web reader rejected reported19521632-byte body as too large; ordinary GET HTTP403",
+      "appendix6_verified": false,
+      "after_result": "stopped",
+      "independent_status": "supplied_prior_access_outcome_not_reproduced",
+      "review_action": "Not retried; no escalation or bypass"
+    },
+    {
+      "url": "https://circabc.europa.eu/ui/group/89577311-0f9b-4fc0-b8c2-2aaa7d3ccb91/library/b44e7e01-e75e-4ab5-be1c-dae7a1d80ef2?n=-1&p=1&sort=name_DESC",
+      "result": "HTTP404",
+      "content_verified": false,
+      "independent_status": "supplied_prior_access_outcome_not_reproduced",
+      "review_action": "Not retried; no escalation or bypass"
+    },
+    {
+      "url": "https://circabc.europa.eu/ui/group/89577311-0f9b-4fc0-b8c2-2aaa7d3ccb91/library/0d9b35f3-1674-4dd1-bb36-ba395caf8c7f?n=-1&p=1&sort=name_DESC",
+      "result": "HTTP404",
+      "content_verified": false,
+      "independent_status": "supplied_prior_access_outcome_not_reproduced",
+      "review_action": "Not retried; no escalation or bypass"
+    },
+    {
+      "url": "https://circabc.europa.eu/ui/group/89577311-0f9b-4fc0-b8c2-2aaa7d3ccb91/library/36d07aaa-38c3-4a7c-b3ba-e5479b24f635?n=10&p=1&sort=name_DESC",
+      "result": "HTTP404",
+      "content_verified": false,
+      "independent_status": "supplied_prior_access_outcome_not_reproduced",
+      "review_action": "Not retried; no escalation or bypass"
+    },
+    {
+      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32011R0937",
+      "result": "fulltext robot-verification wall; search excerpt only",
+      "full_content_verified": false,
+      "independent_status": "supplied_prior_access_outcome_not_reproduced",
+      "review_action": "Not retried; no escalation or bypass"
+    },
+    {
+      "url": "https://doi.org/10.2908/ISOC_SKE_ITTN2",
+      "result": "internal fetch error; no statistical cube retrieval",
+      "content_verified": false,
+      "independent_status": "supplied_prior_access_outcome_not_reproduced",
+      "review_action": "Not retried; no escalation or bypass"
+    }
+  ],
+  "verification_limits": {
+    "ESPAI": "Report assertions and table text checked through web extraction; native PDF byte identity and visual Figure 3 nodes/table alignment not verified. The blocked standalone questionnaire route was not retried.",
+    "Eurostat": "Official manual native PDF bytes hashed and pages 4, 78, 92 and 152 visually inspected; PDF/body, extracted text and rendered-image hashes are separate representations.",
+    "LEAP": "Exact HTML response body verified through inert inspection; no forecast-cell re-extraction or script execution.",
+    "XPT": "Five complete repository-file byte sequences reconstructed from base64, distinct from raw HTTP response captures. No respondent files or publisher code executed.",
+    "acceptance_cases": "Ten supplied acceptance implications remain documentary requirements, not implemented runtime or adapter tests."
+  },
+  "preserved_invariants": {
+    "FS001_F05_F06_questionnaire_edition": 2023,
+    "ESPAI_2024_administered_instrument_verified": false,
+    "ESPAI_direct_risk_assumes_eventual_HLMI": false,
+    "ESPAI_conditional_impact_assumes_eventual_HLMI": true,
+    "ESPAI_2024_HLMI_fixed_year_horizons": null,
+    "ESPAI_2024_FAOL_fixed_year_horizons": null,
+    "ESPAI_2024_FAOL_probability_thresholds": null,
+    "ESPAI_2022_common_cross_revision_n": null,
+    "ESPAI_2022_v3_only_HLMI_n": 461,
+    "LEAP_equal_weighting_unit": null,
+    "LEAP_effective_n": null,
+    "LEAP_gap_explanation": null,
+    "XPT_Q3_administered_threshold": null,
+    "Eurostat_2022_model_training_reference_year": 2021,
+    "Eurostat_German_2022_administered_reference_year_verified": null,
+    "Eurostat_2012_reference_year": null,
+    "Eurostat_E_ITT2_combination": "OR_union_not_sum"
+  },
+  "next_research_boundary": {
+    "FS001": "Only exact 2024 instrument or edition/case-lineage evidence through an authorized new route; do not fill 2024 fields from 2023 or repeat failed routes.",
+    "FS002": "Only an attributable administered-interface/instrument correction, item-stage denominator or artifact-rights statement; preserve both thresholds until then.",
+    "FS003": "Only Wave 12-specific weight-unit/n/overlap/discrepancy evidence; no imputed eight-person group or first-three-wave method transfer.",
+    "LM003": "Only historical 2012 or German-administered instrument/population evidence; no blanket year-minus-one or current-metadata backfill."
+  },
+  "outside_bundle": [
+    "FS004",
+    "FS005",
+    "FS006",
+    "FS007",
+    "LM001",
+    "LM002",
+    "LM004"
+  ]
+}
