@@ -1,5 +1,11 @@
 # Inference cost and price–performance
 
+## Follow-up qualification: 8 October 2026
+
+For IPP002 / IPP-A02 / IPP-P02 and IPP003 / IPP-A03 / IPP-P03, the [rights and release follow-up](followups/rights-release.md) ([JSON](../../../data/evidence-program/research/followups/rights-release.json)) records the verified ML.ENERGY announcements and bounded Epoch provenance/rights checks. The earlier not-started wording is superseded only for those completed components; run/quality/row lineage and all raw-reuse holds remain. The original catalog and review below remain historical.
+
+For IPP001 / IPP-A01 / IPP-P01, the [physical-world and inference follow-up](followups/physical-inference-comparability.md) ([JSON](../../../data/evidence-program/research/followups/physical-inference-comparability.json)) completes the checked-at publication-status inquiry and documents exact summary/session association. It preserves separate 99/99.9 tiers, the CUDA 12.8/12.9 conflict and all matched-power/work/protocol holds; no energy/task value is established.
+
 Session 17, reviewed 8 October 2026 against main `82fd46330539bd484c80190c69868d71b2052f6e`. Source review is complete with explicit holds; operational admission remains pending. Publication progress is tracked in the dated queue. See the [separate JSON record](../../../data/evidence-program/research/inference-price-performance.json) and [dated queue](research-session-review-queue.md).
 
 This is documentation and original factual research metadata only. No source corpus, source-response receipts, new adapter, live collector, canonical import or source/model execution. Linked artifact rights remain separate from the repository's data dedication.

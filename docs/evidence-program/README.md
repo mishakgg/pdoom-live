@@ -4,7 +4,13 @@ The source research, repository audit, proposed dataset contract, Chinese prepar
 
 ## Current research review status
 
-The [dated original-session queue](research/research-session-review-queue.md) records all 26 original reviews integrated at its verified 8 October 2026 cutoff, separately from evidence admission. The [follow-up queue](research/followups/follow-up-queue.md) distinguishes three received ledger/report bundles from [four delivered research prompts](research/followups/prompts/coverage-assessment.md); delivery does not confirm a launched session. Follow-up claims remain pending independent review, and earlier catalog/action snapshots are preserved.
+The [dated original-session queue](research/research-session-review-queue.md) records all 26 original reviews integrated at its verified 8 October 2026 cutoff, separately from evidence admission. The [follow-up queue](research/followups/follow-up-queue.md) distinguishes three received ledger/report bundles from [four delivered research prompts](research/followups/prompts/coverage-assessment.md); delivery does not confirm a launched session. All three received bundles now have completed documentary reviews and linked deltas, with completed bounded checks separated from remaining holds. Earlier catalog/action snapshots are preserved; remote publication/CI and evidence admission are separate.
+
+Reviewed follow-up deltas included in this version:
+
+- Bundle 1: [Rights and releases](research/followups/rights-release.md) · [JSON](../../data/evidence-program/research/followups/rights-release.json)
+- Bundle 2: [PhAIL, MLPerf and RoboArena comparability](research/followups/physical-inference-comparability.md) · [JSON](../../data/evidence-program/research/followups/physical-inference-comparability.json)
+- Bundle 3: [Survey instruments and denominators](research/followups/instrument-denominator.md) · [JSON](../../data/evidence-program/research/followups/instrument-denominator.json)
 
 ## Sequential deliverables
 

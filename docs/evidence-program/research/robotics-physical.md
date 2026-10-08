@@ -1,5 +1,9 @@
 # Robotics and physical-world capability
 
+## Follow-up qualification: 8 October 2026
+
+For RP004 / RP-A6 / RP-P4 and RP002 / RP-A4 / RP-P2, the [physical-world and inference follow-up](followups/physical-inference-comparability.md) ([JSON](../../../data/evidence-program/research/followups/physical-inference-comparability.json)) records completed bounded selection/version, whitepaper and snapshot metadata checks. Complete cohort/metric reconciliation, exclusion application, scale and duration holds remain. The original catalog and review below remain historical.
+
 Reviewed 8 October 2026 against [`ee3e0d2`](https://github.com/mishakgg/pdoom-live/commit/ee3e0d2fa2c5a594fec276f08f4c985147e9f130). This is the ninth separately logged sequential research review. Publication of this guide does not admit any source or enable a collector.
 
 ## Result and scope

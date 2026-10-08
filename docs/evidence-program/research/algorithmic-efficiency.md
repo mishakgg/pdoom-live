@@ -1,5 +1,9 @@
 # Algorithmic efficiency and scaling
 
+## Follow-up qualification: 8 October 2026
+
+For AE002 / AE-A04 / AE-P02, the [rights and release follow-up](followups/rights-release.md) ([JSON](../../../data/evidence-program/research/followups/rights-release.json)) completes the bounded rights-document component while retaining contributed-log/component applicability and separate timing/performance questions. The original catalog and review below remain historical; no log reuse or source admission is cleared.
+
 Reviewed 8 October 2026 against `mishakgg/pdoom-live@664963c472222c845d3068df898f7537c285ad28`. The original research inspected `6c2a4aa531cd5b8e5411c25ee08569d707a682b1`. This is a curated research review, with one bounded offline fixture reader. All five collections remain unadmitted; no operational collector, canonical import or deployment is enabled.
 
 [Machine-readable catalog](../../../data/evidence-program/research/algorithmic-efficiency.json) · [Review queue](research-session-review-queue.md) · [Offline reader](../../../tools/evidence_program/read_algoperf_trial.py) · [Fixture provenance and license](../../../tools/evidence_program/tests/fixtures/algorithmic-efficiency/NOTICE.md)
