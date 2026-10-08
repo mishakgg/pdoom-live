@@ -1,0 +1,1604 @@
+{
+  "record_type": "accepted_corrected_held_research_delta",
+  "review_base_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5",
+  "submission": {
+    "bundle_id": "bundle-d",
+    "intake_manifest_sha256": "913d9073a55f45f724ecf4ab3e457b951c8cae08cff87fd70241a4c0dd789aa4",
+    "original_ledger_sha256": "51affa47016aee2c870a7f265f70302eefc6acfa1918018bdb70d651861b4204",
+    "submitted_repository_context": {
+      "url": "https://github.com/mishakgg/pdoom-live",
+      "requested_branch": "main",
+      "inspected_current_commit": null,
+      "current_commit_status": "unresolved_access",
+      "current_commit_retrieved_at_utc": null,
+      "current_commit_null_reason": "Current main could not be read.",
+      "supplied_planning_baseline_git_commit_id": "6cf8c1c89a387a5b26022dd9ea0a216d45b2b629",
+      "baseline_claimed_verification_date": "2026-10-08",
+      "baseline_claim_source": "brief",
+      "baseline_independently_verified": false,
+      "baseline_content_retrieved_at_utc": null,
+      "later_changes_reconciled": false,
+      "integration_status": null,
+      "integration_status_null_reason": "Queue and current repository could not be read; a dated queue is not live integration status."
+    },
+    "submitted_validation_state": {
+      "manual_evidence_walkthroughs": "completed",
+      "repository_schema_validation": "not_run",
+      "schema_validation_null_reason": "Pinned schemas could not be read; no schema or repository code was executed.",
+      "real_primary_verified_factual_tariff_join": "not_completed",
+      "factual_tariff_join_reason": "Only supplied-report tariff inputs are available. Report-tier lineage and an explicitly synthetic positive can be shown without claiming primary verification.",
+      "adapter_or_implementation_tests": "not_run_no_implementation",
+      "local_json_syntax_and_reference_check": "completed",
+      "manual_case_count": 28,
+      "manual_case_kind_counts": {
+        "realistic_positive": 7,
+        "explicitly_synthetic_negative": 18,
+        "synthetic_positive": 3
+      },
+      "local_consistency_checks": [
+        {
+          "check": "All twelve supplied identifiers preserved verbatim",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "No current or pinned repository commit claimed inspected",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "Artifact local references unique",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "Assertion local references unique",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "Every assertion evidence reference resolves",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "Every event assertion reference resolves",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "All measurement-context references resolve",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "No Git source commit invented for Azure",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "All four Azure current schedule alternatives retained",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "Neither Azure date conflict resolved by selection",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "R1 exact monetary strings and supplied-only status retained",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "Six promotion rate categories remain null",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "Unverified February boundary and timezone not populated",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "Shared R1 event used across MIR004 and IPP004",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "Chinese observation and translation remain null",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "28 unique manual walkthroughs with matching expected and reviewed decisions",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "Each case explicitly blocks unseen contract mapping and unrun schema validation",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "Each case records input, result, rationale, preserved and unsupported facets",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "Synthetic factual-join case does not claim real verification",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "Missing-execution run join remains held",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "Correct rendered-schedule URL used in positive Azure walkthrough",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "Excerpt digest matches only its declared text bytes",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        },
+        {
+          "check": "No uninspected public source whole-byte digest marked verified",
+          "result": "pass",
+          "kind": "local_deliverable_consistency"
+        }
+      ],
+      "limits": "The checks validate the authored ledger for internal consistency, not provider truth, contract conformance, an adapter, billing, deployment behavior, or a real primary-verified tariff join."
+    }
+  },
+  "current_review_state": "review_complete_with_residual_holds",
+  "submitted_originals_modified": false,
+  "repository_changes": false,
+  "collection": false,
+  "source_admission": false,
+  "canonical_mapping_implemented": false,
+  "preserved_identifiers": {
+    "verbatim": [
+      "MIR002",
+      "MIR004",
+      "IPP004",
+      "MIR-A02",
+      "MIR-P02",
+      "MIR-A04",
+      "MIR-P04",
+      "IPP-A04",
+      "IPP-P04",
+      "CN001",
+      "CN024",
+      "CN002"
+    ],
+    "provenance": "supplied brief",
+    "catalog_types_verified": false,
+    "inventory_links": [
+      "CN001",
+      "CN024",
+      "CN002"
+    ],
+    "pairwise_inventory_link_mapping": null,
+    "pairwise_inventory_link_mapping_null_reason": "Inventory not inspected; do not guess which link attaches to each artifact.",
+    "collection_study_action_ids_beyond_supplied_list": null,
+    "additional_ids_null_reason": "Catalog inaccessible; no existing IDs reconstructed or replaced.",
+    "local_refs_are_repository_ids": false
+  },
+  "prior_verified_evidence_rule": "Historical catalog records and fingerprint strings remain unchanged; a failed external reread adds an access observation, never a downgrade of prior evidence.",
+  "accepted": [
+    {
+      "delta_id": "D-A01",
+      "decision": "Retain the four Azure schedule assertions and two date conflicts.",
+      "catalog": "MIR002",
+      "evidence_source_ids": [
+        "PV-AZ-CURRENT",
+        "PV-AZ-RENDERED"
+      ]
+    },
+    {
+      "delta_id": "D-A02",
+      "decision": "Retain documentation/API lifecycle vocabulary namespaces and no scheduled-as-observed inference.",
+      "catalog": "MIR002",
+      "evidence_source_ids": [
+        "PV-AZ-POLICY"
+      ]
+    },
+    {
+      "delta_id": "D-A03",
+      "decision": "Retain exact R1 rate decimals and currency/token/cache dimensions; 2.19 stays 2.19.",
+      "catalog": "IPP004",
+      "evidence_source_ids": [
+        "PV-DS-R1"
+      ]
+    },
+    {
+      "delta_id": "D-A04",
+      "decision": "Retain one shared January20 event correlation across MIR004 and IPP004; tariff is not another release.",
+      "catalog": "MIR004/IPP004",
+      "evidence_source_ids": [
+        "PV-DS-R1",
+        "PV-DS-EN"
+      ]
+    },
+    {
+      "delta_id": "D-A05",
+      "decision": "Retain separate announcement, source-observation, effective, historical-byte and execution clocks.",
+      "catalog": "all",
+      "evidence_source_ids": []
+    },
+    {
+      "delta_id": "D-A06",
+      "decision": "Retain historical V3 promotion and Chinese translation holds.",
+      "catalog": "IPP004/MIR004",
+      "evidence_source_ids": [
+        "PV-DS-V3",
+        "PV-DS-ZH"
+      ]
+    },
+    {
+      "delta_id": "D-A07",
+      "decision": "Retain manual/synthetic labels and missing-execution run join hold.",
+      "catalog": "all",
+      "evidence_source_ids": []
+    },
+    {
+      "delta_id": "D-A08",
+      "decision": "Preserve input bytes, original IDs, prior catalog fingerprints and all source/admission holds.",
+      "catalog": "all",
+      "evidence_source_ids": []
+    }
+  ],
+  "corrected": [
+    {
+      "delta_id": "D-C01",
+      "submitted_state": "Repository/contract access remains a submitted-session limitation only.",
+      "current_review_decision": "Current a075f76 is independently inspected and mapping is reviewed; submitted inspected_current_commit stays null."
+    },
+    {
+      "delta_id": "D-C02",
+      "submitted_state": "No Azure change/source revision could be inspected in submission.",
+      "current_review_decision": "Two exact commits and source blobs now verify date replacement and reintroduction; current date choice remains held."
+    },
+    {
+      "delta_id": "D-C03",
+      "submitted_state": "Prior R1 tariff shown only at supplied-report tier due to failed reread.",
+      "current_review_decision": "Preserve already-verified IPP004 evidence as prior-catalog evidence, additionally reverified by current primary announcement. Failed rereads never erase prior verification."
+    },
+    {
+      "delta_id": "D-C04",
+      "submitted_state": "All three DeepSeek alias sources timed out in submission.",
+      "current_review_decision": "English changelog and R1 announcement now read. Current English internal conflict is observed, Chinese remains unavailable; no forced identity resolution."
+    },
+    {
+      "delta_id": "D-C05",
+      "submitted_state": "No real primary factual tariff join completed.",
+      "current_review_decision": "Current R1 announcement supports joining the three advertised rate assertions to the same named launch assertion. It does not establish run applicability or billing."
+    },
+    {
+      "delta_id": "D-C06",
+      "submitted_state": "Azure documentation grant was only repository-scope inference with uninspected exceptions.",
+      "current_review_decision": "Explicit ThirdPartyNotices documentation grant read at current and both historical pins; CC BY license body read at July30 pin. Separate code/model/body/branding scopes still preserved."
+    },
+    {
+      "delta_id": "D-C07",
+      "submitted_state": "Contract mapping was completely uninspected.",
+      "current_review_decision": "Existing prototype contract supports factual tariff resource observation and provider-label model projection, but lifecycle conflict/alias/time/rights lineage needs a typed review sidecar. No canonical implementation or source admission implied."
+    }
+  ],
+  "held": [
+    {
+      "delta_id": "D-H01",
+      "subject": "Azure current authoritative date",
+      "blocker_type": "ambiguity",
+      "reason": "Both date pairs remain present, without distinct region/deployment/SKU/capability/fine-tuning scope.",
+      "minimum_changing_evidence": "Explicit current Microsoft row-scoped clarification or correction tied to a source revision.",
+      "evidence_source_ids": [
+        "PV-AZ-CURRENT",
+        "PV-AZ-CHANGE",
+        "PV-AZ-READD"
+      ]
+    },
+    {
+      "delta_id": "D-H02",
+      "subject": "Actual Azure deployment retirement",
+      "blocker_type": "execution_outside_scope",
+      "reason": "Documents and passed dates are not customer execution evidence.",
+      "minimum_changing_evidence": "Separately authorized deployment-specific evidence; not requested or collected.",
+      "evidence_source_ids": [
+        "PV-AZ-POLICY"
+      ]
+    },
+    {
+      "delta_id": "D-H03",
+      "subject": "V3 historical promotion",
+      "blocker_type": "access_timeout",
+      "reason": "Six rates, expiry/new-rate dates, timezone and boundary semantics remain unverified.",
+      "minimum_changing_evidence": "Readable named announcement and observed linked pricing asset/counterpart showing historical terms.",
+      "evidence_source_ids": [
+        "PV-DS-V3"
+      ]
+    },
+    {
+      "delta_id": "D-H04",
+      "subject": "R1/V3 alias conflict and Chinese equivalence",
+      "blocker_type": "ambiguity_and_access",
+      "reason": "English conflict persists; Chinese original unavailable; no explicit correction.",
+      "minimum_changing_evidence": "Relevant readable Chinese entry plus row-specific official correction/version metadata if claiming a correction.",
+      "evidence_source_ids": [
+        "PV-DS-EN",
+        "PV-DS-R1",
+        "PV-DS-ZH"
+      ]
+    },
+    {
+      "delta_id": "D-H05",
+      "subject": "Historical page bytes and actual API routing",
+      "blocker_type": "missing_revision_and_execution",
+      "reason": "Present primary read does not establish bytes or serving at the dated event.",
+      "minimum_changing_evidence": "Historical snapshot/revision for historical text; execution evidence separately for routing.",
+      "evidence_source_ids": [
+        "PV-DS-EN",
+        "PV-DS-R1"
+      ]
+    },
+    {
+      "delta_id": "D-H06",
+      "subject": "Tariff application to a run or evaluation",
+      "blocker_type": "missing_execution_identity",
+      "reason": "Platform, time, returned version and eligibility are missing; actual charged/net cost remains null.",
+      "minimum_changing_evidence": "Run platform/service/time/returned version and category eligibility; token counts and invoice/discount evidence for actual charges.",
+      "evidence_source_ids": [
+        "PV-DS-R1"
+      ]
+    },
+    {
+      "delta_id": "D-H07",
+      "subject": "Broad source-body reuse and admission",
+      "blocker_type": "rights_and_governance",
+      "reason": "DeepSeek artifact-specific grants remain unknown; Azure explicit grant does not create general model/branding or uninspected-history clearance.",
+      "minimum_changing_evidence": "Artifact-specific rights/attribution review and separate collection/source admission decision.",
+      "evidence_source_ids": [
+        "PV-RIGHTS-NOTICE",
+        "PV-RIGHTS-PINNED",
+        "PV-DS-R1"
+      ]
+    }
+  ],
+  "reviewed_assertions": [
+    {
+      "record_type": "reviewed_publisher_lifecycle_assertion",
+      "local_ref": "az_20251006_late",
+      "catalog_refs": [
+        "MIR002",
+        "MIR-A02",
+        "MIR-P02"
+      ],
+      "local_event_ref": "azure_realtime_mini_20251006_retirement",
+      "origin_class": "new_review_reverified_current_primary_assertion",
+      "status": "verified_as_document_assertion_current_effective_date_held",
+      "verified_scope": "The current rendered source contains this assertion; its retirement date is not resolved or operationally observed.",
+      "raw_assertion": {
+        "model": "gpt-realtime-mini",
+        "version": "2025-10-06",
+        "lifecycle": "GA",
+        "retirement_date": "2027-04-06",
+        "replacement": "—"
+      },
+      "normalized_value": {
+        "value": "2027-04-06",
+        "value_type": "calendar_date",
+        "precision": "day",
+        "timezone": null,
+        "timezone_null_reason": "No timezone established for this date assertion.",
+        "status": "verified",
+        "provenance_class": "primary_observed_date_string",
+        "null_reason": null
+      },
+      "normalized_unit": "calendar_date",
+      "host_scope": {
+        "provider": "Microsoft Azure",
+        "service": "Azure OpenAI",
+        "model_name": "gpt-realtime-mini",
+        "model_version": "2025-10-06",
+        "region": null,
+        "deployment_type": null,
+        "sku": null,
+        "capability": null,
+        "fine_tuning_or_inference": null,
+        "null_reason": "No row-level qualifier resolves the paired dates; do not infer one from a model name or general policy."
+      },
+      "lifecycle_vocabulary_system": "documentation",
+      "lifecycle_raw": "GA",
+      "temporal_role": "documented_retirement_schedule_assertion",
+      "clocks": {
+        "announcement_date": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "First introduction/announcement not established."
+        },
+        "document_metadata_date": {
+          "raw": "10/05/2026",
+          "normalized": {
+            "value": "2026-10-05",
+            "value_type": "calendar_date",
+            "precision": "day",
+            "timezone": null,
+            "timezone_null_reason": "No timezone established for this date assertion.",
+            "status": "unresolved",
+            "provenance_class": "interpretation_of_en_US_metadata_format",
+            "null_reason": null
+          }
+        },
+        "scheduled_effective_date": {
+          "value": "2027-04-06",
+          "value_type": "calendar_date",
+          "precision": "day",
+          "timezone": null,
+          "timezone_null_reason": "No timezone established for this date assertion.",
+          "status": "verified",
+          "provenance_class": "primary_observed_date_string",
+          "null_reason": null
+        },
+        "documented_past_retirement": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "The row is a schedule with GA status, not an explicit past-retirement report."
+        },
+        "actual_deployment_retirement": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "No deployment evidence collected; actual serving events are outside scope."
+        },
+        "historical_public_availability": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "Current source read cannot establish historical bytes."
+        },
+        "review_observation_window_utc": [
+          "2026-10-08T17:49:09Z",
+          "2026-10-08T17:49:22Z"
+        ]
+      },
+      "interval_semantics": {
+        "inclusive_start": null,
+        "inclusive_end": null,
+        "null_reason": "No instant or interval boundary semantics established."
+      },
+      "evidence": [
+        {
+          "source_id": "PV-AZ-CURRENT",
+          "locator": "source Markdown lines 87-90, row matching version and exact date"
+        },
+        {
+          "source_id": "PV-AZ-RENDERED",
+          "locator": "same named rows"
+        }
+      ],
+      "source_revision": {
+        "git_blob_id": "04553c99070d4d33e4425abb2ffddb7d63eb675d",
+        "current_main_commit": null,
+        "null_reason": "Current content blob verified, current upstream HEAD not retrieved; historical revisions separately pinned."
+      },
+      "measurement_context_ref": "publisher_lifecycle_assertion",
+      "uncertainty": [
+        "current_authoritative_date_unresolved",
+        "no_differentiating_scope",
+        "actual_deployment_not_observed"
+      ],
+      "rights_ref": "RIGHTS-AZ",
+      "submitted_observation_at_utc": "2026-10-08T11:29:38Z"
+    },
+    {
+      "record_type": "reviewed_publisher_lifecycle_assertion",
+      "local_ref": "az_20251215_late",
+      "catalog_refs": [
+        "MIR002",
+        "MIR-A02",
+        "MIR-P02"
+      ],
+      "local_event_ref": "azure_realtime_mini_20251215_retirement",
+      "origin_class": "new_review_reverified_current_primary_assertion",
+      "status": "verified_as_document_assertion_current_effective_date_held",
+      "verified_scope": "The current rendered source contains this assertion; its retirement date is not resolved or operationally observed.",
+      "raw_assertion": {
+        "model": "gpt-realtime-mini",
+        "version": "2025-12-15",
+        "lifecycle": "GA",
+        "retirement_date": "2027-06-15",
+        "replacement": "—"
+      },
+      "normalized_value": {
+        "value": "2027-06-15",
+        "value_type": "calendar_date",
+        "precision": "day",
+        "timezone": null,
+        "timezone_null_reason": "No timezone established for this date assertion.",
+        "status": "verified",
+        "provenance_class": "primary_observed_date_string",
+        "null_reason": null
+      },
+      "normalized_unit": "calendar_date",
+      "host_scope": {
+        "provider": "Microsoft Azure",
+        "service": "Azure OpenAI",
+        "model_name": "gpt-realtime-mini",
+        "model_version": "2025-12-15",
+        "region": null,
+        "deployment_type": null,
+        "sku": null,
+        "capability": null,
+        "fine_tuning_or_inference": null,
+        "null_reason": "No row-level qualifier resolves the paired dates; do not infer one from a model name or general policy."
+      },
+      "lifecycle_vocabulary_system": "documentation",
+      "lifecycle_raw": "GA",
+      "temporal_role": "documented_retirement_schedule_assertion",
+      "clocks": {
+        "announcement_date": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "First introduction/announcement not established."
+        },
+        "document_metadata_date": {
+          "raw": "10/05/2026",
+          "normalized": {
+            "value": "2026-10-05",
+            "value_type": "calendar_date",
+            "precision": "day",
+            "timezone": null,
+            "timezone_null_reason": "No timezone established for this date assertion.",
+            "status": "unresolved",
+            "provenance_class": "interpretation_of_en_US_metadata_format",
+            "null_reason": null
+          }
+        },
+        "scheduled_effective_date": {
+          "value": "2027-06-15",
+          "value_type": "calendar_date",
+          "precision": "day",
+          "timezone": null,
+          "timezone_null_reason": "No timezone established for this date assertion.",
+          "status": "verified",
+          "provenance_class": "primary_observed_date_string",
+          "null_reason": null
+        },
+        "documented_past_retirement": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "The row is a schedule with GA status, not an explicit past-retirement report."
+        },
+        "actual_deployment_retirement": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "No deployment evidence collected; actual serving events are outside scope."
+        },
+        "historical_public_availability": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "Current source read cannot establish historical bytes."
+        },
+        "review_observation_window_utc": [
+          "2026-10-08T17:49:09Z",
+          "2026-10-08T17:49:22Z"
+        ]
+      },
+      "interval_semantics": {
+        "inclusive_start": null,
+        "inclusive_end": null,
+        "null_reason": "No instant or interval boundary semantics established."
+      },
+      "evidence": [
+        {
+          "source_id": "PV-AZ-CURRENT",
+          "locator": "source Markdown lines 87-90, row matching version and exact date"
+        },
+        {
+          "source_id": "PV-AZ-RENDERED",
+          "locator": "same named rows"
+        }
+      ],
+      "source_revision": {
+        "git_blob_id": "04553c99070d4d33e4425abb2ffddb7d63eb675d",
+        "current_main_commit": null,
+        "null_reason": "Current content blob verified, current upstream HEAD not retrieved; historical revisions separately pinned."
+      },
+      "measurement_context_ref": "publisher_lifecycle_assertion",
+      "uncertainty": [
+        "current_authoritative_date_unresolved",
+        "no_differentiating_scope",
+        "actual_deployment_not_observed"
+      ],
+      "rights_ref": "RIGHTS-AZ",
+      "submitted_observation_at_utc": "2026-10-08T11:29:38Z"
+    },
+    {
+      "record_type": "reviewed_publisher_lifecycle_assertion",
+      "local_ref": "az_20251006_early",
+      "catalog_refs": [
+        "MIR002",
+        "MIR-A02",
+        "MIR-P02"
+      ],
+      "local_event_ref": "azure_realtime_mini_20251006_retirement",
+      "origin_class": "new_review_reverified_current_primary_assertion",
+      "status": "verified_as_document_assertion_current_effective_date_held",
+      "verified_scope": "The current rendered source contains this assertion; its retirement date is not resolved or operationally observed.",
+      "raw_assertion": {
+        "model": "gpt-realtime-mini",
+        "version": "2025-10-06",
+        "lifecycle": "GA",
+        "retirement_date": "2026-09-21",
+        "replacement": "—"
+      },
+      "normalized_value": {
+        "value": "2026-09-21",
+        "value_type": "calendar_date",
+        "precision": "day",
+        "timezone": null,
+        "timezone_null_reason": "No timezone established for this date assertion.",
+        "status": "verified",
+        "provenance_class": "primary_observed_date_string",
+        "null_reason": null
+      },
+      "normalized_unit": "calendar_date",
+      "host_scope": {
+        "provider": "Microsoft Azure",
+        "service": "Azure OpenAI",
+        "model_name": "gpt-realtime-mini",
+        "model_version": "2025-10-06",
+        "region": null,
+        "deployment_type": null,
+        "sku": null,
+        "capability": null,
+        "fine_tuning_or_inference": null,
+        "null_reason": "No row-level qualifier resolves the paired dates; do not infer one from a model name or general policy."
+      },
+      "lifecycle_vocabulary_system": "documentation",
+      "lifecycle_raw": "GA",
+      "temporal_role": "documented_retirement_schedule_assertion",
+      "clocks": {
+        "announcement_date": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "First introduction/announcement not established."
+        },
+        "document_metadata_date": {
+          "raw": "10/05/2026",
+          "normalized": {
+            "value": "2026-10-05",
+            "value_type": "calendar_date",
+            "precision": "day",
+            "timezone": null,
+            "timezone_null_reason": "No timezone established for this date assertion.",
+            "status": "unresolved",
+            "provenance_class": "interpretation_of_en_US_metadata_format",
+            "null_reason": null
+          }
+        },
+        "scheduled_effective_date": {
+          "value": "2026-09-21",
+          "value_type": "calendar_date",
+          "precision": "day",
+          "timezone": null,
+          "timezone_null_reason": "No timezone established for this date assertion.",
+          "status": "verified",
+          "provenance_class": "primary_observed_date_string",
+          "null_reason": null
+        },
+        "documented_past_retirement": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "The row is a schedule with GA status, not an explicit past-retirement report."
+        },
+        "actual_deployment_retirement": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "No deployment evidence collected; actual serving events are outside scope."
+        },
+        "historical_public_availability": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "Current source read cannot establish historical bytes."
+        },
+        "review_observation_window_utc": [
+          "2026-10-08T17:49:09Z",
+          "2026-10-08T17:49:22Z"
+        ]
+      },
+      "interval_semantics": {
+        "inclusive_start": null,
+        "inclusive_end": null,
+        "null_reason": "No instant or interval boundary semantics established."
+      },
+      "evidence": [
+        {
+          "source_id": "PV-AZ-CURRENT",
+          "locator": "source Markdown lines 87-90, row matching version and exact date"
+        },
+        {
+          "source_id": "PV-AZ-RENDERED",
+          "locator": "same named rows"
+        }
+      ],
+      "source_revision": {
+        "git_blob_id": "04553c99070d4d33e4425abb2ffddb7d63eb675d",
+        "current_main_commit": null,
+        "null_reason": "Current content blob verified, current upstream HEAD not retrieved; historical revisions separately pinned."
+      },
+      "measurement_context_ref": "publisher_lifecycle_assertion",
+      "uncertainty": [
+        "current_authoritative_date_unresolved",
+        "no_differentiating_scope",
+        "actual_deployment_not_observed"
+      ],
+      "rights_ref": "RIGHTS-AZ",
+      "submitted_observation_at_utc": "2026-10-08T11:29:38Z"
+    },
+    {
+      "record_type": "reviewed_publisher_lifecycle_assertion",
+      "local_ref": "az_20251215_early",
+      "catalog_refs": [
+        "MIR002",
+        "MIR-A02",
+        "MIR-P02"
+      ],
+      "local_event_ref": "azure_realtime_mini_20251215_retirement",
+      "origin_class": "new_review_reverified_current_primary_assertion",
+      "status": "verified_as_document_assertion_current_effective_date_held",
+      "verified_scope": "The current rendered source contains this assertion; its retirement date is not resolved or operationally observed.",
+      "raw_assertion": {
+        "model": "gpt-realtime-mini",
+        "version": "2025-12-15",
+        "lifecycle": "GA",
+        "retirement_date": "2026-12-15",
+        "replacement": "—"
+      },
+      "normalized_value": {
+        "value": "2026-12-15",
+        "value_type": "calendar_date",
+        "precision": "day",
+        "timezone": null,
+        "timezone_null_reason": "No timezone established for this date assertion.",
+        "status": "verified",
+        "provenance_class": "primary_observed_date_string",
+        "null_reason": null
+      },
+      "normalized_unit": "calendar_date",
+      "host_scope": {
+        "provider": "Microsoft Azure",
+        "service": "Azure OpenAI",
+        "model_name": "gpt-realtime-mini",
+        "model_version": "2025-12-15",
+        "region": null,
+        "deployment_type": null,
+        "sku": null,
+        "capability": null,
+        "fine_tuning_or_inference": null,
+        "null_reason": "No row-level qualifier resolves the paired dates; do not infer one from a model name or general policy."
+      },
+      "lifecycle_vocabulary_system": "documentation",
+      "lifecycle_raw": "GA",
+      "temporal_role": "documented_retirement_schedule_assertion",
+      "clocks": {
+        "announcement_date": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "First introduction/announcement not established."
+        },
+        "document_metadata_date": {
+          "raw": "10/05/2026",
+          "normalized": {
+            "value": "2026-10-05",
+            "value_type": "calendar_date",
+            "precision": "day",
+            "timezone": null,
+            "timezone_null_reason": "No timezone established for this date assertion.",
+            "status": "unresolved",
+            "provenance_class": "interpretation_of_en_US_metadata_format",
+            "null_reason": null
+          }
+        },
+        "scheduled_effective_date": {
+          "value": "2026-12-15",
+          "value_type": "calendar_date",
+          "precision": "day",
+          "timezone": null,
+          "timezone_null_reason": "No timezone established for this date assertion.",
+          "status": "verified",
+          "provenance_class": "primary_observed_date_string",
+          "null_reason": null
+        },
+        "documented_past_retirement": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "The row is a schedule with GA status, not an explicit past-retirement report."
+        },
+        "actual_deployment_retirement": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "No deployment evidence collected; actual serving events are outside scope."
+        },
+        "historical_public_availability": {
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "Current source read cannot establish historical bytes."
+        },
+        "review_observation_window_utc": [
+          "2026-10-08T17:49:09Z",
+          "2026-10-08T17:49:22Z"
+        ]
+      },
+      "interval_semantics": {
+        "inclusive_start": null,
+        "inclusive_end": null,
+        "null_reason": "No instant or interval boundary semantics established."
+      },
+      "evidence": [
+        {
+          "source_id": "PV-AZ-CURRENT",
+          "locator": "source Markdown lines 87-90, row matching version and exact date"
+        },
+        {
+          "source_id": "PV-AZ-RENDERED",
+          "locator": "same named rows"
+        }
+      ],
+      "source_revision": {
+        "git_blob_id": "04553c99070d4d33e4425abb2ffddb7d63eb675d",
+        "current_main_commit": null,
+        "null_reason": "Current content blob verified, current upstream HEAD not retrieved; historical revisions separately pinned."
+      },
+      "measurement_context_ref": "publisher_lifecycle_assertion",
+      "uncertainty": [
+        "current_authoritative_date_unresolved",
+        "no_differentiating_scope",
+        "actual_deployment_not_observed"
+      ],
+      "rights_ref": "RIGHTS-AZ",
+      "submitted_observation_at_utc": "2026-10-08T11:29:38Z"
+    },
+    {
+      "record_type": "reviewed_advertised_tariff_assertion",
+      "local_ref": "ds_r1_input_hit",
+      "catalog_refs": [
+        "IPP004",
+        "IPP-A04",
+        "IPP-P04",
+        "MIR004",
+        "MIR-A04",
+        "MIR-P04"
+      ],
+      "local_event_ref": "deepseek_r1_launch_2025_01_20",
+      "existing_canonical_event_id": null,
+      "origin_class": "prior_catalog_fact_reverified_in_current_primary_page",
+      "status": "verified_advertised_tariff_only",
+      "provider": "DeepSeek",
+      "service": "DeepSeek provider-hosted API",
+      "named_release": "DeepSeek-R1",
+      "publisher_asserted_alias": "deepseek-reasoner",
+      "alias_role": "asserted_by_R1_announcement_not_resolved_against_all_changelog_wording",
+      "region": null,
+      "region_null_reason": "Not specified by named launch pricing assertion.",
+      "deployment_type": null,
+      "deployment_type_null_reason": "No region/SKU-specific deployment type supplied.",
+      "direction": "input",
+      "cache_category": "hit",
+      "cache_null_reason": null,
+      "raw_decimal": "0.14",
+      "normalized_value": "0.14",
+      "currency": "USD",
+      "raw_currency": "$",
+      "currency_basis": "Prior IPP004 explicitly records USD; current named source supplies dollar-denominated rates.",
+      "token_denominator": 1000000,
+      "unit": "USD per 1,000,000 tokens",
+      "mode": null,
+      "mode_null_reason": "Release/alias is explicit; no separate exhaustive mode applicability category established in inspected pricing passage.",
+      "time_category": null,
+      "time_category_null_reason": "No all-hours or peak/off-peak eligibility inferred.",
+      "announcement_date": "2025-01-20",
+      "announcement_precision": "day",
+      "effective_date": null,
+      "effective_date_null_reason": "Launch announcement does not establish an exact separately bounded tariff effective interval.",
+      "effective_timezone": null,
+      "boundary_inclusive": null,
+      "discount_terms": null,
+      "discount_terms_null_reason": "No promotion or realized discount assumed from these launch rates.",
+      "review_observation_window_utc": [
+        "2026-10-08T17:49:22Z",
+        "2026-10-08T17:49:34Z"
+      ],
+      "historical_bytes_at_announcement": null,
+      "source_revision": null,
+      "population": null,
+      "cohort": null,
+      "comparator": null,
+      "statistical_denominator": null,
+      "sampling_uncertainty": null,
+      "statistical_null_reason": "Not applicable to a publisher tariff assertion. Token denominator and epistemic uncertainty remain applicable.",
+      "uncertainty_definition": "Applicability, page revision, time precision, conflicting alias assertions and execution/billing uncertainty; no sampling error.",
+      "evidence": [
+        {
+          "source_id": "PV-DS-R1",
+          "locator": "API Access & Pricing, category input_cache_hit"
+        }
+      ],
+      "rights_ref": "RIGHTS-DS",
+      "observed_execution_and_cost_fields": {
+        "execution_platform": null,
+        "execution_time": null,
+        "returned_version": null,
+        "immutable_checkpoint": null,
+        "actual_api_routing": null,
+        "net_invoice_charge": null,
+        "discount_realization": null,
+        "subsidy": null,
+        "energy": null,
+        "provider_economic_cost": null
+      }
+    },
+    {
+      "record_type": "reviewed_advertised_tariff_assertion",
+      "local_ref": "ds_r1_input_miss",
+      "catalog_refs": [
+        "IPP004",
+        "IPP-A04",
+        "IPP-P04",
+        "MIR004",
+        "MIR-A04",
+        "MIR-P04"
+      ],
+      "local_event_ref": "deepseek_r1_launch_2025_01_20",
+      "existing_canonical_event_id": null,
+      "origin_class": "prior_catalog_fact_reverified_in_current_primary_page",
+      "status": "verified_advertised_tariff_only",
+      "provider": "DeepSeek",
+      "service": "DeepSeek provider-hosted API",
+      "named_release": "DeepSeek-R1",
+      "publisher_asserted_alias": "deepseek-reasoner",
+      "alias_role": "asserted_by_R1_announcement_not_resolved_against_all_changelog_wording",
+      "region": null,
+      "region_null_reason": "Not specified by named launch pricing assertion.",
+      "deployment_type": null,
+      "deployment_type_null_reason": "No region/SKU-specific deployment type supplied.",
+      "direction": "input",
+      "cache_category": "miss",
+      "cache_null_reason": null,
+      "raw_decimal": "0.55",
+      "normalized_value": "0.55",
+      "currency": "USD",
+      "raw_currency": "$",
+      "currency_basis": "Prior IPP004 explicitly records USD; current named source supplies dollar-denominated rates.",
+      "token_denominator": 1000000,
+      "unit": "USD per 1,000,000 tokens",
+      "mode": null,
+      "mode_null_reason": "Release/alias is explicit; no separate exhaustive mode applicability category established in inspected pricing passage.",
+      "time_category": null,
+      "time_category_null_reason": "No all-hours or peak/off-peak eligibility inferred.",
+      "announcement_date": "2025-01-20",
+      "announcement_precision": "day",
+      "effective_date": null,
+      "effective_date_null_reason": "Launch announcement does not establish an exact separately bounded tariff effective interval.",
+      "effective_timezone": null,
+      "boundary_inclusive": null,
+      "discount_terms": null,
+      "discount_terms_null_reason": "No promotion or realized discount assumed from these launch rates.",
+      "review_observation_window_utc": [
+        "2026-10-08T17:49:22Z",
+        "2026-10-08T17:49:34Z"
+      ],
+      "historical_bytes_at_announcement": null,
+      "source_revision": null,
+      "population": null,
+      "cohort": null,
+      "comparator": null,
+      "statistical_denominator": null,
+      "sampling_uncertainty": null,
+      "statistical_null_reason": "Not applicable to a publisher tariff assertion. Token denominator and epistemic uncertainty remain applicable.",
+      "uncertainty_definition": "Applicability, page revision, time precision, conflicting alias assertions and execution/billing uncertainty; no sampling error.",
+      "evidence": [
+        {
+          "source_id": "PV-DS-R1",
+          "locator": "API Access & Pricing, category input_cache_miss"
+        }
+      ],
+      "rights_ref": "RIGHTS-DS",
+      "observed_execution_and_cost_fields": {
+        "execution_platform": null,
+        "execution_time": null,
+        "returned_version": null,
+        "immutable_checkpoint": null,
+        "actual_api_routing": null,
+        "net_invoice_charge": null,
+        "discount_realization": null,
+        "subsidy": null,
+        "energy": null,
+        "provider_economic_cost": null
+      }
+    },
+    {
+      "record_type": "reviewed_advertised_tariff_assertion",
+      "local_ref": "ds_r1_output",
+      "catalog_refs": [
+        "IPP004",
+        "IPP-A04",
+        "IPP-P04",
+        "MIR004",
+        "MIR-A04",
+        "MIR-P04"
+      ],
+      "local_event_ref": "deepseek_r1_launch_2025_01_20",
+      "existing_canonical_event_id": null,
+      "origin_class": "prior_catalog_fact_reverified_in_current_primary_page",
+      "status": "verified_advertised_tariff_only",
+      "provider": "DeepSeek",
+      "service": "DeepSeek provider-hosted API",
+      "named_release": "DeepSeek-R1",
+      "publisher_asserted_alias": "deepseek-reasoner",
+      "alias_role": "asserted_by_R1_announcement_not_resolved_against_all_changelog_wording",
+      "region": null,
+      "region_null_reason": "Not specified by named launch pricing assertion.",
+      "deployment_type": null,
+      "deployment_type_null_reason": "No region/SKU-specific deployment type supplied.",
+      "direction": "output",
+      "cache_category": null,
+      "cache_null_reason": "not_applicable_to_output",
+      "raw_decimal": "2.19",
+      "normalized_value": "2.19",
+      "currency": "USD",
+      "raw_currency": "$",
+      "currency_basis": "Prior IPP004 explicitly records USD; current named source supplies dollar-denominated rates.",
+      "token_denominator": 1000000,
+      "unit": "USD per 1,000,000 tokens",
+      "mode": null,
+      "mode_null_reason": "Release/alias is explicit; no separate exhaustive mode applicability category established in inspected pricing passage.",
+      "time_category": null,
+      "time_category_null_reason": "No all-hours or peak/off-peak eligibility inferred.",
+      "announcement_date": "2025-01-20",
+      "announcement_precision": "day",
+      "effective_date": null,
+      "effective_date_null_reason": "Launch announcement does not establish an exact separately bounded tariff effective interval.",
+      "effective_timezone": null,
+      "boundary_inclusive": null,
+      "discount_terms": null,
+      "discount_terms_null_reason": "No promotion or realized discount assumed from these launch rates.",
+      "review_observation_window_utc": [
+        "2026-10-08T17:49:22Z",
+        "2026-10-08T17:49:34Z"
+      ],
+      "historical_bytes_at_announcement": null,
+      "source_revision": null,
+      "population": null,
+      "cohort": null,
+      "comparator": null,
+      "statistical_denominator": null,
+      "sampling_uncertainty": null,
+      "statistical_null_reason": "Not applicable to a publisher tariff assertion. Token denominator and epistemic uncertainty remain applicable.",
+      "uncertainty_definition": "Applicability, page revision, time precision, conflicting alias assertions and execution/billing uncertainty; no sampling error.",
+      "evidence": [
+        {
+          "source_id": "PV-DS-R1",
+          "locator": "API Access & Pricing, category output"
+        }
+      ],
+      "rights_ref": "RIGHTS-DS",
+      "observed_execution_and_cost_fields": {
+        "execution_platform": null,
+        "execution_time": null,
+        "returned_version": null,
+        "immutable_checkpoint": null,
+        "actual_api_routing": null,
+        "net_invoice_charge": null,
+        "discount_realization": null,
+        "subsidy": null,
+        "energy": null,
+        "provider_economic_cost": null
+      }
+    },
+    {
+      "record_type": "reviewed_alias_conflict",
+      "local_ref": "ds_january_alias_conflict",
+      "local_event_ref": "deepseek_r1_launch_2025_01_20",
+      "catalog_refs": [
+        "MIR004",
+        "IPP004"
+      ],
+      "provider": "DeepSeek",
+      "service": "DeepSeek provider-hosted API",
+      "alias": "deepseek-reasoner",
+      "event_date": "2025-01-20",
+      "date_precision": "day",
+      "timezone": null,
+      "current_assertions": [
+        {
+          "source_id": "PV-DS-EN",
+          "asserted_release": "DeepSeek-R1",
+          "assertion_segment": "first sentence of January20 entry"
+        },
+        {
+          "source_id": "PV-DS-EN",
+          "asserted_release": "DeepSeek-V3",
+          "assertion_segment": "invocation sentence of same entry"
+        },
+        {
+          "source_id": "PV-DS-R1",
+          "asserted_release": "DeepSeek-R1",
+          "assertion_segment": "API Access & Pricing"
+        }
+      ],
+      "raw_english_conflict": "`deepseek-reasoner` is our new model DeepSeek-R1. You can invoke DeepSeek-V3 by specifying `model='deepseek-reasoner'`.",
+      "chinese_original": null,
+      "labeled_translation": null,
+      "chinese_null_reason": "Named Chinese page timed out in submitted research and current review.",
+      "explicit_correction": null,
+      "explicit_correction_null_reason": "Not found in the relevant inspected English entry or announcement; Chinese unavailable. This bounded finding is not proof of no correction elsewhere.",
+      "resolution": "held",
+      "actual_api_routing": null,
+      "immutable_checkpoint": null,
+      "historical_bytes_at_event": null,
+      "review_observation_window_utc": [
+        "2026-10-08T17:49:22Z",
+        "2026-10-08T17:49:34Z"
+      ],
+      "source_revision": null,
+      "rights_ref": "RIGHTS-DS"
+    },
+    {
+      "record_type": "reviewed_historical_promotion_hold",
+      "local_ref": "ds_v3_promotion",
+      "catalog_refs": [
+        "IPP004",
+        "IPP-A04",
+        "IPP-P04"
+      ],
+      "local_event_ref": "deepseek_v3_announcement_2024_12_26",
+      "publisher": "DeepSeek",
+      "service": "DeepSeek provider-hosted API",
+      "announced_release_label": "DeepSeek-V3",
+      "announcement_date": "2024-12-26",
+      "date_precision": "day",
+      "date_basis": "Preserved task/catalog lead, corroborated by present English changelog entry date; announcement body unread.",
+      "rate_cells": [
+        {
+          "phase": "promotional",
+          "direction": "input",
+          "cache_category": "hit",
+          "category_basis": "Requested reporting categories from the brief; publisher structure was not read.",
+          "cache_category_status": "requested_dimension_not_primary_verified",
+          "cache_category_null_reason": null,
+          "value_type": "exact_decimal_string",
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "December announcement body and linked pricing image were not retrieved.",
+          "requested_normalized_unit": {
+            "currency": "USD",
+            "token_denominator": 1000000
+          },
+          "publisher_unit_verified": false,
+          "mode": {
+            "value": null,
+            "status": "unresolved",
+            "null_reason": "The announcement was not read, so applicable mode is unresolved."
+          },
+          "time_category": {
+            "value": null,
+            "status": "unresolved",
+            "null_reason": "The announcement was not read, so applicable tariff time category is unresolved."
+          }
+        },
+        {
+          "phase": "promotional",
+          "direction": "input",
+          "cache_category": "miss",
+          "category_basis": "Requested reporting categories from the brief; publisher structure was not read.",
+          "cache_category_status": "requested_dimension_not_primary_verified",
+          "cache_category_null_reason": null,
+          "value_type": "exact_decimal_string",
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "December announcement body and linked pricing image were not retrieved.",
+          "requested_normalized_unit": {
+            "currency": "USD",
+            "token_denominator": 1000000
+          },
+          "publisher_unit_verified": false,
+          "mode": {
+            "value": null,
+            "status": "unresolved",
+            "null_reason": "The announcement was not read, so applicable mode is unresolved."
+          },
+          "time_category": {
+            "value": null,
+            "status": "unresolved",
+            "null_reason": "The announcement was not read, so applicable tariff time category is unresolved."
+          }
+        },
+        {
+          "phase": "promotional",
+          "direction": "output",
+          "cache_category": null,
+          "category_basis": "Requested reporting categories from the brief; publisher structure was not read.",
+          "cache_category_status": "not_applicable",
+          "cache_category_null_reason": "Not applicable to the requested output-price category; no unseen publisher structure inferred.",
+          "value_type": "exact_decimal_string",
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "December announcement body and linked pricing image were not retrieved.",
+          "requested_normalized_unit": {
+            "currency": "USD",
+            "token_denominator": 1000000
+          },
+          "publisher_unit_verified": false,
+          "mode": {
+            "value": null,
+            "status": "unresolved",
+            "null_reason": "The announcement was not read, so applicable mode is unresolved."
+          },
+          "time_category": {
+            "value": null,
+            "status": "unresolved",
+            "null_reason": "The announcement was not read, so applicable tariff time category is unresolved."
+          }
+        },
+        {
+          "phase": "successor",
+          "direction": "input",
+          "cache_category": "hit",
+          "category_basis": "Requested reporting categories from the brief; publisher structure was not read.",
+          "cache_category_status": "requested_dimension_not_primary_verified",
+          "cache_category_null_reason": null,
+          "value_type": "exact_decimal_string",
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "December announcement body and linked pricing image were not retrieved.",
+          "requested_normalized_unit": {
+            "currency": "USD",
+            "token_denominator": 1000000
+          },
+          "publisher_unit_verified": false,
+          "mode": {
+            "value": null,
+            "status": "unresolved",
+            "null_reason": "The announcement was not read, so applicable mode is unresolved."
+          },
+          "time_category": {
+            "value": null,
+            "status": "unresolved",
+            "null_reason": "The announcement was not read, so applicable tariff time category is unresolved."
+          }
+        },
+        {
+          "phase": "successor",
+          "direction": "input",
+          "cache_category": "miss",
+          "category_basis": "Requested reporting categories from the brief; publisher structure was not read.",
+          "cache_category_status": "requested_dimension_not_primary_verified",
+          "cache_category_null_reason": null,
+          "value_type": "exact_decimal_string",
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "December announcement body and linked pricing image were not retrieved.",
+          "requested_normalized_unit": {
+            "currency": "USD",
+            "token_denominator": 1000000
+          },
+          "publisher_unit_verified": false,
+          "mode": {
+            "value": null,
+            "status": "unresolved",
+            "null_reason": "The announcement was not read, so applicable mode is unresolved."
+          },
+          "time_category": {
+            "value": null,
+            "status": "unresolved",
+            "null_reason": "The announcement was not read, so applicable tariff time category is unresolved."
+          }
+        },
+        {
+          "phase": "successor",
+          "direction": "output",
+          "cache_category": null,
+          "category_basis": "Requested reporting categories from the brief; publisher structure was not read.",
+          "cache_category_status": "not_applicable",
+          "cache_category_null_reason": "Not applicable to the requested output-price category; no unseen publisher structure inferred.",
+          "value_type": "exact_decimal_string",
+          "value": null,
+          "status": "unresolved",
+          "null_reason": "December announcement body and linked pricing image were not retrieved.",
+          "requested_normalized_unit": {
+            "currency": "USD",
+            "token_denominator": 1000000
+          },
+          "publisher_unit_verified": false,
+          "mode": {
+            "value": null,
+            "status": "unresolved",
+            "null_reason": "The announcement was not read, so applicable mode is unresolved."
+          },
+          "time_category": {
+            "value": null,
+            "status": "unresolved",
+            "null_reason": "The announcement was not read, so applicable tariff time category is unresolved."
+          }
+        }
+      ],
+      "expiry_date": null,
+      "successor_effective_date": null,
+      "timezone": null,
+      "inclusive_exclusive_boundary": null,
+      "february_8_interval": "unverified",
+      "counterpart_url": null,
+      "pricing_image_url": null,
+      "source_revision": null,
+      "rights_ref": "RIGHTS-DS",
+      "evidence_source_ids": [
+        "PV-DS-V3",
+        "PV-DS-EN"
+      ],
+      "hold_reason": "Named announcement timed out; no body/linked asset boundary evidence. No guessed paths or current rate backfill.",
+      "observed_execution_and_cost_fields": {
+        "execution_platform": null,
+        "execution_time": null,
+        "returned_version": null,
+        "immutable_checkpoint": null,
+        "actual_api_routing": null,
+        "net_invoice_charge": null,
+        "discount_realization": null,
+        "subsidy": null,
+        "energy": null,
+        "provider_economic_cost": null
+      }
+    }
+  ],
+  "current_contract_mapping": "data/evidence-program/research/followups/model-tariff-review-contract-mapping.json",
+  "primary_evidence": "data/evidence-program/research/followups/model-tariff-review-primary-verification.json",
+  "historical_preservation": "data/evidence-program/research/followups/model-tariff-review-prior-catalog-preservation.json",
+  "case_evidence": "data/evidence-program/research/followups/model-tariff-review-acceptance-cases.json",
+  "limits": "Accepted means usable as bounded research evidence. It does not admit sources, select conflicting lifecycle dates, establish a model checkpoint, prove historical bytes, or calculate charged costs.",
+  "measurement_contexts": {
+    "publisher_lifecycle_assertion": {
+      "record_type": "measurement_context",
+      "evidence_unit": "publisher_document_assertion",
+      "population": {
+        "value": null,
+        "status": "not_applicable",
+        "null_reason": "Not a sampled population; scope is a named hosted model/version."
+      },
+      "cohort": {
+        "value": null,
+        "status": "not_applicable",
+        "null_reason": "No study cohort."
+      },
+      "comparator": {
+        "value": null,
+        "status": "not_applicable",
+        "null_reason": "Conflicting document rows are not experimental comparator groups."
+      },
+      "statistical_denominator": {
+        "value": null,
+        "status": "not_applicable",
+        "null_reason": "No statistical denominator for a lifecycle assertion."
+      },
+      "sampling_uncertainty": {
+        "value": null,
+        "status": "not_applicable",
+        "null_reason": "No statistical sampling model."
+      },
+      "uncertainty_definition": "Epistemic uncertainty concerns source revision, temporal meaning, scope, conflicting assertions and lack of execution evidence."
+    }
+  },
+  "source_review_state_preserved": "ready_for_independent_review_with_holds",
+  "title": "Hosted-model and tariff events follow-up",
+  "bundle_sequence": 7,
+  "submission_id": "bundle-d",
+  "original_sessions": [
+    17,
+    19
+  ],
+  "review_kind": "independent_machine_documentary_review_not_human_verification",
+  "integration_status": "reviewed_delta_included_in_this_candidate",
+  "integration_base_commit": "b37b0196ebd170d7903d87387bda83bb92407416",
+  "integration_snapshot_at": "2026-10-08T20:00:45Z",
+  "implementation_status": "additive_research_annotations_only",
+  "operational_admission": "not_admitted",
+  "collector_enabled": false,
+  "canonical_import": false,
+  "automatic_price_lifecycle_join_enabled": false,
+  "raw_source_files_published": false,
+  "source_code_execution": false,
+  "remote_publication_claimed": false,
+  "supporting_files": [
+    "data/evidence-program/research/followups/model-tariff-review-primary-verification.json",
+    "data/evidence-program/research/followups/model-tariff-review-source-byte-verification.json",
+    "data/evidence-program/research/followups/model-tariff-review-lineage.json",
+    "data/evidence-program/research/followups/model-tariff-review-repo-mapping.json",
+    "data/evidence-program/research/followups/model-tariff-review-repository-files-manifest.json",
+    "data/evidence-program/research/followups/model-tariff-review-prior-catalog-preservation.json",
+    "data/evidence-program/research/followups/model-tariff-review-contract-mapping.json",
+    "data/evidence-program/research/followups/model-tariff-review-schema-fragments.json",
+    "data/evidence-program/research/followups/model-tariff-review-acceptance-cases.json",
+    "data/evidence-program/research/followups/model-tariff-review-schema-smoke-fixture.json",
+    "data/evidence-program/research/followups/model-tariff-review-schema-smoke-results.json",
+    "data/evidence-program/research/followups/model-tariff-review-follow-up-actions.json",
+    "data/evidence-program/research/followups/model-tariff-review-validation-results.json"
+  ],
+  "source_review_provenance": {
+    "review_manifest_sha256": "c0f7e75ce8d3136d290017db8513efc502365bc9574277a705fe57c611b2a7c2",
+    "independent_clearance_sha256": "b94b7059e825f8bb75fe21f6cd2133d657eb5a66e7c74e29717f274a0044b138",
+    "decision": "cleared_for_bounded_research_integration_with_existing_holds",
+    "source_review_repository_pin": "a075f76f52964bd582e304863745bdc6d8cfc9b5",
+    "independent_review_completed_at": "2026-10-08T19:50:07Z",
+    "reviewed_source_outputs": [
+      {
+        "path": "review.md",
+        "bytes": 11531,
+        "sha256": "a9442f2feac97b461d3dfea45c2ef9ae9b78d6f282ff5cbacb1f754b13a8343b",
+        "hash_scope": "entire prepared publication file bytes"
+      },
+      {
+        "path": "delta.json",
+        "bytes": 55778,
+        "sha256": "db69afd0ff97f55741a1200c21e3aff3d22dc0a7b2905c4a4e670ef8bafccd56",
+        "hash_scope": "entire prepared publication file bytes"
+      },
+      {
+        "path": "primary-verification.json",
+        "bytes": 17906,
+        "sha256": "6aef0e4ffcd40ef7b747139437313b3e6a996b18dbbed45ba3ad00052f34473f",
+        "hash_scope": "entire prepared publication file bytes"
+      },
+      {
+        "path": "source-byte-verification.json",
+        "bytes": 1799,
+        "sha256": "6296a7210a1484fba285477d706597415d9685a8820451eb8cf5355730ec69b5",
+        "hash_scope": "entire prepared publication file bytes"
+      },
+      {
+        "path": "lineage.json",
+        "bytes": 5893,
+        "sha256": "7a115d471798b3d89dff0ffe5edf9cf77e28fff4e46f30d0a2646c3f88bf1da7",
+        "hash_scope": "entire prepared publication file bytes"
+      },
+      {
+        "path": "repo-mapping.json",
+        "bytes": 31853,
+        "sha256": "82f387d0813040d652f637212a5513922d88f8d0337507d27f28413d7b4f9fb0",
+        "hash_scope": "entire prepared publication file bytes"
+      },
+      {
+        "path": "repository-files-manifest.json",
+        "bytes": 28654,
+        "sha256": "2aade531a7d2bb432b08ca553374ac600ac4b3eefbdc83195129a64855a5c80e",
+        "hash_scope": "entire prepared publication file bytes"
+      },
+      {
+        "path": "prior-catalog-preservation.json",
+        "bytes": 32579,
+        "sha256": "d90ad62a2d66448d05f4f9352ab7d79dce24150eefeee221fd012c7e228b8821",
+        "hash_scope": "entire prepared publication file bytes"
+      },
+      {
+        "path": "contract-mapping.json",
+        "bytes": 13763,
+        "sha256": "3eb3a706ebd1cac18f9365d2ab87f6e076ccb122b7ac2000e1fded42d42c89b4",
+        "hash_scope": "entire prepared publication file bytes"
+      },
+      {
+        "path": "schema-fragments.json",
+        "bytes": 48480,
+        "sha256": "3d648e0cc64349dd5fc2c425ee2345d5d7b993368d4434e46443271b02004086",
+        "hash_scope": "entire prepared publication file bytes"
+      },
+      {
+        "path": "acceptance-cases.json",
+        "bytes": 100347,
+        "sha256": "4b149bf4223c12a6a8c2758aac06af5ad816e1374b5febcc0a95c7391e17a63f",
+        "hash_scope": "entire prepared publication file bytes"
+      },
+      {
+        "path": "schema-smoke-fixture.json",
+        "bytes": 14015,
+        "sha256": "211a350f38814a00d7068888da4153f8c81e998fb57afb3148d78c36e2f0d88a",
+        "hash_scope": "entire prepared publication file bytes"
+      },
+      {
+        "path": "schema-smoke-results.json",
+        "bytes": 205987,
+        "sha256": "6480a8a354e8fa2dae85ac8985b19a6dde0ed76908f08449ecb5493c7e984d5d",
+        "hash_scope": "entire prepared publication file bytes"
+      },
+      {
+        "path": "follow-up-actions.json",
+        "bytes": 4164,
+        "sha256": "cc1bdfcde253c78502e74d29224c3a806a0cd80ebf9edfcaadccc9931909ff5f",
+        "hash_scope": "entire prepared publication file bytes"
+      },
+      {
+        "path": "validation-results.json",
+        "bytes": 26506,
+        "sha256": "3e079a96f07b50672e41bd9827e4187d8ddb27f2b78870a2f004fe28d6f85ee8",
+        "hash_scope": "entire prepared publication file bytes"
+      }
+    ],
+    "hash_scope": "Hashes bind the fifteen exact pre-integration publication input files; filename labels identify those historical inputs. Public destinations are mapped separately below. Independent source-package clearance is distinct from candidate integration, remote publication and CI.",
+    "independent_checks": {
+      "checks": 459,
+      "passed": 459,
+      "failed": 0,
+      "submitted_manual_cases": 28,
+      "new_manual_cases": 16,
+      "schema_cases": 12
+    },
+    "independent_negative_context_regressions": 3,
+    "source_context_repair": "Exact original publisher_lifecycle_assertion context preserved, with all four reviewed Azure references resolving to it.",
+    "independent_R1_reread_limit": "Prior independent bounded R1 rereads timed out. Successful package-author primary observation and older IPP004 verification remain preserved; this clearance does not claim a new independent successful R1 read. No repeat source request was made for this repair.",
+    "source_body_redistribution": false
+  },
+  "public_reference_map": [
+    {
+      "review_input_filename": "review.md",
+      "repository_path": "docs/evidence-program/research/followups/model-tariff-review.md"
+    },
+    {
+      "review_input_filename": "delta.json",
+      "repository_path": "data/evidence-program/research/followups/model-tariff-review.json"
+    },
+    {
+      "review_input_filename": "primary-verification.json",
+      "repository_path": "data/evidence-program/research/followups/model-tariff-review-primary-verification.json"
+    },
+    {
+      "review_input_filename": "source-byte-verification.json",
+      "repository_path": "data/evidence-program/research/followups/model-tariff-review-source-byte-verification.json"
+    },
+    {
+      "review_input_filename": "lineage.json",
+      "repository_path": "data/evidence-program/research/followups/model-tariff-review-lineage.json"
+    },
+    {
+      "review_input_filename": "repo-mapping.json",
+      "repository_path": "data/evidence-program/research/followups/model-tariff-review-repo-mapping.json"
+    },
+    {
+      "review_input_filename": "repository-files-manifest.json",
+      "repository_path": "data/evidence-program/research/followups/model-tariff-review-repository-files-manifest.json"
+    },
+    {
+      "review_input_filename": "prior-catalog-preservation.json",
+      "repository_path": "data/evidence-program/research/followups/model-tariff-review-prior-catalog-preservation.json"
+    },
+    {
+      "review_input_filename": "contract-mapping.json",
+      "repository_path": "data/evidence-program/research/followups/model-tariff-review-contract-mapping.json"
+    },
+    {
+      "review_input_filename": "schema-fragments.json",
+      "repository_path": "data/evidence-program/research/followups/model-tariff-review-schema-fragments.json"
+    },
+    {
+      "review_input_filename": "acceptance-cases.json",
+      "repository_path": "data/evidence-program/research/followups/model-tariff-review-acceptance-cases.json"
+    },
+    {
+      "review_input_filename": "schema-smoke-fixture.json",
+      "repository_path": "data/evidence-program/research/followups/model-tariff-review-schema-smoke-fixture.json"
+    },
+    {
+      "review_input_filename": "schema-smoke-results.json",
+      "repository_path": "data/evidence-program/research/followups/model-tariff-review-schema-smoke-results.json"
+    },
+    {
+      "review_input_filename": "follow-up-actions.json",
+      "repository_path": "data/evidence-program/research/followups/model-tariff-review-follow-up-actions.json"
+    },
+    {
+      "review_input_filename": "validation-results.json",
+      "repository_path": "data/evidence-program/research/followups/model-tariff-review-validation-results.json"
+    }
+  ],
+  "boundary_statement": "Additive research annotations only. Original submitted nulls, source-review observations, independent review limits and integration receipts are separate. The historical repository_changes=false describes source review. Candidate docs/data preparation does not establish remote publication, canonical admission, collection, operational lifecycle status, automatic joins, actual routing or billing. All seven held records remain."
+}

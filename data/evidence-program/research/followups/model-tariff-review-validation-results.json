@@ -1,0 +1,1133 @@
+{
+  "record_type": "review_package_integrity_and_independent_schema_replay",
+  "review_base_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5",
+  "check_count": 204,
+  "passed": 204,
+  "failed": 0,
+  "checks": [
+    {
+      "check": "intake manifest fingerprint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "immutable original supporting_decision_report_pdf",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "immutable original typed_research_evidence_ledger",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "immutable original pasted_completion_narrative",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "public file exists docs/evidence-program/research/followups/model-tariff-review.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no private file reference docs/evidence-program/research/followups/model-tariff-review.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "public file exists data/evidence-program/research/followups/model-tariff-review.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "JSON parses data/evidence-program/research/followups/model-tariff-review.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no private file reference data/evidence-program/research/followups/model-tariff-review.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "public file exists data/evidence-program/research/followups/model-tariff-review-primary-verification.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "JSON parses data/evidence-program/research/followups/model-tariff-review-primary-verification.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no private file reference data/evidence-program/research/followups/model-tariff-review-primary-verification.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "public file exists data/evidence-program/research/followups/model-tariff-review-source-byte-verification.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "JSON parses data/evidence-program/research/followups/model-tariff-review-source-byte-verification.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no private file reference data/evidence-program/research/followups/model-tariff-review-source-byte-verification.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "public file exists data/evidence-program/research/followups/model-tariff-review-lineage.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "JSON parses data/evidence-program/research/followups/model-tariff-review-lineage.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no private file reference data/evidence-program/research/followups/model-tariff-review-lineage.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "public file exists data/evidence-program/research/followups/model-tariff-review-repo-mapping.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "JSON parses data/evidence-program/research/followups/model-tariff-review-repo-mapping.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no private file reference data/evidence-program/research/followups/model-tariff-review-repo-mapping.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "public file exists data/evidence-program/research/followups/model-tariff-review-repository-files-manifest.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "JSON parses data/evidence-program/research/followups/model-tariff-review-repository-files-manifest.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no private file reference data/evidence-program/research/followups/model-tariff-review-repository-files-manifest.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "public file exists data/evidence-program/research/followups/model-tariff-review-prior-catalog-preservation.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "JSON parses data/evidence-program/research/followups/model-tariff-review-prior-catalog-preservation.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no private file reference data/evidence-program/research/followups/model-tariff-review-prior-catalog-preservation.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "public file exists data/evidence-program/research/followups/model-tariff-review-contract-mapping.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "JSON parses data/evidence-program/research/followups/model-tariff-review-contract-mapping.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no private file reference data/evidence-program/research/followups/model-tariff-review-contract-mapping.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "public file exists data/evidence-program/research/followups/model-tariff-review-schema-fragments.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "JSON parses data/evidence-program/research/followups/model-tariff-review-schema-fragments.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no private file reference data/evidence-program/research/followups/model-tariff-review-schema-fragments.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "public file exists data/evidence-program/research/followups/model-tariff-review-acceptance-cases.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "JSON parses data/evidence-program/research/followups/model-tariff-review-acceptance-cases.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no private file reference data/evidence-program/research/followups/model-tariff-review-acceptance-cases.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "public file exists data/evidence-program/research/followups/model-tariff-review-schema-smoke-fixture.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "JSON parses data/evidence-program/research/followups/model-tariff-review-schema-smoke-fixture.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no private file reference data/evidence-program/research/followups/model-tariff-review-schema-smoke-fixture.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "public file exists data/evidence-program/research/followups/model-tariff-review-schema-smoke-results.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "JSON parses data/evidence-program/research/followups/model-tariff-review-schema-smoke-results.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no private file reference data/evidence-program/research/followups/model-tariff-review-schema-smoke-results.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "public file exists data/evidence-program/research/followups/model-tariff-review-follow-up-actions.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "JSON parses data/evidence-program/research/followups/model-tariff-review-follow-up-actions.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no private file reference data/evidence-program/research/followups/model-tariff-review-follow-up-actions.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all 28 original case inputs preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all original manual results preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "submitted current commit remains null",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "publisher lifecycle measurement context preserved exactly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "measurement context resolves in publication az_20251006_late",
+      "passed": true,
+      "detail": "publisher_lifecycle_assertion"
+    },
+    {
+      "check": "measurement context resolves in publication az_20251215_late",
+      "passed": true,
+      "detail": "publisher_lifecycle_assertion"
+    },
+    {
+      "check": "measurement context resolves in publication az_20251006_early",
+      "passed": true,
+      "detail": "publisher_lifecycle_assertion"
+    },
+    {
+      "check": "measurement context resolves in publication az_20251215_early",
+      "passed": true,
+      "detail": "publisher_lifecycle_assertion"
+    },
+    {
+      "check": "current verified repository pin",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "33 repository files pinned and byte verified",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob AGENTS.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob README.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob data/evidence-program/research/inference-price-performance.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob data/evidence-program/research/model-identity-retirement.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob data/evidence-program/source_inventory.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob docs/ARCHITECTURE.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob docs/DATA_MODEL.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob docs/PRODUCT.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob docs/ROADMAP.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob docs/SOURCE_AND_PROVENANCE_POLICY.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob docs/evidence-program/research/inference-price-performance.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob docs/evidence-program/research/model-identity-retirement.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob docs/evidence-program/research/research-session-review-queue.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob docs/evidence-program/source_priorities.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/actor.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/benchmark_run.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/dataset.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/field_dictionary.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/forecast.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/forecast_question.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/incident.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/model_version.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/release_event.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/resolution.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/resource_observation.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/safety_evaluation.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/snapshot.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/source_artifact.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/statement.schema.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob tools/evidence_program/contracts/unit_registry.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob data/evidence-program/research/followups/follow-up-queue.json",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob docs/evidence-program/dataset_spec.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "replay repository blob docs/evidence-program/modelling_methodology.md",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "historical object preserved MIR002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "historical object preserved MIR004",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "historical object preserved MIR-C02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "historical object preserved MIR-C04",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "historical object preserved MIR002",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "historical object preserved MIR004",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "historical object preserved MIR-P02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "historical object preserved MIR-P04",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "historical object preserved IPP004",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "historical object preserved IPP-C04",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "historical object preserved IPP004",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "historical object preserved IPP-P04",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "prior intake fingerprint preserved supporting_decision_report_pdf",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "prior intake fingerprint preserved typed_research_evidence_ledger",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "prior intake fingerprint preserved pasted_completion_narrative",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Azure source byte hashes are scoped and matched",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no fabricated DeepSeek byte hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all four current dates retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "Azure deployment/region remains unknown",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "exact three R1 decimals retained",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "USD per million token units preserved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "quoted not charged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "unknown mode/time not wildcard",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "current alias conflict not resolved",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "six V3 rate cells null and February8 unverified",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-01",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-03",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-04",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-05",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-06",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-07",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-08",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-09",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-10",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-12",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-13",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-14",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-15",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-17",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-18",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-19",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-20",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-21",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-22",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-23",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-24",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-25",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-26",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-27",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve S3-MAN-28",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M01",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M03",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M04",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M05",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M06",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M07",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M08",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M09",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M10",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M12",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M13",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M14",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M15",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "mapping refs resolve MT-M16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M01",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M03",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M04",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M05",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M06",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M07",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M08",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M09",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M10",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M12",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M13",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M14",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M15",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "manual result matches expected MT-M16",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "case counts honest",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "delta evidence refs D-A01",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "delta evidence refs D-A02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "delta evidence refs D-A03",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "delta evidence refs D-A04",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "delta evidence refs D-A05",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "delta evidence refs D-A06",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "delta evidence refs D-A07",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "delta evidence refs D-A08",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "delta evidence refs D-H01",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "delta evidence refs D-H02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "delta evidence refs D-H03",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "delta evidence refs D-H04",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "delta evidence refs D-H05",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "delta evidence refs D-H06",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "delta evidence refs D-H07",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "rights scopes distinct",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "actions vs prompts retain actual ID classes",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "schema replay MT-S01",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "schema replay MT-S02",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "schema replay MT-S03",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "schema replay MT-S04",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "schema replay MT-S05",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "schema replay MT-S06",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "schema replay MT-S07",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "schema replay MT-S08",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "schema replay MT-S09",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "schema replay MT-S10",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "schema replay MT-S11",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "schema replay MT-S12",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no implementation or source execution claim",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "schema_replay": [
+    {
+      "case_id": "MT-S01",
+      "expected": "accept",
+      "replayed": "accept",
+      "manual_semantic_decision": "accept_shape_only",
+      "schema_error_count": 0
+    },
+    {
+      "case_id": "MT-S02",
+      "expected": "reject",
+      "replayed": "reject",
+      "manual_semantic_decision": "reject",
+      "schema_error_count": 1
+    },
+    {
+      "case_id": "MT-S03",
+      "expected": "reject",
+      "replayed": "reject",
+      "manual_semantic_decision": "reject",
+      "schema_error_count": 1
+    },
+    {
+      "case_id": "MT-S04",
+      "expected": "reject",
+      "replayed": "reject",
+      "manual_semantic_decision": "hold_in_sidecar",
+      "schema_error_count": 1
+    },
+    {
+      "case_id": "MT-S05",
+      "expected": "reject",
+      "replayed": "reject",
+      "manual_semantic_decision": "hold_in_sidecar",
+      "schema_error_count": 1
+    },
+    {
+      "case_id": "MT-S06",
+      "expected": "accept",
+      "replayed": "accept",
+      "manual_semantic_decision": "reject_semantically",
+      "schema_error_count": 0
+    },
+    {
+      "case_id": "MT-S07",
+      "expected": "accept",
+      "replayed": "accept",
+      "manual_semantic_decision": "reject_semantically",
+      "schema_error_count": 0
+    },
+    {
+      "case_id": "MT-S08",
+      "expected": "accept",
+      "replayed": "accept",
+      "manual_semantic_decision": "reject_semantically",
+      "schema_error_count": 0
+    },
+    {
+      "case_id": "MT-S09",
+      "expected": "accept",
+      "replayed": "accept",
+      "manual_semantic_decision": "reject_semantically",
+      "schema_error_count": 0
+    },
+    {
+      "case_id": "MT-S10",
+      "expected": "reject",
+      "replayed": "reject",
+      "manual_semantic_decision": "reject",
+      "schema_error_count": 1
+    },
+    {
+      "case_id": "MT-S11",
+      "expected": "reject",
+      "replayed": "reject",
+      "manual_semantic_decision": "reject",
+      "schema_error_count": 1
+    },
+    {
+      "case_id": "MT-S12",
+      "expected": "reject",
+      "replayed": "reject",
+      "manual_semantic_decision": "hold_in_sidecar",
+      "schema_error_count": 1
+    }
+  ],
+  "render_inspection": {
+    "submitted_report_pages": 4,
+    "rendered_and_visually_inspected_pages": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "relevant_tables": [
+      "decision summary page 1",
+      "Azure lifecycle page 2",
+      "R1 tariffs page 3",
+      "rights page 4"
+    ],
+    "result": "legible; tables agree with submitted ledger"
+  },
+  "limits": "Local JSON/schema/hash checks and manual source decisions; not repository code execution, production validation, API execution, billing, or admission.",
+  "receipt_scope_note": "Historical source-review receipt with package references relocated. Candidate integration checks and unchanged repository regression tests are separate. General JSON Schema shape checks do not establish source truth, operational admission, a real-source canonical bundle, API execution or billing."
+}

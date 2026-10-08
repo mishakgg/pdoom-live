@@ -1,5 +1,9 @@
 # Inference cost and price–performance
 
+## Hosted-model and tariff qualification: 8 October 2026
+
+The [hosted-model and tariff follow-up](followups/model-tariff-review.md) ([JSON](../../../data/evidence-program/research/followups/model-tariff-review.json)) adds the independently reviewed deep prompt 3 / bundle D delta. For IPP004 / IPP-A04 / IPP-P04, the package author currently corroborated R1 launch tariffs of exactly USD 0.14 input-cache-hit, 0.55 input-cache-miss and 2.19 output per 1,000,000 tokens. These three factual rate assertions can attach to the same named January 20 announcement as MIR004; no automatic join or duplicate release is introduced. Independent R1 rereads timed out, preserving both earlier catalog verification and the author observation. Historical source bytes, exact effective interval, timezone, boundary inclusion, mode/time-of-day eligibility and execution identity remain held. V3 promotional/successor six rates and expiry/new-rate boundaries stay null after the named December 26 announcement timed out. Quoted rates do not establish actual billing, discounts, net charge, subsidy, energy or provider economic cost. DeepSeek artifact-specific reuse rights remain unknown. All seven hold records and prior IDs/catalog bytes remain. Historical text below is preserved; current qualifications are stated here and in the linked delta. No canonical admission or live collection is established.
+
 ## Follow-up qualification: 8 October 2026
 
 For IPP002 / IPP-A02 / IPP-P02 and IPP003 / IPP-A03 / IPP-P03, the [rights and release follow-up](followups/rights-release.md) ([JSON](../../../data/evidence-program/research/followups/rights-release.json)) records the verified ML.ENERGY announcements and bounded Epoch provenance/rights checks. The earlier not-started wording is superseded only for those completed components; run/quality/row lineage and all raw-reuse holds remain. The original catalog and review below remain historical.

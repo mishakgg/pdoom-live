@@ -1,0 +1,380 @@
+{
+  "record_type": "existing_contract_mapping_review",
+  "repository_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5",
+  "authoritative_contract": {
+    "path": "tools/evidence_program/contracts/dataset.schema.json",
+    "git_blob_oid": "fad7d2d1c69ac48de71ec98d5a04850fc5474ac7",
+    "schema_version": "0.1.0",
+    "status": "proposed portable evidence envelope; not production importer or admission",
+    "source_url": "https://github.com/mishakgg/pdoom-live/blob/a075f76f52964bd582e304863745bdc6d8cfc9b5/tools/evidence_program/contracts/dataset.schema.json"
+  },
+  "scope": "Existing schema field mapping and bounded local synthetic shape checks only. No schema edits, new framework, adapter, collection or publication.",
+  "mapping_status": "partial_native_with_sidecar_semantic_holds",
+  "required_envelope": [
+    "schema_version",
+    "record_type",
+    "id",
+    "revision",
+    "synthetic",
+    "times",
+    "governance",
+    "evidence",
+    "data"
+  ],
+  "required_by_record_type": {
+    "source_artifact_data": [
+      "canonical_url",
+      "title",
+      "source_type",
+      "language",
+      "author_refs",
+      "availability"
+    ],
+    "actor_data": [
+      "actor_kind",
+      "name",
+      "name_language",
+      "aliases",
+      "jurisdictions",
+      "affiliations",
+      "external_ids"
+    ],
+    "model_version_data": [
+      "developer_refs",
+      "family",
+      "version_label",
+      "modality",
+      "access",
+      "parent_model_refs",
+      "version_certainty"
+    ],
+    "release_event_data": [
+      "model_ref",
+      "release_kind",
+      "availability_scope",
+      "release_url"
+    ],
+    "resource_observation_data": [
+      "subject_refs",
+      "resource_kind",
+      "measurement",
+      "scope"
+    ],
+    "benchmark_run_data": [
+      "model_ref",
+      "evaluator_refs",
+      "benchmark",
+      "protocol",
+      "measurement",
+      "independence"
+    ],
+    "safety_evaluation_data": [
+      "model_ref",
+      "evaluator_refs",
+      "risk_domain",
+      "protocol",
+      "measurement",
+      "conclusion",
+      "limitations",
+      "disclosure_level"
+    ]
+  },
+  "required_shared_fields": {
+    "times": [
+      "known_at",
+      "retrieved_at",
+      "published",
+      "event",
+      "evaluated"
+    ],
+    "governance": [
+      "review_state",
+      "rights_state",
+      "rights_basis",
+      "publication_state"
+    ],
+    "evidence": [
+      "source_ref",
+      "locator",
+      "relation",
+      "extraction_method",
+      "extractor_version"
+    ],
+    "measurement": [
+      "metric",
+      "result",
+      "observation_mode",
+      "method"
+    ],
+    "metric": [
+      "key",
+      "definition",
+      "unit",
+      "direction"
+    ],
+    "record_ref": [
+      "id",
+      "revision"
+    ]
+  },
+  "mapping_ids": [
+    {
+      "mapping_id": "MT-CM01",
+      "facet": "source artifact, language, revision and exact locator",
+      "native_paths": [
+        "data.canonical_url",
+        "data.title",
+        "data.source_type",
+        "data.language",
+        "data.author_refs",
+        "data.availability",
+        "evidence[].source_ref",
+        "evidence[].locator",
+        "evidence[].relation",
+        "times.retrieved_at",
+        "times.known_at"
+      ],
+      "native_record_type": "source_artifact",
+      "limits": "Whole-byte content_sha256 only for inspected bytes. Git commit/blob IDs and excerpt hashes require separately typed sidecar fields. A current read establishes current availability, not historical source bytes."
+    },
+    {
+      "mapping_id": "MT-CM02",
+      "facet": "publisher release label versus request alias",
+      "native_paths": [
+        "model_version.data.version_label",
+        "model_version.data.version_certainty",
+        "model_version.data.access",
+        "model_version.data.developer_refs"
+      ],
+      "native_record_type": "model_version",
+      "limits": "Use version_certainty=provider_label for a documented release label. Mutable API request alias is sidecar request_id, not immutable provider_model_id, artifact_digest, or substitute for version_label. Host/platform/region/mode and served_as/redirected_to relations are not typed native fields."
+    },
+    {
+      "mapping_id": "MT-CM03",
+      "facet": "Azure contradictory future retirement schedules",
+      "native_paths": [
+        "source_artifact",
+        "evidence[].locator",
+        "evidence[].relation",
+        "times.published"
+      ],
+      "native_record_type": "source_artifact",
+      "sidecar_required": [
+        "raw_status",
+        "raw_status_vocabulary",
+        "asserted_effective_date",
+        "date_precision",
+        "assertion_temporal_role",
+        "host_platform",
+        "version",
+        "region",
+        "deployment_sku",
+        "capability",
+        "fine_tuning_vs_inference",
+        "conflict_edges",
+        "source_git_revision",
+        "introduced_changed_reintroduced_lineage"
+      ],
+      "limits": "release_event has no schedule/observed discriminator. Do not map a scheduled date to withdrawal or times.event as an event that happened. A separately evidenced announcement/document update can use release_kind=announcement/update at its real documentation event date, with planned date and unresolved status in sidecar."
+    },
+    {
+      "mapping_id": "MT-CM04",
+      "facet": "historical factual quoted tariff",
+      "native_record_type": "resource_observation",
+      "native_paths": [
+        "data.resource_kind=inference_price",
+        "data.measurement.observation_mode=reported",
+        "data.measurement.result.kind=point",
+        "data.measurement.result.value",
+        "data.measurement.result.unit=currency_nominal",
+        "data.measurement.metric.unit=currency_nominal",
+        "data.measurement.metric.definition",
+        "data.measurement.metric.context",
+        "data.measurement.metric.minimum=0",
+        "data.scope",
+        "data.currency_basis.currency=USD",
+        "data.currency_basis.price_basis=nominal",
+        "data.currency_basis.conversion_method"
+      ],
+      "limits": "One exact category per observation, preserve 0.14/0.55/2.19 strings. Per-million denominator and input/output/cache/mode/time category must remain explicit in definition/scope. These categories have no dedicated typed schema fields. Use actor subject if model identity unresolved; a stronger model join requires a supported model_version record."
+    },
+    {
+      "mapping_id": "MT-CM05",
+      "facet": "promotion effective interval and precision",
+      "native_paths": [
+        "times.published",
+        "times.event",
+        "times.known_at",
+        "times.retrieved_at"
+      ],
+      "sidecar_required": [
+        "announcement_date",
+        "promotion_end_date",
+        "successor_start_date",
+        "timezone",
+        "boundary_inclusivity",
+        "rate_category",
+        "boundary_status",
+        "null_reason"
+      ],
+      "limits": "temporal.date preserves day precision. temporal.range endpoints are inclusive by contract, so do not use it for an interval whose inclusivity is unknown. Unknown boundaries stay separate null fields/reasons in sidecar; no inferred UTC instant or February8 boundary."
+    },
+    {
+      "mapping_id": "MT-CM06",
+      "facet": "English/Chinese observations and event deduplication",
+      "native_paths": [
+        "source_artifact.data.language",
+        "source_artifact.data.translation.original_ref",
+        "source_artifact.data.translation.method",
+        "source_artifact.data.translation.translator",
+        "source_artifact.data.translation.review_status",
+        "evidence[].source_ref"
+      ],
+      "sidecar_required": [
+        "shared_provider_event_key",
+        "language_variant_edges",
+        "alias_to_release_assertions",
+        "conflict_edges",
+        "observed_at",
+        "historical_availability"
+      ],
+      "limits": "Do not fill publisher translation method/translator if unknown. Two official language pages can instead remain source artifacts with a sidecar same-event relation. A current English body does not establish historical wording or a Chinese original."
+    },
+    {
+      "mapping_id": "MT-CM07",
+      "facet": "revision, duplicate and predecessor lineage",
+      "native_paths": [
+        "id",
+        "revision",
+        "supersedes",
+        "legacy_refs",
+        "upstream_refs",
+        "evidence[].relation"
+      ],
+      "limits": "supersedes means immediately preceding revision of same record ID, not a provider replacement, distinct language page, independent model release or event conflict. Revision >=2 requires supersedes. Contradicts is an evidence relation; generic event graph remains sidecar."
+    },
+    {
+      "mapping_id": "MT-CM08",
+      "facet": "run/evaluation tariff join",
+      "native_paths": [
+        "benchmark_run.data.model_ref",
+        "benchmark_run.data.protocol",
+        "benchmark_run.times.evaluated",
+        "safety_evaluation.data.model_ref",
+        "safety_evaluation.data.protocol"
+      ],
+      "sidecar_required": [
+        "execution_platform",
+        "execution_interval",
+        "requested_identifier",
+        "returned_version",
+        "mode",
+        "region_deployment_if_relevant",
+        "billing_token_categories"
+      ],
+      "limits": "Hold a run join when execution platform/time/returned version is absent. A release or tariff announcement is no substitute. No native API invocation/deployment record; no test execution or billed usage is established."
+    },
+    {
+      "mapping_id": "MT-CM09",
+      "facet": "quoted versus charged/economic cost",
+      "native_paths": [
+        "resource_observation.data.resource_kind",
+        "resource_observation.data.measurement.observation_mode",
+        "resource_observation.data.measurement.method",
+        "resource_observation.data.scope"
+      ],
+      "sidecar_required": [
+        "quoted_tariff",
+        "tariff_derived_estimate",
+        "net_invoice_charge",
+        "subsidy",
+        "provider_economic_cost",
+        "energy"
+      ],
+      "limits": "inference_price is allowed; inference_cost is not a resource_kind enum. A tariff-derived estimate could only be a separately identified estimated observation with assumptions, never this reported tariff. Invoice, subsidy, provider economic cost and energy are null/not measured in this review. No billing conclusion."
+    },
+    {
+      "mapping_id": "MT-CM10",
+      "facet": "rights and publication",
+      "native_paths": [
+        "governance.review_state",
+        "governance.rights_state",
+        "governance.rights_basis",
+        "governance.rights_url",
+        "governance.publication_state"
+      ],
+      "sidecar_required": [
+        "factual_metadata_paraphrase",
+        "aggregate_reuse",
+        "source_body_retention",
+        "source_body_redistribution",
+        "attribution_exceptions"
+      ],
+      "limits": "Single rights state cannot replace artifact-specific four-way rights assessment. Unknown rights remain unknown. Research verification is not human_verified operator review, and eligible is not admitted or published."
+    }
+  ],
+  "vocabulary": {
+    "release_kind": [
+      "announcement",
+      "preview",
+      "api_general",
+      "weights",
+      "withdrawal",
+      "update"
+    ],
+    "version_certainty": [
+      "immutable",
+      "provider_label",
+      "inferred",
+      "unknown"
+    ],
+    "evidence_relation": [
+      "supports",
+      "contradicts",
+      "context"
+    ],
+    "observation_mode": [
+      "reported",
+      "measured",
+      "estimated"
+    ],
+    "rights_state": [
+      "unknown",
+      "link_only",
+      "metadata_only",
+      "redistribution_allowed",
+      "restricted"
+    ],
+    "review_state": [
+      "unreviewed",
+      "machine_validated",
+      "human_verified",
+      "needs_review",
+      "rejected"
+    ],
+    "publication_state": [
+      "internal",
+      "eligible",
+      "withheld"
+    ],
+    "azure_source_vocabulary_rule": "Documentation Deprecated maps to API Deprecating; API Deprecated denotes retired. Keep source and normalized vocabulary separate."
+  },
+  "statistical_context": {
+    "sampling_population": "not_applicable_to_quoted_tariff",
+    "statistical_denominator": "not_applicable",
+    "sampling_uncertainty": "not_applicable",
+    "required_billing_unit": "USD per 1,000,000 tokens with direction/cache/mode/time category",
+    "sample_size": "omit; do not insert null because schema requires integer when present",
+    "uncertainty_notes": "Record documentary identity/date/rights uncertainty, not manufactured sampling uncertainty."
+  },
+  "null_handling": "Native schemas generally reject arbitrary nulls and additional fields. Omit unsupported optional native fields or use temporal.kind=unknown with reason/value.kind=missing where those unions apply. Preserve explicit null plus reason and unsupported facets in review sidecar, not arbitrary additions to a conforming record.",
+  "historical_decimal_rule": "Catalog numbers are preserved verbatim in data/evidence-program/research/followups/model-tariff-review-prior-catalog-preservation.json. Proposed native representations use exact strings; they do not rewrite the historical catalog.",
+  "validation_limit": "Offline JSON Schema detects shape only. Semantic joins, source truth, lineage completeness, rights and no-leakage rules need the manual acceptance decision. No repository validator or source code is executed.",
+  "completed_checks": {
+    "schema_smoke_cases": 12,
+    "all_expected_schema_results_matched": true,
+    "test_tool": "installed jsonschema Draft202012Validator with FormatChecker, offline",
+    "repository_code_executed": false,
+    "semantic_review": "Each smoke case includes manual semantic disposition; source and historical joins require separate evidence."
+  }
+}

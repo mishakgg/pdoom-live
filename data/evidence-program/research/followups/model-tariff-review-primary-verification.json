@@ -1,0 +1,392 @@
+{
+  "record_type": "bounded_primary_review",
+  "review_base_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5",
+  "observation_window_utc": [
+    "2026-10-08T17:46:33Z",
+    "2026-10-08T17:52:22Z"
+  ],
+  "time_precision_note": "Per-source windows bound tool receipt time in this review; they are not publisher clocks.",
+  "sources": [
+    {
+      "source_id": "PV-AZ-CURRENT",
+      "url": "https://github.com/MicrosoftDocs/azure-ai-docs/blob/main/articles/foundry/openai/includes/concepts-model-retirement-schedule-content.md",
+      "title": "Azure retirement schedule include",
+      "locator": "Azure OpenAI table, source Markdown lines 87-90; ms.date line 11",
+      "review_observation_window_utc": [
+        "2026-10-08T17:49:09Z",
+        "2026-10-08T17:49:22Z"
+      ],
+      "status": "read",
+      "git_commit_id": null,
+      "git_blob_id": "04553c99070d4d33e4425abb2ffddb7d63eb675d",
+      "document_metadata_date_raw": "10/05/2026",
+      "date_role": "document_metadata_not_announcement",
+      "facts": {
+        "current_rows": [
+          [
+            "gpt-realtime-mini",
+            "2025-10-06",
+            "GA",
+            "2027-04-06",
+            "—"
+          ],
+          [
+            "gpt-realtime-mini",
+            "2025-12-15",
+            "GA",
+            "2027-06-15",
+            "—"
+          ],
+          [
+            "gpt-realtime-mini",
+            "2025-10-06",
+            "GA",
+            "2026-09-21",
+            "—"
+          ],
+          [
+            "gpt-realtime-mini",
+            "2025-12-15",
+            "GA",
+            "2026-12-15",
+            "—"
+          ]
+        ]
+      },
+      "limits": "Current main file has a verified content blob, not a verified HEAD commit or a deployed model observation."
+    },
+    {
+      "source_id": "PV-AZ-RENDERED",
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+      "title": "Azure rendered retirement schedule",
+      "locator": "Azure OpenAI table, four gpt-realtime-mini rows",
+      "review_observation_window_utc": [
+        "2026-10-08T17:47:59Z",
+        "2026-10-08T17:48:18Z"
+      ],
+      "status": "read",
+      "facts": "The same two conflicting date pairs appear in the rendered schedule.",
+      "source_commit": null,
+      "limits": "Same publisher schedule appearance, not independent confirmation or a build-revision match."
+    },
+    {
+      "source_id": "PV-AZ-HISTORY",
+      "url": "https://github.com/MicrosoftDocs/azure-ai-docs/commits/main/articles/foundry/openai/includes/concepts-model-retirement-schedule-content.md",
+      "title": "Targeted Azure include history",
+      "locator": "History entries July 30 and August 3, 2026",
+      "review_observation_window_utc": [
+        "2026-10-08T17:47:59Z",
+        "2026-10-08T17:48:38Z"
+      ],
+      "status": "read",
+      "facts": "History links expose the two inspected revisions.",
+      "limits": "Web history retrieval was labeled crawled three weeks ago and is not an exhaustive current commit listing."
+    },
+    {
+      "source_id": "PV-AZ-CHANGE",
+      "url": "https://github.com/MicrosoftDocs/azure-ai-docs/commit/23998745fd5feb01194606d566137f1915c591dd",
+      "title": "Update model lifecycle policy and retirement dates",
+      "locator": "Named include patch, old/new source lines 82-83",
+      "review_observation_window_utc": [
+        "2026-10-08T17:48:31Z",
+        "2026-10-08T17:49:09Z"
+      ],
+      "status": "read",
+      "git_commit_id": "23998745fd5feb01194606d566137f1915c591dd",
+      "git_commit_created_at_utc": "2026-07-30T00:24:58Z",
+      "git_blob_id": "e375017e233cbcfa22d6a4f80b19d9754117b20f",
+      "pinned_file_url": "https://github.com/MicrosoftDocs/azure-ai-docs/blob/23998745fd5feb01194606d566137f1915c591dd/articles/foundry/openai/includes/concepts-model-retirement-schedule-content.md",
+      "document_metadata_date_raw": "07/29/2026",
+      "facts": {
+        "2025-10-06": {
+          "removed_date": "2026-09-21",
+          "added_date": "2027-04-06"
+        },
+        "2025-12-15": {
+          "removed_date": "2026-12-15",
+          "added_date": "2027-06-15"
+        }
+      },
+      "limits": "Verified document-row replacement, not a retirement event, first publication date, or evidence of a region/SKU split."
+    },
+    {
+      "source_id": "PV-AZ-READD",
+      "url": "https://github.com/MicrosoftDocs/azure-ai-docs/commit/6885735d9f71912f269f17d49626d307fb15cfee",
+      "title": "Resolve syncing conflicts from repo_sync_working_branch to main (#13665)",
+      "locator": "Named include patch @@ -84,6 +90,11; resulting file lines 91-94",
+      "review_observation_window_utc": [
+        "2026-10-08T17:49:09Z",
+        "2026-10-08T17:52:22Z"
+      ],
+      "status": "read",
+      "git_commit_id": "6885735d9f71912f269f17d49626d307fb15cfee",
+      "git_commit_created_at_utc": "2026-08-03T16:57:20Z",
+      "git_blob_id": "43a732f152eeeb74c0decebe2dfd5c7a43f2f307",
+      "pinned_file_url": "https://github.com/MicrosoftDocs/azure-ai-docs/blob/6885735d9f71912f269f17d49626d307fb15cfee/articles/foundry/openai/includes/concepts-model-retirement-schedule-content.md",
+      "facts": "The two earlier retirement-date rows are added immediately after the later-date rows. All four have GA and replacement dash, with no distinguishing row scope.",
+      "limits": "This establishes reintroduction by the sync commit. Calling the current duplicates an unintended regression is an inference, not a publisher correction; no current effective date is chosen."
+    },
+    {
+      "source_id": "PV-AZ-DEDUP",
+      "url": "https://github.com/MicrosoftDocs/azure-ai-docs/commit/72184ad88edb6651c6d01b9b56b96a6b2b948561",
+      "title": "Remove dups from sync and update chat-latest data",
+      "locator": "Named include diff",
+      "review_observation_window_utc": [
+        "2026-10-08T17:48:38Z",
+        "2026-10-08T17:49:09Z"
+      ],
+      "status": "read",
+      "git_commit_id": "72184ad88edb6651c6d01b9b56b96a6b2b948561",
+      "facts": "Inspected patch removes other duplicate rows; it contains no gpt-realtime-mini change.",
+      "limits": "The title is not evidence that these specific duplicate rows were resolved."
+    },
+    {
+      "source_id": "PV-AZ-POLICY",
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirements",
+      "title": "Foundry Models lifecycle and support policy",
+      "locator": "Programmatic methods terminology table, extraction lines 158-164; regional and automatic-upgrade sections",
+      "review_observation_window_utc": [
+        "2026-10-08T17:47:47Z",
+        "2026-10-08T17:48:18Z"
+      ],
+      "status": "read",
+      "facts": {
+        "documentation_Deprecated": "API Deprecating",
+        "documentation_Retired": "API Deprecated"
+      },
+      "limits": "General regional/SKU variation does not disambiguate the four named rows. This is documentation of API terms; no API was queried."
+    },
+    {
+      "source_id": "PV-AZ-RETIRED",
+      "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
+      "title": "Retired Foundry Models",
+      "locator": "Search within inspected rendered page for gpt-realtime-mini",
+      "review_observation_window_utc": [
+        "2026-10-08T17:47:47Z",
+        "2026-10-08T17:48:18Z"
+      ],
+      "status": "read",
+      "facts": "No matching text found.",
+      "limits": "Bounded negative only; no active-service or universal-absence inference."
+    },
+    {
+      "source_id": "PV-DS-V3",
+      "url": "https://api-docs.deepseek.com/news/news1226/",
+      "title": "Introducing DeepSeek-V3, December 26, 2024",
+      "locator": "Named announcement; body and embedded pricing asset not obtained",
+      "review_observation_window_utc": [
+        "2026-10-08T17:49:09Z",
+        "2026-10-08T17:49:22Z"
+      ],
+      "status": "timeout",
+      "facts": null,
+      "limits": "No retry, guessed asset, mirror, archive path or current-price backfill used. Prior catalog evidence is preserved; six historical promotional/successor cells and boundaries remain held."
+    },
+    {
+      "source_id": "PV-DS-EN",
+      "url": "https://api-docs.deepseek.com/updates/",
+      "title": "DeepSeek English Change Log",
+      "locator": "2025-01-20 deepseek-reasoner entry, extraction lines 232-238; bounded context entries 2024-12-26, 2025-05-28, 2025-08-21, 2026-09-10",
+      "review_observation_window_utc": [
+        "2026-10-08T17:49:22Z",
+        "2026-10-08T17:49:34Z"
+      ],
+      "status": "read",
+      "facts": {
+        "january_raw_text": "`deepseek-reasoner` is our new model DeepSeek-R1. You can invoke DeepSeek-V3 by specifying `model='deepseek-reasoner'`.",
+        "january_conflict": "R1 and V3 are asserted for the same alias in one entry.",
+        "bounded_context": [
+          {
+            "entry_date": "2024-12-26",
+            "publisher_assertion": "deepseek-chat upgraded to V3; invocation alias unchanged."
+          },
+          {
+            "entry_date": "2025-05-28",
+            "publisher_assertion": "deepseek-reasoner upgraded to R1-0528."
+          },
+          {
+            "entry_date": "2025-08-21",
+            "publisher_assertion": "chat and reasoner correspond to non-thinking and thinking modes of V3.1."
+          },
+          {
+            "entry_date": "2026-09-10",
+            "publisher_assertion": "deepseek-flash invokes V4.1 Flash; legacy V4 Flash compatibility identifiers temporarily route to that release; V4 Pro continues after September 14 with billing unchanged."
+          }
+        ]
+      },
+      "source_revision": null,
+      "explicit_correction": null,
+      "limits": "Present page assertions only. Relevant entries supply no explicit correction/version metadata for the January conflict. Later entries demonstrate mutable alias/mode assertions, not historical routing or weight identity. No benchmark values were collected."
+    },
+    {
+      "source_id": "PV-DS-ZH",
+      "url": "https://api-docs.deepseek.com/zh-cn/updates/",
+      "title": "DeepSeek Chinese Change Log",
+      "locator": "Named January 20 entry unavailable",
+      "review_observation_window_utc": [
+        "2026-10-08T17:49:22Z",
+        "2026-10-08T17:49:34Z"
+      ],
+      "status": "timeout",
+      "chinese_original": null,
+      "labeled_translation": null,
+      "limits": "No fabricated Chinese text, translation or bilingual agreement; no retry or alternative route."
+    },
+    {
+      "source_id": "PV-DS-R1",
+      "url": "https://api-docs.deepseek.com/news/news250120/",
+      "title": "DeepSeek-R1 Release",
+      "locator": "Navigation dates the release 2025/01/20; API Access & Pricing, extraction lines 71-80",
+      "review_observation_window_utc": [
+        "2026-10-08T17:49:22Z",
+        "2026-10-08T17:49:34Z"
+      ],
+      "status": "read",
+      "facts": {
+        "entry_date": "2025-01-20",
+        "publisher_alias": "deepseek-reasoner",
+        "publisher_release": "DeepSeek-R1",
+        "raw_currency_symbol": "$",
+        "rates_per_million_tokens": {
+          "input_cache_hit": "0.14",
+          "input_cache_miss": "0.55",
+          "output": "2.19"
+        }
+      },
+      "source_revision": null,
+      "historical_bytes_available_at": null,
+      "limits": "Current primary assertion corroborates the already-verified IPP004 tariff. USD normalization is also explicit in the preserved catalog. No exact effective instant, timezone, invoice, discount realization or execution observation is supplied."
+    },
+    {
+      "source_id": "PV-RIGHTS-NOTICE",
+      "url": "https://github.com/MicrosoftDocs/azure-ai-docs/blob/main/ThirdPartyNotices.md",
+      "title": "Legal Notices",
+      "locator": "Named license or legal-notice section",
+      "review_observation_window_utc": [
+        "2026-10-08T17:47:59Z",
+        "2026-10-08T17:51:29Z"
+      ],
+      "status": "read",
+      "facts": "Documentation/content CC BY 4.0; code MIT; names/logos/trademarks excluded."
+    },
+    {
+      "source_id": "PV-RIGHTS-LICENSE",
+      "url": "https://github.com/MicrosoftDocs/azure-ai-docs/blob/23998745fd5feb01194606d566137f1915c591dd/LICENSE",
+      "title": "CC BY 4.0",
+      "locator": "Named license or legal-notice section",
+      "review_observation_window_utc": [
+        "2026-10-08T17:47:59Z",
+        "2026-10-08T17:51:29Z"
+      ],
+      "status": "read",
+      "facts": "Sections 2, 3(a), 4; attribution, source/license links, changes and relevant exceptions."
+    },
+    {
+      "source_id": "PV-RIGHTS-CODE",
+      "url": "https://github.com/MicrosoftDocs/azure-ai-docs/blob/23998745fd5feb01194606d566137f1915c591dd/LICENSE-CODE",
+      "title": "MIT code license",
+      "locator": "Named license or legal-notice section",
+      "review_observation_window_utc": [
+        "2026-10-08T17:47:59Z",
+        "2026-10-08T17:51:29Z"
+      ],
+      "status": "read",
+      "facts": "Separate code scope, not documentation/model weights."
+    },
+    {
+      "source_id": "PV-RIGHTS-LEARN",
+      "url": "https://learn.microsoft.com/en-us/legal/termsofuse",
+      "title": "Microsoft Learn Terms of Use",
+      "locator": "Named license or legal-notice section",
+      "review_observation_window_utc": [
+        "2026-10-08T17:47:59Z",
+        "2026-10-08T17:51:29Z"
+      ],
+      "status": "read",
+      "facts": "Notice Specific to Documents Available on this Website; explicit document licenses prevail over conflicting general terms."
+    },
+    {
+      "source_id": "PV-RIGHTS-PINNED",
+      "url": "https://github.com/MicrosoftDocs/azure-ai-docs/blob/23998745fd5feb01194606d566137f1915c591dd/ThirdPartyNotices.md",
+      "title": "Azure pinned legal notices",
+      "locator": "Lines 1-5 and trademark exclusion; same notice read at both source commits",
+      "review_observation_window_utc": [
+        "2026-10-08T17:51:16Z",
+        "2026-10-08T17:51:29Z"
+      ],
+      "status": "read",
+      "git_blob_id": "7cdefc145c5d7563264e767104b35f0e0a82a6bd",
+      "additional_url": "https://github.com/MicrosoftDocs/azure-ai-docs/blob/6885735d9f71912f269f17d49626d307fb15cfee/ThirdPartyNotices.md",
+      "license_blob_at_C1": "e056e7c3ec54533985dfb3a4c6ef70dab8ca2e42",
+      "code_license_blob_at_C1": "b17b032a43088ac7f3d2f3e34a2431c778a95e6f",
+      "facts": "The explicit documentation/content grant is present at both inspected historical source commits; the referenced CC BY license body was read at the July 30 pin."
+    }
+  ],
+  "access_notes": [
+    {
+      "url": "https://github.com/MicrosoftDocs/azure-ai-docs/commit/47b33e21e0555935356f92906dbeb5b5fe492433",
+      "status": "web_cache_miss",
+      "used_for_conclusion": false,
+      "handling": "No content conclusion or retry."
+    },
+    {
+      "url": "https://github.com/MicrosoftDocs/azure-ai-docs/commit/6885735d9f71912f269f17d49626d307fb15cfee",
+      "status": "web_cache_miss_then_github_connector_success",
+      "used_for_conclusion": true,
+      "handling": "Connector is an ordinary authorized primary read; cache miss is a fetch failure, not an access restriction. No denied route was bypassed."
+    }
+  ],
+  "rights_assessments": [
+    {
+      "rights_id": "RIGHTS-AZ",
+      "artifact_source_ids": [
+        "PV-AZ-CURRENT",
+        "PV-AZ-CHANGE",
+        "PV-AZ-READD",
+        "PV-AZ-POLICY",
+        "PV-AZ-RENDERED"
+      ],
+      "evidence_source_ids": [
+        "PV-RIGHTS-NOTICE",
+        "PV-RIGHTS-LICENSE",
+        "PV-RIGHTS-CODE",
+        "PV-RIGHTS-LEARN",
+        "PV-RIGHTS-PINNED"
+      ],
+      "factual_metadata_paraphrase": "Explicit documentation/content grant verified for repository artifacts, subject to CC BY attribution and excluded rights. Factual assertions are summarized rather than full bodies republished.",
+      "aggregate_reuse": "CC BY database-rights terms apply only where covered rights exist; no separate aggregate dataset clearance claimed.",
+      "source_body_retention": "Covered repository documentation can be retained under the applicable grant; no blanket clearance for all website material or uninspected historical revisions.",
+      "redistribution": "Conditional CC BY scope with attribution, source/license links and modification notices; no raw bodies are in this publication set.",
+      "attribution": "Microsoft and contributors; exact source/revision links above; CC BY 4.0 https://creativecommons.org/licenses/by/4.0/legalcode. Review normalizes and paraphrases named factual rows; no endorsement implied.",
+      "exceptions": [
+        "Trademark/logo/name rights excluded",
+        "No transfer from code MIT to weights or other artifacts",
+        "Learn page design/graphics and any separate licensed third-party material need separate treatment"
+      ],
+      "historical_scope": "Notice present at C1 and C2; license body inspected at C1 only. No broader historical license claim.",
+      "legal_clearance": false,
+      "source_admission": "unchanged_hold"
+    },
+    {
+      "rights_id": "RIGHTS-DS",
+      "artifact_source_ids": [
+        "PV-DS-V3",
+        "PV-DS-EN",
+        "PV-DS-ZH",
+        "PV-DS-R1"
+      ],
+      "factual_metadata_paraphrase": "No artifact-specific reuse grant verified; factual references and minimal necessary quotation only.",
+      "aggregate_reuse": "unknown",
+      "source_body_retention": "unknown; no full page bodies in publication set",
+      "redistribution": "unknown; no license inferred from public access",
+      "pricing_image": "uninspected; URL and grant unknown",
+      "code_model_license_nontransfer": "The R1 announcement discusses MIT for code/models; this is not a documentation/changelog/pricing-image grant.",
+      "legal_clearance": false,
+      "source_admission": "unchanged_hold"
+    }
+  ],
+  "external_model_api_calls": 0,
+  "accounts_or_logins": 0,
+  "new_collection_or_source_admission": false,
+  "scope_exclusions_respected": true
+}

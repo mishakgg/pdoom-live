@@ -1,0 +1,425 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_id": "synthetic-model-tariff-schema-smoke",
+  "dataset_kind": "synthetic",
+  "generated_at": "2026-10-08T17:54:00Z",
+  "records": [
+    {
+      "schema_version": "0.1.0",
+      "record_type": "source_artifact",
+      "id": "urn:pdataset:source_artifact:synthetic-mt-source",
+      "revision": 1,
+      "synthetic": true,
+      "times": {
+        "known_at": "2026-10-08T17:54:00Z",
+        "retrieved_at": "2026-10-08T17:54:00Z",
+        "published": {
+          "kind": "date",
+          "date": "2025-01-20"
+        },
+        "event": {
+          "kind": "unknown",
+          "reason": "Not applicable to this synthetic documentary shape check."
+        },
+        "evaluated": {
+          "kind": "unknown",
+          "reason": "Not applicable to this synthetic documentary shape check."
+        }
+      },
+      "governance": {
+        "review_state": "unreviewed",
+        "rights_state": "metadata_only",
+        "rights_basis": "Wholly synthetic review fixture.",
+        "publication_state": "internal"
+      },
+      "evidence": [],
+      "data": {
+        "canonical_url": "https://example.invalid/synthetic-tariff",
+        "title": "Synthetic tariff fixture, not source evidence",
+        "source_type": "other",
+        "language": "en",
+        "author_refs": [],
+        "availability": "unknown"
+      }
+    },
+    {
+      "schema_version": "0.1.0",
+      "record_type": "actor",
+      "id": "urn:pdataset:actor:synthetic-mt-provider",
+      "revision": 1,
+      "synthetic": true,
+      "times": {
+        "known_at": "2026-10-08T17:54:00Z",
+        "retrieved_at": "2026-10-08T17:54:00Z",
+        "published": {
+          "kind": "date",
+          "date": "2025-01-20"
+        },
+        "event": {
+          "kind": "unknown",
+          "reason": "Not applicable to this synthetic documentary shape check."
+        },
+        "evaluated": {
+          "kind": "unknown",
+          "reason": "Not applicable to this synthetic documentary shape check."
+        }
+      },
+      "governance": {
+        "review_state": "unreviewed",
+        "rights_state": "metadata_only",
+        "rights_basis": "Wholly synthetic review fixture.",
+        "publication_state": "internal"
+      },
+      "evidence": [
+        {
+          "source_ref": {
+            "id": "urn:pdataset:source_artifact:synthetic-mt-source",
+            "revision": 1
+          },
+          "locator": "Synthetic category table, test row only",
+          "relation": "supports",
+          "extraction_method": "synthetic",
+          "extractor_version": "manual-fixture-v1"
+        }
+      ],
+      "data": {
+        "actor_kind": "organization",
+        "name": "Synthetic Test Provider",
+        "name_language": "en",
+        "aliases": [],
+        "jurisdictions": [],
+        "affiliations": [],
+        "external_ids": []
+      }
+    },
+    {
+      "schema_version": "0.1.0",
+      "record_type": "model_version",
+      "id": "urn:pdataset:model_version:synthetic-mt-release",
+      "revision": 1,
+      "synthetic": true,
+      "times": {
+        "known_at": "2026-10-08T17:54:00Z",
+        "retrieved_at": "2026-10-08T17:54:00Z",
+        "published": {
+          "kind": "date",
+          "date": "2025-01-20"
+        },
+        "event": {
+          "kind": "unknown",
+          "reason": "Not applicable to this synthetic documentary shape check."
+        },
+        "evaluated": {
+          "kind": "unknown",
+          "reason": "Not applicable to this synthetic documentary shape check."
+        }
+      },
+      "governance": {
+        "review_state": "unreviewed",
+        "rights_state": "metadata_only",
+        "rights_basis": "Wholly synthetic review fixture.",
+        "publication_state": "internal"
+      },
+      "evidence": [
+        {
+          "source_ref": {
+            "id": "urn:pdataset:source_artifact:synthetic-mt-source",
+            "revision": 1
+          },
+          "locator": "Synthetic category table, test row only",
+          "relation": "supports",
+          "extraction_method": "synthetic",
+          "extractor_version": "manual-fixture-v1"
+        }
+      ],
+      "data": {
+        "developer_refs": [
+          {
+            "id": "urn:pdataset:actor:synthetic-mt-provider",
+            "revision": 1
+          }
+        ],
+        "family": "Synthetic Family",
+        "version_label": "Synthetic Release A",
+        "modality": [
+          "text"
+        ],
+        "access": "api",
+        "parent_model_refs": [],
+        "version_certainty": "provider_label"
+      }
+    },
+    {
+      "schema_version": "0.1.0",
+      "record_type": "resource_observation",
+      "id": "urn:pdataset:resource_observation:synthetic-mt-input-cache-hit",
+      "revision": 1,
+      "synthetic": true,
+      "times": {
+        "known_at": "2026-10-08T17:54:00Z",
+        "retrieved_at": "2026-10-08T17:54:00Z",
+        "published": {
+          "kind": "date",
+          "date": "2025-01-20"
+        },
+        "event": {
+          "kind": "unknown",
+          "reason": "Not applicable to this synthetic documentary shape check."
+        },
+        "evaluated": {
+          "kind": "unknown",
+          "reason": "Not applicable to this synthetic documentary shape check."
+        }
+      },
+      "governance": {
+        "review_state": "unreviewed",
+        "rights_state": "metadata_only",
+        "rights_basis": "Wholly synthetic review fixture.",
+        "publication_state": "internal"
+      },
+      "evidence": [
+        {
+          "source_ref": {
+            "id": "urn:pdataset:source_artifact:synthetic-mt-source",
+            "revision": 1
+          },
+          "locator": "Synthetic category table, test row only",
+          "relation": "supports",
+          "extraction_method": "synthetic",
+          "extractor_version": "manual-fixture-v1"
+        }
+      ],
+      "data": {
+        "subject_refs": [
+          {
+            "id": "urn:pdataset:actor:synthetic-mt-provider",
+            "revision": 1
+          }
+        ],
+        "resource_kind": "inference_price",
+        "measurement": {
+          "metric": {
+            "key": "synthetic-advertised-input-cache-hit",
+            "definition": "Advertised USD amount per 1,000,000 input-cache-hit tokens in this fictional fixture.",
+            "unit": "currency_nominal",
+            "direction": "neutral",
+            "minimum": "0",
+            "context": "Synthetic service and mode only; no actual billing or known effective interval."
+          },
+          "result": {
+            "kind": "point",
+            "value": "0.14",
+            "unit": "currency_nominal"
+          },
+          "observation_mode": "reported",
+          "method": "Synthetic direct category transcription; no calculation or currency conversion.",
+          "uncertainty_notes": "Sampling uncertainty is not applicable; effective interval remains unspecified."
+        },
+        "scope": "Synthetic API; category=input-cache-hit; 1,000,000 tokens; quoted price, not actual charge.",
+        "currency_basis": {
+          "currency": "USD",
+          "price_basis": "nominal",
+          "conversion_method": "Original nominal USD; no conversion."
+        }
+      }
+    },
+    {
+      "schema_version": "0.1.0",
+      "record_type": "resource_observation",
+      "id": "urn:pdataset:resource_observation:synthetic-mt-input-cache-miss",
+      "revision": 1,
+      "synthetic": true,
+      "times": {
+        "known_at": "2026-10-08T17:54:00Z",
+        "retrieved_at": "2026-10-08T17:54:00Z",
+        "published": {
+          "kind": "date",
+          "date": "2025-01-20"
+        },
+        "event": {
+          "kind": "unknown",
+          "reason": "Not applicable to this synthetic documentary shape check."
+        },
+        "evaluated": {
+          "kind": "unknown",
+          "reason": "Not applicable to this synthetic documentary shape check."
+        }
+      },
+      "governance": {
+        "review_state": "unreviewed",
+        "rights_state": "metadata_only",
+        "rights_basis": "Wholly synthetic review fixture.",
+        "publication_state": "internal"
+      },
+      "evidence": [
+        {
+          "source_ref": {
+            "id": "urn:pdataset:source_artifact:synthetic-mt-source",
+            "revision": 1
+          },
+          "locator": "Synthetic category table, test row only",
+          "relation": "supports",
+          "extraction_method": "synthetic",
+          "extractor_version": "manual-fixture-v1"
+        }
+      ],
+      "data": {
+        "subject_refs": [
+          {
+            "id": "urn:pdataset:actor:synthetic-mt-provider",
+            "revision": 1
+          }
+        ],
+        "resource_kind": "inference_price",
+        "measurement": {
+          "metric": {
+            "key": "synthetic-advertised-input-cache-miss",
+            "definition": "Advertised USD amount per 1,000,000 input-cache-miss tokens in this fictional fixture.",
+            "unit": "currency_nominal",
+            "direction": "neutral",
+            "minimum": "0",
+            "context": "Synthetic service and mode only; no actual billing or known effective interval."
+          },
+          "result": {
+            "kind": "point",
+            "value": "0.55",
+            "unit": "currency_nominal"
+          },
+          "observation_mode": "reported",
+          "method": "Synthetic direct category transcription; no calculation or currency conversion.",
+          "uncertainty_notes": "Sampling uncertainty is not applicable; effective interval remains unspecified."
+        },
+        "scope": "Synthetic API; category=input-cache-miss; 1,000,000 tokens; quoted price, not actual charge.",
+        "currency_basis": {
+          "currency": "USD",
+          "price_basis": "nominal",
+          "conversion_method": "Original nominal USD; no conversion."
+        }
+      }
+    },
+    {
+      "schema_version": "0.1.0",
+      "record_type": "resource_observation",
+      "id": "urn:pdataset:resource_observation:synthetic-mt-output",
+      "revision": 1,
+      "synthetic": true,
+      "times": {
+        "known_at": "2026-10-08T17:54:00Z",
+        "retrieved_at": "2026-10-08T17:54:00Z",
+        "published": {
+          "kind": "date",
+          "date": "2025-01-20"
+        },
+        "event": {
+          "kind": "unknown",
+          "reason": "Not applicable to this synthetic documentary shape check."
+        },
+        "evaluated": {
+          "kind": "unknown",
+          "reason": "Not applicable to this synthetic documentary shape check."
+        }
+      },
+      "governance": {
+        "review_state": "unreviewed",
+        "rights_state": "metadata_only",
+        "rights_basis": "Wholly synthetic review fixture.",
+        "publication_state": "internal"
+      },
+      "evidence": [
+        {
+          "source_ref": {
+            "id": "urn:pdataset:source_artifact:synthetic-mt-source",
+            "revision": 1
+          },
+          "locator": "Synthetic category table, test row only",
+          "relation": "supports",
+          "extraction_method": "synthetic",
+          "extractor_version": "manual-fixture-v1"
+        }
+      ],
+      "data": {
+        "subject_refs": [
+          {
+            "id": "urn:pdataset:actor:synthetic-mt-provider",
+            "revision": 1
+          }
+        ],
+        "resource_kind": "inference_price",
+        "measurement": {
+          "metric": {
+            "key": "synthetic-advertised-output",
+            "definition": "Advertised USD amount per 1,000,000 output tokens in this fictional fixture.",
+            "unit": "currency_nominal",
+            "direction": "neutral",
+            "minimum": "0",
+            "context": "Synthetic service and mode only; no actual billing or known effective interval."
+          },
+          "result": {
+            "kind": "point",
+            "value": "2.19",
+            "unit": "currency_nominal"
+          },
+          "observation_mode": "reported",
+          "method": "Synthetic direct category transcription; no calculation or currency conversion.",
+          "uncertainty_notes": "Sampling uncertainty is not applicable; effective interval remains unspecified."
+        },
+        "scope": "Synthetic API; category=output; 1,000,000 tokens; quoted price, not actual charge.",
+        "currency_basis": {
+          "currency": "USD",
+          "price_basis": "nominal",
+          "conversion_method": "Original nominal USD; no conversion."
+        }
+      }
+    },
+    {
+      "schema_version": "0.1.0",
+      "record_type": "release_event",
+      "id": "urn:pdataset:release_event:synthetic-mt-announcement",
+      "revision": 1,
+      "synthetic": true,
+      "times": {
+        "known_at": "2026-10-08T17:54:00Z",
+        "retrieved_at": "2026-10-08T17:54:00Z",
+        "published": {
+          "kind": "date",
+          "date": "2025-01-20"
+        },
+        "event": {
+          "kind": "date",
+          "date": "2025-01-20"
+        },
+        "evaluated": {
+          "kind": "unknown",
+          "reason": "Not applicable to this synthetic documentary shape check."
+        }
+      },
+      "governance": {
+        "review_state": "unreviewed",
+        "rights_state": "metadata_only",
+        "rights_basis": "Wholly synthetic review fixture.",
+        "publication_state": "internal"
+      },
+      "evidence": [
+        {
+          "source_ref": {
+            "id": "urn:pdataset:source_artifact:synthetic-mt-source",
+            "revision": 1
+          },
+          "locator": "Synthetic category table, test row only",
+          "relation": "supports",
+          "extraction_method": "synthetic",
+          "extractor_version": "manual-fixture-v1"
+        }
+      ],
+      "data": {
+        "model_ref": {
+          "id": "urn:pdataset:model_version:synthetic-mt-release",
+          "revision": 1
+        },
+        "release_kind": "announcement",
+        "availability_scope": "Synthetic announcement only; no observed endpoint availability.",
+        "release_url": "https://example.invalid/synthetic-tariff"
+      }
+    }
+  ]
+}

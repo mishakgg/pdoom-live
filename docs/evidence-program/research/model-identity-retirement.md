@@ -4,6 +4,10 @@ Session 19, reviewed 8 October 2026 against main `82fd46330539bd484c80190c69868d
 
 All seven collections remain unadmitted research metadata. No adapter, validator, entity registry, model calls, weight downloads, live collector or source execution was added. Exact routing, execution and artifact identity require separate evidence.
 
+## Hosted-model and tariff qualification: 8 October 2026
+
+The [hosted-model and tariff follow-up](followups/model-tariff-review.md) ([JSON](../../../data/evidence-program/research/followups/model-tariff-review.json)) adds the independently reviewed deep prompt 3 / bundle D delta. For MIR002 / MIR-A02 / MIR-P02, exact Microsoft revisions show July 30 replacement of the two early retirement dates and August 3 reintroduction alongside the later dates. Current conflicting pairs remain 2027-04-06 versus 2026-09-21 for version 2025-10-06, and 2027-06-15 versus 2026-12-15 for version 2025-12-15. No authoritative date or observed retirement is selected. Documentation/API lifecycle vocabularies, documentary revision clocks and deployment evidence remain distinct. For MIR004 / MIR-A04 / MIR-P04, the package author read the current English changelog and R1 announcement; this qualifies the historical indexed-only observation without rewriting it. English R1/V3 alias conflict, Chinese original/translation equivalence, historical page bytes and actual routing remain held. Independent R1 rereads timed out; prior catalog verification and the author observation are preserved. The shared January 20 research event correlation is not a new canonical model ID or a second release. All seven hold records and prior IDs/catalog bytes remain. Historical text below is preserved; current qualifications are stated here and in the linked delta. No canonical admission or live collection is established.
+
 ## Decision
 
 Retain the top three priorities: **Google lifecycle/routing**, **Azure hosting lifecycle**, then **publisher-owned checkpoint metadata**. Each addresses a different identity boundary. The JSON record contains the seven sample records, rights/access/coverage decisions and source locators.

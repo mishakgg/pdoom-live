@@ -1,0 +1,2626 @@
+{
+  "record_type": "submitted_and_current_manual_acceptance_cases",
+  "submitted_input_integrity": "All 28 submitted input objects and claimed manual results are preserved exactly. Current assessments and public locator resolutions are separately added.",
+  "submitted_original_ledger_sha256": "51affa47016aee2c870a7f265f70302eefc6acfa1918018bdb70d651861b4204",
+  "submitted_cases": [
+    {
+      "case_id": "S3-MAN-01",
+      "case_kind": "realistic_positive",
+      "submitted_input": {
+        "subject": "repository_baseline_and_access",
+        "current_main": {
+          "inspection_result": "DisabledError",
+          "inspected_commit": null
+        },
+        "planning_baseline": {
+          "git_commit_id": "6cf8c1c89a387a5b26022dd9ea0a216d45b2b629",
+          "reported_verification_date": "2026-10-08",
+          "evidence_role": "supplied_brief_claim"
+        },
+        "pinned_prerequisites": {
+          "inspection_result": "DisabledError",
+          "paths": [
+            "AGENTS.md",
+            "docs/evidence-program/source_priorities.md",
+            "data/evidence-program/source_inventory.json",
+            "docs/evidence-program/research/research-session-review-queue.md"
+          ]
+        },
+        "task_guides_catalogs_contracts": "uninspected"
+      },
+      "submitted_expected_decision": "retain_supplied_baseline_and_explicit_access_holds",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "retain_supplied_baseline_and_explicit_access_holds",
+        "output": {
+          "current_main_commit": null,
+          "planning_baseline_role": "supplied_uninspected_pin",
+          "requested_files": "inaccessible_or_uninspected_not_absent",
+          "queue_live_integration_status": "unknown",
+          "later_change_reconciliation": "blocked"
+        }
+      },
+      "submitted_rationale": "The planning pin and reported date do not identify a successfully inspected current main. Access failure does not establish file absence or current integration status.",
+      "preserved_fields": [
+        "planning_baseline.git_commit_id",
+        "planning_baseline.reported_verification_date",
+        "evidence_role",
+        "requested_paths",
+        "access_results"
+      ],
+      "unsupported_fields": [
+        "verified_current_commit",
+        "prerequisite_contents",
+        "live_queue_status",
+        "catalog_taxonomy",
+        "later_change_reconciliation"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM01",
+        "MT-CM07"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "External access hold is preserved historically. Current repository inspection and native mapping are now complete at a075f76; no retroactive edit to submitted inspected_commit=null.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-02",
+      "case_kind": "realistic_positive",
+      "submitted_input": {
+        "subject": "current_azure_document_assertions",
+        "source_id": "MIR002",
+        "source_id_mapping_evidence_role": "supplied_brief_context_uninspected_catalog",
+        "provider": "Microsoft Azure",
+        "artifact_observations": [
+          {
+            "url": "https://github.com/MicrosoftDocs/azure-ai-docs/blob/main/articles/foundry/openai/includes/concepts-model-retirement-schedule-content.md",
+            "locator": "Azure OpenAI table, gpt-realtime-mini rows; root retrieval lines 274-277",
+            "source_revision": null
+          },
+          {
+            "url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirement-schedule",
+            "locator": "Azure OpenAI table, gpt-realtime-mini rows; root retrieval lines 98-101",
+            "source_revision": null
+          }
+        ],
+        "rows_in_each_observation": [
+          [
+            "gpt-realtime-mini",
+            "2025-10-06",
+            "GA",
+            "2027-04-06",
+            "—"
+          ],
+          [
+            "gpt-realtime-mini",
+            "2025-12-15",
+            "GA",
+            "2027-06-15",
+            "—"
+          ],
+          [
+            "gpt-realtime-mini",
+            "2025-10-06",
+            "GA",
+            "2026-09-21",
+            "—"
+          ],
+          [
+            "gpt-realtime-mini",
+            "2025-12-15",
+            "GA",
+            "2026-12-15",
+            "—"
+          ]
+        ],
+        "row_level_scope": null,
+        "file_history_result": "DisabledError"
+      },
+      "submitted_expected_decision": "retain_four_assertions_and_two_unresolved_date_conflicts",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "retain_four_assertions_and_two_unresolved_date_conflicts",
+        "output": {
+          "observation_kind": "current_primary_document_read",
+          "conflict_groups": [
+            {
+              "version": "2025-10-06",
+              "raw_retirement_dates": [
+                "2027-04-06",
+                "2026-09-21"
+              ],
+              "selected_date": null
+            },
+            {
+              "version": "2025-12-15",
+              "raw_retirement_dates": [
+                "2027-06-15",
+                "2026-12-15"
+              ],
+              "selected_date": null
+            }
+          ],
+          "normalized_date_precision": "day",
+          "actual_retirement_event": null,
+          "source_commit": null,
+          "second_document_appearance": "corroborating_document_appearance_not_independent_model_release"
+        }
+      },
+      "submitted_rationale": "Both current documents support the conflicting publisher assertions. Neither supplies row-level scope or a verified source revision that resolves the alternatives. A document read observes statements, not customer deployment events.",
+      "preserved_fields": [
+        "source_id",
+        "provider",
+        "artifact_urls",
+        "locators",
+        "model",
+        "version",
+        "raw_lifecycle",
+        "raw_retirement_dates",
+        "raw_replacement",
+        "date_precision",
+        "conflicts"
+      ],
+      "unsupported_fields": [
+        "selected_retirement_date",
+        "region",
+        "deployment_sku",
+        "capability_scope",
+        "actual_deployment_retirement",
+        "source_commit",
+        "introduced_or_changed_rows"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM01",
+        "MT-CM03"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "Four current assertions still conflict. Newly pinned change/reintroduction lineage is usable; no chosen current date.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-03",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "scheduled_as_observed_retirement",
+        "observed_document_row": {
+          "model": "gpt-realtime-mini",
+          "version": "2025-10-06",
+          "lifecycle": "GA",
+          "retirement_date": "2026-09-21"
+        },
+        "comparison_date": "2026-10-08",
+        "synthetic_proposed_output": {
+          "actual_retirement_date": "2026-09-21",
+          "deployment_status": "retired",
+          "justification": "the documented date has passed"
+        }
+      },
+      "submitted_expected_decision": "reject_actual_retirement_inference",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_actual_retirement_inference",
+        "output": {
+          "documented_date": "2026-09-21",
+          "documented_date_role": "publisher_retirement_schedule_assertion",
+          "actual_retirement_date": null,
+          "deployment_status": null,
+          "null_reason": "no_observed_deployment_event_and_document_dates_conflict"
+        }
+      },
+      "submitted_rationale": "The passage of time does not convert a scheduled or disputed document assertion into an observed retirement. The row also retains GA as its raw vocabulary.",
+      "preserved_fields": [
+        "model",
+        "version",
+        "raw_lifecycle",
+        "documented_date",
+        "comparison_date"
+      ],
+      "unsupported_fields": [
+        "actual_retirement_date",
+        "deployment_status"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM03"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-04",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "azure_row_order_resolution",
+        "candidate_dates_for_version_2025_10_06": [
+          "2027-04-06",
+          "2026-09-21"
+        ],
+        "candidate_dates_for_version_2025_12_15": [
+          "2027-06-15",
+          "2026-12-15"
+        ],
+        "explicit_scope_or_correction_evidence": null,
+        "synthetic_selection_rule": "take_last_row"
+      },
+      "submitted_expected_decision": "reject_row_order_tiebreaker",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_row_order_tiebreaker",
+        "output": {
+          "selected_dates": null,
+          "conflict_status": "unresolved",
+          "candidate_dates_preserved": true,
+          "scope_explanation": null
+        }
+      },
+      "submitted_rationale": "Document order is not an explicit supersession, regional, SKU, fine-tuning, inference, or capability explanation. No named alternative may be selected on this evidence.",
+      "preserved_fields": [
+        "all_candidate_dates",
+        "row_order_as_locator_only",
+        "absence_of_documented_row_scope",
+        "conflict_status"
+      ],
+      "unsupported_fields": [
+        "selected_dates",
+        "supersession",
+        "region_or_sku_explanation"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM03",
+        "MT-CM07"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-05",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "cross_platform_version_only_join",
+        "documentation_assertion": {
+          "hosting_platform": "Microsoft Azure",
+          "model": "gpt-realtime-mini",
+          "version": "2025-10-06"
+        },
+        "synthetic_evaluation": {
+          "evaluation_id": "synthetic_eval_platform_mismatch",
+          "hosting_platform": "synthetic_other_provider",
+          "reported_model": "gpt-realtime-mini",
+          "reported_version": "2025-10-06"
+        },
+        "synthetic_join_keys": [
+          "model",
+          "version"
+        ]
+      },
+      "submitted_expected_decision": "reject_cross_platform_identity_join",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_cross_platform_identity_join",
+        "output": {
+          "assertions_kept_separate": true,
+          "azure_lifecycle_applied_to_evaluation": false,
+          "shared_weight_checkpoint": null
+        }
+      },
+      "submitted_rationale": "Equal model/version strings do not establish equal hosting lifecycle, serving configuration, or immutable checkpoint identity across platforms.",
+      "preserved_fields": [
+        "each_hosting_platform",
+        "each_reported_model",
+        "each_reported_version",
+        "separate_evidence_roles"
+      ],
+      "unsupported_fields": [
+        "cross_platform_lifecycle_transfer",
+        "shared_serving_behavior",
+        "shared_weight_checkpoint"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM02",
+        "MT-CM03",
+        "MT-CM08"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-06",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "bounded_negative_retired_page_search",
+        "inspected_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
+        "actual_search_result": "no_matching_gpt-realtime-mini_row_found",
+        "synthetic_proposed_output": {
+          "model_is_active": true,
+          "no_retirement_exists": true
+        }
+      },
+      "submitted_expected_decision": "reject_absence_as_active_service_proof",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_absence_as_active_service_proof",
+        "output": {
+          "bounded_observation": "no_matching_row_found_in_inspected_retired_page",
+          "model_is_active": null,
+          "no_retirement_exists": null
+        }
+      },
+      "submitted_rationale": "A bounded search result concerns the inspected page. It neither resolves the conflicting schedule rows nor proves current service availability or universal nonexistence of a retirement record.",
+      "preserved_fields": [
+        "inspected_url",
+        "searched_model",
+        "bounded_search_result"
+      ],
+      "unsupported_fields": [
+        "active_service_status",
+        "universal_absence_of_retirement",
+        "resolved_date_conflict"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM01",
+        "MT-CM03"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-07",
+      "case_kind": "realistic_positive",
+      "submitted_input": {
+        "subject": "publisher_documented_lifecycle_vocabulary",
+        "inspected_policy_mappings": [
+          {
+            "documentation_label": "Deprecated",
+            "api_label": "Deprecating"
+          },
+          {
+            "documentation_label": "Retired",
+            "api_label": "Deprecated"
+          }
+        ],
+        "policy_locator": "root-inspected lifecycle policy, vocabulary table, lines 158-164",
+        "api_called": false
+      },
+      "submitted_expected_decision": "retain_vocabulary_mapping_without_observing_api_state",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "retain_vocabulary_mapping_without_observing_api_state",
+        "output": {
+          "supported_mapping": [
+            {
+              "documentation_label": "Deprecated",
+              "api_label": "Deprecating"
+            },
+            {
+              "documentation_label": "Retired",
+              "api_label": "Deprecated"
+            }
+          ],
+          "evidence_role": "publisher_documented_nomenclature",
+          "observed_api_state": null
+        }
+      },
+      "submitted_rationale": "The policy supports a terminology crosswalk. It does not report a queried endpoint state, customer deployment status, or actual retirement event.",
+      "preserved_fields": [
+        "raw_documentation_labels",
+        "raw_api_labels",
+        "label_namespaces",
+        "policy_locator",
+        "evidence_role"
+      ],
+      "unsupported_fields": [
+        "observed_api_state",
+        "customer_deployment_state",
+        "actual_retirement_event"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM03"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": {
+        "S3-MAN-07 policy_locator": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirements ; Programmatic methods terminology table, extraction lines 158-164"
+      }
+    },
+    {
+      "case_id": "S3-MAN-08",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "lifecycle_vocabulary_collapse",
+        "synthetic_document_assertion": {
+          "raw_label": "Deprecated",
+          "namespace": "documentation"
+        },
+        "synthetic_proposed_output": {
+          "raw_label": "Deprecated",
+          "namespace": "API",
+          "normalized_status": "retired",
+          "observed_state": true
+        }
+      },
+      "submitted_expected_decision": "reject_documentation_api_label_conflation",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_documentation_api_label_conflation",
+        "output": {
+          "raw_label": "Deprecated",
+          "namespace": "documentation",
+          "documented_api_correspondence": "Deprecating",
+          "normalized_observed_retired_status": null
+        }
+      },
+      "submitted_rationale": "The identical spelling Deprecated has different documented positions in the two vocabularies. A namespace change and an observation claim would both add unsupported meaning.",
+      "preserved_fields": [
+        "raw_label",
+        "label_namespace",
+        "publisher_documented_correspondence"
+      ],
+      "unsupported_fields": [
+        "api_deprecated_observation",
+        "actual_retired_status"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM03"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-09",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "provenance_clock_conflation",
+        "real_document_metadata": {
+          "field": "ms.date",
+          "raw_value": "10/05/2026",
+          "precision": "day"
+        },
+        "observation_date": "2026-10-08",
+        "source_git_commit": null,
+        "synthetic_proposed_output": {
+          "announcement_at": "2026-10-05T00:00:00Z",
+          "first_historical_availability_at": "2026-10-05T00:00:00Z",
+          "actual_retirement_at": "2026-10-05T00:00:00Z"
+        }
+      },
+      "submitted_expected_decision": "reject_metadata_as_announcement_history_or_execution_clock",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_metadata_as_announcement_history_or_execution_clock",
+        "output": {
+          "raw_document_metadata": "10/05/2026",
+          "metadata_role": "publisher_document_metadata",
+          "observation_date": "2026-10-08",
+          "observation_precision_in_this_case": "day",
+          "announcement_at": null,
+          "first_historical_availability_at": null,
+          "actual_retirement_at": null,
+          "source_git_commit": null
+        }
+      },
+      "submitted_rationale": "A document metadata date is not evidence of an announcement instant, first public bytes, source commit, or deployment event. Midnight and UTC are also absent from the input.",
+      "preserved_fields": [
+        "raw_document_metadata",
+        "metadata_role",
+        "observation_date",
+        "date_precision",
+        "unknown_source_revision"
+      ],
+      "unsupported_fields": [
+        "announcement_instant",
+        "timezone",
+        "historical_bytes_at_metadata_date",
+        "actual_retirement_clock",
+        "source_git_commit"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM01",
+        "MT-CM03",
+        "MT-CM05"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-10",
+      "case_kind": "realistic_positive",
+      "submitted_input": {
+        "subject": "supplied_report_tariff_lineage_join",
+        "local_event_key": "deepseek_r1_launch_2025_01_20",
+        "existing_event_id": null,
+        "source_assertions": [
+          {
+            "source_id": "MIR004",
+            "subject": "January 20 R1/V3 alias-release assertion conflict",
+            "evidence_role": "supplied_brief_report_of_prior_work"
+          },
+          {
+            "source_id": "IPP004",
+            "subject": "January 20 R1 launch tariff",
+            "evidence_role": "supplied_brief_report_of_prior_verification",
+            "rates": [
+              {
+                "token_category": "input_cache_hit",
+                "value": 0.14,
+                "raw_decimal": "0.14",
+                "currency": "USD",
+                "per_tokens": 1000000
+              },
+              {
+                "token_category": "input_cache_miss",
+                "value": 0.55,
+                "raw_decimal": "0.55",
+                "currency": "USD",
+                "per_tokens": 1000000
+              },
+              {
+                "token_category": "output",
+                "value": 2.19,
+                "raw_decimal": "2.19",
+                "currency": "USD",
+                "per_tokens": 1000000
+              }
+            ]
+          }
+        ],
+        "announcement_date_as_supplied": "2025-01-20",
+        "current_primary_page_access": "timeout"
+      },
+      "submitted_expected_decision": "accept_report_tier_lineage_only",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "accept_report_tier_lineage_only",
+        "output": {
+          "local_event_key": "deepseek_r1_launch_2025_01_20",
+          "linked_source_ids": [
+            "MIR004",
+            "IPP004"
+          ],
+          "existing_event_id": null,
+          "assertion_tier": "supplied_report_only",
+          "rates_preserved_without_upgrade": true,
+          "primary_verified_factual_tariff_join_completed": false,
+          "run_or_billing_join": "held"
+        }
+      },
+      "submitted_rationale": "The brief expressly links the launch and tariff research. Their report-tier lineage can be preserved under one local key, while inaccessible sources prevent promotion to newly primary-verified facts or resolution of the alias conflict.",
+      "preserved_fields": [
+        "local_event_key",
+        "MIR004",
+        "IPP004",
+        "supplied_announcement_date",
+        "source_roles",
+        "exact_decimal_rates",
+        "currency",
+        "token_categories",
+        "per_tokens"
+      ],
+      "unsupported_fields": [
+        "existing_event_id",
+        "new_primary_verification",
+        "resolved_alias_mapping",
+        "precise_effective_instant",
+        "actual_api_routing",
+        "observed_billing"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM02",
+        "MT-CM04",
+        "MT-CM07"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The historical report-tier test input is unchanged. Prior IPP004 verification survives; a separate current case now establishes the real factual tariff join.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-11",
+      "case_kind": "synthetic_positive",
+      "submitted_input": {
+        "subject": "synthetic_primary_verified_shape_factual_tariff_join",
+        "fixture_notice": "All verification properties and locators in this case are fabricated test inputs; no such primary verification was performed.",
+        "synthetic_launch_assertion": {
+          "local_event_key": "deepseek_r1_launch_2025_01_20",
+          "provider": "DeepSeek",
+          "service": "hosted_API",
+          "release_name": "DeepSeek-R1",
+          "alias": "deepseek-reasoner",
+          "mode": "reasoning",
+          "announcement_date": "2025-01-20",
+          "precision": "day",
+          "verification_shape": "primary_verified",
+          "source_locator": "synthetic:launch-row"
+        },
+        "synthetic_tariff_assertion": {
+          "local_event_key": "deepseek_r1_launch_2025_01_20",
+          "provider": "DeepSeek",
+          "service": "hosted_API",
+          "release_name": "DeepSeek-R1",
+          "alias": "deepseek-reasoner",
+          "mode": "reasoning",
+          "announcement_date": "2025-01-20",
+          "precision": "day",
+          "token_category": "output",
+          "raw_decimal": "2.19",
+          "value": 2.19,
+          "currency": "USD",
+          "per_tokens": 1000000,
+          "verification_shape": "primary_verified",
+          "source_locator": "synthetic:tariff-row",
+          "cache_category": {
+            "value": null,
+            "status": "not_applicable",
+            "reason": "output category in this explicitly synthetic tariff fixture"
+          },
+          "time_category": {
+            "raw": "all hours",
+            "normalized": "all_hours",
+            "evidence_role": "fabricated_fixture_assertion"
+          },
+          "effective_date": "2025-01-20",
+          "effective_date_precision": "day",
+          "timezone": null,
+          "boundary_inclusivity": null
+        }
+      },
+      "submitted_expected_decision": "accept_factual_join_only_within_explicit_synthetic_fixture",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "accept_factual_join_only_within_explicit_synthetic_fixture",
+        "output": {
+          "join_keys_consistent": true,
+          "joined_claim": "publisher_stated_output_tariff_for_named_service_release_alias_mode_and_announcement",
+          "raw_decimal": "2.19",
+          "currency": "USD",
+          "per_tokens": 1000000,
+          "effective_instant": null,
+          "real_primary_verified_join_completed": false,
+          "observed_billing": null,
+          "time_category_in_fixture": "all_hours",
+          "effective_date_precision_in_fixture": "day",
+          "effective_date_in_fixture": "2025-01-20",
+          "timezone": null,
+          "boundary_inclusivity": null
+        }
+      },
+      "submitted_rationale": "Matching provider, service, release, alias, mode, event date, category, currency, and unit supports the hypothetical factual assertion join. This walkthrough demonstrates sufficient evidence shape and does not satisfy the missing real verified tariff join. The fabricated tariff row explicitly supplies an all-hours category and a date-only effective date. Neither a timezone nor interval inclusion is inferred.",
+      "preserved_fields": [
+        "fixture_notice",
+        "local_event_key",
+        "both_synthetic_source_locators",
+        "provider",
+        "service",
+        "release_name",
+        "alias",
+        "mode",
+        "announcement_date",
+        "precision",
+        "raw_decimal",
+        "currency",
+        "per_tokens",
+        "synthetic_effective_date",
+        "effective_date_precision",
+        "synthetic_time_category",
+        "output_cache_non_applicability",
+        "unresolved_timezone",
+        "unresolved_boundary_semantics"
+      ],
+      "unsupported_fields": [
+        "actual_primary_verification",
+        "existing_event_id",
+        "exact_effective_instant",
+        "historical_page_bytes",
+        "real_run_applicability",
+        "observed_billing"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM04",
+        "MT-CM05"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-12",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "held_run_evaluation_tariff_join",
+        "synthetic_run": {
+          "run_id": "synthetic_run_missing_execution_identity",
+          "reported_alias": "deepseek-reasoner",
+          "execution_platform": null,
+          "execution_time": null,
+          "returned_version": null,
+          "input_tokens": null,
+          "output_tokens": null
+        },
+        "tariff_candidate": {
+          "local_event_key": "deepseek_r1_launch_2025_01_20",
+          "source_id": "IPP004",
+          "raw_output_rate": "2.19",
+          "currency": "USD",
+          "per_tokens": 1000000,
+          "evidence_role": "supplied_report_only"
+        }
+      },
+      "submitted_expected_decision": "hold_run_evaluation_join",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "hold_run_evaluation_join",
+        "output": {
+          "tariff_assertion_retained": true,
+          "run_price_applicability": null,
+          "billed_cost": null,
+          "required_missing_execution_fields": [
+            "execution_platform",
+            "execution_time",
+            "returned_version"
+          ],
+          "real_run_observed": false
+        }
+      },
+      "submitted_rationale": "An alias string alone does not establish where or when a run executed or which returned version served it. Token counts and billing details are also missing. Retaining a tariff assertion does not price this run.",
+      "preserved_fields": [
+        "synthetic_run_id",
+        "reported_alias",
+        "explicit_missing_execution_fields",
+        "tariff_source_id",
+        "tariff_event_key",
+        "rate_evidence_role"
+      ],
+      "unsupported_fields": [
+        "run_tariff_applicability",
+        "returned_checkpoint",
+        "execution_route",
+        "billed_cost"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM08",
+        "MT-CM09"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-13",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "date_only_tariff_boundary",
+        "fixture_notice": "The expiry wording below is fabricated for this case and is not an observed DeepSeek quotation or verification of the February 8 claim.",
+        "synthetic_source_assertion": {
+          "raw_text": "Promotion expiry date: 2025-02-08",
+          "expiry_date": "2025-02-08",
+          "date_precision": "day",
+          "timezone": null,
+          "boundary_inclusivity": null
+        },
+        "synthetic_proposed_output": {
+          "valid_until_exclusive": "2025-02-09T00:00:00Z",
+          "successor_rate_starts_at": "2025-02-09T00:00:00Z"
+        }
+      },
+      "submitted_expected_decision": "reject_inferred_timezone_and_interval_boundary",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_inferred_timezone_and_interval_boundary",
+        "output": {
+          "synthetic_expiry_date_retained": "2025-02-08",
+          "precision": "day",
+          "timezone": null,
+          "inclusive_or_exclusive": null,
+          "successor_start_instant": null,
+          "actual_february_8_interval_verified": false
+        }
+      },
+      "submitted_rationale": "A calendar date without a timezone or inclusion rule cannot justify a UTC midnight, next-day endpoint, or successor instant. The actual historical February 8 interval remains unverified independently of this fixture.",
+      "preserved_fields": [
+        "fixture_notice",
+        "raw_synthetic_date_wording",
+        "date_precision",
+        "explicit_timezone_unknown",
+        "explicit_inclusivity_unknown"
+      ],
+      "unsupported_fields": [
+        "utc_instant",
+        "exclusive_endpoint",
+        "successor_start_instant",
+        "real_february_8_interval"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM05"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-14",
+      "case_kind": "realistic_positive",
+      "submitted_input": {
+        "subject": "december_promotion_access_hold",
+        "url": "https://api-docs.deepseek.com/news/news1226/",
+        "access_result": "timeout_on_two_exact_url_attempts",
+        "content_observed": false,
+        "supplied_claim": {
+          "subject": "February 8 promotion interval",
+          "verification_status": "explicitly_unverified_in_brief"
+        },
+        "official_counterpart_or_pricing_image_inspected": false
+      },
+      "submitted_expected_decision": "hold_historical_promotion_rates_and_boundaries",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "hold_historical_promotion_rates_and_boundaries",
+        "output": {
+          "promotional_rates": null,
+          "successor_rates": null,
+          "exact_expiry_date": null,
+          "new_rate_date": null,
+          "timezone": null,
+          "boundary_inclusivity": null,
+          "blocker": "access",
+          "minimum_unblocking_evidence": "readable_named_announcement_and_its_explicitly_linked_relevant_pricing_or_counterpart_evidence"
+        }
+      },
+      "submitted_rationale": "No primary content was obtained. The brief expressly withholds verification of the February 8 interval, and guessed image/archive paths or current prices cannot supply the missing historical evidence.",
+      "preserved_fields": [
+        "exact_requested_url",
+        "access_result",
+        "supplied_claim_role",
+        "explicit_unverified_status"
+      ],
+      "unsupported_fields": [
+        "promotional_rates",
+        "successor_rates",
+        "exact_expiry_date",
+        "new_rate_date",
+        "timezone",
+        "boundary_inclusivity",
+        "source_quote",
+        "image_locator"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM04",
+        "MT-CM05"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The original two-attempt timeout input is submitted history. Current review made one named-URL attempt and also timed out; no extra attempt is invented.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-15",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "silent_tariff_rounding",
+        "supplied_rate": {
+          "source_id": "IPP004",
+          "token_category": "output",
+          "raw_decimal": "2.19",
+          "value": 2.19,
+          "currency": "USD",
+          "per_tokens": 1000000,
+          "evidence_role": "supplied_report_only"
+        },
+        "synthetic_proposed_normalization": {
+          "raw_decimal": "2.20",
+          "value": 2.2
+        }
+      },
+      "submitted_expected_decision": "reject_silent_change_from_2_19_to_2_20",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_silent_change_from_2_19_to_2_20",
+        "output": {
+          "raw_decimal": "2.19",
+          "normalized_numeric_value": 2.19,
+          "currency": "USD",
+          "per_tokens": 1000000,
+          "evidence_role": "supplied_report_only",
+          "rounded_display_used": false
+        }
+      },
+      "submitted_rationale": "Changing the stored value changes the supplied tariff assertion. Display rounding, if separately requested, would need a labeled transformation while preserving the exact source decimal and evidence tier.",
+      "preserved_fields": [
+        "raw_decimal",
+        "normalized_numeric_value",
+        "token_category",
+        "currency",
+        "per_tokens",
+        "evidence_role"
+      ],
+      "unsupported_fields": [
+        "2_20_as_source_rate",
+        "new_primary_verification"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM04"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-16",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "current_tariff_overwrites_history",
+        "historical_report_assertion": {
+          "announcement_date": "2025-01-20",
+          "output_rate": "2.19",
+          "evidence_role": "supplied_report_only"
+        },
+        "fabricated_current_assertion": {
+          "fixture_notice": "Not an observed current DeepSeek price",
+          "observation_date": "2026-10-08",
+          "output_rate": "9.99",
+          "effective_period": null
+        },
+        "synthetic_proposed_output": {
+          "announcement_date": "2025-01-20",
+          "output_rate": "9.99"
+        }
+      },
+      "submitted_expected_decision": "reject_current_rate_backfill",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_current_rate_backfill",
+        "output": {
+          "historical_report_rate": "2.19",
+          "historical_report_role": "supplied_report_only",
+          "fabricated_current_assertion_kept_separate": true,
+          "historical_replacement_rate": null
+        }
+      },
+      "submitted_rationale": "Even an actual current table would not establish historical applicability. Here the current value is also explicitly fabricated. Neither observation chronology nor a mutable alias authorizes overwriting history.",
+      "preserved_fields": [
+        "separate_assertions",
+        "each_date_and_clock_role",
+        "historical_report_rate",
+        "fixture_notice",
+        "evidence_roles"
+      ],
+      "unsupported_fields": [
+        "historical_applicability_of_current_rate",
+        "replacement_historical_rate",
+        "actual_current_rate"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM04",
+        "MT-CM05",
+        "MT-CM07"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-17",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "tariff_dimensions_and_statistical_fields",
+        "supplied_tariff_shape": {
+          "raw_decimal": "0.14",
+          "currency": "USD",
+          "per_tokens": 1000000,
+          "token_category": "input_cache_hit",
+          "mode": null,
+          "date_precision": "day",
+          "evidence_role": "supplied_report_only"
+        },
+        "synthetic_proposed_output": {
+          "raw_decimal": "0.14",
+          "currency": "USD",
+          "per_tokens": 1000,
+          "token_category": "input_cache_miss",
+          "mode": "any_mode",
+          "statistical_denominator": 3,
+          "sampling_uncertainty": 0
+        }
+      },
+      "submitted_expected_decision": "reject_unit_category_mode_and_sampling_misclassification",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_unit_category_mode_and_sampling_misclassification",
+        "output": {
+          "raw_decimal": "0.14",
+          "currency": "USD",
+          "per_tokens": 1000000,
+          "token_category": "input_cache_hit",
+          "mode": null,
+          "date_precision": "day",
+          "population": {
+            "value": null,
+            "status": "not_applicable",
+            "reason": "tariff_assertion_not_sampled_population_estimate"
+          },
+          "cohort": {
+            "value": null,
+            "status": "not_applicable",
+            "reason": "no_statistical_cohort"
+          },
+          "comparator": {
+            "value": null,
+            "status": "not_applicable",
+            "reason": "single_tariff_assertion"
+          },
+          "statistical_denominator": {
+            "value": null,
+            "status": "not_applicable",
+            "reason": "token_unit_is_the_applicable_pricing_denominator"
+          },
+          "sampling_uncertainty": {
+            "value": null,
+            "status": "not_applicable",
+            "reason": "no_sampling_estimate"
+          },
+          "evidential_uncertainty": "primary_verification_and_applicable_mode_unresolved"
+        }
+      },
+      "submitted_rationale": "Cache-hit versus cache-miss, per-thousand versus per-million, and mode scope materially change the assertion. Three price categories are not a sample size, and statistical non-applicability does not eliminate evidential uncertainty.",
+      "preserved_fields": [
+        "raw_decimal",
+        "currency",
+        "token_denominator",
+        "cache_category",
+        "mode_unknown",
+        "date_precision",
+        "statistical_not_applicable_reasons",
+        "evidential_uncertainty"
+      ],
+      "unsupported_fields": [
+        "per_1000_rate_without_conversion",
+        "cache_miss_relabeling",
+        "all_mode_scope",
+        "sample_size_3",
+        "zero_sampling_uncertainty"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM04",
+        "MT-CM05"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-18",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "advertised_tariff_as_observed_billing_or_economic_cost",
+        "supplied_assertion": {
+          "value": "2.19",
+          "currency": "USD",
+          "per_tokens": 1000000,
+          "category": "output",
+          "assertion_kind": "reported_launch_tariff"
+        },
+        "bill_or_execution_record": null,
+        "synthetic_proposed_output": {
+          "net_charge_usd": 2.19,
+          "subsidy_usd": 0,
+          "energy_kwh": 1,
+          "economic_cost_usd": 2.19
+        }
+      },
+      "submitted_expected_decision": "reject_billing_subsidy_energy_and_cost_inferences",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_billing_subsidy_energy_and_cost_inferences",
+        "output": {
+          "stated_tariff_preserved": true,
+          "net_charge_usd": null,
+          "subsidy_usd": null,
+          "energy_kwh": null,
+          "economic_cost_usd": null,
+          "null_reason": "no_observed_billing_energy_or_cost_evidence"
+        }
+      },
+      "submitted_rationale": "An advertised rate does not measure realized charges, discounts, subsidies, energy, or economic cost. Zero subsidy would itself be an unsupported factual claim.",
+      "preserved_fields": [
+        "stated_tariff",
+        "currency",
+        "token_unit",
+        "token_category",
+        "assertion_kind",
+        "supplied_evidence_role"
+      ],
+      "unsupported_fields": [
+        "net_charge_usd",
+        "subsidy_usd",
+        "energy_kwh",
+        "economic_cost_usd"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM09"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-19",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "price_assertion_counted_as_independent_release",
+        "records": [
+          {
+            "source_id": "MIR004",
+            "local_event_key": "deepseek_r1_launch_2025_01_20",
+            "evidence_kind": "reported_release_alias_assertion"
+          },
+          {
+            "source_id": "IPP004",
+            "local_event_key": "deepseek_r1_launch_2025_01_20",
+            "evidence_kind": "reported_launch_tariff_assertion"
+          }
+        ],
+        "synthetic_proposed_new_release_count": 2,
+        "independent_second_release_evidence": null
+      },
+      "submitted_expected_decision": "reject_price_as_second_model_release",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_price_as_second_model_release",
+        "output": {
+          "local_event_key": "deepseek_r1_launch_2025_01_20",
+          "linked_source_ids": [
+            "MIR004",
+            "IPP004"
+          ],
+          "unique_reported_event_keys": 1,
+          "additional_release_count_from_tariff_record": 0,
+          "actual_release_verification": "not_upgraded"
+        }
+      },
+      "submitted_rationale": "Separate lifecycle and tariff assertions about the same reported event supply different facts. Their appearance in two research families does not create another release or resolve the underlying alias conflict.",
+      "preserved_fields": [
+        "MIR004",
+        "IPP004",
+        "shared_local_event_key",
+        "distinct_assertion_kinds",
+        "supplied_evidence_tier"
+      ],
+      "unsupported_fields": [
+        "second_model_release",
+        "new_existing_event_id",
+        "primary_release_verification"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM02",
+        "MT-CM07"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-20",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "present_page_text_as_historically_available_bytes",
+        "fixture_notice": "Counterfactual successful read; the actual named DeepSeek reads timed out.",
+        "fabricated_current_observation": {
+          "observation_date": "2026-10-08",
+          "historical_entry_date": "2025-01-20",
+          "text": "Fabricated fixture: deepseek-reasoner maps to DeepSeek-R1."
+        },
+        "historical_revision_or_capture": null,
+        "synthetic_proposed_output": {
+          "exact_text_available_on_2025_01_20": true,
+          "actual_api_route_on_2025_01_20": "DeepSeek-R1"
+        }
+      },
+      "submitted_expected_decision": "reject_present_text_as_historical_bytes_or_routing",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_present_text_as_historical_bytes_or_routing",
+        "output": {
+          "hypothetical_observation_clock": "2026-10-08",
+          "hypothetical_asserted_event_date": "2025-01-20",
+          "historical_text_availability": null,
+          "actual_api_route": null,
+          "actual_deepseek_text_observed": false
+        }
+      },
+      "submitted_rationale": "A present observation and the historical date discussed in it are different clocks. Even a successful current read would not prove historical bytes or endpoint routing; this case supplies no actual current read.",
+      "preserved_fields": [
+        "fixture_notice",
+        "separate_observation_and_asserted_event_dates",
+        "hypothetical_assertion_role"
+      ],
+      "unsupported_fields": [
+        "historical_bytes",
+        "first_publication_time",
+        "actual_api_routing",
+        "real_current_text"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM01",
+        "MT-CM06"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-21",
+      "case_kind": "realistic_positive",
+      "submitted_input": {
+        "subject": "deepseek_alias_conflict_access_hold",
+        "source_id": "MIR004",
+        "shared_local_event_key": "deepseek_r1_launch_2025_01_20",
+        "supplied_baseline": {
+          "evidence_role": "supplied_brief_report",
+          "conflicting_release_labels": [
+            "R1",
+            "V3"
+          ],
+          "alias": "deepseek-reasoner",
+          "exact_conflicting_english_text": null
+        },
+        "current_reads": [
+          {
+            "url": "https://api-docs.deepseek.com/updates/",
+            "result": "timeout"
+          },
+          {
+            "url": "https://api-docs.deepseek.com/zh-cn/updates/",
+            "result": "timeout"
+          },
+          {
+            "url": "https://api-docs.deepseek.com/news/news250120/",
+            "result": "timeout"
+          }
+        ]
+      },
+      "submitted_expected_decision": "retain_reported_conflict_and_hold_primary_resolution",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "retain_reported_conflict_and_hold_primary_resolution",
+        "output": {
+          "shared_local_event_key": "deepseek_r1_launch_2025_01_20",
+          "conflict_role": "baseline_reported_conflict_not_newly_observed_primary_conflict",
+          "resolved_release_or_mode": null,
+          "chinese_original": null,
+          "translation": null,
+          "official_correction_metadata": null,
+          "historical_availability": null,
+          "actual_api_routing": null,
+          "blocker": "access"
+        }
+      },
+      "submitted_rationale": "The branch obtained no primary text or Chinese original. Neither a fabricated translation nor an unobserved correction may repair the supplied conflict. The shared event key remains useful for report-tier lineage.",
+      "preserved_fields": [
+        "MIR004",
+        "shared_local_event_key",
+        "supplied_alias",
+        "reported_conflict_labels",
+        "supplied_report_role",
+        "exact_urls",
+        "access_results"
+      ],
+      "unsupported_fields": [
+        "exact_english_quotes",
+        "chinese_original",
+        "translation",
+        "resolved_alias_to_release_or_mode",
+        "correction_revision",
+        "historical_availability",
+        "actual_api_routing"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM02",
+        "MT-CM06"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "Historical timeout input unchanged. Current English entry and announcement read; Chinese unavailable, exact conflict persists.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-22",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "translation_duplicate_release",
+        "fixture_notice": "Both texts and the identity anchor are fabricated test material, not provider observations.",
+        "records": [
+          {
+            "language": "zh-CN",
+            "raw_text": "测试占位文本：同一发布事件。",
+            "text_role": "fabricated_chinese_test_string",
+            "identity_anchor": "synthetic:one-provider-event"
+          },
+          {
+            "language": "en",
+            "raw_text": "Test placeholder text: the same release event.",
+            "text_role": "labeled_translation_of_fabricated_chinese_test_string",
+            "identity_anchor": "synthetic:one-provider-event"
+          }
+        ],
+        "synthetic_proposed_release_count": 2
+      },
+      "submitted_expected_decision": "reject_translation_as_independent_release",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_translation_as_independent_release",
+        "output": {
+          "synthetic_unique_event_count": 1,
+          "language_records_retained": 2,
+          "translation_edge_retained": true,
+          "actual_chinese_provider_text_observed": false,
+          "actual_release_count_inferred": false
+        }
+      },
+      "submitted_rationale": "The fixture explicitly gives a common event identity. A translation supplies another representation, not a second release. Real bilingual disagreements would also remain separate assertions rather than being erased by deduplication.",
+      "preserved_fields": [
+        "fixture_notice",
+        "both_languages",
+        "fabricated_chinese_original",
+        "labeled_translation",
+        "shared_synthetic_identity_anchor",
+        "translation_edge"
+      ],
+      "unsupported_fields": [
+        "two_independent_releases",
+        "real_chinese_quotation",
+        "actual_provider_identity_anchor"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM06",
+        "MT-CM07"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-23",
+      "case_kind": "synthetic_positive",
+      "submitted_input": {
+        "subject": "explicit_correction_without_rewriting_history",
+        "fixture_notice": "All revisions and correction wording are fabricated; no official correction was retrieved.",
+        "earlier_assertion": {
+          "revision_label": "synthetic_revision_1",
+          "observed_date": "2026-10-01",
+          "alias": "deepseek-reasoner",
+          "asserted_release": "DeepSeek-V3",
+          "event_key": "deepseek_r1_launch_2025_01_20"
+        },
+        "later_assertion": {
+          "revision_label": "synthetic_revision_2",
+          "observed_date": "2026-10-08",
+          "alias": "deepseek-reasoner",
+          "asserted_release": "DeepSeek-R1",
+          "event_key": "deepseek_r1_launch_2025_01_20",
+          "explicit_correction_target": "synthetic_revision_1",
+          "correction_scope": "publisher_asserted_alias_release_mapping_only"
+        }
+      },
+      "submitted_expected_decision": "retain_both_assertions_and_add_scoped_correction_edge",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "retain_both_assertions_and_add_scoped_correction_edge",
+        "output": {
+          "retained_assertions": 2,
+          "shared_event_key": "deepseek_r1_launch_2025_01_20",
+          "correction_edge": {
+            "from": "synthetic_revision_2",
+            "corrects": "synthetic_revision_1",
+            "scope": "publisher_asserted_alias_release_mapping_only"
+          },
+          "earlier_observation_overwritten": false,
+          "current_assertion_within_fixture": "DeepSeek-R1",
+          "historical_api_route": null,
+          "real_conflict_resolved": false
+        }
+      },
+      "submitted_rationale": "Explicitly targeted correction metadata can identify a changed publisher claim within its scope. It does not erase earlier observed wording or establish historical routing, and this fabricated case changes no real evidence status.",
+      "preserved_fields": [
+        "fixture_notice",
+        "earlier_and_later_assertions",
+        "separate_observation_dates",
+        "revision_labels_as_synthetic_labels",
+        "shared_event_key",
+        "correction_scope",
+        "correction_edge"
+      ],
+      "unsupported_fields": [
+        "real_official_correction",
+        "git_commit_ids",
+        "earlier_bytes_rewritten",
+        "actual_historical_api_routing"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM06",
+        "MT-CM07"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-24",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "alias_as_weight_checkpoint",
+        "synthetic_publisher_assertion": {
+          "fixture_notice": "Fabricated alias mapping fixture",
+          "alias": "deepseek-reasoner",
+          "release_label": "DeepSeek-R1",
+          "mode": "reasoning"
+        },
+        "returned_version": null,
+        "weight_artifact": null,
+        "provider_checkpoint_digest": null,
+        "synthetic_proposed_output": {
+          "immutable_checkpoint_id": "deepseek-reasoner",
+          "actual_served_weights": "DeepSeek-R1"
+        }
+      },
+      "submitted_expected_decision": "reject_alias_to_immutable_checkpoint_conversion",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_alias_to_immutable_checkpoint_conversion",
+        "output": {
+          "hypothetical_publisher_alias_mapping_retained": true,
+          "immutable_checkpoint_id": null,
+          "actual_served_weights": null,
+          "actual_api_routing": null
+        }
+      },
+      "submitted_rationale": "A publisher alias/release/mode assertion is not a weight-artifact identification. A mutable endpoint name cannot supply an unobserved checkpoint digest or a run's served weights.",
+      "preserved_fields": [
+        "fixture_notice",
+        "alias",
+        "publisher_asserted_release_label",
+        "publisher_asserted_mode",
+        "assertion_role"
+      ],
+      "unsupported_fields": [
+        "immutable_checkpoint_id",
+        "weight_digest",
+        "actual_served_weights",
+        "actual_api_routing"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM02",
+        "MT-CM08"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-25",
+      "case_kind": "synthetic_positive",
+      "submitted_input": {
+        "subject": "duplicate_observation_and_unexplained_revision",
+        "fixture_notice": "Dates, revision labels, and content relationships are fabricated for manual reasoning.",
+        "observations": [
+          {
+            "observation_id": "synthetic_obs_1",
+            "observed_date": "2026-10-01",
+            "revision_label": "synthetic_revision_A",
+            "event_key": "synthetic_existing_event",
+            "assertion": "synthetic_assertion_A"
+          },
+          {
+            "observation_id": "synthetic_obs_2",
+            "observed_date": "2026-10-02",
+            "revision_label": "synthetic_revision_A",
+            "event_key": "synthetic_existing_event",
+            "assertion": "synthetic_assertion_A"
+          },
+          {
+            "observation_id": "synthetic_obs_3",
+            "observed_date": "2026-10-08",
+            "revision_label": "synthetic_revision_B",
+            "event_key": "synthetic_existing_event",
+            "assertion": "synthetic_assertion_B"
+          }
+        ],
+        "fixture_relationships": {
+          "second_observation_same_artifact_and_assertion_as_first": true,
+          "third_observation_changes_assertion": true,
+          "explicit_correction_or_release_metadata": null
+        }
+      },
+      "submitted_expected_decision": "deduplicate_event_and_assertion_identity_while_retaining_observation_and_revision_lineage",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "deduplicate_event_and_assertion_identity_while_retaining_observation_and_revision_lineage",
+        "output": {
+          "observation_records_retained": 3,
+          "unique_event_keys": 1,
+          "distinct_assertions": 2,
+          "repeat_observation_edge": [
+            "synthetic_obs_2",
+            "synthetic_obs_1"
+          ],
+          "changed_assertion_edge": [
+            "synthetic_assertion_B",
+            "synthetic_assertion_A"
+          ],
+          "explicit_correction_status": "unresolved",
+          "additional_model_releases": 0,
+          "earlier_assertion_preserved": true
+        }
+      },
+      "submitted_rationale": "Repeated access to unchanged evidence is another observation, not another event. A changed document assertion deserves revision lineage, but change alone does not prove a correction, supersession, or model release.",
+      "preserved_fields": [
+        "fixture_notice",
+        "all_observation_ids_and_dates",
+        "both_revision_labels",
+        "both_assertions",
+        "shared_event_key",
+        "duplicate_and_change_edges"
+      ],
+      "unsupported_fields": [
+        "automatic_new_release",
+        "automatic_official_correction",
+        "supersession_without_scope",
+        "actual_git_revision_ids"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM07"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-26",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "rights_scope_transfer",
+        "inspected_rights_evidence": {
+          "documentation_repository_license": "CC BY 4.0",
+          "separate_LICENSE_CODE": "MIT",
+          "learn_terms_explicit_document_license_precedence": true,
+          "source_revision": null,
+          "third_party_notices_inspected": false
+        },
+        "synthetic_proposed_output": {
+          "all_historical_document_bodies_cleared": true,
+          "all_website_branding_cleared": true,
+          "model_weights_MIT_licensed": true,
+          "factual_and_aggregate_and_body_rights_identical": true
+        }
+      },
+      "submitted_expected_decision": "reject_blanket_and_cross_artifact_rights_transfer",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_blanket_and_cross_artifact_rights_transfer",
+        "output": {
+          "factual_metadata_paraphrase": "repository_documentation_grant_evidence_found_with_scope_and_attribution_limits",
+          "aggregate_reuse": "conditional_documentation_or_database_grant_basis_not_separate_verified_dataset_license",
+          "source_body_retention": "conditional_for_covered_documentation_historical_revision_and_exceptions_unverified",
+          "redistribution": "conditional_for_covered_material_with_attribution_notices_source_and_license_links_and_change_marking",
+          "model_weight_rights": "unknown_from_inspected_documentation_grants",
+          "website_branding_rights": "not_established",
+          "historical_license_scope": "unverified"
+        }
+      },
+      "submitted_rationale": "The current repository-level documentation grant and separate software license have distinct scopes. Incomplete historical and exceptions evidence prevents blanket clearance; documentation rights do not automatically transfer to models or website design.",
+      "preserved_fields": [
+        "each_inspected_license_and_scope",
+        "separate_rights_categories",
+        "attribution_and_notice_conditions",
+        "historical_scope_unknown",
+        "exceptions_uninspected"
+      ],
+      "unsupported_fields": [
+        "blanket_historical_body_clearance",
+        "model_weights_MIT_license",
+        "website_branding_permission",
+        "rights_equivalence_across_artifacts"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM10"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "Original scope limits retained. Explicit documentation grant and historical notice pins now supplement the rights evidence; no blanket/body/weights transfer.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-27",
+      "case_kind": "explicitly_synthetic_negative",
+      "submitted_input": {
+        "subject": "hash_and_git_object_type_conflation",
+        "fixture_notice": "The repeated-letter digest strings are fabricated labels, not hashes computed in this task.",
+        "identifiers": [
+          {
+            "type": "git_commit_id",
+            "value": "6cf8c1c89a387a5b26022dd9ea0a216d45b2b629",
+            "role": "supplied_project_planning_pin_not_azure_document_digest"
+          },
+          {
+            "type": "excerpt_sha256",
+            "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "bytes_scope": "fabricated_extracted_text_fixture",
+            "recomputed_in_this_task": false
+          },
+          {
+            "type": "provider_reported_digest",
+            "algorithm": "SHA-256",
+            "value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "provider_string_observed_in_real_source": false,
+            "artifact_bytes_recomputed": false
+          }
+        ],
+        "complete_source_artifact_bytes_inspected": false,
+        "synthetic_proposed_output": {
+          "verified_whole_artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "source_commit": "6cf8c1c89a387a5b26022dd9ea0a216d45b2b629"
+        }
+      },
+      "submitted_expected_decision": "reject_uninspected_byte_hash_and_misattributed_revision_claims",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_uninspected_byte_hash_and_misattributed_revision_claims",
+        "output": {
+          "supplied_project_git_commit_retained_with_role": true,
+          "fabricated_excerpt_digest_retained_only_as_fixture": true,
+          "fabricated_provider_digest_not_verified": true,
+          "verified_whole_artifact_sha256": null,
+          "azure_source_commit": null,
+          "null_reason": "no_complete_artifact_bytes_or_azure_git_revision_inspected"
+        }
+      },
+      "submitted_rationale": "Git object IDs, excerpt hashes, and provider-reported digests identify different things. None becomes a verified whole-artifact byte hash without the relevant inspected bytes and computation. The project's planning pin is not an Azure source revision.",
+      "preserved_fields": [
+        "identifier_type",
+        "algorithm_when_supplied",
+        "claimed_bytes_scope",
+        "fixture_notice",
+        "verification_flags",
+        "project_pin_role"
+      ],
+      "unsupported_fields": [
+        "verified_whole_artifact_sha256",
+        "recomputed_provider_digest",
+        "azure_source_commit",
+        "raw_html_digest_from_extracted_text"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM01",
+        "MT-CM07"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "The stated rejection/preservation rule remains valid. This synthetic or submitted-only input does not alter current evidence tier.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    },
+    {
+      "case_id": "S3-MAN-28",
+      "case_kind": "realistic_positive",
+      "submitted_input": {
+        "subject": "manual_checks_with_uninspected_existing_contracts",
+        "guides_catalogs_and_contracts": "uninspected",
+        "existing_identifiers_to_preserve": [
+          "MIR002",
+          "MIR004",
+          "IPP004",
+          "MIR-A02",
+          "MIR-P02",
+          "MIR-A04",
+          "MIR-P04",
+          "IPP-A04",
+          "IPP-P04",
+          "CN001",
+          "CN024",
+          "CN002"
+        ],
+        "existing_event_id_for_local_key": null,
+        "manual_case_count_in_this_array": 28,
+        "schema_validator_executed": false,
+        "repository_or_external_source_code_executed": false,
+        "local_artifact_generation_and_json_consistency_utilities_used": true
+      },
+      "submitted_expected_decision": "record_completed_manual_walkthroughs_and_hold_contract_validation",
+      "submitted_manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "record_completed_manual_walkthroughs_and_hold_contract_validation",
+        "output": {
+          "completed_manual_evidence_walkthroughs": 28,
+          "existing_identifiers_preserved_verbatim": true,
+          "existing_identifier_types_or_crosswalks_verified": false,
+          "existing_contract_field_mapping": "blocked_uninspected_contract",
+          "schema_validation": "not_run",
+          "implementation_tests": "not_run",
+          "actual_primary_verified_tariff_join": "blocked_access",
+          "new_framework_or_schema_created": false
+        }
+      },
+      "submitted_rationale": "Manual reasoning can document evidence-level decisions and unsupported claims without inspected schemas. It cannot verify existing field names, enums, relationship types, conformance, or implementation behavior. The local event key is not presented as a discovered repository event ID.",
+      "preserved_fields": [
+        "existing_identifiers_verbatim",
+        "local_key_distinction",
+        "completed_manual_check_status",
+        "explicit_unrun_validation_status",
+        "input_expected_output_and_rationale"
+      ],
+      "unsupported_fields": [
+        "verified_existing_contract_mapping",
+        "schema_conformance",
+        "implementation_test_results",
+        "actual_primary_verified_tariff_join",
+        "discovered_existing_event_id"
+      ],
+      "current_contract_mapping_refs": [
+        "MT-CM01",
+        "MT-CM10"
+      ],
+      "current_manual_review": {
+        "status": "completed",
+        "decision": "accept_bounded_logic_with_separate_current_evidence_state",
+        "assessment": "Original no-schema-run result remains historical. Current separate schema smoke results and field mapping are completed.",
+        "schema_status": "not a schema execution; see separate MT-S cases"
+      },
+      "public_locator_resolution": null
+    }
+  ],
+  "current_review_cases": [
+    {
+      "case_id": "MT-M01",
+      "title": "Submitted/current repository states coexist",
+      "kind": "real_evidence_positive",
+      "input": {
+        "submitted_inspected_commit": null,
+        "submitted_status": "unresolved_access",
+        "current_inspected_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5"
+      },
+      "expected_decision": "accept_separate_states",
+      "expected_output": {
+        "submitted_inspected_commit": null,
+        "current_inspected_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5"
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM01",
+        "MT-CM07"
+      ],
+      "preserved_fields": [
+        "original external null",
+        "current pin"
+      ],
+      "unsupported_fields": [
+        "retroactive source review claim"
+      ],
+      "walkthrough": "Map each observation to its own provenance clock; the current reader does not rewrite the submitted author history.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "accept_separate_states",
+        "output": {
+          "submitted_inspected_commit": null,
+          "current_inspected_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5"
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    },
+    {
+      "case_id": "MT-M02",
+      "title": "Azure replacement and reintroduction",
+      "kind": "real_evidence_positive",
+      "input": {
+        "change_commit": "23998745fd5feb01194606d566137f1915c591dd",
+        "reintroduction_commit": "6885735d9f71912f269f17d49626d307fb15cfee",
+        "before_dates": [
+          "2026-09-21",
+          "2026-12-15"
+        ],
+        "changed_dates": [
+          "2027-04-06",
+          "2027-06-15"
+        ],
+        "current_contains_both": true
+      },
+      "expected_decision": "accept_revision_lineage_hold_current_date",
+      "expected_output": {
+        "revision_edges": 2,
+        "current_selected_dates": null,
+        "observed_retirement": false
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM01",
+        "MT-CM03",
+        "MT-CM07"
+      ],
+      "preserved_fields": [
+        "exact commits",
+        "four dates",
+        "same host/version pairs",
+        "raw GA"
+      ],
+      "unsupported_fields": [
+        "current governing date",
+        "region/SKU explanation",
+        "actual deployment"
+      ],
+      "walkthrough": "Source/artifact and evidence fields carry the exact revision locators. Sidecar keeps replacements and reintroduced conflict; no withdrawal event is emitted.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "accept_revision_lineage_hold_current_date",
+        "output": {
+          "revision_edges": 2,
+          "current_selected_dates": null,
+          "observed_retirement": false
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    },
+    {
+      "case_id": "MT-M03",
+      "title": "Select later date solely from an old revision",
+      "kind": "explicitly_synthetic_negative",
+      "input": {
+        "known_change_commit": "23998745fd5feb01194606d566137f1915c591dd",
+        "later_current_conflicting_rows": true,
+        "proposed_selected_dates": [
+          "2027-04-06",
+          "2027-06-15"
+        ]
+      },
+      "expected_decision": "hold_current_authoritative_choice",
+      "expected_output": {
+        "selected_dates": null,
+        "conflict_edges_retained": true
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM03",
+        "MT-CM07"
+      ],
+      "preserved_fields": [
+        "historical update",
+        "current conflict"
+      ],
+      "unsupported_fields": [
+        "selected effective date"
+      ],
+      "walkthrough": "The old update is real evidence, but current reintroduction without authoritative correction prevents forced selection.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "hold_current_authoritative_choice",
+        "output": {
+          "selected_dates": null,
+          "conflict_edges_retained": true
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    },
+    {
+      "case_id": "MT-M04",
+      "title": "Real primary factual tariff join",
+      "kind": "real_evidence_positive",
+      "input": {
+        "source_id": "PV-DS-R1",
+        "provider": "DeepSeek",
+        "service": "DeepSeek provider-hosted API",
+        "named_release": "DeepSeek-R1",
+        "publisher_asserted_alias": "deepseek-reasoner",
+        "announcement_date": "2025-01-20",
+        "rates": {
+          "input_cache_hit": "0.14",
+          "input_cache_miss": "0.55",
+          "output": "2.19"
+        },
+        "currency": "USD",
+        "per_tokens": 1000000,
+        "mode": null,
+        "time_category": null,
+        "effective_instant": null,
+        "canonical_event_id": null
+      },
+      "expected_decision": "accept_advertised_fact_join_only",
+      "expected_output": {
+        "local_event_ref": "deepseek_r1_launch_2025_01_20",
+        "tariff_observations": 3,
+        "additional_releases": 0,
+        "mode": null,
+        "time_category": null,
+        "effective_instant": null,
+        "run_tariff": null,
+        "charged_cost": null
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM01",
+        "MT-CM02",
+        "MT-CM04",
+        "MT-CM05",
+        "MT-CM07",
+        "MT-CM09"
+      ],
+      "preserved_fields": [
+        "provider/service/source/launch",
+        "exact rates",
+        "USD/million denominator",
+        "cache/output labels",
+        "unknown time/mode"
+      ],
+      "unsupported_fields": [
+        "actual execution",
+        "checkpoint",
+        "invoice",
+        "missing tariff eligibility"
+      ],
+      "walkthrough": "Three resource_observation projections use inference_price/reported and exact decimal strings with explicit unit/category in definition and scope. Shared named page evidence joins factual rate assertions to one launch correlation; it does not require pretending all eligibility is known. Actor subject can preserve tariff evidence while model identity conflicts remain sidecar.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "accept_advertised_fact_join_only",
+        "output": {
+          "local_event_ref": "deepseek_r1_launch_2025_01_20",
+          "tariff_observations": 3,
+          "additional_releases": 0,
+          "mode": null,
+          "time_category": null,
+          "effective_instant": null,
+          "run_tariff": null,
+          "charged_cost": null
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    },
+    {
+      "case_id": "MT-M05",
+      "title": "Unknown categories are not all-hours/all-modes",
+      "kind": "explicitly_synthetic_negative",
+      "input": {
+        "source_mode": null,
+        "source_time_category": null,
+        "proposed_mode": "any",
+        "proposed_time_category": "all_hours"
+      },
+      "expected_decision": "reject_wildcard_completion",
+      "expected_output": {
+        "mode": null,
+        "time_category": null,
+        "applicability": "held_where_required"
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM04",
+        "MT-CM05"
+      ],
+      "preserved_fields": [
+        "explicit unknowns"
+      ],
+      "unsupported_fields": [
+        "all-hours claim",
+        "all-mode claim"
+      ],
+      "walkthrough": "Native text slots preserve the unknown category; no fabricated typed value may enter scope.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_wildcard_completion",
+        "output": {
+          "mode": null,
+          "time_category": null,
+          "applicability": "held_where_required"
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    },
+    {
+      "case_id": "MT-M06",
+      "title": "Chinese original and translation remain absent",
+      "kind": "real_evidence_hold",
+      "input": {
+        "source_id": "PV-DS-ZH",
+        "access": "timeout",
+        "English_current_read": true
+      },
+      "expected_decision": "hold_bilingual_equivalence",
+      "expected_output": {
+        "chinese_original": null,
+        "translation": null,
+        "equivalence": null,
+        "independent_release_count": 0
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM06"
+      ],
+      "preserved_fields": [
+        "separate URL",
+        "access state",
+        "English observation"
+      ],
+      "unsupported_fields": [
+        "Chinese wording",
+        "translation equivalence"
+      ],
+      "walkthrough": "A source-artifact language code may identify the requested URL, but translation metadata and same-assertion equivalence are not invented.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "hold_bilingual_equivalence",
+        "output": {
+          "chinese_original": null,
+          "translation": null,
+          "equivalence": null,
+          "independent_release_count": 0
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    },
+    {
+      "case_id": "MT-M07",
+      "title": "External failure preserves prior catalog verification",
+      "kind": "real_evidence_positive",
+      "input": {
+        "prior_catalog_id": "IPP004",
+        "prior_launch_rates": [
+          "0.14",
+          "0.55",
+          "2.19"
+        ],
+        "submitted_reread": "timeout",
+        "new_R1_read": "success",
+        "V3_read": "timeout"
+      },
+      "expected_decision": "retain_prior_evidence_and_add_observations",
+      "expected_output": {
+        "prior_fingerprints": "unchanged",
+        "R1_tariff": "prior_verified_plus_current_corrobation",
+        "V3_promotion": "still_unverified"
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM01",
+        "MT-CM04",
+        "MT-CM07"
+      ],
+      "preserved_fields": [
+        "prior verification",
+        "fingerprints",
+        "separate observation outcomes"
+      ],
+      "unsupported_fields": [
+        "prior verification erased",
+        "V3 rate backfill"
+      ],
+      "walkthrough": "Access observations append provenance; they neither negate older inspected artifacts nor fill a separate missing historical interval.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "retain_prior_evidence_and_add_observations",
+        "output": {
+          "prior_fingerprints": "unchanged",
+          "R1_tariff": "prior_verified_plus_current_corrobation",
+          "V3_promotion": "still_unverified"
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    },
+    {
+      "case_id": "MT-M08",
+      "title": "Document source blob versus commit/checkpoint",
+      "kind": "explicitly_synthetic_negative",
+      "input": {
+        "git_blob": "04553c99070d4d33e4425abb2ffddb7d63eb675d",
+        "proposed_model_artifact_digest": "04553c99070d4d33e4425abb2ffddb7d63eb675d",
+        "raw_HTML_bytes_hashed": false
+      },
+      "expected_decision": "reject_digest_scope_conversion",
+      "expected_output": {
+        "git_blob_preserved": true,
+        "model_digest": null,
+        "raw_HTML_sha256": null
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM01",
+        "MT-CM02"
+      ],
+      "preserved_fields": [
+        "Git object type",
+        "repository file scope"
+      ],
+      "unsupported_fields": [
+        "weight checksum",
+        "HTML checksum"
+      ],
+      "walkthrough": "Verified documentation bytes can have their own SHA256. They cannot identify weights or raw web HTML.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_digest_scope_conversion",
+        "output": {
+          "git_blob_preserved": true,
+          "model_digest": null,
+          "raw_HTML_sha256": null
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    },
+    {
+      "case_id": "MT-M09",
+      "title": "Synthetic nominal estimate is not a charged bill",
+      "kind": "explicitly_synthetic_negative",
+      "input": {
+        "fixture_notice": "Invented usage counts; no API execution",
+        "output_tokens": 1000000,
+        "quoted_rate": "2.19",
+        "invoice": null,
+        "discount": null,
+        "proposed_charge": "2.19",
+        "proposed_discount": "0"
+      },
+      "expected_decision": "reject_observed_charge_and_zero_discount",
+      "expected_output": {
+        "quoted_nominal_rate": "2.19",
+        "net_charge": null,
+        "discount_realization": null,
+        "subsidy": null,
+        "economic_cost": null
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM04",
+        "MT-CM09"
+      ],
+      "preserved_fields": [
+        "quoted rate",
+        "synthetic counts"
+      ],
+      "unsupported_fields": [
+        "invoice charge",
+        "zero subsidy/discount"
+      ],
+      "walkthrough": "Arithmetic could be separately labeled an estimate only after applicability; neither synthetic counts nor an advertised rate establish what a customer paid.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_observed_charge_and_zero_discount",
+        "output": {
+          "quoted_nominal_rate": "2.19",
+          "net_charge": null,
+          "discount_realization": null,
+          "subsidy": null,
+          "economic_cost": null
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    },
+    {
+      "case_id": "MT-M10",
+      "title": "Research correlation is not a new canonical model event",
+      "kind": "real_evidence_positive",
+      "input": {
+        "catalogs": [
+          "MIR004",
+          "IPP004"
+        ],
+        "local_key": "deepseek_r1_launch_2025_01_20",
+        "canonical_event_id_in_inspected_objects": null
+      },
+      "expected_decision": "retain_local_key_no_id_invention",
+      "expected_output": {
+        "shared_local_key": "deepseek_r1_launch_2025_01_20",
+        "canonical_event_id": null,
+        "new_source_or_release": false
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM02",
+        "MT-CM07"
+      ],
+      "preserved_fields": [
+        "existing collection/action IDs",
+        "source URLs",
+        "local key"
+      ],
+      "unsupported_fields": [
+        "invented canonical event ID"
+      ],
+      "walkthrough": "No canonical event ID appears in the inspected catalog objects. This is a bounded result, not global nonexistence; use legacy refs for preserved catalog IDs in any later projection.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "retain_local_key_no_id_invention",
+        "output": {
+          "shared_local_key": "deepseek_r1_launch_2025_01_20",
+          "canonical_event_id": null,
+          "new_source_or_release": false
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    },
+    {
+      "case_id": "MT-M11",
+      "title": "Explicit doc grant does not transfer to all assets",
+      "kind": "real_evidence_positive",
+      "input": {
+        "notice_pins": [
+          "23998745fd5feb01194606d566137f1915c591dd",
+          "6885735d9f71912f269f17d49626d307fb15cfee"
+        ],
+        "documentation_license": "CC BY 4.0",
+        "code_license": "MIT",
+        "DeepSeek_doc_grant": null
+      },
+      "expected_decision": "accept_scoped_grant_hold_other_rights",
+      "expected_output": {
+        "Azure_documentation": "conditional_grant_verified",
+        "DeepSeek_docs": "unknown",
+        "models_or_branding": "no_transfer"
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM10"
+      ],
+      "preserved_fields": [
+        "each license scope",
+        "notice pins",
+        "attribution conditions"
+      ],
+      "unsupported_fields": [
+        "blanket rights clearance",
+        "source admission"
+      ],
+      "walkthrough": "Governance fields summarize limited scope; four-way artifact-specific rights remain sidecar.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "accept_scoped_grant_hold_other_rights",
+        "output": {
+          "Azure_documentation": "conditional_grant_verified",
+          "DeepSeek_docs": "unknown",
+          "models_or_branding": "no_transfer"
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    },
+    {
+      "case_id": "MT-M12",
+      "title": "Current R1 page cannot silently repair English conflict",
+      "kind": "explicitly_synthetic_negative",
+      "input": {
+        "announcement_mapping": "reasoner→R1",
+        "English_entry_mappings": [
+          "reasoner→R1",
+          "reasoner→V3"
+        ],
+        "explicit_correction": null,
+        "proposed_delete_V3_wording": true
+      },
+      "expected_decision": "reject_silent_repair",
+      "expected_output": {
+        "assertions_preserved": 3,
+        "conflict": "unresolved",
+        "historical_routing": null
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM02",
+        "MT-CM06",
+        "MT-CM07"
+      ],
+      "preserved_fields": [
+        "source-specific assertions",
+        "observation clocks"
+      ],
+      "unsupported_fields": [
+        "silent correction",
+        "actual serving claim"
+      ],
+      "walkthrough": "Contradicting evidence retains separate source references. A factual R1 tariff join can coexist with an unresolved cross-source alias assertion conflict.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "reject_silent_repair",
+        "output": {
+          "assertions_preserved": 3,
+          "conflict": "unresolved",
+          "historical_routing": null
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    },
+    {
+      "case_id": "MT-M13",
+      "title": "Schema-valid withdrawal is semantically unsupported",
+      "kind": "explicitly_synthetic_negative",
+      "input": {
+        "fixture_notice": "A synthetic shape may use valid enum withdrawal",
+        "release_kind": "withdrawal",
+        "times_event_date": "2026-09-21",
+        "only_evidence": "conflicted schedule row"
+      },
+      "expected_decision": "hold_even_if_schema_passes",
+      "expected_output": {
+        "release_event_admitted": false,
+        "assertion_sidecar_retained": true
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM03"
+      ],
+      "preserved_fields": [
+        "scheduled date assertion"
+      ],
+      "unsupported_fields": [
+        "observed withdrawal"
+      ],
+      "walkthrough": "Schema lacks a schedule/observed discriminator, so shape validity cannot authorize turning the schedule into a happened event.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "hold_even_if_schema_passes",
+        "output": {
+          "release_event_admitted": false,
+          "assertion_sidecar_retained": true
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    },
+    {
+      "case_id": "MT-M14",
+      "title": "Reobservation and source change keep separate identities",
+      "kind": "explicitly_synthetic_positive",
+      "input": {
+        "fixture_notice": "Invented observation IDs and dates",
+        "observations": [
+          {
+            "id": "synthetic-1",
+            "revision": "A"
+          },
+          {
+            "id": "synthetic-2",
+            "revision": "A"
+          },
+          {
+            "id": "synthetic-3",
+            "revision": "B"
+          }
+        ],
+        "same_event_key": "synthetic-one",
+        "correction_evidence": null
+      },
+      "expected_decision": "deduplicate_event_preserve_observations",
+      "expected_output": {
+        "event_count": 1,
+        "observations_retained": 3,
+        "artifact_states": 2,
+        "explicit_correction": null
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM01",
+        "MT-CM07"
+      ],
+      "preserved_fields": [
+        "observation IDs",
+        "two revisions",
+        "same event"
+      ],
+      "unsupported_fields": [
+        "new model release from fetch",
+        "unproven correction"
+      ],
+      "walkthrough": "Native record supersedes applies only to immediately previous revision of the same record; event/same-appearance edges remain sidecar.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "deduplicate_event_preserve_observations",
+        "output": {
+          "event_count": 1,
+          "observations_retained": 3,
+          "artifact_states": 2,
+          "explicit_correction": null
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    },
+    {
+      "case_id": "MT-M15",
+      "title": "Historical V3 rate cells stay null",
+      "kind": "real_evidence_hold",
+      "input": {
+        "source_id": "PV-DS-V3",
+        "announcement_date_lead": "2024-12-26",
+        "six_rate_cells": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "february8_verified": false
+      },
+      "expected_decision": "hold_promotion_terms",
+      "expected_output": {
+        "six_rate_cells": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ],
+        "expiry": null,
+        "successor_date": null,
+        "timezone": null,
+        "inclusivity": null
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM04",
+        "MT-CM05"
+      ],
+      "preserved_fields": [
+        "lead date",
+        "exact URL",
+        "six requested categories"
+      ],
+      "unsupported_fields": [
+        "rate amounts",
+        "February8 fact",
+        "guessed asset"
+      ],
+      "walkthrough": "The present changelog dates a release but supplies no December promotional table. It cannot populate rates or interval fields.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "hold_promotion_terms",
+        "output": {
+          "six_rate_cells": [
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+          ],
+          "expiry": null,
+          "successor_date": null,
+          "timezone": null,
+          "inclusivity": null
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    },
+    {
+      "case_id": "MT-M16",
+      "title": "Unknown interval cannot use native inclusive range",
+      "kind": "explicitly_synthetic_negative",
+      "input": {
+        "fixture_notice": "Invented date-only tariff boundary",
+        "start": "2024-12-26",
+        "end": "2025-02-08",
+        "source_inclusivity": null,
+        "source_timezone": null,
+        "proposed_native_temporal_kind": "range"
+      },
+      "expected_decision": "hold_native_range_projection",
+      "expected_output": {
+        "native_range": null,
+        "sidecar_dates_retained": true,
+        "timezone": null,
+        "inclusivity": null
+      },
+      "current_contract_mapping_refs": [
+        "MT-CM05"
+      ],
+      "preserved_fields": [
+        "date-only precision",
+        "unknown boundary semantics"
+      ],
+      "unsupported_fields": [
+        "inclusive range guarantee",
+        "UTC midnight"
+      ],
+      "walkthrough": "The existing temporal.range contract defines inclusive endpoints. Unknown inclusivity therefore cannot be silently forced into that shape; this does not verify the real February8 interval.",
+      "manual_result": {
+        "status": "completed_manual_walkthrough",
+        "decision": "hold_native_range_projection",
+        "output": {
+          "native_range": null,
+          "sidecar_dates_retained": true,
+          "timezone": null,
+          "inclusivity": null
+        }
+      },
+      "schema_execution": "not_run_for_this_manual_case; separate MT-S cases assess shape only"
+    }
+  ],
+  "case_count": 44,
+  "schema_tests_are_separate": "data/evidence-program/research/followups/model-tariff-review-schema-smoke-results.json",
+  "not_claimed": [
+    "repository implementation tests",
+    "actual API/billing executions",
+    "production conformance",
+    "source admission"
+  ]
+}

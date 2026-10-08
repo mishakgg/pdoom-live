@@ -1,0 +1,37 @@
+{
+  "record_type": "typed_repository_file_hash_checks",
+  "records": [
+    {
+      "source_id": "PV-AZ-CURRENT",
+      "returned_git_blob_id": "04553c99070d4d33e4425abb2ffddb7d63eb675d",
+      "recomputed_git_blob_id": "04553c99070d4d33e4425abb2ffddb7d63eb675d",
+      "git_blob_verified": true,
+      "content_sha256": "ce3845f8f1d88e6d4ebe990e8066daa04243611b1c35d8c530116e6c7ae6da23",
+      "byte_count": 16283,
+      "hash_scope": "Complete UTF-8 repository-file content returned by GitHub connector; not HTTP response or rendered HTML",
+      "git_commit_id": null
+    },
+    {
+      "source_id": "PV-AZ-CHANGE",
+      "returned_git_blob_id": "e375017e233cbcfa22d6a4f80b19d9754117b20f",
+      "recomputed_git_blob_id": "e375017e233cbcfa22d6a4f80b19d9754117b20f",
+      "git_blob_verified": true,
+      "content_sha256": "bca937343dd42a1ffcc080973bc19f94f4de880b0a8f743d931d6c16815adea1",
+      "byte_count": 14099,
+      "hash_scope": "Complete UTF-8 repository-file content returned by GitHub connector; not HTTP response or rendered HTML",
+      "git_commit_id": "23998745fd5feb01194606d566137f1915c591dd"
+    },
+    {
+      "source_id": "PV-AZ-READD",
+      "returned_git_blob_id": "43a732f152eeeb74c0decebe2dfd5c7a43f2f307",
+      "recomputed_git_blob_id": "43a732f152eeeb74c0decebe2dfd5c7a43f2f307",
+      "git_blob_verified": true,
+      "content_sha256": "ec669e04ec2c4cfa0e2323c94cfd1f5cdd120f4a1b5cc92ae207a6c376f677be",
+      "byte_count": 15925,
+      "hash_scope": "Complete UTF-8 repository-file content returned by GitHub connector; not HTTP response or rendered HTML",
+      "git_commit_id": "6885735d9f71912f269f17d49626d307fb15cfee"
+    }
+  ],
+  "deepseek_html_body_sha256": null,
+  "null_reason": "No complete raw HTML bytes were hashed; page extraction is not raw source."
+}
