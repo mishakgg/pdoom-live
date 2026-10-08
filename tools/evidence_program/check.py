@@ -407,6 +407,7 @@ def run(base_paths=None):
     from check_adoption_productivity import check_catalog as check_adoption_catalog
     from check_organizational_safety import check_catalog as check_organizational_catalog
     from check_research_queue import check_queue
+    from check_labor_market import check_catalog as check_labor_catalog, check_fixtures as check_labor_fixtures
     from check_agent_security_incidents import check_catalog as check_agent_security_catalog, check_fixtures as check_agent_security_fixtures
     from check_algorithmic_efficiency import check_catalog as check_algorithmic_catalog, check_fixtures as check_algorithmic_fixtures
     from check_human_reliance import check_catalog as check_human_reliance_catalog, check_aggregate_ledger as check_human_reliance_ledger
@@ -490,6 +491,9 @@ def run(base_paths=None):
         hashlib.sha256((DATA / 'source_inventory.json').read_bytes()).hexdigest(),
         (DOCS / 'research/agent-security-incidents.md').read_text(encoding='utf-8'), ROOT)
     agent_security_fixture_counts = check_agent_security_fixtures(ROOT)
+    labor_counts = check_labor_catalog(read_json(DATA / 'research/labor-market.json'),
+        hashlib.sha256((DATA / 'source_inventory.json').read_bytes()).hexdigest(), (DOCS / 'research/labor-market.md').read_text(), ROOT)
+    labor_fixture_counts = check_labor_fixtures(ROOT)
     queue_counts = check_queue((DOCS / 'research/research-session-review-queue.md').read_text(encoding='utf-8'))
     links = check_doc_links(base_paths)
     loader = unittest.TestLoader()
@@ -541,7 +545,11 @@ def run(base_paths=None):
     require(agent_security_suite.countTestCases() > 0, 'Agent security regression tests missing')
     agent_security_result = unittest.TextTestRunner(verbosity=1).run(agent_security_suite)
     require(agent_security_result.wasSuccessful(), 'Agent security regression suite failed')
-    return {'status': 'passed', **COUNTS, **task_counts, **research_counts, **adoption_counts, **organizational_counts, **open_model_counts, **concentration_counts, **historical_counts, **scientific_counts, **scientific_ledger_counts, **persuasion_counts, **persuasion_ledger_counts, **robotics_counts, **robotics_fixture_counts, **training_counts, **training_fixture_counts, **human_reliance_counts, **human_reliance_ledger_counts, **algorithmic_counts, **algorithmic_fixture_counts, **agent_security_counts, **agent_security_fixture_counts, **queue_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
+    labor_suite = unittest.TestLoader().discover(str(HERE / 'tests'), pattern='test_labor_market*.py')
+    require(labor_suite.countTestCases() > 0, 'Labor-market regression tests missing')
+    labor_result = unittest.TextTestRunner(verbosity=1).run(labor_suite)
+    require(labor_result.wasSuccessful(), 'Labor-market regression suite failed')
+    return {'status': 'passed', **COUNTS, **task_counts, **research_counts, **adoption_counts, **organizational_counts, **open_model_counts, **concentration_counts, **historical_counts, **scientific_counts, **scientific_ledger_counts, **persuasion_counts, **persuasion_ledger_counts, **robotics_counts, **robotics_fixture_counts, **training_counts, **training_fixture_counts, **human_reliance_counts, **human_reliance_ledger_counts, **algorithmic_counts, **algorithmic_fixture_counts, **agent_security_counts, **agent_security_fixture_counts, **labor_counts, **labor_fixture_counts, **queue_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
             'documentation_relative_links': links, 'integration_regression_tests': integration_result.testsRun,
             'open_model_regression_tests': open_model_result.testsRun,
             'concentration_regression_tests': concentration_result.testsRun,
@@ -553,7 +561,8 @@ def run(base_paths=None):
             'human_reliance_regression_tests': human_reliance_result.testsRun,
             'algorithmic_efficiency_regression_tests': algorithmic_result.testsRun,
             'agent_security_incidents_regression_tests': agent_security_result.testsRun,
-            'scope': 'Offline consistency, synthetic regression and two pinned licensed annotation fixtures and one pinned generated dependency-graph fixture, plus synthetic-only historical gzip tests and manual scientific and persuasion aggregate metadata/ledger checks with synthetic regressions, plus a licensed manually curated BARN physical-results table with bounded offline validation. Common Crawl aggregate parsing uses self-authored synthetic CSV fixtures only. Real WMT and Common Crawl artifact acceptance are separate/private and do not run in CI. Human-reliance checks use a manual published-aggregate ledger and provisional synthetic-only decoder; no participant files or source workbook acceptance. Algorithmic-efficiency checks add one Apache-2.0 AlgoPerf trial (two exact source inputs and two labeled curated JSON derivatives) with 74 checkpoints and one retrospective inclusive validation crossing, separate from strict runtime predicates and any official score. Combined agent-security and incident checks add a payload-excluding offline AgentDojo decoder with synthetic-only public fixtures; one private clean-artifact acceptance is separate. Real attacked outcomes remain uninterpreted without runtime provenance. No live fetch, operational collection, production import, deployment, rights approval or language-accuracy evaluation.'}
+            'labor_market_regression_tests': labor_result.testsRun,
+            'scope': 'Offline consistency, synthetic regression and two pinned licensed annotation fixtures and one pinned generated dependency-graph fixture, plus synthetic-only historical gzip tests and manual scientific and persuasion aggregate metadata/ledger checks with synthetic regressions, plus a licensed manually curated BARN physical-results table with bounded offline validation. Common Crawl aggregate parsing uses self-authored synthetic CSV fixtures only. Real WMT and Common Crawl artifact acceptance are separate/private and do not run in CI. Human-reliance checks use a manual published-aggregate ledger and provisional synthetic-only decoder; no participant files or source workbook acceptance. Algorithmic-efficiency checks add one Apache-2.0 AlgoPerf trial (two exact source inputs and two labeled curated JSON derivatives) with 74 checkpoints and one retrospective inclusive validation crossing, separate from strict runtime predicates and any official score. Combined agent-security and incident checks add a payload-excluding offline AgentDojo decoder with synthetic-only public fixtures; one private clean-artifact acceptance is separate. Real attacked outcomes remain uninterpreted without runtime provenance. Labor-market checks add one bounded offline German Eurostat JSON-stat slice under separate statistical-data reuse terms, preserving sparse flags, reference years and revision identity. No live fetch, operational collection, production import, deployment, rights approval or language-accuracy evaluation.'}
 
 
 def main():
