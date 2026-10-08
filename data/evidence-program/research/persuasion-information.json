@@ -1,0 +1,1721 @@
+{
+  "schema_version": "1.0",
+  "title": "Persuasion and information ecosystems",
+  "reviewed_on": "2026-10-08",
+  "status": "review_prepared_with_curated_aggregate_checks",
+  "repository_review_commit": "4fa67bdb36e27c8b144b54ba99d3a9396208cd24",
+  "original_research_baseline_commit": "6c2a4aa531cd5b8e5411c25ee08569d707a682b1",
+  "baseline_inventory": {
+    "source_family_count": 64,
+    "sha256": "a4b5046c3dec44598eeab3f025db75783f9ae5f702e0570d7b31fb3026dde678",
+    "unchanged": true
+  },
+  "operational_admission": "not_admitted",
+  "collector_enabled": false,
+  "canonical_contract_mapping": "pending_separate_review",
+  "source_bodies_vendored": false,
+  "participant_records_acquired": false,
+  "participant_records_vendored": false,
+  "source_code_execution": false,
+  "producer_family_count": 4,
+  "empirical_collection_count": 5,
+  "interpretation_guards": {
+    "proxy_to_pdoom_allowed": false,
+    "population_causal_impact_established": false,
+    "odds_ratio_is_percent_people_persuaded": false,
+    "corrected_p_transfers_between_comparisons": false,
+    "assigned_exposure_implies_population_reach": false,
+    "perceived_exposure_is_authenticated_exposure": false,
+    "pooled_weekly_exposure_is_cumulative_reach": false,
+    "correction_is_independent_replication": false,
+    "author_deposit_clears_journal_concern": false,
+    "public_access_implies_reuse_rights": false,
+    "participant_data_acquisition_enabled": false,
+    "persuasion_optimization_enabled": false,
+    "source_code_execution_enabled": false,
+    "aggregate_only": true,
+    "artifact_specific_rights_required": true
+  },
+  "ranking_basis": "source_utility_not_persuasion_effectiveness",
+  "priority_ranking": [
+    {
+      "rank": 1,
+      "candidate_ids": [
+        "PI001"
+      ],
+      "reason": "Explicit corrected comparison provenance; aggregate-only ledger."
+    },
+    {
+      "rank": 2,
+      "candidate_ids": [
+        "PI003",
+        "PI004"
+      ],
+      "reason": "Population-survey context with separate definitions and substantial uncertainty."
+    },
+    {
+      "rank": 3,
+      "candidate_ids": [
+        "PI002"
+      ],
+      "reason": "Published classification outcomes; workbook recoding/access held."
+    }
+  ],
+  "collections": [
+    {
+      "candidate_id": "PI001",
+      "producer_family_id": "debategpt",
+      "name": "DebateGPT conversational persuasion",
+      "study_id": "10.1038/s41562-025-02194-6",
+      "underlying_evidence_id": "10.1038/s41562-025-02194-6",
+      "inventory_source_id": null,
+      "inventory_relationship": "new_producer_family_candidate",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "evidence_class": "randomized_assigned_exposure",
+      "coverage": {
+        "country": "United States",
+        "fieldwork": "December 2023\u2013April 2024",
+        "date_precision": "month",
+        "recruitment": "Prolific adults",
+        "participants_design": 900,
+        "debates_design": 600,
+        "principal_analysis_observations": 750,
+        "measurement_window": "immediate pre/post within approximately ten-minute assigned debate",
+        "agreement_scale": [
+          1,
+          5
+        ],
+        "inference": "Partial proportional odds model, conditional on pretreatment opponent-aligned agreement; published t-based 95% intervals with cluster-robust standard errors."
+      },
+      "update_frequency": "Fixed experimental release; correction-driven updates, no recurring collection.",
+      "access_export": "Public publication and correction reviewed. Pinned participant CSV is a reference only; no row acquisition or parsing.",
+      "privacy_ethics": "Reported ethics approval and consent. This integration does not acquire participants, demographics, beliefs or dialogue. A public license does not remove privacy restrictions.",
+      "limitations": [
+        "Assigned exposure and debating positions differ from voluntary use or naturally held positions.",
+        "Ordinal odds ratios are not percentages of people persuaded or percentage-point changes.",
+        "No durable beliefs, real-world audience reach or population causal impact inferred."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "pi001_article",
+          "title": "On the conversational persuasiveness of GPT-4",
+          "url": "https://www.nature.com/articles/s41562-025-02194-6",
+          "artifact_kind": "primary_article",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-4.0",
+          "rights_evidence_url": "https://www.nature.com/articles/s41562-025-02194-6",
+          "rights_scope": "Published article/correction only; dataset license remains separate. No source body copied.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi001_correction",
+          "title": "Author Correction (3 September 2026)",
+          "url": "https://www.nature.com/articles/s41562-026-02588-0",
+          "artifact_kind": "primary_article",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": "2026-09-03",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-4.0",
+          "rights_evidence_url": "https://www.nature.com/articles/s41562-026-02588-0",
+          "rights_scope": "Published article/correction only; dataset license remains separate. No source body copied.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi001_card",
+          "title": "Pinned DebateGPT dataset card",
+          "url": "https://huggingface.co/datasets/frasalvi/debategpt/raw/ff19fc4cd38424023b8db616f7358a9b94e4c9d5/README.md",
+          "artifact_kind": "dataset_documentation",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": "ff19fc4cd38424023b8db616f7358a9b94e4c9d5",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-SA-4.0",
+          "rights_evidence_url": "https://huggingface.co/datasets/frasalvi/debategpt/raw/ff19fc4cd38424023b8db616f7358a9b94e4c9d5/README.md",
+          "rights_scope": "Dataset release attribution and share-alike terms; not the article license.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi001_csv",
+          "title": "Pinned participant CSV reference (not acquired)",
+          "url": "https://huggingface.co/datasets/frasalvi/debategpt/blob/ff19fc4cd38424023b8db616f7358a9b94e4c9d5/debategpt.csv",
+          "artifact_kind": "participant_dataset_reference",
+          "access_status": "not_acquired_aggregate_only_scope",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": "ff19fc4cd38424023b8db616f7358a9b94e4c9d5",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-SA-4.0",
+          "rights_evidence_url": "https://huggingface.co/datasets/frasalvi/debategpt/raw/ff19fc4cd38424023b8db616f7358a9b94e4c9d5/README.md",
+          "rights_scope": "License is documented; no participant file is acquired or redistributed.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi001_code",
+          "title": "Model-selection source reference",
+          "url": "https://github.com/epfl-dlab/debategpt/blob/fb1b86c984be9e3d25aab7ba6916613a13c79b2f/debategpt/server/src/llmQuery.js",
+          "artifact_kind": "source_code_reference",
+          "access_status": "inherited_implementation_reference_not_executed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": "fb1b86c984be9e3d25aab7ba6916613a13c79b2f",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        }
+      ],
+      "samples": [
+        {
+          "kind": "observed_published_aggregate",
+          "fields": {
+            "comparison": "personalized GPT-4 vs unpersonalized human",
+            "metric": "ordinal_model_odds_ratio",
+            "estimate": "1.812",
+            "confidence_level": "0.95",
+            "ci": [
+              "1.260",
+              "2.607"
+            ],
+            "p_value": "0.01",
+            "p_relation": "<",
+            "conditioning": "pretreatment_agreement",
+            "ci_method": "t_based_cluster_robust"
+          },
+          "qualification": "Different estimand from the direct personalization contrast; published p<.01 is not the corrected p=.0678.",
+          "evidence_artifact_ids": [
+            "pi001_article"
+          ],
+          "source_locators": {
+            "pi001_article": "Results: partial proportional odds model comparing personalized GPT-4 against unpersonalized human"
+          }
+        },
+        {
+          "kind": "observed_published_aggregate",
+          "fields": {
+            "comparison": "personalized GPT-4 vs nonpersonalized GPT-4",
+            "metric": "ordinal_model_odds_ratio",
+            "estimate": "1.487",
+            "confidence_level": "0.95",
+            "ci": [
+              "0.971",
+              "2.276"
+            ],
+            "original_p": "0.04",
+            "corrected_p": "0.0678",
+            "correction_date": "2026-09-03",
+            "p_relation": "=",
+            "conditioning": "pretreatment_agreement",
+            "ci_method": "t_based_cluster_robust"
+          },
+          "qualification": "Interval includes 1; corrected result does not establish incremental personalization benefit.",
+          "evidence_artifact_ids": [
+            "pi001_correction"
+          ],
+          "source_locators": {
+            "pi001_correction": "Correction text: direct personalized versus nonpersonalized GPT-4 comparison"
+          }
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "PI001-F1",
+          "text": "The correction changes the direct personalization comparison p value to 0.0678.",
+          "qualification": "It also repairs pre/post notation; only the p-value correction is represented in the numeric ledger.",
+          "evidence_artifact_ids": [
+            "pi001_correction"
+          ]
+        },
+        {
+          "finding_id": "PI001-F2",
+          "text": "Published design counts distinguish 900 participants, 600 debates and 750 principal-analysis observations.",
+          "qualification": "These are source-reported design units, not locally recounted participant rows.",
+          "evidence_artifact_ids": [
+            "pi001_article"
+          ]
+        },
+        {
+          "finding_id": "PI001-F3",
+          "text": "The intake code reference maps gpt4 to gpt-4-0613.",
+          "qualification": "Implementation-derived identity only, not verified historical requests or runs; no code executed.",
+          "evidence_artifact_ids": [
+            "pi001_code"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "PI002",
+      "producer_family_id": "spitale",
+      "name": "GPT-3 information and authenticity judgments",
+      "study_id": "10.1126/sciadv.adh1850",
+      "underlying_evidence_id": "10.1126/sciadv.adh1850",
+      "inventory_source_id": null,
+      "inventory_relationship": "new_producer_family_candidate",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "evidence_class": "controlled_content_judgments",
+      "coverage": {
+        "fieldwork": "October\u2013November 2022",
+        "date_precision": "month",
+        "respondents_retained": 697,
+        "stimuli": 220,
+        "topics": 11,
+        "measurement_window": "within-session truth and origin judgments"
+      },
+      "update_frequency": "One fixed experimental collection; no recurring cadence established.",
+      "access_export": "Primary PMC article and OSF metadata inspected. Small workbook metadata is public; workbook contents were not inspected in this verification.",
+      "privacy_ethics": "Questionnaire reported eligibility from age 16, so no individual records are appropriate here. Formal ethics approval and corrective debrief remain unverified.",
+      "limitations": [
+        "Classification scores are not audience exposure, sharing or later behavior.",
+        "Stimuli and recruitment limit generalization; exact checkpoint remains unverified.",
+        "OSF advertised metadata hash is not a locally computed workbook hash; raw means are not normalized into accuracy.",
+        "Organic content assumed human-produced, not independently authenticated. Published figure error bars are SEM; exact confidence intervals remain null."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "pi002_article",
+          "title": "AI model GPT-3 (dis)informs us better than humans",
+          "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10306283/",
+          "artifact_kind": "primary_article",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-NC-4.0",
+          "rights_evidence_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10306283/",
+          "rights_scope": "Article license only; no article body copied.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi002_project",
+          "title": "OSF project metadata",
+          "url": "https://api.osf.io/v2/nodes/9ntgf/",
+          "artifact_kind": "project_metadata",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi002_file",
+          "title": "OSF scored_survey_types.xlsx metadata",
+          "url": "https://api.osf.io/v2/files/63808d84aac53911c782c021/",
+          "artifact_kind": "artifact_metadata",
+          "access_status": "metadata_only_contents_not_reverified",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": "2c4e3e033634e5dfd49a9df47a63cd3104afc1502f092c94423d1a3990cb54ca",
+          "version": "1",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi002_workbook",
+          "title": "Small aggregate workbook candidate",
+          "url": "https://osf.io/n74cp/",
+          "artifact_kind": "aggregate_artifact_reference",
+          "access_status": "not_inspected_aggregate_scope_unverified",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": "1",
+          "rights_status": "inherited_license_unreverified",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "Intake reports linked CC-BY-SA-4.0 license; current license applicability needs independent review.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi002_license",
+          "title": "Repository license reference",
+          "url": "https://files.de-1.osf.io/v1/resources/9ntgf/providers/osfstorage/634e5d0ef17f3002dee3dbaf",
+          "artifact_kind": "license_reference",
+          "access_status": "inherited_reference_not_reverified",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi002_questionnaire",
+          "title": "Consent/questionnaire reference",
+          "url": "https://files.de-1.osf.io/v1/resources/9ntgf/providers/osfstorage/634e765de6a23a036b9aa326",
+          "artifact_kind": "questionnaire",
+          "access_status": "inherited_reference_not_reverified",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi002_scoring_wiki",
+          "title": "OSF Survey scoring documentation v8",
+          "url": "https://api.osf.io/v2/wikis/s7ak8/content/",
+          "artifact_kind": "static_scoring_documentation",
+          "access_status": "documentation_text_observed_no_execution",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": "4a943df3e950fa3e7efd76a60cf2f1a908f31262c333415d2317bcc64d9ab4a9",
+          "upstream_reported_sha256": null,
+          "version": "8; modified2022-10-25",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "Public documentary inspection does not establish code or dataset copying rights.",
+          "source_bytes_vendored": false
+        }
+      ],
+      "samples": [
+        {
+          "kind": "observed_published_aggregate",
+          "fields": {
+            "outcome": "false_information_recognition_score",
+            "human_origin": "0.92",
+            "gpt3_origin": "0.89",
+            "p_value": "0.0032",
+            "participants": 697,
+            "metric": "mean_participant_correctness",
+            "scale": [
+              0,
+              1
+            ],
+            "confidence_interval": null,
+            "comparison_method": "Tukey_multiple_comparisons",
+            "figure_error_bar_statistic": "SEM"
+          },
+          "qualification": "Published participant-level score summary. Not a workbook-mean recoding or percentage of population misled.",
+          "evidence_artifact_ids": [
+            "pi002_article"
+          ],
+          "source_locators": {
+            "pi002_article": "Results: GPT-3 AI model informs and disinforms us better; Figure 1C"
+          }
+        },
+        {
+          "kind": "observed_metadata",
+          "fields": {
+            "filename": "scored_survey_types.xlsx",
+            "version": "1",
+            "bytes": 6068
+          },
+          "qualification": "Intake describes four rows/22 columns and 7,651 assessments; contents and those totals were not reverified and are excluded from accepted numeric examples.",
+          "evidence_artifact_ids": [
+            "pi002_file"
+          ],
+          "source_locators": {
+            "pi002_file": "OSF file metadata: attributes name, size, version, dates and hashes"
+          }
+        },
+        {
+          "kind": "observed_documented_schema",
+          "fields": {
+            "accurate_label": 1,
+            "misinformation_label": 0,
+            "real_person_label": 1,
+            "computer_label": 0,
+            "aggregation": "equally averaged per-item response-label means",
+            "dispersion": "means of per-item SD/IQR",
+            "counts": "summed item-assessment counts"
+          },
+          "qualification": "Static documentation predates final workbook. No proven execution/version linkage; not published participant-average correctness and not an observed workbook sample.",
+          "evidence_artifact_ids": [
+            "pi002_scoring_wiki"
+          ],
+          "source_locators": {
+            "pi002_scoring_wiki": "Survey wiki version8: response recoding and scored_survey_types aggregation documentation"
+          }
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "PI002-F1",
+          "text": "The paper reports 697 retained respondents and 220 stimuli across 11 topics.",
+          "qualification": "No participant or stimulus rows acquired or mirrored.",
+          "evidence_artifact_ids": [
+            "pi002_article"
+          ]
+        },
+        {
+          "finding_id": "PI002-F2",
+          "text": "Primary article reports recognition scores .92 and .89, p = .0032.",
+          "qualification": "This is a content-judgment comparison, not exposure or downstream causal impact.",
+          "evidence_artifact_ids": [
+            "pi002_article"
+          ]
+        },
+        {
+          "finding_id": "PI002-F3",
+          "text": "No correction or concern was found in the inspected PMC record and bounded search.",
+          "qualification": "Science direct page was inaccessible; absence in this search is not absolute editorial clearance.",
+          "evidence_artifact_ids": [
+            "pi002_article"
+          ]
+        },
+        {
+          "finding_id": "PI002-F4",
+          "text": "Scoring documentation codes Accurate and Real person as 1, their alternatives as 0, and averages item response means by type.",
+          "qualification": "This documents response-label fractions, not correctness by default. Wiki version predates final workbook; no source code executed.",
+          "evidence_artifact_ids": [
+            "pi002_scoring_wiki"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "PI003",
+      "producer_family_id": "ofcom",
+      "name": "Ofcom Online Experiences Tracker",
+      "study_id": "ofcom-online-experiences-tracker",
+      "underlying_evidence_id": "ofcom-online-experiences-tracker",
+      "inventory_source_id": null,
+      "inventory_relationship": "new_producer_family_candidate",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "evidence_class": "self_reported_perceived_exposure",
+      "coverage": {
+        "first_wave": "November 2021",
+        "latest_released_wave": "Wave 9 January2026",
+        "latest_fieldwork": "5\u201320 January2026",
+        "latest_interviews_including_boosts": 7494,
+        "current_age_frame": "18+",
+        "previous_age_frame": "13\u201384",
+        "measurement_window": "previous four weeks",
+        "next_scheduled_release": "2026-10-15",
+        "population": "UK internet users; repeated tracking does not establish linked within-person longitudinal outcomes",
+        "latest_release_date": "2026-04-16",
+        "main_fieldwork_end": "2026-01-12",
+        "including_boost_fieldwork_end": "2026-01-20",
+        "reported_total_ess": 7458
+      },
+      "update_frequency": "Twice-yearly releases; schedule does not establish a new completed wave.",
+      "access_export": "Official questionnaires, reports, data guides and XLSX/SPSS links; Wave 9 large workbook not acquired.",
+      "privacy_ethics": "Sensitive-topic opt-in and survey disclosure/small-base rules must survive mapping; only documentary and aggregate metadata retained.",
+      "limitations": [
+        "Q8 requires Q8a=1 consent; full achieved sample is not automatically an item denominator.",
+        "From Wave 8 age frame and quotas change; earlier weights were not retrospectively reweighted.",
+        "Boosts not rebalanced to population proportions in overall totals.",
+        "Prompted perceived encounters do not authenticate AI content or prove population harm.",
+        "The public Wave 9 technical PDF retains a CONFIDENTIAL label and some Wave 8/gender-label inconsistencies. These are source-document anomalies, not affirmative reuse permission; do not reuse subgroup reliability figures without checking.",
+        "Data guide prohibits reporting percentages for bases below 50. Redaction wording is ambiguous (n<10 or lower); retain that ambiguity rather than inventing an exact boundary.",
+        "Within-wave tests use 95%, across-wave 99%; whole-wave ESS is not an item confidence interval."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "pi003_collection",
+          "title": "Online Experiences Tracker",
+          "url": "https://www.ofcom.org.uk/media-use-and-attitudes/online-habits/internet-users-experience-of-harm-online",
+          "artifact_kind": "official_collection",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi003_q8",
+          "title": "Wave 8 questionnaire",
+          "url": "https://www.ofcom.org.uk/siteassets/resources/documents/research-and-data/telecoms-research/telecoms-data-updates/wave-8/questionnaire.pdf?v=405804",
+          "artifact_kind": "questionnaire",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi003_technical",
+          "title": "Wave 9 technical report",
+          "url": "https://www.ofcom.org.uk/siteassets/resources/documents/research-and-data/telecoms-research/telecoms-data-updates/wave-9/technical-report.pdf?v=415978",
+          "artifact_kind": "technical_report",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi003_guide",
+          "title": "Wave 9 data guide",
+          "url": "https://www.ofcom.org.uk/siteassets/resources/documents/research-and-data/telecoms-research/telecoms-data-updates/wave-9/data-guide.pdf?v=415975",
+          "artifact_kind": "data_guide",
+          "access_status": "bounded_documentation_bytes_and_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi003_rights",
+          "title": "Ofcom reproduction policy",
+          "url": "https://www.ofcom.org.uk/about-ofcom/our-website/copyright",
+          "artifact_kind": "rights_policy",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "policy_basis_not_artifact_license",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "General accurate acknowledged reproduction policy; artifact-specific OGL designation unverified.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi003_q9",
+          "title": "Wave 9 questionnaire",
+          "url": "https://www.ofcom.org.uk/siteassets/resources/documents/research-and-data/telecoms-research/telecoms-data-updates/wave-9/questionnaire.pdf?v=415977",
+          "artifact_kind": "questionnaire",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi003_w8tech",
+          "title": "Wave 8 technical report",
+          "url": "https://www.ofcom.org.uk/siteassets/resources/documents/research-and-data/telecoms-research/telecoms-data-updates/wave-8/technical-report.pdf?v=405805",
+          "artifact_kind": "technical_report",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi003_changes",
+          "title": "18 June 2025 tracker change notice",
+          "url": "https://www.ofcom.org.uk/siteassets/resources/documents/research-and-data/data/statistics/2025/affordability-of-communication-services/notification-of-changes-to-the-online-experiences-tracker.pdf?v=398883",
+          "artifact_kind": "change_notice",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi003_calendar",
+          "title": "2026 statistical release calendar",
+          "url": "https://www.ofcom.org.uk/about-ofcom/our-research/statistical-release-calendar-2026",
+          "artifact_kind": "official_calendar",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi003_open_data",
+          "title": "Ofcom open-data policy",
+          "url": "https://www.ofcom.org.uk/about-ofcom/our-research/opendata",
+          "artifact_kind": "rights_policy",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        }
+      ],
+      "samples": [
+        {
+          "kind": "observed_schema",
+          "fields": {
+            "question": "Q8",
+            "routed_when": "Q8a=1",
+            "recall": "previous_four_weeks",
+            "multi_select_codes": {
+              "11": "misinformation",
+              "24": "fake/deceptive images or videos including deepfakes",
+              "98": "prefer not to say",
+              "99": "none"
+            },
+            "conditional_followup": "Q32a1 when misinformation selected",
+            "item_denominator": null
+          },
+          "qualification": "Item24 does not independently identify AI generation. Conditional response bases differ from overall achieved sample. Selected codes persist in Wave 9, but other categories change; entire questionnaires are not identical.",
+          "evidence_artifact_ids": [
+            "pi003_q8",
+            "pi003_q9"
+          ],
+          "source_locators": {
+            "pi003_q8": "Printed pages11\u201313 and23\u201324: Q8a, Q8 and Q32a1",
+            "pi003_q9": "Printed pages11\u201313 and23\u201324: same selected questions/routing"
+          }
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "PI003-F1",
+          "text": "Wave 3 withdrawn for questionnaire errors; Waves 1\u20132 corrected and republished 27 July 2023.",
+          "qualification": "Do not bridge withdrawn wave or double-count replacement releases.",
+          "evidence_artifact_ids": [
+            "pi003_collection"
+          ]
+        },
+        {
+          "finding_id": "PI003-F2",
+          "text": "Wave 8 changes age frame from 13\u201384 to 18+ and quota design.",
+          "qualification": "Do not silently splice trend series across this break.",
+          "evidence_artifact_ids": [
+            "pi003_technical"
+          ]
+        },
+        {
+          "finding_id": "PI003-F3",
+          "text": "Wave 9 achieved 7,494 interviews including boosts; Q8 is consent-routed.",
+          "qualification": "Achieved interviews and each weighted item base are different units.",
+          "evidence_artifact_ids": [
+            "pi003_technical",
+            "pi003_q8"
+          ]
+        },
+        {
+          "finding_id": "PI003-F4",
+          "text": "Next release is scheduled 15 October 2026; latest observed released collection remains Wave 9.",
+          "qualification": "A future calendar entry does not establish released data. The reviewed tracker is not proven within-person longitudinal.",
+          "evidence_artifact_ids": [
+            "pi003_collection",
+            "pi003_calendar"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "PI004",
+      "producer_family_id": "ofcom",
+      "name": "Ofcom General Election 2024 news and opinion survey",
+      "study_id": "ofcom-general-election-news-2024",
+      "underlying_evidence_id": "ofcom-general-election-news-2024",
+      "inventory_source_id": null,
+      "inventory_relationship": "new_producer_family_candidate",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "evidence_class": "self_reported_perceived_exposure",
+      "coverage": {
+        "fieldwork": [
+          "2024-06-19/2024-06-20",
+          "2024-06-26/2024-06-27",
+          "2024-07-03/2024-07-04",
+          "2024-07-10/2024-07-11"
+        ],
+        "measurement_window": "previous week in each cross-section",
+        "population_label": "source conflict: report UK adults, workbook cover GB adults; tables include Northern Ireland",
+        "pooled_weighted_base": 8556,
+        "pooled_unweighted_base": 8556,
+        "wave_bases": [
+          2129,
+          2109,
+          2156,
+          2162
+        ],
+        "distinct_people_across_waves": null,
+        "pooled_base_unit": "survey responses; unique people across waves unverified"
+      },
+      "update_frequency": "Finite four weekly cross-sections; no continuing series inferred.",
+      "access_export": "Official report and selected aggregate Q22 workbook tables inspected; no individual records.",
+      "privacy_ethics": "Study-specific consent and microdata permission unverified; preserve published aggregate and disclosure-control scope.",
+      "limitations": [
+        "Pooled last-week response is not cumulative four-week reach.",
+        "Broad prompted deepfake definition includes AI audio, images, video and text.",
+        "Self-report cannot establish authentic exposure; 46% uncertainty is material.",
+        "Population label conflicts need resolution before geographic harmonization.",
+        "Front Page!C30 identifies YouGov copyright, Front Page!C33 says GB adults 18+, and Percents!R6 includes Northern Ireland. No subgroup demographic rows mirrored."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "pi004_collection",
+          "title": "Ofcom news-consumption research",
+          "url": "https://www.ofcom.org.uk/media-use-and-attitudes/attitudes-to-news/news-consumption",
+          "artifact_kind": "official_collection",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi004_report",
+          "title": "General Election 2024 report",
+          "url": "https://www.ofcom.org.uk/siteassets/resources/documents/research-and-data/tv-radio-and-on-demand-research/tv-research/news/news-consumption-2024/uk-general-election-survey-2024-report.pdf?v=379617",
+          "artifact_kind": "official_report",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi004_rights",
+          "title": "Ofcom reproduction policy",
+          "url": "https://www.ofcom.org.uk/about-ofcom/our-website/copyright",
+          "artifact_kind": "rights_policy",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "policy_basis_not_artifact_license",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "Artifact-specific OGL not established; general policy does not license every workbook.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi004_tables",
+          "title": "2024 election aggregate tables",
+          "url": "https://www.ofcom.org.uk/siteassets/resources/documents/research-and-data/tv-radio-and-on-demand-research/tv-research/news/news-consumption-2024/uk-general-election-survey-2024-data-tables.xlsx?v=379622",
+          "artifact_kind": "aggregate_workbook",
+          "access_status": "selected_aggregate_cells_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": "22ef1d16c21177043ae2b883e5fae9024da97ac3eee84c2d67cbacb2d4771748",
+          "upstream_reported_sha256": null,
+          "version": "observed2026-10-08; publication/correction identity not inferred from HTTP",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "Front Page!C30: YouGov plc 2024 copyright. Artifact-specific license unknown; Ofcom general policy does not override third-party rights.",
+          "source_bytes_vendored": false
+        }
+      ],
+      "samples": [
+        {
+          "kind": "observed_published_aggregate",
+          "fields": {
+            "question": "Q22",
+            "outcome": "believed_encountered_deepfake_at_least_once",
+            "estimate_percent_rounded": 27,
+            "dont_know_percent_rounded": 46,
+            "pooled_base": 8556,
+            "confidence_interval": null,
+            "recall": "previous week",
+            "aggregation": "pooled_cross_sections"
+          },
+          "qualification": "Workbook supplies verified base absent from the initial intake; no confidence interval inferred.",
+          "evidence_artifact_ids": [
+            "pi004_report",
+            "pi004_tables"
+          ],
+          "source_locators": {
+            "pi004_report": "Printed page9 and footnote5; design on printed page4",
+            "pi004_tables": "Percents!A853:B855: Q22 question and bases"
+          }
+        },
+        {
+          "kind": "observed_aggregate_cells",
+          "fields": {
+            "question": "Q22",
+            "worksheet": "Percents",
+            "question_cell": "A853",
+            "weighted_bases_cells": "B855:F855",
+            "unweighted_bases_cells": "B854:F854",
+            "pooled_weighted_base": 8556,
+            "pooled_unweighted_base": 8556,
+            "wave_bases": [
+              2129,
+              2109,
+              2156,
+              2162
+            ],
+            "dont_know_proportion": "0.4621",
+            "dont_know_cell": "B866",
+            "positive_frequency_proportions": [
+              "0.1684",
+              "0.0645",
+              "0.0208",
+              "0.0203"
+            ],
+            "positive_frequency_cells": [
+              "B858",
+              "B860",
+              "B862",
+              "B864"
+            ],
+            "positive_frequency_sum_derived": "0.2740",
+            "confidence_interval": null
+          },
+          "qualification": "Selected source-cached aggregate cells; no workbook recalculation. Positive sum is reviewer-derived, not a source net cell. Four-decimal precision preserved; binary XML serialization adds no survey precision.",
+          "evidence_artifact_ids": [
+            "pi004_tables"
+          ],
+          "source_locators": {
+            "pi004_tables": "Percents!A853:F866; column mapB5:F7"
+          }
+        },
+        {
+          "kind": "observed_aggregate_cells",
+          "fields": {
+            "question": "Q23X",
+            "unweighted_base": 2399,
+            "unweighted_base_cell": "B869",
+            "weighted_base": "2344.33",
+            "weighted_base_cell": "B870"
+          },
+          "qualification": "Conditional action-question base; never substitute the 8556 Q22 pooled base or treat intentions as completed behavior.",
+          "evidence_artifact_ids": [
+            "pi004_tables"
+          ],
+          "source_locators": {
+            "pi004_tables": "Percents!B869:B870"
+          }
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "PI004-F1",
+          "text": "Report rounds perceived deepfake exposure to 27% and do-not-know to 46%.",
+          "qualification": "Definition and recall window must travel with results; no causal population effect.",
+          "evidence_artifact_ids": [
+            "pi004_report"
+          ]
+        },
+        {
+          "finding_id": "PI004-F2",
+          "text": "Q22 weighted/unweighted pooled survey-response base is 8556, with waves 2129/2109/2156/2162.",
+          "qualification": "Distinct people across waves and design-effect-adjusted CI unverified; source geography conflict retained.",
+          "evidence_artifact_ids": [
+            "pi004_tables"
+          ]
+        }
+      ]
+    },
+    {
+      "candidate_id": "PI005",
+      "producer_family_id": "costello",
+      "name": "Corrected conspiracy-belief dialogue experiments",
+      "study_id": "10.1126/science.adq1814",
+      "underlying_evidence_id": "10.1126/science.adq1814",
+      "inventory_source_id": null,
+      "inventory_relationship": "new_producer_family_candidate",
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "evidence_class": "randomized_assigned_dialogue",
+      "coverage": {
+        "publication_year": 2024,
+        "corrected_release": "2026-09-29",
+        "fieldwork_dates": null,
+        "reported_screened_rows": 2094,
+        "reported_complete_cases": 2044,
+        "measurement_scale": "0\u2013100 belief rating",
+        "followup_windows": [
+          "10 days",
+          "two months"
+        ],
+        "original_publication_date": "2024-09-13",
+        "editorial_concern_date": "2026-06-11",
+        "author_deposit_date": "2026-09-27",
+        "followup_population": "Study 1 only; Study 2b protest intentions are a separate outcome"
+      },
+      "update_frequency": "Release-driven original/corrected evidence; corrections are not new independent studies.",
+      "access_export": "Public documentation and editorial notice checked. Archives, member previews and participant data not acquired or executed.",
+      "privacy_ethics": "Release-specific pseudonyms are not guaranteed anonymity. Consent/protocol E-5539 are documentation claims; this integration holds all individual beliefs, free text and participant identifiers.",
+      "limitations": [
+        "Editorial expression of concern must remain active until verified journal resolution.",
+        "Author deposits do not clear journal concern or establish corrected effect replication.",
+        "Old intervals must not be attached to corrected sample counts.",
+        "NA,0 and substantive-999 have different meanings; no participant values ingested.",
+        "Intentions and reported beliefs are not completed behavior or population reach.",
+        "Headline author-documented OLS uses centered pretreatment belief and treatment interaction; centering cohort and complete-case cohort differ. Classical model-based SEs cannot inherit DebateGPT cluster-robust uncertainty conventions."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "pi005_article",
+          "title": "Original Science article",
+          "url": "https://www.science.org/doi/10.1126/science.adq1814",
+          "artifact_kind": "primary_article",
+          "access_status": "primary_metadata_or_indexed_text",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi005_concern",
+          "title": "Editorial expression of concern 11 June 2026",
+          "url": "https://www.science.org/doi/10.1126/science.aej2383",
+          "artifact_kind": "editorial_notice",
+          "access_status": "primary_indexed_notice_direct_publisher_blocked",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": null,
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "No file reuse license established; limited factual metadata and links only.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi005_dryad",
+          "title": "Corrected Dryad release documentation",
+          "url": "https://datadryad.org/dataset/doi:10.5061/dryad.v6wwpzh4h",
+          "artifact_kind": "dataset_documentation",
+          "access_status": "primary_text_observed",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": "2026-09-29",
+          "rights_status": "declared_license",
+          "license_identifier": "CC0-1.0",
+          "rights_evidence_url": "https://datadryad.org/dataset/doi:10.5061/dryad.v6wwpzh4h",
+          "rights_scope": "Corrected dataset/documentation; no participant archive copied.",
+          "source_bytes_vendored": false
+        },
+        {
+          "artifact_id": "pi005_zenodo",
+          "title": "Author correction and reproducibility package",
+          "url": "https://zenodo.org/records/22754984",
+          "artifact_kind": "archive_metadata",
+          "access_status": "metadata_only_archive_not_acquired",
+          "observed_on": "2026-10-08",
+          "artifact_sha256": null,
+          "upstream_reported_sha256": null,
+          "version": "record22754984",
+          "rights_status": "mixed_file_specific_rights",
+          "license_identifier": null,
+          "rights_evidence_url": null,
+          "rights_scope": "MIT code, CC0 data and publication-specific terms reported; no blanket archive license inferred.",
+          "source_bytes_vendored": false
+        }
+      ],
+      "samples": [
+        {
+          "kind": "observed_documented_schema",
+          "fields": {
+            "aggregate_sample_counts": {
+              "screened_rows": 2094,
+              "complete_cases": 2044
+            },
+            "belief_scale": "0\u2013100",
+            "followup_windows": [
+              "10 days",
+              "two months"
+            ],
+            "corrected_effect_estimate": null,
+            "corrected_confidence_interval": null,
+            "corrected_p_value": null,
+            "followup_population": "Study 1",
+            "study_screened_counts": {
+              "Study1": 748,
+              "Study2": 1346
+            },
+            "followup_denominators": null
+          },
+          "qualification": "Documented counts not independently recomputed; corrected coefficients withheld. No individual identifiers or rows published.",
+          "evidence_artifact_ids": [
+            "pi005_dryad"
+          ],
+          "source_locators": {
+            "pi005_dryad": "README: corrected release, primary table dimensions, complete cases, schema and follow-up definitions"
+          }
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "PI005-F1",
+          "text": "Editorial concern dated 11 June 2026 remains unresolved in this review.",
+          "qualification": "Author correction package is not a journal clearance; keep the flag.",
+          "evidence_artifact_ids": [
+            "pi005_concern",
+            "pi005_zenodo"
+          ]
+        },
+        {
+          "finding_id": "PI005-F2",
+          "text": "Corrected documentation distinguishes 2,094 screened rows from 2,044 headline complete cases.",
+          "qualification": "Current comparison-specific coefficients and intervals not independently verified.",
+          "evidence_artifact_ids": [
+            "pi005_dryad"
+          ]
+        }
+      ]
+    }
+  ],
+  "catalog_overlap_review": {
+    "commit": "4fa67bdb36e27c8b144b54ba99d3a9396208cd24",
+    "catalogs_compared": [
+      {
+        "path": "data/evidence-program/research/adoption-productivity.json",
+        "git_blob_sha": "fbd2337a06d86c04d3092ba1b63a2e815b3b7d1c",
+        "sha256": "96a7568a5af567b48c5aa7bba5ec15cde64c623a5468cb3a20a023bd091b02bc",
+        "collection_count": 5,
+        "compared_collection_ids": [
+          "AP001",
+          "AP002",
+          "AP003",
+          "AP004",
+          "AP005"
+        ],
+        "result": "No same underlying study or exact artifact found across the five candidates.",
+        "candidate_checks": {
+          "PI001": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI002": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI003": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI004": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI005": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          }
+        }
+      },
+      {
+        "path": "data/evidence-program/research/chinese-safety-evaluations.json",
+        "git_blob_sha": "e205499dfaabf8769582c0a2b33859bb4564bf2f",
+        "sha256": "f858ca920524a02ab8bfe7b23629cca66680a4821133af0bd1664a40a38d131d",
+        "collection_count": 8,
+        "compared_collection_ids": [
+          "ZHS001",
+          "ZHS002",
+          "ZHS003",
+          "ZHS004",
+          "ZHS005",
+          "ZHS006",
+          "ZHS007",
+          "ZHS008"
+        ],
+        "result": "No same underlying study or exact artifact found across the five candidates.",
+        "candidate_checks": {
+          "PI001": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI002": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI003": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI004": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI005": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          }
+        }
+      },
+      {
+        "path": "data/evidence-program/research/concentration-dependencies.json",
+        "git_blob_sha": "e98df02f9c42060decf2d157f1b4fa7e7b18ad1c",
+        "sha256": "9932151bdcd225e0c2faecde8f02e3933af3583d85c8689303f6c1fb60d42f30",
+        "collection_count": 5,
+        "compared_collection_ids": [
+          "CD001",
+          "CD002",
+          "CD003",
+          "CD004",
+          "CD005"
+        ],
+        "result": "No same underlying study or exact artifact found across the five candidates.",
+        "candidate_checks": {
+          "PI001": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI002": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI003": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI004": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI005": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          }
+        }
+      },
+      {
+        "path": "data/evidence-program/research/historical-capability-backfills.json",
+        "git_blob_sha": "41ed220a48e676acf2bd691e3309a9105ef834f9",
+        "sha256": "fca26ba6df579a389db713c7fe7d1b4823fbd22bfb84c4810dc0804988a1dd6e",
+        "collection_count": 5,
+        "compared_collection_ids": [
+          "HC001",
+          "HC002",
+          "HC003",
+          "HC004",
+          "HC005"
+        ],
+        "result": "No same underlying study or exact artifact found across the five candidates.",
+        "candidate_checks": {
+          "PI001": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI002": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI003": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI004": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI005": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          }
+        }
+      },
+      {
+        "path": "data/evidence-program/research/open-model-diffusion.json",
+        "git_blob_sha": "686e7a69a3020215e21afd984e6b3a4e7eb2e399",
+        "sha256": "649be6f110f6826159d880c761192bf51532395334dfe9923be50e4defd7ba34",
+        "collection_count": 5,
+        "compared_collection_ids": [
+          "OM001",
+          "OM002",
+          "OM003",
+          "OM004",
+          "OM005"
+        ],
+        "result": "No same underlying study or exact artifact found across the five candidates.",
+        "candidate_checks": {
+          "PI001": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Shared Hugging Face hosting with OM001 is infrastructure only; experimental participant data are not Hub metadata history."
+          },
+          "PI002": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI003": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI004": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI005": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          }
+        }
+      },
+      {
+        "path": "data/evidence-program/research/organizational-safety.json",
+        "git_blob_sha": "14e560889f729f14bd2e0c0290ac51bdcc32d1c6",
+        "sha256": "a07d8a1020b84bdfd9acaf185baae737a10d9160863f4c82d580cd0e4f8d3353",
+        "collection_count": 5,
+        "compared_collection_ids": [
+          "OS001",
+          "OS002",
+          "OS003",
+          "OS004",
+          "OS005"
+        ],
+        "result": "No same underlying study or exact artifact found across the five candidates.",
+        "candidate_checks": {
+          "PI001": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Developer governance/model identity is contextual only; these external experiments/surveys are distinct evidence."
+          },
+          "PI002": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Developer governance/model identity is contextual only; these external experiments/surveys are distinct evidence."
+          },
+          "PI003": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Developer governance/model identity is contextual only; these external experiments/surveys are distinct evidence."
+          },
+          "PI004": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Developer governance/model identity is contextual only; these external experiments/surveys are distinct evidence."
+          },
+          "PI005": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Developer governance/model identity is contextual only; these external experiments/surveys are distinct evidence."
+          }
+        }
+      },
+      {
+        "path": "data/evidence-program/research/scientific-progress.json",
+        "git_blob_sha": "fdce2e6cb61147704c32bb7e300b2b331e7b6c0e",
+        "sha256": "ff5140f09fa63036cc3d4720f0c40749ddc100fcb0e2b4c533da81038d87549a",
+        "collection_count": 5,
+        "compared_collection_ids": [
+          "SP001",
+          "SP002",
+          "SP003",
+          "SP004",
+          "SP005"
+        ],
+        "result": "No same underlying study or exact artifact found across the five candidates.",
+        "candidate_checks": {
+          "PI001": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI002": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI003": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI004": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "Distinct study populations, artifacts and measurements; no same-study or exact-artifact match identified."
+          },
+          "PI005": {
+            "artifact_match": false,
+            "study_match": false,
+            "measurement_match": false,
+            "semantic_review": "I4R involvement in investigation attribution is not SP001 AI-Games research-reproduction evidence; no shared experiment established."
+          }
+        }
+      }
+    ],
+    "prior_collection_count": 38,
+    "comparison_cell_count": 35,
+    "method": "Exact blob/SHA256 identities plus semantic review of every prior collection. Hosting, institution, bibliographic manifestation and evaluated-model overlap are not duplicate experiments."
+  },
+  "inventory_relationships": [
+    {
+      "source_id": "GL011",
+      "inventory_name": "Forecasting Research Institute: Existential Risk Persuasion Tournament",
+      "relationship": "distinct_construct",
+      "note": "FRI existential-risk persuasion tournament is distinct forecasting evidence; shared terminology does not establish AI influence measurement."
+    },
+    {
+      "source_id": "GL014",
+      "inventory_name": "OpenAI: official system cards and deployment safety",
+      "relationship": "evaluated_model_context",
+      "note": "OpenAI model identity does not make external experiments developer-authored system cards."
+    },
+    {
+      "source_id": "GL015",
+      "inventory_name": "Anthropic: official model system cards",
+      "relationship": "developer_context",
+      "note": "Shared frontier-model category is not duplicate evidence."
+    },
+    {
+      "source_id": "GL016",
+      "inventory_name": "Google DeepMind: official model cards",
+      "relationship": "developer_context",
+      "note": "Shared frontier-model category is not duplicate evidence."
+    },
+    {
+      "source_id": "GL034",
+      "inventory_name": "Stanford HAI: AI Index public data",
+      "relationship": "potential_secondary_reporting_unverified",
+      "note": "AI Index may report these studies; exact citation-level overlap not established and no independent observation added."
+    },
+    {
+      "source_id": "GL039",
+      "inventory_name": "OpenAlex: scholarly discovery metadata",
+      "relationship": "bibliographic_manifestation",
+      "note": "OpenAlex discovery metadata may refer to the same paper; not a new empirical collection."
+    },
+    {
+      "source_id": "GL040",
+      "inventory_name": "arXiv: scholarly metadata and versioned primary preprints",
+      "relationship": "publication_version",
+      "note": "arXiv preprints must share underlying-evidence identity with their journal study."
+    }
+  ],
+  "critical_qualifications": {
+    "debategpt": {
+      "corrected_p": "0.0678",
+      "correction_applies_to": "personalized_gpt4_vs_nonpersonalized_gpt4",
+      "participant_csv_processed": false,
+      "statistical_model_replicated": false
+    },
+    "spitale": {
+      "workbook_contents_reverified": false,
+      "workbook_means_recoded": false,
+      "advertised_hash_is_locally_computed": false,
+      "editorial_clearance_absolute": false,
+      "static_encoding_verified": true,
+      "static_wiki_linked_to_final_workbook": false
+    },
+    "ofcom": {
+      "producer_families": 1,
+      "distinct_collections": 2,
+      "item_base_equals_achieved_sample": false,
+      "artifact_ogl_verified": false,
+      "authenticated_exposure": false,
+      "election_pooled_base": 8556,
+      "election_geography_resolved": false,
+      "election_distinct_people_verified": false,
+      "election_copyright_holder": "YouGov plc",
+      "oet_within_person_longitudinal_verified": false
+    },
+    "costello": {
+      "editorial_concern": "active_resolution_unverified",
+      "journal_resolution_verified": false,
+      "corrected_effects_verified": false,
+      "participant_archive_acquired": false
+    }
+  },
+  "corrections": [
+    {
+      "correction_id": "PI-C1",
+      "intake": "Original direct personalization p=.04.",
+      "review": "Primary correction establishes p=.0678 for this same comparison only; preserve original as superseded."
+    },
+    {
+      "correction_id": "PI-C2",
+      "intake": "DebateGPT participant CSV numeric adapter proposed.",
+      "review": "Replaced with aggregate-only published ledger; CSV proposal unimplemented and outside this integration."
+    },
+    {
+      "correction_id": "PI-C3",
+      "intake": "Spitale workbook 4\u00d722 and raw aggregate sample treated as observed.",
+      "review": "Not independently reverified; metadata-only current verification, no accepted workbook numeric ingestion."
+    },
+    {
+      "correction_id": "PI-C4",
+      "intake": "Election exact pooled base not verified.",
+      "review": "Newly verified aggregate table base 8556; geography conflict remains unresolved."
+    },
+    {
+      "correction_id": "PI-C5",
+      "intake": "OET Q8 base implicit and Q32a1 conditional.",
+      "review": "Q8 itself is consent-routed; full achieved 7494 is not an item base."
+    },
+    {
+      "correction_id": "PI-C6",
+      "intake": "Costello correction deposit follows concern.",
+      "review": "Deposit does not clear editorial concern; corrected effects and old-interval reuse remain held."
+    },
+    {
+      "correction_id": "PI-C7",
+      "intake": "Spitale aggregate score orientation unresolved.",
+      "review": "Static OSF documentation establishes label encoding and item-averaging; final workbook linkage still unverified. Do not convert inherited means into accuracy."
+    },
+    {
+      "correction_id": "PI-C8",
+      "intake": "Ofcom reproduction policy supplied general basis.",
+      "review": "Election workbook carries YouGov copyright; artifact-specific open license unknown. Preserve UK/GB source discrepancy and survey-response versus unique-person units."
+    }
+  ],
+  "offline_validator": {
+    "implemented": true,
+    "path": "tools/evidence_program/validate_persuasion_ledger.py",
+    "interface": "validate_ledger(document): bounded in-memory JSON object only",
+    "source_extractor_implemented": false,
+    "participant_csv_adapter_implemented": false,
+    "network_access": false,
+    "statistical_reanalysis": false,
+    "maximum_depth": 8,
+    "maximum_nodes": 512,
+    "maximum_text_bytes": 1024,
+    "real_aggregate_ledger": "data/evidence-program/research/debategpt-correction-ledger.json",
+    "fixture": "tools/evidence_program/tests/fixtures/persuasion-information/synthetic-contrast-ledger.json",
+    "validation_is_source_truth_verification": false
+  },
+  "next_actions": [
+    {
+      "action_id": "PI-A1",
+      "status": "completed",
+      "action": "Replace participant-CSV proposal with curated published aggregate contrast ledger and synthetic-only tests.",
+      "completion": "Three assertions, two current contrasts, one same-estimand correction edge; no raw data or model calls."
+    },
+    {
+      "action_id": "PI-A2",
+      "status": "completed",
+      "action": "Compare all seven research catalogs and frozen 64 baseline at exact source identity.",
+      "completion": "38 prior collections; 35 candidate-by-catalog checks; no same underlying studies identified."
+    },
+    {
+      "action_id": "PI-A3",
+      "status": "held",
+      "action": "Resolve Spitale workbook recoding, current license applicability and safe aggregate-only acquisition authority.",
+      "completion": "Primary documentation must establish contents and rights before any permitted small artifact acquisition; do not acquire the workbook without independently established scope and authorization."
+    },
+    {
+      "action_id": "PI-A4",
+      "status": "held",
+      "action": "Resolve Ofcom artifact-specific rights, exact question bases, breaks and election geography discrepancy.",
+      "completion": "Official documentary evidence for each table/license and population definition; no harmonized trend before resolution."
+    },
+    {
+      "action_id": "PI-A5",
+      "status": "held",
+      "action": "Verify Costello journal disposition and corrected aggregate coefficients without participant/archive acquisition.",
+      "completion": "Explicit journal resolution plus comparison-specific corrected public summary; until then concern active and estimates null."
+    },
+    {
+      "action_id": "PI-A6",
+      "status": "held",
+      "action": "Establish DebateGPT article version/byte provenance and historical implementation identity if useful.",
+      "completion": "Bounded public correction/documentation only; no participant CSV or historical requests."
+    },
+    {
+      "action_id": "PI-A7",
+      "status": "pending_separate_review",
+      "action": "Map aggregate evidence losslessly to existing canonical contracts.",
+      "completion": "Review proposal preserves estimates, intervals, comparators, recall, routing, rights and correction chains; no schema changes or admission in this task."
+    }
+  ],
+  "focused_follow_up_prompts": [
+    {
+      "prompt_id": "PI-P1",
+      "title": "Check DebateGPT version lineage",
+      "prompt": "Review the primary article https://www.nature.com/articles/s41562-025-02194-6 and correction https://www.nature.com/articles/s41562-026-02588-0. Verify the exact two comparison identities, effect units, confidence intervals and corrected p=.0678 only for personalized versus nonpersonalized GPT-4. Establish correction date and any public article-version evidence. Return public citations, current versus historical assertions and explicit unknown byte hashes. Do not read https://huggingface.co/datasets/frasalvi/debategpt participant CSV. Read-only public-source research only. No login, outreach, bulk download, access-control bypass, participant or demographic/belief/text records, source scripts/notebooks, model calls, persuasion material or optimization. Do not acquire artifacts with unverified content scope. Stop at unavailable evidence and report the gap. No repository edits, deployment, canonical admission or p(doom) conversion."
+    },
+    {
+      "prompt_id": "PI-P2",
+      "title": "Resolve Spitale aggregate documentation",
+      "prompt": "Review https://pmc.ncbi.nlm.nih.gov/articles/PMC10306283/, OSF project https://osf.io/9ntgf/ and file metadata https://api.osf.io/v2/files/63808d84aac53911c782c021/. The 6,068-byte workbook contents were not inspected and aggregate-only scope has not been independently established. Do not acquire it or seek alternate download routes. Use public documentation only to establish score recoding, assessment versus participant denominators, uncertainty conventions and artifact-specific license. Current accepted facts are published .92/.89 p=.0032; workbook 4\u00d722 and 7,651 assessments remain inherited. Return precise documentary evidence or keep hold. Read-only public-source research only. No login, outreach, bulk download, access-control bypass, participant or demographic/belief/text records, source scripts/notebooks, model calls, persuasion material or optimization. Do not acquire artifacts with unverified content scope. Stop at unavailable evidence and report the gap. No repository edits, deployment, canonical admission or p(doom) conversion."
+    },
+    {
+      "prompt_id": "PI-P3",
+      "title": "Resolve Ofcom survey comparability",
+      "prompt": "Review https://www.ofcom.org.uk/media-use-and-attitudes/online-habits/internet-users-experience-of-harm-online, Wave 8 questionnaire https://www.ofcom.org.uk/siteassets/resources/documents/research-and-data/telecoms-research/telecoms-data-updates/wave-8/questionnaire.pdf?v=405804, Wave 9 technical report https://www.ofcom.org.uk/siteassets/resources/documents/research-and-data/telecoms-research/telecoms-data-updates/wave-9/technical-report.pdf?v=415978, election report https://www.ofcom.org.uk/siteassets/resources/documents/research-and-data/tv-radio-and-on-demand-research/tv-research/news/news-consumption-2024/uk-general-election-survey-2024-report.pdf?v=379617 and official associated aggregate documentation. Preserve Q8a consent routing, Q32a1 conditional denominator, Wave 3 withdrawal, Waves 1\u20132 corrections and Wave 8 age/weight breaks. Resolve workbook GB versus report UK geography; current Q22 pooled base 8556 is not cumulative reach. Verify artifact-specific rights without assuming OGL. Return a question/version/base crosswalk and unresolved gaps, not harmonized estimates. Read-only public-source research only. No login, outreach, bulk download, access-control bypass, participant or demographic/belief/text records, source scripts/notebooks, model calls, persuasion material or optimization. Do not acquire artifacts with unverified content scope. Stop at unavailable evidence and report the gap. No repository edits, deployment, canonical admission or p(doom) conversion."
+    },
+    {
+      "prompt_id": "PI-P4",
+      "title": "Check Costello editorial resolution",
+      "prompt": "Review https://www.science.org/doi/10.1126/science.adq1814, editorial concern https://www.science.org/doi/10.1126/science.aej2383, corrected documentation https://datadryad.org/dataset/doi:10.5061/dryad.v6wwpzh4h and metadata https://zenodo.org/records/22754984. Keep June 11 editorial concern unless an explicit journal resolution is verified. Seek only independently published corrected aggregate effect/CI/p for each exact comparison, cohort and follow-up. Do not attach old intervals to 2044 complete cases; do not acquire archive members or participant rows. Return journal status evidence and comparison-specific verified aggregates, or nulls with reason. Read-only public-source research only. No login, outreach, bulk download, access-control bypass, participant or demographic/belief/text records, source scripts/notebooks, model calls, persuasion material or optimization. Do not acquire artifacts with unverified content scope. Stop at unavailable evidence and report the gap. No repository edits, deployment, canonical admission or p(doom) conversion."
+    },
+    {
+      "prompt_id": "PI-P5",
+      "title": "Review lossless aggregate mapping",
+      "prompt": "Inspect the current pdoom-live evidence-program research catalog persuasion-information.json, its guide and frozen canonical contracts. Propose a mapping for experimental contrast, content judgment, perceived-exposure survey and correction status, preserving unit, denominator, routing, scale, timing, uncertainty and artifact rights. Keep the four producer families/five studies distinct; one publication/correction chain is not independent replication. Return a compatibility analysis and blockers; implementation/admission remains unapproved. Read-only public-source research only. No login, outreach, bulk download, access-control bypass, participant or demographic/belief/text records, source scripts/notebooks, model calls, persuasion material or optimization. Do not acquire artifacts with unverified content scope. Stop at unavailable evidence and report the gap. No repository edits, deployment, canonical admission or p(doom) conversion."
+    }
+  ],
+  "holds": [
+    {
+      "hold_id": "PI-H1",
+      "candidate_ids": [
+        "PI001"
+      ],
+      "reason": "Article byte/version identity and historical request provenance unverified."
+    },
+    {
+      "hold_id": "PI-H2",
+      "candidate_ids": [
+        "PI002"
+      ],
+      "reason": "Aggregate workbook content/recoding, safe acquisition scope and current artifact rights unresolved."
+    },
+    {
+      "hold_id": "PI-H3",
+      "candidate_ids": [
+        "PI003",
+        "PI004"
+      ],
+      "reason": "Artifact-specific OGL, question-level comparable bases and election geography unresolved."
+    },
+    {
+      "hold_id": "PI-H4",
+      "candidate_ids": [
+        "PI005"
+      ],
+      "reason": "Journal concern resolution and corrected comparison-specific effects unverified."
+    },
+    {
+      "hold_id": "PI-H5",
+      "candidate_ids": [
+        "PI001",
+        "PI002",
+        "PI003",
+        "PI004",
+        "PI005"
+      ],
+      "reason": "Canonical mapping, operational collection and source admission not completed."
+    }
+  ],
+  "verification_separation": {
+    "primary_documentary_review": "Current verification and explicitly inherited/uninspected artifacts are distinguished per artifact.",
+    "local_checks": "Catalog invariants and self-authored synthetic regressions; not source data reproduction.",
+    "source_bytes": "One public aggregate election workbook and bounded documentation were privately inspected; no source dataset, source body or workbook is included in repository payload. Verified source hashes are distinct from advertised hashes.",
+    "independent_review": "Pending after payload freeze; parent owns publication and remote CI."
+  },
+  "top_additions": [
+    "DebateGPT corrected published aggregates",
+    "Ofcom OET and election collections with distinct survey identity",
+    "Spitale published content-judgment outcomes"
+  ],
+  "strongest_limitation": "Assigned-content laboratory effects and perceived population exposure remain unconnected to independently authenticated population causal impact.",
+  "smallest_testable_implementation": "Curated three-assertion/two-contrast DebateGPT ledger with comparison-specific uncertainty and correction provenance; no participant data."
+}
