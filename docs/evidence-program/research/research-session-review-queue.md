@@ -1,10 +1,10 @@
 # Research session review queue
 
-Status snapshot: 8 October 2026, 10:42:38 UTC. This is a historical source-review handoff snapshot for sessions 21–23, before their batch publication.
+Status snapshot: 8 October 2026, 11:39:15 UTC. This is a historical source-review handoff snapshot for sessions 24–26, before their final batch publication.
 
-The 26 research sessions below are listed in arrival order. Substantive source reviews proceed sequentially; separately completed reviews may share a publication batch. Twenty reviews are integrated, sessions 21–23 have completed source-review handoffs prepared for one independent batch review and integration, and three remain queued. Final document assembly and publication occur after this cutoff. The batch is not yet merged at this snapshot.
+The 26 research sessions below are listed in arrival order. Substantive source reviews proceed sequentially; separately completed reviews may share a publication batch. Twenty-three reviews are integrated, and sessions 24–26 have completed separate source-review handoffs prepared for the final independent batch review and integration. All 26 original source reviews are complete; repository publication and post-merge checks for the final three remain pending. Final document assembly and publication occur after this cutoff. The batch is not yet merged at this snapshot.
 
-Snapshot counts: 20 integrated; 3 prepared or awaiting CI; 3 queued.
+Snapshot counts: 23 integrated; 3 prepared or awaiting CI; 0 queued.
 
 ## Status definitions
 
@@ -37,12 +37,12 @@ Snapshot counts: 20 integrated; 3 prepared or awaiting CI; 3 queued.
 | 18 | Claim-to-result provenance | Review integrated | [Research guide](claim-result-provenance.md) · [PR 328](https://github.com/mishakgg/pdoom-live/pull/328) | Separate source review complete with explicit holds; 7 actions and 7 bounded prompts; implementation deferred |
 | 19 | Model identity and retirement histories | Review integrated | [Research guide](model-identity-retirement.md) · [PR 328](https://github.com/mishakgg/pdoom-live/pull/328) | Separate source review complete with explicit holds; 7 actions and 7 bounded prompts; implementation deferred |
 | 20 | Undercovered languages and regions | Review integrated | [Research guide](undercovered-languages.md) · [PR 328](https://github.com/mishakgg/pdoom-live/pull/328) | Separate source review complete with explicit holds; 8 actions and 8 bounded prompts; implementation deferred |
-| 21 | Mitigation effectiveness | Review prepared; integration pending | [Research guide](mitigation-effectiveness.md) · [Catalog](../../../data/evidence-program/research/mitigation-effectiveness.json) | Separate source review complete with explicit holds; 7 actions and 7 bounded prompts; implementation deferred |
-| 22 | Negative results and replications | Review prepared; integration pending | [Research guide](negative-replications.md) · [Catalog](../../../data/evidence-program/research/negative-replications.json) | Separate source review complete with explicit holds; 8 actions and 8 bounded prompts; implementation deferred |
-| 23 | Compute supply-chain bottlenecks | Review prepared; integration pending | [Research guide](compute-supply-chain.md) · [Catalog](../../../data/evidence-program/research/compute-supply-chain.json) | Seven primary-supported collections and one SK hynix rights-only candidate; 8 actions and 8 bounded prompts; implementation deferred |
-| 24 | Chinese governance in practice | Queued | Pending review | Not yet assessed |
-| 25 | Benchmark drift and contamination | Queued | Pending review | Not yet assessed |
-| 26 | Electricity and deployment bottlenecks | Queued | Pending review | Not yet assessed |
+| 21 | Mitigation effectiveness | Review integrated | [Research guide](mitigation-effectiveness.md) · [PR 329](https://github.com/mishakgg/pdoom-live/pull/329) | Separate source review complete with explicit holds; 7 actions and 7 bounded prompts; implementation deferred |
+| 22 | Negative results and replications | Review integrated | [Research guide](negative-replications.md) · [PR 329](https://github.com/mishakgg/pdoom-live/pull/329) | Separate source review complete with explicit holds; 8 actions and 8 bounded prompts; implementation deferred |
+| 23 | Compute supply-chain bottlenecks | Review integrated | [Research guide](compute-supply-chain.md) · [PR 329](https://github.com/mishakgg/pdoom-live/pull/329) | Seven primary-supported collections and one SK hynix rights-only candidate; 8 actions and 8 bounded prompts; implementation deferred |
+| 24 | Chinese governance in practice | Review prepared; integration pending | [Research guide](chinese-governance.md) · [Catalog](../../../data/evidence-program/research/chinese-governance.json) | Separate source review complete with explicit holds; 6 actions and 6 bounded prompts; implementation deferred |
+| 25 | Benchmark drift and contamination | Review prepared; integration pending | [Research guide](benchmark-drift.md) · [Catalog](../../../data/evidence-program/research/benchmark-drift.json) | Separate source review complete with explicit holds; 8 actions and 8 bounded prompts; implementation deferred |
+| 26 | Electricity and deployment bottlenecks | Review prepared; integration pending | [Research guide](electricity-deployment.md) · [Catalog](../../../data/evidence-program/research/electricity-deployment.json) | Separate source review complete with explicit holds; 8 actions and 8 bounded prompts; implementation deferred |
 
 ## Open actions for reviewed sessions
 
@@ -165,7 +165,7 @@ The [combined source review](agent-security-incidents.md) was merged in [PR 324]
 - Preserve clean security defaults, exception flags, targeted-goal and DoS meanings. Historical source and archive revisions do not establish the runtime; actual attacked outcomes stay uninterpreted. Missing cost, caps, assistance and runtime metadata remain null.
 - AIxCC denominator 70→63 is one correction chain; aggregate USD152/45-minute reports are not budgets. Actual audit-log access remains unknown. tau pass^k is all-trial consistency. METR human-time horizons are not agent runtime; suite, regularization, FAQ/current-data and estimated-baseline differences remain.
 - NHTSA manufacturer filing, affected equipment and agency-processing corrections preserve authorship/units. OAIC/ART partial reversal, retained findings, no-appeal/concluded statements and store/date discrepancies stay source-attributed. Two OpenAI postmortems are one event, with tentative operator causal assessment and no quantified clinical-harm count.
-- Ten separate actions and eight self-contained bounded read-only prompts preserve rights, access, identity, uncertainty and mapping holds. Item 16 remains queued; its potential event/artifact overlap is a later review question, not another item-13 receipt. No live collection, source execution, canonical admission, deployment or pooled risk inference.
+- Ten separate actions and eight self-contained bounded read-only prompts preserve rights, access, identity, uncertainty and mapping holds. At the original session-13 review cutoff, item 16 was still queued; its later separate review reuses the relevant item-13 evidence identities rather than creating another item-13 receipt. No live collection, source execution, canonical admission, deployment or pooled risk inference.
 
 ### Session 14 Labor-market effects and skill demand
 
@@ -235,7 +235,7 @@ Retain eight scoped collections: six originating collections and two enrichments
 
 ### Session 21 Mitigation effectiveness
 
-The [separate review](mitigation-effectiveness.md) and [JSON record](../../../data/evidence-program/research/mitigation-effectiveness.json) document the completed source-review handoff. Independent batch review and publication remained pending at this historical cutoff.
+The [separate review](mitigation-effectiveness.md) and [JSON record](../../../data/evidence-program/research/mitigation-effectiveness.json) were merged together in [PR 329](https://github.com/mishakgg/pdoom-live/pull/329) at [9cfda7e](https://github.com/mishakgg/pdoom-live/commit/9cfda7eb65c1b6c257c9d9f0c8e96d53073b56e5). All four post-merge checks were observed successful at 11:22:28 UTC on 8 October 2026. Research admission and unresolved evidence holds are unchanged.
 
 Retain seven study packages with explicit holds. LLMail, CaMeL and Redwood rank highest for controlled-comparison value; this is not a ranking of general safeguard effectiveness. Five study packages add to the initial inventory and two enrich existing families. CaMeL uses the already-cataloged AgentDojo benchmark.
 
@@ -244,7 +244,7 @@ Retain seven study packages with explicit holds. LLMail, CaMeL and Redwood rank 
 
 ### Session 22 Negative results and replications
 
-The [separate review](negative-replications.md) and [JSON record](../../../data/evidence-program/research/negative-replications.json) document the completed source-review handoff. Independent batch review and publication remained pending at this historical cutoff.
+The [separate review](negative-replications.md) and [JSON record](../../../data/evidence-program/research/negative-replications.json) were merged together in [PR 329](https://github.com/mishakgg/pdoom-live/pull/329) at [9cfda7e](https://github.com/mishakgg/pdoom-live/commit/9cfda7eb65c1b6c257c9d9f0c8e96d53073b56e5). All four post-merge checks were observed successful at 11:22:28 UTC on 8 October 2026. Research admission and unresolved evidence holds are unchanged.
 
 Retain eight collections: three new families and five enrichments against current catalogs. MLRC reports, StrongREJECT and Crossref editorial links have the highest scientific starting value. The smallest structured step reuses CRP006 for one verified editorial chain; it remains a specification only.
 
@@ -253,21 +253,48 @@ Retain eight collections: three new families and five enrichments against curren
 
 ### Session 23 Compute supply-chain bottlenecks
 
-The [separate review](compute-supply-chain.md) and [JSON record](../../../data/evidence-program/research/compute-supply-chain.json) document the completed source-review handoff. Independent batch review and publication remained pending at this historical cutoff.
+The [separate review](compute-supply-chain.md) and [JSON record](../../../data/evidence-program/research/compute-supply-chain.json) were merged together in [PR 329](https://github.com/mishakgg/pdoom-live/pull/329) at [9cfda7e](https://github.com/mishakgg/pdoom-live/commit/9cfda7eb65c1b6c257c9d9f0c8e96d53073b56e5). All four post-merge checks were observed successful at 11:22:28 UTC on 8 October 2026. Research admission and unresolved evidence holds are unchanged.
 
 Retain eight new documentary collection families and prioritize TSMC, Micron and ASML. Seven collections have primary-supported samples; SK hynix remains rights-only with unverified milestones. One rights-gated ASML specification is deferred. No historical series, independent physical validation or usable-compute estimate is admitted.
 
 - 8 collections; 8 corrections or consequential qualifications; 8 next actions and 8 copy-ready bounded prompts.
 - Completed source checks remain distinguished from unstarted follow-ups. Source-specific rights, access, version, denominator and comparability holds remain explicit. Implementation is deferred; no operational collection or canonical admission.
 
+### Session 24 Chinese governance in practice
+
+The [separate review](chinese-governance.md) and [JSON record](../../../data/evidence-program/research/chinese-governance.json) document the completed source-review handoff. Independent batch review and publication remained pending at this historical cutoff.
+
+Retain six research collections: five new families plus CN023 provincial enrichment. Prioritize enforcement/reinspection, CNCERT organized testing and procurement corrections/awards. Institutional reports do not establish completed compliance, independent audit or model safety. One CNCERT specification remains deferred; no operational admission.
+
+- 6 collections; 7 corrections or consequential qualifications; 6 next actions and 6 copy-ready bounded prompts.
+- Completed checks remain separate from unstarted follow-ups. Source-specific rights, access, version, denominator, identity and comparability holds remain explicit. Implementation is deferred; no operational collection or canonical admission.
+
+### Session 25 Benchmark drift and contamination
+
+The [separate review](benchmark-drift.md) and [JSON record](../../../data/evidence-program/research/benchmark-drift.json) document the completed source-review handoff. Independent batch review and publication remained pending at this historical cutoff.
+
+Retain eight qualified research collections: five new families and three enrichments. Prioritize EvalPlus revision provenance, lm-eval measurement changes and LiveBench retroactive revisions. Preserve measurement identity and evidence-specific contamination semantics; one EvalPlus mapping specification remains deferred, with no benchmark run or operational admission.
+
+- 8 collections; 10 corrections or consequential qualifications; 8 next actions and 8 copy-ready bounded prompts.
+- Completed checks remain separate from unstarted follow-ups. Source-specific rights, access, version, denominator, identity and comparability holds remain explicit. Implementation is deferred; no operational collection or canonical admission.
+
+### Session 26 Electricity and deployment bottlenecks
+
+The [separate review](electricity-deployment.md) and [JSON record](../../../data/evidence-program/research/electricity-deployment.json) document the completed source-review handoff. Independent batch review and publication remained pending at this historical cutoff.
+
+Retain eight new documentary families. Prioritize ERCOT, Georgia PSC and EirGrid for analytical value while retaining EirGrid row/rights holds and blocked ERCOT August/Batch Zero values as unverified. EIA, CSO tables and the LBNL data file have the clearest scoped reuse basis. One conditional two-PDF ERCOT specification remains deferred; no physical-capacity or operational-compute series is admitted.
+
+- 8 collections; 10 corrections or consequential qualifications; 8 next actions and 8 copy-ready bounded prompts.
+- Completed checks remain separate from unstarted follow-ups. Source-specific rights, access, version, denominator, identity and comparability holds remain explicit. Implementation is deferred; no operational collection or canonical admission.
+
 ### Separate post-intake performance audit
 
-Retain the search-person timing sensitivity observed during session 11 CI. One unchanged 500 ms budget failed at 512.9 ms; the same source head passed on retry at 365.6 ms cold and 342.9 ms hot, with the counterpart run and all post-merge checks successful. A repeated failure requires investigation before merge. This research update does not change query code or relax the threshold.
+Retain the search-person timing sensitivity observed during session 11 CI. One unchanged 500 ms budget failed at 512.9 ms; the same source head passed on retry at 365.6 ms cold and 342.9 ms hot, with the counterpart run and all post-merge checks successful. A repeated failure requires investigation before merge. This research update does not change query code or relax the threshold. The sessions 21–23 batch also observed 508.2 ms against the unchanged 500 ms budget on its first push check; same-head PR and diagnostic rerun observations were 338.2 ms and 452.8 ms. All latest exact-head checks and post-merge checks subsequently passed. These measurements do not diagnose a cause or justify relaxing the budget.
 
 ## Scope
 
-This index records review progress and links to repository-native research guides. Integrated research catalogs remain unadmitted candidate evidence. The first three reviews retain their unimplemented source-reader proposals. Session 4 implements a fixed two-file annotation reader, session 5 a fixed one-file graph structure reader, session 6 a bounded offline gzip reader with synthetic-only CI, session 7 a manual aggregate ledger validator, session 8 an in-memory curated contrast checker, session 9 a bounded manual physical-results table reader, session 10 a two-file Common Crawl aggregate reader with synthetic-only public fixtures, and session 11 a manual paper-aggregate validator plus explicitly provisional synthetic-only bit arithmetic; session 12 a fixed four-file AlgoPerf reader with separately licensed fixtures and role-specific target semantics. Session 13 adds a bytes-only AgentDojo metadata decoder with synthetic public fixtures. Session 14 adds one bounded offline Eurostat JSON-stat reader with a separately licensed German aggregate fixture. Session 15 adds one bounded offline LEAP manual instrument/table ledger reader with four separately licensed published group summaries; it is not an HTML extractor. Session 16 adds a bounded manual NHTSA publication-correction ledger. Sessions 17–23 add research documentation and structured metadata only; proposed implementations remain deferred. No operational collector is enabled. Refresh status and unresolved actions when later reviewed changes are merged.
+This index records review progress and links to repository-native research guides. Integrated research catalogs remain unadmitted candidate evidence. The first three reviews retain their unimplemented source-reader proposals. Session 4 implements a fixed two-file annotation reader, session 5 a fixed one-file graph structure reader, session 6 a bounded offline gzip reader with synthetic-only CI, session 7 a manual aggregate ledger validator, session 8 an in-memory curated contrast checker, session 9 a bounded manual physical-results table reader, session 10 a two-file Common Crawl aggregate reader with synthetic-only public fixtures, and session 11 a manual paper-aggregate validator plus explicitly provisional synthetic-only bit arithmetic; session 12 a fixed four-file AlgoPerf reader with separately licensed fixtures and role-specific target semantics. Session 13 adds a bytes-only AgentDojo metadata decoder with synthetic public fixtures. Session 14 adds one bounded offline Eurostat JSON-stat reader with a separately licensed German aggregate fixture. Session 15 adds one bounded offline LEAP manual instrument/table ledger reader with four separately licensed published group summaries; it is not an HTML extractor. Session 16 adds a bounded manual NHTSA publication-correction ledger. Sessions 17–26 add research documentation and structured metadata only; proposed implementations remain deferred. No operational collector is enabled. Refresh status and unresolved actions when later reviewed changes are merged.
 
 ## Snapshot maintenance
 
-This file records status at its stated time, not live main/CI state. After independent review, merge and post-merge checks, a later authorized update may record a new dated snapshot with verified PR/commit evidence. Until then, sessions 21–23 remain prepared in this historical snapshot even if this document itself is subsequently merged. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.
+This file records status at its stated time, not live main/CI state. After independent review, merge and post-merge checks, a later authorized update may record a new dated snapshot with verified PR/commit evidence. Until then, sessions 24–26 remain prepared in this historical snapshot even if this document itself is subsequently merged. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.
