@@ -1,26 +1,42 @@
-"""Focused queue checks, including future sequential snapshots without source-code edits."""
+"""Queue regressions use a synthetic snapshot, independent of review progress."""
 from pathlib import Path
 import sys
 import unittest
 HERE = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(HERE))
-from check_research_queue import check_queue
+from check_research_queue import check_queue, EXPECTED_TITLES
+
+
+def synthetic_snapshot(integrated=3, active=1):
+    lines = ['Status snapshot: 8 October 2026, 00:00 UTC.',
+             f'Snapshot counts: {integrated} integrated; {active} prepared or awaiting CI; {26-integrated-active} queued.']
+    for i, title in enumerate(EXPECTED_TITLES, 1):
+        status = 'Review integrated' if i <= integrated else ('Review prepared; integration pending' if i <= integrated+active else 'Queued')
+        lines.append(f'| {i} | {title} | {status} | Synthetic test only |')
+    return '\n'.join(lines)
 
 
 class ResearchQueueTests(unittest.TestCase):
     def setUp(self):
-        self.text = (HERE.parents[1] / 'docs/evidence-program/research/research-session-review-queue.md').read_text()
+        self.text = synthetic_snapshot()
 
-    def test_current_counts(self):
+    def test_current_repository_snapshot_is_consistent(self):
+        text = (HERE.parents[1] / 'docs/evidence-program/research/research-session-review-queue.md').read_text()
+        r = check_queue(text)
+        self.assertEqual(sum(r[k] for k in ('research_queue_reviews_integrated_at_snapshot', 'research_queue_reviews_prepared_at_snapshot', 'research_queue_reviews_queued_at_snapshot')), 26)
+
+    def test_synthetic_counts(self):
         r = check_queue(self.text)
         self.assertEqual((r['research_queue_reviews_integrated_at_snapshot'], r['research_queue_reviews_prepared_at_snapshot'], r['research_queue_reviews_queued_at_snapshot']), (3, 1, 22))
 
-    def test_future_sequential_snapshot_needs_no_checker_edit(self):
-        s = self.text.replace('| Review prepared; integration pending |', '| Review integrated |').replace('| 5 | Concentration and shared dependencies | Queued |', '| 5 | Concentration and shared dependencies | Review prepared; integration pending |').replace('3 integrated; 1 prepared or awaiting CI; 22 queued.', '4 integrated; 1 prepared or awaiting CI; 21 queued.')
-        self.assertEqual(check_queue(s)['research_queue_reviews_integrated_at_snapshot'], 4)
+    def test_future_sequential_snapshots_need_no_checker_edit(self):
+        for integrated in range(26):
+            with self.subTest(integrated=integrated):
+                self.assertEqual(check_queue(synthetic_snapshot(integrated))['research_queue_reviews_integrated_at_snapshot'], integrated)
+        self.assertEqual(check_queue(synthetic_snapshot(26, 0))['research_queue_reviews_queued_at_snapshot'], 0)
 
     def test_awaiting_ci_is_active_not_integrated(self):
-        s=self.text.replace('| Review prepared; integration pending |', '| Awaiting CI |')
+        s = self.text.replace('| Review prepared; integration pending |', '| Awaiting CI |')
         self.assertEqual(check_queue(s)['research_queue_reviews_integrated_at_snapshot'], 3)
 
     def test_summary_mismatch_rejected(self):
