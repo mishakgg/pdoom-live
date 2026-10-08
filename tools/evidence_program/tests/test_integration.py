@@ -423,5 +423,182 @@ class AdoptionProductivityCatalogTests(unittest.TestCase):
             self.validate()
 
 
+class OrganizationalSafetyTests(unittest.TestCase):
+    def setUp(self):
+        import hashlib
+        from check_organizational_safety import check_catalog, check_queue
+        self.check_catalog = check_catalog
+        self.check_queue = check_queue
+        self.catalog = check.read_json(check.DATA / 'research/organizational-safety.json')
+        self.markdown = (check.DOCS / 'research/organizational-safety.md').read_text()
+        self.queue = (check.DOCS / 'research/research-session-review-queue.md').read_text()
+        self.inventory_hash = hashlib.sha256((check.DATA / 'source_inventory.json').read_bytes()).hexdigest()
+
+    def validate(self):
+        return self.check_catalog(self.catalog, self.inventory_hash, self.markdown)
+
+    def test_organizational_catalog_positive(self):
+        self.assertEqual(self.validate()['organizational_safety_collections'], 5)
+        self.assertEqual(self.check_queue(self.queue)['research_queue_sessions'], 26)
+
+    def test_organizational_admission_rejected(self):
+        self.catalog['collector_enabled'] = True
+        with self.assertRaisesRegex(ValueError, 'cannot enable admission'):
+            self.validate()
+
+    def test_organizational_family_promotion_rejected(self):
+        self.catalog['collections'][0]['collection_status'] = 'collected'
+        with self.assertRaisesRegex(ValueError, 'cannot enable collection'):
+            self.validate()
+
+    def test_organizational_duplicate_candidates_rejected(self):
+        self.catalog['collections'][1]['candidate_id'] = 'OS001'
+        with self.assertRaisesRegex(ValueError, 'candidate IDs'):
+            self.validate()
+
+    def test_organizational_inventory_drift_rejected(self):
+        self.catalog['baseline_inventory']['sha256'] = '0' * 64
+        with self.assertRaisesRegex(ValueError, 'frozen inventory'):
+            self.validate()
+
+    def test_organizational_company_ranking_rejected(self):
+        self.catalog['ranking_basis'] = 'company_safety'
+        with self.assertRaisesRegex(ValueError, 'safety ranking'):
+            self.validate()
+
+    def test_organizational_raw_records_rejected(self):
+        self.catalog['raw_source_content'] = []
+        with self.assertRaisesRegex(ValueError, 'raw or profiling'):
+            self.validate()
+
+    def test_organizational_signed_url_rejected(self):
+        self.catalog['collections'][0]['artifacts'][0]['url'] += '?Signature=unsafe'
+        with self.assertRaisesRegex(ValueError, 'Signed or credential'):
+            self.validate()
+
+    def test_organizational_rights_inheritance_rejected(self):
+        self.catalog['collections'][0]['artifacts'][0]['rights_status'] = 'declared_license'
+        with self.assertRaisesRegex(ValueError, 'rights declaration'):
+            self.validate()
+
+    def test_organizational_missing_provenance_rejected(self):
+        self.catalog['collections'][0]['findings'][0]['evidence_artifact_ids'] = ['unknown']
+        with self.assertRaisesRegex(ValueError, 'lacks provenance'):
+            self.validate()
+
+    def test_organizational_collapsed_statement_support_rejected(self):
+        self.catalog['collections'][0]['findings'][0]['support_kind'] = 'formal_commitment'
+        with self.assertRaisesRegex(ValueError, 'classes must stay separate'):
+            self.validate()
+
+    def test_organizational_external_assessment_attribution_rejected(self):
+        finding = self.catalog['collections'][0]['findings'][0]
+        finding['statement_kind'] = 'external_assessment'
+        finding['support_kind'] = 'organization_reported'
+        with self.assertRaisesRegex(ValueError, 'External assessment'):
+            self.validate()
+
+    def test_organizational_mandate_is_not_action(self):
+        self.catalog['interpretation_guards']['policy_implies_exercised_authority'] = True
+        with self.assertRaisesRegex(ValueError, 'interpretation guard'):
+            self.validate()
+
+    def test_organizational_staffing_is_not_safety(self):
+        self.catalog['interpretation_guards']['staff_counts_imply_safety'] = True
+        with self.assertRaisesRegex(ValueError, 'interpretation guard'):
+            self.validate()
+
+    def test_organizational_missing_disclosure_is_not_absence(self):
+        self.catalog['interpretation_guards']['missing_disclosure_implies_absence'] = True
+        with self.assertRaisesRegex(ValueError, 'interpretation guard'):
+            self.validate()
+
+    def test_organizational_external_review_not_unqualified(self):
+        self.catalog['interpretation_guards']['metr_pilot_publication_veto_must_be_disclosed'] = False
+        with self.assertRaisesRegex(ValueError, 'external-review qualification'):
+            self.validate()
+
+    def test_organizational_textual_correction_not_effectiveness(self):
+        self.catalog['interpretation_guards']['metr_text_changes_imply_effectiveness'] = True
+        with self.assertRaisesRegex(ValueError, 'completed follow-up boundary'):
+            self.validate()
+
+    def test_organizational_aisi_paper_cannot_license_card(self):
+        artifact = next(a for a in self.catalog['collections'][3]['artifacts'] if a['artifact_id'] == 'openai_astra')
+        artifact.update(rights_status='declared_license', license_identifier='CC-BY-4.0', rights_evidence_artifact_ids=['aisi_astra_arxiv_v1'])
+        with self.assertRaisesRegex(ValueError, 'license cannot clear'):
+            self.validate()
+
+    def test_organizational_revised_protocol_not_duplicate_rows(self):
+        self.catalog['interpretation_guards']['aisi_card_and_later_paper_relation'] = 'identical_results'
+        with self.assertRaisesRegex(ValueError, 'completed follow-up boundary'):
+            self.validate()
+
+    def test_organizational_closed_action_not_reassigned(self):
+        self.catalog['focused_follow_up_prompts'][0]['action_id'] = 'OS-A04'
+        with self.assertRaisesRegex(ValueError, 'open gap'):
+            self.validate()
+
+    def test_organizational_adapter_not_implemented(self):
+        self.catalog['proposed_adapter']['status'] = 'implemented'
+        with self.assertRaisesRegex(ValueError, 'remain a proposal'):
+            self.validate()
+
+    def test_organizational_reviewed_source_is_not_fixture(self):
+        self.catalog['proposed_adapter']['fixture_status'] = 'tested'
+        with self.assertRaisesRegex(ValueError, 'remain a proposal'):
+            self.validate()
+
+    def test_organizational_adapter_expansion_rejected(self):
+        self.catalog['proposed_adapter']['maximum_clause_records'] = 7
+        with self.assertRaisesRegex(ValueError, 'bounded scope'):
+            self.validate()
+
+    def test_organizational_question_expansion_rejected(self):
+        self.catalog['proposed_adapter']['question_allowlist']['204'].append('Q9')
+        with self.assertRaisesRegex(ValueError, 'bounded scope'):
+            self.validate()
+
+    def test_organizational_publication_is_not_effective_date(self):
+        self.catalog['proposed_adapter']['unknown_effective_date'] = '2026-10-02'
+        with self.assertRaisesRegex(ValueError, 'cannot invent dates'):
+            self.validate()
+
+    def test_organizational_authority_transfer_not_inferred(self):
+        self.catalog['proposed_adapter']['authority_transfer_inference_allowed'] = True
+        with self.assertRaisesRegex(ValueError, 'authority transfer'):
+            self.validate()
+
+    def test_organizational_known_family_remains_enrichment(self):
+        self.catalog['collections'][1]['classification'] = 'new_relative_to_frozen_inventory'
+        with self.assertRaisesRegex(ValueError, 'classification changed'):
+            self.validate()
+
+    def test_organizational_next_actions_required(self):
+        self.catalog['next_actions'] = []
+        with self.assertRaisesRegex(ValueError, 'next action'):
+            self.validate()
+
+    def test_organizational_doc_drift_rejected(self):
+        self.markdown = self.markdown.replace('## OS001 ', '## OS099 ')
+        with self.assertRaisesRegex(ValueError, 'documentation IDs'):
+            self.validate()
+
+    def test_research_queue_missing_session_rejected(self):
+        self.queue = '\n'.join(line for line in self.queue.splitlines() if not line.startswith('| 26 |'))
+        with self.assertRaisesRegex(ValueError, '26 ordered'):
+            self.check_queue(self.queue)
+
+    def test_research_queue_premature_merge_rejected(self):
+        self.queue = self.queue.replace('| Review prepared; integration pending |', '| Review integrated |')
+        with self.assertRaisesRegex(ValueError, 'promote unfinished'):
+            self.check_queue(self.queue)
+
+    def test_research_queue_snapshot_required(self):
+        self.queue = self.queue.replace('Status snapshot:', 'Current status:')
+        with self.assertRaisesRegex(ValueError, 'dated snapshot'):
+            self.check_queue(self.queue)
+
+
 if __name__ == '__main__':
     unittest.main()
