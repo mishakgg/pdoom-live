@@ -1,12 +1,12 @@
 {
   "title": "Follow-up research queue",
-  "snapshot_at": "2026-10-08T20:00:45Z",
+  "snapshot_at": "2026-10-08T20:19:35Z",
   "original_session_count": 26,
   "original_session_queue": "docs/evidence-program/research/research-session-review-queue.md",
   "received_bundle_count": 7,
   "received_file_count": 18,
   "new_prompt_count": 7,
-  "distinction": "Three earlier reviewed bundles and A/labor, B/experimental and C/safeguard research remain separate from D/model-tariff, whose independently reviewed delta is included in this candidate. Delivery, source review, candidate inclusion and verified remote integration are distinct.",
+  "distinction": "Three earlier reviewed bundles and the four received deep-session A/labor, B/experimental, C/safeguard and D/model-tariff research deltas retain distinct provenance. D is merged and post-merge verified at the recorded commit. Documentary integration remains separate from source admission, collection and operational evidence.",
   "bundles": [
     {
       "sequence": 1,
@@ -537,12 +537,12 @@
       "review_status": "review_complete_with_residual_holds",
       "review_started": true,
       "review_complete": true,
-      "integration_status": "reviewed_delta_included_in_this_candidate",
+      "integration_status": "merged_and_postmerge_verified",
       "substantive_findings_included": true,
       "reviewed_fact_records": 9,
       "operational_admission": "not_admitted",
       "collector_enabled": false,
-      "next_action": "Independently review this candidate, then verify remote publication and exact-commit CI/merge. Preserve all seven held records and prior catalog identities; no canonical admission, live collection or automatic joins.",
+      "next_action": "Preserve all seven held records, original source contexts and prior catalog identities. Research integration is complete at the recorded commit; source admission, live collection, semantic implementation and automatic price/lifecycle joins remain unstarted.",
       "source_reported_repository_context": {
         "status": "current_main_and_supplied_baseline_not_inspected",
         "supplied_planning_baseline": "6cf8c1c89a387a5b26022dd9ea0a216d45b2b629",
@@ -589,6 +589,22 @@
         "repository_access_resolved": true,
         "mapping_status": "partial_native_with_sidecar_semantic_holds",
         "real_source_canonical_validation_run": false
+      },
+      "prior_integration_status_preserved": "reviewed_delta_included_in_this_candidate",
+      "integration_pr_url": "https://github.com/mishakgg/pdoom-live/pull/343",
+      "integration_commit": "78ded6f5a1351dc44722d749479d213afeaf6784",
+      "postmerge_checks_observed_at": "2026-10-08T20:19:26Z",
+      "postmerge_checks": {
+        "browser": "success",
+        "image": "success",
+        "evidence-program": "success",
+        "test": "success"
+      },
+      "postmerge_workflow_urls": {
+        "browser": "https://github.com/mishakgg/pdoom-live/actions/runs/37837947261/job/113519720816",
+        "image": "https://github.com/mishakgg/pdoom-live/actions/runs/37837947234/job/113519720327",
+        "evidence-program": "https://github.com/mishakgg/pdoom-live/actions/runs/37837947224/job/113519719982",
+        "test": "https://github.com/mishakgg/pdoom-live/actions/runs/37837947072/job/113519719512"
       }
     }
   ],
@@ -683,7 +699,8 @@
       "submission_id": "bundle-d",
       "received_at": "2026-10-08T15:11:12Z",
       "reviewed_delta_path": "data/evidence-program/research/followups/model-tariff-review.json",
-      "integration_status": "reviewed_delta_included_in_this_candidate"
+      "integration_status": "merged_and_postmerge_verified",
+      "integration_commit": "78ded6f5a1351dc44722d749479d213afeaf6784"
     },
     {
       "sequence": 4,
@@ -783,7 +800,7 @@
   "canonical_contract_mapping": "pending_separate_review",
   "original_reviews_integrated": 26,
   "original_queue_integration_commit": "972f2bbdc3e123c83ce9ea695c9f265fe6720032",
-  "snapshot_scope": "Additive hosted-model/tariff research candidate after independent source clearance. Seven reviewed deltas; A/B integration history and verified C publication state are recorded separately. Prompts 5–7 keep prior no-result receipt snapshot. No canonical admission or D remote merge is claimed.",
+  "snapshot_scope": "Progress reconciliation after the verified D research merge. Seven reviewed deltas retain their source-specific holds; A/B/C integration history remains unchanged. Prompts 5–7 retain their prior unknown-launch/no-result receipt states. No canonical admission, live collection or automatic price/lifecycle join is established.",
   "reviewed_bundle_count": 7,
   "reviewed_findings_included": true,
   "unreviewed_supplied_claims_adopted": false,
@@ -795,7 +812,7 @@
   "intake_index_sha256": "9abc8254d73a7ed115adec19edee99954b56484749b8ddbfa2ea90bbbe8f97a3",
   "review_order": "bundle-a (prompt 1), bundle-b (prompt 2), bundle-c (prompt 4), bundle-d (prompt 3); review in arrival order.",
   "repository_context_for_this_queue_update": {
-    "base_commit": "b37b0196ebd170d7903d87387bda83bb92407416",
-    "scope": "Hash-verified scoped base including the exact cleared C research payload and prior A/B research. D source-review pin remains a075f76f52964bd582e304863745bdc6d8cfc9b5; original submitted null commits are historical and unchanged."
+    "base_commit": "78ded6f5a1351dc44722d749479d213afeaf6784",
+    "scope": "Hash-verified current base after D research PR 343. Prior source-review and candidate-integration pins remain historical; scientific packages, catalogs, contracts, inventory and submitted context are unchanged."
   }
 }
