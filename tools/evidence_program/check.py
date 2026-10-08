@@ -409,6 +409,7 @@ def run(base_paths=None):
     from check_research_queue import check_queue
     from check_open_model_diffusion import check_catalog as check_open_model_catalog
     from check_concentration_dependencies import check_catalog as check_concentration_catalog
+    from check_persuasion_information import check_catalog as check_persuasion_catalog, check_ledger as check_persuasion_ledger
     from check_historical_backfills import check_catalog as check_historical_catalog
     from check_scientific_progress import check_catalog as check_scientific_catalog, check_ledger as check_scientific_ledger
     inventory = read_json(DATA / 'source_inventory.json')
@@ -455,6 +456,10 @@ def run(base_paths=None):
     scientific_counts = check_scientific_catalog(read_json(DATA / 'research/scientific-progress.json'),
                                             hashlib.sha256((DATA / 'source_inventory.json').read_bytes()).hexdigest(),
                                             (DOCS / 'research/scientific-progress.md').read_text(encoding='utf-8'), ROOT)
+    persuasion_counts = check_persuasion_catalog(read_json(DATA / 'research/persuasion-information.json'),
+                                                hashlib.sha256((DATA / 'source_inventory.json').read_bytes()).hexdigest(),
+                                                (DOCS / 'research/persuasion-information.md').read_text(encoding='utf-8'), ROOT)
+    persuasion_ledger_counts = check_persuasion_ledger(read_json(DATA / 'research/debategpt-correction-ledger.json'))
     scientific_ledger_counts = check_scientific_ledger((DATA / 'research/alab-correction-ledger.json').read_bytes())
     queue_counts = check_queue((DOCS / 'research/research-session-review-queue.md').read_text(encoding='utf-8'))
     links = check_doc_links(base_paths)
@@ -483,13 +488,18 @@ def run(base_paths=None):
     require(scientific_suite.countTestCases() > 0, 'Scientific regression tests missing')
     scientific_result = unittest.TextTestRunner(verbosity=1).run(scientific_suite)
     require(scientific_result.wasSuccessful(), 'Scientific regression suite failed')
-    return {'status': 'passed', **COUNTS, **task_counts, **research_counts, **adoption_counts, **organizational_counts, **open_model_counts, **concentration_counts, **historical_counts, **scientific_counts, **scientific_ledger_counts, **queue_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
+    persuasion_suite = unittest.TestLoader().discover(str(HERE / 'tests'), pattern='test_persuasion*.py')
+    require(persuasion_suite.countTestCases() > 0, 'Persuasion regression tests missing')
+    persuasion_result = unittest.TextTestRunner(verbosity=1).run(persuasion_suite)
+    require(persuasion_result.wasSuccessful(), 'Persuasion regression suite failed')
+    return {'status': 'passed', **COUNTS, **task_counts, **research_counts, **adoption_counts, **organizational_counts, **open_model_counts, **concentration_counts, **historical_counts, **scientific_counts, **scientific_ledger_counts, **persuasion_counts, **persuasion_ledger_counts, **queue_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
             'documentation_relative_links': links, 'integration_regression_tests': integration_result.testsRun,
             'open_model_regression_tests': open_model_result.testsRun,
             'concentration_regression_tests': concentration_result.testsRun,
             'historical_regression_tests': historical_result.testsRun,
             'scientific_regression_tests': scientific_result.testsRun,
-            'scope': 'Offline consistency, synthetic regression and two pinned licensed annotation fixtures and one pinned generated dependency-graph fixture, plus synthetic-only historical gzip tests and manual scientific aggregate metadata/ledger checks with synthetic regressions. Real WMT artifact acceptance is separate/private and does not run in CI. No live fetch, operational collection, production import, deployment, rights approval or language-accuracy evaluation.'}
+            'persuasion_regression_tests': persuasion_result.testsRun,
+            'scope': 'Offline consistency, synthetic regression and two pinned licensed annotation fixtures and one pinned generated dependency-graph fixture, plus synthetic-only historical gzip tests and manual scientific and persuasion aggregate metadata/ledger checks with synthetic regressions. Real WMT artifact acceptance is separate/private and does not run in CI. No live fetch, operational collection, production import, deployment, rights approval or language-accuracy evaluation.'}
 
 
 def main():

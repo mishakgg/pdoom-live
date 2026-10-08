@@ -1,0 +1,114 @@
+{
+  "schema_version": "published-persuasion-contrasts-v1",
+  "input_kind": "manual_aggregate",
+  "study": {
+    "doi": "10.1038/s41562-025-02194-6",
+    "evidence_class": "randomized_assigned_exposure",
+    "outcome": "post_debate_opponent_aligned_agreement",
+    "time_window": "immediate_within_session",
+    "population_causal_effect": null,
+    "participant_data_acquired": false,
+    "model_inference_performed": false
+  },
+  "records": [
+    {
+      "record_id": "human_comparison",
+      "comparison_id": "personalized_gpt4_vs_unpersonalized_human",
+      "intervention": "personalized_gpt4",
+      "comparator": "unpersonalized_human",
+      "outcome": "post_debate_opponent_aligned_agreement",
+      "time_window": "immediate_within_session",
+      "effect_metric": "ordinal_model_odds_ratio",
+      "estimate": "1.812",
+      "uncertainty": {
+        "type": "confidence_interval",
+        "level": "0.95",
+        "lower": "1.260",
+        "upper": "2.607",
+        "method": "t_based_cluster_robust"
+      },
+      "p_value": "0.01",
+      "p_relation": "<",
+      "conditioning": "pretreatment_agreement",
+      "status": "current",
+      "source": {
+        "doi": "10.1038/s41562-025-02194-6",
+        "url": "https://www.nature.com/articles/s41562-025-02194-6",
+        "version": "current_article",
+        "locator": "Results: personalized GPT-4 versus unpersonalized human; adjusted ordinal model",
+        "artifact_sha256": null,
+        "capture_status": "text_observed_hash_unavailable"
+      }
+    },
+    {
+      "record_id": "personalization_original",
+      "comparison_id": "personalized_gpt4_vs_nonpersonalized_gpt4",
+      "intervention": "personalized_gpt4",
+      "comparator": "nonpersonalized_gpt4",
+      "outcome": "post_debate_opponent_aligned_agreement",
+      "time_window": "immediate_within_session",
+      "effect_metric": "ordinal_model_odds_ratio",
+      "estimate": "1.487",
+      "uncertainty": {
+        "type": "confidence_interval",
+        "level": "0.95",
+        "lower": "0.971",
+        "upper": "2.276",
+        "method": "t_based_cluster_robust"
+      },
+      "p_value": "0.04",
+      "p_relation": "=",
+      "conditioning": "pretreatment_agreement",
+      "status": "superseded",
+      "source": {
+        "doi": "10.1038/s41562-026-02588-0",
+        "url": "https://www.nature.com/articles/s41562-026-02588-0",
+        "version": "original_reported_in_correction",
+        "locator": "Author Correction: superseded direct GPT-4 personalization comparison",
+        "artifact_sha256": null,
+        "capture_status": "text_observed_hash_unavailable"
+      }
+    },
+    {
+      "record_id": "personalization_corrected",
+      "comparison_id": "personalized_gpt4_vs_nonpersonalized_gpt4",
+      "intervention": "personalized_gpt4",
+      "comparator": "nonpersonalized_gpt4",
+      "outcome": "post_debate_opponent_aligned_agreement",
+      "time_window": "immediate_within_session",
+      "effect_metric": "ordinal_model_odds_ratio",
+      "estimate": "1.487",
+      "uncertainty": {
+        "type": "confidence_interval",
+        "level": "0.95",
+        "lower": "0.971",
+        "upper": "2.276",
+        "method": "t_based_cluster_robust"
+      },
+      "p_value": "0.0678",
+      "p_relation": "=",
+      "conditioning": "pretreatment_agreement",
+      "status": "current",
+      "source": {
+        "doi": "10.1038/s41562-026-02588-0",
+        "url": "https://www.nature.com/articles/s41562-026-02588-0",
+        "version": "correction",
+        "locator": "Author Correction: corrected direct GPT-4 personalization comparison",
+        "artifact_sha256": null,
+        "capture_status": "text_observed_hash_unavailable"
+      }
+    }
+  ],
+  "correction": {
+    "from_record_id": "personalization_original",
+    "to_record_id": "personalization_corrected",
+    "relation": "corrects_same_comparison",
+    "changed_fields": [
+      "p_value"
+    ],
+    "doi": "10.1038/s41562-026-02588-0",
+    "url": "https://www.nature.com/articles/s41562-026-02588-0",
+    "publication_date": "2026-09-03",
+    "journal_status": "published_author_correction"
+  }
+}
