@@ -1,8 +1,10 @@
 # Research session review queue
 
-Status snapshot: 8 October 2026, 00:01 UTC. This is a pre-integration snapshot for session 3.
+Status snapshot: 8 October 2026, 00:45 UTC. This is a pre-integration snapshot for session 4.
 
-The 26 research sessions below are listed in arrival order. Review and integration proceed sequentially. Two reviews are integrated, one review is prepared for independent review and integration, and 23 remain queued. Session 3 is active; it is not yet merged at this snapshot.
+The 26 research sessions below are listed in arrival order. Review and integration proceed sequentially. Three reviews are integrated, one review is prepared for independent review and integration, and 22 remain queued. Session 4 is active; it is not yet merged at this snapshot.
+
+Snapshot counts: 3 integrated; 1 prepared or awaiting CI; 22 queued.
 
 ## Status definitions
 
@@ -17,8 +19,8 @@ The 26 research sessions below are listed in arrival order. Review and integrati
 | ---: | --- | --- | --- | --- |
 | 1 | Chinese safety evaluations | Review integrated | [Research guide](https://github.com/mishakgg/pdoom-live/blob/5f6ff0c15c0461f98dd059177384811bfa9eb839/docs/evidence-program/research/chinese-safety-evaluations.md) · [PR 312](https://github.com/mishakgg/pdoom-live/pull/312) | FLAMES adapter unimplemented; eight artifact holds; two focused follow-up prompts prepared |
 | 2 | Real-world adoption and productivity | Review integrated | [Research guide](https://github.com/mishakgg/pdoom-live/blob/d35063f098be9dc59c386edd10f6088527156684/docs/evidence-program/research/adoption-productivity.md) · [PR 313](https://github.com/mishakgg/pdoom-live/pull/313) | StatCan adapter and executable fixtures unimplemented; five evidence holds; five focused follow-up prompts prepared |
-| 3 | Organizational safety practices | Review prepared; integration pending | [Research guide](organizational-safety.md) · [Catalog](../../../data/evidence-program/research/organizational-safety.json) | HAIP reader and durable fixtures unimplemented; rights review, Microsoft certificate/PDF and Apollo original-report holds; five bounded prompts |
-| 4 | Open-model diffusion and accessibility | Queued | Pending review | Not yet assessed |
+| 3 | Organizational safety practices | Review integrated | [Research guide](organizational-safety.md) · [PR 314](https://github.com/mishakgg/pdoom-live/pull/314) | HAIP reader and durable fixtures unimplemented; rights review, Microsoft certificate/PDF and Apollo original-report holds; five bounded prompts |
+| 4 | Open-model diffusion and accessibility | Review prepared; integration pending | [Research guide](open-model-diffusion.md) · [Catalog](../../../data/evidence-program/research/open-model-diffusion.json) | Two-file offline reader implemented with separately licensed research fixtures; production mapping, broader histories, access and artifact rights remain held |
 | 5 | Concentration and shared dependencies | Queued | Pending review | Not yet assessed |
 | 6 | Historical capability backfills | Queued | Pending review | Not yet assessed |
 | 7 | AI-assisted scientific progress | Queued | Pending review | Not yet assessed |
@@ -62,17 +64,25 @@ The 26 research sessions below are listed in arrival order. Review and integrati
 
 ### Session 3 Organizational safety practices
 
-The [source review](organizational-safety.md) and offline catalog checks are prepared. Integration is pending at the stated snapshot. All five collections remain unadmitted.
+The [source review](organizational-safety.md) was merged in [PR 314](https://github.com/mishakgg/pdoom-live/pull/314) at [4ecece6](https://github.com/mishakgg/pdoom-live/commit/4ecece6abd322932f70f121aef2e99fc3be467bb). Four post-merge checks passed. All five collections remain unadmitted.
 
 - Completed bounded checks: current access to both Fujitsu PDFs; both METR-anticipated textual edits; original AISI paper/version/license and evolving-protocol relationship; source-family comparison. None establishes safety effectiveness.
 - Prepare the two-report/five-question/up-to-six-clause HAIP reader only after durable fixtures and lossless compatibility mapping are reviewed. The source reader is unimplemented.
 - Retain artifact-specific rights holds, Microsoft underlying certificate and 2026 PDF access gaps, and the targeted Apollo original-report gap.
 - Five self-contained prompts and eight action entries are in the guide and catalog; three entries are completed bounded work, five are open or held.
 
+### Session 4 Open-model diffusion and accessibility
+
+The [source review](open-model-diffusion.md) and its offline two-revision reader are prepared; independent review, publication and CI/integration remain pending at this snapshot. Two exact annotation YAMLs are acquired as separately licensed research test fixtures. Operational collection and source admission remain disabled.
+
+- Implemented bounded reader: 14 parent and 12 child criteria, one criteria-set change removing `api` and `package`, and zero inferred model-access or model-license events. No evidence links or model files are fetched.
+- Preserve open weights, open source, practical access and successful reproduction as different concepts; model licenses do not inherit annotation rights.
+- Remaining actions and focused prompts are in the guide and catalog. Historical Hub export contents/rights, Epoch date and category mapping, OLMo reproduction evidence and PeaTMOSS dataset access/rights are separately qualified.
+
 ## Scope
 
-This index records review progress and links to repository-native research guides. Integrated research catalogs remain unadmitted candidate evidence. Neither integrated session has an implemented source adapter or enabled collection. Refresh status and unresolved actions when later reviewed changes are merged.
+This index records review progress and links to repository-native research guides. Integrated research catalogs remain unadmitted candidate evidence. The first three reviews retain their unimplemented source-reader proposals. Session 4 implements only a fixed two-file offline research reader; no operational collector is enabled. Refresh status and unresolved actions when later reviewed changes are merged.
 
 ## Snapshot maintenance
 
-This file records status at its stated time, not live main/CI state. After independent review, merge and post-merge checks, a later authorized update may record a new dated snapshot with verified PR/commit evidence. Until then, session 3 remains prepared in this historical snapshot even if this document itself is subsequently merged. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.
+This file records status at its stated time, not live main/CI state. After independent review, merge and post-merge checks, a later authorized update may record a new dated snapshot with verified PR/commit evidence. Until then, session 4 remains prepared in this historical snapshot even if this document itself is subsequently merged. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.

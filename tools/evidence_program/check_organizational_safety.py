@@ -159,17 +159,6 @@ def check_catalog(catalog, inventory_hash, markdown):
             'organizational_safety_findings': len(all_findings),
             'unadmitted_organizational_safety_collections': 5}
 
-
-def check_queue(markdown):
-    require('Status snapshot:' in markdown and '2026' in markdown, 'Research queue must be a dated snapshot')
-    rows = re.findall(r'^\| (\d+) \| ([^|]+) \| ([^|]+) \|', markdown, re.MULTILINE)
-    require(len(rows) == 26 and [int(r[0]) for r in rows] == list(range(1, 27)),
-            'Research queue must preserve 26 ordered sessions')
-    require(len({r[1].strip() for r in rows}) == 26, 'Research queue contains duplicate sessions')
-    require(all(rows[i][2].strip() == 'Review integrated' for i in [0, 1]) and
-            rows[2][2].strip() == 'Review prepared; integration pending' and
-            all(row[2].strip() == 'Queued' for row in rows[3:]),
-            'Research queue snapshot must not promote unfinished sessions')
-    require('Organizational safety practices' == rows[2][1].strip(), 'Research queue third session mismatch')
-    return {'research_queue_sessions': 26, 'research_queue_reviews_integrated_at_snapshot': 2,
-            'research_queue_reviews_prepared_at_snapshot': 1}
+# Backward-compatible import for the existing focused organizational test suite.
+# Queue state is maintained independently of this source-specific catalog.
+from check_research_queue import check_queue

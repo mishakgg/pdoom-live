@@ -405,7 +405,9 @@ def run(base_paths=None):
     from validate_dataset import check_contracts, validate_bundle, SCHEMA, Draft202012Validator, FORMAT_CHECKER
     from check_methodology_examples import verify_examples
     from check_adoption_productivity import check_catalog as check_adoption_catalog
-    from check_organizational_safety import check_catalog as check_organizational_catalog, check_queue
+    from check_organizational_safety import check_catalog as check_organizational_catalog
+    from check_research_queue import check_queue
+    from check_open_model_diffusion import check_catalog as check_open_model_catalog
     inventory = read_json(DATA / 'source_inventory.json')
     mapping = read_json(DATA / 'coverage_mapping.json')
     metrics = read_json(DATA / 'baseline_metrics.json')
@@ -438,6 +440,9 @@ def run(base_paths=None):
     organizational_counts = check_organizational_catalog(read_json(DATA / 'research/organizational-safety.json'),
                                             hashlib.sha256((DATA / 'source_inventory.json').read_bytes()).hexdigest(),
                                             (DOCS / 'research/organizational-safety.md').read_text(encoding='utf-8'))
+    open_model_counts = check_open_model_catalog(read_json(DATA / 'research/open-model-diffusion.json'),
+                                            hashlib.sha256((DATA / 'source_inventory.json').read_bytes()).hexdigest(),
+                                            (DOCS / 'research/open-model-diffusion.md').read_text(encoding='utf-8'))
     queue_counts = check_queue((DOCS / 'research/research-session-review-queue.md').read_text(encoding='utf-8'))
     links = check_doc_links(base_paths)
     loader = unittest.TestLoader()
@@ -449,9 +454,14 @@ def run(base_paths=None):
     require(integration_suite.countTestCases() > 0, 'Integration regression tests missing')
     integration_result = unittest.TextTestRunner(verbosity=1).run(integration_suite)
     require(integration_result.wasSuccessful(), 'Integration regression suite failed')
-    return {'status': 'passed', **COUNTS, **task_counts, **research_counts, **adoption_counts, **organizational_counts, **queue_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
+    open_model_suite = unittest.TestLoader().discover(str(HERE / 'tests'), pattern='test_open_model*.py')
+    require(open_model_suite.countTestCases() > 0, 'Open-model regression tests missing')
+    open_model_result = unittest.TextTestRunner(verbosity=1).run(open_model_suite)
+    require(open_model_result.wasSuccessful(), 'Open-model regression suite failed')
+    return {'status': 'passed', **COUNTS, **task_counts, **research_counts, **adoption_counts, **organizational_counts, **open_model_counts, **queue_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
             'documentation_relative_links': links, 'integration_regression_tests': integration_result.testsRun,
-            'scope': 'Offline consistency and synthetic regression checks only. No source fetch, collection, production import, deployment, rights approval or language-accuracy evaluation.'}
+            'open_model_regression_tests': open_model_result.testsRun,
+            'scope': 'Offline consistency, synthetic regression and two pinned licensed annotation-fixture checks only. No live fetch, operational collection, production import, deployment, rights approval or language-accuracy evaluation.'}
 
 
 def main():
