@@ -1,10 +1,10 @@
 # Research session review queue
 
-Status snapshot: 8 October 2026, 04:21 UTC. This is a pre-integration snapshot for session 10.
+Status snapshot: 8 October 2026, 04:56 UTC. This is a pre-integration snapshot for session 11.
 
-The 26 research sessions below are listed in arrival order. Review and integration proceed sequentially. Nine reviews are integrated, one review is prepared for independent review and integration, and 16 remain queued. Session 10 is active; it is not yet merged at this snapshot.
+The 26 research sessions below are listed in arrival order. Review and integration proceed sequentially. Ten reviews are integrated, one review is prepared for independent review and integration, and 15 remain queued. Session 11 is active; it is not yet merged at this snapshot.
 
-Snapshot counts: 9 integrated; 1 prepared or awaiting CI; 16 queued.
+Snapshot counts: 10 integrated; 1 prepared or awaiting CI; 15 queued.
 
 ## Status definitions
 
@@ -26,8 +26,8 @@ Snapshot counts: 9 integrated; 1 prepared or awaiting CI; 16 queued.
 | 7 | AI-assisted scientific progress | Review integrated | [Research guide](scientific-progress.md) · [PR 318](https://github.com/mishakgg/pdoom-live/pull/318) | Manual aggregate correction ledger validator implemented; source extraction, article byte pins, uncertainty, original exports, numerical validation, historical reuse and canonical mapping remain held |
 | 8 | Persuasion and information ecosystems | Review integrated | [Research guide](persuasion-information.md) · [PR 319](https://github.com/mishakgg/pdoom-live/pull/319) | Curated published-effect ledger and synthetic checks implemented; source extraction, participant CSV proposal, Spitale workbook/rights, Ofcom rights/geography, Costello editorial resolution/effects and canonical mapping remain held |
 | 9 | Robotics and physical-world capability | Review integrated | [Research guide](robotics-physical.md) · [PR 320](https://github.com/mishakgg/pdoom-live/pull/320) | Bounded manual BARN table reader with separately licensed fixture implemented; trial identity/means, RoboArena export semantics, RRC rights/index, PhAIL cohorts/metrics, STRANDS rights/units and canonical mapping remain held |
-| 10 | Training-data availability and feedback loops | Review prepared; integration pending | [Research guide](training-data-feedback.md) · [Catalog](../../../data/evidence-program/research/training-data-feedback.json) | Bounded offline Common Crawl aggregate reader implemented; synthetic-only public CI; rights, audit panel, experiment versions/coverage, FineWeb2 denominator bridge, Epoch input discrepancy and canonical mapping remain held |
-| 11 | Human reliance and decision quality | Queued | Pending review | Not yet assessed |
+| 10 | Training-data availability and feedback loops | Review integrated | [Research guide](training-data-feedback.md) · [PR 321](https://github.com/mishakgg/pdoom-live/pull/321) | Bounded offline Common Crawl aggregate reader implemented; synthetic-only public CI; rights, audit panel, experiment versions/coverage, FineWeb2 denominator bridge, Epoch input discrepancy and canonical mapping remain held |
+| 11 | Human reliance and decision quality | Review prepared; integration pending | [Research guide](human-reliance.md) · [Catalog](../../../data/evidence-program/research/human-reliance.json) | Manual paper aggregate validator and provisional synthetic-only decoder implemented; workbook permission/schema/acceptance, four data-rights holds, denominator conflicts, cohort/measure lineage and canonical mapping remain held |
 | 12 | Algorithmic efficiency and scaling | Queued | Pending review | Not yet assessed |
 | 13 | Agent autonomy/security evaluations and incidents/near-misses | Queued | Pending review | Not yet assessed |
 | 14 | Labor-market effects and skill demand | Queued | Pending review | Not yet assessed |
@@ -129,7 +129,7 @@ The [source review](robotics-physical.md) and bounded BARN reader were merged in
 
 ### Session 10 Training-data availability and feedback loops
 
-The [source review](training-data-feedback.md) prepares five collections: Common Crawl statistics, DPI/Consent, Collapse or Thrive, FineWeb2 and Epoch data stock. Independent review, publication and CI/integration remain pending at this snapshot.
+The [source review](training-data-feedback.md) and offline Common Crawl reader were merged in [PR 321](https://github.com/mishakgg/pdoom-live/pull/321) at [33fef790](https://github.com/mishakgg/pdoom-live/commit/33fef7908a6e449c8acd38f15b8d50d65a4923a3). All four post-merge checks were observed successful at 04:40:09 UTC on 8 October 2026. Five collections remain unadmitted with their original holds.
 
 - Completed bounded work: primary-source review, exact current-base comparison of frozen64 and all nine previous catalogs (48 collections, 362 artifact references, 45 comparison cells), and a two-file/three-crawl offline reader. Private exact-artifact acceptance is separate from public synthetic-only tests.
 - Common Crawl page sums and four-decimal shares reconcile for 486 category rows. Unknown-language urls is a page-residual placeholder; normalized cardinality stays null and language URL totals do not partition global URLs. Capture/release dates never become unknown content-publication dates.
@@ -137,10 +137,20 @@ The [source review](training-data-feedback.md) prepares five collections: Common
 - Collapse reference-data role does not mean human authorship. Code/manuscript covariance and export-era/current filename differences remain explicit; configured grids are not completed runs. Epoch raw/quality/effective repetition measures and paper/input discrepancies remain separate, without execution or annual-stock claims.
 - Eight separate next actions and six standalone bounded prompts retain CSV/metadata/result/code rights, Consent panel access, source-version/denominator bridges and canonical mapping holds. No corpus/page content, experiment/model/source execution, live collector or deployment.
 
+### Session 11 Human reliance and decision quality
+
+The [source review](human-reliance.md) prepares five experimental families: Bastani, Bansal, Okamura–Yamada, Gaube and Glickman–Sharot. Independent review, publication and CI/integration remain pending at this snapshot.
+
+- Completed bounded work: public documentary/dictionary/metadata review and frozen64 plus all-ten-catalog comparison, covering 53 earlier collections, 404 artifact references and 50 candidate-by-catalog cells. No participant files were acquired or published.
+- Implemented manual Okamura paper aggregate validator: 194 recruits, 116 completers, 78 excluded, 1,740 decisions, 1,282 correct and 1,236/504 automatic/manual. These are published counts, not reproduced workbook results. Synthetic-only five-bit arithmetic uses an explicitly provisional convention; workbook reader and actual-data acceptance remain held.
+- Preserve Bastani 839/943 survey versus 2,848 student-session denominators; Bansal 508/35%/100-per-condition conflict and separate unaided arm; Gaube 265/264 conflict, human-authored AI labels and restrictive scoring; Glickman main/extension cohorts, different block designs and signed-bias versus absolute-error outcomes.
+- Minors rows, medical/clinical records, participant identifiers and demographics are excluded. Dataset CC BY does not settle the unopened workbook's participant/privacy/schema gate; other four data licenses remain unknown. No lasting deskilling or clinical effectiveness inference.
+- Eight action entries and six standalone bounded read-only prompts preserve source acceptance, rights, denominator/measure/version lineage and lossless mapping holds. No study-code execution, simulator/model run, collector, canonical admission or deployment.
+
 ## Scope
 
-This index records review progress and links to repository-native research guides. Integrated research catalogs remain unadmitted candidate evidence. The first three reviews retain their unimplemented source-reader proposals. Session 4 implements a fixed two-file annotation reader, session 5 a fixed one-file graph structure reader, session 6 a bounded offline gzip reader with synthetic-only CI, session 7 a manual aggregate ledger validator, session 8 an in-memory curated contrast checker, session 9 a bounded manual physical-results table reader, and session 10 a two-file Common Crawl aggregate reader with synthetic-only public fixtures; no operational collector is enabled. Refresh status and unresolved actions when later reviewed changes are merged.
+This index records review progress and links to repository-native research guides. Integrated research catalogs remain unadmitted candidate evidence. The first three reviews retain their unimplemented source-reader proposals. Session 4 implements a fixed two-file annotation reader, session 5 a fixed one-file graph structure reader, session 6 a bounded offline gzip reader with synthetic-only CI, session 7 a manual aggregate ledger validator, session 8 an in-memory curated contrast checker, session 9 a bounded manual physical-results table reader, session 10 a two-file Common Crawl aggregate reader with synthetic-only public fixtures, and session 11 a manual paper-aggregate validator plus explicitly provisional synthetic-only bit arithmetic; no operational collector is enabled. Refresh status and unresolved actions when later reviewed changes are merged.
 
 ## Snapshot maintenance
 
-This file records status at its stated time, not live main/CI state. After independent review, merge and post-merge checks, a later authorized update may record a new dated snapshot with verified PR/commit evidence. Until then, session 10 remains prepared in this historical snapshot even if this document itself is subsequently merged. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.
+This file records status at its stated time, not live main/CI state. After independent review, merge and post-merge checks, a later authorized update may record a new dated snapshot with verified PR/commit evidence. Until then, session 11 remains prepared in this historical snapshot even if this document itself is subsequently merged. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.

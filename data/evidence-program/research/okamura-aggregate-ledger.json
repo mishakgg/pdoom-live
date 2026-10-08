@@ -1,0 +1,79 @@
+{
+  "schema_version": "okamura-paper-aggregate-ledger-v1",
+  "input_kind": "manual_aggregate",
+  "source": {
+    "doi": "10.1371/journal.pone.0229132",
+    "url": "https://doi.org/10.1371/journal.pone.0229132",
+    "publication_date": "2020-02-21",
+    "observed_date": "2026-10-08",
+    "locator": "Materials and methods / Participants; Procedure; Results; Performance: Sensitivity d-prime and accuracy",
+    "artifact_sha256": null,
+    "capture_status": "manual_transcription_not_source_extraction"
+  },
+  "measurement": {
+    "analysis_population": "completers_only",
+    "checkpoint_count": 15,
+    "time_window": "within_session_first_15_checkpoints",
+    "evidence_class": "published_task_performance_aggregate"
+  },
+  "counts": [
+    {
+      "metric": "recruited",
+      "count": 194
+    },
+    {
+      "metric": "completers",
+      "count": 116
+    },
+    {
+      "metric": "excluded",
+      "count": 78
+    },
+    {
+      "metric": "decisions",
+      "count": 1740
+    },
+    {
+      "metric": "correct",
+      "count": 1282
+    },
+    {
+      "metric": "automatic",
+      "count": 1236
+    },
+    {
+      "metric": "manual",
+      "count": 504
+    }
+  ],
+  "groups": [
+    {
+      "group": "NoTCC",
+      "completers": 28
+    },
+    {
+      "group": "Visual",
+      "completers": 18
+    },
+    {
+      "group": "Audio",
+      "completers": 22
+    },
+    {
+      "group": "Verbal",
+      "completers": 29
+    },
+    {
+      "group": "Anthro.",
+      "completers": 19
+    }
+  ],
+  "boundaries": {
+    "participant_data_acquired": false,
+    "source_extraction_performed": false,
+    "statistical_reanalysis_performed": false,
+    "canonical_import_enabled": false,
+    "workbook_acceptance": "blocked",
+    "bit_schema_verification": "not_established_by_paper_aggregates"
+  }
+}
