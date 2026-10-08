@@ -814,7 +814,10 @@ async function searchGroups(
   for (const kind of types) {
     const limit = parsed.mode === "suggest" ? SEARCH_SUGGEST_LIMITS[kind] : (parsed.limit ?? SEARCH_PAGE_LIMIT_DEFAULT);
     const kindCursor = parsed.type === kind ? cursor : null;
-    const group = await searchKind(client, kind, prepared, parsed, kindCursor, limit, fp);
+    // More links continue one group with an explicit type, even when this
+    // request is untyped. Bind new cursors to that typed continuation.
+    const kindFp = parsed.type === kind ? fp : fingerprint({ ...parsed, type: kind }, prepared.normalized, prepared.tokens);
+    const group = await searchKind(client, kind, prepared, parsed, kindCursor, limit, kindFp);
     (response.groups as Record<SearchEntityType, SearchGroup<SearchHit>>)[kind] = group;
   }
   return response;

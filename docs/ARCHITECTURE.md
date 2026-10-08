@@ -229,6 +229,8 @@ Statement hits use the same public review rule as statement lists (`isPublicRevi
 
 Recency breaks ties. It does not outrank a stronger match. People are not ordered by statement count, employer, or cohort. Token lists are capped, SQL is parameterized, and each search runs under a statement timeout. Expected orders for the synthetic fixture live in `data/fixtures/search/expected-ranking.json`.
 
+Each group cursor is bound to the effective typed continuation, including when the first request has no entity type or filters narrow it to a single group. A group’s More link adds that type while preserving the normalized query and filters; a different query, filter, or entity type still invalidates the cursor. Already-typed fingerprints and the v2 cursor payload are unchanged.
+
 Search cursors require canonical string UUIDs (8-4-4-4-12 hexadecimal groups, case-insensitive, with no version or variant restriction). Malformed cursor IDs are rejected before database access. `/api/search` returns `400 invalid_cursor` for invalid cursors; schema-invalid requests remain `invalid_query`. `/search` offers a restart link that removes only the cursor and retains the valid query and filters. Other query failures still reach the application error boundary. The separate `/api/v1` cursor contracts are unchanged.
 
 Later, semantic retrieval can be added for exploratory question answering, but it must return evidence-backed records rather than free-floating generated claims.
