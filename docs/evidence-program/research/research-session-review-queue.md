@@ -1,10 +1,10 @@
 # Research session review queue
 
-Status snapshot: 8 October 2026, 06:26 UTC. This is a pre-integration snapshot for session 13.
+Status snapshot: 8 October 2026, 07:11 UTC. This is a pre-integration snapshot for session 14.
 
-The 26 research sessions below are listed in arrival order. Review and integration proceed sequentially. Twelve reviews are integrated, one combined review is prepared for independent review and integration, and 13 remain queued. Session 13 is active; it is not yet merged at this snapshot.
+The 26 research sessions below are listed in arrival order. Review and integration proceed sequentially. Thirteen reviews are integrated, one review is prepared for independent review and integration, and 12 remain queued. Session 14 is active; it is not yet merged at this snapshot.
 
-Snapshot counts: 12 integrated; 1 prepared or awaiting CI; 13 queued.
+Snapshot counts: 13 integrated; 1 prepared or awaiting CI; 12 queued.
 
 ## Status definitions
 
@@ -29,8 +29,8 @@ Snapshot counts: 12 integrated; 1 prepared or awaiting CI; 13 queued.
 | 10 | Training-data availability and feedback loops | Review integrated | [Research guide](training-data-feedback.md) · [PR 321](https://github.com/mishakgg/pdoom-live/pull/321) | Bounded offline Common Crawl aggregate reader implemented; synthetic-only public CI; rights, audit panel, experiment versions/coverage, FineWeb2 denominator bridge, Epoch input discrepancy and canonical mapping remain held |
 | 11 | Human reliance and decision quality | Review integrated | [Research guide](human-reliance.md) · [PR 322](https://github.com/mishakgg/pdoom-live/pull/322) | Manual paper aggregate validator and provisional synthetic-only decoder implemented; workbook permission/schema/acceptance, four data-rights holds, denominator conflicts, cohort/measure lineage and canonical mapping remain held |
 | 12 | Algorithmic efficiency and scaling | Review integrated | [Research guide](algorithmic-efficiency.md) · [PR 323](https://github.com/mishakgg/pdoom-live/pull/323) | One licensed offline AlgoPerf trial reader implemented; compatible comparisons, NanoGPT log rights/timing, Epoch sheet/version, OpenAI numerical conflicts/rights, MIT trace-to-figure/rights and canonical mapping remain held |
-| 13 | Agent autonomy/security evaluations and incidents/near-misses | Review prepared; integration pending | [Research guide](agent-security-incidents.md) · [Catalog](../../../data/evidence-program/research/agent-security-incidents.json) | One offline metadata decoder with synthetic public fixtures and private clean acceptance; runtime/trace rights, actual audit logs, version/denominator/authority/revision gaps and canonical mapping remain held |
-| 14 | Labor-market effects and skill demand | Queued | Pending review | Not yet assessed |
+| 13 | Agent autonomy/security evaluations and incidents/near-misses | Review integrated | [Research guide](agent-security-incidents.md) · [PR 324](https://github.com/mishakgg/pdoom-live/pull/324) | One offline metadata decoder with synthetic public fixtures and private clean acceptance; runtime/trace rights, actual audit logs, version/denominator/authority/revision gaps and canonical mapping remain held |
+| 14 | Labor-market effects and skill demand | Review prepared; integration pending | [Research guide](labor-market.md) · [Catalog](../../../data/evidence-program/research/labor-market.json) | One offline licensed German Eurostat slice reader implemented; earlier reference years, source-specific comparability, BTOS export, derivative links and canonical mapping remain held |
 | 15 | Forecast and survey reconstruction | Queued | Pending review | Not yet assessed |
 | 16 | Incidents and near-misses | Queued | Pending review | Not yet assessed |
 | 17 | Inference cost and price–performance | Queued | Pending review | Not yet assessed |
@@ -159,7 +159,7 @@ The [source review](algorithmic-efficiency.md) and offline AlgoPerf reader were 
 
 ### Session 13 Agent autonomy/security evaluations and incidents/near-misses
 
-The [combined source review](agent-security-incidents.md) prepares seven collections from one submitted report: AgentDojo, AIxCC, tau-bench, METR horizons, NHTSA, OAIC/ART and OpenAI sycophancy. Independent review, publication and CI/integration remain pending at this snapshot.
+The [combined source review](agent-security-incidents.md) was merged in [PR 324](https://github.com/mishakgg/pdoom-live/pull/324) at [ab1434f](https://github.com/mishakgg/pdoom-live/commit/ab1434f30114df6784409d84069e9a8f785a45b1). All four post-merge checks were observed successful at 06:45:55 UTC on 8 October 2026. It remains one original report with seven unadmitted collections: AgentDojo, AIxCC, tau-bench, METR horizons, NHTSA, OAIC/ART and OpenAI sycophancy.
 
 - Completed bounded work: frozen 64 plus all twelve earlier catalogs (63 collections, 464 artifact references); current primary-source review; a bytes-only AgentDojo metadata decoder and synthetic public tests, plus one separate private clean-artifact acceptance. No attacked traces or trajectory corpus.
 - Preserve clean security defaults, exception flags, targeted-goal and DoS meanings. Historical source and archive revisions do not establish the runtime; actual attacked outcomes stay uninterpreted. Missing cost, caps, assistance and runtime metadata remain null.
@@ -167,14 +167,23 @@ The [combined source review](agent-security-incidents.md) prepares seven collect
 - NHTSA manufacturer filing, affected equipment and agency-processing corrections preserve authorship/units. OAIC/ART partial reversal, retained findings, no-appeal/concluded statements and store/date discrepancies stay source-attributed. Two OpenAI postmortems are one event, with tentative operator causal assessment and no quantified clinical-harm count.
 - Ten separate actions and eight self-contained bounded read-only prompts preserve rights, access, identity, uncertainty and mapping holds. Item 16 remains queued; its potential event/artifact overlap is a later review question, not another item-13 receipt. No live collection, source execution, canonical admission, deployment or pooled risk inference.
 
+### Session 14 Labor-market effects and skill demand
+
+The [review](labor-market.md) prepares four collections from one submitted report: BLS OEWS, Indeed AI Tracker, Eurostat ICT training and O*NET Task Ratings. Independent review, publication and CI/integration remain pending at this snapshot. Census BTOS workforce remains a held GL023/AP005 follow-up.
+
+- Completed bounded work: fresh primary-source checks, frozen64 and all thirteen earlier catalogs (70 collections, 505 artifact references, 65 comparison cells including held BTOS); one licensed 3,506-byte Eurostat slice and bounded offline JSON-stat reader.
+- Preserve panel-pooled BLS wage rates; Indeed text-mention shares and Canada disclosure-boilerplate break; Eurostat general ICT training versus AI-specific skills; O*NET frequency-category percentages and unchanged measurement vintages. No causal AI employment estimate or exposure score.
+- Reader retains ten survey-year cells, 2024=26.41 percent, absent source-status member, exact decimal fidelity, survey/reference/update/retrieval dates, dimension/category order and separate observation/snapshot identity. Earlier reference years remain unknown; only 2024→2023 is documented.
+- Nine actions and seven standalone bounded prompts retain workbook schema, classification/keyword/history, earlier questionnaires, rating lineage, BTOS access/rights, derivative presentation and canonical mapping holds. No network refresh job, source/model execution, person records, live collection or deployment.
+
 ### Separate post-intake performance audit
 
 Retain the search-person timing sensitivity observed during session 11 CI. One unchanged 500 ms budget failed at 512.9 ms; the same source head passed on retry at 365.6 ms cold and 342.9 ms hot, with the counterpart run and all post-merge checks successful. A repeated failure requires investigation before merge. This research update does not change query code or relax the threshold.
 
 ## Scope
 
-This index records review progress and links to repository-native research guides. Integrated research catalogs remain unadmitted candidate evidence. The first three reviews retain their unimplemented source-reader proposals. Session 4 implements a fixed two-file annotation reader, session 5 a fixed one-file graph structure reader, session 6 a bounded offline gzip reader with synthetic-only CI, session 7 a manual aggregate ledger validator, session 8 an in-memory curated contrast checker, session 9 a bounded manual physical-results table reader, session 10 a two-file Common Crawl aggregate reader with synthetic-only public fixtures, and session 11 a manual paper-aggregate validator plus explicitly provisional synthetic-only bit arithmetic; session 12 a fixed four-file AlgoPerf reader with separately licensed fixtures and role-specific target semantics. Session 13 adds a bytes-only AgentDojo metadata decoder with synthetic public fixtures. No operational collector is enabled. Refresh status and unresolved actions when later reviewed changes are merged.
+This index records review progress and links to repository-native research guides. Integrated research catalogs remain unadmitted candidate evidence. The first three reviews retain their unimplemented source-reader proposals. Session 4 implements a fixed two-file annotation reader, session 5 a fixed one-file graph structure reader, session 6 a bounded offline gzip reader with synthetic-only CI, session 7 a manual aggregate ledger validator, session 8 an in-memory curated contrast checker, session 9 a bounded manual physical-results table reader, session 10 a two-file Common Crawl aggregate reader with synthetic-only public fixtures, and session 11 a manual paper-aggregate validator plus explicitly provisional synthetic-only bit arithmetic; session 12 a fixed four-file AlgoPerf reader with separately licensed fixtures and role-specific target semantics. Session 13 adds a bytes-only AgentDojo metadata decoder with synthetic public fixtures. Session 14 adds one bounded offline Eurostat JSON-stat reader with a separately licensed German aggregate fixture. No operational collector is enabled. Refresh status and unresolved actions when later reviewed changes are merged.
 
 ## Snapshot maintenance
 
-This file records status at its stated time, not live main/CI state. After independent review, merge and post-merge checks, a later authorized update may record a new dated snapshot with verified PR/commit evidence. Until then, session 13 remains prepared in this historical snapshot even if this document itself is subsequently merged. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.
+This file records status at its stated time, not live main/CI state. After independent review, merge and post-merge checks, a later authorized update may record a new dated snapshot with verified PR/commit evidence. Until then, session 14 remains prepared in this historical snapshot even if this document itself is subsequently merged. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.

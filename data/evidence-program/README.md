@@ -56,3 +56,7 @@ The [human-reliance catalog](research/human-reliance.json) adds five unadmitted 
 ## Agent security and incident research
 
 [Seven-collection catalog](research/agent-security-incidents.json) preserves benchmark conditions, family/event/artifact identity, rights and official-source corrections. The [guide](../../docs/evidence-program/research/agent-security-incidents.md) separates completed offline metadata work from held acquisition/mapping and eight bounded documentary prompts. Only self-authored synthetic trace-shaped fixtures are public, under tools/; no generated conversations or source payloads are relicensed by data/CC0.
+
+## Labor-market research review
+
+[Curated catalog](research/labor-market.json) and [guide](../../docs/evidence-program/research/labor-market.md) add four unadmitted collections, a held GL023/AP005 workforce follow-up, all-thirteen-catalog overlap review and seven bounded prompts. The one German Eurostat aggregate fixture is separately licensed under tools/, outside this directory’s CC0 dedication. No live collection, source admission, causal estimate or exposure score.

@@ -136,3 +136,7 @@ Run `python tools/evidence_program/read_algoperf_trial.py` for a deterministic 7
 ## AgentDojo offline metadata review
 
 [Reader](read_agentdojo_metadata.py), [synthetic fixture](tests/fixtures/agent-security-incidents/README.md) and [guide](../../docs/evidence-program/research/agent-security-incidents.md). Run the aggregate check or `python -m unittest discover -s tools/evidence_program/tests -p "test_agent_security*.py"`. The bytes-only decoder bounds JSON and fixed metadata IDs, verifies hashes, counts assistant-origin calls, and excludes conversation/injection/argument/error payloads. Clean security is not applicable; historical attacked predicates remain unverified; error and DoS semantics stay separate. No source retrieval, benchmark execution or canonical import.
+
+## Offline Eurostat ICT-training slice
+
+`python tools/evidence_program/read_eurostat_ict_training.py tools/evidence_program/tests/fixtures/labor-market` reads only the fixed `de-ict-training.json` and `manifest.json` files. No network, source execution or canonical import. See the [guide](../../docs/evidence-program/research/labor-market.md) and [fixture notice](tests/fixtures/labor-market/NOTICE.md). Exact dimension/category indexing, sparse values/status, missing years, percent units, reference-year evidence, scoped rights, decimal-token precision and stable/snapshot identities are retained. The fixture is Eurostat German statistical data under its specific reuse terms, not CC0. Aggregate checks run catalog and reader regressions offline.

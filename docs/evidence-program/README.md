@@ -85,3 +85,7 @@ The [guide](research/human-reliance.md) and [catalog](../../data/evidence-progra
 ## Agent evaluations and incident revisions
 
 [Combined research guide](research/agent-security-incidents.md) and [catalog](../../data/evidence-program/research/agent-security-incidents.json) retain seven collections, five candidate families and two enrichments. One payload-excluding offline AgentDojo metadata decoder uses synthetic public fixtures; historical attacked outcomes remain unverified. Official incident/review/correction chains preserve author, authority and revision scope. No source admission, live collection, attack execution or pooled risk score.
+
+## Labor-market effects and skill demand
+
+[Research guide](research/labor-market.md) and [catalog](../../data/evidence-program/research/labor-market.json) preserve BLS employment/wage regimes, Indeed advertisement-text changes, Eurostat training populations/reference years and O*NET task-rating vintages. One bounded offline Eurostat reader and separately licensed aggregate fixture are implemented; source admission, wider collection, BTOS export and canonical mapping remain held.
