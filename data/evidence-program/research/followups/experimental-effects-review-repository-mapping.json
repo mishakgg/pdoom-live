@@ -1,0 +1,281 @@
+{
+  "review_type": "read_only_selected_file_contract_mapping",
+  "repository": "mishakgg/pdoom-live",
+  "independent_reviewer_commit": "2266b56681812cde175257734dc16ed1c88c1323",
+  "parent_main_verification_utc": "2026-10-08T15:44:49Z",
+  "external_session_repository_context_preserved": {
+    "requested_branch": "main",
+    "current_main_commit": null,
+    "current_main_commit_null_reason": "Repository root inaccessible; commit discovery failed.",
+    "current_main_request_observed_clock_utc": "2026-10-08T11:27:16Z",
+    "clock_precision": "second, concurrent tool clock; not successful retrieval time",
+    "successfully_inspected_repository_commit": null,
+    "successfully_inspected_repository_commit_null_reason": "Neither main nor fallback tree accessible.",
+    "supplied_planning_baseline": "6cf8c1c89a387a5b26022dd9ea0a216d45b2b629",
+    "baseline_verified_date_supplied": "2026-10-08",
+    "baseline_verification_this_session": "unresolved",
+    "baseline_request_time_bounds_utc": [
+      "2026-10-08T11:27:16Z",
+      "2026-10-08T11:28:13Z"
+    ],
+    "queue_interpretation": "Dated snapshot only; current integration status unknown.",
+    "required_files": [
+      {
+        "path": "AGENTS.md",
+        "status": "unresolved",
+        "access": "not_inspected_parent_repository_blocked",
+        "individual_request_attempted": false,
+        "null_reason": "Current and pinned repository trees inaccessible; absence not asserted."
+      },
+      {
+        "path": "docs/evidence-program/source_priorities.md",
+        "status": "unresolved",
+        "access": "not_inspected_parent_repository_blocked",
+        "individual_request_attempted": false,
+        "null_reason": "Current and pinned repository trees inaccessible; absence not asserted."
+      },
+      {
+        "path": "data/evidence-program/source_inventory.json",
+        "status": "unresolved",
+        "access": "not_inspected_parent_repository_blocked",
+        "individual_request_attempted": false,
+        "null_reason": "Current and pinned repository trees inaccessible; absence not asserted."
+      },
+      {
+        "path": "docs/evidence-program/research/research-session-review-queue.md",
+        "status": "unresolved",
+        "access": "not_inspected_parent_repository_blocked",
+        "individual_request_attempted": false,
+        "null_reason": "Current and pinned repository trees inaccessible; absence not asserted."
+      },
+      {
+        "path": "docs/evidence-program/research/adoption-productivity.md",
+        "status": "unresolved",
+        "access": "not_inspected_parent_repository_blocked",
+        "individual_request_attempted": false,
+        "null_reason": "Current and pinned repository trees inaccessible; absence not asserted."
+      },
+      {
+        "path": "data/evidence-program/research/adoption-productivity.json",
+        "status": "unresolved",
+        "access": "not_inspected_parent_repository_blocked",
+        "individual_request_attempted": false,
+        "null_reason": "Current and pinned repository trees inaccessible; absence not asserted."
+      },
+      {
+        "path": "docs/evidence-program/research/scientific-progress.md",
+        "status": "unresolved",
+        "access": "not_inspected_parent_repository_blocked",
+        "individual_request_attempted": false,
+        "null_reason": "Current and pinned repository trees inaccessible; absence not asserted."
+      },
+      {
+        "path": "data/evidence-program/research/scientific-progress.json",
+        "status": "unresolved",
+        "access": "not_inspected_parent_repository_blocked",
+        "individual_request_attempted": false,
+        "null_reason": "Current and pinned repository trees inaccessible; absence not asserted."
+      },
+      {
+        "path": "docs/evidence-program/research/persuasion-information.md",
+        "status": "unresolved",
+        "access": "not_inspected_parent_repository_blocked",
+        "individual_request_attempted": false,
+        "null_reason": "Current and pinned repository trees inaccessible; absence not asserted."
+      },
+      {
+        "path": "data/evidence-program/research/persuasion-information.json",
+        "status": "unresolved",
+        "access": "not_inspected_parent_repository_blocked",
+        "individual_request_attempted": false,
+        "null_reason": "Current and pinned repository trees inaccessible; absence not asserted."
+      }
+    ],
+    "conditional_material": [
+      {
+        "name": "negative-results/replications material",
+        "path": null,
+        "status": "unresolved",
+        "null_reason": "Cannot determine current-main presence or exact paths."
+      },
+      {
+        "name": "relevant existing evidence-program contracts and pinned schemas",
+        "path": null,
+        "status": "unresolved",
+        "null_reason": "Cannot discover/read relevant contracts through inaccessible repository."
+      }
+    ],
+    "later_change_reconciliation": "not possible; no claim that current main equals baseline",
+    "nr007_status": "unverified-in-main",
+    "additional_catalog_ids": "unavailable; no replacements invented"
+  },
+  "external_session_commit_remains_null": true,
+  "current_main_findings": {
+    "NR007": "verified_present_at_pinned_main; overlap enrichment of AP002, not a new trial",
+    "source_inventory_count": 64,
+    "inventory_sha256": "a4b5046c3dec44598eeab3f025db75783f9ae5f702e0570d7b31fb3026dde678",
+    "GL004_catalog_record": [
+      {
+        "source_id": "GL004",
+        "name": "METR: task-completion time horizons",
+        "institution_region": "United States; frontier-model evaluations",
+        "languages": [
+          "en"
+        ],
+        "evidence_layer": "capability_evaluations",
+        "primary_url": "https://metr.org/time-horizons/",
+        "data_url": "https://github.com/METR/eval-analysis-public",
+        "access_method": "Public repository with JSONL runs and reproducible analysis; headline page links raw data",
+        "available_content": "Task-level scores, human-duration estimates, model aliases, weighting, p50/p80 horizons and bootstrap analysis.",
+        "historical_coverage": "TH 1.0 covers models from 2019 through November 2025; TH 1.1 extends task suite; headline last updated May 8, 2026.",
+        "rights_status": "unknown",
+        "rights_url": "https://github.com/METR/eval-analysis-public",
+        "rights_notes": "README references a LICENSE file but no effective data-license text was verified in this pass. Public availability does not establish redistribution permission.",
+        "verification_status": "opened-primary",
+        "verified_date": "2026-10-07",
+        "collection_status": "candidate_not_collected",
+        "priority": "P0",
+        "next_action": "Resolve data rights, pin repository commit, and ingest TH versions separately with scaffold, task and uncertainty metadata.",
+        "caveats": "Software/ML/cyber tasks are not all work. Page warns measurements above 16 hours are unreliable; coverage is incomplete and evaluations lag releases."
+      }
+    ],
+    "review_queue": "Dated integration index, not fresh CI or operational admission proof",
+    "all_four_catalogs_operational_admission": "not_admitted"
+  },
+  "ids": [
+    {
+      "id": "AP002",
+      "kind": "research_collection",
+      "location": {
+        "file": "data/evidence-program/research/adoption-productivity.json",
+        "pointer": "/collections/1",
+        "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+      }
+    },
+    {
+      "id": "SP001",
+      "kind": "research_collection",
+      "location": {
+        "file": "data/evidence-program/research/scientific-progress.json",
+        "pointer": "/collections/0",
+        "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+      }
+    },
+    {
+      "id": "PI005",
+      "kind": "research_collection",
+      "location": {
+        "file": "data/evidence-program/research/persuasion-information.json",
+        "pointer": "/collections/4",
+        "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+      }
+    },
+    {
+      "id": "NR007",
+      "kind": "research_collection",
+      "location": {
+        "file": "data/evidence-program/research/negative-replications.json",
+        "pointer": "/collections/6",
+        "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+      }
+    },
+    {
+      "id": "AP-A03",
+      "kind": "next_actions",
+      "location": {
+        "file": "data/evidence-program/research/adoption-productivity.json",
+        "pointer": "/next_actions/2",
+        "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+      },
+      "current_record": {
+        "action_id": "AP-A03",
+        "candidate_ids": [
+          "AP002"
+        ],
+        "status": "pending_rights_review",
+        "action": "Before data/code retention or recomputation, establish artifact-specific METR reuse rights and reconcile publication-version uncertainty conventions.",
+        "completion_evidence": "Explicit applicable CSV/code permission or unresolved rights hold; named HC3 versus nonrobust convention and preserved early/late imputation/filtering. No participant crosswalk inferred.",
+        "work_mode": "rights_and_method_hold"
+      }
+    },
+    {
+      "id": "SP-A03",
+      "kind": "next_actions",
+      "location": {
+        "file": "data/evidence-program/research/scientific-progress.json",
+        "pointer": "/next_actions/2",
+        "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+      },
+      "current_record": {
+        "action_id": "SP-A03",
+        "candidate_ids": [
+          "SP001"
+        ],
+        "status": "open",
+        "action": "Resolve current aggregate lineage and SD-versus-SE ambiguity using producer-published aggregate evidence.",
+        "completion_evidence": "Keep separate raw display label, code-defined statistic, completion-time/RMST estimands and current-versus-legacy versions until resolved."
+      }
+    },
+    {
+      "id": "SCI-H01",
+      "kind": "holds",
+      "location": {
+        "file": "data/evidence-program/research/scientific-progress.json",
+        "pointer": "/holds/0",
+        "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+      },
+      "current_record": {
+        "id": "SCI-H01",
+        "scope": "I4R uncertainty and current regeneration",
+        "reason": "SD-versus-SE label/code disagreement; current regeneration not tested.",
+        "release_condition": "Producer-public clarification and aggregate lineage evidence without participant acquisition."
+      }
+    },
+    {
+      "id": "PI-A5",
+      "kind": "next_actions",
+      "location": {
+        "file": "data/evidence-program/research/persuasion-information.json",
+        "pointer": "/next_actions/4",
+        "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+      },
+      "current_record": {
+        "action_id": "PI-A5",
+        "status": "held",
+        "action": "Verify Costello journal disposition and corrected aggregate coefficients without participant/archive acquisition.",
+        "completion": "Explicit journal resolution plus comparison-specific corrected public summary; until then concern active and estimates null."
+      }
+    },
+    {
+      "id": "PI-H4",
+      "kind": "holds",
+      "location": {
+        "file": "data/evidence-program/research/persuasion-information.json",
+        "pointer": "/holds/3",
+        "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+      },
+      "current_record": {
+        "hold_id": "PI-H4",
+        "candidate_ids": [
+          "PI005"
+        ],
+        "reason": "Journal concern resolution and corrected comparison-specific effects unverified."
+      }
+    }
+  ],
+  "deduplication": {
+    "early_study": "AP002:metr_early_2025",
+    "later_study": "AP002:metr_late_2025",
+    "NR007_to_AP002": "same studies; negative-result/follow-up facets only",
+    "earlier_vs_later": "contextual follow-up with returning-participant dependence; not exact replication or comparable trend",
+    "new_independent_experiment_count_from_NR007": 0
+  },
+  "preservation_rules": [
+    "Never rewrite external-session inspected commit null with this reviewer pin.",
+    "Keep prior catalog source evidence and fingerprint fields even where external session could not reread them.",
+    "Keep IZA earlier edition separately from current published/committed I4R summary.",
+    "Repository-local hashes prove selected repository-file bytes, not external research artifacts."
+  ],
+  "selected_file_manifest": "data/evidence-program/research/followups/experimental-effects-review-repository-files-manifest.json",
+  "prior_catalog_snapshot": "data/evidence-program/research/followups/experimental-effects-review.json#/prior_verified_evidence"
+}

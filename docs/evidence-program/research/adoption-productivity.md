@@ -2,6 +2,10 @@
 
 Reviewed 7 October 2026 against repository commit `0d593337b6f5921a1b5ebdef2052bdf8dee0cd84`. The [JSON catalog](../../../data/evidence-program/research/adoption-productivity.json) retains all 41 artifact references, access/rights scopes, study identities and next actions. The [64-source inventory](../../../data/evidence-program/source_inventory.json), frozen contract and prior research remain unchanged. All five collections remain **research-only, unadmitted and uncollected**.
 
+## Follow-up qualification: 8 October 2026
+
+The [experimental effects follow-up](followups/experimental-effects-review.md) ([JSON](../../../data/evidence-program/research/followups/experimental-effects-review.json)) adds an independently reviewed research delta for deep prompt 2 / bundle B. For AP002 / AP-A03 and overlapping NR007, the follow-up retains the v2 +19% duration estimate and paper-declared HC3 95% convention separately from unverified historical execution. The producer update’s early +19% [+2%, +39%], returning −18% [−38%, +9%] and new −4% [−15%, +9%] values are separately attributed published summaries; that inspected update text does not specify their confidence level. Prior catalog early 95% evidence, treatment-label correction, missing-time handling and code-comment discrepancy remain prior verified evidence. The 800+ reported tasks are not completed subgroup denominators. Selection, incomplete work, changed repositories and concurrent-agent timing preclude a like-for-like cross-wave causal trend; execution/covariance, exact output linkage and artifact rights remain held. The fingerprinted original catalog and all historical text below remain unchanged; a failed reread does not invalidate prior verified evidence. Source admission and lossless canonical mapping remain held.
+
 ## Decision and boundaries
 
 Best first additions: **1. Statistics Canada**, for a bounded structured adoption extract and scoped reuse terms; **2. METR productivity**, for randomized real-task access with rights/method holds; **3. Generative AI at Work**, for routine customer-support outcomes outside coding, with nonrandom-rollout and replication limits.

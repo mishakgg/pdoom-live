@@ -1,0 +1,747 @@
+{
+  "pinned_commit": "2266b56681812cde175257734dc16ed1c88c1323",
+  "schema_artifact": "tools/evidence_program/contracts/dataset.schema.json",
+  "schema_blob_sha1": "fad7d2d1c69ac48de71ec98d5a04850fc5474ac7",
+  "schema_version": "0.1.0",
+  "schema_kind": "frozen proposed evidence-program portable prototype; not production canonical import",
+  "production_contract_separation": {
+    "path": "packages/contracts/schema/canonical-import.schema.json",
+    "blob_sha1": "986c4f7265c2ee8185cd8c1056d77b8051566957",
+    "observation": "Has people/source_items/evidence_segments/statements/forecasts/relationships, but no resource_observation or experimental-contrast table. A generic numeric forecast is not an observed causal effect. SourceObservation.metadata is an untyped collector envelope and is not lossless scientific-contract acceptance."
+  },
+  "current_research_catalog_contracts": {
+    "adoption": "check_adoption_productivity.py is catalog consistency only",
+    "scientific": "validate_scientific_ledger.py is A-Lab-specific, not I4R",
+    "persuasion": "validate_persuasion_ledger.py is DebateGPT-specific odds-ratio/cluster-robust ledger, not Costello",
+    "negative": "Research-only metadata and specification; NR007 facets reuse AP002"
+  },
+  "common_fields": [
+    {
+      "concept": "Exact evidence provenance",
+      "paths": [
+        "/$defs/evidence/properties/source_ref",
+        "/$defs/evidence/properties/locator",
+        "/$defs/evidence/properties/relation",
+        "/$defs/evidence/properties/extraction_method",
+        "/$defs/evidence/properties/extractor_version"
+      ],
+      "fit": "Supported typed evidence link; requires real source artifact record/revision in any future closed bundle. It does not assert execution or independent replication.",
+      "dictionary_matches": [
+        {
+          "field": "evidence.source_ref",
+          "schema_pointer": "/$defs/evidence/properties/source_ref"
+        },
+        {
+          "field": "evidence.locator",
+          "schema_pointer": "/$defs/evidence/properties/locator"
+        },
+        {
+          "field": "evidence.relation",
+          "schema_pointer": "/$defs/evidence/properties/relation"
+        },
+        {
+          "field": "evidence.extraction_method",
+          "schema_pointer": "/$defs/evidence/properties/extraction_method"
+        },
+        {
+          "field": "evidence.extractor_version",
+          "schema_pointer": "/$defs/evidence/properties/extractor_version"
+        }
+      ]
+    },
+    {
+      "concept": "Source identity and external version",
+      "paths": [
+        "/$defs/source_artifact_data/properties/canonical_url",
+        "/$defs/record/properties/upstream_refs"
+      ],
+      "fit": "Canonical URL and exact upstream release preserve identity; Git commit, provider digest and observed-byte hash remain distinct source-native metadata.",
+      "dictionary_matches": [
+        {
+          "field": "source_artifact_data.canonical_url",
+          "schema_pointer": "/$defs/source_artifact_data/properties/canonical_url"
+        },
+        {
+          "field": "record.upstream_refs",
+          "schema_pointer": "/$defs/record/properties/upstream_refs"
+        }
+      ]
+    },
+    {
+      "concept": "Original IDs and corrections",
+      "paths": [
+        "/$defs/record/properties/legacy_refs",
+        "/$defs/record/properties/revision",
+        "/$defs/record/properties/supersedes",
+        "/$defs/statement_data/properties/relationships"
+      ],
+      "fit": "Potential additive links; existing research IDs are not already urn:pdataset IDs. Revisions/statement relationships do not encode independent experimental replication.",
+      "dictionary_matches": [
+        {
+          "field": "statement_data.relationships",
+          "schema_pointer": "/$defs/statement_data/properties/relationships"
+        },
+        {
+          "field": "record.revision",
+          "schema_pointer": "/$defs/record/properties/revision"
+        },
+        {
+          "field": "record.supersedes",
+          "schema_pointer": "/$defs/record/properties/supersedes"
+        },
+        {
+          "field": "record.legacy_refs",
+          "schema_pointer": "/$defs/record/properties/legacy_refs"
+        }
+      ]
+    },
+    {
+      "concept": "Point, interval or missing result",
+      "paths": [
+        "/$defs/measurement/properties/result",
+        "/$defs/value",
+        "/$defs/measurement/properties/uncertainty_notes"
+      ],
+      "fit": "Tagged union supports point OR interval OR missing. No single typed point-plus-CI/SE/p-value record. Notes can preserve unresolved assertions but do not supply a validated numeric uncertainty structure.",
+      "dictionary_matches": [
+        {
+          "field": "value",
+          "schema_pointer": "/$defs/value"
+        },
+        {
+          "field": "measurement.result",
+          "schema_pointer": "/$defs/measurement/properties/result"
+        },
+        {
+          "field": "measurement.uncertainty_notes",
+          "schema_pointer": "/$defs/measurement/properties/uncertainty_notes"
+        }
+      ]
+    },
+    {
+      "concept": "Metric and denominator",
+      "paths": [
+        "/$defs/measurement/properties/metric",
+        "/$defs/metric/properties/definition",
+        "/$defs/metric/properties/context",
+        "/$defs/measurement/properties/sample_size",
+        "/$defs/resource_observation_data/properties/scope"
+      ],
+      "fit": "Definitions/context/scope can carry explicit text. One sample_size integer cannot losslessly encode recruited, assigned, completed, complete-case and follow-up N per arm. Omit unknown optional sample_size; do not substitute screened N.",
+      "dictionary_matches": [
+        {
+          "field": "metric.definition",
+          "schema_pointer": "/$defs/metric/properties/definition"
+        },
+        {
+          "field": "metric.context",
+          "schema_pointer": "/$defs/metric/properties/context"
+        },
+        {
+          "field": "measurement.metric",
+          "schema_pointer": "/$defs/measurement/properties/metric"
+        },
+        {
+          "field": "measurement.sample_size",
+          "schema_pointer": "/$defs/measurement/properties/sample_size"
+        },
+        {
+          "field": "resource_observation_data.scope",
+          "schema_pointer": "/$defs/resource_observation_data/properties/scope"
+        }
+      ]
+    },
+    {
+      "concept": "Reported methods and evidence role",
+      "paths": [
+        "/$defs/measurement/properties/observation_mode",
+        "/$defs/measurement/properties/method"
+      ],
+      "fit": "reported is appropriate for producer-published results. measured/estimated would misstate reviewer execution. No typed fields for actual covariance estimator, clustering, executed code revision or output-regeneration proof.",
+      "dictionary_matches": [
+        {
+          "field": "measurement.observation_mode",
+          "schema_pointer": "/$defs/measurement/properties/observation_mode"
+        },
+        {
+          "field": "measurement.method",
+          "schema_pointer": "/$defs/measurement/properties/method"
+        }
+      ]
+    },
+    {
+      "concept": "Clocks and precision",
+      "paths": [
+        "/$defs/times",
+        "/$defs/temporal"
+      ],
+      "fit": "Separate published/event/evaluated and reviewer known_at/retrieved_at with explicit precision. No dedicated provider-created/provider-modified clocks; retain those source-native and do not substitute for publication.",
+      "dictionary_matches": [
+        {
+          "field": "temporal",
+          "schema_pointer": "/$defs/temporal"
+        },
+        {
+          "field": "times",
+          "schema_pointer": "/$defs/times"
+        }
+      ]
+    },
+    {
+      "concept": "Scoped rights and review",
+      "paths": [
+        "/$defs/governance"
+      ],
+      "fit": "rights_state/basis/url and publication_state can retain a conservative hold. Code rights do not clear generated table/data rights; schema validation cannot grant legal clearance.",
+      "dictionary_matches": [
+        {
+          "field": "governance",
+          "schema_pointer": "/$defs/governance"
+        }
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "ledger_ref": "mapping-metr-1",
+      "existing_identifiers": [
+        "AP002",
+        "AP-A03",
+        "NR007"
+      ],
+      "input_observation_refs": [
+        "metr-point",
+        "metr-declared-hc3",
+        "metr-estimation"
+      ],
+      "target_commit": "2266b56681812cde175257734dc16ed1c88c1323",
+      "actual_existing_catalog_fields": [
+        {
+          "file": "data/evidence-program/research/adoption-productivity.json",
+          "pointer": "/collections/1/evidence_units/0",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/adoption-productivity.json",
+          "pointer": "/collections/1/findings/0",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/adoption-productivity.json",
+          "pointer": "/collections/1/findings/2",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/adoption-productivity.json",
+          "pointer": "/collections/1/findings/4",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        }
+      ],
+      "related_existing_fields": [
+        "NR007 /collections/6/verified_sample/early"
+      ],
+      "catalog_fit": "existing research catalog supports preservation; additive source-native assertions remain separate review ledger entries",
+      "proposed_v0_1_candidate": "resource_observation/productivity with observation_mode=reported is a partial semantic candidate for METR only; no emitted record",
+      "shared_contract_mapping_refs": [
+        "Exact evidence provenance",
+        "Source identity and external version",
+        "Original IDs and corrections",
+        "Point, interval or missing result",
+        "Metric and denominator",
+        "Reported methods and evidence role",
+        "Clocks and precision",
+        "Scoped rights and review"
+      ],
+      "review_disposition": "Preserve reported +19 percent_change in completion time and paper-declared HC3. Prior NR007 already retains reported 95% interval [2,39]; external-session endpoint null is a session-specific inability to reread, not removal of prior evidence. Historical executed covariance remains unresolved.",
+      "unsupported_or_source_native_fields": [
+        "actual estimator execution",
+        "task/developer clustering identity",
+        "point and CI joint typed binding",
+        "source-native log transformation and imputation details"
+      ],
+      "schema_compatibility": "partial fragments only, no complete record or lossless import claimed",
+      "admission": "not_admitted",
+      "source_native_ledger_is_official_contract": false
+    },
+    {
+      "ledger_ref": "mapping-metr-2",
+      "existing_identifiers": [
+        "AP002",
+        "AP-A03",
+        "NR007"
+      ],
+      "input_observation_refs": [
+        "metr-forecast",
+        "metr-posthoc"
+      ],
+      "target_commit": "2266b56681812cde175257734dc16ed1c88c1323",
+      "actual_existing_catalog_fields": [
+        {
+          "file": "data/evidence-program/research/adoption-productivity.json",
+          "pointer": "/collections/1/sample_fields",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/adoption-productivity.json",
+          "pointer": "/collections/1/findings/0",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        }
+      ],
+      "related_existing_fields": [
+        "NR007 /collections/6/verified_sample/early/forecast_completion_time_change_percent"
+      ],
+      "catalog_fit": "existing research catalog supports preservation; additive source-native assertions remain separate review ledger entries",
+      "proposed_v0_1_candidate": "resource_observation/productivity with observation_mode=reported is a partial semantic candidate for METR only; no emitted record",
+      "shared_contract_mapping_refs": [
+        "Exact evidence provenance",
+        "Source identity and external version",
+        "Original IDs and corrections",
+        "Point, interval or missing result",
+        "Metric and denominator",
+        "Reported methods and evidence role",
+        "Clocks and precision",
+        "Scoped rights and review"
+      ],
+      "review_disposition": "Separate ex-ante forecast, observed adjusted duration and post-hoc perceived effect; each has its own methods and uncertainty definition. Paper assertions for all three were independently rechecked in PV-M01; no calculation was reproduced.",
+      "unsupported_or_source_native_fields": [
+        "forecast versus duration versus perception identity",
+        "separate uncertainty conventions",
+        "no generic forecast record emission without actor/question identity"
+      ],
+      "schema_compatibility": "partial fragments only, no complete record or lossless import claimed",
+      "admission": "not_admitted",
+      "source_native_ledger_is_official_contract": false
+    },
+    {
+      "ledger_ref": "mapping-metr-3",
+      "existing_identifiers": [
+        "AP002",
+        "AP-A03",
+        "NR007"
+      ],
+      "input_observation_refs": [
+        "metr-late-unresolved"
+      ],
+      "target_commit": "2266b56681812cde175257734dc16ed1c88c1323",
+      "actual_existing_catalog_fields": [
+        {
+          "file": "data/evidence-program/research/adoption-productivity.json",
+          "pointer": "/collections/1/evidence_units/1",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/adoption-productivity.json",
+          "pointer": "/collections/1/findings/3",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/adoption-productivity.json",
+          "pointer": "/collections/1/findings/5",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        }
+      ],
+      "related_existing_fields": [
+        "NR007 /collections/6/verified_sample/later"
+      ],
+      "catalog_fit": "existing research catalog supports preservation; additive source-native assertions remain separate review ledger entries",
+      "proposed_v0_1_candidate": "resource_observation/productivity with observation_mode=reported is a partial semantic candidate for METR only; no emitted record",
+      "shared_contract_mapping_refs": [
+        "Exact evidence provenance",
+        "Source identity and external version",
+        "Original IDs and corrections",
+        "Point, interval or missing result",
+        "Metric and denominator",
+        "Reported methods and evidence role",
+        "Clocks and precision",
+        "Scoped rights and review"
+      ],
+      "review_disposition": "Prior catalog retains returning -18 [-38,9], new -4 [-15,9], confidence level null and subgroup completed-task N null. Preserve changed selection, compensation, timing and returning-participant dependence; no pooled longitudinal trend.",
+      "unsupported_or_source_native_fields": [
+        "cross-wave estimand comparability",
+        "within-developer dependence",
+        "exact subgroup task denominators",
+        "unknown later interval confidence level"
+      ],
+      "schema_compatibility": "partial fragments only, no complete record or lossless import claimed",
+      "admission": "not_admitted",
+      "source_native_ledger_is_official_contract": false
+    },
+    {
+      "ledger_ref": "mapping-i4r-1",
+      "existing_identifiers": [
+        "SP001",
+        "SP-A03",
+        "SCI-H01"
+      ],
+      "input_observation_refs": [
+        "i4r-current-human-only",
+        "i4r-current-ai-assisted",
+        "i4r-current-ai-led"
+      ],
+      "target_commit": "2266b56681812cde175257734dc16ed1c88c1323",
+      "actual_existing_catalog_fields": [
+        {
+          "file": "data/evidence-program/research/scientific-progress.json",
+          "pointer": "/collections/0/samples/0",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/scientific-progress.json",
+          "pointer": "/collections/0/findings/1",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/scientific-progress.json",
+          "pointer": "/collections/0/findings/2",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/scientific-progress.json",
+          "pointer": "/critical_qualifications/i4r",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/scientific-progress.json",
+          "pointer": "/holds/0",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        }
+      ],
+      "related_existing_fields": [],
+      "catalog_fit": "existing research catalog supports preservation; additive source-native assertions remain separate review ledger entries",
+      "proposed_v0_1_candidate": "no lossless dedicated experimental-contrast type; retain source-native research record",
+      "shared_contract_mapping_refs": [
+        "Exact evidence provenance",
+        "Source identity and external version",
+        "Original IDs and corrections",
+        "Point, interval or missing result",
+        "Metric and denominator",
+        "Reported methods and evidence role",
+        "Clocks and precision",
+        "Scoped rights and review"
+      ],
+      "review_disposition": "Preserve current means 82.0/93.3/179.7 as prior catalog-verified published/committed summaries; hold uncertainty. Existing sd() static observation and raw standard-errors label are both preserved; no substitute SE.",
+      "unsupported_or_source_native_fields": [
+        "minute unit absent",
+        "typed arm/cohort/contrast",
+        "display label versus computed dispersion",
+        "nonmissing completion-time denominator",
+        "execution-to-output binding"
+      ],
+      "schema_compatibility": "partial fragments only, no complete record or lossless import claimed",
+      "admission": "not_admitted",
+      "source_native_ledger_is_official_contract": false
+    },
+    {
+      "ledger_ref": "mapping-i4r-2",
+      "existing_identifiers": [
+        "SP001",
+        "SP-A03",
+        "SCI-H01"
+      ],
+      "input_observation_refs": [
+        "i4r-iza-human-only",
+        "i4r-iza-ai-assisted",
+        "i4r-iza-ai-led"
+      ],
+      "target_commit": "2266b56681812cde175257734dc16ed1c88c1323",
+      "actual_existing_catalog_fields": [
+        {
+          "file": "data/evidence-program/research/scientific-progress.json",
+          "pointer": "/collections/0/duplicate_evidence_policy",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/scientific-progress.json",
+          "pointer": "/collections/0/samples/0",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/scientific-progress.json",
+          "pointer": "/collections/0/findings/2",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        }
+      ],
+      "related_existing_fields": [],
+      "catalog_fit": "existing research catalog supports preservation; additive source-native assertions remain separate review ledger entries",
+      "proposed_v0_1_candidate": "no lossless dedicated experimental-contrast type; retain source-native research record",
+      "shared_contract_mapping_refs": [
+        "Exact evidence provenance",
+        "Source identity and external version",
+        "Original IDs and corrections",
+        "Point, interval or missing result",
+        "Metric and denominator",
+        "Reported methods and evidence role",
+        "Clocks and precision",
+        "Scoped rights and review"
+      ],
+      "review_disposition": "Earlier IZA values are separate source-native edition assertions; they do not replace or supply uncertainty to the current means. Multiple paper editions do not add independent experiments.",
+      "unsupported_or_source_native_fields": [
+        "historical-edition assertion lacks an existing dedicated catalog numeric slot",
+        "minute unit absent",
+        "raw parentheses not typed SE",
+        "unresolved input/output generation lineage"
+      ],
+      "schema_compatibility": "partial fragments only, no complete record or lossless import claimed",
+      "admission": "not_admitted",
+      "source_native_ledger_is_official_contract": false
+    },
+    {
+      "ledger_ref": "mapping-i4r-3",
+      "existing_identifiers": [
+        "SP001",
+        "SP-A03",
+        "SCI-H01"
+      ],
+      "input_observation_refs": [
+        "i4r-rmst",
+        "i4r-history-supplied"
+      ],
+      "target_commit": "2266b56681812cde175257734dc16ed1c88c1323",
+      "actual_existing_catalog_fields": [
+        {
+          "file": "data/evidence-program/research/scientific-progress.json",
+          "pointer": "/collections/0/samples/0/fields",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/scientific-progress.json",
+          "pointer": "/collections/0/findings/4",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/scientific-progress.json",
+          "pointer": "/critical_qualifications/i4r",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/scientific-progress.json",
+          "pointer": "/holds/0",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        }
+      ],
+      "related_existing_fields": [],
+      "catalog_fit": "existing research catalog supports preservation; additive source-native assertions remain separate review ledger entries",
+      "proposed_v0_1_candidate": "no lossless dedicated experimental-contrast type; retain source-native research record",
+      "shared_contract_mapping_refs": [
+        "Exact evidence provenance",
+        "Source identity and external version",
+        "Original IDs and corrections",
+        "Point, interval or missing result",
+        "Metric and denominator",
+        "Reported methods and evidence role",
+        "Clocks and precision",
+        "Scoped rights and review"
+      ],
+      "review_disposition": "Keep team denominators 33/35/35, successes 31/32/13, RMST 102/121/331 minutes with horizon 420, unknown completion-mean N, file-change dates and excluded Virtual 2025 as separate concepts.",
+      "unsupported_or_source_native_fields": [
+        "minute unit absent",
+        "censoring/horizon relationship",
+        "per-arm denominator types",
+        "input/code/output generation lineage"
+      ],
+      "schema_compatibility": "partial fragments only, no complete record or lossless import claimed",
+      "admission": "not_admitted",
+      "source_native_ledger_is_official_contract": false
+    },
+    {
+      "ledger_ref": "mapping-costello-1",
+      "existing_identifiers": [
+        "PI005",
+        "PI-A5",
+        "PI-H4"
+      ],
+      "input_observation_refs": [
+        "costello-screened-all",
+        "costello-complete-cases"
+      ],
+      "target_commit": "2266b56681812cde175257734dc16ed1c88c1323",
+      "actual_existing_catalog_fields": [
+        {
+          "file": "data/evidence-program/research/persuasion-information.json",
+          "pointer": "/collections/4/coverage",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/persuasion-information.json",
+          "pointer": "/collections/4/samples/0/fields",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/persuasion-information.json",
+          "pointer": "/collections/4/findings/1",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        }
+      ],
+      "related_existing_fields": [],
+      "catalog_fit": "existing research catalog supports preservation; additive source-native assertions remain separate review ledger entries",
+      "proposed_v0_1_candidate": "no lossless dedicated experimental-contrast type; retain source-native research record",
+      "shared_contract_mapping_refs": [
+        "Exact evidence provenance",
+        "Source identity and external version",
+        "Original IDs and corrections",
+        "Point, interval or missing result",
+        "Metric and denominator",
+        "Reported methods and evidence role",
+        "Clocks and precision",
+        "Scoped rights and review"
+      ],
+      "review_disposition": "Preserve 2094 screened and 2044 headline complete cases; 748/1346 screened Study 1/Study 2 counts are separate scopes. Comparison/follow-up N stays null.",
+      "unsupported_or_source_native_fields": [
+        "screened versus analyzed versus follow-up denominator roles",
+        "participant inclusion flow",
+        "comparison-specific analyzed sample"
+      ],
+      "schema_compatibility": "partial fragments only, no complete record or lossless import claimed",
+      "admission": "not_admitted",
+      "source_native_ledger_is_official_contract": false
+    },
+    {
+      "ledger_ref": "mapping-costello-2",
+      "existing_identifiers": [
+        "PI005",
+        "PI-A5",
+        "PI-H4"
+      ],
+      "input_observation_refs": [
+        "costello-study1-effect",
+        "costello-study2-effect",
+        "costello-study2b-effect"
+      ],
+      "target_commit": "2266b56681812cde175257734dc16ed1c88c1323",
+      "actual_existing_catalog_fields": [
+        {
+          "file": "data/evidence-program/research/persuasion-information.json",
+          "pointer": "/collections/4/samples/0/fields",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/persuasion-information.json",
+          "pointer": "/collections/4/limitations",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/persuasion-information.json",
+          "pointer": "/critical_qualifications/costello",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/persuasion-information.json",
+          "pointer": "/holds/3",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        }
+      ],
+      "related_existing_fields": [],
+      "catalog_fit": "existing research catalog supports preservation; additive source-native assertions remain separate review ledger entries",
+      "proposed_v0_1_candidate": "no lossless dedicated experimental-contrast type; retain source-native research record",
+      "shared_contract_mapping_refs": [
+        "Exact evidence provenance",
+        "Source identity and external version",
+        "Original IDs and corrections",
+        "Point, interval or missing result",
+        "Metric and denominator",
+        "Reported methods and evidence role",
+        "Clocks and precision",
+        "Scoped rights and review"
+      ],
+      "review_disposition": "Hold exact corrected per-study effect, CI, p-value and N; 0–100 belief score is distinct from a relative percent reduction. Keep Study 1 follow-ups apart from Study 2b intentions. No old CI/new cohort binding; no non-significance-to-equivalence inference.",
+      "unsupported_or_source_native_fields": [
+        "corrected-cohort/contrast effect binding",
+        "typed p-value/equivalence margin/test",
+        "point-plus-interval structure",
+        "original scale versus percent-change estimate"
+      ],
+      "schema_compatibility": "partial fragments only, no complete record or lossless import claimed",
+      "admission": "not_admitted",
+      "source_native_ledger_is_official_contract": false
+    },
+    {
+      "ledger_ref": "mapping-costello-3",
+      "existing_identifiers": [
+        "PI005",
+        "PI-A5",
+        "PI-H4"
+      ],
+      "input_observation_refs": [
+        "costello-journal-status-supplied",
+        "costello-zenodo-clocks"
+      ],
+      "target_commit": "2266b56681812cde175257734dc16ed1c88c1323",
+      "actual_existing_catalog_fields": [
+        {
+          "file": "data/evidence-program/research/persuasion-information.json",
+          "pointer": "/collections/4/study_id",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/persuasion-information.json",
+          "pointer": "/collections/4/underlying_evidence_id",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/persuasion-information.json",
+          "pointer": "/collections/4/coverage",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/persuasion-information.json",
+          "pointer": "/collections/4/artifacts",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/persuasion-information.json",
+          "pointer": "/collections/4/findings/0",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        },
+        {
+          "file": "data/evidence-program/research/persuasion-information.json",
+          "pointer": "/critical_qualifications/costello",
+          "commit": "2266b56681812cde175257734dc16ed1c88c1323"
+        }
+      ],
+      "related_existing_fields": [],
+      "catalog_fit": "existing research catalog supports preservation; additive source-native assertions remain separate review ledger entries",
+      "proposed_v0_1_candidate": "no lossless dedicated experimental-contrast type; retain source-native research record",
+      "shared_contract_mapping_refs": [
+        "Exact evidence provenance",
+        "Source identity and external version",
+        "Original IDs and corrections",
+        "Point, interval or missing result",
+        "Metric and denominator",
+        "Reported methods and evidence role",
+        "Clocks and precision",
+        "Scoped rights and review"
+      ],
+      "review_disposition": "One article/correction chain; concern remains active until explicit journal resolution. Keep original article, concern, author deposit, provider technical clocks and corrected release separate.",
+      "unsupported_or_source_native_fields": [
+        "editorial status is not a generic publication_state value",
+        "provider-created/provider-modified clocks",
+        "multiple assertion roles on same research lineage",
+        "rights specific to archive member versus host"
+      ],
+      "schema_compatibility": "partial fragments only, no complete record or lossless import claimed",
+      "admission": "not_admitted",
+      "source_native_ledger_is_official_contract": false
+    }
+  ],
+  "unit_findings": {
+    "percent_change": "signed relative change, not bounded proportion or percentage points",
+    "percent": "bounded proportion 0..100",
+    "score": "scale-specific; preserve 0..100 belief definition",
+    "count": "retain denominator role separately",
+    "minute": "not in frozen unit registry; retain source-native minute values without converting or adding units in this review",
+    "decimal": "exact decimal strings required by proposed schema; JSON floats in submitted source-native ledger are not drop-in canonical values"
+  },
+  "structural_limits": [
+    "No arbitrary extension fields: most schema objects set additionalProperties=false.",
+    "One measurement sample_size cannot encode all per-arm, screened, complete-case and follow-up Ns.",
+    "A shape-valid method, scope or uncertainty_notes string cannot certify semantics, execution, lineage, rights or equivalence.",
+    "Fragment checks do not validate cross-record references or complete dataset import."
+  ],
+  "no_changes": {
+    "schemas": true,
+    "adapters": true,
+    "inventory": true,
+    "catalogs": true,
+    "admission": true
+  }
+}

@@ -2,6 +2,10 @@
 
 Reviewed 8 October 2026 against `mishakgg/pdoom-live@4fa67bdb36e27c8b144b54ba99d3a9396208cd24`. Status: review prepared; independent payload review, publication and CI/integration pending. All five collections remain unadmitted.
 
+## Follow-up qualification: 8 October 2026
+
+The [experimental effects follow-up](followups/experimental-effects-review.md) ([JSON](../../../data/evidence-program/research/followups/experimental-effects-review.json)) adds an independently reviewed research delta for deep prompt 2 / bundle B. For PI005 / PI-A5 / PI-H4, public Dryad/Zenodo documentation was rechecked for 2,094 screened records versus 2,044 complete-case participants, 0–100 belief scores, comparison and follow-up scope, producer-declared OLS methods and separate release clocks. This is documentary provenance, not executed analysis. Exact corrected comparison-specific effects, intervals, p-values and comparison/follow-up Ns remain unavailable in inspected page text. The journal concern remains active; author deposits do not establish publisher disposition. No archive member or participant file was acquired, and the approximate abstract result is not a substitute for corrected effects. The fingerprinted original catalog and all historical text below remain unchanged; a failed reread does not invalidate prior verified evidence. Source admission and lossless canonical mapping remain held.
+
 ## Decision and measurement boundaries
 
 Retain four producer families and five empirical collections: DebateGPT, Spitale, Ofcom (two separate surveys), and Costello. The frozen 64-source inventory and canonical contracts are unchanged. Read the [structured catalog](../../../data/evidence-program/research/persuasion-information.json) and [curated contrast ledger](../../../data/evidence-program/research/debategpt-correction-ledger.json).

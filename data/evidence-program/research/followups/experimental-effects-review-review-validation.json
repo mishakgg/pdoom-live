@@ -1,0 +1,1461 @@
+{
+  "review_integrity_checks": 340,
+  "all_integrity_checks_passed": true,
+  "integrity_checks": [
+    {
+      "check": "intake manifest bytes unchanged",
+      "passed": true
+    },
+    {
+      "check": "original bytes Pasted text(4).txt",
+      "passed": true
+    },
+    {
+      "check": "original bytes session2_decision_report(1).pdf",
+      "passed": true
+    },
+    {
+      "check": "original bytes session2_evidence_ledger(1).json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 AGENTS.md",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob AGENTS.md",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 README.md",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob README.md",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 docs/PRODUCT.md",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob docs/PRODUCT.md",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 docs/DATA_MODEL.md",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob docs/DATA_MODEL.md",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 docs/SOURCE_AND_PROVENANCE_POLICY.md",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob docs/SOURCE_AND_PROVENANCE_POLICY.md",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 docs/ROADMAP.md",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob docs/ROADMAP.md",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 docs/evidence-program/source_priorities.md",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob docs/evidence-program/source_priorities.md",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 data/evidence-program/source_inventory.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob data/evidence-program/source_inventory.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 docs/evidence-program/research/research-session-review-queue.md",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob docs/evidence-program/research/research-session-review-queue.md",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 docs/evidence-program/research/followups/prompts/02-reconcile-experimental-effects.txt",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob docs/evidence-program/research/followups/prompts/02-reconcile-experimental-effects.txt",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 data/evidence-program/research/followups/follow-up-queue.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob data/evidence-program/research/followups/follow-up-queue.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 docs/evidence-program/research/followups/follow-up-queue.md",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob docs/evidence-program/research/followups/follow-up-queue.md",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/validate_dataset.py",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/validate_dataset.py",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 data/evidence-program/research/adoption-productivity.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob data/evidence-program/research/adoption-productivity.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 docs/evidence-program/research/adoption-productivity.md",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob docs/evidence-program/research/adoption-productivity.md",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 data/evidence-program/research/scientific-progress.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob data/evidence-program/research/scientific-progress.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 docs/evidence-program/research/scientific-progress.md",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob docs/evidence-program/research/scientific-progress.md",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 data/evidence-program/research/persuasion-information.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob data/evidence-program/research/persuasion-information.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 docs/evidence-program/research/persuasion-information.md",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob docs/evidence-program/research/persuasion-information.md",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 data/evidence-program/research/negative-replications.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob data/evidence-program/research/negative-replications.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 docs/evidence-program/research/negative-replications.md",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob docs/evidence-program/research/negative-replications.md",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/actor.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/actor.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/benchmark_run.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/benchmark_run.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/dataset.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/dataset.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/field_dictionary.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/field_dictionary.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/forecast.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/forecast.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/forecast_question.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/forecast_question.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/incident.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/incident.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/model_version.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/model_version.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/release_event.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/release_event.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/resolution.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/resolution.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/resource_observation.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/resource_observation.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/safety_evaluation.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/safety_evaluation.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/snapshot.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/snapshot.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/source_artifact.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/source_artifact.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/statement.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/statement.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/contracts/unit_registry.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/contracts/unit_registry.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/check_adoption_productivity.py",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/check_adoption_productivity.py",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/check_persuasion_information.py",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/check_persuasion_information.py",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/check_scientific_progress.py",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/check_scientific_progress.py",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/tests/test_persuasion_catalog.py",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/tests/test_persuasion_catalog.py",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/tests/test_persuasion_ledger.py",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/tests/test_persuasion_ledger.py",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/tests/test_scientific_catalog.py",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/tests/test_scientific_catalog.py",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/tests/test_scientific_ledger.py",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/tests/test_scientific_ledger.py",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/validate_persuasion_ledger.py",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/validate_persuasion_ledger.py",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/validate_scientific_ledger.py",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/validate_scientific_ledger.py",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 docs/ARCHITECTURE.md",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob docs/ARCHITECTURE.md",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 tools/evidence_program/README.md",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob tools/evidence_program/README.md",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 packages/contracts/schema/canonical-import.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob packages/contracts/schema/canonical-import.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository SHA256 packages/contracts/source-observation.schema.json",
+      "passed": true
+    },
+    {
+      "check": "repository Git blob packages/contracts/source-observation.schema.json",
+      "passed": true
+    },
+    {
+      "check": "unique artifact keys",
+      "passed": true
+    },
+    {
+      "check": "all submitted assertion keys",
+      "passed": true
+    },
+    {
+      "check": "historical external commit stays null",
+      "passed": true
+    },
+    {
+      "check": "assertion source metr-declared-hc3",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt metr-declared-hc3",
+      "passed": true
+    },
+    {
+      "check": "assertion source metr-point",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt metr-point",
+      "passed": true
+    },
+    {
+      "check": "assertion source metr-counts",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt metr-counts",
+      "passed": true
+    },
+    {
+      "check": "assertion source metr-estimation",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt metr-estimation",
+      "passed": true
+    },
+    {
+      "check": "assertion source metr-duration",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt metr-duration",
+      "passed": true
+    },
+    {
+      "check": "assertion source metr-imputation",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt metr-imputation",
+      "passed": true
+    },
+    {
+      "check": "assertion source metr-attrition",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt metr-attrition",
+      "passed": true
+    },
+    {
+      "check": "assertion source metr-allocation",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt metr-allocation",
+      "passed": true
+    },
+    {
+      "check": "assertion source metr-forecast",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt metr-forecast",
+      "passed": true
+    },
+    {
+      "check": "assertion source metr-posthoc",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt metr-posthoc",
+      "passed": true
+    },
+    {
+      "check": "assertion source metr-timing",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt metr-timing",
+      "passed": true
+    },
+    {
+      "check": "assertion source metr-versions",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt metr-versions",
+      "passed": true
+    },
+    {
+      "check": "assertion source metr-figure-preserved",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt metr-figure-preserved",
+      "passed": true
+    },
+    {
+      "check": "assertion source metr-nonrobust-supplied",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt metr-nonrobust-supplied",
+      "passed": true
+    },
+    {
+      "check": "assertion source metr-late-unresolved",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt metr-late-unresolved",
+      "passed": true
+    },
+    {
+      "check": "assertion source i4r-iza-human-only",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt i4r-iza-human-only",
+      "passed": true
+    },
+    {
+      "check": "assertion source i4r-iza-ai-assisted",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt i4r-iza-ai-assisted",
+      "passed": true
+    },
+    {
+      "check": "assertion source i4r-iza-ai-led",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt i4r-iza-ai-led",
+      "passed": true
+    },
+    {
+      "check": "assertion source i4r-label",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt i4r-label",
+      "passed": true
+    },
+    {
+      "check": "assertion source i4r-counts",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt i4r-counts",
+      "passed": true
+    },
+    {
+      "check": "assertion source i4r-successes-supplied",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt i4r-successes-supplied",
+      "passed": true
+    },
+    {
+      "check": "assertion source i4r-current-human-only",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt i4r-current-human-only",
+      "passed": true
+    },
+    {
+      "check": "assertion source i4r-current-ai-assisted",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt i4r-current-ai-assisted",
+      "passed": true
+    },
+    {
+      "check": "assertion source i4r-current-ai-led",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt i4r-current-ai-led",
+      "passed": true
+    },
+    {
+      "check": "assertion source i4r-static-conflict",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt i4r-static-conflict",
+      "passed": true
+    },
+    {
+      "check": "assertion source i4r-rmst",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt i4r-rmst",
+      "passed": true
+    },
+    {
+      "check": "assertion source i4r-history-supplied",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt i4r-history-supplied",
+      "passed": true
+    },
+    {
+      "check": "assertion source costello-screened-all",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt costello-screened-all",
+      "passed": true
+    },
+    {
+      "check": "assertion source costello-screened-study1",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt costello-screened-study1",
+      "passed": true
+    },
+    {
+      "check": "assertion source costello-screened-study2",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt costello-screened-study2",
+      "passed": true
+    },
+    {
+      "check": "assertion source costello-complete-cases",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt costello-complete-cases",
+      "passed": true
+    },
+    {
+      "check": "assertion source costello-headline",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt costello-headline",
+      "passed": true
+    },
+    {
+      "check": "assertion source costello-scale-comparator",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt costello-scale-comparator",
+      "passed": true
+    },
+    {
+      "check": "assertion source costello-corrected-methods",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt costello-corrected-methods",
+      "passed": true
+    },
+    {
+      "check": "assertion source costello-followups",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt costello-followups",
+      "passed": true
+    },
+    {
+      "check": "assertion source costello-intentions",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt costello-intentions",
+      "passed": true
+    },
+    {
+      "check": "assertion source costello-dryad-clocks",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt costello-dryad-clocks",
+      "passed": true
+    },
+    {
+      "check": "assertion source costello-zenodo-clocks",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt costello-zenodo-clocks",
+      "passed": true
+    },
+    {
+      "check": "assertion source costello-journal-status-supplied",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt costello-journal-status-supplied",
+      "passed": true
+    },
+    {
+      "check": "assertion source costello-study1-effect",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt costello-study1-effect",
+      "passed": true
+    },
+    {
+      "check": "assertion source costello-study2-effect",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt costello-study2-effect",
+      "passed": true
+    },
+    {
+      "check": "assertion source costello-study2b-effect",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt costello-study2b-effect",
+      "passed": true
+    },
+    {
+      "check": "assertion source i4r-current-team-counts-supplied",
+      "passed": true
+    },
+    {
+      "check": "assertion receipt i4r-current-team-counts-supplied",
+      "passed": true
+    },
+    {
+      "check": "new assertion source review-metr-update-early",
+      "passed": true
+    },
+    {
+      "check": "new assertion source review-metr-update-returning",
+      "passed": true
+    },
+    {
+      "check": "new assertion source review-metr-update-new",
+      "passed": true
+    },
+    {
+      "check": "new assertion source review-metr-late-design",
+      "passed": true
+    },
+    {
+      "check": "lineage node AP002",
+      "passed": true
+    },
+    {
+      "check": "lineage node NR007",
+      "passed": true
+    },
+    {
+      "check": "lineage node 2507.09089v1",
+      "passed": true
+    },
+    {
+      "check": "lineage node 2507.09089v2",
+      "passed": true
+    },
+    {
+      "check": "lineage node historical early aggregate",
+      "passed": true
+    },
+    {
+      "check": "lineage node metr-early-repo",
+      "passed": true
+    },
+    {
+      "check": "lineage node metr-early",
+      "passed": true
+    },
+    {
+      "check": "lineage node metr-late",
+      "passed": true
+    },
+    {
+      "check": "lineage node i4r-branches-table",
+      "passed": true
+    },
+    {
+      "check": "lineage node i4r-branches-code",
+      "passed": true
+    },
+    {
+      "check": "lineage node cleaning/RDS revision described in brief",
+      "passed": true
+    },
+    {
+      "check": "lineage node supplied current paper",
+      "passed": true
+    },
+    {
+      "check": "lineage node i4r-iza-paper",
+      "passed": true
+    },
+    {
+      "check": "lineage node SP001",
+      "passed": true
+    },
+    {
+      "check": "lineage node costello-zenodo",
+      "passed": true
+    },
+    {
+      "check": "lineage node 10.1126/science.adq1814",
+      "passed": true
+    },
+    {
+      "check": "lineage node 10.5061/dryad.v6wwpzh4h",
+      "passed": true
+    },
+    {
+      "check": "lineage node Dryad 2024-08-29",
+      "passed": true
+    },
+    {
+      "check": "lineage node Dryad 2026-09-29",
+      "passed": true
+    },
+    {
+      "check": "lineage node 10.1126/science.aej2383",
+      "passed": true
+    },
+    {
+      "check": "lineage edge edge-ap-nr",
+      "passed": true
+    },
+    {
+      "check": "lineage edge edge-metr-v2",
+      "passed": true
+    },
+    {
+      "check": "lineage edge edge-metr-early-output",
+      "passed": true
+    },
+    {
+      "check": "lineage edge edge-metr-late",
+      "passed": true
+    },
+    {
+      "check": "lineage edge edge-i4r-output",
+      "passed": true
+    },
+    {
+      "check": "lineage edge edge-i4r-input",
+      "passed": true
+    },
+    {
+      "check": "lineage edge edge-i4r-paper-table",
+      "passed": true
+    },
+    {
+      "check": "lineage edge edge-i4r-iza",
+      "passed": true
+    },
+    {
+      "check": "lineage edge edge-costello-supplement",
+      "passed": true
+    },
+    {
+      "check": "lineage edge edge-costello-derived",
+      "passed": true
+    },
+    {
+      "check": "lineage edge edge-costello-dryad-revision",
+      "passed": true
+    },
+    {
+      "check": "lineage edge edge-costello-notice",
+      "passed": true
+    },
+    {
+      "check": "conflict pointers conflict-metr-covariance",
+      "passed": true
+    },
+    {
+      "check": "conflict pointers conflict-metr-waves",
+      "passed": true
+    },
+    {
+      "check": "conflict pointers conflict-i4r-parentheses",
+      "passed": true
+    },
+    {
+      "check": "conflict pointers conflict-i4r-editions",
+      "passed": true
+    },
+    {
+      "check": "conflict pointers conflict-i4r-lineage",
+      "passed": true
+    },
+    {
+      "check": "conflict pointers conflict-costello-cohort",
+      "passed": true
+    },
+    {
+      "check": "conflict pointers conflict-costello-disposition",
+      "passed": true
+    },
+    {
+      "check": "rights pointers rights-metr-paper",
+      "passed": true
+    },
+    {
+      "check": "rights pointers rights-metr-csv",
+      "passed": true
+    },
+    {
+      "check": "rights pointers rights-metr-code",
+      "passed": true
+    },
+    {
+      "check": "rights pointers rights-metr-aggregates",
+      "passed": true
+    },
+    {
+      "check": "rights pointers rights-i4r-tables",
+      "passed": true
+    },
+    {
+      "check": "rights pointers rights-i4r-code",
+      "passed": true
+    },
+    {
+      "check": "rights pointers rights-i4r-paper",
+      "passed": true
+    },
+    {
+      "check": "rights pointers rights-costello-dryad",
+      "passed": true
+    },
+    {
+      "check": "rights pointers rights-costello-zenodo-code",
+      "passed": true
+    },
+    {
+      "check": "rights pointers rights-costello-publication-material",
+      "passed": true
+    },
+    {
+      "check": "rights pointers rights-costello-whole-zip",
+      "passed": true
+    },
+    {
+      "check": "rights pointers rights-costello-journal-notice",
+      "passed": true
+    },
+    {
+      "check": "context pointers review-metr-early",
+      "passed": true
+    },
+    {
+      "check": "context pointers review-i4r-iza",
+      "passed": true
+    },
+    {
+      "check": "context pointers review-costello",
+      "passed": true
+    },
+    {
+      "check": "29 original cases retained",
+      "passed": true
+    },
+    {
+      "check": "29 current case mappings retained",
+      "passed": true
+    },
+    {
+      "check": "nine current IDs resolved",
+      "passed": true
+    },
+    {
+      "check": "all primary receipts resolve artifact",
+      "passed": true
+    },
+    {
+      "check": "IZA inspected bytes",
+      "passed": true
+    },
+    {
+      "check": "HC3 excerpt bytes",
+      "passed": true
+    },
+    {
+      "check": "public delta excludes private file identity/path",
+      "passed": true
+    },
+    {
+      "check": "source-native decimal values not silently made canonical",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained M01",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained M02",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained M03",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained M04",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained M05",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained M06",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained M07",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained I01",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained I02",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained I03",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained I04",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained I05",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained I06",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained I07",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained C01",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained C02",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained C03",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained C04",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained C05",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained C06",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained C07",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained G01",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained G02",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained G03",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained G04",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained G05",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained I08",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained I09",
+      "passed": true
+    },
+    {
+      "check": "historical case content retained C08",
+      "passed": true
+    },
+    {
+      "check": "M01 endpoints are current preserved evidence",
+      "passed": true
+    },
+    {
+      "check": "I02 current means keep catalog provenance",
+      "passed": true
+    },
+    {
+      "check": "I05 current labels units RMST preserved",
+      "passed": true
+    },
+    {
+      "check": "G03 reviewer pin remains verified",
+      "passed": true
+    },
+    {
+      "check": "G04 actual partial mapping remains verified",
+      "passed": true
+    },
+    {
+      "check": "no excluded work-file publication reference review.md",
+      "passed": true
+    },
+    {
+      "check": "publication link target repository-files-manifest.json",
+      "passed": true
+    },
+    {
+      "check": "publication link target contract-mapping.json",
+      "passed": true
+    },
+    {
+      "check": "publication link target delta.json",
+      "passed": true
+    },
+    {
+      "check": "no excluded work-file publication reference delta.json",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/0",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/1",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/2",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/3",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/4",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/5",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/6",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/7",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/8",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/9",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/10",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/11",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/12",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/13",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/14",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/15",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/16",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/17",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/18",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/19",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/20",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/21",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/22",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/23",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/24",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/25",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/26",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/27",
+      "passed": true
+    },
+    {
+      "check": "embedded current case section delta.json/submitted_acceptance_cases/28",
+      "passed": true
+    },
+    {
+      "check": "publication link target repository-files-manifest.json",
+      "passed": true
+    },
+    {
+      "check": "publication link target delta.json#/prior_verified_evidence",
+      "passed": true
+    },
+    {
+      "check": "publication JSON pointer delta.json#/prior_verified_evidence",
+      "passed": true
+    },
+    {
+      "check": "no excluded work-file publication reference primary-verification.json",
+      "passed": true
+    },
+    {
+      "check": "no excluded work-file publication reference contract-mapping.json",
+      "passed": true
+    },
+    {
+      "check": "no excluded work-file publication reference repository-mapping.json",
+      "passed": true
+    },
+    {
+      "check": "publication link target repository-files-manifest.json",
+      "passed": true
+    },
+    {
+      "check": "publication link target delta.json#/prior_verified_evidence",
+      "passed": true
+    },
+    {
+      "check": "publication JSON pointer delta.json#/prior_verified_evidence",
+      "passed": true
+    },
+    {
+      "check": "no excluded work-file publication reference repository-files-manifest.json",
+      "passed": true
+    },
+    {
+      "check": "no excluded work-file publication reference follow-up-actions.json",
+      "passed": true
+    },
+    {
+      "check": "no excluded work-file publication reference validation-results.json",
+      "passed": true
+    },
+    {
+      "check": "publication set exactly eight",
+      "passed": true
+    }
+  ],
+  "mapping_worker_validation": {
+    "pinned_commit": "2266b56681812cde175257734dc16ed1c88c1323",
+    "executed_at_utc": "2026-10-08T15:55:21.772250+00:00",
+    "completed": [
+      "All selected local review copies match connector-read pinned tree Git blob identities and SHA-256 fingerprints.",
+      "Input ledger JSON parsed and original external-session null commit preserved.",
+      "Nine required existing IDs resolved to exact current catalog pointers.",
+      "All mapped catalog and schema JSON Pointers resolve.",
+      "29 submitted acceptance cases receive explicit manual semantic disposition and synthetic shape probes.",
+      "Negative shape probes reject minute units, unknown standard_error field, unsupported journal status enum and non-SHA256 hashes."
+    ],
+    "manual_semantic_case_count": 29,
+    "synthetic_fragment_count": 46,
+    "shape_valid_count": 36,
+    "shape_invalid_as_expected_count": 10,
+    "fragment_expectations_pass": true,
+    "jsonschema_version": "4.26.0",
+    "repository_code_executed": false,
+    "research_code_executed": false,
+    "models_or_scorers_executed": false,
+    "full_contract_suite": "not_run",
+    "full_repository_suite": "not_run",
+    "cross_record_validation": "not_run",
+    "production_import": "not_run",
+    "external_source_bytes_verified": "not_by_this_contract_worker",
+    "full_lossless_contract_acceptance": false,
+    "admission": "not_admitted"
+  },
+  "manual_visual_checks": {
+    "submitted_pdf_pages_rendered_and_inspected": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "i4r_iza_pdf_page19_table1_rendered_and_inspected": true,
+    "web_screenshots": "Unavailable; local rendering used for the same accessible PDF."
+  },
+  "scientific_source_execution": false,
+  "model_execution": false,
+  "participant_data_access": false,
+  "archive_member_access": false,
+  "full_canonical_record_validation": "not_run",
+  "full_repository_validation": "not_run",
+  "public_repository_write": "not_performed",
+  "canonical_admission": false,
+  "warning": "Integrity checks and synthetic schema fragments are not statistical replication, semantic automation, rights clearance or source admission.",
+  "public_reference_validation": {
+    "files_checked": [
+      "docs/evidence-program/research/followups/experimental-effects-review.md",
+      "data/evidence-program/research/followups/experimental-effects-review.json",
+      "data/evidence-program/research/followups/experimental-effects-review-primary-verification.json",
+      "data/evidence-program/research/followups/experimental-effects-review-contract-mapping.json",
+      "data/evidence-program/research/followups/experimental-effects-review-repository-mapping.json",
+      "data/evidence-program/research/followups/experimental-effects-review-repository-files-manifest.json",
+      "data/evidence-program/research/followups/experimental-effects-review-actions.json",
+      "data/evidence-program/research/followups/experimental-effects-review-review-validation.json"
+    ],
+    "local_file_and_section_links": [
+      {
+        "from": "docs/evidence-program/research/followups/experimental-effects-review.md",
+        "to": "data/evidence-program/research/followups/experimental-effects-review-repository-files-manifest.json"
+      },
+      {
+        "from": "docs/evidence-program/research/followups/experimental-effects-review.md",
+        "to": "data/evidence-program/research/followups/experimental-effects-review-contract-mapping.json"
+      },
+      {
+        "from": "docs/evidence-program/research/followups/experimental-effects-review.md",
+        "to": "data/evidence-program/research/followups/experimental-effects-review.json"
+      },
+      {
+        "from": "data/evidence-program/research/followups/experimental-effects-review.json/current_repository_mapping/selected_file_manifest",
+        "to": "data/evidence-program/research/followups/experimental-effects-review-repository-files-manifest.json"
+      },
+      {
+        "from": "data/evidence-program/research/followups/experimental-effects-review.json/current_repository_mapping/prior_catalog_snapshot",
+        "to": "data/evidence-program/research/followups/experimental-effects-review.json#/prior_verified_evidence"
+      },
+      {
+        "from": "data/evidence-program/research/followups/experimental-effects-review-repository-mapping.json/selected_file_manifest",
+        "to": "data/evidence-program/research/followups/experimental-effects-review-repository-files-manifest.json"
+      },
+      {
+        "from": "data/evidence-program/research/followups/experimental-effects-review-repository-mapping.json/prior_catalog_snapshot",
+        "to": "data/evidence-program/research/followups/experimental-effects-review.json#/prior_verified_evidence"
+      }
+    ],
+    "embedded_current_case_section_references_checked": 29,
+    "classification": "Package-local mapping pointers and Markdown links/inline local filenames resolved across exactly eight publication files. Repository-relative contract/catalog source paths remain pinned-source references, not package files; suggested integration destinations are explicitly future targets.",
+    "stale_access_only_downgrade_regressions": "M01, I02, I05, G03, G04 passed; all 29 inherited lists and rationales separately labeled submitted."
+  },
+  "receipt_scope_note": "Historical source-review receipt: 340 integrity checks, 29 manual semantic cases and 46 synthetic schema fragments. Candidate integration checks and remote CI are distinct; no full canonical admission or scientific execution."
+}

@@ -2,6 +2,10 @@
 
 Reviewed 8 October 2026 against repository commit `e5121ee888393db656610be749dfc2d03897c751`. Prepared research integration; all five collections remain unadmitted. The frozen 64-source inventory, schemas and prior source readers are unchanged.
 
+## Follow-up qualification: 8 October 2026
+
+The [experimental effects follow-up](followups/experimental-effects-review.md) ([JSON](../../../data/evidence-program/research/followups/experimental-effects-review.json)) adds an independently reviewed research delta for deep prompt 2 / bundle B. For SP001 / SP-A03 / SCI-H01, the January 2025 IZA edition’s completion means 79.1/92.3/175.1 minutes and source-labeled standard-error parentheses are historical edition evidence. They do not replace the current catalog’s human-only/AI-assisted/AI-led order, 33/35/35 teams, 31/32/13 successes, 82.0/93.3/179.7-minute means or 102/121/331-minute restricted means at 420 minutes. These current catalog values remain prior reviewed source assertions. Valid-time Ns, the SD-versus-SE generating statistic, exact output/input/analysis linkage and generated-table rights remain unresolved. No recalculation, regeneration, edition pooling or independent replication is established. The fingerprinted original catalog and all historical text below remain unchanged; a failed reread does not invalidate prior verified evidence. Source admission and lossless canonical mapping remain held.
+
 ## Recommendation and scope
 
 Top additions: I4R AI-Games for a controlled contribution comparison, A-Lab for corrected physical outcomes, and RE-Bench for engineering performance under explicit budgets. AlphaTensor and CASP supply complementary algorithm-discovery and independent prediction-assessment evidence. These are different estimands, not a common scientific-productivity score.
