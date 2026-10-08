@@ -20,7 +20,7 @@ describe("UTC date presentation", () => {
   it("constructs its formatter only once, and only for a valid date", async () => {
     vi.resetModules();
     const original = Intl.DateTimeFormat;
-    const constructor = vi.spyOn(Intl, "DateTimeFormat").mockImplementation((...args) => new original(...args));
+    const constructor = vi.spyOn(Intl, "DateTimeFormat").mockImplementation(function (...args) { return new original(...args); });
     const fresh = await import("../apps/web/lib/format");
     fresh.formatWhen(null);
     fresh.formatWhen("invalid");
