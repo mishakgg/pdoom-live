@@ -1,0 +1,147 @@
+name: One-time dependency audit
+
+on:
+  push:
+    branches: [audit/npm-lockfile-2026-10-08]
+    paths: [.github/workflows/dependency-audit-once.yml]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: dependency-audit-once-2026-10-08
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    if: github.repository == 'mishakgg/pdoom-live'
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: 8f12d1ba5f21ea3050dfa1eae3135f41ad46784a
+          persist-credentials: false
+          fetch-depth: 1
+          path: source
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+          check-latest: false
+      - name: Audit copied lockfile without installing or executing project code
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import shutil
+          import subprocess
+          import sys
+          import tempfile
+          from urllib.parse import urlparse
+
+          source = Path(os.environ['GITHUB_WORKSPACE']) / 'source'
+          root = Path(tempfile.mkdtemp(prefix='pdoom-audit-', dir=os.environ['RUNNER_TEMP']))
+          work = root / 'input'
+          home = root / 'home'
+          cache = root / 'cache'
+          for directory in (work, home, cache):
+              directory.mkdir()
+          paths = [
+              'package.json', 'package-lock.json', 'apps/web/package.json',
+              'packages/contracts/package.json', 'packages/db/package.json',
+              'packages/observability/package.json',
+          ]
+          hashes = {}
+          for path in paths:
+              data = (source / path).read_bytes()
+              hashes[path] = hashlib.sha256(data).hexdigest()
+              target = work / path
+              target.parent.mkdir(parents=True, exist_ok=True)
+              target.write_bytes(data)
+          expected = 'b8166b6013ac3bc51114bc4d7cbddc64dbbb229cc40efcfc19e74dedce894c1a'
+          if hashes['package-lock.json'] != expected:
+              raise SystemExit('Unexpected lockfile bytes; refusing audit.')
+          lock = json.loads((work / 'package-lock.json').read_text())
+          for path, package in lock['packages'].items():
+              resolved = package.get('resolved', '')
+              if not resolved or package.get('link'):
+                  continue
+              url = urlparse(resolved)
+              if url.scheme != 'https' or url.hostname != 'registry.npmjs.org' or url.username or url.password:
+                  raise SystemExit('Non-public-registry dependency; refusing transmission.')
+          for filename in ('user.npmrc', 'global.npmrc'):
+              (home / filename).write_text('')
+          env = {
+              'PATH': os.environ['PATH'], 'HOME': str(home), 'CI': 'true',
+              'npm_config_userconfig': str(home / 'user.npmrc'),
+              'npm_config_globalconfig': str(home / 'global.npmrc'),
+              'npm_config_cache': str(cache),
+          }
+          npm = shutil.which('npm')
+          if not npm:
+              raise SystemExit('npm unavailable; audit did not run.')
+          versions = {}
+          for tool in ('node', 'npm'):
+              result = subprocess.run([tool, '--version'], env=env, cwd=work,
+                                      text=True, capture_output=True, timeout=10, check=True)
+              versions[tool] = result.stdout.strip()
+          receipt = {'audited_commit': '8f12d1ba5f21ea3050dfa1eae3135f41ad46784a',
+                     'versions': versions, 'input_sha256': hashes, 'reports': {}}
+          failed = False
+          for mode, flags in [('all', []), ('omit-dev', ['--omit=dev'])]:
+              command = [npm, 'audit', '--package-lock-only', '--ignore-scripts', '--json',
+                         '--registry=https://registry.npmjs.org', '--fetch-retries=1',
+                         '--fetch-timeout=20000', '--fetch-retry-mintimeout=1000',
+                         '--fetch-retry-maxtimeout=2000', *flags]
+              try:
+                  result = subprocess.run(command, env=env, cwd=work, text=True,
+                                          capture_output=True, timeout=120)
+                  stdout, stderr, code = result.stdout, result.stderr, result.returncode
+              except subprocess.TimeoutExpired:
+                  receipt['reports'][mode] = {'status': 'retrieval_failed', 'reason': '120 second timeout'}
+                  failed = True
+                  break
+              # Prefix every line so registry text cannot act as a workflow command.
+              for line in stdout.splitlines():
+                  print('AUDIT_JSON_' + mode + ' ' + line)
+              for line in stderr.splitlines():
+                  print('AUDIT_STDERR_' + mode + ' ' + line)
+              try:
+                  report = json.loads(stdout)
+              except json.JSONDecodeError:
+                  report = None
+              valid = (code in (0, 1) and isinstance(report, dict)
+                       and report.get('auditReportVersion') == 2
+                       and isinstance(report.get('vulnerabilities'), dict)
+                       and isinstance(report.get('metadata', {}).get('vulnerabilities'), dict)
+                       and 'error' not in report)
+              if not valid:
+                  receipt['reports'][mode] = {'status': 'retrieval_failed', 'exit_code': code}
+                  failed = True
+                  break
+              receipt['reports'][mode] = {
+                  'status': 'audit_completed', 'exit_code': code,
+                  'counts': report['metadata']['vulnerabilities'],
+                  'package_entries': sorted(report['vulnerabilities']),
+                  'sha256': hashlib.sha256(stdout.encode()).hexdigest(),
+              }
+          unchanged = all(hashlib.sha256((work / path).read_bytes()).hexdigest() == digest
+                          for path, digest in hashes.items())
+          receipt['inputs_unchanged'] = unchanged
+          receipt['node_modules_created'] = (work / 'node_modules').exists()
+          if not unchanged or receipt['node_modules_created']:
+              failed = True
+          print('AUDIT_RECEIPT ' + json.dumps(receipt, sort_keys=True))
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write('One-time read-only audit of commit 8f12d1ba5f21ea3050dfa1eae3135f41ad46784a.\n\n')
+              summary.write('Dependency findings are not proof of runtime exposure. Omit-dev classification is not a deployed-image inventory.\n\n')
+              summary.write('Full audit JSON is in the AUDIT_JSON_all and AUDIT_JSON_omit-dev log lines.\n\n')
+              summary.write('```json\n' + json.dumps(receipt, indent=2) + '\n```\n')
+          # A valid report containing vulnerabilities succeeds as a diagnostic.
+          # Transport/format/input-integrity failures fail distinctly.
+          sys.exit(3 if failed else 0)
+          PY

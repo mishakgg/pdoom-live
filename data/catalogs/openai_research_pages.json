@@ -1,6 +1,0 @@
-{
-  "catalog_id": "openai_research_pages",
-  "description": "Metadata for public OpenAI research index pages. A row is stored only when one bounded GET returned the page HTML. Blocked responses are omitted and titles are not invented. Rows keep a title, publisher, canonical URL, date, and rights label. Page text, abstracts, and PDFs are not stored. Rights is creative_commons only for a stated CC0, CC BY, or CC BY-SA licence. CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay unknown. A public page, copyright notice, all-rights-reserved line, or terms link is not a licence. A missing publication date is unknown. Updated, modified, and copyright years are not publication dates. This catalog is not a belief collector. runner_wired is false.",
-  "runner_wired": false,
-  "entries": []
-}

@@ -1,6 +1,0 @@
-{
-  "catalog_id": "servicenow_research_pages",
-  "description": "Public ServiceNow Research pages about artificial intelligence. Prefer research.servicenow.com. www.servicenow.com is stored only when a research or AI publication path stays on that host. research.servicenow.com redirects off-host. Akamai 403 Access Denied blocked robots.txt, the sitemaps, /research/, /research/publications/, and a publication path. Challenge paths are not stored, so the catalog is empty. Product marketing and login pages are omitted. Rows keep title, publisher, URL, date, and rights. Page text is not stored. creative_commons_attribution is CC BY alone. creative_commons is CC0, CC BY-SA, or a permissive mix. A missing date is unknown. Updated and copyright years are not publication dates. This module does not fetch. It is not a belief collector, and runner_wired is false.",
-  "runner_wired": false,
-  "entries": []
-}

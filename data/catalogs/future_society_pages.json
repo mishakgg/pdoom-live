@@ -1,6 +1,0 @@
-{
-  "catalog_id": "future_society_pages",
-  "description": "Metadata for public The Future Society pages on thefuturesociety.org. Each row requires one bounded GET that returns the page HTML. A Cloudflare challenge, SiteGround captcha, or other robot block omits the row, so the catalog may be empty. Rows store the title, publisher, canonical URL, date, and rights. Page bodies and PDFs are not stored. A missing date is unknown. Updated, modified, and copyright years are not publication dates. Rights stay unknown unless the page states CC0, CC BY, or CC BY-SA and does not also state a restricted deed. CC BY-NC, CC BY-ND, CC BY-NC-SA, and CC BY-NC-ND stay unknown. A public page, a copyright notice, or a terms link is not a licence. runner_wired is false.",
-  "runner_wired": false,
-  "entries": []
-}
