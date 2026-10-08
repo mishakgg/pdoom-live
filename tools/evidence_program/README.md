@@ -155,3 +155,14 @@ The [fixture notice](tests/fixtures/forecast-surveys/NOTICE.md) retains CC BY 4.
 [check_forecast_surveys.py](check_forecast_surveys.py) checks seven collections, all fourteen previous catalog fingerprints, complete overlap coverage, artifact-specific rights and the standalone bounded prompts. [Guide](../../docs/evidence-program/research/forecast-surveys.md). No pooling, generic p(doom) mapping, individual profiling or live collector.
 
 Byte-pinned LEAP and earlier AgentDojo synthetic JSON fixtures now each have a directory-local `.gitattributes` rule forcing LF checkout. Two isolated Git `core.autocrlf=true` regressions verify byte equality and both readers. Only the checkout rule is added to the prior fixture directory; existing files and hashes are preserved.
+
+## Incident publication-correction review
+
+[read_nhtsa_corrections.py](read_nhtsa_corrections.py) validates exactly two manually curated NHTSA agency-fact corrections, with separate source-document/derivative hashes, assertion/revision identities, correction/edition/retrieval clocks and unavailable earlier-content state. It has no PDF parser, live fetch or canonical write path. Both corrections link ASI005-F04 and add zero incident units. The [fixture notice](tests/fixtures/incidents-near-misses/NOTICE.md) excludes manufacturer narrative rights.
+
+```bash
+python tools/evidence_program/read_nhtsa_corrections.py tools/evidence_program/tests/fixtures/incidents-near-misses/nhtsa-publication-corrections.manual.json
+python tools/evidence_program/check.py
+```
+
+[check_incidents_near_misses.py](check_incidents_near_misses.py) verifies eight collections, all fifteen catalog fingerprints, 120 overlap cells, critical attribution/unit boundaries and eight standalone bounded prompts. [Guide](../../docs/evidence-program/research/incidents-near-misses.md). Source documentary review remains separate from fixed manual-ledger acceptance and synthetic/adversarial tests. No source corpus, raw narrative, patient/personnel records, execution, pooled harm rate or p(doom) conversion.

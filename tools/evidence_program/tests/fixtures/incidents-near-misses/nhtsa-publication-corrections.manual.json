@@ -1,0 +1,74 @@
+{
+  "schema_version": "nhtsa-publication-correction-ledger-v1",
+  "input_kind": "manually_curated_agency_corrections",
+  "scope": {
+    "window_start": "2026-05-01",
+    "window_end": "2026-09-30"
+  },
+  "document": {
+    "source_url": "https://static.nhtsa.gov/odi/ffdd/sgo-2021-01/SGO-2021-01_Data_Element_Definitions.pdf",
+    "title": "Standing General Order (SGO) 2021-01 Data Dictionary",
+    "edition_on": "2026-09-15",
+    "edition_date_precision": "day",
+    "edition_source_timezone": null,
+    "physical_pdf_page_count": 33,
+    "source_retrieved_at_utc": "2026-10-08T08:24:05.902306+00:00",
+    "original_source_sha256": "c92e1bec238e757867d67ea5bf0b26f4a3e9223d0b92a9a7ce76d446518f4fa4",
+    "original_source_byte_count": 529128,
+    "source_http_last_modified_at_utc": "2026-09-15T12:30:24Z"
+  },
+  "corrections": [
+    {
+      "correction_key": "report-34952-11803-v1-2026-08-27",
+      "correction_kind": "report_field_publication_correction",
+      "change_on": "2026-08-27",
+      "change_date_precision": "day",
+      "change_source_timezone": null,
+      "report_id": "34952-11803",
+      "report_version": 1,
+      "affected_field": "narrative",
+      "affected_publication_on": null,
+      "reports_received_on_or_before": null,
+      "locator": {
+        "physical_pdf_page": 4,
+        "table": 1,
+        "row_date": "2026-08-27",
+        "cross_reference_row_date": null
+      },
+      "prior_claim_id": "ASI005-F04",
+      "prior_artifact_id": "asi005_dictionary",
+      "prior_chain_id": "ASI-R02",
+      "previous_content": {
+        "availability": "not_captured",
+        "captured_at_utc": null,
+        "content_sha256": null
+      }
+    },
+    {
+      "correction_key": "release-2026-05-15-restored-2026-06-15",
+      "correction_kind": "release_completeness_publication_correction",
+      "change_on": "2026-06-15",
+      "change_date_precision": "day",
+      "change_source_timezone": null,
+      "report_id": null,
+      "report_version": null,
+      "affected_field": "publication_membership",
+      "affected_publication_on": "2026-05-15",
+      "reports_received_on_or_before": "2026-04-15",
+      "locator": {
+        "physical_pdf_page": 4,
+        "table": 1,
+        "row_date": "2026-06-15",
+        "cross_reference_row_date": "2026-05-15"
+      },
+      "prior_claim_id": "ASI005-F04",
+      "prior_artifact_id": "asi005_dictionary",
+      "prior_chain_id": "ASI-R02",
+      "previous_content": {
+        "availability": "not_captured",
+        "captured_at_utc": null,
+        "content_sha256": null
+      }
+    }
+  ]
+}

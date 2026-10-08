@@ -407,6 +407,8 @@ def run(base_paths=None):
     from check_adoption_productivity import check_catalog as check_adoption_catalog
     from check_organizational_safety import check_catalog as check_organizational_catalog
     from check_research_queue import check_queue
+    from check_incidents_near_misses import check_catalog as check_incidents_catalog
+    from read_nhtsa_corrections import read_corrections
     from check_forecast_surveys import check_catalog as check_forecast_catalog, check_fixtures as check_forecast_fixtures
     from check_labor_market import check_catalog as check_labor_catalog, check_fixtures as check_labor_fixtures
     from check_agent_security_incidents import check_catalog as check_agent_security_catalog, check_fixtures as check_agent_security_fixtures
@@ -498,6 +500,10 @@ def run(base_paths=None):
     forecast_counts = check_forecast_catalog(read_json(DATA / 'research/forecast-surveys.json'),
         hashlib.sha256((DATA / 'source_inventory.json').read_bytes()).hexdigest(), (DOCS / 'research/forecast-surveys.md').read_text(), ROOT)
     forecast_fixture_counts = check_forecast_fixtures(ROOT)
+    incidents_counts = check_incidents_catalog(read_json(DATA / 'research/incidents-near-misses.json'),
+        hashlib.sha256((DATA / 'source_inventory.json').read_bytes()).hexdigest(),
+        (DOCS / 'research/incidents-near-misses.md').read_text(), ROOT)
+    read_corrections(HERE / 'tests/fixtures/incidents-near-misses/nhtsa-publication-corrections.manual.json')
     queue_counts = check_queue((DOCS / 'research/research-session-review-queue.md').read_text(encoding='utf-8'))
     links = check_doc_links(base_paths)
     loader = unittest.TestLoader()
@@ -557,7 +563,11 @@ def run(base_paths=None):
     require(forecast_suite.countTestCases() > 0, 'Forecast-survey regression tests missing')
     forecast_result = unittest.TextTestRunner(verbosity=1).run(forecast_suite)
     require(forecast_result.wasSuccessful(), 'Forecast-survey regression suite failed')
-    return {'status': 'passed', **COUNTS, **task_counts, **research_counts, **adoption_counts, **organizational_counts, **open_model_counts, **concentration_counts, **historical_counts, **scientific_counts, **scientific_ledger_counts, **persuasion_counts, **persuasion_ledger_counts, **robotics_counts, **robotics_fixture_counts, **training_counts, **training_fixture_counts, **human_reliance_counts, **human_reliance_ledger_counts, **algorithmic_counts, **algorithmic_fixture_counts, **agent_security_counts, **agent_security_fixture_counts, **labor_counts, **labor_fixture_counts, **forecast_counts, **forecast_fixture_counts, **queue_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
+    incidents_suite = unittest.TestLoader().discover(str(HERE / 'tests'), pattern='test_incident*.py')
+    require(incidents_suite.countTestCases() > 0, 'Incident regression tests missing')
+    incidents_result = unittest.TextTestRunner(verbosity=1).run(incidents_suite)
+    require(incidents_result.wasSuccessful(), 'Incident regression suite failed')
+    return {'status': 'passed', **COUNTS, **task_counts, **research_counts, **adoption_counts, **organizational_counts, **open_model_counts, **concentration_counts, **historical_counts, **scientific_counts, **scientific_ledger_counts, **persuasion_counts, **persuasion_ledger_counts, **robotics_counts, **robotics_fixture_counts, **training_counts, **training_fixture_counts, **human_reliance_counts, **human_reliance_ledger_counts, **algorithmic_counts, **algorithmic_fixture_counts, **agent_security_counts, **agent_security_fixture_counts, **labor_counts, **labor_fixture_counts, **forecast_counts, **forecast_fixture_counts, **incidents_counts, **queue_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
             'documentation_relative_links': links, 'integration_regression_tests': integration_result.testsRun,
             'open_model_regression_tests': open_model_result.testsRun,
             'concentration_regression_tests': concentration_result.testsRun,
@@ -571,7 +581,8 @@ def run(base_paths=None):
             'agent_security_incidents_regression_tests': agent_security_result.testsRun,
             'labor_market_regression_tests': labor_result.testsRun,
             'forecast_surveys_regression_tests': forecast_result.testsRun,
-            'scope': 'Offline consistency, synthetic regression and two pinned licensed annotation fixtures and one pinned generated dependency-graph fixture, plus synthetic-only historical gzip tests and manual scientific and persuasion aggregate metadata/ledger checks with synthetic regressions, plus a licensed manually curated BARN physical-results table with bounded offline validation. Common Crawl aggregate parsing uses self-authored synthetic CSV fixtures only. Real WMT and Common Crawl artifact acceptance are separate/private and do not run in CI. Human-reliance checks use a manual published-aggregate ledger and provisional synthetic-only decoder; no participant files or source workbook acceptance. Algorithmic-efficiency checks add one Apache-2.0 AlgoPerf trial (two exact source inputs and two labeled curated JSON derivatives) with 74 checkpoints and one retrospective inclusive validation crossing, separate from strict runtime predicates and any official score. Combined agent-security and incident checks add a payload-excluding offline AgentDojo decoder with synthetic-only public fixtures; one private clean-artifact acceptance is separate. Real attacked outcomes remain uninterpreted without runtime provenance. Labor-market checks add one bounded offline German Eurostat JSON-stat slice under separate statistical-data reuse terms, preserving sparse flags, reference years and revision identity. Forecast-survey checks add one manually curated licensed LEAP instrument and four published group summaries, exact source-percent/probability strings and separate source/derivative provenance. This is not an HTML extractor or respondent-level reconstruction. No live fetch, operational collection, production import, deployment, rights approval or language-accuracy evaluation.'}
+            'incidents_near_misses_regression_tests': incidents_result.testsRun,
+            'scope': 'Offline consistency, synthetic regression and two pinned licensed annotation fixtures and one pinned generated dependency-graph fixture, plus synthetic-only historical gzip tests and manual scientific and persuasion aggregate metadata/ledger checks with synthetic regressions, plus a licensed manually curated BARN physical-results table with bounded offline validation. Common Crawl aggregate parsing uses self-authored synthetic CSV fixtures only. Real WMT and Common Crawl artifact acceptance are separate/private and do not run in CI. Human-reliance checks use a manual published-aggregate ledger and provisional synthetic-only decoder; no participant files or source workbook acceptance. Algorithmic-efficiency checks add one Apache-2.0 AlgoPerf trial (two exact source inputs and two labeled curated JSON derivatives) with 74 checkpoints and one retrospective inclusive validation crossing, separate from strict runtime predicates and any official score. Combined agent-security and incident checks add a payload-excluding offline AgentDojo decoder with synthetic-only public fixtures; one private clean-artifact acceptance is separate. Real attacked outcomes remain uninterpreted without runtime provenance. Labor-market checks add one bounded offline German Eurostat JSON-stat slice under separate statistical-data reuse terms, preserving sparse flags, reference years and revision identity. Forecast-survey checks add one manually curated licensed LEAP instrument and four published group summaries, exact source-percent/probability strings and separate source/derivative provenance. This is not an HTML extractor or respondent-level reconstruction. Incident checks add two manually curated agency publication corrections already linked to ASI005-F04; source bytes are not vendored and this is not a PDF extractor. No live fetch, operational collection, production import, deployment, rights approval or language-accuracy evaluation.'}
 
 
 def main():
