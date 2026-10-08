@@ -1,0 +1,444 @@
+{
+  "schema_version": "barn-2024-curated-table-v1",
+  "event_id": "barn-2024-physical-finals",
+  "fixture_id": "barn_2024_physical_table_ii_v1",
+  "fixture_kind": "manually_verified_derived_table_transcription_not_full_source_bytes",
+  "source": {
+    "title": "Autonomous Ground Navigation in Highly Constrained Spaces: Lessons learned from The 3rd BARN Challenge at ICRA 2024",
+    "authors": [
+      "Xuesu Xiao",
+      "Zifan Xu",
+      "Aniket Datar",
+      "Garrett Warnell",
+      "Peter Stone",
+      "Joshua Julian Damanik",
+      "Jaewon Jung",
+      "Chala Adane Deresa",
+      "Than Duc Huy",
+      "Chen Jinyu",
+      "Chen Yichen",
+      "Joshua Adrian Cahyono",
+      "Jingda Wu",
+      "Longfei Mo",
+      "Mingyang Lv",
+      "Bowen Lan",
+      "Qingyang Meng",
+      "Weizhi Tao",
+      "Li Cheng"
+    ],
+    "url": "https://arxiv.org/html/2407.01862v1",
+    "abstract_url": "https://arxiv.org/abs/2407.01862v1",
+    "pdf_url": "https://arxiv.org/pdf/2407.01862v1",
+    "artifact_version": "2407.01862v1",
+    "submitted_at_utc": "2024-07-02T00:22:31Z",
+    "retrieved_at_utc": "2026-10-08T03:31:38Z",
+    "locator": "Table II, Physical Results; HTML lines 113-119 in retrieved web text; PDF page 4 (zero-based page 3)",
+    "license_spdx": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "attribution": "Table II from Xiao et al., 2024, arXiv:2407.01862v1, under CC BY 4.0. All authors listed above. Source supplied as-is; no endorsement implied.",
+    "changes": "Transcribed slash-delimited table entries into one record per displayed position; retained all raw numeric strings and X values; added source coordinates. This JSON is not a publisher artifact. Added a bounded validator schema and event identifier, and an explicit null manuscript hash; no original source-byte hash is asserted.",
+    "manuscript_sha256": null
+  },
+  "row_fields": [
+    "team_raw",
+    "course_number",
+    "reported_position_in_course_cell",
+    "outcome_raw"
+  ],
+  "row_interpretation": {
+    "numeric_values": "successful completion times in seconds",
+    "X": "reported failure, cause unspecified",
+    "reported_position_in_course_cell": "1-based left-to-right position in the slash-delimited source cell; chronological order unverified",
+    "cell_locator_template": "Table II / row={team_raw} / column=Course {course_number} / slash_position={reported_position_in_course_cell}",
+    "outcome_count": 60,
+    "chronological_attempt_number": null
+  },
+  "rows": [
+    [
+      "LiCS-KI",
+      1,
+      1,
+      "32"
+    ],
+    [
+      "LiCS-KI",
+      1,
+      2,
+      "31"
+    ],
+    [
+      "LiCS-KI",
+      1,
+      3,
+      "32"
+    ],
+    [
+      "LiCS-KI",
+      1,
+      4,
+      "27"
+    ],
+    [
+      "LiCS-KI",
+      1,
+      5,
+      "30"
+    ],
+    [
+      "LiCS-KI",
+      2,
+      1,
+      "37"
+    ],
+    [
+      "LiCS-KI",
+      2,
+      2,
+      "37"
+    ],
+    [
+      "LiCS-KI",
+      2,
+      3,
+      "40"
+    ],
+    [
+      "LiCS-KI",
+      2,
+      4,
+      "29"
+    ],
+    [
+      "LiCS-KI",
+      2,
+      5,
+      "32"
+    ],
+    [
+      "LiCS-KI",
+      3,
+      1,
+      "X"
+    ],
+    [
+      "LiCS-KI",
+      3,
+      2,
+      "X"
+    ],
+    [
+      "LiCS-KI",
+      3,
+      3,
+      "X"
+    ],
+    [
+      "LiCS-KI",
+      3,
+      4,
+      "X"
+    ],
+    [
+      "LiCS-KI",
+      3,
+      5,
+      "X"
+    ],
+    [
+      "MLDA_EEE",
+      1,
+      1,
+      "68"
+    ],
+    [
+      "MLDA_EEE",
+      1,
+      2,
+      "X"
+    ],
+    [
+      "MLDA_EEE",
+      1,
+      3,
+      "77"
+    ],
+    [
+      "MLDA_EEE",
+      1,
+      4,
+      "X"
+    ],
+    [
+      "MLDA_EEE",
+      1,
+      5,
+      "70"
+    ],
+    [
+      "MLDA_EEE",
+      2,
+      1,
+      "X"
+    ],
+    [
+      "MLDA_EEE",
+      2,
+      2,
+      "X"
+    ],
+    [
+      "MLDA_EEE",
+      2,
+      3,
+      "X"
+    ],
+    [
+      "MLDA_EEE",
+      2,
+      4,
+      "85"
+    ],
+    [
+      "MLDA_EEE",
+      2,
+      5,
+      "93"
+    ],
+    [
+      "MLDA_EEE",
+      3,
+      1,
+      "X"
+    ],
+    [
+      "MLDA_EEE",
+      3,
+      2,
+      "X"
+    ],
+    [
+      "MLDA_EEE",
+      3,
+      3,
+      "X"
+    ],
+    [
+      "MLDA_EEE",
+      3,
+      4,
+      "X"
+    ],
+    [
+      "MLDA_EEE",
+      3,
+      5,
+      "X"
+    ],
+    [
+      "AIMS",
+      1,
+      1,
+      "92"
+    ],
+    [
+      "AIMS",
+      1,
+      2,
+      "88"
+    ],
+    [
+      "AIMS",
+      1,
+      3,
+      "X"
+    ],
+    [
+      "AIMS",
+      1,
+      4,
+      "X"
+    ],
+    [
+      "AIMS",
+      1,
+      5,
+      "X"
+    ],
+    [
+      "AIMS",
+      2,
+      1,
+      "X"
+    ],
+    [
+      "AIMS",
+      2,
+      2,
+      "X"
+    ],
+    [
+      "AIMS",
+      2,
+      3,
+      "X"
+    ],
+    [
+      "AIMS",
+      2,
+      4,
+      "X"
+    ],
+    [
+      "AIMS",
+      2,
+      5,
+      "X"
+    ],
+    [
+      "AIMS",
+      3,
+      1,
+      "119"
+    ],
+    [
+      "AIMS",
+      3,
+      2,
+      "118"
+    ],
+    [
+      "AIMS",
+      3,
+      3,
+      "126"
+    ],
+    [
+      "AIMS",
+      3,
+      4,
+      "X"
+    ],
+    [
+      "AIMS",
+      3,
+      5,
+      "X"
+    ],
+    [
+      "EIT-NUS",
+      1,
+      1,
+      "X"
+    ],
+    [
+      "EIT-NUS",
+      1,
+      2,
+      "X"
+    ],
+    [
+      "EIT-NUS",
+      1,
+      3,
+      "X"
+    ],
+    [
+      "EIT-NUS",
+      1,
+      4,
+      "X"
+    ],
+    [
+      "EIT-NUS",
+      1,
+      5,
+      "X"
+    ],
+    [
+      "EIT-NUS",
+      2,
+      1,
+      "X"
+    ],
+    [
+      "EIT-NUS",
+      2,
+      2,
+      "X"
+    ],
+    [
+      "EIT-NUS",
+      2,
+      3,
+      "X"
+    ],
+    [
+      "EIT-NUS",
+      2,
+      4,
+      "X"
+    ],
+    [
+      "EIT-NUS",
+      2,
+      5,
+      "X"
+    ],
+    [
+      "EIT-NUS",
+      3,
+      1,
+      "X"
+    ],
+    [
+      "EIT-NUS",
+      3,
+      2,
+      "X"
+    ],
+    [
+      "EIT-NUS",
+      3,
+      3,
+      "X"
+    ],
+    [
+      "EIT-NUS",
+      3,
+      4,
+      "X"
+    ],
+    [
+      "EIT-NUS",
+      3,
+      5,
+      "X"
+    ]
+  ],
+  "published_team_summaries": [
+    {
+      "team_raw": "LiCS-KI",
+      "rank": 1,
+      "success_total_raw": "6/9",
+      "course_average_times_raw": "30/35/NA"
+    },
+    {
+      "team_raw": "MLDA_EEE",
+      "rank": 2,
+      "success_total_raw": "5/9 (79)",
+      "course_average_times_raw": "72/89/NA"
+    },
+    {
+      "team_raw": "AIMS",
+      "rank": 3,
+      "success_total_raw": "5/9 (109)",
+      "course_average_times_raw": "90/NA/121"
+    },
+    {
+      "team_raw": "EIT-NUS",
+      "rank": 4,
+      "success_total_raw": "0/9",
+      "course_average_times_raw": "NA/NA/NA"
+    }
+  ]
+}
