@@ -1,0 +1,92 @@
+{
+  "actions": [
+    {
+      "action_id": "LM-A03",
+      "prompt_id": "LM-P01",
+      "reviewed_status": "completed_bounded_workbook_review",
+      "completed": [
+        "Exact limited artifact download and hashes",
+        "32fields and both requested rows",
+        "Dictionary/style/PRSE/markers/clocks/MB3 verification"
+      ],
+      "residual": [
+        "Unpublished uncertainty/design information",
+        "Canonical mapping/admission remains separate"
+      ],
+      "repeat_external_acquisition_needed": false
+    },
+    {
+      "action_id": "LM-A06",
+      "prompt_id": "LM-P04",
+      "reviewed_status": "completed_named_lineage_review_with_residual_holds",
+      "completed": [
+        "Current/pre29 named-task comparison",
+        "Longitudinal Tasks metadata",
+        "Retention/precision/transition/uncertainty semantics",
+        "OEWS versus EP republication provenance"
+      ],
+      "residual": [
+        "Original28.3 release-byte proof",
+        "Exact fieldwork",
+        "Wider historical crosswalk and employment reconciliation"
+      ],
+      "repeat_external_acquisition_needed": false
+    },
+    {
+      "action_id": "LM-A04",
+      "prompt_id": "LM-P02",
+      "reviewed_status": "partially_completed_article_review_history_held",
+      "completed": [
+        "Primary Canada article comparison and interpretation",
+        "Reconciliation with already-verified pinned prior catalog evidence"
+      ],
+      "residual": [
+        "No two-revision CSV/history/dictionary/backfill verification"
+      ],
+      "retry_denied_route": false
+    },
+    {
+      "action_id": "LM-A09",
+      "prompt_id": "LM-P07",
+      "reviewed_status": "partial_contract_component_mapping_lossless_hold_retained",
+      "completed": [
+        "Pinned schema/field dictionary/unit registry inspection",
+        "26 synthetic schema-fragment probes",
+        "32 source manual cases mapped to actual contract components"
+      ],
+      "residual": [
+        "Complete lossless mapping decisions",
+        "Full canonical semantic bundle validation"
+      ],
+      "schema_change_authorized": false
+    }
+  ],
+  "integration_plan": {
+    "new_delta_target": "data/evidence-program/research/followups/labor-measurement.json",
+    "new_guide_target": "docs/evidence-program/research/followups/labor-measurement.md",
+    "required_existing_link_targets": [
+      "docs/evidence-program/research/labor-market.md",
+      "data/evidence-program/research/followups/follow-up-queue.json",
+      "docs/evidence-program/research/followups/follow-up-queue.md",
+      "docs/evidence-program/research/research-session-review-queue.md"
+    ],
+    "queue_match": "new_prompts entry sequence 1 path docs/evidence-program/research/followups/prompts/01-resolve-labor-measurement-lineage.txt",
+    "queue_reconciliation": "Bundle A research output is received and reviewed with residual holds, and its linked delta is included in this candidate. The original Session 14 and original 26-session count are unchanged. Bundle B review starts separately; C/D stay queued. Remote publication and exact-commit verification remain separate.",
+    "historical_catalog_policy": "Existing labor catalog is a fingerprinted dated review. A linked dated follow-up may supersede its BLS headers-only and O*NET workbook-uninspected limitations while preserving historical findings and frozen inventory. If directly editing catalog, parent must update affected fingerprints/guide parity/tests deliberately.",
+    "guide_qualification": "Clearly state earlier header-only/uninspected statements are superseded for these exact verified artifacts only, so an active reader does not mistake historical holds for current status.",
+    "required_validation": "Run unchanged evidence-program aggregate/tests, link/ID/action/queue checks and candidate-specific evidence-preservation checks. The source-review 26 schema-fragment probes do not establish full canonical validation. Parent independently reviews this candidate and verifies remote publication/CI/merge.",
+    "public_evidence_requirements": "Include delta source_artifacts, all selected observations with submitted/reviewer provenance, complete acceptance cases with current dispositions, and lineage edges. Preserve artifact-key resolution inside the public package; do not rely on local intake or inspection file paths."
+  },
+  "do_not_change": [
+    "data/CC0",
+    "64-family frozen inventory",
+    "LM003 Eurostat fixture/reader",
+    "GL023/AP005 BTOS",
+    "Original submitted intake files",
+    "Public collectors or source admission",
+    "Existing frozen canonical schema without separate authority"
+  ],
+  "stopping_conditions": "Research stops with this reviewed delta and precise residual holds. No denied-route retry, no new source/adapters, no automatic follow-on sessions.",
+  "source_review_status": "proposed_for_parent_review",
+  "status": "reviewed_delta_included_in_this_candidate"
+}

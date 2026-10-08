@@ -4,13 +4,14 @@ The source research, repository audit, proposed dataset contract, Chinese prepar
 
 ## Current research review status
 
-The [dated original-session queue](research/research-session-review-queue.md) records all 26 original reviews integrated at its verified 8 October 2026 cutoff, separately from evidence admission. The [follow-up queue](research/followups/follow-up-queue.md) preserves three earlier reviewed bundles and separately logs four newly returned deep-session bundles (12 files): labor in review, then experimental effects, safeguards and model/tariff results queued in arrival order. It also indexes all seven delivered prompts; prompts 5–7 have no returned output at the 15:20:15 UTC snapshot. Receipt and prompt delivery do not establish reviewed findings, completed checks, source admission or ingestion.
+The [dated original-session queue](research/research-session-review-queue.md) records all 26 original reviews integrated at its verified 8 October 2026 cutoff, separately from evidence admission. The [follow-up queue](research/followups/follow-up-queue.md) preserves three earlier reviewed bundles and separately logs four newly returned deep-session bundles (12 files): A’s independently reviewed labor delta included in this candidate, B’s separate experimental-effects review starting, and safeguard/model-tariff results still queued in arrival order. It also indexes all seven delivered prompts; prompts 5–7 have no returned output at the 15:20:15 UTC snapshot. Receipt and prompt delivery do not establish findings or completed checks; reviewed research and candidate inclusion do not establish source admission, ingestion or remote merge.
 
 Reviewed follow-up deltas included in this version:
 
 - Bundle 1: [Rights and releases](research/followups/rights-release.md) · [JSON](../../data/evidence-program/research/followups/rights-release.json)
 - Bundle 2: [PhAIL, MLPerf and RoboArena comparability](research/followups/physical-inference-comparability.md) · [JSON](../../data/evidence-program/research/followups/physical-inference-comparability.json)
 - Bundle 3: [Survey instruments and denominators](research/followups/instrument-denominator.md) · [JSON](../../data/evidence-program/research/followups/instrument-denominator.json)
+- Deep bundle A / prompt 1: [Labor measurement lineage](research/followups/labor-measurement.md) · [JSON](../../data/evidence-program/research/followups/labor-measurement.json), including the bounded BLS workbook and O*NET lineage review, qualified Indeed article result and partial contract mapping; residual holds remain.
 
 ## Sequential deliverables
 

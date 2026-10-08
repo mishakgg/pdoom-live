@@ -1,0 +1,1089 @@
+{
+  "status": "passed_with_explicit_scope",
+  "checks": [
+    {
+      "name": "Input SHA-256: Pasted text(3).txt",
+      "passed": true,
+      "detail": "a16843625e5168938b05b2eb6bc118cbb307bc292450c46e72e13c624e0810ba"
+    },
+    {
+      "name": "Input SHA-256: labor_measurement_decision_report(1).pdf",
+      "passed": true,
+      "detail": "3e89d6918171610994d50a530c6eff26fb27ae4729a22b1d19c38610978f2708"
+    },
+    {
+      "name": "Input SHA-256: labor_measurement_evidence_ledger(1).json",
+      "passed": true,
+      "detail": "470c7e6f374f1fd7fee6ccafa0a7fd5267c8684b6e64edb220b981689f3e86ba"
+    },
+    {
+      "name": "Sealed intake SHA-256",
+      "passed": true,
+      "detail": "Intake unchanged"
+    },
+    {
+      "name": "Pinned repository blob: AGENTS.md",
+      "passed": true,
+      "detail": "ac38cf31cdbfd2e914493c4c62be31fda23118e0"
+    },
+    {
+      "name": "Pinned repository blob: data/evidence-program/research/followups/follow-up-queue.json",
+      "passed": true,
+      "detail": "e0c561575c75c7ebbd8411a13753b1454831b03c"
+    },
+    {
+      "name": "Pinned repository blob: data/evidence-program/research/labor-market.json",
+      "passed": true,
+      "detail": "1cb293039390c3d2d4efcb5f8f958a8c5766f551"
+    },
+    {
+      "name": "Pinned repository blob: data/evidence-program/source_inventory.json",
+      "passed": true,
+      "detail": "e2e8890789f38ef0b4fb0366e08252dd257901c4"
+    },
+    {
+      "name": "Pinned repository blob: docs/evidence-program/research/followups/follow-up-queue.md",
+      "passed": true,
+      "detail": "2671533bef95075ceba147e2c7d75432fabbd9d1"
+    },
+    {
+      "name": "Pinned repository blob: docs/evidence-program/research/followups/prompts/01-resolve-labor-measurement-lineage.txt",
+      "passed": true,
+      "detail": "9e64e13cdcde3f488de735c26035b3496b51890f"
+    },
+    {
+      "name": "Pinned repository blob: docs/evidence-program/research/labor-market.md",
+      "passed": true,
+      "detail": "d5c25acc82fbe1f85708ac195d7c446d074c5294"
+    },
+    {
+      "name": "Pinned repository blob: docs/evidence-program/research/research-session-review-queue.md",
+      "passed": true,
+      "detail": "79abd90a841e770f02c96d3539ddd379f073a103"
+    },
+    {
+      "name": "Pinned repository blob: docs/evidence-program/source_priorities.md",
+      "passed": true,
+      "detail": "f12394089acf562d430c83edff39ee07940b6645"
+    },
+    {
+      "name": "Pinned repository blob: tools/evidence_program/check_labor_market.py",
+      "passed": true,
+      "detail": "35c2b08c555b843e1b4d40b67c3738358d627c13"
+    },
+    {
+      "name": "Pinned repository blob: tools/evidence_program/contracts/dataset.schema.json",
+      "passed": true,
+      "detail": "fad7d2d1c69ac48de71ec98d5a04850fc5474ac7"
+    },
+    {
+      "name": "Pinned repository blob: tools/evidence_program/contracts/field_dictionary.json",
+      "passed": true,
+      "detail": "6a6eeff5d879657a39935638c3b44c6a3128563b"
+    },
+    {
+      "name": "Pinned repository blob: tools/evidence_program/contracts/unit_registry.json",
+      "passed": true,
+      "detail": "784ce0120ef0346f9e92950e90dd38891ed88b5a"
+    },
+    {
+      "name": "Pinned repository blob: tools/evidence_program/tests/test_labor_market_catalog.py",
+      "passed": true,
+      "detail": "43a4c729cfaeb29d7dd1918311a7eef6c9659180"
+    },
+    {
+      "name": "Pinned repository blob: tools/evidence_program/validate_dataset.py",
+      "passed": true,
+      "detail": "c7ee32f03fece2eb8ad1c6596e21ddd81ed23ef3"
+    },
+    {
+      "name": "Independent bytes: bls_zip",
+      "passed": true,
+      "detail": {
+        "bytes": 279525,
+        "scope": "whole_artifact",
+        "sha256": "b5855a37f3e03e779f6fbf173d3bbc94aeeff33426aef32fa95ce6d025bab1af"
+      }
+    },
+    {
+      "name": "Independent bytes: bls_workbook",
+      "passed": true,
+      "detail": {
+        "bytes": 289615,
+        "scope": "whole_artifact",
+        "sha256": "852250997ceff9b721ff68f63e877d818f9c1ec8b1b69dd367958faedd5282b2"
+      }
+    },
+    {
+      "name": "Independent bytes: onet_longitudinal",
+      "passed": true,
+      "detail": {
+        "bytes": 346734,
+        "scope": "whole_artifact",
+        "sha256": "f5c5e6853b8a5dd6520812929e9e711f6afc860c71a45f8255c94a83a731e260"
+      }
+    },
+    {
+      "name": "Independent bytes: onet31_task_excerpt",
+      "passed": true,
+      "detail": {
+        "bytes": 16384,
+        "scope": "excerpt",
+        "sha256": "f111680bfaf1fa8d3470d95a561f4a71b7abb9e7b1b281e20f386c70ea5963ff"
+      }
+    },
+    {
+      "name": "Independent bytes: onet28_task_excerpt",
+      "passed": true,
+      "detail": {
+        "bytes": 16384,
+        "scope": "excerpt",
+        "sha256": "39c64513862dc5f589c7b5fde08496de229ade24b0f8358872b1e04294547dac"
+      }
+    },
+    {
+      "name": "Independent bytes: onet31_categories",
+      "passed": true,
+      "detail": {
+        "bytes": 446,
+        "scope": "whole_artifact",
+        "sha256": "675ee2007335624ab2df2b292669a690486d942415216fa24a8f523f7ab12bf9"
+      }
+    },
+    {
+      "name": "BLS limits",
+      "passed": true,
+      "detail": "Static ZIP/XML; no macros/formulas executed; zero formula nodes"
+    },
+    {
+      "name": "Complete 32-field row: bls_all_occupations",
+      "passed": true,
+      "detail": "national_M2025_dl!A2:AF2; header A1:AF1"
+    },
+    {
+      "name": "Raw XML A2",
+      "passed": true,
+      "detail": "AREA"
+    },
+    {
+      "name": "Decoded value A2",
+      "passed": true,
+      "detail": {
+        "source_field": "AREA",
+        "raw": "99",
+        "source_display": "99"
+      }
+    },
+    {
+      "name": "Raw XML B2",
+      "passed": true,
+      "detail": "AREA_TITLE"
+    },
+    {
+      "name": "Decoded value B2",
+      "passed": true,
+      "detail": {
+        "source_field": "AREA_TITLE",
+        "raw": "U.S.",
+        "source_display": "U.S."
+      }
+    },
+    {
+      "name": "Raw XML C2",
+      "passed": true,
+      "detail": "AREA_TYPE"
+    },
+    {
+      "name": "Decoded value C2",
+      "passed": true,
+      "detail": {
+        "source_field": "AREA_TYPE",
+        "raw": "1",
+        "source_display": "1"
+      }
+    },
+    {
+      "name": "Raw XML D2",
+      "passed": true,
+      "detail": "PRIM_STATE"
+    },
+    {
+      "name": "Decoded value D2",
+      "passed": true,
+      "detail": {
+        "source_field": "PRIM_STATE",
+        "raw": "US",
+        "source_display": "US"
+      }
+    },
+    {
+      "name": "Raw XML E2",
+      "passed": true,
+      "detail": "NAICS"
+    },
+    {
+      "name": "Decoded value E2",
+      "passed": true,
+      "detail": {
+        "source_field": "NAICS",
+        "raw": "000000",
+        "source_display": "000000"
+      }
+    },
+    {
+      "name": "Raw XML F2",
+      "passed": true,
+      "detail": "NAICS_TITLE"
+    },
+    {
+      "name": "Decoded value F2",
+      "passed": true,
+      "detail": {
+        "source_field": "NAICS_TITLE",
+        "raw": "Cross-industry",
+        "source_display": "Cross-industry"
+      }
+    },
+    {
+      "name": "Raw XML G2",
+      "passed": true,
+      "detail": "I_GROUP"
+    },
+    {
+      "name": "Decoded value G2",
+      "passed": true,
+      "detail": {
+        "source_field": "I_GROUP",
+        "raw": "cross-industry",
+        "source_display": "cross-industry"
+      }
+    },
+    {
+      "name": "Raw XML H2",
+      "passed": true,
+      "detail": "OWN_CODE"
+    },
+    {
+      "name": "Decoded value H2",
+      "passed": true,
+      "detail": {
+        "source_field": "OWN_CODE",
+        "raw": "1235",
+        "source_display": "1235"
+      }
+    },
+    {
+      "name": "Raw XML I2",
+      "passed": true,
+      "detail": "OCC_CODE"
+    },
+    {
+      "name": "Decoded value I2",
+      "passed": true,
+      "detail": {
+        "source_field": "OCC_CODE",
+        "raw": "00-0000",
+        "source_display": "00-0000"
+      }
+    },
+    {
+      "name": "Raw XML J2",
+      "passed": true,
+      "detail": "OCC_TITLE"
+    },
+    {
+      "name": "Decoded value J2",
+      "passed": true,
+      "detail": {
+        "source_field": "OCC_TITLE",
+        "raw": "All Occupations",
+        "source_display": "All Occupations"
+      }
+    },
+    {
+      "name": "Raw XML K2",
+      "passed": true,
+      "detail": "O_GROUP"
+    },
+    {
+      "name": "Decoded value K2",
+      "passed": true,
+      "detail": {
+        "source_field": "O_GROUP",
+        "raw": "total",
+        "source_display": "total"
+      }
+    },
+    {
+      "name": "Raw XML L2",
+      "passed": true,
+      "detail": "TOT_EMP"
+    },
+    {
+      "name": "Decoded value L2",
+      "passed": true,
+      "detail": {
+        "source_field": "TOT_EMP",
+        "raw": 155495730,
+        "source_display": "155495730"
+      }
+    },
+    {
+      "name": "Raw XML M2",
+      "passed": true,
+      "detail": "EMP_PRSE"
+    },
+    {
+      "name": "Decoded value M2",
+      "passed": true,
+      "detail": {
+        "source_field": "EMP_PRSE",
+        "raw": 0,
+        "source_display": "0.0"
+      }
+    },
+    {
+      "name": "Raw XML N2",
+      "passed": true,
+      "detail": "JOBS_1000"
+    },
+    {
+      "name": "Decoded value N2",
+      "passed": true,
+      "detail": {
+        "source_field": "JOBS_1000",
+        "raw": null,
+        "source_display": null
+      }
+    },
+    {
+      "name": "Raw XML O2",
+      "passed": true,
+      "detail": "LOC_QUOTIENT"
+    },
+    {
+      "name": "Decoded value O2",
+      "passed": true,
+      "detail": {
+        "source_field": "LOC_QUOTIENT",
+        "raw": null,
+        "source_display": null
+      }
+    },
+    {
+      "name": "Raw XML P2",
+      "passed": true,
+      "detail": "PCT_TOTAL"
+    },
+    {
+      "name": "Decoded value P2",
+      "passed": true,
+      "detail": {
+        "source_field": "PCT_TOTAL",
+        "raw": null,
+        "source_display": null
+      }
+    },
+    {
+      "name": "Raw XML Q2",
+      "passed": true,
+      "detail": "PCT_RPT"
+    },
+    {
+      "name": "Decoded value Q2",
+      "passed": true,
+      "detail": {
+        "source_field": "PCT_RPT",
+        "raw": null,
+        "source_display": null
+      }
+    },
+    {
+      "name": "Raw XML R2",
+      "passed": true,
+      "detail": "H_MEAN"
+    },
+    {
+      "name": "Decoded value R2",
+      "passed": true,
+      "detail": {
+        "source_field": "H_MEAN",
+        "raw": 33.54,
+        "source_display": "33.54"
+      }
+    },
+    {
+      "name": "Raw XML S2",
+      "passed": true,
+      "detail": "A_MEAN"
+    },
+    {
+      "name": "Decoded value S2",
+      "passed": true,
+      "detail": {
+        "source_field": "A_MEAN",
+        "raw": 69770,
+        "source_display": "69770"
+      }
+    },
+    {
+      "name": "Raw XML T2",
+      "passed": true,
+      "detail": "MEAN_PRSE"
+    },
+    {
+      "name": "Decoded value T2",
+      "passed": true,
+      "detail": {
+        "source_field": "MEAN_PRSE",
+        "raw": 0.1,
+        "source_display": "0.1"
+      }
+    },
+    {
+      "name": "Raw XML U2",
+      "passed": true,
+      "detail": "H_PCT10"
+    },
+    {
+      "name": "Decoded value U2",
+      "passed": true,
+      "detail": {
+        "source_field": "H_PCT10",
+        "raw": 15,
+        "source_display": "15.00"
+      }
+    },
+    {
+      "name": "Raw XML V2",
+      "passed": true,
+      "detail": "H_PCT25"
+    },
+    {
+      "name": "Decoded value V2",
+      "passed": true,
+      "detail": {
+        "source_field": "H_PCT25",
+        "raw": 18.07,
+        "source_display": "18.07"
+      }
+    },
+    {
+      "name": "Raw XML W2",
+      "passed": true,
+      "detail": "H_MEDIAN"
+    },
+    {
+      "name": "Decoded value W2",
+      "passed": true,
+      "detail": {
+        "source_field": "H_MEDIAN",
+        "raw": 24.51,
+        "source_display": "24.51"
+      }
+    },
+    {
+      "name": "Raw XML X2",
+      "passed": true,
+      "detail": "H_PCT75"
+    },
+    {
+      "name": "Decoded value X2",
+      "passed": true,
+      "detail": {
+        "source_field": "H_PCT75",
+        "raw": 38.71,
+        "source_display": "38.71"
+      }
+    },
+    {
+      "name": "Raw XML Y2",
+      "passed": true,
+      "detail": "H_PCT90"
+    },
+    {
+      "name": "Decoded value Y2",
+      "passed": true,
+      "detail": {
+        "source_field": "H_PCT90",
+        "raw": 61.81,
+        "source_display": "61.81"
+      }
+    },
+    {
+      "name": "Raw XML Z2",
+      "passed": true,
+      "detail": "A_PCT10"
+    },
+    {
+      "name": "Decoded value Z2",
+      "passed": true,
+      "detail": {
+        "source_field": "A_PCT10",
+        "raw": 31200,
+        "source_display": "31200"
+      }
+    },
+    {
+      "name": "Raw XML AA2",
+      "passed": true,
+      "detail": "A_PCT25"
+    },
+    {
+      "name": "Decoded value AA2",
+      "passed": true,
+      "detail": {
+        "source_field": "A_PCT25",
+        "raw": 37590,
+        "source_display": "37590"
+      }
+    },
+    {
+      "name": "Raw XML AB2",
+      "passed": true,
+      "detail": "A_MEDIAN"
+    },
+    {
+      "name": "Decoded value AB2",
+      "passed": true,
+      "detail": {
+        "source_field": "A_MEDIAN",
+        "raw": 50980,
+        "source_display": "50980"
+      }
+    },
+    {
+      "name": "Raw XML AC2",
+      "passed": true,
+      "detail": "A_PCT75"
+    },
+    {
+      "name": "Decoded value AC2",
+      "passed": true,
+      "detail": {
+        "source_field": "A_PCT75",
+        "raw": 80520,
+        "source_display": "80520"
+      }
+    },
+    {
+      "name": "Raw XML AD2",
+      "passed": true,
+      "detail": "A_PCT90"
+    },
+    {
+      "name": "Decoded value AD2",
+      "passed": true,
+      "detail": {
+        "source_field": "A_PCT90",
+        "raw": 128560,
+        "source_display": "128560"
+      }
+    },
+    {
+      "name": "Raw XML AE2",
+      "passed": true,
+      "detail": "ANNUAL"
+    },
+    {
+      "name": "Decoded value AE2",
+      "passed": true,
+      "detail": {
+        "source_field": "ANNUAL",
+        "raw": "",
+        "source_display": ""
+      }
+    },
+    {
+      "name": "Raw XML AF2",
+      "passed": true,
+      "detail": "HOURLY"
+    },
+    {
+      "name": "Decoded value AF2",
+      "passed": true,
+      "detail": {
+        "source_field": "HOURLY",
+        "raw": "",
+        "source_display": ""
+      }
+    },
+    {
+      "name": "Complete 32-field row: bls_software_developers",
+      "passed": true,
+      "detail": "national_M2025_dl!A149:AF149; header A1:AF1"
+    },
+    {
+      "name": "Raw XML A149",
+      "passed": true,
+      "detail": "AREA"
+    },
+    {
+      "name": "Decoded value A149",
+      "passed": true,
+      "detail": {
+        "source_field": "AREA",
+        "raw": "99",
+        "source_display": "99"
+      }
+    },
+    {
+      "name": "Raw XML B149",
+      "passed": true,
+      "detail": "AREA_TITLE"
+    },
+    {
+      "name": "Decoded value B149",
+      "passed": true,
+      "detail": {
+        "source_field": "AREA_TITLE",
+        "raw": "U.S.",
+        "source_display": "U.S."
+      }
+    },
+    {
+      "name": "Raw XML C149",
+      "passed": true,
+      "detail": "AREA_TYPE"
+    },
+    {
+      "name": "Decoded value C149",
+      "passed": true,
+      "detail": {
+        "source_field": "AREA_TYPE",
+        "raw": "1",
+        "source_display": "1"
+      }
+    },
+    {
+      "name": "Raw XML D149",
+      "passed": true,
+      "detail": "PRIM_STATE"
+    },
+    {
+      "name": "Decoded value D149",
+      "passed": true,
+      "detail": {
+        "source_field": "PRIM_STATE",
+        "raw": "US",
+        "source_display": "US"
+      }
+    },
+    {
+      "name": "Raw XML E149",
+      "passed": true,
+      "detail": "NAICS"
+    },
+    {
+      "name": "Decoded value E149",
+      "passed": true,
+      "detail": {
+        "source_field": "NAICS",
+        "raw": "000000",
+        "source_display": "000000"
+      }
+    },
+    {
+      "name": "Raw XML F149",
+      "passed": true,
+      "detail": "NAICS_TITLE"
+    },
+    {
+      "name": "Decoded value F149",
+      "passed": true,
+      "detail": {
+        "source_field": "NAICS_TITLE",
+        "raw": "Cross-industry",
+        "source_display": "Cross-industry"
+      }
+    },
+    {
+      "name": "Raw XML G149",
+      "passed": true,
+      "detail": "I_GROUP"
+    },
+    {
+      "name": "Decoded value G149",
+      "passed": true,
+      "detail": {
+        "source_field": "I_GROUP",
+        "raw": "cross-industry",
+        "source_display": "cross-industry"
+      }
+    },
+    {
+      "name": "Raw XML H149",
+      "passed": true,
+      "detail": "OWN_CODE"
+    },
+    {
+      "name": "Decoded value H149",
+      "passed": true,
+      "detail": {
+        "source_field": "OWN_CODE",
+        "raw": "1235",
+        "source_display": "1235"
+      }
+    },
+    {
+      "name": "Raw XML I149",
+      "passed": true,
+      "detail": "OCC_CODE"
+    },
+    {
+      "name": "Decoded value I149",
+      "passed": true,
+      "detail": {
+        "source_field": "OCC_CODE",
+        "raw": "15-1252",
+        "source_display": "15-1252"
+      }
+    },
+    {
+      "name": "Raw XML J149",
+      "passed": true,
+      "detail": "OCC_TITLE"
+    },
+    {
+      "name": "Decoded value J149",
+      "passed": true,
+      "detail": {
+        "source_field": "OCC_TITLE",
+        "raw": "Software Developers",
+        "source_display": "Software Developers"
+      }
+    },
+    {
+      "name": "Raw XML K149",
+      "passed": true,
+      "detail": "O_GROUP"
+    },
+    {
+      "name": "Decoded value K149",
+      "passed": true,
+      "detail": {
+        "source_field": "O_GROUP",
+        "raw": "detailed",
+        "source_display": "detailed"
+      }
+    },
+    {
+      "name": "Raw XML L149",
+      "passed": true,
+      "detail": "TOT_EMP"
+    },
+    {
+      "name": "Decoded value L149",
+      "passed": true,
+      "detail": {
+        "source_field": "TOT_EMP",
+        "raw": 1687890,
+        "source_display": "1687890"
+      }
+    },
+    {
+      "name": "Raw XML M149",
+      "passed": true,
+      "detail": "EMP_PRSE"
+    },
+    {
+      "name": "Decoded value M149",
+      "passed": true,
+      "detail": {
+        "source_field": "EMP_PRSE",
+        "raw": 0.6,
+        "source_display": "0.6"
+      }
+    },
+    {
+      "name": "Raw XML N149",
+      "passed": true,
+      "detail": "JOBS_1000"
+    },
+    {
+      "name": "Decoded value N149",
+      "passed": true,
+      "detail": {
+        "source_field": "JOBS_1000",
+        "raw": null,
+        "source_display": null
+      }
+    },
+    {
+      "name": "Raw XML O149",
+      "passed": true,
+      "detail": "LOC_QUOTIENT"
+    },
+    {
+      "name": "Decoded value O149",
+      "passed": true,
+      "detail": {
+        "source_field": "LOC_QUOTIENT",
+        "raw": null,
+        "source_display": null
+      }
+    },
+    {
+      "name": "Raw XML P149",
+      "passed": true,
+      "detail": "PCT_TOTAL"
+    },
+    {
+      "name": "Decoded value P149",
+      "passed": true,
+      "detail": {
+        "source_field": "PCT_TOTAL",
+        "raw": null,
+        "source_display": null
+      }
+    },
+    {
+      "name": "Raw XML Q149",
+      "passed": true,
+      "detail": "PCT_RPT"
+    },
+    {
+      "name": "Decoded value Q149",
+      "passed": true,
+      "detail": {
+        "source_field": "PCT_RPT",
+        "raw": null,
+        "source_display": null
+      }
+    },
+    {
+      "name": "Raw XML R149",
+      "passed": true,
+      "detail": "H_MEAN"
+    },
+    {
+      "name": "Decoded value R149",
+      "passed": true,
+      "detail": {
+        "source_field": "H_MEAN",
+        "raw": 71.2,
+        "source_display": "71.20"
+      }
+    },
+    {
+      "name": "Raw XML S149",
+      "passed": true,
+      "detail": "A_MEAN"
+    },
+    {
+      "name": "Decoded value S149",
+      "passed": true,
+      "detail": {
+        "source_field": "A_MEAN",
+        "raw": 148100,
+        "source_display": "148100"
+      }
+    },
+    {
+      "name": "Raw XML T149",
+      "passed": true,
+      "detail": "MEAN_PRSE"
+    },
+    {
+      "name": "Decoded value T149",
+      "passed": true,
+      "detail": {
+        "source_field": "MEAN_PRSE",
+        "raw": 0.4,
+        "source_display": "0.4"
+      }
+    },
+    {
+      "name": "Raw XML U149",
+      "passed": true,
+      "detail": "H_PCT10"
+    },
+    {
+      "name": "Decoded value U149",
+      "passed": true,
+      "detail": {
+        "source_field": "H_PCT10",
+        "raw": 39.64,
+        "source_display": "39.64"
+      }
+    },
+    {
+      "name": "Raw XML V149",
+      "passed": true,
+      "detail": "H_PCT25"
+    },
+    {
+      "name": "Decoded value V149",
+      "passed": true,
+      "detail": {
+        "source_field": "H_PCT25",
+        "raw": 50.58,
+        "source_display": "50.58"
+      }
+    },
+    {
+      "name": "Raw XML W149",
+      "passed": true,
+      "detail": "H_MEDIAN"
+    },
+    {
+      "name": "Decoded value W149",
+      "passed": true,
+      "detail": {
+        "source_field": "H_MEDIAN",
+        "raw": 65.38,
+        "source_display": "65.38"
+      }
+    },
+    {
+      "name": "Raw XML X149",
+      "passed": true,
+      "detail": "H_PCT75"
+    },
+    {
+      "name": "Decoded value X149",
+      "passed": true,
+      "detail": {
+        "source_field": "H_PCT75",
+        "raw": 82.68,
+        "source_display": "82.68"
+      }
+    },
+    {
+      "name": "Raw XML Y149",
+      "passed": true,
+      "detail": "H_PCT90"
+    },
+    {
+      "name": "Decoded value Y149",
+      "passed": true,
+      "detail": {
+        "source_field": "H_PCT90",
+        "raw": 103.21,
+        "source_display": "103.21"
+      }
+    },
+    {
+      "name": "Raw XML Z149",
+      "passed": true,
+      "detail": "A_PCT10"
+    },
+    {
+      "name": "Decoded value Z149",
+      "passed": true,
+      "detail": {
+        "source_field": "A_PCT10",
+        "raw": 82460,
+        "source_display": "82460"
+      }
+    },
+    {
+      "name": "Raw XML AA149",
+      "passed": true,
+      "detail": "A_PCT25"
+    },
+    {
+      "name": "Decoded value AA149",
+      "passed": true,
+      "detail": {
+        "source_field": "A_PCT25",
+        "raw": 105210,
+        "source_display": "105210"
+      }
+    },
+    {
+      "name": "Raw XML AB149",
+      "passed": true,
+      "detail": "A_MEDIAN"
+    },
+    {
+      "name": "Decoded value AB149",
+      "passed": true,
+      "detail": {
+        "source_field": "A_MEDIAN",
+        "raw": 135980,
+        "source_display": "135980"
+      }
+    },
+    {
+      "name": "Raw XML AC149",
+      "passed": true,
+      "detail": "A_PCT75"
+    },
+    {
+      "name": "Decoded value AC149",
+      "passed": true,
+      "detail": {
+        "source_field": "A_PCT75",
+        "raw": 171980,
+        "source_display": "171980"
+      }
+    },
+    {
+      "name": "Raw XML AD149",
+      "passed": true,
+      "detail": "A_PCT90"
+    },
+    {
+      "name": "Decoded value AD149",
+      "passed": true,
+      "detail": {
+        "source_field": "A_PCT90",
+        "raw": 214670,
+        "source_display": "214670"
+      }
+    },
+    {
+      "name": "Raw XML AE149",
+      "passed": true,
+      "detail": "ANNUAL"
+    },
+    {
+      "name": "Decoded value AE149",
+      "passed": true,
+      "detail": {
+        "source_field": "ANNUAL",
+        "raw": "",
+        "source_display": ""
+      }
+    },
+    {
+      "name": "Raw XML AF149",
+      "passed": true,
+      "detail": "HOURLY"
+    },
+    {
+      "name": "Decoded value AF149",
+      "passed": true,
+      "detail": {
+        "source_field": "HOURLY",
+        "raw": "",
+        "source_display": ""
+      }
+    },
+    {
+      "name": "Acceptance case accounting",
+      "passed": true,
+      "detail": "14 observed and 18 synthetic; original cases are manual, not repository test executions"
+    },
+    {
+      "name": "Original commit null",
+      "passed": true,
+      "detail": "Historical external-session status stays null"
+    }
+  ],
+  "checks_count": 158,
+  "schema_fragment_case_count": 26,
+  "schema_fragment_cases_passed": 26,
+  "schema_file_sha256": "215b0d119ae562d3b66620f6ff76070ec158f149d205de5d123d48a50aef46fc",
+  "schema_checks": "Executed Draft202012Validator component probes with synthetic inputs; no canonical record emitted, no schema mutation",
+  "original_external_session_validation": "32 manual semantic cases; repository validation not run",
+  "not_run": [
+    "Full validate_dataset.py repository semantic validation on complete self-contained labor records",
+    "Repository-wide check.py/tests/CI",
+    "Public admission/import/adapter"
+  ],
+  "source_programs_executed": false,
+  "input_originals_modified": false,
+  "scope_note": "Historical source-review receipt. The 158 evidence checks and 26 synthetic schema-fragment probes are distinct from candidate integration checks, full canonical validation and remote CI."
+}

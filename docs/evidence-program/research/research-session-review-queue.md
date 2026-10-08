@@ -2,7 +2,7 @@
 
 Status snapshot: 8 October 2026, 11:54:24 UTC. All 26 original reviews are integrated; this is a dated repository status, not live source admission or collection status.
 
-The 26 research sessions below are listed in arrival order. Their substantive source reviews and repository integration are complete. Sessions 24–26 were merged in [PR 330](https://github.com/mishakgg/pdoom-live/pull/330); all four post-merge checks for the exact merge commit were observed successful at this cutoff. Open source-specific holds remain open. Three separately received follow-up bundles and four newly delivered prompts are tracked in the [follow-up queue](followups/follow-up-queue.md); they are not additional original sessions.
+The 26 research sessions below are listed in arrival order. Their substantive source reviews and repository integration are complete. Sessions 24–26 were merged in [PR 330](https://github.com/mishakgg/pdoom-live/pull/330); all four post-merge checks for the exact merge commit were observed successful at this cutoff. Open source-specific holds remain open. The [follow-up queue](followups/follow-up-queue.md) separately tracks three earlier reviewed bundles, four deep-session submissions and seven delivered prompts. The [labor measurement follow-up](followups/labor-measurement.md), deep bundle A / prompt 1, is independently reviewed and included in this candidate; B’s separate review is starting and C/D remain queued. These are not additional original sessions, and candidate inclusion is not a claim of remote merge or source admission.
 
 Snapshot counts: 26 integrated; 0 prepared or awaiting CI; 0 queued.
 
