@@ -2,6 +2,10 @@
 
 Session 22, reviewed 8 October 2026 against repository commit `6cf8c1c89a387a5b26022dd9ea0a216d45b2b629`. See the [separate JSON record](../../../data/evidence-program/research/negative-replications.json) and [dated review queue](research-session-review-queue.md).
 
+## Follow-up qualification: 8 October 2026
+
+The [experimental effects follow-up](followups/experimental-effects-review.md) ([JSON](../../../data/evidence-program/research/followups/experimental-effects-review.json)) adds an independently reviewed research delta for deep prompt 2 / bundle B. For NR007-A1 / NR007 and AP002 / AP-A03, the bounded overlap and estimand review is complete with residual holds. AP002 and NR007 cover the same early and later METR study waves, not new independent experiments. Separately rechecked producer-update intervals and methods enrich prior verified catalog evidence; they do not identify the historical executed covariance or turn a contextually different later wave into an exact replication or comparable causal trend. An interval spanning zero does not establish equivalence. The I4R historical/current-edition and Costello correction/editorial branches remain separately qualified in the same follow-up. The fingerprinted original catalog and all historical text below remain unchanged; a failed reread does not invalidate prior verified evidence. Source admission and lossless canonical mapping remain held.
+
 ## Recommendation
 
 Retain eight collections as research evidence: **three new families and five enrichments** against the current catalogs. The initial five-new/three-enrichment split predates the ReScience/MLRC and Crossref additions. The strongest scientific starting points remain MLRC reports, StrongREJECT and Crossref editorial links. The smallest structured step is a **specification-only mapping of one already-verified Crossref chain into CRP006**, without another collector or validator.

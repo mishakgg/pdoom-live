@@ -1,0 +1,223 @@
+{
+  "review_commit": "2266b56681812cde175257734dc16ed1c88c1323",
+  "clock_precision": "Tool-turn/request windows, not invented per-response timestamps.",
+  "receipts": [
+    {
+      "receipt_id": "PV-M01",
+      "artifact_key": "metr-paper-v2",
+      "url": "https://arxiv.org/html/2507.09089v2",
+      "source_version": "2507.09089v2",
+      "locator": "Abstract; §§2.1–2.4; C.2.8 footnote 16; C.3.3–C.3.4; D.1–D.6; E.1/E.3/E.6; G.6",
+      "retrieval_window_utc": [
+        "2026-10-08T15:45:31Z",
+        "2026-10-08T15:47:02Z"
+      ],
+      "verification": "direct_public_text_inspection",
+      "supports": [
+        "metr-declared-hc3",
+        "metr-point",
+        "metr-counts",
+        "metr-estimation",
+        "metr-duration",
+        "metr-imputation",
+        "metr-attrition",
+        "metr-allocation",
+        "metr-forecast",
+        "metr-posthoc",
+        "metr-timing",
+        "metr-figure-preserved"
+      ],
+      "whole_artifact_sha256": null,
+      "hash_null_reason": "Rendered source text inspected, not original paper bytes.",
+      "qualifications": [
+        "Source assertions, not execution or replication.",
+        "No participant rows extracted; incidental public per-developer tables not used.",
+        "Model-frontier and majority-completion windows do not establish exact fieldwork bounds."
+      ]
+    },
+    {
+      "receipt_id": "PV-M02",
+      "artifact_key": "metr-version-page",
+      "url": "https://arxiv.org/abs/2507.09089v2",
+      "locator": "Submission history and license link",
+      "source_version": "v2",
+      "verification": "direct_public_text_inspection",
+      "supports": [
+        "metr-versions"
+      ],
+      "verified_dates": {
+        "v1": "2025-07-12T00:16:33Z",
+        "v2": "2025-07-25T00:43:07Z"
+      },
+      "retrieval_window_utc": [
+        "2026-10-08T15:45:31Z",
+        "2026-10-08T15:46:47Z"
+      ],
+      "whole_artifact_sha256": null
+    },
+    {
+      "receipt_id": "PV-M03",
+      "artifact_key": "metr-paper-v2",
+      "url": "https://arxiv.org/html/2507.09089v2",
+      "locator": "D.2 first sentence",
+      "verification": "exact_transcribed_excerpt_rechecked_and_utf8_hash_recomputed",
+      "excerpt": "By default, we report 95% confidence intervals using HC3 standard errors.",
+      "digest": {
+        "algorithm": "sha256",
+        "value": "dcbfc140a7eedcc35d94fbb874d8600e157af3f3d8caecc23f20c55feb0c09be",
+        "scope": "UTF-8 bytes of excerpt only",
+        "is_whole_artifact_hash": false
+      },
+      "supports": [
+        "metr-declared-hc3"
+      ]
+    },
+    {
+      "receipt_id": "PV-M04",
+      "artifact_key": "metr-producer-update",
+      "url": "https://metr.org/blog/2026-02-24-uplift-update/",
+      "locator": "Main results paragraph; Wider adoption; Details of the productivity study",
+      "source_version": "Publication dated 2026-02-24; mutable page observed 2026-10-08",
+      "retrieval_window_utc": [
+        "2026-10-08T15:47:23Z",
+        "2026-10-08T15:47:39Z"
+      ],
+      "verification": "direct_public_text_inspection",
+      "supports": [
+        "review-metr-update-early",
+        "review-metr-update-returning",
+        "review-metr-update-new",
+        "review-metr-late-design"
+      ],
+      "whole_artifact_sha256": null,
+      "qualifications": [
+        "Interval level not specified in inspected page text.",
+        "800+ tasks is not a completed-task or subgroup denominator.",
+        "Selection-bias direction is producer interpretation, not reviewer adjustment.",
+        "An optional figure-link click failed with invalid-arguments error; no image confidence-level attribution made."
+      ]
+    },
+    {
+      "receipt_id": "PV-I01",
+      "artifact_key": "i4r-iza-paper",
+      "url": "https://docs.iza.org/dp17645.pdf",
+      "source_version": "IZA DP17645, January 2025 cover edition",
+      "locator": "PDF pp.10–13 methods; PDF p.19/printed p.18 Table 1",
+      "retrieval_window_utc": [
+        "2026-10-08T15:48:28Z",
+        "2026-10-08T15:49:14Z"
+      ],
+      "verification": "bounded_download_text_extraction_and_rendered_table_inspection",
+      "byte_count": 408164,
+      "maximum_download_bytes": 8388608,
+      "maximum_request_seconds": 30,
+      "whole_artifact_sha256": "d0656b66d14e0417252aafa6064124e6c3b57d811e1e748b1c763046e8f7be38",
+      "supports": [
+        "i4r-iza-human-only",
+        "i4r-iza-ai-assisted",
+        "i4r-iza-ai-led",
+        "i4r-label",
+        "i4r-counts"
+      ],
+      "qualifications": [
+        "Table label is inspected; generating variance calculation unverified.",
+        "Earlier edition is not substituted for current SP001 means.",
+        "Web screenshot unavailable; same accessible IZA PDF rendered locally.",
+        "PDF/body/image not included in public integration package."
+      ]
+    },
+    {
+      "receipt_id": "PV-C01",
+      "artifact_key": "costello-dryad",
+      "url": "https://datadryad.org/dataset/doi:10.5061/dryad.v6wwpzh4h",
+      "source_version": "Corrected release displayed 2026-09-29",
+      "locator": "Abstract; README Study and file scope, Missing and blank values, Formats, Rights; September 2026 change log",
+      "retrieval_window_utc": [
+        "2026-10-08T15:49:14Z",
+        "2026-10-08T15:49:27Z"
+      ],
+      "verification": "public_inline_documentation_only",
+      "supports": [
+        "costello-screened-all",
+        "costello-screened-study1",
+        "costello-screened-study2",
+        "costello-complete-cases",
+        "costello-headline",
+        "costello-scale-comparator",
+        "costello-followups",
+        "costello-intentions",
+        "costello-dryad-clocks"
+      ],
+      "whole_artifact_sha256": null,
+      "qualifications": [
+        "Archive names and member inventory inspected only as page metadata. No members opened.",
+        "Exact corrected comparison effects/CI/p/N absent in inspected page text, not claimed nonexistent."
+      ]
+    },
+    {
+      "receipt_id": "PV-C02",
+      "artifact_key": "costello-zenodo",
+      "url": "https://zenodo.org/records/22754984",
+      "source_version": "22754984 version 1.0",
+      "locator": "Description; Files; Related works; Technical metadata",
+      "retrieval_window_utc": [
+        "2026-10-08T15:49:14Z",
+        "2026-10-08T15:49:37Z"
+      ],
+      "verification": "public_landing_page_only",
+      "supports": [
+        "costello-corrected-methods",
+        "costello-zenodo-clocks"
+      ],
+      "whole_artifact_sha256": null,
+      "provider_reported_digest": {
+        "algorithm": "md5",
+        "value": "7470493c33e6df76d0355fbc3850bc1b",
+        "applies_to": "ConspiracyAI-Correction-Public-Repository.zip",
+        "verification": "displayed_value_rechecked_not_bytes",
+        "archive_acquired": false
+      },
+      "qualifications": [
+        "Publication 2026-09-27; created/modified 2026-09-28 are different date roles.",
+        "Archive preview/download not opened.",
+        "No statement of publisher disposition on inspected landing page."
+      ]
+    },
+    {
+      "receipt_id": "PV-R01",
+      "artifact_key": "cc-by-4",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "locator": "Deed conditions and other rights",
+      "verification": "public_notice_inspected",
+      "supports": [
+        "rights-metr-paper"
+      ],
+      "whole_artifact_sha256": null
+    },
+    {
+      "receipt_id": "PV-R02",
+      "artifact_key": "cc0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "locator": "No Copyright; Other Information",
+      "verification": "public_notice_inspected",
+      "supports": [
+        "rights-costello-dryad"
+      ],
+      "whole_artifact_sha256": null
+    }
+  ],
+  "stopped_routes_preserved": [
+    "Both pinned METR repositories and descendants",
+    "Pinned I4R repository and descendants",
+    "Econstor handle/10419/308508 and alternate routes to that restricted target",
+    "Costello journal/resolvers",
+    "Both previously blocked Crossref work endpoints"
+  ],
+  "not_performed": [
+    "participant acquisition",
+    "archive member inspection",
+    "study source code execution",
+    "model/scorer execution",
+    "public writes"
+  ]
+}

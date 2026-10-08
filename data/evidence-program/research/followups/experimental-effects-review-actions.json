@@ -1,0 +1,92 @@
+{
+  "new_prompt_sequence": 2,
+  "original_campaign_sessions": [
+    2,
+    7,
+    8,
+    22
+  ],
+  "guide_links": [
+    "adoption-productivity.md",
+    "scientific-progress.md",
+    "persuasion-information.md",
+    "negative-replications.md"
+  ],
+  "queue_paths": [
+    "docs/evidence-program/research/research-session-review-queue.md",
+    "docs/evidence-program/research/followups/follow-up-queue.md"
+  ],
+  "preserve_unchanged": [
+    "four fingerprinted historical research catalogs",
+    "frozen inventory",
+    "canonical schema",
+    "existing fixtures/validators"
+  ],
+  "actions": [
+    {
+      "family": "METR",
+      "disposition": "accept_and_correct_with_holds",
+      "accepted": "Paper methods/point and separately attributed producer-update intervals/design; prior AP002/NR007 findings retained.",
+      "held": [
+        "historical executed covariance",
+        "exact output/input generation",
+        "artifact-specific CSV/code/aggregate grant",
+        "like-for-like longitudinal or pooled causal trend"
+      ],
+      "minimum_evidence": "Public output-specific methods/generation clarification and applicable artifact notices.",
+      "actions": [
+        "AP-A03",
+        "NR007-A1"
+      ]
+    },
+    {
+      "family": "I4R",
+      "disposition": "accept_historical_edition_preserve_current_evidence_hold_uncertainty",
+      "accepted": "IZA historical table and label; current SP001 prior verified arm means/counts/RMST and static evidence.",
+      "held": [
+        "current SD/SE identity",
+        "exact output/input/analysis generation record",
+        "valid-time Ns",
+        "generated-table rights"
+      ],
+      "minimum_evidence": "Public table-specific statistic and generation clarification plus explicit table rights.",
+      "actions": [
+        "SP-A03",
+        "SCI-H01"
+      ]
+    },
+    {
+      "family": "Costello",
+      "disposition": "accept_documentation_keep_editorial_and_effect_holds",
+      "accepted": "Corrected counts, methods, scale, follow-up scope, release clocks and category-specific rights.",
+      "held": [
+        "publisher disposition",
+        "exact corrected comparison effects/CI/p/N",
+        "follow-up denominators and restrictions"
+      ],
+      "minimum_evidence": "Explicit permitted publisher disposition and publicly exposed corrected comparison table.",
+      "actions": [
+        "PI-A5",
+        "PI-H4"
+      ]
+    },
+    {
+      "family": "mapping",
+      "disposition": "access_resolved_lossless_mapping_held",
+      "accepted": "Actual existing field/union/unit limits checked against pinned current main.",
+      "held": [
+        "lossless experimental aggregate representation",
+        "operational admission"
+      ],
+      "minimum_evidence": "Separately reviewed mapping decision preserving source-native fields; no schema invented."
+    }
+  ],
+  "remaining_safe_work": "No further external research within the present bounds; remaining primary blockers require specified public clarification, not broader search or private data.",
+  "followon_sessions_launched": false,
+  "source_review_integration_status_preserved": "Parent-only next step; not performed by this reviewer.",
+  "integration": "Independently cleared research delta included in this candidate. Remote publication, exact-commit CI and merge remain separately unverified for this candidate.",
+  "included_repository_paths": [
+    "docs/evidence-program/research/followups/experimental-effects-review.md",
+    "data/evidence-program/research/followups/experimental-effects-review.json"
+  ]
+}
