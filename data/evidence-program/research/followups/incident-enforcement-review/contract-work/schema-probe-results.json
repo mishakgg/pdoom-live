@@ -1,0 +1,460 @@
+{
+  "title": "Separate offline synthetic schema-shape probes",
+  "repository_commit": "aff815147b12235177da9f66f4c09c2c1508f3eb",
+  "execution_scope": "Draft 2020-12 schema + FormatChecker only; individually invented records; no semantic bundle validator, production TypeScript validator, research artifact code, original acceptance cases or live data executed",
+  "fixture_origin": "wholly_invented_not_source_derived",
+  "jsonschema_version": "4.26.0",
+  "schema_files_checked": 6,
+  "probe_count": 32,
+  "schema_accepted": 16,
+  "schema_rejected": 16,
+  "expectations_matched": 32,
+  "all_expectations_matched": true,
+  "external_schema_resolution_attempts": [],
+  "network_calls": 0,
+  "original_acceptance_cases_executed": 0,
+  "source_native_records_tested": 0,
+  "native_records_admitted": 0,
+  "input_sha256": "beb873893c3ddabc8a7932acaee290a05366fc93f83b5b9adba9b4ebfb409845",
+  "runner_sha256": "aaa2fa72e04e24e1bcaa2012e67fc3ea7e197b648874020c8e322243d385a43e",
+  "results": [
+    {
+      "probe_id": "G-SHAPE-01",
+      "purpose": "Metadata-only source without source-body hash",
+      "schema_type": "source_artifact",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "Proposal source artifact hash is optional. This does not satisfy production sourceItem hash requirements.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-02",
+      "purpose": "Organization actor with unknown geographic/identity details",
+      "schema_type": "actor",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "Empty unknown-details arrays are shape-valid; no identity is verified.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-03",
+      "purpose": "Institution-attributed statement",
+      "schema_type": "statement",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "Proposal speaker_refs accepts an actor-shaped reference; production statement still needs person_slug.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-04",
+      "purpose": "Incident with unidentified subjects and unassessed severity",
+      "schema_type": "incident",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "Empty subject_refs and unknown severity are shape-valid; event taxonomy/cluster/rubric here are wholly fictional.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-05",
+      "purpose": "Candidate count with exact decimal string and reported mode",
+      "schema_type": "resource_observation",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "A resource_kind other shape can represent the invented count, but semantic suitability is not established.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-06",
+      "purpose": "Unsupported native artifact ID field",
+      "schema_type": "source_artifact",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "Closed source-artifact data requires a sidecar or reviewed upstream crosswalk, not invented fields.",
+      "errors": [
+        {
+          "instance_path": "/data",
+          "schema_path": "/allOf/0/allOf/0/then/properties/data/additionalProperties",
+          "validator": "additionalProperties",
+          "message": "Additional properties are not allowed ('source_native_identifier' was unexpected)"
+        }
+      ]
+    },
+    {
+      "probe_id": "G-SHAPE-07",
+      "purpose": "Unsupported authority field",
+      "schema_type": "statement",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "No native typed authority_status field in statement data.",
+      "errors": [
+        {
+          "instance_path": "/data",
+          "schema_path": "/allOf/0/allOf/2/then/properties/data/additionalProperties",
+          "validator": "additionalProperties",
+          "message": "Additional properties are not allowed ('authority_status' was unexpected)"
+        }
+      ]
+    },
+    {
+      "probe_id": "G-SHAPE-08",
+      "purpose": "Source-inspection label is not incident verification enum",
+      "schema_type": "incident",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "Source inspection must not be silently rewritten as confirmed incident.",
+      "errors": [
+        {
+          "instance_path": "/data/verification",
+          "schema_path": "/allOf/0/allOf/8/then/properties/data/properties/verification/enum",
+          "validator": "enum",
+          "message": "'official_source_inspected' is not one of ['alleged', 'corroborated', 'confirmed', 'disputed', 'retracted']"
+        }
+      ]
+    },
+    {
+      "probe_id": "G-SHAPE-09",
+      "purpose": "JSON number rather than exact decimal string",
+      "schema_type": "resource_observation",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "Numerical result values require base-10 strings.",
+      "errors": [
+        {
+          "instance_path": "/data/measurement/result",
+          "schema_path": "/allOf/0/allOf/6/then/properties/data/properties/measurement/properties/result/oneOf",
+          "validator": "oneOf",
+          "message": "{'kind': 'point', 'value': 7, 'unit': 'count'} is not valid under any of the given schemas"
+        }
+      ]
+    },
+    {
+      "probe_id": "G-SHAPE-10",
+      "purpose": "Bound without inclusivity",
+      "schema_type": "resource_observation",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "Bounds need explicit inclusivity; this still cannot establish a scientifically appropriate bound.",
+      "errors": [
+        {
+          "instance_path": "/data/measurement/result",
+          "schema_path": "/allOf/0/allOf/6/then/properties/data/properties/measurement/properties/result/oneOf",
+          "validator": "oneOf",
+          "message": "{'kind': 'upper_bound', 'bound': '17', 'unit': 'count'} is not valid under any of the given schemas"
+        }
+      ]
+    },
+    {
+      "probe_id": "G-SHAPE-11",
+      "purpose": "Syntactically complete count bound",
+      "schema_type": "resource_observation",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "Shape validity does not determine whether incomplete ascertainment permits an upper bound.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-12",
+      "purpose": "Explicit unknown source date",
+      "schema_type": "statement",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "Unknown source date is representable without invented precision.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-13",
+      "purpose": "Month-only string forced into exact-date type",
+      "schema_type": "statement",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "Use a supported precision-aware range or explicit unknown, retaining the source label.",
+      "errors": [
+        {
+          "instance_path": "/times/published",
+          "schema_path": "/allOf/0/properties/times/properties/published/oneOf",
+          "validator": "oneOf",
+          "message": "{'kind': 'date', 'date': '2001-02'} is not valid under any of the given schemas"
+        }
+      ]
+    },
+    {
+      "probe_id": "G-SHAPE-14",
+      "purpose": "Date-only system retrieval timestamp",
+      "schema_type": "statement",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "System timestamps cannot be supplied by a calendar date alone.",
+      "errors": [
+        {
+          "instance_path": "/times/retrieved_at",
+          "schema_path": "/allOf/0/properties/times/properties/retrieved_at/pattern",
+          "validator": "pattern",
+          "message": "'2001-02-03' does not match '^\\\\d{4}-\\\\d{2}-\\\\d{2}T\\\\d{2}:\\\\d{2}:\\\\d{2}(\\\\.\\\\d{1,6})?Z$'"
+        }
+      ]
+    },
+    {
+      "probe_id": "G-SHAPE-15",
+      "purpose": "Source-native count unit outside unit enum",
+      "schema_type": "resource_observation",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "Unit count plus metric definition/context retains source-specific objects; custom unit strings are not allowed.",
+      "errors": [
+        {
+          "instance_path": "/data/measurement/result",
+          "schema_path": "/allOf/0/allOf/6/then/properties/data/properties/measurement/properties/result/oneOf",
+          "validator": "oneOf",
+          "message": "{'kind': 'point', 'value': '7', 'unit': 'websites'} is not valid under any of the given schemas"
+        }
+      ]
+    },
+    {
+      "probe_id": "G-SHAPE-16",
+      "purpose": "Legal compliance relation outside statement enum",
+      "schema_type": "statement",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "Preserve richer native relationships in sidecars.",
+      "errors": [
+        {
+          "instance_path": "/data/relationships/0/kind",
+          "schema_path": "/allOf/0/allOf/2/then/properties/data/properties/relationships/items/properties/kind/enum",
+          "validator": "enum",
+          "message": "'claims_compliance_with' is not one of ['updates', 'clarifies', 'retracts', 'contradicts', 'repeats']"
+        }
+      ]
+    },
+    {
+      "probe_id": "G-SHAPE-17",
+      "purpose": "Cross-record supersession passes shape",
+      "schema_type": "statement",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "Static validator reading says same-ID immediate-prior revision is separately required; semantic validator was not executed.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-18",
+      "purpose": "Local label is not repository URN",
+      "schema_type": "statement",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "Do not treat deliverable-local IDs as canonical record IDs.",
+      "errors": [
+        {
+          "instance_path": "/data/speaker_refs/0/id",
+          "schema_path": "/allOf/0/allOf/2/then/properties/data/properties/speaker_refs/items/properties/id/pattern",
+          "validator": "pattern",
+          "message": "'local-actor-label' does not match '^urn:pdataset:(source_artifact|actor|statement|model_version|release_event|benchmark_run|resource_observation|safety_evaluation|incident|forecast_question|forecast|resolution|snapshot):[a-z0-9][a-z0-9._-]{0,119}$'"
+        }
+      ]
+    },
+    {
+      "probe_id": "G-SHAPE-19",
+      "purpose": "Resource observation lacking a measured subject",
+      "schema_type": "resource_observation",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "Do not insert the regulator publisher as measured subject to satisfy the schema.",
+      "errors": [
+        {
+          "instance_path": "/data/subject_refs",
+          "schema_path": "/allOf/0/allOf/6/then/properties/data/properties/subject_refs/minItems",
+          "validator": "minItems",
+          "message": "[] should be non-empty"
+        }
+      ]
+    },
+    {
+      "probe_id": "G-SHAPE-20",
+      "purpose": "Source artifact with unknown title omitted",
+      "schema_type": "source_artifact",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "Complete proposal artifact requires a source title; artifact type is not a truthful substitute.",
+      "errors": [
+        {
+          "instance_path": "/data",
+          "schema_path": "/allOf/0/allOf/0/then/properties/data/required",
+          "validator": "required",
+          "message": "'title' is a required property"
+        }
+      ]
+    },
+    {
+      "probe_id": "G-SHAPE-21",
+      "purpose": "Eligible publication with unknown rights passes shape",
+      "schema_type": "statement",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "Static validator reading identifies publication/content-rights gates; schema-only acceptance is not clearance.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-22",
+      "purpose": "Human-verified label without reviewer passes shape",
+      "schema_type": "statement",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "Static validator reading requires reviewer and reviewed_at; neither was tested by the semantic validator.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-23",
+      "purpose": "Wrong reference target type passes structural reference shape",
+      "schema_type": "statement",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "x-target-types annotations require separate semantic checks; actual target lookup is not performed here.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-24",
+      "purpose": "Unsupported factual promotion uses valid enum values",
+      "schema_type": "incident",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "Schema cannot determine whether invented confirmation/causality claims are supported; no factual verdict follows.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-25",
+      "purpose": "Invalid order-to-performance inference in free text",
+      "schema_type": "incident",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "Shape validation does not adjudicate this deliberately misleading fictional inference. Manual semantic review must reject it.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-26",
+      "purpose": "Reverse time interval passes shape",
+      "schema_type": "statement",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "Static validator reading identifies a time_range invariant; semantic validator was not executed.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-27",
+      "purpose": "Additional legal-date role in closed times object",
+      "schema_type": "statement",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "Signature/filing/issuance/effectiveness roles need preserved source-native sidecars.",
+      "errors": [
+        {
+          "instance_path": "/times",
+          "schema_path": "/allOf/0/properties/times/additionalProperties",
+          "validator": "additionalProperties",
+          "message": "Additional properties are not allowed ('signed' was unexpected)"
+        }
+      ]
+    },
+    {
+      "probe_id": "G-SHAPE-28",
+      "purpose": "Explicit missing measurement",
+      "schema_type": "resource_observation",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "Missingness is not zero or failed remediation.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-29",
+      "purpose": "Null result is not tagged missingness",
+      "schema_type": "resource_observation",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "Use a supported missing reason; do not interpret null as zero.",
+      "errors": [
+        {
+          "instance_path": "/data/measurement/result",
+          "schema_path": "/allOf/0/allOf/6/then/properties/data/properties/measurement/properties/result/oneOf",
+          "validator": "oneOf",
+          "message": "None is not valid under any of the given schemas"
+        }
+      ]
+    },
+    {
+      "probe_id": "G-SHAPE-30",
+      "purpose": "Dependent repetition relation",
+      "schema_type": "statement",
+      "expected_schema_acceptance": true,
+      "schema_accepted": true,
+      "expectation_matched": true,
+      "interpretation": "Repeats is representable after evidence review; repeated documents do not become independent events.",
+      "errors": []
+    },
+    {
+      "probe_id": "G-SHAPE-31",
+      "purpose": "Typed numerator denominator fields absent from measurement",
+      "schema_type": "resource_observation",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "Metric definition/scope can describe units; structured native pairing remains a sidecar.",
+      "errors": [
+        {
+          "instance_path": "/data/measurement",
+          "schema_path": "/allOf/0/allOf/6/then/properties/data/properties/measurement/additionalProperties",
+          "validator": "additionalProperties",
+          "message": "Additional properties are not allowed ('denominator', 'numerator' were unexpected)"
+        }
+      ]
+    },
+    {
+      "probe_id": "G-SHAPE-32",
+      "purpose": "Per-component rights field absent from governance",
+      "schema_type": "source_artifact",
+      "expected_schema_acceptance": false,
+      "schema_accepted": false,
+      "expectation_matched": true,
+      "interpretation": "Mixed-source/component rights must stay separately scoped; a single record rights state is not lossless.",
+      "errors": [
+        {
+          "instance_path": "/governance",
+          "schema_path": "/allOf/0/properties/governance/additionalProperties",
+          "validator": "additionalProperties",
+          "message": "Additional properties are not allowed ('third_party_rights' was unexpected)"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Accept means only schema shape accepted. It does not verify record references, identity, rights, authority, evidence, event counts, causal attribution, cohort joins, truthful metrics or outcome completion.",
+    "Accepted deliberately misleading fictional records demonstrate validation limits, never successful native admission.",
+    "Static observations about validate_dataset.py are documented separately; it was not imported or run.",
+    "All original 20 acceptance cases remain not_executed with runtime_result null."
+  ]
+}

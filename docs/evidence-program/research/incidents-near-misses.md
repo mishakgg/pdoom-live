@@ -204,3 +204,11 @@ Ten actions in the catalog distinguish completed bounded review/implementation f
 8. Canonical mapping: prove a lossless read-only mapping before any contract change, collector, canonical import or deployment.
 
 All fifteen earlier catalogs, guides, readers, tests, fixtures and the frozen 64-family inventory are preserved byte-for-byte. The [dated queue](research-session-review-queue.md) shows fifteen integrated reviews, item 16 prepared and ten queued at this historical snapshot. Independent review, publication and remote CI remain separate gates.
+
+## Follow-up qualification: 8 October 2026
+
+The [incident corrections and enforcement outcomes follow-up](followups/incident-enforcement-review.md) adds the independently reviewed G / prompt 6 documentary findings for INM003 and INM006, alongside CGP001. The [source-native delta](../../../data/evidence-program/research/followups/incident-enforcement-review/delta.json) preserves G-C01–G-C06 and G-H01–G-H06. Original catalog bytes and the prior scoped OPC CC-BY-3.0-NZ and AIID 619/665 indexing evidence remain unchanged.
+
+OPC’s 1,735/1,742 alert conflict remains unresolved. Repeated scans are not unique people, nine misidentifications plus four procedural cases are not thirteen confirmed misidentifications or a complete upper bound, and post-inquiry completion is unverified. Rite Aid’s modified Commission order establishes procedural follow-through, not an incident-report correction or completed compliance. Everalbum/Paravision’s deletion claim remains respondent evidence. Signature, filing, issuance, listing and effective dates stay separate; final-publication trigger dates and actual performance remain held. Five FTC PDF hashes remain submission-attributed, and the independent pass could not freshly reread the FTC policy page.
+
+INM-A05 and INM-A08 have completed only their bounded documentary research; their outcome holds remain. INM-A10 remains partial. All 20 original acceptance cases remain unexecuted; 32 separate invented schema probes do not establish real-record validity. Institutional mapping remains held by production person_slug and other semantic gaps. No new incident observations, collector, adapter, source-body republication, canonical admission, incidence rate or score is authorized by this delta.

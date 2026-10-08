@@ -1,0 +1,2063 @@
+{
+  "title": "Invented fixtures for contract shape review",
+  "fixture_origin": "wholly_invented_not_source_derived",
+  "all_names_dates_counts_and_text_are_invented": true,
+  "original_acceptance_cases_executed": 0,
+  "no_live_sources_or_research_assertions_used_as_fixtures": true,
+  "probes": [
+    {
+      "probe_id": "G-SHAPE-01",
+      "schema_type": "source_artifact",
+      "purpose": "Metadata-only source without source-body hash",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "source_artifact",
+        "id": "urn:pdataset:source_artifact:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [],
+        "data": {
+          "canonical_url": "https://synthetic.example.invalid/notice",
+          "title": "Fictional Harbor Authority Notice",
+          "source_type": "report",
+          "language": "en",
+          "author_refs": [],
+          "availability": "unknown"
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "Proposal source artifact hash is optional. This does not satisfy production sourceItem hash requirements."
+    },
+    {
+      "probe_id": "G-SHAPE-02",
+      "schema_type": "actor",
+      "purpose": "Organization actor with unknown geographic/identity details",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "actor",
+        "id": "urn:pdataset:actor:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "actor_kind": "organization",
+          "name": "Fictional Harbor Authority",
+          "name_language": "en",
+          "aliases": [],
+          "jurisdictions": [],
+          "affiliations": [],
+          "external_ids": []
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "Empty unknown-details arrays are shape-valid; no identity is verified."
+    },
+    {
+      "probe_id": "G-SHAPE-03",
+      "schema_type": "statement",
+      "purpose": "Institution-attributed statement",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "statement",
+        "id": "urn:pdataset:statement:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "speaker_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-authority",
+              "revision": 1
+            }
+          ],
+          "statement_type": "explicit_qualitative",
+          "original_text": "The fictional authority requested a repair.",
+          "normalized_text": "A fictional repair request is reported; performance is unknown.",
+          "language": "en",
+          "topic_keys": [
+            "synthetic.notice-v1"
+          ],
+          "relationships": []
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "Proposal speaker_refs accepts an actor-shaped reference; production statement still needs person_slug."
+    },
+    {
+      "probe_id": "G-SHAPE-04",
+      "schema_type": "incident",
+      "purpose": "Incident with unidentified subjects and unassessed severity",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "incident",
+        "id": "urn:pdataset:incident:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "title": "Fictional malfunction allegation",
+          "subject_refs": [],
+          "incident_kind": "synthetic.event-v1",
+          "verification": "alleged",
+          "causal_attribution": "unestablished",
+          "severity": "unknown",
+          "severity_rubric": "synthetic.unassessed-v1",
+          "description": "An invented notice alleges a malfunction.",
+          "deduplication_key": "synthetic-one-event"
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "Empty subject_refs and unknown severity are shape-valid; event taxonomy/cluster/rubric here are wholly fictional."
+    },
+    {
+      "probe_id": "G-SHAPE-05",
+      "schema_type": "resource_observation",
+      "purpose": "Candidate count with exact decimal string and reported mode",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "resource_observation",
+        "id": "urn:pdataset:resource_observation:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "subject_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-operator",
+              "revision": 1
+            }
+          ],
+          "resource_kind": "other",
+          "measurement": {
+            "metric": {
+              "key": "synthetic.devices-v1",
+              "definition": "Fictional devices reported in one invented inspection; denominator unspecified.",
+              "unit": "count",
+              "direction": "neutral"
+            },
+            "result": {
+              "kind": "point",
+              "value": "7",
+              "unit": "count"
+            },
+            "observation_mode": "reported",
+            "method": "Synthetic notice assertion; no independent inspection."
+          },
+          "scope": "Fictional operator device inventory in an unspecified interval."
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "A resource_kind other shape can represent the invented count, but semantic suitability is not established."
+    },
+    {
+      "probe_id": "G-SHAPE-06",
+      "schema_type": "source_artifact",
+      "purpose": "Unsupported native artifact ID field",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "source_artifact",
+        "id": "urn:pdataset:source_artifact:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [],
+        "data": {
+          "canonical_url": "https://synthetic.example.invalid/notice",
+          "title": "Fictional Harbor Authority Notice",
+          "source_type": "report",
+          "language": "en",
+          "author_refs": [],
+          "availability": "unknown",
+          "source_native_identifier": "FICTIONAL-NOTICE-Z"
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "Closed source-artifact data requires a sidecar or reviewed upstream crosswalk, not invented fields."
+    },
+    {
+      "probe_id": "G-SHAPE-07",
+      "schema_type": "statement",
+      "purpose": "Unsupported authority field",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "statement",
+        "id": "urn:pdataset:statement:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "speaker_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-authority",
+              "revision": 1
+            }
+          ],
+          "statement_type": "explicit_qualitative",
+          "original_text": "The fictional authority requested a repair.",
+          "normalized_text": "A fictional repair request is reported; performance is unknown.",
+          "language": "en",
+          "topic_keys": [
+            "synthetic.notice-v1"
+          ],
+          "relationships": [],
+          "authority_status": "fictional regulator order"
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "No native typed authority_status field in statement data."
+    },
+    {
+      "probe_id": "G-SHAPE-08",
+      "schema_type": "incident",
+      "purpose": "Source-inspection label is not incident verification enum",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "incident",
+        "id": "urn:pdataset:incident:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "title": "Fictional malfunction allegation",
+          "subject_refs": [],
+          "incident_kind": "synthetic.event-v1",
+          "verification": "official_source_inspected",
+          "causal_attribution": "unestablished",
+          "severity": "unknown",
+          "severity_rubric": "synthetic.unassessed-v1",
+          "description": "An invented notice alleges a malfunction.",
+          "deduplication_key": "synthetic-one-event"
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "Source inspection must not be silently rewritten as confirmed incident."
+    },
+    {
+      "probe_id": "G-SHAPE-09",
+      "schema_type": "resource_observation",
+      "purpose": "JSON number rather than exact decimal string",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "resource_observation",
+        "id": "urn:pdataset:resource_observation:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "subject_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-operator",
+              "revision": 1
+            }
+          ],
+          "resource_kind": "other",
+          "measurement": {
+            "metric": {
+              "key": "synthetic.devices-v1",
+              "definition": "Fictional devices reported in one invented inspection; denominator unspecified.",
+              "unit": "count",
+              "direction": "neutral"
+            },
+            "result": {
+              "kind": "point",
+              "value": 7,
+              "unit": "count"
+            },
+            "observation_mode": "reported",
+            "method": "Synthetic notice assertion; no independent inspection."
+          },
+          "scope": "Fictional operator device inventory in an unspecified interval."
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "Numerical result values require base-10 strings."
+    },
+    {
+      "probe_id": "G-SHAPE-10",
+      "schema_type": "resource_observation",
+      "purpose": "Bound without inclusivity",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "resource_observation",
+        "id": "urn:pdataset:resource_observation:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "subject_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-operator",
+              "revision": 1
+            }
+          ],
+          "resource_kind": "other",
+          "measurement": {
+            "metric": {
+              "key": "synthetic.devices-v1",
+              "definition": "Fictional devices reported in one invented inspection; denominator unspecified.",
+              "unit": "count",
+              "direction": "neutral"
+            },
+            "result": {
+              "kind": "upper_bound",
+              "bound": "17",
+              "unit": "count"
+            },
+            "observation_mode": "reported",
+            "method": "Synthetic notice assertion; no independent inspection."
+          },
+          "scope": "Fictional operator device inventory in an unspecified interval."
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "Bounds need explicit inclusivity; this still cannot establish a scientifically appropriate bound."
+    },
+    {
+      "probe_id": "G-SHAPE-11",
+      "schema_type": "resource_observation",
+      "purpose": "Syntactically complete count bound",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "resource_observation",
+        "id": "urn:pdataset:resource_observation:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "subject_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-operator",
+              "revision": 1
+            }
+          ],
+          "resource_kind": "other",
+          "measurement": {
+            "metric": {
+              "key": "synthetic.devices-v1",
+              "definition": "Fictional devices reported in one invented inspection; denominator unspecified.",
+              "unit": "count",
+              "direction": "neutral"
+            },
+            "result": {
+              "kind": "upper_bound",
+              "bound": "17",
+              "unit": "count",
+              "inclusive": true
+            },
+            "observation_mode": "reported",
+            "method": "Synthetic notice assertion; no independent inspection."
+          },
+          "scope": "Fictional operator device inventory in an unspecified interval."
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "Shape validity does not determine whether incomplete ascertainment permits an upper bound."
+    },
+    {
+      "probe_id": "G-SHAPE-12",
+      "schema_type": "statement",
+      "purpose": "Explicit unknown source date",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "statement",
+        "id": "urn:pdataset:statement:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "unknown",
+            "reason": "Fictional publication date is unavailable."
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "speaker_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-authority",
+              "revision": 1
+            }
+          ],
+          "statement_type": "explicit_qualitative",
+          "original_text": "The fictional authority requested a repair.",
+          "normalized_text": "A fictional repair request is reported; performance is unknown.",
+          "language": "en",
+          "topic_keys": [
+            "synthetic.notice-v1"
+          ],
+          "relationships": []
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "Unknown source date is representable without invented precision."
+    },
+    {
+      "probe_id": "G-SHAPE-13",
+      "schema_type": "statement",
+      "purpose": "Month-only string forced into exact-date type",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "statement",
+        "id": "urn:pdataset:statement:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "speaker_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-authority",
+              "revision": 1
+            }
+          ],
+          "statement_type": "explicit_qualitative",
+          "original_text": "The fictional authority requested a repair.",
+          "normalized_text": "A fictional repair request is reported; performance is unknown.",
+          "language": "en",
+          "topic_keys": [
+            "synthetic.notice-v1"
+          ],
+          "relationships": []
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "Use a supported precision-aware range or explicit unknown, retaining the source label."
+    },
+    {
+      "probe_id": "G-SHAPE-14",
+      "schema_type": "statement",
+      "purpose": "Date-only system retrieval timestamp",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "statement",
+        "id": "urn:pdataset:statement:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "speaker_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-authority",
+              "revision": 1
+            }
+          ],
+          "statement_type": "explicit_qualitative",
+          "original_text": "The fictional authority requested a repair.",
+          "normalized_text": "A fictional repair request is reported; performance is unknown.",
+          "language": "en",
+          "topic_keys": [
+            "synthetic.notice-v1"
+          ],
+          "relationships": []
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "System timestamps cannot be supplied by a calendar date alone."
+    },
+    {
+      "probe_id": "G-SHAPE-15",
+      "schema_type": "resource_observation",
+      "purpose": "Source-native count unit outside unit enum",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "resource_observation",
+        "id": "urn:pdataset:resource_observation:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "subject_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-operator",
+              "revision": 1
+            }
+          ],
+          "resource_kind": "other",
+          "measurement": {
+            "metric": {
+              "key": "synthetic.devices-v1",
+              "definition": "Fictional devices reported in one invented inspection; denominator unspecified.",
+              "unit": "count",
+              "direction": "neutral"
+            },
+            "result": {
+              "kind": "point",
+              "value": "7",
+              "unit": "websites"
+            },
+            "observation_mode": "reported",
+            "method": "Synthetic notice assertion; no independent inspection."
+          },
+          "scope": "Fictional operator device inventory in an unspecified interval."
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "Unit count plus metric definition/context retains source-specific objects; custom unit strings are not allowed."
+    },
+    {
+      "probe_id": "G-SHAPE-16",
+      "schema_type": "statement",
+      "purpose": "Legal compliance relation outside statement enum",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "statement",
+        "id": "urn:pdataset:statement:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "speaker_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-authority",
+              "revision": 1
+            }
+          ],
+          "statement_type": "explicit_qualitative",
+          "original_text": "The fictional authority requested a repair.",
+          "normalized_text": "A fictional repair request is reported; performance is unknown.",
+          "language": "en",
+          "topic_keys": [
+            "synthetic.notice-v1"
+          ],
+          "relationships": [
+            {
+              "kind": "claims_compliance_with",
+              "statement_ref": {
+                "id": "urn:pdataset:statement:synthetic-order",
+                "revision": 1
+              }
+            }
+          ]
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "Preserve richer native relationships in sidecars."
+    },
+    {
+      "probe_id": "G-SHAPE-17",
+      "schema_type": "statement",
+      "purpose": "Cross-record supersession passes shape",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "statement",
+        "id": "urn:pdataset:statement:synthetic-probe",
+        "revision": 2,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "speaker_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-authority",
+              "revision": 1
+            }
+          ],
+          "statement_type": "explicit_qualitative",
+          "original_text": "The fictional authority requested a repair.",
+          "normalized_text": "A fictional repair request is reported; performance is unknown.",
+          "language": "en",
+          "topic_keys": [
+            "synthetic.notice-v1"
+          ],
+          "relationships": []
+        },
+        "supersedes": {
+          "id": "urn:pdataset:statement:synthetic-different-record",
+          "revision": 1
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "Static validator reading says same-ID immediate-prior revision is separately required; semantic validator was not executed."
+    },
+    {
+      "probe_id": "G-SHAPE-18",
+      "schema_type": "statement",
+      "purpose": "Local label is not repository URN",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "statement",
+        "id": "urn:pdataset:statement:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "speaker_refs": [
+            {
+              "id": "local-actor-label",
+              "revision": 1
+            }
+          ],
+          "statement_type": "explicit_qualitative",
+          "original_text": "The fictional authority requested a repair.",
+          "normalized_text": "A fictional repair request is reported; performance is unknown.",
+          "language": "en",
+          "topic_keys": [
+            "synthetic.notice-v1"
+          ],
+          "relationships": []
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "Do not treat deliverable-local IDs as canonical record IDs."
+    },
+    {
+      "probe_id": "G-SHAPE-19",
+      "schema_type": "resource_observation",
+      "purpose": "Resource observation lacking a measured subject",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "resource_observation",
+        "id": "urn:pdataset:resource_observation:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "subject_refs": [],
+          "resource_kind": "other",
+          "measurement": {
+            "metric": {
+              "key": "synthetic.devices-v1",
+              "definition": "Fictional devices reported in one invented inspection; denominator unspecified.",
+              "unit": "count",
+              "direction": "neutral"
+            },
+            "result": {
+              "kind": "point",
+              "value": "7",
+              "unit": "count"
+            },
+            "observation_mode": "reported",
+            "method": "Synthetic notice assertion; no independent inspection."
+          },
+          "scope": "Fictional operator device inventory in an unspecified interval."
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "Do not insert the regulator publisher as measured subject to satisfy the schema."
+    },
+    {
+      "probe_id": "G-SHAPE-20",
+      "schema_type": "source_artifact",
+      "purpose": "Source artifact with unknown title omitted",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "source_artifact",
+        "id": "urn:pdataset:source_artifact:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [],
+        "data": {
+          "canonical_url": "https://synthetic.example.invalid/notice",
+          "source_type": "report",
+          "language": "en",
+          "author_refs": [],
+          "availability": "unknown"
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "Complete proposal artifact requires a source title; artifact type is not a truthful substitute."
+    },
+    {
+      "probe_id": "G-SHAPE-21",
+      "schema_type": "statement",
+      "purpose": "Eligible publication with unknown rights passes shape",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "statement",
+        "id": "urn:pdataset:statement:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "eligible"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "speaker_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-authority",
+              "revision": 1
+            }
+          ],
+          "statement_type": "explicit_qualitative",
+          "original_text": "The fictional authority requested a repair.",
+          "normalized_text": "A fictional repair request is reported; performance is unknown.",
+          "language": "en",
+          "topic_keys": [
+            "synthetic.notice-v1"
+          ],
+          "relationships": []
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "Static validator reading identifies publication/content-rights gates; schema-only acceptance is not clearance."
+    },
+    {
+      "probe_id": "G-SHAPE-22",
+      "schema_type": "statement",
+      "purpose": "Human-verified label without reviewer passes shape",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "statement",
+        "id": "urn:pdataset:statement:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "human_verified",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "speaker_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-authority",
+              "revision": 1
+            }
+          ],
+          "statement_type": "explicit_qualitative",
+          "original_text": "The fictional authority requested a repair.",
+          "normalized_text": "A fictional repair request is reported; performance is unknown.",
+          "language": "en",
+          "topic_keys": [
+            "synthetic.notice-v1"
+          ],
+          "relationships": []
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "Static validator reading requires reviewer and reviewed_at; neither was tested by the semantic validator."
+    },
+    {
+      "probe_id": "G-SHAPE-23",
+      "schema_type": "statement",
+      "purpose": "Wrong reference target type passes structural reference shape",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "statement",
+        "id": "urn:pdataset:statement:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "speaker_refs": [
+            {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            }
+          ],
+          "statement_type": "explicit_qualitative",
+          "original_text": "The fictional authority requested a repair.",
+          "normalized_text": "A fictional repair request is reported; performance is unknown.",
+          "language": "en",
+          "topic_keys": [
+            "synthetic.notice-v1"
+          ],
+          "relationships": []
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "x-target-types annotations require separate semantic checks; actual target lookup is not performed here."
+    },
+    {
+      "probe_id": "G-SHAPE-24",
+      "schema_type": "incident",
+      "purpose": "Unsupported factual promotion uses valid enum values",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "incident",
+        "id": "urn:pdataset:incident:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "title": "Fictional malfunction allegation",
+          "subject_refs": [],
+          "incident_kind": "synthetic.event-v1",
+          "verification": "confirmed",
+          "causal_attribution": "primary",
+          "severity": "unknown",
+          "severity_rubric": "synthetic.unassessed-v1",
+          "description": "An invented notice alleges a malfunction.",
+          "deduplication_key": "synthetic-one-event"
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "Schema cannot determine whether invented confirmation/causality claims are supported; no factual verdict follows."
+    },
+    {
+      "probe_id": "G-SHAPE-25",
+      "schema_type": "incident",
+      "purpose": "Invalid order-to-performance inference in free text",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "incident",
+        "id": "urn:pdataset:incident:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "title": "Fictional malfunction allegation",
+          "subject_refs": [],
+          "incident_kind": "synthetic.event-v1",
+          "verification": "alleged",
+          "causal_attribution": "unestablished",
+          "severity": "unknown",
+          "severity_rubric": "synthetic.unassessed-v1",
+          "description": "The fictional repair order alone proves every repair was completed.",
+          "deduplication_key": "synthetic-one-event"
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "Shape validation does not adjudicate this deliberately misleading fictional inference. Manual semantic review must reject it."
+    },
+    {
+      "probe_id": "G-SHAPE-26",
+      "schema_type": "statement",
+      "purpose": "Reverse time interval passes shape",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "statement",
+        "id": "urn:pdataset:statement:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "range",
+            "start": "2001-03-10",
+            "end": "2001-03-01",
+            "precision": "uncertain"
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "speaker_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-authority",
+              "revision": 1
+            }
+          ],
+          "statement_type": "explicit_qualitative",
+          "original_text": "The fictional authority requested a repair.",
+          "normalized_text": "A fictional repair request is reported; performance is unknown.",
+          "language": "en",
+          "topic_keys": [
+            "synthetic.notice-v1"
+          ],
+          "relationships": []
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "Static validator reading identifies a time_range invariant; semantic validator was not executed."
+    },
+    {
+      "probe_id": "G-SHAPE-27",
+      "schema_type": "statement",
+      "purpose": "Additional legal-date role in closed times object",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "statement",
+        "id": "urn:pdataset:statement:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "signed": {
+            "kind": "date",
+            "date": "2001-02-01"
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "speaker_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-authority",
+              "revision": 1
+            }
+          ],
+          "statement_type": "explicit_qualitative",
+          "original_text": "The fictional authority requested a repair.",
+          "normalized_text": "A fictional repair request is reported; performance is unknown.",
+          "language": "en",
+          "topic_keys": [
+            "synthetic.notice-v1"
+          ],
+          "relationships": []
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "Signature/filing/issuance/effectiveness roles need preserved source-native sidecars."
+    },
+    {
+      "probe_id": "G-SHAPE-28",
+      "schema_type": "resource_observation",
+      "purpose": "Explicit missing measurement",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "resource_observation",
+        "id": "urn:pdataset:resource_observation:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "subject_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-operator",
+              "revision": 1
+            }
+          ],
+          "resource_kind": "other",
+          "measurement": {
+            "metric": {
+              "key": "synthetic.devices-v1",
+              "definition": "Fictional devices reported in one invented inspection; denominator unspecified.",
+              "unit": "count",
+              "direction": "neutral"
+            },
+            "result": {
+              "kind": "missing",
+              "reason": "not_reported",
+              "detail": "No measured result in fictional notice."
+            },
+            "observation_mode": "reported",
+            "method": "Synthetic notice assertion; no independent inspection."
+          },
+          "scope": "Fictional operator device inventory in an unspecified interval."
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "Missingness is not zero or failed remediation."
+    },
+    {
+      "probe_id": "G-SHAPE-29",
+      "schema_type": "resource_observation",
+      "purpose": "Null result is not tagged missingness",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "resource_observation",
+        "id": "urn:pdataset:resource_observation:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "subject_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-operator",
+              "revision": 1
+            }
+          ],
+          "resource_kind": "other",
+          "measurement": {
+            "metric": {
+              "key": "synthetic.devices-v1",
+              "definition": "Fictional devices reported in one invented inspection; denominator unspecified.",
+              "unit": "count",
+              "direction": "neutral"
+            },
+            "result": null,
+            "observation_mode": "reported",
+            "method": "Synthetic notice assertion; no independent inspection."
+          },
+          "scope": "Fictional operator device inventory in an unspecified interval."
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "Use a supported missing reason; do not interpret null as zero."
+    },
+    {
+      "probe_id": "G-SHAPE-30",
+      "schema_type": "statement",
+      "purpose": "Dependent repetition relation",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "statement",
+        "id": "urn:pdataset:statement:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "speaker_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-authority",
+              "revision": 1
+            }
+          ],
+          "statement_type": "explicit_qualitative",
+          "original_text": "The fictional authority requested a repair.",
+          "normalized_text": "A fictional repair request is reported; performance is unknown.",
+          "language": "en",
+          "topic_keys": [
+            "synthetic.notice-v1"
+          ],
+          "relationships": [
+            {
+              "kind": "repeats",
+              "statement_ref": {
+                "id": "urn:pdataset:statement:synthetic-earlier-claim",
+                "revision": 1
+              }
+            }
+          ]
+        }
+      },
+      "expected_schema_acceptance": true,
+      "interpretation": "Repeats is representable after evidence review; repeated documents do not become independent events."
+    },
+    {
+      "probe_id": "G-SHAPE-31",
+      "schema_type": "resource_observation",
+      "purpose": "Typed numerator denominator fields absent from measurement",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "resource_observation",
+        "id": "urn:pdataset:resource_observation:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal"
+        },
+        "evidence": [
+          {
+            "source_ref": {
+              "id": "urn:pdataset:source_artifact:synthetic-notice",
+              "revision": 1
+            },
+            "locator": "Fictional section Z",
+            "relation": "supports",
+            "extraction_method": "synthetic",
+            "extractor_version": "offline-shape-probe-v1"
+          }
+        ],
+        "data": {
+          "subject_refs": [
+            {
+              "id": "urn:pdataset:actor:synthetic-operator",
+              "revision": 1
+            }
+          ],
+          "resource_kind": "other",
+          "measurement": {
+            "metric": {
+              "key": "synthetic.devices-v1",
+              "definition": "Fictional devices reported in one invented inspection; denominator unspecified.",
+              "unit": "count",
+              "direction": "neutral"
+            },
+            "result": {
+              "kind": "point",
+              "value": "7",
+              "unit": "count"
+            },
+            "observation_mode": "reported",
+            "method": "Synthetic notice assertion; no independent inspection.",
+            "numerator": {
+              "value": "7",
+              "unit": "devices"
+            },
+            "denominator": {
+              "value": "71",
+              "unit": "visits"
+            }
+          },
+          "scope": "Fictional operator device inventory in an unspecified interval."
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "Metric definition/scope can describe units; structured native pairing remains a sidecar."
+    },
+    {
+      "probe_id": "G-SHAPE-32",
+      "schema_type": "source_artifact",
+      "purpose": "Per-component rights field absent from governance",
+      "record": {
+        "schema_version": "0.1.0",
+        "record_type": "source_artifact",
+        "id": "urn:pdataset:source_artifact:synthetic-probe",
+        "revision": 1,
+        "synthetic": true,
+        "times": {
+          "known_at": "2001-02-03T12:00:00Z",
+          "retrieved_at": "2001-02-03T11:00:00Z",
+          "published": {
+            "kind": "date",
+            "date": "2001-02-01"
+          },
+          "event": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          },
+          "evaluated": {
+            "kind": "unknown",
+            "reason": "Synthetic fixture supplies no event time."
+          }
+        },
+        "governance": {
+          "review_state": "needs_review",
+          "rights_state": "unknown",
+          "rights_basis": "Wholly invented local test; no source rights decision.",
+          "publication_state": "internal",
+          "third_party_rights": "unknown"
+        },
+        "evidence": [],
+        "data": {
+          "canonical_url": "https://synthetic.example.invalid/notice",
+          "title": "Fictional Harbor Authority Notice",
+          "source_type": "report",
+          "language": "en",
+          "author_refs": [],
+          "availability": "unknown"
+        }
+      },
+      "expected_schema_acceptance": false,
+      "interpretation": "Mixed-source/component rights must stay separately scoped; a single record rights state is not lossless."
+    }
+  ]
+}

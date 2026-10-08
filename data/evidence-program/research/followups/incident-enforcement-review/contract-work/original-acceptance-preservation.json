@@ -1,0 +1,129 @@
+{
+  "input_sha256": "fce6e5f2d8b512fa7bc3e43949f50b7ac2839162120a38d7085b7ed5cb0333f5",
+  "original_case_count": 20,
+  "status": "preserved_unexecuted",
+  "cases": [
+    {
+      "case_id": "O01",
+      "kind": "observed_example",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S01",
+      "kind": "synthetic_rejection",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O02",
+      "kind": "observed_example",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S02",
+      "kind": "synthetic_rejection",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O03",
+      "kind": "observed_example",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S03",
+      "kind": "synthetic_rejection",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O04",
+      "kind": "observed_example",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S04",
+      "kind": "synthetic_rejection",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O05",
+      "kind": "observed_example",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S05",
+      "kind": "synthetic_rejection",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O06",
+      "kind": "observed_example",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S06",
+      "kind": "synthetic_rejection",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O07",
+      "kind": "observed_example",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S07",
+      "kind": "synthetic_rejection",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O08",
+      "kind": "observed_example",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S08",
+      "kind": "synthetic_rejection",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O09",
+      "kind": "observed_example",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S09",
+      "kind": "synthetic_rejection",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O10",
+      "kind": "observed_example",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S10",
+      "kind": "synthetic_rejection",
+      "execution": "not_executed",
+      "runtime_result": null
+    }
+  ],
+  "synthetic_schema_probes_are_separate": true,
+  "original_acceptance_status_verbatim": "All 20 cases manually reviewed (10 observed, 10 synthetic). No software executed against them; no runtime pass/fail claimed."
+}

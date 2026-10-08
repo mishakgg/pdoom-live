@@ -1,0 +1,856 @@
+{
+  "source_native_ledger": "source-native-ledger.json",
+  "count": 43,
+  "rows": [
+    {
+      "assertion_id": "opc:trial-window",
+      "artifact_id": "opc:summary",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P03",
+      "evidence_level": "Regulator inquiry/reporting, not a judicial ruling",
+      "outcome_verification": "Official source text inspected; underlying microdata not independently rechecked",
+      "native_dates_preserved": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:report-alert-total",
+      "artifact_id": "opc:report",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P02",
+      "evidence_level": "Regulator inquiry/reporting, not a judicial ruling",
+      "outcome_verification": "Official source text inspected; underlying microdata not independently rechecked",
+      "native_dates_preserved": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": {
+        "value": 1735,
+        "unit": "FRT alerts",
+        "relationship": "Explicit denominator for nine recorded misidentifications in this paragraph"
+      },
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:summary-alert-total",
+      "artifact_id": "opc:summary",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P03",
+      "evidence_level": "Regulator inquiry/reporting, not a judicial ruling",
+      "outcome_verification": "Official source text inspected; underlying microdata not independently rechecked",
+      "native_dates_preserved": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:landing-alert-total",
+      "artifact_id": "opc:landing",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P01",
+      "evidence_level": "Regulator inquiry/reporting, not a judicial ruling",
+      "outcome_verification": "Official source text inspected; underlying microdata not independently rechecked",
+      "native_dates_preserved": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "publication": "2025-06-04",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "publication_display": "4 Jun 2025, 09:00",
+        "publication_timezone": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:release-alert-total",
+      "artifact_id": "opc:release",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P05",
+      "evidence_level": "Regulator inquiry/reporting, not a judicial ruling",
+      "outcome_verification": "Official source text inspected; underlying microdata not independently rechecked",
+      "native_dates_preserved": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "publication": "2025-06-04",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "publication_display": "4 Jun 2025, 07:00",
+        "publication_timezone": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:confirmed-matches",
+      "artifact_id": "opc:summary",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P03",
+      "evidence_level": "Regulator inquiry/reporting, not a judicial ruling",
+      "outcome_verification": "Official source text inspected; underlying microdata not independently rechecked",
+      "native_dates_preserved": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "numerator_preserved": {
+        "value": 1208,
+        "unit": "confirmed matches"
+      },
+      "denominator_preserved": {
+        "value": 1742,
+        "unit": "alerts"
+      },
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:scanned-images",
+      "artifact_id": "opc:summary",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P03",
+      "evidence_level": "Regulator inquiry/reporting, not a judicial ruling",
+      "outcome_verification": "Official source text inspected; underlying microdata not independently rechecked",
+      "native_dates_preserved": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:deletion-share",
+      "artifact_id": "opc:summary",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P03",
+      "evidence_level": "Regulator inquiry/reporting, not a judicial ruling",
+      "outcome_verification": "Official source text inspected; underlying microdata not independently rechecked",
+      "native_dates_preserved": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "numerator_preserved": {
+        "value": null,
+        "description": "Images/scans deleted within one minute"
+      },
+      "denominator_preserved": {
+        "value": 225972004,
+        "unit": "reported faces scanned/images"
+      },
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:verification-failures",
+      "artifact_id": "opc:report",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P02",
+      "evidence_level": "Regulator inquiry/reporting, not a judicial ruling",
+      "outcome_verification": "Official source text inspected; underlying microdata not independently rechecked",
+      "native_dates_preserved": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "numerator_preserved": {
+        "value": 13,
+        "qualifier": "estimated up to",
+        "unit": "verification-process failures"
+      },
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:recorded-misidentifications",
+      "artifact_id": "opc:report",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P02",
+      "evidence_level": "Regulator inquiry/reporting, not a judicial ruling",
+      "outcome_verification": "Official source text inspected; underlying microdata not independently rechecked",
+      "native_dates_preserved": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "most_recent_recorded_event_text": "late June/early July 2024",
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "numerator_preserved": {
+        "value": 9,
+        "unit": "recorded misidentification cases"
+      },
+      "denominator_preserved": {
+        "value": 1735,
+        "unit": "FRT alerts",
+        "source_native_relationship": "nine cases out of 1735 total FRT alerts"
+      },
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:record-missingness",
+      "artifact_id": "opc:report",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P02",
+      "evidence_level": "Regulator inquiry/reporting, not a judicial ruling",
+      "outcome_verification": "Official source text inspected; underlying microdata not independently rechecked",
+      "native_dates_preserved": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:in-trial-check-and-adjustment",
+      "artifact_id": "opc:report",
+      "disposition": "accepted_with_precision_qualification",
+      "source_recheck_id": "G-P02",
+      "evidence_level": "Regulator inquiry/reporting, not a judicial ruling",
+      "outcome_verification": "Official source text inspected; underlying microdata not independently rechecked",
+      "native_dates_preserved": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": {
+        "note": "Keep the report’s regulator assessment of in-trial improvements; the qualifier reported/incomplete records does not erase the observed in-trial finding. No later audit or verified universal zero is added."
+      },
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:future-safeguards",
+      "artifact_id": "opc:report",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P02",
+      "evidence_level": "Regulator inquiry/reporting, not a judicial ruling",
+      "outcome_verification": "Official source text inspected; underlying microdata not independently rechecked",
+      "native_dates_preserved": {
+        "event_start": null,
+        "event_end": null,
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:general-monitoring-expectation",
+      "artifact_id": "opc:factsheet",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P06",
+      "evidence_level": "Regulator inquiry/reporting, not a judicial ruling",
+      "outcome_verification": "Official source text inspected; underlying microdata not independently rechecked",
+      "native_dates_preserved": {
+        "publication_cover": "May 2025",
+        "publication_exact": null,
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:operator-continuation-claim",
+      "artifact_id": "opc:operator-page",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P07",
+      "evidence_level": "Operator public statement",
+      "outcome_verification": "Claim’s presence verified in official operator page; substance not independently validated",
+      "native_dates_preserved": {
+        "publication": null,
+        "last_updated": null,
+        "event": null,
+        "order": null,
+        "effective": null,
+        "observed_at_utc": "2026-10-08 17:07:17 UTC"
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:trial-overall-finding",
+      "artifact_id": "opc:report",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P02",
+      "evidence_level": "Regulator inquiry finding",
+      "outcome_verification": "Source assertion inspected; not independent replication of underlying records",
+      "native_dates_preserved": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "opc:release-threshold-wording",
+      "artifact_id": "opc:release",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P05",
+      "evidence_level": "Regulator media summary",
+      "outcome_verification": "Source assertion inspected; not independent replication of underlying records",
+      "native_dates_preserved": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "publication": "2025-06-04",
+        "order": null,
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "F-A01",
+      "artifact_id": "F-RA-CASE",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P08",
+      "evidence_level": "agency allegation summary and administrative page metadata",
+      "outcome_verification": "Primary page contents verified; allegations are not adjudicated failure findings; displayed status is not a compliance result.",
+      "native_dates_preserved": {
+        "page_last_updated": "2024-03-08",
+        "underlying_failure_event": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "F-A02",
+      "artifact_id": "F-RA-DOC19",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P09",
+      "evidence_level": "signed stipulated court order",
+      "outcome_verification": "Operative court document verified; no completed-compliance finding established.",
+      "native_dates_preserved": {
+        "order_signed": "2024-02-23",
+        "docket_filed": "2024-02-26",
+        "website_listing": "2024-03-08",
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "F-A03",
+      "artifact_id": "F-RA-DOC19",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P09",
+      "evidence_level": "bankruptcy settlement approval",
+      "outcome_verification": "Prior procedural approval verified within named bundle; implementation direction is not proof of completion.",
+      "native_dates_preserved": {
+        "order": "2024-01-23",
+        "filed": "2024-01-23"
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "F-A04",
+      "artifact_id": "F-RA-MODIFIED",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P15",
+      "evidence_level": "separately issued Modified Decision and Order",
+      "outcome_verification": "Subsequent official order verified; not an adjudication of all complaint allegations or a compliance assessment.",
+      "native_dates_preserved": {
+        "issued": "2024-03-05",
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "F-A05",
+      "artifact_id": "F-RA-MODIFIED",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P15",
+      "evidence_level": "ordered prohibition",
+      "outcome_verification": "Requirement verified. PartXVIII makes effectiveness conditional on website publication as a final order; issuance, HTTP metadata and case update are not substituted.",
+      "native_dates_preserved": {
+        "issued": "2024-03-05",
+        "effective": null,
+        "prohibition_end": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "F-A06",
+      "artifact_id": "F-RA-MODIFIED",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P15",
+      "evidence_level": "deletion, reporting and monitoring requirements",
+      "outcome_verification": "Obligation verified; no execution or independent remediation result established.",
+      "native_dates_preserved": {
+        "effective": null,
+        "completion": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "F-A07",
+      "artifact_id": "F-EA-CASE",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P10",
+      "evidence_level": "agency allegation summary and case-page status",
+      "outcome_verification": "Page verified; closure is not a finding that deletion occurred.",
+      "native_dates_preserved": {
+        "page_last_updated": "2022-05-05",
+        "report_listing": "2022-05-05",
+        "order_listing": "2021-05-07",
+        "deletion_event": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "F-A08",
+      "artifact_id": "F-EA-FINAL",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P14",
+      "evidence_level": "consent Decision and Order",
+      "outcome_verification": "Document verified; issuance and webpage date retained separately.",
+      "native_dates_preserved": {
+        "issued": "2021-05-06",
+        "webpage_timeline": "2021-05-07",
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "F-A09",
+      "artifact_id": "F-EA-FINAL",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P14",
+      "evidence_level": "ordered deletion with exceptions",
+      "outcome_verification": "Requirement and scope verified, performance unverified.",
+      "native_dates_preserved": {
+        "issuance": "2021-05-06",
+        "actual_deletion": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "F-A10",
+      "artifact_id": "F-EA-COMPLIANCE",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P11",
+      "evidence_level": "respondent sworn compliance report",
+      "outcome_verification": "The existence and wording of the respondent claim are primary-verified; the deletion itself is not independently verified here.",
+      "native_dates_preserved": {
+        "declaration_executed": "2022-05-05",
+        "FTC_case_listing": "2022-05-05",
+        "claimed_deletion_dates": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "F-A11",
+      "artifact_id": "F-EA-COMPLIANCE",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P11",
+      "evidence_level": "respondent identity statement",
+      "outcome_verification": "Attributable respondent identity statement; legal order also names Everalbum d/b/a Paravision. Do not create a second incident merely from name change.",
+      "native_dates_preserved": {
+        "asserted_name_change": "2021-09-07",
+        "report": "2022-05-05"
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "F-A12",
+      "artifact_id": "F-FTC-UPDATE2023",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P16",
+      "evidence_level": "agency retrospective enforcement summary",
+      "outcome_verification": "Agency restatement verified; passage does not validate respondent deletion performance.",
+      "native_dates_preserved": {
+        "coverage_start": "2021-01",
+        "coverage_end": "2023-12",
+        "publication": null,
+        "document_filename_date": "2024.03.21"
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "F-A13",
+      "artifact_id": "F-FTC-UPDATE2023",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P16",
+      "evidence_level": "retrospective summary limited by stated coverage",
+      "outcome_verification": "Keep the scoped statement; do not let packaging date reverse the later primary order or create a new incident.",
+      "native_dates_preserved": {
+        "coverage_end": "2023-12",
+        "publication": null,
+        "document_filename_date": "2024.03.21"
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "F-A14",
+      "artifact_id": "F-RIGHTS",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P12",
+      "evidence_level": "website rights statement",
+      "outcome_verification": "Policy inspected; no artifact-specific respondent grant found.",
+      "native_dates_preserved": {
+        "policy_updated": "2023-08"
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-01",
+      "artifact_id": "DS6-CGP-ART-01",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P17",
+      "evidence_level": "official regulator investigation summary; underlying decision/inspection record not provided",
+      "outcome_verification": "notice_assertion_verified; underlying technical observations not independently replicated",
+      "native_dates_preserved": {
+        "publication": "2026-09-15",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-02",
+      "artifact_id": "DS6-CGP-ART-01",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P17",
+      "evidence_level": "official report of an ordered remedy",
+      "outcome_verification": "order_announced; fulfillment_not_verified",
+      "native_dates_preserved": {
+        "publication": "2026-09-15",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-03",
+      "artifact_id": "DS6-CGP-ART-01",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P17",
+      "evidence_level": "official regulator investigation summary",
+      "outcome_verification": "notice_assertion_verified; underlying test logs_not_inspected",
+      "native_dates_preserved": {
+        "publication": "2026-09-15",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-04",
+      "artifact_id": "DS6-CGP-ART-01",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P17",
+      "evidence_level": "official announcement of corrective instructions and warning penalty",
+      "outcome_verification": "remedy/penalty_announced; compliance_not_verified",
+      "native_dates_preserved": {
+        "publication": "2026-09-15",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-05",
+      "artifact_id": "DS6-CGP-ART-02",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P18",
+      "evidence_level": "officially republished regulator instruction",
+      "outcome_verification": "instruction_reported; initial_fulfillment_scope_unknown",
+      "native_dates_preserved": {
+        "publication": "2025-06-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-06",
+      "artifact_id": "DS6-CGP-ART-02",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P18",
+      "evidence_level": "regulator reports its return-inspection finding; independent of an operator compliance claim",
+      "outcome_verification": "regulator_checked_recurrence/noncompliance_reported; successful_remediation_not_shown",
+      "native_dates_preserved": {
+        "publication": "2025-06-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-07",
+      "artifact_id": "DS6-CGP-ART-02",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P18",
+      "evidence_level": "official report of talks, rectification instruction, and case proceedings; signed final decision not inspected",
+      "outcome_verification": "procedural_action_reported; final_disposition_and_compliance_unverified",
+      "native_dates_preserved": {
+        "publication": "2025-06-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-08",
+      "artifact_id": "DS6-CGP-ART-03",
+      "disposition": "accepted_with_precision_qualification",
+      "source_recheck_id": "G-P19",
+      "evidence_level": "regulator-reported aggregate activity",
+      "outcome_verification": "aggregate_takedown_activity_reported; individual_execution_and_successful_remediation_not_independently_checked",
+      "native_dates_preserved": {
+        "publication": "2025-11-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": {
+        "note": "Preserve the regulator report of guided takedown activity for 54 apps. Short report label takedown guidance must not erase the prior catalog description apps removed; neither wording proves independently checked per-app removal or durable remediation.",
+        "original_zh": "指导属地应用商店下线违规应用生成式人工智能技术的APP共54款",
+        "english_gloss": "Guided local app stores in taking 54 noncompliant generative-AI apps offline.",
+        "repository_prior_fact": "CGP001 sample shanghai-202511-summary quantities[0]: apps removed"
+      },
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-09",
+      "artifact_id": "DS6-CGP-ART-03",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P19",
+      "evidence_level": "regulator-reported reinspection activity",
+      "outcome_verification": "reinspection_activity_reported; case_resolved_results_not_given",
+      "native_dates_preserved": {
+        "publication": "2025-11-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-10",
+      "artifact_id": "DS6-CGP-ART-03",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P19",
+      "evidence_level": "regulator-reported case filing/penalty action; underlying decisions not provided",
+      "outcome_verification": "official_procedure/result_wording_recorded; final_decisions_and_compliance_unverified",
+      "native_dates_preserved": {
+        "publication": "2025-11-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-11",
+      "artifact_id": "DS6-CGP-ART-03",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P19",
+      "evidence_level": "regulator-reported first-violation penalty-exemption approach and instruction",
+      "outcome_verification": "instruction_reported; execution_not_verified",
+      "native_dates_preserved": {
+        "publication": "2025-11-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-12",
+      "artifact_id": "DS6-CGP-ART-03",
+      "disposition": "accepted_as_attributed_source_assertion",
+      "source_recheck_id": "G-P19",
+      "evidence_level": "regulator qualitative assessment of its action",
+      "outcome_verification": "qualitative_claim_verified_as_published; not_a_measured_outcome",
+      "native_dates_preserved": {
+        "publication": "2025-11-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "numerator_preserved": null,
+      "denominator_preserved": null,
+      "review_qualification": null,
+      "native_record_admitted": false
+    }
+  ],
+  "global_rule": "All 43 original assertions survive intact. Accepted means documentary characterization, never acceptance of all underlying allegations or proven compliance."
+}

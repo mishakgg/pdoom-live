@@ -1,0 +1,263 @@
+{
+  "review_commit": "aff815147b12235177da9f66f4c09c2c1508f3eb",
+  "rows": [
+    {
+      "submitted_artifact_id": "opc:landing",
+      "collection_ids": [
+        "INM003"
+      ],
+      "exact_url": "https://www.privacy.org.nz/resources-and-learning/public-inquiries/inquiry-into-foodstuffs-north-island-trial-use-of-facial-recognition-technology/",
+      "existing_research_alias": {
+        "collection_id": "INM003",
+        "artifact_id": "inm003_landing",
+        "same_artifact_prior_id": null
+      },
+      "classification": "same_primary_artifact_research_alias",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "opc:report",
+      "collection_ids": [
+        "INM003"
+      ],
+      "exact_url": "https://www.privacy.org.nz/assets/DOCUMENTS/20250603-FRT-Inquiry-Report-A1082856.pdf",
+      "existing_research_alias": {
+        "collection_id": "INM003",
+        "artifact_id": "inm003_report",
+        "same_artifact_prior_id": null
+      },
+      "classification": "same_primary_artifact_research_alias",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "opc:summary",
+      "collection_ids": [
+        "INM003"
+      ],
+      "exact_url": "https://www.privacy.org.nz/assets/DOCUMENTS/20250603-short-summary-FRT-inquiry-A1076632.pdf",
+      "existing_research_alias": {
+        "collection_id": "INM003",
+        "artifact_id": "inm003_summary",
+        "same_artifact_prior_id": null
+      },
+      "classification": "same_primary_artifact_research_alias",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "opc:rights",
+      "collection_ids": [
+        "INM003"
+      ],
+      "exact_url": "https://www.privacy.org.nz/about-us/copyright-and-disclaimer/",
+      "existing_research_alias": {
+        "collection_id": "INM003",
+        "artifact_id": "inm003_rights",
+        "same_artifact_prior_id": null
+      },
+      "classification": "same_primary_artifact_research_alias",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "opc:release",
+      "collection_ids": [
+        "INM003"
+      ],
+      "exact_url": "https://www.privacy.org.nz/tuhono-connect/statements-media-releases/supermarket-trial-of-frt-inquiry-results-announced/",
+      "existing_research_alias": null,
+      "classification": "additional_document_reference_enrichment",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "opc:factsheet",
+      "collection_ids": [
+        "INM003"
+      ],
+      "exact_url": "https://www.privacy.org.nz/assets/DOCUMENTS/20250603-Factsheet-using-facial-recognition-technology-well-A1083621.pdf",
+      "existing_research_alias": null,
+      "classification": "additional_document_reference_enrichment",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "opc:operator-page",
+      "collection_ids": [
+        "INM003"
+      ],
+      "exact_url": "https://www.foodstuffs.co.nz/news-room/Facial-Recognition",
+      "existing_research_alias": null,
+      "classification": "additional_document_reference_enrichment",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "F-RA-CASE",
+      "collection_ids": [
+        "INM006"
+      ],
+      "exact_url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/2023190-rite-aid-corporation-ftc-v",
+      "existing_research_alias": {
+        "collection_id": "INM006",
+        "artifact_id": "inm006_riteaid",
+        "same_artifact_prior_id": null
+      },
+      "classification": "same_primary_artifact_research_alias",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "F-RA-DOC19",
+      "collection_ids": [
+        "INM006"
+      ],
+      "exact_url": "https://www.ftc.gov/system/files/ftc_gov/pdf/DE019-StipulatedOrderforPermanentInjunctionandOtherRelief.pdf",
+      "existing_research_alias": {
+        "collection_id": "INM006",
+        "artifact_id": "inm006_order",
+        "same_artifact_prior_id": null
+      },
+      "classification": "same_primary_artifact_research_alias",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "F-EA-CASE",
+      "collection_ids": [
+        "INM006"
+      ],
+      "exact_url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/192-3172-everalbum-inc-matter",
+      "existing_research_alias": {
+        "collection_id": "INM006",
+        "artifact_id": "inm006_everalbum",
+        "same_artifact_prior_id": null
+      },
+      "classification": "same_primary_artifact_research_alias",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "F-EA-COMPLIANCE",
+      "collection_ids": [
+        "INM006"
+      ],
+      "exact_url": "https://www.ftc.gov/system/files/ftc_gov/pdf/paravision_compliance_report_redacted.pdf",
+      "existing_research_alias": {
+        "collection_id": "INM006",
+        "artifact_id": "inm006_compliance",
+        "same_artifact_prior_id": null
+      },
+      "classification": "same_primary_artifact_research_alias",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "F-RIGHTS",
+      "collection_ids": [
+        "INM006"
+      ],
+      "exact_url": "https://www.ftc.gov/policy-notices/website-policy",
+      "existing_research_alias": {
+        "collection_id": "INM006",
+        "artifact_id": "inm006_rights",
+        "same_artifact_prior_id": "cd005_policy"
+      },
+      "classification": "same_primary_artifact_research_alias",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "F-EXTRA-FAILED-2010",
+      "collection_ids": [
+        "INM006"
+      ],
+      "exact_url": "https://www.ftc.gov/news-events/news/press-releases/2010/07/rite-aid-settles-ftc-charges-it-failed-protect-medical-financial-privacy-customers-employees",
+      "existing_research_alias": null,
+      "classification": "preserved_failed_acquisition_not_evidence",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "F-EA-FINAL",
+      "collection_ids": [
+        "INM006"
+      ],
+      "exact_url": "https://www.ftc.gov/system/files/documents/cases/1923172_-_everalbum_decision_final.pdf",
+      "existing_research_alias": null,
+      "classification": "additional_document_reference_enrichment",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "F-RA-MODIFIED",
+      "collection_ids": [
+        "INM006"
+      ],
+      "exact_url": "https://www.ftc.gov/system/files/ftc_gov/pdf/c4308riteaidmodifiedorder.pdf",
+      "existing_research_alias": null,
+      "classification": "additional_document_reference_enrichment",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "F-FTC-UPDATE2023",
+      "collection_ids": [
+        "INM006"
+      ],
+      "exact_url": "https://www.ftc.gov/system/files/ftc_gov/pdf/2024.03.21-PrivacyandDataSecurityUpdate-508.pdf",
+      "existing_research_alias": null,
+      "classification": "additional_document_reference_enrichment",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "DS6-CGP-ART-01",
+      "collection_ids": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "exact_url": "https://www.cac.gov.cn/2026-09/15/c_1790876152357946.htm",
+      "existing_research_alias": {
+        "collection_id": "CGP001",
+        "artifact_id": "cac",
+        "same_artifact_prior_id": null
+      },
+      "classification": "same_primary_artifact_research_alias",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "DS6-CGP-ART-02",
+      "collection_ids": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "exact_url": "https://www.jswx.gov.cn/csj/sh/202506/t20250624_111471.shtml",
+      "existing_research_alias": {
+        "collection_id": "CGP001",
+        "artifact_id": "sh_jun",
+        "same_artifact_prior_id": null
+      },
+      "classification": "same_primary_artifact_research_alias",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "DS6-CGP-ART-03",
+      "collection_ids": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "exact_url": "https://www.jswx.gov.cn/csj/sh/202511/t20251124_164342.shtml",
+      "existing_research_alias": {
+        "collection_id": "CGP001",
+        "artifact_id": "sh_nov",
+        "same_artifact_prior_id": null
+      },
+      "classification": "same_primary_artifact_research_alias",
+      "canonical_identity_created": false
+    },
+    {
+      "submitted_artifact_id": "DS6-CGP-ART-04",
+      "collection_ids": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "exact_url": "https://mp.weixin.qq.com/s/rO8DnpkrDlCqVyigrM0CAg",
+      "existing_research_alias": null,
+      "classification": "preserved_failed_acquisition_not_evidence",
+      "canonical_identity_created": false
+    }
+  ],
+  "counts": {
+    "same_primary_artifact_research_alias": 12,
+    "additional_document_reference_enrichment": 6,
+    "preserved_failed_acquisition_not_evidence": 2
+  },
+  "no_new_family_or_event_count": true
+}

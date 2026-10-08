@@ -1,0 +1,85 @@
+{
+  "review_commit": "aff815147b12235177da9f66f4c09c2c1508f3eb",
+  "decision": "accept_research_assertion_enrichment_with_corrections_and_holds",
+  "accepted": {
+    "original_assertions": 43,
+    "artifact_references": 20,
+    "relationships": 29,
+    "unresolved_links": 17,
+    "chains_or_document_bundles": 7,
+    "original_acceptance_cases": 20,
+    "operational_incident_admissions": 0
+  },
+  "corrected_or_qualified": [
+    {
+      "id": "G-C01",
+      "target": "repository_context and all catalog_mapping fields",
+      "change": "Historical baseline 87dda3d remains uninspected in the original. This review separately inspects aff8151 and resolves existing research IDs with Git-blob verification. Original missing-access status does not describe current repository availability."
+    },
+    {
+      "id": "G-C02",
+      "target": "OPC rights version",
+      "change": "Retain existing INM003 CC-BY-3.0-NZ declaration rather than downgrade it because this session did not open the linked license. Current policy scope was reread; third-party and historical-version limits remain."
+    },
+    {
+      "id": "G-C03",
+      "target": "potential_indexing_relationships, unresolved possible_indexing_only and acceptance O08",
+      "change": "The original session did not inspect indexes. Current prior catalog already records AIID 619 as the same Rite Aid matter and AIID 665 as an indexed individual event related to the trial. Preserve that catalog evidence; do not join665 to all trial failures, map619 to Everalbum, or create independent confirmation/new events. No index reopened."
+    },
+    {
+      "id": "G-C04",
+      "target": "Narrative material attribution finding; CGP001 publisher/authority",
+      "change": "Shanghai originating authority and Jiangsu republication host were already established in current CGP001. Accept the recheck as preservation/enrichment, not a new attribution discovery or additional independent regulator check."
+    },
+    {
+      "id": "G-C05",
+      "target": "DS6-CGP-AS-08 and report short takedown guidance label",
+      "change": "Preserve the regulator report of guided takedown activity for 54 apps. Short report label takedown guidance must not erase the prior catalog description apps removed; neither wording proves independently checked per-app removal or durable remediation."
+    },
+    {
+      "id": "G-C06",
+      "target": "Five FTC PDF hashes and visual-review statements",
+      "change": "Preserve submitted byte counts/hashes as intake-reported versions. This review reverified selected current primary text but did not possess/recompute those PDF byte hashes. Screenshot failures do not erase original primary/visual review or turn content into absent evidence."
+    }
+  ],
+  "held": [
+    {
+      "id": "G-H01",
+      "scope": "OPC alert reconciliation",
+      "status": "unresolved",
+      "reason": "1735 and1742 remain source assertions without an official correction, alternate trial window or explicit reconciliation in inspected materials."
+    },
+    {
+      "id": "G-H02",
+      "scope": "OPC incidence and post-inquiry remediation",
+      "status": "held",
+      "reason": "No unique-person denominator, complete case ascertainment, independent post-inquiry completion check or proven algorithm reset."
+    },
+    {
+      "id": "G-H03",
+      "scope": "Rite Aid and Everalbum legal clocks",
+      "status": "held",
+      "reason": "Final-order publication trigger calendar dates not pinned; no inferred prohibition expiry or date substitution."
+    },
+    {
+      "id": "G-H04",
+      "scope": "FTC performance",
+      "status": "held",
+      "reason": "Rite Aid orders and Everalbum respondent declaration do not independently validate actual remedy execution, deletion completeness or retained exceptions."
+    },
+    {
+      "id": "G-H05",
+      "scope": "CGP case follow-through",
+      "status": "held",
+      "reason": "Source-local anonymous cases, exact decisions/action dates, upstream original, June-November identities and three-of-26 crosswalk remain unresolved. The June reported noncompliance reinspection is retained."
+    },
+    {
+      "id": "G-H06",
+      "scope": "Incident admission and automation",
+      "status": "held",
+      "reason": "Research-only records; production/native mapping semantic gaps; no automatic incident admission, collection, scoring, population rates, national ranking or catastrophe probability."
+    }
+  ],
+  "prior_catalog_evidence_is_not_erased": true,
+  "original_document_semantics_not_silently_rewritten": true
+}

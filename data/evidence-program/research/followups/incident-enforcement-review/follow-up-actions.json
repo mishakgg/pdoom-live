@@ -1,0 +1,48 @@
+{
+  "changes_are_proposals_only": true,
+  "repository_or_external_task_changes_made": false,
+  "review_completions": [
+    {
+      "action_id": "INM-A05",
+      "prompt_id": "INM-P03",
+      "proposed_status": "completed_bounded_documentary_review_with_unresolved_conflict",
+      "result": "Reconciliation question bounded and reviewed; both source totals remain. Do not auto-dispatch another search."
+    },
+    {
+      "action_id": "INM-A08",
+      "prompt_id": "INM-P06",
+      "proposed_status": "completed_bounded_documentary_review_with_remediation_holds",
+      "result": "Separate modified Rite Aid order adds procedural follow-through; Everalbum remains respondent-reported performance. Calendar trigger and independent compliance remain held."
+    },
+    {
+      "action_id": "CGP001-A1",
+      "prompt_id": "CGP001-F1",
+      "proposed_status": "completed_bounded_followup_with_identity_and_outcome_holds",
+      "result": "Explicit June reinspection noncompliance retained. No later case-linked final/remediation artifact established; failed original route not retried."
+    },
+    {
+      "action_id": "INM-A10",
+      "prompt_id": "INM-P08",
+      "proposed_status": "partially_characterized_not_complete",
+      "result": "Existing contract fields mapped for this bounded slice; no lossless production adapter, canonical import, or contract changes. Broader incident mapping remains held."
+    }
+  ],
+  "next_smallest_authorized_slice": "Publish reviewed research metadata after independent review. Any further public source search, adapter, ingestion or outcome monitoring is a separately scoped task.",
+  "held_not_dispatched": [
+    {
+      "branch": "OPC",
+      "need": "Explicit official count correction or dated recommendation-completion assessment",
+      "stop": "At first matching official artifact or stated new bound; never infer failure from silence."
+    },
+    {
+      "branch": "FTC",
+      "need": "Final-publication trigger evidence or case-linked independent deletion/compliance finding",
+      "stop": "Keep matters/dockets and remedy clauses separate; no paid dockets or personal filings."
+    },
+    {
+      "branch": "CGP",
+      "need": "Identified official case follow-through without reidentifying anonymized subjects",
+      "stop": "Denied upstream route remains stopped; no cohort joins without direct evidence."
+    }
+  ]
+}

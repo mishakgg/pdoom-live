@@ -1,0 +1,527 @@
+{
+  "review_commit": "aff815147b12235177da9f66f4c09c2c1508f3eb",
+  "selected_prior_collections": [
+    {
+      "collection_id": "INM003",
+      "original_collection_preserved": {
+        "candidate_id": "INM003",
+        "name": "New Zealand OPC facial-recognition inquiry",
+        "source_family_id": "nz-opc-frt",
+        "inventory_relationship": "new_named_collection_in_reviewed_catalogs",
+        "related_inventory_ids": [
+          "GL018",
+          "GL019"
+        ],
+        "prior_candidate_ids": [
+          "ASI006"
+        ],
+        "operational_admission": "not_admitted",
+        "collector_enabled": false,
+        "historical_coverage": "Selected trial 2024-02-08 through 2024-09-07; report labeled May 2025 and publicly published 2025-06-04.",
+        "update_frequency": "Episodic public inquiries.",
+        "access_export": "Public inquiry HTML and two PDFs; RSS directory loaded successfully. The linked public-inquiries feed returned HTTP 429, so successful feed ingestion remains unverified. No record-level incident API/CSV verified.",
+        "limitations": [
+          "Regulator inquiry is not an independent-incident census. Estimated failures include distinct categories.",
+          "Full report and official summary disagree on alert totals; preserve both. Scans include repeats.",
+          "ASI006 OAIC/tribunal is a related regulatory domain in a different jurisdiction, not the same source or case."
+        ],
+        "artifacts": [
+          {
+            "artifact_id": "inm003_landing",
+            "url": "https://www.privacy.org.nz/resources-and-learning/public-inquiries/inquiry-into-foodstuffs-north-island-trial-use-of-facial-recognition-technology/",
+            "role": "Inquiry publication and scope",
+            "evidence_locator": "Publication 2025-06-04; trial scope",
+            "reviewed_on": "2026-10-08",
+            "verification_level": "current_primary_documentary_review",
+            "source_sha256": null,
+            "source_bytes": null,
+            "source_bytes_vendored": false,
+            "rights_status": "explicit_license_agency_authored",
+            "license_identifier": "CC-BY-3.0-NZ",
+            "rights_evidence_url": "https://www.privacy.org.nz/about-us/copyright-and-disclaimer/",
+            "rights_scope": "This artifact and identified authorship portions only. No inheritance to manufacturer/vendor/respondent submissions, linked works or personal records."
+          },
+          {
+            "artifact_id": "inm003_report",
+            "url": "https://www.privacy.org.nz/assets/DOCUMENTS/20250603-FRT-Inquiry-Report-A1082856.pdf",
+            "role": "Full inquiry report A1082856",
+            "evidence_locator": "Paragraphs 215–221, printed p. 56; report edition May 2025",
+            "reviewed_on": "2026-10-08",
+            "verification_level": "current_primary_documentary_review",
+            "source_sha256": null,
+            "source_bytes": null,
+            "source_bytes_vendored": false,
+            "rights_status": "explicit_license_agency_authored",
+            "license_identifier": "CC-BY-3.0-NZ",
+            "rights_evidence_url": "https://www.privacy.org.nz/about-us/copyright-and-disclaimer/",
+            "rights_scope": "This artifact and identified authorship portions only. No inheritance to manufacturer/vendor/respondent submissions, linked works or personal records."
+          },
+          {
+            "artifact_id": "inm003_summary",
+            "url": "https://www.privacy.org.nz/assets/DOCUMENTS/20250603-short-summary-FRT-inquiry-A1076632.pdf",
+            "role": "Official summary with conflicting alert count",
+            "evidence_locator": "Summary trial outcomes and repeated scans",
+            "reviewed_on": "2026-10-08",
+            "verification_level": "current_primary_documentary_review",
+            "source_sha256": null,
+            "source_bytes": null,
+            "source_bytes_vendored": false,
+            "rights_status": "explicit_license_agency_authored",
+            "license_identifier": "CC-BY-3.0-NZ",
+            "rights_evidence_url": "https://www.privacy.org.nz/about-us/copyright-and-disclaimer/",
+            "rights_scope": "This artifact and identified authorship portions only. No inheritance to manufacturer/vendor/respondent submissions, linked works or personal records."
+          },
+          {
+            "artifact_id": "inm003_rights",
+            "url": "https://www.privacy.org.nz/about-us/copyright-and-disclaimer/",
+            "role": "OPC copyright policy",
+            "evidence_locator": "OPC-created materials and third-party exceptions",
+            "reviewed_on": "2026-10-08",
+            "verification_level": "current_primary_documentary_review",
+            "source_sha256": null,
+            "source_bytes": null,
+            "source_bytes_vendored": false,
+            "rights_status": "explicit_license_agency_authored",
+            "license_identifier": "CC-BY-3.0-NZ",
+            "rights_evidence_url": "https://www.privacy.org.nz/about-us/copyright-and-disclaimer/",
+            "rights_scope": "This artifact and identified authorship portions only. No inheritance to manufacturer/vendor/respondent submissions, linked works or personal records."
+          },
+          {
+            "artifact_id": "inm003_rss",
+            "url": "https://www.privacy.org.nz/rss-feeds/",
+            "role": "Discovery mechanism",
+            "evidence_locator": "RSS directory loaded; linked public-inquiries feed returned HTTP 429",
+            "reviewed_on": "2026-10-08",
+            "verification_level": "directory_documentary_review_success",
+            "source_sha256": null,
+            "source_bytes": null,
+            "source_bytes_vendored": false,
+            "rights_status": "unknown",
+            "license_identifier": null,
+            "rights_evidence_url": null,
+            "rights_scope": "This artifact and identified authorship portions only. No inheritance to manufacturer/vendor/respondent submissions, linked works or personal records.",
+            "linked_feed_url": "https://www.privacy.org.nz/resources-and-learning/public-inquiries/rss/"
+          }
+        ],
+        "findings": [
+          {
+            "finding_id": "INM003-F01",
+            "claim": "The inquiry covers a 25-supermarket trial from 2024-02-08 through 2024-09-07.",
+            "qualification": "May 2025 report edition differs from 2025-06-04 publication. The specific safeguarded trial conclusion is not blanket approval of all deployments.",
+            "assertion_role": "regulator_inquiry",
+            "evidence_artifact_ids": [
+              "inm003_landing",
+              "inm003_report"
+            ],
+            "same_evidence_prior_finding_ids": []
+          },
+          {
+            "finding_id": "INM003-F02",
+            "claim": "The report estimates up to 13 verification failures, comprising nine misidentifications and four other procedural failures.",
+            "qualification": "Reported estimate with nine plus four categories, not a hard upper bound on all failures, thirteen confirmed independent events or a uniform harm measure. Paragraph 221 notes incomplete records and possible additional failures.",
+            "assertion_role": "regulator_estimate",
+            "evidence_artifact_ids": [
+              "inm003_report"
+            ],
+            "same_evidence_prior_finding_ids": []
+          },
+          {
+            "finding_id": "INM003-F03",
+            "claim": "Report paragraph 220 gives 1,735 alerts; the official summary and landing page give 1,742.",
+            "qualification": "Unresolved same-inquiry conflict. Do not choose a corrected denominator without evidence.",
+            "assertion_role": "conflicting_regulator_publications",
+            "evidence_artifact_ids": [
+              "inm003_report",
+              "inm003_summary",
+              "inm003_landing"
+            ],
+            "same_evidence_prior_finding_ids": []
+          },
+          {
+            "finding_id": "INM003-F04",
+            "claim": "The summary reports approximately 226 million scans including repeats.",
+            "qualification": "Scans are not unique people, distinct exposures or injuries.",
+            "assertion_role": "regulator_aggregate_with_repeat_units",
+            "evidence_artifact_ids": [
+              "inm003_summary"
+            ],
+            "same_evidence_prior_finding_ids": []
+          }
+        ],
+        "sample_records": [
+          {
+            "record_type": "inquiry_aggregate",
+            "report_id": "A1082856",
+            "estimated_up_to_failures": 13,
+            "misidentifications": 9,
+            "other_procedural_failures": 4,
+            "alert_counts": [
+              {
+                "value": 1735,
+                "artifact_id": "inm003_report"
+              },
+              {
+                "value": 1742,
+                "artifact_id": "inm003_summary"
+              }
+            ],
+            "alert_conflict": "unresolved",
+            "distinct_people": null,
+            "estimate_is_hard_upper_bound": false
+          }
+        ],
+        "index_overlap": {
+          "url": "https://incidentdatabase.ai/cite/665/",
+          "status": "known_indexed_individual_event_related_to_trial",
+          "qualification": "The displayed report list did not show the OPC inquiry; this is a bounded observation, not exhaustive index novelty or a join of all aggregate failures."
+        }
+      },
+      "new_review_relationship": "same_collection_research_enrichment; never new source-family or independent event"
+    },
+    {
+      "collection_id": "INM006",
+      "original_collection_preserved": {
+        "candidate_id": "INM006",
+        "name": "FTC cases, remedies and compliance filings",
+        "source_family_id": "ftc-enforcement",
+        "inventory_relationship": "new_named_enforcement_collection_related_publisher",
+        "related_inventory_ids": [
+          "GL018",
+          "GL019"
+        ],
+        "prior_candidate_ids": [
+          "CD005"
+        ],
+        "operational_admission": "not_admitted",
+        "collector_enabled": false,
+        "historical_coverage": "Selected AI-related chains 2021–2024; archive completeness and earliest AI case unestablished.",
+        "update_frequency": "Case events; no fixed cadence.",
+        "access_export": "Public case timelines, complaints, stipulated orders and redacted filings; full-case export API unverified.",
+        "limitations": [
+          "Complaint allegations, stipulated remedies and respondent compliance claims have different authority.",
+          "Case-page status and last update are not the same as order signature, filing or web posting.",
+          "CD005 FTC partnerships study is a different statutory collection, not duplicate enforcement evidence."
+        ],
+        "artifacts": [
+          {
+            "artifact_id": "inm006_riteaid",
+            "url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/2023190-rite-aid-corporation-ftc-v",
+            "role": "Rite Aid matter 2023190",
+            "evidence_locator": "Timeline/status; complaint and order links",
+            "reviewed_on": "2026-10-08",
+            "verification_level": "current_primary_documentary_review",
+            "source_sha256": null,
+            "source_bytes": null,
+            "source_bytes_vendored": false,
+            "rights_status": "agency_authored_portions",
+            "license_identifier": null,
+            "rights_evidence_url": "https://www.ftc.gov/policy-notices/website-policy",
+            "rights_scope": "This artifact and identified authorship portions only. No inheritance to manufacturer/vendor/respondent submissions, linked works or personal records."
+          },
+          {
+            "artifact_id": "inm006_order",
+            "url": "https://www.ftc.gov/system/files/ftc_gov/pdf/DE019-StipulatedOrderforPermanentInjunctionandOtherRelief.pdf",
+            "role": "Stipulated order",
+            "evidence_locator": "Neither-admit-nor-deny provision; five-year prohibition; signature/filing dates",
+            "reviewed_on": "2026-10-08",
+            "verification_level": "current_primary_documentary_review",
+            "source_sha256": null,
+            "source_bytes": null,
+            "source_bytes_vendored": false,
+            "rights_status": "court_order_metadata_only",
+            "license_identifier": null,
+            "rights_evidence_url": null,
+            "rights_scope": "This artifact and identified authorship portions only. No inheritance to manufacturer/vendor/respondent submissions, linked works or personal records."
+          },
+          {
+            "artifact_id": "inm006_everalbum",
+            "url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/192-3172-everalbum-inc-matter",
+            "role": "Everalbum matter 1923172",
+            "evidence_locator": "2021 action and May 2022 compliance filing",
+            "reviewed_on": "2026-10-08",
+            "verification_level": "current_primary_documentary_review",
+            "source_sha256": null,
+            "source_bytes": null,
+            "source_bytes_vendored": false,
+            "rights_status": "agency_authored_portions",
+            "license_identifier": null,
+            "rights_evidence_url": "https://www.ftc.gov/policy-notices/website-policy",
+            "rights_scope": "This artifact and identified authorship portions only. No inheritance to manufacturer/vendor/respondent submissions, linked works or personal records."
+          },
+          {
+            "artifact_id": "inm006_compliance",
+            "url": "https://www.ftc.gov/system/files/ftc_gov/pdf/paravision_compliance_report_redacted.pdf",
+            "role": "Redacted respondent compliance report",
+            "evidence_locator": "Reported deletion compliance; no identifying records retained",
+            "reviewed_on": "2026-10-08",
+            "verification_level": "current_primary_documentary_review",
+            "source_sha256": null,
+            "source_bytes": null,
+            "source_bytes_vendored": false,
+            "rights_status": "unknown",
+            "license_identifier": null,
+            "rights_evidence_url": null,
+            "rights_scope": "This artifact and identified authorship portions only. No inheritance to manufacturer/vendor/respondent submissions, linked works or personal records."
+          },
+          {
+            "artifact_id": "inm006_rights",
+            "url": "https://www.ftc.gov/policy-notices/website-policy",
+            "role": "FTC website policy",
+            "evidence_locator": "Staff-authored material versus third-party content",
+            "reviewed_on": "2026-10-08",
+            "verification_level": "current_primary_documentary_review",
+            "source_sha256": null,
+            "source_bytes": null,
+            "source_bytes_vendored": false,
+            "rights_status": "agency_authored_portions",
+            "license_identifier": null,
+            "rights_evidence_url": "https://www.ftc.gov/policy-notices/website-policy",
+            "rights_scope": "This artifact and identified authorship portions only. No inheritance to manufacturer/vendor/respondent submissions, linked works or personal records.",
+            "same_artifact_prior_id": "cd005_policy",
+            "reference_role": "local_review_reference_alias_not_new_canonical_artifact"
+          }
+        ],
+        "findings": [
+          {
+            "finding_id": "INM006-F01",
+            "claim": "The Rite Aid stipulated order was signed 2024-02-23 and filed 2024-02-26, and includes a five-year facial-recognition surveillance prohibition.",
+            "qualification": "An enforceable remedy does not transform complaint allegations into adjudicated facts. The case page currently displays Pending with last update 2024-03-08; this is separate from signed and filed order dates. The prohibition effective-date calculation is not established here.",
+            "assertion_role": "stipulated_legal_remedy",
+            "evidence_artifact_ids": [
+              "inm006_riteaid",
+              "inm006_order"
+            ],
+            "same_evidence_prior_finding_ids": []
+          },
+          {
+            "finding_id": "INM006-F02",
+            "claim": "The order includes neither admission nor denial of the allegations apart from jurisdictional matters.",
+            "qualification": "False-match/customer-harm claims retain complaint status; no verified victim count. This is document characterization, not legal advice.",
+            "assertion_role": "stipulated_procedural_qualification",
+            "evidence_artifact_ids": [
+              "inm006_order"
+            ],
+            "same_evidence_prior_finding_ids": []
+          },
+          {
+            "finding_id": "INM006-F03",
+            "claim": "The Everalbum case timeline lists the redacted respondent deletion-compliance report on 2022-05-05; the case page displays Closed.",
+            "qualification": "Respondent-reported compliance, not an independent audit or proof of all deletions.",
+            "assertion_role": "respondent_reported_compliance",
+            "evidence_artifact_ids": [
+              "inm006_everalbum",
+              "inm006_compliance"
+            ],
+            "same_evidence_prior_finding_ids": []
+          }
+        ],
+        "sample_records": [
+          {
+            "record_type": "stipulated_order",
+            "matter_id": "2023190",
+            "signed_date": "2024-02-23",
+            "filed_date": "2024-02-26",
+            "prohibition_years": 5,
+            "allegations": "neither_admit_nor_deny_except_jurisdiction",
+            "verified_victim_count": null
+          },
+          {
+            "record_type": "compliance_filing",
+            "matter_id": "1923172",
+            "authority": "respondent_reported",
+            "independent_audit": false
+          }
+        ],
+        "index_overlap": {
+          "url": "https://incidentdatabase.ai/cite/619/",
+          "status": "same_known_rite_aid_matter",
+          "qualification": "FTC-source links already occur in AIID. Legal-document and compliance evidence are the enrichment."
+        }
+      },
+      "new_review_relationship": "same_collection_research_enrichment; never new source-family or independent event"
+    },
+    {
+      "collection_id": "CGP001",
+      "original_collection_preserved": {
+        "name": "CAC enforcement and Shanghai reinspection reports",
+        "classification": "new_relative_to_frozen_inventory",
+        "decision": "accept_research_metadata_with_holds",
+        "historical_coverage": "Selected June/November 2025 and September 2026 reports; not archive-wide coverage.",
+        "update_frequency": "Irregular case and campaign publications.",
+        "artifacts": [
+          {
+            "artifact_id": "cac",
+            "url": "https://www.cac.gov.cn/2026-09/15/c_1790876152357946.htm",
+            "locator": "Cases 9 and 10; header and footer",
+            "publication_date": "2026-09-15",
+            "access_status": "primary_opened",
+            "rights_status": "unknown",
+            "rights_note": "Copyright reserved; no artifact-specific open redistribution licence established."
+          },
+          {
+            "artifact_id": "sh_jun",
+            "url": "https://www.jswx.gov.cn/csj/sh/202506/t20250624_111471.shtml",
+            "locator": "Reinspection narrative; source attribution and footer",
+            "publication_date": "2025-06-24",
+            "access_status": "primary_opened",
+            "rights_status": "unknown",
+            "rights_note": "Copyright reserved; no artifact-specific open redistribution licence established."
+          },
+          {
+            "artifact_id": "sh_nov",
+            "url": "https://www.jswx.gov.cn/csj/sh/202511/t20251124_164342.shtml",
+            "locator": "Campaign output and reinspection paragraphs; footer",
+            "publication_date": "2025-11-24",
+            "access_status": "primary_opened",
+            "rights_status": "unknown",
+            "rights_note": "Copyright reserved; no artifact-specific open redistribution licence established."
+          }
+        ],
+        "sample_records": [
+          {
+            "record_id": "cac-20260915-case9",
+            "artifact_id": "cac",
+            "record_type": "regulator_reported_finding_and_order",
+            "jurisdiction": "Sichuan; CAC national publication",
+            "subject": "one anonymized company mini-program",
+            "reported_condition": [
+              "missing 显式标识 (explicit labels)",
+              "missing 隐式标识 (file-metadata labels)",
+              "missing export labels",
+              "required 安全评估 not fulfilled"
+            ],
+            "reported_action_zh": "责令下线",
+            "action_gloss": "ordered offline",
+            "event_date": null,
+            "subsequent_compliance": null
+          },
+          {
+            "record_id": "cac-20260915-case10",
+            "artifact_id": "cac",
+            "record_type": "regulator_reported_finding_and_order",
+            "jurisdiction": "Jiangsu; CAC national publication",
+            "population": {
+              "value": 2,
+              "original_unit": "个网站",
+              "unit": "websites"
+            },
+            "reported_condition": "API-relay services without required assessment",
+            "reported_action": "rectification order and warning; final remediation unknown",
+            "event_date": null
+          },
+          {
+            "record_id": "shanghai-202506-reinspection",
+            "artifact_id": "sh_jun",
+            "originating_authority": "网信上海",
+            "host_authority": "Jiangsu cyberspace office",
+            "jurisdiction": "Shanghai",
+            "record_type": "regulator_reported_reinspection",
+            "population": {
+              "value": 3,
+              "original_unit": "家企业",
+              "unit": "enterprises"
+            },
+            "condition": "Generative functions restored after previous disable instructions, without passed assessment and necessary safeguards.",
+            "action_zh": [
+              "约谈",
+              "整改",
+              "立案查处"
+            ],
+            "action_gloss": [
+              "regulatory interview",
+              "rectification",
+              "case initiation and enforcement proceedings"
+            ],
+            "original_publication_date": null,
+            "event_date": null
+          },
+          {
+            "record_id": "shanghai-202511-summary",
+            "artifact_id": "sh_nov",
+            "originating_authority": "网信上海",
+            "host_authority": "Jiangsu cyberspace office",
+            "jurisdiction": "Shanghai",
+            "record_type": "regulator_reported_campaign_actions",
+            "quantities": [
+              {
+                "value": 54,
+                "original_unit": "款App",
+                "meaning": "apps removed"
+              },
+              {
+                "value": 26,
+                "original_unit": "家服务网站",
+                "meaning": "websites reinspected"
+              },
+              {
+                "value": 3,
+                "original_unit": "家服务网站",
+                "meaning": "websites reported subject to enforcement"
+              },
+              {
+                "value": 5,
+                "original_unit": "家服务网站",
+                "meaning": "first-violation sites with corrective requirements and penalty exemptions"
+              }
+            ],
+            "cohort_overlap": "Unknown, including relation to June three-enterprise report."
+          }
+        ],
+        "limitations": [
+          "Selected regulator accounts, not signed administrative decisions or independent workpapers. Exact action dates, final decisions, fine amounts, appeals and durable remediation are unverified.",
+          "Counts have different units and potentially overlapping populations; no compliance denominator or enforcement-effectiveness estimate."
+        ],
+        "inventory_relationships": [
+          {
+            "source_id": "CN012",
+            "relationship": "implementation_evidence_links_legal_basis_not_duplicate_regulation"
+          },
+          {
+            "source_id": "CN023",
+            "relationship": "possible_subject_link_only_if_identity_verified"
+          },
+          {
+            "source_id": "GL018",
+            "relationship": "possible_event_overlap_unresolved_not_new_event_by_publication"
+          },
+          {
+            "source_id": "GL019",
+            "relationship": "possible_event_overlap_unresolved_not_new_event_by_publication"
+          }
+        ],
+        "id": "CGP001",
+        "access": "Public Chinese HTML; no structured case export verified. Official Jiangsu republications attribute Shanghai origin.",
+        "sources": [
+          "https://www.cac.gov.cn/2026-09/15/c_1790876152357946.htm",
+          "https://www.jswx.gov.cn/csj/sh/202506/t20250624_111471.shtml",
+          "https://www.jswx.gov.cn/csj/sh/202511/t20251124_164342.shtml"
+        ],
+        "primary_url": "https://www.cac.gov.cn/2026-09/15/c_1790876152357946.htm",
+        "rights": "Artifact-specific rights are retained below. No blanket reuse grant was established; government hosting, institutional publication and participant disclosure rules do not authorize redistribution of source prose, photographs, standards or workpapers.",
+        "completed_work": [
+          "Verified national cases 9/10 and both official Shanghai republications.",
+          "Classified findings/orders/reinspection and retained host versus originating authority.",
+          "Separated enterprise/site/app units and unresolved June/November overlap."
+        ],
+        "next_action": "Seek a signed decision or dated follow-through for one already documented case; keep the reported-order classification until one is found."
+      },
+      "new_review_relationship": "same_collection_research_enrichment; never new source-family or independent event"
+    }
+  ],
+  "unchanged_catalog_files": [
+    {
+      "path": "data/evidence-program/research/incidents-near-misses.json",
+      "sha": "ea1e12e08d8964884b36fbd03e03071f77923c4a",
+      "sha256": "661d8b43f5b333ff621217117e2e44e1528d6373acf75f2fd36c07fa2a26c6c0",
+      "bytes": 169879
+    },
+    {
+      "path": "data/evidence-program/research/chinese-governance.json",
+      "sha": "28b7160a66b69027c49606e72c4016a8a52e2372",
+      "sha256": "e36f8cde3a7cc43b195e3dcb7dc74a196d2def5acb484c2dfc34e29c82878cd5",
+      "bytes": 69144
+    }
+  ],
+  "agent_security_catalog_read": false,
+  "reason": "No new exact-overlap question required; current INM catalog suffices for its prior aliases."
+}

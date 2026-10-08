@@ -1,0 +1,122 @@
+{
+  "repository": "mishakgg/pdoom-live",
+  "commit": "aff815147b12235177da9f66f4c09c2c1508f3eb",
+  "files": [
+    {
+      "path": "docs/evidence-program/dataset_spec.md",
+      "expected_git_blob_sha": "570254af7b2eed758cf5eaa1cdcb5dbe9f600c88",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/aff815147b12235177da9f66f4c09c2c1508f3eb/docs/evidence-program/dataset_spec.md",
+      "read_via": "GitHub connector fetch_file at pinned commit",
+      "copy_path": "pinned/docs/evidence-program/dataset_spec.md",
+      "observed_git_blob_sha": "570254af7b2eed758cf5eaa1cdcb5dbe9f600c88",
+      "sha256": "e8c2e905b7fa4c3b08c6aa41fd1617d2347a2b68bbed3610a284e5c6ccc68227",
+      "byte_count": 20883,
+      "blob_identity_verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/source_artifact.schema.json",
+      "expected_git_blob_sha": "89567ad69d5b78fc0f7945fc9a97a23f2e441adc",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/aff815147b12235177da9f66f4c09c2c1508f3eb/tools/evidence_program/contracts/source_artifact.schema.json",
+      "read_via": "GitHub connector fetch_file at pinned commit",
+      "copy_path": "pinned/tools/evidence_program/contracts/source_artifact.schema.json",
+      "observed_git_blob_sha": "89567ad69d5b78fc0f7945fc9a97a23f2e441adc",
+      "sha256": "4a7e308d4596dac2857767f57289b1b896dbc905e085d15a6f631b53c4c7f280",
+      "byte_count": 438,
+      "blob_identity_verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/actor.schema.json",
+      "expected_git_blob_sha": "786d71fbe145b901a41c0c8a02b97a7045121270",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/aff815147b12235177da9f66f4c09c2c1508f3eb/tools/evidence_program/contracts/actor.schema.json",
+      "read_via": "GitHub connector fetch_file at pinned commit",
+      "copy_path": "pinned/tools/evidence_program/contracts/actor.schema.json",
+      "observed_git_blob_sha": "786d71fbe145b901a41c0c8a02b97a7045121270",
+      "sha256": "d5b1e161a98b7c866054f74567db68abc1ae2ee67930074426ef408c231a13a4",
+      "byte_count": 408,
+      "blob_identity_verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/statement.schema.json",
+      "expected_git_blob_sha": "8281bfca9a6edaad8de55646663231b01a2d1b1d",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/aff815147b12235177da9f66f4c09c2c1508f3eb/tools/evidence_program/contracts/statement.schema.json",
+      "read_via": "GitHub connector fetch_file at pinned commit",
+      "copy_path": "pinned/tools/evidence_program/contracts/statement.schema.json",
+      "observed_git_blob_sha": "8281bfca9a6edaad8de55646663231b01a2d1b1d",
+      "sha256": "c8aa84a229c600db28e2c5b980f8dd949fa8f283385cb3e59d469d55e894fffd",
+      "byte_count": 420,
+      "blob_identity_verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/incident.schema.json",
+      "expected_git_blob_sha": "0015c1d97a4bbd155d2bd9c6957cdf18542e2bd2",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/aff815147b12235177da9f66f4c09c2c1508f3eb/tools/evidence_program/contracts/incident.schema.json",
+      "read_via": "GitHub connector fetch_file at pinned commit",
+      "copy_path": "pinned/tools/evidence_program/contracts/incident.schema.json",
+      "observed_git_blob_sha": "0015c1d97a4bbd155d2bd9c6957cdf18542e2bd2",
+      "sha256": "feb9b30d2f03b234ee97c67ce450e81b184df9acdbadce1edaa2d660a9ce6ef7",
+      "byte_count": 417,
+      "blob_identity_verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/resource_observation.schema.json",
+      "expected_git_blob_sha": "37609205d42746dcef681c716ed0491d101d0da5",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/aff815147b12235177da9f66f4c09c2c1508f3eb/tools/evidence_program/contracts/resource_observation.schema.json",
+      "read_via": "GitHub connector fetch_file at pinned commit",
+      "copy_path": "pinned/tools/evidence_program/contracts/resource_observation.schema.json",
+      "observed_git_blob_sha": "37609205d42746dcef681c716ed0491d101d0da5",
+      "sha256": "b2a54b297662cc126ea8e95acb3f2c6017a09bec914fbab1f7bd99d64730e9e6",
+      "byte_count": 453,
+      "blob_identity_verified": true
+    },
+    {
+      "path": "tools/evidence_program/contracts/dataset.schema.json",
+      "expected_git_blob_sha": "fad7d2d1c69ac48de71ec98d5a04850fc5474ac7",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/aff815147b12235177da9f66f4c09c2c1508f3eb/tools/evidence_program/contracts/dataset.schema.json",
+      "read_via": "GitHub connector fetch_file at pinned commit",
+      "copy_path": "pinned/tools/evidence_program/contracts/dataset.schema.json",
+      "observed_git_blob_sha": "fad7d2d1c69ac48de71ec98d5a04850fc5474ac7",
+      "sha256": "215b0d119ae562d3b66620f6ff76070ec158f149d205de5d123d48a50aef46fc",
+      "byte_count": 71106,
+      "blob_identity_verified": true
+    },
+    {
+      "path": "tools/evidence_program/validate_dataset.py",
+      "expected_git_blob_sha": "c7ee32f03fece2eb8ad1c6596e21ddd81ed23ef3",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/aff815147b12235177da9f66f4c09c2c1508f3eb/tools/evidence_program/validate_dataset.py",
+      "read_via": "GitHub connector fetch_file at pinned commit",
+      "copy_path": "pinned/tools/evidence_program/validate_dataset.py",
+      "observed_git_blob_sha": "c7ee32f03fece2eb8ad1c6596e21ddd81ed23ef3",
+      "sha256": "f6fff30345db268c1c4cd8f7fc422cacfa39f023a83831993f415bbd1278e840",
+      "byte_count": 26585,
+      "blob_identity_verified": true
+    },
+    {
+      "path": "packages/contracts/src/schemas.ts",
+      "expected_git_blob_sha": "9ffc06afd30d8d2d74a71d9e81752e5b4810135b",
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/aff815147b12235177da9f66f4c09c2c1508f3eb/packages/contracts/src/schemas.ts",
+      "read_via": "GitHub connector fetch_file at pinned commit",
+      "copy_path": "pinned/packages/contracts/src/schemas.ts",
+      "observed_git_blob_sha": "9ffc06afd30d8d2d74a71d9e81752e5b4810135b",
+      "sha256": "262ffa6af6876e97f3046ceab4e1611979b4e63f69cb7dc47e01a1aa7a0c3ab5",
+      "byte_count": 16120,
+      "blob_identity_verified": true
+    },
+    {
+      "path": "packages/contracts/src/enums.ts",
+      "expected_git_blob_sha": "c44acc7393bb1c07c7f0aeba6ad1d92aa9277f35",
+      "observed_git_blob_sha": "c44acc7393bb1c07c7f0aeba6ad1d92aa9277f35",
+      "sha256": "b9600e737cbab8cf5dccd26d1c30722cc89ab29ee08adea058e50130448460fe",
+      "byte_count": 4954,
+      "blob_identity_verified": true,
+      "source_url": "https://github.com/mishakgg/pdoom-live/blob/aff815147b12235177da9f66f4c09c2c1508f3eb/packages/contracts/src/enums.ts",
+      "read_via": "GitHub connector fetch_file at pinned commit",
+      "copy_path": "pinned/packages/contracts/src/enums.ts"
+    }
+  ],
+  "missing_attempts": [
+    {
+      "path": "tools/evidence_program/contracts/common.schema.json",
+      "result": "GitHub 404; authoritative shared definitions found in dataset.schema.json"
+    }
+  ]
+}

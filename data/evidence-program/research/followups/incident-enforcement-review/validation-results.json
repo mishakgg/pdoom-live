@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "artifacts_count",
+      "expected": 20,
+      "actual": 20,
+      "passed": true
+    },
+    {
+      "check": "assertions_count",
+      "expected": 43,
+      "actual": 43,
+      "passed": true
+    },
+    {
+      "check": "relationships_count",
+      "expected": 29,
+      "actual": 29,
+      "passed": true
+    },
+    {
+      "check": "unresolved_links_count",
+      "expected": 17,
+      "actual": 17,
+      "passed": true
+    },
+    {
+      "check": "acceptance_cases_count",
+      "expected": 20,
+      "actual": 20,
+      "passed": true
+    },
+    {
+      "check": "event_and_document_chains_count",
+      "expected": 7,
+      "actual": 7,
+      "passed": true
+    }
+  ],
+  "unique_ids_and_references_valid": true,
+  "originals_byte_preserved": true,
+  "seven_repository_file_blobs_verified": true,
+  "all43_assertions_covered_once": true,
+  "current_review_is_document_integrity_check_not_acceptance_execution": true,
+  "source_native_ledger_original_sha256": "fce6e5f2d8b512fa7bc3e43949f50b7ac2839162120a38d7085b7ed5cb0333f5",
+  "separate_synthetic_schema_replay": {
+    "probe_count": 32,
+    "schema_accepted": 16,
+    "schema_rejected": 16,
+    "expectations_matched": 32,
+    "all_expectations_matched": true,
+    "external_schema_resolution_attempts": [],
+    "network_calls": 0,
+    "original_acceptance_cases_executed": 0,
+    "source_native_records_tested": 0,
+    "native_records_admitted": 0,
+    "input_sha256": "beb873893c3ddabc8a7932acaee290a05366fc93f83b5b9adba9b4ebfb409845",
+    "runner_sha256": "aaa2fa72e04e24e1bcaa2012e67fc3ea7e197b648874020c8e322243d385a43e"
+  },
+  "final_package_checks": {
+    "all_top_level_json_parse": true,
+    "contract_mapping_artifact_coverage": 20,
+    "contract_mapping_assertion_coverage": 43,
+    "contract_mapping_chain_coverage": 7,
+    "source_context_git_blobs_verified": 7,
+    "contract_git_blobs_verified": 10,
+    "report_local_links_valid": true,
+    "source_ledger_equal_to_sealed_intake": true
+  }
+}
