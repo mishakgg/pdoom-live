@@ -1,0 +1,2070 @@
+{
+  "schema_version": 1,
+  "title": "Historical capability backfills research catalog",
+  "reviewed_on": "2026-10-08",
+  "status": "review_prepared_with_offline_reader",
+  "repository_review_commit": "bc00b609473c19c76869839598b63e1c8ace9ccc",
+  "baseline_inventory": {
+    "source_family_count": 64,
+    "version": "1.1",
+    "sha256": "a4b5046c3dec44598eeab3f025db75783f9ae5f702e0570d7b31fb3026dde678"
+  },
+  "operational_admission": "not_admitted",
+  "collector_enabled": false,
+  "canonical_contract_mapping": "pending_separate_review",
+  "full_source_bodies_in_catalog": false,
+  "full_score_results_in_repository": false,
+  "real_gzip_vendored": false,
+  "record_distinctions": [
+    "original_run",
+    "repeated_report",
+    "corrected_assertion",
+    "rescoring_same_outputs",
+    "later_rerun",
+    "benchmark_dependence"
+  ],
+  "interpretation_guards": {
+    "universal_capability_curve_enabled": false,
+    "proxy_to_pdoom_allowed": false,
+    "event_date_implies_publication_date": false,
+    "transport_date_implies_first_publication": false,
+    "archive_copy_date_implies_execution_date": false,
+    "benchmark_vintage_implies_evaluation_date": false,
+    "rescoring_implies_new_system_run": false,
+    "planned_rerun_implies_observed_rerun": false,
+    "absent_score_implies_zero_or_failure": false,
+    "weak_result_implies_abandoned_system": false,
+    "penalty_seconds_imply_measured_runtime": false,
+    "multiple_metrics_imply_independent_experiments": false,
+    "archival_coverage_implies_all_attempts": false,
+    "paper_license_inherits_to_data": false,
+    "government_hosting_implies_open_license": false,
+    "unknown_system_identity_may_be_guessed": false,
+    "raw_labels_and_exact_decimals_preserved": true,
+    "artifact_specific_rights_and_access_required": true
+  },
+  "ranking_basis": "source_utility_not_capability_or_risk",
+  "priority_ranking": [
+    {
+      "rank": 1,
+      "candidate_id": "HC001",
+      "reason": "Original, failed/invalid and changed planning evidence with explicit rescore versus rerun distinctions."
+    },
+    {
+      "rank": 2,
+      "candidate_id": "HC002",
+      "reason": "Small fixed structured artifact allows bounded offline parsing; public redistribution held."
+    },
+    {
+      "rank": 3,
+      "candidate_id": "HC003",
+      "reason": "Early recurring evidence and contemporary errors/corrections; facsimile and archive-access limitations explicit."
+    }
+  ],
+  "inventory_relationships": [
+    {
+      "source_id": "GL034",
+      "relationship": "potential_downstream_reporting_overlap_not_identity_match"
+    },
+    {
+      "source_id": "GL039",
+      "relationship": "publication_discovery_or_linkage_only"
+    },
+    {
+      "source_id": "GL040",
+      "relationship": "publication_discovery_or_linkage_only"
+    }
+  ],
+  "collections": [
+    {
+      "candidate_id": "HC001",
+      "name": "International Planning Competition archives",
+      "classification": "new_relative_to_frozen_inventory",
+      "inventory_source_id": null,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "summary": "Recover weak entrants, validated versus unvalidated output, hand recoding, original scores and later changes without constructing a universal planning-capability series.",
+      "historical_coverage": "Inspected custodian pages for 1998, 2000, 2002 and 2008. This is selected edition coverage, not a complete continuous series.",
+      "update_frequency": "By competition edition, followed by irregular corrections and preservation.",
+      "access_method": "Anonymous public HTML observed; six advertised archive links recorded without downloads or member traversal. No unified API established.",
+      "rights_summary": "Unknown for selected result pages and archives. MoinMoin GPL software footer is not a results-data license.",
+      "duplicate_evidence_policy": "Repeated presentations/tables/archives may report the same run. IPC2008 improved reference solutions rescore existing runs; post-bugfix IPC2002 LPG results are genuinely later runs.",
+      "limitations": [
+        "Task language, hardware, manual domain engineering, human assistance and score formula vary by edition.",
+        "Success-only validated IPC2002 files cannot yield a complete attempt/failure matrix. IPC2000 missing-point timeout definition is local to that edition.",
+        "The 1998 second round deliberately used easier tasks after observing first-round performance; task selection is adaptive.",
+        "Archive links establish advertised artifacts only. Institutional custody is not proof of immutable original bytes or original publication time."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "hc001_ipc_directory",
+          "url": "https://www.icaps-conference.org/competitions/",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Current custodian page; relevant results/conditions/news section",
+          "inspection_note": "Bounded public HTML read; hash pins retrieved page bytes, not historical first publication or linked archives.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "1692265b65854149a2604091005766e972b2e776390053a60ebc469deb57d6b0",
+          "bytes": 47852
+        },
+        {
+          "artifact_id": "hc001_ipc1998",
+          "url": "https://ipc98.icaps-conference.org/",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Current custodian page; relevant results/conditions/news section",
+          "inspection_note": "Bounded public HTML read; hash pins retrieved page bytes, not historical first publication or linked archives.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "3732dcb850b69c90b752a21cf9d91750eb03194cb25b55d3cbb5546de98c869f",
+          "bytes": 9762
+        },
+        {
+          "artifact_id": "hc001_ipc2000",
+          "url": "https://ipc00.icaps-conference.org/",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Current custodian page; relevant results/conditions/news section",
+          "inspection_note": "Bounded public HTML read; hash pins retrieved page bytes, not historical first publication or linked archives.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "c89cab20598ba27540c7348d3fd2f7e10305659b06fcb23f68c41c1b8d7f5db0",
+          "bytes": 37153
+        },
+        {
+          "artifact_id": "hc001_ipc2002_results",
+          "url": "https://ipc02.icaps-conference.org/results.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Current custodian page; relevant results/conditions/news section",
+          "inspection_note": "Bounded public HTML read; hash pins retrieved page bytes, not historical first publication or linked archives.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "0c035de777e952fa5a5820303a3699eb18354e26d2a75ecf718b959d9257c668",
+          "bytes": 7517
+        },
+        {
+          "artifact_id": "hc001_ipc2008_results",
+          "url": "https://ipc08.icaps-conference.org/deterministic/Results.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Current custodian page; relevant results/conditions/news section",
+          "inspection_note": "Bounded public HTML read; hash pins retrieved page bytes, not historical first publication or linked archives.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "ed2470b7f5d1528aaf7fb253e9c90abf859a444a84d9686bf8d8a078374a6f41",
+          "bytes": 8222
+        },
+        {
+          "artifact_id": "hc001_ipc2008_news",
+          "url": "https://ipc08.icaps-conference.org/deterministic/News.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Current custodian page; relevant results/conditions/news section",
+          "inspection_note": "Bounded public HTML read; hash pins retrieved page bytes, not historical first publication or linked archives.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "367cca3a2efc96918aa5739af0ea46de6c376916e9e6c256a66a3daad3c4cd5a",
+          "bytes": 8587
+        },
+        {
+          "artifact_id": "hc001_archive1998",
+          "url": "https://ipc98.icaps-conference.org/aipscomp.tar.gz",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Advertised href on hc001_ipc1998",
+          "inspection_note": "URL found on inspected primary page. Download availability, member names, bytes and embedded rights were not tested.",
+          "access_status": "link_verified_not_downloaded",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc001_archive2000",
+          "url": "https://ipc00.icaps-conference.org/aips-2000datafiles.tgz",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Advertised href on hc001_ipc2000",
+          "inspection_note": "URL found on inspected primary page. Download availability, member names, bytes and embedded rights were not tested.",
+          "access_status": "link_verified_not_downloaded",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc001_original2002",
+          "url": "https://ipc02.icaps-conference.org/IPCResults.tgz",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Advertised href on hc001_ipc2002_results",
+          "inspection_note": "URL found on inspected primary page. Download availability, member names, bytes and embedded rights were not tested.",
+          "access_status": "link_verified_not_downloaded",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc001_extra2002",
+          "url": "https://ipc02.icaps-conference.org/ExtraResults.tgz",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Advertised href on hc001_ipc2002_results",
+          "inspection_note": "URL found on inspected primary page. Download availability, member names, bytes and embedded rights were not tested.",
+          "access_status": "link_verified_not_downloaded",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc001_original2008",
+          "url": "https://ipc08.icaps-conference.org/deterministic/data/results/ipc2008-results.tar.bz2",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Advertised href on hc001_ipc2008_results",
+          "inspection_note": "URL found on inspected primary page. Download availability, member names, bytes and embedded rights were not tested.",
+          "access_status": "link_verified_not_downloaded",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc001_rescore2008",
+          "url": "https://ipc08.icaps-conference.org/deterministic/data/results/post-ipc2008-results.tar.bz2",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Advertised href on hc001_ipc2008_results",
+          "inspection_note": "URL found on inspected primary page. Download availability, member names, bytes and embedded rights were not tested.",
+          "access_status": "link_verified_not_downloaded",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        }
+      ],
+      "samples": [
+        {
+          "fields": {
+            "planner": "SemSyn",
+            "solved": 11,
+            "attempted": 144,
+            "reported_success_ratio": "8%",
+            "capabilities": [
+              "Strips",
+              "Numeric"
+            ]
+          },
+          "evidence_artifact_ids": [
+            "hc001_ipc2002_results"
+          ],
+          "qualification": "Published ratio is rounded; entrants attempted different capability/domain subsets."
+        },
+        {
+          "fields": {
+            "schema": [
+              "problem_number",
+              "quality_1",
+              "quality_2",
+              "plan_steps",
+              "time"
+            ],
+            "row_population": "validated_solved_plans_only"
+          },
+          "evidence_artifact_ids": [
+            "hc001_ipc2002_results"
+          ],
+          "qualification": "Documented archive schema; member files not inspected."
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "hc001_ipc_01",
+          "text": "ICAPS directory links the 1998, 2000, 2002 and 2008 preserved sites and names the corresponding organizers. Current institutional linkage supports custody/attribution; it does not independently authenticate first publication or an unchanged historical version.",
+          "evidence_artifact_ids": [
+            "hc001_ipc_directory"
+          ],
+          "qualification": "Publisher-described historical distinction; no archive members were inspected."
+        },
+        {
+          "finding_id": "hc001_ipc_02",
+          "text": "2002 public table: SemSyn solved 11, attempted 144, published ratio 8%, capabilities Strips and Numeric. Collected files are documented as one row per solved, validated plan with problem number, two quality values, plan steps, and time. IxTeT: nine validated and ten unvalidated plans; hand recoding of PDDL required.",
+          "evidence_artifact_ids": [
+            "hc001_ipc2002_results"
+          ],
+          "qualification": "Published ratio is rounded. Attempted/solved counts cover different domain capabilities; they are not a common-task accuracy comparison. Archive members not inspected."
+        },
+        {
+          "finding_id": "hc001_ipc_03",
+          "text": "LPG extra results were generated after the competition following a resolved bug, for Satellite-Complex quality and speed settings. These are later runs, not merely revised reporting of original measurements.",
+          "evidence_artifact_ids": [
+            "hc001_ipc2002_results"
+          ],
+          "qualification": "Publisher-described historical distinction; no archive members were inspected."
+        },
+        {
+          "finding_id": "hc001_ipc_04",
+          "text": "1998 page identifies itself as a preservation of the original page. It reports 52 of 140 first-round STRIPS problems unsolved by every entrant; round one ended June 8 at 5 PM. It also documents alternative scoring views and deliberately easier second-round selection after seeing round-one performance.",
+          "evidence_artifact_ids": [
+            "hc001_ipc1998"
+          ],
+          "qualification": "1998 is the edition year; timezone, original page publication and alternative-scoring dates remain unknown. Current wrapper and original embedded text are distinct provenance layers."
+        },
+        {
+          "finding_id": "hc001_ipc_05",
+          "text": "2000 source defines missing datapoints in its own archive as runs exceeding the 30-minute CPU limit. Typical machine: 500 MHz Pentium III, 1 GB RAM; Miconic: 450 MHz Pentium III, 256 MB.",
+          "evidence_artifact_ids": [
+            "hc001_ipc2000"
+          ],
+          "qualification": "Do not transfer this missingness interpretation or hardware specification across editions."
+        },
+        {
+          "finding_id": "hc001_ipc_06",
+          "text": "2008 updated archives use the same planner results with improved reference solutions, reducing scores under the best-known-quality baseline. Treat them as scoring revisions, not new runs. Both detailed exports are advertised below 1 MB; raw archives are much larger.",
+          "evidence_artifact_ids": [
+            "hc001_ipc2008_results"
+          ],
+          "qualification": "Publisher-described historical distinction; no archive members were inspected."
+        },
+        {
+          "finding_id": "hc001_ipc_07",
+          "text": "2008 site news dates planner code/papers and presentation material to 2009-01-22, raw results to 2009-03-11, and easily parsed detailed results to 2010-10-20.",
+          "evidence_artifact_ids": [
+            "hc001_ipc2008_news"
+          ],
+          "qualification": "These are publisher-stated availability notices, distinct from competition vintage, execution date, and independent archival capture."
+        },
+        {
+          "finding_id": "hc001_ipc_08",
+          "text": "All proposed IPC archive URLs appear as actual hrefs on the inspected primary pages. Anonymous public HTML access verified.",
+          "evidence_artifact_ids": [
+            "hc001_ipc1998",
+            "hc001_ipc2000",
+            "hc001_ipc2002_results",
+            "hc001_ipc2008_results"
+          ],
+          "qualification": "Archive-body availability, bytes, members and licenses were not tested because downloads were out of scope. Say advertised download links, not verified downloadable datasets."
+        },
+        {
+          "finding_id": "hc001_ipc_09",
+          "text": "No artifact-specific reuse license was identified for the inspected pages or advertised result archives. The IPC2008 GPL footer links MoinMoin software licensing.",
+          "evidence_artifact_ids": [
+            "hc001_ipc1998",
+            "hc001_ipc2000",
+            "hc001_ipc2002_results",
+            "hc001_ipc2008_results"
+          ],
+          "qualification": "Public access and institutional hosting do not establish redistribution rights. Rights within unopened archives remain uninspected."
+        }
+      ],
+      "date_observations": [
+        {
+          "role": "run_completion",
+          "value": "1998-06-08",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc001_ipc1998"
+          ],
+          "qualification": "First round ended at source-stated 5 PM; timezone and original web-publication date unknown."
+        },
+        {
+          "role": "announcement",
+          "value": "2009-01-22",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc001_ipc2008_news"
+          ],
+          "qualification": "Publisher-stated availability of planner code/papers and presentation material, not run time."
+        },
+        {
+          "role": "announcement",
+          "value": "2009-03-11",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc001_ipc2008_news"
+          ],
+          "qualification": "Publisher-stated availability of complete raw competition results."
+        },
+        {
+          "role": "announcement",
+          "value": "2010-10-20",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc001_ipc2008_news"
+          ],
+          "qualification": "Publisher-stated availability of detailed easily parsed text results; not competition year or independent capture."
+        }
+      ]
+    },
+    {
+      "candidate_id": "HC002",
+      "name": "WMT historical shared-task results",
+      "classification": "new_relative_to_frozen_inventory",
+      "inventory_source_id": null,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "summary": "System-level historical statistical, rule-based and combination scores preserve older methods and explicit evidence of a discontinued evaluation procedure.",
+      "historical_coverage": "Official WMT06 and WMT08 sources inspected. No continuously comparable or complete yearly series asserted.",
+      "update_frequency": "Annual editions; possible ad hoc corrections. No continuing refresh cadence for the selected gzip established.",
+      "access_method": "Anonymous HTTPS pages and one bounded gzip read; no translations, source texts, individual judgments, login or corpus collection.",
+      "rights_summary": "Score gzip/result-data reuse rights unknown. ACL-hosted pre-2016 paper material has a scoped CC BY-NC-SA 3.0 publisher statement that does not license separately hosted artifacts.",
+      "duplicate_evidence_policy": "Paper, organizer tables and gzip overlap evaluations. Multiple metrics score shared outputs; system combinations depend on constituents; All-English judgments were reused in individual News tasks.",
+      "limitations": [
+        "File contains many submitted systems, not a complete census.",
+        "Rows have no explicit per-score denominator or uncertainty; aggregate paper judgment counts cannot be substituted as row denominators.",
+        "Human relative scores depend on cohort, sampling, languages, domains and protocols; metrics and test sets change across years.",
+        "2008 adds out-of-domain translated newspaper tests and changes human protocol.",
+        "System combinations depend on constituent outputs; source system_type is a reported raw label, not guaranteed universal architecture taxonomy.",
+        "Missing metric/system combinations cannot be synthesized as zero or diagnosed failure.",
+        "Paper, organizer file and publisher copy may report same evaluations; repeated reports are not independent observations."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "hc002_schema",
+          "url": "https://www.statmt.org/wmt08/results.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Result schema, workshop line or original task conditions",
+          "inspection_note": "Bounded public source inspection; hash pins retrieved bytes only.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "c3ab2962728c9add6182d45fab2ab939cb7bbd3a3fe40c7e34fe6440e97aed63",
+          "bytes": 4085
+        },
+        {
+          "artifact_id": "hc002_paper",
+          "url": "https://www.statmt.org/wmt08/pdf/WMT09.pdf",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Tables 2–4; printed pp. 75–78 and human-evaluation methods",
+          "inspection_note": "Bounded public source inspection; hash pins retrieved bytes only.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "b78b29b450bb472ece2fb7377b1e0284af5f943c9a0fabaac29dcf39623a625d",
+          "bytes": 355114
+        },
+        {
+          "artifact_id": "hc002_publisher",
+          "url": "https://aclanthology.org/W08-0309/",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Publisher record and license footer",
+          "inspection_note": "Publisher states CC BY-NC-SA 3.0 for ACL-hosted pre-2016 paper material only; not separately hosted scores, translations or judgments.",
+          "access_status": "primary_opened",
+          "rights_status": "declared_license",
+          "rights_scope": "ACL_hosted_pre_2016_paper_material_only",
+          "license_identifier": "CC-BY-NC-SA-3.0",
+          "rights_evidence_artifact_ids": [
+            "hc002_publisher"
+          ],
+          "rights_note": "Publisher states CC BY-NC-SA 3.0 for ACL-hosted pre-2016 paper material only; not separately hosted scores, translations or judgments.",
+          "source_body_vendored": false,
+          "sha256": "4a0aa9b9e7b5ded1734f4b5b07596fdf8b07851378ae2313db6769bc0607fb34",
+          "bytes": 36607
+        },
+        {
+          "artifact_id": "hc002_2006_results",
+          "url": "https://www.statmt.org/wmt06/shared-task/results.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Result schema, workshop line or original task conditions",
+          "inspection_note": "Bounded public source inspection; hash pins retrieved bytes only.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "7e7aab8b6eed3b47604f779bccd12e2d2ee6a1fac436271b91cebd030a5021b8",
+          "bytes": 20727
+        },
+        {
+          "artifact_id": "hc002_2006_conditions",
+          "url": "https://www.statmt.org/wmt06/shared-task/index.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Result schema, workshop line or original task conditions",
+          "inspection_note": "Bounded public source inspection; hash pins retrieved bytes only.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "294f86748e4c9549c3a504c90e5ada4ef3d2fd80ef9e231c9b7d4388b72a54e6",
+          "bytes": 7518
+        },
+        {
+          "artifact_id": "hc002_gzip",
+          "url": "https://www.statmt.org/wmt08/wmt08-human-and-automatic-ranks.gz",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Headerless six-field score file; private bounded verification of exact compressed bytes",
+          "inspection_note": "One complete gzip member inspected privately; 16,071 compressed and 113,529 decompressed bytes. No public source file or full extracted output.",
+          "access_status": "pinned_bytes_verified_private",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "f49c4f058173c45b0c3ff455be8024ed13d98656810127297d815a502587cbac",
+          "bytes": 16071
+        }
+      ],
+      "samples": [
+        {
+          "fields": {
+            "metric_raw": "Rank",
+            "language_pair_raw": "fr-en",
+            "test_set_raw": "test2008",
+            "system_id_raw": "rbmt6",
+            "score_raw": "0.323",
+            "system_type_raw": "rbmt"
+          },
+          "evidence_artifact_ids": [
+            "hc002_gzip",
+            "hc002_paper"
+          ],
+          "qualification": "Actual limited example, corroborated in Table 4; relative comparison, not accuracy or ordinal place."
+        },
+        {
+          "fields": {
+            "metric_raw": "posF4gram-am",
+            "language_pair_raw": "cz-en",
+            "test_set_raw": "nc-test2008",
+            "system_id_raw": "dcu",
+            "score_raw": "42.15",
+            "system_type_raw": "smt"
+          },
+          "evidence_artifact_ids": [
+            "hc002_gzip"
+          ],
+          "qualification": "Limited factual example demonstrating native scores above one; not an artifact maximum claim."
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "hc002_structure",
+          "text": "Exact pin contains 2,584 six-field rows, 17 metric labels and unique (metric, language pair, test set, system) keys. System-type counts are smt 1,703; rbmt 843; syscomb 38.",
+          "evidence_artifact_ids": [
+            "hc002_gzip"
+          ],
+          "qualification": "Snapshot properties, not a permanent WMT contract; score rows are not independent evaluations."
+        },
+        {
+          "finding_id": "hc002_direction",
+          "text": "All scores in this file use higher-is-better direction; mter is already reversed. Rank is a fractional relative human comparison aggregate. Values may exceed one.",
+          "evidence_artifact_ids": [
+            "hc002_schema",
+            "hc002_paper",
+            "hc002_gzip"
+          ],
+          "qualification": "Keep native metric units and exact strings; no second sign reversal, ordinal Rank or uniform percentage/[0,1] scale."
+        },
+        {
+          "finding_id": "hc002_unknowns",
+          "text": "Per-score denominators and confidence intervals are absent; anonymized RBMT identities remain edition-local and unresolved.",
+          "evidence_artifact_ids": [
+            "hc002_gzip",
+            "hc002_paper"
+          ],
+          "qualification": "Do not substitute aggregate judgment counts or infer vendor/checkpoint/hardware/training budgets."
+        },
+        {
+          "finding_id": "hc002_wmt_extra_labels",
+          "text": "The actual artifact additionally includes xx-en, en-hu and es-de; preserve all 13 language-pair labels, plus nc-test2008. Do not treat xx-en as an ISO language code or infer a global canonical mapping.",
+          "evidence_artifact_ids": [
+            "hc002_gzip"
+          ],
+          "qualification": "Source locator: published schema or bounded file inspection. Preserve raw values and edition-local scope."
+        },
+        {
+          "finding_id": "hc002_wmt_doc_discrepancy_scope",
+          "text": "Schema explicitly restricts test-set examples to test2008/newstest2008 while artifact also has nc-test2008. Language-pair line says e.g. fr-en, so cz-en is a noncanonical raw label rather than itself proof that documentation forbids it.",
+          "evidence_artifact_ids": [
+            "hc002_schema"
+          ],
+          "qualification": "Source locator: published schema or bounded file inspection. Preserve raw values and edition-local scope."
+        },
+        {
+          "finding_id": "hc002_wmt_reused_judgments",
+          "text": "Paper Table 3 says All-English judgments were reused in individual News tasks. Different task rows are not fully independent annotation samples.",
+          "evidence_artifact_ids": [
+            "hc002_paper"
+          ],
+          "qualification": "Source locator: Table 3, printed p. 76. Preserve raw values and edition-local scope."
+        },
+        {
+          "finding_id": "hc002_wmt06_extended_results",
+          "text": "WMT06 page explicitly includes extended/unofficial submissions without rank or manual judgments. Dashes in those cells do not imply failure or zero.",
+          "evidence_artifact_ids": [
+            "hc002_2006_results"
+          ],
+          "qualification": "Source locator: published schema or bounded file inspection. Preserve raw values and edition-local scope."
+        },
+        {
+          "finding_id": "hc002_wmt_method_abandonment",
+          "text": "The 2008 paper explicitly drops slow/inconsistent fluency/adequacy judgments. Presence of older architectures is not proof their projects were abandoned.",
+          "evidence_artifact_ids": [
+            "hc002_paper"
+          ],
+          "qualification": "Source locator: Introduction and section 3. Preserve raw values and edition-local scope."
+        },
+        {
+          "finding_id": "hc002_wmt_anonymization",
+          "text": "RBMT1–6 ordering is anonymized among six listed providers; rbmt6 remains unresolved and edition-scoped.",
+          "evidence_artifact_ids": [
+            "hc002_paper"
+          ],
+          "qualification": "Source locator: Table 2. Preserve raw values and edition-local scope."
+        }
+      ],
+      "date_observations": [
+        {
+          "role": "event",
+          "value": "2008-06-19",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc002_schema"
+          ],
+          "qualification": "Workshop date, not exact evaluation execution or gzip first publication."
+        },
+        {
+          "role": "paper_publication",
+          "value": "2008-06",
+          "precision": "month",
+          "evidence_artifact_ids": [
+            "hc002_publisher"
+          ],
+          "qualification": "Publisher month precision only."
+        },
+        {
+          "role": "transport_last_modified",
+          "value": "2008-08-20T15:25:44Z",
+          "precision": "second",
+          "evidence_artifact_ids": [
+            "hc002_gzip"
+          ],
+          "qualification": "Observed HTTP Last-Modified; transport metadata only, not first publication, evaluation or archive capture."
+        },
+        {
+          "role": "retrieval",
+          "value": "2026-10-08T01:41:03.066714+00:00",
+          "precision": "second",
+          "evidence_artifact_ids": [
+            "hc002_gzip"
+          ],
+          "qualification": "Date of bounded private verification, not historical event date."
+        }
+      ]
+    },
+    {
+      "candidate_id": "HC003",
+      "name": "NIST TREC proceedings and historical results",
+      "classification": "new_relative_to_frozen_inventory",
+      "inventory_source_id": null,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "summary": "Early recurring information-retrieval evaluations retain contemporary implementation errors and corrected results alongside later transcriptions.",
+      "historical_coverage": "TREC-1 1992 index and selected TREC-2 1993 evidence verified; no audit of every annual result file.",
+      "update_frequency": "Annual volumes with irregular hosting, catalog and transcription changes.",
+      "access_method": "Public text/static HTML inspected. Results archive requires an agreement and was not accessed. No unified public export API established.",
+      "rights_summary": "Bellcore-authored paper and Browser result reuse rights unknown; NIST hosting is not blanket clearance. Archive access/dissemination agreement is separate from publicly readable proceedings.",
+      "duplicate_evidence_policy": "Browser and paper may report the same run; catalog records describe one proceedings volume. Corrections are sourced linked assertions, not independent replications.",
+      "limitations": [
+        "Changing topics, corpus, queries and judging coverage prevent unqualified cross-year score comparison.",
+        "Corrected run retains 927 unjudged documents among 5,000 top-100 returns; restricted judged-only experiments are a different condition.",
+        "OCR run identifiers contain 1/l and I/i ambiguity; preserve raw spellings and reviewed normalized cross-references.",
+        "P@10 remains unresolved. The public facsimile was not inspected because of a tool size limit; a separate public PDF retrieval failed.",
+        "Publication year 1994 is settled precision; conflicting catalog day claims remain distinct."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "hc003_trec_index",
+          "url": "https://trec.nist.gov/publications.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Collection/catalog/policy page date and access statements",
+          "inspection_note": "Public web evidence inspected without login. No raw HTTP artifact hash; tool evidence capture hashes are not substituted as artifact-byte pins.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc003_trec1",
+          "url": "https://trec.nist.gov/pubs/trec1/t1_proceedings.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Collection/catalog/policy page date and access statements",
+          "inspection_note": "Public web evidence inspected without login. No raw HTTP artifact hash; tool evidence capture hashes are not substituted as artifact-byte pins.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc003_trec2",
+          "url": "https://trec.nist.gov/pubs/trec2/t2_proceedings.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Collection/catalog/policy page date and access statements",
+          "inspection_note": "Public web evidence inspected without login. No raw HTTP artifact hash; tool evidence capture hashes are not substituted as artifact-byte pins.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc003_trec_paper",
+          "url": "https://trec.nist.gov/pubs/trec2/papers/txt/10.txt",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Printed p.110, Tables 2–3; OCR text and discussion",
+          "inspection_note": "Public web evidence inspected without login. No raw HTTP artifact hash; tool evidence capture hashes are not substituted as artifact-byte pins.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc003_trec_preface",
+          "url": "https://trec.nist.gov/pubs/trec2/preface.txt",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Original preface conference dates and signature",
+          "inspection_note": "Public web evidence inspected without login. No raw HTTP artifact hash; tool evidence capture hashes are not substituted as artifact-byte pins.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc003_browser",
+          "url": "https://pages.nist.gov/trec-browser/trec2/adhoc/results/",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Adhoc 1993 lsia1 section",
+          "inspection_note": "Public web evidence inspected without login. No raw HTTP artifact hash; tool evidence capture hashes are not substituted as artifact-byte pins.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc003_rights",
+          "url": "https://trec.nist.gov/noads.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Collection/catalog/policy page date and access statements",
+          "inspection_note": "Signed organization agreement required for results-archive access; named-team comparison/dissemination conditions apply. Agreement read only, not accepted; archive not accessed.",
+          "access_status": "primary_opened",
+          "rights_status": "restricted_use",
+          "rights_scope": "results_archive_access_and_dissemination_conditions",
+          "license_identifier": "TREC-results-agreement",
+          "rights_evidence_artifact_ids": [
+            "hc003_rights"
+          ],
+          "rights_note": "Signed organization agreement required for results-archive access; named-team comparison/dissemination conditions apply. Agreement read only, not accepted; archive not accessed.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc003_catalogue_march",
+          "url": "https://www.nist.gov/publications/second-text-retrieval-conference-trec-2",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Collection/catalog/policy page date and access statements",
+          "inspection_note": "Public web evidence inspected without login. No raw HTTP artifact hash; tool evidence capture hashes are not substituted as artifact-byte pins.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc003_catalogue_jan",
+          "url": "https://www.nist.gov/publications/second-text-retrieval-conference-trec-2-0",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Collection/catalog/policy page date and access statements",
+          "inspection_note": "Public web evidence inspected without login. No raw HTTP artifact hash; tool evidence capture hashes are not substituted as artifact-byte pins.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc003_doi",
+          "url": "https://doi.org/10.6028/NIST.SP.500-215",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Public proceedings facsimile linked from NIST catalog",
+          "inspection_note": "Public facsimile response reported 31,290,176 bytes and exceeded the tool limit; not inspected.",
+          "access_status": "blocked_size_limit",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        }
+      ],
+      "samples": [
+        {
+          "fields": {
+            "run_cross_reference": "lsiasm",
+            "run_label_raw_ocr": "isiasm",
+            "metric_raw": "Avg prec",
+            "score_raw": ".3018",
+            "status": "standard_vector_baseline"
+          },
+          "evidence_artifact_ids": [
+            "hc003_trec_paper"
+          ],
+          "qualification": "OCR-derived source text, not facsimile-verified run spelling."
+        },
+        {
+          "fields": {
+            "run_cross_reference": "lsia1",
+            "run_label_raw_ocr": "isial",
+            "metric_raw": "Avg prec",
+            "score_raw": ".1307",
+            "browser_score_raw": "0.1307",
+            "status": "submitted_document_identifier_mapping_error"
+          },
+          "evidence_artifact_ids": [
+            "hc003_trec_paper",
+            "hc003_browser"
+          ],
+          "qualification": "Error affects the submitted implementation; do not attribute it to every implementation of the method."
+        },
+        {
+          "fields": {
+            "run_cross_reference": "lsia1*",
+            "run_label_raw_ocr": "lsial*",
+            "metric_raw": "Avg prec",
+            "score_raw": ".2505",
+            "status": "corrected_incomplete_judging"
+          },
+          "evidence_artifact_ids": [
+            "hc003_trec_paper"
+          ],
+          "qualification": "Correction stays separate; not an independent replication."
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "hc003_trec_01",
+          "text": "Selected average-precision values and correction status: standard-vector lsiasm 0.3018; submitted LSI lsia1 0.1307; corrected lsia1* 0.2505.",
+          "evidence_artifact_ids": [
+            "hc003_trec_paper"
+          ],
+          "qualification": "OCR renders run IDs variously with 1/l and I/i. Preserve raw labels with a documented normalized cross-reference."
+        },
+        {
+          "finding_id": "hc003_trec_02",
+          "text": "Corrected run has 927 unjudged among 5000 top-100 returned items across topics",
+          "evidence_artifact_ids": [
+            "hc003_trec_paper"
+          ],
+          "qualification": "Incomplete judging affects interpretation; judged-document-only follow-up is a different condition, not a substitute full-corpus result."
+        },
+        {
+          "finding_id": "hc003_trec_03",
+          "text": "lsia1 precision at ten: OCR Prat 10 .3340 versus later Browser P_10 0.3200.",
+          "evidence_artifact_ids": [
+            "hc003_trec_preface",
+            "hc003_catalogue_march",
+            "hc003_catalogue_jan",
+            "hc003_trec2"
+          ],
+          "qualification": "Retain both sourced assertions. Do not select a canonical value, call this an OCR error, or infer a changed scoring protocol without facsimile evidence."
+        },
+        {
+          "finding_id": "hc003_trec_04",
+          "text": "Historical dates require distinct fields",
+          "evidence_artifact_ids": [
+            "hc003_trec_preface",
+            "hc003_catalogue_march",
+            "hc003_catalogue_jan",
+            "hc003_trec2"
+          ],
+          "qualification": "1994 is conservative settled publication-year precision. Preserve day-level conflict and do not treat catalogue Created dates as independently archived captures."
+        },
+        {
+          "finding_id": "hc003_trec_05",
+          "text": "Public proceedings versus conditional results archive: Published agreement requires organization signature for participants/archive access and constrains publicity and named-team comparisons. No agreement was accepted, no archive endpoints followed.",
+          "evidence_artifact_ids": [
+            "hc003_trec2",
+            "hc003_trec_paper",
+            "hc003_browser",
+            "hc003_rights"
+          ],
+          "qualification": "Specific Bellcore paper and extracted Browser result reuse rights remain unknown. NIST hosting and any software license are not artifact-specific clearance."
+        },
+        {
+          "finding_id": "hc003_trec_06",
+          "text": "Selection, comparability and duplicate evidence limits",
+          "evidence_artifact_ids": [
+            "hc003_trec_index",
+            "hc003_trec_paper",
+            "hc003_browser"
+          ],
+          "qualification": "Annual proceedings are collection coverage, not a universal capability series. Topics, corpora, queries and judging coverage must remain edition-specific. Browser and paper overlap underlying runs; corrected assertion is not independent replication; unsubmitted research is absent."
+        }
+      ],
+      "date_observations": [
+        {
+          "role": "event",
+          "value": "1993-08-31/1993-09-02",
+          "precision": "range",
+          "evidence_artifact_ids": [
+            "hc003_trec_preface"
+          ],
+          "qualification": "TREC-2 conference range."
+        },
+        {
+          "role": "preface_signature",
+          "value": "1994-02-20",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc003_trec_preface"
+          ],
+          "qualification": "Signature date does not settle publication day."
+        },
+        {
+          "role": "catalog_publication_claim",
+          "value": "1994-03-01",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc003_catalogue_march"
+          ],
+          "qualification": "Conflicts with second catalog day; retain as an assertion."
+        },
+        {
+          "role": "catalog_publication_claim",
+          "value": "1994-01-01",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc003_catalogue_jan"
+          ],
+          "qualification": "Conflicting catalog claim, not a separate volume."
+        },
+        {
+          "role": "paper_publication",
+          "value": "1994",
+          "precision": "year",
+          "evidence_artifact_ids": [
+            "hc003_catalogue_march",
+            "hc003_catalogue_jan"
+          ],
+          "qualification": "Conservative common year; no canonical publication day selected."
+        },
+        {
+          "role": "html_generated",
+          "value": "2000-08-01",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc003_trec2"
+          ],
+          "qualification": "Proceedings HTML creation, not conference or first publication or independent archive capture."
+        }
+      ]
+    },
+    {
+      "candidate_id": "HC004",
+      "name": "SAT Competition 2002 report tables",
+      "classification": "new_relative_to_frozen_inventory",
+      "inventory_source_id": null,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "summary": "Contemporary report tables, organizer rulings and attributed solver-author explanations preserve low performance, invalid certificates and crashes with version-specific context.",
+      "historical_coverage": "2002 competition only; selected first/second-stage report sections, not an exhaustive solver-by-instance log.",
+      "update_frequency": "Static preliminary report; occasional corrections and preservation repairs.",
+      "access_method": "Anonymous HTML verified. Original interactive detailed-results URL returned a retrieval error; this is not proof of permanent disappearance or a verified export API.",
+      "rights_summary": "Unknown for tables and author statement. LaTeX2HTML converter copyright is not a grant for report content.",
+      "duplicate_evidence_policy": "Awards, HTML/PDF and author explanation may describe identical runs. Later corrected or unofficial versions stay separate from original award results.",
+      "limitations": [
+        "Second-stage solvers and hard instances are selected; blank cells do not diagnose every missing outcome.",
+        "First-stage limits differ by category and hardware. Randomized runs use median-time scoring and any-success solved status, so solved may coexist with maximum scored time.",
+        "Industrial stage-two roster text conflicts with table/qualification evidence. Keep the inconsistency rather than infer an unobserved attempt matrix.",
+        "May 6/9 are tentative schedule entries, not confirmed event occurrence. Source generation and news revision strings also differ.",
+        "BerkMin crash count is author-reported; 2,400-second charge is a penalty. Planned reruns were not verified."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "hc004_sat2002_home",
+          "url": "https://satisfiability.org/competition/2002/",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Preliminary organizer report section / attributed author statement / preserved news",
+          "inspection_note": "Bounded primary HTML read; hash pins current retrieved bytes only.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "1ce967a6cde0ae32467e15bba2f2ed2141e225e25546b9be617968e4f3cb4fec",
+          "bytes": 4286
+        },
+        {
+          "artifact_id": "hc004_sat2002_report",
+          "url": "https://satisfiability.org/competition/2002/onlinereport/",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Preliminary organizer report section / attributed author statement / preserved news",
+          "inspection_note": "Bounded primary HTML read; hash pins current retrieved bytes only.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "b6bf9b9cc565ae33891adb4bb936b730f185b8839403759ee852d97d78aefd17",
+          "bytes": 4946
+        },
+        {
+          "artifact_id": "hc004_sat2002_stage2",
+          "url": "https://satisfiability.org/competition/2002/onlinereport/node14.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Preliminary organizer report section / attributed author statement / preserved news",
+          "inspection_note": "Bounded primary HTML read; hash pins current retrieved bytes only.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "9c7c9a58884b36571c3255c7334837cb9ce5e3bf37a0482431affbb0e93637f3",
+          "bytes": 33186
+        },
+        {
+          "artifact_id": "hc004_sat2002_validation",
+          "url": "https://satisfiability.org/competition/2002/onlinereport/node7.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Preliminary organizer report section / attributed author statement / preserved news",
+          "inspection_note": "Bounded primary HTML read; hash pins current retrieved bytes only.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "449dfd749c073d400d1ed0dcea7235d13bccbfdbf478b0b51dc660183b693efa",
+          "bytes": 3935
+        },
+        {
+          "artifact_id": "hc004_sat2002_berkmin",
+          "url": "https://satisfiability.org/competition/2002/berkmin.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Preliminary organizer report section / attributed author statement / preserved news",
+          "inspection_note": "Bounded primary HTML read; hash pins current retrieved bytes only.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "92fe2c427ea84f1520bd1d2ce716604332d84814a13a347b11376557bc4138b1",
+          "bytes": 3717
+        },
+        {
+          "artifact_id": "hc004_sat2002_news",
+          "url": "https://satisfiability.org/competition/2002/SAT2002news.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Preliminary organizer report section / attributed author statement / preserved news",
+          "inspection_note": "Bounded primary HTML read; hash pins current retrieved bytes only.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "d12d56e732de55179c0876784ffd47558b0c35d38a7de1aee59c034cc3819141",
+          "bytes": 8479
+        },
+        {
+          "artifact_id": "hc004_sat2002_generation",
+          "url": "https://satisfiability.org/competition/2002/onlinereport/node25.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Preliminary organizer report section / attributed author statement / preserved news",
+          "inspection_note": "Bounded primary HTML read; hash pins current retrieved bytes only.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "0f2a8236e767e063bc67e0322ef0808cf5afe536affa719381f3bf5fece02df2",
+          "bytes": 2526
+        },
+        {
+          "artifact_id": "hc004_sat2002_stage1",
+          "url": "https://satisfiability.org/competition/2002/onlinereport/node13.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Preliminary organizer report section / attributed author statement / preserved news",
+          "inspection_note": "Bounded primary HTML read; hash pins current retrieved bytes only.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "d44da04bddf66020c2a30f42d4b66bf8dfbc3c9fec48fc62150c041876cf8a33",
+          "bytes": 11254
+        },
+        {
+          "artifact_id": "hc004_sat2002_machines",
+          "url": "https://satisfiability.org/competition/2002/onlinereport/node11.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Preliminary organizer report section / attributed author statement / preserved news",
+          "inspection_note": "Bounded primary HTML read; hash pins current retrieved bytes only.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "8d55adc01bdb15d2e1ae2805dcf00aec25c39e6dcaf854a64cc436ab81ec5efa",
+          "bytes": 2501
+        },
+        {
+          "artifact_id": "hc004_sat2002_steps",
+          "url": "https://satisfiability.org/competition/2002/onlinereport/node8.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Preliminary organizer report section / attributed author statement / preserved news",
+          "inspection_note": "Bounded primary HTML read; hash pins current retrieved bytes only.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "5569199426f297193bd95f30a969d8d98a1b999afaf6dee0cb23c4e02bddbb83",
+          "bytes": 4864
+        },
+        {
+          "artifact_id": "hc004_sat2002_results_caution",
+          "url": "https://satisfiability.org/competition/2002/onlinereport/node12.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Preliminary organizer report section / attributed author statement / preserved news",
+          "inspection_note": "Bounded primary HTML read; hash pins current retrieved bytes only.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": "fa8fd058f1ced5bb448c13ec3d19f0aa42c04406588eed0a79fb98a0356f9b57",
+          "bytes": 7061
+        }
+      ],
+      "samples": [
+        {
+          "fields": {
+            "instance": "Homer/homer17",
+            "variables": 286,
+            "clauses": 1742,
+            "sat_status_raw": "N",
+            "solver": "limmat",
+            "reported_seconds": "6957"
+          },
+          "evidence_artifact_ids": [
+            "hc004_sat2002_stage2"
+          ],
+          "qualification": "Selected second-stage result; no cross-machine normalization."
+        },
+        {
+          "fields": {
+            "instance": "Homer/homer18",
+            "variables": 308,
+            "clauses": 2030,
+            "sat_status_raw": "N",
+            "solver_result": null,
+            "missing_status": "not_listed"
+          },
+          "evidence_artifact_ids": [
+            "hc004_sat2002_stage2"
+          ],
+          "qualification": "Blank remains missing; not zero or a diagnosed timeout."
+        },
+        {
+          "fields": {
+            "paper_version": "BerkMin56",
+            "competition_version": "BerkMin62",
+            "author_reported_crashes": 124,
+            "charged_seconds_per_crash": "2400"
+          },
+          "evidence_artifact_ids": [
+            "hc004_sat2002_berkmin"
+          ],
+          "qualification": "Attributed author explanation; charged penalty is not measured runtime."
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "hc004_sat_01",
+          "text": "Second-stage table reports Homer/homer17: 286 variables, 1742 clauses, status N, limmat 6957 seconds; Homer/homer18: 308 variables, 2030 clauses, status N, no solving result listed.",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_stage2"
+          ],
+          "qualification": "Blank is not a diagnosed timeout or a complete missing-outcome code. N* marks a previously unknown instance claimed UNSAT without a proof."
+        },
+        {
+          "finding_id": "hc004_sat_02",
+          "text": "Second-stage scope: selected top solvers and selected smallest remaining hard instances with a six-hour budget. The report is explicitly a preliminary draft.",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_stage2",
+            "hc004_sat2002_report"
+          ],
+          "qualification": "Internal source inconsistency: the industrial introduction lists OKsolver in the launched roster, while first-stage industrial qualification and Table 7 have limmat and simo; Table 4 includes limmat results. Do not silently repair the roster or infer every solver-instance attempt."
+        },
+        {
+          "finding_id": "hc004_sat_03",
+          "text": "Organizer policy maps crashes and invalid SAT certificates to unknown. Incorrect UNSAT on a known/proven SAT instance leads to award exclusion, with unofficial results retained.",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_validation"
+          ],
+          "qualification": "This organizer ruling is separate from raw failures. Hors-concours also covered late versions, so that label alone does not establish incorrectness; see report caution."
+        },
+        {
+          "finding_id": "hc004_sat_04",
+          "text": "BerkMin authors distinguish paper version 56 from competition version 62, report 124 crashes, and report 2400 seconds charged per crash. They say the buggy version remained in stage two and propose later reruns.",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_berkmin"
+          ],
+          "qualification": "The charged cutoff is not measured runtime. Attribute crash counts and explanation to authors; planned reruns do not establish that corrected results were published."
+        },
+        {
+          "finding_id": "hc004_sat_05",
+          "text": "April 8, 2002 competition start is stated retrospectively in competition news. Homepage May 6 second-stage and May 9 awards entries are under Important Dates (tentative); the header is March 10-May 8.",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_home",
+            "hc004_sat2002_news"
+          ],
+          "qualification": "Retain May 6/9 as scheduled dates unless another source confirms occurrence. Actual results release is only confirmed as during the symposium in node12."
+        },
+        {
+          "finding_id": "hc004_sat_06",
+          "text": "The About page explicitly says LaTeX2HTML translation began 2002-09-16. Homepage preservation notice is 2020-06-13 benchmark resurrection. News page has 2002-09-11 last-modified text and already links the report.",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_generation",
+            "hc004_sat2002_home",
+            "hc004_sat2002_news"
+          ],
+          "qualification": "Generation, publisher revision claims, link restoration, first publication and independent archival capture are distinct. First publication remains unknown; do not reconcile the September 11/16 strings into one date."
+        },
+        {
+          "finding_id": "hc004_sat_07",
+          "text": "First-stage industrial/handmade runs used 40 minutes; random instances used 20 minutes on faster machines. Randomized solvers had three industrial/handmade runs; median CPU time was scored while any successful run counted solved.",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_steps"
+          ],
+          "qualification": "A solved instance may therefore receive the maximum time. A universal timeout/runtime column would be wrong."
+        },
+        {
+          "finding_id": "hc004_sat_08",
+          "text": "Report hardware: mostly 32 dual Pentium III 450 MHz computers with 1 GB RAM, but first-stage random instances used 16 Athlon 1800+ machines; one processor, no swap, 900 MB per program.",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_machines"
+          ],
+          "qualification": "Earlier news says 30 machines and corrects Pentium II to III; preserve version-specific source assertions rather than harmonizing silently."
+        },
+        {
+          "finding_id": "hc004_sat_09",
+          "text": "The organizer report cautions results apply to the submitted version, accepted benchmarks, machine and OS. It documents JQuest invalid certificates due to variable renaming, and corrected/buggy lsat observations separately.",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_results_caution"
+          ],
+          "qualification": "Do not describe the authors’ intended algorithm as measured by every historical software build; do not convert unofficial or later corrected observations into original award results."
+        },
+        {
+          "finding_id": "hc004_sat_10",
+          "text": "Selected primary HTML pages are anonymously readable. The original interactive detailed-results URL produced a web-tool 502; no live database/export API was verified.",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_news",
+            "hc004_sat2002_results_caution"
+          ],
+          "qualification": "A transient retrieval failure is not proof the database is permanently gone. Keep scope to public report tables."
+        },
+        {
+          "finding_id": "hc004_sat_11",
+          "text": "No artifact-specific reuse license was identified for the selected report tables or BerkMin author statement. LaTeX2HTML copyright text concerns the converter, not a grant for contributed report content.",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_generation",
+            "hc004_sat2002_stage2",
+            "hc004_sat2002_berkmin"
+          ],
+          "qualification": "Rights remain unknown. No benchmark corpus, solver code, archive, login, agreement or restricted resource was accessed."
+        }
+      ],
+      "date_observations": [
+        {
+          "role": "event",
+          "value": "2002-04-08",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_news"
+          ],
+          "qualification": "Competition start confirmed retrospectively in news."
+        },
+        {
+          "role": "proposed_schedule",
+          "value": "2002-05-06",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_home"
+          ],
+          "qualification": "Tentative second-stage schedule only."
+        },
+        {
+          "role": "proposed_schedule",
+          "value": "2002-05-09",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_home"
+          ],
+          "qualification": "Tentative awards schedule only."
+        },
+        {
+          "role": "proposed_schedule",
+          "value": "March 10 - May 8, 2002",
+          "precision": "source_string",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_home"
+          ],
+          "qualification": "Conflicting homepage header retained without reconciliation."
+        },
+        {
+          "role": "html_generated",
+          "value": "2002-09-16",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_generation"
+          ],
+          "qualification": "LaTeX2HTML translation start, not first web publication."
+        },
+        {
+          "role": "announcement",
+          "value": "2002-09-11",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_news"
+          ],
+          "qualification": "News last-modified string already links report; do not reconcile with generation date."
+        },
+        {
+          "role": "preservation",
+          "value": "2020-06-13",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc004_sat2002_home"
+          ],
+          "qualification": "Benchmark-link restoration notice, not old evaluation time."
+        }
+      ]
+    },
+    {
+      "candidate_id": "HC005",
+      "name": "PASCAL VOC annual challenges",
+      "classification": "new_relative_to_frozen_inventory",
+      "inventory_source_id": null,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "summary": "Ended challenge editions preserve older method recipes and weaker submitted systems without claiming those projects were subsequently abandoned.",
+      "historical_coverage": "Official annual challenges 2005–2012 ended; later evaluation servers/leaderboards continued. Selected 2012 classification result verified.",
+      "update_frequency": "Annual historical tables, with possible corrections and later separately dated submissions.",
+      "access_method": "Public annual HTML and devkit documentation observed without registration. Linked VOC2005 chapter access blocked; no bypass or image-corpus download.",
+      "rights_summary": "Result-table rights unknown. Organizer publication permission and image-source terms do not establish result-data reuse permission.",
+      "duplicate_evidence_policy": "Annual tables, talks and later papers may repeat a result. Shared test images create dependence, while distinct later submissions are not automatically duplicate evaluations.",
+      "limitations": [
+        "Classification changed ROC-AUC to AP in 2007; AP computation changed from 11 sampled recall points to all recall breakpoints in 2010.",
+        "VOC2011 and VOC2012 classification/detection data are shared; earlier class sets and image distributions vary.",
+        "Segmentation comp5/comp6 headings say AP while devkit §5.4 defines intersection/union accuracy; retain raw label with a task-specific conflict rather than generalized AP semantics.",
+        "Hyphens and empty sections are missing data; no zero, timeout or diagnosed failure may be imputed.",
+        "Specific VOC2005 post-challenge classifier-change illustration was not independently reverified; keep it pending rather than use as settled evidence."
+      ],
+      "artifacts": [
+        {
+          "artifact_id": "hc005_voc",
+          "url": "https://www.robots.ox.ac.uk/~vgg/projects/pascal/VOC/",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Official archive or linked annual report",
+          "inspection_note": "Public primary web evidence inspected; no raw HTTP artifact-byte hash obtained.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc005_voc12",
+          "url": "https://www.robots.ox.ac.uk/~vgg/projects/pascal/VOC/voc2012/",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Official archive or linked annual report",
+          "inspection_note": "Public primary web evidence inspected; no raw HTTP artifact-byte hash obtained.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc005_voc_results",
+          "url": "https://www.robots.ox.ac.uk/~vgg/projects/pascal/VOC/voc2012/results/index.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Annual result page / classification comp1 pottedplant cell / devkit §5.4 / annual conditions",
+          "inspection_note": "Public primary web evidence inspected; no raw HTTP artifact-byte hash obtained.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc005_voc05",
+          "url": "https://www.robots.ox.ac.uk/~vgg/projects/pascal/VOC/voc2005/index.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Official archive or linked annual report",
+          "inspection_note": "Public primary web evidence inspected; no raw HTTP artifact-byte hash obtained.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc005_voc_chapter",
+          "url": "https://www.robots.ox.ac.uk/~vgg/projects/pascal/VOC/voc2005/chapter.pdf",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Official archive or linked annual report",
+          "inspection_note": "Official linked chapter redirected to an unsafe/non-retryable destination; access stopped and no alternative-route bypass attempted.",
+          "access_status": "access_unverified",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc005_voc_report_claimed",
+          "url": "https://www.robots.ox.ac.uk/~me/Publications/voc05.pdf",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Official archive or linked annual report",
+          "inspection_note": "Submitted author-report URL not independently fetched in this pass; specific post-challenge classifier-change example remains unverified.",
+          "access_status": "access_unverified",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        },
+        {
+          "artifact_id": "hc005_voc_devkit",
+          "url": "https://www.robots.ox.ac.uk/~vgg/projects/pascal/VOC/voc2012/htmldoc/index.html",
+          "reviewed_on": "2026-10-08",
+          "provenance_locator": "Annual result page / classification comp1 pottedplant cell / devkit §5.4 / annual conditions",
+          "inspection_note": "Public primary web evidence inspected; no raw HTTP artifact-byte hash obtained.",
+          "access_status": "primary_opened",
+          "rights_status": "unknown",
+          "rights_scope": "this_artifact_only",
+          "license_identifier": null,
+          "rights_evidence_artifact_ids": [],
+          "rights_note": "No artifact-specific reuse grant verified; public readability does not grant redistribution.",
+          "source_body_vendored": false,
+          "sha256": null,
+          "bytes": null
+        }
+      ],
+      "samples": [
+        {
+          "fields": {
+            "edition": "VOC2012",
+            "task": "classification",
+            "competition": "comp1",
+            "training_condition": "train on VOC2012 data",
+            "submission": "IMPERIAL_COMPLEX_LOGNORMAL",
+            "class": "pottedplant",
+            "metric": "Average Precision",
+            "unit": "percent",
+            "score_raw": "11.9"
+          },
+          "evidence_artifact_ids": [
+            "hc005_voc_results"
+          ],
+          "qualification": "Classification-specific AP. Weak result is not evidence of subsequent abandonment."
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "hc005_voc_01",
+          "text": "VOC2012 classification comp1, IMPERIAL_COMPLEX_LOGNORMAL, pottedplant AP is 11.9 percent.",
+          "evidence_artifact_ids": [
+            "hc005_voc_results"
+          ],
+          "qualification": "Source-based date strings; current page revision and independent archival capture remain unknown."
+        },
+        {
+          "finding_id": "hc005_voc_02",
+          "text": "Historical method recipe",
+          "evidence_artifact_ids": [
+            "hc005_voc_results"
+          ],
+          "qualification": "Complex lognormal filters, visual-word histograms and SVMs are explicitly described. A low submitted score does not itself prove abandonment or a failed research programme."
+        },
+        {
+          "finding_id": "hc005_voc_03",
+          "text": "2005–2012 annual challenge series ended, evaluation server continued",
+          "evidence_artifact_ids": [
+            "hc005_voc",
+            "hc005_voc05"
+          ],
+          "qualification": "Data edition is not evaluation date. A later leaderboard submission using VOC2012 cannot be backdated to 2012. Preserve annual challenge tables separately from later submissions."
+        },
+        {
+          "finding_id": "hc005_voc_04",
+          "text": "VOC2012 source dates: participant preliminary results October 1, workshop October 12, public-online announcement October 17.",
+          "evidence_artifact_ids": [
+            "hc005_voc12"
+          ],
+          "qualification": "Contemporary news strings are source claims preserved on current custodian page, not independently dated archive captures."
+        },
+        {
+          "finding_id": "hc005_voc_05",
+          "text": "Comparison breaks Classification ROC-AUC changed to AP in 2007. AP computation changed in 2010: all recall breakpoints replace 11 fixed recall samples. Classification/detection data are unchanged between VOC2011 and VOC2012. Class sets and image distributions changed over earlier years.",
+          "evidence_artifact_ids": [
+            "hc005_voc",
+            "hc005_voc12",
+            "hc005_voc_devkit"
+          ],
+          "qualification": "Source-based date strings; current page revision and independent archival capture remain unknown."
+        },
+        {
+          "finding_id": "hc005_voc_06",
+          "text": "Access and artifact-specific rights",
+          "evidence_artifact_ids": [
+            "hc005_voc",
+            "hc005_voc12",
+            "hc005_voc_results"
+          ],
+          "qualification": "Result-table reuse license not established. Submission policy permits organizer online publication but is not a general reuse license. Flickr-image terms govern underlying images separately."
+        },
+        {
+          "finding_id": "hc005_voc_07",
+          "text": "A VOC2005 author report records classifier change after the challenge",
+          "evidence_artifact_ids": [
+            "hc005_voc_report_claimed",
+            "hc005_voc_chapter"
+          ],
+          "qualification": "Retain as pending verification or omit specific illustration until verified. General rule against backdating remains valid."
+        },
+        {
+          "finding_id": "hc005_voc_08",
+          "text": "Segmentation headings mislabel task metric Results HTML headings for comp5/comp6 say Average Precision (AP %); devkit §5.4 defines intersection/union segmentation accuracy averaged over 20 classes and background.",
+          "evidence_artifact_ids": [
+            "hc005_voc_results",
+            "hc005_voc_devkit"
+          ],
+          "qualification": "Selected classification AP sample remains valid. A later general parser must retain raw heading, attach task-specific documented metric semantics, and flag conflict instead of assigning AP to segmentation."
+        },
+        {
+          "finding_id": "hc005_voc_09",
+          "text": "Selection and missingness",
+          "evidence_artifact_ids": [
+            "hc005_voc12",
+            "hc005_voc_results"
+          ],
+          "qualification": "Tables contain explicit '-' cells and empty task sections. Preserve missingness; do not replace with zero or timeout/failure. Shared benchmark images create dependence; distinct submissions are not duplicates solely because they share images."
+        }
+      ],
+      "date_observations": [
+        {
+          "role": "announcement",
+          "value": "2012-10-01",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc005_voc12"
+          ],
+          "qualification": "Preliminary results announced to participants, not public publication."
+        },
+        {
+          "role": "event",
+          "value": "2012-10-12",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc005_voc12"
+          ],
+          "qualification": "Workshop date."
+        },
+        {
+          "role": "result_publication",
+          "value": "2012-10-17",
+          "precision": "day",
+          "evidence_artifact_ids": [
+            "hc005_voc12"
+          ],
+          "qualification": "Organizer news says results available online. Current page revision and independent archived capture unverified."
+        }
+      ]
+    }
+  ],
+  "critical_qualifications": {
+    "ipc": {
+      "rescored_2008_same_runs": true,
+      "post_bugfix_2002_lpg_new_runs": true,
+      "success_only_2002_files_imply_complete_failure_matrix": false,
+      "compressed_archive_members_inspected": false
+    },
+    "wmt": {
+      "gzip_sha256": "f49c4f058173c45b0c3ff455be8024ed13d98656810127297d815a502587cbac",
+      "compressed_bytes": 16071,
+      "decompressed_bytes": 113529,
+      "row_count": 2584,
+      "metric_count": 17,
+      "system_type_counts": {
+        "smt": 1703,
+        "rbmt": 843,
+        "syscomb": 38
+      },
+      "rights_status": "unknown",
+      "paper_license_inherits_to_gzip": false,
+      "direction_as_published": "higher_is_better",
+      "mter_already_reversed": true,
+      "rank_is_ordinal_position": false,
+      "score_range_is_universal_zero_to_one": false,
+      "rows_are_independent_experiments": false,
+      "all_english_judgments_reused_in_news_pairs": true,
+      "workshop_date": "2008-06-19",
+      "paper_publication_month": "2008-06",
+      "artifact_first_publication_at": null,
+      "execution_time": null,
+      "archive_capture_at": null,
+      "http_last_modified": "2008-08-20T15:25:44Z",
+      "http_last_modified_role": "transport_metadata_not_first_publication",
+      "denominator": null,
+      "uncertainty": null,
+      "anonymized_identity_resolution": "unresolved",
+      "raw_nonstandard_labels": [
+        "cz-en",
+        "xx-en",
+        "en-hu",
+        "es-de",
+        "nc-test2008"
+      ],
+      "documentation_discrepancy": "test-set examples exclude nc-test2008; language examples are nonexhaustive"
+    },
+    "trec": {
+      "p10_conflict_resolved": false,
+      "p10_assertions": [
+        {
+          "value_raw": ".3340",
+          "source": "OCR Table 2 Prat 10"
+        },
+        {
+          "value_raw": "0.3200",
+          "source": "Browser P_10"
+        }
+      ],
+      "raw_results_archive_access": "signed_agreement_required_not_accessed",
+      "paper_rights_status": "unknown",
+      "settled_publication_precision": "year",
+      "settled_publication_value": "1994",
+      "facsimile_verified": false
+    },
+    "sat": {
+      "blank_is_diagnosed_timeout": false,
+      "crash_penalty_is_runtime": false,
+      "planned_rerun_is_verified_result": false,
+      "may_6_and_9_dates_are_tentative_schedule": true,
+      "stage2_report_status": "preliminary_draft",
+      "industrial_roster_conflict_resolved": false
+    },
+    "voc": {
+      "weak_score_proves_abandonment": false,
+      "modern_submission_backdated_to_benchmark_year": false,
+      "classification_ap_applies_to_all_tasks": false,
+      "result_table_rights_status": "unknown",
+      "metric_break_years": [
+        "2007",
+        "2010"
+      ],
+      "post_challenge_2005_change_verified": false,
+      "current_result_page_revision_at": null
+    }
+  },
+  "offline_reader": {
+    "status": "implemented_offline_only",
+    "candidate_id": "HC002",
+    "input_count": 1,
+    "reader_path": "tools/evidence_program/read_wmt08_scores.py",
+    "fixed_hash_allowlist": true,
+    "expected_sha256": "f49c4f058173c45b0c3ff455be8024ed13d98656810127297d815a502587cbac",
+    "maximum_compressed_bytes": 32768,
+    "maximum_decompressed_bytes": 262144,
+    "maximum_rows": 4096,
+    "maximum_line_bytes": 1024,
+    "maximum_field_bytes": 128,
+    "maximum_score_characters": 64,
+    "finite_exact_decimal_strings": true,
+    "reject_concatenated_members_and_trailing_bytes": true,
+    "network_enabled": false,
+    "production_import": false,
+    "canonical_schema_claim": false,
+    "ci_source": "self_authored_synthetic_only",
+    "real_artifact_vendored": false,
+    "output_status": "experimental_review_records_not_admitted",
+    "synthetic_real_provenance_separated": true,
+    "acceptance_tests": [
+      "CI uses self-authored synthetic scores only and explicitly marks their provenance synthetic.",
+      "Private acceptance separately checks the exact compressed SHA-256/16,071 bytes, 113,529 decompressed bytes, 2,584 rows/17 metric labels and type counts; no full output is published.",
+      "Bound compressed bytes and decompression incrementally before exceeding maximum memory/work; reject malformed, truncated, CRC-invalid, concatenated and trailing gzip payloads.",
+      "Validate exactly six fields, finite bounded decimal strings, bounded lines/rows/fields and unique four-field keys.",
+      "Preserve exact score strings without binary-float round-trip, metric spelling/case and raw labels including cz-en, xx-en, en-hu, es-de and nc-test2008.",
+      "Preserve source-specific higher-is-better direction; never reverse mter again or make Rank ordinal.",
+      "Accept finite native metric values above one without a uniform percentage or [0,1] constraint.",
+      "Keep denominator, uncertainty, exact execution, first publication, archive capture and anonymized identities unknown.",
+      "Separate workshop day, paper month, explicitly supplied HTTP transport evidence and local read time; filesystem/gzip-header mtime establishes neither first publication nor execution.",
+      "Use artifact-and-edition/task-scoped review identities; rows/metrics are not independent experiments or globally resolved system identities.",
+      "Reject symlink/nonregular/network-style input and source hash drift; unsupported safe-open platform fails closed.",
+      "Keep the real gzip license unknown and reject admission, network collection, source-body vendoring and canonical import claims."
+    ]
+  },
+  "verification_separation": {
+    "metadata_checks": "offline_catalog_consistency_not_source_truth_or_rights_clearance",
+    "ci_reads_real_wmt_artifact": false,
+    "ci_fixture_kind": "self_authored_synthetic",
+    "private_real_acceptance": {
+      "status": "passed",
+      "sha256": "f49c4f058173c45b0c3ff455be8024ed13d98656810127297d815a502587cbac",
+      "compressed_bytes": 16071,
+      "decompressed_bytes": 113529,
+      "rows": 2584,
+      "metrics": 17,
+      "full_output_published": false,
+      "meaning": "Local fixed-artifact acceptance; unavailable to repository CI and not redistribution permission."
+    }
+  },
+  "corrections": [
+    {
+      "claim": "Original submission baseline described current main.",
+      "qualification": "Original research inspected 6c2a4aa531cd5b8e5411c25ee08569d707a682b1; this integration rechecked both required files at bc00b609473c19c76869839598b63e1c8ace9ccc. Frozen inventory still contains 64 families and no direct match to these five."
+    },
+    {
+      "claim": "IPC archive links were called verified data access.",
+      "qualification": "Only advertised hrefs and public pages were checked; archive bodies, members, availability and rights remain untested."
+    },
+    {
+      "claim": "SAT May 6 and May 9 were treated as events that occurred.",
+      "qualification": "They are tentative schedule entries; only April 8 start is retrospectively confirmed in news."
+    },
+    {
+      "claim": "One SAT runtime/timeout interpretation could cover all categories.",
+      "qualification": "Stage/category machines, limits and repeat aggregation differ; charged crash penalties are not measured runtime. Preliminary roster conflicts remain."
+    },
+    {
+      "claim": "WMT noncanonical language labels were a documentation violation.",
+      "qualification": "Language examples are nonexhaustive. nc-test2008 genuinely exceeds the stated test-set examples; all raw labels remain unchanged."
+    },
+    {
+      "claim": "WMT score rows are independent measurements.",
+      "qualification": "Multiple metrics share output sets; system combinations depend on constituents; All-English judgments were reused for individual News tasks."
+    },
+    {
+      "claim": "TREC P@10 discrepancy could be fixed as an OCR error.",
+      "qualification": "Facsimile not inspected; retain both .3340 and 0.3200 sourced assertions without selecting a canonical value."
+    },
+    {
+      "claim": "VOC2005 post-challenge classifier change was reverified.",
+      "qualification": "It was not independently reverified; official chapter access blocked and no bypass attempted."
+    },
+    {
+      "claim": "VOC AP table headings generalize to every task.",
+      "qualification": "Segmentation headings conflict with devkit intersection/union semantics; classification sample remains valid."
+    },
+    {
+      "claim": "Private WMT verification clears public fixture reuse.",
+      "qualification": "Gzip rights remain unknown; no real source file or full results are in the repository. CI uses synthetic data only."
+    }
+  ],
+  "next_actions": [
+    {
+      "action_id": "HC-A01",
+      "candidate_ids": [
+        "HC002"
+      ],
+      "status": "completed",
+      "action": "Implement the fixed-pin offline WMT08 reader, synthetic regression suite and separate private real-artifact acceptance.",
+      "completion_evidence": "Reader and tests included; local private acceptance established 2,584 rows/17 metrics without a public source fixture. No operational source admission."
+    },
+    {
+      "action_id": "HC-A02",
+      "candidate_ids": [
+        "HC001"
+      ],
+      "status": "open",
+      "action": "Review one bounded IPC archive only after access/rights scope and resource limits are separately established.",
+      "completion_evidence": "A single edition-specific member manifest, exact pin, success/failure/missingness rules and original/rescore/rerun linkage; no entire archive history."
+    },
+    {
+      "action_id": "HC-A03",
+      "candidate_ids": [
+        "HC002"
+      ],
+      "status": "pending_rights_review",
+      "action": "Resolve WMT08 gzip redistribution and necessary raw-label mapping without inheriting the ACL paper license.",
+      "completion_evidence": "Artifact-specific public reuse grant or explicit continued unknown; evidence-backed edition-local alias map retaining raw strings."
+    },
+    {
+      "action_id": "HC-A04",
+      "candidate_ids": [
+        "HC003"
+      ],
+      "status": "blocked_access",
+      "action": "Resolve TREC P@10 and OCR run-label ambiguity from a permitted bounded facsimile; preserve publication-day conflict.",
+      "completion_evidence": "Page-level facsimile evidence for printed p.110 or a documented unresolved conflict; explicit publication-year precision and no archive agreement bypass."
+    },
+    {
+      "action_id": "HC-A05",
+      "candidate_ids": [
+        "HC004"
+      ],
+      "status": "open",
+      "action": "Qualify SAT preliminary-report roster, scheduled dates and any corrected rerun evidence.",
+      "completion_evidence": "Primary version-specific evidence confirming or leaving unresolved stage-two roster/event dates/corrected runs, with penalties and measured time separate."
+    },
+    {
+      "action_id": "HC-A06",
+      "candidate_ids": [
+        "HC005"
+      ],
+      "status": "open",
+      "action": "Prepare task-specific VOC metric/date rules and retain unverified VOC2005 illustration as pending.",
+      "completion_evidence": "Reviewable classification versus segmentation metric mapping, 2007/2010 breaks, later-submission dates and explicit unresolved 2005 example."
+    },
+    {
+      "action_id": "HC-A07",
+      "candidate_ids": [
+        "HC001",
+        "HC003",
+        "HC004",
+        "HC005"
+      ],
+      "status": "pending_rights_review",
+      "action": "Establish artifact-specific reuse and permitted access before any public source fixtures or collection.",
+      "completion_evidence": "Per-artifact rights evidence and scoped allowed use, or continued explicit unknown/access hold."
+    },
+    {
+      "action_id": "HC-A08",
+      "candidate_ids": [
+        "HC001",
+        "HC002",
+        "HC003",
+        "HC004",
+        "HC005"
+      ],
+      "status": "pending_contract_review",
+      "action": "Review lossless canonical mapping and scientific comparability before admission or longitudinal analytics.",
+      "completion_evidence": "Proposed mapping preserving every date role, unknown, exact score, version, task/metric condition, source license and dependence link; explicit rejected lossy cases."
+    }
+  ],
+  "focused_follow_up_prompts": [
+    {
+      "action_id": "HC-A02",
+      "why_needed": "Review one bounded IPC archive only after access/rights scope and resource limits are separately established.",
+      "prompt": "For IPC historical backfills, inspect already-public download documentation and artifact-specific reuse statements for one proposed 2002 or 2008 detailed export. The current review inspected advertised links only, not archive bodies. Do not download or traverse archives, accept agreements or contact organizers. Propose one bounded authorized acquisition/membership check, keeping IPC2002 solved-only rows, post-bugfix new LPG runs and IPC2008 rescoring distinct."
+    },
+    {
+      "action_id": "HC-A03",
+      "why_needed": "Resolve WMT08 gzip redistribution and necessary raw-label mapping without inheriting the ACL paper license.",
+      "prompt": "Inspect already-public official rights/schema/paper notices for the exact WMT08 score gzip and raw labels cz-en, xx-en, en-hu, es-de and nc-test2008. Preserve exact strings and distinguish nonexhaustive language examples from the actual test-set documentation discrepancy. Do not infer vendor identities, reuse paper licenses, contact anyone, accept terms or publish source scores. Report the smallest remaining rights/mapping decision."
+    },
+    {
+      "action_id": "HC-A04",
+      "why_needed": "Resolve TREC P@10 and OCR run-label ambiguity from a permitted bounded facsimile; preserve publication-day conflict.",
+      "prompt": "TREC-2 OCR Table 2 has Prat 10 .3340 for lsia1; the later NIST Browser has P_10 0.3200. A public DOI facsimile response exceeded the tool size limit and another public PDF retrieval failed. Determine whether an already-public safely accessible page-level facsimile is available without bypassing denial, bulk downloads, restricted archive access or agreement acceptance. Preserve both values and raw OCR labels until resolved; retain conflicting catalog publication days within 1994."
+    },
+    {
+      "action_id": "HC-A05",
+      "why_needed": "Qualify SAT preliminary-report roster, scheduled dates and any corrected rerun evidence.",
+      "prompt": "Use bounded public SAT2002 organizer/report/author pages to clarify the preliminary industrial roster inconsistency and tentative May 6/9 dates. Separate confirmed April 8 start, scheduled events, report generation, news revision and 2020 restoration. Find a primary corrected BerkMin62 rerun result only if already available; a promise is not a result. Do not revive the interactive database, download solver/benchmark corpora, reconcile conflicting versions silently or equate 2400-second crash penalties with runtime."
+    },
+    {
+      "action_id": "HC-A06",
+      "why_needed": "Prepare task-specific VOC metric/date rules and retain unverified VOC2005 illustration as pending.",
+      "prompt": "For VOC annual-table backfill, inspect existing bounded official results/devkit evidence. Classification comp1 AP is distinct from segmentation headings that say AP while devkit §5.4 defines intersection/union. Preserve raw heading plus documented task semantics/conflict, 2007/2010 protocol breaks and shared 2011/2012 data. Do not backdate modern submissions or turn weak scores into abandonment. The linked 2005 chapter hit an unsafe redirect; do not bypass it or assert the unverified post-challenge classifier-change illustration."
+    },
+    {
+      "action_id": "HC-A07",
+      "why_needed": "Establish artifact-specific reuse and permitted access before any public source fixtures or collection.",
+      "prompt": "Review already-public artifact-specific reuse terms for selected IPC results, TREC Bellcore paper/Browser data, SAT2002 report/author statement and VOC score tables. Government hosting, converter licenses, software GPL and image terms are not result-data licenses. TREC raw archive access requires an agreement that has not been accepted. Do not accept agreements, access restricted archives, contact publishers or redistribute source bodies; return exact scoped grants or unresolved holds."
+    },
+    {
+      "action_id": "HC-A08",
+      "why_needed": "Review lossless canonical mapping and scientific comparability before admission or longitudinal analytics.",
+      "prompt": "Using the existing frozen proposed evidence contract, map only reviewed historical metadata and experimental WMT records without editing frozen schemas or importing records. Separate original run, repeated report, corrected assertion, rescoring, later rerun and benchmark dependence; preserve failures versus missingness, native metric direction/units, every date precision and unresolved rights/identity. If any field would be lost, document it rather than coerce. Propose narrow comparable cohorts only; no universal capability curve, p(doom), live collector or deployment."
+    }
+  ],
+  "holds": [
+    {
+      "id": "HIST-H01",
+      "scope": "all five selected result artifacts",
+      "reason": "Artifact-specific redistribution grants not established",
+      "release_condition": "Verified license covering the exact artifact and intended reuse, or specific permission through a newly authorized process."
+    },
+    {
+      "id": "HIST-H02",
+      "scope": "IPC compressed archives",
+      "reason": "Bodies/members/access not tested",
+      "release_condition": "Separately authorized bounded artifact inspection plus rights review; do not mark collected from an href."
+    },
+    {
+      "id": "HIST-H03",
+      "scope": "TREC raw results archive",
+      "reason": "Access conditional on organization agreement; outside scope",
+      "release_condition": "User-approved compliant access path and applicable terms; no guessed endpoints."
+    },
+    {
+      "id": "HIST-H04",
+      "scope": "TREC lsia1 P@10",
+      "reason": "Original text-vs-Browser conflict unresolved; linked 31,290,176-byte facsimile too large for tool",
+      "release_condition": "A safely accessible, public, directly attributable original page110 facsimile; retain both until then."
+    },
+    {
+      "id": "HIST-H05",
+      "scope": "VOC2005 modification illustration",
+      "reason": "Official linked chapter redirected unsafely and was not accessed; supplied alternate not used to bypass",
+      "release_condition": "A separately available safe public original documenting the change."
+    },
+    {
+      "id": "HIST-H06",
+      "scope": "VOC cross-task parsing",
+      "reason": "Segmentation AP-heading versus IoU-definition conflict",
+      "release_condition": "Task-specific metric mapping retaining raw label and explicit conflict; no AP default."
+    },
+    {
+      "id": "HIST-H07",
+      "scope": "SAT complete solver-by-instance matrix",
+      "reason": "Selected hard-case tables, inconsistent roster and unavailable interactive detail",
+      "release_condition": "Verified complete attempt-level records with edition/category settings; do not infer absent attempts."
+    }
+  ],
+  "original_research_baseline_commit": "6c2a4aa531cd5b8e5411c25ee08569d707a682b1"
+}
