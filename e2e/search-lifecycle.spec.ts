@@ -1,4 +1,4 @@
-import type { SearchResponse } from "@pdoom/contracts";
+import type { SearchEntityType, SearchResponse } from "@pdoom/contracts";
 import { expect, test } from "./support/test";
 
 const empty = { data: [], page: { limit: 8, total: 0, next_cursor: null } };
@@ -142,3 +142,149 @@ for (const problem of ["malformed ID", "stale fingerprint"]) {
     await expect(restart).toHaveAttribute("href", `/search?${params}`);
   });
 }
+
+const groupedContinuationCases: Array<{
+  kind: SearchEntityType;
+  heading: string;
+  query: string;
+  firstSlug: string;
+  nextSlug: string;
+}> = [
+  { kind: "person", heading: "People", query: "Okonkwo", firstSlug: "samir-okonkwo", nextSlug: "samira-okonkwo" },
+  { kind: "organization", heading: "Organizations", query: "lead", firstSlug: "brightpath-robotics", nextSlug: "northwind-alignment-lab" },
+  { kind: "statement", heading: "Statements", query: "Ada Quill", firstSlug: "ada-extinction-2025", nextSlug: "ada-inferred-2024" },
+  { kind: "topic", heading: "Topics", query: "AI", firstSlug: "ai-catastrophic-harm", nextSlug: "frontier-ai-risk" },
+  { kind: "source", heading: "Sources", query: "Harbor", firstSlug: "harbor-blog", nextSlug: "harbor-papers" },
+  { kind: "source_item", heading: "Source item titles", query: "labor", firstSlug: "lumen-paper-2025", nextSlug: "samira-letter-2024" },
+];
+
+function searchHitPath(kind: SearchEntityType, slug: string): string {
+  const roots = {
+    person: "/people/", organization: "/people?organization=", statement: "/statements/",
+    topic: "/topics/", source: "/sources/", source_item: "/source-items/",
+  };
+  return `${roots[kind]}${slug}`;
+}
+
+for (const { kind, heading, query, firstSlug, nextSlug } of groupedContinuationCases) {
+  test(`untyped search ${kind} More opens the next result`, async ({ page }) => {
+    // Use the real fixture-backed route and the rendered href, rather than
+    // constructing a typed cursor request or mocking the search API.
+    const params = new URLSearchParams({ q: query, mode: "page", limit: "1" });
+    const firstResponse = await page.request.get(`/api/search?${params}`);
+    expect(firstResponse.ok()).toBe(true);
+    const firstResult = await firstResponse.json() as SearchResponse;
+    expect(firstResult.query.types).toHaveLength(6);
+    expect(firstResult.groups[kind].data.map((hit) => hit.slug)).toEqual([firstSlug]);
+    expect(firstResult.groups[kind].page.total).toBeGreaterThan(1);
+
+    await page.goto(`/search?${params}`);
+    expect(new URL(page.url()).searchParams.has("type")).toBe(false);
+    const section = page.getByRole("region", { name: heading, exact: true });
+    const firstHit = section.locator(`a[href="${searchHitPath(kind, firstSlug)}"]`);
+    const nextHit = section.locator(`a[href="${searchHitPath(kind, nextSlug)}"]`);
+    await expect(firstHit).toBeVisible();
+    await expect(section.locator("article.card")).toHaveCount(1);
+    await expect(nextHit).toHaveCount(0);
+    const more = section.getByRole("link", { name: "More", exact: true });
+    const href = await more.getAttribute("href");
+    expect(href).toBeTruthy();
+    const nextUrl = new URL(href!, page.url());
+    expect(nextUrl.searchParams.get("type")).toBe(kind);
+    expect(nextUrl.searchParams.get("cursor")).toBeTruthy();
+    for (const [key, value] of params) expect(nextUrl.searchParams.get(key)).toBe(value);
+
+    await more.click();
+    await expect(page).toHaveURL(nextUrl.href);
+    await expect(page.getByRole("alert").filter({ hasText: "This search link is invalid or out of date." })).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "Restart this search" })).toHaveCount(0);
+    await expect(page.locator("section.search-kind")).toHaveCount(1);
+    await expect(nextHit).toBeVisible();
+    await expect(section.locator("article.card")).toHaveCount(1);
+    await expect(firstHit).toHaveCount(0);
+    await expect(page.getByRole("status").filter({ hasText: "public matches" }))
+      .toHaveText(`${firstResult.groups[kind].page.total} public matches`);
+
+    const nextResponse = await page.request.get(`/api/search${nextUrl.search}`);
+    expect(nextResponse.ok()).toBe(true);
+    const nextResult = await nextResponse.json() as SearchResponse;
+    expect(nextResult.query.types).toEqual([kind]);
+    expect(nextResult.groups[kind].data.map((hit) => hit.slug)).toEqual([nextSlug]);
+    expect(nextResult.groups[kind].page.total).toBe(firstResult.groups[kind].page.total);
+  });
+}
+
+test("filtered untyped statement More preserves normalized text and filters through history", async ({ page }) => {
+  const params = new URLSearchParams({
+    q: "  ＡＤＡ　   ＱＵＩＬＬ  ", person: "ada-quill", topic: "ai-extinction",
+    statement_type: "explicit_numeric", from: "2020-01-01", to: "2026-12-31", mode: "page", limit: "1",
+  });
+  const response = await page.request.get(`/api/search?${params}`);
+  expect(response.ok()).toBe(true);
+  const firstResult = await response.json() as SearchResponse;
+  expect(firstResult.query.normalized).toBe("ada quill");
+  expect(firstResult.query.types).toEqual(["statement"]);
+  expect(firstResult.groups.statement.data.map((hit) => hit.slug)).toEqual(["ada-extinction-2025"]);
+  expect(firstResult.groups.statement.page.total).toBe(2);
+  expect(firstResult.groups.statement.page.next_cursor).toBeTruthy();
+
+  await page.goto(`/search?${params}`);
+  const firstUrl = page.url();
+  expect(new URL(firstUrl).searchParams.has("type")).toBe(false);
+  const section = page.getByRole("region", { name: "Statements", exact: true });
+  const firstHit = section.locator('a[href="/statements/ada-extinction-2025"]');
+  const nextHit = section.locator('a[href="/statements/ada-extinction-2023"]');
+  const more = section.getByRole("link", { name: "More", exact: true });
+  await expect(firstHit).toBeVisible();
+  await expect(nextHit).toHaveCount(0);
+  const href = await more.getAttribute("href");
+  expect(href).toBeTruthy();
+  const nextUrl = new URL(href!, firstUrl);
+  const expectedParams = new URLSearchParams(params);
+  expectedParams.set("type", "statement");
+  expectedParams.set("cursor", firstResult.groups.statement.page.next_cursor!);
+  expect(nextUrl.searchParams.toString()).toBe(expectedParams.toString());
+
+  const expectFilters = async (type: string) => {
+    const form = page.locator("form.filters");
+    await expect(form.getByRole("textbox", { name: "Text", exact: true })).toHaveValue(params.get("q")!);
+    await expect(form.locator('[name="type"]')).toHaveValue(type);
+    for (const name of ["person", "topic", "statement_type", "from", "to"]) {
+      await expect(form.locator(`[name="${name}"]`)).toHaveValue(params.get(name)!);
+    }
+  };
+  const expectNextPage = async () => {
+    await expect(page).toHaveURL(nextUrl.href);
+    await expect(page.getByRole("alert").filter({ hasText: "This search link is invalid or out of date." })).toHaveCount(0);
+    await expect(page.getByRole("link", { name: "Restart this search" })).toHaveCount(0);
+    await expect(nextHit).toBeVisible();
+    await expect(section.locator("article.card")).toHaveCount(1);
+    await expect(firstHit).toHaveCount(0);
+    await expect(more).toHaveCount(0);
+    await expect(page.getByRole("status").filter({ hasText: "public matches" })).toHaveText("2 public matches");
+    await expectFilters("statement");
+  };
+
+  await expectFilters("");
+  await more.click();
+  await expectNextPage();
+  const nextResponse = await page.request.get(`/api/search${nextUrl.search}`);
+  expect(nextResponse.ok()).toBe(true);
+  const nextResult = await nextResponse.json() as SearchResponse;
+  expect(nextResult.query.normalized).toBe("ada quill");
+  expect(nextResult.groups.statement.data.map((hit) => hit.slug)).toEqual(["ada-extinction-2023"]);
+  expect(nextResult.groups.statement.page).toEqual({ limit: 1, total: 2, next_cursor: null });
+
+  await page.goBack();
+  await expect(page).toHaveURL(firstUrl);
+  await expect(firstHit).toBeVisible();
+  await expect(nextHit).toHaveCount(0);
+  await expect(more).toHaveAttribute("href", href!);
+  await expectFilters("");
+  await page.goForward();
+  await expectNextPage();
+  await page.goBack();
+  await expect(firstHit).toBeVisible();
+  await more.click();
+  await expectNextPage();
+});

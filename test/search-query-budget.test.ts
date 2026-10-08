@@ -345,6 +345,105 @@ describe("search count/page query budget", () => {
   });
 });
 
+describe("grouped search cursor fingerprints", () => {
+  it.each(modes)("binds all six untyped %s groups to their typed continuation without extra queries", async (mode) => {
+    const q = "  Ｒｅｓｕｌｔ\u200B　\tＴｅｘｔ  ";
+    const replies = SEARCH_ENTITY_TYPES.flatMap((type) => {
+      const limit = mode === "suggest" ? SEARCH_SUGGEST_LIMITS[type] : 1;
+      return [[{ total_count: 4 }], Array.from({ length: limit + 1 }, (_, index) => hitRow(type, index + 1))];
+    });
+    const db = fakeClient(...replies);
+    const initial = await searchPublic({ q, mode, limit: 1 }, db.client);
+    expect(initial.query.normalized).toBe("result text");
+    expect(initial.query.types).toEqual(SEARCH_ENTITY_TYPES);
+    expect(db.query).toHaveBeenCalledTimes(12);
+    const fingerprints = new Set<string>();
+
+    for (const [index, type] of SEARCH_ENTITY_TYPES.entries()) {
+      const limit = mode === "suggest" ? SEARCH_SUGGEST_LIMITS[type] : 1;
+      const boundary = hitRow(type, limit);
+      const cursor = initial.groups[type].page.next_cursor!;
+      expect(cursor).toEqual(expect.any(String));
+      const payload = JSON.parse(Buffer.from(cursor, "base64url").toString("utf8")) as { fp: string };
+      fingerprints.add(payload.fp);
+      const typed = fakeClient([{ total_count: 4 }], Array.from({ length: limit + 1 }, (_, row) => hitRow(type, row + 1)));
+      const reference = await searchPublic({ q: "result text", type, mode, limit: 1 }, typed.client);
+      expect(cursor).toBe(reference.groups[type].page.next_cursor);
+      expect(typed.query.mock.calls).toEqual(db.query.mock.calls.slice(index * 2, index * 2 + 2));
+
+      const nextDb = fakeClient([{ total_count: 4 }], [hitRow(type, limit + 1)]);
+      const next = await searchPublic({ q: "result text", type, mode: "page", limit: 1, cursor }, nextDb.client);
+      expect(nextDb.query).toHaveBeenCalledTimes(2);
+      expectSharedRelation(nextDb.query.mock.calls[0]!, nextDb.query.mock.calls[1]!);
+      expect(nextDb.query.mock.calls[0]).toEqual(typed.query.mock.calls[0]);
+      expect(nextDb.query.mock.calls[1]![1]?.slice(-4)).toEqual([boundary.hit_rank, boundary.tie, boundary.id, 2]);
+      expect(next.groups[type].data.map((row) => row.id)).toEqual([hitRow(type, limit + 1).id]);
+      expect(next.groups[type].page.total).toBe(initial.groups[type].page.total);
+      expect(next.groups[type].data.every((row) => !initial.groups[type].data.some((first) => first.id === row.id))).toBe(true);
+    }
+    expect(fingerprints.size).toBe(6);
+  });
+
+  it("binds a filter-narrowed untyped group to all its continuation filters", async () => {
+    const input = {
+      q: "result", person: "fixture-person", topic: "fixture-topic", statement_type: "explicit_qualitative" as const,
+      from: "2020-01-01", to: "2026-12-31", mode: "page" as const, limit: 1,
+    };
+    const mint = fakeClient([{ total_count: 2 }], [hitRow("statement", 1), hitRow("statement", 2)]);
+    const initial = await searchPublic(input, mint.client);
+    expect(initial.query.types).toEqual(["statement"]);
+    expect(mint.query).toHaveBeenCalledTimes(2);
+    const cursor = initial.groups.statement.page.next_cursor!;
+    const nextDb = fakeClient([{ total_count: 2 }], [hitRow("statement", 2)]);
+    const next = await searchPublic({ ...input, type: "statement", cursor }, nextDb.client);
+    expect(next.groups.statement.data.map((row) => row.id)).toEqual([hitRow("statement", 2).id]);
+    expect(next.groups.statement.page).toEqual({ limit: 1, total: 2, next_cursor: null });
+    expect(nextDb.query.mock.calls[0]).toEqual(mint.query.mock.calls[0]);
+    expect(nextDb.query).toHaveBeenCalledTimes(2);
+
+    for (const change of [
+      { q: "different" }, { person: "other-person" }, { person: undefined },
+      { topic: "other-topic" }, { topic: undefined },
+      { statement_type: "explicit_numeric" as const }, { statement_type: undefined },
+      { from: "2021-01-01" }, { from: undefined }, { to: "2025-12-31" }, { to: undefined },
+    ]) {
+      const db = fakeClient();
+      const pool = fakePool(db.client);
+      await expect(searchPublic({ ...input, ...change, type: "statement", cursor }, pool.pool)).rejects.toBeInstanceOf(InvalidCursorError);
+      expect(pool.connect).not.toHaveBeenCalled();
+      expect(pool.query).not.toHaveBeenCalled();
+      expect(db.query).not.toHaveBeenCalled();
+    }
+  });
+
+  it("rejects every wrong group and the old generic fingerprint before pool checkout", async () => {
+    const q = "result";
+    const mint = fakeClient(...SEARCH_ENTITY_TYPES.flatMap((type) => [[{ total_count: 2 }], [hitRow(type, 1), hitRow(type, 2)]]));
+    const initial = await searchPublic({ q, limit: 1 }, mint.client);
+    const prepared = prepareSearchText(q);
+    const genericFp = createHash("sha256").update(JSON.stringify({
+      q: prepared.normalized, tokens: prepared.tokens, type: null,
+      topic: null, person: null, statement_type: null, from: null, to: null,
+    })).digest("hex").slice(0, 16);
+    for (const sourceType of SEARCH_ENTITY_TYPES) {
+      const cursor = initial.groups[sourceType].page.next_cursor!;
+      for (const type of SEARCH_ENTITY_TYPES.filter((kind) => kind !== sourceType)) {
+        const db = fakeClient();
+        const pool = fakePool(db.client);
+        await expect(searchPublic({ q, type, limit: 1, cursor }, pool.pool)).rejects.toBeInstanceOf(InvalidCursorError);
+        expect(pool.connect).not.toHaveBeenCalled();
+        expect(pool.query).not.toHaveBeenCalled();
+        expect(db.query).not.toHaveBeenCalled();
+      }
+      const db = fakeClient();
+      const pool = fakePool(db.client);
+      await expect(searchPublic({ q, type: sourceType, limit: 1, cursor: withCursorPayload(cursor, { fp: genericFp }) }, pool.pool)).rejects.toBeInstanceOf(InvalidCursorError);
+      expect(pool.connect).not.toHaveBeenCalled();
+      expect(db.query).not.toHaveBeenCalled();
+    }
+  });
+});
+
 describe("search snapshot lifecycle", () => {
   function expectSnapshotStart(calls: QueryCall[]) {
     expect(calls[0]).toEqual(["BEGIN ISOLATION LEVEL REPEATABLE READ READ ONLY"]);

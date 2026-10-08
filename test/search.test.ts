@@ -178,6 +178,92 @@ describe("search filters and pagination", () => {
   });
 });
 
+const groupedPaginationCases = [
+  { type: "person", q: "Okonkwo", expected: ["samir-okonkwo", "samira-okonkwo"] },
+  { type: "organization", q: "lead", expected: ["brightpath-robotics", "northwind-alignment-lab"] },
+  { type: "statement", q: "extinction", expected: ranking.cases.find((item) => item.id === "extinction")!.statement! },
+  { type: "topic", q: "extinction", expected: ["ai-extinction", "ai-catastrophic-harm", "labor-displacement"] },
+  { type: "source", q: "Harbor", expected: ["harbor-blog", "harbor-papers", "harbor-video"] },
+  { type: "source_item", q: "labor", expected: ["lumen-paper-2025", "samira-letter-2024"] },
+] as const;
+
+describe("untyped group continuation on PostgreSQL", () => {
+  it.each(groupedPaginationCases)("continues $type with stable totals and exact order", async ({ type, q, expected }) => {
+    const initial = await searchPublic({ q, limit: 1 }, pool);
+    const typed = await searchPublic({ q, type, limit: 1 }, pool);
+    expect(initial.query.types).toEqual(SEARCH_ENTITY_TYPES);
+    expect(initial.groups[type]).toEqual(typed.groups[type]);
+    expect(initial.groups[type].page.next_cursor).toEqual(expect.any(String));
+    const seen = slugs(initial.groups[type].data);
+    let cursor = initial.groups[type].page.next_cursor;
+    for (let page = 1; page < expected.length && cursor; page += 1) {
+      const result = await searchPublic({ q, type, limit: 1, cursor }, pool);
+      const group = result.groups[type];
+      expect(group.page.total).toBe(expected.length);
+      expect(group.data).toHaveLength(1);
+      expect(seen).not.toContain(group.data[0]!.slug);
+      seen.push(...slugs(group.data));
+      cursor = group.page.next_cursor;
+    }
+    expect(initial.groups[type].page.total).toBe(expected.length);
+    expect(cursor).toBeNull();
+    expect(seen).toEqual(expected);
+    expect(new Set(seen).size).toBe(seen.length);
+  });
+
+  it("continues a normalized Unicode query narrowed to statements by all filters", async () => {
+    const input = {
+      q: "  ＥＸＴＩＮＣＴＩＯＮ\u200B　\t ", person: "ada-quill", topic: "ai-extinction",
+      statement_type: "explicit_numeric" as const, from: "2020-01-01", to: "2026-12-31", limit: 1,
+    };
+    const initial = await searchPublic(input, pool);
+    expect(initial.query.normalized).toBe("extinction");
+    expect(initial.query.types).toEqual(["statement"]);
+    expect(slugs(initial.groups.statement.data)).toEqual(["ada-extinction-2025"]);
+    const cursor = initial.groups.statement.page.next_cursor;
+    expect(cursor).toEqual(expect.any(String));
+    const next = await searchPublic({ ...input, q: "extinction", type: "statement", cursor: cursor! }, pool);
+    expect(slugs(next.groups.statement.data)).toEqual(["ada-extinction-2023"]);
+    expect(next.groups.statement.page).toEqual({ limit: 1, total: initial.groups.statement.page.total, next_cursor: null });
+    expect(next.groups.statement.page.total).toBe(2);
+    for (const changes of [{ q: "risk" }, { person: "jonah-hale" }, { topic: "ai-catastrophic-harm" }, { statement_type: "explicit_qualitative" as const }, { from: "2021-01-01" }, { to: "2025-12-31" }]) {
+      const before = searchDbQueryCount();
+      await expect(searchPublic({ ...input, ...changes, type: "statement", cursor: cursor! }, pool)).rejects.toBeInstanceOf(InvalidCursorError);
+      expect(searchDbQueryCount() - before).toBe(0);
+    }
+  });
+
+  it("normalizes multiword fullwidth text and whitespace across group continuation", async () => {
+    const initial = await searchPublic({ q: " Ｓｅａｒｃｈ\u200B　\tＦｉｘｔｕｒｅ ", limit: 1 }, pool);
+    expect(slugs(initial.groups.person.data)).toEqual(["searchfix-other"]);
+    const cursor = initial.groups.person.page.next_cursor;
+    expect(cursor).toEqual(expect.any(String));
+    const next = await searchPublic({ q: "search fixture", type: "person", limit: 1, cursor: cursor! }, pool);
+    expect(slugs(next.groups.person.data)).toEqual(["searchfix-speaker"]);
+    expect(next.groups.person.page).toEqual({ limit: 1, total: 2, next_cursor: null });
+  });
+
+  it("continues actual API group cursors and rejects same-sort wrong groups", async () => {
+    const response = await searchRoute(new Request("http://localhost/api/search?q=extinction&limit=1"));
+    expect(response.status).toBe(200);
+    const initial = await response.json();
+    for (const type of ["statement", "topic"] as const) {
+      const cursor = initial.groups[type].page.next_cursor as string;
+      expect(cursor).toEqual(expect.any(String));
+      const params = new URLSearchParams({ q: "extinction", type, limit: "1", cursor });
+      const continued = await searchRoute(new Request(`http://localhost/api/search?${params}`));
+      expect(continued.status).toBe(200);
+      const result = await continued.json();
+      expect(result.groups[type].page.total).toBe(initial.groups[type].page.total);
+      expect(result.groups[type].data[0].id).not.toBe(initial.groups[type].data[0].id);
+      params.set("type", type === "statement" ? "source_item" : "source");
+      const wrong = await searchRoute(new Request(`http://localhost/api/search?${params}`));
+      expect(wrong.status).toBe(400);
+      expect(await wrong.json()).toEqual({ error: { code: "invalid_cursor", message: "Cursor is invalid." } });
+    }
+  });
+});
+
 describe("search query safety", () => {
   it("rejects empty, oversized, and incompatible queries", async () => {
     const cases = [
