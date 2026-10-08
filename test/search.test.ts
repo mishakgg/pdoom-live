@@ -1,5 +1,7 @@
+import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
-import { SEARCH_SUGGEST_LIMITS } from "@pdoom/contracts";
+import { SEARCH_ENTITY_TYPES, SEARCH_RANK, SEARCH_SUGGEST_LIMITS, prepareSearchText } from "@pdoom/contracts";
+import { counterSnapshot } from "@pdoom/observability";
 import { listStatements } from "../packages/db/src/queries";
 import { createPool } from "../packages/db/src/pool";
 import { searchPublic } from "../packages/db/src/search";
@@ -219,5 +221,107 @@ describe("search query safety", () => {
     expect(hostileBody.query.text).toBe("<script>alert(1)</script>");
     expect(JSON.stringify(hostileBody.groups)).not.toContain("<script>");
     expect(Object.values(hostileBody.groups).every((group) => (group as { page: { total: number } }).page.total === 0)).toBe(true);
+  });
+});
+
+function searchDbQueryCount() {
+  return counterSnapshot()
+    .filter((row) => row.name === "pdoom_db_queries_total")
+    .reduce((total, row) => total + row.value, 0);
+}
+
+describe("empty search groups on PostgreSQL", () => {
+  it.each(SEARCH_ENTITY_TYPES)("skips only the empty %s page", async (type) => {
+    const before = searchDbQueryCount();
+    const result = await searchPublic({ q: "zzzznoterm9f3a", type, mode: "page", limit: 5 }, pool);
+    expect(searchDbQueryCount() - before).toBe(5);
+    expect(result.groups[type]).toEqual({ data: [], page: { limit: 5, total: 0, next_cursor: null } });
+  });
+
+  it.each([
+    { type: "person", q: "Ada Quill" },
+    { type: "organization", q: "AGI 2030" },
+    { type: "statement", q: "extinction" },
+    { type: "topic", q: "extinction" },
+    { type: "source", q: "Harbor Compute notes" },
+    { type: "source_item", q: "Fictional labor paper" },
+  ] as const)("retains count and page for nonempty $type results", async ({ type, q }) => {
+    const before = searchDbQueryCount();
+    const result = await searchPublic({ q, type, mode: "page", limit: 5 }, pool);
+    expect(searchDbQueryCount() - before).toBe(6);
+    expect(result.groups[type].page.total).toBeGreaterThan(0);
+    expect(result.groups[type].data.length).toBeGreaterThan(0);
+  });
+
+  it.each([
+    { type: "person", q: "Ada Quill", person: "searchfix-missing" },
+    { type: "statement", q: "AGI 2030", person: "searchfix-other" },
+    { type: "topic", q: "extinction", topic: "searchfix-missing" },
+    { type: "source", q: "AGI 2030", person: "searchfix-other" },
+    { type: "source_item", q: "AGI 2030", person: "searchfix-other" },
+  ] as const)("counts with the existing $type filters before skipping its page", async (query) => {
+    const before = searchDbQueryCount();
+    const result = await searchPublic({ ...query, mode: "page", limit: 5 }, pool);
+    expect(searchDbQueryCount() - before).toBe(5);
+    expect(result.groups[query.type]).toEqual({ data: [], page: { limit: 5, total: 0, next_cursor: null } });
+  });
+
+  it.each([
+    { type: "statement", q: "REJECTED_SECRET_PHRASE" },
+    { type: "statement", q: "UNREVIEWED_CANONICAL_PHRASE" },
+    { type: "organization", q: "REJECTED_ROLE_SECRET" },
+  ] as const)("keeps private-only $q matches empty", async (query) => {
+    const before = searchDbQueryCount();
+    const result = await searchPublic({ ...query, mode: "page", limit: 5 }, pool);
+    expect(searchDbQueryCount() - before).toBe(5);
+    expect(result.groups[query.type]).toEqual({ data: [], page: { limit: 5, total: 0, next_cursor: null } });
+  });
+
+  it("keeps every selected count for an untyped no-match request", async () => {
+    const before = searchDbQueryCount();
+    const result = await searchPublic({ q: "zzzznoterm9f3a", mode: "page", limit: 5 }, pool);
+    expect(searchDbQueryCount() - before).toBe(10);
+    expect(result.query.types).toEqual(SEARCH_ENTITY_TYPES);
+    for (const group of Object.values(result.groups)) {
+      expect(group).toEqual({ data: [], page: { limit: 5, total: 0, next_cursor: null } });
+    }
+  });
+});
+
+// Construct the existing v2 cursor format for a no-match request without mutating
+// the fixture. Both supported sort modes must still reach the page query.
+describe("empty search cursor pages on PostgreSQL", () => {
+  it.each(["person", "statement"] as const)("retains %s cursor pages and UUID validation", async (type) => {
+    const input = { q: "zzzznoterm9f3a", type, mode: "page" as const, limit: 5 };
+    const prepared = prepareSearchText(input.q);
+    const fp = createHash("sha256").update(JSON.stringify({
+      q: prepared.normalized,
+      tokens: prepared.tokens,
+      type,
+      topic: null,
+      person: null,
+      statement_type: null,
+      from: null,
+      to: null,
+    })).digest("hex").slice(0, 16);
+    const cursorWithId = (id: string) => Buffer.from(JSON.stringify({
+      v: 2,
+      fp,
+      rank: SEARCH_RANK.all_tokens,
+      tie: "",
+      id,
+      sort: type === "statement" ? "time" : "name",
+    }), "utf8").toString("base64url");
+
+    const beforeValid = searchDbQueryCount();
+    const result = await searchPublic({ ...input, cursor: cursorWithId("00000000-0000-4000-8000-000000000001") }, pool);
+    expect(searchDbQueryCount() - beforeValid).toBe(6);
+    expect(result.groups[type]).toEqual({ data: [], page: { limit: 5, total: 0, next_cursor: null } });
+
+    // The existing decoder accepts this UUID-shaped string; PostgreSQL rejects
+    // its page-query UUID parameter even though the preceding count was zero.
+    const beforeInvalid = searchDbQueryCount();
+    await expect(searchPublic({ ...input, cursor: cursorWithId("-".repeat(36)) }, pool)).rejects.toMatchObject({ code: "22P02" });
+    expect(searchDbQueryCount() - beforeInvalid).toBe(6);
   });
 });
