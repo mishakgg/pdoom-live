@@ -1,10 +1,10 @@
 # Research session review queue
 
-Status snapshot: 8 October 2026, 03:48 UTC. This is a pre-integration snapshot for session 9.
+Status snapshot: 8 October 2026, 04:21 UTC. This is a pre-integration snapshot for session 10.
 
-The 26 research sessions below are listed in arrival order. Review and integration proceed sequentially. Eight reviews are integrated, one review is prepared for independent review and integration, and 17 remain queued. Session 9 is active; it is not yet merged at this snapshot.
+The 26 research sessions below are listed in arrival order. Review and integration proceed sequentially. Nine reviews are integrated, one review is prepared for independent review and integration, and 16 remain queued. Session 10 is active; it is not yet merged at this snapshot.
 
-Snapshot counts: 8 integrated; 1 prepared or awaiting CI; 17 queued.
+Snapshot counts: 9 integrated; 1 prepared or awaiting CI; 16 queued.
 
 ## Status definitions
 
@@ -25,8 +25,8 @@ Snapshot counts: 8 integrated; 1 prepared or awaiting CI; 17 queued.
 | 6 | Historical capability backfills | Review integrated | [Research guide](historical-capability-backfills.md) · [PR 317](https://github.com/mishakgg/pdoom-live/pull/317) | Bounded offline WMT08 reader; synthetic-only CI; private real-artifact acceptance separate; score redistribution rights, historical comparability and canonical mapping remain held |
 | 7 | AI-assisted scientific progress | Review integrated | [Research guide](scientific-progress.md) · [PR 318](https://github.com/mishakgg/pdoom-live/pull/318) | Manual aggregate correction ledger validator implemented; source extraction, article byte pins, uncertainty, original exports, numerical validation, historical reuse and canonical mapping remain held |
 | 8 | Persuasion and information ecosystems | Review integrated | [Research guide](persuasion-information.md) · [PR 319](https://github.com/mishakgg/pdoom-live/pull/319) | Curated published-effect ledger and synthetic checks implemented; source extraction, participant CSV proposal, Spitale workbook/rights, Ofcom rights/geography, Costello editorial resolution/effects and canonical mapping remain held |
-| 9 | Robotics and physical-world capability | Review prepared; integration pending | [Research guide](robotics-physical.md) · [Catalog](../../../data/evidence-program/research/robotics-physical.json) | Bounded manual BARN table reader with separately licensed fixture implemented; trial identity/means, RoboArena export semantics, RRC rights/index, PhAIL cohorts/metrics, STRANDS rights/units and canonical mapping remain held |
-| 10 | Training-data availability and feedback loops | Queued | Pending review | Not yet assessed |
+| 9 | Robotics and physical-world capability | Review integrated | [Research guide](robotics-physical.md) · [PR 320](https://github.com/mishakgg/pdoom-live/pull/320) | Bounded manual BARN table reader with separately licensed fixture implemented; trial identity/means, RoboArena export semantics, RRC rights/index, PhAIL cohorts/metrics, STRANDS rights/units and canonical mapping remain held |
+| 10 | Training-data availability and feedback loops | Review prepared; integration pending | [Research guide](training-data-feedback.md) · [Catalog](../../../data/evidence-program/research/training-data-feedback.json) | Bounded offline Common Crawl aggregate reader implemented; synthetic-only public CI; rights, audit panel, experiment versions/coverage, FineWeb2 denominator bridge, Epoch input discrepancy and canonical mapping remain held |
 | 11 | Human reliance and decision quality | Queued | Pending review | Not yet assessed |
 | 12 | Algorithmic efficiency and scaling | Queued | Pending review | Not yet assessed |
 | 13 | Agent autonomy/security evaluations and incidents/near-misses | Queued | Pending review | Not yet assessed |
@@ -118,7 +118,7 @@ The [source review](persuasion-information.md) and curated contrast validator we
 
 ### Session 9 Robotics and physical-world capability
 
-The [source review](robotics-physical.md) prepares five new candidate families with 35 artifact references and 19 qualified findings. Independent review, publication and CI/integration remain pending at this snapshot.
+The [source review](robotics-physical.md) and bounded BARN reader were merged in [PR 320](https://github.com/mishakgg/pdoom-live/pull/320) at [d196d9c](https://github.com/mishakgg/pdoom-live/commit/d196d9c89b8ba12d584a2f19e8ded1623ab0142a). All four post-merge checks were observed successful at 04:07:31 UTC on 8 October 2026. Five source families remain unadmitted with their original holds.
 
 - Completed bounded work: current primary-source review, frozen 64 plus all-eight-catalog/43-collection/327-artifact comparison, and one manually curated BARN Table II offline validator. One CC BY 4.0 derivative fixture is retained outside data/CC0; it is not a full-source byte pin or HTML scraper.
 - Preserve all 60 displayed outcomes (20 successful, 40 failed) separately from credited 6/9, 5/9, 5/9, 0/9. Positions are not chronological/native run IDs, tied credit membership is ambiguous, published means differ from fastest-three derivations, and resets/practice/checkpoints remain unknown.
@@ -127,10 +127,20 @@ The [source review](robotics-physical.md) prepares five new candidate families w
 - RRC2020 stays a documented mixed-job archive with CC BY-NC-SA restrictions; later RL correction is not a 2020 correction. STRANDS 177/148 recovery attempts concern 2015 specifically; requested assistance can coexist with lifetime. Dataset/sheet rights and some units remain unknown.
 - Eight action entries and six self-contained bounded prompts preserve the remaining identity, rights, unit, cohort, metric and mapping holds. No robot/harness/model/source-script execution, raw trajectory/video archives, live collection or canonical admission.
 
+### Session 10 Training-data availability and feedback loops
+
+The [source review](training-data-feedback.md) prepares five collections: Common Crawl statistics, DPI/Consent, Collapse or Thrive, FineWeb2 and Epoch data stock. Independent review, publication and CI/integration remain pending at this snapshot.
+
+- Completed bounded work: primary-source review, exact current-base comparison of frozen64 and all nine previous catalogs (48 collections, 362 artifact references, 45 comparison cells), and a two-file/three-crawl offline reader. Private exact-artifact acceptance is separate from public synthetic-only tests.
+- Common Crawl page sums and four-decimal shares reconcile for 486 category rows. Unknown-language urls is a page-residual placeholder; normalized cardinality stays null and language URL totals do not partition global URLs. Capture/release dates never become unknown content-publication dates.
+- FineWeb2 derives from Common Crawl and cannot add independent raw supply. Paper 1320/1868 domain concentration differs from later 1870 filtered-train subsets. DPI audits existing material; restrictions are not licenses or affirmative consent.
+- Collapse reference-data role does not mean human authorship. Code/manuscript covariance and export-era/current filename differences remain explicit; configured grids are not completed runs. Epoch raw/quality/effective repetition measures and paper/input discrepancies remain separate, without execution or annual-stock claims.
+- Eight separate next actions and six standalone bounded prompts retain CSV/metadata/result/code rights, Consent panel access, source-version/denominator bridges and canonical mapping holds. No corpus/page content, experiment/model/source execution, live collector or deployment.
+
 ## Scope
 
-This index records review progress and links to repository-native research guides. Integrated research catalogs remain unadmitted candidate evidence. The first three reviews retain their unimplemented source-reader proposals. Session 4 implements a fixed two-file annotation reader, session 5 a fixed one-file graph structure reader, session 6 a bounded offline gzip reader with synthetic-only CI, session 7 a manual aggregate ledger validator, session 8 an in-memory curated contrast checker, and session 9 a bounded manual physical-results table reader; no operational collector is enabled. Refresh status and unresolved actions when later reviewed changes are merged.
+This index records review progress and links to repository-native research guides. Integrated research catalogs remain unadmitted candidate evidence. The first three reviews retain their unimplemented source-reader proposals. Session 4 implements a fixed two-file annotation reader, session 5 a fixed one-file graph structure reader, session 6 a bounded offline gzip reader with synthetic-only CI, session 7 a manual aggregate ledger validator, session 8 an in-memory curated contrast checker, session 9 a bounded manual physical-results table reader, and session 10 a two-file Common Crawl aggregate reader with synthetic-only public fixtures; no operational collector is enabled. Refresh status and unresolved actions when later reviewed changes are merged.
 
 ## Snapshot maintenance
 
-This file records status at its stated time, not live main/CI state. After independent review, merge and post-merge checks, a later authorized update may record a new dated snapshot with verified PR/commit evidence. Until then, session 9 remains prepared in this historical snapshot even if this document itself is subsequently merged. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.
+This file records status at its stated time, not live main/CI state. After independent review, merge and post-merge checks, a later authorized update may record a new dated snapshot with verified PR/commit evidence. Until then, session 10 remains prepared in this historical snapshot even if this document itself is subsequently merged. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.
