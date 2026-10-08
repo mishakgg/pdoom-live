@@ -336,7 +336,16 @@ class ContinuousQueue:
         try:
             stream = _GuardedBackend(self.drive, self._stop).download_chunks(
                 file_id, chunk_bytes=CHUNK_BYTES, max_bytes=size)
-            for block in stream:
+            iterator = iter(stream)
+            while True:
+                # A lazy backend performs its next request inside next(). Stop
+                # before advancing it as well as after an in-flight response.
+                if self._stop():
+                    raise StorageStop("cancelled or deadline reached during bounded read")
+                try:
+                    block = next(iterator)
+                except StopIteration:
+                    break
                 if self._stop():
                     raise StorageStop("cancelled or deadline reached during bounded read")
                 yield block
