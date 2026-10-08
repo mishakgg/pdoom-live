@@ -1,10 +1,10 @@
 # Research session review queue
 
-Status snapshot: 8 October 2026, 04:56 UTC. This is a pre-integration snapshot for session 11.
+Status snapshot: 8 October 2026, 05:38 UTC. This is a pre-integration snapshot for session 12.
 
-The 26 research sessions below are listed in arrival order. Review and integration proceed sequentially. Ten reviews are integrated, one review is prepared for independent review and integration, and 15 remain queued. Session 11 is active; it is not yet merged at this snapshot.
+The 26 research sessions below are listed in arrival order. Review and integration proceed sequentially. Eleven reviews are integrated, one review is prepared for independent review and integration, and 14 remain queued. Session 12 is active; it is not yet merged at this snapshot.
 
-Snapshot counts: 10 integrated; 1 prepared or awaiting CI; 15 queued.
+Snapshot counts: 11 integrated; 1 prepared or awaiting CI; 14 queued.
 
 ## Status definitions
 
@@ -27,8 +27,8 @@ Snapshot counts: 10 integrated; 1 prepared or awaiting CI; 15 queued.
 | 8 | Persuasion and information ecosystems | Review integrated | [Research guide](persuasion-information.md) · [PR 319](https://github.com/mishakgg/pdoom-live/pull/319) | Curated published-effect ledger and synthetic checks implemented; source extraction, participant CSV proposal, Spitale workbook/rights, Ofcom rights/geography, Costello editorial resolution/effects and canonical mapping remain held |
 | 9 | Robotics and physical-world capability | Review integrated | [Research guide](robotics-physical.md) · [PR 320](https://github.com/mishakgg/pdoom-live/pull/320) | Bounded manual BARN table reader with separately licensed fixture implemented; trial identity/means, RoboArena export semantics, RRC rights/index, PhAIL cohorts/metrics, STRANDS rights/units and canonical mapping remain held |
 | 10 | Training-data availability and feedback loops | Review integrated | [Research guide](training-data-feedback.md) · [PR 321](https://github.com/mishakgg/pdoom-live/pull/321) | Bounded offline Common Crawl aggregate reader implemented; synthetic-only public CI; rights, audit panel, experiment versions/coverage, FineWeb2 denominator bridge, Epoch input discrepancy and canonical mapping remain held |
-| 11 | Human reliance and decision quality | Review prepared; integration pending | [Research guide](human-reliance.md) · [Catalog](../../../data/evidence-program/research/human-reliance.json) | Manual paper aggregate validator and provisional synthetic-only decoder implemented; workbook permission/schema/acceptance, four data-rights holds, denominator conflicts, cohort/measure lineage and canonical mapping remain held |
-| 12 | Algorithmic efficiency and scaling | Queued | Pending review | Not yet assessed |
+| 11 | Human reliance and decision quality | Review integrated | [Research guide](human-reliance.md) · [PR 322](https://github.com/mishakgg/pdoom-live/pull/322) | Manual paper aggregate validator and provisional synthetic-only decoder implemented; workbook permission/schema/acceptance, four data-rights holds, denominator conflicts, cohort/measure lineage and canonical mapping remain held |
+| 12 | Algorithmic efficiency and scaling | Review prepared; integration pending | [Research guide](algorithmic-efficiency.md) · [Catalog](../../../data/evidence-program/research/algorithmic-efficiency.json) | One licensed offline AlgoPerf trial reader implemented; compatible comparisons, NanoGPT log rights/timing, Epoch sheet/version, OpenAI numerical conflicts/rights, MIT trace-to-figure/rights and canonical mapping remain held |
 | 13 | Agent autonomy/security evaluations and incidents/near-misses | Queued | Pending review | Not yet assessed |
 | 14 | Labor-market effects and skill demand | Queued | Pending review | Not yet assessed |
 | 15 | Forecast and survey reconstruction | Queued | Pending review | Not yet assessed |
@@ -139,7 +139,7 @@ The [source review](training-data-feedback.md) and offline Common Crawl reader w
 
 ### Session 11 Human reliance and decision quality
 
-The [source review](human-reliance.md) prepares five experimental families: Bastani, Bansal, Okamura–Yamada, Gaube and Glickman–Sharot. Independent review, publication and CI/integration remain pending at this snapshot.
+The [source review](human-reliance.md) and offline validators were merged in [PR 322](https://github.com/mishakgg/pdoom-live/pull/322) at [664963c](https://github.com/mishakgg/pdoom-live/commit/664963c472222c845d3068df898f7537c285ad28). All four post-merge checks were observed successful at 05:17:21 UTC on 8 October 2026. Five families remain unadmitted with their original holds.
 
 - Completed bounded work: public documentary/dictionary/metadata review and frozen64 plus all-ten-catalog comparison, covering 53 earlier collections, 404 artifact references and 50 candidate-by-catalog cells. No participant files were acquired or published.
 - Implemented manual Okamura paper aggregate validator: 194 recruits, 116 completers, 78 excluded, 1,740 decisions, 1,282 correct and 1,236/504 automatic/manual. These are published counts, not reproduced workbook results. Synthetic-only five-bit arithmetic uses an explicitly provisional convention; workbook reader and actual-data acceptance remain held.
@@ -147,10 +147,24 @@ The [source review](human-reliance.md) prepares five experimental families: Bast
 - Minors rows, medical/clinical records, participant identifiers and demographics are excluded. Dataset CC BY does not settle the unopened workbook's participant/privacy/schema gate; other four data licenses remain unknown. No lasting deskilling or clinical effectiveness inference.
 - Eight action entries and six standalone bounded read-only prompts preserve source acceptance, rights, denominator/measure/version lineage and lossless mapping holds. No study-code execution, simulator/model run, collector, canonical admission or deployment.
 
+### Session 12 Algorithmic efficiency and scaling
+
+The [source review](algorithmic-efficiency.md) prepares AlgoPerf v0.5, Modded-NanoGPT, Epoch language-model progress, OpenAI AI and Efficiency, and MIT FutureTech experimental progress. Independent review, publication and CI/integration remain pending at this snapshot.
+
+- Completed bounded work: five-family primary-source review; frozen 64 and all eleven earlier catalogs (58 collections, 429 artifact references, 55 candidate-by-catalog cells); one Apache-2.0 offline AlgoPerf trial with 74 checkpoints and one explicitly derived validation crossing. Original and curated derivative hashes remain separate; no training images or data.
+- Retrospective scoring uses inclusive validation-only comparison; runtime uses strict validation/test predicates with latched goals. The actual crossing is unchanged, and the stale paper target is explicitly corrected in its appendix. Submission/evaluation/logging/total clocks remain distinct; checkpoints are one trial, not an official aggregate score.
+- NanoGPT result 6 has a specific maintainer rerun despite the general non-routine-rerun policy; the original PR has a different seed/configuration. Track timing and target/statistical rules remain separate. Epoch passage-specific model/interval levels and explicit figure-level imputation remain; spreadsheet rows/rights/revision are unresolved.
+- OpenAI reported ratios, rounded CSV versus paper inputs, units, links and dates retain source conflicts. MIT nearest-loss extraction is not first crossing; actual-step/all-parameter versus planned-step/nonembedding FLOPs, missing plot inputs/manual constants and duplicate trace blobs remain explicit.
+- Eight separate next actions and six bounded read-only prompts preserve compatible-comparison, rights, access, version, accounting and canonical mapping holds. No universal efficiency curve, energy inference, risk conversion, source-code execution, live collection or deployment.
+
+### Separate post-intake performance audit
+
+Retain the search-person timing sensitivity observed during session 11 CI. One unchanged 500 ms budget failed at 512.9 ms; the same source head passed on retry at 365.6 ms cold and 342.9 ms hot, with the counterpart run and all post-merge checks successful. A repeated failure requires investigation before merge. This research update does not change query code or relax the threshold.
+
 ## Scope
 
-This index records review progress and links to repository-native research guides. Integrated research catalogs remain unadmitted candidate evidence. The first three reviews retain their unimplemented source-reader proposals. Session 4 implements a fixed two-file annotation reader, session 5 a fixed one-file graph structure reader, session 6 a bounded offline gzip reader with synthetic-only CI, session 7 a manual aggregate ledger validator, session 8 an in-memory curated contrast checker, session 9 a bounded manual physical-results table reader, session 10 a two-file Common Crawl aggregate reader with synthetic-only public fixtures, and session 11 a manual paper-aggregate validator plus explicitly provisional synthetic-only bit arithmetic; no operational collector is enabled. Refresh status and unresolved actions when later reviewed changes are merged.
+This index records review progress and links to repository-native research guides. Integrated research catalogs remain unadmitted candidate evidence. The first three reviews retain their unimplemented source-reader proposals. Session 4 implements a fixed two-file annotation reader, session 5 a fixed one-file graph structure reader, session 6 a bounded offline gzip reader with synthetic-only CI, session 7 a manual aggregate ledger validator, session 8 an in-memory curated contrast checker, session 9 a bounded manual physical-results table reader, session 10 a two-file Common Crawl aggregate reader with synthetic-only public fixtures, and session 11 a manual paper-aggregate validator plus explicitly provisional synthetic-only bit arithmetic; session 12 a fixed four-file AlgoPerf reader with separately licensed fixtures and role-specific target semantics. No operational collector is enabled. Refresh status and unresolved actions when later reviewed changes are merged.
 
 ## Snapshot maintenance
 
-This file records status at its stated time, not live main/CI state. After independent review, merge and post-merge checks, a later authorized update may record a new dated snapshot with verified PR/commit evidence. Until then, session 11 remains prepared in this historical snapshot even if this document itself is subsequently merged. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.
+This file records status at its stated time, not live main/CI state. After independent review, merge and post-merge checks, a later authorized update may record a new dated snapshot with verified PR/commit evidence. Until then, session 12 remains prepared in this historical snapshot even if this document itself is subsequently merged. Do not promote queued sessions, source admission, adapter implementation or unresolved evidence holds merely because a research-review PR merges.

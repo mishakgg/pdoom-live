@@ -77,3 +77,7 @@ The [guide](research/training-data-feedback.md) and [catalog](../../data/evidenc
 ## Human reliance and decision quality
 
 The [guide](research/human-reliance.md) and [catalog](../../data/evidence-program/research/human-reliance.json) review five experimental families against frozen64 and all ten prior catalogs. A [manual Okamura paper ledger](../../data/evidence-program/research/okamura-aggregate-ledger.json) and offline validator preserve recruitment, completers, repeated decisions and correct/mode counts. Separate provisional synthetic-only bit arithmetic is not a workbook reader or real-source acceptance. Participant files were not acquired; minors/clinical records stay excluded. Published denominator conflicts, signed versus absolute error, short-term versus delayed outcomes, four data-rights holds and the Okamura privacy/schema gate remain explicit. The [dated queue](research/research-session-review-queue.md) records ten integrated and this eleventh review prepared.
+
+## Algorithmic efficiency and scaling review
+
+[Research guide](research/algorithmic-efficiency.md) and [catalog](../../data/evidence-program/research/algorithmic-efficiency.json) retain five unadmitted families, source conflicts and all-eleven-catalog overlap. One separately licensed offline AlgoPerf trial reader yields 74 checkpoint observations and one derived inclusive validation crossing, preserving strict runtime semantics separately. No training data, upstream execution, official score, universal curve or operational collection.

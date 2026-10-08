@@ -48,3 +48,7 @@ The [training-data catalog](research/training-data-feedback.json) reviews five u
 ## Human reliance and decision quality
 
 The [human-reliance catalog](research/human-reliance.json) adds five unadmitted experimental families with documentary schema examples, precise artifact rights/access and all-ten-catalog comparison. The [Okamura aggregate ledger](research/okamura-aggregate-ledger.json) is a manually curated factual summary of one published study, not participant data or workbook extraction. No raw participant rows, minors records or clinical files are vendored. The [guide](../../docs/evidence-program/research/human-reliance.md) separates implemented aggregate checks and provisional synthetic decoder tests from blocked workbook acquisition/acceptance. Source metadata and facts do not relicense source artifacts, waive privacy review or admit canonical records.
+
+## Algorithmic efficiency review
+
+[Curated catalog](research/algorithmic-efficiency.json) and [guide](../../docs/evidence-program/research/algorithmic-efficiency.md) preserve five unadmitted source families, clocks/targets/tuning distinctions, artifact rights and bounded follow-up prompts. Apache-2.0 AlgoPerf fixtures and their derivatives live under tools/, outside data/CC0, with original and derivative hashes/omissions disclosed. They are not canonical imported observations.
