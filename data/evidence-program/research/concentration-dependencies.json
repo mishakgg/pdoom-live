@@ -1,0 +1,1313 @@
+{
+  "schema_version": 1,
+  "title": "Concentration and shared dependencies research catalog",
+  "reviewed_on": "2026-10-08",
+  "status": "review_prepared_with_offline_reader",
+  "repository_review_commit": "3a981281b59c91d29dd1b5157dfd90eac087c004",
+  "baseline_inventory": {
+    "source_family_count": 64,
+    "version": "1.1",
+    "sha256": "a4b5046c3dec44598eeab3f025db75783f9ae5f702e0570d7b31fb3026dde678"
+  },
+  "operational_admission": "not_admitted",
+  "collector_enabled": false,
+  "canonical_contract_mapping": "pending_separate_review",
+  "raw_source_content_in_catalog": false,
+  "participant_rows_in_catalog": false,
+  "fixture_acquisition": {
+    "count": 1,
+    "candidate_id": "CD002",
+    "scope": "one_generated_dependency_graph_only",
+    "location": "tools/evidence_program/tests/fixtures/concentration-dependencies",
+    "license": "CC-BY-4.0"
+  },
+  "relationship_classes": [
+    "ownership_economic_rights",
+    "contractual_access",
+    "disclosed_operational_use",
+    "resolved_software_dependency",
+    "survey_concentration"
+  ],
+  "interpretation_guards": {
+    "ownership_implies_operational_dependence": false,
+    "contractual_access_implies_utilization": false,
+    "disclosed_use_implies_measured_workload": false,
+    "resolved_dependency_implies_installed_deployment": false,
+    "sdk_dependency_implies_remote_service_use": false,
+    "concentration_implies_failure_probability": false,
+    "survey_nominations_imply_market_share": false,
+    "multiple_providers_imply_working_failover": false,
+    "missing_relationship_implies_independence": false,
+    "anonymized_parties_may_be_inferred": false,
+    "retrieval_dates_imply_graph_resolution_dates": false,
+    "organization_fields_imply_corporate_ownership": false,
+    "different_metadata_roles_imply_contradiction": false,
+    "rights_inherit_across_linked_artifacts": false,
+    "proxy_to_pdoom_allowed": false,
+    "raw_fields_and_unknowns_preserved": true,
+    "artifact_local_ids_imply_cross_snapshot_entity_identity": false
+  },
+  "ranking_basis": "source_utility_not_risk_or_market_share",
+  "priority_ranking": [
+    {
+      "rank": 1,
+      "candidate_id": "CD001",
+      "reason": "Named deployment-role disclosures with explicit phases, scoped supplier flags and consequential unknowns."
+    },
+    {
+      "rank": 2,
+      "candidate_id": "CD002",
+      "reason": "Version-keyed resolved software structure, distinct from installed deployments or service dependencies."
+    },
+    {
+      "rank": 3,
+      "candidate_id": "CD003",
+      "reason": "Aggregate provider-nomination concentration within an explicitly bounded survey population."
+    }
+  ],
+  "collections": [
+    {
+      "candidate_id": "CD001",
+      "name": "UK Algorithmic Transparency Recording Standard deployment records",
+      "classification": "new_relative_to_frozen_inventory",
+      "inventory_source_id": null,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "relationship_basis": [
+        "disclosed_operational_use"
+      ],
+      "summary": "Named deployment-role disclosures with explicit phases, scoped supplier flags and consequential unknowns.",
+      "historical_coverage": "First pilot reports published June 2022; official October 2022 RTAU blog confirms this. Current registry contains dated records but is not a complete historical panel.",
+      "update_frequency": "Event-driven updates for substantive changes, including pilot-to-production; no fixed publication cadence verified.",
+      "access_method": "Public HTML inspected. Record-level JSON export unverified; no registry collector or automatic semantic extractor.",
+      "rights_summary": "OGL v3.0 record text with exceptions; proprietary models, operational data and linked works excluded. Contains public sector information licensed under the Open Government Licence v3.0; cite each source record and responsible public body.",
+      "artifacts": [
+        {
+          "artifact_id": "cd001_collection",
+          "url": "https://www.gov.uk/algorithmic-transparency-records",
+          "provenance_locator": "Collection displayed record count",
+          "inspection_note": "Count inspected at review date; population denominator absent.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd001_newcastle",
+          "url": "https://www.gov.uk/algorithmic-transparency-records/newcastle-city-council-aws-contact-centre-services-amazon-q-and-contact-lens",
+          "provenance_locator": "Tier 2 sections 1.1, 1.4.3, 4.1.1, 4.2.2 and page metadata",
+          "inspection_note": "Public HTML and distinct role/date fields inspected.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "OGL-3.0",
+          "rights_scope": "published_record_text_only_with_exceptions",
+          "rights_note": "Do not extend to underlying personal data, models, software, logos or linked third-party material.",
+          "rights_evidence_artifact_ids": [
+            "cd001_newcastle",
+            "cd001_ogl"
+          ],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd001_redbox",
+          "url": "https://www.gov.uk/algorithmic-transparency-records/dsit-redbox",
+          "provenance_locator": "Sections 1.4, 2.4, 3.3, 4.1.1, 4.2.7 and publication fields",
+          "inspection_note": "Public HTML inspected; mixed model labels and multiple publication fields preserved.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "OGL-3.0",
+          "rights_scope": "published_record_text_only_with_exceptions",
+          "rights_note": "Do not extend to underlying personal data, models, software, logos or linked third-party material.",
+          "rights_evidence_artifact_ids": [
+            "cd001_redbox",
+            "cd001_ogl"
+          ],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd001_history",
+          "url": "https://rtau.blog.gov.uk/2022/10/10/developing-the-algorithmic-transparency-standard-in-the-open/",
+          "provenance_locator": "Pilot-history account",
+          "inspection_note": "Official retrospective publication inspected.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd001_guidance",
+          "url": "https://www.gov.uk/government/publications/guidance-for-organisations-using-the-algorithmic-transparency-recording-standard/algorithmic-transparency-recording-standard-guidance-for-public-sector-bodies",
+          "provenance_locator": "Update guidance and organizational scope",
+          "inspection_note": "Event-driven update guidance inspected; no fixed census cadence established.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd001_ogl",
+          "url": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+          "provenance_locator": "OGL v3.0 link in record footers",
+          "inspection_note": "License pointer and record attribution requirement inspected.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "CD001-F1",
+          "text": "The collection displayed 152 records on 8 October 2026.",
+          "qualification": "No denominator for all deployments, organizations, spending or vendors is supplied.",
+          "evidence_kind": "disclosure",
+          "evidence_artifact_ids": [
+            "cd001_collection"
+          ]
+        },
+        {
+          "finding_id": "CD001-F2",
+          "text": "Newcastle discloses AWS hosting/AI services, PwC initial implementation support and Azure AD SSO, in a Production record published 13 August 2026.",
+          "qualification": "These are reported roles. PwC ongoing support, measured usage and deployment start are not inferred; unexposed provider-managed model versions remain null.",
+          "evidence_kind": "disclosure",
+          "evidence_artifact_ids": [
+            "cd001_newcastle"
+          ]
+        },
+        {
+          "finding_id": "CD001-F3",
+          "text": "Newcastle has publisher bodies, a top-level Organisation value and a body accountable-organization value that differ.",
+          "qualification": "Preserve all three raw fields and roles. Difference alone does not establish a same-concept contradiction, quality defect or corporate ownership.",
+          "evidence_kind": "disclosure",
+          "evidence_artifact_ids": [
+            "cd001_newcastle"
+          ]
+        },
+        {
+          "finding_id": "CD001-F4",
+          "text": "Redbox is Beta/Pilot and combines an external-supplier-involvement answer of No with AWS hosting, shared provider-account access and Google/Anthropic/OpenAI model access.",
+          "qualification": "The supplier field has its own scope. Model availability is not traffic allocation or verified independent failover; mixed family/version labels are not pinned checkpoints.",
+          "evidence_kind": "disclosure",
+          "evidence_artifact_ids": [
+            "cd001_redbox"
+          ]
+        },
+        {
+          "finding_id": "CD001-F5",
+          "text": "Redbox page Published is 28 April 2025, body Date published is 29 April 2025 and JSON-LD publication/modification dates are 28 April.",
+          "qualification": "Retain source labels without choosing a date or inventing a deployment-start date. The February 2025 user-count date applies only to that statement.",
+          "evidence_kind": "disclosure",
+          "evidence_artifact_ids": [
+            "cd001_redbox"
+          ]
+        },
+        {
+          "finding_id": "CD001-F6",
+          "text": "First pilot reports published June 2022; official October 2022 RTAU blog confirms this. Current registry contains dated records but is not a complete historical panel. Event-driven updates for substantive changes, including pilot-to-production; no fixed publication cadence verified.",
+          "qualification": "This is a changing disclosure registry with variable scope/detail, not a complete historical deployment panel.",
+          "evidence_kind": "documentation",
+          "evidence_artifact_ids": [
+            "cd001_history",
+            "cd001_guidance"
+          ]
+        }
+      ],
+      "sample_fields": [
+        {
+          "artifact_id": "cd001_newcastle",
+          "observed": {
+            "from_publishers_raw": [
+              "Cabinet Office",
+              "Department for Science, Innovation and Technology",
+              "Government Digital Service"
+            ],
+            "template_organization_raw": "Department for Science Innovation and Technology",
+            "body_operational_owner_raw": "Newcastle City Council",
+            "phase_raw": "Production",
+            "atrs_version": "v4.0",
+            "relationships": [
+              {
+                "dependency_name_raw": "Amazon Web Services",
+                "role": "cloud_hosting_and_hosted_ai_service",
+                "basis": "organizational_deployment_disclosure",
+                "locator": "1.4.3 and 4.1.1"
+              },
+              {
+                "dependency_name_raw": "PwC",
+                "role": "implementation_support",
+                "basis": "organizational_deployment_disclosure",
+                "locator": "1.4.3",
+                "temporal_qualifier": "supported design, configuration and initial implementation; current ongoing support not inferred"
+              },
+              {
+                "dependency_name_raw": "Azure AD SSO",
+                "role": "identity_service",
+                "basis": "organizational_deployment_disclosure",
+                "locator": "4.1.1"
+              }
+            ],
+            "model_version_normalized": null,
+            "model_version_missing_reason": "provider_managed_not_exposed_to_reporting_body"
+          },
+          "qualification": "Separate reported roles; no corporate ownership, conflict, current support or measured workload inference."
+        },
+        {
+          "artifact_id": "cd001_redbox",
+          "observed": {
+            "phase_raw": "Beta/Pilot",
+            "supplier_involvement_raw": "No",
+            "publication_fields": {
+              "page_published": "28 April 2025",
+              "body_date_published": "29 April 2025",
+              "jsonld_datePublished": "2025-04-28T19:31:09+01:00",
+              "jsonld_dateModified": "2025-04-28T19:31:09+01:00"
+            },
+            "model_labels_raw": "GPT-4o, GPT-4o-mini, Claude-3 Sonnet, Claude-3 Haiku, Gemini"
+          },
+          "qualification": "Mixed family/version-like product labels, not verified checkpoint identifiers. Do not normalize Gemini to a specific version or infer traffic per model. Retain fields with source-specific labels. Do not choose one, call either the deployment start, or infer an explanation for the difference."
+        }
+      ],
+      "limitations": [
+        "Self-reported organizational disclosures; reporting scope and detail vary.",
+        "Publication dates and record phases do not establish deployment start, current operational state at retrieval, or measured utilization.",
+        "Operational/accountable organization is not a legal corporate-ownership relationship."
+      ],
+      "duplicate_evidence_policy": "Multiple department relationships in one record share an origin. Copies/reposts are not independent confirmations. GL014–GL016 are entity-matching targets, not matching evidence families."
+    },
+    {
+      "candidate_id": "CD002",
+      "name": "Google Open Source Insights / deps.dev",
+      "classification": "new_relative_to_frozen_inventory",
+      "inventory_source_id": null,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "relationship_basis": [
+        "resolved_software_dependency"
+      ],
+      "summary": "Version-keyed resolved software structure, distinct from installed deployments or service dependencies.",
+      "historical_coverage": "Historical package versions queryable. BigQuery documents SnapshotAt as row export time and Snapshots.Time for full snapshots. Earliest retained snapshot, retention and cadence unverified.",
+      "update_frequency": "Official FAQ describes feeds and background scans; commonly used packages usually within roughly an hour, quieter packages can be stale. Not a guaranteed SLA.",
+      "access_method": "Anonymous individual JSON GET verified. BigQuery is documentation-only; no collector, installation or graph expansion.",
+      "rights_summary": "Generated dependency data CC BY 4.0; package Apache-2.0 and upstream metadata rights are separate.",
+      "artifacts": [
+        {
+          "artifact_id": "cd002_docs",
+          "url": "https://docs.deps.dev/api/v3/",
+          "provenance_locator": "Data, Terms and GetDependencies sections",
+          "inspection_note": "Official documentation read and bounded HTML capture verified; later direct retry timed out.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd002_graph",
+          "url": "https://api.deps.dev/v3/systems/pypi/packages/transformers/versions/4.45.2:dependencies",
+          "provenance_locator": "Complete 18-node/23-edge generated JSON response",
+          "inspection_note": "Only this original generated graph is vendored as a licensed fixture outside data/.",
+          "access_status": "pinned_bytes_verified",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "declared_license",
+          "license_identifier": "CC-BY-4.0",
+          "rights_scope": "generated_dependency_data_only",
+          "rights_note": "Generated resolved dependencies only; upstream aggregated metadata and package code retain separate terms.",
+          "rights_evidence_artifact_ids": [
+            "cd002_docs",
+            "cd002_license"
+          ],
+          "raw_content_in_catalog": false,
+          "sha256": "9d11eaee99763097abb9bdc995fb03ad6e38d961c2110e711204ddd8cca32583",
+          "size_bytes": 3532,
+          "retrieved_at": "2026-10-08T01:04:58.216305Z",
+          "source_graph_resolved_at": null
+        },
+        {
+          "artifact_id": "cd002_version",
+          "url": "https://api.deps.dev/v3/systems/pypi/packages/transformers/versions/4.45.2",
+          "provenance_locator": "Root package metadata: publishedAt, licenses and relatedProjects",
+          "inspection_note": "Companion response inspected for qualified metadata; not vendored or relicensed by graph grant.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd002_bigquery",
+          "url": "https://docs.deps.dev/bigquery/v1/",
+          "provenance_locator": "SnapshotAt and Snapshots schema",
+          "inspection_note": "Documentation inspected; no account, query or export executed.",
+          "access_status": "documentation_only",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd002_faq",
+          "url": "https://docs.deps.dev/faq/",
+          "provenance_locator": "Feeds and background scans",
+          "inspection_note": "Published service-description freshness inspected; not a guaranteed SLA.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd002_license",
+          "url": "https://creativecommons.org/licenses/by/4.0/",
+          "provenance_locator": "CC BY 4.0 pointer from API docs",
+          "inspection_note": "Generated-data license reference verified.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd002_terms",
+          "url": "https://developers.google.com/terms",
+          "provenance_locator": "API Terms reference",
+          "inspection_note": "Terms reference verified; API docs expressly permit caching.",
+          "access_status": "documentation_only",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "CD002-F1",
+          "text": "The exact fixture has 18 nodes including the root and 23 indexed directed edges. Node 6 is huggingface-hub 0.36.2 (DIRECT); edge 0 to 6 retains requirement <1.0,>=0.23.2.",
+          "qualification": "Graph was retrieved in 2026; selected fields match the earlier review example, but no original earlier-response hash exists for a byte-equality claim.",
+          "evidence_kind": "resolved_graph",
+          "evidence_artifact_ids": [
+            "cd002_graph"
+          ]
+        },
+        {
+          "finding_id": "CD002-F2",
+          "text": "API documentation describes a clean generic 64-bit Linux resolution approximation, root as first node and directed requirement-resolution edges.",
+          "qualification": "DIRECT takes precedence for a node that is both direct and indirect; errors may signal incomplete or incorrect graph. Structure validity does not establish installability or production use.",
+          "evidence_kind": "documentation",
+          "evidence_artifact_ids": [
+            "cd002_docs"
+          ]
+        },
+        {
+          "finding_id": "CD002-F3",
+          "text": "Companion metadata reports root publication at 2024-10-07T17:42:51Z, Apache-2.0 package licensing and a SOURCE_REPO association labeled UNVERIFIED_METADATA.",
+          "qualification": "Package publication differs from fixture retrieval; exact graph resolution time is unknown. Package license is not generated-data license, and repository association is not verified legal ownership.",
+          "evidence_kind": "administrative_metadata",
+          "evidence_artifact_ids": [
+            "cd002_version",
+            "cd002_graph"
+          ]
+        },
+        {
+          "finding_id": "CD002-F4",
+          "text": "Historical package versions queryable. BigQuery documents SnapshotAt as row export time and Snapshots.Time for full snapshots. Earliest retained snapshot, retention and cadence unverified. Official FAQ describes feeds and background scans; commonly used packages usually within roughly an hour, quieter packages can be stale. Not a guaranteed SLA.",
+          "qualification": "Snapshot/export times are not deployment-install dates. Historical earliest coverage, cadence and retention remain unverified; no BigQuery execution.",
+          "evidence_kind": "documentation",
+          "evidence_artifact_ids": [
+            "cd002_bigquery",
+            "cd002_faq"
+          ]
+        },
+        {
+          "finding_id": "CD002-F5",
+          "text": "The official API Data section grants CC BY 4.0 to generated data including resolved dependencies; the Terms section permits caching.",
+          "qualification": "The one response is retained with source/attribution/change notice outside data/CC0. No blanket grant for companion aggregated metadata, package code or linked works.",
+          "evidence_kind": "access_or_rights_qualification",
+          "evidence_artifact_ids": [
+            "cd002_docs",
+            "cd002_license",
+            "cd002_terms"
+          ]
+        }
+      ],
+      "sample_fields": [
+        {
+          "artifact_id": "cd002_graph",
+          "observed": {
+            "root": {
+              "system": "PYPI",
+              "name": "transformers",
+              "version": "4.45.2"
+            },
+            "node_count_including_root": 18,
+            "edge_count": 23,
+            "selected_node_index": 6,
+            "selected_node": {
+              "versionKey": {
+                "system": "PYPI",
+                "name": "huggingface-hub",
+                "version": "0.36.2"
+              },
+              "bundled": false,
+              "relation": "DIRECT",
+              "errors": []
+            },
+            "selected_edge": {
+              "fromNode": 0,
+              "toNode": 6,
+              "requirement": "<1.0,>=0.23.2"
+            },
+            "graph_error": "",
+            "retrieved_at": "2026-10-08T01:04:58.216305Z",
+            "source_graph_resolved_at": null,
+            "fixture_sha256": "9d11eaee99763097abb9bdc995fb03ad6e38d961c2110e711204ddd8cca32583",
+            "fixture_byte_count": 3532
+          },
+          "qualification": "The package release is 2024-10-07. The graph was retrieved in 2026; neither retrieval time nor HTTP Date proves the exact graph computation date. No reconstruction of what users installed in 2024."
+        }
+      ],
+      "limitations": [
+        "Clean generic 64-bit Linux resolution approximation; environment, features and changing releases affect results.",
+        "Package nodes, packages, installed deployments, organizations, and providers are different units.",
+        "UNVERIFIED_METADATA source-repository association does not establish verified provenance, legal ownership, or operational service use.",
+        "Node or graph errors can make the graph incomplete/incorrect; a parser must preserve or fail review on these states.",
+        "Empty edge requirement strings are observed and valid raw values; do not invent constraints."
+      ],
+      "duplicate_evidence_policy": "API and BigQuery are representations of the same generated collection, not independent observations. Declared requirements may also appear in upstream registries/repositories."
+    },
+    {
+      "candidate_id": "CD003",
+      "name": "Bank of England / FCA AI surveys",
+      "classification": "new_relative_to_frozen_inventory",
+      "inventory_source_id": null,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "relationship_basis": [
+        "survey_concentration"
+      ],
+      "summary": "Aggregate provider-nomination concentration within an explicitly bounded survey population.",
+      "historical_coverage": "2019, 2022, 2024 repeated editions; no fixed future schedule verified.",
+      "update_frequency": "Periodic editions; no fixed future schedule verified.",
+      "access_method": "2024 and 2019 reports read; 2022 targeted indexed primary text only, with full-artifact limitations. No respondent microdata/export acquired.",
+      "rights_summary": "General terms permit download/display/print for personal or internal organizational noncommercial use. Further reuse requires authorization. The OGL clause covers the Bank Database; no evidence extends it to these report charts. Third-party material needs separate approval. Do not label this report OGL or approve publication of chart images/report content/derived extraction solely from Database licensing. Distinguish factual citation from clearance to redistribute a compiled dataset.",
+      "artifacts": [
+        {
+          "artifact_id": "cd003_collection",
+          "url": "https://www.bankofengland.co.uk/research/fintech",
+          "provenance_locator": "Research and survey index",
+          "inspection_note": "Edition history inspected.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd003_report2024",
+          "url": "https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024",
+          "provenance_locator": "Section 1.2 / Chart 1; section 2.8 / Chart 10",
+          "inspection_note": "2024 HTML and published aggregate figures inspected.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "restricted_use",
+          "license_identifier": "Bank-website-terms",
+          "rights_scope": "report_material_not_statistical_database_ogl",
+          "rights_note": "General terms permit download/display/print for personal or internal organizational noncommercial use. Further reuse requires authorization. The OGL clause covers the Bank Database; no evidence extends it to these report charts. Third-party material needs separate approval. Do not label this report OGL or approve publication of chart images/report content/derived extraction solely from Database licensing. Distinguish factual citation from clearance to redistribute a compiled dataset.",
+          "rights_evidence_artifact_ids": [
+            "cd003_legal"
+          ],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd003_report2019",
+          "url": "https://www.bankofengland.co.uk/report/2019/machine-learning-in-uk-financial-services",
+          "provenance_locator": "Survey sample and nonrepresentativeness warning",
+          "inspection_note": "Official report read.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "restricted_use",
+          "license_identifier": "Bank-website-terms",
+          "rights_scope": "report_material_not_statistical_database_ogl",
+          "rights_note": "General terms permit download/display/print for personal or internal organizational noncommercial use. Further reuse requires authorization. The OGL clause covers the Bank Database; no evidence extends it to these report charts. Third-party material needs separate approval. Do not label this report OGL or approve publication of chart images/report content/derived extraction solely from Database licensing. Distinguish factual citation from clearance to redistribute a compiled dataset.",
+          "rights_evidence_artifact_ids": [
+            "cd003_legal"
+          ],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd003_report2022",
+          "url": "https://www.bankofengland.co.uk/report/2022/machine-learning-in-uk-financial-services",
+          "provenance_locator": "Indexed official text: sample, section 2.4 and Chart 9",
+          "inspection_note": "Targeted indexed primary text verified; full HTML exceeded tool-size limit.",
+          "access_status": "indexed_excerpt_only",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "restricted_use",
+          "license_identifier": "Bank-website-terms",
+          "rights_scope": "report_material_not_statistical_database_ogl",
+          "rights_note": "General terms permit download/display/print for personal or internal organizational noncommercial use. Further reuse requires authorization. The OGL clause covers the Bank Database; no evidence extends it to these report charts. Third-party material needs separate approval. Do not label this report OGL or approve publication of chart images/report content/derived extraction solely from Database licensing. Distinguish factual citation from clearance to redistribute a compiled dataset.",
+          "rights_evidence_artifact_ids": [
+            "cd003_legal"
+          ],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd003_pdf2022",
+          "url": "https://www.bankofengland.co.uk/-/media/boe/files/report/2022/machine-learning-in-uk-financial-services.pdf",
+          "provenance_locator": "Official full-report PDF pointer",
+          "inspection_note": "PDF open gave unusable parsed text; direct bounded fetch returned 403. Full artifact not independently inspected; denied route not retried.",
+          "access_status": "blocked",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "restricted_use",
+          "license_identifier": "Bank-website-terms",
+          "rights_scope": "report_material_not_statistical_database_ogl",
+          "rights_note": "General terms permit download/display/print for personal or internal organizational noncommercial use. Further reuse requires authorization. The OGL clause covers the Bank Database; no evidence extends it to these report charts. Third-party material needs separate approval. Do not label this report OGL or approve publication of chart images/report content/derived extraction solely from Database licensing. Distinguish factual citation from clearance to redistribute a compiled dataset.",
+          "rights_evidence_artifact_ids": [
+            "cd003_legal"
+          ],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd003_legal",
+          "url": "https://www.bankofengland.co.uk/legal",
+          "provenance_locator": "General terms and separate Database OGL clause",
+          "inspection_note": "Terms inspected; report-specific redistribution permission unverified.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "CD003-F1",
+          "text": "The 2024 report has 118 responding firms and reports top-three provider shares of 73% cloud, 44% models and 33% data.",
+          "qualification": "Denominator is all named providers, after asking firms for their top three in each category. Raw counts/coding/missing responses are unknown; these are not spend, compute, workload or market shares.",
+          "evidence_kind": "survey_aggregate",
+          "evidence_artifact_ids": [
+            "cd003_report2024"
+          ]
+        },
+        {
+          "finding_id": "CD003-F2",
+          "text": "The 2019 report had 106 responses from almost 300 firms and expressly disclaims whole-system statistical representativeness.",
+          "qualification": "No matching 2019 top-three provider statistic was established; repeated editions are not a verified fixed-firm panel.",
+          "evidence_kind": "survey_aggregate",
+          "evidence_artifact_ids": [
+            "cd003_report2019"
+          ]
+        },
+        {
+          "finding_id": "CD003-F3",
+          "text": "Targeted 2022 indexed text reports 71 of 168 firms (42%) and a top-two cloud figure of 75%. Section 2.4 refers to firms using cloud services; Chart 9 refers to respondents.",
+          "qualification": "Full-artifact access remains incomplete. Preserve both denominator phrasings; top-two cloud and 2024 top-three named-provider figures are not silently comparable. Larger-firm skew and changing questions/composition persist.",
+          "evidence_kind": "survey_aggregate",
+          "evidence_artifact_ids": [
+            "cd003_report2022",
+            "cd003_pdf2022"
+          ]
+        },
+        {
+          "finding_id": "CD003-F4",
+          "text": "General Bank terms restrict reuse, while a separate OGL clause covers its statistical Database.",
+          "qualification": "No evidence extends Database licensing to these report charts or a redistributed extraction; no microdata/CSV export is verified. Factual citation is distinct from clearance to redistribute report content or a compiled dataset.",
+          "evidence_kind": "access_or_rights_qualification",
+          "evidence_artifact_ids": [
+            "cd003_legal",
+            "cd003_report2024"
+          ]
+        }
+      ],
+      "sample_fields": [
+        {
+          "artifact_id": "cd003_report2024",
+          "observed": {
+            "year": 2024,
+            "responding_firms": 118,
+            "top_three_share_percent": {
+              "cloud": 73,
+              "models": 44,
+              "data": 33
+            },
+            "denominator_raw": "all named providers",
+            "raw_category_counts": null
+          },
+          "qualification": "Provider-nomination concentration within survey responses; not spend, workload, compute, or whole-market share. Preserve published denominator wording. Raw category counts, treatment of missing responses, and coding/deduplication were not established."
+        }
+      ],
+      "limitations": [
+        "Repeated cross-sections, not a verified fixed-firm panel. Do not create a harmonized concentration time series before checking original questions, denominators, coding, and respondent composition. The 2024 report's own retrospective comparisons do not independently settle those details.",
+        "Report publishes anonymized aggregates; no firm-provider microdata or reusable chart-data export verified.",
+        "2024 expanded generative-AI questions; earlier surveys focus on machine learning. Banking sectors are also split differently.",
+        "Do not label this report OGL or approve publication of chart images/report content/derived extraction solely from Database licensing. Distinguish factual citation from clearance to redistribute a compiled dataset."
+      ],
+      "duplicate_evidence_policy": "Joint Bank/FCA edition is one survey. Secondary summaries and repeated charts are not independent observations. GL034 potential synthesis overlap is a trace-back question, not automatically a duplicate confirmed in this review."
+    },
+    {
+      "candidate_id": "CD004",
+      "name": "OMB Federal Agency AI Use Case Inventory, 2025 COTS",
+      "classification": "new_relative_to_frozen_inventory",
+      "inventory_source_id": null,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "relationship_basis": [
+        "disclosed_operational_use"
+      ],
+      "summary": "Agency/use-category product disclosures with broad user bands and documented consolidation transformations.",
+      "historical_coverage": "Consolidated COTS is described as a new reporting category in 2025; no comparable earlier COTS panel was verified.",
+      "update_frequency": "Annual reporting; rolling repository updates",
+      "access_method": "Public HTTP 200 CSV; anonymously retrieved and parsed. No login, bulk harvesting, outreach, or repository mutation. Raw CSV is verification-only, not a redistributable fixture.",
+      "rights_summary": "No license file in non-truncated pinned repository tree; no applicable CSV license found in root README or Data/README_datasets.md. Government publication/GitHub hosting are not treated as an artifact-specific grant.",
+      "artifacts": [
+        {
+          "artifact_id": "cd004_repository",
+          "url": "https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory/tree/06c7ebeef5b376524211042bd9673b2a7fefd3e3",
+          "provenance_locator": "Pinned inventory repository",
+          "inspection_note": "2025 reporting repository inspected at stated revision.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd004_csv",
+          "url": "https://raw.githubusercontent.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory/06c7ebeef5b376524211042bd9673b2a7fefd3e3/Data/2025_consolidated_COTS_AI_use_cases.csv",
+          "provenance_locator": "Five headers; 900 agency/use-category rows",
+          "inspection_note": "Small public CSV was retrieved and parsed for verification; no CSV or raw rows are vendored.",
+          "access_status": "pinned_bytes_verified",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false,
+          "sha256": "bd18984bdc41f8fc818c9d145de78ebe2563ee0ffab29fe7e96de4c223c8ba17",
+          "size_bytes": 118923,
+          "git_commit": "06c7ebeef5b376524211042bd9673b2a7fefd3e3"
+        },
+        {
+          "artifact_id": "cd004_readme",
+          "url": "https://raw.githubusercontent.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory/06c7ebeef5b376524211042bd9673b2a7fefd3e3/README.md",
+          "provenance_locator": "COTS submissions and agency reporting table",
+          "inspection_note": "46-submission statement and 45 Y-marked agency-table rows inspected.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd004_dataset_docs",
+          "url": "https://raw.githubusercontent.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory/06c7ebeef5b376524211042bd9673b2a7fefd3e3/Data/README_datasets.md",
+          "provenance_locator": "Consolidated dataset documentation",
+          "inspection_note": "No applicable CSV redistribution license found.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd004_normalization",
+          "url": "https://raw.githubusercontent.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory/06c7ebeef5b376524211042bd9673b2a7fefd3e3/Validation/data_standardization_report_AI_COTS.md",
+          "provenance_locator": "Consolidation flag-recoding provenance",
+          "inspection_note": "Examples of blank-to-N and blank-to-Y standardization inspected.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd004_commit",
+          "url": "https://api.github.com/repos/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory/commits/06c7ebeef5b376524211042bd9673b2a7fefd3e3",
+          "provenance_locator": "Pinned commit metadata",
+          "inspection_note": "14 May 2026 revision affects README only, not a new reporting period.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "CD004-F1",
+          "text": "The pinned CSV contains five fields, 900 use-category rows and 45 distinct agency labels; the README states 46 COTS submissions.",
+          "qualification": "Counting units differ. Trim-only and NFKC/casefold/whitespace audits still give 45 labels; no missing agency, reporting error or deployment denominator is inferred.",
+          "evidence_kind": "administrative_metadata",
+          "evidence_artifact_ids": [
+            "cd004_csv",
+            "cd004_readme"
+          ]
+        },
+        {
+          "finding_id": "CD004-F2",
+          "text": "OMB consolidation records blank-use-flag recoding to N or Y.",
+          "qualification": "Every consolidated flag cannot be treated as an independently explicit verbatim agency response. Retain row-level normalization provenance in any future approved extraction.",
+          "evidence_kind": "administrative_metadata",
+          "evidence_artifact_ids": [
+            "cd004_normalization"
+          ]
+        },
+        {
+          "finding_id": "CD004-F3",
+          "text": "2025 is the reporting year, the README summary is as of 13 April 2026 and the inspected 14 May 2026 commit changes only README. Consolidated COTS is new in 2025.",
+          "qualification": "Do not use commit time as a deployment or observation timestamp or claim a comparable earlier COTS panel. Shared product-text user bands cannot be divided among vendors or summed into unique users.",
+          "evidence_kind": "documentation",
+          "evidence_artifact_ids": [
+            "cd004_readme",
+            "cd004_dataset_docs",
+            "cd004_commit"
+          ]
+        },
+        {
+          "finding_id": "CD004-F4",
+          "text": "No license file or applicable CSV grant was found in the pinned repository tree, root README or dataset README.",
+          "qualification": "Government publication or GitHub hosting does not establish artifact-specific reuse. The full CSV and agency row samples are not published in this catalog.",
+          "evidence_kind": "access_or_rights_qualification",
+          "evidence_artifact_ids": [
+            "cd004_repository",
+            "cd004_dataset_docs",
+            "cd004_readme"
+          ]
+        }
+      ],
+      "sample_fields": [
+        {
+          "artifact_id": "cd004_csv",
+          "observed": {
+            "headers": [
+              "Agency",
+              "AI Use Case",
+              "Agency Use (Y/N)?",
+              "Name of Commercial Product or Service Used",
+              "Estimated # of Licenses/Users"
+            ],
+            "row_count": 900,
+            "distinct_agency_labels": 45,
+            "readme_cots_submissions": 46,
+            "reported_use_value_counts": {
+              "N": 416,
+              "Y": 468,
+              "": 16
+            },
+            "reporting_year": 2025,
+            "csv_sha256": "bd18984bdc41f8fc818c9d145de78ebe2563ee0ffab29fe7e96de4c223c8ba17"
+          },
+          "qualification": "Schema and bounded count observations only; no agency or participant rows. Flags include consolidation recoding; no workload, vendor allocation or population share."
+        }
+      ],
+      "limitations": [
+        "A CSV row is an agency/use-category report, not a distinct production deployment.",
+        "The 46-submission statement is distinct from 45 observed CSV agency labels; retain discrepancy.",
+        "One shared licenses/users band applies to multi-product text; no per-product allocation.",
+        "No model/provider graph, exclusivity, criticality, workload share, user uniqueness, or failure probability is established.",
+        "Do not sum broad bands across repeated use categories.",
+        "Artifact-specific CSV reuse and redistribution rights unresolved.",
+        "46 published COTS submissions versus 45 raw, trimmed, and normalized CSV labels remain unreconciled counting units; do not infer omission/error or calculate population-wide shares.",
+        "Pinned COTS standardization report documents blank-to-N and blank-to-Y recodings; do not interpret every consolidated N as an independently explicit agency denial."
+      ],
+      "duplicate_evidence_policy": "Consolidation reuses agency inventories, so original and consolidated rows share origin. Individual-use-case and COTS categories may overlap. GL023 Census BTOS is a different reporting population and does not subsume this family."
+    },
+    {
+      "candidate_id": "CD005",
+      "name": "FTC AI Partnerships and Investments 6(b) study",
+      "classification": "new_relative_to_frozen_inventory",
+      "inventory_source_id": null,
+      "operational_admission": "not_admitted",
+      "collector_enabled": false,
+      "relationship_basis": [
+        "ownership_economic_rights",
+        "contractual_access"
+      ],
+      "summary": "Historical regulator staff findings on economic and contractual relationships with anonymity preserved.",
+      "historical_coverage": "One-off January 2025 publication; no recurring update schedule verified.",
+      "update_frequency": "One-off January 2025 report; recurring update schedule unverified.",
+      "access_method": "Public redacted PDF and landing verified. No unredacted submissions or structured contract database verified.",
+      "rights_summary": "Policy permits government-material reuse with feasible attribution. No implied FTC endorsement. FTC cannot grant rights to third-party copyrighted material, including unmarked material in filings or contractor-created content. Separate staff-authored findings from quoted company submissions, reproduced graphics, and linked third-party work; publication by FTC does not clear those materials. No unredacted submission export verified.",
+      "artifacts": [
+        {
+          "artifact_id": "cd005_landing",
+          "url": "https://www.ftc.gov/reports/ftc-staff-report-ai-partnerships-investments-6b-study",
+          "provenance_locator": "Report landing page",
+          "inspection_note": "One-off staff study and selected partnership scope inspected.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "government_material_policy",
+          "license_identifier": "US-government-material-policy",
+          "rights_scope": "ftc_authored_material_only_excludes_third_party_content",
+          "rights_note": "Policy permits government-material reuse with feasible attribution. No implied FTC endorsement. FTC cannot grant rights to third-party copyrighted material, including unmarked material in filings or contractor-created content.",
+          "rights_evidence_artifact_ids": [
+            "cd005_policy"
+          ],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd005_report",
+          "url": "https://www.ftc.gov/system/files/ftc_gov/pdf/p246201_aipartnerships6breport_redacted_0.pdf",
+          "provenance_locator": "Section 4.2, printed page 19; PDF page 22, zero-based index 21; footnote 143; scope statement and Appendix A",
+          "inspection_note": "Public redacted PDF and parity page visually inspected; company submissions not separately inspected.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "government_material_policy",
+          "license_identifier": "US-government-material-policy",
+          "rights_scope": "ftc_authored_material_only_excludes_third_party_content",
+          "rights_note": "Separate staff-authored findings from quoted company submissions, reproduced graphics, and linked third-party work; publication by FTC does not clear those materials. No unredacted submission export verified.",
+          "rights_evidence_artifact_ids": [
+            "cd005_policy"
+          ],
+          "raw_content_in_catalog": false
+        },
+        {
+          "artifact_id": "cd005_policy",
+          "url": "https://www.ftc.gov/policy-notices/website-policy",
+          "provenance_locator": "FTC website reuse policy",
+          "inspection_note": "Government-material scope and third-party exceptions inspected.",
+          "access_status": "primary_opened",
+          "reviewed_on": "2026-10-08",
+          "rights_status": "unknown",
+          "license_identifier": null,
+          "rights_scope": "this_artifact_only_no_inheritance",
+          "rights_note": "Public access is not a redistribution grant; no artifact-specific license established.",
+          "rights_evidence_artifact_ids": [],
+          "raw_content_in_catalog": false
+        }
+      ],
+      "findings": [
+        {
+          "finding_id": "CD005-F1",
+          "text": "Section 4.2, printed page 19 (PDF page 22), footnote 143 says at least one partnership effectively required model-release parity between partner cloud and first-party API.",
+          "qualification": "This is an anonymized staff characterization of respondent document submissions, not a directly inspected public contract clause. Cloud partner and developer remain null; adjacent names cannot fill the gap.",
+          "evidence_kind": "regulator_staff_finding",
+          "evidence_artifact_ids": [
+            "cd005_report"
+          ]
+        },
+        {
+          "finding_id": "CD005-F2",
+          "text": "The report separates equity/profit interests, access/control/consultation rights and cloud-spending commitments across three selected partnerships.",
+          "qualification": "Such rights or commitments do not measure actual utilization, workload share, operational criticality or ownership percentages. The three partnerships do not define the supplier population.",
+          "evidence_kind": "regulator_staff_finding",
+          "evidence_artifact_ids": [
+            "cd005_report",
+            "cd005_landing"
+          ]
+        },
+        {
+          "finding_id": "CD005-F3",
+          "text": "Respondent information runs through September 2024 and public information through January 2025. Appendix A requests certain management documents from January 2022 onward.",
+          "qualification": "Request scope is not complete historical coverage. The January 2025 study does not establish present relationships or a recurring schedule.",
+          "evidence_kind": "documentation",
+          "evidence_artifact_ids": [
+            "cd005_report"
+          ]
+        },
+        {
+          "finding_id": "CD005-F4",
+          "text": "FTC policy generally permits reuse of government-authored material with attribution where feasible.",
+          "qualification": "FTC does not grant rights to company submissions, reproduced graphics, contractor work or other third-party content. Separate staff-authored findings from embedded copyrighted material; no implied endorsement.",
+          "evidence_kind": "access_or_rights_qualification",
+          "evidence_artifact_ids": [
+            "cd005_policy"
+          ]
+        }
+      ],
+      "sample_fields": [
+        {
+          "artifact_id": "cd005_report",
+          "observed": {
+            "relationship": "staff_characterized_model_release_parity",
+            "partnership_count_lower_bound": 1,
+            "cloud_partner": null,
+            "model_developer": null,
+            "identity_status": "anonymized",
+            "evidence_origin": "staff_summary_of_respondent_document_submissions",
+            "staff_qualification": "effectively required",
+            "measured_workload_share": null
+          },
+          "qualification": "Retain the staff qualification; do not encode a directly inspected contractual clause or infer names from adjacent passages."
+        }
+      ],
+      "limitations": [
+        "Equity/profit interests, consultation/control/access rights, and cloud-spending commitments are separate observations. None by itself supplies actual utilization, workload share, operational criticality, or ownership percentage.",
+        "Three selected partnerships; redacted public report, not a public contract-level database or current complete supplier population.",
+        "Separate staff-authored findings from quoted company submissions, reproduced graphics, and linked third-party work; publication by FTC does not clear those materials. No unredacted submission export verified."
+      ],
+      "duplicate_evidence_policy": "Compelled submissions and quoted public announcements need separate evidence-origin tags. FTC repetition of a public investment announcement is not a second investment observation. Company overlap with GL014–GL016 does not make this a system-card artifact."
+    }
+  ],
+  "critical_qualifications": {
+    "atrs": {
+      "organization_roles": [
+        "from_publishers",
+        "template_organization",
+        "body_operational_owner"
+      ],
+      "automatic_conflict_inference": false,
+      "corporate_ownership_inference": false,
+      "model_version_when_undisclosed": null,
+      "redbox_publication_labels": {
+        "page_published": "2025-04-28",
+        "body_date_published": "2025-04-29"
+      }
+    },
+    "depsdev": {
+      "resolved_at": null,
+      "installed_at": null,
+      "root_package_publication_time": "2024-10-07T17:42:51Z",
+      "package_license_is_dataset_license": false
+    },
+    "bank": {
+      "responding_firms_2024": 118,
+      "top_three_share_percent_2024": {
+        "cloud": 73,
+        "models": 44,
+        "data": 33
+      },
+      "denominator_raw": "all named providers",
+      "raw_category_denominator_counts": null,
+      "fixed_firm_panel_verified": false,
+      "report_ogl_verified": false
+    },
+    "omb": {
+      "rows": 900,
+      "distinct_agency_labels": 45,
+      "readme_submissions": 46,
+      "count_discrepancy_resolved": false,
+      "all_flags_are_verbatim_agency_responses": false,
+      "per_product_user_band_allocation": null,
+      "csv_rights_status": "unknown"
+    },
+    "ftc": {
+      "parity_parties": {
+        "cloud_partner": null,
+        "model_developer": null
+      },
+      "parity_evidence_origin": "staff_summary_of_respondent_document_submissions",
+      "direct_contract_clause_inspected": false,
+      "respondent_information_cutoff": "2024-09",
+      "public_information_cutoff": "2025-01",
+      "current_relationships_verified": false
+    }
+  },
+  "corrections": [
+    {
+      "id": "C01",
+      "claim": "Replace alleged contradictory ownership/quality-defect framing with separately labeled publisher, organization-metadata and accountable-body values. Corporate ownership is not asserted.",
+      "qualification": "Preserve the source-specific evidence basis, dated scope and unresolved limits in the corresponding collection."
+    },
+    {
+      "id": "C02",
+      "claim": "Redbox has Published 28 April 2025, Date published 29 April 2025, and JSON-LD publication/modification 28 April. Preserve all with roles; no deployment-start inference.",
+      "qualification": "Preserve the source-specific evidence basis, dated scope and unresolved limits in the corresponding collection."
+    },
+    {
+      "id": "C03",
+      "claim": "The fresh sample matches, but say retrieved in 2026, not proven computed in 2026. Earlier review does not include original response bytes/hash. No drift observed in selected fields; future drift is not by itself an error.",
+      "qualification": "Preserve the source-specific evidence basis, dated scope and unresolved limits in the corresponding collection."
+    },
+    {
+      "id": "C04",
+      "claim": "2022 targeted official indexed text is now verified, but full-artifact access/harmonization remains on hold. Its top-two cloud statistic has a different denominator from the 2024 top-three named-provider statistic.",
+      "qualification": "Preserve the source-specific evidence basis, dated scope and unresolved limits in the corresponding collection."
+    },
+    {
+      "id": "C05",
+      "claim": "README says 46 COTS submissions; CSV has 900 rows and 45 distinct raw labels; normalization variants also yield 45. These units differ. No missing agency or error inferred.",
+      "qualification": "Preserve the source-specific evidence basis, dated scope and unresolved limits in the corresponding collection."
+    },
+    {
+      "id": "C06",
+      "claim": "OMB standardization recodes some blank flags to N or Y. Do not treat every consolidated flag as a verbatim explicit agency response.",
+      "qualification": "Preserve the source-specific evidence basis, dated scope and unresolved limits in the corresponding collection."
+    },
+    {
+      "id": "C07",
+      "claim": "Pinned commit 06c7ebe... is a 14 May 2026 README-only update. Keep 2025 reporting, 13 April summary and commit date separate. Consolidated COTS category was new in 2025.",
+      "qualification": "Preserve the source-specific evidence basis, dated scope and unresolved limits in the corresponding collection."
+    },
+    {
+      "id": "C08",
+      "claim": "Parity is an anonymized staff characterization of respondent submissions, qualified as effectively required, not a directly inspected public contract clause. Keep both party fields null.",
+      "qualification": "Preserve the source-specific evidence basis, dated scope and unresolved limits in the corresponding collection."
+    }
+  ],
+  "offline_reader": {
+    "status": "implemented_offline_only",
+    "candidate_id": "CD002",
+    "implementation_path": "tools/evidence_program/read_dependency_graph.py",
+    "input_count": 1,
+    "maximum_bytes_per_file": 65536,
+    "maximum_depth": 32,
+    "maximum_work_units": 8192,
+    "maximum_scalar_bytes": 16384,
+    "maximum_number_characters": 128,
+    "maximum_nodes": 128,
+    "maximum_edges": 512,
+    "fixed_hash_allowlist": true,
+    "fixture_sha256": "9d11eaee99763097abb9bdc995fb03ad6e38d961c2110e711204ddd8cca32583",
+    "fixture_bytes": 3532,
+    "node_count": 18,
+    "edge_count": 23,
+    "network_enabled": false,
+    "production_import": false,
+    "output_status": "experimental_review_records_not_admitted",
+    "preserve_raw_graph_and_unknown_fields": true,
+    "canonical_schema_claim": false,
+    "artifact_local_review_ids": true,
+    "edge_id_references_resolve": true,
+    "cross_snapshot_entity_merge": false,
+    "acceptance_tests": [
+      "One supplied local regular file, at most 65536 bytes, must match the exact 3532-byte SHA-256 fixture; no network, stdin or URI.",
+      "Reject malformed UTF-8/JSON, duplicate keys, nonfinite constants/numbers, wrong field types and booleans used as indices.",
+      "Bound nesting, lexical work, scalar and number sizes, node count and edge count before unbounded processing.",
+      "Reject negative or out-of-range edge indices; retain directed fromNode/toNode identity without deduplicating repeated version keys.",
+      "Preserve exact original JSON, all graph fields and unknown properties, source array order and empty requirement strings.",
+      "Preserve node errors and graph error without treating structure validation as correct resolution or installability.",
+      "Retain 18 nodes including root, 23 edges and the observed root-to-huggingface-hub 0.36.2 requirement unchanged.",
+      "Reject symlink components, nonregular files, FIFO/device/URI/UNC/parent-traversal paths; fail closed if safe-open support is unavailable.",
+      "Repeated reads have deterministic artifact-local graph/node/edge review IDs anchored to content hash and source indices; edge references resolve, while duplicate version keys remain separate nodes. Source strings/URLs are inert. IDs do not merge entities across snapshots or count independent evidence.",
+      "Keep retrieval time distinct from package release time and unknown graph-resolution/installation dates.",
+      "Retain CC BY 4.0 attribution for generated dependency data only, outside the data directory and its CC0 dedication.",
+      "Output experimental_review_records_not_admitted; no service use, ownership, market-share, concentration, failure probability or p(doom) inference."
+    ]
+  },
+  "atrs_proposal": {
+    "status": "proposed_unimplemented",
+    "record_count": 2,
+    "maximum_bytes_per_capture": 1048576,
+    "maximum_relationship_observations": 20,
+    "automated_semantic_extractor": false,
+    "human_review_required": true,
+    "network_enabled": false,
+    "fields": [
+      "artifact_url",
+      "retrieved_at",
+      "content_sha256",
+      "evidence_group_id",
+      "record_title",
+      "atrs_version",
+      "publishing_bodies_from_raw",
+      "organization_metadata_raw",
+      "accountable_organization_body_raw",
+      "phase_raw",
+      "publication_fields_with_roles",
+      "statement_as_of",
+      "effective_start",
+      "effective_end",
+      "dependency_name_raw",
+      "dependency_role",
+      "relationship_basis",
+      "evidence_heading",
+      "evidence_span",
+      "assertion_strength",
+      "supplier_flag_raw_and_scope",
+      "model_version_raw",
+      "model_version_normalized",
+      "missing_reason",
+      "rights_status",
+      "rights_scope"
+    ],
+    "acceptance_tests": [
+      "Exactly the two approved URLs; maximum 1 MiB each and no more than 20 manually reviewed relationships; no link following.",
+      "Keep AWS hosted service, historical PwC implementation support and Azure AD identity roles separate.",
+      "Keep missing Newcastle model version null with reason; preserve conditional architecture language.",
+      "Retain publishing bodies, organization metadata and body accountable organization as separate concepts, not automatic contradictory ownership.",
+      "Keep Redbox supplier flag No with its exact heading while retaining explicit AWS/model-access observations.",
+      "Retain Beta/Pilot, all differently labeled publication dates and mixed model-name specificity.",
+      "Every observation cites heading/span in a hashed artifact; copies do not multiply independent evidence.",
+      "Emit no inferred ownership percentages, per-provider use allocation, independent failover, market shares, failure probability or p(doom)."
+    ]
+  },
+  "next_actions": [
+    {
+      "action_id": "CD-A1",
+      "candidate_ids": [
+        "CD001",
+        "CD002",
+        "CD003",
+        "CD004",
+        "CD005"
+      ],
+      "status": "completed",
+      "action": "Verify the five primary collections, inventory relationship, measurement distinctions and artifact-scoped access/rights.",
+      "completion_evidence": "Current 64-source inventory inspected; five new-family candidates remain unadmitted. Eight corrections and source-specific limits are retained, including partial 2022 report access and unresolved rights."
+    },
+    {
+      "action_id": "CD-A2",
+      "candidate_ids": [
+        "CD002"
+      ],
+      "status": "completed",
+      "action": "Acquire one explicitly licensed generated graph and implement the fixed-fixture offline structure reader.",
+      "completion_evidence": "Original 3,532-byte response is SHA-256 pinned with CC BY 4.0 attribution outside data/. Real-fixture and synthetic hostile-input tests run offline; no source expansion, package installation or operational admission."
+    },
+    {
+      "action_id": "CD-A3",
+      "candidate_ids": [
+        "CD001"
+      ],
+      "status": "pending_contract_review",
+      "action": "Prepare a manually reviewed two-record ATRS mapping and durable scoped fixtures before any semantic extraction adapter.",
+      "completion_evidence": "At most two approved local HTML captures, each at most 1 MiB, no more than 20 relationships, explicit evidence spans/field roles/conditional language and lossless time/missingness mapping. No automatic contradiction or corporate ownership edge."
+    },
+    {
+      "action_id": "CD-A4",
+      "candidate_ids": [
+        "CD002"
+      ],
+      "status": "open",
+      "action": "Establish documented earliest historical snapshots, retention and cadence without a paid query.",
+      "completion_evidence": "Primary public documentation identifies retained coverage and SnapshotAt/export versus graph-resolution time, or the unknowns remain explicit."
+    },
+    {
+      "action_id": "CD-A5",
+      "candidate_ids": [
+        "CD003"
+      ],
+      "status": "blocked_access",
+      "action": "Resolve survey denominator/coding details and full 2022 source access before any cross-edition harmonization.",
+      "completion_evidence": "Original provider questions, raw category counts, missing-response/name coding and sample definitions support an explicit comparison, or remain unmatched; no respondent re-identification."
+    },
+    {
+      "action_id": "CD-A6",
+      "candidate_ids": [
+        "CD003"
+      ],
+      "status": "pending_rights_review",
+      "action": "Establish artifact-specific permission for a report-derived dataset or chart redistribution.",
+      "completion_evidence": "An applicable primary grant covers the intended report/chart extraction separately from the statistical Database OGL, or the hold remains."
+    },
+    {
+      "action_id": "CD-A7",
+      "candidate_ids": [
+        "CD004"
+      ],
+      "status": "pending_rights_review",
+      "action": "Resolve OMB CSV rights and definitions behind 46 submissions versus 45 agency labels.",
+      "completion_evidence": "Explicit CSV reuse basis and source count definitions are found, or both counting units remain unreconciled. Retain consolidation recoding evidence; do not silently normalize identities."
+    },
+    {
+      "action_id": "CD-A8",
+      "candidate_ids": [
+        "CD005"
+      ],
+      "status": "pending_rights_review",
+      "action": "Scope rights for any intended FTC extract that includes third-party content.",
+      "completion_evidence": "Each selected passage is classified as staff-authored or third-party and has applicable reuse evidence; anonymous counterparty fields remain null."
+    },
+    {
+      "action_id": "CD-A9",
+      "candidate_ids": [
+        "CD002"
+      ],
+      "status": "pending_contract_review",
+      "action": "Review a lossless canonical mapping before any future import or reader expansion.",
+      "completion_evidence": "Source nodes retain index identity even when version keys repeat; full raw graph/errors, exact fixture identity and separate dates/rights survive a reviewed mapping, or incompatibilities are explicit."
+    }
+  ],
+  "focused_follow_up_prompts": [
+    {
+      "action_id": "CD-A3",
+      "why_needed": "The source format is prose-rich and roles/dates differ; a structural graph reader does not implement semantic ATRS extraction.",
+      "prompt": "Review only https://www.gov.uk/algorithmic-transparency-records/newcastle-city-council-aws-contact-centre-services-amazon-q-and-contact-lens and https://www.gov.uk/algorithmic-transparency-records/dsit-redbox . Prepare a manually reviewed mapping for at most 20 relationship observations from these two records. Retain From publishers, template Organisation and body accountable organization as separate raw fields; preserve Newcastle AWS, historical PwC implementation and Azure AD identity roles, null provider-managed versions, conditional language, Redbox No supplier flag with its scope, Beta/Pilot phase, mixed model labels and distinct 28/29 April 2025 publication fields. Require OGL attribution, at most 1 MiB per capture, hashes and heading/span evidence before durable fixtures. Compare the mapping with the frozen pdoom-live contract at https://github.com/mishakgg/pdoom-live/blob/3a981281b59c91d29dd1b5157dfd90eac087c004/tools/evidence_program/contracts/dataset.schema.json without assuming a schema migration is necessary. Return only the reviewed mapping and unresolved gaps. No repository edits, registry sweep, model requests, login, automatic semantic extractor, production import or deployment."
+    },
+    {
+      "action_id": "CD-A4",
+      "why_needed": "Queryable historical package versions do not establish a historical install graph or guaranteed snapshot history.",
+      "prompt": "Read only https://docs.deps.dev/bigquery/v1/ and https://docs.deps.dev/faq/ plus a directly linked public documentation page if needed. Find explicit earliest retained full snapshot, retention policy and export cadence for deps.dev. Preserve package publication time, API retrieval time, SnapshotAt row-export time, full-snapshot time and unknown graph-resolution time separately. Report exact documented scope or retain unknowns. No accounts, BigQuery API enablement, queries, network collector, package installation, repository edits or ongoing monitoring."
+    },
+    {
+      "action_id": "CD-A5",
+      "why_needed": "2022 full-artifact inspection is incomplete and top-two cloud and top-three named-provider statistics use different scopes.",
+      "prompt": "Use official https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024 , https://www.bankofengland.co.uk/report/2022/machine-learning-in-uk-financial-services and https://www.bankofengland.co.uk/report/2019/machine-learning-in-uk-financial-services . Seek public original questionnaires/chart metadata for 2024 category denominator counts, missing responses and provider normalization, plus an accessible official complete 2022 artifact. Existing 2022 evidence is targeted official indexed text only; a direct PDF route returned 403, so do not retry that denied route or work around access restrictions. Compare only matching questions and population definitions; preserve section 2.4 versus Chart 9 denominator wording and changing sample/composition. Do not reconstruct respondents, infer market shares, harmonize unmatched figures, contact the Bank, log in, bulk-download or edit the repository."
+    },
+    {
+      "action_id": "CD-A6",
+      "why_needed": "Published figures can be cited as facts, but this does not resolve report-content or compiled-extraction redistribution rights.",
+      "prompt": "Review https://www.bankofengland.co.uk/legal and the reuse notices associated with https://www.bankofengland.co.uk/report/2024/artificial-intelligence-in-uk-financial-services-2024 . Seek artifact-specific permission for redistribution of a bounded provider-concentration extraction. Do not apply the Bank statistical Database OGL to report charts. State exactly which content and use are covered; if no grant is found, retain the hold and prepare the precise permission question without sending it. No outreach, login, report/chart mirroring, new dataset publication or repository edits."
+    },
+    {
+      "action_id": "CD-A7",
+      "why_needed": "Repository hosting does not establish CSV licensing; submission and label counts are different units, and some flags were standardized.",
+      "prompt": "At https://github.com/ombegov/2025-Federal-Agency-AI-Use-Case-Inventory/tree/06c7ebeef5b376524211042bd9673b2a7fefd3e3 read README.md, Data/README_datasets.md and Validation/data_standardization_report_AI_COTS.md. Seek an applicable license for Data/2025_consolidated_COTS_AI_use_cases.csv and primary definitions/reconciliation of 46 COTS submissions versus 45 raw CSV labels (also 45 after trim-only and NFKC/casefold/whitespace normalization). Preserve 900 category rows, separate counting units, raw labels, blank-to-N/Y recoding provenance, reporting year 2025, summary date 13 April 2026 and README-only commit date 14 May 2026. Do not infer an omitted agency/error, upstream model provider, user-band allocation or deployment/market share. No agency outreach, login, bulk collection, full-CSV republication or repository mutation."
+    },
+    {
+      "action_id": "CD-A8",
+      "why_needed": "The government-material policy does not license embedded company submissions or every graphic.",
+      "prompt": "Inspect only https://www.ftc.gov/reports/ftc-staff-report-ai-partnerships-investments-6b-study , its public PDF https://www.ftc.gov/system/files/ftc_gov/pdf/p246201_aipartnerships6breport_redacted_0.pdf and https://www.ftc.gov/policy-notices/website-policy . For one proposed extract, identify whether it is staff-authored summary or third-party material and the applicable rights. For parity preserve section 4.2, printed page 19/PDF page 22, footnote 143, staff qualification effectively required, submission-summary origin and both anonymous party fields. Preserve September 2024 respondent and January 2025 public-information cutoffs. Do not infer parties from adjacent text, seek unredacted submissions, infer present relationships, create named contract edges, contact anyone or edit the repository."
+    },
+    {
+      "action_id": "CD-A9",
+      "why_needed": "The delivered output is experimental review JSON, not an admitted canonical dependency dataset.",
+      "prompt": "In https://github.com/mishakgg/pdoom-live read tools/evidence_program/read_dependency_graph.py and tools/evidence_program/contracts/dataset.schema.json at the delivered review revision; record that revision. Use only the delivered local fixture tools/evidence_program/tests/fixtures/concentration-dependencies/depsdev-transformers-4.45.2-dependencies.json (3532 bytes; SHA-256 9d11eaee99763097abb9bdc995fb03ad6e38d961c2110e711204ddd8cca32583). Compare a lossless mapping that keeps original JSON, indexed node identity, duplicate version keys, directed edges, empty constraints, raw errors/unknown fields, retrieval time 2026-10-08T01:04:58.216305Z and unknown resolution/installation times. If the reader or fixture is absent, report the exact missing input. Do not install packages, fetch graph extensions, infer remote-service use or deployment, modify schemas, collect operational data or import/publish output."
+    }
+  ],
+  "top_additions": [
+    "UK ATRS deployment disclosures",
+    "deps.dev generated dependency graphs",
+    "Bank/FCA aggregates, subject to reuse and comparison holds"
+  ],
+  "strongest_limitation": "These heterogeneous disclosures, resolutions and aggregates cannot reconstruct a complete current operational dependency graph or support a concentration-to-risk probability conversion.",
+  "smallest_testable_implementation": "Implemented fixed-fixture deps.dev offline JSON structure reader; ATRS semantic extraction and canonical mapping remain separate unimplemented/held work.",
+  "join_target_notes": "GL003 remains the existing facility-level ownership/user enrichment target. GL014–GL016 entity matches do not subsume deployment or FTC study evidence. GL034 synthesis overlap requires evidence trace-back, not a second independent observation. No new inventory IDs allocated."
+}
