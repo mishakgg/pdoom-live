@@ -1,0 +1,271 @@
+{
+  "record_type": "bounded_primary_documentary_verification",
+  "review_base_commit": "58de347f57cf37dd9e6495b433b45b3501cc3de1",
+  "source_sequence": [
+    "CaMeL",
+    "AISI",
+    "Apollo"
+  ],
+  "observations": [
+    {
+      "artifact_key": "S4-A-BRIEF",
+      "url": null,
+      "review": {
+        "disposition": "historical_prompt_reference_only",
+        "note": "The submitted brief attachment identity is not public evidence. This review uses the preserved Session4 prompt; SHA256 1e782fc55f3c952194bd68a56dd070ce5f2a5c0b124e4de9a0f4c64f4e07617f."
+      }
+    },
+    {
+      "artifact_key": "S4-A-CAMEL-PAPER",
+      "url": "https://arxiv.org/html/2503.18813v2",
+      "review": {
+        "disposition": "reverified_named_aggregate_and_version",
+        "locator": "HTML section 6.3 / Figure 11 and Appendix C Table 7; extracted lines 304–314,542–550; linked PDF printed page 35 Table 7",
+        "whole_source_bytes_hashed": false,
+        "rights_qualification": "Preserve arXiv CC-BY-4.0 paper declaration. The linked PDF has a copyright/reservation notice, separately recorded as S4-A-CAMEL-PDF. No adjudication or blanket redistribution clearance.",
+        "reviewer_inspection_window_utc": [
+          "2026-10-08T16:16:43Z",
+          "2026-10-08T16:18:15Z"
+        ]
+      }
+    },
+    {
+      "artifact_key": "S4-A-CAMEL-ABSTRACT",
+      "url": "https://arxiv.org/abs/2503.18813v2",
+      "review": {
+        "disposition": "reverified_version_and_license_metadata",
+        "locator": "Submission history lines24–28; license link40",
+        "version_submission_utc": "2025-06-24T08:05:33Z",
+        "license_declaration": "CC-BY-4.0 for identified paper; no transfer to code/data/traces.",
+        "reviewer_inspection_window_utc": [
+          "2026-10-08T16:16:43Z",
+          "2026-10-08T16:18:15Z"
+        ]
+      }
+    },
+    {
+      "artifact_key": "S4-A-CAMEL-NOTEBOOK",
+      "url": "https://github.com/google-research/camel-prompt-injection/blob/f083b6b396399d3b3c7f2ddaf613a5945eaf32d8/analysis.ipynb",
+      "review": {
+        "disposition": "prior_verified_static_evidence_preserved_current_body_not_reacquired",
+        "locator": "Notebook JSON lines 93–94,111–116,119–125, as bounded prior evidence; current GitHub page metadata only",
+        "prior_notebook_git_blob_sha1": "7fa1498d6e16a1956d099b8dfeb81641cf6f2d5b",
+        "git_blob_scope": "Prior reviewed Git object identity; not a newly calculated whole-notebook SHA256 or a runtime revision.",
+        "current_access": "HTML wrapper exposed filename/commit and 2160-line metadata, not code. No raw/embedded-output retrieval attempted.",
+        "static_semantics": "A non-null error sets security to zero; the shown grouping sums security as successful attacks. Helper count is length of supplied security vector, nobs its sum; mean is a proportion; it invokes proportion_confint(nobs,count), returns nobs and mean minus lower times count, then formats the absolute second term. The confidence parameter is declared but not forwarded.",
+        "remaining_hold": "No executed environment/library-default verification, no result-specific helper-to-paper mapping, no numeric correction or completed-execution denominator.",
+        "code_rights": "Pinned repository LICENSE now inspected as Apache-2.0, limited to covered code/documentation. Embedded outputs and third-party AgentDojo data are not thereby cleared.",
+        "reviewer_inspection_window_utc": [
+          "2026-10-08T16:16:43Z",
+          "2026-10-08T16:18:15Z"
+        ]
+      }
+    },
+    {
+      "artifact_key": "S4-A-CAMEL-PINNED-README",
+      "url": "https://github.com/google-research/camel-prompt-injection/blob/f083b6b396399d3b3c7f2ddaf613a5945eaf32d8/README.md",
+      "review": {
+        "disposition": "current_pinned_documentary_read_resolves_submission_access_hold",
+        "locator": "Pinned README warning and FAQ; extracted lines 188–215",
+        "finding": "Research reproduction purpose; possible implementation bugs/insecurity; maintenance and bug fixes not planned. No result-specific correction or immutable AgentDojo runtime mapping located.",
+        "git_blob_sha1_from_prior_catalog": "2d950e6aeaf3a088ce20ca72623887004388ac65",
+        "reviewer_inspection_window_utc": [
+          "2026-10-08T16:16:43Z",
+          "2026-10-08T16:18:15Z"
+        ]
+      }
+    },
+    {
+      "artifact_key": "S4-A-CAMEL-PINNED-LICENSE",
+      "url": "https://github.com/google-research/camel-prompt-injection/blob/f083b6b396399d3b3c7f2ddaf613a5945eaf32d8/LICENSE",
+      "review": {
+        "disposition": "current_pinned_documentary_read_resolves_submission_access_hold",
+        "locator": "Pinned LICENSE Apache License version 2.0 header and sections2/4; extracted lines 589–748",
+        "license_declaration": "Apache-2.0",
+        "scope": "Covered repository code/documentation only; no automatic license to generated outputs, all notebook contents, AgentDojo inputs, paper, or third-party material.",
+        "conditions": "Retain license and applicable notices, identify modified files and preserve required attribution/NOTICE where applicable. No legal clearance opinion.",
+        "reviewer_inspection_window_utc": [
+          "2026-10-08T16:16:43Z",
+          "2026-10-08T16:18:15Z"
+        ]
+      }
+    },
+    {
+      "artifact_key": "S4-A-CAMEL-HISTORY",
+      "url": "https://github.com/google-research/camel-prompt-injection/commits/main/analysis.ipynb",
+      "review": {
+        "disposition": "access_or_representation_hold",
+        "locator": "Exact analysis.ipynb history URL",
+        "finding": "Targeted public history request returned Internal Error; no history or correction bytes observed.",
+        "stop": "No alternate route, crawl, raw notebook download, execution, or absent-everywhere claim.",
+        "reviewer_inspection_window_utc": [
+          "2026-10-08T16:16:43Z",
+          "2026-10-08T16:18:15Z"
+        ]
+      }
+    },
+    {
+      "artifact_key": "S4-A-CAMEL-README",
+      "url": "https://github.com/google-research/camel-prompt-injection",
+      "review": {
+        "disposition": "current_mutable_read_confirmed",
+        "locator": "README warning/FAQ lines222–243",
+        "finding": "Same maintenance warning; general reproduction wording does not link a particular helper to a particular published uncertainty.",
+        "reviewer_inspection_window_utc": [
+          "2026-10-08T16:16:43Z",
+          "2026-10-08T16:18:15Z"
+        ]
+      }
+    },
+    {
+      "artifact_key": "S4-A-AISI-GPT55",
+      "url": "https://www.aisi.gov.uk/blog/our-evaluation-of-openais-gpt-5-5-cyber-capabilities",
+      "review": {
+        "disposition": "reverified_three_state_documentary_lineage",
+        "locator": "Safeguards lines 141–143; capability correction footnote 153; government affiliation 155; footer 168–170",
+        "finding": "Failure reported, subsequent changes reported, final effectiveness explicitly unverified because of configuration issue. No linked matching retest in inspected safeguards text or links.",
+        "license_declaration": null,
+        "rights_state": "No artifact-specific reuse grant located; no OGL inference.",
+        "excluded_correction": "Footnote153 concerns capability grading and is not a safeguard retest.",
+        "publication_date": null,
+        "publication_date_null_reason": "No explicit article publication date in inspected text; unrelated linked-event dates not borrowed.",
+        "reviewer_inspection_window_utc": [
+          "2026-10-08T16:18:23Z",
+          "2026-10-08T16:18:47Z"
+        ]
+      }
+    },
+    {
+      "artifact_key": "S4-A-AISI-TRENDS",
+      "url": "https://www.aisi.gov.uk/frontier-ai-trends-report",
+      "review": {
+        "disposition": "reverified_separate_study",
+        "locator": "Section 4, Figure 13 and adjoining lines 220–224; footer 504–520",
+        "finding": "Biological-misuse Model B expert effort is strictly greater than 420 minutes; anonymous identity/query denominator remain unknown; not a GPT-5.5 cyber remediation retest.",
+        "license_declaration": null,
+        "rights_state": "Exact report page and linked privacy policy establish no report-specific grant.",
+        "reviewer_inspection_window_utc": [
+          "2026-10-08T16:18:23Z",
+          "2026-10-08T16:18:47Z"
+        ]
+      }
+    },
+    {
+      "artifact_key": "S4-A-AISI-PRIVACY",
+      "url": "https://www.aisi.gov.uk/privacy-policy",
+      "review": {
+        "disposition": "reverified_scope_only",
+        "locator": "Privacy Policy introduction and Last Updated header",
+        "last_updated": "2024-11-19",
+        "finding": "Personal-data handling policy, not an affirmative content reuse license.",
+        "reviewer_inspection_window_utc": [
+          "2026-10-08T16:18:23Z",
+          "2026-10-08T16:18:47Z"
+        ]
+      }
+    },
+    {
+      "artifact_key": "S4-A-APOLLO-CARD",
+      "url": "https://deploymentsafety.openai.com/gpt-6-astra/external-evaluations-for-alignment---apollo-research",
+      "review": {
+        "disposition": "reverified_developer_attribution_only",
+        "locator": "Section 8.8.1 lines 756–760; publication header 317; change log 487–495; footer 1605–1607",
+        "finding": "No original-report hyperlink in inspected Apollo section; near-final representative model descriptor is not an immutable checkpoint.",
+        "publication_date": "2026-09-03",
+        "publication_precision": "day",
+        "current_document_revision": "mutable HTML, exact source revision/hash unknown",
+        "observed_revision_dates": [
+          "2026-09-09",
+          "2026-09-22",
+          "2026-09-29"
+        ],
+        "revision_limit": "Whole-card change dates do not prove changes to the Apollo section or identify study dates.",
+        "license_declaration": null,
+        "rights_state": "No artifact-specific reuse grant established. Prior catalog terms inspection retained; submitted failed terms link is historical, not a new denial or proof of absence.",
+        "reviewer_inspection_window_utc": [
+          "2026-10-08T16:18:47Z",
+          "2026-10-08T16:19:56Z"
+        ]
+      }
+    },
+    {
+      "artifact_key": "S4-A-APOLLO-INDEX",
+      "url": "https://www.apolloresearch.ai/science",
+      "review": {
+        "disposition": "bounded_negative_search_reverified",
+        "locator": "Rendered science index; exact Astra and GPT-6 text searches; System cards first displayed entry lines 127–154",
+        "finding": "No Astra/GPT-6 match or release-specific original located. GPT-5.6 (Sol) dated 2026-07-09 is a different release, not a substitute.",
+        "scope": "This rendered index and Apollo card section only; no proof the original does not exist.",
+        "reviewer_inspection_window_utc": [
+          "2026-10-08T16:18:47Z",
+          "2026-10-08T16:19:56Z"
+        ]
+      }
+    },
+    {
+      "artifact_key": "S4-A-CC-DEED",
+      "url": "https://creativecommons.org/licenses/by/4.0/",
+      "review": {
+        "disposition": "submitted_and_prior_license_metadata_preserved",
+        "finding": "CC BY 4.0 applicability is based on paper-specific arXiv notice. This review does not newly reread the deed or provide legal advice."
+      }
+    },
+    {
+      "artifact_key": "S4-A-CAMEL-PDF",
+      "url": "https://arxiv.org/pdf/2503.18813v2",
+      "review": {
+        "disposition": "bounded_pdf_text_inspection",
+        "reviewer_inspection_window_utc": [
+          "2026-10-08T16:19:56Z",
+          "2026-10-08T16:20:42Z"
+        ],
+        "locators": [
+          "printed page 1 footer",
+          "printed page 35 Table 7 / physical PDF page 35"
+        ],
+        "page_count": 125,
+        "aggregate_match": "Table 7 CaMeL Overall 0±0.0 matches HTML.",
+        "rights_notice": "PDF footer identifies copyright 2025 Google DeepMind and reserves rights.",
+        "rights_interpretation": "Coexisting with the paper-specific arXiv CC BY 4.0 declaration; preserve both notices. No claim that the copyright notice automatically revokes the declaration. Intended full-PDF/body redistribution requires separate scope review.",
+        "whole_source_bytes_acquired_or_hashed": false,
+        "visual_status": "Screenshot requests returned citation text only in this runtime; no source-PDF pixels were exposed, so visual verification is not claimed.",
+        "retained_content": "Metadata and bounded paraphrase only; no appendix/payload/raw-trace retention."
+      }
+    }
+  ],
+  "submitted_pdf_inspection": {
+    "pages": 4,
+    "text_extraction": "all four pages read",
+    "visual_review": "Local page 3 rights table rendered and visually inspected; page 1 decision table checked separately.",
+    "result": "Submitted table statements are historical access/rights claims; corrections are recorded in delta. No source-study replication."
+  },
+  "static_excerpt_provenance": {
+    "source_artifact_key": "S4-A-CAMEL-NOTEBOOK",
+    "source_git_commit": "f083b6b396399d3b3c7f2ddaf613a5945eaf32d8",
+    "source_git_blob_sha1": "7fa1498d6e16a1956d099b8dfeb81641cf6f2d5b",
+    "source_notebook_json_line_ranges": [
+      [
+        93,
+        94
+      ],
+      [
+        111,
+        116
+      ],
+      [
+        119,
+        125
+      ]
+    ],
+    "evidence_origin": "Prior recovered source 21 exact decoded excerpt and current pinned research catalog agree.",
+    "new_whole_notebook_hash": null,
+    "byte_scope": "Recovered selected decoded strings; former receipt serialization is not claimed restored byte-for-byte.",
+    "executed": false
+  },
+  "stopping_conditions": {
+    "CaMeL": "Named paper, metadata, pinned/current README/LICENSE read; safe prior snippet reused; targeted history failed, no alternate route used. Production/runtime residual blocker established.",
+    "AISI": "Named original safeguards paragraph, relevant correction context, trends section and linked privacy policy checked; no matching retest linked.",
+    "Apollo": "Named card section and rendered official index checked; no release-specific original linked/matched. Original remains unlocated in inspected sources.",
+    "further_session_launched": false
+  }
+}
