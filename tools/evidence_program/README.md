@@ -140,3 +140,18 @@ Run `python tools/evidence_program/read_algoperf_trial.py` for a deterministic 7
 ## Offline Eurostat ICT-training slice
 
 `python tools/evidence_program/read_eurostat_ict_training.py tools/evidence_program/tests/fixtures/labor-market` reads only the fixed `de-ict-training.json` and `manifest.json` files. No network, source execution or canonical import. See the [guide](../../docs/evidence-program/research/labor-market.md) and [fixture notice](tests/fixtures/labor-market/NOTICE.md). Exact dimension/category indexing, sparse values/status, missing years, percent units, reference-year evidence, scoped rights, decimal-token precision and stable/snapshot identities are retained. The fixture is Eurostat German statistical data under its specific reuse terms, not CC0. Aggregate checks run catalog and reader regressions offline.
+
+## Forecast and survey aggregate review
+
+[read_leap_aggregates.py](read_leap_aggregates.py) reads only a fixed manually curated LEAP Wave 12 ledger and manifest. It validates one unconditional catastrophe-2050 instrument and exactly four publisher groups. This is a bounded offline ledger validator, not a source HTML extractor. It has no network, respondent acquisition, model execution or canonical write path.
+
+```bash
+python tools/evidence_program/read_leap_aggregates.py tools/evidence_program/tests/fixtures/forecast-surveys
+python tools/evidence_program/check.py
+```
+
+The [fixture notice](tests/fixtures/forecast-surveys/NOTICE.md) retains CC BY 4.0 attribution outside data/CC0. Original HTML is not vendored; original-page and derivative hashes are distinct. Source percent strings and normalized probability strings preserve exact decimals. Source cell n, effective n, weighting, overlap, quartiles and the expert 157/category-sum 149 discrepancy remain separate. Stable question/group identity differs from reviewed instrument and result revisions. Inputs are bounded to 32 KiB/8 KiB, 1000 nodes/depth 12 and 32-character decimal strings; descriptor-relative POSIX opens reject symlinks, traversal and special files without blocking.
+
+[check_forecast_surveys.py](check_forecast_surveys.py) checks seven collections, all fourteen previous catalog fingerprints, complete overlap coverage, artifact-specific rights and the standalone bounded prompts. [Guide](../../docs/evidence-program/research/forecast-surveys.md). No pooling, generic p(doom) mapping, individual profiling or live collector.
+
+Byte-pinned LEAP and earlier AgentDojo synthetic JSON fixtures now each have a directory-local `.gitattributes` rule forcing LF checkout. Two isolated Git `core.autocrlf=true` regressions verify byte equality and both readers. Only the checkout rule is added to the prior fixture directory; existing files and hashes are preserved.

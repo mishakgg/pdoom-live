@@ -89,3 +89,7 @@ The [guide](research/human-reliance.md) and [catalog](../../data/evidence-progra
 ## Labor-market effects and skill demand
 
 [Research guide](research/labor-market.md) and [catalog](../../data/evidence-program/research/labor-market.json) preserve BLS employment/wage regimes, Indeed advertisement-text changes, Eurostat training populations/reference years and O*NET task-rating vintages. One bounded offline Eurostat reader and separately licensed aggregate fixture are implemented; source admission, wider collection, BTOS export and canonical mapping remain held.
+
+## Forecast and survey reconstruction review
+
+The [research guide](research/forecast-surveys.md) and [catalog](../../data/evidence-program/research/forecast-surveys.json) distinguish ESPAI framing/reanalysis, XPT instruments/stages/defaults, LEAP medians and respondent quartiles, NLP agreement, overlapping historical samples, translated Swedish occurrence questions and AI Futures Model exports. Seven collections remain unadmitted. One [offline LEAP reader](../../tools/evidence_program/read_leap_aggregates.py) validates four manually curated published group summaries with exact decimal strings, separate definition/source/derivative versions and [CC BY 4.0 attribution](../../tools/evidence_program/tests/fixtures/forecast-surveys/NOTICE.md). It is not a live HTML extractor or respondent-data import. The [dated queue](research/research-session-review-queue.md) records fourteen integrated reviews and item 15 prepared; unresolved rights, denominators and mappings remain held.
