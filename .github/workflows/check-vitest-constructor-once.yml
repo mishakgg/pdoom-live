@@ -1,0 +1,170 @@
+name: Supplemental Vitest constructor-test typecheck
+
+on:
+  push:
+    branches: [audit/vitest-constructor-typecheck-2026-10-08]
+    paths: [.github/workflows/check-vitest-constructor-once.yml]
+
+# TEMPLATE: render a fixed candidate commit, independently review, then publish.
+# This isolated diagnostic branch/workflow must never merge into the app branch.
+permissions:
+  contents: read
+concurrency:
+  group: vitest-constructor-typecheck-2026-10-08
+  cancel-in-progress: false
+jobs:
+  typecheck:
+    if: github.repository == 'mishakgg/pdoom-live'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+        with:
+          ref: a703ba8fb41d6395ad130d31cc3a9179896be406
+          persist-credentials: false
+          fetch-depth: 1
+          path: source
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22.23.3
+          check-latest: false
+      - name: Install locked packages without scripts and typecheck the real test
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PYCODE'
+          """Supplemental real-import constructor-test typecheck; TEMPLATE, not publish-ready."""
+          import hashlib,json,os,selectors,signal,subprocess,sys,tempfile,time
+          from pathlib import Path
+          
+          CANDIDATE_SHA = 'a703ba8fb41d6395ad130d31cc3a9179896be406'
+          EXPECTED = {'apps/web/package.json': '8678eb30e9dec02b77d18182eb6c4346c952193966bea1bc332106588df7dd08', 'package-lock.json': 'bc5790182a174fc64ac9c41ed29088eaa2308641f7fa3946b84a0a94c66c8f63', 'package.json': '8260173b985da19fca98ac523aed26a35295f893baf37cf0e562511439ce4afa', 'packages/contracts/package.json': '9e34f06f7ded54afeb032f0641171b6ed6426c1b11c71ecd84af32cc3f85a9d9', 'packages/db/package.json': '68a87cc7337217ce2e6befd9989eb203f20b3aa62fcf5ef8e93ebff62fc5f26b', 'packages/observability/package.json': '8299d67d1c353c3ba0c1f1610e239dd4659c8c40bade73ca88b38fcb893a2318', 'test/format-performance.test.ts': 'd1c22b12f7a7ee7b54de8dc9479f72316aee307865184d9e3740c57ef7ff2e69', 'tsconfig.base.json': 'baaedec3d1f5d41843bd226b062e89af3c41ddf578d4527c9a27f2bb5225b169', 'apps/web/lib/format.ts': '66aee91ea41e6de111409dc138ba3b50a8d2e1b38c359e722697f4a5fd9d581d'}
+          TSC_ARGS = ['--noEmit','--target','ES2022','--lib','ES2022,DOM,DOM.Iterable',
+                      '--module','ESNext','--moduleResolution','Bundler','--strict',
+                      '--noUncheckedIndexedAccess','--exactOptionalPropertyTypes','false',
+                      '--skipLibCheck','--esModuleInterop','--forceConsistentCasingInFileNames',
+                      '--resolveJsonModule','--isolatedModules','--types','node',
+                      'test/format-performance.test.ts']
+          
+          def bounded_run(command, *, env, cwd, timeout, stdout_limit, stderr_limit):
+              # Drain binary pipes incrementally and enforce limits before appending data.
+              # No unbounded capture_output/communicate call is used.
+              process = subprocess.Popen(command, env=env, cwd=cwd, stdout=subprocess.PIPE,
+                                         stderr=subprocess.PIPE, start_new_session=True)
+              buffers = {'stdout': bytearray(), 'stderr': bytearray()}
+              limits = {'stdout': stdout_limit, 'stderr': stderr_limit}
+              deadline = time.monotonic() + timeout
+              selector = selectors.DefaultSelector()
+              try:
+                  for name, stream in [('stdout', process.stdout), ('stderr', process.stderr)]:
+                      os.set_blocking(stream.fileno(), False)
+                      selector.register(stream, selectors.EVENT_READ, name)
+                  while selector.get_map():
+                      remaining = deadline - time.monotonic()
+                      if remaining <= 0:
+                          raise subprocess.TimeoutExpired(command, timeout)
+                      for key, _ in selector.select(min(remaining, 0.1)):
+                          data = os.read(key.fileobj.fileno(), 8192)
+                          if not data:
+                              selector.unregister(key.fileobj)
+                              continue
+                          name = key.data
+                          if len(buffers[name]) + len(data) > limits[name]:
+                              raise ValueError('Subprocess ' + name + ' byte limit exceeded.')
+                          buffers[name].extend(data)
+                  remaining = deadline - time.monotonic()
+                  if remaining <= 0:
+                      raise subprocess.TimeoutExpired(command, timeout)
+                  code = process.wait(timeout=remaining)
+                  return subprocess.CompletedProcess(command, code, bytes(buffers['stdout']), bytes(buffers['stderr']))
+              except BaseException:
+                  try:
+                      os.killpg(process.pid, signal.SIGKILL)
+                  except ProcessLookupError:
+                      pass
+                  process.wait(timeout=5)
+                  raise
+              finally:
+                  selector.close()
+                  process.stdout.close()
+                  process.stderr.close()
+          
+          def read_inputs(source):
+              result = {}
+              for name,expected_hash in EXPECTED.items():
+                  path = source/name
+                  if path.is_symlink() or not path.resolve().is_relative_to(source.resolve()):
+                      raise ValueError('Unsafe source input path.')
+                  with path.open('rb') as stream:
+                      raw = stream.read(512*1024+1)
+                  if len(raw)>512*1024 or hashlib.sha256(raw).hexdigest()!=expected_hash:
+                      raise ValueError('Candidate input hash differs: '+name)
+                  result[name] = raw
+              return result
+          
+          def emit_output(label, result):
+              # Bounded binary output, encoded without allowing emitted workflow commands.
+              import base64
+              for name,raw in [('stdout',result.stdout),('stderr',result.stderr)]:
+                  if raw:
+                      print('TYPECHECK_OUTPUT '+json.dumps({'stage':label,'stream':name,
+                            'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),
+                            'base64':base64.b64encode(raw).decode('ascii')}))
+          
+          def main():
+              if len(CANDIDATE_SHA)!=40 or any(c not in '0123456789abcdef' for c in CANDIDATE_SHA):
+                  raise ValueError('Unrendered or invalid fixed candidate SHA.')
+              source=Path(os.environ['GITHUB_WORKSPACE'])/'source'
+              root=Path(tempfile.mkdtemp(prefix='pdoom-constructor-typecheck-',dir=os.environ['RUNNER_TEMP']))
+              home,cache=root/'home',root/'cache'
+              home.mkdir();cache.mkdir()
+              for name in ['user.npmrc','global.npmrc']:(home/name).write_text('')
+              env={'PATH':os.environ['PATH'],'HOME':str(home),'CI':'true',
+                   'npm_config_userconfig':str(home/'user.npmrc'),
+                   'npm_config_globalconfig':str(home/'global.npmrc'),
+                   'npm_config_cache':str(cache)}
+              if (source/'.npmrc').exists():
+                  raise ValueError('Unexpected project npm configuration; refusing installation.')
+              before=read_inputs(source)
+              head=bounded_run(['git','rev-parse','HEAD'],env=env,cwd=source,timeout=10,stdout_limit=1024,stderr_limit=1024)
+              if head.returncode or head.stdout.decode().strip()!=CANDIDATE_SHA:
+                  raise ValueError('Checkout HEAD differs from the fixed candidate SHA.')
+              versions={}
+              for name in ['node','npm']:
+                  result=bounded_run([name,'--version'],env=env,cwd=source,timeout=10,stdout_limit=1024,stderr_limit=1024)
+                  if result.returncode:raise ValueError('Tool version lookup failed.')
+                  versions[name]=result.stdout.decode().strip()
+              if versions!={'node':'v22.23.3','npm':'10.9.9'}:
+                  raise ValueError('Unexpected pinned Node/npm versions.')
+              commands=[('install',['npm','ci','--ignore-scripts','--no-audit','--no-fund',
+                         '--registry=https://registry.npmjs.org','--fetch-retries=1',
+                         '--fetch-timeout=20000','--fetch-retry-mintimeout=1000',
+                         '--fetch-retry-maxtimeout=2000'],240),
+                        ('typecheck',['node','node_modules/typescript/bin/tsc',*TSC_ARGS],120)]
+              stages=[]
+              for label,command,timeout in commands:
+                  result=bounded_run(command,env=env,cwd=source,timeout=timeout,
+                                     stdout_limit=128*1024,stderr_limit=128*1024)
+                  emit_output(label,result)
+                  stages.append({'stage':label,'exit_code':result.returncode,'command':command})
+                  if result.returncode:
+                      print('TYPECHECK_RECEIPT '+json.dumps({'status':'failed','candidate_sha':CANDIDATE_SHA,
+                            'versions':versions,'stages':stages},sort_keys=True))
+                      return result.returncode
+                  if read_inputs(source)!=before:
+                      raise ValueError('Typecheck/install changed pinned candidate inputs.')
+              receipt={'status':'constructor_test_typecheck_passed','candidate_sha':CANDIDATE_SHA,
+                       'versions':versions,'input_sha256':EXPECTED,'stages':stages,
+                       'no_emit':True,'ignored_lifecycle_scripts':True,'real_imports':True,
+                       'extra_packages_added':False,'ordinary_application_CI_still_required':True}
+              print('TYPECHECK_RECEIPT '+json.dumps(receipt,sort_keys=True))
+              with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as summary:
+                  summary.write('Supplemental constructor-test TypeScript check passed with real imports and pinned candidate inputs. Normal application CI remains required.\n')
+              return 0
+          
+          if __name__=='__main__':
+              try:sys.exit(main())
+              except (ValueError,subprocess.TimeoutExpired) as error:
+                  print('TYPECHECK_BLOCKED '+json.dumps({'reason':str(error)[:1024]}))
+                  sys.exit(3)
+          PYCODE

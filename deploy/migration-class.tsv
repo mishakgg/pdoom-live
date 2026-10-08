@@ -1,9 +1,0 @@
-# version	class
-# compatible: the previous web image can keep serving during and after this migration.
-# breaking: the previous web image cannot safely serve after this migration.
-# A migration file that is absent from this list is breaking.
-001_init.sql	breaking
-002_dataset_contract.sql	compatible
-003_review_decisions.sql	breaking
-004_refresh_runs.sql	compatible
-006_accepted_claims.sql	breaking

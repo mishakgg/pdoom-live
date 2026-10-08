@@ -1,8 +1,0 @@
-#!/bin/sh
-# Example off-host copy. Install it outside the repository and point
-# PDOOM_BACKUP_HOOK at the installed executable. Do not commit credentials.
-set -eu
-backup_dir="$1"
-manifest="$2"
-test -f "$manifest"
-exec rsync -a --chmod=F600 "$backup_dir"/ backup-host.example:/srv/pdoom-backups/
