@@ -1,0 +1,1495 @@
+{
+  "schema_version": "research-review-1",
+  "session_sequence": 23,
+  "title": "Compute supply-chain bottlenecks",
+  "reviewed_on": "2026-10-08",
+  "status": "reviewed_with_explicit_holds",
+  "repository_review_commit": "6cf8c1c89a387a5b26022dd9ea0a216d45b2b629",
+  "scope": "Eight documentary collection decisions: seven primary-supported samples plus one rights-only SK hynix candidate. Issuer-attributed disclosures do not independently validate physical output, installed fleets or usable compute. No source bytes or compiled historical series are included.",
+  "operational_admission": false,
+  "collector_enabled": false,
+  "canonical_contract_mapping": "not_implemented",
+  "implementation_status": "specification_only_deferred",
+  "source_code_execution": false,
+  "verification_disposition": "Bounded review disposition complete; substantive SK hynix release/milestone verification remains held.",
+  "source_snapshot_limit": "No exact upstream HTML/PDF byte identity is claimed. Direct artifact URLs, source locators and source-specific verification limits remain explicit.",
+  "third_party_rights": "Original factual research metadata does not extend source grants. Acquisition permission and compiled extracted-data redistribution are separate unresolved questions; restrictions remain binding.",
+  "verdict": "Retain eight new documentary collection families and prioritize TSMC, Micron and ASML. Seven collections have primary-supported samples; SK hynix remains rights-only with unverified milestones. One rights-gated ASML specification is deferred. No historical series, independent physical validation or usable-compute estimate is admitted.",
+  "priority_ranking": [
+    {
+      "rank": 1,
+      "id": "SCB001",
+      "basis": "Bottleneck/stage value and historical reproducibility; priority is not collection permission."
+    },
+    {
+      "rank": 2,
+      "id": "SCB002",
+      "basis": "Bottleneck/stage value and historical reproducibility; priority is not collection permission."
+    },
+    {
+      "rank": 3,
+      "id": "SCB003",
+      "basis": "Bottleneck/stage value and historical reproducibility; priority is not collection permission."
+    }
+  ],
+  "interpretation_guards": [
+    "Issuer disclosures establish reported claims, not independent factory conditions or usable compute.",
+    "Orders, commitments, backlog, capacity, output, shipments, installed stock and workload performance have different units/stages.",
+    "Revenue recognition is accounting, not a universal physical intermediate step.",
+    "Preserve units, fiscal/calendar periods, disclosure/filing dates, bounds, categorical qualifiers and source vintages.",
+    "No AI-only share from HPC revenue; no hardware count to FLOP/s, usable compute, capability score or p(doom).",
+    "Do not sum upstream/downstream units or period totals/constituents.",
+    "Unknowns, acquisition and reuse holds stay explicit; no source artifact redistribution authorized.",
+    "SEC hosting/financial audit is neither an issuer-content license nor independent physical validation."
+  ],
+  "baseline_inventory": {
+    "classification": "8 new documentary collection families; GL002/GL003 potential enrichment targets",
+    "related_inventory_ids": [
+      "GL002",
+      "GL003",
+      "GL008",
+      "GL031"
+    ],
+    "related_catalogs": [
+      "concentration-dependencies",
+      "algorithmic-efficiency"
+    ],
+    "comparison": "Prior scoped baseline review established no same supplier artifact/record. Hardware identities in training logs and organization-dependency evidence are different units. Exact Epoch row overlap unverified.",
+    "gl_id_allocation": "none"
+  },
+  "collections": [
+    {
+      "name": "TSMC fabrication and packaging disclosures",
+      "classification": "new_documentary_collection_family",
+      "rank": 1,
+      "inventory_ids": [
+        "GL002",
+        "GL003"
+      ],
+      "reporting_scope": "Facilities managed by TSMC and subsidiaries; company-wide totals, not Taiwan-only or AI-only.",
+      "historical_coverage": "Visible annual archive 1994–2025; selected 2015/2025 annual and Q2 2026 specimens. Field continuity unknown.",
+      "update_frequency": "Annual and quarterly; technology milestones irregular.",
+      "artifacts": [
+        {
+          "artifact_id": "tsmc_q2",
+          "url": "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-07/6f49632674bd2d0fd48cb65aaf89ec6ab510b559/2Q26%20ManagementReport.pdf",
+          "locator": "PDF p1 Summary shipment row; p2 platform table",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.tsmc.com/english/legal_and_trademark"
+        },
+        {
+          "artifact_id": "tsmc_2025",
+          "url": "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf",
+          "locator": "PDF p10 section 2.1; p54 advanced packaging; p2 copyright",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.tsmc.com/english/legal_and_trademark"
+        },
+        {
+          "artifact_id": "tsmc_2015",
+          "url": "https://investor.tsmc.com/static/annualReports/2015/english/e_5_1.html",
+          "locator": "Production in 2015 and 2014 table, unit header and 2015 row",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.tsmc.com/english/legal_and_trademark"
+        },
+        {
+          "artifact_id": "tsmc_archive",
+          "url": "https://investor.tsmc.com/english/annual-reports",
+          "locator": "2025 and 1994 archive entries; separate 2025 20-F filed 2026-04-17",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.tsmc.com/english/legal_and_trademark"
+        },
+        {
+          "artifact_id": "tsmc_transcript",
+          "url": "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-08/3e494f0c14dd0890f897aa044415e21d93486cc4/TSMC%202Q26%20Transcript.pdf",
+          "locator": "PDF p1 masthead/event time/copyright and p22 disclaimer",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "third_party_terms_restricted",
+          "rights_evidence_url": "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-08/3e494f0c14dd0890f897aa044415e21d93486cc4/TSMC%202Q26%20Transcript.pdf"
+        },
+        {
+          "artifact_id": "tsmc_terms",
+          "url": "https://www.tsmc.com/english/legal_and_trademark",
+          "locator": "Restrictions on use of content; intended audience/use",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.tsmc.com/english/legal_and_trademark"
+        }
+      ],
+      "verified_samples": [
+        {
+          "source_artifact": "tsmc_q2",
+          "measure": "wafer_shipments",
+          "value": 4336,
+          "comparator": "=",
+          "unit": "thousand_12_inch_equivalent_wafers",
+          "period_label": "2Q26",
+          "disclosed_on": "2026-07-16",
+          "scope": "company-wide; AI-only fraction unknown"
+        },
+        {
+          "source_artifact": "tsmc_q2",
+          "measure": "HPC_net_revenue_share",
+          "value": 66,
+          "unit": "percent",
+          "period_label": "2Q26",
+          "disclosed_on": "2026-07-16"
+        },
+        {
+          "source_artifact": "tsmc_2025",
+          "measure": "annual_manufacturing_capacity",
+          "value": 17,
+          "comparator": ">",
+          "unit": "million_12_inch_equivalent_wafers",
+          "period_label": "2025",
+          "disclosed_on": null,
+          "scope": "facilities managed by TSMC and subsidiaries"
+        },
+        {
+          "source_artifact": "tsmc_2025",
+          "measure": "technology_milestone",
+          "product": "CoWoS-L 3.5-reticle",
+          "period_label": "since 2024",
+          "classification": "issuer_reported_production",
+          "value": null
+        },
+        {
+          "source_artifact": "tsmc_2025",
+          "measure": "technology_milestone",
+          "product": "CoWoS-L 5.5-reticle",
+          "period_label": "2026",
+          "classification": "issuer_forecast_qualification_completion",
+          "value": null
+        },
+        {
+          "source_artifact": "tsmc_2015",
+          "measure": "capacity",
+          "value_min": 9,
+          "value_max": 10,
+          "comparator": "source_reported_range",
+          "unit": "million_12_inch_equivalent_wafers",
+          "period_label": "2015",
+          "bounds_inclusion_unknown": true
+        },
+        {
+          "source_artifact": "tsmc_2015",
+          "measure": "output",
+          "value_min": 8,
+          "value_max": 9,
+          "comparator": "source_reported_range",
+          "unit": "million_12_inch_equivalent_wafers",
+          "period_label": "2015",
+          "bounds_inclusion_unknown": true
+        }
+      ],
+      "limitations": [
+        "HPC is revenue mix; it cannot allocate wafers to AI. Wafer equivalence is not good-die output or packaged accelerators.",
+        "Capacity, production, shipments and qualification milestones remain separate; preserve bounds and unknown release date of annual report. The archive’s separate 20-F filing date must not substitute for that release date.",
+        "LSEG StreetEvents transcript copyright/republication restrictions are artifact-specific. TSMC hosting does not clear redistribution.",
+        "2015 source range endpoint rounding/inclusion semantics are unknown."
+      ],
+      "decision": "Prioritize issuer-authored capacity and shipment tables; exclude transcript text from any proposed export.",
+      "canonical_observation_mapping": "not_approved",
+      "independent_physical_validation": false,
+      "id": "SCB001",
+      "access": "Public issuer HTML and individual PDFs; transcript is a distinct third-party artifact.",
+      "related_review_collection_ids": [],
+      "sources": [
+        "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-07/6f49632674bd2d0fd48cb65aaf89ec6ab510b559/2Q26%20ManagementReport.pdf",
+        "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf",
+        "https://investor.tsmc.com/static/annualReports/2015/english/e_5_1.html",
+        "https://investor.tsmc.com/english/annual-reports",
+        "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-08/3e494f0c14dd0890f897aa044415e21d93486cc4/TSMC%202Q26%20Transcript.pdf",
+        "https://www.tsmc.com/english/legal_and_trademark"
+      ],
+      "rights": "Artifact-specific rights and acquisition dispositions remain listed below. Public access, financial audit and SEC hosting do not establish a blanket issuer-content or extracted-data reuse grant.",
+      "primary_url": "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-07/6f49632674bd2d0fd48cb65aaf89ec6ab510b559/2Q26%20ManagementReport.pdf",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked Q2 2026 shipment units, FY2025 managed-facility capacity lower bound and packaging milestones, 2015 output/capacity ranges, archive scope and distinct LSEG/issuer rights.",
+        "evidence_urls": [
+          "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-07/6f49632674bd2d0fd48cb65aaf89ec6ab510b559/2Q26%20ManagementReport.pdf",
+          "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf",
+          "https://investor.tsmc.com/static/annualReports/2015/english/e_5_1.html",
+          "https://investor.tsmc.com/english/annual-reports",
+          "https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-08/3e494f0c14dd0890f897aa044415e21d93486cc4/TSMC%202Q26%20Transcript.pdf",
+          "https://www.tsmc.com/english/legal_and_trademark"
+        ]
+      },
+      "next_action": "Choose a permitted issuer-table extraction scope and document the capacity/shipments distinction before acquiring any historical series.",
+      "verification_scope": "primary_documentary_sample_supported_not_independent_physical_validation"
+    },
+    {
+      "name": "Micron HBM remarks and manufacturing disclosures",
+      "classification": "new_documentary_collection_family",
+      "rank": 2,
+      "inventory_ids": [
+        "GL002",
+        "GL003"
+      ],
+      "reporting_scope": "Micron global business revenue/pricing; wafer-intensity comparison is explicitly industrywide.",
+      "historical_coverage": "Visible historical index FY2019–FY2026 Q3; sampled HBM remarks 2024/2025. No continuous HBM series established.",
+      "update_frequency": "Quarterly plus irregular manufacturing/product statements.",
+      "artifacts": [
+        {
+          "artifact_id": "micron_q42025",
+          "url": "https://micron.gcs-web.com/static-files/5ea95475-639b-4cfc-91fd-b9b4a2bb5e63",
+          "locator": "Prepared remarks p4 HBM revenue and agreements, dated 2025-09-23",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.micron.com/legal/terms-of-use"
+        },
+        {
+          "artifact_id": "micron_q22024",
+          "url": "https://micron.gcs-web.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5",
+          "locator": "Prepared remarks p1 date; p6 supply discussion; p2 DDR5 expansion",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.micron.com/legal/terms-of-use"
+        },
+        {
+          "artifact_id": "micron_archive",
+          "url": "https://micron.gcs-web.com/index.php/quarterly-results",
+          "locator": "FY2019 through FY2026 Q3 result links",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.micron.com/legal/terms-of-use"
+        },
+        {
+          "artifact_id": "micron_current",
+          "url": "https://investors.micron.com/financials/quarterly-results/default.aspx",
+          "locator": "Quarterly results archive/year selector; no populated list in rendering",
+          "verification_status": "archive_shell_or_selector_only",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.micron.com/legal/terms-of-use"
+        },
+        {
+          "artifact_id": "micron_terms",
+          "url": "https://www.micron.com/legal/terms-of-use",
+          "locator": "General and User License, downloadable content",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.micron.com/legal/terms-of-use"
+        }
+      ],
+      "verified_samples": [
+        {
+          "source_artifact": "micron_q42025",
+          "measure": "hbm_revenue",
+          "value": 2,
+          "comparator": "nearly",
+          "unit": "billion_USD",
+          "period_label": "Fiscal Q4 2025",
+          "period_end": null,
+          "disclosed_on": "2025-09-23"
+        },
+        {
+          "source_artifact": "micron_q42025",
+          "measure": "annualized_hbm_revenue_run_rate",
+          "value": 8,
+          "comparator": "nearly",
+          "unit": "billion_USD_per_year",
+          "period_label": "annualized from Fiscal Q4 2025",
+          "disclosed_on": "2025-09-23"
+        },
+        {
+          "source_artifact": "micron_q42025",
+          "measure": "supply_with_pricing_agreements",
+          "value": null,
+          "qualifier": "vast majority",
+          "period_label": "calendar 2026",
+          "disclosed_on": "2025-09-23",
+          "scope": "Micron HBM3E supply",
+          "classification": "issuer_reported_pricing_agreement"
+        },
+        {
+          "source_artifact": "micron_q42025",
+          "measure": "commercial_discussions",
+          "value": null,
+          "period_label": "calendar 2026",
+          "disclosed_on": "2025-09-23",
+          "scope": "HBM4 specifications and volumes"
+        },
+        {
+          "source_artifact": "micron_q22024",
+          "measure": "wafer_supply_intensity_ratio",
+          "value": 3,
+          "comparator": "approximately",
+          "unit": "ratio",
+          "disclosed_on": "2024-03-20",
+          "classification": "management_estimate",
+          "scope": "industrywide HBM3E versus DDR5; equal bits at same technology node"
+        }
+      ],
+      "limitations": [
+        "Nearly USD2bn is fiscal-quarter revenue; annualized run rate is not realized annual revenue. Exact fiscal end is unestablished in sampled remarks.",
+        "Pricing agreements are not physical allocation; categorical coverage and HBM4 negotiations disclose no stacks or shipments.",
+        "Approximately 3× is a dated industrywide management estimate for HBM3E versus DDR5 at equal bits and node, not a universal manufacturing coefficient.",
+        "Terms cover downloadable content; intended factual-dataset redistribution remains unresolved. An incomplete rendered index is not proof of archive completeness or implementation."
+      ],
+      "decision": "Prioritize generation-specific constraints and preserve pricing-agreement semantics.",
+      "canonical_observation_mapping": "not_approved",
+      "independent_physical_validation": false,
+      "id": "SCB002",
+      "access": "Public PDF remarks and historical index; current index rendering lacks populated result list.",
+      "related_review_collection_ids": [],
+      "sources": [
+        "https://micron.gcs-web.com/static-files/5ea95475-639b-4cfc-91fd-b9b4a2bb5e63",
+        "https://micron.gcs-web.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5",
+        "https://micron.gcs-web.com/index.php/quarterly-results",
+        "https://investors.micron.com/financials/quarterly-results/default.aspx",
+        "https://www.micron.com/legal/terms-of-use"
+      ],
+      "rights": "Artifact-specific rights and acquisition dispositions remain listed below. Public access, financial audit and SEC hosting do not establish a blanket issuer-content or extracted-data reuse grant.",
+      "primary_url": "https://micron.gcs-web.com/static-files/5ea95475-639b-4cfc-91fd-b9b4a2bb5e63",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked both prepared-remarks PDFs, fiscal revenue versus calendar agreement horizon, industrywide equal-bit/same-node HBM3E ratio, visible archive and content terms.",
+        "evidence_urls": [
+          "https://micron.gcs-web.com/static-files/5ea95475-639b-4cfc-91fd-b9b4a2bb5e63",
+          "https://micron.gcs-web.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5",
+          "https://micron.gcs-web.com/index.php/quarterly-results",
+          "https://investors.micron.com/financials/quarterly-results/default.aspx",
+          "https://www.micron.com/legal/terms-of-use"
+        ]
+      },
+      "next_action": "Resolve remarks-derived factual-data reuse and preserve generation-, denominator- and agreement-specific semantics.",
+      "verification_scope": "primary_documentary_sample_supported_not_independent_physical_validation"
+    },
+    {
+      "name": "ASML equipment sales, shipments and order disclosures",
+      "classification": "new_documentary_collection_family",
+      "rank": 3,
+      "inventory_ids": [
+        "GL002",
+        "GL003"
+      ],
+      "reporting_scope": "Company-wide worldwide supplier reporting; end-market/customer use not assigned to AI.",
+      "historical_coverage": "Annual archive from 2015; quarterly archive Q1 2021–Q2 2026. Selected 2022 shipment, 2024 policy and 2025–2026 numerical fixtures.",
+      "update_frequency": "Quarterly; bookings stop after 2025, systems backlog annual from 2026.",
+      "artifacts": [
+        {
+          "artifact_id": "asml_q42025",
+          "url": "https://investor.asml.com/news-releases/news-release-details/q4-2025-financial-results",
+          "locator": "Summary table and footnotes 1–4; US GAAP reporting",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.asml.com/en/terms-of-use"
+        },
+        {
+          "artifact_id": "asml_q12026",
+          "url": "https://investor.asml.com/static-files/928c4fda-b334-43e2-a5f0-b3c8413255c4",
+          "locator": "PDF p1 summary table; p2 US GAAP fiscal period",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.asml.com/en/terms-of-use"
+        },
+        {
+          "artifact_id": "asml_q22026",
+          "url": "https://www.investor.asml.com/news-releases/news-release-details/q2-2026-financial-results",
+          "locator": "Summary table; US GAAP and IFRS Financial Reporting",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.asml.com/en/terms-of-use"
+        },
+        {
+          "artifact_id": "asml_2022",
+          "url": "https://investor.asml.com/static-files/12073e2d-9103-41ef-90a6-32fe3919ee74",
+          "locator": "FY2022 presentation, printed p6/PDF zero-based p5",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.asml.com/en/terms-of-use"
+        },
+        {
+          "artifact_id": "asml_policy",
+          "url": "https://investor.asml.com/static-files/a6b90371-ce4b-4945-b2c3-9498aeda2760",
+          "locator": "Q4/FY2024 investor call, dated 2025-01-29, p2",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.asml.com/en/terms-of-use"
+        },
+        {
+          "artifact_id": "asml_archive",
+          "url": "https://investor.asml.com/quarterly-results",
+          "locator": "Quarterly results archive Q1 2021–Q2 2026",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.asml.com/en/terms-of-use"
+        },
+        {
+          "artifact_id": "asml_annual",
+          "url": "https://investor.asml.com/annual-reports",
+          "locator": "Annual report archive from 2015; 2025 report published 2026-02-25",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.asml.com/en/terms-of-use"
+        },
+        {
+          "artifact_id": "asml_terms",
+          "url": "https://www.asml.com/en/terms-of-use",
+          "locator": "Intellectual property rights and regulated-document precedence",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.asml.com/en/terms-of-use"
+        }
+      ],
+      "verified_samples": [
+        {
+          "source_artifact": "asml_q42025",
+          "disclosed": "2026-01-28",
+          "period_end": "2025-12-31",
+          "new_systems_sold_units": 94,
+          "used_systems_sold_units": 8,
+          "net_bookings_eur_million": 13158,
+          "fy2025_backlog_eur_million": 38797
+        },
+        {
+          "source_artifact": "asml_q12026",
+          "disclosed": "2026-04-15",
+          "period_end": "2026-03-29",
+          "new_systems_sold_units": 67,
+          "used_systems_sold_units": 12,
+          "bookings": null,
+          "missing_reason": "discontinued_quarterly_disclosure",
+          "q42025_comparison_new_units": 94,
+          "q42025_comparison_used_units": 8
+        },
+        {
+          "source_artifact": "asml_q22026",
+          "disclosed": "2026-07-15",
+          "period_end": "2026-06-28",
+          "new_systems_sold_units": 86,
+          "used_systems_sold_units": 5,
+          "bookings": null,
+          "missing_reason": "discontinued_quarterly_disclosure",
+          "q12026_comparison_new_units": 67,
+          "q12026_comparison_used_units": 12
+        },
+        {
+          "source_artifact": "asml_2022",
+          "disclosed": "2023-01-25",
+          "period": "FY2022",
+          "euv_shipped_units": 54,
+          "euv_recognized_in_sales_units": 40
+        },
+        {
+          "source_artifact": "asml_policy",
+          "announcement": "2025-01-29",
+          "last_quarterly_bookings_year": 2025,
+          "annual_total_systems_backlog_start_year": 2026
+        }
+      ],
+      "limitations": [
+        "Systems sold is not automatically shipment, installation or new production; used sales may transfer existing tools.",
+        "Bookings/backlog are accepted order values including inflation adjustments; never convert them into equipment counts.",
+        "Installed Base Management measures service/field-option revenue, not machine stock.",
+        "Q1/Q2 2026 missing bookings are policy-driven nulls; fiscal ends differ from calendar labels.",
+        "Rights terms restrict reproduction/distribution. A factual-dataset basis remains unresolved."
+      ],
+      "decision": "Retain one rights-gated five-artifact specification; no implementation or acquisition admission.",
+      "canonical_observation_mapping": "not_approved",
+      "independent_physical_validation": false,
+      "id": "SCB003",
+      "access": "Two HTML releases, one official PDF release and two reference PDFs form the bounded specification.",
+      "related_review_collection_ids": [],
+      "sources": [
+        "https://investor.asml.com/news-releases/news-release-details/q4-2025-financial-results",
+        "https://investor.asml.com/static-files/928c4fda-b334-43e2-a5f0-b3c8413255c4",
+        "https://www.investor.asml.com/news-releases/news-release-details/q2-2026-financial-results",
+        "https://investor.asml.com/static-files/12073e2d-9103-41ef-90a6-32fe3919ee74",
+        "https://investor.asml.com/static-files/a6b90371-ce4b-4945-b2c3-9498aeda2760",
+        "https://investor.asml.com/quarterly-results",
+        "https://investor.asml.com/annual-reports",
+        "https://www.asml.com/en/terms-of-use"
+      ],
+      "rights": "Artifact-specific rights and acquisition dispositions remain listed below. Public access, financial audit and SEC hosting do not establish a blanket issuer-content or extracted-data reuse grant.",
+      "primary_url": "https://investor.asml.com/news-releases/news-release-details/q4-2025-financial-results",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked five fixture artifacts, fiscal ends, reporting-policy break, two repeated comparison-column pairs, sales/shipment/recognition distinctions and rights; retained a specification only.",
+        "evidence_urls": [
+          "https://investor.asml.com/news-releases/news-release-details/q4-2025-financial-results",
+          "https://investor.asml.com/static-files/928c4fda-b334-43e2-a5f0-b3c8413255c4",
+          "https://www.investor.asml.com/news-releases/news-release-details/q2-2026-financial-results",
+          "https://investor.asml.com/static-files/12073e2d-9103-41ef-90a6-32fe3919ee74",
+          "https://investor.asml.com/static-files/a6b90371-ce4b-4945-b2c3-9498aeda2760",
+          "https://www.asml.com/en/terms-of-use"
+        ]
+      },
+      "next_action": "Approve a rights basis and the corrected five-artifact manifest before considering the specification.",
+      "verification_scope": "primary_documentary_sample_supported_not_independent_physical_validation"
+    },
+    {
+      "name": "NVIDIA supplier commitments and inventory filings",
+      "classification": "new_documentary_collection_family",
+      "rank": null,
+      "inventory_ids": [
+        "GL002",
+        "GL003"
+      ],
+      "reporting_scope": "Consolidated issuer financial measures for supplier commitments and inventory; not geographic chip counts.",
+      "historical_coverage": "Annual archive exposes FY2011–FY2026. Selected FY2026 and Q2 FY2027 filings; broader 2023–2026 constraint history unverified.",
+      "update_frequency": "Quarterly, annual and event-driven SEC filings.",
+      "artifacts": [
+        {
+          "artifact_id": "nvda_q2",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+          "locator": "Note 10 Commitments and Contingencies, printed p18, HTML lines 824–836",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "unknown",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "nvda_q2_index",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/0001045810-26-000075-index.htm",
+          "locator": "Filing date 2026-08-26; period of report 2026-07-26",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "unknown",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "nvda_fy2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+          "locator": "Critical Audit Matters p50; Note 12 p70; inventory policy",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "unknown",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "nvda_fy2026_index",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm",
+          "locator": "Filing date 2026-02-25; period end 2026-01-25",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "unknown",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "nvda_archive",
+          "url": "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+          "locator": "Annual PDFs 2011–2026, original parsed lines 98–206",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.nvidia.com/en-eu/about-nvidia/terms-of-service/"
+        },
+        {
+          "artifact_id": "nvda_terms",
+          "url": "https://www.nvidia.com/en-eu/about-nvidia/terms-of-service/",
+          "locator": "Sections 3.1 and 3.2(f), original parsed lines 129–133",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.nvidia.com/en-eu/about-nvidia/terms-of-service/"
+        },
+        {
+          "artifact_id": "sec_api",
+          "url": "https://www.sec.gov/search-filings/edgar-application-programming-interfaces",
+          "locator": "API introduction; XBRL Data APIs; companyfacts",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "unknown",
+          "rights_evidence_url": null
+        }
+      ],
+      "verified_samples": [
+        {
+          "source_artifact": "nvda_q2",
+          "accession": "0001045810-26-000075",
+          "filing_date": "2026-08-26",
+          "observation_date": "2026-07-26",
+          "measure": "supply_and_capacity_commitments",
+          "value": 279,
+          "unit": "USD billion",
+          "payment_period_basis": "fiscal year",
+          "payment_schedule": [
+            [
+              "FY2027 remainder",
+              92
+            ],
+            [
+              "FY2028",
+              87
+            ],
+            [
+              "FY2029",
+              88
+            ],
+            [
+              "FY2030",
+              6
+            ],
+            [
+              "FY2031",
+              5
+            ],
+            [
+              "FY2032 and thereafter",
+              1
+            ]
+          ]
+        },
+        {
+          "source_artifact": "nvda_fy2026",
+          "accession": "0001045810-26-000021",
+          "filing_date": "2026-02-25",
+          "observation_date": "2026-01-25",
+          "measures": [
+            {
+              "measure": "consolidated_inventory",
+              "value": 21.4,
+              "unit": "USD billion",
+              "precision": "rounded source narrative"
+            },
+            {
+              "measure": "inventory_purchase_and_long_term_supply_capacity_obligations",
+              "value": 95.2,
+              "unit": "USD billion"
+            }
+          ]
+        }
+      ],
+      "limitations": [
+        "USD279bn is NVIDIA-to-supplier commitments, primarily memory/manufacturing facilities for current/future architectures, not customer orders or GPU quantities.",
+        "Pre-firm-order flexibility is conditional and may involve additional cost; no blanket free cancellation. Maturity buckets are fiscal years.",
+        "USD21.4bn inventory carrying value and USD95.2bn future obligations remain distinct.",
+        "NVIDIA-hosted automated acquisition and related manual processes are restricted. SEC access and financial audit do not establish issuer-content licensing or physical validation."
+      ],
+      "decision": "Use SEC accession-level provenance and fiscal maturity buckets; separate site-access and content-rights holds.",
+      "canonical_observation_mapping": "not_approved",
+      "independent_physical_validation": false,
+      "id": "SCB004",
+      "access": "Accession-specific public SEC HTML and metadata. Public APIs have standard-taxonomy/whole-entity limits.",
+      "related_review_collection_ids": [],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+        "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/0001045810-26-000075-index.htm",
+        "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+        "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm",
+        "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+        "https://www.nvidia.com/en-eu/about-nvidia/terms-of-service/",
+        "https://www.sec.gov/search-filings/edgar-application-programming-interfaces"
+      ],
+      "rights": "Artifact-specific rights and acquisition dispositions remain listed below. Public access, financial audit and SEC hosting do not establish a blanket issuer-content or extracted-data reuse grant.",
+      "primary_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked two SEC filings and accession metadata, supplier direction, fiscal payment schedule, conditional pre-order flexibility, API scope and separate NVIDIA-site acquisition restrictions.",
+        "evidence_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+          "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/0001045810-26-000075-index.htm",
+          "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+          "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm",
+          "https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx",
+          "https://www.nvidia.com/en-eu/about-nvidia/terms-of-service/",
+          "https://www.sec.gov/search-filings/edgar-application-programming-interfaces"
+        ]
+      },
+      "next_action": "Keep SEC discovery independent of NVIDIA-hosted acquisition restrictions and resolve intended extracted-field reuse.",
+      "verification_scope": "primary_documentary_sample_supported_not_independent_physical_validation"
+    },
+    {
+      "name": "SK hynix newsroom HBM milestones",
+      "classification": "new_documentary_collection_family",
+      "rank": null,
+      "inventory_ids": [
+        "GL002",
+        "GL003"
+      ],
+      "reporting_scope": "Supplier-report family; product, customer and geographic quantities unverified.",
+      "historical_coverage": "Reported quarterly archive range and 2026 milestones not admitted; continuity unknown.",
+      "update_frequency": "Claimed quarterly results and irregular milestones; not an acquired series.",
+      "artifacts": [
+        {
+          "artifact_id": "sk_terms",
+          "url": "https://news.skhynix.com/en/terms-of-use/",
+          "locator": "Modified 2025-03-07; Intellectual Property Rights and Prohibited Uses",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://news.skhynix.com/en/terms-of-use/"
+        },
+        {
+          "artifact_id": "sk_release",
+          "url": "https://news.skhynix.com/en/q2-2026-business-results/",
+          "locator": "Content not reverified; acquisition held",
+          "verification_status": "not_reverified_acquisition_held",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://news.skhynix.com/en/terms-of-use/"
+        }
+      ],
+      "verified_samples": [],
+      "limitations": [
+        "No HBM4/HBM4E event is promoted to verified observation. Release date, wording and historical coverage remain unverified.",
+        "Sample shipments, commercial-shipment commencement and production ramp are distinct; none alone proves quantity or usable compute.",
+        "Automation, commercial use and content reuse need a documented permitted basis. No alternate-host bypass."
+      ],
+      "decision": "Retain as a rights-clearance discovery candidate only.",
+      "canonical_observation_mapping": "not_approved",
+      "independent_physical_validation": false,
+      "id": "SCB005",
+      "access": "Rights-only review: newsroom terms prohibit automated access and unauthorized manual monitoring/copying.",
+      "related_review_collection_ids": [],
+      "sources": [
+        "https://news.skhynix.com/en/terms-of-use/",
+        "https://news.skhynix.com/en/q2-2026-business-results/"
+      ],
+      "rights": "Artifact-specific rights and acquisition dispositions remain listed below. Public access, financial audit and SEC hosting do not establish a blanket issuer-content or extracted-data reuse grant.",
+      "primary_url": "https://news.skhynix.com/en/terms-of-use/",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked current newsroom terms and recorded the explicit automated-access restriction; held release/archival content and did not verify HBM milestone claims.",
+        "evidence_urls": [
+          "https://news.skhynix.com/en/terms-of-use/"
+        ]
+      },
+      "next_action": "Obtain a documented permitted access/reuse basis before any release verification; no automated newsroom collection.",
+      "verification_scope": "rights_only_release_milestones_unverified"
+    },
+    {
+      "name": "Besi hybrid-bonding equipment orders and delays",
+      "classification": "new_documentary_collection_family",
+      "rank": null,
+      "inventory_ids": [
+        "GL002",
+        "GL003"
+      ],
+      "reporting_scope": "Supplier-level events/aggregates; unnamed customer geography unknown.",
+      "historical_coverage": "Selected 2024 events; release navigation 2015 onward, annual 2016–2025, interim through H1 2026, XBRL from 2020.",
+      "update_frequency": "Quarterly, interim, annual and irregular orders.",
+      "artifacts": [
+        {
+          "artifact_id": "besi_order",
+          "url": "https://www.besi.com/events/events-shows/details/be-semiconductor-industries-nv-announces-order-for-26-hybrid-bonding-systems/",
+          "locator": "May 9, 2024 opening paragraphs",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "unknown",
+          "rights_evidence_url": "https://www.besi.com/disclaimer/"
+        },
+        {
+          "artifact_id": "besi_h12024",
+          "url": "https://www.besi.com/fileadmin/data/Investor_Relations/_Semi__Annual_Reports/Half_Year_2024_Report.pdf",
+          "locator": "Performance, printed/PDF p5, zero-based p4",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "unknown",
+          "rights_evidence_url": "https://www.besi.com/disclaimer/"
+        },
+        {
+          "artifact_id": "besi_delay",
+          "url": "https://www.besi.com/investor-relations/press-releases/details/be-semiconductor-industries-nv-announces-q3-24-results/",
+          "locator": "2024-10-24, Q4-24 Outlook",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "unknown",
+          "rights_evidence_url": "https://www.besi.com/disclaimer/"
+        },
+        {
+          "artifact_id": "besi_archive",
+          "url": "https://www.besi.com/investor-relations/financial-reports-and-publications/financial-reports/",
+          "locator": "Annual Reports, Semi-Annual Reports, XBRL Packages",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "unknown",
+          "rights_evidence_url": "https://www.besi.com/disclaimer/"
+        },
+        {
+          "artifact_id": "besi_terms",
+          "url": "https://www.besi.com/disclaimer/",
+          "locator": "Opening permission, authentic financial publication and copyright",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "limited_informational_download_no_open_grant",
+          "rights_evidence_url": "https://www.besi.com/disclaimer/"
+        }
+      ],
+      "verified_samples": [
+        {
+          "source_artifact": "besi_order",
+          "publication_date": "2024-05-09",
+          "stage": "order_received",
+          "units": 26,
+          "product": "hybrid bonding systems",
+          "customer": "unnamed leading semiconductor logic manufacturer",
+          "customer_geography": null,
+          "scheduled_delivery_periods": [
+            "Q4 2024",
+            "Q1 2025"
+          ],
+          "placement_accuracy_nm": 100,
+          "delivered_units": null
+        },
+        {
+          "source_artifact": "besi_h12024",
+          "period": "Q2 2024",
+          "stage": "orders_received",
+          "units": 29,
+          "customers": 2,
+          "estimated_delivery_periods": [
+            "Q4 2024",
+            "Q1 2025"
+          ]
+        },
+        {
+          "source_artifact": "besi_delay",
+          "publication_date": "2024-10-24",
+          "source_period_end": "2024-09-30",
+          "statement": "Customer shipment delays affected certain hybrid-bonding systems scheduled Q4 2024.",
+          "exact_order_id": null,
+          "delayed_units": null
+        }
+      ],
+      "limitations": [
+        "26 orders and quarterly aggregate 29 are potentially constituent evidence, not 55 systems. Exact containment unproved.",
+        "October delay does not identify the 26-system order, delayed quantity or actual delivery.",
+        "100 nm is placement accuracy, not a fabrication node. Tool counts do not establish package throughput.",
+        "Single-copy informational permission is not an open grant; disclaimer gives precedence to original printed financial publications."
+      ],
+      "decision": "Link event, aggregate and delay as possible overlap with anonymous order identities unresolved.",
+      "canonical_observation_mapping": "not_approved",
+      "independent_physical_validation": false,
+      "id": "SCB006",
+      "access": "Public HTML and individual PDF; XBRL not established to encode equipment counts.",
+      "related_review_collection_ids": [],
+      "sources": [
+        "https://www.besi.com/events/events-shows/details/be-semiconductor-industries-nv-announces-order-for-26-hybrid-bonding-systems/",
+        "https://www.besi.com/fileadmin/data/Investor_Relations/_Semi__Annual_Reports/Half_Year_2024_Report.pdf",
+        "https://www.besi.com/investor-relations/press-releases/details/be-semiconductor-industries-nv-announces-q3-24-results/",
+        "https://www.besi.com/investor-relations/financial-reports-and-publications/financial-reports/",
+        "https://www.besi.com/disclaimer/"
+      ],
+      "rights": "Artifact-specific rights and acquisition dispositions remain listed below. Public access, financial audit and SEC hosting do not establish a blanket issuer-content or extracted-data reuse grant.",
+      "primary_url": "https://www.besi.com/events/events-shows/details/be-semiconductor-industries-nv-announces-order-for-26-hybrid-bonding-systems/",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked May order, H1 quarterly aggregate and October delay; preserved possible overlap, unproved exact order match, placement-accuracy meaning and limited download rights.",
+        "evidence_urls": [
+          "https://www.besi.com/events/events-shows/details/be-semiconductor-industries-nv-announces-order-for-26-hybrid-bonding-systems/",
+          "https://www.besi.com/fileadmin/data/Investor_Relations/_Semi__Annual_Reports/Half_Year_2024_Report.pdf",
+          "https://www.besi.com/investor-relations/press-releases/details/be-semiconductor-industries-nv-announces-q3-24-results/",
+          "https://www.besi.com/investor-relations/financial-reports-and-publications/financial-reports/",
+          "https://www.besi.com/disclaimer/"
+        ]
+      },
+      "next_action": "Resolve event-to-quarter and delay linkage without inventing anonymous customer or order identities.",
+      "verification_scope": "primary_documentary_sample_supported_not_independent_physical_validation"
+    },
+    {
+      "name": "ASMPT TCB installations and shipment milestones",
+      "classification": "new_documentary_collection_family",
+      "rank": null,
+      "inventory_ids": [
+        "GL002",
+        "GL003"
+      ],
+      "reporting_scope": "Worldwide installed-base threshold across memory and logic; AI-only fraction unknown.",
+      "historical_coverage": "Selected 2021/2025 milestones; annual/interim index reaches 1999, quarterly listings reach 2018, with date/title conflicts.",
+      "update_frequency": "Quarterly financial reports; stock milestones irregular.",
+      "artifacts": [
+        {
+          "artifact_id": "asmpt_installed",
+          "url": "https://www.asmpt.com/en/investor-relations/news-events/asmpt-announces-2025-q2-quarter-results/",
+          "locator": "Group 1H2025 Highlights; Advanced Packaging/HBM",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.asmpt.com/en/legal-notice/terms-of-use/"
+        },
+        {
+          "artifact_id": "asmpt_shipped",
+          "url": "https://www.asmpt.com/en/investor-relations/news-events/asmpt-250-tcb/",
+          "locator": "2021-02-26 date and opening paragraph",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.asmpt.com/en/legal-notice/terms-of-use/"
+        },
+        {
+          "artifact_id": "asmpt_archive",
+          "url": "https://www.asmpt.com/en/investor-relations/financial-information/",
+          "locator": "Historical Financials 2018–2026; Annual/Interim Reports 1999–2026",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.asmpt.com/en/legal-notice/terms-of-use/"
+        },
+        {
+          "artifact_id": "asmpt_terms",
+          "url": "https://www.asmpt.com/en/legal-notice/terms-of-use/",
+          "locator": "Sections 4.1–4.5 and 5.1",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "terms_restricted",
+          "rights_evidence_url": "https://www.asmpt.com/en/legal-notice/terms-of-use/"
+        }
+      ],
+      "verified_samples": [
+        {
+          "source_artifact": "asmpt_installed",
+          "disclosure_date": "2025-07-23",
+          "reporting_period": "six months ended 2025-06-30",
+          "exact_stock_snapshot_date": null,
+          "value": 500,
+          "comparator": ">",
+          "unit": "TCB tools",
+          "scope": "worldwide installed base, memory and logic",
+          "ai_only_share": null,
+          "active_tools": null
+        },
+        {
+          "source_artifact": "asmpt_installed",
+          "product": "HBM3E 12H",
+          "stage": "bulk TCB order installed",
+          "quantity": null,
+          "customer": "unnamed leading HBM customer",
+          "date": "reported in H1 2025 release"
+        },
+        {
+          "source_artifact": "asmpt_shipped",
+          "disclosure_date": "2021-02-26",
+          "event_period": "February 2021",
+          "milestone": 250,
+          "unit": "cumulative ordinal TCB tool shipped",
+          "customers": "plural, unidentified",
+          "installed_count": null
+        }
+      ],
+      "limitations": [
+        "H1 period ends June 30, 2025; exact installed-stock snapshot date is not separately stated. Disclosure July 23.",
+        "250th shipment in February 2021 and >500 installed threshold in 2025 cannot be differenced into shipments.",
+        "Installed is not active, product-qualified or utilized. HBM3E 12H bulk installation quantity remains unknown.",
+        "Some 2018 Q1/Q2 index dates accompany 2021 titles; a 2020 date accompanies a 2021 annual title. Preserve raw conflicts.",
+        "Terms §§4–5 restrict third-party distribution/reproduction."
+      ],
+      "decision": "Keep stock threshold and shipment ordinal as different populations; preserve archive inconsistencies.",
+      "canonical_observation_mapping": "not_approved",
+      "independent_physical_validation": false,
+      "id": "SCB007",
+      "access": "Public HTML/PDF and presentations; use internal document identity when archive labels conflict.",
+      "related_review_collection_ids": [],
+      "sources": [
+        "https://www.asmpt.com/en/investor-relations/news-events/asmpt-announces-2025-q2-quarter-results/",
+        "https://www.asmpt.com/en/investor-relations/news-events/asmpt-250-tcb/",
+        "https://www.asmpt.com/en/investor-relations/financial-information/",
+        "https://www.asmpt.com/en/legal-notice/terms-of-use/"
+      ],
+      "rights": "Artifact-specific rights and acquisition dispositions remain listed below. Public access, financial audit and SEC hosting do not establish a blanket issuer-content or extracted-data reuse grant.",
+      "primary_url": "https://www.asmpt.com/en/investor-relations/news-events/asmpt-announces-2025-q2-quarter-results/",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked installed threshold and shipment ordinal, HBM3E installation missing quantity, reporting/disclosure dates, index label conflicts and third-party distribution limits.",
+        "evidence_urls": [
+          "https://www.asmpt.com/en/investor-relations/news-events/asmpt-announces-2025-q2-quarter-results/",
+          "https://www.asmpt.com/en/investor-relations/news-events/asmpt-250-tcb/",
+          "https://www.asmpt.com/en/investor-relations/financial-information/",
+          "https://www.asmpt.com/en/legal-notice/terms-of-use/"
+        ]
+      },
+      "next_action": "Resolve only bounded archive identity conflicts and keep installed stock separate from shipment milestones.",
+      "verification_scope": "primary_documentary_sample_supported_not_independent_physical_validation"
+    },
+    {
+      "name": "CoreWeave fleet, power and deployment-constraint filings",
+      "classification": "new_documentary_collection_family",
+      "rank": null,
+      "inventory_ids": [
+        "GL002",
+        "GL003"
+      ],
+      "reporting_scope": "Company-wide fleet; data centers include owned/leased portions receiving active power, not necessarily distinct owned facilities.",
+      "historical_coverage": "Prospectus retrospectively reports 2022–2024 fleet; FY2025 10-K adds deployment/power context. Dynamic quarterly list not established.",
+      "update_frequency": "Annual/quarterly filings; equivalent GPU counts not guaranteed.",
+      "artifacts": [
+        {
+          "artifact_id": "cw_prospectus",
+          "url": "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/d899798d424b4.htm",
+          "locator": "Cover; glossary piii; MD&A p104; fleet-composition discussion",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "unknown",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "cw_prospectus_index",
+          "url": "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/0001193125-25-067651-index.htm",
+          "locator": "Prospectus dated 2025-03-27; filed 2025-03-31",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "unknown",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "cw_fy2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm",
+          "locator": "Business p5; MD&A p67; Risk Factors pp16–17",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "unknown",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "cw_fy2025_index",
+          "url": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/0001769628-26-000104-index.htm",
+          "locator": "Filed 2026-03-02; reporting period 2025-12-31",
+          "verification_status": "public_primary_documentary_read",
+          "rights_status": "unknown",
+          "rights_evidence_url": null
+        },
+        {
+          "artifact_id": "cw_archive",
+          "url": "https://investors.coreweave.com/financials/quarterly-results/",
+          "locator": "Latest Quarters/Quarterly Results Archive shell; dynamic list absent",
+          "verification_status": "archive_shell_or_selector_only",
+          "rights_status": "unknown",
+          "rights_evidence_url": null
+        }
+      ],
+      "verified_samples": [
+        {
+          "source_artifact": "cw_prospectus",
+          "accession": "0001193125-25-067651",
+          "document_date": "2025-03-27",
+          "sec_filing_date": "2025-03-31",
+          "historical_observations": [
+            {
+              "as_of": "2022-12-31",
+              "data_centers": 3,
+              "gpus": {
+                "value": 17000,
+                "comparator": ">"
+              },
+              "active_power_MW": {
+                "value": 10,
+                "qualifier": "approximately"
+              }
+            },
+            {
+              "as_of": "2023-12-31",
+              "data_centers": 10,
+              "gpus": {
+                "value": 53000,
+                "comparator": ">"
+              },
+              "active_power_MW": {
+                "value": 70,
+                "comparator": ">"
+              }
+            },
+            {
+              "as_of": "2024-12-31",
+              "data_centers": 32,
+              "gpus": {
+                "value": 250000,
+                "comparator": ">"
+              },
+              "active_power_MW": {
+                "value": 360,
+                "comparator": ">"
+              }
+            }
+          ]
+        },
+        {
+          "source_artifact": "cw_fy2025",
+          "accession": "0001769628-26-000104",
+          "observation_date": "2025-12-31",
+          "filing_date": "2026-03-02",
+          "active_power": {
+            "value": 850,
+            "comparator": ">",
+            "unit": "MW"
+          },
+          "contracted_power": {
+            "value": 3.1,
+            "qualifier": "approximately",
+            "unit": "GW"
+          }
+        },
+        {
+          "source_artifact": "cw_fy2025",
+          "event_time": "November 2025",
+          "stage": "issuer_reported_data_center_delivery_delay",
+          "announcement_day": null,
+          "delayed_MW": null,
+          "duration": null,
+          "resolution": null
+        }
+      ],
+      "limitations": [
+        ">250,000 GPUs across 32 centers at December 31, 2024 is a lower bound, not one SKU or schedulable cluster. Majority Hopper does not classify every device.",
+        ">850 MW active versus approximately 3.1 GW contracted at December 31, 2025 is not energy consumption or an updated GPU count.",
+        "Do not add active/contracted power or supplier shipments/purchaser fleet. Resolve facility/operator identities before GL003 linkage.",
+        "Unknown issuer-content redistribution basis. The November 2025 delay passage lacks exact sites, magnitude, duration and resolution."
+      ],
+      "decision": "Preserve observation/document/filing dates, glossary definitions and stage-specific lower bounds.",
+      "canonical_observation_mapping": "not_approved",
+      "independent_physical_validation": false,
+      "id": "SCB008",
+      "access": "Public SEC filings and accession metadata; physical quantities may remain narrative.",
+      "related_review_collection_ids": [],
+      "sources": [
+        "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/d899798d424b4.htm",
+        "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/0001193125-25-067651-index.htm",
+        "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm",
+        "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/0001769628-26-000104-index.htm",
+        "https://investors.coreweave.com/financials/quarterly-results/"
+      ],
+      "rights": "Artifact-specific rights and acquisition dispositions remain listed below. Public access, financial audit and SEC hosting do not establish a blanket issuer-content or extracted-data reuse grant.",
+      "primary_url": "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/d899798d424b4.htm",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked prospectus and 10-K plus accession metadata, retrospective fleet bounds, glossary data-center definition, active/contracted power and unspecified delivery-delay outcome.",
+        "evidence_urls": [
+          "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/d899798d424b4.htm",
+          "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/0001193125-25-067651-index.htm",
+          "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm",
+          "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/0001769628-26-000104-index.htm",
+          "https://investors.coreweave.com/financials/quarterly-results/"
+        ]
+      },
+      "next_action": "Define fleet/facility identities and stage-specific power fields before any GL003 enrichment.",
+      "verification_scope": "primary_documentary_sample_supported_not_independent_physical_validation"
+    }
+  ],
+  "evidence_relationships": [
+    {
+      "id": "SCB-R1",
+      "from_artifact": "asml_q12026",
+      "to_artifact": "asml_q42025",
+      "relation": "repeated_period_comparison",
+      "fields": [
+        "new systems sold 94",
+        "used systems sold 8"
+      ],
+      "period": "Q4 2025",
+      "independence": "not_independent_observation"
+    },
+    {
+      "id": "SCB-R2",
+      "from_artifact": "asml_q22026",
+      "to_artifact": "asml_q12026",
+      "relation": "repeated_period_comparison",
+      "fields": [
+        "new systems sold 67",
+        "used systems sold 12"
+      ],
+      "period": "Q1 2026",
+      "independence": "not_independent_observation"
+    },
+    {
+      "id": "SCB-R3",
+      "from_artifact": "besi_order",
+      "to_artifact": "besi_h12024",
+      "relation": "possible_constituent_of_period_aggregate",
+      "status": "exact_containment_unproved",
+      "reason": "Same product, overlapping order period and delivery horizon; anonymous customers/no order IDs."
+    },
+    {
+      "id": "SCB-R4",
+      "from_artifact": "besi_delay",
+      "to_artifact": "besi_order",
+      "relation": "possible_related_delay",
+      "status": "exact_order_match_unproved"
+    },
+    {
+      "id": "SCB-R5",
+      "from_collection": "SCB004",
+      "to_collection": "SCB008",
+      "relation": "possible_upstream_downstream_same_hardware",
+      "status": "no_unit_level_linkage",
+      "aggregation": "forbidden"
+    },
+    {
+      "id": "SCB-R6",
+      "from_collection": "SCB007",
+      "within": [
+        "asmpt_shipped",
+        "asmpt_installed"
+      ],
+      "relation": "different_stock_flow_populations",
+      "aggregation": "no_subtraction_to_infer_shipments"
+    }
+  ],
+  "corrections": [
+    {
+      "id": "SCB-C1",
+      "source_id": "SCB002",
+      "finding": "Micron 3× wafer-intensity is explicitly industrywide management estimate; pricing agreements are not physical allocation.",
+      "evidence_urls": [
+        "https://micron.gcs-web.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5",
+        "https://micron.gcs-web.com/static-files/5ea95475-639b-4cfc-91fd-b9b4a2bb5e63"
+      ],
+      "status": "correction_or_qualification"
+    },
+    {
+      "id": "SCB-C2",
+      "source_id": "SCB001",
+      "finding": "TSMC capacity includes managed subsidiary facilities; annual-report disclosure date is unknown and must not inherit the 20-F filing date.",
+      "evidence_urls": [
+        "https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf",
+        "https://investor.tsmc.com/english/annual-reports"
+      ],
+      "status": "correction_or_qualification"
+    },
+    {
+      "id": "SCB-C3",
+      "source_id": "SCB003",
+      "finding": "ASML Q1 2026 fixture is the verified official PDF; preserve March 29/June 28 fiscal ends, policy-null bookings and repeated comparisons.",
+      "evidence_urls": [
+        "https://investor.asml.com/static-files/928c4fda-b334-43e2-a5f0-b3c8413255c4",
+        "https://www.investor.asml.com/news-releases/news-release-details/q2-2026-financial-results",
+        "https://investor.asml.com/static-files/a6b90371-ce4b-4945-b2c3-9498aeda2760"
+      ],
+      "status": "correction_or_qualification"
+    },
+    {
+      "id": "SCB-C4",
+      "source_id": "SCB005",
+      "finding": "SK hynix milestone sample and archive remain unverified under the verified automated-access prohibition.",
+      "evidence_urls": [
+        "https://news.skhynix.com/en/terms-of-use/"
+      ],
+      "status": "correction_or_qualification"
+    },
+    {
+      "id": "SCB-C5",
+      "source_id": "SCB004",
+      "finding": "NVIDIA-hosted acquisition restrictions are distinct from SEC access/unknown filing reuse; supplier commitments have fiscal maturity buckets.",
+      "evidence_urls": [
+        "https://www.nvidia.com/en-eu/about-nvidia/terms-of-service/",
+        "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm"
+      ],
+      "status": "correction_or_qualification"
+    },
+    {
+      "id": "SCB-C6",
+      "source_id": "SCB006",
+      "finding": "Besi’s 26-system order may be included in the quarterly 29; neither containment nor later delay linkage is proven.",
+      "evidence_urls": [
+        "https://www.besi.com/events/events-shows/details/be-semiconductor-industries-nv-announces-order-for-26-hybrid-bonding-systems/",
+        "https://www.besi.com/fileadmin/data/Investor_Relations/_Semi__Annual_Reports/Half_Year_2024_Report.pdf",
+        "https://www.besi.com/investor-relations/press-releases/details/be-semiconductor-industries-nv-announces-q3-24-results/"
+      ],
+      "status": "correction_or_qualification"
+    },
+    {
+      "id": "SCB-C7",
+      "source_id": "SCB007",
+      "finding": "ASMPT archive dates/titles conflict in selected 2018/2020 rows; document internals must resolve identity.",
+      "evidence_urls": [
+        "https://www.asmpt.com/en/investor-relations/financial-information/"
+      ],
+      "status": "correction_or_qualification"
+    },
+    {
+      "id": "SCB-C8",
+      "source_id": "SCB008",
+      "finding": "CoreWeave prospectus dated March 27 was filed March 31, 2025; FY2025 10-K filed March 2, 2026. Data-center units follow issuer glossary.",
+      "evidence_urls": [
+        "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/d899798d424b4.htm",
+        "https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/0001193125-25-067651-index.htm",
+        "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/0001769628-26-000104-index.htm"
+      ],
+      "status": "correction_or_qualification"
+    }
+  ],
+  "proposed_implementation": {
+    "name": "asml_supply_disclosures_pilot",
+    "status": "specification_only_not_implemented",
+    "execution_authorized": false,
+    "admission_gate": "Document permitted acquisition and extracted-data reuse for each artifact before any pilot; no source bytes bundled.",
+    "artifact_allowlist": [
+      "https://investor.asml.com/news-releases/news-release-details/q4-2025-financial-results",
+      "https://investor.asml.com/static-files/928c4fda-b334-43e2-a5f0-b3c8413255c4",
+      "https://www.investor.asml.com/news-releases/news-release-details/q2-2026-financial-results",
+      "https://investor.asml.com/static-files/12073e2d-9103-41ef-90a6-32fe3919ee74",
+      "https://investor.asml.com/static-files/a6b90371-ce4b-4945-b2c3-9498aeda2760"
+    ],
+    "max_artifacts": 5,
+    "max_observations": 40,
+    "scope": "New/used systems sold, explicit EUV shipments/recognition, bookings, annual backlog and reporting-policy event; comparison columns retain provenance.",
+    "output_contract": [
+      "URL/title/version, publication date, period and actual fiscal end, locator, retrieval time, real content hash when lawfully available.",
+      "Original label/value/qualifier/unit/currency/condition; physical-stage and accounting-basis separate.",
+      "Issuer-report/estimate/forecast status, missing reason, stable observation key and artifact-appearance key.",
+      "Repeat/aggregate/revision/conflict relations and separate rights/acquisition/redistribution disposition."
+    ],
+    "acceptance_tests": [
+      {
+        "id": "SCB-T1",
+        "required": "Q4 2025 94 new/8 used sold; EUR13158 million bookings; FY2025 EUR38797 million backlog remains annual stock."
+      },
+      {
+        "id": "SCB-T2",
+        "required": "FY2022 54 EUV shipped and 40 recognized remain distinct; neither installed."
+      },
+      {
+        "id": "SCB-T3",
+        "required": "Q1 2026 official PDF: 67 new/12 used; fiscal end 2026-03-29 versus publication 2026-04-15."
+      },
+      {
+        "id": "SCB-T4",
+        "required": "Q2 2026: 86 new/5 used; fiscal end 2026-06-28 versus publication 2026-07-15."
+      },
+      {
+        "id": "SCB-T5",
+        "required": "2026 quarterly bookings null with discontinued_quarterly_disclosure; backlog annual, not discontinued."
+      },
+      {
+        "id": "SCB-T6",
+        "required": "Repeated 94/8 and 67/12 retain multiple artifact appearances but one period/measure/condition observation."
+      },
+      {
+        "id": "SCB-T7",
+        "required": "Installed Base Management revenue cannot become a count; used sales cannot imply new fleet."
+      },
+      {
+        "id": "SCB-T8",
+        "required": "No overlapping period/stock-flow summation. Preserve differing versions for review; unchanged reruns idempotent."
+      },
+      {
+        "id": "SCB-T9",
+        "required": "Stop on allowlist/cap violations, changed title/MIME/redirect/schema or missing units. No crawl/results bundles."
+      },
+      {
+        "id": "SCB-T10",
+        "required": "Rights gate precedes acquisition; no GPU/throughput/FLOP/capability/risk inference or open-license assertion."
+      }
+    ],
+    "expected_deliverable": "After authorized pilot only: at most 40 observations, disclosure-coverage table and exception log."
+  },
+  "next_actions": [
+    {
+      "action_id": "SCB001-A1",
+      "status": "pending_authorization_or_clearance",
+      "priority": "P0",
+      "scope_limit": "No operational source acquisition or implementation approved.",
+      "source_id": "SCB001",
+      "action": "Choose a permitted issuer-table extraction scope and document the capacity/shipments distinction before acquiring any historical series.",
+      "title": "Define TSMC extraction scope",
+      "prompt_id": "SCB001-F1"
+    },
+    {
+      "action_id": "SCB002-A1",
+      "status": "pending_authorization_or_clearance",
+      "priority": "P0",
+      "scope_limit": "No operational source acquisition or implementation approved.",
+      "source_id": "SCB002",
+      "action": "Resolve remarks-derived factual-data reuse and preserve generation-, denominator- and agreement-specific semantics.",
+      "title": "Preserve Micron measurement classes",
+      "prompt_id": "SCB002-F1"
+    },
+    {
+      "action_id": "SCB003-A1",
+      "status": "pending_authorization_or_clearance",
+      "priority": "P0",
+      "scope_limit": "No operational source acquisition or implementation approved.",
+      "source_id": "SCB003",
+      "action": "Approve a rights basis and the corrected five-artifact manifest before considering the specification.",
+      "title": "Resolve ASML pilot readiness",
+      "prompt_id": "SCB003-F1"
+    },
+    {
+      "action_id": "SCB004-A1",
+      "status": "pending_authorization_or_clearance",
+      "priority": "P1",
+      "scope_limit": "No operational source acquisition or implementation approved.",
+      "source_id": "SCB004",
+      "action": "Keep SEC discovery independent of NVIDIA-hosted acquisition restrictions and resolve intended extracted-field reuse.",
+      "title": "Separate NVIDIA access and reuse",
+      "prompt_id": "SCB004-F1"
+    },
+    {
+      "action_id": "SCB005-A1",
+      "status": "pending_authorization_or_clearance",
+      "priority": "P1",
+      "scope_limit": "No operational source acquisition or implementation approved.",
+      "source_id": "SCB005",
+      "action": "Obtain a documented permitted access/reuse basis before any release verification; no automated newsroom collection.",
+      "title": "Retain SK hynix clearance hold",
+      "prompt_id": "SCB005-F1"
+    },
+    {
+      "action_id": "SCB006-A1",
+      "status": "pending_authorization_or_clearance",
+      "priority": "P1",
+      "scope_limit": "No operational source acquisition or implementation approved.",
+      "source_id": "SCB006",
+      "action": "Resolve event-to-quarter and delay linkage without inventing anonymous customer or order identities.",
+      "title": "Resolve Besi event relationships",
+      "prompt_id": "SCB006-F1"
+    },
+    {
+      "action_id": "SCB007-A1",
+      "status": "pending_authorization_or_clearance",
+      "priority": "P1",
+      "scope_limit": "No operational source acquisition or implementation approved.",
+      "source_id": "SCB007",
+      "action": "Resolve only bounded archive identity conflicts and keep installed stock separate from shipment milestones.",
+      "title": "Preserve ASMPT milestone identities",
+      "prompt_id": "SCB007-F1"
+    },
+    {
+      "action_id": "SCB008-A1",
+      "status": "pending_authorization_or_clearance",
+      "priority": "P1",
+      "scope_limit": "No operational source acquisition or implementation approved.",
+      "source_id": "SCB008",
+      "action": "Define fleet/facility identities and stage-specific power fields before any GL003 enrichment.",
+      "title": "Define CoreWeave fleet records",
+      "prompt_id": "SCB008-F1"
+    }
+  ],
+  "follow_up_prompts": [
+    {
+      "prompt": "Review only the Q2 2026 management report, FY2025 annual report and 2015 production table at the URLs below. Decide whether the intended factual export has a documented rights basis; exclude the LSEG transcript. Prepare a maximum ten-row extraction plan preserving thousand/million units, ranges, managed-subsidiary scope, shipment versus capacity/output and unknown annual-report publication date. Sources: https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-07/6f49632674bd2d0fd48cb65aaf89ec6ab510b559/2Q26%20ManagementReport.pdf ; https://investor.tsmc.com/sites/ir/annual-report/2025/2025%20TSMC%20Annual%20Report.E.pdf ; https://investor.tsmc.com/static/annualReports/2015/english/e_5_1.html ; https://investor.tsmc.com/english/annual-reports ; https://investor.tsmc.com/english/encrypt/files/encrypt_file/reports/2026-08/3e494f0c14dd0890f897aa044415e21d93486cc4/TSMC%202Q26%20Transcript.pdf ; https://www.tsmc.com/english/legal_and_trademark. Public read-only work only. No login, outreach, source execution, repository edits, bulk download or operational collection. Respect denials without bypass. Return a short decision, precise primary locators and remaining blockers; no new adapter or per-report validator.",
+      "source_id": "SCB001",
+      "id": "SCB001-F1",
+      "priority": "P0",
+      "title": "Define TSMC extraction scope"
+    },
+    {
+      "prompt": "Use only the two dated Micron prepared-remarks artifacts and terms below. Prepare a maximum five-observation review sheet separating fiscal HBM revenue, annualized run rate, calendar-year pricing agreements, HBM4 negotiations and the industrywide HBM3E/DDR5 wafer-intensity estimate. Do not estimate percentages, stacks or physical allocations. Record a rights basis or leave acquisition/redistribution held; do not execute extraction. Sources: https://micron.gcs-web.com/static-files/5ea95475-639b-4cfc-91fd-b9b4a2bb5e63 ; https://micron.gcs-web.com/static-files/1a8d6c22-3b89-4806-930c-d30cbcd270d5 ; https://micron.gcs-web.com/index.php/quarterly-results ; https://investors.micron.com/financials/quarterly-results/default.aspx ; https://www.micron.com/legal/terms-of-use. Public read-only work only. No login, outreach, source execution, repository edits, bulk download or operational collection. Respect denials without bypass. Return a short decision, precise primary locators and remaining blockers; no new adapter or per-report validator.",
+      "source_id": "SCB002",
+      "id": "SCB002-F1",
+      "priority": "P0",
+      "title": "Preserve Micron measurement classes"
+    },
+    {
+      "prompt": "Review the five-artifact asml_supply_disclosures_pilot specification and ASML terms below. Confirm the Q1 2026 fixture is the official PDF and reporting-policy fixture is dated January 29, 2025. Resolve acquisition and factual-data redistribution independently. Return an implementation-readiness decision against the ten acceptance criteria; do not build or run an adapter, create another validator or fetch results bundles.  The ten criteria are: (1) retain Q4 2025 94 new/8 used systems, EUR13,158 million quarterly bookings and EUR38,797 million annual backlog; (2) keep FY2022 54 shipments separate from 40 sales recognitions; (3) keep Q1 2026 67/12 counts and March 29 fiscal end versus April 15 publication; (4) keep Q2 2026 86/5 and June 28 fiscal end versus July 15 publication; (5) mark discontinued 2026 quarterly bookings null and backlog annual; (6) deduplicate repeated 94/8 and 67/12 comparison columns while retaining appearances; (7) do not interpret service revenue as installed count or used sales as net new fleet; (8) separate flows/stocks and overlapping periods, preserving revisions; (9) cap at five artifacts and 40 observations, stopping at unexpected title/MIME/redirect, missing units or changed schema; (10) gate acquisition on rights and compute no GPU/throughput/capability estimate. Sources: https://investor.asml.com/news-releases/news-release-details/q4-2025-financial-results ; https://investor.asml.com/static-files/928c4fda-b334-43e2-a5f0-b3c8413255c4 ; https://www.investor.asml.com/news-releases/news-release-details/q2-2026-financial-results ; https://investor.asml.com/static-files/12073e2d-9103-41ef-90a6-32fe3919ee74 ; https://investor.asml.com/static-files/a6b90371-ce4b-4945-b2c3-9498aeda2760 ; https://www.asml.com/en/terms-of-use. Public read-only work only. No login, outreach, source execution, repository edits, bulk download or operational collection. Respect denials without bypass. Return a short decision, precise primary locators and remaining blockers; no new adapter or per-report validator.",
+      "source_id": "SCB003",
+      "id": "SCB003-F1",
+      "priority": "P0",
+      "title": "Resolve ASML pilot readiness"
+    },
+    {
+      "prompt": "Inspect only the two NVIDIA SEC accession records and cited SEC API documentation below if a revision or unresolved field requires it. Prepare up to eight candidate financial fields, preserving period versus filing dates, fiscal payment buckets, supplier direction and conditional cancellation cost. Document issuer-content reuse uncertainty and NVIDIA-site access restrictions separately. Do not fetch NVIDIA-hosted content or turn dollars into GPU counts. Sources: https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm ; https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/0001045810-26-000075-index.htm ; https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm ; https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/0001045810-26-000021-index.htm ; https://investor.nvidia.com/financial-info/annual-reports-and-proxies/default.aspx ; https://www.nvidia.com/en-eu/about-nvidia/terms-of-service/ ; https://www.sec.gov/search-filings/edgar-application-programming-interfaces. Public read-only work only. No login, outreach, source execution, repository edits, bulk download or operational collection. Respect denials without bypass. Return a short decision, precise primary locators and remaining blockers; no new adapter or per-report validator.",
+      "source_id": "SCB004",
+      "id": "SCB004-F1",
+      "priority": "P1",
+      "title": "Separate NVIDIA access and reuse"
+    },
+    {
+      "prompt": "Review the already documented SK hynix newsroom access and reuse restriction. Identify exactly what authorization would be needed to review the candidate Q2 2026 release and retain an explicit hold until supplied. Do not open, scrape, mirror or use another route to that content; do not send outreach. Return only a bounded clearance checklist. If an authorized artifact is later supplied, separately verify date, mass/sample shipment status, generation and unknown quantities before admission. Sources: https://news.skhynix.com/en/terms-of-use/. Public read-only work only. No login, outreach, source execution, repository edits, bulk download or operational collection. Respect denials without bypass. Return a short decision, precise primary locators and remaining blockers; no new adapter or per-report validator.",
+      "source_id": "SCB005",
+      "id": "SCB005-F1",
+      "priority": "P1",
+      "title": "Retain SK hynix clearance hold"
+    },
+    {
+      "prompt": "Use only the three Besi 2024 artifacts and disclaimer below. Prepare a maximum three-event linkage sheet: May 9 order, Q2 aggregate in H1 report and October 24 delay statement. Preserve 26 versus 29 and unknown exact containment; list only explicit evidence that could resolve linkage. Keep placement accuracy separate from node size. Document intended factual-export rights; do not sum counts, assume delivery occurred or infer tool throughput. Sources: https://www.besi.com/events/events-shows/details/be-semiconductor-industries-nv-announces-order-for-26-hybrid-bonding-systems/ ; https://www.besi.com/fileadmin/data/Investor_Relations/_Semi__Annual_Reports/Half_Year_2024_Report.pdf ; https://www.besi.com/investor-relations/press-releases/details/be-semiconductor-industries-nv-announces-q3-24-results/ ; https://www.besi.com/investor-relations/financial-reports-and-publications/financial-reports/ ; https://www.besi.com/disclaimer/. Public read-only work only. No login, outreach, source execution, repository edits, bulk download or operational collection. Respect denials without bypass. Return a short decision, precise primary locators and remaining blockers; no new adapter or per-report validator.",
+      "source_id": "SCB006",
+      "id": "SCB006-F1",
+      "priority": "P1",
+      "title": "Resolve Besi event relationships"
+    },
+    {
+      "prompt": "Use the ASMPT 2021 shipment and H1 2025 release, financial index and terms below. Prepare at most three milestone records, preserving February 2021 shipment ordinal, >500 worldwide installed threshold and unquantified HBM3E 12H installation. List conflicting archive date/title labels without normalizing them. Exact stock date and active tools remain unknown. Record a rights basis or hold; no count differencing or throughput calculation. Sources: https://www.asmpt.com/en/investor-relations/news-events/asmpt-announces-2025-q2-quarter-results/ ; https://www.asmpt.com/en/investor-relations/news-events/asmpt-250-tcb/ ; https://www.asmpt.com/en/investor-relations/financial-information/ ; https://www.asmpt.com/en/legal-notice/terms-of-use/. Public read-only work only. No login, outreach, source execution, repository edits, bulk download or operational collection. Respect denials without bypass. Return a short decision, precise primary locators and remaining blockers; no new adapter or per-report validator.",
+      "source_id": "SCB007",
+      "id": "SCB007-F1",
+      "priority": "P1",
+      "title": "Preserve ASMPT milestone identities"
+    },
+    {
+      "prompt": "Use only the CoreWeave March 2025 prospectus and FY2025 SEC filing plus their accession metadata below. Prepare at most five fleet/power/deployment records. Keep historical observation dates, prospectus date, filing dates, glossary data-center definition, lower bounds and contracted versus active power distinct. Record November 2025 delay magnitude/resolution as unknown. List required facility/operator identifiers for a future GL003 join; do not download Epoch tables, infer refreshed GPU totals or claim independent physical validation. Sources: https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/d899798d424b4.htm ; https://www.sec.gov/Archives/edgar/data/1769628/000119312525067651/0001193125-25-067651-index.htm ; https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/crwv-20251231.htm ; https://www.sec.gov/Archives/edgar/data/1769628/000176962826000104/0001769628-26-000104-index.htm ; https://investors.coreweave.com/financials/quarterly-results/. Public read-only work only. No login, outreach, source execution, repository edits, bulk download or operational collection. Respect denials without bypass. Return a short decision, precise primary locators and remaining blockers; no new adapter or per-report validator.",
+      "source_id": "SCB008",
+      "id": "SCB008-F1",
+      "priority": "P1",
+      "title": "Define CoreWeave fleet records"
+    }
+  ],
+  "holds": [
+    "All eight source collectors/canonical mappings remain disabled.",
+    "SK hynix release/archive verification held under prohibited automated access.",
+    "NVIDIA-site acquisition held separately from SEC filing rights.",
+    "Compiled factual-data redistribution needs a documented basis.",
+    "Exact Epoch overlap, anonymous packaging-order linkage, stock snapshot dates and fleet utilization remain unknown."
+  ]
+}

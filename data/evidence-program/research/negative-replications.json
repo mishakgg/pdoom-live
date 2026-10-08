@@ -1,0 +1,1138 @@
+{
+  "schema_version": "research-review-1",
+  "session_sequence": 22,
+  "title": "Negative results and replications",
+  "reviewed_on": "2026-10-08",
+  "status": "reviewed_with_explicit_holds",
+  "repository_review_commit": "6cf8c1c89a387a5b26022dd9ea0a216d45b2b629",
+  "scope": "Research-only claim, attempt, outcome, editorial-event and version relationships from published metadata and bounded paper evidence. Indexed-primary-only limits remain explicit. No source corpus, participant row, operational prompt or source code is included.",
+  "operational_admission": false,
+  "collector_enabled": false,
+  "canonical_contract_mapping": "not_implemented",
+  "implementation_status": "specification_only_deferred",
+  "source_code_execution": false,
+  "source_snapshot_limit": "No exact upstream paper/HTML byte identity is claimed; source versions, locators, access limits and exact repository revision references are retained.",
+  "third_party_rights": "Original factual research metadata does not extend third-party source grants. Version-local paper rights and separate code, data, annotation and output rights remain explicit.",
+  "verdict": "Retain eight collections: three new families and five enrichments against current catalogs. MLRC reports, StrongREJECT and Crossref editorial links have the highest scientific starting value. The smallest structured step reuses CRP006 for one verified editorial chain; it remains a specification only.",
+  "priority_ranking": [
+    {
+      "rank": 1,
+      "id": "NR001",
+      "basis": "Scientific claim-level value first; metadata-only mapping is the smallest structured step and reuses existing family semantics."
+    },
+    {
+      "rank": 2,
+      "id": "NR002",
+      "basis": "Scientific claim-level value first; metadata-only mapping is the smallest structured step and reuses existing family semantics."
+    },
+    {
+      "rank": 3,
+      "id": "NR003",
+      "basis": "Scientific claim-level value first; metadata-only mapping is the smallest structured step and reuses existing family semantics."
+    }
+  ],
+  "interpretation_guards": [
+    "Separate original claim, replication attempt, scientific outcome, editorial action and document version.",
+    "Completed experiments that do not support a particular claim are not universal paper disproof; changed conditions remain explicit.",
+    "A null/nonsignificant estimate does not establish equivalence or zero effect. No attempt found is not failed replication.",
+    "Reanalysis, rescoring, new annotators on existing outputs and independent new-data replication are different designs.",
+    "Keep publisher/evaluator/author attribution and methodological criticism work-scoped; no author-level misconduct inference.",
+    "Publications, mirrors, metadata assertions and syntheses are not additional experiments.",
+    "Keep source precision, native metrics, denominators, uncertainty type and version-local rights.",
+    "Publication/cohort/deposit/retrieval dates are not execution dates; unknown dates remain null.",
+    "Selected negative cases/register counts are not population failure rates. No universal capability/productivity curve or p(doom) conversion.",
+    "No bulk corpora, participant-level rows, operational attack content or source code execution."
+  ],
+  "novelty_summary": {
+    "new_family_ids": [
+      "NR002",
+      "NR004",
+      "NR005"
+    ],
+    "enrichment_ids": [
+      "NR001",
+      "NR003",
+      "NR006",
+      "NR007",
+      "NR008"
+    ],
+    "basis": "Current 64-source inventory and relevant research catalogs at the reviewed repository commit."
+  },
+  "numeric_representation": "Reported decimal metric values and intervals are lexical strings to preserve displayed precision; counts, thresholds and numeric protocol controls retain their stated primitive types. No numeric result was recalculated.",
+  "collections": [
+    {
+      "name": "ML Reproducibility Challenge / LICO report",
+      "classification": "existing_review_family_enrichment",
+      "inventory_ids": [
+        "GL039",
+        "GL040"
+      ],
+      "primary_url": "https://arxiv.org/html/2410.13989v1",
+      "historical_coverage": "Proceedings link iterations from 2018 through 2025, not proof of one completed cohort per year. LICO original NeurIPS 2023; replication v1 2024-10-17T19:41:34Z and TMLR 2024.",
+      "update_frequency": "Annual/cohort-oriented publication and later article revisions; no uniform daily feed.",
+      "verified_sample": {
+        "original_url": "https://proceedings.neurips.cc/paper_files/paper/2023/hash/c2eac51b6353a4441e8b7426f8e8db78-Abstract-Conference.html",
+        "original_doi": "10.52202/075280-2705",
+        "relationship": "independent_partial_replication_with_extensions",
+        "attempt_status": "completed_for_reported_conditions",
+        "original_table3": {
+          "condition": "full-label CIFAR-100; WRN",
+          "baseline_accuracy_percent": "80.9",
+          "baseline_plusminus": "0.18",
+          "lico_accuracy_percent": "82.2",
+          "lico_plusminus": "0.02"
+        },
+        "replication_table2": {
+          "dataset": "CIFAR-100",
+          "baseline_accuracy_percent": "78.1",
+          "baseline_plusminus": "0.66",
+          "lico_accuracy_percent": "77.3",
+          "lico_plusminus": "0.90",
+          "seeds": 3,
+          "plusminus_statistic": null,
+          "architecture_normalized": null
+        },
+        "reported_outcome": "Central improvements not consistently supported; subsidiary loss-ablation directions partly reproduced.",
+        "imagenet_scope": {
+          "classes": 1000,
+          "fraction_of_data": "0.20",
+          "training_runs": 1
+        },
+        "source_conflicts": [
+          "Sections 3.3–3.4: WRN depth 28 and ImageNet ResNet18; Table 2 caption: other datasets Wide ResNet-18 and ImageNet ResNet-50.",
+          "Official proceedings and repository: MLRC2023; arXiv comment: MLRC 2024."
+        ],
+        "experiment_dates": null
+      },
+      "artifact_rights": [
+        {
+          "artifact": "Replication arXiv v1 manuscript",
+          "license": "CC0",
+          "url": "https://arxiv.org/html/2410.13989v1"
+        },
+        {
+          "artifact": "Original paper, code, datasets and review artifacts",
+          "license": null,
+          "evidence": "No blanket grant established; linked code root showed no explicit grant."
+        }
+      ],
+      "limitations": [
+        "The 78.1/77.3 pair is baseline versus LICO within the replication, not original versus replicated accuracy.",
+        "Missing training-loop, manifold-loss and metric details required reconstruction; reduced ImageNet data limits conclusions.",
+        "Do not normalize inconsistent model labels or name ± as SD/SE/CI without evidence.",
+        "Certification identifies reproduction-centered work, not successful replication outcome. No complete failure-rate denominator."
+      ],
+      "decision": "Add LICO as a new study inside the established MLRC/ReScience family, with unresolved source inconsistencies.",
+      "rank": 1,
+      "id": "NR001",
+      "access": "Public proceedings, original paper and version-pinned replication; code landing inspected only. OpenReview contents remain unverified.",
+      "related_review_collection_ids": [
+        "CRP001",
+        "SP001"
+      ],
+      "sources": [
+        "https://arxiv.org/html/2410.13989v1",
+        "https://proceedings.neurips.cc/paper_files/paper/2023/file/c2eac51b6353a4441e8b7426f8e8db78-Paper-Conference.pdf",
+        "https://reproml.org/proceedings/",
+        "https://arxiv.org/abs/2410.13989",
+        "https://github.com/robertdvdk/lico-fact"
+      ],
+      "rights": "Preserve the artifact-specific grants and unknowns below; paper, metadata, software, source datasets, annotations and generated-output rights do not automatically transfer.",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked original/response linkage, consequential metrics and date roles, actual access, artifact-specific rights and current-catalog overlap; preserved conflicts and unknowns.",
+        "evidence_urls": [
+          "https://arxiv.org/html/2410.13989v1",
+          "https://proceedings.neurips.cc/paper_files/paper/2023/file/c2eac51b6353a4441e8b7426f8e8db78-Paper-Conference.pdf",
+          "https://reproml.org/proceedings/",
+          "https://arxiv.org/abs/2410.13989",
+          "https://github.com/robertdvdk/lico-fact"
+        ]
+      },
+      "next_action": "Preserve Table 2 raw model labels and unnamed ± quantities; seek explicit clarification before normalizing architectures or uncertainties."
+    },
+    {
+      "name": "StrongREJECT jailbreak reevaluation",
+      "classification": "new_collection_family",
+      "inventory_ids": [
+        "GL039",
+        "GL040"
+      ],
+      "primary_url": "https://arxiv.org/html/2402.10260v2",
+      "historical_coverage": "Original low-resource study v1 2023-10-03, v2 2024-01-27; StrongREJECT v1 2024-02-15, v2 2024-08-27. NeurIPS 2024 is another publication of the study.",
+      "update_frequency": "Dated studies with ad hoc repository changes; no repeated live benchmark feed verified.",
+      "verified_sample": {
+        "original_url": "https://arxiv.org/html/2310.02446v2",
+        "original_benchmark": "AdvBench",
+        "original_prompts": 520,
+        "original_scots_gaelic_bypass_percent": "43.08",
+        "original_metric": "human-labeled on-topic engagement",
+        "rerun": {
+          "relationship": "illustrative_success_case_rerun_and_evaluator_validity_challenge",
+          "model": "GPT-4-0613",
+          "temperature": 0,
+          "selected_examples": 1,
+          "outputs": 3,
+          "reported_outcome": "Authors judge none usefully informative for the harmful objective.",
+          "full_benchmark_revised_rate": null,
+          "translation": "Google Translate"
+        },
+        "separate_evaluation_scope": {
+          "prompts": 313,
+          "jailbreak_methods": 37,
+          "meaning": "Separate broader StrongREJECT evaluation, not the single-example rerun denominator."
+        },
+        "experiment_dates": null,
+        "source_conflict": "Small-set data card says 50 yet describes ten per six categories; legacy README says 60. Small-set count unresolved.",
+        "original_protocol": {
+          "model": "GPT-4-0613",
+          "temperature": 0,
+          "top_p": 0,
+          "translation": "Google Translate"
+        }
+      },
+      "artifact_rights": [
+        {
+          "artifact": "StrongREJECT paper v2",
+          "license": "CC-BY-4.0"
+        },
+        {
+          "artifact": "Legacy code and custom-generated questions",
+          "license": "MIT",
+          "url": "https://github.com/alexandrasouly/strongreject"
+        },
+        {
+          "artifact": "Current repository code",
+          "license": "MIT",
+          "url": "https://github.com/dsbowen/strong_reject"
+        },
+        {
+          "artifact": "Imported questions, annotations and model outputs",
+          "license": null,
+          "evidence": "Imported questions retain diverse upstream licenses; individual export scope unresolved."
+        }
+      ],
+      "limitations": [
+        "Rerun does not supply a revised 520-prompt bypass rate. Apparent willingness, usefulness and observed harm are different endpoints.",
+        "Original and reevaluation protocols/evaluator versions matter even with the same named model snapshot.",
+        "Documented exports include data/processed/evals.json and annotation CSV/NDJSON; paths are documentation, not collected content.",
+        "Dataset-card release/update dates do not establish model-run dates."
+      ],
+      "decision": "Retain one bounded illustrative-case disagreement and separate evaluator-validity evidence; no operational attack content.",
+      "rank": 2,
+      "id": "NR002",
+      "access": "Public versioned papers, current and deprecated repository documentation, data card; no prompt/response/annotation exports acquired.",
+      "related_review_collection_ids": [],
+      "sources": [
+        "https://arxiv.org/html/2402.10260v2",
+        "https://arxiv.org/html/2310.02446v2",
+        "https://github.com/dsbowen/strong_reject",
+        "https://github.com/alexandrasouly/strongreject",
+        "https://proceedings.neurips.cc/paper_files/paper/2024/file/e2e06adf560b0706d3b1ddfca9f29756-Supplemental-Datasets_and_Benchmarks_Track.pdf"
+      ],
+      "rights": "Preserve the artifact-specific grants and unknowns below; paper, metadata, software, source datasets, annotations and generated-output rights do not automatically transfer.",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked original/response linkage, consequential metrics and date roles, actual access, artifact-specific rights and current-catalog overlap; preserved conflicts and unknowns.",
+        "evidence_urls": [
+          "https://arxiv.org/html/2402.10260v2",
+          "https://arxiv.org/html/2310.02446v2",
+          "https://github.com/dsbowen/strong_reject",
+          "https://github.com/alexandrasouly/strongreject",
+          "https://proceedings.neurips.cc/paper_files/paper/2024/file/e2e06adf560b0706d3b1ddfca9f29756-Supplemental-Datasets_and_Benchmarks_Track.pdf"
+        ]
+      },
+      "next_action": "Retain the single-example rerun and evaluator-validity result; clear each proposed export before acquiring prompt or annotation data.",
+      "evidence_locators": [
+        "StrongREJECT v2 Appendix B",
+        "Data Card sections 2.2–2.4, pp. 38–39"
+      ]
+    },
+    {
+      "name": "Crossref / Retraction Watch editorial-event chain",
+      "classification": "existing_review_family_enrichment",
+      "inventory_ids": [
+        "GL039",
+        "GL040"
+      ],
+      "primary_url": "https://api.crossref.org/works/10.1038/s41562-017-0234-y",
+      "historical_coverage": "Selected original published 2017-10-30; retraction online 2023-04-06, May issue and 2023-05-24 PMC availability are distinct dates. Earliest AI-related coverage unestablished.",
+      "update_frequency": "Publisher redeposits; Retraction Watch CSV each working day.",
+      "verified_sample": {
+        "original_doi": "10.1038/s41562-017-0234-y",
+        "notice_doi": "10.1038/s41562-023-01581-1",
+        "cited_critique_doi": "10.1038/s41562-023-01560-6",
+        "original_accuracy_percent": "91",
+        "original_population": {
+          "ideators": 17,
+          "controls": 17
+        },
+        "event_type": "retraction",
+        "event_date": "2023-04-06",
+        "event_date_precision": "day",
+        "normalized_event_count": 1,
+        "unique_assertion_count": 2,
+        "assertions": [
+          {
+            "asserted_by": "retraction-watch",
+            "record_id": "43731",
+            "distributed_by": "crossref"
+          },
+          {
+            "asserted_by": "publisher",
+            "distributed_by": "crossref"
+          }
+        ],
+        "relation_directions_verified": [
+          "original updated-by notice",
+          "notice update-to original"
+        ],
+        "crossmark_raw_history_change_type": "Correction",
+        "scientific_outcome": "Authors acknowledge dataset-tuned feature selection inflated accuracy and affected conclusions.",
+        "independent_new_data_replication": false,
+        "corrected_accuracy": null,
+        "critique_body_inspected": false
+      },
+      "artifact_rights": [
+        {
+          "artifact": "Crossref-generated and Retraction Watch metadata",
+          "license": "CC0",
+          "evidence": "CRP006 scoped rights finding reused; original two metadata records freshly checked. Abstracts excluded."
+        },
+        {
+          "artifact": "Original manuscript and retraction body",
+          "license": null,
+          "evidence": "TDM links are not a verified general redistribution grant; bodies excluded."
+        }
+      ],
+      "limitations": [
+        "Two sources and reverse links report one notice, not four independent confirmations.",
+        "Retraction is work-scoped; no author-wide misconduct inference. The notice gives no replacement accuracy.",
+        "Metadata absence is not proof that no notice exists; correction/concern coverage is incomplete.",
+        "Original manuscript access remains limited; the public PMC notice supplies the retraction text."
+      ],
+      "decision": "Add the Just et al. chain to CRP006; metadata normalization and reviewed scientific annotation stay separate.",
+      "rank": 3,
+      "id": "NR003",
+      "access": "Two bounded production REST records and public Crossmark/PMC/PubMed records; no bulk CSV.",
+      "related_review_collection_ids": [
+        "CRP006"
+      ],
+      "sources": [
+        "https://api.crossref.org/works/10.1038/s41562-017-0234-y",
+        "https://pubmed.ncbi.nlm.nih.gov/29367952/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10205687/",
+        "https://api.crossref.org/works/10.1038/s41562-023-01581-1",
+        "https://crossmark.crossref.org/dialog/?doi=10.1038/s41562-017-0234-y",
+        "https://www.crossref.org/documentation/retrieve-metadata/retraction-watch/"
+      ],
+      "rights": "Preserve the artifact-specific grants and unknowns below; paper, metadata, software, source datasets, annotations and generated-output rights do not automatically transfer.",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked original/response linkage, consequential metrics and date roles, actual access, artifact-specific rights and current-catalog overlap; preserved conflicts and unknowns.",
+        "evidence_urls": [
+          "https://api.crossref.org/works/10.1038/s41562-017-0234-y",
+          "https://pubmed.ncbi.nlm.nih.gov/29367952/",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC10205687/",
+          "https://api.crossref.org/works/10.1038/s41562-023-01581-1",
+          "https://crossmark.crossref.org/dialog/?doi=10.1038/s41562-017-0234-y",
+          "https://www.crossref.org/documentation/retrieve-metadata/retraction-watch/"
+        ]
+      },
+      "next_action": "Use existing CRP006 relationship semantics for the verified Just et al. chain; do not implement another collector."
+    },
+    {
+      "name": "ReproHum / ReproNLP human-evaluation reproductions",
+      "classification": "new_collection_family",
+      "inventory_ids": [
+        "GL039",
+        "GL040"
+      ],
+      "primary_url": "https://aclanthology.org/2025.gem-1.55/",
+      "historical_coverage": "Lineage spans ReproGen 2021–2022 and ReproNLP 2023–2026. Original ACL May 2022; attempts published July/August 2025 and 2026-07-04 but conducted in parallel.",
+      "update_frequency": "Shared-task/cohort publications; no continuous annotation feed established.",
+      "verified_sample": {
+        "original_url": "https://aclanthology.org/2022.acl-short.94/",
+        "attempt1_url": "https://aclanthology.org/2025.gem-1.55/",
+        "attempt2_url": "https://aclanthology.org/2026.gem-main.90/",
+        "synthesis_url": "https://aclanthology.org/2026.gem-main.83/",
+        "relation": "new_annotator_reevaluation_of_shared_original_outputs",
+        "input_sentences": 50,
+        "tested_scope": "semantic preservation for more-positive rewrites",
+        "metric": "human semantic-preservation rating",
+        "unit": "points on 0–100 rating scale",
+        "augmented_zero_shot": {
+          "original_estimated_mean": "86.47",
+          "original_value_method": "Replication authors digitized Figure 3; approximate, not exact source data.",
+          "attempt1_mean": "64.99",
+          "attempt1_95pct_interval": [
+            "58.46",
+            "71.52"
+          ],
+          "attempt2_mean": "67.31"
+        },
+        "replication_attempt_count": 2,
+        "overview_adds_independent_human_attempt": false,
+        "experiment_dates": null,
+        "parallel_execution_reported": true,
+        "original_experiment_year": {
+          "value": "2021",
+          "status": "attributed by 2025 replication; not independently verified"
+        },
+        "source_conflict": {
+          "zero_shot_original_in_individual_reports": "69.71",
+          "zero_shot_original_in_overview": "60.71",
+          "resolution": null
+        },
+        "attempt1_system_output_sets": 6,
+        "cross_attempt_comparable_systems": 4
+      },
+      "artifact_rights": [
+        {
+          "artifact": "Post-2016 ACL papers",
+          "license": "CC-BY-4.0",
+          "url": "https://aclanthology.org/faq/copyright/",
+          "scope": "ACL material; third-party exceptions apply."
+        },
+        {
+          "artifact": "Original inputs/outputs, raw annotations, interface code",
+          "license": null,
+          "evidence": "No artifact-specific grant verified."
+        }
+      ],
+      "limitations": [
+        "Same outputs with changed interface/calibration/annotator population tests measurement reproducibility, not later model deterioration.",
+        "Original figure error bars are standard errors; replication interval is a separate reported 95% CI.",
+        "Nine instances lost some saved annotations but retained at least one; preserve protocol limitations.",
+        "Synthesis uses four comparable systems and changes CV* definition; do not recompute or pool conflicting summary statistics."
+      ],
+      "decision": "Keep two dependent-through-inputs annotation attempts and one synthesis, preserving the unresolved zero-shot transcription conflict.",
+      "rank": null,
+      "id": "NR004",
+      "access": "Public ACL records/PDFs and citation exports; no raw annotations, original model outputs or interface code acquired.",
+      "related_review_collection_ids": [],
+      "sources": [
+        "https://aclanthology.org/2025.gem-1.55/",
+        "https://aclanthology.org/2022.acl-short.94/",
+        "https://aclanthology.org/2026.gem-main.90/",
+        "https://aclanthology.org/2026.gem-main.83/",
+        "https://aclanthology.org/faq/copyright/"
+      ],
+      "rights": "Preserve the artifact-specific grants and unknowns below; paper, metadata, software, source datasets, annotations and generated-output rights do not automatically transfer.",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked original/response linkage, consequential metrics and date roles, actual access, artifact-specific rights and current-catalog overlap; preserved conflicts and unknowns.",
+        "evidence_urls": [
+          "https://aclanthology.org/2025.gem-1.55/",
+          "https://aclanthology.org/2022.acl-short.94/",
+          "https://aclanthology.org/2026.gem-main.90/",
+          "https://aclanthology.org/2026.gem-main.83/",
+          "https://aclanthology.org/faq/copyright/"
+        ]
+      },
+      "next_action": "Keep parallel annotation attempts separate and preserve the zero-shot discrepancy between individual reports and synthesis."
+    },
+    {
+      "name": "Princeton leakage register and civil-war reanalysis",
+      "classification": "new_discovery_collection",
+      "inventory_ids": [
+        "GL039",
+        "GL040"
+      ],
+      "primary_url": "https://reproducible.cs.princeton.edu/",
+      "historical_coverage": "Original 2016 issue; Cambridge hosting displays 2017-01-04. Corrective paper published 2023-08-04, issue 2023-09-08. Register snapshot last dated May 2024.",
+      "update_frequency": "Curated irregular updates; no guaranteed refresh cadence.",
+      "verified_sample": {
+        "original_doi": "10.1093/pan/mpv024",
+        "corrective_doi": "10.1016/j.patter.2023.100804",
+        "capsule_doi": "10.24433/CO.4899453.v1",
+        "relationship": "corrective_reanalysis_of_existing_data",
+        "attempt_status": "authors_report_completed_reanalysis",
+        "new_data_replication": false,
+        "reported_mechanism": "Training/test imputation leakage, including in revised code.",
+        "reported_outcome": "Correcting the evaluation removes the substantive random-forest advantage over logistic regression.",
+        "metric": "AUC",
+        "unit": "dimensionless",
+        "original_value": null,
+        "corrected_value": null,
+        "register_snapshot": {
+          "date": "2024-05",
+          "critique_papers": 41,
+          "affected_studies": 648,
+          "fields": 30
+        },
+        "paper_snapshot": {
+          "year": 2023,
+          "reviews": 22,
+          "affected_papers": 294,
+          "fields": 17
+        },
+        "editorial_action": null,
+        "experiment_dates": null
+      },
+      "artifact_rights": [
+        {
+          "artifact": "Corrective paper",
+          "license": "CC-BY-4.0",
+          "evidence": "Indexed primary deposit first-page notice only; direct PDF unavailable.",
+          "url": "https://par.nsf.gov/servlets/purl/10513990"
+        },
+        {
+          "artifact": "Register, capsule and upstream datasets",
+          "license": null,
+          "evidence": "No artifact-specific grant established."
+        }
+      ],
+      "limitations": [
+        "Only indexed primary excerpts were inspected; complete paper text and numerical supplement tables remain unverified.",
+        "Register counts reflect selection and a dated version; never use as a current census or denominator for a failure rate.",
+        "Same-data reanalysis is distinct from new-data replication and formal editorial withdrawal.",
+        "No numeric AUC correction inferred from plots or qualitative statements; access restrictions remain binding."
+      ],
+      "decision": "Retain discovery and attributed qualitative claim linkage; hold numerical extraction and all corpus/capsule collection.",
+      "rank": null,
+      "thematic_context_only": {
+        "SP002": "A-Lab is a separate study, related only by correction semantics; not duplicate or shared evidence."
+      },
+      "id": "NR005",
+      "access": "Indexed official register and primary paper/supplement excerpts only. The register and complete paper/supplement text remain unavailable; no capsule or upstream data acquired.",
+      "related_review_collection_ids": [],
+      "sources": [
+        "https://reproducible.cs.princeton.edu/",
+        "https://doi.org/10.1093/pan/mpv024",
+        "https://doi.org/10.1016/j.patter.2023.100804",
+        "https://par.nsf.gov/servlets/purl/10513990"
+      ],
+      "rights": "Preserve the artifact-specific grants and unknowns below; paper, metadata, software, source datasets, annotations and generated-output rights do not automatically transfer.",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked original/response linkage, consequential metrics and date roles, actual access, artifact-specific rights and current-catalog overlap; preserved conflicts and unknowns.",
+        "evidence_urls": [
+          "https://reproducible.cs.princeton.edu/",
+          "https://doi.org/10.1093/pan/mpv024",
+          "https://doi.org/10.1016/j.patter.2023.100804",
+          "https://par.nsf.gov/servlets/purl/10513990"
+        ]
+      },
+      "next_action": "Retain the register as a dated discovery aid; hold detailed quantitative extraction and code/data clearance."
+    },
+    {
+      "name": "arXiv PRISM-Bench version-linked withdrawal",
+      "classification": "existing_review_family_enrichment",
+      "inventory_ids": [
+        "GL040",
+        "GL039"
+      ],
+      "primary_url": "https://arxiv.org/abs/2510.23594v4",
+      "historical_coverage": "v1 2025-10-27T17:57:52Z; v4 withdrawal 2025-12-01T02:32:50Z. Current unversioned record still points to withdrawn v4 on 2026-10-08.",
+      "update_frequency": "Event-driven submissions and withdrawals; no complete AI-specific corpus established.",
+      "verified_sample": {
+        "arxiv_id": "2510.23594",
+        "original_version": "v1",
+        "original_claim_scope": "Benchmark of visual puzzles and first-error reasoning-step detection.",
+        "latest_version": "v4",
+        "latest_status": "withdrawn",
+        "status_observed_on": "2026-10-08",
+        "withdrawal_reason_author_reported": "GPT hallucinations in ground-truth labels for first-error detection.",
+        "replication_attempt": null,
+        "replacement_benchmark": null,
+        "corrected_score": null,
+        "experiment_dates": null
+      },
+      "artifact_rights": [
+        {
+          "artifact": "Descriptive arXiv metadata",
+          "license": "CC0",
+          "evidence": "CRP007 and GL040 scoped metadata rights reused."
+        },
+        {
+          "artifact": "v1 manuscript",
+          "license": "CC-BY-4.0",
+          "evidence": "Explicit v1 license link verified; no data/code inheritance."
+        },
+        {
+          "artifact": "v4 withdrawn version",
+          "license": null,
+          "evidence": "Version page states no license for this withdrawn version."
+        }
+      ],
+      "limitations": [
+        "Author-reported dataset-label failure and withdrawal are not independently demonstrated replication failure.",
+        "No evidence here of replacement or corrected numbers; unknown is not nonexistent.",
+        "Never overwrite historical v1 claims/rights with the latest status or license."
+      ],
+      "decision": "Add a new version/status example to CRP007; preserve the original claim, author reason and unknown corrective measurements.",
+      "rank": null,
+      "id": "NR006",
+      "access": "Public version-specific abstract pages and current record; no paper/data archive acquisition.",
+      "related_review_collection_ids": [
+        "CRP007"
+      ],
+      "sources": [
+        "https://arxiv.org/abs/2510.23594v4",
+        "https://arxiv.org/abs/2510.23594v1",
+        "https://arxiv.org/abs/2510.23594"
+      ],
+      "rights": "Preserve the artifact-specific grants and unknowns below; paper, metadata, software, source datasets, annotations and generated-output rights do not automatically transfer.",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked original/response linkage, consequential metrics and date roles, actual access, artifact-specific rights and current-catalog overlap; preserved conflicts and unknowns.",
+        "evidence_urls": [
+          "https://arxiv.org/abs/2510.23594v4",
+          "https://arxiv.org/abs/2510.23594v1",
+          "https://arxiv.org/abs/2510.23594"
+        ]
+      },
+      "next_action": "Keep the author-reported labeling problem and withdrawn version explicit; leave corrected scores and independent replication unknown."
+    },
+    {
+      "name": "METR developer-productivity negative trial and follow-up",
+      "classification": "existing_review_study_enrichment",
+      "inventory_ids": [
+        "GL004"
+      ],
+      "primary_url": "https://arxiv.org/html/2507.09089v2",
+      "historical_coverage": "Early experiment February–June 2025; announcement 2025-07-10; v2 2025-07-25. Follow-up begins August 2025; report 2026-02-24.",
+      "update_frequency": "Episodic study waves and corrections.",
+      "verified_sample": {
+        "early": {
+          "study_id": "AP002:metr_early_2025",
+          "developers": 16,
+          "completed_tasks": 246,
+          "ai_allowed_tasks": 136,
+          "ai_disallowed_tasks": 110,
+          "forecast_completion_time_change_percent": "-24",
+          "adjusted_completion_time_change_percent": "19",
+          "reported_95pct_interval": [
+            "2",
+            "39"
+          ],
+          "uncertainty": "Paper specifies HC3.",
+          "outcome": "negative_productivity_effect_in_tested_population"
+        },
+        "later": {
+          "study_id": "AP002:metr_late_2025",
+          "returning_developers": 10,
+          "new_developers": 47,
+          "repositories": 143,
+          "tasks_reported": "800+; not verified completed-task denominator",
+          "returning_completion_time_change_percent": "-18",
+          "returning_interval": [
+            "-38",
+            "9"
+          ],
+          "new_completion_time_change_percent": "-4",
+          "new_interval": [
+            "-15",
+            "9"
+          ],
+          "interval_confidence_level": null,
+          "subgroup_completed_task_counts": null,
+          "outcome": "inconclusive_nonzero_effect_and_selection_limited_uplift_estimate"
+        },
+        "relation": "contextual_followup_not_exact_replication_or_retraction",
+        "same_studies_as_AP002": true,
+        "documentation_correction": {
+          "date": "2026-02-23",
+          "commit": "7ff2d7670235f531dff77eff58355bd77392f396",
+          "scope": "README treatment labels corrected to 1 allowed / 0 disallowed; CSV unchanged."
+        }
+      },
+      "artifact_rights": [
+        {
+          "artifact": "Early paper v2",
+          "license": "CC-BY-4.0",
+          "url": "https://arxiv.org/html/2507.09089v2"
+        },
+        {
+          "artifact": "Early CSV/code at 7ff2d7670235f531dff77eff58355bd77392f396 and later CSV/code at 55f007216a26493f0a9b7650ab3191cad7fb9e7f",
+          "license": null,
+          "evidence": "AP002 repository metadata had null license; no code/data reuse grant established."
+        },
+        {
+          "artifact": "METR blog text",
+          "license": null
+        }
+      ],
+      "limitations": [
+        "Positive means longer completion time; adjusted percentage is not a raw mean ratio, output-rate change or percentage-point score.",
+        "Returning participants create dependence; tools, task selection, compensation and timing differ across waves.",
+        "Intervals spanning zero do not establish a zero effect or a failed exact replication. Later confidence level remains unspecified here.",
+        "AP002 preserves HC3 publication versus nonrobust code-comment discrepancy and imputation/filter differences; no recomputation claimed.",
+        "No general software/research acceleration coefficient; GL004 autonomous horizons and SP003 RE-Bench remain distinct."
+      ],
+      "decision": "Reuse AP002 study identities and add negative-result/follow-up facets without duplicate observations.",
+      "rank": null,
+      "id": "NR007",
+      "access": "Public papers/blogs checked; exact AP002 repository and rights findings reused without participant rows or code execution.",
+      "related_review_collection_ids": [
+        "AP002",
+        "SP003",
+        "ASI004"
+      ],
+      "sources": [
+        "https://arxiv.org/html/2507.09089v2",
+        "https://metr.org/blog/2026-02-24-uplift-update/",
+        "https://github.com/METR/Measuring-Early-2025-AI-on-Exp-OSS-Devs/commit/7ff2d7670235f531dff77eff58355bd77392f396"
+      ],
+      "rights": "Preserve the artifact-specific grants and unknowns below; paper, metadata, software, source datasets, annotations and generated-output rights do not automatically transfer.",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked original/response linkage, consequential metrics and date roles, actual access, artifact-specific rights and current-catalog overlap; preserved conflicts and unknowns.",
+        "evidence_urls": [
+          "https://arxiv.org/html/2507.09089v2",
+          "https://metr.org/blog/2026-02-24-uplift-update/",
+          "https://github.com/METR/Measuring-Early-2025-AI-on-Exp-OSS-Devs/commit/7ff2d7670235f531dff77eff58355bd77392f396"
+        ]
+      },
+      "next_action": "Reuse AP002’s exact study identities, coding correction and rights holds; do not create another productivity series."
+    },
+    {
+      "name": "OpenAI SWE-bench validity audits and recommendation change",
+      "classification": "existing_inventory_family_enrichment",
+      "inventory_ids": [
+        "GL007",
+        "GL014"
+      ],
+      "primary_url": "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/",
+      "historical_coverage": "Verified release 2024-08-13, article update 2025-02-24; audit 2026-02-23; Pro follow-up and recommendation withdrawal 2026-07-08.",
+      "update_frequency": "Ad hoc report publications and updates.",
+      "verified_sample": {
+        "events": [
+          {
+            "id": "verified_release",
+            "date": "2024-08-13",
+            "last_reported_article_update": "2025-02-24",
+            "role": "benchmark_release",
+            "benchmark": "SWE-bench Verified",
+            "task_count": 500
+          },
+          {
+            "id": "verified_audit",
+            "date": "2026-02-23",
+            "role": "validity_audit",
+            "benchmark": "SWE-bench Verified",
+            "audited_subset": 138,
+            "full_benchmark": 500,
+            "selection": "o3 did not consistently solve over 64 independent runs",
+            "metric": "material_test_or_description_issue_share_in_audited_subset",
+            "unit": "percent",
+            "value": "59.4",
+            "numerator": null,
+            "denominator": 138,
+            "numerator_note": "Do not back-infer an integer count from rounded percentage.",
+            "recommendation_target": "SWE-Bench Pro"
+          },
+          {
+            "id": "pro_followup",
+            "date": "2026-07-08",
+            "role": "validity_audit_and_recommendation_withdrawal",
+            "benchmark": "SWE-Bench Pro public split",
+            "total_tasks": 731,
+            "automatically_flagged_for_deeper_review": 286,
+            "review_paths": [
+              {
+                "path": "human_supervised_agent_review",
+                "broken": 200,
+                "percentage": "27.4"
+              },
+              {
+                "path": "human_annotation_campaign",
+                "broken": 249,
+                "percentage": "34.1"
+              }
+            ],
+            "percentage_denominator": 731,
+            "editorial_action": "publisher_recommendation_withdrawal",
+            "journal_retraction": false
+          }
+        ],
+        "task_example": {
+          "benchmark_instance_id": "pylint-dev__pylint-4551",
+          "upstream_url": "https://github.com/pylint-dev/pylint/pull/4551",
+          "upstream_merge_date": "2021-06-26",
+          "audit_claim": "Hidden tests require a function named get_annotation that the issue description does not require.",
+          "upstream_test_quality_conclusion": null
+        },
+        "study_provenance": "Developer-produced audits; no independent execution performed here.",
+        "journal_paper_retraction": false
+      },
+      "artifact_rights": [
+        {
+          "artifact": "Audit articles and labels",
+          "license": null,
+          "evidence": "Public access; no blanket redistribution grant or complete label export verified."
+        },
+        {
+          "artifact": "Upstream issues, tasks, tests and code",
+          "license": null,
+          "evidence": "Separate artifacts; framework/code license cannot clear all text/data."
+        }
+      ],
+      "limitations": [
+        "59.4% uses the deliberately selected 138-task audit, not all 500 tasks. No numerator inferred from rounding.",
+        "The Pro review paths inspect overlapping flagged tasks; do not sum counts or assume unflagged tasks were all reviewed.",
+        "Validity defects, contamination, performance and recommendation changes are separate evidence units.",
+        "The test-name issue concerns benchmark specification, not whether upstream maintainer tests are correct for their intended development purpose.",
+        "OpenAI helped create Verified and publishes these audits; retain institutional provenance."
+      ],
+      "decision": "Attach dated validity/recommendation events, keeping Verified and Pro separate and preserving selection.",
+      "rank": null,
+      "id": "NR008",
+      "access": "Public official HTML and upstream PR identity; complete machine-readable audit labels not verified.",
+      "related_review_collection_ids": [
+        "CRP003"
+      ],
+      "sources": [
+        "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/",
+        "https://openai.com/index/introducing-swe-bench-verified/",
+        "https://github.com/pylint-dev/pylint/pull/4551",
+        "https://openai.com/index/separating-signal-from-noise-coding-evaluations/"
+      ],
+      "rights": "Preserve the artifact-specific grants and unknowns below; paper, metadata, software, source datasets, annotations and generated-output rights do not automatically transfer.",
+      "completed_work": {
+        "status": "completed_bounded_review_with_holds",
+        "work": "Checked original/response linkage, consequential metrics and date roles, actual access, artifact-specific rights and current-catalog overlap; preserved conflicts and unknowns.",
+        "evidence_urls": [
+          "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/",
+          "https://openai.com/index/introducing-swe-bench-verified/",
+          "https://github.com/pylint-dev/pylint/pull/4551",
+          "https://openai.com/index/separating-signal-from-noise-coding-evaluations/"
+        ]
+      },
+      "next_action": "Attach developer-produced audit findings and recommendation withdrawal to distinct Verified and Pro identities; keep selected-subset scope."
+    }
+  ],
+  "corrections": [
+    {
+      "id": "NR-C01",
+      "finding": "Against current catalogs, retain three new families and five enrichments. ReScience/MLRC, Crossref, arXiv and METR productivity already have family or study records; the initial five-new/three-enrichment classification requires revision.",
+      "source_id": null,
+      "status": "correction_or_qualification",
+      "related_review_collection_ids": [
+        "CRP001",
+        "CRP006",
+        "CRP007",
+        "AP002"
+      ]
+    },
+    {
+      "id": "NR-C02",
+      "finding": "LICO replication’s 78.1 versus 77.3 is a within-replication baseline/treatment pair; original full-label CIFAR-100 is 80.9 versus 82.2. Preserve architecture-label conflict and unnamed ± statistic.",
+      "source_id": "NR001",
+      "status": "correction_or_qualification",
+      "evidence_urls": [
+        "https://arxiv.org/html/2410.13989v1",
+        "https://proceedings.neurips.cc/paper_files/paper/2023/file/c2eac51b6353a4441e8b7426f8e8db78-Paper-Conference.pdf",
+        "https://reproml.org/proceedings/",
+        "https://arxiv.org/abs/2410.13989",
+        "https://github.com/robertdvdk/lico-fact"
+      ]
+    },
+    {
+      "id": "NR-C03",
+      "finding": "Official proceedings/repository label the LICO cohort 2023; arXiv says MLRC 2024. The archive span does not prove one completed cohort each year.",
+      "source_id": "NR001",
+      "status": "correction_or_qualification",
+      "evidence_urls": [
+        "https://arxiv.org/html/2410.13989v1",
+        "https://proceedings.neurips.cc/paper_files/paper/2023/file/c2eac51b6353a4441e8b7426f8e8db78-Paper-Conference.pdf",
+        "https://reproml.org/proceedings/",
+        "https://arxiv.org/abs/2410.13989",
+        "https://github.com/robertdvdk/lico-fact"
+      ]
+    },
+    {
+      "id": "NR-C04",
+      "finding": "StrongREJECT reruns one illustrative example three times; this neither reevaluates all 520 original instructions nor revises the 43.08% full-benchmark rate. The separate 313-prompt/37-method study has another scope.",
+      "source_id": "NR002",
+      "status": "correction_or_qualification",
+      "evidence_urls": [
+        "https://arxiv.org/html/2402.10260v2",
+        "https://arxiv.org/html/2310.02446v2",
+        "https://github.com/dsbowen/strong_reject",
+        "https://github.com/alexandrasouly/strongreject",
+        "https://proceedings.neurips.cc/paper_files/paper/2024/file/e2e06adf560b0706d3b1ddfca9f29756-Supplemental-Datasets_and_Benchmarks_Track.pdf"
+      ]
+    },
+    {
+      "id": "NR-C05",
+      "finding": "Small-subset size differs between data card and README; preserve uncertainty instead of choosing 50 or 60. No prompt/annotation export was acquired.",
+      "source_id": "NR002",
+      "status": "correction_or_qualification",
+      "evidence_urls": [
+        "https://arxiv.org/html/2402.10260v2",
+        "https://arxiv.org/html/2310.02446v2",
+        "https://github.com/dsbowen/strong_reject",
+        "https://github.com/alexandrasouly/strongreject",
+        "https://proceedings.neurips.cc/paper_files/paper/2024/file/e2e06adf560b0706d3b1ddfca9f29756-Supplemental-Datasets_and_Benchmarks_Track.pdf"
+      ],
+      "evidence_locators": [
+        "Data Card sections 2.2–2.4, pp. 38–39",
+        "Deprecated official repository README"
+      ]
+    },
+    {
+      "id": "NR-C06",
+      "finding": "Two production Crossref records each contain publisher and Retraction Watch assertions in reverse directions: four appearances normalize to one notice and two assertions. Crossmark’s generic history label Correction does not override the retraction notice.",
+      "source_id": "NR003",
+      "status": "correction_or_qualification",
+      "evidence_urls": [
+        "https://api.crossref.org/works/10.1038/s41562-017-0234-y",
+        "https://pubmed.ncbi.nlm.nih.gov/29367952/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10205687/",
+        "https://api.crossref.org/works/10.1038/s41562-023-01581-1",
+        "https://crossmark.crossref.org/dialog/?doi=10.1038/s41562-017-0234-y",
+        "https://www.crossref.org/documentation/retrieve-metadata/retraction-watch/"
+      ]
+    },
+    {
+      "id": "NR-C07",
+      "finding": "ReproHum values are 0–100 rating points and the original 86.47 is digitized. Two attempts ran in parallel despite different publication years; the overview is not a third human replication.",
+      "source_id": "NR004",
+      "status": "correction_or_qualification",
+      "evidence_urls": [
+        "https://aclanthology.org/2025.gem-1.55/",
+        "https://aclanthology.org/2022.acl-short.94/",
+        "https://aclanthology.org/2026.gem-main.90/",
+        "https://aclanthology.org/2026.gem-main.83/",
+        "https://aclanthology.org/faq/copyright/"
+      ]
+    },
+    {
+      "id": "NR-C08",
+      "finding": "Individual reports give original zero-shot 69.71; the overview says 60.71. Keep unresolved, along with changed QRA/CV* conventions; the augmented-zero-shot chain is consistent.",
+      "source_id": "NR004",
+      "status": "correction_or_qualification",
+      "evidence_urls": [
+        "https://aclanthology.org/2025.gem-1.55/",
+        "https://aclanthology.org/2022.acl-short.94/",
+        "https://aclanthology.org/2026.gem-main.90/",
+        "https://aclanthology.org/2026.gem-main.83/",
+        "https://aclanthology.org/faq/copyright/"
+      ]
+    },
+    {
+      "id": "NR-C09",
+      "finding": "Leakage-paper and supplement evidence is limited to indexed primary excerpts; the register and full primary text remain unavailable. Complete primary-paper inspection is not established and corrected AUCs remain null.",
+      "source_id": "NR005",
+      "status": "correction_or_qualification",
+      "evidence_urls": [
+        "https://reproducible.cs.princeton.edu/",
+        "https://doi.org/10.1093/pan/mpv024",
+        "https://doi.org/10.1016/j.patter.2023.100804",
+        "https://par.nsf.gov/servlets/purl/10513990"
+      ]
+    },
+    {
+      "id": "NR-C10",
+      "finding": "PRISM is an author-reported label failure and withdrawn version, with no verified independent replication or corrected score. Version-local rights and latest status stay separate.",
+      "source_id": "NR006",
+      "status": "correction_or_qualification",
+      "evidence_urls": [
+        "https://arxiv.org/abs/2510.23594v4",
+        "https://arxiv.org/abs/2510.23594v1",
+        "https://arxiv.org/abs/2510.23594"
+      ]
+    },
+    {
+      "id": "NR-C11",
+      "finding": "METR repeats AP002: adjusted completion-time change, not a universal productivity ratio. Later intervals span zero with changed selection/time accounting. Paper v2 CC BY 4.0 does not clear code/CSV.",
+      "source_id": "NR007",
+      "status": "correction_or_qualification",
+      "evidence_urls": [
+        "https://arxiv.org/html/2507.09089v2",
+        "https://metr.org/blog/2026-02-24-uplift-update/",
+        "https://github.com/METR/Measuring-Early-2025-AI-on-Exp-OSS-Devs/commit/7ff2d7670235f531dff77eff58355bd77392f396"
+      ]
+    },
+    {
+      "id": "NR-C12",
+      "finding": "OpenAI’s 59.4% refers to selected 138/500 tasks. July 8, 2026 withdraws a Pro recommendation, not a journal paper; retain separate benchmark and review-path identities.",
+      "source_id": "NR008",
+      "status": "correction_or_qualification",
+      "evidence_urls": [
+        "https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/",
+        "https://openai.com/index/introducing-swe-bench-verified/",
+        "https://github.com/pylint-dev/pylint/pull/4551",
+        "https://openai.com/index/separating-signal-from-noise-coding-evaluations/"
+      ]
+    }
+  ],
+  "proposed_implementation": {
+    "status": "specification_only_not_implemented",
+    "name": "existing_editorial_relationship_mapping",
+    "reuses": "CRP006 attributed_relationship semantics; no second source adapter or framework",
+    "scope": "Exactly one original/notice chain from two already checked production Crossref records; no additional source acquisition needed for the proposed mapping.",
+    "inputs": [
+      "10.1038/s41562-017-0234-y",
+      "10.1038/s41562-023-01581-1"
+    ],
+    "outputs": {
+      "events": 1,
+      "provenance_assertions": 2,
+      "event_type": "retraction",
+      "event_date": "2023-04-06",
+      "retraction_watch_record_id": "43731",
+      "scientific_outcome_automatic": "not_assessed",
+      "corrected_metric": null
+    },
+    "identity": "Normalized original DOI + notice DOI + event type; retain source/record-id and direction as provenance. Missing notice DOI stays unresolved and must not be collapsed into one null-key event.",
+    "acceptance_tests_proposed_not_run": [
+      "Original updated-by and notice update-to produce one directed original-to-notice edge.",
+      "Publisher and Retraction Watch 43731 remain two source assertions, not two studies; reverse appearances deduplicate.",
+      "Rerunning unchanged input or normalizing DOI URL/case variants does not duplicate events.",
+      "Retraction/correction/concern/withdrawal/reinstatement stay distinct; preserve raw provider labels and dates.",
+      "Date precision stays day here; never substitute issue, indexing, deposit or retrieval date.",
+      "Notice DOI missing or conflicting dates/targets produce unresolved records; no null-key collision or guessed link.",
+      "Missing metadata, access failure and absent observed relationship are distinct from no retraction exists.",
+      "A future fresh lookup is capped at these two DOIs and four HTTP requests including retries, honors Retry-After, and stops at an access denial.",
+      "Output excludes abstracts and source bodies. Work-level editorial status creates no automatic false-claim, author-misconduct, failed-replication or catastrophe-probability label."
+    ],
+    "implementation_created": false,
+    "new_validator_created": false,
+    "canonical_admission": "held"
+  },
+  "next_actions": [
+    {
+      "status": "held_optional_documentary_followup_not_started",
+      "action": "Preserve Table 2 raw model labels and unnamed ± quantities; seek explicit clarification before normalizing architectures or uncertainties.",
+      "action_id": "NR001-A1",
+      "source_id": "NR001",
+      "prompt_id": "NR001-F1",
+      "title": "Clarify LICO source inconsistencies",
+      "priority": "P1"
+    },
+    {
+      "status": "held_optional_documentary_followup_not_started",
+      "action": "Retain the single-example rerun and evaluator-validity result; clear each proposed export before acquiring prompt or annotation data.",
+      "action_id": "NR002-A1",
+      "source_id": "NR002",
+      "prompt_id": "NR002-F1",
+      "title": "Separate StrongREJECT artifact rights",
+      "priority": "P1"
+    },
+    {
+      "status": "held_optional_documentary_followup_not_started",
+      "action": "Use existing CRP006 relationship semantics for the verified Just et al. chain; do not implement another collector.",
+      "action_id": "NR003-A1",
+      "source_id": "NR003",
+      "prompt_id": "NR003-F1",
+      "title": "Map one editorial chain",
+      "priority": "P1"
+    },
+    {
+      "status": "held_optional_documentary_followup_not_started",
+      "action": "Keep parallel annotation attempts separate and preserve the zero-shot discrepancy between individual reports and synthesis.",
+      "action_id": "NR004-A1",
+      "source_id": "NR004",
+      "prompt_id": "NR004-F1",
+      "title": "Reconcile ReproNLP synthesis values",
+      "priority": "P1"
+    },
+    {
+      "status": "held_optional_documentary_followup_not_started",
+      "action": "Retain the register as a dated discovery aid; hold detailed quantitative extraction and code/data clearance.",
+      "action_id": "NR005-A1",
+      "source_id": "NR005",
+      "prompt_id": "NR005-F1",
+      "title": "Verify leakage correction scope",
+      "priority": "P1"
+    },
+    {
+      "status": "held_optional_documentary_followup_not_started",
+      "action": "Keep the author-reported labeling problem and withdrawn version explicit; leave corrected scores and independent replication unknown.",
+      "action_id": "NR006-A1",
+      "source_id": "NR006",
+      "prompt_id": "NR006-F1",
+      "title": "Preserve PRISM version status",
+      "priority": "P1"
+    },
+    {
+      "status": "held_optional_documentary_followup_not_started",
+      "action": "Reuse AP002’s exact study identities, coding correction and rights holds; do not create another productivity series.",
+      "action_id": "NR007-A1",
+      "source_id": "NR007",
+      "prompt_id": "NR007-F1",
+      "title": "Preserve METR estimand boundaries",
+      "priority": "P1"
+    },
+    {
+      "status": "held_optional_documentary_followup_not_started",
+      "action": "Attach developer-produced audit findings and recommendation withdrawal to distinct Verified and Pro identities; keep selected-subset scope.",
+      "action_id": "NR008-A1",
+      "source_id": "NR008",
+      "prompt_id": "NR008-F1",
+      "title": "Separate SWE-bench audit events",
+      "priority": "P1"
+    }
+  ],
+  "follow_up_prompts": [
+    {
+      "id": "NR001-F1",
+      "title": "Clarify LICO source inconsistencies",
+      "prompt": "Inspect at most the LICO replication v1 https://arxiv.org/html/2410.13989v1, its abstract/version record https://arxiv.org/abs/2410.13989v1 and the official proceedings https://reproml.org/proceedings/. Check Table 2 versus sections 3.3–3.4 architecture labels, the meaning of ±, and cohort 2023 versus the arXiv MLRC 2024 comment. Return an attributed discrepancy map without silently repairing the source. Reuse CRP001 family identity. Stop after these three documents. Read-only public documentary research only. No login, outreach, repository changes, source execution, model calls, bulk data or participant-level acquisition. Do not retry or bypass an access denial. Return exact source versions/locators, verified facts versus unknowns, artifact-specific rights and the stopping condition; no pooled failure rate or p(doom) conversion.",
+      "source_id": "NR001",
+      "priority": "P1"
+    },
+    {
+      "id": "NR002-F1",
+      "title": "Separate StrongREJECT artifact rights",
+      "prompt": "Inspect only the current README/license at https://github.com/dsbowen/strong_reject and the earlier README/license at https://github.com/alexandrasouly/strongreject, at most four small text documents. Establish the exact grant for custom-generated data versus imported questions and human annotations. Do not fetch prompts, responses, eval archives or model weights. Preserve the existing paper-v2 Appendix B three-run single-example scope and original 43.08% as different evidence units. Stop after a scoped rights map, keeping ungranted artifacts unknown. Read-only public documentary research only. No login, outreach, repository changes, source execution, model calls, bulk data or participant-level acquisition. Do not retry or bypass an access denial. Return exact source versions/locators, verified facts versus unknowns, artifact-specific rights and the stopping condition; no pooled failure rate or p(doom) conversion.",
+      "source_id": "NR002",
+      "priority": "P1"
+    },
+    {
+      "id": "NR003-F1",
+      "title": "Map one editorial chain",
+      "prompt": "Using the checked production Crossref records for original DOI 10.1038/s41562-017-0234-y and notice DOI 10.1038/s41562-023-01581-1, prepare a metadata-only mapping into the existing claim-result-provenance relationships. If freshness is required, fetch only those two URLs under https://api.crossref.org/works/ with at most four requests including retries. Deduplicate publisher and Retraction Watch 43731 assertions and both relation directions into one event dated 2023-04-06. Preserve raw labels and unknown corrected accuracy. Exclude abstracts and notice bodies. Stop at the mapping or first denied access; no new adapter. Read-only public documentary research only. No login, outreach, repository changes, source execution, model calls, bulk data or participant-level acquisition. Do not retry or bypass an access denial. Return exact source versions/locators, verified facts versus unknowns, artifact-specific rights and the stopping condition; no pooled failure rate or p(doom) conversion.",
+      "source_id": "NR003",
+      "priority": "P1"
+    },
+    {
+      "id": "NR004-F1",
+      "title": "Reconcile ReproNLP synthesis values",
+      "prompt": "Compare only https://aclanthology.org/2025.gem-1.55.pdf, https://aclanthology.org/2026.gem-main.90.pdf and https://aclanthology.org/2026.gem-main.83.pdf. Reconcile the original zero-shot 69.71 in individual papers versus 60.71 in the overview without guessing a correction. Preserve the consistent augmented-zero-shot original estimate 86.47 and each attempt, the digitization qualifier, 0–100 judgment-point unit, confidence-interval method and shared original outputs. The reports say experiments ran in parallel; publication years are not run years. Stop after the three-paper discrepancy map; no raw annotations. Read-only public documentary research only. No login, outreach, repository changes, source execution, model calls, bulk data or participant-level acquisition. Do not retry or bypass an access denial. Return exact source versions/locators, verified facts versus unknowns, artifact-specific rights and the stopping condition; no pooled failure rate or p(doom) conversion.",
+      "source_id": "NR004",
+      "priority": "P1"
+    },
+    {
+      "id": "NR005-F1",
+      "title": "Verify leakage correction scope",
+      "prompt": "Review the original record DOI 10.1093/pan/mpv024 and Kapoor–Narayanan corrective paper DOI 10.1016/j.patter.2023.100804, with at most one directly linked public supplement, three documents total. Determine exactly which imputation/evaluation changes affect the random-forest-versus-logistic-regression comparison. Do not infer a corrected numerical score when no checked table supplies one. The Princeton register remains unavailable; do not bypass access restrictions or download its corpus/capsule. Separate 2016 issue identity from later hosting dates and dated register counts from population rates. Stop at a gate or after the source-located correction map. Read-only public documentary research only. No login, outreach, repository changes, source execution, model calls, bulk data or participant-level acquisition. Do not retry or bypass an access denial. Return exact source versions/locators, verified facts versus unknowns, artifact-specific rights and the stopping condition; no pooled failure rate or p(doom) conversion.",
+      "source_id": "NR005",
+      "priority": "P1"
+    },
+    {
+      "id": "NR006-F1",
+      "title": "Preserve PRISM version status",
+      "prompt": "Inspect only https://arxiv.org/abs/2510.23594v1, https://arxiv.org/abs/2510.23594v4 and https://arxiv.org/abs/2510.23594. Prepare a status/rights chronology linked to existing CRP007. Preserve v1 submission 2025-10-27 and withdrawn v4 2025-12-01, with original claims retained separately from author-reported reason. A changed latest status is not evidence of a replacement benchmark without an explicit link. Do not acquire manuscript sources or dataset files. Stop after these three metadata pages. Read-only public documentary research only. No login, outreach, repository changes, source execution, model calls, bulk data or participant-level acquisition. Do not retry or bypass an access denial. Return exact source versions/locators, verified facts versus unknowns, artifact-specific rights and the stopping condition; no pooled failure rate or p(doom) conversion.",
+      "source_id": "NR006",
+      "priority": "P1"
+    },
+    {
+      "id": "NR007-F1",
+      "title": "Preserve METR estimand boundaries",
+      "prompt": "Start with the published adoption-productivity AP002 catalog at https://github.com/mishakgg/pdoom-live/blob/6cf8c1c89a387a5b26022dd9ea0a216d45b2b629/data/evidence-program/research/adoption-productivity.json. At most two fresh documents are allowed: https://arxiv.org/html/2507.09089v2 and https://metr.org/blog/2026-02-24-uplift-update/. Clarify completion-time sign, adjusted coefficient semantics, reported uncertainty and the difference between a negative randomized effect and selection-limited follow-up intervals spanning zero. Preserve the 2026-02-23 README coding correction and unresolved HC3-versus-nonrobust-comment discrepancy without re-executing code. No CSVs or participant joins. Stop after an estimand/version map; paper CC BY 4.0 does not clear code/data. Read-only public documentary research only. No login, outreach, repository changes, source execution, model calls, bulk data or participant-level acquisition. Do not retry or bypass an access denial. Return exact source versions/locators, verified facts versus unknowns, artifact-specific rights and the stopping condition; no pooled failure rate or p(doom) conversion.",
+      "source_id": "NR007",
+      "priority": "P1"
+    },
+    {
+      "id": "NR008-F1",
+      "title": "Separate SWE-bench audit events",
+      "prompt": "Inspect at most the 2024 introduction https://openai.com/index/introducing-swe-bench-verified/, February audit https://openai.com/index/why-we-no-longer-evaluate-swe-bench-verified/, July audit https://openai.com/index/separating-signal-from-noise-coding-evaluations/ and upstream https://github.com/pylint-dev/pylint/pull/4551. Map 500-problem release, selected 138-problem audit, 59.4% subset result, and withdrawn Pro recommendation as different events. Check for an explicit audit-label reuse grant; unknown remains unknown. Do not download task datasets or run tests. Stop after this four-document event map. Read-only public documentary research only. No login, outreach, repository changes, source execution, model calls, bulk data or participant-level acquisition. Do not retry or bypass an access denial. Return exact source versions/locators, verified facts versus unknowns, artifact-specific rights and the stopping condition; no pooled failure rate or p(doom) conversion.",
+      "source_id": "NR008",
+      "priority": "P1"
+    }
+  ],
+  "holds": [
+    "All operational admission and canonical mapping remain unapproved; no collector/adapter/validator created.",
+    "LICO normalized architecture, ± definition and cohort label remain unresolved.",
+    "StrongREJECT imported-prompt, output and annotation rights; small-subset count unresolved.",
+    "ReproHum zero-shot synthesis inconsistency, experiment dates and raw artifact rights unresolved.",
+    "Princeton full primary text/supplement values inaccessible in this review; no capsule/data clearance or numeric corrected AUC.",
+    "METR code/data rights, uncertainty-comment discrepancy and compatible longitudinal estimand unresolved.",
+    "SWE-bench raw audit labels, representative defect prevalence and redistribution rights unverified.",
+    "Retraction metadata does not provide new-data replication or corrected clinical accuracy; PRISM supplies no verified corrected benchmark."
+  ]
+}

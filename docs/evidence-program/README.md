@@ -108,3 +108,13 @@ Four separately reviewed sessions share one documentation publication batch. Eac
 - Session 20: [Undercovered languages and regions](research/undercovered-languages.md) · [JSON](../../data/evidence-program/research/undercovered-languages.json)
 
 All four remain unadmitted research metadata. Linked source licenses, unknowns and access restrictions are not changed by the repository’s data dedication. No new source adapter, source corpus, participant records, source/model execution, live collector, canonical import or deployment. The only tooling change permits a contiguous prepared block in the existing dated queue checker, with focused queue regressions.
+
+## Research reviews 21–23
+
+Three separately reviewed sessions share this documentation publication batch. Each keeps its own evidence decisions, corrections, completed checks, open actions and bounded copy-ready prompts.
+
+- Session 21: [Mitigation effectiveness](research/mitigation-effectiveness.md) · [JSON](../../data/evidence-program/research/mitigation-effectiveness.json)
+- Session 22: [Negative results and replications](research/negative-replications.md) · [JSON](../../data/evidence-program/research/negative-replications.json)
+- Session 23: [Compute supply-chain bottlenecks](research/compute-supply-chain.md) · [JSON](../../data/evidence-program/research/compute-supply-chain.json)
+
+All three remain unadmitted research metadata with artifact-specific rights and evidence holds. Proposed implementations are deferred. No adapter, new validator, source corpus, participant record, source/model execution, live collector, canonical import or deployment is added. The existing shared checks are reused.
