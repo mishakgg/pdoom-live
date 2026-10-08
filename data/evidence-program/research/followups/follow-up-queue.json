@@ -1,12 +1,12 @@
 {
   "title": "Follow-up research queue",
-  "snapshot_at": "2026-10-08T17:48:00Z",
+  "snapshot_at": "2026-10-08T20:00:45Z",
   "original_session_count": 26,
   "original_session_queue": "docs/evidence-program/research/research-session-review-queue.md",
   "received_bundle_count": 7,
   "received_file_count": 18,
   "new_prompt_count": 7,
-  "distinction": "Three earlier reviewed bundles and integrated A/labor and B/experimental deltas remain distinct from C/safeguard, whose independently reviewed delta is included in this candidate. D starts its separate model/tariff review. Delivery, documentary review, candidate inclusion and verified remote integration are separate.",
+  "distinction": "Three earlier reviewed bundles and A/labor, B/experimental and C/safeguard research remain separate from D/model-tariff, whose independently reviewed delta is included in this candidate. Delivery, source review, candidate inclusion and verified remote integration are distinct.",
   "bundles": [
     {
       "sequence": 1,
@@ -413,12 +413,12 @@
       "review_status": "review_complete_with_residual_holds",
       "review_started": true,
       "review_complete": true,
-      "integration_status": "reviewed_delta_included_in_this_candidate",
+      "integration_status": "merged_and_postmerge_verified",
       "substantive_findings_included": true,
       "reviewed_fact_records": 27,
       "operational_admission": "not_admitted",
       "collector_enabled": false,
-      "next_action": "Independently review this candidate, then verify remote publication and exact-commit CI/merge. Preserve all six hold groups; D model/tariff research starts separately.",
+      "next_action": "Preserve all six source, rights, lossless-mapping and admission hold groups; C source evidence remains unchanged.",
       "review_starting_points": [
         "Preserve reported CaMeL count separately from unresolved scoring/interval generation/runtime lineage.",
         "Preserve AISI failure, intervention and unknown final outcome as separate assertions.",
@@ -466,6 +466,16 @@
         "repository_access_resolved": true,
         "lossless_mapping_held": true,
         "real_source_canonical_validation_run": false
+      },
+      "prior_integration_status_preserved": "reviewed_delta_included_in_this_candidate",
+      "integration_pr_url": "https://github.com/mishakgg/pdoom-live/pull/341",
+      "integration_commit": "050e91bc443403054331a8d640794dc8d5da4ffd",
+      "postmerge_checks_observed_at": "2026-10-08T19:58:15Z",
+      "postmerge_checks": {
+        "test": "success",
+        "image": "success",
+        "browser": "success",
+        "evidence-program": "success"
       }
     },
     {
@@ -501,7 +511,8 @@
           "bytes": 85091,
           "sha256": "0f8593ba6be5fa6422ce84646d0bdbe44f653c43273fa091d791668cceb79657",
           "hash_scope": "entire_submitted_file_bytes",
-          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+          "content_assessment": "independently_reviewed_at_linked_delta_scope_original_hash_preserved",
+          "intake_content_assessment_preserved": "receipt_and_readability_only_not_primary_source_verification"
         },
         {
           "artifact_role": "typed_research_evidence_ledger",
@@ -509,7 +520,8 @@
           "bytes": 203141,
           "sha256": "51affa47016aee2c870a7f265f70302eefc6acfa1918018bdb70d651861b4204",
           "hash_scope": "entire_submitted_file_bytes",
-          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+          "content_assessment": "independently_reviewed_at_linked_delta_scope_original_hash_preserved",
+          "intake_content_assessment_preserved": "receipt_and_readability_only_not_primary_source_verification"
         },
         {
           "artifact_role": "pasted_completion_narrative",
@@ -517,26 +529,20 @@
           "bytes": 7445,
           "sha256": "ee837dcf266a5395d50e0a71aa689c4146ab8a9ec06922079220db6818363395",
           "hash_scope": "entire_submitted_file_bytes",
-          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+          "content_assessment": "independently_reviewed_at_linked_delta_scope_original_hash_preserved",
+          "intake_content_assessment_preserved": "receipt_and_readability_only_not_primary_source_verification"
         }
       ],
       "intake_manifest_sha256": "913d9073a55f45f724ecf4ab3e457b951c8cae08cff87fd70241a4c0dd789aa4",
-      "review_status": "in_progress",
+      "review_status": "review_complete_with_residual_holds",
       "review_started": true,
-      "review_complete": false,
-      "integration_status": "pending_substantive_review",
-      "substantive_findings_included": false,
-      "reviewed_fact_records": 0,
+      "review_complete": true,
+      "integration_status": "reviewed_delta_included_in_this_candidate",
+      "substantive_findings_included": true,
+      "reviewed_fact_records": 9,
       "operational_admission": "not_admitted",
       "collector_enabled": false,
-      "next_action": "Review D separately after bounded A/B/C source reviews. Reconcile Azure lifecycle and DeepSeek tariff/alias evidence, keeping conflicting dates, exact prices and null boundaries separate. No D findings are adopted in this candidate.",
-      "review_starting_points": [
-        "Keep conflicting Azure dates as separate assertions until explicit scope/version evidence resolves them.",
-        "Distinguish documented vocabulary from observed API lifecycle state.",
-        "Retain DeepSeek promotion/null-boundary and source-timeout holds.",
-        "Keep exact supplied R1 tariff values and alias claims separate from newly verified evidence.",
-        "Review 28 manual cases and preserve unrun contract validation and uncompleted factual tariff join."
-      ],
+      "next_action": "Independently review this candidate, then verify remote publication and exact-commit CI/merge. Preserve all seven held records and prior catalog identities; no canonical admission, live collection or automatic joins.",
       "source_reported_repository_context": {
         "status": "current_main_and_supplied_baseline_not_inspected",
         "supplied_planning_baseline": "6cf8c1c89a387a5b26022dd9ea0a216d45b2b629",
@@ -545,12 +551,45 @@
         "later_changes_reconciled": false,
         "interpretation": "The submission reports inaccessible repository context. This is historical source-reported context, not proof of current repository inaccessibility or missing files; reconcile during review."
       },
-      "review_claim_limit": "The report and typed ledger are externally submitted research artifacts, not independently verified primary-source evidence. Claimed checks, acceptance cases and upstream hashes remain unverified by this intake.",
+      "review_claim_limit": "Bounded machine documentary review, not human verification or API execution. Successful author R1 observation, independent reread timeouts and prior catalog verification are separate. 28 submitted and 16 new manual cases plus 12 synthetic JSON Schema cases are not a real-source canonical bundle or semantic importer.",
       "review_after": [
         "bundle-a",
         "bundle-b",
         "bundle-c"
-      ]
+      ],
+      "source_intake_review_claim_limit_preserved": "The report and typed ledger are externally submitted research artifacts, not independently verified primary-source evidence. Claimed checks, acceptance cases and upstream hashes remain unverified by this intake.",
+      "historical_review_starting_points_preserved": [
+        "Keep conflicting Azure dates as separate assertions until explicit scope/version evidence resolves them.",
+        "Distinguish documented vocabulary from observed API lifecycle state.",
+        "Retain DeepSeek promotion/null-boundary and source-timeout holds.",
+        "Keep exact supplied R1 tariff values and alias claims separate from newly verified evidence.",
+        "Review 28 manual cases and preserve unrun contract validation and uncompleted factual tariff join."
+      ],
+      "original_sessions": [
+        17,
+        19
+      ],
+      "delta_path": "data/evidence-program/research/followups/model-tariff-review.json",
+      "guide_path": "docs/evidence-program/research/followups/model-tariff-review.md",
+      "contract_mapping_path": "data/evidence-program/research/followups/model-tariff-review-contract-mapping.json",
+      "reviewed_fact_records_scope": "Nine current reviewed assertions, with preserved source/submission provenance; not nine independent model releases or operational observations. Eight accepted decisions, seven corrections and seven holds are separate.",
+      "accepted_decisions": 8,
+      "corrections": 7,
+      "hold_groups": 7,
+      "submitted_manual_cases": 28,
+      "new_current_manual_cases": 16,
+      "synthetic_json_schema_cases": 12,
+      "source_package_checks": 204,
+      "independent_source_review_checks": 459,
+      "residual_holds_remain": true,
+      "review_completed_at": "2026-10-08T19:50:07Z",
+      "reviewer_current_repository_context": {
+        "inspected_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5",
+        "integration_base_commit": "b37b0196ebd170d7903d87387bda83bb92407416",
+        "repository_access_resolved": true,
+        "mapping_status": "partial_native_with_sidecar_semantic_holds",
+        "real_source_canonical_validation_run": false
+      }
     }
   ],
   "new_prompts": [
@@ -619,7 +658,7 @@
       "sequence": 3,
       "title": "Resolve hosted-model and tariff events",
       "path": "docs/evidence-program/research/followups/prompts/03-resolve-model-tariff-events.txt",
-      "status": "research_output_received_review_in_progress",
+      "status": "research_output_received_review_complete_with_residual_holds",
       "delivered_at": "2026-10-08T11:11:00Z",
       "delivery_time_precision": "minute",
       "research_output_received": true,
@@ -642,7 +681,9 @@
       "content_preserved_from_delivered_prompt": true,
       "session_execution_status": "externally_reported_complete_not_independently_verified",
       "submission_id": "bundle-d",
-      "received_at": "2026-10-08T15:11:12Z"
+      "received_at": "2026-10-08T15:11:12Z",
+      "reviewed_delta_path": "data/evidence-program/research/followups/model-tariff-review.json",
+      "integration_status": "reviewed_delta_included_in_this_candidate"
     },
     {
       "sequence": 4,
@@ -668,7 +709,8 @@
       "submission_id": "bundle-c",
       "received_at": "2026-10-08T15:09:02Z",
       "reviewed_delta_path": "data/evidence-program/research/followups/safeguard-lineage-review.json",
-      "integration_status": "reviewed_delta_included_in_this_candidate"
+      "integration_status": "merged_and_postmerge_verified",
+      "integration_commit": "050e91bc443403054331a8d640794dc8d5da4ffd"
     },
     {
       "sequence": 5,
@@ -741,11 +783,11 @@
   "canonical_contract_mapping": "pending_separate_review",
   "original_reviews_integrated": 26,
   "original_queue_integration_commit": "972f2bbdc3e123c83ce9ea695c9f265fe6720032",
-  "snapshot_scope": "Additive safeguard research candidate after independent source clearance; six reviewed deltas, A and B retained on the hash-verified current base. D starts separately; prompts 5–7 keep their prior no-result receipt snapshot. No canonical admission or C remote merge is claimed.",
-  "reviewed_bundle_count": 6,
+  "snapshot_scope": "Additive hosted-model/tariff research candidate after independent source clearance. Seven reviewed deltas; A/B integration history and verified C publication state are recorded separately. Prompts 5–7 keep prior no-result receipt snapshot. No canonical admission or D remote merge is claimed.",
+  "reviewed_bundle_count": 7,
   "reviewed_findings_included": true,
   "unreviewed_supplied_claims_adopted": false,
-  "claim_adoption_rule": "Only independently reviewed findings and explicit limitations from the six linked deltas are included. Unreviewed D findings, receipt hashes and prompt delivery do not establish source truth, lossless contract compatibility or completed checks.",
+  "claim_adoption_rule": "Only independently reviewed bounded findings and explicit limitations from the seven linked deltas are included. Receipt hashes, prompt delivery, structural schema acceptance and candidate inclusion do not establish source truth, lossless canonical mapping, execution or admission.",
   "original_queue_reconciliation_commit": "8b6fa1f9b389a625fa44c0656e3de47c509bff9a",
   "deep_result_bundle_count": 4,
   "deep_result_file_count": 12,
@@ -753,7 +795,7 @@
   "intake_index_sha256": "9abc8254d73a7ed115adec19edee99954b56484749b8ddbfa2ea90bbbe8f97a3",
   "review_order": "bundle-a (prompt 1), bundle-b (prompt 2), bundle-c (prompt 4), bundle-d (prompt 3); review in arrival order.",
   "repository_context_for_this_queue_update": {
-    "base_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5",
-    "scope": "Hash-verified scoped current-main files including merged labor PR 338 and experimental PR 340. C source-review pin remains 58de347f57cf37dd9e6495b433b45b3501cc3de1; original submitted null commits are historical and unchanged."
+    "base_commit": "b37b0196ebd170d7903d87387bda83bb92407416",
+    "scope": "Hash-verified scoped base including the exact cleared C research payload and prior A/B research. D source-review pin remains a075f76f52964bd582e304863745bdc6d8cfc9b5; original submitted null commits are historical and unchanged."
   }
 }

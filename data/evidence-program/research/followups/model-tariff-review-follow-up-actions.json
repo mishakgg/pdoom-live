@@ -1,0 +1,118 @@
+{
+  "record_type": "bounded_follow_up_actions_not_started",
+  "existing_actions_preserved": [
+    "MIR-A02",
+    "MIR-A04",
+    "IPP-A04"
+  ],
+  "existing_prompts_preserved": [
+    "MIR-P02",
+    "MIR-P04",
+    "IPP-P04"
+  ],
+  "actions": [
+    {
+      "subject": "Azure current authoritative date",
+      "existing_action_refs": [
+        "MIR-A02"
+      ],
+      "existing_prompt_refs": [
+        "MIR-P02"
+      ],
+      "hold_ref": "D-H01",
+      "minimum_evidence": "Explicit current Microsoft row-scoped clarification or correction tied to a source revision.",
+      "status": "not_started",
+      "permission_limit": "No collection, API/model calls, login, outreach, mirror/bypass or follow-on session authorized by this review."
+    },
+    {
+      "subject": "Actual Azure deployment retirement",
+      "existing_action_refs": [
+        "MIR-A02"
+      ],
+      "existing_prompt_refs": [
+        "MIR-P02"
+      ],
+      "hold_ref": "D-H02",
+      "minimum_evidence": "Separately authorized deployment-specific evidence; not requested or collected.",
+      "status": "not_started",
+      "permission_limit": "No collection, API/model calls, login, outreach, mirror/bypass or follow-on session authorized by this review."
+    },
+    {
+      "subject": "V3 historical promotion",
+      "existing_action_refs": [
+        "IPP-A04"
+      ],
+      "existing_prompt_refs": [
+        "IPP-P04"
+      ],
+      "hold_ref": "D-H03",
+      "minimum_evidence": "Readable named announcement and observed linked pricing asset/counterpart showing historical terms.",
+      "status": "not_started",
+      "permission_limit": "No collection, API/model calls, login, outreach, mirror/bypass or follow-on session authorized by this review."
+    },
+    {
+      "subject": "R1/V3 alias conflict and Chinese equivalence",
+      "existing_action_refs": [
+        "MIR-A04",
+        "IPP-A04"
+      ],
+      "existing_prompt_refs": [
+        "MIR-P04",
+        "IPP-P04"
+      ],
+      "hold_ref": "D-H04",
+      "minimum_evidence": "Relevant readable Chinese entry plus row-specific official correction/version metadata if claiming a correction.",
+      "status": "not_started",
+      "permission_limit": "No collection, API/model calls, login, outreach, mirror/bypass or follow-on session authorized by this review."
+    },
+    {
+      "subject": "Historical page bytes and actual API routing",
+      "existing_action_refs": [
+        "MIR-A04",
+        "IPP-A04"
+      ],
+      "existing_prompt_refs": [
+        "MIR-P04",
+        "IPP-P04"
+      ],
+      "hold_ref": "D-H05",
+      "minimum_evidence": "Historical snapshot/revision for historical text; execution evidence separately for routing.",
+      "status": "not_started",
+      "permission_limit": "No collection, API/model calls, login, outreach, mirror/bypass or follow-on session authorized by this review."
+    },
+    {
+      "subject": "Tariff application to a run or evaluation",
+      "existing_action_refs": [
+        "MIR-A04",
+        "IPP-A04"
+      ],
+      "existing_prompt_refs": [
+        "MIR-P04",
+        "IPP-P04"
+      ],
+      "hold_ref": "D-H06",
+      "minimum_evidence": "Run platform/service/time/returned version and category eligibility; token counts and invoice/discount evidence for actual charges.",
+      "status": "not_started",
+      "permission_limit": "No collection, API/model calls, login, outreach, mirror/bypass or follow-on session authorized by this review."
+    },
+    {
+      "subject": "Broad source-body reuse and admission",
+      "existing_action_refs": [
+        "MIR-A04",
+        "IPP-A04"
+      ],
+      "existing_prompt_refs": [
+        "MIR-P04",
+        "IPP-P04"
+      ],
+      "hold_ref": "D-H07",
+      "minimum_evidence": "Artifact-specific rights/attribution review and separate collection/source admission decision.",
+      "status": "not_started",
+      "permission_limit": "No collection, API/model calls, login, outreach, mirror/bypass or follow-on session authorized by this review."
+    }
+  ],
+  "stop_decision": "Named branches end at the documented residual blockers. Independent branches were completed. No monitoring or broader discovery started.",
+  "integration_status": "reviewed_delta_included_in_this_candidate",
+  "integration_base_commit": "b37b0196ebd170d7903d87387bda83bb92407416",
+  "integration_boundary": "All seven research hold records remain. No follow-on source session, source admission, collector or automatic price/lifecycle join is started by this candidate."
+}

@@ -1,0 +1,1782 @@
+{
+  "schema_version": "0.1.0",
+  "repository_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5",
+  "contract_path": "tools/evidence_program/contracts/dataset.schema.json",
+  "fragments": {
+    "record": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "0.1.0"
+        },
+        "record_type": {
+          "enum": [
+            "source_artifact",
+            "actor",
+            "statement",
+            "model_version",
+            "release_event",
+            "benchmark_run",
+            "resource_observation",
+            "safety_evaluation",
+            "incident",
+            "forecast_question",
+            "forecast",
+            "resolution",
+            "snapshot"
+          ]
+        },
+        "id": {
+          "$ref": "#/$defs/record_id"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "synthetic": {
+          "type": "boolean",
+          "description": "True for test-only records, never mixed silently with real observations."
+        },
+        "times": {
+          "$ref": "#/$defs/times"
+        },
+        "governance": {
+          "$ref": "#/$defs/governance"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence"
+          },
+          "minItems": 0,
+          "description": "Traceable source references; empty only for source artifacts and snapshots."
+        },
+        "supersedes": {
+          "$ref": "#/$defs/record_ref",
+          "description": "Immediately preceding revision of the same persistent record, for correction history.",
+          "x-target-types": [
+            "source_artifact",
+            "actor",
+            "statement",
+            "model_version",
+            "release_event",
+            "benchmark_run",
+            "resource_observation",
+            "safety_evaluation",
+            "incident",
+            "forecast_question",
+            "forecast",
+            "resolution",
+            "snapshot"
+          ]
+        },
+        "legacy_refs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "system": {
+                "const": "pdoom-live"
+              },
+              "entity": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Existing ledger table/entity name."
+              },
+              "key": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Exact existing slug or identifier; no lossy implicit mapping."
+              },
+              "repository_commit": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{40}$"
+              }
+            },
+            "required": [
+              "system",
+              "entity",
+              "key",
+              "repository_commit"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "description": "Optional additive bridge to the existing ledger."
+        },
+        "upstream_refs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "dataset_id": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Upstream dataset or provider identifier; preserve its own namespace."
+              },
+              "release": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Exact upstream release/version or dated snapshot identifier."
+              },
+              "record_id": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Original upstream row, question, run or cell identifier; never replace it silently."
+              },
+              "schema_name": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Original schema or format name."
+              },
+              "schema_version": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Original upstream schema version, or explicit unknown when not supplied."
+              },
+              "schema_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "source_ref": {
+                "$ref": "#/$defs/record_ref",
+                "description": "Evidence artifact for this upstream release or record.",
+                "x-target-types": [
+                  "source_artifact"
+                ]
+              },
+              "transformations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "operation": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "Normalization, mapping or conversion operation."
+                    },
+                    "version": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "Transformation implementation/rule version."
+                    },
+                    "description": {
+                      "type": "string",
+                      "minLength": 1,
+                      "description": "Input fields, assumptions and any information loss."
+                    }
+                  },
+                  "required": [
+                    "operation",
+                    "version",
+                    "description"
+                  ],
+                  "additionalProperties": false
+                },
+                "minItems": 0,
+                "description": "Ordered transformations; empty means identity mapping without conversion."
+              }
+            },
+            "required": [
+              "dataset_id",
+              "release",
+              "record_id",
+              "schema_name",
+              "schema_version",
+              "source_ref",
+              "transformations"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0,
+          "description": "Crosswalk to upstream records. The upstream release stays authoritative; this envelope need not duplicate its whole dataset."
+        },
+        "data": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "schema_version",
+        "record_type",
+        "id",
+        "revision",
+        "synthetic",
+        "times",
+        "governance",
+        "evidence",
+        "data"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "record_type": {
+                "const": "source_artifact"
+              }
+            },
+            "required": [
+              "record_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^urn:pdataset:source_artifact:"
+              },
+              "data": {
+                "$ref": "#/$defs/source_artifact_data"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "record_type": {
+                "const": "actor"
+              }
+            },
+            "required": [
+              "record_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^urn:pdataset:actor:"
+              },
+              "data": {
+                "$ref": "#/$defs/actor_data"
+              },
+              "evidence": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "record_type": {
+                "const": "statement"
+              }
+            },
+            "required": [
+              "record_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^urn:pdataset:statement:"
+              },
+              "data": {
+                "$ref": "#/$defs/statement_data"
+              },
+              "evidence": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "record_type": {
+                "const": "model_version"
+              }
+            },
+            "required": [
+              "record_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^urn:pdataset:model_version:"
+              },
+              "data": {
+                "$ref": "#/$defs/model_version_data"
+              },
+              "evidence": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "record_type": {
+                "const": "release_event"
+              }
+            },
+            "required": [
+              "record_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^urn:pdataset:release_event:"
+              },
+              "data": {
+                "$ref": "#/$defs/release_event_data"
+              },
+              "evidence": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "record_type": {
+                "const": "benchmark_run"
+              }
+            },
+            "required": [
+              "record_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^urn:pdataset:benchmark_run:"
+              },
+              "data": {
+                "$ref": "#/$defs/benchmark_run_data"
+              },
+              "evidence": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "record_type": {
+                "const": "resource_observation"
+              }
+            },
+            "required": [
+              "record_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^urn:pdataset:resource_observation:"
+              },
+              "data": {
+                "$ref": "#/$defs/resource_observation_data"
+              },
+              "evidence": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "record_type": {
+                "const": "safety_evaluation"
+              }
+            },
+            "required": [
+              "record_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^urn:pdataset:safety_evaluation:"
+              },
+              "data": {
+                "$ref": "#/$defs/safety_evaluation_data"
+              },
+              "evidence": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "record_type": {
+                "const": "incident"
+              }
+            },
+            "required": [
+              "record_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^urn:pdataset:incident:"
+              },
+              "data": {
+                "$ref": "#/$defs/incident_data"
+              },
+              "evidence": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "record_type": {
+                "const": "forecast_question"
+              }
+            },
+            "required": [
+              "record_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^urn:pdataset:forecast_question:"
+              },
+              "data": {
+                "$ref": "#/$defs/forecast_question_data"
+              },
+              "evidence": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "record_type": {
+                "const": "forecast"
+              }
+            },
+            "required": [
+              "record_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^urn:pdataset:forecast:"
+              },
+              "data": {
+                "$ref": "#/$defs/forecast_data"
+              },
+              "evidence": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "record_type": {
+                "const": "resolution"
+              }
+            },
+            "required": [
+              "record_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^urn:pdataset:resolution:"
+              },
+              "data": {
+                "$ref": "#/$defs/resolution_data"
+              },
+              "evidence": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "record_type": {
+                "const": "snapshot"
+              }
+            },
+            "required": [
+              "record_type"
+            ]
+          },
+          "then": {
+            "properties": {
+              "id": {
+                "pattern": "^urn:pdataset:snapshot:"
+              },
+              "data": {
+                "$ref": "#/$defs/snapshot_data"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "revision": {
+                "minimum": 2
+              }
+            },
+            "required": [
+              "revision"
+            ]
+          },
+          "then": {
+            "required": [
+              "supersedes"
+            ]
+          }
+        }
+      ]
+    },
+    "record_ref": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/record_id"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Exact immutable revision, never implicit latest."
+        }
+      },
+      "required": [
+        "id",
+        "revision"
+      ],
+      "additionalProperties": false
+    },
+    "times": {
+      "type": "object",
+      "properties": {
+        "known_at": {
+          "$ref": "#/$defs/timestamp",
+          "description": "First recorded availability of this revision to this dataset; never backdate after late discovery."
+        },
+        "retrieved_at": {
+          "$ref": "#/$defs/timestamp",
+          "description": "Time the underlying material was retrieved or captured for this revision."
+        },
+        "published": {
+          "$ref": "#/$defs/temporal",
+          "description": "When the underlying source was published."
+        },
+        "event": {
+          "$ref": "#/$defs/temporal",
+          "description": "When the described event happened, not its publication."
+        },
+        "evaluated": {
+          "$ref": "#/$defs/temporal",
+          "description": "When an evaluation was run; unknown with reason when not applicable."
+        }
+      },
+      "required": [
+        "known_at",
+        "retrieved_at",
+        "published",
+        "event",
+        "evaluated"
+      ],
+      "additionalProperties": false
+    },
+    "temporal": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "instant"
+            },
+            "at": {
+              "$ref": "#/$defs/timestamp",
+              "description": "Actual timestamp; do not invent midnight for date-only evidence."
+            }
+          },
+          "required": [
+            "kind",
+            "at"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "date"
+            },
+            "date": {
+              "type": "string",
+              "format": "date",
+              "description": "Actual calendar day when day precision is all that is known."
+            }
+          },
+          "required": [
+            "kind",
+            "date"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "range"
+            },
+            "start": {
+              "type": "string",
+              "format": "date"
+            },
+            "end": {
+              "type": "string",
+              "format": "date"
+            },
+            "precision": {
+              "type": "string",
+              "enum": [
+                "day",
+                "month",
+                "year",
+                "uncertain"
+              ],
+              "description": "Precision supported by the source; endpoints are inclusive dates."
+            }
+          },
+          "required": [
+            "kind",
+            "start",
+            "end",
+            "precision"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "unknown"
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Why no reliable time is available."
+            }
+          },
+          "required": [
+            "kind",
+            "reason"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "description": "Source-supported time with explicit precision; range endpoints must be ordered."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(\\.\\d{1,6})?Z$",
+      "description": "RFC3339 UTC timestamp ending Z, at most six fractional digits; real calendar date is checked by FormatChecker."
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "source_ref": {
+          "$ref": "#/$defs/record_ref",
+          "description": "Source artifact and exact revision used.",
+          "x-target-types": [
+            "source_artifact"
+          ]
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Page, section, table cell, transcript timestamp or other stable source selector."
+        },
+        "relation": {
+          "type": "string",
+          "enum": [
+            "supports",
+            "contradicts",
+            "context"
+          ],
+          "description": "Relationship to this record."
+        },
+        "excerpt": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Optional short evidence text; distribute only if permitted."
+        },
+        "extraction_method": {
+          "type": "string",
+          "enum": [
+            "manual",
+            "parser",
+            "model_assisted",
+            "synthetic"
+          ],
+          "description": "How this evidence link was produced."
+        },
+        "extractor_version": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Parser/model/prompt pipeline version, or manual-v1."
+        }
+      },
+      "required": [
+        "source_ref",
+        "locator",
+        "relation",
+        "extraction_method",
+        "extractor_version"
+      ],
+      "additionalProperties": false
+    },
+    "governance": {
+      "type": "object",
+      "properties": {
+        "review_state": {
+          "type": "string",
+          "enum": [
+            "unreviewed",
+            "machine_validated",
+            "human_verified",
+            "needs_review",
+            "rejected"
+          ],
+          "description": "Evidence/attribution review; not a guarantee of truth."
+        },
+        "reviewer_ref": {
+          "$ref": "#/$defs/record_ref",
+          "description": "Human or accountable organization recorded as reviewer.",
+          "x-target-types": [
+            "actor"
+          ]
+        },
+        "reviewed_at": {
+          "$ref": "#/$defs/timestamp",
+          "description": "Review decision timestamp."
+        },
+        "rights_state": {
+          "type": "string",
+          "enum": [
+            "unknown",
+            "link_only",
+            "metadata_only",
+            "redistribution_allowed",
+            "restricted"
+          ],
+          "description": "Export rights for content of this record; not inherited automatically from software or dataset license."
+        },
+        "rights_basis": {
+          "type": "string",
+          "minLength": 1,
+          "description": "License, permission or reason for restriction; unknown is explicit."
+        },
+        "rights_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "publication_state": {
+          "type": "string",
+          "enum": [
+            "internal",
+            "eligible",
+            "withheld"
+          ],
+          "description": "Eligible requires verified review and cleared rights; does not mean actually published."
+        }
+      },
+      "required": [
+        "review_state",
+        "rights_state",
+        "rights_basis",
+        "publication_state"
+      ],
+      "additionalProperties": false
+    },
+    "source_artifact_data": {
+      "type": "object",
+      "properties": {
+        "canonical_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Source title in its source language."
+        },
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "paper",
+            "model_card",
+            "report",
+            "dataset",
+            "repository",
+            "blog",
+            "social_post",
+            "interview",
+            "video",
+            "podcast",
+            "survey",
+            "market",
+            "other"
+          ],
+          "description": "Artifact type, separate from publisher nationality."
+        },
+        "language": {
+          "$ref": "#/$defs/language"
+        },
+        "publisher_ref": {
+          "$ref": "#/$defs/record_ref",
+          "description": "Publishing organization or person.",
+          "x-target-types": [
+            "actor"
+          ]
+        },
+        "author_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/record_ref",
+            "description": "Author or attributed speaker.",
+            "x-target-types": [
+              "actor"
+            ]
+          },
+          "minItems": 0,
+          "description": "May be empty when unknown; never invent a person author."
+        },
+        "content_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "archive_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "translation": {
+          "type": "object",
+          "properties": {
+            "original_ref": {
+              "$ref": "#/$defs/record_ref",
+              "description": "Original-language artifact, exact captured revision.",
+              "x-target-types": [
+                "source_artifact"
+              ]
+            },
+            "method": {
+              "type": "string",
+              "enum": [
+                "human",
+                "machine",
+                "machine_human_reviewed"
+              ],
+              "description": "Translation process."
+            },
+            "translator": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Translator or model/version identifier."
+            },
+            "review_status": {
+              "type": "string",
+              "enum": [
+                "unreviewed",
+                "checked",
+                "disputed"
+              ],
+              "description": "Language review, separate from evidence review."
+            },
+            "notes": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Preserved ambiguity, changes in terminology or omitted material."
+            }
+          },
+          "required": [
+            "original_ref",
+            "method",
+            "translator",
+            "review_status"
+          ],
+          "additionalProperties": false
+        },
+        "availability": {
+          "type": "string",
+          "enum": [
+            "available",
+            "removed",
+            "restricted",
+            "unknown"
+          ],
+          "description": "Current access status at retrieval."
+        }
+      },
+      "required": [
+        "canonical_url",
+        "title",
+        "source_type",
+        "language",
+        "author_refs",
+        "availability"
+      ],
+      "additionalProperties": false
+    },
+    "model_version_data": {
+      "type": "object",
+      "properties": {
+        "developer_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/record_ref",
+            "description": "Developer organizations or persons.",
+            "x-target-types": [
+              "actor"
+            ]
+          },
+          "minItems": 1,
+          "description": "Credited developers."
+        },
+        "family": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Model family name."
+        },
+        "version_label": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Provider model version, not a mutable product name."
+        },
+        "provider_model_id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Immutable provider or repository identifier, if available."
+        },
+        "artifact_digest": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Hash of immutable weights/configuration if available."
+        },
+        "modality": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "text",
+              "image",
+              "audio",
+              "video",
+              "action",
+              "other"
+            ],
+            "description": "Input/output modality."
+          },
+          "minItems": 1,
+          "description": "Supported modalities.",
+          "uniqueItems": true
+        },
+        "access": {
+          "type": "string",
+          "enum": [
+            "open_weights",
+            "api",
+            "restricted",
+            "unreleased",
+            "unknown"
+          ],
+          "description": "Access at this version."
+        },
+        "parent_model_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/record_ref",
+            "description": "Parent/base model version.",
+            "x-target-types": [
+              "model_version"
+            ]
+          },
+          "minItems": 0,
+          "description": "Fine-tuning and derivation lineage."
+        },
+        "version_certainty": {
+          "type": "string",
+          "enum": [
+            "immutable",
+            "provider_label",
+            "inferred",
+            "unknown"
+          ],
+          "description": "Whether underlying model identity is stable."
+        }
+      },
+      "required": [
+        "developer_refs",
+        "family",
+        "version_label",
+        "modality",
+        "access",
+        "parent_model_refs",
+        "version_certainty"
+      ],
+      "additionalProperties": false
+    },
+    "release_event_data": {
+      "type": "object",
+      "properties": {
+        "model_ref": {
+          "$ref": "#/$defs/record_ref",
+          "description": "Exact released model version.",
+          "x-target-types": [
+            "model_version"
+          ]
+        },
+        "release_kind": {
+          "type": "string",
+          "enum": [
+            "announcement",
+            "preview",
+            "api_general",
+            "weights",
+            "withdrawal",
+            "update"
+          ],
+          "description": "Do not equate announcement with public availability."
+        },
+        "availability_scope": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Who could access it, geography and gating at event time."
+        },
+        "release_url": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "model_ref",
+        "release_kind",
+        "availability_scope",
+        "release_url"
+      ],
+      "additionalProperties": false
+    },
+    "resource_observation_data": {
+      "type": "object",
+      "properties": {
+        "subject_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/record_ref",
+            "description": "Organization, model or infrastructure owner being measured.",
+            "x-target-types": [
+              "actor",
+              "model_version"
+            ]
+          },
+          "minItems": 1,
+          "description": "Measured subject."
+        },
+        "resource_kind": {
+          "type": "string",
+          "enum": [
+            "training_compute",
+            "inference_compute",
+            "compute_price",
+            "training_cost",
+            "inference_price",
+            "energy",
+            "power",
+            "hardware",
+            "parameters",
+            "tokens",
+            "labor",
+            "revenue",
+            "investment",
+            "adoption",
+            "productivity",
+            "other"
+          ],
+          "description": "Observation domain."
+        },
+        "measurement": {
+          "$ref": "#/$defs/measurement"
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Per run, per token, annual, installed capacity or other denominator and boundary."
+        },
+        "currency_basis": {
+          "type": "object",
+          "properties": {
+            "currency": {
+              "type": "string",
+              "pattern": "^[A-Z]{3}$",
+              "description": "ISO4217 original currency code. Conversion is optional and explicit."
+            },
+            "price_basis": {
+              "type": "string",
+              "enum": [
+                "nominal",
+                "constant"
+              ],
+              "description": "Price basis."
+            },
+            "base_year": {
+              "type": "integer",
+              "minimum": 1900,
+              "maximum": 2200
+            },
+            "conversion_method": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Original currency, date and exchange/inflation source."
+            }
+          },
+          "required": [
+            "currency",
+            "price_basis",
+            "conversion_method"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "subject_refs",
+        "resource_kind",
+        "measurement",
+        "scope"
+      ],
+      "additionalProperties": false
+    },
+    "measurement": {
+      "type": "object",
+      "properties": {
+        "metric": {
+          "$ref": "#/$defs/metric"
+        },
+        "result": {
+          "$ref": "#/$defs/value"
+        },
+        "observation_mode": {
+          "type": "string",
+          "enum": [
+            "reported",
+            "measured",
+            "estimated"
+          ],
+          "description": "Reported: another party claims it. Measured: identifiable evaluator ran it. Estimated: derived using assumptions."
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Method and source of estimate; disclose assumptions and transformations."
+        },
+        "sample_size": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "uncertainty_notes": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Sampling, contamination, measurement error and other uncertainty not encoded in value."
+        }
+      },
+      "required": [
+        "metric",
+        "result",
+        "observation_mode",
+        "method"
+      ],
+      "additionalProperties": false
+    },
+    "metric": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Stable metric name, including a version when definitions change."
+        },
+        "definition": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What is counted or measured, including numerator and denominator."
+        },
+        "unit": {
+          "$ref": "#/$defs/unit"
+        },
+        "direction": {
+          "type": "string",
+          "enum": [
+            "higher_better",
+            "lower_better",
+            "neutral",
+            "unspecified"
+          ],
+          "description": "Direction under this metric, not a general safety judgment."
+        },
+        "minimum": {
+          "$ref": "#/$defs/decimal",
+          "description": "Valid scale minimum if defined."
+        },
+        "maximum": {
+          "$ref": "#/$defs/decimal",
+          "description": "Valid scale maximum if defined."
+        },
+        "context": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Hardware, currency base year, sample basis or other interpretation-critical context."
+        }
+      },
+      "required": [
+        "key",
+        "definition",
+        "unit",
+        "direction"
+      ],
+      "additionalProperties": false
+    },
+    "value": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "point"
+            },
+            "value": {
+              "$ref": "#/$defs/decimal",
+              "description": "Reported point value."
+            },
+            "unit": {
+              "$ref": "#/$defs/unit"
+            }
+          },
+          "required": [
+            "kind",
+            "value",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "interval"
+            },
+            "lower": {
+              "$ref": "#/$defs/decimal",
+              "description": "Lower endpoint."
+            },
+            "upper": {
+              "$ref": "#/$defs/decimal",
+              "description": "Upper endpoint."
+            },
+            "unit": {
+              "$ref": "#/$defs/unit"
+            },
+            "interval_kind": {
+              "type": "string",
+              "enum": [
+                "reported_range",
+                "confidence",
+                "credible",
+                "measurement"
+              ],
+              "description": "What the endpoints mean."
+            },
+            "level": {
+              "$ref": "#/$defs/decimal",
+              "description": "Coverage probability, only for confidence or credible intervals."
+            }
+          },
+          "required": [
+            "kind",
+            "lower",
+            "upper",
+            "unit",
+            "interval_kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "lower_bound"
+            },
+            "bound": {
+              "$ref": "#/$defs/decimal",
+              "description": "Lower limit, not a point estimate."
+            },
+            "inclusive": {
+              "type": "boolean"
+            },
+            "unit": {
+              "$ref": "#/$defs/unit"
+            }
+          },
+          "required": [
+            "kind",
+            "bound",
+            "inclusive",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "upper_bound"
+            },
+            "bound": {
+              "$ref": "#/$defs/decimal",
+              "description": "Upper limit, not a point estimate."
+            },
+            "inclusive": {
+              "type": "boolean"
+            },
+            "unit": {
+              "$ref": "#/$defs/unit"
+            }
+          },
+          "required": [
+            "kind",
+            "bound",
+            "inclusive",
+            "unit"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "quantiles"
+            },
+            "unit": {
+              "$ref": "#/$defs/unit"
+            },
+            "quantiles": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "q": {
+                    "$ref": "#/$defs/decimal",
+                    "description": "Cumulative probability in [0,1]."
+                  },
+                  "value": {
+                    "$ref": "#/$defs/decimal",
+                    "description": "Value at q, in stated unit."
+                  }
+                },
+                "required": [
+                  "q",
+                  "value"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 2,
+              "description": "Strictly increasing q; nondecreasing values. No implied distribution between quantiles."
+            }
+          },
+          "required": [
+            "kind",
+            "unit",
+            "quantiles"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "date_point"
+            },
+            "date": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          "required": [
+            "kind",
+            "date"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "date_quantiles"
+            },
+            "quantiles": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "q": {
+                    "$ref": "#/$defs/decimal",
+                    "description": "Cumulative probability in [0,1]."
+                  },
+                  "date": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                },
+                "required": [
+                  "q",
+                  "date"
+                ],
+                "additionalProperties": false
+              },
+              "minItems": 2,
+              "description": "Strictly increasing q; nondecreasing dates."
+            }
+          },
+          "required": [
+            "kind",
+            "quantiles"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "category"
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Verbatim or documented categorical answer."
+            },
+            "vocabulary": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Named/versioned vocabulary, or source_verbatim."
+            }
+          },
+          "required": [
+            "kind",
+            "label",
+            "vocabulary"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "boolean"
+            },
+            "value": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "missing"
+            },
+            "reason": {
+              "type": "string",
+              "enum": [
+                "not_reported",
+                "not_measured",
+                "not_applicable",
+                "withheld",
+                "unavailable",
+                "unparseable"
+              ],
+              "description": "Missing never means zero."
+            },
+            "detail": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Optional clarification."
+            }
+          },
+          "required": [
+            "kind",
+            "reason"
+          ],
+          "additionalProperties": false
+        }
+      ],
+      "description": "Tagged value union; no midpoint substitutions or conversion of prose to invented probabilities."
+    },
+    "decimal": {
+      "type": "string",
+      "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?$",
+      "maxLength": 120,
+      "description": "Exact base-10 value; no exponent, commas, NaN, Infinity or binary floating-point JSON number. Original lexical precision is retained."
+    },
+    "unit": {
+      "type": "string",
+      "enum": [
+        "probability",
+        "percent",
+        "percent_change",
+        "ratio",
+        "count",
+        "score",
+        "calendar_year",
+        "second",
+        "hour",
+        "token",
+        "parameter",
+        "FLOP",
+        "FLOP/s",
+        "GPU_hour",
+        "watt",
+        "joule",
+        "kWh",
+        "currency_nominal",
+        "currency_constant"
+      ],
+      "description": "Versioned unit identifier. Currency basis, score scale, hardware type and denominators belong in metric context."
+    },
+    "benchmark_run_data": {
+      "type": "object",
+      "properties": {
+        "model_ref": {
+          "$ref": "#/$defs/record_ref",
+          "description": "Exact evaluated model version.",
+          "x-target-types": [
+            "model_version"
+          ]
+        },
+        "evaluator_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/record_ref",
+            "description": "Organization/person that ran or reports the benchmark.",
+            "x-target-types": [
+              "actor"
+            ]
+          },
+          "minItems": 1,
+          "description": "Evaluator identity."
+        },
+        "benchmark": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Benchmark name."
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Exact dataset revision or hash."
+            },
+            "split": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Test/validation/private split, including unknown when undisclosed."
+            },
+            "task": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Task and scoring definition."
+            },
+            "contamination_status": {
+              "type": "string",
+              "enum": [
+                "tested",
+                "suspected",
+                "not_tested",
+                "unknown"
+              ],
+              "description": "Training overlap status, not proof of independence."
+            }
+          },
+          "required": [
+            "name",
+            "version",
+            "split",
+            "task",
+            "contamination_status"
+          ],
+          "additionalProperties": false
+        },
+        "protocol": {
+          "$ref": "#/$defs/protocol"
+        },
+        "measurement": {
+          "$ref": "#/$defs/measurement"
+        },
+        "independence": {
+          "type": "string",
+          "enum": [
+            "developer_reported",
+            "third_party",
+            "replicated",
+            "unknown"
+          ],
+          "description": "Who produced the evidence; replication is not merely a repeat citation."
+        }
+      },
+      "required": [
+        "model_ref",
+        "evaluator_refs",
+        "benchmark",
+        "protocol",
+        "measurement",
+        "independence"
+      ],
+      "additionalProperties": false
+    },
+    "safety_evaluation_data": {
+      "type": "object",
+      "properties": {
+        "model_ref": {
+          "$ref": "#/$defs/record_ref",
+          "description": "Exact evaluated model version.",
+          "x-target-types": [
+            "model_version"
+          ]
+        },
+        "evaluator_refs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/record_ref",
+            "description": "Responsible evaluator.",
+            "x-target-types": [
+              "actor"
+            ]
+          },
+          "minItems": 1,
+          "description": "Evaluator identity."
+        },
+        "risk_domain": {
+          "type": "string",
+          "enum": [
+            "cyber",
+            "bio",
+            "chemical",
+            "autonomy",
+            "deception",
+            "alignment",
+            "misuse",
+            "robustness",
+            "other"
+          ],
+          "description": "Evaluation domain, not observed real-world harm."
+        },
+        "protocol": {
+          "$ref": "#/$defs/protocol"
+        },
+        "measurement": {
+          "$ref": "#/$defs/measurement"
+        },
+        "threshold": {
+          "$ref": "#/$defs/value",
+          "description": "Protocol-specific threshold if defined."
+        },
+        "conclusion": {
+          "type": "string",
+          "minLength": 1,
+          "description": "What the observed test result supports; avoid converting it into global catastrophe probability."
+        },
+        "limitations": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Coverage, scaffolding, sample-size and transfer limitations."
+        },
+        "disclosure_level": {
+          "type": "string",
+          "enum": [
+            "public_detail",
+            "summary_only",
+            "restricted"
+          ],
+          "description": "Avoid distributing operationally harmful detail."
+        }
+      },
+      "required": [
+        "model_ref",
+        "evaluator_refs",
+        "risk_domain",
+        "protocol",
+        "measurement",
+        "conclusion",
+        "limitations",
+        "disclosure_level"
+      ],
+      "additionalProperties": false
+    },
+    "protocol": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Evaluation protocol or harness."
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Exact release or commit, not latest."
+        },
+        "configuration": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Prompt/scaffold, tools, sampling, token budget and scoring settings."
+        },
+        "configuration_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "reproducibility": {
+          "type": "string",
+          "enum": [
+            "full",
+            "partial",
+            "unavailable"
+          ],
+          "description": "Whether inputs and execution environment can be recreated."
+        }
+      },
+      "required": [
+        "name",
+        "version",
+        "configuration",
+        "reproducibility"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

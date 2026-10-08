@@ -1,0 +1,160 @@
+{
+  "record_type": "review_lineage_and_join_rules",
+  "repository_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5",
+  "local_reference_rule": "All lowercase event/assertion references are preserved submitted research references, not new admitted source IDs or canonical registry IDs.",
+  "edges": [
+    {
+      "edge_id": "LIN-01",
+      "relation": "same_provider_schedule_appearance",
+      "from": "PV-AZ-CURRENT",
+      "to": "PV-AZ-RENDERED",
+      "status": "verified_named_rows",
+      "limits": "No independently verified build commit; not two retirement events."
+    },
+    {
+      "edge_id": "LIN-02",
+      "relation": "document_row_replaced",
+      "from": "PV-AZ-CHANGE",
+      "to": "azure_realtime_mini_20251006_retirement",
+      "old_date": "2026-09-21",
+      "new_date": "2027-04-06",
+      "status": "verified_revision_change",
+      "limits": "Effective schedule choice in current conflicting document is held."
+    },
+    {
+      "edge_id": "LIN-03",
+      "relation": "document_row_replaced",
+      "from": "PV-AZ-CHANGE",
+      "to": "azure_realtime_mini_20251215_retirement",
+      "old_date": "2026-12-15",
+      "new_date": "2027-06-15",
+      "status": "verified_revision_change"
+    },
+    {
+      "edge_id": "LIN-04",
+      "relation": "earlier_assertions_reintroduced_alongside_later",
+      "from": "PV-AZ-READD",
+      "to": "PV-AZ-CHANGE",
+      "status": "verified_diff",
+      "scope": "Both gpt-realtime-mini versions; no new row-level qualifier.",
+      "inference": "Sync-induced duplicate/conflict is a supported editorial explanation, not a publisher declaration of which current date governs."
+    },
+    {
+      "edge_id": "LIN-05",
+      "relation": "shared_provider_event_correlation",
+      "from_catalog": "MIR004",
+      "to_catalog": "IPP004",
+      "local_event_ref": "deepseek_r1_launch_2025_01_20",
+      "status": "verified_same_named_announcement",
+      "canonical_id": null,
+      "limits": "Submitted local key retained as research correlation; no new catalog/source/release identity."
+    },
+    {
+      "edge_id": "LIN-06",
+      "relation": "advertised_tariff_attaches_to_launch_assertion",
+      "from": [
+        "ds_r1_input_hit",
+        "ds_r1_input_miss",
+        "ds_r1_output"
+      ],
+      "to": "deepseek_r1_launch_2025_01_20",
+      "evidence_source_id": "PV-DS-R1",
+      "status": "verified_factual_assertion_join",
+      "additional_release_count": 0,
+      "run_join": "held"
+    },
+    {
+      "edge_id": "LIN-07",
+      "relation": "contradicts_alias_release_wording",
+      "from": "PV-DS-EN",
+      "to": "PV-DS-R1",
+      "local_event_ref": "deepseek_r1_launch_2025_01_20",
+      "status": "unresolved_conflict",
+      "limits": "English entry itself asserts both R1 and V3; announcement asserts R1. No silent typo repair."
+    },
+    {
+      "edge_id": "LIN-08",
+      "relation": "language_appearance_candidate",
+      "from": "PV-DS-ZH",
+      "to": "PV-DS-EN",
+      "status": "held_unread_chinese",
+      "limits": "No translation equivalence, correction or independent release inferred."
+    },
+    {
+      "edge_id": "LIN-09",
+      "relation": "subsequent_publisher_alias_mode_assertions",
+      "from": "PV-DS-EN",
+      "dated_context": [
+        "2025-05-28",
+        "2025-08-21",
+        "2026-09-10"
+      ],
+      "status": "current_primary_assertions",
+      "limits": "Only already-cataloged entries consulted; not actual historical routing or new benchmark evidence."
+    },
+    {
+      "edge_id": "LIN-10",
+      "relation": "corroborates_without_overwriting_prior_catalog",
+      "from": "PV-DS-R1",
+      "to_catalog": "IPP004",
+      "status": "verified_current_corrobation",
+      "limits": "Do not alter earlier artifact fingerprint/retrieval/provenance fields."
+    }
+  ],
+  "join_rules": [
+    {
+      "join_id": "JOIN-LIFECYCLE",
+      "keys": [
+        "provider",
+        "service",
+        "model",
+        "version",
+        "explicit_region",
+        "explicit_deployment_or_SKU",
+        "explicit_capability",
+        "fine_tuning_or_inference_scope"
+      ],
+      "rule": "Unknown qualifiers are unknown, never wildcard matches. Equal version strings across hosts do not transfer lifecycle. Keep both date assertions and raw vocabulary.",
+      "current_outcome": "conflict-held"
+    },
+    {
+      "join_id": "JOIN-FACTUAL-TARIFF",
+      "keys": [
+        "provider",
+        "service",
+        "named_launch_assertion",
+        "source_artifact",
+        "tariff_category",
+        "currency",
+        "token_denominator"
+      ],
+      "rule": "Attach rate assertions from the same named launch page, retaining unknown mode/time/boundary dimensions. No extra release and no run applicability.",
+      "current_outcome": "accepted at current primary assertion tier for R1"
+    },
+    {
+      "join_id": "JOIN-RUN",
+      "keys": [
+        "execution_platform",
+        "service",
+        "execution_time",
+        "returned_version",
+        "tariff_eligibility",
+        "cache_category",
+        "mode",
+        "time_category"
+      ],
+      "rule": "A missing value required to establish applicability holds the join. Token counts/discount/invoice evidence additionally required for charged-cost claims.",
+      "current_outcome": "held"
+    },
+    {
+      "join_id": "JOIN-LANGUAGE",
+      "rule": "Represent each language assertion with its original text and labeled translation; same event appearances do not multiply releases. Do not assert equivalence for an unread page.",
+      "current_outcome": "Chinese equivalence held"
+    },
+    {
+      "join_id": "JOIN-REVISION",
+      "rule": "Keep retrievals, source revisions, assertion changes and model events distinct. No implicit correction, historical backdating or release multiplication.",
+      "current_outcome": "Azure revision/reintroduction edges accepted; DeepSeek historical revision held"
+    }
+  ]
+}

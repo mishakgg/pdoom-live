@@ -1,0 +1,593 @@
+{
+  "record_type": "verbatim_prior_catalog_preservation",
+  "verified_at_repository_commit": "a075f76f52964bd582e304863745bdc6d8cfc9b5",
+  "preservation_rule": "All objects below are historical source records; append current-review qualifications separately. A failed new read does not downgrade prior verified catalog evidence.",
+  "model_identity_retirement": {
+    "historical_controls": {
+      "schema_version": "research-review-1",
+      "reviewed_on": "2026-10-08",
+      "repository_review_commit": "82fd46330539bd484c80190c69868d71b2052f6e",
+      "status": "reviewed_with_explicit_holds",
+      "operational_admission": false,
+      "collector_enabled": false,
+      "implementation_status": "specification_only_deferred",
+      "source_code_execution": false,
+      "canonical_contract_mapping": "not_implemented",
+      "holds": [
+        {
+          "id": "MIR-H01",
+          "scope": "All hosted-model records",
+          "blocker": "No original invocation/deployment logs observed; exact serving version and experiment times frequently unknown.",
+          "disposition": "Retain unresolved links; do not chase private execution history."
+        },
+        {
+          "id": "MIR-H02",
+          "scope": "MIR002",
+          "blocker": "Conflicting Azure schedules for two gpt-realtime-mini versions.",
+          "disposition": "Keep both claims with source locator; no resolved retirement for those pairs."
+        },
+        {
+          "id": "MIR-H03",
+          "scope": "MIR003 and CRP002/IPP001/IPP002",
+          "blocker": "Incomplete weight/tokenizer/config/runtime manifest and no executed-byte verification.",
+          "disposition": "Retain publisher-declared revision/pointer evidence only."
+        },
+        {
+          "id": "MIR-H04",
+          "scope": "MIR004",
+          "blocker": "No verified present page-body snapshot; indexed January 2025 wording conflicts internally.",
+          "disposition": "Indexed-primary status only; no reproducible snapshot or corrected routing invented."
+        },
+        {
+          "id": "MIR-H05",
+          "scope": "MIR004–MIR006 and Hub platform metadata",
+          "blocker": "Artifact-specific full-text/platform-metadata redistribution not established.",
+          "disposition": "Factual catalog and citations only; no bulk source-body redistribution."
+        }
+      ],
+      "interpretation_guards": [
+        "Dated names are not universally immutable; dateless names are not universally aliases. Apply exact provider/platform/version semantics.",
+        "Separate announced, planned, publisher-reported active/retired, and request-observed events. Retrieval date and source heading date do not establish historical page wording or continuous validity.",
+        "Identity relationships require cited evidence: same_family_as, derived_from, served_as, redirected_to and replaced_by are different and none implies same_checkpoint.",
+        "Lifecycle, region, capability or access changes describe deployment availability, not independent capability results or risk probabilities. All operational admission remains not_admitted and collectors disabled."
+      ]
+    },
+    "collections": [
+      {
+        "name": "Microsoft Foundry / Azure OpenAI lifecycle records",
+        "rank": 2,
+        "classification": "new_hosting_collection",
+        "inventory_ids": [
+          "GL001",
+          "GL014",
+          "GL015",
+          "GL016"
+        ],
+        "decision": "Retain versioned hosting schedules and policy; quarantine conflicting rows from resolved retirement status.",
+        "primary_url": "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirements",
+        "sources": [
+          "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
+          "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirements",
+          "https://github.com/MicrosoftDocs/azure-ai-docs/blob/main/articles/foundry/openai/includes/concepts-model-retirement-schedule-content.md",
+          "https://github.com/MicrosoftDocs/azure-ai-docs/blob/main/LICENSE",
+          "https://github.com/MicrosoftDocs/azure-ai-docs/blob/main/LICENSE-CODE"
+        ],
+        "sample": {
+          "historical": {
+            "model": "gpt-35-turbo",
+            "version": "0301",
+            "retired": "2025-02-13"
+          },
+          "scheduled": {
+            "model": "gpt-4o",
+            "version": "2024-05-13",
+            "retirement": "2026-12-09"
+          },
+          "conflicts": [
+            {
+              "model": "gpt-realtime-mini",
+              "version": "2025-10-06",
+              "asserted_retirements": [
+                "2027-04-06",
+                "2026-09-21"
+              ],
+              "resolution": "unresolved"
+            },
+            {
+              "model": "gpt-realtime-mini",
+              "version": "2025-12-15",
+              "asserted_retirements": [
+                "2027-06-15",
+                "2026-12-15"
+              ],
+              "resolution": "unresolved"
+            }
+          ]
+        },
+        "historical_coverage": "Archive includes July 2023 deprecation and June 2024 retirement dates; current schedules extend into the future.",
+        "update_frequency": "Event-driven; inspected included Markdown ms.date is 10/05/2026.",
+        "rights": {
+          "status": "explicit-license",
+          "documentation": "CC-BY-4.0",
+          "code": "MIT",
+          "scope": "Applicable MicrosoftDocs artifacts, not model weights."
+        },
+        "limitations": [
+          "Docs Deprecated maps to API Deprecating; API Deprecated means retired. Preserve source vocabulary and raw date/status contradictions.",
+          "Region/SKU rollout and versionUpgradeOption affect transition; NoAutoUpgrade can stop a deployment at retirement. Preserve deployment type, region, capability and fine-tuning versus inference scope.",
+          "A second conflicting pair exists for gpt-realtime-mini version 2025-12-15: 2027-06-15 versus 2026-12-15. Do not resolve by row order."
+        ],
+        "duplicate_evidence": "Same developer family can be hosted under a distinct Azure version and schedule. Hosted lifecycle does not establish the version used in a result or a universal retirement.",
+        "next_action": "Retain both assertions for each conflicting pair; require dated deployment evidence before resolving a historical Azure run.",
+        "id": "MIR002",
+        "access": "Public HTML plus individual included Markdown read successfully; no commit-history backfill or authenticated region/deployment query.",
+        "related_review_collection_ids": [
+          "IPP003",
+          "CRP002"
+        ]
+      },
+      {
+        "name": "DeepSeek API change logs and dated notices",
+        "rank": null,
+        "classification": "enrichment",
+        "inventory_ids": [
+          "CN024",
+          "CN001",
+          "CN002"
+        ],
+        "decision": "Retain indexed first-party factual events; hold reproducible page snapshot, undocumented actual routing and bulk text redistribution.",
+        "primary_url": "https://api-docs.deepseek.com/updates/",
+        "sources": [
+          "https://api-docs.deepseek.com/updates/",
+          "https://api-docs.deepseek.com/zh-cn/updates/",
+          "https://api-docs.deepseek.com/news/news260424/"
+        ],
+        "sample": {
+          "event_date": "2025-05-28",
+          "request_id": "deepseek-reasoner",
+          "reported_release": "DeepSeek-R1-0528",
+          "developer_reported_benchmark": "GPQA",
+          "metric": "Pass@1",
+          "evaluation_time": null,
+          "api_or_local_evaluation": null,
+          "checkpoint_manifest": null,
+          "announced_legacy_deadline": "2026-07-24T15:59:00Z",
+          "reported_value_raw": "81.0",
+          "unit": null,
+          "normalized_value": null
+        },
+        "historical_coverage": "Inspected indexed English entries span September 2024–September 2026; Chinese counterparts support the central 2025/2026 events.",
+        "update_frequency": "Release-driven; unannounced changes and gaps unknown.",
+        "rights": {
+          "status": "unknown",
+          "scope": "API website text; R1 repository MIT does not transfer."
+        },
+        "limitations": [
+          "August 21, 2025 maps chat/reasoner to non-thinking/thinking modes of V3.1. September 10, 2026 retires V4 Flash releases while compatibility IDs route to V4.1 Flash; V4 Pro continuation supersedes a prospective end date.",
+          "English January 20, 2025 wording internally conflicts between R1 and V3 for deepseek-reasoner. Keep this source error/conflict explicit rather than overwriting separately evidenced R1 pricing.",
+          "Past planned cutoff is not observed endpoint shutdown. Benchmark date/denominator/subset and API-versus-local execution remain unresolved.",
+          "The indexed GPQA Pass@1 row reports 81.0 without an explicit unit; retain the source string with unit unresolved and no normalization."
+        ],
+        "duplicate_evidence": "IPP004 prices and current aliases describe the same provider notices; link by event, service, exact alias, mode and effective-time evidence. Repricing or an alias mapping does not create an independently evaluated release. English and Chinese are linked observations of one event.",
+        "next_action": "A separately authorized bounded official-page read may establish a present snapshot; routing/checkpoint holds remain open without corresponding evidence.",
+        "id": "MIR004",
+        "access": "Verified through official-domain indexed text only; no present page-body snapshot or actual endpoint behavior verified.",
+        "related_review_collection_ids": [
+          "IPP004",
+          "IPP003"
+        ]
+      }
+    ],
+    "corrections": [
+      {
+        "id": "MIR-C02",
+        "source_id": "MIR002",
+        "status": "correction_or_qualification",
+        "finding": "Both retirement-date pairs remain unresolved: gpt-realtime-mini 2025-10-06 has 2027-04-06 versus 2026-09-21; version 2025-12-15 has 2027-06-15 versus 2026-12-15. Source vocabulary and host/deployment scope are retained.",
+        "evidence_urls": [
+          "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/retired-models",
+          "https://learn.microsoft.com/en-us/azure/foundry/openai/concepts/model-retirements",
+          "https://github.com/MicrosoftDocs/azure-ai-docs/blob/main/articles/foundry/openai/includes/concepts-model-retirement-schedule-content.md",
+          "https://github.com/MicrosoftDocs/azure-ai-docs/blob/main/LICENSE",
+          "https://github.com/MicrosoftDocs/azure-ai-docs/blob/main/LICENSE-CODE"
+        ]
+      },
+      {
+        "id": "MIR-C04",
+        "source_id": "MIR004",
+        "status": "correction_or_qualification",
+        "finding": "English January 20, 2025 wording internally conflicts between R1 and V3 for deepseek-reasoner. Keep this source error/conflict explicit rather than overwriting separately evidenced R1 pricing.",
+        "evidence_urls": [
+          "https://api-docs.deepseek.com/updates/",
+          "https://api-docs.deepseek.com/zh-cn/updates/",
+          "https://api-docs.deepseek.com/news/news260424/"
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "action_id": "MIR-A02",
+        "source_id": "MIR002",
+        "priority": "P1",
+        "title": "Preserve Azure lifecycle conflicts",
+        "status": "bounded_follow_up_not_started",
+        "prompt_id": "MIR-P02"
+      },
+      {
+        "action_id": "MIR-A04",
+        "source_id": "MIR004",
+        "priority": "P1",
+        "title": "Verify DeepSeek event snapshot",
+        "status": "bounded_follow_up_not_started",
+        "prompt_id": "MIR-P04"
+      }
+    ],
+    "follow_up_prompts": [
+      {
+        "id": "MIR-P02",
+        "source_id": "MIR002",
+        "priority": "P1",
+        "title": "Preserve Azure lifecycle conflicts",
+        "prompt": "Inspect only https://github.com/MicrosoftDocs/azure-ai-docs/blob/main/articles/foundry/openai/includes/concepts-model-retirement-schedule-content.md and at most one directly linked Microsoft clarification for gpt-realtime-mini versions 2025-10-06 and 2025-12-15. The reviewed table publishes two dates for each pair. Preserve the exact versions, raw lifecycle values, each date, source revision if available, region/deployment/capability scope and any supersession evidence. Do not pick a row by order or infer actual retirement from elapsed time. Do not query a subscription, sign in, contact Microsoft or modify a deployment/repository. If no official disambiguation exists, return the two unresolved pairs and stop."
+      },
+      {
+        "id": "MIR-P04",
+        "source_id": "MIR004",
+        "priority": "P1",
+        "title": "Verify DeepSeek event snapshot",
+        "prompt": "If separately authorized, make one bounded public read of https://api-docs.deepseek.com/updates/ and the Chinese counterpart only if needed. Preserve the verified indexed 2025-05-28, 2025-08-21 and 2026-09-10 alias/mode relationships and January 20, 2025 R1/V3 contradictory wording. Cross-link the corresponding IPP004 tariff event rather than duplicating it. A successful read can establish a present snapshot, never observed API behavior or historical wording availability. No login, paid inference, weights, outreach or source-body publication. If the page is unavailable, retain indexed-primary status and stop."
+      }
+    ]
+  },
+  "inference_price_performance": {
+    "historical_controls": {
+      "schema_version": "research-review-1",
+      "reviewed_on": "2026-10-08",
+      "repository_review_commit": "82fd46330539bd484c80190c69868d71b2052f6e",
+      "status": "reviewed_with_explicit_holds",
+      "operational_admission": false,
+      "collector_enabled": false,
+      "implementation_status": "specification_only_deferred",
+      "source_code_execution": false,
+      "canonical_contract_mapping": "not_implemented",
+      "holds": [
+        "IPP002 public-summary rights and versioned run/quality identity",
+        "IPP003 mixed AA-derived redistribution and row-level score provenance",
+        "IPP004 V3 promotional interval and documentation-text reuse",
+        "IPP001 power interval/request denominator; no energy/task claim",
+        "Standalone adapter implementation deferred; no new framework or repository mutation."
+      ],
+      "interpretation_guards": [
+        "Advertised tariff, tariff-derived estimated expenditure, invoice charge and provider economic cost are distinct quantities. None establishes subsidy.",
+        "GPU energy, whole-system AC power and datacenter energy have different boundaries; joules and watts are not interchangeable.",
+        "Compare only within compatible benchmark/task/scenario/quality/measurement regimes. Retain hardware count, precision, serving settings, context/output distributions, date type and revision.",
+        "Model display names, API aliases and immutable checkpoint identities are separate. Missing identities or per-request denominators remain missing.",
+        "Represent reused runs, copied artifacts and restated provider events once with lineage. No universal efficiency curve or conversion to risk probability."
+      ]
+    },
+    "collections": [
+      {
+        "id": "IPP004",
+        "name": "DeepSeek official tariff and API-change events",
+        "relationship": "Enrichment of CN001/CN024, related model-release context CN002. Current pricing was observed on 2026-10-08.",
+        "inventory_ids": [
+          "CN001",
+          "CN024",
+          "CN002"
+        ],
+        "related_prior_catalog_ids": [],
+        "decision": "Keep factual tariff records with event/alias lineage; hold bulk page-text redistribution and unresolved V3 promotional interval.",
+        "primary_url": "https://api-docs.deepseek.com/quick_start/pricing/",
+        "sample": {
+          "publication_date": "2025-01-20",
+          "api_model_name": "deepseek-reasoner",
+          "provider_reported_model_version": "DeepSeek-R1",
+          "currency": "USD",
+          "unit": "per 1,000,000 tokens",
+          "input_cache_hit": 0.14,
+          "input_cache_miss": 0.55,
+          "output": 2.19,
+          "effective_from_exact_timezone": null,
+          "net_invoice_charge": null,
+          "provider_economic_cost": null
+        },
+        "artifacts": [
+          {
+            "url": "https://api-docs.deepseek.com/news/news250120/",
+            "role": "R1 launch body and exact historical 2.19 output tariff"
+          },
+          {
+            "url": "https://api-docs.deepseek.com/quick_start/pricing/",
+            "role": "Current tariff, peak/off-peak/cache categories and alias retirement; read October 8, 2026"
+          },
+          {
+            "url": "https://api-docs.deepseek.com/updates/",
+            "role": "2026-08-16T16:00Z new tariff-regime effective time and September 10 alias update"
+          },
+          {
+            "url": "https://api-docs.deepseek.com/news/news1226/",
+            "role": "Historical event target; V3 promotion/effective boundary remains unverified"
+          }
+        ],
+        "historical_coverage": "Verified dated R1 launch January 20, 2025 and changelog through September 10, 2026; current pricing read October 8, 2026. V3 December 26, 2024 tariff interval remains unverified.",
+        "update_frequency": "Irregular provider announcements plus mutable current table; event history incomplete.",
+        "access": "Public HTML, no API calls or account actions. Some linked historical tables may be images; none reconstructed here.",
+        "rights": "DeepSeek copyright notice; no open license for documentation/news text established. R1 MIT language concerns code/models, not blanket website-text redistribution. Record facts/source locators separately from article text.",
+        "current_snapshot": {
+          "observed_on": "2026-10-08",
+          "model_names": [
+            "deepseek-flash",
+            "deepseek-v4-pro"
+          ],
+          "provider_reported_versions": [
+            "DeepSeek-V4.1-Flash",
+            "DeepSeek-V4-Pro-0813"
+          ],
+          "currency": "USD",
+          "unit": "per 1,000,000 tokens",
+          "tariffs_by_model": {
+            "deepseek-flash": {
+              "cache_hit": {
+                "off_peak": 0.003,
+                "peak": 0.006
+              },
+              "cache_miss": {
+                "off_peak": 0.15,
+                "peak": 0.3
+              },
+              "output": {
+                "off_peak": 0.6,
+                "peak": 1.2
+              }
+            },
+            "deepseek-v4-pro": {
+              "cache_hit": {
+                "off_peak": 0.022,
+                "peak": 0.044
+              },
+              "cache_miss": {
+                "off_peak": 0.66,
+                "peak": 1.32
+              },
+              "output": {
+                "off_peak": 1.98,
+                "peak": 3.96
+              }
+            }
+          },
+          "peak_rule": "01:00–04:00 and 06:00–10:00 UTC, Monday–Friday excluding Chinese public holidays; all other hours off-peak.",
+          "balance_order": "Granted balance before topped-up balance.",
+          "legacy_aliases": "deepseek-v4-flash and deepseek-v4-flash-vision-exp are served by DeepSeek-V4.1-Flash."
+        },
+        "limitations": [
+          "Historical 2.19 must not be silently rounded to 2.20 or replaced by current rates.",
+          "Price-effective interval, publication date and retrieval date differ. Current snapshot alone cannot reconstruct all earlier prices.",
+          "API request alias is not immutable model identity. Provider tariff/claimed benchmark scores do not establish measured serving energy, achieved task quality for a charged request, invoice totals or provider cost."
+        ],
+        "duplicate_evidence": {
+          "treatment": "Group news, changelog, translations and current-table statements by provider event; aliases/translation pages are not independent models or measurements."
+        },
+        "next_action": "Create a small factual event ledger with source date, exact currency/unit, token/cache/time category and temporal alias mapping; keep V3 February 8 interval unverified until an official readable source is obtained."
+      }
+    ],
+    "corrections": [
+      {
+        "id": "IPP-C04",
+        "status": "unverified_hold",
+        "claim": "DeepSeek V3 December 2024 promotion ends/new prices begin February 8",
+        "finding": "The historical promotion boundary remains unverified; do not admit it as a factual interval.",
+        "evidence_urls": [
+          "https://api-docs.deepseek.com/news/news1226/"
+        ]
+      }
+    ],
+    "next_actions": [
+      {
+        "action_id": "IPP-A04",
+        "source_id": "IPP004",
+        "priority": "P1",
+        "title": "Verify DeepSeek V3 tariff interval",
+        "status": "bounded_follow_up_not_started",
+        "prompt_id": "IPP-P04"
+      }
+    ],
+    "follow_up_prompts": [
+      {
+        "id": "IPP-P04",
+        "source_id": "IPP004",
+        "priority": "P1",
+        "title": "Verify DeepSeek V3 tariff interval",
+        "prompt": "Verify only the DeepSeek-V3 announcement dated December 26, 2024 at https://api-docs.deepseek.com/news/news1226/ and one directly linked official counterpart if necessary. The historical promotion and price-effective boundary remain unverified. Confirm any promotion expiry and new-rate effective date, timezone, exact USD per-million token/cache categories, and source identity; inspect an official embedded pricing image if that is where the figures appear. Do not replace historical prices with today's rate card, infer subsidies or provider costs, sign in, call the API, pay, contact DeepSeek or change a repository. Return a factual event record with locators, or a precise unresolved hold. Stop after this one event."
+      }
+    ]
+  },
+  "inventory_records": [
+    {
+      "source_id": "CN001",
+      "name": "DeepSeek research and release index (深度求索 研究与动态)",
+      "institution_region": "Mainland China; DeepSeek / 深度求索",
+      "languages": [
+        "zh-Hans"
+      ],
+      "evidence_layer": "source_discovery",
+      "primary_url": "https://www.deepseek.com/news/",
+      "data_url": null,
+      "access_method": "Public HTML index opened; linked archive has not been exhaustively traversed.",
+      "available_content": "Official Chinese research and release directory with dated model announcements and links to papers. Current-discovery counterpart to the historical R1 record CN002.",
+      "historical_coverage": "Expanded page exposed 2025–2026 entries, including releases dated 2026-04-24 and 2026-09-10. Older entries behind expansion controls were not exhaustively checked.",
+      "rights_status": "unknown",
+      "rights_url": "https://www.deepseek.com/",
+      "rights_notes": "The official site displays a copyright notice. No open reuse license for the news text was verified; model-repository licenses do not automatically cover website articles.",
+      "verification_status": "opened-primary",
+      "verified_date": "2026-10-07",
+      "collection_status": "candidate_not_collected",
+      "priority": "P1",
+      "next_action": "Reconcile against the existing 36 DeepSeek catalog rows; verify actual Chinese body text, release date and canonical link for each entry. Pair with CN024 for current API model identity and retirement notices.",
+      "caveats": "An indexed title is not collected evidence. Use release dates as chronology metadata, not AGI arrival dates. An old API-news URL returned a generic API homepage in this check; it must not be treated as the original article. Institution location does not establish author nationality."
+    },
+    {
+      "source_id": "CN002",
+      "name": "DeepSeek R1 official repository (DeepSeek 深度求索)",
+      "institution_region": "Mainland China; DeepSeek",
+      "languages": [
+        "en",
+        "zh-Hans"
+      ],
+      "evidence_layer": "technical_context",
+      "primary_url": "https://github.com/deepseek-ai/DeepSeek-R1",
+      "data_url": null,
+      "access_method": "Public GitHub README and LICENSE opened; later collection should use an immutable commit.",
+      "available_content": "Model description, reported benchmark tables, limitations, usage recommendations and paper links. Main prose is English, with Chinese prompt examples.",
+      "historical_coverage": "Historical anchor for the 2025 R1 family. Current main is mutable and the full commit history was not audited.",
+      "rights_status": "explicit-license",
+      "rights_url": "https://github.com/deepseek-ai/DeepSeek-R1/blob/main/LICENSE",
+      "rights_notes": "MIT license text for software and associated documentation was opened. Preserve required notices. Distilled models retain upstream-model considerations; the repository license does not license unrelated website text or external papers.",
+      "verification_status": "opened-primary",
+      "verified_date": "2026-10-07",
+      "collection_status": "candidate_not_collected",
+      "priority": "P1",
+      "next_action": "Pin the relevant commit and evaluation configuration. For progress comparisons record benchmark version, model checkpoint, prompting, sampling and evaluation date. Discover newer releases through CN001 and current API mappings through CN024.",
+      "caveats": "Treat reported scores as vendor-reported measurements, not independent replications. Model outputs and prompt examples are not developer beliefs. Benchmark percentages are not catastrophe probabilities. Chinese fragments do not make the whole document a Chinese original."
+    },
+    {
+      "source_id": "CN024",
+      "name": "DeepSeek current API model and alias discovery (DeepSeek API 文档)",
+      "institution_region": "Mainland China; DeepSeek / 深度求索",
+      "languages": [
+        "en"
+      ],
+      "evidence_layer": "source_discovery",
+      "primary_url": "https://api-docs.deepseek.com/",
+      "data_url": null,
+      "access_method": "Public official API overview opened; no authenticated or paid API request performed.",
+      "available_content": "Current official API overview with supported model identifiers, API compatibility and documented alias/retirement mapping. Complements dated releases in CN001 and historical R1 evaluations in CN002.",
+      "historical_coverage": "Live documentation snapshot verified 2026-10-07. It is not a historical API-version archive; earlier mappings require separately dated evidence.",
+      "rights_status": "unknown",
+      "rights_url": null,
+      "rights_notes": "No open content license for the documentation text was verified. An API-service agreement or model license cannot be assumed to cover documentation republication or outputs.",
+      "verification_status": "opened-primary",
+      "verified_date": "2026-10-07",
+      "collection_status": "candidate_not_collected",
+      "priority": "P0",
+      "next_action": "Record request model name separately from the documented serving model, snapshot date and known retirement/alias changes. Use CN001 for release dates, and verify immutable model identifiers before comparing API evaluations across time.",
+      "caveats": "The overview notes that some legacy request names are served by a successor model. Identical API strings therefore need not mean identical models over time. Pricing subpage reads failed, so no prices or cost trends are verified here. No API key was created and no paid model calls were made. API availability is not an AGI timeline forecast."
+    }
+  ],
+  "prior_identifier_mapping": [
+    {
+      "collection_id": "MIR002",
+      "inventory_ids": [
+        "GL001",
+        "GL014",
+        "GL015",
+        "GL016"
+      ],
+      "action_id": "MIR-A02",
+      "prompt_id": "MIR-P02",
+      "note": "Do not attach the DeepSeek CN IDs to Azure."
+    },
+    {
+      "collection_id": "MIR004",
+      "inventory_ids": [
+        "CN024",
+        "CN001",
+        "CN002"
+      ],
+      "action_id": "MIR-A04",
+      "prompt_id": "MIR-P04"
+    },
+    {
+      "collection_id": "IPP004",
+      "inventory_ids": [
+        "CN001",
+        "CN024",
+        "CN002"
+      ],
+      "action_id": "IPP-A04",
+      "prompt_id": "IPP-P04"
+    }
+  ],
+  "existing_additional_artifact_study_event_ids": {
+    "value": null,
+    "status": "absent_in_inspected_catalog_objects",
+    "reason": "Selected MIR002/MIR004/IPP004 collection objects contain no separate stable artifact_id, study_id or event_id. Their source URLs and collection/action/prompt IDs are preserved; local submitted refs are not promoted to repository IDs. This is not a repository-wide nonexistence claim."
+  },
+  "historical_intake_fingerprints": [
+    {
+      "historical_fingerprint_verbatim": {
+        "artifact_role": "supporting_decision_report_pdf",
+        "submitted_filename": "session3_hosted_model_tariff_decision_report(1).pdf",
+        "bytes": 85091,
+        "sha256": "0f8593ba6be5fa6422ce84646d0bdbe44f653c43273fa091d791668cceb79657",
+        "hash_scope": "entire_submitted_file_bytes",
+        "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+      },
+      "new_review_verified_sha256": "0f8593ba6be5fa6422ce84646d0bdbe44f653c43273fa091d791668cceb79657",
+      "new_review_verified_byte_count": 85091,
+      "matches_historical_fingerprint": true
+    },
+    {
+      "historical_fingerprint_verbatim": {
+        "artifact_role": "typed_research_evidence_ledger",
+        "submitted_filename": "session3_hosted_model_tariff_ledger(1).json",
+        "bytes": 203141,
+        "sha256": "51affa47016aee2c870a7f265f70302eefc6acfa1918018bdb70d651861b4204",
+        "hash_scope": "entire_submitted_file_bytes",
+        "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+      },
+      "new_review_verified_sha256": "51affa47016aee2c870a7f265f70302eefc6acfa1918018bdb70d651861b4204",
+      "new_review_verified_byte_count": 203141,
+      "matches_historical_fingerprint": true
+    },
+    {
+      "historical_fingerprint_verbatim": {
+        "artifact_role": "pasted_completion_narrative",
+        "submitted_filename": "Pasted text(6).txt",
+        "bytes": 7445,
+        "sha256": "ee837dcf266a5395d50e0a71aa689c4146ab8a9ec06922079220db6818363395",
+        "hash_scope": "entire_submitted_file_bytes",
+        "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+      },
+      "new_review_verified_sha256": "ee837dcf266a5395d50e0a71aa689c4146ab8a9ec06922079220db6818363395",
+      "new_review_verified_byte_count": 7445,
+      "matches_historical_fingerprint": true
+    }
+  ],
+  "historical_prompt_fingerprint": {
+    "sha256": "94d684e535782c2229c19db2bcfe76f4e0d1073acf57b9c06b9ff62460c5a7a0",
+    "scope": "delivered prompt bytes according to committed queue",
+    "current_review_verification": "not_recomputed_here"
+  },
+  "historical_intake_manifest_fingerprint": {
+    "sha256": "913d9073a55f45f724ecf4ab3e457b951c8cae08cff87fd70241a4c0dd789aa4",
+    "scope": "intake manifest according to committed queue",
+    "current_review_verification": "not_recomputed_here"
+  },
+  "historical_brief_fingerprint": {
+    "value": {
+      "algorithm": "sha256",
+      "value": "5d304d72e4237bb5fda8157ecf650d0fe663d53402f7e3f5d9db30cfd542ba61",
+      "byte_count": 10089,
+      "object_kind": "complete_attached_markdown_bytes",
+      "status": "verified"
+    },
+    "current_review_verification": "preserved_report_claim_not_recomputed; original brief bytes not inspected in this subtask"
+  },
+  "historical_excerpt_fingerprint": {
+    "local_ref": "azure_current_four_rows",
+    "hash": {
+      "algorithm": "sha256",
+      "value": "100f7b581b44341a3ce55a031fe3751ef38e066c9f0aa23572a316f8c9653181",
+      "object_kind": "transcribed_rendered_table_excerpt",
+      "byte_count": 187,
+      "encoding": "UTF-8",
+      "normalization": "Exact ledger excerpt string; no terminal newline.",
+      "verification": "computed_from_the_stated_local_excerpt",
+      "limits": "Not a whole-source byte hash, Git object ID, historical snapshot, or provider-reported digest."
+    },
+    "new_review_sha256": "100f7b581b44341a3ce55a031fe3751ef38e066c9f0aa23572a316f8c9653181",
+    "new_review_byte_count": 187,
+    "scope": "exact ledger excerpt UTF-8 string without terminal newline; never raw Markdown/source body hash"
+  },
+  "current_review_no_catalog_changes": true
+}
