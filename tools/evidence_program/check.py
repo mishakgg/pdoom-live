@@ -409,6 +409,7 @@ def run(base_paths=None):
     from check_research_queue import check_queue
     from check_open_model_diffusion import check_catalog as check_open_model_catalog
     from check_concentration_dependencies import check_catalog as check_concentration_catalog
+    from check_historical_backfills import check_catalog as check_historical_catalog
     inventory = read_json(DATA / 'source_inventory.json')
     mapping = read_json(DATA / 'coverage_mapping.json')
     metrics = read_json(DATA / 'baseline_metrics.json')
@@ -447,6 +448,9 @@ def run(base_paths=None):
     concentration_counts = check_concentration_catalog(read_json(DATA / 'research/concentration-dependencies.json'),
                                             hashlib.sha256((DATA / 'source_inventory.json').read_bytes()).hexdigest(),
                                             (DOCS / 'research/concentration-dependencies.md').read_text(encoding='utf-8'))
+    historical_counts = check_historical_catalog(read_json(DATA / 'research/historical-capability-backfills.json'),
+                                            hashlib.sha256((DATA / 'source_inventory.json').read_bytes()).hexdigest(),
+                                            (DOCS / 'research/historical-capability-backfills.md').read_text(encoding='utf-8'))
     queue_counts = check_queue((DOCS / 'research/research-session-review-queue.md').read_text(encoding='utf-8'))
     links = check_doc_links(base_paths)
     loader = unittest.TestLoader()
@@ -466,11 +470,16 @@ def run(base_paths=None):
     require(concentration_suite.countTestCases() > 0, 'Concentration regression tests missing')
     concentration_result = unittest.TextTestRunner(verbosity=1).run(concentration_suite)
     require(concentration_result.wasSuccessful(), 'Concentration regression suite failed')
-    return {'status': 'passed', **COUNTS, **task_counts, **research_counts, **adoption_counts, **organizational_counts, **open_model_counts, **concentration_counts, **queue_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
+    historical_suite = unittest.TestLoader().discover(str(HERE / 'tests'), pattern='test_historical*.py')
+    require(historical_suite.countTestCases() > 0, 'Historical regression tests missing')
+    historical_result = unittest.TextTestRunner(verbosity=1).run(historical_suite)
+    require(historical_result.wasSuccessful(), 'Historical regression suite failed')
+    return {'status': 'passed', **COUNTS, **task_counts, **research_counts, **adoption_counts, **organizational_counts, **open_model_counts, **concentration_counts, **historical_counts, **queue_counts, 'schemas': len(schemas), 'synthetic_contract_records': len(bundle['records']),
             'documentation_relative_links': links, 'integration_regression_tests': integration_result.testsRun,
             'open_model_regression_tests': open_model_result.testsRun,
             'concentration_regression_tests': concentration_result.testsRun,
-            'scope': 'Offline consistency, synthetic regression and two pinned licensed annotation fixtures and one pinned generated dependency-graph fixture only. No live fetch, operational collection, production import, deployment, rights approval or language-accuracy evaluation.'}
+            'historical_regression_tests': historical_result.testsRun,
+            'scope': 'Offline consistency, synthetic regression and two pinned licensed annotation fixtures and one pinned generated dependency-graph fixture, plus synthetic-only historical gzip tests. Real WMT artifact acceptance is separate/private and does not run in CI. No live fetch, operational collection, production import, deployment, rights approval or language-accuracy evaluation.'}
 
 
 def main():
