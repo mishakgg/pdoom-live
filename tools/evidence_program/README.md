@@ -1,10 +1,10 @@
 # Evidence program checks and frozen contract
 
-This isolated toolset connects the [research program](../../docs/evidence-program/README.md) to deterministic repository checks. The frozen proposed dataset contract is v0.1.0 and is not the application's canonical import format. Nothing here starts collection, imports records, runs a model or enables scoring.
+This isolated toolset connects the [research program](../../docs/evidence-program/README.md) to deterministic repository checks. The frozen proposed dataset contract is v0.1.0 and is not the application's canonical import format. Nothing here starts operational collection, imports production records, runs a model or enables scoring.
 
 ## Run
 
-Use Python 3.12 (CI-tested) with `jsonschema`/`referencing`. The pinned dependency set requires Python 3.11+; the frozen validator itself retains its original Python 3.10+ minimum. Exact tested versions and their transitive dependencies are in [requirements-ci.txt](requirements-ci.txt). The GitHub workflow installs them only in its disposable CI job. Local checks use already available dependencies and never install them automatically.
+Use Python 3.12 (CI-tested) with `jsonschema`/`referencing` and pinned `PyYAML` for the bounded offline annotation reader. The pinned dependency set requires Python 3.11+; the frozen validator itself retains its original Python 3.10+ minimum. Exact tested versions and their transitive dependencies are in [requirements-ci.txt](requirements-ci.txt). The GitHub workflow installs them only in its disposable CI job. Local checks use already available dependencies and never install them automatically.
 
 From the repository root:
 
@@ -29,6 +29,7 @@ The aggregate check exits nonzero on any failed gate. It does not fetch endpoint
 - [Implementation task pack](../../data/evidence-program/implementation_tasks.json): unique task IDs, known source/recipe references, acyclic resolved dependencies, safe existing/proposed paths, nonempty acceptance evidence, unexecuted statuses and matching Markdown task IDs/titles
 - [Chinese safety research catalog](../../data/evidence-program/research/chinese-safety-evaluations.json): separate candidate IDs, frozen-inventory identity, scoped artifact/rights references, inactive admission markers, index-only qualification, and bounded proposed-only FLAMES specification
 - [Adoption/productivity research catalog](../../data/evidence-program/research/adoption-productivity.json): inactive collection markers, separate survey/study identities, scoped provenance and rights, interpretation/date guards, and a bounded proposed-only StatCan specification
+- [Open-model diffusion catalog](../../data/evidence-program/research/open-model-diffusion.json): unadmitted family identities, artifact-scoped rights, exact fixture pins and interpretation guards; the real fixed-hash annotation pair and synthetic hostile-input regressions run offline
 - Local documentation links (including nested research guides) and negative tests for the integration gates
 
 ## Frozen contract contents
@@ -48,8 +49,16 @@ Passing is not evidence of truth, identity approval, source permissions, transla
 
 No app runtime, database schema, production import/seed path or collector configuration depends on this directory. Existing database and pipeline suites remain separate. This check does not replace them or claim they ran.
 
-Research-catalog checks are offline metadata consistency checks. They do not refetch pinned artifacts, establish legal rights, verify experiments, parse the source results table or implement the proposed adapter. Raw source files are not bundled; recorded hashes identify artifacts inspected during the dated review.
+Research-catalog checks are offline metadata consistency checks. They do not refetch artifacts, establish legal rights, verify experiments or admit sources. The earlier Chinese-safety, adoption/productivity and organizational-safety readers remain proposals; their raw source files are not bundled. The open-model reader below is a narrow implemented exception with two explicitly licensed annotation fixtures, distinct from operational collection.
 
 [check_adoption_productivity.py](check_adoption_productivity.py) checks the adoption/productivity catalog, not live source payloads. Its focused regressions reject accidental admission, signed URLs, rights inheritance, measurement/estimand conflation, Census date-role collapse and adapter expansion. It does not implement the source adapter, package real-response fixtures, resolve source discrepancies or change frozen schemas.
 
 [check_organizational_safety.py](check_organizational_safety.py) checks the [organizational-safety research catalog](../../data/evidence-program/research/organizational-safety.json) and [dated 26-session queue](../../docs/evidence-program/research/research-session-review-queue.md). Regressions keep declared powers, commitments, reported actions and external assessments distinct, reject premature admission or scoring, constrain the proposed HAIP scope, and preserve snapshot status. This is metadata consistency, not a report parser, rights approval, empirical safety evaluation or live queue monitor.
+
+## Fixed two-revision annotation reader
+
+[read_open_model_yaml.py](read_open_model_yaml.py) consumes only the supplied local before/after EU Open Source AI Index YAML files whose fixed hashes were verified in the [research guide](../../docs/evidence-program/research/open-model-diffusion.md). [Fixtures and license notice](tests/fixtures/open-model-yaml/NOTICE.md) sit outside `data/` and retain their separate CC BY 4.0 annotation license. The repository's data dedication and software license do not relicense them.
+
+The reader emits experimental review records, full source fields and a deterministic criteria-set comparison. It preserves nulls, notes, unknown nested fields, month precision and raw assessments. It does not fetch evidence links, download models, infer practical usability or model-license changes, claim canonical-schema compatibility or perform production import. The output is not an admitted observation dataset. See the guide for the local command, exact pins, parser limits, acceptance tests and remaining mapping/rights/access work.
+
+The aggregate check now runs the two real pinned fixtures plus synthetic parser/security tests. Fixture acquisition is limited to these two public annotation files. Other source bytes, historical bulk exports and operational ingestion remain outside this implementation.
