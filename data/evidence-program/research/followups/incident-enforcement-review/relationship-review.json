@@ -1,0 +1,440 @@
+{
+  "original_relationships": [
+    {
+      "from": "F-A02",
+      "to": "F-A03",
+      "relation": "includes_prior_bankruptcy_approval",
+      "state": "explicit document bundle and native docket identifiers"
+    },
+    {
+      "from": "F-A02",
+      "to": "F-A04",
+      "relation": "court_sectionII_references_modification_of_C4308; later order shares named respondents and administrative docket",
+      "state": "document-supported chain, not assertion of byte identity"
+    },
+    {
+      "from": "F-A04",
+      "to": {
+        "native_reference": "In re Rite Aid Corporation, C-4308, 150 F.T.C. 694 (Nov.12,2010)"
+      },
+      "relation": "supersedes",
+      "state": "explicit §XVII; old document contents uninspected"
+    },
+    {
+      "from": "F-A10",
+      "to": "F-A09",
+      "relation": "claims_compliance_with_PartIII(A)-(C)",
+      "state": "explicit respondent cross-reference"
+    },
+    {
+      "from": "F-A12",
+      "to": "F-A09",
+      "relation": "repeats_remedy_description",
+      "state": "dependent enforcement summary; not independent validation"
+    },
+    {
+      "from": "F-A11",
+      "to": "F-A08",
+      "relation": "respondent identity continuity",
+      "state": "same native FTC matter; report name-change claim plus order d/b/a text"
+    },
+    {
+      "from": "opc:landing",
+      "relation": "links_to",
+      "target": "opc:report"
+    },
+    {
+      "from": "opc:landing",
+      "relation": "links_to",
+      "target": "opc:summary"
+    },
+    {
+      "from": "opc:landing",
+      "relation": "links_to",
+      "target": "opc:release"
+    },
+    {
+      "from": "opc:landing",
+      "relation": "links_to",
+      "target": "opc:factsheet"
+    },
+    {
+      "from": "opc:report",
+      "relation": "underlying_inputs_identified_in_document_not_separately_inspected",
+      "target": null,
+      "description": "FSNI documentation/statistics, Scarlatti evaluation, OPC store visits and feedback (¶99)."
+    },
+    {
+      "from": "opc:summary",
+      "relation": "summary_of",
+      "target": "opc:report",
+      "qualifier": "Same inquiry; count discrepancy remains unresolved."
+    },
+    {
+      "from": "opc:release",
+      "relation": "announces_and_summarizes",
+      "target": "opc:report"
+    },
+    {
+      "from": "opc:release",
+      "relation": "republication_of_same_trial_assertions",
+      "target": "opc:summary"
+    },
+    {
+      "from": "opc:factsheet",
+      "relation": "general_guidance_linked_from_inquiry",
+      "target": "opc:landing"
+    },
+    {
+      "from": "opc:operator-page",
+      "relation": "links_back_to_and_describes",
+      "target": "opc:report"
+    },
+    {
+      "from": "opc:operator-page",
+      "relation": "links_to_uninspected_document",
+      "target": null,
+      "description": "Operator PIA and operator FR factsheet; not opened because cap reached."
+    },
+    {
+      "from": "DS6-CGP-ART-02",
+      "relationship": "republication_attributed_to",
+      "named_source": "网信上海",
+      "upstream_artifact_url": null,
+      "exact_upstream_identity_verified": false
+    },
+    {
+      "from": "DS6-CGP-ART-03",
+      "relationship": "republication_attributed_to",
+      "named_source": "网信上海",
+      "candidate_upstream_artifact_url": "https://mp.weixin.qq.com/s/rO8DnpkrDlCqVyigrM0CAg",
+      "exact_upstream_identity_verified": false
+    },
+    {
+      "from": "opc:summary-alert-total",
+      "source_native_link": "opc:report"
+    },
+    {
+      "from": "opc:landing-alert-total",
+      "source_native_link": "opc:summary"
+    },
+    {
+      "from": "opc:landing-alert-total",
+      "source_native_link": "opc:report"
+    },
+    {
+      "from": "opc:release-alert-total",
+      "source_native_link": "opc:summary"
+    },
+    {
+      "from": "opc:release-alert-total",
+      "source_native_link": "opc:report"
+    },
+    {
+      "from": "opc:operator-continuation-claim",
+      "source_native_link": {
+        "relation": "links_back_to_trial_report",
+        "artifact": "opc:report"
+      }
+    },
+    {
+      "from": "DS6-CGP-AS-02",
+      "source_native_link": {
+        "type": "same_source_explicit_case",
+        "target": "DS6-CGP-AS-01"
+      }
+    },
+    {
+      "from": "DS6-CGP-AS-04",
+      "source_native_link": {
+        "type": "same_source_explicit_case",
+        "target": "DS6-CGP-AS-03"
+      }
+    },
+    {
+      "from": "DS6-CGP-AS-06",
+      "source_native_link": {
+        "type": "explicit_prior_instruction_for_the_same_three_in_sentence",
+        "target": "DS6-CGP-AS-05",
+        "limitation": "Does not establish the size or identity of the full prior instruction cohort."
+      }
+    },
+    {
+      "from": "DS6-CGP-AS-07",
+      "source_native_link": {
+        "type": "explicit_same_paragraph_subject",
+        "target": "DS6-CGP-AS-06"
+      }
+    }
+  ],
+  "original_unresolved_links": [
+    {
+      "local_link_id": "opc:unresolved-counts",
+      "from": [
+        "opc:report-alert-total"
+      ],
+      "to": [
+        "opc:summary-alert-total",
+        "opc:landing-alert-total",
+        "opc:release-alert-total"
+      ],
+      "relation": "unresolved_conflicting_totals",
+      "resolution_status": "No inspected official correction, different population/window, or supplementary reconciliation establishes why 1735 and 1742 differ. Both describe the trial. Do not designate either as corrected or authoritative merely by document length or webpage recency."
+    },
+    {
+      "local_link_id": "opc:unresolved-post-inquiry-check",
+      "from": [
+        "opc:future-safeguards",
+        "opc:operator-continuation-claim"
+      ],
+      "to": [],
+      "relation": "independent_post_inquiry_verification_not_located_within_bound",
+      "resolution_status": "No subsequent regulator check of completed specific recommendations was located in the seven inspected artifacts. This is not evidence that no remediation occurred."
+    },
+    {
+      "local_link_id": "opc:unresolved-alert-person-crosswalk",
+      "from": [
+        "opc:recorded-misidentifications",
+        "opc:confirmed-matches",
+        "opc:scanned-images"
+      ],
+      "to": [],
+      "relation": "unavailable_unit_crosswalk",
+      "resolution_status": "No audited one-to-one mapping among images, unique visitors, alerts, staff-confirmed matches, verification failures and misidentified individuals was inspected."
+    },
+    {
+      "from": "F-A05",
+      "target": null,
+      "relation": "calendar_effective_date",
+      "reason": "Explicit final-publication condition; no verified publication-trigger timestamp. Do not substitute signature, filing, issuance, HTTP Last-Modified or page update."
+    },
+    {
+      "from": "F-A06",
+      "target": null,
+      "relation": "RiteAid_respondent_completion",
+      "reason": "No completion report inspected in bounded set."
+    },
+    {
+      "from": "F-A06",
+      "target": null,
+      "relation": "RiteAid_independent_remediation_check",
+      "reason": "No such finding located in bounded inspected set; does not prove none exists or no remediation occurred."
+    },
+    {
+      "from": "F-A10",
+      "target": null,
+      "relation": "Everalbum_underlying_deletion_confirmations",
+      "reason": "Report refers to separately submitted statements; inspected report supplies no technical validation."
+    },
+    {
+      "from": "F-A10",
+      "target": null,
+      "relation": "Everalbum_independent_agency_deletion_validation",
+      "reason": "Case closure and later order summary do not supply a performance finding; none located within scope."
+    },
+    {
+      "from": {
+        "user_potential_index_ids": [
+          "AIID 619",
+          "AIID 665"
+        ]
+      },
+      "target": null,
+      "relation": "possible_indexing_only",
+      "reason": "Indexes not inspected; no canonical per-case assignment verified; never separate corroboration or additional event."
+    },
+    {
+      "local_id": "DS6-CGP-LINK-01",
+      "from": "DS6-CGP-AS-02",
+      "target": null,
+      "requested_type": "completed_mini_program_offline_or_remediation",
+      "state": "unresolved",
+      "reason": "No case-linked follow-through established in bounded search."
+    },
+    {
+      "local_id": "DS6-CGP-LINK-02",
+      "from": "DS6-CGP-AS-04",
+      "target": null,
+      "requested_type": "final_decision_or_compliance_check",
+      "state": "unresolved",
+      "reason": "Notice gives action wording but no later identified instrument or check."
+    },
+    {
+      "local_id": "DS6-CGP-LINK-03",
+      "from": "DS6-CGP-AS-06",
+      "candidate_target": "DS6-CGP-AS-10",
+      "requested_type": "same_cohort",
+      "state": "unresolved_do_not_join",
+      "reason": "Equal counts and shared campaign do not identify anonymous subjects; June counts enterprises, November counts websites."
+    },
+    {
+      "local_id": "DS6-CGP-LINK-04",
+      "from": "DS6-CGP-AS-10",
+      "candidate_target": "DS6-CGP-AS-09",
+      "requested_type": "subset_of_26",
+      "state": "unresolved_do_not_use_as_denominator",
+      "reason": "Adjacent sentences do not expressly identify the three as a subset; no per-site crosswalk."
+    },
+    {
+      "local_id": "DS6-CGP-LINK-05",
+      "from": "DS6-CGP-ART-03",
+      "candidate_target": "DS6-CGP-ART-04",
+      "requested_type": "exact_republication_of",
+      "state": "candidate_unverified",
+      "reason": "Source credit establishes organizational attribution; candidate original could not be opened or its identity verified."
+    },
+    {
+      "local_id": "DS6-CGP-LINK-06",
+      "from": [
+        "DS6-CGP-AS-08",
+        "DS6-CGP-AS-09",
+        "DS6-CGP-AS-10",
+        "DS6-CGP-AS-11"
+      ],
+      "target": null,
+      "requested_type": "disjoint_cohorts_for_summing",
+      "state": "unresolved_do_not_sum",
+      "reason": "App/site units and overlap are unresolved."
+    },
+    {
+      "from": "opc:release-threshold-wording",
+      "candidate_target": "opc:in-trial-check-and-adjustment",
+      "relation": "threshold_wording_scope",
+      "state": "preserve_both_descriptions",
+      "reason": "Release operational-threshold wording does not establish a completed algorithm reset or a formal correction to the detailed report."
+    },
+    {
+      "from": "F-A01",
+      "target": null,
+      "relation": "later_federal_court_disposition",
+      "state": "unresolved_within_bound",
+      "reason": "Later C-4308 Commission order is verified; complete subsequent court docket status was not established."
+    }
+  ],
+  "original_chains": [
+    {
+      "chain_id": "chain:opc-trial",
+      "scope": "One explicit 2024 trial/inquiry; later claims remain separately dated",
+      "native_identity": "Foodstuffs North Island trial, 25 supermarkets, 2024-02-08 to 2024-09-07",
+      "assertion_ids": [
+        "opc:trial-window",
+        "opc:report-alert-total",
+        "opc:summary-alert-total",
+        "opc:landing-alert-total",
+        "opc:release-alert-total",
+        "opc:confirmed-matches",
+        "opc:scanned-images",
+        "opc:deletion-share",
+        "opc:verification-failures",
+        "opc:recorded-misidentifications",
+        "opc:record-missingness",
+        "opc:in-trial-check-and-adjustment",
+        "opc:future-safeguards",
+        "opc:general-monitoring-expectation",
+        "opc:operator-continuation-claim",
+        "opc:trial-overall-finding",
+        "opc:release-threshold-wording"
+      ],
+      "non_event_members": [
+        "opc:general-monitoring-expectation",
+        "opc:operator-continuation-claim",
+        "opc:future-safeguards"
+      ]
+    },
+    {
+      "chain_id": "chain:rite-aid",
+      "scope": "Linked proceedings, not identical case IDs",
+      "native_identity": [
+        "FTC 2023190; court 2:23-cv-05023-KBH",
+        "C-4308; printed administrative matter 0723121",
+        "embedded bankruptcy 23-18993-MBK Doc 1574"
+      ],
+      "assertion_ids": [
+        "F-A01",
+        "F-A02",
+        "F-A03",
+        "F-A04",
+        "F-A05",
+        "F-A06",
+        "F-A13"
+      ]
+    },
+    {
+      "chain_id": "chain:everalbum",
+      "scope": "Order, respondent claim, dependent agency summary",
+      "native_identity": [
+        "FTC 1923172",
+        "C-4743",
+        "Everalbum d/b/a Paravision; later name-change claim separately attributed"
+      ],
+      "assertion_ids": [
+        "F-A07",
+        "F-A08",
+        "F-A09",
+        "F-A10",
+        "F-A11",
+        "F-A12"
+      ]
+    },
+    {
+      "chain_id": "chain:cac-item9",
+      "scope": "Anonymous source-local case only",
+      "native_identity": "CAC notice c_1790876152357946 item 9",
+      "assertion_ids": [
+        "DS6-CGP-AS-01",
+        "DS6-CGP-AS-02"
+      ]
+    },
+    {
+      "chain_id": "chain:cac-item10",
+      "scope": "Anonymous source-local case only; two websites, one described company",
+      "native_identity": "CAC notice c_1790876152357946 item 10",
+      "assertion_ids": [
+        "DS6-CGP-AS-03",
+        "DS6-CGP-AS-04"
+      ]
+    },
+    {
+      "chain_id": "chain:shanghai-june",
+      "scope": "Explicit within-notice prior instruction, return-check noncompliance and escalation",
+      "native_identity": "t20250624_111471; three anonymous enterprises",
+      "assertion_ids": [
+        "DS6-CGP-AS-05",
+        "DS6-CGP-AS-06",
+        "DS6-CGP-AS-07"
+      ]
+    },
+    {
+      "chain_id": "bundle:shanghai-november",
+      "scope": "Document-level activity bundle; NOT a unified cohort or incident event",
+      "native_identity": "t20251124_164342",
+      "assertion_ids": [
+        "DS6-CGP-AS-08",
+        "DS6-CGP-AS-09",
+        "DS6-CGP-AS-10",
+        "DS6-CGP-AS-11",
+        "DS6-CGP-AS-12"
+      ]
+    }
+  ],
+  "original_counts": {
+    "relationships": 29,
+    "unresolved_links": 17,
+    "chains": 7
+  },
+  "review_notes": [
+    {
+      "topic": "AIID indexing",
+      "disposition": "partially qualified by existing catalog, not silently deleted from original unresolved register",
+      "correction": "G-C03"
+    },
+    {
+      "topic": "November bundle",
+      "disposition": "document bundle is not one event or one verified cohort"
+    },
+    {
+      "topic": "remedies",
+      "disposition": "court/admin procedural chain relates distinct native IDs; orders are not compliance evidence"
+    }
+  ]
+}

@@ -1,12 +1,12 @@
 {
   "title": "Follow-up research queue",
-  "snapshot_at": "2026-10-08T22:13:00Z",
+  "snapshot_at": "2026-10-08T22:49:21Z",
   "original_session_count": 26,
   "original_session_queue": "docs/evidence-program/research/research-session-review-queue.md",
   "received_bundle_count": 10,
   "received_file_count": 26,
   "new_prompt_count": 7,
-  "distinction": "Three earlier reviewed bundles and deep-session deltas A–E retain their provenance. F / prompt 5 has an independently cleared documentary delta included in this candidate; G / prompt 6 source review is active with no findings adopted. Candidate inclusion does not establish remote merge, source admission or collection.",
+  "distinction": "Three earlier reviewed bundles and deep-session deltas A–F retain their provenance. G / prompt 6 has an independently cleared documentary delta included in this candidate. All ten received follow-up bundles have completed bounded source review, with source and operational holds retained. Candidate inclusion does not establish remote merge, admission or collection.",
   "bundles": [
     {
       "sequence": 1,
@@ -789,7 +789,7 @@
       "review_after": [
         "bundle-e"
       ],
-      "integration_status": "reviewed_delta_included_in_this_candidate",
+      "integration_status": "merged_and_postmerge_verified",
       "substantive_findings_included": true,
       "operational_admission": "not_admitted",
       "collector_enabled": false,
@@ -812,7 +812,7 @@
         "interpretation": "Historical external-session report only. The supplied commit was explicitly uninspected; no current access denial or missing repository files are inferred. Current intake-patch blob verification is a separate activity."
       },
       "review_claim_limit": "Bounded documentary findings only. All 20 original acceptance specifications remain unexecuted. Fresh LiveSec documentation pins do not retroactively identify historical snapshots or runs. Public support subset is not a self-contained runnable audit package. No canonical admission or common safety score is established.",
-      "next_action": "Independently review this integration candidate, then verify remote publication and exact-commit CI/merge separately. Preserve denominator, historical-identity, judge, evaluation-date, comparability, artifact-rights and operational-admission holds. Review G separately.",
+      "next_action": "Preserve all denominator, identity, judge, evaluation-date, comparability, rights and admission holds. Documentary integration is complete at the recorded merge; source admission and collection remain separately held.",
       "review_completed_on": "2026-10-08",
       "delta_path": "data/evidence-program/research/followups/chinese-comparability-review/delta.json",
       "guide_path": "docs/evidence-program/research/followups/chinese-comparability-review.md",
@@ -835,6 +835,16 @@
         "integration_base_commit": "6603e384eb57b651f3e4ec6980e875087d926c3d",
         "lossless_mapping_held": true,
         "production_validation": false
+      },
+      "previous_integration_status_preserved": "reviewed_delta_included_in_this_candidate",
+      "integration_commit": "b8724361863e78a7ad1e270b285f22705662fa3d",
+      "integration_pr_url": "https://github.com/mishakgg/pdoom-live/pull/348",
+      "postmerge_checks_observed_at": "2026-10-08T22:49:21Z",
+      "postmerge_checks": {
+        "evidence-program": "success",
+        "image": "success",
+        "test": "success",
+        "browser": "success"
       }
     },
     {
@@ -868,7 +878,8 @@
           "bytes": 13465,
           "sha256": "8868b94fbb7cf2463509a9ad12bcd03e814acca521e53e2754b037a7c35c791d",
           "hash_scope": "entire_submitted_file_bytes",
-          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+          "intake_content_assessment_preserved": "receipt_and_readability_only_not_primary_source_verification",
+          "content_assessment": "independently_reviewed_at_linked_documentary_delta_scope_original_hash_preserved"
         },
         {
           "artifact_role": "Five-page decision report PDF",
@@ -876,7 +887,8 @@
           "bytes": 101025,
           "sha256": "c136b3086e3c4fa7d137ceea6738e6bec609f4e760edbb6ac3dcfd1af84f5387",
           "hash_scope": "entire_submitted_file_bytes",
-          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+          "intake_content_assessment_preserved": "receipt_and_readability_only_not_primary_source_verification",
+          "content_assessment": "independently_reviewed_at_linked_documentary_delta_scope_original_hash_preserved"
         },
         {
           "artifact_role": "Complete source-native incident/enforcement assertion ledger",
@@ -884,23 +896,24 @@
           "bytes": 176436,
           "sha256": "fce6e5f2d8b512fa7bc3e43949f50b7ac2839162120a38d7085b7ed5cb0333f5",
           "hash_scope": "entire_submitted_file_bytes",
-          "content_assessment": "receipt_and_readability_only_not_primary_source_verification"
+          "intake_content_assessment_preserved": "receipt_and_readability_only_not_primary_source_verification",
+          "content_assessment": "independently_reviewed_at_linked_documentary_delta_scope_original_hash_preserved"
         }
       ],
       "missing_named_deliverable_companions": [],
       "narrative_companion_note": "Both named ledger and PDF companions supplied; original filenames have upload suffix (1).",
       "intake_manifest_sha256": "c8c4cd8277d292defef65f646dc03d8a94880e4a6c2f08411865590e0e84abb3",
-      "review_status": "source_review_in_progress",
+      "review_status": "review_complete_with_residual_holds",
       "review_started": true,
-      "review_complete": false,
+      "review_complete": true,
       "review_after": [
         "bundle-f"
       ],
-      "integration_status": "receipt_only_no_substantive_delta_included",
-      "substantive_findings_included": false,
+      "integration_status": "reviewed_delta_included_in_this_candidate",
+      "substantive_findings_included": true,
       "operational_admission": "not_admitted",
       "collector_enabled": false,
-      "canonical_contract_mapping": "unverified_pending_separate_source_review",
+      "canonical_contract_mapping": "partial_native_mapping_with_lossless_research_sidecar_required",
       "source_reported_content_counts": {
         "artifacts": 20,
         "assertions": 43,
@@ -918,8 +931,36 @@
         "canonical_mapping": "deferred_unverified",
         "interpretation": "Historical external-session report only. The supplied commit was explicitly uninspected; no current access denial or missing repository files are inferred. Current intake-patch blob verification is a separate activity."
       },
-      "review_claim_limit": "Receipt, file integrity, title mapping and source-native counts only. External findings, source-byte claims, acceptance cases, rights and canonical mappings have not been independently cleared by this patch. Receipt is not verification of completed external execution.",
-      "next_action": "Complete separate bounded incident/enforcement source review after F’s source clearance. No G findings are adopted by this candidate."
+      "review_claim_limit": "Bounded documentary findings only, with G-C01–G-C06 and G-H01–G-H06 retained. All 20 original acceptance specifications remain unexecuted. Five FTC PDF hashes remain submission-attributed and no fresh independent FTC policy reread is claimed. No independent remedy completion, incidence rate, lossless institutional mapping or canonical admission is established.",
+      "next_action": "Independently review this integration candidate, then verify remote publication and exact-commit CI/merge separately. Preserve source, date-trigger, denominator, identity, rights, semantic-mapping and remedy-outcome holds. No new discovery or collection is dispatched.",
+      "review_completed_on": "2026-10-08",
+      "delta_path": "data/evidence-program/research/followups/incident-enforcement-review/delta.json",
+      "guide_path": "docs/evidence-program/research/followups/incident-enforcement-review.md",
+      "contract_mapping_path": "data/evidence-program/research/followups/incident-enforcement-review/contract-work/contract-mapping.json",
+      "source_review_manifest_sha256": "212b4d91b5e1018139271f8c567a9b19db1a25ee6b00da2e42aa741d4903092f",
+      "independent_clearance_sha256": "9113d013e474dc416a3ff7df5d2492037f5c74322aa1a903601c30264d4463ac",
+      "source_review_checks": {
+        "independent_local_integrity": 357,
+        "pinned_git_blobs": 17,
+        "synthetic_schema_probes": 32,
+        "schema_accepts": 16,
+        "schema_rejects": 16,
+        "original_semantic_cases_executed": 0,
+        "original_semantic_cases_passed": 0
+      },
+      "residual_holds_remain": true,
+      "reviewer_current_repository_context": {
+        "inspected_commit": "aff815147b12235177da9f66f4c09c2c1508f3eb",
+        "integration_base_commit": "b8724361863e78a7ad1e270b285f22705662fa3d",
+        "lossless_mapping_held": true,
+        "production_validation": false
+      },
+      "bounded_documentary_followups": {
+        "INM-A05": "complete_with_unresolved_conflict",
+        "INM-A08": "complete_with_remediation_holds",
+        "CGP001-A1": "complete_with_identity_and_outcome_holds",
+        "INM-A10": "partial_not_complete"
+      }
     }
   ],
   "new_prompts": [
@@ -1062,21 +1103,22 @@
       "content_preserved_from_frozen_prompt": true,
       "delivery_basis": "Prompt delivery confirmed; exact frozen TXT bytes preserved. Chat-body bytes were not independently read back for this repository update.",
       "session_execution_status": "unknown",
-      "next_action": "Independently review this integration candidate, then verify remote publication and exact-commit CI/merge separately. Preserve denominator, historical-identity, judge, evaluation-date, comparability, artifact-rights and operational-admission holds. Review G separately.",
+      "next_action": "Preserve all denominator, identity, judge, evaluation-date, comparability, rights and admission holds. Documentary integration is complete at the recorded merge; source admission and collection remain separately held.",
       "prior_receipt_status_preserved": "prompt_delivered_launch_unconfirmed",
       "submission_id": "bundle-f",
       "received_at": "2026-10-08T20:56:18Z",
       "review_status": "review_complete_with_residual_holds",
-      "integration_status": "reviewed_delta_included_in_this_candidate",
+      "integration_status": "merged_and_postmerge_verified",
       "output_prompt_mapping_basis": "Session title and matching content; exact external initiating prompt not supplied.",
       "execution_verification_note": "Output receipt does not establish independently verified launch history, completed external execution or executed acceptance cases.",
-      "reviewed_delta_path": "data/evidence-program/research/followups/chinese-comparability-review/delta.json"
+      "reviewed_delta_path": "data/evidence-program/research/followups/chinese-comparability-review/delta.json",
+      "integration_commit": "b8724361863e78a7ad1e270b285f22705662fa3d"
     },
     {
       "sequence": 6,
       "title": "Trace incident corrections and enforcement outcomes",
       "path": "docs/evidence-program/research/followups/prompts/06-trace-incident-enforcement-outcomes.txt",
-      "status": "research_output_received_source_review_in_progress",
+      "status": "research_output_received_review_complete_with_residual_holds",
       "delivered_at": "2026-10-08T15:18:42Z",
       "delivery_time_precision": "second",
       "session_launch_confirmed": false,
@@ -1091,14 +1133,15 @@
       "content_preserved_from_frozen_prompt": true,
       "delivery_basis": "Prompt delivery confirmed; exact frozen TXT bytes preserved. Chat-body bytes were not independently read back for this repository update.",
       "session_execution_status": "unknown",
-      "next_action": "Complete separate bounded incident/enforcement source review after F’s source clearance. No G findings are adopted by this candidate.",
+      "next_action": "Independently review this integration candidate, then verify remote publication and exact-commit CI/merge separately. Preserve source, date-trigger, denominator, identity, rights, semantic-mapping and remedy-outcome holds. No new discovery or collection is dispatched.",
       "prior_receipt_status_preserved": "prompt_delivered_launch_unconfirmed",
       "submission_id": "bundle-g",
       "received_at": "2026-10-08T20:56:57Z",
-      "review_status": "source_review_in_progress",
-      "integration_status": "receipt_only_no_substantive_delta_included",
+      "review_status": "review_complete_with_residual_holds",
+      "integration_status": "reviewed_delta_included_in_this_candidate",
       "output_prompt_mapping_basis": "Session title and matching content; exact external initiating prompt not supplied.",
-      "execution_verification_note": "Output receipt does not establish independently verified launch history, completed external execution or executed acceptance cases."
+      "execution_verification_note": "Output receipt does not establish independently verified launch history, completed external execution or executed acceptance cases.",
+      "reviewed_delta_path": "data/evidence-program/research/followups/incident-enforcement-review/delta.json"
     },
     {
       "sequence": 7,
@@ -1138,11 +1181,11 @@
   "canonical_contract_mapping": "pending_separate_review",
   "original_reviews_integrated": 26,
   "original_queue_integration_commit": "972f2bbdc3e123c83ce9ea695c9f265fe6720032",
-  "snapshot_scope": "Additive F Chinese-comparability documentary candidate after independent source clearance; nine reviewed deltas linked. Original catalogs and the eight earlier scientific deltas remain unchanged; all 20 original F acceptance cases remain unexecuted and all holds remain. No G findings are adopted.",
-  "reviewed_bundle_count": 9,
+  "snapshot_scope": "Additive G incident/enforcement documentary candidate after independent source clearance; ten reviewed deltas linked. Original catalogs and prior scientific deltas remain unchanged. All 20 original G cases remain unexecuted, all six correction/hold groups remain, and no incident observation is admitted.",
+  "reviewed_bundle_count": 10,
   "reviewed_findings_included": true,
   "unreviewed_supplied_claims_adopted": false,
-  "claim_adoption_rule": "Only independently reviewed bounded findings and explicit limitations from the nine linked deltas are included. Receipt hashes, prompt delivery, structural schema acceptance and candidate inclusion do not establish source truth, lossless canonical mapping, execution or admission.",
+  "claim_adoption_rule": "Only independently reviewed bounded findings and explicit limitations from the ten linked deltas are included. Receipt hashes, prompt delivery, structural schema acceptance and candidate inclusion do not establish source truth, lossless canonical mapping, execution, remediation or admission.",
   "original_queue_reconciliation_commit": "8b6fa1f9b389a625fa44c0656e3de47c509bff9a",
   "deep_result_bundle_count": 7,
   "deep_result_file_count": 20,
@@ -1150,13 +1193,13 @@
   "intake_index_sha256": "9abc8254d73a7ed115adec19edee99954b56484749b8ddbfa2ea90bbbe8f97a3",
   "review_order": "bundle-a (prompt 1), bundle-b (prompt 2), bundle-c (prompt 4), bundle-d (prompt 3), bundle-e (prompt 7), bundle-f (prompt 5), bundle-g (prompt 6); review in arrival order.",
   "repository_context_for_this_queue_update": {
-    "base_commit": "6603e384eb57b651f3e4ec6980e875087d926c3d",
-    "base_tree_sha": "b48f3c4de93d6de6ce1dab8caf383b01993461ab",
-    "source_review_commit": "246f746e3a267363c7f6d2e0494eb72fb4c98bc9",
-    "scope": "Current scoped repository blobs verified after E documentary integration and disjoint collection-code PR 347. The four collection paths remain unchanged. F source-review pin, fresh LiveSec document pin and original uninspected 87dda3d baseline/null inspected commit remain separate."
+    "base_commit": "b8724361863e78a7ad1e270b285f22705662fa3d",
+    "base_tree_sha": "17bf74100dfcfb698b25372f295507b62e0a1fae",
+    "source_review_commit": "aff815147b12235177da9f66f4c09c2c1508f3eb",
+    "scope": "Current scoped blobs verified with F and PR 347 retained. The G source-review pin and original uninspected 87dda3d baseline/null inspected commit remain separate."
   },
-  "pending_source_review_bundle_count": 1,
-  "active_source_review_bundle_count": 1,
+  "pending_source_review_bundle_count": 0,
+  "active_source_review_bundle_count": 0,
   "queued_source_review_bundle_count": 0,
   "previous_repository_context_for_queue_update": {
     "base_commit": "78ded6f5a1351dc44722d749479d213afeaf6784",
@@ -1195,7 +1238,7 @@
     "source_acceptance_cases_executed": false,
     "note": "Earlier intake_snapshot_at and intake_index_sha256 fields retain the A–D historical receipt. This separate record binds only E/F/G.",
     "receipt_only_scientific_findings_adopted_preserved": false,
-    "current_review_scope": "E retains its separately verified documentary integration; F now has a cleared documentary delta included in this candidate. G source review is active with no findings adopted. Original receipt counts/hashes and all 64 unexecuted original cases remain unchanged.",
+    "current_review_scope": "E and F retain their documentary integration histories; G now has an independently cleared documentary delta included in this candidate. Original receipt counts/hashes and all 64 unexecuted original cases remain unchanged. No source admission, collector or independent remedy completion is established.",
     "integration_proof": {
       "pr_url": "https://github.com/mishakgg/pdoom-live/pull/345",
       "merge_commit": "246f746e3a267363c7f6d2e0494eb72fb4c98bc9",
@@ -1216,12 +1259,20 @@
     "base_tree_sha": "11c5f32815800d665c70af7bb7322738ec7bbb84",
     "scope": "Current repository blobs verified for this receipt-only patch. This does not replace the uninspected external-session baseline or establish source/contract verification for E/F/G. Previously reviewed scientific packages and all historical source-review pins are unchanged."
   },
-  "integration_base_refreshed_at": "2026-10-08T22:24:00Z",
+  "integration_base_refreshed_at": "2026-10-08T22:49:21Z",
   "previous_candidate_base_commit": "aff815147b12235177da9f66f4c09c2c1508f3eb",
   "previous_compute_power_queue_context_preserved": {
     "base_commit": "246f746e3a267363c7f6d2e0494eb72fb4c98bc9",
     "base_tree_sha": "ec8f87a1f6aa4251f3df69cd56445083b794d59b",
     "source_review_commit": "f4320b6a1b6d5fac08efaa306768c487398977d9",
     "scope": "Exact current-base Git blobs reconciled after receipt-only PR 345. The f4320b6a source-review pin and submitted uninspected 87dda3d baseline/null inspected commit remain separately preserved."
+  },
+  "previous_research_snapshot_preserved": "2026-10-08T22:13:00Z",
+  "previous_integration_base_refreshed_at_preserved": "2026-10-08T22:24:00Z",
+  "previous_chinese_comparability_queue_context_preserved": {
+    "base_commit": "6603e384eb57b651f3e4ec6980e875087d926c3d",
+    "base_tree_sha": "b48f3c4de93d6de6ce1dab8caf383b01993461ab",
+    "source_review_commit": "246f746e3a267363c7f6d2e0494eb72fb4c98bc9",
+    "scope": "Current scoped repository blobs verified after E documentary integration and disjoint collection-code PR 347. The four collection paths remain unchanged. F source-review pin, fresh LiveSec document pin and original uninspected 87dda3d baseline/null inspected commit remain separate."
   }
 }

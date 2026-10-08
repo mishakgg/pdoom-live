@@ -1,0 +1,531 @@
+{
+  "review_date": "2026-10-08",
+  "checks": [
+    {
+      "check_id": "G-P01",
+      "artifact_id": "opc:landing",
+      "url": "https://www.privacy.org.nz/resources-and-learning/public-inquiries/inquiry-into-foodstuffs-north-island-trial-use-of-facial-recognition-technology/",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": "Inquiry findings; Foodstuff’s North Island trial; lines 40–50",
+      "submitted_version": {
+        "displayed_publication": "4 Jun 2025, 09:00",
+        "displayed_timezone": null,
+        "revision_label": null,
+        "content_hash": null
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1048view2",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P02",
+      "artifact_id": "opc:report",
+      "url": "https://www.privacy.org.nz/assets/DOCUMENTS/20250603-FRT-Inquiry-Report-A1082856.pdf",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": "¶¶99–104, 114–115, 119(a)–(d), 189–191, 215–227; summary ¶¶7–10",
+      "submitted_version": {
+        "cover_date": "May 2025",
+        "filename_date_token": "20250603",
+        "official_release_date_from_landing": "2025-06-04",
+        "page_count": 75,
+        "revision_label": null,
+        "content_hash": null
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1046view0; turn1047view2; turn1047view3; turn1047view4",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P03",
+      "artifact_id": "opc:summary",
+      "url": "https://www.privacy.org.nz/assets/DOCUMENTS/20250603-short-summary-FRT-inquiry-A1076632.pdf",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": "Page 1, The trial",
+      "submitted_version": {
+        "cover_date": "May 2025",
+        "filename_date_token": "20250603",
+        "official_release_date_from_landing": "2025-06-04",
+        "page_count": 2,
+        "revision_label": null,
+        "content_hash": null
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1048view0",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P04",
+      "artifact_id": "opc:rights",
+      "url": "https://www.privacy.org.nz/about-us/copyright-and-disclaimer/",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": "Copyright and disclaimer, lines 31–42",
+      "submitted_version": {
+        "displayed_publication": null,
+        "revision_label": null,
+        "content_hash": null
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1048view1",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P05",
+      "artifact_id": "opc:release",
+      "url": "https://www.privacy.org.nz/tuhono-connect/statements-media-releases/supermarket-trial-of-frt-inquiry-results-announced/",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": "Safeguards list; subsequent-improvement expectations; final trial-count paragraph",
+      "submitted_version": {
+        "displayed_publication": "4 Jun 2025, 07:00",
+        "displayed_timezone": null,
+        "revision_label": null,
+        "content_hash": null
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1048view3",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P06",
+      "artifact_id": "opc:factsheet",
+      "url": "https://www.privacy.org.nz/assets/DOCUMENTS/20250603-Factsheet-using-facial-recognition-technology-well-A1083621.pdf",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": "Section 9 Review and monitoring, printed page 4",
+      "submitted_version": {
+        "cover_date": "May 2025",
+        "filename_date_token": "20250603",
+        "page_count": 4,
+        "revision_label": null,
+        "content_hash": null
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1049view0",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P07",
+      "artifact_id": "opc:operator-page",
+      "url": "https://www.foodstuffs.co.nz/news-room/Facial-Recognition",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": "Office of the Privacy Commissioner Report; Our continued use of FR; lines 31–39",
+      "submitted_version": {
+        "displayed_publication": null,
+        "displayed_last_updated": null,
+        "copyright_footer_year": "2026",
+        "revision_label": null,
+        "content_hash": null
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1049view1",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P08",
+      "artifact_id": "F-RA-CASE",
+      "url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/2023190-rite-aid-corporation-ftc-v",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": [
+        "Last Updated / Case Status",
+        "Case Summary",
+        "Case Timeline"
+      ],
+      "submitted_version": {
+        "kind": "live case-page snapshot",
+        "Last_Updated": "March 8, 2024",
+        "Case_Status": "Pending",
+        "content_hash": null
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1050view0",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P09",
+      "artifact_id": "F-RA-DOC19",
+      "url": "https://www.ftc.gov/system/files/ftc_gov/pdf/DE019-StipulatedOrderforPermanentInjunctionandOtherRelief.pdf",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": [
+        "PDF pp.1–4: caption, Findings 5, operative §II, signature",
+        "PDF pp.8–35: Attachment A (selected operative provisions only)",
+        "PDF pp.37–38: embedded bankruptcy approval, Doc1574"
+      ],
+      "submitted_version": {
+        "court_order_signed": "2024-02-23",
+        "docket_filed": "2024-02-26",
+        "pdf_pages": 138,
+        "bytes": 5624447,
+        "sha256": "9d69c1b989723f94ae283878ae36e79ea8efdfedecdd3f275c68aec8a11357e7",
+        "http_last_modified": "Fri, 08 Mar 2024 17:17:54 GMT",
+        "pdf_creation_metadata": "D:20240226113437Z",
+        "pdf_modification_metadata": "D:20240308121638-05'00'"
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1050view2; turn1056view5",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P10",
+      "artifact_id": "F-EA-CASE",
+      "url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/192-3172-everalbum-inc-matter",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": [
+        "Last Updated / Case Status",
+        "Case Summary",
+        "Case Timeline: May5,2022 report; May7,2021 Decision and Order"
+      ],
+      "submitted_version": {
+        "kind": "live case-page snapshot",
+        "Last_Updated": "May 5, 2022",
+        "Case_Status": "Closed",
+        "content_hash": null
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1050view1",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P11",
+      "artifact_id": "F-EA-COMPLIANCE",
+      "url": "https://www.ftc.gov/system/files/ftc_gov/pdf/paravision_compliance_report_redacted.pdf",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": [
+        "PDF p1: submitting organization/PartV/footnote1",
+        "PDF p7 (printed p6): deletion assertion following PartIII",
+        "PDF p11 (printed p10): execution date/declaration",
+        "PDF pp1–11 visually reviewed; no personal acknowledgment data extracted"
+      ],
+      "submitted_version": {
+        "declaration_executed": "2022-05-05",
+        "case_page_listing_date": "2022-05-05",
+        "pdf_pages": 45,
+        "bytes": 2113788,
+        "sha256": "57eb5ae96de24ac32be43fc1f6a5db0d90d901e7ad6a4262c1e25b6cd802b8a5",
+        "pdf_creation_metadata": "D:20230228200812-05'00'",
+        "pdf_modification_metadata": "D:20230301152820-05'00'",
+        "metadata_note": "Later technical PDF packaging dates do not establish a correction, a new compliance event, or a later declaration."
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1054view0; turn1055view0; turn1055view1",
+      "source_bytes_vendored": false,
+      "visual_reread": "not established: page 1 UnexpectedStatusCode; page 7 returned no image payload; page 11 Cache miss. No screenshot retry or alternate raw download.",
+      "text_reread_scope": "Relevant claim p7 lines356-357, declaration p11 lines590-591 and name-change p1 line21 are readable; remaining garbled text not repaired or guessed.",
+      "original_visual_review_preserved": "Deep Session 6 reports first 11 pages visually reviewed; current review does not replace that history."
+    },
+    {
+      "check_id": "G-P12",
+      "artifact_id": "F-RIGHTS",
+      "url": "https://www.ftc.gov/policy-notices/website-policy",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": [
+        "Copyright Permission"
+      ],
+      "submitted_version": {
+        "Last_updated": "August 2023",
+        "kind": "live policy-page snapshot",
+        "content_hash": null
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1055view6",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P13",
+      "artifact_id": "F-EXTRA-FAILED-2010",
+      "url": "https://www.ftc.gov/news-events/news/press-releases/2010/07/rite-aid-settles-ftc-charges-it-failed-protect-medical-financial-privacy-customers-employees",
+      "reviewed_on": "2026-10-08",
+      "method": "preserved original failed attempt; no retry",
+      "source_text_reverified": false,
+      "locators": null,
+      "submitted_version": null,
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "uninspected; no content inferred",
+      "tool_receipt_ids_internal": null,
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P14",
+      "artifact_id": "F-EA-FINAL",
+      "url": "https://www.ftc.gov/system/files/documents/cases/1923172_-_everalbum_decision_final.pdf",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": [
+        "PDF p1: consent/limited admissions",
+        "PDF p2: Affected Work Product",
+        "PDF pp4–5: PartIII deletion and retention exceptions",
+        "PDF p6: PartV compliance report",
+        "PDF pp7–8: PartVIII effective condition and issuance date"
+      ],
+      "submitted_version": {
+        "ISSUED": "May 6, 2021",
+        "case_page_timeline_date": "May 7, 2021",
+        "pdf_pages": 8,
+        "bytes": 421627,
+        "sha256": "4373a872f5ee487a5d72ec195ac0dca8d14e59a5ab85d94d25f633a267ef1e6d",
+        "http_last_modified": "Sat, 18 Sep 2021 03:46:14 GMT",
+        "pdf_creation_metadata": "D:20210506130806-04'00'",
+        "pdf_modification_metadata": "D:20210507121218-04'00'",
+        "pdf_internal_title": "Everalbum final settlement rec memo 3.25.2021.pdf"
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1049view3; turn1056view2; turn1056view3",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P15",
+      "artifact_id": "F-RA-MODIFIED",
+      "url": "https://www.ftc.gov/system/files/ftc_gov/pdf/c4308riteaidmodifiedorder.pdf",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": [
+        "PDF p1: named respondents, docket, neither-admit/nor-deny",
+        "PDF p6: PartsI–II",
+        "PDF pp25–28: report and monitoring obligations",
+        "PDF p28: PartsXVII–XVIII",
+        "PDF p29: issuance"
+      ],
+      "submitted_version": {
+        "ISSUED": "March 5, 2024",
+        "pdf_pages": 29,
+        "bytes": 1099186,
+        "sha256": "4bbc0b6fb61d8f7bc1cf7913fd927bda8167474f03e03e194feb983e9cac306d",
+        "http_last_modified": "Wed, 06 Mar 2024 13:15:44 GMT",
+        "pdf_creation_metadata": "D:20240305170320-05'00'",
+        "pdf_modification_metadata": "D:20240306080925-05'00'"
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1049view2; turn1056view0; turn1056view1",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P16",
+      "artifact_id": "F-FTC-UPDATE2023",
+      "url": "https://www.ftc.gov/system/files/ftc_gov/pdf/2024.03.21-PrivacyandDataSecurityUpdate-508.pdf",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": [
+        "PDF p2 (printed p1), footnote1",
+        "PDF pp5–6 (printed pp4–5), RiteAid passage",
+        "PDF p7 (printed p6), Everalbum passage",
+        "PDF p25 (printed p24), restatement of algorithm-deletion orders"
+      ],
+      "submitted_version": {
+        "edition": "2023 update",
+        "coverage": "January 2021 to December 2023 (footnote1)",
+        "exact_publication_date": null,
+        "filename_date_string": "2024.03.21",
+        "pdf_pages": 38,
+        "bytes": 1130166,
+        "sha256": "0804c863bcafdace4447eedcbf7dee3f1b0fbc271a4112cb416fb2e9f7634edb",
+        "http_last_modified": "Thu, 28 Mar 2024 16:25:59 GMT",
+        "pdf_creation_metadata": "D:20240321153613-04'00'",
+        "pdf_modification_metadata": "D:20240325123818-04'00'"
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1050view4; turn1052view5; turn1052view6; turn1056view4",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P17",
+      "artifact_id": "DS6-CGP-ART-01",
+      "url": "https://www.cac.gov.cn/2026-09/15/c_1790876152357946.htm",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": "Items 9 and 10; retrieved lines 53 and 55; header line 38; footer lines 62/78 and CMS line 89",
+      "submitted_version": {
+        "kind": "dated_live_HTML_as_retrieved",
+        "displayed_publication": "2026-09-15 17:00",
+        "cms_publishdate": "2026/09/15 17:03:23",
+        "immutable_version_or_hash": null,
+        "revision_notice_observed": false
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1051view0",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P18",
+      "artifact_id": "DS6-CGP-ART-02",
+      "url": "https://www.jswx.gov.cn/csj/sh/202506/t20250624_111471.shtml",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": "Header/source at lines 48-50; prior instruction at line 53; reinspection and escalation at line 55; footer at line 65",
+      "submitted_version": {
+        "kind": "dated_live_HTML_as_retrieved",
+        "displayed_publication": "2025-06-24 17:46:00",
+        "immutable_version_or_hash": null,
+        "revision_notice_observed": false
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1051view1",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P19",
+      "artifact_id": "DS6-CGP-ART-03",
+      "url": "https://www.jswx.gov.cn/csj/sh/202511/t20251124_164342.shtml",
+      "reviewed_on": "2026-10-08",
+      "method": "bounded official web text reread",
+      "source_text_reverified": true,
+      "locators": "Header/source at lines 48-50; four counts and actions at line 54; qualitative result at line 56; footer at line 59",
+      "submitted_version": {
+        "kind": "dated_live_HTML_as_retrieved",
+        "displayed_publication": "2025-11-24 15:40:00",
+        "immutable_version_or_hash": null,
+        "revision_notice_observed": false
+      },
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "source-text assertion content supported; underlying event/compliance not independently audited",
+      "tool_receipt_ids_internal": "turn1051view2; turn1055view2",
+      "source_bytes_vendored": false
+    },
+    {
+      "check_id": "G-P20",
+      "artifact_id": "DS6-CGP-ART-04",
+      "url": "https://mp.weixin.qq.com/s/rO8DnpkrDlCqVyigrM0CAg",
+      "reviewed_on": "2026-10-08",
+      "method": "preserved original failed attempt; no retry",
+      "source_text_reverified": false,
+      "locators": null,
+      "submitted_version": null,
+      "current_source_byte_hash": null,
+      "byte_hash_status": "not reacquired or recomputed; supplied five FTC PDF hashes remain attributed to Deep Session 6",
+      "outcome": "uninspected; no content inferred",
+      "tool_receipt_ids_internal": null,
+      "source_bytes_vendored": false
+    }
+  ],
+  "distinct_source_documents_reopened": 18,
+  "new_source_documents_beyond_submitted_set": 0,
+  "denied_or_failed_original_routes_retried": 0,
+  "new_search_discovery_run": false,
+  "original_search_audit_preserved_in": "source-native-ledger.json",
+  "source_reread_is_not_independent_outcome_verification": true,
+  "source_byte_snapshots_reacquired": 0,
+  "bounds_preserved": [
+    {
+      "branch": "OPC",
+      "named_baseline_inspected": 4,
+      "additional_limit": 3,
+      "additional_attempted": 3,
+      "additional_inspected": 3,
+      "stop_reason": "cap reached",
+      "details": {
+        "named_baseline_documents_inspected": 4,
+        "additional_official_documents_limit": 3,
+        "additional_official_documents_inspected": 3,
+        "stop_reason": "Additional-document cap reached; no further sources or linked PIA/factsheet were opened."
+      }
+    },
+    {
+      "branch": "FTC",
+      "named_baseline_inspected": 5,
+      "additional_limit": 4,
+      "additional_attempted": 4,
+      "additional_inspected": 3,
+      "stop_reason": "cap reached; one retrieval timeout; subsequent Rite Aid order found",
+      "details": {
+        "named_baseline_artifacts_inspected": 5,
+        "additional_official_document_attempts": 4,
+        "additional_official_documents_successfully_inspected": 3,
+        "stopped_because": "four additional-document attempt cap reached; Rite Aid subsequent-order question answered; no agency deletion validation located in inspected Everalbum material",
+        "counting_rule": "Distinct additional official full-document retrieval attempts, including one failed attempt. Search snippets were discovery only and are not used as independent findings. Embedded documents within the named 138-page court PDF are explicitly identified below.",
+        "search_queries": [
+          "site:ftc.gov \"Rite Aid\" \"2023190\" order compliance",
+          "site:ftc.gov \"Everalbum\" \"compliance\" deletion verified",
+          "site:ftc.gov \"Rite Aid\" \"C-4308\" \"2024\"",
+          "site:ftc.gov \"Paravision\" \"compliance report\""
+        ],
+        "excluded_work": "No accounts, paid dockets, outreach, repository changes, ingestion, deployment, incident discovery, AIID inspection, victim identity extraction, or acknowledgment-personnel dataset."
+      }
+    },
+    {
+      "branch": "CGP",
+      "named_baseline_inspected": 3,
+      "additional_limit": 4,
+      "additional_attempted": 1,
+      "additional_inspected": 0,
+      "stop_reason": "no case-linked later document established; candidate original retrieval nonretryable",
+      "details": {
+        "named_artifacts_inspected": 3,
+        "additional_document_attempts": 1,
+        "additional_documents_successfully_inspected": 0,
+        "maximum_additional_official_documents": 4,
+        "stop_reason": "Targeted searches yielded the named notices but no case-linked follow-through. Candidate source-original November notice failed with a non-retryable open error; that path was stopped without a mirror.",
+        "counting_note": "Search-result index pages and unrelated returned URLs were not opened or admitted as evidence.",
+        "attempted_additional_artifact": {
+          "local_id": "DS6-CGP-ART-04",
+          "url": "https://mp.weixin.qq.com/s/rO8DnpkrDlCqVyigrM0CAg",
+          "description": "Candidate November source-original identified in a search-result bibliography; official account identity and content were not verified.",
+          "inspection_state": "uninspected_nonretryable_open_error",
+          "evidence_ref": "turn18view0",
+          "content_claims_admitted": false
+        }
+      }
+    }
+  ],
+  "current_review_stop": "All relevant source assertions characterized within the existing 18 inspectable documents; no additional discovery, failed-route retries, source code, personal record dataset or live collection."
+}

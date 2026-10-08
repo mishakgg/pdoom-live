@@ -1,0 +1,120 @@
+{
+  "file": "pinned/tools/evidence_program/validate_dataset.py",
+  "inspection": "static_read_only",
+  "executed": false,
+  "imported": false,
+  "repository_commit": "aff815147b12235177da9f66f4c09c2c1508f3eb",
+  "checked_invariants": [
+    {
+      "name": "synthetic isolation",
+      "line_range": [
+        114,
+        116
+      ],
+      "finding": "Every record must match the declared synthetic/live dataset kind."
+    },
+    {
+      "name": "system time ordering and review timestamps",
+      "line_range": [
+        117,
+        124
+      ],
+      "finding": "Retrieval no later than known time; known/review no later than export; reviewed timestamp required for validated/reviewed states."
+    },
+    {
+      "name": "named human reviewer",
+      "line_range": [
+        125,
+        126
+      ],
+      "finding": "human_verified requires reviewer_ref; target must resolve to person actor at line 146."
+    },
+    {
+      "name": "publication and content-rights gates",
+      "line_range": [
+        127,
+        133
+      ],
+      "finding": "Eligible requires human verification and cleared rights; statement text/excerpts need redistribution clearance."
+    },
+    {
+      "name": "reference closure, types and knowledge ordering",
+      "line_range": [
+        134,
+        146
+      ],
+      "finding": "All exact references must resolve in bundle, target allowed types, and not refer to future knowledge; actor-specific checks apply."
+    },
+    {
+      "name": "revision lineage",
+      "line_range": [
+        147,
+        155
+      ],
+      "finding": "supersedes must be immediate preceding revision of same ID with strictly later known_at; revision 1 cannot supersede."
+    },
+    {
+      "name": "time ranges, numerical intervals and bounds",
+      "line_range": [
+        157,
+        193
+      ],
+      "finding": "Additional range, interval, quantile, numeric-domain and bound checks beyond field shape."
+    },
+    {
+      "name": "measurement semantics",
+      "line_range": [
+        195,
+        216
+      ],
+      "finding": "Numeric or missing results, matching units, declared metric scales and nonempty bounds."
+    },
+    {
+      "name": "currency basis",
+      "line_range": [
+        223,
+        231
+      ],
+      "finding": "Resource currency fields follow unit and basis constraints."
+    },
+    {
+      "name": "translation and collective identity",
+      "line_range": [
+        232,
+        248
+      ],
+      "finding": "Original translation lineage, collective population metadata and translated statement original evidence checks."
+    }
+  ],
+  "not_established": [
+    "Whether any original acceptance case would pass a native validator",
+    "Whether source text is truthful or a claim has independent outcome verification",
+    "Whether rights are actually cleared",
+    "Whether a legal instrument was effective or a remedy completed",
+    "Whether source-local subjects or cohorts identify the same entities",
+    "Whether an incident taxonomy, cluster or severity choice is valid",
+    "Whether production Zod helpers or database ingestion would accept proposed records"
+  ],
+  "production_static_notes": [
+    {
+      "file": "pinned/packages/contracts/src/schemas.ts",
+      "symbol": "statementSchema",
+      "finding": "Required person_slug; no organization_slug field on statement. Institution attribution cannot be mapped directly."
+    },
+    {
+      "file": "pinned/packages/contracts/src/schemas.ts",
+      "symbol": "sourceItemSchema",
+      "finding": "Requires content_hash or content_hash_input; mandatory observed_at timestamp. Source-byte hash meaning is not automatically interchangeable with any future importer content canonicalization."
+    },
+    {
+      "file": "pinned/packages/contracts/src/schemas.ts",
+      "symbol": "participantSchema",
+      "finding": "Permits organization_slug and/or person_slug, but does not relax statementSchema."
+    },
+    {
+      "file": "pinned/packages/contracts/src/enums.ts",
+      "symbol": "SCHEMA_VERSION",
+      "finding": "Production contract 1.0.0 is distinct from proposed pdataset 0.1.0."
+    }
+  ]
+}

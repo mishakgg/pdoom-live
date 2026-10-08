@@ -1,0 +1,321 @@
+{
+  "original_cases": [
+    {
+      "case_id": "O01",
+      "kind": "observed_example",
+      "topic": "conflicting_totals",
+      "assertion_references": [
+        "opc:report-alert-total",
+        "opc:summary-alert-total"
+      ],
+      "example": "A1082856 paragraph 220 gives 1,735; A1076632 page 1 gives 1,742 for the same stated trial.",
+      "expected_representation": "Keep two assertions and the unresolved reconciliation link.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S01",
+      "kind": "synthetic_rejection",
+      "topic": "conflicting_totals",
+      "assertion_references": [
+        "opc:report-alert-total",
+        "opc:summary-alert-total"
+      ],
+      "proposed_invalid_transformation": "Overwrite 1,735 with 1,742 and mark the replacement an official correction.",
+      "expected_rejection": "Reject: no inspected correction or alternate population/window establishes replacement.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O02",
+      "kind": "observed_example",
+      "topic": "repeated_scans",
+      "assertion_references": [
+        "opc:scanned-images",
+        "opc:recorded-misidentifications"
+      ],
+      "example": "225,972,004 reported scans/images include repeats; unique people are unavailable.",
+      "expected_representation": "Keep scan units and an unknown person denominator; no population rate.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S02",
+      "kind": "synthetic_rejection",
+      "topic": "repeated_scans",
+      "assertion_references": [
+        "opc:scanned-images",
+        "opc:recorded-misidentifications"
+      ],
+      "proposed_invalid_transformation": "Treat scans as unique visitors and divide nine misidentifications by that count.",
+      "expected_rejection": "Reject: an unsupported case-to-person/image crosswalk and incomplete ascertainment cannot yield a population failure rate.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O03",
+      "kind": "observed_example",
+      "topic": "estimated_vs_verified",
+      "assertion_references": [
+        "opc:verification-failures",
+        "opc:recorded-misidentifications",
+        "opc:record-missingness"
+      ],
+      "example": "Estimated up-to-13 comprises nine recorded misidentifications and four other procedural cases; records are incomplete.",
+      "expected_representation": "Keep estimate, categories and uncertainty. Source verification does not independently audit incidents.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S03",
+      "kind": "synthetic_rejection",
+      "topic": "estimated_vs_verified",
+      "assertion_references": [
+        "opc:verification-failures",
+        "opc:recorded-misidentifications",
+        "opc:record-missingness"
+      ],
+      "proposed_invalid_transformation": "Encode 13 independently verified misidentifications, a universal maximum of 13, or uncertain records as confirmed extra failures.",
+      "expected_rejection": "Reject: estimate, type and ascertainment would each be misstated.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O04",
+      "kind": "observed_example",
+      "topic": "order_vs_compliance",
+      "assertion_references": [
+        "F-A02",
+        "F-A04",
+        "F-A05",
+        "DS6-CGP-AS-02"
+      ],
+      "example": "Court Document 19 and the C-4308 order issued March 5, 2024 establish remedies; CAC item 9 announces an offline order.",
+      "expected_representation": "Keep legal/procedural evidence separate from completion; missing completion evidence remains unknown.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S04",
+      "kind": "synthetic_rejection",
+      "topic": "order_vs_compliance",
+      "assertion_references": [
+        "F-A02",
+        "F-A04",
+        "F-A05",
+        "DS6-CGP-AS-02"
+      ],
+      "proposed_invalid_transformation": "Mark remedies completed from the orders, or infer no remediation occurred from the bounded evidence gap.",
+      "expected_rejection": "Reject both promotions: an order is not performance, and an unobserved result is not proof of failure.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O05",
+      "kind": "observed_example",
+      "topic": "respondent_vs_independent",
+      "assertion_references": [
+        "F-A09",
+        "F-A10",
+        "F-A12",
+        "F-A07"
+      ],
+      "example": "Paravision reports Part III(A)-(C) deletion; FTC later repeats the remedy; the case page says Closed.",
+      "expected_representation": "Verify that the respondent made the claim, retaining scope/exceptions; independent deletion validation stays unresolved.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S05",
+      "kind": "synthetic_rejection",
+      "topic": "respondent_vs_independent",
+      "assertion_references": [
+        "F-A09",
+        "F-A10",
+        "F-A12",
+        "F-A07"
+      ],
+      "proposed_invalid_transformation": "Set independently verified deletion to true because FTC hosts the filing, repeated the remedy, or closed the case.",
+      "expected_rejection": "Reject: publication and case status do not turn respondent evidence into an independent performance assessment.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O06",
+      "kind": "observed_example",
+      "topic": "status_and_date_substitution",
+      "assertion_references": [
+        "F-A02",
+        "F-A04",
+        "F-A05",
+        "F-A08",
+        "F-A10",
+        "F-A13"
+      ],
+      "example": "Signature February 23, filing February 26, issuance March 5, case update March 8; Everalbum issuance May 6 differs from May 7 listing.",
+      "expected_representation": "Retain each native date; effective dates and derived ban expiry remain unresolved. Preserve the retrospective report coverage window.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S06",
+      "kind": "synthetic_rejection",
+      "topic": "status_and_date_substitution",
+      "assertion_references": [
+        "F-A02",
+        "F-A04",
+        "F-A05",
+        "F-A08",
+        "F-A10",
+        "F-A13"
+      ],
+      "proposed_invalid_transformation": "Use a page date or HTTP/PDF metadata as the effective date, calculate ban expiry from it, or score severity from Pending/Closed.",
+      "expected_rejection": "Reject date substitution and severity inference. A later-packaged retrospective paragraph cannot reverse the later primary order.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O07",
+      "kind": "observed_example",
+      "topic": "unsupported_cohort_linkage",
+      "assertion_references": [
+        "DS6-CGP-AS-06",
+        "DS6-CGP-AS-09",
+        "DS6-CGP-AS-10",
+        "DS6-CGP-AS-08",
+        "DS6-CGP-AS-11"
+      ],
+      "example": "June reports three enterprises; November separately reports 54 apps, 26 websites, three websites and five websites.",
+      "expected_representation": "Keep units and unknown overlaps. No explicit June-November identity or three-of-26 crosswalk was found in the inspected text.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S07",
+      "kind": "synthetic_rejection",
+      "topic": "unsupported_cohort_linkage",
+      "assertion_references": [
+        "DS6-CGP-AS-06",
+        "DS6-CGP-AS-09",
+        "DS6-CGP-AS-10",
+        "DS6-CGP-AS-08",
+        "DS6-CGP-AS-11"
+      ],
+      "proposed_invalid_transformation": "Join both threes, infer 23 successful remediations or a 3/26 rate, or sum all counts into 88 events.",
+      "expected_rejection": "Reject: missing identity/subset links and mixed units. Do not replace unknown overlap with an assertion that cohorts are definitely different.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O08",
+      "kind": "observed_example",
+      "topic": "duplicate_republication",
+      "assertion_references": [
+        "opc:summary-alert-total",
+        "opc:landing-alert-total",
+        "opc:release-alert-total",
+        "F-A12"
+      ],
+      "example": "OPC summaries repeat one trial; FTC repeats one remedy. AIID 619 and 665 remain user-supplied, uninspected indexing candidates.",
+      "expected_representation": "Keep artifact assertions and dependence; leave AIID assignments unresolved and Rite Aid/Everalbum separate.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S08",
+      "kind": "synthetic_rejection",
+      "topic": "duplicate_republication",
+      "assertion_references": [
+        "opc:summary-alert-total",
+        "opc:landing-alert-total",
+        "opc:release-alert-total",
+        "F-A12"
+      ],
+      "proposed_invalid_transformation": "Create new incidents or independent confirmations from republication/index records, or merge the two FTC matters because they share INM006.",
+      "expected_rejection": "Reject: documents/indexes are not additional events or automatic identity evidence.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O09",
+      "kind": "observed_example",
+      "topic": "threshold_scope",
+      "assertion_references": [
+        "opc:in-trial-check-and-adjustment",
+        "opc:future-safeguards",
+        "opc:release-threshold-wording",
+        "opc:operator-continuation-claim"
+      ],
+      "example": "Detailed OPC report separates a 90% algorithm trigger, 92.5% staff threshold, and a future algorithm-reset recommendation.",
+      "expected_representation": "Preserve the release wording and the two settings; keep FSNI continuation as an operator claim.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S09",
+      "kind": "synthetic_rejection",
+      "topic": "threshold_scope",
+      "assertion_references": [
+        "opc:in-trial-check-and-adjustment",
+        "opc:future-safeguards",
+        "opc:release-threshold-wording",
+        "opc:operator-continuation-claim"
+      ],
+      "proposed_invalid_transformation": "Treat the staff-threshold change or FSNI safeguards statement as independently verified completion of the algorithm reset.",
+      "expected_rejection": "Reject: settings, dates, authorship and implementation evidence differ.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O10",
+      "kind": "observed_example",
+      "topic": "publisher_vs_authority",
+      "assertion_references": [
+        "DS6-CGP-AS-06",
+        "DS6-CGP-AS-09"
+      ],
+      "example": "The Jiangsu-hosted June and November notices credit 网信上海 and describe 上海市网信办 actions.",
+      "expected_representation": "Record Jiangsu as publisher and Shanghai as reporting authority; exact upstream artifact stays unresolved.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S10",
+      "kind": "synthetic_rejection",
+      "topic": "publisher_vs_authority",
+      "assertion_references": [
+        "DS6-CGP-AS-06",
+        "DS6-CGP-AS-09"
+      ],
+      "proposed_invalid_transformation": "Assign Shanghai actions to Jiangsu solely from the domain, or count both publications as independent regulator checks.",
+      "expected_rejection": "Reject: host identity is neither the action authority nor independent corroboration.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    }
+  ],
+  "original_cases_runtime_executed": 0,
+  "original_runtime_results_all_null": true,
+  "manual_review_count": 20,
+  "review_qualification_for_O08": "Original session-local uninspected index status is historical. Preserve prior catalog relationships under G-C03; all no-duplication guards remain.",
+  "separate_schema_probes": "contract-work/schema-probe-results.json; invented synthetic records only; never runtime execution of these 20 cases"
+}

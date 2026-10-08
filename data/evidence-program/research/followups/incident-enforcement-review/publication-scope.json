@@ -1,0 +1,42 @@
+{
+  "status": "prepared_not_published",
+  "review_commit": "aff815147b12235177da9f66f4c09c2c1508f3eb",
+  "allowed_publication_content": "Research-authored metadata, factual summaries, source-native assertions with historical limitations, mapping, proposed actions and separately labeled schema-shape probes. No primary source body, original PDF/narrative, personal records, ingestion output or collector.",
+  "publication_files": [
+    "review.md",
+    "source-native-ledger.json",
+    "assertion-review.json",
+    "artifact-catalog-map.json",
+    "delta.json",
+    "relationship-review.json",
+    "acceptance-cases.json",
+    "primary-verification.json",
+    "rights-by-artifact.json",
+    "follow-up-actions.json",
+    "prior-catalog-preservation.json",
+    "repository-files-manifest.json",
+    "original-preservation.json",
+    "validation-results.json",
+    "contract-work/contract-mapping.json",
+    "contract-work/schema-probe-results.json",
+    "contract-work/synthetic-probe-input.json",
+    "contract-work/repository-file-manifest.json",
+    "contract-work/original-acceptance-preservation.json",
+    "contract-work/validator-inspection.json",
+    "contract-work/findings.md"
+  ],
+  "excluded_staging": [
+    "original-context/",
+    "repo-base/",
+    "repo-fetch-metadata.json",
+    "build_review.py",
+    "contract-work/pinned/",
+    "contract-work/run_offline_synthetic_probes.py",
+    "contract-work/contract-work-manifest.json"
+  ],
+  "reproduction_note": "Local reviewer support includes the offline runner and pinned repository files; these are not adapters and are excluded from the public metadata allowlist. Exact input, runner and schema identities are recorded in result/manifests.",
+  "no_remote_mutations": true,
+  "independent_review_required_before_publication": true,
+  "publication_owner": "parent task",
+  "scope_does_not_authorize_new_search_or_source_acquisition": true
+}

@@ -1,0 +1,161 @@
+{
+  "record_type": "review_publication_manifest",
+  "publication_root": "incident-enforcement-review",
+  "review_base_commit": "aff815147b12235177da9f66f4c09c2c1508f3eb",
+  "review_state": "ready_for_independent_review_with_holds",
+  "public_repository_written": false,
+  "publication_files": [
+    {
+      "path": "review.md",
+      "bytes": 13173,
+      "sha256": "1d414ef7ca1e3fadd9ecc4afc99d5501aea1068b7fcf9fc917396ac85e836fa1",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "source-native-ledger.json",
+      "bytes": 176436,
+      "sha256": "fce6e5f2d8b512fa7bc3e43949f50b7ac2839162120a38d7085b7ed5cb0333f5",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "assertion-review.json",
+      "bytes": 33845,
+      "sha256": "00f6ef99c29b012bd87af7c351cec25af80c8d43fa4c0651e1910a83da419268",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "artifact-catalog-map.json",
+      "bytes": 9167,
+      "sha256": "09713a2ea0cea591b71059c86d0bf4e31a2161698c3e5944812d9f004462ed0b",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "delta.json",
+      "bytes": 4544,
+      "sha256": "b32e648776a7fcab0832d2f254e9202d903b99cb7d126d10fa9585440b4e54cf",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "relationship-review.json",
+      "bytes": 14212,
+      "sha256": "1d43a44268c22e67037988f5c884953e3cb296a477db76d766e22819aeaf5891",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "acceptance-cases.json",
+      "bytes": 13482,
+      "sha256": "b0e8f956bcdfd9063cd75a4cc36e244731628b73e29e1f186a2e400e252d7e53",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "primary-verification.json",
+      "bytes": 25885,
+      "sha256": "d170eeba0b3e6843ed5480e6481234521dd079f73c82a4d74868a9467c584b48",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "rights-by-artifact.json",
+      "bytes": 9641,
+      "sha256": "b3a3947dad60c2788a388dc8f8faf99ac24fd589e582174df17aa3eff6b63ede",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "follow-up-actions.json",
+      "bytes": 2371,
+      "sha256": "12cf43d535c7407a7556a12a678ed735b63bf008dbd3c432e8ba39aa0565274f",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "prior-catalog-preservation.json",
+      "bytes": 26868,
+      "sha256": "4470e003af501f1ede2fcf21114e18f1441a5bccd135a6893f1e8a5fa9843111",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "repository-files-manifest.json",
+      "bytes": 5772,
+      "sha256": "0ad95227ca9a56287a240184ef7b217246039546d2d7b25605e39ecbe2b728de",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "original-preservation.json",
+      "bytes": 4047,
+      "sha256": "5cde36d3973c740ce63af009ed6575fdcc014a53fd4ec6591b81761e85a42e86",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "validation-results.json",
+      "bytes": 2022,
+      "sha256": "234ae56f75e64c13c55842abd414d2b07825485c1b94175a0db2a2e89f14d1e2",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "contract-work/contract-mapping.json",
+      "bytes": 87636,
+      "sha256": "5470de613eec07ce5f3a77ccd0f418e536fd405971f1c4db32d0ba94d77fa001",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "contract-work/schema-probe-results.json",
+      "bytes": 19193,
+      "sha256": "13feccdc98e67aacba93f98847b52e134ef94d2e2e12fd78ee8279cc89371169",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "contract-work/synthetic-probe-input.json",
+      "bytes": 70484,
+      "sha256": "beb873893c3ddabc8a7932acaee290a05366fc93f83b5b9adba9b4ebfb409845",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "contract-work/repository-file-manifest.json",
+      "bytes": 7077,
+      "sha256": "9874ee584b40c636d602d716f0862b0c198d4f52c09fb3e5dc3a20241fef2f7c",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "contract-work/original-acceptance-preservation.json",
+      "bytes": 3118,
+      "sha256": "abe58b12cd2e8f304742b997a0a74c90e6af64122ff6138bb6736c11a02c4445",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "contract-work/validator-inspection.json",
+      "bytes": 4117,
+      "sha256": "ab54b1331a07c66d2ae402ef460fef4bdc23a427f5195c79229f88be0a42b650",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "contract-work/findings.md",
+      "bytes": 5714,
+      "sha256": "088245ffb8ccc5bcf99bb2d8a43f3fb60d77109facbcaa4d87c3488523d8b2dd",
+      "hash_scope": "entire prepared publication file bytes"
+    },
+    {
+      "path": "publication-scope.json",
+      "bytes": 1903,
+      "sha256": "a82d8ddc6f69def34665ea8c0b5f9c9c7b0c7a2e9a905525c10d57dcbcaa97d0",
+      "hash_scope": "entire prepared publication file bytes"
+    }
+  ],
+  "publication_file_count": 22,
+  "source_counts": {
+    "artifacts": 20,
+    "assertions": 43,
+    "relationships": 29,
+    "unresolved_links": 17,
+    "acceptance_cases_unexecuted": 20,
+    "event_document_chains": 7
+  },
+  "original_acceptance_cases_executed": 0,
+  "separate_synthetic_schema_probes": {
+    "count": 32,
+    "expected_outcomes_matched": 32,
+    "accepted": 16,
+    "rejected": 16,
+    "semantics_or_factual_truth_validated": false
+  },
+  "native_admissions": 0,
+  "exclusions": "publication-scope.json",
+  "seal_scope": "Hashes bind the exact allowlisted files; manifest self-hash is supplied separately to the parent."
+}

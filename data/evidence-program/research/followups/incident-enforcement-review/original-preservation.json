@@ -1,0 +1,88 @@
+{
+  "originals": [
+    {
+      "file_name": "Yapıştırılan metin(20261008-205538).txt",
+      "bytes": 13465,
+      "sha256": "8868b94fbb7cf2463509a9ad12bcd03e814acca521e53e2754b037a7c35c791d",
+      "byte_preserved": true,
+      "publication_included": false
+    },
+    {
+      "file_name": "deep-session-6-decision-report(1).pdf",
+      "bytes": 101025,
+      "sha256": "c136b3086e3c4fa7d137ceea6738e6bec609f4e760edbb6ac3dcfd1af84f5387",
+      "byte_preserved": true,
+      "publication_included": false
+    },
+    {
+      "file_name": "deep-session-6-assertion-ledger(1).json",
+      "bytes": 176436,
+      "sha256": "fce6e5f2d8b512fa7bc3e43949f50b7ac2839162120a38d7085b7ed5cb0333f5",
+      "byte_preserved": true,
+      "publication_included": false
+    }
+  ],
+  "source_native_ledger_sha256": "fce6e5f2d8b512fa7bc3e43949f50b7ac2839162120a38d7085b7ed5cb0333f5",
+  "ledger_same_bytes_as_submitted": true,
+  "counts": {
+    "artifacts": 20,
+    "assertions": 43,
+    "relationships": 29,
+    "unresolved_links": 17,
+    "acceptance_cases": 20,
+    "event_and_document_chains": 7
+  },
+  "narrative_read_in_full": true,
+  "decision_report_pages_read_text_and_visually": 5,
+  "original_acceptance_execution": "all 20 unexecuted; all runtime_result null",
+  "historical_repository_context_preserved": {
+    "repository": "https://github.com/mishakgg/pdoom-live",
+    "supplied_commit": "87dda3d74f9f9874e82d83d1628b53f9da4b5526",
+    "supplied_commit_inspected": false,
+    "inspected_repository_commit": null,
+    "contracts_inspected": false,
+    "canonical_mapping": null,
+    "access_attempts": [
+      {
+        "path": "docs/evidence-program/source_priorities.md",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/87dda3d74f9f9874e82d83d1628b53f9da4b5526/docs/evidence-program/source_priorities.md",
+        "result": "DisabledError; content not fetched",
+        "file_absence_inferred": false
+      },
+      {
+        "path": "docs/evidence-program/dataset_spec.md",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/87dda3d74f9f9874e82d83d1628b53f9da4b5526/docs/evidence-program/dataset_spec.md",
+        "result": "DisabledError; content not fetched",
+        "file_absence_inferred": false
+      },
+      {
+        "path": "docs/evidence-program/research/incidents-near-misses.md",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/87dda3d74f9f9874e82d83d1628b53f9da4b5526/docs/evidence-program/research/incidents-near-misses.md",
+        "result": "DisabledError; content not fetched",
+        "file_absence_inferred": false
+      },
+      {
+        "path": "docs/evidence-program/research/chinese-governance.md",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/87dda3d74f9f9874e82d83d1628b53f9da4b5526/docs/evidence-program/research/chinese-governance.md",
+        "result": "DisabledError; content not fetched",
+        "file_absence_inferred": false
+      },
+      {
+        "path": "data/evidence-program/research/incidents-near-misses.json",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/87dda3d74f9f9874e82d83d1628b53f9da4b5526/data/evidence-program/research/incidents-near-misses.json",
+        "result": "DisabledError; content not fetched",
+        "file_absence_inferred": false
+      },
+      {
+        "path": "data/evidence-program/research/chinese-governance.json",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/87dda3d74f9f9874e82d83d1628b53f9da4b5526/data/evidence-program/research/chinese-governance.json",
+        "result": "DisabledError; content not fetched",
+        "file_absence_inferred": false
+      }
+    ],
+    "fallback": "User-supplied baseline and catalog references attributed as such; primary artifacts independently inspected.",
+    "agent_security_incidents_catalog": "Not opened: no exact overlap adjudication attempted.",
+    "source_inventory_mapping": "Not verified; supplied INM003, INM006, CGP001 and CGP001-A1 references are retained without a canonical-role assertion."
+  },
+  "private_input_manifest_published": false
+}

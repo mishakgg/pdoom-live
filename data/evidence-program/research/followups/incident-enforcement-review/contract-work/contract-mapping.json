@@ -1,0 +1,2023 @@
+{
+  "title": "Batch G / Deep Session6: source-native to repository contract review",
+  "review_kind": "research mapping only; no converted or admitted records",
+  "repository": {
+    "name": "mishakgg/pdoom-live",
+    "commit": "aff815147b12235177da9f66f4c09c2c1508f3eb",
+    "manifest": "repository-file-manifest.json"
+  },
+  "input": {
+    "relative_path": "../../new-deep-intake-2026-10-08-2056/batch-g/review/ledger.json",
+    "sha256": "fce6e5f2d8b512fa7bc3e43949f50b7ac2839162120a38d7085b7ed5cb0333f5",
+    "artifacts": 20,
+    "source_text_inspected_artifacts": 18,
+    "assertions": 43,
+    "original_acceptance_cases": 20
+  },
+  "status": {
+    "adapter_implemented": false,
+    "production_schema_modified": false,
+    "repository_modified": false,
+    "live_collection": false,
+    "source_fetches": false,
+    "native_records_emitted": 0,
+    "native_incident_admissions": 0,
+    "original_acceptance_execution": "not_executed",
+    "lossless_automatic_mapping_claimed": false
+  },
+  "contract_layers": [
+    {
+      "layer": "source-native research ledger",
+      "authority": "Immutable delivery revision 1; its property names and local IDs are deliverable-local, not repository field names.",
+      "mapping_role": "Preserve all source labels, attributed claims and unknowns without coercion."
+    },
+    {
+      "layer": "proposed_pdataset_0.1.0",
+      "authority": "tools/evidence_program/contracts/dataset.schema.json; five per-type wrappers; static reading of validate_dataset.py",
+      "mapping_role": "Actual repository-contained proposal fields, not the production import format. Supports source_artifact, actor, statement, incident and resource_observation shapes."
+    },
+    {
+      "layer": "current_production_contract_1.0.0",
+      "authority": "packages/contracts/src/schemas.ts and enums.ts",
+      "mapping_role": "Existing organization/source/sourceItem/participant/evidence/statement schemas. No incident or resource_observation type is defined in this inspected canonical contract. Production statement requires person_slug; organization speaker cannot be mapped directly."
+    }
+  ],
+  "global_admission_blockers": [
+    "This report proposes field correspondences only. No live schema record or adapter output is produced.",
+    "The input normally records retrieval on a calendar date, not a verified UTC instant. Proposal known_at/retrieved_at require UTC timestamps; production observed_at likewise requires a timestamp. Do not invent midnight or backdate to publication.",
+    "Many input assertions are paraphrases or field summaries, not short verbatim original_text. A complete native statement cannot be fabricated from a paraphrase and rights remain artifact-specific.",
+    "Supplied INM003, INM006, CGP001 and CGP001-A1 identify research catalog context. They are not verified organization, source item, statement, incident or legacy ledger keys.",
+    "Existing schema enums cannot encode all source legal/administrative statuses, authority levels, date roles, dependence edges or cohort relationships. Preserve them outside the closed native data objects.",
+    "All real claims require identity, rights, source-locator and semantic review before conversion. Shape validation neither supplies those reviews nor grants publication rights."
+  ],
+  "field_mapping": [
+    {
+      "group": "artifact identity",
+      "source_fields": [
+        "artifacts[].artifact_id",
+        "source_native_artifact_id",
+        "source_native_identifier"
+      ],
+      "existing_target_fields": [
+        "record.id",
+        "record.revision",
+        "record.upstream_refs[].record_id",
+        "sourceItemSchema.upstream_id",
+        "sourceItemSchema.logical_key"
+      ],
+      "mapping_status": "partial_requires_review",
+      "rule": "Keep local artifact IDs as sidecar crosswalks. Assign repository IDs only in a future authorized adapter. Native document/docket IDs may be upstream identifiers after exact source and release validation; not current record IDs.",
+      "sidecar_preservation": "Original local ID, native ID, docket context, version labels; an upstream_ref needs dataset/release/schema/source_ref and transformations, not only a document ID."
+    },
+    {
+      "group": "artifact URL and title",
+      "source_fields": [
+        "artifacts[].url",
+        "artifacts[].title",
+        "source_kind"
+      ],
+      "existing_target_fields": [
+        "source_artifact.data.canonical_url",
+        "source_artifact.data.title",
+        "source_artifact.data.source_type",
+        "sourceItemSchema.canonical_url",
+        "sourceItemSchema.title",
+        "sourceSchema.source_type"
+      ],
+      "mapping_status": "partial_requires_review",
+      "rule": "URL maps directly in meaning but remains subject to native URI/production public URL checks. Use only an established source-language title; source_kind is not a substitute for an unknown title. Proposal report/other may fit document genres; production SOURCE_TYPES has no report/order enum.",
+      "sidecar_preservation": "Full source_kind and source title provenance. A court order is not necessarily a press item merely because that enum exists."
+    },
+    {
+      "group": "artifact body and version",
+      "source_fields": [
+        "artifacts[].version.sha256",
+        "version.content_hash",
+        "version.immutable_version_or_hash",
+        "version.bytes",
+        "version.revision_label",
+        "version.pdf_creation_metadata",
+        "version.pdf_modification_metadata"
+      ],
+      "existing_target_fields": [
+        "source_artifact.data.content_sha256",
+        "sourceItemSchema.content_hash",
+        "sourceItemSchema.content_hash_input",
+        "sourceItemSchema.content_version",
+        "sourceItemSchema.content_reference",
+        "sourceItemSchema.metadata"
+      ],
+      "mapping_status": "partial_requires_review",
+      "rule": "The five retained FTC PDF SHA-256 values can be preserved as source-byte hashes with their exact provenance. Unknown body hashes stay absent in proposal; production sourceItem requires either content_hash or content_hash_input. Research-ledger hash is never a hash of the source body. Production content_hash meaning and canonicalization must be checked against the future importer; a PDF byte hash is not automatically an interchangeable canonical-content hash merely because both satisfy the SHA-256 shape.",
+      "sidecar_preservation": "Byte count, document packaging metadata, source version scope, retrieval representation, limited inspection extent. Never fabricate a version history or use technical metadata as a correction."
+    },
+    {
+      "group": "availability",
+      "source_fields": [
+        "artifacts[].source_text_inspected",
+        "inspection_state",
+        "inspection",
+        "content_claims_admitted"
+      ],
+      "existing_target_fields": [
+        "source_artifact.data.availability",
+        "sourceItemSchema.availability",
+        "sourceItemSchema.collection_status"
+      ],
+      "mapping_status": "partial_requires_review",
+      "rule": "Availability and inspection are separate. Retrieval failure may support unknown availability and a precise failure sidecar; it does not establish removal. Partially read documents are not fully reviewed sources.",
+      "sidecar_preservation": "For two failed artifacts retain failure reason, unverified identity and zero admitted content claims. Do not create statements from their URLs."
+    },
+    {
+      "group": "publisher versus speaker",
+      "source_fields": [
+        "artifacts[].publisher",
+        "source_credit",
+        "asserting_organization",
+        "assertions[].asserting_organization",
+        "authority_status"
+      ],
+      "existing_target_fields": [
+        "source_artifact.data.publisher_ref",
+        "source_artifact.data.author_refs",
+        "actor.data.actor_kind",
+        "actor.data.name",
+        "actor.data.name_language",
+        "statement.data.speaker_refs",
+        "organizationSchema.name",
+        "organizationSchema.organization_type",
+        "participantSchema.organization_slug",
+        "participantSchema.role"
+      ],
+      "mapping_status": "partial_requires_review",
+      "rule": "Resolve named organizations separately. Publisher hosting a document does not become its declarant or a verifier. Use organization actor for institution-authored statements; leave unestablished authors absent. Production participant can name an organization but production statement requires a person.",
+      "sidecar_preservation": "OPC regulator, FSNI operator, FTC agency, court, respondent and republisher roles stay distinct; authority, procedural role and whether a statement quotes another organization remain explicit."
+    },
+    {
+      "group": "actor identity and anonymity",
+      "source_fields": [
+        "source_native_case_or_event_identity",
+        "asserting_organization",
+        "source_native_fields",
+        "event_and_document_chains"
+      ],
+      "existing_target_fields": [
+        "actor.data.aliases",
+        "actor.data.external_ids",
+        "actor.data.jurisdictions",
+        "actor.data.affiliations",
+        "incident.data.subject_refs",
+        "resource_observation.data.subject_refs"
+      ],
+      "mapping_status": "partial_requires_review",
+      "rule": "Only established identity mappings become aliases or external IDs. Anonymous source-local companies/websites are not named identities. Empty incident subject_refs are structurally permitted; resource subject_refs must contain a genuine measured subject. Do not use the reporting regulator as the measured subject simply to satisfy that minimum.",
+      "sidecar_preservation": "Everalbum/Paravision continuity is source-attributed. No invented people, corporate-registry verification, anonymous reidentification or June-November subject joins. Geography of actions is not automatically actor registration."
+    },
+    {
+      "group": "statement text and numeric kind",
+      "source_fields": [
+        "source_native_fields.original_quote",
+        "original_zh",
+        "original_data",
+        "assertion",
+        "english_gloss",
+        "action_or_measurement_type"
+      ],
+      "existing_target_fields": [
+        "statement.data.original_text",
+        "statement.data.normalized_text",
+        "statement.data.language",
+        "statement.data.statement_type",
+        "statement.data.topic_keys",
+        "statementSchema.normalized_text",
+        "statementSchema.statement_type",
+        "statementSchema.topic_slugs"
+      ],
+      "mapping_status": "partial_requires_review",
+      "rule": "Preserve original Chinese procedure wording and the English gloss as a distinct normalization, with review limits. Numbers explicitly asserted by a source are explicit_numeric, not model-inferred probabilities. Field summaries lacking a source-language quote need additional preparation.",
+      "sidecar_preservation": "All original strings, qualifiers, structured scope, legal dates and content-rights limits. The statement shape has no numeric result field; numbers in prose do not become a quantitative observation automatically."
+    },
+    {
+      "group": "production institutional statement",
+      "source_fields": [
+        "assertions[].asserting_organization"
+      ],
+      "existing_target_fields": [
+        "statementSchema.person_slug",
+        "participantSchema.organization_slug"
+      ],
+      "mapping_status": "blocked",
+      "rule": "Current statementSchema requires a non-null person slug, while participantSchema permits an organization. Do not invent a person to represent an institution or claim that an organization participant removes the statement constraint.",
+      "sidecar_preservation": "Keep institutional assertions in the reviewed source-native ledger/proposal mapping until a separately authorized design/adapter decision."
+    },
+    {
+      "group": "evidence and extraction",
+      "source_fields": [
+        "assertions[].artifact_id",
+        "artifact_version_reference",
+        "locator",
+        "source_verification",
+        "version_and_review_method"
+      ],
+      "existing_target_fields": [
+        "record.evidence[].source_ref",
+        "record.evidence[].locator",
+        "record.evidence[].relation",
+        "record.evidence[].extraction_method",
+        "record.evidence[].extractor_version",
+        "evidenceSchema.source_item_slug",
+        "evidenceSchema.segment_kind",
+        "evidenceSchema.text",
+        "evidenceSchema.context_text"
+      ],
+      "mapping_status": "partial_requires_review",
+      "rule": "Link the exact captured artifact revision and preserve locator. Reading a document supports that it makes a claim, not necessarily the underlying claim. Proposed relations are supports/contradicts/context. Record the actual extraction method; do not falsely mark model-produced synthesis as purely manual.",
+      "sidecar_preservation": "Inspection text versus visual review, source-body capture, source authority, uninspected underlying inputs and independent outcome verification remain separate."
+    },
+    {
+      "group": "publication and event date precision",
+      "source_fields": [
+        "dates_as_labeled",
+        "artifacts[].version",
+        "window"
+      ],
+      "existing_target_fields": [
+        "record.times.published",
+        "record.times.event",
+        "record.times.evaluated",
+        "sourceItemSchema.published_at",
+        "sourceItemSchema.published_timezone",
+        "sourceItemSchema.updated_at_source",
+        "statementSchema.event_time"
+      ],
+      "mapping_status": "partial_requires_review",
+      "rule": "Proposal date and range/precision support day, month and year precision; unknown requires a reason. Use a date only when its role is established. A source-local time with unknown timezone cannot be promoted to UTC. Production nullable timestamps do not preserve coarse dates alone.",
+      "sidecar_preservation": "Keep signature, filing, issued, effective, deadline anchor, completion, listing, publication, coverage and metadata dates separately. One times.event field cannot losslessly carry all these roles."
+    },
+    {
+      "group": "knowledge and retrieval timestamps",
+      "source_fields": [
+        "artifacts[].retrieved_on_utc",
+        "created_utc"
+      ],
+      "existing_target_fields": [
+        "record.times.known_at",
+        "record.times.retrieved_at",
+        "sourceItemSchema.observed_at"
+      ],
+      "mapping_status": "blocked_without_supported_instants",
+      "rule": "Do not convert a retrieval date to invented midnight. Ledger creation time proves ledger creation, not each source capture time. Future dataset registration may record its actual system time with a disclosed provenance boundary; it does not recover original capture instants.",
+      "sidecar_preservation": "Preserve original calendar retrieval date and ledger creation timestamp, with missing per-artifact instants explicit."
+    },
+    {
+      "group": "legal status and authority",
+      "source_fields": [
+        "authority_status",
+        "action_or_measurement_type",
+        "source_native_fields.source_native_scope",
+        "dates_as_labeled",
+        "verification_state"
+      ],
+      "existing_target_fields": [
+        "statement.data.normalized_text",
+        "record.evidence[].locator",
+        "incident.data.description"
+      ],
+      "mapping_status": "sidecar_required",
+      "rule": "These narrative fields may summarize legal/procedural evidence but there is no dedicated native authority/decision/remedy/compliance schema in the inspected contract. Source verification never maps automatically to incident.verification=confirmed.",
+      "sidecar_preservation": "Allegation, settlement/limited admission, court order, administrative order, instruction, respondent assertion, regulator inspection, prospective remedy, exceptions, completion and independent validation stay separately structured in research."
+    },
+    {
+      "group": "candidate incident",
+      "source_fields": [
+        "source_native_case_or_event_identity",
+        "event_and_document_chains",
+        "action_or_measurement_type",
+        "verification_state"
+      ],
+      "existing_target_fields": [
+        "incident.data.title",
+        "incident.data.subject_refs",
+        "incident.data.incident_kind",
+        "incident.data.verification",
+        "incident.data.causal_attribution",
+        "incident.data.severity",
+        "incident.data.severity_rubric",
+        "incident.data.description",
+        "incident.data.deduplication_key",
+        "incident.data.impact"
+      ],
+      "mapping_status": "candidate_only",
+      "rule": "An incident represents an alleged/observed harmful event; a document, guidance, remedy order, enforcement count or renamed respondent is not automatically another event. Curated cluster key, taxonomy and severity rubric require explicit choices. AI association alone does not establish causation.",
+      "sidecar_preservation": "No source-local chain ID is automatically a deduplication_key. Hold impact and verification selection until event scope and supporting evidence are adjudicated; no admission performed."
+    },
+    {
+      "group": "candidate quantitative observation",
+      "source_fields": [
+        "source_native_fields.original_data",
+        "source_native_fields.measurement",
+        "numerator",
+        "denominator",
+        "population",
+        "window"
+      ],
+      "existing_target_fields": [
+        "resource_observation.data.subject_refs",
+        "resource_observation.data.resource_kind",
+        "resource_observation.data.measurement.metric",
+        "resource_observation.data.measurement.result",
+        "resource_observation.data.measurement.observation_mode",
+        "resource_observation.data.measurement.method",
+        "resource_observation.data.measurement.uncertainty_notes",
+        "resource_observation.data.scope",
+        "incident.data.impact"
+      ],
+      "mapping_status": "candidate_only",
+      "rule": "Only separately reviewed metrics and subjects can become observations. resource_kind=other is a shape escape hatch, not evidence that incident/enforcement activity belongs in a resource series. Preserve decimal strings and source units; counts of images, people, alerts, apps, websites, enterprises and actions remain distinct.",
+      "sidecar_preservation": "There is no structured numerator/denominator/population/cohort-link object in measurement. metric.definition/context and scope can describe them but do not losslessly enforce source semantics. Keep the original structures as sidecars."
+    },
+    {
+      "group": "bounds and missingness",
+      "source_fields": [
+        "source_native_fields.original_data.qualifier_as_source",
+        "source_native_fields.qualifiers",
+        "unknowns",
+        "numerator",
+        "denominator"
+      ],
+      "existing_target_fields": [
+        "measurement.result.kind",
+        "measurement.result.reason",
+        "measurement.result.detail",
+        "measurement.uncertainty_notes",
+        "record.times.*.kind=unknown"
+      ],
+      "mapping_status": "partial_requires_review",
+      "rule": "Tag missing values with the correct source reason; null is not zero. A phrase like up to an estimated count with incomplete ascertainment is not automatically a universal mathematical upper_bound. Review the exact estimand before representing a point or bound.",
+      "sidecar_preservation": "Store estimation language, covered subset, ascertainment defects and every unresolved linkage. Do not calculate a failure, success, deletion or remediation rate here."
+    },
+    {
+      "group": "revision versus dependence",
+      "source_fields": [
+        "revision_links",
+        "dependence_links",
+        "relationships",
+        "unresolved_links"
+      ],
+      "existing_target_fields": [
+        "record.supersedes",
+        "statement.data.relationships[].kind",
+        "statement.data.relationships[].statement_ref",
+        "relationshipSchema.relationship_type"
+      ],
+      "mapping_status": "sidecar_required",
+      "rule": "record.supersedes is the immediately preceding revision of the same record, not an instrument that legally supersedes another instrument. Statement relations only updates/clarifies/retracts/contradicts/repeats; use only when the semantic relationship is established.",
+      "sidecar_preservation": "Preserve legal supersession, links_to, republished_by, claims_compliance_with, unresolved_conflicting_totals, same_source_case and possible_indexing as native sidecar relationships. No formal correction inferred from differing counts or newer packaging."
+    },
+    {
+      "group": "rights and publication",
+      "source_fields": [
+        "artifacts[].rights",
+        "rights_ref",
+        "rights_scope",
+        "rights_statement",
+        "license_version",
+        "historical_scope"
+      ],
+      "existing_target_fields": [
+        "record.governance.rights_state",
+        "record.governance.rights_basis",
+        "record.governance.rights_url",
+        "record.governance.publication_state",
+        "sourceSchema.rights_notes"
+      ],
+      "mapping_status": "partial_requires_review",
+      "rule": "Rights are per artifact/content category; do not inherit a website policy for third-party attachments or another byte version. Keep internal/needs_review until a later authorized rights decision. A URL, official hosting or known hash is not permission.",
+      "sidecar_preservation": "OPC CC BY version is unverified; third-party FSNI/Scarlatti excluded. FTC policy does not clear respondent filings or mixed court package. Chinese copyright notices and republisher credits establish no affirmative grant."
+    },
+    {
+      "group": "review and outcome verification",
+      "source_fields": [
+        "source_verification",
+        "verification_state",
+        "acceptance_cases[].manual_review",
+        "repository_admission"
+      ],
+      "existing_target_fields": [
+        "record.governance.review_state",
+        "record.governance.reviewer_ref",
+        "record.governance.reviewed_at",
+        "incident.data.verification",
+        "statementSchema.review_state"
+      ],
+      "mapping_status": "blocked_for_automatic_promotion",
+      "rule": "Text inspection and manual reasoning annotations do not establish native human_verified without the required named human reviewer and review time. Schema-machine validity is not an incident verification verdict.",
+      "sidecar_preservation": "Keep source-attribution verification, factual outcome verification, causal attribution, rights clearance and publication approval distinct. All original acceptance runtime results remain null."
+    },
+    {
+      "group": "upstream catalog and index refs",
+      "source_fields": [
+        "supplied_catalog_references",
+        "potential_indexing_relationships"
+      ],
+      "existing_target_fields": [
+        "record.upstream_refs",
+        "record.legacy_refs"
+      ],
+      "mapping_status": "blocked_without_verified_crosswalk",
+      "rule": "Retain research catalog IDs as sidecar context, not native ledger keys. AIID 619 and 665 are uninspected possible index references, not corroboration or extra incidents.",
+      "sidecar_preservation": "No AIID per-case assignment, no agent-security catalog overlap review, no new inventory discovery, no production legacy_refs emitted."
+    }
+  ],
+  "artifact_dispositions": [
+    {
+      "artifact_id": "opc:landing",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": null,
+      "source_byte_hash_status": "not_available_in_input",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "opc:report",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": null,
+      "source_byte_hash_status": "not_available_in_input",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "opc:summary",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": null,
+      "source_byte_hash_status": "not_available_in_input",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "opc:rights",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": null,
+      "source_byte_hash_status": "not_available_in_input",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "opc:release",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": null,
+      "source_byte_hash_status": "not_available_in_input",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "opc:factsheet",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": null,
+      "source_byte_hash_status": "not_available_in_input",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "opc:operator-page",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": null,
+      "source_byte_hash_status": "not_available_in_input",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "F-RA-CASE",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": null,
+      "source_byte_hash_status": "not_available_in_input",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "F-RA-DOC19",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": "9d69c1b989723f94ae283878ae36e79ea8efdfedecdd3f275c68aec8a11357e7",
+      "source_byte_hash_status": "retained_from_immutable_ledger_not_refetched",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "F-EA-CASE",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": null,
+      "source_byte_hash_status": "not_available_in_input",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "F-EA-COMPLIANCE",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": "57eb5ae96de24ac32be43fc1f6a5db0d90d901e7ad6a4262c1e25b6cd802b8a5",
+      "source_byte_hash_status": "retained_from_immutable_ledger_not_refetched",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "F-RIGHTS",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": null,
+      "source_byte_hash_status": "not_available_in_input",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "F-EXTRA-FAILED-2010",
+      "source_text_inspected": false,
+      "candidate_type": "research_metadata_only_uninspected_candidate",
+      "source_byte_sha256": null,
+      "source_byte_hash_status": "not_available_in_input",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion",
+        "Retrieval failed; content and claimed upstream identity not verified; no statement derivation"
+      ]
+    },
+    {
+      "artifact_id": "F-EA-FINAL",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": "4373a872f5ee487a5d72ec195ac0dca8d14e59a5ab85d94d25f633a267ef1e6d",
+      "source_byte_hash_status": "retained_from_immutable_ledger_not_refetched",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "F-RA-MODIFIED",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": "4bbc0b6fb61d8f7bc1cf7913fd927bda8167474f03e03e194feb983e9cac306d",
+      "source_byte_hash_status": "retained_from_immutable_ledger_not_refetched",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "F-FTC-UPDATE2023",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": "0804c863bcafdace4447eedcbf7dee3f1b0fbc271a4112cb416fb2e9f7634edb",
+      "source_byte_hash_status": "retained_from_immutable_ledger_not_refetched",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "DS6-CGP-ART-01",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": null,
+      "source_byte_hash_status": "not_available_in_input",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "DS6-CGP-ART-02",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": null,
+      "source_byte_hash_status": "not_available_in_input",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "DS6-CGP-ART-03",
+      "source_text_inspected": true,
+      "candidate_type": "source_artifact",
+      "source_byte_sha256": null,
+      "source_byte_hash_status": "not_available_in_input",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion"
+      ]
+    },
+    {
+      "artifact_id": "DS6-CGP-ART-04",
+      "source_text_inspected": false,
+      "candidate_type": "research_metadata_only_uninspected_candidate",
+      "source_byte_sha256": null,
+      "source_byte_hash_status": "not_available_in_input",
+      "native_record_emitted": false,
+      "blockers": [
+        "No exact per-artifact UTC capture timestamp established from date-only input",
+        "Artifact-specific title/language/author and rights review needed before conversion",
+        "Retrieval failed; content and claimed upstream identity not verified; no statement derivation"
+      ]
+    }
+  ],
+  "actor_boundary_rules": [
+    {
+      "actor": "OPC / Foodstuffs North Island",
+      "rule": "Keep regulator author and operator subject/claimant distinct; no implied regulator verification of current operator claim."
+    },
+    {
+      "actor": "FTC / court / Paravision respondent",
+      "rule": "Hosting on ftc.gov does not change authorship of respondent compliance declarations or court orders; preserve instrument-specific authority."
+    },
+    {
+      "actor": "Everalbum / Paravision",
+      "rule": "Source-attributed name continuity within one FTC matter; legal d/b/a statement and respondent name-change claim are separate evidence. Not a new event."
+    },
+    {
+      "actor": "CAC / reporting local cyberspace authorities",
+      "rule": "Differentiate publisher/summary author, unnamed acting local authority, and anonymous regulated subject; no named entity invented."
+    },
+    {
+      "actor": "江苏网信网 / 网信上海 / 上海市网信办",
+      "rule": "Publisher, credited source and asserting authority are separately attributed. Upstream article identity and exact reproduction remain unverified."
+    },
+    {
+      "actor": "Anonymous company/site/app populations",
+      "rule": "Maintain source-local labels and mixed units. Do not coerce a population into a fictitious person or reuse a collective identity across notices without evidence."
+    }
+  ],
+  "chain_boundary_review": [
+    {
+      "source_chain_id": "chain:opc-trial",
+      "assertion_ids": [
+        "opc:trial-window",
+        "opc:report-alert-total",
+        "opc:summary-alert-total",
+        "opc:landing-alert-total",
+        "opc:release-alert-total",
+        "opc:confirmed-matches",
+        "opc:scanned-images",
+        "opc:deletion-share",
+        "opc:verification-failures",
+        "opc:recorded-misidentifications",
+        "opc:record-missingness",
+        "opc:in-trial-check-and-adjustment",
+        "opc:future-safeguards",
+        "opc:general-monitoring-expectation",
+        "opc:operator-continuation-claim",
+        "opc:trial-overall-finding",
+        "opc:release-threshold-wording"
+      ],
+      "candidate_record_emission": false,
+      "review": "One trial/inquiry context with multiple claims and count units; nine recorded misidentifications do not supply nine deduplicated native incident rows. General guidance, later operator claim and prospective safeguards are not additional incidents."
+    },
+    {
+      "source_chain_id": "chain:rite-aid",
+      "assertion_ids": [
+        "F-A01",
+        "F-A02",
+        "F-A03",
+        "F-A04",
+        "F-A05",
+        "F-A06",
+        "F-A13"
+      ],
+      "candidate_record_emission": false,
+      "review": "Separate allegations, court/bankruptcy/admin documents and prospective remedy clauses; linked proceedings have distinct native docket identities. Five-year ban and 45-day deadline cannot receive calendar ends from an unverified effective date."
+    },
+    {
+      "source_chain_id": "chain:everalbum",
+      "assertion_ids": [
+        "F-A07",
+        "F-A08",
+        "F-A09",
+        "F-A10",
+        "F-A11",
+        "F-A12"
+      ],
+      "candidate_record_emission": false,
+      "review": "Keep alleged conduct, operative order, respondent deletion claim, corporate-name claim and later agency summary distinct; Closed status does not independently verify deletion."
+    },
+    {
+      "source_chain_id": "chain:cac-item9",
+      "assertion_ids": [
+        "DS6-CGP-AS-01",
+        "DS6-CGP-AS-02"
+      ],
+      "candidate_record_emission": false,
+      "review": "Anonymous source-local case; notice reports findings and an offline order, not checked completion."
+    },
+    {
+      "source_chain_id": "chain:cac-item10",
+      "assertion_ids": [
+        "DS6-CGP-AS-03",
+        "DS6-CGP-AS-04"
+      ],
+      "candidate_record_emission": false,
+      "review": "One described anonymous company, two websites; count of websites does not establish two cases or events."
+    },
+    {
+      "source_chain_id": "chain:shanghai-june",
+      "assertion_ids": [
+        "DS6-CGP-AS-05",
+        "DS6-CGP-AS-06",
+        "DS6-CGP-AS-07"
+      ],
+      "candidate_record_emission": false,
+      "review": "The explicit instruction → return-check of three enterprises → escalation chain is supported within the notice. It reports recurrence/noncompliance, not successful remediation. Do not join its three to November."
+    },
+    {
+      "source_chain_id": "bundle:shanghai-november",
+      "assertion_ids": [
+        "DS6-CGP-AS-08",
+        "DS6-CGP-AS-09",
+        "DS6-CGP-AS-10",
+        "DS6-CGP-AS-11",
+        "DS6-CGP-AS-12"
+      ],
+      "candidate_record_emission": false,
+      "review": "Document-level aggregate activity bundle, not one event or a unified cohort. Keep 54 apps, 26 websites, 3 websites and 5 websites separately scoped; neither disjointness nor subset identity is established."
+    }
+  ],
+  "assertion_dispositions": [
+    {
+      "assertion_id": "opc:trial-window",
+      "artifact_id": "opc:summary",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_type_retained": "trial_scope",
+      "review_note": "Trial scope/context, not an incident or a general adoption observation.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:report-alert-total",
+      "artifact_id": "opc:report",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_type_retained": "reported_alert_count",
+      "review_note": "Retain 1735 independently from the 1742 summary assertions. No correction or different population established.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:summary-alert-total",
+      "artifact_id": "opc:summary",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_type_retained": "reported_alert_count",
+      "review_note": "Retain 1742 with report-total conflict unresolved; repeats are not independent confirmations.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:landing-alert-total",
+      "artifact_id": "opc:landing",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_type_retained": "reported_alert_count",
+      "review_note": "Dependent trial summary; not another event or an independent replicate.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:release-alert-total",
+      "artifact_id": "opc:release",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_type_retained": "reported_alert_count",
+      "review_note": "Dependent trial summary; not another event or an independent replicate.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:confirmed-matches",
+      "artifact_id": "opc:summary",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_type_retained": "reported_staff_confirmed_match_count",
+      "review_note": "Staff-confirmed match category is not proven biometric ground truth; no person-level crosswalk.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:scanned-images",
+      "artifact_id": "opc:summary",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_type_retained": "reported_scan_image_count",
+      "review_note": "225972004 refers to source-described images/scans, not unique visitors or unique people.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:deletion-share",
+      "artifact_id": "opc:summary",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_type_retained": "reported_retention_deletion_share",
+      "review_note": "99.999 percent is source-reported with approximation caveat; exact deletion numerator unavailable. No inferred exact count.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:verification-failures",
+      "artifact_id": "opc:report",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_type_retained": "estimated_verification_process_failure_count",
+      "review_note": "Estimated up to 13 within limited ascertainment is not 13 proven misidentifications or a universal maximum.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:recorded-misidentifications",
+      "artifact_id": "opc:report",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_type_retained": "recorded_misidentification_count",
+      "review_note": "Nine recorded cases, potentially incomplete; explicit paragraph denominator 1735 retained but no rate calculated.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:record-missingness",
+      "artifact_id": "opc:report",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_type_retained": "record_quality_limitation",
+      "review_note": "Unknown-status groups 70/31/3 are not extra confirmed failures; no reidentification or independent deduplication.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:in-trial-check-and-adjustment",
+      "artifact_id": "opc:report",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_type_retained": "regulator_documented_trial_review_and_changes",
+      "review_note": "Keep 90 algorithm trigger, 92.5 staff threshold, visits/changes and qualitative post-change observation separate. No zero-incidence claim.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:future-safeguards",
+      "artifact_id": "opc:report",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_type_retained": "prospective_recommendations_and_expectations",
+      "review_note": "Recommended algorithm reset and future safeguards are not completed remedies or an inspected separate binding order.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:general-monitoring-expectation",
+      "artifact_id": "opc:factsheet",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_type_retained": "general_regulatory_guidance",
+      "review_note": "General guidance is not a case-specific observed event.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:operator-continuation-claim",
+      "artifact_id": "opc:operator-page",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "Operator public statement",
+      "action_type_retained": "operator_claim_of_continued_safeguards",
+      "review_note": "Operator assertion about current stores does not verify recommendation completion or match the original store cohort.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:trial-overall-finding",
+      "artifact_id": "opc:report",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator inquiry finding",
+      "action_type_retained": "regulator_overall_trial_assessment",
+      "review_note": "Overall legal/privacy assessment is not perfect accuracy or verified post-inquiry compliance.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "opc:release-threshold-wording",
+      "artifact_id": "opc:release",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "Regulator media summary",
+      "action_type_retained": "regulator_summary_of_operational_threshold_change",
+      "review_note": "Preserve release wording without declaring it a formal correction to the detailed report.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "F-A01",
+      "artifact_id": "F-RA-CASE",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "agency allegation summary and administrative page metadata",
+      "action_type_retained": "complaint_summary_and_case_listing",
+      "review_note": "Agency allegation/case-page metadata; Pending is not harm severity or a complete court-docket disposition.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "F-A02",
+      "artifact_id": "F-RA-DOC19",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "signed stipulated court order",
+      "action_type_retained": "stipulated_remedy_and_procedural_modification",
+      "review_note": "Limited admissions and separate signature/filing dates; remedy order is not remedy performance.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "F-A03",
+      "artifact_id": "F-RA-DOC19",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "bankruptcy settlement approval",
+      "action_type_retained": "procedural_approval",
+      "review_note": "Embedded bankruptcy procedural approval; not a distinct harmful event.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "F-A04",
+      "artifact_id": "F-RA-MODIFIED",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "separately issued Modified Decision and Order",
+      "action_type_retained": "subsequent_order",
+      "review_note": "Administrative order legally supersedes a prior order; this does not mean record.supersedes across different native IDs.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "F-A05",
+      "artifact_id": "F-RA-MODIFIED",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "ordered prohibition",
+      "action_type_retained": "prospective_remedy",
+      "review_note": "Five-year legal duration with unknown effective date; not a resource observation or justified calculated expiry.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "F-A06",
+      "artifact_id": "F-RA-MODIFIED",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "deletion, reporting and monitoring requirements",
+      "action_type_retained": "ordered_remedy_and_compliance_reporting",
+      "review_note": "Forty-five-day obligation, exceptions and reporting requirements; no completed deletion measurement.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "F-A07",
+      "artifact_id": "F-EA-CASE",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "agency allegation summary and case-page status",
+      "action_type_retained": "settlement_summary_and_case_listing",
+      "review_note": "Case closure/listing does not validate respondent performance.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "F-A08",
+      "artifact_id": "F-EA-FINAL",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "consent Decision and Order",
+      "action_type_retained": "final_order",
+      "review_note": "Keep May 6 issuance versus May 7 listing; no inferred final-publication effective date.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "F-A09",
+      "artifact_id": "F-EA-FINAL",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "ordered deletion with exceptions",
+      "action_type_retained": "remedy_scope",
+      "review_note": "Separate III(A)/(B)/(C) object scopes, issuance-anchored 30/90-day obligations and retention exceptions.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "F-A10",
+      "artifact_id": "F-EA-COMPLIANCE",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "respondent sworn compliance report",
+      "action_type_retained": "reported_compliance",
+      "review_note": "Respondent claim verified as a claim, not independent regulator verification; underlying confirmations uninspected.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "F-A11",
+      "artifact_id": "F-EA-COMPLIANCE",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "respondent identity statement",
+      "action_type_retained": "identity_continuity",
+      "review_note": "Attributed company-name continuity, not a new incident or registry verification.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "F-A12",
+      "artifact_id": "F-FTC-UPDATE2023",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "agency retrospective enforcement summary",
+      "action_type_retained": "restatement_of_order",
+      "review_note": "Dependent remedy summary; no new performance observation.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "F-A13",
+      "artifact_id": "F-FTC-UPDATE2023",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "retrospective summary limited by stated coverage",
+      "action_type_retained": "temporally_scoped_republication",
+      "review_note": "Retrospective coverage ends December 2023; later technical packaging cannot reverse a later primary order.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "F-A14",
+      "artifact_id": "F-RIGHTS",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "website rights statement",
+      "action_type_retained": "rights_scope",
+      "review_note": "Rights policy assertion; not an incident or clearance for third-party attachments.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-01",
+      "artifact_id": "DS6-CGP-ART-01",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "official regulator investigation summary; underlying decision/inspection record not provided",
+      "action_type_retained": "regulator_reported_noncompliance_finding",
+      "review_note": "Regulator finding summary; underlying observations and later outcome unverified.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-02",
+      "artifact_id": "DS6-CGP-ART-01",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "official report of an ordered remedy",
+      "action_type_retained": "offline_order_reported",
+      "review_note": "已依法责令下线 reports an order, not independently checked takedown completion.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-03",
+      "artifact_id": "DS6-CGP-ART-01",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "official regulator investigation summary",
+      "action_type_retained": "regulator_reported_noncompliance_finding",
+      "review_note": "Two websites under one unnamed company; no harmful-output rate or two-case inference.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-04",
+      "artifact_id": "DS6-CGP-ART-01",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "official announcement of corrective instructions and warning penalty",
+      "action_type_retained": "correction_order_and_warning_penalty_reported",
+      "review_note": "Correction instruction and warning penalty reported; no verified compliance.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-05",
+      "artifact_id": "DS6-CGP-ART-02",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "officially republished regulator instruction",
+      "action_type_retained": "function_offline_instruction_with_relaunch_condition",
+      "review_note": "Instruction with assessment-before-relaunch condition; entire original cohort and fulfillment unknown.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-06",
+      "artifact_id": "DS6-CGP-ART-02",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "regulator reports its return-inspection finding; independent of an operator compliance claim",
+      "action_type_retained": "regulator_reinspection_noncompliance_found",
+      "review_note": "Regulator return-check of three enterprises is linked within June notice only; no November identity or inspected denominator.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-07",
+      "artifact_id": "DS6-CGP-ART-02",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "official report of talks, rectification instruction, and case proceedings; signed final decision not inspected",
+      "action_type_retained": "enforcement_escalation_reported",
+      "review_note": "Retain title 立案处罚 versus body 立案查处; final decision and compliance unverified.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-08",
+      "artifact_id": "DS6-CGP-ART-03",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "regulator-reported aggregate activity",
+      "action_type_retained": "app_store_takedown_activity_reported",
+      "review_note": "54 apps: reported activity; no per-app independently checked outcome or cross-category sum.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-09",
+      "artifact_id": "DS6-CGP-ART-03",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "regulator-reported reinspection activity",
+      "action_type_retained": "return_check_activity_reported",
+      "review_note": "26 websites reinspected: activity count; no demonstrated denominator for November three.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-10",
+      "artifact_id": "DS6-CGP-ART-03",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "regulator-reported case filing/penalty action; underlying decisions not provided",
+      "action_type_retained": "case_filing_and_penalty_action_reported",
+      "review_note": "Three websites with 立案处罚; not linked to June enterprises or demonstrated subset of 26.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-11",
+      "artifact_id": "DS6-CGP-ART-03",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "requires_metric_subject_scope_review",
+      "native_incident_admission": false,
+      "authority_status_retained": "regulator-reported first-violation penalty-exemption approach and instruction",
+      "action_type_retained": "functions_offline_instruction_and_filing_guidance",
+      "review_note": "Five websites with first-violation approach and instructions; no completion assertion.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-12",
+      "artifact_id": "DS6-CGP-ART-03",
+      "primary_research_unit": "attributed_source_assertion",
+      "possible_proposal_container": "statement_after_text_identity_rights_preparation",
+      "secondary_quantitative_candidate": "none_selected",
+      "native_incident_admission": false,
+      "authority_status_retained": "regulator qualitative assessment of its action",
+      "action_type_retained": "qualitative_improvement_claim",
+      "review_note": "Qualitative improvement claim, not a quantitative success rate or measured remediation.",
+      "source_fields_preserved_in_sidecar": [
+        "source_native_case_or_event_identity",
+        "source_native_fields",
+        "numerator",
+        "denominator",
+        "population",
+        "window",
+        "dates_as_labeled",
+        "date_semantics",
+        "revision_links",
+        "dependence_links",
+        "rights_scope",
+        "source_verification",
+        "verification_state",
+        "unknowns"
+      ]
+    }
+  ],
+  "semantic_gaps": [
+    {
+      "gap": "authority_and_legal_procedure",
+      "native_limit": "No structured authority/admission/order/remedy/completion/appeal type.",
+      "preserve": "assertions[].authority_status/action_or_measurement_type/source_native_fields"
+    },
+    {
+      "gap": "temporal_roles",
+      "native_limit": "Only published/event/evaluated plus system timestamps; one event field cannot preserve many legal dates.",
+      "preserve": "assertions[].dates_as_labeled/date_semantics/window and artifacts[].version"
+    },
+    {
+      "gap": "denominator_and_cohort_linkage",
+      "native_limit": "Metric and scope prose only; no typed cohort identity, numerator-denominator pairing or overlap graph.",
+      "preserve": "numerator/denominator/population/window/unresolved_links"
+    },
+    {
+      "gap": "provenance_dependence",
+      "native_limit": "Statement relationship enum has five values; evidence relation has three; upstream crosswalk is not a general dependence graph.",
+      "preserve": "relationships/dependence_links/event_and_document_chains/potential_indexing_relationships"
+    },
+    {
+      "gap": "source_vs_outcome_verification",
+      "native_limit": "Incident verification enum does not represent the full authority/performance matrix.",
+      "preserve": "source_verification/verification_state/authority_status"
+    },
+    {
+      "gap": "rights_granularity",
+      "native_limit": "One rights_state/basis/url per record cannot enforce mixed-source component rights or historical scope automatically.",
+      "preserve": "artifact rights notes, rights policy references, license version limits and original third-party scope"
+    },
+    {
+      "gap": "production_attribution",
+      "native_limit": "Production statementSchema requires a person; proposal organizational attribution is not a production adapter.",
+      "preserve": "asserting organization and publisher/declarant separation; never invent a person"
+    },
+    {
+      "gap": "estimated_bound",
+      "native_limit": "Mathematical bound shape cannot encode incomplete ascertainment unless estimand and caveat retained.",
+      "preserve": "source qualifier and uncertainty; do not coerce estimated up-to into universal maximum"
+    }
+  ],
+  "inspection_execution_limits": {
+    "schema_probes": "Separate invented fixtures only, Draft202012Validator with offline registry and FormatChecker; no original source values or original acceptance cases are executed.",
+    "validator": "validate_dataset.py read statically but not imported or executed. Listed reference, rights, revision and unit invariants are code-inspection findings only.",
+    "production": "Zod code and enums inspected statically; no TypeScript, helper code, production validator or database executed.",
+    "research": "No executable research artifact or source-provided script executed; JSON read as inert data only."
+  },
+  "probe_files": {
+    "input": "synthetic-probe-input.json",
+    "output": "schema-probe-results.json",
+    "runner": "run_offline_synthetic_probes.py"
+  },
+  "current_source_review_qualifications": [
+    {
+      "topic": "OPC rights",
+      "note": "Original input statement that the license version was not inspected is preserved as session-local history. Current reviewed INM003 catalog establishes scoped CC-BY-3.0-NZ; do not erase that prior evidence. Component rights and historical scope remain separate limits.",
+      "review_delta": "../delta.json#G-C02"
+    },
+    {
+      "topic": "AIID indexing",
+      "note": "Original session-local uninspected index state is preserved. Current catalog retains AIID619/Rite Aid and AIID665/individual trial-related event relationships, without expanded incident identity or independent confirmation.",
+      "review_delta": "../delta.json#G-C03"
+    }
+  ]
+}

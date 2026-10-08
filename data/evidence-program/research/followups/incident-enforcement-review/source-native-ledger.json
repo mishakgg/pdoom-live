@@ -1,0 +1,4152 @@
+{
+  "title": "Deep Session 6: Incident corrections and enforcement outcomes",
+  "delivery_format": "Source-native assertion ledger, delivery revision 1",
+  "created_utc": "2026-10-08T17:18:39+00:00",
+  "format_scope": "The property names and local IDs organize this deliverable only. They are not invented repository schema fields or a claimed canonical mapping.",
+  "repository_context": {
+    "repository": "https://github.com/mishakgg/pdoom-live",
+    "supplied_commit": "87dda3d74f9f9874e82d83d1628b53f9da4b5526",
+    "supplied_commit_inspected": false,
+    "inspected_repository_commit": null,
+    "contracts_inspected": false,
+    "canonical_mapping": null,
+    "access_attempts": [
+      {
+        "path": "docs/evidence-program/source_priorities.md",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/87dda3d74f9f9874e82d83d1628b53f9da4b5526/docs/evidence-program/source_priorities.md",
+        "result": "DisabledError; content not fetched",
+        "file_absence_inferred": false
+      },
+      {
+        "path": "docs/evidence-program/dataset_spec.md",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/87dda3d74f9f9874e82d83d1628b53f9da4b5526/docs/evidence-program/dataset_spec.md",
+        "result": "DisabledError; content not fetched",
+        "file_absence_inferred": false
+      },
+      {
+        "path": "docs/evidence-program/research/incidents-near-misses.md",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/87dda3d74f9f9874e82d83d1628b53f9da4b5526/docs/evidence-program/research/incidents-near-misses.md",
+        "result": "DisabledError; content not fetched",
+        "file_absence_inferred": false
+      },
+      {
+        "path": "docs/evidence-program/research/chinese-governance.md",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/87dda3d74f9f9874e82d83d1628b53f9da4b5526/docs/evidence-program/research/chinese-governance.md",
+        "result": "DisabledError; content not fetched",
+        "file_absence_inferred": false
+      },
+      {
+        "path": "data/evidence-program/research/incidents-near-misses.json",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/87dda3d74f9f9874e82d83d1628b53f9da4b5526/data/evidence-program/research/incidents-near-misses.json",
+        "result": "DisabledError; content not fetched",
+        "file_absence_inferred": false
+      },
+      {
+        "path": "data/evidence-program/research/chinese-governance.json",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/87dda3d74f9f9874e82d83d1628b53f9da4b5526/data/evidence-program/research/chinese-governance.json",
+        "result": "DisabledError; content not fetched",
+        "file_absence_inferred": false
+      }
+    ],
+    "fallback": "User-supplied baseline and catalog references attributed as such; primary artifacts independently inspected.",
+    "agent_security_incidents_catalog": "Not opened: no exact overlap adjudication attempted.",
+    "source_inventory_mapping": "Not verified; supplied INM003, INM006, CGP001 and CGP001-A1 references are retained without a canonical-role assertion."
+  },
+  "admission_and_interpretation": {
+    "admitted_incident_observations": 0,
+    "repository_modified": false,
+    "software_built": false,
+    "ingestion_or_deployment": false,
+    "unit_of_ledger": "A source assertion about a case, trial, instruction, action, claim, measurement or rights statement; not necessarily an incident event.",
+    "source_verification_is_not_outcome_verification": true,
+    "empty_revision_links_mean": "No revision link established within the inspected set; not proof that no revision exists.",
+    "nulls_mean": "Unknown or inapplicable as indicated by the record; never a measured zero or evidence of absence.",
+    "rates_rankings_and_catastrophe_probabilities": "None calculated.",
+    "personal_information": "No victim identities, anonymous-subject reidentification, raw store records or personnel acknowledgment dataset retained in deliverables."
+  },
+  "bounds": [
+    {
+      "branch": "OPC",
+      "named_baseline_inspected": 4,
+      "additional_limit": 3,
+      "additional_attempted": 3,
+      "additional_inspected": 3,
+      "stop_reason": "cap reached",
+      "details": {
+        "named_baseline_documents_inspected": 4,
+        "additional_official_documents_limit": 3,
+        "additional_official_documents_inspected": 3,
+        "stop_reason": "Additional-document cap reached; no further sources or linked PIA/factsheet were opened."
+      }
+    },
+    {
+      "branch": "FTC",
+      "named_baseline_inspected": 5,
+      "additional_limit": 4,
+      "additional_attempted": 4,
+      "additional_inspected": 3,
+      "stop_reason": "cap reached; one retrieval timeout; subsequent Rite Aid order found",
+      "details": {
+        "named_baseline_artifacts_inspected": 5,
+        "additional_official_document_attempts": 4,
+        "additional_official_documents_successfully_inspected": 3,
+        "stopped_because": "four additional-document attempt cap reached; Rite Aid subsequent-order question answered; no agency deletion validation located in inspected Everalbum material",
+        "counting_rule": "Distinct additional official full-document retrieval attempts, including one failed attempt. Search snippets were discovery only and are not used as independent findings. Embedded documents within the named 138-page court PDF are explicitly identified below.",
+        "search_queries": [
+          "site:ftc.gov \"Rite Aid\" \"2023190\" order compliance",
+          "site:ftc.gov \"Everalbum\" \"compliance\" deletion verified",
+          "site:ftc.gov \"Rite Aid\" \"C-4308\" \"2024\"",
+          "site:ftc.gov \"Paravision\" \"compliance report\""
+        ],
+        "excluded_work": "No accounts, paid dockets, outreach, repository changes, ingestion, deployment, incident discovery, AIID inspection, victim identity extraction, or acknowledgment-personnel dataset."
+      }
+    },
+    {
+      "branch": "CGP",
+      "named_baseline_inspected": 3,
+      "additional_limit": 4,
+      "additional_attempted": 1,
+      "additional_inspected": 0,
+      "stop_reason": "no case-linked later document established; candidate original retrieval nonretryable",
+      "details": {
+        "named_artifacts_inspected": 3,
+        "additional_document_attempts": 1,
+        "additional_documents_successfully_inspected": 0,
+        "maximum_additional_official_documents": 4,
+        "stop_reason": "Targeted searches yielded the named notices but no case-linked follow-through. Candidate source-original November notice failed with a non-retryable open error; that path was stopped without a mirror.",
+        "counting_note": "Search-result index pages and unrelated returned URLs were not opened or admitted as evidence.",
+        "attempted_additional_artifact": {
+          "local_id": "DS6-CGP-ART-04",
+          "url": "https://mp.weixin.qq.com/s/rO8DnpkrDlCqVyigrM0CAg",
+          "description": "Candidate November source-original identified in a search-result bibliography; official account identity and content were not verified.",
+          "inspection_state": "uninspected_nonretryable_open_error",
+          "evidence_ref": "turn18view0",
+          "content_claims_admitted": false
+        }
+      }
+    }
+  ],
+  "version_and_review_method": {
+    "inspection_date_utc": "2026-10-08",
+    "primary_text_review": "Manual, bounded to relevant sections.",
+    "pdf_visual_review": "Relevant first 11 pages of the redacted Paravision filing rendered and reviewed; primary web screenshot requests for OPC returned unusable placeholders.",
+    "source_byte_versions": "Five FTC PDF SHA-256 values and byte counts recorded from targeted retrievals and checked locally. OPC and Chinese artifacts have document IDs/dates and inspected text representations, not source-byte hashes.",
+    "historical_version_limit": "No uninspected prior artifact version or official correction history is inferred from current bytes, a filename or technical metadata.",
+    "artifact_integrity_checks": "JSON syntax, unique local labels and internal reference targets checked as document QA; not acceptance-case execution."
+  },
+  "event_and_document_chains": [
+    {
+      "chain_id": "chain:opc-trial",
+      "scope": "One explicit 2024 trial/inquiry; later claims remain separately dated",
+      "native_identity": "Foodstuffs North Island trial, 25 supermarkets, 2024-02-08 to 2024-09-07",
+      "assertion_ids": [
+        "opc:trial-window",
+        "opc:report-alert-total",
+        "opc:summary-alert-total",
+        "opc:landing-alert-total",
+        "opc:release-alert-total",
+        "opc:confirmed-matches",
+        "opc:scanned-images",
+        "opc:deletion-share",
+        "opc:verification-failures",
+        "opc:recorded-misidentifications",
+        "opc:record-missingness",
+        "opc:in-trial-check-and-adjustment",
+        "opc:future-safeguards",
+        "opc:general-monitoring-expectation",
+        "opc:operator-continuation-claim",
+        "opc:trial-overall-finding",
+        "opc:release-threshold-wording"
+      ],
+      "non_event_members": [
+        "opc:general-monitoring-expectation",
+        "opc:operator-continuation-claim",
+        "opc:future-safeguards"
+      ]
+    },
+    {
+      "chain_id": "chain:rite-aid",
+      "scope": "Linked proceedings, not identical case IDs",
+      "native_identity": [
+        "FTC 2023190; court 2:23-cv-05023-KBH",
+        "C-4308; printed administrative matter 0723121",
+        "embedded bankruptcy 23-18993-MBK Doc 1574"
+      ],
+      "assertion_ids": [
+        "F-A01",
+        "F-A02",
+        "F-A03",
+        "F-A04",
+        "F-A05",
+        "F-A06",
+        "F-A13"
+      ]
+    },
+    {
+      "chain_id": "chain:everalbum",
+      "scope": "Order, respondent claim, dependent agency summary",
+      "native_identity": [
+        "FTC 1923172",
+        "C-4743",
+        "Everalbum d/b/a Paravision; later name-change claim separately attributed"
+      ],
+      "assertion_ids": [
+        "F-A07",
+        "F-A08",
+        "F-A09",
+        "F-A10",
+        "F-A11",
+        "F-A12"
+      ]
+    },
+    {
+      "chain_id": "chain:cac-item9",
+      "scope": "Anonymous source-local case only",
+      "native_identity": "CAC notice c_1790876152357946 item 9",
+      "assertion_ids": [
+        "DS6-CGP-AS-01",
+        "DS6-CGP-AS-02"
+      ]
+    },
+    {
+      "chain_id": "chain:cac-item10",
+      "scope": "Anonymous source-local case only; two websites, one described company",
+      "native_identity": "CAC notice c_1790876152357946 item 10",
+      "assertion_ids": [
+        "DS6-CGP-AS-03",
+        "DS6-CGP-AS-04"
+      ]
+    },
+    {
+      "chain_id": "chain:shanghai-june",
+      "scope": "Explicit within-notice prior instruction, return-check noncompliance and escalation",
+      "native_identity": "t20250624_111471; three anonymous enterprises",
+      "assertion_ids": [
+        "DS6-CGP-AS-05",
+        "DS6-CGP-AS-06",
+        "DS6-CGP-AS-07"
+      ]
+    },
+    {
+      "chain_id": "bundle:shanghai-november",
+      "scope": "Document-level activity bundle; NOT a unified cohort or incident event",
+      "native_identity": "t20251124_164342",
+      "assertion_ids": [
+        "DS6-CGP-AS-08",
+        "DS6-CGP-AS-09",
+        "DS6-CGP-AS-10",
+        "DS6-CGP-AS-11",
+        "DS6-CGP-AS-12"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "source_native_artifact_id": null,
+      "url": "https://www.privacy.org.nz/resources-and-learning/public-inquiries/inquiry-into-foodstuffs-north-island-trial-use-of-facial-recognition-technology/",
+      "source_kind": "OPC inquiry landing page",
+      "version": {
+        "displayed_publication": "4 Jun 2025, 09:00",
+        "displayed_timezone": null,
+        "revision_label": null,
+        "content_hash": null
+      },
+      "locator": "Inquiry findings; Foodstuff’s North Island trial; lines 40–50",
+      "inspection": "baseline; extracted text read",
+      "rights_ref": "opc:rights",
+      "dependence": [
+        {
+          "relation": "links_to",
+          "target": "opc:report"
+        },
+        {
+          "relation": "links_to",
+          "target": "opc:summary"
+        },
+        {
+          "relation": "links_to",
+          "target": "opc:release"
+        },
+        {
+          "relation": "links_to",
+          "target": "opc:factsheet"
+        }
+      ],
+      "artifact_id": "opc:landing",
+      "branch": "OPC",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "source_native_artifact_id": "A1082856",
+      "url": "https://www.privacy.org.nz/assets/DOCUMENTS/20250603-FRT-Inquiry-Report-A1082856.pdf",
+      "source_kind": "OPC inquiry report",
+      "version": {
+        "cover_date": "May 2025",
+        "filename_date_token": "20250603",
+        "official_release_date_from_landing": "2025-06-04",
+        "page_count": 75,
+        "revision_label": null,
+        "content_hash": null
+      },
+      "locator": "¶¶99–104, 114–115, 119(a)–(d), 189–191, 215–227; summary ¶¶7–10",
+      "inspection": "baseline; selected relevant text sections read",
+      "rights_ref": "opc:rights",
+      "dependence": [
+        {
+          "relation": "underlying_inputs_identified_in_document_not_separately_inspected",
+          "target": null,
+          "description": "FSNI documentation/statistics, Scarlatti evaluation, OPC store visits and feedback (¶99)."
+        }
+      ],
+      "artifact_id": "opc:report",
+      "branch": "OPC",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "source_native_artifact_id": "A1076632",
+      "url": "https://www.privacy.org.nz/assets/DOCUMENTS/20250603-short-summary-FRT-inquiry-A1076632.pdf",
+      "source_kind": "OPC two-page summary",
+      "version": {
+        "cover_date": "May 2025",
+        "filename_date_token": "20250603",
+        "official_release_date_from_landing": "2025-06-04",
+        "page_count": 2,
+        "revision_label": null,
+        "content_hash": null
+      },
+      "locator": "Page 1, The trial",
+      "inspection": "baseline; extracted text read",
+      "rights_ref": "opc:rights",
+      "dependence": [
+        {
+          "relation": "summary_of",
+          "target": "opc:report",
+          "qualifier": "Same inquiry; count discrepancy remains unresolved."
+        }
+      ],
+      "artifact_id": "opc:summary",
+      "branch": "OPC",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "source_native_artifact_id": null,
+      "url": "https://www.privacy.org.nz/about-us/copyright-and-disclaimer/",
+      "source_kind": "OPC copyright and disclaimer webpage",
+      "version": {
+        "displayed_publication": null,
+        "revision_label": null,
+        "content_hash": null
+      },
+      "locator": "Copyright and disclaimer, lines 31–42",
+      "inspection": "baseline; extracted text read",
+      "rights_statement": "OPC-created site material is covered by Creative Commons Attribution (BY), with attribution and no implied endorsement. Third-party material is excluded and retains its creators’ copyright.",
+      "license_version": "Not verified; linked CC licence was not opened.",
+      "scope": "Current OPC-created report, summary, factsheet and webpages as served; does not license the underlying FSNI/Scarlatti materials.",
+      "historical_scope": "No dated licence history inspected; no claim about older byte versions.",
+      "artifact_id": "opc:rights",
+      "branch": "OPC",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "source_native_artifact_id": null,
+      "url": "https://www.privacy.org.nz/tuhono-connect/statements-media-releases/supermarket-trial-of-frt-inquiry-results-announced/",
+      "source_kind": "OPC media release",
+      "version": {
+        "displayed_publication": "4 Jun 2025, 07:00",
+        "displayed_timezone": null,
+        "revision_label": null,
+        "content_hash": null
+      },
+      "locator": "Safeguards list; subsequent-improvement expectations; final trial-count paragraph",
+      "inspection": "Additional official document 1 of 3; direct link from OPC landing page (link 15).",
+      "rights_ref": "opc:rights",
+      "dependence": [
+        {
+          "relation": "announces_and_summarizes",
+          "target": "opc:report"
+        },
+        {
+          "relation": "republication_of_same_trial_assertions",
+          "target": "opc:summary"
+        }
+      ],
+      "artifact_id": "opc:release",
+      "branch": "OPC",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "source_native_artifact_id": "A1083621",
+      "url": "https://www.privacy.org.nz/assets/DOCUMENTS/20250603-Factsheet-using-facial-recognition-technology-well-A1083621.pdf",
+      "source_kind": "OPC FRT guidance factsheet",
+      "version": {
+        "cover_date": "May 2025",
+        "filename_date_token": "20250603",
+        "page_count": 4,
+        "revision_label": null,
+        "content_hash": null
+      },
+      "locator": "Section 9 Review and monitoring, printed page 4",
+      "inspection": "Additional official document 2 of 3; direct link from OPC landing page (link 16).",
+      "rights_ref": "opc:rights",
+      "dependence": [
+        {
+          "relation": "general_guidance_linked_from_inquiry",
+          "target": "opc:landing"
+        }
+      ],
+      "artifact_id": "opc:factsheet",
+      "branch": "OPC",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "source_native_artifact_id": null,
+      "url": "https://www.foodstuffs.co.nz/news-room/Facial-Recognition",
+      "source_kind": "FSNI official operator webpage",
+      "version": {
+        "displayed_publication": null,
+        "displayed_last_updated": null,
+        "copyright_footer_year": "2026",
+        "revision_label": null,
+        "content_hash": null
+      },
+      "locator": "Office of the Privacy Commissioner Report; Our continued use of FR; lines 31–39",
+      "inspection": "Additional official document 3 of 3; found by targeted official-domain search. It links back to OPC’s report. No incoming link from OPC to this page was established.",
+      "rights_statement": "Copyright © 2026 Foodstuffs footer observed. Reuse licence not inspected or verified; OPC licence does not apply.",
+      "dependence": [
+        {
+          "relation": "links_back_to_and_describes",
+          "target": "opc:report"
+        },
+        {
+          "relation": "links_to_uninspected_document",
+          "target": null,
+          "description": "Operator PIA and operator FR factsheet; not opened because cap reached."
+        }
+      ],
+      "artifact_id": "opc:operator-page",
+      "branch": "OPC",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "role": "named_baseline",
+      "url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/2023190-rite-aid-corporation-ftc-v",
+      "title": "Rite Aid Corporation, FTC v.",
+      "primary_publisher": "Federal Trade Commission",
+      "source_native_identifiers": {
+        "FTC_Matter_File_Number": "2023190",
+        "Docket_Number": "2:23-cv-5023",
+        "Federal_Court": "Eastern District of Pennsylvania"
+      },
+      "version": {
+        "kind": "live case-page snapshot",
+        "Last_Updated": "March 8, 2024",
+        "Case_Status": "Pending",
+        "content_hash": null
+      },
+      "inspected_locators": [
+        "Last Updated / Case Status",
+        "Case Summary",
+        "Case Timeline"
+      ],
+      "rights": "FTC Website Policy covers government-authored material generally; retain attribution. This does not establish rights in linked third-party filings.",
+      "artifact_id": "F-RA-CASE",
+      "branch": "FTC",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "role": "named_baseline",
+      "url": "https://www.ftc.gov/system/files/ftc_gov/pdf/DE019-StipulatedOrderforPermanentInjunctionandOtherRelief.pdf",
+      "title": "Stipulated Order for Permanent Injunction and Other Relief",
+      "primary_publisher": "Federal Trade Commission; operative court document issued by U.S. District Court, Eastern District of Pennsylvania",
+      "source_native_identifiers": {
+        "case": "2:23-cv-05023-KBH",
+        "document": "19"
+      },
+      "version": {
+        "court_order_signed": "2024-02-23",
+        "docket_filed": "2024-02-26",
+        "pdf_pages": 138,
+        "bytes": 5624447,
+        "sha256": "9d69c1b989723f94ae283878ae36e79ea8efdfedecdd3f275c68aec8a11357e7",
+        "http_last_modified": "Fri, 08 Mar 2024 17:17:54 GMT",
+        "pdf_creation_metadata": "D:20240226113437Z",
+        "pdf_modification_metadata": "D:20240308121638-05'00'"
+      },
+      "inspected_locators": [
+        "PDF pp.1–4: caption, Findings 5, operative §II, signature",
+        "PDF pp.8–35: Attachment A (selected operative provisions only)",
+        "PDF pp.37–38: embedded bankruptcy approval, Doc1574"
+      ],
+      "embedded_documents": [
+        {
+          "identity": "Attachment A, Commission Decision and Order, docket C-4308",
+          "locator": "PDF pp.8–35",
+          "status": "attached order form; issuance field blank; not equated with later separately issued Commission document"
+        },
+        {
+          "identity": "Bankruptcy Case23-18993-MBK, Doc1574",
+          "locator": "PDF pp.37–38",
+          "order_date": "2024-01-23",
+          "status": "prior approval of settlement, embedded in named PDF; no compliance finding"
+        }
+      ],
+      "rights": "Mixed court/agency/party filing package. FTC general policy is not an artifact-wide third-party grant; full package redistribution not cleared by this review.",
+      "artifact_id": "F-RA-DOC19",
+      "branch": "FTC",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "role": "named_baseline",
+      "url": "https://www.ftc.gov/legal-library/browse/cases-proceedings/192-3172-everalbum-inc-matter",
+      "title": "Everalbum, Inc., In the Matter of",
+      "primary_publisher": "Federal Trade Commission",
+      "source_native_identifiers": {
+        "FTC_Matter_File_Number": "192 3172",
+        "Enforcement_Type": "Part 2 Consents"
+      },
+      "version": {
+        "kind": "live case-page snapshot",
+        "Last_Updated": "May 5, 2022",
+        "Case_Status": "Closed",
+        "content_hash": null
+      },
+      "inspected_locators": [
+        "Last Updated / Case Status",
+        "Case Summary",
+        "Case Timeline: May5,2022 report; May7,2021 Decision and Order"
+      ],
+      "rights": "FTC-authored metadata under general FTC government-material statement; no inherited license for respondent attachment.",
+      "artifact_id": "F-EA-CASE",
+      "branch": "FTC",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "role": "named_baseline",
+      "url": "https://www.ftc.gov/system/files/ftc_gov/pdf/paravision_compliance_report_redacted.pdf",
+      "title": "COMPLIANCE REPORT OF PARAVISION, INC.",
+      "substantive_asserting_organization": "Paravision, Inc. (respondent)",
+      "hosting_organization": "Federal Trade Commission",
+      "source_native_identifiers": {
+        "FTC_File_No": "1923172",
+        "report_submitted_under": "Part V of Decision and Order"
+      },
+      "version": {
+        "declaration_executed": "2022-05-05",
+        "case_page_listing_date": "2022-05-05",
+        "pdf_pages": 45,
+        "bytes": 2113788,
+        "sha256": "57eb5ae96de24ac32be43fc1f6a5db0d90d901e7ad6a4262c1e25b6cd802b8a5",
+        "pdf_creation_metadata": "D:20230228200812-05'00'",
+        "pdf_modification_metadata": "D:20230301152820-05'00'",
+        "metadata_note": "Later technical PDF packaging dates do not establish a correction, a new compliance event, or a later declaration."
+      },
+      "inspected_locators": [
+        "PDF p1: submitting organization/PartV/footnote1",
+        "PDF p7 (printed p6): deletion assertion following PartIII",
+        "PDF p11 (printed p10): execution date/declaration",
+        "PDF pp1–11 visually reviewed; no personal acknowledgment data extracted"
+      ],
+      "inspection_method": "Primary URL text extraction was garbled; direct bounded retrieval and rendered-page review verified relevant passages.",
+      "rights": "Respondent-authored filing. No artifact-specific reuse grant found. FTC policy expressly does not grant third-party copyright permissions. Preserve factual metadata and narrow attributed quotation; defer attachment redistribution.",
+      "artifact_id": "F-EA-COMPLIANCE",
+      "branch": "FTC",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "role": "named_baseline",
+      "url": "https://www.ftc.gov/policy-notices/website-policy",
+      "title": "Website Policy",
+      "primary_publisher": "Federal Trade Commission",
+      "version": {
+        "Last_updated": "August 2023",
+        "kind": "live policy-page snapshot",
+        "content_hash": null
+      },
+      "inspected_locators": [
+        "Copyright Permission"
+      ],
+      "rights": "Policy says most FTC-site material is U.S. Government work/public domain, recommends attribution, and disclaims authority to grant permission for third-party copyrighted material, including public filings.",
+      "artifact_id": "F-RIGHTS",
+      "branch": "FTC",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "role": "additional_official_attempt_1",
+      "url": "https://www.ftc.gov/news-events/news/press-releases/2010/07/rite-aid-settles-ftc-charges-it-failed-protect-medical-financial-privacy-customers-employees",
+      "discovery": "F-RA-CASE link labelled 2010 Commission data security order",
+      "inspection_state": "failed retrieval",
+      "failure": "web click returned (400) Timeout fetching",
+      "content_assertions_made": [],
+      "retried": false,
+      "artifact_id": "F-EXTRA-FAILED-2010",
+      "branch": "FTC",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": false,
+      "version": null,
+      "version_scope": "Retrieval failed; no source representation or artifact version inspected."
+    },
+    {
+      "role": "additional_official_attempt_2",
+      "url": "https://www.ftc.gov/system/files/documents/cases/1923172_-_everalbum_decision_final.pdf",
+      "title": "Decision and Order",
+      "primary_publisher": "Federal Trade Commission",
+      "source_native_identifiers": {
+        "matter": "1923172",
+        "docket": "C-4743"
+      },
+      "version": {
+        "ISSUED": "May 6, 2021",
+        "case_page_timeline_date": "May 7, 2021",
+        "pdf_pages": 8,
+        "bytes": 421627,
+        "sha256": "4373a872f5ee487a5d72ec195ac0dca8d14e59a5ab85d94d25f633a267ef1e6d",
+        "http_last_modified": "Sat, 18 Sep 2021 03:46:14 GMT",
+        "pdf_creation_metadata": "D:20210506130806-04'00'",
+        "pdf_modification_metadata": "D:20210507121218-04'00'",
+        "pdf_internal_title": "Everalbum final settlement rec memo 3.25.2021.pdf"
+      },
+      "inspected_locators": [
+        "PDF p1: consent/limited admissions",
+        "PDF p2: Affected Work Product",
+        "PDF pp4–5: PartIII deletion and retention exceptions",
+        "PDF p6: PartV compliance report",
+        "PDF pp7–8: PartVIII effective condition and issuance date"
+      ],
+      "rights": "Agency-issued operative order; covered by FTC general government-material statement, with attribution. No extension to respondent report.",
+      "artifact_id": "F-EA-FINAL",
+      "branch": "FTC",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "role": "additional_official_attempt_3",
+      "url": "https://www.ftc.gov/system/files/ftc_gov/pdf/c4308riteaidmodifiedorder.pdf",
+      "title": "Rite Aid: Modified Decision and Order",
+      "primary_publisher": "Federal Trade Commission",
+      "source_native_identifiers": {
+        "matter_printed": "0723121",
+        "docket": "C-4308"
+      },
+      "version": {
+        "ISSUED": "March 5, 2024",
+        "pdf_pages": 29,
+        "bytes": 1099186,
+        "sha256": "4bbc0b6fb61d8f7bc1cf7913fd927bda8167474f03e03e194feb983e9cac306d",
+        "http_last_modified": "Wed, 06 Mar 2024 13:15:44 GMT",
+        "pdf_creation_metadata": "D:20240305170320-05'00'",
+        "pdf_modification_metadata": "D:20240306080925-05'00'"
+      },
+      "inspected_locators": [
+        "PDF p1: named respondents, docket, neither-admit/nor-deny",
+        "PDF p6: PartsI–II",
+        "PDF pp25–28: report and monitoring obligations",
+        "PDF p28: PartsXVII–XVIII",
+        "PDF p29: issuance"
+      ],
+      "rights": "Agency-issued operative order under FTC government-material policy; attribution retained.",
+      "artifact_id": "F-RA-MODIFIED",
+      "branch": "FTC",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "role": "additional_official_attempt_4",
+      "url": "https://www.ftc.gov/system/files/ftc_gov/pdf/2024.03.21-PrivacyandDataSecurityUpdate-508.pdf",
+      "title": "The Federal Trade Commission 2023 Privacy and Data Security Update",
+      "primary_publisher": "Federal Trade Commission",
+      "version": {
+        "edition": "2023 update",
+        "coverage": "January 2021 to December 2023 (footnote1)",
+        "exact_publication_date": null,
+        "filename_date_string": "2024.03.21",
+        "pdf_pages": 38,
+        "bytes": 1130166,
+        "sha256": "0804c863bcafdace4447eedcbf7dee3f1b0fbc271a4112cb416fb2e9f7634edb",
+        "http_last_modified": "Thu, 28 Mar 2024 16:25:59 GMT",
+        "pdf_creation_metadata": "D:20240321153613-04'00'",
+        "pdf_modification_metadata": "D:20240325123818-04'00'"
+      },
+      "inspected_locators": [
+        "PDF p2 (printed p1), footnote1",
+        "PDF pp5–6 (printed pp4–5), RiteAid passage",
+        "PDF p7 (printed p6), Everalbum passage",
+        "PDF p25 (printed p24), restatement of algorithm-deletion orders"
+      ],
+      "rights": "FTC-authored report under general government-material statement; not used to grant rights to cited third-party material.",
+      "artifact_id": "F-FTC-UPDATE2023",
+      "branch": "FTC",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "url": "https://www.cac.gov.cn/2026-09/15/c_1790876152357946.htm",
+      "source_native_identifier": "c_1790876152357946",
+      "title": "国家网信办发布近期网络安全、数据安全、个人信息保护等领域执法典型案例",
+      "version": {
+        "kind": "dated_live_HTML_as_retrieved",
+        "displayed_publication": "2026-09-15 17:00",
+        "cms_publishdate": "2026/09/15 17:03:23",
+        "immutable_version_or_hash": null,
+        "revision_notice_observed": false
+      },
+      "publisher": "中国网信网 / 国家互联网信息办公室",
+      "asserted_regulators": "National CAC publishes summaries of investigations/actions by unnamed cyberspace authorities; item 10 specifies the local cyberspace office.",
+      "locator": "Items 9 and 10; retrieved lines 53 and 55; header line 38; footer lines 62/78 and CMS line 89",
+      "inspection_state": "primary_text_manually_reviewed",
+      "rights": {
+        "observed": "Footer copyright notice in name of the central cyberspace administration offices.",
+        "artifact_specific_reuse_grant": null,
+        "scope_limit": "No affirmative reuse permission or rule for third-party material established."
+      },
+      "artifact_id": "DS6-CGP-ART-01",
+      "branch": "CGP",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "url": "https://www.jswx.gov.cn/csj/sh/202506/t20250624_111471.shtml",
+      "source_native_identifier": "t20250624_111471",
+      "title": "保护个人信息权益，防范违规信息生成 上海市网信办对一批拒不整改的生成式人工智能服务网站予以立案处罚",
+      "version": {
+        "kind": "dated_live_HTML_as_retrieved",
+        "displayed_publication": "2025-06-24 17:46:00",
+        "immutable_version_or_hash": null,
+        "revision_notice_observed": false
+      },
+      "publisher": "江苏网信网 / 中共江苏省委网络安全和信息化委员会办公室",
+      "source_credit": "网信上海",
+      "asserting_organization": "上海市网信办",
+      "jurisdiction_of_reported_actions": "Shanghai",
+      "locator": "Header/source at lines 48-50; prior instruction at line 53; reinspection and escalation at line 55; footer at line 65",
+      "inspection_state": "official_republication_manually_reviewed",
+      "rights": {
+        "observed": "Publisher footer copyright; article attributes content to 网信上海.",
+        "artifact_specific_reuse_grant": null,
+        "scope_limit": "Publisher footer does not establish a grant for the credited Shanghai text or its source-original."
+      },
+      "dependence": {
+        "relationship": "republication_attributed_to",
+        "named_source": "网信上海",
+        "upstream_artifact_url": null,
+        "exact_upstream_identity_verified": false
+      },
+      "artifact_id": "DS6-CGP-ART-02",
+      "branch": "CGP",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "url": "https://www.jswx.gov.cn/csj/sh/202511/t20251124_164342.shtml",
+      "source_native_identifier": "t20251124_164342",
+      "title": "整治滥用 护航发展 上海市网信办开展“AI滥用”专项执法工作",
+      "version": {
+        "kind": "dated_live_HTML_as_retrieved",
+        "displayed_publication": "2025-11-24 15:40:00",
+        "immutable_version_or_hash": null,
+        "revision_notice_observed": false
+      },
+      "publisher": "江苏网信网 / 中共江苏省委网络安全和信息化委员会办公室",
+      "source_credit": "网信上海",
+      "asserting_organization": "上海市网信办",
+      "jurisdiction_of_reported_actions": "Shanghai",
+      "locator": "Header/source at lines 48-50; four counts and actions at line 54; qualitative result at line 56; footer at line 59",
+      "inspection_state": "official_republication_manually_reviewed",
+      "rights": {
+        "observed": "Publisher footer copyright; article attributes content to 网信上海.",
+        "artifact_specific_reuse_grant": null,
+        "scope_limit": "Publisher footer does not establish a grant for the credited Shanghai text or its source-original."
+      },
+      "dependence": {
+        "relationship": "republication_attributed_to",
+        "named_source": "网信上海",
+        "candidate_upstream_artifact_url": "https://mp.weixin.qq.com/s/rO8DnpkrDlCqVyigrM0CAg",
+        "exact_upstream_identity_verified": false
+      },
+      "artifact_id": "DS6-CGP-ART-03",
+      "branch": "CGP",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "retrieved_on_utc": "2026-10-08",
+      "catalog_mapping": null,
+      "source_text_inspected": true,
+      "version_scope": "Current representation retrieved on inspection date; no unobserved revision history inferred."
+    },
+    {
+      "url": "https://mp.weixin.qq.com/s/rO8DnpkrDlCqVyigrM0CAg",
+      "description": "Candidate November source-original identified in a search-result bibliography; official account identity and content were not verified.",
+      "inspection_state": "uninspected_nonretryable_open_error",
+      "content_claims_admitted": false,
+      "artifact_id": "DS6-CGP-ART-04",
+      "branch": "CGP",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "source_text_inspected": false,
+      "version": null,
+      "catalog_mapping": null,
+      "retrieved_on_utc": "2026-10-08",
+      "version_scope": "Retrieval failed; no source representation or artifact version inspected."
+    }
+  ],
+  "assertions": [
+    {
+      "assertion_id": "opc:trial-window",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:summary",
+      "artifact_version_reference": "opc:summary",
+      "locator": "Page 1, The trial",
+      "source_native_case_or_event_identity": "Foodstuffs North Island facial-recognition trial and OPC inquiry: 25 supermarkets, 8 February to 7 September 2024; no native case number supplied",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_or_measurement_type": "trial_scope",
+      "source_native_fields": {
+        "original_data": {
+          "start": "2024-02-08",
+          "end": "2024-09-07",
+          "stores": 25,
+          "store_unit": "FSNI supermarkets"
+        },
+        "qualifiers": []
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Selected FSNI trial stores, North Island",
+      "window": {
+        "original": null,
+        "start": "2024-02-08",
+        "end": "2024-09-07",
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Official source text inspected; underlying microdata not independently rechecked",
+      "unknowns": [],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:report-alert-total",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:report",
+      "artifact_version_reference": "opc:report",
+      "locator": "¶220, printed page 56 (zero-based PDF page 55)",
+      "source_native_case_or_event_identity": "Foodstuffs North Island facial-recognition trial and OPC inquiry: 25 supermarkets, 8 February to 7 September 2024; no native case number supplied",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_or_measurement_type": "reported_alert_count",
+      "source_native_fields": {
+        "original_data": {
+          "value": 1735,
+          "unit": "FRT alerts"
+        },
+        "qualifiers": [
+          "Conflicts with 1742 in other OPC trial summaries."
+        ]
+      },
+      "numerator": null,
+      "denominator": {
+        "value": 1735,
+        "unit": "FRT alerts",
+        "relationship": "Explicit denominator for nine recorded misidentifications in this paragraph"
+      },
+      "population": "FRT alerts in the stated 25-supermarket trial, 8 February to 7 September 2024; no alternate total-specific window established",
+      "window": {
+        "original": null,
+        "start": "2024-02-08",
+        "end": "2024-09-07",
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Official source text inspected; underlying microdata not independently rechecked",
+      "unknowns": [],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:summary-alert-total",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:summary",
+      "artifact_version_reference": "opc:summary",
+      "locator": "Page 1, The trial",
+      "source_native_case_or_event_identity": "Foodstuffs North Island facial-recognition trial and OPC inquiry: 25 supermarkets, 8 February to 7 September 2024; no native case number supplied",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_or_measurement_type": "reported_alert_count",
+      "source_native_fields": {
+        "original_data": {
+          "value": 1742,
+          "unit": "alerts"
+        },
+        "qualifiers": [
+          "Same stated trial window; reconciliation with report not supplied."
+        ]
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "FRT alerts in the stated 25-supermarket trial, 8 February to 7 September 2024; no alternate total-specific window established",
+      "window": {
+        "original": null,
+        "start": "2024-02-08",
+        "end": "2024-09-07",
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [
+        "opc:report"
+      ],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Official source text inspected; underlying microdata not independently rechecked",
+      "unknowns": [],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:landing-alert-total",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:landing",
+      "artifact_version_reference": "opc:landing",
+      "locator": "Foodstuff’s North Island trial; line 50",
+      "source_native_case_or_event_identity": "Foodstuffs North Island facial-recognition trial and OPC inquiry: 25 supermarkets, 8 February to 7 September 2024; no native case number supplied",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_or_measurement_type": "reported_alert_count",
+      "source_native_fields": {
+        "original_data": {
+          "value": 1742,
+          "unit": "alerts"
+        },
+        "qualifiers": []
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "FRT alerts in the stated 25-supermarket trial, 8 February to 7 September 2024; no alternate total-specific window established",
+      "window": {
+        "original": null,
+        "start": "2024-02-08",
+        "end": "2024-09-07",
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "publication": "2025-06-04",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "publication_display": "4 Jun 2025, 09:00",
+        "publication_timezone": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [
+        "opc:summary",
+        "opc:report"
+      ],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Official source text inspected; underlying microdata not independently rechecked",
+      "unknowns": [],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:release-alert-total",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:release",
+      "artifact_version_reference": "opc:release",
+      "locator": "Final trial-count paragraph; line 59",
+      "source_native_case_or_event_identity": "Foodstuffs North Island facial-recognition trial and OPC inquiry: 25 supermarkets, 8 February to 7 September 2024; no native case number supplied",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_or_measurement_type": "reported_alert_count",
+      "source_native_fields": {
+        "original_data": {
+          "value": 1742,
+          "unit": "alerts"
+        },
+        "qualifiers": []
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "FRT alerts in the stated 25-supermarket trial, 8 February to 7 September 2024; no alternate total-specific window established",
+      "window": {
+        "original": null,
+        "start": "2024-02-08",
+        "end": "2024-09-07",
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "publication": "2025-06-04",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "publication_display": "4 Jun 2025, 07:00",
+        "publication_timezone": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [
+        "opc:summary",
+        "opc:report"
+      ],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Official source text inspected; underlying microdata not independently rechecked",
+      "unknowns": [],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:confirmed-matches",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:summary",
+      "artifact_version_reference": "opc:summary",
+      "locator": "Page 1, The trial",
+      "source_native_case_or_event_identity": "Foodstuffs North Island facial-recognition trial and OPC inquiry: 25 supermarkets, 8 February to 7 September 2024; no native case number supplied",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_or_measurement_type": "reported_staff_confirmed_match_count",
+      "source_native_fields": {
+        "original_data": {
+          "value": 1208,
+          "unit": "confirmed matches"
+        },
+        "qualifiers": [
+          "Confirmation category is not demonstrated biometric ground truth."
+        ],
+        "relationship": "Source explicitly states confirmed matches are among the 1742 alerts."
+      },
+      "numerator": {
+        "value": 1208,
+        "unit": "confirmed matches"
+      },
+      "denominator": {
+        "value": 1742,
+        "unit": "alerts"
+      },
+      "population": "Trial alert outcomes",
+      "window": {
+        "original": null,
+        "start": "2024-02-08",
+        "end": "2024-09-07",
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Official source text inspected; underlying microdata not independently rechecked",
+      "unknowns": [
+        "Relationship to the nine recorded misidentifications not resolved."
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:scanned-images",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:summary",
+      "artifact_version_reference": "opc:summary",
+      "locator": "Page 1, The trial; report ¶119(a), printed pages 34–35",
+      "source_native_case_or_event_identity": "Foodstuffs North Island facial-recognition trial and OPC inquiry: 25 supermarkets, 8 February to 7 September 2024; no native case number supplied",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_or_measurement_type": "reported_scan_image_count",
+      "source_native_fields": {
+        "original_data": {
+          "value": 225972004,
+          "unit_as_summary": "faces scanned",
+          "unit_clarification_as_report": "images taken by FRT system"
+        },
+        "qualifiers": [
+          "Repeats include multiple scans on one visit; not unique people.",
+          "The exact reported count is not described as an extrapolation."
+        ],
+        "unique_people": null
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Images/scans across trial stores and trial period",
+      "window": {
+        "original": null,
+        "start": "2024-02-08",
+        "end": "2024-09-07",
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": "opc:report",
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Official source text inspected; underlying microdata not independently rechecked",
+      "unknowns": [
+        "Unique faces/individuals unavailable."
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:deletion-share",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:summary",
+      "artifact_version_reference": "opc:summary",
+      "locator": "Page 1, The trial; report ¶119(c), printed page 35",
+      "source_native_case_or_event_identity": "Foodstuffs North Island facial-recognition trial and OPC inquiry: 25 supermarkets, 8 February to 7 September 2024; no native case number supplied",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_or_measurement_type": "reported_retention_deletion_share",
+      "source_native_fields": {
+        "original_data": {
+          "value": 99.999,
+          "unit": "percent",
+          "within": "one minute"
+        },
+        "qualifiers": [
+          "Report says individual deletion counts lacked clarity and approximation used image/track deletions."
+        ]
+      },
+      "numerator": {
+        "value": null,
+        "description": "Images/scans deleted within one minute"
+      },
+      "denominator": {
+        "value": 225972004,
+        "unit": "reported faces scanned/images"
+      },
+      "population": "Scan/image records; not unique people",
+      "window": {
+        "original": null,
+        "start": "2024-02-08",
+        "end": "2024-09-07",
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": "opc:report",
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Official source text inspected; underlying microdata not independently rechecked",
+      "unknowns": [
+        "Exact deletion numerator and underlying per-person deletion checks not available."
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:verification-failures",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:report",
+      "artifact_version_reference": "opc:report",
+      "locator": "¶215–218, printed page 56",
+      "source_native_case_or_event_identity": "Foodstuffs North Island facial-recognition trial and OPC inquiry: 25 supermarkets, 8 February to 7 September 2024; no native case number supplied",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_or_measurement_type": "estimated_verification_process_failure_count",
+      "source_native_fields": {
+        "original_data": {
+          "value": 13,
+          "qualifier_as_source": "up to an estimated",
+          "unit": "instances",
+          "components": [
+            {
+              "value": 9,
+              "unit": "misidentification instances"
+            },
+            {
+              "value": 4,
+              "unit": "other protocol-failure incidents"
+            }
+          ]
+        },
+        "qualifiers": [
+          "Four other cases do not establish misidentification or resulting harm.",
+          "Incomplete records mean this is not a complete upper bound on all failures."
+        ]
+      },
+      "numerator": {
+        "value": 13,
+        "qualifier": "estimated up to",
+        "unit": "verification-process failures"
+      },
+      "denominator": null,
+      "population": "Recorded/evaluated trial incidents",
+      "window": {
+        "original": null,
+        "start": "2024-02-08",
+        "end": "2024-09-07",
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Official source text inspected; underlying microdata not independently rechecked",
+      "unknowns": [
+        "Complete failure ascertainment not available."
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:recorded-misidentifications",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:report",
+      "artifact_version_reference": "opc:report",
+      "locator": "¶216, ¶219–221, printed page 56",
+      "source_native_case_or_event_identity": "Foodstuffs North Island facial-recognition trial and OPC inquiry: 25 supermarkets, 8 February to 7 September 2024; no native case number supplied",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_or_measurement_type": "recorded_misidentification_count",
+      "source_native_fields": {
+        "original_data": {
+          "value": 9,
+          "unit": "cases"
+        },
+        "qualifiers": [
+          "Recorded cases; source warns true number could be higher.",
+          "Latest recorded instance described as late June/early July 2024."
+        ],
+        "derived_rate": null
+      },
+      "numerator": {
+        "value": 9,
+        "unit": "recorded misidentification cases"
+      },
+      "denominator": {
+        "value": 1735,
+        "unit": "FRT alerts",
+        "source_native_relationship": "nine cases out of 1735 total FRT alerts"
+      },
+      "population": "Trial records reviewed; detection completeness unknown",
+      "window": {
+        "original": null,
+        "start": "2024-02-08",
+        "end": "2024-09-07",
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "most_recent_recorded_event_text": "late June/early July 2024",
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Official source text inspected; underlying microdata not independently rechecked",
+      "unknowns": [],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:record-missingness",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:report",
+      "artifact_version_reference": "opc:report",
+      "locator": "¶221, printed page 56",
+      "source_native_case_or_event_identity": "Foodstuffs North Island facial-recognition trial and OPC inquiry: 25 supermarkets, 8 February to 7 September 2024; no native case number supplied",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_or_measurement_type": "record_quality_limitation",
+      "source_native_fields": {
+        "original_data": {
+          "groups": [
+            {
+              "value": 70,
+              "unit": "further cases",
+              "missing": "Match and approach status unclear"
+            },
+            {
+              "value": 31,
+              "unit": "further cases",
+              "missing": "Approach recorded; match not recorded"
+            },
+            {
+              "value": 3,
+              "unit": "further incidents",
+              "missing": "Match and approach status unclear"
+            }
+          ]
+        },
+        "qualifiers": [
+          "Unknown-status records are not confirmed extra failures.",
+          "No shared case-level identities were available; do not assert a reidentified or independently deduplicated cohort."
+        ]
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Additional trial records described in inquiry",
+      "window": {
+        "original": null,
+        "start": "2024-02-08",
+        "end": "2024-09-07",
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Official source text inspected; underlying microdata not independently rechecked",
+      "unknowns": [],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:in-trial-check-and-adjustment",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:report",
+      "artifact_version_reference": "opc:report",
+      "locator": "¶99–104, ¶114–115; ¶189; printed pages 30–34 and 50",
+      "source_native_case_or_event_identity": "Foodstuffs North Island facial-recognition trial and OPC inquiry: 25 supermarkets, 8 February to 7 September 2024; no native case number supplied",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_or_measurement_type": "regulator_documented_trial_review_and_changes",
+      "source_native_fields": {
+        "original_data": {
+          "regulator_site_visits": 10,
+          "site_unit": "trial stores",
+          "algorithm_alert_trigger": 90,
+          "staff_intervention_threshold_after_change": 92.5,
+          "threshold_unit": "source-described percent match score",
+          "changes": [
+            "watchlist photo cleanup",
+            "manual clarification",
+            "staff training"
+          ],
+          "post_change_outcome": {
+            "type": "qualitative_negative_observation",
+            "reported_statement": "No further serious misidentifications reported following the operational improvements",
+            "window": {
+              "start": null,
+              "start_qualifier": "after changes; precise change date unestablished",
+              "end": "2024-09-07"
+            },
+            "limitation": "Not a zero for the full trial; ascertainment limited by incomplete records."
+          }
+        },
+        "qualifiers": [
+          "Regulator documents in-trial review and changes, not a post-inquiry completion audit.",
+          "No serious later incidents reported is limited by record completeness and unidentified exact change date."
+        ]
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "OPC inquiry: operator documents/statistics, evaluator work, and selected store visits",
+      "window": {
+        "original": null,
+        "start": "2024-02-08",
+        "end": "2024-09-07",
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Official source text inspected; underlying microdata not independently rechecked",
+      "unknowns": [
+        "Exact implementation date and independent row-level validation not supplied."
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:future-safeguards",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:report",
+      "artifact_version_reference": "opc:report",
+      "locator": "¶10; ¶191; ¶222; ¶227, printed pages 9–10, 51, 57–58",
+      "source_native_case_or_event_identity": "OPC recommendations for future permanent or expanded FSNI use following the 2024 trial",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_or_measurement_type": "prospective_recommendations_and_expectations",
+      "source_native_fields": {
+        "original_data": {
+          "recommended_algorithm_trigger_minimum": 92.5,
+          "unit": "source-described percent match score",
+          "further_items": [
+            "watchlist criteria",
+            "updated PIA",
+            "records",
+            "staff training",
+            "ongoing assurance"
+          ]
+        },
+        "qualifiers": [
+          "Recommendation to update algorithm differs from staff operational threshold already changed.",
+          "No effective order date or verified completion date identified."
+        ],
+        "status": "Recommendations/conditions articulated in inquiry; no separate binding remedial order inspected."
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Future permanent/expanded deployment safeguards",
+      "window": {
+        "original": null,
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "event_start": null,
+        "event_end": null,
+        "order": null,
+        "effective": null,
+        "revision": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Official source text inspected; underlying microdata not independently rechecked",
+      "unknowns": [],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:general-monitoring-expectation",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:factsheet",
+      "artifact_version_reference": "opc:factsheet",
+      "locator": "Section 9, printed page 4",
+      "source_native_case_or_event_identity": "OPC general live-FRT guidance, associated with the inquiry; not a trial event or case-specific completion finding",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator inquiry/reporting, not a judicial ruling",
+      "action_or_measurement_type": "general_regulatory_guidance",
+      "source_native_fields": {
+        "original_data": {
+          "topics": [
+            "records",
+            "regular reviews",
+            "settings changes",
+            "removal if unjustified or unfixable"
+          ]
+        },
+        "qualifiers": [
+          "General guidance has no case-linked completed-compliance measurement."
+        ]
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Businesses considering/using live FRT",
+      "window": {
+        "original": null,
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "publication_cover": "May 2025",
+        "publication_exact": null,
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Official source text inspected; underlying microdata not independently rechecked",
+      "unknowns": [],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:operator-continuation-claim",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:operator-page",
+      "artifact_version_reference": "opc:operator-page",
+      "locator": "Our continued use of FR, line 36",
+      "source_native_case_or_event_identity": "FSNI current listed-store operations, linked back to the 2024 trial; current cohort identity is not equated with the trial cohort",
+      "asserting_organization": "Foodstuffs North Island",
+      "authority_status": "Operator public statement",
+      "action_or_measurement_type": "operator_claim_of_continued_safeguards",
+      "source_native_fields": {
+        "original_data": {
+          "claim": "Listed stores continue using FR with the same or more robust safeguards/protocols as during the compliant trial."
+        },
+        "qualifiers": [
+          "No dated implementation schedule, itemized response to recommendations, or independent check on this page.",
+          "Current listed-store cohort must not be silently treated as the original 25-store cohort."
+        ]
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Stores currently listed on live operator page; no numerator/denominator used",
+      "window": {
+        "original": null,
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "publication": null,
+        "last_updated": null,
+        "event": null,
+        "order": null,
+        "effective": null,
+        "observed_at_utc": "2026-10-08 17:07:17 UTC"
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [
+        {
+          "relation": "links_back_to_trial_report",
+          "artifact": "opc:report"
+        }
+      ],
+      "supporting_artifact": null,
+      "rights_scope": "Copyright © 2026 Foodstuffs footer observed. Reuse licence not inspected or verified; OPC licence does not apply.",
+      "source_verification": "Inspected source text",
+      "verification_state": "Claim’s presence verified in official operator page; substance not independently validated",
+      "unknowns": [],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:trial-overall-finding",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:report",
+      "artifact_version_reference": "opc:report",
+      "locator": "A1082856, paragraphs 7-8(j), printed pages 6-7",
+      "source_native_case_or_event_identity": "Foodstuffs North Island facial-recognition trial and OPC inquiry: 25 supermarkets, 8 February to 7 September 2024; no native case number supplied",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator inquiry finding",
+      "action_or_measurement_type": "regulator_overall_trial_assessment",
+      "source_native_fields": {
+        "original_data": {
+          "overall_assessment": "Trial operating model, as updated, complied with the Privacy Act",
+          "initial_model_accuracy_finding": "The initial operating model as a whole did not yet meet the accuracy-principle standard"
+        },
+        "qualifiers": [
+          "Overall inquiry assessment does not establish that every alert was correct or that later recommendations were completed."
+        ]
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "FSNI trial operating model",
+      "window": {
+        "original": null,
+        "start": "2024-02-08",
+        "end": "2024-09-07",
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "order": null,
+        "effective": null,
+        "inquiry_public_release_from_landing": "2025-06-04",
+        "document_cover_date": "May 2025",
+        "exact_individual_pdf_publication_date": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Source assertion inspected; not independent replication of underlying records",
+      "unknowns": [
+        "Independent post-inquiry completion check not established."
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "opc:release-threshold-wording",
+      "supplied_catalog_references": [
+        "INM003"
+      ],
+      "artifact_id": "opc:release",
+      "artifact_version_reference": "opc:release",
+      "locator": "Media release, main privacy safeguards list, threshold bullet (retrieved line 47)",
+      "source_native_case_or_event_identity": "Foodstuffs North Island facial-recognition trial and OPC inquiry: 25 supermarkets, 8 February to 7 September 2024; no native case number supplied",
+      "asserting_organization": "Office of the Privacy Commissioner, New Zealand",
+      "authority_status": "Regulator media summary",
+      "action_or_measurement_type": "regulator_summary_of_operational_threshold_change",
+      "source_native_fields": {
+        "original_data": {
+          "source_label_quote": "operational threshold that triggered an FRT alert",
+          "before": 90,
+          "after": 92.5,
+          "unit": "source-described percent likelihood of images matching"
+        },
+        "qualifiers": [
+          "Preserve the release wording. The detailed report separately describes the algorithm trigger and staff intervention threshold; this is not an inspected formal correction."
+        ]
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "FSNI trial operating model",
+      "window": {
+        "original": null,
+        "start": "2024-02-08",
+        "end": "2024-09-07",
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "event_start": "2024-02-08",
+        "event_end": "2024-09-07",
+        "publication": "2025-06-04",
+        "order": null,
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "policy_artifact": "opc:rights",
+        "scope": "OPC-created material only; third-party material excluded",
+        "license": "CC BY; linked version not inspected",
+        "historical_declaration_scope": "Not established beyond material currently served"
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "Source assertion inspected; not independent replication of underlying records",
+      "unknowns": [
+        "Independent post-inquiry completion check not established."
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null,
+      "local_chain_association": "chain:opc-trial"
+    },
+    {
+      "assertion_id": "F-A01",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "artifact_id": "F-RA-CASE",
+      "artifact_version_reference": "F-RA-CASE",
+      "locator": "Case Summary; Last Updated; Case Status; Case Timeline",
+      "source_native_case_or_event_identity": {
+        "FTC_matter": "2023190",
+        "court_docket": "2:23-cv-5023"
+      },
+      "asserting_organization": "Federal Trade Commission",
+      "authority_status": "agency allegation summary and administrative page metadata",
+      "action_or_measurement_type": "complaint_summary_and_case_listing",
+      "source_native_fields": {
+        "assertion": "Agency page summarizes settled charges about facial-recognition safeguards; it currently displays Pending and March8,2024."
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Not a quantified incident observation.",
+      "window": {
+        "original": "Not a quantified incident observation.",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "page_last_updated": "2024-03-08",
+        "underlying_failure_event": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": "FTC Website Policy covers government-authored material generally; retain attribution. This does not establish rights in linked third-party filings.",
+      "source_verification": "Inspected source text",
+      "verification_state": "Primary page contents verified; allegations are not adjudicated failure findings; displayed status is not a compliance result.",
+      "unknowns": [
+        "current complete court docket disposition",
+        "incident population and window from underlying complaint not inspected"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "F-A02",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "artifact_id": "F-RA-DOC19",
+      "artifact_version_reference": "F-RA-DOC19",
+      "locator": "PDF p2 Findings5; PDF p3 §II; PDF p4 signature",
+      "source_native_case_or_event_identity": {
+        "court_case": "2:23-cv-05023-KBH",
+        "court_document": "19"
+      },
+      "asserting_organization": "U.S. District Court, Eastern District of Pennsylvania",
+      "authority_status": "signed stipulated court order",
+      "action_or_measurement_type": "stipulated_remedy_and_procedural_modification",
+      "source_native_fields": {
+        "assertion": "Court order bears February23 signature and February26 filing; respondents neither admit nor deny allegations except specified matters. SectionII consents to replacing the 2010 C-4308 order through AttachmentA."
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Legal obligation; no incidence denominator.",
+      "window": {
+        "original": "Legal obligation; no incidence denominator.",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "order_signed": "2024-02-23",
+        "docket_filed": "2024-02-26",
+        "website_listing": "2024-03-08",
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [
+        {
+          "from": "F-A02",
+          "to": "F-A03",
+          "relation": "includes_prior_bankruptcy_approval",
+          "state": "explicit document bundle and native docket identifiers"
+        },
+        {
+          "from": "F-A02",
+          "to": "F-A04",
+          "relation": "court_sectionII_references_modification_of_C4308; later order shares named respondents and administrative docket",
+          "state": "document-supported chain, not assertion of byte identity"
+        }
+      ],
+      "supporting_artifact": null,
+      "rights_scope": "Mixed court/agency/party filing package. FTC general policy is not an artifact-wide third-party grant; full package redistribution not cleared by this review.",
+      "source_verification": "Inspected source text",
+      "verification_state": "Operative court document verified; no completed-compliance finding established.",
+      "unknowns": [
+        "effective publication trigger date for Commission order"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "F-A03",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "artifact_id": "F-RA-DOC19",
+      "artifact_version_reference": "F-RA-DOC19",
+      "locator": "Embedded bankruptcy order, PDF pp37–38 (Doc1574, first two pages)",
+      "source_native_case_or_event_identity": {
+        "bankruptcy_case": "23-18993-MBK",
+        "document": "1574"
+      },
+      "asserting_organization": "U.S. Bankruptcy Court, District of New Jersey",
+      "authority_status": "bankruptcy settlement approval",
+      "action_or_measurement_type": "procedural_approval",
+      "source_native_fields": {
+        "assertion": "Embedded January23,2024 order approves the proposed FTC settlement and directs implementation."
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Not applicable.",
+      "window": {
+        "original": "Not applicable.",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "order": "2024-01-23",
+        "filed": "2024-01-23"
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": "Mixed court/agency/party filing package. FTC general policy is not an artifact-wide third-party grant; full package redistribution not cleared by this review.",
+      "source_verification": "Inspected source text",
+      "verification_state": "Prior procedural approval verified within named bundle; implementation direction is not proof of completion.",
+      "unknowns": [
+        "later implementation evidence"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "F-A04",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "artifact_id": "F-RA-MODIFIED",
+      "artifact_version_reference": "F-RA-MODIFIED",
+      "locator": "PDF pp1,28–29: preamble, §XVII, issuance",
+      "source_native_case_or_event_identity": {
+        "administrative_matter": "0723121",
+        "administrative_docket": "C-4308"
+      },
+      "asserting_organization": "Federal Trade Commission",
+      "authority_status": "separately issued Modified Decision and Order",
+      "action_or_measurement_type": "subsequent_order",
+      "source_native_fields": {
+        "assertion": "Commission issued the modified C-4308 order March5,2024, expressly superseding the November12,2010 order. It retains limited-admission language."
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Not applicable.",
+      "window": {
+        "original": "Not applicable.",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "issued": "2024-03-05",
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [
+        {
+          "from": "F-A04",
+          "to": {
+            "native_reference": "In re Rite Aid Corporation, C-4308, 150 F.T.C. 694 (Nov.12,2010)"
+          },
+          "relation": "supersedes",
+          "state": "explicit §XVII; old document contents uninspected"
+        }
+      ],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": "Agency-issued operative order under FTC government-material policy; attribution retained.",
+      "source_verification": "Inspected source text",
+      "verification_state": "Subsequent official order verified; not an adjudication of all complaint allegations or a compliance assessment.",
+      "unknowns": [
+        "exact final-order web-publication date",
+        "public compliance finding"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "F-A05",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "artifact_id": "F-RA-MODIFIED",
+      "artifact_version_reference": "F-RA-MODIFIED",
+      "locator": "PDF p6 PartI; PDF p28 PartXVIII",
+      "source_native_case_or_event_identity": {
+        "administrative_docket": "C-4308"
+      },
+      "asserting_organization": "Federal Trade Commission",
+      "authority_status": "ordered prohibition",
+      "action_or_measurement_type": "prospective_remedy",
+      "source_native_fields": {
+        "original_units": {
+          "duration_value": 5,
+          "duration_unit": "years",
+          "qualifier": "from the effective date"
+        },
+        "assertion": "Five-year prohibition runs from the order's effective date and covers the defined facial recognition/analysis system in retail stores, pharmacies and online retail platforms."
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Defined covered business activities, not a measured consumer population.",
+      "window": {
+        "original": "Defined covered business activities, not a measured consumer population.",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "issued": "2024-03-05",
+        "effective": null,
+        "prohibition_end": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": "Agency-issued operative order under FTC government-material policy; attribution retained.",
+      "source_verification": "Inspected source text",
+      "verification_state": "Requirement verified. PartXVIII makes effectiveness conditional on website publication as a final order; issuance, HTTP metadata and case update are not substituted.",
+      "unknowns": [
+        "calendar start/end not independently pinned"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "F-A06",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "artifact_id": "F-RA-MODIFIED",
+      "artifact_version_reference": "F-RA-MODIFIED",
+      "locator": "PDF p6 PartII(A); PDF pp25–28 PartsXIV/XVI",
+      "source_native_case_or_event_identity": {
+        "administrative_docket": "C-4308"
+      },
+      "asserting_organization": "Federal Trade Commission",
+      "authority_status": "deletion, reporting and monitoring requirements",
+      "action_or_measurement_type": "ordered_remedy_and_compliance_reporting",
+      "source_native_fields": {
+        "original_units": {
+          "deletion_deadline_value": 45,
+          "deletion_deadline_unit": "days",
+          "anchor": "effective date",
+          "qualifier": "unless prohibited by law"
+        },
+        "assertion": "Order requires deletion/destruction of covered images and derivative products within45 days after effectiveness, sworn confirmation, later compliance reports and cooperation with monitoring."
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Order-defined information; no observed item count.",
+      "window": {
+        "original": "Order-defined information; no observed item count.",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "effective": null,
+        "completion": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": "Agency-issued operative order under FTC government-material policy; attribution retained.",
+      "source_verification": "Inspected source text",
+      "verification_state": "Obligation verified; no execution or independent remediation result established.",
+      "unknowns": [
+        "respondent completion",
+        "agency assessment",
+        "scope actually deleted"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "F-A07",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "artifact_id": "F-EA-CASE",
+      "artifact_version_reference": "F-EA-CASE",
+      "locator": "Case Summary; Last Updated/Case Status; timeline",
+      "source_native_case_or_event_identity": {
+        "FTC_matter": "192 3172"
+      },
+      "asserting_organization": "Federal Trade Commission",
+      "authority_status": "agency allegation summary and case-page status",
+      "action_or_measurement_type": "settlement_summary_and_case_listing",
+      "source_native_fields": {
+        "assertion": "Page reports a settled allegation about facial recognition and retention after account deactivation; latest entry is May5,2022 compliance report and status Closed."
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Not a quantified outcome.",
+      "window": {
+        "original": "Not a quantified outcome.",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "page_last_updated": "2022-05-05",
+        "report_listing": "2022-05-05",
+        "order_listing": "2021-05-07",
+        "deletion_event": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": "FTC-authored metadata under general FTC government-material statement; no inherited license for respondent attachment.",
+      "source_verification": "Inspected source text",
+      "verification_state": "Page verified; closure is not a finding that deletion occurred.",
+      "unknowns": [
+        "agency validation of deletion"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "F-A08",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "artifact_id": "F-EA-FINAL",
+      "artifact_version_reference": "F-EA-FINAL",
+      "locator": "PDF p1; PDF pp7–8 PartVIII; PDF p8 issuance",
+      "source_native_case_or_event_identity": {
+        "FTC_matter": "1923172",
+        "administrative_docket": "C-4743"
+      },
+      "asserting_organization": "Federal Trade Commission",
+      "authority_status": "consent Decision and Order",
+      "action_or_measurement_type": "final_order",
+      "source_native_fields": {
+        "assertion": "Order issued May6,2021; webpage lists it May7. Limited admissions remain; effectiveness depends on publication as a final order."
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Not applicable.",
+      "window": {
+        "original": "Not applicable.",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "issued": "2021-05-06",
+        "webpage_timeline": "2021-05-07",
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": "Agency-issued operative order; covered by FTC general government-material statement, with attribution. No extension to respondent report.",
+      "source_verification": "Inspected source text",
+      "verification_state": "Document verified; issuance and webpage date retained separately.",
+      "unknowns": [
+        "exact publication trigger date not separately certified"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "F-A09",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "artifact_id": "F-EA-FINAL",
+      "artifact_version_reference": "F-EA-FINAL",
+      "locator": "PDF p2 definitionA; PDF pp4–5 PartIII(A)–(C) and proviso",
+      "source_native_case_or_event_identity": {
+        "administrative_docket": "C-4743"
+      },
+      "asserting_organization": "Federal Trade Commission",
+      "authority_status": "ordered deletion with exceptions",
+      "action_or_measurement_type": "remedy_scope",
+      "source_native_fields": {
+        "source_native_scope": [
+          {
+            "provision": "III(A)",
+            "deadline_days": 30,
+            "anchor": "issuance",
+            "objects": "photos/videos from Ever users requesting deactivation by issuance"
+          },
+          {
+            "provision": "III(B)",
+            "deadline_days": 90,
+            "anchor": "issuance",
+            "objects": "Face Embeddings from users without affirmative express consent for their creation by that deadline"
+          },
+          {
+            "provision": "III(C)",
+            "deadline_days": 90,
+            "anchor": "issuance",
+            "objects": "Affected Work Product: models/algorithms developed partly or wholly using Ever-user biometric information"
+          }
+        ],
+        "qualifiers": "Specified government requests and legal retention obligations permit retention with detailed disclosure; an additional sworn deletion confirmation is required within 30 days after the retention obligation ends."
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Three distinct object scopes; no deletion counts or verified completeness denominator.",
+      "window": {
+        "original": "Three distinct object scopes; no deletion counts or verified completeness denominator.",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "issuance": "2021-05-06",
+        "actual_deletion": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": "Agency-issued operative order; covered by FTC general government-material statement, with attribution. No extension to respondent report.",
+      "source_verification": "Inspected source text",
+      "verification_state": "Requirement and scope verified, performance unverified.",
+      "unknowns": [
+        "actual retained exceptions",
+        "object totals",
+        "independent deletion check"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "F-A10",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "artifact_id": "F-EA-COMPLIANCE",
+      "artifact_version_reference": "F-EA-COMPLIANCE",
+      "locator": "PDF p7 (printed p6), response following PartIII; PDF p11 (printed p10), declaration",
+      "source_native_case_or_event_identity": {
+        "FTC_File_No": "1923172",
+        "respondent": "Paravision, Inc."
+      },
+      "asserting_organization": "Paravision, Inc.",
+      "authority_status": "respondent sworn compliance report",
+      "action_or_measurement_type": "reported_compliance",
+      "source_native_fields": {
+        "original_quote": "Paravision timely submitted written statements to the Commission confirming it deleted the data required under Order § III (A), (B), and (C)."
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Objects covered by PartIII(A)–(C); no per-object totals or deletion timestamps given in this assertion.",
+      "window": {
+        "original": "Objects covered by PartIII(A)–(C); no per-object totals or deletion timestamps given in this assertion.",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "declaration_executed": "2022-05-05",
+        "FTC_case_listing": "2022-05-05",
+        "claimed_deletion_dates": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [
+        {
+          "from": "F-A10",
+          "to": "F-A09",
+          "relation": "claims_compliance_with_PartIII(A)-(C)",
+          "state": "explicit respondent cross-reference"
+        }
+      ],
+      "supporting_artifact": null,
+      "rights_scope": "Respondent-authored filing. No artifact-specific reuse grant found. FTC policy expressly does not grant third-party copyright permissions. Preserve factual metadata and narrow attributed quotation; defer attachment redistribution.",
+      "source_verification": "Inspected source text; relevant Paravision report pages also visually reviewed",
+      "verification_state": "The existence and wording of the respondent claim are primary-verified; the deletion itself is not independently verified here.",
+      "unknowns": [
+        "underlying deletion confirmations not inspected",
+        "technical validation",
+        "independent agency conclusion",
+        "retention exceptions actually used"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "F-A11",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "artifact_id": "F-EA-COMPLIANCE",
+      "artifact_version_reference": "F-EA-COMPLIANCE",
+      "locator": "PDF p1, footnote1 and report opening",
+      "source_native_case_or_event_identity": {
+        "FTC_File_No": "1923172"
+      },
+      "asserting_organization": "Paravision, Inc.",
+      "authority_status": "respondent identity statement",
+      "action_or_measurement_type": "identity_continuity",
+      "source_native_fields": {
+        "assertion": "Respondent reports Everalbum changed its name to Paravision on September7,2021."
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Company name continuity in the same stated FTC matter.",
+      "window": {
+        "original": "Company name continuity in the same stated FTC matter.",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "asserted_name_change": "2021-09-07",
+        "report": "2022-05-05"
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [
+        {
+          "from": "F-A11",
+          "to": "F-A08",
+          "relation": "respondent identity continuity",
+          "state": "same native FTC matter; report name-change claim plus order d/b/a text"
+        }
+      ],
+      "supporting_artifact": null,
+      "rights_scope": "Respondent-authored filing. No artifact-specific reuse grant found. FTC policy expressly does not grant third-party copyright permissions. Preserve factual metadata and narrow attributed quotation; defer attachment redistribution.",
+      "source_verification": "Inspected source text; relevant Paravision report pages also visually reviewed",
+      "verification_state": "Attributable respondent identity statement; legal order also names Everalbum d/b/a Paravision. Do not create a second incident merely from name change.",
+      "unknowns": [
+        "corporate-registry name-change verification outside scope"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "F-A12",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "artifact_id": "F-FTC-UPDATE2023",
+      "artifact_version_reference": "F-FTC-UPDATE2023",
+      "locator": "PDF p7 (printed p6), Everalbum paragraph",
+      "source_native_case_or_event_identity": {
+        "case_name": "Everalbum, Inc."
+      },
+      "asserting_organization": "Federal Trade Commission",
+      "authority_status": "agency retrospective enforcement summary",
+      "action_or_measurement_type": "restatement_of_order",
+      "source_native_fields": {
+        "assertion": "The agency says it obtained an order requiring deletion of work products derived from unlawfully obtained or possessed data."
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Report coverage; no measured remediation population.",
+      "window": {
+        "original": "Report coverage; no measured remediation population.",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "coverage_start": "2021-01",
+        "coverage_end": "2023-12",
+        "publication": null,
+        "document_filename_date": "2024.03.21"
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [
+        {
+          "from": "F-A12",
+          "to": "F-A09",
+          "relation": "repeats_remedy_description",
+          "state": "dependent enforcement summary; not independent validation"
+        }
+      ],
+      "supporting_artifact": null,
+      "rights_scope": "FTC-authored report under general government-material statement; not used to grant rights to cited third-party material.",
+      "source_verification": "Inspected source text",
+      "verification_state": "Agency restatement verified; passage does not validate respondent deletion performance.",
+      "unknowns": [
+        "whether any nonpublic/public assessment exists outside inspected set"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "F-A13",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "artifact_id": "F-FTC-UPDATE2023",
+      "artifact_version_reference": "F-FTC-UPDATE2023",
+      "locator": "PDF p2 footnote1; PDF p6 (printed p5), RiteAid paragraph",
+      "source_native_case_or_event_identity": {
+        "case_name": "Rite Aid Corp."
+      },
+      "asserting_organization": "Federal Trade Commission",
+      "authority_status": "retrospective summary limited by stated coverage",
+      "action_or_measurement_type": "temporally_scoped_republication",
+      "source_native_fields": {
+        "assertion": "RiteAid passage describes the settlement as awaiting court approval; report footnote covers January2021–December2023."
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Report coverage ends before February2024 court order.",
+      "window": {
+        "original": "Report coverage ends before February2024 court order.",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "coverage_end": "2023-12",
+        "publication": null,
+        "document_filename_date": "2024.03.21"
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": "FTC-authored report under general government-material statement; not used to grant rights to cited third-party material.",
+      "source_verification": "Inspected source text",
+      "verification_state": "Keep the scoped statement; do not let packaging date reverse the later primary order or create a new incident.",
+      "unknowns": [
+        "exact paragraph drafting/cutoff date"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "F-A14",
+      "supplied_catalog_references": [
+        "INM006"
+      ],
+      "artifact_id": "F-RIGHTS",
+      "artifact_version_reference": "F-RIGHTS",
+      "locator": "Copyright Permission",
+      "source_native_case_or_event_identity": null,
+      "asserting_organization": "Federal Trade Commission",
+      "authority_status": "website rights statement",
+      "action_or_measurement_type": "rights_scope",
+      "source_native_fields": {
+        "assertion": "General government-material statement does not authorize reuse of third-party filings; Paravision report therefore remains separately uncleared."
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "Not applicable.",
+      "window": {
+        "original": "Not applicable.",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "policy_updated": "2023-08"
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": "Policy says most FTC-site material is U.S. Government work/public domain, recommends attribution, and disclaims authority to grant permission for third-party copyrighted material, including public filings.",
+      "source_verification": "Inspected source text",
+      "verification_state": "Policy inspected; no artifact-specific respondent grant found.",
+      "unknowns": [
+        "third-party attachment redistribution rights"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-01",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "artifact_id": "DS6-CGP-ART-01",
+      "artifact_version_reference": "DS6-CGP-ART-01",
+      "locator": "Item 9",
+      "source_native_case_or_event_identity": "Item 9: anonymous Sichuan company / WeChat mini-program",
+      "asserting_organization": "国家网信办, summarizing 网信部门 findings",
+      "authority_status": "official regulator investigation summary; underlying decision/inspection record not provided",
+      "action_or_measurement_type": "regulator_reported_noncompliance_finding",
+      "source_native_fields": {
+        "assertion": "The mini-program supplied AI text dialogue and image generation without specified visible/metadata/export labeling and without the required security assessment.",
+        "measurement": {
+          "value": null,
+          "source_unit": "小程序",
+          "denominator": null,
+          "population": "the item-9 mini-program",
+          "window_original": "近段时间以来",
+          "exact_window": null
+        }
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "the item-9 mini-program",
+      "window": {
+        "original": "近段时间以来",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "publication": "2026-09-15",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "observed": "Footer copyright notice in name of the central cyberspace administration offices.",
+        "artifact_specific_reuse_grant": null,
+        "scope_limit": "No affirmative reuse permission or rule for third-party material established."
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "notice_assertion_verified; underlying technical observations not independently replicated",
+      "unknowns": [
+        "investigation dates",
+        "case/decision number",
+        "final decision text",
+        "subsequent correction or appeal",
+        "completed remediation"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-02",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "artifact_id": "DS6-CGP-ART-01",
+      "artifact_version_reference": "DS6-CGP-ART-01",
+      "locator": "Item 9, final clause",
+      "source_native_case_or_event_identity": "Item 9: anonymous Sichuan company / WeChat mini-program",
+      "asserting_organization": "国家网信办, reporting unnamed 网信部门 action",
+      "authority_status": "official report of an ordered remedy",
+      "action_or_measurement_type": "offline_order_reported",
+      "source_native_fields": {
+        "original_zh": "已依法责令下线该小程序",
+        "english_gloss": "Already lawfully ordered the mini-program taken offline.",
+        "measurement": {
+          "value": null,
+          "source_unit": "小程序",
+          "denominator": null,
+          "population": "same item-9 mini-program",
+          "window_original": "近段时间以来",
+          "exact_window": null
+        }
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "same item-9 mini-program",
+      "window": {
+        "original": "近段时间以来",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "publication": "2026-09-15",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [
+        {
+          "type": "same_source_explicit_case",
+          "target": "DS6-CGP-AS-01"
+        }
+      ],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "observed": "Footer copyright notice in name of the central cyberspace administration offices.",
+        "artifact_specific_reuse_grant": null,
+        "scope_limit": "No affirmative reuse permission or rule for third-party material established."
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "order_announced; fulfillment_not_verified",
+      "unknowns": [
+        "actual offline completion",
+        "current availability",
+        "reinspection",
+        "post-remedy outcome"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-03",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "artifact_id": "DS6-CGP-ART-01",
+      "artifact_version_reference": "DS6-CGP-ART-01",
+      "locator": "Item 10",
+      "source_native_case_or_event_identity": "Item 10: anonymous Jiangsu joint-stock technology company / two API-relay websites",
+      "asserting_organization": "国家网信办, summarizing 网信部门 findings",
+      "authority_status": "official regulator investigation summary",
+      "action_or_measurement_type": "regulator_reported_noncompliance_finding",
+      "source_native_fields": {
+        "assertion": "Two websites invoked multiple models through API relays to provide dialogue/Q&A without the required security assessment; the notice reported content-security risk.",
+        "measurement": {
+          "value": 2,
+          "source_unit": "个网站",
+          "denominator": null,
+          "population": "websites operated by this one unnamed company",
+          "window_original": "近段时间以来",
+          "exact_window": null
+        }
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "websites operated by this one unnamed company",
+      "window": {
+        "original": "近段时间以来",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "publication": "2026-09-15",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "observed": "Footer copyright notice in name of the central cyberspace administration offices.",
+        "artifact_specific_reuse_grant": null,
+        "scope_limit": "No affirmative reuse permission or rule for third-party material established."
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "notice_assertion_verified; underlying test logs_not_inspected",
+      "unknowns": [
+        "websites' identities intentionally unresolved",
+        "inspection/decision dates",
+        "quantified harmful-output frequency"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-04",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "artifact_id": "DS6-CGP-ART-01",
+      "artifact_version_reference": "DS6-CGP-ART-01",
+      "locator": "Item 10, final sentence",
+      "source_native_case_or_event_identity": "Item 10: anonymous Jiangsu joint-stock technology company / two API-relay websites",
+      "asserting_organization": "国家网信办, reporting 属地网信办 action",
+      "authority_status": "official announcement of corrective instructions and warning penalty",
+      "action_or_measurement_type": "correction_order_and_warning_penalty_reported",
+      "source_native_fields": {
+        "original_zh": "已依法责令其改正、从严处理责任人，予以警告处罚",
+        "english_gloss": "Already lawfully ordered correction and strict handling of responsible persons, and issued a warning penalty.",
+        "measurement": {
+          "value": null,
+          "source_unit": null,
+          "denominator": null,
+          "population": "item-10 company; not two separately identified cases",
+          "window_original": "近段时间以来",
+          "exact_window": null
+        }
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "item-10 company; not two separately identified cases",
+      "window": {
+        "original": "近段时间以来",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "publication": "2026-09-15",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [
+        {
+          "type": "same_source_explicit_case",
+          "target": "DS6-CGP-AS-03"
+        }
+      ],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "observed": "Footer copyright notice in name of the central cyberspace administration offices.",
+        "artifact_specific_reuse_grant": null,
+        "scope_limit": "No affirmative reuse permission or rule for third-party material established."
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "remedy/penalty_announced; compliance_not_verified",
+      "unknowns": [
+        "final decision number/text",
+        "appeal or revision",
+        "whether responsible-person action occurred",
+        "compliance assessment"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-05",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "artifact_id": "DS6-CGP-ART-02",
+      "artifact_version_reference": "DS6-CGP-ART-02",
+      "locator": "Body paragraph immediately before return-check paragraph (retrieved line 53)",
+      "source_native_case_or_event_identity": "Shanghai 2025 action: earlier function-offline instruction, cohort size unspecified",
+      "asserting_organization": "上海市网信办",
+      "authority_status": "officially republished regulator instruction",
+      "action_or_measurement_type": "function_offline_instruction_with_relaunch_condition",
+      "source_native_fields": {
+        "assertion": "The regulator urged enterprises to take affected functions offline; relaunch was conditional on passing a security assessment.",
+        "measurement": {
+          "value": null,
+          "source_unit": "企业",
+          "denominator": null,
+          "population": "affected enterprises in the described Shanghai action",
+          "window_original": "本年度",
+          "exact_window": null
+        }
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "affected enterprises in the described Shanghai action",
+      "window": {
+        "original": "本年度",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "publication": "2025-06-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "observed": "Publisher footer copyright; article attributes content to 网信上海.",
+        "artifact_specific_reuse_grant": null,
+        "scope_limit": "Publisher footer does not establish a grant for the credited Shanghai text or its source-original."
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "instruction_reported; initial_fulfillment_scope_unknown",
+      "unknowns": [
+        "earlier instrument/date",
+        "entire instructed cohort",
+        "individual businesses",
+        "assessment standard/results"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-06",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "artifact_id": "DS6-CGP-ART-02",
+      "artifact_version_reference": "DS6-CGP-ART-02",
+      "locator": "Return-check paragraph (retrieved line 55)",
+      "source_native_case_or_event_identity": "June return-check: three unnamed enterprises",
+      "asserting_organization": "上海市网信办",
+      "authority_status": "regulator reports its return-inspection finding; independent of an operator compliance claim",
+      "action_or_measurement_type": "regulator_reinspection_noncompliance_found",
+      "source_native_fields": {
+        "original_zh": [
+          "“回头看”巡查",
+          "3家企业自行重新上线"
+        ],
+        "english_gloss": [
+          "return-check inspection",
+          "three enterprises relaunched on their own initiative"
+        ],
+        "assertion": "Three enterprises previously required to remove the functions relaunched without passing assessment or implementing necessary safeguards.",
+        "measurement": {
+          "value": 3,
+          "source_unit": "家企业",
+          "denominator": null,
+          "population": "previously instructed enterprises found in this return-check",
+          "window_original": "近期",
+          "exact_window": null
+        }
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "previously instructed enterprises found in this return-check",
+      "window": {
+        "original": "近期",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "publication": "2025-06-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [
+        {
+          "type": "explicit_prior_instruction_for_the_same_three_in_sentence",
+          "target": "DS6-CGP-AS-05",
+          "limitation": "Does not establish the size or identity of the full prior instruction cohort."
+        }
+      ],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "observed": "Publisher footer copyright; article attributes content to 网信上海.",
+        "artifact_specific_reuse_grant": null,
+        "scope_limit": "Publisher footer does not establish a grant for the credited Shanghai text or its source-original."
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "regulator_checked_recurrence/noncompliance_reported; successful_remediation_not_shown",
+      "unknowns": [
+        "inspection method",
+        "total inspected denominator",
+        "exact dates",
+        "identity link to November cohort"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-07",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "artifact_id": "DS6-CGP-ART-02",
+      "artifact_version_reference": "DS6-CGP-ART-02",
+      "locator": "Title (line 48) and return-check paragraph (line 55)",
+      "source_native_case_or_event_identity": "June return-check: three unnamed enterprises",
+      "asserting_organization": "上海市网信办",
+      "authority_status": "official report of talks, rectification instruction, and case proceedings; signed final decision not inspected",
+      "action_or_measurement_type": "enforcement_escalation_reported",
+      "source_native_fields": {
+        "original_zh": {
+          "body": "立案查处",
+          "title": "立案处罚"
+        },
+        "english_gloss": {
+          "body": "file cases for investigation/handling",
+          "title": "case filing and penalty action"
+        },
+        "assertion": "The notice reports regulatory talks, criticism and a comprehensive-rectification requirement; the title and body use different case-procedure formulations.",
+        "measurement": {
+          "value": null,
+          "source_unit": "企业",
+          "denominator": null,
+          "population": "enterprises in preceding June return-check paragraph",
+          "window_original": "近期",
+          "exact_window": null
+        }
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "enterprises in preceding June return-check paragraph",
+      "window": {
+        "original": "近期",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "publication": "2025-06-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [
+        {
+          "type": "explicit_same_paragraph_subject",
+          "target": "DS6-CGP-AS-06"
+        }
+      ],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "observed": "Publisher footer copyright; article attributes content to 网信上海.",
+        "artifact_specific_reuse_grant": null,
+        "scope_limit": "Publisher footer does not establish a grant for the credited Shanghai text or its source-original."
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "procedural_action_reported; final_disposition_and_compliance_unverified",
+      "unknowns": [
+        "case/penalty decision identifiers",
+        "specific sanction",
+        "decision/effective date",
+        "appeal/revision",
+        "completed rectification"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-08",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "artifact_id": "DS6-CGP-ART-03",
+      "artifact_version_reference": "DS6-CGP-ART-03",
+      "locator": "First action in quantitative paragraph (line 54)",
+      "source_native_case_or_event_identity": "November report: app-store action aggregate",
+      "asserting_organization": "上海市网信办",
+      "authority_status": "regulator-reported aggregate activity",
+      "action_or_measurement_type": "app_store_takedown_activity_reported",
+      "source_native_fields": {
+        "original_procedure_zh": "指导",
+        "english_gloss": "guided",
+        "measurement": {
+          "value": 54,
+          "source_unit": "款APP",
+          "qualifier_original": "共",
+          "denominator": null,
+          "population": "apps using generative-AI technology noncompliantly, under local app-store guidance",
+          "window_original": "专项行动期间",
+          "exact_window": null
+        }
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "apps using generative-AI technology noncompliantly, under local app-store guidance",
+      "window": {
+        "original": "专项行动期间",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "publication": "2025-11-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "observed": "Publisher footer copyright; article attributes content to 网信上海.",
+        "artifact_specific_reuse_grant": null,
+        "scope_limit": "Publisher footer does not establish a grant for the credited Shanghai text or its source-original."
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "aggregate_takedown_activity_reported; individual_execution_and_successful_remediation_not_independently_checked",
+      "unknowns": [
+        "per-app identities",
+        "action dates",
+        "verification method",
+        "overlap with website counts"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-09",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "artifact_id": "DS6-CGP-ART-03",
+      "artifact_version_reference": "DS6-CGP-ART-03",
+      "locator": "Second action in quantitative paragraph (line 54)",
+      "source_native_case_or_event_identity": "November report: 26-website return-check aggregate",
+      "asserting_organization": "上海市网信办",
+      "authority_status": "regulator-reported reinspection activity",
+      "action_or_measurement_type": "return_check_activity_reported",
+      "source_native_fields": {
+        "original_procedure_zh": "“回头看”巡查",
+        "english_gloss": "return-check inspection",
+        "measurement": {
+          "value": 26,
+          "source_unit": "家网站",
+          "denominator": null,
+          "population": "generative-AI service websites previously asked to remove functions",
+          "window_original": "专项行动期间",
+          "exact_window": null
+        }
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "generative-AI service websites previously asked to remove functions",
+      "window": {
+        "original": "专项行动期间",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "publication": "2025-11-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "observed": "Publisher footer copyright; article attributes content to 网信上海.",
+        "artifact_specific_reuse_grant": null,
+        "scope_limit": "Publisher footer does not establish a grant for the credited Shanghai text or its source-original."
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "reinspection_activity_reported; case_resolved_results_not_given",
+      "unknowns": [
+        "per-site result",
+        "inspection method",
+        "whether June three enterprises belong to these 26",
+        "whether November three are explicitly a subset"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-10",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "artifact_id": "DS6-CGP-ART-03",
+      "artifact_version_reference": "DS6-CGP-ART-03",
+      "locator": "Second action in quantitative paragraph (line 54), sentence following 26 websites",
+      "source_native_case_or_event_identity": "November report: three refusing-rectification websites",
+      "asserting_organization": "上海市网信办",
+      "authority_status": "regulator-reported case filing/penalty action; underlying decisions not provided",
+      "action_or_measurement_type": "case_filing_and_penalty_action_reported",
+      "source_native_fields": {
+        "original_procedure_zh": "立案处罚",
+        "english_gloss": "case filing and penalty action",
+        "measurement": {
+          "value": 3,
+          "source_unit": "家网站",
+          "denominator": null,
+          "population": "generative-AI service websites described as refusing rectification",
+          "qualifier": "first use of the Interim Measures for these case actions, per notice",
+          "window_original": "专项行动期间",
+          "exact_window": null
+        }
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "generative-AI service websites described as refusing rectification",
+      "window": {
+        "original": "专项行动期间",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "publication": "2025-11-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "observed": "Publisher footer copyright; article attributes content to 网信上海.",
+        "artifact_specific_reuse_grant": null,
+        "scope_limit": "Publisher footer does not establish a grant for the credited Shanghai text or its source-original."
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "official_procedure/result_wording_recorded; final_decisions_and_compliance_unverified",
+      "unknowns": [
+        "same entities as June three",
+        "explicit subset relationship to the 26",
+        "penalty kind/amount",
+        "decision/effective dates",
+        "appeal/revision",
+        "completed remedy"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-11",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "artifact_id": "DS6-CGP-ART-03",
+      "artifact_version_reference": "DS6-CGP-ART-03",
+      "locator": "Third action in quantitative paragraph (line 54)",
+      "source_native_case_or_event_identity": "November report: five first-violation websites",
+      "asserting_organization": "上海市网信办",
+      "authority_status": "regulator-reported first-violation penalty-exemption approach and instruction",
+      "action_or_measurement_type": "functions_offline_instruction_and_filing_guidance",
+      "source_native_fields": {
+        "original_procedure_zh": "督促",
+        "english_gloss": "urged/required",
+        "measurement": {
+          "value": 5,
+          "source_unit": "家网站",
+          "denominator": null,
+          "population": "websites with first-detected security-assessment or prohibited-function issues",
+          "window_original": "专项行动期间",
+          "exact_window": null
+        }
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "websites with first-detected security-assessment or prohibited-function issues",
+      "window": {
+        "original": "专项行动期间",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "publication": "2025-11-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "observed": "Publisher footer copyright; article attributes content to 网信上海.",
+        "artifact_specific_reuse_grant": null,
+        "scope_limit": "Publisher footer does not establish a grant for the credited Shanghai text or its source-original."
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "instruction_reported; execution_not_verified",
+      "unknowns": [
+        "individual exemption decision",
+        "function-removal completion",
+        "assessment outcome",
+        "overlap with other counts"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    },
+    {
+      "assertion_id": "DS6-CGP-AS-12",
+      "supplied_catalog_references": [
+        "CGP001",
+        "CGP001-A1"
+      ],
+      "artifact_id": "DS6-CGP-ART-03",
+      "artifact_version_reference": "DS6-CGP-ART-03",
+      "locator": "Concluding result paragraph (line 56)",
+      "source_native_case_or_event_identity": "November special-action qualitative assessment",
+      "asserting_organization": "上海市网信办",
+      "authority_status": "regulator qualitative assessment of its action",
+      "action_or_measurement_type": "qualitative_improvement_claim",
+      "source_native_fields": {
+        "original_result_zh": "“AI滥用”问题得到改观",
+        "english_gloss": "The AI-abuse problem has improved.",
+        "measurement": {
+          "value": null,
+          "source_unit": null,
+          "denominator": null,
+          "population": "special-action subject area",
+          "window_original": "通过专项行动",
+          "exact_window": null
+        }
+      },
+      "numerator": null,
+      "denominator": null,
+      "population": "special-action subject area",
+      "window": {
+        "original": "通过专项行动",
+        "start": null,
+        "end": null,
+        "exact_window": null
+      },
+      "dates_as_labeled": {
+        "publication": "2025-11-24",
+        "event": null,
+        "order": null,
+        "effective": null
+      },
+      "date_semantics": "Signature, filing, issuance, listing, publication, metadata and effective dates retain their native labels; missing operative dates are not inferred.",
+      "revision_links": [],
+      "dependence_links": [],
+      "supporting_artifact": null,
+      "rights_scope": {
+        "observed": "Publisher footer copyright; article attributes content to 网信上海.",
+        "artifact_specific_reuse_grant": null,
+        "scope_limit": "Publisher footer does not establish a grant for the credited Shanghai text or its source-original."
+      },
+      "source_verification": "Inspected source text",
+      "verification_state": "qualitative_claim_verified_as_published; not_a_measured_outcome",
+      "unknowns": [
+        "metric",
+        "baseline",
+        "sample",
+        "comparison window",
+        "magnitude",
+        "independent check"
+      ],
+      "repository_admission": "not_admitted",
+      "canonical_mapping": null
+    }
+  ],
+  "relationships": [
+    {
+      "from": "F-A02",
+      "to": "F-A03",
+      "relation": "includes_prior_bankruptcy_approval",
+      "state": "explicit document bundle and native docket identifiers"
+    },
+    {
+      "from": "F-A02",
+      "to": "F-A04",
+      "relation": "court_sectionII_references_modification_of_C4308; later order shares named respondents and administrative docket",
+      "state": "document-supported chain, not assertion of byte identity"
+    },
+    {
+      "from": "F-A04",
+      "to": {
+        "native_reference": "In re Rite Aid Corporation, C-4308, 150 F.T.C. 694 (Nov.12,2010)"
+      },
+      "relation": "supersedes",
+      "state": "explicit §XVII; old document contents uninspected"
+    },
+    {
+      "from": "F-A10",
+      "to": "F-A09",
+      "relation": "claims_compliance_with_PartIII(A)-(C)",
+      "state": "explicit respondent cross-reference"
+    },
+    {
+      "from": "F-A12",
+      "to": "F-A09",
+      "relation": "repeats_remedy_description",
+      "state": "dependent enforcement summary; not independent validation"
+    },
+    {
+      "from": "F-A11",
+      "to": "F-A08",
+      "relation": "respondent identity continuity",
+      "state": "same native FTC matter; report name-change claim plus order d/b/a text"
+    },
+    {
+      "from": "opc:landing",
+      "relation": "links_to",
+      "target": "opc:report"
+    },
+    {
+      "from": "opc:landing",
+      "relation": "links_to",
+      "target": "opc:summary"
+    },
+    {
+      "from": "opc:landing",
+      "relation": "links_to",
+      "target": "opc:release"
+    },
+    {
+      "from": "opc:landing",
+      "relation": "links_to",
+      "target": "opc:factsheet"
+    },
+    {
+      "from": "opc:report",
+      "relation": "underlying_inputs_identified_in_document_not_separately_inspected",
+      "target": null,
+      "description": "FSNI documentation/statistics, Scarlatti evaluation, OPC store visits and feedback (¶99)."
+    },
+    {
+      "from": "opc:summary",
+      "relation": "summary_of",
+      "target": "opc:report",
+      "qualifier": "Same inquiry; count discrepancy remains unresolved."
+    },
+    {
+      "from": "opc:release",
+      "relation": "announces_and_summarizes",
+      "target": "opc:report"
+    },
+    {
+      "from": "opc:release",
+      "relation": "republication_of_same_trial_assertions",
+      "target": "opc:summary"
+    },
+    {
+      "from": "opc:factsheet",
+      "relation": "general_guidance_linked_from_inquiry",
+      "target": "opc:landing"
+    },
+    {
+      "from": "opc:operator-page",
+      "relation": "links_back_to_and_describes",
+      "target": "opc:report"
+    },
+    {
+      "from": "opc:operator-page",
+      "relation": "links_to_uninspected_document",
+      "target": null,
+      "description": "Operator PIA and operator FR factsheet; not opened because cap reached."
+    },
+    {
+      "from": "DS6-CGP-ART-02",
+      "relationship": "republication_attributed_to",
+      "named_source": "网信上海",
+      "upstream_artifact_url": null,
+      "exact_upstream_identity_verified": false
+    },
+    {
+      "from": "DS6-CGP-ART-03",
+      "relationship": "republication_attributed_to",
+      "named_source": "网信上海",
+      "candidate_upstream_artifact_url": "https://mp.weixin.qq.com/s/rO8DnpkrDlCqVyigrM0CAg",
+      "exact_upstream_identity_verified": false
+    },
+    {
+      "from": "opc:summary-alert-total",
+      "source_native_link": "opc:report"
+    },
+    {
+      "from": "opc:landing-alert-total",
+      "source_native_link": "opc:summary"
+    },
+    {
+      "from": "opc:landing-alert-total",
+      "source_native_link": "opc:report"
+    },
+    {
+      "from": "opc:release-alert-total",
+      "source_native_link": "opc:summary"
+    },
+    {
+      "from": "opc:release-alert-total",
+      "source_native_link": "opc:report"
+    },
+    {
+      "from": "opc:operator-continuation-claim",
+      "source_native_link": {
+        "relation": "links_back_to_trial_report",
+        "artifact": "opc:report"
+      }
+    },
+    {
+      "from": "DS6-CGP-AS-02",
+      "source_native_link": {
+        "type": "same_source_explicit_case",
+        "target": "DS6-CGP-AS-01"
+      }
+    },
+    {
+      "from": "DS6-CGP-AS-04",
+      "source_native_link": {
+        "type": "same_source_explicit_case",
+        "target": "DS6-CGP-AS-03"
+      }
+    },
+    {
+      "from": "DS6-CGP-AS-06",
+      "source_native_link": {
+        "type": "explicit_prior_instruction_for_the_same_three_in_sentence",
+        "target": "DS6-CGP-AS-05",
+        "limitation": "Does not establish the size or identity of the full prior instruction cohort."
+      }
+    },
+    {
+      "from": "DS6-CGP-AS-07",
+      "source_native_link": {
+        "type": "explicit_same_paragraph_subject",
+        "target": "DS6-CGP-AS-06"
+      }
+    }
+  ],
+  "unresolved_links": [
+    {
+      "local_link_id": "opc:unresolved-counts",
+      "from": [
+        "opc:report-alert-total"
+      ],
+      "to": [
+        "opc:summary-alert-total",
+        "opc:landing-alert-total",
+        "opc:release-alert-total"
+      ],
+      "relation": "unresolved_conflicting_totals",
+      "resolution_status": "No inspected official correction, different population/window, or supplementary reconciliation establishes why 1735 and 1742 differ. Both describe the trial. Do not designate either as corrected or authoritative merely by document length or webpage recency."
+    },
+    {
+      "local_link_id": "opc:unresolved-post-inquiry-check",
+      "from": [
+        "opc:future-safeguards",
+        "opc:operator-continuation-claim"
+      ],
+      "to": [],
+      "relation": "independent_post_inquiry_verification_not_located_within_bound",
+      "resolution_status": "No subsequent regulator check of completed specific recommendations was located in the seven inspected artifacts. This is not evidence that no remediation occurred."
+    },
+    {
+      "local_link_id": "opc:unresolved-alert-person-crosswalk",
+      "from": [
+        "opc:recorded-misidentifications",
+        "opc:confirmed-matches",
+        "opc:scanned-images"
+      ],
+      "to": [],
+      "relation": "unavailable_unit_crosswalk",
+      "resolution_status": "No audited one-to-one mapping among images, unique visitors, alerts, staff-confirmed matches, verification failures and misidentified individuals was inspected."
+    },
+    {
+      "from": "F-A05",
+      "target": null,
+      "relation": "calendar_effective_date",
+      "reason": "Explicit final-publication condition; no verified publication-trigger timestamp. Do not substitute signature, filing, issuance, HTTP Last-Modified or page update."
+    },
+    {
+      "from": "F-A06",
+      "target": null,
+      "relation": "RiteAid_respondent_completion",
+      "reason": "No completion report inspected in bounded set."
+    },
+    {
+      "from": "F-A06",
+      "target": null,
+      "relation": "RiteAid_independent_remediation_check",
+      "reason": "No such finding located in bounded inspected set; does not prove none exists or no remediation occurred."
+    },
+    {
+      "from": "F-A10",
+      "target": null,
+      "relation": "Everalbum_underlying_deletion_confirmations",
+      "reason": "Report refers to separately submitted statements; inspected report supplies no technical validation."
+    },
+    {
+      "from": "F-A10",
+      "target": null,
+      "relation": "Everalbum_independent_agency_deletion_validation",
+      "reason": "Case closure and later order summary do not supply a performance finding; none located within scope."
+    },
+    {
+      "from": {
+        "user_potential_index_ids": [
+          "AIID 619",
+          "AIID 665"
+        ]
+      },
+      "target": null,
+      "relation": "possible_indexing_only",
+      "reason": "Indexes not inspected; no canonical per-case assignment verified; never separate corroboration or additional event."
+    },
+    {
+      "local_id": "DS6-CGP-LINK-01",
+      "from": "DS6-CGP-AS-02",
+      "target": null,
+      "requested_type": "completed_mini_program_offline_or_remediation",
+      "state": "unresolved",
+      "reason": "No case-linked follow-through established in bounded search."
+    },
+    {
+      "local_id": "DS6-CGP-LINK-02",
+      "from": "DS6-CGP-AS-04",
+      "target": null,
+      "requested_type": "final_decision_or_compliance_check",
+      "state": "unresolved",
+      "reason": "Notice gives action wording but no later identified instrument or check."
+    },
+    {
+      "local_id": "DS6-CGP-LINK-03",
+      "from": "DS6-CGP-AS-06",
+      "candidate_target": "DS6-CGP-AS-10",
+      "requested_type": "same_cohort",
+      "state": "unresolved_do_not_join",
+      "reason": "Equal counts and shared campaign do not identify anonymous subjects; June counts enterprises, November counts websites."
+    },
+    {
+      "local_id": "DS6-CGP-LINK-04",
+      "from": "DS6-CGP-AS-10",
+      "candidate_target": "DS6-CGP-AS-09",
+      "requested_type": "subset_of_26",
+      "state": "unresolved_do_not_use_as_denominator",
+      "reason": "Adjacent sentences do not expressly identify the three as a subset; no per-site crosswalk."
+    },
+    {
+      "local_id": "DS6-CGP-LINK-05",
+      "from": "DS6-CGP-ART-03",
+      "candidate_target": "DS6-CGP-ART-04",
+      "requested_type": "exact_republication_of",
+      "state": "candidate_unverified",
+      "reason": "Source credit establishes organizational attribution; candidate original could not be opened or its identity verified."
+    },
+    {
+      "local_id": "DS6-CGP-LINK-06",
+      "from": [
+        "DS6-CGP-AS-08",
+        "DS6-CGP-AS-09",
+        "DS6-CGP-AS-10",
+        "DS6-CGP-AS-11"
+      ],
+      "target": null,
+      "requested_type": "disjoint_cohorts_for_summing",
+      "state": "unresolved_do_not_sum",
+      "reason": "App/site units and overlap are unresolved."
+    },
+    {
+      "from": "opc:release-threshold-wording",
+      "candidate_target": "opc:in-trial-check-and-adjustment",
+      "relation": "threshold_wording_scope",
+      "state": "preserve_both_descriptions",
+      "reason": "Release operational-threshold wording does not establish a completed algorithm reset or a formal correction to the detailed report."
+    },
+    {
+      "from": "F-A01",
+      "target": null,
+      "relation": "later_federal_court_disposition",
+      "state": "unresolved_within_bound",
+      "reason": "Later C-4308 Commission order is verified; complete subsequent court docket status was not established."
+    }
+  ],
+  "potential_indexing_relationships": [
+    {
+      "index_reference": "AIID 619",
+      "source": "user-supplied baseline",
+      "index_inspected": false,
+      "target_case": null,
+      "mapping": "unresolved",
+      "independent_confirmation": false,
+      "additional_event": false
+    },
+    {
+      "index_reference": "AIID 665",
+      "source": "user-supplied baseline",
+      "index_inspected": false,
+      "target_case": null,
+      "mapping": "unresolved",
+      "independent_confirmation": false,
+      "additional_event": false
+    }
+  ],
+  "acceptance_cases": [
+    {
+      "case_id": "O01",
+      "kind": "observed_example",
+      "topic": "conflicting_totals",
+      "assertion_references": [
+        "opc:report-alert-total",
+        "opc:summary-alert-total"
+      ],
+      "example": "A1082856 paragraph 220 gives 1,735; A1076632 page 1 gives 1,742 for the same stated trial.",
+      "expected_representation": "Keep two assertions and the unresolved reconciliation link.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S01",
+      "kind": "synthetic_rejection",
+      "topic": "conflicting_totals",
+      "assertion_references": [
+        "opc:report-alert-total",
+        "opc:summary-alert-total"
+      ],
+      "proposed_invalid_transformation": "Overwrite 1,735 with 1,742 and mark the replacement an official correction.",
+      "expected_rejection": "Reject: no inspected correction or alternate population/window establishes replacement.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O02",
+      "kind": "observed_example",
+      "topic": "repeated_scans",
+      "assertion_references": [
+        "opc:scanned-images",
+        "opc:recorded-misidentifications"
+      ],
+      "example": "225,972,004 reported scans/images include repeats; unique people are unavailable.",
+      "expected_representation": "Keep scan units and an unknown person denominator; no population rate.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S02",
+      "kind": "synthetic_rejection",
+      "topic": "repeated_scans",
+      "assertion_references": [
+        "opc:scanned-images",
+        "opc:recorded-misidentifications"
+      ],
+      "proposed_invalid_transformation": "Treat scans as unique visitors and divide nine misidentifications by that count.",
+      "expected_rejection": "Reject: an unsupported case-to-person/image crosswalk and incomplete ascertainment cannot yield a population failure rate.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O03",
+      "kind": "observed_example",
+      "topic": "estimated_vs_verified",
+      "assertion_references": [
+        "opc:verification-failures",
+        "opc:recorded-misidentifications",
+        "opc:record-missingness"
+      ],
+      "example": "Estimated up-to-13 comprises nine recorded misidentifications and four other procedural cases; records are incomplete.",
+      "expected_representation": "Keep estimate, categories and uncertainty. Source verification does not independently audit incidents.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S03",
+      "kind": "synthetic_rejection",
+      "topic": "estimated_vs_verified",
+      "assertion_references": [
+        "opc:verification-failures",
+        "opc:recorded-misidentifications",
+        "opc:record-missingness"
+      ],
+      "proposed_invalid_transformation": "Encode 13 independently verified misidentifications, a universal maximum of 13, or uncertain records as confirmed extra failures.",
+      "expected_rejection": "Reject: estimate, type and ascertainment would each be misstated.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O04",
+      "kind": "observed_example",
+      "topic": "order_vs_compliance",
+      "assertion_references": [
+        "F-A02",
+        "F-A04",
+        "F-A05",
+        "DS6-CGP-AS-02"
+      ],
+      "example": "Court Document 19 and the C-4308 order issued March 5, 2024 establish remedies; CAC item 9 announces an offline order.",
+      "expected_representation": "Keep legal/procedural evidence separate from completion; missing completion evidence remains unknown.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S04",
+      "kind": "synthetic_rejection",
+      "topic": "order_vs_compliance",
+      "assertion_references": [
+        "F-A02",
+        "F-A04",
+        "F-A05",
+        "DS6-CGP-AS-02"
+      ],
+      "proposed_invalid_transformation": "Mark remedies completed from the orders, or infer no remediation occurred from the bounded evidence gap.",
+      "expected_rejection": "Reject both promotions: an order is not performance, and an unobserved result is not proof of failure.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O05",
+      "kind": "observed_example",
+      "topic": "respondent_vs_independent",
+      "assertion_references": [
+        "F-A09",
+        "F-A10",
+        "F-A12",
+        "F-A07"
+      ],
+      "example": "Paravision reports Part III(A)-(C) deletion; FTC later repeats the remedy; the case page says Closed.",
+      "expected_representation": "Verify that the respondent made the claim, retaining scope/exceptions; independent deletion validation stays unresolved.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S05",
+      "kind": "synthetic_rejection",
+      "topic": "respondent_vs_independent",
+      "assertion_references": [
+        "F-A09",
+        "F-A10",
+        "F-A12",
+        "F-A07"
+      ],
+      "proposed_invalid_transformation": "Set independently verified deletion to true because FTC hosts the filing, repeated the remedy, or closed the case.",
+      "expected_rejection": "Reject: publication and case status do not turn respondent evidence into an independent performance assessment.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O06",
+      "kind": "observed_example",
+      "topic": "status_and_date_substitution",
+      "assertion_references": [
+        "F-A02",
+        "F-A04",
+        "F-A05",
+        "F-A08",
+        "F-A10",
+        "F-A13"
+      ],
+      "example": "Signature February 23, filing February 26, issuance March 5, case update March 8; Everalbum issuance May 6 differs from May 7 listing.",
+      "expected_representation": "Retain each native date; effective dates and derived ban expiry remain unresolved. Preserve the retrospective report coverage window.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S06",
+      "kind": "synthetic_rejection",
+      "topic": "status_and_date_substitution",
+      "assertion_references": [
+        "F-A02",
+        "F-A04",
+        "F-A05",
+        "F-A08",
+        "F-A10",
+        "F-A13"
+      ],
+      "proposed_invalid_transformation": "Use a page date or HTTP/PDF metadata as the effective date, calculate ban expiry from it, or score severity from Pending/Closed.",
+      "expected_rejection": "Reject date substitution and severity inference. A later-packaged retrospective paragraph cannot reverse the later primary order.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O07",
+      "kind": "observed_example",
+      "topic": "unsupported_cohort_linkage",
+      "assertion_references": [
+        "DS6-CGP-AS-06",
+        "DS6-CGP-AS-09",
+        "DS6-CGP-AS-10",
+        "DS6-CGP-AS-08",
+        "DS6-CGP-AS-11"
+      ],
+      "example": "June reports three enterprises; November separately reports 54 apps, 26 websites, three websites and five websites.",
+      "expected_representation": "Keep units and unknown overlaps. No explicit June-November identity or three-of-26 crosswalk was found in the inspected text.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S07",
+      "kind": "synthetic_rejection",
+      "topic": "unsupported_cohort_linkage",
+      "assertion_references": [
+        "DS6-CGP-AS-06",
+        "DS6-CGP-AS-09",
+        "DS6-CGP-AS-10",
+        "DS6-CGP-AS-08",
+        "DS6-CGP-AS-11"
+      ],
+      "proposed_invalid_transformation": "Join both threes, infer 23 successful remediations or a 3/26 rate, or sum all counts into 88 events.",
+      "expected_rejection": "Reject: missing identity/subset links and mixed units. Do not replace unknown overlap with an assertion that cohorts are definitely different.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O08",
+      "kind": "observed_example",
+      "topic": "duplicate_republication",
+      "assertion_references": [
+        "opc:summary-alert-total",
+        "opc:landing-alert-total",
+        "opc:release-alert-total",
+        "F-A12"
+      ],
+      "example": "OPC summaries repeat one trial; FTC repeats one remedy. AIID 619 and 665 remain user-supplied, uninspected indexing candidates.",
+      "expected_representation": "Keep artifact assertions and dependence; leave AIID assignments unresolved and Rite Aid/Everalbum separate.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S08",
+      "kind": "synthetic_rejection",
+      "topic": "duplicate_republication",
+      "assertion_references": [
+        "opc:summary-alert-total",
+        "opc:landing-alert-total",
+        "opc:release-alert-total",
+        "F-A12"
+      ],
+      "proposed_invalid_transformation": "Create new incidents or independent confirmations from republication/index records, or merge the two FTC matters because they share INM006.",
+      "expected_rejection": "Reject: documents/indexes are not additional events or automatic identity evidence.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O09",
+      "kind": "observed_example",
+      "topic": "threshold_scope",
+      "assertion_references": [
+        "opc:in-trial-check-and-adjustment",
+        "opc:future-safeguards",
+        "opc:release-threshold-wording",
+        "opc:operator-continuation-claim"
+      ],
+      "example": "Detailed OPC report separates a 90% algorithm trigger, 92.5% staff threshold, and a future algorithm-reset recommendation.",
+      "expected_representation": "Preserve the release wording and the two settings; keep FSNI continuation as an operator claim.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S09",
+      "kind": "synthetic_rejection",
+      "topic": "threshold_scope",
+      "assertion_references": [
+        "opc:in-trial-check-and-adjustment",
+        "opc:future-safeguards",
+        "opc:release-threshold-wording",
+        "opc:operator-continuation-claim"
+      ],
+      "proposed_invalid_transformation": "Treat the staff-threshold change or FSNI safeguards statement as independently verified completion of the algorithm reset.",
+      "expected_rejection": "Reject: settings, dates, authorship and implementation evidence differ.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "O10",
+      "kind": "observed_example",
+      "topic": "publisher_vs_authority",
+      "assertion_references": [
+        "DS6-CGP-AS-06",
+        "DS6-CGP-AS-09"
+      ],
+      "example": "The Jiangsu-hosted June and November notices credit 网信上海 and describe 上海市网信办 actions.",
+      "expected_representation": "Record Jiangsu as publisher and Shanghai as reporting authority; exact upstream artifact stays unresolved.",
+      "manual_review": "reviewed_against_inspected_source_evidence",
+      "execution": "not_executed",
+      "runtime_result": null
+    },
+    {
+      "case_id": "S10",
+      "kind": "synthetic_rejection",
+      "topic": "publisher_vs_authority",
+      "assertion_references": [
+        "DS6-CGP-AS-06",
+        "DS6-CGP-AS-09"
+      ],
+      "proposed_invalid_transformation": "Assign Shanghai actions to Jiangsu solely from the domain, or count both publications as independent regulator checks.",
+      "expected_rejection": "Reject: host identity is neither the action authority nor independent corroboration.",
+      "manual_review": "reasoning_review_only",
+      "execution": "not_executed",
+      "runtime_result": null
+    }
+  ],
+  "acceptance_case_status": "All 20 cases manually reviewed (10 observed, 10 synthetic). No software executed against them; no runtime pass/fail claimed.",
+  "future_slices": [
+    {
+      "branch": "OPC",
+      "minimum": "One manually maintained trial assertion ledger, including conflicting totals, valid source relationships, missingness, in-trial changes, expectations and operator claims.",
+      "blocked_promotions": [
+        "person-level incidence",
+        "automatic corrected-total choice",
+        "post-inquiry completion without a checked link"
+      ]
+    },
+    {
+      "branch": "FTC",
+      "minimum": "Two separate manual case-document ledgers. Keep court/admin dockets related explicitly; track exact remedy clauses and a separate respondent-to-agency-verification link.",
+      "blocked_promotions": [
+        "date-derived effectiveness",
+        "order or closure as compliance",
+        "allegations as adjudicated facts"
+      ]
+    },
+    {
+      "branch": "CGP",
+      "minimum": "Three notice bodies with Chinese procedure terms, source-local anonymous cases, the explicit June chain and separate November activity counts; human review of glosses.",
+      "blocked_promotions": [
+        "anonymous-subject linkage",
+        "mixed-unit aggregation",
+        "claimed improvement as measured remediation"
+      ]
+    }
+  ],
+  "future_authorization": "Any adapter requires a later separately authorized task and inspection of repository contracts. No adapter, ingestion or deployment was performed.",
+  "search_audit": {
+    "OPC": [
+      {
+        "engine": "system1",
+        "queries": [
+          "site:privacy.org.nz Foodstuffs FRT \"1735\" \"1742\"",
+          "site:privacy.org.nz Foodstuffs facial recognition inquiry safeguards follow-up correction 2025 2026"
+        ],
+        "result": "No results returned; no additional documents opened from this search."
+      },
+      {
+        "engine": "system2",
+        "queries": [
+          "site:privacy.org.nz Foodstuffs facial recognition correction",
+          "site:privacy.org.nz Foodstuffs facial recognition monitoring 2026",
+          "site:foodstuffs.co.nz facial recognition Privacy Commissioner recommendations implemented 2025"
+        ],
+        "result": "Results included already-inspected OPC sources and operator pages. Only the operator’s current Facial Recognition page was opened as additional document 3. Other search-result snippets were not used as verified findings."
+      }
+    ],
+    "FTC": [
+      "site:ftc.gov \"Rite Aid\" \"2023190\" order compliance",
+      "site:ftc.gov \"Everalbum\" \"compliance\" deletion verified",
+      "site:ftc.gov \"Rite Aid\" \"C-4308\" \"2024\"",
+      "site:ftc.gov \"Paravision\" \"compliance report\""
+    ],
+    "CGP": {
+      "engine1_queries": [
+        "\"四川\" \"小程序\" \"未落实生成合成内容标识要求\" \"整改\" [cac.gov.cn/sc.gov.cn; recency365]",
+        "\"江苏\" \"API中转站\" \"整改\" \"2026\" [cac.gov.cn/jswx.gov.cn; recency365]",
+        "\"上海市网信办\" \"3家\" \"回头看\" \"生成式人工智能\" \"整改\" [cac.gov.cn/jswx.gov.cn/shanghai.gov.cn]",
+        "\"保护个人信息权益，防范违规信息生成\" \"2025\" [gov.cn]",
+        "\"整治滥用 护航发展\" \"上海市网信办\" [gov.cn]"
+      ],
+      "engine2_queries": [
+        "\"保护个人信息权益，防范违规信息生成\"",
+        "\"整治滥用 护航发展\" \"网信上海\"",
+        "\"上海市网信办\" \"26家\" \"54款\""
+      ],
+      "limitation": "Search results are a bounded discovery check, not proof of absence. Only the three named primary notices were substantively admitted; candidate original failed to open."
+    }
+  },
+  "bounded_absence_statement": "No case-linked post-inquiry OPC completion check or independent FTC deletion/remediation validation was established in this inspected set; no later case-linked Chinese final decision/remediation was established. This is not proof that remediation did not occur or that no other public record exists.",
+  "relationship_semantics": "Top-level relationships is the cross-artifact relationship register. Per-assertion links include directly identified outgoing links; empty arrays do not mean that no incoming or document-level relationship exists."
+}
