@@ -1,6 +1,6 @@
 # Complete source preservation and acquisition
 
-This policy and the [machine-readable acquisition manifest](../../data/evidence-program/full-content-acquisition.json) distinguish source preservation, canonical interpretation and public publication. The selection review covers the existing [64-source inventory](../../data/evidence-program/source_inventory.json) and 26 research catalogs. Status below is verified through **8 October 2026, 22:44:41 UTC**; it does not imply a continuously refreshed collector.
+This policy distinguishes source preservation, canonical interpretation and public publication. The selection review covers the existing [64-source inventory](../../data/evidence-program/source_inventory.json) and 26 research catalogs. The historical preservation status below was reconciled on **9 October 2026** from completed transfer receipts through **00:13:25 UTC**. This is historical receipt evidence, not a fresh remote audit or current-body comparison. The [machine-readable acquisition manifest](../../data/evidence-program/full-content-acquisition.json) remains the earlier **8 October 2026, 22:44:41 UTC** selection/status snapshot; its four-archived/five-prepared counters are superseded here, without changing its dated rights findings. See the separate [observed private OpenAlex stream](../COLLECTION_CONTINUOUS_QUEUE.md#observed-private-openalex-stream-9-october-2026) for the later bounded runtime observation.
 
 ## Preserve full useful content
 
@@ -26,20 +26,36 @@ This document enables no raw public release, public sharing, paid Git LFS, new c
 
 ## Initial substantive wave
 
-Nine originals are selected. **Four originals totaling 7,488,579 source bytes are verified in the private archive. Five are prepared but not acquired.** The selected total of 25,454,290 bytes combines measured lengths and explicitly labelled HTTP-advertised lengths; it is not an acquired-corpus total.
+**Nine complete retained source versions across six logical items total 25,454,290 source bytes.** Seven completed historical transfers record full raw-byte verification, checkpoints and tracked transfer-scratch retirement. The local receipt reconciliation verifies their recorded identities; it does not freshly reverify the private remote objects or admit them into a new stream. Nine versions are not nine independent datasets or studies. Source bytes exclude transport packaging, support files and expanded publisher-ZIP members.
 
 - **GL001, Epoch AI models:** complete unchanged CSV archived; 6,826,880 bytes, 3,626 records, 57 fields. Original, attribution, manifest and commit record passed raw readback/checksum verification, checkpoint and tracked transfer-scratch cleanup. [Dataset-specific CC BY 4.0](https://epoch.ai/data/ai-models).
-- **GL002, Epoch ML hardware:** complete CSV prepared, not archived; prior complete inspection measured 98,058 bytes, 178 records and 39 columns. Preserve precision-specific performance, dates, prices, missingness and references. [Dataset-specific CC BY 4.0](https://epoch.ai/data/machine-learning-hardware).
-- **GL003, Epoch AI data centers:** complete publisher ZIP prepared, not acquired; HTTP advertises 114,113 bytes. The publisher documents six tables, and their separate CSV headers were observed. Actual ZIP members, CRCs and full-body checksum await capture verification. Preserve timelines, stages, IT/total power, compute/cost, chip quantities and sources. [Bundle and data-specific grant](https://epoch.ai/data/ai-data-centers).
+- **GL002, Epoch ML hardware:** complete CSV historically archived and verified; 98,058 bytes, 178 records and 39 columns. Preserve precision-specific performance, dates, prices, missingness and references. [Dataset-specific CC BY 4.0](https://epoch.ai/data/machine-learning-hardware).
+- **GL003, Epoch AI data centers:** complete 114,113-byte publisher ZIP historically archived and verified. Capture verified all seven members and CRCs: six CSVs plus README, with 1,579 data rows across the six tables. The ZIP is one source-native original; its expanded members are not additional retained versions or source bytes. Preserve timelines, stages, IT/total power, compute/cost, chip quantities and sources. [Bundle and data-specific grant](https://epoch.ai/data/ai-data-centers).
 - **BD001, two EvalPlus historical result JSONs:** both complete originals archived, 32,977 and 27,725 bytes, with 101 model objects each. Preserve all metric slots and nulls. Full Apache-2.0 LICENSE accompanies the files; both exact repository roots were checked and contain no NOTICE file. The grant belongs to the dedicated leaderboard repository at the specified commits, not separate evaluation software. See [benchmark drift research](research/benchmark-drift.md) and the exact pins in the manifest.
 - **GL038 / FS003, LEAP Wave 12:** complete inert HTML archived, 600,997 bytes, including embedded published aggregates and exact question/condition wording. This is the known earlier full-body snapshot; fresh HEAD matched length only, not current content. Its [published report license](https://leap.forecastingresearch.org/reports/wave12) is CC BY 4.0. Unpublished respondent microdata and separately loaded assets remain outside this grant. See [forecast-survey research](research/forecast-surveys.md).
-- **GL010 / FS001, ESPAI paper v1/v2/v3:** three complete versioned PDFs prepared, not acquired; advertised lengths are 5,925,368, 5,925,409 and 5,902,763 bytes. Each edition independently declares CC BY 4.0: [v1](https://arxiv.org/abs/2401.02843v1), [v2](https://arxiv.org/abs/2401.02843v2), [v3](https://arxiv.org/abs/2401.02843v3). Preserve every page and appendix. These are paper editions, not respondent datasets or new survey waves.
+- **GL010 / FS001, ESPAI paper v1/v2/v3:** three complete versioned PDFs historically archived and verified; measured lengths are 5,925,368, 5,925,409 and 5,902,763 bytes. Each edition independently declares CC BY 4.0: [v1](https://arxiv.org/abs/2401.02843v1), [v2](https://arxiv.org/abs/2401.02843v2), [v3](https://arxiv.org/abs/2401.02843v3). Preserve every page and appendix. These are paper editions, not respondent datasets or new survey waves.
 
-The EvalPlus pair and LEAP original were transferred together in a verified 96,127-byte ZIP containing three originals totaling 661,699 bytes plus supporting files. **The ZIP is transport packaging, not a fourth source.** The manifest records original hashes, measured/advertised extent and archive readiness separately. No canonical import, independent scientific replication or p(doom) conversion is claimed.
+The EvalPlus pair and LEAP original were transferred together in a verified 96,127-byte ZIP containing three originals totaling 661,699 bytes plus supporting files. **The ZIP is transport packaging, not a fourth source.** The earlier manifest records the selection-stage extent and readiness; the verified original byte identities below record the completed historical wave. No canonical import, independent scientific replication or p(doom) conversion is claimed.
+
+### Historical original byte identities
+
+These hashes identify the retained originals, not a current upstream-body check. The two EvalPlus editions share one logical item, as do the three paper revisions. Private storage identifiers and receipts are deliberately omitted.
+
+| Original/version | Source bytes | SHA-256 |
+| --- | ---: | --- |
+| GL001 models CSV | 6,826,880 | `d845f68989881cb922ee6fd131d2bce6fb9c88dce5978eb0719a4c053476eff9` |
+| BD001 results at 3b9f5b48 | 32,977 | `4d293d4450da091dab4ee4ab333d73b34973066a5dc122c8eef3ada6421b00cb` |
+| BD001 results at 65db7ffd | 27,725 | `89c068b081aaf2778e5a77549b3549ac7825231a9a1125ca309a2d18677ea941` |
+| GL038 LEAP Wave 12 HTML | 600,997 | `2f236aa3d8125e60770412d081008b1d53e797732e308f6eb2a1e32ca2658c38` |
+| GL002 hardware CSV | 98,058 | `aeb80ac5f29b971fba531ed19d11bf6bda5adcc0239d6dc9fcf3e6558653db81` |
+| GL003 data-center ZIP | 114,113 | `9a1ffd5bc3892d5c7773c6adcd5a49f55d4310dfe46c5233dc0320d9b593ebe6` |
+| GL010 / FS001 paper v1 | 5,925,368 | `98ebcf757938892552d5a91a0e630486e0751339125480bba18fad145209cea1` |
+| GL010 / FS001 paper v2 | 5,925,409 | `9b146fa909043ca40b8ba62aec52801bfe9a211f105fb5621001fa4f373293e6` |
+| GL010 / FS001 paper v3 | 5,902,763 | `8a440d9f5c24e3627b2887c4b654f8b98253706a92e8e4ece266f8c2fe9903a7` |
 
 ## Capacity and safe transfer extension
 
-The scratch hard maximum remains **25,000,000,000 bytes**, with **5,000,000,000 bytes free-space reserve**. The presently tested per-artifact harness bound is **10 MiB**. This is an implementation boundary, not a permanent content-retention policy.
+The scratch hard maximum remains **25,000,000,000 bytes**, with **5,000,000,000 bytes free-space reserve**. The earlier whole-file transfer harness has a tested per-artifact bound of **10 MiB**. The separately observed managed OpenAlex bridge currently caps each accepted remote raw object and immutable intent/commit object at **256 KiB (262,144 bytes)**; that smaller route does not replace or extend the historical harness. These are route-specific implementation boundaries, not unlimited storage or permanent content-retention limits.
 
 Two rights-clear originals need a reviewed transfer extension:
 
