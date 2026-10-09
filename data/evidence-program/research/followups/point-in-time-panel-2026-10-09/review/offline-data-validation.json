@@ -1,0 +1,1474 @@
+{
+  "scope": "Offline independent data review; no source/provider/Drive calls, uploaded-code execution, benchmark runs, model training, integration or publication.",
+  "original_integrity": [
+    {
+      "bytes": 31720,
+      "sha256": "c3891591161b6117c56f827deae3d1ad3f8da4816525eff87d62c881d7810d63",
+      "matches_original_manifest": true,
+      "duplicate_json_keys": null,
+      "original_artifact_package_reference": "submitted/submitted-narrative.txt",
+      "hash_scope": "Historical original bytes; the reference identifies its corresponding packaged copy. See submission-provenance.json for any sanitization and packaged hash."
+    },
+    {
+      "bytes": 89186,
+      "sha256": "34a5fee3addca372b0fd0d3dd34ac992bbf9e7501396100fa0f1b03ae534c0d2",
+      "matches_original_manifest": true,
+      "duplicate_json_keys": [],
+      "original_artifact_package_reference": "submitted/point_in_time_panel_review.json",
+      "hash_scope": "Historical original bytes; the reference identifies its corresponding packaged copy. See submission-provenance.json for any sanitization and packaged hash."
+    },
+    {
+      "bytes": 312009,
+      "sha256": "834a1911767be1d8bcb6272451beb2c8eff9d670af4c960b2089eac318f3075d",
+      "matches_original_manifest": true,
+      "duplicate_json_keys": [],
+      "original_artifact_package_reference": "submitted/point_in_time_panel.examples.json",
+      "hash_scope": "Historical original bytes; the reference identifies its corresponding packaged copy. See submission-provenance.json for any sanitization and packaged hash."
+    },
+    {
+      "bytes": 33402,
+      "sha256": "a16292f5d2f35e4a8a22c82c25f59a048371bdb498670c86ad6e41570173215e",
+      "matches_original_manifest": true,
+      "duplicate_json_keys": [],
+      "original_artifact_package_reference": "submitted/point_in_time_panel.schema.json",
+      "hash_scope": "Historical original bytes; the reference identifies its corresponding packaged copy. See submission-provenance.json for any sanitization and packaged hash."
+    }
+  ],
+  "evalplus_snapshots": {
+    "A": {
+      "private_locator": "omitted; source identity remains in this record",
+      "source_url": "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+      "bytes": 32977,
+      "sha256": "4d293d4450da091dab4ee4ab333d73b34973066a5dc122c8eef3ada6421b00cb",
+      "git_blob": "72c9baaa8b3a962a9207bbed41f77651ec0f97ba",
+      "git_blob_matches_prior_metadata": true,
+      "models": 101,
+      "metric_slots": 404,
+      "numeric": 358,
+      "null": 46,
+      "size_nulls": 13,
+      "duplicate_keys": [],
+      "mbpp_nonnull_models": 78
+    },
+    "B": {
+      "private_locator": "omitted; source identity remains in this record",
+      "source_url": "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+      "bytes": 27725,
+      "sha256": "89c068b081aaf2778e5a77549b3549ac7825231a9a1125ca309a2d18677ea941",
+      "git_blob": "f2ad111f348de70277826266d61c61a2095f48a7",
+      "git_blob_matches_prior_metadata": true,
+      "models": 101,
+      "metric_slots": 404,
+      "numeric": 322,
+      "null": 82,
+      "size_nulls": 13,
+      "duplicate_keys": [],
+      "mbpp_nonnull_models": 60
+    }
+  },
+  "full_snapshot_change_summary": {
+    "same_model_key_set": true,
+    "new_model_keys": 0,
+    "unchanged_model_objects": 29,
+    "changed_model_objects": 72,
+    "changed_metric_slots": 161,
+    "change_types": {
+      "numeric_to_null": 36,
+      "numeric_revision": 125
+    },
+    "changed_slots_by_metric": {
+      "mbpp": 69,
+      "mbpp+": 68,
+      "humaneval+": 22,
+      "humaneval": 2
+    },
+    "all_non_metric_metadata_unchanged": true
+  },
+  "bounded_counts": {
+    "candidates": 12,
+    "families": 4,
+    "distinct_epoch_candidate_rows": 10,
+    "snapshot_objects": 24,
+    "metric_slots": 96,
+    "numeric_metric_values": 76,
+    "null_metric_values": 20,
+    "strict_ready": 0,
+    "unknown_executed_identity": 12,
+    "joins_by_submitted_status": {
+      "ambiguous": 1,
+      "partial_product_only": 2,
+      "ambiguous_intended_variant": 1,
+      "rejected_direct_join": 2,
+      "partial_named_base_variant": 5,
+      "rejected_equivalence_ancestry_retained": 1
+    }
+  },
+  "candidate_checks": [
+    {
+      "candidate_id": "PIT-J01",
+      "family": "gpt4",
+      "evalplus_key": "GPT-4 (May 2023)",
+      "epoch_key": "GPT-4 (Mar 2023)",
+      "epoch_row": 2134,
+      "submitted_join_status": "ambiguous",
+      "identity_status": "alias_only",
+      "executed_identity": null,
+      "snapshots": [
+        {
+          "artifact_id": "evalplus-results-A",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 2,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "repository_chronology_only",
+          "revision_relationship": "republication",
+          "native_null_missing_reasons_present": true
+        },
+        {
+          "artifact_id": "evalplus-results-B",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 2,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "not_proven",
+          "revision_relationship": "published_revision_inference_unresolved",
+          "native_null_missing_reasons_present": true
+        }
+      ],
+      "descriptive_included": true,
+      "analytical_views_all_excluded": true,
+      "strict_panel_ready_independently_supported": false,
+      "source_epoch_row_externally_rechecked": false
+    },
+    {
+      "candidate_id": "PIT-J02",
+      "family": "gpt4",
+      "evalplus_key": "GPT-4-Turbo (Nov 2023)",
+      "epoch_key": "GPT-4 Turbo (Nov 2023)",
+      "epoch_row": 1791,
+      "submitted_join_status": "partial_product_only",
+      "identity_status": "alias_only",
+      "executed_identity": null,
+      "snapshots": [
+        {
+          "artifact_id": "evalplus-results-A",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 0,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "repository_chronology_only",
+          "revision_relationship": "republication",
+          "native_null_missing_reasons_present": true
+        },
+        {
+          "artifact_id": "evalplus-results-B",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 0,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "not_proven",
+          "revision_relationship": "published_revision_inference_unresolved",
+          "native_null_missing_reasons_present": true
+        }
+      ],
+      "descriptive_included": true,
+      "analytical_views_all_excluded": true,
+      "strict_panel_ready_independently_supported": false,
+      "source_epoch_row_externally_rechecked": false
+    },
+    {
+      "candidate_id": "PIT-J03",
+      "family": "gpt4",
+      "evalplus_key": "GPT-4-Turbo (April 2024)",
+      "epoch_key": "GPT-4 Turbo (Apr 2024)",
+      "epoch_row": 1493,
+      "submitted_join_status": "partial_product_only",
+      "identity_status": "alias_only",
+      "executed_identity": null,
+      "snapshots": [
+        {
+          "artifact_id": "evalplus-results-A",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 2,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "repository_chronology_only",
+          "revision_relationship": "republication",
+          "native_null_missing_reasons_present": true
+        },
+        {
+          "artifact_id": "evalplus-results-B",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 2,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "not_proven",
+          "revision_relationship": "published_revision_inference_unresolved",
+          "native_null_missing_reasons_present": true
+        }
+      ],
+      "descriptive_included": true,
+      "analytical_views_all_excluded": true,
+      "strict_panel_ready_independently_supported": false,
+      "source_epoch_row_externally_rechecked": false
+    },
+    {
+      "candidate_id": "PIT-J04",
+      "family": "codellama",
+      "evalplus_key": "CodeLlama-34B",
+      "epoch_key": "Code Llama-34B",
+      "epoch_row": 1931,
+      "submitted_join_status": "ambiguous_intended_variant",
+      "identity_status": "ambiguous",
+      "executed_identity": null,
+      "snapshots": [
+        {
+          "artifact_id": "evalplus-results-A",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 0,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "repository_chronology_only",
+          "revision_relationship": "republication",
+          "native_null_missing_reasons_present": true
+        },
+        {
+          "artifact_id": "evalplus-results-B",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 0,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "not_proven",
+          "revision_relationship": "published_revision_inference_unresolved",
+          "native_null_missing_reasons_present": true
+        }
+      ],
+      "descriptive_included": true,
+      "analytical_views_all_excluded": true,
+      "strict_panel_ready_independently_supported": false,
+      "source_epoch_row_externally_rechecked": false
+    },
+    {
+      "candidate_id": "PIT-J05",
+      "family": "codellama",
+      "evalplus_key": "CodeLlama-70B",
+      "epoch_key": "Code Llama-70B",
+      "epoch_row": 1631,
+      "submitted_join_status": "rejected_direct_join",
+      "identity_status": "rejected",
+      "executed_identity": null,
+      "snapshots": [
+        {
+          "artifact_id": "evalplus-results-A",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 0,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "repository_chronology_only",
+          "revision_relationship": "republication",
+          "native_null_missing_reasons_present": true
+        },
+        {
+          "artifact_id": "evalplus-results-B",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 2,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "not_proven",
+          "revision_relationship": "published_revision_inference_unresolved",
+          "native_null_missing_reasons_present": true
+        }
+      ],
+      "descriptive_included": true,
+      "analytical_views_all_excluded": true,
+      "strict_panel_ready_independently_supported": false,
+      "source_epoch_row_externally_rechecked": false
+    },
+    {
+      "candidate_id": "PIT-J06",
+      "family": "codellama",
+      "evalplus_key": "CodeLlama-70B-Instruct",
+      "epoch_key": "Code Llama-70B",
+      "epoch_row": 1631,
+      "submitted_join_status": "rejected_direct_join",
+      "identity_status": "rejected",
+      "executed_identity": null,
+      "snapshots": [
+        {
+          "artifact_id": "evalplus-results-A",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 0,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "repository_chronology_only",
+          "revision_relationship": "republication",
+          "native_null_missing_reasons_present": true
+        },
+        {
+          "artifact_id": "evalplus-results-B",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 2,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "not_proven",
+          "revision_relationship": "published_revision_inference_unresolved",
+          "native_null_missing_reasons_present": true
+        }
+      ],
+      "descriptive_included": true,
+      "analytical_views_all_excluded": true,
+      "strict_panel_ready_independently_supported": false,
+      "source_epoch_row_externally_rechecked": false
+    },
+    {
+      "candidate_id": "PIT-J07",
+      "family": "deepseek_coder",
+      "evalplus_key": "DeepSeek-Coder-6.7B-base",
+      "epoch_key": "DeepSeek Coder 6.7B",
+      "epoch_row": 1811,
+      "submitted_join_status": "partial_named_base_variant",
+      "identity_status": "variant_only",
+      "executed_identity": null,
+      "snapshots": [
+        {
+          "artifact_id": "evalplus-results-A",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 0,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "repository_chronology_only",
+          "revision_relationship": "republication",
+          "native_null_missing_reasons_present": true
+        },
+        {
+          "artifact_id": "evalplus-results-B",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 0,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "not_proven",
+          "revision_relationship": "published_revision_inference_unresolved",
+          "native_null_missing_reasons_present": true
+        }
+      ],
+      "descriptive_included": true,
+      "analytical_views_all_excluded": true,
+      "strict_panel_ready_independently_supported": false,
+      "source_epoch_row_externally_rechecked": false,
+      "six_nd_arithmetic": {
+        "N": 6700000000,
+        "D": 2000000000000.0,
+        "claimed": 80400000000000000000000,
+        "recomputed": 80400000000000000000000,
+        "equal": true,
+        "input_source_truth_reverified": false
+      }
+    },
+    {
+      "candidate_id": "PIT-J08",
+      "family": "deepseek_coder",
+      "evalplus_key": "DeepSeek-Coder-6.7B-instruct",
+      "epoch_key": "DeepSeek Coder 6.7B",
+      "epoch_row": 1811,
+      "submitted_join_status": "rejected_equivalence_ancestry_retained",
+      "identity_status": "rejected",
+      "executed_identity": null,
+      "snapshots": [
+        {
+          "artifact_id": "evalplus-results-A",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 0,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "repository_chronology_only",
+          "revision_relationship": "republication",
+          "native_null_missing_reasons_present": true
+        },
+        {
+          "artifact_id": "evalplus-results-B",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 0,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "not_proven",
+          "revision_relationship": "published_revision_inference_unresolved",
+          "native_null_missing_reasons_present": true
+        }
+      ],
+      "descriptive_included": true,
+      "analytical_views_all_excluded": true,
+      "strict_panel_ready_independently_supported": false,
+      "source_epoch_row_externally_rechecked": false,
+      "six_nd_arithmetic": {
+        "N": 6700000000,
+        "D": 2000000000000.0,
+        "claimed": 80400000000000000000000,
+        "recomputed": 80400000000000000000000,
+        "equal": true,
+        "input_source_truth_reverified": false
+      }
+    },
+    {
+      "candidate_id": "PIT-J09",
+      "family": "deepseek_coder",
+      "evalplus_key": "DeepSeek-Coder-33B-base",
+      "epoch_key": "DeepSeek Coder 33B",
+      "epoch_row": 1802,
+      "submitted_join_status": "partial_named_base_variant",
+      "identity_status": "variant_only",
+      "executed_identity": null,
+      "snapshots": [
+        {
+          "artifact_id": "evalplus-results-A",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 0,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "repository_chronology_only",
+          "revision_relationship": "republication",
+          "native_null_missing_reasons_present": true
+        },
+        {
+          "artifact_id": "evalplus-results-B",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 2,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "not_proven",
+          "revision_relationship": "published_revision_inference_unresolved",
+          "native_null_missing_reasons_present": true
+        }
+      ],
+      "descriptive_included": true,
+      "analytical_views_all_excluded": true,
+      "strict_panel_ready_independently_supported": false,
+      "source_epoch_row_externally_rechecked": false,
+      "six_nd_arithmetic": {
+        "N": 33000000000,
+        "D": 2000000000000.0,
+        "claimed": 396000000000000000000000,
+        "recomputed": 396000000000000000000000,
+        "equal": true,
+        "input_source_truth_reverified": false
+      }
+    },
+    {
+      "candidate_id": "PIT-J10",
+      "family": "starcoder2",
+      "evalplus_key": "StarCoder2-3B",
+      "epoch_key": "StarCoder 2 3B",
+      "epoch_row": 1567,
+      "submitted_join_status": "partial_named_base_variant",
+      "identity_status": "variant_only",
+      "executed_identity": null,
+      "snapshots": [
+        {
+          "artifact_id": "evalplus-results-A",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 0,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "repository_chronology_only",
+          "revision_relationship": "republication",
+          "native_null_missing_reasons_present": true
+        },
+        {
+          "artifact_id": "evalplus-results-B",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 2,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "not_proven",
+          "revision_relationship": "published_revision_inference_unresolved",
+          "native_null_missing_reasons_present": true
+        }
+      ],
+      "descriptive_included": true,
+      "analytical_views_all_excluded": true,
+      "strict_panel_ready_independently_supported": false,
+      "source_epoch_row_externally_rechecked": false
+    },
+    {
+      "candidate_id": "PIT-J11",
+      "family": "starcoder2",
+      "evalplus_key": "StarCoder2-7B",
+      "epoch_key": "StarCoder 2 7B",
+      "epoch_row": 1566,
+      "submitted_join_status": "partial_named_base_variant",
+      "identity_status": "variant_only",
+      "executed_identity": null,
+      "snapshots": [
+        {
+          "artifact_id": "evalplus-results-A",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 0,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "repository_chronology_only",
+          "revision_relationship": "republication",
+          "native_null_missing_reasons_present": true
+        },
+        {
+          "artifact_id": "evalplus-results-B",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 2,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "not_proven",
+          "revision_relationship": "published_revision_inference_unresolved",
+          "native_null_missing_reasons_present": true
+        }
+      ],
+      "descriptive_included": true,
+      "analytical_views_all_excluded": true,
+      "strict_panel_ready_independently_supported": false,
+      "source_epoch_row_externally_rechecked": false
+    },
+    {
+      "candidate_id": "PIT-J12",
+      "family": "starcoder2",
+      "evalplus_key": "StarCoder2-15B",
+      "epoch_key": "StarCoder 2 15B",
+      "epoch_row": 1565,
+      "submitted_join_status": "partial_named_base_variant",
+      "identity_status": "variant_only",
+      "executed_identity": null,
+      "snapshots": [
+        {
+          "artifact_id": "evalplus-results-A",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 0,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "repository_chronology_only",
+          "revision_relationship": "republication",
+          "native_null_missing_reasons_present": true
+        },
+        {
+          "artifact_id": "evalplus-results-B",
+          "full_native_object_equal": true,
+          "audit_native_object_equal": true,
+          "metric_slots": 4,
+          "nulls": 2,
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "label_available_at_cutoff": "not_proven",
+          "revision_relationship": "published_revision_inference_unresolved",
+          "native_null_missing_reasons_present": true
+        }
+      ],
+      "descriptive_included": true,
+      "analytical_views_all_excluded": true,
+      "strict_panel_ready_independently_supported": false,
+      "source_epoch_row_externally_rechecked": false
+    }
+  ],
+  "epoch_internal_consistency_checks": [
+    {
+      "candidate_id": "PIT-J01",
+      "field": "Parameters",
+      "example_raw": "1800000000000.0",
+      "audit_raw": "1800000000000.0",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J01",
+      "field": "Citations",
+      "example_raw": "24490.0",
+      "audit_raw": "24490.0",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J01",
+      "field": "Publication date",
+      "example_raw": "2023-03-15",
+      "audit_raw": "2023-03-15",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J01",
+      "field": "Last modified",
+      "example_raw": "2026-05-25 12:21:28+00:00",
+      "audit_raw": "2026-05-25 12:21:28+00:00",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J01",
+      "field": "Base model",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J01",
+      "field": "Training compute (FLOP)",
+      "example_raw": "2.1e+25",
+      "audit_raw": "2.1e+25",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J02",
+      "field": "Parameters",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J02",
+      "field": "Citations",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J02",
+      "field": "Publication date",
+      "example_raw": "2023-11-06",
+      "audit_raw": "2023-11-06",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J02",
+      "field": "Last modified",
+      "example_raw": "2026-02-11 19:35:05+00:00",
+      "audit_raw": "2026-02-11 19:35:05+00:00",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J02",
+      "field": "Base model",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J02",
+      "field": "Training compute (FLOP)",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J03",
+      "field": "Parameters",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J03",
+      "field": "Citations",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J03",
+      "field": "Publication date",
+      "example_raw": "2024-04-09",
+      "audit_raw": "2024-04-09",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J03",
+      "field": "Last modified",
+      "example_raw": "2026-02-11 19:35:05+00:00",
+      "audit_raw": "2026-02-11 19:35:05+00:00",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J03",
+      "field": "Base model",
+      "example_raw": "GPT-4 Turbo (Nov 2023)",
+      "audit_raw": "GPT-4 Turbo (Nov 2023)",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J03",
+      "field": "Training compute (FLOP)",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J04",
+      "field": "Parameters",
+      "example_raw": "34000000000.0",
+      "audit_raw": "34000000000.0",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J04",
+      "field": "Citations",
+      "example_raw": "3163.0",
+      "audit_raw": "3163.0",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J04",
+      "field": "Publication date",
+      "example_raw": "2023-08-14",
+      "audit_raw": "2023-08-14",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J04",
+      "field": "Last modified",
+      "example_raw": "2026-05-25 12:28:11+00:00",
+      "audit_raw": "2026-05-25 12:28:11+00:00",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J04",
+      "field": "Base model",
+      "example_raw": "Llama 2-34B",
+      "audit_raw": "Llama 2-34B",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J04",
+      "field": "Training compute (FLOP)",
+      "example_raw": "5.3e+23",
+      "audit_raw": "5.3e+23",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J05",
+      "field": "Parameters",
+      "example_raw": "70000000000.0",
+      "audit_raw": "70000000000.0",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J05",
+      "field": "Citations",
+      "example_raw": "3163.0",
+      "audit_raw": "3163.0",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J05",
+      "field": "Publication date",
+      "example_raw": "2024-01-29",
+      "audit_raw": "2024-01-29",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J05",
+      "field": "Last modified",
+      "example_raw": "2026-05-25 12:28:12+00:00",
+      "audit_raw": "2026-05-25 12:28:12+00:00",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J05",
+      "field": "Base model",
+      "example_raw": "Llama 2-70B",
+      "audit_raw": "Llama 2-70B",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J05",
+      "field": "Training compute (FLOP)",
+      "example_raw": "1.26e+24",
+      "audit_raw": "1.26e+24",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J06",
+      "field": "Parameters",
+      "example_raw": "70000000000.0",
+      "audit_raw": "70000000000.0",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J06",
+      "field": "Citations",
+      "example_raw": "3163.0",
+      "audit_raw": "3163.0",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J06",
+      "field": "Publication date",
+      "example_raw": "2024-01-29",
+      "audit_raw": "2024-01-29",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J06",
+      "field": "Last modified",
+      "example_raw": "2026-05-25 12:28:12+00:00",
+      "audit_raw": "2026-05-25 12:28:12+00:00",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J06",
+      "field": "Base model",
+      "example_raw": "Llama 2-70B",
+      "audit_raw": "Llama 2-70B",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J06",
+      "field": "Training compute (FLOP)",
+      "example_raw": "1.26e+24",
+      "audit_raw": "1.26e+24",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J07",
+      "field": "Parameters",
+      "example_raw": "6700000000.0",
+      "audit_raw": "6700000000.0",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J07",
+      "field": "Citations",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J07",
+      "field": "Publication date",
+      "example_raw": "2023-11-02",
+      "audit_raw": "2023-11-02",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J07",
+      "field": "Last modified",
+      "example_raw": "2026-09-02 18:36:55+00:00",
+      "audit_raw": "2026-09-02 18:36:55+00:00",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J07",
+      "field": "Base model",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J07",
+      "field": "Training compute (FLOP)",
+      "example_raw": "8.04e+22",
+      "audit_raw": "8.04e+22",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J08",
+      "field": "Parameters",
+      "example_raw": "6700000000.0",
+      "audit_raw": "6700000000.0",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J08",
+      "field": "Citations",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J08",
+      "field": "Publication date",
+      "example_raw": "2023-11-02",
+      "audit_raw": "2023-11-02",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J08",
+      "field": "Last modified",
+      "example_raw": "2026-09-02 18:36:55+00:00",
+      "audit_raw": "2026-09-02 18:36:55+00:00",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J08",
+      "field": "Base model",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J08",
+      "field": "Training compute (FLOP)",
+      "example_raw": "8.04e+22",
+      "audit_raw": "8.04e+22",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J09",
+      "field": "Parameters",
+      "example_raw": "33000000000.0",
+      "audit_raw": "33000000000.0",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J09",
+      "field": "Citations",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J09",
+      "field": "Publication date",
+      "example_raw": "2023-11-02",
+      "audit_raw": "2023-11-02",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J09",
+      "field": "Last modified",
+      "example_raw": "2026-09-02 18:36:35+00:00",
+      "audit_raw": "2026-09-02 18:36:35+00:00",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J09",
+      "field": "Base model",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J09",
+      "field": "Training compute (FLOP)",
+      "example_raw": "3.96e+23",
+      "audit_raw": "3.96e+23",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J10",
+      "field": "Parameters",
+      "example_raw": "3000000000.0",
+      "audit_raw": "3000000000.0",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J10",
+      "field": "Citations",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J10",
+      "field": "Publication date",
+      "example_raw": "2024-02-29",
+      "audit_raw": "2024-02-29",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J10",
+      "field": "Last modified",
+      "example_raw": "2025-11-28 11:53:44+00:00",
+      "audit_raw": "2025-11-28 11:53:44+00:00",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J10",
+      "field": "Base model",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J10",
+      "field": "Training compute (FLOP)",
+      "example_raw": "5.94e+22",
+      "audit_raw": "5.94e+22",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J11",
+      "field": "Parameters",
+      "example_raw": "7000000000.0",
+      "audit_raw": "7000000000.0",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J11",
+      "field": "Citations",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J11",
+      "field": "Publication date",
+      "example_raw": "2024-02-29",
+      "audit_raw": "2024-02-29",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J11",
+      "field": "Last modified",
+      "example_raw": "2025-11-28 11:53:44+00:00",
+      "audit_raw": "2025-11-28 11:53:44+00:00",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J11",
+      "field": "Base model",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J11",
+      "field": "Training compute (FLOP)",
+      "example_raw": "1.55e+23",
+      "audit_raw": "1.55e+23",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J12",
+      "field": "Parameters",
+      "example_raw": "15000000000.0",
+      "audit_raw": "15000000000.0",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J12",
+      "field": "Citations",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J12",
+      "field": "Publication date",
+      "example_raw": "2024-02-29",
+      "audit_raw": "2024-02-29",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J12",
+      "field": "Last modified",
+      "example_raw": "2025-11-28 11:53:44+00:00",
+      "audit_raw": "2025-11-28 11:53:44+00:00",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J12",
+      "field": "Base model",
+      "example_raw": "",
+      "audit_raw": "",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    },
+    {
+      "candidate_id": "PIT-J12",
+      "field": "Training compute (FLOP)",
+      "example_raw": "3.87e+23",
+      "audit_raw": "3.87e+23",
+      "equal": true,
+      "comparison_scope": "two submitted artifacts; not full CSV reread"
+    }
+  ],
+  "included_feature_clock_checks": [
+    {
+      "candidate_id": "PIT-J04",
+      "feature": "precutoff_primary.nominal_parameters",
+      "value": 34000000000,
+      "availability_basis": "source_value",
+      "availability_latest": "2023-08-24T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J05",
+      "feature": "precutoff_primary.nominal_parameters",
+      "value": 70000000000,
+      "availability_basis": "source_value",
+      "availability_latest": "2024-01-31T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J06",
+      "feature": "precutoff_primary.nominal_parameters",
+      "value": 70000000000,
+      "availability_basis": "source_value",
+      "availability_latest": "2024-01-31T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J07",
+      "feature": "precutoff_primary.nominal_parameters",
+      "value": 6700000000,
+      "availability_basis": "source_value",
+      "availability_latest": "2024-01-25T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J07",
+      "feature": "precutoff_primary.pretraining_tokens",
+      "value": 2000000000000.0,
+      "availability_basis": "source_value",
+      "availability_latest": "2024-01-25T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J07",
+      "feature": "reconstructed_from_preT_inputs.pretraining_compute_6ND_FLOP",
+      "value": 80400000000000000000000,
+      "availability_basis": "reconstructed_from_pre_cutoff_inputs",
+      "availability_latest": "2024-01-25T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": "2026-10-09T15:53:33.590094Z",
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J08",
+      "feature": "precutoff_primary.nominal_parameters",
+      "value": 6700000000,
+      "availability_basis": "source_value",
+      "availability_latest": "2024-01-25T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J08",
+      "feature": "precutoff_primary.pretraining_tokens",
+      "value": 2000000000000.0,
+      "availability_basis": "source_value",
+      "availability_latest": "2024-01-25T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J08",
+      "feature": "reconstructed_from_preT_inputs.pretraining_compute_6ND_FLOP",
+      "value": 80400000000000000000000,
+      "availability_basis": "reconstructed_from_pre_cutoff_inputs",
+      "availability_latest": "2024-01-25T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": "2026-10-09T15:53:33.590094Z",
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J08",
+      "feature": "precutoff_primary.instruction_tokens",
+      "value": 2000000000.0,
+      "availability_basis": "source_value",
+      "availability_latest": "2024-01-25T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J09",
+      "feature": "precutoff_primary.nominal_parameters",
+      "value": 33000000000,
+      "availability_basis": "source_value",
+      "availability_latest": "2024-01-25T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J09",
+      "feature": "precutoff_primary.pretraining_tokens",
+      "value": 2000000000000.0,
+      "availability_basis": "source_value",
+      "availability_latest": "2024-01-25T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J09",
+      "feature": "reconstructed_from_preT_inputs.pretraining_compute_6ND_FLOP",
+      "value": 396000000000000000000000,
+      "availability_basis": "reconstructed_from_pre_cutoff_inputs",
+      "availability_latest": "2024-01-25T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": "2026-10-09T15:53:33.590094Z",
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J10",
+      "feature": "precutoff_primary.nominal_parameters",
+      "value": 3000000000,
+      "availability_basis": "source_value",
+      "availability_latest": "2024-02-29T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J10",
+      "feature": "precutoff_primary.reported_pretraining_compute_FLOP",
+      "value": 5.94e+22,
+      "availability_basis": "source_value",
+      "availability_latest": "2024-02-29T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J11",
+      "feature": "precutoff_primary.nominal_parameters",
+      "value": 7000000000,
+      "availability_basis": "source_value",
+      "availability_latest": "2024-02-29T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J11",
+      "feature": "precutoff_primary.reported_pretraining_compute_FLOP",
+      "value": 1.55e+23,
+      "availability_basis": "source_value",
+      "availability_latest": "2024-02-29T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J12",
+      "feature": "precutoff_primary.nominal_parameters",
+      "value": 15000000000,
+      "availability_basis": "source_value",
+      "availability_latest": "2024-02-29T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    },
+    {
+      "candidate_id": "PIT-J12",
+      "feature": "precutoff_primary.reported_pretraining_compute_FLOP",
+      "value": 3.87e+23,
+      "availability_basis": "source_value",
+      "availability_latest": "2024-02-29T23:59:59Z",
+      "cutoff_clock_pass": true,
+      "derived_at": null,
+      "source_truth_reverified": false
+    }
+  ],
+  "epoch_retained_receipt_corroboration": {
+    "private_locator": "omitted; source identity remains in this record",
+    "captured_at": "2026-10-08T21:58:20.060859+00:00",
+    "sha256": "d845f68989881cb922ee6fd131d2bce6fb9c88dce5978eb0719a4c053476eff9",
+    "bytes": 6826880,
+    "records": 3626,
+    "fields": 57,
+    "matches_submission_sha256": true,
+    "fieldnames_match": true,
+    "source_body_reparsed": false,
+    "receipt_status": "Prior independent capture/archival evidence; source payload cleaned after verified archive and no new archive request made."
+  },
+  "migration_static_inspection": {
+    "private_locator": "omitted; source identity remains in this record",
+    "sha256": "566ce8f29f552948426c974eb65c3e62b4b0070b208a2e73498e13cc40073502",
+    "git_blob": "f1aedfc97760d5de15bbdfccc992de8dcb52e059",
+    "delete_target_count": 21,
+    "distinct_delete_targets": 21,
+    "replace_call_count": 18,
+    "corpus_executed_or_counted": false
+  },
+  "embedded_card_checks": [
+    {
+      "model": "deepseek-coder-6.7b-base",
+      "url": "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-base/raw/ce2207a8bfef3ee92bd7dd4cc31c52cfa0046912/README.md",
+      "embedded_bytes": 3834,
+      "declared_document_bytes": 6861,
+      "embedded_sha256": "e99fecffd9b7398d453ca6c31f6f4f2186e29d6b71cc1f9d8acc5a8662f1a50e",
+      "declared_document_sha256": "45238e9d2cd7159c67a24d1712dbf35ed37febb477ec0feeb453a3e2be22e8c3",
+      "embedded_full_document_self_consistent": false,
+      "upstream_provenance_independently_reverified": false
+    },
+    {
+      "model": "deepseek-coder-6.7b-instruct",
+      "url": "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-instruct/raw/e5d64addd26a6a1db0f9b863abf6ee3141936807/README.md",
+      "embedded_bytes": 3574,
+      "declared_document_bytes": 3574,
+      "embedded_sha256": "c874c1b3458a13e73263baf38836ce280d3c557e399a6b0078c22d55f7cda98e",
+      "declared_document_sha256": "c874c1b3458a13e73263baf38836ce280d3c557e399a6b0078c22d55f7cda98e",
+      "embedded_full_document_self_consistent": true,
+      "upstream_provenance_independently_reverified": false
+    },
+    {
+      "model": "deepseek-coder-33b-base",
+      "url": "https://huggingface.co/deepseek-ai/deepseek-coder-33b-base/raw/45c85cadf3720ef3e85a492e24fd4b8c5d21d8ac/README.md",
+      "embedded_bytes": 3834,
+      "declared_document_bytes": 6867,
+      "embedded_sha256": "a0c17c9a784e3a4a7f3d3b60f17d293c887d06792e6f9a6101c3f72e5f1a5be2",
+      "declared_document_sha256": "8f1feaed8f726629afe567a4f0ad35976adbca2f2a299f6ec3c4535c796c51c4",
+      "embedded_full_document_self_consistent": false,
+      "upstream_provenance_independently_reverified": false
+    }
+  ],
+  "epoch_population_counts_not_rereproduced": [
+    "unique model names",
+    "nonempty parameters and compute",
+    "method populations",
+    "Last modified populations and bounds",
+    "selected row positions and notes"
+  ],
+  "new_primary_claims_deferred": [
+    "A byte-identical pre-cutoff ancestor and ancestry/timestamp",
+    "full A/B leaderboard HTML protocol statements",
+    "actual selector configuration routing",
+    "primary paper compute tables and release histories",
+    "pinned model-card upstream authenticity and completeness",
+    "publisher aggregate-to-run manifest existence or absence"
+  ]
+}

@@ -1,0 +1,1738 @@
+[
+  {
+    "test_id": "01a",
+    "acceptance_case": "PIT-01",
+    "name": "Include alias while unresolved",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": false,
+    "patches": [
+      {
+        "path": "/candidate_records/0/decisions/1",
+        "value": {
+          "view": "training_data_known_at_cutoff",
+          "status": "ready",
+          "included": true,
+          "hold_reasons": []
+        }
+      }
+    ],
+    "schema_accepts": false,
+    "schema_errors": [
+      {
+        "instance_path": "/candidate_records/0/identity/status",
+        "schema_path": "/properties/candidate_records/items/allOf/0/then/properties/identity/properties/status/const",
+        "message": "'exact_execution_documented' was expected"
+      },
+      {
+        "instance_path": "/candidate_records/0/identity/relationship",
+        "schema_path": "/properties/candidate_records/items/allOf/0/then/properties/identity/properties/relationship/const",
+        "message": "'same_executed_model' was expected"
+      },
+      {
+        "instance_path": "/candidate_records/0/identity/executed_checkpoint_or_service_id",
+        "schema_path": "/properties/candidate_records/items/allOf/0/then/properties/identity/properties/executed_checkpoint_or_service_id/type",
+        "message": "None is not of type 'string'"
+      }
+    ],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "STRICT_IDENTITY_NOT_READY",
+        "path": "/candidate_records/0",
+        "detail": "Strict view enabled without exact executed identity"
+      },
+      {
+        "code": "STRICT_RUN_NOT_READY",
+        "path": "/candidate_records/0",
+        "detail": "Strict candidate decision has no assertion-level selection and unresolved snapshot run/protocol links"
+      },
+      {
+        "code": "STRICT_RUN_NOT_READY",
+        "path": "/candidate_records/0",
+        "detail": "Strict candidate decision has no assertion-level selection and unresolved snapshot run/protocol links"
+      }
+    ]
+  },
+  {
+    "test_id": "01b",
+    "acceptance_case": "PIT-01",
+    "name": "Put documentary candidate ID in executed field without changing alias status",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/0/identity/executed_checkpoint_or_service_id",
+        "value": "gpt-4-0314"
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "EXECUTION_UNSUPPORTED_BY_SUPPLIED_EVIDENCE",
+        "path": "/candidate_records/0/identity",
+        "detail": "Supplied audit has no executed checkpoint; promotion needs new evidence"
+      },
+      {
+        "code": "IDENTITY_STATUS_CONTRADICTION",
+        "path": "/candidate_records/0/identity",
+        "detail": "Non-exact identity carries executed ID"
+      }
+    ]
+  },
+  {
+    "test_id": "01c",
+    "acceptance_case": "PIT-01",
+    "name": "Promote identity labels and mark strict view ready while every run/protocol binding remains null",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/0/identity/status",
+        "value": "exact_execution_documented"
+      },
+      {
+        "path": "/candidate_records/0/identity/relationship",
+        "value": "same_executed_model"
+      },
+      {
+        "path": "/candidate_records/0/identity/executed_checkpoint_or_service_id",
+        "value": "gpt-4-0314"
+      },
+      {
+        "path": "/candidate_records/0/decisions/1",
+        "value": {
+          "view": "training_data_known_at_cutoff",
+          "status": "ready",
+          "included": true,
+          "hold_reasons": []
+        }
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "EXECUTION_UNSUPPORTED_BY_SUPPLIED_EVIDENCE",
+        "path": "/candidate_records/0/identity",
+        "detail": "Supplied audit has no executed checkpoint; promotion needs new evidence"
+      },
+      {
+        "code": "STRICT_RUN_NOT_READY",
+        "path": "/candidate_records/0",
+        "detail": "Strict candidate decision has no assertion-level selection and unresolved snapshot run/protocol links"
+      },
+      {
+        "code": "STRICT_RUN_NOT_READY",
+        "path": "/candidate_records/0",
+        "detail": "Strict candidate decision has no assertion-level selection and unresolved snapshot run/protocol links"
+      }
+    ]
+  },
+  {
+    "test_id": "02a",
+    "acceptance_case": "PIT-02",
+    "name": "Relabel rejected base-to-instruct ancestry as same named variant",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/7/identity/relationship",
+        "value": "same_named_variant_only"
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "REJECTED_VARIANT_EQUIVALENCE",
+        "path": "/candidate_records/7/identity",
+        "detail": "Proposed equivalence conflicts with supplied join rejection"
+      }
+    ]
+  },
+  {
+    "test_id": "02b",
+    "acceptance_case": "PIT-02",
+    "name": "Copy base compute into descendant total without supporting training evidence",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/7/features/11/value/point",
+        "value": 8.04e+22
+      },
+      {
+        "path": "/candidate_records/7/features/11/value/missing_reason",
+        "value": null
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "ANCESTRAL_COMPUTE_PROMOTED_TO_TOTAL",
+        "path": "/candidate_records/7/features/11",
+        "detail": "Supplied base-to-instruct fixture has no descendant total-compute evidence"
+      }
+    ]
+  },
+  {
+    "test_id": "02c",
+    "acceptance_case": "PIT-02",
+    "name": "Relabel included ancestral compute as total training",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/7/features/9/compute_scope",
+        "value": "total_training"
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "ANCESTRAL_COMPUTE_PROMOTED_TO_TOTAL",
+        "path": "/candidate_records/7/features/9",
+        "detail": "Supplied base-to-instruct fixture has no descendant total-compute evidence"
+      },
+      {
+        "code": "COMPUTE_SCOPE_MISMATCH",
+        "path": "/candidate_records/7/features/9",
+        "detail": "Known base estimate must remain ancestral scope for instruct fixture"
+      }
+    ]
+  },
+  {
+    "test_id": "03a",
+    "acceptance_case": "PIT-03",
+    "name": "Promote documentary Hub ID with a post-cutoff inspected revision into exact historical execution",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/9/identity/status",
+        "value": "exact_execution_documented"
+      },
+      {
+        "path": "/candidate_records/9/identity/relationship",
+        "value": "same_executed_model"
+      },
+      {
+        "path": "/candidate_records/9/identity/executed_checkpoint_or_service_id",
+        "value": "bigcode/starcoder2-3b"
+      },
+      {
+        "path": "/candidate_records/9/decisions/1",
+        "value": {
+          "view": "training_data_known_at_cutoff",
+          "status": "ready",
+          "included": true,
+          "hold_reasons": []
+        }
+      },
+      {
+        "path": "/candidate_records/9/identity/inspected_repository_revision",
+        "value": "synthetic-future-revision"
+      },
+      {
+        "path": "/candidate_records/9/identity/revision_availability/earliest",
+        "value": "2026-10-08T00:00:00Z"
+      },
+      {
+        "path": "/candidate_records/9/identity/revision_availability/latest",
+        "value": "2026-10-08T00:00:00Z"
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "EXECUTION_UNSUPPORTED_BY_SUPPLIED_EVIDENCE",
+        "path": "/candidate_records/9/identity",
+        "detail": "Supplied audit has no executed checkpoint; promotion needs new evidence"
+      },
+      {
+        "code": "STRICT_RUN_NOT_READY",
+        "path": "/candidate_records/9",
+        "detail": "Strict candidate decision has no assertion-level selection and unresolved snapshot run/protocol links"
+      },
+      {
+        "code": "STRICT_RUN_NOT_READY",
+        "path": "/candidate_records/9",
+        "detail": "Strict candidate decision has no assertion-level selection and unresolved snapshot run/protocol links"
+      }
+    ]
+  },
+  {
+    "test_id": "04a",
+    "acceptance_case": "PIT-04",
+    "name": "Declare new inference with null run and output evidence",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/4/snapshots/1/revision_relationship",
+        "value": "new_inference"
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "NEW_INFERENCE_WITHOUT_RUN",
+        "path": "/candidate_records/4/snapshots/1",
+        "detail": "New inference requires run, output and time evidence"
+      }
+    ]
+  },
+  {
+    "test_id": "04b",
+    "acceptance_case": "PIT-04",
+    "name": "Declare regrade of same outputs with null output ID",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/4/snapshots/1/revision_relationship",
+        "value": "regrade_same_outputs"
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "REGRADE_WITHOUT_OUTPUT_ID",
+        "path": "/candidate_records/4/snapshots/1",
+        "detail": "Regrading requires a documented output identity and reuse relation"
+      }
+    ]
+  },
+  {
+    "test_id": "04c",
+    "acceptance_case": "PIT-04",
+    "name": "Populate actual-run denominator from nominal MBPP task population",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/protocol_records/1/actual_run_binding/metric_denominators/mbpp",
+        "value": 399
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "DENOMINATOR_WITHOUT_RUN_EVIDENCE",
+        "path": "/protocol_records/1",
+        "detail": "Nominal task count cannot supply an actual-run denominator"
+      }
+    ]
+  },
+  {
+    "test_id": "04d",
+    "acceptance_case": "PIT-04",
+    "name": "Claim actual run documented while bindings remain null",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/protocol_records/0/evidence_status",
+        "value": "actual_run_documented"
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "ACTUAL_RUN_STATUS_UNSUPPORTED",
+        "path": "/protocol_records/0",
+        "detail": "Documented status contradicts null actual run fields"
+      }
+    ]
+  },
+  {
+    "test_id": "04e",
+    "acceptance_case": "PIT-04",
+    "name": "Accept zero denominator and unrelated metric key",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/protocol_records/1/actual_run_binding/metric_denominators",
+        "value": {
+          "mbpp": 0,
+          "mbpp+": null,
+          "fabricated_metric": 378
+        }
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "DENOMINATOR_METRIC_KEYS",
+        "path": "/protocol_records/1",
+        "detail": "Denominator keys differ from declared metric names"
+      },
+      {
+        "code": "DENOMINATOR_WITHOUT_RUN_EVIDENCE",
+        "path": "/protocol_records/1",
+        "detail": "Nominal task count cannot supply an actual-run denominator"
+      },
+      {
+        "code": "INVALID_ACTUAL_DENOMINATOR",
+        "path": "/protocol_records/1",
+        "detail": "An observed fraction requires positive denominator"
+      }
+    ]
+  },
+  {
+    "test_id": "05a",
+    "acceptance_case": "PIT-05",
+    "name": "Replace publisher null MBPP with zero",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/4/snapshots/1/source_pass_at_1_percent/mbpp",
+        "value": 0
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "NULL_REASON_MISMATCH",
+        "path": "/candidate_records/4/snapshots/1/mbpp",
+        "detail": "Null and missing-reason presence must agree"
+      },
+      {
+        "code": "NATIVE_SNAPSHOT_CHANGED",
+        "path": "/candidate_records/4/snapshots/1/source_pass_at_1_percent",
+        "detail": "Value differs from supplied audit native object"
+      }
+    ]
+  },
+  {
+    "test_id": "05b",
+    "acceptance_case": "PIT-05",
+    "name": "Forward-fill removed MBPP from snapshot A",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/4/snapshots/1/source_pass_at_1_percent/mbpp",
+        "value": 65.4
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "NULL_REASON_MISMATCH",
+        "path": "/candidate_records/4/snapshots/1/mbpp",
+        "detail": "Null and missing-reason presence must agree"
+      },
+      {
+        "code": "NATIVE_SNAPSHOT_CHANGED",
+        "path": "/candidate_records/4/snapshots/1/source_pass_at_1_percent",
+        "detail": "Value differs from supplied audit native object"
+      }
+    ]
+  },
+  {
+    "test_id": "05c",
+    "acceptance_case": "PIT-05",
+    "name": "Populate blank native compute from notes",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/1/features/5/value/point",
+        "value": 2.2e+25
+      },
+      {
+        "path": "/candidate_records/1/features/5/value/missing_reason",
+        "value": null
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "NATIVE_BLANK_NUMERICIZED",
+        "path": "/candidate_records/1/features/5",
+        "detail": "A notes extraction must not populate the native blank numeric field"
+      }
+    ]
+  },
+  {
+    "test_id": "05d",
+    "acceptance_case": "PIT-05",
+    "name": "Reinterpret qualitative confidence as 95 percent interval",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/3/features/5/value/uncertainty_kind",
+        "value": "confidence_interval"
+      },
+      {
+        "path": "/candidate_records/3/features/5/value/confidence_level",
+        "value": 0.95
+      },
+      {
+        "path": "/candidate_records/3/features/5/value/lower",
+        "value": 5e+23
+      },
+      {
+        "path": "/candidate_records/3/features/5/value/upper",
+        "value": 6e+23
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "UNSUPPORTED_CONFIDENCE_LEVEL",
+        "path": "/candidate_records/3/features/5",
+        "detail": "Numeric confidence level conflicts with the supplied audit preservation fixture"
+      }
+    ]
+  },
+  {
+    "test_id": "05e",
+    "acceptance_case": "PIT-05",
+    "name": "Remove source null explanation",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/4/snapshots/1/missing_reasons",
+        "value": {}
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "NULL_REASON_MISMATCH",
+        "path": "/candidate_records/4/snapshots/1/mbpp",
+        "detail": "Null and missing-reason presence must agree"
+      },
+      {
+        "code": "NULL_REASON_MISMATCH",
+        "path": "/candidate_records/4/snapshots/1/mbpp+",
+        "detail": "Null and missing-reason presence must agree"
+      }
+    ]
+  },
+  {
+    "test_id": "05f",
+    "acceptance_case": "PIT-05",
+    "name": "Delete required native metric slot",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": false,
+    "patches": [
+      {
+        "path": "/candidate_records/4/snapshots/1/source_pass_at_1_percent",
+        "value": {
+          "humaneval": 55.5,
+          "humaneval+": 50.6,
+          "mbpp+": null
+        }
+      }
+    ],
+    "schema_accepts": false,
+    "schema_errors": [
+      {
+        "instance_path": "/candidate_records/4/snapshots/1/source_pass_at_1_percent",
+        "schema_path": "/properties/candidate_records/items/properties/snapshots/items/properties/source_pass_at_1_percent/required",
+        "message": "'mbpp' is a required property"
+      }
+    ],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "NATIVE_SNAPSHOT_CHANGED",
+        "path": "/candidate_records/4/snapshots/1/source_pass_at_1_percent",
+        "detail": "Value differs from supplied audit native object"
+      }
+    ]
+  },
+  {
+    "test_id": "05g",
+    "acceptance_case": "PIT-05",
+    "name": "Set native percentage outside 0 to 100",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": false,
+    "patches": [
+      {
+        "path": "/candidate_records/4/snapshots/1/source_pass_at_1_percent/mbpp",
+        "value": 101
+      }
+    ],
+    "schema_accepts": false,
+    "schema_errors": [
+      {
+        "instance_path": "/candidate_records/4/snapshots/1/source_pass_at_1_percent/mbpp",
+        "schema_path": "/properties/candidate_records/items/properties/snapshots/items/properties/source_pass_at_1_percent/properties/mbpp/maximum",
+        "message": "101 is greater than the maximum of 100"
+      }
+    ],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "NULL_REASON_MISMATCH",
+        "path": "/candidate_records/4/snapshots/1/mbpp",
+        "detail": "Null and missing-reason presence must agree"
+      },
+      {
+        "code": "NATIVE_SNAPSHOT_CHANGED",
+        "path": "/candidate_records/4/snapshots/1/source_pass_at_1_percent",
+        "detail": "Value differs from supplied audit native object"
+      }
+    ]
+  },
+  {
+    "test_id": "05h",
+    "acceptance_case": "PIT-05",
+    "name": "Admit empty-string native value with no numeric value by clearing missingness",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/1/features/5/included_by_cutoff",
+        "value": true
+      },
+      {
+        "path": "/candidate_records/1/features/5/hold_reasons",
+        "value": []
+      },
+      {
+        "path": "/candidate_records/1/features/5/value/missing_reason",
+        "value": null
+      },
+      {
+        "path": "/candidate_records/1/features/5/public_availability",
+        "value": {
+          "earliest": "2024-01-01T00:00:00Z",
+          "latest": "2024-01-01T00:00:00Z",
+          "evidence_kind": "publisher_publication_record",
+          "evidence_refs": [
+            "synthetic-test-only"
+          ]
+        }
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "INCLUDED_FEATURE_EMPTY_VALUE",
+        "path": "/candidate_records/1/features/5",
+        "detail": "An empty native string is not a substantive included feature value"
+      }
+    ]
+  },
+  {
+    "test_id": "06a",
+    "acceptance_case": "PIT-06",
+    "name": "Include a current 2026 citation count without changing future timestamp",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/0/features/1/included_by_cutoff",
+        "value": true
+      },
+      {
+        "path": "/candidate_records/0/features/1/hold_reasons",
+        "value": []
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "FUTURE_FEATURE_INCLUDED",
+        "path": "/candidate_records/0/features/1",
+        "detail": "Relevant availability exceeds declared cutoff"
+      }
+    ]
+  },
+  {
+    "test_id": "06b",
+    "acceptance_case": "PIT-06",
+    "name": "Move included source-reported feature into future",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/9/features/8/public_availability/latest",
+        "value": "2026-01-01T00:00:00Z"
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "FUTURE_FEATURE_INCLUDED",
+        "path": "/candidate_records/9/features/8",
+        "detail": "Relevant availability exceeds declared cutoff"
+      }
+    ]
+  },
+  {
+    "test_id": "06c",
+    "acceptance_case": "PIT-06",
+    "name": "Move reconstruction input availability into future",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/6/features/9/input_information_availability/latest",
+        "value": "2026-01-01T00:00:00Z"
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "FUTURE_FEATURE_INCLUDED",
+        "path": "/candidate_records/6/features/9",
+        "detail": "Relevant availability exceeds declared cutoff"
+      }
+    ]
+  },
+  {
+    "test_id": "06d",
+    "acceptance_case": "PIT-06",
+    "name": "Reverse an availability interval",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/9/features/8/public_availability/earliest",
+        "value": "2025-01-01T00:00:00Z"
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "REVERSED_TIME_INTERVAL",
+        "path": "/candidate_records/9/features/8/public_availability",
+        "detail": "earliest > latest"
+      }
+    ]
+  },
+  {
+    "test_id": "06e",
+    "acceptance_case": "PIT-06",
+    "name": "Call A an unseen prospective outcome despite repository-chronology historical flag",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/0/snapshots/0/prospective_outcome",
+        "value": true
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "HISTORICAL_LABEL_MARKED_PROSPECTIVE",
+        "path": "/candidate_records/0/snapshots/0",
+        "detail": "Already historical under the chosen chronology cannot be an unseen target"
+      }
+    ]
+  },
+  {
+    "test_id": "06f",
+    "acceptance_case": "PIT-06",
+    "name": "Call B cutoff-proven with unknown result availability",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/0/snapshots/1/label_available_at_cutoff",
+        "value": "proven"
+      },
+      {
+        "path": "/candidate_records/0/snapshots/1/prospective_outcome",
+        "value": false
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "LABEL_PROVEN_WITHOUT_PRE_CUTOFF_EVIDENCE",
+        "path": "/candidate_records/0/snapshots/1",
+        "detail": "Proven flag lacks matching dated availability"
+      }
+    ]
+  },
+  {
+    "test_id": "06g",
+    "acceptance_case": "PIT-06",
+    "name": "Call a proven historical label prospective",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": false,
+    "patches": [
+      {
+        "path": "/candidate_records/0/snapshots/0/label_available_at_cutoff",
+        "value": "proven"
+      },
+      {
+        "path": "/candidate_records/0/snapshots/0/prospective_outcome",
+        "value": true
+      }
+    ],
+    "schema_accepts": false,
+    "schema_errors": [
+      {
+        "instance_path": "/candidate_records/0/snapshots/0/prospective_outcome",
+        "schema_path": "/properties/candidate_records/items/properties/snapshots/items/allOf/0/then/properties/prospective_outcome/const",
+        "message": "False was expected"
+      }
+    ],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "HISTORICAL_LABEL_MARKED_PROSPECTIVE",
+        "path": "/candidate_records/0/snapshots/0",
+        "detail": "Already historical under the chosen chronology cannot be an unseen target"
+      },
+      {
+        "code": "LABEL_PROVEN_WITHOUT_PRE_CUTOFF_EVIDENCE",
+        "path": "/candidate_records/0/snapshots/0",
+        "detail": "Proven flag lacks matching dated availability"
+      }
+    ]
+  },
+  {
+    "test_id": "06h",
+    "acceptance_case": "PIT-06",
+    "name": "Admit source feature with missing availability",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": false,
+    "patches": [
+      {
+        "path": "/candidate_records/9/features/8/public_availability/latest",
+        "value": null
+      }
+    ],
+    "schema_accepts": false,
+    "schema_errors": [
+      {
+        "instance_path": "/candidate_records/9/features/8/public_availability/latest",
+        "schema_path": "/properties/candidate_records/items/properties/features/items/allOf/1/then/properties/public_availability/properties/latest/type",
+        "message": "None is not of type 'string'"
+      }
+    ],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "MISSING_FEATURE_TIME",
+        "path": "/candidate_records/9/features/8",
+        "detail": "Included feature has no bounded latest availability"
+      }
+    ]
+  },
+  {
+    "test_id": "06i",
+    "acceptance_case": "PIT-06",
+    "name": "Break reconstruction reference while leaving nonempty dependency list",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/6/features/9/computation_dependency_assertion_ids",
+        "value": [
+          "nonexistent/feature/N",
+          "nonexistent/feature/D"
+        ]
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "DANGLING_FEATURE_DEPENDENCY",
+        "path": "/candidate_records/6/features/9",
+        "detail": "nonexistent/feature/N"
+      },
+      {
+        "code": "DANGLING_FEATURE_DEPENDENCY",
+        "path": "/candidate_records/6/features/9",
+        "detail": "nonexistent/feature/D"
+      }
+    ]
+  },
+  {
+    "test_id": "06j",
+    "acceptance_case": "PIT-06",
+    "name": "Alter 6ND calculation while inputs are unchanged",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/6/features/9/value/point",
+        "value": 8.05e+22
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "DERIVATION_VALUE_MISMATCH",
+        "path": "/candidate_records/6/features/9",
+        "detail": "6ND reconstruction does not equal recorded inputs"
+      }
+    ]
+  },
+  {
+    "test_id": "07a",
+    "acceptance_case": "PIT-07",
+    "name": "Independent view marked ready with only benchmark-imputed eligible compute, even after giving it synthetic pre-cutoff timing",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/1/identity/status",
+        "value": "exact_execution_documented"
+      },
+      {
+        "path": "/candidate_records/1/identity/relationship",
+        "value": "same_executed_model"
+      },
+      {
+        "path": "/candidate_records/1/identity/executed_checkpoint_or_service_id",
+        "value": "gpt-4-1106-preview"
+      },
+      {
+        "path": "/candidate_records/1/decisions/4",
+        "value": {
+          "view": "independent_compute_performance",
+          "status": "ready",
+          "included": true,
+          "hold_reasons": []
+        }
+      },
+      {
+        "path": "/candidate_records/1/features",
+        "value": [
+          {
+            "name": "derived_from_current_notes.benchmark_imputed_compute_FLOP",
+            "value": {
+              "raw": "Training compute estimated to be 2.2e25 FLOP using benchmark imputation. redacted-source-locator:sha256:256cf64f021adbcab1f4f0cb2912b54e6bfecc4e8cc7d2425a50f1843876bd32",
+              "point": 2.2e+25,
+              "lower": null,
+              "upper": null,
+              "unit": "FLOP",
+              "uncertainty_kind": "none_reported",
+              "confidence_label": null,
+              "confidence_level": null,
+              "source_notes": "Explicit extraction from current notes; this is not the blank native Training compute (FLOP) cell.",
+              "missing_reason": null
+            },
+            "provenance": "benchmark_imputation",
+            "compute_scope": "unknown",
+            "availability_basis": "source_value",
+            "public_availability": {
+              "earliest": "2024-01-01T00:00:00Z",
+              "latest": "2024-01-01T00:00:00Z",
+              "evidence_kind": "publisher_publication_record",
+              "evidence_refs": [
+                "synthetic-test-only"
+              ]
+            },
+            "input_information_availability": null,
+            "derived_at": null,
+            "source_refs": [
+              "https://epoch.ai/data/all_ai_models.csv"
+            ],
+            "included_by_cutoff": true,
+            "derivation_note": "Extracted the 2.2e25 FLOP notes estimate for preservation only; never used as an independent compute predictor.",
+            "computation_dependency_assertion_ids": [],
+            "hold_reasons": []
+          }
+        ]
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "EXECUTION_UNSUPPORTED_BY_SUPPLIED_EVIDENCE",
+        "path": "/candidate_records/1/identity",
+        "detail": "Supplied audit has no executed checkpoint; promotion needs new evidence"
+      },
+      {
+        "code": "STRICT_RUN_NOT_READY",
+        "path": "/candidate_records/1",
+        "detail": "Strict candidate decision has no assertion-level selection and unresolved snapshot run/protocol links"
+      },
+      {
+        "code": "STRICT_RUN_NOT_READY",
+        "path": "/candidate_records/1",
+        "detail": "Strict candidate decision has no assertion-level selection and unresolved snapshot run/protocol links"
+      },
+      {
+        "code": "INDEPENDENT_COMPUTE_NOT_AVAILABLE",
+        "path": "/candidate_records/1",
+        "detail": "Only admitted compute is circular or no independent compute is selected"
+      }
+    ]
+  },
+  {
+    "test_id": "08a",
+    "acceptance_case": "PIT-08",
+    "name": "Repeat candidate ID with nonidentical record",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/1/candidate_id",
+        "value": "PIT-J01"
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "DUPLICATE_KEY",
+        "path": "/candidate_records",
+        "detail": "candidate_id='PIT-J01' appears 2 times"
+      },
+      {
+        "code": "CANDIDATE_NATIVE_KEY_MISMATCH",
+        "path": "/candidate_records/1",
+        "detail": "Candidate names differ from supplied audit extract"
+      },
+      {
+        "code": "NATIVE_RAW_CHANGED",
+        "path": "/candidate_records/1/features/0",
+        "detail": "Raw value differs from supplied audit extract"
+      },
+      {
+        "code": "NATIVE_RAW_CHANGED",
+        "path": "/candidate_records/1/features/1",
+        "detail": "Raw value differs from supplied audit extract"
+      },
+      {
+        "code": "NATIVE_RAW_CHANGED",
+        "path": "/candidate_records/1/features/2",
+        "detail": "Raw value differs from supplied audit extract"
+      },
+      {
+        "code": "NATIVE_RAW_CHANGED",
+        "path": "/candidate_records/1/features/3",
+        "detail": "Raw value differs from supplied audit extract"
+      },
+      {
+        "code": "NATIVE_RAW_CHANGED",
+        "path": "/candidate_records/1/features/5",
+        "detail": "Raw value differs from supplied audit extract"
+      },
+      {
+        "code": "UNSUPPORTED_CONFIDENCE_LEVEL",
+        "path": "/candidate_records/1/features/5",
+        "detail": "Numeric confidence level conflicts with the supplied audit preservation fixture"
+      },
+      {
+        "code": "NATIVE_SNAPSHOT_CHANGED",
+        "path": "/candidate_records/1/snapshots/0/source_pass_at_1_percent",
+        "detail": "Value differs from supplied audit native object"
+      },
+      {
+        "code": "NATIVE_SNAPSHOT_CHANGED",
+        "path": "/candidate_records/1/snapshots/0/source_link",
+        "detail": "Value differs from supplied audit native object"
+      },
+      {
+        "code": "NATIVE_SNAPSHOT_CHANGED",
+        "path": "/candidate_records/1/snapshots/1/source_pass_at_1_percent",
+        "detail": "Value differs from supplied audit native object"
+      },
+      {
+        "code": "NATIVE_SNAPSHOT_CHANGED",
+        "path": "/candidate_records/1/snapshots/1/source_link",
+        "detail": "Value differs from supplied audit native object"
+      }
+    ]
+  },
+  {
+    "test_id": "08b",
+    "acceptance_case": "PIT-08",
+    "name": "Duplicate a native candidate key",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/1/evalplus_key",
+        "value": "GPT-4 (May 2023)"
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "DUPLICATE_KEY",
+        "path": "/candidate_records",
+        "detail": "evalplus_key='GPT-4 (May 2023)' appears 2 times"
+      },
+      {
+        "code": "CANDIDATE_NATIVE_KEY_MISMATCH",
+        "path": "/candidate_records/1",
+        "detail": "Candidate names differ from supplied audit extract"
+      },
+      {
+        "code": "SNAPSHOT_CANDIDATE_KEY_MISMATCH",
+        "path": "/candidate_records/1/snapshots/0",
+        "detail": "Native source key differs from parent candidate"
+      },
+      {
+        "code": "SNAPSHOT_CANDIDATE_KEY_MISMATCH",
+        "path": "/candidate_records/1/snapshots/1",
+        "detail": "Native source key differs from parent candidate"
+      }
+    ]
+  },
+  {
+    "test_id": "08c",
+    "acceptance_case": "PIT-08",
+    "name": "Repeat candidate/artifact snapshot slot with nonidentical metadata",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/4/snapshots/1/artifact_id",
+        "value": "evalplus-results-A"
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "NATIVE_SNAPSHOT_CHANGED",
+        "path": "/candidate_records/4/snapshots/1/source_pass_at_1_percent",
+        "detail": "Value differs from supplied audit native object"
+      },
+      {
+        "code": "DUPLICATE_SNAPSHOT_SLOT",
+        "path": "/candidate_records/4/snapshots",
+        "detail": "Same candidate/artifact publication slot appears more than once"
+      }
+    ]
+  },
+  {
+    "test_id": "08d",
+    "acceptance_case": "PIT-08",
+    "name": "Repeat an identical whole snapshot",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": false,
+    "patches": [
+      {
+        "path": "/candidate_records/4/snapshots/1",
+        "value": {
+          "artifact_id": "evalplus-results-A",
+          "source_model_key": "CodeLlama-70B",
+          "source_link": "https://huggingface.co/codellama/CodeLlama-70b-Python-hf",
+          "source_open_data": "NONE",
+          "source_prompted": false,
+          "source_size_billion_parameters": 70.0,
+          "source_pass_at_1_percent": {
+            "humaneval": 55.5,
+            "humaneval+": 50.0,
+            "mbpp": 65.4,
+            "mbpp+": 53.4
+          },
+          "missing_reasons": {},
+          "run_id": null,
+          "output_set_id": null,
+          "evaluation_spec_id": null,
+          "inference_time": {
+            "earliest": null,
+            "latest": null,
+            "evidence_kind": "unknown",
+            "evidence_refs": []
+          },
+          "result_public_availability": {
+            "earliest": null,
+            "latest": null,
+            "evidence_kind": "unknown",
+            "evidence_refs": []
+          },
+          "label_available_at_cutoff": "repository_chronology_only",
+          "prospective_outcome": null,
+          "previous_artifact_id": null,
+          "revision_relationship": "republication",
+          "comparison_status": "different_protocol_or_population",
+          "metric_comparison_status": {
+            "humaneval": "unresolved",
+            "humaneval+": "unresolved",
+            "mbpp": "different_protocol_or_population",
+            "mbpp+": "different_protocol_or_population"
+          }
+        }
+      }
+    ],
+    "schema_accepts": false,
+    "schema_errors": [
+      {
+        "instance_path": "/candidate_records/4/snapshots",
+        "schema_path": "/properties/candidate_records/items/properties/snapshots/uniqueItems",
+        "message": "[{'artifact_id': 'evalplus-results-A', 'source_model_key': 'CodeLlama-70B', 'source_link': 'https://huggingface.co/codellama/CodeLlama-70b-Python-hf', 'source_open_data': 'NONE', 'source_prompted': False, 'source_size_billion_parameters': 70.0, 'source_pass_at_1_percent': {'humaneval': 55.5, 'humaneval+': 50.0, 'mbpp': 65.4, 'mbpp+': 53.4}, 'missing_reasons': {}, 'run_id': None, 'output_set_id': None, 'evaluation_spec_id': None, 'inference_time': {'earliest': None, 'latest': None, 'evidence_kind': 'unknown', 'evidence_refs': []}, 'result_public_availability': {'earliest': None, 'latest': None, 'evidence_kind': 'unknown', 'evidence_refs': []}, 'label_available_at_cutoff': 'repository_chronology_only', 'prospective_outcome': None, 'previous_artifact_id': None, 'revision_relationship': 'republication', 'comparison_status': 'different_protocol_or_population', 'metric_comparison_status': {'humaneval': 'unresolved', 'humaneval+': 'unresolved', 'mbpp': 'different_protocol_or_population', 'mbpp+': 'different_protocol_or_population'}}, {'artifact_id': 'evalplus-results-A', 'source_model_key': 'CodeLlama-70B', 'source_link': 'https://huggingface.co/codellama/CodeLlama-70b-Python-hf', 'source_open_data': 'NONE', 'source_prompted': False, 'source_size_billion_parameters': 70.0, 'source_pass_at_1_percent': {'humaneval': 55.5, 'humaneval+': 50.0, 'mbpp': 65.4, 'mbpp+': 53.4}, 'missing_reasons': {}, 'run_id': None, 'output_set_id': None, 'evaluation_spec_id': None, 'inference_time': {'earliest': None, 'latest': None, 'evidence_kind': 'unknown', 'evidence_refs': []}, 'result_public_availability': {'earliest': None, 'latest': None, 'evidence_kind': 'unknown', 'evidence_refs': []}, 'label_available_at_cutoff': 'repository_chronology_only', 'prospective_outcome': None, 'previous_artifact_id': None, 'revision_relationship': 'republication', 'comparison_status': 'different_protocol_or_population', 'metric_comparison_status': {'humaneval': 'unresolved', 'humaneval+': 'unresolved', 'mbpp': 'different_protocol_or_population', 'mbpp+': 'different_protocol_or_population'}}] has non-unique elements"
+      }
+    ],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "DUPLICATE_SNAPSHOT_SLOT",
+        "path": "/candidate_records/4/snapshots",
+        "detail": "Same candidate/artifact publication slot appears more than once"
+      }
+    ]
+  },
+  {
+    "test_id": "08e",
+    "acceptance_case": "PIT-08",
+    "name": "Replace conservative family group on related instruct variant",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/7/dependencies/split_group_ids",
+        "value": [
+          "independent:test-fold"
+        ]
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "MISSING_CONSERVATIVE_FAMILY_GROUP",
+        "path": "/candidate_records/7/dependencies",
+        "detail": "This bounded panel promises one conservative family block"
+      }
+    ]
+  },
+  {
+    "test_id": "08f",
+    "acceptance_case": "PIT-08",
+    "name": "Reimport identical artifact as another artifact record",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/artifact_records",
+        "value": [
+          {
+            "artifact_id": "epoch-models-d845f689",
+            "url": "https://epoch.ai/data/all_ai_models.csv",
+            "version": "sha256:d845f68989881cb922ee6fd131d2bce6fb9c88dce5978eb0719a4c053476eff9",
+            "sha256": "d845f68989881cb922ee6fd131d2bce6fb9c88dce5978eb0719a4c053476eff9",
+            "byte_length": 6826880,
+            "publication_time": {
+              "earliest": null,
+              "latest": null,
+              "evidence_kind": "unknown",
+              "evidence_refs": []
+            },
+            "repository_vintage_at": null,
+            "retrieved_at": "2026-10-09T15:32:36.658276+00:00",
+            "verification": "fresh_bytes_verified",
+            "raw_preservation": "permitted_preserved",
+            "public_redistribution": "eligible_conditions_apply_not_released",
+            "evidence_refs": [
+              "https://epoch.ai/data/ai-models",
+              "https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/FULL_CONTENT_ACQUISITION.md"
+            ]
+          },
+          {
+            "artifact_id": "evalplus-results-A",
+            "url": "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+            "version": "3b9f5b48c92a492a48fde6c0e1bffb9295812caf",
+            "sha256": "4d293d4450da091dab4ee4ab333d73b34973066a5dc122c8eef3ada6421b00cb",
+            "byte_length": 32977,
+            "publication_time": {
+              "earliest": null,
+              "latest": null,
+              "evidence_kind": "unknown",
+              "evidence_refs": []
+            },
+            "repository_vintage_at": "2024-04-21T06:25:04Z",
+            "retrieved_at": null,
+            "verification": "fresh_bytes_verified",
+            "raw_preservation": "permitted_preserved",
+            "public_redistribution": "eligible_conditions_apply_not_released",
+            "evidence_refs": [
+              "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/LICENSE",
+              "https://github.com/evalplus/evalplus.github.io/blob/ba37a9f43a5706e87762951029baab25880cd0d6/results.json"
+            ]
+          },
+          {
+            "artifact_id": "evalplus-results-B",
+            "url": "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+            "version": "65db7ffdb66ae3fee800bee8d998b412f0a6e648",
+            "sha256": "89c068b081aaf2778e5a77549b3549ac7825231a9a1125ca309a2d18677ea941",
+            "byte_length": 27725,
+            "publication_time": {
+              "earliest": null,
+              "latest": null,
+              "evidence_kind": "unknown",
+              "evidence_refs": []
+            },
+            "repository_vintage_at": "2024-04-22T01:27:32Z",
+            "retrieved_at": null,
+            "verification": "fresh_bytes_verified",
+            "raw_preservation": "permitted_preserved",
+            "public_redistribution": "eligible_conditions_apply_not_released",
+            "evidence_refs": [
+              "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/LICENSE"
+            ]
+          },
+          {
+            "artifact_id": "epoch-models-d845f689",
+            "url": "https://epoch.ai/data/all_ai_models.csv",
+            "version": "sha256:d845f68989881cb922ee6fd131d2bce6fb9c88dce5978eb0719a4c053476eff9",
+            "sha256": "d845f68989881cb922ee6fd131d2bce6fb9c88dce5978eb0719a4c053476eff9",
+            "byte_length": 6826880,
+            "publication_time": {
+              "earliest": null,
+              "latest": null,
+              "evidence_kind": "unknown",
+              "evidence_refs": []
+            },
+            "repository_vintage_at": null,
+            "retrieved_at": "2026-10-09T15:32:36.658276+00:00",
+            "verification": "fresh_bytes_verified",
+            "raw_preservation": "permitted_preserved",
+            "public_redistribution": "eligible_conditions_apply_not_released",
+            "evidence_refs": [
+              "https://epoch.ai/data/ai-models",
+              "https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/FULL_CONTENT_ACQUISITION.md"
+            ]
+          }
+        ]
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "DUPLICATE_KEY",
+        "path": "/artifact_records",
+        "detail": "artifact_id='epoch-models-d845f689' appears 2 times"
+      }
+    ]
+  },
+  {
+    "test_id": "08g",
+    "acceptance_case": "PIT-08",
+    "name": "Duplicate protocol ID",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/protocol_records",
+        "value": [
+          {
+            "evaluation_spec_id": "declared-HEplus-0.1.9",
+            "benchmark_name": "HumanEval / HumanEval+",
+            "metric_names": [
+              "humaneval",
+              "humaneval+"
+            ],
+            "applies_to_artifact_ids": [
+              "evalplus-results-A",
+              "evalplus-results-B"
+            ],
+            "declared": {
+              "version": "HumanEval+0.1.9",
+              "task_count": 164,
+              "metric": "pass@1, source percentages",
+              "generation_protocol": "Leaderboard declares greedy decoding; no per-run generation configuration is recovered.",
+              "documentary_time": {
+                "earliest": "2024-04-21T06:25:04Z",
+                "latest": "2024-04-21T06:25:04Z",
+                "evidence_kind": "repository_vintage",
+                "evidence_refs": [
+                  "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/leaderboard.html"
+                ]
+              },
+              "denominator_granularity": "benchmark"
+            },
+            "actual_run_binding": {
+              "run_id": null,
+              "output_set_hash": null,
+              "task_manifest_hash": null,
+              "harness_commit": null,
+              "prompt_content_hash": null,
+              "scorer_commit": null,
+              "generation_configuration": null,
+              "metric_denominators": {
+                "humaneval": null,
+                "humaneval+": null
+              },
+              "inference_time": {
+                "earliest": null,
+                "latest": null,
+                "evidence_kind": "unknown",
+                "evidence_refs": []
+              }
+            },
+            "evidence_status": "declaration_only",
+            "evidence_refs": [
+              "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/leaderboard.html",
+              "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/leaderboard.html",
+              "https://github.com/evalplus/evalplus/blob/3de226896daa67b54e2683eb6e5f6840ce66018a/README.md"
+            ],
+            "notes": "Nominal164-task benchmark declaration, not a verified per-model/scorer denominator. Source version label is unchanged, but22 HumanEval+ and2 HumanEval scalar slots change across the full snapshots. For the12 examples some HumanEval values repeat, which does not prove identical outputs or run settings."
+          },
+          {
+            "evaluation_spec_id": "declared-MBPP-A-0.1.0",
+            "benchmark_name": "MBPP / MBPP+",
+            "metric_names": [
+              "mbpp",
+              "mbpp+"
+            ],
+            "applies_to_artifact_ids": [
+              "evalplus-results-A"
+            ],
+            "declared": {
+              "version": "MBPP+0.1.0",
+              "task_count": 399,
+              "metric": "pass@1, source percentages",
+              "generation_protocol": "Leaderboard declares greedy decoding; no per-run generation configuration is recovered.",
+              "documentary_time": {
+                "earliest": "2024-04-21T06:25:04Z",
+                "latest": "2024-04-21T06:25:04Z",
+                "evidence_kind": "repository_vintage",
+                "evidence_refs": [
+                  "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/leaderboard.html"
+                ]
+              },
+              "denominator_granularity": "benchmark"
+            },
+            "actual_run_binding": {
+              "run_id": null,
+              "output_set_hash": null,
+              "task_manifest_hash": null,
+              "harness_commit": null,
+              "prompt_content_hash": null,
+              "scorer_commit": null,
+              "generation_configuration": null,
+              "metric_denominators": {
+                "mbpp": null,
+                "mbpp+": null
+              },
+              "inference_time": {
+                "earliest": null,
+                "latest": null,
+                "evidence_kind": "unknown",
+                "evidence_refs": []
+              }
+            },
+            "evidence_status": "declaration_only",
+            "evidence_refs": [
+              "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/leaderboard.html",
+              "https://github.com/evalplus/evalplus/blob/3de226896daa67b54e2683eb6e5f6840ce66018a/README.md"
+            ],
+            "notes": "A declares399 selected tasks. Exact content manifest, retained prompt hashes and per-model successful scoring denominator are not linked."
+          },
+          {
+            "evaluation_spec_id": "declared-MBPP-B-0.2.0",
+            "benchmark_name": "MBPP / MBPP+",
+            "metric_names": [
+              "mbpp",
+              "mbpp+"
+            ],
+            "applies_to_artifact_ids": [
+              "evalplus-results-B"
+            ],
+            "declared": {
+              "version": "MBPP+0.2.0",
+              "task_count": 378,
+              "metric": "pass@1, source percentages",
+              "generation_protocol": "Leaderboard declares greedy decoding; no per-run generation configuration is recovered.",
+              "documentary_time": {
+                "earliest": "2024-04-22T01:27:32Z",
+                "latest": "2024-04-22T01:27:32Z",
+                "evidence_kind": "repository_vintage",
+                "evidence_refs": [
+                  "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/leaderboard.html"
+                ]
+              },
+              "denominator_granularity": "benchmark"
+            },
+            "actual_run_binding": {
+              "run_id": null,
+              "output_set_hash": null,
+              "task_manifest_hash": null,
+              "harness_commit": null,
+              "prompt_content_hash": null,
+              "scorer_commit": null,
+              "generation_configuration": null,
+              "metric_denominators": {
+                "mbpp": null,
+                "mbpp+": null
+              },
+              "inference_time": {
+                "earliest": null,
+                "latest": null,
+                "evidence_kind": "unknown",
+                "evidence_refs": []
+              }
+            },
+            "evidence_status": "declaration_only",
+            "evidence_refs": [
+              "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/leaderboard.html",
+              "https://github.com/evalplus/evalplus/blob/3de226896daa67b54e2683eb6e5f6840ce66018a/README.md",
+              "https://github.com/evalplus/evalplus/blob/3de226896daa67b54e2683eb6e5f6840ce66018a/tools/mbpp/fix_v010.py"
+            ],
+            "notes": "Migration notice reports399-to378; inspected script has21 removals and18 retained-prompt edits. B HTML changes the version to0.2.0 but retains a stale399-task sentence. Preserve that documentary conflict. Actual task manifests/denominators and regrade-versus-regeneration link remain null; no correction factor is applied."
+          },
+          {
+            "evaluation_spec_id": "declared-HEplus-0.1.9",
+            "benchmark_name": "HumanEval / HumanEval+",
+            "metric_names": [
+              "humaneval",
+              "humaneval+"
+            ],
+            "applies_to_artifact_ids": [
+              "evalplus-results-A",
+              "evalplus-results-B"
+            ],
+            "declared": {
+              "version": "HumanEval+0.1.9",
+              "task_count": 164,
+              "metric": "pass@1, source percentages",
+              "generation_protocol": "Leaderboard declares greedy decoding; no per-run generation configuration is recovered.",
+              "documentary_time": {
+                "earliest": "2024-04-21T06:25:04Z",
+                "latest": "2024-04-21T06:25:04Z",
+                "evidence_kind": "repository_vintage",
+                "evidence_refs": [
+                  "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/leaderboard.html"
+                ]
+              },
+              "denominator_granularity": "benchmark"
+            },
+            "actual_run_binding": {
+              "run_id": null,
+              "output_set_hash": null,
+              "task_manifest_hash": null,
+              "harness_commit": null,
+              "prompt_content_hash": null,
+              "scorer_commit": null,
+              "generation_configuration": null,
+              "metric_denominators": {
+                "humaneval": null,
+                "humaneval+": null
+              },
+              "inference_time": {
+                "earliest": null,
+                "latest": null,
+                "evidence_kind": "unknown",
+                "evidence_refs": []
+              }
+            },
+            "evidence_status": "declaration_only",
+            "evidence_refs": [
+              "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/leaderboard.html",
+              "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/leaderboard.html",
+              "https://github.com/evalplus/evalplus/blob/3de226896daa67b54e2683eb6e5f6840ce66018a/README.md"
+            ],
+            "notes": "Nominal164-task benchmark declaration, not a verified per-model/scorer denominator. Source version label is unchanged, but22 HumanEval+ and2 HumanEval scalar slots change across the full snapshots. For the12 examples some HumanEval values repeat, which does not prove identical outputs or run settings."
+          }
+        ]
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "DUPLICATE_KEY",
+        "path": "/protocol_records",
+        "detail": "evaluation_spec_id='declared-HEplus-0.1.9' appears 2 times"
+      }
+    ]
+  },
+  {
+    "test_id": "08h",
+    "acceptance_case": "PIT-08",
+    "name": "Use nonexistent protocol link",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/4/snapshots/1/evaluation_spec_id",
+        "value": "missing-protocol"
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "DANGLING_PROTOCOL",
+        "path": "/candidate_records/4/snapshots/1",
+        "detail": "missing-protocol"
+      }
+    ]
+  },
+  {
+    "test_id": "08i",
+    "acceptance_case": "PIT-08",
+    "name": "Repeat feature name with divergent assertion",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/0/features/1/name",
+        "value": "epoch_current.parameters"
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "DUPLICATE_FEATURE_NAME",
+        "path": "/candidate_records/0/features",
+        "detail": "epoch_current.parameters"
+      },
+      {
+        "code": "NATIVE_RAW_CHANGED",
+        "path": "/candidate_records/0/features/1",
+        "detail": "Raw value differs from supplied audit extract"
+      },
+      {
+        "code": "NUMERIC_INTERPRETATION_MISMATCH",
+        "path": "/candidate_records/0/features/1",
+        "detail": "Parsed point differs from native numeric string"
+      }
+    ]
+  },
+  {
+    "test_id": "08j",
+    "acceptance_case": "PIT-08",
+    "name": "Duplicate a view decision",
+    "expected_domain_result": "reject",
+    "expected_schema_accept": true,
+    "patches": [
+      {
+        "path": "/candidate_records/0/decisions",
+        "value": [
+          {
+            "view": "descriptive",
+            "status": "ready",
+            "included": true,
+            "hold_reasons": []
+          },
+          {
+            "view": "training_data_known_at_cutoff",
+            "status": "not_ready",
+            "included": false,
+            "hold_reasons": [
+              "executed_checkpoint_or_service_snapshot_not_documented",
+              "run_output_and_actual_protocol_binding_unresolved",
+              "exact_inference_time_unknown",
+              "historical_source_public_availability_requires_repository_chronology_assumption",
+              "current_Epoch_feature_vintages_not_backdated"
+            ]
+          },
+          {
+            "view": "corrected_hindsight",
+            "status": "not_ready",
+            "included": false,
+            "hold_reasons": [
+              "executed_checkpoint_or_service_snapshot_not_documented",
+              "run_output_and_actual_protocol_binding_unresolved",
+              "exact_inference_time_unknown",
+              "revision_vs_regrade_vs_new_inference_relationship_unresolved"
+            ]
+          },
+          {
+            "view": "prospective_prediction",
+            "status": "not_ready",
+            "included": false,
+            "hold_reasons": [
+              "executed_checkpoint_or_service_snapshot_not_documented",
+              "run_output_and_actual_protocol_binding_unresolved",
+              "exact_inference_time_unknown",
+              "selected_snapshot_dates_do_not_establish_unseen_future_outcomes"
+            ]
+          },
+          {
+            "view": "independent_compute_performance",
+            "status": "not_ready",
+            "included": false,
+            "hold_reasons": [
+              "executed_checkpoint_or_service_snapshot_not_documented",
+              "run_output_and_actual_protocol_binding_unresolved",
+              "exact_inference_time_unknown"
+            ]
+          },
+          {
+            "view": "descriptive",
+            "status": "ready",
+            "included": true,
+            "hold_reasons": []
+          }
+        ]
+      }
+    ],
+    "schema_accepts": true,
+    "schema_errors": [],
+    "reviewer_check_rejects": true,
+    "reviewer_errors": [
+      {
+        "code": "DUPLICATE_VIEW_DECISION",
+        "path": "/candidate_records/0/decisions",
+        "detail": "Multiple potentially contradictory decisions for one view"
+      }
+    ]
+  }
+]

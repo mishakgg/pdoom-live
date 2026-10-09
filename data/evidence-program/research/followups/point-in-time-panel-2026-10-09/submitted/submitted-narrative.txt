@@ -1,0 +1,275 @@
+## Decision
+
+**Partial overall; not ready for a strict model-level, point-in-time training panel.** The three identified artifacts support a reproducible source-version audit and a useful candidate crosswalk. **None of the twelve audited candidates has a verified link to the exact executed checkpoint or service snapshot, generated outputs, and actual evaluation protocol.**
+
+The strongest candidates for further work are the **three StarCoder2 base models and two DeepSeek-Coder base models**. Their pre-cutoff compute evidence is substantially better than their execution provenance. The GPT-4 and Code Llama candidates expose additional alias, variant, compute-scope, or source-conflict problems.
+
+| Deliverable or analytical use | Decision | Basis |
+|---|---|---|
+| Identifying and preserving the three original artifacts | **Ready** | Exact bytes, hashes, versions, and parsed extents verified |
+| Describing changes between published EvalPlus snapshots | **Ready** | Native objects, scores, nulls, and publication vintages preserved |
+| Candidate model crosswalk | **Partial** | Seven partial mappings, two ambiguous mappings, three rejected direct joins |
+| Strict model-level training panel at the declared cutoff | **Not ready: 0/12 audited candidates** | Executed identity and run/protocol linkage unresolved |
+| Independent compute–performance analysis | **Not ready** | Execution linkage remains missing; some compute is circular, mismatched, or historically unsupported |
+
+This assessment concerns the **twelve selected candidates**, not every possible intersection of the two datasets. Nothing here converts capability scores, compute, publication activity, or other proxies into p(doom).
+
+### Deliverables
+
+- point_in_time_panel_review\.json[point_in_time_panel_review.json](point_in_time_panel_review.json) — complete source-linked audit, artifact identities, twelve join decisions, native values, dependency rules, rights findings, and eight proposed acceptance cases.
+- point_in_time_panel.examples.json[point_in_time_panel.examples.json](point_in_time_panel.examples.json) — twelve populated candidates, four families, twenty-four snapshot objects, and all ninety-six selected native metric slots.
+- point_in_time_panel.schema.json[point_in_time_panel.schema.json](point_in_time_panel.schema.json) — standalone proposed JSON Schema, Draft 2020-12. **No canonical schema was changed.**
+
+## 1. Repository baseline and required files
+
+I inspected main at **[`720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc`](https://github.com/mishakgg/pdoom-live/commit/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc)**, committed **2026-10-09T11:40:45Z**. The planning baseline, `33a26fae7e31c4e729f0627fb7b91764343f9f63`, is its first parent.
+
+I read the pinned versions of [source_priorities.md](https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/source_priorities.md), [source_inventory.json](https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/data/evidence-program/source_inventory.json), [FULL_CONTENT_ACQUISITION.md](https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/FULL_CONTENT_ACQUISITION.md), and its corresponding acquisition JSON.
+
+All three requested research topics were present, with both Markdown and JSON files:
+
+| Research topic | Under `docs/evidence-program/research/` | Under `data/evidence-program/research/` |
+|---|---|---|
+| Benchmark drift | [benchmark-drift.md](https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/research/benchmark-drift.md) | [benchmark-drift.json](https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/data/evidence-program/research/benchmark-drift.json) |
+| Claim/result provenance | [claim-result-provenance.md](https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/research/claim-result-provenance.md) | [claim-result-provenance.json](https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/data/evidence-program/research/claim-result-provenance.json) |
+| Model identity and retirement | [model-identity-retirement.md](https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/research/model-identity-retirement.md) | [model-identity-retirement.json](https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/data/evidence-program/research/model-identity-retirement.json) |
+
+**No requested repository file was unavailable.** Downloaded file identities matched the pinned Git tree.
+
+The older inventory’s acquisition-planning status must be read alongside the later preservation record. The latter records complete retained originals. This review freshly verified the upstream bytes against those identities; it did **not** freshly inspect private remote archive objects.
+
+## 2. Verified extents and what they count
+
+The identified artifacts are:
+
+| Artifact | Exact version or retrieval | Verified extent | Bytes |
+|---|---|---:|---:|
+| [Epoch models CSV](https://epoch.ai/data/all_ai_models.csv) | Retrieved **2026-10-09T15:32:36.658276Z** | **3,626 data rows; 57 fields** | 6,826,880 |
+| [EvalPlus A](https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json) | `3b9f5b48c92a492a48fde6c0e1bffb9295812caf` — **2024-04-21T06:25:04Z** | **101 model objects** | 32,977 |
+| [EvalPlus B](https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json) | `65db7ffdb66ae3fee800bee8d998b412f0a6e648` — **2024-04-22T01:27:32Z** | **101 model objects** | 27,725 |
+
+The complete SHA-256 identities are retained in the audit:
+
+- **Epoch:** `d845f68989881cb922ee6fd131d2bce6fb9c88dce5978eb0719a4c053476eff9`
+- **A:** `4d293d4450da091dab4ee4ab333d73b34973066a5dc122c8eef3ada6421b00cb`
+- **B:** `89c068b081aaf2778e5a77549b3549ac7825231a9a1125ca309a2d18677ea941`
+
+### Epoch’s 3,626 rows are catalog records
+
+There are 3,626 distinct, nonempty native model names, but only **1,410 numeric training-compute cells** and **2,344 parameter-count cells**. There are 693 populated base-model references and 668 Hugging Face **developer IDs**; a developer ID does not identify an executed checkpoint.
+
+**Twenty rows contain the `Benchmarks` estimation-method token**, including mixed methods. Seven contain numeric compute; others can contain estimates only in notes. Benchmark-imputed values must be excluded from an independent compute–performance test wherever they appear. The remaining 1,403 numeric cells are only a loose upper bound: **132 numeric-compute rows have no estimation method**, before accounting for identity, lineage, time, and scope.
+
+All native `Last modified` values fall between **2025-11-28T11:51:46Z and 2026-10-08T19:19:01Z**. This supplies no verified 2024 field vintage. It also does not prove that every underlying fact first became known in 2025 or 2026.
+
+Epoch documents that citation counts reflect later updates, that compute can be added after a model enters the database, and that publication dates can represent different events or imperfect date precision. Current citations, confidence labels, classifications, and revised estimates therefore need their own historical evidence before becoming pre-cutoff features. [Epoch AI](https://epoch.ai/data/ai-models-documentation/records?utm_source=chatgpt.com)
+
+### EvalPlus’s two snapshots contain the same 101 keys
+
+Comparing the exact A/B JSONs:
+
+| Comparison | Verified count |
+|---|---:|
+| Same model-key set | 101 keys |
+| Completely unchanged objects | 29 |
+| Changed objects | 72 |
+| Native metric slots per snapshot | 404 |
+| A: numeric / null slots | 358 / 46 |
+| B: numeric / null slots | 322 / 82 |
+| Changed metric slots | 161 |
+| Numeric-to-numeric revisions | 125 |
+| Numeric-to-null changes | 36 |
+| Null-to-numeric changes | 0 |
+
+All four nonmetric fields—`link`, `open-data`, `prompted`, and `size`—remain unchanged.
+
+Thus the pair supplies **808 stored metric slots across repeated publication vintages**, with an unresolved number of underlying inference runs. It does not establish 202 independent models or training examples.
+
+The bounded selection contains **12 candidate labels, 24 snapshot objects, and 96 metric slots: 76 numeric values and 20 nulls**.
+
+## 3. Declared cutoff and separate clocks
+
+I used **T = 2024-04-20T23:59:59Z**. This is an explicit historical information cutoff for the proposed audit, not a claim that an experiment occurred then.
+
+A consequential finding is that **A’s exact bytes already occur in ancestor commit [`ba37a9f43a5706e87762951029baab25880cd0d6`](https://github.com/evalplus/evalplus.github.io/blob/ba37a9f43a5706e87762951029baab25880cd0d6/results.json)**, timestamped **2024-04-20T03:06:04Z**.
+
+| Time concept | Treatment |
+|---|---|
+| Selected snapshot A commit | April 21 publication vintage |
+| Earlier byte-identical A ancestor | Pre-cutoff **repository chronology** evidence |
+| A’s independently observed first-public time | **Unknown** |
+| Actual inference time | **Unknown** |
+| Selected snapshot B commit | Post-cutoff publication vintage |
+| First availability of every B value | **Not proven**; some work was reused from earlier commits |
+| Current Epoch capture and analyst derivations | 2026 evidence and processing events |
+
+Consequently:
+
+- **A cannot be called an unseen future target merely because the selected snapshot commit is dated April 21.** Historical labels can legitimately belong in training data, subject to an explicit repository-chronology assumption.
+- **B cannot silently replace the target known at T.** It can be retained in a separately identified hindsight view.
+- **B’s values are not all proved to have first appeared after T.** The selected artifact is later; per-value first-public timing was not reconstructed.
+- Neither snapshot date establishes a new inference run.
+
+The repository’s canonical `known_at` means availability **to the dataset**, not historical publication. Evidence collected in 2026 must not receive an invented 2024 ingestion timestamp. This proposal leaves that convention intact. See the pinned [dataset specification](https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/dataset_spec.md).
+
+### What can be reconstructed before T?
+
+A dated primary source can support a historical input even when the current Epoch row cannot. The examples distinguish:
+
+- A **source-reported value**, with its own availability evidence.
+- A **new calculation from pre-cutoff inputs**, with separately recorded input availability and a 2026 `derived_at`.
+- A **current-only observation**, excluded from the historical feature set.
+
+For example, computing DeepSeek’s approximate pretraining FLOP from earlier parameter/token disclosures does not establish that Epoch published that estimate in 2024. The schema represents this distinction explicitly.
+
+## 4. Evaluation protocol and revision findings
+
+The pinned [A leaderboard](https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/leaderboard.html) and [B leaderboard](https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/leaderboard.html) declare:
+
+| Protocol item | A | B |
+|---|---|---|
+| HumanEval+ version | 0.1.9 | 0.1.9 |
+| MBPP+ version | 0.1.0 | 0.2.0 |
+| MBPP task population indicated by migration | 399 | 378 |
+| Actual per-run task manifest and denominator | Unknown | Unknown |
+
+B’s HTML still contains the old **399-task** description. Static inspection of the pinned [migration script](https://github.com/evalplus/evalplus/blob/3de226896daa67b54e2683eb6e5f6840ce66018a/tools/mbpp/fix_v010.py) identifies **21 removals and 18 retained-prompt replacements**. Those are documentary code counts, not a rerun or a reconstruction of each model’s executed task set.
+
+The history also matters: [PR #3](https://github.com/evalplus/evalplus.github.io/pull/3) concerns re-evaluation after an evaluator fix; [PR #4](https://github.com/evalplus/evalplus.github.io/pull/4) says the preceding work was incomplete and includes old points. B’s commit describes dropping results whose original data was temporarily unavailable. The model keys remain, while some metrics become null.
+
+The defensible relationship is therefore **published result revision, with the individual inference/regrading mechanism unresolved**. A changed score alone establishes neither new model capability nor new generated outputs.
+
+Further protocol limits:
+
+- The reported metric is percentage-valued greedy `pass@1`; no confidence interval or exact numerator is inferred.
+- `prompted` does not identify the complete prompt, template, postprocessing, or API response mode.
+- The [pre-cutoff framework code](https://github.com/evalplus/evalplus/blob/9a73d2b7bc878a67e41205bddf7e5104db5a30a7/codegen/model.py) includes a different JSON-response prompt path for `gpt-4-1106-preview`. Available code describes implementation intent; it does not prove the configuration used for a row.
+- The leaderboard defines `size` around activated inference weights; it must not automatically replace total model parameters.
+- HumanEval/HumanEval+ values also change. For example, CodeLlama-70B HumanEval+ moves from **50.0 to 50.6**, despite the unchanged declared HumanEval+ version.
+- Ranks and cross-benchmark averages are presentation-derived, not additional native measurements.
+
+## 5. Twelve source-linked joins and exclusions
+
+All Epoch names and compute cells below refer to the verified CSV. All EvalPlus labels refer to A/B above. **“Partial” does not authorize strict training inclusion.** “Rejected” rejects the proposed direct equivalence while preserving the original records and any supported ancestry.
+
+| ID | EvalPlus → Epoch candidate | Identity and date evidence | Compute treatment and decision |
+|---|---|---|---|
+| **PIT-J01** | `GPT-4 (May 2023)` → `GPT-4 (Mar 2023)` | Generic [GPT-4 product link](https://openai.com/index/gpt-4-research/) and a month label do not identify the requested or served API snapshot. `gpt-4-0314` remains a documentary possibility, not an executed identity. | **Ambiguous.** Current Epoch estimate **2.1×10²⁵ FLOP** has no verified pre-T estimate vintage in this audit. |
+| **PIT-J02** | `GPT-4-Turbo (Nov 2023)` → `GPT-4 Turbo (Nov 2023)` | The [November 6 announcement](https://openai.com/index/new-models-and-developer-products-announced-at-devday/) names `gpt-4-1106-preview`; the aggregate lacks execution linkage. | **Partial product mapping.** Numeric compute cell is **blank**; notes contain **2.2×10²⁵**, method `Benchmarks`. Excluded from independent compute tests. |
+| **PIT-J03** | `GPT-4-Turbo (April 2024)` → `GPT-4 Turbo (Apr 2024)` | EvalPlus links the November announcement. [Current provider documentation](https://developers.openai.com/api/docs/models/gpt-4-turbo) identifies `gpt-4-turbo-2024-04-09`; current documentation does not establish this historical execution. | **Partial product mapping.** Same blank-cell / benchmark-imputed-notes issue. Independent compute test excluded. |
+| **PIT-J04** | `CodeLlama-34B` → `Code Llama-34B` | The [contemporaneous selector](https://github.com/evalplus/evalplus/blob/9a73d2b7bc878a67e41205bddf7e5104db5a30a7/codegen/model.py) routes the default label to **Python-34B**, while a separate selector routes to general base. Actual invocation is missing. | **Ambiguous intended variant.** Epoch’s **5.3×10²³** calculation explicitly has Python scope, although its name omits Python. |
+| **PIT-J05** | `CodeLlama-70B` → `Code Llama-70B` | EvalPlus links [Python-70B](https://huggingface.co/codellama/CodeLlama-70b-Python-hf/blob/e037619532ec8449a01ecd5b253d065ac81637b6/README.md). Exact executed revision is unknown. | **Reject direct total-compute join.** Epoch’s **1.26×10²⁴** calculation omits the Python specialization. Preserve shared upstream ancestry, not endpoint equality. |
+| **PIT-J06** | `CodeLlama-70B-Instruct` → `Code Llama-70B` | [Pinned Instruct card](https://huggingface.co/codellama/CodeLlama-70b-Instruct-hf/blob/397cae981dffaf5d5c9c90e89a0a75a850528b70/README.md) identifies another variant; its lineage differs from the generic final base branch. | **Reject direct join.** Generic base compute cannot become Instruct total compute. Shared-ancestor relationship retained. |
+| **PIT-J07** | `DeepSeek-Coder-6.7B-base` → `DeepSeek Coder 6.7B` | Both name [the same base repository](https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-base/blob/ce2207a8bfef3ee92bd7dd4cc31c52cfa0046912/README.md). No loaded revision or complete artifact manifest. | **Partial named-variant mapping.** **8.04×10²²** is reconstructable using `6ND` from pre-T inputs; retain it as an estimate derived now. |
+| **PIT-J08** | `DeepSeek-Coder-6.7B-instruct` → the same Epoch **base** row | The [Instruct card](https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-instruct/blob/e5d64addd26a6a1db0f9b863abf6ee3141936807/README.md) supports base-to-instruct ancestry and additional instruction training. | **Reject equivalence; retain ancestry.** Base pretraining compute can be an explicitly scoped ancestral feature. Descendant total compute remains missing. |
+| **PIT-J09** | `DeepSeek-Coder-33B-base` → `DeepSeek Coder 33B` | Both name [the same 33B base repository](https://huggingface.co/deepseek-ai/deepseek-coder-33b-base/blob/45c85cadf3720ef3e85a492e24fd4b8c5d21d8ac/README.md). Executed revision remains unknown. | **Partial named-variant mapping.** **3.96×10²³** is a pre-T-input `6ND` reconstruction. B’s missing MBPP values remain null. |
+| **PIT-J10** | `StarCoder2-3B` → `StarCoder 2 3B` | Matching base handle and [pinned card](https://huggingface.co/bigcode/starcoder2-3b/raw/733247c55e3f73af49ce8e9c7949bf14af205928/README.md); documentary revision dated March 4, 2024. | **Partial named-variant mapping.** Pre-T developer-reported compute estimate **5.94×10²²**; execution binding missing. |
+| **PIT-J11** | `StarCoder2-7B` → `StarCoder 2 7B` | Matching base handle and [pinned card](https://huggingface.co/bigcode/starcoder2-7b/raw/a3d33687b51284b528abeb17830776ffd24892a9/README.md); documentary revision dated March 26. | **Partial named-variant mapping.** Pre-T estimate **1.55×10²³**; execution binding missing. |
+| **PIT-J12** | `StarCoder2-15B` → `StarCoder 2 15B` | Matching base handle and [pinned card](https://huggingface.co/bigcode/starcoder2-15b/raw/995200dd02e1e5080004d1967664933b28d5e577/README.md); documentary revision dated March 6. | **Partial named-variant mapping.** Pre-T estimate **3.87×10²³**; execution binding missing. |
+
+### Material qualifications behind these decisions
+
+**Release, publication, and revision dates have different roles.** GPT-4’s March 14 product announcement and Epoch’s March 15 publication date are retained separately. The current provider changelog places Turbo API general availability on April 9, 2024; it still does not identify the model served to EvalPlus. [OpenAI API](https://developers.openai.com/api/docs/changelog?utm_source=chatgpt.com)
+
+For Code Llama 34B, Epoch’s **August 14, 2023** native date conflicts with the **August 24** official release announcement. The native cell is preserved and the conflict flagged. For 70B, Epoch records January 29, while the inspected paper revision is January 31; these are not interchangeable execution dates. [about.fb.com](https://about.fb.com/news/2023/08/code-llama-ai-for-coding/?utm_source=chatgpt.com)
+
+**Code Llama 70B has an unresolved within-source compute conflict.** In paper v3, prose gives **1T initial code-training tokens**, while Figure 8 gives **500B**. The figure also shows a 100B Python stage and a 260M instruction stage; the base long-context branch is a sibling of the Python/Instruct branch. I did not choose a token total, invent a corrected compute estimate, or treat the generic final base as the Python/Instruct parent. [arxiv.org](https://arxiv.org/html/2308.12950v3?utm_source=chatgpt.com)
+
+**DeepSeek’s January 25, 2024 paper supports the historical inputs.** Its 6.7B/33B sizes and 2T base-training tokens permit the explicitly labelled `6ND` reconstructions. The 2B instruction tokens remain a separate stage. Epoch’s November 2 release claim and Hub upload dates are retained without treating either as proven inference timing. [The Rise of Code Intelligence](https://arxiv.org/html/2401.14196v1?utm_source=chatgpt.com)
+
+**StarCoder2 offers the clearest pre-T compute source.** The February 29 paper’s Table 6 reports the three values above and explains that they use `6ND`, including base and long-context training. These are developer-reported estimates, not directly metered compute. Later generation-configuration corrections, such as the 7B June revision, cannot be backdated into an April execution. [arxiv.org](https://arxiv.org/html/2402.19173v1?utm_source=chatgpt.com)
+
+**Uncertainty survives without reinterpretation.** GPT-4’s current Epoch notes contain a source-described 90% interval of **8.2×10²⁴–4.4×10²⁵ FLOP** around the hardware estimate. The examples preserve it, its notes, and the blank native bound cells. They do not make that current estimate a pre-T feature. The contemporaneous GPT-4 technical report itself withholds architecture and training-compute details. [arxiv.org](https://arxiv.org/pdf/2303.08774v1?utm_source=chatgpt.com)
+
+## 6. Populated panel examples
+
+These are native reported percentages in the order **HumanEval / HumanEval+ / MBPP / MBPP+**. The complete file retains every selected value and accompanying native field.
+
+| Candidate | Snapshot A | Snapshot B | Historical feature treatment | Strict inclusion |
+|---|---|---|---|---|
+| **PIT-J07: DeepSeek 6.7B base** | 47.6 / 39.6 / 70.2 / 56.6 | 47.6 / 39.6 / 72.0 / 58.7 | Pre-T parameter/token disclosures; **8.04×10²²** derived in 2026 with input provenance | **False** |
+| **PIT-J10: StarCoder2 3B** | 31.7 / 27.4 / 57.4 / 47.4 | 31.7 / 27.4 / null / null | February 2024 reported estimate **5.94×10²²** | **False** |
+| **PIT-J05: CodeLlama 70B label** | 55.5 / 50.0 / 65.4 / 53.4 | 55.5 / 50.6 / null / null | Current generic compute cannot be assigned as Python total | **False** |
+| **PIT-J02: GPT-4 Turbo November** | 85.4 / 81.7 / 83.5 / 70.7 | 85.4 / 81.7 / 85.7 / 73.3 | Native compute blank; benchmark-imputed notes excluded from independent tests | **False** |
+
+Source nulls remain null. There is no zero substitution, forward-fill, inferred denominator, fabricated run ID, or inferred confidence interval.
+
+### JSON Schema design
+
+The schema stores candidate identity and features once, with two publication snapshots underneath. Its main components are:
+
+| Component | What it preserves or separates |
+|---|---|
+| `artifact_records` | URL, version, hash, byte length, retrieval, repository vintage, preservation, and redistribution status |
+| `protocol_records` | Declared suite versions and nominal populations, separated from verified executed protocol |
+| `identity` | Documentary candidate ID, inspected revision, executed ID, variant relationship, and evidence |
+| `features` | Raw value, numeric interpretation, bounds, uncertainty label, compute scope, provenance, and cutoff eligibility |
+| Feature clocks | `public_availability`, `input_information_availability`, `availability_basis`, and `derived_at` |
+| `snapshots` | Four native score slots plus `link`, `open-data`, `prompted`, `size`, missingness, and revision relationship |
+| `dependencies` | Training ancestry, shared measurements, reused compute, and conservative split groups |
+| `decisions` | Separate descriptive, historical-training, hindsight, prospective, and independent-compute decisions |
+
+The included-feature gate distinguishes a historical source value from a reconstruction using earlier inputs. Reconstructed values require derivation information and input dependencies. Strict analytical inclusion requires documented executed identity.
+
+**Verification status:** exact source-value, count, uniqueness, clock-consistency, and bounded structural checks passed. Full Draft 2020-12 metaschema validation was not available in the inspected runtimes. Source truth and dependency semantics require additional checks beyond JSON Schema. The eight acceptance cases below remain proposed and unexecuted.
+
+## 7. Dependency and family grouping rules
+
+These are **proposed analytical rules**:
+
+1. **Deduplicate bytes without erasing provenance.** Reimporting an identical hash and byte length adds any new receipt or source location, not a new scientific run.
+2. **Separate publication identity from observation identity.** A scientific observation needs model identity, output/run identity, protocol, and metric. Unknown run IDs remain null; they do not collapse into one shared run.
+3. **Keep a candidate’s metrics and vintages together.** A/B assertions and the four metrics must remain in the same split group. Equal scores do not prove shared outputs; changed scores do not prove new inference.
+4. **Group documented dependencies before splitting.** Same checkpoints, reused outputs, ancestors/descendants, conversions, quantizations, and distillation relationships form indivisible components. Multi-parent models must retain links to all known parents.
+5. **Use four conservative family blocks here:** GPT-4, Code Llama, DeepSeek-Coder v1, and StarCoder2. This is a precaution, not a claim that every family member shares identical weights.
+6. **Represent reused compute once.** Link descendant features to the underlying estimate; distinguish ancestral pretraining, additional training, and total compute.
+7. **Track other dependence separately.** Shared benchmarks, evaluators, corpora, publications, and estimate sources warrant additional clustering. Sharing a benchmark alone should not merge all models into one ancestry component.
+8. **Evaluate by family and time.** Fit preprocessing and feature selection on training data only, report checkpoint/lineage counts, and test sensitivity to uncertain ancestry. Four family blocks offer little support for strong generalization claims.
+
+## 8. Eight proposed acceptance cases
+
+**These are specifications for a future adapter, not executed production tests.**
+
+| Case | Attempt or fixture | Required result |
+|---|---|---|
+| **1. Alias versus executed model** | Assign `gpt-4-0314` from “GPT-4 (May 2023),” or infer API identity from a ChatGPT product announcement | Preserve the candidate; executed identity remains unknown without invocation/response evidence |
+| **2. Base versus specialized or instruction-tuned** | Match by normalized family and size, then copy base total compute to Python/Instruct | Reject direct equivalence; preserve only evidenced ancestry and separately scoped compute |
+| **3. Revision identity** | Use today’s Hub revision for an April 2024 result, or count a tokenizer/card edit as new training | Keep documentation, weights, tokenizer/config, and executed revisions distinct; prohibit backdating |
+| **4. Correction versus new inference** | Treat A→B score changes as capability growth or an independent run | Preserve both vintages; require output reuse evidence for regrading and execution evidence for new inference |
+| **5. Missing values and uncertainty** | Turn null into zero, forward-fill removed scores, populate a blank compute cell from notes, or convert “Likely” into a 95% interval | Preserve native blanks/nulls, notes, labels, and reported intervals; label any extraction as derived |
+| **6. Future information and cutoff clocks** | Backdate current citations, call A a future outcome from its selected commit date, or silently substitute B into the T information set | Enforce feature-specific evidence; preserve repository chronology versus first-public uncertainty and separate hindsight |
+| **7. Benchmark-imputed compute** | Use Turbo’s notes estimate as an independent performance predictor, even if an earlier date becomes available | Exclude it from independent compute–performance tests; temporal availability does not remove circularity |
+| **8. Duplicates and dependence** | Count two snapshots as 202 independent examples or split related variants/vintages across folds | Keep artifact, candidate, checkpoint, run, metric, lineage, and family counts separate; enforce grouped, idempotent handling |
+
+## 9. Rights and redistribution
+
+I made **three new exact-document rights checks**, within the limit of eight:
+
+| Exact document | Finding and scope |
+|---|---|
+| [Epoch AI-model dataset page](https://epoch.ai/data/ai-models) | Dataset-specific **CC BY 4.0** grant for the identified data |
+| [EvalPlus A’s LICENSE](https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/LICENSE) | **Apache 2.0**, dedicated leaderboard repository |
+| [EvalPlus B’s LICENSE](https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/LICENSE) | Same byte-identical **Apache 2.0** license |
+
+The current Epoch grant was verified directly. [Epoch AI](https://epoch.ai/data/ai-models?utm_source=chatgpt.com) These findings concern the identified data artifacts; they do not extend permission to linked weights, training corpora, generated-code bundles, or third-party manuscripts.
+
+The proposal keeps **raw preservation, analytical inclusion, and public redistribution as separate decisions**. Attribution, applicable notices, and change identification remain attached to a redistribution decision. No public release was performed.
+
+## 10. Smallest missing artifact with the highest practical value
+
+The best next artifact is **one publisher-authored EvalPlus aggregate-to-run manifest**.
+
+Start with the **three StarCoder2 base models and their HumanEval/HumanEval+ assertions across A/B**, because pre-cutoff compute estimates are already documented. The same compact manifest can then cover the other selected candidates.
+
+Key each assertion by **snapshot commit + native model key + metric**, and provide:
+
+- Requested selector and returned API snapshot or loaded HF revision.
+- Complete weight/tokenizer/configuration manifest identity.
+- Generation time and generated-output hash.
+- Task/prompt identity, harness/scorer revision, and actual denominator.
+- A→B relationship: reused outputs, regrading, new inference, or unresolved.
+- Publication/availability evidence, with explicit unknowns where necessary.
+
+This could resolve several current holds without model weights, bulk output downloads, or training. Its actual coverage gain depends on what it establishes. It would not repair unsupported historical Epoch citation counts, remove Turbo’s compute circularity, or settle Code Llama’s conflicting training-stage totals.
+
+**The research deliverable is complete; analytical admission remains held for the documented reasons.** No repository edits, canonical schema changes, logins, credentials, paid access, bulk model downloads, benchmark runs, or model training were performed.

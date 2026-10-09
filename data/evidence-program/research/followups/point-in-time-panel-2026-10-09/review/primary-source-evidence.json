@@ -1,0 +1,193 @@
+{
+  "source_pass_status": "bounded_substantive_review_complete_with_explicit_holds",
+  "distinct_artifacts_attempted": 12,
+  "successfully_read_artifacts": 9,
+  "unavailable_artifacts": 3,
+  "new_epoch_source_downloads": 0,
+  "existing_archive_raw_readbacks": 1,
+  "drive_writes": 0,
+  "openalex_calls": 0,
+  "artifact_budget_exhausted": true,
+  "artifacts": [
+    {
+      "id": "P1",
+      "artifact": "StarCoder2 paper v1",
+      "url": "https://arxiv.org/html/2402.19173v1",
+      "status": "documentary_feature_values_method_scope_and_version_date_verified"
+    },
+    {
+      "id": "P2",
+      "artifact": "DeepSeek Coder paper v1",
+      "url": "https://arxiv.org/html/2401.14196v1",
+      "status": "documentary_inputs_ancestry_and_version_date_verified_with_additional_stage_qualification"
+    },
+    {
+      "id": "P3",
+      "artifact": "Code Llama paper v3",
+      "url": "https://arxiv.org/html/2308.12950v3",
+      "status": "prose_recipe_ancestry_and_version_date_verified_figure_labels_unresolved"
+    },
+    {
+      "id": "P4",
+      "artifact": "Code Llama Figure8 SVG",
+      "url": "https://arxiv.org/html/2308.12950v3/cascades_v2_code_llama_70B.svg",
+      "status": "web_reader_internal_error"
+    },
+    {
+      "id": "P5",
+      "artifact": "EvalPlus dated commit metadata",
+      "url": "https://github.com/evalplus/evalplus.github.io/commit/ba37a9f43a5706e87762951029baab25880cd0d6",
+      "status": "github_metadata_verified_after_web_cache_miss"
+    },
+    {
+      "id": "P6",
+      "artifact": "Pinned intended selector source",
+      "url": "https://github.com/evalplus/evalplus/blob/9a73d2b7bc878a67e41205bddf7e5104db5a30a7/codegen/model.py",
+      "status": "git_blob_verified_static_read_only"
+    },
+    {
+      "id": "P7",
+      "artifact": "A protocol HTML",
+      "url": "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/leaderboard.html",
+      "status": "git_blob_verified_static_read_only"
+    },
+    {
+      "id": "P8",
+      "artifact": "B protocol HTML",
+      "url": "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/leaderboard.html",
+      "status": "git_blob_verified_static_read_only"
+    },
+    {
+      "id": "P9",
+      "artifact": "Pre-cutoff commit results JSON",
+      "url": "https://github.com/evalplus/evalplus.github.io/blob/ba37a9f43a5706e87762951029baab25880cd0d6/results.json",
+      "status": "git_blob_and_full_sha256_match_retained_A"
+    },
+    {
+      "id": "P10",
+      "artifact": "Pinned DeepSeek6.7B Instruct card",
+      "url": "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-instruct/blob/e5d64addd26a6a1db0f9b863abf6ee3141936807/README.md",
+      "status": "web_reader_not_accessible"
+    },
+    {
+      "id": "P11",
+      "artifact": "Pinned StarCoder2-3B card",
+      "url": "https://huggingface.co/bigcode/starcoder2-3b/raw/733247c55e3f73af49ce8e9c7949bf14af205928/README.md",
+      "status": "web_reader_not_accessible"
+    },
+    {
+      "id": "P12",
+      "artifact": "Publisher release-list response, ten entries",
+      "url": "https://api.github.com/repos/evalplus/evalplus/releases?per_page=10",
+      "status": "metadata_read_no_qualifying_aggregate_to_run_manifest_in_inspected_response"
+    }
+  ],
+  "verified_github_bodies": [
+    {
+      "id": "selector-code",
+      "source_url": "https://github.com/evalplus/evalplus/blob/9a73d2b7bc878a67e41205bddf7e5104db5a30a7/codegen/model.py",
+      "retained_source_body_included_in_package": false,
+      "bytes": 45172,
+      "sha256": "bb547d58d3cf6d08b883f47a7a7675016e0c392083ce05f15a4a35f689e6934d",
+      "git_blob": "c000558820b3a42d26b26ade22508334c3d0ae79",
+      "reported_git_blob_matches": true,
+      "executed": false
+    },
+    {
+      "id": "leaderboard-A",
+      "source_url": "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/leaderboard.html",
+      "retained_source_body_included_in_package": false,
+      "bytes": 18243,
+      "sha256": "9fff7e5410bfb4d62c1c1005ac8a2fbd9802e9e9152311b0b29e9bb6db90fefe",
+      "git_blob": "b761c9fba03a6771a102eae1104ce71116e41b08",
+      "reported_git_blob_matches": true,
+      "executed": false
+    },
+    {
+      "id": "leaderboard-B",
+      "source_url": "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/leaderboard.html",
+      "retained_source_body_included_in_package": false,
+      "bytes": 18243,
+      "sha256": "144ade8211658f340d0423751d58373380dd1a6499f46c0c538075e94183c5bd",
+      "git_blob": "eeec737e1f20a022de42683e3f8048bba579bc45",
+      "reported_git_blob_matches": true,
+      "executed": false
+    },
+    {
+      "id": "ancestor-results",
+      "source_url": "https://github.com/evalplus/evalplus.github.io/blob/ba37a9f43a5706e87762951029baab25880cd0d6/results.json",
+      "retained_source_body_included_in_package": false,
+      "bytes": 32977,
+      "sha256": "4d293d4450da091dab4ee4ab333d73b34973066a5dc122c8eef3ada6421b00cb",
+      "git_blob": "72c9baaa8b3a962a9207bbed41f77651ec0f97ba",
+      "reported_git_blob_matches": true,
+      "executed": false
+    }
+  ],
+  "A_same_bytes_before_cutoff": {
+    "commit": "ba37a9f43a5706e87762951029baab25880cd0d6",
+    "author_time": "2024-04-20T03:06:04Z",
+    "committer_time": "2024-04-20T03:06:04Z",
+    "sha256": "4d293d4450da091dab4ee4ab333d73b34973066a5dc122c8eef3ada6421b00cb",
+    "same_bytes_as_selected_A": true,
+    "selected_A_graph_ancestry_traversed": false,
+    "first_public_observed": false,
+    "inference_time_known": false
+  },
+  "protocol": {
+    "A": {
+      "HumanEval+": "0.1.9",
+      "MBPP+": "0.1.0",
+      "html_nominal_mbpp": 399
+    },
+    "B": {
+      "HumanEval+": "0.1.9",
+      "MBPP+": "0.2.0",
+      "html_nominal_mbpp_stale": 399
+    },
+    "actual_per_run_denominators": null,
+    "native_size_semantics": "activated inference weights"
+  },
+  "release_metadata_search": {
+    "entries_read": 10,
+    "asset_entries": 22,
+    "pagination_or_universal_absence_claim": false,
+    "qualifying_manifest_found": false,
+    "asset_archives_downloaded": 0,
+    "relevant_assets": [
+      {
+        "name": "code-llama-34b_temp_0.zip",
+        "size": 229545,
+        "digest": null,
+        "created_at": "2023-11-25T07:08:55Z",
+        "url": "https://github.com/evalplus/evalplus/releases/download/v0.2.0/code-llama-34b_temp_0.zip"
+      },
+      {
+        "name": "deepseek-coder-6.7b-base_temp_0.zip",
+        "size": 242842,
+        "digest": null,
+        "created_at": "2023-11-25T07:08:29Z",
+        "url": "https://github.com/evalplus/evalplus/releases/download/v0.2.0/deepseek-coder-6.7b-base_temp_0.zip"
+      },
+      {
+        "name": "gpt-4-1106-preview_temp_0.0.zip",
+        "size": 232958,
+        "digest": null,
+        "created_at": "2023-11-25T07:08:30Z",
+        "url": "https://github.com/evalplus/evalplus/releases/download/v0.2.0/gpt-4-1106-preview_temp_0.0.zip"
+      },
+      {
+        "name": "starcoder_temp_0.0.zip",
+        "size": 180651,
+        "digest": null,
+        "created_at": "2023-11-25T07:08:30Z",
+        "url": "https://github.com/evalplus/evalplus/releases/download/v0.2.0/starcoder_temp_0.0.zip"
+      }
+    ],
+    "note": "Asset names/publication times do not identify executed runs, snapshots, outputs or actual protocols. starcoder is not StarCoder2."
+  },
+  "paper_evidence": "primary-paper-verification.json",
+  "important_scope_correction": "DeepSeek 6ND is a reconstruction from disclosed 2T inputs; separately described additional long-context steps prevent a verified all-stage total. StarCoder2 Table6 already includes base plus long-context.",
+  "strict_ready": 0,
+  "candidate_denominator": 12
+}

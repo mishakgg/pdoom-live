@@ -1,0 +1,85 @@
+{
+  "scope": "Public package only; private original bytes remain untouched.",
+  "token_format": "redacted-source-locator:sha256:<SHA-256 of the exact UTF-8 URL>",
+  "url_mapping_included": false,
+  "unique_redacted_locators": 2,
+  "total_redacted_occurrences": 12,
+  "source_comparison_boundary": "Previously verified exact source/native-note comparisons identify the unchanged private originals. Public note text contains stable locator tokens; all numeric values and units are unchanged.",
+  "files": [
+    {
+      "package_path": "review/epoch-source-validation.json",
+      "reason": "Unverified source-native Google Colab Drive locator omitted to avoid disclosing a potentially nonpublic destination. Source text provenance is preserved by original artifact hashes.",
+      "redacted_occurrences": 3,
+      "field_locations": [
+        {
+          "pointer": "/candidate_row_checks/0/training_compute_notes",
+          "occurrences": 1
+        },
+        {
+          "pointer": "/candidate_row_checks/1/training_compute_notes",
+          "occurrences": 1
+        },
+        {
+          "pointer": "/candidate_row_checks/2/training_compute_notes",
+          "occurrences": 1
+        }
+      ],
+      "pre_redaction_reviewed_copy_sha256": "cbf0d1696a558bbf88a3b854dd40eb6ce2c6cee514f344a5213739d40ef9c4f0",
+      "post_redaction_copy_sha256": "2675cab57c7c808a78289122cccb5a2dd1e8450e312ceac0e7b1c6b31efacbdb"
+    },
+    {
+      "package_path": "review/mutation-test-results.json",
+      "reason": "Unverified source-native Google Colab Drive locator omitted to avoid disclosing a potentially nonpublic destination. Source text provenance is preserved by original artifact hashes.",
+      "redacted_occurrences": 1,
+      "field_locations": [
+        {
+          "pointer": "/30/patches/4/value/0/value/raw",
+          "occurrences": 1
+        }
+      ],
+      "pre_redaction_reviewed_copy_sha256": "2d0148f12c4a019d1b56d37485a5120d1ace3385d34cbcacce6e9936446e7e39",
+      "post_redaction_copy_sha256": "dc2f615096d2434d835d70f3374dd2e1b22379597724c23cc7204a738d870f9b"
+    },
+    {
+      "package_path": "submitted/point_in_time_panel.examples.json",
+      "reason": "Unverified source-native Google Colab Drive locator omitted to avoid disclosing a potentially nonpublic destination. Source text provenance is preserved by original artifact hashes.",
+      "redacted_occurrences": 8,
+      "field_locations": [
+        {
+          "pointer": "/candidate_records/0/features/5/value/source_notes",
+          "occurrences": 1
+        },
+        {
+          "pointer": "/candidate_records/0/features/6/value/raw",
+          "occurrences": 1
+        },
+        {
+          "pointer": "/candidate_records/1/features/5/value/source_notes",
+          "occurrences": 1
+        },
+        {
+          "pointer": "/candidate_records/1/features/6/value/raw",
+          "occurrences": 1
+        },
+        {
+          "pointer": "/candidate_records/1/features/7/value/raw",
+          "occurrences": 1
+        },
+        {
+          "pointer": "/candidate_records/2/features/5/value/source_notes",
+          "occurrences": 1
+        },
+        {
+          "pointer": "/candidate_records/2/features/6/value/raw",
+          "occurrences": 1
+        },
+        {
+          "pointer": "/candidate_records/2/features/7/value/raw",
+          "occurrences": 1
+        }
+      ],
+      "pre_redaction_reviewed_copy_sha256": "834a1911767be1d8bcb6272451beb2c8eff9d670af4c960b2089eac318f3075d",
+      "post_redaction_copy_sha256": "df60ef4ab4a352025ead6081229dce80199b5c40aa7f9967e94ecd7c2d5b81b4"
+    }
+  ]
+}

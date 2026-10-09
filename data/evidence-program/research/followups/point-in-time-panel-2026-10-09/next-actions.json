@@ -1,0 +1,51 @@
+{
+  "status": "remaining_unresolved_work_only",
+  "closed_actions": [
+    "Exact archived Epoch full-hash and CSV reparse",
+    "All twelve proposed row extractions and native compute notes",
+    "Epoch field-population/method/missingness counts",
+    "Primary paper compute/size/token/ancestry claims at stated scopes and version dates",
+    "A same-byte pre-cutoff repository state",
+    "A/B pinned protocol HTML",
+    "Intended selector routing"
+  ],
+  "actions": [
+    {
+      "id": "PIT-R1",
+      "priority": "P0",
+      "task": "Locate publisher aggregate-to-run evidence for five base candidates",
+      "status": "unresolved_after_bounded_metadata_search",
+      "scope": "At most20 HE/HE+ scalar publication assertions for three StarCoder2 and two DeepSeek base labels; no invented identity or run mapping.",
+      "required_evidence": [
+        "executed identity and loaded artifact manifest",
+        "generation/output identity",
+        "task/prompt/scorer/harness binding",
+        "actual denominators",
+        "A/B relationship",
+        "publication availability"
+      ],
+      "external_contact_authorized": false,
+      "output_archive_acquisition_authorized": false
+    },
+    {
+      "id": "PIT-R2",
+      "priority": "P1_if_relevant_to_inclusion",
+      "task": "Resolve unread figure and exact card/revision claims",
+      "status": "tool_limited_after_12_artifact_pass",
+      "scope": "Code Llama Figure8 and necessary pinned cards; graph ancestry and ancillary release-day details remain separate where claimed.",
+      "not_required_to_preserve_current_0_of_12_hold": true
+    },
+    {
+      "id": "PIT-R3",
+      "priority": "P0_before_any_admission",
+      "task": "Specify then separately authorize assertion-level semantic enforcement",
+      "status": "research_design_needed_implementation_not_authorized",
+      "scope": "Per-metric bindings; per-view selected features/targets; execution versus ancestry relation; clocks, native values, denominator evidence, compute circularity/scope, logical keys, dependency grouping and idempotence; shared J07/J08 estimate; 41 regression mutations.",
+      "carry_forward_review_correction": "DeepSeek 2T-stage estimate with extra long-context accounting unresolved; StarCoder2 includes long-context. No invented adjusted total."
+    }
+  ],
+  "followup_prompt": "followup-prompt.txt",
+  "followup_launched": false,
+  "integration_performed": false,
+  "snapshot_scope": "Source-review historical snapshot before repository packaging; integration status is recorded by the repository queue."
+}

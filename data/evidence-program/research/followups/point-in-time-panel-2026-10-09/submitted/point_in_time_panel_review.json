@@ -1,0 +1,1506 @@
+{
+  "title": "Defensible point-in-time training panel: bounded Epoch–EvalPlus join audit",
+  "status": "completed_read_only_research_proposal",
+  "inspection_date_utc": "2026-10-09",
+  "repository": {
+    "url": "https://github.com/mishakgg/pdoom-live",
+    "inspected_main_commit": "720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc",
+    "commit_time_utc": "2026-10-09T11:40:45Z",
+    "planning_baseline": "33a26fae7e31c4e729f0627fb7b91764343f9f63",
+    "baseline_is_first_parent": true,
+    "tree_sha": "1730c21d9c4f4375f3a51b1533289bc94f013eee",
+    "tree_truncated": false,
+    "required_file_inspection": [
+      {
+        "path": "docs/evidence-program/source_priorities.md",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/source_priorities.md",
+        "byte_length": 9569,
+        "git_blob_sha": "f12394089acf562d430c83edff39ee07940b6645",
+        "matches_pinned_tree": true
+      },
+      {
+        "path": "data/evidence-program/source_inventory.json",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/data/evidence-program/source_inventory.json",
+        "byte_length": 336316,
+        "git_blob_sha": "e2e8890789f38ef0b4fb0366e08252dd257901c4",
+        "matches_pinned_tree": true
+      },
+      {
+        "path": "docs/evidence-program/FULL_CONTENT_ACQUISITION.md",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/FULL_CONTENT_ACQUISITION.md",
+        "byte_length": 13360,
+        "git_blob_sha": "a7e096ad48d4327b45d8c80af27586bac78c5e2b",
+        "matches_pinned_tree": true
+      },
+      {
+        "path": "data/evidence-program/full-content-acquisition.json",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/data/evidence-program/full-content-acquisition.json",
+        "byte_length": 89410,
+        "git_blob_sha": "92b56593ea9028c0097569d7bad1eebd78278914",
+        "matches_pinned_tree": true
+      },
+      {
+        "path": "docs/evidence-program/research/benchmark-drift.md",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/research/benchmark-drift.md",
+        "byte_length": 21655,
+        "git_blob_sha": "24d2c1da31a488ae6ec5c4b85269d315b83ce311",
+        "matches_pinned_tree": true
+      },
+      {
+        "path": "data/evidence-program/research/benchmark-drift.json",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/data/evidence-program/research/benchmark-drift.json",
+        "byte_length": 54557,
+        "git_blob_sha": "b4dd6454ed38f5f3ebc1452906fc103d4e087679",
+        "matches_pinned_tree": true
+      },
+      {
+        "path": "docs/evidence-program/research/claim-result-provenance.md",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/research/claim-result-provenance.md",
+        "byte_length": 11929,
+        "git_blob_sha": "e74e973cdd2210642048ca9dab7a52c6cbc7b9d5",
+        "matches_pinned_tree": true
+      },
+      {
+        "path": "data/evidence-program/research/claim-result-provenance.json",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/data/evidence-program/research/claim-result-provenance.json",
+        "byte_length": 40531,
+        "git_blob_sha": "a4068ece6cbfcef39e5df3afe1a56260366de422",
+        "matches_pinned_tree": true
+      },
+      {
+        "path": "docs/evidence-program/research/model-identity-retirement.md",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/research/model-identity-retirement.md",
+        "byte_length": 13709,
+        "git_blob_sha": "eb6ba647d2d0eda0224375e63601beead251bed1",
+        "matches_pinned_tree": true
+      },
+      {
+        "path": "data/evidence-program/research/model-identity-retirement.json",
+        "url": "https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/data/evidence-program/research/model-identity-retirement.json",
+        "byte_length": 39243,
+        "git_blob_sha": "810660456c18c61e520077bd23863042a47a9d1e",
+        "matches_pinned_tree": true
+      }
+    ],
+    "unavailable_required_files": [],
+    "canonical_changes": "None. No repository edits, adapter, schema migration or model training."
+  },
+  "scope": {
+    "candidate_join_count": 12,
+    "family_count": 4,
+    "families": [
+      "GPT-4",
+      "Code Llama",
+      "DeepSeek-Coder v1",
+      "StarCoder2"
+    ],
+    "new_rights_documents_checked": 3,
+    "rights_document_limit": 8,
+    "access": "Public, unauthenticated, bounded exact-artifact and documentary reads only. No output archives, weights, training corpora, paid services or credentials."
+  },
+  "decision": {
+    "overall": "partial",
+    "raw_artifact_identity_and_version_audit": "ready",
+    "source_version_descriptive_panel": "ready",
+    "model_level_point_in_time_training_panel": "not_ready",
+    "independent_compute_performance_test": "not_ready",
+    "strict_execution_resolved_candidates": 0,
+    "denominator_for_strict_candidate_count": 12,
+    "meaning": "The three identified originals and selected aggregate measurements are auditable. None of the twelve candidates has the full executed-identity, run/protocol and information-set evidence required for a strict model-level training row. This does not establish that every other possible join is unusable."
+  },
+  "artifact_counts": {
+    "epoch": {
+      "url": "https://epoch.ai/data/all_ai_models.csv",
+      "final_url": "https://epoch.ai/data/all_ai_models.csv",
+      "http_status": 200,
+      "retrieved_at_utc": "2026-10-09T15:32:36.658276+00:00",
+      "bytes": 6826880,
+      "sha256": "d845f68989881cb922ee6fd131d2bce6fb9c88dce5978eb0719a4c053476eff9",
+      "rows": 3626,
+      "fields": 57,
+      "fieldnames": [
+        "Model",
+        "Domain",
+        "Task",
+        "Organization",
+        "Authors",
+        "Publication date",
+        "Reference",
+        "Link",
+        "Citations",
+        "Notability criteria",
+        "Notability criteria notes",
+        "Parameters",
+        "Parameters notes",
+        "Training compute (FLOP)",
+        "Training compute notes",
+        "Training dataset size (total)",
+        "Dataset size notes",
+        "Training time (hours)",
+        "Training time notes",
+        "Training hardware",
+        "Approach",
+        "Confidence",
+        "Abstract",
+        "Epochs",
+        "WikiText and Penn Treebank data",
+        "Model accessibility",
+        "Country (of organization)",
+        "Base model",
+        "Finetune compute (FLOP)",
+        "Finetune compute notes",
+        "Hardware quantity",
+        "Hardware utilization (MFU)",
+        "Last modified",
+        "Training cloud compute vendor",
+        "Training data center",
+        "Archived links",
+        "Batch size",
+        "Batch size notes",
+        "Organization categorization",
+        "Foundation model",
+        "Training compute lower bound",
+        "Training compute upper bound",
+        "Training chip-hours",
+        "Training code accessibility",
+        "Accessibility notes",
+        "Possibly over 1e23 FLOP",
+        "Training compute cost (2023 USD)",
+        "Utilization notes",
+        "Numerical format",
+        "Frontier model",
+        "Training power draw (W)",
+        "Training compute estimation method",
+        "Hugging Face developer id",
+        "Post-training compute (FLOP)",
+        "Post-training compute notes",
+        "Hardware utilization (HFU)",
+        "Open model weights?"
+      ],
+      "last_modified_counts": {
+        "2026": 1740,
+        "2025": 1886
+      },
+      "compute_methods": {
+        "": 2182,
+        "Reported": 57,
+        "Comparison with other models": 22,
+        "Operation counting": 640,
+        "Hardware": 433,
+        "Reported,Operation counting": 16,
+        "Reported,Operation counting,Hardware": 4,
+        "Operation counting,Hardware": 82,
+        "Hardware,Operation counting": 77,
+        "Operation counting,Comparison with other models": 2,
+        "Benchmarks": 15,
+        "Operation counting,Reported": 3,
+        "Hardware,Comparison with other models": 2,
+        "Comparison with other models,Reported": 1,
+        "Hardware,Cost,Benchmarks": 1,
+        "Other": 5,
+        "Cost": 2,
+        "Other,Operation counting": 1,
+        "Benchmarks,Hardware": 2,
+        "Hardware,Benchmarks": 1,
+        "Hardware,Reported": 1,
+        "Reported,Hardware": 3,
+        "Hardware,Other": 1,
+        "Operation counting,Third-party estimation": 8,
+        "Third-party estimation": 31,
+        "Hardware,Third-party estimation": 11,
+        "Comparison with other models,Hardware": 1,
+        "Comparison with other models,Benchmarks": 1,
+        "Comparison with other models,Operation counting": 2,
+        "Comparison with other models,Hardware,Operation counting": 1,
+        "Third-party estimation,Operation counting": 5,
+        "Third-party estimation,Hardware,Operation counting": 1,
+        "Third-party estimation,Hardware": 2,
+        "Hardware,Third-party estimation,Operation counting": 1,
+        "Hardware,Operation counting,Third-party estimation": 3,
+        "Third-party estimation,Reported": 1,
+        "Reported,Operation counting,Third-party estimation": 1,
+        "Operation counting,Hardware,Third-party estimation": 3,
+        "Third-party estimation,Operation counting,Hardware": 1
+      }
+    },
+    "epoch_field_population": {
+      "empty_model_names": 0,
+      "unique_model_names": 3626,
+      "duplicate_model_names": {},
+      "compute_nonempty": 1410,
+      "parameters_nonempty": 2344,
+      "compute_method_nonempty": 1444,
+      "benchmarks_method_rows": 20,
+      "benchmarks_method_nonempty_compute_rows": 7,
+      "citations_nonempty": 1484,
+      "base_model_nonempty": 693,
+      "hf_developer_nonempty": 668,
+      "last_modified_min": "2025-11-28 11:51:46+00:00",
+      "last_modified_max": "2026-10-08 19:19:01+00:00",
+      "earliest_publication_date": "",
+      "latest_publication_date": "2026-09-30",
+      "compute_nonempty_without_method": 132,
+      "compute_nonempty_without_notes": 4,
+      "compute_nonempty_but_confidence": {
+        "Likely": 339,
+        "Speculative": 125,
+        "Confident": 945,
+        "": 1
+      },
+      "publication_date_blank": 12
+    },
+    "evalplus": {
+      "3b9f5b48": {
+        "bytes": 32977,
+        "sha256": "4d293d4450da091dab4ee4ab333d73b34973066a5dc122c8eef3ada6421b00cb",
+        "top_level_models": 101,
+        "field_sets": [
+          [
+            "link",
+            "open-data",
+            "pass@1",
+            "prompted",
+            "size"
+          ]
+        ],
+        "metric_key_sets": [
+          [
+            "humaneval",
+            "humaneval+",
+            "mbpp",
+            "mbpp+"
+          ]
+        ],
+        "metric_slots": 404,
+        "numeric_metric_values": 358,
+        "null_metric_values": 46,
+        "parameter_size_nulls": 13
+      },
+      "65db7ffd": {
+        "bytes": 27725,
+        "sha256": "89c068b081aaf2778e5a77549b3549ac7825231a9a1125ca309a2d18677ea941",
+        "top_level_models": 101,
+        "field_sets": [
+          [
+            "link",
+            "open-data",
+            "pass@1",
+            "prompted",
+            "size"
+          ]
+        ],
+        "metric_key_sets": [
+          [
+            "humaneval",
+            "humaneval+",
+            "mbpp",
+            "mbpp+"
+          ]
+        ],
+        "metric_slots": 404,
+        "numeric_metric_values": 322,
+        "null_metric_values": 82,
+        "parameter_size_nulls": 13
+      },
+      "duplicate_json_keys": [],
+      "migration_ast_counts": {
+        "delete_statements": 21,
+        "prompt_replace_calls": 18
+      }
+    },
+    "bounded_candidates": {
+      "candidate_count": 12,
+      "candidate_family_count": 4,
+      "snapshot_model_objects": 24,
+      "exactly_unchanged_candidate_objects": 2,
+      "candidate_metric_slots_per_snapshot": 48,
+      "numeric_values_A": 44,
+      "numeric_values_B": 32,
+      "candidate_joins_strict_execution_verified": 0,
+      "strict_inference_dates_verified": 0,
+      "specific_executed_hf_revision_verified": 0
+    },
+    "count_interpretation": "3626 source rows, 101 display labels, 202 versioned model objects and 808 metric slots are different populations. They are not independent model/run training examples. Selected12 give24 model objects and96 metric slots,76 numeric and20 null.",
+    "snapshot_change_summary": {
+      "same_model_key_set": true,
+      "new_model_keys": 0,
+      "unchanged_model_objects": 29,
+      "changed_model_objects": 72,
+      "changed_metric_slots": 161,
+      "numeric_revisions": 125,
+      "numeric_to_null": 36,
+      "null_to_numeric": 0,
+      "all_non_metric_metadata_unchanged": true,
+      "changed_slots_by_metric": {
+        "humaneval": 2,
+        "humaneval+": 22,
+        "mbpp": 69,
+        "mbpp+": 68
+      }
+    }
+  },
+  "cutoff_and_information_sets": {
+    "declared_cutoff": "2024-04-20T23:59:59Z",
+    "purpose": "A deliberately explicit historical information cutoff for auditing feasible training features and outcome vintages; not a claim of an experiment run on that date.",
+    "epoch_current_vintage": "The fresh CSV is byte-identical to the 2026 retained artifact. No pre-cutoff Epoch row/field vintage was verified. Last modified is not each field’s first availability.",
+    "reconstructable_features": "Dated primary papers can separately establish pre-cutoff model sizes and compute inputs. A new 6ND calculation must retain its source inputs and present-day derivation rather than backdate the current Epoch estimate. The companion schema distinguishes source_value from reconstructed_from_pre_cutoff_inputs, keeps output public_availability separate from input_information_availability, and records derived_at. Inclusion based on historically available inputs is an explicit reconstruction policy, not a claim that the resulting number was published then.",
+    "forbidden_backdating": [
+      "Current citations",
+      "Current confidence labels without historical support",
+      "Revised compute estimates without a dated source",
+      "Current organization/accessibility/notability classifications without historical support",
+      "Late corrected benchmark values silently replacing an as-known-at-T target"
+    ],
+    "A_repository_vintage": {
+      "commit": "ba37a9f43a5706e87762951029baab25880cd0d6",
+      "commit_time": "2024-04-20T03:06:04Z",
+      "exact_bytes_equal_to_selected_A": true,
+      "sha256": "4d293d4450da091dab4ee4ab333d73b34973066a5dc122c8eef3ada6421b00cb",
+      "first_public_time": null,
+      "inference_time": null,
+      "evidence_strength": "historical_repository_vintage",
+      "meaning": "Conditional historical label availability if repository chronology is accepted. The Apr21 selected commit cannot establish first publication or an unseen future outcome."
+    },
+    "B_repository_vintage": {
+      "commit": "65db7ffdb66ae3fee800bee8d998b412f0a6e648",
+      "commit_time": "2024-04-22T01:27:32Z",
+      "first_public_time": null,
+      "inference_time": null,
+      "value_availability_at_T": "not_proven",
+      "meaning": "Selected B artifact is post-T. PR4 reuses earlier work; per-value first-public availability was not reconstructed. Do not infer every B value first appeared after T."
+    },
+    "views": [
+      {
+        "name": "historical_training_at_T",
+        "rule": "Use only features and training labels evidenced as available by T; a repository-chronology assumption must be explicit. Known historical labels are legitimate training data, not prospective holdouts."
+      },
+      {
+        "name": "corrected_hindsight",
+        "rule": "Use explicitly selected later target vintages for retrospective science, without presenting them as knowledge at T; retain old assertions and supersession links."
+      },
+      {
+        "name": "prospective_prediction",
+        "rule": "Require a defined prediction task and independently justified label/run timing. Neither a later repository commit nor a renamed product creates a future inference outcome."
+      }
+    ],
+    "canonical_clock_note": "The canonical repository’s known_at refers to dataset ingestion, not historical publication. No evidence inspected in 2026 should receive a fabricated 2024 ingestion timestamp."
+  },
+  "protocol_and_revision_findings": {
+    "declared_protocols": [
+      {
+        "artifact": "A",
+        "humaneval_plus_version": "0.1.9",
+        "mbpp_plus_version": "0.1.0",
+        "nominal_mbpp_tasks": 399
+      },
+      {
+        "artifact": "B",
+        "humaneval_plus_version": "0.1.9",
+        "mbpp_plus_version": "0.2.0",
+        "nominal_mbpp_tasks_from_migration": 378,
+        "stale_html_task_count": 399
+      }
+    ],
+    "actual_metric_denominators": "Unknown for individual runs. Suite-level counts are not substitutes for executed task manifests.",
+    "migration_text_counts": {
+      "distinct_removals": 21,
+      "retained_prompt_replacements": 18,
+      "method": "Static AST/text inspection, not executing the migration or downloading full task corpora."
+    },
+    "change_interpretation": "Published result revision with row-level inference/regrade mechanism unresolved. Keep issue, repair, affected run, regrade/rerun and publication events distinct.",
+    "human_eval_caveat": "HumanEval and HumanEval+ values change too, despite unchanged declared HumanEval+ version. Do not assign all changes to MBPP task removal.",
+    "native_units": "Reported percentage-valued greedy pass@1; preserve all four metric slots and source nulls. No inferred numerator, confidence interval, cross-benchmark average or p(doom).",
+    "intended_configuration": {
+      "commit": "9a73d2b7bc878a67e41205bddf7e5104db5a30a7",
+      "commit_time": "2024-04-19T06:11:29Z",
+      "source": "https://github.com/evalplus/evalplus/blob/9a73d2b7bc878a67e41205bddf7e5104db5a30a7/codegen/model.py",
+      "note": "Available selector routing and defaults are not execution evidence. GPT-4-1106-preview has a JSON response-mode prompt path; prompted=true does not uniquely define a chat protocol."
+    },
+    "missing_run_fields": [
+      "Executed HF revision or requested/returned provider snapshot",
+      "Complete loaded weight/tokenizer/config identity",
+      "Inference timestamp",
+      "Original generated-sample digest",
+      "Task-content manifest/digest",
+      "Actual harness/scorer revision",
+      "Prompt/postprocessing and generation overrides",
+      "Metric-specific executed denominators"
+    ],
+    "source_urls": [
+      "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/leaderboard.html",
+      "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/leaderboard.html",
+      "https://github.com/evalplus/evalplus.github.io/pull/3",
+      "https://github.com/evalplus/evalplus.github.io/pull/4",
+      "https://github.com/evalplus/evalplus.github.io/commit/65db7ffdb66ae3fee800bee8d998b412f0a6e648",
+      "https://github.com/evalplus/evalplus/blob/3de226896daa67b54e2683eb6e5f6840ce66018a/tools/mbpp/fix_v010.py",
+      "https://github.com/evalplus/evalplus/blob/9a73d2b7bc878a67e41205bddf7e5104db5a30a7/codegen/model.py"
+    ],
+    "presentation_fields": "Ranks and cross-benchmark averages are HTML-derived, not native JSON measurements. B has60 MBPP nonnull labels versus78 inA; changed ranking populations and sequential tie handling cannot supply a longitudinal model outcome."
+  },
+  "join_exclusion_table": [
+    {
+      "candidate_id": "PIT-J01",
+      "family_group_id": "gpt4",
+      "evalplus_native_key": "GPT-4 (May 2023)",
+      "epoch_native_key": "GPT-4 (Mar 2023)",
+      "epoch_data_record_number_1_based_excluding_header": 2134,
+      "join_status": "ambiguous",
+      "strict_panel_ready": false,
+      "identity_finding": "A generic GPT-4 link and a May display label do not establish an invocation or served snapshot. March is a candidate generation; June is incompatible with a genuine May run, but the display month is not a measured inference timestamp.",
+      "compute_and_cutoff_finding": "Preserve 2.1e25 FLOP, Hardware, Likely and the notes-only 90% interval 8.2e24–4.4e25. Exact estimate vintage is unverified; the original developer report withheld compute and model size.",
+      "raw_epoch_extract": {
+        "Model": "GPT-4 (Mar 2023)",
+        "Publication date": "2023-03-15",
+        "Parameters": "1800000000000.0",
+        "Training compute (FLOP)": "2.1e+25",
+        "Training compute estimation method": "Hardware",
+        "Confidence": "Likely",
+        "Training compute lower bound": "",
+        "Training compute upper bound": "",
+        "Training dataset size (total)": "5416666666666.667",
+        "Base model": "",
+        "Finetune compute (FLOP)": "",
+        "Post-training compute (FLOP)": "",
+        "Citations": "24490.0",
+        "Last modified": "2026-05-25 12:21:28+00:00",
+        "Hugging Face developer id": "",
+        "Link": "https://arxiv.org/abs/2303.08774"
+      },
+      "evalplus_A_native_object": {
+        "link": "https://openai.com/research/gpt-4",
+        "open-data": "NONE",
+        "prompted": true,
+        "size": null,
+        "pass@1": {
+          "humaneval": 88.4,
+          "humaneval+": 79.3,
+          "mbpp": null,
+          "mbpp+": null
+        }
+      },
+      "evalplus_B_native_object": {
+        "link": "https://openai.com/research/gpt-4",
+        "open-data": "NONE",
+        "pass@1": {
+          "humaneval": 88.4,
+          "humaneval+": 79.3,
+          "mbpp": null,
+          "mbpp+": null
+        },
+        "prompted": true,
+        "size": null
+      },
+      "executed_checkpoint_or_service_snapshot": null,
+      "inference_time": null,
+      "source_urls": [
+        "https://epoch.ai/data/all_ai_models.csv",
+        "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+        "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+        "https://openai.com/index/gpt-4-research/",
+        "https://openai.com/index/function-calling-and-other-api-updates/",
+        "https://arxiv.org/pdf/2303.08774v1"
+      ],
+      "documentary_revision": null,
+      "documentary_revision_time": null
+    },
+    {
+      "candidate_id": "PIT-J02",
+      "family_group_id": "gpt4",
+      "evalplus_native_key": "GPT-4-Turbo (Nov 2023)",
+      "epoch_native_key": "GPT-4 Turbo (Nov 2023)",
+      "epoch_data_record_number_1_based_excluding_header": 1791,
+      "join_status": "partial_product_only",
+      "strict_panel_ready": false,
+      "identity_finding": "The November 6 announcement supplies gpt-4-1106-preview as an available provider ID. A similarly named output asset is listed, but no row-to-run/output digest or served-model log connects it to the aggregate.",
+      "compute_and_cutoff_finding": "Numeric compute is blank. A 2.2e25 estimate occurs only in benchmark-imputed notes. Exclude that estimate from independent compute–performance analysis even if its historical date is later resolved.",
+      "raw_epoch_extract": {
+        "Model": "GPT-4 Turbo (Nov 2023)",
+        "Publication date": "2023-11-06",
+        "Parameters": "",
+        "Training compute (FLOP)": "",
+        "Training compute estimation method": "Benchmarks",
+        "Confidence": "Unknown",
+        "Training compute lower bound": "",
+        "Training compute upper bound": "",
+        "Training dataset size (total)": "",
+        "Base model": "",
+        "Finetune compute (FLOP)": "",
+        "Post-training compute (FLOP)": "",
+        "Citations": "",
+        "Last modified": "2026-02-11 19:35:05+00:00",
+        "Hugging Face developer id": "",
+        "Link": "https://openai.com/blog/new-models-and-developer-products-announced-at-devday"
+      },
+      "evalplus_A_native_object": {
+        "link": "https://openai.com/blog/new-models-and-developer-products-announced-at-devday",
+        "open-data": "NONE",
+        "prompted": true,
+        "size": null,
+        "pass@1": {
+          "humaneval": 85.4,
+          "humaneval+": 81.7,
+          "mbpp": 83.5,
+          "mbpp+": 70.7
+        }
+      },
+      "evalplus_B_native_object": {
+        "link": "https://openai.com/blog/new-models-and-developer-products-announced-at-devday",
+        "open-data": "NONE",
+        "pass@1": {
+          "humaneval": 85.4,
+          "humaneval+": 81.7,
+          "mbpp": 85.7,
+          "mbpp+": 73.3
+        },
+        "prompted": true,
+        "size": null
+      },
+      "executed_checkpoint_or_service_snapshot": null,
+      "inference_time": null,
+      "source_urls": [
+        "https://epoch.ai/data/all_ai_models.csv",
+        "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+        "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+        "https://openai.com/index/new-models-and-developer-products-announced-at-devday/",
+        "https://github.com/evalplus/evalplus/blob/9a73d2b7bc878a67e41205bddf7e5104db5a30a7/codegen/model.py"
+      ],
+      "documentary_revision": null,
+      "documentary_revision_time": null
+    },
+    {
+      "candidate_id": "PIT-J03",
+      "family_group_id": "gpt4",
+      "evalplus_native_key": "GPT-4-Turbo (April 2024)",
+      "epoch_native_key": "GPT-4 Turbo (Apr 2024)",
+      "epoch_data_record_number_1_based_excluding_header": 1493,
+      "join_status": "partial_product_only",
+      "strict_panel_ready": false,
+      "identity_finding": "The April display label links the same November DevDay page. Current official documentation lists gpt-4-turbo-2024-04-09 and its changelog reports April 9 API general availability; neither identifies the executed model or independently preserves the historical page state.",
+      "compute_and_cutoff_finding": "Numeric compute is blank; notes contain 2.2e25 from benchmark imputation. Keep the source blank and exclude the imputed value.",
+      "raw_epoch_extract": {
+        "Model": "GPT-4 Turbo (Apr 2024)",
+        "Publication date": "2024-04-09",
+        "Parameters": "",
+        "Training compute (FLOP)": "",
+        "Training compute estimation method": "Benchmarks",
+        "Confidence": "Unknown",
+        "Training compute lower bound": "",
+        "Training compute upper bound": "",
+        "Training dataset size (total)": "",
+        "Base model": "GPT-4 Turbo (Nov 2023)",
+        "Finetune compute (FLOP)": "",
+        "Post-training compute (FLOP)": "",
+        "Citations": "",
+        "Last modified": "2026-02-11 19:35:05+00:00",
+        "Hugging Face developer id": "",
+        "Link": "https://x.com/OpenAI/status/1778574613813006610"
+      },
+      "evalplus_A_native_object": {
+        "link": "https://openai.com/blog/new-models-and-developer-products-announced-at-devday",
+        "open-data": "NONE",
+        "prompted": true,
+        "size": null,
+        "pass@1": {
+          "humaneval": 90.2,
+          "humaneval+": 86.6,
+          "mbpp": null,
+          "mbpp+": null
+        }
+      },
+      "evalplus_B_native_object": {
+        "link": "https://openai.com/blog/new-models-and-developer-products-announced-at-devday",
+        "open-data": "NONE",
+        "pass@1": {
+          "humaneval": 90.2,
+          "humaneval+": 86.6,
+          "mbpp": null,
+          "mbpp+": null
+        },
+        "prompted": true,
+        "size": null
+      },
+      "executed_checkpoint_or_service_snapshot": null,
+      "inference_time": null,
+      "source_urls": [
+        "https://epoch.ai/data/all_ai_models.csv",
+        "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+        "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+        "https://openai.com/index/new-models-and-developer-products-announced-at-devday/",
+        "https://developers.openai.com/api/docs/models/gpt-4-turbo",
+        "https://developers.openai.com/api/docs/changelog"
+      ],
+      "documentary_revision": null,
+      "documentary_revision_time": null
+    },
+    {
+      "candidate_id": "PIT-J04",
+      "family_group_id": "codellama",
+      "evalplus_native_key": "CodeLlama-34B",
+      "epoch_native_key": "Code Llama-34B",
+      "epoch_data_record_number_1_based_excluding_header": 1931,
+      "join_status": "ambiguous_intended_variant",
+      "strict_panel_ready": false,
+      "identity_finding": "The snapshot links a generic release. The pre-cutoff code-llama-34b selector routes to Python-34B, while code-llama-multi-34b routes to base. Epoch notes explicitly calculate Python-34B. This supports intended variant consistency but not the actual selector or executed revision.",
+      "compute_and_cutoff_finding": "Preserve the approximate 5.3e23 total and 1.22e23 fine-tuning values. The numeric dataset-size cell is 600B while notes include 2.6T with ancestors; LCFT scope remains explicit. Epoch date August 14 differs from the August 24 release and paper.",
+      "raw_epoch_extract": {
+        "Model": "Code Llama-34B",
+        "Publication date": "2023-08-14",
+        "Parameters": "34000000000.0",
+        "Training compute (FLOP)": "5.3e+23",
+        "Training compute estimation method": "Operation counting",
+        "Confidence": "Confident",
+        "Training compute lower bound": "",
+        "Training compute upper bound": "",
+        "Training dataset size (total)": "600000000000",
+        "Base model": "Llama 2-34B",
+        "Finetune compute (FLOP)": "1.22e+23",
+        "Post-training compute (FLOP)": "",
+        "Citations": "3163.0",
+        "Last modified": "2026-05-25 12:28:11+00:00",
+        "Hugging Face developer id": "",
+        "Link": "https://ai.meta.com/research/publications/code-llama-open-foundation-models-for-code/\nhttps://arxiv.org/abs/2308.12950"
+      },
+      "evalplus_A_native_object": {
+        "link": "https://about.fb.com/news/2023/08/code-llama-ai-for-coding/amp/",
+        "open-data": "NONE",
+        "prompted": false,
+        "size": 34.0,
+        "pass@1": {
+          "humaneval": 51.8,
+          "humaneval+": 43.9,
+          "mbpp": 67.2,
+          "mbpp+": 52.9
+        }
+      },
+      "evalplus_B_native_object": {
+        "link": "https://about.fb.com/news/2023/08/code-llama-ai-for-coding/amp/",
+        "open-data": "NONE",
+        "pass@1": {
+          "humaneval": 51.8,
+          "humaneval+": 43.9,
+          "mbpp": 69.3,
+          "mbpp+": 56.3
+        },
+        "prompted": false,
+        "size": 34.0
+      },
+      "executed_checkpoint_or_service_snapshot": null,
+      "inference_time": null,
+      "source_urls": [
+        "https://epoch.ai/data/all_ai_models.csv",
+        "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+        "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+        "https://github.com/evalplus/evalplus/blob/9a73d2b7bc878a67e41205bddf7e5104db5a30a7/codegen/model.py",
+        "https://arxiv.org/html/2308.12950v3",
+        "https://about.fb.com/news/2023/08/code-llama-ai-for-coding/"
+      ]
+    },
+    {
+      "candidate_id": "PIT-J05",
+      "family_group_id": "codellama",
+      "evalplus_native_key": "CodeLlama-70B",
+      "epoch_native_key": "Code Llama-70B",
+      "epoch_data_record_number_1_based_excluding_header": 1631,
+      "join_status": "rejected_direct_join",
+      "strict_panel_ready": false,
+      "identity_finding": "The snapshot explicitly links Python-70B. It is not the unqualified base model; both share upstream training stages.",
+      "compute_and_cutoff_finding": "Epoch 1.26e24 uses 2T ancestor plus 1T code tokens and omits Python specialization. Paper v3 prose says 1T for the 70B code stage, while its Figure 8 says 500B. Do not choose a stage count or manufacture a corrected total.",
+      "raw_epoch_extract": {
+        "Model": "Code Llama-70B",
+        "Publication date": "2024-01-29",
+        "Parameters": "70000000000.0",
+        "Training compute (FLOP)": "1.26e+24",
+        "Training compute estimation method": "Operation counting",
+        "Confidence": "Confident",
+        "Training compute lower bound": "",
+        "Training compute upper bound": "",
+        "Training dataset size (total)": "3000000000000",
+        "Base model": "Llama 2-70B",
+        "Finetune compute (FLOP)": "4.2e+23",
+        "Post-training compute (FLOP)": "",
+        "Citations": "3163.0",
+        "Last modified": "2026-05-25 12:28:12+00:00",
+        "Hugging Face developer id": "",
+        "Link": "https://ai.meta.com/research/publications/code-llama-open-foundation-models-for-code/\nhttps://arxiv.org/abs/2308.12950"
+      },
+      "evalplus_A_native_object": {
+        "link": "https://huggingface.co/codellama/CodeLlama-70b-Python-hf",
+        "open-data": "NONE",
+        "prompted": false,
+        "size": 70.0,
+        "pass@1": {
+          "humaneval": 55.5,
+          "humaneval+": 50.0,
+          "mbpp": 65.4,
+          "mbpp+": 53.4
+        }
+      },
+      "evalplus_B_native_object": {
+        "link": "https://huggingface.co/codellama/CodeLlama-70b-Python-hf",
+        "open-data": "NONE",
+        "pass@1": {
+          "humaneval": 55.5,
+          "humaneval+": 50.6,
+          "mbpp": null,
+          "mbpp+": null
+        },
+        "prompted": false,
+        "size": 70.0
+      },
+      "executed_checkpoint_or_service_snapshot": null,
+      "inference_time": null,
+      "source_urls": [
+        "https://epoch.ai/data/all_ai_models.csv",
+        "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+        "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+        "https://arxiv.org/html/2308.12950v3",
+        "https://arxiv.org/html/2308.12950v3/cascades_v2_code_llama_70B.svg"
+      ]
+    },
+    {
+      "candidate_id": "PIT-J06",
+      "family_group_id": "codellama",
+      "evalplus_native_key": "CodeLlama-70B-Instruct",
+      "epoch_native_key": "Code Llama-70B",
+      "epoch_data_record_number_1_based_excluding_header": 1631,
+      "join_status": "rejected_direct_join",
+      "strict_panel_ready": false,
+      "identity_finding": "The explicit Instruct handle differs from base and Python. The paper shows this 70B Instruct branch descending from Python; it is not the same tuning route as the smaller Instruct variants.",
+      "compute_and_cutoff_finding": "Do not copy the base 1.26e24 as Instruct total. Figure 8 adds 260M instruction tokens after a 100B Python branch, but the upstream 500B/1T conflict remains. Base LCFT is a sibling branch, not an automatic cost to add.",
+      "raw_epoch_extract": {
+        "Model": "Code Llama-70B",
+        "Publication date": "2024-01-29",
+        "Parameters": "70000000000.0",
+        "Training compute (FLOP)": "1.26e+24",
+        "Training compute estimation method": "Operation counting",
+        "Confidence": "Confident",
+        "Training compute lower bound": "",
+        "Training compute upper bound": "",
+        "Training dataset size (total)": "3000000000000",
+        "Base model": "Llama 2-70B",
+        "Finetune compute (FLOP)": "4.2e+23",
+        "Post-training compute (FLOP)": "",
+        "Citations": "3163.0",
+        "Last modified": "2026-05-25 12:28:12+00:00",
+        "Hugging Face developer id": "",
+        "Link": "https://ai.meta.com/research/publications/code-llama-open-foundation-models-for-code/\nhttps://arxiv.org/abs/2308.12950"
+      },
+      "evalplus_A_native_object": {
+        "link": "https://huggingface.co/codellama/CodeLlama-70b-Instruct-hf",
+        "open-data": "NONE",
+        "prompted": true,
+        "size": 70.0,
+        "pass@1": {
+          "humaneval": 72.0,
+          "humaneval+": 65.2,
+          "mbpp": 75.4,
+          "mbpp+": 61.7
+        }
+      },
+      "evalplus_B_native_object": {
+        "link": "https://huggingface.co/codellama/CodeLlama-70b-Instruct-hf",
+        "open-data": "NONE",
+        "pass@1": {
+          "humaneval": 72.0,
+          "humaneval+": 65.9,
+          "mbpp": null,
+          "mbpp+": null
+        },
+        "prompted": true,
+        "size": 70.0
+      },
+      "executed_checkpoint_or_service_snapshot": null,
+      "inference_time": null,
+      "source_urls": [
+        "https://epoch.ai/data/all_ai_models.csv",
+        "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+        "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+        "https://arxiv.org/html/2308.12950v3",
+        "https://arxiv.org/html/2308.12950v3/cascades_v2_code_llama_70B.svg"
+      ]
+    },
+    {
+      "candidate_id": "PIT-J07",
+      "family_group_id": "deepseek_coder",
+      "evalplus_native_key": "DeepSeek-Coder-6.7B-base",
+      "epoch_native_key": "DeepSeek Coder 6.7B",
+      "epoch_data_record_number_1_based_excluding_header": 1811,
+      "join_status": "partial_named_base_variant",
+      "strict_panel_ready": false,
+      "identity_finding": "Both sources name deepseek-ai/deepseek-coder-6.7b-base. Dated primary documentation confirms the size/base variant; execution revision and invocation configuration remain unknown.",
+      "compute_and_cutoff_finding": "8.04e22 FLOP can be reconstructed now as 6 × 6.7e9 × 2e12 from pre-cutoff disclosed inputs. This is an estimate, not measured compute or proof the current Epoch cell existed then.",
+      "raw_epoch_extract": {
+        "Model": "DeepSeek Coder 6.7B",
+        "Publication date": "2023-11-02",
+        "Parameters": "6700000000.0",
+        "Training compute (FLOP)": "8.04e+22",
+        "Training compute estimation method": "Operation counting",
+        "Confidence": "Likely",
+        "Training compute lower bound": "",
+        "Training compute upper bound": "",
+        "Training dataset size (total)": "2000000000000",
+        "Base model": "",
+        "Finetune compute (FLOP)": "",
+        "Post-training compute (FLOP)": "",
+        "Citations": "",
+        "Last modified": "2026-09-02 18:36:55+00:00",
+        "Hugging Face developer id": "deepseek-ai",
+        "Link": "https://arxiv.org/abs/2401.14196\n\nhttps://huggingface.co/deepseek-ai/deepseek-coder-6.7b-base "
+      },
+      "evalplus_A_native_object": {
+        "link": "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-base",
+        "open-data": "NONE",
+        "prompted": false,
+        "size": 6.7,
+        "pass@1": {
+          "humaneval": 47.6,
+          "humaneval+": 39.6,
+          "mbpp": 70.2,
+          "mbpp+": 56.6
+        }
+      },
+      "evalplus_B_native_object": {
+        "link": "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-base",
+        "open-data": "NONE",
+        "pass@1": {
+          "humaneval": 47.6,
+          "humaneval+": 39.6,
+          "mbpp": 72.0,
+          "mbpp+": 58.7
+        },
+        "prompted": false,
+        "size": 6.7
+      },
+      "executed_checkpoint_or_service_snapshot": null,
+      "inference_time": null,
+      "source_urls": [
+        "https://epoch.ai/data/all_ai_models.csv",
+        "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+        "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+        "https://arxiv.org/html/2401.14196v1",
+        "https://arxiv.org/abs/2401.14196v1",
+        "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-base/blob/ce2207a8bfef3ee92bd7dd4cc31c52cfa0046912/README.md"
+      ],
+      "documentary_revision": "ce2207a8bfef3ee92bd7dd4cc31c52cfa0046912",
+      "documentary_revision_time": "2024-03-19T03:54:51Z"
+    },
+    {
+      "candidate_id": "PIT-J08",
+      "family_group_id": "deepseek_coder",
+      "evalplus_native_key": "DeepSeek-Coder-6.7B-instruct",
+      "epoch_native_key": "DeepSeek Coder 6.7B",
+      "epoch_data_record_number_1_based_excluding_header": 1811,
+      "join_status": "rejected_equivalence_ancestry_retained",
+      "strict_panel_ready": false,
+      "identity_finding": "The Epoch candidate is the base repository; EvalPlus names Instruct. The pinned card identifies the base initialization and an additional 2B instruction tokens.",
+      "compute_and_cutoff_finding": "The base 8.04e22 may be a separately named ancestral-pretraining predictor. It is not the descendant total, and the base/Instruct observations cannot be split independently.",
+      "raw_epoch_extract": {
+        "Model": "DeepSeek Coder 6.7B",
+        "Publication date": "2023-11-02",
+        "Parameters": "6700000000.0",
+        "Training compute (FLOP)": "8.04e+22",
+        "Training compute estimation method": "Operation counting",
+        "Confidence": "Likely",
+        "Training compute lower bound": "",
+        "Training compute upper bound": "",
+        "Training dataset size (total)": "2000000000000",
+        "Base model": "",
+        "Finetune compute (FLOP)": "",
+        "Post-training compute (FLOP)": "",
+        "Citations": "",
+        "Last modified": "2026-09-02 18:36:55+00:00",
+        "Hugging Face developer id": "deepseek-ai",
+        "Link": "https://arxiv.org/abs/2401.14196\n\nhttps://huggingface.co/deepseek-ai/deepseek-coder-6.7b-base "
+      },
+      "evalplus_A_native_object": {
+        "link": "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-instruct",
+        "open-data": "NONE",
+        "prompted": true,
+        "size": 6.7,
+        "pass@1": {
+          "humaneval": 73.8,
+          "humaneval+": 70.1,
+          "mbpp": 73.2,
+          "mbpp+": 63.4
+        }
+      },
+      "evalplus_B_native_object": {
+        "link": "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-instruct",
+        "open-data": "NONE",
+        "pass@1": {
+          "humaneval": 73.8,
+          "humaneval+": 70.7,
+          "mbpp": 74.9,
+          "mbpp+": 65.6
+        },
+        "prompted": true,
+        "size": 6.7
+      },
+      "executed_checkpoint_or_service_snapshot": null,
+      "inference_time": null,
+      "source_urls": [
+        "https://epoch.ai/data/all_ai_models.csv",
+        "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+        "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+        "https://arxiv.org/html/2401.14196v1",
+        "https://arxiv.org/abs/2401.14196v1",
+        "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-instruct/blob/e5d64addd26a6a1db0f9b863abf6ee3141936807/README.md"
+      ],
+      "documentary_revision": "e5d64addd26a6a1db0f9b863abf6ee3141936807",
+      "documentary_revision_time": "2024-02-02T03:02:26Z"
+    },
+    {
+      "candidate_id": "PIT-J09",
+      "family_group_id": "deepseek_coder",
+      "evalplus_native_key": "DeepSeek-Coder-33B-base",
+      "epoch_native_key": "DeepSeek Coder 33B",
+      "epoch_data_record_number_1_based_excluding_header": 1802,
+      "join_status": "partial_named_base_variant",
+      "strict_panel_ready": false,
+      "identity_finding": "Both sources name deepseek-ai/deepseek-coder-33b-base. No executed revision or run time is recorded.",
+      "compute_and_cutoff_finding": "3.96e23 FLOP is a current 6ND estimate reconstructable from the pre-cutoff 33B and 2T disclosures. B’s MBPP nulls stay missing, without forward-fill.",
+      "raw_epoch_extract": {
+        "Model": "DeepSeek Coder 33B",
+        "Publication date": "2023-11-02",
+        "Parameters": "33000000000.0",
+        "Training compute (FLOP)": "3.96e+23",
+        "Training compute estimation method": "Operation counting",
+        "Confidence": "Likely",
+        "Training compute lower bound": "",
+        "Training compute upper bound": "",
+        "Training dataset size (total)": "2000000000000",
+        "Base model": "",
+        "Finetune compute (FLOP)": "",
+        "Post-training compute (FLOP)": "",
+        "Citations": "",
+        "Last modified": "2026-09-02 18:36:35+00:00",
+        "Hugging Face developer id": "deepseek-ai",
+        "Link": "https://arxiv.org/abs/2401.14196\n\nhttps://huggingface.co/deepseek-ai/deepseek-coder-33b-base "
+      },
+      "evalplus_A_native_object": {
+        "link": "https://huggingface.co/deepseek-ai/deepseek-coder-33b-base",
+        "open-data": "NONE",
+        "prompted": false,
+        "size": 33.0,
+        "pass@1": {
+          "humaneval": 51.2,
+          "humaneval+": 44.5,
+          "mbpp": 73.2,
+          "mbpp+": 59.1
+        }
+      },
+      "evalplus_B_native_object": {
+        "link": "https://huggingface.co/deepseek-ai/deepseek-coder-33b-base",
+        "open-data": "NONE",
+        "pass@1": {
+          "humaneval": 51.2,
+          "humaneval+": 44.5,
+          "mbpp": null,
+          "mbpp+": null
+        },
+        "prompted": false,
+        "size": 33.0
+      },
+      "executed_checkpoint_or_service_snapshot": null,
+      "inference_time": null,
+      "source_urls": [
+        "https://epoch.ai/data/all_ai_models.csv",
+        "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+        "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+        "https://arxiv.org/html/2401.14196v1",
+        "https://arxiv.org/abs/2401.14196v1",
+        "https://huggingface.co/deepseek-ai/deepseek-coder-33b-base/blob/45c85cadf3720ef3e85a492e24fd4b8c5d21d8ac/README.md"
+      ],
+      "documentary_revision": "45c85cadf3720ef3e85a492e24fd4b8c5d21d8ac",
+      "documentary_revision_time": "2024-03-07T13:24:08Z"
+    },
+    {
+      "candidate_id": "PIT-J10",
+      "family_group_id": "starcoder2",
+      "evalplus_native_key": "StarCoder2-3B",
+      "epoch_native_key": "StarCoder 2 3B",
+      "epoch_data_record_number_1_based_excluding_header": 1567,
+      "join_status": "partial_named_base_variant",
+      "strict_panel_ready": false,
+      "identity_finding": "The explicit bigcode/starcoder2-3b handle and pre-cutoff paper support the named 3B base variant. A documented repository state is not the executed state.",
+      "compute_and_cutoff_finding": "5.94e22 FLOP appears in v1 Table 6, including base and long-context training. It is a developer-reported 6ND estimate, independent of benchmark-score imputation.",
+      "raw_epoch_extract": {
+        "Model": "StarCoder 2 3B",
+        "Publication date": "2024-02-29",
+        "Parameters": "3000000000.0",
+        "Training compute (FLOP)": "5.94e+22",
+        "Training compute estimation method": "Reported",
+        "Confidence": "Confident",
+        "Training compute lower bound": "",
+        "Training compute upper bound": "",
+        "Training dataset size (total)": "622090000000",
+        "Base model": "",
+        "Finetune compute (FLOP)": "",
+        "Post-training compute (FLOP)": "",
+        "Citations": "",
+        "Last modified": "2025-11-28 11:53:44+00:00",
+        "Hugging Face developer id": "",
+        "Link": "https://arxiv.org/abs/2402.19173"
+      },
+      "evalplus_A_native_object": {
+        "link": "https://huggingface.co/bigcode/starcoder2-3b",
+        "open-data": "Full",
+        "prompted": false,
+        "size": 3.0,
+        "pass@1": {
+          "humaneval": 31.7,
+          "humaneval+": 27.4,
+          "mbpp": 57.4,
+          "mbpp+": 47.4
+        }
+      },
+      "evalplus_B_native_object": {
+        "link": "https://huggingface.co/bigcode/starcoder2-3b",
+        "open-data": "Full",
+        "pass@1": {
+          "humaneval": 31.7,
+          "humaneval+": 27.4,
+          "mbpp": null,
+          "mbpp+": null
+        },
+        "prompted": false,
+        "size": 3.0
+      },
+      "executed_checkpoint_or_service_snapshot": null,
+      "inference_time": null,
+      "source_urls": [
+        "https://epoch.ai/data/all_ai_models.csv",
+        "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+        "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+        "https://arxiv.org/html/2402.19173v1"
+      ]
+    },
+    {
+      "candidate_id": "PIT-J11",
+      "family_group_id": "starcoder2",
+      "evalplus_native_key": "StarCoder2-7B",
+      "epoch_native_key": "StarCoder 2 7B",
+      "epoch_data_record_number_1_based_excluding_header": 1566,
+      "join_status": "partial_named_base_variant",
+      "strict_panel_ready": false,
+      "identity_finding": "The explicit 7B handle matches the named variant. A June 11 generation-configuration correction postdates T and cannot be assumed for an April execution.",
+      "compute_and_cutoff_finding": "1.55e23 FLOP is the v1 Table 6 6ND estimate for base plus long-context training; missing MBPP B values do not become zeros.",
+      "raw_epoch_extract": {
+        "Model": "StarCoder 2 7B",
+        "Publication date": "2024-02-29",
+        "Parameters": "7000000000.0",
+        "Training compute (FLOP)": "1.55e+23",
+        "Training compute estimation method": "Reported",
+        "Confidence": "Confident",
+        "Training compute lower bound": "",
+        "Training compute upper bound": "",
+        "Training dataset size (total)": "658580000000",
+        "Base model": "",
+        "Finetune compute (FLOP)": "",
+        "Post-training compute (FLOP)": "",
+        "Citations": "",
+        "Last modified": "2025-11-28 11:53:44+00:00",
+        "Hugging Face developer id": "bigcode",
+        "Link": "https://arxiv.org/abs/2402.19173"
+      },
+      "evalplus_A_native_object": {
+        "link": "https://huggingface.co/bigcode/starcoder2-7b",
+        "open-data": "Full",
+        "prompted": false,
+        "size": 7.0,
+        "pass@1": {
+          "humaneval": 35.4,
+          "humaneval+": 29.9,
+          "mbpp": 54.4,
+          "mbpp+": 45.6
+        }
+      },
+      "evalplus_B_native_object": {
+        "link": "https://huggingface.co/bigcode/starcoder2-7b",
+        "open-data": "Full",
+        "pass@1": {
+          "humaneval": 35.4,
+          "humaneval+": 29.9,
+          "mbpp": null,
+          "mbpp+": null
+        },
+        "prompted": false,
+        "size": 7.0
+      },
+      "executed_checkpoint_or_service_snapshot": null,
+      "inference_time": null,
+      "source_urls": [
+        "https://epoch.ai/data/all_ai_models.csv",
+        "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+        "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+        "https://arxiv.org/html/2402.19173v1"
+      ]
+    },
+    {
+      "candidate_id": "PIT-J12",
+      "family_group_id": "starcoder2",
+      "evalplus_native_key": "StarCoder2-15B",
+      "epoch_native_key": "StarCoder 2 15B",
+      "epoch_data_record_number_1_based_excluding_header": 1565,
+      "join_status": "partial_named_base_variant",
+      "strict_panel_ready": false,
+      "identity_finding": "The explicit 15B base handle is consistent; keep it distinct from any Instruct/OCI variant. A June 5 generation-configuration update is documentary revision evidence, not a new training run.",
+      "compute_and_cutoff_finding": "3.87e23 FLOP is the v1 Table 6 6ND estimate including base plus long-context training. Actual loaded checkpoint and protocol remain unresolved.",
+      "raw_epoch_extract": {
+        "Model": "StarCoder 2 15B",
+        "Publication date": "2024-02-29",
+        "Parameters": "15000000000.0",
+        "Training compute (FLOP)": "3.87e+23",
+        "Training compute estimation method": "Reported",
+        "Confidence": "Confident",
+        "Training compute lower bound": "",
+        "Training compute upper bound": "",
+        "Training dataset size (total)": "913230000000",
+        "Base model": "",
+        "Finetune compute (FLOP)": "",
+        "Post-training compute (FLOP)": "",
+        "Citations": "",
+        "Last modified": "2025-11-28 11:53:44+00:00",
+        "Hugging Face developer id": "",
+        "Link": "https://arxiv.org/abs/2402.19173"
+      },
+      "evalplus_A_native_object": {
+        "link": "https://huggingface.co/bigcode/starcoder2-15b",
+        "open-data": "Full",
+        "prompted": false,
+        "size": 15.0,
+        "pass@1": {
+          "humaneval": 46.3,
+          "humaneval+": 37.8,
+          "mbpp": 66.2,
+          "mbpp+": 53.1
+        }
+      },
+      "evalplus_B_native_object": {
+        "link": "https://huggingface.co/bigcode/starcoder2-15b",
+        "open-data": "Full",
+        "pass@1": {
+          "humaneval": 46.3,
+          "humaneval+": 37.8,
+          "mbpp": null,
+          "mbpp+": null
+        },
+        "prompted": false,
+        "size": 15.0
+      },
+      "executed_checkpoint_or_service_snapshot": null,
+      "inference_time": null,
+      "source_urls": [
+        "https://epoch.ai/data/all_ai_models.csv",
+        "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+        "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+        "https://arxiv.org/html/2402.19173v1"
+      ]
+    }
+  ],
+  "documentary_revision_anchors": {
+    "warning": "These pins identify documents/repository states inspected; none is asserted to be the state actually loaded by EvalPlus.",
+    "code_llama_paper": "2308.12950v3; 2024-01-31T19:47:26Z",
+    "starcoder2_paper": "2402.19173v1; 2024-02-29T13:53:35Z",
+    "deepseek_coder_paper": "2401.14196v1; 2024-01-25",
+    "hf_model_cards": [
+      {
+        "id": "starcoder2_3b_card",
+        "url": "https://huggingface.co/bigcode/starcoder2-3b/raw/733247c55e3f73af49ce8e9c7949bf14af205928/README.md",
+        "sha256": "935c418b71ef9007801532d2680f4b6239b8e57841e103ac521747e7ac6eca4b",
+        "bytes": 8416,
+        "retrieved_at": "2026-10-09T15:36:42.167525+00:00"
+      },
+      {
+        "id": "starcoder2_7b_card",
+        "url": "https://huggingface.co/bigcode/starcoder2-7b/raw/a3d33687b51284b528abeb17830776ffd24892a9/README.md",
+        "sha256": "080310ee50788aac46dcdfdfa0e74605171e220d3e497398dbfced8c8cfb3ae1",
+        "bytes": 8516,
+        "retrieved_at": "2026-10-09T15:36:42.225346+00:00"
+      },
+      {
+        "id": "starcoder2_15b_card",
+        "url": "https://huggingface.co/bigcode/starcoder2-15b/raw/995200dd02e1e5080004d1967664933b28d5e577/README.md",
+        "sha256": "b1f914dfac3e98e10f6458406d4eac1e540af35754cf4f94a0be1e9de5fa300d",
+        "bytes": 8731,
+        "retrieved_at": "2026-10-09T15:36:42.113448+00:00"
+      },
+      {
+        "id": "codellama_70b_python_card",
+        "url": "https://huggingface.co/codellama/CodeLlama-70b-Python-hf/raw/e037619532ec8449a01ecd5b253d065ac81637b6/README.md",
+        "sha256": "e2a9ecdabbd845574b03353bf628c2bd5a02f5d19a39e9f0f61cec8759bbc0ef",
+        "bytes": 6487,
+        "retrieved_at": "2026-10-09T15:36:48.553490+00:00"
+      },
+      {
+        "id": "codellama_70b_instruct_card",
+        "url": "https://huggingface.co/codellama/CodeLlama-70b-Instruct-hf/raw/397cae981dffaf5d5c9c90e89a0a75a850528b70/README.md",
+        "sha256": "567e4a0655240be6a8ed5a44eef33b8adb2a5765f7c8348bef82a6378b619f7b",
+        "bytes": 11914,
+        "retrieved_at": "2026-10-09T15:36:48.628335+00:00"
+      }
+    ],
+    "deepseek_hf_model_cards": [
+      {
+        "model": "deepseek-coder-6.7b-base",
+        "revision": "ce2207a8bfef3ee92bd7dd4cc31c52cfa0046912",
+        "url": "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-base/raw/ce2207a8bfef3ee92bd7dd4cc31c52cfa0046912/README.md",
+        "bytes": 6861,
+        "sha256": "45238e9d2cd7159c67a24d1712dbf35ed37febb477ec0feeb453a3e2be22e8c3",
+        "retrieved_at": "2026-10-09T15:36:12.917280+00:00",
+        "text": "---\nlicense: other\nlicense_name: deepseek-license\nlicense_link: LICENSE\n---\n\n<p align=\"center\">\n<img width=\"1000px\" alt=\"DeepSeek Coder\" src=\"https://github.com/deepseek-ai/DeepSeek-Coder/blob/main/pictures/logo.png?raw=true\">\n</p>\n<p align=\"center\"><a href=\"https://www.deepseek.com/\">[🏠Homepage]</a>  |  <a href=\"https://coder.deepseek.com/\">[🤖 Chat with DeepSeek Coder]</a>  |  <a href=\"https://discord.gg/Tc7c45Zzu5\">[Discord]</a>  |  <a href=\"https://github.com/guoday/assert/blob/main/QR.png?raw=true\">[Wechat(微信)]</a> </p>\n<hr>\n\n\n### 1. Introduction of Deepseek Coder\n\nDeepseek Coder is composed of a series of code language models, each trained from scratch on 2T tokens, with a composition of 87% code and 13% natural language in both English and Chinese. We provide various sizes of the code model, ranging from 1B to 33B versions. Each model is pre-trained on project-level code corpus by employing a window size of 16K and a extra fill-in-the-blank task, to support  project-level code completion and infilling. For coding capabilities, Deepseek Coder achieves state-of-the-art performance among open-source code models on multiple programming languages and various benchmarks. \n\n- **Massive Training Data**: Trained from scratch on 2T tokens, including 87% code and 13% linguistic data in both English and Chinese languages.\n  \n- **Highly Flexible & Scalable**: Offered in model sizes of 1.3B, 5.7B, 6.7B, and 33B, enabling users to choose the setup most suitable for their requirements.\n  \n- **Superior Model Performance**: State-of-the-art performance among publicly available code models on HumanEval, MultiPL-E, MBPP, DS-1000, and APPS benchmarks.\n  \n- **Advanced Code Completion Capabilities**: A window size of 16K and a fill-in-the-blank task, supporting project-level code completion and infilling tasks.\n\n  \n\n### 2. Model Summary\ndeepseek-coder-6.7b-base is a 6.7B parameter model with Multi-Head Attention trained on 2 trillion tokens.\n- **Home Page:** [DeepSeek](https://deepseek.com/)\n- **Repository:** [deepseek-ai/deepseek-coder](https://github.com/deepseek-ai/deepseek-coder)\n- **Chat With DeepSeek Coder:** [DeepSeek-Coder](https://coder.deepseek.com/)\n\n\n### 3. How to Use\nHere give some examples of how to use our model.\n#### 1）Code Completion\n```python\nfrom transformers import AutoTokenizer, AutoModelForCausalLM\nimport torch\ntokenizer = AutoTokenizer.from_pretrained(\"deepseek-ai/deepseek-coder-6.7b-base\", trust_remote_code=True)\nmodel = AutoModelForCausalLM.from_pretrained(\"deepseek-ai/deepseek-coder-6.7b-base\", trust_remote_code=True).cuda()\ninput_text = \"#write a quick sort algorithm\"\ninputs = tokenizer(input_text, return_tensors=\"pt\").cuda()\noutputs = model.generate(**inputs, max_length=128)\nprint(tokenizer.decode(outputs[0], skip_special_tokens=True))\n```\n\n#### 2）Code Insertion\n```python\nfrom transformers import AutoTokenizer, AutoModelForCausalLM\nimport torch\ntokenizer = AutoTokenizer.from_pretrained(\"deepseek-ai/deepseek-coder-6.7b-base\", trust_remote_code=True)\nmodel = AutoModelForCausalLM.from_pretrained(\"deepseek-ai/deepseek-coder-6.7b-base\", trust_remote_code=True).cuda()\ninput_text = \"\"\"<｜fim▁begin｜>def quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[0]\n    left = []\n    right = []\n<｜fim▁hole｜>\n        if arr[i] < pivot:\n            left.append(arr[i])\n        else:\n            right.append(arr[i])\n    return quick_sort(left) + [pivot] + quick_sort(right)<｜fim▁end｜>\"\"\"\ninputs = tokenizer(input_text, return_tensors=\"pt\").cuda()\noutputs = model.generate(**inputs, max_length=128)\nprint(tokenizer.decode(outputs[0], skip_special_tokens=True)[len(input_text):])\n```\n\n#### 3）Repository Level Code Completion\n```python\nfrom transformers import AutoTokenizer, AutoModelForCausalLM\ntokenizer = AutoTokenizer.from_pre"
+      },
+      {
+        "model": "deepseek-coder-6.7b-instruct",
+        "revision": "e5d64addd26a6a1db0f9b863abf6ee3141936807",
+        "url": "https://huggingface.co/deepseek-ai/deepseek-coder-6.7b-instruct/raw/e5d64addd26a6a1db0f9b863abf6ee3141936807/README.md",
+        "bytes": 3574,
+        "sha256": "c874c1b3458a13e73263baf38836ce280d3c557e399a6b0078c22d55f7cda98e",
+        "retrieved_at": "2026-10-09T15:36:12.906719+00:00",
+        "text": "---\nlicense: other\nlicense_name: deepseek\nlicense_link: LICENSE\n---\n\n<p align=\"center\">\n<img width=\"1000px\" alt=\"DeepSeek Coder\" src=\"https://github.com/deepseek-ai/DeepSeek-Coder/blob/main/pictures/logo.png?raw=true\">\n</p>\n<p align=\"center\"><a href=\"https://www.deepseek.com/\">[🏠Homepage]</a>  |  <a href=\"https://coder.deepseek.com/\">[🤖 Chat with DeepSeek Coder]</a>  |  <a href=\"https://discord.gg/Tc7c45Zzu5\">[Discord]</a>  |  <a href=\"https://github.com/guoday/assert/blob/main/QR.png?raw=true\">[Wechat(微信)]</a> </p>\n<hr>\n\n\n\n\n### 1. Introduction of Deepseek Coder\n\nDeepseek Coder is composed of a series of code language models, each trained from scratch on 2T tokens, with a composition of 87% code and 13% natural language in both English and Chinese. We provide various sizes of the code model, ranging from 1B to 33B versions. Each model is pre-trained on project-level code corpus by employing a window size of 16K and a extra fill-in-the-blank task, to support  project-level code completion and infilling. For coding capabilities, Deepseek Coder achieves state-of-the-art performance among open-source code models on multiple programming languages and various benchmarks. \n\n- **Massive Training Data**: Trained from scratch fon 2T tokens, including 87% code and 13% linguistic data in both English and Chinese languages.\n  \n- **Highly Flexible & Scalable**: Offered in model sizes of 1.3B, 5.7B, 6.7B, and 33B, enabling users to choose the setup most suitable for their requirements.\n  \n- **Superior Model Performance**: State-of-the-art performance among publicly available code models on HumanEval, MultiPL-E, MBPP, DS-1000, and APPS benchmarks.\n  \n- **Advanced Code Completion Capabilities**: A window size of 16K and a fill-in-the-blank task, supporting project-level code completion and infilling tasks.\n\n \n  \n### 2. Model Summary\ndeepseek-coder-6.7b-instruct is a 6.7B parameter model initialized from deepseek-coder-6.7b-base and fine-tuned on 2B tokens of instruction data.\n- **Home Page:** [DeepSeek](https://deepseek.com/)\n- **Repository:** [deepseek-ai/deepseek-coder](https://github.com/deepseek-ai/deepseek-coder)\n- **Chat With DeepSeek Coder:** [DeepSeek-Coder](https://coder.deepseek.com/)\n\n\n### 3. How to Use\nHere give some examples of how to use our model.\n#### Chat Model Inference\n```python\nfrom transformers import AutoTokenizer, AutoModelForCausalLM\ntokenizer = AutoTokenizer.from_pretrained(\"deepseek-ai/deepseek-coder-6.7b-instruct\", trust_remote_code=True)\nmodel = AutoModelForCausalLM.from_pretrained(\"deepseek-ai/deepseek-coder-6.7b-instruct\", trust_remote_code=True, torch_dtype=torch.bfloat16).cuda()\nmessages=[\n    { 'role': 'user', 'content': \"write a quick sort algorithm in python.\"}\n]\ninputs = tokenizer.apply_chat_template(messages, add_generation_prompt=True, return_tensors=\"pt\").to(model.device)\n# tokenizer.eos_token_id is the id of <|EOT|> token\noutputs = model.generate(inputs, max_new_tokens=512, do_sample=False, top_k=50, top_p=0.95, num_return_sequences=1, eos_token_id=tokenizer.eos_token_id)\nprint(tokenizer.decode(outputs[0][len(inputs[0]):], skip_special_tokens=True))\n```\n\n### 4. License\nThis code repository is licensed under the MIT License. The use of DeepSeek Coder models is subject to the Model License. DeepSeek Coder supports commercial use.\n\nSee the [LICENSE-MODEL](https://github.com/deepseek-ai/deepseek-coder/blob/main/LICENSE-MODEL) for more details.\n\n### 5. Contact\n\nIf you have any questions, please raise an issue or contact us at [agi_code@deepseek.com](mailto:agi_code@deepseek.com).\n\n"
+      },
+      {
+        "model": "deepseek-coder-33b-base",
+        "revision": "45c85cadf3720ef3e85a492e24fd4b8c5d21d8ac",
+        "url": "https://huggingface.co/deepseek-ai/deepseek-coder-33b-base/raw/45c85cadf3720ef3e85a492e24fd4b8c5d21d8ac/README.md",
+        "bytes": 6867,
+        "sha256": "8f1feaed8f726629afe567a4f0ad35976adbca2f2a299f6ec3c4535c796c51c4",
+        "retrieved_at": "2026-10-09T15:36:12.990172+00:00",
+        "text": "---\nlicense: other\nlicense_name: deepseek-license\nlicense_link: LICENSE\n---\n\n\n<p align=\"center\">\n<img width=\"1000px\" alt=\"DeepSeek Coder\" src=\"https://github.com/deepseek-ai/DeepSeek-Coder/blob/main/pictures/logo.png?raw=true\">\n</p>\n<p align=\"center\"><a href=\"https://www.deepseek.com/\">[🏠Homepage]</a>  |  <a href=\"https://coder.deepseek.com/\">[🤖 Chat with DeepSeek Coder]</a>  |  <a href=\"https://discord.gg/Tc7c45Zzu5\">[Discord]</a>  |  <a href=\"https://github.com/guoday/assert/blob/main/QR.png?raw=true\">[Wechat(微信)]</a> </p>\n<hr>\n\n\n### 1. Introduction of Deepseek Coder\n\nDeepseek Coder is composed of a series of code language models, each trained from scratch on 2T tokens, with a composition of 87% code and 13% natural language in both English and Chinese. We provide various sizes of the code model, ranging from 1B to 33B versions. Each model is pre-trained on project-level code corpus by employing a window size of 16K and a extra fill-in-the-blank task, to support  project-level code completion and infilling. For coding capabilities, Deepseek Coder achieves state-of-the-art performance among open-source code models on multiple programming languages and various benchmarks. \n\n- **Massive Training Data**: Trained from scratch on 2T tokens, including 87% code and 13% linguistic data in both English and Chinese languages.\n  \n- **Highly Flexible & Scalable**: Offered in model sizes of 1.3B, 5.7B, 6.7B, and 33B, enabling users to choose the setup most suitable for their requirements.\n  \n- **Superior Model Performance**: State-of-the-art performance among publicly available code models on HumanEval, MultiPL-E, MBPP, DS-1000, and APPS benchmarks.\n  \n- **Advanced Code Completion Capabilities**: A window size of 16K and a fill-in-the-blank task, supporting project-level code completion and infilling tasks.\n\n  \n\n### 2. Model Summary\ndeepseek-coder-33b-base is a 33B parameter model with Grouped-Query Attention trained on 2 trillion tokens.\n- **Home Page:** [DeepSeek](https://deepseek.com/)\n- **Repository:** [deepseek-ai/deepseek-coder](https://github.com/deepseek-ai/deepseek-coder)\n- **Chat With DeepSeek Coder:** [DeepSeek-Coder](https://coder.deepseek.com/)\n\n\n### 3. How to Use\nHere give some examples of how to use our model.\n#### 1）Code Completion\n```python\nfrom transformers import AutoTokenizer, AutoModelForCausalLM\nimport torch\ntokenizer = AutoTokenizer.from_pretrained(\"deepseek-ai/deepseek-coder-33b-base\", trust_remote_code=True)\nmodel = AutoModelForCausalLM.from_pretrained(\"deepseek-ai/deepseek-coder-33b-base\", trust_remote_code=True).cuda()\ninput_text = \"#write a quick sort algorithm\"\ninputs = tokenizer(input_text, return_tensors=\"pt\").cuda()\noutputs = model.generate(**inputs, max_length=128)\nprint(tokenizer.decode(outputs[0], skip_special_tokens=True))\n```\n\n#### 2）Code Insertion\n```python\nfrom transformers import AutoTokenizer, AutoModelForCausalLM\nimport torch\ntokenizer = AutoTokenizer.from_pretrained(\"deepseek-ai/deepseek-coder-33b-base\", trust_remote_code=True)\nmodel = AutoModelForCausalLM.from_pretrained(\"deepseek-ai/deepseek-coder-33b-base\", trust_remote_code=True).cuda()\ninput_text = \"\"\"<｜fim▁begin｜>def quick_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    pivot = arr[0]\n    left = []\n    right = []\n<｜fim▁hole｜>\n        if arr[i] < pivot:\n            left.append(arr[i])\n        else:\n            right.append(arr[i])\n    return quick_sort(left) + [pivot] + quick_sort(right)<｜fim▁end｜>\"\"\"\ninputs = tokenizer(input_text, return_tensors=\"pt\").cuda()\noutputs = model.generate(**inputs, max_length=128)\nprint(tokenizer.decode(outputs[0], skip_special_tokens=True)[len(input_text):])\n```\n\n#### 3）Repository Level Code Completion\n```python\nfrom transformers import AutoTokenizer, AutoModelForCausalLM\ntokenizer = AutoTokenizer.from_pretr"
+      }
+    ]
+  },
+  "code_llama_compute_conflict": {
+    "artifact": "arXiv:2308.12950v3",
+    "prose_70b_initial_code_tokens": "1T",
+    "figure8_70b_initial_code_tokens": "500B",
+    "figure8_python_tokens": "100B",
+    "figure8_instruct_tokens": "260M",
+    "figure8_base_lcft_sibling_tokens": "20B",
+    "source_figure_sha256": "4c182a853c46261303846cba18921a0811244e999e7529b2033ab4b952a18f31",
+    "resolution": "Unresolved within-version source conflict. Preserve both assertions and branch topology; do not repair the source, choose one value, or pool base/Python/Instruct total costs.",
+    "source_urls": [
+      "https://arxiv.org/html/2308.12950v3",
+      "https://arxiv.org/html/2308.12950v3/cascades_v2_code_llama_70B.svg"
+    ]
+  },
+  "dependency_and_family_rules": [
+    {
+      "rule_id": "G1",
+      "rule": "Deduplicate exact original blobs by SHA-256 and byte length; retain every version/URL/receipt. Reimporting an unchanged blob must not mint another scientific run."
+    },
+    {
+      "rule_id": "G2",
+      "rule": "Use checkpoint/service identity, generation/output set and evaluation specification for observation identity; artifact publication is a separate key. Unknown run IDs stay null and do not all collapse into one run."
+    },
+    {
+      "rule_id": "G3",
+      "rule": "Keep a model’s four metrics and both publication vintages in the same split group. Equal scores alone do not prove shared outputs; score changes alone do not prove a new run."
+    },
+    {
+      "rule_id": "G4",
+      "rule": "Union documented same-checkpoint, same-output, ancestor/descendant, quantization/conversion and distillation/teacher dependencies before splitting. Multi-parent derived models must not leak a known parent across folds."
+    },
+    {
+      "rule_id": "G5",
+      "rule": "Use four conservative family blocks for this bounded study: GPT-4, Code Llama, DeepSeek-Coder v1, StarCoder2. Family blocks are safeguards, not a claim that every member has identical weights or one independent pretraining run."
+    },
+    {
+      "rule_id": "G6",
+      "rule": "Represent a reused ancestor compute estimate once and link descendants. Base compute, post-training compute and total compute have different scopes. Do not count repeated ancestor estimates as independent evidence."
+    },
+    {
+      "rule_id": "G7",
+      "rule": "Record shared benchmark, evaluator, corpus, publication and estimate-source dependencies as additional clusters. A shared benchmark alone does not turn every model into one hard ancestry component."
+    },
+    {
+      "rule_id": "G8",
+      "rule": "A future adapter should use family-blocked and time-aware evaluation, fit preprocessing/feature selection only on the training side, report checkpoint and lineage counts, and conduct sensitivity analysis to uncertain ancestry. Four families are too few for a strong generalization estimate in this audit."
+    }
+  ],
+  "proposed_acceptance_cases": {
+    "status": "proposed_not_executed",
+    "cutoff": "2024-04-20T23:59:59Z",
+    "case_count": 8,
+    "cases": [
+      {
+        "case_id": "PIT-01",
+        "name": "Hosted alias and product do not identify an executed checkpoint",
+        "fixture": "EvalPlus GPT-4 (May 2023) links the GPT-4 research page; candidate Epoch rows describe March/June editions. The record supplies no invocation log identifying the requested and served model snapshot. April Turbo also requires ChatGPT versus API surface resolution.",
+        "attempt": "Match by GPT-4 plus date-like label and assign an exact API checkpoint or use a ChatGPT product announcement as proof of the evaluated API model.",
+        "expected": "Preserve the candidate and all dated assertions; record alias_only or ambiguous, executed checkpoint null, no strict executed-checkpoint inclusion. A publisher family or product link does not resolve run identity.",
+        "must_not_do": "Invent gpt-4-0314, gpt-4-0613, gpt-4-turbo-2024-04-09, invocation dates or a universal product/API identity.",
+        "validation_kind": "proposed_semantic_identity_gate"
+      },
+      {
+        "case_id": "PIT-02",
+        "name": "Base, Python-specialized and instruction-tuned variants stay distinct",
+        "fixture": "The CodeLlama-70B result links CodeLlama-70b-Python-hf, while its display label omits Python. DeepSeek-Coder-6.7B-base and 6.7B-instruct are distinct EvalPlus keys, with a possible shared base-training lineage.",
+        "attempt": "Join by normalized family and parameter count; assign one score or total compute figure to both base and tuned variants.",
+        "expected": "Reject the proposed equivalence of unlike variants. Retain an explicitly evidenced ancestor link separately; ancestral pretraining compute may be a named predictor, while descendant total training compute stays missing. The same lineage group must not cross train/test folds.",
+        "must_not_do": "Infer base=tuned, Python=general base, or identical full training cost from names and parameter counts.",
+        "validation_kind": "proposed_semantic_variant_and_ancestry_gate"
+      },
+      {
+        "case_id": "PIT-03",
+        "name": "Repository revision is not execution proof",
+        "fixture": "A StarCoder2 model card identifies a named repository and a dated revision; no EvalPlus record ties its run to that revision, full weight manifest, tokenizer and generation configuration. A later revision may alter only tokenizer or metadata.",
+        "attempt": "Use the latest Hub commit as the checkpoint executed in April 2024, or count a tokenizer/card correction as a newly trained model.",
+        "expected": "Store declared artifact identity separately from executed identity. Keep run revision null and exact-execution inclusion held. Distinguish weight, tokenizer/config and documentation revisions; retain the original dates and relationship evidence.",
+        "must_not_do": "Backdate a current commit, equate one shard digest with a complete loaded artifact set, or mint a new training example for metadata changes.",
+        "validation_kind": "proposed_semantic_revision_gate"
+      },
+      {
+        "case_id": "PIT-04",
+        "name": "Correction vintage is not a new inference run",
+        "fixture": "For CodeLlama-70B, HumanEval+ changes from 50.0 to 50.6; MBPP and MBPP+ change from 65.4/53.4 to null across A/B. Other rows have changed scores. The migration documents task removals and retained-prompt edits; run/output linkage remains unresolved.",
+        "attempt": "Interpret the April 21-to-22 difference as capability growth, as an independent second run, or solely as changing the MBPP denominator.",
+        "expected": "Keep both metric vintages and a published_revision_inference_unresolved relationship, with no fabricated run IDs. Preserve protocol/population changes and HumanEval+ changes too. Regrade_same_outputs requires documented output reuse; new_inference requires execution evidence.",
+        "must_not_do": "Normalize away the change, attribute all deltas to 399-to-378 membership, or increase unique-run/model counts.",
+        "validation_kind": "proposed_semantic_measurement_revision_gate"
+      },
+      {
+        "case_id": "PIT-05",
+        "name": "Explicit null, blank compute and uncertainty survive",
+        "fixture": "The same CodeLlama-70B B record has native MBPP/MBPP+ nulls. GPT-4 Turbo has blank numeric Training compute (FLOP) cells but compute notes containing an imputed value. Source confidence labels and numeric intervals have different meanings.",
+        "attempt": "Coerce missing scores or numeric blanks to zero, forward-fill A into B, silently parse a notes estimate as a native numeric cell, or convert a confidence label into a statistical interval.",
+        "expected": "Retain all eight metric slots per candidate; missing scores remain null with source-supported reasons. Preserve native compute blank and notes as separate evidence. Preserve reported intervals and labels without invented error bars. A notes extraction, if shown, is an explicitly derived field.",
+        "must_not_do": "Treat null as failure, assume unchanged old score, or relabel a qualitative confidence level as 95 percent uncertainty.",
+        "validation_kind": "proposed_structure_and_missingness_gate"
+      },
+      {
+        "case_id": "PIT-06",
+        "name": "Feature cutoff and label chronology are separate clocks",
+        "fixture": "T is 2024-04-20T23:59:59Z. A's bytes occur in ancestor ba37a9f43a5706e87762951029baab25880cd0d6 with repository timestamp 2024-04-20T03:06:04Z, although the selected A snapshot is dated April 21. Exact public-first-seen and inference times are not established. The inspected Epoch CSV has later Last modified dates and current citation counts; pre-T primary papers may support particular earlier values.",
+        "attempt": "Declare A an unseen future target because the selected commit is after T; backdate the current citation count or revised compute cell to model release; substitute B's later corrected score into the information known at T.",
+        "expected": "Keep first public and inference times unknown; label A repository_chronology_only and qualify any as-of training view by that assumption, with no prospective-outcome claim. Exclude current citation counts and unsupported revised cells from pre-T features. Admit a specific earlier value only with its pre-T source and derivation evidence. Preserve B as a separately dated corrected-hindsight view.",
+        "must_not_do": "Equate a Git timestamp with observed first public availability, reject genuinely historical labels from all training uses, or grant every field the row's model-release date.",
+        "validation_kind": "proposed_semantic_information_set_gate"
+      },
+      {
+        "case_id": "PIT-07",
+        "name": "Benchmark-imputed compute cannot test independent compute versus performance",
+        "fixture": "Epoch's GPT-4 Turbo November and April rows contain blank numeric compute cells, notes stating an imputed 2.2e25 FLOP estimate and estimation method Benchmarks.",
+        "attempt": "Use that notes estimate as the independent compute predictor of EvalPlus performance, even if a source date before T were later established.",
+        "expected": "Preserve the raw blank, method and notes; mark the derived estimate benchmark_imputation and exclude it from the independent compute-performance view. Temporal availability alone cannot remove circularity. An independently evidenced replacement must be a new feature assertion with its own availability and scope.",
+        "must_not_do": "Treat the notes value as measured FLOP, assume an estimate is independent because a different benchmark produced it, or silently substitute it for missing native compute.",
+        "validation_kind": "proposed_semantic_compute_provenance_gate"
+      },
+      {
+        "case_id": "PIT-08",
+        "name": "Repeated publication and related models do not inflate independence",
+        "fixture": "A/B have identical sets of 101 model keys. This audit contains 12 candidates and 96 metric slots. Some assertions repeat unchanged, others revise prior measurements; multiple variants may share pretraining ancestors and compute estimates.",
+        "attempt": "Call the snapshots 202 independent examples, count every metric as an independent model, reimport identical artifacts as new runs, or randomly place related variants/measurement vintages into separate train/test folds.",
+        "expected": "Content-identical reimport adds provenance if needed but no duplicate observation/run. Keep raw-row, candidate, checkpoint, metric, output-set, pretraining-lineage and family counts separate. Group documented same-run/output and ancestor edges into indivisible connected components; conservatively group a family when ancestry is unresolved. Do not infer same run merely from equal scores.",
+        "must_not_do": "Count aliases, mirrors, revisions or reused ancestral compute as independent evidence; split a multi-parent derivative away from a known parent component.",
+        "validation_kind": "proposed_semantic_dependency_and_idempotence_gate"
+      }
+    ],
+    "execution_note": "These are eight proposed acceptance cases. They were not implemented as an adapter or run as domain tests. Any JSON Schema parser/shape check is separate and does not establish these semantic properties."
+  },
+  "smallest_missing_artifact": {
+    "name": "Publisher-authored EvalPlus aggregate-to-run manifest",
+    "minimum_useful_scope": "Start with the three StarCoder2 base labels and their HumanEval/HumanEval+ assertions across A/B, since pre-cutoff developer compute estimates are already available. Extend the same small manifest to the12 audited labels.",
+    "key": [
+      "leaderboard_snapshot_commit",
+      "native_model_key",
+      "metric"
+    ],
+    "required_fields": [
+      "Requested model selector",
+      "Returned provider snapshot or loaded HF revision",
+      "Weight/tokenizer/config manifest identity",
+      "Generation time interval",
+      "Generated-sample/output-set SHA-256",
+      "Task/prompt-content identity",
+      "Harness/scorer revision",
+      "Actual metric denominator",
+      "A-to-B change relationship with reused-output versus new-inference evidence",
+      "First publication/availability evidence or an explicit unknown"
+    ],
+    "expected_benefit": "Could upgrade multiple nominal joins without weights, corpus downloads or model execution. Five strong base-model feature candidates (three StarCoder2 and two DeepSeek-Coder) are closest; exact coverage gain depends on what the manifest establishes.",
+    "will_not_resolve": [
+      "Unsupported historical Epoch citation or metadata vintages",
+      "Benchmark-imputed compute circularity",
+      "Code Llama70B internal training-stage disagreement",
+      "Unreported GPT4 total compute"
+    ],
+    "action_performed": "Recommendation only. No maintainer contact or request was sent."
+  },
+  "rights_and_release": {
+    "unique_new_documents": [
+      {
+        "document_url": "https://epoch.ai/data/ai-models",
+        "license": "CC-BY-4.0",
+        "artifact_scope": "Epoch AI models data download identified on the dataset page",
+        "conditions": "Attribute Epoch AI and the source/authors; retain original/source attribution and identify any transformations.",
+        "publication_decision": "License eligibility assessed; no public release authorized or performed."
+      },
+      {
+        "document_url": "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/LICENSE",
+        "license": "Apache-2.0",
+        "artifact_scope": "Dedicated evalplus.github.io repository results at 3b9f5b48c92a492a48fde6c0e1bffb9295812caf",
+        "byte_length": 11357,
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "conditions": "Preserve license/attribution and change notices as applicable. Prior repository policy records no NOTICE file at these roots; that tree check was not repeated here.",
+        "publication_decision": "License eligibility assessed; no public release authorized or performed."
+      },
+      {
+        "document_url": "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/LICENSE",
+        "license": "Apache-2.0",
+        "artifact_scope": "Dedicated evalplus.github.io repository results at 65db7ffdb66ae3fee800bee8d998b412f0a6e648",
+        "byte_length": 11357,
+        "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+        "conditions": "Preserve license/attribution and change notices as applicable. Prior repository policy records no NOTICE file at these roots; that tree check was not repeated here.",
+        "publication_decision": "License eligibility assessed; no public release authorized or performed."
+      }
+    ],
+    "three_independent_decisions": [
+      "Raw preservation",
+      "Analytical inclusion",
+      "Public redistribution"
+    ],
+    "archive_claim_limit": "Existing repository policy records complete historical preservation. This review freshly checked upstream bytes against those identities; it did not re-audit private remote archive objects.",
+    "upstream_rights_limit": "No new permission conclusion is made for linked model weights, training corpora, generated-code bundles or full third-party manuscripts."
+  },
+  "source_ledger": {
+    "epoch_csv": "https://epoch.ai/data/all_ai_models.csv",
+    "epoch_grant": "https://epoch.ai/data/ai-models",
+    "epoch_fields": "https://epoch.ai/data/ai-models-documentation/records",
+    "epoch_updates": "https://epoch.ai/data/ai-models-documentation/database-updates",
+    "epoch_estimation": "https://epoch.ai/data/ai-models-documentation/estimation",
+    "evalplus_a": "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+    "evalplus_b": "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+    "evalplus_a_ancestor": "https://github.com/evalplus/evalplus.github.io/blob/ba37a9f43a5706e87762951029baab25880cd0d6/results.json",
+    "evalplus_a_protocol": "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/leaderboard.html",
+    "evalplus_b_protocol": "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/leaderboard.html",
+    "evalplus_pr3": "https://github.com/evalplus/evalplus.github.io/pull/3",
+    "evalplus_pr4": "https://github.com/evalplus/evalplus.github.io/pull/4",
+    "evalplus_b_commit": "https://github.com/evalplus/evalplus.github.io/commit/65db7ffdb66ae3fee800bee8d998b412f0a6e648",
+    "evalplus_intended_configuration": "https://github.com/evalplus/evalplus/blob/9a73d2b7bc878a67e41205bddf7e5104db5a30a7/codegen/model.py",
+    "mbpp_migration": "https://github.com/evalplus/evalplus/blob/3de226896daa67b54e2683eb6e5f6840ce66018a/tools/mbpp/fix_v010.py",
+    "mbpp_migration_readme": "https://github.com/evalplus/evalplus/blob/3de226896daa67b54e2683eb6e5f6840ce66018a/README.md",
+    "code_llama_paper_v3": "https://arxiv.org/html/2308.12950v3",
+    "code_llama_paper_history": "https://arxiv.org/abs/2308.12950",
+    "code_llama_70_figure8": "https://arxiv.org/html/2308.12950v3/cascades_v2_code_llama_70B.svg",
+    "code_llama_announcement": "https://about.fb.com/news/2023/08/code-llama-ai-for-coding/",
+    "starcoder2_paper_v1": "https://arxiv.org/html/2402.19173v1",
+    "starcoder2_paper_history": "https://arxiv.org/abs/2402.19173v1",
+    "deepseek_coder_paper_v1": "https://arxiv.org/html/2401.14196v1",
+    "deepseek_coder_paper_history": "https://arxiv.org/abs/2401.14196v1",
+    "gpt4_paper_v1": "https://arxiv.org/pdf/2303.08774v1",
+    "gpt4_announcement": "https://openai.com/index/gpt-4-research/",
+    "gpt4_june_announcement": "https://openai.com/index/function-calling-and-other-api-updates/",
+    "gpt4_turbo_announcement": "https://openai.com/index/new-models-and-developer-products-announced-at-devday/",
+    "gpt4_turbo_current_id_documentation": "https://developers.openai.com/api/docs/models/gpt-4-turbo",
+    "gpt4_turbo_current_release_changelog": "https://developers.openai.com/api/docs/changelog"
+  },
+  "access_and_validation_limits": [
+    "All required repository files were available and their downloaded blob identities matched the pinned Git tree.",
+    "Exact GitHub pages failed in the web-rendering tool; primary bytes and metadata were successfully read through public unauthenticated GitHub/raw HTTPS. Failed web references are not evidentiary citations.",
+    "One DeepSeek tokenizer-commit detail page returned429; the detailed diff was not verified or retried. Repository titles alone do not establish exact changed-file contents.",
+    "Raw data counts, hashes, duplicate-key checks and candidate value preservation were verified. No benchmark/model execution or production adapter test was run.",
+    "The eight acceptance cases are proposed and unexecuted. The schema is a standalone Draft2020-12 research proposal, not a canonical schema change.",
+    "A full Draft2020-12 validator is not installed in the inspected runtimes. JSON parsing and targeted structural/native-value audits do not claim full metaschema or semantic-provenance validation."
+  ]
+}

@@ -1,0 +1,14 @@
+2. Build a defensible point-in-time training panel
+
+We’re expanding https://github.com/mishakgg/pdoom-live into a verified, worldwide dataset of AI risks, capabilities, development speed and timelines. Preserve original measurements, versions, uncertainty and provenance. Separate raw preservation from analytical inclusion and public redistribution. Never convert proxies into p(doom).
+
+Inspect current main and record its exact commit/date; planning baseline: 33a26fae7e31c4e729f0627fb7b91764343f9f63. Read docs/evidence-program/source_priorities.md, data/evidence-program/source_inventory.json and docs/evidence-program/FULL_CONTENT_ACQUISITION.md. Locate the existing benchmark-drift, claim-result-provenance and model-identity-retirement research files in the repository tree. Disclose unavailable files rather than guessing.
+
+Your task: determine whether the identified Epoch models CSV and two historical EvalPlus snapshots support a defensible model-level training panel. Verify the reported extents of 3,626 Epoch rows/57 fields and 101 model objects per EvalPlus snapshot; these are not automatically that many joinable, independent training examples.
+
+Investigate up to twelve candidate joins across at most four model families. Resolve exact executed checkpoint versus product/alias, base versus instruction-tuned variants, release and revision dates, evaluation protocol, training-compute provenance, and what features were genuinely available at a declared prediction cutoff. Matching names alone are insufficient. Separate corrections from new inference runs. Current citation counts or revised metadata cannot be backdated. Exclude benchmark-imputed compute from independent compute–performance tests.
+
+Return a source-linked join/exclusion table, populated panel examples, JSON Schema, dependency/family grouping rules and ready/partial/not-ready decision. Include ambiguous and rejected joins, without forcing positive matches. Give eight acceptance cases for aliases, revisions, missing values, future information and duplicated measurements. Identify the smallest missing artifact that would most improve usable coverage.
+
+Limit new rights checks to eight exact artifact documents. Read-only research: no edits, logins, credentials, paid access, bulk downloads or model training. Do not change canonical schemas. Clearly label proposed tests and unresolved joins.
+

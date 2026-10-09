@@ -1,0 +1,175 @@
+{
+  "review_type": "independent_offline_schema_and_bounded_data_semantics",
+  "scope": "Supplied four originals and preserved prompt only; no source downloads or upstream verification. JSON parsed as data; reviewer-authored Python only.",
+  "python_version": "3.12.14",
+  "jsonschema_version": "4.26.0",
+  "draft": "2020-12",
+  "format_checker_enabled": true,
+  "remote_reference_retrieval": "disabled; all supplied schema refs are local",
+  "input_hashes": [
+    {
+      "sha256": "c3891591161b6117c56f827deae3d1ad3f8da4816525eff87d62c881d7810d63",
+      "bytes": 31720,
+      "matches_intake": true,
+      "original_artifact_package_reference": "submitted/submitted-narrative.txt",
+      "hash_scope": "Historical original bytes; the reference identifies its corresponding packaged copy. See submission-provenance.json for any sanitization and packaged hash."
+    },
+    {
+      "sha256": "34a5fee3addca372b0fd0d3dd34ac992bbf9e7501396100fa0f1b03ae534c0d2",
+      "bytes": 89186,
+      "matches_intake": true,
+      "original_artifact_package_reference": "submitted/point_in_time_panel_review.json",
+      "hash_scope": "Historical original bytes; the reference identifies its corresponding packaged copy. See submission-provenance.json for any sanitization and packaged hash."
+    },
+    {
+      "sha256": "834a1911767be1d8bcb6272451beb2c8eff9d670af4c960b2089eac318f3075d",
+      "bytes": 312009,
+      "matches_intake": true,
+      "original_artifact_package_reference": "submitted/point_in_time_panel.examples.json",
+      "hash_scope": "Historical original bytes; the reference identifies its corresponding packaged copy. See submission-provenance.json for any sanitization and packaged hash."
+    },
+    {
+      "sha256": "a16292f5d2f35e4a8a22c82c25f59a048371bdb498670c86ad6e41570173215e",
+      "bytes": 33402,
+      "matches_intake": true,
+      "original_artifact_package_reference": "submitted/point_in_time_panel.schema.json",
+      "hash_scope": "Historical original bytes; the reference identifies its corresponding packaged copy. See submission-provenance.json for any sanitization and packaged hash."
+    }
+  ],
+  "prompt_range_hash_verified": true,
+  "schema_metaschema_valid": true,
+  "examples_shape_errors": [],
+  "examples_format_checked_errors": [],
+  "baseline_reviewer_errors": [],
+  "baseline_counts": {
+    "candidates": 12,
+    "families": 4,
+    "snapshot_objects": 24,
+    "metric_slots": 96,
+    "numeric_slots": 76,
+    "null_slots": 20,
+    "features": 106,
+    "included_features": 19,
+    "strict_views_included": 0,
+    "executed_id_known": 0,
+    "known_snapshot_run_ids": 0
+  },
+  "mutations_total": 41,
+  "unsafe_mutations_accepted_by_schema": 35,
+  "unsafe_mutations_rejected_by_schema": 6,
+  "mutations_rejected_by_bounded_reviewer_checks": 41,
+  "case_summary": [
+    {
+      "case_id": "PIT-01",
+      "name": "Hosted alias and product do not identify an executed checkpoint",
+      "tests": [
+        "01a",
+        "01b",
+        "01c"
+      ],
+      "schema_accepts_unsafe": 2,
+      "schema_rejects_unsafe": 1
+    },
+    {
+      "case_id": "PIT-02",
+      "name": "Base, Python-specialized and instruction-tuned variants stay distinct",
+      "tests": [
+        "02a",
+        "02b",
+        "02c"
+      ],
+      "schema_accepts_unsafe": 3,
+      "schema_rejects_unsafe": 0
+    },
+    {
+      "case_id": "PIT-03",
+      "name": "Repository revision is not execution proof",
+      "tests": [
+        "03a"
+      ],
+      "schema_accepts_unsafe": 1,
+      "schema_rejects_unsafe": 0
+    },
+    {
+      "case_id": "PIT-04",
+      "name": "Correction vintage is not a new inference run",
+      "tests": [
+        "04a",
+        "04b",
+        "04c",
+        "04d",
+        "04e"
+      ],
+      "schema_accepts_unsafe": 5,
+      "schema_rejects_unsafe": 0
+    },
+    {
+      "case_id": "PIT-05",
+      "name": "Explicit null, blank compute and uncertainty survive",
+      "tests": [
+        "05a",
+        "05b",
+        "05c",
+        "05d",
+        "05e",
+        "05f",
+        "05g",
+        "05h"
+      ],
+      "schema_accepts_unsafe": 6,
+      "schema_rejects_unsafe": 2
+    },
+    {
+      "case_id": "PIT-06",
+      "name": "Feature cutoff and label chronology are separate clocks",
+      "tests": [
+        "06a",
+        "06b",
+        "06c",
+        "06d",
+        "06e",
+        "06f",
+        "06g",
+        "06h",
+        "06i",
+        "06j"
+      ],
+      "schema_accepts_unsafe": 8,
+      "schema_rejects_unsafe": 2
+    },
+    {
+      "case_id": "PIT-07",
+      "name": "Benchmark-imputed compute cannot test independent compute versus performance",
+      "tests": [
+        "07a"
+      ],
+      "schema_accepts_unsafe": 1,
+      "schema_rejects_unsafe": 0
+    },
+    {
+      "case_id": "PIT-08",
+      "name": "Repeated publication and related models do not inflate independence",
+      "tests": [
+        "08a",
+        "08b",
+        "08c",
+        "08d",
+        "08e",
+        "08f",
+        "08g",
+        "08h",
+        "08i",
+        "08j"
+      ],
+      "schema_accepts_unsafe": 9,
+      "schema_rejects_unsafe": 1
+    }
+  ],
+  "evidence_boundary": [
+    "Matching duplicated audit extracts demonstrates internal consistency, not upstream accuracy.",
+    "All 8 acceptance specifications exercised via bounded in-memory mutations; no production adapter was supplied or tested.",
+    "Reviewer checks are deliberately partial and fixture-specific; no claim of a complete domain validator.",
+    "Synthetic changes are negative test cases, not recovered source facts or validated execution evidence."
+  ],
+  "original_hashes_unchanged_after_tests": true
+}

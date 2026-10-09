@@ -1329,6 +1329,38 @@
           "status": "sanitized_reviewed_package_included_remote_merge_separate"
         }
       ]
+    },
+    {
+      "session_id": "2026-10-09-02-point-in-time-panel",
+      "title": "Build a defensible point-in-time training panel",
+      "assignment_number": 2,
+      "assignment_path": "docs/evidence-program/research/followups/prompts/research-assignments-2026-10-09.md",
+      "guide_path": "docs/evidence-program/research/followups/point-in-time-panel-2026-10-09.md",
+      "disposition_path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/final-disposition.json",
+      "provenance_path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/submission-provenance.json",
+      "source_corrections_path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/source-corrections.json",
+      "next_actions_path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/next-actions.json",
+      "research_status": "substantive_research_review_complete_with_bounded_holds",
+      "integration_status": "reviewed_research_included_in_this_version",
+      "integration_base_commit": "91744b127309ca384de4d375e05ff0114fa440d6",
+      "integration_checked_at": "2026-10-09T16:55:23.030812+00:00",
+      "count_scope": "One separate session and four supplied artifacts; original 26, earlier follow-ups/deep bundles and session 01 remain unchanged.",
+      "supplied_artifact_count": 4,
+      "candidate_count": 12,
+      "strict_ready": 0,
+      "native_evalplus_objects_verified": 24,
+      "native_evalplus_metric_slots_verified": 96,
+      "epoch_raw_cells_verified": 192,
+      "primary_artifacts_successfully_read": 9,
+      "primary_artifacts_attempted": 12,
+      "schema_unsafe_mutations_accepted": 35,
+      "schema_negative_mutations": 41,
+      "operational_admission": "not_admitted",
+      "training_rows_admitted": 0,
+      "collector_enabled": false,
+      "canonical_contracts_changed": false,
+      "remote_merge_verified": false,
+      "package_snapshot": "Historical submitted/offline fields remain dated claims; latest source corrections govern; publication and merge are separate."
     }
   ]
 }

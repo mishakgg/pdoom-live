@@ -14,6 +14,14 @@ One separate session and eight supplied artifacts are included as qualified rese
 
 This is assignment 1 of the [six briefs issued 9 October](prompts/research-assignments-2026-10-09.md), tracked separately from the dated ten-bundle/eight-October snapshot above. The existing ESPAI v3 archive identity reconciliation adds no newly acquired body or independent study. Native arXiv containers, OpenAlex cached-object edition/rights binding, selected-population enumeration and the MIT native export remain held.
 
+## Additional research session: point-in-time model panel, 9 October 2026
+
+[Reviewed result](point-in-time-panel-2026-10-09.md) · [Final disposition](../../../../data/evidence-program/research/followups/point-in-time-panel-2026-10-09/final-disposition.json) · [Source corrections](../../../../data/evidence-program/research/followups/point-in-time-panel-2026-10-09/source-corrections.json) · [Original/package hashes](../../../../data/evidence-program/research/followups/point-in-time-panel-2026-10-09/submission-provenance.json)
+
+One separate session and four supplied artifacts are included as reviewed research only. The archived Epoch source reparse verifies 3,626 rows, 57 fields and 192 selected raw cells; 24 native EvalPlus objects and 96 metric slots reproduce. Nine of twelve bounded primary reads succeeded, with three reader limitations. All twelve strict candidates remain held: no aggregate-to-execution binding exists in the inspected evidence. DeepSeek 6ND is a disclosed-2T-phase reconstruction with extra long-context accounting unresolved; StarCoder2 Table 6 already includes long-context. The supplied schema accepts 35 of 41 unsafe mutations and remains a research proposal.
+
+This is assignment 2 of the [six briefs issued 9 October](prompts/research-assignments-2026-10-09.md), separately counted from session 01 and the dated earlier bundle snapshot. All four originals remain accounted for; the exact issued prompt is preserved without claiming it was the executed input. No training rows, canonical contracts, source inventory or live collectors change. Remote publication, exact-commit CI and merge are separate gates.
+
 ## Three earlier reviewed bundles
 
 

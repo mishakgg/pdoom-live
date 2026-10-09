@@ -1,0 +1,141 @@
+{
+  "session_id": "2026-10-09-02-point-in-time-panel",
+  "scope": "Research package only; excludes this manifest itself and the four existing queue/index files.",
+  "files": [
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/NOTICE.md",
+      "bytes": 2556,
+      "sha256": "d638149b47b525f093a6bc3ef8dd39f8309ed2444dd5b62d8baef7a0e75a7cf3"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/README.md",
+      "bytes": 3573,
+      "sha256": "c362205037e9c1ff0a6a2a33f9aa45d729a7fa2264c18c7219b60238b2a22577"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/final-disposition.json",
+      "bytes": 2949,
+      "sha256": "92836318d983ce291324400b287639ac385d901ff3b38ab4a9faa8477b2fa9c6"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/followup-prompt.txt",
+      "bytes": 2913,
+      "sha256": "81c7237e6ae6ac571d725e974541baccd81122a8a32ebc83c5f7cb3102cecd00"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/issued-assignment.txt",
+      "bytes": 2389,
+      "sha256": "d644b11da8bdf9ed3a0a49f2029113106910ea34405f188613d5ac5530d04038"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/licenses/Apache-2.0.txt",
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/locator-redactions.json",
+      "bytes": 3590,
+      "sha256": "47a402b3ebd0969b55fe4a0a4106b5a2836acec49efde5a30ea7c4d96417d85c"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/next-actions.json",
+      "bytes": 2570,
+      "sha256": "c9e1b62509f74ad41b1268160d14c18b1e819451fb9e3557bdce8ff3ef8df514"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/review/epoch-source-validation.json",
+      "bytes": 12402,
+      "sha256": "2675cab57c7c808a78289122cccb5a2dd1e8450e312ceac0e7b1c6b31efacbdb"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/review/evalplus-slot-changes.json",
+      "bytes": 20387,
+      "sha256": "cc9077fd1f0fffcca15e6e3f8a1e30a263ab763bbc35e2f40ce16ece58e117c1"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/review/historical-offline-review.md",
+      "bytes": 15294,
+      "sha256": "2afc77fdbc482a307326fac463571081cbf0fa8e1c73bf365790d00befa0a612"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/review/mutation-test-results.json",
+      "bytes": 61354,
+      "sha256": "dc2f615096d2434d835d70f3374dd2e1b22379597724c23cc7204a738d870f9b"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/review/offline-data-validation.json",
+      "bytes": 50351,
+      "sha256": "ab3e175aecccdc3f1eb97386f28c8a2f9722d0dabee023d8fe5699bdfc5c72bf"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/review/primary-paper-verification.json",
+      "bytes": 8295,
+      "sha256": "8d2824a2929aeebd2d9e5b1b0b8e3ea35ab87e17b21344872c5e8b26ac78bdb8"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/review/primary-source-evidence.json",
+      "bytes": 7724,
+      "sha256": "844ea180369ae4a5dc970871a414812c5f3d55d35f83c1384bc01c2a1bd658f3"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/review/replay_schema_checks.py",
+      "bytes": 27771,
+      "sha256": "09e6981ad0c130fc22c204d854d692a7f08af22d179a7a709a8ccb43187fd12c"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/review/schema-review.md",
+      "bytes": 13519,
+      "sha256": "006aa228bb3b4300b8cc8b22940291f1ac9a14163038506e8f245dcbdf857c5f"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/review/source-quality-check.json",
+      "bytes": 1089,
+      "sha256": "1ac244df5f1723ef7492f3fce0de08b423db8c88c4fc6602d4d7fbfc1807ee17"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/review/validation-results.json",
+      "bytes": 5620,
+      "sha256": "bc582cfa6c6300a13bed2b5e541268fb35a6df689cc626e6ddea14d0fa0affa3"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/source-corrections.json",
+      "bytes": 2872,
+      "sha256": "67dc22c3a9db5093c67a7a3db1eb2553f3f9e1ff3a5dc0e21ccc3ff1170db925"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/submission-provenance.json",
+      "bytes": 3737,
+      "sha256": "85c5565b6e8c45072bd6f5d160d11212fe06d14828ca5a329d54a588088f982e"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/submitted/README.md",
+      "bytes": 1367,
+      "sha256": "63ebb032da9260828e3819218c65797cff600b5155f452ebb4fac15a6dba9fd9"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/submitted/point_in_time_panel.examples.json",
+      "bytes": 312089,
+      "sha256": "df60ef4ab4a352025ead6081229dce80199b5c40aa7f9967e94ecd7c2d5b81b4"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/submitted/point_in_time_panel.schema.json",
+      "bytes": 33402,
+      "sha256": "a16292f5d2f35e4a8a22c82c25f59a048371bdb498670c86ad6e41570173215e"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/submitted/point_in_time_panel_review.json",
+      "bytes": 89186,
+      "sha256": "34a5fee3addca372b0fd0d3dd34ac992bbf9e7501396100fa0f1b03ae534c0d2"
+    },
+    {
+      "path": "data/evidence-program/research/followups/point-in-time-panel-2026-10-09/submitted/submitted-narrative.txt",
+      "bytes": 31576,
+      "sha256": "eb8dedc37c77c438c350e2f37a29d287392af35f19796a2f96f91f89ccd30dd1"
+    },
+    {
+      "path": "docs/evidence-program/research/followups/point-in-time-panel-2026-10-09.md",
+      "bytes": 12550,
+      "sha256": "7c8880f30cba651b2718e3b563c7ed9ba9f727c743fabc0ca78b0408ac34deab"
+    }
+  ]
+}
