@@ -1,0 +1,153 @@
+{
+  "review_date_utc": "2026-10-09",
+  "scope": "Read-only verification of the four parent-approved primary artifacts, using the web reader only. No additional source URL was opened. New review output only; original uploads and earlier review were not modified.",
+  "artifacts_attempted": 4,
+  "artifacts_read_successfully": 3,
+  "execution_identity_resolved": false,
+  "evidence_boundary": "Papers describe model families and training recipes. They do not establish which checkpoint, revision, provider alias, quantization, prompt configuration, or run actually produced panel results. No weights, output archive, corpus, provider, OpenAlex, Drive, or repository was accessed. No workload code was executed.",
+  "original_audit": {
+    "read_in_this_pass": false,
+    "note": "Verification is against the claims supplied in the task, not a line-by-line comparison with the earlier audit.",
+    "original_artifact_package_reference": "submitted/point_in_time_panel_review.json"
+  },
+  "findings": [
+    {
+      "artifact": "StarCoder2 paper v1",
+      "url": "https://arxiv.org/html/2402.19173v1",
+      "status": "verified_documentary_claims",
+      "version_date_evidence": {
+        "displayed_date": "2024-02-29",
+        "version": "v1",
+        "location": "Header, reader line 192"
+      },
+      "locators": [
+        {
+          "location": "Section 6, Table 6, FLOPs row and footnote 24",
+          "reader_lines": "814-823"
+        },
+        {
+          "location": "Section 6.3, Tables 7 and 8",
+          "reader_lines": "832-850"
+        },
+        {
+          "location": "Section 7, opening paragraph",
+          "reader_lines": "864-866"
+        }
+      ],
+      "observations": {
+        "reported_flops_by_model": {
+          "StarCoder2-3B": "5.94e22",
+          "StarCoder2-7B": "1.55e23",
+          "StarCoder2-15B": "3.87e23"
+        },
+        "method": "Footnote 24 estimates FLOPs using 6ND; N is parameters and D training tokens.",
+        "scope": "The Table 6 estimate includes base and long-context training.",
+        "base_tokens": {
+          "3B": "3.1T",
+          "7B": "3.5T",
+          "15B": "4.1T"
+        },
+        "additional_long_context_tokens": "200B per model",
+        "base_status": "Section 7 identifies StarCoder2 as a base model."
+      },
+      "assessment": "Requested numeric and scope claims are verified. Do not add the 200B long-context phase again to Table 6 FLOPs. Treat these as paper-reported estimates, not measured hardware work. Adding rounded token counts gives 3.3T, 3.7T, and 4.3T; these sums are derived, not additional independent measurements. The 7B rounded 6ND calculation need not equal the rounded published FLOPs exactly.",
+      "unresolved": "No runtime checkpoint identity or panel execution provenance is established."
+    },
+    {
+      "artifact": "DeepSeek-Coder paper v1",
+      "url": "https://arxiv.org/html/2401.14196v1",
+      "status": "verified_documentary_claims_with_alias_caveats",
+      "version_date_evidence": {
+        "displayed_date": "2024-01-25",
+        "version": "v1",
+        "location": "Header, reader line 47"
+      },
+      "locators": [
+        {
+          "location": "Abstract and Section 1",
+          "reader_lines": "59-71"
+        },
+        {
+          "location": "Section 3.3 and Table 2",
+          "reader_lines": "245-260"
+        },
+        {
+          "location": "Sections 3.6 and 3.7",
+          "reader_lines": "265-274"
+        },
+        {
+          "location": "Section 5 and Table 10",
+          "reader_lines": "408-440"
+        }
+      ],
+      "observations": {
+        "original_family_sizes": [
+          "1.3B",
+          "6.7B",
+          "33B"
+        ],
+        "base_training": "Abstract/Section 1: from-scratch 2T pretraining.",
+        "instruction_ancestry": "Section 3.7: Base to Instruct, 2B instruction tokens.",
+        "long_context_exact_excerpts": [
+          "The model underwent an additional 1000 steps of training",
+          "The learning rate was maintained as in the final pre-training phase"
+        ],
+        "long_context_parameters": "Section 3.6, lines 266-267: RoPE scaling 1 to 4; frequency 10000 to 100000; batch 512; sequence 16K.",
+        "distinct_v1_5_branch": "Section 5: DeepSeek-LLM-7B Base to v1.5 with 2T continued pretraining; Table 10 calls v1.5 6.9B, original 6.7B. Conclusion line 446 instead says 2B for v1.5."
+      },
+      "assessment": "The extension explicitly follows pretraining; 2T is not explicitly reconciled as an all-stage total. Treat 2T as a rounded pretraining claim plus a separately reported extension, not an exact lifetime ledger. Original and v1.5 ancestry differ. Naming inconsistencies: Section 1 says 7B; Section 3.7 says 34B while Figure 4 says 33B. No run identity is resolved."
+    },
+    {
+      "artifact": "Code Llama paper v3",
+      "url": "https://arxiv.org/html/2308.12950v3",
+      "status": "prose_verified_figure_content_not_readable",
+      "version_date_evidence": {
+        "displayed_date": "2024-01-31",
+        "version": "v3",
+        "location": "Header, reader line 100"
+      },
+      "locators": [
+        {
+          "location": "Section 2.1, Code Llama, Python, Instruct, and 70B paragraphs",
+          "reader_lines": "161-173"
+        },
+        {
+          "location": "Section 2.2, opening paragraph",
+          "reader_lines": "174-175"
+        },
+        {
+          "location": "Section 2.6, Table 1 caption",
+          "reader_lines": "231-249"
+        },
+        {
+          "location": "Appendix B, Figure 8 caption",
+          "reader_lines": "706-708"
+        }
+      ],
+      "observations": {
+        "70B_initial_training": "Sections 2.1 and 2.2 explicitly report 1T tokens, versus 500B for smaller Code Llama sizes, starting from Llama 2.",
+        "smaller_instruct_branch": "7B/13B/34B Instruct derives from Code Llama with approximately 5B additional tokens.",
+        "70B_instruct_branch": "70B Instruct derives from Code Llama-Python-70B; only base Code Llama-70B receives LCFT.",
+        "generic_python_recipe": "The Python paragraph includes 70B among sizes but gives a generic Llama 2 to 500B code to 100B Python recipe. Table 1 likewise retains generic 500B wording.",
+        "figure8": "Appendix B names a 70B specialization pipeline; reader extraction exposes its caption but not diagram labels."
+      },
+      "assessment": "The 1T prose is directly verified. Generic 500B wording remains in the same document, so one uniform recipe should not be assigned across variants. The task's claimed Figure 8 500B label is not freshly verified. Preserve that discrepancy as pending visual confirmation. No executed variant or run is resolved."
+    },
+    {
+      "artifact": "Code Llama Figure 8 SVG",
+      "url": "https://arxiv.org/html/2308.12950v3/cascades_v2_code_llama_70B.svg",
+      "status": "reader_internal_error",
+      "attempts": 2,
+      "observation": "Both direct web-reader opens returned Internal Error with no figure content.",
+      "assessment": "No fresh verification of the 500B label or exact arrow topology is possible from these responses. This is a reader failure, not evidence that the figure is absent or wrong. No alternative URL or source was opened."
+    }
+  ],
+  "date_evidence_qualification": "The three HTML headers directly expose their paper version dates. These support paper-level availability by a cutoff later than the respective dates; they do not independently establish weight release dates, immutable historical HTML bytes, or actual execution. The review does not invent a panel cutoff that was not supplied to this worker.",
+  "followup_source_scope": "Version dates and DeepSeek stage sequence were checked only by find/open against the same three existing HTML reader records; artifact count remains four attempted.",
+  "recommended_panel_treatment": [
+    "Record source version, section/table/footnote, estimate method, and training-stage scope separately.",
+    "Use documentary claims to audit metadata only; retain a separate unresolved run-identity gate.",
+    "Keep Code Llama 70B's asserted figure/prose conflict open until the authorized figure itself can be inspected.",
+    "Do not infer an experiment's model identity from a family alias, rounded size, or paper recipe."
+  ]
+}

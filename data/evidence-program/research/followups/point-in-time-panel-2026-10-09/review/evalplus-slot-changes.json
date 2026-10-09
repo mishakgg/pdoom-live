@@ -1,0 +1,1129 @@
+[
+  {
+    "key": "Command-R+",
+    "metric": "mbpp",
+    "A": 70.9,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "Command-R+",
+    "metric": "mbpp+",
+    "A": 58.6,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "CodeQwen1.5-7B",
+    "metric": "mbpp",
+    "A": 72.7,
+    "B": 73.5,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeQwen1.5-7B",
+    "metric": "mbpp+",
+    "A": 60.2,
+    "B": 60.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeQwen1.5-7B-Chat",
+    "metric": "mbpp",
+    "A": 77.7,
+    "B": 79.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeQwen1.5-7B-Chat",
+    "metric": "mbpp+",
+    "A": 67.2,
+    "B": 69.0,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Artigenz-Coder-DS-6.7B",
+    "metric": "mbpp",
+    "A": 79.2,
+    "B": 80.7,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Artigenz-Coder-DS-6.7B",
+    "metric": "mbpp+",
+    "A": 67.9,
+    "B": 69.6,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Llama3-8B-base",
+    "metric": "mbpp",
+    "A": 53.9,
+    "B": 61.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Llama3-8B-base",
+    "metric": "mbpp+",
+    "A": 44.4,
+    "B": 51.6,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Llama3-8B-instruct",
+    "metric": "mbpp",
+    "A": 67.9,
+    "B": 70.1,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Llama3-8B-instruct",
+    "metric": "mbpp+",
+    "A": 57.4,
+    "B": 59.3,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Code-13B",
+    "metric": "humaneval+",
+    "A": 51.8,
+    "B": 52.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Code-13B",
+    "metric": "mbpp",
+    "A": 52.9,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "Code-13B",
+    "metric": "mbpp+",
+    "A": 42.6,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "Code-290k-6.7B-Instruct",
+    "metric": "mbpp",
+    "A": 68.7,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "Code-290k-6.7B-Instruct",
+    "metric": "mbpp+",
+    "A": 58.6,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "Code-33B",
+    "metric": "mbpp",
+    "A": 51.1,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "Code-33B",
+    "metric": "mbpp+",
+    "A": 42.4,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "CodeGen-16B",
+    "metric": "mbpp",
+    "A": 53.9,
+    "B": 54.2,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeGen-16B",
+    "metric": "mbpp+",
+    "A": 44.1,
+    "B": 45.5,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeGen-2B",
+    "metric": "mbpp",
+    "A": 44.9,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "CodeGen-2B",
+    "metric": "mbpp+",
+    "A": 35.1,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "CodeGen-6B",
+    "metric": "mbpp",
+    "A": 50.4,
+    "B": 50.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeGen-6B",
+    "metric": "mbpp+",
+    "A": 42.6,
+    "B": 42.9,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeLlama-13B",
+    "metric": "mbpp",
+    "A": 61.2,
+    "B": 63.5,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeLlama-13B",
+    "metric": "mbpp+",
+    "A": 50.9,
+    "B": 52.6,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeLlama-34B",
+    "metric": "mbpp",
+    "A": 67.2,
+    "B": 69.3,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeLlama-34B",
+    "metric": "mbpp+",
+    "A": 52.9,
+    "B": 56.3,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeLlama-70B",
+    "metric": "humaneval+",
+    "A": 50.0,
+    "B": 50.6,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeLlama-70B",
+    "metric": "mbpp",
+    "A": 65.4,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "CodeLlama-70B",
+    "metric": "mbpp+",
+    "A": 53.4,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "CodeLlama-70B-Instruct",
+    "metric": "humaneval+",
+    "A": 65.2,
+    "B": 65.9,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeLlama-70B-Instruct",
+    "metric": "mbpp",
+    "A": 75.4,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "CodeLlama-70B-Instruct",
+    "metric": "mbpp+",
+    "A": 61.7,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "CodeLlama-7B",
+    "metric": "mbpp",
+    "A": 57.9,
+    "B": 59.5,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeLlama-7B",
+    "metric": "mbpp+",
+    "A": 46.1,
+    "B": 46.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeT5+-16B",
+    "metric": "mbpp",
+    "A": 55.1,
+    "B": 56.6,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeT5+-16B",
+    "metric": "mbpp+",
+    "A": 45.4,
+    "B": 47.1,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeT5+-2B",
+    "metric": "mbpp",
+    "A": 46.4,
+    "B": 48.1,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeT5+-2B",
+    "metric": "mbpp+",
+    "A": 36.6,
+    "B": 37.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeT5+-6B",
+    "metric": "mbpp",
+    "A": 52.1,
+    "B": 52.9,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "CodeT5+-6B",
+    "metric": "mbpp+",
+    "A": 41.6,
+    "B": 41.5,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "DeepSeek-Coder-1.3B-base",
+    "metric": "mbpp",
+    "A": 55.6,
+    "B": 56.9,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "DeepSeek-Coder-1.3B-base",
+    "metric": "mbpp+",
+    "A": 46.9,
+    "B": 47.9,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "DeepSeek-Coder-1.3B-instruct",
+    "metric": "mbpp",
+    "A": 63.9,
+    "B": 65.3,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "DeepSeek-Coder-1.3B-instruct",
+    "metric": "mbpp+",
+    "A": 53.1,
+    "B": 54.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "DeepSeek-Coder-33B-base",
+    "metric": "mbpp",
+    "A": 73.2,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "DeepSeek-Coder-33B-base",
+    "metric": "mbpp+",
+    "A": 59.1,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "DeepSeek-Coder-33B-instruct",
+    "metric": "mbpp",
+    "A": 78.4,
+    "B": 80.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "DeepSeek-Coder-33B-instruct",
+    "metric": "mbpp+",
+    "A": 66.7,
+    "B": 70.7,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "DeepSeek-Coder-6.7B-base",
+    "metric": "mbpp",
+    "A": 70.2,
+    "B": 72.0,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "DeepSeek-Coder-6.7B-base",
+    "metric": "mbpp+",
+    "A": 56.6,
+    "B": 58.7,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "DeepSeek-Coder-6.7B-instruct",
+    "metric": "humaneval+",
+    "A": 70.1,
+    "B": 70.7,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "DeepSeek-Coder-6.7B-instruct",
+    "metric": "mbpp",
+    "A": 73.2,
+    "B": 74.9,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "DeepSeek-Coder-6.7B-instruct",
+    "metric": "mbpp+",
+    "A": 63.4,
+    "B": 65.6,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "DeepSeek-Coder-7B-instruct-v1.5",
+    "metric": "humaneval+",
+    "A": 69.5,
+    "B": 71.3,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "GPT-4-Turbo (Nov 2023)",
+    "metric": "mbpp",
+    "A": 83.5,
+    "B": 85.7,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "GPT-4-Turbo (Nov 2023)",
+    "metric": "mbpp+",
+    "A": 70.7,
+    "B": 73.3,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Gemini Pro 1.0",
+    "metric": "mbpp",
+    "A": 72.9,
+    "B": 75.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Gemini Pro 1.0",
+    "metric": "mbpp+",
+    "A": 57.9,
+    "B": 61.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Magicoder-S-CL-7B",
+    "metric": "humaneval+",
+    "A": 66.5,
+    "B": 67.1,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Magicoder-S-CL-7B",
+    "metric": "mbpp",
+    "A": 69.2,
+    "B": 70.6,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Magicoder-S-CL-7B",
+    "metric": "mbpp+",
+    "A": 57.1,
+    "B": 60.1,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Magicoder-S-DS-6.7B",
+    "metric": "humaneval",
+    "A": 76.9,
+    "B": 76.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Magicoder-S-DS-6.7B",
+    "metric": "humaneval+",
+    "A": 70.7,
+    "B": 71.3,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Magicoder-S-DS-6.7B",
+    "metric": "mbpp",
+    "A": 75.4,
+    "B": 79.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Magicoder-S-DS-6.7B",
+    "metric": "mbpp+",
+    "A": 65.4,
+    "B": 69.0,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Mistral Large (Mar 2024)",
+    "metric": "humaneval",
+    "A": 70.1,
+    "B": 70.7,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Mistral Large (Mar 2024)",
+    "metric": "humaneval+",
+    "A": 62.8,
+    "B": 63.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Mistral Large (Mar 2024)",
+    "metric": "mbpp",
+    "A": 70.4,
+    "B": 72.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Mistral Large (Mar 2024)",
+    "metric": "mbpp+",
+    "A": 56.6,
+    "B": 59.5,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Mistral-7B",
+    "metric": "mbpp",
+    "A": 50.1,
+    "B": 51.9,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Mistral-7B",
+    "metric": "mbpp+",
+    "A": 40.9,
+    "B": 42.1,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Mixtral-8x7B-Instruct-v0.1",
+    "metric": "mbpp",
+    "A": 58.6,
+    "B": 59.5,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "OpenChat-3.5-7B-0106",
+    "metric": "mbpp",
+    "A": 62.7,
+    "B": 63.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "OpenChat-3.5-7B-0106",
+    "metric": "mbpp+",
+    "A": 52.9,
+    "B": 54.5,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "OpenCodeInterpreter-DS-33B",
+    "metric": "mbpp",
+    "A": 79.2,
+    "B": 80.2,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "OpenCodeInterpreter-DS-33B",
+    "metric": "mbpp+",
+    "A": 67.7,
+    "B": 68.5,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "OpenCodeInterpreter-DS-6.7B",
+    "metric": "mbpp",
+    "A": 72.4,
+    "B": 76.5,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "OpenCodeInterpreter-DS-6.7B",
+    "metric": "mbpp+",
+    "A": 63.2,
+    "B": 66.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "OpenHermes-2.5-Code-290k-13B",
+    "metric": "humaneval+",
+    "A": 48.2,
+    "B": 48.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "OpenHermes-2.5-Code-290k-13B",
+    "metric": "mbpp",
+    "A": 50.9,
+    "B": 52.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "OpenHermes-2.5-Code-290k-13B",
+    "metric": "mbpp+",
+    "A": 43.6,
+    "B": 45.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Python-Code-13B",
+    "metric": "mbpp",
+    "A": 43.9,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "Python-Code-13B",
+    "metric": "mbpp+",
+    "A": 35.1,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "SOLAR-10.7B-Instruct-v1.0",
+    "metric": "mbpp",
+    "A": 43.1,
+    "B": 43.9,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "SOLAR-10.7B-Instruct-v1.0",
+    "metric": "mbpp+",
+    "A": 35.1,
+    "B": 36.2,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "StarCoder2-15B",
+    "metric": "mbpp",
+    "A": 66.2,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "StarCoder2-15B",
+    "metric": "mbpp+",
+    "A": 53.1,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "StarCoder2-3B",
+    "metric": "mbpp",
+    "A": 57.4,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "StarCoder2-3B",
+    "metric": "mbpp+",
+    "A": 47.4,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "StarCoder2-7B",
+    "metric": "mbpp",
+    "A": 54.4,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "StarCoder2-7B",
+    "metric": "mbpp+",
+    "A": 45.6,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "StarCoderBase-7B",
+    "metric": "mbpp",
+    "A": 33.1,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "StarCoderBase-7B",
+    "metric": "mbpp+",
+    "A": 28.8,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "WhiteRabbitNeo-33B-v1",
+    "metric": "humaneval+",
+    "A": 62.5,
+    "B": 65.9,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "WhiteRabbitNeo-33B-v1",
+    "metric": "mbpp",
+    "A": 76.9,
+    "B": 79.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "WhiteRabbitNeo-33B-v1",
+    "metric": "mbpp+",
+    "A": 62.7,
+    "B": 66.9,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "WizardCoder-15B-V1.0",
+    "metric": "mbpp",
+    "A": 62.4,
+    "B": 64.3,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "WizardCoder-15B-V1.0",
+    "metric": "mbpp+",
+    "A": 51.6,
+    "B": 54.2,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "WizardCoder-33B-V1.1",
+    "metric": "mbpp",
+    "A": 78.9,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "WizardCoder-33B-V1.1",
+    "metric": "mbpp+",
+    "A": 66.9,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "WizardCoder-Python-34B-V1.0",
+    "metric": "mbpp",
+    "A": 73.2,
+    "B": 75.1,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "WizardCoder-Python-34B-V1.0",
+    "metric": "mbpp+",
+    "A": 59.9,
+    "B": 63.2,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "WizardCoder-Python-7B-V1.0",
+    "metric": "humaneval+",
+    "A": 40.9,
+    "B": 42.7,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "WizardCoder-Python-7B-V1.0",
+    "metric": "mbpp",
+    "A": 56.6,
+    "B": 58.5,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "WizardCoder-Python-7B-V1.0",
+    "metric": "mbpp+",
+    "A": 47.1,
+    "B": 49.5,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "XwinCoder-34B",
+    "metric": "humaneval+",
+    "A": 67.7,
+    "B": 68.9,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "XwinCoder-34B",
+    "metric": "mbpp",
+    "A": 76.2,
+    "B": 77.0,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "XwinCoder-34B",
+    "metric": "mbpp+",
+    "A": 62.4,
+    "B": 64.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Zephyr β-7B",
+    "metric": "mbpp",
+    "A": 41.1,
+    "B": 42.1,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "Zephyr β-7B",
+    "metric": "mbpp+",
+    "A": 34.3,
+    "B": 34.7,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "claude-3-haiku (Mar 2024)",
+    "metric": "humaneval+",
+    "A": 68.3,
+    "B": 68.9,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "claude-3-haiku (Mar 2024)",
+    "metric": "mbpp",
+    "A": 78.2,
+    "B": 80.2,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "claude-3-haiku (Mar 2024)",
+    "metric": "mbpp+",
+    "A": 64.9,
+    "B": 68.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "claude-3-opus (Mar 2024)",
+    "metric": "mbpp",
+    "A": 86.5,
+    "B": 89.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "claude-3-opus (Mar 2024)",
+    "metric": "mbpp+",
+    "A": 69.4,
+    "B": 73.3,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "claude-3-sonnet (Mar 2024)",
+    "metric": "humaneval+",
+    "A": 62.8,
+    "B": 63.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "claude-3-sonnet (Mar 2024)",
+    "metric": "mbpp",
+    "A": 82.2,
+    "B": 83.6,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "claude-3-sonnet (Mar 2024)",
+    "metric": "mbpp+",
+    "A": 66.7,
+    "B": 69.3,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "code-millenials-34B",
+    "metric": "humaneval+",
+    "A": 70.1,
+    "B": 70.7,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "code-millenials-34B",
+    "metric": "mbpp",
+    "A": 74.2,
+    "B": 76.2,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "code-millenials-34B",
+    "metric": "mbpp+",
+    "A": 61.7,
+    "B": 64.6,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "codegemma-2b",
+    "metric": "mbpp",
+    "A": 53.4,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "codegemma-2b",
+    "metric": "mbpp+",
+    "A": 44.1,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "codegemma-7b",
+    "metric": "mbpp",
+    "A": 62.9,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "codegemma-7b",
+    "metric": "mbpp+",
+    "A": 49.1,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "codegemma-7b-it",
+    "metric": "mbpp",
+    "A": 68.7,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "codegemma-7b-it",
+    "metric": "mbpp+",
+    "A": 54.4,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "dolphin-2.6-mixtral-8x7b",
+    "metric": "mbpp",
+    "A": 69.4,
+    "B": 70.6,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "dolphin-2.6-mixtral-8x7b",
+    "metric": "mbpp+",
+    "A": 57.1,
+    "B": 59.0,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "gemma-1.1-7b-it",
+    "metric": "humaneval+",
+    "A": 34.8,
+    "B": 35.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "gemma-1.1-7b-it",
+    "metric": "mbpp",
+    "A": 55.9,
+    "B": 57.1,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "gemma-1.1-7b-it",
+    "metric": "mbpp+",
+    "A": 43.1,
+    "B": 45.0,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "gemma-2b",
+    "metric": "humaneval+",
+    "A": 20.1,
+    "B": 20.7,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "gemma-2b",
+    "metric": "mbpp",
+    "A": 40.9,
+    "B": 41.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "gemma-2b",
+    "metric": "mbpp+",
+    "A": 32.8,
+    "B": 34.1,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "gemma-2b-it",
+    "metric": "mbpp",
+    "A": 27.1,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "gemma-2b-it",
+    "metric": "mbpp+",
+    "A": 22.3,
+    "B": null,
+    "kind": "numeric_to_null"
+  },
+  {
+    "key": "gemma-7b",
+    "metric": "mbpp",
+    "A": 50.6,
+    "B": 52.6,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "gemma-7b",
+    "metric": "mbpp+",
+    "A": 40.6,
+    "B": 43.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "phi-2-2.7B",
+    "metric": "mbpp",
+    "A": 62.9,
+    "B": 64.0,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "phi-2-2.7B",
+    "metric": "mbpp+",
+    "A": 52.4,
+    "B": 54.2,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "speechless-code-mistral-7B-v1.0",
+    "metric": "mbpp",
+    "A": 55.6,
+    "B": 57.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "speechless-code-mistral-7B-v1.0",
+    "metric": "mbpp+",
+    "A": 45.4,
+    "B": 48.7,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "speechless-codellama-34B-v2.0",
+    "metric": "humaneval+",
+    "A": 71.3,
+    "B": 72.0,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "speechless-codellama-34B-v2.0",
+    "metric": "mbpp",
+    "A": 72.7,
+    "B": 73.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "speechless-codellama-34B-v2.0",
+    "metric": "mbpp+",
+    "A": 58.6,
+    "B": 61.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "speechless-coder-ds-6.7B",
+    "metric": "humaneval+",
+    "A": 64.6,
+    "B": 65.9,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "speechless-coding-7B-16k-tora",
+    "metric": "humaneval+",
+    "A": 49.4,
+    "B": 50.6,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "speechless-starcoder2-15b",
+    "metric": "humaneval+",
+    "A": 61.6,
+    "B": 62.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "speechless-starcoder2-15b",
+    "metric": "mbpp",
+    "A": 72.2,
+    "B": 73.5,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "speechless-starcoder2-15b",
+    "metric": "mbpp+",
+    "A": 59.1,
+    "B": 62.4,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "speechless-starcoder2-7b",
+    "metric": "humaneval+",
+    "A": 51.2,
+    "B": 51.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "speechless-starcoder2-7b",
+    "metric": "mbpp",
+    "A": 65.2,
+    "B": 66.7,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "speechless-starcoder2-7b",
+    "metric": "mbpp+",
+    "A": 53.4,
+    "B": 56.3,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "stable-code-3B",
+    "metric": "mbpp",
+    "A": 54.4,
+    "B": 54.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "stable-code-3B",
+    "metric": "mbpp+",
+    "A": 44.1,
+    "B": 45.8,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "xDAN-L1-Chat-RL-v1-7B",
+    "metric": "mbpp",
+    "A": 49.6,
+    "B": 50.3,
+    "kind": "numeric_revision"
+  },
+  {
+    "key": "xDAN-L1-Chat-RL-v1-7B",
+    "metric": "mbpp+",
+    "A": 39.6,
+    "B": 41.3,
+    "kind": "numeric_revision"
+  }
+]

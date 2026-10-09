@@ -1,0 +1,46 @@
+{
+  "review_date": "2026-10-09",
+  "precedence": "These corrections and final-disposition.json govern interpretation; supplied artifacts remain unmodified historical claims.",
+  "corrections": [
+    {
+      "id": "PIT-C01",
+      "finding": "DeepSeek 6ND reproduces 8.04e22 and 3.96e23 from disclosed 2T inputs, with additional long-context stage accounting unresolved.",
+      "treatment": "Use phase-scoped analyst reconstruction only. Do not label complete lifetime/pretraining total, invent an adjusted total, or pool scope with StarCoder2 Table 6. J07/J08 need one reusable ancestor estimate identity."
+    },
+    {
+      "id": "PIT-C02",
+      "finding": "StarCoder2 Table 6 developer-reported 6ND estimates already include base plus long-context training.",
+      "treatment": "Do not add the 200B long-context stage again or call these metered compute."
+    },
+    {
+      "id": "PIT-C03",
+      "finding": "Fresh archived Epoch reparse closes full hash, 3626-row/57-field extent, all 192 selected raw-cell and 12 compute-note checks.",
+      "treatment": "Supersedes offline source deferral only. The verified 2026 vintage and current modification dates cannot establish 2024 field availability."
+    },
+    {
+      "id": "PIT-C04",
+      "finding": "A has a pre-cutoff same-byte dated repository state, but graph ancestry, first-public observation and inference time were not established.",
+      "treatment": "Keep repository chronology separate. A is not automatically a future target and B cannot replace an as-of-T target."
+    },
+    {
+      "id": "PIT-C05",
+      "finding": "Intended selectors and declared protocol versions are documented; aggregate-to-execution binding is still missing.",
+      "treatment": "No 12 strict candidates or 24 snapshots gain execution identity, per-run denominator or actual protocol binding. Static code was not executed."
+    },
+    {
+      "id": "PIT-C06",
+      "finding": "Nine of twelve bounded primary reads succeeded; one figure and two pinned card pages were reader-limited.",
+      "treatment": "Do not label exact figure values/arrows or unread card revisions newly verified. Supplied truncated DeepSeek card hashes are excerpt identities only."
+    },
+    {
+      "id": "PIT-C07",
+      "finding": "One ten-release response listed 22 output ZIP assets; none was downloaded and no qualifying binding was found within that response.",
+      "treatment": "Bounded negative result only; filenames and asset creation dates do not identify execution. Starcoder is not StarCoder2."
+    },
+    {
+      "id": "PIT-C08",
+      "finding": "Shape validation passes, but 35 of 41 unsafe mutations remain schema-valid.",
+      "treatment": "Proposed schema, examples and replay checks are research artifacts, not production admission. All eight proposed cases require separately authorized semantic enforcement."
+    }
+  ]
+}

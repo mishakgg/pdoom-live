@@ -1,0 +1,298 @@
+{
+  "review_scope": "Fresh exact archived-object raw readback, not a fresh moving Epoch source download",
+  "bytes": 6826880,
+  "sha256": "d845f68989881cb922ee6fd131d2bce6fb9c88dce5978eb0719a4c053476eff9",
+  "expected_hash_matches": true,
+  "rows": 3626,
+  "fields": 57,
+  "fieldnames": [
+    "Model",
+    "Domain",
+    "Task",
+    "Organization",
+    "Authors",
+    "Publication date",
+    "Reference",
+    "Link",
+    "Citations",
+    "Notability criteria",
+    "Notability criteria notes",
+    "Parameters",
+    "Parameters notes",
+    "Training compute (FLOP)",
+    "Training compute notes",
+    "Training dataset size (total)",
+    "Dataset size notes",
+    "Training time (hours)",
+    "Training time notes",
+    "Training hardware",
+    "Approach",
+    "Confidence",
+    "Abstract",
+    "Epochs",
+    "WikiText and Penn Treebank data",
+    "Model accessibility",
+    "Country (of organization)",
+    "Base model",
+    "Finetune compute (FLOP)",
+    "Finetune compute notes",
+    "Hardware quantity",
+    "Hardware utilization (MFU)",
+    "Last modified",
+    "Training cloud compute vendor",
+    "Training data center",
+    "Archived links",
+    "Batch size",
+    "Batch size notes",
+    "Organization categorization",
+    "Foundation model",
+    "Training compute lower bound",
+    "Training compute upper bound",
+    "Training chip-hours",
+    "Training code accessibility",
+    "Accessibility notes",
+    "Possibly over 1e23 FLOP",
+    "Training compute cost (2023 USD)",
+    "Utilization notes",
+    "Numerical format",
+    "Frontier model",
+    "Training power draw (W)",
+    "Training compute estimation method",
+    "Hugging Face developer id",
+    "Post-training compute (FLOP)",
+    "Post-training compute notes",
+    "Hardware utilization (HFU)",
+    "Open model weights?"
+  ],
+  "fieldnames_match_submission": true,
+  "candidate_row_checks": [
+    {
+      "candidate_id": "PIT-J01",
+      "row_number": 2134,
+      "expected_model": "GPT-4 (Mar 2023)",
+      "observed_model": "GPT-4 (Mar 2023)",
+      "model_matches": true,
+      "raw_fields_checked": 16,
+      "mismatches": {},
+      "training_compute_notes": "90% CI: 8.2E+24 to 4.4E+25\n\nNOTE: this is a rough estimate based on public information, much less information than most other systems in the database.\n\nCalculation and confidence intervals here: redacted-source-locator:sha256:51bd77a2ea40cc84fe21572090c56ca23ec43794f65e36e5fac3d8c7e03d620a",
+      "parameters_notes": "Rumored to be 1.8T parameter MoE with 280B activated on the forward pass, per https://www.semianalysis.com/p/gpt-4-architecture-infrastructure. Other sources estimate 1.76T with 220B per forward pass https://web.archive.org/web/20230712123915/https://the-decoder.com/gpt-4-architecture-datasets-costs-and-more-leaked/",
+      "dataset_size_notes": "Speculative. Reported secondhand by online sources such as Semianalysis, but not verified by OpenAI. If total number of tokens seen was 13T, text was repeated for 2 epochs, and text was the majority of tokens, then dataset size roughly is 13T*0.75/2 = 4.9T words.\n\nNote this examines only the text dataset, since GPT-4 was first and foremost a language model. However, the vision component had its own vision dataset, which we believe accounted for a much smaller part of the compute budget."
+    },
+    {
+      "candidate_id": "PIT-J02",
+      "row_number": 1791,
+      "expected_model": "GPT-4 Turbo (Nov 2023)",
+      "observed_model": "GPT-4 Turbo (Nov 2023)",
+      "model_matches": true,
+      "raw_fields_checked": 16,
+      "mismatches": {},
+      "training_compute_notes": "Training compute estimated to be 2.2e25 FLOP using benchmark imputation. redacted-source-locator:sha256:256cf64f021adbcab1f4f0cb2912b54e6bfecc4e8cc7d2425a50f1843876bd32",
+      "parameters_notes": "Not known. Maybe smaller/sparser than GPT-4.",
+      "dataset_size_notes": ""
+    },
+    {
+      "candidate_id": "PIT-J03",
+      "row_number": 1493,
+      "expected_model": "GPT-4 Turbo (Apr 2024)",
+      "observed_model": "GPT-4 Turbo (Apr 2024)",
+      "model_matches": true,
+      "raw_fields_checked": 16,
+      "mismatches": {},
+      "training_compute_notes": "Training compute estimated to be 2.2e25 FLOP using benchmark imputation. redacted-source-locator:sha256:256cf64f021adbcab1f4f0cb2912b54e6bfecc4e8cc7d2425a50f1843876bd32",
+      "parameters_notes": "Not known. Maybe smaller/sparser than GPT-4.",
+      "dataset_size_notes": ""
+    },
+    {
+      "candidate_id": "PIT-J04",
+      "row_number": 1931,
+      "expected_model": "Code Llama-34B",
+      "observed_model": "Code Llama-34B",
+      "model_matches": true,
+      "raw_fields_checked": 16,
+      "mismatches": {},
+      "training_compute_notes": "1.22e23 finetune compute, or ~5.3e23 including Llama-2 34B base compute. See finetune compute notes for calculation.\n",
+      "parameters_notes": "34B",
+      "dataset_size_notes": "Llama 2 used 2T tokens, and \"We train Code Llama on 500B additional tokens and Code Llama - Python further on 100B tokens\"\n\n2T + 500B + 100B = 2600000000000"
+    },
+    {
+      "candidate_id": "PIT-J05",
+      "row_number": 1631,
+      "expected_model": "Code Llama-70B",
+      "observed_model": "Code Llama-70B",
+      "model_matches": true,
+      "raw_fields_checked": 16,
+      "mismatches": {},
+      "training_compute_notes": "Base model saw 2T tokens, Code Llama-70B was trained on an additional 1T. 6NC:\n6 * 3T * 70B = 1.26e24",
+      "parameters_notes": "70B",
+      "dataset_size_notes": "Llama 70B training dataset was 2 trillion tokens. Code Llama finetuning dataset was 1 trillion tokens of code."
+    },
+    {
+      "candidate_id": "PIT-J06",
+      "row_number": 1631,
+      "expected_model": "Code Llama-70B",
+      "observed_model": "Code Llama-70B",
+      "model_matches": true,
+      "raw_fields_checked": 16,
+      "mismatches": {},
+      "training_compute_notes": "Base model saw 2T tokens, Code Llama-70B was trained on an additional 1T. 6NC:\n6 * 3T * 70B = 1.26e24",
+      "parameters_notes": "70B",
+      "dataset_size_notes": "Llama 70B training dataset was 2 trillion tokens. Code Llama finetuning dataset was 1 trillion tokens of code."
+    },
+    {
+      "candidate_id": "PIT-J07",
+      "row_number": 1811,
+      "expected_model": "DeepSeek Coder 6.7B",
+      "observed_model": "DeepSeek Coder 6.7B",
+      "model_matches": true,
+      "raw_fields_checked": 16,
+      "mismatches": {},
+      "training_compute_notes": "2T tokens * 6.7B parameters * 6 FLOP / parameter / token = 8.04*10^22 FLOP",
+      "parameters_notes": "6.7B",
+      "dataset_size_notes": "\"Trained from scratch on 2T tokens, including 87% code and 13% linguistic data in both English and Chinese languages.\"\n\n\"The total data volume is 798 GB with 603 million files.\""
+    },
+    {
+      "candidate_id": "PIT-J08",
+      "row_number": 1811,
+      "expected_model": "DeepSeek Coder 6.7B",
+      "observed_model": "DeepSeek Coder 6.7B",
+      "model_matches": true,
+      "raw_fields_checked": 16,
+      "mismatches": {},
+      "training_compute_notes": "2T tokens * 6.7B parameters * 6 FLOP / parameter / token = 8.04*10^22 FLOP",
+      "parameters_notes": "6.7B",
+      "dataset_size_notes": "\"Trained from scratch on 2T tokens, including 87% code and 13% linguistic data in both English and Chinese languages.\"\n\n\"The total data volume is 798 GB with 603 million files.\""
+    },
+    {
+      "candidate_id": "PIT-J09",
+      "row_number": 1802,
+      "expected_model": "DeepSeek Coder 33B",
+      "observed_model": "DeepSeek Coder 33B",
+      "model_matches": true,
+      "raw_fields_checked": 16,
+      "mismatches": {},
+      "training_compute_notes": "\"Step 1: Initially pre-trained with a dataset consisting of 87% code, 10% code-related language (Github Markdown and StackExchange), and 3% non-code-related Chinese language. Models are pre-trained using 1.8T tokens and a 4K window size in this step.\nStep 2: Further Pre-training using an extended 16K window size on an additional 200B tokens, resulting in foundational models (DeepSeek-Coder-Base).\nStep 3: Instruction Fine-tuning on 2B tokens of instruction data, resulting in instruction-tuned models (DeepSeek-Coder-Instruct).\"\n\nThis means it was trained on 2T tokens. 2T * 33B * 6 = 3.96e23",
+      "parameters_notes": "33B",
+      "dataset_size_notes": "\"Trained from scratch on 2T tokens, including 87% code and 13% linguistic data in both English and Chinese languages.\"\n\n\"The total data volume is 798 GB with 603 million files.\""
+    },
+    {
+      "candidate_id": "PIT-J10",
+      "row_number": 1567,
+      "expected_model": "StarCoder 2 3B",
+      "observed_model": "StarCoder 2 3B",
+      "model_matches": true,
+      "raw_fields_checked": 16,
+      "mismatches": {},
+      "training_compute_notes": "estimation is given in Table 6 ",
+      "parameters_notes": "3B",
+      "dataset_size_notes": "from Table 4"
+    },
+    {
+      "candidate_id": "PIT-J11",
+      "row_number": 1566,
+      "expected_model": "StarCoder 2 7B",
+      "observed_model": "StarCoder 2 7B",
+      "model_matches": true,
+      "raw_fields_checked": 16,
+      "mismatches": {},
+      "training_compute_notes": "estimation is given in Table 6 ",
+      "parameters_notes": "7B",
+      "dataset_size_notes": "from Table 4"
+    },
+    {
+      "candidate_id": "PIT-J12",
+      "row_number": 1565,
+      "expected_model": "StarCoder 2 15B",
+      "observed_model": "StarCoder 2 15B",
+      "model_matches": true,
+      "raw_fields_checked": 16,
+      "mismatches": {},
+      "training_compute_notes": "estimation is given in Table 6 ",
+      "parameters_notes": "15B",
+      "dataset_size_notes": "from Table 4"
+    }
+  ],
+  "all_12_candidate_extractions_match": true,
+  "distinct_candidate_rows": 10,
+  "population_counts": {
+    "empty_model_names": 0,
+    "unique_model_names": 3626,
+    "duplicate_model_names": {},
+    "compute_nonempty": 1410,
+    "parameters_nonempty": 2344,
+    "compute_method_nonempty": 1444,
+    "benchmarks_method_rows": 20,
+    "benchmarks_method_nonempty_compute_rows": 7,
+    "citations_nonempty": 1484,
+    "base_model_nonempty": 693,
+    "hf_developer_nonempty": 668,
+    "last_modified_min": "2025-11-28 11:51:46+00:00",
+    "last_modified_max": "2026-10-08 19:19:01+00:00",
+    "earliest_publication_date": "",
+    "latest_publication_date": "2026-09-30",
+    "compute_nonempty_without_method": 132,
+    "compute_nonempty_without_notes": 4,
+    "compute_nonempty_but_confidence": {
+      "Likely": 339,
+      "Speculative": 125,
+      "Confident": 945,
+      "": 1
+    },
+    "publication_date_blank": 12
+  },
+  "population_count_mismatches": {},
+  "compute_method_counts_match_submission": true,
+  "last_modified_year_counts_match_submission": true,
+  "note": "Raw values verified against exact archived CSV. Historical feature availability and truth of underlying model developer claims remain separate gates.",
+  "example_compute_notes_checks": [
+    {
+      "candidate_id": "PIT-J01",
+      "compute_notes_exactly_preserved": true
+    },
+    {
+      "candidate_id": "PIT-J02",
+      "compute_notes_exactly_preserved": true
+    },
+    {
+      "candidate_id": "PIT-J03",
+      "compute_notes_exactly_preserved": true
+    },
+    {
+      "candidate_id": "PIT-J04",
+      "compute_notes_exactly_preserved": true
+    },
+    {
+      "candidate_id": "PIT-J05",
+      "compute_notes_exactly_preserved": true
+    },
+    {
+      "candidate_id": "PIT-J06",
+      "compute_notes_exactly_preserved": true
+    },
+    {
+      "candidate_id": "PIT-J07",
+      "compute_notes_exactly_preserved": true
+    },
+    {
+      "candidate_id": "PIT-J08",
+      "compute_notes_exactly_preserved": true
+    },
+    {
+      "candidate_id": "PIT-J09",
+      "compute_notes_exactly_preserved": true
+    },
+    {
+      "candidate_id": "PIT-J10",
+      "compute_notes_exactly_preserved": true
+    },
+    {
+      "candidate_id": "PIT-J11",
+      "compute_notes_exactly_preserved": true
+    },
+    {
+      "candidate_id": "PIT-J12",
+      "compute_notes_exactly_preserved": true
+    }
+  ],
+  "all_compute_notes_exact": true,
+  "publication_copy_qualification": "Hash, raw-cell and exact-note comparisons refer to the private verified original source and submitted originals. This public receipt has three source-native locator redactions within note text; it is not a byte-identical copy of those notes. Numerical values and units are unchanged."
+}

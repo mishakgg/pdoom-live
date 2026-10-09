@@ -1,0 +1,1319 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/proposals/pdoom-point-in-time-panel-v0.1.schema.json",
+  "title": "Proposed bounded point-in-time panel candidate ledger",
+  "description": "Noncanonical research proposal. Candidate identity/features are stored once, with two snapshots and eight native metric slots. JSON Schema checks shape and elementary conditions only; source truth, timestamp comparisons (source-value availability or explicitly selected input-information availability against cutoff), provenance and dependency-component validation remain proposed semantic checks. Candidate IDs, native candidate keys and per-candidate snapshot artifact IDs require external uniqueness checks; uniqueItems catches only whole-object duplicates.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "proposal_status": {
+      "const": "proposed_not_canonical"
+    },
+    "cutoff": {
+      "const": "2024-04-20T23:59:59Z"
+    },
+    "repository_commit": {
+      "const": "720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc"
+    },
+    "artifact_records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifact"
+      },
+      "minItems": 3
+    },
+    "protocol_records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/protocol"
+      }
+    },
+    "candidate_records": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/candidate"
+      },
+      "minItems": 1,
+      "maxItems": 12
+    },
+    "semantic_validation_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "proposal_status",
+    "cutoff",
+    "repository_commit",
+    "artifact_records",
+    "protocol_records",
+    "candidate_records",
+    "semantic_validation_notes"
+  ],
+  "$defs": {
+    "time": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "earliest": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "latest": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "evidence_kind": {
+          "enum": [
+            "independent_public_capture",
+            "publisher_publication_record",
+            "repository_vintage",
+            "unknown"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "earliest",
+        "latest",
+        "evidence_kind",
+        "evidence_refs"
+      ],
+      "description": "A known date-only publication is a bounded interval. Both null means unknown. Semantic check: earliest <= latest and any included feature has latest <= cutoff. Snapshot date is not first-public date."
+    },
+    "quantity": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "raw": {
+          "type": [
+            "number",
+            "string",
+            "null"
+          ]
+        },
+        "point": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "lower": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "upper": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "unit": {
+          "type": "string"
+        },
+        "uncertainty_kind": {
+          "enum": [
+            "none_reported",
+            "range",
+            "confidence_interval",
+            "credible_interval",
+            "standard_error",
+            "qualitative_label",
+            "unknown"
+          ]
+        },
+        "confidence_label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "confidence_level": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "source_notes": {
+          "type": "string"
+        },
+        "missing_reason": {
+          "enum": [
+            null,
+            "not_reported",
+            "publisher_null",
+            "original_data_unavailable",
+            "not_applicable",
+            "unresolved",
+            "future_only"
+          ]
+        }
+      },
+      "required": [
+        "raw",
+        "point",
+        "lower",
+        "upper",
+        "unit",
+        "uncertainty_kind",
+        "confidence_label",
+        "confidence_level",
+        "source_notes",
+        "missing_reason"
+      ]
+    },
+    "feature": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "$ref": "#/$defs/quantity"
+        },
+        "provenance": {
+          "enum": [
+            "developer_report",
+            "independent_measurement",
+            "hardware_duration_reconstruction",
+            "architecture_data_reconstruction",
+            "documented_estimate",
+            "benchmark_imputation",
+            "citation_observation",
+            "metadata",
+            "unknown"
+          ]
+        },
+        "compute_scope": {
+          "enum": [
+            null,
+            "pretraining",
+            "post_training",
+            "total_training",
+            "ancestral_pretraining",
+            "unknown"
+          ]
+        },
+        "availability_basis": {
+          "enum": [
+            "source_value",
+            "reconstructed_from_pre_cutoff_inputs"
+          ]
+        },
+        "public_availability": {
+          "$ref": "#/$defs/time"
+        },
+        "input_information_availability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "derived_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "included_by_cutoff": {
+          "type": "boolean"
+        },
+        "derivation_note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "computation_dependency_assertion_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "hold_reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "name",
+        "value",
+        "provenance",
+        "compute_scope",
+        "availability_basis",
+        "public_availability",
+        "input_information_availability",
+        "derived_at",
+        "source_refs",
+        "included_by_cutoff",
+        "derivation_note",
+        "computation_dependency_assertion_ids",
+        "hold_reasons"
+      ],
+      "description": "public_availability always concerns this exact observed or derived VALUE. For an explicitly reconstructed feature, input_information_availability separately dates the inputs and derived_at dates this audit calculation. included_by_cutoff may refer to reconstructability from pre-cutoff inputs only when availability_basis explicitly says so; this is not historical publication or canonical known_at.",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "included_by_cutoff": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "properties": {
+                  "missing_reason": {
+                    "const": null
+                  }
+                },
+                "anyOf": [
+                  {
+                    "properties": {
+                      "raw": {
+                        "not": {
+                          "type": "null"
+                        }
+                      }
+                    },
+                    "required": [
+                      "raw"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "point": {
+                        "not": {
+                          "type": "null"
+                        }
+                      }
+                    },
+                    "required": [
+                      "point"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "lower": {
+                        "not": {
+                          "type": "null"
+                        }
+                      }
+                    },
+                    "required": [
+                      "lower"
+                    ]
+                  },
+                  {
+                    "properties": {
+                      "upper": {
+                        "not": {
+                          "type": "null"
+                        }
+                      }
+                    },
+                    "required": [
+                      "upper"
+                    ]
+                  }
+                ]
+              },
+              "source_refs": {
+                "minItems": 1
+              },
+              "hold_reasons": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "included_by_cutoff": {
+                "const": true
+              },
+              "availability_basis": {
+                "const": "source_value"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "public_availability": {
+                "properties": {
+                  "latest": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "evidence_kind": {
+                    "not": {
+                      "const": "unknown"
+                    }
+                  },
+                  "evidence_refs": {
+                    "minItems": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "availability_basis": {
+                "const": "source_value"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "input_information_availability": {
+                "const": null
+              },
+              "derived_at": {
+                "const": null
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "availability_basis": {
+                "const": "reconstructed_from_pre_cutoff_inputs"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "input_information_availability": {
+                "type": "object"
+              },
+              "derived_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "derivation_note": {
+                "type": "string",
+                "minLength": 1
+              },
+              "computation_dependency_assertion_ids": {
+                "minItems": 1
+              },
+              "value": {
+                "properties": {
+                  "raw": {
+                    "const": null
+                  },
+                  "point": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "included_by_cutoff": {
+                "const": true
+              },
+              "availability_basis": {
+                "const": "reconstructed_from_pre_cutoff_inputs"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "input_information_availability": {
+                "type": "object",
+                "properties": {
+                  "latest": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "evidence_kind": {
+                    "not": {
+                      "const": "unknown"
+                    }
+                  },
+                  "evidence_refs": {
+                    "minItems": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": {
+          "type": "string"
+        },
+        "source_model_key": {
+          "type": "string"
+        },
+        "source_link": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_open_data": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source_prompted": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "source_size_billion_parameters": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "source_pass_at_1_percent": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "humaneval": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "humaneval+": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "mbpp": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 100
+            },
+            "mbpp+": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "minimum": 0,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "humaneval",
+            "humaneval+",
+            "mbpp",
+            "mbpp+"
+          ]
+        },
+        "missing_reasons": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "propertyNames": {
+            "enum": [
+              "humaneval",
+              "humaneval+",
+              "mbpp",
+              "mbpp+"
+            ]
+          }
+        },
+        "run_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "output_set_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evaluation_spec_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "inference_time": {
+          "$ref": "#/$defs/time"
+        },
+        "result_public_availability": {
+          "$ref": "#/$defs/time"
+        },
+        "label_available_at_cutoff": {
+          "enum": [
+            "proven",
+            "repository_chronology_only",
+            "not_proven",
+            "future"
+          ]
+        },
+        "prospective_outcome": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "previous_artifact_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "revision_relationship": {
+          "enum": [
+            "first_observed_publication",
+            "correction",
+            "regrade_same_outputs",
+            "new_inference",
+            "republication",
+            "published_revision_inference_unresolved",
+            "unresolved"
+          ]
+        },
+        "comparison_status": {
+          "enum": [
+            "comparable_as_recorded",
+            "regrade_required",
+            "new_inference_required",
+            "different_protocol_or_population",
+            "unresolved"
+          ]
+        },
+        "metric_comparison_status": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "humaneval": {
+              "enum": [
+                "comparable_as_recorded",
+                "regrade_required",
+                "new_inference_required",
+                "different_protocol_or_population",
+                "unresolved"
+              ]
+            },
+            "humaneval+": {
+              "enum": [
+                "comparable_as_recorded",
+                "regrade_required",
+                "new_inference_required",
+                "different_protocol_or_population",
+                "unresolved"
+              ]
+            },
+            "mbpp": {
+              "enum": [
+                "comparable_as_recorded",
+                "regrade_required",
+                "new_inference_required",
+                "different_protocol_or_population",
+                "unresolved"
+              ]
+            },
+            "mbpp+": {
+              "enum": [
+                "comparable_as_recorded",
+                "regrade_required",
+                "new_inference_required",
+                "different_protocol_or_population",
+                "unresolved"
+              ]
+            }
+          },
+          "required": [
+            "humaneval",
+            "humaneval+",
+            "mbpp",
+            "mbpp+"
+          ]
+        }
+      },
+      "required": [
+        "artifact_id",
+        "source_model_key",
+        "source_link",
+        "source_open_data",
+        "source_prompted",
+        "source_size_billion_parameters",
+        "source_pass_at_1_percent",
+        "missing_reasons",
+        "run_id",
+        "output_set_id",
+        "evaluation_spec_id",
+        "inference_time",
+        "result_public_availability",
+        "label_available_at_cutoff",
+        "prospective_outcome",
+        "previous_artifact_id",
+        "revision_relationship",
+        "comparison_status",
+        "metric_comparison_status"
+      ],
+      "description": "Four native percentage-valued metric slots. Two snapshots contain eight slots, not eight independent examples. Null slots stay null.",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "label_available_at_cutoff": {
+                "const": "proven"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "prospective_outcome": {
+                "const": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    "view_decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "view": {
+          "enum": [
+            "descriptive",
+            "training_data_known_at_cutoff",
+            "corrected_hindsight",
+            "prospective_prediction",
+            "independent_compute_performance"
+          ]
+        },
+        "status": {
+          "enum": [
+            "ready",
+            "partial",
+            "not_ready"
+          ]
+        },
+        "included": {
+          "type": "boolean"
+        },
+        "hold_reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "view",
+        "status",
+        "included",
+        "hold_reasons"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "included": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "status": {
+                "const": "ready"
+              },
+              "hold_reasons": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "candidate_id": {
+          "type": "string"
+        },
+        "family_group_id": {
+          "enum": [
+            "gpt4",
+            "codellama",
+            "deepseek_coder",
+            "starcoder2"
+          ]
+        },
+        "epoch_model": {
+          "type": "string"
+        },
+        "epoch_data_record_number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "epoch_artifact_id": {
+          "type": "string"
+        },
+        "evalplus_key": {
+          "type": "string"
+        },
+        "identity": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "enum": [
+                "exact_execution_documented",
+                "exact_artifact_declared",
+                "variant_only",
+                "alias_only",
+                "ambiguous",
+                "rejected"
+              ]
+            },
+            "relationship": {
+              "enum": [
+                "same_executed_model",
+                "same_named_variant_only",
+                "base_ancestor",
+                "shared_ancestor",
+                "product_alias_only",
+                "not_same_model",
+                "unresolved"
+              ]
+            },
+            "executed_checkpoint_or_service_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "candidate_checkpoint_or_service_id": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Documentary candidate for investigation; not proof or a publisher assertion that the evaluated run executed this ID."
+            },
+            "inspected_repository_revision": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "weights_tokenizer_configuration_manifest_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "release_availability": {
+              "$ref": "#/$defs/time"
+            },
+            "revision_availability": {
+              "$ref": "#/$defs/time"
+            },
+            "evidence_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "notes": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "status",
+            "relationship",
+            "executed_checkpoint_or_service_id",
+            "candidate_checkpoint_or_service_id",
+            "inspected_repository_revision",
+            "weights_tokenizer_configuration_manifest_id",
+            "release_availability",
+            "revision_availability",
+            "evidence_refs",
+            "notes"
+          ]
+        },
+        "features": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/feature"
+          }
+        },
+        "snapshots": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/snapshot"
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "uniqueItems": true
+        },
+        "dependencies": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "training_lineage_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "measurement_lineage_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "hard_dependency_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "split_group_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "minItems": 1
+            },
+            "evidence_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "unresolved": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "training_lineage_ids",
+            "measurement_lineage_ids",
+            "hard_dependency_ids",
+            "split_group_ids",
+            "evidence_refs",
+            "unresolved"
+          ]
+        },
+        "decisions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/view_decision"
+          },
+          "minItems": 1
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unresolved": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "candidate_id",
+        "family_group_id",
+        "epoch_model",
+        "epoch_data_record_number",
+        "epoch_artifact_id",
+        "evalplus_key",
+        "identity",
+        "features",
+        "snapshots",
+        "dependencies",
+        "decisions",
+        "evidence_refs",
+        "unresolved"
+      ],
+      "description": "One candidate Epoch/EvalPlus join. It remains a candidate when unresolved or rejected; no new identity is minted from matching names.",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "decisions": {
+                "contains": {
+                  "properties": {
+                    "view": {
+                      "enum": [
+                        "training_data_known_at_cutoff",
+                        "corrected_hindsight",
+                        "prospective_prediction",
+                        "independent_compute_performance"
+                      ]
+                    },
+                    "included": {
+                      "const": true
+                    }
+                  },
+                  "required": [
+                    "view",
+                    "included"
+                  ]
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "identity": {
+                "properties": {
+                  "status": {
+                    "const": "exact_execution_documented"
+                  },
+                  "relationship": {
+                    "const": "same_executed_model"
+                  },
+                  "executed_checkpoint_or_service_id": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "evidence_refs": {
+                    "minItems": 1
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "byte_length": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "publication_time": {
+          "$ref": "#/$defs/time"
+        },
+        "repository_vintage_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "retrieved_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "verification": {
+          "enum": [
+            "fresh_bytes_verified",
+            "pinned_document_read",
+            "historical_receipt_only",
+            "publisher_report",
+            "unavailable"
+          ]
+        },
+        "raw_preservation": {
+          "enum": [
+            "permitted_preserved",
+            "permitted_not_acquired",
+            "held",
+            "unknown"
+          ]
+        },
+        "public_redistribution": {
+          "enum": [
+            "eligible_conditions_apply_not_released",
+            "held",
+            "unknown"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "artifact_id",
+        "url",
+        "version",
+        "sha256",
+        "byte_length",
+        "publication_time",
+        "repository_vintage_at",
+        "retrieved_at",
+        "verification",
+        "raw_preservation",
+        "public_redistribution",
+        "evidence_refs"
+      ]
+    },
+    "protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "evaluation_spec_id": {
+          "type": "string"
+        },
+        "benchmark_name": {
+          "type": "string"
+        },
+        "metric_names": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "applies_to_artifact_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "declared": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "version": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "task_count": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "metric": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "generation_protocol": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "documentary_time": {
+              "$ref": "#/$defs/time"
+            },
+            "denominator_granularity": {
+              "enum": [
+                "benchmark",
+                "model",
+                "metric",
+                "task_subset",
+                "unknown"
+              ]
+            }
+          },
+          "required": [
+            "version",
+            "task_count",
+            "metric",
+            "generation_protocol",
+            "documentary_time",
+            "denominator_granularity"
+          ]
+        },
+        "actual_run_binding": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "run_id": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "output_set_hash": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "task_manifest_hash": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "harness_commit": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "prompt_content_hash": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "scorer_commit": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "generation_configuration": {
+              "type": [
+                "object",
+                "null"
+              ]
+            },
+            "metric_denominators": {
+              "type": "object",
+              "additionalProperties": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "minimum": 0
+              }
+            },
+            "inference_time": {
+              "$ref": "#/$defs/time"
+            }
+          },
+          "required": [
+            "run_id",
+            "output_set_hash",
+            "task_manifest_hash",
+            "harness_commit",
+            "prompt_content_hash",
+            "scorer_commit",
+            "generation_configuration",
+            "metric_denominators",
+            "inference_time"
+          ]
+        },
+        "evidence_status": {
+          "enum": [
+            "declaration_only",
+            "actual_run_documented",
+            "unresolved"
+          ]
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "evaluation_spec_id",
+        "benchmark_name",
+        "metric_names",
+        "applies_to_artifact_ids",
+        "declared",
+        "actual_run_binding",
+        "evidence_status",
+        "evidence_refs",
+        "notes"
+      ],
+      "description": "Version/task counts quoted from documentation are separate from the actual run, output hashes, config and metric denominators. Null run bindings cannot be silently completed from current code or a benchmark-wide declaration."
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "passed": 20,
+  "failed": 0,
+  "checks": {
+    "exact_archive_source_hash_and_size": true,
+    "archive_3626_rows_57_fields": true,
+    "12_native_row_matches": true,
+    "10_distinct_epoch_rows": true,
+    "192_raw_cells_matched": true,
+    "12_compute_notes_exact": true,
+    "population_counts_match": true,
+    "only_created_materialization_cleaned": true,
+    "no_archive_write_or_new_epoch_download": true,
+    "12_primary_artifact_budget": true,
+    "9_success_3_unavailable": true,
+    "4_github_bodies_exact_blob": true,
+    "pre_cutoff_same_byte_state_verified": true,
+    "no_first_public_or_execution_time_inference": true,
+    "three_paper_version_dates_verified": true,
+    "bounded_manifest_search_no_universal_absence": true,
+    "strict_ready_unchanged_zero": true,
+    "prior_13_review_artifacts_preserved": true,
+    "original_uploads_preserved": true,
+    "no_signed_locator_or_bearer_saved": true
+  },
+  "all_json_parse": true,
+  "scope": "Final additive source-review packet, preserved offline packet and original hashes; not actual benchmark/run replication."
+}

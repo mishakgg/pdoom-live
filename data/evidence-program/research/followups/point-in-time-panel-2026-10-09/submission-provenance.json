@@ -1,0 +1,71 @@
+{
+  "session_id": "2026-10-09-02-point-in-time-panel",
+  "session_count": 1,
+  "supplied_artifact_count": 4,
+  "assignment_number": 2,
+  "original_preservation": "All four originals remain unchanged outside the public package. The audit and schema JSON copies are byte-identical. The examples JSON changes only eight source-locator substrings; the narrative changes only three private attachment links.",
+  "interpretation": "Submitted status, source claims and publication fields are historical assertions; final-disposition.json and the latest source review govern interpretation.",
+  "issued_assignment": {
+    "path": "issued-assignment.txt",
+    "bytes": 2389,
+    "sha256": "d644b11da8bdf9ed3a0a49f2029113106910ea34405f188613d5ac5530d04038",
+    "status": "exact issued assignment preserved",
+    "executed_session_prompt_identity": "Not independently established; no executed-session prompt attachment was supplied."
+  },
+  "files": [
+    {
+      "artifact_ordinal": 1,
+      "original_filename": "Yapıştırılan metin(20261009-161600).txt",
+      "role": "narrative_research_output",
+      "original_bytes": 31720,
+      "original_sha256": "c3891591161b6117c56f827deae3d1ad3f8da4816525eff87d62c881d7810d63",
+      "package_path": "submitted/submitted-narrative.txt",
+      "package_bytes": 31576,
+      "package_sha256": "eb8dedc37c77c438c350e2f37a29d287392af35f19796a2f96f91f89ccd30dd1",
+      "byte_identical_to_original": false,
+      "changes": [
+        "Replaced three private sandbox attachment links with package-relative filenames; all other bytes, including line endings, preserved."
+      ]
+    },
+    {
+      "artifact_ordinal": 2,
+      "original_filename": "point_in_time_panel_review(1).json",
+      "role": "source_linked_panel_audit",
+      "original_bytes": 89186,
+      "original_sha256": "34a5fee3addca372b0fd0d3dd34ac992bbf9e7501396100fa0f1b03ae534c0d2",
+      "package_path": "submitted/point_in_time_panel_review.json",
+      "package_bytes": 89186,
+      "package_sha256": "34a5fee3addca372b0fd0d3dd34ac992bbf9e7501396100fa0f1b03ae534c0d2",
+      "byte_identical_to_original": true,
+      "changes": []
+    },
+    {
+      "artifact_ordinal": 3,
+      "original_filename": "point_in_time_panel.examples(1).json",
+      "role": "populated_candidate_panel_examples",
+      "original_bytes": 312009,
+      "original_sha256": "834a1911767be1d8bcb6272451beb2c8eff9d670af4c960b2089eac318f3075d",
+      "package_path": "submitted/point_in_time_panel.examples.json",
+      "package_bytes": 312089,
+      "package_sha256": "df60ef4ab4a352025ead6081229dce80199b5c40aa7f9967e94ecd7c2d5b81b4",
+      "byte_identical_to_original": false,
+      "changes": [
+        "Eight occurrences of two unverified source-native Colab Drive URLs replaced by stable SHA-256 locator tokens. All other bytes remain unchanged; numerical values and units are preserved. See locator-redactions.json for field locations."
+      ]
+    },
+    {
+      "artifact_ordinal": 4,
+      "original_filename": "point_in_time_panel.schema(1).json",
+      "role": "proposed_companion_json_schema",
+      "original_bytes": 33402,
+      "original_sha256": "a16292f5d2f35e4a8a22c82c25f59a048371bdb498670c86ad6e41570173215e",
+      "package_path": "submitted/point_in_time_panel.schema.json",
+      "package_bytes": 33402,
+      "package_sha256": "a16292f5d2f35e4a8a22c82c25f59a048371bdb498670c86ad6e41570173215e",
+      "byte_identical_to_original": true,
+      "changes": []
+    }
+  ],
+  "privacy": "Private transfer, Library, message and archive identifiers are omitted. Public upstream source links and repository paths are retained.",
+  "locator_redactions": "locator-redactions.json; contains field locations and hashes, no original URL mapping"
+}
