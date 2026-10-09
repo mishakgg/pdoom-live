@@ -1,0 +1,327 @@
+{
+  "schema_version": "1.0.0",
+  "status": "proposed_unexecuted",
+  "case_count": 8,
+  "executed_count": 0,
+  "fixture_policy": "Synthetic inputs except explicitly identified observed/repository anchors. Expected outputs are proposed requirements, not recorded test results. example.invalid URLs are test-only and were not accessed.",
+  "cases": [
+    {
+      "case_id": "ACQ-01",
+      "title": "Mixed licenses and cached-copy ambiguity",
+      "execution_status": "unexecuted",
+      "input": {
+        "work": "W_SYNTHETIC_1",
+        "locations": [
+          {
+            "id": "repo-v2",
+            "rights": "CC-BY-4.0",
+            "rights_binding": "exact v2",
+            "source_policy": "permitted"
+          },
+          {
+            "id": "publisher",
+            "rights": null
+          }
+        ],
+        "cached_pdf_available": true,
+        "cached_pdf_exact_edition": null
+      },
+      "expected_output": {
+        "raw_candidates_eligible": [
+          "repo-v2"
+        ],
+        "held": [
+          "publisher",
+          "cached PDF"
+        ],
+        "public_rights_eligible": [
+          "repo-v2 with attribution"
+        ],
+        "publication_authorized": false,
+        "full_work_cleared": false,
+        "reason": "Do not propagate a location grant to another copy; cache availability is not identity or permission."
+      },
+      "rationale_evidence_ids": [
+        "OAX-E01",
+        "OAX-E04",
+        "OAX-E06"
+      ]
+    },
+    {
+      "case_id": "ACQ-02",
+      "title": "Stale link with a same-title replacement",
+      "execution_status": "unexecuted",
+      "input": {
+        "previous": {
+          "exact_url": "https://example.invalid/paper/v1.pdf",
+          "complete_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "license": "CC-BY-4.0"
+        },
+        "next_response": {
+          "status": 404
+        },
+        "search_suggestion": {
+          "same_title": true,
+          "url": "https://example.invalid/paper/latest.pdf",
+          "version": null,
+          "rights": null
+        }
+      },
+      "expected_output": {
+        "old_blob_retained": true,
+        "access_event": "unresolved_404",
+        "article_deleted": false,
+        "automatic_replacement_fetch": false,
+        "new_complete_body": false,
+        "version_cursor_advanced": false,
+        "reason": "Record the stale link. Resolve the replacement edition and rights independently; no silent latest substitution."
+      },
+      "rationale_evidence_ids": [
+        "OAX-E05",
+        "OAX-E06",
+        "AR-E05"
+      ]
+    },
+    {
+      "case_id": "ACQ-03",
+      "title": "Version-specific rights and an unversioned PDF meta tag",
+      "execution_status": "unexecuted",
+      "input": {
+        "lineage": "synthetic-arxiv",
+        "versions": [
+          {
+            "id": "v1",
+            "grant": "arxiv-standard",
+            "terms_allow_private_research": true,
+            "source_policy": "permitted",
+            "visible_pdf": "/pdf/examplev1",
+            "citation_pdf_url": "/pdf/example"
+          },
+          {
+            "id": "v2",
+            "grant": "CC-BY-4.0",
+            "source_policy": "permitted",
+            "visible_pdf": "/pdf/examplev2"
+          }
+        ]
+      },
+      "expected_output": {
+        "private_research_eligible_versions": [
+          "v1",
+          "v2"
+        ],
+        "public_redistribution_eligible_versions": [
+          "v2 with attribution"
+        ],
+        "public_hold_versions": [
+          "v1"
+        ],
+        "retrieval_urls": [
+          "/pdf/examplev1",
+          "/pdf/examplev2"
+        ],
+        "inherit_v2_grant_to_v1": false,
+        "publication_authorized": false
+      },
+      "rationale_evidence_ids": [
+        "AR-E02",
+        "AR-E04",
+        "AR-E05",
+        "AR-E06"
+      ]
+    },
+    {
+      "case_id": "ACQ-04",
+      "title": "Licensed source link with explicit access restriction",
+      "execution_status": "unexecuted",
+      "input": {
+        "version": "2401.02843v3",
+        "license": "CC-BY-4.0",
+        "pdf": {
+          "allowed": true,
+          "complete_bytes_verified": true
+        },
+        "source": {
+          "href": "/src/2401.02843v3",
+          "policy": "disallowed",
+          "body_requested": false
+        }
+      },
+      "expected_output": {
+        "pdf_preservation": "eligible",
+        "source_request_sent": false,
+        "source_preservation": "hold_access",
+        "complete_pdf_representation": true,
+        "complete_native_submission_claim": false,
+        "reason": "Preserve the permitted PDF without waiting for source access; keep the source gap explicit."
+      },
+      "rationale_evidence_ids": [
+        "AR-E06",
+        "REPO-E06"
+      ]
+    },
+    {
+      "case_id": "ACQ-05",
+      "title": "Partial MIT export and a plausible row count",
+      "execution_status": "unexecuted",
+      "input": {
+        "license": "CC-BY-4.0",
+        "response": {
+          "http_status": 200,
+          "media_type": "text/csv",
+          "whole_response_verified": true,
+          "risk_rows": 1750
+        },
+        "manifest_expected_features": [
+          "risks",
+          "sources",
+          "taxonomies",
+          "notes"
+        ],
+        "present_features": [
+          "risks"
+        ],
+        "publisher_revision": null
+      },
+      "expected_output": {
+        "csv_bytes_may_be_preserved": true,
+        "byte_integrity_complete": true,
+        "native_dataset_coverage": "partial",
+        "complete_native_export_accepted": false,
+        "dataset_cursor_advanced": false,
+        "risk_population_denominator": null,
+        "reason": "A complete permitted CSV is an incomplete database representation, irrespective of its plausible row count."
+      },
+      "rationale_evidence_ids": [
+        "MIT-E01",
+        "MIT-E05"
+      ]
+    },
+    {
+      "case_id": "ACQ-06",
+      "title": "Complete lawful MIT export without an official revision id",
+      "execution_status": "unexecuted",
+      "input": {
+        "anonymous_supported_route": true,
+        "dataset_grant": "CC-BY-4.0",
+        "whole_workbook_bytes_verified": true,
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "observed_at": "2026-10-09T00:00:00Z",
+        "publisher_revision": null,
+        "native_feature_inventory": {
+          "sheets": "complete",
+          "hidden_sheets": "complete",
+          "required_notes": "unknown"
+        },
+        "analytical_mapping": "pending",
+        "linked_source_paper_rights": null
+      },
+      "expected_output": {
+        "raw_workbook_preserved": true,
+        "snapshot_identity": "observed_at + whole SHA-256",
+        "publisher_revision": null,
+        "claim_release_v4": false,
+        "native_feature_completeness": "unknown",
+        "analytical_mapping_may_remain_pending": true,
+        "linked_paper_body_fetch": false,
+        "publication_authorized": false,
+        "reason": "No invented release id or semantic gate. Unknown cloud-feature fidelity limits completeness, not lawful original-file retention."
+      },
+      "rationale_evidence_ids": [
+        "MIT-E01",
+        "MIT-E05"
+      ]
+    },
+    {
+      "case_id": "ACQ-07",
+      "title": "Throttling, partial transfer and changed validator",
+      "execution_status": "unexecuted",
+      "input": {
+        "responses": [
+          {
+            "status": 429,
+            "retry_after_seconds": 120
+          },
+          {
+            "status": 206,
+            "etag": "\"A\"",
+            "content_range": "bytes 0-1023/2048"
+          },
+          {
+            "status": 206,
+            "etag": "\"B\"",
+            "content_range": "bytes 1024-2047/2048"
+          }
+        ],
+        "max_attempts": 5,
+        "last_committed_cursor": "C0"
+      },
+      "expected_output": {
+        "earliest_retry_after_seconds": 120,
+        "checkpoint_instead_of_blocking_wait": true,
+        "combine_partial_bodies": false,
+        "complete_original_committed": false,
+        "cursor": "C0",
+        "future_retry": "bounded full restart or same-version conditional resume only after validation",
+        "blind_duplicate_destination_write": false
+      },
+      "rationale_evidence_ids": [
+        "REPO-E07",
+        "REPO-E06"
+      ]
+    },
+    {
+      "case_id": "ACQ-08",
+      "title": "Deletion, restoration and partial snapshot boundaries",
+      "execution_status": "unexecuted",
+      "input": {
+        "prior_complete_metadata_snapshot": {
+          "W_A": {
+            "location_ids": [
+              "L1"
+            ],
+            "blob_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+          }
+        },
+        "next_complete_snapshot": {
+          "deleted_ids": [
+            "W_A"
+          ],
+          "W_B": {
+            "location_ids": [
+              "L1"
+            ]
+          }
+        },
+        "later_snapshot": {
+          "deleted_ids": [],
+          "W_A": {
+            "location_ids": [
+              "L1"
+            ]
+          }
+        },
+        "later_partial_query_missing": [
+          "W_B"
+        ],
+        "explicit_manuscript_takedown": null
+      },
+      "expected_output": {
+        "record_events": [
+          "metadata deletion/possible merge supported by location movement",
+          "later observed restoration or conflict requiring reconciliation"
+        ],
+        "retain_all_observation_snapshots": true,
+        "reuse_id_for_different_work": false,
+        "delete_lawfully_preserved_manuscript_bytes": false,
+        "infer_W_B_deletion_from_partial_query": false,
+        "article_withdrawal_inferred": false,
+        "reason": "Provider current-state mirrors and evidentiary archives have separate lifecycle semantics. Restoration must be observed; documentation alone is internally inconsistent."
+      },
+      "rationale_evidence_ids": [
+        "OAX-E05",
+        "AR-E04"
+      ]
+    }
+  ]
+}

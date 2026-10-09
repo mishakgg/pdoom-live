@@ -6,6 +6,14 @@ The [original 26-session queue](../research-session-review-queue.md) remains 26 
 
 [Machine-readable queue and artifact hashes](../../../../data/evidence-program/research/followups/follow-up-queue.json) · [Historical prompts 1–4 coverage assessment](prompts/coverage-assessment.md)
 
+## Additional research session: full-content intake, 9 October 2026
+
+[Reviewed result](full-content-intake-2026-10-09.md) · [Final disposition](../../../../data/evidence-program/research/followups/full-content-intake-2026-10-09/final-disposition.json) · [Source corrections](../../../../data/evidence-program/research/followups/full-content-intake-2026-10-09/source-corrections.json) · [Implementation blockers](../../../../data/evidence-program/research/followups/full-content-intake-2026-10-09/implementation-blockers.json)
+
+One separate session and eight supplied artifacts are included as qualified research only. The review records twelve semantic enforcement gaps; all eight acquisition cases remain unexecuted. No acquisition readiness, source admission, collector change or additional independent-study coverage follows. The twenty package files preserve their dated pre-publication review snapshot unchanged; their candidate/publication fields describe that historical snapshot, while this queue records their inclusion in this version. Remote publication, merge and exact-commit CI are separate verification steps.
+
+This is assignment 1 of the [six briefs issued 9 October](prompts/research-assignments-2026-10-09.md), tracked separately from the dated ten-bundle/eight-October snapshot above. The existing ESPAI v3 archive identity reconciliation adds no newly acquired body or independent study. Native arXiv containers, OpenAlex cached-object edition/rights binding, selected-population enumeration and the MIT native export remain held.
+
 ## Three earlier reviewed bundles
 
 

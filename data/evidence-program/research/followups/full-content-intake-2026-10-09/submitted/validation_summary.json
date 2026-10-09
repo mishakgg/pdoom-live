@@ -1,0 +1,68 @@
+{
+  "checked_on": "2026-10-09",
+  "status": "local_integrity_and_schema_subset_checks_passed",
+  "method": "Dependency-free structural checker for the keywords used in this schema; not a full Draft 2020-12 engine or metaschema certification.",
+  "json_syntax_and_duplicate_keys": "passed",
+  "ledger_against_supplied_schema_supported_keywords": "passed",
+  "internal_schema_references": "passed",
+  "evidence_artifact_blocker_references": "passed",
+  "external_artifact_count": 18,
+  "external_counts_by_route": {
+    "openalex": 6,
+    "arxiv": 7,
+    "mit": 5
+  },
+  "candidate_artifacts": 14,
+  "repository_evidence_objects": 14,
+  "primary_metadata_bytes_and_sha256": "passed",
+  "synthetic_schema_shape_checks": {
+    "count": 3,
+    "status": "passed",
+    "scope": "One future original snapshot shape accepted; inconsistent original hash scope and unresolved-rights affirmative action rejected. These are structural probes, not acquisition acceptance-case execution."
+  },
+  "acquisition_acceptance_cases_proposed": 8,
+  "acquisition_acceptance_cases_executed": 0,
+  "live_source_tests_executed": 0,
+  "limits": [
+    "No official full Draft 2020-12 validator available in either Python runtime.",
+    "No PDF, native source, workbook, bulk manifest or remote archive readback tested.",
+    "No repository canonical schema or implementation changed."
+  ],
+  "files": [
+    {
+      "filename": "README.txt",
+      "bytes": 2348,
+      "sha256": "af8069c282adb1ca4a544f8ef873cb7116fad290876c8005ab9c28da328eb86c"
+    },
+    {
+      "filename": "full_content_acceptance_cases.json",
+      "bytes": 10014,
+      "sha256": "eef97cd5da1cf3a7031a60d2a2e3342234bb04383126553398ffc0726c03418d"
+    },
+    {
+      "filename": "full_content_acquisition_spec.json",
+      "bytes": 18575,
+      "sha256": "1db262e109f8c31546114b28c9823dfab0b092d804e3384cccedb84cf69e2e9d"
+    },
+    {
+      "filename": "full_content_artifact_ledger.json",
+      "bytes": 86915,
+      "sha256": "e16d6d7a6c2daa1e52c1a8ae05d20f5f225553a43d2a81bfff76c943cd269efd"
+    },
+    {
+      "filename": "full_content_intake.schema.json",
+      "bytes": 27202,
+      "sha256": "7e97e86fc937c678d9631be7f3a1cee0f954d0b3230d8aa5eb2cb419c40c0994"
+    },
+    {
+      "filename": "openalex_W4414876758_observed.json",
+      "bytes": 18977,
+      "sha256": "2059381f704239c6823f810f49dffa93a438efbda3e4928357f4739dd7e3d409"
+    },
+    {
+      "filename": "openalex_W4414876758_receipt.json",
+      "bytes": 695,
+      "sha256": "6449e3bac24e196e5b8b04ce41ac11df5b4e1cae863fea4cf305b8b820b02579"
+    }
+  ]
+}

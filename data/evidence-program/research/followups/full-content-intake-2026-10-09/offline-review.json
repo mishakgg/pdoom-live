@@ -1,0 +1,445 @@
+{
+  "status": "ACCEPT_AS_READ_ONLY_RESEARCH_EVIDENCE_ONLY; NOT_A_PRODUCTION_VALIDATION_OR_COLLECTION_GATE",
+  "reviewed_at": "2026-10-09T16:06:12.606494+00:00",
+  "consolidation_reran_original_validator": false,
+  "schema_standard": "JSON Schema Draft 2020-12",
+  "supplied_data_check_groups": 28,
+  "supplied_data_check_groups_passed": 28,
+  "local_schema_refs_resolved": 9,
+  "structured_refs_resolved": 155,
+  "runtime": {
+    "python": "3.12.14",
+    "jsonschema": "4.26.0",
+    "missing_optional_format_checkers": [
+      "date-time",
+      "uri"
+    ],
+    "review_resolution": "Reviewer-authored offline URI/RFC3339 checks plus built-in date checker, tested with positive/negative controls. Optional official dependencies were not installed."
+  },
+  "synthetic_schema_probe_count": 18,
+  "unsafe_mutations_accepted": 12,
+  "existing_negative_controls_rejected": 6,
+  "probe_scope": "In-memory validator probes, not execution of ACQ-01 through ACQ-08. Accepted mutations do not mean the populated submitted ledger asserts those mutated claims.",
+  "mutation_probes": [
+    {
+      "probe": "CONTROL_publication_true_rejected",
+      "schema_accepts": false,
+      "expected_for_safe_integration": "reject",
+      "changes": [
+        {
+          "path": "/artifacts/0/decisions/public_redistribution/publication_authorized",
+          "value": true
+        }
+      ],
+      "error_count": 1,
+      "errors": [
+        {
+          "instance_path": "$.artifacts[0].decisions.public_redistribution.publication_authorized",
+          "schema_path": "/properties/artifacts/items/properties/decisions/properties/public_redistribution/properties/publication_authorized/const",
+          "validator": "const",
+          "message": "False was expected"
+        }
+      ],
+      "correction_or_control": "Existing const false works."
+    },
+    {
+      "probe": "CONTROL_unresolved_rights_affirmative_action_rejected",
+      "schema_accepts": false,
+      "expected_for_safe_integration": "reject",
+      "changes": [
+        {
+          "path": "/artifacts/1/decisions/raw_preservation/action",
+          "value": "retain_original"
+        }
+      ],
+      "error_count": 1,
+      "errors": [
+        {
+          "instance_path": "$.artifacts[1].decisions.raw_preservation.rights_eligibility",
+          "schema_path": "/properties/artifacts/items/properties/decisions/allOf/0/then/properties/raw_preservation/properties/rights_eligibility/enum",
+          "validator": "enum",
+          "message": "'unresolved' is not one of ['permitted', 'research_use_permitted']"
+        }
+      ],
+      "correction_or_control": "Existing affirmative-action rights rule works."
+    },
+    {
+      "probe": "CONTROL_location_metadata_permission_rejected",
+      "schema_accepts": false,
+      "expected_for_safe_integration": "reject",
+      "changes": [
+        {
+          "path": "/artifacts/1/decisions/raw_preservation/rights_eligibility",
+          "value": "permitted"
+        }
+      ],
+      "error_count": 1,
+      "errors": [
+        {
+          "instance_path": "$.artifacts[1].decisions.raw_preservation.rights_eligibility",
+          "schema_path": "/properties/artifacts/items/allOf/0/then/properties/decisions/properties/raw_preservation/properties/rights_eligibility/const",
+          "validator": "const",
+          "message": "'unresolved' was expected"
+        }
+      ],
+      "correction_or_control": "Existing location_metadata_only rule works."
+    },
+    {
+      "probe": "CONTROL_invalid_datetime_rejected",
+      "schema_accepts": false,
+      "expected_for_safe_integration": "reject",
+      "changes": [
+        {
+          "path": "/artifacts/0/content/observed_at",
+          "value": "2026-99-99T00:00:00Z"
+        }
+      ],
+      "error_count": 2,
+      "errors": [
+        {
+          "instance_path": "$.artifacts[0].content.observed_at",
+          "schema_path": "/properties/artifacts/items/properties/content/properties/observed_at/format",
+          "validator": "format",
+          "message": "'2026-99-99T00:00:00Z' is not a 'date-time'"
+        },
+        {
+          "instance_path": "$.artifacts[0].content.observed_at",
+          "schema_path": "/properties/artifacts/items/properties/content/allOf/0/then/properties/observed_at/format",
+          "validator": "format",
+          "message": "'2026-99-99T00:00:00Z' is not a 'date-time'"
+        }
+      ],
+      "correction_or_control": "Use installed working optional format dependencies or explicit tested checkers; nominal FormatChecker alone silently omitted these formats in the reviewed runtime. Preserve the negative controls."
+    },
+    {
+      "probe": "CONTROL_invalid_uri_rejected",
+      "schema_accepts": false,
+      "expected_for_safe_integration": "reject",
+      "changes": [
+        {
+          "path": "/artifacts/0/source_url",
+          "value": "not a uri"
+        }
+      ],
+      "error_count": 1,
+      "errors": [
+        {
+          "instance_path": "$.artifacts[0].source_url",
+          "schema_path": "/properties/artifacts/items/properties/source_url/format",
+          "validator": "format",
+          "message": "'not a uri' is not a 'uri'"
+        }
+      ],
+      "correction_or_control": "Use installed working optional format dependencies or explicit tested checkers; nominal FormatChecker alone silently omitted these formats in the reviewed runtime. Preserve the negative controls."
+    },
+    {
+      "probe": "CONTROL_wrong_complete_metadata_hash_scope_rejected",
+      "schema_accepts": false,
+      "expected_for_safe_integration": "reject",
+      "changes": [
+        {
+          "path": "/artifacts/0/content/hash_scope",
+          "value": "complete_observed_original"
+        }
+      ],
+      "error_count": 1,
+      "errors": [
+        {
+          "instance_path": "$.artifacts[0].content.hash_scope",
+          "schema_path": "/properties/artifacts/items/properties/content/allOf/1/then/properties/hash_scope/const",
+          "validator": "const",
+          "message": "'complete_observed_metadata' was expected"
+        }
+      ],
+      "correction_or_control": "Existing hash-scope rule works."
+    },
+    {
+      "probe": "GAP_retained_original_without_bytes",
+      "schema_accepts": true,
+      "expected_for_safe_integration": "reject",
+      "changes": [
+        {
+          "path": "/artifacts/12/decisions/raw_preservation/action",
+          "value": "retain_original"
+        }
+      ],
+      "error_count": 0,
+      "errors": [],
+      "correction_or_control": "Retain-original completion must require observed complete original bytes, digest, successful legitimate access, and a committed/readback state; access_blocked cannot be a completed retention."
+    },
+    {
+      "probe": "GAP_metadata_relabelled_retained_original",
+      "schema_accepts": true,
+      "expected_for_safe_integration": "reject",
+      "changes": [
+        {
+          "path": "/artifacts/0/decisions/raw_preservation/action",
+          "value": "retain_original"
+        }
+      ],
+      "error_count": 0,
+      "errors": [],
+      "correction_or_control": "Constrain retention action to representation and content state. Metadata retention must not imply manuscript/native-original retention."
+    },
+    {
+      "probe": "GAP_unrequested_locally_verified_and_complete",
+      "schema_accepts": true,
+      "expected_for_safe_integration": "reject",
+      "changes": [
+        {
+          "path": "/artifacts/1/content/byte_integrity",
+          "value": "verified_locally"
+        },
+        {
+          "path": "/artifacts/1/content/native_dataset_coverage",
+          "value": "complete"
+        }
+      ],
+      "error_count": 0,
+      "errors": [],
+      "correction_or_control": "not_requested/access_blocked must have byte_integrity not_tested and cannot assert complete coverage without independent inventory evidence."
+    },
+    {
+      "probe": "GAP_partial_state_complete_scope_no_bytes",
+      "schema_accepts": true,
+      "expected_for_safe_integration": "reject",
+      "changes": [
+        {
+          "path": "/artifacts/1/content/state",
+          "value": "partial_response_observed"
+        },
+        {
+          "path": "/artifacts/1/content/hash_scope",
+          "value": "complete_observed_original"
+        }
+      ],
+      "error_count": 0,
+      "errors": [],
+      "correction_or_control": "partial_response_observed must bind partial_response_only, measured partial bytes/hash/time when claimed, partial integrity, and no complete-original/native completeness claim."
+    },
+    {
+      "probe": "GAP_historical_bytes_claim_verified_locally",
+      "schema_accepts": true,
+      "expected_for_safe_integration": "reject",
+      "changes": [
+        {
+          "path": "/artifacts/5/content/byte_integrity",
+          "value": "verified_locally"
+        }
+      ],
+      "error_count": 0,
+      "errors": [],
+      "correction_or_control": "historical_retained_not_reverified should require historically_reported integrity; record any later local verification as a distinct observation."
+    },
+    {
+      "probe": "GAP_unsupported_public_rights_standard_arxiv",
+      "schema_accepts": true,
+      "expected_for_safe_integration": "reject",
+      "changes": [
+        {
+          "path": "/artifacts/10/decisions/public_redistribution/rights_eligibility",
+          "value": "eligible_with_conditions"
+        }
+      ],
+      "error_count": 0,
+      "errors": [],
+      "correction_or_control": "Bind public eligibility to an explicit exact-artifact redistribution grant and conditions. The declared arXiv-standard research-only evidence does not establish public rights."
+    },
+    {
+      "probe": "GAP_affirmative_permission_without_evidence",
+      "schema_accepts": true,
+      "expected_for_safe_integration": "reject",
+      "changes": [
+        {
+          "path": "/artifacts/5/rights/evidence_ids",
+          "value": []
+        },
+        {
+          "path": "/artifacts/5/rights/license_id",
+          "value": null
+        },
+        {
+          "path": "/artifacts/5/rights/license_url",
+          "value": null
+        }
+      ],
+      "error_count": 0,
+      "errors": [],
+      "correction_or_control": "Affirmative rights decisions need nonempty evidence references and a structured applicable grant/basis. Do not mandate an open license when a separate research/storage grant is the actual basis."
+    },
+    {
+      "probe": "GAP_exact_publisher_version_without_identity",
+      "schema_accepts": true,
+      "expected_for_safe_integration": "reject",
+      "changes": [
+        {
+          "path": "/artifacts/5/version/identifier",
+          "value": null
+        },
+        {
+          "path": "/artifacts/5/version/binding",
+          "value": "unresolved"
+        }
+      ],
+      "error_count": 0,
+      "errors": [],
+      "correction_or_control": "publisher_version and exact_version_page rights need an exact edition identifier/binding; unknown mutable exports should use observed_snapshot with timestamp+hash identity instead."
+    },
+    {
+      "probe": "GAP_dangling_reference",
+      "schema_accepts": true,
+      "expected_for_safe_integration": "reject by semantic gate",
+      "changes": [
+        {
+          "path": "/artifacts/5/rights/evidence_ids",
+          "value": [
+            "MISSING-EVIDENCE"
+          ]
+        }
+      ],
+      "error_count": 0,
+      "errors": [],
+      "correction_or_control": "Cross-reference semantic validation is expressly required by this schema and must be enforced outside ordinary JSON Schema."
+    },
+    {
+      "probe": "GAP_duplicate_artifact_identifier",
+      "schema_accepts": true,
+      "expected_for_safe_integration": "reject by semantic gate",
+      "changes": [
+        {
+          "path": "/artifacts/1/artifact_id",
+          "value": "INTAKE-OA-METADATA-001"
+        }
+      ],
+      "error_count": 0,
+      "errors": [],
+      "correction_or_control": "Enforce identifier uniqueness; uniqueItems on whole objects would not ensure unique artifact_id."
+    },
+    {
+      "probe": "GAP_count_not_linked_to_evidence_array",
+      "schema_accepts": true,
+      "expected_for_safe_integration": "reject by semantic gate",
+      "changes": [
+        {
+          "path": "/external_evidence",
+          "value_summary": {
+            "operation": "drop the final external evidence object",
+            "remaining_count": 17,
+            "remaining_evidence_ids": [
+              "OAX-E01",
+              "OAX-E02",
+              "OAX-E03",
+              "OAX-E04",
+              "OAX-E05",
+              "OAX-E06",
+              "AR-E01",
+              "AR-E02",
+              "AR-E03",
+              "AR-E04",
+              "AR-E05",
+              "AR-E06",
+              "AR-E07",
+              "MIT-E01",
+              "MIT-E02",
+              "MIT-E03",
+              "MIT-E04"
+            ],
+            "canonical_json_sha256": "70407849fd92f775ab4b32bee6a8b48268c683449cc491cfcaada87cf280b90b"
+          }
+        }
+      ],
+      "error_count": 0,
+      "errors": [],
+      "correction_or_control": "Derive counts and enforce reference closure; maxItems is a budget ceiling, not an equality check."
+    },
+    {
+      "probe": "GAP_review_envelope_accepts_fresh_original",
+      "schema_accepts": true,
+      "expected_for_safe_integration": "reject in fixed review envelope",
+      "changes": [
+        {
+          "path": "/artifacts/7/content",
+          "value": {
+            "state": "complete_original_observed",
+            "bytes": 5902763,
+            "sha256": "8a440d9f5c24e3627b2887c4b654f8b98253706a92e8e4ece266f8c2fe9903a7",
+            "hash_scope": "complete_observed_original",
+            "observed_at": "2026-10-09T15:34:12.583153+00:00",
+            "fresh_raw_readback_verified": true,
+            "byte_integrity": "verified_locally",
+            "native_dataset_coverage": "representation_only",
+            "note": "Historical raw PDF identity from the 9 October reconciliation. No fresh body or private-archive readback. Source-package completeness not established."
+          }
+        },
+        {
+          "path": "/artifacts/7/format_status",
+          "value": "observed_original"
+        }
+      ],
+      "error_count": 0,
+      "errors": [],
+      "correction_or_control": "Keep the reusable future-original definition, but constrain this fixed review to its declared historical-only original observations. Zero downloads alone does not rule out local readback; distinguish and reconcile operations, observations, and prose declarations in a future envelope."
+    }
+  ],
+  "case_count": 8,
+  "executed_count": 0,
+  "live_acquisition_case_tests": 0,
+  "case_reviews": [
+    {
+      "case_id": "ACQ-01",
+      "title": "Mixed licenses and cached-copy ambiguity",
+      "execution_status": "unexecuted",
+      "static_review": "Coherent: mixed grants and a cache flag do not clear all locations."
+    },
+    {
+      "case_id": "ACQ-02",
+      "title": "Stale link with a same-title replacement",
+      "execution_status": "unexecuted",
+      "static_review": "Coherent: a 404 and matching title do not authorize edition replacement or prove article deletion."
+    },
+    {
+      "case_id": "ACQ-03",
+      "title": "Version-specific rights and an unversioned PDF meta tag",
+      "execution_status": "unexecuted",
+      "static_review": "Coherent synthetic scenario; it is not actual ESPAI v1 rights. Exact links override unversioned citation metadata."
+    },
+    {
+      "case_id": "ACQ-04",
+      "title": "Licensed source link with explicit access restriction",
+      "execution_status": "unexecuted",
+      "static_review": "Coherent: permitted PDF retention does not clear a blocked source container or establish native completeness."
+    },
+    {
+      "case_id": "ACQ-05",
+      "title": "Partial MIT export and a plausible row count",
+      "execution_status": "unexecuted",
+      "static_review": "Add explicit legitimate-access, exact data-grant binding, transfer and readback preconditions before testing completed retention."
+    },
+    {
+      "case_id": "ACQ-06",
+      "title": "Complete lawful MIT export without an official revision id",
+      "execution_status": "unexecuted",
+      "static_review": "Add destination commit/readback preconditions before testing raw_workbook_preserved=true. A complete file may still lack required notes coverage; timestamp+hash is appropriate without a publisher revision."
+    },
+    {
+      "case_id": "ACQ-07",
+      "title": "Throttling, partial transfer and changed validator",
+      "execution_status": "unexecuted",
+      "static_review": "Coherent: honor Retry-After, retain C0, reject joins across mismatched ETags; future harness must enforce shared source quotas and finite retries."
+    },
+    {
+      "case_id": "ACQ-08",
+      "title": "Deletion, restoration and partial snapshot boundaries",
+      "execution_status": "unexecuted",
+      "static_review": "Coherent: observed reappearance supports restoration/conflict; movement only suggests merge; partial absence proves no deletion."
+    }
+  ],
+  "common_execution_preconditions": [
+    "Exact artifact identity and applicable grant/basis",
+    "Legitimate source access and authorized finite transfer",
+    "Separate attempted/observed/verified/committed/authorized outputs",
+    "Destination commit/readback before completed retention",
+    "Native-feature inventory comparison independent of file-byte completeness"
+  ],
+  "limitation": "This is a faithful consolidation of a completed offline review, not a fresh run of its validation script. No collector tests or operational tests were run."
+}

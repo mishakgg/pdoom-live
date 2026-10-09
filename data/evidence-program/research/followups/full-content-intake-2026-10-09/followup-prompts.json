@@ -1,0 +1,67 @@
+{
+  "status": "bounded_prompts_not_run",
+  "prompts": [
+    {
+      "id": "FCI-NEXT01",
+      "order": 1,
+      "title": "Harden offline admission invariants",
+      "activation_gate": "Only when this proposed companion contract is being prepared for executable use; coordinate with any existing hardening assignment.",
+      "prompt": "Use implementation-blockers.json and offline-review.json to address all twelve demonstrated unsafe semantic mutations in an isolated candidate. Add positive controls for permitted private preservation, exact editions, mutable timestamp+hash snapshots and separately recorded historical/readback observations. Prove URI/date/date-time validation actually runs. Preserve historical submitted bytes. Do not acquire source bodies, touch live storage or collector state, publish, or label the eight acquisition cases executed.",
+      "stop_when": "Each demonstrated gap has a documented rejecting check and valid positive control, or its exact remaining blocker is reported.",
+      "execution_status": "not_started_by_consolidation"
+    },
+    {
+      "id": "FCI-NEXT02",
+      "order": 2,
+      "title": "Verify bounded OpenAlex enumeration",
+      "activation_gate": "A finite existing-qualified-source selection and shared request budget have been approved; no simultaneous provider workload.",
+      "prompt": "Use the already verified official paging documentation to test only a small frozen selection, with per_page at most 100, exact corpus/filters and unique Work-ID accounting. Record cursor termination, duplicate/changed-page checks and complete receipts. Keep caches/manuscripts excluded. Do not repeat the singleton solely to reproduce its already matching metadata. Preserve source quotas, retry limits and uncertainty if the population changes.",
+      "stop_when": "The finite selection is exhausted and reconciled, or the first unresolved access/completeness blocker is recorded.",
+      "execution_status": "not_started_by_consolidation"
+    },
+    {
+      "id": "FCI-NEXT03",
+      "order": 3,
+      "title": "Qualify permitted native-route evidence",
+      "activation_gate": "New publisher-supported permitted-access evidence is available; no retry or evasion of a denied route.",
+      "prompt": "For held MIT native workbooks and arXiv source containers only, inspect newly available official access evidence. Identify the exact supported route, version/snapshot binding, finite response limit and native-feature inventory requirements. Preserve historical denials and null origin status. Do not log in, use credentials or private storage, fetch manuscript/source/workbook bodies, bypass restrictions or infer server failure from a tool error. Obtain separate acquisition authority before any body retrieval.",
+      "stop_when": "Sufficient permitted-route preflight evidence is documented, or the precise remaining access/rights/identity gap is recorded.",
+      "execution_status": "not_started_by_consolidation"
+    },
+    {
+      "id": "FCI-NEXT04",
+      "order": 4,
+      "title": "Reconcile later research integration",
+      "activation_gate": "The single authorized repository writer selects this package for sequential integration after reviewing current-main drift.",
+      "prompt": "Prepare an additive research-only integration on the then-current verified base. Carry all eight submitted deliverables and the issued-assignment provenance through their manifest and review addenda. Register source corrections, holds and bounded followups without changing operational collector gates or independent-study totals. Reuse the already reconciled v3 archive identity; do not reread or redownload it solely for identity. If metadata destination presence matters, verify it only through an already authorized storage route; a local research body is not proof of durable collection presence. Run repository aggregate checks and independent review before publication under the parent workflow.",
+      "stop_when": "A reviewed additive candidate and exact remaining integration blocker are reported; publication or live mutation remains outside this prompt.",
+      "execution_status": "not_started_by_consolidation"
+    }
+  ],
+  "completed_checks_not_to_repeat": [
+    "ESPAI v3 retained-copy identity reconciliation",
+    "Exact ESPAI v1/v3 and CN017 v1 landing rights and exact links",
+    "Independent byte-identical singleton metadata observation",
+    "MIT landing-page data grant and advertised native links",
+    "Official OpenAlex cursor documentation",
+    "Supplied companion schema/static acceptance review"
+  ],
+  "superseded_intake_prompt_status": [
+    {
+      "id": "FCI-F01",
+      "status": "identity_portion_satisfied; metadata_destination_presence_not_established"
+    },
+    {
+      "id": "FCI-F02",
+      "status": "offline_review_complete; operational_hardening_remains"
+    },
+    {
+      "id": "FCI-F03",
+      "status": "rights_and_landing_checks_complete; native_route_holds_remain"
+    },
+    {
+      "id": "FCI-F04",
+      "status": "documentation_portion_complete; bounded_execution_remains"
+    }
+  ]
+}

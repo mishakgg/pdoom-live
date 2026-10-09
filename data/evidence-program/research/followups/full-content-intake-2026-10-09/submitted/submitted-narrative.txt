@@ -1,0 +1,289 @@
+## Decision
+
+**The strongest first tranche is an exact, rights-qualified arXiv PDF with complete OpenAlex discovery metadata.** Reuse the already retained original where its identity matches. OpenAlex’s cached full-text service, arXiv’s native source packages, and MIT’s complete workbook export each retain specific unresolved access or identity requirements.
+
+The key distinction is that **permission to preserve, successful acquisition, analytical inclusion, and public redistribution are separate decisions**. A missing analytical mapping does not prevent lawful preservation. Conversely, an openly accessible page or a metadata license does not clear every linked body.
+
+### Deliverables
+
+The complete bundle contains the specification, schema, populated ledger, eight acceptance cases, the unchanged observed OpenAlex record, its receipt, and validation notes:
+
+**full_content_intake_review_2026-10-09.zip (referenced in the submission; not supplied)**
+
+| Deliverable | Contents |
+|---|---|
+| full_content_acquisition_spec.json[full_content_acquisition_spec.json](full_content_acquisition_spec.json) | Ranked decisions, enumeration, retrieval, versioning, retries, completeness, storage and remaining blockers |
+| full_content_intake.schema.json[full_content_intake.schema.json](full_content_intake.schema.json) | Proposed JSON Schema Draft 2020-12; separate from the repository’s canonical contracts |
+| full_content_artifact_ledger.json[full_content_artifact_ledger.json](full_content_artifact_ledger.json) | Eighteen external evidence records, fourteen artifact records, pinned repository reads, rights, observations and uncertainty |
+| full_content_acceptance_cases.json[full_content_acceptance_cases.json](full_content_acceptance_cases.json) | Exactly eight input/expected-output cases, all explicitly **unexecuted** |
+
+## 1. Repository and inspection boundary
+
+**Current main inspected:** [720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc](https://github.com/mishakgg/pdoom-live/commit/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc)  
+**Inspection date:** **9 October 2026**, with evidence timestamps recorded in UTC.  
+**Planning baseline:** `33a26fae7e31c4e729f0627fb7b91764343f9f63`. Its contents were not independently inspected; findings refer to the pinned current-main commit.
+
+All three required files were available. I also inspected the acquisition JSON, continuous-queue status, dataset specification, claim-to-result provenance research, rights-release follow-up, follow-up queue and the recorded research assignment. The ledger includes exact paths, URLs, read timestamps, lengths and hashes.
+
+Two repository distinctions materially affect the recommendation:
+
+- The newer preservation policy records **completed historical originals**, while the older machine-readable acquisition manifest retains earlier selection-stage statuses. I preserved that temporal distinction.
+- The observed OpenAlex stream records **six complete metadata pages, 30 unique Work identifiers and two incomplete author backfills**. It explicitly reports no linked manuscript acquisition. Its **256 KiB object cap** is separate from the historical **10 MiB per-artifact transfer harness**. Neither establishes a general full-content collector. See the pinned [acquisition policy](https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/FULL_CONTENT_ACQUISITION.md) and [continuous-queue status](https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/COLLECTION_CONTINUOUS_QUEUE.md).
+
+The external budget was **exactly eighteen distinct primary rights/access artifacts**: six OpenAlex, seven arXiv and five MIT, including two blocked export targets. The representative scope was one OpenAlex lineage, two arXiv lineages and one MIT workbook lineage; the ESPAI paper is shared between the first two routes.
+
+No manuscript or native export was downloaded, no login or paid service was used, no repository was edited, and no live collection was deployed. One small, complete public OpenAlex metadata response was inspected and preserved as research evidence.
+
+## 2. Ranked acquire/hold decisions
+
+| Rank | Route | Preservation decision | Precise unresolved evidence |
+|---|---|---|---|
+| **1** | **arXiv exact-version PDFs** | Reconcile and reuse historically retained ESPAI editions. Additional bounded PDFs can qualify through version-specific rights and current access checks. | A fresh request still needs current source-policy and transfer preflight. Native source packages remain separately held. |
+| **2** | **OpenAlex-linked originals** | Preserve complete permitted metadata; qualify each selected primary copy independently. The sample resolves to an eligible direct arXiv edition. | For unbound publisher copies: the exact edition and applicable grant. For cached content: authorized service access and authoritative cached-object/edition/license binding. |
+| **3** | **MIT complete native export** | The data grant is explicit, but the complete export route remains held. | A publisher-supported anonymous workbook response, followed by byte integrity and a separate native-coverage assessment. |
+
+**Public redistribution remains independently assessed.** An exact CC BY 4.0 article or MIT-licensed database export can be eligible with attribution, but this research request does not authorize publication. arXiv’s standard distribution terms do not establish third-party public serving rights. [arXiv info](https://info.arxiv.org/help/license/index.html?utm_source=chatgpt.com)
+
+## 3. OpenAlex-linked openly licensed full text
+
+### Enumerable population and legitimate routes
+
+The acquisition unit should be:
+
+**Work → location → exact edition → representation → observed bytes.**
+
+A Work is an organizing identity, not a guarantee of one manuscript edition. OpenAlex documents that a Work can combine preprint and journal locations; its canonical DOI can be the published DOI, and its metadata-update timestamp can change with citation counts. Neither identifies a new manuscript version. [OpenAlex Help Center](https://help.openalex.org/data/works/attributes/?utm_source=chatgpt.com)
+
+For a small tranche, freeze an explicit identifier/query manifest and preserve complete JSON responses. For expansion, record the selected corpus—`core`, `expansion` or `all`—and all filters and exclusions. A snapshot route needs an actual release manifest with its file membership, counts and lengths. **No current snapshot manifest or exhaustive relevant-work population was inspected.**
+
+Native metadata formats are API JSON and snapshot gzip JSONL or Snappy Parquet. OpenAlex also documents cached PDFs and GROBID-derived TEI XML. The cached files require an API key; full archive synchronization requires a paid service and issued credentials. Those services were documented, not exercised. [OpenAlex Help Center](https://help.openalex.org/access/snapshot/?utm_source=chatgpt.com)
+
+### Representative lineage: a consequential identity mismatch
+
+A bounded anonymous request for the preprint DOI `10.48550/arXiv.2401.02843` returned **Work W4414876758**, whose canonical DOI is the JAIR publication `10.1613/jair.1.19087`.
+
+The response was **HTTP 200, 18,977 bytes**, observed at **2026-10-09T15:34:12.583153Z**. The unchanged response and observation receipt are included in the bundle:
+
+- [openalex_W4414876758_observed.json](openalex_W4414876758_observed.json)
+- [openalex_W4414876758_receipt.json](openalex_W4414876758_receipt.json)
+
+| Observed location or representation | What the response establishes | Acquisition consequence |
+|---|---|---|
+| JAIR publication location | `cc-by` label, `publishedVersion`, publisher PDF URL | Publisher’s exact edition/grant was not inspected; hold that body |
+| arXiv OAI location | `cc-by`, `submittedVersion`, **unversioned** PDF URL | Resolve an explicit `vN`; do not label this URL v3 |
+| arXiv DOI location | Another identifier, with version and PDF URL null | Preserve the identity relation; do not count another original |
+| OpenAlex cached PDF and TEI | Availability flags and service URLs | Cached edition and origin remain unresolved |
+
+The separately inspected **arXiv v3 page** provides an exact version, a pinned PDF link and a CC BY 4.0 article-rights link. That qualifies the direct arXiv candidate; it does not transfer permission or byte identity to the JAIR or cached objects. [arxiv.org](https://arxiv.org/abs/2401.02843v3?utm_source=chatgpt.com)
+
+Accordingly, the cached artifact records have **null origin and license fields**, with the location claims retained as supporting evidence. They do not silently inherit the arXiv grant.
+
+### Rights, limits, updates and deletions
+
+OpenAlex’s metadata is CC0. Its cached PDFs retain their original copyright; OpenAlex grants no additional content rights. GROBID XML is a derivative that can omit content and cannot replace preservation of the complete original. [OpenAlex Help Center](https://help.openalex.org/access/sync/?utm_source=chatgpt.com)
+
+The inspected access documentation specifies a **$0.10/day keyless metadata allowance**, a **100-request/second ceiling**, **100 records per page**, and a **10,000-result basic-pagination limit**. These are documented ceilings, not proposed operating targets. The observed external-DOI request consumed one reported credit, so the specification does not assume it behaves like the documentation’s free exact-ID singleton example. [OpenAlex Help Center](https://help.openalex.org/api/llm-quick-reference/?utm_source=chatgpt.com)
+
+The required lifecycle distinctions are:
+
+- **Metadata changes:** retain changed complete responses without treating every change as a paper revision.
+- **Snapshot changes:** the public bucket replaces prior releases, so preserve the actual release identity needed for reproducibility.
+- **Cached-object changes:** the documented daily replacement Parquet manifest maps Work IDs to PDF/XML object UUIDs. A publisher URL cannot substitute for that mapping.
+- **Deletions:** a missing or merged-away Work ID can return 404 without a survivor redirect. The works deletion file is replacement state, not an append-only event stream. The same documentation describes rare restoration and also calls deletion final; that inconsistency remains explicit. [OpenAlex Help Center](https://help.openalex.org/access/sync/?utm_source=chatgpt.com)
+
+**Unblocking evidence:** qualify the exact primary edition and its grant for direct copies. For cached service intake, additionally establish authorized access, exact object/edition binding, finite membership and capacity. The paid `from_created_date` and `from_updated_date` filters do not establish a keyless incremental-completeness route. [OpenAlex Help Center](https://help.openalex.org/access/sync/?utm_source=chatgpt.com)
+
+## 4. arXiv versioned originals
+
+### Enumeration must expand articles into versions
+
+The documented OAI endpoint is `https://oaipmh.arxiv.org/oai`. An OAI item represents an article with current metadata; `arXivRaw` includes version history. This is not evidence that every historical version has independently exposed license metadata.
+
+The specification separates the record’s modification `datestamp`, version-submission time and server `responseDate`. Incremental checkpoints use the last completed server response boundary with overlap and deduplication. Resumption tokens expire daily and no longer supply a total or cursor; an incomplete sequence cannot establish exhaustive membership. The live `Identify` deletion policy and exact historical-rights field coverage remain uninspected. [arXiv info](https://info.arxiv.org/help/oa/index.html?utm_source=chatgpt.com)
+
+### Exact inspected editions
+
+| Existing source | Edition inspected | Submission time | Observed article-rights link |
+|---|---|---|---|
+| GL010 / FS001 | `2401.02843v1` | 5 January 2024, 14:53:09 UTC | CC BY 4.0 |
+| GL010 / FS001 | `2401.02843v3` | 8 October 2025, 18:38:53 UTC | CC BY 4.0 |
+| CN017 | `2310.19852v1` | 30 October 2023, 15:52:15 UTC | Standard arXiv nonexclusive distribution terms |
+
+The three exact-version landing pages were accessible. Their linked PDF/source bodies were not fetched. ESPAI v2’s license and preservation status are retained as **historical repository evidence**, not a newly inspected version page. [arxiv.org](https://arxiv.org/abs/2401.02843v1?utm_source=chatgpt.com)
+
+One concrete extraction hazard is already demonstrated: the ESPAI version pages’ generic `citation_pdf_url` is unversioned, while their visible PDF links include `v1` or `v3`. **Use the exact-version download link; reject silent substitution with “latest.”**
+
+### Private research preservation and public serving resolve differently
+
+The current API terms explicitly allow retrieving, storing and using e-print content for personal or research purposes. They separately require applicable permission for public serving.
+
+Therefore, **CN017’s standard arXiv license is not, by itself, a private-research preservation hold**. It remains a public-redistribution hold without an additional applicable grant. Technical access restrictions and component-specific notices still apply. This conclusion does not authorize model training or all downstream uses. [arXiv info](https://info.arxiv.org/help/api/tou.html?utm_source=chatgpt.com)
+
+Licenses can differ across versions. A later permissive license must not be inherited backward, and a version’s license record must remain attached to that edition. [arXiv info](https://info.arxiv.org/help/license/index.html?utm_source=chatgpt.com)
+
+### Native source access remains unresolved
+
+The sampled pages expose exact `/src/...vN` links labeled “TeX Source.” **That label does not establish the actual container, member list, MIME type or bytes.** The eventual reader must detect the submitted representation rather than assume every source is a TeX tarball.
+
+The pinned acquisition manifest records a prior robots inspection that allowed the targeted PDF routes, disallowed `/src` and `/e-print`, and recorded a fifteen-second article crawl delay. **This is dated repository evidence, not a fresh robots inspection.** No source request was made to resolve it. See the pinned [acquisition manifest](https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/data/evidence-program/full-content-acquisition.json).
+
+The official bulk overview identifies S3 as the accepted complete-corpus route and rejects complete-corpus programmatic crawling of the web service. However, its linked S3 detail page, manifests, access/payment conditions and historical-version coverage were outside the allocated checks. **“All available articles” was not interpreted as “every historical version.”** [arXiv info](https://info.arxiv.org/help/bulk_data.html?utm_source=chatgpt.com)
+
+For legacy metadata APIs, the documented limit is one request every three seconds and one connection across the operator’s controlled machines. That does not override the separate article/source policy. [arXiv info](https://info.arxiv.org/help/api/tou.html?utm_source=chatgpt.com)
+
+### Deletion boundary and exact unblocking evidence
+
+The permanent-record statement does not establish a full withdrawal or takedown protocol. The specification records withdrawal, access failure and rights changes separately; it does not propagate a version-local withdrawal across the lineage or destroy a permitted original because metadata disappears. [arXiv info](https://info.arxiv.org/help/license/index.html?utm_source=chatgpt.com)
+
+The remaining requirements are narrowly scoped:
+
+- **Native source:** current policy or a supported alternate route resolving the recorded restriction, followed by finite container/size/member and integrity verification.
+- **Complete versioned corpus:** an authoritative manifest establishing historical-version membership, legitimate access conditions and update/removal semantics.
+- **Automated deletion handling:** current withdrawal/takedown policy and the live OAI deletion declaration.
+
+These gaps do not block reuse of an independently qualified PDF.
+
+## 5. MIT AI Risk Repository complete native export
+
+### The data grant is explicit; export access is unverified
+
+The official repository page identifies the database’s source metadata, supporting quotations/page references and taxonomy mappings, and expressly licenses MIT AI Risk Initiative data under CC BY 4.0. That supports the advertised database; it does not license the complete bodies of cited papers. [airisk.mit.edu](https://airisk.mit.edu/risks?utm_source=chatgpt.com)
+
+The two official workbook links did not yield native content:
+
+| Official route | Observed public access result | What remains unknown |
+|---|---|---|
+| Google Sheets `/copy` link | Retrieval reported an account sign-in redirect | Workbook bytes, export type, sheet inventory and revision |
+| OneDrive workbook link | Retrieval reported a Microsoft authentication redirect | Workbook bytes, actual format and equivalence to the Google copy |
+
+The displayed error codes were retrieval-tool results, not verified origin-server status codes. These observations do not prove that every supported anonymous export method is unavailable. They establish that **the advertised routes checked here did not verify one**. No authentication was attempted. 
+
+### Population, versions and native completeness
+
+The current page advertises **1,700+ risks from 74 frameworks**, while its FAQ retains **1,600+/65**. Neither was used as a verified export denominator. Risk entries and source documents are separate populations. [airisk.mit.edu](https://airisk.mit.edu/risks?utm_source=chatgpt.com)
+
+The release announcement documents Version 4 on **4 December 2025**, following releases in August 2024, December 2024 and April 2025. It does not bind either current workbook link to immutable Version 4 bytes. Historical export locators, a fixed update schedule and deletion semantics were not established. [airisk.mit.edu](https://airisk.mit.edu/blog/repository-update-december-2025?utm_source=chatgpt.com)
+
+**Actual format and size remain unknown.** Google Sheets and OneDrive workbook links are advertised; a downloadable XLSX was not verified. A future complete-native claim must account for sheets, fields, references and required notes, including information lost by an export.
+
+### What precisely unlocks this route
+
+The first missing item is **a publisher-supported anonymous route returning a complete authentic workbook export**.
+
+Once such bytes are available:
+
+1. Preserve the complete export with its hash, time, origin and applicable grant.
+2. Use a publisher revision when supplied; otherwise use an **observed snapshot identity** and leave the official release null.
+3. Separately assess native coverage against a publisher manifest or native sheet/field enumeration.
+4. Preserve required sidecars through supported routes when the export omits native information.
+
+**An official immutable release number and finished semantic mapping are not prerequisites to preserving lawful complete export bytes.** Unknown notes coverage limits the claim of native completeness. A complete single-tab CSV can also be preserved if permitted, but must remain labeled a partial database representation.
+
+No numeric provider rate limit or dependable workbook-size estimate was established. A proposed single concurrent request is an internal throttle, not a discovered provider allowance.
+
+## 6. Acquisition specification
+
+The supplied specification uses the following common controls. These are proposed requirements; no collection implementation was exercised.
+
+### Enumeration and identity
+
+Freeze the selection before acquisition, recording exact IDs, filters, corpus, observation interval and exclusions. Keep separate counts for:
+
+- Logical works or datasets.
+- Publisher versions.
+- Locations and representations.
+- Complete retained blobs.
+- Incomplete, held and excluded candidates.
+
+Preserve complete native fields, original language and unknown values. For worldwide expansion, do not silently exclude regions or languages, and do not treat a narrow author query or an AI subject category as an exhaustive population.
+
+Deduplicate physical storage by complete SHA-256 and length, while retaining all URL, rights, version and observation relationships. A journal version, preprint revision, mirror, parse and transport package do not automatically add independent scientific coverage.
+
+### Retrieval, retries and commitment
+
+Each source request needs a selected exact URL, applicable rights evidence, current access qualification and a finite transfer ceiling.
+
+The proposed retry policy allows up to five attempts for transient failures, with exponential backoff and jitter. It honors `Retry-After` and quota resets. Long delays are checkpointed for a later retry rather than shortened.
+
+Authentication redirects, explicit policy denials, changed identity, unexpected media types or exceeded size bounds stop the candidate. A 404/410 records an unresolved access event; it does not itself prove deletion.
+
+Partial transfers may resume only with consistent validators, contiguous ranges, stable totals and encoding. **Never concatenate ranges from different versions.** Destination outcomes that are uncertain must reconcile the same transaction before another write.
+
+Commit the retained-object receipt only after whole-byte integrity and raw readback verification. Advance enumeration checkpoints only after the corresponding enumeration unit is complete. Individual complete permitted objects may be retained during a partial backfill without falsely completing that backfill.
+
+### Completeness is multidimensional
+
+| Check | What it establishes |
+|---|---|
+| Whole-response integrity | The retained bytes constitute the complete response |
+| Representation completeness | The complete PDF, CSV or package was retained |
+| Native-feature coverage | Required sheets, notes, source files or other native components are present |
+| Population completeness | The declared enumeration frame was exhausted |
+| Historical completeness | Every version claimed by the selected historical scope is accounted for |
+| Analytical readiness | Identities, constructs, denominators and uncertainty are mapped adequately |
+
+Passing one does not imply the others. This is particularly important for MIT exports, OpenAlex TEI and arXiv PDFs without submitted source packages.
+
+### Expected storage
+
+| Quantity | Value | Evidence status |
+|---|---:|---|
+| Observed OpenAlex sample | **18,977 bytes** | Measured complete metadata response |
+| ESPAI PDF v1 | **5,925,368 bytes** | Historical repository receipt |
+| ESPAI PDF v2 | **5,925,409 bytes** | Historical repository receipt |
+| ESPAI PDF v3 | **5,902,763 bytes** | Historical repository receipt |
+| Three historical PDFs combined | **17,753,540 bytes** | Sum of historical receipts |
+| Native arXiv source packages | **Unknown** | No source body inspected |
+| MIT complete workbook | **Unknown** | No export or reliable length obtained |
+
+The historical PDF lengths and identities come from the pinned [preservation reconciliation](https://github.com/mishakgg/pdoom-live/blob/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/FULL_CONTENT_ACQUISITION.md); they are not fresh body measurements.
+
+For scale context only, OpenAlex documents approximately **615 GB compressed works metadata**, **250 TB of cached PDFs** and **20 TB of TEI**. These publisher estimates establish that complete mirrors require a different storage plan from the present bounded environment. They were not downloaded or independently measured. [OpenAlex Help Center](https://help.openalex.org/access/snapshot/?utm_source=chatgpt.com)
+
+Budget retained originals, partial/reconstruction space, readback working space, evidence manifests and bounded extraction separately. Preserve the repository’s **25,000,000,000-byte scratch maximum and 5,000,000,000-byte reserve**. Do not split a native workbook into CSVs to evade a transfer limit.
+
+## 7. Schema and eight acceptance cases
+
+The schema keeps rights, access observations, content state, hash scope, native coverage, analytical status and publication authorization independent. Unknown versions and sizes remain null. Historical receipt hashes are explicitly distinguishable from fresh measurements.
+
+It allows a complete lawful original with:
+
+- No official publisher revision.
+- A timestamp-and-hash snapshot identity.
+- Unknown native-feature coverage.
+- Pending analytical mapping.
+- No authorization to publish.
+
+The outer schema describes **this fixed research review**. Its reusable artifact definition supports future observations; it is not a production collector contract.
+
+### Proposed acceptance cases — all unexecuted
+
+| Case | Input | Expected output |
+|---|---|---|
+| **ACQ-01: Mixed licenses** | One exact CC BY repository edition, an unlicensed publisher location and an unidentified cached PDF | Qualify only the bound repository edition; hold the other bodies |
+| **ACQ-02: Stale link** | A previously retained v1 URL returns 404; a same-title “latest” link appears | Retain prior evidence, record access failure, resolve the replacement independently; no silent substitution |
+| **ACQ-03: Version-specific rights** | v1 has standard arXiv terms, v2 has CC BY; generic PDF metadata omits the version | Research-private eligibility assessed separately; public hold on v1; retrieve explicit version links |
+| **ACQ-04: Source restriction** | CC BY article, permitted complete PDF, explicitly restricted source URL | Preserve the PDF; send no source request; leave native submission completeness unresolved |
+| **ACQ-05: Partial export** | Complete risk-only CSV with a plausible row count, but sources/taxonomies/notes absent | Preserve permitted CSV bytes; mark database coverage partial; no complete-export claim |
+| **ACQ-06: Unnumbered snapshot** | Complete legitimate workbook with a verified hash, no official revision and unknown notes coverage | Preserve as an observed snapshot; do not invent Version 4 or wait for semantic mapping |
+| **ACQ-07: Retry and integrity** | 429 with a delay, followed by partial ranges with different ETags | Honor the delay; reject concatenation; preserve the last committed cursor and reconcile safely |
+| **ACQ-08: Deletion and restoration** | Explicit metadata deletion/location movement, later restoration, then absence in a partial query | Preserve event history; reconcile identity; infer neither manuscript withdrawal nor deletion from partial absence |
+
+Local checks passed for JSON syntax, references, counts, metadata bytes/hash and the schema constraints used here. A standards-complete JSON Schema engine was unavailable; the validation_summary.json[validation_summary.json](validation_summary.json) records that limitation. **None of the eight acquisition cases was executed.**
+
+## Smallest genuinely deployable tranche and remaining blockers
+
+The smallest supported scope for a later bounded deployment is:
+
+**One historically retained ESPAI v3 PDF, its exact version-rights record, and the complete observed OpenAlex metadata record.**
+
+The PDF is **5,902,763 historical bytes**, below the historical 10 MiB artifact bound. If its existing blob is reconciled successfully, it requires **zero new manuscript bytes**. The metadata contributes **18,977 source bytes**; its presence in the historical collection has not been established.
+
+The remaining blockers are concrete:
+
+1. **Reconcile the exact existing PDF and receipt.** This review did not reread the private archive.
+2. **For any fresh PDF request, complete current source-policy and bounded transfer/readback checks.**
+3. **Keep the 256 KiB automated metadata bridge separate from the historical PDF transfer route.** A new unattended full-content collector is not demonstrated.
+4. **Resolve the recorded native-source restriction before arXiv source intake, and obtain a supported anonymous workbook response before MIT native intake.**
+
+This tranche adds verifiable provenance and usable original content without counting a duplicate PDF as new evidence. **No new complete-native intake route was demonstrated deployable within this bounded review; the exact evidence needed to unlock each remains recorded rather than assumed.**

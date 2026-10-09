@@ -1274,5 +1274,61 @@
     "base_tree_sha": "b48f3c4de93d6de6ce1dab8caf383b01993461ab",
     "source_review_commit": "246f746e3a267363c7f6d2e0494eb72fb4c98bc9",
     "scope": "Current scoped repository blobs verified after E documentary integration and disjoint collection-code PR 347. The four collection paths remain unchanged. F source-review pin, fresh LiveSec document pin and original uninspected 87dda3d baseline/null inspected commit remain separate."
-  }
+  },
+  "additional_research_sessions": [
+    {
+      "session_id": "2026-10-09-01-full-content-intake",
+      "title": "Qualify scalable full-content intake routes",
+      "assignment_path": "docs/evidence-program/research/followups/prompts/research-assignments-2026-10-09.md",
+      "assignment_number": 1,
+      "guide_path": "docs/evidence-program/research/followups/full-content-intake-2026-10-09.md",
+      "disposition_path": "data/evidence-program/research/followups/full-content-intake-2026-10-09/final-disposition.json",
+      "provenance_path": "data/evidence-program/research/followups/full-content-intake-2026-10-09/submission-provenance.json",
+      "implementation_blockers_path": "data/evidence-program/research/followups/full-content-intake-2026-10-09/implementation-blockers.json",
+      "research_status": "qualified_research_review_complete",
+      "integration_status": "reviewed_research_included_in_this_version",
+      "integration_base_commit": "720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc",
+      "integration_checked_at": "2026-10-09T16:34:36.149038+00:00",
+      "package_snapshot": "Immutable pre-publication review; publication fields in package files retain their dated historical meaning.",
+      "count_scope": "One separate research session; does not alter the original 26 sessions or earlier follow-up/deep-bundle counts.",
+      "supplied_artifact_count": 8,
+      "included_package_file_count": 20,
+      "semantic_enforcement_gaps": 12,
+      "acquisition_cases": {
+        "proposed": 8,
+        "executed": 0
+      },
+      "operational_admission": "not_admitted",
+      "acquisition_ready": false,
+      "collector_enabled": false,
+      "remote_merge_verified": false,
+      "verification_gates": [
+        {
+          "id": "FCI-V01",
+          "status": "current_integration_base_rechecked",
+          "commit": "720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc"
+        },
+        {
+          "id": "FCI-V02",
+          "status": "bounded_rights_version_review_complete_native_holds_remain"
+        },
+        {
+          "id": "FCI-V03",
+          "status": "metadata_documentation_review_complete_cached_objects_and_enumeration_held"
+        },
+        {
+          "id": "FCI-V04",
+          "status": "grant_landing_review_complete_native_export_held"
+        },
+        {
+          "id": "FCI-V05",
+          "status": "offline_static_review_complete_12_semantic_blockers_8_cases_unexecuted"
+        },
+        {
+          "id": "FCI-V06",
+          "status": "sanitized_reviewed_package_included_remote_merge_separate"
+        }
+      ]
+    }
+  ]
 }

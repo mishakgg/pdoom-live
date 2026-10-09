@@ -1,0 +1,69 @@
+{
+  "status": "open_requirements_not_implemented",
+  "production_admission_blocked": true,
+  "blockers": [
+    {
+      "blocker_id": "FCI-B01",
+      "priority": "P0",
+      "title": "Separate decisions from completed operations",
+      "mutation_probe_ids": [
+        "GAP_retained_original_without_bytes",
+        "GAP_metadata_relabelled_retained_original",
+        "GAP_review_envelope_accepts_fresh_original"
+      ],
+      "required_change": "Separate eligibility/proposal, attempted request, observed bytes, committed retention, archive readback, analytical inclusion and publication. Completed retention requires legitimate access plus complete scoped bytes/hash/time and confirmed destination commit/readback. Reconcile operations and observations independently; archive readback may observe bytes without a new source download. Preserve fixed historical research envelopes.",
+      "completion_evidence": "Every listed mutation rejected; positive fixtures admit only correctly scoped complete records; no automatic promotion from an action enum."
+    },
+    {
+      "blocker_id": "FCI-B02",
+      "priority": "P0",
+      "title": "Bind rights to object, edition and use",
+      "mutation_probe_ids": [
+        "GAP_unsupported_public_rights_standard_arxiv",
+        "GAP_affirmative_permission_without_evidence",
+        "GAP_exact_publisher_version_without_identity"
+      ],
+      "required_change": "Require a structured applicable grant/basis with nonempty resolving evidence, exact object/edition binding where claimed, and permitted use. Private research storage can have a non-open-license basis; public eligibility must have an actual applicable redistribution grant. Publication authorization remains independent and false here.",
+      "completion_evidence": "Reject missing grant/evidence/version and unsupported public eligibility while preserving valid research-private positive cases and timestamp+hash mutable snapshots."
+    },
+    {
+      "blocker_id": "FCI-B03",
+      "priority": "P1",
+      "title": "Enforce content-state and coverage transitions",
+      "mutation_probe_ids": [
+        "GAP_unrequested_locally_verified_and_complete",
+        "GAP_partial_state_complete_scope_no_bytes",
+        "GAP_historical_bytes_claim_verified_locally"
+      ],
+      "required_change": "Blocked/unrequested objects cannot claim local byte verification or complete native coverage. Partial measurements use partial-only scope. Historical measurements remain historically reported; later readback is a distinct observation. Bind format, representation and state consistently. Native coverage requires inventory comparison beyond byte integrity.",
+      "completion_evidence": "Reject all state contradictions and accept explicit separately recorded historical/readback observations without rewriting history."
+    },
+    {
+      "blocker_id": "FCI-B04",
+      "priority": "P1",
+      "title": "Require semantic identity and reference checks",
+      "mutation_probe_ids": [
+        "GAP_dangling_reference",
+        "GAP_duplicate_artifact_identifier",
+        "GAP_count_not_linked_to_evidence_array"
+      ],
+      "required_change": "Require unique keyed IDs, closed evidence/artifact/blocker/case refs, derived counts, canonical study edges, exact URL/version checks and evidence chronology. Schema documents that its semantic layer is necessary; never treat a schema-only pass as that layer.",
+      "completion_evidence": "All 155 existing checked references stay closed, duplicate/dangling/count mutations fail, and metadata/editions/representations do not inflate independent-study coverage."
+    },
+    {
+      "blocker_id": "FCI-B05",
+      "priority": "P1",
+      "title": "Make format validation and acquisition fixtures real",
+      "mutation_probe_ids": [],
+      "required_change": "Pin working format dependencies or explicit tested checkers, including negative URI/date/date-time controls. Convert the eight prose cases into a separate executable harness with shared legitimate-access/rights/transfer/readback preconditions. Keep proposed versus actually executed results distinct.",
+      "completion_evidence": "Prove format controls run; record separate executed positive/negative invariant tests. ACQ execution count changes only for actual authorized acquisition-harness execution, never for static review."
+    }
+  ],
+  "additional_route_holds": [
+    "OpenAlex cached-object access plus exact UUID/edition/grant binding unverified",
+    "arXiv source-container permitted transport, package members and all-version manifest coverage unverified",
+    "MIT native access, snapshot/revision identity, complete native-feature coverage and mirror equivalence unverified",
+    "Finite OpenAlex selected-population enumeration and reconciliation unexecuted"
+  ],
+  "relationship_to_other_work": "Requirements only. Reuse any already assigned contract-hardening work; do not create a competing live writer or silently replace the canonical contract."
+}

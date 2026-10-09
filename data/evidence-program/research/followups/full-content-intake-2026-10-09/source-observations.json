@@ -1,0 +1,350 @@
+{
+  "scope": "Sanitized measured receipts from the prior source-review pass; no new observations by consolidation.",
+  "sanitization": [
+    "Omit transient rate-limit headers.",
+    "Replace copied submission-history prose with exact requested-version date.",
+    "Retain publisher-advertised public MIT workbook links; these are not private collection storage identifiers."
+  ],
+  "observations": [
+    {
+      "request_url": "https://arxiv.org/abs/2401.02843v1",
+      "observed_at": "2026-10-09T16:12:19.571310+00:00",
+      "method": "bounded anonymous GET",
+      "byte_cap": 131072,
+      "linked_body_requests": false,
+      "effective_url": "https://arxiv.org/abs/2401.02843v1",
+      "http_status": 200,
+      "headers": {
+        "Content-Length": "44345",
+        "content-type": "text/html; charset=utf-8",
+        "last-modified": "Mon, 24 Aug 2026 20:03:38 GMT"
+      },
+      "complete": true,
+      "bytes": 44345,
+      "sha256": "108be5fbde52fba7e58ecd1721ed7369ae687f4f7c69a584d4be88b56e16c43a",
+      "selected_fields": {
+        "title": "[2401.02843v1] Thousands of AI Authors on the Future of AI",
+        "citation_pdf_url": "https://arxiv.org/pdf/2401.02843",
+        "license_href": "http://creativecommons.org/licenses/by/4.0/",
+        "full_text_links": [
+          {
+            "text": "View PDF",
+            "href": "/pdf/2401.02843v1"
+          },
+          {
+            "text": "View PDF",
+            "href": "/pdf/2401.02843v1"
+          },
+          {
+            "text": "TeX Source",
+            "href": "/src/2401.02843v1"
+          }
+        ],
+        "requested_version_submission_time": "2024-01-05T14:53:09Z"
+      },
+      "hash_scope": "complete landing HTML received; HTML not stored; selected attributes preserved"
+    },
+    {
+      "request_url": "https://arxiv.org/abs/2401.02843v3",
+      "observed_at": "2026-10-09T16:12:28.872301+00:00",
+      "method": "bounded anonymous GET",
+      "byte_cap": 131072,
+      "linked_body_requests": false,
+      "effective_url": "https://arxiv.org/abs/2401.02843v3",
+      "http_status": 200,
+      "headers": {
+        "Content-Length": "46334",
+        "last-modified": "Mon, 24 Aug 2026 19:11:43 GMT",
+        "content-type": "text/html; charset=utf-8"
+      },
+      "complete": true,
+      "bytes": 46334,
+      "sha256": "b2b63726d60f76755f634cc436d994372316cca738a89c55b88356abc9d991c0",
+      "selected_fields": {
+        "title": "[2401.02843v3] Thousands of AI Authors on the Future of AI",
+        "citation_pdf_url": "https://arxiv.org/pdf/2401.02843",
+        "license_href": "http://creativecommons.org/licenses/by/4.0/",
+        "full_text_links": [
+          {
+            "text": "View PDF",
+            "href": "/pdf/2401.02843v3"
+          },
+          {
+            "text": "View PDF",
+            "href": "/pdf/2401.02843v3"
+          },
+          {
+            "text": "TeX Source",
+            "href": "/src/2401.02843v3"
+          }
+        ],
+        "requested_version_submission_time": "2025-10-08T18:38:53Z"
+      },
+      "hash_scope": "complete landing HTML received; HTML not stored; selected attributes preserved"
+    },
+    {
+      "request_url": "https://arxiv.org/abs/2310.19852v1",
+      "observed_at": "2026-10-09T16:12:37.379321+00:00",
+      "method": "bounded anonymous GET",
+      "byte_cap": 131072,
+      "linked_body_requests": false,
+      "effective_url": "https://arxiv.org/abs/2310.19852v1",
+      "http_status": 200,
+      "headers": {
+        "Content-Length": "46820",
+        "content-type": "text/html; charset=utf-8",
+        "last-modified": "Mon, 24 Aug 2026 21:15:12 GMT"
+      },
+      "complete": true,
+      "bytes": 46820,
+      "sha256": "4e65f9867250a5a2c60e435646c590c5f44039be97d25d2560e55e96f801bb09",
+      "selected_fields": {
+        "title": "[2310.19852v1] AI Alignment: A Comprehensive Survey",
+        "citation_pdf_url": "https://arxiv.org/pdf/2310.19852",
+        "license_href": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+        "full_text_links": [
+          {
+            "text": "View PDF",
+            "href": "/pdf/2310.19852v1"
+          },
+          {
+            "text": "View PDF",
+            "href": "/pdf/2310.19852v1"
+          },
+          {
+            "text": "TeX Source",
+            "href": "/src/2310.19852v1"
+          }
+        ],
+        "requested_version_submission_time": "2023-10-30T15:52:15Z"
+      },
+      "hash_scope": "complete landing HTML received; HTML not stored; selected attributes preserved"
+    },
+    {
+      "request_url": "https://api.openalex.org/works/https://doi.org/10.48550/arXiv.2401.02843",
+      "observed_at": "2026-10-09T16:12:46.163487+00:00",
+      "method": "bounded anonymous GET",
+      "byte_cap": 131072,
+      "linked_body_requests": false,
+      "effective_url": "https://api.openalex.org/works/https://doi.org/10.48550/arXiv.2401.02843",
+      "http_status": 200,
+      "headers": {
+        "Content-Type": "application/json",
+        "Content-Length": "18977"
+      },
+      "complete": true,
+      "bytes": 18977,
+      "sha256": "2059381f704239c6823f810f49dffa93a438efbda3e4928357f4739dd7e3d409",
+      "hash_scope": "complete observed metadata response",
+      "body_file": "submitted/openalex_W4414876758_observed.json",
+      "selected_fields": {
+        "id": "https://openalex.org/W4414876758",
+        "doi": "https://doi.org/10.1613/jair.1.19087",
+        "publication_date": "2025-10-06",
+        "primary_location": {
+          "id": "doi:10.1613/jair.1.19087",
+          "is_oa": true,
+          "landing_page_url": "https://doi.org/10.1613/jair.1.19087",
+          "pdf_url": "https://www.jair.org/index.php/jair/article/download/19087/27230",
+          "source": {
+            "id": "https://openalex.org/S139930977",
+            "display_name": "Journal of Artificial Intelligence Research",
+            "issn_l": "1076-9757",
+            "issn": [
+              "1076-9757",
+              "1943-5037"
+            ],
+            "is_oa": true,
+            "is_in_doaj": true,
+            "is_core": true,
+            "listed_in": [
+              "cwts-core",
+              "doaj",
+              "erih-plus",
+              "jufo-3",
+              "norway-2"
+            ],
+            "host_organization": "https://openalex.org/P4310315760",
+            "host_organization_name": "AI Access Foundation",
+            "host_organization_lineage": [
+              "https://openalex.org/P4310315760"
+            ],
+            "host_organization_lineage_names": [
+              "AI Access Foundation"
+            ],
+            "type": "journal"
+          },
+          "license": "cc-by",
+          "license_id": "https://openalex.org/licenses/cc-by",
+          "version": "publishedVersion",
+          "is_accepted": true,
+          "is_published": true,
+          "raw_source_name": "Journal of Artificial Intelligence Research",
+          "raw_type": "journal-article"
+        },
+        "locations": [
+          {
+            "id": "doi:10.1613/jair.1.19087",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.1613/jair.1.19087",
+            "pdf_url": "https://www.jair.org/index.php/jair/article/download/19087/27230",
+            "source": {
+              "id": "https://openalex.org/S139930977",
+              "display_name": "Journal of Artificial Intelligence Research",
+              "issn_l": "1076-9757",
+              "issn": [
+                "1076-9757",
+                "1943-5037"
+              ],
+              "is_oa": true,
+              "is_in_doaj": true,
+              "is_core": true,
+              "listed_in": [
+                "cwts-core",
+                "doaj",
+                "erih-plus",
+                "jufo-3",
+                "norway-2"
+              ],
+              "host_organization": "https://openalex.org/P4310315760",
+              "host_organization_name": "AI Access Foundation",
+              "host_organization_lineage": [
+                "https://openalex.org/P4310315760"
+              ],
+              "host_organization_lineage_names": [
+                "AI Access Foundation"
+              ],
+              "type": "journal"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "publishedVersion",
+            "is_accepted": true,
+            "is_published": true,
+            "raw_source_name": "Journal of Artificial Intelligence Research",
+            "raw_type": "journal-article"
+          },
+          {
+            "id": "pmh:oai:arXiv.org:2401.02843",
+            "is_oa": true,
+            "landing_page_url": "http://arxiv.org/abs/2401.02843",
+            "pdf_url": "https://arxiv.org/pdf/2401.02843",
+            "source": {
+              "id": "https://openalex.org/S4306400194",
+              "display_name": "arXiv (Cornell University)",
+              "issn_l": "2331-8422",
+              "issn": [
+                "2331-8422"
+              ],
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "listed_in": [],
+              "host_organization": "https://openalex.org/I205783295",
+              "host_organization_name": "Cornell University",
+              "host_organization_lineage": [
+                "https://openalex.org/I205783295"
+              ],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": "submittedVersion",
+            "is_accepted": false,
+            "is_published": false,
+            "raw_source_name": null,
+            "raw_type": "text"
+          },
+          {
+            "id": "doi:10.48550/arxiv.2401.02843",
+            "is_oa": true,
+            "landing_page_url": "https://doi.org/10.48550/arxiv.2401.02843",
+            "pdf_url": null,
+            "source": {
+              "id": "https://openalex.org/S4306400194",
+              "display_name": "arXiv (Cornell University)",
+              "issn_l": "2331-8422",
+              "issn": [
+                "2331-8422"
+              ],
+              "is_oa": true,
+              "is_in_doaj": false,
+              "is_core": false,
+              "listed_in": [],
+              "host_organization": "https://openalex.org/I205783295",
+              "host_organization_name": "Cornell University",
+              "host_organization_lineage": [
+                "https://openalex.org/I205783295"
+              ],
+              "host_organization_lineage_names": [],
+              "type": "repository"
+            },
+            "license": "cc-by",
+            "license_id": "https://openalex.org/licenses/cc-by",
+            "version": null,
+            "is_accepted": false,
+            "is_published": null,
+            "raw_source_name": null,
+            "raw_type": "Preprint"
+          }
+        ],
+        "has_content": {
+          "pdf": true,
+          "grobid_xml": true
+        },
+        "content_urls": {
+          "pdf": "https://content.openalex.org/works/W4414876758.pdf",
+          "grobid_xml": "https://content.openalex.org/works/W4414876758.grobid-xml"
+        },
+        "updated_date": "2026-10-08T09:06:37.294493",
+        "created_date": "2025-10-10T00:00:00"
+      },
+      "body_file_reuse": "Independent source-review response matched the submitted body exactly; one byte-identical metadata body is included, with distinct observation times preserved."
+    },
+    {
+      "request_url": "https://airisk.mit.edu/risks",
+      "observed_at": "2026-10-09T16:13:57.687761+00:00",
+      "method": "bounded anonymous GET",
+      "byte_cap": 262144,
+      "linked_operations_executed": false,
+      "effective_url": "https://airisk.mit.edu/risks",
+      "http_status": 200,
+      "bytes": 95607,
+      "complete": true,
+      "sha256": "b8aef764fa2348c04c6c4aa95f4fe3b4310f06bfef2d196c6e3a71b41c2388b4",
+      "publisher_links": [
+        {
+          "href": "https://docs.google.com/spreadsheets/d/15LeHcpeuZC9txkvcaMoh3sUhkMvdMMry69xxXL46DT0/copy",
+          "text": "Google Sheets"
+        },
+        {
+          "href": "https://mitprod-my.sharepoint.com/:x:/g/personal/pslat_mit_edu/EXEfhahe8YtDk9b50dAfGAsBwjWiCJC0Y3cW9sV0k3fARA?e=Mok9XH",
+          "text": "OneDrive"
+        },
+        {
+          "href": "https://docs.google.com/spreadsheets/d/15LeHcpeuZC9txkvcaMoh3sUhkMvdMMry69xxXL46DT0/copy",
+          "text": "explore the full database"
+        },
+        {
+          "href": "https://docs.google.com/spreadsheets/d/15LeHcpeuZC9txkvcaMoh3sUhkMvdMMry69xxXL46DT0/copy",
+          "text": "explore the full database"
+        },
+        {
+          "href": "https://docs.google.com/spreadsheets/d/15LeHcpeuZC9txkvcaMoh3sUhkMvdMMry69xxXL46DT0/copy",
+          "text": "copy"
+        },
+        {
+          "href": "https://mitprod-my.sharepoint.com/:x:/g/personal/pslat_mit_edu/EXEfhahe8YtDk9b50dAfGAsBwjWiCJC0Y3cW9sV0k3fARA?e=Mok9XH",
+          "text": "OneDrive"
+        },
+        {
+          "href": "https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1",
+          "text": "CC BY 4.0"
+        }
+      ],
+      "grant_text_verified": true,
+      "hash_scope": "complete landing HTML received; HTML not retained; selected links preserved"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "request_url": "https://api.openalex.org/works/https://doi.org/10.48550/arXiv.2401.02843",
+  "effective_url": "https://api.openalex.org/works/https://doi.org/10.48550/arXiv.2401.02843",
+  "observed_at": "2026-10-09T15:34:12.583153+00:00",
+  "http_status": 200,
+  "bytes": 18977,
+  "sha256": "2059381f704239c6823f810f49dffa93a438efbda3e4928357f4739dd7e3d409",
+  "headers": {
+    "Content-Type": "application/json",
+    "Content-Length": "18977"
+  },
+  "complete": true,
+  "body_kind": "complete small bibliographic metadata record, not a manuscript"
+}

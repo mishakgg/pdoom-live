@@ -1,0 +1,60 @@
+{
+  "status": "instructions_for_single_authorized_writer_not_applied",
+  "candidate_operation": "add_only",
+  "existing_repo_paths_changed": [],
+  "candidate_data_directory": "data/evidence-program/research/followups/full-content-intake-2026-10-09",
+  "candidate_document": "docs/evidence-program/research/followups/full-content-intake-2026-10-09.md",
+  "required_preflight": [
+    "Re-verify current repository base and drift; do not reuse the submitted commit as current main.",
+    "Check all new paths are absent or reconcile an existing same-session integration before adding.",
+    "Run candidate privacy/integrity checks and independent review.",
+    "Add a link from the existing research index/queue using its current schema; this package deliberately does not replace those live files.",
+    "Keep the original 26-session and older three-followup counts unchanged; register this as one separate session.",
+    "Run current repository aggregate validations and review any semantic links against source registry GL037/GL039/GL040, GL010/FS001 and CN017."
+  ],
+  "queue_delta": {
+    "session_id": "2026-10-09-01-full-content-intake",
+    "disposition": "qualified_research_review_complete_integration_pending",
+    "verification_gate_updates": [
+      {
+        "id": "FCI-V01",
+        "status": "parent_reported_baseline_verified_current_integration_base_recheck_required"
+      },
+      {
+        "id": "FCI-V02",
+        "status": "bounded_rights_version_review_complete_native_holds_remain"
+      },
+      {
+        "id": "FCI-V03",
+        "status": "metadata_documentation_review_complete_cached_objects_and_enumeration_held"
+      },
+      {
+        "id": "FCI-V04",
+        "status": "grant_landing_review_complete_native_export_held"
+      },
+      {
+        "id": "FCI-V05",
+        "status": "offline_static_review_complete_12_semantic_blockers_8_cases_unexecuted"
+      },
+      {
+        "id": "FCI-V06",
+        "status": "sanitized_candidate_prepared_not_integrated_or_published"
+      }
+    ]
+  },
+  "forbidden_side_effects": [
+    "No acquisition whitelist or live state changes",
+    "No canonical schema replacement",
+    "No source-cache/native access unlock",
+    "No manuscript or workbook redistribution",
+    "No remote storage locators in public candidate",
+    "No rewritten historical receipts or backdated readback",
+    "No extra study coverage for mirrored/derived representations"
+  ],
+  "later_checks_required": [
+    "Fresh-base patch or overlay verification",
+    "Repository aggregate check suite",
+    "Independent integration review",
+    "Remote publication/CI verification only if publication is later authorized"
+  ]
+}

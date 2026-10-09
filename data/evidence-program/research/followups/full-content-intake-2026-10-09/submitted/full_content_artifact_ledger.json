@@ -1,0 +1,2154 @@
+{
+  "schema_version": "1.0.0",
+  "status": "read_only_research_no_collection_deployed",
+  "review": {
+    "inspection_date": "2026-10-09",
+    "timezone": "UTC (user timezone Europe/Istanbul)",
+    "repository_url": "https://github.com/mishakgg/pdoom-live",
+    "inspected_commit": "720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc",
+    "planning_baseline": "33a26fae7e31c4e729f0627fb7b91764343f9f63",
+    "baseline_contents_inspected": false,
+    "repository_files_unavailable": [],
+    "external_artifact_limit": 18,
+    "external_artifacts_inspected": 18,
+    "lineage_counts": {
+      "openalex": 1,
+      "arxiv": 2,
+      "mit": 1
+    },
+    "constraints": [
+      "Read-only public source research",
+      "No repository edits",
+      "No logins, credentials or paid access",
+      "No manuscript/native-export bulk downloads or live collection",
+      "Never convert proxies into p(doom)"
+    ],
+    "method": "Distinct external primary document/version/metadata/access objects counted once; rereads and URL aliases of the same object do not add items. Authentication targets were not entered. CRP007 is repository-only historical context, not a new primary lineage. Current repository files were fetched anonymously and pinned before route research."
+  },
+  "repository_evidence": [
+    {
+      "evidence_id": "REPO-E01",
+      "path": "docs/evidence-program/source_priorities.md",
+      "url": "https://raw.githubusercontent.com/mishakgg/pdoom-live/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/source_priorities.md",
+      "bytes": 9569,
+      "sha256": "490fc5b027370809d193a62ccbb91f42af27c28d25d913153fc6770c21d8aa20",
+      "read_at": "2026-10-09T15:31:28.633774+00:00",
+      "status": "read_public_200"
+    },
+    {
+      "evidence_id": "REPO-E02",
+      "path": "data/evidence-program/source_inventory.json",
+      "url": "https://raw.githubusercontent.com/mishakgg/pdoom-live/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/data/evidence-program/source_inventory.json",
+      "bytes": 336316,
+      "sha256": "a4b5046c3dec44598eeab3f025db75783f9ae5f702e0570d7b31fb3026dde678",
+      "read_at": "2026-10-09T15:31:28.694912+00:00",
+      "status": "read_public_200"
+    },
+    {
+      "evidence_id": "REPO-E03",
+      "path": "docs/evidence-program/FULL_CONTENT_ACQUISITION.md",
+      "url": "https://raw.githubusercontent.com/mishakgg/pdoom-live/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/FULL_CONTENT_ACQUISITION.md",
+      "bytes": 13360,
+      "sha256": "c1237ea209ed074832dbf5d6f293edc738120ce37bd81af59343169abb00a31c",
+      "read_at": "2026-10-09T15:31:28.693355+00:00",
+      "status": "read_public_200"
+    },
+    {
+      "evidence_id": "REPO-E04",
+      "path": "tree.json",
+      "url": "https://api.github.com/repos/mishakgg/pdoom-live/git/trees/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc?recursive=1",
+      "bytes": 435770,
+      "sha256": "2cdf10f9d007b2db4342631134c28b65e7fce7cb90d4da31e00ae7fd35d3b884",
+      "read_at": "2026-10-09T15:31:30.323167+00:00",
+      "status": "read_public_200"
+    },
+    {
+      "evidence_id": "REPO-E05",
+      "path": "AGENTS.md",
+      "url": "https://raw.githubusercontent.com/mishakgg/pdoom-live/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/AGENTS.md",
+      "bytes": 8618,
+      "sha256": "3aa87f78b765a11b64b3bf3979961948a77d2d0477944d1dbc4a83df32812a38",
+      "read_at": "2026-10-09T15:32:48.686153+00:00",
+      "status": "read_public_200"
+    },
+    {
+      "evidence_id": "REPO-E06",
+      "path": "data/evidence-program/full-content-acquisition.json",
+      "url": "https://raw.githubusercontent.com/mishakgg/pdoom-live/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/data/evidence-program/full-content-acquisition.json",
+      "bytes": 89410,
+      "sha256": "03048185579ca80c33af8046e40b2404ed7c4555fdee5fb7ac15cfc7fabba232",
+      "read_at": "2026-10-09T15:32:48.710630+00:00",
+      "status": "read_public_200"
+    },
+    {
+      "evidence_id": "REPO-E07",
+      "path": "docs/COLLECTION_CONTINUOUS_QUEUE.md",
+      "url": "https://raw.githubusercontent.com/mishakgg/pdoom-live/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/COLLECTION_CONTINUOUS_QUEUE.md",
+      "bytes": 18476,
+      "sha256": "9b80316733a5a281faa441287504ea82ff430dc398c224e0c7d0f561e354c6cd",
+      "read_at": "2026-10-09T15:32:48.752738+00:00",
+      "status": "read_public_200"
+    },
+    {
+      "evidence_id": "REPO-E08",
+      "path": "docs/evidence-program/research/claim-result-provenance.md",
+      "url": "https://raw.githubusercontent.com/mishakgg/pdoom-live/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/research/claim-result-provenance.md",
+      "bytes": 11929,
+      "sha256": "88cc8fdd8c6367b05d4e77aa9796ab58760e429650aa6589b9da555a7aedd50c",
+      "read_at": "2026-10-09T15:32:48.719678+00:00",
+      "status": "read_public_200"
+    },
+    {
+      "evidence_id": "REPO-E09",
+      "path": "data/evidence-program/research/claim-result-provenance.json",
+      "url": "https://raw.githubusercontent.com/mishakgg/pdoom-live/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/data/evidence-program/research/claim-result-provenance.json",
+      "bytes": 40531,
+      "sha256": "46c3ad1441ab0ed53a5d87fbf56131a733036284f9ec4833510061b6effa1369",
+      "read_at": "2026-10-09T15:32:48.687135+00:00",
+      "status": "read_public_200"
+    },
+    {
+      "evidence_id": "REPO-E10",
+      "path": "docs/evidence-program/research/followups/rights-release.md",
+      "url": "https://raw.githubusercontent.com/mishakgg/pdoom-live/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/research/followups/rights-release.md",
+      "bytes": 8240,
+      "sha256": "b4fc5d3bc029d148b919466ff126d2da9d98a9eecfd88345a1498363a1a269d9",
+      "read_at": "2026-10-09T15:32:52.759238+00:00",
+      "status": "read_public_200"
+    },
+    {
+      "evidence_id": "REPO-E11",
+      "path": "data/evidence-program/research/followups/rights-release.json",
+      "url": "https://raw.githubusercontent.com/mishakgg/pdoom-live/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/data/evidence-program/research/followups/rights-release.json",
+      "bytes": 58362,
+      "sha256": "553d68978671c7498e504eb5836d96d6179f861c74794dfccfd66091e2ee7934",
+      "read_at": "2026-10-09T15:32:52.863479+00:00",
+      "status": "read_public_200"
+    },
+    {
+      "evidence_id": "REPO-E12",
+      "path": "docs/evidence-program/research/followups/follow-up-queue.md",
+      "url": "https://raw.githubusercontent.com/mishakgg/pdoom-live/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/research/followups/follow-up-queue.md",
+      "bytes": 17290,
+      "sha256": "a0796fbd623b0c66a22be86852f103349b7b5157b7cff912848d5fc11ee22e27",
+      "read_at": "2026-10-09T15:32:52.786194+00:00",
+      "status": "read_public_200"
+    },
+    {
+      "evidence_id": "REPO-E13",
+      "path": "docs/evidence-program/research/followups/prompts/research-assignments-2026-10-09.md",
+      "url": "https://raw.githubusercontent.com/mishakgg/pdoom-live/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/research/followups/prompts/research-assignments-2026-10-09.md",
+      "bytes": 15712,
+      "sha256": "e36f375d548b427b28541fe04e910666de63a8c1bda5d0b43176be4a7a66d390",
+      "read_at": "2026-10-09T15:32:52.719578+00:00",
+      "status": "read_public_200"
+    },
+    {
+      "evidence_id": "REPO-E14",
+      "path": "docs/evidence-program/dataset_spec.md",
+      "url": "https://raw.githubusercontent.com/mishakgg/pdoom-live/720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc/docs/evidence-program/dataset_spec.md",
+      "bytes": 20883,
+      "sha256": "e8c2e905b7fa4c3b08c6aa41fd1617d2347a2b68bbed3610a284e5c6ccc68227",
+      "read_at": "2026-10-09T15:32:52.727096+00:00",
+      "status": "read_public_200"
+    }
+  ],
+  "external_evidence": [
+    {
+      "evidence_id": "OAX-E01",
+      "route": "openalex",
+      "source_url": "https://help.openalex.org/access/fulltext/",
+      "title": "Fulltext",
+      "document_version_or_date": "2026-09-18",
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "rights_access_document",
+      "access_result": "primary documentation opened; service requests not executed",
+      "http_status": null,
+      "locators": [
+        "Download options",
+        "Mapping work IDs to files",
+        "TEI XML quality and limitations",
+        "Licensing"
+      ],
+      "finding": "Cached PDF and parsed TEI are distinct objects. Content access needs a key; full sync needs a paid service. Copyright remains with original holders.",
+      "limits": [
+        "No exact cached PDF UUID/version/license binding or historical availability guarantee was inspected.",
+        "No content deletion/takedown ledger or guaranteed object retention policy was established."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "OAX-E02",
+      "route": "openalex",
+      "source_url": "https://help.openalex.org/access/snapshot/",
+      "title": "Snapshot",
+      "document_version_or_date": "2026-09-24",
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "rights_access_document",
+      "access_result": "primary documentation opened; bucket and manifests not retrieved",
+      "http_status": null,
+      "locators": [
+        "Two formats",
+        "Size",
+        "The manifest files",
+        "How the snapshot differs from the API",
+        "Access & authentication"
+      ],
+      "finding": "Unsigned public metadata snapshots have native JSONL and Parquet manifests; current manifest was not inspected.",
+      "limits": [
+        "No current manifest date/count/hash verified.",
+        "Snapshot documentation gives September examples of about327M default/about476M all works; October quick reference instead gives about324M core plus193M expansion. Preserve their different dates and contradictory totals; neither is a verified current relevant-work denominator."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "OAX-E03",
+      "route": "openalex",
+      "source_url": "https://help.openalex.org/api/llm-quick-reference/",
+      "title": "LLM Quick Reference",
+      "document_version_or_date": "2026-10-03",
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "rights_access_document",
+      "access_result": "primary documentation opened; no scale/rate tests executed",
+      "http_status": null,
+      "locators": [
+        "Base URL and Authentication",
+        "Query Parameters",
+        "Pricing",
+        "Query Limits",
+        "Error Handling"
+      ],
+      "finding": "Keyless metadata allowance and numeric page/rate limits are documented; external-DOI header treatment differs from the exact-ID singleton example.",
+      "limits": [
+        "The observed external-DOI lookup consumed one header credit; it is not demonstrated to share exact-ID singleton's advertised free treatment.",
+        "Cursor mechanics beyond basic paging were not opened within this budget; a future large-slice paginator must be documented and validated before admission."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "OAX-E04",
+      "route": "openalex",
+      "source_url": "https://help.openalex.org/data/works/attributes/",
+      "title": "Attributes — Works",
+      "document_version_or_date": "2026-10-07",
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "rights_access_document",
+      "access_result": "primary documentation opened",
+      "http_status": null,
+      "locators": [
+        "doi",
+        "language",
+        "publication_date",
+        "locations",
+        "best_oa_location",
+        "open_access",
+        "has_content",
+        "content_urls",
+        "updated_date"
+      ],
+      "finding": "A Work combines locations and can use the journal DOI. Its update timestamp and broad version class do not identify article bytes.",
+      "limits": [
+        "A Work updated_date is not the original's version date, and a selected best location does not bind cached full text to that location's exact edition."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "OAX-E05",
+      "route": "openalex",
+      "source_url": "https://help.openalex.org/access/sync/",
+      "title": "Sync",
+      "document_version_or_date": "2026-09-24",
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "rights_access_document",
+      "access_result": "primary documentation opened; no sync or deletion-log download executed",
+      "http_status": null,
+      "locators": [
+        "Release cadence",
+        "Keeping in sync",
+        "Free data, paid services",
+        "Deletions and merged entities",
+        "Point-in-time and reproducibility"
+      ],
+      "finding": "Metadata is CC0. Public releases overwrite old state; deletion ledger is replaced, not append-only. Restoration and final-deletion wording conflict.",
+      "limits": [
+        "No current deletion ledger was inspected; it is too large for this small-artifact review.",
+        "The same Sync page allows rare restoration with rows removed from the ledger but also says deletion is final. Treat restoration behavior as uncertain until observed; preserve both source statements and never infer reassignment of an old ID to a different work.",
+        "Metadata removal/merge does not establish manuscript withdrawal, rights revocation or a mandate to destroy lawfully archived originals."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "OAX-E06",
+      "route": "openalex",
+      "source_url": "https://api.openalex.org/works/https://doi.org/10.48550/arXiv.2401.02843",
+      "title": "OpenAlex Work W4414876758 — Thousands of AI Authors on the Future of AI",
+      "document_version_or_date": "2026-10-08T09:06:37.294493",
+      "inspected_on": "2026-10-09",
+      "observed_at": "2026-10-09T15:34:12.583153+00:00",
+      "kind": "metadata_response",
+      "access_result": "complete small metadata JSON inspected via bounded anonymous HTTP GET",
+      "http_status": 200,
+      "locators": [
+        "id",
+        "doi",
+        "locations",
+        "has_content",
+        "content_urls",
+        "updated_date",
+        "HTTP response headers"
+      ],
+      "finding": "Observed Work W4414876758 combines JAIR and arXiv locations. Metadata flags do not bind cached content to arXiv v3.",
+      "limits": [
+        "Only this complete metadata response was observed; no linked body was fetched."
+      ],
+      "bytes": 18977,
+      "sha256": "2059381f704239c6823f810f49dffa93a438efbda3e4928357f4739dd7e3d409",
+      "response_hash_scope": "complete_metadata_response",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "AR-E01",
+      "route": "arxiv",
+      "source_url": "https://info.arxiv.org/help/oa/index.html",
+      "title": "OAI-PMH documentation",
+      "document_version_or_date": "Undated current help document, includes March 2025 rewrite chronology; no immutable document version supplied.",
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "rights_access_document",
+      "access_result": "Web retrieval returned readable official documentation; live OAI endpoint not requested.",
+      "http_status": null,
+      "locators": [
+        "Notes for harvesters > Base URL",
+        "Item = Article",
+        "Metadata formats",
+        "Datestamps",
+        "Sets",
+        "Update schedule",
+        "Chronology > March 2025"
+      ],
+      "finding": "OAI identifies articles, with latest metadata and optional version history. Record datestamps differ from submission dates; tokens expire daily.",
+      "limits": [
+        "Live Identify deletedRecord policy uninspected.",
+        "arXivRaw schema and per-version rights fields not inspected.",
+        "No current metadata count, total version count or selected AI corpus count measured."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "AR-E02",
+      "route": "arxiv",
+      "source_url": "https://info.arxiv.org/help/api/tou.html",
+      "title": "API Terms of Use",
+      "document_version_or_date": "Undated current Terms of Use page; observation date is not an effective-date claim.",
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "rights_access_document",
+      "access_result": "Readable official documentation; no authenticated access.",
+      "http_status": null,
+      "locators": [
+        "Terms paragraphs",
+        "Limitations > Rate limits",
+        "Things that you can (and should!) do",
+        "Things that you must not do"
+      ],
+      "finding": "Terms permit private personal/research content storage; public serving needs separate article permission. Legacy APIs require one connection and at least three seconds per request.",
+      "limits": [
+        "Research-purpose terms are not a blanket permission for public serving, commercial downstream reuse, training or every linked asset.",
+        "Technical access, robots, artifact-specific exclusions and version status still govern acquisition."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "AR-E03",
+      "route": "arxiv",
+      "source_url": "https://info.arxiv.org/help/bulk_data.html",
+      "title": "Bulk Data Access",
+      "document_version_or_date": "Undated current overview; no immutable version supplied.",
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "rights_access_document",
+      "access_result": "Readable official bulk overview; S3 detail page, buckets, manifests and Kaggle were not accessed.",
+      "http_status": null,
+      "locators": [
+        "Bulk Metadata Access",
+        "Bulk Full-Text Access",
+        "Amazon S3 - Full Text",
+        "Custom Programmatic Harvesting > Play nice",
+        "Consider the impact"
+      ],
+      "finding": "S3 is the accepted complete-corpus route. The overview does not establish all-version membership, packaging, prices, credentials or deletion semantics.",
+      "limits": [
+        "S3 payment/requester-pays and credentials conditions NOT established from this inspected overview.",
+        "Bulk source packaging, manifest schema, checksums, update lag, removed-item signaling and historical-version coverage NOT established.",
+        "No claim that S3 has every vN or that download is no-cost/no-login."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "AR-E04",
+      "route": "arxiv",
+      "source_url": "https://info.arxiv.org/help/license/index.html",
+      "title": "License information",
+      "document_version_or_date": "Undated current help document; no immutable version supplied.",
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "rights_access_document",
+      "access_result": "Readable official license guidance.",
+      "http_status": null,
+      "locators": [
+        "arXiv License Information",
+        "How to choose a license",
+        "Licenses available",
+        "Metadata license",
+        "Copyright notices"
+      ],
+      "finding": "Licenses can differ by version and are irrevocable. Permanent record language does not settle withdrawal or takedown behavior.",
+      "limits": [
+        "Permanent scholarly-record statement does not establish a complete takedown/withdrawal/deletion protocol or local retention mandate."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "AR-E05",
+      "route": "arxiv",
+      "source_url": "https://arxiv.org/abs/2401.02843v1",
+      "title": "2401.02843v1",
+      "document_version_or_date": "2401.02843v1",
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "version_landing_page",
+      "access_result": "Web page readable; separate same-URL unauthenticated Python GET returned HTTP 200. Manuscript/source links were read, not followed.",
+      "http_status": 200,
+      "locators": [
+        "Submission history",
+        "Access Paper",
+        "div.abs-license a",
+        "meta[name=citation_pdf_url]"
+      ],
+      "finding": "Exact v1 page declares CC BY 4.0 and links pinned PDF/source; citation_pdf_url metadata is unversioned.",
+      "limits": [
+        "Source container, member list, exact byte length, ETag, content hash and transfer behavior unobserved.",
+        "Manuscript-level exceptions not freshly read; historical PDF retention is repository evidence."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "AR-E06",
+      "route": "arxiv",
+      "source_url": "https://arxiv.org/abs/2401.02843v3",
+      "title": "2401.02843v3",
+      "document_version_or_date": "2401.02843v3",
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "version_landing_page",
+      "access_result": "Web page readable; separate same-URL unauthenticated Python GET returned HTTP 200. Manuscript/source links were read, not followed.",
+      "http_status": 200,
+      "locators": [
+        "Submission history",
+        "Access Paper",
+        "div.abs-license a",
+        "meta[name=citation_pdf_url]"
+      ],
+      "finding": "Exact v3 page declares CC BY 4.0 and lists v1-v3 history; linked native-source bytes were not inspected.",
+      "limits": [
+        "v2 landing-page rights not freshly reinspected; repository separately records CC BY 4.0 for v2.",
+        "No full-body/source collection or freshness comparison to archived PDF."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "AR-E07",
+      "route": "arxiv",
+      "source_url": "https://arxiv.org/abs/2310.19852v1",
+      "title": "2310.19852v1",
+      "document_version_or_date": "2310.19852v1",
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "version_landing_page",
+      "access_result": "Web page readable; separate same-URL unauthenticated Python GET returned HTTP 200. Manuscript/source links were read, not followed.",
+      "http_status": 200,
+      "locators": [
+        "Submission history",
+        "Access Paper",
+        "div.abs-license a"
+      ],
+      "finding": "Exact CN017 v1 page links standard arXiv distribution terms; later v2-v6 are listed but their rights were not inspected.",
+      "limits": [
+        "Versions v2-v6 rights not freshly inspected.",
+        "No native source/PDF bytes, container, precise sizes or transfer checked.",
+        "Author/publisher supplementary notices not freshly inspected."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "MIT-E01",
+      "route": "mit",
+      "source_url": "https://airisk.mit.edu/risks",
+      "title": "Repository data and rights page",
+      "document_version_or_date": null,
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "rights_access_document",
+      "access_result": "opened_public_html",
+      "http_status": null,
+      "locators": [
+        "Official full-database links / footer / FAQ"
+      ],
+      "finding": "Current population labels, database field descriptions, full-database links, no-Google-account OneDrive claim, data-specific CC BY 4.0 footer.",
+      "limits": [
+        "Counts on page disagree across sections.",
+        "No native export body, row count or immutable revision verified."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "MIT-E02",
+      "route": "mit",
+      "source_url": "https://airisk.mit.edu/",
+      "title": "Initiative index",
+      "document_version_or_date": null,
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "rights_access_document",
+      "access_result": "opened_public_html",
+      "http_status": null,
+      "locators": [
+        "Document body or reported redirect"
+      ],
+      "finding": "Initiative data license repeated and direct official link to December 2025 Version 4 update.",
+      "limits": [
+        "Landing page is not native workbook."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "MIT-E03",
+      "route": "mit",
+      "source_url": "https://docs.google.com/spreadsheets/d/15LeHcpeuZC9txkvcaMoh3sUhkMvdMMry69xxXL46DT0/copy",
+      "title": "Official Google Sheets copy link",
+      "document_version_or_date": null,
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "export_access_attempt",
+      "access_result": "tool_reported_redirect_to_authentication",
+      "http_status": null,
+      "locators": [
+        "Document body or reported redirect"
+      ],
+      "finding": "Direct publisher link did not yield workbook; public retrieval tool reported ServiceLogin redirect and non-retryable error.",
+      "limits": [
+        "This observation does not prove all supported anonymous export methods are unavailable.",
+        "Copy endpoint object id is not a workbook revision id.",
+        "Origin HTTP status not independently measured; 500 is the tool error display."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "MIT-E04",
+      "route": "mit",
+      "source_url": "https://mitprod-my.sharepoint.com/:x:/g/personal/pslat_mit_edu/EXEfhahe8YtDk9b50dAfGAsBwjWiCJC0Y3cW9sV0k3fARA?e=Mok9XH",
+      "title": "Official OneDrive workbook link",
+      "document_version_or_date": null,
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "export_access_attempt",
+      "access_result": "tool_reported_redirect_to_authentication",
+      "http_status": null,
+      "locators": [
+        "Document body or reported redirect"
+      ],
+      "finding": "Publisher-recommended alternative for users without Google accounts did not yield workbook; tool reported Microsoft authentication redirect and non-retryable error.",
+      "limits": [
+        "Observed route does not establish anonymous download success, actual XLSX type, body size or Google mirror equivalence.",
+        "Authentication was not attempted; dynamic login query details are omitted."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    },
+    {
+      "evidence_id": "MIT-E05",
+      "route": "mit",
+      "source_url": "https://airisk.mit.edu/blog/repository-update-december-2025",
+      "title": "December 2025 release announcement",
+      "document_version_or_date": "2025-12-04",
+      "inspected_on": "2026-10-09",
+      "observed_at": null,
+      "kind": "rights_access_document",
+      "access_result": "opened_public_html",
+      "http_status": null,
+      "locators": [
+        "Document body or reported redirect"
+      ],
+      "finding": "Documents Version 4 changes and release chronology for Versions 1-4.",
+      "limits": [
+        "No immutable workbook locators or hashes; release labels do not prove current linked workbook revision.",
+        "The page also retains an About section with 1600/65 labels; do not use approximate update additions to reconstruct exact row counts."
+      ],
+      "bytes": null,
+      "sha256": null,
+      "response_hash_scope": "not_measured",
+      "linked_operations_executed": false
+    }
+  ],
+  "artifacts": [
+    {
+      "artifact_id": "INTAKE-OA-METADATA-001",
+      "existing_artifact_id": null,
+      "route": "openalex",
+      "source_ids": [
+        "GL039"
+      ],
+      "lineage_id": "work:W4414876758",
+      "title": "Complete observed OpenAlex Work metadata",
+      "source_url": "https://api.openalex.org/works/https://doi.org/10.48550/arXiv.2401.02843",
+      "official_landing_url": null,
+      "representation": "application/json",
+      "format_status": "observed_metadata",
+      "version": {
+        "kind": "observed_metadata_revision",
+        "identifier": "https://openalex.org/W4414876758",
+        "native_updated_value": "2026-10-08T09:06:37.294493",
+        "published_at": null,
+        "binding": "work_metadata_only",
+        "note": "Native updated_date retained verbatim; the observation digest identifies exact JSON, not a paper revision."
+      },
+      "rights": {
+        "license_id": "CC0-1.0",
+        "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "basis": "explicit_metadata_grant",
+        "scope": "OpenAlex descriptive metadata response only.",
+        "evidence_ids": [
+          "OAX-E05"
+        ],
+        "conditions": [],
+        "excluded_components": [
+          "All linked manuscript, source and TEI bodies"
+        ],
+        "original_grant_text_hash": null
+      },
+      "access_observations": [
+        {
+          "date": "2026-10-09",
+          "observed_at": "2026-10-09T15:34:12.583153+00:00",
+          "evidence_level": "fresh_primary",
+          "method": "anonymous_http_get",
+          "request_url": "https://api.openalex.org/works/https://doi.org/10.48550/arXiv.2401.02843",
+          "http_status": 200,
+          "result": "HTTP 200; complete 18,977-byte metadata response, no credentials.",
+          "evidence_ids": [
+            "OAX-E06"
+          ]
+        }
+      ],
+      "content": {
+        "state": "metadata_complete_observed",
+        "bytes": 18977,
+        "sha256": "2059381f704239c6823f810f49dffa93a438efbda3e4928357f4739dd7e3d409",
+        "hash_scope": "complete_observed_metadata",
+        "observed_at": "2026-10-09T15:34:12.583153+00:00",
+        "fresh_raw_readback_verified": false,
+        "byte_integrity": "verified_locally",
+        "native_dataset_coverage": "complete_for_declared_metadata_object",
+        "note": "Complete research sample JSON; not a live collector output, full paper or query backfill."
+      },
+      "decisions": {
+        "raw_preservation": {
+          "rights_eligibility": "permitted",
+          "action": "retain_research_metadata",
+          "reason": "Metadata grant and complete response observed.",
+          "blocker_ids": []
+        },
+        "analytical_inclusion": {
+          "status": "discovery_only",
+          "reason": "No canonical claim extraction, identity/denominator mapping or independent scientific assessment performed; this does not block lawful raw preservation."
+        },
+        "public_redistribution": {
+          "rights_eligibility": "eligible_with_conditions",
+          "publication_authorized": false,
+          "reason": "CC0 applies to this metadata; publication was not requested."
+        }
+      },
+      "relations": [],
+      "uncertainty": []
+    },
+    {
+      "artifact_id": "INTAKE-OA-JAIR-PDF",
+      "existing_artifact_id": null,
+      "route": "openalex",
+      "source_ids": [
+        "GL039",
+        "GL010",
+        "FS001"
+      ],
+      "lineage_id": "study:2401.02843",
+      "title": "JAIR published location",
+      "source_url": "https://www.jair.org/index.php/jair/article/download/19087/27230",
+      "official_landing_url": "https://doi.org/10.1613/jair.1.19087",
+      "representation": "PDF",
+      "format_status": "documented_or_link_label_only",
+      "version": {
+        "kind": "mutable_location",
+        "identifier": null,
+        "native_updated_value": null,
+        "published_at": null,
+        "binding": "work_metadata_only",
+        "note": "Location class or Work ID is not an immutable edition; OpenAlex metadata updated 2026-10-08T09:06:37.294493"
+      },
+      "rights": {
+        "license_id": null,
+        "license_url": null,
+        "basis": "location_metadata_only",
+        "scope": "OpenAlex locations report cc-by with unspecified license edition. No verified grant is assigned to this exact candidate or cached object.",
+        "evidence_ids": [
+          "OAX-E04",
+          "OAX-E06"
+        ],
+        "conditions": [],
+        "excluded_components": [
+          "Other locations or service representations"
+        ],
+        "original_grant_text_hash": null
+      },
+      "access_observations": [
+        {
+          "date": "2026-10-09",
+          "observed_at": "2026-10-09T15:34:12.583153+00:00",
+          "evidence_level": "fresh_primary",
+          "method": "anonymous_http_get",
+          "request_url": "https://api.openalex.org/works/https://doi.org/10.48550/arXiv.2401.02843",
+          "http_status": 200,
+          "result": "Candidate URL and availability fields observed in this metadata response; target body not requested.",
+          "evidence_ids": [
+            "OAX-E06"
+          ]
+        }
+      ],
+      "content": {
+        "state": "not_requested",
+        "bytes": null,
+        "sha256": null,
+        "hash_scope": "not_measured",
+        "observed_at": null,
+        "fresh_raw_readback_verified": false,
+        "byte_integrity": "not_tested",
+        "native_dataset_coverage": "unknown",
+        "note": "No target body was requested in this research review."
+      },
+      "decisions": {
+        "raw_preservation": {
+          "rights_eligibility": "unresolved",
+          "action": "hold",
+          "reason": "Bind the precise publisher/repository edition and applicable grant before fetching this candidate.",
+          "blocker_ids": [
+            "H-OA-COPY"
+          ]
+        },
+        "analytical_inclusion": {
+          "status": "not_reviewed",
+          "reason": "No canonical claim extraction, identity/denominator mapping or independent scientific assessment performed; this does not block lawful raw preservation."
+        },
+        "public_redistribution": {
+          "rights_eligibility": "unresolved",
+          "publication_authorized": false,
+          "reason": "No exact-content redistribution basis established."
+        }
+      },
+      "relations": [
+        {
+          "predicate": "discovered_via",
+          "target_id": "INTAKE-OA-METADATA-001",
+          "basis": "Complete metadata response locations/content_urls."
+        }
+      ],
+      "uncertainty": [
+        "The exact journal grant was not inspected."
+      ]
+    },
+    {
+      "artifact_id": "INTAKE-OA-ARXIV-UNVERSIONED",
+      "existing_artifact_id": null,
+      "route": "openalex",
+      "source_ids": [
+        "GL039",
+        "GL010",
+        "FS001"
+      ],
+      "lineage_id": "study:2401.02843",
+      "title": "Versionless arXiv location",
+      "source_url": "https://arxiv.org/pdf/2401.02843",
+      "official_landing_url": "https://arxiv.org/abs/2401.02843",
+      "representation": "PDF",
+      "format_status": "documented_or_link_label_only",
+      "version": {
+        "kind": "mutable_location",
+        "identifier": null,
+        "native_updated_value": null,
+        "published_at": null,
+        "binding": "work_metadata_only",
+        "note": "Location class or Work ID is not an immutable edition; OpenAlex metadata updated 2026-10-08T09:06:37.294493"
+      },
+      "rights": {
+        "license_id": null,
+        "license_url": null,
+        "basis": "location_metadata_only",
+        "scope": "OpenAlex locations report cc-by with unspecified license edition. No verified grant is assigned to this exact candidate or cached object.",
+        "evidence_ids": [
+          "OAX-E04",
+          "OAX-E06"
+        ],
+        "conditions": [],
+        "excluded_components": [
+          "Other locations or service representations"
+        ],
+        "original_grant_text_hash": null
+      },
+      "access_observations": [
+        {
+          "date": "2026-10-09",
+          "observed_at": "2026-10-09T15:34:12.583153+00:00",
+          "evidence_level": "fresh_primary",
+          "method": "anonymous_http_get",
+          "request_url": "https://api.openalex.org/works/https://doi.org/10.48550/arXiv.2401.02843",
+          "http_status": 200,
+          "result": "Candidate URL and availability fields observed in this metadata response; target body not requested.",
+          "evidence_ids": [
+            "OAX-E06"
+          ]
+        }
+      ],
+      "content": {
+        "state": "not_requested",
+        "bytes": null,
+        "sha256": null,
+        "hash_scope": "not_measured",
+        "observed_at": null,
+        "fresh_raw_readback_verified": false,
+        "byte_integrity": "not_tested",
+        "native_dataset_coverage": "unknown",
+        "note": "No target body was requested in this research review."
+      },
+      "decisions": {
+        "raw_preservation": {
+          "rights_eligibility": "unresolved",
+          "action": "hold",
+          "reason": "Bind the precise publisher/repository edition and applicable grant before fetching this candidate.",
+          "blocker_ids": [
+            "H-OA-COPY"
+          ]
+        },
+        "analytical_inclusion": {
+          "status": "not_reviewed",
+          "reason": "No canonical claim extraction, identity/denominator mapping or independent scientific assessment performed; this does not block lawful raw preservation."
+        },
+        "public_redistribution": {
+          "rights_eligibility": "unresolved",
+          "publication_authorized": false,
+          "reason": "No exact-content redistribution basis established."
+        }
+      },
+      "relations": [
+        {
+          "predicate": "discovered_via",
+          "target_id": "INTAKE-OA-METADATA-001",
+          "basis": "Complete metadata response locations/content_urls."
+        }
+      ],
+      "uncertainty": [
+        "Use GL010-2401.02843-v3 only through its separately observed version link; do not relabel this unversioned URL."
+      ]
+    },
+    {
+      "artifact_id": "INTAKE-OA-CACHED-PDF",
+      "existing_artifact_id": null,
+      "route": "openalex",
+      "source_ids": [
+        "GL039",
+        "GL010",
+        "FS001"
+      ],
+      "lineage_id": "study:2401.02843",
+      "title": "OpenAlex cached work-level PDF",
+      "source_url": "https://content.openalex.org/works/W4414876758.pdf",
+      "official_landing_url": null,
+      "representation": "PDF",
+      "format_status": "documented_or_link_label_only",
+      "version": {
+        "kind": "mutable_location",
+        "identifier": null,
+        "native_updated_value": null,
+        "published_at": null,
+        "binding": "work_metadata_only",
+        "note": "Location class or Work ID is not an immutable edition; OpenAlex metadata updated 2026-10-08T09:06:37.294493"
+      },
+      "rights": {
+        "license_id": null,
+        "license_url": null,
+        "basis": "location_metadata_only",
+        "scope": "OpenAlex locations report cc-by with unspecified license edition. No verified grant is assigned to this exact candidate or cached object.",
+        "evidence_ids": [
+          "OAX-E04",
+          "OAX-E06"
+        ],
+        "conditions": [],
+        "excluded_components": [
+          "Other locations or service representations"
+        ],
+        "original_grant_text_hash": null
+      },
+      "access_observations": [
+        {
+          "date": "2026-10-09",
+          "observed_at": "2026-10-09T15:34:12.583153+00:00",
+          "evidence_level": "fresh_primary",
+          "method": "anonymous_http_get",
+          "request_url": "https://api.openalex.org/works/https://doi.org/10.48550/arXiv.2401.02843",
+          "http_status": 200,
+          "result": "Candidate URL and availability fields observed in this metadata response; target body not requested.",
+          "evidence_ids": [
+            "OAX-E06"
+          ]
+        }
+      ],
+      "content": {
+        "state": "not_requested",
+        "bytes": null,
+        "sha256": null,
+        "hash_scope": "not_measured",
+        "observed_at": null,
+        "fresh_raw_readback_verified": false,
+        "byte_integrity": "not_tested",
+        "native_dataset_coverage": "unknown",
+        "note": "No target body was requested in this research review."
+      },
+      "decisions": {
+        "raw_preservation": {
+          "rights_eligibility": "unresolved",
+          "action": "hold",
+          "reason": "Cached services additionally require credentials; each linked or cached copy still needs exact body/rights binding.",
+          "blocker_ids": [
+            "H-OA-CACHE"
+          ]
+        },
+        "analytical_inclusion": {
+          "status": "not_reviewed",
+          "reason": "No canonical claim extraction, identity/denominator mapping or independent scientific assessment performed; this does not block lawful raw preservation."
+        },
+        "public_redistribution": {
+          "rights_eligibility": "unresolved",
+          "publication_authorized": false,
+          "reason": "No exact-content redistribution basis established."
+        }
+      },
+      "relations": [
+        {
+          "predicate": "discovered_via",
+          "target_id": "INTAKE-OA-METADATA-001",
+          "basis": "Complete metadata response locations/content_urls."
+        }
+      ],
+      "uncertainty": [
+        "JAIR, arXiv and cached bytes are not shown to be identical.",
+        "A TEI parse may be incomplete and cannot replace the PDF original."
+      ]
+    },
+    {
+      "artifact_id": "INTAKE-OA-CACHED-TEI",
+      "existing_artifact_id": null,
+      "route": "openalex",
+      "source_ids": [
+        "GL039",
+        "GL010",
+        "FS001"
+      ],
+      "lineage_id": "study:2401.02843",
+      "title": "OpenAlex GROBID representation",
+      "source_url": "https://content.openalex.org/works/W4414876758.grobid-xml",
+      "official_landing_url": null,
+      "representation": "derived TEI XML",
+      "format_status": "documented_or_link_label_only",
+      "version": {
+        "kind": "mutable_location",
+        "identifier": null,
+        "native_updated_value": null,
+        "published_at": null,
+        "binding": "work_metadata_only",
+        "note": "Location class or Work ID is not an immutable edition; OpenAlex metadata updated 2026-10-08T09:06:37.294493"
+      },
+      "rights": {
+        "license_id": null,
+        "license_url": null,
+        "basis": "location_metadata_only",
+        "scope": "OpenAlex locations report cc-by with unspecified license edition. No verified grant is assigned to this exact candidate or cached object.",
+        "evidence_ids": [
+          "OAX-E04",
+          "OAX-E06"
+        ],
+        "conditions": [],
+        "excluded_components": [
+          "Other locations or service representations"
+        ],
+        "original_grant_text_hash": null
+      },
+      "access_observations": [
+        {
+          "date": "2026-10-09",
+          "observed_at": "2026-10-09T15:34:12.583153+00:00",
+          "evidence_level": "fresh_primary",
+          "method": "anonymous_http_get",
+          "request_url": "https://api.openalex.org/works/https://doi.org/10.48550/arXiv.2401.02843",
+          "http_status": 200,
+          "result": "Candidate URL and availability fields observed in this metadata response; target body not requested.",
+          "evidence_ids": [
+            "OAX-E06"
+          ]
+        }
+      ],
+      "content": {
+        "state": "not_requested",
+        "bytes": null,
+        "sha256": null,
+        "hash_scope": "not_measured",
+        "observed_at": null,
+        "fresh_raw_readback_verified": false,
+        "byte_integrity": "not_tested",
+        "native_dataset_coverage": "unknown",
+        "note": "No target body was requested in this research review."
+      },
+      "decisions": {
+        "raw_preservation": {
+          "rights_eligibility": "unresolved",
+          "action": "hold",
+          "reason": "Cached services additionally require credentials; each linked or cached copy still needs exact body/rights binding.",
+          "blocker_ids": [
+            "H-OA-CACHE"
+          ]
+        },
+        "analytical_inclusion": {
+          "status": "not_reviewed",
+          "reason": "No canonical claim extraction, identity/denominator mapping or independent scientific assessment performed; this does not block lawful raw preservation."
+        },
+        "public_redistribution": {
+          "rights_eligibility": "unresolved",
+          "publication_authorized": false,
+          "reason": "No exact-content redistribution basis established."
+        }
+      },
+      "relations": [
+        {
+          "predicate": "discovered_via",
+          "target_id": "INTAKE-OA-METADATA-001",
+          "basis": "Complete metadata response locations/content_urls."
+        }
+      ],
+      "uncertainty": [
+        "JAIR, arXiv and cached bytes are not shown to be identical.",
+        "A TEI parse may be incomplete and cannot replace the PDF original."
+      ]
+    },
+    {
+      "artifact_id": "GL010-2401.02843-v1",
+      "existing_artifact_id": "GL010-2401.02843-v1",
+      "route": "arxiv",
+      "source_ids": [
+        "GL040",
+        "GL010",
+        "FS001"
+      ],
+      "lineage_id": "study:2401.02843",
+      "title": "Thousands of AI Authors on the Future of AI v1",
+      "source_url": "https://arxiv.org/pdf/2401.02843v1",
+      "official_landing_url": "https://arxiv.org/abs/2401.02843v1",
+      "representation": "PDF paper edition with appendices",
+      "format_status": "repository_historical",
+      "version": {
+        "kind": "publisher_version",
+        "identifier": "2401.02843v1",
+        "native_updated_value": null,
+        "published_at": "2024-01-05T14:53:09Z",
+        "binding": "exact_version_page",
+        "note": "Exact-version landing page and historic original identity are separate evidence."
+      },
+      "rights": {
+        "license_id": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "basis": "exact_version_page",
+        "scope": "This exact paper edition; historical v2 evidence is explicitly attributed to the repository.",
+        "evidence_ids": [
+          "AR-E05",
+          "REPO-E03"
+        ],
+        "conditions": [
+          "Retain creator/title/source attribution and license link; preserve applicable notices; label modifications."
+        ],
+        "excluded_components": [
+          "Respondent data",
+          "2024 questionnaire/report attachments",
+          "Linked code and data"
+        ],
+        "original_grant_text_hash": null
+      },
+      "access_observations": [
+        {
+          "date": "2026-10-09",
+          "observed_at": null,
+          "evidence_level": "fresh_primary",
+          "method": "anonymous_http_get",
+          "request_url": "https://arxiv.org/abs/2401.02843v1",
+          "http_status": 200,
+          "result": "Exact-version landing page HTTP 200; license and pinned PDF links inspected, target PDF not fetched.",
+          "evidence_ids": [
+            "AR-E05"
+          ]
+        },
+        {
+          "date": "2026-10-09",
+          "observed_at": null,
+          "evidence_level": "repository_historical",
+          "method": "repository_receipt_read",
+          "request_url": "https://arxiv.org/pdf/2401.02843v1",
+          "http_status": null,
+          "result": "Later repository policy records completed historical PDF retention and exact original identity; not reverified here.",
+          "evidence_ids": [
+            "REPO-E03"
+          ]
+        }
+      ],
+      "content": {
+        "state": "historical_retained_not_reverified",
+        "bytes": 5925368,
+        "sha256": "98ebcf757938892552d5a91a0e630486e0751339125480bba18fad145209cea1",
+        "hash_scope": "repository_reported_complete_original",
+        "observed_at": null,
+        "fresh_raw_readback_verified": false,
+        "byte_integrity": "historically_reported",
+        "native_dataset_coverage": "representation_only",
+        "note": "Historical raw PDF identity from the 9 October reconciliation. No fresh body or private-archive readback. Source-package completeness not established."
+      },
+      "decisions": {
+        "raw_preservation": {
+          "rights_eligibility": "permitted",
+          "action": "reuse_existing",
+          "reason": "Reconcile the existing exact original before scheduling another acquisition; any fresh request still needs current source preflight.",
+          "blocker_ids": [
+            "H-EXECUTION"
+          ]
+        },
+        "analytical_inclusion": {
+          "status": "not_reviewed",
+          "reason": "No canonical claim extraction, identity/denominator mapping or independent scientific assessment performed; this does not block lawful raw preservation."
+        },
+        "public_redistribution": {
+          "rights_eligibility": "eligible_with_conditions",
+          "publication_authorized": false,
+          "reason": "Version-specific CC BY 4.0 eligibility with attribution; no public publication authorized."
+        }
+      },
+      "relations": [
+        {
+          "predicate": "logical_work_match",
+          "target_id": "INTAKE-OA-METADATA-001",
+          "basis": "arXiv identifier and publisher DOI relation; not byte equality."
+        }
+      ],
+      "uncertainty": [
+        "Historical archive and present upstream bytes were not compared.",
+        "Native source package was not preserved by the cited PDF receipt."
+      ]
+    },
+    {
+      "artifact_id": "GL010-2401.02843-v2",
+      "existing_artifact_id": "GL010-2401.02843-v2",
+      "route": "arxiv",
+      "source_ids": [
+        "GL040",
+        "GL010",
+        "FS001"
+      ],
+      "lineage_id": "study:2401.02843",
+      "title": "Thousands of AI Authors on the Future of AI v2",
+      "source_url": "https://arxiv.org/pdf/2401.02843v2",
+      "official_landing_url": "https://arxiv.org/abs/2401.02843v2",
+      "representation": "PDF paper edition with appendices",
+      "format_status": "repository_historical",
+      "version": {
+        "kind": "publisher_version",
+        "identifier": "2401.02843v2",
+        "native_updated_value": null,
+        "published_at": "2024-04-30T18:15:42Z",
+        "binding": "repository_historical",
+        "note": "Paper edition, not a new survey wave; v2 license is repository evidence only."
+      },
+      "rights": {
+        "license_id": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "basis": "repository_historical",
+        "scope": "This exact paper edition; historical v2 evidence is explicitly attributed to the repository.",
+        "evidence_ids": [
+          "REPO-E06",
+          "REPO-E03"
+        ],
+        "conditions": [
+          "Retain creator/title/source attribution and license link; preserve applicable notices; label modifications."
+        ],
+        "excluded_components": [
+          "Respondent data",
+          "2024 questionnaire/report attachments",
+          "Linked code and data"
+        ],
+        "original_grant_text_hash": null
+      },
+      "access_observations": [
+        {
+          "date": "2026-10-09",
+          "observed_at": null,
+          "evidence_level": "repository_historical",
+          "method": "repository_receipt_read",
+          "request_url": "https://arxiv.org/pdf/2401.02843v2",
+          "http_status": null,
+          "result": "Later repository policy records completed historical PDF retention and exact original identity; not reverified here.",
+          "evidence_ids": [
+            "REPO-E03"
+          ]
+        }
+      ],
+      "content": {
+        "state": "historical_retained_not_reverified",
+        "bytes": 5925409,
+        "sha256": "9b146fa909043ca40b8ba62aec52801bfe9a211f105fb5621001fa4f373293e6",
+        "hash_scope": "repository_reported_complete_original",
+        "observed_at": null,
+        "fresh_raw_readback_verified": false,
+        "byte_integrity": "historically_reported",
+        "native_dataset_coverage": "representation_only",
+        "note": "Historical raw PDF identity from the 9 October reconciliation. No fresh body or private-archive readback. Source-package completeness not established."
+      },
+      "decisions": {
+        "raw_preservation": {
+          "rights_eligibility": "permitted",
+          "action": "reuse_existing",
+          "reason": "Reconcile the existing exact original before scheduling another acquisition; any fresh request still needs current source preflight.",
+          "blocker_ids": [
+            "H-EXECUTION"
+          ]
+        },
+        "analytical_inclusion": {
+          "status": "not_reviewed",
+          "reason": "No canonical claim extraction, identity/denominator mapping or independent scientific assessment performed; this does not block lawful raw preservation."
+        },
+        "public_redistribution": {
+          "rights_eligibility": "eligible_with_conditions",
+          "publication_authorized": false,
+          "reason": "Version-specific CC BY 4.0 eligibility with attribution; no public publication authorized."
+        }
+      },
+      "relations": [
+        {
+          "predicate": "logical_work_match",
+          "target_id": "INTAKE-OA-METADATA-001",
+          "basis": "arXiv identifier and publisher DOI relation; not byte equality."
+        }
+      ],
+      "uncertainty": [
+        "Historical archive and present upstream bytes were not compared.",
+        "Native source package was not preserved by the cited PDF receipt."
+      ]
+    },
+    {
+      "artifact_id": "GL010-2401.02843-v3",
+      "existing_artifact_id": "GL010-2401.02843-v3",
+      "route": "arxiv",
+      "source_ids": [
+        "GL040",
+        "GL010",
+        "FS001"
+      ],
+      "lineage_id": "study:2401.02843",
+      "title": "Thousands of AI Authors on the Future of AI v3",
+      "source_url": "https://arxiv.org/pdf/2401.02843v3",
+      "official_landing_url": "https://arxiv.org/abs/2401.02843v3",
+      "representation": "PDF paper edition with appendices",
+      "format_status": "repository_historical",
+      "version": {
+        "kind": "publisher_version",
+        "identifier": "2401.02843v3",
+        "native_updated_value": null,
+        "published_at": "2025-10-08T18:38:53Z",
+        "binding": "exact_version_page",
+        "note": "Exact-version landing page and historic original identity are separate evidence."
+      },
+      "rights": {
+        "license_id": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "basis": "exact_version_page",
+        "scope": "This exact paper edition; historical v2 evidence is explicitly attributed to the repository.",
+        "evidence_ids": [
+          "AR-E06",
+          "REPO-E03"
+        ],
+        "conditions": [
+          "Retain creator/title/source attribution and license link; preserve applicable notices; label modifications."
+        ],
+        "excluded_components": [
+          "Respondent data",
+          "2024 questionnaire/report attachments",
+          "Linked code and data"
+        ],
+        "original_grant_text_hash": null
+      },
+      "access_observations": [
+        {
+          "date": "2026-10-09",
+          "observed_at": null,
+          "evidence_level": "fresh_primary",
+          "method": "anonymous_http_get",
+          "request_url": "https://arxiv.org/abs/2401.02843v3",
+          "http_status": 200,
+          "result": "Exact-version landing page HTTP 200; license and pinned PDF links inspected, target PDF not fetched.",
+          "evidence_ids": [
+            "AR-E06"
+          ]
+        },
+        {
+          "date": "2026-10-09",
+          "observed_at": null,
+          "evidence_level": "repository_historical",
+          "method": "repository_receipt_read",
+          "request_url": "https://arxiv.org/pdf/2401.02843v3",
+          "http_status": null,
+          "result": "Later repository policy records completed historical PDF retention and exact original identity; not reverified here.",
+          "evidence_ids": [
+            "REPO-E03"
+          ]
+        }
+      ],
+      "content": {
+        "state": "historical_retained_not_reverified",
+        "bytes": 5902763,
+        "sha256": "8a440d9f5c24e3627b2887c4b654f8b98253706a92e8e4ece266f8c2fe9903a7",
+        "hash_scope": "repository_reported_complete_original",
+        "observed_at": null,
+        "fresh_raw_readback_verified": false,
+        "byte_integrity": "historically_reported",
+        "native_dataset_coverage": "representation_only",
+        "note": "Historical raw PDF identity from the 9 October reconciliation. No fresh body or private-archive readback. Source-package completeness not established."
+      },
+      "decisions": {
+        "raw_preservation": {
+          "rights_eligibility": "permitted",
+          "action": "reuse_existing",
+          "reason": "Reconcile the existing exact original before scheduling another acquisition; any fresh request still needs current source preflight.",
+          "blocker_ids": [
+            "H-EXECUTION"
+          ]
+        },
+        "analytical_inclusion": {
+          "status": "not_reviewed",
+          "reason": "No canonical claim extraction, identity/denominator mapping or independent scientific assessment performed; this does not block lawful raw preservation."
+        },
+        "public_redistribution": {
+          "rights_eligibility": "eligible_with_conditions",
+          "publication_authorized": false,
+          "reason": "Version-specific CC BY 4.0 eligibility with attribution; no public publication authorized."
+        }
+      },
+      "relations": [
+        {
+          "predicate": "logical_work_match",
+          "target_id": "INTAKE-OA-METADATA-001",
+          "basis": "arXiv identifier and publisher DOI relation; not byte equality."
+        }
+      ],
+      "uncertainty": [
+        "Historical archive and present upstream bytes were not compared.",
+        "Native source package was not preserved by the cited PDF receipt."
+      ]
+    },
+    {
+      "artifact_id": "INTAKE-ARXIV-SOURCE-2401.02843v1",
+      "existing_artifact_id": null,
+      "route": "arxiv",
+      "source_ids": [
+        "GL040",
+        "GL010",
+        "FS001"
+      ],
+      "lineage_id": "study:2401.02843",
+      "title": "ESPAI submitted source v1",
+      "source_url": "https://arxiv.org/src/2401.02843v1",
+      "official_landing_url": "https://arxiv.org/abs/2401.02843v1",
+      "representation": "TeX Source (publisher link label; container unobserved)",
+      "format_status": "documented_or_link_label_only",
+      "version": {
+        "kind": "publisher_version",
+        "identifier": "2401.02843v1",
+        "native_updated_value": null,
+        "published_at": "2024-01-05T14:53:09Z",
+        "binding": "exact_version_page",
+        "note": "Source href is pinned; it was not followed."
+      },
+      "rights": {
+        "license_id": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "basis": "exact_version_page",
+        "scope": "Version-level paper grant; member-level notices must remain with an acquired submission. No separate source-member survey performed.",
+        "evidence_ids": [
+          "AR-E05",
+          "AR-E04"
+        ],
+        "conditions": [
+          "Retain creator/title/source attribution and license link; preserve applicable notices; label modifications."
+        ],
+        "excluded_components": [
+          "Separately hosted supplements and respondent data"
+        ],
+        "original_grant_text_hash": null
+      },
+      "access_observations": [
+        {
+          "date": "2026-10-09",
+          "observed_at": null,
+          "evidence_level": "fresh_primary",
+          "method": "anonymous_http_get",
+          "request_url": "https://arxiv.org/abs/2401.02843v1",
+          "http_status": 200,
+          "result": "Pinned source href observed on this landing page. Repository records /src and /e-print disallow; no source GET or fresh robots inspection.",
+          "evidence_ids": [
+            "AR-E05",
+            "REPO-E06"
+          ]
+        }
+      ],
+      "content": {
+        "state": "not_requested",
+        "bytes": null,
+        "sha256": null,
+        "hash_scope": "not_measured",
+        "observed_at": null,
+        "fresh_raw_readback_verified": false,
+        "byte_integrity": "not_tested",
+        "native_dataset_coverage": "unknown",
+        "note": "No target body was requested in this research review."
+      },
+      "decisions": {
+        "raw_preservation": {
+          "rights_eligibility": "permitted",
+          "action": "hold",
+          "reason": "Permission and source transport differ: source-native route remains held on recorded access restriction.",
+          "blocker_ids": [
+            "H-ARXIV-SOURCE"
+          ]
+        },
+        "analytical_inclusion": {
+          "status": "not_reviewed",
+          "reason": "No canonical claim extraction, identity/denominator mapping or independent scientific assessment performed; this does not block lawful raw preservation."
+        },
+        "public_redistribution": {
+          "rights_eligibility": "eligible_with_conditions",
+          "publication_authorized": false,
+          "reason": "Version-level CC BY grant is observed; retain any member exceptions. Nothing authorized for publication."
+        }
+      },
+      "relations": [
+        {
+          "predicate": "same_submission_version_as",
+          "target_id": "GL010-2401.02843-v1",
+          "basis": "Exact landing-page version; source package is a separate representation."
+        }
+      ],
+      "uncertainty": [
+        "Container/MIME, member list, full bytes/hash and approved transfer behavior unknown."
+      ]
+    },
+    {
+      "artifact_id": "INTAKE-ARXIV-SOURCE-2401.02843v3",
+      "existing_artifact_id": null,
+      "route": "arxiv",
+      "source_ids": [
+        "GL040",
+        "GL010",
+        "FS001"
+      ],
+      "lineage_id": "study:2401.02843",
+      "title": "ESPAI submitted source v3",
+      "source_url": "https://arxiv.org/src/2401.02843v3",
+      "official_landing_url": "https://arxiv.org/abs/2401.02843v3",
+      "representation": "TeX Source (publisher link label; container unobserved)",
+      "format_status": "documented_or_link_label_only",
+      "version": {
+        "kind": "publisher_version",
+        "identifier": "2401.02843v3",
+        "native_updated_value": null,
+        "published_at": "2025-10-08T18:38:53Z",
+        "binding": "exact_version_page",
+        "note": "Source href is pinned; it was not followed."
+      },
+      "rights": {
+        "license_id": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "basis": "exact_version_page",
+        "scope": "Version-level paper grant; member-level notices must remain with an acquired submission. No separate source-member survey performed.",
+        "evidence_ids": [
+          "AR-E06",
+          "AR-E04"
+        ],
+        "conditions": [
+          "Retain creator/title/source attribution and license link; preserve applicable notices; label modifications."
+        ],
+        "excluded_components": [
+          "Separately hosted supplements and respondent data"
+        ],
+        "original_grant_text_hash": null
+      },
+      "access_observations": [
+        {
+          "date": "2026-10-09",
+          "observed_at": null,
+          "evidence_level": "fresh_primary",
+          "method": "anonymous_http_get",
+          "request_url": "https://arxiv.org/abs/2401.02843v3",
+          "http_status": 200,
+          "result": "Pinned source href observed on this landing page. Repository records /src and /e-print disallow; no source GET or fresh robots inspection.",
+          "evidence_ids": [
+            "AR-E06",
+            "REPO-E06"
+          ]
+        }
+      ],
+      "content": {
+        "state": "not_requested",
+        "bytes": null,
+        "sha256": null,
+        "hash_scope": "not_measured",
+        "observed_at": null,
+        "fresh_raw_readback_verified": false,
+        "byte_integrity": "not_tested",
+        "native_dataset_coverage": "unknown",
+        "note": "No target body was requested in this research review."
+      },
+      "decisions": {
+        "raw_preservation": {
+          "rights_eligibility": "permitted",
+          "action": "hold",
+          "reason": "Permission and source transport differ: source-native route remains held on recorded access restriction.",
+          "blocker_ids": [
+            "H-ARXIV-SOURCE"
+          ]
+        },
+        "analytical_inclusion": {
+          "status": "not_reviewed",
+          "reason": "No canonical claim extraction, identity/denominator mapping or independent scientific assessment performed; this does not block lawful raw preservation."
+        },
+        "public_redistribution": {
+          "rights_eligibility": "eligible_with_conditions",
+          "publication_authorized": false,
+          "reason": "Version-level CC BY grant is observed; retain any member exceptions. Nothing authorized for publication."
+        }
+      },
+      "relations": [
+        {
+          "predicate": "same_submission_version_as",
+          "target_id": "GL010-2401.02843-v3",
+          "basis": "Exact landing-page version; source package is a separate representation."
+        }
+      ],
+      "uncertainty": [
+        "Container/MIME, member list, full bytes/hash and approved transfer behavior unknown."
+      ]
+    },
+    {
+      "artifact_id": "INTAKE-CN017-v1-pdf",
+      "existing_artifact_id": null,
+      "route": "arxiv",
+      "source_ids": [
+        "GL040",
+        "CN017"
+      ],
+      "lineage_id": "study:2310.19852",
+      "title": "AI Alignment: A Comprehensive Survey v1 pdf",
+      "source_url": "https://arxiv.org/pdf/2310.19852v1",
+      "official_landing_url": "https://arxiv.org/abs/2310.19852v1",
+      "representation": "PDF",
+      "format_status": "documented_or_link_label_only",
+      "version": {
+        "kind": "publisher_version",
+        "identifier": "2310.19852v1",
+        "native_updated_value": null,
+        "published_at": "2023-10-30T15:52:15Z",
+        "binding": "exact_version_page",
+        "note": "Only v1 rights inspected; history lists v2-v6 without qualifying their rights."
+      },
+      "rights": {
+        "license_id": "arXiv-nonexclusive-distrib-1.0",
+        "license_url": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+        "basis": "version_page_and_research_terms",
+        "scope": "Private research use under the inspected operator terms; no general third-party article redistribution grant.",
+        "evidence_ids": [
+          "AR-E02",
+          "AR-E07"
+        ],
+        "conditions": [
+          "Use for personal/research preservation through a legitimate route; do not publicly serve without separate permission."
+        ],
+        "excluded_components": [
+          "Later versions",
+          "Linked assets",
+          "Public article serving"
+        ],
+        "original_grant_text_hash": null
+      },
+      "access_observations": [
+        {
+          "date": "2026-10-09",
+          "observed_at": null,
+          "evidence_level": "fresh_primary",
+          "method": "anonymous_http_get",
+          "request_url": "https://arxiv.org/abs/2310.19852v1",
+          "http_status": 200,
+          "result": "Exact target href on this HTTP 200 v1 landing page; no article/source GET.",
+          "evidence_ids": [
+            "AR-E07",
+            "REPO-E06"
+          ]
+        }
+      ],
+      "content": {
+        "state": "not_requested",
+        "bytes": null,
+        "sha256": null,
+        "hash_scope": "not_measured",
+        "observed_at": null,
+        "fresh_raw_readback_verified": false,
+        "byte_integrity": "not_tested",
+        "native_dataset_coverage": "unknown",
+        "note": "No target body was requested in this research review."
+      },
+      "decisions": {
+        "raw_preservation": {
+          "rights_eligibility": "research_use_permitted",
+          "action": "acquire_after_source_preflight",
+          "reason": "Research-private bounded PDF candidate; current access and finite body transfer still need verification.",
+          "blocker_ids": [
+            "H-EXECUTION"
+          ]
+        },
+        "analytical_inclusion": {
+          "status": "not_reviewed",
+          "reason": "No canonical claim extraction, identity/denominator mapping or independent scientific assessment performed; this does not block lawful raw preservation."
+        },
+        "public_redistribution": {
+          "rights_eligibility": "unresolved",
+          "publication_authorized": false,
+          "reason": "Standard distribution terms do not establish third-party public serving permission."
+        }
+      },
+      "relations": [],
+      "uncertainty": [
+        "No exact PDF or native-source size/hash observed.",
+        "Do not infer the v1 license for v2-v6."
+      ]
+    },
+    {
+      "artifact_id": "INTAKE-CN017-v1-src",
+      "existing_artifact_id": null,
+      "route": "arxiv",
+      "source_ids": [
+        "GL040",
+        "CN017"
+      ],
+      "lineage_id": "study:2310.19852",
+      "title": "AI Alignment: A Comprehensive Survey v1 src",
+      "source_url": "https://arxiv.org/src/2310.19852v1",
+      "official_landing_url": "https://arxiv.org/abs/2310.19852v1",
+      "representation": "TeX Source (container unobserved)",
+      "format_status": "documented_or_link_label_only",
+      "version": {
+        "kind": "publisher_version",
+        "identifier": "2310.19852v1",
+        "native_updated_value": null,
+        "published_at": "2023-10-30T15:52:15Z",
+        "binding": "exact_version_page",
+        "note": "Only v1 rights inspected; history lists v2-v6 without qualifying their rights."
+      },
+      "rights": {
+        "license_id": "arXiv-nonexclusive-distrib-1.0",
+        "license_url": "http://arxiv.org/licenses/nonexclusive-distrib/1.0/",
+        "basis": "version_page_and_research_terms",
+        "scope": "Private research use under the inspected operator terms; no general third-party article redistribution grant.",
+        "evidence_ids": [
+          "AR-E02",
+          "AR-E07"
+        ],
+        "conditions": [
+          "Use for personal/research preservation through a legitimate route; do not publicly serve without separate permission."
+        ],
+        "excluded_components": [
+          "Later versions",
+          "Linked assets",
+          "Public article serving"
+        ],
+        "original_grant_text_hash": null
+      },
+      "access_observations": [
+        {
+          "date": "2026-10-09",
+          "observed_at": null,
+          "evidence_level": "fresh_primary",
+          "method": "anonymous_http_get",
+          "request_url": "https://arxiv.org/abs/2310.19852v1",
+          "http_status": 200,
+          "result": "Exact target href on this HTTP 200 v1 landing page; no article/source GET.",
+          "evidence_ids": [
+            "AR-E07",
+            "REPO-E06"
+          ]
+        }
+      ],
+      "content": {
+        "state": "not_requested",
+        "bytes": null,
+        "sha256": null,
+        "hash_scope": "not_measured",
+        "observed_at": null,
+        "fresh_raw_readback_verified": false,
+        "byte_integrity": "not_tested",
+        "native_dataset_coverage": "unknown",
+        "note": "No target body was requested in this research review."
+      },
+      "decisions": {
+        "raw_preservation": {
+          "rights_eligibility": "research_use_permitted",
+          "action": "hold",
+          "reason": "Private research permission is documented. Source access restriction remains separate.",
+          "blocker_ids": [
+            "H-ARXIV-SOURCE"
+          ]
+        },
+        "analytical_inclusion": {
+          "status": "not_reviewed",
+          "reason": "No canonical claim extraction, identity/denominator mapping or independent scientific assessment performed; this does not block lawful raw preservation."
+        },
+        "public_redistribution": {
+          "rights_eligibility": "unresolved",
+          "publication_authorized": false,
+          "reason": "Standard distribution terms do not establish third-party public serving permission."
+        }
+      },
+      "relations": [],
+      "uncertainty": [
+        "No exact PDF or native-source size/hash observed.",
+        "Do not infer the v1 license for v2-v6."
+      ]
+    },
+    {
+      "artifact_id": "INTAKE-MIT-GOOGLE",
+      "existing_artifact_id": null,
+      "route": "mit",
+      "source_ids": [
+        "GL037"
+      ],
+      "lineage_id": "dataset:MIT-AI-Risk-Repository",
+      "title": "MIT complete database google",
+      "source_url": "https://docs.google.com/spreadsheets/d/15LeHcpeuZC9txkvcaMoh3sUhkMvdMMry69xxXL46DT0/copy",
+      "official_landing_url": "https://airisk.mit.edu/risks",
+      "representation": "Google Sheets native workbook",
+      "format_status": "unknown",
+      "version": {
+        "kind": "unknown",
+        "identifier": null,
+        "native_updated_value": null,
+        "published_at": null,
+        "binding": "unresolved",
+        "note": "Host object identifier is not a revision. Version 4 release notes do not bind these live links; a future timestamp+digest snapshot is acceptable."
+      },
+      "rights": {
+        "license_id": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "basis": "explicit_dataset_grant",
+        "scope": "MIT AI Risk Initiative data, including the advertised repository database; exact export is inaccessible.",
+        "evidence_ids": [
+          "MIT-E01"
+        ],
+        "conditions": [
+          "Retain creator/title/source attribution and license link; preserve applicable notices; label modifications."
+        ],
+        "excluded_components": [
+          "Entire cited papers",
+          "Separately linked third-party works"
+        ],
+        "original_grant_text_hash": null
+      },
+      "access_observations": [
+        {
+          "date": "2026-10-09",
+          "observed_at": null,
+          "evidence_level": "fresh_primary",
+          "method": "public_web_read",
+          "request_url": "https://docs.google.com/spreadsheets/d/15LeHcpeuZC9txkvcaMoh3sUhkMvdMMry69xxXL46DT0/copy",
+          "http_status": null,
+          "result": "Public retrieval reported redirect to accounts.google.com; tool error is not a verified origin HTTP status.",
+          "evidence_ids": [
+            "MIT-E03"
+          ]
+        }
+      ],
+      "content": {
+        "state": "access_blocked",
+        "bytes": null,
+        "sha256": null,
+        "hash_scope": "not_measured",
+        "observed_at": null,
+        "fresh_raw_readback_verified": false,
+        "byte_integrity": "not_tested",
+        "native_dataset_coverage": "unknown",
+        "note": "No native export, content length, sheet inventory, exact record totals or body hash observed."
+      },
+      "decisions": {
+        "raw_preservation": {
+          "rights_eligibility": "permitted",
+          "action": "hold",
+          "reason": "Current data grant is explicit; a legitimate anonymous workbook response remains unverified.",
+          "blocker_ids": [
+            "H-MIT-ACCESS"
+          ]
+        },
+        "analytical_inclusion": {
+          "status": "taxonomy_mapping_pending",
+          "reason": "No canonical claim extraction, identity/denominator mapping or independent scientific assessment performed; this does not block lawful raw preservation."
+        },
+        "public_redistribution": {
+          "rights_eligibility": "eligible_with_conditions",
+          "publication_authorized": false,
+          "reason": "MIT-licensed database data is eligible with attribution; linked papers have independent rights. Publication is not authorized."
+        }
+      },
+      "relations": [],
+      "uncertainty": [
+        "Mirrors are not demonstrated to be synchronized or byte-equivalent.",
+        "Exact sheet/row/notes coverage and actual workbook format unknown.",
+        "Current 1700+/74 and FAQ 1600+/65 are published labels, not audited export counts."
+      ]
+    },
+    {
+      "artifact_id": "INTAKE-MIT-ONEDRIVE",
+      "existing_artifact_id": null,
+      "route": "mit",
+      "source_ids": [
+        "GL037"
+      ],
+      "lineage_id": "dataset:MIT-AI-Risk-Repository",
+      "title": "MIT complete database onedrive",
+      "source_url": "https://mitprod-my.sharepoint.com/:x:/g/personal/pslat_mit_edu/EXEfhahe8YtDk9b50dAfGAsBwjWiCJC0Y3cW9sV0k3fARA?e=Mok9XH",
+      "official_landing_url": "https://airisk.mit.edu/risks",
+      "representation": "OneDrive shared workbook; actual media type unknown",
+      "format_status": "unknown",
+      "version": {
+        "kind": "unknown",
+        "identifier": null,
+        "native_updated_value": null,
+        "published_at": null,
+        "binding": "unresolved",
+        "note": "Host object identifier is not a revision. Version 4 release notes do not bind these live links; a future timestamp+digest snapshot is acceptable."
+      },
+      "rights": {
+        "license_id": "CC-BY-4.0",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "basis": "explicit_dataset_grant",
+        "scope": "MIT AI Risk Initiative data, including the advertised repository database; exact export is inaccessible.",
+        "evidence_ids": [
+          "MIT-E01"
+        ],
+        "conditions": [
+          "Retain creator/title/source attribution and license link; preserve applicable notices; label modifications."
+        ],
+        "excluded_components": [
+          "Entire cited papers",
+          "Separately linked third-party works"
+        ],
+        "original_grant_text_hash": null
+      },
+      "access_observations": [
+        {
+          "date": "2026-10-09",
+          "observed_at": null,
+          "evidence_level": "fresh_primary",
+          "method": "public_web_read",
+          "request_url": "https://mitprod-my.sharepoint.com/:x:/g/personal/pslat_mit_edu/EXEfhahe8YtDk9b50dAfGAsBwjWiCJC0Y3cW9sV0k3fARA?e=Mok9XH",
+          "http_status": null,
+          "result": "Public retrieval reported redirect to login.microsoftonline.com; tool error is not a verified origin HTTP status.",
+          "evidence_ids": [
+            "MIT-E04"
+          ]
+        }
+      ],
+      "content": {
+        "state": "access_blocked",
+        "bytes": null,
+        "sha256": null,
+        "hash_scope": "not_measured",
+        "observed_at": null,
+        "fresh_raw_readback_verified": false,
+        "byte_integrity": "not_tested",
+        "native_dataset_coverage": "unknown",
+        "note": "No native export, content length, sheet inventory, exact record totals or body hash observed."
+      },
+      "decisions": {
+        "raw_preservation": {
+          "rights_eligibility": "permitted",
+          "action": "hold",
+          "reason": "Current data grant is explicit; a legitimate anonymous workbook response remains unverified.",
+          "blocker_ids": [
+            "H-MIT-ACCESS"
+          ]
+        },
+        "analytical_inclusion": {
+          "status": "taxonomy_mapping_pending",
+          "reason": "No canonical claim extraction, identity/denominator mapping or independent scientific assessment performed; this does not block lawful raw preservation."
+        },
+        "public_redistribution": {
+          "rights_eligibility": "eligible_with_conditions",
+          "publication_authorized": false,
+          "reason": "MIT-licensed database data is eligible with attribution; linked papers have independent rights. Publication is not authorized."
+        }
+      },
+      "relations": [],
+      "uncertainty": [
+        "Mirrors are not demonstrated to be synchronized or byte-equivalent.",
+        "Exact sheet/row/notes coverage and actual workbook format unknown.",
+        "Current 1700+/74 and FAQ 1600+/65 are published labels, not audited export counts."
+      ]
+    }
+  ],
+  "blockers": [
+    {
+      "blocker_id": "H-OA-COPY",
+      "routes": [
+        "openalex"
+      ],
+      "scope": "Unbound journal or versionless repository copies",
+      "missing_evidence": "Exact publisher/repository edition and applicable grant or notice; legitimate whole-body route. A versioned arXiv landing page already resolves the direct v3 candidate, not the JAIR or cached body.",
+      "blocks": [
+        "raw_acquisition",
+        "public_redistribution"
+      ],
+      "does_not_block": [
+        "CC0 metadata retention",
+        "Already qualified direct arXiv editions"
+      ],
+      "evidence_ids": [
+        "OAX-E04",
+        "OAX-E06",
+        "AR-E06"
+      ]
+    },
+    {
+      "blocker_id": "H-OA-CACHE",
+      "routes": [
+        "openalex"
+      ],
+      "scope": "OpenAlex content service and full archive",
+      "missing_evidence": "A separately authorized credential/service route plus exact cached-object/version/license binding, finite manifest membership and capacity. No key or paid access is authorized in this task.",
+      "blocks": [
+        "raw_acquisition",
+        "historical_completeness_claim",
+        "public_redistribution"
+      ],
+      "does_not_block": [
+        "Independently permitted publisher/repository retrieval"
+      ],
+      "evidence_ids": [
+        "OAX-E01",
+        "OAX-E02",
+        "OAX-E06"
+      ]
+    },
+    {
+      "blocker_id": "H-OA-SCALE",
+      "routes": [
+        "openalex"
+      ],
+      "scope": "Exhaustive or incremental OpenAlex enumeration",
+      "missing_evidence": "Chosen snapshot manifest or validated bounded query membership/cursor protocol; actual quota behavior and evidence for deletion reconciliation. Do not claim global completeness from incomplete author backfills.",
+      "blocks": [
+        "scalable_enumeration"
+      ],
+      "does_not_block": [
+        "One permitted complete metadata response",
+        "A finite explicit-ID manifest"
+      ],
+      "evidence_ids": [
+        "OAX-E02",
+        "OAX-E03",
+        "OAX-E05",
+        "REPO-E07"
+      ]
+    },
+    {
+      "blocker_id": "H-ARXIV-SOURCE",
+      "routes": [
+        "arxiv"
+      ],
+      "scope": "Exact native /src and /e-print routes",
+      "missing_evidence": "Current source-specific policy or explicit permitted source route resolving the repository-recorded disallow, then bounded MIME/size/member/integrity verification. A visible source link is insufficient.",
+      "blocks": [
+        "raw_acquisition",
+        "native_completeness_claim"
+      ],
+      "does_not_block": [
+        "Eligible exact PDF preservation or reuse",
+        "Private research permission assessment"
+      ],
+      "evidence_ids": [
+        "REPO-E06",
+        "AR-E03",
+        "AR-E05",
+        "AR-E06",
+        "AR-E07"
+      ]
+    },
+    {
+      "blocker_id": "H-ARXIV-BULK",
+      "routes": [
+        "arxiv"
+      ],
+      "scope": "Complete versioned corpus and removal handling",
+      "missing_evidence": "S3 detail terms, legitimate access/payment conditions, native manifest and historical-vN membership/checksums; current withdrawal/takedown policy, live OAI Identify deletedRecord policy and removed-item signals. These were outside the seven-artifact allocation.",
+      "blocks": [
+        "scalable_enumeration",
+        "historical_completeness_claim"
+      ],
+      "does_not_block": [
+        "One rights-qualified permitted versioned PDF",
+        "Keeping observed status/version histories"
+      ],
+      "evidence_ids": [
+        "AR-E01",
+        "AR-E03",
+        "AR-E04"
+      ]
+    },
+    {
+      "blocker_id": "H-MIT-ACCESS",
+      "routes": [
+        "mit"
+      ],
+      "scope": "Current complete workbook export",
+      "missing_evidence": "Publisher-supported anonymous full-workbook response with expected export/media type and finite size. Current Google/OneDrive links did not supply one. No login or invented export URL is permitted here.",
+      "blocks": [
+        "raw_acquisition"
+      ],
+      "does_not_block": [
+        "The observed CC BY 4.0 data grant",
+        "Describing the release history"
+      ],
+      "evidence_ids": [
+        "MIT-E01",
+        "MIT-E03",
+        "MIT-E04"
+      ]
+    },
+    {
+      "blocker_id": "H-MIT-COVERAGE",
+      "routes": [
+        "mit"
+      ],
+      "scope": "Native dataset and historical completeness claims",
+      "missing_evidence": "Native sheet/field/notes inventory and counts or publisher manifest; genuine historical export locators and rights applicability. A hash+time identifies an observed export without requiring an official release number.",
+      "blocks": [
+        "native_completeness_claim",
+        "historical_completeness_claim"
+      ],
+      "does_not_block": [
+        "Preserving complete lawful export bytes despite unmapped semantics or unknown unexported native features"
+      ],
+      "evidence_ids": [
+        "MIT-E01",
+        "MIT-E05"
+      ]
+    },
+    {
+      "blocker_id": "H-EXECUTION",
+      "routes": [
+        "openalex",
+        "arxiv",
+        "mit"
+      ],
+      "scope": "Actual transfer and unattended deployment",
+      "missing_evidence": "Later source-specific run authorization and current access preflight, exact existing-object reconciliation or bounded transfer/readback, and independently verified safe recovery for any proposed unattended deployment. Current source review is not a live run.",
+      "blocks": [
+        "unattended_deployment"
+      ],
+      "does_not_block": [
+        "Rights qualification",
+        "Research specification",
+        "Historical receipt reporting"
+      ],
+      "evidence_ids": [
+        "REPO-E03",
+        "REPO-E06",
+        "REPO-E07"
+      ]
+    }
+  ],
+  "execution": {
+    "proposed_acceptance_cases": 8,
+    "proposed_acceptance_cases_executed": 0,
+    "manuscript_bodies_downloaded": 0,
+    "native_exports_downloaded": 0,
+    "metadata_sample_responses_observed": 1,
+    "live_collection_deployed": false,
+    "repository_edits": false,
+    "note": "Read one small complete OpenAlex metadata response and version/rights/access pages. Historical PDF receipt hashes are attributed to the repository, not freshly measured. Proposed JSON Schema is a separate research artifact."
+  }
+}
