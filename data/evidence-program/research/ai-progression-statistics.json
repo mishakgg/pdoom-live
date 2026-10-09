@@ -1,0 +1,1190 @@
+{
+  "schema_version": "1.0.0",
+  "status": "proposed_website_spec_no_implementation_or_fit",
+  "prepared_on": "2026-10-09",
+  "intended_repo_paths": {
+    "document": "docs/evidence-program/research/ai-progression-statistics.md",
+    "specification": "data/evidence-program/research/ai-progression-statistics.json"
+  },
+  "proposed_route": "/progression",
+  "canonical_schemas_changed": false,
+  "release_authorization_policy": "Applicable existing authorization counts. Ask only if authorization is missing or the action, destination or scope materially changes; this specification creates no additional authority.",
+  "lanes": [
+    "comparable_capability",
+    "cost_adjusted_task_performance",
+    "resolved_forecast_calibration",
+    "conditional_metric_projection",
+    "training_system_performance"
+  ],
+  "prohibitions": [
+    "No proxy-to-pdoom conversion",
+    "No universal AI progress score",
+    "No temporal growth from correction snapshots",
+    "No training speed relabelled capability",
+    "No forecast without horizon-specific validation",
+    "No source rows counted as independent models",
+    "No old score resurrection after withdrawal"
+  ],
+  "sources": [
+    {
+      "id": "epoch_models",
+      "url": "https://epoch.ai/data/all_ai_models.csv",
+      "sha256": "d845f68989881cb922ee6fd131d2bce6fb9c88dce5978eb0719a4c053476eff9",
+      "bytes": 6826880,
+      "vintage": "Captured 8 October 2026 at 21:58:20 UTC; moving source URL",
+      "time_metadata": {
+        "captured_at": "2026-10-08T21:58:20.060859Z",
+        "captured_at_role": "artifact acquisition, not row publication or evaluation",
+        "first_public_available_at": null,
+        "first_public_available_at_null_reason": "First availability not independently established",
+        "dataset_known_at": null,
+        "dataset_known_at_null_reason": "Not established by this packet",
+        "evaluation_at": null,
+        "evaluation_at_null_reason": "No common evaluation clock for this model-resource table"
+      },
+      "verification": "latest exact archived-object reparse report; not reread CSV in this plan"
+    },
+    {
+      "id": "evalplus_A",
+      "url": "https://github.com/evalplus/evalplus.github.io/blob/3b9f5b48c92a492a48fde6c0e1bffb9295812caf/results.json",
+      "sha256": "4d293d4450da091dab4ee4ab333d73b34973066a5dc122c8eef3ada6421b00cb",
+      "bytes": 32977,
+      "vintage": "Archive A: Git commit time 21 April 2024 at 06:25:04 UTC; observed 8 October 2026",
+      "time_metadata": {
+        "observed_on": "2026-10-08",
+        "observed_precision": "day",
+        "evaluation_at": null,
+        "evaluation_at_null_reason": "No verified aggregate-to-run binding",
+        "first_public_available_at": null,
+        "first_public_available_at_null_reason": "Git commit metadata does not establish independently verified first availability",
+        "dataset_known_at": null,
+        "dataset_known_at_null_reason": "Not established by this packet",
+        "selected_commit_at": "2024-04-21T06:25:04Z",
+        "selected_commit_at_role": "Git commit time, not evaluation or first availability"
+      },
+      "verification": "native bytes rehashed and parsed in this plan"
+    },
+    {
+      "id": "evalplus_B",
+      "url": "https://github.com/evalplus/evalplus.github.io/blob/65db7ffdb66ae3fee800bee8d998b412f0a6e648/results.json",
+      "sha256": "89c068b081aaf2778e5a77549b3549ac7825231a9a1125ca309a2d18677ea941",
+      "bytes": 27725,
+      "vintage": "Archive B: Git commit time 22 April 2024 at 01:27:32 UTC; observed 8 October 2026",
+      "time_metadata": {
+        "observed_on": "2026-10-08",
+        "observed_precision": "day",
+        "evaluation_at": null,
+        "evaluation_at_null_reason": "No verified aggregate-to-run binding",
+        "first_public_available_at": null,
+        "first_public_available_at_null_reason": "Git commit metadata does not establish independently verified first availability",
+        "dataset_known_at": null,
+        "dataset_known_at_null_reason": "Not established by this packet",
+        "selected_commit_at": "2024-04-22T01:27:32Z",
+        "selected_commit_at_role": "Git commit time, not evaluation or first availability"
+      },
+      "verification": "native bytes rehashed and parsed in this plan"
+    },
+    {
+      "id": "robustness_package",
+      "protocol_id": "RG-EVALPLUS-2026-10-09-v1.0",
+      "sha256": "b8a711ee8ea093cca2584ff201fb8d25639c30a6ddce4a355f7384523cc90843",
+      "bytes": 171625,
+      "status": "recovered; 202 held positions; no fitting",
+      "prior_independent_checks": 3436,
+      "training_pipeline_cases_executed": 0
+    },
+    {
+      "id": "r1_tariff",
+      "url": "https://api-docs.deepseek.com/news/news250120/",
+      "vintage": "Launch announcement dated 20 January 2025, reviewed 8 October 2026; effective interval unknown",
+      "announcement_date": "2025-01-20",
+      "reviewed_on": "2026-10-08",
+      "verification": "retained reviewed assertion ledger; no fresh source request",
+      "effective_interval": null,
+      "effective_interval_null_reason": "Precise tariff applicability boundaries not established"
+    },
+    {
+      "id": "mlperf_training",
+      "url": "https://github.com/mlcommons/training_results_v5.1/tree/441d65f4445cd59687466533fd9f55399136e7a4",
+      "vintage": "Git commit time 13 January 2026 at 02:10:52 UTC; preservation cutoff 9 October 2026 at 20:57:51 UTC",
+      "time_metadata": {
+        "selected_commit_at": "2026-01-13T02:10:52Z",
+        "selected_commit_at_role": "Git commit time, not per-run execution",
+        "preservation_receipt_at": "2026-10-09T20:57:51.192Z",
+        "evaluation_at": null,
+        "evaluation_at_null_reason": "Per-run execution clocks not verified in this assessment"
+      },
+      "verification": "bounded preservation receipt only",
+      "scope": "selected NVIDIA results/systems and required documentation"
+    }
+  ],
+  "verified_baseline": {
+    "epoch": {
+      "source_rows": 3626,
+      "fields": 57,
+      "compute_present": 1410,
+      "compute_present_percent": 38.89,
+      "parameters_present": 2344,
+      "parameters_present_percent": 64.64,
+      "compute_method_missing_among_populated": 132,
+      "compute_method_missing_percent": 9.36,
+      "publication_date_missing": 12,
+      "benchmarks_method_rows": 20,
+      "benchmarks_method_numeric_compute_rows": 7,
+      "is_global_model_coverage": false
+    },
+    "epoch_methods": {
+      "source_scope": "exact-original reparse report confirms full retained method-count table",
+      "native_combinations": 39,
+      "normalized_combinations_including_missing": 27,
+      "normalization": "whitespace trim and token ordering only; native strings retained",
+      "method_combinations": [
+        {
+          "tokens": [],
+          "rows": 2182
+        },
+        {
+          "tokens": [
+            "Operation counting"
+          ],
+          "rows": 640
+        },
+        {
+          "tokens": [
+            "Hardware"
+          ],
+          "rows": 433
+        },
+        {
+          "tokens": [
+            "Hardware",
+            "Operation counting"
+          ],
+          "rows": 159
+        },
+        {
+          "tokens": [
+            "Reported"
+          ],
+          "rows": 57
+        },
+        {
+          "tokens": [
+            "Third-party estimation"
+          ],
+          "rows": 31
+        },
+        {
+          "tokens": [
+            "Comparison with other models"
+          ],
+          "rows": 22
+        },
+        {
+          "tokens": [
+            "Operation counting",
+            "Reported"
+          ],
+          "rows": 19
+        },
+        {
+          "tokens": [
+            "Benchmarks"
+          ],
+          "rows": 15
+        },
+        {
+          "tokens": [
+            "Hardware",
+            "Third-party estimation"
+          ],
+          "rows": 13
+        },
+        {
+          "tokens": [
+            "Operation counting",
+            "Third-party estimation"
+          ],
+          "rows": 13
+        },
+        {
+          "tokens": [
+            "Hardware",
+            "Operation counting",
+            "Third-party estimation"
+          ],
+          "rows": 9
+        },
+        {
+          "tokens": [
+            "Other"
+          ],
+          "rows": 5
+        },
+        {
+          "tokens": [
+            "Comparison with other models",
+            "Operation counting"
+          ],
+          "rows": 4
+        },
+        {
+          "tokens": [
+            "Hardware",
+            "Operation counting",
+            "Reported"
+          ],
+          "rows": 4
+        },
+        {
+          "tokens": [
+            "Hardware",
+            "Reported"
+          ],
+          "rows": 4
+        },
+        {
+          "tokens": [
+            "Benchmarks",
+            "Hardware"
+          ],
+          "rows": 3
+        },
+        {
+          "tokens": [
+            "Comparison with other models",
+            "Hardware"
+          ],
+          "rows": 3
+        },
+        {
+          "tokens": [
+            "Cost"
+          ],
+          "rows": 2
+        },
+        {
+          "tokens": [
+            "Benchmarks",
+            "Comparison with other models"
+          ],
+          "rows": 1
+        },
+        {
+          "tokens": [
+            "Benchmarks",
+            "Cost",
+            "Hardware"
+          ],
+          "rows": 1
+        },
+        {
+          "tokens": [
+            "Comparison with other models",
+            "Hardware",
+            "Operation counting"
+          ],
+          "rows": 1
+        },
+        {
+          "tokens": [
+            "Comparison with other models",
+            "Reported"
+          ],
+          "rows": 1
+        },
+        {
+          "tokens": [
+            "Hardware",
+            "Other"
+          ],
+          "rows": 1
+        },
+        {
+          "tokens": [
+            "Operation counting",
+            "Other"
+          ],
+          "rows": 1
+        },
+        {
+          "tokens": [
+            "Operation counting",
+            "Reported",
+            "Third-party estimation"
+          ],
+          "rows": 1
+        },
+        {
+          "tokens": [
+            "Reported",
+            "Third-party estimation"
+          ],
+          "rows": 1
+        }
+      ],
+      "overlapping_token_memberships": {
+        "Reported": 87,
+        "Comparison with other models": 32,
+        "Operation counting": 851,
+        "Hardware": 631,
+        "Benchmarks": 20,
+        "Cost": 3,
+        "Other": 7,
+        "Third-party estimation": 68
+      },
+      "memberships_are_additive": false,
+      "native_mapping": [
+        {
+          "native": "",
+          "normalized_tokens": [],
+          "rows": 2182
+        },
+        {
+          "native": "Reported",
+          "normalized_tokens": [
+            "Reported"
+          ],
+          "rows": 57
+        },
+        {
+          "native": "Comparison with other models",
+          "normalized_tokens": [
+            "Comparison with other models"
+          ],
+          "rows": 22
+        },
+        {
+          "native": "Operation counting",
+          "normalized_tokens": [
+            "Operation counting"
+          ],
+          "rows": 640
+        },
+        {
+          "native": "Hardware",
+          "normalized_tokens": [
+            "Hardware"
+          ],
+          "rows": 433
+        },
+        {
+          "native": "Reported,Operation counting",
+          "normalized_tokens": [
+            "Operation counting",
+            "Reported"
+          ],
+          "rows": 16
+        },
+        {
+          "native": "Reported,Operation counting,Hardware",
+          "normalized_tokens": [
+            "Hardware",
+            "Operation counting",
+            "Reported"
+          ],
+          "rows": 4
+        },
+        {
+          "native": "Operation counting,Hardware",
+          "normalized_tokens": [
+            "Hardware",
+            "Operation counting"
+          ],
+          "rows": 82
+        },
+        {
+          "native": "Hardware,Operation counting",
+          "normalized_tokens": [
+            "Hardware",
+            "Operation counting"
+          ],
+          "rows": 77
+        },
+        {
+          "native": "Operation counting,Comparison with other models",
+          "normalized_tokens": [
+            "Comparison with other models",
+            "Operation counting"
+          ],
+          "rows": 2
+        },
+        {
+          "native": "Benchmarks",
+          "normalized_tokens": [
+            "Benchmarks"
+          ],
+          "rows": 15
+        },
+        {
+          "native": "Operation counting,Reported",
+          "normalized_tokens": [
+            "Operation counting",
+            "Reported"
+          ],
+          "rows": 3
+        },
+        {
+          "native": "Hardware,Comparison with other models",
+          "normalized_tokens": [
+            "Comparison with other models",
+            "Hardware"
+          ],
+          "rows": 2
+        },
+        {
+          "native": "Comparison with other models,Reported",
+          "normalized_tokens": [
+            "Comparison with other models",
+            "Reported"
+          ],
+          "rows": 1
+        },
+        {
+          "native": "Hardware,Cost,Benchmarks",
+          "normalized_tokens": [
+            "Benchmarks",
+            "Cost",
+            "Hardware"
+          ],
+          "rows": 1
+        },
+        {
+          "native": "Other",
+          "normalized_tokens": [
+            "Other"
+          ],
+          "rows": 5
+        },
+        {
+          "native": "Cost",
+          "normalized_tokens": [
+            "Cost"
+          ],
+          "rows": 2
+        },
+        {
+          "native": "Other,Operation counting",
+          "normalized_tokens": [
+            "Operation counting",
+            "Other"
+          ],
+          "rows": 1
+        },
+        {
+          "native": "Benchmarks,Hardware",
+          "normalized_tokens": [
+            "Benchmarks",
+            "Hardware"
+          ],
+          "rows": 2
+        },
+        {
+          "native": "Hardware,Benchmarks",
+          "normalized_tokens": [
+            "Benchmarks",
+            "Hardware"
+          ],
+          "rows": 1
+        },
+        {
+          "native": "Hardware,Reported",
+          "normalized_tokens": [
+            "Hardware",
+            "Reported"
+          ],
+          "rows": 1
+        },
+        {
+          "native": "Reported,Hardware",
+          "normalized_tokens": [
+            "Hardware",
+            "Reported"
+          ],
+          "rows": 3
+        },
+        {
+          "native": "Hardware,Other",
+          "normalized_tokens": [
+            "Hardware",
+            "Other"
+          ],
+          "rows": 1
+        },
+        {
+          "native": "Operation counting,Third-party estimation",
+          "normalized_tokens": [
+            "Operation counting",
+            "Third-party estimation"
+          ],
+          "rows": 8
+        },
+        {
+          "native": "Third-party estimation",
+          "normalized_tokens": [
+            "Third-party estimation"
+          ],
+          "rows": 31
+        },
+        {
+          "native": "Hardware,Third-party estimation",
+          "normalized_tokens": [
+            "Hardware",
+            "Third-party estimation"
+          ],
+          "rows": 11
+        },
+        {
+          "native": "Comparison with other models,Hardware",
+          "normalized_tokens": [
+            "Comparison with other models",
+            "Hardware"
+          ],
+          "rows": 1
+        },
+        {
+          "native": "Comparison with other models,Benchmarks",
+          "normalized_tokens": [
+            "Benchmarks",
+            "Comparison with other models"
+          ],
+          "rows": 1
+        },
+        {
+          "native": "Comparison with other models,Operation counting",
+          "normalized_tokens": [
+            "Comparison with other models",
+            "Operation counting"
+          ],
+          "rows": 2
+        },
+        {
+          "native": "Comparison with other models,Hardware,Operation counting",
+          "normalized_tokens": [
+            "Comparison with other models",
+            "Hardware",
+            "Operation counting"
+          ],
+          "rows": 1
+        },
+        {
+          "native": "Third-party estimation,Operation counting",
+          "normalized_tokens": [
+            "Operation counting",
+            "Third-party estimation"
+          ],
+          "rows": 5
+        },
+        {
+          "native": "Third-party estimation,Hardware,Operation counting",
+          "normalized_tokens": [
+            "Hardware",
+            "Operation counting",
+            "Third-party estimation"
+          ],
+          "rows": 1
+        },
+        {
+          "native": "Third-party estimation,Hardware",
+          "normalized_tokens": [
+            "Hardware",
+            "Third-party estimation"
+          ],
+          "rows": 2
+        },
+        {
+          "native": "Hardware,Third-party estimation,Operation counting",
+          "normalized_tokens": [
+            "Hardware",
+            "Operation counting",
+            "Third-party estimation"
+          ],
+          "rows": 1
+        },
+        {
+          "native": "Hardware,Operation counting,Third-party estimation",
+          "normalized_tokens": [
+            "Hardware",
+            "Operation counting",
+            "Third-party estimation"
+          ],
+          "rows": 3
+        },
+        {
+          "native": "Third-party estimation,Reported",
+          "normalized_tokens": [
+            "Reported",
+            "Third-party estimation"
+          ],
+          "rows": 1
+        },
+        {
+          "native": "Reported,Operation counting,Third-party estimation",
+          "normalized_tokens": [
+            "Operation counting",
+            "Reported",
+            "Third-party estimation"
+          ],
+          "rows": 1
+        },
+        {
+          "native": "Operation counting,Hardware,Third-party estimation",
+          "normalized_tokens": [
+            "Hardware",
+            "Operation counting",
+            "Third-party estimation"
+          ],
+          "rows": 3
+        },
+        {
+          "native": "Third-party estimation,Operation counting,Hardware",
+          "normalized_tokens": [
+            "Hardware",
+            "Operation counting",
+            "Third-party estimation"
+          ],
+          "rows": 1
+        }
+      ],
+      "compute_populated_confidence_counts": {
+        "Likely": 339,
+        "Speculative": 125,
+        "Confident": 945,
+        "": 1
+      },
+      "missingness_by_year": null,
+      "trend_slopes": null,
+      "not_computed_reason": "requires verified row-level transformation of the existing archived CSV"
+    },
+    "evalplus_B": {
+      "humaneval": {
+        "native_labels": 101,
+        "complete_pairs": 101,
+        "missing_pairs": 0,
+        "median_gap_pp": 4.9,
+        "mean_gap_pp": 4.828713,
+        "min_gap_pp": 0.0,
+        "max_gap_pp": 10.3,
+        "gap_at_least_5pp": 47,
+        "sampling_ci": null,
+        "ci_reason": "finite selected archive; no task outcomes or reviewed independent families"
+      },
+      "mbpp": {
+        "native_labels": 101,
+        "complete_pairs": 60,
+        "missing_pairs": 41,
+        "median_gap_pp": 10.45,
+        "mean_gap_pp": 10.568333,
+        "min_gap_pp": 2.3,
+        "max_gap_pp": 16.1,
+        "gap_at_least_5pp": 59,
+        "sampling_ci": null,
+        "ci_reason": "finite selected archive; no task outcomes or reviewed independent families"
+      }
+    },
+    "revisions": {
+      "changed_objects": 72,
+      "object_denominator": 101,
+      "changed_slots": 161,
+      "slot_denominator": 404,
+      "numeric_revisions": 125,
+      "numeric_to_null": 36,
+      "withdrawn_mbpp_pairs": 18,
+      "by_metric": {
+        "mbpp": 69,
+        "mbpp+": 68,
+        "humaneval+": 22,
+        "humaneval": 2
+      },
+      "decomposition": {
+        "humaneval": {
+          "A_n": 101,
+          "B_n": 101,
+          "matched_n": 101,
+          "A_mean_percent": 48.015842,
+          "B_mean_percent": 48.020792,
+          "matched_revision_pp": 0.00495,
+          "A_selection_composition_pp": 0.0,
+          "total_archive_mean_change_pp": 0.00495,
+          "is_progress_rate": false
+        },
+        "humaneval+": {
+          "A_n": 101,
+          "B_n": 101,
+          "matched_n": 101,
+          "A_mean_percent": 42.983168,
+          "B_mean_percent": 43.192079,
+          "matched_revision_pp": 0.208911,
+          "A_selection_composition_pp": 0.0,
+          "total_archive_mean_change_pp": 0.208911,
+          "is_progress_rate": false
+        },
+        "mbpp": {
+          "A_n": 78,
+          "B_n": 60,
+          "matched_n": 60,
+          "A_mean_percent": 61.89359,
+          "B_mean_percent": 64.45,
+          "matched_revision_pp": 1.463333,
+          "A_selection_composition_pp": 1.093077,
+          "total_archive_mean_change_pp": 2.55641,
+          "is_progress_rate": false
+        },
+        "mbpp+": {
+          "A_n": 78,
+          "B_n": 60,
+          "matched_n": 60,
+          "A_mean_percent": 50.987179,
+          "B_mean_percent": 53.881667,
+          "matched_revision_pp": 1.903333,
+          "A_selection_composition_pp": 0.991154,
+          "total_archive_mean_change_pp": 2.894487,
+          "is_progress_rate": false
+        }
+      }
+    },
+    "strict_panel": {
+      "ready": 0,
+      "candidate_denominator": 12,
+      "scope": "reviewed twelve-candidate panel only"
+    },
+    "robustness": {
+      "supplied_positions": 202,
+      "all_held": true,
+      "eligible_N": null,
+      "reviewed_independent_F": null,
+      "missing_zip_hold_closed": true
+    },
+    "mlperf_receipt_cutoff": {
+      "verified_at": "2026-10-09T20:57:51.192Z",
+      "source_repository": "mlcommons/training_results_v5.1",
+      "source_commit": "441d65f4445cd59687466533fd9f55399136e7a4",
+      "complete_originals_preserved": 37,
+      "qualified_cohort_files": 300,
+      "cohort_complete": false,
+      "canonical_dataset_admission": false
+    },
+    "resolved_forecast_corpus": {
+      "verified_eligible_count": null,
+      "public_scoring_enabled": false
+    }
+  },
+  "cards": [
+    {
+      "id": "readiness",
+      "type": "counts_by_distinct_unit",
+      "available": "static_verified_snapshot",
+      "never_sum_units": true
+    },
+    {
+      "id": "epoch_coverage",
+      "type": "horizontal_bars",
+      "available": "verified_field_presence_counts",
+      "values_ref": "verified_baseline.epoch",
+      "not_model_truth_or_world_completeness": true
+    },
+    {
+      "id": "epoch_resource_explorer",
+      "type": "date_log_flop_scatter",
+      "available": "held_until_verified_row_transform",
+      "x": "publication_date",
+      "y": "training_flop",
+      "strata": [
+        "scope",
+        "estimation_method",
+        "confidence"
+      ],
+      "information_mode": "current_vintage_retrospective_chronology"
+    },
+    {
+      "id": "coding_scores",
+      "type": "paired_dot",
+      "available": "published_aggregate_description",
+      "default_vintage": "evalplus_B",
+      "separate_benchmarks": [
+        "humaneval",
+        "mbpp"
+      ],
+      "y_range": [
+        0,
+        100
+      ],
+      "uncertainty": "no task confidence intervals",
+      "missing_strip": true
+    },
+    {
+      "id": "reported_gap",
+      "type": "distribution_and_native_label_rows",
+      "available": "finite_cohort_descriptive",
+      "unit": "percentage_points",
+      "values_ref": "verified_baseline.evalplus_B",
+      "tie_rank_rule": "midrank within fixed cohort"
+    },
+    {
+      "id": "archive_revisions",
+      "type": "waterfall_and_slot_audit",
+      "available": "revision_description",
+      "values_ref": "verified_baseline.revisions",
+      "is_temporal_progress": false
+    },
+    {
+      "id": "illustrative_quote",
+      "type": "conditional_workload_grid",
+      "available": "advertised_tariff_scenario",
+      "actual_cost": false,
+      "current_price": false,
+      "assumptions": [
+        "hypothetical workload",
+        "reviewed launch assertions",
+        "no effective interval",
+        "no discounts or tools"
+      ]
+    },
+    {
+      "id": "training_systems",
+      "type": "comparability_status_then_time_to_target",
+      "available": "preservation_status_only",
+      "gates": [
+        "validated run success",
+        "matched workload and target",
+        "hardware/software/configuration",
+        "repetitions",
+        "measured/scaled separation",
+        "official aggregation"
+      ]
+    },
+    {
+      "id": "predictions",
+      "type": "gated_projection",
+      "available": "disabled",
+      "empty_text": "A validated forecast is not available for this metric.",
+      "future_intervals": [
+        0.5,
+        0.9
+      ],
+      "horizons_months": [
+        3,
+        6
+      ]
+    },
+    {
+      "id": "calibration",
+      "type": "gated_reliability_and_scores",
+      "available": "disabled",
+      "eligible_count": null,
+      "empty_text": "A reviewed eligible resolution corpus has not been verified.",
+      "current_disable_reason": "Corpus and public release checks unresolved; not a blanket minimum-count prohibition on exploratory scoring",
+      "exploratory_scoring_below_provisional_targets": "Permitted for eligible adjudicated cases with counts, matched baseline and limitations; no unsupported calibration claim"
+    }
+  ],
+  "display_contract": {
+    "required": [
+      "analysis_id",
+      "source_hash",
+      "native_pointer",
+      "snapshot_id",
+      "method_hash",
+      "units",
+      "metric_definition",
+      "population",
+      "numerator",
+      "denominator_or_reason",
+      "time_axis",
+      "source_vintage",
+      "time_roles_and_precision",
+      "known_at_or_null_reason",
+      "reviewed_at",
+      "missing_reasons",
+      "uncertainty_kind",
+      "claim_tier",
+      "release_decision"
+    ],
+    "unknown_time_rendering": "Unknown, with explicit reason; never fill with today or another clock",
+    "claim_tiers": [
+      "published_score_description",
+      "verified_comparable_change",
+      "retrospective_prediction",
+      "prospective_prediction",
+      "scenario"
+    ],
+    "metric_level_admission": true,
+    "sidecar_only": true,
+    "private_intake_fields_excluded": true,
+    "repository_delivery_allowlist": [
+      "PLAN.md",
+      "plan.json"
+    ],
+    "private_support_files_excluded": true
+  },
+  "backtesting": {
+    "modes": [
+      "current_corpus_chronology",
+      "retrospective_publication_reconstruction",
+      "strict_as_known"
+    ],
+    "feature_rule": "All feature dependencies available by T; train targets known by fit time; represent review cutoff honestly.",
+    "future_plus_rule": "base/features available <= T < plus first disclosure",
+    "split_rule": "Nested forward origins; transitive lineage components; keep all revisions and dependent records grouped.",
+    "separate_estimands": [
+      "forward previously seen family",
+      "unseen family with entire lineage held out"
+    ],
+    "unknown_ancestry": "hold or prespecified quarantine, not independent singleton",
+    "current_graph": "split isolation only, never backdated predictor",
+    "preprocessing": "fit within training partitions only",
+    "same_case_comparison": true,
+    "purge": "exclude crossing generation/publication intervals and embargo overlapping target periods",
+    "baselines": [
+      "persistence",
+      "training_only_recent_slope",
+      "bounded_simple_trend"
+    ],
+    "score_outputs": [
+      "native_MAE_RMSE",
+      "family_macro_loss",
+      "proper_distribution_score",
+      "horizon_specific_interval_coverage_and_width",
+      "failed_and_skipped_origins"
+    ]
+  },
+  "gates": {
+    "robustness_pilot": {
+      "authority": "existing RG-EVALPLUS-2026-10-09-v1.0, unchanged",
+      "models_min": 80,
+      "components_min": 20,
+      "outer_folds": 5,
+      "inner_folds": 3,
+      "outer_test_components_min": 4,
+      "inner_train_components_min": 10,
+      "inner_train_rows_min": 30,
+      "encoded_features_max": 7,
+      "varying_nonbase_raw_variables_min": 2,
+      "usable_active_size_fraction_min": 0.8,
+      "train_distinct_targets_min": 3,
+      "HumanEval_eligible_N": null,
+      "HumanEval_eligible_F": null,
+      "MBPP_complete_pairs_upper_bound": 60,
+      "MBPP_gate_pass": false
+    },
+    "robustness_pilot_success": {
+      "primary": "MLP-P",
+      "against_each": [
+        "affine_base",
+        "inner_selected_classical"
+      ],
+      "MAE_improvement_pp_min": 1,
+      "relative_improvement_min": 0.1,
+      "nonnegative_outer_folds_min": 4,
+      "leave_one_family_out_improvement": "positive",
+      "meaning": "investment decision, not confirmed superiority"
+    },
+    "robustness_future": {
+      "new_family_min": 20,
+      "interval_half_width_pp_max": 1,
+      "paired_family_bootstrap_replicates": 10000,
+      "relative_MAE_improvement_min": 0.1,
+      "improvement_interval_lower_pp_exceeds": 1,
+      "scope": "frozen procedures and exchangeable family assumptions"
+    },
+    "longitudinal_forecast": {
+      "authority": "proposed exploratory product floors; separate preregistration required",
+      "distinct_time_points_min": 12,
+      "span_months_min": 24,
+      "valid_origins_per_horizon_min": 6,
+      "train_components_each_origin_min": 10,
+      "distinct_test_components_min": 20,
+      "overlapping_origins_are_independent": false,
+      "public_gate": [
+        "predeclared precision",
+        "predeclared baseline improvement",
+        "horizon coverage and width",
+        "untouched validation period",
+        "rights and applicable release authorization, including existing authorization"
+      ]
+    },
+    "binary_calibration": {
+      "authority": "provisional dashboard design targets for a nonrare event mix; review for rarity, dependence, horizon and precision",
+      "provisional_targets": {
+        "resolved_event_clusters": 100,
+        "each_outcome_class": 20,
+        "reliability_bin_event_clusters": 20
+      },
+      "hard_count_minimum_for_exploratory_scoring": null,
+      "eligible_case_loss_permitted": true,
+      "rare_event_policy": "Do not wait for 20 positives to report clearly labeled descriptive Brier and matched baseline loss on eligible cases. Report counts, coverage and uncertainty; a one-class sample cannot establish discrimination or calibration across both outcomes.",
+      "binning": "fixed before outcomes; sparse bins explicit with counts and wide uncertainty or withheld for stated precision reason",
+      "calibration_claim_requires": "predeclared tolerance and precision; proper score alone insufficient",
+      "public_activation_requires": "scientific and rights checks plus applicable release authorization, including existing authorization"
+    },
+    "cost_and_training_systems": {
+      "universal_repetition_floor": null,
+      "rule": "complete comparable run/accounting metadata and benchmark prescribed repetitions/aggregation"
+    }
+  },
+  "uncertainty": {
+    "finite_archive": "descriptive distributions; no invented population interval",
+    "aggregate_scores_forbid": [
+      "reconstructed binomial trials",
+      "task bootstrap",
+      "McNemar",
+      "fold SD divided by sqrt folds",
+      "seeds/snapshots as independent N"
+    ],
+    "rounding_sensitivity": "Only conditional on nearest rounding: +/-0.05 pp per score, +/-0.10 pp per gap; not a confidence interval.",
+    "future": "conditional prediction intervals evaluated at each horizon; model/family/time dependence retained",
+    "scenario": "assumption ranges, not fitted probabilities"
+  },
+  "missingness": {
+    "reasons": [
+      "not_evaluated",
+      "not_disclosed",
+      "collection_failed",
+      "unavailable",
+      "withdrawn",
+      "identity_unresolved",
+      "protocol_incomparable",
+      "not_applicable",
+      "unknown"
+    ],
+    "zero_imputation": false,
+    "withdrawal_forward_fill": false,
+    "target_imputation": false,
+    "predictor_imputation": "only if allowed, training-fold-only with indicator",
+    "composition_view": "matched and complete-case comparisons with explicit attrition"
+  },
+  "first_experiments": [
+    {
+      "id": "E1",
+      "title": "Explain archive revision impact",
+      "inputs": [
+        "evalplus_A",
+        "evalplus_B"
+      ],
+      "unit": "native label and metric",
+      "output": "same-label plus composition waterfall and complete slot audit",
+      "verified_example": "MBPP+ total +2.894487 pp = same-label +1.903333 pp + A-cohort composition +0.991154 pp",
+      "stop": "all 404 slots reconcile, no unresolved arithmetic",
+      "fit": false,
+      "claim": "archive changes, never capability speed"
+    },
+    {
+      "id": "E2",
+      "title": "Describe base and plus contrasts",
+      "inputs": [
+        "evalplus_B",
+        "robustness_package"
+      ],
+      "unit": "label-by-benchmark within separate finite cohorts",
+      "output": "paired scores, gaps, fixed-cohort midranks and no-fit gate report",
+      "pairs": [
+        101,
+        60
+      ],
+      "stop": "native fidelity and held admission status reproduced",
+      "fit": false,
+      "claim": "published scores, not verified common-output or prospective robustness"
+    },
+    {
+      "id": "E3",
+      "title": "Audit Epoch resource evidence by method",
+      "inputs": [
+        "epoch_models"
+      ],
+      "unit": "source row in the verified 3626-row archive",
+      "output": "coverage matrix, 27 normalized method-combination bars, overlapping method memberships, confidence strata and eligibility gates",
+      "values_ref": "verified_baseline.epoch_methods",
+      "stop": "all categories reconcile; reversible method normalization; no invented intersection cohorts or year-specific slopes",
+      "fit": false,
+      "claim": "verified resource evidence and missingness; no capability growth"
+    }
+  ],
+  "optional_illustrations": [
+    {
+      "id": "I1",
+      "title": "Historical tariff composition sensitivity",
+      "inputs": [
+        "r1_tariff"
+      ],
+      "unit": "hypothetical fixed-token workload",
+      "formula": "(I*(0.14*h+0.55*(1-h))+2.19*O)/1000000 USD",
+      "grid": [
+        {
+          "input_tokens": 1000,
+          "output_tokens": 250,
+          "cache_hit_fraction": "0",
+          "illustrative_usd": "0.0010975"
+        },
+        {
+          "input_tokens": 1000,
+          "output_tokens": 250,
+          "cache_hit_fraction": "0.5",
+          "illustrative_usd": "0.0008925"
+        },
+        {
+          "input_tokens": 1000,
+          "output_tokens": 250,
+          "cache_hit_fraction": "1",
+          "illustrative_usd": "0.0006875"
+        },
+        {
+          "input_tokens": 1000,
+          "output_tokens": 1000,
+          "cache_hit_fraction": "0",
+          "illustrative_usd": "0.00274"
+        },
+        {
+          "input_tokens": 1000,
+          "output_tokens": 1000,
+          "cache_hit_fraction": "0.5",
+          "illustrative_usd": "0.002535"
+        },
+        {
+          "input_tokens": 1000,
+          "output_tokens": 1000,
+          "cache_hit_fraction": "1",
+          "illustrative_usd": "0.00233"
+        },
+        {
+          "input_tokens": 1000,
+          "output_tokens": 4000,
+          "cache_hit_fraction": "0",
+          "illustrative_usd": "0.00931"
+        },
+        {
+          "input_tokens": 1000,
+          "output_tokens": 4000,
+          "cache_hit_fraction": "0.5",
+          "illustrative_usd": "0.009105"
+        },
+        {
+          "input_tokens": 1000,
+          "output_tokens": 4000,
+          "cache_hit_fraction": "1",
+          "illustrative_usd": "0.0089"
+        }
+      ],
+      "claim": "historical advertised quote illustration, not current price, billing, trend or efficiency"
+    }
+  ],
+  "implementation_order": [
+    "derived read model and semantic admission tests",
+    "static pinned cards and descriptive experiments",
+    "review existing identity/lineage and parse original resource/system records",
+    "shadow baseline harness after identity, leakage and sample gates pass",
+    "review one public product before activation"
+  ],
+  "regression_tests": [
+    "correction snapshots do not produce speed",
+    "withdrawn MBPP stays null",
+    "unknown ancestry is not singleton",
+    "family aliases never cross unseen-family split",
+    "late compute excluded at old origin",
+    "circular benchmark-derived compute excluded",
+    "unverified denominator blocks task CI",
+    "failed attempt costs counted",
+    "zero successes do not yield zero cost",
+    "scaled MLPerf not independent measured run",
+    "unverified resolution count unknown not zero",
+    "all missing gates disable projections"
+  ]
+}
