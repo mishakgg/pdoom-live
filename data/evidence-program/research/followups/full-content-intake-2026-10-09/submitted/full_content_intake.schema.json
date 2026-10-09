@@ -1,0 +1,1161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pdoom-live:research:full-content-intake-ledger:1.0.0",
+  "title": "Proposed full-content intake evidence ledger",
+  "description": "Research-only companion schema; does not change pdoom-live canonical contracts. The outer envelope describes this fixed no-collection review; $defs/artifact can be reused for future observed originals. A production acquisition envelope requires separate design. Cross-reference integrity and counts also require semantic validation.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "status": {
+      "const": "read_only_research_no_collection_deployed"
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "inspection_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "timezone": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repository_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "inspected_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "planning_baseline": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "baseline_contents_inspected": {
+          "type": "boolean"
+        },
+        "repository_files_unavailable": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "external_artifact_limit": {
+          "const": 18
+        },
+        "external_artifacts_inspected": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 18
+        },
+        "lineage_counts": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "openalex": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 3
+            },
+            "arxiv": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 3
+            },
+            "mit": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 3
+            }
+          },
+          "required": [
+            "openalex",
+            "arxiv",
+            "mit"
+          ]
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "inspection_date",
+        "timezone",
+        "repository_url",
+        "inspected_commit",
+        "planning_baseline",
+        "baseline_contents_inspected",
+        "repository_files_unavailable",
+        "external_artifact_limit",
+        "external_artifacts_inspected",
+        "lineage_counts",
+        "constraints",
+        "method"
+      ]
+    },
+    "repository_evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/repoFile"
+      }
+    },
+    "external_evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      },
+      "maxItems": 18
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/artifact"
+      },
+      "minItems": 1
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/blocker"
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "proposed_acceptance_cases": {
+          "const": 8
+        },
+        "proposed_acceptance_cases_executed": {
+          "const": 0
+        },
+        "manuscript_bodies_downloaded": {
+          "const": 0
+        },
+        "native_exports_downloaded": {
+          "const": 0
+        },
+        "metadata_sample_responses_observed": {
+          "const": 1
+        },
+        "live_collection_deployed": {
+          "const": false
+        },
+        "repository_edits": {
+          "const": false
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "proposed_acceptance_cases",
+        "proposed_acceptance_cases_executed",
+        "manuscript_bodies_downloaded",
+        "native_exports_downloaded",
+        "metadata_sample_responses_observed",
+        "live_collection_deployed",
+        "repository_edits",
+        "note"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "status",
+    "review",
+    "repository_evidence",
+    "external_evidence",
+    "artifacts",
+    "blockers",
+    "execution"
+  ],
+  "$defs": {
+    "version": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "publisher_version",
+            "observed_snapshot",
+            "observed_metadata_revision",
+            "mutable_location",
+            "unknown"
+          ]
+        },
+        "identifier": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "native_updated_value": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "published_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "binding": {
+          "enum": [
+            "exact_version_page",
+            "content_hash_snapshot",
+            "work_metadata_only",
+            "repository_historical",
+            "unresolved"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "identifier",
+        "native_updated_value",
+        "published_at",
+        "binding",
+        "note"
+      ]
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "license_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "license_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "basis": {
+          "enum": [
+            "explicit_metadata_grant",
+            "exact_version_page",
+            "repository_historical",
+            "version_page_and_research_terms",
+            "location_metadata_only",
+            "explicit_dataset_grant"
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "excluded_components": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "original_grant_text_hash": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "license_id",
+        "license_url",
+        "basis",
+        "scope",
+        "evidence_ids",
+        "conditions",
+        "excluded_components",
+        "original_grant_text_hash"
+      ]
+    },
+    "accessObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "observed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "evidence_level": {
+          "enum": [
+            "fresh_primary",
+            "repository_historical",
+            "documentation_only",
+            "not_requested"
+          ]
+        },
+        "method": {
+          "enum": [
+            "public_web_read",
+            "anonymous_http_get",
+            "repository_receipt_read",
+            "none"
+          ]
+        },
+        "request_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "http_status": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 100,
+          "maximum": 599
+        },
+        "result": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "date",
+        "observed_at",
+        "evidence_level",
+        "method",
+        "request_url",
+        "http_status",
+        "result",
+        "evidence_ids"
+      ]
+    },
+    "content": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "state": {
+          "enum": [
+            "not_requested",
+            "metadata_complete_observed",
+            "complete_original_observed",
+            "partial_response_observed",
+            "historical_retained_not_reverified",
+            "access_blocked"
+          ]
+        },
+        "bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "hash_scope": {
+          "enum": [
+            "complete_observed_metadata",
+            "complete_observed_original",
+            "partial_response_only",
+            "repository_reported_complete_original",
+            "not_measured"
+          ]
+        },
+        "observed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "fresh_raw_readback_verified": {
+          "type": "boolean"
+        },
+        "byte_integrity": {
+          "enum": [
+            "verified_locally",
+            "partial",
+            "historically_reported",
+            "not_tested"
+          ]
+        },
+        "native_dataset_coverage": {
+          "enum": [
+            "complete_for_declared_metadata_object",
+            "complete",
+            "partial",
+            "representation_only",
+            "unknown"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "state",
+        "bytes",
+        "sha256",
+        "hash_scope",
+        "observed_at",
+        "fresh_raw_readback_verified",
+        "byte_integrity",
+        "native_dataset_coverage",
+        "note"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "enum": [
+                  "metadata_complete_observed",
+                  "complete_original_observed"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "bytes": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "observed_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "byte_integrity": {
+                "const": "verified_locally"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "metadata_complete_observed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "hash_scope": {
+                "const": "complete_observed_metadata"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "complete_original_observed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "hash_scope": {
+                "const": "complete_observed_original"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "historical_retained_not_reverified"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "hash_scope": {
+                "const": "repository_reported_complete_original"
+              },
+              "fresh_raw_readback_verified": {
+                "const": false
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "enum": [
+                  "not_requested",
+                  "access_blocked"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "bytes": {
+                "type": "null"
+              },
+              "sha256": {
+                "type": "null"
+              },
+              "hash_scope": {
+                "const": "not_measured"
+              },
+              "fresh_raw_readback_verified": {
+                "const": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    "decisions": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "raw_preservation": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "rights_eligibility": {
+              "enum": [
+                "permitted",
+                "research_use_permitted",
+                "unresolved"
+              ]
+            },
+            "action": {
+              "enum": [
+                "retain_research_metadata",
+                "retain_original",
+                "retain_partial_representation",
+                "reuse_existing",
+                "acquire_after_source_preflight",
+                "hold"
+              ]
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            },
+            "blocker_ids": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "rights_eligibility",
+            "action",
+            "reason",
+            "blocker_ids"
+          ]
+        },
+        "analytical_inclusion": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "status": {
+              "enum": [
+                "discovery_only",
+                "not_reviewed",
+                "taxonomy_mapping_pending"
+              ]
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "status",
+            "reason"
+          ]
+        },
+        "public_redistribution": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "rights_eligibility": {
+              "enum": [
+                "eligible_with_conditions",
+                "unresolved"
+              ]
+            },
+            "publication_authorized": {
+              "const": false
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "rights_eligibility",
+            "publication_authorized",
+            "reason"
+          ]
+        }
+      },
+      "required": [
+        "raw_preservation",
+        "analytical_inclusion",
+        "public_redistribution"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "raw_preservation": {
+                "properties": {
+                  "action": {
+                    "enum": [
+                      "retain_research_metadata",
+                      "retain_original",
+                      "retain_partial_representation",
+                      "reuse_existing",
+                      "acquire_after_source_preflight"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "raw_preservation": {
+                "properties": {
+                  "rights_eligibility": {
+                    "enum": [
+                      "permitted",
+                      "research_use_permitted"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "artifact_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "existing_artifact_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "route": {
+          "enum": [
+            "openalex",
+            "arxiv",
+            "mit"
+          ]
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "lineage_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "official_landing_url": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "representation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "format_status": {
+          "enum": [
+            "observed_metadata",
+            "observed_original",
+            "documented_or_link_label_only",
+            "repository_historical",
+            "unknown"
+          ]
+        },
+        "version": {
+          "$ref": "#/$defs/version"
+        },
+        "rights": {
+          "$ref": "#/$defs/rights"
+        },
+        "access_observations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/accessObservation"
+          },
+          "minItems": 1
+        },
+        "content": {
+          "$ref": "#/$defs/content"
+        },
+        "decisions": {
+          "$ref": "#/$defs/decisions"
+        },
+        "relations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "predicate": {
+                "type": "string",
+                "minLength": 1
+              },
+              "target_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "basis": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "predicate",
+              "target_id",
+              "basis"
+            ]
+          }
+        },
+        "uncertainty": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "artifact_id",
+        "existing_artifact_id",
+        "route",
+        "source_ids",
+        "lineage_id",
+        "title",
+        "source_url",
+        "official_landing_url",
+        "representation",
+        "format_status",
+        "version",
+        "rights",
+        "access_observations",
+        "content",
+        "decisions",
+        "relations",
+        "uncertainty"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "rights": {
+                "properties": {
+                  "basis": {
+                    "const": "location_metadata_only"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "decisions": {
+                "properties": {
+                  "raw_preservation": {
+                    "properties": {
+                      "rights_eligibility": {
+                        "const": "unresolved"
+                      }
+                    }
+                  },
+                  "public_redistribution": {
+                    "properties": {
+                      "rights_eligibility": {
+                        "const": "unresolved"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "version": {
+                "properties": {
+                  "kind": {
+                    "const": "observed_snapshot"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "content": {
+                "properties": {
+                  "state": {
+                    "enum": [
+                      "metadata_complete_observed",
+                      "complete_original_observed",
+                      "partial_response_observed"
+                    ]
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$"
+                  },
+                  "observed_at": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "route": {
+          "enum": [
+            "openalex",
+            "arxiv",
+            "mit"
+          ]
+        },
+        "source_url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "document_version_or_date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "inspected_on": {
+          "type": "string",
+          "format": "date"
+        },
+        "observed_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "kind": {
+          "enum": [
+            "rights_access_document",
+            "version_landing_page",
+            "metadata_response",
+            "export_access_attempt"
+          ]
+        },
+        "access_result": {
+          "type": "string",
+          "minLength": 1
+        },
+        "http_status": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 100,
+          "maximum": 599
+        },
+        "locators": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "finding": {
+          "type": "string",
+          "minLength": 1
+        },
+        "limits": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "response_hash_scope": {
+          "enum": [
+            "complete_metadata_response",
+            "not_measured"
+          ]
+        },
+        "linked_operations_executed": {
+          "const": false
+        }
+      },
+      "required": [
+        "evidence_id",
+        "route",
+        "source_url",
+        "title",
+        "document_version_or_date",
+        "inspected_on",
+        "observed_at",
+        "kind",
+        "access_result",
+        "http_status",
+        "locators",
+        "finding",
+        "limits",
+        "bytes",
+        "sha256",
+        "response_hash_scope",
+        "linked_operations_executed"
+      ]
+    },
+    "repoFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "evidence_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "read_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "evidence_id",
+        "path",
+        "url",
+        "bytes",
+        "sha256",
+        "read_at",
+        "status"
+      ]
+    },
+    "blocker": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "blocker_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "routes": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "openalex",
+              "arxiv",
+              "mit"
+            ]
+          },
+          "minItems": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "missing_evidence": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocks": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "raw_acquisition",
+              "scalable_enumeration",
+              "native_completeness_claim",
+              "historical_completeness_claim",
+              "public_redistribution",
+              "unattended_deployment"
+            ]
+          },
+          "minItems": 1
+        },
+        "does_not_block": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "evidence_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "blocker_id",
+        "routes",
+        "scope",
+        "missing_evidence",
+        "blocks",
+        "does_not_block",
+        "evidence_ids"
+      ]
+    }
+  }
+}

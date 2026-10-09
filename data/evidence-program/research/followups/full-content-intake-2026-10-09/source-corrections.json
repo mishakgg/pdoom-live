@@ -1,0 +1,139 @@
+{
+  "status": "review_addendum_not_applied_to_historical_inputs",
+  "corrections": [
+    {
+      "correction_id": "FCI-C01",
+      "source_finding_ids": [
+        "FCI-SV09"
+      ],
+      "targets": [
+        "submitted/full_content_artifact_ledger.json: OAX-E01 limits",
+        "submitted/full_content_acquisition_spec.json: OpenAlex enumeration",
+        "original FCI-F04"
+      ],
+      "historical_claim_or_risk": "Cursor documentation had not been inspected.",
+      "required_interpretation": "Official paging documentation was independently inspected on 2026-10-09. per_page is 1–100; 200 is deprecated. Basic page × per_page is limited to 10,000. Cursor traversal starts at * and terminates with null next_cursor and empty results. A bounded real paginator and completeness behavior remain unexecuted."
+    },
+    {
+      "correction_id": "FCI-C02",
+      "source_finding_ids": [
+        "FCI-SV13"
+      ],
+      "targets": [
+        "submitted/full_content_artifact_ledger.json: GL010-2401.02843-v3 content",
+        "submitted/full_content_acquisition_spec.json: smallest_deployable_tranche",
+        "original FCI-F01"
+      ],
+      "historical_claim_or_risk": "The original research had not freshly read back the retained v3 PDF.",
+      "required_interpretation": "Keep that historical statement unchanged. Append the separate 16:04:12 existing-archive readback: 5,902,763 bytes and SHA-256 8a440d9f5c24e3627b2887c4b654f8b98253706a92e8e4ece266f8c2fe9903a7. Identity reconciliation is satisfied. This does not acquire new source bytes, establish present arXiv equality, verify native-source completeness or authorize publication."
+    },
+    {
+      "correction_id": "FCI-C03",
+      "source_finding_ids": [
+        "FCI-SV14"
+      ],
+      "targets": [
+        "submitted/validation_summary.json",
+        "submitted/full_content_intake.schema.json",
+        "original FCI-F02"
+      ],
+      "historical_claim_or_risk": "The submitted session lacked a standards-complete schema engine.",
+      "required_interpretation": "A later offline review completed Draft 2020-12 structure/metaschema checks and explicit tested URI/date/date-time checks. All 28 supplied-data check groups passed, but 12 unsafe semantic mutations were accepted. Structural validity is not a production admission gate; all 8 acquisition cases remain unexecuted."
+    },
+    {
+      "correction_id": "FCI-C04",
+      "source_finding_ids": [
+        "FCI-SV04",
+        "FCI-SV05"
+      ],
+      "targets": [
+        "submitted/openalex_W4414876758_receipt.json",
+        "submitted/full_content_artifact_ledger.json: OAX-E06, INTAKE-OA-*"
+      ],
+      "historical_claim_or_risk": "A preprint DOI lookup resolves to a JAIR DOI and exposes three locations and two cache URLs.",
+      "required_interpretation": "Preserve the 15:34:12.583153 and 16:12:46.163487 receipts separately; each metadata body is 18,977 bytes with identical SHA-256 2059381f704239c6823f810f49dffa93a438efbda3e4928357f4739dd7e3d409. Work W4414876758 consolidates a study lineage; the JAIR copy, exact arXiv editions and cached PDF/TEI are distinct objects. No extra independent-study credit or cache edition/rights binding follows."
+    },
+    {
+      "correction_id": "FCI-C05",
+      "source_finding_ids": [
+        "FCI-SV01",
+        "FCI-SV02"
+      ],
+      "targets": [
+        "submitted/full_content_artifact_ledger.json: AR-E05/AR-E06 and ESPAI candidates",
+        "submitted/full_content_acceptance_cases.json: ACQ-03"
+      ],
+      "historical_claim_or_risk": "A versioned landing page may still expose generic unversioned citation_pdf_url.",
+      "required_interpretation": "Use visible exact vN PDF/source links, not generic citation metadata. Exact ESPAI v1 and v3 pages link CC BY 4.0. v2 rights remain repository-historical in this review. ACQ-03 is a synthetic mixed-version-rights case, not a statement that actual ESPAI v1 lacks CC BY."
+    },
+    {
+      "correction_id": "FCI-C06",
+      "source_finding_ids": [
+        "FCI-SV03"
+      ],
+      "targets": [
+        "submitted/full_content_artifact_ledger.json: AR-E07 and INTAKE-CN017-v1-*"
+      ],
+      "historical_claim_or_risk": "CN017 has standard arXiv distribution terms.",
+      "required_interpretation": "Pin the finding to 2310.19852v1 and arXiv nonexclusive-distribution 1.0. Private research storage relies on a separately applicable operator-terms basis; public eligibility needs its own grant. Later v2–v6 grants were not inspected."
+    },
+    {
+      "correction_id": "FCI-C07",
+      "source_finding_ids": [
+        "FCI-SV06"
+      ],
+      "targets": [
+        "submitted/full_content_artifact_ledger.json: INTAKE-OA-CACHED-PDF/TEI"
+      ],
+      "historical_claim_or_risk": "has_content and cc-by location flags suggest content availability.",
+      "required_interpretation": "Keep cached PDF/TEI held: no actual object UUID/edition/grant binding or cache-body observation exists. Per-file access requires an API key under inspected docs and full archive sync is paid. Service access adds no content rights; TEI is derived and cannot prove original completeness."
+    },
+    {
+      "correction_id": "FCI-C08",
+      "source_finding_ids": [
+        "FCI-SV07"
+      ],
+      "targets": [
+        "submitted/full_content_artifact_ledger.json: OAX-E05",
+        "submitted/full_content_acceptance_cases.json: ACQ-08"
+      ],
+      "historical_claim_or_risk": "Metadata deletion and restoration documentation has conflicting wording.",
+      "required_interpretation": "Preserve both statements and uncertainty. A replaced deletion ledger is not append-only history. Metadata removal/merge is not manuscript withdrawal, rights revocation or an instruction to destroy an original. Actual deletion/reappearance handling is unexecuted."
+    },
+    {
+      "correction_id": "FCI-C09",
+      "source_finding_ids": [
+        "FCI-SV08"
+      ],
+      "targets": [
+        "submitted/full_content_acquisition_spec.json: OpenAlex denominator"
+      ],
+      "historical_claim_or_risk": "Official aggregate population examples differ across dated pages.",
+      "required_interpretation": "Keep dated examples separate: September roughly 327M default/476M all versus October roughly 324M core plus 193M expansion. Do not reconcile them by arithmetic or use them as the relevant selected-work denominator; freeze finite IDs, corpus, filters and interval first."
+    },
+    {
+      "correction_id": "FCI-C10",
+      "source_finding_ids": [
+        "FCI-SV10",
+        "FCI-SV11"
+      ],
+      "targets": [
+        "submitted/full_content_artifact_ledger.json: MIT-E01/E03/E04 and MIT candidates"
+      ],
+      "historical_claim_or_risk": "MIT workbook attempts produced tool-side authentication redirects.",
+      "required_interpretation": "MIT data-specific CC BY 4.0 and official workbook links are verified at the landing page. Preserve the earlier workbook observations with null origin HTTP status. Tool error 500 is not measured origin HTTP 500, and two blocked attempts do not prove every legitimate anonymous route fails. Neither workbook was retried or acquired in this review."
+    },
+    {
+      "correction_id": "FCI-C11",
+      "source_finding_ids": [
+        "FCI-SV12"
+      ],
+      "targets": [
+        "submitted/full_content_artifact_ledger.json: MIT-E05 and MIT candidate version",
+        "submitted/full_content_acceptance_cases.json: ACQ-05/ACQ-06"
+      ],
+      "historical_claim_or_risk": "Version 4 and changing website population labels do not identify a retrieved workbook.",
+      "required_interpretation": "The 2025-12-04 announcement is distinct from live native export identity. Preserve unknown workbook revision, actual row/sheet counts, notes/native-feature coverage and mirror equivalence. A permitted full file may later use timestamp + hash snapshot identity without inventing a release ID, but no such retrieval occurred here."
+    }
+  ]
+}

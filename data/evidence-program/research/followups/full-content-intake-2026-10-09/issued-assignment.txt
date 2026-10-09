@@ -1,0 +1,18 @@
+1. Qualify scalable full-content intake routes
+
+We’re expanding https://github.com/mishakgg/pdoom-live into a verified, worldwide dataset of AI risks, capabilities, development speed and timelines. Preserve complete permitted originals and their versions. Distinguish raw preservation, analytical inclusion and public redistribution. Never convert proxies into p(doom).
+
+Inspect current main and record the exact commit and inspection date. The planning baseline is 33a26fae7e31c4e729f0627fb7b91764343f9f63. Read docs/evidence-program/source_priorities.md, data/evidence-program/source_inventory.json, docs/evidence-program/FULL_CONTENT_ACQUISITION.md and relevant existing research/followups. If a file is unavailable, disclose it; do not guess its contents or treat planned acquisition as completed.
+
+Your task: determine what concretely unlocks three existing routes: OpenAlex-linked openly licensed full text, arXiv versioned originals, and the MIT AI Risk Repository’s complete native export. Avoid repeating broad source discovery.
+
+For each, establish the enumerable population, legitimate retrieval route, native formats, applicable artifact-specific rights, version/update mechanism, deletion behavior, documented rate/bulk-access limits and actual collection boundary. Inspect up to three representative artifact lineages per route. Separate observed access from documentation-only claims. An OA flag, metadata license, software license or public URL does not establish permission for linked bodies.
+
+Return:
+- Ranked acquire/hold decisions and the precise evidence that could unblock each hold
+- An acquisition specification covering enumeration, full-body retrieval, versions, retries, completeness checks and expected storage
+- A JSON Schema and populated artifact ledger with source URLs, version identifiers, rights evidence, access observations and uncertainty
+- Eight input/expected-output acceptance cases, including mixed licenses, stale links, version-specific rights and partial exports
+
+Inspect at most eighteen small primary rights/access artifacts beyond the repository. Stop unresolved routes with exact missing evidence, without padding. Read-only public research: no repository edits, logins, credentials, paid access, bulk downloads or live collection. Label proposed tests as unexecuted. End with the smallest genuinely deployable tranche and its remaining blockers.
+

@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "session_id": "2026-10-09-01-full-content-intake",
+  "submitted_at": "2026-10-09T15:55:00Z",
+  "session_count": 1,
+  "attachment_count": 8,
+  "total_original_bytes": 194264,
+  "claimed_repository_commit": "720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc",
+  "claimed_planning_baseline": "33a26fae7e31c4e729f0627fb7b91764343f9f63",
+  "planning_baseline_contents_inspected": false,
+  "baseline_verification": "Submission claim; parent independently reported repository verification. This consolidation did not fetch or inspect current remote main.",
+  "originals_retained_separately": true,
+  "files": [
+    {
+      "artifact_id": "FCI-INPUT-01",
+      "role": "narrative_research_output",
+      "candidate_path": "data/evidence-program/research/followups/full-content-intake-2026-10-09/submitted/submitted-narrative.txt",
+      "original_bytes": 29319,
+      "original_sha256": "2c8d27656e496726aab98846eb43ee1ea6e073181511bca35b438163d2bf93ee",
+      "candidate_bytes": 28679,
+      "candidate_sha256": "3b5cb7a59a7c90056af12200a925300e763bc07a707dff58e3efcf07f5a8ba9d",
+      "byte_identical_to_original": false,
+      "transformations": [
+        "Replaced 8 local-only attachment links with basenames.",
+        "Removed 2 client-only citation markers.",
+        "Replaced 1 dangling link to the unsupplied ZIP with an explicit absence note.",
+        "Collapsed a duplicate ZIP filename left by the original link presentation."
+      ],
+      "status": "historical_submission_not_operational_approval"
+    },
+    {
+      "artifact_id": "FCI-INPUT-02",
+      "role": "proposed_acquisition_specification",
+      "candidate_path": "data/evidence-program/research/followups/full-content-intake-2026-10-09/submitted/full_content_acquisition_spec.json",
+      "original_bytes": 18575,
+      "original_sha256": "1db262e109f8c31546114b28c9823dfab0b092d804e3384cccedb84cf69e2e9d",
+      "candidate_bytes": 18575,
+      "candidate_sha256": "1db262e109f8c31546114b28c9823dfab0b092d804e3384cccedb84cf69e2e9d",
+      "byte_identical_to_original": true,
+      "transformations": [],
+      "status": "historical_submission_not_operational_approval"
+    },
+    {
+      "artifact_id": "FCI-INPUT-03",
+      "role": "proposed_companion_json_schema",
+      "candidate_path": "data/evidence-program/research/followups/full-content-intake-2026-10-09/submitted/full_content_intake.schema.json",
+      "original_bytes": 27202,
+      "original_sha256": "7e97e86fc937c678d9631be7f3a1cee0f954d0b3230d8aa5eb2cb419c40c0994",
+      "candidate_bytes": 27202,
+      "candidate_sha256": "7e97e86fc937c678d9631be7f3a1cee0f954d0b3230d8aa5eb2cb419c40c0994",
+      "byte_identical_to_original": true,
+      "transformations": [],
+      "status": "historical_submission_not_operational_approval"
+    },
+    {
+      "artifact_id": "FCI-INPUT-04",
+      "role": "reported_metadata_observation_receipt",
+      "candidate_path": "data/evidence-program/research/followups/full-content-intake-2026-10-09/submitted/openalex_W4414876758_receipt.json",
+      "original_bytes": 695,
+      "original_sha256": "6449e3bac24e196e5b8b04ce41ac11df5b4e1cae863fea4cf305b8b820b02579",
+      "candidate_bytes": 555,
+      "candidate_sha256": "7512a92ac0b0af2bf5f981971d876435f313ff4db48d117f5f07a46ecfb0a5b9",
+      "byte_identical_to_original": false,
+      "transformations": [
+        "Omitted four transient rate-limit headers; retained request/effective URL, observation time, measured status, byte count, complete-body digest and content headers."
+      ],
+      "status": "historical_submission_not_operational_approval"
+    },
+    {
+      "artifact_id": "FCI-INPUT-05",
+      "role": "populated_research_artifact_ledger",
+      "candidate_path": "data/evidence-program/research/followups/full-content-intake-2026-10-09/submitted/full_content_artifact_ledger.json",
+      "original_bytes": 86915,
+      "original_sha256": "e16d6d7a6c2daa1e52c1a8ae05d20f5f225553a43d2a81bfff76c943cd269efd",
+      "candidate_bytes": 86915,
+      "candidate_sha256": "e16d6d7a6c2daa1e52c1a8ae05d20f5f225553a43d2a81bfff76c943cd269efd",
+      "byte_identical_to_original": true,
+      "transformations": [],
+      "status": "historical_submission_not_operational_approval"
+    },
+    {
+      "artifact_id": "FCI-INPUT-06",
+      "role": "complete_observed_metadata_response",
+      "candidate_path": "data/evidence-program/research/followups/full-content-intake-2026-10-09/submitted/openalex_W4414876758_observed.json",
+      "original_bytes": 18977,
+      "original_sha256": "2059381f704239c6823f810f49dffa93a438efbda3e4928357f4739dd7e3d409",
+      "candidate_bytes": 18977,
+      "candidate_sha256": "2059381f704239c6823f810f49dffa93a438efbda3e4928357f4739dd7e3d409",
+      "byte_identical_to_original": true,
+      "transformations": [],
+      "status": "historical_submission_not_operational_approval"
+    },
+    {
+      "artifact_id": "FCI-INPUT-07",
+      "role": "eight_proposed_unexecuted_acceptance_cases",
+      "candidate_path": "data/evidence-program/research/followups/full-content-intake-2026-10-09/submitted/full_content_acceptance_cases.json",
+      "original_bytes": 10014,
+      "original_sha256": "eef97cd5da1cf3a7031a60d2a2e3342234bb04383126553398ffc0726c03418d",
+      "candidate_bytes": 10014,
+      "candidate_sha256": "eef97cd5da1cf3a7031a60d2a2e3342234bb04383126553398ffc0726c03418d",
+      "byte_identical_to_original": true,
+      "transformations": [],
+      "status": "historical_submission_not_operational_approval"
+    },
+    {
+      "artifact_id": "FCI-INPUT-08",
+      "role": "submitted_validation_claims_and_file_hashes",
+      "candidate_path": "data/evidence-program/research/followups/full-content-intake-2026-10-09/submitted/validation_summary.json",
+      "original_bytes": 2567,
+      "original_sha256": "cca3ab1f00273f3ea672c183c0a02a06efe30ef21b70203656aa7f81361455c1",
+      "candidate_bytes": 2567,
+      "candidate_sha256": "cca3ab1f00273f3ea672c183c0a02a06efe30ef21b70203656aa7f81361455c1",
+      "byte_identical_to_original": true,
+      "transformations": [],
+      "status": "historical_submission_not_operational_approval"
+    }
+  ],
+  "issued_assignment": {
+    "path": "data/evidence-program/research/followups/full-content-intake-2026-10-09/issued-assignment.txt",
+    "sha256": "2bd2e8b58a27ce62f40368503c272d1c36772d2d834133383ad4806b2e8c2f92",
+    "exact_launched_input_verified": false
+  },
+  "not_supplied": [
+    "full_content_intake_review_2026-10-09.zip",
+    "README.txt"
+  ],
+  "counting_boundary": {
+    "original_26_session_count_unchanged": 26,
+    "older_three_followup_bundle_count_unchanged": 3,
+    "this_is_one_additional_separate_session": true
+  },
+  "review_precedence": "Final review addenda qualify the historical submitted artifacts; do not backdate later observations into the submitted ledger."
+}

@@ -1,0 +1,248 @@
+{
+  "specification_version": "1.0.0",
+  "status": "proposed_unexecuted",
+  "repository_commit": "720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc",
+  "purpose": "Qualify and preserve complete permitted originals and versions without confusing preservation, analytical inclusion, redistribution eligibility, and publication authorization.",
+  "not_a_deployment_authorization": true,
+  "ranked_decisions": [
+    {
+      "rank": 1,
+      "route": "arxiv",
+      "decision": "Reuse existing exact ESPAI PDFs; permit bounded rights-qualified PDF intake after current source preflight. Hold native source and whole-corpus intake.",
+      "smallest_unit": "One exact PDF edition, initially GL010-2401.02843-v3; no duplicate study credit or new bytes if an exact archived blob exists.",
+      "references": [
+        "AR-E02",
+        "AR-E05",
+        "AR-E06",
+        "REPO-E03",
+        "REPO-E06"
+      ],
+      "holds": [
+        "H-ARXIV-SOURCE",
+        "H-ARXIV-BULK",
+        "H-EXECUTION"
+      ]
+    },
+    {
+      "rank": 2,
+      "route": "openalex",
+      "decision": "Retain complete bounded CC0 metadata; advance individually qualified direct original copies. Hold cached content service and unbound publisher copies.",
+      "smallest_unit": "Observed metadata Work W4414876758 plus links to already qualified exact arXiv versions.",
+      "references": [
+        "OAX-E05",
+        "OAX-E06",
+        "AR-E06"
+      ],
+      "holds": [
+        "H-OA-COPY",
+        "H-OA-CACHE",
+        "H-OA-SCALE"
+      ]
+    },
+    {
+      "rank": 3,
+      "route": "mit",
+      "decision": "Hold complete native export on observed access failure; data rights are explicitly granted.",
+      "smallest_unit": "One current complete publisher-supported export, preserved as an observed timestamp+digest snapshot if no publisher revision exists.",
+      "references": [
+        "MIT-E01",
+        "MIT-E03",
+        "MIT-E04",
+        "MIT-E05"
+      ],
+      "holds": [
+        "H-MIT-ACCESS",
+        "H-MIT-COVERAGE"
+      ]
+    }
+  ],
+  "independent_gates": {
+    "raw_permission": "Establish applicable rights for the particular object/use. A metadata, software or whole-site statement cannot automatically license linked bodies.",
+    "access": "Use a source-supported route within actual access policy, credential authorization and finite transport capacity. Resolve an explicit denial before requesting that object.",
+    "byte_integrity": "The exact response is complete, hashed and independently read back before committing retention; record whether a digest is measured or quoted from prior receipts.",
+    "native_coverage": "Whether the retained complete file covers all desired native features/representations is independent of complete bytes. Missing notes, source bundles or historical versions limits that claim, not otherwise permitted file retention.",
+    "analytical_inclusion": "Requires separate identity, construct, version, provenance, denominator and uncertainty mapping; absent mapping does not prevent lawful raw capture.",
+    "public_redistribution": "Exact-artifact license eligibility and explicit publication authorization are separate. All publication_authorized flags remain false."
+  },
+  "identity_and_storage_model": {
+    "keys": [
+      "source family id",
+      "logical work/dataset id",
+      "host location id",
+      "publisher version when supplied",
+      "representation",
+      "complete response SHA-256 and bytes",
+      "observation time"
+    ],
+    "rule": "Store identical blobs once, retain every observation/URL/right/version edge. Never infer scientific independence from separate mirrors, versions, locations, packaging or parses.",
+    "native_values": "Preserve complete original fields and language, unknown nulls and raw timestamp strings. Keep provider metadata-update time, publication time, version-submission time and observed time separate.",
+    "unknown_versions": "A permitted mutable export may be preserved with publisher_version=null and timestamp+hash snapshot identity. An official immutable version label is not universally required.",
+    "packages": "Retain original package bytes as one source-native object. Keep member inventory/checksums as sidecar; extracted members and transport ZIPs are not additional coverage.",
+    "derived_text": "Retain original PDF/workbook before OCR, TEI or normalized rows. Derivatives record parent digest and conversion version; never label a lossy parse the original."
+  },
+  "common_retrieval_contract": {
+    "status": "proposed_unexecuted",
+    "preflight": [
+      "Use the selected exact URL and rights evidence; check current legitimate source access and permitted origins.",
+      "Enforce expected object kind/MIME, finite streaming ceiling, redirects and timeouts. A login HTML response is not a workbook or PDF.",
+      "Keep current policy evidence and prior historical observations separately; do not label old robots evidence freshly checked."
+    ],
+    "retry_policy": {
+      "internal_proposal_not_provider_limit": true,
+      "max_attempts_per_object": 5,
+      "initial_backoff_seconds": 2,
+      "backoff_cap_seconds": 60,
+      "jitter": true,
+      "honor_retry_after": true,
+      "retry_only": [
+        "Transient transport failure",
+        "429 within documented quota/reset policy",
+        "Transient 5xx without authentication or policy denial"
+      ],
+      "stop_and_checkpoint": [
+        "401/403 or authentication redirect",
+        "Explicit robots/policy denial",
+        "404/410 -> unresolved access observation, not automatic deletion",
+        "Size, MIME or version mismatch",
+        "Changed range validator or incomplete checksum",
+        "Quota exhausted; schedule no earlier than allowed reset"
+      ],
+      "long_retry_after": "Persist next eligible retry time; do not wait in a blocking long sleep or shorten the server interval."
+    },
+    "ranges": "A range is transport only, not a complete original. Resume only with matching strong validator, exact contiguous Content-Range/total and stable encoding. A changed validator discards/quarantines the partial assembly and restarts later under the same finite bound; never concatenate versions.",
+    "commit": "Hash exact original bytes, verify package/PDF/JSON integrity, seal manifest, verify whole raw readback, then atomically commit per-source cursor and receipts. An uncertain destination result must reconcile the same transaction before retry; never make a blind duplicate write.",
+    "partial_membership": "Individual complete permitted objects may be retained during a partial page/export/backfill, but completeness and enumeration cursor are not advanced beyond the last completed unit.",
+    "credentials": "No new credential, paid service, collector, public publication or source fetch is authorized by this specification."
+  },
+  "routes": {
+    "openalex": {
+      "enumeration": {
+        "unit": "Work metadata + distinct location + exact original representation",
+        "initial_tranche": "Use explicit verified Work/DOI identifiers and preserve complete unprojected JSON. Keep a frozen selection manifest, all encountered locations, exclusions and unresolved mappings.",
+        "expanded_tranche": "Explicitly set corpus=core|expansion|all and exact author/topic/date/language selection. Do not silently exclude languages or regions, and do not equate metadata language with manuscript language. A current snapshot manifest or validated query-pagination contract is required for larger exhaustive claims.",
+        "known_api_limits": {
+          "per_page_max_documented": 100,
+          "basic_paging_results_max_documented": 10000,
+          "requests_per_second_max_documented": 100,
+          "keyless_daily_allowance_usd_documented": 0.1,
+          "source": "OAX-E03"
+        },
+        "cursor_status": "Beyond basic paging, exact cursor behavior was not inspected; do not deploy a large-slice paginator based on this report.",
+        "snapshot": "Choose one native metadata format; pin its actual manifest date/files/counts/bytes. No current manifest was fetched. Rounded and conflicting documentation totals are not an acceptance denominator."
+      },
+      "body_retrieval": "For direct copies, inspect the selected primary landing page and exact edition grant, then retain all bytes through that host's permitted route. For cached content, require service authorization plus authoritative work-to-object/edition binding; best_oa_location is insufficient.",
+      "formats": [
+        "Complete API JSON",
+        "Snapshot gzip JSONL or Snappy Parquet",
+        "Primary PDFs or publisher-native packages when separately established",
+        "Cached PDF and GROBID TEI XML are separately identified service objects"
+      ],
+      "updates": "Append complete changed metadata responses by digest. Work updated_date includes bibliographic/citation changes; it cannot establish a new paper edition. Public snapshots overwrite old releases; capture a reproducible release identity before processing.",
+      "freshness_access": "from_updated_date and from_created_date filters are documented paid sync services; their availability is not established for the keyless route.",
+      "cached_object_lifecycle": "The daily full-replacement Parquet _manifest/content_index maps openalex_id to pdf_uuid, grobid_xml_id and content updated_date. Neither locations.pdf_url nor Work updated_date substitutes for that object mapping. Historical cached-version retention and a content takedown/deletion log were not established.",
+      "deletions": "Separate metadata absence, explicit deletion/merge, manuscript withdrawal and rights events. A deletion-file snapshot is replacement state, with documented rare restoration conflicting with final-deletion wording; retain both observations. An incomplete query or bare failed URL is not deletion proof.",
+      "rights": "Metadata CC0 does not transfer to bodies. Versionless arXiv URLs are resolved to their own exact edition, while JAIR/cached rights remain held.",
+      "actual_collection_boundary": "One 18,977-byte sample metadata response in this review. Repository separately reports six prior complete metadata pages, 30 Work IDs and two incomplete author backfills; no paper intake from that stream.",
+      "references": [
+        "OAX-E01",
+        "OAX-E02",
+        "OAX-E03",
+        "OAX-E04",
+        "OAX-E05",
+        "OAX-E06",
+        "REPO-E07"
+      ]
+    },
+    "arxiv": {
+      "enumeration": {
+        "unit": "Article -> listed version -> representation, with each link retained",
+        "endpoint_documented": "https://oaipmh.arxiv.org/oai",
+        "metadata_formats_documented": [
+          "OAI XML arXiv",
+          "OAI XML arXivRaw",
+          "Atom XML search results"
+        ],
+        "initial_selection": "Start with explicit inspected article IDs; a broader subject-set allowlist must be saved and justified. cs:cs:AI is an example, not a worldwide AI-risk census.",
+        "version_expansion": "Record the listed vN history; arXivRaw history does not prove every old version has its own rights field. Retrieve version-local rights evidence separately when needed.",
+        "checkpoint": "Record-level datestamp represents metadata modification, not submission time. Set incremental from using the last durably completed server responseDate, with inclusive overlap and deduplication. Do not advance that watermark during an incomplete token sequence. On daily token expiry, restart from the last completed boundary; never invent a total from the token.",
+        "rates": "One legacy metadata request per three seconds and one connection across controlled machines. Article/source policy is separate; repository last recorded a fifteen-second article delay and /src restriction. Do not use looser overview burst language to override narrower rules."
+      },
+      "body_retrieval": "Use the visible exact /pdf/idvN link, not generic unversioned citation_pdf_url. Preserve source and ancillary packages when a permitted route is separately established. The source route is currently held; the S3 overview alone is not a qualified all-version manifest.",
+      "formats": "Processed PDF and source files are documented; sampled native links say TeX Source. No submitted container/MIME/member list was observed. A future parser must detect actual files rather than assume every submission is TeX or tar.gz.",
+      "version_and_rights": "Retain each version's grant and any member-level exceptions. Standard arXiv terms permit research-private preservation; they do not license public serving. Never inherit a later CC license backward.",
+      "deletions": "Store version-local withdrawal/takedown assertions separately from access failures. Current withdrawal protocol and live OAI deletedRecord policy are unresolved; preserved licensed copies are not automatically destroyed on missing metadata.",
+      "actual_collection_boundary": "Three exact version landing pages across two lineages, zero new PDF/source bodies, no OAI enumeration or bulk manifest. Existing ESPAI v1-v3 PDF receipts are repository-historical evidence.",
+      "references": [
+        "AR-E01",
+        "AR-E02",
+        "AR-E03",
+        "AR-E04",
+        "AR-E05",
+        "AR-E06",
+        "AR-E07",
+        "REPO-E06"
+      ]
+    },
+    "mit": {
+      "enumeration": "One complete native workbook export/snapshot. Preserve every sheet id/name/visibility and original columns, formulas/values, links, evidence quotes/page references and required notes. Risk records and source documents have distinct identifiers and counts.",
+      "body_retrieval": "Follow only a publisher-supported anonymous full-workbook route. The two observed links reached authentication redirects. Do not manufacture an export endpoint or substitute a filtered preview.",
+      "formats": "Google Sheets and OneDrive workbook links are advertised; actual native-export MIME and XLSX availability are unverified. A complete publisher-supplied file may be preserved while native cloud-feature coverage is unknown.",
+      "completeness": "Validate original byte/package integrity, then separately compare all sheets/columns/notes with publisher manifest or native enumeration. Single-tab CSV can be a complete CSV response yet a partial database representation; retain honestly if permitted.",
+      "versioning": "Pin official release/revision when available; otherwise use observation time+digest and leave release null. Version 4 dated 2025-12-04 is a release-note label, not the observed current workbook revision. Historical exports were not found.",
+      "updates_and_deletions": "No fixed cadence, rate contract or deletion feed established. Propose serialized conditional polling only after route qualification. Compare membership only between complete comparable snapshots; missing access or partial rows cannot prove deletion.",
+      "rights": "Current CC BY 4.0 data grant supports permitted export retention and eligible attributed reuse. It does not license complete linked source papers. Unmapped semantics do not block raw retention.",
+      "actual_collection_boundary": "Five small evidence/access artifacts; zero workbook/native sidecar bytes; exact risks, documents, fields, sheets and notes counts remain null.",
+      "references": [
+        "MIT-E01",
+        "MIT-E02",
+        "MIT-E03",
+        "MIT-E04",
+        "MIT-E05"
+      ]
+    }
+  },
+  "expected_storage": {
+    "measurement_policy": "Count unique complete source bytes by digest, representation and version. Label measured, repository-historical, publisher-estimated and planning-envelope quantities separately.",
+    "observed_metadata_bytes": 18977,
+    "historical_espai_pdf_bytes": {
+      "v1": 5925368,
+      "v2": 5925409,
+      "v3": 5902763,
+      "total": 17753540,
+      "basis": "Repository receipt reconciliation; no fresh body measurement"
+    },
+    "historical_whole_artifact_cap_bytes": 10485760,
+    "current_openalex_bridge_object_cap_bytes": 262144,
+    "scratch_hard_max_bytes": 25000000000,
+    "scratch_free_reserve_bytes": 5000000000,
+    "publisher_estimates_not_measured": {
+      "openalex_works_jsonl_compressed_gb": 615,
+      "openalex_pdf_archive_tb": 250,
+      "openalex_tei_archive_tb": 20,
+      "typical_openalex_pdf_mb": 5,
+      "references": [
+        "OAX-E01",
+        "OAX-E02"
+      ]
+    },
+    "illustrative_new_tranche_not_measured": "Ten 5 MB PDFs would be about 50 MB original bytes. At a 10 MiB per-object hard ceiling, ten items have a 100 MiB source envelope, not an expected size. The current 256 KiB bridge cannot carry that tranche unchanged.",
+    "arxiv_source_size_bytes": null,
+    "mit_workbook_size_bytes": null,
+    "scratch_formula": "Budget source bytes + bounded partial/reconstruction + readback working copy + metadata/receipts + bounded extraction where used. Count actual concurrent scratch occupancy, not a fixed unsupported multiplier. Remote retained history has a separate finite quota.",
+    "stop_rule": "Stop before an object, history or receipt breaches its route cap or reserve. Do not split a native workbook into CSVs to bypass a cap; route/transfer extension requires separate review."
+  },
+  "smallest_deployable_tranche": {
+    "scope": "One already permitted and historically retained ESPAI v3 PDF plus its complete observed OpenAlex metadata and exact rights/version record, with idempotent reference to the existing blob.",
+    "incremental_manuscript_bytes_if_existing_blob_reused": 0,
+    "metadata_research_sample_bytes": 18977,
+    "metadata_destination_transfer_requirement": "Unverified; the research copy does not establish presence in the historical private collection.",
+    "reason": "Uses an exact license/version and a PDF below the historical 10 MiB route bound, without claiming new scientific coverage or source-package completeness.",
+    "remaining_blockers": [
+      "Reconcile the exact existing blob and rights manifest; private archive was not re-read here.",
+      "Any new PDF fetch needs current source-policy preflight and finite transfer/readback.",
+      "Existing automated OpenAlex bridge is a different, 256 KiB metadata route; new full-content or unattended production admission is not established.",
+      "New native-source and MIT workbook tranches remain held on their precise access gaps."
+    ],
+    "deployment_claim": "This is the smallest supported scope for a later bounded implementation, not a run executed here. No new complete-native route is presently demonstrated deployable."
+  }
+}

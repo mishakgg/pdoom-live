@@ -1,0 +1,488 @@
+{
+  "schema": "full-content-source-review-candidate/1",
+  "status": "qualified_research_candidate_not_published",
+  "reviewed_at": "2026-10-09T16:16:49.921752+00:00",
+  "scope": {
+    "session": "session-01-full-content-intake",
+    "target_source_ids": [
+      "GL037",
+      "GL039",
+      "GL040"
+    ],
+    "related_existing_lineages": [
+      "GL010",
+      "FS001",
+      "CN017"
+    ],
+    "broad_discovery": false,
+    "external_distinct_artifacts_limit": 12,
+    "external_distinct_artifacts_reviewed": 12,
+    "repository_baseline": "720ee3cb7107cc0cb9bca8b85983df7ee8db6ddc",
+    "repository_baseline_verification": "Reported verified by parent, not independently fetched by this source review.",
+    "observation_scope": "Twelve primary artifacts independently inspected by the preceding source review; separate parent carry-ins are identified. Consolidation performed no external reads."
+  },
+  "primary_evidence": [
+    {
+      "evidence_id": "FCI-P01",
+      "source_url": "https://arxiv.org/abs/2401.02843v1",
+      "inspected_on": "2026-10-09",
+      "source_class": "official primary source",
+      "document_date": null,
+      "locators": [],
+      "linked_operations_executed": false,
+      "observed_at": "2026-10-09T16:12:19.571310+00:00",
+      "effective_url": "https://arxiv.org/abs/2401.02843v1",
+      "http_status": 200,
+      "bytes": 44345,
+      "sha256": "108be5fbde52fba7e58ecd1721ed7369ae687f4f7c69a584d4be88b56e16c43a",
+      "hash_scope": "complete landing HTML received; HTML not stored; selected attributes preserved",
+      "complete": true,
+      "receipt_file": "source-observations.json",
+      "inspection_method": "readable web retrieval plus bounded anonymous HTML GET"
+    },
+    {
+      "evidence_id": "FCI-P02",
+      "source_url": "https://arxiv.org/abs/2401.02843v3",
+      "inspected_on": "2026-10-09",
+      "source_class": "official primary source",
+      "document_date": null,
+      "locators": [],
+      "linked_operations_executed": false,
+      "observed_at": "2026-10-09T16:12:28.872301+00:00",
+      "effective_url": "https://arxiv.org/abs/2401.02843v3",
+      "http_status": 200,
+      "bytes": 46334,
+      "sha256": "b2b63726d60f76755f634cc436d994372316cca738a89c55b88356abc9d991c0",
+      "hash_scope": "complete landing HTML received; HTML not stored; selected attributes preserved",
+      "complete": true,
+      "receipt_file": "source-observations.json",
+      "inspection_method": "readable web retrieval plus bounded anonymous HTML GET"
+    },
+    {
+      "evidence_id": "FCI-P03",
+      "source_url": "https://arxiv.org/abs/2310.19852v1",
+      "inspected_on": "2026-10-09",
+      "source_class": "official primary source",
+      "document_date": null,
+      "locators": [],
+      "linked_operations_executed": false,
+      "observed_at": "2026-10-09T16:12:37.379321+00:00",
+      "effective_url": "https://arxiv.org/abs/2310.19852v1",
+      "http_status": 200,
+      "bytes": 46820,
+      "sha256": "4e65f9867250a5a2c60e435646c590c5f44039be97d25d2560e55e96f801bb09",
+      "hash_scope": "complete landing HTML received; HTML not stored; selected attributes preserved",
+      "complete": true,
+      "receipt_file": "source-observations.json",
+      "inspection_method": "readable web retrieval plus bounded anonymous HTML GET"
+    },
+    {
+      "evidence_id": "FCI-P04",
+      "source_url": "https://help.openalex.org/access/fulltext/",
+      "inspected_on": "2026-10-09",
+      "source_class": "official primary source",
+      "document_date": "2026-09-18",
+      "locators": [
+        "Mapping work IDs to files",
+        "Licensing",
+        "Download options",
+        "TEI XML quality and limitations"
+      ],
+      "linked_operations_executed": false,
+      "inspection_method": "readable web-tool retrieval",
+      "http_status": null,
+      "bytes": null,
+      "sha256": null,
+      "hash_scope": "not measured; no origin status inferred from web-tool display"
+    },
+    {
+      "evidence_id": "FCI-P05",
+      "source_url": "https://help.openalex.org/data/works/attributes/",
+      "inspected_on": "2026-10-09",
+      "source_class": "official primary source",
+      "document_date": "2026-10-07",
+      "locators": [
+        "doi",
+        "locations",
+        "best_oa_location",
+        "has_content",
+        "content_urls",
+        "updated_date"
+      ],
+      "linked_operations_executed": false,
+      "inspection_method": "readable web-tool retrieval",
+      "http_status": null,
+      "bytes": null,
+      "sha256": null,
+      "hash_scope": "not measured; no origin status inferred from web-tool display"
+    },
+    {
+      "evidence_id": "FCI-P06",
+      "source_url": "https://help.openalex.org/access/sync/",
+      "inspected_on": "2026-10-09",
+      "source_class": "official primary source",
+      "document_date": "2026-09-24",
+      "locators": [
+        "Free data, paid services",
+        "Deletions and merged entities",
+        "Point-in-time and reproducibility"
+      ],
+      "linked_operations_executed": false,
+      "inspection_method": "readable web-tool retrieval",
+      "http_status": null,
+      "bytes": null,
+      "sha256": null,
+      "hash_scope": "not measured; no origin status inferred from web-tool display"
+    },
+    {
+      "evidence_id": "FCI-P07",
+      "source_url": "https://help.openalex.org/access/snapshot/",
+      "inspected_on": "2026-10-09",
+      "source_class": "official primary source",
+      "document_date": "2026-09-24",
+      "locators": [
+        "How the snapshot differs from the API",
+        "Access & authentication"
+      ],
+      "linked_operations_executed": false,
+      "inspection_method": "readable web-tool retrieval",
+      "http_status": null,
+      "bytes": null,
+      "sha256": null,
+      "hash_scope": "not measured; no origin status inferred from web-tool display"
+    },
+    {
+      "evidence_id": "FCI-P08",
+      "source_url": "https://help.openalex.org/api/llm-quick-reference/",
+      "inspected_on": "2026-10-09",
+      "source_class": "official primary source",
+      "document_date": "2026-10-03",
+      "locators": [
+        "Base URL and Authentication",
+        "Pricing",
+        "Query Limits"
+      ],
+      "linked_operations_executed": false,
+      "inspection_method": "readable web-tool retrieval",
+      "http_status": null,
+      "bytes": null,
+      "sha256": null,
+      "hash_scope": "not measured; no origin status inferred from web-tool display"
+    },
+    {
+      "evidence_id": "FCI-P09",
+      "source_url": "https://airisk.mit.edu/risks",
+      "inspected_on": "2026-10-09",
+      "source_class": "official primary source",
+      "document_date": null,
+      "locators": [
+        "AI Risk Database",
+        "Frequently Asked Questions",
+        "Data license footer"
+      ],
+      "linked_operations_executed": false,
+      "observed_at": "2026-10-09T16:13:57.687761+00:00",
+      "effective_url": "https://airisk.mit.edu/risks",
+      "http_status": 200,
+      "bytes": 95607,
+      "sha256": "b8aef764fa2348c04c6c4aa95f4fe3b4310f06bfef2d196c6e3a71b41c2388b4",
+      "hash_scope": "complete landing HTML received; HTML not retained; selected links preserved",
+      "complete": true,
+      "receipt_file": "source-observations.json",
+      "inspection_method": "readable web retrieval plus bounded anonymous HTML GET"
+    },
+    {
+      "evidence_id": "FCI-P10",
+      "source_url": "https://airisk.mit.edu/blog/repository-update-december-2025",
+      "inspected_on": "2026-10-09",
+      "source_class": "official primary source",
+      "document_date": "2025-12-04",
+      "locators": [
+        "What is new in Version 4",
+        "About the Repository"
+      ],
+      "linked_operations_executed": false,
+      "inspection_method": "readable web-tool retrieval",
+      "http_status": null,
+      "bytes": null,
+      "sha256": null,
+      "hash_scope": "not measured; no origin status inferred from web-tool display"
+    },
+    {
+      "evidence_id": "FCI-P11",
+      "source_url": "https://api.openalex.org/works/https://doi.org/10.48550/arXiv.2401.02843",
+      "inspected_on": "2026-10-09",
+      "source_class": "official primary source",
+      "document_date": null,
+      "locators": [],
+      "linked_operations_executed": false,
+      "observed_at": "2026-10-09T16:12:46.163487+00:00",
+      "effective_url": "https://api.openalex.org/works/https://doi.org/10.48550/arXiv.2401.02843",
+      "http_status": 200,
+      "bytes": 18977,
+      "sha256": "2059381f704239c6823f810f49dffa93a438efbda3e4928357f4739dd7e3d409",
+      "hash_scope": "complete observed metadata response",
+      "complete": true,
+      "receipt_file": "source-observations.json",
+      "inspection_method": "bounded anonymous metadata GET"
+    },
+    {
+      "evidence_id": "FCI-P12",
+      "source_url": "https://help.openalex.org/api/paging/",
+      "inspected_on": "2026-10-09",
+      "source_class": "official primary source",
+      "document_date": "2026-09-18",
+      "locators": [
+        "Basic paging",
+        "Cursor paging"
+      ],
+      "linked_operations_executed": false,
+      "inspection_method": "readable web-tool retrieval",
+      "http_status": null,
+      "bytes": null,
+      "sha256": null,
+      "hash_scope": "not measured; no origin status inferred from web-tool display"
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "FCI-SV01",
+      "disposition": "verified",
+      "title": "Exact ESPAI v1 and v3 rights and links",
+      "finding": "Both exact-version pages link CC BY 4.0, their matching vN PDF and matching vN source. Submission times are 2024-01-05T14:53:09Z and 2025-10-08T18:38:53Z. No manuscript or source package was requested.",
+      "evidence_ids": [
+        "FCI-P01",
+        "FCI-P02"
+      ],
+      "integration_action": "Retain exact edition identifiers and rights evidence. Keep source-package transport and member-level exceptions unresolved; do not extend paper rights to separately linked assets."
+    },
+    {
+      "finding_id": "FCI-SV02",
+      "disposition": "verified",
+      "title": "Generic citation metadata loses exact version",
+      "finding": "All three checked version pages expose an unversioned citation_pdf_url, while visible PDF and source hrefs retain the requested vN.",
+      "evidence_ids": [
+        "FCI-P01",
+        "FCI-P02",
+        "FCI-P03"
+      ],
+      "integration_action": "Use the exact-version href. Add a rejection test for silent latest-version substitution; a versioned landing URL alone does not pin the generic metadata URL."
+    },
+    {
+      "finding_id": "FCI-SV03",
+      "disposition": "verified",
+      "title": "CN017 v1 has a different rights basis",
+      "finding": "2310.19852v1 links arXiv nonexclusive-distribution 1.0, not CC BY. Its later v2-v6 history does not establish those versions’ rights.",
+      "evidence_ids": [
+        "FCI-P03"
+      ],
+      "integration_action": "Preserve the exact v1 rights classification. Research-private storage relies separately on the parent-verified arXiv terms; public serving remains uncleared."
+    },
+    {
+      "finding_id": "FCI-SV04",
+      "disposition": "verified",
+      "title": "Uploaded OpenAlex response independently reproduced",
+      "finding": "The preprint-DOI GET returned W4414876758 with canonical JAIR DOI 10.1613/jair.1.19087. The new 18,977-byte response matches the uploaded SHA-256 exactly and still lists three locations plus PDF/TEI cache flags.",
+      "evidence_ids": [
+        "FCI-P11"
+      ],
+      "integration_action": "Keep both observation receipts and their separate timestamps. Count this as one research metadata read, no new lineage, manuscript acquisition or corpus admission."
+    },
+    {
+      "finding_id": "FCI-SV05",
+      "disposition": "verified",
+      "title": "A Work record does not bind a cached edition",
+      "finding": "OpenAlex selects the published DOI and ranks OA locations; Work updated_date includes metadata changes such as citation counts. Its fulltext documentation explicitly disallows archive-object matching via locations[].pdf_url. PDF and TEI use distinct UUIDs.",
+      "evidence_ids": [
+        "FCI-P04",
+        "FCI-P05",
+        "FCI-P11"
+      ],
+      "integration_action": "Keep cached PDF, TEI, JAIR copy and exact arXiv editions distinct. Require actual object/version/rights binding before content admission; Work-level cc-by metadata is insufficient for exact-edition attribution."
+    },
+    {
+      "finding_id": "FCI-SV06",
+      "disposition": "verified",
+      "title": "Cache availability and access remain separate",
+      "finding": "Current docs require an API key for per-file content; complete archive sync is a paid service. OpenAlex adds no content rights. Its daily content manifest maps Work IDs to separate object UUIDs, but no manifest row or cached body was inspected.",
+      "evidence_ids": [
+        "FCI-P04",
+        "FCI-P07"
+      ],
+      "integration_action": "Keep cached objects held. No credentials, content endpoint, paid access or sync was attempted. TEI remains a derived representation and is not proof of complete original text."
+    },
+    {
+      "finding_id": "FCI-SV07",
+      "disposition": "verified",
+      "title": "Metadata grant and lifecycle are distinct from original retention",
+      "finding": "OpenAlex metadata is CC0. The public metadata snapshot overwrites previous state; the works deletion ledger is replaced rather than append-only. The same Sync page both permits rare restoration and describes deletion as final.",
+      "evidence_ids": [
+        "FCI-P06"
+      ],
+      "integration_action": "Keep source statements and uncertainty together. Track metadata merges/removals without treating them as manuscript withdrawal, copyright revocation or a destruction instruction. Do not propagate mirror-delete instructions to the original archive."
+    },
+    {
+      "finding_id": "FCI-SV08",
+      "disposition": "verified",
+      "title": "Published aggregate counts are unsuitable denominators",
+      "finding": "Snapshot documentation gives September examples of about 327M default and 476M all works; the October quick reference gives about 324M core plus 193M expansion. Neither is a measured relevant-work population or inspected manifest.",
+      "evidence_ids": [
+        "FCI-P07",
+        "FCI-P08"
+      ],
+      "integration_action": "Preserve dated examples without reconciling them by arithmetic. Freeze selection-specific IDs, corpus, filters and observation interval before completeness claims."
+    },
+    {
+      "finding_id": "FCI-SV09",
+      "disposition": "corrected",
+      "title": "Cursor documentation gap narrowed",
+      "finding": "Official paging documentation is now inspected: per_page supports 1-100; 200 is deprecated legacy behavior. Basic page×per_page cannot exceed 10,000. Cursor traversal starts with * and follows next_cursor until null with empty results; whole-corpus cursor harvesting is discouraged.",
+      "evidence_ids": [
+        "FCI-P12"
+      ],
+      "integration_action": "Replace “cursor documentation uninspected” with “documentation verified, bounded paginator and completeness behavior unexecuted.” No live paging sequence was run."
+    },
+    {
+      "finding_id": "FCI-SV10",
+      "disposition": "verified",
+      "title": "MIT data-specific grant and publisher links",
+      "finding": "The official risks page expressly grants CC BY 4.0 for MIT AI Risk Initiative data, and still advertises the same Google Sheets copy and OneDrive full-database links. The page describes source metadata, quotation/page evidence and taxonomy mappings.",
+      "evidence_ids": [
+        "FCI-P09"
+      ],
+      "integration_action": "Attach the grant to initiative/database data. Do not extend it to complete cited papers. Keep publisher-advertised location separate from successfully retrieved workbook."
+    },
+    {
+      "finding_id": "FCI-SV11",
+      "disposition": "held",
+      "title": "MIT complete native export remains unverified",
+      "finding": "Neither linked workbook was retried. Uploaded MIT-E03/E04 report tool-side authentication redirects; they establish neither origin HTTP 500 nor universal anonymous-access failure. Current landing-page access succeeds, but native bytes, media type, sheet coverage, revision and mirror equivalence remain unknown.",
+      "evidence_ids": [
+        "FCI-P09"
+      ],
+      "integration_action": "Retain the native-export hold. Preserve historical access observations with their original dates and null origin HTTP status; do not convert a tool error into a server-status claim."
+    },
+    {
+      "finding_id": "FCI-SV12",
+      "disposition": "verified",
+      "title": "MIT release announcement does not pin the live workbook",
+      "finding": "Version 4 is announced on 2025-12-04. The current risks page advertises 1700+/74 while its FAQ and the release page retain 1600+/65 context. These are inconsistent population labels, not verified export counts.",
+      "evidence_ids": [
+        "FCI-P09",
+        "FCI-P10"
+      ],
+      "integration_action": "Record the release announcement separately from native workbook identity. Do not assign version 4 or a complete row denominator to a mutable linked workbook without binding evidence."
+    },
+    {
+      "finding_id": "FCI-SV13",
+      "disposition": "corrected",
+      "title": "ESPAI v3 retained-copy reconciliation is now satisfied",
+      "finding": "The parent’s separate 16:04:12 readback report verifies the existing v3 original at 5,902,763 bytes with historical SHA-256 8a440d9f5c24e3627b2887c4b654f8b98253706a92e8e4ece266f8c2fe9903a7. It reports unchanged original metadata/revision and no source-dataset request.",
+      "evidence_ids": [
+        "FCI-PARENT-READBACK"
+      ],
+      "integration_action": "Narrow the proposed retained-tranche follow-up: v3 re-download/reconciliation is unnecessary for identity. This is retained-copy reuse, not a newly acquired source body or proof of present arXiv PDF-byte equality."
+    },
+    {
+      "finding_id": "FCI-SV14",
+      "disposition": "corrected",
+      "title": "Companion schema remains research-only",
+      "finding": "The separate offline review passes the supplied ledger and schema checks but demonstrates twelve semantic enforcement gaps. All eight submitted acquisition acceptance cases remain unexecuted.",
+      "evidence_ids": [
+        "FCI-OFFLINE-VALIDATION"
+      ],
+      "integration_action": "Admit the schema/specification/cases only as proposed research artifacts. Runtime admission must wait for invariant hardening and executed positive/negative tests; do not present standards compliance as production readiness."
+    }
+  ],
+  "carry_in_evidence": [
+    {
+      "evidence_id": "FCI-PARENT-TERMS",
+      "source_urls": [
+        "https://info.arxiv.org/help/api/tou.html",
+        "https://info.arxiv.org/help/license/index.html"
+      ],
+      "verification": "Separate parent-reported primary-source verification on 2026-10-09; not independently reread by the 12-artifact source review or consolidation.",
+      "scope": "Private personal/research content storage is distinct from public serving; grants may differ by article version."
+    },
+    {
+      "evidence_id": "FCI-PARENT-READBACK",
+      "observed_at": "2026-10-09T16:04:12.048203+00:00",
+      "artifact_id": "GL010-2401.02843-v3",
+      "bytes": 5902763,
+      "sha256": "8a440d9f5c24e3627b2887c4b654f8b98253706a92e8e4ece266f8c2fe9903a7",
+      "verification": "Parent-verified existing archived PDF readback; private storage locators omitted.",
+      "original_unchanged": true,
+      "source_dataset_requests": 0,
+      "identity_reconciliation_only": true,
+      "proves_present_source_byte_equality": false
+    },
+    {
+      "evidence_id": "FCI-OFFLINE-VALIDATION",
+      "file": "offline-review.json",
+      "observed_at": "2026-10-09T16:06:12.606494+00:00",
+      "semantic_gap_count": 12,
+      "failed_standard_tests": [],
+      "validation_status": "ACCEPT_AS_READ_ONLY_RESEARCH_EVIDENCE_ONLY; NOT_A_PRODUCTION_VALIDATION_OR_COLLECTION_GATE"
+    }
+  ],
+  "route_dispositions": [
+    {
+      "source_id": "GL040",
+      "route": "exact arXiv ESPAI v3 retained PDF",
+      "rights": "exact-version CC BY 4.0 link verified",
+      "current_action": "reuse_parent_verified_existing_copy",
+      "new_source_body_acquired": false,
+      "public_redistribution_authorized": false
+    },
+    {
+      "source_id": "GL040",
+      "route": "arXiv submitted source containers",
+      "rights": "version-page grant or separately documented research-use basis; individual members uninspected",
+      "current_action": "hold_existing_transport_restriction",
+      "new_source_body_acquired": false,
+      "public_redistribution_authorized": false
+    },
+    {
+      "source_id": "GL039",
+      "route": "OpenAlex bibliographic metadata singleton",
+      "rights": "metadata CC0 verified",
+      "current_action": "retain_separate_research_observation_receipt",
+      "new_source_body_acquired": false,
+      "corpus_admitted_by_this_review": false
+    },
+    {
+      "source_id": "GL039",
+      "route": "OpenAlex cached PDF/TEI",
+      "rights": "no additional content rights from service; exact edition unresolved",
+      "current_action": "hold_access_and_object_binding",
+      "new_source_body_acquired": false,
+      "public_redistribution_authorized": false
+    },
+    {
+      "source_id": "GL037",
+      "route": "MIT complete native workbook",
+      "rights": "data-specific CC BY 4.0 grant verified",
+      "current_action": "hold_native_access_identity_and_coverage",
+      "new_source_body_acquired": false,
+      "public_redistribution_authorized": false
+    }
+  ],
+  "followup_prompts": "followup-prompts.json",
+  "execution_boundaries": {
+    "github_writes": 0,
+    "drive_operations": 0,
+    "credential_operations": 0,
+    "source_manuscript_pdf_requests": 0,
+    "source_container_requests": 0,
+    "native_workbook_requests": 0,
+    "cached_content_requests": 0,
+    "bulk_downloads": 0,
+    "live_collector_changes": 0,
+    "acquisition_acceptance_cases_executed": 0,
+    "new_research_metadata_gets": 1,
+    "landing_page_gets": 5,
+    "landing_page_get_note": "ESPAI v1 was read twice (initial one-off probe and logged metadata script); v3, CN017 v1 and MIT risks once each. Web retrieval rereads are additional documentation observations, not original-content acquisition."
+  },
+  "recommendation": "Accept qualified findings and historical proposed artifacts as additive research only. Existing v3 archive identity is reconciled; no source-body acquisition or operational admission is approved.",
+  "consolidated_at": "2026-10-09T16:30:06.676482+00:00"
+}

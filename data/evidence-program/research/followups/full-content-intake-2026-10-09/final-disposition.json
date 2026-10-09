@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "session_id": "2026-10-09-01-full-content-intake",
+  "consolidated_at": "2026-10-09T16:30:06.676482+00:00",
+  "decision": "ACCEPT_QUALIFIED_RESEARCH_ONLY",
+  "candidate_status": "sanitized_additive_candidate_not_published",
+  "reviewed_sources": [
+    "GL037",
+    "GL039",
+    "GL040"
+  ],
+  "related_lineages": [
+    "GL010",
+    "FS001",
+    "CN017"
+  ],
+  "accepted_scope": [
+    "Historical submission artifacts with separate exact-byte provenance",
+    "Verified primary-source constraints, corrections and explicitly bounded uncertainty",
+    "Offline structural/integrity results and twelve demonstrated semantic enforcement gaps",
+    "Unexecuted acquisition requirements and bounded followup prompts",
+    "Existing v3 archive identity reconciliation as separate carry-in evidence"
+  ],
+  "not_established": [
+    "Acquisition readiness or operational approval",
+    "Native MIT/source-container/cached-PDF-or-TEI acquisition or completeness",
+    "Exact cached edition or object-specific redistribution permission",
+    "Current publisher-PDF equality to the archived v3 copy",
+    "Durable collection presence of the supplied metadata research body",
+    "Current-main integration compatibility or publication completion"
+  ],
+  "counts": {
+    "research_sessions": 1,
+    "supplied_artifacts": 8,
+    "submitted_external_evidence": 18,
+    "submitted_repository_evidence": 14,
+    "submitted_candidate_artifacts": 14,
+    "submitted_blockers": 8,
+    "independently_reviewed_primary_artifacts": 12,
+    "source_findings": 14,
+    "offline_check_groups_passed": 28,
+    "mutation_probes": 18,
+    "unsafe_mutations_accepted": 12,
+    "negative_controls_rejected": 6,
+    "proposed_acquisition_cases": 8,
+    "executed_acquisition_cases": 0
+  },
+  "readiness": {
+    "research_documentation_candidate": true,
+    "acquisition_ready": false,
+    "production_admission_approved": false,
+    "publication_authorized_for_original_bodies": false,
+    "canonical_schema_replaced": false,
+    "collector_changes": false
+  },
+  "existing_v3": {
+    "artifact_id": "GL010-2401.02843-v3",
+    "identity_reconciled": true,
+    "newly_acquired": false,
+    "new_independent_study_credit": 0,
+    "source_byte_freshness_verified": false,
+    "native_source_completeness_verified": false
+  },
+  "canonical_identity_edge": {
+    "from": "work:W4414876758",
+    "to": "study:2401.02843",
+    "kind": "bibliographic_work_describes_study_lineage",
+    "purpose": "Avoid counting OpenAlex metadata, JAIR location, arXiv editions, mirrors and TEI as independent studies.",
+    "does_not_assert_byte_equivalence": true,
+    "does_not_change_live_registry": true
+  },
+  "publication_status": "not_published",
+  "consolidation_operations": {
+    "external_source_reads": 0,
+    "provider_calls": 0,
+    "storage_operations": 0,
+    "new_source_body_acquisitions": 0,
+    "existing_repo_edits": 0,
+    "live_collector_mutations": 0,
+    "repository_publications": 0,
+    "uploaded_code_executed": 0
+  }
+}
