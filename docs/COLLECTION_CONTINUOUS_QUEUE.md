@@ -1,12 +1,27 @@
 # Bounded repeated-cycle metadata queue
 
-## Status
+## Checked-in implementation status
 
 `collection_storage.continuous.ContinuousQueue` implements a separately released, single-host queue over the existing strict Drive `Supervisor`. It does not call `run_metadata_pilot` or repeatedly rewrite the observation corpus. `continuous_feed.MetadataFeedProducer` is an optional RSS-only producer. No source schedule, credential provider, OAuth grant, remote root, public import, or background service is created by either module.
 
 The historical exact-eight pilot and its pin file are unchanged. A `ReviewedProfile` must explicitly identify a versioned subset of those exact original pins and a per-source item limit. Changing a URL, identity, rights decision, allowed origin, structured collection policy, profile or configured limit stops the existing stream. A profile object is a review artifact, not authorization to collect: each `run_cycle` also requires an explicit release.
 
 This is a bounded implementation milestone, not unattended production readiness. The ordinary connected document plugin cannot be adapted by inventing API quota, preallocated IDs, or resumable sessions. A small connector-assisted file transfer is a separate test; it does not verify this coordinator end to end.
+
+## Observed private OpenAlex stream, 9 October 2026
+
+The observation below is separate from the checked-in `ContinuousQueue`, `MetadataFeedProducer` and `DriveHTTP` implementation described in this document. A privately operated, same-host managed bridge remains a local candidate; its implementation is not checked into this repository and is not wired into the production belief collector. This status note does not add executable capabilities or alter the metadata-only contract above.
+
+Operator-verified receipts through **2026-10-09T11:20:35Z** record **six complete, unchanged native OpenAlex works API pages, 664,035 source bytes and 30 unique work identifiers**, from two explicitly registered author queries. These are complete native bibliographic/API records, not full papers, curated risk claims or 30 independent evaluations. Linked full text was not acquired by this stream. Both initial author backfills remain incomplete; six complete pages do not establish exhaustive source coverage.
+
+- Generations 1 and 2 were manually initiated. Generation 1 retained four pages (475,142 bytes); generation 2 added one page (94,686 bytes).
+- Generation 3 is the first verified actual automation wake, starting at **2026-10-09T11:08:49.218004Z**. It added one page (94,207 bytes), with full raw-byte/hash readback, exact checkpoint installation and tracked transfer retirement verified by **11:20:35 UTC**. The wake finished at **11:21 UTC**. Successful transfer retirement does not mean deleting the retained source originals or proof history.
+- An hourly, flexible schedule was enabled for these same two sources. One verified automation execution establishes that bounded run, not sustained uptime, precise hourly timing or unattended production readiness.
+- The daily-eligible refresh candidate passed **32 author tests and 12 independent tests** offline. It requires both initial backfills to be durably exhausted and a separately committed refresh opening no earlier than 24 hours after verified exhaustion. No actual 24-hour refresh cycle had executed at this cutoff.
+- The active bridge remains pinned to the same parent host, with a **256 KiB (262,144-byte)** accepted remote raw-object and immutable intent/commit cap (local control files have a separate **1 MiB** bound), **25,000,000,000-byte** total scratch limit and **5,000,000,000-byte** free-space reserve. Fresh-host recovery and unlimited growth are not demonstrated; reaching a bound is a stop, not permission to reset or discard history.
+- The broader **246-source queue is proposed and inactive**. It is not covered by this two-source schedule or its verification.
+
+The [nine historical retained versions across six logical items](evidence-program/FULL_CONTENT_ACQUISITION.md#initial-substantive-wave) remain a separate catalog. This OpenAlex head is not a global collection head and does not freshly reverify or migrate those historical objects. Private preservation and observed-copy verification do not establish canonical import, public redistribution, analytical comparability or a p(doom) estimate. No credentials, private archive identifiers, host paths or raw private receipts are published here.
 
 ## State and bounds
 
