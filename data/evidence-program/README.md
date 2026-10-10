@@ -15,6 +15,12 @@ Changes to source records or metrics must update the combined inventory and corr
 
 Third-party source rights are not changed by the repository's [data license](../LICENSE). Follow each source record's artifact-specific rights notes before any acquisition, retention or publication.
 
+## Brazil enterprise AI adoption measurement, 10 October 2026
+
+The [Cetic.br ICT Enterprises 2025 evidence catalog](research/cetic_2025_ai_adoption_evidence.json) accompanies the [measurement note](../../docs/evidence-program/research/cetic_2025_ai_adoption_measurement.md). It preserves the dataset ID `cetic-ict-enterprises-2025-ai-adoption-v1.0`, 17 H9 aggregate rows, seven conditional H9A categories, exact decimal strings, source/archive/workbook hashes, units, formatting and cell references. The H9 IT-screening caveat and total-enterprise dissemination denominator must travel with any use of the headline.
+
+This source-derived catalog is an explicit exception to the directory's general data dedication: retain the embedded NIC.br/Cetic.br attribution, source link, modification notice and [CC BY 4.0 terms](https://creativecommons.org/licenses/by/4.0/deed.pt_BR). It contains published aggregate evidence, not respondent records or canonical imported observations. Four statistical views remain one survey family; unknown confidence levels and unweighted sample sizes stay null. Existing inventory IDs, admission states and historical session counts are unchanged.
+
 ## Full-content intake review, 9 October 2026
 
 The [reviewed intake result](../../docs/evidence-program/research/followups/full-content-intake-2026-10-09.md) is now included alongside the issued assignment. One separate session and eight supplied artifacts are included as qualified research only. The review records twelve semantic enforcement gaps; all eight acquisition cases remain unexecuted. No acquisition readiness, source admission, collector change or additional independent-study coverage follows. The twenty package files preserve their dated pre-publication review snapshot unchanged; their candidate/publication fields describe that historical snapshot, while this queue records their inclusion in this version. Remote publication, merge and exact-commit CI are separate verification steps.

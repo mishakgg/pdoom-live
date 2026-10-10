@@ -1,0 +1,1411 @@
+{
+  "schema_version": "1.0",
+  "dataset_id": "cetic-ict-enterprises-2025-ai-adoption-v1.0",
+  "survey": "ICT Enterprises 2025",
+  "publisher": "Brazilian Network Information Center (NIC.br), Cetic.br",
+  "reference_year": 2025,
+  "release_version": "v1.0",
+  "source_url": "https://cetic.br/media/microdados/1039/ict_enterprises_2025_tables_xlsx_v1.0.zip",
+  "attribution": {
+    "creator": "Brazilian Network Information Center (NIC.br), Cetic.br",
+    "citation": "Brazilian Network Information Center. (2026). Survey on the use of information and communication technologies in Brazilian enterprises: ICT Enterprises 2025 [Tables]",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/deed.pt_BR",
+    "modification_notice": "This evidence catalog and its measurement note are derived analysis. Source numeric values, unit labels and cited wording remain unchanged; selection, alignment, formatting descriptions and interpretive caveats have been added."
+  },
+  "source_archive_filename": "ict_enterprises_2025_tables_xlsx_v1.0.zip",
+  "source_archive_bytes": 446528,
+  "source_archive_sha256": "3c929537c2f30fb24eacdc4d7fb31faf1b1b6862af9655d09b86d9a11ae4311b",
+  "coverage": {
+    "survey_families": 1,
+    "workbook_statistical_views": 4,
+    "distinct_table_ids": 48,
+    "worksheets": 192,
+    "matched_aggregate_cell_locations": 6069,
+    "numeric_locations": 6018,
+    "literal_hyphen_locations": 51,
+    "independence_warning": "Repeated statistical views, subgroup cells, languages and file formats are not independent samples or independent training observations. The aggregate estimates are correlated.",
+    "publisher_release_completeness_beyond_archive_membership_verified": false
+  },
+  "measurement_definition": {
+    "title": "H9 - ENTERPRISES THAT USED ARTIFICIAL INTELLIGENCE TECHNOLOGIES",
+    "title_cell": "H9!A1",
+    "published_denominator": "Total number of enterprises¹",
+    "published_denominator_cell": "H9!A2",
+    "screening_footnote": "¹This indicator was collected only among enterprises with IT specialists, area or department. For dissemination purposes, the results are presented by the total number of enterprises.",
+    "screening_footnote_cell": "H9!A23",
+    "survey_collection_population": "Only enterprises with IT specialists, an IT area or department, as stated in the footnote.",
+    "dissemination_population": "Total enterprises in the survey universe, as stated in the table; not an unqualified claim about every Brazilian business.",
+    "full_methodology_population_eligibility": null,
+    "technology_scope": "Artificial-intelligence technologies broadly; not a separately identified generative-AI or ChatGPT rate."
+  },
+  "uncertainty_and_precision": {
+    "percentage_unit": "Percentage (%)",
+    "percentage_margin_unit_as_published": "Margin of error (%)",
+    "percentage_margin_interpretation": "Absolute percentage-scale margin (percentage points); the total-row count-margin/enterprise-total reconciliation supports this reading. No relative margin is used.",
+    "confidence_level": null,
+    "confidence_level_status": "Not stated in these workbook text cells.",
+    "standard_error": null,
+    "unweighted_sample_size": null,
+    "design_covariance": null,
+    "confidence_intervals_constructed": false,
+    "significance_tests_performed": false,
+    "format_note": "Percentage and percentage-margin cells use custom number format code 0. Stored decimal digits are retained for reproducibility; visible values round to whole numbers and the extra digits do not establish statistical precision.",
+    "count_note": "The Total view provides published enterprise totals, not unweighted respondent counts. Rounded component totals may not add exactly.",
+    "missing_value_note": "Literal hyphens are preserved as publisher markers, not changed to zero; their formal meaning is not specified in the table text."
+  },
+  "adoption_evidence": [
+    {
+      "indicator": "H9",
+      "row_group": "TOTAL",
+      "row_category": "Total",
+      "row_group_cell": "A5",
+      "row_category_cell": "B5",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "17.46",
+          "display_value_whole_number": "17",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C5",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "1.72",
+          "display_value_whole_number": "2",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C5",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "93475",
+          "display_value_whole_number": "93475",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C5",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "9211",
+          "display_value_whole_number": "9211",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C5",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "SIZE",
+      "row_category": "10 to 49 employed persons",
+      "row_group_cell": "A6",
+      "row_category_cell": "B6",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "14.86",
+          "display_value_whole_number": "15",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C6",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "1.805",
+          "display_value_whole_number": "2",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C6",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "69439",
+          "display_value_whole_number": "69439",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C6",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "8433",
+          "display_value_whole_number": "8433",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C6",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "SIZE",
+      "row_category": "50 to 249 employed persons",
+      "row_group_cell": "A7",
+      "row_category_cell": "B7",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "32.25",
+          "display_value_whole_number": "32",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C7",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "5.272",
+          "display_value_whole_number": "5",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C7",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "18131",
+          "display_value_whole_number": "18131",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C7",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "2963",
+          "display_value_whole_number": "2963",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C7",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "SIZE",
+      "row_category": "250 or more employed persons",
+      "row_group_cell": "A8",
+      "row_category_cell": "B8",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "49.57",
+          "display_value_whole_number": "50",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C8",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "3.869",
+          "display_value_whole_number": "4",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C8",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "5906",
+          "display_value_whole_number": "5906",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C8",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "461",
+          "display_value_whole_number": "461",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C8",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "REGION",
+      "row_category": "North",
+      "row_group_cell": "A9",
+      "row_category_cell": "B9",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "21.91",
+          "display_value_whole_number": "22",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C9",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "5.022",
+          "display_value_whole_number": "5",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C9",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "5570",
+          "display_value_whole_number": "5570",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C9",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "1277",
+          "display_value_whole_number": "1277",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C9",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "REGION",
+      "row_category": "Northeast",
+      "row_group_cell": "A10",
+      "row_category_cell": "B10",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "15.56",
+          "display_value_whole_number": "16",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C10",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "3.228",
+          "display_value_whole_number": "3",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C10",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "12791",
+          "display_value_whole_number": "12791",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C10",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "2654",
+          "display_value_whole_number": "2654",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C10",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "REGION",
+      "row_category": "Southeast",
+      "row_group_cell": "A11",
+      "row_category_cell": "B11",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "18.86",
+          "display_value_whole_number": "19",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C11",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "2.838",
+          "display_value_whole_number": "3",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C11",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "50869",
+          "display_value_whole_number": "50869",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C11",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "7656",
+          "display_value_whole_number": "7656",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C11",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "REGION",
+      "row_category": "South",
+      "row_group_cell": "A12",
+      "row_category_cell": "B12",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "15.56",
+          "display_value_whole_number": "16",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C12",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "3.226",
+          "display_value_whole_number": "3",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C12",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "17334",
+          "display_value_whole_number": "17334",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C12",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "3595",
+          "display_value_whole_number": "3595",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C12",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "REGION",
+      "row_category": "Center-West",
+      "row_group_cell": "A13",
+      "row_category_cell": "B13",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "14.84",
+          "display_value_whole_number": "15",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C13",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "4.4",
+          "display_value_whole_number": "4",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C13",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "6911",
+          "display_value_whole_number": "6911",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C13",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "2049",
+          "display_value_whole_number": "2049",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C13",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "MARKET SEGMENT",
+      "row_category": "Manufacturing",
+      "row_group_cell": "A14",
+      "row_category_cell": "B14",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "14.221",
+          "display_value_whole_number": "14",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C14",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "2.92",
+          "display_value_whole_number": "3",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C14",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "15267",
+          "display_value_whole_number": "15267",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C14",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "3134",
+          "display_value_whole_number": "3134",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C14",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "MARKET SEGMENT",
+      "row_category": "Construction",
+      "row_group_cell": "A15",
+      "row_category_cell": "B15",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "14.284",
+          "display_value_whole_number": "14",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C15",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "3.611",
+          "display_value_whole_number": "4",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C15",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "5122",
+          "display_value_whole_number": "5122",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C15",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "1295",
+          "display_value_whole_number": "1295",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C15",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "MARKET SEGMENT",
+      "row_category": "Wholesale and retail trade, repair of motor vehicles and motorcycles",
+      "row_group_cell": "A16",
+      "row_category_cell": "B16",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "16.637",
+          "display_value_whole_number": "17",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C16",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "3.488",
+          "display_value_whole_number": "3",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C16",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "32851",
+          "display_value_whole_number": "32851",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C16",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "6888",
+          "display_value_whole_number": "6888",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C16",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "MARKET SEGMENT",
+      "row_category": "Transportation and storage",
+      "row_group_cell": "A17",
+      "row_category_cell": "B17",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "16.459",
+          "display_value_whole_number": "16",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C17",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "3.914",
+          "display_value_whole_number": "4",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C17",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "5255",
+          "display_value_whole_number": "5255",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C17",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "1249",
+          "display_value_whole_number": "1249",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C17",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "MARKET SEGMENT",
+      "row_category": "Accommodation and food service activities",
+      "row_group_cell": "A18",
+      "row_category_cell": "B18",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "9.827",
+          "display_value_whole_number": "10",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C18",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "4.003",
+          "display_value_whole_number": "4",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C18",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "5308",
+          "display_value_whole_number": "5308",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C18",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "2162",
+          "display_value_whole_number": "2162",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C18",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "MARKET SEGMENT",
+      "row_category": "Information and communication",
+      "row_group_cell": "A19",
+      "row_category_cell": "B19",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "48.876",
+          "display_value_whole_number": "49",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C19",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "6.566",
+          "display_value_whole_number": "7",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C19",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "7811",
+          "display_value_whole_number": "7811",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C19",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "1049",
+          "display_value_whole_number": "1049",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C19",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "MARKET SEGMENT",
+      "row_category": "Real estate activities, professional, scientific and technical activities, administrative and support service activities",
+      "row_group_cell": "A20",
+      "row_category_cell": "B20",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "24.296",
+          "display_value_whole_number": "24",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C20",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "4.516",
+          "display_value_whole_number": "5",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C20",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "19568",
+          "display_value_whole_number": "19568",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C20",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "3638",
+          "display_value_whole_number": "3638",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C20",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    },
+    {
+      "indicator": "H9",
+      "row_group": "MARKET SEGMENT",
+      "row_category": "Arts, entertainment and recreation, other service activities",
+      "row_group_cell": "A21",
+      "row_category_cell": "B21",
+      "response": "Yes",
+      "response_header_cells": [
+        "C3",
+        "C4"
+      ],
+      "published_denominator": "Total number of enterprises¹",
+      "published_denominator_cell": "A2",
+      "screening_footnote_cell": "A23",
+      "readings": {
+        "percentage": {
+          "raw_numeric_value": "18.666",
+          "display_value_whole_number": "19",
+          "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+          "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+          "sheet": "H9",
+          "cell": "C21",
+          "unit_label": "Percentage (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "percentage_margin": {
+          "raw_numeric_value": "5.41",
+          "display_value_whole_number": "5",
+          "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+          "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+          "sheet": "H9",
+          "cell": "C21",
+          "unit_label": "Margin of error (%)",
+          "unit_label_cell": "A3",
+          "number_format_id": "165",
+          "number_format_code": "0"
+        },
+        "total": {
+          "raw_numeric_value": "2295",
+          "display_value_whole_number": "2295",
+          "workbook": "ict_enterprises_2025_table_total_v1.0.xlsx",
+          "workbook_sha256": "c60382c74857ab84b49e386a1ab285685f7a35e36acb4c7e1a01d75609f5add8",
+          "sheet": "H9",
+          "cell": "C21",
+          "unit_label": "Total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        },
+        "total_margin": {
+          "raw_numeric_value": "665",
+          "display_value_whole_number": "665",
+          "workbook": "ict_enterprises_2025_table_sampling_error_total_v1.0.xlsx",
+          "workbook_sha256": "f51431c74407e0a13bbe8f923aac34d4107e8c3d339acc2b777b0db20dbfe1b6",
+          "sheet": "H9",
+          "cell": "C21",
+          "unit_label": "Margin of error for total",
+          "unit_label_cell": "A3",
+          "number_format_id": "3",
+          "number_format_code": "#,##0"
+        }
+      }
+    }
+  ],
+  "conditional_comparison": {
+    "indicator": "H9A",
+    "title_cell": "H9A!A1",
+    "published_denominator": "Total number of enterprises that used Artificial Intelligence technologies",
+    "published_denominator_cell": "H9A!A2",
+    "warning": "These category shares describe AI users and are not population-wide adoption rates. They sum to more than 100 and must not be treated as a partition.",
+    "evidence": [
+      {
+        "technology_type": "Text mining and written language analysis",
+        "technology_header_cells": [
+          "C3",
+          "C4"
+        ],
+        "row_category": "Total",
+        "row_category_cell": "B5",
+        "readings": {
+          "percentage": {
+            "raw_numeric_value": "37.7165",
+            "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+            "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+            "sheet": "H9A",
+            "cell": "C5",
+            "unit_label": "Percentage (%)",
+            "unit_label_cell": "A3",
+            "number_format_id": "165",
+            "number_format_code": "0"
+          },
+          "percentage_margin": {
+            "raw_numeric_value": "5.1761",
+            "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+            "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+            "sheet": "H9A",
+            "cell": "C5",
+            "unit_label": "Margin of error (%)",
+            "unit_label_cell": "A3",
+            "number_format_id": "165",
+            "number_format_code": "0"
+          }
+        }
+      },
+      {
+        "technology_type": "Speech recognition, which converts spoken language into a machine-readable format",
+        "technology_header_cells": [
+          "D3",
+          "D4"
+        ],
+        "row_category": "Total",
+        "row_category_cell": "B5",
+        "readings": {
+          "percentage": {
+            "raw_numeric_value": "17.3063",
+            "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+            "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+            "sheet": "H9A",
+            "cell": "D5",
+            "unit_label": "Percentage (%)",
+            "unit_label_cell": "A3",
+            "number_format_id": "165",
+            "number_format_code": "0"
+          },
+          "percentage_margin": {
+            "raw_numeric_value": "4.1166",
+            "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+            "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+            "sheet": "H9A",
+            "cell": "D5",
+            "unit_label": "Margin of error (%)",
+            "unit_label_cell": "A3",
+            "number_format_id": "165",
+            "number_format_code": "0"
+          }
+        }
+      },
+      {
+        "technology_type": "Natural language generation (NLG) for written or spoken language",
+        "technology_header_cells": [
+          "E3",
+          "E4"
+        ],
+        "row_category": "Total",
+        "row_category_cell": "B5",
+        "readings": {
+          "percentage": {
+            "raw_numeric_value": "30.4686",
+            "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+            "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+            "sheet": "H9A",
+            "cell": "E5",
+            "unit_label": "Percentage (%)",
+            "unit_label_cell": "A3",
+            "number_format_id": "165",
+            "number_format_code": "0"
+          },
+          "percentage_margin": {
+            "raw_numeric_value": "5.2432",
+            "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+            "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+            "sheet": "H9A",
+            "cell": "E5",
+            "unit_label": "Margin of error (%)",
+            "unit_label_cell": "A3",
+            "number_format_id": "165",
+            "number_format_code": "0"
+          }
+        }
+      },
+      {
+        "technology_type": "Recognition and processing of images that identify objects or people",
+        "technology_header_cells": [
+          "F3",
+          "F4"
+        ],
+        "row_category": "Total",
+        "row_category_cell": "B5",
+        "readings": {
+          "percentage": {
+            "raw_numeric_value": "31.3925",
+            "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+            "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+            "sheet": "H9A",
+            "cell": "F5",
+            "unit_label": "Percentage (%)",
+            "unit_label_cell": "A3",
+            "number_format_id": "165",
+            "number_format_code": "0"
+          },
+          "percentage_margin": {
+            "raw_numeric_value": "5.0955",
+            "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+            "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+            "sheet": "H9A",
+            "cell": "F5",
+            "unit_label": "Margin of error (%)",
+            "unit_label_cell": "A3",
+            "number_format_id": "165",
+            "number_format_code": "0"
+          }
+        }
+      },
+      {
+        "technology_type": "Machine learning, such as deep learning, for data prediction and analysis",
+        "technology_header_cells": [
+          "G3",
+          "G4"
+        ],
+        "row_category": "Total",
+        "row_category_cell": "B5",
+        "readings": {
+          "percentage": {
+            "raw_numeric_value": "24.5485",
+            "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+            "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+            "sheet": "H9A",
+            "cell": "G5",
+            "unit_label": "Percentage (%)",
+            "unit_label_cell": "A3",
+            "number_format_id": "165",
+            "number_format_code": "0"
+          },
+          "percentage_margin": {
+            "raw_numeric_value": "4.189",
+            "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+            "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+            "sheet": "H9A",
+            "cell": "G5",
+            "unit_label": "Margin of error (%)",
+            "unit_label_cell": "A3",
+            "number_format_id": "165",
+            "number_format_code": "0"
+          }
+        }
+      },
+      {
+        "technology_type": "Workflow automation",
+        "technology_header_cells": [
+          "H3",
+          "H4"
+        ],
+        "row_category": "Total",
+        "row_category_cell": "B5",
+        "readings": {
+          "percentage": {
+            "raw_numeric_value": "67.511",
+            "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+            "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+            "sheet": "H9A",
+            "cell": "H5",
+            "unit_label": "Percentage (%)",
+            "unit_label_cell": "A3",
+            "number_format_id": "165",
+            "number_format_code": "0"
+          },
+          "percentage_margin": {
+            "raw_numeric_value": "5.0724",
+            "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+            "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+            "sheet": "H9A",
+            "cell": "H5",
+            "unit_label": "Margin of error (%)",
+            "unit_label_cell": "A3",
+            "number_format_id": "165",
+            "number_format_code": "0"
+          }
+        }
+      },
+      {
+        "technology_type": "Physical movement of machines through autonomous decisions, such as autonomous robots, vehicles, and drones",
+        "technology_header_cells": [
+          "I3",
+          "I4"
+        ],
+        "row_category": "Total",
+        "row_category_cell": "B5",
+        "readings": {
+          "percentage": {
+            "raw_numeric_value": "6.8268",
+            "workbook": "ict_enterprises_2025_table_proportion_v1.0.xlsx",
+            "workbook_sha256": "0c2f856d510fb2fc5d3c5b19b4e717e1b2c496c9d72a3859d950b4fe253ee131",
+            "sheet": "H9A",
+            "cell": "I5",
+            "unit_label": "Percentage (%)",
+            "unit_label_cell": "A3",
+            "number_format_id": "165",
+            "number_format_code": "0"
+          },
+          "percentage_margin": {
+            "raw_numeric_value": "2.7167",
+            "workbook": "ict_enterprises_2025_table_sampling_error_v1.0.xlsx",
+            "workbook_sha256": "e62997ffaad466a058c6032c6ec93024327a0dd9f90cca174c276f5e7dda25f0",
+            "sheet": "H9A",
+            "cell": "I5",
+            "unit_label": "Margin of error (%)",
+            "unit_label_cell": "A3",
+            "number_format_id": "165",
+            "number_format_code": "0"
+          }
+        }
+      }
+    ]
+  },
+  "analysis_limits": [
+    "Keep the H9 IT-screening footnote with the headline and every cross-survey comparison.",
+    "Do not infer trends, causal effects, subgroup significance or a 95% confidence interval from these aggregate tables.",
+    "Do not multiply H9A shares by H9 without checking aligned definitions, population, weighting and the variance/covariance needed for derived uncertainty.",
+    "The 17 H9 rows are one total, three size categories, five regions and eight market segments from the same survey. They are correlated aggregates, not 17 independent surveys.",
+    "The additional H9B/H9C/H10 measures are conditional on AI users, and H13 barriers are conditional on non-users."
+  ]
+}
