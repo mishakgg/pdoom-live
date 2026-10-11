@@ -9,8 +9,12 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useMemo, useRef, useState, type KeyboardEvent } from "react";
+import { reviewLabel, typeLabel } from "@/lib/format";
 
-type Suggestion = { id: string; href: string; label: string; detail?: string; kind: string };
+type Suggestion = {
+  id: string; href: string; label: string; detail?: string; kind: string;
+  statementType?: string; reviewState?: string;
+};
 
 function clipLabel(text: string): string {
   const flat = text.replace(/\s+/g, " ").trim();
@@ -51,6 +55,8 @@ function suggestionsFrom(response: SearchResponse | null): Suggestion[] {
       href: `/statements/${statement.slug}`,
       label: clipLabel(statement.normalized_text),
       kind: "Statement",
+      statementType: statement.statement_type,
+      reviewState: statement.review_state,
     });
   }
   for (const organization of response.groups.organization.data) {
@@ -231,6 +237,12 @@ function SearchInput() {
               >
                 <span className="kicker">{item.kind}</span>
                 <span>{item.label}</span>
+                {item.statementType ? (
+                  <span className="card-flags">
+                    <span className={`badge ${item.statementType}`}>{typeLabel(item.statementType)}</span>
+                    {item.reviewState ? <span className={`badge review ${item.reviewState}`}>{reviewLabel(item.reviewState)}</span> : null}
+                  </span>
+                ) : null}
                 {item.detail ? <span className="meta">{item.detail}</span> : null}
               </Link>
             </li>

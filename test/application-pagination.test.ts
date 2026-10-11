@@ -9,7 +9,8 @@ import { InvalidCursorError, listPeople, listStatements, type Page } from "../pa
 
 const pool = createPool(process.env.DATABASE_URL!);
 const marker = "paginationfixture";
-const times = [null, null, null, "2024-01-01", "2024-01-01", "2024-01-02", "2024-01-03", "2024-01-03", "2024-01-04"];
+// Cursor timestamps are UTC instants; bare dates depend on the database timezone.
+const times = [null, null, null, "2024-01-01T00:00:00Z", "2024-01-01T00:00:00Z", "2024-01-02T00:00:00Z", "2024-01-03T00:00:00Z", "2024-01-03T00:00:00Z", "2024-01-04T00:00:00Z"];
 const id = (n: number) => `90000000-0000-4000-8000-${String(n).padStart(12, "0")}`;
 const encode = (payload: unknown) => Buffer.from(JSON.stringify(payload)).toString("base64url");
 
@@ -37,10 +38,11 @@ async function checkNavigation(load: (cursor?: string) => Promise<Page<Listed>>,
   }
 }
 
-async function withRows(run: (client: pg.PoolClient) => Promise<void>) {
+async function withRows(run: (client: pg.PoolClient) => Promise<void>, timeZone = "UTC") {
   const client = await pool.connect();
   try {
     await client.query("BEGIN");
+    await client.query("SELECT set_config('TimeZone', $1, true)", [timeZone]);
     for (let index = 0; index < times.length; index += 1) {
       await client.query(`INSERT INTO statements (
         id, slug, person_id, source_item_id, statement_type, normalized_text, event_time,
@@ -103,7 +105,7 @@ describe("application keyset pagination", () => {
     });
   });
 
-  it("continues accepting previously issued millisecond version-1 cursors", async () => {
+  it.each(["UTC", "America/New_York"])("continues accepting millisecond version-1 cursors with database timezone %s", async (timeZone) => {
     await withRows(async (client) => {
       const cursor = encode({ v: 1, t: "2024-01-01T00:00:00.000Z", id: id(5), dir: "next" });
       const page = await listStatements({ q: marker, sort: "event_time_asc", limit: 4, cursor }, client);
@@ -111,7 +113,7 @@ describe("application keyset pagination", () => {
       const publicCursor = encode({ v: 1, t: "2024-01-01T00:00:00.000Z", id: `${marker}-5`, dir: "next" });
       const publicPage = await listPublicStatements({ q: marker, sort: "event_time_asc", limit: 4, cursor: publicCursor }, client);
       expect(publicPage.data.map((row) => row.slug)).toEqual([6, 7, 8, 9].map((n) => `${marker}-${n}`));
-    });
+    }, timeZone);
   });
 
   it.each([1, 2, 3, 4])("returns the immediately preceding people page with page size %i", async (limit) => {

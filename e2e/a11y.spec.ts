@@ -10,6 +10,7 @@ for (const route of publicRoutes) {
   test(`axe, headings, and landmarks on ${route.path}`, async ({ page }) => {
     await page.goto(route.path);
     await expect(page.getByRole("heading", { level: 1, name: route.heading })).toBeVisible();
+    await expect(page.getByRole("note", { name: "Synthetic dataset notice" })).toBeVisible();
     await expect(page.getByRole("heading", { level: 1 })).toHaveCount(1);
     await expect(page.getByRole("main")).toBeVisible();
     await expect(page.getByRole("banner")).toBeVisible();
