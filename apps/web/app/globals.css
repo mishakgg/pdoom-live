@@ -81,6 +81,15 @@ main :is(a, p, li, h1, h2, dd, pre) { overflow-wrap: anywhere; }
 }
 .nav a[aria-current="page"] { border-bottom-color: var(--ink); }
 
+.dataset-notice {
+  margin: 0.9rem 0;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--qualitative);
+  background: var(--qualitative-bg);
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
 .status-bar { padding: 0.8rem 0; border-bottom: 1px solid var(--line); }
 .status-bar dl, .facts {
   display: grid;

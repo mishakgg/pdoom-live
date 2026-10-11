@@ -270,7 +270,9 @@ describe("production fixture isolation", () => {
     const directory = await mkdtemp(join(tmpdir(), "pdoom-import-"));
     const file = join(directory, "dataset.json");
     await writeFile(file, JSON.stringify(fixture));
-    const child = spawn("node_modules/.bin/tsx", ["packages/db/src/cli.ts", "import", file], {
+    // Run the actual CLI process so SIGTERM tests its shutdown handler directly.
+    // The tsx command wrapper creates an unnecessary Unix-domain IPC server.
+    const child = spawn(process.execPath, ["--import", "tsx", "packages/db/src/cli.ts", "import", file], {
       env: { ...process.env, PDOOM_ENV: "test", NODE_ENV: "test", PDOOM_IMPORT_HOLD: "1" },
       detached: true,
       stdio: ["ignore", "pipe", "pipe"],

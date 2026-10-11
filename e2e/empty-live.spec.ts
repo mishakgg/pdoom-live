@@ -1,5 +1,11 @@
 import { expect, test } from "./support/test";
 
+test("the empty live dataset is never identified as a synthetic fixture", async ({ page }) => {
+  await page.goto("/");
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect(page.getByRole("note", { name: "Synthetic dataset notice" })).toHaveCount(0);
+});
+
 test("an empty live dataset does not invent a trend or a probability", async ({ page }) => {
   await page.goto("/");
   await expect(page.locator("main").getByText("Live dataset", { exact: true })).toBeVisible();

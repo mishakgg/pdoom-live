@@ -134,6 +134,15 @@ export function affiliationDates(start: string | null, end: string | null, settl
   return `${startText} – ${endText}`;
 }
 
+function mediaTimestamp(milliseconds: number | null): string {
+  if (milliseconds === null || !Number.isFinite(milliseconds) || milliseconds < 0) return "unknown";
+  const seconds = Math.floor(milliseconds / 1000);
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor(seconds / 60) % 60;
+  const fraction = String(Math.floor(milliseconds % 1000)).padStart(3, "0").replace(/0+$/, "");
+  return `${hours ? `${hours}:${String(minutes).padStart(2, "0")}` : minutes}:${String(seconds % 60).padStart(2, "0")}${fraction ? `.${fraction}` : ""}`;
+}
+
 export function evidenceSpan(evidence: {
   start_ms: number | null;
   end_ms: number | null;
@@ -143,7 +152,7 @@ export function evidenceSpan(evidence: {
 }): string {
   const kind = phraseLabel(evidence.segment_kind);
   if (evidence.start_ms !== null || evidence.end_ms !== null) {
-    return `${evidence.start_ms ?? "unknown"}–${evidence.end_ms ?? "unknown"} ms · ${kind}`;
+    return `${mediaTimestamp(evidence.start_ms)}–${mediaTimestamp(evidence.end_ms)} (${evidence.start_ms ?? "unknown"}–${evidence.end_ms ?? "unknown"} ms) · ${kind}`;
   }
   if (evidence.start_char !== null || evidence.end_char !== null) {
     return `characters ${evidence.start_char ?? "unknown"}–${evidence.end_char ?? "unknown"} · ${kind}`;
